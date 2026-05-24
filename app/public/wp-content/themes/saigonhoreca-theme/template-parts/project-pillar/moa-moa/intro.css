@@ -156,7 +156,7 @@
 .pp-text-mmo--center .pp-text-mmo__title { margin: 0 auto; }
 
 .pp-text-mmo__body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family: var(--font-body);
   font-size: clamp(0.97rem, 1.1vw, 1.06rem);
   line-height: 1.92;
   color: var(--bc2);

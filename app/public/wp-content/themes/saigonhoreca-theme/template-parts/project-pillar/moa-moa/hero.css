@@ -160,7 +160,7 @@ body.page-template-page-project-moa-moa .pp-hero__title {
 body.page-template-page-project-moa-moa .pp-hero__title::before {
   content: "MOA · MOA · MOA";
   display: block;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family: var(--font-body);
   font-style: normal;
   font-weight: 800;
   font-size: 0.65rem;

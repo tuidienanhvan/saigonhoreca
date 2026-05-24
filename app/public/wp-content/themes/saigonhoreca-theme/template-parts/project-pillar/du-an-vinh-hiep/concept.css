@@ -91,7 +91,7 @@
   align-self: flex-start;
   margin-top: 0.4rem;
   padding: 0.45rem 0.75rem;
-  font-family: ui-monospace, 'JetBrains Mono', Menlo, Consolas, monospace;
+  font-family: var(--font-mono);
   font-size: 0.66rem;
   letter-spacing: 0.28em;
   text-transform: uppercase;
@@ -142,7 +142,7 @@
   left: 0.7rem;
   z-index: 3;
   padding: 0.4rem 0.65rem;
-  font-family: ui-monospace, 'JetBrains Mono', Menlo, Consolas, monospace;
+  font-family: var(--font-mono);
   font-size: 0.62rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -164,7 +164,7 @@
   right: 0.7rem;
   z-index: 3;
   padding: 0.32rem 0.55rem;
-  font-family: ui-monospace, 'JetBrains Mono', Menlo, Consolas, monospace;
+  font-family: var(--font-mono);
   font-size: 0.6rem;
   letter-spacing: 0.24em;
   text-transform: uppercase;

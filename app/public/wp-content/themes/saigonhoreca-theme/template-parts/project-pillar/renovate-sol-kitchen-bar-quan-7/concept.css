@@ -103,7 +103,7 @@
 
 /* Dropcap chữ K tinh tế font Serif nghệ thuật */
 .sgh-concept-paragraph--dropcap::first-letter {
-  font-family: Georgia, serif;
+  font-family: var(--font-serif);
   font-size: 3.5em;
   font-weight: 700;
   float: left;
@@ -115,7 +115,7 @@
 
 /* Blockquote - trích dẫn đúc kết nghệ thuật */
 .sgh-concept-quote {
-  font-family: Georgia, serif;
+  font-family: var(--font-serif);
   font-style: italic;
   font-size: clamp(1.1rem, 1.4vw, 1.35rem);
   line-height: 1.6;

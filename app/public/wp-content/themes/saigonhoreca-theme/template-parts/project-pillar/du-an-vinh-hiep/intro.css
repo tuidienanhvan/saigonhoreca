@@ -109,7 +109,7 @@
   background: transparent;
   box-shadow: none;
   position: relative;
-  font-family: ui-monospace, 'JetBrains Mono', 'Fira Code', Menlo, Consolas, monospace;
+  font-family: var(--font-mono);
   font-size: 0.7rem;
   letter-spacing: 0.32em;
   text-transform: uppercase;
@@ -237,7 +237,7 @@
   grid-column: 1 / -1;
   margin-bottom: 0.5rem;
   padding: 0.55rem 0.95rem;
-  font-family: ui-monospace, 'JetBrains Mono', Menlo, Consolas, monospace;
+  font-family: var(--font-mono);
   font-size: 0.68rem;
   letter-spacing: 0.34em;
   text-transform: uppercase;
@@ -289,7 +289,7 @@
   top: 0.6rem;
   left: 0.6rem;
   z-index: 3;
-  font-family: ui-monospace, 'JetBrains Mono', Menlo, Consolas, monospace;
+  font-family: var(--font-mono);
   font-size: 0.62rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;

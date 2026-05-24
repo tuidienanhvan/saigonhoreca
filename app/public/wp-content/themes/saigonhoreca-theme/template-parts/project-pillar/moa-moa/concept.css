@@ -98,7 +98,7 @@
 .pp-split-mmo__body .pp-text-mmo__title::before {
   content: "Concept";
   display: block;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--font-body);
   font-style: normal;
   font-weight: 700;
   font-size: 0.6rem;

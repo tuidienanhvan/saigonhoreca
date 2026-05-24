@@ -282,7 +282,7 @@
 /* Blueprint Corner Crosses */
 .pp--amdang-typhoon .pp-cta-bp-corner {
   position: absolute;
-  font-family: monospace;
+  font-family: var(--font-mono);
   font-size: 15px;
   font-weight: 400;
   color: rgba(245, 166, 35, 0.4);

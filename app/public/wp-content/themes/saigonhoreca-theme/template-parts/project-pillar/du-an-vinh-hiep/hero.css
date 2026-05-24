@@ -141,7 +141,7 @@ body.page-template-page-project-du-an-vinh-hiep .pp-hero__content::before {
   content: '◆ BREW ZONE / VHP—01 / EXPORT GRADE';
   display: inline-block;
   grid-column: 1 / -1;
-  font-family: ui-monospace, 'JetBrains Mono', 'Fira Code', Menlo, Consolas, monospace;
+  font-family: var(--font-mono);
   font-size: 0.72rem;
   letter-spacing: 0.32em;
   text-transform: uppercase;
@@ -203,7 +203,7 @@ body.page-template-page-project-du-an-vinh-hiep .pp-hero__subhead::after {
   content: '— ROAST PROFILE · 24/01';
   display: block;
   margin-top: 0.85rem;
-  font-family: ui-monospace, 'JetBrains Mono', Menlo, Consolas, monospace;
+  font-family: var(--font-mono);
   font-size: 0.7rem;
   letter-spacing: 0.28em;
   text-transform: uppercase;
@@ -232,7 +232,7 @@ body.page-template-page-project-du-an-vinh-hiep .pp-hero__content::after {
   margin-top: 1.5rem;
   padding-top: 1rem;
   border-top: 1px dashed color-mix(in srgb, var(--gold) 38%, transparent);
-  font-family: ui-monospace, 'JetBrains Mono', Menlo, Consolas, monospace;
+  font-family: var(--font-mono);
   font-size: 0.65rem;
   letter-spacing: 0.36em;
   text-transform: uppercase;
