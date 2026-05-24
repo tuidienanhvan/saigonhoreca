@@ -1,0 +1,378 @@
+{
+  "slug": "bambino-saigonhoreca",
+  "title": "BAMBINO",
+  "meta_description": "Bước vào thế giới của Bambino Superclub, nơi điều bình thường trở nên phi thường, và trời đêm hóa thân thành dòng năng lượng sống động nhịp nhàng.",
+  "sections_count": 6,
+  "sections": [
+    {
+      "data_id": "7fe21be2",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-7fe21be2",
+        "elementor-section-height-full",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-items-middle"
+      ],
+      "has_video_bg": true,
+      "video_url": "https://youtu.be/rSk4W1r9Di4",
+      "background_overlay": true,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-11aa108f",
+          "col_size": 16,
+          "widgets": []
+        },
+        {
+          "col_class": "elementor-column elementor-col-66 elementor-top-column elementor-element elementor-element-341ae952",
+          "col_size": 66,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h1",
+              "text": "BAMBINO"
+            },
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Superclub-Italiano"
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Chào mừng bạn đến với Bambino Superclub – Nơi Đêm Hội Lên Đèn!"
+              ]
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-1f8e043b",
+          "col_size": 16,
+          "widgets": []
+        }
+      ]
+    },
+    {
+      "data_id": "6ef48569",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-6ef48569",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-5611f09",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Bambino"
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Địa chỉ: 29-31 Tôn Thất Thiệp, Quận 1"
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Mở cửa từ thứ ba đến chủ nhật, Bambino luôn chào đón bạn.Thời gian buổi tối: Từ 6 giờ chiềuBar Bino: 10 giờ tối – 2 giờ sángSupper Club: 10 giờ tối – 2 giờ sáng (Thứ sáu & Thứ bảy)"
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Bước vào thế giới của Bambino Superclub, nơi điều bình thường trở nên phi thường, và trời đêm hóa thân thành dòng năng lượng sống động nhịp nhàng. Nằm yên bên trong lòng sôi động của Thành phố Hồ Chí Minh,",
+                "Superclub nay không chỉ là điểm đến giải trí về đêm; đó là một trải nghiệm đắm mình vào thế giới vượt lên trên bình thường, tạo nên những đêm khó quên và những khoảnh khắc sôi động."
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Thiên đường giải trí: Thực đơn Bambino Superclub nổi bật với những món Ý, những nguyên liệu đặc biệt được nhập khẩu trực tiếp từ Italia. Từ lúc hoàng hôn cho đến khi bình minh, nhà hàng và quầy bar của Bambino luôn nhịp nhàng với làn sóng của âm nhạc, tiếng cười, và tinh thần sôi động của những người trẻ năng động."
+              ]
+            },
+            {
+              "type": "image-carousel.default",
+              "slides": [
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/SGH-Portrait-1.png",
+                  "srcset": null,
+                  "alt": "SGH-Portrait-1.png",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/SGH-Portrait-2.png",
+                  "srcset": null,
+                  "alt": "SGH-Portrait-2.png",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/SGH-Portrait-3.png",
+                  "srcset": null,
+                  "alt": "SGH-Portrait-3.png",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/SGH-Portrait.png",
+                  "srcset": null,
+                  "alt": "SGH-Portrait.png",
+                  "w": null,
+                  "h": null
+                }
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "“SAIGON HORECA tự hào tham gia thiết kế và phân phối các thiết bị nhà bếp bằng thép không gỉ cao cấp. Sự hợp tác của chúng tôi với BAMBINO không chỉ dừng lại ở chức năng cơ bản; nó hài hòa sự sáng tạo với tính thực tế. Saigon Horeca tinh chỉnh giải pháp nhà bếp một cách độc quyền cho BAMBINO, đảm bảo sự đồng thuận liền mạch với tầm nhìn đặc biệt của nhà hàng.”"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "1bf2fcd2",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-1bf2fcd2",
+        "elementor-section-content-middle",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-56d85a13",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Ý Tưởng Chủ Đạo Thiết Kế của Bambino"
+            },
+            {
+              "type": "divider.default",
+              "divider": true
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Qua trao đổi về concept nhà hàng kiểu Ý, Saigon Horeca đã tư vấn thiết kế nhà bếp cho Bambino với những nét đặc trưng cùng những thiết bị đầy đủ công năng và hiện đại. Với sự kết hợp giữa thiết bị tự sản xuất và nhập khẩu trực tiếp từ Italy, không gian làm việc bên trong nhà bếp đã phản ánh rõ nét tinh thần nước Ý một cách mạnh mẽ."
+              ]
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-33a2f502",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/bambino-saigon-horeca-1.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/bambino-saigon-horeca-1.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2024/01/bambino-saigon-horeca-1-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/01/bambino-saigon-horeca-1-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "6eea1feb",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-6eea1feb",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/SGH-Bambino-1.jpg",
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-73a09521",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Sự Hợp Tác Giữa Bambino Superclub và Saigon Horeca"
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Trong giai đoạn lên ý tưởng khởi đầu, Saigon Horeca đã tham gia vào các buổi thảo luận và phân tích sâu rộng để có được một sự hiểu biết sâu sắc những yêu cầu độc đáo và cơ bản về hoạt động của Bambino. Qua sự hợp tác chặt chẽ, đội ngũ của Saigon Horeca tương tác mật thiết với các bên liên quan của Bambino, khám phá những chi tiết của sở thích ẩm thực, động lực công việc, và nhu cầu không gian của nhà hàng. Phương pháp hợp tác này tập trung vào việc thúc đẩy sự nắm bắt toàn diện về tầm nhìn của đối tác, tạo điều kiện cho việc phát triển một thiết kế nhà bếp tùy chỉnh và hiệu quả.",
+                "Chuyên môn của Saigon Horeca đảm bảo rằng thiết kế nhà bếp tuân theo các tiêu chuẩn và quy định của bếp Âu trong ngành thiết bị bếp công nghiệp, đồng thời tạo ra một môi trường khuyến khích sự đổi mới trong ẩm thực. Sự chú ý đến chi tiết bao gồm các hệ thống thông gió, giải pháp lưu trữ, xem xét về tiện ích công nghiệp và tối ưu hóa quy trình công việc, đạt được một không gian nhà bếp vừa hữu ích vừa thu hút mắt.",
+                "Cuối cùng, dịch vụ tư vấn và thiết kế của Saigon Horeca cho môi trường nhà bếp nhà hàng không chỉ hỗ trợ nhu cầu hoạt động của nhà hàng mà còn trở thành một phần không thể thiếu của bản sắc của nó – một tổ chức nuôi dưỡng cho sự xuất sắc và thử nghiệm trong nghệ thuật ẩm thực."
+              ],
+              "links": [
+                {
+                  "href": "https://saigonhoreca.vn/phan-biet-su-khac-nhau-giua-bep-au-va-bep-a/",
+                  "text": "bếp Âu"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "21e930bb",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-21e930bb",
+        "elementor-section-content-middle",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-70e797d9",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/SGH-Bambino-2.jpg",
+                "srcset": null,
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "600",
+                "h": "800"
+              }
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-6363b75f",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "divider.default",
+              "divider": true
+            },
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Không gian Nhà Bếp Sang Trọng với Thiết Bị Bếp Inox"
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Saigon Horeca đã thiết kế nhà bếp cho Bambino một cách tinh tế, truyền tải vào đó chất DNA đặc trưng của Saigon Horeca, nổi bật bởi sự thuận tiện trong cả thiết bị tự sản xuất và nhập khẩu trực tiếp từ Italy. Thiết kế này tạo nên một không gian làm việc bên trong nhà bếp, phản ánh mạnh mẽ tinh thần Ý.",
+                "Sau các cuộc thảo luận với đầu bếp, Saigon Horeca lựa chọn thiết bị một cách cẩn thận để đáp ứng mong muốn và đặc điểm của menu của nhà hàng. Đáng chú ý, sự giới thiệu của thiết bị nhà bếp nóng từ ATA ở Italy và máy làm mì từ Lamonferrina đều là những điểm nổi bật hấp dẫn.",
+                "Hơn nữa, Saigon Horeca đã lựa chọn một cách tỉ mỉ thương hiệu nổi tiếng HOSHIZAKI cho thiết bị làm lạnh trong toàn bộ khu vực quầy bar và nhà bếp lạnh. Sự lựa chọn này phản ánh cam kết với chất lượng và sự chính xác trong thiết kế, hài hòa hoàn hảo với tầm nhìn ẩm thực của Bambino."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "664d43a3",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-664d43a3",
+        "elementor-section-content-middle",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-61c4ff8e",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Bản sắc của Saigon Horeca hiện diện rõ rệt trong thiết kế nghệ thuật của quầy bar."
+            },
+            {
+              "type": "divider.default",
+              "divider": true
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Tại Bambino Superclub, không gian làm việc của Bartender mở trên một quầy bar rộng 23 mét vuông. Quầy Bar trước, được tổ chức một cách tỉ mỉ, trưng bày hệ thống làm lạnh hàng đầu của các dòng thiết bị làm lạnh công nghiệp Fujimak. Ba bàn, bao gồm bàn lạnh 900mm và 1500mm, giữ cho nguyên liệu luôn tươi mới cho mixology. Tủ thép không gỉ 304 của SGH, được thiết kế tinh tế, mang lại tính linh hoạt đa dạng cho kỹ thuật pha chế hiệu quả.",
+                "Khu vực quầy bar, được tối ưu hóa bởi thiết kế của SGH, tạo ra một không gian độc đáo cho những người yêu thích quầy bar. Khay nhỏ giọt chảy mượt mà, hòa quyện với sự bóng bẩy của thép không gỉ. Thêm vào đó, một không gian riêng biệt trong Quầy Bar trước tự hào sở hữu máy làm đá Hoshizaki, sản xuất 220kg đá chất lượng cao mỗi ngày. Kèm theo là hệ thống rửa cốc Winterhalter, đảm bảo chu kỳ nhanh chóng khoảng 1 phút 30 giây để đáp ứng nhu cầu của khách hàng tinh tế, phản ánh cam kết của chúng tôi đối với dịch vụ hiệu quả và chất lượng."
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                ">> Khám phá ngay: Thiết Kế Bếp Nhà Hàng Ấn Tượng Góp Phần Chiến Thắng B.A.R. Award 2023 của Bambino, Capos Hanoi và Mùa Craft Sake"
+              ],
+              "links": [
+                {
+                  "href": "https://saigonhoreca.vn/saigon-horeca-nghe-thuat-thiet-ke-bep-nha-hang/",
+                  "text": "Thiết Kế Bếp Nhà Hàng Ấn Tượng Góp Phần Chiến Thắng B.A.R. Award 2023 của Bambino, Capos Hanoi và Mùa Craft Sake"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-4f0ee126",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/SGH-Bambino-3.jpg",
+                "srcset": null,
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "600",
+                "h": "800"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

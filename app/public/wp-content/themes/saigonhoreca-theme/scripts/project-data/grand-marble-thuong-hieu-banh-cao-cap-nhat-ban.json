@@ -1,0 +1,802 @@
+{
+  "slug": "grand-marble-thuong-hieu-banh-cao-cap-nhat-ban",
+  "title": "Grand Marble",
+  "meta_description": "Thương hiệu bánh cao cấp Grand Marble của Nhật Bản xuất hiện từ năm 1996 tại Kyoto - thành phố hơn 1000 năm lịch sử về ngành thủ công mỹ nghệ.",
+  "sections_count": 18,
+  "sections": [
+    {
+      "data_id": "6e7f942b",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-6e7f942b",
+        "elementor-section-full_width",
+        "elementor-section-stretched",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-40e1ae91",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "113d28b6",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-113d28b6",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-2adeb0fa",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Grand Marble và Nét Đẹp của Bàn Tay Nghệ Nhân"
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Thương hiệu bánh cao cấp Grand Marble của Nhật Bản xuất hiện từ năm 1996 tại Kyoto – thành phố hơn 1000 năm lịch sử về ngành thủ công mỹ nghệ. Sự giao thương tấp nập và không khí sôi động của các ngành nghề xưa đã hòa quyện, tạo nên ảnh hưởng văn hóa từ nhiều quốc gia khác nhau, góp phần hình thành nên phong cách độc đáo của thương hiệu Grand Marble."
+              ],
+              "links": [
+                {
+                  "href": "https://grandmarble.com/foreign_customers/en/",
+                  "text": "Grand Marble"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "25c51df",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-25c51df",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-27dc4d77",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/gmb-01.jpeg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/gmb-01.jpeg 800w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-01-768x576.jpeg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-01-600x450.jpeg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "800",
+                "h": "600"
+              }
+            },
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/elementor/thumbs/gmb-2-e1631781552190-1-qhbnq2ivvrtvsf8ygk07yoa3igx0toy1ake7erzfd4.jpg",
+                "srcset": null,
+                "alt": "gmb-2-e1631781552190.jpg",
+                "w": null,
+                "h": null
+              }
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Trên con phố Gionmachi-minamigawa, Higashiyama-ku, Kyoto, giữa lòng thành phố cổ nghìn năm, bằng đôi bàn tay tài hoa và óc sáng tạo của những nghệ nhân bánh ngọt đã tạo nên một kiệt tác: chiếc bánh Danish Marble đầu tiên. Họ khéo léo kết hợp hương vị đậm chất quê hương với các biến thể Tây phương xa xôi, mở ra một chương mới trong nghệ thuật làm bánh Kyoto."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "3a911dde",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-3a911dde",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-5b80763e",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Từ mùi thơm đến hương vị, chiếc bánh ngọt này được đánh giá cao, đặc biệt là bởi các họa tiết hoa văn trông giống như đá marble được tạo ra bởi tài năng và tận tụy của những nghệ nhân làm bánh.",
+                "Bên cạnh Marble Danish, Grand Marble còn có nhiều hương vị bánh ngọt truyền thống khác được yêu thích như Kyoto Sansyoku, Maple Caramel, và Gion Tsujiri Matcha An. Mỗi hương vị đều mang một nét đặc trưng riêng, nhưng đều có chung điểm là sự hòa quyện tinh tế giữa hương vị truyền thống của Nhật Bản và bí quyết làm bánh phương Tây."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "388b0b34",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-388b0b34",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-1161b08b",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/gmb-og-e1710598985691.webp",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/gmb-og-e1710598985691.webp 800w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-og-e1710598985691-768x503.webp 768w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-og-e1710598985691-600x393.webp 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "800",
+                "h": "524"
+              }
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Original Taste"
+              ]
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-43a5de0b",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/gmb-01.jpeg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/gmb-01.jpeg 800w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-01-768x576.jpeg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-01-600x450.jpeg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "800",
+                "h": "600"
+              }
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Gion Tsujiri Matcha An"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "32b8e9c3",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-32b8e9c3",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-47d89d6c",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/gmb-gion_tsujiri_maccha_an.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/gmb-gion_tsujiri_maccha_an.jpg 666w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-gion_tsujiri_maccha_an-600x360.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "666",
+                "h": "400"
+              }
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Vị Gion Tsujiri Matcha với đậu đỏ"
+              ]
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-2d78a6a0",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/gmb.jpeg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/gmb.jpeg 640w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-600x360.jpeg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "640",
+                "h": "384"
+              }
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Maple Caramel"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "4c73170e",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-4c73170e",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-8611095",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Bên cạnh những hương vị truyền thống và phổ biến, Grand Marble còn mang đến những hương vị riêng biệt, tượng trưng cho sự độc đáo của từng quốc gia mà thương hiệu hiện diện. Đặc biệt, tại Việt Nam, Grand Marble thu hút thực khách với bộ ba hương vị độc quyền sử dụng chocolate Marou thượng hạng: Chocolate-Chocolate, Green Tea Chocolate, and Orange Mango Chocolate thực sự làm ấn tượng vị giác."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "7ef313e1",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-7ef313e1",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-55020993",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/gmb-chocora-chocora.jpeg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/gmb-chocora-chocora.jpeg 666w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-chocora-chocora-600x360.jpeg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "666",
+                "h": "400"
+              }
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "original chocolate Marou"
+              ]
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-64ccdec2",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/gmb-chocolate-og.jpeg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/gmb-chocolate-og.jpeg 640w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-chocolate-og-600x360.jpeg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "640",
+                "h": "384"
+              }
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "orange mango and chocolate Marou"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "29c5836b",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-29c5836b",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-8f04be7",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/gmb-gion.jpeg",
+                "srcset": null,
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "400",
+                "h": "300"
+              }
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "chocolate matcha Marou"
+              ]
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-155555ab",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/gmb-og-e1710598985691.webp",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/gmb-og-e1710598985691.webp 800w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-og-e1710598985691-768x503.webp 768w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-og-e1710598985691-600x393.webp 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "800",
+                "h": "524"
+              }
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Combo fourtaste Marble Danish"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "4b4ad504",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-4b4ad504",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-742ef766",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Hành Trình Đưa Bánh Grand Marble Tận Tay Khách Hàng"
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Để tạo ra những chiếc bánh ngọt ngon lành, các nghệ nhân Grand Marble tỉ mỉ lựa chọn nguyên liệu thượng hạng, cân đo đong đếm cẩn thận, nhào nặn bột, ủ kỹ, và tuân theo quy trình, tiêu chuẩn nghiêm ngặt. Từ những bước thủ công đến sự hỗ trợ của máy móc hiện đại để có thể sản xuất ra những chiếc bánh ngọt có hương vị hoàn hảo.",
+                "Sài Gòn Horeca là đối tác tư vấn thiết kế và lắp đặt trang thiết bị toàn diện cho phòng làm bánh Grand Marble, từ khâu chuẩn bị nguyên liệu đến đóng gói thành phẩm."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "516e474d",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-516e474d",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-56dd73c6",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/gmb-bv-bo-tri-thiet-bi.png",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/gmb-bv-bo-tri-thiet-bi.png 1322w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-bv-bo-tri-thiet-bi-768x495.png 768w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-bv-bo-tri-thiet-bi-600x387.png 600w",
+                "alt": "bản vẽ tư vấn thiết kế bếp nhà hàng, bếp công nghiệp",
+                "w": "1322",
+                "h": "852"
+              }
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Dựa trên bố cục dự án tổng thể kết hợp với các thủ tục tiêu chuẩn cho một phòng làm bánh, chúng tôi đã phân chia không gian thành sáu khu vực chức năng: Khu vực tiếp nhận nguyên liệu, khu vực vệ sinh, khu vực trộn và cán bột, khu vực làm bánh, khu vực lưu trữ và khu vực kiểm tra đóng gói."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "207b22c4",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-207b22c4",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-66 elementor-top-column elementor-element elementor-element-205fd7de",
+          "col_size": 66,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/gmb-bv-bo-tri-thiet-bi-khu-vuc-1-e1631892037420.png",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/gmb-bv-bo-tri-thiet-bi-khu-vuc-1-e1631892037420.png 975w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-bv-bo-tri-thiet-bi-khu-vuc-1-e1631892037420-768x469.png 768w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-bv-bo-tri-thiet-bi-khu-vuc-1-e1631892037420-600x366.png 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "975",
+                "h": "595"
+              }
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-49dc138a",
+          "col_size": 33,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/gmb-bv-bo-tri-thiet-bi-khu-vuc-3.png",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/gmb-bv-bo-tri-thiet-bi-khu-vuc-3.png 960w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-bv-bo-tri-thiet-bi-khu-vuc-3-768x454.png 768w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-bv-bo-tri-thiet-bi-khu-vuc-3-600x354.png 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "960",
+                "h": "567"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "7eb49ae9",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-7eb49ae9",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-3b18e977",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Khu vực nhận nguyên liệu của Grand Marble được trang bị đầy đủ để đảm bảo chất lượng và vệ sinh thực phẩm. Nơi đây có: Cân chính xác để đo lường nguyên liệu, Bồn rửa tay tiện lợi, Đèn đuổi côn trùng, Hệ thống kệ đa dạng,… Đặc biệt phòng lạnh 10 mét khối duy trì nhiệt độ 2 độ C, nơi bảo quản các nguyên liệu tươi như dâu, cam, xoài trong điều kiện tốt nhất.",
+                "Với trang thiết bị hiện đại và quy trình nghiêm ngặt, khu vực nhận nguyên liệu đảm bảo các loại trái cây, chocolate, bột mì… luôn tươi ngon, sẵn sàng mang đến những chiếc bánh Grand Marble thơm ngon tuyệt hảo."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "69e1706d",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-69e1706d",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-30a284f5",
+          "col_size": 33,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/gmb-bv-bo-tri-thiet-bi-khu-vuc-4-e1631935453174.png",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/gmb-bv-bo-tri-thiet-bi-khu-vuc-4-e1631935453174.png 612w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-bv-bo-tri-thiet-bi-khu-vuc-4-e1631935453174-600x669.png 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "612",
+                "h": "682"
+              }
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-66 elementor-top-column elementor-element elementor-element-4c619292",
+          "col_size": 66,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/gmb-bv-bo-tri-thiet-bi-khu-vuc-2-e1631891967114.png",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/gmb-bv-bo-tri-thiet-bi-khu-vuc-2-e1631891967114.png 973w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-bv-bo-tri-thiet-bi-khu-vuc-2-e1631891967114-768x512.png 768w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-bv-bo-tri-thiet-bi-khu-vuc-2-e1631891967114-600x400.png 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "973",
+                "h": "649"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "50f1b47f",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-50f1b47f",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-5b2dcf6f",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Để đảm bảo an toàn vệ sinh thực phẩm, Grand Marble áp dụng quy trình vệ sinh nghiêm ngặt cho tất cả mọi người trước khi vào phòng làm bánh.",
+                "Sau khi vệ sinh, quy trình của những chiếc bánh bắt đầu tại Khu vực Trộn và Cán Bột. Khu vực này được trang bị hai thiết bị vô cùng quan trọng: Máy trộn bột và máy lăn bột đến từ thương hiệu Chanmag-Đài Loan. Bên cạnh đó, các tủ lạnh và tủ đông (Hoshizaki-Nhật Bản) cùng các thiết bị inox như bồn rửa và kệ treo tường luôn tươm tất, sẵn sàng phục vụ các nghệ nhân làm bánh."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "aef9dab",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-aef9dab",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-21cdc7e3",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/gmb-lo-nuong-e1631938054124.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/gmb-lo-nuong-e1631938054124.jpg 960w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-lo-nuong-e1631938054124-768x480.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-lo-nuong-e1631938054124-600x375.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "960",
+                "h": "600"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "30e8fa39",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-30e8fa39",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-1132a62a",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Từ bàn tay tài hoa của các nghệ nhân, Khu vực Làm Bánh là nơi những chiếc bánh ngọt ra đời. Tại đây, tủ ủ bột, lò nướng của thương hiệu Chanmag, bàn làm mát của Hoshizaki và bàn inox có bề mặt đá hoa cương để làm bánh thủ công mang đến không gian lý tưởng cho các khâu tạo hình khéo léo. Bánh sau khi nướng sẽ được chuyển ngay vào phòng lạnh để bảo quản.",
+                "Hành trình kết thúc tại Khu vực Kiểm Tra và Đóng Gói, nơi những chiếc bánh Danish Marble xinh đẹp chuẩn bị đến tay thực khách. Do việc đóng gói được thực hiện thủ công, khu vực này chỉ đơn giản với một bồn rửa, máy cắt bánh và một bàn inox. Mỗi công đoạn được chăm chút tỉ mỉ, đảm bảo từng hộp bánh đều thơm ngon và hoàn hảo."
+              ]
+            },
+            {
+              "type": "image-carousel.default",
+              "slides": [
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/gmb-ban-thao-tac-e1631938130192.jpg",
+                  "srcset": null,
+                  "alt": "gmb-ban-thao-tac-e1631938130192",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/gmb-lo-nuong-e1631938054124.jpg",
+                  "srcset": null,
+                  "alt": "gmb-lo-nuong-e1631938054124",
+                  "w": null,
+                  "h": null
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "5772833",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-5772833",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-32c4290d",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Với hơn 7 năm kinh nghiệm trong ngành F&B, Saigon Horeca tự hào đồng hành cùng nhiều dự án thiết kế và xây dựng quầy bar, phòng làm bánh, bếp công nghiệp, và bếp nhà hàng. Thiết bị chúng tôi cung cấp đến từ các thương hiệu uy tín thế giới, cùng với các thiết bị inox chất lượng cao do chính Saigon Horeca thiết kế và sản xuất.",
+                "Uy tín và chất lượng sản phẩm luôn là kim chỉ nam hàng đầu của chúng tôi. Mỗi thiết kế và sản phẩm đều thể hiện sự tận tâm và nhiệt huyết của Saigon Horeca trong việc phục vụ khách hàng, tối ưu hóa quy trình vận hành, đồng thời giảm thiểu chi phí đầu tư."
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                ">>> Khám phá ngay những dự án thành công bởi Saigon Horeca tại đây!"
+              ],
+              "links": [
+                {
+                  "href": "https://saigonhoreca.vn/du-an-noi-bat/",
+                  "text": "tại đây"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

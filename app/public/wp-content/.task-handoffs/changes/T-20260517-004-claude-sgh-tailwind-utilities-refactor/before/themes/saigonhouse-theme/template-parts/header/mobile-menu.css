@@ -1,0 +1,310 @@
+/**
+ * Mobile Menu (Sidebar) — Pure CSS
+ */
+
+/* ── Overlay ── */
+.sh-mobile-overlay {
+    @apply fixed z-50 opacity-0 pointer-events-none transition-opacity duration-300 [inset:0] [background:rgba(0,_0,_0,_0.5)];
+}
+
+.sh-mobile-overlay.is-visible {
+    @apply opacity-100 pointer-events-auto;
+}
+
+/* ── Sidebar Container ── */
+.sh-mobile {
+    @apply fixed transition-transform duration-300 flex flex-col [top:0] [bottom:0] [right:0] [width:85vw] [max-width:24rem] [background:var(--bg-card)] [z-index:60] [transform:translateX(100%)] [box-shadow:-4px_0_24px_rgba(0,_0,_0,_0.15)];
+}
+
+.sh-mobile.is-open {
+    @apply [transform:translateX(0)];
+}
+
+/* Body scroll lock when menu is open */
+body.overflow-hidden {
+    @apply overflow-hidden;
+}
+
+/* ── Header ── */
+.sh-mobile__header {
+    @apply py-2.5 px-4 flex items-center justify-between [border-bottom:1px_solid_var(--border-default-light)] [background:var(--bg-alt)];
+}
+
+.sh-mobile__header-title {
+    @apply font-black text-xs uppercase tracking-wider flex items-center gap-2 [color:var(--brand)];
+}
+
+.sh-mobile__header-icon {
+    @apply w-3.5 h-3.5;
+}
+
+.sh-mobile__close-btn {
+    @apply p-1.5 rounded-lg cursor-pointer transition-all duration-200 [color:var(--text-1-3)] [background:transparent] [border:none];
+}
+
+.sh-mobile__close-btn:hover {
+    @apply [color:var(--danger)] [background:color-mix(in_srgb,_var(--danger)_8%,_transparent)];
+}
+
+.sh-mobile__close-icon {
+    @apply w-5 h-5;
+}
+
+/* ── Body ── */
+.sh-mobile__body {
+    @apply flex-1 overflow-y-auto p-3 [-ms-overflow-style:none] [scrollbar-width:none];
+}
+
+.sh-mobile__body::-webkit-scrollbar {
+    @apply hidden;
+}
+
+/* ── Search ── */
+.sh-mobile__search-wrap {
+    @apply mb-3;
+}
+
+.sh-mobile__search {
+    @apply relative;
+}
+
+.sh-mobile__search-icon-wrap {
+    @apply absolute pointer-events-none [left:0.75rem] [top:50%] [transform:translateY(-50%)] [color:var(--text-1-muted)];
+}
+
+.sh-mobile__search-svg {
+    @apply w-4 h-4;
+}
+
+.sh-mobile__search-input {
+    @apply w-full rounded-lg text-xs font-medium transition-all duration-200 [background:var(--bg-card)] [border:1px_solid_var(--border-default)] [padding:0.5rem_1rem_0.5rem_2.25rem] [color:var(--text-1)];
+}
+
+.sh-mobile__search-input::placeholder {
+    @apply [color:var(--text-1-muted)];
+}
+
+.sh-mobile__search-input:focus {
+    @apply [outline:none] [border-color:var(--brand)] [box-shadow:0_0_0_3px_color-mix(in_srgb,_var(--brand)_10%,_transparent)];
+}
+
+/* ── Nav ── */
+.sh-mobile__nav {
+    @apply flex flex-col;
+}
+
+.sh-mobile__menu-list {
+    @apply flex flex-col list-none m-0 p-0;
+}
+
+.sh-mobile__no-menu {
+    @apply text-sm p-4 [color:var(--text-1-3)];
+}
+
+/* ── Accordion (submenu) ── */
+.sub-menu-wrapper {
+    @apply overflow-hidden [max-height:0] [transition:max-height_0.4s_cubic-bezier(0.4,_0,_0.2,_1)];
+}
+
+.sub-menu-wrapper.is-open {
+    @apply [max-height:1000px];
+}
+
+/* ── Footer ── */
+.sh-mobile__footer {
+    @apply mt-4 pt-4 px-0 pb-20 [border-top:1px_solid_var(--border-default-light)];
+}
+
+.sh-mobile__section-title {
+    @apply font-bold uppercase tracking-wider py-0 px-2 flex items-center gap-2 [color:var(--text-1)] [margin:0_0_0.75rem] [font-size:0.625rem];
+}
+
+.sh-mobile__accent-bar {
+    @apply w-1 h-3 inline-block rounded-sm [background:var(--secondary)];
+}
+
+/* ── Contact Cards ── */
+.sh-mobile__contact-list {
+    @apply flex flex-col gap-2;
+}
+
+.sh-mobile__contact-card {
+    @apply flex items-center gap-3 p-2.5 no-underline transition-all duration-200 [border-radius:var(--radius)] [background:var(--bg-alt)] [border:1px_solid_var(--border-default-light)] [color:var(--text-1-2)];
+}
+
+.sh-mobile__contact-card--phone {
+    @apply [background:color-mix(in_srgb,_var(--success)_8%,_var(--bg-card))] [border-color:color-mix(in_srgb,_var(--success)_15%,_transparent)];
+}
+
+.sh-mobile__contact-card:hover {
+    @apply [border-color:var(--brand)] [color:var(--brand)];
+}
+
+.sh-mobile__contact-icon-wrap {
+    @apply w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-all duration-200 [background:var(--bg-card)] [box-shadow:0_1px_2px_rgba(0,_0,_0,_0.05)] [color:var(--success)] [border:1px_solid_var(--border-default-light)];
+}
+
+.sh-mobile__contact-card:hover .sh-mobile__contact-icon-wrap {
+    @apply [background:var(--brand)] [color:#fff];
+}
+
+.sh-mobile__contact-svg {
+    @apply w-3.5 h-3.5;
+}
+
+.sh-mobile__contact-label {
+    @apply block font-bold uppercase tracking-wider [font-size:0.5625rem] [color:var(--text-1-muted)];
+}
+
+.sh-mobile__contact-value {
+    @apply font-black text-xs tracking-tight;
+}
+
+.sh-mobile__contact-email {
+    @apply font-medium [font-size:0.6875rem] [word-break:break-all];
+}
+
+/* ── Social ── */
+.sh-mobile__social-section {
+    @apply mt-6 py-0 px-2;
+}
+
+.sh-mobile__social-list {
+    @apply flex gap-2.5;
+}
+
+.sh-mobile__social-btn {
+    @apply rounded-full overflow-hidden block no-underline shrink-0 [width:2.25rem] [height:2.25rem] [box-shadow:0_4px_8px_rgba(0,_0,_0,_0.12)] [transition:transform_0.2s,_box-shadow_0.2s];
+}
+
+.sh-mobile__social-btn:hover {
+    @apply [transform:scale(1.1)_translateY(-2px)];
+}
+
+/* Social buttons use image assets — no color change on theme switch */
+.sh-mobile__social-img {
+    @apply w-full h-full object-cover [border-radius:inherit];
+}
+
+/* ── Copyright ── */
+.sh-mobile__copyright {
+    @apply mt-6 py-0 px-2 text-center [font-size:0.625rem] [color:var(--text-1-muted)] [font-family:monospace];
+}
+
+/* ── Dark Mode ── */
+.dark .sh-mobile {
+    @apply [background:var(--bg-card)];
+}
+
+.dark .sh-mobile__header {
+    @apply [background:var(--bg)] [border-bottom-color:var(--border-default)];
+}
+
+.dark .sh-mobile__search-input {
+    @apply [background:var(--bg-elevated)] [border-color:var(--border-default)] [color:var(--text-1)];
+}
+
+.dark .sh-mobile__footer {
+    @apply [border-top-color:var(--border-default)];
+}
+
+.dark .sh-mobile__section-title {
+    @apply [color:var(--text-1)];
+}
+
+.dark .sh-mobile__contact-card {
+    @apply [background:var(--bg-elevated)] [border-color:var(--border-default)] [color:var(--text-1-2)];
+}
+
+.dark .sh-mobile__contact-card--phone {
+    @apply [background:color-mix(in_srgb,_var(--success)_10%,_var(--bg-card))];
+}
+
+.dark .sh-mobile__contact-icon-wrap {
+    @apply [background:var(--bg-card)] [border-color:var(--border-default)];
+}
+
+/* ── Header Responsive ── */
+@media (max-width: 767px) {
+    #main-header .sh-header__bar {
+    @apply [height:64px];
+}
+}
+
+/* ═══ Mobile Walker BEM Classes ═══ */
+
+.sh-mob-submenu {
+    @apply hidden flex-col w-full transition-all duration-300 list-none m-0 p-0 [background:var(--bg-card)] [border-bottom:1px_solid_color-mix(in_srgb,_var(--brand)_10%,_transparent)];
+}
+
+.sh-mob-item {
+    @apply w-full;
+}
+.sh-mob-item__row {
+    @apply flex items-center justify-between w-full [background:var(--bg-card)] [border-bottom:1px_solid_var(--border-default-light)];
+}
+
+.sh-mob-item__link {
+    @apply flex-1 font-semibold uppercase py-2 px-3 tracking-wider no-underline transition-colors duration-200 [color:var(--text-1)] [font-size:0.6875rem];
+}
+.sh-mob-item__link:hover {
+    @apply [color:var(--brand)];
+}
+
+.sh-mob-item__toggle {
+    @apply p-2 cursor-pointer [color:var(--text-1-muted)] [background:transparent] [border:none] [border-left:1px_solid_var(--border-default-light)] [transition:color_0.2s,_background_0.2s];
+}
+.sh-mob-item__toggle:hover {
+    @apply [color:var(--brand)] [background:var(--bg-alt)];
+}
+.sh-mob-item__toggle-icon {
+    @apply w-3.5 h-3.5 transition-transform duration-300;
+}
+
+.sh-mob-sub-item {
+    @apply w-full [border-left:2px_solid_transparent];
+}
+.sh-mob-sub-item:hover {
+    @apply [border-left-color:color-mix(in_srgb,_var(--brand)_20%,_transparent)];
+}
+
+.sh-mob-sub-item__link {
+    @apply flex items-center w-full pt-1.5 pr-3 pb-1.5 pl-6 no-underline gap-2 [color:var(--text-1-3)] [transition:color_0.2s,_background_0.2s];
+}
+.sh-mob-sub-item__link:hover {
+    @apply [color:var(--brand)] [background:var(--bg-alt)];
+}
+
+.sh-mob-sub-item__dot {
+    @apply w-1 h-1 rounded-full shrink-0 [background:var(--text-1-muted)] [transition:background_0.2s];
+}
+.sh-mob-sub-item__link:hover .sh-mob-sub-item__dot {
+    @apply [background:var(--brand)];
+}
+
+.sh-mob-sub-item__text {
+    @apply font-medium [font-size:0.625rem];
+}
+
+/* Dark Mode */
+.dark .sh-mob-item__row {
+    @apply [background:var(--bg)] [border-bottom-color:var(--border-default)];
+}
+.dark .sh-mob-item__link {
+    @apply [color:var(--text-1)];
+}
+.dark .sh-mob-item__toggle {
+    @apply [color:var(--text-1-3)] [border-left-color:var(--border-default)];
+}
+.dark .sh-mob-item__toggle:hover {
+    @apply [background:var(--bg-elevated)];
+}
+.dark .sh-mob-submenu {
+    @apply [background:var(--bg-elevated)] [border-bottom-color:var(--border-default)];
+}
+.dark .sh-mob-sub-item__link {
+    @apply [color:var(--text-1-muted)];
+}
+.dark .sh-mob-sub-item__link:hover {
+    @apply [background:var(--bg-card)];
+}

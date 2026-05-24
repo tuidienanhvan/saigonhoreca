@@ -1,0 +1,41 @@
+/**
+ * Shared 2-column layout (content + sidebar).
+ *
+ * Used by: page.php, category.php, archive.php, tag.php, search.php.
+ * The single-post template (single.php) keeps its own `.sh-single__layout`
+ * because its header/meta block needs full width before the grid kicks in.
+ *
+ * Layout:
+ *   Mobile → 1 column (stacked, sidebar appears below content)
+ *   ≥1024px → 2 columns (content flexible, sidebar fixed ~20rem)
+ *
+ * BEM:
+ *   .sh-with-sidebar           → grid container
+ *   .sh-with-sidebar__main     → main content column
+ *   .sh-with-sidebar__aside    → sidebar column (wraps get_sidebar())
+ */
+
+.sh-with-sidebar {
+    @apply grid gap-8 my-0 mx-auto py-0 px-4 w-full [grid-template-columns:minmax(0,_1fr)] [max-width:var(--sh-content-max)];
+}
+
+.sh-with-sidebar__main {
+    @apply min-w-0;
+    /* prevent grid blow-out from long words/urls */
+}
+
+.sh-with-sidebar__aside {
+    @apply min-w-0;
+}
+
+@media (min-width: 1024px) {
+    .sh-with-sidebar {
+    @apply gap-10 py-0 px-6 [grid-template-columns:minmax(0,_1fr)_21rem];
+}
+}
+
+@media (min-width: 1280px) {
+    .sh-with-sidebar {
+    @apply [grid-template-columns:minmax(0,_1fr)_24rem] [gap:3.5rem];
+}
+}

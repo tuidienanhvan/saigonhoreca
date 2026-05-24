@@ -1,0 +1,446 @@
+{
+  "slug": "sol-kitchen-bar",
+  "title": "Renovate SOL KITCHEN & BAR quận 7",
+  "meta_description": "Saigon Horeca vinh hạnh được chủ đầu tư Sol Kitchen & Bar tin tưởng lựa chọn là đơn vị uy tín triển khai hệ thống bếp cao cấp cho nhà hàng tại quận 7, HCMC.",
+  "sections_count": 8,
+  "sections": [
+    {
+      "data_id": "2895a41",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-2895a41",
+        "elementor-section-height-full",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-items-middle"
+      ],
+      "has_video_bg": true,
+      "video_url": "https://www.youtube.com/watch?v=c8aOoxqXJqI&t=25s&ab_channel=SaigonHoreca",
+      "background_overlay": true,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-acb852c",
+          "col_size": 16,
+          "widgets": []
+        },
+        {
+          "col_class": "elementor-column elementor-col-66 elementor-top-column elementor-element elementor-element-1c4b573",
+          "col_size": 66,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h1",
+              "text": "Renovate SOL KITCHEN & BAR quận 7"
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "2023 MICHELIN Guide Vietnam"
+              ]
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-8e7c529",
+          "col_size": 16,
+          "widgets": []
+        }
+      ]
+    },
+    {
+      "data_id": "8a7ddc0",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-8a7ddc0",
+        "elementor-section-content-middle",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-c055a6b",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Tiếp nối sự thành công của nhà hàng Sol quận 1 khi lọt vào Michelin Guide 2023, Saigon Horeca vinh hạnh được chủ đầu tư Sol Kitchen & Bar tin tưởng lựa chọn là đơn vị uy tín triển khai hệ thống bếp cao cấp cho nhà hàng tại quận 7, HCMC."
+              ],
+              "links": [
+                {
+                  "href": "https://guide.michelin.com/vn/en/ho-chi-minh/ho-chi-minh_2978179/restaurant/sol-kitchen-bar",
+                  "text": "Michelin Guide 2023"
+                }
+              ]
+            },
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/06/Sol0D7-01.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/06/Sol0D7-01.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2024/06/Sol0D7-01-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/06/Sol0D7-01-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "69c38d6",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-69c38d6",
+        "elementor-section-content-middle",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-cb14329",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Thách thức và khó khăn:"
+            },
+            {
+              "type": "divider.default",
+              "divider": true
+            },
+            {
+              "type": "eael-image-comparison.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/06/Sol0D7-02.jpg",
+                "srcset": null,
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": null,
+                "h": null
+              }
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Khi tiếp nhận thông tin và yêu cầu từ chủ đầu tư, Saigon Horeca đã đối mặt với nhiều khó khăn và thử thách. Việc cải tạo lại khu bếp hiện hữu rộng hơn 70m2 yêu cầu phải bố trí lại các thiết bị đang còn hoạt động và phải đảm bảo đúng công năng hoạt động, quy trình chế biến của toàn bộ khu bếp.",
+                "Để làm được điều này, đội ngũ kỹ thuật của Saigon Horeca đã phải tiến hành khảo sát tỉ mỉ và chi tiết qua nhiều ngày, đánh giá từng thiết bị và lập kế hoạch chi tiết để tích hợp các thiết bị cũ vào hệ thống mới một cách hợp lý và hiệu quả nhất."
+              ]
+            },
+            {
+              "type": "eael-image-comparison.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/06/Sol0D7-04.jpg",
+                "srcset": null,
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": null,
+                "h": null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "1db46c0c",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-1db46c0c",
+        "elementor-section-content-middle",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-59a044cd",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Hệ thống chụp hút khói dài 8m được thiết kế để hút khói và cấp gió tươi song song trong khu vực nấu. Hệ thống này giúp luồng khí lưu thông liên tục, tạo không gian thoải mái cho các đầu bếp làm việc và hạn chế tình trạng bí khí, đảm bảo môi trường làm việc trong lành và thoáng đãng. Trong khu vực rửa, một hệ thống chụp hút khói dài 2m cũng được lắp đặt để hút khói và cấp gió tươi, đảm bảo khu vực này luôn sạch sẽ và không bị ẩm mốc."
+              ]
+            },
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/06/chup-hut-8m-1-1.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/06/chup-hut-8m-1-1.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2024/06/chup-hut-8m-1-1-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/06/chup-hut-8m-1-1-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            },
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/06/chup-hut-8m-2-1.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/06/chup-hut-8m-2-1.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2024/06/chup-hut-8m-2-1-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/06/chup-hut-8m-2-1-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Chụp hút 2m:"
+              ]
+            },
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/06/chup-hut-2m-1.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/06/chup-hut-2m-1.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2024/06/chup-hut-2m-1-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/06/chup-hut-2m-1-600x337.jpg 600w",
+                "alt": "Dịch vụ sửa chữa, bảo trì hệ thống bếp công nghiệp bởi Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "747211f7",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-747211f7",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/06/SGH-sold7-01.jpg",
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-3807daf7",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Sự Tinh Tế của Saigon Horeca Trong Thiết Kế"
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Sol Kitchen & Bar quận 7 đã được trang bị một khu bếp rộng hơn 70m2, đảm bảo sự tiện nghi và chuyên nghiệp trong quá trình vận hành. Khu bếp này được trang bị các thiết bị bếp cao cấp như hệ thống tủ đông, tủ mát, lò nướng combi, salamander, plancha, và đặc biệt là lò BBQ do Saigon Horeca sản xuất riêng cho Sol quận 7."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "4dd2b28",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-4dd2b28",
+        "elementor-section-content-middle",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-f7d3759",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/06/SGH-sold7-01.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/06/SGH-sold7-01.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2024/06/SGH-sold7-01-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/06/SGH-sold7-01-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            },
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/06/lo-bbq-sgh.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/06/lo-bbq-sgh.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2024/06/lo-bbq-sgh-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/06/lo-bbq-sgh-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-39ebccb",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Giải pháp của Saigon Horeca:"
+            },
+            {
+              "type": "divider.default",
+              "divider": true
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Hệ thống tủ đông và tủ mát giúp bảo quản thực phẩm luôn tươi ngon và an toàn. Lò nướng combi là sự kết hợp hoàn hảo giữa nướng và hấp, mang đến những món ăn chất lượng cao. Salamander và plancha giúp nấu nướng nhanh chóng và hiệu quả."
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Lò BBQ theo phong cách Italia được Saigon Horeca sản xuất dành riêng cho nhà hàng Sol Kitchen & Bar là điểm nhấn độc đáo, dễ dàng thao tác, nướng nhanh và chắc chắn. Ngoài ra còn mang tính thẩm mỹ rất lớn cho khu bếp."
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Ngoài việc lắp đặt các thiết bị mới, Saigon Horeca còn tối ưu lại các thiết bị cũ. Chúng tôi kiểm tra công năng của từng thiết bị và đưa vào hệ thống mới nhằm tối ưu chi phí cho chủ đầu tư mà vẫn đảm bảo hiệu quả vận hành."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "12ca738",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-12ca738",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-8382894",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Quy trình thi công được thực hiện một cách nghiêm ngặt và cẩn thận. Tất cả các công đoạn đều được giám sát chặt chẽ để đảm bảo an toàn lao động và hạn chế tối đa các sự cố có thể xảy ra.",
+                "Saigon Horeca cam kết mang đến dịch vụ chất lượng cao, sự tin cậy trong kinh doanh và tính thẩm mỹ trong hệ thống bếp. Chúng tôi luôn đặt lợi ích của khách hàng lên hàng đầu và không ngừng cải tiến để đáp ứng nhu cầu ngày càng cao của thị trường."
+              ]
+            },
+            {
+              "type": "image-carousel.default",
+              "slides": [
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/06/thi-cong-02.jpg",
+                  "srcset": null,
+                  "alt": "Hướng dẫn bảo dưỡng bàn inox công nghiệp đúng cách và hiệu quả",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/06/thi-cong-04.jpg",
+                  "srcset": null,
+                  "alt": "thi-cong-04",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/06/thi-cong-03.jpg",
+                  "srcset": null,
+                  "alt": "thi-cong-03",
+                  "w": null,
+                  "h": null
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "b12803a",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-b12803a",
+        "elementor-section-content-middle",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-505eae9",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "divider.default",
+              "divider": true
+            },
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/06/sol-sgh.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/06/sol-sgh.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2024/06/sol-sgh-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/06/sol-sgh-600x337.jpg 600w",
+                "alt": "Tầm quan trọng của hệ thống hút khói và cấp khí tươi cho hệ thống bếp công nghiệp cao cấp",
+                "w": "1366",
+                "h": "768"
+              }
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Với kinh nghiệm và uy tín đã được khẳng định 10 năm nay, Saigon Horeca tự hào là đối tác đáng tin cậy của nhiều nhà hàng và quán Bar nổi tiếng như Bambino, Loco Complex, Yuzu Omakase, Unic Bar, …",
+                "Hãy để lại thông tin liên hệ nếu quý khách có nhu cầu về tư vấn, thiết kế hệ thống bếp cao cấp cho nhà hàng, quán bar của mình, Saigon Horeca sẽ chủ động trao đổi với quý khách, khảo sát trực tiếp tại Site để lắng nghe toàn bộ yêu cầu nhằm đưa ra giải pháp tối ưu nhất, vừa tiết kiệm chi phí, vừa đảm bảo hệ thống chất lượng trong suốt thời gian vận hành thực sự ổn định.",
+                "Saigon Horeca | Kitchen Equipment and Bar Solutions."
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+/**
+ * Project page-template — godmother-friendship (layout only).
+ * @package SaigonHoreca
+ */
+
+body.page-template-page-project-godmother-friendship {
+  background: var(--b1);
+  color: var(--bc);
+}

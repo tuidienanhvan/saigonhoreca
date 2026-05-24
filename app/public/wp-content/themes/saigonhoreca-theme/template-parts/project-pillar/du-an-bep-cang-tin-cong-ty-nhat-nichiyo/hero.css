@@ -1,0 +1,232 @@
+/**
+ * du-an-bep-cang-tin-cong-ty-nhat-nichiyo — hero slot.
+ * Japanese Industrial Canteen — minimalist clean overlay, hinomaru disc, origami corner.
+ * @package SaigonHoreca
+ */
+
+section.pp-hero {
+  position: relative;
+  min-height: clamp(560px, 86vh, 880px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--b1);
+  padding: 6rem 1.5rem 5rem;
+  clip-path: polygon(
+    0 0,
+    calc(100% - 90px) 0,
+    100% 90px,
+    100% 100%,
+    90px 100%,
+    0 calc(100% - 90px)
+  );
+}
+@media (min-width: 768px) {
+  section.pp-hero { padding: 8rem 4rem 6rem; }
+}
+
+/* Background media — full bleed, calm filter */
+section.pp-hero .pp-hero__media {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: saturate(0.92) contrast(1.04) brightness(0.78);
+  transform: scale(1.04);
+  z-index: 0;
+  transition: transform 1.4s var(--ease-spring);
+}
+section.pp-hero:hover .pp-hero__media { transform: scale(1.06); }
+
+/* Layered minimalist overlay — vertical fade + side gradient */
+section.pp-hero .pp-hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,0.32) 0%, rgba(0,0,0,0.08) 38%, rgba(0,0,0,0.72) 100%),
+    linear-gradient(90deg,
+      color-mix(in srgb, var(--b1) 88%, transparent) 0%,
+      color-mix(in srgb, var(--b1) 18%, transparent) 52%,
+      transparent 100%);
+  pointer-events: none;
+}
+
+/* Hinomaru — single round gold disc, centered right */
+section.pp-hero::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 8%;
+  width: clamp(140px, 16vw, 240px);
+  height: clamp(140px, 16vw, 240px);
+  border-radius: 50%;
+  background: radial-gradient(circle at 38% 38%,
+    color-mix(in srgb, var(--gold) 92%, transparent) 0%,
+    color-mix(in srgb, var(--gold) 55%, transparent) 55%,
+    color-mix(in srgb, var(--gold) 16%, transparent) 100%);
+  filter: drop-shadow(0 0 60px color-mix(in srgb, var(--gold) 35%, transparent));
+  transform: translateY(-50%);
+  z-index: 1;
+  opacity: 0.85;
+  animation: ppNicHinomaru 9s var(--ease-spring) infinite alternate;
+}
+
+/* Hinomaru concentric ring */
+section.pp-hero::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 8%;
+  width: clamp(140px, 16vw, 240px);
+  height: clamp(140px, 16vw, 240px);
+  border-radius: 50%;
+  border: 1px solid color-mix(in srgb, var(--gold) 60%, transparent);
+  transform: translate(0, -50%) scale(1.18);
+  z-index: 2;
+  pointer-events: none;
+}
+
+@keyframes ppNicHinomaru {
+  0%   { transform: translateY(-50%) scale(1);    opacity: 0.75; }
+  100% { transform: translateY(-50%) scale(1.05); opacity: 0.95; }
+}
+
+/* Content — bottom-left anchored, asymmetric */
+section.pp-hero .pp-hero__content {
+  position: relative;
+  z-index: 3;
+  max-width: 760px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 2rem 0 0;
+}
+
+/* Eyebrow — kanji-like industrial tag */
+section.pp-hero .pp-hero__content::before {
+  content: '工 · KOJO · MONOZUKURI';
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--gold) 88%, transparent);
+  padding-left: 2.6rem;
+  position: relative;
+}
+section.pp-hero .pp-hero__content::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 2.2rem;
+  width: 2rem;
+  height: 1px;
+  background: var(--gold);
+  z-index: 4;
+}
+
+/* Title — display, tight monozukuri precision */
+section.pp-hero .pp-hero__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.85rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+  color: var(--bc);
+  max-width: 18ch;
+  text-shadow: 0 4px 30px rgba(0,0,0,0.45);
+  position: relative;
+}
+section.pp-hero .pp-hero__title::after {
+  content: '';
+  display: block;
+  margin-top: 1.25rem;
+  width: 84px;
+  height: 3px;
+  background: var(--gold);
+  box-shadow: 0 0 24px color-mix(in srgb, var(--gold) 60%, transparent);
+}
+
+/* Tatami micro grid strip at bottom */
+section.pp-hero .pp-hero__overlay::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 64px;
+  background:
+    repeating-linear-gradient(90deg,
+      color-mix(in srgb, var(--gold) 18%, transparent) 0 1px,
+      transparent 1px 80px),
+    linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.55) 100%);
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+/* Watermark Japanese mark */
+section.pp-hero .pp-hero__overlay::before {
+  content: 'NICHIYO 日生';
+  position: absolute;
+  right: -2vw;
+  bottom: 7%;
+  font-family: var(--font-display);
+  font-size: clamp(6rem, 14vw, 14rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: color-mix(in srgb, var(--gold) 4%, transparent);
+  white-space: nowrap;
+  pointer-events: none;
+  line-height: 1;
+  z-index: 0;
+}
+
+/* Origami fold accent — small triangle bottom-right */
+section.pp-hero .pp-hero__content > .pp-hero__title::before {
+  content: '';
+  position: absolute;
+  right: -1.5rem;
+  top: 0.4rem;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 14px 14px 0 0;
+  border-color: var(--gold) transparent transparent transparent;
+  opacity: 0.7;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  section.pp-hero::before { animation: none; }
+  section.pp-hero .pp-hero__media { transition: none; transform: none; }
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+  section.pp-hero {
+    min-height: 540px;
+    clip-path: polygon(
+      0 0,
+      calc(100% - 56px) 0,
+      100% 56px,
+      100% 100%,
+      56px 100%,
+      0 calc(100% - 56px)
+    );
+  }
+  section.pp-hero::before,
+  section.pp-hero::after {
+    right: -10%;
+    top: 22%;
+    width: 180px;
+    height: 180px;
+    transform: translateY(0) scale(1);
+  }
+  section.pp-hero::after { transform: translateY(0) scale(1.18); }
+  section.pp-hero .pp-hero__content { padding-top: 1rem; }
+  section.pp-hero .pp-hero__overlay::after { height: 40px; }
+  section.pp-hero .pp-hero__overlay::before { font-size: 5rem; bottom: 12%; }
+}

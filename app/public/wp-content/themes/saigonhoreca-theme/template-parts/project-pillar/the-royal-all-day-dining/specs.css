@@ -1,0 +1,3 @@
+/** the-royal-all-day-dining — specs slot. Inherits .pp-split-trd from concept.css. */
+
+.pp-split-trd--reverse .pp-split-trd__media { aspect-ratio: 16 / 9; }

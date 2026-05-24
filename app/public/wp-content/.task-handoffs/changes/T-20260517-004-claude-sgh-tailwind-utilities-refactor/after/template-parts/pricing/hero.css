@@ -1,0 +1,20 @@
+/**
+ * Pricing Page Hero — Bảng Giá landing
+ * Owner: template-parts/pricing/hero.php
+ */
+
+.sh-price-hero{padding-inline:calc(var(--spacing) * 4);padding-top:calc(var(--spacing) * 20);padding-bottom:calc(var(--spacing) * 16);text-align:center;background:linear-gradient(180deg, var(--bg-alt) 0%, var(--bg) 100%);position:relative;overflow:hidden}
+
+@media (min-width: 768px) {.sh-price-hero{padding:7rem 1.5rem 5rem}
+}/* Decorative grid pattern */
+.sh-price-hero__grid-bg{pointer-events:none;z-index:0;background-image:linear-gradient(to right, var(--border-default) 1px, transparent 1px), linear-gradient(to bottom, var(--border-default) 1px, transparent 1px);opacity:.6;background-size:48px 48px;position:absolute;inset:0;-webkit-mask-image:radial-gradient(60% 80%,#000 30%,#0000 100%);mask-image:radial-gradient(60% 80%,#000 30%,#0000 100%)}/* Fade gradient at bottom */
+.sh-price-hero__fade{pointer-events:none;z-index:1;height:calc(var(--spacing) * 24);background:linear-gradient(to bottom, transparent, var(--bg));position:absolute;inset:auto 0 0}/* Content container */
+.sh-price-hero__container{z-index:2;margin-inline:auto;margin-block:calc(var(--spacing) * 0);max-width:56rem;position:relative}/* Badge */
+.sh-price-hero__badge{margin-bottom:calc(var(--spacing) * 6);align-items:center;gap:calc(var(--spacing) * 2);border-radius:var(--radius-full);padding-inline:calc(var(--spacing) * 4);padding-block:calc(var(--spacing) * 1.5);background:var(--brand);display:inline-flex}.sh-price-hero__badge-dot{border-radius:var(--radius-full);width:.4rem;height:.4rem;box-shadow:0 0 8px var(--brand)}.sh-price-hero__badge-text{--tw-font-weight:var(--font-weight-extrabold);font-size:.7rem;font-weight:var(--font-weight-extrabold);letter-spacing:.15em;color:var(--brand);text-transform:uppercase}/* Title */
+.sh-price-hero__title{font-family:var(--font-display);--tw-font-weight:var(--font-weight-black);font-size:clamp(2.5rem,7vw,5.5rem);line-height:1.05;font-weight:var(--font-weight-black);--tw-tracking:var(--tracking-tight);letter-spacing:var(--tracking-tight);color:var(--text-1);margin:0 0 1.25rem}
+.sh-price-hero__title > span:first-child {
+    @apply block;
+}.sh-price-hero__title-accent{color:#0000;-webkit-text-fill-color:transparent;-webkit-background-clip:text;background-clip:text;background:linear-gradient(135deg, var(--brand) 0%, var(--brand-light) 100%);margin-top:.25em;display:block}/* Description */
+.sh-price-hero__desc{--tw-font-weight:var(--font-weight-medium);max-width:38rem;font-size:clamp(.95rem,1.4vw,1.0625rem);line-height:1.65;font-weight:var(--font-weight-medium);color:var(--text-2);margin:0 auto 2.5rem}.sh-price-hero__desc strong{--tw-font-weight:var(--font-weight-extrabold);font-weight:var(--font-weight-extrabold);color:var(--brand)}/* Anchor buttons */
+.sh-price-hero__anchors{justify-content:center;align-items:stretch;gap:calc(var(--spacing) * 3.5);flex-wrap:wrap;display:flex}.sh-price-hero__anchor{align-items:center;gap:calc(var(--spacing) * 2.5);border-radius:var(--radius-xl);padding-inline:calc(var(--spacing) * 6);padding-block:calc(var(--spacing) * 3.5);font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height));--tw-font-weight:var(--font-weight-bold);font-weight:var(--font-weight-bold);color:var(--text-1);box-shadow:var(--shadow-main);background:var(--bg-card);border:1px solid var(--border-default);transition:all .25s var(--ease-spring);text-decoration-line:none;display:inline-flex}.sh-price-hero__anchor:hover{border-color:var(--brand);transform:translateY(-2px)}.sh-price-hero__anchor-icon{width:1.125rem;height:1.125rem}/* Primary anchor variant */
+.sh-price-hero__anchor--primary{border-color:var(--brand);color:var(--on-brand);box-shadow:0 8px 24px -8px var(--brand)}.sh-price-hero__anchor--primary:hover{border-color:var(--brand-hover);color:var(--on-brand);box-shadow:0 12px 32px -8px var(--brand)}

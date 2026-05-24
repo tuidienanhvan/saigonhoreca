@@ -1,0 +1,235 @@
+/**
+ * bep-canteen-nha-may-sheh-fung — hero slot.
+ * Direction: Industrial Factory Canteen.
+ * Motifs: sheet-metal striped overlays, bolt/rivet corner ornaments, hi-vis safety stripe,
+ * brushed steel watermark plate, hazard chevron divider, NO.### stamp.
+ * @package SaigonHoreca
+ */
+
+/* ===== Section frame: sheet-metal cinematic plate ===== */
+.pp-hero {
+  position: relative;
+  min-height: 88vh;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--b1);
+  padding: 0;
+}
+@media (min-width: 768px) {
+  .pp-hero { min-height: 92vh; }
+}
+
+/* ===== Layer 1: photographic media ===== */
+.pp-hero__media {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+  filter: saturate(1.08) contrast(1.05) brightness(0.94);
+  transform: scale(1.02);
+  transition: transform 1.4s var(--ease-spring);
+}
+.pp-hero:hover .pp-hero__media { transform: scale(1.04); }
+
+/* ===== Layer 2: cinematic overlay + sheet-metal stripe veil ===== */
+.pp-hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg,
+      color-mix(in srgb, var(--b1) 60%, transparent) 0%,
+      color-mix(in srgb, var(--b1) 18%, transparent) 38%,
+      color-mix(in srgb, var(--b1) 72%, transparent) 100%),
+    repeating-linear-gradient(135deg,
+      transparent 0,
+      transparent 14px,
+      color-mix(in srgb, var(--b1) 10%, transparent) 14px,
+      color-mix(in srgb, var(--b1) 10%, transparent) 16px);
+}
+
+/* corner sheet-metal panel watermark — top-right */
+.pp-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 38%;
+  max-width: 520px;
+  height: 60%;
+  background:
+    repeating-linear-gradient(90deg,
+      transparent 0,
+      transparent 38px,
+      color-mix(in srgb, var(--gold) 6%, transparent) 38px,
+      color-mix(in srgb, var(--gold) 6%, transparent) 40px),
+    linear-gradient(180deg,
+      color-mix(in srgb, var(--gold) 5%, transparent) 0%,
+      transparent 100%);
+  border-left: 1px solid color-mix(in srgb, var(--gold) 18%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--gold) 14%, transparent);
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+/* hi-vis safety stripe — bottom edge */
+.pp-hero::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 14px;
+  background:
+    repeating-linear-gradient(135deg,
+      var(--gold) 0,
+      var(--gold) 18px,
+      color-mix(in srgb, var(--b1) 88%, var(--gold)) 18px,
+      color-mix(in srgb, var(--b1) 88%, var(--gold)) 36px);
+  opacity: 0.78;
+  z-index: 2;
+  box-shadow:
+    0 -2px 14px color-mix(in srgb, var(--gold) 35%, transparent),
+    inset 0 1px 0 color-mix(in srgb, var(--gold) 55%, transparent);
+}
+
+/* ===== Content frame ===== */
+.pp-hero__content {
+  position: relative;
+  z-index: 3;
+  max-width: 1140px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 6rem 1.5rem 5.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+@media (min-width: 768px) {
+  .pp-hero__content { padding: 9rem 2rem 7rem; gap: 1.85rem; }
+}
+
+/* eyebrow stamp — NO.001 industrial tag */
+.pp-hero__content::before {
+  content: 'NO.001 / SECTOR — A';
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.42em;
+  color: var(--gold);
+  padding: 0.5rem 0.9rem;
+  border: 1px solid color-mix(in srgb, var(--gold) 50%, transparent);
+  background: color-mix(in srgb, var(--b1) 55%, transparent);
+  backdrop-filter: blur(8px) saturate(140%);
+  position: relative;
+  text-transform: uppercase;
+}
+
+/* bolt cluster ornament */
+.pp-hero__content::after {
+  content: '';
+  position: absolute;
+  top: 6rem;
+  right: 2rem;
+  width: 96px;
+  height: 96px;
+  background:
+    radial-gradient(circle at 12px 12px, color-mix(in srgb, var(--gold) 70%, transparent) 0 4px, transparent 5px),
+    radial-gradient(circle at 84px 12px, color-mix(in srgb, var(--gold) 70%, transparent) 0 4px, transparent 5px),
+    radial-gradient(circle at 12px 84px, color-mix(in srgb, var(--gold) 70%, transparent) 0 4px, transparent 5px),
+    radial-gradient(circle at 84px 84px, color-mix(in srgb, var(--gold) 70%, transparent) 0 4px, transparent 5px);
+  border: 1px solid color-mix(in srgb, var(--gold) 32%, transparent);
+  background-color: color-mix(in srgb, var(--b1) 22%, transparent);
+  pointer-events: none;
+  opacity: 0.92;
+  display: none;
+}
+@media (min-width: 768px) {
+  .pp-hero__content::after { display: block; }
+}
+
+/* ===== Title — stamped industrial display ===== */
+.pp-hero__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(2.8rem, 9vw, 7.5rem);
+  line-height: 0.92;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--bc);
+  text-shadow:
+    0 2px 0 color-mix(in srgb, var(--gold) 18%, transparent),
+    0 8px 32px rgba(0, 0, 0, 0.55);
+  position: relative;
+  max-width: 14ch;
+}
+.pp-hero__title::before {
+  content: '';
+  position: absolute;
+  left: -1.25rem;
+  top: 8%;
+  bottom: 12%;
+  width: 4px;
+  background: var(--gold);
+  box-shadow: 0 0 18px color-mix(in srgb, var(--gold) 60%, transparent);
+}
+.pp-hero__title::after {
+  content: '— SHF / 1968';
+  display: block;
+  margin-top: 0.55rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.42em;
+  color: color-mix(in srgb, var(--gold) 85%, var(--bc));
+  text-shadow: none;
+}
+
+/* ===== Subhead — manifesto line ===== */
+.pp-hero__subhead {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 1.8vw, 1.55rem);
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--gold);
+  max-width: 52ch;
+  letter-spacing: 0.005em;
+  position: relative;
+  padding-left: 1.25rem;
+  border-left: 1px dashed color-mix(in srgb, var(--gold) 45%, transparent);
+}
+
+/* ===== Subtitle ===== */
+.pp-hero__subtitle {
+  margin: 0;
+  font-size: clamp(0.97rem, 1.1vw, 1.08rem);
+  line-height: 1.78;
+  color: color-mix(in srgb, var(--bc) 88%, var(--bc2));
+  max-width: 60ch;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
+}
+
+/* trailing meta strip after subtitle */
+.pp-hero__content > .pp-hero__subtitle::after {
+  content: '';
+  display: block;
+  margin-top: 1.5rem;
+  width: 86px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold) 0%, transparent 100%);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--gold) 50%, transparent);
+}
+
+/* small screens — soften ornaments */
+@media (max-width: 767px) {
+  .pp-hero::before { width: 60%; height: 36%; }
+  .pp-hero__title::before { left: -0.85rem; width: 3px; }
+}

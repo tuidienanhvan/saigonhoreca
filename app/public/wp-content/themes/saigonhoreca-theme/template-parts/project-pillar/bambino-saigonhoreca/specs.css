@@ -1,0 +1,127 @@
+/**
+ * Project Pillar — bambino-saigonhoreca — specs & gallery shared layout styles
+ * 100% Token compliance, Gold Luxe theme.
+ * @package SaigonHoreca
+ */
+
+.pp--bambino .pp-split-section {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+@media (min-width: 992px) {
+  .pp--bambino .pp-split-section {
+    grid-template-columns: 1.1fr 0.9fr;
+  }
+  .pp--bambino .pp-split-section--reverse {
+    grid-template-columns: 0.9fr 1.1fr;
+  }
+  .pp--bambino .pp-split-section--reverse .pp-split-section__media {
+    order: -1;
+  }
+}
+
+.pp--bambino .pp-split-section__body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* L-bracket ornament cho cột text của Bambino (Cyberpunk Gold) */
+.pp--bambino .pp-split-section__body::before {
+  content: '';
+  position: absolute;
+  top: -1.5rem;
+  left: -1.5rem;
+  width: 48px;
+  height: 48px;
+  border-top: 2px solid var(--gold);
+  border-left: 2px solid var(--gold);
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: -1;
+  transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease;
+}
+
+.pp--bambino .pp-split-section:hover .pp-split-section__body::before {
+  width: 64px;
+  height: 64px;
+  opacity: 1;
+  filter: drop-shadow(0 0 8px var(--gold));
+}
+
+.pp--bambino .pp-split-section--reverse .pp-split-section__body::before {
+  left: auto;
+  right: -1.5rem;
+  border-left: none;
+  border-right: 2px solid var(--gold);
+}
+
+.pp--bambino .pp-split-section__body .pp-text-section__divider {
+  align-self: flex-start;
+  background: var(--gold);
+  box-shadow: 0 0 10px var(--gold);
+  width: 60px;
+  height: 2px;
+  display: block;
+}
+
+.pp--bambino .pp-split-section__body .pp-text-section__title {
+  font-size: clamp(1.75rem, 2.5vw, 2.5rem);
+  line-height: 1.2;
+  color: var(--bc);
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+}
+
+.pp--bambino .pp-split-section__body .pp-text-section__body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.pp--bambino .pp-split-section__body .pp-text-section__body p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--bc2);
+}
+
+/* Cột media chứa ảnh dài/ảnh quầy bar ghép */
+.pp--bambino .pp-split-section__media {
+  position: relative;
+  border-radius: 24px;
+  background: rgba(19, 19, 19, 0.45);
+  border: 1px solid var(--bd);
+  padding: 12px;
+  backdrop-filter: blur(20px);
+  box-shadow: var(--shadow-floating);
+  overflow: hidden;
+  transition: transform 0.4s var(--ease-spring), border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.pp--bambino .pp-split-section__media:hover {
+  transform: translateY(-5px);
+  border-color: color-mix(in srgb, var(--gold) 40%, transparent);
+  box-shadow: 0 20px 40px color-mix(in srgb, var(--gold) 12%, transparent), var(--shadow-floating);
+}
+
+.pp--bambino .pp-split-section__media img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 14px;
+  border: 1px solid var(--border-strong);
+  transition: transform 0.6s var(--ease-spring);
+}
+
+.pp--bambino .pp-split-section__media:hover img {
+  transform: scale(1.02);
+}

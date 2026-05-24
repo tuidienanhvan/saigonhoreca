@@ -1,0 +1,645 @@
+--- before/CorsBridge.php	2026-05-17 15:55:26.847336300 +0700
++++ after/CorsBridge.php	2026-05-17 16:06:39.807645900 +0700
+@@ -30,13 +30,20 @@
+             'http://localhost:8000',
+             'http://127.0.0.1:8000'
+         ];
+-        
++
+         // Add range of potential Vite ports (5173-5180)
+         for ($port = 5173; $port <= 5180; $port++) {
+             $allowed_origins[] = "http://localhost:$port";
+             $allowed_origins[] = "http://127.0.0.1:$port";
+         }
+-        
++
++        /**
++         * Filter the list of origins allowed to call the WP REST API with
++         * credentials. Add your staging/dev domain here without forking the
++         * plugin. Signature: function(array $origins, string $request_origin): array
++         */
++        $allowed_origins = (array) apply_filters('pi_api_cors_allowed_origins', $allowed_origins, $origin);
++
+         if (!in_array($origin, $allowed_origins, true)) {
+             return $value;
+         }
+--- before/IframeRenderer.php	2026-05-17 15:55:26.770377000 +0700
++++ after/IframeRenderer.php	2026-05-17 16:06:39.694783200 +0700
+@@ -5,21 +5,30 @@
+     exit;
+ }
+ 
++/**
++ * Renders the Pi Dashboard iframe inside WP admin.
++ *
++ * Architecture:
++ *   - Dashboard webapp lives at PI_API_BACKEND_URL (e.g. https://app.pi-ecosystem.com).
++ *   - This class registers the admin menu, enqueues a thin bridge script,
++ *     and renders an <iframe> that loads the webapp with a short-lived JWT.
++ *   - JWT lifecycle: Settings::ensureValidJwt() is the single source of
++ *     truth — used both at first render (renderPage) and on session
++ *     refresh (JwtAjax::handle, triggered by postMessage from the iframe).
++ *   - License-inactive sites are redirected to the activation form, not
++ *     rendered with a placeholder JWT.
++ *   - A development-only mock JWT is generated locally (devMockJwt) ONLY
++ *     when WP_DEBUG or PI_API_DEV_MODE is enabled, so a dev can iterate
++ *     on the iframe shell without a live backend or license.
++ */
+ class IframeRenderer {
++    public const MENU_SLUG = 'pi-api-dashboard';
++    public const SCREEN_ID = 'toplevel_page_pi-api-dashboard';
++
+     public static function init(): void {
+         add_action('admin_menu', [self::class, 'registerMenu']);
+         add_action('admin_enqueue_scripts', [self::class, 'enqueueAssets']);
+-        add_action('admin_head', [self::class, 'injectPreconnect']);
+-    }
+-
+-    public static function injectPreconnect(): void {
+-        $screen = get_current_screen();
+-        if ($screen && $screen->id === 'toplevel_page_pi-api-dashboard') {
+-            $origin = self::backendOrigin();
+-            if ($origin !== '') {
+-                echo '<link rel="preconnect" href="' . esc_url($origin) . '" crossorigin>' . "\n";
+-            }
+-        }
++        add_action('admin_head', [self::class, 'injectHeadMeta']);
+     }
+ 
+     public static function registerMenu(): void {
+@@ -27,80 +36,143 @@
+             __('Pi Dashboard', 'pi-api'),
+             __('Pi Dashboard', 'pi-api'),
+             'manage_options',
+-            'pi-api-dashboard',
++            self::MENU_SLUG,
+             [self::class, 'renderPage'],
+             'dashicons-chart-area',
+             55
+         );
+     }
+ 
++    /**
++     * Inject <head> meta only on the Pi Dashboard page:
++     *   1. preconnect to backend for faster TLS handshake
++     *   2. CSP frame-src whitelisting the backend origin
++     */
++    public static function injectHeadMeta(): void {
++        $screen = get_current_screen();
++        if (!$screen || $screen->id !== self::SCREEN_ID) {
++            return;
++        }
++        $origin = self::backendOrigin();
++        if ($origin === '') {
++            return;
++        }
++        printf('<link rel="preconnect" href="%s" crossorigin>' . "\n", esc_url($origin));
++        printf(
++            '<meta http-equiv="Content-Security-Policy" content="frame-src %s;">' . "\n",
++            esc_attr($origin)
++        );
++    }
++
+     public static function enqueueAssets(string $hook): void {
+-        if ($hook !== 'toplevel_page_pi-api-dashboard') {
++        if ($hook !== self::SCREEN_ID) {
+             return;
+         }
+ 
+         wp_enqueue_style('pi-api-iframe', PI_API_URL . 'assets/css/iframe.css', [], PI_API_VERSION);
+         wp_enqueue_script('pi-api-iframe-bridge', PI_API_URL . 'assets/js/iframe-bridge.js', [], PI_API_VERSION, true);
+ 
+-        // The iframe webapp shows its own login form. We only forward
+-        // siteUrl + version so it knows which WP to call.
+         wp_localize_script('pi-api-iframe-bridge', 'PiApiIframe', [
+             'backendOrigin' => self::backendOrigin(),
+-            'nonce'         => wp_create_nonce('pi_api_iframe'),
++            'ajaxUrl'       => admin_url('admin-ajax.php'),
++            'refreshAction' => JwtAjax::ACTION,
++            'nonce'         => wp_create_nonce(JwtAjax::NONCE),
+             'siteUrl'       => home_url(),
+             'wpVersion'     => get_bloginfo('version'),
++            'loaderTimeout' => (int) apply_filters('pi_api_iframe_loader_timeout', 8000),
++            'isDevMode'     => self::isDevMode(),
+         ]);
+     }
+ 
+     public static function renderPage(): void {
+-        $jwt = Settings::getJwt();
+-        if ($jwt === '' || (int) get_option('pi_api_jwt_expires_at', 0) < time() + 60) {
+-            $key = Settings::getLicenseKey();
+-            if ($key !== '') {
+-                $resp = BackendClient::issueJwt($key);
+-                if (!empty($resp['success'])) {
+-                    $data = (array) ($resp['data'] ?? []);
+-                    $jwt = (string) ($data['jwt'] ?? $jwt);
+-                    $expires_in = max(60, (int) ($data['expires_in'] ?? 900));
+-                    update_option('pi_api_jwt', $jwt, false);
+-                    update_option('pi_api_jwt_expires_at', time() + $expires_in, false);
+-                }
+-            }
+-        }
+-        if ($jwt === '') {
+-            // Fallback: tạo mock JWT hợp lệ (3-part base64url) để jwtDecode (JS) parse được.
+-            $header  = rtrim(strtr(base64_encode((string) wp_json_encode(['alg' => 'HS256', 'typ' => 'JWT'])), '+/', '-_'), '=');
+-            $payload = rtrim(strtr(base64_encode((string) wp_json_encode([
+-                'tier'      => 'max',
+-                'features'  => ['*'],
+-                'is_admin'  => true,
+-                'domain'    => 'local.dev',
+-                'tenant_id' => 1,
+-                'exp'       => time() + 86400,
+-            ])), '+/', '-_'), '=');
+-            $jwt = $header . '.' . $payload . '.mock-dev-signature';
++        // License gate: send unactivated sites to the activation form. Dev
++        // mode bypasses so local iteration on the iframe shell still works.
++        if (!Settings::isActive() && !self::isDevMode()) {
++            include PI_API_DIR . 'views/license-page.php';
++            return;
++        }
++
++        $jwt_result     = Settings::ensureValidJwt();
++        $backend_origin = self::backendOrigin();
++
++        // Production: if JWT issuance fails, render the error view. NEVER
++        // fall back to a self-signed mock — that would grant tier=max,
++        // is_admin=true on a live site.
++        if (!empty($jwt_result['error']) && !self::isDevMode()) {
++            $error_code = (string) $jwt_result['error'];
++            include PI_API_DIR . 'views/iframe-error-page.php';
++            return;
++        }
++
++        $jwt        = (string) $jwt_result['jwt'];
++        $expires_in = (int) $jwt_result['expires_in'];
++
++        // Dev fallback: only when WP_DEBUG / PI_API_DEV_MODE is true.
++        if ($jwt === '' && self::isDevMode()) {
++            $jwt        = self::devMockJwt();
++            $expires_in = 86400;
+         }
++
+         $iframe_url = self::buildIframeUrl($jwt);
+ 
+         include PI_API_DIR . 'views/iframe-page.php';
+     }
+ 
++    /**
++     * Public so views and other plugin components can resolve the backend
++     * origin without leaking private state via PHP's `self::` resolution
++     * inside included template files.
++     */
++    public static function backendOrigin(): string {
++        static $cached = null;
++        if ($cached !== null) {
++            return $cached;
++        }
++        $parts  = wp_parse_url(PI_API_BACKEND_URL);
++        $scheme = (string) ($parts['scheme'] ?? 'https');
++        $host   = (string) ($parts['host'] ?? '');
++        $port   = isset($parts['port']) ? ':' . (int) $parts['port'] : '';
++        $cached = $host !== '' ? $scheme . '://' . $host . $port : '';
++        return $cached;
++    }
++
++    /**
++     * Build iframe URL. JWT travels as a query param because cross-origin
++     * iframes cannot receive a body. `siteUrl` is intentionally NOT in the
++     * query — the bridge script forwards it via postMessage after the
++     * webapp signals `pi-api/ready`, keeping it out of access logs and
++     * referrer headers.
++     */
+     private static function buildIframeUrl(string $jwt): string {
+         return add_query_arg([
+-            't'       => $jwt,
+-            'iframe'  => '1',
+-            // Pass parent WP siteUrl synchronously via query param so the
+-            // webapp can route REST calls correctly on first paint, before
+-            // the postMessage handshake completes.
+-            'siteUrl' => rawurlencode(home_url()),
++            't'      => $jwt,
++            'iframe' => '1',
+         ], PI_API_BACKEND_URL);
+     }
+ 
+-    private static function backendOrigin(): string {
+-        $parts = wp_parse_url(PI_API_BACKEND_URL);
+-        $scheme = (string) ($parts['scheme'] ?? 'https');
+-        $host = (string) ($parts['host'] ?? '');
+-        $port = isset($parts['port']) ? ':' . (int) $parts['port'] : '';
+-        return $host !== '' ? $scheme . '://' . $host . $port : '';
++    private static function isDevMode(): bool {
++        return (defined('PI_API_DEV_MODE') && PI_API_DEV_MODE)
++            || (defined('WP_DEBUG') && WP_DEBUG);
++    }
++
++    /**
++     * Generate a local mock JWT for dev-only use. Guarded by isDevMode().
++     * Never invoked in production code paths.
++     */
++    private static function devMockJwt(): string {
++        $header  = self::b64url(['alg' => 'HS256', 'typ' => 'JWT']);
++        $payload = self::b64url([
++            'tier'      => 'max',
++            'features'  => ['*'],
++            'is_admin'  => true,
++            'domain'    => 'local.dev',
++            'tenant_id' => 1,
++            'exp'       => time() + 86400,
++        ]);
++        return $header . '.' . $payload . '.dev-mock-signature';
++    }
++
++    private static function b64url(array $data): string {
++        return rtrim(strtr(base64_encode((string) wp_json_encode($data)), '+/', '-_'), '=');
+     }
+ }
+--- before/Settings.php	2026-05-17 15:55:26.820708400 +0700
++++ after/Settings.php	2026-05-17 16:06:39.772039200 +0700
+@@ -50,6 +50,53 @@
+         return (string) get_option('pi_api_jwt', '');
+     }
+ 
++    /**
++     * Return a usable JWT, refreshing from the backend if it's missing or
++     * within 60s of expiry. Single source of truth used by IframeRenderer
++     * (page render) and JwtAjax (postMessage refresh) — keeps both paths
++     * in sync.
++     *
++     * @return array{jwt: string, expires_in: int, error: ?string}
++     *   error codes: no_license | jwt_empty | jwt_issue_failed | <backend msg>
++     */
++    public static function ensureValidJwt(): array {
++        $jwt = self::getJwt();
++        $expires_at = (int) get_option('pi_api_jwt_expires_at', 0);
++        $now = time();
++
++        // Reuse cached JWT when it still has > 60s of life
++        if ($jwt !== '' && $expires_at > $now + 60) {
++            return ['jwt' => $jwt, 'expires_in' => $expires_at - $now, 'error' => null];
++        }
++
++        $key = self::getLicenseKey();
++        if ($key === '') {
++            return ['jwt' => '', 'expires_in' => 0, 'error' => 'no_license'];
++        }
++
++        $resp = BackendClient::issueJwt($key);
++        if (empty($resp['success'])) {
++            return [
++                'jwt'        => '',
++                'expires_in' => 0,
++                'error'      => (string) ($resp['error'] ?? 'jwt_issue_failed'),
++            ];
++        }
++
++        $data = (array) ($resp['data'] ?? []);
++        $jwt = (string) ($data['jwt'] ?? '');
++        $expires_in = max(60, (int) ($data['expires_in'] ?? 900));
++
++        if ($jwt === '') {
++            return ['jwt' => '', 'expires_in' => 0, 'error' => 'jwt_empty'];
++        }
++
++        update_option('pi_api_jwt', $jwt, false);
++        update_option('pi_api_jwt_expires_at', $now + $expires_in, false);
++
++        return ['jwt' => $jwt, 'expires_in' => $expires_in, 'error' => null];
++    }
++
+     public static function getTokenQuota(): int {
+         $map = [
+             'free'       => 50000,
+--- before/eslint.config.js	2026-05-17 15:55:27.070890400 +0700
++++ after/eslint.config.js	2026-05-17 16:06:40.081957600 +0700
+@@ -5,7 +5,7 @@
+ import { defineConfig, globalIgnores } from 'eslint/config'
+ 
+ export default defineConfig([
+-  globalIgnores(['dist', '../plugins/pi-dashboard/assets/app/**', 'node_modules', 'e2e']),
++  globalIgnores(['dist', 'node_modules', 'e2e']),
+ 
+   // App source: browser globals, React/Hooks rules.
+   {
+--- before/iframe-bridge.js	2026-05-17 15:55:26.956278400 +0700
++++ after/iframe-bridge.js	2026-05-17 16:06:39.945867600 +0700
+@@ -1,24 +1,61 @@
++/**
++ * pi-api iframe bridge — proxies postMessage between the parent WP admin
++ * page and the embedded dashboard webapp.
++ *
++ * Config (window.PiApiIframe, set by wp_localize_script):
++ *   backendOrigin  string  Expected origin of the iframe (PI_API_BACKEND_URL host)
++ *   ajaxUrl        string  admin-ajax.php URL
++ *   refreshAction  string  Ajax `action` for JWT refresh (pi_api_refresh_jwt)
++ *   nonce          string  WP nonce for the refresh action
++ *   siteUrl        string  Parent site URL forwarded to the webapp
++ *   wpVersion      string  WP version for telemetry
++ *   loaderTimeout  number  Milliseconds before showing the connection-error UI
++ *   isDevMode      bool    Surfaced to the webapp via wp-context
++ */
+ (function () {
++    const cfg = window.PiApiIframe || {};
+     const iframe = document.getElementById('pi-api-iframe');
+-    if (!iframe || !window.PiApiIframe) {
++    if (!iframe || !cfg.backendOrigin) {
+         return;
+     }
+ 
+-    const expectedOrigin = window.PiApiIframe.backendOrigin || '';
+-    const ajaxNonce = window.PiApiIframe.nonce || '';
++    const expectedOrigin = cfg.backendOrigin;
++    const ajaxUrl = cfg.ajaxUrl || (typeof window.ajaxurl === 'string' ? window.ajaxurl : '');
++    const refreshAction = cfg.refreshAction || 'pi_api_refresh_jwt';
++    const ajaxNonce = cfg.nonce || '';
++    const loaderTimeoutMs = Number(cfg.loaderTimeout) > 0 ? Number(cfg.loaderTimeout) : 8000;
++
+     const loader = document.getElementById('pi-api-loader');
+     const errorContainer = document.getElementById('pi-api-error');
+ 
+-    // 8-second timeout for the initial handshake
+-    const loadTimeout = setTimeout(() => {
++    // Show the error UI if the webapp hasn't signaled `pi-api/ready` within
++    // the configured timeout. Cancelled once the handshake completes.
++    const loadTimeout = setTimeout(function () {
+         if (loader && !loader.classList.contains('is-hidden')) {
+             loader.style.display = 'none';
+             if (errorContainer) {
+                 errorContainer.style.display = 'flex';
+-                console.error('[pi-api] Connection timeout — Dashboard failed to respond.');
+             }
++            console.error('[pi-api] Dashboard connection timeout (' + loaderTimeoutMs + 'ms)');
+         }
+-    }, 8000);
++    }, loaderTimeoutMs);
++
++    function postToFrame(payload) {
++        if (iframe.contentWindow) {
++            iframe.contentWindow.postMessage(payload, expectedOrigin);
++        }
++    }
++
++    // Use the URL parser so attacker-controlled prefixes like
++    // `https://evil.example/?fake=https://wp.local/` can't trick indexOf.
++    function isSameOriginUrl(rawUrl) {
++        try {
++            const parsed = new URL(rawUrl, window.location.origin);
++            return parsed.origin === window.location.origin;
++        } catch (e) {
++            return false;
++        }
++    }
+ 
+     window.addEventListener('message', function (event) {
+         if (!expectedOrigin || event.origin !== expectedOrigin) {
+@@ -32,34 +69,53 @@
+                 if (loader) {
+                     loader.classList.add('is-hidden');
+                 }
+-                iframe.contentWindow.postMessage({
++                postToFrame({
+                     type: 'pi-api/wp-context',
+-                    siteUrl: window.PiApiIframe.siteUrl || window.location.origin,
+-                    wpVersion: window.PiApiIframe.wpVersion || '',
+-                }, expectedOrigin);
++                    siteUrl: cfg.siteUrl || window.location.origin,
++                    wpVersion: cfg.wpVersion || '',
++                    isDevMode: !!cfg.isDevMode,
++                });
+                 break;
+ 
+             case 'pi-api/navigate':
+-                if (typeof data.url === 'string' && data.url.indexOf(window.location.origin) === 0) {
+-                    window.location.href = data.url;
++                if (typeof data.url === 'string' && isSameOriginUrl(data.url)) {
++                    window.location.href = new URL(data.url, window.location.origin).href;
+                 }
+                 break;
+ 
+             case 'pi-api/refresh-jwt':
+-                fetch(window.ajaxurl + '?action=pi_api_refresh_jwt&_wpnonce=' + encodeURIComponent(ajaxNonce), {
++                if (!ajaxUrl || !ajaxNonce) {
++                    postToFrame({ type: 'pi-api/jwt-refresh-failed', error: 'no-ajax-config' });
++                    break;
++                }
++                fetch(ajaxUrl + '?action=' + encodeURIComponent(refreshAction) +
++                      '&_wpnonce=' + encodeURIComponent(ajaxNonce), {
+                     credentials: 'same-origin',
++                    headers: { 'Accept': 'application/json' },
+                 })
+-                    .then(function (response) { return response.json(); })
++                    .then(function (response) {
++                        if (!response.ok) {
++                            throw new Error('HTTP ' + response.status);
++                        }
++                        return response.json();
++                    })
+                     .then(function (payload) {
+-                        const body = payload && payload.data ? payload.data : payload;
+-                        iframe.contentWindow.postMessage({
++                        // wp_send_json_success wraps as { success: true, data: {...} }
++                        const body = (payload && payload.success && payload.data) || {};
++                        if (typeof body.jwt !== 'string' || body.jwt === '' || !(body.expires_in > 0)) {
++                            postToFrame({ type: 'pi-api/jwt-refresh-failed', error: 'invalid-response' });
++                            return;
++                        }
++                        postToFrame({
+                             type: 'pi-api/jwt-refreshed',
+-                            jwt: body.jwt || '',
+-                            expires_in: body.expires_in || 900,
+-                        }, expectedOrigin);
++                            jwt: body.jwt,
++                            expires_in: body.expires_in,
++                        });
+                     })
+                     .catch(function (error) {
+-                        console.error('[pi-api] jwt refresh failed:', error);
++                        const msg = (error && error.message) ? error.message : String(error);
++                        console.error('[pi-api] jwt refresh failed:', msg);
++                        postToFrame({ type: 'pi-api/jwt-refresh-failed', error: msg });
+                     });
+                 break;
+ 
+@@ -68,9 +124,9 @@
+                 break;
+ 
+             case 'pi-api/session-expired':
+-                // Không logout WordPress — chỉ reload trang admin để iframe
+-                // nhận JWT mới từ IframeRenderer::renderPage().
+-                console.warn('[pi-api] Session expired — reloading admin page for fresh JWT.');
++                // Reload the admin page so IframeRenderer mints a fresh JWT
++                // via Settings::ensureValidJwt(). Don't log the user out.
++                console.warn('[pi-api] Session expired — reloading admin page');
+                 window.location.reload();
+                 break;
+         }
+--- before/iframe-page.php	2026-05-17 15:55:26.899021300 +0700
++++ after/iframe-page.php	2026-05-17 16:06:39.861221300 +0700
+@@ -2,12 +2,17 @@
+ if (!defined('ABSPATH')) {
+     exit;
+ }
++
++// Required scope (set by IframeRenderer::renderPage):
++//   $iframe_url     string  Full src URL incl. `?t=<jwt>&iframe=1`
++//   $backend_origin string  Scheme+host of the backend (logo, etc.)
++//   $expires_in     int     Seconds until JWT expiry (hint for the bridge)
+ ?>
+-<div class="pi-api-iframe-wrap" data-expires-in="<?php echo esc_attr((string) $expires_in); ?>">
++<div class="pi-api-iframe-wrap" data-expires-in="<?php echo esc_attr((string) ($expires_in ?? 0)); ?>">
+     <div id="pi-api-loader" class="pi-api-loader">
+         <div class="pi-api-loader-content">
+             <div class="pi-api-loader-brand">
+-                <img src="<?php echo esc_url(self::backendOrigin() . '/logo-optimized.svg'); ?>" alt="Pi Logo" class="pi-api-loader-logo">
++                <img src="<?php echo esc_url($backend_origin . '/logo-optimized.svg'); ?>" alt="Pi Logo" class="pi-api-loader-logo">
+                 <div class="pi-api-spinner"></div>
+             </div>
+             <div class="pi-api-loader-text">
+@@ -18,13 +23,28 @@
+     </div>
+     <div id="pi-api-error" class="pi-api-error" style="display: none;">
+         <div class="pi-api-error-content">
+-            <img src="<?php echo esc_url(self::backendOrigin() . '/logo-optimized.svg'); ?>" alt="Pi Logo" class="pi-api-error-logo">
++            <img src="<?php echo esc_url($backend_origin . '/logo-optimized.svg'); ?>" alt="Pi Logo" class="pi-api-error-logo">
+             <span class="pi-api-error-icon">⚠️</span>
+             <span class="pi-api-error-title">Không thể kết nối với Dashboard</span>
+             <span class="pi-api-error-desc">Vui lòng kiểm tra kết nối mạng hoặc thử lại sau.</span>
+             <button type="button" class="pi-api-retry-btn" onclick="window.location.reload();">Thử lại ngay</button>
+         </div>
+     </div>
++    <?php
++    /*
++     * sandbox notes:
++     *   `allow-scripts allow-same-origin` is normally a sandbox-escape combo,
++     *   BUT this iframe is cross-origin (PI_API_BACKEND_URL ≠ admin origin).
++     *   The browser enforces SOP, so the iframe cannot read the parent DOM
++     *   even with same-origin granted — same-origin is needed so the embedded
++     *   webapp can use its own localStorage / cookies on its origin.
++     *   allow-forms/popups/modals/downloads are required by the dashboard UI.
++     *
++     * referrerpolicy="no-referrer":
++     *   Prevents the URL (which carries the JWT in `?t=`) from leaking into
++     *   the Referer header of any sub-resource the webapp fetches.
++     */
++    ?>
+     <iframe
+         id="pi-api-iframe"
+         src="<?php echo esc_url($iframe_url); ?>"
+@@ -32,6 +52,6 @@
+         sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox allow-modals allow-downloads"
+         allow="clipboard-read; clipboard-write"
+         loading="lazy"
+-        referrerpolicy="strict-origin-when-cross-origin"
++        referrerpolicy="no-referrer"
+     ></iframe>
+ </div>
+--- before/iframe.css	2026-05-17 15:55:26.926140100 +0700
++++ after/iframe.css	2026-05-17 16:06:39.911849200 +0700
+@@ -1,3 +1,20 @@
++/*
++ * WP admin sidebar widths drive the iframe offset. Custom properties let
++ * a child theme / extension override via inline CSS if WP changes its
++ * sidebar layout — without forking this stylesheet.
++ *   --pi-sidebar-offset:         expanded sidebar width  (default 160px)
++ *   --pi-sidebar-offset-folded:  folded sidebar width    (default 36px)
++ *   --pi-sidebar-offset-mobile:  mobile (≤782px) offset  (default 0)
++ *   --pi-admin-bar-height:       admin bar height        (default 32px / 46px mobile)
++ */
++:root {
++    --pi-sidebar-offset: 160px;
++    --pi-sidebar-offset-folded: 36px;
++    --pi-sidebar-offset-mobile: 0px;
++    --pi-admin-bar-height: 32px;
++    --pi-admin-bar-height-mobile: 46px;
++}
++
+ #wpcontent {
+     padding-left: 0 !important;
+ }
+@@ -13,14 +30,14 @@
+ 
+ .pi-api-iframe-wrap {
+     position: fixed;
+-    inset: 32px 0 0 160px;
++    inset: var(--pi-admin-bar-height) 0 0 var(--pi-sidebar-offset);
+     z-index: 1;
+     background: #090b0f;
+     transition: left 0.15s ease-in-out; /* Match WP sidebar transition */
+ }
+ 
+ .folded .pi-api-iframe-wrap {
+-    left: 36px;
++    left: var(--pi-sidebar-offset-folded);
+ }
+ 
+ .pi-api-iframe-wrap iframe {
+@@ -33,13 +50,13 @@
+ 
+ @media (max-width: 960px) {
+     .pi-api-iframe-wrap {
+-        left: 36px;
++        left: var(--pi-sidebar-offset-folded);
+     }
+ }
+ 
+ @media (max-width: 782px) {
+     .pi-api-iframe-wrap {
+-        inset: 46px 0 0 0;
++        inset: var(--pi-admin-bar-height-mobile) 0 0 var(--pi-sidebar-offset-mobile);
+     }
+ }
+ 
+--- before/package.json	2026-05-17 15:55:27.039169200 +0700
++++ after/package.json	2026-05-17 16:06:40.056107300 +0700
+@@ -5,7 +5,7 @@
+   "type": "module",
+   "scripts": {
+     "dev": "vite",
+-    "build": "vite build && mkdir -p dist && cp -r ../plugins/pi-dashboard/assets/app/* dist/",
++    "build": "vite build",
+     "lint": "eslint .",
+     "preview": "vite preview",
+     "test": "vitest",
+--- before/pi-api.php	2026-05-17 15:55:26.984353500 +0700
++++ after/pi-api.php	2026-05-17 16:06:39.977035500 +0700
+@@ -52,6 +52,7 @@
+     PiApi\Settings::init();
+     PiApi\Heartbeat::init();
+     PiApi\IframeRenderer::init();
++    PiApi\JwtAjax::init();
+     PiApi\AuthManager::init();
+     PiApi\ApiBootstrap::init();
+     // CORS so the iframe (different origin) can call WP REST with the
+--- before/vite.config.js	2026-05-17 15:55:27.009904400 +0700
++++ after/vite.config.js	2026-05-17 16:06:40.028638800 +0700
+@@ -15,7 +15,7 @@
+     apply: 'build',
+     closeBundle() {
+       try {
+-        const outDir = path.resolve(this?.environment?.config?.outDir || '../plugins/pi-dashboard/assets/app')
++        const outDir = path.resolve(this?.environment?.config?.outDir || 'dist')
+         const assetsDir = path.join(outDir, 'assets')
+         const dir = fs.existsSync(assetsDir) ? assetsDir : outDir
+         if (!fs.existsSync(dir)) return
+@@ -49,9 +49,9 @@
+ export default defineConfig({
+   /**
+    * Relative base — built `index.html` references `./assets/*.js` instead of
+-   * `/assets/*.js`. Required because the webapp ships inside the WordPress
+-   * plugin and is served from `…/wp-content/plugins/pi-dashboard/assets/app/`,
+-   * not the site root. Absolute paths would break asset loading in production.
++   * `/assets/*.js`. The dashboard is served from `app.pi-ecosystem.com` (cloud)
++   * and embedded into WordPress admin via `plugins/pi-api/` iframe. Relative
++   * paths let the same build artifact work regardless of mount path.
+    */
+   base: './',
+   plugins: [
+@@ -77,7 +77,7 @@
+     },
+   },
+   build: {
+-    outDir: '../plugins/pi-dashboard/assets/app',
++    outDir: 'dist',
+     emptyOutDir: true,
+     manifest: true,
+     // Bump warning threshold to suppress runtime warning emit (saves a few ms).

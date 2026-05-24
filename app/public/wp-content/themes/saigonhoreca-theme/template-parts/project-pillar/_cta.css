@@ -1,0 +1,176 @@
+/**
+ * Shared partial — _cta.php (CTA trio: phone / address / email).
+ *
+ * Dark luxe card design: corner ornament, icon ring, gold accent line,
+ * lift + glow on hover. 100% tokens, no hardcode.
+ *
+ * @package SaigonHoreca
+ */
+
+.pp-cta {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+@media (min-width: 768px) {
+  .pp-cta {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+.pp-cta__card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 2.25rem 1.75rem 2rem;
+  background: linear-gradient(
+    180deg,
+    var(--b2) 0%,
+    var(--b1) 100%
+  );
+  border: 1px solid var(--bd);
+  border-radius: var(--radius-md);
+  text-align: center;
+  min-height: 280px;
+  overflow: hidden;
+  transition: border-color var(--duration-normal) var(--ease-spring),
+              transform var(--duration-normal) var(--ease-spring),
+              box-shadow var(--duration-normal) var(--ease-spring);
+}
+.pp-cta__card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 50% 0%,
+    color-mix(in srgb, var(--gold) 8%, transparent) 0%,
+    transparent 50%
+  );
+  opacity: 0;
+  transition: opacity var(--duration-normal) var(--ease-spring);
+  pointer-events: none;
+}
+.pp-cta__card:hover {
+  border-color: color-mix(in srgb, var(--gold) 45%, transparent);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-main);
+}
+.pp-cta__card:hover::before {
+  opacity: 1;
+}
+
+/* L-corner ornament góc trên trái — gold accent, hiện khi hover */
+.pp-cta__card::after {
+  content: '';
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  width: 18px;
+  height: 18px;
+  border-top: 1px solid var(--gold);
+  border-left: 1px solid var(--gold);
+  border-top-left-radius: 2px;
+  opacity: 0;
+  transition: opacity var(--duration-normal) var(--ease-spring),
+              width var(--duration-normal) var(--ease-spring),
+              height var(--duration-normal) var(--ease-spring);
+  pointer-events: none;
+}
+.pp-cta__card:hover::after {
+  opacity: 1;
+  width: 28px;
+  height: 28px;
+}
+
+.pp-cta__icon {
+  position: relative;
+  width: 4rem;
+  height: 4rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  background: color-mix(in srgb, var(--gold) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--gold) 35%, transparent);
+  color: var(--gold);
+  transition: background var(--duration-normal) var(--ease-spring),
+              border-color var(--duration-normal) var(--ease-spring),
+              transform var(--duration-normal) var(--ease-spring);
+}
+.pp-cta__icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.pp-cta__card:hover .pp-cta__icon {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--pc);
+  transform: scale(1.06);
+}
+
+/* Accent gold line giữa icon và title */
+.pp-cta__icon + .pp-cta__title::before {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 2px;
+  margin: 0 auto 0.875rem;
+  background: var(--gold);
+  border-radius: var(--radius-full);
+  transition: width var(--duration-normal) var(--ease-spring);
+}
+.pp-cta__card:hover .pp-cta__title::before {
+  width: 44px;
+}
+
+.pp-cta__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--bc);
+  letter-spacing: 0.005em;
+}
+
+.pp-cta__desc {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--bc2);
+  max-width: 22ch;
+}
+
+.pp-cta__btn {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6875rem 1.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--pc);
+  background: var(--gold);
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  transition: background var(--duration-normal) var(--ease-spring),
+              transform var(--duration-normal) var(--ease-spring);
+}
+.pp-cta__btn::after {
+  content: '→';
+  font-size: 1rem;
+  transition: transform var(--duration-normal) var(--ease-spring);
+}
+.pp-cta__btn:hover {
+  background: var(--gold-dim);
+  transform: translateY(-1px);
+}
+.pp-cta__btn:hover::after {
+  transform: translateX(3px);
+}

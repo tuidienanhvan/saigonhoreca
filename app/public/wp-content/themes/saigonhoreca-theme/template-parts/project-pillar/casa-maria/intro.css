@@ -1,0 +1,349 @@
+/**
+ * casa-maria — intro slot. OWNS shared base styles for the suffix:
+ *   .pp__section / .pp__section--alt / .pp__container
+ *   .pp-text-cma + __divider, __title, __body
+ *   .pp-gallery-cma + cols modifiers + __item
+ * Spanish Hacienda: warm terracotta+gold palette, wrought-iron filigree dividers,
+ * arched portal gallery tiles (top 160px radius), bull-emblem L-bracket corners
+ * on text body, hacienda 'M' watermark, talavera dot ambient pattern, drop-cap
+ * first letter, multi-layer sunset glows, staggered tile entry animations.
+ * @package SaigonHoreca
+ */
+
+/* ===================================================================
+   Shared section base
+   =================================================================== */
+.pp__section {
+  position: relative;
+  padding: 5.5rem 1.25rem;
+  background: var(--b1);
+  overflow: hidden;
+  isolation: isolate;
+}
+@media (min-width: 768px) {
+  .pp__section { padding: 8rem 2rem; }
+}
+.pp__section--alt { background: var(--b2); }
+
+.pp__container {
+  max-width: 1180px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* Hacienda ambient layer 1 — sunset terracotta glow top-right */
+.pp__section--alt::before {
+  content: '';
+  position: absolute;
+  top: 14%;
+  right: -10%;
+  width: 580px;
+  height: 580px;
+  background: radial-gradient(circle,
+    color-mix(in srgb, var(--gold) 8%, transparent) 0%,
+    transparent 65%);
+  filter: blur(75px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Hacienda ambient layer 2 — warm haze bottom-left */
+.pp__section--alt::after {
+  content: '';
+  position: absolute;
+  bottom: -12%;
+  left: -8%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle,
+    color-mix(in srgb, var(--gold) 5%, transparent) 0%,
+    transparent 70%);
+  filter: blur(82px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Talavera-tile dot ambient pattern in alt sections */
+.pp__section--alt .pp__container::before {
+  content: '';
+  position: absolute;
+  top: -2rem;
+  left: -2rem;
+  right: -2rem;
+  bottom: -2rem;
+  pointer-events: none;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--gold) 9%, transparent) 0 1.5px, transparent 2px) 0 0 / 56px 56px,
+    radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--gold) 5%, transparent) 0 1px, transparent 1.5px) 28px 28px / 56px 56px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 0%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 0%, transparent 80%);
+  opacity: 0.7;
+}
+
+/* ===================================================================
+   pp-text-cma
+   =================================================================== */
+.pp-text-cma {
+  max-width: 880px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  position: relative;
+}
+.pp-text-cma--center { align-items: center; text-align: center; }
+
+/* Eyebrow on centered intro */
+.pp-text-cma--center::before {
+  content: '· LA HISTORIA ·';
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: var(--gold);
+  padding: 0.45rem 1.2rem;
+  margin-bottom: 0.4rem;
+  border: 1px solid color-mix(in srgb, var(--gold) 32%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--b1) 30%, transparent);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--gold) 12%, transparent);
+}
+
+/* Wrought-iron filigree divider — line with talavera dots + center diamond */
+.pp-text-cma__divider {
+  display: block;
+  width: 96px;
+  height: 14px;
+  position: relative;
+  background:
+    radial-gradient(circle at 50% 50%, var(--gold) 0 3px, transparent 4px) 0 50% / 10px 10px no-repeat,
+    radial-gradient(circle at 50% 50%, var(--gold) 0 3px, transparent 4px) 100% 50% / 10px 10px no-repeat,
+    linear-gradient(90deg,
+      transparent 0,
+      color-mix(in srgb, var(--gold) 60%, transparent) 18%,
+      color-mix(in srgb, var(--gold) 60%, transparent) 82%,
+      transparent 100%) 50% 50% / 100% 1px no-repeat;
+  filter: drop-shadow(0 0 6px color-mix(in srgb, var(--gold) 40%, transparent));
+}
+.pp-text-cma__divider::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 8px; height: 8px;
+  transform: translate(-50%, -50%) rotate(45deg);
+  background: var(--gold);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--gold) 60%, transparent);
+}
+.pp-text-cma__divider--center { margin-left: auto; margin-right: auto; }
+
+/* Title */
+.pp-text-cma__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.95rem, 3.8vw, 3rem);
+  font-weight: 700;
+  line-height: 1.18;
+  letter-spacing: -0.012em;
+  color: var(--bc);
+  position: relative;
+}
+.pp-text-cma__title strong { color: var(--gold); font-weight: 700; }
+.pp-text-cma--center .pp-text-cma__title { margin: 0 auto; max-width: 760px; }
+
+/* Hacienda 'M' watermark behind centered title */
+.pp-text-cma--center > .pp-text-cma__title::before {
+  content: 'M';
+  position: absolute;
+  top: -4rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-display);
+  font-size: 13rem;
+  font-weight: 700;
+  line-height: 1;
+  color: color-mix(in srgb, var(--gold) 4%, transparent);
+  pointer-events: none;
+  z-index: -1;
+  letter-spacing: -0.06em;
+}
+
+/* Body */
+.pp-text-cma__body {
+  font-size: clamp(0.98rem, 1.1vw, 1.06rem);
+  line-height: 1.9;
+  color: var(--bc2);
+  max-width: 780px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  position: relative;
+  padding: 1.5rem 0;
+}
+.pp-text-cma--center .pp-text-cma__body { margin: 0 auto; }
+.pp-text-cma__body p { margin: 0; text-align: left; }
+.pp-text-cma--center .pp-text-cma__body p { text-align: center; }
+.pp-text-cma__body a {
+  color: var(--gold);
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--gold) 45%, transparent);
+  transition: border-color 0.25s var(--ease-spring), color 0.25s;
+}
+.pp-text-cma__body a:hover {
+  border-color: var(--gold);
+  color: color-mix(in srgb, var(--gold) 80%, var(--bc));
+}
+.pp-text-cma__body strong { color: var(--gold); font-weight: 700; }
+.pp-text-cma__body em { color: color-mix(in srgb, var(--bc) 92%, var(--gold)); font-style: italic; }
+
+/* Drop-cap first-letter on first paragraph (Spanish manuscript flavor) */
+.pp-text-cma:not(.pp-text-cma--center) .pp-text-cma__body > p:first-of-type::first-letter {
+  font-family: var(--font-display);
+  font-size: 3.2em;
+  font-weight: 700;
+  color: var(--gold);
+  float: left;
+  line-height: 0.88;
+  margin: 0.12em 0.55rem 0 0;
+  padding: 0.05em 0.1em 0 0;
+  text-shadow: 0 0 20px color-mix(in srgb, var(--gold) 35%, transparent);
+}
+
+/* Bull-emblem L-bracket corners around body */
+.pp-text-cma__body::before,
+.pp-text-cma__body::after {
+  content: '';
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  pointer-events: none;
+  opacity: 0.55;
+  border: 1px solid color-mix(in srgb, var(--gold) 48%, transparent);
+}
+.pp-text-cma__body::before {
+  top: 0;
+  left: -1.75rem;
+  border-right: none;
+  border-bottom: none;
+}
+.pp-text-cma__body::after {
+  bottom: 0;
+  right: -1.75rem;
+  border-left: none;
+  border-top: none;
+}
+.pp-text-cma--center .pp-text-cma__body::before { left: 50%; transform: translateX(calc(-50% - 260px)); }
+.pp-text-cma--center .pp-text-cma__body::after  { right: 50%; transform: translateX(calc(50% + 260px)); }
+@media (max-width: 767px) {
+  .pp-text-cma__body::before,
+  .pp-text-cma__body::after { display: none; }
+}
+
+/* ===================================================================
+   pp-gallery-cma — arched hacienda tiles
+   =================================================================== */
+.pp-gallery-cma {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 3rem;
+  position: relative;
+}
+@media (min-width: 768px) {
+  .pp-gallery-cma { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+  .pp-gallery-cma--cols-3 { grid-template-columns: repeat(3, 1fr); }
+  .pp-gallery-cma--cols-4 { grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
+  .pp-gallery-cma--cols-1 { grid-template-columns: 1fr; }
+}
+
+.pp-gallery-cma__item {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: 160px 160px var(--radius-md) var(--radius-md);
+  background: var(--b3);
+  border: 1px solid color-mix(in srgb, var(--gold) 18%, transparent);
+  transition:
+    border-color 0.45s var(--ease-spring),
+    transform 0.5s var(--ease-spring),
+    box-shadow 0.5s var(--ease-spring);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  isolation: isolate;
+}
+.pp-gallery-cma--cols-4 .pp-gallery-cma__item { aspect-ratio: 3 / 4; border-radius: 110px 110px var(--radius-md) var(--radius-md); }
+.pp-gallery-cma--cols-3 .pp-gallery-cma__item { aspect-ratio: 4 / 5; }
+.pp-gallery-cma--cols-1 .pp-gallery-cma__item { aspect-ratio: 16 / 9; border-radius: 220px 220px var(--radius-md) var(--radius-md); }
+
+.pp-gallery-cma__item:hover {
+  border-color: color-mix(in srgb, var(--gold) 60%, transparent);
+  transform: translateY(-6px);
+  box-shadow:
+    0 22px 48px rgba(0, 0, 0, 0.5),
+    0 0 0 1px color-mix(in srgb, var(--gold) 35%, transparent);
+}
+
+.pp-gallery-cma__item img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(1.08) contrast(1.03);
+  transition: transform 0.9s var(--ease-spring), filter 0.6s;
+}
+.pp-gallery-cma__item:hover img {
+  transform: scale(1.07);
+  filter: saturate(1.18) contrast(1.06);
+}
+
+/* Warm sunset gradient overlay */
+.pp-gallery-cma__item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(180deg,
+    transparent 42%,
+    color-mix(in srgb, var(--b1) 35%, transparent) 78%,
+    color-mix(in srgb, var(--b1) 70%, transparent) 100%);
+  opacity: 0.85;
+  transition: opacity 0.5s;
+}
+.pp-gallery-cma__item:hover::before { opacity: 0.55; }
+
+/* Gold filigree arch outline traces on hover */
+.pp-gallery-cma__item::after {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  right: 8px;
+  bottom: 8px;
+  border-radius: inherit;
+  border: 1px solid color-mix(in srgb, var(--gold) 0%, transparent);
+  pointer-events: none;
+  z-index: 2;
+  transition: border-color 0.5s var(--ease-spring);
+}
+.pp-gallery-cma__item:hover::after {
+  border-color: color-mix(in srgb, var(--gold) 38%, transparent);
+}
+
+/* Staggered tile entry */
+@keyframes pp-cma-tile-rise {
+  from { opacity: 0; transform: translateY(24px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0)    scale(1); }
+}
+.pp-gallery-cma__item { animation: pp-cma-tile-rise 0.7s var(--ease-spring) backwards; }
+.pp-gallery-cma__item:nth-child(1) { animation-delay: 0.05s; }
+.pp-gallery-cma__item:nth-child(2) { animation-delay: 0.15s; }
+.pp-gallery-cma__item:nth-child(3) { animation-delay: 0.25s; }
+.pp-gallery-cma__item:nth-child(4) { animation-delay: 0.35s; }
+.pp-gallery-cma__item:nth-child(5) { animation-delay: 0.45s; }
+.pp-gallery-cma__item:nth-child(6) { animation-delay: 0.55s; }

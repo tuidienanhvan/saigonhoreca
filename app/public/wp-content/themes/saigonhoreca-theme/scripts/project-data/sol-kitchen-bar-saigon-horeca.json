@@ -1,0 +1,315 @@
+{
+  "slug": "sol-kitchen-bar-saigon-horeca",
+  "title": "SOL KITCHEN & BAR",
+  "meta_description": "SOL Kitchen & Bar được liệt kê trong danh sách 2023 MICHELIN Guide Vietnam danh giá, với hương vị đa dạng hòa quyện với sự tinh tế của đầu bếp Adrian Chong Yen.",
+  "sections_count": 5,
+  "sections": [
+    {
+      "data_id": "720a2419",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-720a2419",
+        "elementor-section-height-full",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-items-middle"
+      ],
+      "has_video_bg": true,
+      "video_url": "https://youtu.be/145Vplgi3TA",
+      "background_overlay": true,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-6737f49d",
+          "col_size": 16,
+          "widgets": []
+        },
+        {
+          "col_class": "elementor-column elementor-col-66 elementor-top-column elementor-element elementor-element-1844297b",
+          "col_size": 66,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h1",
+              "text": "SOL KITCHEN & BAR"
+            },
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "2023 MICHELIN Guide Vietnam"
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Sol Kitchen & Bar không chỉ là một nhà hàng mà còn là nơi trải nghiệm ẩm thực một cách tinh tế được gói gọn trong bầu không khí đầy màu sắc và ngập tràn cảm hứng Mỹ Latin."
+              ]
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-25d69c93",
+          "col_size": 16,
+          "widgets": []
+        }
+      ]
+    },
+    {
+      "data_id": "40eb4182",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-40eb4182",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-7e224e93",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "SOL KITCHEN & BAR"
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "2023 MICHELIN Guide Vietnam"
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Tự hào được liệt kê trong 2023 MICHELIN Guide Vietnam danh giá, SOL Kitchen & Bar là nơi thể hiện sự đam mê với hương vị đa dạng hòa quyện với sự tinh tế của đầu bếp Adrian Chong Yen, một nghệ sĩ ẩm thực đến từ Malaysia, với quãng thời gian nghề bếp đầy ấn tượng trong 12 năm tại Singapore."
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Điều tạo nên sự đặc biệt cho Sol Kitchen & Bar chính là không gian trang trí lôi cuốn theo phong cách hacienda, một không gian sang trọng kết hợp hoàn hảo với sự đa dạng và hấp dẫn của các món ăn Latin American trên thực đơn à la carte. Hãy tưởng tượng bạn có thể thưởng thức những chiếc bánh empanadas thơm ngon từ Mexico, thưởng thức món scallop ceviche đậm đà từ Peru, hoặc thưởng thức chiếc salad burrata đầy tinh tế từ Italy – tất cả gói gọn tại nhà hàng độc đáo này."
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Nhà hàng đã nhận được nhiều lời khen ngợi về bí quyế chế biến thịt đỏ, đem đến một sự lựa chọn hấp dẫn bao gồm thịt bò ướp kèm sốt chimichurri, sườn nướng BBQ được phủ lên với nước mắm mang đậm hương vị riêng, và gà nướng nguyên con thơm ngon được phục vụ kèm theo sốt mojo. Nhưng không chỉ dừng lại ở đó – những chiếc bánh taco sáng tạo và empanadas giòn rụm đã nhanh chóng chinh phục trái tim của thực khách và du khách."
+              ]
+            },
+            {
+              "type": "image-carousel.default",
+              "slides": [
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/Sol-kitchen-00001.jpg",
+                  "srcset": null,
+                  "alt": "Sol-kitchen-00001.jpg",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/Sol-kitchen-00002.jpg",
+                  "srcset": null,
+                  "alt": "Sol-kitchen-00002.jpg",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/Sol-kitchen-00003.jpg",
+                  "srcset": null,
+                  "alt": "Sol-kitchen-00003.jpg",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/Sol-kitchen-00004.jpg",
+                  "srcset": null,
+                  "alt": "Sol-kitchen-00004.jpg",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/Sol-kitchen-00005.jpg",
+                  "srcset": null,
+                  "alt": "Sol-kitchen-00005.jpg",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/Sol-kitchen-00006.jpg",
+                  "srcset": null,
+                  "alt": "Sol-kitchen-00006.jpg",
+                  "w": null,
+                  "h": null
+                }
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Bắt đầu hành trình ẩm thực của bạn với một ly pisco sour hoàn hảo và thưởng thức một đĩa scallop ceviche tuyệt vời trong khi lục qua thực đơn, và đừng quên để dành chỗ cho những món tráng miệng đặc biệt. Thưởng thức chiếc bánh cheesecake mềm mịn nhất, thưởng thức những que churros không thể chối từ hoặc tận hưởng chiếc bánh chocolate nổi bật mang lại một cảm giác tuyệt vời cho trải nghiệm ẩm thực của bạn tại Sol Kitchen & Bar."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "4beec367",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-4beec367",
+        "elementor-section-content-middle",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-1b22a7b8",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Ý tưởng thiết kế SOL Kitchen & Bar"
+            },
+            {
+              "type": "divider.default",
+              "divider": true
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Bước vào không gian nhà hàng với trần cao, trang trí bằng những chiếc đèn tre tạo ánh sáng ấm áp, rực rỡ, kết hợp với những mảng xanh từ những chậu cây tí hon, tạo nên một không gian hấp dẫn và thu hút về mặt thị giác. Trải nghiệm này còn được nâng cao hơn bởi đội ngũ nhân viên chu đáo, chuyên nghiệp. Hơn thế, đầu bếp-chủ nhân Adrian lại rất kinh nghiệm cùng một đội ngũ bếp đầy sáng tạo mang hương vị độc đáo."
+              ]
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-767678dd",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/Sol-kitchen-bar-7.jpeg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/Sol-kitchen-bar-7.jpeg 2047w, https://saigonhoreca.vn/wp-content/uploads/2024/01/Sol-kitchen-bar-7-768x512.jpeg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/01/Sol-kitchen-bar-7-1536x1024.jpeg 1536w, https://saigonhoreca.vn/wp-content/uploads/2024/01/Sol-kitchen-bar-7-600x400.jpeg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "2047",
+                "h": "1365"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "63317581",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-63317581",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/SGH-projects-01.jpg",
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-79635fcc",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Sự hợp tác giữa SOL Kitchen & Bar và Sài Gòn Horeca"
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Sài Gòn Horeca, đơn vị chúng tôi chuyên về thiết bị bếp công nghiệp và bar, đã đóng góp đáng kể vào thành công của SOL Kitchen & Bar thông qua việc tư vấn, thiết kế và thi công không gian bếp và quầy bar tại địa điểm này.",
+                "Với kinh nghiệm và hiểu biết sâu sắc về ngành ẩm thực và thiết kế bếp công nghiệp, Saigon Horeca đã tạo ra không gian bếp chuyên nghiệp và hiện đại phù hợp với yêu cầu và phong cách ẩm thực Latin American của SOL Kitchen & Bar. Sự tư vấn cẩn thận từ đội ngũ chuyên gia của Saigon Horeca đã giúp nhà hàng có được các thiết bị bếp chất lượng cao, từ lò nướng, bếp gas, tủ lạnh đến các công cụ nhà bếp cần thiết khác, tạo điều kiện thuận lợi cho Đầu Bếp Adrian và đội ngũ nấu bếp để tạo ra những món ăn độc đáo và hấp dẫn."
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Sài Gòn Horeca đóng vai trò quan trọng trong việc thiết kế và xây dựng quầy bar tại SOL Kitchen & Bar. Bằng cách kết hợp sự sáng tạo, chuyên môn và kiến thức sâu rộng về ngành dịch vụ ẩm thực, chúng tôi đã tạo ra không gian quầy bếp & bar đầy sang trọng, hấp dẫn và chuyên nghiệp, giúp nhà hàng thu hút và phục vụ khách hàng một cách tốt nhất.",
+                "Sự hợp tác chặt chẽ và chuyên nghiệp giữa SOL Kitchen & Bar và Saigon Horeca không chỉ đảm bảo rằng nhà hàng có được thiết bị và không gian bếp-bar chất lượng, mà còn tạo ra một môi trường làm việc hiệu quả và đáng tin cậy cho việc chuẩn bị và phục vụ các món ăn tinh tế đến khách hàng."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "6692bbc9",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-6692bbc9",
+        "elementor-section-content-middle",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-6b56e0fe",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/Sol-kitchen-bar-1.jpeg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/Sol-kitchen-bar-1.jpeg 2047w, https://saigonhoreca.vn/wp-content/uploads/2024/01/Sol-kitchen-bar-1-768x512.jpeg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/01/Sol-kitchen-bar-1-1536x1024.jpeg 1536w, https://saigonhoreca.vn/wp-content/uploads/2024/01/Sol-kitchen-bar-1-600x400.jpeg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "2047",
+                "h": "1365"
+              }
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-14253b92",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "divider.default",
+              "divider": true
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Thiết kế bếp và quầy bar của Saigon Horeca cho SOL Kitchen & Bar thể hiện sự hiệu quả và tinh tế. Chuyên môn của chúng tôi không chỉ tạo ra những không gian với chức năng phù hợp, mà còn mang đến điều kiện làm việc lý tưởng cho các đầu bếp. Qua việc lên kế hoạch và thực hiện tỉ mỉ, chúng tôi cung cấp các thiết bị hàng đầu và thiết kế thẩm mỹ hoàn hảo, hoàn toàn phù hợp với chủ đề Latin American của nhà hàng, tạo điều kiện cho một trải nghiệm ẩm thực đặc biệt tại đây."
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

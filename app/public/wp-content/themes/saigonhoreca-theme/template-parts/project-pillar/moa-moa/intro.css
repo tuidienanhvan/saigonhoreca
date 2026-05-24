@@ -1,0 +1,314 @@
+/**
+ * moa-moa — intro slot. OWNS base styles for the -mmo suffix:
+ *   .pp__section, .pp__container, .pp-text-mmo, .pp-gallery-mmo
+ * Playful Bistro Editorial: bubble-cluster divider, circular gallery tiles,
+ * polka-dot section backdrops, friendly serif italic accents, MOA watermark.
+ * @package SaigonHoreca
+ */
+
+/* ─────────────────────────────────────────────
+   SECTION SHELL + AMBIENT BUBBLES
+   ───────────────────────────────────────────── */
+.pp__section {
+  position: relative;
+  padding: 5rem 1.25rem;
+  background: var(--b1);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+@media (min-width: 768px) {
+  .pp__section { padding: 7.5rem 2rem; }
+}
+
+.pp__section--alt {
+  background:
+    radial-gradient(circle at 12% 18%, color-mix(in srgb, var(--gold) 4%, transparent) 0%, transparent 38%),
+    radial-gradient(circle at 88% 82%, color-mix(in srgb, var(--gold) 3%, transparent) 0%, transparent 42%),
+    var(--b2);
+}
+
+/* Polka-dot field — the signature MOA backdrop motif */
+.pp__section--alt::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle, color-mix(in srgb, var(--gold) 8%, transparent) 1.2px, transparent 1.8px);
+  background-size: 38px 38px;
+  background-position: 0 0;
+  opacity: 0.45;
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 30%, transparent 78%);
+          mask-image: radial-gradient(ellipse at center, #000 30%, transparent 78%);
+}
+
+/* Soft ambient glow blob */
+.pp__section--alt::before {
+  content: "";
+  position: absolute;
+  top: 22%;
+  right: -10%;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--gold) 6%, transparent) 0%, transparent 70%);
+  filter: blur(70px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Watermark "MOA" whisper on alt sections */
+.pp__section--alt .pp__container::before {
+  content: "MOA";
+  position: absolute;
+  top: -4rem;
+  right: -1rem;
+  font-family: var(--font-display, Georgia, serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(7rem, 14vw, 14rem);
+  line-height: 0.85;
+  color: color-mix(in srgb, var(--gold) 3.5%, transparent);
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  letter-spacing: -0.02em;
+}
+
+.pp__container {
+  max-width: 1140px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* ─────────────────────────────────────────────
+   TEXT BLOCK — bubble-cluster divider + italic serif title
+   ───────────────────────────────────────────── */
+.pp-text-mmo {
+  max-width: 820px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: relative;
+}
+
+.pp-text-mmo--center {
+  align-items: center;
+  text-align: center;
+}
+
+/* Bubble-cluster divider — 3 dots of increasing size in a row */
+.pp-text-mmo__divider {
+  display: block;
+  width: 46px;
+  height: 14px;
+  background: transparent;
+  position: relative;
+  box-shadow: none;
+}
+
+.pp-text-mmo__divider--center { margin: 0 auto; }
+
+.pp-text-mmo__divider::before,
+.pp-text-mmo__divider::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--gold) 55%, transparent);
+  transform: translateY(-50%);
+}
+
+.pp-text-mmo__divider::before {
+  left: 0;
+  width: 5px;
+  height: 5px;
+  opacity: 0.6;
+}
+
+.pp-text-mmo__divider::after {
+  left: 14px;
+  width: 9px;
+  height: 9px;
+  opacity: 0.85;
+  box-shadow:
+    0 0 14px color-mix(in srgb, var(--gold) 60%, transparent),
+    18px 0 0 0 var(--gold),
+    18px 0 18px 0 color-mix(in srgb, var(--gold) 60%, transparent);
+}
+
+.pp-text-mmo__title {
+  margin: 0;
+  font-family: var(--font-display, "Playfair Display", Georgia, serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(1.9rem, 3.8vw, 3rem);
+  line-height: 1.18;
+  letter-spacing: -0.012em;
+  color: var(--bc);
+}
+
+.pp-text-mmo--center .pp-text-mmo__title { margin: 0 auto; }
+
+.pp-text-mmo__body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: clamp(0.97rem, 1.1vw, 1.06rem);
+  line-height: 1.92;
+  color: var(--bc2);
+  max-width: 760px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  font-weight: 300;
+}
+
+.pp-text-mmo--center .pp-text-mmo__body { margin: 0 auto; }
+
+.pp-text-mmo__body p { margin: 0; text-align: left; }
+
+.pp-text-mmo--center .pp-text-mmo__body p { text-align: center; }
+
+/* Drop-cap on the first paragraph of centered intro */
+.pp-text-mmo--center .pp-text-mmo__body > p:first-child::first-letter {
+  font-family: var(--font-display, Georgia, serif);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 1.55em;
+  line-height: 1;
+  color: var(--gold);
+  padding-right: 0.08em;
+}
+
+.pp-text-mmo__body a {
+  color: var(--gold);
+  text-decoration: none;
+  border-bottom: 1px dashed color-mix(in srgb, var(--gold) 45%, transparent);
+  padding-bottom: 1px;
+  transition: border-color 0.25s var(--ease-spring), color 0.25s;
+}
+
+.pp-text-mmo__body a:hover {
+  border-bottom-style: solid;
+  border-color: var(--gold);
+}
+
+.pp-text-mmo__body strong { color: var(--gold); font-weight: 700; }
+.pp-text-mmo__body em { color: color-mix(in srgb, var(--bc) 92%, var(--bc2)); font-style: italic; }
+
+/* ─────────────────────────────────────────────
+   GALLERY — pill / circular tiles, the signature playful motif
+   ───────────────────────────────────────────── */
+.pp-gallery-mmo {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.75rem;
+  margin-top: 3rem;
+  position: relative;
+}
+
+.pp-gallery-mmo::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -2.25rem;
+  width: 60px;
+  height: 8px;
+  transform: translateX(-50%);
+  background:
+    radial-gradient(circle at 12% 50%, var(--gold) 3px, transparent 4px),
+    radial-gradient(circle at 50% 50%, var(--gold) 4px, transparent 5px),
+    radial-gradient(circle at 88% 50%, var(--gold) 3px, transparent 4px);
+  filter: drop-shadow(0 0 8px color-mix(in srgb, var(--gold) 50%, transparent));
+  opacity: 0.85;
+}
+
+@media (min-width: 768px) {
+  .pp-gallery-mmo { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+  .pp-gallery-mmo--cols-3 { grid-template-columns: repeat(3, 1fr); }
+  .pp-gallery-mmo--cols-4 { grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+  .pp-gallery-mmo--cols-1 { grid-template-columns: 1fr; }
+}
+
+.pp-gallery-mmo__item {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 50%;
+  background: var(--b3);
+  border: 2px solid color-mix(in srgb, var(--gold) 22%, transparent);
+  transition:
+    border-color 0.5s var(--ease-spring),
+    transform 0.5s var(--ease-spring),
+    box-shadow 0.5s var(--ease-spring);
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.35),
+    inset 0 0 0 6px color-mix(in srgb, var(--b1) 55%, transparent);
+  animation: pp-intro-mmo-pop 0.7s var(--ease-spring) both;
+}
+
+.pp-gallery-mmo--cols-1 .pp-gallery-mmo__item {
+  aspect-ratio: 16 / 9;
+  border-radius: 80px;
+}
+
+.pp-gallery-mmo__item::after {
+  content: "";
+  position: absolute;
+  top: -6px;
+  right: 12%;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 20px color-mix(in srgb, var(--gold) 65%, transparent);
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity 0.5s var(--ease-spring), transform 0.5s var(--ease-spring);
+  z-index: 2;
+}
+
+.pp-gallery-mmo__item:hover {
+  border-color: color-mix(in srgb, var(--gold) 65%, transparent);
+  transform: translateY(-6px) rotate(-1.5deg);
+  box-shadow:
+    0 28px 60px rgba(0, 0, 0, 0.5),
+    inset 0 0 0 6px color-mix(in srgb, var(--b1) 25%, transparent);
+}
+
+.pp-gallery-mmo__item:hover::after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.pp-gallery-mmo__item:nth-child(even):hover {
+  transform: translateY(-6px) rotate(1.5deg);
+}
+
+.pp-gallery-mmo__item img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(1.08);
+  transition: transform 0.8s var(--ease-spring);
+}
+
+.pp-gallery-mmo__item:hover img { transform: scale(1.08); }
+
+/* Stagger entry */
+.pp-gallery-mmo__item:nth-child(2) { animation-delay: 0.08s; }
+.pp-gallery-mmo__item:nth-child(3) { animation-delay: 0.16s; }
+.pp-gallery-mmo__item:nth-child(4) { animation-delay: 0.24s; }
+.pp-gallery-mmo__item:nth-child(5) { animation-delay: 0.32s; }
+
+@keyframes pp-intro-mmo-pop {
+  from { opacity: 0; transform: translateY(24px) scale(0.9); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}

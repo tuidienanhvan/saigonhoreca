@@ -1,0 +1,170 @@
+/**
+ * Service Links (Floating Cards) — Pure CSS
+ */
+
+/* ── Section wrapper (overlapping positioning) ── */
+.sh-svc-links {
+    @apply relative z-30 h-0 w-full pointer-events-none;
+}
+
+.sh-svc-links__positioner {
+    @apply absolute w-full [left:0] [top:0];
+}
+
+.sh-svc-links__grid {
+    @apply my-0 mx-auto py-0 px-4 grid gap-5 pointer-events-auto [max-width:80rem] [margin-top:-2.5rem] [grid-template-columns:1fr];
+}
+
+@media (min-width: 768px) {
+    .sh-svc-links__grid {
+    @apply gap-8 [margin-top:-6rem];
+}
+}
+
+@media (min-width: 1280px) {
+    .sh-svc-links__grid {
+    @apply [grid-template-columns:1fr_1fr_1fr];
+}
+}
+
+/* ── Card ── */
+.sh-svc-card {
+    @apply block relative overflow-hidden rounded-2xl transition-all duration-500 no-underline [box-shadow:0_25px_50px_-12px_rgba(0,_0,_0,_0.25)] [color:#fff];
+}
+
+@media (min-width: 768px) {
+    .sh-svc-card {
+    @apply rounded-3xl;
+}
+}
+
+.sh-svc-card:hover {
+    @apply [transform:translateY(-0.75rem)] [box-shadow:0_25px_50px_color-mix(in_srgb,_var(--brand)_40%,_transparent)];
+}
+
+/* ── Card Background (gradient) ── */
+.sh-svc-card__bg {
+    @apply absolute opacity-90 transition-opacity duration-500 [inset:0] [background:linear-gradient(135deg,_#166534,_var(--brand),_#14532d)];
+}
+
+.sh-svc-card:hover .sh-svc-card__bg {
+    @apply opacity-100;
+}
+
+/* ── Shine effect ── */
+.sh-svc-card__shine {
+    @apply absolute h-full pointer-events-none [top:0] [left:-100%] [width:50%] [background:linear-gradient(90deg,_transparent,_rgba(255,_255,_255,_0.2),_transparent)] [transform:skewX(-45deg)] [transition:left_1s_ease-in-out];
+}
+
+.sh-svc-card:hover .sh-svc-card__shine {
+    @apply [left:200%];
+}
+
+/* ── Badge (number) ── */
+.sh-svc-card__badge {
+    @apply absolute py-1.5 px-3 text-lg font-black z-20 tracking-widest leading-none [top:0] [left:0] [background:var(--bg-card)] [border-bottom-right-radius:1rem] [color:var(--brand)];
+}
+
+@media (min-width: 768px) {
+    .sh-svc-card__badge {
+    @apply py-2 px-4 text-xl;
+}
+}
+
+/* ── Card Body ── */
+.sh-svc-card__body {
+    @apply relative flex items-center pt-4 pr-4 pb-4 pl-4 pt-10 gap-3 z-10 [min-height:100%];
+}
+
+@media (min-width: 768px) {
+    .sh-svc-card__body {
+    @apply p-5 pt-12 gap-4;
+}
+}
+
+@media (min-width: 1024px) {
+    .sh-svc-card__body {
+    @apply p-6 [padding-top:3.5rem];
+}
+}
+
+.sh-svc-card__text {
+    @apply flex flex-col flex-1 min-w-0;
+}
+
+.sh-svc-card__title {
+    @apply font-black uppercase whitespace-nowrap overflow-hidden tracking-wide [font-size:0.9375rem] [color:#fff] [text-overflow:ellipsis] [margin:0_0_0.375rem] [text-shadow:0_2px_4px_rgba(0,_0,_0,_0.2)] [transition:letter-spacing_0.5s];
+}
+
+@media (min-width: 640px) { .sh-svc-card__title {
+    @apply text-base;
+} }
+@media (min-width: 768px) { .sh-svc-card__title {
+    @apply text-lg;
+} }
+@media (min-width: 1024px) { .sh-svc-card__title {
+    @apply text-xl;
+} }
+
+.sh-svc-card:hover .sh-svc-card__title {
+    @apply tracking-widest;
+}
+
+.sh-svc-card__divider {
+    @apply h-0.5 w-8 rounded-full mb-1.5 [background:rgba(255,_255,_255,_0.5)] [transition:width_0.5s_ease-out];
+}
+
+.sh-svc-card:hover .sh-svc-card__divider {
+    @apply w-full;
+}
+
+.sh-svc-card__subtitle {
+    @apply text-xs font-medium whitespace-nowrap overflow-hidden m-0 transition-colors duration-300 [color:rgba(255,_255,_255,_0.9)] [text-overflow:ellipsis];
+}
+
+@media (min-width: 640px) { .sh-svc-card__subtitle {
+    @apply [font-size:0.8125rem];
+} }
+@media (min-width: 768px) { .sh-svc-card__subtitle {
+    @apply text-sm;
+} }
+
+.sh-svc-card:hover .sh-svc-card__subtitle {
+    @apply [color:#fff];
+}
+
+/* ── Arrow ── */
+.sh-svc-card__arrow {
+    @apply shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-500 [background:var(--bg-card)] [border:1px_solid_rgba(255,_255,_255,_0.3)] [color:var(--brand)];
+}
+
+@media (min-width: 768px) {
+    .sh-svc-card__arrow {
+    @apply w-10 h-10;
+}
+}
+
+@media (min-width: 1024px) {
+    .sh-svc-card__arrow {
+    @apply w-12 h-12;
+}
+}
+
+.sh-svc-card:hover .sh-svc-card__arrow {
+    @apply [box-shadow:0_0_20px_rgba(255,_255,_255,_0.4)];
+}
+
+.sh-svc-card__arrow-icon {
+    @apply w-4 h-4 transition-transform duration-500;
+}
+
+@media (min-width: 768px) { .sh-svc-card__arrow-icon {
+    @apply w-5 h-5;
+} }
+@media (min-width: 1024px) { .sh-svc-card__arrow-icon {
+    @apply w-6 h-6;
+} }
+
+.sh-svc-card:hover .sh-svc-card__arrow-icon {
+    @apply [transform:scale(1.25)_rotate(-45deg)];
+}

@@ -1,0 +1,156 @@
+/**
+ * Archive-product hero — compact variant + inline search.
+ *
+ * GIỮ NGUYÊN thiết kế cũ (gradient bg, badge, title, desc, wave divider),
+ * chỉ giảm padding + font cho gọn. Search form dùng tokens (no hardcode).
+ */
+
+/* Compact padding — giảm chiều cao hero, giữ y nguyên visual khác */
+.sh-archive__hero--compact {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+    padding-inline: 1rem !important;
+}
+@media (min-width: 768px) {
+    .sh-archive__hero--compact {
+        padding-top: 4rem !important;
+        padding-bottom: 4rem !important;
+        padding-inline: 2rem !important;
+    }
+}
+
+/* Container alignment — match grid-12 system: max 1280 + same inline padding
+   as .sh-archive__layout. Edges của hero text trùng edges của sidebar/main. */
+.sh-archive__hero--compact .sh-archive__hero-inner {
+    max-width: 1280px !important;
+    padding: 0 !important;
+}
+
+/* Override legacy .sh-archive__content (1200px) → 1280 cho product archives */
+.sh-archive--product .sh-archive__content {
+    max-width: 1280px !important;
+    padding-inline: 1rem !important;
+}
+@media (min-width: 768px) {
+    .sh-archive--product .sh-archive__content {
+        padding-inline: 2rem !important;
+    }
+}
+
+.sh-archive__hero--compact .sh-archive__title {
+    font-size: clamp(1.625rem, 3.4vw, 2.5rem) !important;
+    margin: 0 0 0.75rem !important;
+}
+
+.sh-archive__hero--compact .sh-archive__badge {
+    margin-bottom: 1rem !important;
+}
+
+.sh-archive__hero--compact .sh-archive__desc {
+    font-size: 1rem !important;
+    margin: 0 auto 1.25rem !important;
+    max-width: 38rem;
+}
+
+.sh-archive__hero--compact .sh-archive__count {
+    margin-top: 1rem;
+}
+
+/* ── Search form (token-driven) ── */
+.sh-archive__search {
+    display: flex;
+    align-items: stretch;
+    max-width: 32rem;
+    margin: 0 auto;
+    background: rgba(10, 10, 10, 0.7); /* Premium dark glassmorphism */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15); /* Thin elegant border */
+    border-radius: var(--radius-full);
+    overflow: hidden;
+    transition: border-color var(--duration-normal) var(--ease-spring);
+}
+.sh-archive__search:focus-within {
+    border-color: rgba(255, 255, 255, 0.6) !important; /* Elegant focus border, absolutely no shadow/glow */
+    box-shadow: none !important;
+}
+
+/* Định vị ô search khi nằm ở Main Content (ở dưới Hero banner) */
+.sh-archive__search-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.sh-archive__search--main {
+    margin-top: 0 !important;
+    margin-bottom: 2rem !important;
+    margin-left: 0 !important;
+    margin-right: auto !important;
+    background: rgba(20, 20, 20, 0.6) !important; /* Premium dark glassmorphism trên nền trang */
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+}
+
+@media (max-width: 768px) {
+    .sh-archive__search--main {
+        max-width: 100% !important;
+        margin-bottom: 1.5rem !important;
+    }
+}
+
+.sh-archive__search-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 1.25rem;
+    color: rgba(255, 255, 255, 0.55);
+}
+.sh-archive__search-icon svg {
+    width: 18px;
+    height: 18px;
+}
+
+.sh-archive__search-input {
+    flex: 1;
+    min-width: 0;
+    padding: 0.875rem 0.75rem;
+    border: 0 !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    font-family: inherit;
+    font-size: 0.95rem;
+    color: #ffffff;
+}
+.sh-archive__search-input::placeholder {
+    color: rgba(255, 255, 255, 0.45);
+}
+
+.sh-archive__search-btn {
+    padding-inline: 1.75rem;
+    border: 0;
+    border-left: 1px solid rgba(255, 255, 255, 0.15); /* Clean vertical divider */
+    background: var(--gold);
+    color: var(--pc);
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background var(--duration-normal) var(--ease-spring);
+}
+.sh-archive__search-btn:hover {
+    background: var(--gold-dim); /* Revert back to theme default gold-dim on hover */
+}
+
+/* Screen-reader only label */
+.sh-archive__search-label.sr-only {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0, 0, 0, 0);
+    white-space: nowrap; border: 0;
+}

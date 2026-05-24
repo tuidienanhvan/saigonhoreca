@@ -1,0 +1,123 @@
+/**
+ * Footer Widget Row — 4 dynamic columns.
+ *
+ * Rendered only when at least one of saigonhouse-footer-1..4 has a widget.
+ * Falls back to legacy 3-column hardcoded grid otherwise (see footer.php).
+ *
+ * Token-pure: uses --* custom properties, no hex fallbacks.
+ */
+
+.sh-footer__widgets {
+    @apply pt-12 px-0 pb-8 [border-bottom:1px_solid_color-mix(in_srgb,_var(--border-default)_40%,_transparent)];
+}
+
+.sh-footer__widgets-grid {
+    @apply grid gap-8 my-0 mx-auto py-0 px-4 [grid-template-columns:1fr] [max-width:var(--sh-content-max)];
+}
+
+@media (min-width: 640px) {
+    .sh-footer__widgets-grid {
+    @apply [grid-template-columns:repeat(2,_minmax(0,_1fr))] [gap:2rem_2.5rem];
+}
+}
+
+@media (min-width: 1024px) {
+    .sh-footer__widgets-grid {
+    @apply py-0 px-6 [grid-template-columns:repeat(4,_minmax(0,_1fr))];
+}
+}
+
+/* ── Widget container ── */
+.sh-footer__widget {
+    @apply min-w-0 [color:color-mix(in_srgb,_var(--text-1)_75%,_transparent)] [font-size:0.9375rem] [line-height:1.65];
+}
+
+.sh-footer__widget > :first-child {
+    @apply mt-0;
+}
+
+.sh-footer__widget > :last-child {
+    @apply mb-0;
+}
+
+/* ── Widget title ── */
+.sh-footer__widget-title {
+    @apply text-base font-extrabold uppercase relative pb-3 [color:var(--text-1)] [letter-spacing:0.08em] [margin:0_0_1rem];
+}
+
+.sh-footer__widget-title::after {
+    @apply [position:absolute] [left:0] [bottom:0] [width:2rem] [height:3px] [background:linear-gradient(_to_right,_var(--brand),_color-mix(in_srgb,_var(--brand)_50%,_var(--secondary))_)] [border-radius:9999px];
+    content: "";
+}
+
+/* ── WordPress default widget list ── */
+.sh-footer__widget ul,
+.sh-footer__widget ol {
+    @apply list-none p-0 m-0 flex flex-col gap-2;
+}
+
+.sh-footer__widget li {
+    @apply py-1.5 px-0 [border-bottom:1px_solid_color-mix(in_srgb,_var(--border-default)_30%,_transparent)] [transition:padding-left_0.2s_ease];
+}
+
+.sh-footer__widget li:last-child {
+    @apply [border-bottom:0];
+}
+
+.sh-footer__widget li:hover {
+    @apply pl-2;
+}
+
+.sh-footer__widget a {
+    @apply no-underline transition-colors duration-200 [color:color-mix(in_srgb,_var(--text-1)_75%,_transparent)];
+}
+
+.sh-footer__widget a:hover {
+    @apply [color:var(--brand)];
+}
+
+/* ── Search widget — override WP default ── */
+.sh-footer__widget .search-form,
+.sh-footer__widget .wp-block-search__inside-wrapper {
+    @apply flex gap-2 mt-2;
+}
+
+.sh-footer__widget .search-field,
+.sh-footer__widget .wp-block-search__input {
+    @apply flex-1 py-2 px-3 rounded-lg text-sm min-w-0 [background:color-mix(in_srgb,_var(--bg-card)_8%,_transparent)] [border:1px_solid_color-mix(in_srgb,_var(--border-default)_50%,_transparent)] [color:var(--text-1)];
+}
+
+.sh-footer__widget .search-submit,
+.sh-footer__widget .wp-block-search__button {
+    @apply py-2 px-3.5 rounded-lg font-semibold cursor-pointer [background:var(--brand)] [color:#fff] [border:0] [transition:background_0.2s_ease];
+}
+
+.sh-footer__widget .search-submit:hover,
+.sh-footer__widget .wp-block-search__button:hover {
+    @apply [background:color-mix(in_srgb,_var(--brand)_82%,_var(--secondary))];
+}
+
+/* ── Paragraphs & rich text ── */
+.sh-footer__widget p {
+    @apply [margin:0_0_0.75rem];
+}
+
+.sh-footer__widget img {
+    @apply max-w-full h-auto rounded-lg;
+}
+
+/* ── Block-based widgets (WP 5.8+) ── */
+.sh-footer__widget .wp-block-group,
+.sh-footer__widget .wp-block-latest-posts,
+.sh-footer__widget .wp-block-categories,
+.sh-footer__widget .wp-block-tag-cloud {
+    @apply m-0;
+}
+
+.sh-footer__widget .wp-block-tag-cloud a {
+    @apply inline-block py-1 px-2.5 mt-0 mr-1 mb-1.5 ml-0 rounded-full text-xs no-underline transition-all duration-200 [background:color-mix(in_srgb,_var(--brand)_8%,_transparent)] [border:1px_solid_color-mix(in_srgb,_var(--brand)_15%,_transparent)];
+}
+
+.sh-footer__widget .wp-block-tag-cloud a:hover {
+    @apply [background:color-mix(in_srgb,_var(--brand)_18%,_transparent)] [border-color:color-mix(in_srgb,_var(--brand)_35%,_transparent)] [transform:translateY(-1px)];
+}

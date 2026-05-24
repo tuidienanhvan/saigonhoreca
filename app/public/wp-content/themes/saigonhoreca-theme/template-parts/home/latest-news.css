@@ -1,0 +1,157 @@
+/**
+ * Home Latest News — Saigon Horeca
+ * DARK theme matching production: black bg, 3-card grid with dots nav,
+ * dark cards with title + excerpt + "Đọc chi tiết" link.
+ */
+
+.sh-latest-news {
+    background: #0a0a0a;
+    color: #fff;
+    padding: 5rem 0;
+}
+@media (min-width: 768px) {
+    .sh-latest-news { padding: 7rem 0; }
+}
+
+.sh-latest-news__inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+@media (min-width: 768px) {
+    .sh-latest-news__inner { padding: 0 2rem; }
+}
+
+.sh-latest-news__header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+@media (min-width: 768px) {
+    .sh-latest-news__header { margin-bottom: 4rem; }
+}
+
+.sh-latest-news__title {
+    margin: 0 0 1rem;
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+.sh-latest-news__view-all {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1.5rem;
+    margin-top: 1rem;
+    border: 1px solid #f5a623;
+    border-radius: 4px;
+    color: #f5a623;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+}
+.sh-latest-news__view-all:hover {
+    background: #f5a623;
+    color: #000;
+}
+.sh-latest-news__view-all svg { width: 16px; height: 16px; }
+
+.sh-latest-news__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+@media (min-width: 768px) { .sh-latest-news__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .sh-latest-news__grid { grid-template-columns: repeat(3, 1fr); } }
+
+.sh-latest-news__card {
+    background: #1a1a1a;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: border-color 0.25s, transform 0.2s;
+}
+.sh-latest-news__card:hover {
+    border-color: rgba(245, 166, 35, 0.5);
+    transform: translateY(-3px);
+}
+/* Drop featured-card override on dark theme — keep all cards same size */
+.sh-latest-news__card--featured {
+    grid-column: span 1;
+    grid-row: span 1;
+}
+
+.sh-latest-news__link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.sh-latest-news__thumb {
+    aspect-ratio: 16 / 10;
+    background: #222;
+    overflow: hidden;
+}
+.sh-latest-news__thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+.sh-latest-news__link:hover .sh-latest-news__thumb img {
+    transform: scale(1.05);
+}
+
+.sh-latest-news__body { padding: 1.5rem; }
+
+.sh-latest-news__date {
+    display: block;
+    margin-bottom: 0.625rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--gold);
+}
+
+.sh-latest-news__card-title {
+    margin: 0 0 0.75rem;
+    font-size: 1.125rem;
+    font-weight: 700;
+    line-height: 1.4;
+    color: #fff;
+    transition: color 0.2s;
+    /* clamp to 2 lines */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+.sh-latest-news__link:hover .sh-latest-news__card-title { color: #f5a623; }
+
+.sh-latest-news__excerpt {
+    margin: 0 0 1rem;
+    font-size: 0.9375rem;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.65);
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+
+.sh-latest-news__readmore {
+    display: inline-block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.65);
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 2px;
+    transition: color 0.2s;
+}
+.sh-latest-news__link:hover .sh-latest-news__readmore { color: #f5a623; }

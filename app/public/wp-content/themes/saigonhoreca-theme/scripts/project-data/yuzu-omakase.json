@@ -1,0 +1,310 @@
+{
+  "slug": "yuzu-omakase",
+  "title": "Yuzu Omakase",
+  "meta_description": "Bước vào thế giới của Bambino Superclub, nơi điều bình thường trở nên phi thường, và trời đêm hóa thân thành dòng năng lượng sống động nhịp nhàng.",
+  "sections_count": 5,
+  "sections": [
+    {
+      "data_id": "3d562a43",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-3d562a43",
+        "elementor-section-height-full",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-items-middle"
+      ],
+      "has_video_bg": true,
+      "video_url": "https://www.yuzuomakase.com/wp-content/uploads/2023/11/Omkase_6.mp4",
+      "background_overlay": true,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-318e99e2",
+          "col_size": 16,
+          "widgets": []
+        },
+        {
+          "col_class": "elementor-column elementor-col-66 elementor-top-column elementor-element elementor-element-46c395ed",
+          "col_size": 66,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h1",
+              "text": "Yuzu Omakase"
+            },
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Đứng số 1 trong Top 50 Nhà hàng & Khách sạn hàng đầu tại Thái Lan năm 2022"
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Yuzu Omakase, một thiên đường ẩm thực nổi tiếng với hương vị tinh tế và không gian ăn uống sáng tạo, tự hào là địa điểm số một trong danh mục ‘Tốt nhất về Fine-dining/ Bàn Đầu Bếp/ Thương Hiệu Omakase’ theo cuộc bình chọn năm 2022 của Hungry Hub."
+              ]
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-44decbbf",
+          "col_size": 16,
+          "widgets": []
+        }
+      ]
+    },
+    {
+      "data_id": "5be6e36a",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-5be6e36a",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-3b3cbd6e",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Yuzu Omakase"
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Đứng số 1 trong Top 50 Nhà hàng & Khách sạn hàng đầu tại Thái Lan năm 2022"
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Yuzu Omakase Vietnam (34 Thủ Khoa Huân, Phường Bến Thành, Quận 1, Thành phố Hồ Chí Minh, Việt Nam), một thiên đường ẩm thực nổi tiếng với hương vị tinh tế và không gian ăn uống sáng tạo, tự hào là địa điểm số một trong danh mục ‘Tốt nhất về Fine-dining/ Bàn Đầu Bếp/ Thương Hiệu Omakase’ theo cuộc bình chọn năm 2022 của Hungry Hub tại Thái Lan. Điểm mạnh của cơ sở ẩm thực đậm chất hiện đại này không chỉ nằm ở sự tài năng ẩm thực mà còn là minh chứng cho sự kết hợp của sự sáng tạo và chuyên nghiệp trong thiết kế và triển khai bởi Saigon Horeca."
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Nhà hàng danh tiếng này, được xuất hiện trong danh sách 50 nhà hàng và khách sạn hàng đầu tại Thái Lan năm 2022, mang đến trải nghiệm ẩm thực độc đáo. Được thành lập bởi YUZU GROUP, tập đoàn F&B hàng đầu tại Thái Lan, Yuzu Omakase là sản phẩm của một đội ngũ đam mê, tận tụy phục vụ sứ mệnh mang đến trải nghiệm ẩm thực xuất sắc theo cách riêng của họ."
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Mọi chi tiết của trang thiết bị bếp công nghiệp từ thép không gỉ tại nhà hàng đều được Saigon Horeca lên ý tưởng và lắp đặt một cách tỉ mỉ. Sự hòa hợp tinh tế giữa không gian sáng tạo và trang thiết bị hiện đại tạo ra không gian hoàn hảo cho các đầu bếp tài năng góp phần tạo ra những tác phẩm ẩm thực độc đáo."
+              ]
+            },
+            {
+              "type": "image-carousel.default",
+              "slides": [
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/Yuzu-Omakase-1.jpg",
+                  "srcset": null,
+                  "alt": "Yuzu-Omakase-1.jpg",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/Yuzu-Omakase-2.jpg",
+                  "srcset": null,
+                  "alt": "Yuzu-Omakase-2.jpg",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/Yuzu-Omakase-3-1.jpg",
+                  "srcset": null,
+                  "alt": "Yuzu-Omakase-3-1.jpg",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/Yuzu-Omakase-4.jpg",
+                  "srcset": null,
+                  "alt": "Yuzu-Omakase-4.jpg",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/Yuzu-Omakase-5.jpg",
+                  "srcset": null,
+                  "alt": "Yuzu-Omakase-5.jpg",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/Yuzu-Omakase-6.jpg",
+                  "srcset": null,
+                  "alt": "Yuzu-Omakase-6.jpg",
+                  "w": null,
+                  "h": null
+                }
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Saigon Horeca là đơn vị chuyên thiết kế, sản xuất trang thiết bị bếp chất lượng cao từ thép không gỉ. Sự hợp tác của chúng tôi với Yuzu Omakase không chỉ đơn thuần về tính chức năng; mà còn về việc kết hợp sáng tạo và tính ứng dụng tốt. Saigon Horeca tạo ra các giải pháp bếp riêng biệt dành cho Yuzu Omakase, đảm bảo mọi thứ hoàn hảo phản ánh tầm nhìn của nhà hàng."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "225ce147",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-225ce147",
+        "elementor-section-content-middle",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-4e705f68",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Ý tưởng thiết kế của Yuzu Omakase"
+            },
+            {
+              "type": "divider.default",
+              "divider": true
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Dựa vào kinh nghiệm của mình, Saigon Horeca đã trực quan một thiết kế bếp công nghiệp nhằm tối ưu hóa tính chức năng, hiệu suất và thẩm mỹ. Điểm quan trọng đặt ở việc đáp ứng các nhu cầu thực tế và biến không gian bếp thành một nơi mà sáng tạo là yếu tố hàng đầu.",
+                "Thiết kế tích hợp trang thiết bị bếp từ thép không gỉ tiên tiến được tùy chỉnh phù hợp với phương pháp nấu ẩm thực đặc biệt và menu của Yuzu Omakase. Mọi khía cạnh của bố trí bếp, từ sắp xếp các vị trí làm việc đến việc lắp đặt các thiết bị chuyên biệt, đều được lên kế hoạch tỉ mỉ để tăng cường quy trình làm việc và tối đa hóa năng suất."
+              ]
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-87cc4e7",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/SGH-Yuzu-Omakase.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/SGH-Yuzu-Omakase.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2024/01/SGH-Yuzu-Omakase-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/01/SGH-Yuzu-Omakase-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "760cce9a",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-760cce9a",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/SGH-Yuzu-Omakase.jpg",
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-751ae5d8",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Sự hợp tác giữa Yuzu Omakase và Saigon Horeca"
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Giai đoạn ý tưởng ban đầu bao gồm các cuộc thảo luận giữa 2 bên và phân tích để hiểu rõ về các yêu cầu cụ thể và nhu cầu vận hành của Yuzu Omakase. Đội ngũ của Saigon Horeca đã hợp tác chặt chẽ với các bên liên quan của Yuzu Omakase để nắm bắt giá trị cốt lõi, phong cách ẩm thực, quy trình làm việc và cách sử dụng không gian của nhà hàng.",
+                "Với chuyên môn và kinh nghiệm của mình, Saigon Horeca đảm bảo rằng thiết kế bếp tuân thủ các tiêu chuẩn và quy định ngành công nghiệp đồng thời tạo một môi trường khuyến khích sáng tạo ẩm thực cho các đầu bếp. Sự chú ý đến từng chi tiết của chúng tôi bao gồm hệ thống thông gió, giải pháp lưu trữ, xem xét về mặt tiện nghi và tối ưu hóa quy trình làm việc, tạo ra không gian bếp vừa đáp ứng đủ chức năng vừa gọn gàng, đẹp mắt.",
+                "Đặc biệt rằng, dịch vụ tư vấn và thiết kế của Saigon Horeca cho không gian bếp của nhà hàng không chỉ đáp ứng nhu cầu vận hành mà còn trở thành một phần không thể thiếu của sự độc đáo của ngành ẩm thực Omakase – một nghệ thuật ẩm thực đặc sắc và đề cao trải nghiệm nấu nướng trực tiếp."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "7b92a98b",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-7b92a98b",
+        "elementor-section-content-middle",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-61406ec6",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/Yuzu-Omakase-chef.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/Yuzu-Omakase-chef.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2024/01/Yuzu-Omakase-chef-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/01/Yuzu-Omakase-chef-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-44f6875e",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "divider.default",
+              "divider": true
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Saigon Horeca tự hào đã tạo ra những không gian bếp độc đáo cho Yuzu Omakase, thể hiện sự sáng tạo độc đáo của nhà hàng. Trang thiết bị thép không gỉ chuyên dụng được lắp đặt góp phần khẳng định trải nghiệm ẩm thực riêng biệt tại nhà hàng. Sự chú ý tỉ mỉ đến từng chi tiết và các giải pháp được tùy chỉnh của Saigon Horeca đã tạo nên một quầy bếp không chỉ đáp ứng nhu cầu vận hành mà còn là trung tâm của sự sáng tạo và xuất sắc trong nghệ thuật ẩm thực tại Yuzu Omakase."
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

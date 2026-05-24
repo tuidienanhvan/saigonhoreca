@@ -1,0 +1,110 @@
+/**
+ * rough-commitments — Component CSS
+ */
+        .sh-commitments {
+    @apply py-24 px-0 relative overflow-hidden [background:var(--bg)];
+}
+        @media (min-width: 1024px) { .sh-commitments {
+    @apply [padding:8rem_0];
+} }
+        .sh-commitments__glow-line {
+    @apply absolute h-px opacity-30 [top:0] [left:0] [right:0] [background:linear-gradient(to_right,_transparent,_color-mix(in_srgb,_var(--brand)_50%,_transparent),_transparent)];
+}
+        .sh-commitments__glow {
+    @apply absolute rounded-full pointer-events-none [mix-blend-mode:screen];
+}
+        .sh-commitments__glow--r {
+    @apply [top:25%] [right:-10rem] [width:24rem] [height:24rem] [background:color-mix(in_srgb,_var(--brand)_20%,_transparent)] [filter:blur(120px)];
+}
+        .sh-commitments__glow--l {
+    @apply [bottom:0] [left:-5rem] [width:20rem] [height:20rem] [background:color-mix(in_srgb,_var(--secondary)_10%,_transparent)] [filter:blur(100px)];
+}
+        .sh-commitments__container {
+    @apply my-0 mx-auto py-0 px-4 relative z-10 [max-width:80rem];
+}
+        .sh-commitments__header {
+    @apply text-center [max-width:48rem] [margin:0_auto_5rem];
+}
+        .sh-commitments__tag-row {
+    @apply inline-flex items-center justify-center gap-2 mb-6;
+}
+        .sh-commitments__tag-line {
+    @apply w-8 h-px [background:color-mix(in_srgb,_var(--brand)_50%,_transparent)];
+}
+        .sh-commitments__tag {
+    @apply font-bold uppercase text-xs [color:var(--brand)] [letter-spacing:0.2em];
+}
+        .sh-commitments__title {
+    @apply text-4xl font-black tracking-tight [color:var(--text-1)] [margin:0_0_1.5rem];
+}
+        @media (min-width: 768px) { .sh-commitments__title {
+    @apply text-5xl;
+} }
+        @media (min-width: 1024px) { .sh-commitments__title {
+    @apply [font-size:3.75rem];
+} }
+        .sh-commitments__desc {
+    @apply text-lg leading-relaxed [color:var(--text-1-3)];
+}
+        /* Carousel */
+        .sh-commitments__scroll {
+    @apply flex gap-6 overflow-x-auto pb-6 pl-4 pr-4 [scroll-snap-type:x_mandatory] [margin:0_-1rem];
+}
+        @media (min-width: 768px) { .sh-commitments__scroll {
+    @apply m-0 pl-0 pr-0;
+} }
+        .sh-commitments__card {
+    @apply shrink-0 relative p-8 transition-all duration-300 overflow-hidden [min-width:85vw] [scroll-snap-align:center] [border-radius:2rem] [background:var(--bg-card)] [border:1px_solid_var(--border-default-light)];
+}
+        @media (min-width: 768px) { .sh-commitments__card {
+    @apply [min-width:350px];
+} }
+        @media (min-width: 1024px) { .sh-commitments__card {
+    @apply [min-width:400px];
+} }
+        .sh-commitments__card:hover {
+    @apply [border-color:var(--border-default)] [box-shadow:0_4px_6px_-1px_rgba(0,0,0,0.1)];
+}
+        .sh-commitments__card-glow {
+    @apply absolute opacity-0 rounded-full pointer-events-none transition-opacity duration-500 [inset:-2.5rem] [background:linear-gradient(to_bottom_right,_color-mix(in_srgb,_var(--brand)_10%,_transparent),_transparent)] [filter:blur(2rem)];
+}
+        .sh-commitments__card:hover .sh-commitments__card-glow {
+    @apply opacity-100;
+}
+        .sh-commitments__card-inner {
+    @apply relative z-10 flex items-start gap-5;
+}
+        .sh-commitments__num {
+    @apply text-3xl font-black opacity-60 mt-1 transition-opacity duration-300 [background-image:linear-gradient(to_bottom_right,_var(--brand),_#86efac)] [-webkit-background-clip:text] [background-clip:text] [color:transparent];
+}
+        .sh-commitments__card:hover .sh-commitments__num {
+    @apply opacity-100;
+}
+        .sh-commitments__text {
+    @apply leading-relaxed transition-colors duration-300 [color:var(--text-1-2)] [font-size:0.9375rem];
+}
+        .sh-commitments__card:hover .sh-commitments__text {
+    @apply [color:var(--text-1)];
+}
+        /* Dark Mode */
+        .dark .sh-commitments {
+    @apply [background:var(--bg)];
+}
+        .dark .sh-commitments__title {
+    @apply [color:var(--text-1)];
+}
+        .dark .sh-commitments__desc {
+    @apply [color:var(--text-1-3)];
+}
+        .dark .sh-commitments__card {
+    @apply [background:var(--bg-card)] [border-color:var(--border-default)];
+}
+        .dark .sh-commitments__card:hover {
+    @apply [border-color:var(--border-default)];
+}
+        .dark .sh-commitments__text {
+    @apply [color:var(--text-1-2)];
+}
+        .dark .sh-commitments__card:hover .sh-commitments__text {
+    @apply [color:var(--text-1)];
+}

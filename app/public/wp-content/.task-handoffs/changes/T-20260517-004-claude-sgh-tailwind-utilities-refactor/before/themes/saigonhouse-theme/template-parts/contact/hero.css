@@ -1,0 +1,45 @@
+/**
+ * Contact Page - Hero Section
+ */
+.sh-contact-hero {
+    @apply relative overflow-hidden flex items-center justify-center text-center [padding:6rem_1rem_8rem] [min-height:40vh];
+}
+
+.sh-contact-hero__image {
+    @apply absolute [inset:0] [background-size:cover] [background-position:center] [z-index:1] [filter:blur(2px)] [transform:scale(1.05)];
+}
+
+.sh-contact-hero__fade {
+    @apply absolute [inset:0] [background:linear-gradient(135deg,_color-mix(in_srgb,_var(--brand-dark)_90%,_transparent),_color-mix(in_srgb,_var(--bg)_85%,_transparent))] [z-index:2];
+}
+
+.sh-contact-hero__container {
+    @apply relative z-10 my-0 mx-auto [max-width:48rem];
+}
+
+.sh-contact-hero__label {
+    @apply inline-block py-1.5 px-4 rounded-full text-sm font-semibold uppercase tracking-wider mb-6 [background:color-mix(in_srgb,_var(--brand)_20%,_transparent)] [color:#fff] [border:1px_solid_color-mix(in_srgb,_var(--brand)_40%,_transparent)] [backdrop-filter:blur(4px)] [-webkit-backdrop-filter:blur(4px)];
+}
+
+.sh-contact-hero__title {
+    @apply font-extrabold mb-6 [font-size:2.5rem] [color:#ffffff] [line-height:1.2] [text-shadow:0_4px_12px_rgba(0,_0,_0,_0.3)];
+}
+
+.sh-contact-hero__title-accent {
+    @apply relative inline-block [color:var(--secondary)];
+}
+
+.sh-contact-hero__title-accent::after {
+    @apply [position:absolute] [bottom:-4px] [left:0] [right:0] [height:4px] [background:linear-gradient(to_right,_transparent,_var(--secondary),_transparent)] [border-radius:4px];
+    content: '';
+}
+
+@media (min-width: 768px) {
+    .sh-contact-hero__title {
+    @apply [font-size:3.5rem];
+}
+}
+
+.sh-contact-hero__desc {
+    @apply text-lg m-0 [color:color-mix(in_srgb,_#fff_90%,_transparent)] [line-height:1.6];
+}

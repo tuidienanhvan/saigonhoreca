@@ -1,0 +1,465 @@
+/* ── sh-about-values ──────────────────────────────────────────── */
+.sh-about-values {
+  display: grid;
+  grid-template-columns: 1fr;
+  min-height: 640px;
+  position: relative;
+  overflow: hidden;
+}
+
+@media (min-width: 1024px) {
+  .sh-about-values {
+    grid-template-columns: 1.05fr 0.95fr; /* Cân đối chiều rộng 2 cột */
+  }
+}
+
+/* ── Cột Trái: Ma trận Giá trị cốt lõi ────────────────────────── */
+.sh-about-values__left {
+  background: var(--b1);
+  display: flex;
+  align-items: center;
+  padding: 4.5rem 1.5rem;
+  position: relative;
+}
+
+@media (min-width: 768px)  { .sh-about-values__left { padding: 5rem 3.5rem; } }
+@media (min-width: 1280px) { .sh-about-values__left { padding: 6.5rem 5.5rem; } }
+
+/* Glowing background behind left content */
+.sh-about-values__left::before {
+  content: '';
+  position: absolute;
+  top: 20%;
+  left: -10%;
+  width: 30rem;
+  height: 30rem;
+  background: radial-gradient(circle, color-mix(in srgb, var(--p) 4%, transparent) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.sh-about-values__left-content {
+  position: relative;
+  z-index: 1;
+  max-width: 38rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2.2rem;
+}
+
+.sh-about-values__eyebrow {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--p);
+  text-shadow: 0 0 10px rgba(245, 166, 35, 0.15);
+}
+
+.sh-about-values__title {
+  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+  font-weight: 950;
+  text-transform: uppercase;
+  color: var(--bc);
+  line-height: 1.15;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.sh-about-values__title-sep {
+  color: var(--p);
+  font-weight: 300;
+  opacity: 0.8;
+  margin-inline: 0.15em;
+}
+
+/* ── Value cards ─────────────────────────────────────────────── */
+.sh-about-values__cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.sh-about-values__card {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.25rem 1rem;
+  background: rgba(255, 255, 255, 0.005);
+  border: 1px solid rgba(255, 255, 255, 0.01);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 8px;
+  transition: transform 0.4s var(--ease-spring), background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.sh-about-values__card:last-child {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+/* Gold Glass Orb Icon Container */
+.sh-about-values__card-icon {
+  flex-shrink: 0;
+  width: 3.2rem;
+  height: 3.2rem;
+  background: rgba(26, 26, 26, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(245, 166, 35, 0.18);
+  border-radius: 50%; /* Perfect circle orb */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--p);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  transition: transform 0.5s var(--ease-spring), background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, color 0.4s ease;
+}
+
+.sh-about-values__card-icon svg {
+  width: 1.35rem;
+  height: 1.35rem;
+  transition: transform 0.5s var(--ease-spring), filter 0.4s ease;
+}
+
+.sh-about-values__card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  flex-grow: 1;
+}
+
+.sh-about-values__card-label {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--bc);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  transition: color 0.4s ease, transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.sh-about-values__card-desc {
+  font-size: 0.86rem;
+  line-height: 1.75;
+  color: var(--bc2);
+  margin: 0;
+  transition: color 0.4s ease;
+}
+
+/* Value Cards Hover Interaction */
+.sh-about-values__card:hover {
+  transform: translateX(10px);
+  background-color: rgba(245, 166, 35, 0.02);
+  border-color: rgba(245, 166, 35, 0.15);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.sh-about-values__card:hover .sh-about-values__card-icon {
+  background-color: var(--p);
+  color: var(--b1);
+  border-color: var(--ph);
+  box-shadow: 0 0 18px rgba(245, 166, 35, 0.45);
+  transform: scale(1.08) rotate(8deg);
+}
+
+.sh-about-values__card:hover .sh-about-values__card-icon svg {
+  transform: scale(1.1);
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+
+.sh-about-values__card:hover .sh-about-values__card-label {
+  color: var(--p);
+  transform: translateX(2px);
+}
+
+.sh-about-values__card:hover .sh-about-values__card-desc {
+  color: var(--bc);
+}
+
+/* ── CTA button ─────────────────────────────────────────────── */
+.sh-about-values__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  align-self: flex-start;
+  background: var(--p);
+  color: var(--b1);
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 0.95rem 2.2rem;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  box-shadow: 0 10px 25px rgba(245, 166, 35, 0.25);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: background 0.3s ease, transform 0.3s var(--ease-spring), box-shadow 0.3s ease;
+}
+
+/* Running highlight glow in CTA */
+.sh-about-values__cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 30%;
+  height: 100%;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.35), transparent);
+  transform: skewX(-25deg);
+  transition: left 0.6s ease;
+  z-index: -1;
+}
+
+.sh-about-values__cta:hover {
+  background: var(--ph);
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(245, 166, 35, 0.4);
+}
+
+.sh-about-values__cta:hover::before {
+  left: 150%;
+}
+
+.sh-about-values__cta-phone-icon {
+  transition: transform 0.4s var(--ease-spring);
+}
+
+.sh-about-values__cta:hover .sh-about-values__cta-phone-icon {
+  transform: rotate(20deg) scale(1.15);
+}
+
+
+/* ── Cột Phải: Bảng điều khiển trực quan 3D ──────────────────── */
+.sh-about-values__right {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4.5rem 1.5rem;
+  min-height: 560px;
+}
+
+@media (min-width: 768px)  { .sh-about-values__right { padding: 5rem 3.5rem; } }
+@media (min-width: 1280px) { .sh-about-values__right { padding: 6.5rem 5.5rem; } }
+
+/* Ken Burns Background Image Div */
+.sh-about-values__right-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+  animation: ken-burns-slow 18s linear infinite alternate;
+  will-change: transform;
+}
+
+@keyframes ken-burns-slow {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.08) translate(1% 1%); }
+}
+
+/* Gradient overlay — tối dưới, gold tint phía trên */
+.sh-about-values__right-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(10, 10, 10, 0.95) 0%,
+    rgba(10, 10, 10, 0.55) 45%,
+    color-mix(in srgb, var(--p) 18%, rgba(10,10,10,0.3)) 100%
+  );
+  z-index: 1;
+}
+
+/* Drafting technical grids in right panel */
+.sh-about-values__right-grid-line {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.02);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.sh-about-values__right-grid-line--h {
+  top: 15%;
+  left: -5%;
+  width: 110%;
+  height: 1px;
+  border-top: 1px dashed rgba(245, 166, 35, 0.06);
+}
+
+.sh-about-values__right-grid-line--v {
+  left: 15%;
+  top: -5%;
+  height: 110%;
+  width: 1px;
+  border-left: 1px dashed rgba(245, 166, 35, 0.06);
+}
+
+/* Grid intersection markers '+' */
+.sh-about-values__right-marker {
+  position: absolute;
+  font-family: monospace, sans-serif;
+  font-size: 11px;
+  color: var(--p);
+  opacity: 0.25;
+  pointer-events: none;
+  z-index: 2;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.sh-about-values__right-marker--tl { top: 1.5rem; left: 1.5rem; }
+.sh-about-values__right-marker--br { bottom: 1.5rem; right: 1.5rem; }
+
+.sh-about-values__right:hover .sh-about-values__right-marker {
+  opacity: 0.8;
+  transform: scale(1.2);
+}
+
+/* Glassmorphic 3D Content Card with Gold Offset Border */
+.sh-about-values__glass-card {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 36rem;
+  background: rgba(20, 20, 20, 0.65);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 2.2rem 2rem;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7);
+  transition: transform 0.6s var(--ease-spring), box-shadow 0.6s ease, border-color 0.4s ease;
+}
+
+@media (min-width: 768px) {
+  .sh-about-values__glass-card {
+    padding: 3.2rem 3rem;
+  }
+}
+
+/* Gold architectural alignment bar left inside card */
+.sh-about-values__glass-card-border {
+  position: absolute;
+  top: 10%;
+  left: 0;
+  height: 80%;
+  width: 3px;
+  background: linear-gradient(to bottom, var(--p), transparent);
+  border-radius: 2px;
+  opacity: 0.8;
+  transition: height 0.6s ease;
+}
+
+/* Gold offset border outline outside the card */
+.sh-about-values__glass-card::before {
+  content: '';
+  position: absolute;
+  inset: -12px;
+  border: 1px solid var(--p);
+  border-radius: 16px;
+  pointer-events: none;
+  opacity: 0.35;
+  transition: inset 0.6s var(--ease-spring), border-color 0.4s ease, opacity 0.4s ease;
+  z-index: -1;
+}
+
+/* Right Panel Hover Interactions */
+.sh-about-values__right:hover .sh-about-values__glass-card {
+  transform: translateY(-8px) scale(1.01);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8);
+}
+
+.sh-about-values__right:hover .sh-about-values__glass-card::before {
+  inset: -18px;
+  border-color: var(--ph);
+  opacity: 0.8;
+}
+
+.sh-about-values__right:hover .sh-about-values__glass-card-border {
+  height: 90%;
+}
+
+.sh-about-values__right-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Glass Badge inside right card */
+.sh-about-values__right-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.95rem;
+  border: 1px solid color-mix(in srgb, var(--p) 35%, transparent);
+  border-radius: var(--radius-full);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--p);
+  background: color-mix(in srgb, var(--p) 8%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  align-self: flex-start;
+  margin-bottom: 0.4rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.4s ease, border-color 0.4s ease;
+}
+
+.sh-about-values__glass-card:hover .sh-about-values__right-badge {
+  border-color: var(--p);
+  background: color-mix(in srgb, var(--p) 12%, transparent);
+}
+
+.sh-about-values__right-badge svg {
+  animation: badge-star-pulse 3s infinite ease-in-out;
+}
+
+@keyframes badge-star-pulse {
+  0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.8; }
+  50% { transform: scale(1.15) rotate(90deg); opacity: 1; }
+}
+
+.sh-about-values__passion-title {
+  font-size: clamp(1.4rem, 2.5vw, 1.875rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--bc);
+  line-height: 1.25;
+  margin: 0;
+  letter-spacing: -0.01em;
+  /* Gold text gradient */
+  background: linear-gradient(135deg, var(--p) 20%, #ffd166 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.sh-about-values__rule {
+  width: 3.5rem;
+  height: 2px;
+  background: linear-gradient(90deg, var(--p), transparent);
+  border-radius: 1px;
+}
+
+.sh-about-values__passion-body {
+  font-size: 0.92rem;
+  line-height: 1.85;
+  color: var(--bc2);
+  margin: 0;
+}
+
+/* ── Responsive Stack ────────────────────────────────────────── */
+@media (max-width: 1023px) {
+  .sh-about-values {
+    grid-template-columns: 1fr;
+  }
+  
+  .sh-about-values__right {
+    min-height: 480px;
+  }
+}

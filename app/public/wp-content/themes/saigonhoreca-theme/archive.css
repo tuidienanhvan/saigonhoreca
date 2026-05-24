@@ -1,0 +1,25 @@
+/**
+ * Archive Page — Pure CSS
+ */
+
+/* ── Page wrapper ── */
+.sh-archive{min-height:100vh;padding-bottom:calc(var(--spacing) * 20);background:var(--bg);overflow-x:hidden}/* ── Hero Section ── */
+.sh-archive__hero{padding-inline:calc(var(--spacing) * 4);padding-top:calc(var(--spacing) * 20);padding-bottom:calc(var(--spacing) * 24);position:relative;box-shadow:inset 0 2px 4px rgba(0,0,0,0.06)}.sh-archive__hero-inner{z-index:10;margin-inline:auto;margin-block:calc(var(--spacing) * 0);text-align:center;max-width:56rem;position:relative}.sh-archive__badge{margin-bottom:calc(var(--spacing) * 6);border-radius:var(--radius-full);padding-inline:calc(var(--spacing) * 4);padding-block:calc(var(--spacing) * 1.5);font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height));--tw-font-weight:var(--font-weight-semibold);font-weight:var(--font-weight-semibold);--tw-tracking:var(--tracking-wide);letter-spacing:var(--tracking-wide);color:var(--bc);text-transform:uppercase;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);background:var(--bs);border:1px solid var(--bd);display:inline-block}.sh-archive__title{font-size:var(--text-4xl);line-height:var(--tw-leading,var(--text-4xl--line-height));--tw-font-weight:var(--font-weight-bold);line-height:1.15;font-weight:var(--font-weight-bold);color:var(--bc);text-shadow:var(--shadow);margin:0 0 1.5rem}
+
+@media (min-width: 768px) {.sh-archive__title{font-size:var(--text-5xl);line-height:var(--tw-leading,var(--text-5xl--line-height))}
+}.sh-archive__desc{max-width:42rem;font-size:var(--text-lg);line-height:var(--tw-leading,var(--text-lg--line-height));--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium);color:var(--bc2);margin:0 auto 1.5rem}
+
+@media (min-width: 768px) {.sh-archive__desc{font-size:var(--text-xl);line-height:var(--tw-leading,var(--text-xl--line-height))}
+}.sh-archive__count{margin:calc(var(--spacing) * 0);font-size:var(--text-base);line-height:var(--tw-leading,var(--text-base--line-height));--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium);color:var(--bc3)}/* ── Content Grid ── */
+.sh-archive__content{z-index:20;margin-inline:auto;margin-block:calc(var(--spacing) * 0);max-width:1200px;padding-inline:calc(var(--spacing) * 4);padding-top:calc(var(--spacing) * 12);padding-bottom:calc(var(--spacing) * 0);position:relative}.sh-archive__grid{gap:calc(var(--spacing) * 8);grid-template-columns:1fr;display:grid}
+
+@media (min-width: 768px) {.sh-archive__grid{grid-template-columns:1fr 1fr}
+}
+
+@media (min-width: 1024px) {/* Mặc định 3 cột nếu trang ko có sidebar */
+    .sh-archive__grid{grid-template-columns:1fr 1fr 1fr}/* Fix lỗi Post Card bị ép dẹt khi chia đất cho Sidebar */
+    .sh-with-sidebar__main .sh-archive__grid{grid-template-columns:1fr 1fr}
+}/* ── Pagination icon ── */
+.sh-archive__page-icon{height:calc(var(--spacing) * 5);width:calc(var(--spacing) * 5)}/* ── Empty State ── */
+.sh-archive__empty{border-radius:var(--radius-3xl);padding-inline:calc(var(--spacing) * 6);padding-block:calc(var(--spacing) * 20);text-align:center;background:var(--bg-card);border:1px solid var(--border-default-light);box-shadow:var(--shadow)}.sh-archive__empty-icon{margin-bottom:calc(var(--spacing) * 6);height:calc(var(--spacing) * 20);width:calc(var(--spacing) * 20);border-radius:var(--radius-full);background:var(--bg-alt);justify-content:center;align-items:center;display:inline-flex}.sh-archive__empty-svg{height:calc(var(--spacing) * 10);width:calc(var(--spacing) * 10);color:var(--text-1-muted)}.sh-archive__empty-title{font-size:var(--text-xl);line-height:var(--tw-leading,var(--text-xl--line-height));--tw-font-weight:var(--font-weight-bold);font-weight:var(--font-weight-bold);color:var(--text-1);margin:0 0 .5rem}.sh-archive__empty-desc{color:var(--text-1-3);margin:0 0 1.5rem}.sh-archive__empty-btn{border-radius:var(--radius);padding-inline:calc(var(--spacing) * 8);padding-block:calc(var(--spacing) * 3);--tw-font-weight:var(--font-weight-bold);font-weight:var(--font-weight-bold);color:var(--pc);transition-property:color,background-color,border-color,outline-color,text-decoration-color,fill,stroke,--tw-gradient-from,--tw-gradient-via,--tw-gradient-to;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration));--tw-duration:.2s;background:var(--brand);text-decoration-line:none;transition-duration:.2s;display:inline-block}.sh-archive__empty-btn:hover{background:var(--secondary)}/* ── Dark Mode ── */
+.dark .sh-archive{background:var(--bg)}.dark .sh-archive__empty{border-color:var(--border-default);background:var(--bg-card)}.dark .sh-archive__empty-icon{background:var(--bg-elevated)}.dark .sh-archive__empty-title{color:var(--text-1)}

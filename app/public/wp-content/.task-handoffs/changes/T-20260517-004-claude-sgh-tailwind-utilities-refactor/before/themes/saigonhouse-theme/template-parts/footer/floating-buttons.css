@@ -1,0 +1,109 @@
+/* Floating Buttons — Component CSS */
+#sh-floating-buttons {
+    @apply fixed flex flex-col gap-2.5 items-center [bottom:16px] [right:16px] [z-index:var(--z-floating-btns)] [transition:bottom_0.3s_ease] [max-height:calc(100dvh_-_100px)];
+    /*
+     * Sticky safety net — never let the stack grow taller than the viewport
+     * minus the mobile-nav reservation, otherwise bottom buttons get clipped
+     * behind the mobile nav (`.sh-mnav`).
+     */
+}
+#back-to-top {
+    @apply hidden opacity-0 w-12 h-12 rounded-full items-center justify-center relative cursor-pointer [background:var(--bg-card)] [box-shadow:0_2px_12px_var(--shadow)] [transition:opacity_0.3s,_transform_0.3s];
+}
+#back-to-top:hover {
+    @apply [transform:translateY(-3px)] [box-shadow:0_4px_20px_var(--shadow)];
+}
+#back-to-top .sh-scroll-ring {
+    @apply absolute w-full h-full pointer-events-none [inset:0] [transform:rotate(-90deg)];
+}
+#back-to-top .sh-scroll-track {
+    @apply [fill:none] [stroke:var(--border-default)] [stroke-width:2];
+}
+#back-to-top .sh-scroll-progress {
+    @apply [fill:none] [stroke:var(--brand)] [stroke-width:2.5] [stroke-linecap:round] [stroke-dasharray:100,_100] [stroke-dashoffset:100] [transition:none];
+}
+#sh-toggle {
+    @apply w-12 h-12 rounded-full cursor-pointer flex items-center justify-center transition-all duration-300 relative [background:linear-gradient(135deg,_var(--brand),_#059669)] [border:none] [box-shadow:0_3px_16px_rgba(0,125,61,0.4)];
+}
+#sh-toggle:hover {
+    @apply [transform:translateY(-2px)] [box-shadow:0_5px_20px_rgba(0,125,61,0.45)];
+}
+#sh-ic-chat, #sh-ic-x {
+    @apply transition-all duration-300;
+}
+#sh-ic-x {
+    @apply absolute opacity-0 [transform:rotate(-90deg)_scale(0.5)];
+}
+#sh-badge {
+    @apply absolute w-2.5 h-2.5 rounded-full [top:-1px] [right:-1px] [background:var(--danger)] [border:2px_solid_var(--bg-card)];
+}
+.sh-phone-float {
+    @apply w-12 h-12 rounded-full flex items-center justify-center transition-transform duration-200 relative overflow-hidden [background:var(--danger)] [box-shadow:0_3px_12px_rgba(255,0,0,0.3)];
+}
+.sh-phone-float:hover {
+    @apply [transform:scale(1.1)];
+}
+.sh-zalo-btn {
+    @apply flex items-center justify-center w-12 h-12 rounded-full overflow-hidden transition-transform duration-300 shrink-0 [background:var(--bg-card)] [box-shadow:0_4px_12px_rgba(0,0,0,0.12)];
+}
+.sh-zalo-btn:hover {
+    @apply [transform:scale(1.1)];
+}
+.sh-zalo-btn__img {
+    @apply w-full h-full object-cover;
+}
+
+.dark .sh-zalo-btn {
+    @apply [background:var(--bg-elevated)];
+}
+
+/* Draggable — visual states */
+#sh-floating-buttons {
+    @apply [cursor:grab] [touch-action:none] [user-select:none] [-webkit-user-select:none];
+    /* Ngăn browser scroll khi drag */
+}
+#sh-floating-buttons.sh-fab-dragging {
+    @apply opacity-85 [cursor:grabbing] [transform:scale(0.95)] [filter:drop-shadow(0_8px_25px_rgba(0,0,0,0.3))];
+}
+#sh-floating-buttons a,
+#sh-floating-buttons button {
+    @apply [cursor:inherit];
+    /* Kế thừa cursor grab từ container */
+}
+/* Reset cursor khi hover vào nút (nếu không đang drag) */
+#sh-floating-buttons:not(.sh-fab-dragging) a:hover,
+#sh-floating-buttons:not(.sh-fab-dragging) button:hover {
+    @apply cursor-pointer;
+}
+
+/*
+ * ─── Mobile (≤ 767px) — draggable but constrained ──────────────────────
+ *
+ * Drag is allowed on mobile (user request). The boundary enforcement lives
+ * in the JS handler (applyPosition + getBounds) which clamps Y to never go
+ * past `viewportHeight - stackHeight - mobileNavHeight - margin`. The CSS
+ * here only sets the FIRST-PAINT anchor and compact sizing — the inline
+ * style written by the drag handler (top/left/right/bottom) takes over
+ * once the user drags.
+ */
+@media (max-width: 767px) {
+    #sh-floating-buttons {
+    @apply [right:12px] [bottom:calc(65px_+_env(safe-area-inset-bottom,_0px))] [gap:8px] [max-height:calc(100dvh_-_180px)];
+    /*
+         * Nav height ~60px (icon + label + 6px×2 padding) + 5px gap +
+         * safe-area-inset-bottom for iOS home-indicator. JS uses the same
+         * 65px constant when clamping drag bounds so the visual gap stays
+         * 5px regardless of whether the user dragged or not.
+         */
+}
+    /* Compact button sizes — saves ~32px vertical on a 4-button stack */
+    #sh-floating-buttons #back-to-top,
+    #sh-floating-buttons #sh-toggle,
+    #sh-floating-buttons .sh-phone-float,
+    #sh-floating-buttons .sh-zalo-btn {
+    @apply [width:40px] [height:40px];
+}
+    #sh-floating-buttons .sh-zalo-btn {
+    @apply [width:2.5rem] [height:2.5rem];
+}
+}

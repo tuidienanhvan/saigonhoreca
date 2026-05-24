@@ -1,0 +1,204 @@
+/**
+ * Sidebar — Clean, Focus-Driven UI
+ *
+ * "Mục tiêu là GIÁ" - The design highlights the Price CTA aggressively
+ * using Apple-like soft palettes, deep contrasts, and clean paddings.
+ */
+
+.sh-sidebar {
+    @apply w-full flex flex-col gap-8 relative z-10;
+}
+
+/* ───────────────────────────── Widget Card ─────────────────────────── */
+.sh-sidebar__widget {
+    @apply rounded-3xl py-6 px-5 transition-all duration-300 [background:var(--bg-card)] [border:1px_solid_color-mix(in_srgb,_var(--border-default)_40%,_transparent)] [box-shadow:0_4px_24px_-10px_color-mix(in_srgb,_var(--text-1)_10%,_transparent)];
+}
+
+.sh-sidebar__widget:hover {
+    @apply [box-shadow:0_12px_32px_-12px_color-mix(in_srgb,_var(--text-1)_15%,_transparent)];
+}
+
+.sh-sidebar__widget-title {
+    @apply font-extrabold uppercase tracking-wider text-lg flex items-center gap-3 [color:var(--text-1)] [margin:0_0_1.5rem];
+}
+
+/* The Green-Yellow Indicator Pill */
+.sh-sidebar__title-bar {
+    @apply w-1.5 h-6 rounded-full shrink-0 [background:linear-gradient(to_bottom,_#10b981_0%,_#eab308_100%)] [box-shadow:0_2px_4px_color-mix(in_srgb,_#10b981_40%,_transparent)];
+}
+
+
+/* ───────────────────── Service List (Fallback Menu) ─────────────────────── */
+.sh-sidebar__service-list {
+    @apply list-none p-0 m-0 flex flex-col gap-4;
+}
+
+/* Standard Items (Xây nhà trọn gói, Thiết kế kiến trúc...) */
+.sh-sidebar__service-link {
+    @apply flex items-center gap-3.5 py-3.5 px-4 rounded-xl no-underline font-bold transition-all [color:var(--text-1-2)] [font-size:0.9375rem] [background:color-mix(in_srgb,_var(--bg-alt)_80%,_transparent)] [border:1px_solid_transparent];
+    /* Soft faint grey */
+}
+
+.sh-sidebar__service-icon {
+    @apply w-5 h-5 transition-all shrink-0 [color:var(--text-1-3)];
+}
+
+.sh-sidebar__service-link:hover {
+    @apply [background:color-mix(in_srgb,_var(--bg-alt)_100%,_transparent)] [color:var(--brand)] [transform:translateX(4px)];
+}
+
+.sh-sidebar__service-link:hover .sh-sidebar__service-icon {
+    @apply [color:var(--brand)] [transform:translateX(2px)];
+}
+
+/* 🎯 CHIẾN LƯỢC: MỤC TIÊU LÀ "GIÁ" (Bảng Báo Giá Chi Tiết) */
+.sh-sidebar__service-link--primary {
+    @apply mt-2 rounded-2xl [background:color-mix(in_srgb,_#f4f5eb_90%,_var(--bg-card))] [border:1px_solid_color-mix(in_srgb,_#10b981_25%,_transparent)] [color:#1e293b] [font-weight:800];
+    /* Pale cream/green background just like screenshot */
+    /* Slightly more rounded to stand out */
+    /* Strong dark text for the cream background in light mode */
+}
+
+/* Dark mode support using .dark class */
+.dark .sh-sidebar__service-link--primary {
+    @apply [background:color-mix(in_srgb,_#10b981_15%,_var(--bg-card))] [color:var(--text-1)] [border-color:color-mix(in_srgb,_#10b981_40%,_transparent)];
+    /* Use theme text color (white) on dark green background */
+}
+
+.sh-sidebar__service-link--primary .sh-sidebar__service-icon {
+    @apply [color:#059669];
+    /* Distinctive Darker Green */
+}
+
+.sh-sidebar__service-link--primary:hover {
+    @apply [background:color-mix(in_srgb,_#10b981_15%,_var(--bg-card))] [border-color:color-mix(in_srgb,_#10b981_50%,_transparent)] [transform:translateY(-2px)] [box-shadow:0_6px_16px_-4px_color-mix(in_srgb,_#10b981_25%,_transparent)] [color:var(--text-1)];
+}
+
+.sh-sidebar__service-link--primary:hover .sh-sidebar__service-icon {
+    @apply [color:#047857] [transform:scale(1.1)_rotate(5deg)];
+}
+
+/* ───────────────────────── CTA List (wp_nav_menu) ──────────────────── */
+/* Re-applying similar clean standard to wp menu if user uses it instead of fallback */
+.sh-sidebar__cta-list {
+    @apply flex flex-col gap-4 list-none p-0 m-0;
+}
+
+.sh-sidebar__cta-item {
+    @apply flex items-center gap-4 py-4 px-5 rounded-xl no-underline font-bold transition-all cursor-pointer [color:var(--text-1-2)] [font-size:0.9375rem] [background:color-mix(in_srgb,_var(--bg-alt)_80%,_transparent)] [border:1px_solid_transparent];
+}
+
+.sh-sidebar__cta-item:hover {
+    @apply [background:color-mix(in_srgb,_var(--bg-alt)_100%,_transparent)] [transform:translateX(4px)];
+}
+
+.sh-sidebar__cta-icon {
+    @apply w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-all [background:var(--bg-card)] [color:var(--text-1-3)] [border:1px_solid_color-mix(in_srgb,_var(--border-default)_40%,_transparent)];
+}
+
+.sh-sidebar__cta-item:hover .sh-sidebar__cta-icon {
+    @apply [color:var(--brand)] [border-color:color-mix(in_srgb,_var(--brand)_30%,_transparent)] [transform:scale(1.1)_rotate(-5deg)];
+}
+
+.sh-sidebar__cta-svg {
+    @apply w-4 h-4;
+}
+
+.sh-sidebar__cta-label {
+    @apply flex-1;
+}
+
+.sh-sidebar__cta-item:hover .sh-sidebar__cta-label {
+    @apply [color:var(--brand)];
+}
+
+
+/* ───────────────────── Widget Area (dynamic_sidebar) ───────────────── */
+.sh-sidebar__widgets-area {
+    @apply flex flex-col gap-6;
+}
+
+.sh-sidebar__widget--wp ul,
+.sh-sidebar__widget--wp ol {
+    @apply list-none p-0 m-0 flex flex-col gap-2;
+}
+
+.sh-sidebar__widget--wp li {
+    @apply py-2 px-0 [border-bottom:1px_solid_color-mix(in_srgb,_var(--border-default)_40%,_transparent)];
+}
+
+.sh-sidebar__widget--wp li:last-child {
+    @apply [border-bottom:0];
+}
+
+.sh-sidebar__widget--wp a {
+    @apply no-underline inline-block [color:var(--text-1-2)] [transition:color_0.2s_ease,_transform_0.2s_ease];
+}
+
+.sh-sidebar__widget--wp a:hover {
+    @apply [color:var(--brand)] [transform:translateX(4px)];
+}
+
+/* ─────────────────────── Sticky Contact Banner ─────────────────────── */
+.sh-sidebar__sticky {
+    @apply sticky z-10 [top:6rem];
+}
+
+.sh-sidebar__contact {
+    @apply rounded-3xl text-center relative overflow-hidden isolate [background:var(--_contact-bg)] [background-image:radial-gradient(_circle_at_top_left,_color-mix(in_srgb,_var(--brand)_40%,_transparent)_0%,_transparent_60%_)] [padding:2.25rem_1.5rem] [box-shadow:0_10px_25px_-5px_color-mix(in_srgb,_var(--brand-dark)_40%,_transparent)];
+    --_contact-bg:    color-mix(in srgb, var(--brand-dark) 90%, #000);
+    --_contact-text:  #ffffff;
+    --_contact-muted: color-mix(in srgb, #ffffff 75%, transparent);
+}
+
+.sh-sidebar__contact-icon-wrap {
+    @apply rounded-full flex items-center justify-center [width:3.5rem] [height:3.5rem] [background:color-mix(in_srgb,_#ffffff_15%,_transparent)] [backdrop-filter:blur(8px)] [-webkit-backdrop-filter:blur(8px)] [margin:0_auto_1.25rem] [color:var(--_contact-text)] [border:1px_solid_color-mix(in_srgb,_#ffffff_20%,_transparent)];
+}
+
+.sh-sidebar__contact-icon {
+    @apply w-6 h-6;
+}
+
+.sh-sidebar__contact-title {
+    @apply font-extrabold uppercase tracking-wider text-lg [color:var(--_contact-text)] [margin:0_0_0.5rem];
+}
+
+.sh-sidebar__contact-desc {
+    @apply leading-normal [font-size:0.9375rem] [color:var(--_contact-muted)] [margin:0_0_1.5rem];
+}
+
+/* ── Hotline ── */
+.sh-sidebar__contact-phone {
+    @apply inline-flex items-center gap-2 py-3 px-5 rounded-full font-bold text-base no-underline transition-all [margin:0_0_1rem] [color:var(--_contact-text)] [background:color-mix(in_srgb,_#ffffff_12%,_transparent)] [border:1px_solid_color-mix(in_srgb,_#ffffff_25%,_transparent)];
+}
+
+.sh-sidebar__contact-phone:hover {
+    @apply [transform:translateY(-2px)] [background:color-mix(in_srgb,_#ffffff_20%,_transparent)] [border-color:color-mix(in_srgb,_#ffffff_40%,_transparent)];
+}
+
+.sh-sidebar__contact-phone-icon {
+    @apply w-4 h-4;
+}
+
+.sh-sidebar__contact-phone-number {
+    @apply [font-variant-numeric:tabular-nums];
+}
+
+/* ── Primary CTA button ── */
+.sh-sidebar__contact-btn {
+    @apply flex items-center justify-center w-full font-extrabold p-4 rounded-xl no-underline uppercase tracking-wider gap-2 transition-all [background:color-mix(in_srgb,_#10b981_100%,_transparent)] [color:#ffffff] [font-size:0.9375rem] [box-shadow:0_8px_16px_-4px_color-mix(in_srgb,_#10b981_50%,_transparent)];
+    /* Strong Green CTA */
+}
+
+.sh-sidebar__contact-btn:hover {
+    @apply [background:#059669] [transform:translateY(-2px)] [box-shadow:0_12px_20px_-4px_color-mix(in_srgb,_#10b981_60%,_transparent)];
+    /* Darker green */
+}
+
+.sh-sidebar__contact-btn-icon {
+    @apply transition-transform [width:1.125rem] [height:1.125rem];
+}
+
+.sh-sidebar__contact-btn:hover .sh-sidebar__contact-btn-icon {
+    @apply [transform:translateX(4px)];
+}

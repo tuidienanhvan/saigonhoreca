@@ -1,0 +1,71 @@
+/**
+ * Shared text block — `.pp-text` / `.pp-text--center`.
+ *
+ * Dùng cho heading + divider + body trong các pillar shared partials
+ * (_cta.php, _related.php). 100% tokens, không hardcode.
+ *
+ * @package SaigonHoreca
+ */
+
+/* Shared container — chuẩn grid 12-col 1280px (= --sh-content-max).
+   Override các per-pillar `.pp__container { max-width: 1200px }` lặp lại
+   trong từng related.css. */
+.pp__container {
+  max-width: 1280px !important;
+  margin: 0 auto;
+  padding-inline: 1rem;
+}
+@media (min-width: 768px) {
+  .pp__container {
+    padding-inline: 2rem;
+  }
+}
+
+.pp-text {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.pp-text--center {
+  text-align: center;
+}
+
+.pp-text__eyebrow {
+  display: inline-block;
+  margin-bottom: 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.pp-text__title {
+  margin: 0 0 1.5rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--bc);
+}
+
+.pp-text__divider {
+  display: block;
+  width: 56px;
+  height: 2px;
+  margin: 0 0 1.5rem;
+  background: var(--gold);
+  border-radius: var(--radius-full);
+}
+.pp-text__divider--center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pp-text__body p {
+  margin: 0 0 1.25rem;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--bc2);
+}
+.pp-text__body p:last-child { margin-bottom: 0; }

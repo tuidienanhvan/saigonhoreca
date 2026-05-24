@@ -1,0 +1,169 @@
+/**
+ * Home — Services (gộp 4 blocks).
+ *
+ * Layout 2-col image-text alternating, nền đen liền mạch.
+ * Match production saigonhoreca.vn.
+ */
+
+/* ── Wrapper ── */
+.sh-services {
+    background: #0a0a0a;
+    color: #fff;
+}
+
+/* ── Block (mỗi service là 1 block bên trong services wrapper) ── */
+.sh-services__block {
+    padding: 4.5rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+.sh-services__block:last-child {
+    border-bottom: none;
+    padding-bottom: 6rem;
+}
+.sh-services__block:first-child {
+    padding-top: 6rem;
+}
+@media (min-width: 768px) {
+    .sh-services__block { padding: 6rem 0; }
+    .sh-services__block:first-child { padding-top: 7rem; }
+    .sh-services__block:last-child { padding-bottom: 7rem; }
+}
+
+/* ── 2-col grid ── */
+.sh-services__inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    align-items: center;
+}
+@media (min-width: 768px) {
+    .sh-services__inner {
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        padding: 0 2rem;
+    }
+}
+@media (min-width: 1280px) {
+    .sh-services__inner { gap: 5rem; }
+}
+
+/* Reverse: image first, copy second */
+.sh-services__block--reverse .sh-services__copy  { order: 2; }
+.sh-services__block--reverse .sh-services__media { order: 1; }
+
+/* ── Eyebrow vàng ── */
+.sh-services__eyebrow {
+    display: inline-block;
+    margin-bottom: 0.875rem;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #f5a623;
+}
+
+/* ── Title (trắng + accent vàng) ── */
+.sh-services__title {
+    margin: 0 0 1.5rem;
+    font-family: var(--font-display, "Lexend", sans-serif);
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 700;
+    line-height: 1.25;
+    text-transform: uppercase;
+    color: #fff;
+    letter-spacing: 0.01em;
+}
+
+/* ── Description (chữ trắng mờ + bold trắng) ── */
+.sh-services__desc {
+    margin: 0 0 1rem;
+    font-size: 0.9375rem;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.72);
+}
+.sh-services__desc:last-of-type { margin-bottom: 0; }
+.sh-services__desc strong {
+    color: #fff;
+    font-weight: 600;
+}
+@media (min-width: 768px) {
+    .sh-services__desc { font-size: 1rem; }
+}
+
+/* ── CTA (phone số + label) ── */
+.sh-services__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 1.75rem;
+    padding: 0.875rem 1.5rem;
+    background: rgba(245, 166, 35, 0.08);
+    border: 1px solid rgba(245, 166, 35, 0.35);
+    border-radius: 6px;
+    color: #fff;
+    text-decoration: none;
+    transition: background 0.25s, border-color 0.25s, transform 0.15s;
+}
+.sh-services__cta:hover {
+    background: rgba(245, 166, 35, 0.15);
+    border-color: #f5a623;
+    color: #fff;
+    transform: translateY(-1px);
+}
+.sh-services__cta svg {
+    width: 22px;
+    height: 22px;
+    color: #f5a623;
+    flex-shrink: 0;
+}
+.sh-services__cta-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+.sh-services__cta-text strong {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #f5a623;
+}
+.sh-services__cta-text em {
+    margin-top: 0.25rem;
+    font-style: normal;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.02em;
+}
+
+/* ── Media (image) ──
+   Bo góc nghệ thuật asymmetric "leaf": top-left + bottom-right bo to.
+   Block reverse lật ngược pattern để cân đối thị giác.
+   Tĩnh hoàn toàn — không animate khi scroll/hover. */
+.sh-services__media {
+    position: relative;
+    overflow: hidden;
+    border-radius: 64px 12px 64px 12px;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
+}
+.sh-services__block--reverse .sh-services__media {
+    border-radius: 12px 64px 12px 64px;
+}
+
+.sh-services__media img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
+@media (max-width: 640px) {
+    .sh-services__media,
+    .sh-services__block--reverse .sh-services__media {
+        border-radius: 32px 8px 32px 8px;
+    }
+}

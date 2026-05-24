@@ -1,0 +1,624 @@
+/* ── sh-about-partners ────────────────────────────────────────── */
+.sh-about-partners {
+  background: var(--b1);
+  padding: 6.5rem 1.25rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle background accent glow behind the quotes */
+.sh-about-partners::before {
+  content: '';
+  position: absolute;
+  bottom: 10%;
+  right: -5%;
+  width: 40rem;
+  height: 40rem;
+  background: radial-gradient(circle, color-mix(in srgb, var(--p) 3.5%, transparent) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.sh-about-partners__inner {
+  max-width: var(--sh-content-max, 80rem);
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 5.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Heading ───────────────────────────────────────────────────── */
+.sh-about-partners__heading-wrap {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sh-about-partners__eyebrow {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--p);
+  margin-bottom: 0.75rem;
+}
+
+.sh-about-partners__heading {
+  font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--bc);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+/* Gold dot divider identical to intro section */
+.sh-about-partners__heading-rule {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 1.5rem 0 0 0;
+}
+
+.sh-about-partners__heading-rule-line {
+  width: 3rem;
+  height: 2px;
+  background: linear-gradient(90deg, var(--p), transparent);
+}
+
+.sh-about-partners__heading-rule-line:last-child {
+  background: linear-gradient(-90deg, var(--p), transparent);
+}
+
+.sh-about-partners__heading-rule-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--p);
+  border-radius: var(--radius-full);
+  box-shadow: 0 0 8px var(--p);
+}
+
+
+/* ── Logo Grid: Reflective Tech Matrix ────────────────────────── */
+.sh-about-partners__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0; /* Zero gap for seamless joint grid */
+  border: 1px solid rgba(245, 166, 35, 0.05);
+  background: rgba(255, 255, 255, 0.002);
+}
+
+@media (min-width: 480px)  { .sh-about-partners__grid { grid-template-columns: repeat(4, 1fr); } }
+@media (min-width: 768px)  { .sh-about-partners__grid { grid-template-columns: repeat(6, 1fr); } }
+
+.sh-about-partners__logo-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 6.5rem;
+  border: 1px solid rgba(245, 166, 35, 0.05);
+  padding: 1.2rem;
+  position: relative;
+  /* Use negative margin to collapse double borders */
+  margin-top: -1px;
+  margin-left: -1px;
+  background: transparent;
+  transition: background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+  overflow: visible; /* to show overflowed markers */
+}
+
+/* Corner Technical Markers '+' */
+.sh-about-partners__cell-marker {
+  position: absolute;
+  font-family: monospace, sans-serif;
+  font-size: 11px;
+  color: var(--p);
+  opacity: 0.15;
+  pointer-events: none;
+  line-height: 1;
+  transition: opacity 0.4s ease, text-shadow 0.4s ease, transform 0.4s var(--ease-spring);
+  z-index: 6;
+}
+
+.sh-about-partners__cell-marker--tl { top: -6px; left: -4px; }
+.sh-about-partners__cell-marker--tr { top: -6px; right: -4px; }
+.sh-about-partners__cell-marker--bl { bottom: -6px; left: -4px; }
+.sh-about-partners__cell-marker--br { bottom: -6px; right: -4px; }
+
+/* ── Laser Gold Hairline Borders ── */
+.sh-about-partners__laser-border {
+  position: absolute;
+  background: linear-gradient(var(--deg, 90deg), var(--p), #ffd166);
+  transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 5;
+  opacity: 0;
+}
+
+.sh-about-partners__laser-border--t {
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  --deg: 90deg;
+  transition-delay: 0s;
+}
+
+.sh-about-partners__laser-border--r {
+  top: 0;
+  right: 0;
+  width: 1px;
+  height: 0;
+  --deg: 180deg;
+  transition-delay: 0.08s;
+}
+
+.sh-about-partners__laser-border--b {
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 1px;
+  --deg: 270deg;
+  transition-delay: 0.16s;
+}
+
+.sh-about-partners__laser-border--l {
+  bottom: 0;
+  left: 0;
+  width: 1px;
+  height: 0;
+  --deg: 360deg;
+  transition-delay: 0.24s;
+}
+
+/* Grid Hover Interaction */
+.sh-about-partners__logo-cell:hover {
+  background: radial-gradient(circle at center, rgba(245, 166, 35, 0.05) 0%, transparent 70%);
+  border-color: rgba(245, 166, 35, 0.2);
+  box-shadow: inset 0 0 15px rgba(245, 166, 35, 0.03);
+  z-index: 10;
+}
+
+/* Laser Activation on Hover */
+.sh-about-partners__logo-cell:hover .sh-about-partners__laser-border {
+  opacity: 1;
+}
+.sh-about-partners__logo-cell:hover .sh-about-partners__laser-border--t { width: 100%; }
+.sh-about-partners__logo-cell:hover .sh-about-partners__laser-border--r { height: 100%; }
+.sh-about-partners__logo-cell:hover .sh-about-partners__laser-border--b { width: 100%; }
+.sh-about-partners__logo-cell:hover .sh-about-partners__laser-border--l { height: 100%; }
+
+.sh-about-partners__logo-cell:hover .sh-about-partners__cell-marker {
+  opacity: 1;
+  color: var(--p);
+  text-shadow: 0 0 8px var(--p);
+  transform: scale(1.3) rotate(45deg);
+}
+
+/* Logo Image Styling & Hover Glow */
+.sh-about-partners__logo-cell img {
+  max-height: 3rem;
+  max-width: 100%;
+  object-fit: contain;
+  /* Phép thuật lọc và đảo ngược màu sắc cho ảnh JPG nền trắng đục */
+  filter: grayscale(1) invert(1) contrast(1.4) brightness(0.95);
+  mix-blend-mode: screen; /* Giúp màu đen (sau khi đảo ngược) tàng hình 100% */
+  opacity: 0.5; /* Hơi mờ ẩn nhẹ dưới nền tối sang trọng */
+  transition: filter 0.4s ease, opacity 0.4s ease, transform 0.4s var(--ease-spring);
+}
+
+.sh-about-partners__logo-cell:hover img {
+  /* Chuyển thành sắc vàng hoàng kim sang trọng rực rỡ khi hover */
+  filter: invert(1) sepia(1) saturate(6) hue-rotate(15deg) brightness(1.25) contrast(1.2);
+  mix-blend-mode: screen;
+  opacity: 1;
+  transform: scale(1.08);
+}
+
+
+/* ── Quote Panel: 3D Overlapping Collage & Stats ─────────────── */
+.sh-about-partners__quote-panel {
+  display: grid;
+  gap: 4.5rem;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+@media (min-width: 1024px) {
+  .sh-about-partners__quote-panel {
+    grid-template-columns: 5fr 7fr;
+    gap: 6rem;
+  }
+}
+
+/* Left Column: 3D Image Collage & Drafting */
+.sh-about-partners__images-collage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.25;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  perspective: 1000px; /* Enable 3D space */
+}
+
+@media (max-width: 640px) {
+  .sh-about-partners__images-collage {
+    margin-bottom: 2rem;
+  }
+}
+
+/* Decorative blueprint drafting grid lines overlay */
+.sh-about-partners__collage-grid-line {
+  position: absolute;
+  background: rgba(245, 166, 35, 0.02);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.sh-about-partners__collage-grid-line--h {
+  top: 20%;
+  left: -10%;
+  width: 120%;
+  height: 1px;
+  border-top: 1px dashed rgba(245, 166, 35, 0.06);
+}
+
+.sh-about-partners__collage-grid-line--v {
+  left: 75%;
+  top: -10%;
+  height: 120%;
+  width: 1px;
+  border-left: 1px dashed rgba(245, 166, 35, 0.06);
+}
+
+/* Blueprint drafting axis markers */
+.sh-about-partners__collage-axis {
+  position: absolute;
+  font-family: monospace;
+  font-size: 10px;
+  color: var(--p);
+  opacity: 0.25;
+  pointer-events: none;
+  letter-spacing: 0.1em;
+  z-index: 0;
+  transition: opacity 0.4s ease, color 0.4s ease;
+}
+
+.sh-about-partners__collage-axis--x {
+  top: 18%;
+  left: 5%;
+  border-bottom: 1px solid rgba(245, 166, 35, 0.15);
+  padding-bottom: 2px;
+}
+
+.sh-about-partners__collage-axis--y {
+  left: 76%;
+  top: 40%;
+  writing-mode: vertical-rl;
+  border-left: 1px solid rgba(245, 166, 35, 0.15);
+  padding-left: 2px;
+}
+
+/* Technical Dimension Labels */
+.sh-about-partners__dim-label {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(245, 166, 35, 0.3);
+  color: var(--bc);
+  font-family: monospace;
+  font-size: 9px;
+  padding: 2px 6px;
+  border-radius: 2px;
+  pointer-events: none;
+  letter-spacing: 0.05em;
+  opacity: 0.55;
+  z-index: 4;
+  transition: opacity 0.4s ease, border-color 0.4s ease;
+}
+
+.sh-about-partners__dim-label--main {
+  bottom: 10px;
+  left: 10px;
+}
+
+.sh-about-partners__dim-label--accent {
+  top: 10px;
+  right: 10px;
+}
+
+/* Main Image Frame (Large background) */
+.sh-about-partners__img-main-frame {
+  position: relative;
+  width: 80%;
+  aspect-ratio: 4 / 3;
+  border-radius: 8px;
+  overflow: visible; /* to show outline */
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.65);
+  background: var(--b2);
+  z-index: 1;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.6s ease;
+}
+
+.sh-about-partners__img-main-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+  filter: contrast(105%) brightness(0.95);
+  transition: filter 0.6s ease;
+}
+
+/* Luxury gold offset outline border (Double-frame effect) */
+.sh-about-partners__img-main-frame::before {
+  content: '';
+  position: absolute;
+  inset: -12px;
+  border: 1px solid var(--p);
+  border-radius: 12px;
+  pointer-events: none;
+  transition: inset 0.6s var(--ease-spring), border-color 0.4s ease;
+  z-index: -1;
+  opacity: 0.6;
+}
+
+.sh-about-partners__img-main-frame::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border: 1px solid rgba(245, 166, 35, 0.2);
+  border-radius: 10px;
+  pointer-events: none;
+  transition: inset 0.6s var(--ease-spring);
+  z-index: -1;
+}
+
+/* Technical Crosshairs inside Main Image */
+.sh-about-partners__tech-cross {
+  position: absolute;
+  top: 15%;
+  left: 15%;
+  width: 24px;
+  height: 24px;
+  pointer-events: none;
+  opacity: 0.2;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.sh-about-partners__tech-cross::before,
+.sh-about-partners__tech-cross::after {
+  content: '';
+  position: absolute;
+  background: var(--p);
+}
+
+.sh-about-partners__tech-cross::before {
+  top: 11px;
+  left: 0;
+  width: 24px;
+  height: 1px;
+}
+
+.sh-about-partners__tech-cross::after {
+  left: 11px;
+  top: 0;
+  width: 1px;
+  height: 24px;
+}
+
+/* Accent Secondary Image Frame (Small overlay) - Kính mờ dày đè lớp */
+.sh-about-partners__img-accent-frame {
+  position: absolute;
+  bottom: -15px;
+  right: 2%;
+  width: 44%;
+  aspect-ratio: 4 / 3;
+  border-radius: 8px;
+  /* Viền kính mờ vật lý đặc trưng */
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(245, 166, 35, 0.25);
+  padding: 4px; /* Tạo khoảng hở kính mờ quanh ảnh */
+  box-shadow: 0 35px 70px rgba(0, 0, 0, 0.85);
+  z-index: 3;
+  transform: translateZ(30px); /* Lift in 3D space */
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.6s ease, border-color 0.4s ease;
+}
+
+.sh-about-partners__img-accent-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 6px;
+  display: block;
+  filter: brightness(0.8);
+  transition: filter 0.6s ease, transform 0.6s ease;
+}
+
+/* Collage Hover States (3D Parallax Effect) */
+.sh-about-partners__images-collage:hover .sh-about-partners__img-main-frame {
+  transform: rotateY(-6deg) rotateX(4deg);
+  box-shadow: 0 45px 85px rgba(0, 0, 0, 0.8);
+}
+
+.sh-about-partners__images-collage:hover .sh-about-partners__img-main-frame::before {
+  inset: -18px;
+  border-color: var(--ph);
+  opacity: 1;
+}
+
+.sh-about-partners__images-collage:hover .sh-about-partners__img-main-frame img {
+  filter: contrast(100%) brightness(1);
+}
+
+.sh-about-partners__images-collage:hover .sh-about-partners__img-accent-frame {
+  transform: translateZ(50px) translateY(-8px) rotateY(-2deg);
+  box-shadow: 0 50px 95px rgba(0, 0, 0, 0.95);
+  border-color: var(--p);
+}
+
+.sh-about-partners__images-collage:hover .sh-about-partners__img-accent-frame img {
+  filter: brightness(1);
+  transform: scale(1.04);
+}
+
+.sh-about-partners__images-collage:hover .sh-about-partners__tech-cross {
+  opacity: 0.8;
+  transform: rotate(90deg);
+}
+
+.sh-about-partners__images-collage:hover .sh-about-partners__collage-axis {
+  opacity: 0.65;
+  color: var(--ph);
+}
+
+.sh-about-partners__images-collage:hover .sh-about-partners__dim-label {
+  opacity: 0.95;
+  border-color: var(--p);
+}
+
+
+/* ── Quote Body & Text ─────────────────────────────────────────── */
+.sh-about-partners__quote-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+
+/* Large decorative SVG quote mark */
+.sh-about-partners__quote-svg {
+  width: 3.8rem;
+  height: auto;
+  color: var(--p);
+  opacity: 0.18;
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 6px rgba(245, 166, 35, 0.35));
+}
+
+.sh-about-partners__blockquote {
+  font-size: clamp(1.1rem, 2vw, 1.45rem);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.85;
+  color: var(--bc);
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, var(--p) 20%, #fff 50%, var(--p) 80%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 800;
+  animation: shine 6s linear infinite;
+}
+
+@keyframes shine {
+  to { background-position: 200% center; }
+}
+
+.sh-about-partners__quote-rule {
+  width: 4rem;
+  height: 2px;
+  background: linear-gradient(90deg, var(--p), transparent);
+  border-radius: 1px;
+}
+
+.sh-about-partners__quote-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.sh-about-partners__quote-name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--bc);
+  letter-spacing: 0.03em;
+}
+
+.sh-about-partners__quote-role {
+  font-size: 0.8rem;
+  color: var(--bc3);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+
+/* ── Glassmorphic Stats Row - Luxury Glass Box ─────────────────── */
+.sh-about-partners__stats {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  border-top: 1px solid rgba(245, 166, 35, 0.12);
+  padding-top: 2.2rem;
+  margin-top: 0.5rem;
+}
+
+.sh-about-partners__stat-card {
+  flex-grow: 1;
+  flex-basis: calc(33.333% - 1.5rem);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.015) 0%, rgba(255, 255, 255, 0.002) 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(245, 166, 35, 0.1);
+  padding: 1.4rem 1.6rem;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: transform 0.4s var(--ease-spring), background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+@media (max-width: 640px) {
+  .sh-about-partners__stat-card {
+    flex-basis: calc(50% - 1.5rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .sh-about-partners__stat-card {
+    flex-basis: 100%;
+  }
+}
+
+.sh-about-partners__stat-num {
+  font-family: var(--font-display);
+  font-size: clamp(2.1rem, 3.2vw, 2.6rem);
+  font-weight: 900;
+  color: var(--p);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  transition: transform 0.4s ease, text-shadow 0.4s ease, color 0.4s ease;
+}
+
+.sh-about-partners__stat-label {
+  font-size: 0.72rem;
+  color: var(--bc2);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+}
+
+/* Hover Stats Card Interaction */
+.sh-about-partners__stat-card:hover {
+  transform: translateY(-8px);
+  background: linear-gradient(135deg, rgba(245, 166, 35, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
+  border-color: rgba(245, 166, 35, 0.35);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.55), inset 0 0 10px rgba(245, 166, 35, 0.05);
+}
+
+.sh-about-partners__stat-card:hover .sh-about-partners__stat-num {
+  color: #ffd166;
+  text-shadow: 0 0 12px rgba(245, 166, 35, 0.5);
+  transform: scale(1.04);
+}

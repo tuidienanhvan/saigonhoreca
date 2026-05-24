@@ -1,0 +1,297 @@
+{
+  "slug": "du-an-kdl-rung-thong-nui-voi-cua-saigonhoreca",
+  "title": "KDL RỪNG THÔNG NÚI VOI",
+  "meta_description": "Saigon Horeca và hành trình kiến tạo ẩm thực Tây Nguyên tinh tế tại KDL Rừng Thông Núi Voi.  Điểm đến thú vị tại Đức Trọng.",
+  "sections_count": 4,
+  "sections": [
+    {
+      "data_id": "355a605b",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-355a605b",
+        "elementor-section-height-full",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-items-middle"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/08/lienkhuong.png",
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-3901529a",
+          "col_size": 16,
+          "widgets": []
+        },
+        {
+          "col_class": "elementor-column elementor-col-66 elementor-top-column elementor-element elementor-element-7dd42e71",
+          "col_size": 66,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h1",
+              "text": "KDL RỪNG THÔNG NÚI VOI"
+            },
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Thiên Nhiên Hùng Vĩ - Trải Nghiệm Tuyệt Vời"
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Saigon Horeca và hành trình kiến tạo ẩm thực Tây Nguyên tinh tế tại",
+                "KDL Rừng Thông Núi Voi. Điểm đến thú vị ở Đức Trọng."
+              ]
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-641e797e",
+          "col_size": 16,
+          "widgets": []
+        }
+      ]
+    },
+    {
+      "data_id": "ef110fa",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-ef110fa",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-65c48449",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "KDL Rừng Thông Núi Voi"
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Thiên nhiên hùng vĩ – trải nghiệm tuyệt vời."
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Trốn phố về rừng, đắm chìm trong thiên nhiên hùng vĩ tại KDL Rừng Thông Núi Voi"
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "KDL Rừng Thông Núi Voi là điểm đến lý tưởng để du khách thưởng thức văn hóa ẩm thực Tây Nguyên độc đáo. Với 6 nhà hàng riêng biệt giữa khu vực rừng thông nguyên bản, mỗi nơi đều có phong cách và thực đơn phong phú. Các món ăn truyền thống và hiện đại đều được chế biến từ nguyên liệu tươi ngon, đảm bảo an toàn vệ sinh thực phẩm, đảm bảo quý thực khách sẽ có những trải nghiệm ẩm thực tuyệt vời trong không gian sang trọng, từ cơm lam, món nướng đậm đà đến rượu cần nồng nàn, tất cả đều được chế biến tinh tế và đầy nghệ thuật."
+              ]
+            },
+            {
+              "type": "image-carousel.default",
+              "slides": [
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/08/2-1.png",
+                  "srcset": null,
+                  "alt": "2",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/08/1-1.png",
+                  "srcset": null,
+                  "alt": "1",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/08/3-1.png",
+                  "srcset": null,
+                  "alt": "3",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/08/4-1.png",
+                  "srcset": null,
+                  "alt": "4",
+                  "w": null,
+                  "h": null
+                }
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Với yêu cầu khắt khe về chất lượng thiết bị bếp và vị trí nằm trong rừng nguyên sinh, Saigon Horeca đã thiết kế và thi công hệ thống bếp cao cấp đáp ứng mọi yêu cầu từ chủ đầu tư. Layout bếp được thiết kế tối ưu, quy trình làm việc rõ ràng, đảm bảo môi trường làm việc sạch sẽ và an toàn. Hệ thống bếp của Saigon Horeca triển khai luôn vận hành một cách trơn tru, duy trì quy trình vệ sinh an toàn thực phẩm, giúp nhà hàng phục vụ thực khách một cách hoàn hảo nhất, đáp ứng mọi phong cách ẩm thực của các nhà hàng trong KDL."
+              ]
+            },
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/08/nha-hang-voi-vang-2.png",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/08/nha-hang-voi-vang-2.png 1366w, https://saigonhoreca.vn/wp-content/uploads/2024/08/nha-hang-voi-vang-2-768x432.png 768w, https://saigonhoreca.vn/wp-content/uploads/2024/08/nha-hang-voi-vang-2-600x337.png 600w",
+                "alt": "Bếp nhà hàng KDL Rừng Thông Núi Voi",
+                "w": "1366",
+                "h": "768"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "2fcbcb7f",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-2fcbcb7f",
+        "elementor-section-content-middle",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-2530f256",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Thách Thức và Giải pháp của Saigon Horeca"
+            },
+            {
+              "type": "divider.default",
+              "divider": true
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Với hàng chục nghìn lượt khách mỗi năm, yêu cầu từ chủ đầu tư là chất lượng thiết bị và tối ưu hóa quy trình vận hành. Nhà hàng Con Voi Vàng đã hợp tác với Saigon Horeca để tối ưu hóa hệ thống bếp có sức chứa lên tới 400 khách.",
+                "Hệ thống bếp công suất mạnh mẽ, đáp ứng số lượng suất ăn khổng lồ trong ngày, phục vụ nhanh chóng, ngay cả vào giờ cao điểm. Thiết bị bếp nhập khẩu từ thương hiệu uy tín, bền bỉ, an toàn và tiết kiệm năng lượng. Quy trình chế biến khoa học, tuân thủ tiêu chuẩn vệ sinh an toàn thực phẩm, giúp tiết kiệm thời gian và công sức cho nhân viên.",
+                "Hệ thống hút khói, mùi, và cấp khí tươi giúp không gian bếp luôn thông thoáng và sạch sẽ. Hệ thống thoát sàn đảm bảo sàn bếp luôn khô thoáng và sạch sẽ."
+              ],
+              "links": [
+                {
+                  "href": "https://saigonhoreca.vn/danh-muc-san-pham/he-thong-hut-khoi/",
+                  "text": "Hệ thống hút khói"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-3cd70efa",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/08/lien-khuong-14.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/08/lien-khuong-14.jpg 1229w, https://saigonhoreca.vn/wp-content/uploads/2024/08/lien-khuong-14-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/08/lien-khuong-14-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1229",
+                "h": "691"
+              }
+            },
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/08/lien-khuong-10.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/08/lien-khuong-10.jpg 1296w, https://saigonhoreca.vn/wp-content/uploads/2024/08/lien-khuong-10-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/08/lien-khuong-10-600x338.jpg 600w",
+                "alt": "Cách vệ sinh ống hút khói bếp công nghiệp – Tại sao và bao lâu một lần?",
+                "w": "1296",
+                "h": "729"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "16b4144a",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-16b4144a",
+        "elementor-section-content-middle",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-4fc0aebb",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/08/nha-hang-voi-vang-1.png",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/08/nha-hang-voi-vang-1.png 1366w, https://saigonhoreca.vn/wp-content/uploads/2024/08/nha-hang-voi-vang-1-768x432.png 768w, https://saigonhoreca.vn/wp-content/uploads/2024/08/nha-hang-voi-vang-1-600x337.png 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            },
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/08/lien-khuong-7.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/08/lien-khuong-7.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2024/08/lien-khuong-7-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/08/lien-khuong-7-600x337.jpg 600w",
+                "alt": "7 Tiêu chuẩn thiết kế hệ thống hút khói không thể bỏ qua cho bếp công nghiệp",
+                "w": "1366",
+                "h": "768"
+              }
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-515501e0",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "span",
+              "text": "Saigon Horeca trở lại KDL Rừng Thông Núi Voi: Nâng cao giá trị và cam kết dịch vụ sau 1 năm"
+            },
+            {
+              "type": "divider.default",
+              "divider": true
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Sau 1 năm hoạt động bền bỉ, hệ thống bếp công nghiệp tại KDL Rừng Thông Núi Voi do Saigon Horeca triển khai đã chứng minh hiệu quả và độ tin cậy. Chương trình bảo dưỡng, bảo trì định kỳ nâng cao tuổi thọ thiết bị, đảm bảo hệ thống bếp luôn vận hành trơn tru, đáp ứng nhu cầu phục vụ ngày càng cao và kiểm tra mức độ hài lòng của khách hàng.",
+                "Nếu quý khách đang tìm kiếm một hệ thống bếp hoàn hảo, cao cấp và chuyên nghiệp cho nhà hàng của mình, vừa đạt yếu tố thẩm mỹ và công năng chuyên nghiệp hoặc hơn thế nữa, hãy liên hệ ngay với Saigon Horeca. Chúng tôi rất hân hạnh được góp phần vào sự thành công trong mô hình kinh doanh của quý khách."
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

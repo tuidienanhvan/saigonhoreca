@@ -1,0 +1,250 @@
+/**
+ * Header Component — Pure CSS
+ * Includes: sticky header, dark toggle, mobile toggle, marquee top-bar
+ */
+
+/* ── Skip Link (accessibility) ── */
+.sh-skip-link {
+    @apply absolute w-px h-px p-0 overflow-hidden whitespace-nowrap [margin:-1px] [clip:rect(0,_0,_0,_0)] [border:0];
+}
+
+.sh-skip-link:focus {
+    @apply fixed w-auto h-auto py-2 px-4 m-0 overflow-visible rounded-lg font-semibold [top:1rem] [left:1rem] [z-index:9999] [clip:auto] [background:var(--brand)] [color:#fff] [box-shadow:0_4px_12px_rgba(0,_0,_0,_0.15)];
+}
+
+/* ── Header ── */
+.sh-header {
+    @apply sticky z-50 flex flex-col transition-all duration-300 [top:0];
+}
+
+.sh-header--admin-bar {
+    @apply [top:32px];
+}
+
+@media (max-width: 782px) {
+    .sh-header--admin-bar {
+    @apply [top:46px];
+}
+}
+
+@media (max-width: 600px) {
+    .sh-header--admin-bar {
+    @apply [top:0];
+}
+}
+
+/* ── Header Bar (main row) ── */
+.sh-header__bar {
+    @apply w-full py-0 px-3 h-20 flex items-center justify-between gap-1 shrink-0 relative overflow-visible isolate z-20 [background:var(--bg-card)];
+}
+
+.sh-header__bar > * {
+    @apply relative [z-index:1];
+}
+
+/* SVG Architecture decoration — subtle blueprint skyline */
+.sh-header__arch {
+    @apply absolute z-0 pointer-events-none overflow-hidden [inset:0];
+}
+
+.sh-header__arch-svg {
+    @apply w-full h-full block;
+}
+
+/* Blueprint grid lines — cực nhẹ */
+.sh-header__arch-grid line {
+    @apply opacity-40 [stroke:var(--border-default-light)] [stroke-width:0.5] [vector-effect:non-scaling-stroke];
+}
+
+/* Skyline elements — mờ nhẹ.
+   T-015 hợp nhất 64 <polyline>/<rect>/<line>/<circle> con thành 1 <path>
+   để giảm DOM. Thêm `path.sh-header__arch-skyline` + tag-less selector
+   để stroke outline áp dụng cho cả path mới và markup cũ. */
+path.sh-header__arch-skyline,
+.sh-header__arch-skyline polyline,
+.sh-header__arch-skyline rect,
+.sh-header__arch-skyline line,
+.sh-header__arch-skyline circle {
+    @apply opacity-35 [stroke:var(--border-default)] [stroke-width:0.8] [fill:none] [stroke-linecap:round] [stroke-linejoin:round] [vector-effect:non-scaling-stroke];
+}
+
+/* Ground line */
+.sh-header__arch-ground {
+    @apply opacity-50 [stroke:var(--border-default)] [stroke-width:0.8] [vector-effect:non-scaling-stroke];
+}
+
+/* Accent line — primary color mờ */
+.sh-header__arch-accent {
+    @apply opacity-12 [stroke:var(--brand)] [stroke-width:1.5] [vector-effect:non-scaling-stroke];
+}
+
+/* Trang chủ: đậm hơn chút */
+.sh-header__bar--home path.sh-header__arch-skyline,
+.sh-header__bar--home .sh-header__arch-skyline polyline,
+.sh-header__bar--home .sh-header__arch-skyline rect,
+.sh-header__bar--home .sh-header__arch-skyline line,
+.sh-header__bar--home .sh-header__arch-skyline circle {
+    @apply opacity-45 [fill:none] [stroke:var(--border-default)] [stroke-width:0.8] [stroke-linecap:round] [stroke-linejoin:round] [vector-effect:non-scaling-stroke];
+}
+
+.sh-header__bar--home .sh-header__arch-accent {
+    @apply opacity-20;
+}
+
+/* Scrolled state — mờ thêm */
+.sh-header--scrolled .sh-header__bar {
+    @apply [background:var(--bg-card)] [box-shadow:0_1px_3px_rgba(0,_0,_0,_0.08)];
+}
+.sh-header--scrolled .sh-header__arch {
+    @apply opacity-60;
+}
+
+.dark .sh-header--scrolled .sh-header__bar {
+    @apply [background:var(--bg-card)];
+}
+
+@media (min-width: 1024px) {
+    .sh-header__bar {
+    @apply py-0 px-4 gap-2;
+}
+}
+
+@media (min-width: 1280px) {
+    .sh-header__bar {
+    @apply py-0 px-6 gap-4;
+}
+}
+
+/* ── Right Actions ── */
+.sh-header__actions {
+    @apply flex items-center gap-1.5 shrink-0;
+}
+
+@media (min-width: 1024px) {
+    .sh-header__actions {
+    @apply gap-2;
+}
+}
+
+/* ── Dark Mode Toggle ── */
+.sh-header__dark-toggle {
+    @apply shrink-0 flex items-center justify-center rounded-lg cursor-pointer [width:2.25rem] [height:2.25rem] [background:var(--bg-alt)] [color:var(--text-1-2)] [border:none] [transition:background-color_0.2s,_color_0.2s];
+}
+
+@media (min-width: 1024px) {
+    .sh-header__dark-toggle {
+    @apply w-8 h-8;
+}
+}
+
+.sh-header__dark-toggle:hover {
+    @apply [background:var(--border-default)];
+}
+
+.sh-header__icon {
+    @apply w-5 h-5 block;
+}
+.sh-header__dark-toggle span,
+.sh-header__mobile-toggle span {
+    @apply flex items-center justify-center;
+}
+
+/* ── Mobile Menu Toggle ── */
+.sh-header__mobile-toggle {
+    @apply p-2 rounded-lg cursor-pointer transition-colors duration-200 [color:var(--text-1)] [background:transparent] [border:none];
+}
+
+@media (min-width: 1024px) {
+    .sh-header__mobile-toggle {
+    @apply hidden;
+}
+}
+
+.sh-header__mobile-toggle:hover {
+    @apply [background:var(--bg-alt)];
+}
+
+.sh-header__hamburger-icon {
+    @apply w-8 h-8;
+}
+
+/* ── Dark Mode Overrides ── */
+.dark .sh-header__bar {
+    @apply [background:var(--bg-card)];
+}
+
+.dark .sh-header__arch-grid line {
+    @apply opacity-30 [stroke:var(--border-default)];
+}
+
+.dark path.sh-header__arch-skyline,
+.dark .sh-header__arch-skyline polyline,
+.dark .sh-header__arch-skyline rect,
+.dark .sh-header__arch-skyline line,
+.dark .sh-header__arch-skyline circle {
+    @apply opacity-20 [fill:none] [stroke:var(--text-1-3)] [stroke-width:0.8] [stroke-linecap:round] [stroke-linejoin:round] [vector-effect:non-scaling-stroke];
+}
+
+.dark .sh-header__arch-ground {
+    @apply opacity-35 [stroke:var(--border-default)];
+}
+
+.dark .sh-header__arch-accent {
+    @apply opacity-10 [stroke:var(--secondary)];
+}
+
+.dark .sh-header__dark-toggle {
+    @apply [background:var(--bg-elevated)] [color:var(--text-1-2)];
+}
+
+.dark .sh-header__dark-toggle:hover {
+    @apply [background:var(--border-default)];
+}
+
+.dark .sh-header__mobile-toggle {
+    @apply [color:var(--text-1)];
+}
+
+.dark .sh-header__mobile-toggle:hover {
+    @apply [background:var(--bg-elevated)];
+}
+
+/* ── Marquee (from old header.css) ── */
+@keyframes marquee-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.sh-marquee-track {
+    @apply flex [width:max-content] [animation:marquee-scroll_25s_linear_infinite];
+}
+
+.sh-marquee-content {
+    @apply flex items-center whitespace-nowrap shrink-0;
+}
+
+.sh-marquee-track:hover {
+    @apply [animation-play-state:paused];
+}
+
+.mask-linear-fade {
+    @apply [mask-image:linear-gradient(to_right,_transparent,_black_5%,_black_95%,_transparent)] [-webkit-mask-image:linear-gradient(to_right,_transparent,_black_5%,_black_95%,_transparent)];
+}
+
+/* ── View Transitions ── */
+::view-transition-old(root),
+::view-transition-new(root) {
+    @apply [animation-duration:0.35s];
+}
+
+.theme-switching *,
+.theme-switching *::before,
+.theme-switching *::after {
+    @apply [transition:none]!;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .sh-marquee-track {
+    @apply [animation:none];
+}
+}

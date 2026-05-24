@@ -1,0 +1,54 @@
+/**
+ * Shared Cards — Token-driven, BEM
+ * Bundled into dist/theme.css via @import in style.css
+ * Variants: --glass, --interactive
+ * Elements: __body, __img-wrap, __img, __badge
+ */
+
+@layer components {
+  .sh-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-default-light);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    position: relative;
+    transition: all 0.4s var(--ease-spring);
+  }
+
+  .sh-card--glass {
+    background: color-mix(in srgb, var(--bg-card) 70%, transparent);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-color: color-mix(in srgb, var(--text-1) 10%, transparent);
+  }
+
+  .sh-card--interactive:hover {
+    transform: translateY(-8px);
+    border-color: var(--brand);
+    box-shadow: 0 20px 40px -10px color-mix(in srgb, var(--text-1) 8%, transparent);
+  }
+
+  .sh-card__body { @apply p-6; }
+
+  .sh-card__img-wrap {
+    @apply relative overflow-hidden;
+    aspect-ratio: 16 / 10;
+  }
+
+  .sh-card__img {
+    @apply w-full h-full object-cover;
+    transition: transform 0.6s var(--ease-spring);
+  }
+
+  .sh-card:hover .sh-card__img {
+    transform: scale(1.08);
+  }
+
+  .sh-card__badge {
+    @apply absolute top-4 right-4 z-[2]
+           px-3.5 py-1.5 rounded-full
+           text-xs font-extrabold uppercase tracking-wider;
+  }
+}
+
+/* Dark mode token already handled by --bg-card / --border-default in :root override */

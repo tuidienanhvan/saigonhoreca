@@ -1,0 +1,177 @@
+/**
+ * rough-pricing-table — Component CSS
+ */
+        .sh-rough-table {
+    @apply py-20 px-0 relative [background:var(--bg-alt)];
+}
+        .sh-rough-table__container {
+    @apply my-0 mx-auto py-0 px-4 [max-width:1200px];
+}
+        .sh-rough-table__header {
+    @apply text-center [max-width:50rem] [margin:0_auto_3rem];
+}
+        .sh-rough-table__badge {
+    @apply inline-flex items-center gap-2 py-1.5 px-5 rounded-full mb-5 [background:color-mix(in_srgb,_var(--brand-50)_80%,_transparent)];
+}
+        .sh-rough-table__badge-dot {
+    @apply w-1.5 h-1.5 rounded-full [background:var(--brand)];
+}
+        .sh-rough-table__badge-text {
+    @apply font-extrabold uppercase [font-size:0.625rem] [color:var(--brand)] [letter-spacing:0.2em];
+}
+        .sh-rough-table__title {
+    @apply font-black tracking-tight [font-size:clamp(1.375rem,_3vw,_2rem)] [color:var(--text-1)] [line-height:1.2] [margin:0_0_1rem];
+}
+        .sh-rough-table__title-accent {
+    @apply [color:var(--brand)];
+}
+        .sh-rough-table__desc {
+    @apply leading-relaxed my-0 mx-auto font-medium [color:var(--text-1-3)] [font-size:0.9375rem] [max-width:35rem];
+}
+        .sh-rough-table__wrap {
+    @apply rounded-2xl [background:var(--bg-card)] [box-shadow:0_10px_40px_-10px_rgba(0,0,0,0.08)] [border:1px_solid_var(--border-default)];
+}
+        .sh-rough-table__scroll {
+    @apply overflow-x-auto;
+}
+        /* Footer */
+        .sh-rough-table__footer {
+    @apply py-6 px-8 flex flex-col gap-6 items-center relative overflow-hidden [margin:2rem_1rem_1rem] [background:linear-gradient(to_right,_var(--bg-alt),_var(--bg-card))] [border-radius:1rem] [border:1px_solid_var(--border-default-light)];
+}
+        @media (min-width: 768px) { .sh-rough-table__footer {
+    @apply flex-row justify-between;
+} }
+        .sh-rough-table__footer-info {
+    @apply flex items-start gap-4;
+}
+        @media (min-width: 640px) { .sh-rough-table__footer-info {
+    @apply items-center;
+} }
+        .sh-rough-table__footer-icon {
+    @apply w-12 h-12 rounded-full flex items-center justify-center shrink-0 [background:var(--bg-card)] [box-shadow:0_1px_2px_rgba(0,0,0,0.05)] [border:1px_solid_var(--border-default-light)] [color:var(--brand)];
+}
+        .sh-rough-table__footer-icon svg {
+    @apply w-6 h-6;
+}
+        .sh-rough-table__footer-title {
+    @apply font-bold text-base mb-1 [color:var(--text-1)];
+}
+        .sh-rough-table__footer-desc {
+    @apply leading-relaxed [color:var(--text-1-3)] [font-size:0.8125rem] [max-width:28rem];
+}
+        .sh-rough-table__footer-cta {
+    @apply flex items-center justify-center gap-3 py-4 px-8 font-bold rounded-full no-underline transition-all duration-300 whitespace-nowrap shrink-0 [background:var(--brand)] [color:#fff] [box-shadow:0_8px_25px_-8px_color-mix(in_srgb,_var(--brand)_50%,_transparent)];
+}
+        .sh-rough-table__footer-cta:hover {
+    @apply [background:var(--brand-dark)] [transform:translateY(-2px)];
+}
+        .sh-rough-table__footer-cta-icon {
+    @apply w-8 h-8 rounded-full flex items-center justify-center [background:rgba(255,255,255,0.2)];
+}
+        .sh-rough-table__footer-cta-icon svg {
+    @apply w-4 h-4;
+}
+        /* Table — base */
+        .sh-rough-table__inner {
+    @apply w-full [min-width:900px] [border-collapse:collapse];
+}
+
+        /* Header cells */
+        .sh-rough-table__th {
+    @apply align-middle;
+}
+        .sh-rough-table__th--col1 {
+    @apply py-7 px-6 [width:22%];
+}
+        .sh-rough-table__th--col2 {
+    @apply py-7 px-5 [width:26%];
+}
+        .sh-rough-table__th--col3 {
+    @apply p-5 [width:26%] [border-radius:0.75rem_0.75rem_0_0];
+}
+        .sh-rough-table__th--col4 {
+    @apply py-7 px-5 [width:26%];
+}
+
+        .sh-rough-table__th-label {
+    @apply text-sm font-black uppercase [letter-spacing:1.5px];
+}
+        .sh-rough-table__th-tier {
+    @apply block font-extrabold mb-2 [font-size:0.8125rem];
+}
+        .sh-rough-table__th-price {
+    @apply block font-black leading-none mb-1 tracking-tight [font-size:2rem];
+}
+        .sh-rough-table__th-unit {
+    @apply text-base font-bold;
+}
+        .sh-rough-table__th-tagline {
+    @apply block font-semibold mt-1 [font-size:0.6875rem];
+}
+
+        .sh-rough-table__th-badge {
+    @apply inline-block font-black py-1 px-3.5 rounded-full uppercase tracking-wider mb-2.5 [font-size:0.625rem];
+}
+        .sh-rough-table__th-badge--recommended {
+    @apply [background:var(--accent)] [color:var(--on-brand)];
+}
+        /* --popular variant uses .sh-badge-phobien legacy styling — kept for backwards compat */
+
+        /* Body cells */
+        .sh-rough-table__td {
+    @apply py-4 px-6 align-middle;
+}
+        .sh-rough-table__td--material {
+    @apply text-left;
+}
+        .sh-rough-table__td--tier {
+    @apply text-center;
+}
+
+        /* Material cell content */
+        .sh-rough-table__mat-cell {
+    @apply flex items-center gap-3 [min-height:2.25rem];
+}
+        .sh-rough-table__mat-icon {
+    @apply inline-flex items-center justify-center rounded-lg shrink-0 [color:var(--text-1-3)] [background:var(--bg-alt)] [width:2.25rem] [height:2.25rem];
+}
+        .sh-rough-table__mat-icon svg {
+    @apply w-5 h-5;
+}
+        .sh-rough-table__mat-name {
+    @apply font-bold text-sm whitespace-nowrap [color:var(--text-1)];
+}
+        .sh-rough-table__val {
+    @apply text-sm font-medium [color:var(--text-1-2)];
+}
+        /* Dark Mode */
+        .dark .sh-rough-table {
+    @apply [background:var(--bg-alt)];
+}
+        .dark .sh-rough-table__title {
+    @apply [color:var(--text-1)];
+}
+        .dark .sh-rough-table__wrap {
+    @apply [background:var(--bg-card)] [border-color:var(--border-default)] [box-shadow:0_10px_40px_-10px_rgba(0,0,0,0.3)];
+}
+        .dark .sh-rough-table__mat-name {
+    @apply [color:var(--text-1)];
+}
+        .dark .sh-rough-table__val {
+    @apply [color:var(--text-1-2)];
+}
+        .dark .sh-rough-table__footer {
+    @apply [background:linear-gradient(to_right,_var(--bg-alt),_var(--bg-card))] [border-color:var(--border-default)];
+}
+        .dark .sh-rough-table__footer-title {
+    @apply [color:var(--text-1)];
+}
+        .dark .sh-rough-table__footer-icon {
+    @apply [background:var(--bg-card)] [border-color:var(--border-default)];
+}
+        .dark .sh-rough-table__badge {
+    @apply [background:color-mix(in_srgb,_var(--brand)_15%,_transparent)];
+}
+        .dark .sh-rough-table__badge-text {
+    @apply [color:var(--brand-light)];
+}

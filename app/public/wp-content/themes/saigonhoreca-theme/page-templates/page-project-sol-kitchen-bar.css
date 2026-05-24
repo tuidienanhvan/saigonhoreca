@@ -1,0 +1,9 @@
+/**
+ * Project page-template — sol-kitchen-bar (layout only).
+ * @package SaigonHoreca
+ */
+
+body.page-template-page-project-sol-kitchen-bar {
+  background: var(--b1);
+  color: var(--bc);
+}

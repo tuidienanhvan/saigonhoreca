@@ -1,0 +1,61 @@
+/**
+ * Share Buttons — Pure CSS
+ */
+
+.sh-share {
+    @apply mt-8 pt-6 [border-top:1px_solid_var(--border-default-light)];
+}
+
+.sh-share__inner {
+    @apply flex items-center gap-3 flex-wrap;
+}
+
+.sh-share__label {
+    @apply text-sm font-bold flex items-center gap-2 [color:var(--text-1-3)];
+}
+.sh-share__label-icon {
+    @apply w-4 h-4;
+}
+
+.sh-share__btn {
+    @apply inline-flex items-center gap-2 text-xs font-semibold py-2 px-4 rounded-lg no-underline cursor-pointer transition-opacity duration-200 [border:none];
+}
+.sh-share__btn:hover {
+    @apply opacity-90;
+}
+
+.sh-share__btn--facebook {
+    @apply [background:#1877F2] [color:#fff];
+}
+.sh-share__btn--zalo {
+    @apply [background:#0068FF] [color:#fff];
+}
+.sh-share__btn--copy {
+    @apply [background:var(--bg-alt)] [color:var(--text-1-2)];
+}
+.sh-share__btn--copy:hover {
+    @apply [background:var(--border-default)];
+}
+
+.sh-share__btn-img {
+    @apply rounded-sm [width:18px] [height:18px];
+}
+.sh-share__copy-icon {
+    @apply w-4 h-4;
+}
+
+/* Copy success state */
+.sh-copy-btn.copied {
+    @apply [background:var(--brand)]! [color:#fff]!;
+}
+
+/* Dark Mode */
+.dark .sh-share {
+    @apply [border-top-color:var(--border-default)];
+}
+.dark .sh-share__btn--copy {
+    @apply [background:var(--bg-elevated)] [color:var(--text-1-2)];
+}
+.dark .sh-share__btn--copy:hover {
+    @apply [background:var(--border-default)];
+}

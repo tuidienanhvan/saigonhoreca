@@ -1,0 +1,69 @@
+/**
+ * skyloft-by-glow — concept slot. Shared .pp-split-sbg layout (used by specs/gallery/related too).
+ * @package SaigonHoreca
+ */
+
+.pp-split-sbg {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: center;
+  position: relative;
+}
+@media (min-width: 992px) {
+  .pp-split-sbg { grid-template-columns: 1fr 1fr; gap: 4.5rem; }
+  .pp-split-sbg--reverse .pp-split-sbg__media { order: 2; }
+  .pp-split-sbg--reverse .pp-split-sbg__body  { order: 1; }
+}
+
+.pp-split-sbg__body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  position: relative;
+  z-index: 2;
+}
+.pp-split-sbg__body .pp-text-sbg__divider { align-self: flex-start; }
+.pp-split-sbg__body .pp-text-sbg__title {
+  font-size: clamp(1.55rem, 2.6vw, 2.25rem);
+  text-align: left;
+}
+
+.pp-split-sbg__media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background: var(--b3);
+  border: 1px solid var(--bd);
+  transition: border-color 0.4s var(--ease-spring);
+}
+.pp-split-sbg__media:hover {
+  border-color: color-mix(in srgb, var(--gold) 45%, transparent);
+}
+.pp-split-sbg__media img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  filter: saturate(1.05);
+  transition: transform 0.7s var(--ease-spring);
+}
+.pp-split-sbg__media:hover img { transform: scale(1.05); }
+
+/* L-bracket ornament behind body */
+.pp-split-sbg__body::before {
+  content: '';
+  position: absolute;
+  top: -1.5rem;
+  left: -1rem;
+  width: 56px; height: 56px;
+  border-top: 1px solid color-mix(in srgb, var(--gold) 40%, transparent);
+  border-left: 1px solid color-mix(in srgb, var(--gold) 40%, transparent);
+  pointer-events: none;
+  z-index: -1;
+}
+.pp-split-sbg--reverse .pp-split-sbg__body::before {
+  left: auto;
+  right: -1rem;
+  border-left: none;
+  border-right: 1px solid color-mix(in srgb, var(--gold) 40%, transparent);
+}

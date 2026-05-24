@@ -1,0 +1,66 @@
+/**
+ * Header Component — Pure CSS
+ * Includes: sticky header, dark toggle, mobile toggle, marquee top-bar
+ */
+
+/* ── Skip Link (accessibility) ── */
+.sh-skip-link {
+    @apply absolute w-px h-px p-0 overflow-hidden whitespace-nowrap [margin:-1px] [clip:rect(0,_0,_0,_0)] [border:0];
+}.sh-skip-link:focus{z-index:9999;margin:calc(var(--spacing) * 0);border-radius:var(--radius-lg);width:auto;height:auto;padding-inline:calc(var(--spacing) * 4);padding-block:calc(var(--spacing) * 2);--tw-font-weight:var(--font-weight-semibold);font-weight:var(--font-weight-semibold);color:#fff;background:var(--brand);clip:auto;position:fixed;top:1rem;left:1rem;overflow:visible;box-shadow:0 4px 12px #00000026}/* ── Header ── */
+.sh-header{z-index:50;transition-property:all;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration));--tw-duration:.3s;flex-direction:column;transition-duration:.3s;display:flex;position:sticky;top:0}.sh-header--admin-bar{top:32px}
+
+@media (max-width: 782px) {.sh-header--admin-bar{top:46px}
+}
+
+@media (max-width: 600px) {.sh-header--admin-bar{top:0}
+}/* ── Header Bar (main row) ── */
+.sh-header__bar{isolation:isolate;z-index:20;height:calc(var(--spacing) * 20);justify-content:space-between;align-items:center;gap:calc(var(--spacing) * 1);width:100%;padding-inline:calc(var(--spacing) * 3);padding-block:calc(var(--spacing) * 0);background:var(--bg-card);flex-shrink:0;display:flex;position:relative;overflow:visible}
+
+.sh-header__bar > * {
+    @apply relative [z-index:1];
+}/* SVG Architecture decoration — subtle blueprint skyline */
+.sh-header__arch{pointer-events:none;z-index:0;position:absolute;inset:0;overflow:hidden}.sh-header__arch-svg{width:100%;height:100%;display:block}/* Blueprint grid lines — cực nhẹ */
+.sh-header__arch-grid line{stroke:var(--border-default-light);stroke-width:.5px;opacity:.4;vector-effect:non-scaling-stroke}/* Skyline elements — mờ nhẹ.
+   T-015 hợp nhất 64 <polyline>/<rect>/<line>/<circle> con thành 1 <path>
+   để giảm DOM. Thêm `path.sh-header__arch-skyline` + tag-less selector
+   để stroke outline áp dụng cho cả path mới và markup cũ. */
+path.sh-header__arch-skyline,.sh-header__arch-skyline polyline,.sh-header__arch-skyline rect,.sh-header__arch-skyline line,.sh-header__arch-skyline circle{fill:none;stroke:var(--border-default);stroke-width:.8px;opacity:.35;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}/* Ground line */
+.sh-header__arch-ground{stroke:var(--border-default);stroke-width:.8px;opacity:.5;vector-effect:non-scaling-stroke}/* Accent line — primary color mờ */
+.sh-header__arch-accent{stroke:var(--brand);stroke-width:1.5px;opacity:.12;vector-effect:non-scaling-stroke}/* Trang chủ: đậm hơn chút */
+.sh-header__bar--home path.sh-header__arch-skyline,.sh-header__bar--home .sh-header__arch-skyline polyline,.sh-header__bar--home .sh-header__arch-skyline rect,.sh-header__bar--home .sh-header__arch-skyline line,.sh-header__bar--home .sh-header__arch-skyline circle{fill:none;stroke:var(--border-default);stroke-width:.8px;opacity:.45;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}.sh-header__bar--home .sh-header__arch-accent{opacity:.2}/* Scrolled state — mờ thêm */
+.sh-header--scrolled .sh-header__bar{background:var(--bg-card);box-shadow:0 1px 3px #00000014}.sh-header--scrolled .sh-header__arch{opacity:.6}.dark .sh-header--scrolled .sh-header__bar{background:var(--bg-card)}
+
+@media (min-width: 1024px) {.sh-header__bar{gap:calc(var(--spacing) * 2);padding-inline:calc(var(--spacing) * 4);padding-block:calc(var(--spacing) * 0)}
+}
+
+@media (min-width: 1280px) {.sh-header__bar{gap:calc(var(--spacing) * 4);padding-inline:calc(var(--spacing) * 6);padding-block:calc(var(--spacing) * 0)}
+}/* ── Right Actions ── */
+.sh-header__actions{align-items:center;gap:calc(var(--spacing) * 1.5);flex-shrink:0;display:flex}
+
+@media (min-width: 1024px) {.sh-header__actions{gap:calc(var(--spacing) * 2)}
+}/* ── Dark Mode Toggle ── */
+.sh-header__dark-toggle{cursor:pointer;border-radius:var(--radius-lg);width:2.25rem;height:2.25rem;color:var(--text-1-2);background:var(--bg-alt);border:none;flex-shrink:0;justify-content:center;align-items:center;transition:background-color .2s,color .2s;display:flex}
+
+@media (min-width: 1024px) {.sh-header__dark-toggle{height:calc(var(--spacing) * 8);width:calc(var(--spacing) * 8)}
+}.sh-header__dark-toggle:hover{background:var(--border-default)}.sh-header__icon{height:calc(var(--spacing) * 5);width:calc(var(--spacing) * 5);display:block}.sh-header__dark-toggle span,.sh-header__mobile-toggle span{justify-content:center;align-items:center;display:flex}/* ── Mobile Menu Toggle ── */
+.sh-header__mobile-toggle{cursor:pointer;border-radius:var(--radius-lg);padding:calc(var(--spacing) * 2);color:var(--text-1);transition-property:color,background-color,border-color,outline-color,text-decoration-color,fill,stroke,--tw-gradient-from,--tw-gradient-via,--tw-gradient-to;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration));--tw-duration:.2s;background:0 0;border:none;transition-duration:.2s}
+
+@media (min-width: 1024px) {.sh-header__mobile-toggle{display:none}
+}.sh-header__mobile-toggle:hover{background:var(--bg-alt)}.sh-header__hamburger-icon{height:calc(var(--spacing) * 8);width:calc(var(--spacing) * 8)}/* ── Dark Mode Overrides ── */
+.dark .sh-header__bar{background:var(--bg-card)}.dark .sh-header__arch-grid line{stroke:var(--border-default);opacity:.3}.dark path.sh-header__arch-skyline,.dark .sh-header__arch-skyline polyline,.dark .sh-header__arch-skyline rect,.dark .sh-header__arch-skyline line,.dark .sh-header__arch-skyline circle{fill:none;stroke:var(--text-1-3);stroke-width:.8px;opacity:.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}.dark .sh-header__arch-ground{stroke:var(--border-default);opacity:.35}.dark .sh-header__arch-accent{stroke:var(--secondary);opacity:.1}.dark .sh-header__dark-toggle{color:var(--text-1-2);background:var(--bg-elevated)}.dark .sh-header__dark-toggle:hover{background:var(--border-default)}.dark .sh-header__mobile-toggle{color:var(--text-1)}.dark .sh-header__mobile-toggle:hover{background:var(--bg-elevated)}
+
+/* ── Marquee (from old header.css) ── */
+@keyframes marquee-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}.sh-marquee-track{width:max-content;animation:25s linear infinite marquee-scroll;display:flex}.sh-marquee-content{white-space:nowrap;flex-shrink:0;align-items:center;display:flex}.sh-marquee-track:hover{animation-play-state:paused}.mask-linear-fade{-webkit-mask-image:linear-gradient(90deg,#0000,#000 5% 95%,#0000);mask-image:linear-gradient(90deg,#0000,#000 5% 95%,#0000)}/* ── View Transitions ── */
+::view-transition-old(root),::view-transition-new(root){animation-duration:.35s}
+
+.theme-switching *,
+.theme-switching *::before,
+.theme-switching *::after {
+    @apply [transition:none]!;
+}
+
+@media (prefers-reduced-motion: reduce) {.sh-marquee-track{animation:none}
+}

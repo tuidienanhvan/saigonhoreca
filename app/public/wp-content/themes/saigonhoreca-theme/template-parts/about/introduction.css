@@ -1,0 +1,633 @@
+/* ── sh-about-intro ───────────────────────────────────────────── */
+.sh-about-intro {
+  background: var(--b1);
+  padding: 3.2rem 1.25rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Elegant glowing radial background behind the entire section */
+.sh-about-intro::before {
+  content: '';
+  position: absolute;
+  top: 15%;
+  right: -5%;
+  width: 45rem;
+  height: 45rem;
+  background: radial-gradient(circle, color-mix(in srgb, var(--p) 6%, transparent) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.sh-about-intro::after {
+  content: '';
+  position: absolute;
+  bottom: -10%;
+  left: -5%;
+  width: 35rem;
+  height: 35rem;
+  background: radial-gradient(circle, color-mix(in srgb, var(--p) 3%, transparent) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.sh-about-intro__inner {
+  max-width: var(--sh-content-max, 80rem);
+  margin-inline: auto;
+  display: grid;
+  gap: 4.5rem;
+  grid-template-columns: 1fr;
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 1024px) {
+  .sh-about-intro__inner {
+    grid-template-columns: 6.5fr 3.5fr;
+    align-items: center;
+    gap: 3.5rem;
+  }
+
+  .sh-about-intro__left-col {
+    flex-direction: row;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .sh-about-intro__lead {
+    flex: 1.1;
+  }
+
+  .sh-about-intro__collage {
+    flex: 0.9;
+    width: 100%;
+    max-width: 320px;
+    margin: 0;
+  }
+}
+
+/* ── Cột Trái: Storytelling & Visual Collage ───────────────────── */
+.sh-about-intro__left-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Lead Column Typography */
+.sh-about-intro__eyebrow {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--p);
+  margin-bottom: 1rem;
+}
+
+.sh-about-intro__heading {
+  font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 1.15;
+  color: var(--bc);
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+/* Multi-stage line divider with a gold dot */
+.sh-about-intro__rule {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 1.75rem 0;
+}
+
+.sh-about-intro__rule-line {
+  width: 3rem;
+  height: 2px;
+  background: linear-gradient(90deg, var(--p), transparent);
+}
+
+.sh-about-intro__rule-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--p);
+  border-radius: var(--radius-full);
+  box-shadow: 0 0 8px var(--p);
+}
+
+.sh-about-intro__body {
+  font-size: 0.98rem;
+  line-height: 1.9;
+  color: var(--bc2);
+  margin: 0;
+}
+
+.sh-about-intro__link {
+  color: var(--bc);
+  font-weight: 700;
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 2px;
+  border-bottom: 1.5px solid var(--p);
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.sh-about-intro__link:hover {
+  color: var(--p);
+  border-color: var(--ph);
+}
+
+/* Collage System */
+.sh-about-intro__collage {
+  position: relative;
+  width: 92%;
+  max-width: 420px;
+  margin-inline: auto;
+  aspect-ratio: 16 / 9.5;
+  background: var(--b3);
+  border-radius: 12px;
+  border: 1px solid var(--bd);
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 640px) {
+  .sh-about-intro__collage {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+/* Technical Drafting Background */
+.sh-about-intro__blueprint {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.07;
+  filter: contrast(120%) brightness(80%);
+  mix-blend-mode: screen;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Orbit Ring Micro-animation */
+.sh-about-intro__orbit-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20rem;
+  height: 20rem;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.sh-about-intro__orbit-ring {
+  width: 100%;
+  height: 100%;
+  border: 1px dashed color-mix(in srgb, var(--p) 20%, transparent);
+  border-radius: var(--radius-full);
+  position: relative;
+  animation: orbit-spin 60s linear infinite;
+}
+
+.sh-about-intro__orbit-ring::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  background: var(--p);
+  border-radius: var(--radius-full);
+  box-shadow: 0 0 12px var(--p), 0 0 4px #ffffff;
+  transform: translateX(-50%);
+}
+
+@keyframes orbit-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Showcase Premium Real Image Frame */
+.sh-about-intro__showcase-frame {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 72%;
+  aspect-ratio: 16 / 10;
+  border-radius: 8px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7);
+  background: var(--b1);
+  z-index: 3;
+  transition: transform 0.6s var(--ease-spring);
+}
+
+.sh-about-intro__showcase-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  filter: grayscale(20%) contrast(105%);
+  transition: filter 0.6s ease, transform 0.6s ease;
+}
+
+/* Gold offset border outline */
+.sh-about-intro__showcase-frame::before {
+  content: '';
+  position: absolute;
+  inset: -12px;
+  border: 1px solid var(--p);
+  border-radius: 12px;
+  pointer-events: none;
+  transition: inset 0.6s var(--ease-spring), border-color 0.4s ease;
+  z-index: -1;
+}
+
+.sh-about-intro__collage:hover .sh-about-intro__showcase-frame {
+  transform: translate(-50%, -52%) scale(1.02);
+}
+
+.sh-about-intro__collage:hover .sh-about-intro__showcase-img {
+  filter: grayscale(0%) contrast(100%);
+  transform: scale(1.01);
+}
+
+.sh-about-intro__collage:hover .sh-about-intro__showcase-frame::before {
+  inset: -18px;
+  border-color: var(--ph);
+}
+
+/* Glassmorphic Badge */
+.sh-about-intro__glass-badge {
+  position: absolute;
+  bottom: -1.75rem;
+  right: -1.75rem;
+  background: rgba(26, 26, 26, 0.75);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-left: 3px solid var(--p);
+  padding: 0.9rem 1.4rem;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+  z-index: 10;
+  animation: float-badge 6s ease-in-out infinite alternate;
+}
+
+@media (max-width: 640px) {
+  .sh-about-intro__glass-badge {
+    bottom: -1rem;
+    right: 0.5rem;
+    padding: 0.6rem 1rem;
+  }
+}
+
+@keyframes float-badge {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-8px); }
+}
+
+.sh-about-intro__badge-target {
+  width: 2.2rem;
+  height: 2.2rem;
+  flex-shrink: 0;
+  animation: target-pulse 3s infinite ease-in-out;
+}
+
+@keyframes target-pulse {
+  0%, 100% { opacity: 0.7; transform: scale(1) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1.08) rotate(90deg); }
+}
+
+.sh-about-intro__badge-target svg {
+  width: 100%;
+  height: 100%;
+}
+
+.sh-about-intro__badge-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.sh-about-intro__badge-tag {
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--bc3);
+  text-transform: uppercase;
+}
+
+.sh-about-intro__badge-year {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  color: var(--p);
+  line-height: 1.2;
+}
+
+
+/* ── Cột Phải: Interactive Accordion Panels ───────────────────── */
+.sh-about-intro__right-col {
+  width: 100%;
+}
+
+.sh-about-intro__accordion {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid var(--bd);
+}
+
+.sh-about-intro__panel {
+  position: relative;
+  background: transparent;
+  border-top: 1px solid var(--bd);
+  border-left: 3px solid transparent;
+  transition: border-left-color 0.4s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.4s ease;
+  overflow: hidden;
+}
+
+/* Hover State Panel Trigger */
+.sh-about-intro__panel:hover {
+  border-left-color: var(--p);
+  background-color: linear-gradient(90deg, color-mix(in srgb, var(--p) 4%, transparent) 0%, transparent 100%);
+  background-image: linear-gradient(to right, color-mix(in srgb, var(--p) 3.5%, transparent), transparent);
+}
+
+/* Panel Header Layout */
+.sh-about-intro__panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.15rem 1.25rem;
+  cursor: pointer;
+  user-select: none;
+  z-index: 1;
+}
+
+@media (max-width: 640px) {
+  .sh-about-intro__panel-header {
+    padding: 1.8rem 1rem;
+    gap: 1rem;
+  }
+}
+
+/* Panel Number and Subtag */
+.sh-about-intro__panel-number-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-shrink: 0;
+  width: 4rem;
+}
+
+@media (max-width: 640px) {
+  .sh-about-intro__panel-number-wrap {
+    width: 2.8rem;
+  }
+}
+
+.sh-about-intro__panel-num {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--bc);
+  opacity: 0.35;
+  line-height: 1;
+  transition: color 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s ease, text-shadow 0.4s ease;
+}
+
+.sh-about-intro__panel-subtag {
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--bc3);
+  margin-top: 0.3rem;
+  transition: color 0.4s ease;
+}
+
+.sh-about-intro__panel:hover .sh-about-intro__panel-num {
+  color: var(--p);
+  opacity: 1;
+  text-shadow: 0 0 15px rgba(245, 166, 35, 0.3);
+}
+
+.sh-about-intro__panel:hover .sh-about-intro__panel-subtag {
+  color: var(--bc);
+}
+
+/* Panel Title */
+.sh-about-intro__panel-title-wrap {
+  flex-grow: 1;
+}
+
+.sh-about-intro__panel-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--bc);
+  margin: 0;
+  transition: color 0.4s ease, transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.sh-about-intro__panel:hover .sh-about-intro__panel-title {
+  color: var(--p);
+  transform: translateX(4px);
+}
+
+@media (max-width: 480px) {
+  .sh-about-intro__panel-title {
+    font-size: 1rem;
+  }
+}
+
+/* Panel Right Side (Icon and Trigger) */
+.sh-about-intro__panel-meta {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-shrink: 0;
+}
+
+.sh-about-intro__panel-icon {
+  width: 2.8rem;
+  height: 2.8rem;
+  color: var(--p);
+  opacity: 0.7;
+  transition: transform 0.4s var(--ease-spring), opacity 0.4s ease, filter 0.4s ease;
+}
+
+@media (max-width: 480px) {
+  .sh-about-intro__panel-icon {
+    width: 2.2rem;
+    height: 2.2rem;
+  }
+}
+
+.sh-about-intro__panel-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.sh-about-intro__panel:hover .sh-about-intro__panel-icon {
+  opacity: 1;
+  transform: scale(1.08) translateY(-2px);
+  filter: drop-shadow(0 0 8px rgba(245, 166, 35, 0.4));
+}
+
+/* Interactive Accordion Plus/Minus Trigger */
+.sh-about-intro__panel-trigger {
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--p);
+  opacity: 0.4;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s ease;
+}
+
+.sh-about-intro__panel-trigger svg {
+  width: 100%;
+  height: 100%;
+}
+
+.sh-about-intro__panel:hover .sh-about-intro__panel-trigger {
+  opacity: 1;
+  transform: rotate(135deg); /* Turns plus to close/cross */
+}
+
+
+/* ── CSS Grid Accordion Content Transition ─────────────────────── */
+.sh-about-intro__panel-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.sh-about-intro__panel-content-inner {
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(6px);
+  padding-inline: 5.5rem 1.5rem; /* Offsets with the number width */
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+@media (max-width: 640px) {
+  .sh-about-intro__panel-content-inner {
+    padding-inline: 3.8rem 1rem;
+  }
+}
+
+.sh-about-intro__panel-desc {
+  font-size: 0.88rem;
+  line-height: 1.85;
+  color: var(--bc2);
+  margin: 0;
+}
+
+.sh-about-intro__panel-desc strong {
+  color: var(--bc);
+  font-weight: 600;
+}
+
+/* CSS Grid Expand Trigger on Hover */
+.sh-about-intro__panel:hover .sh-about-intro__panel-content {
+  grid-template-rows: 1fr;
+}
+
+.sh-about-intro__panel:hover .sh-about-intro__panel-content-inner {
+  opacity: 1;
+  transform: translateY(0);
+  padding-bottom: 1.25rem;
+  transition-delay: 0.1s;
+}
+
+
+/* ── Volumetric SVG Micro-animations ───────────────────────────── */
+
+/* Panel 1: Sứ mệnh (Spin dashed orbit & star pulse) */
+.sh-about-intro__panel:hover .svg-orbit-dashed {
+  animation: svg-spin 12s linear infinite;
+  transform-origin: 24px 24px;
+}
+
+.sh-about-intro__panel:hover .svg-star {
+  animation: svg-pulse-star 2s ease-in-out infinite alternate;
+  transform-origin: 24px 24px;
+}
+
+@keyframes svg-spin {
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes svg-pulse-star {
+  0% { transform: scale(1); filter: drop-shadow(0 0 0 rgba(245, 166, 35, 0)); }
+  100% { transform: scale(1.1); filter: drop-shadow(0 0 5px rgba(245, 166, 35, 0.6)); }
+}
+
+/* Panel 2: Sản phẩm đa dạng (Float box top layer) */
+.sh-about-intro__panel:hover .svg-box-top {
+  animation: svg-float-box 2.5s ease-in-out infinite alternate;
+}
+
+.sh-about-intro__panel:hover .svg-box-mid {
+  animation: svg-glow-box 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes svg-float-box {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-3px); }
+}
+
+@keyframes svg-glow-box {
+  0% { fill-opacity: 0.85; }
+  100% { fill-opacity: 1; filter: brightness(110%); }
+}
+
+/* Panel 3: Chất lượng đảm bảo (Shield glow & Check dynamic scaling) */
+.sh-about-intro__panel:hover .svg-shield {
+  animation: svg-shield-glow 2s ease-in-out infinite alternate;
+}
+
+.sh-about-intro__panel:hover .svg-check {
+  animation: svg-check-bounce 2s ease-in-out infinite alternate;
+  transform-origin: 24px 24px;
+}
+
+@keyframes svg-shield-glow {
+  0% { fill-opacity: 0.12; }
+  100% { fill-opacity: 0.22; stroke-width: 2.5px; }
+}
+
+@keyframes svg-check-bounce {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.08); }
+}
+
+/* Panel 4: Đội ngũ chuyên nghiệp (Nod team head & expand inner ring) */
+.sh-about-intro__panel:hover .svg-team-head {
+  animation: svg-nod 2s ease-in-out infinite alternate;
+  transform-origin: 24px 18px;
+}
+
+.sh-about-intro__panel:hover .svg-inner-circle {
+  stroke-dasharray: 4 2;
+  animation: svg-spin 20s linear infinite;
+  transform-origin: 24px 24px;
+}
+
+@keyframes svg-nod {
+  0% { transform: translateY(0) scale(1); }
+  100% { transform: translateY(-1.5px) scale(1.05); }
+}

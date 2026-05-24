@@ -1,0 +1,61 @@
+/* Per-route critical CSS — Saigon Horeca.
+ *
+ * Inlined by critical-css.php (concatenated after critical.css). Covers
+ * above-fold styles for routes where the route-bundle CSS round-trip
+ * would otherwise gate the LCP paint.
+ */
+
+/* ── /du-an/ archive hero — kill 1.2 s opacity-fade-in for LCP slide ──
+ *
+ * The bg-stack has 6 absolute-positioned <div> slides; slide 0 has
+ * `.is-active` server-side but the route bundle animates opacity
+ * 0 → 1 over 1.2 s. Lighthouse Mobile baseline: P=75, LCP=7.9 s with
+ * 88 % render-delay because LCP element waits for opacity:1.
+ *
+ * Inlining paints the active slide at opacity:1 immediately on first
+ * HTML parse — no waiting for theme-archive-project.css to arrive.
+ * Carousel JS still toggles `is-active` to cycle slides; subsequent
+ * transitions still animate after the first paint completes.
+ */
+.sh-archive-hero {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: #000;
+    overflow: hidden;
+}
+.sh-archive-hero__bg-stack {
+    position: absolute;
+    inset: 0;
+}
+.sh-archive-hero__bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+}
+.sh-archive-hero__bg.is-active {
+    opacity: 1;
+}
+
+/* ── /ve-saigon-horeca/ (page-gioi-thieu template) about hero ──
+ * Same opacity-fade trap. Force opacity:1 on first paint. */
+.sh-about-hero {
+    position: relative;
+    width: 100%;
+    min-height: 520px;
+    background: #000;
+    overflow: hidden;
+}
+@media (max-width: 640px) {
+    .sh-about-hero { min-height: 380px; }
+}
+.sh-about-hero__bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 1;
+}

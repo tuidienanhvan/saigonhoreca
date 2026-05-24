@@ -1,0 +1,199 @@
+/**
+ * Project Pillar — bambino-saigonhoreca — concept styles
+ */
+
+.pp--bambino .pp-bambino-concept {
+  background: var(--b1);
+  padding: clamp(4rem, 8vw, 8rem) 0;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--bd);
+}
+
+.pp--bambino .pp-bambino-concept__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(3rem, 5vw, 5rem);
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .pp--bambino .pp-bambino-concept__grid {
+    grid-template-columns: 50% 50%;
+  }
+}
+
+/* Cột trái: Bố cục Asymmetric Double Panel Grid */
+.pp--bambino .pp-bambino-concept__text-col {
+  position: relative;
+  z-index: 2;
+}
+
+.pp--bambino .pp-bambino-concept__panels {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.pp--bambino .pp-bambino-concept__panel {
+  position: relative;
+  background: rgba(19, 19, 19, 0.45);
+  border: 1px solid var(--bd);
+  border-radius: 20px;
+  padding: 2.25rem;
+  backdrop-filter: blur(20px);
+  box-shadow: var(--shadow-main);
+  transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.pp--bambino .pp-bambino-concept__panel:hover {
+  transform: translateY(-5px);
+  border-color: color-mix(in srgb, var(--gold) 35%, transparent);
+  box-shadow: 0 25px 50px color-mix(in srgb, var(--gold) 8%, transparent), 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.pp--bambino .pp-bambino-concept__panel--primary {
+  max-width: 90%;
+}
+
+.pp--bambino .pp-bambino-concept__panel--secondary {
+  align-self: flex-end;
+  max-width: 90%;
+  background: var(--brand-50);
+}
+
+/* Neon accent lines inside panels */
+.pp--bambino .pp-bambino-concept__panel .neon-line-top {
+  position: absolute;
+  top: -1px;
+  left: 30px;
+  right: 30px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0.7;
+}
+
+.pp--bambino .pp-bambino-concept__panel .neon-line-left {
+  position: absolute;
+  left: -1px;
+  top: 30px;
+  bottom: 30px;
+  width: 2px;
+  background: linear-gradient(180deg, transparent, var(--brand-light), transparent);
+  opacity: 0.7;
+}
+
+.pp--bambino .pp-bambino-concept__panel .panel-tag {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.75rem;
+}
+
+.pp--bambino .pp-bambino-concept__panel .panel-title {
+  margin: 0 0 1rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2vw, 2.25rem);
+  color: var(--bc);
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+.pp--bambino .pp-bambino-concept__panel p {
+  color: var(--bc2);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.pp--bambino .pp-bambino-concept__panel .panel-meta-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  margin-top: 1.5rem;
+  border-top: 1px solid var(--bs);
+  padding-top: 1.25rem;
+}
+
+.pp--bambino .pp-bambino-concept__panel .meta-item {
+  font-size: 0.85rem;
+  color: var(--bc2);
+  font-weight: 500;
+}
+
+/* Cột phải: Cyber Frame với Technical Ruler Overlay */
+.pp--bambino .pp-bambino-concept__media-col {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.pp--bambino .pp-bambino-concept__cyber-frame {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  background: var(--b2);
+  border-radius: 16px;
+  padding: 12px;
+  border: 1px solid var(--bd);
+  box-shadow: var(--shadow-floating);
+}
+
+.pp--bambino .pp-bambino-concept__image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border-strong);
+}
+
+.pp--bambino .pp-bambino-concept__image-wrapper img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.pp--bambino .pp-bambino-concept__cyber-frame:hover img {
+  transform: scale(1.03);
+}
+
+/* Technical Ruler Overlay ticks */
+.pp--bambino .pp-bambino-concept__ruler-x {
+  position: absolute;
+  top: -18px;
+  left: 30px;
+  right: 30px;
+  height: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.pp--bambino .pp-bambino-concept__ruler-y {
+  position: absolute;
+  left: -18px;
+  top: 30px;
+  bottom: 30px;
+  width: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pp--bambino .pp-bambino-concept__ruler-x .ruler-tick {
+  width: 1px;
+  height: 6px;
+  background: color-mix(in srgb, var(--gold) 40%, transparent);
+}
+
+.pp--bambino .pp-bambino-concept__ruler-y .ruler-tick {
+  height: 1px;
+  width: 6px;
+  background: color-mix(in srgb, var(--gold) 40%, transparent);
+}

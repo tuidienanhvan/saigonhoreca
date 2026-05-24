@@ -1,0 +1,50 @@
+/**
+ * Before/After Image Comparison Slider
+ * Bundled into dist/theme.css via @import in style.css
+ * Owner: template-parts/components/before-after.php
+ */
+
+@layer components {
+  .sh-before-after {
+    @apply [position:relative] [overflow:hidden] [border-radius:12px] [max-width:100%] [aspect-ratio:16_/_9] [user-select:none] [-webkit-user-select:none];
+}
+
+  .sh-before-after__after,
+  .sh-before-after__before {
+    @apply [width:100%] [height:100%] [object-fit:cover] [display:block];
+}
+
+  .sh-before-after__before-clip {
+    @apply [position:absolute] [inset:0_auto_0_0] [width:50%] [overflow:hidden];
+}
+
+  .sh-before-after__before-clip img {
+    @apply [min-width:0];
+}
+
+  .sh-before-after__line {
+    @apply [position:absolute] [top:0] [left:50%] [width:3px] [height:100%] [background:var(--bg-card)] [transform:translateX(-50%)] [pointer-events:none] [z-index:2] [box-shadow:0_0_6px_rgba(0,_0,_0,_0.4)];
+}
+
+  .sh-before-after__handle {
+    @apply [position:absolute] [top:50%] [left:50%] [transform:translate(-50%,_-50%)] [width:36px] [height:36px] [background:var(--bg-card)] [border-radius:50%] [display:flex] [align-items:center] [justify-content:center] [box-shadow:0_2px_8px_rgba(0,_0,_0,_0.3)];
+}
+
+  .sh-before-after__handle svg path {
+    @apply [stroke:var(--text-1)];
+}
+
+  .sh-before-after__range {
+    @apply [position:absolute] [inset:0] [width:100%] [height:100%] [opacity:0] [cursor:ew-resize] [z-index:3] [margin:0] [padding:0];
+}
+
+  .sh-before-after__label {
+    @apply [position:absolute] [top:12px] [padding:4px_10px] [background:rgba(0,_0,_0,_0.6)] [color:#fff] [border-radius:6px] [font-size:12px] [font-weight:600] [z-index:1] [pointer-events:none];
+}
+  .sh-before-after__label--before {
+    @apply [left:12px];
+}
+  .sh-before-after__label--after  {
+    @apply [right:12px];
+}
+}

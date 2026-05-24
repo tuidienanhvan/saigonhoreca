@@ -1,0 +1,229 @@
+/* ── sh-about-cta ─────────────────────────────────────────────── */
+.sh-about-cta {
+  background: var(--b2);    /* cùng bg với sh-about-testimonials phía trên */
+  padding: 3rem 1.25rem 6rem; /* padding-top nhỏ — tiếp liền không có seam */
+}
+
+.sh-about-cta__inner {
+  max-width: var(--sh-content-max, 80rem);
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+/* ── Separator dòng giữa 2 nhóm review ───────────────────────── */
+.sh-about-cta__reviews {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr;
+  /* Đường kẻ phân cách nhẹ phía trên */
+  border-top: 1px solid var(--bd);
+  padding-top: 3rem;
+}
+
+@media (min-width: 768px) {
+  .sh-about-cta__reviews { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* ── Review card (cùng style với testimonials__card) ─────────── */
+.sh-about-cta__review-card {
+  position: relative;
+  background: var(--b3);
+  border: 1px solid var(--bd);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  overflow: hidden;
+  transition: border-color 0.25s ease, transform 0.3s var(--ease-spring);
+}
+
+.sh-about-cta__review-card::before {
+  content: '"';
+  position: absolute;
+  top: -0.5rem;
+  right: 1.25rem;
+  font-size: 8rem;
+  font-family: Georgia, serif;
+  line-height: 1;
+  color: var(--p);
+  opacity: 0.06;
+  pointer-events: none;
+  user-select: none;
+}
+
+.sh-about-cta__review-card:hover {
+  border-color: color-mix(in srgb, var(--p) 40%, transparent);
+  transform: translateY(-5px);
+}
+
+.sh-about-cta__stars {
+  display: flex;
+  gap: 0.2rem;
+}
+
+.sh-about-cta__stars svg {
+  width: 1rem;
+  height: 1rem;
+  fill: var(--p);
+}
+
+.sh-about-cta__review-quote {
+  font-size: 0.9rem;
+  line-height: 1.85;
+  color: var(--bc2);
+  font-style: italic;
+  margin: 0;
+  flex: 1;
+}
+
+.sh-about-cta__review-quote strong {
+  color: var(--bc);
+  font-weight: 600;
+  font-style: normal;
+}
+
+.sh-about-cta__review-footer {
+  border-top: 1px solid var(--bd);
+  padding-top: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.sh-about-cta__review-footer::before {
+  content: attr(data-initial, '?');
+  flex-shrink: 0;
+  width: 2.25rem;
+  height: 2.25rem;
+  background: color-mix(in srgb, var(--p) 15%, transparent);
+  border: 1px solid color-mix(in srgb, var(--p) 30%, transparent);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--p);
+}
+
+.sh-about-cta__review-footer-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.sh-about-cta__review-author {
+  font-weight: 700;
+  font-style: normal;
+  color: var(--bc);
+  font-size: 0.875rem;
+}
+
+.sh-about-cta__review-company {
+  font-size: 0.75rem;
+  color: var(--bc3);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── CTA Banner ───────────────────────────────────────────────── */
+.sh-about-cta__banner {
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  padding: 5rem 2rem;
+  text-align: center;
+}
+
+@media (min-width: 1024px) {
+  .sh-about-cta__banner { padding: 7rem 3rem; }
+}
+
+.sh-about-cta__banner-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0,0,0,0.88) 0%,
+    rgba(0,0,0,0.72) 100%
+  );
+}
+
+.sh-about-cta__banner-content {
+  position: relative;
+  z-index: 2;
+  max-width: 44rem;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.sh-about-cta__banner-title {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--bc);
+  margin: 0;
+}
+
+.sh-about-cta__banner-sub {
+  font-size: 1rem;
+  color: var(--bc2);
+  line-height: 1.7;
+  max-width: 36rem;
+  margin: 0;
+}
+
+.sh-about-cta__banner-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+/* Buttons */
+.sh-about-cta__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 2rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  transition: transform 0.25s var(--ease-spring), background 0.2s ease;
+}
+
+.sh-about-cta__btn--primary {
+  background: var(--p);
+  color: var(--pc);
+}
+
+.sh-about-cta__btn--primary:hover {
+  background: var(--ph);
+  transform: translateY(-2px);
+}
+
+.sh-about-cta__btn--outline {
+  background: rgba(255,255,255,0.08);
+  color: var(--bc);
+  border: 1.5px solid var(--bt);
+  backdrop-filter: blur(8px);
+}
+
+.sh-about-cta__btn--outline:hover {
+  background: rgba(255,255,255,0.16);
+  transform: translateY(-2px);
+}

@@ -1,0 +1,130 @@
+/**
+ * interior-style — Component CSS
+ */
+        .sh-style {
+    @apply py-20 px-0 [background:var(--bg-alt)];
+}
+        .sh-style__container {
+    @apply my-0 mx-auto py-0 px-4 [max-width:72rem];
+}
+        .sh-style__header {
+    @apply text-center mb-16;
+}
+        .sh-style__tag {
+    @apply font-bold uppercase tracking-widest text-sm mb-2 block [color:var(--secondary)];
+}
+        .sh-style__title {
+    @apply text-4xl font-bold m-0 [color:var(--text-1)];
+}
+        .sh-style__grid {
+    @apply grid gap-8 [grid-template-columns:1fr];
+}
+        @media (min-width: 768px) { .sh-style__grid {
+    @apply [grid-template-columns:1fr_1fr];
+} }
+        .sh-style__card {
+    @apply rounded-2xl overflow-hidden [background:var(--bg-card)] [box-shadow:0_10px_15px_-3px_rgba(0,0,0,0.1)] [transition:box-shadow_0.3s];
+}
+        .sh-style__card:hover {
+    @apply [box-shadow:0_25px_50px_-12px_rgba(0,0,0,0.25)];
+}
+        .sh-style__card--bordered:hover {
+    @apply [border:2px_solid_var(--secondary)];
+}
+        .sh-style__img-wrap {
+    @apply relative overflow-hidden [height:20rem];
+}
+        .sh-style__img {
+    @apply w-full h-full object-cover transition-transform duration-700;
+}
+        .sh-style__card:hover .sh-style__img {
+    @apply [transform:scale(1.1)];
+}
+        .sh-style__img-overlay {
+    @apply absolute flex items-end p-8 [inset:0] [background:linear-gradient(to_top,_rgba(0,0,0,0.8),_transparent)];
+}
+        .sh-style__img-badge {
+    @apply text-xs font-bold py-1 px-2 rounded mb-2 inline-block [background:var(--brand)] [color:#fff];
+}
+        .sh-style__img-badge--secondary {
+    @apply [background:var(--secondary)];
+}
+        .sh-style__img-name {
+    @apply text-3xl font-bold m-0 [color:#fff];
+}
+        .sh-style__img-desc {
+    @apply text-sm opacity-0 transition-all duration-500 [color:#d1d5db] [transform:translateY(1rem)];
+}
+        .sh-style__card:hover .sh-style__img-desc {
+    @apply opacity-100 [transform:translateY(0)];
+}
+        .sh-style__body {
+    @apply p-8;
+}
+        .sh-style__price-row {
+    @apply flex justify-between items-end mb-6 pb-6 [border-bottom:1px_solid_var(--border-default-light)];
+}
+        .sh-style__price-label {
+    @apply text-sm font-bold uppercase [color:var(--text-1-muted)];
+}
+        .sh-style__price {
+    @apply text-4xl font-black [color:var(--text-1)];
+}
+        .sh-style__price-unit {
+    @apply text-lg font-normal [color:var(--text-1-muted)];
+}
+        .sh-style__price-range {
+    @apply text-xl font-bold text-right;
+}
+        .sh-style__price-range--primary {
+    @apply [color:var(--brand)];
+}
+        .sh-style__price-range--secondary {
+    @apply [color:var(--secondary)];
+}
+        .sh-style__features {
+    @apply list-none p-0 flex flex-col gap-3 font-medium [margin:0_0_2rem] [color:var(--text-1-2)];
+}
+        .sh-style__features li {
+    @apply flex items-center gap-3;
+}
+        .sh-style__features svg {
+    @apply w-5 h-5 shrink-0;
+}
+        .sh-style__btn {
+    @apply block w-full p-3 font-bold text-center rounded no-underline transition-all duration-300;
+}
+        .sh-style__btn--default {
+    @apply [background:var(--bg-alt)] [color:var(--text-1)];
+}
+        .sh-style__btn--default:hover {
+    @apply [background:var(--text-1)] [color:#fff];
+}
+        .sh-style__btn--secondary {
+    @apply [background:var(--secondary)] [color:#fff] [box-shadow:0_10px_15px_-3px_color-mix(in_srgb,_var(--secondary)_30%,_transparent)];
+}
+        .sh-style__btn--secondary:hover {
+    @apply [filter:brightness(0.9)];
+}
+        /* Dark Mode */
+        .dark .sh-style {
+    @apply [background:var(--bg-alt)];
+}
+        .dark .sh-style__title {
+    @apply [color:var(--text-1)];
+}
+        .dark .sh-style__card {
+    @apply [background:var(--bg-card)];
+}
+        .dark .sh-style__price {
+    @apply [color:var(--text-1)];
+}
+        .dark .sh-style__price-row {
+    @apply [border-bottom-color:var(--border-default)];
+}
+        .dark .sh-style__features {
+    @apply [color:var(--text-1-2)];
+}
+        .dark .sh-style__btn--default {
+    @apply [background:var(--bg-elevated)] [color:var(--text-1)];
+}

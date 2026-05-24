@@ -1,0 +1,31 @@
+/**
+ * About Hero — Component CSS
+ * Template: template-parts/about/hero.php
+ */
+
+/* Wrapper full-width */
+.sh-about-hero{background:#111;justify-content:center;align-items:center;width:100%;min-height:60vh;display:flex;position:relative;overflow:hidden}/* Background image full-width */
+.sh-about-hero__image{z-index:0;background-position:50%;background-repeat:no-repeat;background-size:cover;position:absolute;inset:0}.sh-about-hero:hover .sh-about-hero__image{transform:scale(1)}/* Dark overlay */
+.sh-about-hero__overlay{z-index:1;background:linear-gradient(#00000059 0%,#0000008c 60%,#000000bf 100%);position:absolute;inset:0}/* Content container */
+.sh-about-hero__container{z-index:10;margin-inline:auto;margin-block:calc(var(--spacing) * 0);align-items:center;gap:calc(var(--spacing) * 4);max-width:800px;padding-inline:calc(var(--spacing) * 6);padding-block:calc(var(--spacing) * 0);text-align:center;flex-direction:column;display:flex;position:relative}/* Badge "Từ Năm 2014" */
+.sh-about-hero__badge{border-radius:var(--radius-sm);padding-inline:calc(var(--spacing) * 5);padding-block:calc(var(--spacing) * 1.5);font-size:var(--text-xs);line-height:var(--tw-leading,var(--text-xs--line-height));--tw-font-weight:var(--font-weight-semibold);font-weight:var(--font-weight-semibold);letter-spacing:.2em;color:#fff;text-transform:uppercase;-webkit-backdrop-filter:blur(8px);background:#ffffff1a;border:1px solid #fff6;display:inline-block}/* H1 Title */
+.sh-about-hero__title{margin:calc(var(--spacing) * 0);--tw-leading:1;--tw-font-weight:var(--font-weight-black);font-size:clamp(2.5rem,6vw,4.5rem);line-height:1;font-weight:var(--font-weight-black);--tw-tracking:var(--tracking-tight);letter-spacing:var(--tracking-tight);color:#fff;text-transform:uppercase;text-shadow:0 2px 20px #0000004d}/* Subtitle / tagline */
+.sh-about-hero__subtitle{margin:calc(var(--spacing) * 0);--tw-font-weight:var(--font-weight-light);font-size:clamp(1rem,2.5vw,1.375rem);font-weight:var(--font-weight-light);--tw-tracking:var(--tracking-wider);letter-spacing:var(--tracking-wider);color:#ffffffd9;font-style:italic}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .sh-about-hero {
+    @apply [height:55vh] [min-height:320px];
+}
+
+    .sh-about-hero__title {
+    @apply [font-size:2.25rem];
+}
+
+    .sh-about-hero__subtitle {
+    @apply [font-size:1rem];
+}
+}
+
+@media (max-width: 480px) {.sh-about-hero{min-height:70vh}
+}

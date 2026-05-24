@@ -1,0 +1,134 @@
+/**
+ * rough-process — Component CSS
+ */
+        .sh-construct {
+    @apply py-20 px-0 relative overflow-hidden [background:var(--bg)];
+}
+        @media (min-width: 1024px) { .sh-construct {
+    @apply [padding:7rem_0];
+} }
+        .sh-construct__container {
+    @apply my-0 mx-auto py-0 px-4 relative z-10 [max-width:64rem];
+}
+        .sh-construct__header {
+    @apply text-center [max-width:42rem] [margin:0_auto_5rem];
+}
+        .sh-construct__badge {
+    @apply inline-block py-1 px-3 rounded-full font-bold tracking-widest uppercase mb-4 [background:var(--bg-alt)] [color:var(--text-1-3)] [font-size:0.625rem];
+}
+        .sh-construct__title {
+    @apply text-3xl font-black tracking-tight [color:var(--text-1)] [margin:0_0_1.5rem];
+}
+        @media (min-width: 768px) { .sh-construct__title {
+    @apply text-5xl;
+} }
+        .sh-construct__desc {
+    @apply text-lg [color:var(--text-1-2)];
+}
+        .sh-construct__boxes {
+    @apply flex flex-col gap-12;
+}
+        @media (min-width: 1024px) { .sh-construct__boxes {
+    @apply gap-16;
+} }
+        .sh-construct__box {
+    @apply p-8 relative overflow-hidden [background:var(--bg-card)] [border-radius:2.5rem] [box-shadow:0_20px_50px_-12px_rgba(0,0,0,0.05)] [border:1px_solid_var(--border-default-light)] [transition:border-color_0.3s];
+}
+        @media (min-width: 768px) { .sh-construct__box {
+    @apply p-12;
+} }
+        .sh-construct__box:hover {
+    @apply [border-color:color-mix(in_srgb,_var(--brand)_20%,_transparent)];
+}
+        .sh-construct__box-num {
+    @apply absolute font-black leading-none select-none pointer-events-none z-0 tracking-tighter transition-transform duration-1000 [right:-0.625rem] [bottom:-1.25rem] [font-size:250px] [color:color-mix(in_srgb,_var(--bg-alt)_70%,_transparent)];
+}
+        .sh-construct__box:hover .sh-construct__box-num {
+    @apply [transform:scale(1.1)_translateX(-1rem)];
+}
+        .sh-construct__box-inner {
+    @apply flex flex-col gap-8 relative z-10;
+}
+        @media (min-width: 768px) { .sh-construct__box-inner {
+    @apply flex-row gap-16 items-start;
+} }
+        .sh-construct__box-intro {
+    @apply w-full shrink-0;
+}
+        @media (min-width: 768px) { .sh-construct__box-intro {
+    @apply [width:33.333%];
+} }
+        .sh-construct__box-icon {
+    @apply w-12 h-12 rounded-xl flex items-center justify-center mb-6;
+}
+        .sh-construct__box-icon--orange {
+    @apply [background:color-mix(in_srgb,_var(--secondary-light)_60%,_transparent)] [color:var(--secondary)];
+}
+        .sh-construct__box-icon--green {
+    @apply [background:color-mix(in_srgb,_var(--brand-50)_60%,_transparent)] [color:var(--brand)];
+}
+        .sh-construct__box-icon svg {
+    @apply w-6 h-6;
+}
+        .sh-construct__box-title {
+    @apply text-2xl font-black tracking-tight [color:var(--text-1)] [line-height:1.2] [margin:0_0_1rem];
+}
+        .sh-construct__box-desc {
+    @apply text-sm leading-relaxed [color:var(--text-1-3)];
+}
+        .sh-construct__box-details {
+    @apply w-full grid gap-8 [grid-template-columns:1fr];
+}
+        @media (min-width: 640px) { .sh-construct__box-details {
+    @apply [grid-template-columns:1fr_1fr];
+} }
+        @media (min-width: 768px) { .sh-construct__box-details {
+    @apply [width:66.667%];
+} }
+        .sh-construct__col-title {
+    @apply font-bold mb-4 flex items-center gap-2 [color:var(--text-1)];
+}
+        .sh-construct__col-badge {
+    @apply w-6 h-6 rounded-full flex items-center justify-center text-xs [background:var(--bg-alt)] [color:var(--text-1-3)];
+}
+        .sh-construct__col-list {
+    @apply list-none pt-0 pr-0 pb-0 pl-4 m-0 flex flex-col gap-3 [border-left:2px_solid_var(--border-default-light)] [font-size:0.9375rem] [color:var(--text-1-2)];
+}
+        .sh-construct__col-list li {
+    @apply relative pl-4;
+}
+        .sh-construct__col-list li::before {
+    @apply [position:absolute] [left:-1.3rem] [top:0.5rem] [width:0.5rem] [height:0.5rem] [border-radius:50%];
+    content: '';
+}
+        .sh-construct__col-list--muted li::before {
+    @apply [background:var(--text-1-muted)];
+}
+        .sh-construct__col-list--primary li::before {
+    @apply [background:var(--brand)];
+}
+        .sh-construct__col-list--secondary li::before {
+    @apply [background:var(--secondary)];
+}
+        /* Dark Mode */
+        .dark .sh-construct {
+    @apply [background:var(--bg)];
+}
+        .dark .sh-construct__title {
+    @apply [color:var(--text-1)];
+}
+        .dark .sh-construct__box {
+    @apply [background:var(--bg-card)] [border-color:var(--border-default)];
+}
+        .dark .sh-construct__box-title {
+    @apply [color:var(--text-1)];
+}
+        .dark .sh-construct__col-title {
+    @apply [color:var(--text-1)];
+}
+        .dark .sh-construct__col-list {
+    @apply [color:var(--text-1-2)] [border-left-color:var(--border-default)];
+}
+        .dark .sh-construct__box-num {
+    @apply [color:color-mix(in_srgb,_var(--bg-elevated)_50%,_transparent)];
+}

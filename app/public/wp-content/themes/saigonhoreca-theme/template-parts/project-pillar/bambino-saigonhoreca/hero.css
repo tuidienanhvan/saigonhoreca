@@ -1,0 +1,87 @@
+/** bambino-saigonhoreca — hero */
+
+.pp--bambino .pp-hero-section {
+  position: relative;
+  min-height: clamp(620px, 86vh, 900px);
+  overflow: hidden;
+  background: var(--b1);
+  display: grid;
+  align-items: end;
+  border-bottom: 1px solid var(--bd);
+}
+
+.pp--bambino .pp-hero-section__media {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: var(--b2);
+}
+
+.pp--bambino .pp-hero-section__media iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: max(100vw, 177.78vh);
+  height: max(56.25vw, 100vh);
+  transform: translate(-50%, -50%) scale(1.08);
+  pointer-events: none;
+  opacity: 0.72;
+}
+
+.pp--bambino .pp-hero-section__overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, var(--b1) 0%, transparent 46%, var(--b1) 100%),
+    linear-gradient(180deg, transparent 0%, var(--b1) 92%);
+  opacity: 0.94;
+}
+
+.pp--bambino .pp-hero-section__content {
+  position: relative;
+  z-index: 1;
+  width: min(1180px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: clamp(5rem, 12vh, 8rem) 0;
+}
+
+.pp--bambino .pp-hero-section__title {
+  margin: 0;
+  max-width: 900px;
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 11vw, 9.5rem);
+  line-height: 0.86;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  color: var(--bc);
+}
+
+.pp--bambino .pp-hero-section__subhead {
+  margin: 1.5rem 0 0;
+  color: var(--gold);
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 2vw, 1.45rem);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.pp--bambino .pp-hero-section__subtitle {
+  max-width: 760px;
+  margin: 1rem 0 0;
+  color: var(--bc2);
+  font-size: clamp(1.05rem, 1.4vw, 1.35rem);
+  line-height: 1.75;
+  font-weight: 600;
+}
+
+@media (max-width: 767px) {
+  .pp--bambino .pp-hero-section {
+    min-height: 620px;
+  }
+
+  .pp--bambino .pp-hero-section__content {
+    width: min(100% - 32px, 640px);
+    padding: 6rem 0 4.5rem;
+  }
+}

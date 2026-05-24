@@ -1,0 +1,9 @@
+/**
+ * Project page-template — amdang-typhoon (layout only).
+ * @package SaigonHoreca
+ */
+
+body.page-template-page-project-amdang-typhoon {
+  background: var(--b1);
+  color: var(--bc);
+}

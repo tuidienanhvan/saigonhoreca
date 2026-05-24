@@ -1,0 +1,291 @@
+/**
+ * renovate-sol-kitchen-bar-quan-7 — concept slot.
+ * "Thách thức và khó khăn" — Premium Asymmetric Editorial Grid / Split Layout.
+ * Elegant, minimalist architecture magazine-style layouts with custom dropcaps,
+ * blockquotes, technical annotations and zero unnecessary clutter.
+ * @package SaigonHoreca
+ */
+
+.pp-concept-section {
+  background: var(--b1);
+  padding: clamp(4rem, 10vh, 8rem) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.pp-concept-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 5vw, 5rem);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   ASYMMETRIC EDITORIAL GRID (SO LE BẤT ĐỐI XỨ)
+   ───────────────────────────────────────────────────────────── */
+.sgh-concept-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  margin-bottom: clamp(4rem, 8vh, 7rem);
+  align-items: center;
+}
+
+.sgh-concept-row:last-child {
+  margin-bottom: 0;
+}
+
+.sgh-concept-col--text {
+  order: 1; /* Hiển thị chữ trước trên mobile */
+}
+
+.sgh-concept-col--slider {
+  order: 2; /* Hiển thị slider sau trên mobile */
+}
+
+@media (min-width: 1024px) {
+  .sgh-concept-row {
+    grid-template-columns: 42% 58%;
+    gap: clamp(4rem, 6vw, 7rem);
+  }
+  
+  .sgh-concept-row--reverse {
+    grid-template-columns: 58% 42%;
+  }
+  
+  .sgh-concept-row--reverse .sgh-concept-col--slider {
+    order: 1; /* Slider 2 hiển thị bên trái */
+  }
+  
+  .sgh-concept-row--reverse .sgh-concept-col--text {
+    order: 2; /* Text 2 hiển thị bên phải */
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   TYPOGRAPHY & CONTENT STYLE
+   ───────────────────────────────────────────────────────────── */
+.sgh-concept-title {
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(2rem, 3.2vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--bc);
+  margin: 0 0 2rem 0;
+  position: relative;
+}
+
+.sgh-concept-title__accent {
+  display: block;
+  font-family: var(--font-display), monospace;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  margin-bottom: 0.6rem;
+  text-transform: uppercase;
+}
+
+.sgh-concept-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.sgh-concept-paragraph {
+  font-family: var(--font-body), sans-serif;
+  font-size: clamp(0.95rem, 1.1vw, 1.08rem);
+  line-height: 1.85;
+  color: color-mix(in srgb, var(--bc) 75%, transparent);
+  margin: 0;
+  text-align: justify;
+}
+
+/* Dropcap chữ K tinh tế font Serif nghệ thuật */
+.sgh-concept-paragraph--dropcap::first-letter {
+  font-family: Georgia, serif;
+  font-size: 3.5em;
+  font-weight: 700;
+  float: left;
+  line-height: 0.85;
+  margin: 0.1em 0.12em 0 0;
+  color: var(--gold);
+  text-shadow: 0 0 15px color-mix(in srgb, var(--gold) 25%, transparent);
+}
+
+/* Blockquote - trích dẫn đúc kết nghệ thuật */
+.sgh-concept-quote {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: clamp(1.1rem, 1.4vw, 1.35rem);
+  line-height: 1.6;
+  color: color-mix(in srgb, var(--gold) 90%, transparent);
+  border-left: 2px solid var(--gold);
+  padding-left: 1.5rem;
+  margin: 0 0 0.5rem 0;
+}
+
+/* Nhãn chú thích kỹ thuật dưới Slider Before-After */
+.sgh-compare-label {
+  display: block;
+  font-family: var(--font-display), monospace;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: color-mix(in srgb, var(--bc) 45%, transparent);
+  margin-top: 0.85rem;
+  text-transform: uppercase;
+  text-align: right;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   PREMIUM BEFORE-AFTER IMAGE COMPARISON SLIDER
+   ───────────────────────────────────────────────────────────── */
+.sgh-compare {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/10;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-floating);
+  border: 1px solid var(--bd);
+  container-type: inline-size;
+  margin: 0;
+  background-color: var(--b2);
+  user-select: none;
+}
+
+.sgh-compare__after,
+.sgh-compare__before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.sgh-compare__after {
+  z-index: 1;
+}
+
+.sgh-compare__after img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sgh-compare__before {
+  z-index: 2;
+  overflow: hidden;
+  will-change: width;
+}
+
+/* Sử dụng cqw (Container Query Width) để chiều rộng ảnh luôn bằng container cha .sgh-compare
+   bất kể độ rộng .sgh-compare__before thay đổi liên tục khi trượt, tránh méo và zoom giật ảnh */
+.sgh-compare__before img {
+  display: block;
+  width: 100cqw;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: none;
+}
+
+/* Đường phân cách rực rỡ màu vàng Gold */
+.sgh-compare__line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, 
+    transparent, 
+    var(--gold) 15%, 
+    var(--gold) 85%, 
+    transparent
+  );
+  z-index: 3;
+  pointer-events: none;
+  box-shadow: 0 0 12px color-mix(in srgb, var(--gold) 65%, transparent);
+  will-change: left;
+}
+
+/* Nút kéo cao cấp */
+.sgh-compare__handle {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  background-color: var(--b1);
+  border: 2px solid var(--gold);
+  z-index: 4;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 
+    0 4px 14px rgba(0, 0, 0, 0.6), 
+    inset 0 0 8px color-mix(in srgb, var(--gold) 30%, transparent);
+  will-change: left;
+}
+
+/* Tạo biểu tượng hai mũi tên đối xứng */
+.sgh-compare__handle::before,
+.sgh-compare__handle::after {
+  content: '';
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+.sgh-compare__handle::before {
+  border-width: 5px 6px 5px 0;
+  border-color: transparent var(--gold) transparent transparent;
+  margin-right: 3px;
+}
+
+.sgh-compare__handle::after {
+  border-width: 5px 0 5px 6px;
+  border-color: transparent transparent transparent var(--gold);
+  margin-left: 3px;
+}
+
+/* Đè input type range lên trên cùng đón nhận tương tác cảm ứng/kéo thả */
+.sgh-compare__slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: 5;
+  cursor: ew-resize;
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* Đảm bảo input chiếm toàn bộ vùng click trên mọi trình duyệt */
+.sgh-compare__slider::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 100%;
+}
+.sgh-compare__slider::-moz-range-track {
+  width: 100%;
+  height: 100%;
+}
+.sgh-compare__slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 44px;
+  height: 100%;
+}
+.sgh-compare__slider::-moz-range-thumb {
+  width: 44px;
+  height: 100%;
+}
+

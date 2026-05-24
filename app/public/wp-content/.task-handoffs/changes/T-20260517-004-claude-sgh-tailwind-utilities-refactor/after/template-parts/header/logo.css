@@ -1,0 +1,13 @@
+/**
+ * Logo Component — Pure CSS
+ */
+
+.sh-logo{flex-shrink:0;max-height:56px;overflow:hidden}.sh-logo__link{align-items:center;gap:calc(var(--spacing) * 2);text-decoration-line:none;display:flex}.sh-logo__image{object-fit:contain;width:50px;max-width:50px;height:50px;max-height:50px;transition-property:transform,translate,scale,rotate;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration));--tw-duration:.3s;transition-duration:.3s}.sh-logo__link:hover .sh-logo__image{transform:scale(1.05)}.sh-logo__text{display:block}.sh-logo__name{--tw-leading:1;--tw-font-weight:var(--font-weight-black);font-size:clamp(16px,1.6vw,28px);line-height:1;font-weight:var(--font-weight-black);--tw-tracking:var(--tracking-tight);letter-spacing:var(--tracking-tight);color:var(--brand);text-transform:uppercase;display:block}.sh-logo__slogan{margin-top:calc(var(--spacing) * .5);--tw-leading:var(--leading-tight);font-size:clamp(9px,.8vw,13px);line-height:var(--leading-tight);--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium);color:var(--text-1-2);display:block}
+
+/* ── Mobile ── */
+@media (max-width: 767px) {
+    .sh-logo__image {
+    @apply [height:40px] [width:auto];
+}
+}/* ── Dark Mode ── */
+.dark .sh-logo__slogan{color:var(--text-1-3)}

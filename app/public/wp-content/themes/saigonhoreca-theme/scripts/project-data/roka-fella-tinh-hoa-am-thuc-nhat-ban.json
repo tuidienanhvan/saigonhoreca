@@ -1,0 +1,536 @@
+{
+  "slug": "roka-fella-tinh-hoa-am-thuc-nhat-ban",
+  "title": "Roka Fella",
+  "meta_description": "Tọa lạc tại trung tâm Quận 1, Roka Fella được xem là điểm đến lý tưởng để thực khách trải nghiệm những món ăn nổi tiếng của xứ sở Mặt Trời Mọc.",
+  "sections_count": 13,
+  "sections": [
+    {
+      "data_id": "4cacb05d",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-4cacb05d",
+        "elementor-section-full_width",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-5d7ebb78",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2020/12/Roka-Fella.jpg",
+                "srcset": null,
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": null,
+                "h": null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "7a76d575",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-7a76d575",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-22d11629",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "span",
+              "text": "Roka Fella: Tinh hoa ẩm thực Nhật Bản"
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Nhắc đến xứ sở Mặt Trời Mọc, ai cũng biết đến sự đa dạng của văn hóa Nhật Bản, chẳng hạn như nghi lễ trà đạo, văn hóa xin lỗi, văn hóa ẩm thực và nhiều điều khác. Nếu nói về văn hóa ẩm thực Nhật Bản, Sushi chính là món ăn nổi tiếng nhất, được chế biến từ hải sản tươi ngon như tôm, cá, bào ngư, cùng cơm nắm được ướp giấm và muối.",
+                "Tọa lạc tại trung tâm Quận 1, Roka Fella được xem là điểm đến lý tưởng để thực khách trải nghiệm những món ăn nổi tiếng của xứ sở Mặt Trời Mọc."
+              ],
+              "links": [
+                {
+                  "href": "https://www.facebook.com/Rokafellasgn/",
+                  "text": "Roka Fella"
+                }
+              ]
+            },
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2020/12/roka.jpg",
+                "srcset": null,
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": null,
+                "h": null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "3ab672b7",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-3ab672b7",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-43831c43",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Roka Fella mang đến trải nghiệm độc đáo bậc nhất trong ẩm thực Nhật Bản, đó chính là Omakase. Omakase xuất phát từ động từ “Makasu,” có nghĩa là “tin tưởng.” Omakase trong tiếng Nhật có nghĩa là “tôi tin tưởng”, ám chỉ việc “đặt trọn niềm tin vào bàn tay tài ba của các đầu bếp”. Ngồi tại Roka Fella, bạn chỉ cần thư giãn, ngắm nhìn sự điệu nghệ của bếp chính và đón nhận những món ăn được chuẩn bị cẩn thận, tỉ mỉ, hứa hẹn một hành trình khám phá ẩm thực vô cùng thú vị."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "6c69b1c0",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-6c69b1c0",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-178d7002",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2020/12/roka-3.jpg",
+                "srcset": null,
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": null,
+                "h": null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "dd6ffaf",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-dd6ffaf",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-27c33fab",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Với phong cách Omakase, thực khách sẽ được tận hưởng cảm giác hồi hộp chờ đợi từng món ăn và thưởng thức những hương vị bất ngờ mà đầu bếp đã đặt tâm huyết vào."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "88a121b",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-88a121b",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-104374d0",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2020/12/roka-sushi-e1631375644306.jpg",
+                "srcset": null,
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": null,
+                "h": null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "73f2bbc8",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-73f2bbc8",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-62f27655",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Đa phần nguyên liệu của nhà hàng đều được nhập khẩu bằng đường hàng không từ Nhật Bản, do đó thực đơn Roka Fella cũng sẽ thay đổi theo từng mùa, đảm bảo những hương vị luôn được tươi ngon nhất."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "1533fbd0",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-1533fbd0",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-51b49c0c",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "image-carousel.default",
+              "slides": [
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2020/12/roka-mon-2-e1631418986601.jpg",
+                  "srcset": null,
+                  "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2020/12/roka-mon-1-e1631455172811.jpg",
+                  "srcset": null,
+                  "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2021/09/roka-mon-5-e1631419434107.jpg",
+                  "srcset": null,
+                  "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2021/09/roka-mon-6-e1631419377838.jpg",
+                  "srcset": null,
+                  "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2021/09/roka-mon-7-e1631419494940.jpg",
+                  "srcset": null,
+                  "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2021/09/roka-mon-8-e1631419535376.jpg",
+                  "srcset": null,
+                  "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2021/09/roka-mon-9-e1631419559864.jpg",
+                  "srcset": null,
+                  "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2021/09/roka-mon-10-e1631419592753.jpg",
+                  "srcset": null,
+                  "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2020/12/roka-mon-3-e1631419101152.jpg",
+                  "srcset": null,
+                  "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                  "w": null,
+                  "h": null
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "6cc9f4b4",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-6cc9f4b4",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-4422198a",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Tại Roka Fella, ngoài trải nghiệm hấp dẫn với ẩm thực Omakase, còn có một không gian âm nhạc cổ điển sang trọng trên tầng thượng nhà hàng được gọi là quầy bar vinyl. Tại đây, bậc thầy pha chế Aris Sanjaya sẽ chiêu đãi bạn những ly cocktail độc đáo, thưởng thức cùng giai điệu soul, jazz, và R&B cổ điển."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "4c1715ce",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-4c1715ce",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-75b5ff42",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/Roka-Fella.webp",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/Roka-Fella.webp 1920w, https://saigonhoreca.vn/wp-content/uploads/2024/01/Roka-Fella-768x432.webp 768w, https://saigonhoreca.vn/wp-content/uploads/2024/01/Roka-Fella-1536x864.webp 1536w, https://saigonhoreca.vn/wp-content/uploads/2024/01/Roka-Fella-600x338.webp 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1920",
+                "h": "1080"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "7e4b0183",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-7e4b0183",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-6c5398a4",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Roka Fella không chỉ thu hút thực khách bởi ẩm thực và âm nhạc, mà còn bởi không gian sang trọng được chăm chút tỉ mỉ. Và góp phần không nhỏ ấy chính từ Saigon Horeca, đối tác đáng tin cậy của HypeAsia. Saigon Horeca đã tư vấn, thiết kế và lắp đặt hoàn chỉnh trang thiết bị cho Bếp, Quầy Sushi, và Quầy Bar của nhà hàng, hứa hẹn mang đến trải nghiệm ẩm thực thượng hạng trong một không gian đẳng cấp."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "1e7c50ea",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-1e7c50ea",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-44638ae8",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Phòng Bếp Nấu Ăn và Quầy Sushi Của Roka Fella"
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Mặc dù tương đối nhỏ với diện tích khoảng 4 mét vuông, khu vực bếp tại Roka Fella được Saigon Horeca bố trí tỉ mỉ để đáp ứng mọi yêu cầu hoạt động. Từng thiết bị được lựa chọn kỹ lưỡng và sắp xếp khoa học, đảm bảo luồng khí lưu thông, cung cấp thêm thông gió, mang đến môi trường làm việc thoải mái, mát mẻ cho các đầu bếp trong quá trình chế biến.Trái với không gian nấu nướng trong bếp, quầy Sushi tại Roka Fella lại tập trung vào việc giữ trọn độ tươi ngon của cá, tôm. Chính vì thế, khu vực này được trang bị rất nhiều tủ lạnh và tủ đông hiện đại, đảm bảo hương vị của món ăn, sẵn sàng cho màn trình diễn nghệ thuật Sushi của các đầu bếp tài ba."
+              ]
+            },
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2020/12/roka-bv-bo-tri-thiet-bi.png",
+                "srcset": null,
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": null,
+                "h": null
+              }
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Trải nghiệm Omakase tại Roka Fella không chỉ xoay quanh tài nghệ của đầu bếp, mà còn phụ thuộc vào chất lượng nguyên liệu tươi ngon thượng hạng. Chính vì vậy, khu vực bếp được Saigon Horeca trang bị hệ thống tủ lạnh hiện đại, đáp ứng nhu cầu bảo quản đa dạng cho các loại như cá hồi, cá ngừ đại dương, tôm và vô số hải sản khác. Thậm chí, một máy làm đá chuyên dụng cũng được đưa vào sử dụng, đảm bảo cung cấp những viên đá tinh khiết, sẵn sàng phục vụ nghệ thuật trình bày và giữ trọn hương vị tươi ngon của món ăn."
+              ],
+              "links": [
+                {
+                  "href": "http://saigonhoreca.vn",
+                  "text": "Saigon Horeca"
+                }
+              ]
+            },
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/Roka-fella-bep-nau.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/Roka-fella-bep-nau.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2024/03/Roka-fella-bep-nau-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/03/Roka-fella-bep-nau-600x337.jpg 600w",
+                "alt": "Tầm quan trọng của bảo trì định kỳ thiết bị nhà bếp căn tin",
+                "w": "1366",
+                "h": "768"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "39fd238e",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-39fd238e",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-44d3049b",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Phòng bếp nấu ăn bao gồm thiết bị nhập khẩu như tủ lạnh, máy chiên nhúng, bếp Á 4 họng, bếp nướng salamander và một số thiết bị inox do Saigon Horeca sản xuất, như máy hút khói, bồn rửa, kệ treo tường và hệ thống tách lọc mỡ.",
+                "Với sự tận tâm và chuyên nghiệp của chúng tôi trong dự án này, Saigon Horeca đã giành được sự tin tưởng từ HypeAsia và tiếp tục được mời tham gia tư vấn, cung cấp thiết bị cho dự án GodMother 2."
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

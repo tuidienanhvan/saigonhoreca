@@ -1,0 +1,547 @@
+/* ── sh-contact-form ──────────────────────────────────────────── */
+.sh-contact-form {
+  background: var(--b1);
+  padding: 8rem 1.25rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Luxury backglow mờ sau form liên hệ */
+.sh-contact-form::before {
+  content: '';
+  position: absolute;
+  top: 20%;
+  left: -10%;
+  width: 35rem;
+  height: 35rem;
+  background: radial-gradient(circle, color-mix(in srgb, var(--p) 4%, transparent) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.sh-contact-form::after {
+  content: '';
+  position: absolute;
+  bottom: 10%;
+  right: -5%;
+  width: 45rem;
+  height: 45rem;
+  background: radial-gradient(circle, color-mix(in srgb, var(--p) 3%, transparent) 0%, transparent 75%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.sh-contact-form__inner {
+  max-width: var(--sh-content-max, 80rem);
+  margin-inline: auto;
+  display: grid;
+  gap: 4rem;
+  grid-template-columns: 1fr;
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 1024px) {
+  .sh-contact-form__inner {
+    grid-template-columns: 5fr 7fr;
+    align-items: start;
+    gap: 6rem;
+  }
+}
+
+/* ── Info sidebar (Luxury Glassmorphism Sidebar) ────────────────── */
+.sh-contact-form__info {
+  background: linear-gradient(135deg, rgba(15, 15, 15, 0.75) 0%, rgba(10, 10, 10, 0.85) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(245, 166, 35, 0.15);
+  border-radius: var(--radius-lg);
+  padding: 3rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.2rem;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.85), inset 0 0 20px rgba(255, 255, 255, 0.01);
+  position: relative;
+  transition: transform 0.4s var(--ease-spring), border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.sh-contact-form__info:hover {
+  border-color: rgba(245, 166, 35, 0.3);
+  box-shadow: 0 45px 110px rgba(0, 0, 0, 0.95), inset 0 0 25px rgba(245, 166, 35, 0.03);
+}
+
+/* Top decorative thin laser border */
+.sh-contact-form__info::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10%;
+  width: 80%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--p), #ffd166, transparent);
+  opacity: 0.8;
+}
+
+.sh-contact-form__brand {
+  position: relative;
+}
+
+.sh-contact-form__brand-name {
+  font-size: 1.45rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--bc);
+  margin: 0 0 0.85rem;
+  letter-spacing: 0.05em;
+  background: linear-gradient(135deg, #fff 40%, var(--p) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.sh-contact-form__rule {
+  width: 4rem;
+  height: 2px;
+  background: linear-gradient(90deg, var(--p), transparent);
+  border-radius: 1px;
+}
+
+/* Detail items */
+.sh-contact-form__details {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+}
+
+.sh-contact-form__detail-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  font-size: 0.9rem;
+  color: var(--bc2);
+  line-height: 1.7;
+  transition: transform 0.3s ease;
+}
+
+.sh-contact-form__detail-item:hover {
+  transform: translateX(4px);
+}
+
+.sh-contact-form__detail-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.2rem;
+  height: 2.2rem;
+  background: rgba(245, 166, 35, 0.07);
+  border: 1px solid rgba(245, 166, 35, 0.15);
+  border-radius: 8px;
+  color: var(--p);
+  margin-top: 0.1rem;
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sh-contact-form__detail-icon svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.sh-contact-form__detail-item:hover .sh-contact-form__detail-icon {
+  background: var(--p);
+  color: #0a0a0a;
+  border-color: var(--p);
+  box-shadow: 0 0 10px rgba(245, 166, 35, 0.35);
+}
+
+.sh-contact-form__detail-item a {
+  color: var(--bc);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.sh-contact-form__detail-item a:hover {
+  color: var(--p);
+}
+
+/* Founder & Sáng lập info */
+.sh-contact-form__founder {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.sh-contact-form__founder-label {
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--p);
+  margin: 0;
+  text-shadow: 0 0 8px rgba(245, 166, 35, 0.15);
+}
+
+.sh-contact-form__founder-name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--bc);
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+
+.sh-contact-form__founder-contacts {
+  list-style: none;
+  margin: 0.15rem 0 0;
+  padding: 0;
+}
+
+.sh-contact-form__founder-contacts a {
+  font-size: 0.85rem;
+  color: var(--bc3);
+  text-decoration: none;
+  transition: color 0.2s ease, padding-left 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+}
+
+.sh-contact-form__founder-contacts a:hover {
+  color: var(--p);
+  padding-left: 2px;
+}
+
+/* Social buttons section */
+.sh-contact-form__social {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.sh-contact-form__social-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--bc);
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+
+.sh-contact-form__social-links {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.sh-contact-form__social-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.015);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--bc2);
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.3s var(--ease-spring), box-shadow 0.3s ease;
+}
+
+.sh-contact-form__social-btn svg {
+  width: 1.05rem;
+  height: 1.05rem;
+}
+
+.sh-contact-form__social-btn:hover {
+  background: linear-gradient(135deg, var(--p) 0%, #ffd166 100%);
+  color: #0a0a0a;
+  border-color: var(--p);
+  box-shadow: 0 5px 15px rgba(245, 166, 35, 0.45);
+  transform: translateY(-4px) scale(1.06);
+}
+
+/* ── Form column ─────────────────────────────────────────────── */
+.sh-contact-form__form-col {
+  display: flex;
+  flex-direction: column;
+  gap: 2.2rem;
+}
+
+.sh-contact-form__form-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.sh-contact-form__form-title {
+  font-size: clamp(1.6rem, 3.2vw, 2.2rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--bc);
+  margin: 0;
+  letter-spacing: -0.01em;
+  /* Gold-white elegant text gradient */
+  background: linear-gradient(135deg, var(--p) 0%, #fff 50%, var(--p) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine-contact 6s linear infinite;
+}
+
+@keyframes shine-contact {
+  to { background-position: 200% center; }
+}
+
+.sh-contact-form__form-sub {
+  font-size: 0.95rem;
+  line-height: 1.85;
+  color: var(--bc2);
+  margin: 0;
+  max-width: 38rem;
+}
+
+/* Native fallback form */
+.sh-contact-form__native {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.sh-contact-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sh-contact-form__field--full {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 640px) {
+  .sh-contact-form__native { grid-template-columns: 1fr; gap: 1.25rem; }
+  .sh-contact-form__field--full { grid-column: auto; }
+}
+
+.sh-contact-form__label {
+  font-size: 0.825rem;
+  font-weight: 700;
+  color: rgba(245, 166, 35, 0.8);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+.sh-contact-form__field:focus-within .sh-contact-form__label {
+  color: var(--p);
+}
+
+.sh-contact-form__label span {
+  color: #ef4444;
+  margin-left: 2px;
+}
+
+.sh-contact-form__input {
+  background: rgba(10, 10, 10, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 0.9rem 1.15rem;
+  font-size: 0.95rem;
+  color: var(--bc);
+  font-family: inherit;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  outline: none;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.sh-contact-form__input::placeholder {
+  color: rgba(255, 255, 255, 0.22);
+}
+
+.sh-contact-form__input:focus {
+  border-color: var(--p);
+  background: rgba(15, 15, 15, 0.98);
+  box-shadow: 0 0 12px rgba(245, 166, 35, 0.18), inset 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.sh-contact-form__input--textarea {
+  resize: vertical;
+  min-height: 8rem;
+  line-height: 1.6;
+}
+
+/* Nút Submit Hoàng Kim Đầy Sức Mạnh */
+.sh-contact-form__submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--p) 0%, #ffd166 100%);
+  color: #0a0a0a;
+  border: none;
+  border-radius: 8px;
+  padding: 1rem 3rem;
+  font-size: 0.9rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+  font-family: inherit;
+  box-shadow: 0 5px 15px rgba(245, 166, 35, 0.25);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  align-self: flex-start;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.sh-contact-form__submit::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+  transition: all 0.6s ease;
+  z-index: -1;
+}
+
+.sh-contact-form__submit:hover::before {
+  left: 100%;
+}
+
+.sh-contact-form__submit:hover {
+  background: linear-gradient(135deg, #ffd166 0%, var(--p) 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(245, 166, 35, 0.45), 0 0 10px rgba(245, 166, 35, 0.2);
+}
+
+.sh-contact-form__submit:active {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(245, 166, 35, 0.25);
+}
+
+/* WPForms dark override (Đồng bộ tuyệt đối sang trọng) */
+.sh-contact-form__wpforms-wrap .wpforms-container {
+  margin: 0 !important;
+}
+
+.sh-contact-form__wpforms-wrap .wpforms-container .wpforms-form {
+  display: grid;
+  gap: 1.5rem !important;
+}
+
+.sh-contact-form__wpforms-wrap .wpforms-container .wpforms-field-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem !important;
+}
+
+@media (max-width: 640px) {
+  .sh-contact-form__wpforms-wrap .wpforms-container .wpforms-field-container {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
+  }
+}
+
+.sh-contact-form__wpforms-wrap .wpforms-container .wpforms-field {
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.5rem !important;
+}
+
+/* Các trường full width */
+.sh-contact-form__wpforms-wrap .wpforms-container .wpforms-field-textarea,
+.sh-contact-form__wpforms-wrap .wpforms-container .wpforms-field-email,
+.sh-contact-form__wpforms-wrap .wpforms-container .wpforms-field-select,
+.sh-contact-form__wpforms-wrap .wpforms-container .wpforms-field-radio {
+  grid-column: 1 / -1 !important;
+}
+
+@media (max-width: 640px) {
+  .sh-contact-form__wpforms-wrap .wpforms-container .wpforms-field-textarea,
+  .sh-contact-form__wpforms-wrap .wpforms-container .wpforms-field-email {
+    grid-column: auto !important;
+  }
+}
+
+.sh-contact-form__wpforms-wrap .wpforms-container label.wpforms-field-label {
+  font-size: 0.825rem !important;
+  font-weight: 700 !important;
+  color: rgba(245, 166, 35, 0.8) !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+  margin: 0 !important;
+  transition: color 0.3s ease !important;
+}
+
+.sh-contact-form__wpforms-wrap .wpforms-container .wpforms-field:focus-within label.wpforms-field-label {
+  color: var(--p) !important;
+}
+
+.sh-contact-form__wpforms-wrap .wpforms-container label.wpforms-field-label span.wpforms-required-label {
+  color: #ef4444 !important;
+}
+
+.sh-contact-form__wpforms-wrap .wpforms-container input[type="text"],
+.sh-contact-form__wpforms-wrap .wpforms-container input[type="tel"],
+.sh-contact-form__wpforms-wrap .wpforms-container input[type="email"],
+.sh-contact-form__wpforms-wrap .wpforms-container textarea,
+.sh-contact-form__wpforms-wrap .wpforms-container select {
+  background: rgba(10, 10, 10, 0.95) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  color: var(--bc) !important;
+  border-radius: 8px !important;
+  padding: 0.9rem 1.15rem !important;
+  font-size: 0.95rem !important;
+  font-family: inherit !important;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease !important;
+  outline: none !important;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5) !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.sh-contact-form__wpforms-wrap .wpforms-container input:focus,
+.sh-contact-form__wpforms-wrap .wpforms-container textarea:focus {
+  border-color: var(--p) !important;
+  background: rgba(15, 15, 15, 0.98) !important;
+  box-shadow: 0 0 12px rgba(245, 166, 35, 0.18), inset 0 2px 4px rgba(0, 0, 0, 0.6) !important;
+}
+
+.sh-contact-form__wpforms-wrap .wpforms-container textarea {
+  min-height: 8rem !important;
+  line-height: 1.6 !important;
+}
+
+.sh-contact-form__wpforms-wrap .wpforms-container button[type="submit"],
+.sh-contact-form__wpforms-wrap .wpforms-container input[type="submit"] {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: linear-gradient(135deg, var(--p) 0%, #ffd166 100%) !important;
+  color: #0a0a0a !important;
+  border: none !important;
+  border-radius: 8px !important;
+  padding: 1rem 3rem !important;
+  font-size: 0.9rem !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.12em !important;
+  cursor: pointer !important;
+  font-family: inherit !important;
+  box-shadow: 0 5px 15px rgba(245, 166, 35, 0.25) !important;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+  position: relative !important;
+  overflow: hidden !important;
+  margin-top: 0.5rem !important;
+}
+
+.sh-contact-form__wpforms-wrap .wpforms-container button[type="submit"]:hover,
+.sh-contact-form__wpforms-wrap .wpforms-container input[type="submit"]:hover {
+  background: linear-gradient(135deg, #ffd166 0%, var(--p) 100%) !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 8px 25px rgba(245, 166, 35, 0.45), 0 0 10px rgba(245, 166, 35, 0.2) !important;
+}

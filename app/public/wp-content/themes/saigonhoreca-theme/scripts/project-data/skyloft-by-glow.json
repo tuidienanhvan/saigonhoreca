@@ -1,0 +1,431 @@
+{
+  "slug": "skyloft-by-glow",
+  "title": "Skyloft by Glow",
+  "meta_description": "Skyloft by Glow Skyloft by Glow is a rooftop bar located on the President Place building on Nguyen Du street, District 1. It offers a 360-degree view of the",
+  "sections_count": 13,
+  "sections": [
+    {
+      "data_id": "df531b5",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-df531b5",
+        "elementor-section-full_width",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-d814915",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "4ea1ef1b",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-4ea1ef1b",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-5905d414",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Skyloft by Glow Skyloft by Glow is a rooftop bar located on the President Place building on Nguyen Du street, District 1. It offers a 360-degree view of the entire city’s architecture, making it one of the best places to watch the sunset from above.",
+                "As the city lights up, Skyloft by Glow becomes the most vibrant and lively bar in Saigon, offering top-notch drinks and music ranging from Deep House to Vocal Sexy House. As the night wears on, the music gets even more lively, with Comercial House and Hip Hop to get everyone dancing and immersed in the beats."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "2d2065e9",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-2d2065e9",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-97c87cf",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": null
+            },
+            {
+              "type": "image.default",
+              "image": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "5a8e266a",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-5a8e266a",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-5003bd41",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "The signature style of Skyloft’s drinks is handcrafted balance, using classic recipes with unique and unusual flavors to create a distinctive taste experience."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "47393032",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-47393032",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-41077815",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "70e3ff54",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-70e3ff54",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-3b26b7b3",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "When visiting Skyloft by Glow, there are three must-try cocktails. The Bird is Word, with a light and airy feeling like a bird flying through the sky, and a hint of forest berry smoke. Dawn of the Walking is a twist on the legendary TiKi cocktail – Zombie. Fish out of Water, originating from a traditional Mexican drink made from fermented pineapple, is also a must-try."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "fa1713e",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-fa1713e",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-3db71b80",
+          "col_size": 16,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": null
+            },
+            {
+              "type": "image.default",
+              "image": null
+            },
+            {
+              "type": "image.default",
+              "image": null
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-66 elementor-top-column elementor-element elementor-element-6b2402e7",
+          "col_size": 66,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": null
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-4278db3e",
+          "col_size": 16,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": null
+            },
+            {
+              "type": "image.default",
+              "image": null
+            },
+            {
+              "type": "image.default",
+              "image": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "ae9a1a0",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-ae9a1a0",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-182af66d",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Immersing oneself in the enchanting music, enjoying the top-notch drinks, and the vibrant night sky will undoubtedly be a fantastic experience for a lively Saigon night."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "26d256b3",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-26d256b3",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-dada4a5",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Saigon Horeca is honored to have designed and supplied the interior equipment for the bar, from imported refrigeration equipment to custom-designed and manufactured stainless steel bar counters and glass racks."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "4bc5c833",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-4bc5c833",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-13662cee",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": null
+            },
+            {
+              "type": "image.default",
+              "image": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "63c07d3f",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-63c07d3f",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-19e71090",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "The bar counter is over 6 meters long and can serve up to 300 guests. Every inch of space has been carefully utilized to ensure that all equipment is placed in the most supportive and convenient locations for bartenders."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "45f8b9b6",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-45f8b9b6",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-f2244cc",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "57a636a",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-57a636a",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-5996c576",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "For a top-notch sky bar in Saigon, every detail of the design must be sharp and innovative. With constant creativity and innovation in their designs, Saigon Horeca has demonstrated its expertise and ability to satisfy the project owner of Skyloft by Glow."
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

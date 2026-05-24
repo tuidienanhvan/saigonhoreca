@@ -1,0 +1,21 @@
+/**
+ * Footer Company Info — Saigon Horeca
+ * Logo + tên cty + paragraph giới thiệu + social icons.
+ * Match production saigonhoreca.vn footer column 1.
+ */
+
+.sh-footer__company-name {
+    font-family: var(--font-display, "Lexend", sans-serif);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--bc, #fff);
+}
+
+.sh-footer__company-desc {
+    margin: 0.875rem 0 0;
+    font-size: 0.875rem;
+    line-height: 1.65;
+    color: var(--bc2, rgba(255, 255, 255, 0.7));
+}

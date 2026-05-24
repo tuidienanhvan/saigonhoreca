@@ -1,0 +1,181 @@
+/**
+ * bep-an-truong-mam-non-tu-thuc-trinh-vuong — partnership slot.
+ * Direction: School Cafeteria — full-bleed bg-section with gentle wholesome overlay
+ * + rounded glass content card with corner schedule-tags. Owns .pp-section-bg-tvg.
+ * @package SaigonHoreca
+ */
+
+.pp-section-bg-tvg {
+  position: relative;
+  padding: 6rem 1.5rem;
+  min-height: 64vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--b1);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  isolation: isolate;
+  overflow: hidden;
+}
+@media (min-width: 768px) {
+  .pp-section-bg-tvg { padding: 9rem 2rem; }
+}
+@media (min-width: 1200px) {
+  .pp-section-bg-tvg { padding: 11rem 2rem; }
+}
+
+/* Gentle wholesome overlay — warmer than typical cinematic */
+.pp-section-bg-tvg__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    /* Gridded planning lines (subtle) */
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0 calc(64px - 1px),
+      color-mix(in srgb, var(--gold) 5%, transparent) calc(64px - 1px) 64px
+    ),
+    repeating-linear-gradient(
+      to right,
+      transparent 0 calc(80px - 1px),
+      color-mix(in srgb, var(--gold) 4%, transparent) calc(80px - 1px) 80px
+    ),
+    /* Cream wash + cinematic vignette */
+    radial-gradient(ellipse at center,
+      color-mix(in srgb, var(--b1) 30%, transparent) 0%,
+      color-mix(in srgb, var(--b1) 72%, transparent) 70%,
+      color-mix(in srgb, var(--b1) 88%, transparent) 100%);
+}
+
+/* Ambient gold glows */
+.pp-section-bg-tvg::before {
+  content: '';
+  position: absolute;
+  top: -8%;
+  left: -6%;
+  width: 520px; height: 520px;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--gold) 18%, transparent) 0%,
+    transparent 70%
+  );
+  filter: blur(80px);
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.75;
+}
+.pp-section-bg-tvg::after {
+  content: '';
+  position: absolute;
+  bottom: -10%;
+  right: -8%;
+  width: 480px; height: 480px;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--gold) 14%, transparent) 0%,
+    transparent 70%
+  );
+  filter: blur(75px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Glass content card — rounded with schedule-tag corner brackets */
+.pp-section-bg-tvg__content {
+  position: relative;
+  z-index: 2;
+  max-width: 920px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 3.25rem 2.5rem;
+  background: color-mix(in srgb, var(--b1) 48%, transparent);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  border: 1.5px solid color-mix(in srgb, var(--gold) 26%, transparent);
+  border-radius: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.6rem;
+  box-shadow:
+    0 28px 64px rgba(0, 0, 0, 0.42),
+    inset 0 1px 0 color-mix(in srgb, var(--gold) 12%, transparent);
+}
+@media (min-width: 768px) {
+  .pp-section-bg-tvg__content {
+    padding: 4rem 3.5rem;
+  }
+}
+
+/* Top schedule-tag pill (eyebrow) */
+.pp-section-bg-tvg__content::before {
+  content: 'ĐỐI TÁC TIN CẬY';
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 6px 16px;
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: var(--b1);
+  background: var(--gold);
+  border-radius: 999px;
+  box-shadow:
+    0 4px 14px color-mix(in srgb, var(--gold) 40%, transparent),
+    0 0 0 4px color-mix(in srgb, var(--b1) 80%, transparent);
+  white-space: nowrap;
+}
+
+/* Bottom stacked-rectangle ornament */
+.pp-section-bg-tvg__content::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px; height: 10px;
+  background:
+    linear-gradient(to right,
+      var(--gold) 0 28%,
+      transparent 28% 36%,
+      color-mix(in srgb, var(--gold) 60%, transparent) 36% 70%,
+      transparent 70% 78%,
+      color-mix(in srgb, var(--gold) 30%, transparent) 78% 100%);
+  border-radius: 5px;
+}
+
+.pp-section-bg-tvg__content .pp-text-tvg__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 3.2vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1.22;
+  color: var(--bc);
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.55);
+  letter-spacing: -0.01em;
+}
+.pp-section-bg-tvg__content .pp-text-tvg__body {
+  font-size: clamp(0.97rem, 1.12vw, 1.06rem);
+  line-height: 1.85;
+  color: var(--bc2);
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.pp-section-bg-tvg__content .pp-text-tvg__body p {
+  margin: 0;
+  text-align: center;
+}
+
+/* L-bracket corner ornaments */
+.pp-section-bg-tvg__content > :first-child::before,
+.pp-section-bg-tvg__content > :first-child::after {
+  /* unused — handled via card pseudos */
+}

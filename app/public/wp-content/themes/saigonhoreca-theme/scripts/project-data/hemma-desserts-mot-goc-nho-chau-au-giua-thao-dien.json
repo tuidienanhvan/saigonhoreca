@@ -1,0 +1,400 @@
+{
+  "slug": "hemma-desserts-mot-goc-nho-chau-au-giua-thao-dien",
+  "title": "HEMMA DESSERTS",
+  "meta_description": "Từ ý tưởng khởi nguồn – “mâm cơm Việt” – Mâm Mâm khéo léo đưa biểu tượng sum vầy ấy len lỏi khắp mọi ngóc ngách: trong hình dáng chiếc bàn,",
+  "sections_count": 5,
+  "sections": [
+    {
+      "data_id": "355a605b",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-355a605b",
+        "elementor-section-height-full",
+        "elementor-section-full_width",
+        "elementor-section-height-default",
+        "elementor-section-items-middle"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/11/hemma-desserts-3.jpg",
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-3901529a",
+          "col_size": 16,
+          "widgets": []
+        },
+        {
+          "col_class": "elementor-column elementor-col-66 elementor-top-column elementor-element elementor-element-7dd42e71",
+          "col_size": 66,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h1",
+              "text": "HEMMA DESSERTS"
+            },
+            {
+              "type": "spacer.default",
+              "spacer": true
+            },
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Một góc nhỏ châu Âu giữa Thảo Điền"
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Ẩn mình ở cuối con đường Nguyễn Bá Huân, Hemma Desserts là một tiệm tráng miệng kiểu Âu nhỏ xinh được vận hành bởi hai founder trẻ người nước ngoài, cũng chính là đầu bếp đứng bếp bánh mỗi ngày."
+              ]
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-641e797e",
+          "col_size": 16,
+          "widgets": []
+        }
+      ]
+    },
+    {
+      "data_id": "ef110fa",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-ef110fa",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-65c48449",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Nhưng ẩn sau vẻ ngoài nhỏ nhắn ấy là cả một bài toán thiết kế bếp công nghiệp tinh gọn, đòi hỏi tính toán kỹ lưỡng về công năng, lưu trữ và vận hành. Không gian chỉ vỏn vẹn hơn 11m², nhưng phải đảm nhiệm hai công năng quan trọng: vừa phải có khu bếp bánh chuyên nghiệp, vừa tích hợp quầy bar phục vụ cà phê Ý (Italiano) – tất cả trong một không gian nhỏ gọn, thẩm mỹ và vận hành hiệu quả."
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Yêu cầu của chủ đầu tư dành cho SGH là: biến không gian nhỏ này thành một “bếp bánh hoàn chỉnh” – tiện nghi, thẩm mỹ, và hiệu quả vận hành."
+              ]
+            },
+            {
+              "type": "image-carousel.default",
+              "slides": [
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/11/hemma-desserts-1.jpg",
+                  "srcset": null,
+                  "alt": "hemma-desserts",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/11/hemma-desserts.jpg",
+                  "srcset": null,
+                  "alt": "hemma-desserts (1)",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/11/hemma-desserts-2.jpg",
+                  "srcset": null,
+                  "alt": "hemma-desserts (2)",
+                  "w": null,
+                  "h": null
+                }
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Cre: @hemmadesserts"
+              ]
+            },
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Bài toán khó – Không gian chỉ 11m² cho hai công năng lớn"
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Chủ đầu tư đặt ra yêu cầu tưởng chừng “bất khả thi”:",
+                "“Phải vừa có khu bếp bánh chuyên nghiệp với đầy đủ thiết bị nướng, trộn, ủ bột – lại vừa có quầy bar pha chế cà phê Italiano chuẩn vị, đảm bảo thẩm mỹ và công năng như một quán lớn.”",
+                "Diện tích hạn chế, hệ thống điện – nước – thoát sàn cố định, cùng yêu cầu về vệ sinh, an toàn và thẩm mỹ khiến bài toán này trở thành một thách thức thật sự.",
+                "Nhưng với Saigon Horeca, thách thức chính là nơi ý tưởng và kỹ thuật gặp nhau để tạo nên giải pháp. Mỗi chi tiết trong không gian nhỏ này đều được tính toán để vừa đáp ứng quy trình bếp chuyên nghiệp, vừa giữ được chất mộc mạc, tinh tế đúng tinh thần “Hemma” – cảm giác như ở nhà.",
+                "Với diện tích chưa đến 11m², khu bếp của Hemma Desserts phải đảm nhiệm đồng thời hai công năng:",
+                "Mọi thiết bị đều cần đạt chuẩn vận hành bếp Âu, nhưng vẫn phải đảm bảo lối đi, thao tác, và vệ sinh an toàn thực phẩm trong không gian cực nhỏ."
+              ]
+            },
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/11/hemma-desserts-4.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/11/hemma-desserts-4.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/11/hemma-desserts-4-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/11/hemma-desserts-4-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Giải pháp của Saigon Horeca là thiết kế và thi công hệ thống bếp công nghiệp nhỏ gọn, thông minh, với từng chi tiết được custom theo không gian thực tế:",
+                "Nhờ đó, không gian chỉ 11m² vẫn có thể vận hành như một bếp bánh chuyên nghiệp châu Âu thu nhỏ, nơi hai đầu bếp có thể đồng thời thao tác, nướng bánh, pha cà phê, và phục vụ khách mà không vướng víu hay lãng phí diện tích."
+              ]
+            },
+            {
+              "type": "image-carousel.default",
+              "slides": [
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/11/hemma-desserts-2-1.jpg",
+                  "srcset": null,
+                  "alt": "hemma-desserts (2)",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/11/hemma-desserts-3-1.jpg",
+                  "srcset": null,
+                  "alt": "hemma-desserts (3)",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/11/hemma-desserts-4-1.jpg",
+                  "srcset": null,
+                  "alt": "hemma-desserts (4)",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/11/hemma-desserts-5.jpg",
+                  "srcset": null,
+                  "alt": "hemma-desserts",
+                  "w": null,
+                  "h": null
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "2fcbcb7f",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-2fcbcb7f",
+        "elementor-section-content-middle",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-2530f256",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Giải pháp của Saigon Horeca"
+            },
+            {
+              "type": "divider.default",
+              "divider": true
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Ngay từ khâu khảo sát, đội ngũ kỹ sư Saigon Horeca đã nhận thấy rằng: để biến không gian 11m² thành một bếp bánh kiêm bar café hiệu quả, không thể dùng thiết bị tiêu chuẩn sẵn có, mà phải custom toàn bộ thiết bị inox theo kích thước thực tế.",
+                "Từng centimet được tính toán kỹ lưỡng:",
+                "Khu rửa & lưu trữ dụng cụ: máy rửa chén và kệ inox 3 tầng giúp tối ưu không gian thẳng đứng, hạn chế bề mặt tiếp xúc – dễ vệ sinh, sạch sẽ tuyệt đối."
+              ]
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-3cd70efa",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/11/hemma-desserts-7.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/11/hemma-desserts-7.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/11/hemma-desserts-7-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/11/hemma-desserts-7-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            },
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/11/hemma-desserts-8.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/11/hemma-desserts-8.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/11/hemma-desserts-8-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/11/hemma-desserts-8-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "16b4144a",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-16b4144a",
+        "elementor-section-content-middle",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-4fc0aebb",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/11/hemma-desserts-10.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/11/hemma-desserts-10.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/11/hemma-desserts-10-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/11/hemma-desserts-10-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-515501e0",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "span",
+              "text": "Điểm nhấn mạnh mẽ trong thiết kế của Saigon Horeca"
+            },
+            {
+              "type": "divider.default",
+              "divider": true
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Đặc biệt, Saigon Horeca đã ứng dụng hệ thống tủ ray trượt thông minh thay cho tủ mở truyền thống. Giải pháp này giúp:",
+                "Nhờ sự sắp đặt logic này, Hemma Desserts có thể vận hành hai quy trình độc lập (bánh & cà phê) trong cùng một không gian – vừa hiệu quả, vừa an toàn, vừa thẩm mỹ."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "862d838",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-862d838",
+        "elementor-section-content-middle",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-6899966",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Thẩm mỹ và trải nghiệm đến từ giải pháp của chuyên gia"
+            },
+            {
+              "type": "spacer.default",
+              "spacer": true
+            },
+            {
+              "type": "divider.default",
+              "divider": true
+            },
+            {
+              "type": "spacer.default",
+              "spacer": true
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Một trong những điểm đáng tự hào của dự án chính là cách Saigon Horeca giữ trọn tinh thần của thương hiệu Hemma Desserts: nhỏ gọn, tinh tế và ấm áp.",
+                "Các thiết bị inox vốn mang vẻ “công nghiệp” đã được thiết kế bo tròn góc cạnh, tạo cảm giác mềm mại, đồng điệu với không gian quán. Toàn bộ dây điện, ống nước và thoát sàn được ẩn khéo léo, giữ cho mặt sàn gọn gàng, sạch sẽ.",
+                "Nhờ vậy, khi bước vào Hemma, khách hàng không chỉ thấy một quầy bánh đẹp – mà còn cảm nhận sự chuyên nghiệp ẩn sau từng thao tác nhỏ của đầu bếp."
+              ]
+            },
+            {
+              "type": "image-carousel.default",
+              "slides": [
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/11/hemma-desserts-11-1.jpg",
+                  "srcset": null,
+                  "alt": "hemma-desserts (11)",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/11/hemma-desserts-12-1.jpg",
+                  "srcset": null,
+                  "alt": "hemma-desserts (12)",
+                  "w": null,
+                  "h": null
+                }
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Dự án Hemma Desserts là minh chứng rõ ràng cho triết lý mà Saigon Horeca theo đuổi:",
+                "“Không gian dù nhỏ, hiệu suất vẫn phải lớn.”",
+                "Bằng sự kết hợp giữa thiết kế tinh gọn – kỹ thuật thi công chuẩn xác – và hiểu biết sâu sắc về vận hành thực tế, Saigon Horeca đã giúp Hemma Desserts khai thác trọn vẹn tiềm năng của không gian, biến mọi giới hạn thành cơ hội.",
+                "Nếu bạn đang sở hữu một mặt bằng nhỏ, nhưng vẫn mong muốn vận hành quầy bar, bếp bánh hay nhà hàng chuyên nghiệp – hãy để Saigon Horeca giúp bạn tạo nên “bếp nhỏ, công năng lớn” của riêng mình."
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

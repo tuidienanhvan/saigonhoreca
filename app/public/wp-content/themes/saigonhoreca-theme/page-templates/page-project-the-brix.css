@@ -1,0 +1,9 @@
+/**
+ * Project page-template — the-brix (layout only).
+ * @package SaigonHoreca
+ */
+
+body.page-template-page-project-the-brix {
+  background: var(--b1);
+  color: var(--bc);
+}

@@ -1,0 +1,4 @@
+/**
+ * wave-divider — Component CSS
+ */
+        .sh-wave{z-index:10;width:100%;line-height:0;position:absolute;bottom:0;left:0;right:0;overflow:hidden}.sh-wave svg{width:100%;display:block;position:relative}.sh-wave-fill{fill:var(--bg-alt)}.dark .sh-wave-fill{fill:var(--bg)}

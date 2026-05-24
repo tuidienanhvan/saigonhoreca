@@ -1,0 +1,108 @@
+/**
+ * interior-renovation — Component CSS
+ */
+        .sh-renovation {
+    @apply py-20 px-0 [background:var(--bg-alt)];
+}
+        .sh-renovation__container {
+    @apply my-0 mx-auto py-0 px-4 [max-width:1200px];
+}
+        .sh-renovation__grid {
+    @apply grid items-center [grid-template-columns:1fr] [gap:2rem_3rem];
+}
+        @media (min-width: 1024px) { .sh-renovation__grid {
+    @apply [grid-template-columns:5fr_7fr];
+} }
+        /* Content */
+        .sh-renovation__tag {
+    @apply font-bold uppercase tracking-widest text-sm mb-2 block [color:var(--secondary)];
+}
+        .sh-renovation__title {
+    @apply text-4xl font-bold [color:var(--text-1)] [margin:0_0_1.5rem];
+}
+        .sh-renovation__promo {
+    @apply p-6 rounded-lg mb-6 [background:var(--bg-card)] [box-shadow:0_1px_2px_rgba(0,0,0,0.05)] [border:1px_solid_color-mix(in_srgb,_var(--secondary)_20%,_transparent)];
+}
+        .sh-renovation__promo-title {
+    @apply text-xl font-bold [color:var(--secondary)] [margin:0_0_0.5rem];
+}
+        .sh-renovation__promo-text {
+    @apply m-0 [color:var(--text-1-2)];
+}
+        .sh-renovation__promo-pct {
+    @apply font-bold text-3xl [color:var(--secondary)];
+}
+        .sh-renovation__features {
+    @apply list-none p-0 m-0 flex flex-col gap-4;
+}
+        .sh-renovation__feature {
+    @apply flex items-start gap-3;
+}
+        .sh-renovation__feature-icon {
+    @apply w-6 h-6 rounded-full flex items-center justify-center shrink-0 mt-1 [background:color-mix(in_srgb,_var(--success)_15%,_transparent)] [color:var(--success)];
+}
+        .sh-renovation__feature-icon svg {
+    @apply w-4 h-4;
+}
+        .sh-renovation__feature-title {
+    @apply block font-bold [color:var(--text-1)];
+}
+        .sh-renovation__feature-desc {
+    @apply text-sm [color:var(--text-1-3)];
+}
+        .sh-renovation__cta {
+    @apply inline-block mt-8 py-3 px-8 font-bold rounded-full no-underline transition-all duration-300 [background:var(--secondary)] [color:#fff] [box-shadow:0_10px_15px_-3px_color-mix(in_srgb,_var(--secondary)_30%,_transparent)];
+}
+        .sh-renovation__cta:hover {
+    @apply [filter:brightness(0.9)];
+}
+        /* Image Side */
+        .sh-renovation__image {
+    @apply relative overflow-hidden [border-radius:2rem] [box-shadow:0_25px_50px_-12px_rgba(0,0,0,0.25)] [min-height:450px] [height:500px];
+}
+        .sh-renovation__img {
+    @apply absolute w-full h-full object-cover [inset:0];
+}
+        .sh-renovation__badge {
+    @apply absolute py-1.5 px-3 text-xs font-bold tracking-widest rounded-full [box-shadow:0_1px_2px_rgba(0,0,0,0.05)] [backdrop-filter:blur(4px)];
+}
+        .sh-renovation__badge--after {
+    @apply [top:1rem] [right:1rem] [background:color-mix(in_srgb,_var(--brand)_90%,_transparent)] [color:#fff];
+}
+        .sh-renovation__badge--before {
+    @apply [top:1rem] [left:1rem] [background:rgba(15,23,42,0.9)] [color:#fff];
+}
+        .sh-renovation__before {
+    @apply absolute z-10 overflow-hidden [inset:0] [width:50%] [border-right:2px_solid_#fff] [box-shadow:2px_0_10px_rgba(0,0,0,0.1)];
+}
+        .sh-renovation__before-img {
+    @apply max-w-none h-full object-cover pointer-events-none [width:200%] [filter:grayscale(1)_brightness(0.75)];
+}
+        .sh-renovation__slider {
+    @apply absolute z-20 flex items-center justify-center pointer-events-none [inset:0] [left:50%] [transform:translateX(-50%)];
+}
+        .sh-renovation__slider-btn {
+    @apply w-12 h-12 rounded-full flex items-center justify-center [background:var(--bg-card)] [box-shadow:0_10px_15px_-3px_rgba(0,0,0,0.1)] [border:1px_solid_var(--border-default-light)] [color:var(--text-1-2)];
+}
+        .sh-renovation__slider-btn svg {
+    @apply w-6 h-6;
+}
+        /* Dark Mode */
+        .dark .sh-renovation {
+    @apply [background:var(--bg-alt)];
+}
+        .dark .sh-renovation__title {
+    @apply [color:var(--text-1)];
+}
+        .dark .sh-renovation__promo {
+    @apply [background:var(--bg-card)] [border-color:color-mix(in_srgb,_var(--secondary)_20%,_transparent)];
+}
+        .dark .sh-renovation__promo-text {
+    @apply [color:var(--text-1-2)];
+}
+        .dark .sh-renovation__feature-title {
+    @apply [color:var(--text-1)];
+}
+        .dark .sh-renovation__feature-desc {
+    @apply [color:var(--text-1-3)];
+}

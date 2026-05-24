@@ -1,0 +1,9 @@
+.sh-row { margin-bottom: 12px; border-bottom: 1px solid #eee; padding-bottom: 12px; }
+.sh-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.sh-label { font-weight: bold; display: block; margin-bottom: 4px; }
+.sh-input { width: 100%; padding: 5px; }
+.sh-input-half { width: 48%; display: inline-block; margin-right: 2%; }
+.sh-slide-box { background: #f9f9f9; padding: 12px 15px; margin-bottom: 12px; border-left: 4px solid #0073aa; }
+.sh-slide-box:last-child { margin-bottom: 0; }
+.sh-slide-box h4 { margin: 0 0 10px 0; color: #0073aa; }
+.sh-meta-desc { font-size: 12px; color: #666; margin-top: 4px; }

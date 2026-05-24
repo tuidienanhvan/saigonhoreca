@@ -1,0 +1,257 @@
+/**
+ * /du-an/ Trust (Đối Tác) — Saigon Horeca.
+ *
+ * Theme: tokens từ _tokens.css, không hardcode màu.
+ *   --gold              : accent vàng kim (sparkle, divider, dots)
+ *   --bc                : text trắng (mặc định dark)
+ *   --b1 / --b2 / --bd  : nền + viền
+ *
+ * Section trên /du-an/ vẫn nền tối đồng bộ theme, KHÔNG break trắng.
+ * Phá vỡ pattern dark = phá brand. Logo cards có khung trắng để
+ * logo gốc (vốn design cho nền trắng) hiển thị đúng.
+ */
+
+.sh-archive-trust {
+    position: relative;
+    background: var(--b1);
+    color: var(--bc);
+    padding: 5rem 0;
+    overflow: hidden;
+}
+@media (min-width: 768px) {
+    .sh-archive-trust { padding: 6rem 0; }
+}
+@media (min-width: 1024px) {
+    .sh-archive-trust { padding: 7rem 0; }
+}
+
+/* ── Decorative SVG ornaments (top-left + top-right corners) ── */
+.sh-archive-trust__ornament {
+    position: absolute;
+    top: 1.5rem;
+    width: 120px;
+    height: 120px;
+    color: var(--gold);
+    pointer-events: none;
+    z-index: 0;
+}
+.sh-archive-trust__ornament--tl { left: 1.5rem; }
+.sh-archive-trust__ornament--tr { right: 1.5rem; transform: scaleX(-1); }
+@media (max-width: 767px) {
+    .sh-archive-trust__ornament { width: 70px; height: 70px; top: 1rem; }
+    .sh-archive-trust__ornament--tl { left: 0.5rem; }
+    .sh-archive-trust__ornament--tr { right: 0.5rem; }
+}
+
+/* ── Inner ── */
+.sh-archive-trust__inner {
+    position: relative;
+    z-index: 1;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+@media (min-width: 768px) {
+    .sh-archive-trust__inner { padding: 0 2rem; }
+}
+
+/* ── Header ── */
+.sh-archive-trust__header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+/* Eyebrow with sparkle SVG flanking */
+.sh-archive-trust__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.625rem;
+    margin-bottom: 1rem;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold);
+}
+.sh-archive-trust__sparkle {
+    width: 14px;
+    height: 14px;
+    color: var(--gold);
+    animation: shTrustSparkle 2.4s ease-in-out infinite;
+}
+.sh-archive-trust__sparkle:last-child {
+    animation-delay: 1.2s;
+}
+@keyframes shTrustSparkle {
+    0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
+    50%      { transform: scale(1.25) rotate(180deg); opacity: 0.65; }
+}
+
+.sh-archive-trust__title {
+    margin: 0 0 1.25rem;
+    font-family: var(--font-display);
+    font-size: clamp(1.625rem, 3.2vw, 2.25rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--bc);
+    letter-spacing: 0.005em;
+}
+
+/* Divider with diamond center */
+.sh-archive-trust__divider {
+    display: block;
+    width: clamp(180px, 30vw, 240px);
+    height: 12px;
+    margin: 0 auto;
+    color: var(--gold);
+}
+.sh-archive-trust__divider svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* ── Carousel ──
+   Không dùng mask-image (sẽ cắt viền vàng L-corners của cell active).
+   Thay bằng 2 pseudo-element fade overlay 2 đầu, pointer-events:none. */
+.sh-archive-trust__carousel {
+    position: relative;
+}
+.sh-archive-trust__carousel::before,
+.sh-archive-trust__carousel::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 48px;
+    z-index: 2;
+    pointer-events: none;
+}
+.sh-archive-trust__carousel::before {
+    left: 0;
+    background: linear-gradient(90deg, var(--b1) 0%, transparent 100%);
+}
+.sh-archive-trust__carousel::after {
+    right: 0;
+    background: linear-gradient(270deg, var(--b1) 0%, transparent 100%);
+}
+
+.sh-archive-trust__track {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 1.5rem;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    /* Padding inline 1.5rem để cell active + L-corners không bị clip
+       bởi scroll container edge. */
+    padding: 1.75rem 1.5rem;
+}
+.sh-archive-trust__track::-webkit-scrollbar { display: none; }
+
+/* Cell — đơn giản, rõ ràng. Hover/active = ring vàng dày + glow. */
+.sh-archive-trust__cell {
+    position: relative;
+    flex: 0 0 calc((100% - 1.5rem * 4) / 5);
+    aspect-ratio: 16 / 9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.875rem 1.25rem;
+    background: var(--bc);
+    border-radius: var(--radius-md, 14px);
+    scroll-snap-align: center;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+    transition: transform 0.4s var(--ease-spring, cubic-bezier(0.16, 1, 0.3, 1)),
+                box-shadow 0.4s ease;
+    transform-origin: center;
+}
+/* Hover: nâng nhẹ + glow vàng */
+.sh-archive-trust__cell:hover {
+    transform: translateY(-6px);
+    box-shadow:
+        0 0 0 3px var(--gold),
+        0 18px 36px color-mix(in srgb, var(--gold) 35%, transparent);
+}
+.sh-archive-trust__cell img {
+    max-width: 100%;
+    max-height: 80px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 0;
+    transition: transform 0.4s ease;
+}
+.sh-archive-trust__cell:hover img {
+    transform: scale(1.06);
+}
+
+/* Decorative gold badge (chỉ visible on hover) */
+.sh-archive-trust__cell::after {
+    content: '';
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--gold);
+    background-image: radial-gradient(circle at 30% 30%, color-mix(in srgb, #fff 40%, var(--gold)), var(--gold) 70%);
+    box-shadow: 0 4px 12px color-mix(in srgb, var(--gold) 50%, transparent);
+    opacity: 0;
+    transform: scale(0.5);
+    transition: opacity 0.3s ease, transform 0.4s var(--ease-spring, cubic-bezier(0.16, 1, 0.3, 1));
+    z-index: 2;
+}
+.sh-archive-trust__cell:hover::after {
+    opacity: 1;
+    transform: scale(1);
+}
+
+@media (max-width: 1023px) {
+    .sh-archive-trust__cell { flex: 0 0 calc((100% - 1.5rem * 3) / 4); }
+}
+@media (max-width: 767px) {
+    .sh-archive-trust__cell { flex: 0 0 calc((100% - 1.5rem * 2) / 3); }
+}
+@media (max-width: 479px) {
+    .sh-archive-trust__cell { flex: 0 0 calc((100% - 1.5rem) / 2); }
+}
+
+/* ── Dots ── */
+.sh-archive-trust__dots {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.625rem;
+    margin-top: 2rem;
+}
+.sh-archive-trust__dot {
+    width: 14px;
+    height: 14px;
+    border: 1px solid color-mix(in srgb, var(--gold) 55%, var(--bd));
+    border-radius: 999px;
+    background-color: color-mix(in srgb, var(--gold) 22%, var(--b1));
+    cursor: pointer;
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--b1) 45%, transparent);
+    transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.25s ease, width 0.25s ease;
+}
+.sh-archive-trust__dot:hover {
+    background: color-mix(in srgb, var(--gold) 45%, var(--b1));
+    border-color: var(--gold);
+    transform: translateY(-1px);
+}
+.sh-archive-trust__dot.is-active {
+    width: 34px;
+    border-radius: 999px;
+    background: var(--gold);
+    border-color: var(--gold);
+    box-shadow: 0 0 14px color-mix(in srgb, var(--gold) 55%, transparent);
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+    .sh-archive-trust__sparkle { animation: none; }
+    .sh-archive-trust__cell { transition: none; }
+}

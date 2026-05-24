@@ -1,0 +1,151 @@
+/**
+ * Header Component — Saigon Horeca (dark luxe)
+ *
+ * Clean dark header matching production saigonhoreca.vn:
+ *   - Pure black background (var(--bg-dark))
+ *   - Logo left, nav center, English yellow button right
+ *   - Subtle border-bottom for separation
+ *   - Smooth scroll behavior with shadow on scroll
+ *   - Sticky positioning so it stays accessible
+ *
+ * Removed (from saigonhoreca-theme leftover):
+ *   - Architecture SVG skyline decoration (.sh-header__arch)
+ *   - Dark-mode toggle styles (no toggle in saigonhoreca)
+ *   - Blueprint grid lines + accent stripes
+ *   - Marquee component
+ */
+
+/* ── Outer header wrapper ── */
+.sh-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-dark);
+    border-bottom: 1px solid var(--bd);
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+.sh-header--admin-bar { top: 32px; }
+@media (max-width: 782px) { .sh-header--admin-bar { top: 46px; } }
+@media (max-width: 600px) { .sh-header--admin-bar { top: 0; } }
+
+/* Slight shadow once user scrolls (saigonhouse pattern) */
+.sh-header--scrolled {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.92);
+    backdrop-filter: blur(10px);
+}
+
+/* ── Header bar (main row: logo + nav + actions) ── */
+.sh-header__bar {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    width: 100%;
+    min-height: 76px;
+    padding: 0.75rem 1.25rem;
+    color: var(--bc);
+    isolation: isolate;
+}
+@media (min-width: 1024px) {
+    .sh-header__bar { padding: 0.75rem 2.5rem; gap: 1.5rem; }
+}
+@media (min-width: 1280px) {
+    .sh-header__bar { padding: 0.75rem 3rem; }
+}
+
+/* ── Right action group (English button + mobile toggle) ── */
+.sh-header__actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-shrink: 0;
+}
+@media (min-width: 1024px) {
+    .sh-header__actions { gap: 1rem; }
+}
+
+/* ── English / language button (yellow pill — production accent) ── */
+.sh-header__lang {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1.25rem;
+    border-radius: 10px;
+    background: var(--gold);
+    color: var(--bg-dark);
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+    box-shadow: 0 2px 8px color-mix(in srgb, var(--gold) 25%, transparent);
+    transition: background-color 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+.sh-header__lang:hover {
+    background: var(--secondary-hover);
+    color: var(--bg-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px color-mix(in srgb, var(--gold) 40%, transparent);
+}
+.sh-header__lang-flag {
+    width: 26px;
+    height: auto;
+    border-radius: 2px;
+    display: block;
+}
+
+@media (max-width: 640px) {
+    .sh-header__lang { padding: 0.5rem 0.875rem; }
+    .sh-header__lang-label { display: none; }
+}
+
+/* ── Mobile menu toggle ── */
+.sh-header__mobile-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 8px;
+    padding: 0;
+    background: var(--bd);
+    border: none;
+    color: var(--bc);
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+.sh-header__mobile-toggle:hover {
+    background: var(--bt);
+    color: var(--gold);
+}
+.sh-header__hamburger-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+@media (min-width: 1024px) {
+    .sh-header__mobile-toggle { display: none; }
+}
+
+/* ── Skip Link (accessibility) ── */
+.sh-skip-link {
+    position: absolute;
+    top: -100px;
+    left: 16px;
+    padding: 0.75rem 1.25rem;
+    background: var(--brand);
+    color: var(--bc);
+    border-radius: 6px;
+    font-weight: 700;
+    text-decoration: none;
+    z-index: 9999;
+    transition: top 0.2s;
+}
+.sh-skip-link:focus {
+    top: 16px;
+    outline: 2px solid var(--bc);
+    outline-offset: 2px;
+}

@@ -1,0 +1,38 @@
+# Node & Package Manager files
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Build & Cache directories
+dist/
+build/
+.cache/
+tmp-download/
+
+# Helper and temp python scripts
+*.py
+
+# Web Assets & Media
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.webp
+*.mp4
+*.webm
+*.zip
+*.tar.gz
+*.pdf
+*.woff
+*.woff2
+*.ttf
+*.eot
+
+# IDE and System Files
+.git/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

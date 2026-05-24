@@ -1,0 +1,3 @@
+/** skyloft-by-glow — specs slot. Inherits .pp-split-sbg from concept.css. */
+
+.pp-split-sbg--reverse .pp-split-sbg__media { aspect-ratio: 16 / 9; }

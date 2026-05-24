@@ -1,0 +1,222 @@
+/**
+ * Home — Consult CTA (cinematic parallax banner).
+ *
+ * Direction: full-bleed kitchen imagery với parallax pinned background.
+ * Image hiển thị TRỌN VẸN (no awkward crop), overlay vừa đủ để text rõ
+ * mà vẫn nhìn được không gian bếp. Layered glow accents + gold divider
+ * + lifted CTA button — đồng nhất với Gemini pillar aesthetic.
+ *
+ * @package SaigonHoreca
+ */
+
+.sh-consult-cta {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    color: var(--bc);
+
+    /* Aspect-ratio cho desktop (image hiển thị trọn vẹn không cắt awkward) */
+    min-height: 65vh;
+    max-height: 880px;
+    padding: 7rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--b1);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    /* Mobile fallback (iOS Safari + Android Chrome lag với fixed) */
+    background-attachment: scroll;
+}
+
+@media (min-width: 768px) {
+    .sh-consult-cta {
+        min-height: 75vh;
+        padding: 9rem 2rem;
+    }
+}
+
+@media (min-width: 1024px) and (hover: hover) {
+    .sh-consult-cta {
+        /* True parallax — chỉ activate trên desktop có chuột */
+        background-attachment: fixed;
+        min-height: 80vh;
+    }
+}
+
+/* ─────────────────────────────────────────────
+   Layered overlay — vừa đủ tối để text rõ
+   nhưng vẫn nhìn được không gian bếp
+   ───────────────────────────────────────────── */
+.sh-consult-cta__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+        radial-gradient(ellipse at 50% 50%,
+            color-mix(in srgb, var(--b1) 35%, transparent) 0%,
+            color-mix(in srgb, var(--b1) 65%, transparent) 60%,
+            color-mix(in srgb, var(--b1) 88%, transparent) 100%),
+        linear-gradient(180deg,
+            color-mix(in srgb, var(--b1) 45%, transparent) 0%,
+            color-mix(in srgb, var(--b1) 30%, transparent) 50%,
+            color-mix(in srgb, var(--b1) 75%, transparent) 100%);
+    pointer-events: none;
+}
+
+/* Ambient gold glow — top-left, low-key cinematic accent */
+.sh-consult-cta::before {
+    content: '';
+    position: absolute;
+    top: -10%;
+    left: -8%;
+    width: 540px;
+    height: 540px;
+    background: radial-gradient(circle,
+        color-mix(in srgb, var(--gold) 18%, transparent) 0%,
+        transparent 70%);
+    filter: blur(85px);
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.55;
+}
+
+/* Ambient gold glow — bottom-right balance */
+.sh-consult-cta::after {
+    content: '';
+    position: absolute;
+    bottom: -12%;
+    right: -8%;
+    width: 480px;
+    height: 480px;
+    background: radial-gradient(circle,
+        color-mix(in srgb, var(--gold) 12%, transparent) 0%,
+        transparent 70%);
+    filter: blur(90px);
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.45;
+}
+
+/* ─────────────────────────────────────────────
+   Inner content — centered editorial composition
+   ───────────────────────────────────────────── */
+.sh-consult-cta__inner {
+    position: relative;
+    z-index: 2;
+    max-width: 780px;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.75rem;
+}
+
+/* Gold divider — 56×2px với glow + 2 dots ở 2 đầu (Gemini pattern) */
+.sh-consult-cta__divider {
+    display: block;
+    width: 56px;
+    height: 2px;
+    background: var(--gold);
+    position: relative;
+    box-shadow: 0 0 20px color-mix(in srgb, var(--gold) 65%, transparent);
+}
+.sh-consult-cta__divider::before,
+.sh-consult-cta__divider::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    transform: translateY(-50%);
+    box-shadow: 0 0 8px color-mix(in srgb, var(--gold) 55%, transparent);
+}
+.sh-consult-cta__divider::before { left: -14px; }
+.sh-consult-cta__divider::after  { right: -14px; }
+
+/* Editorial display title — clamp scales với viewport */
+.sh-consult-cta__title {
+    margin: 0;
+    font-family: var(--font-display, "Lexend", sans-serif);
+    font-size: clamp(1.75rem, 3.6vw, 2.85rem);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0.005em;
+    color: var(--bc);
+    text-shadow:
+        0 4px 24px rgba(0, 0, 0, 0.7),
+        0 0 60px color-mix(in srgb, var(--gold) 12%, transparent);
+}
+
+/* Lead body — softer, 80% opacity cho hierarchy */
+.sh-consult-cta__desc {
+    margin: 0;
+    font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+    line-height: 1.85;
+    color: var(--bc2);
+    max-width: 640px;
+}
+.sh-consult-cta__desc strong {
+    color: var(--gold);
+    font-weight: 600;
+}
+
+/* Gold CTA button — token-based với cinematic glow */
+.sh-consult-cta__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.95rem 2.25rem;
+    margin-top: 0.5rem;
+
+    background: var(--gold);
+    color: var(--b1);
+    font-family: var(--font-display, "Lexend", sans-serif);
+    font-size: 0.92rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: var(--radius-sm, 4px);
+    box-shadow:
+        0 8px 24px color-mix(in srgb, var(--gold) 35%, transparent),
+        0 0 0 1px color-mix(in srgb, var(--gold) 30%, transparent);
+    transition:
+        background 0.3s var(--ease-spring, cubic-bezier(0.4, 0, 0.2, 1)),
+        transform 0.3s var(--ease-spring, cubic-bezier(0.4, 0, 0.2, 1)),
+        box-shadow 0.3s var(--ease-spring, cubic-bezier(0.4, 0, 0.2, 1));
+}
+.sh-consult-cta__btn:hover {
+    background: color-mix(in srgb, var(--gold) 92%, white);
+    transform: translateY(-2px);
+    box-shadow:
+        0 12px 32px color-mix(in srgb, var(--gold) 50%, transparent),
+        0 0 0 1px color-mix(in srgb, var(--gold) 55%, transparent),
+        0 0 60px color-mix(in srgb, var(--gold) 25%, transparent);
+}
+.sh-consult-cta__btn:active {
+    transform: translateY(0);
+}
+
+/* Mobile refinements */
+@media (max-width: 640px) {
+    .sh-consult-cta {
+        min-height: 60vh;
+        padding: 5rem 1.25rem;
+    }
+    .sh-consult-cta__inner { gap: 1.25rem; }
+    .sh-consult-cta__btn {
+        padding: 0.85rem 1.85rem;
+        font-size: 0.85rem;
+    }
+    .sh-consult-cta::before,
+    .sh-consult-cta::after {
+        width: 280px;
+        height: 280px;
+    }
+}

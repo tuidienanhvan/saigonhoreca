@@ -1,0 +1,9 @@
+/**
+ * Project page-template — grand-marble-thuong-hieu-banh-cao-cap-nhat-ban (layout only).
+ * @package SaigonHoreca
+ */
+
+body.page-template-page-project-grand-marble-thuong-hieu-banh-cao-cap-nhat-ban {
+  background: var(--b1);
+  color: var(--bc);
+}

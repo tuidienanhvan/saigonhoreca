@@ -1,0 +1,148 @@
+/**
+ * heiwa-sushi-omakase — partnership slot. .pp-section-bg-hwa cinematic dark bg + glassmorphic content.
+ * @package SaigonHoreca
+ */
+
+.pp-section-bg-hwa {
+  position: relative;
+  padding: 8rem 1.5rem;
+  min-height: 80vh; /* Tăng từ 70vh lên 80vh để ảnh to hoành tráng */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--b1);
+  isolation: isolate;
+  overflow: hidden;
+  clip-path: inset(0 0 0 0); /* Tạo cửa sổ cắt cho ảnh nền ghim fixed bên trong */
+}
+@media (min-width: 768px) { .pp-section-bg-hwa { padding: 11rem 2rem; } }
+
+.pp-section-bg-hwa__bg {
+  position: fixed; /* Ghim cố định vào màn hình trình duyệt */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.pp-section-bg-hwa__overlay {
+  display: none; /* Bỏ hoàn toàn lớp phủ đen đè lên ảnh để ảnh sáng rõ tuyệt đối */
+}
+
+.pp-section-bg-hwa::before {
+  content: '';
+  position: absolute;
+  top: -10%;
+  right: -8%;
+  width: 540px; height: 540px;
+  background: radial-gradient(circle, color-mix(in srgb, var(--gold) 15%, transparent) 0%, transparent 70%);
+  filter: blur(80px);
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.pp-section-bg-hwa__content {
+  position: relative;
+  z-index: 2;
+  max-width: 880px;
+  margin: 0 auto;
+  text-align: center;
+  padding: clamp(2rem, 5vw, 3.5rem);
+  background: rgba(0, 0, 0, 0.25); /* Trong suốt nhẹ để lộ ảnh thực tế phía sau */
+  backdrop-filter: blur(8px) saturate(120%);
+  -webkit-backdrop-filter: blur(8px) saturate(120%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  overflow: visible;
+  box-shadow:
+    0 30px 60px rgba(0, 0, 0, 0.60),
+    0 0 40px color-mix(in srgb, var(--gold) 6%, transparent);
+  transition: border-color 0.5s var(--ease-spring), box-shadow 0.5s var(--ease-spring);
+}
+
+.pp-section-bg-hwa__content:hover {
+  border-color: color-mix(in srgb, var(--gold) 20%, transparent);
+  box-shadow: 
+    0 35px 70px rgba(0, 0, 0, 0.85),
+    0 0 50px color-mix(in srgb, var(--gold) 8%, transparent);
+}
+
+/* Parallel Framer: 2 góc viền song song đối xứng chéo */
+.pp-section-bg-hwa__content::before,
+.pp-section-bg-hwa__content::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border: 1.5px solid color-mix(in srgb, var(--gold) 65%, transparent);
+  pointer-events: none;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Góc trên bên trái */
+.pp-section-bg-hwa__content::before {
+  top: -1px;
+  left: -1px;
+  border-right: none;
+  border-bottom: none;
+}
+
+/* Góc dưới bên phải */
+.pp-section-bg-hwa__content::after {
+  bottom: -1px;
+  right: -1px;
+  border-left: none;
+  border-top: none;
+}
+
+/* Hover co giãn viền chéo */
+.pp-section-bg-hwa__content:hover::before {
+  top: -6px;
+  left: -6px;
+  width: 32px;
+  height: 32px;
+  border-color: var(--gold);
+}
+
+.pp-section-bg-hwa__content:hover::after {
+  bottom: -6px;
+  right: -6px;
+  width: 32px;
+  height: 32px;
+  border-color: var(--gold);
+}
+
+.pp-section-bg-hwa__content .pp-text-hwa__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.65rem, 3vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--bc);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+}
+
+.pp-section-bg-hwa__content .pp-text-hwa__body {
+  font-size: clamp(0.97rem, 1.1vw, 1.05rem);
+  line-height: 1.85;
+  color: color-mix(in srgb, var(--bc) 75%, transparent);
+  max-width: 700px;
+}
+
+.pp-section-bg-hwa__content .pp-text-hwa__body p {
+  margin: 0 0 1.25rem;
+  text-align: center;
+}
+
+.pp-section-bg-hwa__content .pp-text-hwa__body p:last-child { margin-bottom: 0; }
+

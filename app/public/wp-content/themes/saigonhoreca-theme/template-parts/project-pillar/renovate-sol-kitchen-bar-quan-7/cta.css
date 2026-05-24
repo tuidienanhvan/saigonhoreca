@@ -1,0 +1,238 @@
+/**
+ * renovate-sol-kitchen-bar-quan-7 — cta slot.
+ * High-End Integrated Split CTA Card (Gộp Ảnh và Khối Chữ làm một khối thống nhất, loại bỏ ảnh rời phía dưới).
+ * @package SaigonHoreca
+ */
+
+.sgh-cta-section {
+  background: var(--b1);
+  padding: clamp(4rem, 10vh, 8rem) 0;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.sgh-cta-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 5vw, 5rem);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   INTEGRATED SPLIT CTA CARD
+   ───────────────────────────────────────────────────────────── */
+.sgh-cta-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.015) 0%, rgba(255, 255, 255, 0.002) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 24px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  overflow: hidden;
+  box-shadow: 
+    0 30px 70px rgba(0, 0, 0, 0.8),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  transition: border-color 0.6s var(--ease-spring), box-shadow 0.6s var(--ease-spring);
+}
+
+@media (min-width: 1024px) {
+  .sgh-cta-card {
+    grid-template-columns: 53% 47%;
+    align-items: stretch;
+  }
+}
+
+.sgh-cta-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(245, 166, 35, 0.02) 0%, transparent 70%);
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.sgh-cta-card:hover {
+  border-color: rgba(245, 166, 35, 0.15);
+  box-shadow: 
+    0 35px 80px rgba(0, 0, 0, 0.9),
+    0 0 40px rgba(245, 166, 35, 0.03),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   LEFT COLUMN: CONTENT AREA
+   ───────────────────────────────────────────────────────────── */
+.sgh-cta-content {
+  position: relative;
+  z-index: 2;
+  padding: clamp(2.5rem, 5vw, 4rem) clamp(2rem, 4vw, 3.5rem);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1.5rem;
+  text-align: left;
+}
+
+.sgh-cta-badge {
+  font-family: var(--font-display), sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-transform: uppercase;
+}
+
+.sgh-cta-title {
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(1.8rem, 2.8vw, 2.3rem);
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+  color: var(--bc);
+  margin: 0;
+}
+
+.sgh-cta-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.sgh-cta-paragraph {
+  font-family: var(--font-body), sans-serif;
+  font-size: clamp(0.95rem, 1.05vw, 1.05rem);
+  line-height: 1.75;
+  color: color-mix(in srgb, var(--bc) 70%, transparent);
+  margin: 0;
+  text-align: justify;
+}
+
+.sgh-cta-paragraph--accent {
+  font-family: var(--font-display), monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  color: color-mix(in srgb, var(--bc) 45%, transparent);
+  text-transform: uppercase;
+  margin-top: 0.25rem;
+}
+
+/* Shimmer Button */
+.sgh-cta-btn-wrapper {
+  margin-top: 0.5rem;
+}
+
+.sgh-cta-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2.5rem;
+  font-family: var(--font-display), sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--b1) !important;
+  background: var(--gold);
+  border: 1px solid var(--gold);
+  border-radius: 50px;
+  overflow: hidden;
+  box-shadow: 
+    0 10px 30px rgba(245, 166, 35, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transition: all 0.5s var(--ease-spring);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* Shimmer animation keyframes */
+@keyframes sghShimmer {
+  0% { left: -150%; }
+  50% { left: 150%; }
+  100% { left: 150%; }
+}
+
+.sgh-cta-btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.2) 30%,
+    rgba(255, 255, 255, 0.6) 50%,
+    rgba(255, 255, 255, 0.2) 70%,
+    transparent 100%
+  );
+  transform: skewX(-25deg);
+  animation: sghShimmer 6s infinite ease-in-out;
+}
+
+.sgh-cta-btn:hover {
+  transform: translateY(-3px) scale(1.02);
+  background: #fff;
+  border-color: #fff;
+  box-shadow: 
+    0 15px 35px rgba(255, 255, 255, 0.2),
+    0 5px 15px rgba(245, 166, 35, 0.1);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   RIGHT COLUMN: INTEGRATED IMAGE
+   ───────────────────────────────────────────────────────────── */
+.sgh-cta-media {
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+}
+
+@media (min-width: 1024px) {
+  .sgh-cta-media {
+    border-left: 1px solid rgba(255, 255, 255, 0.04);
+  }
+}
+
+.sgh-cta-media__wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.sgh-cta-media__wrapper img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(8%) contrast(1.03) brightness(0.8);
+  transition: transform 0.8s var(--ease-spring), filter 0.8s var(--ease-spring);
+}
+
+/* Hover effects targeting integrated image */
+.sgh-cta-card:hover .sgh-cta-media__wrapper img {
+  filter: grayscale(0%) contrast(1.05) brightness(0.92);
+  transform: scale(1.03);
+}
+
+@media (max-width: 1023px) {
+  .sgh-cta-media {
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    min-height: 300px;
+    height: 300px;
+  }
+}

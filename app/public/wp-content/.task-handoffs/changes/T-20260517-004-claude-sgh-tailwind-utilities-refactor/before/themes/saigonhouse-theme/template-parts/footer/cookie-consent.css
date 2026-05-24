@@ -1,0 +1,52 @@
+/* Cookie Consent — Component CSS */
+.sh-cookie-bar {
+    @apply hidden fixed py-4 px-6 leading-normal [bottom:0] [left:0] [right:0] [z-index:var(--z-cookie-consent)] [background:var(--bg-card)] [color:var(--text-1-2)] [padding-bottom:max(16px,_env(safe-area-inset-bottom))] [font-size:14px] [box-shadow:0_-2px_10px_rgba(0,0,0,0.2)] [font-family:'Be_Vietnam_Pro',_sans-serif];
+}
+.sh-cookie-bar-inner {
+    @apply my-0 mx-auto flex flex-wrap items-center justify-between gap-3 [max-width:1200px];
+}
+.sh-cookie-bar p {
+    @apply m-0 flex-1 [min-width:200px];
+}
+.sh-cookie-bar a {
+    @apply underline [color:var(--secondary)];
+}
+.sh-cookie-btns {
+    @apply flex gap-2 shrink-0;
+}
+.sh-cookie-accept {
+    @apply py-2 px-5 rounded-lg cursor-pointer font-semibold [background:var(--brand)] [color:#fff] [border:none] [font-size:14px] [transition:background_0.2s];
+}
+.sh-cookie-accept:hover {
+    @apply [background:#00a84d];
+}
+.sh-cookie-decline {
+    @apply py-2 px-5 rounded-lg cursor-pointer font-medium [background:transparent] [color:var(--text-1-muted)] [border:1px_solid_var(--border-default)] [font-size:14px] [transition:background_0.2s];
+}
+.sh-cookie-decline:hover {
+    @apply [background:var(--bg-elevated)];
+}
+/* Dark mode adaptation */
+.dark .sh-cookie-bar {
+    @apply [background:var(--bg-card)] [color:var(--text-1)];
+}
+.dark .sh-cookie-decline {
+    @apply [color:var(--text-1-2)] [border-color:var(--text-1-2)];
+}
+.dark .sh-cookie-decline:hover {
+    @apply [background:var(--bg-elevated)];
+}
+@media (max-width: 640px) {
+    .sh-cookie-bar {
+    @apply py-3.5 px-4 [font-size:12px];
+}
+    .sh-cookie-bar-inner {
+    @apply flex-col text-center;
+}
+    .sh-cookie-btns {
+    @apply w-full justify-center;
+}
+    .sh-cookie-accept, .sh-cookie-decline {
+    @apply flex-1 py-2.5 px-4;
+}
+}

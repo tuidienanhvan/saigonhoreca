@@ -1,0 +1,162 @@
+/**
+ * Top Bar (Marquee) — Pure CSS
+ */
+
+/* ── Container ── */
+.sh-topbar {
+    @apply text-xs relative shrink-0 [background:var(--brand)] [color:#fff] [margin-top:-1px];
+}
+
+.sh-topbar__inner {
+    @apply flex items-center;
+}
+
+/* ── Marquee Area ── */
+.sh-topbar__marquee-wrap {
+    @apply flex-1 min-w-0 overflow-hidden py-2.5 px-0 [mask-image:linear-gradient(to_right,_transparent,_black_5%,_black_95%,_transparent)] [-webkit-mask-image:linear-gradient(to_right,_transparent,_black_5%,_black_95%,_transparent)];
+}
+
+@media (min-width: 768px) {
+    .sh-topbar {
+    @apply text-sm;
+}
+    .sh-topbar__marquee-wrap {
+    @apply py-1.5 px-0;
+}
+}
+
+.sh-topbar__item {
+    @apply inline-flex items-center gap-1.5 my-0 mx-3 whitespace-nowrap;
+}
+
+.sh-topbar__item-icon {
+    @apply w-4 h-4 shrink-0;
+}
+
+/* ── Marquee Animation ── */
+.sh-marquee-track {
+    @apply flex overflow-hidden select-none gap-0 font-medium;
+}
+
+.sh-marquee-content {
+    @apply shrink-0 flex justify-start [min-width:max-content] [animation:sh-scroll-marquee_25s_linear_infinite] [will-change:transform];
+}
+
+@keyframes sh-scroll-marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-100%); }
+}
+
+.sh-topbar:hover .sh-marquee-content {
+    @apply [animation-play-state:paused];
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .sh-marquee-content {
+    @apply [animation-duration:60s];
+}
+}
+
+/* ── Right Actions (desktop) ── */
+.sh-topbar__actions {
+    @apply hidden items-center gap-3 shrink-0 py-0 px-4;
+}
+
+@media (min-width: 768px) {
+    .sh-topbar__actions {
+    @apply flex;
+}
+}
+
+/* ── Search ── */
+.sh-topbar__search {
+    @apply flex items-center rounded-full py-1 px-3 transition-all duration-200 [background:rgba(0,_0,_0,_0.1)] [width:10rem] [border:1px_solid_transparent];
+}
+
+@media (min-width: 1024px) {
+    .sh-topbar__search {
+    @apply [width:14rem];
+}
+}
+
+.sh-topbar__search:focus-within {
+    @apply [background:#fff];
+}
+
+.sh-topbar__search-input {
+    @apply w-full text-xs py-0 px-2 font-medium [background:transparent] [border:none] [outline:none] [color:#fff];
+}
+
+.sh-topbar__search-input::placeholder {
+    @apply font-medium [color:rgba(255,_255,_255,_0.8)];
+}
+
+.sh-topbar__search:focus-within .sh-topbar__search-input {
+    @apply [color:var(--text-1)];
+}
+
+.sh-topbar__search:focus-within .sh-topbar__search-input::placeholder {
+    @apply [color:var(--text-1-muted)];
+}
+
+.sh-topbar__search-btn {
+    @apply cursor-pointer p-0.5 transition-colors duration-200 [color:#fff] [background:transparent] [border:none];
+}
+
+.sh-topbar__search:focus-within .sh-topbar__search-btn {
+    @apply [color:var(--brand)];
+}
+
+.sh-topbar__search-icon {
+    @apply w-3.5 h-3.5;
+}
+
+/* ── CTA Button ── */
+.sh-topbar__cta {
+    @apply flex items-center gap-1.5 py-1 px-4 rounded-full font-bold text-xs no-underline whitespace-nowrap transition-all duration-200 [background:#fff] [color:var(--brand)] [box-shadow:0_1px_3px_rgba(0,_0,_0,_0.1)];
+}
+
+.sh-topbar__cta:hover {
+    @apply [background:var(--secondary)] [color:var(--brand)];
+}
+
+.sh-topbar__cta-icon {
+    @apply w-3.5 h-3.5;
+}
+
+/* ── Dark Mode ── */
+.dark .sh-topbar {
+    @apply [background:var(--bg-elevated)] [border-bottom:1px_solid_var(--border-default)] [color:var(--secondary)];
+}
+
+.dark .sh-topbar__search {
+    @apply [background:var(--bg-card)] [border-color:var(--border-default)];
+}
+
+.dark .sh-topbar__search-input {
+    @apply [color:var(--text-1-2)];
+}
+
+.dark .sh-topbar__search-input::placeholder {
+    @apply [color:var(--text-1-muted)];
+}
+
+.dark .sh-topbar__search:focus-within {
+    @apply [background:var(--bg-elevated)];
+}
+
+.dark .sh-topbar__search:focus-within .sh-topbar__search-input {
+    @apply [color:var(--text-1)];
+}
+
+.dark .sh-topbar__search-btn {
+    @apply [color:var(--text-1-muted)];
+}
+
+.dark .sh-topbar__cta {
+    @apply [background:var(--brand)] [color:#fff];
+}
+
+.dark .sh-topbar__cta:hover {
+    @apply [background:var(--secondary)] [color:var(--text-1)];
+}

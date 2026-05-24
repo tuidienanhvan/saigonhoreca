@@ -1,0 +1,353 @@
+{
+  "slug": "bling-bling-club",
+  "title": "BLING BLING CLUB",
+  "meta_description": "Bling Bling Club là một quán bar mới được xây dựng và bắt đầu hoạt động vào cuối năm 2023, nằm tại số 75 Xuân Thủy, Thảo Điền, Quận 2, Thành phố Hồ Chí Minh.",
+  "sections_count": 6,
+  "sections": [
+    {
+      "data_id": "6d755448",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-6d755448",
+        "elementor-section-height-full",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-items-middle"
+      ],
+      "has_video_bg": true,
+      "video_url": "https://youtu.be/JrvIMIpnddI",
+      "background_overlay": true,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-71153109",
+          "col_size": 16,
+          "widgets": []
+        },
+        {
+          "col_class": "elementor-column elementor-col-66 elementor-top-column elementor-element elementor-element-7a2f3922",
+          "col_size": 66,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h1",
+              "text": "BLING BLING CLUB"
+            },
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "\"Refresh your senses, Remix your night\""
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Bling Bling: Sang trọng – Hiện đại -Năng động"
+              ]
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-4c133788",
+          "col_size": 16,
+          "widgets": []
+        }
+      ]
+    },
+    {
+      "data_id": "18f72271",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-18f72271",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-4269b3b9",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Bling Bling Club"
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "𝐚𝐝𝐝𝐫𝐞𝐬𝐬 : 75 Xuân Thuỷ, Thảo Điền, Quận 2, Ho Chi Minh City, Vietnam"
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Đón khách hàng ngàyClub: 9:00 PM – 3:00 AM"
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Bling Bling Club: Địa điểm tuyệt vời cho giới trẻ tại Thảo Điền",
+                "Bling Bling Club là một quán bar mới được xây dựng và bắt đầu hoạt động vào cuối năm 2023, nằm tại số 75 Xuân Thủy, Thảo Điền, Quận 2, Thành phố Hồ Chí Minh. Quán bar cung cấp cho khách hàng không gian sang trọng, không gian hiện đại và trải nghiệm âm nhạc và giải trí hàng đầu.",
+                "Bling Bling Club tự hào sở hữu không gian lớn nhất và được thiết kế tỉ mỉ nhất ở khu vực Thảo Điền thuộc Quận 2. Bầu không khí của câu lạc bộ được tạo ra theo phong cách hiện đại, với hệ thống ánh sáng và âm thanh hiện đại."
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Tầng trệt là khu vực chính của câu lạc bộ, với một sàn nhảy rộng lớn và hệ thống âm thanh cao cấp. Tầng hai là khu vực VIP, mang lại sự riêng tư và sự tinh tế hơn.",
+                "Bling Bling Club nổi tiếng là một trong những địa điểm âm nhạc hàng đầu tại Thành phố Hồ Chí Minh. Câu lạc bộ thường xuyên tổ chức các đêm nhạc với nhiều thể loại khác nhau, từ EDM, Hip Hop, Pop, đến nhạc Việt Nam. Câu lạc bộ cũng có đội ngũ DJ tài năng, mang đến cho khách hàng những trải nghiệm về âm nhạc sôi động và mạnh mẽ."
+              ]
+            },
+            {
+              "type": "image-carousel.default",
+              "slides": [
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/SGH-product-bling3.jpg",
+                  "srcset": null,
+                  "alt": "SGH-product-bling3.jpg",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/SGH-product-bling2.jpg",
+                  "srcset": null,
+                  "alt": "SGH-product-bling2.jpg",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/SGH-product-bling1.jpg",
+                  "srcset": null,
+                  "alt": "SGH-product-bling1.jpg",
+                  "w": null,
+                  "h": null
+                }
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Bling Bling Club tự hào sở hữu một quầy bar thanh lịch phục vụ một loạt đa dạng các loại đồ uống, bao gồm rượu vang, cocktail và bia nhập khẩu. Hơn nữa, sự tập trung vào chất lượng rõ ràng không chỉ xuất hiện trong khu vực quầy bar được lựa chọn cẩn thận mà còn trong một nhà bếp công nghiệp riêng biệt dành riêng cho những người đến thư giãn, nghe nhạc và thưởng thức đồ uống ở tầng trệt, mặc dù tầng ba có một nhà bếp chuyên nghiệp hoàn toàn được dành riêng cho khách VIP – EM Restaurant."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "104fb15c",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-104fb15c",
+        "elementor-section-content-middle",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-1dcc5890",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Ý tưởng thiết kế của Bling Bling Club"
+            },
+            {
+              "type": "divider.default",
+              "divider": true
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Phong cách thiết kế hiện đại và tinh tế của Bling Bling Club không chỉ thể hiện qua việc lựa chọn nội thất mà còn qua những chi tiết nhỏ nhất, từ hệ thống ánh sáng đến màu sắc và bố trí không gian. Sự hài hòa giữa ý tưởng sáng tạo và thực thi chuyên nghiệp từ Sài Gòn Horeca đã tạo ra một không gian cao cấp, nơi mà khách hàng không chỉ đến để thưởng thức âm nhạc và đồ uống mà còn để trải nghiệm sự hòa hợp hoàn hảo giữa thiết kế và chất lượng."
+              ]
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-2c6c1284",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/bling-bling-club-space-1-1.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/bling-bling-club-space-1-1.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2024/02/bling-bling-club-space-1-1-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/02/bling-bling-club-space-1-1-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "747211f7",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-747211f7",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/SGH-Bambino-1.jpg",
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-3807daf7",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Saigon Horeca và Bling Bling Club mang đến một trải nghiệm nightlife đầy ấn tượng."
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Sau nhiều cuộc họp giữa nhóm thiết kế của SGH và nhóm vận hành của Bling Bling, chúng tôi đã đồng ý về một kế hoạch cho trang thiết bị trong khu vực quầy bar ở sảnh trung tâm của câu lạc bộ.",
+                "Sau khi khảo sát và đánh giá, kế hoạch của SGH là phân phối các thiết bị lạnh đồng đều trong hai cánh của quầy bar phía trước. Cùng với mỗi tủ lạnh dưới quầy, chúng tôi đã thiết kế một quầy cocktail hoàn toàn chức năng để tạo ra các loại đồ uống có cồn và không có cồn một cách sáng tạo nhất. Ngoài ra, để có thể đáp ứng nhu cầu của một lượng lớn khách hàng, chúng tôi sắp xếp nhiều tủ được làm từ thép không gỉ 304 để có thể lưu trữ một lượng hàng hóa đủ đáp ứng nhu cầu của cả những khách hàng khó tính nhất, đồng thời đảm bảo rằng công việc sáng tạo của các người pha chế diễn ra một cách trơn tru nhất. Tất cả nhờ vào kiến thức, kinh nghiệm và kinh nghiệm của Saigon Horeca từ tất cả các dự án của khách hàng chúng tôi."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "1db46c0c",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-1db46c0c",
+        "elementor-section-content-middle",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-59a044cd",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/SGH-Portrait.jpg",
+                "srcset": null,
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "600",
+                "h": "800"
+              }
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-65880d72",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "divider.default",
+              "divider": true
+            },
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Sân chơi của các nhà pha chế sáng tạo:"
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Tất cả các thiết kế và trang thiết bị được SGH cung cấp cho Bling Bling đều mang tính nghệ thuật cao, làm cho rõ ràng với khách hàng rằng sảnh trung tâm không chỉ là một sân khấu cho các vũ công khoe dáng trên nền nhạc vô cùng hứng khởi và năng động, mà còn là một sân khấu cho các nhà pha chế, những nghệ sĩ tạo ra những loại đồ uống cao cấp, để giọt rượu và dầu thơm nhảy múa trong ly cocktail, làm hài lòng cả vị giác và thị giác của các tín đồ của đêm nơi đây.",
+                "Với chất lượng của thiết bị lưu trữ lạnh Fujimak đã được chứng nhận trên thị trường Nhật Bản, nó luôn đảm bảo rằng nguyên liệu luôn tươi mới đến tay của các phù thủy cocktail và trở thành những ly cocktail cực kỳ độc đáo cho những khách hàng tinh tế.",
+                "Để luôn có sự kiểm soát đối với các ly và dụng cụ trộn, ngoài việc chúng tôi sản xuất và sắp xếp các bồn rửa bằng thép không gỉ cho khu vực quầy bar, còn có sự giúp đỡ vô cùng đáng chú ý từ Winterholter – một máy rửa ly công nghiệp với công suất 100 ly/giờ (điều kiện tiêu chuẩn)."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "4bd09b72",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-4bd09b72",
+        "elementor-section-content-middle",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-1406b67f",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Một Viên Ngọc Ẩn Giấu với Ẩm Thực Tinh Tế Đằng Sau Sự Náo Nhiệt của Club hàng đầu tại Thảo Điền"
+            },
+            {
+              "type": "divider.default",
+              "divider": true
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Ngoài việc gặp gỡ những người yêu thích đời sống đêm tại lễ hội ở sảnh chính, có thể có ít người biết rằng còn một không gian rất ấm cúng và sang trọng nằm ở tầng 3 của tòa nhà này, phục vụ những thực khách tinh tế nhất. Em-Restaurant là một nhà hàng cao cấp phục vụ món ăn cho tầng lớp thượng lưu. Không gian ở đây được chia thành 4 khu vực với các chức năng và phong cách khác nhau. Khu vực đầu tiên khi bạn bước vào, bạn có thể thấy rằng có 3 bàn ăn được sắp xếp cho khách hàng ít người, nhưng đặc biệt chú trọng đến sự riêng tư với sự sắp xếp của các vật trang trí để phân chia các bàn ăn với nhau. Mặc dù không có vật chia, sự riêng tư của bạn vẫn được đảm bảo. Khu vực thứ hai là khu vực ngoài trời phục vụ đa số khách hàng yêu thích sự thoáng đãng, tự do thưởng thức thức ăn và hòa mình vào không khí của Sài Gòn mỗi khoảnh khắc. Khu vực thứ ba là hệ thống phòng VIP, đúng với tên gọi của nó, được dành riêng cho sự độc lập, đảm bảo rằng ngay cả những khách hàng khó tính nhất cũng phải tán thưởng cho không gian này. Trang trí tinh tế và đơn giản nhưng sang trọng. Và không thể phớt qua trái tim của nhà hàng, chính xác là điều mà SAIGON horeca luôn tạo điểm nhấn cho những khách hàng yêu quý của mình. Trái tim này được làm hoàn toàn từ thép không gỉ 304, đáp ứng tiêu chuẩn của những nhà hàng cao cấp ngày nay. Ngoài ra, hệ thống nấu nướng bao gồm nhà bếp Âu và Á để đáp ứng sự sáng tạo của đầu bếp chính ở đây. Hệ thống làm lạnh và làm mát của các thương hiệu nổi tiếng trên thế giới như Fujimak, Hoshizaki, v.v. không thể phớt qua. Ngoài ra, còn có một trong những mong ước của nhiều đầu bếp, đó là lò nướng combi từ Rational. Đừng chỉ dừng lại ở sự vui vẻ tại Bling Bling, hãy để tâm hồn bạn lạc vào những món ăn ngon từ khắp nơi được phục vụ tại Em-Restaurant: 75 Xuân Thủy, Thảo Điền, Quận 2, Thành phố Hồ Chí Minh, Việt Nam."
+              ]
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-24aade22",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/SGH-Portraitbling.jpg",
+                "srcset": null,
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "600",
+                "h": "800"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,275 @@
+{
+  "slug": "pho-24",
+  "title": "TRƯỜNG MẦM NON TRINH VƯƠNG",
+  "meta_description": "Một góc nhỏ châu Âu giữa Thảo Điền",
+  "sections_count": 3,
+  "sections": [
+    {
+      "data_id": "355a605b",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-355a605b",
+        "elementor-section-height-full",
+        "elementor-section-full_width",
+        "elementor-section-height-default",
+        "elementor-section-items-middle"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/08/goi-y-thiet-ke-bep-truong-hoc.jpg",
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-3901529a",
+          "col_size": 16,
+          "widgets": []
+        },
+        {
+          "col_class": "elementor-column elementor-col-66 elementor-top-column elementor-element elementor-element-7dd42e71",
+          "col_size": 66,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h1",
+              "text": "TRƯỜNG MẦM NON TRINH VƯƠNG"
+            },
+            {
+              "type": "spacer.default",
+              "spacer": true
+            },
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "“Một bếp – 500 suất ăn – 0 phút trễ”"
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "500 suất ăn, 0 phút trễ — đó không chỉ là con số thể hiện hiệu suất vận hành của bếp ăn Trường Mầm Non Tư Thục Trinh Vương, mà còn là minh chứng cho sự tính toán tỉ mỉ trong từng chi tiết thiết kế mà Saigon Horeca (SGH) đã thực hiện."
+              ]
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-641e797e",
+          "col_size": 16,
+          "widgets": []
+        }
+      ]
+    },
+    {
+      "data_id": "ef110fa",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-ef110fa",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-65c48449",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Với đặc thù bếp học đường, nơi mỗi suất ăn là một “nhiệm vụ dinh dưỡng” dành cho trẻ nhỏ, yêu cầu về tốc độ, an toàn và vệ sinh thực phẩm (VSATTP) luôn được đặt lên hàng đầu. Một sai lệch nhỏ trong quy trình nấu – vận hành đều có thể ảnh hưởng đến hàng trăm phần ăn cùng lúc. Chính vì vậy, bếp công nghiệp cho trường học không chỉ cần thiết bị mạnh mẽ, mà quan trọng hơn là một quy hoạch khoa học – nơi từng khu vực, từng thao tác được sắp đặt để vận hành nhịp nhàng như một cỗ máy tinh chỉnh.",
+                "Trong dự án này, Saigon Horeca đã mang đến cho Trường Trinh Vương một hệ thống bếp hiện đại diện tích 150m², có khả năng phục vụ toàn bộ 500 suất ăn cùng lúc mà vẫn đảm bảo yếu tố ngon – sạch – đúng giờ. Đó là kết quả của việc kết hợp giữa hiểu biết chuyên sâu về bếp công nghiệp và tư duy thiết kế tối ưu trải nghiệm vận hành, điều đã làm nên dấu ấn của SGH trong hàng loạt dự án bếp học đường, bếp nhà hàng và căng-tin chuyên nghiệp."
+              ]
+            },
+            {
+              "type": "image-carousel.default",
+              "slides": [
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/11/du-an-truong-mn-trinh-vuong-1.jpg",
+                  "srcset": null,
+                  "alt": "du-an-truong-mn-trinh-vuong (1)",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/11/du-an-truong-mn-trinh-vuong.jpg",
+                  "srcset": null,
+                  "alt": "du-an-truong-mn-trinh-vuong",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/11/du-an-truong-mn-trinh-vuong-3.jpg",
+                  "srcset": null,
+                  "alt": "du-an-truong-mn-trinh-vuong (3)",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/11/du-an-truong-mn-trinh-vuong-2.jpg",
+                  "srcset": null,
+                  "alt": "du-an-truong-mn-trinh-vuong (2)",
+                  "w": null,
+                  "h": null
+                }
+              ]
+            },
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Bài toán đặt ra – Bếp học đường, nơi tốc độ và an toàn phải song hành"
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Nếu như bếp nhà hàng có thể linh hoạt giờ phục vụ, bếp bệnh viện có thể chia theo từng khoa, thì bếp ăn trường học lại là nơi duy nhất mà hàng trăm suất ăn phải được hoàn thành cùng một thời điểm.",
+                "Ở Trường Mầm Non Tư Thục Trinh Vương, gần 500 bé từ 3 đến 7 tuổi dùng bữa trưa cùng lúc. Nghĩa là chỉ trong vài chục phút, toàn bộ quy trình từ nấu – phân khu chia – giao món phải diễn ra hoàn toàn chính xác, không chậm trễ, không sai sót.",
+                "Đó là một thử thách lớn về hiệu suất, tổ chức không gian và thiết bị. Bởi chỉ cần một khâu vận hành bị nghẽn – chảo nấu quá nhỏ, khu chia không đủ diện tích, hay lối di chuyển bị cắt ngang – sẽ kéo theo cả dây chuyền bị chậm lại. Trong môi trường học đường, nơi giờ ăn của trẻ gắn liền với đồng hồ sinh học và sức khỏe tiêu hóa, thì “đúng giờ” không chỉ là yêu cầu vận hành, mà là tiêu chuẩn chăm sóc.",
+                "Ngoài yếu tố tốc độ, an toàn vệ sinh thực phẩm (VSATTP) là ưu tiên tuyệt đối. Từ nguồn nguyên liệu tươi sống, quá trình sơ chế, đến khu vực nấu và chia món – tất cả phải vận hành theo nguyên tắc một chiều, ngăn chéo nhiễm và bảo đảm vệ sinh tuyệt đối. Mọi thiết bị, bề mặt, đường dẫn khí – nước – rác đều cần được thiết kế để giảm tiếp xúc, dễ làm sạch, dễ kiểm soát."
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Thêm vào đó, nhân sự bếp của trường học thường không nhiều, nên giải pháp tối ưu không nằm ở việc tăng người, mà là tăng năng suất vận hành thông qua thiết bị phù hợp: chảo tay quay điện để nấu lượng lớn, tủ hấp công suất cao, bàn chia bố trí thuận tay – tất cả đều góp phần tiết kiệm thời gian và sức lao động, đồng thời nâng cao độ chính xác khi phục vụ.",
+                "Với bài toán vừa đòi hỏi hiệu suất cao, vừa yêu cầu chuẩn VSATTP nghiêm ngặt, Saigon Horeca đã bước vào dự án Trinh Vương với tư duy:",
+                "“Mỗi chi tiết trong bếp phải làm việc như một mắt xích trong dây chuyền – nhịp nhàng, an toàn và hiệu quả.”"
+              ]
+            },
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/11/du-an-truong-mn-trinh-vuong-4.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/11/du-an-truong-mn-trinh-vuong-4.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/11/du-an-truong-mn-trinh-vuong-4-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/11/du-an-truong-mn-trinh-vuong-4-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Ngay từ khâu khảo sát, đội ngũ kỹ sư Saigon Horeca đã nhận thấy rằng: để biến không gian 11m² thành một bếp bánh kiêm bar café hiệu quả, không thể dùng thiết bị tiêu chuẩn sẵn có, mà phải custom toàn bộ thiết bị inox theo kích thước thực tế.",
+                "Từng centimet được tính toán kỹ lưỡng:",
+                "Khu rửa & lưu trữ dụng cụ: máy rửa chén và kệ inox 3 tầng giúp tối ưu không gian thẳng đứng, hạn chế bề mặt tiếp xúc – dễ vệ sinh, sạch sẽ tuyệt đối."
+              ]
+            },
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Giải pháp từ Saigon Horeca – Hiệu suất trong từng chi tiết thiết kế"
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Đối với Saigon Horeca, thiết kế bếp công nghiệp không chỉ là sắp xếp thiết bị cho “đủ chỗ”, mà là xây dựng một hệ thống vận hành có logic, có nhịp điệu và có tầm nhìn dài hạn.",
+                "Với bếp Trường Mầm Non Trinh Vương, bài toán được SGH giải quyết dựa trên hai nguyên tắc cốt lõi: hiệu suất vận hành tối đa và đảm bảo an toàn – vệ sinh tuyệt đối trong toàn bộ quy trình nấu ăn.",
+                "Quy hoạch tổng thể – luồng vận hành một chiều khép kín",
+                "Dựa trên layout tổng thể, SGH đã bố trí 150m² không gian bếp thành các khu vực công năng tách biệt, vận hành theo nguyên tắc một chiều – từ nhập hàng → sơ chế → nấu → chia → rửa.",
+                "Cách phân luồng khoa học này giúp hạn chế tối đa việc giao chéo giữa nguyên liệu sống và thực phẩm chín – yếu tố quan trọng hàng đầu trong bếp học đường."
+              ]
+            },
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/11/du-an-truong-mn-trinh-vuong-6.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/11/du-an-truong-mn-trinh-vuong-6.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/11/du-an-truong-mn-trinh-vuong-6-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/11/du-an-truong-mn-trinh-vuong-6-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Thiết bị chủ lực – công suất lớn, dễ vận hành, tiết kiệm nhân sự",
+                "Để đáp ứng nhu cầu phục vụ 500 suất ăn cùng lúc, SGH đã lựa chọn và lắp đặt hệ thống thiết bị phù hợp cả về dung tích và hiệu suất:",
+                "Tất cả thiết bị đều được SGH lựa chọn từ thương hiệu uy tín, đạt chuẩn an toàn điện – gas, và dễ dàng bảo trì sau bàn giao.",
+                "Tối ưu tiện nghi và an toàn trong vận hành",
+                "Bên cạnh công suất, SGH chú trọng đến an toàn lao động và môi trường bếp:",
+                "Mỗi chi tiết nhỏ – từ độ cao bàn, vị trí ổ điện, cho đến hướng mở cửa tủ – đều được tính toán dựa trên thực tế vận hành của nhân sự bếp học đường, chứ không đơn thuần là bản vẽ kỹ thuật.",
+                "Kết nối triết lý thiết kế với hiệu quả thực tế",
+                "Saigon Horeca không thiết kế để “đẹp trên bản vẽ”, mà để bếp vận hành tốt ngoài đời thật. Và tại Trường Mầm Non Trinh Vương, kết quả được thể hiện rõ: 500 suất ăn được chuẩn bị đầy đủ, nóng hổi, đúng giờ – mỗi ngày. Đó chính là giá trị mà SGH luôn theo đuổi trong mọi dự án: “Hiệu quả bắt đầu từ chi tiết – và chi tiết bắt đầu từ sự thấu hiểu.”"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "16b4144a",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-16b4144a",
+        "elementor-section-content-middle",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-4fc0aebb",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/08/goi-y-thiet-ke-bep-truong-hoc.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/08/goi-y-thiet-ke-bep-truong-hoc.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/08/goi-y-thiet-ke-bep-truong-hoc-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/08/goi-y-thiet-ke-bep-truong-hoc-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            },
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/11/du-an-truong-mn-trinh-vuong-7.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/11/du-an-truong-mn-trinh-vuong-7.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/11/du-an-truong-mn-trinh-vuong-7-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/11/du-an-truong-mn-trinh-vuong-7-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-515501e0",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "span",
+              "text": "Saigon Horeca: Hiệu quả bắt đầu từ thiết kế chuẩn"
+            },
+            {
+              "type": "divider.default",
+              "divider": true
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Trong mỗi dự án bếp công nghiệp mà Saigon Horeca thực hiện, điều chúng tôi hướng tới không chỉ là “hoàn thành một công trình”, mà là xây dựng một hệ thống vận hành bền vững, nơi công năng, con người và trải nghiệm được kết nối hài hòa.",
+                "Bếp ăn Trường Mầm Non Tư Thục Trinh Vương là một minh chứng rõ ràng cho triết lý đó.",
+                "Trên diện tích chỉ 150m², toàn bộ quy trình phục vụ 500 suất ăn được thiết kế và vận hành nhịp nhàng – chính xác – sạch sẽ – đúng giờ. Từng thiết bị, từng khu vực đều làm đúng “vai trò” của mình, tạo nên một dây chuyền bếp thông minh, an toàn và tiết kiệm nhân lực.",
+                "Với hơn 10 năm kinh nghiệm trong lĩnh vực thiết kế – thi công bếp công nghiệp, Saigon Horeca hiểu rằng: một bản vẽ đúng chuẩn không chỉ tạo nên hiệu quả nấu nướng, mà còn bảo vệ sức khỏe, tinh thần và uy tín của người vận hành.",
+                "Dù là bếp học đường, nhà hàng, khách sạn hay bệnh viện, chúng tôi luôn bắt đầu từ cùng một triết lý:Thiết kế chuẩn – Vận hành chuẩn – Hiệu quả bền vững."
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

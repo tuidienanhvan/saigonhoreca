@@ -1,0 +1,27 @@
+/* Tailwind v4 with explicit source declarations (source(none) disables
+   auto-detection). Component CSS bundled via `_imports.css` so all
+   `.sh-*` rules ship in the same render-blocking link. */
+@import "tailwindcss" source(none);
+@import "./_imports.css";
+
+@source "../../*.php";
+@source "../../inc/**/*.php";
+@source "../../page-templates/**/*.php";
+@source "../../template-parts/**/*.php";
+@source "../../assets/js/*.js";
+
+/* ═══════════════════════════════════════════════════════════════
+   SAIGON HORECA THEME — DARK LUXE EDITION
+   ─────────────────────────────────────────────────────────────
+   Production look: BLACK + GOLD + WHITE — đen + vàng + trắng
+   óng ánh sang trọng. BRAND = gold (#f5a623). Red chỉ dành cho
+   status danger (--er) — error/validation, KHÔNG phải brand.
+   No light/dark toggle — dark IS the default and only theme.
+
+   Token system parallels saigonhoreca-theme (Pi Dashboard
+   Framework: --p / --ph / --pc, --b1..4, --bc..bc3, --su/wa/er/in)
+   so `inc/core/*` and template-parts/components/* keep working
+   without code changes.
+   ═══════════════════════════════════════════════════════════════ */
+
+@import "./_tokens.css";

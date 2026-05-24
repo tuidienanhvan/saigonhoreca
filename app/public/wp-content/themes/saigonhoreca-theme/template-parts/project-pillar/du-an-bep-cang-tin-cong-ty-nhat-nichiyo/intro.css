@@ -1,0 +1,340 @@
+/**
+ * du-an-bep-cang-tin-cong-ty-nhat-nichiyo — intro slot (BASE OWNER).
+ * Tatami sectioned padding · orderly 12-col grid · monozukuri precision typography.
+ * Owns shared .pp__section + .pp-text-nic + .pp-gallery-nic.
+ * @package SaigonHoreca
+ */
+
+/* ============================================================
+ * Section shell — tatami-mat sectioned padding
+ * ============================================================ */
+.pp__section {
+  position: relative;
+  padding: 5.5rem 1.25rem;
+  background: var(--b1);
+  overflow: hidden;
+  isolation: isolate;
+}
+@media (min-width: 768px) {
+  .pp__section { padding: 8rem 2rem; }
+}
+
+.pp__section--alt { background: var(--b2); }
+
+.pp__container {
+  max-width: 1180px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* Ambient gold glow — top-left */
+.pp__section::before {
+  content: '';
+  position: absolute;
+  top: -8%;
+  left: -6%;
+  width: 460px;
+  height: 460px;
+  background: radial-gradient(circle,
+    color-mix(in srgb, var(--gold) 7%, transparent) 0%,
+    transparent 70%);
+  filter: blur(70px);
+  pointer-events: none;
+  z-index: 0;
+}
+/* Ambient secondary glow — alt sections shift to right */
+.pp__section--alt::before {
+  top: 22%;
+  left: auto;
+  right: -8%;
+  width: 540px;
+  height: 540px;
+  background: radial-gradient(circle,
+    color-mix(in srgb, var(--gold) 6%, transparent) 0%,
+    transparent 70%);
+  filter: blur(75px);
+}
+.pp__section--alt::after {
+  content: '';
+  position: absolute;
+  bottom: -6%;
+  left: 12%;
+  width: 360px;
+  height: 360px;
+  background: radial-gradient(circle,
+    color-mix(in srgb, var(--gold) 4%, transparent) 0%,
+    transparent 70%);
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Origami fold corner ornaments on container */
+.pp__section .pp__container::before {
+  content: '';
+  position: absolute;
+  top: -1.5rem;
+  left: -0.5rem;
+  width: 56px;
+  height: 56px;
+  border-left: 2px solid color-mix(in srgb, var(--gold) 60%, transparent);
+  border-top: 2px solid color-mix(in srgb, var(--gold) 60%, transparent);
+  clip-path: polygon(0 0, 100% 0, 100% 22%, 22% 22%, 22% 100%, 0 100%);
+  pointer-events: none;
+  opacity: 0.55;
+}
+.pp__section .pp__container::after {
+  content: '';
+  position: absolute;
+  bottom: -1.5rem;
+  right: -0.5rem;
+  width: 56px;
+  height: 56px;
+  border-right: 2px solid color-mix(in srgb, var(--gold) 60%, transparent);
+  border-bottom: 2px solid color-mix(in srgb, var(--gold) 60%, transparent);
+  clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 78%, 78% 78%, 78% 0);
+  pointer-events: none;
+  opacity: 0.55;
+}
+
+/* ============================================================
+ * Text block — monozukuri precision
+ * ============================================================ */
+.pp-text-nic {
+  max-width: 860px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  position: relative;
+}
+.pp-text-nic--center {
+  align-items: center;
+  text-align: center;
+}
+
+/* Divider — tatami 3-rectangle mat composition */
+.pp-text-nic__divider {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: auto;
+  height: 12px;
+  background: transparent;
+  position: relative;
+  box-shadow: none;
+  padding: 0 8px;
+}
+.pp-text-nic__divider--center { margin: 0 auto; }
+
+.pp-text-nic__divider::before,
+.pp-text-nic__divider::after {
+  content: '';
+  display: block;
+  position: static;
+  width: 22px;
+  height: 4px;
+  background: var(--gold);
+  border-radius: 1px;
+  transform: none;
+  box-shadow: 0 0 12px color-mix(in srgb, var(--gold) 55%, transparent);
+}
+.pp-text-nic__divider::after {
+  width: 38px;
+  height: 6px;
+  background: color-mix(in srgb, var(--gold) 95%, var(--bc));
+}
+
+/* Title — display, monozukuri */
+.pp-text-nic__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.85rem, 3.6vw, 2.9rem);
+  font-weight: 700;
+  line-height: 1.18;
+  letter-spacing: -0.012em;
+  color: var(--bc);
+  max-width: 22ch;
+  position: relative;
+}
+.pp-text-nic--center .pp-text-nic__title { margin: 0 auto; }
+
+.pp-text-nic--center .pp-text-nic__title::after {
+  content: '· · ·';
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: color-mix(in srgb, var(--gold) 70%, transparent);
+  margin: 0.6rem auto 0;
+  letter-spacing: 0.6em;
+  line-height: 1;
+}
+
+/* Body — clean orderly column */
+.pp-text-nic__body {
+  font-size: clamp(0.98rem, 1.1vw, 1.06rem);
+  line-height: 1.88;
+  color: var(--bc2);
+  max-width: 780px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+.pp-text-nic--center .pp-text-nic__body { margin: 0 auto; }
+.pp-text-nic__body p { margin: 0; text-align: left; }
+.pp-text-nic--center .pp-text-nic__body p { text-align: center; }
+
+.pp-text-nic__body p:first-child {
+  font-size: clamp(1.02rem, 1.18vw, 1.14rem);
+  color: color-mix(in srgb, var(--bc) 85%, var(--bc2));
+  font-weight: 400;
+}
+
+.pp-text-nic__body a {
+  color: var(--gold);
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--gold) 40%, transparent);
+  transition: border-color 0.25s var(--ease-spring);
+}
+.pp-text-nic__body a:hover { border-color: var(--gold); }
+.pp-text-nic__body strong { color: var(--gold); font-weight: 700; }
+.pp-text-nic__body em {
+  color: color-mix(in srgb, var(--bc) 90%, var(--bc2));
+  font-style: italic;
+}
+
+/* ============================================================
+ * Gallery — orderly 12-col grid with origami hover
+ * ============================================================ */
+.pp-gallery-nic {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 2.75rem;
+  position: relative;
+}
+@media (min-width: 768px) {
+  .pp-gallery-nic {
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1.5rem;
+  }
+  .pp-gallery-nic > .pp-gallery-nic__item { grid-column: span 6; }
+  .pp-gallery-nic--cols-3 > .pp-gallery-nic__item { grid-column: span 4; }
+  .pp-gallery-nic--cols-4 > .pp-gallery-nic__item { grid-column: span 3; }
+  .pp-gallery-nic--cols-1 > .pp-gallery-nic__item { grid-column: span 12; }
+}
+
+.pp-gallery-nic::before {
+  content: '';
+  position: absolute;
+  top: -1.4rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 96px;
+  height: 1px;
+  background: color-mix(in srgb, var(--gold) 38%, transparent);
+}
+
+.pp-gallery-nic__item {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background: var(--b3);
+  border: 1px solid var(--bd);
+  transition:
+    border-color 0.45s var(--ease-spring),
+    transform 0.45s var(--ease-spring),
+    box-shadow 0.45s var(--ease-spring);
+  clip-path: polygon(
+    0 0,
+    calc(100% - 18px) 0,
+    100% 18px,
+    100% 100%,
+    18px 100%,
+    0 calc(100% - 18px)
+  );
+}
+.pp-gallery-nic__item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg,
+    transparent 0%,
+    transparent 65%,
+    color-mix(in srgb, var(--gold) 18%, transparent) 100%);
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.45s var(--ease-spring);
+  pointer-events: none;
+}
+.pp-gallery-nic__item::after {
+  content: '';
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  width: 22px;
+  height: 22px;
+  border-top: 1px solid color-mix(in srgb, var(--gold) 60%, transparent);
+  border-left: 1px solid color-mix(in srgb, var(--gold) 60%, transparent);
+  z-index: 3;
+  opacity: 0;
+  transition: opacity 0.4s var(--ease-spring);
+  pointer-events: none;
+}
+.pp-gallery-nic__item:hover {
+  border-color: color-mix(in srgb, var(--gold) 55%, transparent);
+  transform: translateY(-6px);
+  box-shadow:
+    0 18px 40px rgba(0,0,0,0.25),
+    0 0 0 1px color-mix(in srgb, var(--gold) 25%, transparent);
+}
+.pp-gallery-nic__item:hover::before { opacity: 1; }
+.pp-gallery-nic__item:hover::after { opacity: 1; }
+
+.pp-gallery-nic__item img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(1.06) contrast(1.02);
+  transition:
+    transform 0.85s var(--ease-spring),
+    filter 0.6s var(--ease-spring);
+}
+.pp-gallery-nic__item:hover img {
+  transform: scale(1.06);
+  filter: saturate(1.12) contrast(1.05);
+}
+
+.pp-gallery-nic > .pp-gallery-nic__item:nth-child(1) { transition-delay: 0ms; }
+.pp-gallery-nic > .pp-gallery-nic__item:nth-child(2) { transition-delay: 60ms; }
+.pp-gallery-nic > .pp-gallery-nic__item:nth-child(3) { transition-delay: 120ms; }
+.pp-gallery-nic > .pp-gallery-nic__item:nth-child(4) { transition-delay: 180ms; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .pp-gallery-nic__item,
+  .pp-gallery-nic__item img { transition: none; }
+  .pp-gallery-nic__item:hover { transform: none; }
+  .pp-gallery-nic__item:hover img { transform: none; }
+}
+
+/* Mobile tightening */
+@media (max-width: 767px) {
+  .pp__section .pp__container::before,
+  .pp__section .pp__container::after {
+    width: 36px;
+    height: 36px;
+  }
+  .pp-gallery-nic { gap: 1.1rem; margin-top: 2rem; }
+  .pp-gallery-nic__item {
+    clip-path: polygon(
+      0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px)
+    );
+  }
+}

@@ -1,0 +1,22 @@
+{
+    "name": "Saigon Horeca - Thiết Bị Bếp Công Nghiệp & Quầy Bar",
+    "short_name": "Saigon Horeca",
+    "description": "Thiết bị bếp công nghiệp, quầy bar và giải pháp horeca chuyên nghiệp cho nhà hàng, khách sạn, F&B.",
+    "start_url": "/",
+    "scope": "/",
+    "display": "standalone",
+    "theme_color": "#F9C349",
+    "background_color": "#ffffff",
+    "icons": [
+        {
+            "src": "android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}

@@ -1,0 +1,82 @@
+/**
+ * Pricing Page Hero — Bảng Giá landing
+ * Owner: template-parts/pricing/hero.php
+ */
+
+.sh-price-hero {
+    @apply relative overflow-hidden pt-20 px-4 pb-16 text-center [background:linear-gradient(180deg,_var(--bg-alt)_0%,_var(--bg)_100%)];
+}
+
+@media (min-width: 768px) {
+    .sh-price-hero {
+    @apply [padding:7rem_1.5rem_5rem];
+}
+}
+
+/* Decorative grid pattern */
+.sh-price-hero__grid-bg {
+    @apply absolute z-0 opacity-60 pointer-events-none [inset:0] [background-image:linear-gradient(to_right,_var(--border-default)_1px,_transparent_1px),_linear-gradient(to_bottom,_var(--border-default)_1px,_transparent_1px)] [background-size:48px_48px] [mask-image:radial-gradient(ellipse_60%_80%_at_50%_50%,_black_30%,_transparent_100%)] [-webkit-mask-image:radial-gradient(ellipse_60%_80%_at_50%_50%,_black_30%,_transparent_100%)];
+}
+
+/* Fade gradient at bottom */
+.sh-price-hero__fade {
+    @apply absolute h-24 pointer-events-none [inset:auto_0_0_0] [z-index:1] [background:linear-gradient(to_bottom,_transparent,_var(--bg))];
+}
+
+/* Content container */
+.sh-price-hero__container {
+    @apply relative my-0 mx-auto [z-index:2] [max-width:56rem];
+}
+
+/* Badge */
+.sh-price-hero__badge {
+    @apply inline-flex items-center gap-2 py-1.5 px-4 rounded-full mb-6 [background:color-mix(in_srgb,_var(--brand)_10%,_transparent)] [border:1px_solid_color-mix(in_srgb,_var(--brand)_25%,_transparent)];
+}
+.sh-price-hero__badge-dot {
+    @apply rounded-full [width:0.4rem] [height:0.4rem] [background:var(--brand)] [box-shadow:0_0_8px_color-mix(in_srgb,_var(--brand)_60%,_transparent)];
+}
+.sh-price-hero__badge-text {
+    @apply font-extrabold uppercase [font-size:0.7rem] [color:var(--brand)] [letter-spacing:0.15em];
+}
+
+/* Title */
+.sh-price-hero__title {
+    @apply font-black tracking-tight [font-family:var(--font-display)] [line-height:1.05] [color:var(--text-1)] [margin:0_0_1.25rem] [font-size:clamp(2.5rem,_7vw,_5.5rem)];
+}
+.sh-price-hero__title > span:first-child {
+    @apply block;
+}
+.sh-price-hero__title-accent {
+    @apply block [background:linear-gradient(135deg,_var(--brand)_0%,_var(--brand-light)_100%)] [-webkit-background-clip:text] [background-clip:text] [-webkit-text-fill-color:transparent] [color:transparent] [margin-top:0.25em];
+}
+
+/* Description */
+.sh-price-hero__desc {
+    @apply font-medium [color:var(--text-2)] [font-size:clamp(0.95rem,_1.4vw,_1.0625rem)] [line-height:1.65] [max-width:38rem] [margin:0_auto_2.5rem];
+}
+.sh-price-hero__desc strong {
+    @apply font-extrabold [color:var(--brand)];
+}
+
+/* Anchor buttons */
+.sh-price-hero__anchors {
+    @apply flex flex-wrap gap-3.5 justify-center items-stretch;
+}
+
+.sh-price-hero__anchor {
+    @apply inline-flex items-center gap-2.5 py-3.5 px-6 rounded-xl text-sm font-bold no-underline [background:var(--bg-card)] [border:1px_solid_var(--border-default)] [color:var(--text-1)] [transition:all_0.25s_var(--ease-spring)] [box-shadow:var(--shadow-main)];
+}
+.sh-price-hero__anchor:hover {
+    @apply [transform:translateY(-2px)] [border-color:color-mix(in_srgb,_var(--brand)_50%,_transparent)] [color:var(--brand)] [box-shadow:var(--shadow-floating)];
+}
+.sh-price-hero__anchor-icon {
+    @apply [width:1.125rem] [height:1.125rem];
+}
+
+/* Primary anchor variant */
+.sh-price-hero__anchor--primary {
+    @apply [background:var(--brand)] [color:var(--on-brand)] [border-color:var(--brand)] [box-shadow:0_8px_24px_-8px_color-mix(in_srgb,_var(--brand)_50%,_transparent)];
+}
+.sh-price-hero__anchor--primary:hover {
+    @apply [background:var(--brand-hover)] [color:var(--on-brand)] [border-color:var(--brand-hover)] [box-shadow:0_12px_32px_-8px_color-mix(in_srgb,_var(--brand)_60%,_transparent)];
+}

@@ -1,0 +1,105 @@
+/**
+ * interior-combo — Component CSS
+ */
+        .sh-combo {
+    @apply py-20 px-0 [background:var(--bg-card)];
+}
+        .sh-combo__container {
+    @apply my-0 mx-auto py-0 px-4 [max-width:1200px];
+}
+        .sh-combo__header {
+    @apply text-center mb-16;
+}
+        .sh-combo__tag {
+    @apply font-bold uppercase tracking-widest text-sm mb-2 block [color:var(--success)];
+}
+        .sh-combo__title {
+    @apply text-4xl font-bold m-0 [color:var(--text-1)];
+}
+        .sh-combo__desc {
+    @apply mt-4 [color:var(--text-1-3)];
+}
+        .sh-combo__grid {
+    @apply grid gap-8 [grid-template-columns:1fr];
+}
+        @media (min-width: 768px) { .sh-combo__grid {
+    @apply [grid-template-columns:repeat(3,_1fr)];
+} }
+        .sh-combo__card {
+    @apply overflow-hidden transition-all duration-300 [border:1px_solid_var(--border-default-light)] [border-radius:2rem];
+}
+        .sh-combo__card:hover {
+    @apply [box-shadow:0_20px_25px_-5px_rgba(0,0,0,0.1)] [transform:translateY(-8px)];
+}
+        .sh-combo__card--featured {
+    @apply [border-color:color-mix(in_srgb,_var(--secondary)_30%,_transparent)] [box-shadow:0_20px_25px_-5px_rgba(0,0,0,0.1)] [ring:2px_solid_color-mix(in_srgb,_var(--brand)_20%,_transparent)];
+}
+        @media (min-width: 768px) { .sh-combo__card--featured {
+    @apply [transform:translateY(-1rem)];
+} }
+        .sh-combo__img-wrap {
+    @apply relative [height:14rem] [background:var(--bg-alt)];
+}
+        .sh-combo__img {
+    @apply absolute w-full h-full object-cover [inset:0];
+}
+        .sh-combo__img-badge {
+    @apply absolute py-1.5 px-4 font-bold rounded-full text-sm tracking-wider [bottom:1rem] [left:1rem] [background:var(--bg-card)] [backdrop-filter:blur(4px)] [color:var(--text-1)] [box-shadow:0_1px_2px_rgba(0,0,0,0.05)];
+}
+        .sh-combo__img-badge--accent {
+    @apply [background:var(--brand)] [color:#fff] [box-shadow:0_10px_15px_-3px_color-mix(in_srgb,_var(--brand)_30%,_transparent)];
+}
+        .sh-combo__body {
+    @apply p-6;
+}
+        .sh-combo__body--tinted {
+    @apply [background:color-mix(in_srgb,_var(--secondary-light)_30%,_transparent)];
+}
+        .sh-combo__price-row {
+    @apply flex justify-between items-center mb-4;
+}
+        .sh-combo__price-old {
+    @apply text-sm line-through [color:var(--text-1-3)];
+}
+        .sh-combo__price {
+    @apply text-2xl font-black [color:var(--brand)];
+}
+        .sh-combo__price--accent {
+    @apply [color:var(--secondary-dark)];
+}
+        .sh-combo__list {
+    @apply list-none p-0 flex flex-col gap-2 text-sm [margin:0_0_1.5rem] [color:var(--text-1-2)];
+}
+        .sh-combo__btn {
+    @apply block w-full p-2 font-bold text-center rounded no-underline transition-all duration-300;
+}
+        .sh-combo__btn--default {
+    @apply [background:var(--bg-alt)] [color:var(--text-1)];
+}
+        .sh-combo__btn--default:hover {
+    @apply [background:var(--bg-elevated)];
+}
+        .sh-combo__btn--primary {
+    @apply [background:var(--brand)] [color:#fff];
+}
+        .sh-combo__btn--primary:hover {
+    @apply [background:var(--brand-dark)];
+}
+        .dark .sh-combo {
+    @apply [background:var(--bg-card)];
+}
+        .dark .sh-combo__title {
+    @apply [color:var(--text-1)];
+}
+        .dark .sh-combo__card {
+    @apply [border-color:var(--border-default)];
+}
+        .dark .sh-combo__img-badge {
+    @apply [background:var(--bg-card)] [color:var(--text-1)];
+}
+        .dark .sh-combo__list {
+    @apply [color:var(--text-1-2)];
+}
+        .dark .sh-combo__body--tinted {
+    @apply [background:color-mix(in_srgb,_var(--secondary)_5%,_var(--bg-card))];
+}

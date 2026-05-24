@@ -1,0 +1,347 @@
+#!/usr/bin/env bash
+# ──────────────────────────────────────────────────────────────────
+# reconcile.sh — Auto-fix drift in .task-handoffs/ (v4.0)
+# ──────────────────────────────────────────────────────────────────
+# Usage:
+#   bash system/scripts/reconcile.sh [--dry-run|--fix]
+#
+# Default mode: --dry-run (reports drift, no writes).
+# Use --fix to apply changes.
+#
+# Operations (idempotent):
+#   1. Active ↔ STATUS §1 orphan detection (report only, no auto-delete)
+#   2. Archive INDEX.md regeneration per month folder
+#   3. Roster sync: write canonical counts into anchored doc regions
+#   4. STATUS §4 rotation: drop rows >48h old
+#   5. Version drift: align all canonical docs to STATUS.md version
+#   6. Misplaced archive files: move root-level archive/T-*.md into archive/YYYY-MM/
+#   7. (v4.1) Stale lock reaping: delete lock files mtime > 180s (--reap-stale or --fix)
+#   8. (v4.1) Agent metrics refresh: run update-agent-metrics.sh after --fix
+#
+# Usage:
+#   bash system/scripts/reconcile.sh                      # dry-run, reports
+#   bash system/scripts/reconcile.sh --fix                # apply + metrics + reap
+#   bash system/scripts/reconcile.sh --reap-stale         # just reap locks
+# ──────────────────────────────────────────────────────────────────
+
+set -u
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+HANDOFFS_DIR="$(cd "$SCRIPT_DIR/../.." && pwd)"
+ACTIVE_DIR="$HANDOFFS_DIR/active"
+ARCHIVE_DIR="$HANDOFFS_DIR/archive"
+STATUS_FILE="$HANDOFFS_DIR/STATUS.md"
+ROSTER_FILE="$HANDOFFS_DIR/system/__roster.json"
+
+MODE="dry-run"
+REAP_STALE=0
+for arg in "$@"; do
+    case "$arg" in
+        --fix)         MODE="fix" ;;
+        --dry-run)     MODE="dry-run" ;;
+        --reap-stale)  REAP_STALE=1 ;;
+        "")            ;;
+        *) echo "Usage: $0 [--dry-run|--fix] [--reap-stale]" >&2; exit 2 ;;
+    esac
+done
+
+red()    { printf '\033[31m%s\033[0m\n' "$*"; }
+green()  { printf '\033[32m%s\033[0m\n' "$*"; }
+yellow() { printf '\033[33m%s\033[0m\n' "$*"; }
+blue()   { printf '\033[34m%s\033[0m\n' "$*"; }
+bold()   { printf '\033[1m%s\033[0m\n' "$*"; }
+
+FIXES=0
+WOULD_FIX=0
+flag() {
+    if [[ "$MODE" == "fix" ]]; then
+        FIXES=$((FIXES + 1))
+        green "  ✓ FIXED: $*"
+    else
+        WOULD_FIX=$((WOULD_FIX + 1))
+        yellow "  ◇ would-fix: $*"
+    fi
+}
+
+# Path normalizer: Git-Bash POSIX → Windows-friendly path for python.exe
+winpath() {
+    if command -v cygpath >/dev/null 2>&1; then
+        cygpath -m "$1"
+    else
+        echo "$1"
+    fi
+}
+ROSTER_WIN="$(winpath "$ROSTER_FILE")"
+
+bold "🔧 reconcile.sh (mode=$MODE)"
+echo
+
+# ─── 1. Misplaced archive files (root archive/ → archive/YYYY-MM/) ──
+blue "1. Misplaced archive files"
+shopt -s nullglob
+ROOT_FILES=("$ARCHIVE_DIR"/T-*.md)
+shopt -u nullglob
+
+for f in "${ROOT_FILES[@]}"; do
+    fname=$(basename "$f")
+    month=$(echo "$fname" | sed -E 's/^T-([0-9]{4})([0-9]{2}).*/\1-\2/')
+    target_dir="$ARCHIVE_DIR/$month"
+    target="$target_dir/$fname"
+    flag "move $fname → archive/$month/"
+    if [[ "$MODE" == "fix" ]]; then
+        mkdir -p "$target_dir"
+        mv "$f" "$target"
+    fi
+done
+[[ ${#ROOT_FILES[@]} -eq 0 ]] && green "  ✓ No misplaced files"
+echo
+
+# ─── 2. STATUS §1 orphans (report only) ─────────────────────────────
+blue "2. STATUS §1 ↔ active/ sync"
+ORPHAN_IDS=()
+while IFS= read -r line; do
+    tid=$(echo "$line" | grep -oE 'T-[0-9]+-[0-9]+(-[0-9A-Za-z]+)?' | head -1)
+    [[ -z "$tid" ]] && continue
+    [[ "$line" == *"archive/"* ]] && continue
+    [[ "$line" == *"None"* ]] && continue
+    if ! ls "$ACTIVE_DIR"/${tid}-*.md >/dev/null 2>&1; then
+        ORPHAN_IDS+=("$tid")
+    fi
+done < <(awk '/^## 1\./,/^## 2\./' "$STATUS_FILE" | grep -E '^\| `?T-' || true)
+
+if [[ ${#ORPHAN_IDS[@]} -gt 0 ]]; then
+    yellow "  ⚠ Orphan rows in STATUS §1 (no matching active/ file):"
+    for id in "${ORPHAN_IDS[@]}"; do
+        yellow "    - $id"
+    done
+    yellow "  → Action: orchestrator must verify (was task dispatched but worker silent? was file deleted? restore dossier or escalate manually)."
+    yellow "  → reconcile.sh does NOT auto-delete rows (safety)."
+else
+    green "  ✓ No orphans"
+fi
+echo
+
+# ─── 3. Archive INDEX regeneration ──────────────────────────────────
+blue "3. Archive INDEX.md regeneration"
+for mo_dir in "$ARCHIVE_DIR"/[0-9][0-9][0-9][0-9]-[0-9][0-9]/; do
+    [[ -d "$mo_dir" ]] || continue
+    mo=$(basename "$mo_dir")
+    index="$mo_dir/INDEX.md"
+    shopt -s nullglob
+    files=("$mo_dir"T-*.md)
+    shopt -u nullglob
+    actual=${#files[@]}
+    claimed=0
+    [[ -f "$index" ]] && claimed=$(grep -cE '^\| `?T-[0-9]+' "$index" 2>/dev/null || echo 0)
+
+    if [[ "$actual" -ne "$claimed" ]]; then
+        flag "regenerate $mo/INDEX.md ($claimed claimed → $actual actual)"
+        if [[ "$MODE" == "fix" ]]; then
+            {
+                echo "# Archive Index — $mo"
+                echo
+                echo "Auto-generated by \`system/scripts/reconcile.sh\`. Do not edit by hand."
+                echo
+                echo "## Summary"
+                echo
+                pass=$(grep -lE '^state: archived' "${files[@]}" 2>/dev/null | wc -l)
+                echo "- Total tasks: $actual"
+                echo "- Archived: $pass"
+                echo
+                echo "## Tasks"
+                echo
+                echo "| ID | Owner | State | Risk | File |"
+                echo "|---|---|---|---|---|"
+                for f in "${files[@]}"; do
+                    fname=$(basename "$f")
+                    tid=$(echo "$fname" | grep -oE '^T-[0-9]+-[0-9]+(-[0-9A-Za-z]+)?')
+                    owner=$(awk '/^---$/{c++; next} c==1 && /^owner:/ {print $2; exit}' "$f")
+                    state=$(awk '/^---$/{c++; next} c==1 && /^state:/ {print $2; exit}' "$f")
+                    risk=$(awk '/^---$/{c++; next} c==1 && /^risk:/ {print $2; exit}' "$f")
+                    echo "| \`$tid\` | ${owner:-?} | ${state:-?} | ${risk:-?} | \`$fname\` |"
+                done
+            } > "$index"
+        fi
+    else
+        green "  ✓ $mo/INDEX.md accurate ($actual entries)"
+    fi
+done
+echo
+
+# ─── 4. Roster sync (update AGENTS.md count + AGENT-MODEL anchor) ───
+blue "4. Roster sync (from __roster.json)"
+ORCH_COUNT=$(python -c "import json; d=json.load(open(r'$ROSTER_WIN')); print(len(d['tiers']['orchestrator']['members']))")
+WORKER_COUNT=$(python -c "import json; d=json.load(open(r'$ROSTER_WIN')); print(len(d['tiers']['worker']['members']))")
+TOTAL=$((ORCH_COUNT + WORKER_COUNT))
+CANONICAL_COUNT="**Total: $TOTAL agents ($ORCH_COUNT Orchestrator + $WORKER_COUNT Worker)** — see \`system/__roster.json\` for canonical roster."
+
+AGENTS_MD="$HANDOFFS_DIR/AGENTS/AGENTS.md"
+AGENTS_MD_WIN="$(winpath "$AGENTS_MD")"
+if [[ -f "$AGENTS_MD" ]]; then
+    if grep -q "<!-- roster:count -->" "$AGENTS_MD"; then
+        current=$(awk '/<!-- roster:count -->/,/<!-- \/roster:count -->/' "$AGENTS_MD" | sed -n '2p')
+        if [[ "$current" != "$CANONICAL_COUNT" ]]; then
+            flag "AGENTS.md count → $TOTAL agents ($ORCH_COUNT+$WORKER_COUNT)"
+            if [[ "$MODE" == "fix" ]]; then
+                python -c "
+import re
+p = r'$AGENTS_MD_WIN'
+s = open(p, encoding='utf-8').read()
+new_block = '<!-- roster:count -->\n$CANONICAL_COUNT\n<!-- /roster:count -->'
+s2 = re.sub(r'<!-- roster:count -->.*?<!-- /roster:count -->', new_block, s, flags=re.DOTALL)
+open(p, 'w', encoding='utf-8').write(s2)
+"
+            fi
+        else
+            green "  ✓ AGENTS.md count matches roster"
+        fi
+    else
+        # No anchor — check if hardcoded count is wrong
+        if grep -qE 'Total: [0-9]+ agents \([0-9]+ Orchestrator' "$AGENTS_MD"; then
+            current_line=$(grep -E 'Total: [0-9]+ agents' "$AGENTS_MD" | head -1)
+            expected="**Total: $TOTAL agents ($ORCH_COUNT Orchestrator + $WORKER_COUNT Worker)**"
+            if [[ "$current_line" != *"$ORCH_COUNT Orchestrator + $WORKER_COUNT Worker"* ]]; then
+                flag "AGENTS.md hardcoded count wrong (no anchor) — needs manual anchor insertion"
+            fi
+        fi
+    fi
+fi
+echo
+
+# ─── 5. STATUS §4 rotation (drop entries >48h) ──────────────────────
+blue "5. STATUS §4 rotation (drop rows >48h)"
+TODAY_TS=$(date +%s)
+DROP_IDS=()
+while IFS= read -r line; do
+    tid=$(echo "$line" | grep -oE 'T-[0-9]+-[0-9]+(-[0-9A-Za-z]+)?' | head -1)
+    [[ -z "$tid" ]] && continue
+    # Extract date from task ID: T-YYYYMMDD-NNN
+    d=$(echo "$tid" | sed -E 's/^T-([0-9]{4})([0-9]{2})([0-9]{2}).*/\1-\2-\3/')
+    [[ -z "$d" ]] && continue
+    task_ts=$(date -d "$d" +%s 2>/dev/null || echo 0)
+    age_h=$(( (TODAY_TS - task_ts) / 3600 ))
+    if [[ $age_h -gt 48 ]]; then
+        DROP_IDS+=("$tid")
+    fi
+done < <(awk '/^## 4\./,/^## 5\./' "$STATUS_FILE" | grep -E '^\| `?T-' || true)
+
+if [[ ${#DROP_IDS[@]} -gt 0 ]]; then
+    for tid in "${DROP_IDS[@]}"; do
+        flag "drop $tid from STATUS §4 (>48h)"
+    done
+    if [[ "$MODE" == "fix" ]]; then
+        # Build sed expression to delete those lines
+        STATUS_TMP="$STATUS_FILE.tmp.$$"
+        awk -v drops="$(IFS='|'; echo "${DROP_IDS[*]}")" '
+            BEGIN { split(drops, a, "|"); for (i in a) drop[a[i]]=1; sec4=0 }
+            /^## 4\./ { sec4=1 }
+            /^## 5\./ { sec4=0 }
+            sec4 && /^\| `?T-/ {
+                for (id in drop) if (index($0, id) > 0) next
+            }
+            { print }
+        ' "$STATUS_FILE" > "$STATUS_TMP"
+        mv "$STATUS_TMP" "$STATUS_FILE"
+    fi
+else
+    green "  ✓ STATUS §4 within 48h window"
+fi
+echo
+
+# ─── 6. Version drift ───────────────────────────────────────────────
+blue "6. Version uniformity"
+STATUS_VER=$(grep -oE 'v[0-9]+\.[0-9]+' "$STATUS_FILE" | head -1)
+if [[ -z "$STATUS_VER" ]]; then
+    yellow "  ⚠ Cannot detect golden version from STATUS.md"
+else
+    DOCS=(
+        "$HANDOFFS_DIR/README.md"
+        "$HANDOFFS_DIR/SKILL.md"
+        "$HANDOFFS_DIR/GUIDE.md"
+        "$HANDOFFS_DIR/system/WORKFLOW.md"
+        "$HANDOFFS_DIR/system/AGENT-MODEL.md"
+        "$HANDOFFS_DIR/system/AI-COLLAB.md"
+        "$HANDOFFS_DIR/system/HOW-TO-USE.md"
+        "$HANDOFFS_DIR/system/ROUTING.md"
+        "$HANDOFFS_DIR/system/QUALITY-GATES.md"
+        "$HANDOFFS_DIR/system/REPORTING.md"
+    )
+    for doc in "${DOCS[@]}"; do
+        [[ -f "$doc" ]] || continue
+        first_ver=$(head -10 "$doc" | grep -oE 'v[0-9]+\.[0-9]+' | head -1)
+        if [[ -n "$first_ver" && "$first_ver" != "$STATUS_VER" ]]; then
+            flag "$(basename "$doc"): $first_ver → $STATUS_VER"
+            if [[ "$MODE" == "fix" ]]; then
+                # Only replace in the first 10 lines (header), not body content
+                doc_win="$(winpath "$doc")"
+                python -c "
+p = r'$doc_win'
+old = '$first_ver'
+new = '$STATUS_VER'
+lines = open(p, encoding='utf-8').read().splitlines(keepends=True)
+for i in range(min(10, len(lines))):
+    lines[i] = lines[i].replace(old, new)
+open(p, 'w', encoding='utf-8').write(''.join(lines))
+"
+            fi
+        fi
+    done
+fi
+echo
+
+# ─── 7. (v4.1) Stale lock reaping (claude_code_agent_farm pattern) ──
+blue "7. Stale lock reaping (TTL 180s)"
+LOCKS_DIR="$HANDOFFS_DIR/system/locks"
+TTL=180
+shopt -s nullglob
+LOCK_FILES=("$LOCKS_DIR"/T-*.lock)
+shopt -u nullglob
+NOW_TS=$(date +%s)
+for lock in "${LOCK_FILES[@]}"; do
+    mt=$(stat -c %Y "$lock" 2>/dev/null || stat -f %m "$lock" 2>/dev/null || echo "$NOW_TS")
+    age=$((NOW_TS - mt))
+    if [[ $age -gt $TTL ]]; then
+        if [[ $REAP_STALE -eq 1 || "$MODE" == "fix" ]]; then
+            flag "reap stale lock $(basename "$lock") (age ${age}s)"
+            [[ "$MODE" == "fix" || $REAP_STALE -eq 1 ]] && rm -f "$lock"
+        else
+            yellow "  ⚠ $(basename "$lock") stale (age ${age}s > ${TTL}s) — pass --reap-stale or --fix to delete"
+        fi
+    fi
+done
+[[ ${#LOCK_FILES[@]} -eq 0 ]] && green "  ✓ No lock files"
+echo
+
+# ─── 8. (v4.1) Agent metrics refresh (Overstory CV pattern) ─────────
+if [[ "$MODE" == "fix" ]]; then
+    blue "8. Agent metrics refresh"
+    if [[ -f "$SCRIPT_DIR/update-agent-metrics.sh" ]]; then
+        bash "$SCRIPT_DIR/update-agent-metrics.sh" >/dev/null 2>&1 \
+            && green "  ✓ Refreshed AGENTS/*.md metrics from LEADERBOARD" \
+            || yellow "  ⚠ update-agent-metrics.sh failed (non-blocking)"
+    else
+        yellow "  ⚠ update-agent-metrics.sh not found — skip"
+    fi
+    echo
+fi
+
+# ─── Summary ────────────────────────────────────────────────────────
+echo "─────────────────────────────────────"
+if [[ "$MODE" == "fix" ]]; then
+    if [[ $FIXES -eq 0 ]]; then
+        green "✅ Clean — nothing to fix"
+        exit 0
+    else
+        green "✅ Applied $FIXES fix(es)"
+        echo "   → Run 'bash $SCRIPT_DIR/lint-handoffs.sh --strict' to verify."
+        exit 0
+    fi
+else
+    if [[ $WOULD_FIX -eq 0 ]]; then
+        green "✅ Clean — no drift"
+        exit 0
+    else
+        yellow "⚠ Would apply $WOULD_FIX fix(es). Re-run with --fix to apply."
+        exit 1
+    fi
+fi

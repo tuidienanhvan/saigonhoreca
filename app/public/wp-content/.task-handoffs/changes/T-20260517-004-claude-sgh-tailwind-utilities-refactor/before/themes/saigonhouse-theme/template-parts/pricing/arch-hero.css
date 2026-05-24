@@ -1,0 +1,63 @@
+/**
+ * arch-hero — Component CSS
+ */
+        .sh-pricing-hero {
+    @apply relative flex items-center justify-center text-center overflow-hidden [min-height:60vh];
+}
+        .sh-pricing-hero--dark {
+    @apply [background:#0f172a];
+}
+        .sh-pricing-hero--green {
+    @apply [background:linear-gradient(to_bottom_right,_var(--brand),_#064e3b)];
+}
+        .sh-pricing-hero__bg {
+    @apply absolute z-0 opacity-40 [inset:0];
+}
+        .sh-pricing-hero__bg img {
+    @apply w-full h-full object-cover;
+}
+        .sh-pricing-hero__container {
+    @apply relative z-10 my-0 mx-auto py-0 px-4 [max-width:1200px];
+}
+        .sh-pricing-hero__badge {
+    @apply inline-block py-1 px-3 rounded-full text-xs font-bold uppercase tracking-widest mb-4 [border:1px_solid_rgba(255,255,255,0.3)] [color:rgba(255,255,255,0.8)] [backdrop-filter:blur(4px)];
+}
+        .sh-pricing-hero__title {
+    @apply text-4xl font-bold [color:#fff] [margin:0_0_1.5rem] [line-height:1.1];
+}
+        @media (min-width: 768px) { .sh-pricing-hero__title {
+    @apply [font-size:3.75rem];
+} }
+        @media (min-width: 1024px) { .sh-pricing-hero__title {
+    @apply [font-size:4.5rem];
+} }
+        .sh-pricing-hero__title-gradient {
+    @apply [color:transparent] [background-image:linear-gradient(to_right,_var(--brand),_#00a84d)] [-webkit-background-clip:text] [background-clip:text];
+}
+        .sh-pricing-hero__desc {
+    @apply text-lg font-light [color:#e5e7eb] [max-width:42rem] [margin:0_auto_2.5rem];
+}
+        @media (min-width: 768px) { .sh-pricing-hero__desc {
+    @apply text-xl;
+} }
+        .sh-pricing-hero__actions {
+    @apply flex flex-col gap-4 justify-center;
+}
+        @media (min-width: 768px) { .sh-pricing-hero__actions {
+    @apply flex-row;
+} }
+        .sh-pricing-hero__btn {
+    @apply py-4 px-8 font-bold rounded transition-all duration-300 no-underline text-center;
+}
+        .sh-pricing-hero__btn--primary {
+    @apply [background:var(--brand)] [color:#fff] [box-shadow:0_10px_15px_-3px_rgba(0,0,0,0.1)];
+}
+        .sh-pricing-hero__btn--primary:hover {
+    @apply [background:#15803d] [box-shadow:0_20px_25px_-5px_rgba(0,125,61,0.3)];
+}
+        .sh-pricing-hero__btn--ghost {
+    @apply [background:rgba(255,255,255,0.1)] [backdrop-filter:blur(12px)] [color:#fff] [border:1px_solid_rgba(255,255,255,0.2)];
+}
+        .sh-pricing-hero__btn--ghost:hover {
+    @apply [background:rgba(255,255,255,0.2)];
+}

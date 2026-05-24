@@ -1,0 +1,63 @@
+/**
+ * About Hero — Component CSS
+ * Template: template-parts/about/hero.php
+ */
+
+/* Wrapper full-width */
+.sh-about-hero {
+    @apply relative w-full overflow-hidden flex items-center justify-center [height:70vh] [min-height:420px] [max-height:700px];
+}
+
+/* Background image full-width */
+.sh-about-hero__image {
+    @apply absolute transition-transform ease-out z-0 [inset:0] [background-size:cover] [background-position:center_center] [background-repeat:no-repeat] [transform:scale(1.05)];
+}
+.sh-about-hero:hover .sh-about-hero__image {
+    @apply [transform:scale(1)];
+}
+
+/* Dark overlay */
+.sh-about-hero__overlay {
+    @apply absolute [inset:0] [background:linear-gradient(_to_bottom,_rgba(0,_0,_0,_0.35)_0%,_rgba(0,_0,_0,_0.55)_60%,_rgba(0,_0,_0,_0.75)_100%_)] [z-index:1];
+}
+
+/* Content container */
+.sh-about-hero__container {
+    @apply relative z-10 text-center py-0 px-6 my-0 mx-auto flex flex-col items-center gap-4 [max-width:800px];
+}
+
+/* Badge "Từ Năm 2014" */
+.sh-about-hero__badge {
+    @apply inline-block py-1.5 px-5 text-xs font-semibold uppercase rounded-sm [border:1px_solid_rgba(255,_255,_255,_0.4)] [background:rgba(255,_255,_255,_0.1)] [backdrop-filter:blur(8px)] [-webkit-backdrop-filter:blur(8px)] [color:#ffffff] [letter-spacing:0.2em];
+}
+
+/* H1 Title */
+.sh-about-hero__title {
+    @apply font-black leading-none m-0 [font-size:clamp(2.5rem,_6vw,_4.5rem)] [color:#ffffff] [letter-spacing:-0.03em] [text-shadow:0_2px_20px_rgba(0,_0,_0,_0.3)];
+}
+
+/* Subtitle / tagline */
+.sh-about-hero__subtitle {
+    @apply font-light italic m-0 tracking-wider [font-size:clamp(1rem,_2.5vw,_1.375rem)] [color:rgba(255,_255,_255,_0.85)] [text-shadow:0_1px_10px_rgba(0,_0,_0,_0.2)];
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .sh-about-hero {
+    @apply [height:55vh] [min-height:320px];
+}
+
+    .sh-about-hero__title {
+    @apply [font-size:2.25rem];
+}
+
+    .sh-about-hero__subtitle {
+    @apply [font-size:1rem];
+}
+}
+
+@media (max-width: 480px) {
+    .sh-about-hero {
+    @apply [height:50vh] [min-height:280px];
+}
+}

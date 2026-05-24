@@ -1,0 +1,39 @@
+/**
+ * Contact Page - Map Section
+ */
+.sh-map {
+    @apply relative [height:60vh] [min-height:400px] [background:var(--bg-alt)];
+}
+
+.sh-map iframe {
+    @apply w-full h-full [border:none] [filter:grayscale(0.5)] [transition:filter_0.5s_ease];
+}
+
+.sh-map iframe:hover {
+    @apply [filter:grayscale(0)];
+}
+
+.sh-map__card {
+    @apply absolute py-5 px-6 rounded-2xl flex items-center gap-4 [bottom:2rem] [left:2rem] [background:color-mix(in_srgb,_var(--bg-card)_90%,_transparent)] [backdrop-filter:blur(8px)] [-webkit-backdrop-filter:blur(8px)] [box-shadow:0_20px_40px_-10px_rgba(0,_0,_0,_0.15)] [border:1px_solid_var(--border-default)] [animation:sh-float_6s_ease-in-out_infinite] [max-width:calc(100%_-_4rem)];
+}
+
+@keyframes sh-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.sh-map__icon-wrap {
+    @apply w-12 h-12 rounded-full flex items-center justify-center shrink-0 [background:color-mix(in_srgb,_var(--brand)_10%,_transparent)] [color:var(--brand)];
+}
+
+.sh-map__icon {
+    @apply w-6 h-6;
+}
+
+.sh-map__label {
+    @apply block text-sm mb-1 uppercase tracking-wider font-semibold [color:var(--text-1-3)];
+}
+
+.sh-map__hours {
+    @apply block text-lg font-extrabold [color:var(--text-1)];
+}

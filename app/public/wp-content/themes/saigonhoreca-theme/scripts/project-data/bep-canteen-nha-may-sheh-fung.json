@@ -1,0 +1,299 @@
+{
+  "slug": "bep-canteen-nha-may-sheh-fung",
+  "title": "SHEH FUNG",
+  "meta_description": "Dự án đẳng cấp với cam kết hoàn hảo của Saigon Horeca tại Canteen nhà máy Sheh Fung",
+  "sections_count": 5,
+  "sections": [
+    {
+      "data_id": "355a605b",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-355a605b",
+        "elementor-section-height-full",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-items-middle"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-5.jpg",
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-3901529a",
+          "col_size": 16,
+          "widgets": []
+        },
+        {
+          "col_class": "elementor-column elementor-col-66 elementor-top-column elementor-element elementor-element-7dd42e71",
+          "col_size": 66,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h1",
+              "text": "SHEH FUNG"
+            },
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Biểu tượng của sự hoàn hảo và tốc độ từ Saigon Horeca!"
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Dự án đẳng cấp với cam kết hoàn hảo của Saigon Horeca tại Canteen nhà máy lớn nhất nhì Bình Thuận Sheh Fung"
+              ]
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-641e797e",
+          "col_size": 16,
+          "widgets": []
+        }
+      ]
+    },
+    {
+      "data_id": "ef110fa",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-ef110fa",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-65c48449",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Trong hành trình hơn 50 năm đổi mới và phát triển, Sheh Fung không chỉ nổi tiếng với chất lượng sản phẩm mà còn với cam kết tạo ra môi trường làm việc lý tưởng cho nhân viên. Để hiện thực hóa mục tiêu này, Sheh Fung đã hợp tác với Saigon Horeca – đơn vị hàng đầu trong cung cấp giải pháp và thi công hệ thống bếp công nghiệp cao cấp.",
+                "Đây không chỉ là một công trình bếp thông thường mà còn là một bước tiến quan trọng, thể hiện sự quan tâm của Sheh Fung đối với đời sống nhân viên. Căn bếp canteen hiện đại không chỉ mang lại sự thoải mái và tiện nghi mà còn góp phần tạo động lực, giúp đội ngũ nhân viên làm việc hiệu quả hơn trong một môi trường được chăm chút toàn diện."
+              ]
+            },
+            {
+              "type": "image-carousel.default",
+              "slides": [
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-6.jpg",
+                  "srcset": null,
+                  "alt": "sheh-fung (6)",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-8.jpg",
+                  "srcset": null,
+                  "alt": "sheh-fung (8)",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-9.jpg",
+                  "srcset": null,
+                  "alt": "sheh-fung (9)",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-7.jpg",
+                  "srcset": null,
+                  "alt": "sheh-fung (7)",
+                  "w": null,
+                  "h": null
+                }
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Tại dự án Sheh Fung khu công nghiệp Hàm Kiệm, Bình Thuận, Saigon Horeca không chỉ đối mặt với áp lực về tiến độ gấp rút mà còn đặt ra thách thức phải đảm bảo mọi tiêu chuẩn khắt khe nhất về chất lượng. Tuy nhiên, với sự chuyên nghiệp và kinh nghiệm, đội ngũ của Saigon Horeca đã biến thách thức thành cơ hội, mang đến một không gian bếp đẳng cấp, đáp ứng mọi yêu cầu của khách hàng."
+              ]
+            },
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-1-1.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-1-1.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/01/sheh-fung-1-1-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/01/sheh-fung-1-1-600x337.jpg 600w",
+                "alt": "10 lỗi thường gặp khi sử dụng tủ lạnh công nghiệp và cách khắc phục",
+                "w": "1366",
+                "h": "768"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "2fcbcb7f",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-2fcbcb7f",
+        "elementor-section-content-middle",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-2530f256",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Sự tinh tế và tỉ mỉ của Saigon Horeca trong thiết kế bếp Canteen"
+            },
+            {
+              "type": "divider.default",
+              "divider": true
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Với sự hỗ trợ từ Saigon Horeca, hệ thống bếp canteen được trang bị thiết bị tối tân, thiết kế khoa học, đảm bảo sự linh hoạt trong vận hành và phục vụ được số lượng lớn nhân viên cùng lúc. Đây chính là minh chứng cho sự kết hợp hoàn hảo giữa tầm nhìn của Sheh Fung và sự chuyên nghiệp của Saigon Horeca, hướng đến việc nâng cao chất lượng cuộc sống và hiệu quả làm việc của toàn bộ đội ngũ.",
+                "Căn bếp tại Sheh Fung được thiết kế với phong cách kết hợp tối giản và hiện đại sử dụng gam màu trung tính cùng các vật liệu dễ vệ sinh như thép không gỉ và bề mặt chống bám bẩn, căn bếp không chỉ tạo cảm giác sạch sẽ, thoáng đãng mà còn đảm bảo an toàn vệ sinh thực phẩmKhông gian bếp được bố trí hợp lý, với các khu vực chức năng như chuẩn bị, nấu nướng, và phục vụ được sắp xếp liền mạch, tối ưu hóa luồng công việc và giảm thiểu sự chồng chéo."
+              ]
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-3cd70efa",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-2.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-2.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/01/sheh-fung-2-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/01/sheh-fung-2-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            },
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-3.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-3.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/01/sheh-fung-3-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/01/sheh-fung-3-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "16b4144a",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-16b4144a",
+        "elementor-section-content-middle",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-4fc0aebb",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-4.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-4.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/01/sheh-fung-4-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/01/sheh-fung-4-600x337.jpg 600w",
+                "alt": "Bếp á đôi công nghiệp",
+                "w": "1366",
+                "h": "768"
+              }
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-515501e0",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "span",
+              "text": "Điểm nhấn mạnh mẽ trong thiết kế của Saigon Horeca"
+            },
+            {
+              "type": "divider.default",
+              "divider": true
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Saigon Horeca hoàn thiện việc lắp đặt hệ thống ống gió, chụp hút khói, và cấp khí tươi cho canteen nhà máy Sheh Fung với thiết kế và triển khai theo tiêu chuẩn cao nhất, đảm bảo hai yếu tố quan trọng:",
+                "Hệ thống được thiết kế thông minh và triển khai bài bản, đảm bảo toàn bộ lượng khói sinh ra trong quá trình nấu ăn được thoát ra ngoài nhanh chóng, giữ cho không gian bếp luôn sạch sẽ và không bị ám mùi. Đồng thời, hệ thống cấp khí tươi song song cung cấp luồng không khí trong lành từ bên ngoài, giúp khu vực bếp duy trì sự thông thoáng và thoải mái tối đa, tạo điều kiện làm việc lý tưởng cho đội ngũ nhân viên."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "8834001",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-8834001",
+        "elementor-section-content-middle",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-549d58a",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "divider.default",
+              "divider": true
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Sự khác biệt của Saigon Horeca nằm ở khả năng kết hợp giữa thiết kế tối ưu và công nghệ hiện đại, đáp ứng mọi tiêu chuẩn khắt khe về an toàn, vệ sinh và hiệu suất vận hành. Với bề dày kinh nghiệm trong lĩnh vực tư vấn và triển khai các hệ thống bếp công nghiệp cao cấp, Saigon Horeca không chỉ mang đến các giải pháp kỹ thuật xuất sắc mà còn đảm bảo từng công trình đạt độ hoàn thiện cao nhất.",
+                "Từ bếp nhà hàng, canteen cho đến quầy bar và coffee shop, Saigon Horeca luôn là sự lựa chọn hàng đầu của các chủ đầu tư, nhờ vào sự uy tín, chuyên nghiệp và tận tâm trong từng dự án. Sheh Fung không chỉ có một hiện đại mà còn sở hữu một không gian bếp tối ưu, góp phần nâng cao hiệu quả làm việc và sự hài lòng của nhân viên."
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

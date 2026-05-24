@@ -1,0 +1,284 @@
+{
+  "slug": "du-an-bep-cang-tin-cong-ty-nhat-nichiyo",
+  "title": "Dự án bếp ăn công nghiệp bếp căng tin công ty Nhật Nichiyo",
+  "meta_description": "sự hợp tác với Saigon Horeca đã mang lại một bước tiến mới mẻ cho Nichiyo, khi cùng nhau tạo ra một căn bếp căng tin đa năng tiện nghi và hiện đại,",
+  "sections_count": 5,
+  "sections": [
+    {
+      "data_id": "41f8e791",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-41f8e791",
+        "elementor-section-stretched",
+        "elementor-section-full_width",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/11/bg-graphic-1.svg",
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-7687afb8",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "theme-post-featured-image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/04/du-an-bep-canteen-nichiyo.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/04/du-an-bep-canteen-nichiyo.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/04/du-an-bep-canteen-nichiyo-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/04/du-an-bep-canteen-nichiyo-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-5c67a103",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "spacer.default",
+              "spacer": true
+            },
+            {
+              "type": "theme-post-title.default",
+              "text": "Dự án bếp ăn công nghiệp bếp căng tin công ty Nhật Nichiyo"
+            },
+            {
+              "type": "post-info.default",
+              "text": "Tháng 3 27, 2024"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "18f72271",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-18f72271",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-4269b3b9",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Công ty TNHH Nichiyo đánh dấu cột mốc 53 năm thành lập với sứ mệnh vững chắc là một trong những đơn vị hàng đầu trong lĩnh vực thương mại sản xuất thực phẩm, thuộc Tập đoàn Warabeya Nichiyo. Điều đặc biệt là, Nichiyo không chỉ là một doanh nghiệp thương mại thông thường mà còn là biểu tượng của sự đổi mới, sáng tạo và cam kết không ngừng nâng cao chất lượng cuộc sống thông qua thực phẩm."
+              ]
+            },
+            {
+              "type": "image-carousel.default",
+              "slides": [
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/nichiyo-san-pham-3.jpg",
+                  "srcset": null,
+                  "alt": "nichiyo-san-pham-3",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/nichiyo-san-pham-1.jpg",
+                  "srcset": null,
+                  "alt": "nichiyo-san-pham-1",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/nichiyo-san-pham-2.jpg",
+                  "srcset": null,
+                  "alt": "nichiyo-san-pham-2",
+                  "w": null,
+                  "h": null
+                }
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Với tinh thần không ngừng khám phá và lựa chọn những sản phẩm thực phẩm đa dạng từ khắp nơi trên thế giới, Nichiyo không chỉ đáp ứng nhu cầu của thị trường mà còn tạo ra những trải nghiệm ẩm thực đầy sáng tạo và độc đáo cho khách hàng. Điều này được thể hiện qua việc không ngừng tìm kiếm và áp dụng những công nghệ tiên tiến nhất trong quá trình sản xuất, kiểm soát chất lượng, để mang lại những sản phẩm an toàn, chất lượng và dinh dưỡng cao."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "747211f7",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-747211f7",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/SGH-Bambino-1.jpg",
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-3807daf7",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Saigon Horeca: Chìa Khóa Uy Tín Cho Thiết Bị Bếp Chất Lượng"
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Sứ mệnh của Nichiyo không chỉ dừng lại ở việc cung cấp thực phẩm mà còn là việc tạo ra một môi trường làm việc tích cực và đầy động lực cho nhân viên. Với tôn chỉ “Nhân viên là tài sản quý báu nhất”, Nichiyo luôn chú trọng đến sự phát triển cá nhân và sự hài lòng của đội ngũ nhân viên.",
+                "Ngoài ra, sự hợp tác với Saigon Horeca đã mang lại một bước tiến mới mẻ cho Nichiyo, khi cùng nhau tạo ra một căn bếp căng tin đa năng tiện nghi và hiện đại, phục vụ nhu cầu đa dạng dành riêng cho nhân viên và đội ngũ làm việc trong công ty. Điều này là một bước tiến quan trọng nhằm đảm bảo rằng môi trường làm việc không chỉ mang lại sự thoải mái và tiện nghi mà còn đáp ứng được nhu cầu ẩm thực đa dạng của nhân viên.",
+                "Căn bếp này không chỉ là nơi để chuẩn bị và phục vụ thực phẩm mà còn là một không gian sáng tạo, khích lệ sự sáng tạo và đổi mới trong quá trình làm việc hàng ngày. Sự kết hợp giữa các thiết bị hàng đầu từ các thương hiệu uy tín như Rational, Hoshizaki, Fujimak và các vật dụng bằng thép không gỉ thiết kế đặc biệt, đã tạo nên một không gian làm việc chuyên nghiệp và sáng tạo, giúp Nichiyo tiếp tục đảm bảo chất lượng sản phẩm và dịch vụ tốt nhất."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "1db46c0c",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-1db46c0c",
+        "elementor-section-content-middle",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-59a044cd",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/nichiyo-du-an-2.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/nichiyo-du-an-2.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2024/03/nichiyo-du-an-2-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/03/nichiyo-du-an-2-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            },
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/nichiyo-du-an-1.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/nichiyo-du-an-1.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2024/03/nichiyo-du-an-1-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/03/nichiyo-du-an-1-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            },
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/nichiyo-du-an-3.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/nichiyo-du-an-3.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2024/03/nichiyo-du-an-3-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/03/nichiyo-du-an-3-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-65880d72",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "divider.default",
+              "divider": true
+            },
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Thiết kế bếp căng tin của Nichiyo"
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Bếp căng tin này được thiết kế theo phong cách đơn giản và sạch sẽ. Với tông màu trắng và xám trung tính, không gian làm việc trở nên gọn gàng và thoải mái.",
+                "Mỗi chi tiết trong căn bếp được chọn lựa cẩn thận để tạo ra sự hài hòa và tiện ích cao. Thiết bị bếp và vật dụng bằng thép không gỉ được sắp xếp một cách thông minh, tối ưu hóa không gian và tăng hiệu suất làm việc.",
+                "Trong không gian bếp hạn chế của Nichiyo, Saigon Horeca đã thể hiện sự khéo léo thông qua việc bố trí tinh tế. Dù tuân thủ các quy định về kích thước nhà bếp, nhưng không làm hạn chế sự sáng tạo trong thiết kế. Điều này được thực hiện nhờ vào hệ thống thông gió được thiết kế tỉ mỉ, giúp không gian trở nên thông thoáng và thoải mái.",
+                "Bên cạnh đó, việc lưu trữ được tối ưu hóa và bố cục tiện dụng hỗ trợ các đầu bếp trong quá trình làm việc. Mỗi chi tiết, từ các vật dụng bằng thép không gỉ sáng bóng cho đến những kệ được đặt đúng vị trí, đều phản ánh sự hiệu quả và chuyên nghiệp trong quản lý không gian và thiết kế.",
+                "Tổng thể, sự khéo léo và tinh tế trong việc bố trí không chỉ làm cho không gian bếp trở nên gọn gàng và tiện nghi mà còn giúp tăng cường hiệu suất làm việc và sự thoải mái cho các đầu bếp. Đây thực sự là một minh chứng cho sự chuyên nghiệp và sự tận tâm của Saigon Horeca đối với khách hàng của mình.",
+                "Tất cả những điều này kết hợp với nhau để tạo ra một môi trường làm việc đơn giản, hiệu quả và thoải mái cho nhân viên."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "104fb15c",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-104fb15c",
+        "elementor-section-content-middle",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-1dcc5890",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Sự Tinh Tế của Saigon Horeca Trong Thiết Kế Bếp Căng Tin"
+            },
+            {
+              "type": "divider.default",
+              "divider": true
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Saigon Horeca thể hiện sự tinh tế trong thiết kế bếp căng tin thông qua sự kết hợp hài hòa giữa đơn giản và tiện ích. Với tầm nhìn sáng tạo, không gian bếp được tạo ra với phong cách tối giản nhưng vẫn đảm bảo đầy đủ các tiện nghi và công nghệ hiện đại.",
+                "Mỗi chi tiết trong bếp được chăm chút tỉ mỉ, từ việc lựa chọn màu sắc trung tính như trắng và xám đến việc bố trí thiết bị và vật dụng bếp một cách thông minh và tiện lợi. Sự sắp xếp hợp lý giúp tối ưu hóa không gian và tạo ra một môi trường làm việc thoải mái và tiện nghi.",
+                "Bên cạnh đó, ánh sáng tự nhiên được tận dụng thông qua các cửa sổ lớn, tạo ra không gian sáng sủa và thoáng đãng. Các đèn led có thể điều chỉnh giúp làm tăng tính tiện ích và thẩm mỹ cho căn bếp. Việc sử dụng ánh sáng tự nhiên và đèn led điều chỉnh cường độ không chỉ làm tăng tính thẩm mỹ mà còn tạo ra một không gian làm việc sáng sủa và tạo động lực cho nhân viên.",
+                "Tất cả những yếu tố trên thể hiện sự tinh tế và am hiểu sâu sắc về nhu cầu của khách hàng, giúp Saigon Horeca định vị mình là một đối tác đáng tin cậy trong việc tạo ra những không gian bếp đẳng cấp và hiện đại, đáp ứng mọi nhu cầu của khách hàng, đặc biệt là trong lĩnh vực bếp căng tin."
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

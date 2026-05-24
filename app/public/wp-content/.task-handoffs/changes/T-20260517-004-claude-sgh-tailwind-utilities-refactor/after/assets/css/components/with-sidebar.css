@@ -1,0 +1,26 @@
+/**
+ * Shared 2-column layout (content + sidebar).
+ *
+ * Used by: page.php, category.php, archive.php, tag.php, search.php.
+ * The single-post template (single.php) keeps its own `.sh-single__layout`
+ * because its header/meta block needs full width before the grid kicks in.
+ *
+ * Layout:
+ *   Mobile → 1 column (stacked, sidebar appears below content)
+ *   ≥1024px → 2 columns (content flexible, sidebar fixed ~20rem)
+ *
+ * BEM:
+ *   .sh-with-sidebar           → grid container
+ *   .sh-with-sidebar__main     → main content column
+ *   .sh-with-sidebar__aside    → sidebar column (wraps get_sidebar())
+ */
+
+.sh-with-sidebar {
+    @apply grid gap-8 my-0 mx-auto py-0 px-4 w-full [grid-template-columns:minmax(0,_1fr)] [max-width:var(--sh-content-max)];
+}.sh-with-sidebar__main{min-width:calc(var(--spacing) * 0)}.sh-with-sidebar__aside{min-width:calc(var(--spacing) * 0)}
+
+@media (min-width: 1024px) {.sh-with-sidebar{margin-inline:auto;margin-block:calc(var(--spacing) * 0);width:100%;max-width:var(--sh-content-max);gap:calc(var(--spacing) * 8);padding-inline:calc(var(--spacing) * 4);padding-block:calc(var(--spacing) * 0);grid-template-columns:minmax(0,1fr);display:grid}
+}
+
+@media (min-width: 1280px) {.sh-with-sidebar{gap:calc(var(--spacing) * 10);padding-inline:calc(var(--spacing) * 6);padding-block:calc(var(--spacing) * 0);grid-template-columns:minmax(0,1fr) 21rem}
+}

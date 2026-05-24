@@ -1,0 +1,152 @@
+/**
+ * Top Bar — Saigon Horeca (dark luxe)
+ *
+ * Optional thin marquee strip above main header. Production
+ * saigonhoreca.vn doesn't always render this — kept here so any
+ * inherited template that still calls it stays styled on-brand.
+ */
+
+/* ── Container ── */
+.sh-topbar {
+    position: relative;
+    flex-shrink: 0;
+    margin-top: -1px;
+    font-size: 0.75rem;
+    color: color-mix(in srgb, var(--bc) 85%, transparent);
+    background: var(--b1);
+    border-bottom: 1px solid color-mix(in srgb, var(--gold) 12%, transparent);
+}
+.sh-topbar__inner {
+    display: flex;
+    align-items: center;
+}
+
+/* ── Marquee Area ── */
+.sh-topbar__marquee-wrap {
+    flex: 1;
+    min-width: 0;
+    padding: 0.625rem 0;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(90deg, transparent, var(--bg-dark) 5% 95%, transparent);
+            mask-image: linear-gradient(90deg, transparent, var(--bg-dark) 5% 95%, transparent);
+}
+@media (min-width: 768px) {
+    .sh-topbar { font-size: 0.8125rem; }
+    .sh-topbar__marquee-wrap { padding: 0.5rem 0; }
+}
+
+.sh-topbar__item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    margin: 0 0.75rem;
+    white-space: nowrap;
+}
+.sh-topbar__item-icon {
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+    color: var(--gold);
+}
+
+/* ── Marquee Animation ── */
+.sh-marquee-track {
+    display: flex;
+    width: max-content;
+    animation: sh-scroll-marquee 25s linear infinite;
+}
+.sh-marquee-content {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+@keyframes sh-scroll-marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-100%); }
+}
+.sh-topbar:hover .sh-marquee-content { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+    .sh-marquee-track { animation: none; }
+}
+
+/* ── Right Actions (desktop) ── */
+.sh-topbar__actions {
+    display: none;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0 1rem;
+    flex-shrink: 0;
+}
+@media (min-width: 768px) {
+    .sh-topbar__actions { display: flex; }
+}
+
+/* ── Search ── */
+.sh-topbar__search {
+    display: flex;
+    align-items: center;
+    width: 10rem;
+    padding: 0.25rem 0.75rem;
+    background: var(--bd);
+    border: 1px solid var(--bd);
+    border-radius: 9999px;
+    transition: background 0.2s, border-color 0.2s;
+}
+@media (min-width: 1024px) {
+    .sh-topbar__search { width: 14rem; }
+}
+.sh-topbar__search:focus-within {
+    background: color-mix(in srgb, var(--bc) 10%, transparent);
+    border-color: color-mix(in srgb, var(--gold) 40%, transparent);
+}
+.sh-topbar__search-input {
+    width: 100%;
+    padding: 0 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--bc);
+    background: transparent;
+    border: none;
+    outline: none;
+}
+.sh-topbar__search-input::placeholder { color: var(--bc3); }
+
+.sh-topbar__search-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.125rem;
+    min-width: 24px;
+    min-height: 24px;
+    color: var(--bc2);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.sh-topbar__search:focus-within .sh-topbar__search-btn { color: var(--gold); }
+.sh-topbar__search-icon { width: 0.875rem; height: 0.875rem; }
+
+/* ── CTA Button ── */
+.sh-topbar__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.375rem 1rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--bg-dark);
+    background: var(--gold);
+    border-radius: 9999px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.2s, transform 0.15s;
+    box-shadow: 0 2px 6px color-mix(in srgb, var(--gold) 25%, transparent);
+}
+.sh-topbar__cta:hover {
+    background: var(--secondary-hover);
+    transform: translateY(-1px);
+}
+.sh-topbar__cta-icon { width: 0.875rem; height: 0.875rem; }

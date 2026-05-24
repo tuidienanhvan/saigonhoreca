@@ -1,0 +1,59 @@
+/**
+ * Logo Component — Saigon Horeca (dark luxe)
+ *
+ * Logo lockup on left of header. Image scales on hover; text fallback
+ * shows brand name in red + gold slogan if no logo image is set.
+ */
+
+.sh-logo {
+    flex-shrink: 0;
+    max-height: 56px;
+    overflow: hidden;
+}
+.sh-logo__link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+}
+.sh-logo__image {
+    width: 125px;
+    max-width: 125px;
+    height: auto;
+    max-height: 58px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+.sh-logo__link:hover .sh-logo__image {
+    transform: scale(1.05);
+}
+
+.sh-logo__text { display: block; }
+.sh-logo__name {
+    display: block;
+    font-family: var(--font-display);
+    font-size: clamp(16px, 1.6vw, 26px);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--brand);
+    text-transform: uppercase;
+}
+.sh-logo__slogan {
+    display: block;
+    margin-top: 0.25rem;
+    font-size: clamp(9px, 0.8vw, 12px);
+    font-weight: 500;
+    line-height: 1.3;
+    color: var(--bc3);
+    letter-spacing: 0.05em;
+}
+
+/* ── Mobile ── */
+@media (max-width: 767px) {
+    .sh-logo__image {
+        width: 100px;
+        max-width: 100px;
+        max-height: 48px;
+    }
+}

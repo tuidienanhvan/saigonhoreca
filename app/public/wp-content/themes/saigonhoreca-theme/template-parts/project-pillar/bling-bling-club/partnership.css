@@ -1,0 +1,170 @@
+/**
+ * Project Pillar — bling-bling-club — partnership parallax styles
+ * 100% Token compliance, Gold Luxe theme with nightclub glamour glow.
+ * @package SaigonHoreca
+ */
+
+.pp--bling-bling-club .pp-section-bg-bbc {
+  position: relative;
+  isolation: isolate;
+  min-height: 850px;
+  display: grid;
+  align-items: center;
+  padding: clamp(6rem, 12vw, 10rem) 1rem;
+  overflow: hidden;
+  clip-path: inset(0 0 0 0); /* Parallax ghim fixed */
+  border-bottom: 1px solid var(--bd);
+}
+
+.pp--bling-bling-club .pp-section-bg-bbc__bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -2;
+  pointer-events: none;
+}
+
+.pp--bling-bling-club .pp-section-bg-bbc__overlay {
+  display: block; /* Lớp overlay mỏng tối màu ở dưới card */
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(10, 10, 10, 0.25) 0%, rgba(10, 10, 10, 0.65) 100%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.pp--bling-bling-club .pp-section-bg-bbc__content {
+  width: min(900px, 100%);
+  margin-inline: auto;
+  padding: clamp(3rem, 6vw, 4.5rem);
+  text-align: center;
+  border: 1px solid color-mix(in srgb, var(--gold) 28%, transparent);
+  border-radius: 28px;
+  /* Background tối ngả chút tone vàng sang trọng */
+  background: linear-gradient(135deg, rgba(10, 10, 10, 0.85) 0%, rgba(18, 18, 18, 0.9) 100%);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  /* Ánh vàng tỏa nhẹ tinh tế xung quanh card */
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.8),
+    0 0 50px color-mix(in srgb, var(--gold) 15%, transparent);
+  position: relative;
+  transition: transform 0.4s var(--ease-spring), border-color 0.4s ease, box-shadow 0.4s ease;
+  clip-path: polygon(
+    20px 0%, calc(100% - 20px) 0%,
+    100% 20px, 100% calc(100% - 20px),
+    calc(100% - 20px) 100%, 20px 100%,
+    0% calc(100% - 20px), 0% 20px
+  );
+}
+
+.pp--bling-bling-club .pp-section-bg-bbc__content:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--gold) 50%, transparent);
+  box-shadow: 
+    0 40px 80px rgba(0, 0, 0, 0.9),
+    0 0 70px color-mix(in srgb, var(--gold) 25%, transparent);
+}
+
+/* Parallel neon corners ôm chéo 4 góc */
+.pp--bling-bling-club .pp-section-bg-bbc__content::before,
+.pp--bling-bling-club .pp-section-bg-bbc__content::after {
+  content: '';
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  pointer-events: none;
+  transition: all 0.4s ease;
+}
+
+/* Góc trên trái */
+.pp--bling-bling-club .pp-section-bg-bbc__content::before {
+  top: 24px;
+  left: 24px;
+  border-top: 2px solid var(--gold);
+  border-left: 2px solid var(--gold);
+  opacity: 0.6;
+}
+
+/* Góc dưới phải */
+.pp--bling-bling-club .pp-section-bg-bbc__content::after {
+  bottom: 24px;
+  right: 24px;
+  border-bottom: 2px solid var(--gold);
+  border-right: 2px solid var(--gold);
+  opacity: 0.6;
+}
+
+.pp--bling-bling-club .pp-section-bg-bbc__content:hover::before {
+  top: 16px;
+  left: 16px;
+  width: 44px;
+  height: 44px;
+  opacity: 1;
+  filter: drop-shadow(0 0 8px var(--gold));
+}
+
+.pp--bling-bling-club .pp-section-bg-bbc__content:hover::after {
+  bottom: 16px;
+  right: 16px;
+  width: 44px;
+  height: 44px;
+  opacity: 1;
+  filter: drop-shadow(0 0 8px var(--gold));
+}
+
+.pp--bling-bling-club .pp-section-bg-bbc .pp-text-bbc__divider {
+  margin: 0 auto 1.75rem;
+  background: var(--gold);
+  box-shadow: 0 0 10px var(--gold);
+  width: 60px;
+  height: 2px;
+  display: block;
+}
+
+.pp--bling-bling-club .pp-section-bg-bbc .pp-text-bbc__title {
+  max-width: 760px;
+  margin-inline: auto;
+  margin-bottom: 2rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  line-height: 1.25;
+  background: linear-gradient(135deg, var(--bc) 30%, var(--gold) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+}
+
+.pp--bling-bling-club .pp-section-bg-bbc .pp-text-bbc__body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.pp--bling-bling-club .pp-section-bg-bbc .pp-text-bbc__body p {
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: var(--bc2);
+  margin: 0;
+  text-align: justify;
+}
+
+@media (max-width: 767px) {
+  .pp--bling-bling-club .pp-section-bg-bbc {
+    min-height: auto;
+    padding: 4rem 1rem;
+  }
+  .pp--bling-bling-club .pp-section-bg-bbc__content {
+    padding: 2rem 1.5rem;
+  }
+  .pp--bling-bling-club .pp-section-bg-bbc .pp-text-bbc__body p {
+    text-align: center;
+  }
+}

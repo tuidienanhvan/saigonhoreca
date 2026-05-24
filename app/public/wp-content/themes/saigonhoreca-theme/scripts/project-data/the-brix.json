@@ -1,0 +1,688 @@
+{
+  "slug": "the-brix",
+  "title": "The Brix",
+  "meta_description": "If you feel overwhelmed by the busy urban life and want to find a cool, fresh place to relax, dine, or chat with friends, come to The Brix.",
+  "sections_count": 23,
+  "sections": [
+    {
+      "data_id": "98180c9",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-98180c9",
+        "elementor-section-full_width",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-8fae82e",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "420275c9",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-420275c9",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-6624e839",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "If you feel overwhelmed by the busy urban life and want to find a cool, fresh place to relax, dine, or chat with friends, come to The Brix.",
+                "Located in the heart of District 2, The Brix restaurant is designed as a tropical resort island. It features a refreshing swimming pool and a lush, vibrant forest area."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "2f35c9d0",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-2f35c9d0",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-4a827629",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": null
+            },
+            {
+              "type": "image.default",
+              "image": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "4a0ef798",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-4a0ef798",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-b214877",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Materials such as ceiling wood and foundation tiles were chosen in the design based on traditional Vietnamese materials, taking the country‘s industrial period as an idea."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "4d5517a8",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-4d5517a8",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-51f848cd",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "4dc1a56b",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-4dc1a56b",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-5eeeaf51",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Inside the restaurant, there is also a Momentum Living exhibition room, with a minimalist design following a classic trend. The harmonious combination of bright and dark colors creates an elegant and sophisticated ambiance."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "71c80c49",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-71c80c49",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-20ce4f31",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "1137ae30",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-1137ae30",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-690c2083",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "At The Brix, diners not only enjoy the tranquility of nature but also indulge in the excellent European-style cuisine, contributing to a complete and fulfilling dining experience."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "54d6e767",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-54d6e767",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-4f6ba8fc",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "The refreshing and serene mood of the guests is partly contributed by Saigon Horeca, the consulting and equipment provider for the Kitchen and Pastry areas of the restaurant, supporting the chefs in creating delicious dishes that ignite every conversation.",
+                "Main Kitchen Area",
+                "The cooking area is an important space in most restaurants, and the interior design should ensure convenience and comfort, allowing chefs to unleash their creativity in culinary arts."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "6e79739b",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-6e79739b",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-1e2e8c4",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "4a69729e",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-4a69729e",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-76336f52",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "From the receiving and pre-processing area to storage, cooking, plating, and dishwashing, we have arranged each section according to food safety standards, making it convenient for staff during operations."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "4f4e607a",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-4f4e607a",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-721cc71d",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "44359f9d",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-44359f9d",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-6ae82289",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "The food preparation and storage area includes sinks, refrigerators, freezers, and wall-mounted shelves."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "71abbf9c",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-71abbf9c",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-6a862801",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": null
+            },
+            {
+              "type": "image.default",
+              "image": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "2fe24dc5",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-2fe24dc5",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-2a9f3512",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "The main kitchen area features a deep fryer, a 6-burner stove, a griddle, an oven, and an exhaust hood."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "28d69a5b",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-28d69a5b",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-7641b60e",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "21f818f8",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-21f818f8",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-6c8d6f5c",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "The dishwashing area is designed in accordance with the process from the coated spray basin table with litter holes to the washing machine, clean dish table, dish face down shelves,…"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "7d0ef640",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-7d0ef640",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-5134751c",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "6196c49f",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-6196c49f",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-7b80778d",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "The design incorporates natural lighting through a sealed roof, providing a pleasant atmosphere and avoiding the stuffiness of a closed space."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "53a85844",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-53a85844",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-58a760db",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Pastry Area",
+                "In the 18-square-meter space, we have carefully planned and optimized the layout of the pastry equipment, ensuring the smooth process from kneading and shaping dough to proofing, storing, and baking, resulting in aromatic and skillfully crafted pastries by the hands of the chefs, with the assistance of specialized equipment provided by Saigon Horeca."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "6871cb8e",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-6871cb8e",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-1bc0581c",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "3792e45d",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-3792e45d",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-a760642",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "The pastry equipment at The Brix includes ingredient storage cabinets, display refrigerators, dough sheeters, pastry ovens, and other specialized stainless-steel appliances."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "434e5aae",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-434e5aae",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-4864c224",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

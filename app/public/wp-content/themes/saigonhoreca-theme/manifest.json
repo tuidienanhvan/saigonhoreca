@@ -1,0 +1,52 @@
+{
+  "name": "Saigon House - Thiết Kế Thi Công Xây Dựng",
+  "short_name": "Saigon House",
+  "description": "Công ty thiết kế thi công xây dựng dân dụng & công nghiệp. Xây nhà trọn gói, thiết kế kiến trúc, nội thất.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#007d3d",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/wp-content/themes/saigonhoreca-theme/assets/images/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/wp-content/themes/saigonhoreca-theme/assets/images/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/wp-content/themes/saigonhoreca-theme/assets/images/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "construction"],
+  "lang": "vi",
+  "dir": "ltr",
+  "shortcuts": [
+    {
+      "name": "Bảng Giá Xây Nhà",
+      "short_name": "Bảng Giá",
+      "url": "/bang-gia-xay-nha/",
+      "icons": [{"src": "/wp-content/themes/saigonhoreca-theme/assets/images/favicon-32x32.png", "sizes": "32x32"}]
+    },
+    {
+      "name": "Dự Toán Online",
+      "short_name": "Dự Toán",
+      "url": "/du-toan/",
+      "icons": [{"src": "/wp-content/themes/saigonhoreca-theme/assets/images/favicon-32x32.png", "sizes": "32x32"}]
+    },
+    {
+      "name": "Liên Hệ Tư Vấn",
+      "short_name": "Liên Hệ",
+      "url": "/lien-he/",
+      "icons": [{"src": "/wp-content/themes/saigonhoreca-theme/assets/images/favicon-32x32.png", "sizes": "32x32"}]
+    }
+  ]
+}

@@ -1,0 +1,225 @@
+/**
+ * moa-moa — concept slot. OWNS the .pp-split-mmo base layout.
+ * Split layout: circular media (border-radius 50% on desktop) + playful
+ * rounded text card with bubble corner ornaments and dashed-circle motifs.
+ * @package SaigonHoreca
+ */
+
+.pp-split-mmo {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.75rem;
+  align-items: center;
+  position: relative;
+}
+
+@media (min-width: 992px) {
+  .pp-split-mmo {
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+  }
+  .pp-split-mmo--reverse .pp-split-mmo__media { order: 2; }
+  .pp-split-mmo--reverse .pp-split-mmo__body  { order: 1; }
+}
+
+/* ─────────────────────────────────────────────
+   BODY CARD — rounded, playful, with bubble ornaments
+   ───────────────────────────────────────────── */
+.pp-split-mmo__body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  position: relative;
+  z-index: 2;
+  padding: 2.25rem 1.75rem 2.5rem;
+  border-radius: 36px;
+  background: color-mix(in srgb, var(--b1) 35%, transparent);
+  border: 1px solid color-mix(in srgb, var(--gold) 18%, transparent);
+  backdrop-filter: blur(10px) saturate(135%);
+  -webkit-backdrop-filter: blur(10px) saturate(135%);
+  box-shadow:
+    0 18px 50px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 color-mix(in srgb, var(--gold) 14%, transparent);
+}
+
+@media (min-width: 768px) {
+  .pp-split-mmo__body {
+    padding: 2.75rem 2.5rem 3rem;
+    border-radius: 48px;
+  }
+}
+
+.pp-split-mmo__body .pp-text-mmo__divider {
+  align-self: flex-start;
+}
+
+.pp-split-mmo__body .pp-text-mmo__title {
+  font-size: clamp(1.6rem, 2.8vw, 2.35rem);
+  text-align: left;
+  font-style: italic;
+}
+
+.pp-split-mmo__body .pp-text-mmo__body {
+  max-width: none;
+}
+
+/* Bubble corner ornaments — peeking dots on the card */
+.pp-split-mmo__body::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 36px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 18px color-mix(in srgb, var(--gold) 60%, transparent);
+  z-index: 3;
+}
+
+.pp-split-mmo__body::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  right: 28px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--gold) 70%, transparent);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--gold) 50%, transparent);
+  z-index: 3;
+}
+
+/* Tiny eyebrow chip at top of body */
+.pp-split-mmo__body .pp-text-mmo__divider::after {
+  /* already styled in intro.css; here we add the trailing word chip via a wrapper-free pseudo on the title */
+}
+
+.pp-split-mmo__body .pp-text-mmo__title::before {
+  content: "Concept";
+  display: block;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 0.6rem;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.85rem;
+  opacity: 0.9;
+}
+
+/* ─────────────────────────────────────────────
+   MEDIA — circular on desktop, rounded-pill on mobile
+   ───────────────────────────────────────────── */
+.pp-split-mmo__media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 60px;
+  background: var(--b3);
+  border: 3px solid color-mix(in srgb, var(--gold) 28%, transparent);
+  transition: border-color 0.5s var(--ease-spring), transform 0.5s var(--ease-spring);
+  box-shadow:
+    0 28px 64px rgba(0, 0, 0, 0.55),
+    inset 0 0 0 8px color-mix(in srgb, var(--b1) 0%, transparent);
+}
+
+@media (min-width: 992px) {
+  .pp-split-mmo__media {
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+  }
+}
+
+.pp-split-mmo__media::before {
+  content: "";
+  position: absolute;
+  inset: 14px;
+  border-radius: inherit;
+  border: 1px dashed color-mix(in srgb, var(--gold) 35%, transparent);
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.7;
+}
+
+/* Floating orbiting dot */
+.pp-split-mmo__media::after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  right: 22%;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 24px color-mix(in srgb, var(--gold) 70%, transparent);
+  z-index: 3;
+  animation: pp-concept-mmo-bob 4.5s ease-in-out infinite alternate;
+}
+
+@keyframes pp-concept-mmo-bob {
+  from { transform: translateY(0) scale(1); }
+  to   { transform: translateY(8px) scale(0.92); }
+}
+
+.pp-split-mmo__media:hover {
+  border-color: color-mix(in srgb, var(--gold) 55%, transparent);
+  transform: translateY(-4px);
+}
+
+.pp-split-mmo__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(1.08);
+  transition: transform 1s var(--ease-spring);
+}
+
+.pp-split-mmo__media:hover img { transform: scale(1.07); }
+
+/* Outer ambient circle decoration around media */
+.pp-split-mmo__media {
+  isolation: isolate;
+}
+
+@media (min-width: 992px) {
+  .pp-split-mmo {
+    isolation: isolate;
+  }
+  .pp-split-mmo::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    border: 1px dashed color-mix(in srgb, var(--gold) 18%, transparent);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 0;
+    animation: pp-concept-mmo-orbit 30s linear infinite;
+  }
+}
+
+@keyframes pp-concept-mmo-orbit {
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Reverse mirror */
+.pp-split-mmo--reverse .pp-split-mmo__body::before {
+  left: auto;
+  right: 36px;
+}
+
+.pp-split-mmo--reverse .pp-split-mmo__body::after {
+  right: auto;
+  left: 28px;
+}
+
+.pp-split-mmo--reverse .pp-split-mmo__media::after {
+  right: auto;
+  left: 22%;
+}

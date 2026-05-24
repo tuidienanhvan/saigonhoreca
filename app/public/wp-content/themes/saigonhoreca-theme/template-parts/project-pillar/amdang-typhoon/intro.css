@@ -1,0 +1,312 @@
+/**
+ * amdang-typhoon — intro slot. Shared .pp__section + text + gallery styles.
+ * High-End Asymmetric Editorial Layout and 3D Safari Mockup.
+ * @package SaigonHoreca
+ */
+
+.pp--amdang-typhoon .pp__section {
+  position: relative;
+  padding: 5rem 1.25rem;
+  background: var(--b1);
+  overflow: hidden;
+}
+@media (min-width: 768px) { 
+  .pp--amdang-typhoon .pp__section { padding: 7.5rem 2rem; } 
+}
+.pp--amdang-typhoon .pp__section--alt { background: var(--b2); }
+
+.pp--amdang-typhoon .pp__container {
+  max-width: 1140px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.pp--amdang-typhoon .pp__section--alt::before {
+  content: '';
+  position: absolute;
+  top: 25%;
+  right: -10%;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, color-mix(in srgb, var(--gold) 5%, transparent) 0%, transparent 70%);
+  filter: blur(65px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.pp--amdang-typhoon .pp-text-at {
+  max-width: 820px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.pp--amdang-typhoon .pp-text-at--center { align-items: center; text-align: center; }
+
+.pp--amdang-typhoon .pp-text-at__divider {
+  display: block;
+  width: 56px;
+  height: 2px;
+  background: var(--gold);
+  position: relative;
+  box-shadow: 0 0 16px color-mix(in srgb, var(--gold) 50%, transparent);
+}
+.pp--amdang-typhoon .pp-text-at__divider--center { margin: 0 auto; }
+.pp--amdang-typhoon .pp-text-at__divider::before,
+.pp--amdang-typhoon .pp-text-at__divider::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 6px; height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+.pp--amdang-typhoon .pp-text-at__divider::before { left: -14px; }
+.pp--amdang-typhoon .pp-text-at__divider::after { right: -14px; }
+
+.pp--amdang-typhoon .pp-text-at__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.85rem, 3.5vw, 2.85rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--bc);
+}
+.pp--amdang-typhoon .pp-text-at--center .pp-text-at__title { margin: 0 auto; }
+
+.pp--amdang-typhoon .pp-text-at__body {
+  font-size: clamp(0.97rem, 1.1vw, 1.05rem);
+  line-height: 1.85;
+  color: var(--bc2);
+  max-width: 760px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+.pp--amdang-typhoon .pp-text-at--center .pp-text-at__body { margin: 0 auto; }
+.pp--amdang-typhoon .pp-text-at__body p { margin: 0; text-align: left; }
+.pp--amdang-typhoon .pp-text-at--center .pp-text-at__body p { text-align: center; }
+.pp--amdang-typhoon .pp-text-at__body a {
+  color: var(--gold);
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--gold) 40%, transparent);
+  transition: border-color 0.2s;
+}
+.pp--amdang-typhoon .pp-text-at__body a:hover { border-color: var(--gold); }
+.pp--amdang-typhoon .pp-text-at__body strong { color: var(--gold); font-weight: 700; }
+.pp--amdang-typhoon .pp-text-at__body em { color: color-mix(in srgb, var(--bc) 90%, var(--bc2)); font-style: italic; }
+
+/* Gallery */
+.pp--amdang-typhoon .pp-gallery-at {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+@media (min-width: 768px) {
+  .pp--amdang-typhoon .pp-gallery-at { grid-template-columns: repeat(2, 1fr); gap: 1.75rem; }
+  .pp--amdang-typhoon .pp-gallery-at--cols-3 { grid-template-columns: repeat(3, 1fr); }
+  .pp--amdang-typhoon .pp-gallery-at--cols-4 { grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
+  .pp--amdang-typhoon .pp-gallery-at--cols-1 { grid-template-columns: 1fr; }
+}
+.pp--amdang-typhoon .pp-gallery-at__item {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background: var(--b3);
+  border: 1px solid var(--bd);
+  transition: border-color 0.4s var(--ease-spring), transform 0.4s var(--ease-spring);
+}
+.pp--amdang-typhoon .pp-gallery-at__item:hover {
+  border-color: color-mix(in srgb, var(--gold) 45%, transparent);
+  transform: translateY(-4px);
+}
+.pp--amdang-typhoon .pp-gallery-at__item img {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(1.06);
+  transition: transform 0.7s var(--ease-spring);
+}
+.pp--amdang-typhoon .pp-gallery-at__item:hover img { transform: scale(1.05); }
+
+/* ASYMMETRIC EDITORIAL GRID (INTRO SECTION) */
+.pp--amdang-typhoon .pp-section-at-intro {
+  background: var(--b1);
+  padding: clamp(4rem, 10vh, 8rem) 0;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.pp--amdang-typhoon .pp-container-at-intro {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 5vw, 5rem);
+}
+
+.pp--amdang-typhoon .pp-grid-at-intro {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .pp--amdang-typhoon .pp-grid-at-intro {
+    grid-template-columns: 46% 54%;
+    gap: clamp(3.5rem, 6vw, 7rem);
+  }
+}
+
+.pp--amdang-typhoon .pp-text-at-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.pp--amdang-typhoon .pp-badge-at-intro {
+  font-family: var(--font-display), sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: color-mix(in srgb, var(--bc) 45%, transparent);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.pp--amdang-typhoon .pp-badge-accent-at-intro {
+  color: var(--gold);
+  font-weight: 700;
+}
+
+.pp--amdang-typhoon .pp-title-at-intro {
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(1.8rem, 2.8vw, 2.4rem);
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+  color: var(--bc);
+  margin: 0;
+}
+
+.pp--amdang-typhoon .pp-body-at-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.pp--amdang-typhoon .pp-paragraph-at-intro {
+  font-family: var(--font-body), sans-serif;
+  font-size: clamp(0.95rem, 1.05vw, 1.05rem);
+  line-height: 1.8;
+  color: color-mix(in srgb, var(--bc) 75%, transparent);
+  margin: 0;
+  text-align: justify;
+}
+
+/* Dropcap Michelin tinh xảo */
+.pp--amdang-typhoon .pp-paragraph-at-intro--dropcap::first-letter {
+  font-family: var(--font-display), serif;
+  font-size: 3.25rem;
+  font-weight: 700;
+  float: left;
+  line-height: 0.85;
+  margin-right: 0.65rem;
+  margin-top: 0.2rem;
+  color: var(--gold);
+}
+
+/* 3D SAFARI MOCKUP SHOWCASE */
+.pp--amdang-typhoon .pp-media-at-intro {
+  position: relative;
+  width: 100%;
+}
+
+.pp--amdang-typhoon .pp-safari-mockup {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 
+    -20px 20px 50px rgba(0, 0, 0, 0.75),
+    0 10px 30px rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #111;
+  transform: perspective(1000px) rotateY(-8deg) rotateX(4deg) translateZ(0);
+  transition: transform 0.6s var(--ease-spring), border-color 0.6s var(--ease-spring), box-shadow 0.6s var(--ease-spring);
+}
+
+.pp--amdang-typhoon .pp-safari-header {
+  height: 38px;
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  gap: 8px;
+}
+
+.pp--amdang-typhoon .pp-safari-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.pp--amdang-typhoon .pp-safari-dot--red { background: #ff5f56; }
+.pp--amdang-typhoon .pp-safari-dot--yellow { background: #ffbd2e; }
+.pp--amdang-typhoon .pp-safari-dot--green { background: #27c93f; }
+
+.pp--amdang-typhoon .pp-safari-address-bar {
+  flex-grow: 1;
+  max-width: 320px;
+  margin: 0 auto;
+  height: 22px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: monospace;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.35);
+  letter-spacing: 0.05em;
+}
+
+.pp--amdang-typhoon .pp-safari-content {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+
+.pp--amdang-typhoon .pp-safari-content img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(10%) contrast(1.02) brightness(0.85);
+  transition: filter 0.6s var(--ease-spring), transform 0.6s var(--ease-spring);
+}
+
+/* Hover effects */
+.pp--amdang-typhoon .pp-media-at-intro:hover .pp-safari-mockup {
+  transform: perspective(1000px) rotateY(-3deg) rotateX(2deg) translateZ(10px);
+  border-color: color-mix(in srgb, var(--gold) 35%, transparent);
+  box-shadow: 
+    -25px 25px 60px rgba(0, 0, 0, 0.85),
+    0 15px 35px rgba(245, 166, 35, 0.12);
+}
+
+.pp--amdang-typhoon .pp-media-at-intro:hover .pp-safari-content img {
+  filter: grayscale(0%) contrast(1.04) brightness(1.02);
+  transform: scale(1.015);
+}
+
+@media (max-width: 1023px) {
+  .pp--amdang-typhoon .pp-safari-mockup {
+    transform: none !important;
+  }
+}

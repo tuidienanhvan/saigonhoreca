@@ -1,0 +1,75 @@
+/**
+ * Page Heroes (About, Contact, Pricing) — Shared Pure CSS
+ */
+
+/* ═══ About Hero ═══ */
+.sh-about-hero {
+    @apply relative w-full flex items-center justify-center overflow-hidden [min-height:60vh] [background:#111];
+}
+@media (min-width: 768px) { .sh-about-hero {
+    @apply [min-height:70vh];
+} }
+
+.sh-about-hero__image {
+    @apply absolute z-0 [inset:0] [background-size:cover] [background-position:center] [background-repeat:no-repeat];
+}
+.sh-about-hero__overlay {
+    @apply absolute [inset:0] [background:linear-gradient(to_bottom,_rgba(0,0,0,0.3)_0%,_rgba(0,0,0,0.6)_60%,_rgba(0,0,0,0.8)_100%)] [z-index:1];
+}
+
+.sh-about-hero__container {
+    @apply my-0 mx-auto py-24 px-6 relative z-10 text-center flex flex-col items-center gap-4 [max-width:800px];
+}
+
+.sh-about-hero__badge {
+    @apply inline-block py-1.5 px-5 rounded-sm text-xs font-bold uppercase [border:1px_solid_rgba(255,255,255,0.4)] [background:rgba(255,255,255,0.1)] [color:#fff] [letter-spacing:0.2em] [backdrop-filter:blur(8px)] [-webkit-backdrop-filter:blur(8px)];
+}
+
+.sh-about-hero__title {
+    @apply font-black m-0 uppercase tracking-tight leading-none [font-size:clamp(2.5rem,_6vw,_4.5rem)] [color:#fff] [text-shadow:0_2px_20px_rgba(0,0,0,0.3)];
+}
+
+.sh-about-hero__subtitle {
+    @apply font-light m-0 italic tracking-wider [font-size:clamp(1rem,_2.5vw,_1.375rem)] [color:rgba(255,255,255,0.85)];
+}
+
+/* ═══ Contact Hero ═══ */
+.sh-contact-hero {
+    @apply relative overflow-hidden [padding:8rem_0] [background:#111827];
+}
+@media (min-width: 1024px) { .sh-contact-hero {
+    @apply [padding:12rem_0];
+} }
+
+.sh-contact-hero__image {
+    @apply absolute z-0 opacity-40 [inset:0] [background-size:cover] [background-position:center];
+}
+.sh-contact-hero__fade {
+    @apply absolute z-0 [inset:0] [background:linear-gradient(to_top,_#111827,_rgba(17,24,39,0.6),_rgba(17,24,39,0.3))];
+}
+
+.sh-contact-hero__container {
+    @apply my-0 mx-auto py-0 px-4 relative z-10 text-center [max-width:1200px];
+}
+
+.sh-contact-hero__label {
+    @apply block font-bold tracking-widest uppercase text-sm mb-4 [color:var(--secondary)];
+}
+
+.sh-contact-hero__title {
+    @apply text-4xl font-black [color:#fff] [margin:0_0_1.5rem] [line-height:1.15];
+}
+@media (min-width: 768px) { .sh-contact-hero__title {
+    @apply text-5xl;
+} }
+@media (min-width: 1024px) { .sh-contact-hero__title {
+    @apply [font-size:3.75rem];
+} }
+
+.sh-contact-hero__title-accent {
+    @apply [background:linear-gradient(to_right,_var(--brand),_var(--secondary))] [-webkit-background-clip:text] [-webkit-text-fill-color:transparent] [background-clip:text];
+}
+
+.sh-contact-hero__desc {
+    @apply text-lg my-0 mx-auto leading-relaxed [color:#d1d5db] [max-width:42rem];
+}

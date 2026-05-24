@@ -1,0 +1,137 @@
+/**
+ * Desktop Navigation + Walker — Pure CSS
+ */
+
+/* ── Nav Container ── */
+.sh-nav {
+    @apply hidden items-center justify-center min-w-0 max-w-full overflow-visible relative z-10;
+}
+@media (min-width: 1024px) { .sh-nav {
+    @apply flex;
+} }
+
+.sh-nav__list {
+    @apply flex items-center justify-center flex-nowrap gap-1 list-none m-0 p-0;
+}
+@media (min-width: 1024px) { .sh-nav__list {
+    @apply gap-2;
+} }
+@media (min-width: 1280px) { .sh-nav__list {
+    @apply gap-3;
+} }
+
+/* ── Top-Level Nav Item ── */
+.sh-nav-item {
+    @apply relative h-full flex items-center;
+}
+.sh-nav-item:hover {
+    @apply [z-index:60];
+}
+
+.sh-nav-item__link {
+    @apply p-2 font-bold no-underline flex items-center gap-0.5 uppercase tracking-wide whitespace-nowrap transition-colors duration-200 [font-size:clamp(10px,_0.9vw,_14px)] [padding-left:clamp(4px,_0.5vw,_12px)] [padding-right:clamp(4px,_0.5vw,_12px)] [color:var(--text-1-2)];
+}
+
+.sh-nav-item__link:hover {
+    @apply [color:var(--brand)];
+}
+
+.sh-nav-item__chevron {
+    @apply ml-0.5 inline-block transition-transform duration-300;
+}
+.sh-nav-item:hover .sh-nav-item__chevron {
+    @apply [transform:rotate(180deg)];
+}
+.sh-nav-item__chevron-icon {
+    @apply w-3 h-3 opacity-50;
+}
+.sh-nav-item:hover .sh-nav-item__chevron-icon {
+    @apply opacity-100;
+}
+
+/* ── Dropdown (Level 2) ── */
+.sh-dropdown {
+    @apply absolute opacity-0 invisible z-50 overflow-visible text-left [top:100%] [background:var(--bg-card)] [box-shadow:0_20px_40px_rgba(0,0,0,0.12)] [border-radius:var(--radius)] [border:1px_solid_var(--border-default-light)] [transform:translateY(0.5rem)] [transition:opacity_0.2s,_transform_0.2s,_visibility_0.2s];
+}
+
+.sh-nav-item:hover > .sh-dropdown {
+    @apply opacity-100 visible [transform:translateY(0)];
+}
+
+.sh-dropdown--standard {
+    @apply [width:260px];
+}
+.sh-dropdown--mega {
+    @apply [width:600px];
+}
+.sh-dropdown--left {
+    @apply [left:0] [transform-origin:top_left];
+}
+.sh-dropdown--right {
+    @apply [right:0] [transform-origin:top_right];
+}
+
+.sh-dropdown__list {
+    @apply relative list-none m-0 p-0 overflow-hidden [border-radius:var(--radius)];
+}
+.sh-dropdown__list--stack {
+    @apply py-2 px-0;
+}
+.sh-dropdown__list--grid {
+    @apply grid p-3 [grid-template-columns:1fr_1fr] [gap:0.5rem_0.5rem];
+}
+
+/* ── Dropdown Item ── */
+.sh-dropdown-item {
+    @apply block;
+}
+.sh-dropdown-item--bordered {
+    @apply [border-bottom:1px_solid_var(--border-default-light)];
+}
+.sh-dropdown-item--bordered:last-child {
+    @apply [border-bottom:none];
+}
+
+.sh-dropdown-item__link {
+    @apply block py-2 px-4 text-sm font-medium no-underline rounded-lg overflow-hidden whitespace-nowrap my-0.5 mx-1 [color:var(--text-1-2)] [transition:color_0.2s,_background-color_0.2s] [text-overflow:ellipsis];
+}
+
+.sh-dropdown-item__link:hover {
+    @apply [color:var(--brand)] [background:color-mix(in_srgb,_var(--brand)_5%,_transparent)];
+}
+
+/* ── Flyout (Level 3+) ── */
+.sh-flyout {
+    @apply absolute rounded-lg opacity-0 invisible z-50 py-2 px-0 list-none m-0 [top:0] [width:14rem] [background:var(--bg-card)] [box-shadow:0_4px_12px_rgba(0,0,0,0.1)] [border:1px_solid_var(--border-default-light)] [transition:opacity_0.2s,_transform_0.2s,_visibility_0.2s];
+}
+
+.sh-dropdown-item:hover > .sh-flyout {
+    @apply opacity-100 visible [transform:translateX(0)];
+}
+
+.sh-flyout--right {
+    @apply ml-1 [left:100%] [transform-origin:top_left] [transform:translateX(0.25rem)];
+}
+.sh-flyout--left {
+    @apply mr-1 [right:100%] [transform-origin:top_right] [transform:translateX(-0.25rem)];
+}
+
+/* ── Dark Mode ── */
+.dark .sh-nav-item__link {
+    @apply [color:var(--text-1-2)];
+}
+.dark .sh-dropdown {
+    @apply [background:var(--bg-card)] [border-color:var(--border-default)];
+}
+.dark .sh-dropdown-item--bordered {
+    @apply [border-bottom-color:var(--border-default)];
+}
+.dark .sh-dropdown-item__link {
+    @apply [color:var(--text-1-2)];
+}
+.dark .sh-dropdown-item__link:hover {
+    @apply [color:var(--brand)] [background:color-mix(in_srgb,_var(--brand)_8%,_transparent)];
+}
+.dark .sh-flyout {
+    @apply [background:var(--bg-card)] [border-color:var(--border-default)];
+}

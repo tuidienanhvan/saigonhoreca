@@ -1,0 +1,160 @@
+/**
+ * heiwa-sushi-omakase — hero slot.
+ * Minimalist Japanese Zen aesthetic with subtle gold and silver tones.
+ * @package SaigonHoreca
+ */
+
+.pp-hero-hwa {
+  position: relative;
+  width: 100%;
+  min-height: 88vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--b1);
+  isolation: isolate;
+}
+@media (max-width: 768px) { .pp-hero-hwa { min-height: 70vh; } }
+
+.pp-hero-hwa__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-size: cover !important;
+  background-position: center !important;
+  filter: saturate(0.95) brightness(0.8);
+}
+.pp-hero-hwa__media img,
+.pp-hero-hwa__media iframe,
+.pp-hero-hwa__media video {
+  width: 100%; height: 100%; object-fit: cover; display: block; border: none;
+}
+
+.pp-hero-hwa__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    radial-gradient(ellipse at 50% 70%,
+      color-mix(in srgb, var(--gold) 4%, transparent) 0%,
+      transparent 60%),
+    linear-gradient(180deg,
+      color-mix(in srgb, var(--b1) 40%, transparent) 0%,
+      color-mix(in srgb, var(--b1) 90%, transparent) 100%);
+  pointer-events: none;
+}
+
+/* Subtle Zen ambient glows */
+.pp-hero-hwa::before,
+.pp-hero-hwa::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 1;
+}
+.pp-hero-hwa::before {
+  top: -8%; left: -8%;
+  width: 460px; height: 460px;
+  background: radial-gradient(circle, color-mix(in srgb, var(--gold) 6%, transparent) 0%, transparent 70%);
+  opacity: 0.5;
+}
+.pp-hero-hwa::after {
+  bottom: -10%; right: -6%;
+  width: 520px; height: 520px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.03) 0%, transparent 70%);
+  opacity: 0.4;
+}
+
+.pp-hero-hwa__content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1100px;
+  padding: 0 1.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+.pp-hero-hwa__content::before {
+  content: '';
+  width: 42px;
+  height: 1px;
+  background: var(--gold);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--gold) 40%, transparent);
+}
+
+.pp-hero-hwa__subhead {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.pp-hero-hwa__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 7vw, 5rem);
+  font-weight: 800;
+  line-height: 1.05;
+  color: var(--bc);
+  letter-spacing: 0.01em;
+  max-width: 22ch;
+  text-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.7),
+    0 0 40px color-mix(in srgb, var(--gold) 10%, transparent);
+}
+
+.pp-hero-hwa__subtitle {
+  margin: 0;
+  max-width: 640px;
+  font-size: clamp(0.97rem, 1.1vw, 1.08rem);
+  line-height: 1.8;
+  color: var(--bc2);
+}
+
+/* Cinematic Vertical Scroll Indicator */
+.pp-hero-hwa__scroll {
+  position: absolute;
+  bottom: clamp(1.5rem, 4vh, 2.5rem);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 2;
+}
+
+.pp-hero-hwa__scroll-line {
+  width: 1px;
+  height: 60px;
+  background: color-mix(in srgb, var(--bc) 15%, transparent);
+  position: relative;
+  overflow: hidden;
+  display: block;
+}
+
+.pp-hero-hwa__scroll-line::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 25px;
+  background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+  animation: hwa-scroll-drop 2.2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+@keyframes hwa-scroll-drop {
+  0% { top: -25px; }
+  100% { top: 60px; }
+}
+

@@ -1,0 +1,44 @@
+/**
+ * Footer — Pure CSS
+ */
+
+/* ── Footer Container ── */
+.sh-footer{padding-inline:calc(var(--spacing) * 0);padding-top:calc(var(--spacing) * 12);padding-bottom:calc(var(--spacing) * 6);color:var(--text-1);background:var(--bg);border-top:1px solid var(--border-default)}.sh-footer__container{margin-inline:auto;margin-block:calc(var(--spacing) * 0);max-width:1200px;padding-inline:calc(var(--spacing) * 4);padding-block:calc(var(--spacing) * 0)}.sh-footer__grid{margin-bottom:calc(var(--spacing) * 10);gap:calc(var(--spacing) * 12);grid-template-columns:1fr;display:grid}
+
+@media (min-width: 768px) {.sh-footer__grid{grid-template-columns:1fr 1fr}
+}
+
+@media (min-width: 1024px) {.sh-footer__grid{grid-template-columns:1fr 1fr 1fr 1fr}
+}/* ── Company Info ── */
+.sh-footer__company{gap:calc(var(--spacing) * 6);flex-direction:column;display:flex}.sh-footer__logo-wrap{align-items:center;gap:calc(var(--spacing) * 3);display:flex}.sh-footer__logo-img{height:calc(var(--spacing) * 12);width:calc(var(--spacing) * 12);border-radius:var(--radius-lg);object-fit:contain}.sh-footer__company-desc{margin:calc(var(--spacing) * 0);font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height));--tw-leading:var(--leading-relaxed);line-height:var(--leading-relaxed);color:var(--text-1-muted)}/* ── Social Buttons ── */
+.sh-footer__socials{gap:calc(var(--spacing) * 3);display:flex}.sh-footer__social-btn{height:calc(var(--spacing) * 10);width:calc(var(--spacing) * 10);border-radius:var(--radius-full);background:#fff;justify-content:center;align-items:center;transition:transform .2s,box-shadow .2s;display:flex;overflow:hidden;box-shadow:0 1px 3px #0000001a}.sh-footer__social-btn:hover{transform:scale(1.1)translateY(-2px);box-shadow:0 4px 12px #0003}.sh-footer__social-img{object-fit:cover;width:100%;height:100%}/* ── Headings ── */
+.sh-footer__heading{font-size:var(--text-lg);line-height:var(--tw-leading,var(--text-lg--line-height));--tw-font-weight:var(--font-weight-bold);font-weight:var(--font-weight-bold);--tw-tracking:var(--tracking-wider);letter-spacing:var(--tracking-wider);color:var(--text-1);text-transform:uppercase;margin:0 0 1.5rem;display:inline-block;position:relative}
+
+.sh-footer__heading::after {
+    @apply [position:absolute] [bottom:-0.5rem] [left:0] [width:2rem] [height:0.25rem] [background:var(--secondary)] [border-radius:2px];
+    content: '';
+}.sh-footer__heading--accent{color:var(--secondary)}
+
+.sh-footer__heading--accent::after {
+    @apply [display:none];
+}
+
+/* ── Link Lists ── */
+.sh-footer__links-col {
+    /* Column wrapper */
+}.sh-footer__link-list{margin:calc(var(--spacing) * 0);margin-top:calc(var(--spacing) * 6);gap:calc(var(--spacing) * 3);padding:calc(var(--spacing) * 0);flex-direction:column;list-style-type:none;display:flex}.sh-footer__link{font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height));color:var(--text-1-muted);text-decoration-line:none;transition:color .2s,padding-left .2s;display:block}.sh-footer__link:hover{padding-left:calc(var(--spacing) * 2);color:var(--text-1)}/* ── Contact Info ── */
+.sh-footer__contact-list{margin:calc(var(--spacing) * 0);gap:calc(var(--spacing) * 6);padding:calc(var(--spacing) * 0);font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height));color:var(--text-1-muted);flex-direction:column;list-style-type:none;display:flex}.sh-footer__contact-item{gap:calc(var(--spacing) * 4);display:flex}.sh-footer__contact-icon{height:calc(var(--spacing) * 10);width:calc(var(--spacing) * 10);border-radius:var(--radius-full);color:var(--text-1-muted);transition-property:all;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration));--tw-duration:.2s;background:var(--bg-card);border:1px solid var(--border-default);flex-shrink:0;justify-content:center;align-items:center;transition-duration:.2s;display:flex}.sh-footer__contact-item:hover .sh-footer__contact-icon{border-color:var(--secondary)}.sh-footer__icon-svg{height:calc(var(--spacing) * 5);width:calc(var(--spacing) * 5)}.sh-footer__contact-name{margin-bottom:calc(var(--spacing) * 1);font-size:var(--text-base);line-height:var(--tw-leading,var(--text-base--line-height));color:var(--text-1);transition-property:color,background-color,border-color,outline-color,text-decoration-color,fill,stroke,--tw-gradient-from,--tw-gradient-via,--tw-gradient-to;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration));--tw-duration:.2s;transition-duration:.2s;display:block}.sh-footer__contact-item:hover .sh-footer__contact-name{color:var(--secondary)}.sh-footer__contact-detail{--tw-leading:var(--leading-relaxed);line-height:var(--leading-relaxed);opacity:.8;display:block}.sh-footer__contact-highlight{font-size:var(--text-lg);line-height:var(--tw-leading,var(--text-lg--line-height));color:var(--text-1);transition-property:color,background-color,border-color,outline-color,text-decoration-color,fill,stroke,--tw-gradient-from,--tw-gradient-via,--tw-gradient-to;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration));--tw-duration:.2s;transition-duration:.2s}.sh-footer__contact-item:hover .sh-footer__contact-highlight{color:var(--secondary)}.sh-footer__contact-sub{font-size:var(--text-xs);line-height:var(--tw-leading,var(--text-xs--line-height));opacity:.6;display:block}.sh-footer__contact-link{--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium);color:var(--text-1);transition-property:color,background-color,border-color,outline-color,text-decoration-color,fill,stroke,--tw-gradient-from,--tw-gradient-via,--tw-gradient-to;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration));--tw-duration:.2s;text-decoration-line:none;transition-duration:.2s;display:block}.sh-footer__contact-link:hover{color:var(--secondary)}.sh-footer__contact-sub-link{font-size:var(--text-xs);line-height:var(--tw-leading,var(--text-xs--line-height));color:var(--text-1-muted);transition-property:color,background-color,border-color,outline-color,text-decoration-color,fill,stroke,--tw-gradient-from,--tw-gradient-via,--tw-gradient-to;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration));--tw-duration:.2s;text-decoration-line:none;transition-duration:.2s;display:block}.sh-footer__contact-sub-link:hover{color:var(--text-1)}.sh-footer__contact-mst{font-size:var(--text-xs);line-height:var(--tw-leading,var(--text-xs--line-height));--tw-tracking:var(--tracking-widest);letter-spacing:var(--tracking-widest);text-transform:uppercase;opacity:.5;display:block}/* ── Copyright ── */
+.sh-footer__copyright{margin-top:calc(var(--spacing) * 6);justify-content:space-between;align-items:center;gap:calc(var(--spacing) * 4);padding-top:calc(var(--spacing) * 4);font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height));color:var(--text-1-3);border-top:1px solid var(--border-default);flex-direction:column;display:flex}
+
+@media (min-width: 768px) {.sh-footer__copyright{flex-direction:row}
+}.sh-footer__copyright p{margin:calc(var(--spacing) * 0);--tw-leading:1;line-height:1}.sh-footer__copyright-links{gap:calc(var(--spacing) * 4);display:flex}.sh-footer__copyright-link{color:var(--text-1-3);transition-property:color,background-color,border-color,outline-color,text-decoration-color,fill,stroke,--tw-gradient-from,--tw-gradient-via,--tw-gradient-to;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration));--tw-duration:.2s;text-decoration-line:none;transition-duration:.2s}.sh-footer__copyright-link:hover{color:var(--secondary)}
+
+/* T-019: color contrast fixes
+   - heading--accent: yellow on light = 1.66 → brand green = 5.0+
+   - contact-detail / contact-sub / contact-mst: opacity-dimmed gray fails
+     ratio. Restore full opacity + darker default text color. */
+.sh-footer__heading--accent { color: var(--brand); }
+.dark .sh-footer__heading--accent { color: var(--brand-light); }
+.sh-footer__contact-detail { opacity: 1; color: var(--text-1-2); }
+.sh-footer__contact-sub { opacity: 1; color: var(--text-1-2); }
+.sh-footer__contact-mst { opacity: 0.9; color: var(--text-1-2); }

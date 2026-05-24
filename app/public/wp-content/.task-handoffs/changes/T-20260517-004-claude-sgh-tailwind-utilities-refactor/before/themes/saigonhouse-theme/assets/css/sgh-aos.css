@@ -1,0 +1,13 @@
+/**
+ * SGH AOS — DISABLED (T-015 follow-up)
+ *
+ * Animate-on-scroll was hiding content behind opacity:0 / transform
+ * transitions and creating "empty middle" jank during page load. User
+ * asked to remove all AOS-driven animations. This file is now a no-op
+ * placeholder so `_imports-critical.css` keeps its `@import` line valid
+ * without re-shipping any animation rules.
+ *
+ * Side note: `data-aos="..."` attributes still exist in PHP templates
+ * but have no styling effect without these rules. They're harmless and
+ * can be cleaned up incrementally in a content-side task.
+ */

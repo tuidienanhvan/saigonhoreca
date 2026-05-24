@@ -1,0 +1,588 @@
+# Copyright (C) 2026 Saigon Horeca
+# This file is distributed under the same license as the Saigon Horeca theme.
+msgid ""
+msgstr ""
+"Project-Id-Version: Saigon Horeca 1.0\n"
+"Report-Msgid-Bugs-To: https://saigonhoreca.vn\n"
+"POT-Creation-Date: 2026-05-22 14:59+0700\n"
+"PO-Revision-Date: 2026-05-22 14:59+0700\n"
+"Last-Translator: Saigon Horeca Team <contact@saigonhoreca.com>\n"
+"Language-Team: Vietnamese <contact@saigonhoreca.com>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Manual\n"
+
+#: header.php:71
+msgid "Chuyển đến nội dung chính"
+msgstr ""
+
+#: header.php:73
+msgid "Header chính của website"
+msgstr ""
+
+#: header.php:97
+msgid "Chuyển sang Tiếng Việt"
+msgstr ""
+
+#: header.php:97
+msgid "Switch to English"
+msgstr ""
+
+#: header.php:102
+msgid "Mở menu điều hướng"
+msgstr ""
+
+#: template-parts/header/logo.php:39
+msgid "Trang chủ"
+msgstr ""
+
+#: template-parts/header/navigation.php:32
+msgid "Điều hướng chính"
+msgstr ""
+
+#: template-parts/header/navigation.php:49
+msgid "Dự Án"
+msgstr ""
+
+#: template-parts/header/navigation.php:50
+msgid "Sản Phẩm"
+msgstr ""
+
+#: template-parts/header/navigation.php:51
+msgid "Tin Tức"
+msgstr ""
+
+#: template-parts/header/navigation.php:52
+msgid "Liên hệ"
+msgstr ""
+
+#: template-parts/header/top-bar.php:55
+msgid "Tìm kiếm..."
+msgstr ""
+
+#: template-parts/header/top-bar.php:56
+msgid "Tìm kiếm"
+msgstr ""
+
+#: template-parts/header/top-bar.php:43
+msgid "Hotline:"
+msgstr ""
+
+#: template-parts/header/top-bar.php:61
+msgid "LIÊN HỆ NGAY"
+msgstr ""
+
+#: template-parts/header/mobile-menu.php:48
+#: template-parts/header/top-bar.php:55
+msgid "Tìm kiếm..."
+msgstr ""
+
+#: template-parts/header/mobile-menu.php:113
+msgid "Thông tin liên hệ"
+msgstr ""
+
+#: template-parts/header/mobile-menu.php:121
+msgid "Hotline"
+msgstr ""
+
+#: template-parts/header/mobile-menu.php:136
+msgid "Kết nối"
+msgstr ""
+
+#: template-parts/header/mobile-menu.php:140
+msgid "Facebook"
+msgstr ""
+
+#: template-parts/header/mobile-menu.php:145
+msgid "YouTube"
+msgstr ""
+
+#: template-parts/header/mobile-menu.php:150
+msgid "Zalo"
+msgstr ""
+
+#: template-parts/header/mobile-menu.php:158
+msgid "SAIGON HORECA."
+msgstr ""
+
+#: template-parts/header/mobile-menu.php:80
+msgid "Dự Án"
+msgstr ""
+
+#: template-parts/header/mobile-menu.php:81
+msgid "Sản Phẩm"
+msgstr ""
+
+#: template-parts/header/mobile-menu.php:82
+msgid "Tin Tức"
+msgstr ""
+
+#: template-parts/header/mobile-menu.php:83
+msgid "Liên hệ"
+msgstr ""
+
+#: template-parts/footer/quick-links.php:37
+msgid "Dịch Vụ"
+msgstr ""
+
+#: template-parts/footer/quick-links.php:47
+msgid "Hỗ Trợ"
+msgstr ""
+
+#: template-parts/footer/quick-links.php:9
+msgid "Thiết bị bếp công nghiệp"
+msgstr ""
+
+#: template-parts/footer/quick-links.php:10
+msgid "Thiết bị quầy bar cafe"
+msgstr ""
+
+#: template-parts/footer/quick-links.php:11
+msgid "Thiết bị lạnh công nghiệp"
+msgstr ""
+
+#: template-parts/footer/quick-links.php:12
+msgid "Hệ thống hút khói"
+msgstr ""
+
+#: template-parts/footer/quick-links.php:13
+msgid "Máy rửa ly chén"
+msgstr ""
+
+#: template-parts/footer/quick-links.php:27
+msgid "Về Saigon Horeca"
+msgstr ""
+
+#: template-parts/footer/quick-links.php:28
+msgid "Dự án tiêu biểu"
+msgstr ""
+
+#: template-parts/footer/quick-links.php:29
+msgid "Sản phẩm"
+msgstr ""
+
+#: template-parts/footer/quick-links.php:30
+msgid "Tin tức & sự kiện"
+msgstr ""
+
+#: template-parts/footer/quick-links.php:31
+msgid "Liên hệ tư vấn"
+msgstr ""
+
+#: template-parts/footer/contact-info.php:5
+msgid "LIÊN HỆ"
+msgstr ""
+
+#: template-parts/footer/contact-info.php:21
+msgid "Hotline:"
+msgstr ""
+
+#: template-parts/footer/contact-info.php:23
+msgid "Tel:"
+msgstr ""
+
+#: template-parts/footer/contact-info.php:47
+msgid "MST:"
+msgstr ""
+
+#: template-parts/footer/mobile-nav.php:14
+msgid "Trang chủ"
+msgstr ""
+
+#: template-parts/footer/mobile-nav.php:20
+msgid "Dự Án"
+msgstr ""
+
+#: template-parts/footer/mobile-nav.php:26
+msgid "Sản Phẩm"
+msgstr ""
+
+#: template-parts/footer/mobile-nav.php:32
+msgid "Tin Tức"
+msgstr ""
+
+#: template-parts/footer/mobile-nav.php:38
+msgid "Liên hệ"
+msgstr ""
+
+#: template-parts/footer/floating-buttons.php:18
+msgid "Cuộn lên đầu trang"
+msgstr ""
+
+#. translators: %s: phone number
+#: template-parts/footer/floating-buttons.php:30
+msgid "Gọi hotline %s"
+msgstr ""
+
+#: template-parts/footer/floating-buttons.php:37
+msgid "Chat qua Zalo"
+msgstr ""
+
+#: template-parts/footer/floating-buttons.php:38
+msgid "Chat Zalo"
+msgstr ""
+
+#: template-parts/footer/floating-buttons.php:44
+msgid "Theo dõi Facebook"
+msgstr ""
+
+#: template-parts/home/hero.php:47
+msgid "Slider giới thiệu Saigon Horeca"
+msgstr ""
+
+#: template-parts/home/hero.php:75
+msgid "Slide trước"
+msgstr ""
+
+#: template-parts/home/hero.php:80
+msgid "Slide tiếp theo"
+msgstr ""
+
+#. translators: %d: slide number
+#: template-parts/home/hero.php:90
+msgid "Đến slide %d"
+msgstr ""
+
+#. translators: %d: slide number
+#: template-parts/home/hero.php:91
+msgid "Slide %d"
+msgstr ""
+
+#: template-parts/home/services.php:75
+msgid "Dịch vụ Saigon Horeca"
+msgstr ""
+
+#: template-parts/home/services.php:21
+msgid "Saigon Horeca"
+msgstr ""
+
+#: template-parts/home/services.php:22
+msgid "THIẾT BỊ BẾP CÔNG NGHIỆP CAO CẤP"
+msgstr ""
+
+#: template-parts/home/services.php:28
+msgid "Liên Hệ Ngay Hôm Nay"
+msgstr ""
+
+#: template-parts/home/services.php:35
+msgid "Dịch vụ chính"
+msgstr ""
+
+#: template-parts/home/services.php:36
+msgid "CẢI TẠO BẾP NHÀ HÀNG HIỆN ĐẠI HIỆU QUẢ"
+msgstr ""
+
+#: template-parts/home/services.php:49
+msgid "HVAC chuyên dụng"
+msgstr ""
+
+#: template-parts/home/services.php:50
+msgid "GIẢI PHÁP HỆ THỐNG HÚT KHÓI & CẤP KHÍ TƯƠI CAO CẤP"
+msgstr ""
+
+#: template-parts/home/services.php:62
+msgid "Bespoke Bar"
+msgstr ""
+
+#: template-parts/home/services.php:63
+msgid "TƯ VẤN THIẾT KẾ QUẦY BAR"
+msgstr ""
+
+#: template-parts/home/why-choose.php:22
+msgid "Tại sao chọn Saigon Horeca"
+msgstr ""
+
+#: template-parts/home/why-choose.php:30
+msgid "Why Saigon Horeca"
+msgstr ""
+
+#: template-parts/home/why-choose.php:32
+msgid "Tại sao nên chọn thiết bị bếp Saigon Horeca?"
+msgstr ""
+
+#: template-parts/home/why-choose.php:38
+msgid "Kinh nghiệm tư vấn thiết kế bếp nhà hàng cho đối tác lớn"
+msgstr ""
+
+#: template-parts/home/why-choose.php:57
+msgid "Dịch vụ toàn diện và chuyên nghiệp"
+msgstr ""
+
+#: template-parts/home/why-choose.php:64
+msgid "Thiết bị bếp uy tín, chất lượng cao"
+msgstr ""
+
+#: template-parts/home/work-process.php:33
+msgid "Quy trình làm việc Saigon Horeca"
+msgstr ""
+
+#: template-parts/home/work-process.php:43
+msgid "Quy Trình Làm Việc"
+msgstr ""
+
+#: template-parts/home/work-process.php:17
+msgid "Tư Vấn"
+msgstr ""
+
+#: template-parts/home/work-process.php:22
+msgid "Thiết Kế"
+msgstr ""
+
+#: template-parts/home/work-process.php:27
+msgid "Thi Công"
+msgstr ""
+
+#: template-parts/home/consult-cta.php:21
+msgid "Tư vấn giải pháp hệ thống bếp công nghiệp"
+msgstr ""
+
+#: template-parts/home/consult-cta.php:23
+msgid "Chúng tôi tự tin mang đến dịch vụ tư vấn giải pháp tối ưu, cung cấp thiết bị bếp công nghiệp cho các quầy bar và nhà bếp công nghiệp trong ngành công nghiệp dịch vụ lưu trú như khách sạn, khu nghỉ dưỡng và nhà hàng."
+msgstr ""
+
+#: template-parts/home/consult-cta.php:27
+msgid "Đặt lịch hẹn"
+msgstr ""
+
+#: template-parts/home/testimonials.php:44
+msgid "Cảm nhận khách hàng"
+msgstr ""
+
+#: template-parts/home/testimonials.php:49
+msgid "Cảm nhận từ khách hàng"
+msgstr ""
+
+#: template-parts/home/testimonials.php:51
+msgid "Xem thêm reviews của khách hàng về <strong>SAIGON HORECA</strong> tại <a href=\"%s\" target=\"_blank\" rel=\"noopener\">Facebook Reviews</a>"
+msgstr ""
+
+#: template-parts/home/latest-news.php:35
+msgid "Tin tức mới"
+msgstr ""
+
+#: template-parts/home/latest-news.php:38
+msgid "Xem tất cả"
+msgstr ""
+
+#: template-parts/home/latest-news.php:64
+msgid "Đọc chi tiết"
+msgstr ""
+
+#: template-parts/home/featured-projects.php:74
+msgid "Những dự án tiêu biểu của Saigon Horeca"
+msgstr ""
+
+#: template-parts/home/featured-projects.php:80
+msgid "Xem tất cả dự án"
+msgstr ""
+
+#: template-parts/home/featured-projects.php:62
+msgid "Khách Hàng"
+msgstr ""
+
+#: template-parts/home/featured-projects.php:64
+msgid "Thiết Kế"
+msgstr ""
+
+#: template-parts/home/partners.php:19
+msgid "Đối tác của Saigon Horeca"
+msgstr ""
+
+#: template-parts/about/hero.php:14
+msgid "Về Saigon Horeca — hero"
+msgstr ""
+
+#: template-parts/about/hero.php:19
+msgid "Về chúng tôi"
+msgstr ""
+
+#: template-parts/about/hero.php:20
+msgid "Về Saigon Horeca"
+msgstr ""
+
+#: template-parts/about/hero.php:21
+msgid "Giải pháp thiết bị bếp công nghiệp và quầy bar chuyên nghiệp hàng đầu tại Việt Nam."
+msgstr ""
+
+#: template-parts/about/hero.php:27
+msgid "Xem video giới thiệu Saigon Horeca"
+msgstr ""
+
+#: template-parts/about/introduction.php:102
+msgid "Giới thiệu Saigon Horeca"
+msgstr ""
+
+#: template-parts/about/introduction.php:108
+msgid "Chúng tôi là ai"
+msgstr ""
+
+#: template-parts/about/introduction.php:110
+msgid "Saigon Horeca — Giải pháp bếp công nghiệp & quầy bar chuyên nghiệp"
+msgstr ""
+
+#: template-parts/about/introduction.php:34
+msgid "Sự mệnh"
+msgstr ""
+
+#: template-parts/about/introduction.php:55
+msgid "Sản phẩm đa dạng"
+msgstr ""
+
+#: template-parts/about/introduction.php:74
+msgid "Chất lượng đảm bảo"
+msgstr ""
+
+#: template-parts/about/introduction.php:97
+msgid "Đội ngũ chuyên nghiệp"
+msgstr ""
+
+#: template-parts/about/partners.php:24
+msgid "Đối tác và dự án"
+msgstr ""
+
+#: template-parts/about/partners.php:29
+msgid "Được tin dùng bởi"
+msgstr ""
+
+#: template-parts/about/partners.php:30
+msgid "Đối tác tin cậy của chúng tôi"
+msgstr ""
+
+#: template-parts/about/partners.php:129
+msgid "Dương Văn Giáp"
+msgstr ""
+
+#: template-parts/about/partners.php:130
+msgid "Sáng lập — Saigon Horeca"
+msgstr ""
+
+#: template-parts/about/partners.php:136
+msgid "10+"
+msgstr ""
+
+#: template-parts/about/partners.php:137
+msgid "Năm kinh nghiệm"
+msgstr ""
+
+#: template-parts/about/partners.php:141
+msgid "Dự án hoàn thành"
+msgstr ""
+
+#: template-parts/about/partners.php:145
+msgid "Đối tác quốc tế"
+msgstr ""
+
+#: template-parts/about/testimonials.php:25
+msgid "Nhận xét từ khách hàng"
+msgstr ""
+
+#: template-parts/about/testimonials.php:30
+msgid "Khách hàng nói gì"
+msgstr ""
+
+#: template-parts/about/values.php:35
+msgid "Giá trị cốt lõi Saigon Horeca"
+msgstr ""
+
+#: template-parts/about/values.php:41
+msgid "Giải pháp của chúng tôi"
+msgstr ""
+
+#: template-parts/about/values.php:20
+msgid "Sáng tạo"
+msgstr ""
+
+#: template-parts/about/values.php:25
+msgid "Nghệ thuật"
+msgstr ""
+
+#: template-parts/about/values.php:30
+msgid "Tinh tế"
+msgstr ""
+
+#: template-parts/about/values.php:69
+msgid "Liên hệ ngay"
+msgstr ""
+
+#: template-parts/about/values.php:100
+msgid "Đam mê sáng tạo trong hành trình khám phá"
+msgstr ""
+
+#: template-parts/about/cta.php:32
+msgid "CTA và đánh giá bổ sung"
+msgstr ""
+
+#: template-parts/about/cta.php:61
+msgid "Đồng hành cùng Saigon Horeca"
+msgstr ""
+
+#: template-parts/about/cta.php:68
+msgid "Liên hệ tư vấn"
+msgstr ""
+
+#: template-parts/contact/hero.php:14
+msgid "Liên hệ Saigon Horeca"
+msgstr ""
+
+#: template-parts/contact/hero.php:18
+msgid "Liên hệ chúng tôi"
+msgstr ""
+
+#: template-parts/contact/hero.php:19
+msgid "Liên hệ Saigon Horeca"
+msgstr ""
+
+#: template-parts/contact/map.php:13
+msgid "Địa chỉ và bản đồ"
+msgstr ""
+
+#: template-parts/contact/map.php:19
+msgid "Bản đồ đường đi"
+msgstr ""
+
+#: template-parts/contact/map.php:20
+msgid "Công ty TNHH Sài Gòn Horeca"
+msgstr ""
+
+#: template-parts/contact/form.php:14
+msgid "Form liên hệ và thông tin"
+msgstr ""
+
+#: template-parts/contact/form.php:46
+msgid "Nhà sáng lập"
+msgstr ""
+
+#: template-parts/contact/form.php:54
+msgid "Kết nối với chúng tôi"
+msgstr ""
+
+#: template-parts/contact/form.php:72
+msgid "Hãy liên hệ với chúng tôi"
+msgstr ""
+
+#: template-parts/contact/form.php:87
+msgid "Họ và tên"
+msgstr ""
+
+#: template-parts/contact/form.php:91
+msgid "Số điện thoại"
+msgstr ""
+
+#: template-parts/contact/form.php:95
+msgid "Email"
+msgstr ""
+
+#: template-parts/contact/form.php:99
+msgid "Nội dung"
+msgstr ""
+
+#: template-parts/contact/form.php:100
+msgid "Tôi cần tư vấn thiết kế bếp nhà hàng..."
+msgstr ""
+
+#: template-parts/contact/form.php:103
+msgid "Gửi liên hệ"
+msgstr ""

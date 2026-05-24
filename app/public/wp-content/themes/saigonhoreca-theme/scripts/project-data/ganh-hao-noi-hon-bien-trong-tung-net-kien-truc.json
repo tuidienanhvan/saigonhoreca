@@ -1,0 +1,340 @@
+{
+  "slug": "ganh-hao-noi-hon-bien-trong-tung-net-kien-truc",
+  "title": "Gành Hào",
+  "meta_description": "Nhà hàng Gành Hào – cái tên đã trở nên quen thuộc với những ai yêu mến ẩm thực biển Vũng Tàu. Có lẽ, nguồn cảm hứng lớn nhất của Gành Hào chính là... biển –",
+  "sections_count": 6,
+  "sections": [
+    {
+      "data_id": "2895a41",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-2895a41",
+        "elementor-section-height-full",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-items-middle"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-acb852c",
+          "col_size": 16,
+          "widgets": []
+        },
+        {
+          "col_class": "elementor-column elementor-col-66 elementor-top-column elementor-element elementor-element-1c4b573",
+          "col_size": 66,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h1",
+              "text": "Gành Hào"
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "– nơi hồn biển hội tụ trong từng nét kiến trúc"
+              ]
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-8e7c529",
+          "col_size": 16,
+          "widgets": []
+        }
+      ]
+    },
+    {
+      "data_id": "8a7ddc0",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-8a7ddc0",
+        "elementor-section-content-middle",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-c055a6b",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Nhà hàng Gành Hào – cái tên đã trở nên quen thuộc với những ai yêu mến ẩm thực biển Vũng Tàu. Có lẽ, nguồn cảm hứng lớn nhất của Gành Hào chính là… biển – Ngay từ cái nhìn đầu tiên, công trình mang dáng dấp tựa như những chiếc thuyền thúng úp ngược – một hình ảnh thân quen của làng chài ven biển Việt Nam.",
+                "Chính sự giao hòa ấy – giữa hiện đại và truyền thống – đã làm nên nét riêng không thể trộn lẫn của Gành Hào."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "1db46c0c",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-1db46c0c",
+        "elementor-section-content-middle",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-59a044cd",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "divider.default",
+              "divider": true
+            },
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Khi truyền thống gặp hiện đại trong không gian Gành Hào Mũi Đá"
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Tọa lạc tại số 09 Hạ Long, ngay khu vực cảng tàu khách cánh ngầm, Gành Hào với kiến trúc mái vòm được ốp bằng tấm Aluminium độc đáo, hòa quyện cùng mặt kính hiện đại, nơi đây tựa như một con tàu ánh bạc đang neo đậu giữa sóng gió, sẵn sàng đón tiếp những thực khách yêu hải sản và yêu cái đẹp."
+              ]
+            },
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/ganh-hao-sgh.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/ganh-hao-sgh.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/05/ganh-hao-sgh-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/05/ganh-hao-sgh-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Từng đường cong, từng mảng màu ánh kim đều phản chiếu nắng biển, tạo nên cảm giác công trình như đang sống và chuyển động cùng nhịp thở đại dương. Bóng phản chiếu ánh mặt trời như gợi nhắc đến vỏ sò, vảy cá, những vật thể mang hồn biển. Đó không chỉ là vẻ đẹp hình khối, mà còn là cách người thiết kế gửi gắm tinh thần của đại dương vào từng đường nét, từng mái cong, từng khoảng kính mở rộng để đón nắng, gió và mùi mặn mòi của biển khơi."
+              ]
+            },
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/ganh-hao-sgh-2.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/ganh-hao-sgh-2.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/05/ganh-hao-sgh-2-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/05/ganh-hao-sgh-2-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Bước vào Gành Hào, bạn như đang được chào đón vào một không gian kể chuyện, nơi mỗi góc nhỏ, mỗi món ăn đều gợi lên những câu chuyện về biển cả và những chuyến hành trình xa xôi. Tiếng sóng vỗ nhẹ nhàng, như một bản nhạc nền, khiến tâm hồn bạn thêm phần thư thái, hoà mình vào thiên nhiên và không gian nơi đây. Kiến trúc không phô trương, không gắt gỏng, mà rất đỗi lặng lẽ – mang bản sắc Á Đông, nhưng đồng thời thể hiện sự tinh tế, sáng tạo trong từng chi tiết."
+              ]
+            },
+            {
+              "type": "gallery.default"
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Bên trong, một không gian rộng mở, đón nắng và gió biển tràn ngập, nơi mỗi bữa ăn không chỉ ngon miệng mà còn trọn vẹn về cảm xúc. Dù là một bữa ăn gia đình ấm cúng hay buổi gặp gỡ sang trọng, Gành Hào luôn là lựa chọn xứng tầm.",
+                "Không gian nhà hàng được chia thành nhiều khu vực: tầng trệt dành cho cà phê, điểm tâm sáng và cơm trưa; lầu 1 và 2 phục vụ các món hải sản và cơm Việt Nam. Thiết kế mở với các ô cửa kính lớn cho phép thực khách vừa thưởng thức món ăn, vừa ngắm nhìn biển cả mênh mông và cảm nhận làn gió biển mát lành.",
+                "Không chỉ là nơi quy tụ tinh hoa hải sản tươi sống, với đội ngũ đầu bếp nhiều năm kinh nghiệm, nhà hàng mang đến hơn 100 món ăn phong phú, từ hải sản tươi sống đến các món ăn truyền thống, đáp ứng khẩu vị đa dạng của thực khách. Gành Hào còn chinh phục thực khách bởi không gian mang đậm chất truyền thống, gần gũi mà tinh tế."
+              ]
+            },
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/ganh-hao-sgh-6.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/ganh-hao-sgh-6.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/05/ganh-hao-sgh-6-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/05/ganh-hao-sgh-6-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Và để giữ vững chất lượng phục vụ cũng như đảm bảo công suất hoạt động mỗi ngày, Gành Hào đã tin tưởng lựa chọn Saigon Horeca là đơn vị thiết kế và thi công hệ thống bếp công nghiệp cho toàn bộ chuỗi nhà hàng của mình."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "747211f7",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-747211f7",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/ganh-hao-sgh-1.jpg",
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-3807daf7",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Saigon Horeca – Những người kiến tạo không gian bếp, gìn giữ linh hồn ẩm thực"
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Ít ai biết rằng, sau mỗi món ăn được phục vụ tại Gành Hào là cả một hệ thống bếp vận hành chuyên nghiệp, nơi các đầu bếp có thể thao tác linh hoạt, an toàn và tối ưu thời gian. Với lưu lượng khách đông mỗi ngày, đặc biệt vào dịp lễ, Tết, hệ thống bếp của Gành Hào không chỉ cần hiện đại mà còn phải bền bỉ, khoa học và dễ dàng vận hành.",
+                "Saigon Horeca đã cùng Gành Hào lên phương án thiết kế phù hợp với đặc thù món ăn và quy trình phục vụ tại nhà hàng – trong đó có các khu vực: sơ chế hải sản, chế biến nóng, chiên xào, nướng than, hấp – luộc, và hệ thống hút khói, xử lý mùi hiệu quả nhằm đảm bảo không gian làm việc thông thoáng, sạch sẽ."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "4dd2b28",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-4dd2b28",
+        "elementor-section-content-middle",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-f7d3759",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/ganh-hao-sgh-7.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/ganh-hao-sgh-7.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/05/ganh-hao-sgh-7-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/05/ganh-hao-sgh-7-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            },
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/ganh-hao-sgh-9.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/ganh-hao-sgh-9.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/05/ganh-hao-sgh-9-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/05/ganh-hao-sgh-9-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-39ebccb",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Tinh gọn – hiệu quả – mang dấu ấn vùng biển"
+            },
+            {
+              "type": "divider.default",
+              "divider": true
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Điểm đặc biệt của dự án lần này là sự kết hợp giữa kỹ thuật hiện đại và cảm hứng địa phương. Không gian bếp vẫn giữ được chất “biển” – với luồng vận hành xoay quanh nguyên liệu tươi sống, tốc độ xử lý nhanh nhưng vẫn đảm bảo hương vị nguyên bản."
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Saigon Horeca lựa chọn các thiết bị bếp gas công nghiệp, chảo xào liền bệ, bếp hấp 3 tầng, bếp nướng mặt đá, tủ lạnh công nghiệp và khu rửa đa khoang – tất cả đều bố trí khoa học, tiết kiệm diện tích mà vẫn đảm bảo công năng."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "9a560c7",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-9a560c7",
+        "elementor-section-content-middle",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-83444eb",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Ở một nơi mà gió biển thổi ngày đêm, độ ẩm và hơi muối luôn là thách thức lớn cho mọi thiết bị kim loại – Saigon Horeca đã nghiên cứu và đưa vào các giải pháp chống gỉ, tối ưu thoát nhiệt và giảm tiếng ồn, đảm bảo gian bếp không chỉ hoạt động hiệu quả, mà còn thân thiện với nhân viên vận hành – những người đứng sau ánh đèn sân khấu ẩm thực."
+              ]
+            },
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/ganh-hao-sgh-8.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/ganh-hao-sgh-8.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/05/ganh-hao-sgh-8-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/05/ganh-hao-sgh-8-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Với dự án này, Saigon Horeca không chỉ bàn giao một hệ thống bếp công nghiệp, mà còn góp phần duy trì và nâng tầm trải nghiệm ẩm thực tại một địa điểm đặc biệt của Vũng Tàu. Chúng tôi tự hào khi được đồng hành cùng Gành Hào – nơi không chỉ giữ hồn biển qua từng món ăn, mà còn thể hiện sự chỉn chu từ khâu chuẩn bị phía sau."
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

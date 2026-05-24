@@ -1,0 +1,497 @@
+{
+  "slug": "spice-world-hotpot",
+  "title": "SPICE WORLD HOT POT",
+  "meta_description": "Thành lập vào năm 2003, Spice World HotPot là một trong 10 thương hiệu lẩu nổi tiếng nhất được biết đến với hương vị đặc biệt của nước lẩu và các món ăn kèm.",
+  "sections_count": 7,
+  "sections": [
+    {
+      "data_id": "4d25553",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-4d25553",
+        "elementor-section-height-full",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-items-middle"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/SGH-Spice-World-1.jpg",
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-11a63b9e",
+          "col_size": 16,
+          "widgets": []
+        },
+        {
+          "col_class": "elementor-column elementor-col-66 elementor-top-column elementor-element elementor-element-2e3e98f2",
+          "col_size": 66,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h1",
+              "text": "SPICE WORLD HOT POT"
+            },
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Thương Hiệu Lẩu Đỉnh Cao"
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-3de88569",
+          "col_size": 16,
+          "widgets": []
+        }
+      ]
+    },
+    {
+      "data_id": "752c5343",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-752c5343",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-74713a36",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "SPICE WORLD HOTPOT"
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "1061-1063-1065 Trần Hưng Đạo, Phường 5, Quận 5, TPHCM"
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Spice World Hot Pot là một thương hiệu lẩu nổi tiếng có nguồn gốc từ Sichuan, một vùng đất với truyền thống ẩm thực lâu đời tại Trung Quốc. Được thành lập vào năm 2003, Spice World Hot Pot là một trong 10 thương hiệu lẩu nổi tiếng nhất được biết đến với hương vị đặc biệt của nước lẩu và các món ăn kèm. Hiện tại, thương hiệu này có mặt tại 10 quốc gia trên thế giới, bao gồm Trung Quốc, Hoa Kỳ, Singapore và Việt Nam."
+              ]
+            },
+            {
+              "type": "image-carousel.default",
+              "slides": [
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2021/09/co-my-e1632216750335.png",
+                  "srcset": null,
+                  "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2021/09/co-singapore.png",
+                  "srcset": null,
+                  "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2021/09/co-myanmar.png",
+                  "srcset": null,
+                  "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2021/09/co-thai-lan.png",
+                  "srcset": null,
+                  "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2021/09/co-trung-quoc.png",
+                  "srcset": null,
+                  "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2021/09/co-brunei.png",
+                  "srcset": null,
+                  "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2021/09/co-y.png",
+                  "srcset": null,
+                  "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2021/09/malaysia-e1632216285512.png",
+                  "srcset": null,
+                  "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2021/09/co-viet-nam.png",
+                  "srcset": null,
+                  "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                  "w": null,
+                  "h": null
+                }
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Sự độc đáo của nước lẩu đến từ các nguyên liệu tự nhiên được lựa chọn kỹ càng từ nơi xuất xứ của nó, như tiêu rừng được chọn lọc đặc biệt từ Hongya, Sichuan, và ớt từ khu vực núi Quy Châu và Sichuan, cũng như các loại nấm khác nhau. Tất cả các nguyên liệu được ninh trong khoảng 4 đến 6 giờ để tạo ra hương vị đặc trưng của nước lẩu Sichuan Mala trong hình dáng của những chú gấu Teddy dễ thương và mèo Hello Kitty.",
+                "Đỉnh cao ẩm thực không chỉ đến từ hương vị mà còn từ trải nghiệm trực quan, khi Spice World thêm một yếu tố vui nhộn bằng cách kết hợp các nhân vật đồ chơi tan chảy vào lẩu, làm vui mắt cho thực khách trong khi dạ dày của họ mong muốn thêm nhiều hơn. Đến với Spice World Hot Pot Việt Nam, các tín đồ của đồ ăn cay sẽ trải nghiệm 3 loại nước lẩu: Gấu Teddy, Hello Kitty và dầu hướng dương, với 6 mức độ từ cay nhẹ đến cực kỳ cay. Những người không ưa cay sẽ được thưởng thức qua 6 hương vị: Dinh dưỡng collagen, Xương ống, Cây thuốc, Thịt heo và dạ dày gà, Lẩu nấm và Lẩu cà chua."
+              ]
+            },
+            {
+              "type": "image-carousel.default",
+              "slides": [
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/swh-tieu.jpeg",
+                  "srcset": null,
+                  "alt": "swh-tieu",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/spice-world-hotpot-SGH-1.jpeg",
+                  "srcset": null,
+                  "alt": "spice-world-hotpot-SGH-1",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/swh-thao-qua.jpeg",
+                  "srcset": null,
+                  "alt": "swh-thao-qua",
+                  "w": null,
+                  "h": null
+                }
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Tại Spice World, các lát thịt bò Wagyu tươi ngon được sắp xếp một cách tinh tế, quyến rũ ánh nhìn với bộ váy của búp bê Barbie, hoặc cuộn thịt cừu trên một tấm gỗ dài một mét. Còn có viên thịt viên của Thủ Tướng, xuất phát từ lời khen ngợi của một cựu Thủ Tướng của Vương quốc Anh trong một trải nghiệm ăn uống tại nhà hàng. Tất cả các nguyên liệu đều tươi và không đông lạnh. Các phòng riêng theo kiểu thiết kế của thế giới cũ, với những bức tường đỏ và trang trí bổ sung của các bức tranh miêu tả những dã ngoại và rừng Sichuan. Không có màn hình hoặc sân khấu như các nhà hàng thông thường tại Việt Nam vì Spice World muốn thực khách hoàn toàn đắm chìm trong trải nghiệm ẩm thực."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "30dd5937",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-30dd5937",
+        "elementor-section-content-middle",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-557db204",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Thiết kế của nhà hàng Spice World HotPot"
+            },
+            {
+              "type": "divider.default",
+              "divider": true
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Theo truyền thống, lẩu Sichuan thường được ưa chuộng vào những tháng mùa đông tại Trung Quốc để làm ấm cơ thể. Tuy nhiên, tại Việt Nam, sự phổ biến của lẩu đã vượt qua giới hạn của thời tiết, khi người Việt có thể thưởng thức lẩu bất cứ lúc nào họ mong muốn.",
+                "Nhà hàng có hai tầng với 180 chỗ ngồi và ba phòng riêng, mỗi phòng phục vụ 10 khách. Màu chủ đạo là màu đỏ kết hợp với màu đen và trắng, tạo nên một sự kết hợp giữa thế giới cũ và hiện đại. Một nửa không gian đại diện cho thế giới hiện đại với trần nhà bằng thép màu đen, tường kính trong suốt và thiết kế nội thất tối giản trong màu đen và trắng. Nửa còn lại thể hiện thế giới cũ với tường được trang trí bằng các bức tranh của những nhân vật lịch sử, chủ yếu là màu đỏ, tạo nên một không khí hấp dẫn và bí ẩn."
+              ]
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-9bce6e5",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/Spice-World-Hot-Pot-03.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/Spice-World-Hot-Pot-03.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2024/02/Spice-World-Hot-Pot-03-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/02/Spice-World-Hot-Pot-03-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            },
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/Spice-World-Hot-Pot-01-qh9lyjriu1qetr5khmc83a620x52mqmw9ob7uhon00.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/Spice-World-Hot-Pot-01-qh9lyjriu1qetr5khmc83a620x52mqmw9ob7uhon00.jpg 1200w, https://saigonhoreca.vn/wp-content/uploads/2024/02/Spice-World-Hot-Pot-01-qh9lyjriu1qetr5khmc83a620x52mqmw9ob7uhon00-768x384.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/02/Spice-World-Hot-Pot-01-qh9lyjriu1qetr5khmc83a620x52mqmw9ob7uhon00-600x300.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1200",
+                "h": "600"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "7f758bd5",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-7f758bd5",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/Spice-World-Hot-Pot-02.jpg",
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-172120a0",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Saigon Horeca tư vấn và cung cấp thiết bị bếp công nghiệp cho nhà hàng Spice World Hot Pot"
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Để phục vụ món ăn chất lượng cao với các thương hiệu nổi tiếng trên thế giới, Spice World Hot Pot Việt Nam đã tin tưởng vào Saigon Horeca như đơn vị thiết kế và thi công toàn bộ trang thiết bị nhà bếp của nhà hàng. Với diện tích nhà bếp lên đến 120 mét vuông, kết hợp với các điều kiện hiện có như thang máy và bố trí công trình, chúng tôi đã tính toán và phân bổ các khu vực chức năng theo tiêu chuẩn của một nhà hàng tiêu chuẩn quốc tế."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "269c8e3e",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-269c8e3e",
+        "elementor-section-content-middle",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-51f97012",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/swh-ban-ve-tong-the-khu-bep.png",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/swh-ban-ve-tong-the-khu-bep.png 1541w, https://saigonhoreca.vn/wp-content/uploads/2024/02/swh-ban-ve-tong-the-khu-bep-768x393.png 768w, https://saigonhoreca.vn/wp-content/uploads/2024/02/swh-ban-ve-tong-the-khu-bep-1536x785.png 1536w, https://saigonhoreca.vn/wp-content/uploads/2024/02/swh-ban-ve-tong-the-khu-bep-600x307.png 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1541",
+                "h": "788"
+              }
+            },
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/Spice-World-Hot-Pot-03-1.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/Spice-World-Hot-Pot-03-1.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2024/02/Spice-World-Hot-Pot-03-1-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/02/Spice-World-Hot-Pot-03-1-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-2b954b4a",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "divider.default",
+              "divider": true
+            },
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Ý tưởng thiết kế bếp công nghiệp"
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Khu vực rửa chén được thiết kế với 2 bồn rửa kép bằng thép không gỉ, một bàn rửa, kệ gắn tường và tủ lớn bằng thép không gỉ để lưu trữ chén đĩa. Dựa trên đặc điểm hoạt động của nhà hàng, phục vụ khách hàng từ 10 giờ sáng đến 11 giờ tối, khu vực này được sử dụng để rửa chén vào cuối ngày và chuẩn bị nguyên liệu sơ chế vào sáng hôm sau, đảm bảo vệ sinh và an toàn thực phẩm bằng cách kiểm soát ô nhiễm với nguyên liệu sạch.",
+                "Khu vực này được trang bị đầy đủ 100% bởi Saigon Horeca với thiết kế và sản xuất riêng của mình. Ngoài ra, một khu vực chuẩn bị dự phòng cũng được sắp xếp gần khu vực rửa chén, phục vụ như một sự dự phòng cho các hoạt động chuẩn bị và rửa chén đồng thời."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "3c6c163c",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-3c6c163c",
+        "elementor-section-content-middle",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-44718f95",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "divider.default",
+              "divider": true
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Đặc điểm nổi bật của một nhà hàng lẩu là khả năng nấu ăn không cao vì các món ăn kèm lẩu là các nguyên liệu tươi được sử dụng trực tiếp tại bàn ăn. Do sự rộng rãi và thông thoáng của nhà bếp, khu vực này chỉ được trang bị một máy hút khói để thoát khói, đảm bảo hệ thống thông gió tiêu chuẩn trong khi tiết kiệm đáng kể chi phí đầu tư.",
+                "Khu vực lớn nhất là khu vực phục vụ và lưu trữ thực phẩm. Nó có dung tích gần 3000 lít với 3 tủ lạnh cánh kính đứng từ Berjayja-Malaysia, cho phép quan sát tốt các nguyên liệu bên trong. Ngoài ra, khu vực phục vụ cũng được trang bị 2 tủ lạnh nằm Hoshizaki. Đây là nơi mà nhân viên sẽ dành rất nhiều thời gian chuẩn bị và trang trí món ăn, chẳng hạn như món thịt bò Barbie doll, các món hải sản, v.v.",
+                "Ngoài ra, việc lưu trữ đồ dùng và đồ đạc cũng đòi hỏi một lượng đáng kể do tính chất của ẩm thực lẩu. Với 6 tủ lạnh trượt bằng thép không gỉ và 2 bàn rửa bằng thép không gỉ, chúng sẽ đảm bảo dịch vụ hiệu quả cho khách hàng của nhà hàng.",
+                "Phòng lưu trữ cũng quan trọng để lưu trữ gia vị, thực phẩm khô hoặc đồ dùng nhà hàng. Hệ thống kệ bằng thép không gỉ nhiều tầng tối ưu hóa không gian lưu trữ cho khu vực này."
+              ]
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-70788f2c",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/swh-bv-khu-tru-dong-cat-thit-e1632327853637.png",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/swh-bv-khu-tru-dong-cat-thit-e1632327853637.png 949w, https://saigonhoreca.vn/wp-content/uploads/2024/02/swh-bv-khu-tru-dong-cat-thit-e1632327853637-768x512.png 768w, https://saigonhoreca.vn/wp-content/uploads/2024/02/swh-bv-khu-tru-dong-cat-thit-e1632327853637-600x400.png 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "949",
+                "h": "633"
+              }
+            },
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/Spice-World-Hot-Pot-04.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/Spice-World-Hot-Pot-04.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2024/02/Spice-World-Hot-Pot-04-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/02/Spice-World-Hot-Pot-04-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "c1c7704",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-c1c7704",
+        "elementor-section-content-middle",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-1ccc1e9",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/Spice-World-Hot-Pot-07.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/Spice-World-Hot-Pot-07.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2024/02/Spice-World-Hot-Pot-07-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/02/Spice-World-Hot-Pot-07-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            },
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/Spice-World-Hot-Pot-08.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/Spice-World-Hot-Pot-08.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2024/02/Spice-World-Hot-Pot-08-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/02/Spice-World-Hot-Pot-08-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-0a322de",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "divider.default",
+              "divider": true
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Để tạo ra những lát thịt cừu mảnh và những lát thịt bò được cuộn đẹp mắt, khu vực cắt thịt được trang bị một máy cắt thịt thương hiệu Berjayja và một tủ đông Hoshizaki, đảm bảo sự tươi mới của các miếng thịt được chọn lựa.",
+                "Đã có được sự tin tưởng của Spice World Hot Pot Việt Nam, bằng cách đặt niềm tin đầy đủ vào Saigon Horeca, với kinh nghiệm và chuyên môn của chúng tôi trong lĩnh vực này, chúng tôi đã tham gia vào nhiều dự án nhà hàng và nhà bếp công nghiệp. Chúng tôi đã cung cấp các lời khuyên cần thiết cho việc thiết lập nhà bếp tiêu chuẩn, trình bày các bố cục cấu trúc tốt trên bản vẽ, cũng như các bản vẽ chi tiết về trang thiết bị thép không gỉ cho các nhà đầu tư.",
+                "Khi đến với Saigon Horeca, khách hàng sẽ thực sự hài lòng với những gì chúng tôi nói và làm. Bởi vì sự đáng tin cậy và chất lượng sản phẩm luôn là mục tiêu mà Saigon Horeca đã theo đuổi trong suốt 7 năm qua."
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

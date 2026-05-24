@@ -1,0 +1,15 @@
+/**
+ * wave-divider — Component CSS
+ */
+        .sh-wave {
+    @apply absolute w-full overflow-hidden z-10 [bottom:0] [left:0] [right:0] [line-height:0];
+}
+        .sh-wave svg {
+    @apply relative block w-full;
+}
+        .sh-wave-fill {
+    @apply [fill:var(--bg-alt)];
+}
+        .dark .sh-wave-fill {
+    @apply [fill:var(--bg)];
+}

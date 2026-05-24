@@ -1,0 +1,222 @@
+    /* ── Breadcrumbs ── */
+    .sh-bc {
+    @apply py-3 px-0 [background:var(--bg)] [border-bottom:1px_solid_var(--border-default)];
+}
+    .sh-bc__container {
+    @apply my-0 mx-auto py-0 px-4 [max-width:1200px];
+}
+    .sh-bc__list {
+    @apply flex items-center gap-2 text-sm overflow-hidden whitespace-nowrap list-none m-0 p-0 [color:var(--text-1-3)];
+}
+    .sh-bc__chevron {
+    @apply shrink-0 [width:1rem]! [height:1rem]! [color:var(--text-1-muted)];
+}
+    .sh-bc__home-icon {
+    @apply [width:1rem]! [height:1rem]!;
+}
+    .sh-bc__sep {
+    @apply my-0 mx-1 [color:var(--text-1-muted)];
+}
+    .sh-bc__link {
+    @apply flex items-center gap-1 no-underline transition-colors duration-200 [color:inherit];
+}
+    .sh-bc__link:hover {
+    @apply [color:var(--brand)];
+}
+    .sh-bc__current {
+    @apply font-medium overflow-hidden [color:var(--text-1)] [text-overflow:ellipsis] [max-width:200px];
+}
+    @media (min-width: 768px) { .sh-bc__current {
+    @apply [max-width:28rem];
+} }
+    .dark .sh-bc {
+    @apply [background:var(--bg)] [border-bottom-color:var(--border-default)];
+}
+    .dark .sh-bc__current {
+    @apply [color:var(--text-1)];
+}
+
+    /* ── Smooth transition ── */
+    body, #main-header, section, article, input, textarea, select, .sh-bb, .sh-mnav, table,
+    .sh-townhouse-card, .sh-diary-section, .sh-diary-item, .sh-diary-player, .sh-diary-side {
+    @apply [transition:background-color_0.3s_ease,_color_0.3s_ease,_border-color_0.3s_ease];
+}
+
+    /*
+     * ── Custom Scrollbar (all viewports) ──
+     * Was wrapped in @media (min-width: 1024px) so mobile/tablet showed the
+     * raw OS scrollbar (gray, off-theme). Apply globally; just shrink the
+     * thumb on small screens so it feels native on touch.
+     */
+    html {
+    @apply [scrollbar-width:thin] [scrollbar-color:var(--brand)_var(--bg-alt)];
+}
+    ::-webkit-scrollbar {
+    @apply w-2 h-2;
+}
+    ::-webkit-scrollbar-track {
+    @apply [background:var(--bg-alt)];
+}
+    ::-webkit-scrollbar-thumb {
+    @apply [background:var(--brand)] [border-radius:5px] [border:2px_solid_var(--bg-alt)];
+}
+    ::-webkit-scrollbar-thumb:hover {
+    @apply [background:var(--brand-dark)];
+}
+    @media (min-width: 1024px) {
+        ::-webkit-scrollbar {
+    @apply w-2.5 h-2.5;
+}
+    }
+
+    /* ── Search Input Fix ── */
+    input[type="search"] {
+    @apply [-webkit-appearance:none] [appearance:none];
+}
+    input[type="search"]::-webkit-search-decoration,
+    input[type="search"]::-webkit-search-cancel-button,
+    input[type="search"]::-webkit-search-results-button,
+    input[type="search"]::-webkit-search-results-decoration {
+    @apply hidden [-webkit-appearance:none];
+}
+
+    /* ── Hide Scrollbar ── */
+    .scrollbar-hide {
+    @apply [-ms-overflow-style:none] [scrollbar-width:none];
+}
+    .scrollbar-hide::-webkit-scrollbar {
+    @apply hidden;
+}
+
+    /* ── Global Font ── */
+    body, input, textarea, select, button, .wp-block-table, .entry-content, .entry-content * {
+    @apply [font-family:'Be_Vietnam_Pro',_sans-serif]!;
+}
+
+    /* ── Horizontal Scroll Snap (carousels) ── */
+    .sh-hscroll {
+    @apply [-ms-overflow-style:none] [scrollbar-width:none] [scroll-snap-type:x_mandatory];
+}
+    .sh-hscroll::-webkit-scrollbar {
+    @apply hidden;
+}
+
+    /* ── WordPress emoji ── */
+    img.emoji {
+    @apply [display:inline]! [width:1em]! [height:1em]! [margin:0_0.07em]! [vertical-align:-0.1em] [border-radius:0]! [box-shadow:none]!;
+}
+
+    /* ── Dark mode utility overrides (legacy TW class selectors) ── */
+    .dark section[class*="bg-white"], .dark div[class*="bg-white"] {
+    @apply [background:var(--bg)]!;
+}
+    .dark [class*="border-gray-200"] {
+    @apply [border-color:var(--border-default)]!;
+}
+    .dark [class*="text-slate-800"], .dark [class*="text-slate-900"] {
+    @apply [color:var(--text-1)]!;
+}
+    .dark [class*="text-gray-500"] {
+    @apply [color:var(--text-1-3)]!;
+}
+    .dark [class*="text-slate-600"] {
+    @apply [color:var(--text-1-2)]!;
+}
+    .dark [class*="text-gray-400"] {
+    @apply [color:var(--text-1-muted)]!;
+}
+
+    /* ── Grid helpers (about, pricing) ── */
+    .sh-grid-1-1 {
+    @apply grid gap-12 items-start [grid-template-columns:1fr_1fr];
+}
+    .sh-grid-5-7-start {
+    @apply grid gap-8 items-start [grid-template-columns:5fr_7fr];
+}
+    .team-header-grid {
+    @apply grid gap-8 mb-12 [grid-template-columns:1fr];
+}
+    @media (min-width: 1024px) {
+        .team-header-grid {
+    @apply gap-12 items-start [grid-template-columns:5fr_7fr];
+}
+    }
+    .interior-hero-grid {
+    @apply grid gap-12 [grid-template-columns:1fr];
+}
+    @media (min-width: 1024px) { .interior-hero-grid {
+    @apply [grid-template-columns:1fr_1fr];
+} }
+
+    @media (max-width: 1023px) {
+        .sh-grid-1-1,
+        .sh-grid-5-7-start,
+        .sh-grid-7-5-end,
+        .sh-grid-8-4-end,
+        .sh-grid-5-7-end {
+    @apply grid gap-8 [grid-template-columns:1fr];
+}
+    }
+
+/* ════════════════════════════════════════════════
+   Print Styles
+   ════════════════════════════════════════════════ */
+@media print {
+    body {
+    @apply [background:#fff]! [color:#000]! [font-size:12pt]! [line-height:1.5]!;
+}
+    header, footer, nav, #sh-chatbot, #sh-floating-buttons, #sh-mobile-nav,
+    .sh-mnav, #sh-dark-toggle, .back-to-top, .sidebar, aside,
+    .share-buttons, .related-posts, .breadcrumb, .hero-carousel,
+    .scroll-top-btn, .floating-btn, iframe, video, .wp-block-embed,
+    .no-print {
+    @apply [display:none]!;
+}
+    .container, main, article {
+    @apply [width:100%]! [max-width:100%]! [margin:0]! [padding:0]!;
+}
+    h1 {
+    @apply [font-size:22pt]! [margin-bottom:8pt]!;
+}
+    h2 {
+    @apply [font-size:16pt]! [margin-top:14pt]!;
+}
+    h3 {
+    @apply [font-size:13pt]!;
+}
+    p, li, td, th {
+    @apply [font-size:11pt]!;
+}
+    a[href]:not([href^="#"]):not([href^="javascript"])::after {
+    @apply [font-size:9pt] [color:#666] [font-style:italic];
+    content: " (" attr(href) ")";
+}
+    a {
+    @apply [color:#000]! [text-decoration:underline]!;
+}
+    table {
+    @apply [border-collapse:collapse]! [width:100%]!;
+}
+    th, td {
+    @apply [border:1px_solid_#ccc]! [padding:6px_8px]!;
+}
+    th {
+    @apply [background:#f0f0f0]! [font-weight:bold]!;
+}
+    img {
+    @apply [max-width:100%]! [height:auto]!;
+}
+    h1, h2, h3 {
+    @apply [page-break-after:avoid];
+}
+    img, table, blockquote {
+    @apply [page-break-inside:avoid];
+}
+    .dark * {
+    @apply [background:transparent]! [color:#000]! [border-color:#ccc]!;
+}
+    body::before {
+    @apply [display:block] [text-align:center] [font-size:9pt] [color:#666] [border-bottom:1px_solid_#ccc] [padding-bottom:6pt] [margin-bottom:12pt];
+    content: "SAIGON HOUSE — Thiết Kế Thi Công Xây Dựng | Hotline: 0961 868 968 | thietkethicongnhadep.vn";
+}
+}

@@ -1,0 +1,214 @@
+/* ────────────────────────────────────────────────────────────
+   Saigonhoreca-theme — global styles
+   Bundled into dist/theme*.css via _imports.css.
+   ──────────────────────────────────────────────────────────── */
+
+/* ── Breadcrumbs (sh-bc) ── */
+.sh-bc {
+    padding-block: calc(var(--spacing) * 3);
+    background: var(--bg);
+    border-bottom: 1px solid var(--border-default);
+}
+.sh-bc__container {
+    margin-inline: auto;
+    max-width: 1200px;
+    padding-inline: calc(var(--spacing) * 4);
+}
+.sh-bc__list {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--spacing) * 2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: var(--text-sm);
+    line-height: var(--tw-leading, var(--text-sm--line-height));
+    white-space: nowrap;
+    color: var(--text-1-3);
+    overflow: hidden;
+}
+.sh-bc__chevron,
+.sh-bc__home-icon {
+    width: 1rem !important;
+    height: 1rem !important;
+    flex-shrink: 0;
+    color: var(--text-1-muted);
+}
+.sh-bc__sep {
+    margin-inline: calc(var(--spacing) * 1);
+    color: var(--text-1-muted);
+}
+.sh-bc__link {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--spacing) * 1);
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.sh-bc__link:hover { color: var(--brand); }
+.sh-bc__current {
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--text-1);
+    font-weight: var(--font-weight-medium);
+}
+@media (min-width: 768px) {
+    .sh-bc__current { max-width: 28rem; }
+}
+
+/* ── Body / form smoothing ── */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--b1);
+    color: var(--bc);
+    -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
+    font-family: var(--font-sans);
+    transition: color 0.5s, background-color 0.5s;
+}
+#main-header,
+section,
+article { transition: background-color 0.3s, color 0.3s, border-color 0.3s; }
+
+input, textarea, select {
+    font: inherit;
+    font-feature-settings: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+    background-color: transparent;
+    border-radius: 0;
+}
+textarea { resize: vertical; }
+button {
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    border-radius: 0;
+}
+
+/* ── Custom scrollbar (brand color) ── */
+html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--brand) var(--bg-alt);
+}
+::-webkit-scrollbar { width: calc(var(--spacing) * 2); height: calc(var(--spacing) * 2); }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+    background: var(--brand);
+    border: 2px solid var(--bg-alt);
+    border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--brand-dark); }
+@media (min-width: 1024px) {
+    ::-webkit-scrollbar { width: calc(var(--spacing) * 2.5); height: calc(var(--spacing) * 2.5); }
+}
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+
+/* ── Search input — strip native UA chrome ── */
+input[type="search"] { -webkit-appearance: none; appearance: none; }
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration { display: none; -webkit-appearance: none; }
+
+/* ── Horizontal scroll snap (carousels / partner strip / etc.) ── */
+.sh-hscroll {
+    scroll-snap-type: x mandatory;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.sh-hscroll::-webkit-scrollbar { display: none; }
+
+/* ── Body font fallback for editor / Gutenberg content ── */
+.wp-block-table,
+.entry-content,
+.entry-content * { font-family: "Be Vietnam Pro", sans-serif !important; }
+
+/* ── WordPress emoji <img> normalization ── */
+img.emoji {
+    display: inline !important;
+    width: 1em !important;
+    height: 1em !important;
+    margin: 0 0.07em !important;
+    vertical-align: -0.1em;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+}
+
+/* ── Dark mode utility overrides — map Tailwind hardcoded grays onto theme tokens ── */
+.dark .sh-bc { border-bottom-color: var(--border-default); background: var(--bg); }
+.dark .sh-bc__current { color: var(--text-1); }
+.dark section[class*="bg-white"],
+.dark div[class*="bg-white"]              { background: var(--bg) !important; }
+.dark [class*="border-gray-200"]          { border-color: var(--border-default) !important; }
+.dark [class*="text-slate-800"],
+.dark [class*="text-slate-900"]           { color: var(--text-1) !important; }
+.dark [class*="text-gray-500"]            { color: var(--text-1-3) !important; }
+.dark [class*="text-slate-600"]           { color: var(--text-1-2) !important; }
+.dark [class*="text-gray-400"]            { color: var(--text-1-muted) !important; }
+
+/* ── Print styles (Saigon Horeca branding) ── */
+@media print {
+    body { background: #fff !important; color: #000 !important; font-size: 12pt !important; line-height: 1.5 !important; }
+    header, footer, nav, #sh-chatbot, #sh-floating-buttons, #sh-mobile-nav,
+    .sh-mnav, #sh-dark-toggle, .back-to-top, .sidebar, aside,
+    .share-buttons, .related-posts, .breadcrumb, .hero-carousel,
+    .scroll-top-btn, .floating-btn, iframe, video, .wp-block-embed,
+    .no-print { display: none !important; }
+    .container, main, article { width: 100% !important; max-width: 100% !important; margin: 0 !important; padding: 0 !important; }
+    h1 { font-size: 22pt !important; margin-bottom: 8pt !important; }
+    h2 { font-size: 16pt !important; margin-top: 14pt !important; }
+    h3 { font-size: 13pt !important; }
+    p, li, td, th { font-size: 11pt !important; }
+    a[href]:not([href^="#"]):not([href^="javascript"])::after {
+        content: " (" attr(href) ")";
+        font-size: 9pt;
+        color: #666;
+        font-style: italic;
+    }
+    a { color: #000 !important; text-decoration: underline !important; }
+    table { border-collapse: collapse !important; width: 100% !important; }
+    th, td { border: 1px solid #ccc !important; padding: 6px 8px !important; }
+    th { background: #f0f0f0 !important; font-weight: bold !important; }
+    img { max-width: 100% !important; height: auto !important; }
+    h1, h2, h3 { page-break-after: avoid; }
+    img, table, blockquote { page-break-inside: avoid; }
+    .dark * { background: transparent !important; color: #000 !important; border-color: #ccc !important; }
+    body::before {
+        display: block;
+        text-align: center;
+        font-size: 9pt;
+        color: #666;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 6pt;
+        margin-bottom: 12pt;
+        content: "SAIGON HORECA — Thiết bị bếp công nghiệp & quầy bar | Hotline: 0901 304 365 | saigonhoreca.vn";
+    }
+}
+
+/* ── SVG Scale Normalization (T-20260519-001) ── */
+.elementor-icon svg,
+.elementor-widget-container svg,
+.sh-about svg,
+.sh-contact svg {
+    max-width: 100% !important;
+    height: auto !important;
+}
+
+/* Force standard maximum width for partner logos in About section */
+.sh-about .elementor-image-box-wrapper svg,
+.sh-about .elementor-image-box-img svg,
+.sh-about .elementor-icon-box-wrapper svg,
+.sh-about .elementor-icon-box-icon svg,
+.sh-about img[src*=".svg"] {
+    max-width: 160px !important;
+    max-height: 80px !important;
+    height: auto !important;
+    width: auto !important;
+}
+

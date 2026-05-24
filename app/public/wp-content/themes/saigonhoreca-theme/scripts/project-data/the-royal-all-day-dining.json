@@ -1,0 +1,476 @@
+{
+  "slug": "the-royal-all-day-dining",
+  "title": "THE ROYAL - ALL DAY DINING",
+  "meta_description": "Little Bear Thảo Điền mời bạn bước vào một thiên đường ẩm thực, gia vị thơm ngát và tiếng cười hòa quyện thành 1 bản giao hưởng ấm cúng của hương vị tuyệt vời.",
+  "sections_count": 7,
+  "sections": [
+    {
+      "data_id": "7fe21be2",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-7fe21be2",
+        "elementor-section-height-full",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-items-middle"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/the-royal-sgh-2.jpg",
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-11aa108f",
+          "col_size": 16,
+          "widgets": []
+        },
+        {
+          "col_class": "elementor-column elementor-col-66 elementor-top-column elementor-element elementor-element-341ae952",
+          "col_size": 66,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h1",
+              "text": "THE ROYAL - ALL DAY DINING"
+            },
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Sự giao thoa giữa tinh hoa phương Tây và tâm hồn Việt"
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Ngay từ ánh nhìn đầu tiên, The Royal All Day Dining toát lên khí chất sang trọng và đẳng cấp, như một biểu tượng của nghệ thuật kiến trúc tinh tế giữa lòng thành phố."
+              ]
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-1f8e043b",
+          "col_size": 16,
+          "widgets": []
+        }
+      ]
+    },
+    {
+      "data_id": "6ef48569",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-6ef48569",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-5611f09",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "The Royal"
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Địa chỉ: 41-47 Dong Du, Ben Nghe Ward, District 1, Ho Chi Minh City."
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Từ 11h00 AM – 11h00 AM (Thứ hai – Thứ bảy)"
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Không gian nơi đây được trau chuốt kỹ lưỡng đến từng chi tiết, phản ánh gu thẩm mỹ thời thượng và sự chỉn chu tuyệt đối trong thiết kế. The Royal không chạy theo xu hướng ngắn hạn, mà kiến tạo một phong cách kiến trúc riêng – hiện đại, thanh lịch và mang đậm dấu ấn của sự tinh mỹ vượt thời gian."
+              ]
+            },
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/11/the-royal-sgh-1.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/11/the-royal-sgh-1.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/11/the-royal-sgh-1-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/11/the-royal-sgh-1-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            },
+            {
+              "type": "heading.default",
+              "tag": "span",
+              "text": "The Royal – Khi vẻ đẹp chỉn chu tạo nên sự khác biệt"
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Nằm ngay trung tâm thành phố, THE ROYAL ALL DAY DINING là điểm hẹn lý tưởng dành cho những ai yêu thích sự tinh tế trong ẩm thực. Tại đây, mỗi món ăn là một sự kết hợp khéo léo giữa kỹ thuật ẩm thực hiện đại phương Tây và những giá trị truyền thống sâu sắc của ẩm thực Việt Nam.Mặt tiền được thiết kế với tông màu gỗ sáng, khung cửa kính tối màu, và những chi tiết vuông vức dứt khoát – tất cả gợi lên một sự gần gũi tự nhiên, như lời mời gọi bước vào một không gian không chỉ để ăn uống, mà còn để tạm dừng, tận hưởng, và kết nối."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "8588fa7",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-8588fa7",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-20aa184",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "span",
+              "text": "Thiết kế của The Royal All Day Dining"
+            },
+            {
+              "type": "divider.default",
+              "divider": true
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Tọa lạc tại 41–47 Đông Du, Bến Nghé, Quận 1, TP. Hồ Chí Minh, The Royal All Day Dining mang dáng dấp của một nhà hàng đẳng cấp – nơi mỗi trải nghiệm ẩm thực đều được chăm chút tỉ mỉ. Không phô trương hình ảnh, The Royal lựa chọn cách chinh phục khách hàng bằng chất lượng, sự chỉn chu và phong cách vận hành chuyên nghiệp.",
+                "Không gian và thiết kế không cần lời quảng bá rầm rộ – chính cảm nhận của thực khách sẽ là minh chứng rõ ràng nhất cho sự khác biệt mang tên The Royal."
+              ]
+            },
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/the-royal-sgh-1.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/the-royal-sgh-1.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/05/the-royal-sgh-1-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/05/the-royal-sgh-1-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Bên trong, không gian mang hơi hướng một phòng trà châu Âu thế kỷ trước, với ghế bọc da nâu cổ điển, tường ốp gỗ tự nhiên và hệ thống đèn chùm ánh vàng dịu."
+              ]
+            },
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/the-royal-sgh-2.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/the-royal-sgh-2.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/05/the-royal-sgh-2-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/05/the-royal-sgh-2-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Cách bố trí ghế sofa cong mềm mại, đan cài cùng những vách ngăn thấp bằng gỗ và kính, tạo nên từng “khoảng trời riêng” cho thực khách mà không làm mất đi sự liên kết tổng thể. Một chi tiết nhỏ nhưng tinh tế chính là sự lặp lại nhẹ nhàng của họa tiết đường cong — từ cửa vòm, đến lưng ghế, đến khung kính tường — như những giai điệu cổ xưa vang lên trong không gian hiện đại."
+              ]
+            },
+            {
+              "type": "image-carousel.default",
+              "slides": [
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/the-royal-sgh-3.jpg",
+                  "srcset": null,
+                  "alt": "the-royal-sgh (3)",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/the-royal-sgh-4.jpg",
+                  "srcset": null,
+                  "alt": "the-royal-sgh (4)",
+                  "w": null,
+                  "h": null
+                }
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Ánh sáng ở The Royal được tiết chế kỹ lưỡng. Không gian ấm cúng và sang trọng, vừa đủ để mỗi bữa ăn trở thành một khoảnh khắc tận hưởng trọn vẹn. Đèn chùm kiểu dáng tối giản, sử dụng lớp thủy tinh mờ để ánh sáng không chói lóa, lại làm nổi bật được độ óng ả của gỗ và da trong phòng.",
+                "The Royal không cố gắng làm mình khác biệt một cách ồn ào, mà chọn cách lặng lẽ chinh phục lòng người — giống như một bản nhạc trữ tình ngân vang giữa những bộn bề náo động. Đó chính là “chất” Royal: tinh tế, trầm lắng và bền bỉ theo thời gian."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "6eea1feb",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-6eea1feb",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/the-royal-sgh-6.jpg",
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-73a09521",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "The Royal – Dự án bếp công nghiệp cao cấp do Saigon Horeca thực hiện"
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Ngay từ cái nhìn đầu tiên, không gian bếp tại The Royal gây ấn tượng mạnh với sự bố trí khoa học, tối ưu hóa quy trình vận hành một chiều – từ khu sơ chế, chế biến, nấu nướng đến khu ra món. Tất cả các thiết bị đều được Saigon Horeca sử dụng chất liệu inox cao cấp, mang lại sự bền bỉ, dễ dàng vệ sinh và đảm bảo vệ sinh an toàn thực phẩm tuyệt đối."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "21e930bb",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-21e930bb",
+        "elementor-section-content-middle",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-70e797d9",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/the-royal-sgh-5.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/the-royal-sgh-5.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/05/the-royal-sgh-5-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/05/the-royal-sgh-5-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            },
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/the-royal-sgh-6.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/the-royal-sgh-6.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/05/the-royal-sgh-6-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/05/the-royal-sgh-6-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-6363b75f",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Giải pháp của Saigon Horeca:"
+            },
+            {
+              "type": "divider.default",
+              "divider": true
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "The Royal ra đời như một tuyên ngôn về sự hoàn mỹ trong từng chi tiết. Và Saigon Horeca, với vai trò thiết kế và thi công hệ thống bếp công nghiệp, đã thể hiện xuất sắc sứ mệnh đó: biến mỗi mét vuông nhà bếp thành một nền tảng cho sự bứt phá trong nghệ thuật ẩm thực."
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Bếp công nghiệp The Royal được xây dựng theo triết lý “Bếp là trái tim của nhà hàng – nơi khởi nguồn cho mọi cảm xúc thực”",
+                "Mọi khu vực trong bếp – từ sơ chế, chế biến, nấu nướng đến hoàn thiện món – đều được vận hành cực kỳ khoa học, tối ưu theo dòng chảy một chiều, giúp tiết kiệm thời gian, giảm thiểu sai sót và tạo nên nhịp làm việc nhịp nhàng, chính xác đến từng thao tác.",
+                "Tại The Royal, bếp không chỉ là nơi tạo ra món ăn, mà là “ngôi nht” của các chef thỏa sức sáng tạo và thổi hồn vào từng món ăn.– khởi nguồn cho trải nghiệm đẳng cấp đến với thực khách."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "664d43a3",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-664d43a3",
+        "elementor-section-content-middle",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-61c4ff8e",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "DNA của Saigon Horeca: Sự đồng bộ của hệ thống thiết bị"
+            },
+            {
+              "type": "divider.default",
+              "divider": true
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Hệ thống lò hấp – nướng – giữ nhiệt hiện đại"
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Tủ mát, tủ đông inox chuyên dụng cho việc lưu trữ nguyên liệu tươi sống, được phối hợp hài hòa, không chỉ giúp đầu bếp đạt hiệu suất tối đa, mà còn nâng cao độ bền, an toàn và tiết kiệm năng lượng trong vận hành lâu dài."
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Bếp chiên, nướng, bếp gas công nghiệp với công suất lớn từ thương hiệu Fujimak"
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Ngoài ra, bề mặt inox mượt mà, gạch ốp tường xanh rêu cao cấp, hệ thống ánh sáng vàng ấm… tất cả tạo nên một bầu không khí bếp vừa sạch sẽ chuẩn mực, vừa ấm cúng gợi cảm hứng sáng tạo."
+              ]
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-4f0ee126",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/the-royal-sgh-10.jpg",
+                "srcset": null,
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "600",
+                "h": "800"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "ac75c19",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-ac75c19",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-ecf962b",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "divider.default",
+              "divider": true
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Điểm đặc biệt ở dự án này là Saigon Horeca không chỉ lắp đặt bếp theo yêu cầu, mà còn đồng hành cùng chủ đầu tư từ giai đoạn lên ý tưởng vận hành.",
+                "Từng chi tiết nhỏ, từ chiều cao quầy sơ chế, vị trí máy rửa, đến khoảng cách lý tưởng giữa các bếp nấu… đều được Saigon Horeca tính toán dựa trên thói quen vận hành thực tế của đội ngũ đầu bếp."
+              ]
+            },
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/the-royal-sgh-8.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/the-royal-sgh-8.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/05/the-royal-sgh-8-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/05/the-royal-sgh-8-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Điều đó cho thấy, bếp công nghiệp chuyên nghiệp không đơn thuần là tập hợp thiết bị đắt tiền, mà là sự kết tinh giữa:",
+                "The Royal không chỉ sở hữu một hệ thống bếp hiện đại, mà còn có trong mình một linh hồn vận hành chuẩn chỉnh, sẵn sàng đưa những trải nghiệm ẩm thực tại nhà hàng lên một tầm cao mới."
+              ]
+            },
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Saigon Horeca – Đối tác chiến lược trong hành trình nâng tầm bếp Việt"
+            },
+            {
+              "type": "divider.default",
+              "divider": true
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Với dự án The Royal, Saigon Horeca một lần nữa khẳng định vị thế là đối tác chiến lược tin cậy trong lĩnh vực thiết kế – thi công bếp công nghiệp cao cấp tại Việt Nam.",
+                "Tận tâm, am hiểu và sáng tạo, Saigon Horeca đã, đang và sẽ tiếp tục đồng hành cùng nhiều nhà hàng, khách sạn, resort… trên hành trình kiến tạo những không gian bếp không chỉ đẹp, mà còn thực sự cao cấp và bền vững."
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+/**
+ * Entry Content — Layout safety nets only.
+ *
+ * Per task: typography (h2+, p, quote, strong, em, list, code, table)
+ * is owned by the pi-dashboard editor. Theme keeps only defensive layout
+ * rules so over-sized media uploaded via WP media library can't break
+ * the page grid.
+ */
+
+/* ── Images / figures: prevent oversized media from breaking layout ── */
+.entry-content img {
+    @apply block my-6 mx-auto rounded-2xl object-contain w-auto max-w-full h-auto [box-shadow:0_10px_30px_-10px_rgba(0,_0,_0,_0.1)] [max-height:70vh];
+}.entry-content figure{text-align:center;margin-left:auto;margin-right:auto}.entry-content .wp-block-image{flex-direction:column;align-items:center;display:flex}.entry-content .wp-caption-text,.entry-content figcaption{margin-top:calc(var(--spacing) * 2);font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height));color:var(--text-1-3)}/* ── SVG in content ── */
+.entry-content svg:not([width]):not([class]){max-width:3rem;max-height:3rem}.entry-content svg{max-width:100%;height:auto}/* ── Dark mode (figcaption + svg only) ── */
+.dark .entry-content .wp-caption-text,.dark .entry-content figcaption{color:var(--text-1-3)}.dark .entry-content svg{color:var(--text-1-2)}.dark .prose-project img{box-shadow:0 4px 20px #0000004d}

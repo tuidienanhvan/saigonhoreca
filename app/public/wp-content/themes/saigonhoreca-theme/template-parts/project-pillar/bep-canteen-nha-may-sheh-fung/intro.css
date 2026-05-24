@@ -1,0 +1,289 @@
+/**
+ * bep-canteen-nha-may-sheh-fung — intro slot.
+ * OWNS shared base: .pp__section, .pp-text-shf, .pp-gallery-shf.
+ * Direction: Industrial Factory Canteen — sheet-metal stripe dividers,
+ * NO.## counter tags on gallery items, brushed-steel watermark.
+ * @package SaigonHoreca
+ */
+
+/* ===== Shared section frame ===== */
+.pp__section {
+  position: relative;
+  padding: 5rem 1.25rem;
+  background: var(--b1);
+  overflow: hidden;
+  isolation: isolate;
+}
+@media (min-width: 768px) {
+  .pp__section { padding: 7.5rem 2rem; }
+}
+.pp__section--alt {
+  background:
+    linear-gradient(180deg, var(--b2) 0%, color-mix(in srgb, var(--b2) 92%, var(--b1)) 100%);
+}
+
+.pp__container {
+  max-width: 1140px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* Ambient industrial glow — left */
+.pp__section::before {
+  content: '';
+  position: absolute;
+  top: 18%;
+  left: -12%;
+  width: 480px; height: 480px;
+  background: radial-gradient(circle, color-mix(in srgb, var(--gold) 5%, transparent) 0%, transparent 70%);
+  filter: blur(70px);
+  pointer-events: none;
+  z-index: 0;
+}
+.pp__section--alt::before {
+  top: 30%;
+  right: -10%;
+  left: auto;
+  width: 520px; height: 520px;
+  background: radial-gradient(circle, color-mix(in srgb, var(--gold) 6%, transparent) 0%, transparent 72%);
+  filter: blur(75px);
+}
+
+/* Sheet-metal stripe watermark — section top edge */
+.pp__section::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 56px;
+  background:
+    repeating-linear-gradient(90deg,
+      transparent 0,
+      transparent 42px,
+      color-mix(in srgb, var(--gold) 3.5%, transparent) 42px,
+      color-mix(in srgb, var(--gold) 3.5%, transparent) 44px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.85;
+}
+
+/* ===== Text block ===== */
+.pp-text-shf {
+  max-width: 820px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: relative;
+}
+.pp-text-shf--center {
+  align-items: center;
+  text-align: center;
+}
+
+/* Sheet-metal divider — 3 hi-vis stripes with bolt caps */
+.pp-text-shf__divider {
+  display: block;
+  width: 96px;
+  height: 18px;
+  position: relative;
+  background:
+    repeating-linear-gradient(135deg,
+      var(--gold) 0,
+      var(--gold) 6px,
+      color-mix(in srgb, var(--b1) 80%, var(--gold)) 6px,
+      color-mix(in srgb, var(--b1) 80%, var(--gold)) 12px);
+  border-radius: 1px;
+  box-shadow:
+    0 0 14px color-mix(in srgb, var(--gold) 45%, transparent),
+    inset 0 1px 0 color-mix(in srgb, var(--gold) 60%, transparent);
+}
+.pp-text-shf--center .pp-text-shf__divider { margin: 0 auto; }
+
+.pp-text-shf__divider::before,
+.pp-text-shf__divider::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 8px; height: 8px;
+  background:
+    radial-gradient(circle at 35% 35%, color-mix(in srgb, var(--gold) 95%, var(--bc)) 0%, var(--gold) 60%, color-mix(in srgb, var(--gold) 70%, #000) 100%);
+  border-radius: 50%;
+  transform: translateY(-50%);
+  box-shadow: 0 0 8px color-mix(in srgb, var(--gold) 70%, transparent);
+}
+.pp-text-shf__divider::before { left: -16px; }
+.pp-text-shf__divider::after  { right: -16px; }
+
+/* ===== Title ===== */
+.pp-text-shf__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.85rem, 3.5vw, 2.85rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--bc);
+  letter-spacing: 0.005em;
+  position: relative;
+}
+.pp-text-shf--center .pp-text-shf__title { margin: 0 auto; max-width: 26ch; }
+
+.pp-text-shf:not(.pp-text-shf--center) .pp-text-shf__title::before {
+  content: '';
+  display: inline-block;
+  width: 28px;
+  height: 2px;
+  background: var(--gold);
+  vertical-align: middle;
+  margin-right: 0.85rem;
+  box-shadow: 0 0 10px color-mix(in srgb, var(--gold) 50%, transparent);
+}
+
+/* ===== Body copy ===== */
+.pp-text-shf__body {
+  font-size: clamp(0.97rem, 1.1vw, 1.05rem);
+  line-height: 1.85;
+  color: var(--bc2);
+  max-width: 760px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+.pp-text-shf--center .pp-text-shf__body { margin: 0 auto; }
+.pp-text-shf__body p { margin: 0; text-align: left; }
+.pp-text-shf--center .pp-text-shf__body p { text-align: center; }
+
+.pp-text-shf__body a {
+  color: var(--gold);
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--gold) 40%, transparent);
+  transition: border-color 0.25s var(--ease-spring), color 0.25s;
+}
+.pp-text-shf__body a:hover {
+  border-color: var(--gold);
+  color: color-mix(in srgb, var(--gold) 88%, var(--bc));
+}
+.pp-text-shf__body strong { color: var(--gold); font-weight: 700; }
+.pp-text-shf__body em     { color: color-mix(in srgb, var(--bc) 90%, var(--bc2)); font-style: italic; }
+
+/* drop-cap on first paragraph of centered intro */
+.pp-text-shf--center .pp-text-shf__body p:first-child::first-letter {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 2.6em;
+  line-height: 1;
+  float: left;
+  padding: 0.25rem 0.6rem 0 0;
+  color: var(--gold);
+  text-shadow: 0 2px 12px color-mix(in srgb, var(--gold) 30%, transparent);
+}
+@media (max-width: 767px) {
+  .pp-text-shf--center .pp-text-shf__body p:first-child::first-letter { font-size: 2.1em; }
+}
+
+/* ===== Gallery — industrial panel mosaic with NO.## stamps ===== */
+.pp-gallery-shf {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+  counter-reset: shf-tile;
+  position: relative;
+}
+@media (min-width: 768px) {
+  .pp-gallery-shf { grid-template-columns: repeat(2, 1fr); gap: 1.75rem; }
+  .pp-gallery-shf--cols-3 { grid-template-columns: repeat(3, 1fr); }
+  .pp-gallery-shf--cols-4 { grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
+  .pp-gallery-shf--cols-1 { grid-template-columns: 1fr; }
+}
+
+/* dashed sheet-metal frame around the mosaic */
+.pp-gallery-shf::before {
+  content: '';
+  position: absolute;
+  inset: -1.25rem;
+  border: 1px dashed color-mix(in srgb, var(--gold) 18%, transparent);
+  pointer-events: none;
+  z-index: -1;
+  border-radius: var(--radius-md);
+}
+
+.pp-gallery-shf__item {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  background: var(--b3);
+  border: 1px solid color-mix(in srgb, var(--bd) 90%, var(--gold));
+  transition:
+    border-color 0.4s var(--ease-spring),
+    transform   0.4s var(--ease-spring),
+    box-shadow  0.4s var(--ease-spring);
+  counter-increment: shf-tile;
+}
+.pp-gallery-shf__item:hover {
+  border-color: color-mix(in srgb, var(--gold) 55%, transparent);
+  transform: translateY(-4px);
+  box-shadow:
+    0 14px 28px rgba(0, 0, 0, 0.32),
+    0 0 0 1px color-mix(in srgb, var(--gold) 24%, transparent);
+}
+
+/* NO.## counter tag — top-left */
+.pp-gallery-shf__item::before {
+  content: 'NO.0' counter(shf-tile);
+  position: absolute;
+  top: 0.6rem;
+  left: 0.6rem;
+  z-index: 3;
+  font-family: var(--font-display);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.32em;
+  color: var(--gold);
+  padding: 0.28rem 0.55rem;
+  background: color-mix(in srgb, var(--b1) 70%, transparent);
+  backdrop-filter: blur(6px) saturate(150%);
+  border: 1px solid color-mix(in srgb, var(--gold) 45%, transparent);
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+/* bolt corner dot — bottom-right */
+.pp-gallery-shf__item::after {
+  content: '';
+  position: absolute;
+  bottom: 0.55rem;
+  right: 0.55rem;
+  width: 7px; height: 7px;
+  background: var(--gold);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 2px color-mix(in srgb, var(--b1) 70%, transparent),
+    0 0 10px color-mix(in srgb, var(--gold) 70%, transparent);
+  z-index: 3;
+  opacity: 0.9;
+}
+
+.pp-gallery-shf__item img {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(1.07) contrast(1.03);
+  transition: transform 0.8s var(--ease-spring), filter 0.6s;
+}
+.pp-gallery-shf__item:hover img {
+  transform: scale(1.06);
+  filter: saturate(1.15) contrast(1.06);
+}
+
+/* staggered hover lift across tiles */
+.pp-gallery-shf__item:nth-child(2):hover { transform: translateY(-6px); }
+.pp-gallery-shf__item:nth-child(3):hover { transform: translateY(-5px); }
+.pp-gallery-shf__item:nth-child(4):hover { transform: translateY(-7px); }
+
+@media (max-width: 767px) {
+  .pp-gallery-shf__item::before { font-size: 0.56rem; padding: 0.22rem 0.45rem; }
+}

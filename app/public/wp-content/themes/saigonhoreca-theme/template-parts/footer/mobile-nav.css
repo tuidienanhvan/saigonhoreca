@@ -1,0 +1,73 @@
+/**
+ * Bottom Mobile Navigation Bar.
+ *
+ * Dark-luxe only (no light/dark toggle).
+ * All values from _tokens.css — no hardcoded colors.
+ */
+
+/* ── Container ── */
+.sh-mnav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: var(--z-mobile-nav);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0.375rem 0 max(0.375rem, env(safe-area-inset-bottom));
+    background: color-mix(in srgb, var(--b2) 92%, transparent);
+    border-top: 1px solid var(--bd);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 -2px 16px rgba(0, 0, 0, 0.5);
+}
+
+/* ── Nav item ── */
+.sh-mnav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    min-width: 56px;
+    padding: 0.375rem 0.625rem;
+    border-radius: var(--radius-sm);
+    color: var(--bc3);
+    text-decoration: none;
+    transition: color 0.2s ease, background-color 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+.sh-mnav-item:hover {
+    color: var(--bc2);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+/* Active state — gold brand */
+.sh-mnav-item.sh-mnav-active {
+    color: var(--gold);
+}
+
+/* ── Icon ── */
+.sh-mnav-icon {
+    width: 22px;
+    height: 22px;
+}
+.sh-mnav-item.sh-mnav-active .sh-mnav-icon {
+    stroke-width: 2.2px;
+}
+
+/* ── Label ── */
+.sh-mnav-label {
+    font-family: var(--font-sans);
+    font-size: 0.625rem;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.02em;
+}
+
+/* ── Footer breathing room (prevent content behind fixed nav) ── */
+@media (max-width: 767px) {
+    footer[role="contentinfo"] {
+        padding-bottom: 80px !important;
+    }
+}

@@ -1,0 +1,379 @@
+{
+  "slug": "godmother-friendship",
+  "title": "GodMother Friendship",
+  "meta_description": "Brunch là bữa ăn kết hợp giữa sáng và trưa, vừa no đủ lại vừa linh hoạt. Vào năm 2019, khi Sài Gòn chưa có nhà hàng nào theo phong cách này, GodMother ra đời,",
+  "sections_count": 9,
+  "sections": [
+    {
+      "data_id": "98c42f9",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-98c42f9",
+        "elementor-section-full_width",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-2a84744",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/Godmother-friendship-1.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/Godmother-friendship-1.jpg 1920w, https://saigonhoreca.vn/wp-content/uploads/2023/12/Godmother-friendship-1-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2023/12/Godmother-friendship-1-1536x864.jpg 1536w, https://saigonhoreca.vn/wp-content/uploads/2023/12/Godmother-friendship-1-600x338.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1920",
+                "h": "1080"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "24593bba",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-24593bba",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-39360dd0",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2020/12/gm-bang-ten.png",
+                "srcset": null,
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": null,
+                "h": null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "4ab3315c",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-4ab3315c",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-73674e35",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Brunch là bữa ăn kết hợp giữa sáng và trưa, vừa no đủ lại vừa linh hoạt. Vào năm 2019, khi Sài Gòn chưa có nhà hàng nào theo phong cách này, GodMother ra đời, mang đến một trải nghiệm hoàn toàn mới.",
+                "Gặt hái những thành công nhất định, cuối năm 2020, GodMother mở thêm chi nhánh mới tại Tòa nhà Friendship Tower, Quận 1. Ý tưởng thiết kế nội thất của nhà hàng là sự kết hợp độc đáo giữa nét cổ điển và hiện đại, mang đậm phong cách Âu Mỹ, tạo nên không gian sang trọng, thanh lịch."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "1d28780f",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-1d28780f",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-5ccdb432",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "GodMother Friendship: Điểm hẹn ẩm thực mới lạ cho giới trẻ Sài Gòn"
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "GodMother nhanh chóng thu hút sự chú ý của giới trẻ và người nổi tiếng bởi cả chất lượng lẫn tính thẩm mỹ của mỗi món ăn. Thức ăn, đồ uống nơi đây đều được chăm chút tỉ mỉ, công thức cân đo kỹ lưỡng và kết hợp hài hòa giữa các nguyên liệu để mang đến những lựa chọn healthy, ít béo. Thực đơn của GodMother cũng rất đa dạng, với nhiều món ăn được chế biến từ nguyên liệu tươi ngon và đảm bảo chất lượng. Cách trình bày món ăn đậm phong cách Tây, bắt mắt và đầy tính thẩm mỹ."
+              ]
+            },
+            {
+              "type": "image.default",
+              "image": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "1db1d4ce",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-1db1d4ce",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-9258ff7",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "spacer.default",
+              "spacer": true
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Bên trong GodMother, có bốn khu vực chức năng chính: nhà bếp, quầy bar, khu vực ăn uống cho khách và quầy Kiosk đặt trước sảnh tòa Friendship Tower, phục vụ đồ uống mang đi và các món ăn nhanh.",
+                "Quầy Kiosk cung cấp nhiều loại đồ uống mang đi và thức ăn nhanh khác nhau, đáp ứng nhu cầu đa dạng của khách hàng, hoạt động từ sáng đến tối, phục vụ khách hàng trong suốt cả ngày. Đây là một lựa chọn lý tưởng cho những khách hàng muốn thưởng thức các loại món ăn và đồ uống yêu thích của mình bất cứ lúc nào."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "4116a2af",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-4116a2af",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-5ac28081",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/05/godmother4.jpeg",
+                "srcset": null,
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": null,
+                "h": null
+              }
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Quầy Kiosk cung cấp nhiều loại đồ uống mang đi và thức ăn nhanh khác nhau."
+              ]
+            },
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/05/godmother-5.jpeg",
+                "srcset": null,
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": null,
+                "h": null
+              }
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Quầy Kiosk cung cấp nhiều loại đồ uống mang đi và thức ăn nhanh khác nhau."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "2ee76887",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-2ee76887",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-6c744225",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Saigon Horeca - Đối Tác Uy Tín Của GodMother Friendship"
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Đối với dự án GodMother Friendship, nhà phát triển dự án HypeAsia đã lựa chọn Saigon Horeca là đơn vị tư vấn, thiết kế và cung cấp trọn gói thiết bị cho Nhà bếp, Quầy bar và Quầy Kiosk của nhà hàng. Với kinh nghiệm và chuyên môn trong thiết kế, Saigon Horeca luôn tối ưu hóa sản phẩm của mình, sản xuất trực tiếp theo thiết kế riêng. Nhờ đó, có thể đưa ra mức giá tốt nhất cho khách hàng."
+              ],
+              "links": [
+                {
+                  "href": "http://saigonhoreca.vn",
+                  "text": "Saigon Horeca"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "237f3f08",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-237f3f08",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-21555f1c",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/european-style-stoves.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/european-style-stoves.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2023/12/european-style-stoves-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2023/12/european-style-stoves-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            },
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/asian-industrial-stove-image.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/asian-industrial-stove-image.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2023/12/asian-industrial-stove-image-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2023/12/asian-industrial-stove-image-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Khu vực bếp bao gồm các thiết bị như bếp chiên nhúng đôi, lò nướng phẳng, bếp Âu 6 họng kèm lò nướng, lò nướng salamander, tủ lạnh, tủ đông và các thiết bị inox chuyên dụng khác."
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Nhà bếp chính là nơi các đầu bếp của GodMother trổ tài chế biến những món ăn ngon và hấp dẫn. Nhà bếp được trang bị đầy đủ các thiết bị hiện đại, đảm bảo chất lượng và vệ sinh an toàn thực phẩm."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "27955051",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-27955051",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-2a82468c",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": null
+            },
+            {
+              "type": "image.default",
+              "image": null
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Quầy bar và Quầy Kiosk được trang bị quầy cocktail, tủ lạnh, tủ đông, thùng đá và chậu rửa.",
+                "Đặc biệt, chúng tôi chỉ nhập khẩu các thiết bị chuyên dụng như bếp Âu, lò chiên, tủ lạnh và tủ đông cho GodMother. Ngoài ra, xưởng sản xuất riêng của Saigon Horeca sẽ đáp ứng mọi nhu cầu về thiết bị inox từ bồn rửa, quầy bar pha chế đến thùng đá, giúp tối ưu giá thành và rút ngắn thời gian hoàn thiện."
+              ],
+              "links": [
+                {
+                  "href": "https://saigonhoreca.vn/",
+                  "text": "Saigon Horeca"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

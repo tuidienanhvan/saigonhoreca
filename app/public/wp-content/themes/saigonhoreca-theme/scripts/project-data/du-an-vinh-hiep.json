@@ -1,0 +1,325 @@
+{
+  "slug": "du-an-vinh-hiep",
+  "title": "Dự án Vĩnh Hiệp – Coffee Lab",
+  "meta_description": "Dự án đẳng cấp với cam kết hoàn hảo của Saigon Horeca tại Canteen nhà máy Sheh Fung",
+  "sections_count": 5,
+  "sections": [
+    {
+      "data_id": "355a605b",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-355a605b",
+        "elementor-section-height-full",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-items-middle"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-5.jpg",
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-3901529a",
+          "col_size": 16,
+          "widgets": []
+        },
+        {
+          "col_class": "elementor-column elementor-col-66 elementor-top-column elementor-element elementor-element-7dd42e71",
+          "col_size": 66,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h1",
+              "text": "Dự án Vĩnh Hiệp – Coffee Lab"
+            },
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Khi không gian bếp và cà phê cùng kể một câu chuyện về chuẩn mực xuất khẩu"
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-641e797e",
+          "col_size": 16,
+          "widgets": []
+        }
+      ]
+    },
+    {
+      "data_id": "ef110fa",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-ef110fa",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-65c48449",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Trong ngành cà phê, chất lượng không chỉ nằm ở hạt cà phê – mà còn ở cách người ta tôn trọng và tôn vinh giá trị của nó. Với Vĩnh Hiệp, doanh nghiệp xuất khẩu cà phê nhân số 1 Việt Nam niên vụ 2023–2024, mỗi không gian trong nhà máy không đơn thuần là nơi vận hành, mà còn là một phần của câu chuyện thương hiệu khi tiếp đón đối tác toàn cầu.",
+                "Dự án Coffee Lab – Nhà máy chế biến cà phê xuất khẩu Vĩnh Hiệp là một trong những dự án tiêu biểu thể hiện rõ triết lý đó. Và Saigon Horeca được lựa chọn không phải để “lắp thiết bị”, mà để tư vấn và kiến tạo một hệ thống bếp – showroom tương xứng với vị thế thương hiệu."
+              ]
+            },
+            {
+              "type": "image-carousel.default",
+              "slides": [
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-6.jpg",
+                  "srcset": null,
+                  "alt": "sheh-fung (6)",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-8.jpg",
+                  "srcset": null,
+                  "alt": "sheh-fung (8)",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-9.jpg",
+                  "srcset": null,
+                  "alt": "sheh-fung (9)",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-7.jpg",
+                  "srcset": null,
+                  "alt": "sheh-fung (7)",
+                  "w": null,
+                  "h": null
+                }
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Coffee Lab tại Vĩnh Hiệp không chỉ phục vụ mục đích nội bộ. Đây là nơi đón tiếp các đoàn khách quốc tế, đối tác thương mại, chuyên gia cà phê, đồng thời là không gian để trình diễn quy trình, gu thẩm mỹ và chuẩn mực vận hành của một doanh nghiệp xuất khẩu hàng đầu.",
+                "Điều đó đặt ra một yêu cầu rất cao: Không gian phải chính xác về công năng, chuẩn mực về kỹ thuật, nhưng đồng thời tinh tế về hình ảnh và cảm xúc. Mọi chi tiết – từ bếp, khu chế biến, đến bàn cupping – đều phải góp phần kể câu chuyện về chất lượng và sự chỉn chu."
+              ]
+            },
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-1-1.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-1-1.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/01/sheh-fung-1-1-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/01/sheh-fung-1-1-600x337.jpg 600w",
+                "alt": "10 lỗi thường gặp khi sử dụng tủ lạnh công nghiệp và cách khắc phục",
+                "w": "1366",
+                "h": "768"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "2fcbcb7f",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-2fcbcb7f",
+        "elementor-section-content-middle",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-2530f256",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Hệ thống bếp dành cho ban lãnh đạo & nhân sự cấp cao – Chuẩn mực của vận hành tinh gọn"
+            },
+            {
+              "type": "divider.default",
+              "divider": true
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Khác với bếp ăn tập thể thông thường, khu bếp mà Saigon Horeca tư vấn cho Vĩnh Hiệp được định hướng ngay từ đầu là bếp phục vụ ban lãnh đạo và đội ngũ nhân sự cấp cao tại nhà máy.",
+                "Không gian bếp được tổ chức theo tư duy compact – chính xác – sạch tuyệt đối, với các thiết bị bếp điện cao cấp nhằm đảm bảo an toàn, kiểm soát nhiệt tốt và phù hợp môi trường nhà máy hiện đại. Khu chế biến tích hợp bếp Á điện 3 họng, bếp Âu điện và thiết bị giữ nóng thức ăn, cho phép vận hành linh hoạt nhưng vẫn giữ được sự gọn gàng và chuẩn mực.",
+                "Song song đó, khu sơ chế được thiết kế như một “xưởng tiền xử lý” thu nhỏ, với bàn inox chuyên dụng, bồn chậu đi kèm bẫy mỡ – đảm bảo tiêu chuẩn vệ sinh, dễ làm sạch và kiểm soát rủi ro ngay từ gốc.",
+                "Ở dự án này, Saigon Horeca không chạy theo số lượng thiết bị, mà tập trung vào logic vận hành, để mỗi thao tác trong bếp đều liền mạch, tiết kiệm thời gian và giảm áp lực cho người sử dụng."
+              ]
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-3cd70efa",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-2.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-2.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/01/sheh-fung-2-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/01/sheh-fung-2-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            },
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-3.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-3.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/01/sheh-fung-3-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/01/sheh-fung-3-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "16b4144a",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-16b4144a",
+        "elementor-section-content-middle",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-4fc0aebb",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-4.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-4.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/01/sheh-fung-4-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/01/sheh-fung-4-600x337.jpg 600w",
+                "alt": "Bếp á đôi công nghiệp",
+                "w": "1366",
+                "h": "768"
+              }
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-515501e0",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "span",
+              "text": "Showroom Coffee Lab – Khi inox trở thành ngôn ngữ của thương hiệu"
+            },
+            {
+              "type": "divider.default",
+              "divider": true
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Điểm nhấn đặc biệt của dự Nam An ở khu vực showroom triển lãm – nơi Vĩnh Hiệp tiếp đón các đoàn khách tham quan và giới thiệu chiều sâu của cà phê Việt Nam.",
+                "Saigon Horeca được giao nhiệm vụ tư vấn và bố trí toàn bộ không gian thiết bị chế biến và phục vụ cà phê, với vật liệu chủ đạo là inox cao cấp. Nhưng inox ở đây không mang dáng dấp công nghiệp khô cứng, mà được xử lý hoàn thiện tinh xảo, đồng bộ và mang tính trưng bày.",
+                "Trung tâm của không gian là bàn cupping chuyên dụng cao cấp, được thi công hoàn toàn từ inox mạ màu, lựa chọn tông màu tương đồng với hệ nhận diện thương hiệu Vĩnh Hiệp. Đây không chỉ là bàn thử nếm, mà là một tuyên ngôn hình ảnh: sự nghiêm túc, chuẩn mực và đẳng cấp trong từng công đoạn đánh giá chất lượng cà phê.",
+                "Không gian Coffee Lab vì thế trở thành nơi mà kỹ thuật – thẩm mỹ – câu chuyện thương hiệu cùng tồn tại hài hòa."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "8834001",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-8834001",
+        "elementor-section-content-middle",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-549d58a",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "span",
+              "text": "Dấu ấn Saigon Horeca – Tư duy giải pháp, không chỉ là thiết bị"
+            },
+            {
+              "type": "divider.default",
+              "divider": true
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Ở dự án Vĩnh Hiệp, Saigon Horeca không tiếp cận với vai trò nhà cung cấp đơn thuần. Mỗi hạng mục đều được đặt trong một câu hỏi lớn hơn: Không gian này phục vụ ai? Vận hành như thế nào? Và góp phần gì cho hình ảnh thương hiệu?",
+                "Từ hệ thống bếp dành cho ban lãnh đạo đến Coffee Lab trưng bày, tất cả đều được kết nối bởi một triết lý chung: bếp công nghiệp cao cấp không chỉ để nấu, mà còn để thể hiện chuẩn mực của một doanh nghiệp lớn."
+              ]
+            },
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/bi-quyet-tao-thuc-don-nha-hang.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/bi-quyet-tao-thuc-don-nha-hang.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2023/12/bi-quyet-tao-thuc-don-nha-hang-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2023/12/bi-quyet-tao-thuc-don-nha-hang-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            },
+            {
+              "type": "heading.default",
+              "tag": "span",
+              "text": "Một Coffee Lab xứng tầm thương hiệu xuất khẩu số 1"
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Dự án Vĩnh Hiệp – Coffee Lab là minh chứng rõ nét cho cách Saigon Horeca đồng hành cùng doanh nghiệp F&B và chế biến thực phẩm ở tầm chiến lược, nơi mỗi không gian đều được thiết kế để phục vụ vận hành, con người và thương hiệu.",
+                "Không phô trương, không dư thừa, nhưng đủ tinh tế để đối tác quốc tế bước vào và hiểu ngay: đây là một nhà máy xuất khẩu cà phê hàng đầu – nghiêm túc, chuẩn mực và đầy bản sắc."
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,421 @@
+{
+  "slug": "g-cup-coffee-bistro",
+  "title": "G.CUP COFFEE & BISTRO",
+  "meta_description": "“Mâm cơm” bước ra thế giới – Khi không gian kể chuyện trở thành cầu nối văn hóa Việt",
+  "sections_count": 7,
+  "sections": [
+    {
+      "data_id": "355a605b",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-355a605b",
+        "elementor-section-height-full",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-items-middle"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/du-an-g-cup-coffee-bistro.jpg",
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-3901529a",
+          "col_size": 16,
+          "widgets": []
+        },
+        {
+          "col_class": "elementor-column elementor-col-66 elementor-top-column elementor-element elementor-element-7dd42e71",
+          "col_size": 66,
+          "widgets": [
+            {
+              "type": "spacer.default",
+              "spacer": true
+            },
+            {
+              "type": "spacer.default",
+              "spacer": true
+            },
+            {
+              "type": "heading.default",
+              "tag": "h1",
+              "text": "G.CUP COFFEE & BISTRO"
+            },
+            {
+              "type": "spacer.default",
+              "spacer": true
+            },
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Bếp vận hành đồng điệu với không gian được trau chuốt đến từng chi tiết"
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Giữa lòng Metropole Thủ Thiêm – khu đô thị hiện đại và sôi động bậc nhất TP.HCM – G.Cup Coffee & Bistro chọn cho mình một hướng đi riêng: tinh tế, trau chuốt và đặt trọn tâm huyết vào từng trải nghiệm của khách hàng."
+              ]
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-641e797e",
+          "col_size": 16,
+          "widgets": []
+        }
+      ]
+    },
+    {
+      "data_id": "ef110fa",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-ef110fa",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-65c48449",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Tọa lạc tại tháp B/20 Nguyễn Thiện Thành, Thủ Thiêm, Thủ Đức, không gian nơi đây được thiết kế với gu thẩm mỹ rõ ràng, menu pha trộn giữa cà phê thủ công, bánh ngọt kiểu Âu và các món ăn nhẹ mang dấu ấn riêng."
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Ngay từ khi bắt đầu lên ý tưởng vận hành cho không gian này, G.Cup Coffee & Bistro đã đặt ra yêu cầu rất rõ ràng: bếp, bar, và khu bếp bánh phải được thiết kế bài bản, hiện đại – nhưng vẫn gọn gàng, mượt mà và dễ sử dụng. Không gian nhỏ gọn vừa đảm bảo công năng, vừa hòa hợp với kiến trúc và trải nghiệm dịch vụ, đúng chất một quán bistro cao cấp."
+              ]
+            },
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/du-an-g-cup-coffee-bistro-7.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/du-an-g-cup-coffee-bistro-7.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/05/du-an-g-cup-coffee-bistro-7-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/05/du-an-g-cup-coffee-bistro-7-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Với kinh nghiệm trong các mô hình F&B cao cấp, Saigon Horeca đã đồng hành cùng G.Cup đi từ bản vẽ đến thực tế – chọn đúng thiết bị sao cho phù hợp với menu và phong cách vận hành, rồi cuối cùng là thi công và hoàn thiện toàn bộ hệ thống hút mùi – cấp khí tươi – đảm bảo mọi thứ chạy ổn định và chuyên nghiệp."
+              ]
+            },
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Không gian G-Cup Bistro – Khi thiết kế và vận hành song hành trong từng chi tiết"
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Một trong những điểm đặc biệt tại G-Cup Bistro là khả năng đồng bộ giữa thẩm mỹ kiến trúc và thiết kế bếp – bar. Không gian được phủ bằng những gam màu trung tính hiện đại, nội thất tối giản nhưng tinh tế, kết hợp cùng ánh sáng tự nhiên – tạo nên một trải nghiệm thị giác nhẹ nhàng nhưng không kém phần đẳng cấp.",
+                "Chính trong tổng thể thiết kế ấy, hệ thống bếp – bar – khu bếp bánh do Saigon Horeca thi công đóng vai trò như cấu trúc xương sống ngầm, giúp toàn bộ quán vận hành trơn tru mà vẫn đảm bảo mọi điểm nhìn đều gọn gàng, sạch sẽ và có tính thẩm mỹ cao."
+              ]
+            },
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/du-an-g-cup-coffee-bistro-16.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/du-an-g-cup-coffee-bistro-16.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/05/du-an-g-cup-coffee-bistro-16-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/05/du-an-g-cup-coffee-bistro-16-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "2fcbcb7f",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-2fcbcb7f",
+        "elementor-section-content-middle",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-2530f256",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "divider.default",
+              "divider": true
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Bếp bánh và bếp nấu được bố trí thành hai khu vực riêng biệt nhưng nằm sát nhau, thuận tiện cho việc vận hành. Nhờ cách chia tách này, mùi vị giữa các món ăn và bánh ngọt không bị pha lẫn, giúp giữ được chất lượng thành phẩm tốt nhất.",
+                "Đồng thời, chức năng của từng khu được phân chia rõ ràng: khu bếp nấu tập trung vào chế biến món mặn, còn khu bếp bánh được trang bị thiết bị chuyên dụng để làm các loại bánh ngọt và tráng miệng.",
+                "Cách bố trí này không chỉ hợp lý mà còn giúp đầu bếp làm việc hiệu quả, tránh va chạm và giảm áp lực trong giờ cao điểm – tất cả cho thấy một triết lý: đằng sau một trải nghiệm đẹp là một cấu trúc vận hành thông minh và tôn trọng thiết kế."
+              ]
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-3cd70efa",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/du-an-g-cup-coffee-bistro-13.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/du-an-g-cup-coffee-bistro-13.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/05/du-an-g-cup-coffee-bistro-13-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/05/du-an-g-cup-coffee-bistro-13-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "e74c1d4",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-e74c1d4",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/du-an-g-cup-coffee-bistro-2-1.jpg",
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-4736373",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Thách thức trong thi công bếp & bar cho khu phức hợp cao cấp"
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Thi công bếp công nghiệp và quầy bar cho quán cà phê – nhà hàng tại các khu phức hợp cao cấp như Metropole Thủ Thiêm không hề đơn giản. Ngoài yêu cầu khắt khe về kỹ thuật, các yếu tố an toàn và tránh tối đa ảnh hưởng tới môi trường và cư dân xung quanh, đơn vị thi công cần hiểu rõ về không gian, quy trình vận hành, yếu tố thẩm mỹ và đặc biệt là phải đặt mình vào vị trí người sử dụng để mang lại trải nghiệm tốt nhất.",
+                "Trong những căn shophouse hoặc mặt bằng thương mại điển hình, diện tích dành cho bếp, bar hay khu bánh thường được thiết kế khá gọn gàng. Thế nhưng phía sau sự tối giản ấy là cả một hệ thống vận hành có công suất lớn, phải đủ linh hoạt để xử lý giờ cao điểm mà vẫn bền bỉ trong suốt nhiều giờ làm việc liên tục."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "862d838",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-862d838",
+        "elementor-section-content-middle",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-6899966",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "spacer.default",
+              "spacer": true
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Chính vì vậy, layout bếp được Saigon Horeca thiết kế theo hướng một chiều – khép kín là giải pháp tối ưu. Cách tổ chức này vừa giúp tiết kiệm diện tích, vừa đảm bảo sự liền mạch trong thao tác, tránh gián đoạn khi vận hành.",
+                "Các công trình nằm trong khu phức hợp như Metropole còn có nhiều yêu cầu kỹ thuật nghiêm ngặt: hệ thống PCCC, trần kỹ thuật, vị trí tường chịu lực, và cả yếu tố thẩm mỹ chung.",
+                "Do đó, hệ thống hút khói, xử lý mùi, cấp khí tươi… cần được tính toán kỹ từ đầu. Mục tiêu là đảm bảo hiệu quả vận hành, nhưng vẫn không làm ảnh hưởng đến hệ thống điều hòa chung hay thiết kế tổng thể của tòa nhà."
+              ]
+            },
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/du-an-g-cup-coffee-bistro-3.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/du-an-g-cup-coffee-bistro-3.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/05/du-an-g-cup-coffee-bistro-3-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/05/du-an-g-cup-coffee-bistro-3-600x337.jpg 600w",
+                "alt": "Tại sao bề mặt inox bị ố vàng? Cách làm sạch và bảo dưỡng bếp inox đúng cách",
+                "w": "1366",
+                "h": "768"
+              }
+            },
+            {
+              "type": "spacer.default",
+              "spacer": true
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Tại G-Cup Coffee & Bistro, mô hình hoạt động chia thành ba khu vực riêng biệt:",
+                "Thách thức lớn nhất của dự án là diện tích giới hạn, nhưng vẫn cần đảm bảo đầy đủ công năng và thiết bị cho từng khu vực. Nếu bố trí không hợp lý, sẽ dễ xảy ra tình trạng:",
+                "Vì thế, thi công bếp trong khu cao cấp đòi hỏi sự đồng bộ từ đầu đến cuối – từ khâu tư vấn thiết kế, lắp đặt, cho tới nghiệm thu và hỗ trợ kỹ thuật sau khi bàn giao.",
+                "→ Điều này đòi hỏi đội ngũ thi công không chỉ giỏi chuyên môn, mà còn phải làm việc sát với đơn vị quản lý tòa nhà, đồng thời tính toán kỹ từng đường ống, từng vị trí đặt thiết bị – tránh ảnh hưởng đến kiến trúc chung và đảm bảo an toàn tuyệt đối trong quá trình sử dụng."
+              ]
+            },
+            {
+              "type": "image-carousel.default",
+              "slides": [
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/du-an-g-cup-coffee-bistro-4.jpg",
+                  "srcset": null,
+                  "alt": "du-an-g-cup-coffee-bistro (4)",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/du-an-g-cup-coffee-bistro-5.jpg",
+                  "srcset": null,
+                  "alt": "du-an-g-cup-coffee-bistro (5)",
+                  "w": null,
+                  "h": null
+                }
+              ]
+            },
+            {
+              "type": "spacer.default",
+              "spacer": true
+            },
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Giải pháp từ Saigon Horeca – Khi công năng, thẩm mỹ và trải nghiệm hòa làm một"
+            },
+            {
+              "type": "spacer.default",
+              "spacer": true
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Với những mô hình cao cấp như G-Cup Bistro tại Metropole Thủ Thiêm, việc thi công bếp – quầy bar – khu bánh không đơn thuần là lắp đặt thiết bị. Mỗi chi tiết đều phải được tính toán kỹ càng: luồng di chuyển ra sao, thiết bị đặt ở đâu để thao tác thuận tiện, làm sao để không gian luôn thông thoáng mà vẫn đẹp mắt và đồng bộ với kiến trúc chung."
+              ]
+            },
+            {
+              "type": "spacer.default",
+              "spacer": true
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Tại dự án này, Saigon Horeca đã đảm nhận trọn gói từ tư vấn layout đến thi công hệ thống kỹ thuật và lắp đặt thiết bị. Tất cả đều được thiết kế sao cho:"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "16b4144a",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-16b4144a",
+        "elementor-section-content-middle",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-4fc0aebb",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/du-an-g-cup-coffee-bistro-14.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/du-an-g-cup-coffee-bistro-14.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/05/du-an-g-cup-coffee-bistro-14-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/05/du-an-g-cup-coffee-bistro-14-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-515501e0",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Tại G-Cup Bistro, mọi thứ đều được Saigon Horeca chọn lựa kỹ lưỡng về kích thước, công suất, và chất lượng – phù hợp với thực đơn, tần suất vận hành và gu thẩm mỹ của quán, các thiết bị được lắp đặt gồm:"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "62e08eb",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-62e08eb",
+        "elementor-section-content-middle",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-2dc4ec2",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Đây là giải pháp được lựa chọn sau khi phân tích kỹ điều kiện công trình và định hướng thiết kế không gian mở của quán đảm bảo không ảnh hưởng đến không gian chung, vừa an toàn, vừa thẩm mỹ – đúng tiêu chuẩn của các khu phức hợp cao cấp như Metropole Thủ Thiêm.",
+                "Với G-Cup, mỗi không gian đều mang theo một câu chuyện riêng. Và Saigon Horeca là người vinh dự được góp phần kể nên câu chuyện đó – bằng những giải pháp kỹ thuật tinh gọn, thông minh và linh hoạt, phù hợp với từng mét vuông mặt bằng."
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

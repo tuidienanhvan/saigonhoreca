@@ -1,0 +1,338 @@
+{
+  "slug": "casa-maria",
+  "title": "Casa Maria",
+  "meta_description": "Dự án đẳng cấp với cam kết hoàn hảo của Saigon Horeca tại Canteen nhà máy Sheh Fung",
+  "sections_count": 5,
+  "sections": [
+    {
+      "data_id": "355a605b",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-355a605b",
+        "elementor-section-height-full",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-items-middle"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-5.jpg",
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-3901529a",
+          "col_size": 16,
+          "widgets": []
+        },
+        {
+          "col_class": "elementor-column elementor-col-66 elementor-top-column elementor-element elementor-element-7dd42e71",
+          "col_size": 66,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h1",
+              "text": "Casa Maria"
+            },
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Khi không gian Tapas & Wine cần một căn bếp “biết kể chuyện”"
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-641e797e",
+          "col_size": 16,
+          "widgets": []
+        }
+      ]
+    },
+    {
+      "data_id": "ef110fa",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-ef110fa",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-65c48449",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Tọa lạc tại 15D Ngô Quang Huy, Thảo Điền, TP.HCM, nhà hàng theo mô hình Vinos – Tapas Spanish Restaurant, nơi ẩm thực Tây Ban Nha được thể hiện qua những phần tapas tinh gọn, wine tasting và cafe – tất cả đặt trong một không gian gần gũi, mang tinh thần Địa Trung Hải hiện đại."
+              ]
+            },
+            {
+              "type": "image-carousel.default",
+              "slides": [
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-6.jpg",
+                  "srcset": null,
+                  "alt": "sheh-fung (6)",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-8.jpg",
+                  "srcset": null,
+                  "alt": "sheh-fung (8)",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-9.jpg",
+                  "srcset": null,
+                  "alt": "sheh-fung (9)",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-7.jpg",
+                  "srcset": null,
+                  "alt": "sheh-fung (7)",
+                  "w": null,
+                  "h": null
+                }
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Trong dự án này, Saigon Horeca không chỉ cung cấp thiết bị, mà đóng vai trò đối tác giải pháp, tham gia từ tư duy concept đến triển khai kỹ thuật, để đảm bảo mọi trải nghiệm của khách đều được “hậu thuẫn” bởi một hệ thống bếp – bar vận hành mượt mà phía sau."
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Với Casa Maria, câu hỏi đặt ra ngay từ đầu không phải là “dùng thiết bị gì”, mà là bếp phải vận hành thế nào để phục vụ đúng tinh thần tapas và wine. Tapas đòi hỏi tốc độ, sự linh hoạt và tính nhất quán cao, trong khi vẫn giữ được cảm giác thoải mái, không gấp gáp cho thực khách."
+              ]
+            },
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-1-1.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-1-1.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/01/sheh-fung-1-1-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/01/sheh-fung-1-1-600x337.jpg 600w",
+                "alt": "10 lỗi thường gặp khi sử dụng tủ lạnh công nghiệp và cách khắc phục",
+                "w": "1366",
+                "h": "768"
+              }
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Saigon Horeca tiếp cận dự án từ chính bài toán đó. Vai trò của SGH không dừng lại ở cung cấp thiết bị, mà là xây dựng một hệ thống bếp phù hợp với nhịp vận hành của nhà hàng Tây Ban Nha hiện đại, nơi mọi thao tác đều hướng đến trải nghiệm khách hàng.",
+                "Hệ thống bếp Âu tại Casa Maria được thiết kế để phục vụ nhiều món nhỏ, ra liên tục, nhưng không tạo áp lực lên đầu bếp. Không gian bếp được tổ chức gọn, rõ luồng, hạn chế di chuyển thừa và tránh chồng chéo thao tác.",
+                "Thiết bị bếp Âu do Saigon Horeca cung cấp được lựa chọn theo tiêu chí vừa đủ: đủ công suất cho giờ cao điểm, đủ linh hoạt để xử lý đa dạng món tapas, nhưng không làm bếp trở nên nặng nề hay dư thừa. Đây chính là cách một căn bếp cao cấp âm thầm hỗ trợ đầu bếp – không phô trương, nhưng luôn hiện diện đúng lúc.",
+                "Bếp không phô trương, nhưng đủ tinh chỉnh để trở thành nền tảng vận hành cho một concept chia sẻ – thưởng thức – kết nối."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "2fcbcb7f",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-2fcbcb7f",
+        "elementor-section-content-middle",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-2530f256",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Quầy bar Wine & Cafe – Trái tim cảm xúc của Casa Maria"
+            },
+            {
+              "type": "divider.default",
+              "divider": true
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Với Casa Maria, quầy bar không chỉ là nơi pha chế, mà là điểm chạm trải nghiệm: wine tasting, cafe, trò chuyện và tương tác.",
+                "Saigon Horeca triển khai quầy bar với tư duy mở, nơi bartender không chỉ pha chế mà còn giao tiếp, kể chuyện và dẫn dắt trải nghiệm. Hệ thống thiết bị bar, khu bảo quản rượu vang và không gian pha chế cafe được thiết kế để đảm bảo độ ổn định về chất lượng, đồng thời giữ được sự mềm mại trong vận hành. Ly vang luôn đúng nhiệt độ, cafe luôn nhất quán, nhưng không làm mất đi sự thư thả vốn có của không gian tapas bar.",
+                "Saigon Horeca triển khai hệ thống quầy bar với tư duy rất rõ ràng:",
+                "Mọi chi tiết kỹ thuật đều phục vụ cho một mục tiêu: để rượu, cafe và con người kết nối với nhau một cách tự nhiên."
+              ]
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-3cd70efa",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-2.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-2.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/01/sheh-fung-2-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/01/sheh-fung-2-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            },
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-3.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-3.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/01/sheh-fung-3-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/01/sheh-fung-3-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "16b4144a",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-16b4144a",
+        "elementor-section-content-middle",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-4fc0aebb",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-4.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-4.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/01/sheh-fung-4-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/01/sheh-fung-4-600x337.jpg 600w",
+                "alt": "Bếp á đôi công nghiệp",
+                "w": "1366",
+                "h": "768"
+              }
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-515501e0",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "span",
+              "text": "Giải pháp bảo quản – Trữ đông – Chuẩn mực cho nguyên liệu Âu"
+            },
+            {
+              "type": "divider.default",
+              "divider": true
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Ẩm thực Tây Ban Nha đề cao chất lượng nguyên liệu. Vì vậy, hệ thống bảo quản không chỉ là “kho lạnh”, mà là một phần của chất lượng món ăn.",
+                "Trong dự án Casa Maria, Saigon Horeca triển khai:",
+                "Đây là lớp “kỹ thuật thầm lặng” nhưng quyết định trực tiếp đến độ tinh tế của từng đĩa tapas."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "8834001",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-8834001",
+        "elementor-section-content-middle",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-549d58a",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "divider.default",
+              "divider": true
+            },
+            {
+              "type": "heading.default",
+              "tag": "span",
+              "text": "Hệ thống hút mùi – Giữ trọn không gian thưởng thức"
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Một nhà hàng tapas – wine không cho phép mùi bếp lấn át mùi rượu và không khí trò chuyện. Hệ thống hút mùi do Saigon Horeca triển khai được tính toán để:",
+                "Giải pháp này giúp Casa Maria giữ được sự cân bằng giữa bếp hoạt động và không gian thưởng thức."
+              ]
+            },
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/bi-quyet-tao-thuc-don-nha-hang.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/bi-quyet-tao-thuc-don-nha-hang.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2023/12/bi-quyet-tao-thuc-don-nha-hang-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2023/12/bi-quyet-tao-thuc-don-nha-hang-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            },
+            {
+              "type": "heading.default",
+              "tag": "span",
+              "text": "Casa Maria – Một dự án phản ánh rõ triết lý của Saigon Horeca"
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Casa Maria là ví dụ điển hình cho cách Saigon Horeca tiếp cận dự án F&B cao cấp:",
+                "Từ bếp tapas, quầy bar wine – cafe đến hệ thống bảo quản và hút mùi, mỗi giải pháp đều được thiết kế để phục vụ đúng tinh thần Tây Ban Nha hiện đại, đồng thời đáp ứng tiêu chuẩn vận hành chuyên nghiệp cho một nhà hàng quốc tế tại Thảo Điền.",
+                "Một căn bếp tốt không chỉ giúp nấu ăn ngon hơn – mà còn giúp concept nhà hàng được kể trọn vẹn, bền vững và có chiều sâu."
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

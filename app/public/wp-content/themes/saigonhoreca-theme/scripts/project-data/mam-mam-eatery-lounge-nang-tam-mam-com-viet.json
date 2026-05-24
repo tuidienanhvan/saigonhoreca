@@ -1,0 +1,389 @@
+{
+  "slug": "mam-mam-eatery-lounge-nang-tam-mam-com-viet",
+  "title": "MÂM MÂM EATERY & LOUNGE",
+  "meta_description": "Từ ý tưởng khởi nguồn – “mâm cơm Việt” – Mâm Mâm khéo léo đưa biểu tượng sum vầy ấy len lỏi khắp mọi ngóc ngách: trong hình dáng chiếc bàn,",
+  "sections_count": 5,
+  "sections": [
+    {
+      "data_id": "355a605b",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-355a605b",
+        "elementor-section-height-full",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-items-middle"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/mam-mam-nang-tam-mam-com-viet-1.jpg",
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-3901529a",
+          "col_size": 16,
+          "widgets": []
+        },
+        {
+          "col_class": "elementor-column elementor-col-66 elementor-top-column elementor-element elementor-element-7dd42e71",
+          "col_size": 66,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h1",
+              "text": "MÂM MÂM EATERY & LOUNGE"
+            },
+            {
+              "type": "spacer.default",
+              "spacer": true
+            },
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Nâng tầm mâm cơm Việt trong không gian đậm chất quê nhà"
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "“Mâm cơm” bước ra thế giới – Khi không gian kể chuyện trở thành cầu nối văn hóa Việt"
+              ]
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-641e797e",
+          "col_size": 16,
+          "widgets": []
+        }
+      ]
+    },
+    {
+      "data_id": "ef110fa",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-ef110fa",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-65c48449",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Giữa lòng Sài Gòn nhộn nhịp, nơi ánh đèn đô thị có thể dễ dàng làm lu mờ đi những điều bình dị. Thế mà Mâm Mâm Eatery & Lounge lại như một khoảng lặng hiếm hoi, nơi thời gian dường như chậm lại. Vẫn là những phố phường tấp nập, những ánh đèn lấp lánh, nhưng khi bước vào đây, như thể được tách biệt khỏi mọi xô bồ của thế giới bên ngoài."
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Từ ý tưởng khởi nguồn – “mâm cơm Việt” – Mâm Mâm khéo léo đưa biểu tượng sum vầy ấy len lỏi khắp mọi ngóc ngách: trong hình dáng chiếc bàn, trong chi tiết những khay tròn trên trần nhà, và thậm chí là cách ánh đèn nhẹ nhàng rọi xuống như nắng chiều rơi trên mâm cơm quê."
+              ]
+            },
+            {
+              "type": "image-carousel.default",
+              "slides": [
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/mam-mam-nang-tam-mam-com-viet-1-1.jpg",
+                  "srcset": null,
+                  "alt": "mam-mam-nang-tam-mam-com-viet (1)",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/mam-mam-nang-tam-mam-com-viet-3.jpg",
+                  "srcset": null,
+                  "alt": "mam-mam-nang-tam-mam-com-viet",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/mam-mam-nang-tam-mam-com-viet-2.jpg",
+                  "srcset": null,
+                  "alt": "mam-mam-nang-tam-mam-com-viet (2)",
+                  "w": null,
+                  "h": null
+                }
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Có lẽ không ai trong chúng ta xa lạ với hình ảnh cả gia đình quây quần bên mâm cơm. Nhà hàng Mâm Mâm luôn chú trọng đến việc tái hiện và nâng tầm các món ăn truyền thống Việt Nam. Thực đơn của nhà hàng không chỉ bao gồm các món ăn quen thuộc mà còn kết hợp với kỹ thuật nấu ăn hiện đại để mang lại những trải nghiệm mới lạ nhưng vẫn giữ được hương vị đặc trưng riêng.",
+                "Mâm Mâm mang đến một không gian ẩm thực nơi mà mỗi món ăn đều là một tác phẩm nghệ thuật, kết hợp với giá trị cốt lõi là sự chia sẻ và kết nối trong bữa ăn. Menu của nhà hàng được chia thành các phần rõ ràng, phục vụ cho từng thời điểm trong ngày: Daytime, Snack Time, Night Time, và Happy Hour."
+              ]
+            },
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/mam-mam-sgh.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/mam-mam-sgh.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/05/mam-mam-sgh-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/05/mam-mam-sgh-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Ấn tượng nhất chính là cách Mâm Mâm đưa văn hóa vào không gian mà không cần quá nhiều lời. Những chiếc mâm không chỉ là vật dụng, chúng là biểu tượng – nơi mọi người quây quần, sẻ chia món ngon và kể nhau nghe những câu chuyện đời thường. Trên mâm, không có khoảng cách – chỉ có sự kết nối, ấm cúng, và tiếng cười rộn rã bên những món ăn thân quen.",
+                "Với người Việt, ẩm thực luôn gắn liền với tình cảm và văn hóa. Hiểu được giá trị ấy, Mâm Mâm Eatery & Lounge đã được tạo nên như một không gian vừa sang trọng, hiện đại nhưng vẫn lưu giữ được tinh thần của bữa cơm Việt xưa.",
+                "Saigon Horeca tự hào đồng hành cùng Mâm Mâm trong việc kiến tạo không gian và trải nghiệm ẩm thực mang đậm bản sắc Việt. Với chúng tôi, mỗi nhà hàng không chỉ là nơi phục vụ món ăn – mà còn là nơi kể lại những câu chuyện văn hóa, bằng hương vị, bằng không gian và bằng cả tấm lòng của người làm bếp."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "2fcbcb7f",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-2fcbcb7f",
+        "elementor-section-content-middle",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-2530f256",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Triết lý \"mâm cơm\" – Trái tim của bữa cơm Việt"
+            },
+            {
+              "type": "divider.default",
+              "divider": true
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Trung tâm của Mâm Mâm là hình ảnh “mâm cơm” – biểu tượng của sự sum vầy trong văn hóa Việt. Hình dáng tròn trịa của “mâm” được khéo léo lồng ghép vào thiết kế bàn ăn, trần nhà và tường, tạo nên một không gian ấm cúng, gợi nhớ đến những bữa cơm gia đình thân thương.",
+                "Với MÂM MÂM Eatery & Lounge – một không gian ẩm thực mang đậm tinh thần fusion hiện đại, nơi “mâm cơm Việt” được tái hiện đầy sáng tạo giữa lòng Sài Gòn – Saigon Horeca SGH tự hào là đối tác chuyên nghiệp được chủ đầu tư lựa chọn đồng hành từ những ngày đầu tiên.",
+                "Từ bản phác thảo đầu tiên của khu bếp và quầy bar, đến việc lựa chọn từng thiết bị bếp phù hợp với nhu cầu vận hành đặc thù, Saigon Horeca không chỉ đặt trọng tâm vào công năng, mà còn chú trọng đến thẩm mỹ và trải nghiệm thực tế của Chef và cộng sự."
+              ]
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-3cd70efa",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/mam-mam-sgh-1.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/mam-mam-sgh-1.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/05/mam-mam-sgh-1-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/05/mam-mam-sgh-1-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            },
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/mam-mam-sgh-2.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/mam-mam-sgh-2.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/05/mam-mam-sgh-2-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/05/mam-mam-sgh-2-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "16b4144a",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-16b4144a",
+        "elementor-section-content-middle",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-4fc0aebb",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/mam-mam-sgh-4.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/mam-mam-sgh-4.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/05/mam-mam-sgh-4-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/05/mam-mam-sgh-4-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-515501e0",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "span",
+              "text": "Điểm nhấn mạnh mẽ trong thiết kế của Saigon Horeca"
+            },
+            {
+              "type": "divider.default",
+              "divider": true
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Bếp MÂM MÂM – Nơi hội tụ của tinh hoa ẩm thực từ Mâm cơm Việt",
+                "Ngay từ ánh nhìn đầu tiên, căn bếp do Saigon Horeca thiết kế tạo sự ấn tượng bởi lối bố trí gọn gàng, đường nét uốn cong mềm mại trong khu vực bar. Mặc dù hai khu vực bếp và bar được phân tách rõ ràng, nhưng mỗi không gian đều có chức năng riêng biệt, tối ưu hóa trải nghiệm cho cả đội ngũ bếp và bartenders.",
+                "Mọi thiết bị trong căn bếp đều được Saigon Horeca lựa chọn kỹ lưỡng, từ chất liệu inox bóng bẩy đến công năng chuẩn công nghiệp, tất cả đều hướng tới mục tiêu mang lại một quy trình vận hành mượt mà và hiệu quả."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "862d838",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-862d838",
+        "elementor-section-content-middle",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-6899966",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Không gian bếp nổi bật với mảng tường gạch đỏ – một màu sắc gợi nhớ đến những gian bếp xưa ấm lửa, nhưng lại được phối hợp đầy hiện đại với hệ thống hút mùi inox và dàn thiết bị nấu nướng công suất cao. Đây chính là sự hòa quyện giữa truyền thống và hiện đại – giữa chiều sâu văn hóa và tính chuyên nghiệp của một không gian bếp chuẩn fine dining."
+              ]
+            },
+            {
+              "type": "image-carousel.default",
+              "slides": [
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/mam-mam-sgh-5.jpg",
+                  "srcset": null,
+                  "alt": "mam-mam-sgh (5)",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/mam-mam-sgh-6.jpg",
+                  "srcset": null,
+                  "alt": "mam-mam-sgh (6)",
+                  "w": null,
+                  "h": null
+                }
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Với Saigon Horeca, mỗi căn bếp không chỉ đơn thuần là nơi để nấu ăn, mà là một “sân khấu” – nơi mỗi người đầu bếp là một nghệ sĩ, mỗi món ăn là một tác phẩm. Và tại MÂM MÂM, sân khấu ấy được chăm chút từ ánh sáng, luồng di chuyển, đến từng ổ cắm, từng khe tủ – tất cả để tạo nên một không gian tinh tế, nơi mọi tinh hoa ẩm thực được bắt đầu từ sự gọn gàng, chỉn chu và đầy cảm hứng."
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Tại MÂM MÂM, mỗi thiết bị bếp đều được Saigon Horeca lựa chọn và bố trí kỹ lưỡng nhằm đảm bảo cả công năng lẫn thẩm mỹ. Khu bếp nổi bật với hệ thống hút khói công nghiệp kết hợp cấp khí tươi hiện đại, giúp không gian luôn thông thoáng, an toàn trong mọi hoạt động cao điểm.",
+                "Bên cạnh đó, hệ thống lọc mùi tĩnh điện được tích hợp để lọc sạch khói, dầu mỡ và các mùi hôi phát sinh trong quá trình nấu nướng. Mùi và khói sẽ được hút qua các bộ lọc đặc biệt, làm sạch không khí và trả lại một luồng không khí trong lành cho môi trường xung quanh. Cách bố trí này không chỉ tạo ra một không gian bếp sạch sẽ, thoáng đãng mà còn giúp duy trì chất lượng không khí, bảo vệ sức khỏe cho đội ngũ bếp và nhân viên làm việc.",
+                "Điểm nhấn không thể bỏ qua là gian bếp inox cao cấp – nơi mọi khu vực chế biến đều được phân tách rõ ràng theo chuẩn bếp chuyên nghiệp: từ sơ chế, chiên nướng, nấu, đến ra món. Chất liệu inox không chỉ đảm bảo tính bền vững, dễ vệ sinh, mà còn tạo nên cảm giác sáng sủa, sạch sẽ và chuyên nghiệp cho toàn bộ không gian."
+              ]
+            },
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/mam-mam-sgh-7.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/mam-mam-sgh-7.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/05/mam-mam-sgh-7-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/05/mam-mam-sgh-7-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Mỗi mét vuông trong không gian bếp đều được cân nhắc kỹ lưỡng – để từng chuyển động trong bếp trở nên mượt mà, để những món ăn đậm chất Việt được tạo ra một cách hiệu quả và đầy cảm hứng.",
+                "Không chỉ thiết kế bếp, Saigon Horeca đồng hành cùng Mâm Mâm trong việc hiện thực hóa một tầm nhìn: đưa ẩm thực Việt ra thế giới, bắt đầu từ những giá trị cốt lõi và chân thành nhất – như việc xây dựng một căn bếp vừa đầy đủ công năng, vừa được thiết kế khoa học và tinh tế."
+              ]
+            },
+            {
+              "type": "image-carousel.default",
+              "slides": [
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/mam-mam-sgh-12.jpg",
+                  "srcset": null,
+                  "alt": "mam-mam-sgh (12)",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/mam-mam-sgh-13.jpg",
+                  "srcset": null,
+                  "alt": "mam-mam-sgh (13)",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/mam-mam-sgh-11.jpg",
+                  "srcset": null,
+                  "alt": "mam-mam-sgh (11)",
+                  "w": null,
+                  "h": null
+                }
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Song song đó, thiết bị lạnh công nghiệp như bàn mát, tủ đông, kho lạnh đều được lựa chọn từ những thương hiệu uy tín, lắp đặt theo đúng lưu trình vận hành của nhà hàng, đảm bảo thực phẩm luôn được bảo quản ở điều kiện tốt nhất, từ khi nhập hàng đến lúc ra món."
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

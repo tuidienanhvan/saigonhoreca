@@ -1,0 +1,15 @@
+/*
+Theme Name: Saigon Horeca Theme
+Theme URI: https://saigonhoreca.vn
+Author: Saigon Horeca Team
+Author URI: https://saigonhoreca.vn
+Description: Theme WordPress cho SAIGON HORECA - Tư vấn / Thiết kế / Thi công bếp công nghiệp & quầy bar. Zero-plugin, Tailwind CSS v4, per-route bundles, static HTML cache, image-LCP architecture. Forked từ saigonhoreca-theme cùng pipeline tối ưu.
+Version: 1.0
+Text Domain: saigonhoreca
+*/
+
+/* 
+ * NOTE: File này chỉ chứa WordPress Theme Header. 
+ * Mọi logic CSS và Design Tokens nằm trong assets/css/style.css
+ * File assets/css/tailwind.css là kết quả build cuối cùng.
+ */

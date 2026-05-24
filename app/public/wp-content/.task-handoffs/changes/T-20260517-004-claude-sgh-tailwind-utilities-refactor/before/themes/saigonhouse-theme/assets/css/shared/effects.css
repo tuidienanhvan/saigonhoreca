@@ -1,0 +1,78 @@
+/**
+ * Shared Effects & Motion Utilities
+ * Bundled into dist/theme.css via @import in style.css
+ * Hover lifts, image zoom, underline reveal, glow pulse, float.
+ */
+
+@layer utilities {
+  /* ─── Card hover lift ─── */
+  .sgh-card-hover {
+    transition: transform 0.35s var(--ease-spring), box-shadow 0.35s;
+  }
+  .sgh-card-hover:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px color-mix(in srgb, var(--brand) 12%, transparent);
+  }
+
+  /* ─── Image zoom on hover ─── */
+  .sgh-img-zoom            { @apply overflow-hidden; border-radius: inherit; }
+  .sgh-img-zoom img        { transition: transform 0.6s var(--ease-spring); }
+  .sgh-img-zoom:hover img  { transform: scale(1.06); }
+
+  /* ─── Underline reveal ─── */
+  .sgh-underline-hover {
+    @apply relative inline-block;
+  }
+  .sgh-underline-hover::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--brand);
+    transition: width 0.35s var(--ease-spring);
+  }
+  .sgh-underline-hover:hover::after { width: 100%; }
+
+  /* ─── Glow pulse ─── */
+  .sgh-glow-btn { animation: sgh-glow 3s ease-in-out infinite; }
+
+  /* ─── Float ─── */
+  .sgh-float           { animation: sgh-float 4s ease-in-out infinite; }
+  .sgh-parallax-slow   { will-change: transform; }
+
+  /* ─── Glassmorphism (alt to .glass) ─── */
+  .sgh-glass {
+    background: color-mix(in srgb, var(--bg-card) 75%, transparent);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid color-mix(in srgb, var(--border-default), transparent 40%);
+    box-shadow: 0 4px 24px color-mix(in srgb, var(--shadow) 20%, transparent);
+  }
+  [data-theme="dark"] .sgh-glass,
+  .dark .sgh-glass {
+    border-top-color: rgba(255, 255, 255, 0.08);
+  }
+}
+
+@keyframes sgh-glow {
+  0%, 100% { box-shadow: 0 0 20px color-mix(in srgb, var(--brand) 20%, transparent); }
+  50%      { box-shadow: 0 0 40px color-mix(in srgb, var(--brand) 40%, transparent); }
+}
+@keyframes sgh-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+
+/* Reduced motion handled globally in style.css; this is defensive override */
+@media (prefers-reduced-motion: reduce) {
+  .sgh-card-hover,
+  .sgh-img-zoom img,
+  .sgh-underline-hover::after,
+  .sgh-glow-btn,
+  .sgh-float {
+    transition: none !important;
+    animation:  none !important;
+  }
+}

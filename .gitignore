@@ -1,0 +1,71 @@
+# Core WordPress files and directories
+app/public/wp-admin/
+app/public/wp-includes/
+app/public/wp-*.php
+app/public/xmlrpc.php
+app/public/index.php
+app/public/readme.html
+app/public/license.txt
+
+# Themes
+app/public/wp-content/themes/twentytwentyfive/
+app/public/wp-content/themes/twentytwentyfour/
+app/public/wp-content/themes/twentytwentythree/
+
+# Theme Specific Ignores
+app/public/wp-content/themes/saigonhoreca-theme/node_modules/
+app/public/wp-content/themes/saigonhoreca-theme/tmp-download/
+app/public/wp-content/themes/saigonhoreca-theme/*.py
+
+# Local Sites specific directories
+conf/
+logs/
+
+# Web Assets & Media (Usually large or binary)
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.webp
+*.mp4
+*.webm
+*.zip
+*.tar.gz
+*.pdf
+*.woff
+*.woff2
+*.ttf
+*.eot
+
+# Node & Package Manager files
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Build & Cache directories
+dist/
+build/
+.cache/
+.npm/
+
+# IDE and System Files
+.git/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Agent & Graphify caches
+.agents/
+graphify-out/
+scratch/
+lh-screenshots/
+
+# Generator scripts and helper files
+*.py
+*.docx
+*.doc
+/*.html
+

@@ -1,0 +1,106 @@
+/**
+ * Latest News Section — Pure CSS
+ */
+
+.sh-news {
+    @apply py-20 px-0 [background:var(--bg-card)];
+}
+
+.sh-news__container {
+    @apply my-0 mx-auto py-0 px-4 [max-width:1200px];
+}
+
+/* ── Header ── */
+.sh-news__header {
+    @apply flex justify-between items-end mb-12;
+}
+
+.sh-news__label {
+    @apply block font-bold tracking-wider uppercase text-sm mb-2 [color:var(--brand)];
+}
+
+.sh-news__title {
+    @apply text-3xl font-bold m-0 [color:var(--text-1)];
+}
+
+@media (min-width: 768px) {
+    .sh-news__title {
+    @apply text-4xl;
+}
+}
+
+.sh-news__title-accent {
+    @apply [color:var(--brand)];
+}
+
+/* ── View All Link ── */
+.sh-news__view-all {
+    @apply inline-flex items-center gap-2 font-bold no-underline transition-colors duration-200 [color:var(--brand)];
+}
+
+.sh-news__view-all:hover {
+    @apply [color:var(--secondary)];
+}
+
+.sh-news__view-all--desktop {
+    @apply hidden;
+}
+
+@media (min-width: 768px) {
+    .sh-news__view-all--desktop {
+    @apply inline-flex;
+}
+}
+
+.sh-news__arrow-icon {
+    @apply w-5 h-5;
+}
+
+/* ── Grid ── */
+.sh-news__grid {
+    @apply grid gap-8 [grid-template-columns:1fr];
+}
+
+@media (min-width: 768px) {
+    .sh-news__grid {
+    @apply [grid-template-columns:1fr_1fr];
+}
+}
+
+@media (min-width: 1024px) {
+    .sh-news__grid {
+    @apply [grid-template-columns:1fr_1fr_1fr];
+}
+}
+
+/* ── Mobile View All ── */
+.sh-news__view-all-mobile {
+    @apply text-center mt-12;
+}
+
+@media (min-width: 768px) {
+    .sh-news__view-all-mobile {
+    @apply hidden;
+}
+}
+
+.sh-news__view-all-btn {
+    @apply inline-flex items-center gap-2 py-3 px-8 font-bold no-underline transition-all duration-200 [background:var(--bg-card)] [border:2px_solid_var(--brand)] [color:var(--brand)] [border-radius:var(--radius)] [box-shadow:0_4px_6px_rgba(0,_0,_0,_0.05)];
+}
+
+.sh-news__view-all-btn:hover {
+    @apply [background:var(--brand)] [color:#fff] [box-shadow:0_4px_12px_rgba(0,_0,_0,_0.1)];
+}
+
+/* ── Dark Mode ── */
+.dark .sh-news {
+    @apply [background:var(--bg-card)];
+}
+
+.dark .sh-news__title {
+    @apply [color:var(--text-1)];
+}
+
+.dark .sh-news__view-all-btn {
+    @apply [background:var(--bg-card)];
+}

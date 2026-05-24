@@ -1,0 +1,208 @@
+/**
+ * du-an-vinh-hiep — concept slot.
+ * COFFEE LAB BRUTALIST split: 50/50 with brutalist concrete frame on the media,
+ * step-annotation list ("ROAST · STEP 01–04") layered behind the body text,
+ * monospace technical labels, and a heavy gold left-rule on the body column.
+ * Owns: .pp-split-vhp (shared with partnership/specs).
+ * @package SaigonHoreca
+ */
+
+/* ─────────────────────────────────────────────
+   01 · Split shell
+   ───────────────────────────────────────────── */
+.pp-split-vhp {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.75rem;
+  align-items: center;
+  position: relative;
+  isolation: isolate;
+}
+@media (min-width: 992px) {
+  .pp-split-vhp {
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+  }
+  .pp-split-vhp--reverse .pp-split-vhp__media { order: 2; }
+  .pp-split-vhp--reverse .pp-split-vhp__body  { order: 1; }
+}
+
+/* Decorative roast-step watermark behind body */
+.pp-split-vhp::before {
+  content: 'ROAST / 04';
+  position: absolute;
+  top: -3rem;
+  right: -1rem;
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 12vw, 9rem);
+  font-weight: 800;
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  color: color-mix(in srgb, var(--gold) 4.5%, transparent);
+  pointer-events: none;
+  z-index: -1;
+  user-select: none;
+  white-space: nowrap;
+}
+.pp-split-vhp--reverse::before {
+  right: auto;
+  left: -1rem;
+  content: 'CUPPING / 05';
+}
+
+/* ─────────────────────────────────────────────
+   02 · Body column — gold left rule + step list
+   ───────────────────────────────────────────── */
+.pp-split-vhp__body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  position: relative;
+  z-index: 2;
+  padding-left: 1.5rem;
+  border-left: 3px solid color-mix(in srgb, var(--gold) 75%, transparent);
+}
+@media (min-width: 992px) {
+  .pp-split-vhp__body {
+    padding-left: 2rem;
+  }
+  .pp-split-vhp--reverse .pp-split-vhp__body {
+    padding-left: 0;
+    padding-right: 2rem;
+    border-left: none;
+    border-right: 3px solid color-mix(in srgb, var(--gold) 75%, transparent);
+  }
+}
+
+.pp-split-vhp__body .pp-text-vhp__divider {
+  align-self: flex-start;
+}
+.pp-split-vhp__body .pp-text-vhp__title {
+  font-size: clamp(1.55rem, 2.6vw, 2.35rem);
+  text-align: left;
+  line-height: 1.18;
+}
+.pp-split-vhp__body .pp-text-vhp__title::after { display: none; }
+
+/* Step-annotation strip attached to body */
+.pp-split-vhp__body::after {
+  content: 'STEP · 03 / 05  →  COMPACT KITCHEN';
+  display: inline-block;
+  align-self: flex-start;
+  margin-top: 0.4rem;
+  padding: 0.45rem 0.75rem;
+  font-family: ui-monospace, 'JetBrains Mono', Menlo, Consolas, monospace;
+  font-size: 0.66rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--gold) 88%, var(--bc));
+  background: color-mix(in srgb, var(--b3) 60%, transparent);
+  border: 1px dashed color-mix(in srgb, var(--gold) 38%, transparent);
+}
+.pp-split-vhp--reverse .pp-split-vhp__body::after {
+  content: 'STEP · 05 / 05  →  CUPPING TABLE';
+}
+
+/* ─────────────────────────────────────────────
+   03 · Media column — brutalist concrete frame
+   ───────────────────────────────────────────── */
+.pp-split-vhp__media {
+  position: relative;
+  aspect-ratio: 16 / 11;
+  overflow: hidden;
+  border-radius: 2px;
+  background: var(--b3);
+  border: 1px solid var(--bd);
+  transition: border-color 0.5s var(--ease-spring), transform 0.5s var(--ease-spring);
+  /* Outer concrete frame via outline + offset */
+  outline: 1px solid color-mix(in srgb, var(--gold) 30%, transparent);
+  outline-offset: 10px;
+}
+.pp-split-vhp__media:hover {
+  border-color: color-mix(in srgb, var(--gold) 60%, transparent);
+}
+.pp-split-vhp__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(0.92) contrast(1.06);
+  transition: transform 0.9s var(--ease-spring), filter 0.6s ease;
+}
+.pp-split-vhp__media:hover img {
+  transform: scale(1.05);
+  filter: saturate(1.05) contrast(1.08);
+}
+
+/* Top-left technical badge on media */
+.pp-split-vhp__media::before {
+  content: 'KIT-A · LEADERSHIP DINING · IND-GRADE';
+  position: absolute;
+  top: 0.7rem;
+  left: 0.7rem;
+  z-index: 3;
+  padding: 0.4rem 0.65rem;
+  font-family: ui-monospace, 'JetBrains Mono', Menlo, Consolas, monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--gold) 92%, var(--bc));
+  background: color-mix(in srgb, var(--b1) 78%, transparent);
+  backdrop-filter: blur(6px) saturate(140%);
+  border: 1px solid color-mix(in srgb, var(--gold) 40%, transparent);
+  border-left: 2px solid var(--gold);
+}
+.pp-split-vhp--reverse .pp-split-vhp__media::before {
+  content: 'LAB-B · CUPPING STATION · STAINLESS';
+}
+
+/* Bottom-right roast meta */
+.pp-split-vhp__media::after {
+  content: '◆ 24/01  ·  GIA LAI  ·  EXPORT';
+  position: absolute;
+  bottom: 0.7rem;
+  right: 0.7rem;
+  z-index: 3;
+  padding: 0.32rem 0.55rem;
+  font-family: ui-monospace, 'JetBrains Mono', Menlo, Consolas, monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--bc) 86%, var(--bc2));
+  background: color-mix(in srgb, var(--b1) 70%, transparent);
+  backdrop-filter: blur(6px);
+  border-top: 1px solid color-mix(in srgb, var(--gold) 35%, transparent);
+}
+
+/* Concrete scanline overlay on media */
+.pp-split-vhp__media {
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent 0,
+    transparent 14px,
+    color-mix(in srgb, var(--bc) 3%, transparent) 14px,
+    color-mix(in srgb, var(--bc) 3%, transparent) 15px
+  );
+}
+
+/* ─────────────────────────────────────────────
+   04 · Brutalist L-bracket ornaments on body
+   ───────────────────────────────────────────── */
+.pp-split-vhp__body::before {
+  content: '';
+  position: absolute;
+  top: -1.5rem;
+  left: -1.5rem;
+  width: 56px;
+  height: 56px;
+  border-top: 2px solid color-mix(in srgb, var(--gold) 60%, transparent);
+  border-left: 2px solid color-mix(in srgb, var(--gold) 60%, transparent);
+  pointer-events: none;
+  z-index: -1;
+}
+.pp-split-vhp--reverse .pp-split-vhp__body::before {
+  left: auto;
+  right: -1.5rem;
+  border-left: none;
+  border-right: 2px solid color-mix(in srgb, var(--gold) 60%, transparent);
+}

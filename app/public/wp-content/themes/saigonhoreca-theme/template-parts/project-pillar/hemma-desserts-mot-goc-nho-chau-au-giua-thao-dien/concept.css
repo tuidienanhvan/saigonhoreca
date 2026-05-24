@@ -1,0 +1,216 @@
+/**
+ * hemma-desserts-mot-goc-nho-chau-au-giua-thao-dien — concept slot.
+ * OWNS .pp-split-hmd shared split layout (used by specs/related too).
+ * European Patisserie Editorial: porcelain plate frame on media,
+ * cream body card, lace corner ornaments, baroque accents.
+ * @package SaigonHoreca
+ */
+
+.pp-split-hmd {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.75rem;
+  align-items: center;
+  position: relative;
+  padding: 1rem 0;
+}
+@media (min-width: 992px) {
+  .pp-split-hmd {
+    grid-template-columns: 1.05fr 1fr;
+    gap: 4.75rem;
+  }
+  .pp-split-hmd--reverse .pp-split-hmd__media { order: 2; }
+  .pp-split-hmd--reverse .pp-split-hmd__body  { order: 1; }
+}
+
+/* Watermark display character behind split */
+.pp-split-hmd::before {
+  content: 'H';
+  position: absolute;
+  top: -3rem;
+  right: -1rem;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 700;
+  font-size: clamp(12rem, 22vw, 22rem);
+  line-height: 1;
+  color: color-mix(in srgb, var(--gold) 3%, transparent);
+  pointer-events: none;
+  z-index: 0;
+  user-select: none;
+  letter-spacing: -0.04em;
+}
+.pp-split-hmd--reverse::before {
+  right: auto;
+  left: -1rem;
+  content: 'D';
+}
+
+/* ----------------------------------------------------------------------
+ * BODY — cream porcelain card
+ * ---------------------------------------------------------------------- */
+.pp-split-hmd__body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+  position: relative;
+  z-index: 2;
+  padding: 2.25rem 2.25rem;
+  background:
+    linear-gradient(180deg,
+      color-mix(in srgb, var(--b1) 55%, transparent) 0%,
+      color-mix(in srgb, var(--b2) 60%, transparent) 100%);
+  backdrop-filter: blur(10px) saturate(135%);
+  -webkit-backdrop-filter: blur(10px) saturate(135%);
+  border: 1px solid color-mix(in srgb, var(--gold) 20%, var(--bd));
+  border-radius: 4px;
+  box-shadow:
+    0 22px 50px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 color-mix(in srgb, var(--gold) 12%, transparent);
+}
+@media (min-width: 768px) {
+  .pp-split-hmd__body { padding: 2.75rem 3rem; }
+}
+
+.pp-split-hmd__body .pp-text-hmd__divider {
+  align-self: flex-start;
+}
+.pp-split-hmd--reverse .pp-split-hmd__body .pp-text-hmd__divider {
+  align-self: flex-end;
+}
+.pp-split-hmd__body .pp-text-hmd__divider::after {
+  content: 'Création';
+  left: 0;
+  transform: none;
+  bottom: calc(100% + 0.4rem);
+}
+.pp-split-hmd--reverse .pp-split-hmd__body .pp-text-hmd__divider::after {
+  left: auto;
+  right: 0;
+}
+
+.pp-split-hmd__body .pp-text-hmd__title {
+  font-size: clamp(1.6rem, 2.7vw, 2.35rem);
+  text-align: left;
+  line-height: 1.22;
+  font-family: var(--font-display);
+}
+.pp-split-hmd--reverse .pp-split-hmd__body .pp-text-hmd__title {
+  text-align: right;
+}
+.pp-split-hmd--reverse .pp-split-hmd__body .pp-text-hmd__body p {
+  text-align: right;
+}
+
+/* Lace corner ornaments on body card */
+.pp-split-hmd__body::before,
+.pp-split-hmd__body::after {
+  content: '';
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle at 4px 4px,
+      color-mix(in srgb, var(--gold) 55%, transparent) 1.4px,
+      transparent 2px);
+  background-size: 8px 8px;
+  opacity: 0.85;
+}
+.pp-split-hmd__body::before {
+  top: 10px; left: 10px;
+  -webkit-mask-image: linear-gradient(135deg, #000 35%, transparent 75%);
+          mask-image: linear-gradient(135deg, #000 35%, transparent 75%);
+}
+.pp-split-hmd__body::after {
+  bottom: 10px; right: 10px;
+  -webkit-mask-image: linear-gradient(315deg, #000 35%, transparent 75%);
+          mask-image: linear-gradient(315deg, #000 35%, transparent 75%);
+}
+
+/* ----------------------------------------------------------------------
+ * MEDIA — porcelain plate frame
+ * ---------------------------------------------------------------------- */
+.pp-split-hmd__media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 6px;
+  background: var(--b3);
+  border: 1px solid color-mix(in srgb, var(--gold) 22%, transparent);
+  transition: transform 0.6s var(--ease-spring), border-color 0.6s var(--ease-spring);
+  box-shadow:
+    0 28px 60px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 color-mix(in srgb, var(--gold) 15%, transparent);
+  isolation: isolate;
+}
+
+/* Outer porcelain plate ring with scallop top/bottom */
+.pp-split-hmd__media::before {
+  content: '';
+  position: absolute;
+  inset: -16px;
+  border-radius: 8px;
+  border: 1px solid color-mix(in srgb, var(--gold) 22%, transparent);
+  background:
+    radial-gradient(circle at 6px 0,
+      transparent 5px,
+      color-mix(in srgb, var(--gold) 20%, transparent) 5.5px,
+      color-mix(in srgb, var(--gold) 20%, transparent) 6px,
+      transparent 6.5px) repeat-x top left / 12px 6px,
+    radial-gradient(circle at 6px 6px,
+      transparent 5px,
+      color-mix(in srgb, var(--gold) 20%, transparent) 5.5px,
+      color-mix(in srgb, var(--gold) 20%, transparent) 6px,
+      transparent 6.5px) repeat-x bottom left / 12px 6px;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Plate caption tag */
+.pp-split-hmd__media::after {
+  content: 'No. 01';
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  z-index: 4;
+  padding: 0.4rem 0.85rem;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  background: color-mix(in srgb, var(--b1) 70%, transparent);
+  backdrop-filter: blur(10px) saturate(140%);
+  -webkit-backdrop-filter: blur(10px) saturate(140%);
+  border: 1px solid color-mix(in srgb, var(--gold) 32%, transparent);
+  border-radius: 2px;
+  pointer-events: none;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+.pp-split-hmd--reverse .pp-split-hmd__media::after {
+  content: 'No. 02';
+  left: auto;
+  right: 14px;
+}
+
+.pp-split-hmd__media:hover {
+  border-color: color-mix(in srgb, var(--gold) 55%, transparent);
+  transform: translateY(-4px);
+}
+
+.pp-split-hmd__media img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  filter: saturate(1.05) contrast(0.99);
+  transition: transform 0.85s var(--ease-spring), filter 0.6s var(--ease-spring);
+}
+.pp-split-hmd__media:hover img {
+  transform: scale(1.05);
+  filter: saturate(1.12);
+}
+
+@media (max-width: 991px) {
+  .pp-split-hmd::before { font-size: 14rem; opacity: 0.6; }
+  .pp-split-hmd__media::before { inset: -10px; }
+}

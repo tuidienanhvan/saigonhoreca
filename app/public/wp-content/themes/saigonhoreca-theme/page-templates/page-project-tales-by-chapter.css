@@ -1,0 +1,5 @@
+/** Project page-template CSS — tales-by-chapter (layout only). */
+
+body.page-template-page-project-tales-by-chapter {
+  background: var(--b1);
+}

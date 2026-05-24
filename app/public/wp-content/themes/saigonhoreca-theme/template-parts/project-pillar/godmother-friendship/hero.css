@@ -1,0 +1,121 @@
+/**
+ * godmother-friendship — hero slot.
+ * Warm rose and sweet honey aesthetic for a premium cafe and tea room.
+ * @package SaigonHoreca
+ */
+
+.pp-hero-gmf {
+  position: relative;
+  width: 100%;
+  min-height: 88vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--b1);
+  isolation: isolate;
+}
+@media (max-width: 768px) { .pp-hero-gmf { min-height: 70vh; } }
+
+.pp-hero-gmf__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-size: cover !important;
+  background-position: center !important;
+  filter: saturate(1.08) brightness(0.85);
+}
+.pp-hero-gmf__media img,
+.pp-hero-gmf__media iframe,
+.pp-hero-gmf__media video {
+  width: 100%; height: 100%; object-fit: cover; display: block; border: none;
+}
+
+.pp-hero-gmf__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    radial-gradient(ellipse at 50% 70%,
+      color-mix(in srgb, #e0a96d 14%, transparent) 0%,
+      transparent 60%),
+    linear-gradient(180deg,
+      color-mix(in srgb, #2c1a11 25%, transparent) 0%,
+      color-mix(in srgb, var(--b1) 85%, transparent) 100%);
+  pointer-events: none;
+}
+
+/* Warm ambient glows for cafe and tea room depth */
+.pp-hero-gmf::before,
+.pp-hero-gmf::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 1;
+}
+.pp-hero-gmf::before {
+  top: -8%; left: -8%;
+  width: 460px; height: 460px;
+  background: radial-gradient(circle, color-mix(in srgb, #e0a96d 15%, transparent) 0%, transparent 70%);
+  opacity: 0.75;
+}
+.pp-hero-gmf::after {
+  bottom: -10%; right: -6%;
+  width: 520px; height: 520px;
+  background: radial-gradient(circle, color-mix(in srgb, #f8c8dc 10%, transparent) 0%, transparent 70%);
+  opacity: 0.55;
+}
+
+.pp-hero-gmf__content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1100px;
+  padding: 0 1.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+.pp-hero-gmf__content::before {
+  content: '';
+  width: 56px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold), #f8c8dc);
+  box-shadow: 0 0 20px color-mix(in srgb, #e0a96d 60%, transparent);
+}
+
+.pp-hero-gmf__subhead {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.36em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.pp-hero-gmf__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 7vw, 5rem);
+  font-weight: 800;
+  line-height: 1.05;
+  color: var(--bc);
+  letter-spacing: 0.005em;
+  max-width: 22ch;
+  text-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.7),
+    0 0 60px color-mix(in srgb, #e0a96d 18%, transparent);
+}
+
+.pp-hero-gmf__subtitle {
+  margin: 0;
+  max-width: 640px;
+  font-size: clamp(0.97rem, 1.1vw, 1.08rem);
+  line-height: 1.8;
+  color: var(--bc2);
+}

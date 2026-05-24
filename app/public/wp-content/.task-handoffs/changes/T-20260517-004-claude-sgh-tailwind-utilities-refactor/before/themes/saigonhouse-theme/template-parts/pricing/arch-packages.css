@@ -1,0 +1,127 @@
+/**
+ * arch-packages — Component CSS
+ */
+        .sh-packages {
+    @apply py-20 px-0 [background:var(--bg-card)];
+}
+        .sh-packages__container {
+    @apply my-0 mx-auto py-0 px-4 [max-width:72rem];
+}
+        .sh-packages__header {
+    @apply text-center mb-16;
+}
+        .sh-packages__tag {
+    @apply font-bold uppercase tracking-widest text-sm mb-2 block [color:var(--brand)];
+}
+        .sh-packages__title {
+    @apply text-4xl font-bold m-0 [color:var(--text-1)];
+}
+        .sh-packages__desc {
+    @apply mt-4 ml-auto mr-auto [color:var(--text-1-3)] [max-width:42rem];
+}
+        .sh-packages__grid {
+    @apply grid gap-8 [grid-template-columns:1fr];
+}
+        @media (min-width: 768px) { .sh-packages__grid {
+    @apply [grid-template-columns:repeat(3,_1fr)];
+} }
+        .sh-packages__card {
+    @apply rounded-2xl p-8 relative [border:1px_solid_var(--border-default)] [background:var(--bg-card)] [transition:box-shadow_0.3s];
+}
+        .sh-packages__card:hover {
+    @apply [box-shadow:0_20px_25px_-5px_rgba(0,0,0,0.1)];
+}
+        .sh-packages__card--featured {
+    @apply [border:2px_solid_var(--brand)] [box-shadow:0_25px_50px_-12px_rgba(0,0,0,0.12)];
+}
+        @media (min-width: 768px) { .sh-packages__card--featured {
+    @apply [transform:translateY(-1rem)];
+} }
+        .sh-packages__card-badge {
+    @apply absolute text-xs font-bold py-1 px-3 rounded [top:0.75rem] [right:0.75rem] [background:var(--brand)] [color:#fff];
+}
+        .sh-packages__name {
+    @apply text-xl font-bold [margin:0_0_0.5rem];
+}
+        .sh-packages__name--muted {
+    @apply [color:var(--text-1-2)];
+}
+        .sh-packages__name--primary {
+    @apply [color:var(--brand)];
+}
+        .sh-packages__name--secondary {
+    @apply [color:var(--secondary)];
+}
+        .sh-packages__sub {
+    @apply text-sm mb-6 [color:var(--text-1-muted)];
+}
+        .sh-packages__price {
+    @apply font-black mb-6 [color:var(--text-1)];
+}
+        .sh-packages__price--md {
+    @apply text-4xl;
+}
+        .sh-packages__price--lg {
+    @apply text-5xl;
+}
+        .sh-packages__price-unit {
+    @apply text-lg font-normal [color:var(--text-1-3)];
+}
+        .sh-packages__list {
+    @apply list-none p-0 flex flex-col gap-4 text-sm [margin:0_0_2rem] [color:var(--text-1-2)];
+}
+        .sh-packages__list li {
+    @apply flex items-start gap-3;
+}
+        .sh-packages__list svg {
+    @apply w-5 h-5 shrink-0 mt-0.5;
+}
+        .sh-packages__list--accent span {
+    @apply font-bold;
+}
+        .sh-packages__list .sh-packages__excluded {
+    @apply line-through [color:var(--text-1-muted)];
+}
+        .sh-packages__btn {
+    @apply block w-full p-3 font-bold text-center rounded-lg no-underline transition-all duration-300;
+}
+        .sh-packages__btn--outline {
+    @apply [border:2px_solid_var(--bg-alt)] [color:var(--text-1-2)];
+}
+        .sh-packages__btn--outline:hover {
+    @apply [border-color:var(--border-default)];
+}
+        .sh-packages__btn--primary {
+    @apply [background:var(--brand)] [color:#fff] [box-shadow:0_10px_15px_-3px_color-mix(in_srgb,_var(--brand)_30%,_transparent)];
+}
+        .sh-packages__btn--primary:hover {
+    @apply [background:var(--brand-dark)];
+}
+        .sh-packages__btn--secondary {
+    @apply [border:2px_solid_var(--secondary)] [color:var(--secondary)];
+}
+        .sh-packages__btn--secondary:hover {
+    @apply [background:var(--secondary)] [color:#fff];
+}
+        /* Dark Mode */
+        .dark .sh-packages {
+    @apply [background:var(--bg-card)];
+}
+        .dark .sh-packages__title {
+    @apply [color:var(--text-1)];
+}
+        .dark .sh-packages__card {
+    @apply [background:var(--bg-card)] [border-color:var(--border-default)];
+}
+        .dark .sh-packages__card--featured {
+    @apply [border-color:var(--brand)];
+}
+        .dark .sh-packages__price {
+    @apply [color:var(--text-1)];
+}
+        .dark .sh-packages__list {
+    @apply [color:var(--text-1-2)];
+}
+        .dark .sh-packages__btn--outline {
+    @apply [border-color:var(--border-default)] [color:var(--text-1-2)];
+}

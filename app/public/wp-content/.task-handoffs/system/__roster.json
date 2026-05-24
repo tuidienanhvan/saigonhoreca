@@ -1,0 +1,36 @@
+{
+  "version": "v4.3",
+  "last_sync": "2026-05-16",
+  "description": "Single source of truth for agent roster. 5-agent slim roster (v4.2). All docs (README, AGENT-MODEL, AGENTS, ROUTING) derive counts/tiers from this file. Edit here, run `reconcile.sh --fix` to propagate.",
+  "tiers": {
+    "orchestrator": {
+      "id": 1,
+      "label": "Tier 1 — Orchestrator",
+      "members": ["claude", "gemini", "chatgpt"]
+    },
+    "worker": {
+      "id": 2,
+      "label": "Tier 2 — Worker",
+      "members": ["codex", "gemma"]
+    }
+  },
+  "agents": {
+    "claude":  { "tier": 1, "status": "active",  "model": "opus-4.7",       "role": "Architect — planning, verification, browser MCP, judgment", "aliases": [], "context_window": 200000 },
+    "gemini":  { "tier": 1, "status": "active",  "model": "gemini-3.0-flash", "role": "Auditor — broad scan, batch refactor, agentic coding via Antigravity",   "aliases": ["antigravity"], "context_window": 1000000 },
+    "chatgpt": { "tier": 1, "status": "active",  "model": "gpt-5.4",        "role": "Generalist — frontier coding + reasoning + computer use",   "aliases": ["gpt-5.4"], "context_window": 1050000 },
+    "codex":   { "tier": 2, "status": "active",  "model": "gpt-5.3-codex",  "role": "Surgeon — per-file surgical patch via Codex CLI/IDE", "aliases": ["gpt-5.3"], "context_window": 400000 },
+    "gemma":   { "tier": 2, "status": "active",  "model": "gemma-4-31b",    "role": "Local generalist — quick fix, VN content, multimodal, 0 cost", "aliases": ["gemma4", "gemma-4"], "context_window": 256000 }
+  },
+  "status_values": ["active", "limited", "dormant", "inactive", "deprecated"],
+  "status_legend": {
+    "active":     "🟢 ready to dispatch",
+    "limited":    "🟡 used <3 tasks/30d or specialist-legacy — verify before dispatch",
+    "dormant":    "🟡 never used or >30d idle — keep registered but deprioritize",
+    "inactive":   "🔴 paused / quota exhausted — do not dispatch",
+    "deprecated": "⚫ removed from active roster"
+  },
+  "removed_in_v4_2": {
+    "note": "Removed 6 aspirational agents (Poolside, Laguna, Arcee, Nemotron, Grok, Ling, StepFun) that were never operationally available. Historical LEADERBOARD entries preserved for audit trail. Their AGENTS/*.md CV files deleted.",
+    "history": ["poolside", "laguna", "arcee", "nemotron", "grok", "ling", "stepfun"]
+  }
+}

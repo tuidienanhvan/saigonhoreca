@@ -1,0 +1,80 @@
+/**
+ * Home Partners — Saigon Horeca
+ * DARK theme matching production: black bg, white logos in 6-up grid.
+ */
+
+.sh-partners {
+    background: #0a0a0a;
+    color: #fff;
+    padding: 5rem 0;
+}
+@media (min-width: 768px) {
+    .sh-partners { padding: 7rem 0; }
+}
+
+.sh-partners__inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+@media (min-width: 768px) {
+    .sh-partners__inner { padding: 0 2rem; }
+}
+
+.sh-partners__header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+.sh-partners__accent {
+    display: block;
+    width: 64px;
+    height: 3px;
+    margin: 0 auto 1.25rem;
+    background: #f5a623;
+    border-radius: 2px;
+}
+.sh-partners__title {
+    margin: 0;
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+.sh-partners__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+@media (min-width: 640px)  { .sh-partners__grid { grid-template-columns: repeat(4, 1fr); gap: 1.25rem; } }
+@media (min-width: 1024px) { .sh-partners__grid { grid-template-columns: repeat(6, 1fr); gap: 1.5rem; } }
+
+.sh-partners__cell {
+    aspect-ratio: 16 / 10;
+    background: #fff;
+    border-radius: 6px;
+    padding: 0.875rem 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.sh-partners__cell:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(245, 166, 35, 0.25);
+}
+.sh-partners__cell img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 0;
+    transition: transform 0.3s ease;
+}
+.sh-partners__cell:hover img {
+    transform: scale(1.06);
+}

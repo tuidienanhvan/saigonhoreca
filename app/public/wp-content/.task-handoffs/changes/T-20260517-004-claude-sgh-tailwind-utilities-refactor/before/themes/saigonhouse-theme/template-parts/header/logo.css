@@ -1,0 +1,43 @@
+/**
+ * Logo Component — Pure CSS
+ */
+
+.sh-logo {
+    @apply shrink-0 overflow-hidden [max-height:56px];
+}
+
+.sh-logo__link {
+    @apply flex items-center gap-2 no-underline;
+}
+
+.sh-logo__image {
+    @apply object-contain transition-transform duration-300 [width:50px] [height:50px] [max-width:50px] [max-height:50px];
+}
+
+.sh-logo__link:hover .sh-logo__image {
+    @apply [transform:scale(1.05)];
+}
+
+.sh-logo__text {
+    @apply block;
+}
+
+.sh-logo__name {
+    @apply block font-black uppercase leading-none tracking-tight [color:var(--brand)] [font-size:clamp(16px,_1.6vw,_28px)];
+}
+
+.sh-logo__slogan {
+    @apply block font-medium leading-tight mt-0.5 [font-size:clamp(9px,_0.8vw,_13px)] [color:var(--text-1-2)];
+}
+
+/* ── Mobile ── */
+@media (max-width: 767px) {
+    .sh-logo__image {
+    @apply [height:40px] [width:auto];
+}
+}
+
+/* ── Dark Mode ── */
+.dark .sh-logo__slogan {
+    @apply [color:var(--text-1-3)];
+}

@@ -1,0 +1,279 @@
+/**
+ * amdang-typhoon — gallery slot (Cooking & Noodle Section).
+ * Asymmetric Overlapping Media Grid and Technical Specs.
+ * @package SaigonHoreca
+ */
+
+.pp--amdang-typhoon .pp-gallery-at-cooking {
+  background: var(--b2);
+  padding: clamp(4rem, 10vh, 9rem) 0;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.pp--amdang-typhoon .pp-container-at-cooking {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 5vw, 5rem);
+}
+
+.pp--amdang-typhoon .pp-grid-at-cooking {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .pp--amdang-typhoon .pp-grid-at-cooking {
+    grid-template-columns: 54% 46%;
+    gap: clamp(4rem, 6vw, 7rem);
+  }
+}
+
+.pp--amdang-typhoon .pp-text-at-cooking {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.pp--amdang-typhoon .pp-badge-at-cooking {
+  font-family: var(--font-display), sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: color-mix(in srgb, var(--bc) 45%, transparent);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.pp--amdang-typhoon .pp-badge-accent-at-cooking {
+  color: var(--gold);
+  font-weight: 700;
+}
+
+.pp--amdang-typhoon .pp-title-at-cooking {
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(1.8rem, 2.5vw, 2.3rem);
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+  color: var(--bc);
+  margin: 0;
+}
+
+.pp--amdang-typhoon .pp-body-at-cooking {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.pp--amdang-typhoon .pp-paragraph-at-cooking {
+  font-family: var(--font-body), sans-serif;
+  font-size: clamp(0.95rem, 1.05vw, 1.05rem);
+  line-height: 1.85;
+  color: color-mix(in srgb, var(--bc) 75%, transparent);
+  margin: 0;
+  text-align: justify;
+}
+
+/* Technical Specifications Card */
+.pp--amdang-typhoon .pp-cooking-specs-card {
+  position: relative;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--bd);
+  border-radius: 12px;
+  margin-top: 1rem;
+  backdrop-filter: blur(10px);
+}
+
+.pp--amdang-typhoon .pp-cooking-specs-title {
+  font-family: var(--font-display), sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  margin: 0 0 1.25rem 0;
+  border-bottom: 1px solid var(--bs);
+  padding-bottom: 0.75rem;
+}
+
+.pp--amdang-typhoon .pp-cooking-specs-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.pp--amdang-typhoon .pp-cooking-specs-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.88rem;
+  line-height: 1.4;
+}
+
+.pp--amdang-typhoon .pp-cooking-specs-list .spec-name {
+  color: var(--bc);
+  font-weight: 600;
+}
+
+.pp--amdang-typhoon .pp-cooking-specs-list .spec-value {
+  color: var(--bc3);
+  text-align: right;
+  font-size: 0.82rem;
+}
+
+/* OVERLAPPING MEDIA DISPLAY */
+.pp--amdang-typhoon .pp-media-at-cooking {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 11;
+  padding: 1.5rem;
+}
+
+@media (max-width: 767px) {
+  .pp--amdang-typhoon .pp-media-at-cooking {
+    aspect-ratio: 16 / 12;
+    padding: 0.5rem;
+  }
+}
+
+.pp--amdang-typhoon .pp-cooking-frame-framer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(100% - 3rem);
+  height: calc(100% - 3rem);
+  border: 1px solid var(--gold);
+  border-radius: 16px;
+  opacity: 0.2;
+  pointer-events: none;
+  z-index: 0;
+  transform: translate(1.5rem, 1.5rem);
+  transition: transform 0.6s var(--ease-spring), opacity 0.6s var(--ease-spring);
+}
+
+.pp--amdang-typhoon .pp-cooking-img-box {
+  position: absolute;
+  overflow: hidden;
+  border-radius: var(--radius);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
+  background: var(--b3);
+  transition: all 0.6s var(--ease-spring);
+}
+
+.pp--amdang-typhoon .pp-cooking-img-box img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(1.05) brightness(0.85);
+  transition: transform 0.8s var(--ease-spring), filter 0.8s var(--ease-spring);
+}
+
+/* Main Image: Bản vẽ bếp nướng (dùng contain để tránh crop mất thông số kỹ thuật) */
+.pp--amdang-typhoon .pp-cooking-img-box--main {
+  width: 72%;
+  aspect-ratio: 16 / 10;
+  left: 1rem;
+  top: 1rem;
+  z-index: 1;
+  background: #000000;
+}
+
+.pp--amdang-typhoon .pp-cooking-img-box--main img {
+  object-fit: contain;
+  filter: saturate(1.05) brightness(0.9);
+}
+
+/* Sub Image: Thực tế trần mì (ảnh thực tế có thể dùng cover bình thường) */
+.pp--amdang-typhoon .pp-cooking-img-box--sub {
+  width: 48%;
+  aspect-ratio: 16 / 10;
+  right: 1rem;
+  bottom: 0;
+  z-index: 2;
+}
+
+/* Labels on images */
+.pp--amdang-typhoon .pp-cooking-label {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 0.75rem;
+  z-index: 3;
+  padding: 0.35rem 0.75rem;
+  background: rgba(10, 10, 10, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  font-family: var(--font-display), sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  backdrop-filter: blur(5px);
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+/* Interactive Hover effects */
+.pp--amdang-typhoon .pp-media-at-cooking:hover .pp-cooking-frame-framer {
+  transform: translate(2.5rem, 0.5rem);
+  opacity: 0.4;
+}
+
+.pp--amdang-typhoon .pp-media-at-cooking:hover .pp-cooking-img-box--main {
+  transform: scale(0.98) translate(-10px, -5px);
+  border-color: color-mix(in srgb, var(--gold) 20%, transparent);
+}
+
+.pp--amdang-typhoon .pp-media-at-cooking:hover .pp-cooking-img-box--sub {
+  transform: scale(1.04) translate(10px, 5px);
+  border-color: var(--gold);
+  box-shadow: 
+    0 25px 60px rgba(0, 0, 0, 0.85),
+    0 0 25px rgba(245, 166, 35, 0.15);
+  z-index: 5;
+}
+
+.pp--amdang-typhoon .pp-media-at-cooking:hover .pp-cooking-img-box img {
+  filter: saturate(1.08) brightness(1.02);
+}
+
+/* Mobile responsive order */
+@media (max-width: 1023px) {
+  .pp--amdang-typhoon .pp-grid-at-cooking .pp-text-at-cooking {
+    order: 1;
+  }
+  .pp--amdang-typhoon .pp-grid-at-cooking .pp-media-at-cooking {
+    order: 2;
+    margin-top: 1.5rem;
+  }
+  .pp--amdang-typhoon .pp-cooking-frame-framer {
+    display: none;
+  }
+  .pp--amdang-typhoon .pp-cooking-img-box--main {
+    position: relative;
+    width: 100%;
+    left: 0;
+    top: 0;
+    margin-bottom: 1rem;
+  }
+  .pp--amdang-typhoon .pp-cooking-img-box--sub {
+    position: relative;
+    width: 100%;
+    right: 0;
+    bottom: 0;
+  }
+  .pp--amdang-typhoon .pp-media-at-cooking {
+    aspect-ratio: auto;
+  }
+}

@@ -1,0 +1,243 @@
+/* ═══════════════════════════════════════════════════════════════
+   SAIGON HORECA THEME — DARK LUXE EDITION
+   ─────────────────────────────────────────────────────────────
+   BRAND = GOLD (#f5a623) — vàng kim sang trọng.
+   Palette: BLACK + GOLD + WHITE — đen + vàng kim + trắng.
+   Red (#c1272d) chỉ dùng cho status `--er`/`--danger` (form
+   validation errors), KHÔNG phải brand.
+   No light/dark toggle — dark IS the default and only theme.
+
+   SINGLE SOURCE OF TRUTH cho mọi style-*.css route bundle.
+   Mọi route (home/about/contact/single/archive/...) đều
+   `@import "./_tokens.css"` để đảm bảo cùng 1 palette.
+   ═══════════════════════════════════════════════════════════════ */
+
+@theme {
+  --font-sans:    "Be Vietnam Pro", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Lexend", ui-sans-serif, system-ui, sans-serif;
+  --font-serif:   "Lora", Georgia, serif;
+  --font-mono:    "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  --color-primary:         var(--p);
+  --color-primary-hover:   var(--ph);
+  --color-primary-content: var(--pc);
+
+  --color-brand:           var(--p);
+  --color-brand-hover:     var(--ph);
+
+  --color-base-100:        var(--b1);
+  --color-base-200:        var(--b2);
+  --color-base-300:        var(--b3);
+  --color-base-400:        var(--b4);
+
+  --color-base-content:    var(--bc);
+  --color-content-dim:     var(--bc2);
+  --color-content-ghost:   var(--bc3);
+
+  --color-success:         var(--su);
+  --color-warning:         var(--wa);
+  --color-danger:          var(--er);
+  --color-info:            var(--in);
+
+  --color-border-default:  var(--bd);
+  --color-border-subtle:   var(--bs);
+  --color-border-strong:   var(--bt);
+
+  --radius-xs:   6px;
+  --radius-sm:   10px;
+  --radius-md:   14px;
+  --radius-lg:   18px;
+  --radius-xl:   26px;
+  --radius-full: 9999px;
+
+  --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ─── DEFAULT THEME — DARK LUXE (only theme; no toggle) ─────── */
+:root {
+  color-scheme: dark;
+
+  /* Primary brand — VÀNG KIM (saigonhoreca brand).
+     Text on brand surface is BLACK (vàng nền tối + chữ đen). */
+  --p:  #f5a623;   /* gold */
+  --ph: #d18910;   /* gold-dim (hover) */
+  --pc: #000000;   /* text trên brand bg (vàng) */
+
+  /* Base (Backgrounds — black to near-black palette) */
+  --b1: #0a0a0a;
+  --b2: #131313;
+  --b3: #1a1a1a;
+  --b4: #1f1f1f;
+
+  /* Content (Text — white scale) */
+  --bc:  #ffffff;
+  --bc2: rgba(255, 255, 255, 0.78);
+  --bc3: rgba(255, 255, 255, 0.55);
+
+  /* Borders (subtle white at low alpha) */
+  --bd: rgba(255, 255, 255, 0.08);
+  --bs: rgba(255, 255, 255, 0.04);
+  --bt: rgba(255, 255, 255, 0.18);
+
+  /* Status colors */
+  --su: #16a34a;
+  --wa: #f5a623;
+  --er: #c1272d;
+  --in: #2563eb;
+
+  --duration-normal: 0.5s;
+
+  /* ── Legacy aliases (saigonhoreca-theme inheritance) ── */
+
+  /* Brand (= gold). Aliases để code cũ var(--brand) vẫn map vào vàng. */
+  --brand:           var(--p);            /* #f5a623 gold */
+  --brand-hover:     var(--ph);           /* #d18910 gold-dim */
+  --brand-dark:      var(--ph);
+  --brand-light:     #ffd166;             /* gold-lighter */
+  --brand-content:   var(--pc);           /* #000 — text trên gold bg */
+  --brand-50:        rgba(245, 166, 35, 0.06);
+  --brand-100:       rgba(245, 166, 35, 0.12);
+  --on-brand:        var(--pc);
+
+  /* Secondary / Gold accent (same as brand cho consistency) */
+  --secondary:       #f5a623;
+  --secondary-dark:  #d18910;
+  --secondary-light: #ffd166;
+  --secondary-hover: #ffb100;
+  --gold:            #f5a623;
+  --gold-dim:        #d18910;
+
+  /* Accent (theme.json — gold) */
+  --accent:          #f5a623;
+  --accent-dark:     #d18910;
+  --accent-light:    #ffd166;
+  --value-accent:    var(--accent);
+
+  /* Red — KHÔNG phải brand, chỉ dùng cho status danger / error */
+  --color-error:     #c1272d;
+  --color-error-dark:#a31f24;
+
+  /* Status aliases */
+  --success:         var(--su);
+  --warning:         var(--wa);
+  --danger:          var(--er);
+  --info:            var(--in);
+
+  /* Backgrounds */
+  --bg:              var(--b1);
+  --bg-alt:          var(--b3);
+  --bg-dark:         #000000;
+  --bg-card:         var(--b2);
+  --bg-input:        var(--b3);
+  --bg-elevated:     var(--b4);
+  --color-surface-alt: var(--b3);
+
+  /* Text */
+  --text-1:          var(--bc);
+  --text-1-2:        var(--bc2);
+  --text-1-3:        var(--bc2);
+  --text-1-muted:    var(--bc3);
+  --text-2:          var(--bc2);
+  --text-3:          var(--bc3);
+  --color-text:      var(--bc);
+  --sh-heading:      var(--bc);
+
+  /* Borders */
+  --border-default:        var(--bd);
+  --border-default-light:  var(--bs);
+  --border-subtle:         var(--bs);
+  --border-strong:         var(--bt);
+
+  /* Fonts (alias Pi → legacy) */
+  --font-body:    var(--font-sans);
+  --font-heading: var(--font-display);
+  --font-serif:   var(--font-serif);
+
+  /* Radius */
+  --radius:     14px;
+  --sh-radius:  14px;
+
+  /* Shadows (deep on dark theme) */
+  --shadow:          0 4px 16px rgba(0, 0, 0, 0.5);
+  --shadow-main:     0 8px 28px rgba(0, 0, 0, 0.6);
+  --shadow-floating: 0 12px 36px rgba(0, 0, 0, 0.7);
+
+  /* Brand-specific accents */
+  --sh-color-zalo:           #0068ff;
+  --sh-comments-accent:        var(--p);
+  --sh-comments-accent-strong: var(--ph);
+
+  /* Layout */
+  --sh-content-max:  80rem;
+
+  /* Hero ken-burns animation tunables */
+  --sh-ken-burns-duration:    6s;
+  --sh-ken-burns-scale-start: 1;
+  --sh-ken-burns-scale-end:   1.12;
+
+  /* Z-index scale */
+  --z-floating-btns:  55;
+  --z-mobile-nav:     50;
+}
+
+/* ─── GLOBAL BASE ────────────────────────────────────────────── */
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background-color: var(--b1);
+    color: var(--bc);
+    -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
+    font-family: var(--font-sans);
+    /* Chặn horizontal scroll do `100vw` (Windows scrollbar ~15px) hoặc
+       element bleed ngoài viewport. `overflow-x: clip` thay vì `hidden`
+       để KHÔNG phá sticky positioning. */
+    overflow-x: clip;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    min-height: 100vh;
+  }
+
+  img { @apply max-w-full h-auto; }
+  a   { @apply transition-colors duration-200; }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    color: var(--bc);
+    line-height: 1.25;
+  }
+}
+
+/* --- CUSTOM SCROLLBAR (gold thumb trên track đen) --- */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--gold) 45%, transparent) var(--b1);
+}
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--b1); }
+::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--gold) 45%, transparent);
+  border: 2px solid var(--b1);
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--gold) 75%, transparent);
+}
+::-webkit-scrollbar-corner { background: var(--b1); }
+
+/* --- CONTENT-VISIBILITY OPTIMIZATION --- */
+.sgh-cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 800px;
+}
+@media (max-width: 767px) {
+  .sgh-cv-auto {
+    contain-intrinsic-size: 1px 600px;
+  }
+}

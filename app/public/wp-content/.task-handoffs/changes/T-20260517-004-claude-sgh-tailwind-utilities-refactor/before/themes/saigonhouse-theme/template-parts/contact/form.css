@@ -1,0 +1,311 @@
+/**
+ * Contact Page - Form Section
+ * Refined UX/UI: typography, spacing, responsive behavior, and form states.
+ */
+.sh-contact-form {
+    @apply relative z-20 [padding:0_clamp(0.75rem,_2vw,_1.25rem)_clamp(3rem,_6vw,_4.5rem)] [margin-top:clamp(-3.25rem,_-4vw,_-2rem)];
+}
+
+.sh-contact-form__container {
+    @apply my-0 mx-auto [max-width:74rem];
+}
+
+.sh-contact-form__card {
+    @apply rounded-3xl grid overflow-hidden relative [background:var(--bg-card)] [box-shadow:0_24px_60px_-20px_color-mix(in_srgb,_var(--text-1)_20%,_transparent)] [grid-template-columns:1fr] [border:1px_solid_color-mix(in_srgb,_var(--border-default)_52%,_transparent)];
+}
+
+@media (min-width: 1024px) {
+    .sh-contact-form__card {
+    @apply [grid-template-columns:minmax(24rem,_30%)_minmax(0,_1fr)];
+}
+}
+
+.sh-contact-form__left {
+    @apply relative overflow-hidden flex flex-col gap-6 [background:linear-gradient(155deg,_var(--brand-dark)_0%,_var(--brand)_100%)] [color:#ffffff] [padding:clamp(2rem,_3vw,_2.75rem)_clamp(1.5rem,_2.3vw,_2.25rem)];
+}
+
+.sh-contact-form__pattern {
+    @apply absolute opacity-4 pointer-events-none [inset:0];
+}
+
+.sh-contact-form__house {
+    @apply absolute opacity-3 pointer-events-none [bottom:-16%] [right:-22%] [transform:rotate(-10deg)_scale(0.8)];
+}
+
+.sh-contact-form__info {
+    @apply relative [z-index:2];
+}
+
+.sh-contact-form__badge {
+    @apply inline-flex items-center gap-2 rounded-full font-bold mb-4 tracking-wider [background:color-mix(in_srgb,_#ffffff_16%,_transparent)] [padding:0.4rem_1rem] [font-size:0.78rem] [backdrop-filter:blur(4px)];
+}
+
+.sh-contact-form__badge-dot {
+    @apply w-2 h-2 rounded-full [background:var(--secondary)] [box-shadow:0_0_10px_var(--secondary)] [animation:sh-ping_2s_cubic-bezier(0,_0,_0.2,_1)_infinite];
+}
+
+@keyframes sh-ping {
+    75%,
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+.sh-contact-form__title {
+    @apply font-extrabold [font-size:clamp(2rem,_1.4rem_+_1.4vw,_2.75rem)] [margin:0_0_0.85rem] [line-height:1.1] [letter-spacing:-0.01em];
+}
+
+.sh-contact-form__title-accent {
+    @apply [color:var(--secondary)];
+}
+
+.sh-contact-form__subtitle {
+    @apply m-0 [color:color-mix(in_srgb,_#ffffff_88%,_transparent)] [font-size:clamp(0.97rem,_0.9rem_+_0.18vw,_1.06rem)] [line-height:1.65] [max-width:30ch];
+}
+
+.sh-contact-form__contacts {
+    @apply relative flex flex-col gap-4 [z-index:2];
+}
+
+.sh-contact-form__contact-item {
+    @apply flex items-start no-underline transition-transform w-full [gap:0.9rem] [color:#ffffff];
+}
+
+a.sh-contact-form__contact-item:hover {
+    @apply [transform:translateX(4px)];
+}
+
+.sh-contact-form__contact-item .sh-contact-form__hotline,
+.sh-contact-form__contact-item .sh-contact-form__address,
+.sh-contact-form__contact-item .sh-contact-form__email {
+    @apply min-w-0 flex-1;
+}
+
+.sh-contact-form__contact-icon {
+    @apply rounded-full flex items-center justify-center shrink-0 transition-all duration-300 [width:2.35rem] [height:2.35rem] [background:color-mix(in_srgb,_#ffffff_16%,_transparent)] [color:#ffffff];
+}
+
+a.sh-contact-form__contact-item:hover .sh-contact-form__contact-icon {
+    @apply [background:#ffffff] [color:var(--brand)] [transform:scale(1.04)];
+}
+
+.sh-contact-form__contact-icon svg {
+    @apply [width:1.125rem] [height:1.125rem];
+}
+
+.sh-contact-form__hotline {
+    @apply font-extrabold leading-tight [font-size:clamp(1.15rem,_1.03rem_+_0.38vw,_1.5rem)];
+}
+
+.sh-contact-form__address,
+.sh-contact-form__email {
+    @apply [font-size:0.97rem] [line-height:1.55] [color:color-mix(in_srgb,_#ffffff_94%,_transparent)];
+}
+
+.sh-contact-form__address {
+    @apply [word-break:normal] [overflow-wrap:break-word];
+}
+
+.sh-contact-form__email {
+    @apply [word-break:normal] [overflow-wrap:anywhere];
+}
+
+.sh-contact-form__social {
+    @apply flex gap-3 mt-auto pt-6 flex-wrap;
+}
+
+.sh-contact-form__social-btn {
+    @apply w-12 h-12 rounded-full overflow-hidden flex items-center justify-center [background:color-mix(in_srgb,_#ffffff_14%,_transparent)] [transition:transform_0.3s_ease,_background_0.3s_ease] [flex:0_0_auto];
+}
+
+.sh-contact-form__social-btn:hover {
+    @apply [transform:translateY(-3px)] [background:color-mix(in_srgb,_#ffffff_25%,_transparent)];
+}
+
+.sh-contact-form__social-img {
+    @apply w-full h-full object-cover block;
+}
+
+/* Scale overrides removed to allow full-circle branding as requested */
+
+.sh-contact-form__right {
+    @apply [padding:clamp(1.6rem,_3vw,_2.5rem)_clamp(1.1rem,_2.6vw,_2.5rem)] [background:var(--bg-card)];
+}
+
+@media (min-width: 1024px) {
+    .sh-contact-form__right {
+    @apply [padding:clamp(2.25rem,_3vw,_3.25rem)_clamp(2rem,_3.6vw,_3.5rem)];
+}
+}
+
+.sh-contact-form__form-tag {
+    @apply flex items-center [gap:0.7rem] [margin-bottom:0.8rem];
+}
+
+.sh-contact-form__form-line {
+    @apply h-0.5 [width:1.7rem] [background:var(--brand)];
+}
+
+.sh-contact-form__form-label {
+    @apply uppercase font-bold [font-size:0.8rem] [color:var(--brand)] [letter-spacing:0.06em];
+}
+
+.sh-contact-form__form-title {
+    @apply font-extrabold [font-size:clamp(1.9rem,_1.45rem_+_1.15vw,_2.65rem)] [line-height:1.18] [color:var(--text-1)] [margin:0_0_0.65rem] [letter-spacing:-0.015em] [text-wrap:balance];
+}
+
+.sh-contact-form__form-desc {
+    @apply [color:color-mix(in_srgb,_var(--text-1-3)_90%,_var(--text-1)_10%)] [margin:0_0_1.75rem] [font-size:clamp(1rem,_0.95rem_+_0.18vw,_1.08rem)] [line-height:1.65];
+}
+
+.sh-contact-form__form {
+    @apply flex flex-col gap-4;
+}
+
+.sh-contact-form__row {
+    @apply grid [grid-template-columns:1fr] [gap:1rem_1.25rem];
+}
+
+.sh-contact-form__row > div {
+    @apply min-w-0;
+}
+
+@media (min-width: 900px) {
+    .sh-contact-form__row {
+    @apply [grid-template-columns:repeat(2,_minmax(0,_1fr))];
+}
+}
+
+.sh-contact-form__label {
+    @apply block font-bold [font-size:0.93rem] [color:var(--text-1-2)] [margin-bottom:0.52rem] [line-height:1.4];
+}
+
+.sh-contact-form__label-req {
+    @apply [color:var(--danger)];
+}
+
+.sh-contact-form__label-opt {
+    @apply font-medium [color:color-mix(in_srgb,_var(--text-1-muted)_84%,_var(--text-1)_16%)];
+}
+
+.sh-contact-form__input,
+.sh-contact-form__select,
+.sh-contact-form__textarea {
+    @apply w-full text-base [padding:0.86rem_1rem] [border:1px_solid_color-mix(in_srgb,_var(--border-default)_80%,_transparent)] [border-radius:0.8rem] [background:color-mix(in_srgb,_var(--bg-alt)_65%,_var(--bg-card)_35%)] [color:var(--text-1)] [font-family:inherit] [line-height:1.45] [transition:border-color_0.22s_ease,_background_0.22s_ease,_box-shadow_0.22s_ease,_transform_0.22s_ease];
+}
+
+.sh-contact-form__input,
+.sh-contact-form__select {
+    @apply [min-height:3.15rem];
+}
+
+.sh-contact-form__input:focus,
+.sh-contact-form__select:focus,
+.sh-contact-form__textarea:focus {
+    @apply [outline:none];
+}
+
+.sh-contact-form__input:focus-visible,
+.sh-contact-form__select:focus-visible,
+.sh-contact-form__textarea:focus-visible {
+    @apply [border-color:color-mix(in_srgb,_var(--brand)_72%,_#ffffff_28%)] [background:var(--bg-card)] [box-shadow:0_0_0_4px_color-mix(in_srgb,_var(--brand)_14%,_transparent)];
+}
+
+.sh-contact-form__input::placeholder,
+.sh-contact-form__textarea::placeholder {
+    @apply opacity-100 [color:color-mix(in_srgb,_var(--text-1-muted)_78%,_var(--text-1)_22%)];
+}
+
+.sh-contact-form__select {
+    @apply [appearance:none] [background-image:url("data:image/svg+xml,%3Csvg_xmlns='http://www.w3.org/2000/svg'_viewBox='0_0_24_24'_fill='none'_stroke='%235b6b7d'_stroke-width='2'_stroke-linecap='round'_stroke-linejoin='round'%3E%3Cpolyline_points='6_9_12_15_18_9'%3E%3C/polyline%3E%3C/svg%3E")] [background-repeat:no-repeat] [background-position:right_1rem_center] [background-size:1.18em] [padding-right:2.6rem];
+}
+
+.dark .sh-contact-form__select {
+    @apply [background-image:url("data:image/svg+xml,%3Csvg_xmlns='http://www.w3.org/2000/svg'_viewBox='0_0_24_24'_fill='none'_stroke='%2390a3bb'_stroke-width='2'_stroke-linecap='round'_stroke-linejoin='round'%3E%3Cpolyline_points='6_9_12_15_18_9'%3E%3C/polyline%3E%3C/svg%3E")];
+}
+
+.sh-contact-form__textarea {
+    @apply [resize:vertical] [min-height:7rem];
+}
+
+.sh-contact-form__input:invalid:not(:placeholder-shown),
+.sh-contact-form__select:invalid:not(:focus),
+.sh-contact-form__textarea:invalid:not(:placeholder-shown) {
+    @apply [border-color:color-mix(in_srgb,_var(--danger)_82%,_#ffffff_18%)] [box-shadow:0_0_0_3px_color-mix(in_srgb,_var(--danger)_14%,_transparent)];
+}
+
+.sh-contact-form__input:disabled,
+.sh-contact-form__select:disabled,
+.sh-contact-form__textarea:disabled {
+    @apply opacity-66 cursor-not-allowed [background:color-mix(in_srgb,_var(--bg-alt)_80%,_transparent)];
+}
+
+.sh-contact-form__submit {
+    @apply inline-flex items-center justify-center font-extrabold cursor-pointer transition-all w-auto [gap:0.55rem] [padding:1rem_1.8rem] [background:linear-gradient(135deg,_var(--brand)_0%,_color-mix(in_srgb,_var(--brand)_76%,_#0a7f4d_24%)_100%)] [color:#ffffff] [font-size:clamp(1rem,_0.96rem_+_0.2vw,_1.08rem)] [border:1px_solid_color-mix(in_srgb,_var(--brand)_70%,_transparent)] [border-radius:var(--sh-radius)] [align-self:flex-start] [min-height:3.2rem];
+}
+
+.sh-contact-form__submit:hover {
+    @apply [background:linear-gradient(135deg,_var(--brand-hover)_0%,_var(--brand)_100%)] [transform:translateY(-2px)] [box-shadow:0_10px_24px_-8px_color-mix(in_srgb,_var(--brand)_52%,_transparent)];
+}
+
+.sh-contact-form__submit:focus-visible {
+    @apply [outline:none] [box-shadow:0_0_0_4px_color-mix(in_srgb,_var(--brand)_24%,_transparent)];
+}
+
+.sh-contact-form__submit:disabled {
+    @apply opacity-62 cursor-not-allowed [transform:none] [box-shadow:none];
+}
+
+.sh-contact-form__submit-icon {
+    @apply transition-transform [width:1.1rem] [height:1.1rem];
+}
+
+.sh-contact-form__submit:hover .sh-contact-form__submit-icon {
+    @apply [transform:translateX(4px)];
+}
+
+.sh-contact-form__trust {
+    @apply flex items-center [gap:0.45rem] [font-size:0.86rem] [color:color-mix(in_srgb,_var(--text-1-3)_90%,_var(--text-1)_10%)] [margin:0.15rem_0_0] [line-height:1.45];
+}
+
+.sh-contact-form__trust-icon {
+    @apply w-4 h-4 shrink-0 [color:var(--success)];
+}
+
+@media (max-width: 1023.98px) {
+    .sh-contact-form {
+    @apply [margin-top:clamp(-2.25rem,_-3vw,_-1.35rem)];
+}
+
+    .sh-contact-form__left,
+    .sh-contact-form__right {
+    @apply [padding:clamp(1.35rem,_4vw,_1.8rem)];
+}
+
+    .sh-contact-form__subtitle {
+    @apply max-w-none;
+}
+}
+
+@media (max-width: 767.98px) {
+    .sh-contact-form {
+    @apply [padding:0_0.8rem_3rem];
+}
+
+    .sh-contact-form__card {
+    @apply [border-radius:1.1rem];
+}
+
+    .sh-contact-form__form {
+    @apply [gap:0.9rem];
+}
+
+    .sh-contact-form__row {
+    @apply [grid-template-columns:1fr] [gap:0.9rem];
+}
+
+    .sh-contact-form__submit {
+    @apply w-full [align-self:stretch];
+}
+}

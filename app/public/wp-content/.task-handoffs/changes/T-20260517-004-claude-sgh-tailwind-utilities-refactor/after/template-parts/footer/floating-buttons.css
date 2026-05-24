@@ -1,0 +1,36 @@
+/* Floating Buttons — Component CSS */
+#sh-floating-buttons{z-index:var(--z-floating-btns);align-items:center;gap:calc(var(--spacing) * 2.5);flex-direction:column;max-height:calc(100dvh - 100px);transition:bottom .3s;display:flex;position:fixed;bottom:16px;right:16px}#back-to-top{height:calc(var(--spacing) * 12);width:calc(var(--spacing) * 12);cursor:pointer;border-radius:var(--radius-full);opacity:0;box-shadow:0 2px 12px var(--shadow);background:var(--bg-card);justify-content:center;align-items:center;transition:opacity .3s,transform .3s;display:none;position:relative}#back-to-top:hover{box-shadow:0 4px 20px var(--shadow);transform:translateY(-3px)}#back-to-top .sh-scroll-ring{pointer-events:none;width:100%;height:100%;position:absolute;inset:0;transform:rotate(-90deg)}#back-to-top .sh-scroll-track{fill:none;stroke:var(--border-default);stroke-width:2px}#back-to-top .sh-scroll-progress{fill:none;stroke:var(--brand);stroke-width:2.5px;stroke-dasharray:100 100;stroke-dashoffset:100px;stroke-linecap:round;transition:none}#sh-toggle{height:calc(var(--spacing) * 12);width:calc(var(--spacing) * 12);cursor:pointer;border-radius:var(--radius-full);transition-property:all;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration));--tw-duration:.3s;background:linear-gradient(135deg, var(--brand), #059669);border:none;justify-content:center;align-items:center;transition-duration:.3s;display:flex;position:relative;box-shadow:0 3px 16px #007d3d66}#sh-toggle:hover{transform:translateY(-2px);box-shadow:0 5px 20px #007d3d73}#sh-ic-chat,#sh-ic-x{transition-property:all;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration));--tw-duration:.3s;transition-duration:.3s}#sh-ic-x{opacity:0;position:absolute;transform:rotate(-90deg)scale(.5)}#sh-badge{height:calc(var(--spacing) * 2.5);width:calc(var(--spacing) * 2.5);border-radius:var(--radius-full);background:var(--danger);border:2px solid var(--bg-card);position:absolute;top:-1px;right:-1px}.sh-phone-float{height:calc(var(--spacing) * 12);width:calc(var(--spacing) * 12);border-radius:var(--radius-full);transition-property:transform,translate,scale,rotate;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration));--tw-duration:.2s;background:var(--danger);justify-content:center;align-items:center;transition-duration:.2s;display:flex;position:relative;overflow:hidden;box-shadow:0 3px 12px #ff00004d}.sh-phone-float:hover{transform:scale(1.1)}.sh-zalo-btn{height:calc(var(--spacing) * 12);width:calc(var(--spacing) * 12);border-radius:var(--radius-full);transition-property:transform,translate,scale,rotate;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration));--tw-duration:.3s;background:var(--bg-card);flex-shrink:0;justify-content:center;align-items:center;transition-duration:.3s;display:flex;overflow:hidden;box-shadow:0 4px 12px #0000001f}.sh-zalo-btn:hover{transform:scale(1.1)}.sh-zalo-btn__img{object-fit:cover;width:100%;height:100%}.dark .sh-zalo-btn{background:var(--bg-elevated)}/* Draggable — visual states */
+#sh-floating-buttons{cursor:grab;touch-action:none;-webkit-user-select:none;user-select:none}#sh-floating-buttons.sh-fab-dragging{cursor:grabbing;opacity:.85;filter:drop-shadow(0 8px 25px #0000004d);transform:scale(.95)}#sh-floating-buttons a,#sh-floating-buttons button{cursor:inherit}/* Reset cursor khi hover vào nút (nếu không đang drag) */
+#sh-floating-buttons:not(.sh-fab-dragging) a:hover,#sh-floating-buttons:not(.sh-fab-dragging) button:hover{cursor:pointer}
+
+/*
+ * ─── Mobile (≤ 767px) — draggable but constrained ──────────────────────
+ *
+ * Drag is allowed on mobile (user request). The boundary enforcement lives
+ * in the JS handler (applyPosition + getBounds) which clamps Y to never go
+ * past `viewportHeight - stackHeight - mobileNavHeight - margin`. The CSS
+ * here only sets the FIRST-PAINT anchor and compact sizing — the inline
+ * style written by the drag handler (top/left/right/bottom) takes over
+ * once the user drags.
+ */
+@media (max-width: 767px) {
+    #sh-floating-buttons {
+    @apply [right:12px] [bottom:calc(65px_+_env(safe-area-inset-bottom,_0px))] [gap:8px] [max-height:calc(100dvh_-_180px)];
+    /*
+         * Nav height ~60px (icon + label + 6px×2 padding) + 5px gap +
+         * safe-area-inset-bottom for iOS home-indicator. JS uses the same
+         * 65px constant when clamping drag bounds so the visual gap stays
+         * 5px regardless of whether the user dragged or not.
+         */
+}
+    /* Compact button sizes — saves ~32px vertical on a 4-button stack */
+    #sh-floating-buttons #back-to-top,
+    #sh-floating-buttons #sh-toggle,
+    #sh-floating-buttons .sh-phone-float,
+    #sh-floating-buttons .sh-zalo-btn {
+    @apply [width:40px] [height:40px];
+}
+    #sh-floating-buttons .sh-zalo-btn {
+    @apply [width:2.5rem] [height:2.5rem];
+}
+}

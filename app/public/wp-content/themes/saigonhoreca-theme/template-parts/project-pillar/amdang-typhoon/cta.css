@@ -1,0 +1,530 @@
+/**
+ * amdang-typhoon — cta slot.
+ * High-End Asymmetric Tech-Split Layout.
+ * Blueprint Grid + Holographic Glow + Layered Spec Showcase.
+ * @package SaigonHoreca
+ */
+
+.pp--amdang-typhoon .pp-section-at-cta {
+  background: var(--b1);
+  padding: clamp(5rem, 15vh, 10rem) 0;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Background Blueprint Grid & Ambient Glow */
+.pp--amdang-typhoon .pp-cta-grid-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.01) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
+  background-size: 50px 50px;
+  background-position: center;
+  mask-image: radial-gradient(circle at 75% 50%, black 20%, transparent 70%);
+  -webkit-mask-image: radial-gradient(circle at 75% 50%, black 20%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.pp--amdang-typhoon .pp-cta-ambient-glow {
+  position: absolute;
+  top: 50%;
+  left: 70%;
+  transform: translate(-50%, -50%);
+  width: 60vw;
+  height: 60vh;
+  background: radial-gradient(circle, rgba(245, 166, 35, 0.045) 0%, transparent 68%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.pp--amdang-typhoon .pp-container-at-cta {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 5vw, 5rem);
+  position: relative;
+  z-index: 1;
+}
+
+/* Asymmetric 2-Column Split Grid */
+.pp--amdang-typhoon .pp-cta-split {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(3rem, 7vw, 6rem);
+  align-items: center;
+}
+
+@media (max-width: 991px) {
+  .pp--amdang-typhoon .pp-cta-split {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+}
+
+/* Left Column: Content Copy */
+.pp--amdang-typhoon .pp-cta-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.pp--amdang-typhoon .pp-badge-at-cta {
+  font-family: var(--font-display), sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  margin-bottom: 1.25rem;
+}
+
+.pp--amdang-typhoon .pp-badge-accent-at-cta {
+  color: rgba(245, 166, 35, 0.4);
+  margin-right: 4px;
+}
+
+.pp--amdang-typhoon .pp-title-at-cta {
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--bc);
+  margin: 0 0 1.5rem 0;
+}
+
+.pp--amdang-typhoon .pp-highlight-gold {
+  color: var(--gold);
+  background: linear-gradient(135deg, #fff 40%, var(--gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.pp--amdang-typhoon .pp-desc-at-cta {
+  font-family: var(--font-body), sans-serif;
+  font-size: clamp(0.95rem, 1vw, 1.05rem);
+  line-height: 1.8;
+  color: var(--bc2);
+  margin: 0 0 2.5rem 0;
+  max-width: 620px;
+}
+
+.pp--amdang-typhoon .pp-desc-paragraph {
+  margin: 0 0 1rem 0;
+}
+
+.pp--amdang-typhoon .pp-desc-paragraph:last-child {
+  margin: 0;
+}
+
+/* Interactive Specs Checklist */
+.pp--amdang-typhoon .pp-cta-specs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  margin-bottom: 3rem;
+}
+
+.pp--amdang-typhoon .pp-cta-spec-item {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.pp--amdang-typhoon .pp-cta-spec-item:hover {
+  border-bottom-color: rgba(245, 166, 35, 0.2);
+  transform: translateX(4px);
+}
+
+.pp--amdang-typhoon .pp-cta-spec-num {
+  font-family: var(--font-display), monospace;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+  background: rgba(245, 166, 35, 0.1);
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.pp--amdang-typhoon .pp-cta-spec-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.pp--amdang-typhoon .pp-cta-spec-content strong {
+  font-family: var(--font-display), sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--bc);
+}
+
+.pp--amdang-typhoon .pp-cta-spec-content span {
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.9rem;
+  color: var(--bc2);
+}
+
+/* Luxury Shimmer Action Button */
+.pp--amdang-typhoon .pp-btn-wrapper-at-cta {
+  display: inline-flex;
+}
+
+.pp--amdang-typhoon .pp-btn-at-cta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1.2rem 3rem;
+  background: var(--gold);
+  border-radius: 9999px;
+  overflow: hidden;
+  box-shadow: 
+    0 10px 30px rgba(245, 166, 35, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  text-decoration: none;
+  transition: all 0.4s var(--ease-spring);
+}
+
+.pp--amdang-typhoon .pp-btn-at-cta:hover {
+  background: var(--gold-dim);
+  box-shadow: 
+    0 15px 35px rgba(245, 166, 35, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  transform: translateY(-3px);
+}
+
+.pp--amdang-typhoon .pp-btn-at-cta-text {
+  font-family: var(--font-display), sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--pc);
+  z-index: 2;
+}
+
+.pp--amdang-typhoon .pp-btn-icon {
+  width: 18px;
+  height: 18px;
+  color: var(--pc);
+  z-index: 2;
+  transition: transform 0.3s ease;
+}
+
+.pp--amdang-typhoon .pp-btn-at-cta:hover .pp-btn-icon {
+  transform: translateX(4px);
+}
+
+/* Shimmer shine effect */
+.pp--amdang-typhoon .pp-btn-at-cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    transparent 100%
+  );
+  transform: skewX(-25deg);
+  z-index: 1;
+}
+
+.pp--amdang-typhoon .pp-btn-at-cta:hover::before {
+  left: 150%;
+  transition: left 0.8s ease-in-out;
+}
+
+/* Right Column: Layered Blueprint Frame */
+.pp--amdang-typhoon .pp-cta-visual {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.pp--amdang-typhoon .pp-cta-blueprint-frame {
+  position: relative;
+  width: 100%;
+  max-width: 540px;
+  padding: 16px;
+  background: rgba(15, 15, 15, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  box-shadow: 
+    0 40px 90px rgba(0, 0, 0, 0.9),
+    inset 0 1px 0 rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transition: all 0.5s var(--ease-spring);
+}
+
+.pp--amdang-typhoon .pp-cta-blueprint-frame:hover {
+  transform: translateY(-6px) rotate(1deg);
+  border-color: rgba(245, 166, 35, 0.25);
+  box-shadow: 
+    0 50px 100px rgba(0, 0, 0, 0.95),
+    0 0 40px rgba(245, 166, 35, 0.12);
+}
+
+/* Blueprint Corner Crosses */
+.pp--amdang-typhoon .pp-cta-bp-corner {
+  position: absolute;
+  font-family: monospace;
+  font-size: 15px;
+  font-weight: 400;
+  color: rgba(245, 166, 35, 0.4);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  transition: all 0.4s ease;
+}
+
+.pp--amdang-typhoon .pp-cta-bp-corner--tl { top: 8px; left: 8px; }
+.pp--amdang-typhoon .pp-cta-bp-corner--tr { top: 8px; right: 8px; }
+.pp--amdang-typhoon .pp-cta-bp-corner--bl { bottom: 8px; left: 8px; }
+.pp--amdang-typhoon .pp-cta-bp-corner--br { bottom: 8px; right: 8px; }
+
+.pp--amdang-typhoon .pp-cta-blueprint-frame:hover .pp-cta-bp-corner {
+  color: var(--gold);
+  text-shadow: 0 0 6px var(--gold);
+}
+
+/* Image container & overlay details */
+.pp--amdang-typhoon .pp-cta-image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.pp--amdang-typhoon .pp-cta-image-wrapper img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(1.02) brightness(0.82);
+  transition: transform 0.8s var(--ease-spring), filter 0.8s var(--ease-spring);
+}
+
+.pp--amdang-typhoon .pp-cta-blueprint-frame:hover .pp-cta-image-wrapper img {
+  transform: scale(1.04);
+  filter: saturate(1.06) brightness(0.95);
+}
+
+/* Monospace Holographic Tags on Image */
+.pp--amdang-typhoon .pp-cta-tag {
+  position: absolute;
+  font-family: var(--font-display), monospace;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  padding: 4px 10px;
+  background: rgba(10, 10, 10, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--bc);
+  border-radius: 4px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  pointer-events: none;
+  z-index: 2;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  transition: all 0.3s ease;
+}
+
+.pp--amdang-typhoon .pp-cta-tag--material {
+  top: 1rem;
+  left: 1rem;
+  border-left: 2px solid var(--gold);
+}
+
+.pp--amdang-typhoon .pp-cta-tag--scale {
+  bottom: 1rem;
+  left: 1rem;
+}
+
+.pp--amdang-typhoon .pp-cta-tag--origin {
+  bottom: 1rem;
+  right: 1rem;
+}
+
+.pp--amdang-typhoon .pp-cta-blueprint-frame:hover .pp-cta-tag {
+  border-color: rgba(245, 166, 35, 0.3);
+  color: var(--gold);
+}
+
+/* Blueprint Dimension Guidelines */
+.pp--amdang-typhoon .pp-cta-dimension-line {
+  margin-top: 16px;
+  position: relative;
+  width: 100%;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pp--amdang-typhoon .pp-cta-dimension-line::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: rgba(245, 166, 35, 0.25);
+  z-index: 1;
+  transition: background 0.3s ease;
+}
+
+.pp--amdang-typhoon .pp-cta-blueprint-frame:hover .pp-cta-dimension-line::before {
+  background: rgba(245, 166, 35, 0.45);
+}
+
+.pp--amdang-typhoon .pp-cta-dim-text {
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-display), monospace;
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--gold);
+  background: rgba(15, 15, 15, 0.9);
+  padding: 2px 10px;
+  border: 1px solid rgba(245, 166, 35, 0.2);
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.pp--amdang-typhoon .pp-cta-blueprint-frame:hover .pp-cta-dim-text {
+  text-shadow: 0 0 4px rgba(245, 166, 35, 0.4);
+  border-color: var(--gold);
+}
+
+/* Showroom Center Layout (No Image Variant) */
+.pp--amdang-typhoon .pp-cta-center-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.pp--amdang-typhoon .pp-cta-center-layout .pp-cta-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+.pp--amdang-typhoon .pp-cta-center-layout .pp-title-at-cta {
+  max-width: 860px;
+  margin-bottom: 2rem;
+}
+
+.pp--amdang-typhoon .pp-cta-center-layout .pp-desc-at-cta {
+  max-width: 780px;
+  margin: 0 auto 3.5rem auto;
+}
+
+/* Horizontal Interactive Specs Grid */
+.pp--amdang-typhoon .pp-cta-specs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  width: 100%;
+  margin-bottom: 4.5rem;
+}
+
+@media (max-width: 991px) {
+  .pp--amdang-typhoon .pp-cta-specs-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    max-width: 540px;
+  }
+}
+
+.pp--amdang-typhoon .pp-cta-specs-grid .pp-cta-spec-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.25rem;
+  padding: 3rem 2rem;
+  background: rgba(255, 255, 255, 0.015);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 16px;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.01);
+  transition: all 0.4s var(--ease-spring);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04); /* reset split border-bottom */
+}
+
+.pp--amdang-typhoon .pp-cta-specs-grid .pp-cta-spec-item:hover {
+  border-color: rgba(245, 166, 35, 0.35);
+  background: rgba(245, 166, 35, 0.035);
+  transform: translateY(-8px);
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.65),
+    0 0 25px rgba(245, 166, 35, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.pp--amdang-typhoon .pp-cta-specs-grid .pp-cta-spec-num {
+  font-family: var(--font-display), monospace;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+  background: rgba(245, 166, 35, 0.12);
+  padding: 6px 14px;
+  border-radius: 6px;
+  margin-bottom: 0.25rem;
+  transition: all 0.3s ease;
+}
+
+.pp--amdang-typhoon .pp-cta-specs-grid .pp-cta-spec-item:hover .pp-cta-spec-num {
+  background: var(--gold);
+  color: var(--pc);
+  box-shadow: 0 0 12px rgba(245, 166, 35, 0.4);
+}
+
+.pp--amdang-typhoon .pp-cta-specs-grid .pp-cta-spec-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.5rem;
+}
+
+.pp--amdang-typhoon .pp-cta-specs-grid .pp-cta-spec-content strong {
+  font-family: var(--font-display), sans-serif;
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: var(--bc);
+  letter-spacing: 0.02em;
+}
+
+.pp--amdang-typhoon .pp-cta-specs-grid .pp-cta-spec-content span {
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--bc2);
+}

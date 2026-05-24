@@ -1,0 +1,316 @@
+/**
+ * Project Pillar — bambino-saigonhoreca — Bespoke Gold Luxe Edition
+ */
+
+.pp--bambino {
+  background: var(--b1);
+  color: var(--bc);
+}
+
+.pp--bambino .pp-bambino-intro {
+  background: var(--b1);
+  padding: clamp(4rem, 8vw, 8rem) 0;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--bd);
+}
+
+/* Background ambient blur */
+.pp--bambino .pp-bambino-intro::before {
+  content: "";
+  position: absolute;
+  top: 10%;
+  right: -5%;
+  width: 40vw;
+  height: 40vw;
+  background: radial-gradient(circle, color-mix(in srgb, var(--gold) 6%, transparent) 0%, rgba(0, 0, 0, 0) 70%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.pp--bambino .pp-bambino-intro__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(3rem, 6vw, 6rem);
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+@media (min-width: 1024px) {
+  .pp--bambino .pp-bambino-intro__grid {
+    grid-template-columns: 55% 45%;
+  }
+}
+
+/* Cột trái: Văn bản giới thiệu */
+.pp--bambino .pp-bambino-intro__text-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.pp--bambino .pp-bambino-intro__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--brand-50);
+  border: 1px solid rgba(245, 166, 35, 0.25);
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  color: var(--gold);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.pp--bambino .pp-bambino-intro__badge-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--gold);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.5); opacity: 0.5; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.pp--bambino .pp-bambino-intro__title {
+  margin: 0 0 1.5rem;
+  color: var(--bc);
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  position: relative;
+}
+
+.pp--bambino .pp-bambino-intro__dropcap {
+  font-family: var(--font-display);
+  font-size: 1.15em;
+  color: var(--gold);
+  text-shadow: 0 0 20px color-mix(in srgb, var(--gold) 40%, transparent);
+  margin-right: -0.05em;
+}
+
+.pp--bambino .pp-bambino-intro__info-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.pp--bambino .pp-bambino-intro__chip {
+  background: var(--b3);
+  border: 1px solid var(--bd);
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  color: var(--bc2);
+  backdrop-filter: blur(10px);
+}
+
+.pp--bambino .pp-bambino-intro__body {
+  color: var(--bc2);
+  font-size: clamp(1rem, 1.1vw, 1.125rem);
+  line-height: 1.8;
+}
+
+.pp--bambino .pp-bambino-intro__lead {
+  font-size: clamp(1.125rem, 1.3vw, 1.35rem);
+  color: var(--bc);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.pp--bambino .pp-bambino-intro__body p {
+  margin: 0 0 1.25rem;
+}
+
+/* Quote card glassmorphism */
+.pp--bambino .pp-bambino-intro__quote-card {
+  margin-top: 2rem;
+  background: var(--brand-50);
+  border-left: 3px solid var(--gold);
+  border-radius: 0 16px 16px 0;
+  padding: 1.5rem 2rem;
+  backdrop-filter: blur(20px);
+  position: relative;
+  box-shadow: var(--shadow);
+}
+
+.pp--bambino .pp-bambino-intro__quote-card p {
+  font-style: italic;
+  color: var(--bc2);
+  font-size: 0.975rem;
+  line-height: 1.7;
+  margin: 0 0 0.75rem;
+}
+
+.pp--bambino .pp-bambino-intro__quote-author {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Cột phải: 3D Mechanical Frame */
+.pp--bambino .pp-bambino-intro__media-col {
+  display: flex;
+  justify-content: center;
+}
+
+.pp--bambino .pp-bambino-intro__frame-3d {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  aspect-ratio: 3 / 4;
+  perspective: 1000px;
+}
+
+.pp--bambino .pp-bambino-intro__frame-glow {
+  position: absolute;
+  inset: -15px;
+  background: radial-gradient(circle, color-mix(in srgb, var(--gold) 15%, transparent) 0%, rgba(0, 0, 0, 0) 70%);
+  z-index: 1;
+  filter: blur(10px);
+  pointer-events: none;
+}
+
+.pp--bambino .pp-bambino-intro__main-image-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid var(--border-strong);
+  box-shadow: var(--shadow-floating);
+  transform: rotateY(-5deg) rotateX(3deg);
+  transition: transform 0.6s var(--ease-spring);
+  z-index: 2;
+}
+
+.pp--bambino .pp-bambino-intro__frame-3d:hover .pp-bambino-intro__main-image-container {
+  transform: rotateY(0deg) rotateX(0deg) scale(1.02);
+}
+
+.pp--bambino .pp-bambino-intro__main-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.pp--bambino .pp-bambino-intro__frame-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(10, 10, 10, 0) 60%, rgba(10, 10, 10, 0.4) 100%);
+  pointer-events: none;
+}
+
+/* Mechanical corners */
+.pp--bambino .pp-bambino-intro__frame-corners {
+  position: absolute;
+  inset: -5px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.pp--bambino .pp-bambino-intro__frame-corners .corner {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--gold);
+}
+
+.pp--bambino .pp-bambino-intro__frame-corners .corner.tl { top: 0; left: 0; border-right: none; border-bottom: none; }
+.pp--bambino .pp-bambino-intro__frame-corners .corner.tr { top: 0; right: 0; border-left: none; border-bottom: none; }
+.pp--bambino .pp-bambino-intro__frame-corners .corner.bl { bottom: 0; left: 0; border-right: none; border-top: none; }
+.pp--bambino .pp-bambino-intro__frame-corners .corner.br { bottom: 0; right: 0; border-left: none; border-top: none; }
+
+/* Neon Grid Gallery */
+.pp--bambino .pp-bambino-intro__gallery {
+  margin-top: 5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.pp--bambino .pp-bambino-intro__gallery-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.pp--bambino .pp-bambino-intro__gallery-header h3 {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin: 0;
+}
+
+.pp--bambino .pp-bambino-intro__gallery-header .line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--border-default) 50%, transparent 100%);
+  max-width: 150px;
+}
+
+.pp--bambino .pp-bambino-intro__gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .pp--bambino .pp-bambino-intro__gallery-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.pp--bambino .pp-bambino-intro__gallery-item {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: 16px;
+  background: var(--b3);
+  border: 1px solid var(--bd);
+  box-shadow: var(--shadow);
+}
+
+.pp--bambino .pp-bambino-intro__gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s var(--ease-spring);
+}
+
+.pp--bambino .pp-bambino-intro__gallery-item .neon-border {
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  border: 1.5px solid transparent;
+  pointer-events: none;
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.pp--bambino .pp-bambino-intro__gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+.pp--bambino .pp-bambino-intro__gallery-item:hover .neon-border {
+  border-color: var(--gold);
+  box-shadow: inset 0 0 15px color-mix(in srgb, var(--gold) 25%, transparent), 0 0 20px color-mix(in srgb, var(--gold) 15%, transparent);
+}

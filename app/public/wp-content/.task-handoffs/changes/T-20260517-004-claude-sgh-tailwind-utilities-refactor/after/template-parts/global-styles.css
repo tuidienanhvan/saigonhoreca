@@ -1,0 +1,125 @@
+/* ── Breadcrumbs ── */
+    .sh-bc{padding-inline:calc(var(--spacing) * 0);padding-block:calc(var(--spacing) * 3);background:var(--bg);border-bottom:1px solid var(--border-default)}.sh-bc__container{margin-inline:auto;margin-block:calc(var(--spacing) * 0);max-width:1200px;padding-inline:calc(var(--spacing) * 4);padding-block:calc(var(--spacing) * 0)}.sh-bc__list{margin:calc(var(--spacing) * 0);align-items:center;gap:calc(var(--spacing) * 2);padding:calc(var(--spacing) * 0);font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height));white-space:nowrap;color:var(--text-1-3);list-style-type:none;display:flex;overflow:hidden}.sh-bc__chevron{color:var(--text-1-muted);flex-shrink:0;width:1rem!important;height:1rem!important}.sh-bc__home-icon{width:1rem!important;height:1rem!important}.sh-bc__sep{margin-inline:calc(var(--spacing) * 1);margin-block:calc(var(--spacing) * 0);color:var(--text-1-muted)}.sh-bc__link{align-items:center;gap:calc(var(--spacing) * 1);color:inherit;transition-property:color,background-color,border-color,outline-color,text-decoration-color,fill,stroke,--tw-gradient-from,--tw-gradient-via,--tw-gradient-to;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration));--tw-duration:.2s;text-decoration-line:none;transition-duration:.2s;display:flex}.sh-bc__link:hover{color:var(--brand)}.sh-bc__current{--tw-font-weight:var(--font-weight-medium);max-width:200px;font-weight:var(--font-weight-medium);text-overflow:ellipsis;color:var(--text-1);overflow:hidden}
+    @media (min-width: 768px) {.sh-bc__current{max-width:28rem} }.dark .sh-bc{border-bottom-color:var(--border-default);background:var(--bg)}.dark .sh-bc__current{color:var(--text-1)}/* ── Smooth transition ── */
+    body{background-color:var(--b1);color:var(--bc);-webkit-font-smoothing:antialiased;scroll-behavior:smooth;font-family:var(--font-sans)}#main-header{transition:background-color .3s,color .3s,border-color .3s}section{transition:background-color .3s,color .3s,border-color .3s}article{transition:background-color .3s,color .3s,border-color .3s}input{font:inherit;font-feature-settings:inherit;font-variation-settings:inherit;letter-spacing:inherit;color:inherit;opacity:1;background-color:#0000;border-radius:0}textarea{font:inherit;font-feature-settings:inherit;font-variation-settings:inherit;letter-spacing:inherit;color:inherit;opacity:1;background-color:#0000;border-radius:0}select{font:inherit;font-feature-settings:inherit;font-variation-settings:inherit;letter-spacing:inherit;color:inherit;opacity:1;background-color:#0000;border-radius:0}.sh-bb{transition:background-color .3s,color .3s,border-color .3s}.sh-mnav{z-index:var(--z-mobile-nav);padding:6px 0 max(6px, env(safe-area-inset-bottom));box-shadow:0 -2px 12px var(--shadow);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--border-default);background:#fffffff7;justify-content:space-around;align-items:center;display:flex;position:fixed;bottom:0;left:0;right:0}table{text-indent:0;border-color:inherit;border-collapse:collapse}.sh-townhouse-card{transition:background-color .3s,color .3s,border-color .3s}.sh-diary-section{transition:background-color .3s,color .3s,border-color .3s}.sh-diary-item{transition:background-color .3s,color .3s,border-color .3s}.sh-diary-player{transition:background-color .3s,color .3s,border-color .3s}.sh-diary-side{transition:background-color .3s,color .3s,border-color .3s}
+
+    /*
+     * ── Custom Scrollbar (all viewports) ──
+     * Was wrapped in @media (min-width: 1024px) so mobile/tablet showed the
+     * raw OS scrollbar (gray, off-theme). Apply globally; just shrink the
+     * thumb on small screens so it feels native on touch.
+     */
+    html {
+    @apply [scrollbar-width:thin] [scrollbar-color:var(--brand)_var(--bg-alt)];
+}::-webkit-scrollbar{height:calc(var(--spacing) * 2);width:calc(var(--spacing) * 2)}::-webkit-scrollbar-track{background:0 0}::-webkit-scrollbar-thumb{background:var(--brand);border:2px solid var(--bg-alt);border-radius:5px}::-webkit-scrollbar-thumb:hover{background:var(--brand-dark)}
+    @media (min-width: 1024px) {::-webkit-scrollbar{height:calc(var(--spacing) * 2.5);width:calc(var(--spacing) * 2.5)}
+    }
+
+    /* ── Search Input Fix ── */
+    input[type="search"] {
+    @apply [-webkit-appearance:none] [appearance:none];
+}
+    input[type="search"]::-webkit-search-decoration,
+    input[type="search"]::-webkit-search-cancel-button,
+    input[type="search"]::-webkit-search-results-button,
+    input[type="search"]::-webkit-search-results-decoration {
+    @apply hidden [-webkit-appearance:none];
+}/* ── Hide Scrollbar ── */
+    .scrollbar-hide{-ms-overflow-style:none;scrollbar-width:none}.scrollbar-hide::-webkit-scrollbar{display:none}/* ── Global Font ── */
+    body{flex-direction:column;min-height:100vh;transition:color .5s,background-color .5s;display:flex;position:relative}input{transition:background-color .3s,color .3s,border-color .3s}textarea{resize:vertical}select{transition:background-color .3s,color .3s,border-color .3s}button{font:inherit;font-feature-settings:inherit;font-variation-settings:inherit;letter-spacing:inherit;color:inherit;opacity:1;background-color:#0000;border-radius:0}.wp-block-table{font-family:Be Vietnam Pro,sans-serif!important}.entry-content{font-family:Be Vietnam Pro,sans-serif!important}.entry-content *{font-family:Be Vietnam Pro,sans-serif!important}/* ── Horizontal Scroll Snap (carousels) ── */
+    .sh-hscroll{scroll-snap-type:x mandatory;-ms-overflow-style:none;scrollbar-width:none}.sh-hscroll::-webkit-scrollbar{display:none}/* ── WordPress emoji ── */
+    img.emoji{vertical-align:-.1em;width:1em!important;height:1em!important;box-shadow:none!important;border-radius:0!important;margin:0 .07em!important;display:inline!important}
+
+    /* ── Dark mode utility overrides (legacy TW class selectors) ── */
+    .dark section[class*="bg-white"], .dark div[class*="bg-white"] {
+    @apply [background:var(--bg)]!;
+}
+    .dark [class*="border-gray-200"] {
+    @apply [border-color:var(--border-default)]!;
+}
+    .dark [class*="text-slate-800"], .dark [class*="text-slate-900"] {
+    @apply [color:var(--text-1)]!;
+}
+    .dark [class*="text-gray-500"] {
+    @apply [color:var(--text-1-3)]!;
+}
+    .dark [class*="text-slate-600"] {
+    @apply [color:var(--text-1-2)]!;
+}
+    .dark [class*="text-gray-400"] {
+    @apply [color:var(--text-1-muted)]!;
+}
+
+    /* ── Grid helpers (about, pricing) ── */
+    .sh-grid-1-1 {
+    @apply grid gap-12 items-start [grid-template-columns:1fr_1fr];
+}.sh-grid-5-7-start{align-items:flex-start;gap:calc(var(--spacing) * 8);grid-template-columns:5fr 7fr;display:grid}.team-header-grid{margin-bottom:calc(var(--spacing) * 12);gap:calc(var(--spacing) * 8);grid-template-columns:1fr;display:grid}
+    @media (min-width: 1024px) {.team-header-grid{align-items:flex-start;gap:calc(var(--spacing) * 12);grid-template-columns:5fr 7fr}
+    }.interior-hero-grid{gap:calc(var(--spacing) * 12);grid-template-columns:1fr;display:grid}
+    @media (min-width: 1024px) {.interior-hero-grid{grid-template-columns:1fr 1fr} }
+
+    @media (max-width: 1023px) {.sh-grid-1-1{align-items:flex-start;gap:calc(var(--spacing) * 12);grid-template-columns:1fr 1fr;display:grid}.sh-grid-5-7-start{gap:calc(var(--spacing) * 8);grid-template-columns:1fr;display:grid}.sh-grid-7-5-end{gap:calc(var(--spacing) * 8);grid-template-columns:1fr;display:grid}.sh-grid-8-4-end{gap:calc(var(--spacing) * 8);grid-template-columns:1fr;display:grid}.sh-grid-5-7-end{gap:calc(var(--spacing) * 8);grid-template-columns:1fr;display:grid}
+    }
+
+/* ════════════════════════════════════════════════
+   Print Styles
+   ════════════════════════════════════════════════ */
+@media print {
+    body {
+    @apply [background:#fff]! [color:#000]! [font-size:12pt]! [line-height:1.5]!;
+}
+    header, footer, nav, #sh-chatbot, #sh-floating-buttons, #sh-mobile-nav,
+    .sh-mnav, #sh-dark-toggle, .back-to-top, .sidebar, aside,
+    .share-buttons, .related-posts, .breadcrumb, .hero-carousel,
+    .scroll-top-btn, .floating-btn, iframe, video, .wp-block-embed,
+    .no-print {
+    @apply [display:none]!;
+}
+    .container, main, article {
+    @apply [width:100%]! [max-width:100%]! [margin:0]! [padding:0]!;
+}
+    h1 {
+    @apply [font-size:22pt]! [margin-bottom:8pt]!;
+}
+    h2 {
+    @apply [font-size:16pt]! [margin-top:14pt]!;
+}
+    h3 {
+    @apply [font-size:13pt]!;
+}
+    p, li, td, th {
+    @apply [font-size:11pt]!;
+}
+    a[href]:not([href^="#"]):not([href^="javascript"])::after {
+    @apply [font-size:9pt] [color:#666] [font-style:italic];
+    content: " (" attr(href) ")";
+}
+    a {
+    @apply [color:#000]! [text-decoration:underline]!;
+}
+    table {
+    @apply [border-collapse:collapse]! [width:100%]!;
+}
+    th, td {
+    @apply [border:1px_solid_#ccc]! [padding:6px_8px]!;
+}
+    th {
+    @apply [background:#f0f0f0]! [font-weight:bold]!;
+}
+    img {
+    @apply [max-width:100%]! [height:auto]!;
+}
+    h1, h2, h3 {
+    @apply [page-break-after:avoid];
+}
+    img, table, blockquote {
+    @apply [page-break-inside:avoid];
+}
+    .dark * {
+    @apply [background:transparent]! [color:#000]! [border-color:#ccc]!;
+}
+    body::before {
+    @apply [display:block] [text-align:center] [font-size:9pt] [color:#666] [border-bottom:1px_solid_#ccc] [padding-bottom:6pt] [margin-bottom:12pt];
+    content: "SAIGON HOUSE — Thiết Kế Thi Công Xây Dựng | Hotline: 0961 868 968 | thietkethicongnhadep.vn";
+}
+}

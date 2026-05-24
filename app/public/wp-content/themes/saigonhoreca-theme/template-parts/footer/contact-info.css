@@ -1,0 +1,13 @@
+/* contact-info component styles */
+
+/* T-019: WCAG touch target — inline footer links need ≥ 24×24 (Lighthouse)
+   and ≥ 48×48 (Google recommended) tap area. Without padding the hit area
+   collapses to a single line-height (~20 px). Vertical padding clears the
+   threshold without disturbing the visual density. */
+.sh-footer__contact-link,
+.sh-footer__contact-sub-link {
+    padding-block: 0.5rem;
+    min-height: 2.75rem;
+    display: inline-flex;
+    align-items: center;
+}

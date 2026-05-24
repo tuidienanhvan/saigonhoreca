@@ -1,0 +1,402 @@
+status,url,slug_brand,slug_country,page_brand,page_country,title,h1,notes
+MISMATCH,https://saigonhoreca.vn/san-pham/lo-combi-sehe061w-sammic-spain/,sammic,spain,giorik,italy,Lò Combi SEHE061W - Giorik - Italy,Lò Combi SEHE061W &#8211; Giorik &#8211; Italy,brand: slug=sammic vs page=giorik | country: slug=spain vs page=italy
+MISMATCH,https://saigonhoreca.vn/san-pham/lo-combi-sere061w-sammic-spain/,sammic,spain,giorik,italy,Lò Combi SERE061W - Giorik - Italy,Lò Combi SERE061W &#8211; Giorik &#8211; Italy,brand: slug=sammic vs page=giorik | country: slug=spain vs page=italy
+MISMATCH,https://saigonhoreca.vn/san-pham/lo-nuong-combi-7-khay-gn-1-1-mte7w_r-sammic-spain/,sammic,spain,giorik,italy,Lò Nướng Combi 7 Khay Gn 1/1 MTE7W_R - Giorik - Italy,Lò Nướng Combi 7 Khay Gn 1/1 MTE7W_R &#8211; Giorik &#8211; Italy,brand: slug=sammic vs page=giorik | country: slug=spain vs page=italy
+SKIP,https://saigonhoreca.vn/san-pham/,,,,,,,no brand token in slug
+OK,https://saigonhoreca.vn/san-pham/ban-dong-1-cua-ftwh70ls4-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Đông 1 Cửa FTWH70LS4 - Hoshizaki,Bàn Đông 1 Cửa FTWH70LS4 &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-dong-2-cua-ft-126ma-s-3d-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Đông 2 Cửa FT-126MA-S-3D - Hoshizaki,Bàn Đông 2 Cửa FT-126MA-S-3D &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-dong-2-cua-ft-156ma-s-3d-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Đông 2 Cửa FT-156MA-S-3D - Hoshizaki,Bàn Đông 2 Cửa FT-156MA-S-3D &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-dong-2-cua-ftwh120ls4-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Đông 2 Cửa FTWH120LS4 - Hoshizaki,Bàn Đông 2 Cửa FTWH120LS4 &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-dong-2-cua-ftwh126ls4-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Đông 2 Cửa FTWH126LS4 - Hoshizaki,Bàn Đông 2 Cửa FTWH126LS4 &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-dong-2-cua-ftwh150ls4-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Đông 2 Cửa FTWH150LS4 - Hoshizaki,Bàn Đông 2 Cửa FTWH150LS4 &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-dong-2-cua-ftwh156ls4-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Đông 2 Cửa FTWH156LS4 - Hoshizaki,Bàn Đông 2 Cửa FTWH156LS4 &#8211; Hoshizaki,
+SKIP,https://saigonhoreca.vn/san-pham/ban-dong-2-cua-fvft1260-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/ban-dong-2-cua-fvft1275-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/ban-dong-2-cua-fvft1560-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/ban-dong-2-cua-fvft1575-fujimak-japan/,,japan,,,,,no brand token in slug
+OK,https://saigonhoreca.vn/san-pham/ban-dong-2-ngan-keo-ftl-108ma-sd-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Đông 2 Ngăn Kéo FTL-108MA-SD - Hoshizaki,Bàn Đông 2 Ngăn Kéo FTL-108MA-SD &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-dong-3-cua-ft-186ma-s-3d-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Đông 3 Cửa FT-186MA-S-3D - Hoshizaki,Bàn Đông 3 Cửa FT-186MA-S-3D &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-dong-3-cua-ftwh180ls4-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Đông 3 Cửa FTWH180LS4 - Hoshizaki,Bàn Đông 3 Cửa FTWH180LS4 &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-dong-3-cua-ftwh186ls4-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Đông 3 Cửa FTWH186LS4 - Hoshizaki,Bàn Đông 3 Cửa FTWH186LS4 &#8211; Hoshizaki,
+SKIP,https://saigonhoreca.vn/san-pham/ban-dong-3-cua-fvft1860-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/ban-dong-3-cua-fvft1875-fujimak-japan/,,japan,,,,,no brand token in slug
+OK,https://saigonhoreca.vn/san-pham/ban-dong-3-ngan-keo-2-cua-ft-188ma-s-3d-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Đông 3 Ngăn Kéo 2 Cửa FT-188MA-S-3D - Hoshizaki,Bàn Đông 3 Ngăn Kéo 2 Cửa FT-188MA-S-3D &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-dong-4-ngan-keo-ftl-148ma-sd-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Đông 4 Ngăn Kéo FTL-148MA-SD - Hoshizaki,Bàn Đông 4 Ngăn Kéo FTL-148MA-SD &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-dong-6-ngan-keo-ftl-188ma-sd-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Đông 6 Ngăn Kéo FTL-188MA-SD - Hoshizaki,Bàn Đông 6 Ngăn Kéo FTL-188MA-SD &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-dong-ft-126ma-s-hoshizaki/,hoshizaki,,hoshizaki,,Bàn đông FT-126MA-S - Hoshizaki,Bàn đông FT-126MA-S &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-dong-ft-126ma-s-ml-hoshizaki/,hoshizaki,,hoshizaki,,Bàn đông FT-126MA-S-ML - Hoshizaki,Bàn đông FT-126MA-S-ML &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-dong-ft-128ma-s-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Đông 2 Cửa FT-128MA-S - Hoshizaki,Bàn Đông 2 Cửa FT-128MA-S &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-dong-ft-156ma-s-hoshizaki/,hoshizaki,,hoshizaki,,Bàn đông FT-156MA-S - Hoshizaki,Bàn đông FT-156MA-S &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-dong-ft-156ma-s-ml-hoshizaki/,hoshizaki,,hoshizaki,,Bàn đông FT-156MA-S-ML - Hoshizaki,Bàn đông FT-156MA-S-ML &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-dong-ft-158ma-s-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Đông 2 Cửa FT-158MA-S - Hoshizaki,Bàn Đông 2 Cửa FT-158MA-S &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-dong-ft-158ma-s-ml-hoshizaki/,hoshizaki,,hoshizaki,,Bàn đông FT-158MA-S-ML - Hoshizaki,Bàn đông FT-158MA-S-ML &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-dong-ft-186ma-s-ml-hoshizaki/,hoshizaki,,hoshizaki,,Bàn đông FT-186MA-S-ML - Hoshizaki,Bàn đông FT-186MA-S-ML &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-dong-ft-188ma-s-hoshizaki/,hoshizaki,,hoshizaki,,Bàn đông FT-188MA-S - Hoshizaki,Bàn đông FT-188MA-S &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-dong-ft-188ma-s-ml-hoshizaki/,hoshizaki,,hoshizaki,,Bàn đông FT-188MA-S-ML - Hoshizaki,Bàn đông FT-188MA-S-ML &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-dong-ft-96ma-s-hoshizaki/,hoshizaki,,hoshizaki,,Bàn đông FT-96MA-S - Hoshizaki,Bàn đông FT-96MA-S &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-dong-ft-98ma-s-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Đông 1 Cửa FT-98MA-S - Hoshizaki,Bàn Đông 1 Cửa FT-98MA-S &#8211; Hoshizaki,
+SKIP,https://saigonhoreca.vn/san-pham/ban-giu-am-chen-dia-fht0960-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/ban-giu-am-chen-dia-fht0975-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/ban-giu-am-chen-dia-fht1260-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/ban-giu-am-chen-dia-fht1275-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/ban-giu-am-chen-dia-fht1560-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/ban-giu-am-chen-dia-fht1575-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/ban-giu-am-chen-dia-fht1860-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/ban-giu-am-chen-dia-fht1875-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/ban-giu-am-chen-dia-fhta1275-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/ban-giu-am-chen-dia-fhta1290-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/ban-giu-am-chen-dia-fhta1575-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/ban-giu-am-chen-dia-fhta1590-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/ban-giu-am-chen-dia-fhta1875-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/ban-giu-am-chen-dia-fhta1890-fujimak-japan/,,japan,,,,,no brand token in slug
+OK,https://saigonhoreca.vn/san-pham/ban-lam-dong-nhanh-sbu20htu-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Làm Đông Nhanh SBU20HTU - Hoshizaki,Bàn Làm Đông Nhanh SBU20HTU &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-mat-1-cua-2-ngan-keo-1-cua-rtdw187ms4-d2d-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Mát 1 Cửa / 2 Ngăn Kéo / 1 Cửa RTDW187MS4-D2D - Hoshizaki,Bàn Mát 1 Cửa / 2 Ngăn Kéo / 1 Cửa RTDW187MS4-D2D &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-mat-1-cua-2-ngan-keo-2-ngan-keo-rtdw187ms4-d22-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Mát 1 Cửa / 2 Ngăn Kéo / 2 Ngăn Kéo RTDW187MS4-D22 - Hoshizaki,Bàn Mát 1 Cửa / 2 Ngăn Kéo / 2 Ngăn Kéo RTDW187MS4-D22 &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-mat-1-cua-2-ngan-keo-rtdw137ms4-d2-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Mát 1 Cửa / 2 Ngăn Kéo RTDW137MS4-D2 - Hoshizaki,Bàn Mát 1 Cửa / 2 Ngăn Kéo RTDW137MS4-D2 &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-mat-1-cua-3-ngan-keo-1-cua-rtdw187ms4-d3d-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Mát 1 Cửa / 3 Ngăn Kéo / 1 Cửa RTDW187MS4-D3D - Hoshizaki,Bàn Mát 1 Cửa / 3 Ngăn Kéo / 1 Cửa RTDW187MS4-D3D &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-mat-1-cua-3-ngan-keo-3-ngan-keo-rtdw187ms4-d33-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Mát 1 Cửa / 3 Ngăn Kéo / 3 Ngăn Kéo RTDW187MS4-D33 - Hoshizaki,Bàn Mát 1 Cửa / 3 Ngăn Kéo / 3 Ngăn Kéo RTDW187MS4-D33 &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-mat-1-cua-3-ngan-keo-rtdw137ms4-d3-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Mát 1 Cửa / 3 Ngăn Kéo RTDW137MS4-D3 - Hoshizaki,Bàn Mát 1 Cửa / 3 Ngăn Kéo RTDW137MS4-D3 &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-mat-1-cua-kinh-rt-96ma-sg-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Mát 1 Cửa Kính RT-96MA-SG - Hoshizaki,Bàn Mát 1 Cửa Kính RT-96MA-SG &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-mat-1-cua-kinh-rtwh70ls4-gd-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Mát 1 Cửa Kính RTWH70LS4-GD - Hoshizaki,Bàn Mát 1 Cửa Kính RTWH70LS4-GD &#8211; Hoshizaki,
+SKIP,https://saigonhoreca.vn/san-pham/ban-mat-2-cua-fvrt1260-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/ban-mat-2-cua-fvrt1275-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/ban-mat-2-cua-fvrt1560-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/ban-mat-2-cua-fvrt1575-fujimak-japan/,,japan,,,,,no brand token in slug
+OK,https://saigonhoreca.vn/san-pham/ban-mat-2-cua-kinh-rt-126ma-sg-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Mát 2 Cửa Kính RT-126MA-SG - Hoshizaki,Bàn Mát 2 Cửa Kính RT-126MA-SG &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-mat-2-cua-kinh-rt-156ma-sg-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Mát 2 Cửa Kính RT-156MA-SG - Hoshizaki,Bàn Mát 2 Cửa Kính RT-156MA-SG &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-mat-2-cua-kinh-rtwh126ls4-gd-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Mát 2 Cửa Kính RTWH126LS4-GD - Hoshizaki,Bàn Mát 2 Cửa Kính RTWH126LS4-GD &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-mat-2-cua-kinh-rtwh156ls4-gd-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Mát 2 Cửa Kính RTWH156LS4-GD - Hoshizaki,Bàn Mát 2 Cửa Kính RTWH156LS4-GD &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-mat-2-cua-rtwh126ls4-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Mát 2 Cửa RTWH126LS4 - Hoshizaki,Bàn Mát 2 Cửa RTWH126LS4 &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-mat-2-cua-rtwh156ls4-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Mát 2 Cửa RTWH156LS4 - Hoshizaki,Bàn Mát 2 Cửa RTWH156LS4 &#8211; Hoshizaki,
+SKIP,https://saigonhoreca.vn/san-pham/ban-mat-2-kinh-cua-lua-rt-126ma-ssg/,,,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/ban-mat-2-kinh-cua-lua-rt-156ma-ssg/,,,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/ban-mat-2-kinh-cua-lua-rt-186ma-ssg/,,,,,,,no brand token in slug
+OK,https://saigonhoreca.vn/san-pham/ban-mat-2-ngan-keo-1-cua-rtdw137ms4-2d-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Mát 2 Ngăn Kéo / 1 Cửa RTDW137MS4-2D - Hoshizaki,Bàn Mát 2 Ngăn Kéo / 1 Cửa RTDW137MS4-2D &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-mat-2-ngan-keo-2-ngan-keo-1-cua-rtdw187ms4-22d-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Mát 2 Ngăn Kéo / 2 Ngăn Kéo / 1 Cửa RTDW187MS4-22D - Hoshizaki,Bàn Mát 2 Ngăn Kéo / 2 Ngăn Kéo / 1 Cửa RTDW187MS4-22D &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-mat-2-ngan-keo-2-ngan-keo-2-ngan-keo-rtdw187ms4-222-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Mát 2 Ngăn Kéo / 2 Ngăn Kéo / 2 Ngăn Kéo RTDW187MS4-222 - Hoshizaki,Bàn Mát 2 Ngăn Kéo / 2 Ngăn Kéo / 2 Ngăn Kéo RTDW187MS4-222 &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-mat-2-ngan-keo-2-ngan-keo-rtdw137ms4-22-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Mát 2 Ngăn Kéo / 2 Ngăn Kéo RTDW137MS4-22 - Hoshizaki,Bàn Mát 2 Ngăn Kéo / 2 Ngăn Kéo RTDW137MS4-22 &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-mat-2-ngan-keo-rtl-108ma-sd-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Mát 2 Ngăn Kéo RTL-108MA-SD - Hoshizaki,Bàn Mát 2 Ngăn Kéo RTL-108MA-SD &#8211; Hoshizaki,
+SKIP,https://saigonhoreca.vn/san-pham/ban-mat-3-cua-fvrt1860-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/ban-mat-3-cua-fvrt1875-fujimak-japan/,,japan,,,,,no brand token in slug
+OK,https://saigonhoreca.vn/san-pham/ban-mat-3-cua-kinh-rt-186ma-sg-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Mát 3 Cửa Kính RT-186MA-SG - Hoshizaki,Bàn Mát 3 Cửa Kính RT-186MA-SG &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-mat-3-cua-kinh-rt-188ma-sg-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Mát 3 Cửa Kính RT-188MA-SG - Hoshizaki,Bàn Mát 3 Cửa Kính RT-188MA-SG &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-mat-3-cua-kinh-rtwh186ls4-gd-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Mát 3 Cửa Kính RTWH186LS4-GD - Hoshizaki,Bàn Mát 3 Cửa Kính RTWH186LS4-GD &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-mat-3-cua-rtwh180ls4-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Mát 3 Cửa RTWH180LS4 - Hoshizaki,Bàn Mát 3 Cửa RTWH180LS4 &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-mat-3-cua-rtwh186ls4-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Mát 3 Cửa RTWH186LS4 - Hoshizaki,Bàn Mát 3 Cửa RTWH186LS4 &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-mat-3-ngan-keo-1-cua-rt-126ma-s-3d-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Mát 3 Ngăn Kéo 1 Cửa RT-126MA-S-3D - Hoshizaki,Bàn Mát 3 Ngăn Kéo 1 Cửa RT-126MA-S-3D &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-mat-3-ngan-keo-1-cua-rt-156ma-s-3d-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Mát 3 Ngăn Kéo 1 Cửa RT-156MA-S-3D - Hoshizaki,Bàn Mát 3 Ngăn Kéo 1 Cửa RT-156MA-S-3D &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-mat-3-ngan-keo-1-cua-rtdw137ms4-3d-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Mát 3 Ngăn Kéo / 1 Cửa RTDW137MS4-3D - Hoshizaki,Bàn Mát 3 Ngăn Kéo / 1 Cửa RTDW137MS4-3D &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-mat-3-ngan-keo-2-cua-rt-186ma-s-3d-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Mát 3 Ngăn Kéo 2 Cửa RT-186MA-S-3D - Hoshizaki,Bàn Mát 3 Ngăn Kéo 2 Cửa RT-186MA-S-3D &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-mat-3-ngan-keo-3-ngan-keo-1-cua-rtdw187ms4-33d-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Mát 3 Ngăn Kéo / 3 Ngăn Kéo / 1 Cửa RTDW187MS4-33D - Hoshizaki,Bàn Mát 3 Ngăn Kéo / 3 Ngăn Kéo / 1 Cửa RTDW187MS4-33D &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-mat-3-ngan-keo-3-ngan-keo-3-ngan-keo-rtdw187ms4-333-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Mát 3 Ngăn Kéo / 3 Ngăn Kéo / 3 Ngăn Kéo RTDW187MS4-333 - Hoshizaki,Bàn Mát 3 Ngăn Kéo / 3 Ngăn Kéo / 3 Ngăn Kéo RTDW187MS4-333 &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-mat-3-ngan-keo-3-ngan-keo-rtdw137ms4-33-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Mát 3 Ngăn Kéo / 3 Ngăn Kéo RTDW137MS4-33 - Hoshizaki,Bàn Mát 3 Ngăn Kéo / 3 Ngăn Kéo RTDW137MS4-33 &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-mat-rt-126ma-s-hoshizaki/,hoshizaki,,hoshizaki,,Bàn mát RT-126MA-S - Hoshizaki,Bàn mát RT-126MA-S &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-mat-rt-126ma-s-ml-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Mát 2 Cửa Không Vách Ngăn RT-126MA-S-ML - Hoshizaki,Bàn Mát 2 Cửa Không Vách Ngăn RT-126MA-S-ML &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-mat-rt-128ma-s-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Mát 2 Cửa RT-128MA-S - Hoshizaki,Bàn Mát 2 Cửa RT-128MA-S &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-mat-rt-128ma-s-ml-hoshizaki/,hoshizaki,,hoshizaki,,Bàn mát RT-128MA-S-ML - Hoshizaki,Bàn mát RT-128MA-S-ML &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-mat-rt-128ma-s-pr-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Lạnh Salad RT-128MA-S-PR - Hoshizaki,Bàn Lạnh Salad RT-128MA-S-PR &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-mat-rt-156ma-s-hoshizaki/,hoshizaki,,hoshizaki,,Bàn mát RT-156MA-S - Hoshizaki,Bàn mát RT-156MA-S &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-mat-rt-156ma-s-ml-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Mát 2 Cửa Không Vách Ngăn RT-156MA-S-ML - Hoshizaki,Bàn Mát 2 Cửa Không Vách Ngăn RT-156MA-S-ML &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-mat-rt-158ma-s-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Mát 2 Cửa RT-158MA-S - Hoshizaki,Bàn Mát 2 Cửa RT-158MA-S &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-mat-rt-158ma-s-ml-hoshizaki/,hoshizaki,,hoshizaki,,Bàn mát RT-158MA-S-ML - Hoshizaki,Bàn mát RT-158MA-S-ML &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-mat-rt-158ma-s-pr-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Lạnh Salad RT-158MA-S-PR - Hoshizaki,Bàn Lạnh Salad RT-158MA-S-PR &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-mat-rt-186ma-s-hoshizaki/,hoshizaki,,hoshizaki,,Bàn mát RT-186MA-S - Hoshizaki,Bàn mát RT-186MA-S &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-mat-rt-186ma-s-ml-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Mát 3 Cửa Không Vách Ngăn RT-186MA-S-ML - Hoshizaki,Bàn Mát 3 Cửa Không Vách Ngăn RT-186MA-S-ML &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-mat-rt-188ma-s-hoshizaki/,hoshizaki,,hoshizaki,,Bàn mát RT-188MA-S - Hoshizaki,Bàn mát RT-188MA-S &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-mat-rt-188ma-s-ml-hoshizaki/,hoshizaki,,hoshizaki,,Bàn mát RT-188MA-S-ML - Hoshizaki,Bàn mát RT-188MA-S-ML &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-mat-rt-188ma-s-pr-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Lạnh Salad RT-188MA-S-PR - Hoshizaki,Bàn Lạnh Salad RT-188MA-S-PR &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-mat-rt-96ma-s-hoshizaki/,hoshizaki,,hoshizaki,,Bàn mát RT-96MA-S - Hoshizaki,Bàn mát RT-96MA-S &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-mat-rt-98ma-s-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Mát 1 Cửa RT-98MA-S - Hoshizaki,Bàn Mát 1 Cửa RT-98MA-S &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-salad-2-cua-rtwh120ls4-gnt-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Salad 2 Cửa RTWH120LS4-GNT - Hoshizaki,Bàn Salad 2 Cửa RTWH120LS4-GNT &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-salad-2-cua-rtwh126ls4-gnt-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Salad 2 Cửa RTWH126LS4-GNT - Hoshizaki,Bàn Salad 2 Cửa RTWH126LS4-GNT &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-salad-2-cua-rtwh150ls4-gnt-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Salad 2 Cửa RTWH150LS4-GNT - Hoshizaki,Bàn Salad 2 Cửa RTWH150LS4-GNT &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-salad-2-cua-rtwh156ls4-gnt-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Salad 2 Cửa RTWH156LS4-GNT - Hoshizaki,Bàn Salad 2 Cửa RTWH156LS4-GNT &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-salad-3-cua-rtwh180ls4-gnt-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Salad 3 Cửa RTWH180LS4-GNT - Hoshizaki,Bàn Salad 3 Cửa RTWH180LS4-GNT &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/ban-salad-3-cua-rtwh186ls4-gnt-hoshizaki/,hoshizaki,,hoshizaki,,Bàn Salad 3 Cửa RTWH186LS4-GNT - Hoshizaki,Bàn Salad 3 Cửa RTWH186LS4-GNT &#8211; Hoshizaki,
+SKIP,https://saigonhoreca.vn/san-pham/bep-au-2-hong-dung-gas-co-chan-ob2fs-17-berjaya-malaysia/,,,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/bep-au-2-hong-dung-gas-co-chan-ob2sfs-berjaya-malaysia/,,,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/bep-au-2-hong-dung-gas-ob2-17-berjaya-malaysia/,,,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/bep-au-2-hong-dung-gas-ob2s-berjaya-malaysia/,,,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/bep-au-4-hong-co-lo-nuong-dro4-17-berjaya-malaysia/,,,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/bep-au-4-hong-dung-gas-co-chan-ob4fs-17-berjaya-malaysia/,,,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/bep-au-4-hong-dung-gas-ob4-17-berjaya-malaysia/,,,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/bep-au-6-hong-co-lo-nuong-dro6-17-berjaya-malaysia/,,,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/bep-au-6-hong-dung-gas-co-chan-ob6fs-17-berjaya-malaysia/,,,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/bep-au-6-hong-dung-gas-ob6-17-berjaya-malaysia/,,,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/bep-chien-tempura-fgf400tpc-fujimak-japan/,,japan,,,,,no brand token in slug
+OK,https://saigonhoreca.vn/san-pham/bep-dien-4-hong-dang-de-ban-ce74tt-giorik-italia/,giorik,italy,giorik,italy,Bếp Điện 4 Họng Dạng Để Bàn CE74TT - Giorik-Italia,Bếp Điện 4 Họng Dạng Để Bàn CE74TT &#8211; Giorik-Italia,
+SKIP,https://saigonhoreca.vn/san-pham/bep-gas-co-chan-fgtns067504-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/bep-gas-co-chan-fgtns096020-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/bep-gas-co-chan-fgtns096021-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/bep-gas-co-chan-fgtns0960w-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/bep-gas-co-chan-fgtns097520-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/bep-gas-co-chan-fgtns097521-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/bep-gas-co-chan-fgtns097522-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/bep-gas-co-chan-fgtns097523-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/bep-gas-co-chan-fgtns126022-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/bep-gas-co-chan-fgtns126032-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/bep-gas-co-chan-fgtns127520-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/bep-gas-co-chan-fgtns127530-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/bep-gas-co-chan-fgtns127532-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/bep-gas-co-chan-fgtns156032-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/bep-gas-co-chan-fgtns157530-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/bep-gas-co-chan-fgtns157532-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/bep-gas-co-chan-fgtns187533-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/bep-gas-co-chan-fgtns187540-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/bep-gas-dang-thap-fgtls0660-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/bep-gas-dang-thap-fgtls0675-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/bep-gas-dang-thap-fgtls1260-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/bep-gas-dang-thap-fgtls1275-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/bep-gas-khong-chan-fgtc30-45-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/bep-gas-khong-chan-fgtc45-45-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/bep-gas-khong-chan-fgtc60-45-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/bo-loc-nuoc-scnp-1000l-scale-control/,,,,,,,no brand token in slug
+OK,https://saigonhoreca.vn/san-pham/chien-nhung-dien-doi-dang-de-ban-fe7210t-giorik-italia/,giorik,italy,giorik,italy,Chiên Nhúng Điện Đôi Dạng Để Bàn FE7210T - Giorik-Italia,Chiên Nhúng Điện Đôi Dạng Để Bàn FE7210T &#8211; Giorik-Italia,
+SKIP,https://saigonhoreca.vn/san-pham/chien-nhung-doi-df11d-17-berjaya-malaysia/,,,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/chien-nhung-doi-gas-gdf11d/,,,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/chien-nhung-doi-gas-gdfe2bfs-17-berjaya-malaysia/,,,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/chien-nhung-don-df12-17-berjaya-malaysia/,,,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/chien-nhung-don-df13-17-berjaya-malaysia/,,,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/chien-nhung-don-df23s1b-17-berjaya-malaysia/,,,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/chien-nhung-don-gas-gdfe1bfs-17-berjaya-malaysia/,,,,,,,no brand token in slug
+OK,https://saigonhoreca.vn/san-pham/chien-nua-nham-nua-phang-fme741tf-giorik-italia/,giorik,italy,giorik,italy,Chiên Nửa Nhám Nửa Phẳng FME741TF - Giorik-Italia,Chiên Nửa Nhám Nửa Phẳng FME741TF &#8211; Giorik-Italia,
+SKIP,https://saigonhoreca.vn/san-pham/chien-phang-dien-eg1750-berjaya-malaysia/,,,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/chien-phang-dien-eg3000-berjaya-malaysia/,,,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/chien-phang-dien-eg3000fs-berjaya-malaysia/,,,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/chien-phang-dien-eg3500-17-berjaya-malaysia/,,,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/chien-phang-dien-eg3500fs-17-berjaya-malaysia/,,,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/chien-phang-dien-eg5250-17-berjaya-malaysia/,,,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/chien-phang-dien-eg5250fs-17-berjaya-malaysia/,,,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/chien-phang-gas-gg2b-17-berjaya-malaysia/,,,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/den-diet-con-trung-bjy-ik30a-berjaya-malaysia/,,,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/den-giu-am-thuc-an-ir1000-berjaya-malaysia/,,,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/he-thong-hut-khoi-cap-khi-tuoi-bambino/,,,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/he-thong-hut-khoi-cap-khi-tuoi-boi-saigon-horeca/,,,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/he-thong-hut-khoi-cap-khi-tuoi-mam-mam/,,,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/he-thong-hut-khoi-cap-khi-tuoi-sol-kitchen-bar/,,,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/lo-nuong-bang-tai-bang-dien-fejoa9-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/lo-nuong-bang-tai-bang-gas-fgjoa9h-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/lo-nuong-combi-ficc201e-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/lo-nuong-combi-ficp101e-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/lo-nuong-combi-ficp61e-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/lo-nuong-combi-ficpxs-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/lo-nuong-sala-e-sala11-berjaya-malaysia/,,,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/lo-nuong-sala-gas-sala11-berjaya-malaysia/,,,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/lo-nuong-sala-gas-sala22-berjaya-malaysia/,,,,,,,no brand token in slug
+OK,https://saigonhoreca.vn/san-pham/lo-vi-song-mo-1000-sammic-spain/,sammic,spain,sammic,spain,Lò Vi Sóng MO-1000 - Sammic-Spain,Lò Vi Sóng MO-1000 &#8211; Sammic-Spain,
+OK,https://saigonhoreca.vn/san-pham/may-cat-thit-gcp-300-sammic-spain/,sammic,spain,sammic,spain,Máy Cắt Thịt GCP-300 - Sammic-Spain,Máy Cắt Thịt GCP-300 &#8211; Sammic-Spain,
+OK,https://saigonhoreca.vn/san-pham/may-cat-thit-gcp-350-sammic-spain/,sammic,spain,sammic,spain,Máy Cắt Thịt GCP-350 - Sammic-Spain,Máy Cắt Thịt GCP-350 &#8211; Sammic-Spain,
+OK,https://saigonhoreca.vn/san-pham/may-ep-li-240-sammic-spain/,sammic,spain,sammic,spain,Máy Ép LI-240 - Sammic-Spain,Máy Ép LI-240 &#8211; Sammic-Spain,
+OK,https://saigonhoreca.vn/san-pham/may-hut-chan-khong-se-204-sammic/,sammic,,sammic,,Máy hút chân không SE-204 – Sammic,Máy hút chân không SE-204 – Sammic,
+OK,https://saigonhoreca.vn/san-pham/may-hut-chan-khong-se-208-sammic/,sammic,,sammic,,Máy hút chân không SE-208 – Sammic,Máy hút chân không SE-208 – Sammic,
+OK,https://saigonhoreca.vn/san-pham/may-hut-chan-khong-se-308-sammic/,sammic,,sammic,,Máy hút chân không SE-308 – Sammic,Máy hút chân không SE-308 – Sammic,
+OK,https://saigonhoreca.vn/san-pham/may-hut-chan-khong-se-310-sammic/,sammic,,sammic,,Máy hút chân không SE-310 – Sammic,Máy hút chân không SE-310 – Sammic,
+OK,https://saigonhoreca.vn/san-pham/may-hut-chan-khong-se-316-sammic/,sammic,,sammic,,Máy hút chân không SE-316 – Sammic,Máy hút chân không SE-316 – Sammic,
+OK,https://saigonhoreca.vn/san-pham/may-hut-chan-khong-se-416-sammic/,sammic,,sammic,,Máy hút chân không SE-416 – Sammic,Máy hút chân không SE-416 – Sammic,
+OK,https://saigonhoreca.vn/san-pham/may-hut-chan-khong-se-420-sammic/,sammic,,sammic,,Máy hút chân không SE-420 – Sammic,Máy hút chân không SE-420 – Sammic,
+OK,https://saigonhoreca.vn/san-pham/may-hut-chan-khong-se-520cc-sammic/,sammic,,sammic,,Máy hút chân không SE-520CC – Sammic,Máy hút chân không SE-520CC – Sammic,
+OK,https://saigonhoreca.vn/san-pham/may-hut-chan-khong-se-520l-sammic/,sammic,,sammic,,Máy hút chân không SE-520L – Sammic,Máy hút chân không SE-520L – Sammic,
+OK,https://saigonhoreca.vn/san-pham/may-hut-chan-khong-se-604-sammic/,sammic,,sammic,,Máy hút chân không SE-604 – Sammic,Máy hút chân không SE-604 – Sammic,
+OK,https://saigonhoreca.vn/san-pham/may-hut-chan-khong-se-604cc-sammic/,sammic,,sammic,,Máy hút chân không SE-604CC – Sammic,Máy hút chân không SE-604CC – Sammic,
+OK,https://saigonhoreca.vn/san-pham/may-hut-chan-khong-se-606-sammic/,sammic,,sammic,,Máy hút chân không SE-606 – Sammic,Máy hút chân không SE-606 – Sammic,
+OK,https://saigonhoreca.vn/san-pham/may-hut-chan-khong-se-606cc-sammic/,sammic,,sammic,,Máy hút chân không SE-606CC – Sammic,Máy hút chân không SE-606CC – Sammic,
+OK,https://saigonhoreca.vn/san-pham/may-hut-chan-khong-se-806-sammic/,sammic,,sammic,,Máy hút chân không SE-806 – Sammic,Máy hút chân không SE-806 – Sammic,
+OK,https://saigonhoreca.vn/san-pham/may-hut-chan-khong-se-806cc-sammic/,sammic,,sammic,,Máy hút chân không SE-806CC – Sammic,Máy hút chân không SE-806CC – Sammic,
+OK,https://saigonhoreca.vn/san-pham/may-hut-chan-khong-se-806ll-sammic/,sammic,,sammic,,Máy hút chân không SE-806LL – Sammic,Máy hút chân không SE-806LL – Sammic,
+OK,https://saigonhoreca.vn/san-pham/may-hut-chan-khong-se-810-sammic/,sammic,,sammic,,Máy hút chân không SE-810 – Sammic,Máy hút chân không SE-810 – Sammic,
+OK,https://saigonhoreca.vn/san-pham/may-hut-chan-khong-se-810cc-sammic/,sammic,,sammic,,Máy hút chân không SE-810CC – Sammic,Máy hút chân không SE-810CC – Sammic,
+OK,https://saigonhoreca.vn/san-pham/may-hut-chan-khong-se-810ll-sammic/,sammic,,sammic,,Máy hút chân không SE-810LL – Sammic,Máy hút chân không SE-810LL – Sammic,
+OK,https://saigonhoreca.vn/san-pham/may-hut-chan-khong-su-310-sammic/,sammic,,sammic,spain,Máy Đóng Gói Chân Không SU-310 - Sammic-Spain,Máy Đóng Gói Chân Không SU-310 &#8211; Sammic-Spain,
+OK,https://saigonhoreca.vn/san-pham/may-hut-chan-khong-su-316-sammic/,sammic,,sammic,,Máy hút chân không SU-316 – Sammic,Máy hút chân không SU-316 – Sammic,
+OK,https://saigonhoreca.vn/san-pham/may-hut-chan-khong-su-416-sammic/,sammic,,sammic,,Máy hút chân không SU-416 – Sammic,Máy hút chân không SU-416 – Sammic,
+OK,https://saigonhoreca.vn/san-pham/may-hut-chan-khong-su-420-sammic/,sammic,,sammic,,Máy hút chân không SU-420 – Sammic,Máy hút chân không SU-420 – Sammic,
+OK,https://saigonhoreca.vn/san-pham/may-hut-chan-khong-su-520cc-sammic/,sammic,,sammic,,Máy hút chân không SU-520CC – Sammic,Máy hút chân không SU-520CC – Sammic,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-dim-30de-2-hoshizaki/,hoshizaki,,hoshizaki,,Máy Làm Đá DIM-30DE-2 - Hoshizaki,Máy Làm Đá DIM-30DE-2 &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-hinh-ban-nguyet-km-130c-hoshizaki/,hoshizaki,,hoshizaki,,Máy Làm Đá Hình Bán Nguyệt KM-130C - Hoshizaki,Máy Làm Đá Hình Bán Nguyệt KM-130C &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-hinh-ban-nguyet-km-40c-hoshizaki/,hoshizaki,,hoshizaki,,Máy Làm Đá Hình Bán Nguyệt KM-40C - Hoshizaki,Máy Làm Đá Hình Bán Nguyệt KM-40C &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-hinh-ban-nguyet-km-470aj-hoshizaki/,hoshizaki,,hoshizaki,,Máy Làm Đá Hình Bán Nguyệt KM-470AJ - Hoshizaki,Máy Làm Đá Hình Bán Nguyệt KM-470AJ &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-hinh-ban-nguyet-km-590dj-hoshizaki/,hoshizaki,,hoshizaki,,Máy Làm Đá Hình Bán Nguyệt KM-590DJ - Hoshizaki,Máy Làm Đá Hình Bán Nguyệt KM-590DJ &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-hinh-ban-nguyet-km-60c-hoshizaki/,hoshizaki,,hoshizaki,,Máy Làm Đá Hình Bán Nguyệt KM-60C - Hoshizaki,Máy Làm Đá Hình Bán Nguyệt KM-60C &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-hinh-ban-nguyet-km-80c-hoshizaki/,hoshizaki,,hoshizaki,,Máy Làm Đá Hình Bán Nguyệt KM-80C - Hoshizaki,Máy Làm Đá Hình Bán Nguyệt KM-80C &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-hinh-ban-nguyet-kmd-201ab-hoshizaki/,hoshizaki,,hoshizaki,,Máy Làm Đá Hình Bán Nguyệt KMD-201AB - Hoshizaki,Máy Làm Đá Hình Bán Nguyệt KMD-201AB &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-hinh-ban-nguyet-kmd-201awb-hoshizaki/,hoshizaki,,hoshizaki,,Máy Làm Đá Hình Bán Nguyệt KMD-201AWB - Hoshizaki,Máy Làm Đá Hình Bán Nguyệt KMD-201AWB &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-hinh-ban-nguyet-kmd-270ab-hoshizaki/,hoshizaki,,hoshizaki,,Máy Làm Đá Hình Bán Nguyệt KMD-270AB - Hoshizaki,Máy Làm Đá Hình Bán Nguyệt KMD-270AB &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-hinh-ban-nguyet-kmd-270awb-hoshizaki/,hoshizaki,,hoshizaki,,Máy Làm Đá Hình Bán Nguyệt KMD-270AWB - Hoshizaki,Máy Làm Đá Hình Bán Nguyệt KMD-270AWB &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-hinh-cau-im-65ne-q-hoshizaki/,hoshizaki,,hoshizaki,,Máy Làm Đá Hình Cầu IM-65NE-Q - Hoshizaki,Máy Làm Đá Hình Cầu IM-65NE-Q &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-hinh-ngoi-sao-im-65ne-s-hoshizaki/,hoshizaki,,hoshizaki,,Máy Làm Đá Hình Ngôi Sao IM-65NE-S - Hoshizaki,Máy Làm Đá Hình Ngôi Sao IM-65NE-S &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-hinh-trai-tim-im-65ne-h-hoshizaki/,hoshizaki,,hoshizaki,,Máy Làm Đá Hình Trái Tim IM-65NE-H - Hoshizaki,Máy Làm Đá Hình Trái Tim IM-65NE-H &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-nugget-fm-1000ake-n-sb-hoshizaki/,hoshizaki,,hoshizaki,,Máy Làm Đá Nugget FM-1000AKE-N-SB - Hoshizaki,Máy Làm Đá Nugget FM-1000AKE-N-SB &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-nugget-fm-150ke-n-hoshizaki/,hoshizaki,,hoshizaki,,Máy Làm Đá Nugget FM-150KE-N - Hoshizaki,Máy Làm Đá Nugget FM-150KE-N &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-nugget-fm-480ake-n-sb-hoshizaki/,hoshizaki,,hoshizaki,,Máy Làm Đá Nugget FM-480AKE-N-SB - Hoshizaki,Máy Làm Đá Nugget FM-480AKE-N-SB &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-nugget-fm-600ake-n-sb-hoshizaki/,hoshizaki,,hoshizaki,,Máy Làm Đá Nugget FM-600AKE-N-SB - Hoshizaki,Máy Làm Đá Nugget FM-600AKE-N-SB &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-nugget-fm-750ake-n-sb-hoshizaki/,hoshizaki,,hoshizaki,,Máy Làm Đá Nugget FM-750AKE-N-SB - Hoshizaki,Máy Làm Đá Nugget FM-750AKE-N-SB &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-vay-fm-1000ake-sb-hoshizaki/,hoshizaki,,hoshizaki,,Máy Làm Đá Vảy FM-1000AKE-SB - Hoshizaki,Máy Làm Đá Vảy FM-1000AKE-SB &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-vay-fm-300ake-sb-hoshizaki/,hoshizaki,,hoshizaki,,Máy Làm Đá Vảy FM-300AKE-SB - Hoshizaki,Máy Làm Đá Vảy FM-300AKE-SB &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-vay-fm-480ake-sb-hoshizaki/,hoshizaki,,hoshizaki,,Máy Làm Đá Vảy FM-480AKE-SB - Hoshizaki,Máy Làm Đá Vảy FM-480AKE-SB &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-vay-fm-600ake-sb-hoshizaki/,hoshizaki,,hoshizaki,,Máy Làm Đá Vảy FM-600AKE-SB - Hoshizaki,Máy Làm Đá Vảy FM-600AKE-SB &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-vay-fm-750ake-sb-hoshizaki/,hoshizaki,,hoshizaki,,Máy Làm Đá Vảy FM-750AKE-SB - Hoshizaki,Máy Làm Đá Vảy FM-750AKE-SB &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-vay-tu-dong-dcm-120ke-hoshizaki/,hoshizaki,,hoshizaki,,Máy Làm Đá Vảy Tự Động DCM-120KE - Hoshizaki,Máy Làm Đá Vảy Tự Động DCM-120KE &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-vay-tu-dong-dcm-60ke-hoshizaki/,hoshizaki,,hoshizaki,,Máy Làm Đá Vảy Tự Động DCM-60KE - Hoshizaki,Máy Làm Đá Vảy Tự Động DCM-60KE &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-vien-fm-1000ake-hoshizaki/,hoshizaki,,hoshizaki,,Máy làm đá viên FM-1000AKE - Hoshizaki,Máy làm đá viên FM-1000AKE &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-vien-fm-150ke-50-hoshizaki/,hoshizaki,,hoshizaki,,Máy làm đá viên FM-150KE-50 - Hoshizaki,Máy làm đá viên FM-150KE-50 &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-vien-fm-150ke-hoshizaki/,hoshizaki,,hoshizaki,,Máy làm đá viên FM-150KE - Hoshizaki,Máy làm đá viên FM-150KE &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-vien-fm-300ake-hoshizaki/,hoshizaki,,hoshizaki,,Máy làm đá viên FM-300AKE - Hoshizaki,Máy làm đá viên FM-300AKE &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-vien-fm-480ake-hoshizaki/,hoshizaki,,hoshizaki,,Máy làm đá viên FM-480AKE - Hoshizaki,Máy làm đá viên FM-480AKE &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-vien-fm-750ake-hoshizaki/,hoshizaki,,hoshizaki,,Máy làm đá viên FM-750AKE - Hoshizaki,Máy làm đá viên FM-750AKE &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-vien-im-100a-23-hoshizaki/,hoshizaki,,hoshizaki,,Máy làm đá viên IM-100A-23 - Hoshizaki,Máy làm đá viên IM-100A-23 &#8211;  Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-vien-im-100a-hoshizaki/,hoshizaki,,hoshizaki,,Máy Làm Đá Viên IM-100A - Hoshizaki,Máy Làm Đá Viên IM-100A &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-vien-im-100cne-21-hoshizaki/,hoshizaki,,hoshizaki,,Máy Làm Đá Viên IM-100CNE-21 - Hoshizaki,Máy Làm Đá Viên IM-100CNE-21 &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-vien-im-100cne-23-hoshizaki/,hoshizaki,,hoshizaki,,Máy Làm Đá Viên IM-100CNE-23 - Hoshizaki,Máy Làm Đá Viên IM-100CNE-23 &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-vien-im-100cne-hoshizaki/,hoshizaki,,hoshizaki,,Máy Làm Đá Viên IM-100CNE - Hoshizaki,Máy Làm Đá Viên IM-100CNE &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-vien-im-130a-hoshizaki/,hoshizaki,,hoshizaki,,Máy làm đá viên IM-130A - Hoshizaki,Máy làm đá viên IM-130A &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-vien-im-220aa-21-hoshizaki/,hoshizaki,,hoshizaki,,Máy Làm Đá Viên IM-220AA-21 - Hoshizaki,Máy Làm Đá Viên IM-220AA-21 &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-vien-im-220aa-23-hoshizaki/,hoshizaki,,hoshizaki,,Máy Làm Đá Viên IM-220AA-23 - Hoshizaki,Máy Làm Đá Viên IM-220AA-23 &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-vien-im-220aa-hoshizaki/,hoshizaki,,hoshizaki,,Máy làm đá viên IM-220AA - Hoshizaki,Máy làm đá viên IM-220AA &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-vien-im-240ane-hoshizaki/,hoshizaki,,hoshizaki,,Máy Làm Đá Viên IM-240ANE - Hoshizaki,Máy Làm Đá Viên IM-240ANE &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-vien-im-240dne-21-hoshizaki/,hoshizaki,,hoshizaki,,Máy Làm Đá Viên IM-240DNE-21 - Hoshizaki,Máy Làm Đá Viên IM-240DNE-21 &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-vien-im-240dne-23-hoshizaki/,hoshizaki,,hoshizaki,,Máy Làm Đá Viên IM-240DNE-23 - Hoshizaki,Máy Làm Đá Viên IM-240DNE-23 &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-vien-im-240dne-hoshizaki/,hoshizaki,,hoshizaki,,Máy Làm Đá Viên IM-240DNE - Hoshizaki,Máy Làm Đá Viên IM-240DNE &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-vien-im-240xne-21-hoshizaki/,hoshizaki,,hoshizaki,,Máy Làm Đá Viên IM-240XNE-21 - Hoshizaki,Máy Làm Đá Viên IM-240XNE-21 &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-vien-im-240xne-23-hoshizaki/,hoshizaki,,hoshizaki,,Máy Làm Đá Viên IM-240XNE-23 - Hoshizaki,Máy Làm Đá Viên IM-240XNE-23 &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-vien-im-240xne-hoshizaki/,hoshizaki,,hoshizaki,,Máy Làm Đá Viên IM-240XNE - Hoshizaki,Máy Làm Đá Viên IM-240XNE &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-vien-im-30ca-25-hoshizaki/,hoshizaki,,hoshizaki,,Máy làm đá viên IM-30CA-25 - Hoshizaki,Máy làm đá viên IM-30CA-25 &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-vien-im-30ca-hoshizaki/,hoshizaki,,hoshizaki,,Máy làm đá viên IM-30CA - Hoshizaki,Máy làm đá viên IM-30CA &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-vien-im-30cne-25-hoshizaki/,hoshizaki,,hoshizaki,,Máy Làm Đá Viên IM-30CNE-25 - Hoshizaki,Máy Làm Đá Viên IM-30CNE-25 &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-vien-im-45ca-25-hoshizaki/,hoshizaki,,hoshizaki,,Máy làm đá viên IM-45CA-25 - Hoshizaki,Máy làm đá viên IM-45CA-25 &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-vien-im-45ca-hoshizaki/,hoshizaki,,hoshizaki,,Máy làm đá viên IM-45CA - Hoshizaki,Máy làm đá viên IM-45CA &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-vien-im-45cne-25-hoshizaki/,hoshizaki,,hoshizaki,,Máy Làm Đá Viên IM-45CNE-25 - Hoshizaki,Máy Làm Đá Viên IM-45CNE-25 &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-vien-im-65a-25-hoshizaki/,hoshizaki,,hoshizaki,,Máy làm đá viên IM-65A-25 - Hoshizaki,Máy làm đá viên IM-65A-25 &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-vien-im-65a-hoshizaki/,hoshizaki,,hoshizaki,,Máy làm đá viên IM-65A - Hoshizaki,Máy làm đá viên IM-65A &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-vien-im-65ne-25-hoshizaki/,hoshizaki,,hoshizaki,,Máy Làm Đá Viên IM-65NE-25 - Hoshizaki,Máy Làm Đá Viên IM-65NE-25 &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-vien-im-65ne-hoshizaki/,hoshizaki,,hoshizaki,,Máy Làm Đá Viên IM-65NE - Hoshizaki,Máy Làm Đá Viên IM-65NE &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-vien-lon-im-35m-2-lm-hoshizaki/,hoshizaki,,hoshizaki,,Máy Làm Đá Viên Lớn IM-35M-2-LM - Hoshizaki,Máy Làm Đá Viên Lớn IM-35M-2-LM &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-vien-lon-im-55m-2-lm-hoshizaki/,hoshizaki,,hoshizaki,,Máy Làm Đá Viên Lớn IM-55M-2-LM - Hoshizaki,Máy Làm Đá Viên Lớn IM-55M-2-LM &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-vien-lon-lm-550m-1-hoshizaki/,hoshizaki,,hoshizaki,,Máy Làm Đá Viên Lớn LM-550M-1 - Hoshizaki,Máy Làm Đá Viên Lớn LM-550M-1 &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-vien-srm-105a-hoshizaki/,hoshizaki,,hoshizaki,,Máy làm đá viên SRM-105A - Hoshizaki,Máy làm đá viên SRM-105A &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-vien-srm-125a-hoshizaki/,hoshizaki,,hoshizaki,,Máy làm đá viên SRM-125A - Hoshizaki,Máy làm đá viên SRM-125A &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-vien-srm-45a-hoshizaki/,hoshizaki,,hoshizaki,,Máy Làm Đá Viên Nhỏ SRM-45A - Hoshizaki,Máy Làm Đá Viên Nhỏ SRM-45A &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-vien-srm-60a-hoshizaki/,hoshizaki,,hoshizaki,,Máy Làm Đá Viên Nhỏ SRM-60A - Hoshizaki,Máy Làm Đá Viên Nhỏ SRM-60A &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-lam-da-vien-srm-80a-hoshizaki/,hoshizaki,,hoshizaki,,Máy Làm Đá Viên Nhỏ SRM-80A - Hoshizaki,Máy Làm Đá Viên Nhỏ SRM-80A &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-nau-cham-smartvide-5-sammic/,sammic,,sammic,,Máy nấu chậm SmartVide 5 - Sammic,Máy nấu chậm SmartVide 5 &#8211; Sammic,
+OK,https://saigonhoreca.vn/san-pham/may-nau-cham-smartvide-7-sammic/,sammic,,sammic,,Máy nấu chậm SmartVide 7 - Sammic,Máy nấu chậm SmartVide 7 &#8211; Sammic,
+OK,https://saigonhoreca.vn/san-pham/may-nau-cham-smartvide-9-sammic/,sammic,,sammic,,Máy nấu chậm SmartVide 9 - Sammic,Máy nấu chậm SmartVide 9 &#8211; Sammic,
+OK,https://saigonhoreca.vn/san-pham/may-nau-cham-smartvide-xl-sammic/,sammic,,sammic,,Máy nấu chậm SmartVide XL - Sammic,Máy nấu chậm SmartVide XL &#8211; Sammic,
+OK,https://saigonhoreca.vn/san-pham/may-rua-chen-dang-dung-hw-600b3-r-hoshizaki/,hoshizaki,,hoshizaki,,Máy Rửa Chén Dạng Đứng HW-600B3 R - Hoshizaki,Máy Rửa Chén Dạng Đứng HW-600B3 R &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-rua-chen-dang-dung-obm1080t-hoshizaki/,hoshizaki,,hoshizaki,,Máy Rửa Chén Dạng Đứng OBM1080T - Hoshizaki,Máy Rửa Chén Dạng Đứng OBM1080T &#8211; Hoshizaki,
+SKIP,https://saigonhoreca.vn/san-pham/may-rua-chen-dw3280s-dolphin-korea/,,,,,,,no brand token in slug
+OK,https://saigonhoreca.vn/san-pham/may-rua-chen-p50-winterhalter-germany/,winterhalter,germany,winterhalter,germany,Máy Rửa Chén P50 - Winterhalter-Germany,Máy Rửa Chén P50 &#8211; Winterhalter-Germany,
+OK,https://saigonhoreca.vn/san-pham/may-rua-chen-ux-100-sammic-spain/,sammic,spain,sammic,spain,Máy Rửa Chén UX-100 - Sammic-Spain,Máy Rửa Chén UX-100 &#8211; Sammic-Spain,
+OK,https://saigonhoreca.vn/san-pham/may-rua-chen-ux-50b-sammic-spain/,sammic,spain,sammic,spain,Máy Rửa Chén UX-50B - Sammic-Spain,Máy Rửa Chén UX-50B &#8211; Sammic-Spain,
+OK,https://saigonhoreca.vn/san-pham/may-rua-ly-dang-ban-hw-320b-s-r-hoshizaki/,hoshizaki,,hoshizaki,,Máy Rửa Ly Dạng Bàn HW-320B-S R - Hoshizaki,Máy Rửa Ly Dạng Bàn HW-320B-S R &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/may-rua-ly-dang-ban-oby50t-hoshizaki/,hoshizaki,,hoshizaki,,Máy Rửa Ly Dạng Bàn OBY50T - Hoshizaki,Máy Rửa Ly Dạng Bàn OBY50T &#8211; Hoshizaki,
+SKIP,https://saigonhoreca.vn/san-pham/may-tron-bot-cm-50ed/,,,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/may-tron-bot-wsk-25/,,,,,,,no brand token in slug
+OK,https://saigonhoreca.vn/san-pham/may-xay-thit-ps-22-sammic-spain/,sammic,spain,sammic,spain,Máy Xay Thịt PS-22 - Sammic-Spain,Máy Xay Thịt PS-22 &#8211; Sammic-Spain,
+SKIP,https://saigonhoreca.vn/san-pham/nuong-than-nhan-tao-cb3b-17-berjaya-malaysia/,,,,,,,no brand token in slug
+OK,https://saigonhoreca.vn/san-pham/smartvide-xl-va-120p-heated-tank-sammic/,sammic,,sammic,,High production retherming and cooking station: SmartVide XL và 120P heated tank - Sammic,High production retherming and cooking station: SmartVide XL và 120P heated tank &#8211; Sammic,
+OK,https://saigonhoreca.vn/san-pham/thung-da-dung-luong-luu-tru-toi-da-144kg-b-301sa-hoshizaki/,hoshizaki,,hoshizaki,,Thùng Đá / Dung Lượng Lưu Trữ Tối Đa 144Kg B-301SA - Hoshizaki,Thùng Đá / Dung Lượng Lưu Trữ Tối Đa 144Kg B-301SA &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/thung-da-dung-luong-luu-tru-toi-da-217kg-b-501sa-hoshizaki/,hoshizaki,,hoshizaki,,Thùng Đá / Dung Lượng Lưu Trữ Tối Đa 217Kg B-501SA - Hoshizaki,Thùng Đá / Dung Lượng Lưu Trữ Tối Đa 217Kg B-501SA &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/thung-da-dung-luong-luu-tru-toi-da-348kg-b-801sa-hoshizaki/,hoshizaki,,hoshizaki,,Thùng Đá / Dung Lượng Lưu Trữ Tối Đa 348Kg B-801SA - Hoshizaki,Thùng Đá / Dung Lượng Lưu Trữ Tối Đa 348Kg B-801SA &#8211; Hoshizaki,
+SKIP,https://saigonhoreca.vn/san-pham/tu-bao-quan-khu-trung-fsc6015b-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/tu-bao-quan-khu-trung-fsc6025b-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/tu-bao-quan-khu-trung-fscd0345b-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/tu-bao-quan-khu-trung-fscd6050b-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/tu-bao-quan-khu-trung-fscd8550b-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/tu-bao-quan-khu-trung-fscd8560sb-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/tu-bao-quan-khu-trung-fscdt0960b-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/tu-bao-quan-khu-trung-fscdt7560b-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/tu-chien-nhung-doi-fssdf12d-berjaya-malaysia/,,,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/tu-chien-nhung-doi-sdf12d-berjaya-malaysia/,,,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/tu-chien-nhung-don-fssdf12-berjaya-malaysia/,,,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/tu-chien-nhung-don-sdf12-berjaya-malaysia/,,,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/tu-com-cong-nghiep-frc108fa-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/tu-com-cong-nghiep-frc14d-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/tu-com-cong-nghiep-frc14fa-ap-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/tu-com-cong-nghiep-frc14fa-tp-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/tu-com-cong-nghiep-frc162fa-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/tu-com-cong-nghiep-frc21d-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/tu-com-cong-nghiep-frc21fa-ap-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/tu-com-cong-nghiep-frc21fa-tp-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/tu-com-cong-nghiep-frc54fa-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/tu-com-cong-nghiep-frc7d-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/tu-com-cong-nghiep-frc7fa-ap-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/tu-com-cong-nghiep-frc7fa-tp-fujimak-japan/,,japan,,,,,no brand token in slug
+OK,https://saigonhoreca.vn/san-pham/tu-dong-2-canh-dung-loai-co-khay-banh-hf-78ma-s-b-hoshizaki/,hoshizaki,,hoshizaki,,Tủ Đông 2 Cánh Đứng Loại Có Khay Bánh HF-78MA-S-B - Hoshizaki,Tủ Đông 2 Cánh Đứng Loại Có Khay Bánh HF-78MA-S-B &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/tu-dong-2-canh-hf-78ma-s-hoshizaki/,hoshizaki,,hoshizaki,,Tủ Đông Đứng 2 Cửa HF-78MA-S - Hoshizaki,Tủ Đông Đứng 2 Cửa  HF-78MA-S &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/tu-dong-4-canh-hf-128ma-s-hoshizaki/,hoshizaki,,hoshizaki,,Tủ Đông Đứng 4 Cửa HF-128MA-S - Hoshizaki,Tủ Đông Đứng 4 Cửa HF-128MA-S &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/tu-dong-4-cua-khong-vach-ngan-hf-128ma-s-ml-hoshizaki/,hoshizaki,,hoshizaki,,Tủ Đông 4 Cửa Không Vách Ngăn HF-128MA-S-ML - Hoshizaki,Tủ Đông 4 Cửa Không Vách Ngăn HF-128MA-S-ML &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/tu-dong-4-cua-khong-vach-ngan-hf-148ma-s-ml-hoshizaki/,hoshizaki,,hoshizaki,,Tủ Đông 4 Cửa Không Vách Ngăn HF-148MA-S-ML - Hoshizaki,Tủ Đông 4 Cửa Không Vách Ngăn HF-148MA-S-ML &#8211; Hoshizaki,
+SKIP,https://saigonhoreca.vn/san-pham/tu-dong-dung-2-cua-fvf7680-fujimak-japan/,,japan,,,,,no brand token in slug
+OK,https://saigonhoreca.vn/san-pham/tu-dong-dung-2-cua-hfwh77ls4-ic-hoshizaki/,hoshizaki,,hoshizaki,,Tủ Đông Đứng 2 Cửa HFWH77LS4-IC - Hoshizaki,Tủ Đông Đứng 2 Cửa HFWH77LS4-IC &#8211; Hoshizaki,
+SKIP,https://saigonhoreca.vn/san-pham/tu-dong-dung-4-cua-fvf1280-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/tu-dong-dung-4-cua-fvf1580-fujimak-japan/,,japan,,,,,no brand token in slug
+OK,https://saigonhoreca.vn/san-pham/tu-dong-dung-4-cua-hf-148ma-s-hoshizaki/,hoshizaki,,hoshizaki,,Tủ Đông Đứng 4 Cửa HF-148MA-S - Hoshizaki,Tủ Đông Đứng 4 Cửa  HF-148MA-S &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/tu-dong-dung-4-cua-hfwh127ls4-ic-hoshizaki/,hoshizaki,,hoshizaki,,Tủ Đông Đứng 4 Cửa HFWH127LS4-IC - Hoshizaki,Tủ Đông Đứng 4 Cửa HFWH127LS4-IC &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/tu-dong-dung-4-cua-hfwh147ls4-ic-hoshizaki/,hoshizaki,,hoshizaki,,Tủ Đông Đứng 4 Cửa HFWH147LS4-IC - Hoshizaki,Tủ Đông Đứng 4 Cửa HFWH147LS4-IC &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/tu-dong-dung-4-cua-loai-d650-hf-126ma-s-hoshizaki/,hoshizaki,,hoshizaki,,Tủ Đông Đứng 4 Cửa Loại D650 HF-126MA-S - Hoshizaki,Tủ Đông Đứng 4 Cửa Loại D650 HF-126MA-S &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/tu-dong-dung-4-cua-loai-d650-hf-146ma-s-hoshizaki/,hoshizaki,,hoshizaki,,Tủ Đông Đứng 4 Cửa Loại D650 HF-146MA-S - Hoshizaki,Tủ Đông Đứng 4 Cửa Loại D650 HF-146MA-S &#8211; Hoshizaki,
+SKIP,https://saigonhoreca.vn/san-pham/tu-dong-lam-lanh-nhanh-at-10-1-1/,,,,,,,no brand token in slug
+OK,https://saigonhoreca.vn/san-pham/tu-dong-lam-lanh-nhanh-at-12-2-70-sammic/,sammic,,sammic,,Tủ đông làm lạnh nhanh AT-12 2/70 - Sammic,Tủ đông làm lạnh nhanh AT-12 2/70 &#8211; Sammic,
+OK,https://saigonhoreca.vn/san-pham/tu-dong-lam-lanh-nhanh-at-14-1-1-sammic/,sammic,,sammic,,Tủ đông làm lạnh nhanh AT-14 1/1 - Sammic,Tủ đông làm lạnh nhanh AT-14 1/1 &#8211; Sammic,
+SKIP,https://saigonhoreca.vn/san-pham/tu-dong-lam-lanh-nhanh-at-20-compatible/,,,,,,,no brand token in slug
+OK,https://saigonhoreca.vn/san-pham/tu-dong-lam-lanh-nhanh-at-20-md-sammic/,sammic,,sammic,,Tủ đông làm lạnh nhanh AT-20 MD - Sammic,Tủ đông làm lạnh nhanh AT-20 MD &#8211; Sammic,
+OK,https://saigonhoreca.vn/san-pham/tu-dong-lam-lanh-nhanh-at-3-1-1-sammic-2/,sammic,,sammic,,Tủ đông làm lạnh nhanh AT-3 1/1 - Sammic,Tủ đông làm lạnh nhanh AT-3 1/1 &#8211; Sammic,
+OK,https://saigonhoreca.vn/san-pham/tu-dong-lam-lanh-nhanh-at-3-1-1-sammic/,sammic,,sammic,,Tủ đông làm lạnh nhanh AT-3 1/1 - Sammic,Tủ đông làm lạnh nhanh AT-3 1/1 &#8211; Sammic,
+SKIP,https://saigonhoreca.vn/san-pham/tu-dong-lam-lanh-nhanh-at-3-2-3/,,,,,,,no brand token in slug
+OK,https://saigonhoreca.vn/san-pham/tu-dong-lam-lanh-nhanh-at-5-1-1-sammic/,sammic,,sammic,,Tủ đông làm lạnh nhanh AT-5 1/1 - Sammic,Tủ đông làm lạnh nhanh AT-5 1/1 &#8211; Sammic,
+OK,https://saigonhoreca.vn/san-pham/tu-dong-lam-lanh-nhanh-at-8-1-1-sammic/,sammic,,sammic,,Tủ đông làm lạnh nhanh AT-8 1/1 - Sammic,Tủ đông làm lạnh nhanh AT-8 1/1 &#8211; Sammic,
+OK,https://saigonhoreca.vn/san-pham/tu-dong-mat-2-cua-hrf-78ma-s-hoshizaki/,hoshizaki,,hoshizaki,,Tủ Đông Mát 2 Cửa HRF-78MA-S - Hoshizaki,Tủ Đông Mát 2 Cửa HRF-78MA-S &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/tu-dong-mat-4-cua-hrf-128ma-s-hoshizaki/,hoshizaki,,hoshizaki,,Tủ Đông Mát 4 Cửa HRF-128MA-S - Hoshizaki,Tủ Đông Mát 4 Cửa HRF-128MA-S &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/tu-dong-mat-4-cua-hrf-148ma-s-hoshizaki/,hoshizaki,,hoshizaki,,Tủ Đông Mát 4 Cửa HRF-148MA-S - Hoshizaki,Tủ Đông Mát 4 Cửa HRF-148MA-S &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/tu-dong-mat-6-cua-hrf-188ma-s-hoshizaki/,hoshizaki,,hoshizaki,,Tủ Đông Mát 6 Cửa HRF-188MA-S - Hoshizaki,Tủ Đông Mát 6 Cửa HRF-188MA-S &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/tu-dong-trung-bay-srf500hc-xgl-hoshizaki/,hoshizaki,,hoshizaki,,Tủ Đông Trưng Bày SRF500HC-XGL - Hoshizaki,Tủ Đông Trưng Bày SRF500HC-XGL &#8211; Hoshizaki,
+SKIP,https://saigonhoreca.vn/san-pham/tu-giu-am-banh-fw-5g-berjaya-malaysia/,,,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/tu-giu-am-thuc-an-nfw35-2-berjaya-malaysia/,,,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/tu-giu-am-thuc-an-nfw40-2-berjaya-malaysia/,,,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/tu-giu-am-thuc-an-nfw45-2-berjaya-malaysia/,,,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/tu-giu-am-thuc-an-nfw50-2-berjaya-malaysia/,,,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/tu-giu-am-thuc-an-nfw55-2-berjaya-malaysia/,,,,,,,no brand token in slug
+OK,https://saigonhoreca.vn/san-pham/tu-lam-dong-nhanh-dang-dung-sbu40ht-hoshizaki/,hoshizaki,,hoshizaki,,Tủ Làm Đông Nhanh Dạng Đứng SBU40HT - Hoshizaki,Tủ Làm Đông Nhanh Dạng Đứng SBU40HT &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/tu-lanh-2-canh-hr-78ma-s-hoshizaki/,hoshizaki,,hoshizaki,,Tủ Mát Đứng 2 Cửa HR-78MA-S - Hoshizaki,Tủ Mát Đứng 2 Cửa HR-78MA-S &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/tu-lanh-4-canh-hr-128ma-s-hoshizaki/,hoshizaki,,hoshizaki,,Tủ Mát Đứng 4 Cửa HR-128MA-S - Hoshizaki,Tủ Mát Đứng 4 Cửa HR-128MA-S &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/tu-mat-2-canh-dung-loai-co-khay-banh-hr-78ma-s-b-hoshizaki/,hoshizaki,,hoshizaki,,Tủ Mát 2 Cánh Đứng Loại Có Khay Bánh HR-78MA-S-B - Hoshizaki,Tủ Mát 2 Cánh Đứng Loại Có Khay Bánh HR-78MA-S-B &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/tu-mat-4-canh-dung-loai-co-khay-banh-hf-148ma-s-b-hoshizaki/,hoshizaki,,hoshizaki,,Tủ Mát 4 Cánh Đứng Loại Có Khay Bánh HF-148MA-S-B - Hoshizaki,Tủ Mát 4 Cánh Đứng Loại Có Khay Bánh HF-148MA-S-B &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/tu-mat-4-canh-dung-loai-co-khay-banh-hr-148ma-s-b-hoshizaki/,hoshizaki,,hoshizaki,,Tủ Mát 4 Cánh Đứng Loại Có Khay Bánh HR-148MA-S-B - Hoshizaki,Tủ Mát 4 Cánh Đứng Loại Có Khay Bánh HR-148MA-S-B &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/tu-mat-4-cua-khong-vach-ngan-hr-128ma-s-ml-hoshizaki/,hoshizaki,,hoshizaki,,Tủ Mát 4 Cửa Không Vách Ngăn HR-128MA-S-ML - Hoshizaki,Tủ Mát 4 Cửa Không Vách Ngăn HR-128MA-S-ML &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/tu-mat-4-cua-khong-vach-ngan-hr-148ma-s-ml-hoshizaki/,hoshizaki,,hoshizaki,,Tủ Mát 4 Cửa Không Vách Ngăn HR-148MA-S-ML - Hoshizaki,Tủ Mát 4 Cửa Không Vách Ngăn HR-148MA-S-ML &#8211; Hoshizaki,
+SKIP,https://saigonhoreca.vn/san-pham/tu-mat-cong-nghiep-810mm-fvr7680/,,,,,,,no brand token in slug
+OK,https://saigonhoreca.vn/san-pham/tu-mat-dung-1-cua-cua-kinh-hr-76ma-s-slg-hoshizaki/,hoshizaki,,hoshizaki,,Tủ Mát Đứng 1 Cửa - Cửa Kính HR-76MA-S-SLG - Hoshizaki,Tủ Mát Đứng 1 Cửa &#8211; Cửa Kính HR-76MA-S-SLG &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/tu-mat-dung-1-cua-cua-kinh-hr-78ma-s-slg-hoshizaki/,hoshizaki,,hoshizaki,,Tủ Mát Đứng 1 Cửa - Cửa Kính HR-78MA-S-SLG - Hoshizaki,Tủ Mát Đứng 1 Cửa &#8211; Cửa Kính HR-78MA-S-SLG &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/tu-mat-dung-2-cua-cua-kinh-hr-126ma-s-slg-hoshizaki/,hoshizaki,,hoshizaki,,Tủ Mát Đứng 2 Cửa - Cửa Kính HR-126MA-S-SLG - Hoshizaki,Tủ Mát Đứng 2 Cửa &#8211; Cửa Kính HR-126MA-S-SLG &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/tu-mat-dung-2-cua-cua-kinh-hr-128ma-s-slg-hoshizaki/,hoshizaki,,hoshizaki,,Tủ Mát Đứng 2 Cửa - Cửa Kính HR-128MA-S-SLG - Hoshizaki,Tủ Mát Đứng 2 Cửa &#8211; Cửa Kính HR-128MA-S-SLG &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/tu-mat-dung-2-cua-cua-kinh-hr-78ma-sg-hoshizaki/,hoshizaki,,hoshizaki,,Tủ Mát Đứng 2 Cửa - Cửa Kính HR-78MA-SG - Hoshizaki,Tủ Mát Đứng 2 Cửa &#8211; Cửa Kính HR-78MA-SG &#8211; Hoshizaki,
+SKIP,https://saigonhoreca.vn/san-pham/tu-mat-dung-2-cua-fvr7680-fujimak-japan/,,japan,,,,,no brand token in slug
+OK,https://saigonhoreca.vn/san-pham/tu-mat-dung-2-cua-loai-d650-cua-kinh-hr-76ma-sg-hoshizaki/,hoshizaki,,hoshizaki,,Tủ Mát Đứng 2 Cửa Loại D650 - Cửa Kính HR-76MA-SG - Hoshizaki,Tủ Mát Đứng 2 Cửa Loại D650 &#8211; Cửa Kính HR-76MA-SG &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/tu-mat-dung-4-cua-cua-kinh-hr-128ma-sg-hoshizaki/,hoshizaki,,hoshizaki,,Tủ Mát Đứng 4 Cửa - Cửa Kính HR-128MA-SG - Hoshizaki,Tủ Mát Đứng 4 Cửa &#8211; Cửa Kính HR-128MA-SG &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/tu-mat-dung-4-cua-cua-kinh-hr-148ma-sg-hoshizaki/,hoshizaki,,hoshizaki,,Tủ Mát Đứng 4 Cửa - Cửa Kính HR-148MA-SG - Hoshizaki,Tủ Mát Đứng 4 Cửa &#8211; Cửa Kính HR-148MA-SG &#8211; Hoshizaki,
+SKIP,https://saigonhoreca.vn/san-pham/tu-mat-dung-4-cua-fvr1280-fujimak-japan/,,japan,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/tu-mat-dung-4-cua-fvr1580-fujimak-japan/,,japan,,,,,no brand token in slug
+OK,https://saigonhoreca.vn/san-pham/tu-mat-dung-4-cua-hr-148ma-s-hoshizaki/,hoshizaki,,hoshizaki,,Tủ Mát Đứng 4 Cửa HR-148MA-S - Hoshizaki,Tủ Mát Đứng 4 Cửa HR-148MA-S &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/tu-mat-dung-4-cua-loai-d650-cua-kinh-hr-126ma-sg-hoshizaki/,hoshizaki,,hoshizaki,,Tủ Mát Đứng 4 Cửa Loại D650 - Cửa Kính HR-126MA-SG - Hoshizaki,Tủ Mát Đứng 4 Cửa Loại D650 &#8211; Cửa Kính HR-126MA-SG &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/tu-mat-dung-4-cua-loai-d650-cua-kinh-hr-146ma-sg-hoshizaki/,hoshizaki,,hoshizaki,,Tủ Mát Đứng 4 Cửa Loại D650 - Cửa Kính HR-146MA-SG - Hoshizaki,Tủ Mát Đứng 4 Cửa Loại D650 &#8211; Cửa Kính HR-146MA-SG &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/tu-mat-dung-4-cua-loai-d650-hr-126ma-s-hoshizaki/,hoshizaki,,hoshizaki,,Tủ Mát Đứng 4 Cửa Loại D650 HR-126MA-S - Hoshizaki,Tủ Mát Đứng 4 Cửa Loại D650 HR-126MA-S &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/tu-mat-dung-4-cua-loai-d650-hr-146ma-s-hoshizaki/,hoshizaki,,hoshizaki,,Tủ Mát Đứng 4 Cửa Loại D650 HR-146MA-S - Hoshizaki,Tủ Mát Đứng 4 Cửa Loại D650 HR-146MA-S &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/tu-mat-dung-6-cua-cua-kinh-hr-188ma-sg-hoshizaki/,hoshizaki,,hoshizaki,,Tủ Mát Đứng 6 Cửa - Cửa Kính HR-188MA-SG - Hoshizaki,Tủ Mát Đứng 6 Cửa &#8211; Cửa Kính HR-188MA-SG &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/tu-mat-trung-bay-banh-ptw12ss-hoshizaki/,hoshizaki,,hoshizaki,,Tủ Mát Trưng Bày Bánh PTW12SS - Hoshizaki,Tủ Mát Trưng Bày Bánh PTW12SS &#8211; Hoshizaki,
+SKIP,https://saigonhoreca.vn/san-pham/tu-trung-bay-banh-ccs12sb13-2fb-berjaya-malaysia/,,,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/tu-trung-bay-banh-ccs12sb13-3fb-berjaya-malaysia/,,,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/tu-trung-bay-banh-rcs09sb13-2fb-berjaya-malaysia/,,,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/tu-trung-bay-banh-rcs12sb13-3fb-berjaya-malaysia/,,,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/tu-trung-bay-banh-rcs18sb13-2fb-berjaya-malaysia/,,,,,,,no brand token in slug
+OK,https://saigonhoreca.vn/san-pham/tu-trung-bay-ruou-rbwh135-vn-hoshizaki/,hoshizaki,,hoshizaki,,Tủ Trưng Bày Rượu RBWH135-VN - Hoshizaki,Tủ Trưng Bày Rượu RBWH135-VN &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/tu-trung-bay-ruou-rbwh95-vn-hoshizaki/,hoshizaki,,hoshizaki,,Tủ Trưng Bày Rượu RBWH95-VN - Hoshizaki,Tủ Trưng Bày Rượu RBWH95-VN &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/tu-trung-bay-sushi-hnc-120be-l-b-hoshizaki/,hoshizaki,,hoshizaki,,Tủ Trưng Bày Sushi HNC-120BE-L-B - Hoshizaki,Tủ Trưng Bày Sushi HNC-120BE-L-B &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/tu-trung-bay-sushi-hnc-120be-r-b-hoshizaki/,hoshizaki,,hoshizaki,,Tủ Trưng Bày Sushi HNC-120BE-R-B - Hoshizaki,Tủ Trưng Bày Sushi HNC-120BE-R-B &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/tu-trung-bay-sushi-hnc-150be-l-b-hoshizaki/,hoshizaki,,hoshizaki,,Tủ Trưng Bày Sushi HNC-150BE-L-B - Hoshizaki,Tủ Trưng Bày Sushi HNC-150BE-L-B &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/tu-trung-bay-sushi-hnc-150be-r-b-hoshizaki/,hoshizaki,,hoshizaki,,Tủ Trưng Bày Sushi HNC-150BE-R-B - Hoshizaki,Tủ Trưng Bày Sushi HNC-150BE-R-B &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/tu-trung-bay-sushi-hnc-180be-l-b-hoshizaki/,hoshizaki,,hoshizaki,,Tủ Trưng Bày Sushi HNC-180BE-L-B - Hoshizaki,Tủ Trưng Bày Sushi HNC-180BE-L-B &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/tu-trung-bay-sushi-hnc-180be-r-b-hoshizaki/,hoshizaki,,hoshizaki,,Tủ Trưng Bày Sushi HNC-180BE-R-B - Hoshizaki,Tủ Trưng Bày Sushi HNC-180BE-R-B &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/tu-trung-bay-sushi-hnc-210be-l-b-hoshizaki/,hoshizaki,,hoshizaki,,Tủ Trưng Bày Sushi HNC-210BE-L-B - Hoshizaki,Tủ Trưng Bày Sushi HNC-210BE-L-B &#8211; Hoshizaki,
+OK,https://saigonhoreca.vn/san-pham/tu-trung-bay-sushi-hnc-210be-r-b-hoshizaki/,hoshizaki,,hoshizaki,,Tủ Trưng Bày Sushi HNC-210BE-R-B - Hoshizaki,Tủ Trưng Bày Sushi HNC-210BE-R-B &#8211; Hoshizaki,
+SKIP,https://saigonhoreca.vn/san-pham/voi-phun-trang-98007-1-toprinse-p-r-c/,,,,,,,no brand token in slug
+SKIP,https://saigonhoreca.vn/san-pham/voi-phun-trang-98007-2-toprinse-p-r-c/,,,,,,,no brand token in slug

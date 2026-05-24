@@ -1,0 +1,265 @@
+/**
+ * Villa Designs (Bento Grid) — Pure CSS
+ */
+
+.sh-villa {
+    @apply pb-16 relative overflow-hidden [padding-top:350px] [background:var(--bg)];
+}
+@media (min-width: 768px) { .sh-villa {
+    @apply [padding-top:250px] [padding-bottom:8rem];
+} }
+@media (min-width: 1024px) { .sh-villa {
+    @apply [padding-top:200px];
+} }
+@media (min-width: 1280px) { .sh-villa {
+    @apply [padding-top:180px];
+} }
+
+/* Background grids */
+.sh-villa__bg-grid {
+    @apply absolute z-0 pointer-events-none [inset:0];
+}
+.sh-villa__bg-grid--minor {
+    @apply opacity-10 [background-image:linear-gradient(to_right,_#ccc_1px,_transparent_1px),_linear-gradient(to_bottom,_#ccc_1px,_transparent_1px)] [background-size:40px_40px] [background-position:center_top];
+}
+.sh-villa__bg-grid--major {
+    @apply opacity-5 [background-image:linear-gradient(to_right,_#000_1px,_transparent_1px),_linear-gradient(to_bottom,_#000_1px,_transparent_1px)] [background-size:200px_200px] [background-position:center_top];
+}
+
+/* Container */
+.sh-villa__container {
+    @apply my-0 mx-auto py-0 px-4 relative z-10 [max-width:1200px];
+}
+@media (min-width: 768px) { .sh-villa__container {
+    @apply py-0 px-6;
+} }
+
+/* Header */
+.sh-villa__header {
+    @apply grid gap-8 [max-width:72rem] [margin:0_auto_3rem] [grid-template-columns:1fr];
+}
+@media (min-width: 768px) { .sh-villa__header {
+    @apply gap-8 mb-16 [grid-template-columns:5fr_7fr];
+} }
+
+.sh-villa__tag {
+    @apply inline-block py-1 px-2 font-bold uppercase mb-4 [background:var(--text-1)] [color:var(--bg-card)] [font-size:0.625rem] [letter-spacing:0.2em];
+}
+
+.sh-villa__title {
+    @apply text-4xl font-black tracking-tight overflow-visible [color:var(--text-1)] [line-height:1.15] [margin:0_0_1rem] [padding-bottom:0.05em];
+}
+@media (min-width: 768px) { .sh-villa__title {
+    @apply [font-size:5rem];
+} }
+
+.sh-villa__title-accent {
+    @apply inline-block italic [background:linear-gradient(to_right,_var(--brand),_#16a34a)] [-webkit-background-clip:text] [-webkit-text-fill-color:transparent] [background-clip:text] [padding-right:0.15em] [padding-bottom:0.05em];
+}
+
+.sh-villa__desc {
+    @apply text-base font-medium leading-relaxed [color:var(--text-1-2)] [margin:0_0_1.5rem];
+}
+@media (min-width: 768px) { .sh-villa__desc {
+    @apply text-xl pl-8 mb-8 [border-left:2px_solid_color-mix(in_srgb,_var(--brand)_30%,_transparent)];
+} }
+
+.sh-villa__desc-highlight {
+    @apply font-bold underline [color:var(--brand)] [text-decoration-color:color-mix(in_srgb,_var(--brand)_30%,_transparent)] [text-underline-offset:4px] [text-decoration-thickness:2px];
+}
+
+.sh-villa__specs {
+    @apply grid gap-4 [grid-template-columns:1fr_1fr] [max-width:20rem];
+}
+@media (min-width: 768px) { .sh-villa__specs {
+    @apply pl-8;
+} }
+
+.sh-villa__spec-label {
+    @apply block uppercase tracking-wider mb-1 [font-size:0.625rem] [color:var(--brand)];
+}
+.sh-villa__spec-value {
+    @apply block text-xl font-bold [color:var(--text-1)] [font-family:monospace];
+}
+
+/* Bento Grid */
+.sh-villa__grid {
+    @apply flex flex-col gap-4 mt-12;
+}
+@media (min-width: 1024px) { .sh-villa__grid {
+    @apply grid gap-4 mt-16 [grid-template-columns:repeat(4,_1fr)] [grid-template-rows:1fr_1fr] [height:600px];
+} }
+
+/* Items */
+.sh-villa__item {
+    @apply block relative rounded-2xl overflow-hidden transition-all duration-500 cursor-pointer no-underline [box-shadow:0_1px_3px_rgba(0,0,0,0.05)];
+}
+@media (min-width: 1024px) { .sh-villa__item {
+    @apply rounded-3xl;
+} }
+.sh-villa__item:hover {
+    @apply [box-shadow:0_12px_32px_rgba(0,0,0,0.12)];
+}
+
+.sh-villa__item--featured {
+    @apply w-full [height:250px];
+}
+@media (min-width: 640px) { .sh-villa__item--featured {
+    @apply [height:200px];
+} }
+@media (min-width: 1024px) { .sh-villa__item--featured {
+    @apply h-auto [grid-column:span_2] [grid-row:span_2];
+} }
+
+.sh-villa__scroll {
+    @apply flex gap-4 overflow-x-auto pb-4 pl-4 pr-4 [scroll-snap-type:x_mandatory] [margin:0_-1rem];
+}
+@media (min-width: 1024px) { .sh-villa__scroll {
+    @apply overflow-visible p-0 m-0 [display:contents];
+} }
+
+.sh-villa__item--small {
+    @apply shrink-0 [min-width:60vw] [scroll-snap-align:start] [height:180px];
+}
+@media (min-width: 640px) { .sh-villa__item--small {
+    @apply [min-width:45vw];
+} }
+@media (min-width: 1024px) { .sh-villa__item--small {
+    @apply min-w-0 h-auto;
+} }
+
+.sh-villa__item--cta {
+    @apply shrink-0 [min-width:60vw] [scroll-snap-align:start] [height:180px] [background:var(--bg)];
+}
+@media (min-width: 640px) { .sh-villa__item--cta {
+    @apply [min-width:45vw];
+} }
+@media (min-width: 1024px) { .sh-villa__item--cta {
+    @apply min-w-0 h-auto;
+} }
+
+/* Images */
+.sh-villa__img {
+    @apply w-full h-full object-cover transition-transform duration-700 absolute [inset:0];
+}
+.sh-villa__item:hover .sh-villa__img {
+    @apply [transform:scale(1.1)];
+}
+.sh-villa__img--dim {
+    @apply opacity-60;
+}
+.sh-villa__item:hover .sh-villa__img--dim {
+    @apply opacity-40;
+}
+
+/* Overlay */
+.sh-villa__overlay {
+    @apply absolute opacity-60 transition-opacity duration-500 pointer-events-none [inset:0] [background:linear-gradient(to_top,_rgba(0,0,0,0.8),_rgba(0,0,0,0.2),_transparent)];
+}
+.sh-villa__item:hover .sh-villa__overlay {
+    @apply opacity-80;
+}
+.sh-villa__overlay--dark {
+    @apply opacity-100 [background:linear-gradient(to_top,_rgba(0,0,0,0.9),_rgba(0,0,0,0.4),_transparent)];
+}
+
+/* Item Content */
+.sh-villa__item-content {
+    @apply absolute z-10 transition-transform duration-500 [bottom:1rem] [left:1rem] [right:1rem] [transform:translateY(0.5rem)];
+}
+@media (min-width: 1024px) { .sh-villa__item-content {
+    @apply [bottom:1.5rem] [left:1.5rem] [right:1.5rem];
+} }
+.sh-villa__item:hover .sh-villa__item-content {
+    @apply [transform:translateY(0)];
+}
+
+.sh-villa__badge {
+    @apply inline-block text-xs font-bold py-1 px-3 rounded mb-2 [background:var(--secondary)] [color:#fff] [box-shadow:0_2px_6px_rgba(0,0,0,0.15)];
+}
+
+.sh-villa__item-title {
+    @apply font-bold text-lg m-0 [color:#fff] [text-shadow:0_2px_4px_rgba(0,0,0,0.3)];
+}
+.sh-villa__item-title--lg {
+    @apply text-xl mb-2;
+}
+@media (min-width: 768px) { .sh-villa__item-title--lg {
+    @apply text-3xl;
+} }
+
+.sh-villa__item-desc {
+    @apply text-xs font-medium overflow-hidden opacity-100 transition-opacity duration-500 m-0 [color:#f3f4f6] [display:-webkit-box] [-webkit-line-clamp:2] [-webkit-box-orient:vertical];
+}
+@media (min-width: 768px) { .sh-villa__item-desc {
+    @apply text-sm opacity-0;
+} }
+.sh-villa__item:hover .sh-villa__item-desc {
+    @apply opacity-100;
+}
+
+/* CTA Item */
+.sh-villa__cta-content {
+    @apply absolute p-6 flex flex-col justify-between z-10 [inset:0];
+}
+
+.sh-villa__cta-label {
+    @apply block text-xs font-bold uppercase tracking-widest mb-1 [color:var(--secondary)];
+}
+.sh-villa__cta-title {
+    @apply text-xl font-black m-0 [color:#fff] [line-height:1.2];
+}
+@media (min-width: 768px) { .sh-villa__cta-title {
+    @apply text-2xl;
+} }
+
+.sh-villa__cta-footer {
+    @apply flex items-center justify-between mt-4;
+}
+.sh-villa__cta-link {
+    @apply text-sm font-medium transition-all duration-300 pb-0.5 [color:rgba(255,255,255,0.8)] [border-bottom:1px_solid_transparent];
+}
+.sh-villa__item:hover .sh-villa__cta-link {
+    @apply [color:#fff] [border-bottom-color:rgba(255,255,255,0.5)];
+}
+
+.sh-villa__cta-arrow {
+    @apply w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 [background:rgba(255,255,255,0.2)] [backdrop-filter:blur(8px)];
+}
+.sh-villa__item:hover .sh-villa__cta-arrow {
+    @apply [background:var(--brand)] [transform:rotate(45deg)];
+}
+.sh-villa__cta-arrow-icon {
+    @apply w-5 h-5 [color:#fff];
+}
+
+/* Mobile CTA */
+.sh-villa__mobile-cta {
+    @apply mt-8 text-center;
+}
+@media (min-width: 1024px) { .sh-villa__mobile-cta {
+    @apply hidden;
+} }
+.sh-villa__mobile-btn {
+    @apply block w-full p-4 font-bold no-underline text-center [background:var(--brand)] [color:#fff] [border-radius:var(--radius)] [box-shadow:0_4px_12px_rgba(0,0,0,0.1)] [transition:background_0.2s];
+}
+.sh-villa__mobile-btn:hover {
+    @apply [background:var(--brand-dark)];
+}
+
+/* Dark Mode */
+.dark .sh-villa {
+    @apply [background:var(--bg)];
+}
+.dark .sh-villa__title {
+    @apply [color:var(--text-1)];
+}
+.dark .sh-villa__desc {
+    @apply [color:var(--text-1-2)];
+}
+.dark .sh-villa__spec-value {
+    @apply [color:var(--text-1)];
+}
+.dark .sh-villa__tag {
+    @apply [background:var(--text-1)] [color:var(--bg-card)];
+}

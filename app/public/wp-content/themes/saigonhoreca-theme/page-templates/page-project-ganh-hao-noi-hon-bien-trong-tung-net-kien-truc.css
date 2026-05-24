@@ -1,0 +1,9 @@
+/**
+ * Project page-template — ganh-hao-noi-hon-bien-trong-tung-net-kien-truc (layout only).
+ * @package SaigonHoreca
+ */
+
+body.page-template-page-project-ganh-hao-noi-hon-bien-trong-tung-net-kien-truc {
+  background: var(--b1);
+  color: var(--bc);
+}

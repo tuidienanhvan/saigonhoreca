@@ -1,0 +1,295 @@
+{
+  "slug": "heiwa-sushi-omakase",
+  "title": "HEIWA SUSHI OMAKASE",
+  "meta_description": "Heiwa Sushi Omakase là điểm đến không thể bỏ qua cho những tín đồ của ẩm thực Nhật Bản tại thành phố Hồ Chí Minh.",
+  "sections_count": 5,
+  "sections": [
+    {
+      "data_id": "33ec6bb0",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-33ec6bb0",
+        "elementor-section-height-full",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-items-middle"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/SGH-Heiwasushi-1.webp",
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-5392a4ff",
+          "col_size": 16,
+          "widgets": []
+        },
+        {
+          "col_class": "elementor-column elementor-col-66 elementor-top-column elementor-element elementor-element-25d9c57",
+          "col_size": 66,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h1",
+              "text": "HEIWA SUSHI OMAKASE"
+            },
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Khám Phá Hành Trình Ẩm Thực Nhật Bản"
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-6135eb94",
+          "col_size": 16,
+          "widgets": []
+        }
+      ]
+    },
+    {
+      "data_id": "681bdb39",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-681bdb39",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-11a0148",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Heiwa Sushi"
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Số 2 Phan Văn Đáng, Phường Thạnh Mỹ Lợi, Quận 2, Thành phố Hồ Chí Minh"
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Heiwa Sushi Omakase là điểm đến không thể bỏ qua cho những tín đồ của ẩm thực Nhật Bản tại thành phố Hồ Chí Minh.",
+                "Được thiết kế và thi công bởi Saigon Horeca, Heiwa Sushi đã kiến tạo nên một không gian ẩm thực Nhật Bản đích thực, nơi thực khách không chỉ thưởng thức những món ăn hảo hạng mà còn tận hưởng cảm giác ấm cúng, thư thái."
+              ],
+              "links": [
+                {
+                  "href": "http://saigonhoreca.vn/",
+                  "text": "Saigon Horeca"
+                }
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Heiwa Sushi nằm ở quận 2, TP. Hồ Chí Minh, một khu vực sôi động và đang phát triển. Được đặt ở vị trí trung tâm, dễ dàng tiếp cận với các khu vực lân cận và thu hút sự chú ý của những người yêu thích ẩm thực Nhật Bản. Không gian nội thất của Heiwa Sushi được thiết kế một cách tỉ mỉ, tạo ra sự cân đối hoàn hảo giữa văn hóa Nhật Bản truyền thống và hiện đại. Nhân viên chuyên nghiệp và chu đáo tại Heiwa Sushi đảm bảo thực khách nhận được dịch vụ xuất sắc và một trải nghiệm ẩm thực đáng nhớ."
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Trải nghiệp bếp tại Heiwa Sushi",
+                "Bếp của Heiwa Sushi chính là minh chứng cho tâm huyết với xuất sắc trong ẩm thực. Được thiết kế cẩn thận để tối ưu hiệu quả, gian bếp rộng rãi và ngăn nắp, tạo không gian thoải mái cho các đầu bếp sáng tạo. Những thiết bị hiện đại nhập khẩu từ các thương hiệu hàng đầu đảm bảo chuẩn bị món ăn chất lượng cao nhất. Chuyên môn về thiết kế bếp và trang thiết bị của Sài Gòn Horeca góp phần không nhỏ vào vận hành trơn tru của đội ngũ ẩm thực Heiwa Sushi."
+              ]
+            },
+            {
+              "type": "image-carousel.default",
+              "slides": [
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/heiwasushi-04.jpg",
+                  "srcset": null,
+                  "alt": "heiwasushi-04",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/heiwasushi3-1.jpg",
+                  "srcset": null,
+                  "alt": "heiwasushi3-1",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/heiwasushi2-1.jpg",
+                  "srcset": null,
+                  "alt": "heiwasushi2-1",
+                  "w": null,
+                  "h": null
+                }
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Heiwa Sushi mang đến cho thực khách trải nghiệm ẩm thực tương tác độc đáo, nơi bạn có thể trực tiếp chiêm ngưỡng các đầu bếp tài ba chế biến món ăn. Tại đây, bạn sẽ được chứng kiến các đầu bếp khéo léo biến hóa từng nguyên liệu tươi ngon thành những món ăn tinh tế, đẹp mắt. Bạn có thể thấy họ cẩn thận cuộn từng miếng sushi, từng hạt cơm đều tăm tắp, long lanh như ngọc trai. Hay bạn sẽ trầm trồ trước những nhát dao dứt khoát, chính xác, biến khối cá tươi thành những miếng sashimi mỏng tang, óng ánh tựa pha lê. Trải nghiệm ẩm thực tương tác này không chỉ thỏa mãn vị giác, mà còn đánh thức cả thị giác và cảm xúc. Bạn sẽ được đắm mình trong không gian sang trọng, ấm cúng của Heiwa Sushi, và tận hưởng cảm giác được trực tiếp chiêm ngưỡng nghệ thuật ẩm thực Nhật Bản ngay trước mắt bạn."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "70ad3326",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-70ad3326",
+        "elementor-section-content-middle",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-4798a771",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Bầu không khí quầy bar: Tinh tế và sang trọng từng chi tiết"
+            },
+            {
+              "type": "divider.default",
+              "divider": true
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Quầy bar của Heiwa Sushi nằm ngay cạnh căn bếp, mang đến một không gian sang trọng nhưng gần gũi, khiến thực khách cảm thấy thoải mái thư giãn. Quầy bar được làm bằng gỗ cao cấp, có mặt kính trong suốt để nhìn thấy các đầu bếp đang chế biến món ăn. Ánh đèn vàng dịu nhẹ tạo nên không gian ấm cúng và thư giãn, thích hợp cho những buổi tối trò chuyện cùng bạn bè hay nhâm nhi ly cocktail thơm ngon. Sài Gòn Horeca, đơn vị thiết kế và thi công nội thất, đã khéo léo lựa chọn những vật liệu cao cấp và thể hiện tay nghề chuyên môn để mang đến một quầy bar không chỉ đẹp mắt mà còn tiện nghi."
+              ]
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-6026fee1",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/heiwasushi3-1.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/heiwasushi3-1.jpg 940w, https://saigonhoreca.vn/wp-content/uploads/2024/02/heiwasushi3-1-768x644.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/02/heiwasushi3-1-600x503.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "940",
+                "h": "788"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "6ca689d0",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-6ca689d0",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/Heiwa-Sushi-00002.jpg",
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-470f1731",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Trải Nghiệm Ẩm Thực Tương Tác"
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Tại Heiwa Sushi, sự kết hợp giữa quầy bếp và quầy bar tạo nên một trải nghiệm ẩm thực hài hòa, nơi hương vị và nghệ thuật thẩm mỹ hòa quyện vào nhau.",
+                "Trái tim của Heiwa Sushi, chính là căn bếp hiện đại và tiện nghi được Saigon Horeca chăm chút tỉ mỉ. Những thiết bị cao cấp như tủ đông Hoshizaki, quầy lạnh bảo quản thực phẩm, máy làm đá, hệ thống giá treo tường và các dụng cụ bằng thép không gỉ đóng vai trò quan trọng trong thành công của nhà hàng. Bên cạnh đó, Heiwa Sushi còn chú trọng đến việc duy trì nhiệt độ và độ ẩm thích hợp trong bếp, nhằm đảm bảo nguyên liệu luôn trong trạng thái tốt nhất.",
+                "Sự đầu tư bài bản vào hệ thống bếp không chỉ góp phần vào chất lượng món ăn mà còn tạo nên môi trường làm việc an toàn, thoải mái cho các đầu bếp. Điều này gián tiếp mang đến trải nghiệm ẩm thực tuyệt vời cho thực khách."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "21bf1df5",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-21bf1df5",
+        "elementor-section-content-middle",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-27b85e5e",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/Heiwa-Sushi-00004.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/Heiwa-Sushi-00004.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2024/02/Heiwa-Sushi-00004-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/02/Heiwa-Sushi-00004-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-3ec662a5",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "divider.default",
+              "divider": true
+            },
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Sự hợp tác giữa Heiwa Sushi và Saigon Horeca"
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Sự hợp tác giữa Heiwa Sushi và Saigon Horeca là minh chứng cho tầm quan trọng của thiết bị nhà bếp chất lượng trong thành công của một nhà hàng. Với chuyên môn và tâm huyết, Saigon Horeca lựa chọn cung cấp những thiết bị nhà bếp tốt nhất, từ tủ đông Hoshizaki đến hệ thống giá treo tường và dụng cụ inox hiện đại. Cùng nhau, chúng tôi mang đến cho thực khách không chỉ hương vị Nhật Bản tinh tế mà còn là trải nghiệm ăn uống thoải mái, an toàn và đáng nhớ."
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

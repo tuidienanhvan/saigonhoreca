@@ -1,0 +1,132 @@
+/**
+ * introduction — Component CSS
+ */
+        .about-intro {
+    @apply py-16 px-0 overflow-hidden [background:var(--bg-card)];
+}
+        .about-intro__container {
+    @apply my-0 mx-auto py-0 px-4 [max-width:1200px];
+}
+        .about-intro__grid {
+    @apply grid gap-12 items-center [grid-template-columns:1fr];
+}
+        @media (min-width: 1024px) { .about-intro__grid {
+    @apply [grid-template-columns:1fr_1fr];
+} }
+        /* Image Grid */
+        .about-intro__images {
+    @apply relative;
+}
+        .about-intro__img-grid {
+    @apply grid gap-4 [grid-template-columns:1fr_1fr];
+}
+        .about-intro__img-col {
+    @apply flex flex-col gap-4;
+}
+        .about-intro__img-col--offset {
+    @apply pt-12;
+}
+        .about-intro__img {
+    @apply rounded-2xl w-full object-cover transition-transform duration-500 [box-shadow:0_10px_15px_-3px_rgba(0,0,0,0.1)] [border:2px_solid_transparent];
+}
+        .about-intro__img:hover {
+    @apply [transform:scale(1.05)] [border-color:color-mix(in_srgb,_var(--secondary)_50%,_transparent)];
+}
+        .about-intro__img--tall {
+    @apply [height:16rem];
+}
+        .about-intro__img--short {
+    @apply [height:12rem];
+}
+        /* Badge */
+        .about-intro__badge {
+    @apply absolute p-6 rounded-full text-center flex flex-col justify-center items-center z-10 cursor-pointer overflow-hidden transition-transform duration-300 [top:50%] [left:50%] [transform:translate(-50%,_-50%)] [box-shadow:0_25px_50px_-12px_rgba(0,0,0,0.25)] [border:6px_solid_var(--bg-card)] [width:10rem] [height:10rem] [background-image:linear-gradient(to_bottom_right,_var(--brand),_var(--brand-dark))] [color:#fff];
+}
+        .about-intro__badge:hover {
+    @apply [transform:translate(-50%,_-50%)_scale(1.1)];
+}
+        .about-intro__badge-ring {
+    @apply absolute rounded-full [inset:0] [border:4px_solid_color-mix(in_srgb,_var(--secondary)_35%,_transparent)] [animation:pulse_2s_infinite];
+}
+        .about-intro__badge-number {
+    @apply text-4xl font-black block relative z-10 [color:var(--secondary)] [filter:drop-shadow(0_1px_2px_rgba(0,0,0,0.2))];
+}
+        .about-intro__badge-label {
+    @apply font-bold uppercase tracking-widest relative z-10 opacity-90 mt-1 [font-size:0.625rem];
+}
+        /* Content Side */
+        .about-intro__content {
+    @apply flex flex-col gap-8;
+}
+        .about-intro__tag {
+    @apply font-bold tracking-widest uppercase text-sm [color:var(--brand)];
+}
+        .about-intro__title {
+    @apply text-4xl font-bold m-0 [line-height:1.2] [color:var(--text-1)];
+}
+        .about-intro__lead {
+    @apply leading-relaxed text-lg m-0 [color:var(--text-1-2)];
+}
+        /* Features */
+        .about-intro__features {
+    @apply grid gap-6 [grid-template-columns:1fr];
+}
+        @media (min-width: 640px) { .about-intro__features {
+    @apply [grid-template-columns:1fr_1fr];
+} }
+        .about-intro__feature {
+    @apply flex items-start gap-4;
+}
+        .about-intro__feature-icon {
+    @apply w-12 h-12 rounded-full flex items-center justify-center shrink-0 [background:color-mix(in_srgb,_var(--brand)_12%,_transparent)] [color:var(--brand)];
+}
+        .about-intro__feature-icon svg {
+    @apply w-6 h-6;
+}
+        .about-intro__feature-title {
+    @apply font-bold mb-1 [color:var(--text-1)];
+}
+        .about-intro__feature-desc {
+    @apply text-sm m-0 [color:var(--text-1-3)];
+}
+        /* Stats */
+        .about-intro__stats {
+    @apply grid gap-4 pt-8 [grid-template-columns:repeat(3,_1fr)] [border-top:1px_solid_var(--border-default)];
+}
+        .about-intro__stat {
+    @apply text-center;
+}
+        .about-intro__stat + .about-intro__stat {
+    @apply [border-left:1px_solid_var(--border-default)];
+}
+        .about-intro__stat-number {
+    @apply block text-3xl font-bold mb-1 [color:var(--brand)];
+}
+        .about-intro__stat-label {
+    @apply text-sm [color:var(--text-1-3)];
+}
+        /* Dark Mode */
+        .dark .about-intro {
+    @apply [background:var(--bg-card)];
+}
+        .dark .about-intro__title {
+    @apply [color:var(--text-1)];
+}
+        .dark .about-intro__lead {
+    @apply [color:var(--text-1-2)];
+}
+        .dark .about-intro__feature-title {
+    @apply [color:var(--text-1)];
+}
+        .dark .about-intro__feature-desc {
+    @apply [color:var(--text-1-3)];
+}
+        .dark .about-intro__badge {
+    @apply [border-color:var(--bg-card)];
+}
+        .dark .about-intro__stats {
+    @apply [border-top-color:var(--border-default)];
+}
+        .dark .about-intro__stat + .about-intro__stat {
+    @apply [border-left-color:var(--border-default)];
+}

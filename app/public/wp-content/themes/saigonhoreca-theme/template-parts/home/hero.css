@@ -1,0 +1,198 @@
+/**
+ * Hero Carousel — Saigon Horeca
+ *
+ * Copy-of-saigonhouse motion logic (Ken Burns zoom + cross-fade) so the
+ * carousel feels smooth and luxurious, not laggy. The captions are
+ * already baked into the production banner JPGs so we drop the
+ * badge/title/desc/buttons HTML — just keep the bg image + soft overlay.
+ *
+ * Required DOM hooks (set in hero.php + hero-carousel.js):
+ *   #sh-hero-slider.is-hero-ready  ← JS adds `.is-hero-ready` on first transition
+ *   .carousel-slide.active         ← currently visible slide
+ *   .carousel-slide.incoming       ← next slide fading in
+ *   .slide-bg / .sh-hero__bg-img   ← the <img> inside each slide
+ */
+
+/* ── Section ──
+   Hero JPGs (1920×1080) have baked-in caption text in the LOWER
+   half. We crop to a wide cinematic ratio (~21:9 desktop, ~16:9
+   mobile) and anchor object-position near the TOP so the
+   baked-in caption is sliced off cleanly. */
+/* Match production: show full 16:9 banner image (chữ baked-in vẫn hiện). */
+.sh-hero {
+    background: var(--bg-dark);
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+/* ── Slider container ── */
+.sh-hero__slider {
+    --sh-ken-burns-duration: 6s;
+    --sh-ken-burns-scale-start: 1;
+    --sh-ken-burns-scale-end: 1.12;
+    background: var(--bg-dark);
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.sh-hero__slides {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+/* ── Slide states ── */
+.carousel-slide {
+    will-change: opacity;
+    background: var(--bg-dark);
+    width: 100%;
+    height: 100%;
+    display: none;
+    position: absolute;
+    inset: 0;
+}
+.carousel-slide.active {
+    z-index: 20;
+    opacity: 1;
+    display: block;
+}
+.carousel-slide.incoming {
+    z-index: 30;
+    opacity: 0;
+    display: block;
+    transition: opacity 1.2s var(--ease-in-out, cubic-bezier(0.4, 0, 0.2, 1));
+}
+
+/* ── Background image (Ken Burns zoom) ── */
+.sh-hero__bg-img,
+.carousel-slide .slide-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Anchor near the TOP so the baked-in caption (lower half
+       of the JPG) is cropped out at every viewport width. */
+    object-position: center;
+    transform: scale(var(--sh-ken-burns-scale-start));
+    transform-origin: center;
+    will-change: transform;
+    background: var(--bg-dark);
+}
+
+/* Animation triggers once JS adds .is-hero-ready (after FCP) so the
+   first frame paints fast for LCP, then motion kicks in. */
+#sh-hero-slider.is-hero-ready .carousel-slide.active .slide-bg,
+#sh-hero-slider.is-hero-ready .carousel-slide.incoming .slide-bg,
+.sh-hero__slider.is-hero-ready .carousel-slide.active .sh-hero__bg-img,
+.sh-hero__slider.is-hero-ready .carousel-slide.incoming .sh-hero__bg-img {
+    animation: shKenBurnsZoom var(--sh-ken-burns-duration) linear forwards;
+}
+
+@keyframes shKenBurnsZoom {
+    from { transform: scale(var(--sh-ken-burns-scale-start)); }
+    to   { transform: scale(var(--sh-ken-burns-scale-end)); }
+}
+
+/* ── Diagonal soft overlay (so the baked-in caption text stays readable
+   on bright spots of the image) ── */
+.sh-hero__overlay {
+    z-index: 1;
+    background: linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0.55) 0%,
+        rgba(0, 0, 0, 0.30) 40%,
+        rgba(0, 0, 0, 0.15) 100%
+    );
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+/* ── Navigation arrows ── */
+.sh-hero__nav {
+    z-index: 20;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 9999px;
+    border: 1px solid var(--bt);
+    background: rgba(0, 0, 0, 0.4);
+    color: var(--bc);
+    cursor: pointer;
+    opacity: 0.8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease;
+}
+.sh-hero__nav:hover {
+    opacity: 1;
+    background: var(--brand);
+    transform: translateY(-50%) scale(1.1);
+    border-color: transparent;
+}
+.sh-hero__nav--prev { left: 1rem; }
+.sh-hero__nav--next { right: 1rem; }
+@media (min-width: 768px) {
+    .sh-hero__nav { width: 3.5rem; height: 3.5rem; }
+    .sh-hero__nav--prev { left: 2rem; }
+    .sh-hero__nav--next { right: 2rem; }
+}
+.sh-hero__nav-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+@media (min-width: 768px) {
+    .sh-hero__nav-icon { width: 1.5rem; height: 1.5rem; }
+}
+
+/* ── Pagination dots ── */
+.sh-hero__dots {
+    z-index: 20;
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    display: flex;
+    gap: 0.5rem;
+}
+.sh-hero__dot,
+.carousel-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    padding: 0;
+    border: none;
+    border-radius: 9999px;
+    background: color-mix(in srgb, var(--bc) 40%, transparent);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.sh-hero__dot:hover,
+.carousel-dot:hover {
+    background: var(--bc);
+}
+.sh-hero__dot.active,
+.carousel-dot.active {
+    width: 2rem;
+    background: var(--brand);
+    opacity: 1;
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+    .sh-hero__bg-img,
+    .carousel-slide .slide-bg {
+        animation: none !important;
+        transform: scale(var(--sh-ken-burns-scale-start)) !important;
+    }
+    .carousel-slide.incoming {
+        transition: opacity 0.1s linear !important;
+    }
+}

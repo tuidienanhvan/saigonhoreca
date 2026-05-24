@@ -1,0 +1,9 @@
+/**
+ * Project page-template — heiwa-sushi-omakase (layout only).
+ * @package SaigonHoreca
+ */
+
+body.page-template-page-project-heiwa-sushi-omakase {
+  background: var(--b1);
+  color: var(--bc);
+}

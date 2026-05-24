@@ -1,0 +1,39 @@
+/**
+ * arch-trust — Component CSS
+ */
+        .sh-trust {
+    @apply py-16 px-0 [background:var(--bg-card)] [border-bottom:1px_solid_var(--border-default-light)];
+}
+        .sh-trust__container {
+    @apply my-0 mx-auto py-0 px-4 [max-width:1200px];
+}
+        .sh-trust__grid {
+    @apply grid gap-8 text-center [grid-template-columns:repeat(2,_1fr)];
+}
+        @media (min-width: 768px) { .sh-trust__grid {
+    @apply [grid-template-columns:repeat(4,_1fr)];
+} }
+        .sh-trust__item {
+    @apply p-6 transition-transform duration-300;
+}
+        .sh-trust__item:hover {
+    @apply [transform:translateY(-4px)];
+}
+        .sh-trust__icon {
+    @apply w-16 h-16 rounded-full flex items-center justify-center [background:color-mix(in_srgb,_var(--brand)_10%,_transparent)] [margin:0_auto_1rem] [color:var(--brand)];
+}
+        .sh-trust__icon svg {
+    @apply w-8 h-8;
+}
+        .sh-trust__number {
+    @apply text-3xl font-bold mb-1 [color:var(--text-1)];
+}
+        .sh-trust__label {
+    @apply text-sm font-bold uppercase tracking-widest [color:var(--text-1-muted)];
+}
+        .dark .sh-trust {
+    @apply [background:var(--bg-card)] [border-bottom-color:var(--border-default)];
+}
+        .dark .sh-trust__number {
+    @apply [color:var(--text-1)];
+}

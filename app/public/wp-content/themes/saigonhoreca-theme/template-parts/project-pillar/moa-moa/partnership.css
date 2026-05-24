@@ -1,0 +1,158 @@
+/**
+ * moa-moa — partnership slot. Markup: .pp-split-mmo.pp-split-mmo--reverse.
+ * Adds a polka-dot bubble overlay band behind this section, a rounded glass
+ * content card variant, and a "Partnership" eyebrow chip.
+ * @package SaigonHoreca
+ */
+
+/* Scope additional flair to the partnership instance via section nth-of-type
+   (4th .pp__section--alt within the page template). We add a body-class
+   scoped selector to layer extra ornament on the partnership section. */
+
+body.page-template-page-project-moa-moa .pp__section--alt:nth-of-type(4) {
+  position: relative;
+  background:
+    radial-gradient(circle at 18% 20%, color-mix(in srgb, var(--gold) 8%, transparent) 0%, transparent 35%),
+    radial-gradient(circle at 80% 78%, color-mix(in srgb, var(--gold) 6%, transparent) 0%, transparent 42%),
+    color-mix(in srgb, var(--b2) 92%, var(--b3));
+}
+
+/* Dense polka-dot overlay band for the partnership block */
+body.page-template-page-project-moa-moa .pp__section--alt:nth-of-type(4)::after {
+  background-image:
+    radial-gradient(circle, color-mix(in srgb, var(--gold) 14%, transparent) 1.6px, transparent 2.2px),
+    radial-gradient(circle, color-mix(in srgb, var(--gold) 7%, transparent) 1px, transparent 1.4px);
+  background-size: 42px 42px, 21px 21px;
+  background-position: 0 0, 10.5px 10.5px;
+  opacity: 0.6;
+}
+
+/* Big bubble accents floating in from edges */
+body.page-template-page-project-moa-moa .pp__section--alt:nth-of-type(4) > .pp__container::after {
+  content: "";
+  position: absolute;
+  top: 8%;
+  left: -180px;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--gold) 14%, transparent) 0%, transparent 70%);
+  filter: blur(50px);
+  z-index: 0;
+  pointer-events: none;
+  animation: pp-partnership-mmo-drift 12s ease-in-out infinite alternate;
+}
+
+@keyframes pp-partnership-mmo-drift {
+  from { transform: translate(0, 0) scale(1); opacity: 0.85; }
+  to   { transform: translate(40px, -20px) scale(1.1); opacity: 1; }
+}
+
+/* Glass content variation specific to partnership */
+body.page-template-page-project-moa-moa .pp__section--alt:nth-of-type(4) .pp-split-mmo__body {
+  background: color-mix(in srgb, var(--b1) 50%, transparent);
+  border: 1px solid color-mix(in srgb, var(--gold) 30%, transparent);
+  border-radius: 56px;
+  padding: 2.75rem 2.5rem 3rem;
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  box-shadow:
+    0 30px 70px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 color-mix(in srgb, var(--gold) 22%, transparent);
+}
+
+@media (min-width: 768px) {
+  body.page-template-page-project-moa-moa .pp__section--alt:nth-of-type(4) .pp-split-mmo__body {
+    border-radius: 72px;
+    padding: 3.25rem 3rem 3.5rem;
+  }
+}
+
+/* Override eyebrow text from concept slot */
+body.page-template-page-project-moa-moa .pp__section--alt:nth-of-type(4) .pp-split-mmo__body .pp-text-mmo__title::before {
+  content: "Partnership · SGH × MOA";
+  letter-spacing: 0.35em;
+}
+
+/* Triple bubble ornament across the top of the body card */
+body.page-template-page-project-moa-moa .pp__section--alt:nth-of-type(4) .pp-split-mmo__body::before {
+  width: 14px;
+  height: 14px;
+  top: -8px;
+  left: 32px;
+  box-shadow:
+    0 0 18px color-mix(in srgb, var(--gold) 60%, transparent),
+    24px -2px 0 -1px color-mix(in srgb, var(--gold) 80%, transparent),
+    24px -2px 14px -1px color-mix(in srgb, var(--gold) 50%, transparent),
+    46px 2px 0 -3px var(--gold),
+    46px 2px 14px -3px color-mix(in srgb, var(--gold) 55%, transparent);
+}
+
+/* Circular media: in reverse split, it sits on the right at mobile / left at desktop */
+body.page-template-page-project-moa-moa .pp__section--alt:nth-of-type(4) .pp-split-mmo__media {
+  border-radius: 50%;
+  border-width: 4px;
+  border-color: color-mix(in srgb, var(--gold) 32%, transparent);
+}
+
+@media (max-width: 991px) {
+  body.page-template-page-project-moa-moa .pp__section--alt:nth-of-type(4) .pp-split-mmo__media {
+    aspect-ratio: 1 / 1;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+}
+
+/* Concentric dashed ring outside the media */
+body.page-template-page-project-moa-moa .pp__section--alt:nth-of-type(4) .pp-split-mmo__media {
+  position: relative;
+}
+
+body.page-template-page-project-moa-moa .pp__section--alt:nth-of-type(4) .pp-split-mmo {
+  isolation: isolate;
+}
+
+body.page-template-page-project-moa-moa .pp__section--alt:nth-of-type(4) .pp-split-mmo__media::before {
+  border-style: dashed;
+  border-color: color-mix(in srgb, var(--gold) 50%, transparent);
+  inset: 18px;
+}
+
+/* Extra outer concentric ring via container pseudo on desktop */
+@media (min-width: 992px) {
+  body.page-template-page-project-moa-moa .pp__section--alt:nth-of-type(4) .pp-split-mmo::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    width: 420px;
+    height: 420px;
+    border-radius: 50%;
+    border: 1px dashed color-mix(in srgb, var(--gold) 20%, transparent);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 0;
+    animation: pp-partnership-mmo-spin 40s linear infinite reverse;
+  }
+}
+
+@keyframes pp-partnership-mmo-spin {
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Small caption tag at corner of media */
+body.page-template-page-project-moa-moa .pp__section--alt:nth-of-type(4) .pp-split-mmo__media::after {
+  content: "";
+  /* keep the orbiting dot inherited from concept.css */
+}
+
+/* Section watermark adjustment for partnership */
+body.page-template-page-project-moa-moa .pp__section--alt:nth-of-type(4) .pp__container::before {
+  content: "PARTNER";
+  top: -3.5rem;
+  left: -1rem;
+  right: auto;
+  font-size: clamp(5rem, 11vw, 11rem);
+  color: color-mix(in srgb, var(--gold) 4%, transparent);
+  letter-spacing: -0.015em;
+}

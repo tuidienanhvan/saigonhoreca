@@ -1,0 +1,227 @@
+/**
+ * Floating Buttons — Saigon Horeca
+ *
+ * Ported from saigonhoreca-theme with brand-color adaptation.
+ * Uses design tokens (var(--brand), var(--bg-card), etc.) for consistency.
+ * Position: bottom-right (industry standard UX).
+ */
+
+/* ── Container ── */
+#sh-floating-buttons {
+    z-index: var(--z-floating-btns);
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: calc(var(--spacing) * 2.5);
+    max-height: calc(100dvh - 100px);
+    transition: bottom 0.3s;
+}
+
+/* ── Back to Top ── */
+#back-to-top {
+    height: calc(var(--spacing) * 12);
+    width: calc(var(--spacing) * 12);
+    cursor: pointer;
+    border-radius: var(--radius-full);
+    opacity: 0;
+    box-shadow: 0 2px 12px var(--shadow);
+    background: var(--bg-card);
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s, transform 0.3s;
+    display: none;
+    position: relative;
+}
+#back-to-top:hover {
+    box-shadow: 0 4px 20px var(--shadow);
+    transform: translateY(-3px);
+}
+#back-to-top .sh-scroll-ring {
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+    transform: rotate(-90deg);
+}
+#back-to-top .sh-scroll-track {
+    fill: none;
+    stroke: var(--border-default);
+    stroke-width: 2px;
+}
+#back-to-top .sh-scroll-progress {
+    fill: none;
+    stroke: var(--gold);
+    stroke-width: 2.5px;
+    stroke-dasharray: 100 100;
+    stroke-dashoffset: 100px;
+    stroke-linecap: round;
+    transition: none;
+}
+
+/* ── AI Chatbot Toggle (if present) ── */
+#sh-toggle {
+    height: calc(var(--spacing) * 12);
+    width: calc(var(--spacing) * 12);
+    cursor: pointer;
+    border-radius: var(--radius-full);
+    transition: all 0.3s;
+    background: linear-gradient(135deg, var(--gold), var(--gold-dim));
+    border: none;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    position: relative;
+    box-shadow: 0 3px 16px color-mix(in srgb, var(--gold) 40%, transparent);
+}
+#sh-toggle:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px color-mix(in srgb, var(--gold) 50%, transparent);
+}
+#sh-ic-chat, #sh-ic-x {
+    transition: all 0.3s;
+}
+#sh-ic-x {
+    opacity: 0;
+    position: absolute;
+    transform: rotate(-90deg) scale(0.5);
+}
+#sh-badge {
+    height: calc(var(--spacing) * 2.5);
+    width: calc(var(--spacing) * 2.5);
+    border-radius: var(--radius-full);
+    background: var(--danger);
+    border: 2px solid var(--bg-card);
+    position: absolute;
+    top: -1px;
+    right: -1px;
+}
+
+/* ── Phone Button ──
+   Vàng gold (var(--gold)) + icon đen + glow vàng nhẹ.
+   Theme black + gold luxe — không dùng đỏ. */
+.sh-phone-float {
+    height: calc(var(--spacing) * 12);
+    width: calc(var(--spacing) * 12);
+    border-radius: var(--radius-full);
+    background: var(--gold);
+    color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 3px 12px color-mix(in srgb, var(--gold) 45%, transparent);
+    transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+}
+.sh-phone-float:hover {
+    transform: scale(1.1);
+    background: var(--secondary-hover);
+    box-shadow: 0 5px 18px color-mix(in srgb, var(--gold) 60%, transparent);
+}
+.sh-phone-float svg {
+    width: 22px;
+    height: 22px;
+    stroke: #000;
+}
+
+/* ── Zalo Button ── */
+.sh-zalo-btn {
+    height: calc(var(--spacing) * 12);
+    width: calc(var(--spacing) * 12);
+    border-radius: var(--radius-full);
+    transition: transform 0.3s;
+    background: var(--bg-card);
+    flex-shrink: 0;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+.sh-zalo-btn:hover {
+    transform: scale(1.1);
+}
+.sh-zalo-btn__img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+/* ── Facebook Button ──
+   Facebook brand blue + icon trắng + glow blue nhẹ. */
+.sh-fb-btn {
+    height: calc(var(--spacing) * 12);
+    width: calc(var(--spacing) * 12);
+    border-radius: var(--radius-full);
+    background: #1877F2;
+    color: var(--bc);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 3px 12px rgba(24, 119, 242, 0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.sh-fb-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 5px 18px rgba(24, 119, 242, 0.55);
+}
+.sh-fb-btn svg {
+    width: 24px;
+    height: 24px;
+    fill: var(--bc);
+}
+
+
+/* ── Draggable — visual states ── */
+#sh-floating-buttons {
+    cursor: grab;
+    touch-action: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+#sh-floating-buttons.sh-fab-dragging {
+    cursor: grabbing;
+    opacity: 0.85;
+    filter: drop-shadow(0 8px 25px rgba(0, 0, 0, 0.3));
+    transform: scale(0.95);
+}
+#sh-floating-buttons a,
+#sh-floating-buttons button {
+    cursor: inherit;
+}
+/* Reset cursor khi hover vào nút (nếu không đang drag) */
+#sh-floating-buttons:not(.sh-fab-dragging) a:hover,
+#sh-floating-buttons:not(.sh-fab-dragging) button:hover {
+    cursor: pointer;
+}
+
+/* ── Mobile compact sizing ── */
+@media (max-width: 767px) {
+    #sh-floating-buttons {
+        right: 12px;
+        bottom: calc(65px + env(safe-area-inset-bottom, 0px));
+        gap: 8px;
+        max-height: calc(100dvh - 180px);
+    }
+    /* Compact button sizes — saves ~32px vertical on a 4-button stack */
+    #sh-floating-buttons #back-to-top,
+    #sh-floating-buttons #sh-toggle,
+    #sh-floating-buttons .sh-phone-float,
+    #sh-floating-buttons .sh-zalo-btn,
+    #sh-floating-buttons .sh-fb-btn {
+        width: 40px;
+        height: 40px;
+    }
+    #sh-floating-buttons .sh-zalo-btn {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+    #sh-floating-buttons .sh-fb-btn svg {
+        width: 20px;
+        height: 20px;
+    }
+}

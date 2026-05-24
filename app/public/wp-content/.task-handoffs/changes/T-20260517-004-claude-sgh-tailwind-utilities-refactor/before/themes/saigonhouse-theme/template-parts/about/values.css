@@ -1,0 +1,91 @@
+/**
+ * values — Component CSS
+ */
+        .sh-values {
+    @apply py-24 px-0 relative overflow-hidden [background:var(--bg)];
+}
+        .sh-values__grid-bg {
+    @apply absolute z-0 pointer-events-none opacity-3 [inset:0] [background-image:linear-gradient(var(--border-default)_1px,_transparent_1px),_linear-gradient(90deg,_var(--border-default)_1px,_transparent_1px)] [background-size:20px_20px];
+}
+        .sh-values__grid-bg--large {
+    @apply opacity-2 [background-size:100px_100px];
+}
+        .sh-values__container {
+    @apply my-0 mx-auto py-0 px-4 relative z-10 [max-width:1200px];
+}
+        .sh-values__header {
+    @apply text-center mb-16;
+}
+        .sh-values__heading {
+    @apply text-4xl font-black uppercase tracking-tighter mb-4 [color:var(--text-1)];
+}
+        @media (min-width: 768px) { .sh-values__heading {
+    @apply text-5xl;
+} }
+        .sh-values__heading-gradient {
+    @apply [background-image:linear-gradient(to_right,_var(--brand),_var(--brand-light))] [-webkit-background-clip:text] [background-clip:text] [color:transparent];
+}
+        .sh-values__divider {
+    @apply w-24 h-1 my-0 mx-auto [background:var(--brand)];
+}
+        .sh-values__cards {
+    @apply grid gap-8 [grid-template-columns:1fr];
+}
+        @media (min-width: 768px) { .sh-values__cards {
+    @apply [grid-template-columns:repeat(3,_1fr)];
+} }
+        .sh-values__card {
+    @apply relative p-8 transition-all duration-300 [border:1px_solid_var(--border-default)] [background:var(--bg-card)];
+}
+        .sh-values__card:hover {
+    @apply [box-shadow:0_20px_25px_-5px_rgba(0,0,0,0.1)] [transform:translateY(-4px)];
+}
+        .sh-values__corner {
+    @apply absolute w-2 h-2 opacity-0 transition-opacity duration-300 [border-color:var(--value-accent)];
+}
+        .sh-values__corner--tl {
+    @apply [top:0] [left:0] [border-top:1px_solid] [border-left:1px_solid];
+}
+        .sh-values__corner--br {
+    @apply [bottom:0] [right:0] [border-bottom:1px_solid] [border-right:1px_solid];
+}
+        .sh-values__card:hover .sh-values__corner {
+    @apply opacity-100;
+}
+        .sh-values__icon {
+    @apply w-12 h-12 flex items-center justify-center mb-6 transition-all duration-300 [border:1px_solid_var(--border-default)] [color:var(--text-1-2)];
+}
+        .sh-values__icon svg {
+    @apply w-6 h-6;
+}
+        .sh-values__card:hover .sh-values__icon {
+    @apply [background:var(--value-accent)] [border-color:var(--value-accent)] [color:#fff];
+}
+        .sh-values__title {
+    @apply text-xl font-bold mb-3 transition-colors duration-300 [color:var(--text-1)];
+}
+        .sh-values__card:hover .sh-values__title {
+    @apply [color:var(--value-accent)];
+}
+        .sh-values__desc {
+    @apply text-sm leading-relaxed font-medium m-0 [color:var(--text-1-2)];
+}
+        /* Dark Mode */
+        .dark .sh-values {
+    @apply [background:var(--bg)];
+}
+        .dark .sh-values__heading {
+    @apply [color:var(--text-1)];
+}
+        .dark .sh-values__card {
+    @apply [background:var(--bg-card)] [border-color:var(--border-default)];
+}
+        .dark .sh-values__icon {
+    @apply [border-color:var(--border-default)] [color:var(--text-1-2)];
+}
+        .dark .sh-values__title {
+    @apply [color:var(--text-1)];
+}
+        .dark .sh-values__desc {
+    @apply [color:var(--text-1-2)];
+}

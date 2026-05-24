@@ -1,0 +1,452 @@
+{
+  "slug": "mua-craft-sake-lam-ruou-sake-dau-tien-tai-viet-nam",
+  "title": "Mùa Craft Sake",
+  "meta_description": "Mùa Craft Sake tự hào với thiết kế nội thất cuốn hút, nơi hòa quyện giữa thiết kế hiện đại và tinh hoa ẩm thực Nhật Bản.",
+  "sections_count": 8,
+  "sections": [
+    {
+      "data_id": "4244e8d0",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-4244e8d0",
+        "elementor-section-height-full",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-items-middle"
+      ],
+      "has_video_bg": true,
+      "video_url": "https://www.youtube.com/watch?v=38Dr2BO7xzE&ab_channel=aBeTravelReview",
+      "background_overlay": true,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-307dc0d6",
+          "col_size": 16,
+          "widgets": []
+        },
+        {
+          "col_class": "elementor-column elementor-col-66 elementor-top-column elementor-element elementor-element-8748eb4",
+          "col_size": 66,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h1",
+              "text": "Mùa Craft Sake"
+            },
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Nhà máy làm rượu sake thủ công đầu tiên tại Việt Nam"
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Brewing Fresh Sake for the people"
+              ]
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-73c7a51d",
+          "col_size": 16,
+          "widgets": []
+        }
+      ]
+    },
+    {
+      "data_id": "118c4c41",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-118c4c41",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-65ab1ff4",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Mùa Craft Sake"
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "07 Lê Ngô Cát, Quận 3, HCM, Việt Nam"
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Ghé thăm Mùa Sake, tọa lạc tại vị trí sôi động tại 07 Lê Ngô Cát, Quận 3, TP.HCM, và đắm mình trong thế giới hòa quyện giữa thiết kế hoàn hảo, ẩm thực tinh tế và đồ uống quyến rũ. Mỗi chi tiết tại Mùa Craft Sake, từ bầu không khí đầy phong cách đến những món ăn và thức uống hấp dẫn, đều được tỉ mỉ chăm chút để mang đến cho bạn trải nghiệm ẩm thực khó quên."
+              ],
+              "links": [
+                {
+                  "href": "https://muasake.vn/",
+                  "text": "Mùa Sake"
+                }
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Mùa Craft Sake tự hào với thiết kế nội thất cuốn hút, nơi hòa quyện giữa thiết kế hiện đại và tinh hoa ẩm thực Nhật Bản. Bầu không khí ấm áp, mời gọi của Mùa Sake được tạo nên bởi những bức tường gỗ nâu trầm ấm, những chiếc đèn thả trần tinh tế và những bộ bàn ghế gỗ đơn giản. Từng chi tiết nhỏ trong thiết kế đều được chăm chút tỉ mỉ, mang đến cho thực khách cảm giác thoải mái và thư giãn."
+              ]
+            },
+            {
+              "type": "image-carousel.default",
+              "slides": [
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/mua-craft-sake-food00001.jpg",
+                  "srcset": null,
+                  "alt": "mua-craft-sake-food00001.jpg",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/mua-craft-sake-food00004-1.jpg",
+                  "srcset": null,
+                  "alt": "mua-craft-sake-food00004-1.jpg",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/mua-craft-sake-food00003.jpg",
+                  "srcset": null,
+                  "alt": "mua-craft-sake-food00003.jpg",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/mua-craft-sake-food00002.jpg",
+                  "srcset": null,
+                  "alt": "mua-craft-sake-food00002.jpg",
+                  "w": null,
+                  "h": null
+                }
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Mùa Craft Sake không chỉ là một nhà hàng, mà còn là một chuyến du lịch ẩm thực đầy thú vị. Bước vào Mùa, bạn sẽ cảm thấy như đang bước lên một con thuyền sang trọng, sẵn sàng cho một hành trình khám phá những hương vị mới lạ. Tại Mùa, bạn sẽ được thưởng thức những món ăn truyền thống Nhật Bản được chế biến từ những nguyên liệu tươi ngon, kết hợp với những hương vị mới lạ, mang đậm bản sắc Việt Nam. Các món ăn được trình bày đẹp mắt, tinh tế, mang đến cho bạn cảm giác ngon miệng và thích thú. Đến với Mùa Sake, bạn sẽ được trải nghiệm một hành trình ẩm thực đầy thú vị, nơi hương vị và nghệ thuật hòa quyện cùng nhau."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "95c27a8",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-95c27a8",
+        "elementor-section-content-middle",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-35844154",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Ý tưởng thiết kế của Mùa Craft Sake"
+            },
+            {
+              "type": "divider.default",
+              "divider": true
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Ẩm thực lấy cảm hứng từ Izakaya: Mùa Craft Sake mang đến một thế giới ẩm thực đậm phong cách Izakaya Nhật Bản, nơi bạn sẽ tha hồ khám phá vô vàn món ngon. Từ những đĩa nhỏ khai vị đến các món chính thịnh soạn, mỗi món đều được chế biến tinh tế với sự tập trung vào nguyên liệu tươi ngon và hương vị đích thực. . Bạn sẽ phải xiêu lòng trước những xiên yakitori nướng thơm lừng, món tempura giòn tan hay những cuộn sushi đầy màu sắc và một loạt các món ăn truyền thống khác của Nhật Bản. Đội ngũ đầu bếp tại Mùa Sake khéo léo kết hợp truyền thống với đổi mới, đảm bảo mang đến cho bạn một hành trình ẩm thực vừa quen vừa lạ, vừa ngon miệng vừa thú vị.",
+                "Mùa Craft Sake ưu tiên tinh thần “omotenashi” – lòng hiếu khách Nhật Bản, đảm bảo mỗi khách hàng đều cảm thấy được chào đón và quan tâm chu đáo. Đội ngũ nhân viên thân thiện, am hiểu thực đơn, luôn sẵn sàng gợi ý món ăn phù hợp với khẩu vị mỗi người. Sự tận tâm trong từng chi tiết tạo nên bầu không khí ấm áp, mang đến trải nghiệm ẩm thực thoải mái và khó quên cho thực khách."
+              ]
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-1455c338",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/Mua-sake-kitchen.jpg",
+                "srcset": null,
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "600",
+                "h": "800"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "5c461eea",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-5c461eea",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/Mua-sake-kitchen1.jpg",
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-31a2dd6d",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Tạo nên một trải nghiệm sake tuyệt vời cùng Mùa Craft Sake và Saigon Horeca"
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Tại bếp của Mùa Craft Sake, bạn sẽ bắt gặp một loạt các thiết bị hàng đầu, được lựa chọn và lắp đặt một cách cẩn thận bởi Saigon Horeca. Hãy khám phá những thiết bị ấn tượng làm nổi bật trải nghiệm ẩm thực tại Mùa Sake:",
+                "Nền tảng của một nhà bếp chuyên nghiệp chính là hệ thống tủ lạnh, và Mùa Sake đã lựa chọn hệ thống tủ lạnh Fujimak từ Saigon Horeca, nổi tiếng với độ tin cậy và công nghệ làm lạnh tiên tiến. Những chiếc tủ lạnh hiện đại này đảm bảo bảo quản nguyên liệu tươi ngon trong thời gian dài, góp phần quan trọng tạo nên chất lượng và hương vị tuyệt vời của món ăn tại Mùa Sake. Với hệ thống tủ lạnh Fujimak từ Saigon Horeca, Mùa Craft Sake luôn đảm bảo nguyên liệu tươi ngon, chất lượng, tạo nên những món ăn tuyệt vời cho thực khách.",
+                "Saigon Horeca cam kết mang đến những sản phẩm chất lượng cao. Nhà hàng Mùa Craft Sake đã chọn Saigon Horeca để cung cấp thiết bị inox cho nhà bếp của họ. Các thiết bị này được làm từ inox bền bỉ và có thiết kế đẹp mắt. Chúng được thiết kế để chịu được môi trường làm việc bận rộn của nhà hàng izakaya. Các thiết bị này không chỉ làm cho nhà bếp trông đẹp hơn mà còn giúp đội ngũ bếp làm việc hiệu quả và vệ sinh hơn.",
+                "Nhà bếp của Mùa Sake được trang bị một loạt các thiết bị nấu ăn chuyên nghiệp, được Saigon Horeca lựa chọn một cách cẩn thận. Từ bếp và vỉ nướng đến máy chiên và lò nướng, mỗi thiết bị nấu ăn được thiết kế để mang lại kết quả đồng nhất và chính xác. Sự chuyên môn của Saigon Horeca đảm bảo rằng nhà bếp được trang bị đúng công cụ để đáp ứng yêu cầu khó khăn của ẩm thực izakaya, giúp các đầu bếp thể hiện kỹ năng nấu ăn của họ."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "9ed3d46",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-9ed3d46",
+        "elementor-section-content-middle",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-4903c240",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/Mua-sake-space-1.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/Mua-sake-space-1.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2023/12/Mua-sake-space-1-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2023/12/Mua-sake-space-1-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-79aab282",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "divider.default",
+              "divider": true
+            },
+            {
+              "type": "heading.default",
+              "tag": "h3",
+              "text": "Trải nghiệm sake thượng hạng dành cho các tín đồ và người mới bước chân vào thế giới này."
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Tại Mùa Sake, nghệ thuật ủ rượu Sake rất được coi. Những nghệ nhân tài ba tỉ mỉ chăm chút từng mẻ rượu, sử dụng những phương pháp truyền thống đã được lưu truyền qua nhiều thế hệ. Từ khâu chọn lọc kĩ lưỡng gạo ngon đến quá trình lên men cẩn thận, mỗi bước đều được thực hiện với sự tận tâm và chính xác, tạo nên dòng rượu Sake hảo hạng, tinh tế. Mùa Sake cung cấp một loạt các loại rượu Sake khác nhau, từ các loại rượu truyền thống đến các loại rượu sáng tạo. Các loại rượu truyền thống có hương vị nhẹ nhàng, tinh tế, trong khi các loại rượu sáng tạo có hương vị độc đáo, mới lạ."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "410fb2f4",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-410fb2f4",
+        "elementor-section-content-middle",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-1bfe127b",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Trải nghiệm nếm rượu không thể quên: Tại Mùa Sake, bạn sẽ được đắm mình trong không gian phòng nếm rượu tĩnh lặng, nơi bầu không khí lý tưởng để khám phá thế giới phức tạp của Sake. Hãy lắng nghe bản hoà tấu của hương thơm, vị ngọt, và kết cấu khi thưởng thức những loại sake hảo hạng của chúng tôi. Menu nếm rượu theo set của chúng tôi mang đến cơ hội so sánh và khám phá các phong cách sake khác nhau. Đội ngũ nhân viên thân thiện và am hiểu sake luôn sẵn sàng tư vấn, đưa bạn lên hành trình khám phá sake khó quên.",
+                "Mùa Sake nâng tầm trải nghiệm ẩm thực của bạn với sự kết hợp giữa rượu Sake và món ăn được trau chuốt tỉ mỉ. Thực đơn của nhà hàng mang đến nhiều lựa chọn món ngon được chế biến khéo léo để tôn lên từng hương vị của các loại Sake. Từ sushi và sashimi tươi ngon đến yakitori thơm nức và tempura giòn tan, mỗi sáng tạo ẩm thực đều hòa quyện tinh tế với các loại Sake thủ công của chúng tôi, tạo nên một bản hòa tấu hương vị khó cưỡng."
+              ]
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-36d25d65",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/SGH-Mua-sake-people.jpg",
+                "srcset": null,
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "600",
+                "h": "800"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "493fdfa9",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-493fdfa9",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-3cd3cb84",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "gallery.default"
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Từ nguyên liệu tươi mát ngon lành, bàn bếp inox sáng bóng cho đến các thiết bị nấu nướng và pha chế hiện đại, mọi thứ ở Mùa Sake đều thể hiện Saigon Horeca luôn tâm huyết và tận tâm trong việc tạo nên không gian bếp và quầy bar hoàn hảo."
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Với sự chuyên môn của Saigon Horeca trong xây dựng nhà bếp và quầy bar, Mùa Sake không chỉ xuất sắc trong việc cung cấp ẩm thực mà còn thiết lập một tiêu chuẩn mới về tính chức năng và hiệu quả. Sự hòa quyện giữa tầm nhìn của Mùa Sake và khả năng kỹ thuật của Saigon Horeca đã tạo ra một thiên đường ẩm thực kết hợp sự chân thực của văn hóa izakaya với những tiến bộ mới nhất trong thiết bị."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "5acc7ac1",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-5acc7ac1",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-7eec4e20",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "image-gallery.default",
+              "slides": [
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/Mua-kitchen-04.jpg",
+                  "srcset": null,
+                  "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                  "w": "600",
+                  "h": "800"
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/Mua-kitchen-03.jpg",
+                  "srcset": null,
+                  "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                  "w": "600",
+                  "h": "800"
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/Mua-kitchen-02.jpg",
+                  "srcset": null,
+                  "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                  "w": "600",
+                  "h": "800"
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/Mua-kitchen-01.jpg",
+                  "srcset": null,
+                  "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                  "w": "600",
+                  "h": "800"
+                }
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Nằm tại số 07 Lê Ngô Cát, Quận 3, TP.HCM, Mùa Sake không chỉ là một điểm đến izakaya hấp dẫn mà còn là minh chứng cho tài nghệ tinh xảo và trang thiết bị tiên tiến của Saigon Horeca."
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

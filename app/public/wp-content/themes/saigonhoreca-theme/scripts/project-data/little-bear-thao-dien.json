@@ -1,0 +1,368 @@
+{
+  "slug": "little-bear-thao-dien",
+  "title": "LITTLE BEAR",
+  "meta_description": "Little Bear Thảo Điền mời bạn bước vào một thiên đường ẩm thực, gia vị thơm ngát và tiếng cười hòa quyện thành 1 bản giao hưởng ấm cúng của hương vị tuyệt vời.",
+  "sections_count": 6,
+  "sections": [
+    {
+      "data_id": "7fe21be2",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-7fe21be2",
+        "elementor-section-height-full",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-items-middle"
+      ],
+      "has_video_bg": true,
+      "video_url": "https://youtu.be/nC3dS_Yvch8",
+      "background_overlay": true,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-11aa108f",
+          "col_size": 16,
+          "widgets": []
+        },
+        {
+          "col_class": "elementor-column elementor-col-66 elementor-top-column elementor-element elementor-element-341ae952",
+          "col_size": 66,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h1",
+              "text": "LITTLE BEAR"
+            },
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Vibrant vibe - Tasty food - Dynamic wine"
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Little Bear mời bạn bước vào một thiên đường ẩm thực, nơi những viên gạch ngả nắng, gia vị thơm ngát và tiếng cười hòa quyện thành một bản giao hưởng ấm cúng của hương vị tuyệt vời."
+              ]
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-1f8e043b",
+          "col_size": 16,
+          "widgets": []
+        }
+      ]
+    },
+    {
+      "data_id": "6ef48569",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-6ef48569",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-5611f09",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Little Bear Thảo Điền"
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Địa chỉ: 36 Nguyễn Bá Huân, Thảo Điền, Ho Chi Minh City, Vietnam"
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Từ 17h30 – 21h00 (Thứ ba – Chủ nhật) Ngừng nhận đặt bàn bữa tối lúc 17h00"
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Bước vào Little Bear, bạn sẽ được chào đón bởi những bức tường gạch ngập nắng và cây xanh mơn mởn, tạo nên một không gian ấm áp và gần gũi. Tiếng đàn guitar nhẹ nhàng hòa cùng tiếng cười rộn rã cho bạn cảm giác thư thái. Bếp của chúng tôi, một sự kết hợp hài hòa giữa thép không gỉ và đam mê cháy bỏng, biến những nguyên liệu tươi ngon thành những kiệt tác ẩm thực nhỏ bé được đặt khéo léo trên bàn của bạn. Hãy đắm mình trong không gian ấm cúng, thưởng thức những giai điệu hương vị và để Little Bear ôm trọn bạn bằng sự nhiệt tình ẩm thực của mình."
+              ]
+            },
+            {
+              "type": "image-carousel.default",
+              "slides": [
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/Little-bear-04.jpeg",
+                  "srcset": null,
+                  "alt": "Little-bear-04",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/Little-bear-03.jpeg",
+                  "srcset": null,
+                  "alt": "Little-bear-03",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/SGH-Little-Bear.jpg",
+                  "srcset": null,
+                  "alt": "SGH-Little-Bear",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/SGH-Little-Bear01.jpg",
+                  "srcset": null,
+                  "alt": "SGH-Little-Bear01",
+                  "w": null,
+                  "h": null
+                }
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Với khả năng sáng tạo mạnh mẽ, Saigon Horeca đã hợp tác cùng Little Bear để hoàn thiện một căn bếp đa năng với những thiết bị hàng đầu từ các thương hiệu nổi tiếng như Rational, Hoshizaki, Fujimak, v.v… Cùng với đó là các vật dụng bằng thép không gỉ được thiết kế riêng để phù hợp với mặt bằng hiện có của Little Bear"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "1bf2fcd2",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-1bf2fcd2",
+        "elementor-section-content-middle",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-56d85a13",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Thiết kế của Little Bear"
+            },
+            {
+              "type": "divider.default",
+              "divider": true
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Bếp của Little Bear Thảo Điền mang phong cách kết hợp giữa sự tối giản, hiện đại và tinh tế. Saigon Horeca chủ yếu sử dụng vật liệu thép không gỉ, biến nơi đây thành một không gian làm việc chuyên nghiệp và tiện nghi cho các đầu bếp."
+              ]
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-33a2f502",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/Little-bear-00.jpeg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/Little-bear-00.jpeg 1366w, https://saigonhoreca.vn/wp-content/uploads/2024/01/Little-bear-00-768x432.jpeg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/01/Little-bear-00-600x337.jpeg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "6eea1feb",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-6eea1feb",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/SGH-Bambino-1.jpg",
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-73a09521",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Thách thức của Little Bear và giải pháp của Saigon Horeca:"
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Yêu cầu của Little Bear:",
+                "Trong không gian bếp hình vuông hạn chế của Little Bear, Saigon Horeca đã khéo léo bố trí một bản giao hưởng của chức năng và phong cách. Quy định nhà bếp được tuân thủ nhưng không làm hạn chế sự sáng tạo ẩm thực, nhờ hệ thống thông gió được thiết kế tỉ mỉ, lưu trữ tối ưu và bố cục tiện dụng hỗ trợ các đầu bếp. Mọi chi tiết, từ thép không gỉ sáng bóng đến những kệ đặt đúng vị trí, đều toát lên sự hiệu quả. Không chỉ là nơi làm việc, căn bếp này đã vượt qua sự tầm thường, trở thành cái nôi của nghệ thuật ẩm thực. Sự đổi mới và thử nghiệm tìm thấy mảnh đất màu mỡ giữa tiếng chảo rộn rã và nhịp sống năng động. Bếp Little Bear, được truyền tải chuyên môn của Saigon Horeca, không chỉ là một nhu cầu vận hành; đó là minh chứng cho cam kết của họ trong việc tạo ra những không gian nuôi dưỡng sự xuất sắc về ẩm thực, từng món ăn tuyệt vời."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "21e930bb",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-21e930bb",
+        "elementor-section-content-middle",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-70e797d9",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/Little-bear-01.jpeg",
+                "srcset": null,
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "600",
+                "h": "800"
+              }
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-6363b75f",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Giải pháp của Saigon Horeca:"
+            },
+            {
+              "type": "divider.default",
+              "divider": true
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Khu vực lưu trữ và chế biến trung tâm:Hai bàn ngăn kéo tủ mát lưng tựa lưng để tối đa hóa việc sử dụng không gian và tối ưu hóa việc lưu trữ thực phẩm tươi sống.Tủ, bồn rửa và kệ để các thiết bị sơ chế.Khu vực nấu nướng:Nằm ở bên trái của khu vực làm việc, tượng trưng cho sự ấm áp và đam mê của bếp.Được trang bị các thiết bị nấu nướng chất lượng cao để tạo ra những món ăn ngon miệng."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "664d43a3",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-664d43a3",
+        "elementor-section-content-middle",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-61c4ff8e",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "DNA của Saigon Horeca thể hiện rõ nét trong thiết kế nghệ thuật của quầy bar:"
+            },
+            {
+              "type": "divider.default",
+              "divider": true
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Quầy bar mở nằm đối diện khu vực nấu nướng, cho phép thực khách chứng kiến ​​nghệ thuật ẩm thực của các đầu bếp.",
+                "Mang đến trải nghiệm ăn uống độc đáo và thú vị.",
+                "Lưu trữ tối ưu:",
+                "Tủ lạnh và tủ đông lớn ở cánh trái bếp đảm bảo độ tươi ngon của nguyên liệu.",
+                "Sử dụng các thương hiệu nổi tiếng như Fujimak và Hoshizaki để đảm bảo độ tin cậy và hiệu suất.",
+                "Mặt bàn làm việc và kệ treo tường bằng thép không gỉ được thiết kế riêng:",
+                "Được thiết kế riêng cho Little Bear để tối đa hóa không gian và chức năng.",
+                "Sự chú ý đến từng chi tiết và cam kết về sự xuất sắc của Saigon Horeca đã mang đến một căn bếp không chỉ đáp ứng yêu cầu của Little Bear mà còn vượt quá mong đợi của họ."
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                ">> Khám phá ngay: Thiết kế bếp công nghiệp SGH góp phần đưa 2 nhà hàng lên top danh sách Travel & Leisure 2024"
+              ],
+              "links": [
+                {
+                  "href": "https://saigonhoreca.vn/thiet-ke-bep-cong-nghiep-sgh-travel-leisure-2024/",
+                  "text": "Thiết kế bếp công nghiệp SGH góp phần đưa 2 nhà hàng lên top danh sách Travel & Leisure 2024"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-4f0ee126",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/Little-bear-02.jpeg",
+                "srcset": null,
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "600",
+                "h": "800"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

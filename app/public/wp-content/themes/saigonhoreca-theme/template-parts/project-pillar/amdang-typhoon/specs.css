@@ -1,0 +1,176 @@
+/**
+ * amdang-typhoon — specs slot (Outdoor nostalgia section).
+ * Luxury Parallax Backdrop and Glassmorphic Card.
+ * @package SaigonHoreca
+ */
+
+.pp--amdang-typhoon .pp-specs-at {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  isolation: isolate;
+  padding: 6rem 1.5rem;
+}
+
+.pp--amdang-typhoon .pp-specs-at__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* Parallax effect */
+  transition: transform 1.5s cubic-bezier(0.25, 1, 0.5, 1);
+  pointer-events: none;
+}
+
+@media (max-width: 1024px) {
+  .pp--amdang-typhoon .pp-specs-at__bg {
+    background-attachment: scroll; /* Disable fixed attachment on tablet/mobile for smooth scroll */
+  }
+  .pp--amdang-typhoon .pp-specs-at {
+    min-height: 70vh;
+  }
+}
+
+/* Hover Zoom Background Effect */
+.pp--amdang-typhoon .pp-specs-at:hover .pp-specs-at__bg {
+  transform: scale(1.08);
+}
+
+.pp--amdang-typhoon .pp-specs-at__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: 
+    linear-gradient(to bottom, var(--b1) 0%, rgba(10, 10, 10, 0.35) 25%, rgba(10, 10, 10, 0.35) 75%, var(--b1) 100%),
+    rgba(0, 0, 0, 0.15);
+  pointer-events: none;
+}
+
+.pp--amdang-typhoon .pp-specs-at__container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Glassmorphic Card */
+.pp--amdang-typhoon .pp-specs-at__card {
+  position: relative;
+  width: 100%;
+  max-width: 680px;
+  background: rgba(19, 19, 19, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: clamp(2rem, 4vw, 3.5rem);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 
+    0 35px 80px rgba(0, 0, 0, 0.8),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  transition: border-color 0.4s var(--ease-spring), box-shadow 0.4s var(--ease-spring);
+}
+
+.pp--amdang-typhoon .pp-specs-at__card:hover {
+  border-color: color-mix(in srgb, var(--gold) 35%, transparent);
+  box-shadow: 
+    0 40px 80px rgba(0, 0, 0, 0.9),
+    0 0 30px rgba(245, 166, 35, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.pp--amdang-typhoon .pp-specs-at__card-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+}
+
+.pp--amdang-typhoon .pp-specs-at__badge {
+  font-family: var(--font-display), sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: color-mix(in srgb, var(--bc) 45%, transparent);
+}
+
+.pp--amdang-typhoon .pp-specs-at__badge-accent {
+  color: var(--gold);
+  font-weight: 700;
+}
+
+.pp--amdang-typhoon .pp-specs-at__title {
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--bc);
+  margin: 0;
+  max-width: 25ch;
+}
+
+.pp--amdang-typhoon .pp-specs-at__card-divider {
+  width: 60px;
+  height: 2px;
+  background: var(--gold);
+  display: block;
+}
+
+.pp--amdang-typhoon .pp-specs-at__desc {
+  font-family: var(--font-body), sans-serif;
+  font-size: clamp(0.95rem, 1.05vw, 1.05rem);
+  line-height: 1.85;
+  color: var(--bc2);
+  margin: 0;
+  max-width: 65ch;
+  text-align: center;
+}
+
+/* Parallel Corner Framers */
+.pp--amdang-typhoon .pp-specs-at__corner {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--gold);
+  pointer-events: none;
+  z-index: 3;
+  transition: all 0.4s var(--ease-spring);
+  opacity: 0.5;
+}
+
+.pp--amdang-typhoon .pp-specs-at__corner--tl {
+  top: 1.5rem;
+  left: 1.5rem;
+  border-right: none;
+  border-bottom: none;
+}
+
+.pp--amdang-typhoon .pp-specs-at__corner--br {
+  bottom: 1.5rem;
+  right: 1.5rem;
+  border-left: none;
+  border-top: none;
+}
+
+/* Hover Corner Animations */
+.pp--amdang-typhoon .pp-specs-at__card:hover .pp-specs-at__corner--tl {
+  top: 0.75rem;
+  left: 0.75rem;
+  opacity: 1;
+}
+
+.pp--amdang-typhoon .pp-specs-at__card:hover .pp-specs-at__corner--br {
+  bottom: 0.75rem;
+  right: 0.75rem;
+  opacity: 1;
+}

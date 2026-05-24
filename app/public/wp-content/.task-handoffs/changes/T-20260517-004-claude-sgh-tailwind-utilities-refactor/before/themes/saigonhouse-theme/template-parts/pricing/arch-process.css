@@ -1,0 +1,281 @@
+/* ═══════════════════════════════════════════════════════
+   Process Timeline — Animated Alternating Vertical Layout
+   Dark Mode + Scroll-triggered reveal
+   ═══════════════════════════════════════════════════════ */
+
+.sh-process-section {
+    @apply pt-20 px-0 pb-24 relative overflow-hidden [background:var(--bg)];
+}
+
+.sh-process-container {
+    @apply my-0 mx-auto py-0 px-4 [max-width:72rem];
+}
+
+/* ── Subtle background decoration ── */
+.sh-process-section::before {
+    @apply [position:absolute] [inset:0] [background-image:linear-gradient(to_right,_rgba(0,125,61,0.04)_1px,_transparent_1px),_linear-gradient(to_bottom,_rgba(0,125,61,0.04)_1px,_transparent_1px)] [background-size:48px_48px] [pointer-events:none];
+    content: '';
+}
+
+/* ── Header ── */
+.sh-process-header {
+    @apply text-center [max-width:720px] [margin:0_auto_72px];
+}
+
+.sh-process-eyebrow {
+    @apply inline-block font-extrabold uppercase py-1 px-3.5 mb-4 [font-size:11px] [letter-spacing:0.22em] [color:var(--secondary)] [background:rgba(255,183,3,0.1)] [border-radius:20px];
+}
+
+.sh-process-title {
+    @apply font-black [font-size:clamp(2rem,_4vw,_2.75rem)] [color:var(--sh-heading)] [line-height:1.15] [margin:0_0_16px];
+}
+
+.sh-process-title span {
+    @apply [color:var(--brand)];
+}
+
+.sh-process-lead {
+    @apply m-0 [font-size:1.05rem] [color:var(--text-1-2)] [line-height:1.75];
+}
+
+/* ── Timeline container ── */
+.sh-process-timeline {
+    @apply relative my-0 mx-auto pt-0 px-0 pb-8 [max-width:900px];
+}
+
+/* ── Central animated line ── */
+.sh-process-line {
+    @apply hidden absolute w-0.5 rounded-sm [left:50%] [top:24px] [bottom:24px] [transform:translateX(-50%)] [background:var(--border-default)];
+}
+
+.sh-process-line-fill {
+    @apply absolute w-full rounded-sm [top:0] [left:0] [height:0%] [background:linear-gradient(180deg,_var(--brand),_var(--secondary))] [transition:height_0.6s_ease];
+}
+
+/* Mobile: left-side line */
+.sh-process-mobile-line {
+    @apply absolute w-0.5 block [left:20px] [top:0] [bottom:0] [background:var(--border-default)];
+}
+
+@media (min-width: 768px) {
+    .sh-process-line {
+    @apply block;
+}
+}
+
+/* ── Step item ── */
+.sh-process-item {
+    @apply relative flex items-start gap-5 mb-12 [padding-left:56px] [opacity:0] [transform:translateY(28px)] [transition:opacity_0.55s_ease,_transform_0.55s_ease];
+    /* Initial hidden state for animation */
+}
+
+.sh-process-item.is-visible {
+    @apply opacity-100 [transform:translateY(0)];
+}
+
+/* Delay per step */
+.sh-process-item[data-step="0"] {
+    @apply [transition-delay:0.05s];
+}
+.sh-process-item[data-step="1"] {
+    @apply [transition-delay:0.1s];
+}
+.sh-process-item[data-step="2"] {
+    @apply [transition-delay:0.15s];
+}
+.sh-process-item[data-step="3"] {
+    @apply [transition-delay:0.05s];
+}
+.sh-process-item[data-step="4"] {
+    @apply [transition-delay:0.1s];
+}
+.sh-process-item[data-step="5"] {
+    @apply [transition-delay:0.15s];
+}
+
+/* Mobile: left vertical line */
+.sh-process-timeline::before {
+    @apply [position:absolute] [left:20px] [top:0] [bottom:0] [width:2px] [background:var(--border-default)];
+    content: '';
+}
+
+@media (min-width: 768px) {
+    .sh-process-timeline::before {
+    @apply [display:none];
+}
+
+    .sh-process-item {
+    @apply pl-0 gap-0 [width:50%] [margin-bottom:56px];
+}
+
+    /* Left items: right-aligned, card on left of center dot */
+    .sh-process-item--left {
+    @apply flex-row-reverse ml-0 [padding-right:56px];
+}
+
+    /* Right items: left-aligned, card on right of center dot */
+    .sh-process-item--right {
+    @apply flex-row [margin-left:50%] [padding-left:56px];
+}
+
+    /* Slide from correct side */
+    .sh-process-item--left  {
+    @apply [transform:translateX(-24px)_translateY(0)];
+}
+    .sh-process-item--right {
+    @apply [transform:translateX(24px)_translateY(0)];
+}
+
+    .sh-process-item--left.is-visible,
+    .sh-process-item--right.is-visible {
+    @apply [transform:translateX(0)];
+}
+}
+
+/* ── Dot ── */
+.sh-process-dot {
+    @apply absolute w-7 h-7 rounded-full flex items-center justify-center shrink-0 [left:6px] [top:8px] [background:var(--brand)] [border:3px_solid_var(--bg)] [box-shadow:0_0_0_2px_var(--brand)] [z-index:2] [transition:transform_0.3s_ease,_box-shadow_0.3s_ease];
+}
+
+.sh-process-item.is-visible .sh-process-dot {
+    @apply [transform:scale(1.1)] [box-shadow:0_0_0_4px_rgba(0,125,61,0.2)];
+}
+
+.sh-process-dot-num {
+    @apply font-extrabold tracking-normal leading-none [font-size:10px] [color:#fff];
+}
+
+@media (min-width: 768px) {
+    .sh-process-dot {
+    @apply absolute [left:auto] [top:14px] [width:44px] [height:44px];
+}
+
+    .sh-process-item--left .sh-process-dot {
+    @apply [right:-22px] [left:auto];
+}
+
+    .sh-process-item--right .sh-process-dot {
+    @apply [left:-22px];
+}
+
+    .sh-process-dot-num {
+    @apply [font-size:11px];
+}
+}
+
+/* ── Card ── */
+.sh-process-card {
+    @apply flex gap-3.5 rounded-2xl p-5 relative [background:var(--bg-card)] [border:1px_solid_var(--border-default)] [box-shadow:0_2px_12px_rgba(0,0,0,0.06)] [transition:box-shadow_0.3s_ease,_transform_0.3s_ease,_border-color_0.3s_ease];
+}
+
+.sh-process-item.is-visible .sh-process-card:hover {
+    @apply [box-shadow:0_8px_32px_rgba(0,125,61,0.12)] [transform:translateY(-2px)] [border-color:rgba(0,125,61,0.3)];
+}
+
+@media (min-width: 768px) {
+    .sh-process-card {
+    @apply py-6 px-7;
+}
+
+    /* Arrow pointing toward center */
+    .sh-process-item--left .sh-process-card::after {
+    @apply [position:absolute] [right:-8px] [top:20px] [width:14px] [height:14px] [background:var(--bg-card)] [border-right:1px_solid_var(--border-default)] [border-bottom:1px_solid_var(--border-default)] [transform:rotate(-45deg)];
+    content: '';
+}
+
+    .sh-process-item--right .sh-process-card::after {
+    @apply [position:absolute] [left:-8px] [top:20px] [width:14px] [height:14px] [background:var(--bg-card)] [border-left:1px_solid_var(--border-default)] [border-top:1px_solid_var(--border-default)] [transform:rotate(-45deg)];
+    content: '';
+}
+}
+
+/* ── Card Icon ── */
+.sh-process-card-icon {
+    @apply shrink-0 rounded-xl flex items-center justify-center [width:44px] [height:44px] [background:rgba(0,125,61,0.08)] [color:var(--brand)];
+}
+
+.sh-process-card-icon svg {
+    @apply [width:22px] [height:22px];
+}
+
+/* ── Card Body ── */
+.sh-process-card-body {
+    @apply flex-1 min-w-0;
+}
+
+.sh-process-tag {
+    @apply inline-block font-bold tracking-widest uppercase py-0.5 px-2 mb-2 [font-size:10px] [color:var(--secondary)] [background:rgba(255,183,3,0.1)] [border-radius:10px];
+}
+
+.sh-process-card-title {
+    @apply font-bold [font-size:1.05rem] [color:var(--sh-heading)] [margin:0_0_8px] [line-height:1.3];
+}
+
+.sh-process-card-desc {
+    @apply m-0 [font-size:0.9rem] [color:var(--text-1-2)] [line-height:1.65];
+}
+
+/* ── CTA ── */
+.sh-process-cta {
+    @apply text-center mt-16;
+}
+
+.sh-process-cta-text {
+    @apply [font-size:1.1rem] [color:var(--text-1-2)] [margin:0_0_20px];
+}
+
+.sh-process-cta-btn {
+    @apply inline-flex items-center gap-2.5 font-bold text-base no-underline [padding:16px_36px] [background:var(--brand)] [color:#ffffff] [border-radius:50px] [transition:background_0.25s,_transform_0.2s,_box-shadow_0.25s] [box-shadow:0_4px_20px_rgba(0,125,61,0.3)];
+}
+
+.sh-process-cta-btn:hover {
+    @apply no-underline [background:var(--brand-dark)] [transform:translateY(-2px)] [box-shadow:0_8px_32px_rgba(0,125,61,0.4)] [color:#ffffff];
+}
+
+/* ═══ DARK MODE ═══ */
+.dark .sh-process-section {
+    @apply [background:var(--bg)];
+}
+
+.dark .sh-process-section::before {
+    @apply [background-image:linear-gradient(to_right,_rgba(0,125,61,0.06)_1px,_transparent_1px),_linear-gradient(to_bottom,_rgba(0,125,61,0.06)_1px,_transparent_1px)] [background-size:48px_48px];
+}
+
+.dark .sh-process-title      {
+    @apply [color:var(--text-1)];
+}
+.dark .sh-process-lead       {
+    @apply [color:var(--text-1-3)];
+}
+
+.dark .sh-process-dot {
+    @apply [border-color:var(--bg)];
+}
+
+.dark .sh-process-card {
+    @apply [background:rgba(30,41,59,0.8)] [border-color:rgba(255,255,255,0.08)] [box-shadow:0_2px_12px_rgba(0,0,0,0.3)];
+}
+
+.dark .sh-process-item.is-visible .sh-process-card:hover {
+    @apply [box-shadow:0_8px_32px_rgba(0,125,61,0.2)] [border-color:rgba(0,125,61,0.4)];
+}
+
+.dark .sh-process-item--left .sh-process-card::after,
+.dark .sh-process-item--right .sh-process-card::after {
+    @apply [background:rgba(30,41,59,0.8)] [border-color:rgba(255,255,255,0.08)];
+}
+
+.dark .sh-process-card-icon {
+    @apply [background:rgba(0,125,61,0.15)];
+}
+
+.dark .sh-process-card-title {
+    @apply [color:var(--text-1)];
+}
+.dark .sh-process-card-desc  {
+    @apply [color:var(--text-1-3)];
+}
+
+.dark .sh-process-cta-text   {
+    @apply [color:var(--text-1-3)];
+}

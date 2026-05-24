@@ -1,0 +1,121 @@
+/**
+ * ganh-hao-noi-hon-bien-trong-tung-net-kien-truc — hero slot.
+ * Coastal breeze with emerald and warm sand gold theme.
+ * @package SaigonHoreca
+ */
+
+.pp-hero-gha {
+  position: relative;
+  width: 100%;
+  min-height: 88vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--b1);
+  isolation: isolate;
+}
+@media (max-width: 768px) { .pp-hero-gha { min-height: 70vh; } }
+
+.pp-hero-gha__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-size: cover !important;
+  background-position: center !important;
+  filter: saturate(1.08) brightness(0.82) contrast(1.03);
+}
+.pp-hero-gha__media img,
+.pp-hero-gha__media iframe,
+.pp-hero-gha__media video {
+  width: 100%; height: 100%; object-fit: cover; display: block; border: none;
+}
+
+.pp-hero-gha__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    radial-gradient(ellipse at 50% 70%,
+      color-mix(in srgb, #0d9488 12%, transparent) 0%,
+      transparent 60%),
+    linear-gradient(180deg,
+      color-mix(in srgb, #042f2e 28%, transparent) 0%,
+      color-mix(in srgb, var(--b1) 85%, transparent) 100%);
+  pointer-events: none;
+}
+
+/* Coastal ambient glows for depth */
+.pp-hero-gha::before,
+.pp-hero-gha::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 1;
+}
+.pp-hero-gha::before {
+  top: -8%; left: -8%;
+  width: 480px; height: 480px;
+  background: radial-gradient(circle, color-mix(in srgb, #0d9488 18%, transparent) 0%, transparent 70%);
+  opacity: 0.75;
+}
+.pp-hero-gha::after {
+  bottom: -10%; right: -6%;
+  width: 540px; height: 540px;
+  background: radial-gradient(circle, color-mix(in srgb, var(--gold) 10%, transparent) 0%, transparent 70%);
+  opacity: 0.6;
+}
+
+.pp-hero-gha__content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1100px;
+  padding: 0 1.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+.pp-hero-gha__content::before {
+  content: '';
+  width: 56px;
+  height: 2px;
+  background: linear-gradient(90deg, #0d9488, var(--gold));
+  box-shadow: 0 0 20px color-mix(in srgb, #0d9488 60%, transparent);
+}
+
+.pp-hero-gha__subhead {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.36em;
+  text-transform: uppercase;
+  color: #0d9488;
+}
+
+.pp-hero-gha__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 7vw, 5rem);
+  font-weight: 800;
+  line-height: 1.05;
+  color: var(--bc);
+  letter-spacing: 0.005em;
+  max-width: 22ch;
+  text-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.7),
+    0 0 60px color-mix(in srgb, #0d9488 18%, transparent);
+}
+
+.pp-hero-gha__subtitle {
+  margin: 0;
+  max-width: 640px;
+  font-size: clamp(0.97rem, 1.1vw, 1.08rem);
+  line-height: 1.8;
+  color: var(--bc2);
+}

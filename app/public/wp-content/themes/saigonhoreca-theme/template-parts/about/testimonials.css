@@ -1,0 +1,154 @@
+/* ── sh-about-testimonials ────────────────────────────────────── */
+.sh-about-testimonials {
+  background: var(--b2);   /* đồng nhất với sh-about-cta phía dưới */
+  padding: 6rem 1.25rem 3rem; /* giảm padding-bottom — CTA section tiếp liền */
+}
+
+.sh-about-testimonials__inner {
+  max-width: var(--sh-content-max, 80rem);
+  margin-inline: auto;
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 1024px) {
+  .sh-about-testimonials__inner {
+    grid-template-columns: repeat(3, 1fr);
+    align-items: start;
+  }
+}
+
+/* ── Info block ───────────────────────────────────────────────── */
+.sh-about-testimonials__eyebrow {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--p);
+  margin-bottom: 0.75rem;
+}
+
+.sh-about-testimonials__heading {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--bc);
+  line-height: 1.15;
+  margin: 0 0 1.25rem;
+}
+
+.sh-about-testimonials__body {
+  font-size: 0.875rem;
+  line-height: 1.85;
+  color: var(--bc2);
+  margin: 0;
+}
+
+/* ── Review cards ─────────────────────────────────────────────── */
+.sh-about-testimonials__card {
+  position: relative;
+  background: var(--b3);
+  border: 1px solid var(--bd);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  overflow: hidden;
+  transition: border-color 0.25s ease, transform 0.3s var(--ease-spring);
+}
+
+/* Decorative large quote mark */
+.sh-about-testimonials__card::before {
+  content: '"';
+  position: absolute;
+  top: -0.5rem;
+  right: 1.25rem;
+  font-size: 8rem;
+  font-family: Georgia, serif;
+  line-height: 1;
+  color: var(--p);
+  opacity: 0.06;
+  pointer-events: none;
+  user-select: none;
+}
+
+.sh-about-testimonials__card:hover {
+  border-color: color-mix(in srgb, var(--p) 40%, transparent);
+  transform: translateY(-5px);
+}
+
+.sh-about-testimonials__stars {
+  display: flex;
+  gap: 0.2rem;
+}
+
+.sh-about-testimonials__stars svg {
+  width: 1rem;
+  height: 1rem;
+  fill: var(--p);
+}
+
+.sh-about-testimonials__quote {
+  font-size: 0.9rem;
+  line-height: 1.85;
+  color: var(--bc2);
+  font-style: italic;
+  margin: 0;
+  flex: 1;
+}
+
+.sh-about-testimonials__quote strong {
+  color: var(--bc);
+  font-weight: 600;
+  font-style: normal;
+}
+
+.sh-about-testimonials__footer {
+  border-top: 1px solid var(--bd);
+  padding-top: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Avatar initial */
+.sh-about-testimonials__footer::before {
+  content: attr(data-initial, '?');
+  flex-shrink: 0;
+  width: 2.25rem;
+  height: 2.25rem;
+  background: color-mix(in srgb, var(--p) 15%, transparent);
+  border: 1px solid color-mix(in srgb, var(--p) 30%, transparent);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--p);
+}
+
+.sh-about-testimonials__footer-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.sh-about-testimonials__author {
+  font-weight: 700;
+  font-style: normal;
+  color: var(--bc);
+  font-size: 0.875rem;
+}
+
+.sh-about-testimonials__company {
+  font-size: 0.75rem;
+  color: var(--bc3);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

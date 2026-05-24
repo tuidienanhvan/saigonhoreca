@@ -1,0 +1,92 @@
+/**
+ * arch-calc — Component CSS
+ */
+        .sh-area-calc {
+    @apply py-20 px-0 [background:var(--bg-alt)];
+}
+        .sh-area-calc__container {
+    @apply my-0 mx-auto py-0 px-4 [max-width:64rem];
+}
+        .sh-area-calc__header {
+    @apply text-center mb-12;
+}
+        .sh-area-calc__title {
+    @apply text-3xl font-bold [color:var(--text-1)] [margin:0_0_1rem];
+}
+        .sh-area-calc__desc {
+    @apply [color:var(--text-1-3)];
+}
+        .sh-area-calc__table-wrap {
+    @apply rounded-lg overflow-hidden [background:var(--bg-card)] [box-shadow:0_10px_15px_-3px_rgba(0,0,0,0.1)] [border:1px_solid_color-mix(in_srgb,_var(--brand)_15%,_transparent)];
+}
+        .sh-area-calc__table {
+    @apply w-full text-left [border-collapse:collapse];
+}
+        .sh-area-calc__table thead {
+    @apply [background:#166534] [color:#fff];
+}
+        .sh-area-calc__table th {
+    @apply p-4 font-bold uppercase text-sm [border-right:1px_solid_#15803d];
+}
+        .sh-area-calc__table th:last-child {
+    @apply [border-right:none];
+}
+        /* Column widths */
+        .sh-area-calc__th--item,
+        .sh-area-calc__th--coef,
+        .sh-area-calc__th--note {
+    @apply [width:33%];
+}
+        .sh-area-calc__th--coef  {
+    @apply text-center;
+}
+        .sh-area-calc__table .sh-area-calc__group {
+    @apply font-bold [background:color-mix(in_srgb,_var(--brand)_8%,_transparent)] [color:#14532d];
+}
+        .sh-area-calc__table .sh-area-calc__group td {
+    @apply p-4;
+}
+        .sh-area-calc__table tbody td {
+    @apply p-4 text-sm [border-bottom:1px_solid_var(--border-default-light)];
+}
+        .sh-area-calc__table tbody td:first-child {
+    @apply pl-8 [border-right:1px_solid_var(--border-default-light)];
+}
+        .sh-area-calc__table tbody td:nth-child(2) {
+    @apply text-center font-bold [color:#15803d] [border-right:1px_solid_var(--border-default-light)];
+}
+        .sh-area-calc__table tbody td:last-child {
+    @apply [color:var(--text-1-2)];
+}
+        .sh-area-calc__table tbody tr:hover {
+    @apply [background:color-mix(in_srgb,_var(--brand)_4%,_transparent)];
+}
+        .sh-area-calc__note {
+    @apply mt-6 text-center text-sm italic [color:var(--text-1-3)];
+}
+        /* Dark Mode */
+        .dark .sh-area-calc {
+    @apply [background:var(--bg-alt)];
+}
+        .dark .sh-area-calc__title {
+    @apply [color:var(--text-1)];
+}
+        .dark .sh-area-calc__table-wrap {
+    @apply [background:var(--bg-card)] [border-color:var(--border-default)];
+}
+        .dark .sh-area-calc__table .sh-area-calc__group {
+    @apply [background:color-mix(in_srgb,_var(--brand)_8%,_transparent)] [color:var(--brand)];
+}
+        .dark .sh-area-calc__table tbody td {
+    @apply [border-bottom-color:var(--border-default)] [color:var(--text-1-2)];
+}
+        .dark .sh-area-calc__table tbody td:first-child,
+        .dark .sh-area-calc__table tbody td:nth-child(2) {
+    @apply [border-right-color:var(--border-default)];
+}
+        .dark .sh-area-calc__table tbody td:nth-child(2) {
+    @apply [color:var(--brand)];
+}
+        .dark .sh-area-calc__table tbody tr:hover {
+    @apply [background:color-mix(in_srgb,_var(--brand)_5%,_transparent)];
+}

@@ -1,0 +1,602 @@
+{
+  "slug": "amdang-typhoon",
+  "title": "Amdang Typhoon",
+  "meta_description": "Amdang Typhoon là một trong những nhà hàng được giới thiệu trong Michelin Guide 2021. Nhà hàng mang đậm bản sắc ẩm thực Trung Quốc và Thái Lan, đó cũng là",
+  "sections_count": 15,
+  "sections": [
+    {
+      "data_id": "4a40a86",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-4a40a86",
+        "elementor-section-full_width",
+        "elementor-section-stretched",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-344fff6",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/Amdang-Typhoon-SGH-1.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/Amdang-Typhoon-SGH-1.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2023/12/Amdang-Typhoon-SGH-1-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2023/12/Amdang-Typhoon-SGH-1-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "8194b05",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-8194b05",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-c09810f",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Amdang Typhoon là một trong những nhà hàng được giới thiệu trong Michelin Guide 2021. Nhà hàng mang đậm bản sắc ẩm thực Trung Quốc và Thái Lan, đó cũng là nguồn cảm hứng cho các món ăn đặc trưng của họ được làm từ cua."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "204956ff",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-204956ff",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-172249d8",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Bước chân vào nhà hàng, nét cổ điển hòa quyện cùng họa tiết hoàng gia của cung điện Thái Lan sẽ đưa khách hàng trở về những năm 90. Những món ăn tinh tế được phục vụ ngay bên cạnh đường ray, tỏa hương thơm nghi ngút từ trạm chế mì. Trải nghiệm ẩm thực độc đáo này gợi nhớ về những xe mì nổi tiếng của ẩm thực Bangkok."
+              ]
+            },
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/amdang-typhoon-cover.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/amdang-typhoon-cover.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2023/12/amdang-typhoon-cover-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2023/12/amdang-typhoon-cover-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "f7d9172",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-f7d9172",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-759de661",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Bên cạnh không gian cổ điển, nhà hàng còn sở hữu những phòng ăn riêng được thiết kế theo phong cách cung điện hoàng gia, với màu chủ đạo là gỗ nâu trầm, điểm xanh lam và hoa văn đỏ tinh tế, tạo nên không khí sang trọng và bí ẩn.",
+                "Nhà hàng cung cấp hai phòng ăn riêng tư với cửa đóng kín, và một phòng mở thoáng với rèm mỏng. Sức chứa mỗi phòng lên đến 10 khách, đây là địa điểm lý tưởng cho những buổi sum họp gia đình hay hội ngộ bạn bè, cùng nhau thưởng thức hương vị ẩm thực Thái Lan."
+              ]
+            },
+            {
+              "type": "image-carousel.default",
+              "slides": [
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/am-dang-typhoon-menu-02.jpeg",
+                  "srcset": null,
+                  "alt": "am dang typhoon menu 01",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/am-dang-typhoon-menu-03.jpeg",
+                  "srcset": null,
+                  "alt": "am dang typhoon menu 02",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/am-dang-typhoon-menu-01.jpeg",
+                  "srcset": null,
+                  "alt": "am dang typhoon menu 03",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/amdang-typhoon-menu.jpeg",
+                  "srcset": null,
+                  "alt": "amdang typhoon menu",
+                  "w": null,
+                  "h": null
+                }
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Am dang Typhoon Menu – Các món nổi bật tại Amdang Typhoon"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "6cd9d6bf",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-6cd9d6bf",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-505f3c55",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "spacer.default",
+              "spacer": true
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Bước ra khỏi không gian cổ kính, thực khách tiếp tục được trải nghiệm một không gian đậm chất hoài niệm với những bức tường rêu phong. Bầu không khí bên trong mát mẻ, dễ chịu nhờ những cây xanh nhiệt đới."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "50bc0d33",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-50bc0d33",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-74751793",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/am-khu-nuong-e1631095664511-plg9n0bzrou743egcvvr596a3mldarclhkcrxnyutk.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/am-khu-nuong-e1631095664511-plg9n0bzrou743egcvvr596a3mldarclhkcrxnyutk.jpg 800w, https://saigonhoreca.vn/wp-content/uploads/2024/02/am-khu-nuong-e1631095664511-plg9n0bzrou743egcvvr596a3mldarclhkcrxnyutk-768x480.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/02/am-khu-nuong-e1631095664511-plg9n0bzrou743egcvvr596a3mldarclhkcrxnyutk-600x375.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "800",
+                "h": "500"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "7fabae30",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-7fabae30",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-505178ea",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "spacer.default",
+              "spacer": true
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Với nhiều kinh nghiệm và chuyên môn trong ngành công nghiệp Thực phẩm và Đồ uống (F&B), Saigon Horeca cam kết mang đến những dịch vụ và sản phẩm tốt nhất cho khách hàng của mình. Từ việc tư vấn thiết kế tỉ mỉ đến lắp đặt thiết bị, chúng tôi luôn đặt sự hài lòng của khách hàng lên hàng đầu. Sau những dự án thành công như Roka Fella và GodMother Friendship, HypeAsia một lần nữa tin tưởng chọn Saigon Horeca làm đối tác chính cho bếp và quầy bar của Amdang Typhoon."
+              ],
+              "links": [
+                {
+                  "href": "https://saigonhoreca.vn/rokafella/",
+                  "text": "Roka Fella"
+                },
+                {
+                  "href": "https://saigonhoreca.vn/godmother-friendship/",
+                  "text": "GodMother Friendship"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "26ffe886",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-26ffe886",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-56bc1679",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Khu vực bếp của Amdang Typhoon đặc trưng với lò than và quầy mì di động. Có thể thấy vì khói và nhiệt độ cao từ lò than nên việc tính toán và thiết kế đã được thực hiện cẩn thận để đảm bảo môi trường làm việc thoải mái cho đầu bếp."
+              ]
+            },
+            {
+              "type": "image.default",
+              "image": null
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Bản vẽ bố trí thiết bị khu vực bếp nướng và quầy mì di động"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "7ef2eccf",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-7ef2eccf",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-56b84a0d",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "image-carousel.default",
+              "slides": [
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/amdang-typhoon-private.jpg",
+                  "srcset": null,
+                  "alt": "amdang-typhoon-private",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/amdang-typhoon-private-2.jpg",
+                  "srcset": null,
+                  "alt": "amdang-typhoon-private-2",
+                  "w": null,
+                  "h": null
+                }
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Trang thiết bị trong khu vực lò than chủ yếu là sản phẩm do Saigon Horeca sản xuất, bao gồm máy hút khói bếp, lò than, bồn rửa, bàn làm việc bằng thép không gỉ, chỉ riêng tủ lạnh bảo quản được nhập khẩu từ những nhà cung cấp uy tín như Hoshizaki (Nhật Bản) và Berjayja (Malaysia)."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "982b519",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-982b519",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-47d24cfc",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Khu bếp chính quan trọng vì đây là nơi các đầu bếp sáng tạo ra những món ngon góp phần tạo uy tín cho nhà hàng. Khu vực này được thiết kế để đảm bảo thoải mái và tiện lợi cho công việc của đầu bếp, đồng thời tuân thủ nghiêm túc các quy chuẩn, quy trình và các quy định về an toàn thực phẩm trong các khâu chuẩn bị, lưu trữ, nấu nướng và vệ sinh."
+              ]
+            },
+            {
+              "type": "image.default",
+              "image": null
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Bản vẽ bố trí thiết bị khu bếp chính của nhà hàng"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "2506b98d",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-2506b98d",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-63da387a",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "image-carousel.default",
+              "slides": [
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/elementor/thumbs/Amdang-Typhoon-khu-trung-mi-qhaewofp537vrqsfj5pc5t3ct548snw650qwws6bgo-qkio9u5qgdexfjmb3ykmhglunqan74w23x06u1kwp4.jpg",
+                  "srcset": null,
+                  "alt": "Amdang-Typhoon-khu-trung-mi-qhaewofp537vrqsfj5pc5t3ct548snw650qwws6bgo",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/elementor/thumbs/Amdang-Typhoon-khu-nuong-thuc-te-qhaewlm6kl40swwizmhggbsz0zi55kkz4msggyahzc-qkio9zsrldmnd7e4710dwf6m81iuhbig4ox3ppcjns.jpg",
+                  "srcset": null,
+                  "alt": "Amdang-Typhoon-khu-nuong-thuc-te-qhaewlm6kl40swwizmhggbsz0zi55kkz4msggyahzc",
+                  "w": null,
+                  "h": null
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "6c4c2d76",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-6c4c2d76",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-35d13a4d",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Quầy bar là nơi thể hiện phong cách đồ uống của nhà hàng và cũng là nơi các bartender trổ tài pha chế của họ. Do đó, các dụng cụ, thiết bị pha chế được sắp xếp một cách khoa học vừa đảm bảo tính tiện lợi, vừa tạo nên một không gian đẹp mắt, chuyên nghiệp."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "5e0cfe23",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-5e0cfe23",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-20e4c09a",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": null
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Bản vẽ bố trí thiết bị khu vực quầy bar"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "4fe8a1e4",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-4fe8a1e4",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-7365311",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/elementor/thumbs/sgh-AmDang-Bar-1-qkj06csy5c0ubt68v6tp7bqvzi6obm2rovt33a7o20.jpeg",
+                "srcset": null,
+                "alt": "sgh-AmDang-Bar (1)",
+                "w": null,
+                "h": null
+              }
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Dụng cụ pha chế được bố trí gọn gàng trên quầy bar lớn, nhờ vậy các bartender thao tác dễ dàng, tiết kiệm thời gian."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "576fe15a",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-576fe15a",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-64d8c5cd",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Saigon Horeca là công ty chuyên thiết kế và sản xuất thiết bị bếp công nghiệp. Với kinh nghiệm và sự sáng tạo trong thiết kế, Saigon Horeca luôn tối ưu hóa sản phẩm của mình, sản xuất trực tiếp theo thiết kế riêng. Nhờ đó, có thể đưa ra mức giá tốt nhất cho khách hàng.",
+                "Đối với nhà hàng Amdang Typhoon, hơn ba phần tư thiết bị đầu tư đều được thiết kế và sản xuất bởi Saigon Horeca. Chỉ một số ít trang thiết bị làm lạnh hiện đại được nhập khẩu từ các nhà cung cấp uy tín như Hoshizaki (Nhật Bản) và Berjayja (Malaysia)."
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

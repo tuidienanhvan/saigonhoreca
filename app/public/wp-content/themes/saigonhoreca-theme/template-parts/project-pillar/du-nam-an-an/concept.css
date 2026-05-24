@@ -1,0 +1,214 @@
+/**
+ * du-nam-an-an — concept slot.
+ * OWNS shared .pp-split-nan grid (also used by specs/gallery/related).
+ *
+ * Tropical Resort Editorial: woven-edge media frame + tropical text card,
+ * palm-shadow dapples, leaf-corner ornaments, watermark leaf.
+ *
+ * @package SaigonHoreca
+ */
+
+/* ═════════════════════════════════════════════════════════
+   Split grid
+   ═════════════════════════════════════════════════════════ */
+.pp-split-nan {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.75rem;
+  align-items: center;
+  position: relative;
+}
+@media (min-width: 992px) {
+  .pp-split-nan {
+    grid-template-columns: 1.05fr 1fr;
+    gap: 4.75rem;
+  }
+  .pp-split-nan--reverse {
+    grid-template-columns: 1fr 1.05fr;
+  }
+  .pp-split-nan--reverse .pp-split-nan__media { order: 2; }
+  .pp-split-nan--reverse .pp-split-nan__body  { order: 1; }
+}
+
+/* Watermark leaf behind the split */
+body.page-template-page-project-du-nam-an-an .pp-split-nan {
+  isolation: isolate;
+}
+body.page-template-page-project-du-nam-an-an .pp-split-nan::before {
+  content: '\2740';
+  position: absolute;
+  top: -3rem;
+  right: -1.5rem;
+  font-size: clamp(8rem, 18vw, 14rem);
+  line-height: 1;
+  color: color-mix(in srgb, var(--gold) 3%, transparent);
+  font-family: var(--font-display);
+  font-weight: 700;
+  pointer-events: none;
+  z-index: -1;
+  transform: rotate(-15deg);
+  text-shadow: 0 4px 30px color-mix(in srgb, var(--gold) 4%, transparent);
+}
+body.page-template-page-project-du-nam-an-an .pp-split-nan--reverse::before {
+  right: auto;
+  left: -1.5rem;
+  transform: rotate(15deg);
+}
+
+/* ═════════════════════════════════════════════════════════
+   Body — tropical text card with leaf-corner ornaments
+   ═════════════════════════════════════════════════════════ */
+.pp-split-nan__body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+  position: relative;
+  z-index: 2;
+  padding: 0.5rem;
+}
+.pp-split-nan__body .pp-text-nan__divider { align-self: flex-start; }
+.pp-split-nan__body .pp-text-nan__title {
+  font-size: clamp(1.65rem, 2.7vw, 2.35rem);
+  text-align: left;
+  line-height: 1.22;
+}
+
+/* L-bracket gold ornament — top-left */
+.pp-split-nan__body::before {
+  content: '';
+  position: absolute;
+  top: -1.5rem;
+  left: -1.25rem;
+  width: 64px; height: 64px;
+  border-top: 1px solid color-mix(in srgb, var(--gold) 45%, transparent);
+  border-left: 1px solid color-mix(in srgb, var(--gold) 45%, transparent);
+  pointer-events: none;
+  z-index: -1;
+}
+/* Mirror bracket — bottom-right */
+.pp-split-nan__body::after {
+  content: '';
+  position: absolute;
+  bottom: -1.25rem;
+  right: -0.5rem;
+  width: 48px; height: 48px;
+  border-bottom: 1px solid color-mix(in srgb, var(--gold) 35%, transparent);
+  border-right: 1px solid color-mix(in srgb, var(--gold) 35%, transparent);
+  pointer-events: none;
+  z-index: -1;
+}
+.pp-split-nan--reverse .pp-split-nan__body::before {
+  left: auto;
+  right: -1.25rem;
+  border-left: none;
+  border-right: 1px solid color-mix(in srgb, var(--gold) 45%, transparent);
+}
+.pp-split-nan--reverse .pp-split-nan__body::after {
+  right: auto;
+  left: -0.5rem;
+  border-right: none;
+  border-left: 1px solid color-mix(in srgb, var(--gold) 35%, transparent);
+}
+
+.pp-split-nan__body .pp-text-nan__body {
+  font-size: clamp(0.97rem, 1.1vw, 1.04rem);
+  line-height: 1.86;
+  max-width: 100%;
+}
+
+/* Tropical leaf above title (concept slot only — not reverse) */
+body.page-template-page-project-du-nam-an-an .pp-split-nan:not(.pp-split-nan--reverse)
+  .pp-split-nan__body .pp-text-nan__title::before {
+  content: '\2740';
+  position: absolute;
+  top: -1.85rem;
+  left: 0;
+  font-size: 1.4rem;
+  color: color-mix(in srgb, var(--gold) 55%, transparent);
+  transform: rotate(-18deg);
+  pointer-events: none;
+}
+
+/* ═════════════════════════════════════════════════════════
+   Media — woven-edge frame + palm-shadow dapple
+   ═════════════════════════════════════════════════════════ */
+.pp-split-nan__media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background: var(--b3);
+  border: 1px solid var(--bd);
+  transition:
+    border-color 0.5s var(--ease-spring),
+    transform 0.6s var(--ease-spring);
+  box-shadow: 0 10px 36px rgba(0,0,0,0.32);
+  isolation: isolate;
+}
+.pp-split-nan__media:hover {
+  border-color: color-mix(in srgb, var(--gold) 48%, transparent);
+  transform: translateY(-4px);
+}
+.pp-split-nan__media img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(1.08);
+  transition: transform 0.8s var(--ease-spring), filter 0.6s;
+}
+.pp-split-nan__media:hover img {
+  transform: scale(1.06);
+  filter: saturate(1.18) contrast(1.04);
+}
+
+/* Woven-bamboo outer frame — left + right vertical strips */
+.pp-split-nan__media::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+  background:
+    repeating-linear-gradient(180deg,
+      transparent 0px,
+      transparent 4px,
+      color-mix(in srgb, var(--gold) 16%, transparent) 4px,
+      color-mix(in srgb, var(--gold) 16%, transparent) 6px) left top / 6px 100% no-repeat,
+    repeating-linear-gradient(180deg,
+      transparent 0px,
+      transparent 4px,
+      color-mix(in srgb, var(--gold) 16%, transparent) 4px,
+      color-mix(in srgb, var(--gold) 16%, transparent) 6px) right top / 6px 100% no-repeat;
+  opacity: 0.85;
+}
+
+/* Palm-shadow dapple over media (multiply blend) */
+.pp-split-nan__media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 180px 80px at 18% 22%,
+      color-mix(in srgb, var(--b1) 22%, transparent) 0%, transparent 70%),
+    radial-gradient(ellipse 140px 60px at 78% 70%,
+      color-mix(in srgb, var(--b1) 18%, transparent) 0%, transparent 70%);
+  mix-blend-mode: multiply;
+  opacity: 0.6;
+  transition: opacity 0.6s var(--ease-spring);
+}
+.pp-split-nan__media:hover::after { opacity: 0.3; }
+
+/* Body hover — subtle gold tint on title */
+.pp-split-nan__body:hover .pp-text-nan__title {
+  color: color-mix(in srgb, var(--bc) 95%, var(--gold));
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .pp-split-nan__media,
+  .pp-split-nan__media img { transition: none; }
+  .pp-split-nan__media:hover,
+  .pp-split-nan__media:hover img { transform: none; }
+}

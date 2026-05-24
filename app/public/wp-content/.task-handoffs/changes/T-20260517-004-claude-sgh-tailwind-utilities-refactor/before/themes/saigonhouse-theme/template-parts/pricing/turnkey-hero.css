@@ -1,0 +1,39 @@
+/**
+ * turnkey-hero — Component CSS
+ */
+        .sh-pricing-hero {
+    @apply pt-20 px-4 pb-0;
+}
+        .sh-pricing-hero__dots {
+    @apply absolute opacity-50 [inset:0] [background-image:url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjEiIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSIvPjwvc3ZnPg==")];
+}
+        .sh-pricing-hero__inner {
+    @apply [max-width:64rem];
+}
+        .sh-pricing-hero__badge {
+    @apply mb-6;
+}
+        .sh-pricing-hero__title {
+    @apply tracking-tighter;
+}
+        .sh-pricing-hero__intro-quote {
+    @apply [color:#fff];
+}
+        .sh-pricing-hero__highlight {
+    @apply font-bold block mt-2 text-3xl [color:transparent] [background-image:linear-gradient(to_right,_#fde68a,_var(--secondary))] [-webkit-background-clip:text] [background-clip:text];
+}
+        @media (min-width: 768px) { .sh-pricing-hero__highlight {
+    @apply text-5xl;
+} }
+        .sh-pricing-hero__promo {
+    @apply text-xl font-bold py-3 px-6 rounded-2xl inline-block [color:rgba(255,255,255,0.9)] [max-width:48rem] [margin:0_auto_2rem] [background:rgba(255,255,255,0.1)] [border:1px_solid_rgba(255,255,255,0.2)] [box-shadow:0_4px_6px_-1px_rgba(0,0,0,0.1)];
+}
+        .sh-pricing-hero__intro {
+    @apply rounded-3xl p-6 my-0 mx-auto leading-relaxed text-sm text-justify relative overflow-hidden [background:rgba(255,255,255,0.1)] [backdrop-filter:blur(12px)] [border:1px_solid_rgba(255,255,255,0.2)] [max-width:56rem] [color:rgba(255,255,255,0.9)] [box-shadow:0_25px_50px_-12px_rgba(0,0,0,0.25)];
+}
+        @media (min-width: 768px) { .sh-pricing-hero__intro {
+    @apply p-10 text-lg;
+} }
+        .sh-pricing-hero__intro-glow {
+    @apply absolute rounded-full [top:0] [right:0] [width:8rem] [height:8rem] [background:rgba(255,255,255,0.05)] [filter:blur(2rem)] [margin-right:-4rem] [margin-top:-4rem];
+}

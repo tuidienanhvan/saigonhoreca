@@ -1,0 +1,324 @@
+{
+  "slug": "du-nam-an-an",
+  "title": "Dự Nam An An",
+  "meta_description": "Dự án đẳng cấp với cam kết hoàn hảo của Saigon Horeca tại Canteen nhà máy Sheh Fung",
+  "sections_count": 5,
+  "sections": [
+    {
+      "data_id": "355a605b",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-355a605b",
+        "elementor-section-height-full",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-items-middle"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-5.jpg",
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-3901529a",
+          "col_size": 16,
+          "widgets": []
+        },
+        {
+          "col_class": "elementor-column elementor-col-66 elementor-top-column elementor-element elementor-element-7dd42e71",
+          "col_size": 66,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h1",
+              "text": "Dự Nam An An"
+            },
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Khi gian bếp trở thành nền tảng của sự chăm sóc tinh tế"
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-641e797e",
+          "col_size": 16,
+          "widgets": []
+        }
+      ]
+    },
+    {
+      "data_id": "ef110fa",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-ef110fa",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-65c48449",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Trong dự Nam An An – Nursing Home Kitchen, Saigon Horeca không chỉ tiếp cận bài toán ở góc độ thiết kế bếp công nghiệp, mà đi sâu hơn: kiến tạo một hệ thống bếp cao cấp phục vụ người cao tuổi – nhóm khách hàng đặc biệt nhạy cảm với thực phẩm, dinh dưỡng và môi trường vận hành.",
+                "Lấy cảm hứng từ triết lý ẩm thực và chuẩn mực chất lượng mà Nam An theo đuổi suốt nhiều năm, dự án được phát triển với mục tiêu rõ ràng: mỗi bữa ăn không chỉ đủ dinh dưỡng, mà còn an toàn, chuẩn mực và nhất quán trong từng khâu vận hành."
+              ]
+            },
+            {
+              "type": "image-carousel.default",
+              "slides": [
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-6.jpg",
+                  "srcset": null,
+                  "alt": "sheh-fung (6)",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-8.jpg",
+                  "srcset": null,
+                  "alt": "sheh-fung (8)",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-9.jpg",
+                  "srcset": null,
+                  "alt": "sheh-fung (9)",
+                  "w": null,
+                  "h": null
+                },
+                {
+                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-7.jpg",
+                  "srcset": null,
+                  "alt": "sheh-fung (7)",
+                  "w": null,
+                  "h": null
+                }
+              ]
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Khác với bếp nhà hàng hay bếp dịch vụ thông thường, Nursing Home Kitchen là mô hình có mức độ yêu cầu cao hơn rất nhiều. Mọi sai sót – dù nhỏ – đều có thể ảnh hưởng trực tiếp đến sức khỏe người dùng.",
+                "Saigon Horeca tiếp cận mô hình này bằng tư duy vận hành trước – thiết kế sau. Từ thói quen ăn uống của người cao tuổi, đặc thù chế biến suất ăn mềm, dễ tiêu hóa, cho đến cường độ làm việc của đội ngũ chăm sóc sức khỏe, toàn bộ được phân tích kỹ lưỡng trước khi đặt bút vẽ layout.",
+                "Kết quả là một gian bếp liền mạch, mạch lạc, hạn chế giao cắt, giúp nhân sự vận hành trơn tru, giảm áp lực và rủi ro trong quá trình phục vụ."
+              ]
+            },
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2026/03/du-an-thecheezytime-11.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2026/03/du-an-thecheezytime-11.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2026/03/du-an-thecheezytime-11-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2026/03/du-an-thecheezytime-11-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            },
+            {
+              "type": "heading.default",
+              "tag": "span",
+              "text": "Layout vận hành – Khi an toàn và hiệu quả song hành"
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Trọng tâm của dự án Nam An nằm ở tối ưu layout vận hành. Gian bếp được tổ chức theo luồng khép kín: từ tiếp nhận – bảo quản – sơ chế – chế biến – làm sạch, đảm bảo thực phẩm luôn đi theo một chiều logic, hạn chế tối đa nguy cơ nhiễm chéo.",
+                "Không gian sơ chế được bố trí hệ bàn và kệ inox chuyên dụng, đáp ứng yêu cầu vệ sinh nghiêm ngặt trong môi trường chăm sóc sức khỏe. Mọi bề mặt tiếp xúc thực phẩm đều dễ làm sạch, bền bỉ và đạt chuẩn an toàn thực phẩm."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "2fcbcb7f",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-2fcbcb7f",
+        "elementor-section-content-middle",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-2530f256",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "h2",
+              "text": "Thiết bị bếp – Lựa chọn vì sự ổn định lâu dài"
+            },
+            {
+              "type": "divider.default",
+              "divider": true
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Thay vì chạy theo số lượng, Saigon Horeca tập trung vào những thiết bị cốt lõi, vận hành ổn định và phù hợp với đặc thù Nursing Home Kitchen.",
+                "Hệ bếp Âu 6 họng điện được lựa chọn nhằm đảm bảo khả năng kiểm soát nhiệt chính xác, giảm thiểu rủi ro cháy nổ so với bếp gas, đồng thời phù hợp với môi trường vận hành liên tục.",
+                "Hệ 4 tủ lạnh đứng 4 cánh đóng vai trò trung tâm trong việc bảo quản và lưu trữ thực phẩm, nguyên liệu theo từng nhóm riêng biệt, giúp kiểm soát chất lượng và hạn sử dụng chặt chẽ hơn.",
+                "Máy rửa chén dạng âm quầy được tích hợp tinh gọn trong layout, giúp tối ưu diện tích nhưng vẫn đảm bảo tiêu chuẩn làm sạch, tiết kiệm thời gian cho đội ngũ nhân viên chăm sóc."
+              ]
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-3cd70efa",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-2.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-2.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/01/sheh-fung-2-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/01/sheh-fung-2-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            },
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-3.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-3.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/01/sheh-fung-3-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/01/sheh-fung-3-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "16b4144a",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-16b4144a",
+        "elementor-section-content-middle",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": true,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-4fc0aebb",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-4.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-4.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/01/sheh-fung-4-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/01/sheh-fung-4-600x337.jpg 600w",
+                "alt": "Bếp á đôi công nghiệp",
+                "w": "1366",
+                "h": "768"
+              }
+            }
+          ]
+        },
+        {
+          "col_class": "elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-515501e0",
+          "col_size": 50,
+          "widgets": [
+            {
+              "type": "heading.default",
+              "tag": "span",
+              "text": "Hệ thống xử lý khói & mùi – Yếu tố không thể thỏa hiệp"
+            },
+            {
+              "type": "divider.default",
+              "divider": true
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Trong môi trường Nursing Home, khói và mùi không đơn thuần là vấn đề kỹ thuật, mà là yếu tố ảnh hưởng trực tiếp đến chất lượng sống của người cao tuổi.",
+                "Saigon Horeca triển khai hệ thống xử lý khói và mùi được tính toán kỹ lưỡng theo công suất thực tế, đảm bảo không gian bếp luôn thông thoáng, hạn chế ám mùi sang khu vực sinh hoạt, đồng thời tạo môi trường làm việc dễ chịu cho nhân sự vận hành."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data_id": "8834001",
+      "css_classes": [
+        "elementor-section",
+        "elementor-top-section",
+        "elementor-element",
+        "elementor-element-8834001",
+        "elementor-section-content-middle",
+        "elementor-section-boxed",
+        "elementor-section-height-default",
+        "elementor-section-height-default"
+      ],
+      "has_video_bg": false,
+      "video_url": null,
+      "background_overlay": false,
+      "background_image": null,
+      "columns": [
+        {
+          "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-549d58a",
+          "col_size": 100,
+          "widgets": [
+            {
+              "type": "divider.default",
+              "divider": true
+            },
+            {
+              "type": "heading.default",
+              "tag": "span",
+              "text": "Nam An & Saigon Horeca – Sự gặp nhau của hai chuẩn mực"
+            },
+            {
+              "type": "text-editor.default",
+              "paragraphs": [
+                "Dự án Nam An là minh chứng rõ nét cho cách Saigon Horeca đồng hành cùng chủ đầu tư từ triết lý đến giải pháp. Khi Nam An đặt ra yêu cầu cao về chất lượng bữa ăn và sự an toàn cho người cao tuổi, Saigon Horeca đáp lại bằng một hệ thống bếp được thiết kế chỉn chu, vận hành bền bỉ và hướng đến giá trị lâu dài.",
+                "Nam An – Nursing Home Kitchen không chỉ là một dự án bếp công nghiệp, mà là nơi kỹ thuật, vận hành và sự thấu cảm cùng gặp nhau – đúng với tinh thần mà Saigon Horeca luôn theo đuổi trong mỗi công trình."
+              ]
+            },
+            {
+              "type": "image.default",
+              "image": {
+                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/bi-quyet-tao-thuc-don-nha-hang.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/bi-quyet-tao-thuc-don-nha-hang.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2023/12/bi-quyet-tao-thuc-don-nha-hang-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2023/12/bi-quyet-tao-thuc-don-nha-hang-600x337.jpg 600w",
+                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "w": "1366",
+                "h": "768"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

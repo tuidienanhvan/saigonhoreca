@@ -1,0 +1,1008 @@
+/**
+ * Single layout — UNIVERSAL CSS cho post + product.
+ *
+ * single.php universal (post + product), branch bằng .sh-single--product
+ * khi post_type=product. Tất cả overrides nằm cuối file này.
+ *
+ * Bundle:
+ *   - theme-single.css   (post)    ← _imports-single.css
+ *   - theme-product.css  (product) ← _imports-product.css
+ *
+ * Blocks: .sh-single, .sh-single__main, .sh-single__article,
+ *         .sh-single__header, .sh-single__meta, .sh-single__content,
+ *         .sh-single__author, .sh-single__lightbox, .sh-post-nav, .sh-copy-btn
+ *
+ * Token-only, không hardcode.
+ */
+
+/* ── Layout ── */
+/* OUTER wrapper — edge-to-edge background + vertical padding. */
+.sh-single {
+    padding-block: 3rem;
+}
+@media (min-width: 768px) {
+    .sh-single { padding-block: 4rem; }
+}
+
+/* INNER grid — max-width 1280 + padding-inline cho mọi route đồng bộ. */
+.sh-single__layout {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-inline: 1rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+@media (min-width: 1024px) {
+    .sh-single__layout {
+        /* Fixed 320px sidebar, article column takes the rest — same pattern
+           cho cả post và product. */
+        grid-template-columns: minmax(0, 1fr) 320px;
+        gap: 2.5rem;
+        padding-inline: 2rem;
+    }
+}
+
+.sh-single__main {
+    width: 100%;
+    min-width: 0;
+}
+
+/* ── Post Header ── */
+.sh-single__header {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border-default-light);
+}
+
+@media (min-width: 768px) {
+    .sh-single__header {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
+}
+
+.sh-single__title {
+    /* Đồng bộ post + product: clamp 1.5→2.25rem theo viewport. */
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--text-1);
+    margin: 0 0 1rem;
+}
+
+/* ── Meta ── */
+.sh-single__meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    color: var(--text-1-3);
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.sh-single__meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.sh-single__meta-item--pill {
+    background: var(--bg-alt);
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+}
+
+.sh-single__meta-item--accent {
+    color: var(--brand);
+}
+
+.sh-single__meta-icon {
+    width: 1rem;
+    height: 1rem;
+}
+
+/* ── Excerpt — đồng bộ post + product (bỏ italic + border-left vàng) ── */
+.sh-single__excerpt {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--bc2);
+    margin: 0;
+}
+
+/* ── Featured Image ── */
+.sh-single__featured-img {
+    overflow: hidden;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-default-light);
+    background: var(--bg-alt);
+    align-self: start;
+}
+
+.sh-single__thumbnail {
+    /* Hiển thị đầy đủ ảnh không cắt xén */
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: var(--radius);
+}
+
+/* ── Table of Contents ── */
+.sh-single__toc {
+    background: var(--bg-alt);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    margin-bottom: 2.5rem;
+    border: 1px solid var(--border-default);
+}
+
+.sh-single__toc-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.sh-single__toc-title {
+    font-weight: 700;
+    font-size: 1.125rem;
+    color: var(--text-1);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+}
+
+.sh-single__toc-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: var(--brand);
+}
+
+.sh-single__toc-toggle {
+    color: var(--text-1-3);
+    font-size: 0.875rem;
+    font-weight: 500;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.sh-single__toc-toggle:hover {
+    color: var(--brand);
+}
+
+.sh-single__toc-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    color: var(--text-1-2);
+    font-size: 0.875rem;
+    font-weight: 500;
+    list-style: disc;
+    padding-left: 1.25rem;
+    margin: 0;
+}
+
+/* ── Content Area ── */
+.sh-single__content {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--text-1-2);
+}
+
+@media (min-width: 768px) {
+    .sh-single__content { font-size: 1.125rem; }
+}
+
+.sh-single__content h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-top: 3rem;
+    border-left: 4px solid var(--brand);
+    padding-left: 1rem;
+    scroll-margin-top: 6rem;
+}
+
+@media (min-width: 768px) { .sh-single__content h2 { font-size: 1.875rem; } }
+
+.sh-single__content h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    scroll-margin-top: 6rem;
+}
+
+@media (min-width: 768px) { .sh-single__content h3 { font-size: 1.5rem; } }
+
+.sh-single__content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius);
+    margin: 1rem auto;
+    display: block;
+}
+
+/* WordPress emoji images — keep inline at text size */
+.sh-single__content img.emoji {
+    display: inline !important;
+    width: 1em !important;
+    height: 1em !important;
+    margin: 0 0.07em !important;
+    vertical-align: -0.1em;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+/* Prevent unsized SVGs in post content from expanding to fill container */
+.sh-single__content svg:not([width]):not([class]) {
+    max-width: 3rem;
+    max-height: 3rem;
+}
+
+.sh-single__content svg {
+    max-width: 100%;
+    height: auto;
+}
+
+.sh-single__content figure {
+    margin: 1.5rem auto;
+    text-align: center;
+}
+
+.sh-single__content a {
+    color: var(--brand);
+    text-decoration: underline;
+}
+
+.sh-single__content a:hover {
+    color: var(--secondary);
+}
+
+/* ── Tags ── */
+.sh-single__tags {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-default-light);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.sh-single__tags-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: var(--text-1-muted);
+}
+
+.sh-single__tag {
+    background: var(--bg-alt);
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+    color: var(--text-1-2);
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.sh-single__tag:hover {
+    background: var(--brand);
+    color: var(--pc);
+}
+
+/* ── Author Box ── */
+.sh-single__author {
+    margin-top: 3rem;
+    background: var(--bg-alt);
+    border: 1px solid transparent;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .sh-single__author {
+        flex-direction: row;
+        align-items: flex-start;
+        text-align: left;
+        padding: 2rem;
+    }
+}
+
+.sh-single__author-avatar {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 4px solid var(--bg-card);
+    box-shadow: var(--shadow);
+}
+
+.sh-single__author-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.sh-single__author-name {
+    font-weight: 700;
+    color: var(--text-1);
+    font-size: 1.125rem;
+    margin: 0 0 0.5rem;
+}
+
+.sh-single__author-bio {
+    font-size: 0.875rem;
+    color: var(--text-1-2);
+    margin: 0 0 1rem;
+}
+
+.sh-single__author-link {
+    color: var(--secondary);
+    font-weight: 700;
+    font-size: 0.875rem;
+    text-decoration: none;
+}
+
+.sh-single__author-link:hover {
+    text-decoration: underline;
+}
+
+/* ── Related Posts ── */
+.sh-single__related {
+    margin-top: 4rem;
+}
+
+.sh-single__related-title {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--text-1);
+    margin: 0 0 2rem;
+    border-left: 4px solid var(--secondary);
+    padding-left: 1rem;
+}
+
+.sh-single__related-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .sh-single__related-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+/* ── Lightbox ── */
+/* ─── Lightbox — Premium Image Viewer ─── */
+.sh-single__lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;                          /* Above header (9999) + everything */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 1.5rem 5rem;
+    cursor: zoom-out;
+    opacity: 0;
+    transition: opacity 0.25s var(--ease-spring);
+    pointer-events: none;
+}
+.sh-single__lightbox[hidden] { display: none !important; }
+.sh-single__lightbox.is-open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Backdrop — separate layer for blur */
+.sh-single__lightbox-backdrop {
+    position: absolute;
+    inset: 0;
+    background: color-mix(in srgb, var(--bg-dark) 88%, transparent);
+    backdrop-filter: blur(16px) saturate(1.4);
+    -webkit-backdrop-filter: blur(16px) saturate(1.4);
+    z-index: 0;
+}
+
+/* Close button — circular, prominent */
+.sh-single__lightbox-close {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    width: 2.75rem;
+    height: 2.75rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--bc);
+    background: var(--bs);
+    border: 1px solid var(--bd);
+    border-radius: 50%;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+    transition: all 0.2s ease;
+    backdrop-filter: blur(8px);
+}
+.sh-single__lightbox-close:hover {
+    background: var(--bt);
+    border-color: var(--bt);
+    transform: scale(1.05) rotate(90deg);
+}
+.sh-single__lightbox-close:focus-visible {
+    outline: 2px solid var(--brand);
+    outline-offset: 3px;
+}
+.sh-single__lightbox-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    stroke-width: 2.5;
+}
+
+/* Figure (image + caption) */
+.sh-single__lightbox-figure {
+    position: relative;
+    z-index: 5;
+    margin: 0;
+    max-width: 100%;
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    cursor: default;
+    transform: scale(0.94);
+    transition: transform 0.3s var(--ease-spring);
+}
+.sh-single__lightbox.is-open .sh-single__lightbox-figure {
+    transform: scale(1);
+}
+
+/* Loading spinner */
+.sh-single__lightbox-loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 3rem;
+    height: 3rem;
+    margin: -1.5rem 0 0 -1.5rem;
+    border: 3px solid var(--bd);
+    border-top-color: var(--brand);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+}
+.sh-single__lightbox.is-loading .sh-single__lightbox-loader { opacity: 1; }
+
+/* Image */
+.sh-single__lightbox-img {
+    max-width: min(90vw, 1400px);
+    max-height: 80vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 0.875rem;
+    box-shadow: var(--shadow-floating);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.sh-single__lightbox.is-open:not(.is-loading) .sh-single__lightbox-img {
+    opacity: 1;
+}
+
+/* Caption (alt text) */
+.sh-single__lightbox-caption {
+    color: var(--bc2);
+    font-size: 0.875rem;
+    line-height: 1.5;
+    text-align: center;
+    max-width: 56rem;
+    margin: 0;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+.sh-single__lightbox-caption:empty { display: none; }
+
+/* Hint at bottom */
+.sh-single__lightbox-hint {
+    position: absolute;
+    bottom: 1.25rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: var(--bs);
+    border: 1px solid var(--bd);
+    border-radius: 9999px;
+    color: var(--bc2);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    backdrop-filter: blur(8px);
+    z-index: 10;
+    pointer-events: none;
+    white-space: nowrap;
+}
+.sh-single__lightbox-hint kbd {
+    display: inline-block;
+    padding: 0.0625rem 0.375rem;
+    background: var(--bs);
+    border: 1px solid var(--bd);
+    border-radius: 0.25rem;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    margin: 0 0.125rem;
+}
+.sh-single__lightbox-hint-icon {
+    width: 0.875rem;
+    height: 0.875rem;
+    opacity: 0.7;
+}
+
+/* Mobile tweaks */
+@media (max-width: 640px) {
+    .sh-single__lightbox { padding: 3rem 0.75rem 4.5rem; }
+    .sh-single__lightbox-close { top: 0.75rem; right: 0.75rem; width: 2.5rem; height: 2.5rem; }
+    .sh-single__lightbox-img { max-height: 75vh; }
+    .sh-single__lightbox-hint { font-size: 0.6875rem; padding: 0.375rem 0.75rem; }
+    .sh-single__lightbox-hint span { display: none; }
+    .sh-single__lightbox-hint::before {
+        content: "Tap để đóng";
+        color: inherit;
+    }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .sh-single__lightbox,
+    .sh-single__lightbox-figure,
+    .sh-single__lightbox-img,
+    .sh-single__lightbox-close { transition: none; }
+    .sh-single__lightbox-loader { animation: none; }
+}
+
+/* ── Reading Progress (from old single.css) ── */
+#sh-reading-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--brand), var(--brand-light));
+    z-index: 9999;
+    transition: width 0.12s linear;
+    border-radius: 0 2px 2px 0;
+    pointer-events: none;
+}
+
+/* ── TOC Active Link ── */
+#toc-list a.toc-active {
+    color: var(--brand) !important;
+    font-weight: 700;
+    padding-left: 8px;
+    border-left: 2px solid var(--brand);
+    margin-left: -10px;
+}
+
+#toc-list a {
+    transition: color 0.2s, padding-left 0.2s;
+}
+
+/* ── Copy Button ── */
+.sh-copy-btn.copied {
+    background-color: var(--brand) !important;
+    color: var(--pc) !important;
+}
+
+/* ── Dark Mode ── */
+.dark .sh-single__header { border-bottom-color: transparent; }
+.dark .sh-single__title { color: var(--text-1); }
+.dark .sh-single__meta { color: var(--text-1-3); }
+.dark .sh-single__meta-item--pill { background: var(--bg-elevated); }
+.dark .sh-single__excerpt { color: var(--text-1-2); }
+.dark .sh-single__featured-img { background: var(--bg-elevated); border-color: var(--border-default); }
+.dark .sh-single__toc { background: var(--bg-card); border-color: var(--border-default); }
+.dark .sh-single__toc-title { color: var(--text-1); }
+.dark .sh-single__toc-list { color: var(--text-1-2); }
+.dark .sh-single__content { color: var(--text-1-2); }
+.dark .sh-single__content h2,
+.dark .sh-single__content h3,
+.dark .sh-single__content h4 { color: var(--text-1); }
+.dark .sh-single__content a { color: var(--brand); }
+.dark .sh-single__content a:hover { color: var(--secondary); }
+.dark .sh-single__content blockquote { border-left-color: var(--brand); color: var(--text-1-2); }
+.dark .sh-single__content strong { color: var(--text-1); }
+.dark .sh-single__content table th { background: var(--bg-elevated); color: var(--text-1); }
+.dark .sh-single__content table td { border-color: var(--border-default); }
+.dark .sh-single__content code { background: var(--bg-elevated); color: var(--text-1-2); }
+.dark .sh-single__content hr { border-color: var(--border-default); }
+.dark .sh-single__content svg { color: var(--text-1); fill: currentColor; stroke: currentColor; }
+.dark .sh-single__content svg[fill="none"] { fill: none; }
+.dark .sh-single__tags { border-top-color: var(--border-default); }
+.dark .sh-single__tag { background: var(--bg-elevated); color: var(--text-1-2); }
+.dark .sh-single__author { background: var(--bg-card); border-color: var(--border-default); }
+.dark .sh-single__author-name { color: var(--text-1); }
+.dark .sh-single__author-bio { color: var(--text-1-2); }
+.dark .sh-single__author-avatar { border-color: var(--bg-elevated); }
+.dark .sh-single__related-title { color: var(--text-1); }
+
+/* ── Post Navigation (Prev/Next) ── */
+.sh-post-nav {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin: 2.5rem 0;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-default-light);
+}
+
+@media (min-width: 768px) {
+    .sh-post-nav {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+.sh-post-nav__col {
+    display: flex;
+    width: 100%;
+    min-width: 0;
+}
+
+.sh-post-nav__col--prev {
+    justify-content: flex-start;
+}
+
+.sh-post-nav__col--next {
+    justify-content: flex-end;
+}
+
+.sh-post-nav__link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    min-width: 0;
+    padding: 1rem;
+    background: var(--bg-alt);
+    border: 1px solid var(--border-default-light);
+    border-radius: var(--radius-md);
+    text-decoration: none !important;
+    transition: border-color var(--duration-normal) var(--ease-spring),
+                background var(--duration-normal) var(--ease-spring),
+                transform var(--duration-normal) var(--ease-spring);
+    box-shadow: var(--shadow);
+}
+
+@media (min-width: 768px) {
+    .sh-post-nav__link {
+        padding: 1.25rem;
+    }
+}
+
+.sh-post-nav__link:hover {
+    border-color: var(--gold);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-main);
+}
+
+.sh-post-nav__arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--gold) 12%, transparent);
+    color: var(--gold);
+    flex-shrink: 0;
+    transition: background var(--duration-normal) var(--ease-spring),
+                color var(--duration-normal) var(--ease-spring);
+}
+
+@media (min-width: 768px) {
+    .sh-post-nav__arrow {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+}
+
+.sh-post-nav__link:hover .sh-post-nav__arrow {
+    background: var(--gold);
+    color: var(--pc);
+}
+
+.sh-post-nav__content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    flex-grow: 1;
+    min-width: 0;
+}
+
+.sh-post-nav__col--next .sh-post-nav__content {
+    text-align: right;
+}
+
+.sh-post-nav__label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-1-3);
+}
+
+.sh-post-nav__link:hover .sh-post-nav__label {
+    color: var(--brand);
+}
+
+.sh-post-nav__title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-1);
+    line-height: 1.4;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: color 0.2s ease;
+}
+
+.sh-post-nav__link:hover .sh-post-nav__title {
+    color: var(--brand);
+}
+
+.sh-post-nav__thumb {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 1px solid var(--border-default-light);
+    background: var(--bg-dark);
+}
+
+@media (min-width: 768px) {
+    .sh-post-nav__thumb {
+        width: 3.5rem;
+        height: 3.5rem;
+    }
+}
+
+.sh-post-nav__thumb-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.sh-post-nav__link:hover .sh-post-nav__thumb-img {
+    transform: scale(1.08);
+}
+
+/* ── Post Navigation Dark Mode ── */
+.dark .sh-post-nav {
+    border-top-color: var(--border-default);
+}
+
+.dark .sh-post-nav__link {
+    background: var(--bg-card);
+    border-color: var(--border-default);
+}
+
+.dark .sh-post-nav__link:hover {
+    background: var(--bg-elevated);
+    border-color: var(--brand);
+}
+
+.dark .sh-post-nav__thumb {
+    border-color: var(--border-default);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   PRODUCT OVERRIDES — .sh-single--product layer
+   Áp dụng khi post_type=product (single.php set body class).
+   ═══════════════════════════════════════════════════════════════ */
+/**
+ * Single product layout — main column.
+ *
+ * Header 2 cols (text | ảnh) → mobile stack. Meta pill, content prose.
+ * Token-only, no hardcode.
+ */
+
+/* Padding-block + grid inherit từ base. Product chỉ cần dark background. */
+.sh-single--product {
+    background: var(--b1);
+    color: var(--bc);
+}
+
+.sh-single--product .sh-single__article {
+    /* Không border, không shadow, không background card — layout phẳng như SaigonHouse */
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+}
+
+
+.sh-single--product .sh-single__header {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--bd);
+}
+@media (min-width: 768px) {
+    .sh-single--product .sh-single__header {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        align-items: center;
+    }
+}
+
+
+/* Title kế thừa từ base (clamp 1.5→2.25rem). Product chỉ override color
+   nếu base chưa đủ contrast trên dark background. */
+.sh-single--product .sh-single__title { color: var(--bc); }
+
+.sh-single--product .sh-single__meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+.sh-single--product .sh-single__meta-item {
+    display: block;
+    color: var(--bc2);
+}
+.sh-single--product .sh-single__meta-item strong {
+    color: var(--bc);
+    font-weight: 600;
+    margin-right: 0.375rem;
+}
+.sh-single--product .sh-single__meta-item a {
+    color: var(--gold);
+    text-decoration: none;
+    transition: color var(--duration-normal) var(--ease-spring);
+}
+.sh-single--product .sh-single__meta-item a:hover {
+    color: var(--gold-dim);
+    text-decoration: underline;
+}
+
+/* Excerpt kế thừa từ base. Không cần override. */
+
+/* ── Image ── */
+.sh-single--product .sh-single__featured-img {
+    /* Không border, không shadow, không rounded wrapper — ảnh tự quyết định */
+    background: var(--bc);     /* Nền trắng cho ảnh product studio (contain) */
+    border-radius: var(--radius-md);
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    /* Bỏ box-shadow / border */
+    border: none;
+    box-shadow: none;
+    align-self: start;
+}
+.sh-single--product .sh-single__thumbnail {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+
+/* ── Content ── */
+.sh-single--product .sh-single__content {
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: var(--bc2);
+}
+.sh-single--product .sh-single__content h2,
+.sh-single--product .sh-single__content h3,
+.sh-single--product .sh-single__content h4 {
+    margin: 1.75rem 0 0.75rem;
+    color: var(--bc);
+    font-family: var(--font-display);
+}
+.sh-single--product .sh-single__content h2 { font-size: 1.375rem; }
+.sh-single--product .sh-single__content h3 { font-size: 1.125rem; }
+.sh-single--product .sh-single__content h4 { font-size: 1rem; }
+.sh-single--product .sh-single__content p {
+    margin: 0 0 1rem;
+}
+.sh-single--product .sh-single__content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius-sm);
+}
+.sh-single--product .sh-single__content a {
+    color: var(--gold);
+    text-decoration: underline;
+}
+.sh-single--product .sh-single__content ul,
+.sh-single--product .sh-single__content ol {
+    margin: 0 0 1rem 1.25rem;
+    padding: 0;
+}
+.sh-single--product .sh-single__content li { margin-bottom: 0.375rem; }
+
+/* ── Related products ── */
+.sh-single--product .sh-single__related {
+    margin-top: 2.5rem;
+    padding-top: 1.75rem;
+    border-top: 1px solid var(--bd);
+}
+.sh-single--product .sh-single__related-title {
+    margin: 0 0 1.25rem;
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--bc);
+}
+.sh-single--product .sh-single__related-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+@media (min-width: 768px) {
+    .sh-single--product .sh-single__related-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+.sh-single--product .sh-single__related .sh-product-card {
+    display: block;
+    background: var(--b3);
+    border: 1px solid var(--bd);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    text-decoration: none;
+    transition: border-color var(--duration-normal) var(--ease-spring), transform var(--duration-normal) var(--ease-spring);
+}
+.sh-single--product .sh-single__related .sh-product-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-2px);
+}
+.sh-single--product .sh-single__related .sh-product-card__img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: contain;
+    background: var(--bc);
+    padding: 0.5rem;
+}
+.sh-single--product .sh-single__related .sh-product-card__title {
+    margin: 0;
+    padding: 0.75rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    line-height: 1.35;
+    color: var(--bc);
+}
