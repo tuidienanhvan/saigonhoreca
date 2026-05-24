@@ -167,6 +167,11 @@
   .pp--amdang-typhoon .sgh-concept-collage-row:hover .pp-media-at-concept {
     transform: translateY(0);
   }
+
+  /* Đưa ảnh lên phía trước đè lên card chữ khi hover trực tiếp vào ảnh */
+  .pp--amdang-typhoon .pp-media-at-concept:hover {
+    z-index: 12;
+  }
 }
 
 /* WATERMARK SỐ THỨ TỰ KHỔNG LỒ CHÌM DƯỚI NỀN */
