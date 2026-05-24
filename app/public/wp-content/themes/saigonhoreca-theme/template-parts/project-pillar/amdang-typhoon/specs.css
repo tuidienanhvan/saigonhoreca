@@ -52,9 +52,7 @@
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: 
-    linear-gradient(to bottom, var(--b1) 0%, rgba(10, 10, 10, 0.35) 25%, rgba(10, 10, 10, 0.35) 75%, var(--b1) 100%),
-    rgba(0, 0, 0, 0.15);
+  background: rgba(10, 10, 10, 0.35); /* Một lớp nền đen mỏng đồng nhất */
   pointer-events: none;
 }
 
