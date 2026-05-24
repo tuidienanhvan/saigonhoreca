@@ -14,26 +14,32 @@
   overflow: hidden;
   isolation: isolate;
   padding: 6rem 1.5rem;
+  clip-path: inset(0 0 0 0); /* Tạo cửa sổ cắt cho ảnh nền ghim fixed bên trong */
 }
 
 .pp--amdang-typhoon .pp-specs-at__bg {
-  position: absolute;
-  inset: 0;
+  position: fixed; /* Ghim cố định vào màn hình trình duyệt */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   z-index: 0;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed; /* Parallax effect */
   transition: transform 1.5s cubic-bezier(0.25, 1, 0.5, 1);
   pointer-events: none;
 }
 
 @media (max-width: 1024px) {
-  .pp--amdang-typhoon .pp-specs-at__bg {
-    background-attachment: scroll; /* Disable fixed attachment on tablet/mobile for smooth scroll */
-  }
   .pp--amdang-typhoon .pp-specs-at {
+    clip-path: none;
     min-height: 70vh;
+  }
+  .pp--amdang-typhoon .pp-specs-at__bg {
+    position: absolute;
+    height: 100%;
+    width: 100%;
   }
 }
 
