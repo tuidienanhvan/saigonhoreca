@@ -1095,11 +1095,6 @@ if (!class_exists('SGH_SEO_Performance')) {
                 $buffer
             );
             
-            if (!headers_sent() && isset($_SERVER['HTTP_ACCEPT_ENCODING']) && strpos($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip') !== false) {
-                header('Content-Encoding: gzip');
-                $buffer = gzencode($buffer, 9);
-            }
-            
             return $buffer;
         }
 
