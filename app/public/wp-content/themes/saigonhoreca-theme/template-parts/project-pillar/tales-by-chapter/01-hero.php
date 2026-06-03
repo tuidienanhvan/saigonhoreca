@@ -1,6 +1,6 @@
-<?php
+﻿<?php
 /**
- * Project Pillar — tales-by-chapter
+ * Project Pillar â€” tales-by-chapter
  * Section #1: hero
  * @package SaigonHoreca
  */
@@ -12,6 +12,7 @@ $uri = get_template_directory_uri();
     <div class="pp-hero__overlay" aria-hidden="true"></div>
     <div class="pp-hero__content">
         <h1 class="pp-hero__title"><?php echo esc_html__('Tales by Chapter', 'saigonhoreca'); ?></h1>
-        <p class="pp-hero__subhead"><?php echo esc_html__('Câu chuyện phía sau một gian bếp thuần chay', 'saigonhoreca'); ?></p>
+        <p class="pp-hero__subhead"><?php echo esc_html__('CÃ¢u chuyá»‡n phÃ­a sau má»™t gian báº¿p thuáº§n chay', 'saigonhoreca'); ?></p>
     </div>
 </section>
+

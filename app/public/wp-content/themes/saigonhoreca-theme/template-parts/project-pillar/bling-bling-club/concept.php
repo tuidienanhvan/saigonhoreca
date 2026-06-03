@@ -7,8 +7,8 @@
 if (!defined('ABSPATH')) exit;
 $uri = get_template_directory_uri();
 ?>
-<section class="pp__section pp-bbc-concept-section">
-  <div class="pp__container">
+<section class="pp-section-bbc pp-bbc-concept-section">
+  <div class="pp-container-shared">
     <div class="pp-bbc-concept__grid">
       <!-- Cột trái: Diamond Glitter Panels -->
       <div class="pp-bbc-concept__text-col">
@@ -48,7 +48,10 @@ $uri = get_template_directory_uri();
             <span class="ruler-tick"></span>
           </div>
           <div class="pp-bbc-concept__image-wrapper">
-            <img src="<?php echo sgh_img('2024/02/bling-bling-club-space-1-1.jpg'); ?>" alt="Thiết bị bếp công nghiệp Saigon Horeca tại Bling Bling Club" loading="lazy" decoding="async">
+            <div class="pp-image-container-shared">
+              <img src="<?php echo sgh_img('bling-bling-club/bling-bling-club-khong-gian-quay-bar-soi-dong.jpg'); ?>" alt="Không gian sân khấu và quầy bar trung tâm tại Bling Bling Club" loading="lazy" decoding="async">
+              <div class="pp-image-caption-shared"><?php echo esc_html__('Không gian trình diễn nghệ thuật và quầy bar trung tâm với màn hình LED 3D khổng lồ', 'saigonhoreca'); ?></div>
+            </div>
             <div class="gold-haze-glow"></div>
           </div>
           <div class="pp-bbc-concept__ruler-y" aria-hidden="true">

@@ -1,1 +1,36 @@
-/** mam-mam-eatery-lounge-nang-tam-mam-com-viet — specs slot (no content). */
+/**
+ * Project Pillar — Mâm Mâm Eatery & Lounge
+ * Section #5: specs — industrial kitchen story + equipment gallery.
+ * Shell + .pp-text-mam + .pp-gallery-mam owned by intro.css; here: centered
+ * tag pill + brick-red kitchen accent line. 100% design tokens.
+ */
+
+.pp-specs-mam { position: relative; }
+
+/* Center the section tag pill above the title */
+.pp-specs-mam__tag {
+  align-self: center;
+  margin: 0 auto;
+}
+
+/* Warm brick-glow accent strip under the heading block (technique: radial-gradient) */
+.pp-specs-mam .pp-text-mam--center::after {
+  content: '';
+  display: block;
+  width: clamp(140px, 30vw, 260px);
+  height: 3px;
+  margin: 0.4rem auto 0;
+  border-radius: var(--radius-full);
+  background: linear-gradient(90deg,
+    transparent 0%,
+    color-mix(in srgb, var(--gold) 80%, transparent) 50%,
+    transparent 100%);
+  box-shadow: 0 0 18px color-mix(in srgb, var(--gold) 35%, transparent);
+}
+
+/* On wide screens, promote the first gallery tile to a 2-col hero tile */
+@media (min-width: 992px) {
+  .pp-specs-mam .pp-gallery-mam--cols-3 .pp-gallery-mam__item:first-child {
+    grid-column: span 2;
+  }
+}

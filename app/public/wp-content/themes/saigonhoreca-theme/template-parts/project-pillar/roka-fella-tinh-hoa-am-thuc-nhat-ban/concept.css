@@ -1,1 +1,117 @@
-/** roka-fella-tinh-hoa-am-thuc-nhat-ban — concept slot (no content). */
+/**
+ * Project Pillar — Roka Fella
+ * Section #3: concept styling (Zen Paper Style & Hover Aura)
+ */
+
+.pp--rf .pp-rf-concept {
+  position: relative;
+  padding: clamp(4.5rem, 9vw, 8.5rem) 0;
+  background-color: var(--b1);
+  overflow: hidden;
+}
+
+.pp-rf-concept .pp-grid-12-rf {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .pp-rf-concept .pp-grid-12-rf {
+    grid-template-columns: 55% 45%;
+  }
+}
+
+/* Zen Paper Card Style */
+.rkf-concept__glass-card {
+  position: relative;
+  background: color-mix(in srgb, var(--b2) 80%, transparent);
+  border: 1px dashed color-mix(in srgb, var(--gold) 35%, transparent);
+  border-radius: var(--radius-lg, 18px);
+  padding: clamp(2rem, 3.5vw, 3rem);
+  box-shadow: 
+    0 24px 48px rgba(0, 0, 0, 0.45),
+    inset 0 0 40px rgba(0, 0, 0, 0.6);
+  outline: 1px solid color-mix(in srgb, var(--gold) 15%, transparent);
+  outline-offset: -12px;
+  transition: transform 0.4s var(--ease-spring), border-color 0.4s, outline-color 0.4s;
+}
+
+.rkf-concept__glass-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--gold);
+  outline-color: color-mix(in srgb, var(--gold) 50%, transparent);
+}
+
+/* Các góc trang trí mạ vàng tinh tế */
+.rkf-concept__glass-card .pp-corner-ornament {
+  position: absolute !important;
+  width: 14px !important;
+  height: 14px !important;
+  border: 1px solid var(--gold) !important;
+  opacity: 0.3 !important;
+  transition: opacity 0.4s, transform 0.4s var(--ease-spring);
+}
+.rkf-concept__glass-card:hover .pp-corner-ornament {
+  opacity: 0.95 !important;
+  transform: scale(1.1);
+}
+.rkf-concept__glass-card .pp-corner-ornament--top-left { top: 16px; left: 16px; border-right: none !important; border-bottom: none !important; }
+.rkf-concept__glass-card .pp-corner-ornament--top-right { top: 16px; right: 16px; border-left: none !important; border-bottom: none !important; }
+.rkf-concept__glass-card .pp-corner-ornament--bottom-left { bottom: 16px; left: 16px; border-right: none !important; border-top: none !important; }
+.rkf-concept__glass-card .pp-corner-ornament--bottom-right { bottom: 16px; right: 16px; border-left: none !important; border-top: none !important; }
+
+/* Watermark số thứ tự 02 chìm */
+.pp-concept-watermark-rf {
+  position: absolute !important;
+  top: -4rem !important;
+  right: 2rem !important;
+  font-family: var(--font-display), sans-serif !important;
+  font-size: clamp(12rem, 20vw, 24rem) !important;
+  font-weight: 800 !important;
+  color: var(--gold) !important;
+  opacity: 0.015 !important;
+  pointer-events: none !important;
+  user-select: none !important;
+  z-index: 1 !important;
+  line-height: 1 !important;
+}
+
+.rkf-concept__header h2.pp-text-rf__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3vw, 2.3rem);
+  font-weight: 700;
+  color: var(--bc);
+  line-height: 1.25;
+}
+
+.rkf-concept__body {
+  font-family: var(--font-sans);
+  font-size: clamp(0.95rem, 1.1vw, 1.02rem);
+  line-height: 1.85;
+  color: var(--bc2);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  text-align: justify;
+}
+
+/* Image with Glowing Aura */
+.rkf-concept__image-container {
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
+  transition: box-shadow 0.6s var(--ease-spring);
+}
+
+.rkf-concept__image-container:hover {
+  box-shadow: 0 24px 50px color-mix(in srgb, var(--gold) 18%, transparent);
+}
+
+.rkf-concept__image-container .pp-image-border-decor {
+  border-style: dashed;
+  border-color: color-mix(in srgb, var(--gold) 20%, transparent);
+}
+
+.rkf-concept__image-container:hover .pp-image-border-decor {
+  border-color: var(--gold);
+}

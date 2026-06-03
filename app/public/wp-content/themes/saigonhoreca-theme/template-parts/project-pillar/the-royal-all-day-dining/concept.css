@@ -1,69 +1,367 @@
 /**
- * the-royal-all-day-dining — concept slot. Shared .pp-split-trd layout (used by specs/gallery/related too).
+ * the-royal-all-day-dining — concept slot: Cinematic Storytelling Scroll.
+ * Timeline dọc + offset split + full-width overlay + asymmetric gallery.
+ * 0 hardcoded hex — all token vars / color-mix.
  * @package SaigonHoreca
  */
 
-.pp-split-trd {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2.5rem;
-  align-items: center;
+/* ── Section ── */
+.pp--trd .pp-concept-cinema-trd {
   position: relative;
+  padding: 5rem 0;
+  background: var(--b2);
+  overflow: visible;
 }
-@media (min-width: 992px) {
-  .pp-split-trd { grid-template-columns: 1fr 1fr; gap: 4.5rem; }
-  .pp-split-trd--reverse .pp-split-trd__media { order: 2; }
-  .pp-split-trd--reverse .pp-split-trd__body  { order: 1; }
+@media (min-width: 768px) {
+  .pp--trd .pp-concept-cinema-trd { padding: 7rem 0; }
 }
 
-.pp-split-trd__body {
+/* ── Vertical Timeline line ── */
+.pp--trd .pp-concept-cinema-trd__timeline {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: clamp(1.5rem, 4vw, 3.5rem);
+  width: 1px;
+  background: linear-gradient(180deg,
+    transparent 0%,
+    color-mix(in srgb, var(--gold) 30%, transparent) 10%,
+    color-mix(in srgb, var(--gold) 30%, transparent) 90%,
+    transparent 100%
+  );
+  z-index: 1;
+}
+@media (max-width: 767px) {
+  .pp--trd .pp-concept-cinema-trd__timeline { display: none; }
+}
+
+/* ── Chapter block ── */
+.pp--trd .pp-concept-cinema-trd__chapter {
+  position: relative;
+  margin-bottom: 5rem;
+}
+.pp--trd .pp-concept-cinema-trd__chapter:last-child { margin-bottom: 0; }
+
+/* ── Timeline marker ── */
+.pp--trd .pp-concept-cinema-trd__marker {
+  position: absolute;
+  top: 0;
+  left: clamp(1.5rem, 4vw, 3.5rem);
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 3;
+}
+@media (max-width: 767px) {
+  .pp--trd .pp-concept-cinema-trd__marker {
+    position: relative;
+    left: 0;
+    transform: none;
+    flex-direction: row;
+    margin-bottom: 1.5rem;
+    padding-left: clamp(1rem, 4vw, 2.5rem);
+  }
+}
+.pp--trd .pp-concept-cinema-trd__marker-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow:
+    0 0 0 4px var(--b2),
+    0 0 16px color-mix(in srgb, var(--gold) 50%, transparent);
+  flex-shrink: 0;
+}
+.pp--trd .pp-concept-cinema-trd__marker-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0.8;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+@media (max-width: 767px) {
+  .pp--trd .pp-concept-cinema-trd__marker-label {
+    writing-mode: horizontal-tb;
+    font-size: 0.72rem;
+  }
+}
+
+/* ── Chapter 1: Offset Split ── */
+.pp--trd .pp-concept-cinema-trd__split--offset {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+@media (min-width: 768px) {
+  .pp--trd .pp-concept-cinema-trd__split--offset {
+    grid-template-columns: 0.42fr 0.58fr;
+    gap: 3rem;
+  }
+}
+.pp--trd .pp-concept-cinema-trd__text {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
-  position: relative;
-  z-index: 2;
 }
-.pp-split-trd__body .pp-text-trd__divider { align-self: flex-start; }
-.pp-split-trd__body .pp-text-trd__title {
-  font-size: clamp(1.55rem, 2.6vw, 2.25rem);
-  text-align: left;
+@media (min-width: 768px) {
+  .pp--trd .pp-concept-cinema-trd__text {
+    padding-top: 2rem; /* Offset dọc so với ảnh */
+  }
+}
+.pp--trd .pp-concept-cinema-trd__text .pp-text-trd__title {
+  font-size: clamp(1.6rem, 2.8vw, 2.3rem);
+}
+.pp--trd .pp-concept-cinema-trd__media {
+  position: relative;
 }
 
-.pp-split-trd__media {
+/* ── Chapter 2: Full-width image + overlay card ── */
+.pp--trd .pp-concept-cinema-trd__fullwidth {
   position: relative;
+  width: 100%;
+}
+.pp--trd .pp-concept-cinema-trd__fullwidth-fig {
+  width: 100%;
+  aspect-ratio: 21 / 9;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+@media (max-width: 767px) {
+  .pp--trd .pp-concept-cinema-trd__fullwidth-fig {
+    aspect-ratio: 16 / 10;
+  }
+}
+.pp--trd .pp-concept-cinema-trd__fullwidth-fig img {
+  border-radius: var(--radius-md) !important;
+}
+
+/* Overlay card at bottom-right */
+.pp--trd .pp-concept-cinema-trd__overlay-card {
+  position: absolute;
+  bottom: 2.5rem;
+  right: 1.5rem;
+  max-width: 380px;
+  padding: 1.5rem 1.75rem;
+  background: color-mix(in srgb, var(--b1) 75%, transparent);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  border: 1px solid color-mix(in srgb, var(--gold) 20%, transparent);
+  border-radius: var(--radius-md);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
+  z-index: 5;
+  transition: border-color 0.4s var(--ease-spring), transform 0.4s var(--ease-spring);
+}
+.pp--trd .pp-concept-cinema-trd__overlay-card:hover {
+  border-color: color-mix(in srgb, var(--gold) 40%, transparent);
+  transform: translateY(-3px);
+}
+@media (max-width: 767px) {
+  .pp--trd .pp-concept-cinema-trd__overlay-card {
+    position: relative;
+    bottom: auto;
+    right: auto;
+    max-width: 100%;
+    margin-top: 1.5rem;
+  }
+}
+.pp--trd .pp-concept-cinema-trd__overlay-card p {
+  margin: 0;
+  font-size: clamp(0.92rem, 1.05vw, 1rem);
+  line-height: 1.75;
+  color: var(--bc2);
+  font-style: italic;
+}
+/* Gold accent line ở top card */
+.pp--trd .pp-concept-cinema-trd__overlay-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 1.5rem;
+  right: 1.5rem;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+  border-radius: 1px;
+}
+
+/* ── Chapter 3: Narrative text ── */
+.pp--trd .pp-concept-cinema-trd__narrative {
+  max-width: 780px;
+  margin-bottom: 2.5rem;
+  padding-left: 1.5rem;
+  border-left: 2px solid color-mix(in srgb, var(--gold) 25%, transparent);
+}
+.pp--trd .pp-concept-cinema-trd__narrative p {
+  margin: 0;
+  font-size: clamp(0.95rem, 1.08vw, 1.04rem);
+  line-height: 1.85;
+  color: var(--bc2);
+}
+
+/* ── Asymmetric Gallery: 1.4fr / 0.6fr ── */
+.pp--trd .pp-concept-cinema-trd__asymmetric-gallery {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+@media (min-width: 768px) {
+  .pp--trd .pp-concept-cinema-trd__asymmetric-gallery {
+    grid-template-columns: 1.4fr 0.6fr;
+    gap: 1.75rem;
+  }
+}
+.pp--trd .pp-concept-cinema-trd__gallery-main {
   aspect-ratio: 16 / 10;
   overflow: hidden;
   border-radius: var(--radius-md);
-  background: var(--b3);
-  border: 1px solid var(--bd);
-  transition: border-color 0.4s var(--ease-spring);
 }
-.pp-split-trd__media:hover {
-  border-color: color-mix(in srgb, var(--gold) 45%, transparent);
+.pp--trd .pp-concept-cinema-trd__gallery-side {
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: var(--radius-md);
 }
-.pp-split-trd__media img {
-  width: 100%; height: 100%;
-  object-fit: cover; display: block;
-  filter: saturate(1.05);
-  transition: transform 0.7s var(--ease-spring);
+@media (max-width: 767px) {
+  .pp--trd .pp-concept-cinema-trd__gallery-side { aspect-ratio: 16 / 10; }
 }
-.pp-split-trd__media:hover img { transform: scale(1.05); }
+.pp--trd .pp-concept-cinema-trd__gallery-main img,
+.pp--trd .pp-concept-cinema-trd__gallery-side img {
+  border-radius: var(--radius-md) !important;
+}
 
-/* L-bracket ornament behind body */
-.pp-split-trd__body::before {
+/* ── Closing text ── */
+.pp--trd .pp-concept-cinema-trd__closing {
+  max-width: 780px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.pp--trd .pp-concept-cinema-trd__closing p {
+  margin: 0;
+  font-size: clamp(0.95rem, 1.08vw, 1.04rem);
+  line-height: 1.85;
+  color: var(--bc2);
+}
+
+/* ── Ambient glow — gold behind chapter 2 ── */
+.pp--trd .pp-concept-cinema-trd__fullwidth::after {
   content: '';
   position: absolute;
-  top: -1.5rem;
-  left: -1rem;
-  width: 56px; height: 56px;
-  border-top: 1px solid color-mix(in srgb, var(--gold) 40%, transparent);
-  border-left: 1px solid color-mix(in srgb, var(--gold) 40%, transparent);
+  top: 50%;
+  right: -5%;
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, color-mix(in srgb, var(--gold) 6%, transparent) 0%, transparent 70%);
+  filter: blur(50px);
   pointer-events: none;
-  z-index: -1;
+  z-index: 0;
+  transform: translateY(-50%);
 }
-.pp-split-trd--reverse .pp-split-trd__body::before {
-  left: auto;
-  right: -1rem;
-  border-left: none;
-  border-right: 1px solid color-mix(in srgb, var(--gold) 40%, transparent);
+
+/* ── Accessibility ── */
+@media (prefers-reduced-motion: reduce) {
+  .pp--trd .pp-concept-cinema-trd__overlay-card {
+    transition: none !important;
+  }
 }
+
+/* ── Luxury Badges & Watermarks ── */
+.pp--trd .pp-concept-watermark-trd {
+  position: absolute;
+  top: 2rem;
+  right: 5%;
+  font-family: var(--font-heading), sans-serif;
+  font-size: clamp(8rem, 15vw, 16rem);
+  font-weight: 900;
+  color: var(--gold);
+  opacity: 0.025;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  z-index: 1;
+}
+
+.pp--trd .pp-badge-trd {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.85rem;
+  background: color-mix(in srgb, var(--gold) 6%, transparent);
+  border: 1px solid color-mix(in srgb, var(--gold) 15%, transparent);
+  border-radius: var(--radius-sm, 4px);
+  font-family: var(--font-heading), sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  width: fit-content;
+  margin-bottom: 0.5rem;
+}
+
+.pp--trd .pp-badge-trd__icon {
+  width: 0.85rem;
+  height: 0.85rem;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
+/* ── Background SVG Layout Decor ── */
+.pp--trd .pp-concept-cinema-trd__svg-backdrop {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  opacity: 0.65;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Dropcap Effect ── */
+.pp--trd .pp-text-trd__body--dropcap p:first-child::first-letter {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 3.8rem;
+  font-weight: 700;
+  float: left;
+  line-height: 0.85;
+  margin-right: 0.85rem;
+  margin-top: 0.25rem;
+  color: var(--gold);
+  text-shadow: 0 0 10px color-mix(in srgb, var(--gold) 20%, transparent);
+}
+
+/* ── Card Corner SVG Frames ── */
+.pp--trd .pp-image-container-rf {
+  position: relative;
+  overflow: visible !important;
+}
+
+.pp--trd .card-corner-svg {
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  width: calc(100% + 12px);
+  height: calc(100% + 12px);
+  pointer-events: none;
+  z-index: 4;
+  transition: transform 0.6s var(--ease-spring);
+}
+
+/* Golden hover effect on corners */
+.pp--trd .pp-image-container-rf:hover .card-corner-svg {
+  transform: scale(1.015);
+}
+
+.pp--trd .pp-image-container-rf img {
+  border-radius: var(--radius-md) !important;
+}
+

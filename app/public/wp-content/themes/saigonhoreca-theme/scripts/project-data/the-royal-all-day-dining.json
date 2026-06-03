@@ -19,7 +19,7 @@
       "has_video_bg": false,
       "video_url": null,
       "background_overlay": true,
-      "background_image": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/the-royal-sgh-2.jpg",
+      "background_image": "wp-content/uploads/the-royal-all-day-dining/the-royal-all-day-dining-ghe-sofa-cong-da-bo.jpg",
       "columns": [
         {
           "col_class": "elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-11aa108f",
@@ -101,9 +101,9 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/11/the-royal-sgh-1.jpg",
-                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/11/the-royal-sgh-1.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/11/the-royal-sgh-1-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/11/the-royal-sgh-1-600x337.jpg 600w",
-                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "src": "wp-content/uploads/the-royal-all-day-dining/the-royal-all-day-dining-vach-kinh-phan-chieu-logo.webp",
+                "srcset": "wp-content/uploads/the-royal-all-day-dining/the-royal-all-day-dining-vach-kinh-phan-chieu-logo.webp 1366w",
+                "alt": "Không gian quầy bar và vách kính phản chiếu sang trọng tại The Royal All Day Dining",
                 "w": "1366",
                 "h": "768"
               }
@@ -162,9 +162,9 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/the-royal-sgh-1.jpg",
-                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/the-royal-sgh-1.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/05/the-royal-sgh-1-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/05/the-royal-sgh-1-600x337.jpg 600w",
-                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "src": "wp-content/uploads/the-royal-all-day-dining/the-royal-all-day-dining-vach-kinh-phan-chieu-logo.webp",
+                "srcset": "wp-content/uploads/the-royal-all-day-dining/the-royal-all-day-dining-vach-kinh-phan-chieu-logo.webp 1366w",
+                "alt": "Không gian quầy bar phản chiếu sang trọng ấm cúng tại The Royal",
                 "w": "1366",
                 "h": "768"
               }
@@ -178,9 +178,9 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/the-royal-sgh-2.jpg",
-                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/the-royal-sgh-2.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/05/the-royal-sgh-2-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/05/the-royal-sgh-2-600x337.jpg 600w",
-                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "src": "wp-content/uploads/the-royal-all-day-dining/the-royal-all-day-dining-ghe-sofa-cong-da-bo.jpg",
+                "srcset": "wp-content/uploads/the-royal-all-day-dining/the-royal-all-day-dining-ghe-sofa-cong-da-bo.jpg 1366w",
+                "alt": "Dãy ghế sofa da bò sang trọng trong khu vực phòng trà The Royal",
                 "w": "1366",
                 "h": "768"
               }
@@ -195,16 +195,16 @@
               "type": "image-carousel.default",
               "slides": [
                 {
-                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/the-royal-sgh-3.jpg",
+                  "src": "wp-content/uploads/the-royal-all-day-dining/the-royal-all-day-dining-can-canh-setup-ban-an.jpg",
                   "srcset": null,
-                  "alt": "the-royal-sgh (3)",
+                  "alt": "Bàn ăn tối màu ấm cúng tại The Royal All Day Dining",
                   "w": null,
                   "h": null
                 },
                 {
-                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/the-royal-sgh-4.jpg",
+                  "src": "wp-content/uploads/the-royal-all-day-dining/the-royal-all-day-dining-ghe-don-nhung-xanh-reu.jpg",
                   "srcset": null,
-                  "alt": "the-royal-sgh (4)",
+                  "alt": "Bố trí ghế sofa nệm và bàn ăn gỗ cao cấp",
                   "w": null,
                   "h": null
                 }
@@ -235,7 +235,7 @@
       "has_video_bg": false,
       "video_url": null,
       "background_overlay": true,
-      "background_image": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/the-royal-sgh-6.jpg",
+      "background_image": "wp-content/uploads/the-royal-all-day-dining/the-royal-all-day-dining-ban-mat-ngan-keo-undercounter.jpg",
       "columns": [
         {
           "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-73a09521",
@@ -280,9 +280,9 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/the-royal-sgh-5.jpg",
-                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/the-royal-sgh-5.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/05/the-royal-sgh-5-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/05/the-royal-sgh-5-600x337.jpg 600w",
-                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "src": "wp-content/uploads/the-royal-all-day-dining/the-royal-all-day-dining-khu-bep-nong-fujimak.jpg",
+                "srcset": "wp-content/uploads/the-royal-all-day-dining/the-royal-all-day-dining-khu-bep-nong-fujimak.jpg 1366w",
+                "alt": "Hệ thống thiết bị bếp nóng Fujimak bằng inox cao cấp tại The Royal",
                 "w": "1366",
                 "h": "768"
               }
@@ -290,9 +290,9 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/the-royal-sgh-6.jpg",
-                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/the-royal-sgh-6.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/05/the-royal-sgh-6-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/05/the-royal-sgh-6-600x337.jpg 600w",
-                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "src": "wp-content/uploads/the-royal-all-day-dining/the-royal-all-day-dining-ban-mat-ngan-keo-undercounter.jpg",
+                "srcset": "wp-content/uploads/the-royal-all-day-dining/the-royal-all-day-dining-ban-mat-ngan-keo-undercounter.jpg 1366w",
+                "alt": "Gian bếp inox 304 sạch sẽ sáng bóng hỗ trợ đầu bếp tối đa tại The Royal",
                 "w": "1366",
                 "h": "768"
               }
@@ -393,9 +393,9 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/the-royal-sgh-10.jpg",
+                "src": "wp-content/uploads/the-royal-all-day-dining/the-royal-all-day-dining-collage-chi-tiet-thiet-bi.jpg",
                 "srcset": null,
-                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "alt": "Hệ thống lò nướng hấp combi và thiết bị giữ nhiệt inox công nghiệp tại The Royal",
                 "w": "600",
                 "h": "800"
               }
@@ -438,9 +438,9 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/the-royal-sgh-8.jpg",
-                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/the-royal-sgh-8.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/05/the-royal-sgh-8-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/05/the-royal-sgh-8-600x337.jpg 600w",
-                "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
+                "src": "wp-content/uploads/the-royal-all-day-dining/the-royal-all-day-dining-khu-so-che-chau-rua.jpg",
+                "srcset": "wp-content/uploads/the-royal-all-day-dining/the-royal-all-day-dining-khu-so-che-chau-rua.jpg 1366w",
+                "alt": "Hệ thống quầy sơ chế chậu rửa và lưu trữ lạnh bằng inox 304 chuẩn công nghiệp",
                 "w": "1366",
                 "h": "768"
               }

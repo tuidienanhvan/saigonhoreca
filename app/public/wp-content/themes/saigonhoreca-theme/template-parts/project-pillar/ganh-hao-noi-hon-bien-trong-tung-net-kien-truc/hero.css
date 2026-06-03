@@ -1,121 +1,163 @@
 /**
- * ganh-hao-noi-hon-bien-trong-tung-net-kien-truc — hero slot.
- * Coastal breeze with emerald and warm sand gold theme.
+ * Project Pillar — Gành Hào
+ * Section #1: hero — "con tàu ánh bạc neo đậu giữa sóng" (ken-burns + ambient sea/sand glow).
+ * 100% token vars / color-mix — 0 hardcode hex brand.
  * @package SaigonHoreca
  */
 
-.pp-hero-gha {
+.pp--ganh .pp-hero-ganh {
   position: relative;
+  height: calc(100svh - 76px);
+  min-height: 600px;
   width: 100%;
-  min-height: 88vh;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: var(--b1);
+  background-color: var(--b1);
   isolation: isolate;
+  text-align: center;
 }
-@media (max-width: 768px) { .pp-hero-gha { min-height: 70vh; } }
+@supports (height: 100dvh) {
+  .pp--ganh .pp-hero-ganh { height: calc(100dvh - 76px); }
+}
+@media (max-width: 768px) {
+  .pp--ganh .pp-hero-ganh { min-height: 70vh; }
+}
 
-.pp-hero-gha__media {
+.pp-hero-ganh__media {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background-size: cover !important;
-  background-position: center !important;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   filter: saturate(1.08) brightness(0.82) contrast(1.03);
-}
-.pp-hero-gha__media img,
-.pp-hero-gha__media iframe,
-.pp-hero-gha__media video {
-  width: 100%; height: 100%; object-fit: cover; display: block; border: none;
+  animation: gha-ken-burns var(--sh-ken-burns-duration, 8s) ease-in-out infinite alternate;
 }
 
-.pp-hero-gha__overlay {
+.pp-hero-ganh__overlay {
   position: absolute;
   inset: 0;
   z-index: 1;
+  pointer-events: none;
   background:
-    radial-gradient(ellipse at 50% 70%,
-      color-mix(in srgb, #0d9488 12%, transparent) 0%,
+    radial-gradient(ellipse at 50% 72%,
+      color-mix(in srgb, var(--gha-teal) 16%, transparent) 0%,
       transparent 60%),
     linear-gradient(180deg,
-      color-mix(in srgb, #042f2e 28%, transparent) 0%,
-      color-mix(in srgb, var(--b1) 85%, transparent) 100%);
-  pointer-events: none;
+      color-mix(in srgb, var(--gha-teal-deep) 32%, transparent) 0%,
+      color-mix(in srgb, var(--b1) 55%, transparent) 55%,
+      var(--b1) 100%);
 }
 
 /* Coastal ambient glows for depth */
-.pp-hero-gha::before,
-.pp-hero-gha::after {
-  content: '';
+.pp-hero-ganh__glow {
   position: absolute;
+  z-index: 1;
   border-radius: 50%;
   filter: blur(80px);
   pointer-events: none;
-  z-index: 1;
 }
-.pp-hero-gha::before {
+.pp-hero-ganh__glow--sea {
   top: -8%; left: -8%;
-  width: 480px; height: 480px;
-  background: radial-gradient(circle, color-mix(in srgb, #0d9488 18%, transparent) 0%, transparent 70%);
-  opacity: 0.75;
+  width: clamp(280px, 38vw, 480px);
+  aspect-ratio: 1;
+  background: radial-gradient(circle, color-mix(in srgb, var(--gha-teal) 26%, transparent) 0%, transparent 70%);
+  opacity: 0.8;
+  animation: gha-drift 14s ease-in-out infinite alternate;
 }
-.pp-hero-gha::after {
+.pp-hero-ganh__glow--sand {
   bottom: -10%; right: -6%;
-  width: 540px; height: 540px;
-  background: radial-gradient(circle, color-mix(in srgb, var(--gold) 10%, transparent) 0%, transparent 70%);
+  width: clamp(300px, 42vw, 540px);
+  aspect-ratio: 1;
+  background: radial-gradient(circle, color-mix(in srgb, var(--gha-sand) 16%, transparent) 0%, transparent 70%);
   opacity: 0.6;
+  animation: gha-drift 18s ease-in-out infinite alternate-reverse;
 }
 
-.pp-hero-gha__content {
+.pp-hero-ganh__content {
   position: relative;
   z-index: 2;
   width: 100%;
-  max-width: 1100px;
+  max-width: 1000px;
   padding: 0 1.5rem;
-  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1.25rem;
+  animation: gha-rise 0.9s var(--ease-spring) both;
 }
-.pp-hero-gha__content::before {
-  content: '';
+
+.pp-hero-ganh__eyebrow {
   width: 56px;
   height: 2px;
-  background: linear-gradient(90deg, #0d9488, var(--gold));
-  box-shadow: 0 0 20px color-mix(in srgb, #0d9488 60%, transparent);
+  background: linear-gradient(90deg, var(--gha-teal-bright), var(--gha-sand));
+  box-shadow: 0 0 20px color-mix(in srgb, var(--gha-teal) 60%, transparent);
 }
 
-.pp-hero-gha__subhead {
-  margin: 0;
-  font-family: var(--font-display);
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.36em;
-  text-transform: uppercase;
-  color: #0d9488;
-}
-
-.pp-hero-gha__title {
+.pp-hero-ganh__title {
   margin: 0;
   font-family: var(--font-display);
   font-size: clamp(2.4rem, 7vw, 5rem);
   font-weight: 800;
   line-height: 1.05;
   color: var(--bc);
-  letter-spacing: 0.005em;
-  max-width: 22ch;
+  letter-spacing: -0.012em;
   text-shadow:
     0 4px 24px rgba(0, 0, 0, 0.7),
-    0 0 60px color-mix(in srgb, #0d9488 18%, transparent);
+    0 0 60px color-mix(in srgb, var(--gha-teal) 20%, transparent);
 }
 
-.pp-hero-gha__subtitle {
+.pp-hero-ganh__subtitle {
   margin: 0;
   max-width: 640px;
-  font-size: clamp(0.97rem, 1.1vw, 1.08rem);
-  line-height: 1.8;
-  color: var(--bc2);
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.05rem, 1.8vw, 1.45rem);
+  line-height: 1.6;
+  color: var(--gha-sand-soft);
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
+}
+
+.pp-hero-ganh__divider {
+  position: relative;
+  width: 80px;
+  height: 2px;
+  margin-top: 0.5rem;
+  background: var(--gha-sand);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--gha-sand) 70%, transparent);
+}
+.pp-hero-ganh__divider::before,
+.pp-hero-ganh__divider::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 6px; height: 6px;
+  background: var(--gha-sand);
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+.pp-hero-ganh__divider::before { left: -12px; }
+.pp-hero-ganh__divider::after  { right: -12px; }
+
+@keyframes gha-ken-burns {
+  0%   { transform: scale(var(--sh-ken-burns-scale-start, 1)); }
+  100% { transform: scale(var(--sh-ken-burns-scale-end, 1.08)); }
+}
+@keyframes gha-rise {
+  0%   { opacity: 0; transform: translateY(28px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes gha-drift {
+  0%   { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(24px, -18px, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pp-hero-ganh__media,
+  .pp-hero-ganh__glow,
+  .pp-hero-ganh__content {
+    animation: none !important;
+  }
 }

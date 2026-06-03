@@ -1,3 +1,113 @@
-/** grand-marble-thuong-hieu-banh-cao-cap-nhat-ban — specs slot. Inherits .pp-split-gmb from concept.css. */
+/**
+ * grand-marble-thuong-hieu-banh-cao-cap-nhat-ban — specs slot.
+ * Technical CAD collage (offset stacked frames) + equipment list + coord labels.
+ * Inherits .pp-section-gmarb / .pp-split-gmarb / .pp-text-gmarb from intro.css.
+ * @package SaigonHoreca
+ */
 
-.pp-split-gmb--reverse .pp-split-gmb__media { aspect-ratio: 16 / 9; }
+.pp-specs-gmarb__layout { grid-template-columns: 1fr; }
+@media (min-width: 992px) {
+  .pp-specs-gmarb__layout {
+    grid-template-columns: minmax(0, 0.44fr) minmax(0, 0.56fr);
+    gap: 3.5rem;
+  }
+}
+
+.pp-specs-gmarb__list {
+  display: grid;
+  gap: 0.8rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.pp-specs-gmarb__list li {
+  position: relative;
+  padding-left: 1.35rem;
+}
+.pp-specs-gmarb__list li::before {
+  content: '';
+  position: absolute;
+  top: 0.72em;
+  left: 0;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--gmarb-caramel), var(--gmarb-butter));
+  box-shadow: 0 0 12px color-mix(in srgb, var(--gmarb-caramel) 45%, transparent);
+}
+
+.pp-specs-gmarb__media {
+  position: relative;
+  padding: clamp(1.25rem, 2vw, 2rem);
+  border: 1px solid color-mix(in srgb, var(--gmarb-caramel) 22%, transparent);
+  border-radius: var(--radius-md);
+  background:
+    linear-gradient(color-mix(in srgb, var(--bd) 30%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--bd) 30%, transparent) 1px, transparent 1px),
+    color-mix(in srgb, var(--b1) 78%, transparent);
+  background-size: 32px 32px, 32px 32px, auto;
+  backdrop-filter: blur(12px);
+  overflow: hidden;
+}
+
+.pp-specs-gmarb__collage {
+  position: relative;
+  min-height: clamp(420px, 45vw, 600px);
+}
+
+.pp-specs-gmarb__frame {
+  margin: 0;
+  border: 1px solid color-mix(in srgb, var(--gmarb-caramel) 24%, transparent);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: var(--bc);
+}
+.pp-specs-gmarb__frame--main {
+  position: absolute;
+  inset: 0 8% auto 0;
+}
+.pp-specs-gmarb__frame--float {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: min(72%, 480px);
+  transform: translateY(8%) rotate(-1.5deg);
+  box-shadow: 0 28px 68px color-mix(in srgb, var(--b1) 50%, transparent);
+}
+.pp-specs-gmarb__frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: var(--bc);
+}
+
+.pp-specs-gmarb__coord {
+  position: absolute;
+  z-index: 3;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.66rem;
+  letter-spacing: 0.12em;
+  color: color-mix(in srgb, var(--gmarb-caramel) 72%, transparent);
+  pointer-events: none;
+}
+.pp-specs-gmarb__coord--tl { top: 0.8rem; left: 0.9rem; }
+.pp-specs-gmarb__coord--br { right: 0.9rem; bottom: 0.8rem; }
+
+@media (max-width: 767px) {
+  .pp-specs-gmarb__collage {
+    display: grid;
+    gap: 1rem;
+    min-height: 0;
+  }
+  .pp-specs-gmarb__frame--main,
+  .pp-specs-gmarb__frame--float {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pp-specs-gmarb__frame--float { transform: none !important; }
+}

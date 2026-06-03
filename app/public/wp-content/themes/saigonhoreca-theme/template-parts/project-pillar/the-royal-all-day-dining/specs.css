@@ -1,3 +1,382 @@
-/** the-royal-all-day-dining — specs slot. Inherits .pp-split-trd from concept.css. */
+/**
+ * the-royal-all-day-dining — specs slot: Blueprint Technical Drawing.
+ * 3-col asymmetric image grid, FIG labels, dimension line, technical panel.
+ * + Interactive Carousel: click-to-center, auto-rotate, fade transition.
+ * 0 hardcoded hex — all token vars / color-mix.
+ * @package SaigonHoreca
+ */
 
-.pp-split-trd--reverse .pp-split-trd__media { aspect-ratio: 16 / 9; }
+/* ── Section ── */
+.pp--trd .pp-specs-blueprint-trd {
+  position: relative;
+  padding: 5rem 1.25rem;
+  background: var(--b1);
+  overflow: hidden;
+}
+@media (min-width: 768px) {
+  .pp--trd .pp-specs-blueprint-trd { padding: 7rem 2rem; }
+}
+
+/* Blueprint grid background */
+.pp--trd .pp-specs-blueprint-trd::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--gold) 3%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--gold) 3%, transparent) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.4;
+}
+
+/* Compass rose ornament SVG top-right */
+.pp--trd .pp-specs-blueprint-trd::after {
+  content: '⊕';
+  position: absolute;
+  top: 2rem;
+  right: 2.5rem;
+  font-size: 2rem;
+  color: color-mix(in srgb, var(--gold) 20%, transparent);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── 3-col Asymmetric Image Grid ── */
+.pp--trd .pp-specs-blueprint-trd__grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+@media (min-width: 768px) {
+  .pp--trd .pp-specs-blueprint-trd__grid {
+    grid-template-columns: 0.3fr 1fr 0.3fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 1.25rem;
+    min-height: 420px;
+  }
+}
+
+/* Main image: center, spans 2 rows */
+.pp--trd .pp-specs-blueprint-trd__fig--main {
+  overflow: hidden;
+  border-radius: var(--radius-md);
+}
+@media (min-width: 768px) {
+  .pp--trd .pp-specs-blueprint-trd__fig--main {
+    grid-column: 2;
+    grid-row: 1 / 3;
+  }
+}
+
+/* Side images: left-top and right-bottom offset */
+.pp--trd .pp-specs-blueprint-trd__fig--side-top {
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+}
+@media (min-width: 768px) {
+  .pp--trd .pp-specs-blueprint-trd__fig--side-top {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: start;
+  }
+}
+.pp--trd .pp-specs-blueprint-trd__fig--side-bot {
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+}
+@media (min-width: 768px) {
+  .pp--trd .pp-specs-blueprint-trd__fig--side-bot {
+    grid-column: 3;
+    grid-row: 2;
+    align-self: end;
+  }
+}
+
+/* FIG label */
+.pp--trd .pp-specs-blueprint-trd__fig-label {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: color-mix(in srgb, var(--b1) 80%, transparent);
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  border: 1px solid color-mix(in srgb, var(--gold) 30%, transparent);
+  z-index: 6;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+/* Image hover — base figure */
+.pp--trd .pp-specs-blueprint-trd__fig {
+  position: relative;
+  border: 1px solid var(--bd);
+  transition: border-color 0.4s var(--ease-spring), transform 0.4s var(--ease-spring), box-shadow 0.4s var(--ease-spring);
+}
+.pp--trd .pp-specs-blueprint-trd__fig:hover {
+  border-color: var(--gold);
+  z-index: 5;
+}
+
+/* ── FIX: ảnh PHẢI fill khít figure → bỏ lớp nền đen (b1) lộ quanh ảnh ── */
+.pp--trd .pp-specs-blueprint-trd__fig img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+/* Main figure cần chiều cao xác định để ảnh fill (mobile: aspect; desktop: grid 420px) */
+.pp--trd .pp-specs-blueprint-trd__fig--main { aspect-ratio: 16 / 10; }
+.pp--trd .pp-specs-blueprint-trd__fig--side-top,
+.pp--trd .pp-specs-blueprint-trd__fig--side-bot { aspect-ratio: 4 / 3; }
+@media (min-width: 768px) {
+  .pp--trd .pp-specs-blueprint-trd__fig--main { aspect-ratio: auto; }
+  .pp--trd .pp-specs-blueprint-trd__fig--side-top,
+  .pp--trd .pp-specs-blueprint-trd__fig--side-bot {
+    aspect-ratio: auto;
+    height: calc((420px - 1.25rem) / 2);
+  }
+}
+
+/* ── FADE OVERLAY cho ảnh chính khi chuyển ảnh ── */
+.pp--trd .pp-specs-blueprint-trd__fig-overlay {
+  position: absolute;
+  inset: 0;
+  background: transparent; /* BỎ lớp đen --b1 — không phủ tối lên ảnh khi chuyển */
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  opacity: 0;
+  z-index: 10;
+  pointer-events: none;
+  border-radius: inherit;
+  transition: opacity 0.25s ease, backdrop-filter 0.25s ease, -webkit-backdrop-filter 0.25s ease;
+}
+/* Khi JS thêm class is-fading → chỉ blur nhẹ ảnh cũ (KHÔNG tối màu) */
+.pp--trd .pp-specs-blueprint-trd__fig-overlay.is-fading {
+  opacity: 1;
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+}
+/* Khi đang clearing → trả lại độ sắc nét */
+.pp--trd .pp-specs-blueprint-trd__fig-overlay.is-clearing {
+  opacity: 0;
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  transition: opacity 0.28s ease, backdrop-filter 0.28s ease, -webkit-backdrop-filter 0.28s ease;
+}
+
+/* ── Thumbnail Hover State ── */
+.pp--trd .pp-specs-blueprint-trd__fig.js-specs-thumb {
+  transition: border-color 0.4s var(--ease-spring), transform 0.4s var(--ease-spring), opacity 0.3s ease;
+}
+.pp--trd .pp-specs-blueprint-trd__fig.js-specs-thumb:hover {
+  transform: scale(1.04) translateY(-3px);
+  border-color: var(--gold);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.45), 0 0 0 2px color-mix(in srgb, var(--gold) 30%, transparent);
+}
+
+/* Khi đó là ảnh đang active (đang được xem ở main), làm mờ thumbnail */
+.pp--trd .pp-specs-blueprint-trd__fig.is-active-thumb {
+  opacity: 0.45;
+  pointer-events: none;
+  border-color: color-mix(in srgb, var(--gold) 50%, transparent);
+}
+
+/* ── "Click để xem" label trên thumbnail ── */
+.pp--trd .pp-specs-blueprint-trd__thumb-cta {
+  position: absolute;
+  bottom: 0.6rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--gold);
+  background: color-mix(in srgb, var(--b1) 75%, transparent);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  padding: 0.2rem 0.6rem;
+  border-radius: 3px;
+  border: 1px solid color-mix(in srgb, var(--gold) 25%, transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s var(--ease-spring);
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 8;
+}
+.pp--trd .pp-specs-blueprint-trd__fig.js-specs-thumb:hover .pp-specs-blueprint-trd__thumb-cta {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ── Nav Buttons Prev / Next trên ảnh chính ── */
+.pp--trd .pp-specs-blueprint-trd__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 12;
+  background: color-mix(in srgb, var(--b1) 75%, transparent);
+  border: 1px solid color-mix(in srgb, var(--gold) 30%, transparent);
+  color: var(--gold);
+  font-size: 1.1rem;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  opacity: 0;
+  transition: opacity 0.3s ease, border-color 0.3s ease, background 0.3s ease, transform 0.3s var(--ease-spring);
+}
+.pp--trd .pp-specs-blueprint-trd__nav--prev { left: 0.85rem; }
+.pp--trd .pp-specs-blueprint-trd__nav--next { right: 0.85rem; }
+
+.pp--trd .pp-specs-blueprint-trd__fig--main:hover .pp-specs-blueprint-trd__nav {
+  opacity: 1;
+}
+.pp--trd .pp-specs-blueprint-trd__nav:hover {
+  background: color-mix(in srgb, var(--gold) 15%, var(--b2));
+  border-color: var(--gold);
+  transform: translateY(-50%) scale(1.1);
+}
+.pp--trd .pp-specs-blueprint-trd__nav:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+/* ── Dots Indicator ── */
+.pp--trd .pp-specs-blueprint-trd__dots {
+  position: absolute;
+  bottom: 0.9rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 12;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.pp--trd .pp-specs-blueprint-trd__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--gold) 35%, transparent);
+  border: 1px solid color-mix(in srgb, var(--gold) 40%, transparent);
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s var(--ease-spring), width 0.3s ease;
+  padding: 0;
+}
+.pp--trd .pp-specs-blueprint-trd__dot.is-active {
+  background: var(--gold);
+  width: 18px;
+  border-radius: 4px;
+  box-shadow: 0 0 8px color-mix(in srgb, var(--gold) 40%, transparent);
+}
+.pp--trd .pp-specs-blueprint-trd__dot:hover:not(.is-active) {
+  background: color-mix(in srgb, var(--gold) 60%, transparent);
+  transform: scale(1.2);
+}
+
+/* ── Dimension line connector ── */
+.pp--trd .pp-specs-blueprint-trd__dimension {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin: 2rem auto;
+  width: 200px;
+}
+.pp--trd .pp-specs-blueprint-trd__dimension-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+  flex-shrink: 0;
+  box-shadow: 0 0 8px color-mix(in srgb, var(--gold) 40%, transparent);
+}
+.pp--trd .pp-specs-blueprint-trd__dimension-line {
+  flex: 1;
+  height: 1px;
+  background: repeating-linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--gold) 40%, transparent) 0px,
+    color-mix(in srgb, var(--gold) 40%, transparent) 6px,
+    transparent 6px,
+    transparent 12px
+  );
+}
+
+/* ── Technical text panel ── */
+.pp--trd .pp-specs-blueprint-trd__panel {
+  position: relative;
+  z-index: 2;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  background: color-mix(in srgb, var(--b3) 60%, black);
+  border: 1px solid color-mix(in srgb, var(--gold) 12%, var(--bd));
+  border-left: 3px solid var(--gold);
+  border-radius: var(--radius-md);
+  backdrop-filter: blur(10px) saturate(120%);
+  -webkit-backdrop-filter: blur(10px) saturate(120%);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.pp--trd .pp-specs-blueprint-trd__panel-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.pp--trd .pp-specs-blueprint-trd__panel-icon {
+  font-size: 0.7rem;
+  color: var(--gold);
+  opacity: 0.7;
+}
+.pp--trd .pp-specs-blueprint-trd__panel-header .pp-text-trd__title {
+  font-size: clamp(1.3rem, 2.2vw, 1.85rem);
+  margin: 0;
+}
+
+/* First paragraph: left gold border accent */
+.pp--trd .pp-specs-blueprint-trd__body-text p:first-child {
+  padding-left: 1rem;
+  border-left: 2px solid color-mix(in srgb, var(--gold) 35%, transparent);
+}
+
+/* Mono-style feel for body text */
+.pp--trd .pp-specs-blueprint-trd__body-text p {
+  font-size: clamp(0.93rem, 1.05vw, 1rem);
+  line-height: 1.8;
+}
+
+/* ── Accessibility ── */
+@media (prefers-reduced-motion: reduce) {
+  .pp--trd .pp-specs-blueprint-trd__fig,
+  .pp--trd .pp-specs-blueprint-trd__nav,
+  .pp--trd .pp-specs-blueprint-trd__dot,
+  .pp--trd .pp-specs-blueprint-trd__fig-overlay,
+  .pp--trd .pp-specs-blueprint-trd__thumb-cta {
+    transition: none !important;
+    animation: none !important;
+  }
+}

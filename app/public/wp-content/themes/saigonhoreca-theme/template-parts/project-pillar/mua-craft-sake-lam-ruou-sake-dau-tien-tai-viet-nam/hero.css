@@ -1,10 +1,11 @@
 /**
  * mua-craft-sake-lam-ruou-sake-dau-tien-tai-viet-nam — hero slot.
- * Minimalist Japanese sake brewery with Hinoki wood and golden yeast tones.
+ * Minimalist Japanese sake brewery — Hinoki wood + golden yeast tones.
+ * Accent tokens scoped trong .pp--mua (single-project css). 0 hardcode hex brand.
  * @package SaigonHoreca
  */
 
-.pp-hero-mcs {
+.pp-hero-mua {
   position: relative;
   width: 100%;
   min-height: 88vh;
@@ -15,29 +16,38 @@
   background: var(--b1);
   isolation: isolate;
 }
-@media (max-width: 768px) { .pp-hero-mcs { min-height: 70vh; } }
+@media (max-width: 768px) { .pp-hero-mua { min-height: 70vh; } }
 
-.pp-hero-mcs__media {
+.pp-hero-mua__media {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background-size: cover !important;
-  background-position: center !important;
   filter: saturate(0.96) brightness(0.82);
 }
-.pp-hero-mcs__media img,
-.pp-hero-mcs__media iframe,
-.pp-hero-mcs__media video {
-  width: 100%; height: 100%; object-fit: cover; display: block; border: none;
-}
-
-.pp-hero-mcs__overlay {
+.pp-hero-mua__media img,
+.pp-hero-mua__media iframe,
+.pp-hero-mua__media video {
   position: absolute;
   inset: 0;
-  z-index: 1;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  border: none;
+}
+/* Poster ảnh tĩnh nằm dưới iframe — Ken Burns chậm cho chiều sâu điện ảnh. */
+.pp-hero-mua__poster {
+  z-index: 0;
+  animation: mua-ken-burns var(--sh-ken-burns-duration, 14s) ease-in-out infinite alternate;
+}
+.pp-hero-mua__media iframe { z-index: 1; }
+
+.pp-hero-mua__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
   background:
     radial-gradient(ellipse at 50% 70%,
-      color-mix(in srgb, #e5d3b3 6%, transparent) 0%,
+      var(--mua-glow) 0%,
       transparent 60%),
     linear-gradient(180deg,
       color-mix(in srgb, var(--b1) 40%, transparent) 0%,
@@ -46,31 +56,31 @@
 }
 
 /* Zen sake brewery ambient glows */
-.pp-hero-mcs::before,
-.pp-hero-mcs::after {
+.pp-hero-mua::before,
+.pp-hero-mua::after {
   content: '';
   position: absolute;
   border-radius: 50%;
   filter: blur(80px);
   pointer-events: none;
-  z-index: 1;
+  z-index: 2;
 }
-.pp-hero-mcs::before {
+.pp-hero-mua::before {
   top: -8%; left: -8%;
   width: 460px; height: 460px;
-  background: radial-gradient(circle, color-mix(in srgb, #e5d3b3 10%, transparent) 0%, transparent 70%);
+  background: radial-gradient(circle, color-mix(in srgb, var(--mua-warm) 16%, transparent) 0%, transparent 70%);
   opacity: 0.6;
 }
-.pp-hero-mcs::after {
+.pp-hero-mua::after {
   bottom: -10%; right: -6%;
   width: 520px; height: 520px;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.04) 0%, transparent 70%);
-  opacity: 0.45;
+  background: radial-gradient(circle, var(--mua-mist) 0%, transparent 70%);
+  opacity: 0.5;
 }
 
-.pp-hero-mcs__content {
+.pp-hero-mua__content {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   width: 100%;
   max-width: 1100px;
   padding: 0 1.5rem;
@@ -80,25 +90,18 @@
   align-items: center;
   gap: 1.25rem;
 }
-.pp-hero-mcs__content::before {
-  content: '';
-  width: 42px;
-  height: 1px;
-  background: var(--gold);
-  box-shadow: 0 0 12px color-mix(in srgb, var(--gold) 40%, transparent);
-}
 
-.pp-hero-mcs__subhead {
+.pp-hero-mua__subhead {
   margin: 0;
   font-family: var(--font-display);
-  font-size: 0.78rem;
+  font-size: clamp(0.7rem, 1.4vw, 0.82rem);
   font-weight: 700;
   letter-spacing: 0.4em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--mua-gold);
 }
 
-.pp-hero-mcs__title {
+.pp-hero-mua__title {
   margin: 0;
   font-family: var(--font-display);
   font-size: clamp(2.4rem, 7vw, 5rem);
@@ -109,13 +112,42 @@
   max-width: 22ch;
   text-shadow:
     0 4px 24px rgba(0, 0, 0, 0.7),
-    0 0 40px color-mix(in srgb, #e5d3b3 10%, transparent);
+    0 0 40px color-mix(in srgb, var(--mua-warm) 18%, transparent);
 }
 
-.pp-hero-mcs__subtitle {
+.pp-hero-mua__divider {
+  width: 64px;
+  height: 2px;
+  background: var(--mua-gold);
+  position: relative;
+  box-shadow: 0 0 14px color-mix(in srgb, var(--mua-gold) 55%, transparent);
+}
+.pp-hero-mua__divider::before,
+.pp-hero-mua__divider::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 6px; height: 6px;
+  background: var(--mua-gold);
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+.pp-hero-mua__divider::before { left: -14px; }
+.pp-hero-mua__divider::after  { right: -14px; }
+
+.pp-hero-mua__subtitle {
   margin: 0;
   max-width: 640px;
   font-size: clamp(0.97rem, 1.1vw, 1.08rem);
   line-height: 1.8;
   color: var(--bc2);
+}
+
+@keyframes mua-ken-burns {
+  0%   { transform: scale(var(--sh-ken-burns-scale-start, 1)); }
+  100% { transform: scale(var(--sh-ken-burns-scale-end, 1.12)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pp-hero-mua__poster { animation: none !important; }
 }

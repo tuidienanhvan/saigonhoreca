@@ -1,352 +1,237 @@
 /**
- * g-cup-coffee-bistro — intro slot (OWNS base for the suffix).
- * Modern Cafe Geometric · latte-art swirl divider (rotated arcs),
- * espresso-shot dot trio, 12-col asymmetric gallery, watermark "G",
- * multi-layer ambient warm caramel glows, drop-cap lead body.
+ * g-cup-coffee-bistro - intro slot.
+ * Thiết kế lại cụm ảnh bất đối xứng to rõ, không bị móp méo, thừa hưởng trọn vẹn _caption.css.
  * @package SaigonHoreca
  */
 
-/* ─────────────────────────────────────────────
-   Base section frame (shared by all -gcb slots)
-   ───────────────────────────────────────────── */
-.pp__section {
+.pp-section-gcb {
   position: relative;
-  padding: 5.5rem 1.25rem;
-  background: var(--b1);
   overflow: hidden;
   isolation: isolate;
+  padding: clamp(4rem, 7vw, 6.5rem) 0;
+  background: var(--b1);
 }
-@media (min-width: 768px)  { .pp__section { padding: 8rem 2rem; } }
-@media (min-width: 1200px) { .pp__section { padding: 9rem 2rem; } }
-.pp__section--alt { background: var(--b2); }
 
-.pp__container {
-  max-width: 1180px;
-  margin: 0 auto;
+.pp-section-gcb--alt {
+  background: var(--b2);
+}
+
+.pp-gcb-editorial-grid {
   position: relative;
-  z-index: 3;
-}
-
-/* Multi-layer ambient warm-caramel glows */
-.pp__section::before {
-  content: "";
-  position: absolute;
-  top: -8%;
-  right: -10%;
-  width: 540px;
-  height: 540px;
-  background: radial-gradient(circle,
-    color-mix(in srgb, var(--gold) 6%, transparent) 0%, transparent 70%);
-  filter: blur(70px);
-  pointer-events: none;
-  z-index: 0;
-}
-.pp__section::after {
-  content: "";
-  position: absolute;
-  bottom: -12%;
-  left: -8%;
-  width: 480px;
-  height: 480px;
-  background: radial-gradient(circle,
-    color-mix(in srgb, var(--gold) 4%, transparent) 0%, transparent 70%);
-  filter: blur(80px);
-  pointer-events: none;
-  z-index: 0;
-}
-.pp__section--alt::before {
-  background: radial-gradient(circle,
-    color-mix(in srgb, var(--gold) 8%, transparent) 0%, transparent 70%);
-  top: 20%;
-  right: -12%;
-}
-
-/* Watermark "G" — ultra-low-opacity display character */
-.pp__section--alt .pp__container::before {
-  content: "G";
-  position: absolute;
-  top: -1.5rem;
-  right: -2rem;
-  font-family: var(--font-display, "Playfair Display", Georgia, serif);
-  font-size: clamp(14rem, 26vw, 28rem);
-  font-weight: 700;
-  font-style: italic;
-  line-height: 0.9;
-  color: color-mix(in srgb, var(--gold) 2.5%, transparent);
-  pointer-events: none;
-  z-index: 0;
-  user-select: none;
-}
-
-/* ─────────────────────────────────────────────
-   Text block — eyebrow / title / body trio
-   ───────────────────────────────────────────── */
-.pp-text-gcb {
-  max-width: 860px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  position: relative;
-}
-.pp-text-gcb--center {
-  align-items: center;
-  text-align: center;
-}
-
-/* ───── Latte-art swirl divider — rotated arcs forming a spiral ───── */
-.pp-text-gcb__divider {
-  display: block;
-  position: relative;
-  width: 88px;
-  height: 32px;
-  margin: 0;
-  background:
-    linear-gradient(90deg,
-      transparent 0%,
-      color-mix(in srgb, var(--gold) 45%, transparent) 12%,
-      var(--gold) 50%,
-      color-mix(in srgb, var(--gold) 45%, transparent) 88%,
-      transparent 100%) center/100% 1px no-repeat;
-}
-.pp-text-gcb__divider--center { margin: 0 auto; }
-
-/* Two rotated half-arcs read as a latte swirl */
-.pp-text-gcb__divider::before,
-.pp-text-gcb__divider::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  width: 18px;
-  height: 18px;
-  border: 1px solid color-mix(in srgb, var(--gold) 70%, transparent);
-  border-bottom-color: transparent;
-  border-right-color: transparent;
-  border-radius: 50%;
-  background: transparent;
-  box-shadow: 0 0 14px color-mix(in srgb, var(--gold) 35%, transparent);
-}
-.pp-text-gcb__divider::before {
-  left: -14px;
-  transform: translateY(-50%) rotate(-45deg);
-}
-.pp-text-gcb__divider::after {
-  right: -14px;
-  transform: translateY(-50%) rotate(135deg);
-}
-
-/* Title — display serif, mid-century proportions */
-.pp-text-gcb__title {
-  margin: 0;
-  font-family: var(--font-display, "Playfair Display", Georgia, serif);
-  font-size: clamp(1.9rem, 3.6vw, 3rem);
-  font-weight: 700;
-  line-height: 1.18;
-  letter-spacing: -0.015em;
-  color: var(--bc);
-  max-width: 28ch;
-  text-wrap: balance;
-}
-.pp-text-gcb--center .pp-text-gcb__title { margin: 0 auto; }
-
-/* Espresso-shot trio under center titles */
-.pp-text-gcb--center .pp-text-gcb__title::after {
-  content: "";
-  display: block;
-  width: 46px;
-  height: 6px;
-  margin: 1.1rem auto 0;
-  background-image:
-    radial-gradient(circle, var(--gold) 0 3px, transparent 4px),
-    radial-gradient(circle, color-mix(in srgb, var(--gold) 65%, transparent) 0 3px, transparent 4px),
-    radial-gradient(circle, color-mix(in srgb, var(--gold) 35%, transparent) 0 3px, transparent 4px);
-  background-repeat: no-repeat;
-  background-size: 6px 6px, 6px 6px, 6px 6px;
-  background-position: 0 0, 18px 0, 36px 0;
-  box-shadow: 0 0 16px color-mix(in srgb, var(--gold) 30%, transparent);
-}
-
-/* Body lead text */
-.pp-text-gcb__body {
-  font-size: clamp(0.97rem, 1.12vw, 1.07rem);
-  line-height: 1.92;
-  color: var(--bc2);
-  max-width: 760px;
-  display: flex;
-  flex-direction: column;
-  gap: 1.15rem;
-  font-weight: 300;
-}
-.pp-text-gcb--center .pp-text-gcb__body { margin: 0 auto; }
-.pp-text-gcb__body p { margin: 0; text-align: left; }
-.pp-text-gcb--center .pp-text-gcb__body p { text-align: center; }
-
-/* First-paragraph editorial lift */
-.pp-text-gcb__body p:first-child {
-  font-size: clamp(1rem, 1.2vw, 1.13rem);
-  color: color-mix(in srgb, var(--bc) 88%, var(--bc2));
-  font-weight: 400;
-}
-
-/* Drop-cap on first paragraph (left-aligned only) */
-.pp-text-gcb:not(.pp-text-gcb--center) .pp-text-gcb__body p:first-child::first-letter {
-  color: var(--gold);
-  font-family: var(--font-display, "Playfair Display", Georgia, serif);
-  font-weight: 700;
-  font-size: 1.25em;
-  padding-right: 0.05em;
-  text-shadow: 0 0 12px color-mix(in srgb, var(--gold) 25%, transparent);
-}
-
-.pp-text-gcb__body a {
-  color: var(--gold);
-  text-decoration: none;
-  border-bottom: 1px solid color-mix(in srgb, var(--gold) 40%, transparent);
-  transition: border-color 0.25s var(--ease-spring), color 0.25s var(--ease-spring);
-}
-.pp-text-gcb__body a:hover {
-  border-color: var(--gold);
-  color: color-mix(in srgb, var(--gold) 80%, var(--bc));
-}
-.pp-text-gcb__body strong {
-  color: var(--gold);
-  font-weight: 600;
-  text-shadow: 0 0 12px color-mix(in srgb, var(--gold) 20%, transparent);
-}
-.pp-text-gcb__body em {
-  color: color-mix(in srgb, var(--bc) 92%, var(--bc2));
-  font-style: italic;
-  font-family: var(--font-display, "Playfair Display", Georgia, serif);
-}
-
-/* ─────────────────────────────────────────────
-   Gallery — 12-col asymmetric base + cols-N variants
-   ───────────────────────────────────────────── */
-.pp-gallery-gcb {
+  z-index: 2;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.5rem;
-  margin-top: 3rem;
+  gap: clamp(2.5rem, 5vw, 4rem);
+  align-items: center;
+}
+
+.pp-gcb-editorial-text {
+  min-width: 0;
+}
+
+.pp-gcb-editorial-text .pp-text-gcb__title {
+  max-width: none !important; /* Gỡ bỏ giới hạn hẹp để chữ ngắt dòng tự nhiên */
+  margin: 1rem 0 1.5rem !important;
+  color: var(--bc);
+  font-size: clamp(1.8rem, 3.2vw, 2.5rem) !important; /* Điều chỉnh kích thước sang trọng vừa vặn */
+  line-height: 1.25 !important; /* Tăng khoảng cách dòng giúp các dấu tiếng Việt không bị dính */
+  letter-spacing: -0.01em;
+}
+
+.pp-text-gcb__body {
+  display: grid;
+  gap: 1.2rem;
+  max-width: 38rem;
+}
+
+.pp-gcb-lead-p {
+  margin: 0;
+  color: var(--bc);
+  font-size: clamp(1rem, 1.25vw, 1.15rem);
+  font-weight: 600;
+  line-height: 1.65;
+}
+
+.pp-gcb-desc-p {
+  margin: 0;
+  color: color-mix(in srgb, var(--bc2) 90%, white);
+  font-size: 0.98rem;
+  line-height: 1.7;
+}
+
+/* Hộp chữ sắc sảo viền niken mảnh */
+.pp-gcb-editorial-text-box {
+  padding: clamp(2rem, 4vw, 3rem) clamp(1.5rem, 3.5vw, 2.5rem);
+  background: color-mix(in srgb, var(--b2) 75%, black) !important;
+  border: 1px solid color-mix(in srgb, var(--gold) 12%, var(--bd)) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45) !important;
   position: relative;
 }
-@media (min-width: 768px) {
-  .pp-gallery-gcb {
-    grid-template-columns: repeat(12, 1fr);
-    gap: 1.75rem;
-  }
-  /* 2-col → 7/5 asymmetric split */
-  .pp-gallery-gcb--cols-2 > .pp-gallery-gcb__item:nth-child(1) { grid-column: span 7; }
-  .pp-gallery-gcb--cols-2 > .pp-gallery-gcb__item:nth-child(2) {
-    grid-column: span 5;
-    margin-top: 2.5rem;
-  }
-  /* 3-col → 4/4/4 with lifted middle */
-  .pp-gallery-gcb--cols-3 > .pp-gallery-gcb__item { grid-column: span 4; }
-  .pp-gallery-gcb--cols-3 > .pp-gallery-gcb__item:nth-child(2) { margin-top: 2.5rem; }
-  /* 4-col */
-  .pp-gallery-gcb--cols-4 > .pp-gallery-gcb__item { grid-column: span 3; }
-  /* 1-col */
-  .pp-gallery-gcb--cols-1 > .pp-gallery-gcb__item { grid-column: span 12; }
-}
-@media (max-width: 767px) {
-  .pp-gallery-gcb--cols-3,
-  .pp-gallery-gcb--cols-4 { grid-template-columns: 1fr 1fr; }
-}
 
-.pp-gallery-gcb__item {
-  position: relative;
-  aspect-ratio: 4 / 3;
-  overflow: hidden;
-  border-radius: var(--radius-md);
-  background: var(--b3);
-  border: 1px solid var(--bd);
-  transition:
-    border-color 0.45s var(--ease-spring),
-    transform 0.45s var(--ease-spring),
-    box-shadow 0.45s var(--ease-spring);
-  box-shadow:
-    0 12px 28px rgba(0, 0, 0, 0.35),
-    inset 0 1px 0 color-mix(in srgb, var(--gold) 5%, transparent);
-  isolation: isolate;
-}
-
-/* Caption badge — corner glass tag */
-.pp-gallery-gcb__item::after {
-  content: "G·CUP";
-  position: absolute;
-  top: 0.85rem;
-  right: 0.85rem;
-  z-index: 3;
-  font-size: 0.58rem;
-  font-weight: 700;
-  letter-spacing: 0.32em;
-  color: var(--gold);
-  padding: 0.32rem 0.65rem;
-  background: color-mix(in srgb, var(--b1) 65%, transparent);
-  backdrop-filter: blur(10px) saturate(140%);
-  -webkit-backdrop-filter: blur(10px) saturate(140%);
-  border: 1px solid color-mix(in srgb, var(--gold) 28%, transparent);
-  border-radius: 999px;
-  opacity: 0;
-  transform: translateY(-4px);
-  transition: opacity 0.4s var(--ease-spring), transform 0.4s var(--ease-spring);
-  pointer-events: none;
-}
-.pp-gallery-gcb__item:hover::after { opacity: 1; transform: translateY(0); }
-
-/* Corner L-bracket ornament */
-.pp-gallery-gcb__item::before {
+.pp-gcb-editorial-text-box::before {
   content: "";
   position: absolute;
-  bottom: 0.5rem;
-  left: 0.5rem;
-  width: 22px;
-  height: 22px;
-  border-left: 1px solid color-mix(in srgb, var(--gold) 55%, transparent);
-  border-bottom: 1px solid color-mix(in srgb, var(--gold) 55%, transparent);
-  z-index: 3;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.4s var(--ease-spring);
+  top: 1rem;
+  left: 1rem;
+  width: 12px;
+  height: 12px;
+  border-left: 2px solid var(--gold);
+  border-top: 2px solid var(--gold);
+  opacity: 0.7;
 }
-.pp-gallery-gcb__item:hover::before { opacity: 1; }
 
-.pp-gallery-gcb__item:hover {
-  border-color: color-mix(in srgb, var(--gold) 55%, transparent);
-  transform: translateY(-6px);
-  box-shadow:
-    0 22px 48px rgba(0, 0, 0, 0.5),
-    0 0 0 1px color-mix(in srgb, var(--gold) 20%, transparent),
-    inset 0 1px 0 color-mix(in srgb, var(--gold) 12%, transparent);
-}
-.pp-gallery-gcb__item img {
+.pp-gcb-editorial-text-box::after {
+  content: "";
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  bottom: 1rem;
+  right: 1rem;
+  width: 12px;
+  height: 12px;
+  border-right: 2px solid var(--gold);
+  border-bottom: 2px solid var(--gold);
+  opacity: 0.7;
+}
+
+.pp-text-gcb__divider-svg {
   display: block;
-  filter: saturate(1.08) contrast(1.02);
-  transition: transform 0.85s var(--ease-spring), filter 0.6s var(--ease-spring);
+  margin-bottom: 1.5rem;
+  color: var(--gold);
+}
+
+.pp-text-gcb__divider-svg svg {
+  width: 80px;
+  height: 8px;
+  display: block;
+}
+
+/* Wave decor và CAD lines background */
+.pp-gcb-intro-section {
+  position: relative;
+}
+
+.pp-gcb-intro-wave-decor {
+  position: absolute;
+  top: 5%;
+  left: 2%;
+  width: 25vw;
+  color: color-mix(in srgb, var(--gold) 8%, transparent);
+  pointer-events: none;
   z-index: 1;
 }
-.pp-gallery-gcb__item:hover img {
-  transform: scale(1.07);
-  filter: saturate(1.15) contrast(1.04);
+
+/* Khối media bất đối xứng */
+.pp-gcb-editorial-media {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem; /* Giữ nguyên khoảng trống thở mặc định cho các ảnh */
+  min-width: 0;
+  z-index: 2;
 }
 
-/* Stagger entry — rise into view */
-@media (prefers-reduced-motion: no-preference) {
-  .pp-gallery-gcb__item {
-    animation: pp-gcb-tile-rise 0.9s var(--ease-spring) both;
+.pp-gcb-media-cad-lines {
+  position: absolute;
+  inset: -1.5rem;
+  color: color-mix(in srgb, var(--gold) 12%, transparent);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Cấu trúc Frame hình học tròn đều sang trọng kế thừa hoàn hảo _caption.css */
+.pp-gcb-main-frame {
+  border-radius: 16px !important;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.pp-gcb-main-frame img {
+  border-radius: 16px !important;
+}
+
+.pp-gcb-sub-frame {
+  border-radius: 12px !important;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.pp-gcb-sub-frame img {
+  border-radius: 12px !important;
+}
+
+/* Layout trên desktop */
+@media (min-width: 900px) {
+  .pp-gcb-editorial-grid {
+    grid-template-columns: 0.9fr 1.1fr !important; /* Mở rộng cột chữ để tiêu đề hiển thị rộng rãi, cân đối */
+    gap: clamp(3rem, 5vw, 4.5rem) !important;
   }
-  .pp-gallery-gcb__item:nth-child(1) { animation-delay: 0.05s; }
-  .pp-gallery-gcb__item:nth-child(2) { animation-delay: 0.18s; }
-  .pp-gallery-gcb__item:nth-child(3) { animation-delay: 0.31s; }
-  .pp-gallery-gcb__item:nth-child(4) { animation-delay: 0.44s; }
-  .pp-gallery-gcb__item:nth-child(5) { animation-delay: 0.57s; }
-  @keyframes pp-gcb-tile-rise {
-    from { opacity: 0; transform: translateY(28px); }
-    to   { opacity: 1; transform: translateY(0); }
+
+  .pp-gcb-editorial-media {
+    display: block !important; /* Sử dụng block để định vị absolute các ảnh con lệch nhau */
+    height: 500px !important; /* Chiều cao cố định hợp lý để chứa cả 2 ảnh và caption không bị tràn */
+  }
+
+  /* Ảnh chính: Quầy bar chính - To rõ, nằm bên trái chiếm 70% chiều rộng */
+  .pp-gcb-editorial-media .pp-gcb-main-frame {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 70% !important;
+    aspect-ratio: 1.25 / 1 !important; /* Tỷ lệ vàng giúp ảnh to rõ ràng */
+    z-index: 2;
+    margin-bottom: 0 !important;
+  }
+
+  /* Ảnh phụ: Station - Nằm đè chéo nhẹ góc dưới bên phải, chiếm 44% chiều rộng */
+  .pp-gcb-editorial-media .pp-gcb-sub-frame {
+    position: absolute !important;
+    right: 0 !important;
+    bottom: 0 !important; /* Đẩy xuống sát đáy để tạo độ so le và không đè lên caption của ảnh chính */
+    width: 44% !important;
+    aspect-ratio: 1.3 / 1 !important;
+    z-index: 3;
+    box-shadow: -10px 20px 45px rgba(0, 0, 0, 0.6) !important;
+    margin-bottom: 0 !important;
+  }
+  
+  /* Hover hiệu ứng tương tác 3D nhẹ nhàng sang trọng */
+  .pp-gcb-editorial-media:hover .pp-gcb-main-frame {
+    transform: translateY(-4px) scale(1.005) !important;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5) !important;
+  }
+
+  .pp-gcb-editorial-media:hover .pp-gcb-sub-frame {
+    transform: translateY(-6px) scale(1.01) rotate(0.5deg) !important;
+    box-shadow: -12px 25px 50px rgba(0, 0, 0, 0.7) !important;
+  }
+}
+
+@media (max-width: 899px) {
+  .pp-gcb-editorial-media {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem; /* Tạo khoảng trống giãn thở cho caption dưới mỗi ảnh */
+  }
+
+  .pp-gcb-main-frame,
+  .pp-gcb-sub-frame {
+    width: 100% !important;
+    aspect-ratio: 1.35 / 1 !important;
+    position: relative !important;
+    margin-bottom: 0 !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .pp-section-gcb {
+    padding: 3.5rem 0;
+  }
+
+  .pp-gcb-editorial-text .pp-text-gcb__title {
+    font-size: clamp(1.6rem, 8vw, 2.25rem) !important;
+  }
+
+  .pp-gcb-media-cad-lines {
+    display: none;
   }
 }

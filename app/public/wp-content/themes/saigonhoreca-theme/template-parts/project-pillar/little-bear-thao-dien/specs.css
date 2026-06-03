@@ -1,3 +1,292 @@
-/** little-bear-thao-dien — specs slot. Inherits .pp-split-lbt from concept.css. */
+/**
+ * little-bear-thao-dien — specs slot.
+ * Technical AutoCAD-like specifications collage layout.
+ * @package SaigonHoreca
+ */
 
-.pp-split-lbt--reverse .pp-split-lbt__media { aspect-ratio: 16 / 9; }
+.pp-specs-lb {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--b1);
+  padding: 6.5rem 1.5rem;
+}
+@media (min-width: 768px) {
+  .pp-specs-lb { padding: 8.5rem 2rem; }
+}
+
+/* Ambient glow làm nền */
+.pp-specs-lb__glow {
+  position: absolute;
+  bottom: 10%;
+  left: -5%;
+  width: 520px;
+  height: 520px;
+  border-radius: var(--radius-full);
+  background: radial-gradient(circle, color-mix(in srgb, var(--gold) 10%, transparent) 0%, transparent 70%);
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.65;
+}
+
+.pp-specs-lb__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3.5rem;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 992px) {
+  .pp-specs-lb__grid {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 4.5rem;
+  }
+}
+
+/* Media cột trái (Collage) */
+.pp-specs-lb__media-col {
+  position: relative;
+}
+@media (min-width: 992px) {
+  .pp-specs-lb__media-col {
+    grid-column: span 7;
+  }
+}
+
+/* Tọa độ và nhãn CAD chạy mờ ở các góc */
+.pp-specs-lb__stamp {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: color-mix(in srgb, var(--bc) 30%, transparent);
+  user-select: none;
+  pointer-events: none;
+  z-index: 5;
+  white-space: nowrap;
+}
+
+.pp-specs-lb__stamp--tl { top: -2.2rem; left: 0; }
+.pp-specs-lb__stamp--tr { top: -2.2rem; right: 0; }
+.pp-specs-lb__stamp--bl { bottom: -2.2rem; left: 0; }
+.pp-specs-lb__stamp--br { bottom: -2.2rem; right: 0; }
+
+/* Bố cục So le lệch tầng không che nhau */
+.pp-specs-lb__collage {
+  position: relative;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 1.8rem;
+  align-items: start;
+}
+@media (max-width: 640px) {
+  .pp-specs-lb__collage {
+    grid-template-columns: 1fr;
+    gap: 3.5rem; /* Tăng khoảng cách thở khi xếp chồng dọc trên mobile */
+  }
+}
+
+.pp-specs-lb__img-under {
+  width: 100% !important;
+  margin-bottom: 0 !important;
+}
+
+.pp-specs-lb__img-under img {
+  border-radius: var(--radius-md) !important;
+  box-shadow: var(--shadow-main) !important;
+  border: 1px solid var(--bd) !important;
+  aspect-ratio: 4 / 5;
+  transition: transform 0.8s var(--ease-spring) !important;
+}
+.pp-specs-lb__collage:hover .pp-specs-lb__img-under img {
+  transform: scale(1.02) !important;
+}
+
+.pp-specs-lb__img-over {
+  position: relative !important; /* Đổi sang relative để không đè chồng absolute */
+  width: 100% !important;
+  z-index: 10 !important;
+  margin-bottom: 0 !important;
+}
+@media (min-width: 768px) {
+  .pp-specs-lb__img-over {
+    margin-top: 5.5rem; /* Dịch chuyển lệch tầng tạo nhịp điệu so le trên Desktop */
+  }
+}
+
+.pp-specs-lb__img-over-inner {
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  box-shadow: var(--shadow-main);
+  border: 1.5px solid var(--bd);
+  transition: transform 0.6s var(--ease-spring), border-color 0.6s var(--ease-spring);
+}
+
+.pp-specs-lb__img-over img {
+  border-radius: 0 !important;
+  aspect-ratio: 4 / 5;
+}
+
+.pp-specs-lb__collage:hover .pp-specs-lb__img-over-inner {
+  transform: scale(1.03);
+  border-color: color-mix(in srgb, var(--gold) 40%, transparent);
+}
+
+/* Specs cột phải */
+.pp-specs-lb__text-col {
+  position: relative;
+}
+@media (min-width: 992px) {
+  .pp-specs-lb__text-col {
+    grid-column: span 5;
+  }
+}
+
+.pp-specs-card-lb {
+  background: color-mix(in srgb, var(--b2) 90%, transparent);
+  border: 1px solid var(--bd);
+  border-radius: var(--radius-md);
+  padding: 2.2rem 1.8rem;
+  box-shadow: var(--shadow-main);
+  transition: border-color 0.4s var(--ease-spring);
+  position: relative;
+}
+@media (min-width: 992px) {
+  .pp-specs-card-lb {
+    padding: 2.8rem 2.2rem;
+    border-radius: var(--radius-lg);
+  }
+}
+.pp-specs-card-lb:hover {
+  border-color: color-mix(in srgb, var(--gold) 25%, transparent);
+}
+
+/* Focus Brackets SVG */
+.pp-lb-focus-bracket {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  opacity: 0.5;
+  transition: opacity 0.4s var(--ease-spring), transform 0.4s var(--ease-spring);
+  pointer-events: none;
+}
+.pp-specs-card-lb:hover .pp-lb-focus-bracket { opacity: 1; }
+
+.pp-lb-focus-bracket--tl { top: -4px; left: -4px; }
+.pp-lb-focus-bracket--tr { top: -4px; right: -4px; }
+.pp-lb-focus-bracket--bl { bottom: -4px; left: -4px; }
+.pp-lb-focus-bracket--br { bottom: -4px; right: -4px; }
+
+.pp-specs-card-lb:hover .pp-lb-focus-bracket--tl { transform: translate(-2px, -2px); }
+.pp-specs-card-lb:hover .pp-lb-focus-bracket--tr { transform: translate(2px, -2px); }
+.pp-specs-card-lb:hover .pp-lb-focus-bracket--bl { transform: translate(-2px, 2px); }
+.pp-specs-card-lb:hover .pp-lb-focus-bracket--br { transform: translate(2px, 2px); }
+
+.pp-specs-card-lb__header {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.pp-specs-card-tag {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  color: var(--gold);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.pp-specs-card-lb__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.45rem, 2.5vw, 2.1rem);
+  line-height: 1.2;
+  color: var(--bc);
+}
+
+.pp-specs-card-lb__divider {
+  width: 44px;
+  height: 2px;
+  background: var(--gold);
+  margin: 0.6rem 0 1.2rem;
+}
+
+.pp-specs-card-lb__intro-text {
+  color: var(--bc2);
+  font-size: 0.94rem;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+/* Lưới Specs Features */
+.pp-specs-features {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.pp-specs-feature-item {
+  display: flex;
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.pp-specs-feature-icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--gold) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--gold) 20%, transparent);
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.4s var(--ease-spring), border-color 0.4s var(--ease-spring);
+}
+.pp-specs-feature-item:hover .pp-specs-feature-icon {
+  background: color-mix(in srgb, var(--gold) 15%, transparent);
+  border-color: var(--gold);
+}
+
+.pp-specs-feature-icon svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+.pp-specs-feature-text {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.pp-specs-feature-text h4 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--bc);
+}
+
+.pp-specs-feature-text p {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--bc2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pp-specs-card-lb,
+  .pp-specs-lb__img-under img,
+  .pp-specs-lb__img-over-inner {
+    transition: none !important;
+  }
+  .pp-specs-lb__collage:hover .pp-specs-lb__img-over-inner,
+  .pp-specs-lb__collage:hover .pp-specs-lb__img-under img {
+    transform: none !important;
+  }
+}

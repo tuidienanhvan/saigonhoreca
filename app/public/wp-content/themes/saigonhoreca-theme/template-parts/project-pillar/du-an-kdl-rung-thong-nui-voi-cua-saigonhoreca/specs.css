@@ -1,1 +1,27 @@
-/** du-an-kdl-rung-thong-nui-voi-cua-saigonhoreca — specs slot (no content). */
+/**
+ * du-an-kdl-rung-thong-nui-voi-cua-saigonhoreca — specs slot.
+ * Inherits .pp-split-kdl from concept.css + image + text.
+ * @package SaigonHoreca
+ */
+
+.pp-split-kdl__media img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--bd);
+  transition: border-color 0.4s var(--ease-spring), transform 0.4s var(--ease-spring);
+}
+.pp-split-kdl__media img:hover {
+  border-color: color-mix(in srgb, var(--su) 40%, transparent);
+  transform: scale(1.03);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pp-split-kdl__media img {
+    transition: none !important;
+  }
+  .pp-split-kdl__media img:hover {
+    transform: none !important;
+  }
+}

@@ -1,1 +1,241 @@
-/** yuzu-omakase — concept slot (no content). */
+/**
+ * yuzu-omakase — concept slot.
+ * Editorial layout + Glassmorphism card + negative margin + design tags.
+ * @package SaigonHoreca
+ */
+
+.pp-concept-yzo {
+  position: relative;
+  padding: clamp(4rem, 8vw, 8rem) 0;
+  background: var(--b1);
+  overflow: hidden;
+}
+
+.pp-concept-yzo__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+@media (min-width: 992px) {
+  .pp-concept-yzo__grid {
+    grid-template-columns: 58fr 42fr;
+    gap: 0; /* Cho phép dùng margin âm để đè chéo */
+  }
+}
+
+/* Image styling (Left) */
+.pp-concept-yzo__visual {
+  position: relative;
+  z-index: 1;
+}
+
+.pp-concept-yzo__img-wrapper {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--bd);
+  aspect-ratio: 16 / 10;
+}
+
+.pp-concept-yzo__img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.8s var(--ease-spring);
+}
+
+.pp-concept-yzo__img-wrapper:hover img {
+  transform: scale(1.04);
+}
+
+.pp-concept-yzo__img-border {
+  position: absolute;
+  inset: 12px;
+  border: 1px solid color-mix(in srgb, var(--p) 22%, transparent);
+  border-radius: calc(var(--radius-lg) - 4px);
+  pointer-events: none;
+  opacity: 0.5;
+  transition: opacity 0.4s ease;
+}
+
+.pp-concept-yzo__img-wrapper:hover .pp-concept-yzo__img-border {
+  opacity: 0.85;
+}
+
+/* Glassmorphism Card (Right) */
+.pp-concept-yzo__card {
+  position: relative;
+  z-index: 2;
+}
+
+@media (min-width: 992px) {
+  .pp-concept-yzo__card {
+    margin-left: -5rem; /* Đè chéo lên ảnh */
+  }
+}
+
+.pp-concept-yzo__card-content {
+  background: color-mix(in srgb, var(--b2) 80%, transparent);
+  backdrop-filter: blur(16px) saturate(130%);
+  -webkit-backdrop-filter: blur(16px) saturate(130%);
+  border: 1px solid color-mix(in srgb, var(--p) 22%, transparent);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem 2rem;
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 var(--bs);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  transition: border-color 0.4s var(--ease-spring), transform 0.4s var(--ease-spring);
+}
+
+@media (min-width: 768px) {
+  .pp-concept-yzo__card-content {
+    padding: 3.5rem 3rem;
+  }
+}
+
+.pp-concept-yzo__card-content:hover {
+  border-color: var(--bt);
+  transform: translateY(-4px);
+}
+
+/* Kickers and Tags */
+.pp-concept-yzo__kicker-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.pp-concept-yzo__tag {
+  display: inline-block;
+  padding: 0.28rem 0.7rem;
+  background: var(--p);
+  color: var(--pc);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  border-radius: var(--radius-xs);
+  letter-spacing: 0.08em;
+}
+
+.pp-concept-yzo__kicker {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--p) 60%, transparent);
+  position: relative;
+  padding-left: 1.2rem;
+}
+
+.pp-concept-yzo__kicker::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 14px;
+  height: 1px;
+  background: var(--p);
+  opacity: 0.6;
+}
+
+.pp-concept-yzo__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  color: var(--bc);
+}
+
+/* Highlight gradient cho từ khóa đắt giá trong tiêu đề */
+.pp-concept-yzo__title-accent {
+  display: block;
+  background: linear-gradient(90deg, var(--p) 0%, color-mix(in srgb, var(--p) 60%, var(--bc)) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 900;
+}
+
+/* Đường kẻ phân tách tinh tế giữa tiêu đề và body */
+.pp-concept-yzo__divider {
+  width: 48px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--p) 0%, transparent 100%);
+  border-radius: 2px;
+  margin: 0.2rem 0;
+}
+
+.pp-concept-yzo__body {
+  font-size: 0.93rem;
+  line-height: 1.82;
+  color: var(--bc2);
+}
+
+.pp-concept-yzo__body p {
+  margin: 0 0 1rem;
+}
+
+.pp-concept-yzo__body p:last-child {
+  margin: 0;
+}
+
+/* Badge chips notes - Premium style */
+.pp-concept-yzo__notes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--bs);
+}
+
+.pp-concept-yzo__note-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.38rem 0.9rem;
+  background: color-mix(in srgb, var(--p) 4%, transparent);
+  border: 1px solid color-mix(in srgb, var(--p) 18%, transparent);
+  border-radius: var(--radius-full);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: color-mix(in srgb, var(--p) 80%, var(--bc));
+  transition: border-color 0.3s var(--ease-spring), background-color 0.3s var(--ease-spring), transform 0.3s var(--ease-spring);
+}
+
+.pp-concept-yzo__note-item::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--p);
+  opacity: 0.8;
+  flex-shrink: 0;
+}
+
+.pp-concept-yzo__note-item:hover {
+  border-color: color-mix(in srgb, var(--p) 45%, transparent);
+  background-color: color-mix(in srgb, var(--p) 10%, transparent);
+  transform: translateY(-1px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pp-concept-yzo__img-wrapper img,
+  .pp-concept-yzo__card-content {
+    transition: none !important;
+  }
+}

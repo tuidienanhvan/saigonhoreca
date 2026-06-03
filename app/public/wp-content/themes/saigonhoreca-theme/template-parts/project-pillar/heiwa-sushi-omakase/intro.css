@@ -4,49 +4,43 @@
  * @package SaigonHoreca
  */
 
-.sgh-hwa-intro-section {
-  background: var(--b2);
-  padding: clamp(4rem, 10vh, 8rem) 0;
+/* ─────────────────────────────────────────────────────────────
+   SHARED CLASSES (CÁC CLASS DÙNG CHUNG CHO CẢ DỰ ÁN HEIWA)
+   ───────────────────────────────────────────────────────────── */
+.pp-section-hwa {
   position: relative;
+  padding: clamp(4rem, 10vh, 8rem) 0;
+  background: var(--b2);
   overflow: hidden;
   isolation: isolate;
 }
 
-.sgh-hwa-intro-container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 clamp(1.5rem, 5vw, 5rem);
+.pp-section-hwa--alt {
+  background: var(--b1);
 }
 
-/* ─────────────────────────────────────────────────────────────
-   ASYMMETRIC SPLIT GRID (LƯỚI BẤT ĐỐI XỨ ZEN MINIMALIST)
-   ───────────────────────────────────────────────────────────── */
-.sgh-hwa-intro-row {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 3.5rem;
-  align-items: center;
+.pp-hwa-ambient-glow {
+  position: absolute;
+  width: 85%;
+  height: 85%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--gold) 5%, transparent) 0%, transparent 70%);
+  filter: blur(55px);
+  pointer-events: none;
+  z-index: 0;
 }
 
-.sgh-hwa-intro-col--text {
-  order: 1; /* Chữ trước trên mobile */
+.pp-hwa-ambient-glow--tr {
+  top: -10%;
+  right: -10%;
 }
 
-.sgh-hwa-intro-col--media {
-  order: 2; /* Mockup sau trên mobile */
+.pp-hwa-ambient-glow--bl {
+  bottom: -10%;
+  left: -10%;
 }
 
-@media (min-width: 1024px) {
-  .sgh-hwa-intro-row {
-    grid-template-columns: 45% 55%;
-    gap: clamp(3.5rem, 5vw, 6.5rem);
-  }
-}
-
-/* ─────────────────────────────────────────────────────────────
-   TEXT & TYPOGRAPHY STYLE (PHONG CÁCH ZEN THIỀN)
-   ───────────────────────────────────────────────────────────── */
-.sgh-hwa-intro-badge {
+/* Typography dùng chung cho Heiwa */
+.pp-text-hwa__badge {
   font-family: var(--font-display), sans-serif;
   font-size: 0.75rem;
   font-weight: 600;
@@ -58,14 +52,14 @@
   gap: 0.75rem;
 }
 
-.sgh-hwa-intro-badge__accent {
+.pp-text-hwa__badge-accent {
   font-family: var(--font-display), monospace;
   color: var(--gold);
   letter-spacing: 0.25em;
   font-weight: 700;
 }
 
-.sgh-hwa-intro-title {
+.pp-text-hwa__title {
   font-family: var(--font-display), sans-serif;
   font-size: clamp(1.8rem, 3vw, 2.6rem);
   font-weight: 700;
@@ -75,13 +69,13 @@
   margin: 0 0 2rem 0;
 }
 
-.sgh-hwa-intro-body {
+.pp-text-hwa__body {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
 
-.sgh-hwa-intro-paragraph {
+.pp-text-hwa__body p {
   font-family: var(--font-body), sans-serif;
   font-size: clamp(0.95rem, 1.05vw, 1.05rem);
   line-height: 1.85;
@@ -90,7 +84,7 @@
   text-align: justify;
 }
 
-.sgh-hwa-intro-quote {
+.pp-text-hwa__quote {
   font-family: var(--font-serif);
   font-style: italic;
   font-size: clamp(1.1rem, 1.25vw, 1.3rem);
@@ -101,131 +95,230 @@
   margin: 0 0 0.5rem 0;
 }
 
-/* ─────────────────────────────────────────────────────────────
-   3D PERSPECTIVE SAFARI MOCKUP
-   ───────────────────────────────────────────────────────────── */
-.sgh-hwa-intro-mockup-wrapper {
+.pp-text-hwa__divider {
+  margin: 0.2rem auto;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--p), transparent);
+  box-shadow: 0 0 10px var(--p);
+}
+
+/* Khung ảnh & caption dùng chung */
+.pp-frame-hwa {
   position: relative;
-  perspective: 1200px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.pp-image-container-shared {
+  position: relative;
   width: 100%;
-}
-
-/* Ambient Glow sau Mockup - Tông màu vàng đồng thau Wabi-Sabi */
-.sgh-hwa-intro-ambient-glow {
-  position: absolute;
-  width: 85%;
-  height: 85%;
-  background: radial-gradient(circle,
-    color-mix(in srgb, var(--gold) 5%, transparent) 0%,
-    transparent 70%);
-  filter: blur(55px);
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* Safari Browser Frame */
-.sgh-hwa-intro-browser {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  border-radius: 12px;
-  background: color-mix(in srgb, var(--b1) 85%, transparent);
-  border: 1px solid color-mix(in srgb, var(--white) 8%, transparent);
-  box-shadow: 
-    -20px 20px 50px rgba(0, 0, 0, 0.75), 
-    0 10px 30px rgba(0, 0, 0, 0.45);
   overflow: hidden;
-  transform-style: preserve-3d;
-  transform: rotateY(-10deg) rotateX(6deg) rotateZ(-1.5deg);
-  transition: 
-    transform 0.8s var(--ease-spring), 
-    box-shadow 0.8s var(--ease-spring),
-    border-color 0.8s var(--ease-spring);
 }
 
-.sgh-hwa-intro-browser:hover {
-  transform: rotateY(0) rotateX(0) rotateZ(0);
-  box-shadow: 
-    0 25px 60px rgba(0, 0, 0, 0.8), 
-    0 12px 40px rgba(0, 0, 0, 0.5);
-  border-color: color-mix(in srgb, var(--gold) 35%, transparent);
-}
-
-/* Browser Header */
-.sgh-hwa-intro-browser__header {
-  display: flex;
-  align-items: center;
-  padding: 0.75rem 1.25rem;
-  background: color-mix(in srgb, var(--b1) 95%, transparent);
-  border-bottom: 1px solid color-mix(in srgb, var(--white) 5%, transparent);
-}
-
-/* Window Control Buttons */
-.sgh-hwa-intro-browser__buttons {
-  display: flex;
-  gap: 6px;
-}
-
-.sgh-hwa-intro-browser__btn {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  display: block;
-}
-
-.sgh-hwa-intro-browser__btn--red { background: #ff5f56; }
-.sgh-hwa-intro-browser__btn--yellow { background: #ffbd2e; }
-.sgh-hwa-intro-browser__btn--green { background: #27c93f; }
-
-/* Address Bar */
-.sgh-hwa-intro-browser__address {
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  padding: 0.3rem clamp(1.5rem, 3vw, 4rem);
-  font-family: var(--font-display), monospace;
-  font-size: 0.65rem;
-  color: color-mix(in srgb, var(--white) 30%, transparent);
-  background: rgba(0, 0, 0, 0.35);
-  border-radius: 5px;
-  border: 1px solid color-mix(in srgb, var(--white) 5%, transparent);
-  max-width: 65%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.sgh-hwa-intro-browser__lock {
-  font-size: 0.6rem;
-  opacity: 0.6;
-}
-
-/* Browser Viewport containing Screenshot */
-.sgh-hwa-intro-browser__viewport {
-  position: relative;
-  aspect-ratio: 16 / 10;
-  overflow: hidden;
-  background: #000;
-}
-
-.sgh-hwa-intro-browser__viewport img {
+.pp-image-container-shared img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: grayscale(10%) contrast(1.02) brightness(0.85);
-  transition: 
-    filter 0.8s var(--ease-spring), 
-    brightness 0.8s var(--ease-spring), 
-    transform 0.8s var(--ease-spring);
 }
 
-.sgh-hwa-intro-browser:hover .sgh-hwa-intro-browser__viewport img {
-  filter: grayscale(0%) contrast(1.05) brightness(1.02);
-  transform: scale(1.015);
+.pp-image-caption-shared {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  color: var(--white);
+  font-size: 0.75rem;
+  line-height: 1.4;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s var(--ease-spring), transform 0.4s var(--ease-spring);
+  pointer-events: none;
+  z-index: 5;
 }
+
+.pp-frame-hwa:hover .pp-image-caption-shared,
+.pp-frame-hwa-artistic:hover .pp-image-caption-shared {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   INTRO SPECIFIC CLASSES
+   ───────────────────────────────────────────────────────────── */
+.pp-intro-hwa {
+  background: var(--b2);
+}
+
+.pp-intro-hwa--poster {
+  position: relative;
+}
+
+.pp-hwa-poster-grid {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Bố cục 2 cột phẳng đối xứng (1 ảnh đơn sang trọng) ── */
+.pp-intro-hwa__two-cols {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+@media (min-width: 992px) {
+  .pp-intro-hwa__two-cols {
+    /* 52% ảnh bên trái, 48% chữ bên phải làm đối trọng hoàn hảo */
+    grid-template-columns: 0.52fr 0.48fr;
+    gap: 5.5rem;
+    align-items: center;
+  }
+}
+
+/* Cột phải chứa chữ thoáng đãng */
+.pp-intro-hwa__content-col {
+  width: 100%;
+}
+
+.pp-intro-hwa__poster-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* Cột trái chứa 1 ảnh đơn sang trọng */
+.pp-intro-hwa__media-col {
+  width: 100%;
+  position: relative;
+}
+
+.pp-intro-hwa__single-image {
+  aspect-ratio: 4 / 5 !important;
+  width: 100%;
+  transition: transform 0.6s var(--ease-spring), box-shadow 0.6s var(--ease-spring), border-color 0.4s !important;
+}
+
+.pp-intro-hwa__single-image:hover {
+  transform: scale(1.02) !important;
+  border-color: var(--p) !important;
+  box-shadow: 0 30px 65px color-mix(in srgb, var(--p) 25%, transparent) !important;
+}
+
+.pp-hwa-mosaic-item:hover {
+  transform: scale(1.03) rotate(0deg) !important;
+  border-color: var(--p) !important;
+  box-shadow: 0 30px 65px color-mix(in srgb, var(--p) 25%, transparent) !important;
+  z-index: 10 !important; /* Luôn nổi bật trên cùng khi rê chuột vào */
+}
+
+/* Khung ảnh poster nghệ thuật trôi nổi phẳng */
+.pp-frame-hwa--poster-art {
+  position: relative;
+  border-radius: var(--radius-lg) !important;
+  border: 1px solid var(--hwa-line) !important;
+  background: var(--b2);
+  box-shadow: 
+    -20px 20px 50px rgba(0, 0, 0, 0.65),
+    0 10px 30px rgba(0, 0, 0, 0.45) !important;
+  transition: box-shadow 0.6s var(--ease-spring), transform 0.6s var(--ease-spring) !important;
+}
+
+.pp-frame-hwa--poster-art::before,
+.pp-frame-hwa--poster-art::after {
+  content: '' !important;
+  position: absolute !important;
+  z-index: 4 !important;
+  width: 24px !important;
+  height: 24px !important;
+  border: 1.5px dashed color-mix(in srgb, var(--p) 35%, transparent) !important;
+  pointer-events: none !important;
+  display: block !important;
+  transition: border-color 0.4s, transform 0.4s var(--ease-spring) !important;
+}
+.pp-frame-hwa--poster-art::before { top: -8px !important; left: -8px !important; border-right: none !important; border-bottom: none !important; }
+.pp-frame-hwa--poster-art::after  { right: -8px !important; bottom: -8px !important; border-left: none !important; border-top: none !important; }
+
+.pp-frame-hwa--poster-art:hover::before { transform: translate(-4px, -4px); border-color: var(--p) !important; }
+.pp-frame-hwa--poster-art:hover::after  { transform: translate(4px, 4px); border-color: var(--p) !important; }
+
+@media (max-width: 991px) {
+  .pp-intro-hwa__mosaic-grid {
+    gap: 3.5rem;
+  }
+  .pp-intro-hwa__mosaic-wrapper {
+    gap: 3rem;
+  }
+  .pp-hwa-mosaic-item--top-left,
+  .pp-hwa-mosaic-item--middle-right,
+  .pp-hwa-mosaic-item--bottom-left {
+    width: 100%;
+    transform: none;
+    aspect-ratio: 16 / 10 !important;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   LAYOUT TRÁI 4 ẢNH BẤT ĐỐI XỨNG WABI-SABI (GRID FOUR)
+   ───────────────────────────────────────────────────────────── */
+.pp-intro-hwa__grid-four {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.pp-intro-hwa__grid-item {
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--hwa-line) !important;
+  transition: transform 0.6s var(--ease-spring), box-shadow 0.6s var(--ease-spring), border-color 0.4s !important;
+}
+
+.pp-intro-hwa__grid-item:hover {
+  border-color: var(--p) !important;
+  box-shadow: 0 25px 50px color-mix(in srgb, var(--p) 25%, transparent) !important;
+  z-index: 5;
+}
+
+@media (min-width: 768px) {
+  .pp-intro-hwa__grid-four {
+    gap: 1.5rem;
+  }
+  .pp-intro-hwa__grid-item:nth-child(1) {
+    transform: translateY(-0.75rem);
+  }
+  .pp-intro-hwa__grid-item:nth-child(2) {
+    transform: translateY(1.25rem);
+  }
+  .pp-intro-hwa__grid-item:nth-child(3) {
+    transform: translateY(-1.25rem);
+  }
+  .pp-intro-hwa__grid-item:nth-child(4) {
+    transform: translateY(0.75rem);
+  }
+  
+  .pp-intro-hwa__grid-item:nth-child(1):hover {
+    transform: translateY(-1.25rem) scale(1.03) !important;
+  }
+  .pp-intro-hwa__grid-item:nth-child(2):hover {
+    transform: translateY(0.75rem) scale(1.03) !important;
+  }
+  .pp-intro-hwa__grid-item:nth-child(3):hover {
+    transform: translateY(-1.75rem) scale(1.03) !important;
+  }
+  .pp-intro-hwa__grid-item:nth-child(4):hover {
+    transform: translateY(0.25rem) scale(1.03) !important;
+  }
+}
+

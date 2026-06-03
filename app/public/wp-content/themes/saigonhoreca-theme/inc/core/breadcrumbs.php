@@ -162,9 +162,16 @@ function sh_breadcrumbs() {
         }
         $schema_items[] = $entry;
     }
-    echo '<script type="application/ld+json">' . wp_json_encode([
+
+    $breadcrumb_schema = [
         '@context'        => 'https://schema.org',
         '@type'           => 'BreadcrumbList',
         'itemListElement' => $schema_items,
-    ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '</script>' . "\n";
+    ];
+
+    if (class_exists('SGH_SEO_Schema')) {
+        SGH_SEO_Schema::register('breadcrumbs', $breadcrumb_schema);
+    } else {
+        echo '<script type="application/ld+json">' . wp_json_encode($breadcrumb_schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '</script>' . "\n";
+    }
 }

@@ -1,6 +1,6 @@
-<?php
+﻿<?php
 /**
- * Project Pillar — spice-world-hotpot
+ * Project Pillar â€” spice-world-hotpot
  * Section #1: hero
  * @package SaigonHoreca
  */
@@ -33,6 +33,7 @@ $uri = get_template_directory_uri();
         </div>
         
         <h1 class="pp-hero-swh__title">SPICE WORLD HOT POT</h1>
-        <p class="pp-hero-swh__subhead"><?php echo esc_html__('Thương Hiệu Lẩu Đỉnh Cao', 'saigonhoreca'); ?></p>
+        <p class="pp-hero-swh__subhead"><?php echo esc_html__('ThÆ°Æ¡ng Hiá»‡u Láº©u Äá»‰nh Cao', 'saigonhoreca'); ?></p>
     </div>
 </section>
+

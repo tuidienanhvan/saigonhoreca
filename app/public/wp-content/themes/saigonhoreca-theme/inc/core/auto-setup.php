@@ -102,6 +102,69 @@ add_action('wp_loaded', function() {
             sgh_dashboard_deploy_og_image();
         }
     }
+
+    // Auto-sync theme file templates' "* Thumbnail:" values directly into WP database (_thumbnail_id)
+    if (is_admin() || !wp_doing_ajax()) {
+        try {
+            $projects = get_posts([
+                'post_type'      => 'project',
+                'post_status'    => 'any',
+                'posts_per_page' => -1,
+                'no_found_rows'  => true,
+            ]);
+            
+            if (!empty($projects)) {
+                foreach ($projects as $proj) {
+                    $slug = $proj->post_name;
+                    if (empty($slug)) continue;
+
+                    if (function_exists('sgh_get_project_thumbnail')) {
+                        $custom_thumb = sgh_get_project_thumbnail($slug);
+                        if (!empty($custom_thumb)) {
+                            // We have a custom template thumbnail defined. 
+                            // Check if _thumbnail_id is set or matches this media attachment.
+                            $existing_thumb_id = get_post_thumbnail_id($proj->ID);
+                            
+                            // Parse relative file path from thumbnail URL
+                            $uploads_url = function_exists('sgh_uploads_base_url') ? sgh_uploads_base_url() : wp_get_upload_dir()['baseurl'];
+                            $rel_path = str_replace($uploads_url . '/', '', $custom_thumb);
+                            
+                            if (empty($existing_thumb_id)) {
+                                // Find or insert the attachment in the DB
+                                $attach_id = attachment_url_to_postid($custom_thumb);
+                                if (!$attach_id) {
+                                    $uploads_dir = function_exists('sgh_uploads_base_dir') ? sgh_uploads_base_dir() : wp_get_upload_dir()['basedir'];
+                                    $file_path = wp_normalize_path($uploads_dir . '/' . $rel_path);
+                                    
+                                    if (file_exists($file_path)) {
+                                        $wp_filetype = wp_check_filetype($file_path, null);
+                                        $attachment = [
+                                            'post_mime_type' => $wp_filetype['type'],
+                                            'post_title'     => sanitize_file_name(basename($file_path)),
+                                            'post_content'   => '',
+                                            'post_status'    => 'inherit'
+                                        ];
+                                        $attach_id = wp_insert_attachment($attachment, $file_path, $proj->ID);
+                                        if (!is_wp_error($attach_id) && $attach_id > 0) {
+                                            require_once ABSPATH . 'wp-admin/includes/image.php';
+                                            $attach_data = wp_generate_attachment_metadata($attach_id, $file_path);
+                                            wp_update_attachment_metadata($attach_id, $attach_data);
+                                        }
+                                    }
+                                }
+                                
+                                if ($attach_id && !is_wp_error($attach_id)) {
+                                    set_post_thumbnail($proj->ID, $attach_id);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        } catch (\Throwable $ex) {
+            // Safe fallback to prevent active process crash
+        }
+    }
 });
 
 /**

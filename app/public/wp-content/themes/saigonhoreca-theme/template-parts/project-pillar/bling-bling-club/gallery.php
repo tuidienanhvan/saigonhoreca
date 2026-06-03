@@ -18,7 +18,51 @@ $uri = get_template_directory_uri();
         </div>
       </div>
       <div class="pp-split-bbc__media">
-        <img src="<?php echo sgh_img('2024/02/SGH-Portraitbling.jpg'); ?>" alt="<?php echo esc_attr__('Thiết bị bếp công nghiệp Saigon Horeca', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="600" height="800">
+        <div class="pp-image-container-shared">
+          <img src="<?php echo sgh_img('bling-bling-club/bling-bling-club-khong-gian-sanh-dien.jpg'); ?>" alt="<?php echo esc_attr__('Không gian sảnh lounge và bàn VIP tại Bling Bling Club', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="600" height="800">
+          <div class="pp-image-caption-shared"><?php echo esc_html__('Không gian sảnh lounge sang trọng, bàn tiệc VIP lộng lẫy và khu vực quầy bar hiện đại tại Bling Bling Club', 'saigonhoreca'); ?></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<?php /* T-034: merged from cta.php (cũ section 8) */ ?>
+<section class="pp__section pp-bbc-cta">
+  <div class="pp__container">
+    <div class="sgh-bbc-cta-card">
+      <!-- Cột trái: Văn bản & Nút trượt sáng Shimmer màu vàng Champagne -->
+      <div class="sgh-bbc-cta-content">
+        <div class="sgh-bbc-cta-badge">
+          <span class="glitter-dot"></span>
+          Start Your Project
+        </div>
+        <h2 class="sgh-bbc-cta-title">Kiến Tạo Đẳng Cấp Thượng Lưu Cho Quán Bar Của Bạn</h2>
+        <p class="sgh-bbc-cta-desc">Bạn đang tìm kiếm một đơn vị tư vấn thiết kế và phân phối thiết bị bếp bar inox 304 cao cấp chuẩn quốc tế? Hãy để Saigon Horeca nâng tầm dự án F&B của bạn lên vị thế dẫn đầu thị trường.</p>
+        
+        <div class="sgh-bbc-cta-features">
+          <span class="feat-item">✦ Thiết kế bếp bar một chiều tối ưu</span>
+          <span class="feat-item">✦ Thiết bị quầy bar inox 304 xước mờ tinh xảo</span>
+          <span class="feat-item">✦ Tư vấn giải pháp kỹ thuật chuyên sâu</span>
+        </div>
+
+        <div class="sgh-bbc-cta-action">
+          <a href="<?php echo esc_url(home_url('/lien-he')); ?>" class="sgh-bbc-cta-btn">
+            <span class="btn-text">Liên Hệ Tư Vấn Ngay</span>
+            <span class="btn-shimmer"></span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Cột phải: Ảnh thi công thực tế ôm khít -->
+      <div class="sgh-bbc-cta-media" style="background-image: url('<?php echo sgh_img('bling-bling-club/bling-bling-club-khong-gian-quay-bar-soi-dong.jpg'); ?>');">
+        <div class="sgh-bbc-cta-media-overlay"></div>
+      </div>
+
+      <!-- Khung viền Parallel Gold Framer -->
+      <div class="sgh-bbc-cta-framer">
+        <span class="corner tl"></span>
+        <span class="corner br"></span>
       </div>
     </div>
   </div>

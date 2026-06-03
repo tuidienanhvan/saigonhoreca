@@ -1,0 +1,29 @@
+/**
+ * Project page-template — mua-craft-sake-lam-ruou-sake-dau-tien-tai-viet-nam
+ * (layout + project accent tokens).
+ *
+ * "Mùa Craft Sake" — nhà máy rượu sake thủ công đầu tiên tại Việt Nam.
+ * Bảng màu: gỗ Hinoki ấm + men gạo vàng kim, dựng từ brand gold (--p)
+ * qua color-mix — KHÔNG hardcode hex. Toàn bộ accent của 6 section
+ * tham chiếu các token --mua-* được scope trong .pp--mua dưới đây.
+ *
+ * @package SaigonHoreca
+ */
+
+.pp--mua {
+  /* Sake-gold accent (men gạo / Hinoki) — pha từ brand gold + sắc trắng ấm. */
+  --mua-gold:        var(--p);
+  --mua-gold-soft:   color-mix(in srgb, var(--p) 70%, var(--bc));
+  --mua-gold-deep:   color-mix(in srgb, var(--p) 78%, var(--b1));
+  --mua-warm:        color-mix(in srgb, var(--p) 32%, var(--bc));   /* hinoki wood warm tone */
+  --mua-glow:        color-mix(in srgb, var(--p) 14%, transparent);
+  --mua-glow-soft:   color-mix(in srgb, var(--p) 7%, transparent);
+  --mua-line:        color-mix(in srgb, var(--p) 40%, transparent);
+  --mua-glass:       color-mix(in srgb, var(--b1) 40%, transparent);
+  --mua-mist:        color-mix(in srgb, var(--bc) 5%, transparent);
+}
+
+body.page-template-page-project-mua-craft-sake-lam-ruou-sake-dau-tien-tai-viet-nam {
+  background: var(--b1);
+  color: var(--bc);
+}

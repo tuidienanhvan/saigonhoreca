@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="vi" prefix="og: https://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Resource Hints -->
+    <link rel="dns-prefetch" href="https://img.youtube.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Favicons & Manifest -->
+    <link rel="icon" type="image/x-icon" href="https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/assets/images/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/assets/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/assets/images/favicon-16x16.png">
+    <link rel="manifest" href="https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/manifest.json">
+    
+    <style id="sgh-critical">*,:before,:after{box-sizing:border-box}html,body{margin:0;padding:0}body{font-family:Be Vietnam Pro,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.5;color:#fff;background:#0a0a0a;-webkit-font-smoothing:antialiased}h1,h2,h3,h4,h5,h6{margin:0;font-weight:700;color:#fff}img,svg,video{display:block;max-width:100%;height:auto}a{color:inherit;text-decoration:none}button{border:0;cursor:pointer;font:inherit;background:transparent}.sh-skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;background:#f5a623;color:#fff;padding:.5rem 1rem;z-index:100}.sh-skip-link:focus{left:16px;top:16px;width:auto;height:auto}.sh-header{position:sticky;top:0;z-index:50;width:100%;background:#000;border-bottom:1px solid rgba(255,255,255,0.06)}.sh-header__bar{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;padding:.75rem 1.25rem;min-height:76px;color:#fff}.sh-header__actions{display:flex;gap:.75rem;align-items:center}.sh-nav{display:none;position:relative;z-index:10;justify-content:center;align-items:center;overflow:visible;max-width:100%}@media(min-width:1024px){.sh-nav{display:flex}}.sh-nav__list{display:flex;flex-wrap:nowrap;justify-content:center;align-items:center;gap:.25rem;margin:0;padding:0;list-style:none}@media(min-width:1024px){.sh-nav__list{gap:.5rem}}@media(min-width:1280px){.sh-nav__list{gap:1rem}}.sh-nav-item{display:flex;align-items:center;height:100%;position:relative}.sh-nav-item__link{display:inline-flex;align-items:center;gap:.375rem;padding:1.5rem .875rem;font-size:clamp(11px,.9vw,13px);font-weight:700;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;color:rgba(255,255,255,0.88);text-decoration:none}.sh-nav-item__chevron{display:inline-flex;margin-left:.25rem}.sh-nav-item__chevron-icon{display:block;width:.75rem;height:.75rem;opacity:.7}.sh-hero{position:relative;width:100%;aspect-ratio:16/9;background:#000;overflow:hidden}.sh-hero__slider{position:relative;width:100%;height:100%;background:#000}.sh-hero__slides{position:relative;width:100%;height:100%}.carousel-slide{position:absolute;inset:0;width:100%;height:100%;display:none;background:#000}.carousel-slide.active{display:block;z-index:20;opacity:1}.sh-hero__bg-img,.carousel-slide .slide-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;background:#000}.sh-hero__overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(0,0,0,0.55) 0%,rgba(0,0,0,0.30) 40%,rgba(0,0,0,0.15) 100%);pointer-events:none}.sgh-cv-auto{content-visibility:auto;contain-intrinsic-size:auto 600px}#sh-hero-slider .carousel-slide .slide-bg,#sh-hero-slider .carousel-slide .sh-hero__bg-img,.sh-hero__slider .carousel-slide .slide-bg,.sh-hero__slider .carousel-slide .sh-hero__bg-img{animation:none!important;transform:none!important}.sh-hero__nav{position:absolute;top:50%;transform:translateY(-50%);z-index:20;background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.3);color:#fff;width:2.75rem;height:2.75rem;border-radius:9999px;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:.8}.sh-hero__nav--prev{left:1rem}.sh-hero__nav--next{right:1rem}@media(min-width:768px){.sh-hero__nav{width:3.5rem;height:3.5rem}.sh-hero__nav--prev{left:2rem}.sh-hero__nav--next{right:2rem}}.sh-hero__dots{position:absolute;bottom:2rem;right:2rem;z-index:20;display:flex;gap:.5rem}.sh-hero__dot,.carousel-dot{width:.5rem;height:.5rem;padding:0;border:none;border-radius:9999px;background:rgba(255,255,255,0.4);cursor:pointer}.sh-hero__dot.active,.carousel-dot.active{width:2rem;background:#f5a623}
+/* Per-route critical CSS — Saigon Horeca.
+ *
+ * Inlined by critical-css.php (concatenated after critical.css). Covers
+ * above-fold styles for routes where the route-bundle CSS round-trip
+ * would otherwise gate the LCP paint.
+ */
+
+/* ── /du-an/ archive hero — kill 1.2 s opacity-fade-in for LCP slide ──
+ *
+ * The bg-stack has 6 absolute-positioned <div> slides; slide 0 has
+ * `.is-active` server-side but the route bundle animates opacity
+ * 0 → 1 over 1.2 s. Lighthouse Mobile baseline: P=75, LCP=7.9 s with
+ * 88 % render-delay because LCP element waits for opacity:1.
+ *
+ * Inlining paints the active slide at opacity:1 immediately on first
+ * HTML parse — no waiting for theme-archive-project.css to arrive.
+ * Carousel JS still toggles `is-active` to cycle slides; subsequent
+ * transitions still animate after the first paint completes.
+ */
+.sh-archive-hero {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: #000;
+    overflow: hidden;
+}
+.sh-archive-hero__bg-stack {
+    position: absolute;
+    inset: 0;
+}
+.sh-archive-hero__bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+}
+.sh-archive-hero__bg.is-active {
+    opacity: 1;
+}
+
+/* ── /ve-saigon-horeca/ (page-gioi-thieu template) about hero ──
+ * Same opacity-fade trap. Force opacity:1 on first paint. */
+.sh-about-hero {
+    position: relative;
+    width: 100%;
+    min-height: 520px;
+    background: #000;
+    overflow: hidden;
+}
+@media (max-width: 640px) {
+    .sh-about-hero { min-height: 380px; }
+}
+.sh-about-hero__bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 1;
+}
+</style>
+        <title>THE ROYAL &#8211; ALL DAY DINING &#8211; Saigon Horeca</title>
+<meta name='robots' content='max-image-preview:large' />
+<meta name="description" content="Little Bear Thảo Điền mời bạn bước vào một thiên đường ẩm thực, gia – Giá tốt, bảo hành chính hãng – Hotline: 0901 304 365">
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//www.googletagmanager.com' />
+<link rel='dns-prefetch' href='//www.google-analytics.com' />
+<link rel='dns-prefetch' href='//zalo.me' />
+<link rel='dns-prefetch' href='//www.facebook.com' />
+<link rel='dns-prefetch' href='//www.youtube.com' />
+<link rel="preload" as="style" href="css/theme-project.css">
+    <script>
+    (function(){
+        // Always load tracking — cookie consent is cosmetic only
+        function afterConsent(cb) {
+            try {
+                if (localStorage.getItem('sh_cookies_accepted') === '1') {
+                    cb();
+                    return;
+                }
+            } catch (e) {}
+            window.addEventListener('sh:cookies-accepted', cb, { once: true });
+        }
+        afterConsent(function(){
+                        });
+    })();
+    </script>
+    <style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+
+
+<link rel='stylesheet' id='theme-tokens-css' href='css/theme-project.css' media='all' />
+<style id="theme-tokens-inline-css">
+
+        :root {
+            --font-body: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            --font-heading: "Lexend", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            --font-serif: "Lora", Georgia, serif;
+            --ast-global-color-0: #f9c349;
+            --ast-global-color-1: #ffb100;
+            --ast-global-color-2: #000000;
+            --ast-global-color-3: #242525;
+            --ast-global-color-4: #f9fafb;
+            --ast-global-color-5: #ffffff;
+            --ast-global-color-6: #e2e8f0;
+            --ast-global-color-7: #cbd5e1;
+            --ast-global-color-8: #94a3b8;
+            --e-global-color-astglobalcolor0: #f9c349;
+            --e-global-color-astglobalcolor1: #ffb100;
+            --e-global-color-astglobalcolor2: #000000;
+            --e-global-color-astglobalcolor3: #242525;
+            --e-global-color-astglobalcolor4: #f9fafb;
+            --e-global-color-astglobalcolor5: #ffffff;
+            --e-global-color-astglobalcolor6: #e2e8f0;
+            --e-global-color-astglobalcolor7: #cbd5e1;
+            --e-global-color-astglobalcolor8: #94a3b8;
+        }
+        body { font-family: var(--font-body); }
+        h1, h2, h3, h4, h5, h6, .font-sans { font-family: var(--font-heading) !important; }
+        .e-font-icon-svg { display: inline-block; width: 1em; height: 1em; fill: currentColor; }
+
+        /* ROKA FELLA CAPTION & LAYOUT ENHANCEMENTS */
+        .pp-image-container-rf {
+            position: relative !important;
+            overflow: hidden !important;
+        }
+        .pp-image-caption-rf {
+            position: absolute !important;
+            bottom: 0.75rem !important;
+            left: 0.75rem !important;
+            z-index: 5 !important;
+            padding: 0.4rem 0.85rem !important;
+            background: rgba(10, 10, 10, 0.85) !important;
+            border: 1px solid rgba(255, 255, 255, 0.12) !important;
+            border-radius: 6px !important;
+            font-family: var(--font-heading), sans-serif !important;
+            font-size: 0.68rem !important;
+            font-weight: 700 !important;
+            letter-spacing: 0.05em !important;
+            color: var(--gold) !important;
+            backdrop-filter: blur(8px) !important;
+            -webkit-backdrop-filter: blur(8px) !important;
+            pointer-events: none !important;
+            opacity: 0.85 !important;
+            transition: opacity 0.3s ease, transform 0.3s ease !important;
+            width: auto !important;
+            max-width: calc(100% - 1.5rem) !important;
+            text-align: left !important;
+            display: inline-block !important;
+            border-top: none !important;
+        }
+        .pp-image-container-rf:hover .pp-image-caption-rf {
+            opacity: 1 !important;
+            transform: translateY(-2px) !important;
+        }
+        .pp-image-container-rf img {
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        }
+        .pp-image-container-rf:hover img {
+            transform: scale(1.04) !important;
+            filter: grayscale(0%) contrast(1.05) brightness(1.02) !important;
+        }
+        /* Premium Cards styling */
+        .rkf-concept__glass-card,
+        .rkf-specs__glass-card {
+            background: linear-gradient(135deg, rgba(12, 14, 20, 0.92) 0%, rgba(6, 7, 10, 0.97) 100%) !important;
+            border: 1px solid rgba(245, 166, 35, 0.18) !important;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), inset 0 0 35px rgba(245, 166, 35, 0.04) !important;
+        }
+        .rkf-concept__glass-card:hover,
+        .rkf-specs__glass-card:hover {
+            border-color: rgba(245, 166, 35, 0.45) !important;
+            box-shadow: 0 35px 70px rgba(0, 0, 0, 0.92), 0 0 35px rgba(245, 166, 35, 0.1) !important;
+        }
+        .rkf-partnership__glass-card,
+        .rkf-related__glass-card {
+            background: linear-gradient(135deg, rgba(12, 14, 20, 0.92) 0%, rgba(6, 7, 10, 0.97) 100%) !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.85) !important;
+        }
+        .rkf-partnership__glass-card:hover,
+        .rkf-related__glass-card:hover {
+            border-color: rgba(255, 255, 255, 0.15) !important;
+            box-shadow: 0 35px 70px rgba(0, 0, 0, 0.95) !important;
+        }
+        /* Staggered floaters adjustment */
+        .rkf-partnership__image-container--floating {
+            box-shadow: -20px 20px 50px rgba(0, 0, 0, 0.9), 0 0 30px rgba(245, 166, 35, 0.15) !important;
+            transform: rotate(3deg) translateY(0) !important;
+        }
+        .rkf-partnership__side:hover .rkf-partnership__image-container--floating {
+            transform: scale(1.04) rotate(0deg) translateY(-10px) !important;
+        }
+    
+/*# sourceURL=theme-tokens-inline-css */
+</style>
+<link rel='preload' as='style' onload="this.onload=null;this.rel='stylesheet'" id='google-fonts-sgh-css' href='https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&#038;family=Lexend:wght@500;700&#038;family=Lora:ital,wght@0,400;0,500;0,700;1,400;1,700&#038;display=swap' media='all' />
+<link rel="https://api.w.org/" href="https://saigonhoreca.local/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://saigonhoreca.local/wp-json/wp/v2/project/696" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://saigonhoreca.local/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress 7.0" />
+<link rel="canonical" href="https://saigonhoreca.local/du-an/the-royal-all-day-dining/" />
+<link rel='shortlink' href='https://saigonhoreca.local/?p=696' />
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","@id":"https://saigonhoreca.local/#organization","name":"SAIGON HORECA","legalName":"CÔNG TY TNHH SÀI GÒN HORECA","url":"https://saigonhoreca.local/","description":"Saigon Horeca cung cấp đa dạng các sản phẩm thiết bị bếp công nghiệp và thiết bị quầy bar phục vụ cho khách hàng trong lĩnh vực F&B, bao gồm tư vấn thiết kế, thi công lắp đặt, cung cấp thiết bị, và tư vấn vận hành kinh doanh.","telephone":"0901 304 365","email":"contact@saigonhoreca.com","address":{"@type":"PostalAddress","streetAddress":"Số 40 Đường Số 6, Khu Dân Cư Melosa Khang Điền, Phường Long Trường, TP. Hồ Chí Minh","addressLocality":"Hồ Chí Minh","addressRegion":"Hồ Chí Minh","addressCountry":"VN"},"logo":{"@type":"ImageObject","url":"https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/assets/images/logo.png"},"image":"https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/assets/images/logo.png","sameAs":["https://www.facebook.com/saigonhoreca","https://www.youtube.com/@saigonhoreca","https://zalo.me/0901304365"],"contactPoint":[{"@type":"ContactPoint","telephone":"0901 304 365","contactType":"sales","areaServed":"VN","availableLanguage":["Vietnamese","English"]},{"@type":"ContactPoint","telephone":"0909 040 920","contactType":"customer support","areaServed":"VN"}]}</script>
+
+<link rel="alternate" hreflang="vi" href="https://saigonhoreca.vn/du-an/the-royal-all-day-dining/">
+<link rel="alternate" hreflang="en" href="https://saigonhoreca.com/projects/the-royal-all-day-dining/">
+<link rel="alternate" hreflang="x-default" href="https://saigonhoreca.vn/du-an/the-royal-all-day-dining/">
+
+    <!-- SEO Fallback: OpenGraph only (meta description is handled by
+         inc/core/seo-meta-description.php to guarantee 120-155 chars). -->
+            <meta property="og:title" content="THE ROYAL &#8211; ALL DAY DINING">
+        <meta property="og:description" content="Little Bear Thảo Điền mời bạn bước vào một thiên đường ẩm thực, gia – Giá tốt, bảo hành chính hãng – Hotline: 0901 304 365">
+        <meta property="og:url" content="https://saigonhoreca.local/du-an/the-royal-all-day-dining/">
+        <meta property="og:type" content="website">
+        <meta property="og:image" content="images/du-an-the-royal-sgh.jpg">
+        <meta property="og:site_name" content="Saigon Horeca">
+    
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Dark mode: apply BEFORE paint to prevent flash -->
+    <script>
+    (function(){
+        var d = null;
+        try { d = localStorage.getItem('sh-dark'); } catch (e) {}
+        if (d === 'true') document.documentElement.classList.add('dark');
+    })();
+    </script>
+    </head>
+<body class="wp-singular project-template-default single single-project postid-696 wp-embed-responsive wp-theme-saigonhoreca-theme page-template-page-project-the-royal-all-day-dining page-template-page-project">
+<main id="primary" class="pp pp--trd" tabindex="-1">
+    <section class="pp-hero-trd">
+    <div class="pp-hero-trd__media" style="background-image:url('images/the-royal-sgh-2.jpg'); background-size:cover; background-position:center;" data-ken-burns></div>
+    <div class="pp-hero-trd__overlay" aria-hidden="true"></div>
+    <div class="pp-hero-trd__content">
+        <h1 class="pp-hero-trd__title">THE ROYAL - ALL DAY DINING</h1>
+        <h2 class="pp-hero-trd__subhead">Sự giao thoa giữa tinh hoa phương Tây và tâm hồn Việt</h2>
+        <p class="pp-hero-trd__subtitle"><em>Ngay từ ánh nhìn đầu tiên, The Royal All Day Dining toát lên khí chất sang trọng và đẳng cấp, như một biểu tượng của nghệ thuật kiến trúc tinh tế giữa lòng thành phố.</em></p>
+    </div>
+</section>
+<section class="pp__section pp__section--alt">
+  <div class="pp__container pp-container-shared">
+    <div class="pp-text-trd pp-text-trd--center pp-text-trd--narrow">
+      <span class="pp-text-trd__divider pp-text-trd__divider--center" aria-hidden="true"></span>
+      <h2 class="pp-text-trd__title">The Royal</h2>
+      <div class="pp-text-trd__body">
+        <p><strong>Địa chỉ:</strong> 41-47 Dong Du, Ben Nghe Ward, District 1, Ho Chi Minh City.</p>
+        <p>Từ 11h00 AM – 11h00 AM (Thứ hai – Thứ bảy)</p>
+        <p><em>Không gian nơi đây được trau chuốt kỹ lưỡng đến từng chi tiết, phản ánh gu thẩm mỹ thời thượng và sự chỉn chu tuyệt đối trong thiết kế. The Royal không chạy theo xu hướng ngắn hạn, mà kiến tạo một phong cách kiến trúc riêng – hiện đại, thanh lịch và mang đậm dấu ấn của sự tinh mỹ vượt thời gian.</em></p>
+      </div>
+    </div>
+    <figure class="pp-image-container-shared">
+      <img src="images/the-royal-sgh-1.jpg" alt="Thiết bị bếp công nghiệp Saigon Horeca" loading="lazy" decoding="async" width="1366" height="768">
+      <figcaption class="pp-image-caption-shared">credit: @_theroyal.alldaydining</figcaption>
+    </figure>
+    <div class="pp-text-trd pp-text-trd--narrow">
+      <h2 class="pp-text-trd__title">The Royal – Khi vẻ đẹp chỉn chu tạo nên sự khác biệt</h2>
+      <div class="pp-text-trd__body">
+        <p><em>Nằm ngay trung tâm thành phố, THE ROYAL ALL DAY DINING là điểm hẹn lý tưởng dành cho những ai yêu thích sự tinh tế trong ẩm thực. Tại đây, mỗi món ăn là một sự kết hợp khéo léo giữa kỹ thuật ẩm thực hiện đại phương Tây và những giá trị truyền thống sâu sắc của ẩm thực Việt Nam. Mặt tiền được thiết kế với tông màu gỗ sáng, khung cửa kính tối màu, và những chi tiết vuông vức dứt khoát – tất cả gợi lên một sự gần gũi tự nhiên, như lời mời gọi bước vào một không gian không chỉ để ăn uống, mà còn để tạm dừng, tận hưởng, và kết nối.</em></p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="pp__section pp__section--alt">
+  <div class="pp__container pp-container-shared">
+    <div class="pp-text-trd pp-text-trd--center pp-text-trd--narrow">
+      <h2 class="pp-text-trd__title">Thiết kế của The Royal All Day Dining</h2>
+      <span class="pp-text-trd__divider pp-text-trd__divider--center" aria-hidden="true"></span>
+      <div class="pp-text-trd__body">
+        <p>Tọa lạc tại 41–47 Đông Du, Bến Nghé, Quận 1, TP. Hồ Chí Minh, The Royal All Day Dining mang dáng dấp của một nhà hàng đẳng cấp – nơi mỗi trải nghiệm ẩm thực đều được chăm chút tỉ mỉ. Không phô trương hình ảnh, The Royal lựa chọn cách chinh phục khách hàng bằng chất lượng, sự chỉn chu và phong cách vận hành chuyên nghiệp.</p>
+        <p>Không gian và thiết kế không cần lời quảng bá rầm rộ – chính cảm nhận của thực khách sẽ là minh chứng rõ ràng nhất cho sự khác biệt mang tên The Royal.</p>
+      </div>
+    </div>
+    <figure class="pp-image-container-shared">
+      <img src="images/the-royal-sgh-1.jpg" alt="Thiết bị bếp công nghiệp Saigon Horeca" loading="lazy" decoding="async" width="1366" height="768">
+      <figcaption class="pp-image-caption-shared">Không gian bên trong The Royal</figcaption>
+    </figure>
+    <div class="pp-text-trd pp-text-trd--narrow">
+      <div class="pp-text-trd__body">
+        <p>Bên trong, không gian mang hơi hướng một phòng trà châu Âu thế kỷ trước, với ghế bọc da nâu cổ điển, tường ốp gỗ tự nhiên và hệ thống đèn chùm ánh vàng dịu.</p>
+      </div>
+    </div>
+    <figure class="pp-image-container-shared">
+      <img src="images/the-royal-sgh-2.jpg" alt="Thiết bị bếp công nghiệp Saigon Horeca" loading="lazy" decoding="async" width="1366" height="768">
+    </figure>
+    <div class="pp-text-trd pp-text-trd--narrow">
+      <div class="pp-text-trd__body">
+        <p>Cách bố trí ghế sofa cong mềm mại, đan cài cùng những vách ngăn thấp bằng gỗ và kính, tạo nên từng &quot;khoảng trời riêng&quot; cho thực khách mà không làm mất đi sự liên kết tổng thể. Một chi tiết nhỏ nhưng tinh tế chính là sự lặp lại nhẹ nhàng của họa tiết đường cong — từ cửa vòm, đến lưng ghế, đến khung kính tường — như những giai điệu cổ xưa vang lên trong không gian hiện đại.</p>
+      </div>
+    </div>
+    <div class="pp-gallery-trd pp-gallery-trd--cols-2" style="margin: 2.5rem 0;">
+      <div class="pp-gallery-trd__item"><img src="images/the-royal-sgh-3.jpg" alt="the-royal-sgh (3)" loading="lazy" decoding="async"></div>
+      <div class="pp-gallery-trd__item"><img src="images/the-royal-sgh-4.jpg" alt="the-royal-sgh (4)" loading="lazy" decoding="async"></div>
+    </div>
+    <div class="pp-text-trd pp-text-trd--narrow">
+      <div class="pp-text-trd__body">
+        <p>Ánh sáng ở The Royal được tiết chế kỹ lưỡng. Không gian ấm cúng và sang trọng, vừa đủ để mỗi bữa ăn trở thành một khoảnh khắc tận hưởng trọn vẹn. Đèn chùm kiểu dáng tối giản, sử dụng lớp thủy tinh mờ để ánh sáng không chói lóa, lại làm nổi bật được độ óng ả của gỗ và da trong phòng.</p>
+        <p>The Royal không cố gắng làm mình khác biệt một cách ồn ào, mà chọn cách lặng lẽ chinh phục lòng người — giống như một bản nhạc trữ tình ngân vang giữa những bộn bề náo động. Đó chính là &quot;chất&quot; Royal: tinh tế, trầm lắng và bền bỉ theo thời gian.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="pp-section-bg-trd" style="background-image:url('images/the-royal-sgh-6.jpg');">
+  <div class="pp-section-bg-trd__overlay" aria-hidden="true"></div>
+  <div class="pp-container-shared">
+  <div class="pp-section-bg-trd__content">
+    <span class="pp-text-trd__divider pp-text-trd__divider--center" aria-hidden="true"></span>
+    <h2 class="pp-text-trd__title">The Royal – Dự án bếp công nghiệp cao cấp do Saigon Horeca thực hiện</h2>
+    <div class="pp-text-trd__body">
+      <p>Ngay từ cái nhìn đầu tiên, không gian bếp tại The Royal gây ấn tượng mạnh với sự <strong>bố trí khoa học, tối ưu hóa quy trình vận hành một chiều</strong> – từ khu sơ chế, chế biến, nấu nướng đến khu ra món. Tất cả các thiết bị đều được Saigon Horeca sử dụng chất liệu inox cao cấp, mang lại sự <strong>bền bỉ, dễ dàng vệ sinh</strong> và đảm bảo vệ sinh an toàn thực phẩm tuyệt đối.</p>
+    </div>
+  </div>
+  </div>
+</section>
+<section class="pp__section pp__section--alt pp-specs-trd">
+  <div class="pp__container pp-container-shared">
+    <div class="pp-split-trd">
+      <div class="pp-split-trd__media pp-split-trd__media--stack">
+        <img src="images/the-royal-sgh-5.jpg" alt="Thiết bị bếp công nghiệp Saigon Horeca" loading="lazy" decoding="async" width="1366" height="768">
+        <img src="images/the-royal-sgh-6.jpg" alt="Thiết bị bếp công nghiệp Saigon Horeca" loading="lazy" decoding="async" width="1366" height="768">
+      </div>
+      <div class="pp-split-trd__body">
+        <h2 class="pp-text-trd__title">Giải pháp của Saigon Horeca:</h2>
+        <span class="pp-text-trd__divider" aria-hidden="true"></span>
+        <div class="pp-text-trd__body">
+          <p><strong>The Royal</strong> ra đời như một tuyên ngôn về sự hoàn mỹ trong từng chi tiết. Và Saigon Horeca, với vai trò thiết kế và thi công hệ thống bếp công nghiệp, đã thể hiện xuất sắc sứ mệnh đó: <strong>biến mỗi mét vuông nhà bếp thành một nền tảng cho sự bứt phá trong nghệ thuật ẩm thực.</strong></p>
+          <p>Bếp công nghiệp The Royal được xây dựng theo triết lý <strong>&quot;Bếp là trái tim của nhà hàng – nơi khởi nguồn cho mọi cảm xúc thực&quot;</strong></p>
+          <p>Mọi khu vực trong bếp – từ sơ chế, chế biến, nấu nướng đến hoàn thiện món – đều được <strong>vận hành cực kỳ khoa học</strong>, tối ưu theo dòng chảy một chiều, giúp tiết kiệm thời gian, giảm thiểu sai sót và tạo nên nhịp làm việc nhịp nhàng, chính xác đến từng thao tác.</p>
+          <p>Tại The Royal, bếp không chỉ là nơi tạo ra món ăn, mà là &quot;ngôi nhà&quot; của các chef thỏa sức sáng tạo và thổi hồn vào từng món ăn – khởi nguồn cho trải nghiệm đẳng cấp đến với thực khách.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="pp__section pp__section--alt pp-gallery-trd">
+  <div class="pp__container pp-container-shared">
+    <div class="pp-split-trd">
+      <div class="pp-split-trd__body">
+        <h2 class="pp-text-trd__title">DNA của Saigon Horeca: Sự đồng bộ của hệ thống thiết bị</h2>
+        <span class="pp-text-trd__divider" aria-hidden="true"></span>
+        <div class="pp-text-trd__body">
+          <ul class="pp-list-trd">
+            <li><strong>Hệ thống lò hấp – nướng – giữ nhiệt hiện đại</strong></li>
+            <li><strong>Tủ mát, tủ đông inox chuyên dụng</strong> cho việc lưu trữ nguyên liệu tươi sống, được phối hợp hài hòa, không chỉ giúp đầu bếp đạt hiệu suất tối đa, mà còn nâng cao độ bền, an toàn và tiết kiệm năng lượng trong vận hành lâu dài.</li>
+            <li><strong>Bếp chiên, nướng, bếp gas công nghiệp</strong> với công suất lớn từ thương hiệu Fujimak</li>
+          </ul>
+          <p>Ngoài ra, bề mặt inox mượt mà, gạch ốp tường xanh rêu cao cấp, hệ thống ánh sáng vàng ấm… tất cả tạo nên một bầu không khí bếp vừa <strong>sạch sẽ chuẩn mực</strong>, vừa <strong>ấm cúng gợi cảm hứng sáng tạo</strong>.</p>
+        </div>
+      </div>
+      <div class="pp-split-trd__media">
+        <img src="images/the-royal-sgh-10.jpg" alt="Thiết bị bếp công nghiệp Saigon Horeca" loading="lazy" decoding="async" width="600" height="800">
+      </div>
+    </div>
+  </div>
+</section>
+
+</div></body>
+</html>

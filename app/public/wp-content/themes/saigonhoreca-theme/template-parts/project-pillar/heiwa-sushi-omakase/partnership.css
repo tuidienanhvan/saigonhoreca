@@ -1,148 +1,222 @@
 /**
- * heiwa-sushi-omakase — partnership slot. .pp-section-bg-hwa cinematic dark bg + glassmorphic content.
+ * heiwa-sushi-omakase — partnership slot.
+ * Pure CSS Parallax Clip background + Elegant Wabi-Sabi Editorial layout.
  * @package SaigonHoreca
  */
 
-.pp-section-bg-hwa {
+.pp-section-bg-hwa,
+.pp-section-bg-hwa.scroll-reveal.is-visible {
   position: relative;
-  padding: 8rem 1.5rem;
-  min-height: 80vh; /* Tăng từ 70vh lên 80vh để ảnh to hoành tráng */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--b1);
   isolation: isolate;
+  min-height: 750px;
+  display: grid;
+  align-items: center;
+  padding: clamp(6rem, 12vh, 9rem) 1.5rem;
   overflow: hidden;
-  clip-path: inset(0 0 0 0); /* Tạo cửa sổ cắt cho ảnh nền ghim fixed bên trong */
+  clip-path: inset(0 0 0 0) !important;
+  transform: none !important;
+  filter: none !important;
+  border-bottom: 1px solid var(--bd);
 }
-@media (min-width: 768px) { .pp-section-bg-hwa { padding: 11rem 2rem; } }
 
 .pp-section-bg-hwa__bg {
-  position: fixed; /* Ghim cố định vào màn hình trình duyệt */
-  top: 0;
-  left: 0;
+  position: fixed;
+  inset: 0;
   width: 100%;
   height: 100%;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  z-index: 0;
+  z-index: -2;
   pointer-events: none;
 }
 
 .pp-section-bg-hwa__overlay {
-  display: none; /* Bỏ hoàn toàn lớp phủ đen đè lên ảnh để ảnh sáng rõ tuyệt đối */
-}
-
-.pp-section-bg-hwa::before {
-  content: '';
   position: absolute;
-  top: -10%;
-  right: -8%;
-  width: 540px; height: 540px;
-  background: radial-gradient(circle, color-mix(in srgb, var(--gold) 15%, transparent) 0%, transparent 70%);
-  filter: blur(80px);
-  z-index: 1;
+  inset: 0;
+  z-index: -1;
   pointer-events: none;
-  opacity: 0.7;
+  background: 
+    linear-gradient(90deg, color-mix(in srgb, var(--b1) 80%, transparent) 0%, rgba(10,10,10,0.15) 50%, color-mix(in srgb, var(--b1) 80%, transparent) 100%),
+    linear-gradient(180deg, color-mix(in srgb, var(--b1) 50%, transparent) 0%, rgba(10,10,10,0.3) 50%, color-mix(in srgb, var(--b1) 60%, transparent) 100%);
 }
 
 .pp-section-bg-hwa__content {
+  width: 100%;
+  max-width: 1080px;
+  margin-inline: auto;
   position: relative;
   z-index: 2;
-  max-width: 880px;
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2.5rem, 5vw, 4rem);
+}
+
+.pp-section-bg-hwa__header {
   text-align: center;
-  padding: clamp(2rem, 5vw, 3.5rem);
-  background: rgba(0, 0, 0, 0.25); /* Trong suốt nhẹ để lộ ảnh thực tế phía sau */
-  backdrop-filter: blur(8px) saturate(120%);
-  -webkit-backdrop-filter: blur(8px) saturate(120%);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 12px;
+}
+
+.pp-text-hwa__divider {
+  display: block;
+  width: 64px;
+  height: 2px;
+  margin: 0 auto 1.25rem;
+  background: var(--gold);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--gold) 60%, transparent);
+}
+
+.pp-text-hwa__title {
+  max-width: 820px;
+  margin: 0 auto;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  line-height: 1.25;
+  color: var(--bc);
+  text-shadow: 0 2px 15px rgba(0, 0, 0, 0.7) !important;
+}
+
+/* Bố cục 2 cột Wabi-Sabi */
+.pp-hwa-partnership-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: start;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: clamp(2.5rem, 4vw, 3.5rem);
+}
+
+@media (min-width: 992px) {
+  .pp-hwa-partnership-row {
+    grid-template-columns: 1.15fr 1fr;
+    gap: 4.5rem;
+  }
+}
+
+.pp-hwa-partnership-col-left {
+  position: relative;
+}
+
+.pp-hwa-partnership-col-right {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Trích dẫn nghệ thuật cột trái */
+.pp-hwa-partnership-quote {
+  position: relative;
+  padding-left: 2rem;
+  border-left: 3px solid var(--gold);
+}
+
+.pp-hwa-quote-icon {
+  position: absolute;
+  left: 0.5rem;
+  top: -1.25rem;
+  font-family: var(--font-display), serif;
+  font-size: 4.5rem;
+  line-height: 1;
+  color: color-mix(in srgb, var(--gold) 20%, transparent);
+  font-weight: 900;
+  pointer-events: none;
+}
+
+.pp-hwa-quote-text {
+  font-size: clamp(1.2rem, 1.5vw, 1.55rem);
+  font-style: italic;
+  font-weight: 600;
+  line-height: 1.6;
+  color: var(--bc);
+  margin: 0;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* Văn bản cột phải */
+.pp-hwa-partnership-lead {
+  font-size: 1.1rem;
+  line-height: 1.85;
+  color: var(--bc);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5) !important;
+  font-weight: 500;
+  margin: 0;
+}
+
+.pp-hwa-partnership-body {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--bc2);
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.4) !important;
+  font-weight: 400;
+  margin: 0;
+}
+
+/* Đỉnh cao sự hợp tác - Callout */
+.pp-hwa-partnership-footer-callout {
+  position: relative;
+}
+
+.pp-hwa-callout-inner {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.04) 0%, rgba(212, 175, 55, 0.01) 100%);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  border-radius: 16px;
+  padding: 2rem 2.5rem;
+  position: relative;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
-  overflow: visible;
-  box-shadow:
-    0 30px 60px rgba(0, 0, 0, 0.60),
-    0 0 40px color-mix(in srgb, var(--gold) 6%, transparent);
-  transition: border-color 0.5s var(--ease-spring), box-shadow 0.5s var(--ease-spring);
+  text-align: center;
+  gap: 0.75rem;
 }
 
-.pp-section-bg-hwa__content:hover {
-  border-color: color-mix(in srgb, var(--gold) 20%, transparent);
-  box-shadow: 
-    0 35px 70px rgba(0, 0, 0, 0.85),
-    0 0 50px color-mix(in srgb, var(--gold) 8%, transparent);
-}
-
-/* Parallel Framer: 2 góc viền song song đối xứng chéo */
-.pp-section-bg-hwa__content::before,
-.pp-section-bg-hwa__content::after {
+.pp-hwa-callout-inner::before {
   content: '';
   position: absolute;
-  width: 24px;
-  height: 24px;
-  border: 1.5px solid color-mix(in srgb, var(--gold) 65%, transparent);
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.05), transparent 70%);
   pointer-events: none;
-  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Góc trên bên trái */
-.pp-section-bg-hwa__content::before {
-  top: -1px;
-  left: -1px;
-  border-right: none;
-  border-bottom: none;
+.pp-hwa-callout-sparkle {
+  width: 20px;
+  height: 20px;
+  opacity: 0.8;
+  animation: pulse-sparkle-hwa 3s infinite ease-in-out;
 }
 
-/* Góc dưới bên phải */
-.pp-section-bg-hwa__content::after {
-  bottom: -1px;
-  right: -1px;
-  border-left: none;
-  border-top: none;
-}
-
-/* Hover co giãn viền chéo */
-.pp-section-bg-hwa__content:hover::before {
-  top: -6px;
-  left: -6px;
-  width: 32px;
-  height: 32px;
-  border-color: var(--gold);
-}
-
-.pp-section-bg-hwa__content:hover::after {
-  bottom: -6px;
-  right: -6px;
-  width: 32px;
-  height: 32px;
-  border-color: var(--gold);
-}
-
-.pp-section-bg-hwa__content .pp-text-hwa__title {
+.pp-hwa-callout-text {
+  font-family: var(--font-display), sans-serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 1.7;
+  color: var(--gold);
   margin: 0;
-  font-family: var(--font-display);
-  font-size: clamp(1.65rem, 3vw, 2.5rem);
-  font-weight: 700;
-  line-height: 1.25;
-  color: var(--bc);
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+  max-width: 860px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5) !important;
 }
 
-.pp-section-bg-hwa__content .pp-text-hwa__body {
-  font-size: clamp(0.97rem, 1.1vw, 1.05rem);
-  line-height: 1.85;
-  color: color-mix(in srgb, var(--bc) 75%, transparent);
-  max-width: 700px;
+@keyframes pulse-sparkle-hwa {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.25); opacity: 1; filter: drop-shadow(0 0 6px var(--gold)); }
 }
 
-.pp-section-bg-hwa__content .pp-text-hwa__body p {
-  margin: 0 0 1.25rem;
-  text-align: center;
+@media (max-width: 991px) {
+  .pp-section-bg-hwa {
+    padding: 5rem 1.5rem;
+  }
+  .pp-hwa-callout-inner {
+    padding: 1.5rem 1.75rem;
+  }
 }
 
-.pp-section-bg-hwa__content .pp-text-hwa__body p:last-child { margin-bottom: 0; }
-
+/* Parallax fallback on mobile devices for smooth performance */
+@media (max-width: 768px) {
+  .pp-section-bg-hwa__bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+}

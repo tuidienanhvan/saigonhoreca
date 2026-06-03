@@ -1,14 +1,14 @@
-<?php
+﻿<?php
 /**
- * Project Pillar — tales-by-chapter
+ * Project Pillar â€” tales-by-chapter
  * Section #3: split
  * @package SaigonHoreca
  */
 if (!defined('ABSPATH')) exit;
 $uri = get_template_directory_uri();
 ?>
-<section class="pp__section pp__section--alt">
-  <div class="pp__container">
+<section class="pp-section-tbc pp-section-tbc--alt scroll-reveal">
+  <div class="pp-container-shared">
     <div class="pp-split-tbc">
       <div class="pp-split-tbc__body">
         <span class="pp-text-tbc__divider" aria-hidden="true"></span>
@@ -21,9 +21,11 @@ $uri = get_template_directory_uri();
       <p><?php echo esc_html__('Tại đây, máy móc không cần quá cầu kỳ, chúng đóng vai trò hỗ trợ để các đầu bếp có thể tập trung hoàn toàn vào việc chế biến món ăn ngon nhất từ nguyên liệu tươi sạch', 'saigonhoreca'); ?></p>
         </div>
       </div>
-      <div class="pp-split-tbc__media">
+      <div class="pp-split-tbc__media pp-image-container-shared">
         <img src="<?php echo sgh_img('2025/01/sheh-fung-2.jpg'); ?>" alt="<?php echo esc_attr__('Thiết bị bếp công nghiệp Saigon Horeca', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="1366" height="768">
+        <div class="pp-image-caption-shared"><?php echo esc_html__('Xưởng sáng tạo zero waste – nơi nguyên liệu được lắng nghe', 'saigonhoreca'); ?></div>
       </div>
     </div>
   </div>
 </section>
+

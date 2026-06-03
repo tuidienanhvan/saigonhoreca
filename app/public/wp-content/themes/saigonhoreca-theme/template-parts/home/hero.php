@@ -35,11 +35,11 @@ $uri = get_template_directory_uri();
 
 $slides = [
     [
-        'img' => '2025/05/SGH-banner.jpg',
+        'img' => 'saigonhoreca/SGH-banner-1.webp',
         'alt' => 'Bespoke Kitchen & Bar — Saigon Horeca',
     ],
     [
-        'img' => '2025/04/SGH-banner-02.jpg',
+        'img' => 'saigonhoreca/SGH-banner-02.webp',
         'alt' => 'Tư vấn thiết kế thi công bếp công nghiệp — Saigon Horeca',
     ],
 ];

@@ -1,18 +1,11 @@
 /**
- * mam-mam-eatery-lounge-nang-tam-mam-com-viet — hero slot.
- * Direction: Vietnamese Modern Heritage. Cinematic hero with rice-grain
- * gold dot texture, lotus silhouette corner ornament, traditional title.
- * Markup uses shared .pp-hero. We scope via body.page-template-* to add the
- * mam-mam identity, and also support an optional .pp-hero-mml namespaced
- * variant for downstream reuse.
- * @package SaigonHoreca
+ * Project Pillar — Mâm Mâm Eatery & Lounge
+ * Section #1: hero — Vietnamese Modern Heritage.
+ * Cinematic Ken-Burns hero, rice-grain gold dot texture, conical-hat arc
+ * ornament, mâm-tray glow, warm earthen gold light. 100% design tokens.
  */
 
-/* ─────────────────────────────────────────────────────────────
-   1. Shared hero base (scoped to this project's body template)
-   ───────────────────────────────────────────────────────────── */
-body.page-template-page-project-mam-mam-eatery-lounge-nang-tam-mam-com-viet .pp-hero,
-.pp-hero-mml {
+.pp-hero-mam {
   position: relative;
   min-height: clamp(560px, 86vh, 880px);
   display: flex;
@@ -26,36 +19,32 @@ body.page-template-page-project-mam-mam-eatery-lounge-nang-tam-mam-com-viet .pp-
 }
 
 @media (min-width: 768px) {
-  body.page-template-page-project-mam-mam-eatery-lounge-nang-tam-mam-com-viet .pp-hero,
-  .pp-hero-mml {
-    padding: 8rem 4rem 6rem;
-  }
+  .pp-hero-mam { padding: 8rem 4rem 6rem; }
 }
 
-/* 2. Hero media — saturate, brightness, soft scale on hover */
-body.page-template-page-project-mam-mam-eatery-lounge-nang-tam-mam-com-viet .pp-hero__media,
-.pp-hero-mml__media {
+/* Ken-Burns media (technique: ken-burns) */
+.pp-hero-mam__media {
   position: absolute;
   inset: 0;
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
   filter: saturate(1.12) brightness(0.78) contrast(1.04);
   z-index: 0;
-  transform: scale(1.04);
-  transition: transform 1.6s var(--ease-spring);
+  animation: pp-hero-mam-ken-burns var(--sh-ken-burns-duration, 8s) ease-in-out infinite alternate;
 }
 
-body.page-template-page-project-mam-mam-eatery-lounge-nang-tam-mam-com-viet .pp-hero:hover .pp-hero__media,
-.pp-hero-mml:hover .pp-hero-mml__media {
-  transform: scale(1.075);
+@keyframes pp-hero-mam-ken-burns {
+  0%   { transform: scale(var(--sh-ken-burns-scale-start, 1)); }
+  100% { transform: scale(var(--sh-ken-burns-scale-end, 1.12)); }
 }
 
-/* 3. Overlay — cinematic radial + bottom gradient */
-body.page-template-page-project-mam-mam-eatery-lounge-nang-tam-mam-com-viet .pp-hero__overlay,
-.pp-hero-mml__overlay {
+/* Overlay — cinematic radial + bottom gradient (technique: radial-gradient) */
+.pp-hero-mam__overlay {
   position: absolute;
   inset: 0;
   z-index: 1;
+  pointer-events: none;
   background:
     radial-gradient(ellipse at 30% 70%,
       color-mix(in srgb, var(--b1) 25%, transparent) 0%,
@@ -64,12 +53,10 @@ body.page-template-page-project-mam-mam-eatery-lounge-nang-tam-mam-com-viet .pp-
       color-mix(in srgb, var(--b1) 35%, transparent) 0%,
       transparent 35%,
       color-mix(in srgb, var(--b1) 75%, transparent) 100%);
-  pointer-events: none;
 }
 
-/* 4. Rice-grain gold texture overlay (small repeating dots) */
-body.page-template-page-project-mam-mam-eatery-lounge-nang-tam-mam-com-viet .pp-hero::before,
-.pp-hero-mml::before {
+/* Rice-grain gold texture (technique: radial-gradient tiling) */
+.pp-hero-mam::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -77,50 +64,72 @@ body.page-template-page-project-mam-mam-eatery-lounge-nang-tam-mam-com-viet .pp-
   pointer-events: none;
   background-image:
     radial-gradient(circle at 1px 1px,
-      color-mix(in srgb, var(--gold) 38%, transparent) 0.7px,
-      transparent 1.2px),
+      color-mix(in srgb, var(--gold) 38%, transparent) 0.7px, transparent 1.2px),
     radial-gradient(circle at 9px 13px,
-      color-mix(in srgb, var(--gold) 24%, transparent) 0.6px,
-      transparent 1.1px);
+      color-mix(in srgb, var(--gold) 24%, transparent) 0.6px, transparent 1.1px);
   background-size: 18px 18px, 26px 26px;
   background-position: 0 0, 9px 13px;
   opacity: 0.32;
   mix-blend-mode: screen;
 }
 
-/* 5. Ambient gold glow — warm earthen light */
-body.page-template-page-project-mam-mam-eatery-lounge-nang-tam-mam-com-viet .pp-hero::after,
-.pp-hero-mml::after {
-  content: '';
+/* Ambient gold glow — warm earthen light */
+.pp-hero-mam__glow {
   position: absolute;
   top: -12%;
   right: -8%;
-  width: 620px;
-  height: 620px;
+  width: clamp(320px, 45vw, 620px);
+  height: clamp(320px, 45vw, 620px);
   background: radial-gradient(circle,
-    color-mix(in srgb, var(--gold) 22%, transparent) 0%,
-    transparent 70%);
+    color-mix(in srgb, var(--gold) 22%, transparent) 0%, transparent 70%);
   filter: blur(80px);
   z-index: 2;
   pointer-events: none;
   opacity: 0.85;
 }
 
-/* 6. Hero content wrapper */
-body.page-template-page-project-mam-mam-eatery-lounge-nang-tam-mam-com-viet .pp-hero__content,
-.pp-hero-mml__content {
+/* Conical-hat (nón lá) concentric arc ornament over top-left */
+.pp-hero-mam__tray {
+  position: absolute;
+  top: 8%;
+  left: 6%;
+  width: clamp(140px, 22vw, 280px);
+  height: clamp(140px, 22vw, 280px);
+  z-index: 3;
+  pointer-events: none;
+  border: 1px solid color-mix(in srgb, var(--gold) 28%, transparent);
+  border-radius: 50%;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  transform: rotate(-32deg);
+  opacity: 0.7;
+  filter: drop-shadow(0 0 18px color-mix(in srgb, var(--gold) 18%, transparent));
+}
+
+.pp-hero-mam__tray::before {
+  content: '';
+  position: absolute;
+  inset: 18%;
+  border: 1px solid color-mix(in srgb, var(--gold) 18%, transparent);
+  border-radius: 50%;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  opacity: 0.7;
+}
+
+/* Content wrapper + scroll-reveal entry (technique: .scroll-reveal markup) */
+.pp-hero-mam__content {
   position: relative;
   z-index: 4;
   max-width: 920px;
   display: flex;
   flex-direction: column;
-  gap: 1.4rem;
+  gap: 1.2rem;
   padding: 0 0 1rem;
 }
 
 /* Vertical gold rule on left */
-body.page-template-page-project-mam-mam-eatery-lounge-nang-tam-mam-com-viet .pp-hero__content::before,
-.pp-hero-mml__content::before {
+.pp-hero-mam__content::before {
   content: '';
   position: absolute;
   left: -1.5rem;
@@ -135,16 +144,21 @@ body.page-template-page-project-mam-mam-eatery-lounge-nang-tam-mam-com-viet .pp-
 }
 
 @media (max-width: 767px) {
-  body.page-template-page-project-mam-mam-eatery-lounge-nang-tam-mam-com-viet .pp-hero__content::before,
-  .pp-hero-mml__content::before {
-    left: -0.75rem;
-  }
+  .pp-hero-mam__content::before { left: -0.75rem; }
 }
 
-/* 7. Title with eyebrow ::before */
-body.page-template-page-project-mam-mam-eatery-lounge-nang-tam-mam-com-viet .pp-hero__title,
-.pp-hero-mml__title {
-  position: relative;
+.pp-hero-mam__eyebrow {
+  font-family: var(--font-display);
+  font-size: clamp(0.66rem, 0.82vw, 0.78rem);
+  font-weight: 600;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0.92;
+  text-shadow: 0 0 12px color-mix(in srgb, var(--gold) 35%, transparent);
+}
+
+.pp-hero-mam__title {
   margin: 0;
   font-family: var(--font-display);
   font-size: clamp(2.25rem, 5.4vw, 4.4rem);
@@ -157,24 +171,7 @@ body.page-template-page-project-mam-mam-eatery-lounge-nang-tam-mam-com-viet .pp-
     0 0 1px color-mix(in srgb, var(--gold) 30%, transparent);
 }
 
-body.page-template-page-project-mam-mam-eatery-lounge-nang-tam-mam-com-viet .pp-hero__title::before,
-.pp-hero-mml__title::before {
-  content: 'PILLAR PROJECT · DI SẢN · NÂNG TẦM MÂM CƠM VIỆT';
-  display: block;
-  margin-bottom: 0.95rem;
-  font-family: var(--font-display);
-  font-size: clamp(0.66rem, 0.82vw, 0.78rem);
-  font-weight: 600;
-  letter-spacing: 0.42em;
-  text-transform: uppercase;
-  color: var(--gold);
-  opacity: 0.92;
-  text-shadow: 0 0 12px color-mix(in srgb, var(--gold) 35%, transparent);
-}
-
-/* 8. Subhead — italic gold display */
-body.page-template-page-project-mam-mam-eatery-lounge-nang-tam-mam-com-viet .pp-hero__subhead,
-.pp-hero-mml__subhead {
+.pp-hero-mam__subhead {
   margin: 0;
   font-family: var(--font-display);
   font-style: italic;
@@ -187,9 +184,29 @@ body.page-template-page-project-mam-mam-eatery-lounge-nang-tam-mam-com-viet .pp-
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.55);
 }
 
-/* 9. Subtitle — body tier with caption dash */
-body.page-template-page-project-mam-mam-eatery-lounge-nang-tam-mam-com-viet .pp-hero__subtitle,
-.pp-hero-mml__subtitle {
+.pp-hero-mam__divider {
+  width: 80px;
+  height: 2px;
+  margin: 0.2rem 0;
+  background: var(--gold);
+  border-radius: var(--radius-full);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--gold) 60%, transparent);
+  position: relative;
+}
+
+.pp-hero-mam__divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -12px;
+  width: 6px;
+  height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+
+.pp-hero-mam__subtitle {
   margin: 0;
   font-size: clamp(0.93rem, 1.05vw, 1.05rem);
   line-height: 1.7;
@@ -200,8 +217,7 @@ body.page-template-page-project-mam-mam-eatery-lounge-nang-tam-mam-com-viet .pp-
   padding-left: 1.1rem;
 }
 
-body.page-template-page-project-mam-mam-eatery-lounge-nang-tam-mam-com-viet .pp-hero__subtitle::before,
-.pp-hero-mml__subtitle::before {
+.pp-hero-mam__subtitle::before {
   content: '';
   position: absolute;
   left: 0;
@@ -211,91 +227,24 @@ body.page-template-page-project-mam-mam-eatery-lounge-nang-tam-mam-com-viet .pp-
   background: var(--gold);
 }
 
-/* 10. Conical-hat curve ornament — concentric arcs over top-left */
-body.page-template-page-project-mam-mam-eatery-lounge-nang-tam-mam-com-viet .pp-hero__media::after,
-.pp-hero-mml__media::after {
-  content: '';
-  position: absolute;
-  top: 8%;
-  left: 6%;
-  width: 280px;
-  height: 280px;
-  border: 1px solid color-mix(in srgb, var(--gold) 28%, transparent);
-  border-radius: 50%;
-  border-right-color: transparent;
-  border-bottom-color: transparent;
-  transform: rotate(-32deg);
-  opacity: 0.7;
-  pointer-events: none;
-  z-index: 3;
-  filter: drop-shadow(0 0 18px color-mix(in srgb, var(--gold) 18%, transparent));
+/* scroll-reveal entry */
+.pp-hero-mam__content.scroll-reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.9s var(--ease-spring), transform 0.9s var(--ease-spring);
 }
 
-body.page-template-page-project-mam-mam-eatery-lounge-nang-tam-mam-com-viet .pp-hero__media::before,
-.pp-hero-mml__media::before {
-  content: '';
-  position: absolute;
-  top: 11%;
-  left: 9%;
-  width: 220px;
-  height: 220px;
-  border: 1px solid color-mix(in srgb, var(--gold) 18%, transparent);
-  border-radius: 50%;
-  border-right-color: transparent;
-  border-bottom-color: transparent;
-  transform: rotate(-32deg);
-  opacity: 0.5;
-  pointer-events: none;
-  z-index: 3;
+.pp-hero-mam__content.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-@media (max-width: 767px) {
-  body.page-template-page-project-mam-mam-eatery-lounge-nang-tam-mam-com-viet .pp-hero__media::after,
-  body.page-template-page-project-mam-mam-eatery-lounge-nang-tam-mam-com-viet .pp-hero__media::before,
-  .pp-hero-mml__media::after,
-  .pp-hero-mml__media::before {
-    width: 140px; height: 140px;
-    top: 6%; left: 4%;
-  }
-}
-
-/* 11. Hero entry animation — slow rise + fade */
-@keyframes pp-hero-mml-rise {
-  from { opacity: 0; transform: translateY(28px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-body.page-template-page-project-mam-mam-eatery-lounge-nang-tam-mam-com-viet .pp-hero__title,
-body.page-template-page-project-mam-mam-eatery-lounge-nang-tam-mam-com-viet .pp-hero__subhead,
-body.page-template-page-project-mam-mam-eatery-lounge-nang-tam-mam-com-viet .pp-hero__subtitle,
-.pp-hero-mml__title,
-.pp-hero-mml__subhead,
-.pp-hero-mml__subtitle {
-  animation: pp-hero-mml-rise 1s var(--ease-spring) both;
-}
-
-body.page-template-page-project-mam-mam-eatery-lounge-nang-tam-mam-com-viet .pp-hero__subhead,
-.pp-hero-mml__subhead {
-  animation-delay: 0.18s;
-}
-
-body.page-template-page-project-mam-mam-eatery-lounge-nang-tam-mam-com-viet .pp-hero__subtitle,
-.pp-hero-mml__subtitle {
-  animation-delay: 0.34s;
-}
-
-/* 12. Reduced motion */
+/* Reduced motion (technique: prefers-reduced-motion) */
 @media (prefers-reduced-motion: reduce) {
-  body.page-template-page-project-mam-mam-eatery-lounge-nang-tam-mam-com-viet .pp-hero__title,
-  body.page-template-page-project-mam-mam-eatery-lounge-nang-tam-mam-com-viet .pp-hero__subhead,
-  body.page-template-page-project-mam-mam-eatery-lounge-nang-tam-mam-com-viet .pp-hero__subtitle,
-  .pp-hero-mml__title,
-  .pp-hero-mml__subhead,
-  .pp-hero-mml__subtitle {
-    animation: none;
-  }
-  body.page-template-page-project-mam-mam-eatery-lounge-nang-tam-mam-com-viet .pp-hero__media,
-  .pp-hero-mml__media {
+  .pp-hero-mam__media { animation: none !important; }
+  .pp-hero-mam__content.scroll-reveal {
+    opacity: 1;
+    transform: none;
     transition: none;
   }
 }

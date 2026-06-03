@@ -7,37 +7,30 @@
 if (!defined('ABSPATH')) exit;
 $uri = get_template_directory_uri();
 ?>
-<section class="pp__section pp-rf-concept">
+<section class="pp-section-rf pp-rf-concept">
   <div class="pp-watermark-bg-rf" aria-hidden="true">
     <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5">
       <path d="M20 20 H50 M35 20 V80 M20 80 H50 M50 20 H80 M65 20 V80 M50 80 H80" stroke-linecap="round"/>
     </svg>
   </div>
 
+  <div class="pp-concept-watermark-rf" aria-hidden="true">02</div>
+
   <div class="pp-ambient-glow-rf pp-ambient-glow-rf--bottom-left" aria-hidden="true"></div>
 
-  <div class="pp__container">
+  <div class="pp-container-shared">
     <div class="pp-grid-12-rf">
       
       <div class="pp-grid-12-rf__media--cols-7 rkf-concept__side">
-        <div class="pp-image-container-rf rkf-concept__image-container">
-          <span class="pp-corner-ornament pp-corner-ornament--top-left" aria-hidden="true"></span>
-          <span class="pp-corner-ornament pp-corner-ornament--top-right" aria-hidden="true"></span>
-          <span class="pp-corner-ornament pp-corner-ornament--bottom-left" aria-hidden="true"></span>
-          <span class="pp-corner-ornament pp-corner-ornament--bottom-right" aria-hidden="true"></span>
+        <div class="pp-image-container-shared rkf-concept__image-container">
           <div class="pp-image-border-decor" aria-hidden="true"></div>
-          <div class="pp-image-tag-rf">OMAKASE BAR</div>
-          <img src="<?php echo sgh_img('2020/12/roka-3.jpg'); ?>" alt="<?php echo esc_attr__('Roka Fella Omakase Counter', 'saigonhoreca'); ?>" loading="lazy">
-          <div class="pp-image-caption-rf"><?php echo esc_html__('Quầy Omakase bằng gỗ sồi cao cấp - Nơi giao thoa vị giác & thị giác', 'saigonhoreca'); ?></div>
+          <img src="<?php echo sgh_img('roka-fella/roka-fella-goc-quay-bar-nhat-ban.jpg'); ?>" alt="<?php echo esc_attr__('Roka Fella Omakase Counter', 'saigonhoreca'); ?>" loading="lazy">
+          <div class="pp-image-caption-shared"><?php echo esc_html__('Đầu bếp sushi đang trực tiếp trình diễn và phục vụ thực khách tại quầy gỗ sồi Omakase', 'saigonhoreca'); ?></div>
         </div>
       </div>
 
       <div class="pp-grid-12-rf__text--cols-5 rkf-concept__main">
         <div class="pp-glass-card-roka rkf-concept__glass-card">
-          <span class="pp-corner-ornament pp-corner-ornament--top-left" aria-hidden="true"></span>
-          <span class="pp-corner-ornament pp-corner-ornament--top-right" aria-hidden="true"></span>
-          <span class="pp-corner-ornament pp-corner-ornament--bottom-left" aria-hidden="true"></span>
-          <span class="pp-corner-ornament pp-corner-ornament--bottom-right" aria-hidden="true"></span>
           
           <header class="rkf-concept__header">
             <div class="pp-badge-rf">

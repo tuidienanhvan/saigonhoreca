@@ -1,0 +1,126 @@
+/**
+ * Project Pillar — bambino-saigonhoreca — gallery (Bar) styles
+ * Modern glassmorphism layout with Blueprint CAD media column.
+ * @package SaigonHoreca
+ */
+
+.pp--bambino .pp-bambino-bar {
+  background: var(--b1);
+  padding: clamp(4rem, 8vw, 8rem) 0;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--bd);
+}
+
+.pp--bambino .bb-bar-container {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+@media (min-width: 768px) {
+  .pp--bambino .bb-bar-container {
+    padding-inline: 2rem;
+  }
+}
+
+.pp--bambino .bb-bar-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(3rem, 6vw, 5rem);
+  align-items: center;
+}
+
+@media (min-width: 992px) {
+  .pp--bambino .bb-bar-grid {
+    grid-template-columns: 1.15fr 0.85fr;
+  }
+}
+
+/* Cột trái: Card chữ kính mờ */
+.pp--bambino .bb-bar-content-card {
+  background: rgba(19, 19, 19, 0.45);
+  border: 1px solid var(--bd);
+  border-radius: 24px;
+  padding: clamp(2rem, 4vw, 3rem);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: var(--shadow-main);
+  position: relative;
+  z-index: 2;
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  text-align: left;
+}
+
+.pp--bambino .bb-bar-content-card:hover {
+  border-color: color-mix(in srgb, var(--gold) 35%, transparent);
+  box-shadow: 0 25px 50px color-mix(in srgb, var(--gold) 8%, transparent), 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* LINK KHÁM PHÁ THÊM */
+.pp--bambino .bb-bar-link {
+  margin-top: 0.5rem !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 1.25rem;
+}
+
+.pp--bambino .bb-bar-link a {
+  color: var(--gold);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.pp--bambino .bb-bar-link a:hover {
+  color: var(--brand-light);
+  text-decoration: underline;
+}
+
+/* CỘT PHẢI: BLUEPRINT CAD MEDIA COLUMN */
+.pp--bambino .bb-bar-media-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+.pp--bambino .bb-bar-media {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(212, 175, 55, 0.18) !important;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+  transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+  z-index: 2;
+  width: 100%;
+}
+
+.pp--bambino .bb-bar-media img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+.pp--bambino .bb-bar-media:hover img {
+  transform: scale(1.04);
+}
+
+/* Ảnh nghiêng ngược lại theo yêu cầu của anh */
+.pp--bambino .pp-specs-media-wrapper--reverse {
+  transform: rotate(-2deg) !important;
+}
+
+.pp--bambino .pp-specs-media-wrapper--reverse:hover {
+  transform: rotate(0deg) scale(1.01) !important;
+}
+

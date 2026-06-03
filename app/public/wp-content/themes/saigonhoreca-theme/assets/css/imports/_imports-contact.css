@@ -1,0 +1,9 @@
+/* Contact route (/lien-he/) — dark luxe native template.
+   Imports: route chrome + 3 section CSS files. */
+
+@import "./_imports-route-core.css";
+
+/* Contact sections */
+@import "../../../template-parts/contact/hero.css";
+@import "../../../template-parts/contact/form.css";
+@import "../../../template-parts/contact/map.css";

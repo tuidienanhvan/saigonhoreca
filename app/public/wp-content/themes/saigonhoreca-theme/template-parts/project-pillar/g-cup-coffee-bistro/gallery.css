@@ -1,1 +1,343 @@
-/** g-cup-coffee-bistro — gallery slot (no content). */
+/**
+ * g-cup-coffee-bistro - gallery slot CSS.
+ * Industrial editorial photo board with blueprint SVG system.
+ * @package SaigonHoreca
+ */
+
+.pp-gallery-section-gcb {
+  position: relative;
+  padding: clamp(5rem, 9vw, 9rem) 0;
+  background:
+    radial-gradient(circle at 18% 20%, color-mix(in srgb, var(--gold) 9%, transparent), transparent 26rem),
+    linear-gradient(180deg, var(--b1), var(--b2) 42%, var(--b1));
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.pp-gcb-gallery-blueprint {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  color: var(--gold);
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.pp-gcb-gallery-blueprint svg {
+  width: 100%;
+  height: 100%;
+}
+
+.pp-gcb-gallery-blueprint__route {
+  animation: gcbBlueprintDrift 14s ease-in-out infinite alternate;
+}
+
+.pp-gcb-gallery-blueprint__route--lower {
+  animation-delay: -5s;
+}
+
+.pp-gcb-gallery-header {
+  position: relative;
+  z-index: 2;
+  max-width: 42rem;
+  margin-bottom: clamp(2.75rem, 5vw, 4.5rem);
+}
+
+.pp-gcb-gallery-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 1rem;
+  font-family: var(--font-display), sans-serif;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: var(--gold);
+}
+
+.pp-gcb-gallery-kicker::before {
+  content: "";
+  width: 34px;
+  height: 1px;
+  background: currentColor;
+}
+
+.pp-gcb-gallery-board {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-template-rows: repeat(11, minmax(3.25rem, auto));
+  gap: clamp(1rem, 2vw, 1.5rem);
+  min-height: 760px;
+}
+
+.pp-gcb-gallery-board::before,
+.pp-gcb-gallery-board::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.pp-gcb-gallery-board::before {
+  inset: 5% 4% 9% 3%;
+  border: 1px solid color-mix(in srgb, var(--gold) 12%, transparent);
+  border-radius: 28px;
+  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+}
+
+.pp-gcb-gallery-board::after {
+  left: 7%;
+  right: 8%;
+  top: 48%;
+  height: 1px;
+  background: repeating-linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--gold) 28%, transparent) 0 12px,
+    transparent 12px 26px
+  );
+  transform: rotate(-9deg);
+  transform-origin: center;
+}
+
+.pp-gcb-gallery-card {
+  position: relative;
+  margin: 0;
+  min-width: 0;
+}
+
+.pp-gcb-gallery-card--left {
+  grid-column: 1 / span 6;
+  grid-row: 1 / span 11;
+  align-self: center;
+}
+
+.pp-gcb-gallery-card--right {
+  grid-column: 7 / span 6;
+  grid-row: 1 / span 11;
+  align-self: center;
+}
+
+.pp-gcb-gallery-card__media {
+  position: relative;
+  overflow: hidden;
+  background: var(--b1);
+  border: 1px solid color-mix(in srgb, var(--gold) 18%, var(--bd));
+  border-radius: 18px;
+  box-shadow:
+    0 24px 60px color-mix(in srgb, #000 72%, transparent),
+    inset 0 1px 0 color-mix(in srgb, var(--bc) 9%, transparent);
+}
+
+.pp-gcb-gallery-card__media::before,
+.pp-gcb-gallery-card__media::after {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.pp-gcb-gallery-card__media::before {
+  inset: 10px;
+  border: 1px solid color-mix(in srgb, var(--gold) 14%, transparent);
+  border-radius: 13px;
+}
+
+.pp-gcb-gallery-card__media::after {
+  top: 50%;
+  right: -7px;
+  width: 14px;
+  height: 14px;
+  border: 1px solid color-mix(in srgb, var(--gold) 55%, transparent);
+  border-radius: 50%;
+  background: var(--b1);
+  transform: translateY(-50%);
+  box-shadow: -100vw 0 0 -99.6vw color-mix(in srgb, var(--gold) 35%, transparent);
+}
+
+.pp-gcb-gallery-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(0.92) contrast(1.05) brightness(0.92);
+  transition: transform 0.8s var(--ease-spring), filter 0.8s var(--ease-spring);
+}
+
+.pp-gcb-gallery-card--left .pp-gcb-gallery-card__media,
+.pp-gcb-gallery-card--right .pp-gcb-gallery-card__media {
+  aspect-ratio: 16 / 10;
+}
+
+.pp-gcb-gallery-card__caption {
+  position: relative;
+  width: min(92%, 34rem);
+  margin-top: 0.85rem;
+  padding: 0.85rem 1rem 0.9rem 1.15rem;
+  border-left: 2px solid var(--gold);
+  background: linear-gradient(90deg, color-mix(in srgb, var(--gold) 9%, transparent), transparent);
+  color: color-mix(in srgb, var(--bc) 72%, transparent);
+  font-size: clamp(0.72rem, 0.8vw, 0.82rem);
+  font-style: italic;
+  line-height: 1.55;
+}
+
+.pp-gcb-gallery-card__caption span {
+  display: block;
+  margin-bottom: 0.32rem;
+  font-family: var(--font-display), sans-serif;
+  font-size: 0.68rem;
+  font-style: normal;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.pp-gcb-gallery-card--left .pp-gcb-gallery-card__caption,
+.pp-gcb-gallery-card--right .pp-gcb-gallery-card__caption {
+  width: 100%;
+}
+
+.pp-gcb-gallery-card:hover .pp-gcb-gallery-card__media {
+  border-color: color-mix(in srgb, var(--gold) 42%, var(--bd));
+  box-shadow:
+    0 34px 78px color-mix(in srgb, #000 82%, transparent),
+    0 0 34px color-mix(in srgb, var(--gold) 8%, transparent);
+}
+
+.pp-gcb-gallery-card:hover img {
+  filter: saturate(1.02) contrast(1.08) brightness(1);
+  transform: scale(1.035);
+}
+
+@keyframes gcbBlueprintDrift {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -70;
+  }
+}
+
+@media (max-width: 991px) {
+  .pp-gcb-gallery-board {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    gap: 2.5rem;
+  }
+
+  .pp-gcb-gallery-board::before,
+  .pp-gcb-gallery-board::after {
+    display: none;
+  }
+
+  .pp-gcb-gallery-card {
+    width: 100%;
+  }
+
+  .pp-gcb-gallery-card__media {
+    aspect-ratio: 16 / 10 !important;
+  }
+}
+
+@media (max-width: 575px) {
+  .pp-gallery-section-gcb {
+    padding: 4rem 0;
+  }
+
+  .pp-gcb-gallery-header {
+    margin-bottom: 2rem;
+  }
+
+  .pp-gcb-gallery-card__caption {
+    width: 100%;
+    padding-left: 1rem;
+  }
+}
+
+/* ===== merged from related.css — markup đã ở gallery.php (T-034 section 7). Merged để gỡ related.css =====*/
+/**
+ * g-cup-coffee-bistro — related slot (conclusion).
+ * Inherits from intro.css (.pp__section, .pp-text-gcb).
+ * @package SaigonHoreca
+ */
+
+.pp__section {
+  position: relative;
+  padding: 5rem 0;
+  background: var(--b1);
+}
+
+.pp__section .pp-text-gcb--center {
+  max-width: 860px;
+  margin-inline: auto;
+  padding: clamp(2rem, 4vw, 3rem) clamp(1.5rem, 3.5vw, 2.5rem) !important;
+  background: color-mix(in srgb, var(--b2) 75%, black) !important;
+  border: 1px solid color-mix(in srgb, var(--gold) 15%, var(--bd)) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 25px 65px rgba(0, 0, 0, 0.45) !important;
+  position: relative;
+}
+
+/* Thêm nẹp góc kỹ thuật CAD nghệ thuật */
+.pp__section .pp-text-gcb--center::before {
+  content: "";
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  width: 14px;
+  height: 14px;
+  border-left: 2px solid var(--gold);
+  border-top: 2px solid var(--gold);
+  opacity: 0.6;
+}
+
+.pp__section .pp-text-gcb--center::after {
+  content: "";
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  width: 14px;
+  height: 14px;
+  border-right: 2px solid var(--gold);
+  border-bottom: 2px solid var(--gold);
+  opacity: 0.6;
+}
+
+.pp__section .pp-text-gcb__title {
+  font-family: var(--font-display), sans-serif !important;
+  font-size: clamp(1.6rem, 3vw, 2.2rem) !important;
+  font-weight: 700 !important;
+  color: var(--gold) !important;
+  margin-bottom: 1.5rem !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.pp__section .pp-text-gcb__body {
+  display: grid;
+  gap: 1.2rem;
+  text-align: left;
+}
+
+.pp__section .pp-text-gcb__body p {
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.75;
+  color: color-mix(in srgb, var(--bc2) 90%, white);
+}
+
+.pp__section .pp-text-gcb__body p:last-child {
+  position: relative;
+  padding-left: 1.2rem;
+  border-left: 2px solid var(--gold);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--bc) !important;
+}
+
+/* ===== merged from cta.css — markup đã ở gallery.php (T-034 section 8). Merged để gỡ cta.css =====*/
+/** g-cup-coffee-bistro — cta slot (no content). Shared _cta.php handles global CTA. */

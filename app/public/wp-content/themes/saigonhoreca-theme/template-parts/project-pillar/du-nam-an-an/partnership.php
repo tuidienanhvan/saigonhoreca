@@ -1,26 +1,30 @@
-<?php
+﻿<?php
 /**
- * Project Pillar — du-nam-an-an
+ * Project Pillar â€” du-nam-an-an
  * Section #4: split
  * @package SaigonHoreca
  */
 if (!defined('ABSPATH')) exit;
 $uri = get_template_directory_uri();
 ?>
-<section class="pp__section pp__section--alt">
-  <div class="pp__container">
+<section class="pp-section-nan pp-section-nan--alt scroll-reveal">
+  <div class="pp-container-shared">
     <div class="pp-split-nan pp-split-nan--reverse">
       <div class="pp-split-nan__body">
         <span class="pp-text-nan__divider" aria-hidden="true"></span>
-        <h2 class="pp-text-nan__title"><?php echo esc_html__('Hệ thống xử lý khói & mùi – Yếu tố không thể thỏa hiệp', 'saigonhoreca'); ?></h2>
+        <h2 class="pp-text-nan__title"><?php echo esc_html__('An toàn và vệ sinh – Tiêu chuẩn được tích hợp trong từng chi tiết', 'saigonhoreca'); ?></h2>
         <div class="pp-text-nan__body">
-      <p><?php echo esc_html__('Trong môi trường Nursing Home, khói và mùi không đơn thuần là vấn đề kỹ thuật, mà là yếu tố ảnh hưởng trực tiếp đến chất lượng sống của người cao tuổi.', 'saigonhoreca'); ?></p>
-      <p><?php echo esc_html__('Saigon Horeca triển khai hệ thống xử lý khói và mùi được tính toán kỹ lưỡng theo công suất thực tế, đảm bảo không gian bếp luôn thông thoáng, hạn chế ám mùi sang khu vực sinh hoạt, đồng thời tạo môi trường làm việc dễ chịu cho nhân sự vận hành.', 'saigonhoreca'); ?></p>
+      <p><?php echo esc_html__('Trong môi trường chăm sóc người cao tuổi, an toàn thực phẩm không chỉ là yêu cầu kỹ thuật, mà còn là cam kết nhân văn. Mọi thiết bị, bề mặt và quy trình vận hành đều phải đáp ứng tiêu chuẩn vệ sinh nghiêm ngặt.', 'saigonhoreca'); ?></p>
+      <p><?php echo esc_html__('Saigon Horeca đã tư vấn và triển khai hệ thống thoát nước, lọc rác và xử lý nước thải ngay tại khu vực bếp, giúp giảm thiểu nguy cơ ô nhiễm và duy trì môi trường sạch sẽ liên tục.', 'saigonhoreca'); ?></p>
+      <p><?php echo esc_html__('Dự án Nam An An là một trong những dự án đặc biệt nhất mà Saigon Horeca đã thực hiện – không phải vì quy mô, mà vì tính nhân văn và trọng trách xã hội đi kèm. Không gian bếp không chỉ được xây dựng để nấu, mà để chăm sóc.', 'saigonhoreca'); ?></p>
+      <p><?php echo esc_html__('Với Nam An, Saigon Horeca chứng minh rằng: thiết kế bếp công nghiệp không chỉ là kỹ thuật, mà còn là sự thấu hiểu con người và mô hình.', 'saigonhoreca'); ?></p>
         </div>
       </div>
-      <div class="pp-split-nan__media">
+      <div class="pp-split-nan__media pp-image-container-shared">
         <img src="<?php echo sgh_img('2025/01/sheh-fung-4.jpg'); ?>" alt="<?php echo esc_attr__('Bếp á đôi công nghiệp', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="1366" height="768">
+        <div class="pp-image-caption-shared"><?php echo esc_html__('Hệ thống thoát nước và xử lý vệ sinh tích hợp trong bếp', 'saigonhoreca'); ?></div>
       </div>
     </div>
   </div>
 </section>
+

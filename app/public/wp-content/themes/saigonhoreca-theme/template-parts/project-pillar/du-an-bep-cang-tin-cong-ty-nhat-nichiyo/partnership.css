@@ -1,1 +1,33 @@
-/** du-an-bep-cang-tin-cong-ty-nhat-nichiyo — partnership slot (no content). */
+/**
+ * du-an-bep-cang-tin-cong-ty-nhat-nichiyo — partnership slot.
+ * Kitchen-design narrative + project gallery. Reuses .pp-section-nichiyo /
+ * .pp-text-nichiyo / .pp-gallery-nichiyo (owned by intro.css). Scope .pp--nichiyo.
+ * @package SaigonHoreca
+ */
+
+.pp-partnership-nichiyo__head {
+  max-width: 880px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+.pp-partnership-nichiyo__head .pp-text-nichiyo__body {
+  text-align: center;
+  max-width: 800px;
+}
+
+/* Slightly taller frames for the landscape (1366×768) project shots */
+.pp-partnership-nichiyo .pp-gallery-nichiyo__item {
+  aspect-ratio: 16 / 10;
+}
+
+@media (max-width: 767px) {
+  .pp-partnership-nichiyo .pp-gallery-nichiyo__item {
+    aspect-ratio: 4 / 3;
+  }
+}

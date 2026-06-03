@@ -1,121 +1,218 @@
 /**
  * skyloft-by-glow — hero slot.
- * Vibrant neon purple and cyan rooftop bar aesthetic.
+ * Ken-Burns skyline + staggered entry + neon ambient glow.
  * @package SaigonHoreca
  */
 
-.pp-hero-sbg {
+.pp-hero-sky {
   position: relative;
+  height: calc(100svh - 76px);
+  min-height: 680px;
   width: 100%;
-  min-height: 88vh;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   overflow: hidden;
-  background: var(--b1);
+  background-color: var(--b1);
+  text-align: left;
   isolation: isolate;
+  padding-inline: clamp(1.25rem, 7vw, 7rem);
 }
-@media (max-width: 768px) { .pp-hero-sbg { min-height: 70vh; } }
 
-.pp-hero-sbg__media {
+.pp-hero-sky__media {
   position: absolute;
   inset: 0;
-  z-index: 0;
-  background-size: cover !important;
-  background-position: center !important;
-  filter: saturate(1.15) brightness(0.85) contrast(1.04);
-}
-.pp-hero-sbg__media img,
-.pp-hero-sbg__media iframe,
-.pp-hero-sbg__media video {
-  width: 100%; height: 100%; object-fit: cover; display: block; border: none;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 1;
+  animation: sky-ken-burns var(--sh-ken-burns-duration, 8s) ease-in-out infinite alternate;
+  filter: saturate(1.08) contrast(1.08) brightness(0.72);
 }
 
-.pp-hero-sbg__overlay {
+.pp-hero-sky__overlay {
   position: absolute;
   inset: 0;
-  z-index: 1;
-  background:
-    radial-gradient(ellipse at 50% 70%,
-      color-mix(in srgb, #8b5cf6 12%, transparent) 0%,
-      transparent 60%),
-    linear-gradient(180deg,
-      color-mix(in srgb, #1e112c 25%, transparent) 0%,
-      color-mix(in srgb, var(--b1) 85%, transparent) 100%);
-  pointer-events: none;
-}
-
-/* Neon rooftop ambient glows */
-.pp-hero-sbg::before,
-.pp-hero-sbg::after {
-  content: '';
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
-  pointer-events: none;
-  z-index: 1;
-}
-.pp-hero-sbg::before {
-  top: -8%; left: -8%;
-  width: 460px; height: 460px;
-  background: radial-gradient(circle, color-mix(in srgb, #c084fc 16%, transparent) 0%, transparent 70%);
-  opacity: 0.8;
-}
-.pp-hero-sbg::after {
-  bottom: -10%; right: -6%;
-  width: 520px; height: 520px;
-  background: radial-gradient(circle, color-mix(in srgb, #22d3ee 10%, transparent) 0%, transparent 70%);
-  opacity: 0.6;
-}
-
-.pp-hero-sbg__content {
-  position: relative;
   z-index: 2;
-  width: 100%;
-  max-width: 1100px;
-  padding: 0 1.5rem;
-  text-align: center;
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--b1) 88%, transparent) 0%, color-mix(in srgb, var(--b1) 42%, transparent) 48%, color-mix(in srgb, var(--sky-dark) 58%, transparent) 100%),
+    linear-gradient(to bottom, color-mix(in srgb, var(--b1) 22%, transparent) 0%, color-mix(in srgb, var(--b1) 76%, transparent) 78%, var(--b1) 100%);
+  pointer-events: none;
+}
+
+.pp-hero-sky__grid {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background:
+    linear-gradient(var(--sky-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--sky-grid) 1px, transparent 1px);
+  background-size: 42px 42px, 42px 42px;
+  mask-image: linear-gradient(90deg, black 0%, transparent 78%);
+  opacity: 0.72;
+  pointer-events: none;
+}
+
+/* Neon ambient glows disabled */
+.pp-hero-sky__glow {
+  display: none !important;
+}
+
+
+.pp-hero-sky__rail {
+  position: absolute;
+  z-index: 3;
+  top: 50%;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--bc) 42%, transparent);
+  pointer-events: none;
+}
+.pp-hero-sky__rail--left {
+  left: 1.5rem;
+  transform: translateY(-50%) rotate(-90deg);
+  transform-origin: left center;
+}
+.pp-hero-sky__rail--right {
+  right: 1.5rem;
+  transform: translateY(-50%) rotate(90deg);
+  transform-origin: right center;
+}
+
+.pp-hero-sky__content {
+  position: relative;
+  z-index: 3;
+  width: min(760px, 100%);
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: 1.25rem;
 }
-.pp-hero-sbg__content::before {
-  content: '';
-  width: 56px;
-  height: 2px;
-  background: linear-gradient(90deg, #8b5cf6, #22d3ee);
-  box-shadow: 0 0 20px color-mix(in srgb, #8b5cf6 60%, transparent);
+
+.pp-hero-sky__content::before,
+.pp-hero-sky__content::after {
+  display: none !important;
 }
 
-.pp-hero-sbg__subhead {
+
+.pp-hero-sky__subhead {
   margin: 0;
-  font-family: var(--font-display);
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.36em;
+  font-family: var(--font-mono);
+  font-size: clamp(0.72rem, 1.4vw, 0.9rem);
+  font-weight: 600;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: #22d3ee;
+  color: color-mix(in srgb, var(--sky-cyan) 90%, var(--bc));
+  animation: sky-rise 0.9s var(--ease-spring) 0.2s backwards;
 }
 
-.pp-hero-sbg__title {
+.pp-hero-sky__title {
   margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(2.4rem, 7vw, 5rem);
+  font-size: clamp(3rem, 8vw, 6.5rem);
   font-weight: 800;
   line-height: 1.05;
   color: var(--bc);
   letter-spacing: 0.005em;
-  max-width: 22ch;
+  max-width: 10ch;
   text-shadow:
-    0 4px 24px rgba(0, 0, 0, 0.7),
-    0 0 60px color-mix(in srgb, #8b5cf6 18%, transparent);
+    0 4px 24px color-mix(in srgb, var(--b1) 70%, transparent),
+    0 0 60px color-mix(in srgb, var(--sky-purple) 20%, transparent);
+  animation: sky-rise 0.9s var(--ease-spring) 0.1s backwards;
 }
 
-.pp-hero-sbg__subtitle {
-  margin: 0;
-  max-width: 640px;
-  font-size: clamp(0.97rem, 1.1vw, 1.08rem);
-  line-height: 1.8;
+.pp-hero-sky__divider {
+  width: 72px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--sky-purple), var(--sky-cyan));
+  margin-top: 0.5rem;
+  position: relative;
+  box-shadow: 0 0 16px color-mix(in srgb, var(--sky-purple) 55%, transparent);
+  animation: sky-rise 0.9s var(--ease-spring) 0.3s backwards;
+}
+.pp-hero-sky__divider::before,
+.pp-hero-sky__divider::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+.pp-hero-sky__divider::before { left: -15px; background: var(--sky-purple); }
+.pp-hero-sky__divider::after  { right: -15px; background: var(--sky-cyan); }
+
+.pp-hero-sky__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.25rem;
+  animation: sky-rise 0.9s var(--ease-spring) 0.42s backwards;
+}
+
+.pp-hero-sky__meta span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.1rem;
+  padding: 0.45rem 0.75rem;
+  border: 1px solid color-mix(in srgb, var(--sky-cyan) 25%, transparent) !important;
+  border-radius: var(--radius-sm) !important;
+  background: transparent !important;
   color: var(--bc2);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 767px) {
+  .pp-hero-sky {
+    justify-content: center;
+    text-align: left;
+    min-height: 620px;
+  }
+  .pp-hero-sky__rail { display: none; }
+  .pp-hero-sky__content {
+    padding: 1.65rem;
+  }
+  .pp-hero-sky__title {
+    max-width: 12ch;
+  }
+}
+
+@keyframes sky-ken-burns {
+  0%   { transform: scale(var(--sh-ken-burns-scale-start, 1)); }
+  100% { transform: scale(var(--sh-ken-burns-scale-end, 1.12)); }
+}
+
+@keyframes sky-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(2rem);
+    filter: blur(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pp-hero-sky__media,
+  .pp-hero-sky__subhead,
+  .pp-hero-sky__title,
+  .pp-hero-sky__divider,
+  .pp-hero-sky__meta {
+    animation: none !important;
+  }
 }

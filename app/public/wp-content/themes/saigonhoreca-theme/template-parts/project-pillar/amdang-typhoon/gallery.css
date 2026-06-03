@@ -4,7 +4,7 @@
  * @package SaigonHoreca
  */
 
-.pp--amdang-typhoon .pp-gallery-at-cooking {
+.pp--adt .pp-gallery-adt-cooking {
   background: var(--b2);
   padding: clamp(4rem, 10vh, 9rem) 0;
   position: relative;
@@ -12,13 +12,7 @@
   isolation: isolate;
 }
 
-.pp--amdang-typhoon .pp-container-at-cooking {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 clamp(1.5rem, 5vw, 5rem);
-}
-
-.pp--amdang-typhoon .pp-grid-at-cooking {
+.pp--adt .pp-grid-adt-cooking {
   display: grid;
   grid-template-columns: 1fr;
   gap: 4rem;
@@ -26,19 +20,19 @@
 }
 
 @media (min-width: 1024px) {
-  .pp--amdang-typhoon .pp-grid-at-cooking {
+  .pp--adt .pp-grid-adt-cooking {
     grid-template-columns: 54% 46%;
     gap: clamp(4rem, 6vw, 7rem);
   }
 }
 
-.pp--amdang-typhoon .pp-text-at-cooking {
+.pp--adt .pp-text-adt-cooking {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
 
-.pp--amdang-typhoon .pp-badge-at-cooking {
+.pp--adt .pp-badge-adt-cooking {
   font-family: var(--font-display), sans-serif;
   font-size: 0.75rem;
   font-weight: 600;
@@ -49,12 +43,12 @@
   gap: 0.75rem;
 }
 
-.pp--amdang-typhoon .pp-badge-accent-at-cooking {
+.pp--adt .pp-badge-accent-adt-cooking {
   color: var(--gold);
   font-weight: 700;
 }
 
-.pp--amdang-typhoon .pp-title-at-cooking {
+.pp--adt .pp-title-adt-cooking {
   font-family: var(--font-display), sans-serif;
   font-size: clamp(1.8rem, 2.5vw, 2.3rem);
   font-weight: 700;
@@ -64,13 +58,13 @@
   margin: 0;
 }
 
-.pp--amdang-typhoon .pp-body-at-cooking {
+.pp--adt .pp-body-adt-cooking {
   display: flex;
   flex-direction: column;
   gap: 1.1rem;
 }
 
-.pp--amdang-typhoon .pp-paragraph-at-cooking {
+.pp--adt .pp-paragraph-adt-cooking {
   font-family: var(--font-body), sans-serif;
   font-size: clamp(0.95rem, 1.05vw, 1.05rem);
   line-height: 1.85;
@@ -80,7 +74,7 @@
 }
 
 /* Technical Specifications Card */
-.pp--amdang-typhoon .pp-cooking-specs-card {
+.pp--adt .pp-cooking-specs-card {
   position: relative;
   padding: 1.5rem;
   background: rgba(255, 255, 255, 0.02);
@@ -90,7 +84,7 @@
   backdrop-filter: blur(10px);
 }
 
-.pp--amdang-typhoon .pp-cooking-specs-title {
+.pp--adt .pp-cooking-specs-title {
   font-family: var(--font-display), sans-serif;
   font-size: 0.75rem;
   font-weight: 700;
@@ -101,7 +95,7 @@
   padding-bottom: 0.75rem;
 }
 
-.pp--amdang-typhoon .pp-cooking-specs-list {
+.pp--adt .pp-cooking-specs-list {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -110,7 +104,7 @@
   gap: 1rem;
 }
 
-.pp--amdang-typhoon .pp-cooking-specs-list li {
+.pp--adt .pp-cooking-specs-list li {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -120,92 +114,489 @@
   line-height: 1.4;
 }
 
-.pp--amdang-typhoon .pp-cooking-specs-list .spec-name {
+.pp--adt .pp-cooking-specs-list .spec-name {
   color: var(--bc);
   font-weight: 600;
 }
 
-.pp--amdang-typhoon .pp-cooking-specs-list .spec-value {
+.pp--adt .pp-cooking-specs-list .spec-value {
   color: var(--bc3);
   text-align: right;
   font-size: 0.82rem;
 }
 
-/* OVERLAPPING MEDIA DISPLAY */
-.pp--amdang-typhoon .pp-media-at-cooking {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 11;
-  padding: 1.5rem;
+/* 3D DEPTH FOCAL SHIFTING SHOWCASE DISPLAY */
+.pp--adt .pp-media-adt-cooking {
+  position: relative !important;
+  width: 100% !important;
+  aspect-ratio: 16 / 11.5 !important;
+  padding: 1.5rem !important;
+  box-sizing: border-box !important;
 }
 
-@media (max-width: 767px) {
-  .pp--amdang-typhoon .pp-media-at-cooking {
-    aspect-ratio: 16 / 12;
-    padding: 0.5rem;
+@media (max-width: 1023px) {
+  .pp--adt .pp-media-adt-cooking {
+    aspect-ratio: auto !important;
+    padding: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2rem !important;
   }
 }
 
-.pp--amdang-typhoon .pp-cooking-frame-framer {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: calc(100% - 3rem);
-  height: calc(100% - 3rem);
-  border: 1px solid var(--gold);
-  border-radius: 16px;
-  opacity: 0.2;
+/* Thước đo kỹ thuật trang trí chìm ngầm (Blueprint Technical Ruler) */
+.pp--adt .pp-cooking-tech-ruler {
+  position: absolute !important;
+  inset: -15px !important;
+  border: 1px dashed rgba(245, 166, 35, 0.12) !important;
+  border-radius: var(--radius-xl, 26px) !important;
   pointer-events: none;
-  z-index: 0;
-  transform: translate(1.5rem, 1.5rem);
-  transition: transform 0.6s var(--ease-spring), opacity 0.6s var(--ease-spring);
+  z-index: 0 !important;
+  transition: border-color 0.8s ease;
 }
 
-.pp--amdang-typhoon .pp-cooking-img-box {
-  position: absolute;
+.pp--adt .pp-cooking-tech-ruler::before {
+  content: '01  .  .  .  .  02  .  .  .  .  03  .  .  .  .  04  .  .  .  .  05' !important;
+  position: absolute !important;
+  top: -8px !important;
+  left: 30px !important;
+  font-family: var(--font-mono), monospace !important;
+  font-size: 0.55rem !important;
+  color: rgba(245, 166, 35, 0.25) !important;
+  letter-spacing: 0.2em !important;
+}
+
+.pp--adt .pp-cooking-tech-ruler::after {
+  content: 'SYS_GRID_SCALE_1:25_LEVEL_A' !important;
+  position: absolute !important;
+  bottom: -8px !important;
+  right: 30px !important;
+  font-family: var(--font-mono), monospace !important;
+  font-size: 0.55rem !important;
+  color: rgba(245, 166, 35, 0.25) !important;
+  letter-spacing: 0.1em !important;
+}
+
+@media (max-width: 1023px) {
+  .pp--adt .pp-cooking-tech-ruler {
+    display: none !important;
+  }
+}
+
+.pp--adt .pp-cooking-img-box {
+  position: absolute !important;
+  overflow: hidden !important;
+  border-radius: var(--radius-lg, 18px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7) !important;
+  background: var(--b3) !important;
+  transition: 
+    transform 0.8s var(--ease-spring), 
+    border-color 0.8s, 
+    box-shadow 0.8s,
+    opacity 0.8s,
+    filter 0.8s,
+    z-index 0.8s !important;
+}
+
+.pp--adt .pp-cooking-img-box img {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  filter: saturate(1.05) brightness(0.85);
+  transition: transform 0.8s var(--ease-spring), filter 0.8s !important;
+}
+
+/* Main Image: Bản vẽ bếp nướng (CAD lớn ở nền sau) */
+.pp--adt .pp-cooking-img-box--main {
+  width: 75% !important;
+  aspect-ratio: 16 / 10 !important;
+  left: 0 !important;
+  top: 0 !important;
+  z-index: 2 !important;
+  background: #020202 !important;
+  border: 1px solid rgba(245, 166, 35, 0.18) !important;
+}
+
+.pp--adt .pp-cooking-img-box--main img {
+  object-fit: contain !important;
+  filter: saturate(1.05) brightness(0.92) !important;
+}
+
+/* Sub Image: Thực tế trần mì (Chồng lấn lệch xuống dưới-phải, cực kỳ to rõ) */
+.pp--adt .pp-cooking-img-box--sub {
+  width: 46% !important;
+  aspect-ratio: 16 / 11 !important;
+  right: 0 !important;
+  bottom: -20px !important;
+  z-index: 3 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 
+    -15px 15px 45px rgba(0, 0, 0, 0.9),
+    0 0 25px rgba(245, 166, 35, 0.05) !important;
+}
+
+@media (max-width: 1023px) {
+  .pp--adt .pp-cooking-img-box {
+    position: relative !important;
+    width: 100% !important;
+    left: auto !important;
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    aspect-ratio: 16 / 10 !important;
+  }
+}
+
+/* ==========================================================================
+   INTERACTIVE 3D FOCAL SHIFTING HOVER EFFECTS
+   ========================================================================== */
+
+.pp--adt .pp-media-adt-cooking:hover .pp-cooking-tech-ruler {
+  border-color: rgba(245, 166, 35, 0.22) !important;
+}
+
+@media (min-width: 1024px) {
+  /* -------------------------------------------------------------
+     TRƯỜNG HỢP 1: HOVER VÀO BẢN VẼ CHÍNH (MAIN CAD)
+     ------------------------------------------------------------- */
+  
+  /* Ảnh CAD phóng to bừng sáng, trồi lên z-index cao nhất */
+  .pp--adt .pp-cooking-img-box--main:hover {
+    transform: scale(1.04) translate(10px, 10px) !important;
+    border-color: var(--gold) !important;
+    box-shadow: 
+      0 30px 65px rgba(0, 0, 0, 0.95),
+      0 0 35px rgba(245, 166, 35, 0.28) !important;
+    z-index: 10 !important;
+  }
+
+  /* ĐỒNG THỜI: ảnh thực tế phụ tự động co nhỏ, trượt sâu, làm mờ để làm nền chìm */
+  .pp--adt .pp-cooking-img-box--main:hover ~ .pp-cooking-img-box--sub {
+    transform: scale(0.85) translate(25px, 20px) !important;
+    opacity: 0.35 !important;
+    filter: blur(2px) grayscale(40%) !important;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5) !important;
+    border-color: rgba(255,255,255,0.03) !important;
+    z-index: 1 !important;
+  }
+
+  /* -------------------------------------------------------------
+     TRƯỜNG HỢP 2: HOVER VÀO ẢNH THỰC TẾ (SUB REALITY)
+     ------------------------------------------------------------- */
+
+  /* Ảnh thực tế phóng to, bừng sáng rực rỡ, chiếm lĩnh tiêu điểm phía trước */
+  .pp--adt .pp-cooking-img-box--sub:hover {
+    transform: scale(1.1) translate(-15px, -15px) !important;
+    border-color: var(--gold) !important;
+    box-shadow: 
+      0 35px 75px rgba(0, 0, 0, 0.95),
+      0 0 40px rgba(245, 166, 35, 0.3) !important;
+    z-index: 10 !important;
+  }
+
+  /* ĐỒNG THỜI: ảnh CAD lớn chìm sâu xuống, mờ hẳn đi để nhường tiêu điểm */
+  .pp--adt .pp-media-adt-cooking:has(.pp-cooking-img-box--sub:hover) .pp-cooking-img-box--main {
+    transform: scale(0.94) translate(-15px, -10px) !important;
+    opacity: 0.45 !important;
+    filter: brightness(0.5) blur(1.5px) grayscale(20%) !important;
+    z-index: 1 !important;
+  }
+}
+
+/* Mobile responsive order */
+@media (max-width: 1023px) {
+  .pp--adt .pp-grid-adt-cooking .pp-text-adt-cooking {
+    order: 1 !important;
+  }
+  .pp--adt .pp-grid-adt-cooking .pp-media-adt-cooking {
+    order: 2 !important;
+    margin-top: 1.5rem !important;
+  }
+  .pp--adt .pp-cooking-img-box--main {
+    margin-bottom: 0.5rem !important;
+  }
+}
+
+/* Editorial stagger override: keeps the two project cards interlocked instead
+   of sitting in a straight two-column row. */
+@media (min-width: 1024px) {
+  .pp--adt .pp-media-adt-cooking {
+    aspect-ratio: 16 / 12 !important;
+    min-height: 410px !important;
+    padding: clamp(1.1rem, 2vw, 1.75rem) !important;
+  }
+
+  .pp--adt .pp-cooking-img-box--main {
+    width: 68% !important;
+    aspect-ratio: 1.32 / 1 !important;
+    left: 1.5% !important;
+    top: 7% !important;
+    z-index: 2 !important;
+    transform: rotate(-1.5deg) !important;
+  }
+
+  .pp--adt .pp-cooking-img-box--sub {
+    width: 54% !important;
+    aspect-ratio: 1.08 / 1 !important;
+    right: 1% !important;
+    bottom: 4% !important;
+    z-index: 4 !important;
+    transform: rotate(2deg) !important;
+  }
+
+  .pp--adt .pp-cooking-img-box--main img {
+    object-fit: contain !important;
+    padding: 0.65rem !important;
+    background: #030303 !important;
+  }
+
+  .pp--adt .pp-cooking-img-box--sub img {
+    object-fit: cover !important;
+  }
+
+  .pp--adt .pp-cooking-img-box:hover {
+    border-color: var(--gold) !important;
+  }
+
+  .pp--adt .pp-cooking-img-box--main:hover {
+    transform: rotate(-0.5deg) translate(0.6rem, 0.45rem) scale(1.04) !important;
+  }
+
+  .pp--adt .pp-cooking-img-box--sub:hover {
+    transform: rotate(0.75deg) translate(-0.75rem, -0.75rem) scale(1.07) !important;
+  }
+
+  .pp--adt .pp-cooking-img-box--main:hover ~ .pp-cooking-img-box--sub {
+    transform: rotate(2deg) translate(0.5rem, 0.45rem) scale(0.94) !important;
+    opacity: 0.72 !important;
+    filter: saturate(0.8) brightness(0.72) !important;
+  }
+
+  .pp--adt .pp-media-adt-cooking:has(.pp-cooking-img-box--sub:hover) .pp-cooking-img-box--main {
+    transform: rotate(-1.5deg) translate(-0.55rem, -0.35rem) scale(0.96) !important;
+    opacity: 0.72 !important;
+    filter: brightness(0.68) grayscale(15%) !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  .pp--adt .pp-cooking-img-box--main img {
+    object-fit: contain !important;
+    padding: 0.6rem !important;
+    background: #030303 !important;
+  }
+
+  .pp--adt .pp-cooking-img-box--sub img {
+    object-fit: cover !important;
+  }
+}
+
+/* ===== merged from related.css — markup đã ở gallery.php (T-034 section 7). Merged để gỡ related.css =====*/
+/**
+ * amdang-typhoon — related slot (Kitchen & Bar Quy hoạch Section).
+ * Full Width Editorial Grid for extremely large images.
+ * @package SaigonHoreca
+ */
+
+.pp--adt .pp-related-adt {
+  background: var(--b1);
+  padding: clamp(4rem, 10vh, 9rem) 0;
+  position: relative;
   overflow: hidden;
+  isolation: isolate;
+}
+
+.pp--adt .pp-related-adt .pp-container-shared {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(3rem, 6vh, 5rem);
+}
+
+/* Phần trên: Header Grid (Text bên trái 55%, Quote bên phải 45%) */
+.pp--adt .pp-related-adt__header-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .pp--adt .pp-related-adt__header-grid {
+    grid-template-columns: 55% 45%;
+    gap: 4rem;
+  }
+}
+
+.pp--adt .pp-text-adt-related {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.pp--adt .pp-badge-adt-related {
+  font-family: var(--font-display), sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: color-mix(in srgb, var(--bc) 45%, transparent);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.pp--adt .pp-badge-accent-adt-related {
+  color: var(--gold);
+  font-weight: 700;
+}
+
+.pp--adt .pp-title-adt-related {
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(1.8rem, 2.5vw, 2.3rem);
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+  color: var(--bc);
+  margin: 0;
+}
+
+.pp--adt .pp-body-adt-related {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.pp--adt .pp-paragraph-adt-related {
+  font-family: var(--font-body), sans-serif;
+  font-size: clamp(0.95rem, 1.05vw, 1.05rem);
+  line-height: 1.85;
+  color: color-mix(in srgb, var(--bc) 75%, transparent);
+  margin: 0;
+  text-align: justify;
+}
+
+/* Editorial Blockquote */
+.pp--adt .pp-related-quote-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.pp--adt .pp-related-quote {
+  position: relative;
+  padding: 2.25rem;
+  border-left: 3px solid var(--gold);
+  background: rgba(255, 255, 255, 0.015);
+  border-radius: 0 16px 16px 0;
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  border-right: 1px solid rgba(255, 255, 255, 0.03);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  width: 100%;
+  margin: 0;
+}
+
+.pp--adt .pp-related-quote p {
+  font-family: var(--font-body), Georgia, serif;
+  font-style: italic;
+  font-size: clamp(1.05rem, 1.3vw, 1.4rem);
+  line-height: 1.7;
+  color: var(--gold);
+  margin: 0 0 0.85rem 0;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.pp--adt .pp-related-quote-author {
+  display: block;
+  font-family: var(--font-display), sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: color-mix(in srgb, var(--bc) 55%, transparent);
+  text-transform: uppercase;
+}
+
+/* FULL WIDTH MEDIA GRID FOR EXTREMELY LARGE IMAGES */
+.pp--adt .pp-media-adt-related-full {
+  position: relative;
+  width: 100%;
+}
+
+.pp--adt .pp-related-mosaic-full {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.pp--adt .pp-related-mosaic-item-full {
+  position: relative;
   border-radius: var(--radius);
+  overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
-  background: var(--b3);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  background: #000000; /* Nền đen cho bản vẽ AutoCAD */
   transition: all 0.6s var(--ease-spring);
 }
 
-.pp--amdang-typhoon .pp-cooking-img-box img {
+.pp--adt .pp-related-mosaic-item-full--1 {
+  width: 100%;
+  aspect-ratio: 16 / 8; /* Ngang rộng cực đại cho bếp chính, cực dễ xem */
+}
+
+@media (max-width: 768px) {
+  .pp--adt .pp-related-mosaic-item-full--1 {
+    aspect-ratio: 16 / 10;
+  }
+}
+
+.pp--adt .pp-related-mosaic-row-sub {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .pp--adt .pp-related-mosaic-row-sub {
+    grid-template-columns: 1fr 1fr; /* Chia đôi hàng dưới cho 2 ảnh quầy bar */
+  }
+}
+
+.pp--adt .pp-related-mosaic-item-full--2,
+.pp--adt .pp-related-mosaic-item-full--3 {
+  width: 100%;
+  aspect-ratio: 16 / 10; /* Tỷ lệ vàng rộng rãi */
+}
+
+.pp--adt .pp-related-mosaic-item-full img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: saturate(1.05) brightness(0.85);
+  filter: saturate(1.04) brightness(0.85);
   transition: transform 0.8s var(--ease-spring), filter 0.8s var(--ease-spring);
 }
 
-/* Main Image: Bản vẽ bếp nướng (dùng contain để tránh crop mất thông số kỹ thuật) */
-.pp--amdang-typhoon .pp-cooking-img-box--main {
-  width: 72%;
-  aspect-ratio: 16 / 10;
-  left: 1rem;
-  top: 1rem;
-  z-index: 1;
-  background: #000000;
+.pp--adt .pp-related-image-wrapper {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
 }
 
-.pp--amdang-typhoon .pp-cooking-img-box--main img {
+/* Các bản vẽ kỹ thuật dùng contain để không bị crop */
+.pp--adt .pp-related-mosaic-item-full--1 img,
+.pp--adt .pp-related-mosaic-item-full--2 img {
   object-fit: contain;
   filter: saturate(1.05) brightness(0.9);
 }
 
-/* Sub Image: Thực tế trần mì (ảnh thực tế có thể dùng cover bình thường) */
-.pp--amdang-typhoon .pp-cooking-img-box--sub {
-  width: 48%;
-  aspect-ratio: 16 / 10;
-  right: 1rem;
-  bottom: 0;
-  z-index: 2;
-}
-
-/* Labels on images */
-.pp--amdang-typhoon .pp-cooking-label {
+/* Nhãn chú thích — đồng nhất với pp-cooking-label */
+.pp--adt .pp-related-label {
   position: absolute;
   bottom: 0.75rem;
   left: 0.75rem;
@@ -224,56 +615,541 @@
   opacity: 0.8;
 }
 
-/* Interactive Hover effects */
-.pp--amdang-typhoon .pp-media-at-cooking:hover .pp-cooking-frame-framer {
-  transform: translate(2.5rem, 0.5rem);
-  opacity: 0.4;
-}
-
-.pp--amdang-typhoon .pp-media-at-cooking:hover .pp-cooking-img-box--main {
-  transform: scale(0.98) translate(-10px, -5px);
-  border-color: color-mix(in srgb, var(--gold) 20%, transparent);
-}
-
-.pp--amdang-typhoon .pp-media-at-cooking:hover .pp-cooking-img-box--sub {
-  transform: scale(1.04) translate(10px, 5px);
+/* Hover effects */
+.pp--adt .pp-related-mosaic-item-full:hover {
+  z-index: 5;
   border-color: var(--gold);
   box-shadow: 
-    0 25px 60px rgba(0, 0, 0, 0.85),
-    0 0 25px rgba(245, 166, 35, 0.15);
-  z-index: 5;
+    0 25px 60px rgba(0, 0, 0, 0.95),
+    0 0 30px rgba(245, 166, 35, 0.25);
+  transform: translateY(-4px);
 }
 
-.pp--amdang-typhoon .pp-media-at-cooking:hover .pp-cooking-img-box img {
-  filter: saturate(1.08) brightness(1.02);
+.pp--adt .pp-related-mosaic-item-full:hover img {
+  filter: saturate(1.06) brightness(1.02);
 }
 
-/* Mobile responsive order */
-@media (max-width: 1023px) {
-  .pp--amdang-typhoon .pp-grid-at-cooking .pp-text-at-cooking {
-    order: 1;
-  }
-  .pp--amdang-typhoon .pp-grid-at-cooking .pp-media-at-cooking {
-    order: 2;
-    margin-top: 1.5rem;
-  }
-  .pp--amdang-typhoon .pp-cooking-frame-framer {
-    display: none;
-  }
-  .pp--amdang-typhoon .pp-cooking-img-box--main {
-    position: relative;
-    width: 100%;
-    left: 0;
-    top: 0;
-    margin-bottom: 1rem;
-  }
-  .pp--amdang-typhoon .pp-cooking-img-box--sub {
-    position: relative;
-    width: 100%;
-    right: 0;
-    bottom: 0;
-  }
-  .pp--amdang-typhoon .pp-media-at-cooking {
-    aspect-ratio: auto;
+/* ===== merged from cta.css — markup đã ở gallery.php (T-034 section 8). Merged để gỡ cta.css =====*/
+/**
+ * amdang-typhoon — cta slot.
+ * High-End Asymmetric Tech-Split Layout.
+ * Blueprint Grid + Holographic Glow + Layered Spec Showcase.
+ * @package SaigonHoreca
+ */
+
+.pp--adt .pp-section-adt-cta {
+  background: var(--b1);
+  padding: clamp(5rem, 15vh, 10rem) 0;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Background Blueprint Grid & Ambient Glow */
+.pp--adt .pp-cta-grid-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.01) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
+  background-size: 50px 50px;
+  background-position: center;
+  mask-image: radial-gradient(circle at 75% 50%, black 20%, transparent 70%);
+  -webkit-mask-image: radial-gradient(circle at 75% 50%, black 20%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.pp--adt .pp-cta-ambient-glow {
+  position: absolute;
+  top: 50%;
+  left: 70%;
+  transform: translate(-50%, -50%);
+  width: 60vw;
+  height: 60vh;
+  background: radial-gradient(circle, rgba(245, 166, 35, 0.045) 0%, transparent 68%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Asymmetric 2-Column Split Grid */
+.pp--adt .pp-cta-split {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(3rem, 7vw, 6rem);
+  align-items: center;
+}
+
+@media (max-width: 991px) {
+  .pp--adt .pp-cta-split {
+    grid-template-columns: 1fr;
+    gap: 4rem;
   }
 }
+
+/* Left Column: Content Copy */
+.pp--adt .pp-cta-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.pp--adt .pp-badge-adt-cta {
+  font-family: var(--font-display), sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  margin-bottom: 1.25rem;
+}
+
+.pp--adt .pp-badge-accent-adt-cta {
+  color: rgba(245, 166, 35, 0.4);
+  margin-right: 4px;
+}
+
+.pp--adt .pp-title-adt-cta {
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--bc);
+  margin: 0 0 1.5rem 0;
+}
+
+.pp--adt .pp-highlight-gold {
+  color: var(--gold);
+  background: linear-gradient(135deg, #fff 40%, var(--gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.pp--adt .pp-desc-adt-cta {
+  font-family: var(--font-body), sans-serif;
+  font-size: clamp(0.95rem, 1vw, 1.05rem);
+  line-height: 1.8;
+  color: var(--bc2);
+  margin: 0 0 2.5rem 0;
+  max-width: 620px;
+}
+
+.pp--adt .pp-desc-paragraph {
+  margin: 0 0 1rem 0;
+}
+
+.pp--adt .pp-desc-paragraph:last-child {
+  margin: 0;
+}
+
+/* Interactive Specs Checklist */
+.pp--adt .pp-cta-specs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  margin-bottom: 3rem;
+}
+
+.pp--adt .pp-cta-spec-item {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.pp--adt .pp-cta-spec-item:hover {
+  border-bottom-color: rgba(245, 166, 35, 0.2);
+  transform: translateX(4px);
+}
+
+.pp--adt .pp-cta-spec-num {
+  font-family: var(--font-display), monospace;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+  background: rgba(245, 166, 35, 0.1);
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.pp--adt .pp-cta-spec-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.pp--adt .pp-cta-spec-content strong {
+  font-family: var(--font-display), sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--bc);
+}
+
+.pp--adt .pp-cta-spec-content span {
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.9rem;
+  color: var(--bc2);
+}
+
+/* Luxury Shimmer Action Button */
+.pp--adt .pp-btn-wrapper-adt-cta {
+  display: inline-flex;
+}
+
+.pp--adt .pp-btn-adt-cta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1.2rem 3rem;
+  background: var(--gold);
+  border-radius: 9999px;
+  overflow: hidden;
+  box-shadow: 
+    0 10px 30px rgba(245, 166, 35, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  text-decoration: none;
+  transition: all 0.4s var(--ease-spring);
+}
+
+.pp--adt .pp-btn-adt-cta:hover {
+  background: var(--gold-dim);
+  box-shadow: 
+    0 15px 35px rgba(245, 166, 35, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  transform: translateY(-3px);
+}
+
+.pp--adt .pp-btn-adt-cta-text {
+  font-family: var(--font-display), sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--pc);
+  z-index: 2;
+}
+
+.pp--adt .pp-btn-icon {
+  width: 18px;
+  height: 18px;
+  color: var(--pc);
+  z-index: 2;
+  transition: transform 0.3s ease;
+}
+
+.pp--adt .pp-btn-adt-cta:hover .pp-btn-icon {
+  transform: translateX(4px);
+}
+
+/* Shimmer shine effect */
+.pp--adt .pp-btn-adt-cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    transparent 100%
+  );
+  transform: skewX(-25deg);
+  z-index: 1;
+}
+
+.pp--adt .pp-btn-adt-cta:hover::before {
+  left: 150%;
+  transition: left 0.8s ease-in-out;
+}
+
+/* Right Column: Layered Blueprint Frame */
+.pp--adt .pp-cta-visual {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.pp--adt .pp-cta-blueprint-frame {
+  position: relative;
+  width: 100%;
+  max-width: 540px;
+  padding: 16px;
+  background: rgba(15, 15, 15, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  box-shadow: 
+    0 40px 90px rgba(0, 0, 0, 0.9),
+    inset 0 1px 0 rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transition: all 0.5s var(--ease-spring);
+}
+
+.pp--adt .pp-cta-blueprint-frame:hover {
+  transform: translateY(-6px) rotate(1deg);
+  border-color: rgba(245, 166, 35, 0.25);
+  box-shadow: 
+    0 50px 100px rgba(0, 0, 0, 0.95),
+    0 0 40px rgba(245, 166, 35, 0.12);
+}
+
+/* Blueprint Corner Crosses */
+.pp--adt .pp-cta-bp-corner {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 15px;
+  font-weight: 400;
+  color: rgba(245, 166, 35, 0.4);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  transition: all 0.4s ease;
+}
+
+.pp--adt .pp-cta-bp-corner--tl { top: 8px; left: 8px; }
+.pp--adt .pp-cta-bp-corner--tr { top: 8px; right: 8px; }
+.pp--adt .pp-cta-bp-corner--bl { bottom: 8px; left: 8px; }
+.pp--adt .pp-cta-bp-corner--br { bottom: 8px; right: 8px; }
+
+.pp--adt .pp-cta-blueprint-frame:hover .pp-cta-bp-corner {
+  color: var(--gold);
+  text-shadow: 0 0 6px var(--gold);
+}
+
+/* Image container & overlay details */
+.pp--adt .pp-cta-image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.pp--adt .pp-cta-image-wrapper img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(1.02) brightness(0.82);
+  transition: transform 0.8s var(--ease-spring), filter 0.8s var(--ease-spring);
+}
+
+.pp--adt .pp-cta-blueprint-frame:hover .pp-cta-image-wrapper img {
+  transform: scale(1.04);
+  filter: saturate(1.06) brightness(0.95);
+}
+
+/* Monospace Holographic Tags on Image */
+.pp--adt .pp-cta-tag {
+  position: absolute;
+  font-family: var(--font-display), monospace;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  padding: 4px 10px;
+  background: rgba(10, 10, 10, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--bc);
+  border-radius: 4px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  pointer-events: none;
+  z-index: 2;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  transition: all 0.3s ease;
+}
+
+.pp--adt .pp-cta-tag--material {
+  top: 1rem;
+  left: 1rem;
+  border-left: 2px solid var(--gold);
+}
+
+.pp--adt .pp-cta-tag--scale {
+  bottom: 1rem;
+  left: 1rem;
+}
+
+.pp--adt .pp-cta-tag--origin {
+  bottom: 1rem;
+  right: 1rem;
+}
+
+.pp--adt .pp-cta-blueprint-frame:hover .pp-cta-tag {
+  border-color: rgba(245, 166, 35, 0.3);
+  color: var(--gold);
+}
+
+/* Blueprint Dimension Guidelines */
+.pp--adt .pp-cta-dimension-line {
+  margin-top: 16px;
+  position: relative;
+  width: 100%;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pp--adt .pp-cta-dimension-line::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: rgba(245, 166, 35, 0.25);
+  z-index: 1;
+  transition: background 0.3s ease;
+}
+
+.pp--adt .pp-cta-blueprint-frame:hover .pp-cta-dimension-line::before {
+  background: rgba(245, 166, 35, 0.45);
+}
+
+.pp--adt .pp-cta-dim-text {
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-display), monospace;
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--gold);
+  background: rgba(15, 15, 15, 0.9);
+  padding: 2px 10px;
+  border: 1px solid rgba(245, 166, 35, 0.2);
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.pp--adt .pp-cta-blueprint-frame:hover .pp-cta-dim-text {
+  text-shadow: 0 0 4px rgba(245, 166, 35, 0.4);
+  border-color: var(--gold);
+}
+
+/* Showroom Center Layout (No Image Variant) */
+.pp--adt .pp-cta-center-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.pp--adt .pp-cta-center-layout .pp-cta-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+.pp--adt .pp-cta-center-layout .pp-title-adt-cta {
+  max-width: 860px;
+  margin-bottom: 2rem;
+}
+
+.pp--adt .pp-cta-center-layout .pp-desc-adt-cta {
+  max-width: 780px;
+  margin: 0 auto 3.5rem auto;
+}
+
+/* Horizontal Interactive Specs Grid */
+.pp--adt .pp-cta-specs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  width: 100%;
+  margin-bottom: 4.5rem;
+}
+
+@media (max-width: 991px) {
+  .pp--adt .pp-cta-specs-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    max-width: 540px;
+  }
+}
+
+.pp--adt .pp-cta-specs-grid .pp-cta-spec-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.25rem;
+  padding: 3rem 2rem;
+  background: rgba(255, 255, 255, 0.015);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 16px;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.01);
+  transition: all 0.4s var(--ease-spring);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04); /* reset split border-bottom */
+}
+
+.pp--adt .pp-cta-specs-grid .pp-cta-spec-item:hover {
+  border-color: rgba(245, 166, 35, 0.35);
+  background: rgba(245, 166, 35, 0.035);
+  transform: translateY(-8px);
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.65),
+    0 0 25px rgba(245, 166, 35, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.pp--adt .pp-cta-specs-grid .pp-cta-spec-num {
+  font-family: var(--font-display), monospace;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+  background: rgba(245, 166, 35, 0.12);
+  padding: 6px 14px;
+  border-radius: 6px;
+  margin-bottom: 0.25rem;
+  transition: all 0.3s ease;
+}
+
+.pp--adt .pp-cta-specs-grid .pp-cta-spec-item:hover .pp-cta-spec-num {
+  background: var(--gold);
+  color: var(--pc);
+  box-shadow: 0 0 12px rgba(245, 166, 35, 0.4);
+}
+
+.pp--adt .pp-cta-specs-grid .pp-cta-spec-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.5rem;
+}
+
+.pp--adt .pp-cta-specs-grid .pp-cta-spec-content strong {
+  font-family: var(--font-display), sans-serif;
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: var(--bc);
+  letter-spacing: 0.02em;
+}
+
+.pp--adt .pp-cta-specs-grid .pp-cta-spec-content span {
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--bc2);
+}
+

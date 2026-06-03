@@ -1,6 +1,6 @@
-<?php
+﻿<?php
 /**
- * Project Pillar — du-nam-an-an
+ * Project Pillar â€” du-nam-an-an
  * Section #1: hero
  * @package SaigonHoreca
  */
@@ -11,7 +11,8 @@ $uri = get_template_directory_uri();
     <div class="pp-hero-nan__media" style="background-image:url('<?php echo sgh_img('2025/01/sheh-fung-5.jpg'); ?>'); background-size:cover; background-position:center;"></div>
     <div class="pp-hero-nan__overlay" aria-hidden="true"></div>
     <div class="pp-hero-nan__content">
-        <h1 class="pp-hero-nan__title">Dự Nam An An</h1>
-        <p class="pp-hero-nan__subhead"><?php echo esc_html__('Khi gian bếp trở thành nền tảng của sự chăm sóc tinh tế', 'saigonhoreca'); ?></p>
+        <h1 class="pp-hero-nan__title">Dá»± Nam An An</h1>
+        <p class="pp-hero-nan__subhead"><?php echo esc_html__('Khi gian báº¿p trá»Ÿ thÃ nh ná»n táº£ng cá»§a sá»± chÄƒm sÃ³c tinh táº¿', 'saigonhoreca'); ?></p>
     </div>
 </section>
+

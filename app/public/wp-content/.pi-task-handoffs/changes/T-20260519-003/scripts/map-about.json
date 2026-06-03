@@ -1,0 +1,8 @@
+[
+  {"file": "hero.php",          "blocks": [1],    "desc": "Hero / brand banner"},
+  {"file": "introduction.php",  "blocks": [2],    "desc": "Giới thiệu Saigon Horeca"},
+  {"file": "partners.php",      "blocks": [3],    "desc": "Đối tác của Saigon Horeca"},
+  {"file": "values.php",        "blocks": [4],    "desc": "Giá trị + cách tiếp cận"},
+  {"file": "testimonials.php",  "blocks": [5],    "desc": "Nhận xét từ khách hàng"},
+  {"file": "cta.php",           "blocks": [6],    "desc": "Final CTA"}
+]

@@ -19,21 +19,21 @@ $reviews = [
     [
         'name'    => 'Ms Lee',
         'sub'     => 'SSiC Group',
-        'avatar'  => '2025/04/ms-lee.jpg',
+        'avatar'  => 'saigonhoreca/ms-lee.jpg',
         'text'    => 'Tôi rất hài lòng với dịch vụ của Saigon Horeca. Tư vấn rõ ràng, thiết kế bếp hợp lý, thi công nhanh và đúng yêu cầu. Đội ngũ làm việc chuyên nghiệp, hỗ trợ nhiệt tình. Bếp sau thi công vận hành rất tốt. Cảm ơn Saigon Horeca!',
         'side'    => 'right', // avatar card bên phải
     ],
     [
         'name'    => 'Anthony Bùi',
         'sub'     => 'Mâm Mâm Eatery &amp; Lounge',
-        'avatar'  => '2025/04/anthony-bui.jpg',
+        'avatar'  => 'saigonhoreca/anthony-bui.jpg',
         'text'    => 'Mình rất rất ấn tượng với sự chuyên nghiệp và sáng tạo của đội ngũ thiết kế. Từng chi tiết trong không gian nhà hàng Mâm Mâm Eatery &amp; Lounge đều được chăm chút tỉ mỉ, đúng theo phong cách mong muốn. Thi công nhanh gọn, đúng tiến độ và hỗ trợ tận tình. Một trải nghiệm hợp tác tuyệt vời — xứng đáng 5 sao!',
         'side'    => 'left',
     ],
     [
         'name'    => 'Quốc Tín',
         'sub'     => '',
-        'avatar'  => '2025/04/bao-quoc.png',
+        'avatar'  => 'saigonhoreca/bao-quoc.png',
         'text'    => '1 Đội Ngũ Tư Vấn &amp; Thiết Kế Đẹp, Chỉnh Chu, Tiện Lợi<br>Thương hiệu làm việc Uy Tín — Chuyên Nghiệp — Chất Lượng<br>5 Sao cho Horeca Sài Gòn',
         'side'    => 'right',
     ],
@@ -41,10 +41,10 @@ $reviews = [
 
 $star = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.6 6.6L22 9.3l-5.5 5L18 22l-6-3.4L6 22l1.5-7.7L2 9.3l7.4-.7L12 2z"/></svg>';
 ?>
-<section class="sh-testimonials" aria-label="<?php esc_attr_e('Cảm nhận khách hàng', 'saigonhoreca'); ?>">
+<section  class="sh-testimonials" aria-label="<?php esc_attr_e('Cảm nhận khách hàng', 'saigonhoreca'); ?>">
     <div class="sh-testimonials__inner">
 
-        <header class="sh-testimonials__header">
+        <header class="sh-testimonials__header scroll-reveal reveal-letter-wide duration-2000">
             <span class="sh-testimonials__divider" aria-hidden="true"></span>
             <h2 class="sh-testimonials__title"><?php esc_html_e('Cảm nhận từ khách hàng', 'saigonhoreca'); ?></h2>
             <p class="sh-testimonials__subtitle">
@@ -54,7 +54,7 @@ $star = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d
 
         <div class="sh-testimonials__list">
             <?php foreach ($reviews as $r) : ?>
-                <article class="sh-testimonial sh-testimonial--<?php echo esc_attr($r['side']); ?>">
+                <article class="sh-testimonial sh-testimonial--<?php echo esc_attr($r['side']); ?> scroll-reveal <?php echo $r['side'] === 'right' ? 'reveal-spring-left duration-1800' : 'reveal-spring-right duration-1800'; ?>">
                     <div class="sh-testimonial__body">
                         <div class="sh-testimonial__stars" role="img" aria-label="5 sao">
                             <?php for ($i = 0; $i < 5; $i++) echo $star; ?>

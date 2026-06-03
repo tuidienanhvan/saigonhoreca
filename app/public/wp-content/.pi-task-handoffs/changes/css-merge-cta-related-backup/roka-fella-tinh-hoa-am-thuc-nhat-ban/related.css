@@ -1,0 +1,243 @@
+/**
+ * Project Pillar — Roka Fella
+ * Section #7: related styling (Cinematic Vinyl Bar & Vinyl Record Watermark)
+ */
+
+.pp--rf .pp-rf-related {
+  position: relative;
+  padding: clamp(4.5rem, 9vw, 8.5rem) 0;
+  background-color: var(--b1);
+  overflow: hidden;
+}
+
+.pp-rf-related .pp-grid-12-rf {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .pp-rf-related .pp-grid-12-rf {
+    grid-template-columns: 45% 55%;
+  }
+}
+
+.rkf-related__glass-card {
+  position: relative;
+  background: color-mix(in srgb, var(--b2) 85%, transparent);
+  border: 1px dashed color-mix(in srgb, var(--gold) 35%, transparent);
+  border-radius: var(--radius-lg, 18px);
+  padding: clamp(2rem, 3.5vw, 3rem);
+  box-shadow: 
+    0 24px 50px rgba(0, 0, 0, 0.5),
+    inset 0 0 35px rgba(0, 0, 0, 0.7);
+  outline: 1px solid color-mix(in srgb, var(--gold) 15%, transparent);
+  outline-offset: -12px;
+  transition: transform 0.4s var(--ease-spring), border-color 0.4s, outline-color 0.4s;
+  overflow: visible;
+}
+
+.rkf-related__glass-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--gold);
+  outline-color: color-mix(in srgb, var(--gold) 50%, transparent);
+}
+
+/* card-corner-svg */
+.pp-rf-related .card-corner-svg {
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  width: calc(100% + 12px);
+  height: calc(100% + 12px);
+  pointer-events: none;
+  z-index: 4;
+  transition: transform 0.6s var(--ease-spring);
+}
+
+.rkf-related__glass-card:hover .card-corner-svg,
+.rkf-related__image-container:hover .card-corner-svg {
+  transform: scale(1.015);
+}
+
+.rkf-related__header h2.pp-text-rf__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3vw, 2.3rem);
+  font-weight: 700;
+  color: var(--bc);
+  line-height: 1.25;
+}
+
+.rkf-related__body {
+  font-family: var(--font-sans);
+  font-size: clamp(0.95rem, 1.1vw, 1.02rem);
+  line-height: 1.85;
+  color: var(--bc2);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  text-align: justify;
+}
+
+.rkf-related__body p:first-of-type::first-letter {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 3.5rem;
+  font-weight: 700;
+  float: left;
+  line-height: 0.85;
+  margin-right: 0.75rem;
+  margin-top: 0.15rem;
+  color: var(--gold);
+}
+
+.rkf-related__header .pp-text-rf__divider {
+  width: 60px;
+  height: 2px;
+  background: var(--gold);
+  margin: 1.5rem 0;
+  box-shadow: 0 0 8px var(--gold);
+}
+
+/* Vinyl Bar Image */
+.rkf-related__image-container {
+  border-radius: var(--radius-lg, 18px);
+  overflow: hidden;
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.75);
+}
+
+.rkf-related__image-container img {
+  filter: contrast(1.05) brightness(0.95);
+  transition: transform 1.2s var(--ease-spring), filter 0.6s;
+}
+
+.rkf-related__image-container:hover img {
+  transform: scale(1.05) rotate(0.5deg);
+  filter: contrast(1.08) brightness(1);
+}
+
+/* Vinyl record spinning watermark */
+.pp-rf-related .rkf-vinyl-record {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  animation: rkf-vinyl-spin 25s linear infinite !important;
+  opacity: 0.025 !important;
+  width: clamp(320px, 45vw, 500px) !important;
+  height: clamp(320px, 45vw, 500px) !important;
+  color: var(--gold) !important;
+  z-index: 1 !important;
+  border-radius: 50% !important;
+  box-shadow: 0 0 80px rgba(212, 175, 55, 0.03) !important;
+  pointer-events: none;
+}
+
+.pp-rf-related .rkf-vinyl-record::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important; left: 0 !important; width: 100% !important; height: 100% !important;
+  background: conic-gradient(from 0deg, transparent 35%, rgba(212,175,55,0.08) 50%, transparent 65%, transparent 90%, rgba(212,175,55,0.08) 95%, transparent 100%) !important;
+  border-radius: 50% !important;
+  pointer-events: none !important;
+}
+
+@keyframes rkf-vinyl-spin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pp-rf-related .rkf-vinyl-record {
+    animation: none !important;
+  }
+}
+
+/* Image tag badge */
+.rkf-related__image-container .pp-image-tag-rf {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 4;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  background: rgba(10, 10, 10, 0.8);
+  border: 1px solid color-mix(in srgb, var(--gold) 30%, transparent);
+  padding: 0.35rem 0.75rem;
+  border-radius: 4px;
+  backdrop-filter: blur(5px);
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+/* Quote mạ vàng chỉ kép */
+.rkf-related__quote {
+  position: relative;
+  margin-top: 2rem;
+  padding: 0.75rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  z-index: 2;
+}
+
+.rkf-related__quote-line {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212,175,55,0.5), transparent);
+  margin: 0.5rem 0;
+  position: relative;
+}
+
+.rkf-related__quote-line::after {
+  content: '';
+  position: absolute;
+  top: -1px; left: 50%;
+  transform: translateX(-50%);
+  width: 40px; height: 3px;
+  background: var(--gold);
+  box-shadow: 0 0 6px var(--gold);
+}
+
+.rkf-related__quote blockquote {
+  font-family: var(--font-serif), serif;
+  font-size: clamp(0.95rem, 1.2vw, 1.15rem);
+  font-style: italic;
+  color: var(--gold);
+  line-height: 1.6;
+  margin: 0;
+  padding: 0.5rem 1.5rem;
+  font-weight: 500;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* Khung góc mạ vàng nghệ thuật cho ảnh bàn giao */
+.rkf-related__image-container .pp-corner-ornament {
+  position: absolute !important;
+  width: 16px !important;
+  height: 16px !important;
+  border: 1px solid var(--gold) !important;
+  opacity: 0.35 !important;
+  transition: opacity 0.4s, transform 0.4s var(--ease-spring);
+  z-index: 3 !important;
+}
+
+.rkf-related__image-container:hover .pp-corner-ornament {
+  opacity: 0.95 !important;
+  transform: scale(1.1);
+}
+
+.rkf-related__image-container .pp-corner-ornament--top-left { top: 16px; left: 16px; border-right: none !important; border-bottom: none !important; }
+.rkf-related__image-container .pp-corner-ornament--top-right { top: 16px; right: 16px; border-left: none !important; border-bottom: none !important; }
+.rkf-related__image-container .pp-corner-ornament--bottom-left { bottom: 16px; left: 16px; border-right: none !important; border-top: none !important; }
+.rkf-related__image-container .pp-corner-ornament--bottom-right { bottom: 16px; right: 16px; border-left: none !important; border-top: none !important; }
+
+

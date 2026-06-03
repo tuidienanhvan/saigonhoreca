@@ -25,8 +25,8 @@ $blocks = [
             'Saigon Horeca cung cấp giải pháp thiết bị bếp công nghiệp toàn diện cho các nhà hàng, nhà máy canteen. Từ khảo sát, tư vấn, thiết kế đến lắp đặt và vận hành, chúng tôi đảm bảo toàn bộ khu vực nhà bếp được tối ưu hoá, mang lại hiệu quả cao và sự an tâm tuyệt đối cho khách hàng.',
             'Với kinh nghiệm làm việc cùng các nhà hàng đạt Michelin Guide 2023 như Sol Kitchen &amp; Bar, Saigon Horeca sẽ tư vấn giải pháp giúp bếp nhà hàng và bếp công nghiệp của bạn trở nên tối ưu và đẳng cấp.',
         ],
-        'cta'     => ['label' => __('Liên Hệ Ngay Hôm Nay', 'saigonhoreca'), 'sub' => '0901 304 365 | 0909 040 920', 'href' => 'tel:0901304365', 'is_phone' => true],
-        'img'     => '2025/05/SGH-banner.jpg',
+        'cta'     => ['label' => __('Liên Hệ Ngay Hôm Thay', 'saigonhoreca'), 'sub' => '0901 304 365 | 0909 040 920', 'href' => 'tel:0901304365', 'is_phone' => true],
+        'img'     => 'saigonhoreca/SGH-banner.webp',
         'alt'     => 'Bếp công nghiệp cao cấp Saigon Horeca',
         'reverse' => false,
     ],
@@ -40,7 +40,7 @@ $blocks = [
             'Saigon Horeca cam kết bảo trì định kỳ, bảo hành lâu dài để đảm bảo thiết bị luôn hoạt động ổn định. Chúng tôi luôn đồng hành cùng đối tác, sẵn sàng hỗ trợ mọi lúc để mang lại sự an tâm và hiệu quả tối ưu cho doanh nghiệp của bạn.',
         ],
         'cta'     => null,
-        'img'     => '2025/05/SGH-banner-1.jpg',
+        'img'     => 'saigonhoreca/SGH-banner-1.webp',
         'alt'     => 'Cải tạo bếp nhà hàng Saigon Horeca',
         'reverse' => true,
     ],
@@ -53,7 +53,7 @@ $blocks = [
             'Đội ngũ chuyên gia của Saigon Horeca sẽ tư vấn và cung cấp giải pháp đảm bảo các tiêu chuẩn thiết kế hệ thống hút khói và cấp khí tươi bếp nhà hàng để giúp tối ưu, thẩm mỹ, đảm bảo hiệu năng cho bếp công nghiệp của khách hàng.',
         ],
         'cta'     => null,
-        'img'     => '2024/09/sgh-hethonghutkhoi.jpg',
+        'img'     => 'saigonhoreca/sgh-hethonghutkhoi.webp',
         'alt'     => 'Hệ thống hút khói cấp khí tươi Saigon Horeca',
         'reverse' => false,
     ],
@@ -66,7 +66,7 @@ $blocks = [
             'Saigon Horeca cung cấp giải pháp thiết kế quầy bar cafe, quầy bar nhà hàng và quầy bar trong bếp với thiết kế riêng tối ưu cho từng không gian. Dù là quầy bar cafe ấm cúng, quầy bar nhà hàng sang trọng hay quầy bar trong bếp gọn gàng, chúng tôi đảm bảo mọi thiết kế đều phát huy tối đa công năng và thẩm mỹ, phù hợp với phong cách của bạn.',
         ],
         'cta'     => null,
-        'img'     => '2025/05/SGH-bespoke-bar.jpg',
+        'img'     => 'saigonhoreca/SGH-bespoke-bar.webp',
         'alt'     => 'Thiết kế quầy bar bespoke Saigon Horeca',
         'reverse' => true,
     ],
@@ -76,7 +76,7 @@ $blocks = [
     <?php foreach ($blocks as $i => $b) : ?>
         <div class="sh-services__block <?php echo $b['reverse'] ? 'sh-services__block--reverse' : ''; ?>">
             <div class="sh-services__inner">
-                <div class="sh-services__copy">
+                <div class="sh-services__copy scroll-reveal <?php echo $b['reverse'] ? 'reveal-skew-y duration-1800 delay-150' : 'reveal-skew-x duration-1800 delay-150'; ?>">
                     <?php if (!empty($b['eyebrow'])) : ?>
                         <span class="sh-services__eyebrow"><?php echo esc_html($b['eyebrow']); ?></span>
                     <?php endif; ?>
@@ -95,12 +95,12 @@ $blocks = [
                                 <strong><?php echo esc_html($b['cta']['label']); ?></strong>
                                 <?php if (!empty($b['cta']['sub'])) : ?>
                                     <em><?php echo esc_html($b['cta']['sub']); ?></em>
-                                <?php endif; ?>
+                                 <?php endif; ?>
                             </span>
                         </a>
                     <?php endif; ?>
                 </div>
-                <div class="sh-services__media">
+                <div class="sh-services__media scroll-reveal <?php echo $b['reverse'] ? 'reveal-3d-cinema-slow delay-350' : 'reveal-zoom-skew-in duration-2000 delay-350'; ?>">
                     <?php
                     $img_path = $b['img'];
                     $img_ext = pathinfo($img_path, PATHINFO_EXTENSION);

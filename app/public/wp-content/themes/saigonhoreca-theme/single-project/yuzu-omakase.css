@@ -1,0 +1,18 @@
+/**
+ * Project page-template — yuzu-omakase (layout + project tokens).
+ * Japanese Omakase sophisticated gold/dark theme.
+ * @package SaigonHoreca
+ */
+
+.pp--yzo {
+  --yzo-gold: var(--p);
+  --yzo-gold-glow: color-mix(in srgb, var(--p) 15%, transparent);
+  --yzo-gold-border: color-mix(in srgb, var(--p) 25%, transparent);
+  --yzo-gold-border-hover: color-mix(in srgb, var(--p) 50%, transparent);
+  --yzo-bg-glass: color-mix(in srgb, var(--b2) 75%, transparent);
+}
+
+body.page-template-page-project-yuzu-omakase {
+  background: var(--b1);
+  color: var(--bc);
+}

@@ -1,0 +1,178 @@
+/**
+ * Project page-template — sol-kitchen-bar-saigon-horeca (layout + project tokens).
+ * SOL KITCHEN & BAR — Latin American / hacienda identity: warm sun + clay,
+ * built entirely from global tokens (gold --p + warm mixing). 0 brand hex.
+ * NOTE: .scroll-reveal is defined once in single-project/sol-kitchen-bar.css
+ * (shared, identical) — not redefined here to avoid duplicate rules.
+ * @package SaigonHoreca
+ */
+
+.pp {
+  /* ── Project accent palette (derived, 0 brand hex) ── */
+  --solshr-sun:        var(--p);                                       /* gold/sun base */
+  --solshr-sun-soft:   color-mix(in srgb, var(--p) 64%, var(--bc));    /* lifted sun */
+  --solshr-clay:       color-mix(in srgb, var(--p) 64%, var(--er));    /* warm clay/terracotta */
+  --solshr-clay-deep:  color-mix(in srgb, var(--er) 52%, var(--ph));   /* deep clay */
+  --solshr-glass:      color-mix(in srgb, var(--b2) 72%, transparent);
+  --solshr-line:       color-mix(in srgb, var(--solshr-sun) 30%, transparent);
+  --solshr-grid:       color-mix(in srgb, var(--bc) 4%, transparent);
+  --solshr-haze:       color-mix(in srgb, var(--solshr-clay) 16%, transparent);
+}
+
+body.page-template-page-project-sol-kitchen-bar-saigon-horeca {
+  background: var(--b1);
+  color: var(--bc);
+}
+
+/* ── Shared section rhythm ── */
+.pp-section-solshr {
+  position: relative;
+  padding-block: clamp(3.5rem, 8vw, 7rem);
+  background-color: var(--b1);
+  overflow: hidden;
+  isolation: isolate;
+}
+.pp-section-solshr--alt {
+  background-color: color-mix(in srgb, var(--b2) 60%, var(--b1));
+}
+
+/* Ambient warm glow */
+.pp-solshr-ambient {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.55;
+}
+.pp-solshr-ambient--tr {
+  top: -16%;
+  right: -10%;
+  width: 540px;
+  height: 540px;
+  background: radial-gradient(circle, var(--solshr-haze) 0%, transparent 70%);
+}
+.pp-solshr-ambient--bl {
+  bottom: -18%;
+  left: -12%;
+  width: 580px;
+  height: 580px;
+  background: radial-gradient(circle, color-mix(in srgb, var(--solshr-sun) 12%, transparent) 0%, transparent 70%);
+}
+
+/* Faint sun-ray grid backdrop */
+.pp-solshr-grid {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    linear-gradient(var(--solshr-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--solshr-grid) 1px, transparent 1px);
+  background-size: 46px 46px, 46px 46px;
+  mask-image: radial-gradient(ellipse at 50% 0%, black 0%, transparent 78%);
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+/* ── Shared editorial text block ── */
+.pp-text-solshr {
+  position: relative;
+  z-index: 2;
+  max-width: 62ch;
+}
+.pp-text-solshr--center {
+  margin-inline: auto;
+  text-align: center;
+}
+.pp-text-solshr__eyebrow {
+  display: inline-block;
+  margin-bottom: 0.85rem;
+  font-family: var(--font-mono);
+  font-size: clamp(0.68rem, 1.3vw, 0.82rem);
+  font-weight: 600;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--solshr-sun) 88%, var(--bc));
+}
+.pp-text-solshr__divider {
+  display: block;
+  width: 64px;
+  height: 2px;
+  margin-bottom: 1.4rem;
+  background: linear-gradient(90deg, var(--solshr-sun), var(--solshr-clay));
+  box-shadow: 0 0 14px color-mix(in srgb, var(--solshr-sun) 50%, transparent);
+}
+.pp-text-solshr--center .pp-text-solshr__divider {
+  margin-inline: auto;
+}
+.pp-text-solshr__title {
+  margin: 0 0 1.1rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3.6vw, 2.6rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--bc);
+}
+.pp-text-solshr__body {
+  font-family: var(--font-sans);
+  font-size: clamp(0.98rem, 1.6vw, 1.06rem);
+  line-height: 1.85;
+  color: var(--bc2);
+}
+.pp-text-solshr__body p { margin: 0 0 1.05rem; }
+.pp-text-solshr__body p:last-child { margin-bottom: 0; }
+
+/* Decorative corner ornament */
+.pp-solshr-ornament {
+  position: absolute;
+  top: -0.75rem;
+  left: -0.75rem;
+  width: 32px;
+  height: 32px;
+  border-top: 1px solid color-mix(in srgb, var(--solshr-sun) 50%, transparent);
+  border-left: 1px solid color-mix(in srgb, var(--solshr-sun) 50%, transparent);
+  pointer-events: none;
+}
+.pp-solshr-ornament--right {
+  left: auto;
+  right: -0.75rem;
+  border-left: none;
+  border-right: 1px solid color-mix(in srgb, var(--solshr-sun) 50%, transparent);
+}
+
+/* Glass story card reused across split sections */
+.pp-story-card-solshr {
+  position: relative;
+  padding: clamp(1.6rem, 3vw, 2.6rem);
+  background: linear-gradient(160deg,
+    var(--solshr-glass),
+    color-mix(in srgb, var(--b1) 60%, transparent));
+  border: 1px solid color-mix(in srgb, var(--solshr-sun) 14%, transparent);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-main);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Framed editorial image */
+.pp-frame-solshr {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden !important;
+  border: 1px solid color-mix(in srgb, var(--solshr-sun) 16%, transparent);
+  box-shadow: var(--shadow-floating);
+}
+.pp-frame-solshr::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  background: linear-gradient(180deg,
+    transparent 62%,
+    color-mix(in srgb, var(--b1) 50%, transparent) 100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pp-solshr-ambient { animation: none !important; }
+}

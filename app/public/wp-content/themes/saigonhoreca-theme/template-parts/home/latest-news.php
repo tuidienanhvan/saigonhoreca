@@ -29,7 +29,7 @@ if (!$q->have_posts()) return;
 ?>
 <section class="sh-latest-news">
     <div class="sh-latest-news__inner">
-        <header class="sh-latest-news__header">
+        <header class="sh-latest-news__header scroll-reveal reveal-letter-wide duration-2000">
             <div>
                 <span class="sh-latest-news__eyebrow">News</span>
                 <h2 class="sh-latest-news__title"><?php esc_html_e('Tin tức mới', 'saigonhoreca'); ?></h2>
@@ -42,8 +42,11 @@ if (!$q->have_posts()) return;
             </a>
         </header>
         <div class="sh-latest-news__grid">
-            <?php $i = 0; while ($q->have_posts()) : $q->the_post(); $i++; ?>
-                <article class="sh-latest-news__card<?php echo $i === 1 ? ' sh-latest-news__card--featured' : ''; ?>">
+            <?php $i = 0; while ($q->have_posts()) : $q->the_post(); $i++; 
+                $delay = ($i - 1) * 150;
+                $delay_class = $delay > 0 ? " delay-{$delay}" : "";
+            ?>
+                <article class="sh-latest-news__card<?php echo $i === 1 ? ' sh-latest-news__card--featured' : ''; ?> scroll-reveal reveal-skew-y duration-1800<?php echo $delay_class; ?>">
                     <a href="<?php the_permalink(); ?>" class="sh-latest-news__link">
                         <div class="sh-latest-news__thumb">
                             <?php if (has_post_thumbnail()) :

@@ -1,69 +1,208 @@
 /**
- * little-bear-thao-dien — concept slot. Shared .pp-split-lbt layout (used by specs/gallery/related too).
+ * little-bear-thao-dien — concept slot.
+ * Premium Editorial Layout with glassmorphism card overlapping the image.
  * @package SaigonHoreca
  */
 
-.pp-split-lbt {
+.pp-concept-lb-sec {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--b2);
+  padding: 6.5rem 1.5rem;
+}
+@media (min-width: 768px) {
+  .pp-concept-lb-sec { padding: 8.5rem 2rem; }
+}
+
+/* Ambient glow tạo chiều sâu */
+.pp-concept-lb__glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--gold) 5%, transparent) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.pp-lb-mesh-decor {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.pp-concept-lb__grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 2.5rem;
   align-items: center;
   position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 992px) {
+  .pp-concept-lb__grid {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 0; /* Sẽ dùng margin âm để đè chéo */
+  }
+}
+
+/* Media cột trái */
+.pp-concept-lb__media-col {
+  position: relative;
 }
 @media (min-width: 992px) {
-  .pp-split-lbt { grid-template-columns: 1fr 1fr; gap: 4.5rem; }
-  .pp-split-lbt--reverse .pp-split-lbt__media { order: 2; }
-  .pp-split-lbt--reverse .pp-split-lbt__body  { order: 1; }
+  .pp-concept-lb__media-col {
+    grid-column: span 7;
+  }
 }
 
-.pp-split-lbt__body {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-  position: relative;
-  z-index: 2;
-}
-.pp-split-lbt__body .pp-text-lbt__divider { align-self: flex-start; }
-.pp-split-lbt__body .pp-text-lbt__title {
-  font-size: clamp(1.55rem, 2.6vw, 2.25rem);
-  text-align: left;
+.pp-concept-lb__image-container {
+  margin-bottom: 0 !important; /* Ghi đè margin-bottom mặc định */
 }
 
-.pp-split-lbt__media {
-  position: relative;
+.pp-concept-lb__image-container img {
+  width: 100%;
+  height: 100%;
   aspect-ratio: 16 / 10;
-  overflow: hidden;
-  border-radius: var(--radius-md);
-  background: var(--b3);
-  border: 1px solid var(--bd);
-  transition: border-color 0.4s var(--ease-spring);
+  object-fit: cover;
+  display: block;
+  box-shadow: var(--shadow-main);
+  border-radius: var(--radius-md) !important;
+  transition: transform 0.6s var(--ease-spring) !important;
 }
-.pp-split-lbt__media:hover {
-  border-color: color-mix(in srgb, var(--gold) 45%, transparent);
-}
-.pp-split-lbt__media img {
-  width: 100%; height: 100%;
-  object-fit: cover; display: block;
-  filter: saturate(1.05);
-  transition: transform 0.7s var(--ease-spring);
-}
-.pp-split-lbt__media:hover img { transform: scale(1.05); }
 
-/* L-bracket ornament behind body */
-.pp-split-lbt__body::before {
-  content: '';
+@media (min-width: 992px) {
+  .pp-concept-lb__image-container img {
+    /* Bo góc lệch phá cách - Chỉ bo bên trái */
+    border-radius: var(--radius-xl) 0 0 var(--radius-xl) !important;
+  }
+}
+
+/* Khung viền AutoCAD trang trí bên dưới ảnh */
+.pp-concept-lb__border-decor {
+  display: none;
   position: absolute;
   top: -1.5rem;
-  left: -1rem;
-  width: 56px; height: 56px;
-  border-top: 1px solid color-mix(in srgb, var(--gold) 40%, transparent);
-  border-left: 1px solid color-mix(in srgb, var(--gold) 40%, transparent);
+  left: -1.5rem;
+  width: 120px;
+  height: 120px;
+  border-top: 2px solid color-mix(in srgb, var(--gold) 35%, transparent);
+  border-left: 2px solid color-mix(in srgb, var(--gold) 35%, transparent);
   pointer-events: none;
   z-index: -1;
 }
-.pp-split-lbt--reverse .pp-split-lbt__body::before {
-  left: auto;
-  right: -1rem;
-  border-left: none;
-  border-right: 1px solid color-mix(in srgb, var(--gold) 40%, transparent);
+@media (min-width: 992px) {
+  .pp-concept-lb__border-decor {
+    display: block;
+  }
+}
+
+/* Text cột phải */
+.pp-concept-lb__text-col {
+  position: relative;
+}
+@media (min-width: 992px) {
+  .pp-concept-lb__text-col {
+    grid-column: span 5;
+    margin-left: -4.5rem; /* Margin âm cực mạnh đè chéo 3D */
+    z-index: 10;
+  }
+}
+
+/* Card kính mờ Glassmorphism tinh xảo */
+.pp-concept-card-lb {
+  background: color-mix(in srgb, var(--b2) 75%, transparent) !important;
+  backdrop-filter: blur(40px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(40px) saturate(160%) !important;
+  border: 1px solid color-mix(in srgb, var(--gold) 20%, transparent) !important;
+  border-radius: var(--radius-md);
+  padding: 2.2rem 2rem;
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.8),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+  position: relative;
+  transition: border-color 0.4s var(--ease-spring), box-shadow 0.4s var(--ease-spring), transform 0.4s var(--ease-spring);
+}
+@media (min-width: 992px) {
+  .pp-concept-card-lb {
+    padding: 3rem 2.5rem;
+    border-radius: var(--radius-lg);
+  }
+}
+
+.pp-concept-card-lb:hover {
+  border-color: color-mix(in srgb, var(--gold) 50%, transparent) !important;
+  box-shadow: 
+    0 40px 80px rgba(0, 0, 0, 0.95), 
+    0 0 40px color-mix(in srgb, var(--gold) 12%, transparent),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+  transform: translateY(-4px);
+}
+
+.pp-concept-card-lb__node {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.8rem;
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  font-weight: 900;
+  line-height: 1;
+  color: color-mix(in srgb, var(--gold) 8%, transparent);
+  user-select: none;
+  pointer-events: none;
+}
+
+.pp-concept-card-lb__header {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.pp-concept-card-tag {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  color: var(--gold);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.pp-concept-card-lb__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.45rem, 2.5vw, 2.1rem);
+  line-height: 1.2;
+  color: var(--bc);
+}
+
+.pp-concept-card-lb__divider {
+  width: 44px;
+  height: 2px;
+  background: var(--gold);
+  margin: 0.6rem 0 1.2rem;
+}
+
+.pp-concept-card-lb__body {
+  color: var(--bc2);
+  font-size: 0.96rem;
+  line-height: 1.78;
+}
+.pp-concept-card-lb__body p {
+  margin: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pp-concept-card-lb,
+  .pp-concept-lb__image-container img {
+    transition: none !important;
+  }
+  .pp-concept-card-lb:hover {
+    transform: none !important;
+  }
 }

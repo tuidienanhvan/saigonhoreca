@@ -1,5 +1,343 @@
 /**
- * Project Pillar — bambino-saigonhoreca — gallery styles
- * Inherits shared .pp-split-section layout from specs.css
+ * Project Pillar — bambino-saigonhoreca — gallery (Bar) styles
+ * Modern glassmorphism layout with Blueprint CAD media column.
  * @package SaigonHoreca
  */
+
+.pp--bam .pp-bambino-bar {
+  background: var(--b1);
+  padding: clamp(4rem, 8vw, 8rem) 0;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--bd);
+}
+
+.pp--bam .bb-bar-container {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+@media (min-width: 768px) {
+  .pp--bam .bb-bar-container {
+    padding-inline: 2rem;
+  }
+}
+
+.pp--bam .bb-bar-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(3rem, 6vw, 5rem);
+  align-items: center;
+}
+
+@media (min-width: 992px) {
+  .pp--bam .bb-bar-grid {
+    grid-template-columns: 1.15fr 0.85fr;
+  }
+}
+
+/* Cột trái: Card chữ kính mờ */
+.pp--bam .bb-bar-content-card {
+  background: rgba(19, 19, 19, 0.45);
+  border: 1px solid var(--bd);
+  border-radius: 24px;
+  padding: clamp(2rem, 4vw, 3rem);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: var(--shadow-main);
+  position: relative;
+  z-index: 2;
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  text-align: left;
+}
+
+.pp--bam .bb-bar-content-card:hover {
+  border-color: color-mix(in srgb, var(--gold) 35%, transparent);
+  box-shadow: 0 25px 50px color-mix(in srgb, var(--gold) 8%, transparent), 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* LINK KHÁM PHÁ THÊM */
+.pp--bam .bb-bar-link {
+  margin-top: 0.5rem !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 1.25rem;
+}
+
+.pp--bam .bb-bar-link a {
+  color: var(--gold);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.pp--bam .bb-bar-link a:hover {
+  color: var(--brand-light);
+  text-decoration: underline;
+}
+
+/* CỘT PHẢI: BLUEPRINT CAD MEDIA COLUMN */
+.pp--bam .bb-bar-media-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+.pp--bam .bb-bar-media {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(212, 175, 55, 0.18) !important;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+  transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+  z-index: 2;
+  width: 100%;
+}
+
+.pp--bam .bb-bar-media img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+.pp--bam .bb-bar-media:hover img {
+  transform: scale(1.04);
+}
+
+/* Ảnh nghiêng ngược lại theo yêu cầu của anh */
+.pp--bam .pp-specs-media-wrapper--reverse {
+  transform: rotate(-2deg) !important;
+}
+
+.pp--bam .pp-specs-media-wrapper--reverse:hover {
+  transform: rotate(0deg) scale(1.01) !important;
+}
+
+
+/* ===== merged from related.css — markup đã ở gallery.php (T-034 section 7). Merged để gỡ related.css =====*/
+/** bambino-saigonhoreca — related slot (no content). */
+
+/* ===== merged from cta.css — markup đã ở gallery.php (T-034 section 8). Merged để gỡ cta.css =====*/
+/**
+ * Project Pillar — bambino-saigonhoreca — cta styles
+ */
+
+.pp--bam .pp-bambino-cta {
+  background: var(--b1);
+  padding: clamp(4rem, 8vw, 8rem) 0;
+  position: relative;
+}
+
+.pp--bam .sgh-bambino-cta-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  background: rgba(19, 19, 19, 0.4);
+  border: 1px solid var(--bd);
+  border-radius: 24px;
+  overflow: hidden;
+  backdrop-filter: blur(20px);
+  box-shadow: var(--shadow-main);
+  transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
+}
+
+@media (min-width: 1024px) {
+  .pp--bam .sgh-bambino-cta-card {
+    grid-template-columns: 53% 47%;
+  }
+}
+
+.pp--bam .sgh-bambino-cta-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-strong);
+  box-shadow: 0 35px 80px color-mix(in srgb, var(--gold) 10%, transparent), 0 15px 45px rgba(0, 0, 0, 0.6);
+}
+
+/* Cột trái: Nội dung */
+.pp--bam .sgh-bambino-cta-content {
+  padding: clamp(2rem, 5vw, 4rem);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+
+.pp--bam .sgh-bambino-cta-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--brand-50);
+  border: 1px solid color-mix(in srgb, var(--gold) 30%, transparent);
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  color: var(--gold);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.pp--bam .sgh-bambino-cta-badge .pulse-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--gold);
+  animation: pulse-gold 2s infinite;
+}
+
+@keyframes pulse-gold {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.5); opacity: 0.5; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.pp--bam .sgh-bambino-cta-title {
+  margin: 0 0 1.25rem;
+  color: var(--bc);
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.pp--bam .sgh-bambino-cta-desc {
+  margin: 0 0 2rem;
+  color: var(--bc2);
+  font-size: clamp(0.95rem, 1vw, 1.05rem);
+  line-height: 1.7;
+}
+
+.pp--bam .sgh-bambino-cta-features {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 2.5rem;
+}
+
+.pp--bam .sgh-bambino-cta-features .feat-item {
+  font-size: 0.9rem;
+  color: var(--bc2);
+  font-weight: 500;
+}
+
+/* Nút bấm trượt sáng Shimmer */
+.pp--bam .sgh-bambino-cta-action {
+  position: relative;
+}
+
+.pp--bam .sgh-bambino-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gold);
+  color: var(--pc) !important; /* Chữ đen trên nền vàng kim */
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 1.15rem 2.5rem;
+  border-radius: 14px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 10px 30px color-mix(in srgb, var(--gold) 30%, transparent);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.pp--bam .sgh-bambino-cta-btn:hover {
+  transform: translateY(-2px);
+  background: var(--brand-hover);
+  box-shadow: 0 15px 35px color-mix(in srgb, var(--gold) 45%, transparent);
+}
+
+.pp--bam .sgh-bambino-cta-btn .btn-text {
+  position: relative;
+  z-index: 2;
+}
+
+.pp--bam .sgh-bambino-cta-btn .btn-shimmer {
+  position: absolute;
+  top: 0; left: -100%;
+  width: 50%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transform: skewX(-20deg);
+  z-index: 1;
+}
+
+.pp--bam .sgh-bambino-cta-btn:hover .btn-shimmer {
+  animation: shimmer 1.2s infinite;
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 200%; }
+}
+
+/* Cột phải: Media */
+.pp--bam .sgh-bambino-cta-media {
+  min-height: 320px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+@media (min-width: 1024px) {
+  .pp--bam .sgh-bambino-cta-media {
+    min-height: auto;
+  }
+}
+
+.pp--bam .sgh-bambino-cta-media-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(10, 10, 10, 0.8) 0%, rgba(10, 10, 10, 0) 100%);
+  pointer-events: none;
+}
+
+@media (max-width: 1023px) {
+  .pp--bam .sgh-bambino-cta-media-overlay {
+    background: linear-gradient(to bottom, rgba(10, 10, 10, 0.6) 0%, rgba(10, 10, 10, 0) 100%);
+  }
+}
+
+/* Parallel Gold Framer */
+.pp--bam .sgh-bambino-cta-framer {
+  position: absolute;
+  inset: -8px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.pp--bam .sgh-bambino-cta-framer .corner {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  border: 2px solid var(--gold);
+}
+
+.pp--bam .sgh-bambino-cta-framer .corner.tl {
+  top: 0; left: 0;
+  border-right: none;
+  border-bottom: none;
+}
+
+.pp--bam .sgh-bambino-cta-framer .corner.br {
+  bottom: 0; right: 0;
+  border-left: none;
+  border-top: none;
+}

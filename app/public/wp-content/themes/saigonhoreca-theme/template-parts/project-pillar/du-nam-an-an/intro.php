@@ -1,14 +1,14 @@
-<?php
+﻿<?php
 /**
- * Project Pillar — du-nam-an-an
+ * Project Pillar â€” du-nam-an-an
  * Section #2: with_gallery
  * @package SaigonHoreca
  */
 if (!defined('ABSPATH')) exit;
 $uri = get_template_directory_uri();
 ?>
-<section class="pp__section pp__section--alt">
-  <div class="pp__container">
+<section class="pp-section-nan pp-section-nan--alt scroll-reveal">
+  <div class="pp-container-shared">
     <div class="pp-text-nan pp-text-nan--center">
       <span class="pp-text-nan__divider pp-text-nan__divider--center" aria-hidden="true"></span>
       <h2 class="pp-text-nan__title"><?php echo esc_html__('Layout vận hành – Khi an toàn và hiệu quả song hành', 'saigonhoreca'); ?></h2>
@@ -23,11 +23,12 @@ $uri = get_template_directory_uri();
       </div>
     </div>
     <div class="pp-gallery-nan pp-gallery-nan--cols-4" style="margin-top:2rem;">
-      <div class="pp-gallery-nan__item"><img src="<?php echo sgh_img('2025/01/sheh-fung-6.jpg'); ?>" alt="sheh-fung (6)" loading="lazy" decoding="async"></div>
-      <div class="pp-gallery-nan__item"><img src="<?php echo sgh_img('2025/01/sheh-fung-8.jpg'); ?>" alt="sheh-fung (8)" loading="lazy" decoding="async"></div>
-      <div class="pp-gallery-nan__item"><img src="<?php echo sgh_img('2025/01/sheh-fung-9.jpg'); ?>" alt="sheh-fung (9)" loading="lazy" decoding="async"></div>
-      <div class="pp-gallery-nan__item"><img src="<?php echo sgh_img('2025/01/sheh-fung-7.jpg'); ?>" alt="sheh-fung (7)" loading="lazy" decoding="async"></div>
-      <div class="pp-gallery-nan__item"><img src="<?php echo sgh_img('2026/03/du-an-thecheezytime-11.jpg'); ?>" alt="<?php echo esc_attr__('Thiết bị bếp công nghiệp Saigon Horeca', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="1366" height="768"></div>
+      <div class="pp-gallery-nan__item pp-image-container-shared"><img src="<?php echo sgh_img('2025/01/sheh-fung-6.jpg'); ?>" alt="sheh-fung (6)" loading="lazy" decoding="async"><div class="pp-image-caption-shared"><?php echo esc_html__('Hệ thống bếp Nursing Home Kitchen chuẩn an toàn', 'saigonhoreca'); ?></div></div>
+      <div class="pp-gallery-nan__item pp-image-container-shared"><img src="<?php echo sgh_img('2025/01/sheh-fung-8.jpg'); ?>" alt="sheh-fung (8)" loading="lazy" decoding="async"><div class="pp-image-caption-shared"><?php echo esc_html__('Khu sơ chế với hệ bàn kệ inox chuyên dụng', 'saigonhoreca'); ?></div></div>
+      <div class="pp-gallery-nan__item pp-image-container-shared"><img src="<?php echo sgh_img('2025/01/sheh-fung-9.jpg'); ?>" alt="sheh-fung (9)" loading="lazy" decoding="async"><div class="pp-image-caption-shared"><?php echo esc_html__('Bếp Âu 6 họng điện kiểm soát nhiệt chính xác', 'saigonhoreca'); ?></div></div>
+      <div class="pp-gallery-nan__item pp-image-container-shared"><img src="<?php echo sgh_img('2025/01/sheh-fung-7.jpg'); ?>" alt="sheh-fung (7)" loading="lazy" decoding="async"><div class="pp-image-caption-shared"><?php echo esc_html__('Hệ thống tủ lạnh 4 cánh bảo quản thực phẩm', 'saigonhoreca'); ?></div></div>
+      <div class="pp-gallery-nan__item pp-image-container-shared"><img src="<?php echo sgh_img('2026/03/du-an-thecheezytime-11.jpg'); ?>" alt="<?php echo esc_attr__('Thiết bị bếp công nghiệp Saigon Horeca', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="1366" height="768"><div class="pp-image-caption-shared"><?php echo esc_html__('Máy rửa chén âm quầy tối ưu diện tích', 'saigonhoreca'); ?></div></div>
     </div>
   </div>
 </section>
+

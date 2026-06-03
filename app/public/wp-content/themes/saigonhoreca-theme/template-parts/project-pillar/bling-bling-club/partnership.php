@@ -9,7 +9,7 @@ $uri = get_template_directory_uri();
 ?>
 <section class="pp-section-bg-bbc">
   <!-- Thẻ con gánh hiệu ứng Parallax Clip-Path siêu mượt bằng phần cứng -->
-  <div class="pp-section-bg-bbc__bg" style="background-image:url('<?php echo sgh_img('2024/02/SGH-product-bling3.jpg'); ?>');"></div>
+  <div class="pp-section-bg-bbc__bg" style="background-image:url('<?php echo sgh_img('bling-bling-club/bling-bling-club-quay-dj-bieu-dien-live.jpg'); ?>');"></div>
   <div class="pp-section-bg-bbc__overlay" aria-hidden="true"></div>
   
   <div class="pp-section-bg-bbc__content">

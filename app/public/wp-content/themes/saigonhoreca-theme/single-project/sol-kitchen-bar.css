@@ -1,0 +1,165 @@
+/**
+ * Project page-template — sol-kitchen-bar (layout + project accent tokens).
+ * Renovate SOL KITCHEN & BAR District 7 — warm amber / terracotta hacienda
+ * identity built entirely from global tokens (gold --p + warm mixing).
+ * NO hardcoded brand hex — only var(--*) / color-mix.
+ * @package SaigonHoreca
+ */
+
+.pp {
+  /* ── Project accent palette (derived, 0 brand hex) ── */
+  --sol-amber:       var(--p);                                    /* gold base */
+  --sol-amber-soft:  color-mix(in srgb, var(--p) 70%, var(--bc)); /* lifted gold */
+  --sol-ember:       color-mix(in srgb, var(--p) 72%, var(--er)); /* warm terracotta */
+  --sol-ember-deep:  color-mix(in srgb, var(--er) 46%, var(--ph));/* deep ember */
+  --sol-glass:       color-mix(in srgb, var(--b2) 70%, transparent);
+  --sol-line:        color-mix(in srgb, var(--sol-amber) 28%, transparent);
+  --sol-grid:        color-mix(in srgb, var(--bc) 4%, transparent);
+  --sol-haze:        color-mix(in srgb, var(--sol-ember) 14%, transparent);
+}
+
+/* Page background consistency on the renovate Sol route */
+body.page-template-page-project-sol-kitchen-bar {
+  background: var(--b1);
+  color: var(--bc);
+}
+
+/* ── Shared section rhythm for this project ── */
+.pp-section-sol {
+  position: relative;
+  padding-block: clamp(3.5rem, 8vw, 7rem);
+  background-color: var(--b1);
+  overflow: hidden;
+  isolation: isolate;
+}
+.pp-section-sol--alt {
+  background-color: color-mix(in srgb, var(--b2) 60%, var(--b1));
+}
+
+/* Ambient warm glow used across sections */
+.pp-sol-ambient {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.55;
+}
+.pp-sol-ambient--tr {
+  top: -16%;
+  right: -10%;
+  width: 540px;
+  height: 540px;
+  background: radial-gradient(circle, var(--sol-haze) 0%, transparent 70%);
+}
+.pp-sol-ambient--bl {
+  bottom: -18%;
+  left: -12%;
+  width: 580px;
+  height: 580px;
+  background: radial-gradient(circle, color-mix(in srgb, var(--sol-amber) 12%, transparent) 0%, transparent 70%);
+}
+
+/* Faint engineering grid backdrop (M&E identity) */
+.pp-sol-grid {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    linear-gradient(var(--sol-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--sol-grid) 1px, transparent 1px);
+  background-size: 46px 46px, 46px 46px;
+  mask-image: radial-gradient(ellipse at 50% 0%, black 0%, transparent 78%);
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+/* ── Shared editorial text block (pp-text-sol) ── */
+.pp-text-sol {
+  position: relative;
+  z-index: 2;
+  max-width: 60ch;
+}
+.pp-text-sol--center {
+  margin-inline: auto;
+  text-align: center;
+}
+.pp-text-sol__eyebrow {
+  display: inline-block;
+  margin-bottom: 0.85rem;
+  font-family: var(--font-mono);
+  font-size: clamp(0.68rem, 1.3vw, 0.82rem);
+  font-weight: 600;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--sol-amber) 88%, var(--bc));
+}
+.pp-text-sol__divider {
+  display: block;
+  width: 64px;
+  height: 2px;
+  margin-bottom: 1.4rem;
+  background: linear-gradient(90deg, var(--sol-amber), var(--sol-ember));
+  box-shadow: 0 0 14px color-mix(in srgb, var(--sol-amber) 50%, transparent);
+}
+.pp-text-sol--center .pp-text-sol__divider {
+  margin-inline: auto;
+}
+.pp-text-sol__title {
+  margin: 0 0 1.1rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3.6vw, 2.6rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--bc);
+}
+.pp-text-sol__body {
+  font-family: var(--font-sans);
+  font-size: clamp(0.98rem, 1.6vw, 1.06rem);
+  line-height: 1.85;
+  color: var(--bc2);
+}
+.pp-text-sol__body p { margin: 0 0 1.05rem; }
+.pp-text-sol__body p:last-child { margin-bottom: 0; }
+
+/* Decorative corner ornament reused in split/concept cards */
+.pp-sol-ornament {
+  position: absolute;
+  top: -0.75rem;
+  left: -0.75rem;
+  width: 32px;
+  height: 32px;
+  border-top: 1px solid color-mix(in srgb, var(--sol-amber) 50%, transparent);
+  border-left: 1px solid color-mix(in srgb, var(--sol-amber) 50%, transparent);
+  pointer-events: none;
+}
+.pp-sol-ornament--right {
+  left: auto;
+  right: -0.75rem;
+  border-left: none;
+  border-right: 1px solid color-mix(in srgb, var(--sol-amber) 50%, transparent);
+}
+
+/* ── Scroll-reveal (shared entry animation) ── */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(2rem);
+  transition:
+    opacity 0.7s var(--ease-spring),
+    transform 0.7s var(--ease-spring);
+  will-change: opacity, transform;
+}
+.scroll-reveal.is-visible,
+.no-js .scroll-reveal {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .pp-sol-ambient { animation: none !important; }
+}

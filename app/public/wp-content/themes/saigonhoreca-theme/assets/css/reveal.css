@@ -1,0 +1,308 @@
+/* ── Native Premium Scroll Reveal System v2.1 (Final Optimized) ──
+   AOS-alternative siêu mượt mà dùng CSS transitions kết hợp IntersectionObserver.
+   Tốc độ mặc định chậm rãi, mượt mà (1.4s) với cubic-bezier cinematic đỉnh cao.
+   ------------------------------------------------------------------------- */
+
+/* ─── CSS CUSTOM PROPERTIES (Tái sử dụng easing curves) ─── */
+:root {
+  --ease-cinematic:  cubic-bezier(0.16, 1, 0.3, 1);       /* easeOutExpo — mượt chậm rãi */
+  --ease-spring:     cubic-bezier(0.34, 1.56, 0.64, 1);    /* easeOutBack — nhún nẩy tự nhiên */
+  --ease-smooth-lag: cubic-bezier(0.28, 0.11, 0.32, 1);    /* Trì hoãn nhẹ, trượt mềm */
+  --ease-bounce:     cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --ease-magnetic:   cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-parallax:   cubic-bezier(0.1, 0.9, 0.2, 1);
+  --reveal-duration: 1.4s;
+}
+
+/* ─── TRẠNG THÁI ẨN MẶC ĐỊNH ─── */
+.scroll-reveal {
+  opacity: 0;
+}
+
+/* ─── SPECIFICITY BOOSTER (0,2,0)
+   Attribute selector kết hợp class → đặc hiệu cao hơn mọi class layout đơn lẻ
+   (ví dụ .sh-featured-projects__card) mà không cần !important. ─── */
+.scroll-reveal[class*="reveal-"] {
+  transition-property: opacity, transform, filter, letter-spacing, clip-path, background-color, box-shadow;
+  transition-duration: var(--reveal-duration);
+  transition-timing-function: var(--ease-cinematic);
+  /* Bật GPU layer promotion CHỈ khi element chuẩn bị animate */
+  will-change: transform, opacity, filter, clip-path;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   DURATION OVERRIDES (TINH CHỈNH TỐC ĐỘ)
+   ───────────────────────────────────────────────────────────── */
+.scroll-reveal.duration-400  { transition-duration: 400ms; }
+.scroll-reveal.duration-600  { transition-duration: 600ms; }
+.scroll-reveal.duration-800  { transition-duration: 800ms; }
+.scroll-reveal.duration-1000 { transition-duration: 1000ms; }
+.scroll-reveal.duration-1200 { transition-duration: 1200ms; }
+.scroll-reveal.duration-1500 { transition-duration: 1500ms; }
+.scroll-reveal.duration-1800 { transition-duration: 1800ms; }
+.scroll-reveal.duration-2000 { transition-duration: 2000ms; }
+.scroll-reveal.duration-2500 { transition-duration: 2500ms; }
+.scroll-reveal.duration-3000 { transition-duration: 3000ms; }
+
+/* Easing modifiers (Đổi đường cong chuyển động) */
+.scroll-reveal.reveal-spring {
+  transition-timing-function: var(--ease-spring);
+}
+.scroll-reveal.reveal-smooth-lag {
+  transition-timing-function: var(--ease-smooth-lag);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   KHOẢN 1: HƯỚNG DI CHUYỂN CƠ BẢN (FADE & SLIDE) — 32 biến thể
+   ───────────────────────────────────────────────────────────── */
+
+/* Lên (Up) */
+.reveal-up { transform: translateY(50px); }
+.reveal-up-short { transform: translateY(20px); }
+.reveal-up-long { transform: translateY(90px); }
+.reveal-up-slow { transition-duration: 2.2s; transform: translateY(60px); }
+.reveal-up-extreme { transition-duration: 2.8s; transform: translateY(120px); }
+.reveal-up-spring { transition-timing-function: var(--ease-spring); transform: translateY(70px); }
+
+/* Xuống (Down) */
+.reveal-down { transform: translateY(-50px); }
+.reveal-down-short { transform: translateY(-20px); }
+.reveal-down-long { transform: translateY(-90px); }
+.reveal-down-slow { transition-duration: 2.2s; transform: translateY(-60px); }
+.reveal-down-extreme { transition-duration: 2.8s; transform: translateY(-120px); }
+.reveal-down-spring { transition-timing-function: var(--ease-spring); transform: translateY(-70px); }
+
+/* Trái (Left) */
+.reveal-left { transform: translateX(-50px); }
+.reveal-left-short { transform: translateX(-20px); }
+.reveal-left-long { transform: translateX(-90px); }
+.reveal-left-slow { transition-duration: 2.2s; transform: translateX(-60px); }
+.reveal-left-extreme { transition-duration: 2.8s; transform: translateX(-120px); }
+.reveal-left-spring { transition-timing-function: var(--ease-spring); transform: translateX(-70px); }
+
+/* Phải (Right) */
+.reveal-right { transform: translateX(50px); }
+.reveal-right-short { transform: translateX(20px); }
+.reveal-right-long { transform: translateX(90px); }
+.reveal-right-slow { transition-duration: 2.2s; transform: translateX(60px); }
+.reveal-right-extreme { transition-duration: 2.8s; transform: translateX(120px); }
+.reveal-right-spring { transition-timing-function: var(--ease-spring); transform: translateX(70px); }
+
+/* Chéo (Diagonal) */
+.reveal-diagonal-ul { transform: translate(-45px, -45px); }
+.reveal-diagonal-ur { transform: translate(45px, -45px); }
+.reveal-diagonal-dl { transform: translate(-45px, 45px); }
+.reveal-diagonal-dr { transform: translate(45px, 45px); }
+
+/* Góc chéo cũ (tương thích ngược) */
+.reveal-up-left { transform: translate(-40px, 40px); }
+.reveal-up-right { transform: translate(40px, 40px); }
+.reveal-down-left { transform: translate(-40px, -40px); }
+.reveal-down-right { transform: translate(40px, -40px); }
+
+/* Trực quan (Fade Only) */
+.reveal-fade { transform: none; }
+.reveal-fade-slow { transform: none; transition-duration: 2.5s; }
+.reveal-fade-fast { transform: none; transition-duration: 0.7s; }
+.reveal-fade-ultra { transform: none; transition-duration: 3.5s; }
+
+/* ─────────────────────────────────────────────────────────────
+   KHOẢN 2: DYNAMICS ZOOM & SKEW (THU PHÓNG & NGHIÊNG) — 20 biến thể
+   ───────────────────────────────────────────────────────────── */
+.reveal-zoom-in { transform: scale(0.90); }
+.reveal-zoom-in-short { transform: scale(0.96); }
+.reveal-zoom-in-long { transform: scale(0.82); }
+.reveal-zoom-in-slow { transition-duration: 2.2s; transform: scale(0.88); }
+.reveal-zoom-in-extreme { transition-duration: 2.8s; transform: scale(0.75); }
+
+.reveal-zoom-out { transform: scale(1.10); }
+.reveal-zoom-out-short { transform: scale(1.04); }
+.reveal-zoom-out-long { transform: scale(1.20); }
+.reveal-zoom-out-slow { transition-duration: 2.2s; transform: scale(1.12); }
+.reveal-zoom-out-extreme { transition-duration: 2.8s; transform: scale(1.30); }
+
+/* Zoom lệch tâm */
+.reveal-zoom-in-up { transform: scale(0.90) translateY(40px); }
+.reveal-zoom-in-down { transform: scale(0.90) translateY(-40px); }
+.reveal-zoom-out-up { transform: scale(1.10) translateY(40px); }
+.reveal-zoom-out-down { transform: scale(1.10) translateY(-40px); }
+
+/* Skew nghiêng nghệ thuật */
+.reveal-skew-x { transform: skewX(12deg) scale(0.95); }
+.reveal-skew-x-reverse { transform: skewX(-12deg) scale(0.95); }
+.reveal-skew-y { transform: skewY(6deg) translateY(20px); }
+.reveal-skew-y-reverse { transform: skewY(-6deg) translateY(20px); }
+.reveal-zoom-skew-in { transform: scale(0.9) skewX(8deg) translateY(30px); }
+.reveal-zoom-skew-out { transform: scale(1.1) skewX(-8deg) translateY(-30px); }
+
+/* ─────────────────────────────────────────────────────────────
+   KHOẢN 3: XOAY 3D & PERSPECTIVE FLIPS (ĐA CHIỀU 3D) — 20 biến thể
+   ───────────────────────────────────────────────────────────── */
+.reveal-flip-up { transform: perspective(1200px) rotateX(-30deg); }
+.reveal-flip-down { transform: perspective(1200px) rotateX(30deg); }
+.reveal-flip-left { transform: perspective(1200px) rotateY(-30deg); }
+.reveal-flip-right { transform: perspective(1200px) rotateY(30deg); }
+
+.reveal-flip-up-slow { transition-duration: 2.4s; transform: perspective(1200px) rotateX(-45deg); }
+.reveal-flip-down-slow { transition-duration: 2.4s; transform: perspective(1200px) rotateX(45deg); }
+.reveal-flip-left-slow { transition-duration: 2.4s; transform: perspective(1200px) rotateY(-45deg); }
+.reveal-flip-right-slow { transition-duration: 2.4s; transform: perspective(1200px) rotateY(45deg); }
+
+.reveal-rotate-left { transform: rotate(-10deg) scale(0.92); }
+.reveal-rotate-right { transform: rotate(10deg) scale(0.92); }
+.reveal-rotate-left-long { transform: rotate(-25deg) translateY(30px) scale(0.88); }
+.reveal-rotate-right-long { transform: rotate(25deg) translateY(30px) scale(0.88); }
+
+/* 3D Cinematic */
+.reveal-3d-cinema { transform: perspective(1500px) rotateX(15deg) translateY(50px) scale(0.92); }
+.reveal-3d-cinema-slow { transition-duration: 2.5s; transform: perspective(1500px) rotateX(18deg) translateY(70px) scale(0.90); }
+.reveal-3d-cinema-extreme { transition-duration: 3.2s; transform: perspective(1500px) rotateX(25deg) translateY(100px) scale(0.85); }
+
+/* Cổng gập & Xoay trục */
+.reveal-3d-gate-left { transform: perspective(1500px) rotateY(-85deg); transform-origin: left center; }
+.reveal-3d-gate-right { transform: perspective(1500px) rotateY(85deg); transform-origin: right center; }
+.reveal-3d-fold-up { transform: perspective(1200px) rotateX(90deg); transform-origin: top center; }
+.reveal-3d-fold-down { transform: perspective(1200px) rotateX(-90deg); transform-origin: bottom center; }
+.reveal-3d-spin { transform: rotate(180deg) scale(0.2); }
+
+/* ─────────────────────────────────────────────────────────────
+   KHOẢN 4: EDITORIAL MASK & BLUR (NHÒE NGHỆ THUẬT & HÉ LỘ CHỮ) — 20 biến thể
+   ───────────────────────────────────────────────────────────── */
+.reveal-blur { filter: blur(20px); }
+.reveal-blur-up { filter: blur(15px); transform: translateY(40px); }
+.reveal-blur-down { filter: blur(15px); transform: translateY(-40px); }
+.reveal-blur-left { filter: blur(15px); transform: translateX(-40px); }
+.reveal-blur-right { filter: blur(15px); transform: translateX(40px); }
+.reveal-blur-slow { filter: blur(25px); transition-duration: 2.6s; }
+.reveal-blur-extreme { filter: blur(40px); transition-duration: 3.2s; transform: scale(0.85); }
+
+/* Modern Editorial Text Accents */
+.reveal-letter-stretch { letter-spacing: -0.18em; filter: blur(10px); }
+.reveal-letter-wide { letter-spacing: 0.35em; filter: blur(8px); }
+.reveal-letter-compress { letter-spacing: 0.5em; transform: scale(0.8); filter: blur(12px); }
+
+/* CSS Clip-path reveals — Inset (Hé lộ bằng mặt nạ cắt vuông) */
+.reveal-editorial-mask { clip-path: inset(100% 0 0 0); }
+.reveal-editorial-mask-right { clip-path: inset(0 100% 0 0); }
+.reveal-editorial-mask-left { clip-path: inset(0 0 0 100%); }
+.reveal-editorial-mask-bottom { clip-path: inset(0 0 100% 0); }
+
+/* Text Splitting Reveals */
+.reveal-text-split-y { transform: translateY(105%) skewY(6deg); filter: blur(2px); }
+.reveal-text-split-x { transform: translateX(105%) skewX(10deg); filter: blur(2px); }
+
+/* Clip-path reveals — Circle & Effects (Hé lộ hình tròn & hiệu ứng kính) */
+.reveal-unveil-circle { clip-path: circle(0% at 50% 50%); }
+.reveal-glass-refract { filter: blur(20px) brightness(1.5) contrast(0.8); transform: scale(0.95); }
+.reveal-backdrop-focus { filter: saturate(0) blur(10px); transform: scale(0.98); }
+.reveal-glow-bloom { filter: brightness(2) blur(8px); box-shadow: 0 0 50px rgba(255, 255, 255, 0.5); }
+
+/* ─────────────────────────────────────────────────────────────
+   KHOẢN 5: CREATIVE ELASTIC & CHORDS (ĐÀN HỒI & LIÊN KẾT KÉP) — 10 biến thể
+   ───────────────────────────────────────────────────────────── */
+.reveal-spring-up { transition-timing-function: var(--ease-spring); transform: translateY(60px) scale(0.9); }
+.reveal-spring-down { transition-timing-function: var(--ease-spring); transform: translateY(-60px) scale(0.9); }
+.reveal-spring-left { transition-timing-function: var(--ease-spring); transform: translateX(-60px) scale(0.9); }
+.reveal-spring-right { transition-timing-function: var(--ease-spring); transform: translateX(60px) scale(0.9); }
+
+.reveal-bounce-back { transition-timing-function: var(--ease-bounce); transform: scale(0.7) translateY(80px); }
+.reveal-magnetic-pull { transition-timing-function: var(--ease-magnetic); transform: translateY(30px) rotate(-3deg) scale(0.95); }
+.reveal-dual-slide { transform: translate(-50px, 30px) rotate(2deg); }
+.reveal-liquid-flow { transform: scaleY(0.1) skewY(15deg); filter: blur(8px); transform-origin: bottom center; }
+.reveal-shimmer-in { background-color: rgba(212, 175, 55, 0.2); filter: brightness(1.5); }
+.reveal-parallax-scroll { transform: translateY(100px); transition-duration: 2s; transition-timing-function: var(--ease-parallax); }
+
+/* ─────────────────────────────────────────────────────────────
+   TRẠNG THÁI HIỂN THỊ KHI KÍCH HOẠT (ACTIVE STATE)
+   Dùng specificity (0,2,0) để đè bất kỳ class nào mà KHÔNG cần !important
+   trên transition. Chỉ giữ !important trên final values vì chúng PHẢI
+   override mọi variant bất kể thứ tự khai báo.
+   ───────────────────────────────────────────────────────────── */
+.scroll-reveal.is-visible {
+  opacity: 1 !important;
+  transform: none !important;
+  filter: none !important;
+  letter-spacing: normal !important;
+  clip-path: none !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  /* Giải phóng GPU layer sau khi animate xong */
+  will-change: auto;
+}
+
+/* Khôi phục letter-spacing chuẩn cho heading (tránh bị dính 'normal') */
+h1.scroll-reveal.is-visible,
+h2.scroll-reveal.is-visible,
+h3.scroll-reveal.is-visible {
+  letter-spacing: 0.005em !important;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   STAGGERED DELAY HELPERS (BỘ DELAY NHỊP NHÀNG)
+   Hỗ trợ 32 cấp độ delay từ 50ms → 3000ms.
+   ───────────────────────────────────────────────────────────── */
+.delay-50   { transition-delay: 50ms; }
+.delay-100  { transition-delay: 100ms; }
+.delay-150  { transition-delay: 150ms; }
+.delay-200  { transition-delay: 200ms; }
+.delay-250  { transition-delay: 250ms; }
+.delay-300  { transition-delay: 300ms; }
+.delay-350  { transition-delay: 350ms; }
+.delay-400  { transition-delay: 400ms; }
+.delay-450  { transition-delay: 450ms; }
+.delay-500  { transition-delay: 500ms; }
+.delay-550  { transition-delay: 550ms; }
+.delay-600  { transition-delay: 600ms; }
+.delay-650  { transition-delay: 650ms; }
+.delay-700  { transition-delay: 700ms; }
+.delay-750  { transition-delay: 750ms; }
+.delay-800  { transition-delay: 800ms; }
+.delay-850  { transition-delay: 850ms; }
+.delay-900  { transition-delay: 900ms; }
+.delay-950  { transition-delay: 950ms; }
+.delay-1000 { transition-delay: 1000ms; }
+.delay-1100 { transition-delay: 1100ms; }
+.delay-1200 { transition-delay: 1200ms; }
+.delay-1300 { transition-delay: 1300ms; }
+.delay-1400 { transition-delay: 1400ms; }
+.delay-1500 { transition-delay: 1500ms; }
+.delay-1600 { transition-delay: 1600ms; }
+.delay-1700 { transition-delay: 1700ms; }
+.delay-1800 { transition-delay: 1800ms; }
+.delay-1900 { transition-delay: 1900ms; }
+.delay-2000 { transition-delay: 2000ms; }
+.delay-2500 { transition-delay: 2500ms; }
+.delay-3000 { transition-delay: 3000ms; }
+
+/* ─────────────────────────────────────────────────────────────
+   ACCESSIBILITY: prefers-reduced-motion
+   Tôn trọng người dùng đã tắt motion trong hệ điều hành.
+   ───────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    filter: none !important;
+    clip-path: none !important;
+    will-change: auto !important;
+    letter-spacing: normal !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+  }
+}
+
+/* Tắt chuyển động trên Mobile ≤768px để tối ưu Core Web Vitals */
+@media (max-width: 768px) {
+  .scroll-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    filter: none !important;
+    clip-path: none !important;
+    will-change: auto !important;
+    letter-spacing: normal !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+  }
+}

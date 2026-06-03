@@ -38,24 +38,7 @@ function sgh_is_pillar_page_template() {
  * Cached filemtime accessor to reduce Disk I/O
  */
 function sh_get_asset_version($file_path) {
-    if (wp_get_environment_type() === 'local') {
-        return file_exists($file_path) ? filemtime($file_path) : '1.0';
-    }
-    
-    // In production, use transient to cache filemtime for 24 hours
-    static $versions = null;
-    if ($versions === null) {
-        $versions = get_transient('sh_asset_versions');
-        if (!is_array($versions)) $versions = [];
-    }
-
-    $md5_path = md5($file_path);
-    if (!isset($versions[$md5_path])) {
-        $versions[$md5_path] = file_exists($file_path) ? filemtime($file_path) : '1.0';
-        set_transient('sh_asset_versions', $versions, 24 * HOUR_IN_SECONDS);
-    }
-
-    return $versions[$md5_path];
+    return file_exists($file_path) ? filemtime($file_path) : '1.0';
 }
 
 function sgh_theme_css_bundle($dir = null) {
@@ -163,6 +146,8 @@ add_action('wp_enqueue_scripts', function () {
     if (is_front_page()) {
         list($hc_url, $hc_ver) = sgh_js_path('hero-carousel.js', $dir, $uri);
         wp_enqueue_script('hero-carousel', $hc_url, [], $hc_ver, true);
+        list($he_url, $he_ver) = sgh_js_path('home-effects.js', $dir, $uri);
+        wp_enqueue_script('home-effects', $he_url, [], $he_ver, true);
     }
     if (is_singular('post')) {
         list($se_url, $se_ver) = sgh_js_path('single-enhancements.js', $dir, $uri);
@@ -245,6 +230,79 @@ add_action('wp_enqueue_scripts', function () {
         body { font-family: var(--font-body); }
         h1, h2, h3, h4, h5, h6, .font-sans { font-family: var(--font-heading) !important; }
         .e-font-icon-svg { display: inline-block; width: 1em; height: 1em; fill: currentColor; }
+
+        /* ROKA FELLA CAPTION & LAYOUT ENHANCEMENTS */
+        .pp-image-container-rf {
+            position: relative !important;
+            overflow: hidden !important;
+        }
+        .pp-image-caption-rf {
+            position: absolute !important;
+            bottom: 0.75rem !important;
+            left: 0.75rem !important;
+            z-index: 5 !important;
+            padding: 0.4rem 0.85rem !important;
+            background: rgba(10, 10, 10, 0.85) !important;
+            border: 1px solid rgba(255, 255, 255, 0.12) !important;
+            border-radius: 6px !important;
+            font-family: var(--font-heading), sans-serif !important;
+            font-size: 0.68rem !important;
+            font-weight: 700 !important;
+            letter-spacing: 0.05em !important;
+            color: var(--gold) !important;
+            backdrop-filter: blur(8px) !important;
+            -webkit-backdrop-filter: blur(8px) !important;
+            pointer-events: none !important;
+            opacity: 0.85 !important;
+            transition: opacity 0.3s ease, transform 0.3s ease !important;
+            width: auto !important;
+            max-width: calc(100% - 1.5rem) !important;
+            text-align: left !important;
+            display: inline-block !important;
+            border-top: none !important;
+        }
+        .pp-image-container-rf:hover .pp-image-caption-rf {
+            opacity: 1 !important;
+            transform: translateY(-2px) !important;
+        }
+        .pp-image-container-rf img {
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        }
+        .pp-image-container-rf:hover img {
+            transform: scale(1.04) !important;
+            filter: grayscale(0%) contrast(1.05) brightness(1.02) !important;
+        }
+        /* Premium Cards styling */
+        .rkf-concept__glass-card,
+        .rkf-specs__glass-card {
+            background: linear-gradient(135deg, rgba(12, 14, 20, 0.92) 0%, rgba(6, 7, 10, 0.97) 100%) !important;
+            border: 1px solid rgba(245, 166, 35, 0.18) !important;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), inset 0 0 35px rgba(245, 166, 35, 0.04) !important;
+        }
+        .rkf-concept__glass-card:hover,
+        .rkf-specs__glass-card:hover {
+            border-color: rgba(245, 166, 35, 0.45) !important;
+            box-shadow: 0 35px 70px rgba(0, 0, 0, 0.92), 0 0 35px rgba(245, 166, 35, 0.1) !important;
+        }
+        .rkf-partnership__glass-card,
+        .rkf-related__glass-card {
+            background: linear-gradient(135deg, rgba(12, 14, 20, 0.92) 0%, rgba(6, 7, 10, 0.97) 100%) !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.85) !important;
+        }
+        .rkf-partnership__glass-card:hover,
+        .rkf-related__glass-card:hover {
+            border-color: rgba(255, 255, 255, 0.15) !important;
+            box-shadow: 0 35px 70px rgba(0, 0, 0, 0.95) !important;
+        }
+        /* Staggered floaters adjustment */
+        .rkf-partnership__image-container--floating {
+            box-shadow: -20px 20px 50px rgba(0, 0, 0, 0.9), 0 0 30px rgba(245, 166, 35, 0.15) !important;
+            transform: rotate(3deg) translateY(0) !important;
+        }
+        .rkf-partnership__side:hover .rkf-partnership__image-container--floating {
+            transform: scale(1.04) rotate(0deg) translateY(-10px) !important;
+        }
     ');
 
     // ── Performance: aggressive dequeue unused core assets ──────

@@ -1,3 +1,67 @@
-/** godmother-friendship — specs slot. Inherits .pp-split-gmf from concept.css. */
+/**
+ * godmother-friendship — specs slot.
+ * Lists, icons, CAD specifications, typography.
+ * @package SaigonHoreca
+ */
 
-.pp-split-gmf--reverse .pp-split-gmf__media { aspect-ratio: 16 / 9; }
+.pp--gmf .pp-specs-list-gmf {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.pp--gmf .pp-specs-list-gmf li {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  font-family: var(--font-sans);
+  font-size: clamp(0.92rem, 1vw, 1rem);
+  line-height: 1.6;
+  color: var(--bc2);
+}
+
+.pp--gmf .pp-specs-list-gmf li svg {
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--p);
+  margin-top: 0.15rem;
+}
+
+.pp--gmf .pp-specs-img-container-gmf {
+  position: relative;
+  overflow: visible !important;
+  width: 100%;
+  aspect-ratio: 16/10;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+  border: 1px solid color-mix(in srgb, var(--p) 15%, transparent);
+  border-radius: var(--radius-md);
+  transition: transform 0.6s var(--ease-spring), border-color 0.4s;
+}
+
+.pp--gmf .pp-specs-img-container-gmf:hover {
+  transform: translateY(-4px);
+  border-color: var(--p);
+}
+
+@media (min-width: 1024px) {
+  .pp--gmf .pp-specs-card-gmf {
+    margin-right: -1.5rem;
+    z-index: 10;
+    position: relative;
+  }
+}
+
+.pp--gmf .pp-cad-bbox-gmf {
+  position: absolute;
+  inset: -14px !important;
+  width: calc(100% + 28px) !important;
+  height: calc(100% + 28px) !important;
+  color: color-mix(in srgb, var(--p) 35%, transparent);
+  pointer-events: none;
+  z-index: 1;
+}
+

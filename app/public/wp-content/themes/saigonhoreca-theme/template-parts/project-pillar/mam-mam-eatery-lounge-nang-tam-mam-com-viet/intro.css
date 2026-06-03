@@ -1,9 +1,10 @@
 /**
- * mam-mam-eatery-lounge-nang-tam-mam-com-viet — intro slot.
- * OWNS the shared base for this project: .pp__section, .pp__container,
- * .pp-text-mml, .pp-gallery-mml, Mâm-tray circular divider, bamboo-frame.
- * Direction: Vietnamese Modern Heritage — rice grain, lotus, earthen gold.
- * @package SaigonHoreca
+ * Project Pillar — Mâm Mâm Eatery & Lounge
+ * Section #2: intro — OWNS the shared base for this project:
+ *   .pp__section / .pp__container shell, .pp-text-mam typography,
+ *   .pp-gallery-mam mosaic, .pp-split-mam alternating layout,
+ *   mâm-tray circular divider. Direction: Vietnamese Modern Heritage.
+ * 100% design tokens — no hardcoded brand hex.
  */
 
 /* ─────────────────────────────────────────────────────────────
@@ -23,6 +24,7 @@
 
 .pp__section--alt { background: var(--b2); }
 
+/* Local container fallback — sections also use .pp-container-shared */
 .pp__container {
   max-width: 1140px;
   margin: 0 auto;
@@ -30,17 +32,16 @@
   z-index: 2;
 }
 
-/* 2. Section-alt ambient glow (multi-layer) */
+/* 2. Section-alt ambient glow (technique: radial-gradient) */
 .pp__section--alt::before {
   content: '';
   position: absolute;
   top: 18%;
   right: -10%;
-  width: 540px;
-  height: 540px;
+  width: clamp(320px, 42vw, 540px);
+  height: clamp(320px, 42vw, 540px);
   background: radial-gradient(circle,
-    color-mix(in srgb, var(--gold) 6%, transparent) 0%,
-    transparent 72%);
+    color-mix(in srgb, var(--gold) 6%, transparent) 0%, transparent 72%);
   filter: blur(70px);
   pointer-events: none;
   z-index: 0;
@@ -51,35 +52,19 @@
   position: absolute;
   bottom: -10%;
   left: -8%;
-  width: 480px;
-  height: 480px;
+  width: clamp(280px, 38vw, 480px);
+  height: clamp(280px, 38vw, 480px);
   background: radial-gradient(circle,
-    color-mix(in srgb, var(--gold) 4.5%, transparent) 0%,
-    transparent 70%);
+    color-mix(in srgb, var(--gold) 4.5%, transparent) 0%, transparent 70%);
   filter: blur(80px);
   pointer-events: none;
   z-index: 0;
 }
 
-/* 3. Rice-grain texture on alt sections (subtle gold dots) */
-body.page-template-page-project-mam-mam-eatery-lounge-nang-tam-mam-com-viet .pp__section--alt > .pp__container::before {
-  content: '';
-  position: absolute;
-  inset: -2rem;
-  z-index: -1;
-  pointer-events: none;
-  background-image:
-    radial-gradient(circle at 1px 1px,
-      color-mix(in srgb, var(--gold) 16%, transparent) 0.6px,
-      transparent 1.1px);
-  background-size: 22px 22px;
-  opacity: 0.5;
-}
-
 /* ─────────────────────────────────────────────────────────────
-   4. .pp-text-mml — typographic body
+   3. .pp-text-mam — typographic body block
    ───────────────────────────────────────────────────────────── */
-.pp-text-mml {
+.pp-text-mam {
   max-width: 860px;
   margin: 0 auto;
   display: flex;
@@ -89,13 +74,13 @@ body.page-template-page-project-mam-mam-eatery-lounge-nang-tam-mam-com-viet .pp_
   z-index: 2;
 }
 
-.pp-text-mml--center {
+.pp-text-mam--center {
   align-items: center;
   text-align: center;
 }
 
-/* 4a. Mâm-tray circular divider — 3 concentric circles with a center dot */
-.pp-text-mml__divider {
+/* 3a. Mâm-tray circular divider — concentric rings + center dot */
+.pp-text-mam__divider {
   display: block;
   position: relative;
   width: 86px;
@@ -116,11 +101,10 @@ body.page-template-page-project-mam-mam-eatery-lounge-nang-tam-mam-com-viet .pp_
       transparent 5%);
 }
 
-.pp-text-mml--center .pp-text-mml__divider { margin: 0 auto; }
+.pp-text-mam--center .pp-text-mam__divider { margin: 0 auto; }
 
-/* Side dashes flanking the tray */
-.pp-text-mml__divider::before,
-.pp-text-mml__divider::after {
+.pp-text-mam__divider::before,
+.pp-text-mam__divider::after {
   content: '';
   position: absolute;
   top: 50%;
@@ -129,18 +113,18 @@ body.page-template-page-project-mam-mam-eatery-lounge-nang-tam-mam-com-viet .pp_
   transform: translateY(-50%);
 }
 
-.pp-text-mml__divider::before {
+.pp-text-mam__divider::before {
   left: -48px;
   background: linear-gradient(90deg, transparent 0%, var(--gold) 100%);
 }
 
-.pp-text-mml__divider::after {
+.pp-text-mam__divider::after {
   right: -48px;
   background: linear-gradient(90deg, var(--gold) 0%, transparent 100%);
 }
 
 /* Compact variant inside split bodies */
-.pp-split-mml__body .pp-text-mml__divider {
+.pp-split-mam__body .pp-text-mam__divider {
   width: 56px;
   height: 56px;
   box-shadow:
@@ -148,11 +132,11 @@ body.page-template-page-project-mam-mam-eatery-lounge-nang-tam-mam-com-viet .pp_
     inset 0 0 0 5px color-mix(in srgb, var(--gold) 35%, transparent),
     0 0 16px color-mix(in srgb, var(--gold) 22%, transparent);
 }
-.pp-split-mml__body .pp-text-mml__divider::before { width: 22px; left: -32px; }
-.pp-split-mml__body .pp-text-mml__divider::after  { width: 22px; right: -32px; }
+.pp-split-mam__body .pp-text-mam__divider::before { width: 22px; left: -32px; }
+.pp-split-mam__body .pp-text-mam__divider::after  { width: 22px; right: -32px; }
 
-/* 4b. Display title */
-.pp-text-mml__title {
+/* 3b. Display title (technique: clamp) */
+.pp-text-mam__title {
   margin: 0;
   font-family: var(--font-display);
   font-size: clamp(1.95rem, 3.6vw, 2.95rem);
@@ -162,13 +146,13 @@ body.page-template-page-project-mam-mam-eatery-lounge-nang-tam-mam-com-viet .pp_
   letter-spacing: -0.005em;
 }
 
-.pp-text-mml--center .pp-text-mml__title {
+.pp-text-mam--center .pp-text-mam__title {
   margin: 0 auto;
   max-width: 820px;
 }
 
-/* 4c. Body */
-.pp-text-mml__body {
+/* 3c. Body */
+.pp-text-mam__body {
   font-size: clamp(0.99rem, 1.12vw, 1.075rem);
   line-height: 1.92;
   color: var(--bc2);
@@ -178,12 +162,12 @@ body.page-template-page-project-mam-mam-eatery-lounge-nang-tam-mam-com-viet .pp_
   gap: 1.25rem;
 }
 
-.pp-text-mml--center .pp-text-mml__body { margin: 0 auto; }
-.pp-text-mml__body p { margin: 0; text-align: left; }
-.pp-text-mml--center .pp-text-mml__body p { text-align: center; }
+.pp-text-mam--center .pp-text-mam__body { margin: 0 auto; }
+.pp-text-mam__body p { margin: 0; text-align: left; }
+.pp-text-mam--center .pp-text-mam__body p { text-align: center; }
 
 /* Drop cap on left-aligned bodies */
-.pp-text-mml:not(.pp-text-mml--center) .pp-text-mml__body p:first-of-type::first-letter {
+.pp-text-mam:not(.pp-text-mam--center) .pp-text-mam__body p:first-of-type::first-letter {
   font-family: var(--font-display);
   font-size: 2.4em;
   font-weight: 700;
@@ -194,39 +178,97 @@ body.page-template-page-project-mam-mam-eatery-lounge-nang-tam-mam-com-viet .pp_
   text-shadow: 0 0 12px color-mix(in srgb, var(--gold) 30%, transparent);
 }
 
-.pp-text-mml__body a {
+.pp-text-mam__body strong { color: var(--gold); font-weight: 700; }
+.pp-text-mam__body em { color: color-mix(in srgb, var(--bc) 90%, var(--bc2)); font-style: italic; }
+
+/* ─────────────────────────────────────────────────────────────
+   4. .pp-split-mam — alternating storytelling layout
+   (used by concept + specs; container/media owned HERE)
+   ───────────────────────────────────────────────────────────── */
+.pp-split-mam {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2rem, 5vw, 3.75rem);
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+@media (min-width: 992px) {
+  .pp-split-mam { grid-template-columns: 0.92fr 1.08fr; }
+  .pp-split-mam--reverse { grid-template-columns: 1.08fr 0.92fr; }
+  .pp-split-mam--reverse .pp-split-mam__body { order: 2; }
+  .pp-split-mam--reverse .pp-split-mam__media { order: 1; }
+}
+
+.pp-split-mam__body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+/* Glass body card (technique: backdrop-filter) */
+.pp-split-mam__card {
+  position: relative;
+  padding: clamp(1.75rem, 3vw, 2.75rem);
+  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--b3) 55%, transparent);
+  border: 1px solid color-mix(in srgb, var(--gold) 14%, var(--bd));
+  backdrop-filter: blur(14px) saturate(1.1);
+  -webkit-backdrop-filter: blur(14px) saturate(1.1);
+  box-shadow:
+    0 22px 48px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 color-mix(in srgb, var(--gold) 12%, transparent);
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  transition: transform 0.5s var(--ease-spring), border-color 0.5s var(--ease-spring);
+}
+
+.pp-split-mam__card:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--gold) 40%, transparent);
+}
+
+.pp-split-mam__tag {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.32rem 0.85rem;
+  border-radius: var(--radius-full);
+  background: color-mix(in srgb, var(--gold) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--gold) 22%, transparent);
   color: var(--gold);
-  text-decoration: none;
-  border-bottom: 1px solid color-mix(in srgb, var(--gold) 40%, transparent);
-  transition: border-color 0.25s var(--ease-spring), color 0.25s;
-}
-
-.pp-text-mml__body a:hover {
-  border-color: var(--gold);
-  color: color-mix(in srgb, var(--gold) 88%, var(--bc));
-}
-
-.pp-text-mml__body strong { color: var(--gold); font-weight: 700; }
-.pp-text-mml__body em { color: color-mix(in srgb, var(--bc) 90%, var(--bc2)); font-style: italic; }
-
-/* 4d. Eyebrow for centered titles */
-.pp-text-mml--center .pp-text-mml__title::before {
-  content: 'CÂU CHUYỆN MÂM MÂM';
-  display: block;
-  margin-bottom: 0.85rem;
   font-family: var(--font-display);
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 600;
-  letter-spacing: 0.4em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--gold);
-  opacity: 0.88;
+}
+
+/* Split media — framed image with caption */
+.pp-split-mam__media {
+  position: relative;
+}
+
+.pp-split-mam__media .pp-image-container-shared {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.5);
+  border: 1px solid color-mix(in srgb, var(--gold) 16%, var(--bd));
+  transition: box-shadow 0.6s var(--ease-spring), border-color 0.6s var(--ease-spring);
+}
+
+.pp-split-mam__media .pp-image-container-shared:hover {
+  box-shadow: 0 24px 54px color-mix(in srgb, var(--gold) 18%, transparent);
+  border-color: color-mix(in srgb, var(--gold) 45%, transparent);
 }
 
 /* ─────────────────────────────────────────────────────────────
-   5. .pp-gallery-mml — bamboo-frame mosaic
+   5. .pp-gallery-mam — bamboo-frame mosaic grid
    ───────────────────────────────────────────────────────────── */
-.pp-gallery-mml {
+.pp-gallery-mam {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
@@ -236,59 +278,39 @@ body.page-template-page-project-mam-mam-eatery-lounge-nang-tam-mam-com-viet .pp_
 }
 
 @media (min-width: 640px) {
-  .pp-gallery-mml { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+  .pp-gallery-mam { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
 }
 
 @media (min-width: 992px) {
-  .pp-gallery-mml--cols-3 { grid-template-columns: repeat(3, 1fr); }
-  .pp-gallery-mml--cols-4 { grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
-  .pp-gallery-mml--cols-1 { grid-template-columns: 1fr; }
+  .pp-gallery-mam--cols-3 { grid-template-columns: repeat(3, 1fr); }
+  .pp-gallery-mam--cols-4 { grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
+  .pp-gallery-mam--cols-1 { grid-template-columns: 1fr; }
 }
 
-.pp-gallery-mml__item {
+/* Gallery item = .pp-image-container-shared (overflow:visible) + mâm framing.
+   The shared component owns object-fit + hover zoom + caption anchoring; here we
+   add the frame, ratio (on an inner clip), and bamboo hover ticks. */
+.pp-gallery-mam__item {
   position: relative;
-  aspect-ratio: 4 / 3;
-  overflow: hidden;
+  margin-bottom: 2.4rem; /* room for the shared caption anchored below */
   border-radius: var(--radius-md);
   background: var(--b3);
   border: 1px solid color-mix(in srgb, var(--gold) 18%, var(--bd));
+  aspect-ratio: 4 / 3;
   transition:
     border-color 0.45s var(--ease-spring),
     transform 0.45s var(--ease-spring),
     box-shadow 0.45s var(--ease-spring);
-  isolation: isolate;
 }
 
-/* Bamboo segment marks — top + bottom dashed gold ticks */
-.pp-gallery-mml__item::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 8%; right: 8%;
-  height: 1px;
-  background: repeating-linear-gradient(90deg,
-    color-mix(in srgb, var(--gold) 60%, transparent) 0 12px,
-    transparent 12px 28px);
-  opacity: 0;
-  transition: opacity 0.35s var(--ease-spring);
-  z-index: 3;
-  pointer-events: none;
+/* Clip the image to the rounded frame without hiding the caption */
+.pp-gallery-mam__item img {
+  border-radius: var(--radius-md);
+  filter: saturate(1.08);
+  clip-path: inset(0 round var(--radius-md));
 }
 
-.pp-gallery-mml__item::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 8%; right: 8%;
-  height: 1px;
-  background: repeating-linear-gradient(90deg,
-    color-mix(in srgb, var(--gold) 60%, transparent) 0 12px,
-    transparent 12px 28px);
-  opacity: 0;
-  transition: opacity 0.35s var(--ease-spring);
-  z-index: 3;
-  pointer-events: none;
-}
-
-.pp-gallery-mml__item:hover {
+.pp-gallery-mam__item:hover {
   border-color: color-mix(in srgb, var(--gold) 55%, transparent);
   transform: translateY(-6px);
   box-shadow:
@@ -296,63 +318,81 @@ body.page-template-page-project-mam-mam-eatery-lounge-nang-tam-mam-com-viet .pp_
     inset 0 1px 0 color-mix(in srgb, var(--gold) 18%, transparent);
 }
 
-.pp-gallery-mml__item:hover::before,
-.pp-gallery-mml__item:hover::after { opacity: 1; }
+.pp-gallery-mam__item:hover img { filter: saturate(1.16); }
 
-.pp-gallery-mml__item img {
+/* Bamboo segment ticks — top + bottom dashed gold on hover */
+.pp-gallery-mam__item::before,
+.pp-gallery-mam__item::after {
+  content: '';
   position: absolute;
-  inset: 0;
-  width: 100%; height: 100%;
-  object-fit: cover;
-  display: block;
-  filter: saturate(1.08);
-  transition: transform 0.9s var(--ease-spring), filter 0.5s;
+  left: 8%; right: 8%;
+  height: 1px;
+  background: repeating-linear-gradient(90deg,
+    color-mix(in srgb, var(--gold) 60%, transparent) 0 12px,
+    transparent 12px 28px);
+  opacity: 0;
+  transition: opacity 0.35s var(--ease-spring);
+  z-index: 6;
+  pointer-events: none;
+}
+.pp-gallery-mam__item::before { top: 0; }
+.pp-gallery-mam__item::after  { bottom: calc(2.4rem + 1px); }
+
+.pp-gallery-mam__item:hover::before,
+.pp-gallery-mam__item:hover::after { opacity: 1; }
+
+/* ─────────────────────────────────────────────────────────────
+   6. scroll-reveal (technique: .scroll-reveal markup; JS adds .is-visible)
+   ───────────────────────────────────────────────────────────── */
+.pp-intro-mam .scroll-reveal,
+.pp-concept-mam .scroll-reveal,
+.pp-specs-mam .scroll-reveal,
+.pp-partnership-mam .scroll-reveal,
+.pp-gallery-section-mam .scroll-reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.8s var(--ease-spring), transform 0.8s var(--ease-spring);
 }
 
-.pp-gallery-mml__item:hover img {
-  transform: scale(1.08);
-  filter: saturate(1.16);
+.pp-intro-mam .scroll-reveal.is-visible,
+.pp-concept-mam .scroll-reveal.is-visible,
+.pp-specs-mam .scroll-reveal.is-visible,
+.pp-partnership-mam .scroll-reveal.is-visible,
+.pp-gallery-section-mam .scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-/* Stagger entry */
-@keyframes pp-gallery-mml-rise {
+/* 7. Staggered gallery entry (technique: staggered nth-child) */
+.pp-gallery-mam.is-visible .pp-gallery-mam__item {
+  animation: pp-gallery-mam-rise 0.7s var(--ease-spring) both;
+}
+@keyframes pp-gallery-mam-rise {
   from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+.pp-gallery-mam.is-visible .pp-gallery-mam__item:nth-child(1) { animation-delay: 0.05s; }
+.pp-gallery-mam.is-visible .pp-gallery-mam__item:nth-child(2) { animation-delay: 0.12s; }
+.pp-gallery-mam.is-visible .pp-gallery-mam__item:nth-child(3) { animation-delay: 0.19s; }
+.pp-gallery-mam.is-visible .pp-gallery-mam__item:nth-child(4) { animation-delay: 0.26s; }
+.pp-gallery-mam.is-visible .pp-gallery-mam__item:nth-child(5) { animation-delay: 0.33s; }
+.pp-gallery-mam.is-visible .pp-gallery-mam__item:nth-child(6) { animation-delay: 0.40s; }
+.pp-gallery-mam.is-visible .pp-gallery-mam__item:nth-child(7) { animation-delay: 0.47s; }
+.pp-gallery-mam.is-visible .pp-gallery-mam__item:nth-child(8) { animation-delay: 0.54s; }
 
-.pp-gallery-mml__item { animation: pp-gallery-mml-rise 0.7s var(--ease-spring) both; }
-.pp-gallery-mml__item:nth-child(1) { animation-delay: 0.05s; }
-.pp-gallery-mml__item:nth-child(2) { animation-delay: 0.12s; }
-.pp-gallery-mml__item:nth-child(3) { animation-delay: 0.19s; }
-.pp-gallery-mml__item:nth-child(4) { animation-delay: 0.26s; }
-.pp-gallery-mml__item:nth-child(5) { animation-delay: 0.33s; }
-.pp-gallery-mml__item:nth-child(6) { animation-delay: 0.40s; }
-.pp-gallery-mml__item:nth-child(7) { animation-delay: 0.47s; }
-.pp-gallery-mml__item:nth-child(8) { animation-delay: 0.54s; }
+/* 8. Intro-specific rhythm */
+.pp-intro-mam .pp-gallery-mam { margin-top: 4rem; }
 
+/* 9. Reduced motion (technique: prefers-reduced-motion) */
 @media (prefers-reduced-motion: reduce) {
-  .pp-gallery-mml__item { animation: none; }
-  .pp-gallery-mml__item img { transition: none; }
-}
-
-/* 6. Intro-specific rhythm */
-body.page-template-page-project-mam-mam-eatery-lounge-nang-tam-mam-com-viet .pp__section:first-of-type .pp-text-mml {
-  padding-top: 1rem;
-}
-
-body.page-template-page-project-mam-mam-eatery-lounge-nang-tam-mam-com-viet .pp__section:first-of-type .pp-gallery-mml {
-  margin-top: 4rem;
-}
-
-body.page-template-page-project-mam-mam-eatery-lounge-nang-tam-mam-com-viet .pp__section:first-of-type .pp-text-mml::before {
-  content: '· · · · ·';
-  display: block;
-  font-family: var(--font-display);
-  font-size: 1.4rem;
-  letter-spacing: 0.6em;
-  color: var(--gold);
-  text-align: center;
-  opacity: 0.7;
-  margin-bottom: 0.5rem;
-  text-shadow: 0 0 14px color-mix(in srgb, var(--gold) 35%, transparent);
+  .pp-intro-mam .scroll-reveal,
+  .pp-concept-mam .scroll-reveal,
+  .pp-specs-mam .scroll-reveal,
+  .pp-partnership-mam .scroll-reveal,
+  .pp-gallery-section-mam .scroll-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .pp-gallery-mam.is-visible .pp-gallery-mam__item { animation: none !important; }
 }

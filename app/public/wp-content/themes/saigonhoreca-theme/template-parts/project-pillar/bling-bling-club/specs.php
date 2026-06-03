@@ -7,8 +7,8 @@
 if (!defined('ABSPATH')) exit;
 $uri = get_template_directory_uri();
 ?>
-<section class="pp__section pp__section--alt">
-  <div class="pp__container">
+<section class="pp-section-bbc pp-section-bbc--alt">
+  <div class="pp-container-shared">
     <div class="pp-split-bbc pp-split-bbc--reverse">
       <div class="pp-split-bbc__body">
         <span class="pp-text-bbc__divider" aria-hidden="true"></span>
@@ -20,7 +20,10 @@ $uri = get_template_directory_uri();
         </div>
       </div>
       <div class="pp-split-bbc__media">
-        <img src="<?php echo sgh_img('2024/02/SGH-Portrait.jpg'); ?>" alt="<?php echo esc_attr__('Thiết bị bếp công nghiệp Saigon Horeca', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="600" height="800">
+        <div class="pp-image-container-shared">
+          <img src="<?php echo sgh_img('bling-bling-club/bling-bling-club-thiet-bi-bep-cong-nghiep.jpg'); ?>" alt="<?php echo esc_attr__('Hệ thống quầy bar pha chế cocktail inox chuyên nghiệp', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="600" height="800">
+          <div class="pp-image-caption-shared"><?php echo esc_html__('Hệ thống quầy bar pha chế cocktail inox chuyên nghiệp (Cocktail Station) được bố trí khoa học', 'saigonhoreca'); ?></div>
+        </div>
       </div>
     </div>
   </div>

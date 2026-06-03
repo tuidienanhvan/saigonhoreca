@@ -1,0 +1,22 @@
+/**
+ * Project page-template — skyloft-by-glow (layout + project tokens).
+ * Neon-inspired rooftop bar identity with purple/cyan glows.
+ * @package SaigonHoreca
+ */
+
+.pp--sky {
+  --sky-purple: color-mix(in srgb, var(--in) 54%, var(--p));
+  --sky-purple-light: color-mix(in srgb, var(--in) 38%, var(--bc));
+  --sky-cyan: color-mix(in srgb, var(--in) 66%, var(--bc));
+  --sky-dark: color-mix(in srgb, var(--b1) 86%, var(--in));
+  --sky-glass: color-mix(in srgb, var(--b2) 68%, transparent);
+  --sky-line: color-mix(in srgb, var(--sky-cyan) 26%, transparent);
+  --sky-grid: color-mix(in srgb, var(--bc) 4%, transparent);
+}
+
+body.page-template-page-project-skyloft-by-glow-php,
+body.page-template-page-project-skyloft-by-glow {
+  background: var(--b1);
+  color: var(--bc);
+}
+

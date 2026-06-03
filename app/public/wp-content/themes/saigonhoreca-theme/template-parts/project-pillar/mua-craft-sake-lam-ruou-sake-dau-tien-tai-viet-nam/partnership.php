@@ -1,18 +1,17 @@
 <?php
 /**
  * Project Pillar — mua-craft-sake-lam-ruou-sake-dau-tien-tai-viet-nam
- * Section #4: bg_section
+ * Section #4: partnership — cinematic bg + glassmorphic content (Saigon Horeca).
  * @package SaigonHoreca
  */
 if (!defined('ABSPATH')) exit;
-$uri = get_template_directory_uri();
 ?>
-<section class="pp-section-bg-mcs" style="background-image:url('<?php echo sgh_img('2023/12/Mua-sake-kitchen1.jpg'); ?>');">
-  <div class="pp-section-bg-mcs__overlay" aria-hidden="true"></div>
-  <div class="pp-section-bg-mcs__content">
-    <span class="pp-text-mcs__divider pp-text-mcs__divider--center" aria-hidden="true"></span>
-    <h2 class="pp-text-mcs__title"><?php echo esc_html__('Tạo nên một trải nghiệm sake tuyệt vời cùng Mùa Craft Sake và Saigon Horeca', 'saigonhoreca'); ?></h2>
-    <div class="pp-text-mcs__body">
+<section class="pp-section-bg-mua" style="background-image:url('<?php echo sgh_img('mua-craft-sake-lam-ruou-sake-dau-tien-tai-viet-nam/mua-craft-sake-partnership-kitchen.jpg'); ?>');">
+  <div class="pp-section-bg-mua__overlay" aria-hidden="true"></div>
+  <div class="pp-section-bg-mua__content pp-container-shared scroll-reveal reveal-zoom-in-short duration-1200">
+    <span class="pp-text-mua__divider pp-text-mua__divider--center" aria-hidden="true"></span>
+    <h2 class="pp-text-mua__title"><?php echo esc_html__('Tạo nên một trải nghiệm sake tuyệt vời cùng Mùa Craft Sake và Saigon Horeca', 'saigonhoreca'); ?></h2>
+    <div class="pp-text-mua__body">
       <p><?php echo esc_html__('Tại bếp của Mùa Craft Sake, bạn sẽ bắt gặp một loạt các thiết bị hàng đầu, được lựa chọn và lắp đặt một cách cẩn thận bởi Saigon Horeca. Hãy khám phá những thiết bị ấn tượng làm nổi bật trải nghiệm ẩm thực tại Mùa Sake:', 'saigonhoreca'); ?></p>
       <p><?php echo esc_html__('Nền tảng của một nhà bếp chuyên nghiệp chính là hệ thống tủ lạnh, và Mùa Sake đã lựa chọn hệ thống tủ lạnh Fujimak từ Saigon Horeca, nổi tiếng với độ tin cậy và công nghệ làm lạnh tiên tiến. Những chiếc tủ lạnh hiện đại này đảm bảo bảo quản nguyên liệu tươi ngon trong thời gian dài, góp phần quan trọng tạo nên chất lượng và hương vị tuyệt vời của món ăn tại Mùa Sake. Với hệ thống tủ lạnh Fujimak từ Saigon Horeca, Mùa Craft Sake luôn đảm bảo nguyên liệu tươi ngon, chất lượng, tạo nên những món ăn tuyệt vời cho thực khách.', 'saigonhoreca'); ?></p>
       <p><?php echo esc_html__('Saigon Horeca cam kết mang đến những sản phẩm chất lượng cao. Nhà hàng Mùa Craft Sake đã chọn Saigon Horeca để cung cấp thiết bị inox cho nhà bếp của họ. Các thiết bị này được làm từ inox bền bỉ và có thiết kế đẹp mắt. Chúng được thiết kế để chịu được môi trường làm việc bận rộn của nhà hàng izakaya. Các thiết bị này không chỉ làm cho nhà bếp trông đẹp hơn mà còn giúp đội ngũ bếp làm việc hiệu quả và vệ sinh hơn.', 'saigonhoreca'); ?></p>

@@ -66,7 +66,7 @@ if (!function_exists('sgh_pi_has_custom_robots_txt')) {
 
 if (!function_exists('sgh_pi_get_schema_rules')) {
     function sgh_pi_get_schema_rules() {
-        $rules = get_option('sgh_seo_schema_rules', []);
+        $rules = get_option('pi_seo_schema_rules', []);
         return is_array($rules) ? $rules : [];
     }
 }

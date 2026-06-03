@@ -23,7 +23,7 @@ $icon_star  = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><
     <div class="sh-why-choose__inner">
 
         <!-- Col 1: Title + USP 1 -->
-        <div class="sh-why-choose__col sh-why-choose__col--left">
+        <div class="sh-why-choose__col sh-why-choose__col--left scroll-reveal reveal-skew-y duration-1800 delay-100">
             <div class="sh-why-choose__head">
                 <span class="sh-why-choose__star"><?php echo $icon_star; ?></span>
                 <span class="sh-why-choose__eyebrow"><?php esc_html_e('Why Saigon Horeca', 'saigonhoreca'); ?></span>
@@ -43,15 +43,15 @@ $icon_star  = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><
         </div>
 
         <!-- Col 2: Image -->
-        <div class="sh-why-choose__col sh-why-choose__col--media">
-            <img src="<?php echo esc_url(sgh_img('2025/05/SGH-mammam.jpg')); ?>"
+        <div class="sh-why-choose__col sh-why-choose__col--media scroll-reveal reveal-3d-cinema-slow delay-300">
+            <img src="<?php echo esc_url(sgh_img('saigonhoreca/SGH-mammam.jpg')); ?>"
                  alt="Mâm Mâm — Saigon Horeca"
                  width="412" height="412"
                  loading="lazy" decoding="async">
         </div>
 
         <!-- Col 3: 2 USPs -->
-        <div class="sh-why-choose__col sh-why-choose__col--right">
+        <div class="sh-why-choose__col sh-why-choose__col--right scroll-reveal reveal-blur-right duration-2000 delay-500">
             <div class="sh-why-choose__usp">
                 <span class="sh-why-choose__usp-icon"><?php echo $icon_handshake; ?></span>
                 <h3 class="sh-why-choose__usp-title"><?php esc_html_e('Dịch vụ toàn diện và chuyên nghiệp', 'saigonhoreca'); ?></h3>

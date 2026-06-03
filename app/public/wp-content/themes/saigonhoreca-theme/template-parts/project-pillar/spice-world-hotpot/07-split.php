@@ -1,6 +1,6 @@
-<?php
+﻿<?php
 /**
- * Project Pillar — spice-world-hotpot
+ * Project Pillar â€” spice-world-hotpot
  * Section #7: split
  * @package SaigonHoreca
  */
@@ -12,14 +12,15 @@ $uri = get_template_directory_uri();
     <div class="pp-split pp-split--reverse">
       <div class="pp-split__body">
         <div class="pp-text__body">
-      <p><?php echo esc_html__('Để tạo ra những lát thịt cừu mảnh và những lát thịt bò được cuộn đẹp mắt, khu vực cắt thịt được trang bị một máy cắt thịt thương hiệu Berjayja và một tủ đông Hoshizaki, đảm bảo sự tươi mới của các miếng thịt được chọn lựa.', 'saigonhoreca'); ?></p>
-      <p><?php echo esc_html__('Đã có được sự tin tưởng của Spice World Hot Pot Việt Nam, bằng cách đặt niềm tin đầy đủ vào Saigon Horeca, với kinh nghiệm và chuyên môn của chúng tôi trong lĩnh vực này, chúng tôi đã tham gia vào nhiều dự án nhà hàng và nhà bếp công nghiệp. Chúng tôi đã cung cấp các lời khuyên cần thiết cho việc thiết lập nhà bếp tiêu chuẩn, trình bày các bố cục cấu trúc tốt trên bản vẽ, cũng như các bản vẽ chi tiết về trang thiết bị thép không gỉ cho các nhà đầu tư.', 'saigonhoreca'); ?></p>
-      <p><?php echo esc_html__('Khi đến với Saigon Horeca, khách hàng sẽ thực sự hài lòng với những gì chúng tôi nói và làm. Bởi vì sự đáng tin cậy và chất lượng sản phẩm luôn là mục tiêu mà Saigon Horeca đã theo đuổi trong suốt 7 năm qua.', 'saigonhoreca'); ?></p>
+      <p><?php echo esc_html__('Äá»ƒ táº¡o ra nhá»¯ng lÃ¡t thá»‹t cá»«u máº£nh vÃ  nhá»¯ng lÃ¡t thá»‹t bÃ² Ä‘Æ°á»£c cuá»™n Ä‘áº¹p máº¯t, khu vá»±c cáº¯t thá»‹t Ä‘Æ°á»£c trang bá»‹ má»™t mÃ¡y cáº¯t thá»‹t thÆ°Æ¡ng hiá»‡u Berjayja vÃ  má»™t tá»§ Ä‘Ã´ng Hoshizaki, Ä‘áº£m báº£o sá»± tÆ°Æ¡i má»›i cá»§a cÃ¡c miáº¿ng thá»‹t Ä‘Æ°á»£c chá»n lá»±a.', 'saigonhoreca'); ?></p>
+      <p><?php echo esc_html__('ÄÃ£ cÃ³ Ä‘Æ°á»£c sá»± tin tÆ°á»Ÿng cá»§a Spice World Hot Pot Viá»‡t Nam, báº±ng cÃ¡ch Ä‘áº·t niá»m tin Ä‘áº§y Ä‘á»§ vÃ o Saigon Horeca, vá»›i kinh nghiá»‡m vÃ  chuyÃªn mÃ´n cá»§a chÃºng tÃ´i trong lÄ©nh vá»±c nÃ y, chÃºng tÃ´i Ä‘Ã£ tham gia vÃ o nhiá»u dá»± Ã¡n nhÃ  hÃ ng vÃ  nhÃ  báº¿p cÃ´ng nghiá»‡p. ChÃºng tÃ´i Ä‘Ã£ cung cáº¥p cÃ¡c lá»i khuyÃªn cáº§n thiáº¿t cho viá»‡c thiáº¿t láº­p nhÃ  báº¿p tiÃªu chuáº©n, trÃ¬nh bÃ y cÃ¡c bá»‘ cá»¥c cáº¥u trÃºc tá»‘t trÃªn báº£n váº½, cÅ©ng nhÆ° cÃ¡c báº£n váº½ chi tiáº¿t vá» trang thiáº¿t bá»‹ thÃ©p khÃ´ng gá»‰ cho cÃ¡c nhÃ  Ä‘áº§u tÆ°.', 'saigonhoreca'); ?></p>
+      <p><?php echo esc_html__('Khi Ä‘áº¿n vá»›i Saigon Horeca, khÃ¡ch hÃ ng sáº½ thá»±c sá»± hÃ i lÃ²ng vá»›i nhá»¯ng gÃ¬ chÃºng tÃ´i nÃ³i vÃ  lÃ m. Bá»Ÿi vÃ¬ sá»± Ä‘Ã¡ng tin cáº­y vÃ  cháº¥t lÆ°á»£ng sáº£n pháº©m luÃ´n lÃ  má»¥c tiÃªu mÃ  Saigon Horeca Ä‘Ã£ theo Ä‘uá»•i trong suá»‘t 7 nÄƒm qua.', 'saigonhoreca'); ?></p>
         </div>
       </div>
       <div class="pp-split__media">
-        <img src="<?php echo sgh_img('2024/02/Spice-World-Hot-Pot-07.jpg'); ?>" alt="<?php echo esc_attr__('Thiết bị bếp công nghiệp Saigon Horeca', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="1366" height="768">
+        <img src="<?php echo sgh_img('2024/02/Spice-World-Hot-Pot-07.jpg'); ?>" alt="<?php echo esc_attr__('Thiáº¿t bá»‹ báº¿p cÃ´ng nghiá»‡p Saigon Horeca', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="1366" height="768">
       </div>
     </div>
   </div>
 </section>
+

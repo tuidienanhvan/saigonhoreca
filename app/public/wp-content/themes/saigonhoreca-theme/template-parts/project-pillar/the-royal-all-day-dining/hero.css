@@ -1,10 +1,11 @@
 /**
- * the-royal-all-day-dining — hero slot.
- * Royal gold and majestic ruby-red glows for an elegant French palace aesthetic.
+ * the-royal-all-day-dining — hero slot (Gold Standard v2).
+ * Royal gold ambient glows, Ken-Burns cinematic animation, fluid typography.
+ * 0 hardcoded hex — all token vars / color-mix.
  * @package SaigonHoreca
  */
 
-.pp-hero-trd {
+.pp--trd .pp-hero-trd {
   position: relative;
   width: 100%;
   min-height: 88vh;
@@ -15,9 +16,9 @@
   background: var(--b1);
   isolation: isolate;
 }
-@media (max-width: 768px) { .pp-hero-trd { min-height: 70vh; } }
+@media (max-width: 768px) { .pp--trd .pp-hero-trd { min-height: 70vh; } }
 
-.pp-hero-trd__media {
+.pp--trd .pp-hero-trd__media {
   position: absolute;
   inset: 0;
   z-index: 0;
@@ -25,97 +26,169 @@
   background-position: center !important;
   filter: saturate(1.08) brightness(0.85) contrast(1.02);
 }
-.pp-hero-trd__media img,
-.pp-hero-trd__media iframe,
-.pp-hero-trd__media video {
+.pp--trd .pp-hero-trd__media[data-ken-burns] {
+  animation: trd-ken-burns var(--sh-ken-burns-duration, 6s) ease-in-out infinite alternate;
+}
+.pp--trd .pp-hero-trd__media img,
+.pp--trd .pp-hero-trd__media iframe,
+.pp--trd .pp-hero-trd__media video {
   width: 100%; height: 100%; object-fit: cover; display: block; border: none;
 }
 
-.pp-hero-trd__overlay {
+.pp--trd .pp-hero-trd__overlay {
   position: absolute;
   inset: 0;
   z-index: 1;
   background:
-    radial-gradient(ellipse at 50% 70%,
-      color-mix(in srgb, var(--gold) 15%, transparent) 0%,
-      transparent 60%),
-    linear-gradient(180deg,
-      color-mix(in srgb, #1a0f08 28%, transparent) 0%,
-      color-mix(in srgb, var(--b1) 85%, transparent) 100%);
+    linear-gradient(to left, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.25) 42%, transparent 72%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.4) 100%);
   pointer-events: none;
 }
 
-/* Royal ambient glows */
-.pp-hero-trd::before,
-.pp-hero-trd::after {
-  content: '';
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
-  pointer-events: none;
-  z-index: 1;
-}
-.pp-hero-trd::before {
-  top: -8%; left: -8%;
-  width: 460px; height: 460px;
-  background: radial-gradient(circle, color-mix(in srgb, var(--gold) 16%, transparent) 0%, transparent 70%);
-  opacity: 0.8;
-}
-.pp-hero-trd::after {
-  bottom: -10%; right: -6%;
-  width: 520px; height: 520px;
-  background: radial-gradient(circle, color-mix(in srgb, #b91c1c 10%, transparent) 0%, transparent 70%);
-  opacity: 0.65;
+/* Royal ambient glows — gold + warm gold */
+.pp--trd .pp-hero-trd::before,
+.pp--trd .pp-hero-trd::after {
+  display: none;
 }
 
-.pp-hero-trd__content {
+/* Content dồn về GÓC PHẢI, căn giữa theo chiều dọc */
+.pp--trd .pp-hero-trd__content {
   position: relative;
   z-index: 2;
   width: 100%;
-  max-width: 1100px;
-  padding: 0 1.5rem;
-  text-align: center;
+  max-width: 1280px;
+  padding: 0 clamp(1.5rem, 6vw, 5.5rem);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 1.25rem;
-}
-.pp-hero-trd__content::before {
-  content: '';
-  width: 56px;
-  height: 2px;
-  background: linear-gradient(90deg, var(--gold), #b91c1c);
-  box-shadow: 0 0 20px color-mix(in srgb, var(--gold) 60%, transparent);
+  align-items: flex-end;
+  justify-content: center;
+  text-align: right;
 }
 
-.pp-hero-trd__subhead {
-  margin: 0;
-  font-family: var(--font-display);
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.36em;
-  text-transform: uppercase;
-  color: var(--gold);
+/* Đơn giản — KHÔNG box/nền, chữ trực tiếp trên ảnh (text-shadow lo đọc được) */
+.pp--trd .pp-hero-trd__card {
+  position: relative;
+  background: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  max-width: 540px;
+  width: auto;
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  gap: 0.85rem;
 }
 
-.pp-hero-trd__title {
+.pp--trd .pp-hero-trd__card:hover { transform: none; }
+
+/* Emblem & Crown SVG Animation */
+.pp--trd .pp-hero-trd__emblem {
+  margin-bottom: 0.25rem;
+  filter: drop-shadow(0 0 8px color-mix(in srgb, var(--gold) 35%, transparent));
+  transition: transform 0.6s var(--ease-spring);
+}
+
+.pp--trd .pp-hero-trd__card:hover .pp-hero-trd__emblem {
+  transform: scale(1.05) translateY(-2px);
+}
+
+.pp--trd .pp-hero-trd__title {
   margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(2.4rem, 7vw, 5rem);
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
   font-weight: 800;
   line-height: 1.05;
   color: var(--bc);
-  letter-spacing: 0.005em;
-  max-width: 22ch;
-  text-shadow:
-    0 4px 24px rgba(0, 0, 0, 0.7),
-    0 0 60px color-mix(in srgb, var(--gold) 18%, transparent);
+  letter-spacing: 0.04em;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.85), 0 1px 4px rgba(0, 0, 0, 0.7);
 }
 
-.pp-hero-trd__subtitle {
+.pp--trd .pp-hero-trd__tagline {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-top: -0.5rem;
+  opacity: 0.95;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.8);
+}
+
+/* Gold Gradient Divider */
+.pp--trd .pp-hero-trd__gold-divider {
+  width: 90px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  box-shadow: 0 0 10px var(--gold);
+  margin: 0.25rem 0;
+}
+
+.pp--trd .pp-hero-trd__subhead {
   margin: 0;
-  max-width: 640px;
-  font-size: clamp(0.97rem, 1.1vw, 1.08rem);
-  line-height: 1.8;
+  font-family: var(--font-sans);
+  font-size: clamp(0.85rem, 1.2vw, 1.02rem);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--bc) 92%, transparent);
+  max-width: 420px;
+  line-height: 1.4;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.85);
+}
+
+.pp--trd .pp-hero-trd__subtitle {
+  margin: 0;
+  max-width: 620px;
+  font-size: clamp(0.92rem, 1.05vw, 1.02rem);
+  line-height: 1.75;
   color: var(--bc2);
+}
+
+/* Location tag inside card */
+.pp--trd .pp-hero-trd__location-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0.85rem;
+  padding: 0.45rem 1rem;
+  background: color-mix(in srgb, var(--gold) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--gold) 20%, transparent);
+  border-radius: var(--radius-full);
+  color: color-mix(in srgb, var(--bc) 88%, transparent);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: background 0.3s, border-color 0.3s;
+}
+
+.pp--trd .pp-hero-trd__location-tag:hover {
+  background: color-mix(in srgb, var(--gold) 15%, transparent);
+  border-color: color-mix(in srgb, var(--gold) 40%, transparent);
+}
+
+.pp--trd .pp-hero-trd__location-tag svg {
+  transition: transform 0.4s var(--ease-spring);
+}
+
+.pp--trd .pp-hero-trd__location-tag:hover svg {
+  transform: translateY(-2px);
+}
+
+/* ── Keyframes ── */
+@keyframes trd-ken-burns {
+  0%   { transform: scale(var(--sh-ken-burns-scale-start, 1)); }
+  100% { transform: scale(var(--sh-ken-burns-scale-end, 1.12)); }
+}
+
+/* ── Accessibility ── */
+@media (prefers-reduced-motion: reduce) {
+  .pp--trd .pp-hero-trd__media[data-ken-burns] {
+    animation: none !important;
+  }
 }

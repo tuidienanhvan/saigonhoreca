@@ -1,69 +1,126 @@
 /**
- * skyloft-by-glow — concept slot. Shared .pp-split-sbg layout (used by specs/gallery/related too).
+ * skyloft-by-glow — concept slot.
+ * Inherits .pp-split-sky from intro.css.
  * @package SaigonHoreca
  */
 
-.pp-split-sbg {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2.5rem;
-  align-items: center;
-  position: relative;
-}
-@media (min-width: 992px) {
-  .pp-split-sbg { grid-template-columns: 1fr 1fr; gap: 4.5rem; }
-  .pp-split-sbg--reverse .pp-split-sbg__media { order: 2; }
-  .pp-split-sbg--reverse .pp-split-sbg__body  { order: 1; }
-}
-
-.pp-split-sbg__body {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
+.pp-concept-sky__layout {
   position: relative;
   z-index: 2;
-}
-.pp-split-sbg__body .pp-text-sbg__divider { align-self: flex-start; }
-.pp-split-sbg__body .pp-text-sbg__title {
-  font-size: clamp(1.55rem, 2.6vw, 2.25rem);
-  text-align: left;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: center;
 }
 
-.pp-split-sbg__media {
+@media (min-width: 992px) {
+  .pp-concept-sky__layout {
+    grid-template-columns: 6.2fr 4.8fr;
+    gap: 0;
+  }
+}
+
+.pp-concept-sky__visual {
   position: relative;
-  aspect-ratio: 16 / 10;
-  overflow: hidden;
-  border-radius: var(--radius-md);
-  background: var(--b3);
-  border: 1px solid var(--bd);
-  transition: border-color 0.4s var(--ease-spring);
 }
-.pp-split-sbg__media:hover {
-  border-color: color-mix(in srgb, var(--gold) 45%, transparent);
-}
-.pp-split-sbg__media img {
-  width: 100%; height: 100%;
-  object-fit: cover; display: block;
-  filter: saturate(1.05);
-  transition: transform 0.7s var(--ease-spring);
-}
-.pp-split-sbg__media:hover img { transform: scale(1.05); }
 
-/* L-bracket ornament behind body */
-.pp-split-sbg__body::before {
+.pp-frame-sky--cocktail {
+  aspect-ratio: 1 / 1 !important;
+}
+
+@media (min-width: 992px) {
+  .pp-frame-sky--cocktail {
+    aspect-ratio: 4 / 3 !important;
+    border-radius: var(--radius-xl) 0 0 var(--radius-xl) !important;
+  }
+}
+
+.pp-concept-sky__glass-card {
+  position: relative;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  padding: clamp(2rem, 4vw, 3.25rem);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--b2) 78%, transparent), color-mix(in srgb, var(--b1) 58%, transparent));
+  backdrop-filter: blur(26px) saturate(135%);
+  border: 1px solid color-mix(in srgb, var(--sky-purple) 24%, transparent);
+  border-radius: var(--radius-xl);
+  box-shadow:
+    var(--shadow-floating),
+    inset 0 1px 0 color-mix(in srgb, var(--sky-purple) 8%, transparent);
+  transition: border-color 0.4s var(--ease-spring), transform 0.4s var(--ease-spring);
+}
+
+@media (min-width: 992px) {
+  .pp-concept-sky__glass-card {
+    margin-left: -5rem;
+  }
+}
+
+.pp-concept-sky__glass-card:hover {
+  border-color: color-mix(in srgb, var(--sky-purple) 40%, transparent);
+  transform: translateY(-4px);
+}
+.pp-concept-sky__glass-card::before,
+.pp-concept-sky__glass-card::after {
   content: '';
   position: absolute;
-  top: -1.5rem;
-  left: -1rem;
-  width: 56px; height: 56px;
-  border-top: 1px solid color-mix(in srgb, var(--gold) 40%, transparent);
-  border-left: 1px solid color-mix(in srgb, var(--gold) 40%, transparent);
+  width: 20px;
+  height: 20px;
+  border: 1px solid color-mix(in srgb, var(--sky-purple) 45%, transparent);
   pointer-events: none;
-  z-index: -1;
 }
-.pp-split-sbg--reverse .pp-split-sbg__body::before {
+.pp-concept-sky__glass-card::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+.pp-concept-sky__glass-card::after  { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+
+.pp-concept-sky__tag {
+  width: fit-content;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--sky-cyan);
+}
+
+.pp-sky-ornament--right {
   left: auto;
-  right: -1rem;
+  right: -0.75rem;
   border-left: none;
-  border-right: 1px solid color-mix(in srgb, var(--gold) 40%, transparent);
+  border-right: 1px solid color-mix(in srgb, var(--sky-purple) 45%, transparent);
+}
+
+.pp-concept-sky__signals {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.65rem;
+  margin-top: 0.4rem;
+}
+
+@media (min-width: 576px) {
+  .pp-concept-sky__signals {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.pp-concept-sky__signals span {
+  padding: 0.75rem 0.8rem;
+  border: 1px solid color-mix(in srgb, var(--sky-cyan) 14%, transparent);
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--b3) 44%, transparent);
+  color: var(--bc2);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pp-concept-sky__glass-card {
+    transition: none !important;
+  }
+  .pp-concept-sky__glass-card:hover {
+    transform: none !important;
+  }
 }

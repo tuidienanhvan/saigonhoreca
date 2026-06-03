@@ -1,14 +1,14 @@
-<?php
+﻿<?php
 /**
- * Project Pillar — moa-moa
+ * Project Pillar â€” moa-moa
  * Section #4: split
  * @package SaigonHoreca
  */
 if (!defined('ABSPATH')) exit;
 $uri = get_template_directory_uri();
 ?>
-<section class="pp__section pp__section--alt">
-  <div class="pp__container">
+<section class="pp-section-mmo pp-section-mmo--alt scroll-reveal">
+  <div class="pp-container-shared">
     <div class="pp-split-mmo pp-split-mmo--reverse">
       <div class="pp-split-mmo__body">
         <span class="pp-text-mmo__divider" aria-hidden="true"></span>
@@ -18,9 +18,11 @@ $uri = get_template_directory_uri();
       <p><?php echo esc_html__('Saigon Horeca đã cung cấp và lắp đặt hệ thống chụp hút và quạt hút chuyên dụng, được tính toán kỹ lưỡng theo công suất thiết bị và đặc thù bếp Âu – bếp nướng than củi. Hệ thống này đảm bảo không gian bếp luôn thông thoáng, không ảnh hưởng đến trải nghiệm thực khách, đồng thời tuân thủ các tiêu chuẩn an toàn – vận hành trong khu vực trung tâm đông đúc.', 'saigonhoreca'); ?></p>
         </div>
       </div>
-      <div class="pp-split-mmo__media">
+      <div class="pp-split-mmo__media pp-image-container-shared">
         <img src="<?php echo sgh_img('2025/01/sheh-fung-4.jpg'); ?>" alt="<?php echo esc_attr__('Bếp á đôi công nghiệp', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="1366" height="768">
+        <div class="pp-image-caption-shared"><?php echo esc_html__('Hệ thống chụp hút và quạt hút chuyên dụng cho bếp mở', 'saigonhoreca'); ?></div>
       </div>
     </div>
   </div>
 </section>
+

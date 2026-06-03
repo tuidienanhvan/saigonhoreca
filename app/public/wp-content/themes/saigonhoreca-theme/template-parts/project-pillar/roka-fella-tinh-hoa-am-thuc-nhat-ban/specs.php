@@ -7,7 +7,7 @@
 if (!defined('ABSPATH')) exit;
 $uri = get_template_directory_uri();
 ?>
-<section class="pp__section pp-rf-specs">
+<section class="pp-section-rf pp-rf-specs">
   <div class="pp-watermark-bg-rf" aria-hidden="true">
     <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5">
       <path d="M25 20 H45 M35 20 V80 M25 80 H45" stroke-linecap="round"/>
@@ -17,28 +17,45 @@ $uri = get_template_directory_uri();
 
   <div class="pp-ambient-glow-rf pp-ambient-glow-rf--bottom-left" aria-hidden="true"></div>
 
-  <div class="pp__container">
+  <div class="pp-container-shared">
     <div class="pp-grid-12-rf">
       
       <div class="pp-grid-12-rf__media--cols-7 rkf-specs__side">
-        <div class="pp-image-container-rf rkf-specs__image-container">
-          <span class="pp-corner-ornament pp-corner-ornament--top-left" aria-hidden="true"></span>
-          <span class="pp-corner-ornament pp-corner-ornament--top-right" aria-hidden="true"></span>
-          <span class="pp-corner-ornament pp-corner-ornament--bottom-left" aria-hidden="true"></span>
-          <span class="pp-corner-ornament pp-corner-ornament--bottom-right" aria-hidden="true"></span>
+        <!-- Blueprint Coordinates & Stamp -->
+        <div class="rkf-specs__coord rkf-specs__coord--tl" aria-hidden="true">SYS_COORD: 10.7769° N, 106.7009° E</div>
+        <div class="rkf-specs__coord rkf-specs__coord--tr" aria-hidden="true">ROKA_FELLA_05 / CAD_v1.0</div>
+        <div class="rkf-specs__coord rkf-specs__coord--bl" aria-hidden="true">SCALE: 1:50 @ A3</div>
+        <div class="rkf-specs__coord rkf-specs__coord--br" aria-hidden="true">SAIGON HORECA © 2026</div>
+
+        <!-- Technical HUD Grid Overlay -->
+        <svg class="rkf-specs__hud-svg" viewBox="0 0 100 100" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="50" cy="50" r="1.5" fill="var(--gold)" opacity="0.6"/>
+          <line x1="50" y1="45" x2="50" y2="55" stroke="var(--gold)" stroke-width="0.3" opacity="0.4"/>
+          <line x1="45" y1="50" x2="55" y2="50" stroke="var(--gold)" stroke-width="0.3" opacity="0.4"/>
+          <rect x="5" y="5" width="90" height="90" stroke="rgba(245,166,35,0.06)" stroke-width="0.5" stroke-dasharray="2 2"/>
+        </svg>
+
+        <div class="pp-image-container-shared rkf-specs__image-container">
+          <svg class="card-corner-svg" viewBox="0 0 100 100" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 0 15 L 0 0 L 15 0" stroke="rgba(245,166,35,0.3)" stroke-width="1.2" />
+            <path d="M 100 15 L 100 0 L 85 0" stroke="rgba(245,166,35,0.3)" stroke-width="1.2" />
+            <path d="M 0 85 L 0 100 L 15 100" stroke="rgba(245,166,35,0.3)" stroke-width="1.2" />
+            <path d="M 100 85 L 100 100 L 85 100" stroke="rgba(245,166,35,0.3)" stroke-width="1.2" />
+          </svg>
           <div class="pp-image-border-decor" aria-hidden="true"></div>
-          <div class="pp-image-tag-rf">BLUEPRINT</div>
-          <img src="<?php echo sgh_img('2020/12/roka-bv-bo-tri-thiet-bi.png'); ?>" alt="<?php echo esc_attr__('Bản vẽ bố trí thiết bị Roka Fella', 'saigonhoreca'); ?>" loading="lazy">
-          <div class="pp-image-caption-rf"><?php echo esc_html__('Bản vẽ kỹ thuật chi tiết bố trí thiết bị bếp Roka Fella', 'saigonhoreca'); ?></div>
+          <img src="<?php echo sgh_img('roka-fella/roka-fella-ban-ve-bo-tri-thiet-bi.png'); ?>" alt="<?php echo esc_attr__('Bản vẽ bố trí thiết bị Roka Fella', 'saigonhoreca'); ?>" loading="lazy">
+          <div class="pp-image-caption-shared"><?php echo esc_html__('Bản vẽ kỹ thuật chi tiết bố trí thiết bị bếp Roka Fella', 'saigonhoreca'); ?></div>
         </div>
       </div>
 
       <div class="pp-grid-12-rf__text--cols-5 rkf-specs__main">
         <div class="pp-glass-card-roka rkf-specs__glass-card">
-          <span class="pp-corner-ornament pp-corner-ornament--top-left" aria-hidden="true"></span>
-          <span class="pp-corner-ornament pp-corner-ornament--top-right" aria-hidden="true"></span>
-          <span class="pp-corner-ornament pp-corner-ornament--bottom-left" aria-hidden="true"></span>
-          <span class="pp-corner-ornament pp-corner-ornament--bottom-right" aria-hidden="true"></span>
+          <svg class="card-corner-svg" viewBox="0 0 100 100" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 0 15 L 0 0 L 15 0" stroke="var(--gold)" stroke-width="1.2" />
+            <path d="M 100 15 L 100 0 L 85 0" stroke="var(--gold)" stroke-width="1.2" />
+            <path d="M 0 85 L 0 100 L 15 100" stroke="var(--gold)" stroke-width="1.2" />
+            <path d="M 100 85 L 100 100 L 85 100" stroke="var(--gold)" stroke-width="1.2" />
+          </svg>
           
           <header class="rkf-specs__header">
             <div class="pp-badge-rf">
@@ -47,7 +64,7 @@ $uri = get_template_directory_uri();
               </svg>
               <?php echo esc_html__('Thiết kế công năng', 'saigonhoreca'); ?>
             </div>
-            <h2 class="pp-text-rf__title" style="font-size: clamp(1.5rem, 3vw, 2.2rem); margin-bottom: 1rem;">
+            <h2 class="pp-text-rf__title">
               <?php echo esc_html__('Phòng bếp & Quầy Sushi Roka Fella', 'saigonhoreca'); ?>
             </h2>
             <div class="pp-text-rf__divider" aria-hidden="true"></div>

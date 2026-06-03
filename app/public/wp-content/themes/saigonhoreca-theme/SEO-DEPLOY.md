@@ -81,7 +81,7 @@ A  SEO-DEPLOY.md                         this file
 
 1. **Merge PR → push prod** (rsync / git pull / SFTP per team workflow)
 
-2. **Trigger DB cleanup**: log into `wp-admin` once as any admin user → visit any admin page → `SGH_SEO_Robots::maybe_cleanup_term_meta()` runs → DB option `sgh_seo_robots_cleanup_v1` set. Future deploys skip.
+2. **Trigger DB cleanup**: log into `wp-admin` once as any admin user → visit any admin page → `SGH_SEO_Robots::maybe_cleanup_term_meta()` runs → DB option `pi_seo_robots_cleanup_v1` set. Future deploys skip.
 
 3. **Verify Rank Math UI**: Settings → Titles & Meta → Categories
    - "Inox công nghiệp" (slug `thiet-bi-inox-cong-nghiep`) → robots = **Index, Follow**
@@ -151,7 +151,7 @@ sed -i '/seo-meta-description\|seo-robots\|seo-schema\|seo-robots-txt\|seo-perfo
 rm wp-content/themes/saigonhoreca-theme/inc/core/seo-{meta-description,robots,schema,robots-txt,performance}.php
 
 # Reset cleanup flag so noindex DB fix re-runs on next deploy
-wp option delete sgh_seo_robots_cleanup_v1
+wp option delete pi_seo_robots_cleanup_v1
 ```
 
 ## Per-feature disable (no rollback needed)

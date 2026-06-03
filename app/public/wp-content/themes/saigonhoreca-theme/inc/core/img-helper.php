@@ -38,7 +38,13 @@ if (!function_exists('sgh_uploads_base_dir')) {
 if (!function_exists('sgh_uploads_base_url')) {
     function sgh_uploads_base_url() {
         $upload = wp_get_upload_dir();
-        return rtrim((string) $upload['baseurl'], '/');
+        $url = rtrim((string) $upload['baseurl'], '/');
+        
+        // Tự động nâng cấp giao thức sang HTTPS để tránh lỗi Mixed Content chặn hiển thị ảnh
+        if (is_ssl() || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https')) {
+            $url = str_replace('http://', 'https://', $url);
+        }
+        return $url;
     }
 }
 
@@ -48,7 +54,7 @@ if (!function_exists('sgh_img')) {
      *
      * Priority:
      * 1. Current site's uploads directory.
-     * 2. Production uploads fallback.
+     * 2. No production fallback (full local).
      */
     function sgh_img($path) {
         $path = ltrim((string) $path, '/');
@@ -57,27 +63,62 @@ if (!function_exists('sgh_img')) {
         $uploads_url = sgh_uploads_base_url();
         $local_file = wp_normalize_path($uploads_dir . '/' . $path);
 
-        $webp_swap = !empty($_SERVER['HTTP_ACCEPT'])
-            && strpos((string) $_SERVER['HTTP_ACCEPT'], 'image/webp') !== false
-            && preg_match('/\.(jpe?g|png)$/i', $path);
+        $webp_swap = preg_match('/\.(jpe?g|png)$/i', $path);
 
-        if (file_exists($local_file)) {
-            if ($webp_swap) {
-                $webp_path = preg_replace('/\.(jpe?g|png)$/i', '.webp', $path);
-                $webp_file = wp_normalize_path($uploads_dir . '/' . $webp_path);
-                if ($webp_path && file_exists($webp_file)) {
-                    return $uploads_url . '/' . $webp_path;
-                }
+        if ($webp_swap) {
+            $webp_path = preg_replace('/\.(jpe?g|png)$/i', '.webp', $path);
+            $webp_file = wp_normalize_path($uploads_dir . '/' . $webp_path);
+            if ($webp_path && file_exists($webp_file)) {
+                return $uploads_url . '/' . $webp_path;
             }
-
-            return $uploads_url . '/' . $path;
         }
 
-        // Tự động chuyển hướng về tên miền cũ saigonhoreca.com nếu là các tệp tin di sản từ 2020 hoặc 2021
-        if (preg_match('#^(2020|2021)/#', $path)) {
-            return 'https://saigonhoreca.com/wp-content/uploads/' . $path;
-        }
+        return $uploads_url . '/' . $path;
+    }
+}
 
-        return SGH_PROD_UPLOADS_BASE . '/' . $path;
+if (!function_exists('sgh_get_project_thumbnail')) {
+    /**
+     * Retrieve a custom project thumbnail configured directly in the single-project template header comment.
+     *
+     * Example header comment:
+     *   * Thumbnail: yuzu-omakase/yuzu-omakase-nghe-nhan-sushi-quay-bieu-dien.webp
+     *
+     * @param string $slug Project CPT post name/slug.
+     * @return string Normalized full URL of the image or empty string if not configured.
+     */
+    function sgh_get_project_thumbnail($slug) {
+        $file_path = get_template_directory() . '/single-project/' . $slug . '.php';
+        if (file_exists($file_path)) {
+            $data = get_file_data($file_path, [
+                'thumbnail' => 'Thumbnail',
+            ]);
+            if (!empty($data['thumbnail'])) {
+                return sgh_img(trim($data['thumbnail']));
+            }
+        }
+        return '';
+    }
+}
+
+if (!function_exists('sgh_get_project_meta')) {
+    /**
+     * Retrieve custom project metadata (e.g. Address, Title) configured directly in the single-project template header comment.
+     *
+     * @param string $slug Project CPT post name/slug.
+     * @param string $key Header comment key (e.g. 'Address', 'Title').
+     * @return string Trimming value or empty string.
+     */
+    function sgh_get_project_meta($slug, $key) {
+        $file_path = get_template_directory() . '/single-project/' . $slug . '.php';
+        if (file_exists($file_path)) {
+            $data = get_file_data($file_path, [
+                'val' => $key,
+            ]);
+            if (!empty($data['val'])) {
+                return trim($data['val']);
+            }
+        }
+        return '';
     }
 }

@@ -19,7 +19,7 @@
       "has_video_bg": false,
       "video_url": null,
       "background_overlay": true,
-      "background_image": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-5.jpg",
+      "background_image": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2025/01/sheh-fung-5.jpg",
       "columns": [
         {
           "col_class": "elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-3901529a",
@@ -81,28 +81,28 @@
               "type": "image-carousel.default",
               "slides": [
                 {
-                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-6.jpg",
+                  "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2025/01/sheh-fung-6.jpg",
                   "srcset": null,
                   "alt": "sheh-fung (6)",
                   "w": null,
                   "h": null
                 },
                 {
-                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-8.jpg",
+                  "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2025/01/sheh-fung-8.jpg",
                   "srcset": null,
                   "alt": "sheh-fung (8)",
                   "w": null,
                   "h": null
                 },
                 {
-                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-9.jpg",
+                  "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2025/01/sheh-fung-9.jpg",
                   "srcset": null,
                   "alt": "sheh-fung (9)",
                   "w": null,
                   "h": null
                 },
                 {
-                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-7.jpg",
+                  "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2025/01/sheh-fung-7.jpg",
                   "srcset": null,
                   "alt": "sheh-fung (7)",
                   "w": null,
@@ -122,8 +122,8 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-1-1.jpg",
-                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-1-1.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/01/sheh-fung-1-1-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/01/sheh-fung-1-1-600x337.jpg 600w",
+                "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2025/01/sheh-fung-1-1.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2025/01/sheh-fung-1-1.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/01/sheh-fung-1-1-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/01/sheh-fung-1-1-600x337.jpg 600w",
                 "alt": "10 lỗi thường gặp khi sử dụng tủ lạnh công nghiệp và cách khắc phục",
                 "w": "1366",
                 "h": "768"
@@ -182,8 +182,8 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-2.jpg",
-                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-2.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/01/sheh-fung-2-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/01/sheh-fung-2-600x337.jpg 600w",
+                "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2025/01/sheh-fung-2.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2025/01/sheh-fung-2.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/01/sheh-fung-2-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/01/sheh-fung-2-600x337.jpg 600w",
                 "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                 "w": "1366",
                 "h": "768"
@@ -192,8 +192,8 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-3.jpg",
-                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-3.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/01/sheh-fung-3-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/01/sheh-fung-3-600x337.jpg 600w",
+                "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2025/01/sheh-fung-3.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2025/01/sheh-fung-3.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/01/sheh-fung-3-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/01/sheh-fung-3-600x337.jpg 600w",
                 "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                 "w": "1366",
                 "h": "768"
@@ -227,8 +227,8 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-4.jpg",
-                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/01/sheh-fung-4.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/01/sheh-fung-4-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/01/sheh-fung-4-600x337.jpg 600w",
+                "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2025/01/sheh-fung-4.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2025/01/sheh-fung-4.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/01/sheh-fung-4-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/01/sheh-fung-4-600x337.jpg 600w",
                 "alt": "Bếp á đôi công nghiệp",
                 "w": "1366",
                 "h": "768"

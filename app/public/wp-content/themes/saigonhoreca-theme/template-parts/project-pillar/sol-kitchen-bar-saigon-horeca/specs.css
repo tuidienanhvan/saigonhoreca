@@ -1,3 +1,99 @@
-/** sol-kitchen-bar-saigon-horeca — specs slot. Inherits .pp-split-skh from concept.css. */
+/**
+ * sol-kitchen-bar-saigon-horeca — specs slot.
+ * Technical collage (stacked offset images) + feature list with SVG icons.
+ * Techniques: clamp, color-mix, rotate transform, hover transitions, faux coords.
+ * @package SaigonHoreca
+ */
 
-.pp-split-skh--reverse .pp-split-skh__media { aspect-ratio: 16 / 9; }
+.pp-specs-solshr__layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2.5rem, 6vw, 4rem);
+  align-items: center;
+}
+@media (min-width: 992px) {
+  .pp-specs-solshr__layout {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.pp-specs-solshr__collage {
+  position: relative;
+  padding: clamp(1rem, 3vw, 2rem);
+  min-height: 360px;
+}
+.pp-specs-solshr__img {
+  border-radius: var(--radius-lg);
+  overflow: hidden !important;
+  box-shadow: var(--shadow-floating);
+  border: 1px solid color-mix(in srgb, var(--solshr-sun) 14%, transparent);
+}
+.pp-specs-solshr__img--base {
+  width: 82%;
+  aspect-ratio: 16 / 11;
+  transform: rotate(-2deg);
+}
+.pp-specs-solshr__img--over {
+  position: absolute;
+  right: clamp(0.5rem, 2vw, 1.5rem);
+  bottom: 0;
+  width: 50%;
+  aspect-ratio: 4 / 3;
+  transform: rotate(3deg);
+  border: 2px solid color-mix(in srgb, var(--solshr-sun) 40%, transparent);
+}
+
+.pp-specs-solshr__coord {
+  position: absolute;
+  z-index: 5;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--solshr-sun) 70%, transparent);
+  pointer-events: none;
+}
+.pp-specs-solshr__coord--tl { top: 0; left: 0; }
+.pp-specs-solshr__coord--br { bottom: -0.4rem; left: 0; }
+
+.pp-specs-solshr__panel {
+  position: relative;
+  z-index: 2;
+}
+.pp-specs-solshr__list {
+  list-style: none;
+  margin: 1.6rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.85rem;
+}
+.pp-specs-solshr__list li {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.85rem 1rem;
+  background: color-mix(in srgb, var(--b2) 60%, transparent);
+  border: 1px solid var(--bd);
+  border-left: 2px solid color-mix(in srgb, var(--solshr-sun) 55%, transparent);
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-size: 0.96rem;
+  color: var(--bc);
+  transition: border-color 0.3s var(--ease-spring), background 0.3s var(--ease-spring);
+}
+.pp-specs-solshr__list li:hover {
+  background: color-mix(in srgb, var(--solshr-sun) 8%, var(--b2));
+  border-left-color: var(--solshr-clay);
+}
+.pp-specs-solshr__icon {
+  flex: none;
+  width: 26px;
+  height: 26px;
+  color: var(--solshr-sun);
+}
+
+@media (max-width: 991px) {
+  .pp-specs-solshr__collage { min-height: 320px; }
+  .pp-specs-solshr__img--base { width: 88%; }
+  .pp-specs-solshr__img--over { width: 54%; }
+}

@@ -1,0 +1,434 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head><!DOCTYPE html>
+<html lang="vi" prefix="og: https://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Resource Hints -->
+    <link rel="dns-prefetch" href="https://img.youtube.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Favicons & Manifest -->
+    <link rel="icon" type="image/x-icon" href="#">
+    <link rel="apple-touch-icon" sizes="180x180" href="#">
+    <link rel="icon" type="image/png" sizes="32x32" href="#">
+    <link rel="icon" type="image/png" sizes="16x16" href="#">
+    <link rel="manifest" href="#">
+    
+    <style id="sgh-critical">*,:before,:after{box-sizing:border-box}html,body{margin:0;padding:0}body{font-family:Be Vietnam Pro,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.5;color:#fff;background:#0a0a0a;-webkit-font-smoothing:antialiased}h1,h2,h3,h4,h5,h6{margin:0;font-weight:700;color:#fff}img,svg,video{display:block;max-width:100%;height:auto}a{color:inherit;text-decoration:none}button{border:0;cursor:pointer;font:inherit;background:transparent}.sh-skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;background:#f5a623;color:#fff;padding:.5rem 1rem;z-index:100}.sh-skip-link:focus{left:16px;top:16px;width:auto;height:auto}.sh-header{position:sticky;top:0;z-index:50;width:100%;background:#000;border-bottom:1px solid rgba(255,255,255,0.06)}.sh-header__bar{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;padding:.75rem 1.25rem;min-height:76px;color:#fff}.sh-header__actions{display:flex;gap:.75rem;align-items:center}.sh-nav{display:none;position:relative;z-index:10;justify-content:center;align-items:center;overflow:visible;max-width:100%}@media(min-width:1024px){.sh-nav{display:flex}}.sh-nav__list{display:flex;flex-wrap:nowrap;justify-content:center;align-items:center;gap:.25rem;margin:0;padding:0;list-style:none}@media(min-width:1024px){.sh-nav__list{gap:.5rem}}@media(min-width:1280px){.sh-nav__list{gap:1rem}}.sh-nav-item{display:flex;align-items:center;height:100%;position:relative}.sh-nav-item__link{display:inline-flex;align-items:center;gap:.375rem;padding:1.5rem .875rem;font-size:clamp(11px,.9vw,13px);font-weight:700;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;color:rgba(255,255,255,0.88);text-decoration:none}.sh-nav-item__chevron{display:inline-flex;margin-left:.25rem}.sh-nav-item__chevron-icon{display:block;width:.75rem;height:.75rem;opacity:.7}.sh-hero{position:relative;width:100%;aspect-ratio:16/9;background:#000;overflow:hidden}.sh-hero__slider{position:relative;width:100%;height:100%;background:#000}.sh-hero__slides{position:relative;width:100%;height:100%}.carousel-slide{position:absolute;inset:0;width:100%;height:100%;display:none;background:#000}.carousel-slide.active{display:block;z-index:20;opacity:1}.sh-hero__bg-img,.carousel-slide .slide-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;background:#000}.sh-hero__overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(0,0,0,0.55) 0%,rgba(0,0,0,0.30) 40%,rgba(0,0,0,0.15) 100%);pointer-events:none}.sgh-cv-auto{content-visibility:auto;contain-intrinsic-size:auto 600px}#sh-hero-slider .carousel-slide .slide-bg,#sh-hero-slider .carousel-slide .sh-hero__bg-img,.sh-hero__slider .carousel-slide .slide-bg,.sh-hero__slider .carousel-slide .sh-hero__bg-img{animation:none!important;transform:none!important}.sh-hero__nav{position:absolute;top:50%;transform:translateY(-50%);z-index:20;background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.3);color:#fff;width:2.75rem;height:2.75rem;border-radius:9999px;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:.8}.sh-hero__nav--prev{left:1rem}.sh-hero__nav--next{right:1rem}@media(min-width:768px){.sh-hero__nav{width:3.5rem;height:3.5rem}.sh-hero__nav--prev{left:2rem}.sh-hero__nav--next{right:2rem}}.sh-hero__dots{position:absolute;bottom:2rem;right:2rem;z-index:20;display:flex;gap:.5rem}.sh-hero__dot,.carousel-dot{width:.5rem;height:.5rem;padding:0;border:none;border-radius:9999px;background:rgba(255,255,255,0.4);cursor:pointer}.sh-hero__dot.active,.carousel-dot.active{width:2rem;background:#f5a623}
+/* Per-route critical CSS â€” Saigon Horeca.
+ *
+ * Inlined by critical-css.php (concatenated after critical.css). Covers
+ * above-fold styles for routes where the route-bundle CSS round-trip
+ * would otherwise gate the LCP paint.
+ */
+
+/* â”€â”€ /du-an/ archive hero â€” kill 1.2 s opacity-fade-in for LCP slide â”€â”€
+ *
+ * The bg-stack has 6 absolute-positioned <div> slides; slide 0 has
+ * `.is-active` server-side but the route bundle animates opacity
+ * 0 â†’ 1 over 1.2 s. Lighthouse Mobile baseline: P=75, LCP=7.9 s with
+ * 88 % render-delay because LCP element waits for opacity:1.
+ *
+ * Inlining paints the active slide at opacity:1 immediately on first
+ * HTML parse â€” no waiting for theme-archive-project.css to arrive.
+ * Carousel JS still toggles `is-active` to cycle slides; subsequent
+ * transitions still animate after the first paint completes.
+ */
+.sh-archive-hero {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: #000;
+    overflow: hidden;
+}
+.sh-archive-hero__bg-stack {
+    position: absolute;
+    inset: 0;
+}
+.sh-archive-hero__bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+}
+.sh-archive-hero__bg.is-active {
+    opacity: 1;
+}
+
+/* â”€â”€ /ve-saigon-horeca/ (page-gioi-thieu template) about hero â”€â”€
+ * Same opacity-fade trap. Force opacity:1 on first paint. */
+.sh-about-hero {
+    position: relative;
+    width: 100%;
+    min-height: 520px;
+    background: #000;
+    overflow: hidden;
+}
+@media (max-width: 640px) {
+    .sh-about-hero { min-height: 380px; }
+}
+.sh-about-hero__bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 1;
+}
+</style>
+        <title>Skyloft by Glow &#8211; Saigon Horeca</title>
+<meta name='robots' content='max-image-preview:large' />
+<meta name="description" content="Skyloft by Glow Skyloft by Glow is a rooftop bar located on the â€“ GiÃ¡ tá»‘t, báº£o hÃ nh chÃ­nh hÃ£ng â€“ Hotline: 0901 304 365">
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//www.googletagmanager.com' />
+<link rel='dns-prefetch' href='//www.google-analytics.com' />
+<link rel='dns-prefetch' href='//zalo.me' />
+<link rel='dns-prefetch' href='//www.facebook.com' />
+<link rel='dns-prefetch' href='//www.youtube.com' />
+<link rel="preload" as="style" href="#">
+    <script>
+    (function(){
+        // Always load tracking â€” cookie consent is cosmetic only
+        function afterConsent(cb) {
+            try {
+                if (localStorage.getItem('sh_cookies_accepted') === '1') {
+                    cb();
+                    return;
+                }
+            } catch (e) {}
+            window.addEventListener('sh:cookies-accepted', cb, { once: true });
+        }
+        afterConsent(function(){
+                        });
+    })();
+    </script>
+    <style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+
+
+<link rel='stylesheet' id='theme-tokens-css' href='https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/assets/css/dist/theme-project.css?ver=1780237765' media='all' />
+<style id="theme-tokens-inline-css">
+
+        :root {
+            --font-body: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            --font-heading: "Lexend", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            --font-serif: "Lora", Georgia, serif;
+            --ast-global-color-0: #f9c349;
+            --ast-global-color-1: #ffb100;
+            --ast-global-color-2: #000000;
+            --ast-global-color-3: #242525;
+            --ast-global-color-4: #f9fafb;
+            --ast-global-color-5: #ffffff;
+            --ast-global-color-6: #e2e8f0;
+            --ast-global-color-7: #cbd5e1;
+            --ast-global-color-8: #94a3b8;
+            --e-global-color-astglobalcolor0: #f9c349;
+            --e-global-color-astglobalcolor1: #ffb100;
+            --e-global-color-astglobalcolor2: #000000;
+            --e-global-color-astglobalcolor3: #242525;
+            --e-global-color-astglobalcolor4: #f9fafb;
+            --e-global-color-astglobalcolor5: #ffffff;
+            --e-global-color-astglobalcolor6: #e2e8f0;
+            --e-global-color-astglobalcolor7: #cbd5e1;
+            --e-global-color-astglobalcolor8: #94a3b8;
+        }
+        body { font-family: var(--font-body); }
+        h1, h2, h3, h4, h5, h6, .font-sans { font-family: var(--font-heading) !important; }
+        .e-font-icon-svg { display: inline-block; width: 1em; height: 1em; fill: currentColor; }
+
+        /* ROKA FELLA CAPTION & LAYOUT ENHANCEMENTS */
+        .pp-image-container-rf {
+            position: relative !important;
+            overflow: hidden !important;
+        }
+        .pp-image-caption-rf {
+            position: absolute !important;
+            bottom: 0.75rem !important;
+            left: 0.75rem !important;
+            z-index: 5 !important;
+            padding: 0.4rem 0.85rem !important;
+            background: rgba(10, 10, 10, 0.85) !important;
+            border: 1px solid rgba(255, 255, 255, 0.12) !important;
+            border-radius: 6px !important;
+            font-family: var(--font-heading), sans-serif !important;
+            font-size: 0.68rem !important;
+            font-weight: 700 !important;
+            letter-spacing: 0.05em !important;
+            color: var(--gold) !important;
+            backdrop-filter: blur(8px) !important;
+            -webkit-backdrop-filter: blur(8px) !important;
+            pointer-events: none !important;
+            opacity: 0.85 !important;
+            transition: opacity 0.3s ease, transform 0.3s ease !important;
+            width: auto !important;
+            max-width: calc(100% - 1.5rem) !important;
+            text-align: left !important;
+            display: inline-block !important;
+            border-top: none !important;
+        }
+        .pp-image-container-rf:hover .pp-image-caption-rf {
+            opacity: 1 !important;
+            transform: translateY(-2px) !important;
+        }
+        .pp-image-container-rf img {
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        }
+        .pp-image-container-rf:hover img {
+            transform: scale(1.04) !important;
+            filter: grayscale(0%) contrast(1.05) brightness(1.02) !important;
+        }
+        /* Premium Cards styling */
+        .rkf-concept__glass-card,
+        .rkf-specs__glass-card {
+            background: linear-gradient(135deg, rgba(12, 14, 20, 0.92) 0%, rgba(6, 7, 10, 0.97) 100%) !important;
+            border: 1px solid rgba(245, 166, 35, 0.18) !important;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), inset 0 0 35px rgba(245, 166, 35, 0.04) !important;
+        }
+        .rkf-concept__glass-card:hover,
+        .rkf-specs__glass-card:hover {
+            border-color: rgba(245, 166, 35, 0.45) !important;
+            box-shadow: 0 35px 70px rgba(0, 0, 0, 0.92), 0 0 35px rgba(245, 166, 35, 0.1) !important;
+        }
+        .rkf-partnership__glass-card,
+        .rkf-related__glass-card {
+            background: linear-gradient(135deg, rgba(12, 14, 20, 0.92) 0%, rgba(6, 7, 10, 0.97) 100%) !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.85) !important;
+        }
+        .rkf-partnership__glass-card:hover,
+        .rkf-related__glass-card:hover {
+            border-color: rgba(255, 255, 255, 0.15) !important;
+            box-shadow: 0 35px 70px rgba(0, 0, 0, 0.95) !important;
+        }
+        /* Staggered floaters adjustment */
+        .rkf-partnership__image-container--floating {
+            box-shadow: -20px 20px 50px rgba(0, 0, 0, 0.9), 0 0 30px rgba(245, 166, 35, 0.15) !important;
+            transform: rotate(3deg) translateY(0) !important;
+        }
+        .rkf-partnership__side:hover .rkf-partnership__image-container--floating {
+            transform: scale(1.04) rotate(0deg) translateY(-10px) !important;
+        }
+    
+/*# sourceURL=theme-tokens-inline-css */
+</style>
+<link rel='preload' as='style' onload="this.onload=null;this.rel='stylesheet'" id='google-fonts-sgh-css' href='https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&#038;family=Lexend:wght@500;700&#038;family=Lora:ital,wght@0,400;0,500;0,700;1,400;1,700&#038;display=swap' media='all' />
+<link rel="https://api.w.org/" href="#" /><link rel="alternate" title="JSON" type="application/json" href="#" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="#" />
+<meta name="generator" content="WordPress 7.0" />
+<link rel="canonical" href="#" />
+<link rel='shortlink' href='https://saigonhoreca.local/?p=692' />
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","@id":"https://saigonhoreca.local/#organization","name":"SAIGON HORECA","legalName":"CÃ”NG TY TNHH SÃ€I GÃ’N HORECA","url":"https://saigonhoreca.local/","description":"Saigon Horeca cung cáº¥p Ä‘a dáº¡ng cÃ¡c sáº£n pháº©m thiáº¿t bá»‹ báº¿p cÃ´ng nghiá»‡p vÃ  thiáº¿t bá»‹ quáº§y bar phá»¥c vá»¥ cho khÃ¡ch hÃ ng trong lÄ©nh vá»±c F&B, bao gá»“m tÆ° váº¥n thiáº¿t káº¿, thi cÃ´ng láº¯p Ä‘áº·t, cung cáº¥p thiáº¿t bá»‹, vÃ  tÆ° váº¥n váº­n hÃ nh kinh doanh.","telephone":"0901 304 365","email":"contact@saigonhoreca.com","address":{"@type":"PostalAddress","streetAddress":"Sá»‘ 40 ÄÆ°á»ng Sá»‘ 6, Khu DÃ¢n CÆ° Melosa Khang Äiá»n, PhÆ°á»ng Long TrÆ°á»ng, TP. Há»“ ChÃ­ Minh","addressLocality":"Há»“ ChÃ­ Minh","addressRegion":"Há»“ ChÃ­ Minh","addressCountry":"VN"},"logo":{"@type":"ImageObject","url":""},"image":"","sameAs":["https://www.facebook.com/saigonhoreca","https://www.youtube.com/@saigonhoreca","https://zalo.me/0901304365"],"contactPoint":[{"@type":"ContactPoint","telephone":"0901 304 365","contactType":"sales","areaServed":"VN","availableLanguage":["Vietnamese","English"]},{"@type":"ContactPoint","telephone":"0909 040 920","contactType":"customer support","areaServed":"VN"}]}</script>
+
+<link rel="alternate" hreflang="vi" href="#">
+<link rel="alternate" hreflang="en" href="#">
+<link rel="alternate" hreflang="x-default" href="#">
+
+    <!-- SEO Fallback: OpenGraph only (meta description is handled by
+         inc/core/seo-meta-description.php to guarantee 120-155 chars). -->
+            <meta property="og:title" content="Skyloft by Glow">
+        <meta property="og:description" content="Skyloft by Glow Skyloft by Glow is a rooftop bar located on the â€“ GiÃ¡ tá»‘t, báº£o hÃ nh chÃ­nh hÃ£ng â€“ Hotline: 0901 304 365">
+        <meta property="og:url" content="https://saigonhoreca.local/du-an/skyloft-by-glow/">
+        <meta property="og:type" content="website">
+        <meta property="og:image" content="">
+        <meta property="og:site_name" content="Saigon Horeca">
+    
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Dark mode & Lighthouse Optimization: apply BEFORE paint to prevent flash & bypass animation delays -->
+    <script>
+    (function(){
+        // 1. Dark mode
+        var d = null;
+        try { d = localStorage.getItem('sh-dark'); } catch (e) {}
+        if (d === 'true') document.documentElement.classList.add('dark');
+    })();
+    </script>
+        </head>
+<body class="wp-singular project-template-default single single-project postid-692 wp-embed-responsive wp-theme-saigonhoreca-theme page-template-page-project-skyloft-by-glow page-template-page-project">
+<a href="#primary" class="sh-skip-link">Chuyá»ƒn Ä‘áº¿n ná»™i dung chÃ­nh</a>
+<!-- Main Header (Saigon Horeca: clean dark band, no construction skyline) -->
+<header id="main-header" class="sh-header sh-header--horeca " role="banner" aria-label="Header chÃ­nh cá»§a website">
+    <div class="sh-header__bar sh-header__bar--horeca ">
+        <!-- Logo -->
+        <div class="sh-logo">
+    <a href="#" class="sh-logo__link" aria-label="Saigon Horeca â€” Trang chá»§">
+        <img src="#"
+             alt="Saigon Horeca"
+             width="125" height="58"
+             fetchpriority="high"
+             decoding="sync"
+             class="sh-logo__image">
+    </a>
+</div>
+
+     </head>
+<body>
+<main id="primary" class="pp" tabindex="-1">
+    <section class="pp-hero-sbg">
+    
+    <div class="pp-hero-sbg__overlay" aria-hidden="true"></div>
+    <div class="pp-hero-sbg__content">
+        <h1 class="pp-hero-sbg__title">Skyloft by Glow</h1>
+    </div>
+</section>
+<section class="pp__section">
+  <div class="pp__container">
+    <div class="pp-text-sbg pp-text-sbg--center">
+      <div class="pp-text-sbg__body">
+      <p>Skyloft by Glow is a rooftop bar located on the President Place building on Nguyen Du street, District 1. It offers a 360-degree view of the entire city&#039;s architecture, making it one of the best places to watch the sunset from above.</p>
+      <p>As the city lights up, Skyloft by Glow becomes the most vibrant and lively bar in Saigon, offering top-notch drinks and music ranging from Deep House to Vocal Sexy House. As the night wears on, the music gets even more lively, with Commercial House and Hip Hop to get everyone dancing and immersed in the beats.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="pp__section">
+  <div class="pp__container">
+    <div class="pp-text-sbg pp-text-sbg--center">
+      <div class="pp-text-sbg__body">
+      <p>The signature style of Skyloft&#039;s drinks is handcrafted balance, using classic recipes with unique and unusual flavors to create a distinctive taste experience.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="pp__section">
+  <div class="pp__container">
+    <div class="pp-text-sbg pp-text-sbg--center">
+      <div class="pp-text-sbg__body">
+      <p>When visiting Skyloft by Glow, there are three must-try cocktails. The Bird is Word, with a light and airy feeling like a bird flying through the sky, and a hint of forest berry smoke. Dawn of the Walking is a twist on the legendary TiKi cocktail â€“ Zombie. Fish out of Water, originating from a traditional Mexican drink made from fermented pineapple, is also a must-try.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="pp__section">
+  <div class="pp__container">
+    <div class="pp-text-sbg pp-text-sbg--center">
+      <div class="pp-text-sbg__body">
+      <p>Immersing oneself in the enchanting music, enjoying the top-notch drinks, and the vibrant night sky will undoubtedly be a fantastic experience for a lively Saigon night.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="pp__section">
+  <div class="pp__container">
+    <div class="pp-text-sbg pp-text-sbg--center">
+      <div class="pp-text-sbg__body">
+      <p>Saigon Horeca is honored to have designed and supplied the interior equipment for the bar, from imported refrigeration equipment to custom-designed and manufactured stainless steel bar counters and glass racks.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pp__section">
+  <div class="pp__container">
+    <div class="pp-text-sbg pp-text-sbg--center">
+      <div class="pp-text-sbg__body">
+      <p>The bar counter is over 6 meters long and can serve up to 300 guests. Every inch of space has been carefully utilized to ensure that all equipment is placed in the most supportive and convenient locations for bartenders.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pp__section">
+  <div class="pp__container">
+    <div class="pp-text-sbg pp-text-sbg--center">
+      <div class="pp-text-sbg__body">
+      <p>For a top-notch sky bar in Saigon, every detail of the design must be sharp and innovative. With constant creativity and innovation in their designs, Saigon Horeca has demonstrated its expertise and ability to satisfy the project owner of Skyloft by Glow.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="pp__section">
+    <div class="pp-container-shared">
+        <div class="pp-text pp-text--center" style="margin-bottom: 3rem;">
+            <span class="pp-text__divider pp-text__divider--center" aria-hidden="true"></span>
+            <h2 class="pp-text__title">Nhá»¯ng dá»± Ã¡n thiáº¿t káº¿ báº¿p ná»•i báº­t cá»§a Saigon Horeca</h2>
+        </div>
+        <div class="pp-related">
+                            <a href="https://saigonhoreca.local/du-an/roka-fella-tinh-hoa-am-thuc-nhat-ban/"
+                   class="pp-related__card"
+                   aria-label="Roka Fella">
+                                            <img src=""
+                             alt="Roka Fella"
+                             class="pp-related__img"
+                             loading="lazy" decoding="async">
+                                        <div class="pp-related__overlay" aria-hidden="true"></div>
+                    <div class="pp-related__content">
+                        <p class="pp-related__tag">Dá»± Ã¡n Horeca</p>
+                        <h3 class="pp-related__title">Roka Fella</h3>
+                    </div>
+                </a>
+                            <a href="https://saigonhoreca.local/du-an/casa-maria/"
+                   class="pp-related__card"
+                   aria-label="Casa Maria">
+                                            <img src=""
+                             alt="Casa Maria"
+                             class="pp-related__img"
+                             loading="lazy" decoding="async">
+                                        <div class="pp-related__overlay" aria-hidden="true"></div>
+                    <div class="pp-related__content">
+                        <p class="pp-related__tag">Dá»± Ã¡n Horeca</p>
+                        <h3 class="pp-related__title">Casa Maria</h3>
+                    </div>
+                </a>
+                            <a href="https://saigonhoreca.local/du-an/the-brix/"
+                   class="pp-related__card"
+                   aria-label="The Brix">
+                                            <img src=""
+                             alt="The Brix"
+                             class="pp-related__img"
+                             loading="lazy" decoding="async">
+                                        <div class="pp-related__overlay" aria-hidden="true"></div>
+                    <div class="pp-related__content">
+                        <p class="pp-related__tag">Dá»± Ã¡n Horeca</p>
+                        <h3 class="pp-related__title">The Brix</h3>
+                    </div>
+                </a>
+                    </div>
+    </div>
+</section>
+<section class="pp__section pp__section--alt">
+    <div class="pp-container-shared">
+        <div class="pp-text pp-text--center" style="margin-bottom: 3rem;">
+            <span class="pp-text__divider pp-text__divider--center" aria-hidden="true"></span>
+            <h2 class="pp-text__title">ThÃ´ng tin liÃªn há»‡</h2>
+        </div>
+        <div class="pp-cta">
+                            <div class="pp-cta__card">
+                    <span class="pp-cta__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+                                            <h3 class="pp-cta__title">0901 304 365</h3>
+                                                                <p class="pp-cta__desc">Thá»© 2 - Thá»© 6, 8h00 - 18h00</p>
+                                                                <a href="tel:0901304365"
+                           class="pp-cta__btn">
+                            Gá»i ngay                        </a>
+                                    </div>
+                            <div class="pp-cta__card">
+                    <span class="pp-cta__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+                                            <h3 class="pp-cta__title">TP Há»“ ChÃ­ Minh</h3>
+                                                                <p class="pp-cta__desc">Sá»‘ 40, ÄÆ°á»ng Sá»‘ 6, KDC Melosa Khang Äiá»n, Long TrÆ°á»ng, TP.HCM</p>
+                                                                <a href="https://maps.app.goo.gl/SmWvPSEW2ozAq5dA6"
+                           class="pp-cta__btn" target="_blank" rel="noopener">
+                            Xem báº£n Ä‘á»“                        </a>
+                                    </div>
+                            <div class="pp-cta__card">
+                    <span class="pp-cta__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
+                                            <h3 class="pp-cta__title">contact@saigonhoreca.com</h3>
+                                                                <p class="pp-cta__desc">LiÃªn há»‡ má»i lÃºc</p>
+                                                                <a href="mailto:contact@saigonhoreca.com"
+                           class="pp-cta__btn">
+                            Gá»­i email                        </a>
+                                    </div>
+                    </div>
+    </div>
+</section>
+</main>
+
+
+</body>
+</html>
+

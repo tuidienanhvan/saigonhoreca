@@ -1,14 +1,14 @@
-<?php
+﻿<?php
 /**
- * Project Pillar — moa-moa
+ * Project Pillar â€” moa-moa
  * Section #5: with_gallery
  * @package SaigonHoreca
  */
 if (!defined('ABSPATH')) exit;
 $uri = get_template_directory_uri();
 ?>
-<section class="pp__section pp__section--alt">
-  <div class="pp__container">
+<section class="pp-section-mmo pp-section-mmo--alt scroll-reveal">
+  <div class="pp-container-shared">
     <div class="pp-text-mmo pp-text-mmo--center">
       <span class="pp-text-mmo__divider pp-text-mmo__divider--center" aria-hidden="true"></span>
       <h2 class="pp-text-mmo__title"><?php echo esc_html__('Thiết bị lạnh & lưu trữ: Giữ trọn độ tươi cho từng nguyên liệu', 'saigonhoreca'); ?></h2>
@@ -19,7 +19,8 @@ $uri = get_template_directory_uri();
       </div>
     </div>
     <div class="pp-gallery-mmo pp-gallery-mmo--cols-1" style="margin-top:2rem;">
-      <div class="pp-gallery-mmo__item"><img src="<?php echo sgh_img('2023/12/bi-quyet-tao-thuc-don-nha-hang.jpg'); ?>" alt="<?php echo esc_attr__('Thiết bị bếp công nghiệp Saigon Horeca', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="1366" height="768"></div>
+      <div class="pp-gallery-mmo__item pp-image-container-shared"><img src="<?php echo sgh_img('2023/12/bi-quyet-tao-thuc-don-nha-hang.jpg'); ?>" alt="<?php echo esc_attr__('Thiết bị bếp công nghiệp Saigon Horeca', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="1366" height="768"><div class="pp-image-caption-shared"><?php echo esc_html__('Tủ đông – tủ mát dạng ngăn kéo tối ưu vận hành', 'saigonhoreca'); ?></div></div>
     </div>
   </div>
 </section>
+

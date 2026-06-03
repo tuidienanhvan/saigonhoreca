@@ -1,14 +1,14 @@
-<?php
+﻿<?php
 /**
- * Project Pillar — tales-by-chapter
+ * Project Pillar â€” tales-by-chapter
  * Section #2: with_gallery
  * @package SaigonHoreca
  */
 if (!defined('ABSPATH')) exit;
 $uri = get_template_directory_uri();
 ?>
-<section class="pp__section pp__section--alt">
-  <div class="pp__container">
+<section class="pp-section-tbc pp-section-tbc--alt scroll-reveal">
+  <div class="pp-container-shared">
     <div class="pp-text-tbc pp-text-tbc--center">
       <div class="pp-text-tbc__body">
       <p><?php echo esc_html__('Giữa trung tâm Sài Gòn nhộn nhịp, Tales by Chapter chọn cho mình một con đường rất khác:', 'saigonhoreca'); ?></p>
@@ -21,11 +21,12 @@ $uri = get_template_directory_uri();
       </div>
     </div>
     <div class="pp-gallery-tbc pp-gallery-tbc--cols-4" style="margin-top:2rem;">
-      <div class="pp-gallery-tbc__item"><img src="<?php echo sgh_img('2025/01/sheh-fung-6.jpg'); ?>" alt="sheh-fung (6)" loading="lazy" decoding="async"></div>
-      <div class="pp-gallery-tbc__item"><img src="<?php echo sgh_img('2025/01/sheh-fung-8.jpg'); ?>" alt="sheh-fung (8)" loading="lazy" decoding="async"></div>
-      <div class="pp-gallery-tbc__item"><img src="<?php echo sgh_img('2025/01/sheh-fung-9.jpg'); ?>" alt="sheh-fung (9)" loading="lazy" decoding="async"></div>
-      <div class="pp-gallery-tbc__item"><img src="<?php echo sgh_img('2025/01/sheh-fung-7.jpg'); ?>" alt="sheh-fung (7)" loading="lazy" decoding="async"></div>
-      <div class="pp-gallery-tbc__item"><img src="<?php echo sgh_img('2025/01/sheh-fung-1-1.jpg'); ?>" alt="<?php echo esc_attr__('10 lỗi thường gặp khi sử dụng tủ lạnh công nghiệp và cách khắc phục', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="1366" height="768"></div>
+      <div class="pp-gallery-tbc__item pp-image-container-shared"><img src="<?php echo sgh_img('2025/01/sheh-fung-6.jpg'); ?>" alt="sheh-fung (6)" loading="lazy" decoding="async"><div class="pp-image-caption-shared"><?php echo esc_html__('Quầy bar tầng 1 – không gian thưởng thức tối giản', 'saigonhoreca'); ?></div></div>
+      <div class="pp-gallery-tbc__item pp-image-container-shared"><img src="<?php echo sgh_img('2025/01/sheh-fung-8.jpg'); ?>" alt="sheh-fung (8)" loading="lazy" decoding="async"><div class="pp-image-caption-shared"><?php echo esc_html__('Layout quầy bar phục vụ quy mô 10–30 khách', 'saigonhoreca'); ?></div></div>
+      <div class="pp-gallery-tbc__item pp-image-container-shared"><img src="<?php echo sgh_img('2025/01/sheh-fung-9.jpg'); ?>" alt="sheh-fung (9)" loading="lazy" decoding="async"><div class="pp-image-caption-shared"><?php echo esc_html__('Thiết bị bar âm thầm hỗ trợ trải nghiệm thực khách', 'saigonhoreca'); ?></div></div>
+      <div class="pp-gallery-tbc__item pp-image-container-shared"><img src="<?php echo sgh_img('2025/01/sheh-fung-7.jpg'); ?>" alt="sheh-fung (7)" loading="lazy" decoding="async"><div class="pp-image-caption-shared"><?php echo esc_html__('Không gian zero waste plant-based dining đầu tiên tại VN', 'saigonhoreca'); ?></div></div>
+      <div class="pp-gallery-tbc__item pp-image-container-shared"><img src="<?php echo sgh_img('2025/01/sheh-fung-1-1.jpg'); ?>" alt="<?php echo esc_attr__('10 lỗi thường gặp khi sử dụng tủ lạnh công nghiệp và cách khắc phục', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="1366" height="768"><div class="pp-image-caption-shared"><?php echo esc_html__('Hệ thống tủ lạnh bảo quản nguyên liệu thực vật tươi', 'saigonhoreca'); ?></div></div>
     </div>
   </div>
 </section>
+

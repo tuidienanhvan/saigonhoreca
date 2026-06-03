@@ -1,0 +1,84 @@
+@import "../imports/_imports-about.css";
+@import "./style-route-base.css";
+
+/* Partner Logos Grid Fallback & Styling */
+.elementor-image-carousel {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 2rem !important;
+}
+
+.elementor-image-carousel .swiper-slide {
+    width: calc(25% - 2rem) !important;
+    min-width: 120px !important;
+    max-width: 180px !important;
+    margin: 0 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    background: transparent !important;
+}
+
+.elementor-image-carousel .swiper-slide-image {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 70px !important;
+    object-fit: contain !important;
+    filter: grayscale(100%) opacity(0.6) !important;
+    transition: filter 0.3s ease, opacity 0.3s ease !important;
+}
+
+.elementor-image-carousel .swiper-slide-image:hover {
+    filter: grayscale(0%) opacity(1) !important;
+}
+
+@media (max-width: 768px) {
+    .elementor-image-carousel .swiper-slide {
+        width: calc(33.33% - 1.5rem) !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .elementor-image-carousel .swiper-slide {
+        width: calc(50% - 1rem) !important;
+    }
+}
+
+/* Premium Styling for Hero Play Button */
+.elementor-element-e6839c0 {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 2rem 0 !important;
+}
+
+.elementor-element-e6839c0 .elementor-icon {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 80px !important;
+    height: 80px !important;
+    background-color: #facc15 !important; /* Horeca Yellow */
+    color: #1f2937 !important; /* Dark Grey */
+    border-radius: 50% !important;
+    box-shadow: 0 10px 25px rgba(250, 204, 21, 0.4) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.elementor-element-e6839c0 .elementor-icon svg {
+    width: 24px !important;
+    height: 24px !important;
+    fill: currentColor !important;
+    margin-left: 6px !important; /* Offset for play triangle centering */
+}
+
+.elementor-element-e6839c0 .elementor-icon:hover {
+    background-color: #ffb100 !important; /* Horeca Gold */
+    color: #000000 !important;
+    transform: scale(1.1) !important;
+    box-shadow: 0 10px 25px rgba(255, 177, 0, 0.5) !important;
+}
+
+

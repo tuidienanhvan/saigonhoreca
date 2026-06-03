@@ -97,8 +97,8 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/gmb-01.jpeg",
-                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/gmb-01.jpeg 800w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-01-768x576.jpeg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-01-600x450.jpeg 600w",
+                "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/03/gmb-01.jpeg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/03/gmb-01.jpeg 800w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-01-768x576.jpeg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-01-600x450.jpeg 600w",
                 "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                 "w": "800",
                 "h": "600"
@@ -107,7 +107,7 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/elementor/thumbs/gmb-2-e1631781552190-1-qhbnq2ivvrtvsf8ygk07yoa3igx0toy1ake7erzfd4.jpg",
+                "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/elementor/thumbs/gmb-2-e1631781552190-1-qhbnq2ivvrtvsf8ygk07yoa3igx0toy1ake7erzfd4.jpg",
                 "srcset": null,
                 "alt": "gmb-2-e1631781552190.jpg",
                 "w": null,
@@ -178,8 +178,8 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/gmb-og-e1710598985691.webp",
-                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/gmb-og-e1710598985691.webp 800w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-og-e1710598985691-768x503.webp 768w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-og-e1710598985691-600x393.webp 600w",
+                "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/03/gmb-og-e1710598985691.webp",
+                "srcset": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/03/gmb-og-e1710598985691.webp 800w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-og-e1710598985691-768x503.webp 768w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-og-e1710598985691-600x393.webp 600w",
                 "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                 "w": "800",
                 "h": "524"
@@ -200,8 +200,8 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/gmb-01.jpeg",
-                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/gmb-01.jpeg 800w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-01-768x576.jpeg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-01-600x450.jpeg 600w",
+                "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/03/gmb-01.jpeg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/03/gmb-01.jpeg 800w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-01-768x576.jpeg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-01-600x450.jpeg 600w",
                 "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                 "w": "800",
                 "h": "600"
@@ -240,8 +240,8 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/gmb-gion_tsujiri_maccha_an.jpg",
-                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/gmb-gion_tsujiri_maccha_an.jpg 666w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-gion_tsujiri_maccha_an-600x360.jpg 600w",
+                "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/03/gmb-gion_tsujiri_maccha_an.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/03/gmb-gion_tsujiri_maccha_an.jpg 666w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-gion_tsujiri_maccha_an-600x360.jpg 600w",
                 "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                 "w": "666",
                 "h": "400"
@@ -262,8 +262,8 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/gmb.jpeg",
-                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/gmb.jpeg 640w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-600x360.jpeg 600w",
+                "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/03/gmb.jpeg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/03/gmb.jpeg 640w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-600x360.jpeg 600w",
                 "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                 "w": "640",
                 "h": "384"
@@ -332,8 +332,8 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/gmb-chocora-chocora.jpeg",
-                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/gmb-chocora-chocora.jpeg 666w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-chocora-chocora-600x360.jpeg 600w",
+                "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/03/gmb-chocora-chocora.jpeg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/03/gmb-chocora-chocora.jpeg 666w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-chocora-chocora-600x360.jpeg 600w",
                 "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                 "w": "666",
                 "h": "400"
@@ -354,8 +354,8 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/gmb-chocolate-og.jpeg",
-                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/gmb-chocolate-og.jpeg 640w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-chocolate-og-600x360.jpeg 600w",
+                "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/03/gmb-chocolate-og.jpeg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/03/gmb-chocolate-og.jpeg 640w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-chocolate-og-600x360.jpeg 600w",
                 "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                 "w": "640",
                 "h": "384"
@@ -394,7 +394,7 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/gmb-gion.jpeg",
+                "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/03/gmb-gion.jpeg",
                 "srcset": null,
                 "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                 "w": "400",
@@ -416,8 +416,8 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/gmb-og-e1710598985691.webp",
-                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/gmb-og-e1710598985691.webp 800w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-og-e1710598985691-768x503.webp 768w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-og-e1710598985691-600x393.webp 600w",
+                "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/03/gmb-og-e1710598985691.webp",
+                "srcset": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/03/gmb-og-e1710598985691.webp 800w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-og-e1710598985691-768x503.webp 768w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-og-e1710598985691-600x393.webp 600w",
                 "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                 "w": "800",
                 "h": "524"
@@ -492,8 +492,8 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/gmb-bv-bo-tri-thiet-bi.png",
-                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/gmb-bv-bo-tri-thiet-bi.png 1322w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-bv-bo-tri-thiet-bi-768x495.png 768w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-bv-bo-tri-thiet-bi-600x387.png 600w",
+                "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/03/gmb-bv-bo-tri-thiet-bi.png",
+                "srcset": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/03/gmb-bv-bo-tri-thiet-bi.png 1322w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-bv-bo-tri-thiet-bi-768x495.png 768w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-bv-bo-tri-thiet-bi-600x387.png 600w",
                 "alt": "bản vẽ tư vấn thiết kế bếp nhà hàng, bếp công nghiệp",
                 "w": "1322",
                 "h": "852"
@@ -532,8 +532,8 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/gmb-bv-bo-tri-thiet-bi-khu-vuc-1-e1631892037420.png",
-                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/gmb-bv-bo-tri-thiet-bi-khu-vuc-1-e1631892037420.png 975w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-bv-bo-tri-thiet-bi-khu-vuc-1-e1631892037420-768x469.png 768w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-bv-bo-tri-thiet-bi-khu-vuc-1-e1631892037420-600x366.png 600w",
+                "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/03/gmb-bv-bo-tri-thiet-bi-khu-vuc-1-e1631892037420.png",
+                "srcset": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/03/gmb-bv-bo-tri-thiet-bi-khu-vuc-1-e1631892037420.png 975w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-bv-bo-tri-thiet-bi-khu-vuc-1-e1631892037420-768x469.png 768w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-bv-bo-tri-thiet-bi-khu-vuc-1-e1631892037420-600x366.png 600w",
                 "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                 "w": "975",
                 "h": "595"
@@ -548,8 +548,8 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/gmb-bv-bo-tri-thiet-bi-khu-vuc-3.png",
-                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/gmb-bv-bo-tri-thiet-bi-khu-vuc-3.png 960w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-bv-bo-tri-thiet-bi-khu-vuc-3-768x454.png 768w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-bv-bo-tri-thiet-bi-khu-vuc-3-600x354.png 600w",
+                "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/03/gmb-bv-bo-tri-thiet-bi-khu-vuc-3.png",
+                "srcset": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/03/gmb-bv-bo-tri-thiet-bi-khu-vuc-3.png 960w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-bv-bo-tri-thiet-bi-khu-vuc-3-768x454.png 768w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-bv-bo-tri-thiet-bi-khu-vuc-3-600x354.png 600w",
                 "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                 "w": "960",
                 "h": "567"
@@ -613,8 +613,8 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/gmb-bv-bo-tri-thiet-bi-khu-vuc-4-e1631935453174.png",
-                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/gmb-bv-bo-tri-thiet-bi-khu-vuc-4-e1631935453174.png 612w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-bv-bo-tri-thiet-bi-khu-vuc-4-e1631935453174-600x669.png 600w",
+                "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/03/gmb-bv-bo-tri-thiet-bi-khu-vuc-4-e1631935453174.png",
+                "srcset": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/03/gmb-bv-bo-tri-thiet-bi-khu-vuc-4-e1631935453174.png 612w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-bv-bo-tri-thiet-bi-khu-vuc-4-e1631935453174-600x669.png 600w",
                 "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                 "w": "612",
                 "h": "682"
@@ -629,8 +629,8 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/gmb-bv-bo-tri-thiet-bi-khu-vuc-2-e1631891967114.png",
-                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/gmb-bv-bo-tri-thiet-bi-khu-vuc-2-e1631891967114.png 973w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-bv-bo-tri-thiet-bi-khu-vuc-2-e1631891967114-768x512.png 768w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-bv-bo-tri-thiet-bi-khu-vuc-2-e1631891967114-600x400.png 600w",
+                "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/03/gmb-bv-bo-tri-thiet-bi-khu-vuc-2-e1631891967114.png",
+                "srcset": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/03/gmb-bv-bo-tri-thiet-bi-khu-vuc-2-e1631891967114.png 973w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-bv-bo-tri-thiet-bi-khu-vuc-2-e1631891967114-768x512.png 768w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-bv-bo-tri-thiet-bi-khu-vuc-2-e1631891967114-600x400.png 600w",
                 "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                 "w": "973",
                 "h": "649"
@@ -694,8 +694,8 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/gmb-lo-nuong-e1631938054124.jpg",
-                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/gmb-lo-nuong-e1631938054124.jpg 960w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-lo-nuong-e1631938054124-768x480.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-lo-nuong-e1631938054124-600x375.jpg 600w",
+                "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/03/gmb-lo-nuong-e1631938054124.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/03/gmb-lo-nuong-e1631938054124.jpg 960w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-lo-nuong-e1631938054124-768x480.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/03/gmb-lo-nuong-e1631938054124-600x375.jpg 600w",
                 "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                 "w": "960",
                 "h": "600"
@@ -736,14 +736,14 @@
               "type": "image-carousel.default",
               "slides": [
                 {
-                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/gmb-ban-thao-tac-e1631938130192.jpg",
+                  "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/03/gmb-ban-thao-tac-e1631938130192.jpg",
                   "srcset": null,
                   "alt": "gmb-ban-thao-tac-e1631938130192",
                   "w": null,
                   "h": null
                 },
                 {
-                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/03/gmb-lo-nuong-e1631938054124.jpg",
+                  "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/03/gmb-lo-nuong-e1631938054124.jpg",
                   "srcset": null,
                   "alt": "gmb-lo-nuong-e1631938054124",
                   "w": null,

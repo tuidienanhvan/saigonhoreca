@@ -1,0 +1,1540 @@
+<!DOCTYPE html>
+<html lang="vi" prefix="og: https://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Resource Hints -->
+    <link rel="dns-prefetch" href="https://img.youtube.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Favicons & Manifest -->
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon-16x16.png">
+    <link rel="manifest" href="https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/manifest.json">
+    
+    <style id="sgh-critical">*,:before,:after{box-sizing:border-box}html,body{margin:0;padding:0}body{font-family:Be Vietnam Pro,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.5;color:#fff;background:#0a0a0a;-webkit-font-smoothing:antialiased}h1,h2,h3,h4,h5,h6{margin:0;font-weight:700;color:#fff}img,svg,video{display:block;max-width:100%;height:auto}a{color:inherit;text-decoration:none}button{border:0;cursor:pointer;font:inherit;background:transparent}.sh-skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;background:#f5a623;color:#fff;padding:.5rem 1rem;z-index:100}.sh-skip-link:focus{left:16px;top:16px;width:auto;height:auto}.sh-header{position:sticky;top:0;z-index:50;width:100%;background:#000;border-bottom:1px solid rgba(255,255,255,0.06)}.sh-header__bar{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;padding:.75rem 1.25rem;min-height:76px;color:#fff}.sh-header__actions{display:flex;gap:.75rem;align-items:center}.sh-nav{display:none;position:relative;z-index:10;justify-content:center;align-items:center;overflow:visible;max-width:100%}@media(min-width:1024px){.sh-nav{display:flex}}.sh-nav__list{display:flex;flex-wrap:nowrap;justify-content:center;align-items:center;gap:.25rem;margin:0;padding:0;list-style:none}@media(min-width:1024px){.sh-nav__list{gap:.5rem}}@media(min-width:1280px){.sh-nav__list{gap:1rem}}.sh-nav-item{display:flex;align-items:center;height:100%;position:relative}.sh-nav-item__link{display:inline-flex;align-items:center;gap:.375rem;padding:1.5rem .875rem;font-size:clamp(11px,.9vw,13px);font-weight:700;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;color:rgba(255,255,255,0.88);text-decoration:none}.sh-nav-item__chevron{display:inline-flex;margin-left:.25rem}.sh-nav-item__chevron-icon{display:block;width:.75rem;height:.75rem;opacity:.7}.sh-hero{position:relative;width:100%;aspect-ratio:16/9;background:#000;overflow:hidden}.sh-hero__slider{position:relative;width:100%;height:100%;background:#000}.sh-hero__slides{position:relative;width:100%;height:100%}.carousel-slide{position:absolute;inset:0;width:100%;height:100%;display:none;background:#000}.carousel-slide.active{display:block;z-index:20;opacity:1}.sh-hero__bg-img,.carousel-slide .slide-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;background:#000}.sh-hero__overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(0,0,0,0.55) 0%,rgba(0,0,0,0.30) 40%,rgba(0,0,0,0.15) 100%);pointer-events:none}.sgh-cv-auto{content-visibility:auto;contain-intrinsic-size:auto 600px}#sh-hero-slider .carousel-slide .slide-bg,#sh-hero-slider .carousel-slide .sh-hero__bg-img,.sh-hero__slider .carousel-slide .slide-bg,.sh-hero__slider .carousel-slide .sh-hero__bg-img{animation:none!important;transform:none!important}.sh-hero__nav{position:absolute;top:50%;transform:translateY(-50%);z-index:20;background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.3);color:#fff;width:2.75rem;height:2.75rem;border-radius:9999px;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:.8}.sh-hero__nav--prev{left:1rem}.sh-hero__nav--next{right:1rem}@media(min-width:768px){.sh-hero__nav{width:3.5rem;height:3.5rem}.sh-hero__nav--prev{left:2rem}.sh-hero__nav--next{right:2rem}}.sh-hero__dots{position:absolute;bottom:2rem;right:2rem;z-index:20;display:flex;gap:.5rem}.sh-hero__dot,.carousel-dot{width:.5rem;height:.5rem;padding:0;border:none;border-radius:9999px;background:rgba(255,255,255,0.4);cursor:pointer}.sh-hero__dot.active,.carousel-dot.active{width:2rem;background:#f5a623}
+/* Per-route critical CSS — Saigon Horeca.
+ *
+ * Inlined by critical-css.php (concatenated after critical.css). Covers
+ * above-fold styles for routes where the route-bundle CSS round-trip
+ * would otherwise gate the LCP paint.
+ */
+
+/* ── /du-an/ archive hero — kill 1.2 s opacity-fade-in for LCP slide ──
+ *
+ * The bg-stack has 6 absolute-positioned <div> slides; slide 0 has
+ * `.is-active` server-side but the route bundle animates opacity
+ * 0 → 1 over 1.2 s. Lighthouse Mobile baseline: P=75, LCP=7.9 s with
+ * 88 % render-delay because LCP element waits for opacity:1.
+ *
+ * Inlining paints the active slide at opacity:1 immediately on first
+ * HTML parse — no waiting for theme-archive-project.css to arrive.
+ * Carousel JS still toggles `is-active` to cycle slides; subsequent
+ * transitions still animate after the first paint completes.
+ */
+.sh-archive-hero {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: #000;
+    overflow: hidden;
+}
+.sh-archive-hero__bg-stack {
+    position: absolute;
+    inset: 0;
+}
+.sh-archive-hero__bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+}
+.sh-archive-hero__bg.is-active {
+    opacity: 1;
+}
+
+/* ── /ve-saigon-horeca/ (page-gioi-thieu template) about hero ──
+ * Same opacity-fade trap. Force opacity:1 on first paint. */
+.sh-about-hero {
+    position: relative;
+    width: 100%;
+    min-height: 520px;
+    background: #000;
+    overflow: hidden;
+}
+@media (max-width: 640px) {
+    .sh-about-hero { min-height: 380px; }
+}
+.sh-about-hero__bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 1;
+}
+</style>
+        <title>Bambino SuperClub &#8211; Saigon Horeca</title>
+<meta name='robots' content='max-image-preview:large' />
+<meta name="description" content="BAMBINO Superclub-Italiano Chào mừng bạn đến với Bambino Superclub – Giá tốt, bảo hành chính hãng – Hotline: 0901 304 365">
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//www.googletagmanager.com' />
+<link rel='dns-prefetch' href='//www.google-analytics.com' />
+<link rel='dns-prefetch' href='//zalo.me' />
+<link rel='dns-prefetch' href='//www.facebook.com' />
+<link rel='dns-prefetch' href='//www.youtube.com' />
+<link rel="preload" as="style" href="../assets/css/dist/theme-project.css?ver=1780040433">
+<link rel="alternate" type="application/rss+xml" title="Saigon Horeca &raquo; Bambino SuperClub Comments Feed" href="https://saigonhoreca.local/du-an/bambino-saigonhoreca/feed/" />
+    <script>
+    (function(){
+        // Always load tracking — cookie consent is cosmetic only
+        function afterConsent(cb) {
+            try {
+                if (localStorage.getItem('sh_cookies_accepted') === '1') {
+                    cb();
+                    return;
+                }
+            } catch (e) {}
+            window.addEventListener('sh:cookies-accepted', cb, { once: true });
+        }
+        afterConsent(function(){
+                        });
+    })();
+    </script>
+    <style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+
+
+<link rel='stylesheet' id='theme-tokens-css' href='../assets/css/dist/theme-project.css?ver=1780040433' media='all' />
+<style id="theme-tokens-inline-css">
+
+        :root {
+            --font-body: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            --font-heading: "Lexend", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            --font-serif: "Lora", Georgia, serif;
+            --ast-global-color-0: #f9c349;
+            --ast-global-color-1: #ffb100;
+            --ast-global-color-2: #000000;
+            --ast-global-color-3: #242525;
+            --ast-global-color-4: #f9fafb;
+            --ast-global-color-5: #ffffff;
+            --ast-global-color-6: #e2e8f0;
+            --ast-global-color-7: #cbd5e1;
+            --ast-global-color-8: #94a3b8;
+            --e-global-color-astglobalcolor0: #f9c349;
+            --e-global-color-astglobalcolor1: #ffb100;
+            --e-global-color-astglobalcolor2: #000000;
+            --e-global-color-astglobalcolor3: #242525;
+            --e-global-color-astglobalcolor4: #f9fafb;
+            --e-global-color-astglobalcolor5: #ffffff;
+            --e-global-color-astglobalcolor6: #e2e8f0;
+            --e-global-color-astglobalcolor7: #cbd5e1;
+            --e-global-color-astglobalcolor8: #94a3b8;
+        }
+        body { font-family: var(--font-body); }
+        h1, h2, h3, h4, h5, h6, .font-sans { font-family: var(--font-heading) !important; }
+        .e-font-icon-svg { display: inline-block; width: 1em; height: 1em; fill: currentColor; }
+
+        /* ROKA FELLA CAPTION & LAYOUT ENHANCEMENTS */
+        .pp-image-container-rf {
+            position: relative !important;
+            overflow: hidden !important;
+        }
+        .pp-image-caption-rf {
+            position: absolute !important;
+            bottom: 0.75rem !important;
+            left: 0.75rem !important;
+            z-index: 5 !important;
+            padding: 0.4rem 0.85rem !important;
+            background: rgba(10, 10, 10, 0.85) !important;
+            border: 1px solid rgba(255, 255, 255, 0.12) !important;
+            border-radius: 6px !important;
+            font-family: var(--font-heading), sans-serif !important;
+            font-size: 0.68rem !important;
+            font-weight: 700 !important;
+            letter-spacing: 0.05em !important;
+            color: var(--gold) !important;
+            backdrop-filter: blur(8px) !important;
+            -webkit-backdrop-filter: blur(8px) !important;
+            pointer-events: none !important;
+            opacity: 0.85 !important;
+            transition: opacity 0.3s ease, transform 0.3s ease !important;
+            width: auto !important;
+            max-width: calc(100% - 1.5rem) !important;
+            text-align: left !important;
+            display: inline-block !important;
+            border-top: none !important;
+        }
+        .pp-image-container-rf:hover .pp-image-caption-rf {
+            opacity: 1 !important;
+            transform: translateY(-2px) !important;
+        }
+        .pp-image-container-rf img {
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        }
+        .pp-image-container-rf:hover img {
+            transform: scale(1.04) !important;
+            filter: grayscale(0%) contrast(1.05) brightness(1.02) !important;
+        }
+        /* Premium Cards styling */
+        .rkf-concept__glass-card,
+        .rkf-specs__glass-card {
+            background: linear-gradient(135deg, rgba(12, 14, 20, 0.92) 0%, rgba(6, 7, 10, 0.97) 100%) !important;
+            border: 1px solid rgba(245, 166, 35, 0.18) !important;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), inset 0 0 35px rgba(245, 166, 35, 0.04) !important;
+        }
+        .rkf-concept__glass-card:hover,
+        .rkf-specs__glass-card:hover {
+            border-color: rgba(245, 166, 35, 0.45) !important;
+            box-shadow: 0 35px 70px rgba(0, 0, 0, 0.92), 0 0 35px rgba(245, 166, 35, 0.1) !important;
+        }
+        .rkf-partnership__glass-card,
+        .rkf-related__glass-card {
+            background: linear-gradient(135deg, rgba(12, 14, 20, 0.92) 0%, rgba(6, 7, 10, 0.97) 100%) !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.85) !important;
+        }
+        .rkf-partnership__glass-card:hover,
+        .rkf-related__glass-card:hover {
+            border-color: rgba(255, 255, 255, 0.15) !important;
+            box-shadow: 0 35px 70px rgba(0, 0, 0, 0.95) !important;
+        }
+        /* Staggered floaters adjustment */
+        .rkf-partnership__image-container--floating {
+            box-shadow: -20px 20px 50px rgba(0, 0, 0, 0.9), 0 0 30px rgba(245, 166, 35, 0.15) !important;
+            transform: rotate(3deg) translateY(0) !important;
+        }
+        .rkf-partnership__side:hover .rkf-partnership__image-container--floating {
+            transform: scale(1.04) rotate(0deg) translateY(-10px) !important;
+        }
+    
+/*# sourceURL=theme-tokens-inline-css */
+</style>
+<link rel='preload' as='style' onload="this.onload=null;this.rel='stylesheet'" id='google-fonts-sgh-css' href='https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&#038;family=Lexend:wght@500;700&#038;family=Lora:ital,wght@0,400;0,500;0,700;1,400;1,700&#038;display=swap' media='all' />
+<link rel="https://api.w.org/" href="https://saigonhoreca.local/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://saigonhoreca.local/wp-json/wp/v2/project/1028" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://saigonhoreca.local/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress 7.0" />
+<link rel="canonical" href="https://saigonhoreca.local/du-an/bambino-saigonhoreca/" />
+<link rel='shortlink' href='https://saigonhoreca.local/?p=1028' />
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","@id":"https://saigonhoreca.local/#organization","name":"SAIGON HORECA","legalName":"CÔNG TY TNHH SÀI GÒN HORECA","url":"https://saigonhoreca.local/","description":"Saigon Horeca cung cấp đa dạng các sản phẩm thiết bị bếp công nghiệp và thiết bị quầy bar phục vụ cho khách hàng trong lĩnh vực F&B, bao gồm tư vấn thiết kế, thi công lắp đặt, cung cấp thiết bị, và tư vấn vận hành kinh doanh.","telephone":"0901 304 365","email":"contact@saigonhoreca.com","address":{"@type":"PostalAddress","streetAddress":"Số 40 Đường Số 6, Khu Dân Cư Melosa Khang Điền, Phường Long Trường, TP. Hồ Chí Minh","addressLocality":"Hồ Chí Minh","addressRegion":"Hồ Chí Minh","addressCountry":"VN"},"logo":{"@type":"ImageObject","url":"../assets/images/logo.png"},"image":"../assets/images/logo.png","sameAs":["https://www.facebook.com/saigonhoreca","https://www.youtube.com/@saigonhoreca","https://zalo.me/0901304365"],"contactPoint":[{"@type":"ContactPoint","telephone":"0901 304 365","contactType":"sales","areaServed":"VN","availableLanguage":["Vietnamese","English"]},{"@type":"ContactPoint","telephone":"0909 040 920","contactType":"customer support","areaServed":"VN"}]}</script>
+
+<link rel="alternate" hreflang="vi" href="https://saigonhoreca.vn/du-an/bambino-saigonhoreca/">
+<link rel="alternate" hreflang="en" href="https://saigonhoreca.com/projects/bambino-saigonhoreca/">
+<link rel="alternate" hreflang="x-default" href="https://saigonhoreca.vn/du-an/bambino-saigonhoreca/">
+
+    <!-- SEO Fallback: OpenGraph only (meta description is handled by
+         inc/core/seo-meta-description.php to guarantee 120-155 chars). -->
+            <meta property="og:title" content="Bambino SuperClub">
+        <meta property="og:description" content="BAMBINO Superclub-Italiano Chào mừng bạn đến với Bambino Superclub – Giá tốt, bảo hành chính hãng – Hotline: 0901 304 365">
+        <meta property="og:url" content="https://saigonhoreca.local/du-an/bambino-saigonhoreca/">
+        <meta property="og:type" content="website">
+        <meta property="og:image" content="./images/bambino-khong-gian-am-thuc-y-sang-trong.jpg">
+        <meta property="og:site_name" content="Saigon Horeca">
+    
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Dark mode: apply BEFORE paint to prevent flash -->
+    <script>
+    (function(){
+        var d = null;
+        try { d = localStorage.getItem('sh-dark'); } catch (e) {}
+        if (d === 'true') document.documentElement.classList.add('dark');
+    })();
+    </script>
+    </head>
+<body class="wp-singular project-template-default single single-project postid-1028 wp-embed-responsive wp-theme-saigonhoreca-theme page-template-page-project-bambino-saigonhoreca page-template-page-project">
+<a href="#primary" class="sh-skip-link">Chuyển đến nội dung chính</a>
+<!-- Main Header (Saigon Horeca: clean dark band, no construction skyline) -->
+<header id="main-header" class="sh-header sh-header--horeca " role="banner" aria-label="Header chính của website">
+    <div class="sh-header__bar sh-header__bar--horeca ">
+        <!-- Logo -->
+        <div class="sh-logo">
+    <a href="https://saigonhoreca.local/" class="sh-logo__link" aria-label="Saigon Horeca — Trang chủ">
+        <img src="../assets/images/logo.webp?v=1779452060"
+             alt="Saigon Horeca"
+             width="125" height="58"
+             fetchpriority="high"
+             decoding="sync"
+             class="sh-logo__image">
+    </a>
+</div>
+
+        <!-- Desktop Navigation -->
+        <nav class="sh-nav" aria-label="Điều hướng chính">
+    <ul class="sh-nav__list">
+                <li class="sh-nav-item sh-nav-item--has-children">
+            <a href="https://saigonhoreca.local/ve-saigon-horeca/" class="sh-nav-item__link">
+                <span>Về Saigon Horeca</span>
+                                <span class="sh-nav-item__chevron" aria-hidden="true">▾</span>
+                            </a>
+                        <div class="sh-dropdown sh-dropdown--standard sh-dropdown--left">
+                <ul class="sh-dropdown__list sh-dropdown__list--stack">
+                                        <li class="sh-dropdown__item">
+                        <a href="https://saigonhoreca.local/tu-van-thiet-ke-bep-nha-hang-bep-cong-nghiep/" class="sh-dropdown__link">
+                            Tư vấn thiết kế bếp nhà hàng                        </a>
+                    </li>
+                                        <li class="sh-dropdown__item">
+                        <a href="https://saigonhoreca.local/cung-cap-thiet-bi-tu-van-thiet-ke-cho-quay-bar/" class="sh-dropdown__link">
+                            Tư vấn thiết kế quầy bar                        </a>
+                    </li>
+                                        <li class="sh-dropdown__item">
+                        <a href="https://saigonhoreca.local/danh-muc-san-pham/he-thong-hut-khoi-cap-khi-tuoi-bep-nha-hang/" class="sh-dropdown__link">
+                            Hệ thống cấp khí tươi                        </a>
+                    </li>
+                                        <li class="sh-dropdown__item">
+                        <a href="https://saigonhoreca.local/danh-muc-san-pham/he-thong-hut-khoi/" class="sh-dropdown__link">
+                            Hệ thống hút khói công nghiệp                        </a>
+                    </li>
+                                    </ul>
+            </div>
+                    </li>
+                <li class="sh-nav-item ">
+            <a href="https://saigonhoreca.local/du-an/" class="sh-nav-item__link">
+                <span>Dự Án</span>
+                            </a>
+                    </li>
+                <li class="sh-nav-item ">
+            <a href="https://saigonhoreca.local/san-pham/" class="sh-nav-item__link">
+                <span>Sản Phẩm</span>
+                            </a>
+                    </li>
+                <li class="sh-nav-item ">
+            <a href="https://saigonhoreca.local/tin-tuc/" class="sh-nav-item__link">
+                <span>Tin Tức</span>
+                            </a>
+                    </li>
+                <li class="sh-nav-item ">
+            <a href="https://saigonhoreca.local/lien-he/" class="sh-nav-item__link">
+                <span>Liên hệ</span>
+                            </a>
+                    </li>
+            </ul>
+</nav>
+
+        <!-- Right Actions -->
+        <div class="sh-header__actions">
+            <!-- Bilingual switcher: links to SAME page on opposite-language domain -->
+                                    <a href="https://saigonhoreca.com/projects/bambino-saigonhoreca/"
+               class="sh-header__lang"
+               hreflang="en"
+               rel="alternate"
+               aria-label="English">
+                                    <!-- UK Flag SVG -->
+                    <svg class="sh-header__lang-flag" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20" width="30" height="20" style="display:inline-block; vertical-align:middle; border-radius:2px; box-shadow:0 1px 2px rgba(0,0,0,0.1);">
+                        <clipPath id="sh-uk-clip">
+                            <rect width="30" height="20" rx="2"/>
+                        </clipPath>
+                        <g clip-path="url(#sh-uk-clip)">
+                            <rect width="30" height="20" fill="#00247d"/>
+                            <path d="M0,0 L30,20 M30,0 L0,20" stroke="#fff" stroke-width="3"/>
+                            <path d="M0,0 L30,20 M30,0 L0,20" stroke="#cf142b" stroke-width="1.2"/>
+                            <path d="M15,0 V20 M0,10 H30" stroke="#fff" stroke-width="5"/>
+                            <path d="M15,0 V20 M0,10 H30" stroke="#cf142b" stroke-width="3"/>
+                        </g>
+                    </svg>
+                                <span class="sh-header__lang-label">English</span>
+            </a>
+            <!-- Mobile Menu Toggle -->
+            <button id="mobile-menu-toggle" class="sh-header__mobile-toggle" aria-label="Mở menu điều hướng" aria-expanded="false" aria-controls="mobile-sidebar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sh-header__hamburger-icon">
+                    <line x1="4" x2="20" y1="12" y2="12"/>
+                    <line x1="4" x2="20" y1="6" y2="6"/>
+                    <line x1="4" x2="20" y1="18" y2="18"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- Self-healing script to fix faulty top space when WordPress admin bar is active in PHP but hidden in UI -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var adminBar = document.getElementById('wpadminbar');
+    var header = document.getElementById('main-header');
+    if (header) {
+        if (!adminBar || window.getComputedStyle(adminBar).display === 'none' || adminBar.offsetHeight === 0) {
+            header.classList.remove('sh-header--admin-bar');
+            document.body.classList.remove('admin-bar');
+            document.documentElement.style.setProperty('margin-top', '0px', 'important');
+        }
+    }
+});
+</script>
+
+<main id="primary" class="pp pp--bambino" tabindex="-1">
+    <section class="pp-hero-section">
+    <div class="pp-hero-section__media">
+        <iframe src="https://www.youtube.com/embed/rSk4W1r9Di4?autoplay=1&mute=1&loop=1&playlist=rSk4W1r9Di4&controls=0&showinfo=0&modestbranding=1&iv_load_policy=3&playsinline=1&disablekb=1&fs=0&rel=0&cc_load_policy=0&color=white&hl=vi" allow="autoplay; encrypted-media; fullscreen" frameborder="0" title="Background video" tabindex="-1"></iframe>
+    </div>
+    <div class="pp-hero-section__overlay" aria-hidden="true"></div>
+    <div class="pp-hero-section__content">
+        <h1 class="pp-hero-section__title">BAMBINO</h1>
+        <p class="pp-hero-section__subhead">Superclub-Italiano</p>
+        <p class="pp-hero-section__subtitle">Chào mừng bạn đến với Bambino Superclub – Nơi Đêm Hội Lên Đèn!</p>
+    </div>
+</section>
+<section class="pp-section-bb pp-bambino-intro">
+  <div class="pp-container-shared">
+    <div class="pp-bambino-intro__grid">
+
+      <!-- Cột trái: Văn bản editorial -->
+      <div class="pp-bambino-intro__text-col">
+        <div class="pp-bambino-intro__badge">
+          <span class="pp-bambino-intro__badge-dot"></span>
+          Superclub Experience
+        </div>
+
+        <h2 class="pp-bambino-intro__title">
+          Bambino<br>
+          <span class="pp-bambino-intro__title-sub">Superclub</span>
+        </h2>
+
+        <div class="pp-bambino-intro__body">
+          <p class="pp-bambino-intro__lead">Bước vào thế giới của Bambino Superclub — nơi điều bình thường trở nên phi thường, và trời đêm hóa thân thành dòng năng lượng sống động nhịp nhàng.</p>
+          <p>Nằm yên bên trong lòng sôi động của Thành phố Hồ Chí Minh, đây không chỉ là điểm đến giải trí; đó là trải nghiệm đắm mình vào thế giới vượt lên trên bình thường — những đêm khó quên và khoảnh khắc sôi động không thể nào quên.</p>
+        </div>
+
+        <div class="pp-bambino-intro__quote-card">
+          <p>&quot;SAIGON HORECA tự hào tham gia thiết kế và phân phối thiết bị nhà bếp bằng thép không gỉ cao cấp. Sự hợp tác không chỉ dừng lại ở chức năng — nó hài hòa sáng tạo với tính thực tế.&quot;</p>
+          <span class="pp-bambino-intro__quote-author">— Saigon Horeca Editorial</span>
+        </div>
+
+        <div class="pp-bambino-intro__info-chips">
+          <span class="pp-bambino-intro__chip">📍 29-31 Tôn Thất Thiệp, Quận 1</span>
+          <span class="pp-bambino-intro__chip">⏰ Bar Bino: 22:00 – 02:00</span>
+          <span class="pp-bambino-intro__chip">⚡ Fri &amp; Sat (22:00 – 02:00)</span>
+        </div>
+      </div>
+
+      <!-- Cột phải: 2-Column Asymmetric Staggered Grid (Đẹp không chồng chéo, không cắt ảnh) -->
+      <div class="pp-bambino-intro__media-col">
+        <!-- SVG chìm phía sau nền -->
+        <div class="pp-bambino-intro__svg-backdrop">
+          <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="200" y1="0" x2="200" y2="400" stroke="rgba(212, 175, 55, 0.08)" stroke-width="0.75" stroke-dasharray="3 3" />
+            <line x1="0" y1="200" x2="400" y2="200" stroke="rgba(212, 175, 55, 0.08)" stroke-width="0.75" stroke-dasharray="3 3" />
+            <circle cx="200" cy="200" r="160" stroke="rgba(212, 175, 55, 0.05)" stroke-width="0.75" />
+            <path d="M 40 200 A 160 160 0 0 1 200 40" stroke="var(--gold)" stroke-width="1" stroke-opacity="0.15" />
+          </svg>
+        </div>
+
+        <div class="pp-bambino-intro__mosaic">
+          
+          <!-- Cột Trái (Dịch chuyển nhẹ xuống dưới để tạo nhịp điệu bất đối xứng sang trọng) -->
+          <div class="pp-bambino-intro__mosaic-column pp-bambino-intro__mosaic-column--left">
+            
+            <!-- Card 1: Khai vị Mortadella Ham -->
+            <div class="pp-bambino-intro__card pp-image-container-shared">
+              <!-- Ngôi sao lấp lánh kiêu sa -->
+              <svg class="pp-sparkle-star pp-sparkle-star--1" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L14.6 9.4L24 12L14.6 14.6L12 24L9.4 14.6L0 12L9.4 9.4L12 0Z"/></svg>
+              <svg class="pp-sparkle-star pp-sparkle-star--2" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L14.6 9.4L24 12L14.6 14.6L12 24L9.4 14.6L0 12L9.4 9.4L12 0Z"/></svg>
+              
+              <svg class="card-corner-svg" viewBox="0 0 100 100" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M 0 12 L 0 0 L 12 0" stroke="rgba(212, 175, 55, 0.4)" stroke-width="1" />
+                <path d="M 100 12 L 100 0 L 88 0" stroke="rgba(212, 175, 55, 0.4)" stroke-width="1" />
+                <path d="M 0 88 L 0 100 L 12 100" stroke="rgba(212, 175, 55, 0.4)" stroke-width="1" />
+                <path d="M 100 88 L 100 100 L 88 100" stroke="rgba(212, 175, 55, 0.4)" stroke-width="1" />
+              </svg>
+              <img src="./images/bambino-mon-an-khai-vi-mortadella-ham.png" alt="Món khai vị Mortadella Ham và cocktail tại Bambino" loading="eager" decoding="async">
+              <div class="pp-image-caption-shared">Khai vị Mortadella Ham &amp; Cocktail</div>
+            </div>
+
+            <!-- Card 2: Salad tươi & Pasta -->
+            <div class="pp-bambino-intro__card pp-image-container-shared">
+              <!-- Ngôi sao lấp lánh kiêu sa -->
+              <svg class="pp-sparkle-star pp-sparkle-star--3" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L14.6 9.4L24 12L14.6 14.6L12 24L9.4 14.6L0 12L9.4 9.4L12 0Z"/></svg>
+              <svg class="pp-sparkle-star pp-sparkle-star--4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L14.6 9.4L24 12L14.6 14.6L12 24L9.4 14.6L0 12L9.4 9.4L12 0Z"/></svg>
+              
+              <svg class="card-corner-svg" viewBox="0 0 100 100" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M 0 12 L 0 0 L 12 0" stroke="rgba(212, 175, 55, 0.4)" stroke-width="1" />
+                <path d="M 100 12 L 100 0 L 88 0" stroke="rgba(212, 175, 55, 0.4)" stroke-width="1" />
+                <path d="M 0 88 L 0 100 L 12 100" stroke="rgba(212, 175, 55, 0.4)" stroke-width="1" />
+                <path d="M 100 88 L 100 100 L 88 100" stroke="rgba(212, 175, 55, 0.4)" stroke-width="1" />
+              </svg>
+              <img src="./images/bambino-mon-an-salad-rau-kem-pasta.png" alt="Salad rau xà lách tươi ăn kèm Pasta sốt kem cà chua tại Bambino" loading="eager" decoding="async">
+              <div class="pp-image-caption-shared">Salad tươi &amp; Pasta sốt kem cà chua</div>
+            </div>
+
+          </div>
+
+          <!-- Cột Phải -->
+          <div class="pp-bambino-intro__mosaic-column pp-bambino-intro__mosaic-column--right">
+            
+            <!-- Card 3: Mì Ý Mafaldine -->
+            <div class="pp-bambino-intro__card pp-image-container-shared">
+              <!-- Ngôi sao lấp lánh kiêu sa -->
+              <svg class="pp-sparkle-star pp-sparkle-star--1" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L14.6 9.4L24 12L14.6 14.6L12 24L9.4 14.6L0 12L9.4 9.4L12 0Z"/></svg>
+              <svg class="pp-sparkle-star pp-sparkle-star--2" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L14.6 9.4L24 12L14.6 14.6L12 24L9.4 14.6L0 12L9.4 9.4L12 0Z"/></svg>
+              
+              <svg class="card-corner-svg" viewBox="0 0 100 100" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M 0 12 L 0 0 L 12 0" stroke="rgba(212, 175, 55, 0.4)" stroke-width="1" />
+                <path d="M 100 12 L 100 0 L 88 0" stroke="rgba(212, 175, 55, 0.4)" stroke-width="1" />
+                <path d="M 0 88 L 0 100 L 12 100" stroke="rgba(212, 175, 55, 0.4)" stroke-width="1" />
+                <path d="M 100 88 L 100 100 L 88 100" stroke="rgba(212, 175, 55, 0.4)" stroke-width="1" />
+              </svg>
+              <img src="./images/bambino-mon-an-mi-y-mafaldine-bolognese.png" alt="Mì Ý Mafaldine Bolognese rắc phô mai tại Bambino" loading="eager" decoding="async">
+              <div class="pp-image-caption-shared">Mì Ý Mafaldine Bolognese &amp; Phô Mai</div>
+            </div>
+
+            <!-- Card 4: Phô mai Burrata -->
+            <div class="pp-bambino-intro__card pp-image-container-shared">
+              <!-- Ngôi sao lấp lánh kiêu sa -->
+              <svg class="pp-sparkle-star pp-sparkle-star--3" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L14.6 9.4L24 12L14.6 14.6L12 24L9.4 14.6L0 12L9.4 9.4L12 0Z"/></svg>
+              <svg class="pp-sparkle-star pp-sparkle-star--4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L14.6 9.4L24 12L14.6 14.6L12 24L9.4 14.6L0 12L9.4 9.4L12 0Z"/></svg>
+              
+              <svg class="card-corner-svg" viewBox="0 0 100 100" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M 0 12 L 0 0 L 12 0" stroke="rgba(212, 175, 55, 0.4)" stroke-width="1" />
+                <path d="M 100 12 L 100 0 L 88 0" stroke="rgba(212, 175, 55, 0.4)" stroke-width="1" />
+                <path d="M 0 88 L 0 100 L 12 100" stroke="rgba(212, 175, 55, 0.4)" stroke-width="1" />
+                <path d="M 100 88 L 100 100 L 88 100" stroke="rgba(212, 175, 55, 0.4)" stroke-width="1" />
+              </svg>
+              <img src="./images/bambino-mon-an-salad-pho-mai-burrata.png" alt="Salad phô mai Burrata tươi ăn kèm thịt nguội Prosciutto tại Bambino" loading="eager" decoding="async">
+              <div class="pp-image-caption-shared">Phô mai Burrata tươi &amp; Prosciutto</div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<section class="pp-section-bb pp-bambino-concept">
+  <div class="pp-container-shared">
+    <div class="pp-bambino-concept__grid">
+      
+      <div class="pp-bambino-concept__text-col">
+        <div class="pp-bambino-concept__panels">
+          <!-- Cột 1: Ý Tưởng Thiết Kế (Bản vẽ SVG chìm hình học sáng tạo) -->
+          <div class="pp-bambino-concept__panel pp-bambino-concept__panel--primary">
+            <!-- SVG hình vẽ kiến trúc định hướng hình học sáng tạo -->
+            <div class="panel-svg-bg">
+              <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="150" cy="150" r="45" stroke="rgba(212, 175, 55, 0.12)" stroke-width="0.75" />
+                <circle cx="150" cy="150" r="28" stroke="rgba(212, 175, 55, 0.08)" stroke-width="0.75" />
+                <line x1="150" y1="80" x2="150" y2="200" stroke="rgba(212, 175, 55, 0.08)" stroke-width="0.5" stroke-dasharray="2 2" />
+                <line x1="80" y1="150" x2="200" y2="150" stroke="rgba(212, 175, 55, 0.08)" stroke-width="0.5" stroke-dasharray="2 2" />
+                <path d="M 105 150 A 45 45 0 0 1 150 105" stroke="var(--gold)" stroke-width="1" stroke-opacity="0.25" />
+                <rect x="125" y="125" width="50" height="50" stroke="rgba(212, 175, 55, 0.05)" stroke-width="0.5" />
+              </svg>
+            </div>
+            
+            <div class="panel-content-wrapper">
+              <header class="panel-header">
+                <span class="panel-tag">
+                  <svg class="tag-gold-icon" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:inline-block; width:10px; height:10px; margin-right:4px; vertical-align:middle;">
+                    <circle cx="6" cy="6" r="5" stroke="var(--gold)" stroke-width="1"/>
+                    <circle cx="6" cy="6" r="2" fill="var(--gold)"/>
+                  </svg>
+                  Ý Tưởng Thiết Kế
+                </span>
+                <h3 class="panel-title">Ý Tưởng Chủ Đạo Thiết Kế của Bambino</h3>
+                <div class="panel-divider"></div>
+              </header>
+              <div class="panel-desc">
+                <p>Qua trao đổi về concept nhà hàng kiểu Ý, Saigon Horeca đã tư vấn thiết kế nhà bếp cho Bambino với những nét đặc trưng cùng những thiết bị đầy đủ công năng và hiện đại.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cột 2: Giải Pháp Tối Ưu (Bản vẽ SVG chìm quy trình luồng công việc) -->
+          <div class="pp-bambino-concept__panel pp-bambino-concept__panel--secondary">
+            <!-- SVG hình vẽ luồng công việc một chiều tinh xảo (Đã bỏ toàn bộ tiếng Anh) -->
+            <div class="panel-svg-bg" style="width:240px; height:120px; top:auto; bottom:0;">
+              <svg viewBox="0 0 200 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M 10 60 Q 55 15 100 60 T 190 60" stroke="rgba(212, 175, 55, 0.12)" stroke-width="1" stroke-dasharray="3 3" />
+                <circle cx="10" cy="60" r="3.5" fill="var(--gold)" fill-opacity="0.3" />
+                <circle cx="100" cy="60" r="3.5" fill="var(--gold)" fill-opacity="0.3" />
+                <circle cx="190" cy="60" r="3.5" fill="var(--gold)" fill-opacity="0.3" />
+                <path d="M 184 56 L 190 60 L 184 64" stroke="rgba(212, 175, 55, 0.4)" stroke-width="1.2" />
+              </svg>
+            </div>
+
+            <div class="panel-content-wrapper">
+              <span class="solution-tag">Giải Pháp Tối Ưu</span>
+              <p>Với sự kết hợp giữa thiết bị tự sản xuất và nhập khẩu trực tiếp từ Italy, không gian làm việc bên trong nhà bếp đã phản ánh rõ nét tinh thần nước Ý một cách mạnh mẽ.</p>
+              
+              <div class="solution-chips">
+                <span class="chip-item">Inox 304 cao cấp</span>
+                <span class="chip-item">Thiết bị Italy nhập khẩu</span>
+                <span class="chip-item">Quy trình bếp một chiều</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cột 3: Khung ảnh Premium Single Frame được vẽ bằng SVG kỹ thuật chính xác bao quanh -->
+      <div class="pp-bambino-concept__media-col">
+        <div class="pp-bambino-concept__single-frame">
+          <!-- Hào quang hào hoa phía sau -->
+          <div class="premium-glow-circle"></div>
+          
+          <!-- SVG Khung viền kiến trúc tinh xảo bao quanh -->
+          <svg class="concept-svg-frame" viewBox="0 0 100 100" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Nét đứt định vị ngoài cùng -->
+            <rect x="1.5" y="1.5" width="97" height="97" rx="5" stroke="rgba(212, 175, 55, 0.3)" stroke-width="0.35" stroke-dasharray="1.5 1.5" />
+            <!-- Khung chỉ số kỹ thuật liền -->
+            <rect x="4.5" y="4.5" width="91" height="91" rx="4" stroke="rgba(212, 175, 55, 0.15)" stroke-width="0.5" />
+            
+            <!-- Bốn góc L-bracket vẽ tinh vi bằng vector -->
+            <path d="M 0 16 L 0 0 L 16 0" stroke="rgba(212, 175, 55, 0.75)" stroke-width="1.2" />
+            <path d="M 100 16 L 100 0 L 84 0" stroke="rgba(212, 175, 55, 0.75)" stroke-width="1.2" />
+            <path d="M 0 84 L 0 100 L 16 100" stroke="rgba(212, 175, 55, 0.75)" stroke-width="1.2" />
+            <path d="M 100 84 L 100 100 L 84 100" stroke="rgba(212, 175, 55, 0.75)" stroke-width="1.2" />
+            
+            <!-- Tâm nhắm kỹ thuật tinh tế ở 4 góc -->
+            <circle cx="4.5" cy="4.5" r="1.2" fill="var(--gold)" />
+            <circle cx="95.5" cy="4.5" r="1.2" fill="var(--gold)" />
+            <circle cx="4.5" cy="95.5" r="1.2" fill="var(--gold)" />
+            <circle cx="95.5" cy="95.5" r="1.2" fill="var(--gold)" />
+            
+            <!-- Vạch thước đo kỹ thuật chi tiết ở các cạnh -->
+            <line x1="50" y1="0" x2="50" y2="3.5" stroke="var(--gold)" stroke-width="0.5" />
+            <line x1="25" y1="0" x2="25" y2="2" stroke="rgba(212, 175, 55, 0.5)" stroke-width="0.5" />
+            <line x1="75" y1="0" x2="75" y2="2" stroke="rgba(212, 175, 55, 0.5)" stroke-width="0.5" />
+            
+            <line x1="50" y1="100" x2="50" y2="96.5" stroke="var(--gold)" stroke-width="0.5" />
+            <line x1="25" y1="100" x2="25" y2="98" stroke="rgba(212, 175, 55, 0.5)" stroke-width="0.5" />
+            <line x1="75" y1="100" x2="75" y2="98" stroke="rgba(212, 175, 55, 0.5)" stroke-width="0.5" />
+            
+            <line x1="0" y1="50" x2="3.5" y2="50" stroke="var(--gold)" stroke-width="0.5" />
+            <line x1="100" y1="50" x2="96.5" y2="50" stroke="var(--gold)" stroke-width="0.5" />
+          </svg>
+          
+          <!-- Container ảnh chính -->
+          <div class="pp-bambino-concept__image-container pp-image-container-shared">
+            <img src="./images/bambino-khong-gian-am-thuc-y-sang-trong.jpg" alt="Thiết kế không gian ẩm thực Ý sang trọng tại Bambino" loading="lazy" decoding="async">
+            <div class="pp-image-caption-shared">Thiết kế không gian ẩm thực Ý sang trọng tại Bambino</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="bb-partnership-section">
+  <!-- Thẻ con gánh hiệu ứng Parallax Clip-Path siêu mượt -->
+  <div class="bb-partnership-section__bg" style="background-image:url('./images/bambino-thiet-bi-bep-nau-nhap-khau.jpg');"></div>
+  <div class="bb-partnership-section__overlay" aria-hidden="true"></div>
+  
+  <div class="bb-partnership-section__content">
+    <div class="bb-partnership-card">
+      
+      <!-- Tiêu đề và divider phong cách tạp chí -->
+      <div class="bb-partnership-card__header">
+        <span class="pp-text-section__divider pp-text-section__divider--center" aria-hidden="true"></span>
+        <h2 class="pp-text-section__title">
+          Sự Hợp Tác Giữa Bambino Superclub và Saigon Horeca        </h2>
+      </div>
+      
+      <!-- PHẦN 1: Tầm Nhìn & Ý Tưởng Khởi Đầu (2 Cột thoáng đãng) -->
+      <div class="bb-partnership-row-top">
+        <div class="bb-partnership-col-left">
+          <div class="bb-partnership-quote">
+            <span class="bb-quote-icon" aria-hidden="true">“</span>
+            <p class="bb-quote-text">
+              Sự hợp tác chặt chẽ để kiến tạo một không gian bếp tùy chỉnh, tối ưu hiệu năng và đạt hiệu quả vận hành vượt trội.            </p>
+          </div>
+        </div>
+        <div class="bb-partnership-col-right">
+          <p class="bb-partnership-lead">
+            Trong giai đoạn lên ý tưởng khởi đầu, Saigon Horeca đã tham gia vào các buổi thảo luận và phân tích sâu rộng để có được một sự hiểu biết sâu sắc những yêu cầu độc đáo và cơ bản về hoạt động của Bambino.          </p>
+        </div>
+      </div>
+      
+      <!-- PHẦN 2: Hiện Thực Hóa Chuyên Môn (Dạng cột catalog tạp chí kiến trúc) -->
+      <div class="bb-partnership-catalog">
+        <div class="bb-catalog-item">
+          <div class="bb-catalog-meta">
+            <span class="bb-catalog-num">01</span>
+            <span class="bb-catalog-tag">Tương Tác & Thấu Hiểu</span>
+          </div>
+          <p class="bb-catalog-text">
+            Qua sự hợp tác chặt chẽ, đội ngũ của Saigon Horeca tương tác mật thiết với các bên liên quan của Bambino, khám phá những chi tiết của sở thích ẩm thực, động lực công việc, và nhu cầu không gian của nhà hàng. Phương pháp hợp tác này tập trung vào việc thúc đẩy sự nắm bắt toàn diện về tầm nhìn của đối tác.          </p>
+        </div>
+        
+        <div class="bb-catalog-item">
+          <div class="bb-catalog-meta">
+            <span class="bb-catalog-num">02</span>
+            <span class="bb-catalog-tag">Tiêu Chuẩn & Kỹ Thuật</span>
+          </div>
+          <p class="bb-catalog-text">
+            Chuyên môn của Saigon Horeca đảm bảo rằng thiết kế nhà bếp tuân theo các tiêu chuẩn và quy định của bếp Âu trong ngành thiết bị bếp công nghiệp, đồng thời tạo ra một môi trường khuyến khích sự đổi mới trong ẩm thực. Sự chú ý đến chi tiết bao gồm các hệ thống thông gió, giải pháp lưu trữ, tối ưu hóa quy trình công việc.          </p>
+        </div>
+      </div>
+      
+      <!-- PHẦN 3: Đỉnh Cao Sự Hợp Tác (Full-width Callout kết luận) -->
+      <div class="bb-partnership-footer-callout">
+        <div class="bb-callout-inner">
+          <svg class="bb-callout-sparkle" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L15 9L22 12L15 15L12 22L9 15L2 12L9 9L12 2Z" fill="var(--gold)" />
+          </svg>
+          <p class="bb-callout-text">
+            Cuối cùng, dịch vụ tư vấn và thiết kế của Saigon Horeca trở thành một phần không thể thiếu của bản sắc Bambino – một tổ chức nuôi dưỡng cho sự xuất sắc trong nghệ thuật ẩm thực.          </p>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+<section class="pp-section-bb pp-section-bb--alt pp-bambino-specs">
+  <div class="pp-container-shared">
+    <div class="pp-split-section pp-split-section--reverse">
+      
+      <!-- CỘT BODY (TEXT & BẢN VẼ PHÂN TÍCH THÔNG SỐ) -->
+      <div class="pp-split-section__body">
+        <header class="pp-specs-header">
+          <div class="pp-specs-label">
+            <svg class="pp-specs-icon-label" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2 14L14 2M14 14L2 2" stroke="var(--gold)" stroke-width="1.2" stroke-dasharray="1.5 1.5"/>
+              <circle cx="8" cy="8" r="4" stroke="var(--gold)" stroke-width="1.2"/>
+            </svg>
+            THÔNG SỐ THIẾT BỊ BẾP
+          </div>
+          <h2 class="pp-text-section__title">Không gian Nhà Bếp Sang Trọng với Thiết Bị Bếp Inox</h2>
+          <div class="pp-specs-divider"></div>
+        </header>
+        
+        <div class="pp-specs-intro">
+          <p>Saigon Horeca đã thiết kế nhà bếp cho Bambino một cách tinh tế, truyền tải vào đó chất DNA đặc trưng, nổi bật bởi sự thuận tiện trong cả thiết bị tự sản xuất và nhập khẩu trực tiếp từ Italy. Thiết kế này tạo nên một không gian làm việc bên trong nhà bếp, phản ánh mạnh mẽ tinh thần Ý.</p>
+        </div>
+
+        <!-- Lưới thông số thương hiệu đẳng cấp -->
+        <div class="pp-specs-grid">
+          
+          <!-- Thương hiệu 1: ATA Italy -->
+          <div class="pp-specs-card">
+            <div class="pp-specs-card__aside">
+              <div class="pp-specs-card__icon-wrap">
+                <!-- SVG bếp nóng ATA -->
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M5 19H19" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round"/>
+                  <path d="M8 15C8 12 12 10 12 10C12 10 16 12 16 15" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round"/>
+                  <path d="M10 15C10 13.5 12 12.5 12 12.5C12 12.5 14 13.5 14 15" stroke="var(--gold)" stroke-width="1" stroke-linecap="round"/>
+                  <circle cx="6" cy="6" r="2" stroke="rgba(212,175,55,0.4)" stroke-width="1"/>
+                  <circle cx="18" cy="6" r="2" stroke="rgba(212,175,55,0.4)" stroke-width="1"/>
+                </svg>
+              </div>
+              <span class="pp-specs-card__brand">ATA ITALY</span>
+            </div>
+            <div class="pp-specs-card__main">
+              <h4 class="pp-specs-card__title">Hệ Thống Bếp Nóng Cao Cấp</h4>
+              <p class="pp-specs-card__desc">Sau các cuộc thảo luận với đầu bếp, Saigon Horeca lựa chọn thiết bị một cách cẩn thận từ ATA ở Italy, đáp ứng hoàn hảo yêu cầu và đặc điểm thực đơn của nhà hàng.</p>
+            </div>
+          </div>
+
+          <!-- Thương hiệu 2: HOSHIZAKI -->
+          <div class="pp-specs-card">
+            <div class="pp-specs-card__aside">
+              <div class="pp-specs-card__icon-wrap">
+                <!-- SVG làm lạnh Hoshizaki tinh thể đá kỹ thuật hoàn hảo -->
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="12" cy="12" r="9" stroke="rgba(212, 175, 55, 0.15)" stroke-width="0.75" />
+                  <circle cx="12" cy="12" r="5" stroke="var(--gold)" stroke-width="1" stroke-opacity="0.3" />
+                  <path d="M12 3V21M3 12H21" stroke="var(--gold)" stroke-width="1.2" stroke-linecap="round" />
+                  <path d="M5.64 5.64L18.36 18.36M5.64 18.36L18.36 5.64" stroke="var(--gold)" stroke-width="0.75" stroke-dasharray="1.5 1.5" />
+                  <path d="M12 9.5L14.5 12L12 14.5L9.5 12L12 9.5Z" fill="var(--gold)" fill-opacity="0.2" stroke="var(--gold)" stroke-width="1" />
+                </svg>
+              </div>
+              <span class="pp-specs-card__brand">HOSHIZAKI</span>
+            </div>
+            <div class="pp-specs-card__main">
+              <h4 class="pp-specs-card__title">Giải Pháp Bảo Quản Lạnh</h4>
+              <p class="pp-specs-card__desc">Lựa chọn tỉ mỉ thiết bị làm lạnh cho toàn bộ khu vực quầy bar và nhà bếp lạnh, phản ánh cam kết chất lượng tuyệt đối và sự hài hòa hoàn hảo.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      
+      <!-- CỘT HÌNH ẢNH (BẢN VẼ CAD SVG KHUNG BAO QUANH) -->
+      <div class="pp-split-section__media-col">
+        <div class="pp-specs-media-wrapper">
+          
+          <!-- SVG Viền vẽ kỹ thuật CAD bao quanh ảnh cực chất -->
+          <svg class="pp-specs-cad-frame" viewBox="0 0 100 100" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="2" width="96" height="96" rx="6" stroke="rgba(212, 175, 55, 0.25)" stroke-width="0.5" stroke-dasharray="2 2" />
+            <rect x="4" y="4" width="92" height="92" rx="4" stroke="rgba(212, 175, 55, 0.12)" stroke-width="0.75" />
+            
+            <!-- Góc bracket vector -->
+            <path d="M 0 12 L 0 0 L 12 0" stroke="var(--gold)" stroke-width="1.2" />
+            <path d="M 100 12 L 100 0 L 88 0" stroke="var(--gold)" stroke-width="1.2" />
+            <path d="M 0 88 L 0 100 L 12 100" stroke="var(--gold)" stroke-width="1.2" />
+            <path d="M 100 88 L 100 100 L 88 100" stroke="var(--gold)" stroke-width="1.2" />
+            
+            <!-- Thước đo kỹ thuật -->
+            <line x1="50" y1="0" x2="50" y2="4" stroke="var(--gold)" stroke-width="0.5" />
+            <line x1="0" y1="50" x2="4" y2="50" stroke="var(--gold)" stroke-width="0.5" />
+            <line x1="100" y1="50" x2="96" y2="50" stroke="var(--gold)" stroke-width="0.5" />
+          </svg>
+
+          <!-- Ảnh chính -->
+          <div class="pp-split-section__media pp-image-container-shared">
+            <img src="./images/bambino-he-thong-bep-nong-ata.jpg" alt="Hệ thống thiết bị bếp nóng ATA nhập khẩu từ Ý tại Bambino" loading="lazy" decoding="async" width="600" height="800">
+            <div class="pp-image-caption-shared">Hệ thống bếp nóng ATA nhập khẩu từ Ý cùng thiết bị inox Saigon Horeca</div>
+          </div>
+          
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<section class="bb-bar-section pp-bambino-bar">
+  <div class="bb-bar-container">
+    <div class="bb-bar-grid">
+      
+      <!-- Cột trái: Card thông tin và thông số kỹ thuật tối ưu quầy bar -->
+      <div class="bb-bar-content-card">
+        <header class="pp-specs-header">
+          <div class="pp-specs-label">
+            <svg class="pp-specs-icon-label" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2" y="2" width="12" height="12" rx="1" stroke="var(--gold)" stroke-width="1.2" stroke-dasharray="2 2" />
+              <path d="M8 2V14M2 8H14" stroke="var(--gold)" stroke-width="0.8" />
+            </svg>
+            BẢN VẼ PHÂN KHU BAR
+          </div>
+          <h2 class="pp-text-section__title">
+            Bản sắc của Saigon Horeca hiện diện rõ rệt trong thiết kế nghệ thuật của quầy bar.          </h2>
+          <div class="pp-specs-divider"></div>
+        </header>
+
+        <div class="pp-specs-intro">
+          <p>Tại Bambino Superclub, không gian làm việc của Bartender được thiết kế mở trên diện tích rộng 23 mét vuông, phân chia khu vực lưu trữ và pha chế một cách thông minh, khoa học.</p>
+        </div>
+
+        <!-- Lưới phân khu và thiết bị bar -->
+        <div class="pp-specs-grid">
+          
+          <!-- Phân khu 1: Quầy Bar Trước -->
+          <div class="pp-specs-card">
+            <div class="pp-specs-card__aside">
+              <div class="pp-specs-card__icon-wrap">
+                <!-- SVG tủ kệ & quầy lạnh -->
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="3" y="4" width="18" height="16" rx="2" stroke="var(--gold)" stroke-width="1.5" />
+                  <line x1="3" y1="12" x2="21" y2="12" stroke="var(--gold)" stroke-width="1.2" />
+                  <line x1="9" y1="4" x2="9" y2="20" stroke="var(--gold)" stroke-width="1.2" />
+                  <circle cx="15" cy="8" r="1.5" fill="var(--gold)" />
+                  <circle cx="15" cy="16" r="1.5" fill="var(--gold)" />
+                </svg>
+              </div>
+              <span class="pp-specs-card__brand">SGH BAR</span>
+            </div>
+            <div class="pp-specs-card__main">
+              <h4 class="pp-specs-card__title">Hệ Thống Quầy Lạnh Trưng Bày</h4>
+              <p class="pp-specs-card__desc">Tổ chức tỉ mỉ các dòng tủ lạnh công nghiệp Fujimak (bàn lạnh 900mm và 1500mm), tủ inox 304 sản xuất bởi SGH, mang lại sự linh hoạt tuyệt đối cho mixology.</p>
+            </div>
+          </div>
+
+          <!-- Phân khu 2: Vận Hành Vệ Sinh -->
+          <div class="pp-specs-card">
+            <div class="pp-specs-card__aside">
+              <div class="pp-specs-card__icon-wrap">
+                <!-- SVG rửa ly và máy đá -->
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="12" cy="12" r="8" stroke="var(--gold)" stroke-width="1.5" />
+                  <path d="M12 8V16M8 12H16" stroke="var(--gold)" stroke-width="1" stroke-linecap="round" />
+                  <path d="M17 7L7 17" stroke="rgba(212,175,55,0.4)" stroke-width="1" />
+                </svg>
+              </div>
+              <span class="pp-specs-card__brand">WINTERHALTER</span>
+            </div>
+            <div class="pp-specs-card__main">
+              <h4 class="pp-specs-card__title">Thiết Bị Rửa Cốc & Làm Đá Tốc Độ</h4>
+              <p class="pp-specs-card__desc">Sử dụng máy làm đá Hoshizaki (220kg/ngày) và hệ thống rửa ly Winterhalter cao cấp với chu kỳ rửa siêu tốc chỉ 1 phút 30 giây, đáp ứng liên tục lượng khách VIP tinh tế.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <p class="bb-bar-link">
+          <a href="https://saigonhoreca.local/du-an/">
+            &gt;&gt; Khám phá thêm các dự án quầy bar cao cấp của Saigon Horeca          </a>
+        </p>
+      </div>
+      
+      <!-- Cột phải: Media với bản vẽ CAD bao quanh tuyệt mỹ -->
+      <div class="bb-bar-media-col">
+        <div class="pp-specs-media-wrapper pp-specs-media-wrapper--reverse">
+          
+          <!-- SVG Viền vẽ kỹ thuật CAD bao quanh ảnh cực chất -->
+          <svg class="pp-specs-cad-frame" viewBox="0 0 100 100" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="2" width="96" height="96" rx="6" stroke="rgba(212, 175, 55, 0.25)" stroke-width="0.5" stroke-dasharray="2 2" />
+            <rect x="4" y="4" width="92" height="92" rx="4" stroke="rgba(212, 175, 55, 0.12)" stroke-width="0.75" />
+            
+            <!-- Góc bracket vector -->
+            <path d="M 0 12 L 0 0 L 12 0" stroke="var(--gold)" stroke-width="1.2" />
+            <path d="M 100 12 L 100 0 L 88 0" stroke="var(--gold)" stroke-width="1.2" />
+            <path d="M 0 88 L 0 100 L 12 100" stroke="var(--gold)" stroke-width="1.2" />
+            <path d="M 100 88 L 100 100 L 88 100" stroke="var(--gold)" stroke-width="1.2" />
+            
+            <!-- Thước đo kỹ thuật -->
+            <line x1="50" y1="0" x2="50" y2="4" stroke="var(--gold)" stroke-width="0.5" />
+            <line x1="0" y1="50" x2="4" y2="50" stroke="var(--gold)" stroke-width="0.5" />
+            <line x1="100" y1="50" x2="96" y2="50" stroke="var(--gold)" stroke-width="0.5" />
+          </svg>
+
+          <!-- Ảnh chính -->
+          <div class="bb-bar-media pp-image-container-shared">
+            <img src="./images/bambino-quay-bar-va-may-rua-ly-winterhalter.jpg" alt="Thiết bị quầy bar Saigon Horeca và máy rửa ly Winterhalter cao cấp tại Bambino" loading="lazy" decoding="async" width="600" height="800">
+            <div class="pp-image-caption-shared">Hệ thống quầy bar inox 304 cao cấp cùng máy rửa ly Winterhalter</div>
+          </div>
+          
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<section class="pp__section pp-bambino-cta">
+  <div class="pp__container">
+    <div class="sgh-bambino-cta-card">
+      <!-- Cột trái: Văn bản & Nút trượt sáng Shimmer -->
+      <div class="sgh-bambino-cta-content">
+        <div class="sgh-bambino-cta-badge">
+          <span class="pulse-dot"></span>
+          Start Your Project
+        </div>
+        <h2 class="sgh-bambino-cta-title">Khởi Tạo Không Gian Ẩm Thực Độc Bản</h2>
+        <p class="sgh-bambino-cta-desc">Bạn đang ấp ủ một concept nhà hàng, lounge hay superclub đẳng cấp? Hãy để Saigon Horeca đồng hành biến tầm nhìn nghệ thuật của bạn thành hiện thực kỹ thuật hoàn mỹ.</p>
+        
+        <div class="sgh-bambino-cta-features">
+          <span class="feat-item">✦ Tư vấn concept độc bản</span>
+          <span class="feat-item">✦ Thiết bị inox 304 chuẩn châu Âu</span>
+          <span class="feat-item">✦ Vận hành tối ưu công năng</span>
+        </div>
+
+        <div class="sgh-bambino-cta-action">
+          <a href="https://saigonhoreca.local/lien-he" class="sgh-bambino-cta-btn">
+            <span class="btn-text">Liên Hệ Tư Vấn Ngay</span>
+            <span class="btn-shimmer"></span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Cột phải: Ảnh quầy bar thực tế ôm khít -->
+      <div class="sgh-bambino-cta-media" style="background-image: url('./images/bambino-khong-gian-am-thuc-y-sang-trong.jpg');">
+        <div class="sgh-bambino-cta-media-overlay"></div>
+      </div>
+
+      <!-- Khung viền Parallel Neon Framer -->
+      <div class="sgh-bambino-cta-framer">
+        <span class="corner tl"></span>
+        <span class="corner br"></span>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="pp__section pp__section--alt">
+    <div class="pp-container-shared">
+        <div class="pp-text pp-text--center" style="margin-bottom: 3rem;">
+            <span class="pp-text__divider pp-text__divider--center" aria-hidden="true"></span>
+            <h2 class="pp-text__title">Thông tin liên hệ</h2>
+        </div>
+        <div class="pp-cta">
+                            <div class="pp-cta__card">
+                    <span class="pp-cta__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+                                            <h3 class="pp-cta__title">0901 304 365</h3>
+                                                                <p class="pp-cta__desc">Thứ 2 - Thứ 6, 8h00 - 18h00</p>
+                                                                <a href="tel:0901304365"
+                           class="pp-cta__btn">
+                            Gọi ngay                        </a>
+                                    </div>
+                            <div class="pp-cta__card">
+                    <span class="pp-cta__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+                                            <h3 class="pp-cta__title">TP Hồ Chí Minh</h3>
+                                                                <p class="pp-cta__desc">Số 40, Đường Số 6, KDC Melosa Khang Điền, Long Trường, TP.HCM</p>
+                                                                <a href="https://maps.app.goo.gl/SmWvPSEW2ozAq5dA6"
+                           class="pp-cta__btn" target="_blank" rel="noopener">
+                            Xem bản đồ                        </a>
+                                    </div>
+                            <div class="pp-cta__card">
+                    <span class="pp-cta__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
+                                            <h3 class="pp-cta__title">contact@saigonhoreca.com</h3>
+                                                                <p class="pp-cta__desc">Liên hệ mọi lúc</p>
+                                                                <a href="mailto:contact@saigonhoreca.com"
+                           class="pp-cta__btn">
+                            Gửi email                        </a>
+                                    </div>
+                    </div>
+    </div>
+</section>
+</main>
+
+<footer class="sh-footer" role="contentinfo" itemscope itemtype="https://schema.org/WPFooter">
+    
+<!-- Mobile Sidebar Overlay (always present so JS can toggle it) -->
+<div id="mobile-sidebar-overlay" class="sh-mobile-overlay"></div>
+
+<!-- Mobile Sidebar mount point (empty until JS hydrates the template) -->
+<div id="mobile-sidebar" class="sh-mobile" data-sgh-mobile-menu="lazy"></div>
+
+<!-- Mobile menu markup stored in <template> — NOT part of the live DOM
+     until JS clones it on first toggle. Saves ~180 DOM nodes for the
+     90 %+ of homepage visits that never open the mobile menu. -->
+<template id="sgh-mobile-menu-tpl">
+    <!-- Header -->
+    <div class="sh-mobile__header">
+        <span class="sh-mobile__header-title">
+            <svg xmlns="http://www.w3.org/2000/svg" class="sh-mobile__header-icon" width="1.25rem" height="1.25rem"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h.01"/><path d="M3 18h.01"/><path d="M3 6h.01"/><path d="M8 12h13"/><path d="M8 18h13"/><path d="M8 6h13"/></svg>            Menu
+        </span>
+        <button id="mobile-menu-close" class="sh-mobile__close-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" class="sh-mobile__close-icon" width="1.25rem" height="1.25rem"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>        </button>
+    </div>
+
+    <!-- Content -->
+    <div class="sh-mobile__body">
+        <!-- Search -->
+        <div class="sh-mobile__search-wrap">
+            <form role="search" method="get" class="sh-mobile__search" action="https://saigonhoreca.local/">
+                <span class="sh-mobile__search-icon-wrap">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="sh-mobile__search-svg" width="1.25rem" height="1.25rem"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>                </span>
+                <input type="search" name="s" class="sh-mobile__search-input" placeholder="Tìm kiếm...">
+            </form>
+        </div>
+
+        <!-- Nav Menu -->
+        <nav class="sh-mobile__nav">
+                            <ul class="sh-mobile__menu-list">
+                                        <li class="sh-mobile__menu-item sh-mobile__menu-item--has-children">
+                        <a href="https://saigonhoreca.local/ve-saigon-horeca/" class="sh-mobile__menu-link">
+                            Về Saigon Horeca                        </a>
+                                                <ul class="sh-mobile__submenu">
+                                                        <li class="sh-mobile__submenu-item">
+                                <a href="https://saigonhoreca.local/tu-van-thiet-ke-bep-nha-hang-bep-cong-nghiep/" class="sh-mobile__submenu-link">
+                                    Tư vấn thiết kế bếp nhà hàng                                </a>
+                            </li>
+                                                        <li class="sh-mobile__submenu-item">
+                                <a href="https://saigonhoreca.local/cung-cap-thiet-bi-tu-van-thiet-ke-cho-quay-bar/" class="sh-mobile__submenu-link">
+                                    Tư vấn thiết kế quầy bar                                </a>
+                            </li>
+                                                        <li class="sh-mobile__submenu-item">
+                                <a href="https://saigonhoreca.local/danh-muc-san-pham/he-thong-hut-khoi-cap-khi-tuoi-bep-nha-hang/" class="sh-mobile__submenu-link">
+                                    Hệ thống cấp khí tươi                                </a>
+                            </li>
+                                                        <li class="sh-mobile__submenu-item">
+                                <a href="https://saigonhoreca.local/danh-muc-san-pham/he-thong-hut-khoi/" class="sh-mobile__submenu-link">
+                                    Hệ thống hút khói công nghiệp                                </a>
+                            </li>
+                                                    </ul>
+                                            </li>
+                                        <li class="sh-mobile__menu-item ">
+                        <a href="https://saigonhoreca.local/du-an/" class="sh-mobile__menu-link">
+                            Dự Án                        </a>
+                                            </li>
+                                        <li class="sh-mobile__menu-item ">
+                        <a href="https://saigonhoreca.local/san-pham/" class="sh-mobile__menu-link">
+                            Sản Phẩm                        </a>
+                                            </li>
+                                        <li class="sh-mobile__menu-item ">
+                        <a href="https://saigonhoreca.local/tin-tuc/" class="sh-mobile__menu-link">
+                            Tin Tức                        </a>
+                                            </li>
+                                        <li class="sh-mobile__menu-item ">
+                        <a href="https://saigonhoreca.local/lien-he/" class="sh-mobile__menu-link">
+                            Liên hệ                        </a>
+                                            </li>
+                                    </ul>
+                        </nav>
+
+        <!-- Footer -->
+        <div class="sh-mobile__footer">
+            <h4 class="sh-mobile__section-title">
+                <span class="sh-mobile__accent-bar"></span> Thông tin liên hệ            </h4>
+            <div class="sh-mobile__contact-list">
+                <a href="tel:0901304365" class="sh-mobile__contact-card sh-mobile__contact-card--phone">
+                    <div class="sh-mobile__contact-icon-wrap">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="sh-mobile__contact-svg" width="1.25rem" height="1.25rem"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>                    </div>
+                    <div>
+                        <span class="sh-mobile__contact-label">Hotline</span>
+                        <span class="sh-mobile__contact-value">0901 304 365</span>
+                    </div>
+                </a>
+                <a href="mailto:contact@saigonhoreca.com" class="sh-mobile__contact-card">
+                    <div class="sh-mobile__contact-icon-wrap">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="sh-mobile__contact-svg" width="1.25rem" height="1.25rem"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>                    </div>
+                    <span class="sh-mobile__contact-email">contact@saigonhoreca.com</span>
+                </a>
+            </div>
+
+            <!-- Social -->
+            <div class="sh-mobile__social-section">
+                <h4 class="sh-mobile__section-title">
+                    <span class="sh-mobile__accent-bar"></span> Kết nối                </h4>
+                <div class="sh-mobile__social-list">
+                                        <a href="https://www.facebook.com/saigonhoreca" target="_blank" rel="noopener noreferrer" class="sh-mobile__social-btn" aria-label="Facebook">
+                        <img src="../assets/images/facebook-icon.webp" alt="Facebook" class="sh-mobile__social-img" loading="lazy">
+                    </a>
+                                                            <a href="https://www.youtube.com/@saigonhoreca" target="_blank" rel="noopener noreferrer" class="sh-mobile__social-btn" aria-label="YouTube">
+                        <img src="../assets/images/youtube-icon.webp" alt="YouTube" class="sh-mobile__social-img" loading="lazy">
+                    </a>
+                                                            <a href="https://zalo.me/0901304365" target="_blank" rel="noopener noreferrer" class="sh-mobile__social-btn" aria-label="Zalo">
+                        <img src="../assets/images/zalo-icon.webp" alt="Zalo" class="sh-mobile__social-img" loading="lazy">
+                    </a>
+                                    </div>
+            </div>
+
+            <div class="sh-mobile__copyright">
+                &copy; 2026 SAIGON HORECA.            </div>
+        </div>
+    </div>
+</template>
+    <div class="sh-footer__container">
+
+        <!-- Legacy mode: 3-column hardcoded grid -->
+        <div class="sh-footer__grid">
+            <div class="sh-footer__company">
+    <div class="sh-footer__logo-wrap">
+        <img src="../assets/images/apple-touch-icon.png" alt="SAIGON HORECA" width="48" height="48" class="sh-footer__logo-img" loading="lazy">
+        <span class="sh-footer__company-name">CÔNG TY TNHH SÀI GÒN HORECA</span>
+    </div>
+        <p class="sh-footer__company-desc">Saigon Horeca cung cấp đa dạng các sản phẩm thiết bị bếp công nghiệp và thiết bị quầy bar phục vụ cho khách hàng trong lĩnh vực F&amp;B, bao gồm tư vấn thiết kế, thi công lắp đặt, cung cấp thiết bị, và tư vấn vận hành kinh doanh.</p>
+        <div class="sh-footer__socials">
+                <a href="https://www.facebook.com/saigonhoreca" target="_blank" rel="noopener noreferrer" class="sh-footer__social-btn" aria-label="Facebook">
+            <img src="../assets/images/facebook-icon.webp" alt="Social" class="sh-footer__social-img" loading="lazy">
+        </a>
+                        <a href="https://zalo.me/0901304365" target="_blank" rel="noopener noreferrer" class="sh-footer__social-btn" aria-label="Zalo">
+            <img src="../assets/images/zalo-icon.webp" alt="Social" class="sh-footer__social-img" loading="lazy">
+        </a>
+                        <a href="https://www.youtube.com/@saigonhoreca" target="_blank" rel="noopener noreferrer" class="sh-footer__social-btn" aria-label="YouTube">
+            <img src="../assets/images/youtube-icon.webp" alt="Social" class="sh-footer__social-img" loading="lazy">
+        </a>
+            </div>
+</div>
+            
+<!-- Services -->
+<div class="sh-footer__links-col">
+    <h3 class="sh-footer__heading">Dịch Vụ</h3>
+    <ul class="sh-footer__link-list">
+                <li><a href="https://saigonhoreca.local/danh-muc-san-pham/thiet-bi-bep-cong-nghiep/" class="sh-footer__link">Thiết bị bếp công nghiệp</a></li>
+                <li><a href="https://saigonhoreca.local/danh-muc-san-pham/thiet-bi-quay-bar-cafe/" class="sh-footer__link">Thiết bị quầy bar cafe</a></li>
+                <li><a href="https://saigonhoreca.local/danh-muc-san-pham/thiet-bi-lanh-cong-nghiep/" class="sh-footer__link">Thiết bị lạnh công nghiệp</a></li>
+                <li><a href="https://saigonhoreca.local/danh-muc-san-pham/he-thong-hut-khoi/" class="sh-footer__link">Hệ thống hút khói</a></li>
+                <li><a href="https://saigonhoreca.local/danh-muc-san-pham/may-rua-ly-chen/" class="sh-footer__link">Máy rửa ly chén</a></li>
+            </ul>
+</div>
+
+<!-- Support -->
+<div class="sh-footer__links-col">
+    <h3 class="sh-footer__heading">Hỗ Trợ</h3>
+    <ul class="sh-footer__link-list">
+                <li><a href="https://saigonhoreca.local/ve-saigon-horeca/" class="sh-footer__link">Về Saigon Horeca</a></li>
+                <li><a href="https://saigonhoreca.local/du-an/" class="sh-footer__link">Dự án tiêu biểu</a></li>
+                <li><a href="https://saigonhoreca.local/san-pham/" class="sh-footer__link">Sản phẩm</a></li>
+                <li><a href="https://saigonhoreca.local/tin-tuc/" class="sh-footer__link">Tin tức &amp; sự kiện</a></li>
+                <li><a href="https://saigonhoreca.local/lien-he/" class="sh-footer__link">Liên hệ tư vấn</a></li>
+            </ul>
+</div>
+            <div class="sh-footer__contact">
+    <h3 class="sh-footer__heading sh-footer__heading--accent">LIÊN HỆ</h3>
+    <ul class="sh-footer__contact-list">
+                <li class="sh-footer__contact-item">
+            <div class="sh-footer__contact-icon"><svg xmlns="http://www.w3.org/2000/svg" class="sh-footer__icon-svg" width="1.25rem" height="1.25rem"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div>
+                <strong class="sh-footer__contact-name">Trụ sở TP. Hồ Chí Minh</strong>
+                <span class="sh-footer__contact-detail">Số 40 Đường Số 6, Khu Dân Cư Melosa Khang Điền, Phường Long Trường, TP. Hồ Chí Minh</span>
+            </div>
+        </li>
+        
+                <li class="sh-footer__contact-item">
+            <div class="sh-footer__contact-icon"><svg xmlns="http://www.w3.org/2000/svg" class="sh-footer__icon-svg" width="1.25rem" height="1.25rem"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+            <div>
+                <span class="sh-footer__contact-detail">Hotline: <strong class="sh-footer__contact-highlight">0901 304 365</strong></span>
+                                <span class="sh-footer__contact-sub">Tel: 0909 040 920</span>
+                            </div>
+        </li>
+        
+                <li class="sh-footer__contact-item">
+            <div class="sh-footer__contact-icon"><svg xmlns="http://www.w3.org/2000/svg" class="sh-footer__icon-svg" width="1.25rem" height="1.25rem"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
+            <div>
+                <a href="mailto:contact@saigonhoreca.com" class="sh-footer__contact-link">contact@saigonhoreca.com</a>
+                                <a href="mailto:admin@saigonhoreca.com" class="sh-footer__contact-sub-link">admin@saigonhoreca.com</a>
+                            </div>
+        </li>
+        
+                <li class="sh-footer__contact-item">
+            <div class="sh-footer__contact-icon"><svg xmlns="http://www.w3.org/2000/svg" class="sh-footer__icon-svg" width="1.25rem" height="1.25rem"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/></svg></div>
+            <div>
+                <a href="https://saigonhoreca.vn" class="sh-footer__contact-link">https://saigonhoreca.vn</a>
+                            </div>
+        </li>
+            </ul>
+</div>
+        </div>
+
+        <div class="sh-footer__copyright">
+    <p>&copy; 2026 SAIGON HORECA. All rights reserved.</p>
+</div>
+    </div>
+</footer>
+
+<!-- Bottom Mobile Nav (visible < 768px only) -->
+<nav id="sh-mobile-nav" class="md:hidden" aria-label="Mobile navigation">
+    <div class="sh-mnav">
+                <a href="https://saigonhoreca.local/" class="sh-mnav-item " >
+            <svg class="sh-mnav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1"/>
+            </svg>
+            <span class="sh-mnav-label">Trang chủ</span>
+        </a>
+                <a href="https://saigonhoreca.local/du-an/" class="sh-mnav-item sh-mnav-active" aria-current="page">
+            <svg class="sh-mnav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 7a2 2 0 012-2h3l2 2h7a2 2 0 012 2v8a2 2 0 01-2 2H6a2 2 0 01-2-2V7zm4 6h8m-8 3h5"/>
+            </svg>
+            <span class="sh-mnav-label">Dự Án</span>
+        </a>
+                <a href="https://saigonhoreca.local/san-pham/" class="sh-mnav-item " >
+            <svg class="sh-mnav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+            </svg>
+            <span class="sh-mnav-label">Sản Phẩm</span>
+        </a>
+                <a href="https://saigonhoreca.local/tin-tuc/" class="sh-mnav-item " >
+            <svg class="sh-mnav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/>
+            </svg>
+            <span class="sh-mnav-label">Tin Tức</span>
+        </a>
+                <a href="https://saigonhoreca.local/lien-he/" class="sh-mnav-item " >
+            <svg class="sh-mnav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+            </svg>
+            <span class="sh-mnav-label">Liên hệ</span>
+        </a>
+            </div>
+</nav>
+<div id="sh-floating-buttons">
+    <a href="#" id="back-to-top" aria-label="Cuộn lên đầu trang" role="button">
+        <svg class="sh-scroll-ring" viewBox="0 0 36 36">
+            <path class="sh-scroll-track" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+            <path id="scroll-progress-circle" class="sh-scroll-progress" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+        </svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary" style="position:relative; z-index:1;"><path d="m18 15-6-6-6 6"/></svg>
+    </a>
+
+        <a href="tel:0901304365" class="sh-phone-float" aria-label="Gọi hotline 0901 304 365" data-gtm-click="click_phone" data-gtm-location="floating_button">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    </a>
+    
+        <a href="https://zalo.me/0901304365" target="_blank" rel="noopener noreferrer" class="sh-zalo-btn" aria-label="Chat qua Zalo" data-gtm-click="click_zalo" data-gtm-location="floating_button">
+        <img src="../assets/images/zalo-icon.webp" alt="Chat Zalo" class="sh-zalo-btn__img" loading="lazy" decoding="async" width="56" height="56">
+    </a>
+    
+        <a href="https://www.facebook.com/saigonhoreca" target="_blank" rel="noopener noreferrer" class="sh-fb-btn" aria-label="Theo dõi Facebook" data-gtm-click="click_facebook" data-gtm-location="floating_button">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+        </svg>
+    </a>
+    </div>
+
+<script>
+(function () {
+    var el = document.getElementById('sh-floating-buttons');
+    if (!el) return;
+
+    var STORE_KEY = 'sh_fab_pos';
+    var DRAG_THRESHOLD = 6;
+    var EDGE_MARGIN = 12;
+    var SNAP_SPEED = 280;
+    var MOBILE_BREAKPOINT = 768;
+    var MOBILE_NAV_HEIGHT = 60;
+    var FAB_TO_NAV_GAP = 5;
+    var HEADER_RESERVE = 16;
+
+    var isDragging = false;
+    var wasDragged = false;
+    var startX;
+    var startY;
+    var startLeft;
+    var startTop;
+    var lastTap = 0;
+    var lastViewportWasMobile = null;
+
+    var mql = window.matchMedia('(max-width: ' + (MOBILE_BREAKPOINT - 1) + 'px)');
+    function isMobile() {
+        return mql.matches;
+    }
+
+    function getBounds() {
+        var bottomReserve = isMobile()
+            ? (MOBILE_NAV_HEIGHT + FAB_TO_NAV_GAP)
+            : EDGE_MARGIN;
+
+        return {
+            minX: EDGE_MARGIN,
+            minY: HEADER_RESERVE,
+            maxX: Math.max(EDGE_MARGIN, window.innerWidth - el.offsetWidth - EDGE_MARGIN),
+            maxY: Math.max(HEADER_RESERVE, window.innerHeight - el.offsetHeight - bottomReserve)
+        };
+    }
+
+    function clampToBounds(x, y) {
+        var bounds = getBounds();
+        return {
+            x: Math.min(Math.max(x, bounds.minX), bounds.maxX),
+            y: Math.min(Math.max(y, bounds.minY), bounds.maxY)
+        };
+    }
+
+    function resetToDefault() {
+        el.style.transition = '';
+        el.style.left = '';
+        el.style.top = '';
+        el.style.bottom = '';
+        el.style.right = '';
+        el.style.position = '';
+    }
+
+    function applyPosition(x, y, animate) {
+        var clamped = clampToBounds(x, y);
+        el.style.position = 'fixed';
+        el.style.bottom = 'auto';
+        el.style.right = 'auto';
+        el.style.left = clamped.x + 'px';
+        el.style.top = clamped.y + 'px';
+        el.style.transition = animate
+            ? 'left ' + SNAP_SPEED + 'ms cubic-bezier(0.25, 0.46, 0.45, 0.94), top ' + SNAP_SPEED + 'ms cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+            : 'none';
+    }
+
+    function savePosition() {
+        try {
+            localStorage.setItem(STORE_KEY, JSON.stringify({
+                x: parseInt(el.style.left, 10),
+                y: parseInt(el.style.top, 10)
+            }));
+        } catch (e) {}
+    }
+
+    function snapToEdge() {
+        var rect = el.getBoundingClientRect();
+        var centerX = rect.left + (rect.width / 2);
+        var bounds = getBounds();
+        var snapX = centerX < (window.innerWidth / 2) ? bounds.minX : bounds.maxX;
+        var rawY = parseInt(el.style.top, 10) || rect.top;
+        var snapY = Math.min(Math.max(rawY, bounds.minY), bounds.maxY);
+
+        applyPosition(snapX, snapY, true);
+        setTimeout(savePosition, SNAP_SPEED + 50);
+    }
+
+    function restorePosition() {
+        try {
+            if (lastViewportWasMobile === null) {
+                lastViewportWasMobile = isMobile();
+            }
+            var saved = JSON.parse(localStorage.getItem(STORE_KEY));
+            if (!saved) return;
+
+            applyPosition(saved.x, saved.y, false);
+            if (saved.x !== clampToBounds(saved.x, saved.y).x) {
+                snapToEdge();
+            }
+        } catch (e) {}
+    }
+
+    el.addEventListener('mousedown', function (e) {
+        if (e.target.closest('a, button')) {
+            startX = e.clientX;
+            startY = e.clientY;
+        }
+
+        var rect = el.getBoundingClientRect();
+        isDragging = true;
+        wasDragged = false;
+        startX = e.clientX;
+        startY = e.clientY;
+        startLeft = rect.left;
+        startTop = rect.top;
+        el.style.transition = 'none';
+        el.classList.add('sh-fab-dragging');
+        e.preventDefault();
+    });
+
+    document.addEventListener('mousemove', function (e) {
+        if (!isDragging) return;
+
+        var dx = e.clientX - startX;
+        var dy = e.clientY - startY;
+        if (!wasDragged && Math.abs(dx) + Math.abs(dy) < DRAG_THRESHOLD) return;
+
+        wasDragged = true;
+        applyPosition(startLeft + dx, startTop + dy, false);
+    });
+
+    document.addEventListener('mouseup', function () {
+        if (!isDragging) return;
+
+        isDragging = false;
+        el.classList.remove('sh-fab-dragging');
+        if (wasDragged) {
+            snapToEdge();
+        }
+    });
+
+    el.addEventListener('touchstart', function (e) {
+        var touch = e.touches[0];
+        var rect = el.getBoundingClientRect();
+        isDragging = true;
+        wasDragged = false;
+        startX = touch.clientX;
+        startY = touch.clientY;
+        startLeft = rect.left;
+        startTop = rect.top;
+        el.style.transition = 'none';
+        el.classList.add('sh-fab-dragging');
+    }, { passive: true });
+
+    document.addEventListener('touchmove', function (e) {
+        if (!isDragging) return;
+
+        var touch = e.touches[0];
+        var dx = touch.clientX - startX;
+        var dy = touch.clientY - startY;
+        if (!wasDragged && Math.abs(dx) + Math.abs(dy) < DRAG_THRESHOLD) return;
+
+        wasDragged = true;
+        e.preventDefault();
+        applyPosition(startLeft + dx, startTop + dy, false);
+    }, { passive: false });
+
+    document.addEventListener('touchend', function () {
+        if (!isDragging) return;
+
+        isDragging = false;
+        el.classList.remove('sh-fab-dragging');
+        if (wasDragged) {
+            snapToEdge();
+        }
+    });
+
+    el.addEventListener('click', function (e) {
+        if (wasDragged) {
+            e.preventDefault();
+            e.stopPropagation();
+            wasDragged = false;
+        }
+    }, true);
+
+    el.addEventListener('click', function () {
+        var now = Date.now();
+        if (now - lastTap < 350) {
+            localStorage.removeItem(STORE_KEY);
+            el.style.transition = 'all ' + SNAP_SPEED + 'ms ease';
+            resetToDefault();
+            setTimeout(function () {
+                el.style.transition = '';
+            }, SNAP_SPEED);
+        }
+        lastTap = now;
+    });
+
+    var resizeTimeout;
+    window.addEventListener('resize', function () {
+        if (resizeTimeout) clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(function () {
+            var viewportIsMobile = isMobile();
+            if (lastViewportWasMobile === null) {
+                lastViewportWasMobile = viewportIsMobile;
+            }
+
+            if (!el.style.left) {
+                lastViewportWasMobile = viewportIsMobile;
+                return;
+            }
+
+            if (viewportIsMobile !== lastViewportWasMobile) {
+                lastViewportWasMobile = viewportIsMobile;
+                snapToEdge();
+                return;
+            }
+
+            var x = parseInt(el.style.left, 10);
+            var y = parseInt(el.style.top, 10);
+            var clamped = clampToBounds(x, y);
+            applyPosition(clamped.x, clamped.y, true);
+            setTimeout(savePosition, SNAP_SPEED + 50);
+        }, 100);
+    });
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function () {
+            setTimeout(restorePosition, 150);
+        });
+    } else {
+        setTimeout(restorePosition, 150);
+    }
+})();
+</script>
+
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/saigonhoreca-theme/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script>
+function sghToggleFav(btn, id) {
+    var favs = JSON.parse(localStorage.getItem('sgh_favorites') || '[]');
+    var idx  = favs.indexOf(id);
+    if (idx === -1) { favs.push(id); btn.textContent = '❤'; btn.style.transform='scale(1.3)'; }
+    else            { favs.splice(idx, 1); btn.textContent = '♡'; btn.style.transform='scale(1)'; }
+    localStorage.setItem('sgh_favorites', JSON.stringify(favs));
+    setTimeout(function(){ btn.style.transform='scale(1)'; }, 300);
+}
+</script>
+<script>
+(function(){
+    // Newsletter form
+    document.querySelectorAll('.sgh-newsletter-form').forEach(function(form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            var email = form.querySelector('[name=email]').value;
+            var msgEl = form.closest('.sgh-newsletter').querySelector('.sgh-newsletter-msg');
+            msgEl.textContent = 'Đang xử lý...';
+            fetch('https://saigonhoreca.local/wp-admin/admin-ajax.php', {
+                method:'POST',
+                headers:{'Content-Type':'application/x-www-form-urlencoded'},
+                body:'action=sgh_newsletter_subscribe&email=' + encodeURIComponent(email)
+            }).then(r=>r.json()).then(function(res){
+                msgEl.textContent = res.data?.message || (res.success ? 'Thành công!' : 'Lỗi.');
+            });
+        });
+    });
+
+    // Warranty form
+    var wForm = document.getElementById('sgh-warranty');
+    if (wForm) {
+        wForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            var data = new FormData(wForm);
+            data.append('action', 'sgh_warranty_register');
+            var msgEl = wForm.querySelector('.sgh-warranty-msg');
+            msgEl.textContent = 'Đang gửi...';
+            fetch('https://saigonhoreca.local/wp-admin/admin-ajax.php', { method:'POST', body: new URLSearchParams(data) })
+                .then(r=>r.json()).then(function(res){
+                    msgEl.textContent = res.data?.message || (res.success ? 'Thành công!' : 'Lỗi.');
+                    if (res.success) wForm.reset();
+                });
+        });
+    }
+})();
+</script>
+<script id="main-modern-js-extra">
+var SH_DATA = {"ajax_url":"https://saigonhoreca.local/wp-admin/admin-ajax.php","home_url":"https://saigonhoreca.local","theme_uri":"https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme","nonce":"837fc4a973","rest_nonce":"68e9161f8c","is_admin":""};
+//# sourceURL=main-modern-js-extra
+</script>
+<script id="main-modern-js" defer src="../assets/js/dist/main-modern.js?ver=1779120520"></script>
+<script id="theme-toggle-js" defer src="../assets/js/dist/theme-toggle.js?ver=1779120520"></script>
+<script id="sh-gtm-lazy-js-before">
+window.SH_GTM={"id":"GTM-PVSPDW5B","defer":true,"timeoutMs":3500};
+//# sourceURL=sh-gtm-lazy-js-before
+</script>
+<script id="sh-gtm-lazy-js" defer src="../assets/js/dist/gtm-lazy.js?ver=1779120520"></script>
+</body>
+</html>

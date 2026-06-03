@@ -1,1 +1,162 @@
-/** roka-fella-tinh-hoa-am-thuc-nhat-ban — hero slot (no content). */
+/**
+ * Project Pillar — Roka Fella
+ * Section #1: hero styling
+ */
+
+.pp-hero-rkf {
+  position: relative;
+  /* Fill full viewport area below sticky header (76px). */
+  height: calc(100svh - 76px);
+  min-height: 620px;
+  max-height: none;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: var(--b1);
+  text-align: center;
+}
+
+@supports (height: 100dvh) {
+  .pp-hero-rkf {
+    height: calc(100dvh - 76px);
+  }
+}
+
+.pp-hero-rkf__media {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 1;
+  animation: rkf-ken-burns var(--sh-ken-burns-duration, 8s) ease-in-out infinite alternate;
+}
+
+.pp-hero-rkf__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 10, 10, 0.3) 0%,
+    rgba(10, 10, 10, 0.7) 70%,
+    var(--b1) 100%
+  );
+  z-index: 2;
+}
+
+.pp-hero-rkf__content {
+  position: relative;
+  z-index: 3;
+  padding: 0 1.5rem;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.pp-hero-rkf__star {
+  width: 2.5rem;
+  height: 2.5rem;
+  color: var(--gold);
+  filter: drop-shadow(0 0 12px color-mix(in srgb, var(--gold) 60%, transparent));
+  margin-bottom: 0.5rem;
+  animation: rkf-star-pulse 3s ease-in-out infinite alternate;
+}
+
+.pp-hero-rkf__star svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.pp-hero-rkf__subtitle {
+  font-family: var(--font-mono);
+  font-size: clamp(0.75rem, 1.5vw, 0.95rem);
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: color-mix(in srgb, var(--bc) 70%, transparent);
+}
+
+.pp-hero-rkf__title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--bc);
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.pp-hero-rkf__title-sub {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.2rem, 2.5vw, 1.85rem);
+  font-weight: 400;
+  color: var(--gold);
+  letter-spacing: normal;
+  text-transform: none;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
+}
+
+.pp-hero-rkf__divider {
+  width: 80px;
+  height: 2px;
+  background: var(--gold);
+  margin-top: 1rem;
+  position: relative;
+  box-shadow: 0 0 12px var(--gold);
+}
+
+.pp-hero-rkf__divider::before,
+.pp-hero-rkf__divider::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+
+.pp-hero-rkf__divider::before {
+  left: -12px;
+}
+
+.pp-hero-rkf__divider::after {
+  right: -12px;
+}
+
+/* Animations */
+@keyframes rkf-ken-burns {
+  0% {
+    transform: scale(var(--sh-ken-burns-scale-start, 1));
+  }
+  100% {
+    transform: scale(var(--sh-ken-burns-scale-end, 1.08));
+  }
+}
+
+@keyframes rkf-star-pulse {
+  0% {
+    transform: scale(0.92) rotate(0deg);
+    filter: drop-shadow(0 0 8px color-mix(in srgb, var(--gold) 40%, transparent));
+  }
+  100% {
+    transform: scale(1.08) rotate(15deg);
+    filter: drop-shadow(0 0 16px color-mix(in srgb, var(--gold) 85%, transparent));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pp-hero-rkf__media,
+  .pp-hero-rkf__star {
+    animation: none !important;
+  }
+}

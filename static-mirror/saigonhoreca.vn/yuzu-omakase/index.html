@@ -1,0 +1,467 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+<!DOCTYPE html>
+<html lang="vi" prefix="og: https://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Resource Hints -->
+    <link rel="dns-prefetch" href="https://img.youtube.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Favicons & Manifest -->
+    <link rel="icon" type="image/x-icon" href="https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/assets/images/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/assets/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/assets/images/favicon-16x16.png">
+    <link rel="manifest" href="https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/manifest.json">
+    
+    <style id="sgh-critical">*,:before,:after{box-sizing:border-box}html,body{margin:0;padding:0}body{font-family:Be Vietnam Pro,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.5;color:#fff;background:#0a0a0a;-webkit-font-smoothing:antialiased}h1,h2,h3,h4,h5,h6{margin:0;font-weight:700;color:#fff}img,svg,video{display:block;max-width:100%;height:auto}a{color:inherit;text-decoration:none}button{border:0;cursor:pointer;font:inherit;background:transparent}.sh-skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;background:#f5a623;color:#fff;padding:.5rem 1rem;z-index:100}.sh-skip-link:focus{left:16px;top:16px;width:auto;height:auto}.sh-header{position:sticky;top:0;z-index:50;width:100%;background:#000;border-bottom:1px solid rgba(255,255,255,0.06)}.sh-header__bar{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;padding:.75rem 1.25rem;min-height:76px;color:#fff}.sh-header__actions{display:flex;gap:.75rem;align-items:center}.sh-nav{display:none;position:relative;z-index:10;justify-content:center;align-items:center;overflow:visible;max-width:100%}@media(min-width:1024px){.sh-nav{display:flex}}.sh-nav__list{display:flex;flex-wrap:nowrap;justify-content:center;align-items:center;gap:.25rem;margin:0;padding:0;list-style:none}@media(min-width:1024px){.sh-nav__list{gap:.5rem}}@media(min-width:1280px){.sh-nav__list{gap:1rem}}.sh-nav-item{display:flex;align-items:center;height:100%;position:relative}.sh-nav-item__link{display:inline-flex;align-items:center;gap:.375rem;padding:1.5rem .875rem;font-size:clamp(11px,.9vw,13px);font-weight:700;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;color:rgba(255,255,255,0.88);text-decoration:none}.sh-nav-item__chevron{display:inline-flex;margin-left:.25rem}.sh-nav-item__chevron-icon{display:block;width:.75rem;height:.75rem;opacity:.7}.sh-hero{position:relative;width:100%;aspect-ratio:16/9;background:#000;overflow:hidden}.sh-hero__slider{position:relative;width:100%;height:100%;background:#000}.sh-hero__slides{position:relative;width:100%;height:100%}.carousel-slide{position:absolute;inset:0;width:100%;height:100%;display:none;background:#000}.carousel-slide.active{display:block;z-index:20;opacity:1}.sh-hero__bg-img,.carousel-slide .slide-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;background:#000}.sh-hero__overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(0,0,0,0.55) 0%,rgba(0,0,0,0.30) 40%,rgba(0,0,0,0.15) 100%);pointer-events:none}.sgh-cv-auto{content-visibility:auto;contain-intrinsic-size:auto 600px}#sh-hero-slider .carousel-slide .slide-bg,#sh-hero-slider .carousel-slide .sh-hero__bg-img,.sh-hero__slider .carousel-slide .slide-bg,.sh-hero__slider .carousel-slide .sh-hero__bg-img{animation:none!important;transform:none!important}.sh-hero__nav{position:absolute;top:50%;transform:translateY(-50%);z-index:20;background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.3);color:#fff;width:2.75rem;height:2.75rem;border-radius:9999px;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:.8}.sh-hero__nav--prev{left:1rem}.sh-hero__nav--next{right:1rem}@media(min-width:768px){.sh-hero__nav{width:3.5rem;height:3.5rem}.sh-hero__nav--prev{left:2rem}.sh-hero__nav--next{right:2rem}}.sh-hero__dots{position:absolute;bottom:2rem;right:2rem;z-index:20;display:flex;gap:.5rem}.sh-hero__dot,.carousel-dot{width:.5rem;height:.5rem;padding:0;border:none;border-radius:9999px;background:rgba(255,255,255,0.4);cursor:pointer}.sh-hero__dot.active,.carousel-dot.active{width:2rem;background:#f5a623}
+/* Per-route critical CSS â€” Saigon Horeca.
+ *
+ * Inlined by critical-css.php (concatenated after critical.css). Covers
+ * above-fold styles for routes where the route-bundle CSS round-trip
+ * would otherwise gate the LCP paint.
+ */
+
+/* â”€â”€ /du-an/ archive hero â€” kill 1.2 s opacity-fade-in for LCP slide â”€â”€
+ *
+ * The bg-stack has 6 absolute-positioned <div> slides; slide 0 has
+ * `.is-active` server-side but the route bundle animates opacity
+ * 0 â†’ 1 over 1.2 s. Lighthouse Mobile baseline: P=75, LCP=7.9 s with
+ * 88 % render-delay because LCP element waits for opacity:1.
+ *
+ * Inlining paints the active slide at opacity:1 immediately on first
+ * HTML parse â€” no waiting for theme-archive-project.css to arrive.
+ * Carousel JS still toggles `is-active` to cycle slides; subsequent
+ * transitions still animate after the first paint completes.
+ */
+.sh-archive-hero {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: #000;
+    overflow: hidden;
+}
+.sh-archive-hero__bg-stack {
+    position: absolute;
+    inset: 0;
+}
+.sh-archive-hero__bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+}
+.sh-archive-hero__bg.is-active {
+    opacity: 1;
+}
+
+/* â”€â”€ /ve-saigon-horeca/ (page-gioi-thieu template) about hero â”€â”€
+ * Same opacity-fade trap. Force opacity:1 on first paint. */
+.sh-about-hero {
+    position: relative;
+    width: 100%;
+    min-height: 520px;
+    background: #000;
+    overflow: hidden;
+}
+@media (max-width: 640px) {
+    .sh-about-hero { min-height: 380px; }
+}
+.sh-about-hero__bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 1;
+}
+</style>
+        <title>Yuzu Omakase &#8211; Saigon Horeca</title>
+<meta name='robots' content='max-image-preview:large' />
+<meta name="description" content="BÆ°á»›c vÃ o tháº¿ giá»›i cá»§a Bambino Superclub, nÆ¡i Ä‘iá»u bÃ¬nh thÆ°á»ng trá»Ÿ nÃªn â€“ GiÃ¡ tá»‘t, báº£o hÃ nh chÃ­nh hÃ£ng â€“ Hotline: 0901 304 365">
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//www.googletagmanager.com' />
+<link rel='dns-prefetch' href='//www.google-analytics.com' />
+<link rel='dns-prefetch' href='//zalo.me' />
+<link rel='dns-prefetch' href='//www.facebook.com' />
+<link rel='dns-prefetch' href='//www.youtube.com' />
+<link rel="preload" as="style" href="https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/assets/css/dist/theme-project.css?ver=1780244331">
+    <script>
+    (function(){
+        // Always load tracking â€” cookie consent is cosmetic only
+        function afterConsent(cb) {
+            try {
+                if (localStorage.getItem('sh_cookies_accepted') === '1') {
+                    cb();
+                    return;
+                }
+            } catch (e) {}
+            window.addEventListener('sh:cookies-accepted', cb, { once: true });
+        }
+        afterConsent(function(){
+                        });
+    })();
+    </script>
+    <style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+
+
+<link rel='stylesheet' id='theme-tokens-css' href='https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/assets/css/dist/theme-project.css?ver=1780244331' media='all' />
+<style id="theme-tokens-inline-css">
+
+        :root {
+            --font-body: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            --font-heading: "Lexend", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            --font-serif: "Lora", Georgia, serif;
+            --ast-global-color-0: #f9c349;
+            --ast-global-color-1: #ffb100;
+            --ast-global-color-2: #000000;
+            --ast-global-color-3: #242525;
+            --ast-global-color-4: #f9fafb;
+            --ast-global-color-5: #ffffff;
+            --ast-global-color-6: #e2e8f0;
+            --ast-global-color-7: #cbd5e1;
+            --ast-global-color-8: #94a3b8;
+            --e-global-color-astglobalcolor0: #f9c349;
+            --e-global-color-astglobalcolor1: #ffb100;
+            --e-global-color-astglobalcolor2: #000000;
+            --e-global-color-astglobalcolor3: #242525;
+            --e-global-color-astglobalcolor4: #f9fafb;
+            --e-global-color-astglobalcolor5: #ffffff;
+            --e-global-color-astglobalcolor6: #e2e8f0;
+            --e-global-color-astglobalcolor7: #cbd5e1;
+            --e-global-color-astglobalcolor8: #94a3b8;
+        }
+        body { font-family: var(--font-body); }
+        h1, h2, h3, h4, h5, h6, .font-sans { font-family: var(--font-heading) !important; }
+        .e-font-icon-svg { display: inline-block; width: 1em; height: 1em; fill: currentColor; }
+
+        /* ROKA FELLA CAPTION & LAYOUT ENHANCEMENTS */
+        .pp-image-container-rf {
+            position: relative !important;
+            overflow: hidden !important;
+        }
+        .pp-image-caption-rf {
+            position: absolute !important;
+            bottom: 0.75rem !important;
+            left: 0.75rem !important;
+            z-index: 5 !important;
+            padding: 0.4rem 0.85rem !important;
+            background: rgba(10, 10, 10, 0.85) !important;
+            border: 1px solid rgba(255, 255, 255, 0.12) !important;
+            border-radius: 6px !important;
+            font-family: var(--font-heading), sans-serif !important;
+            font-size: 0.68rem !important;
+            font-weight: 700 !important;
+            letter-spacing: 0.05em !important;
+            color: var(--gold) !important;
+            backdrop-filter: blur(8px) !important;
+            -webkit-backdrop-filter: blur(8px) !important;
+            pointer-events: none !important;
+            opacity: 0.85 !important;
+            transition: opacity 0.3s ease, transform 0.3s ease !important;
+            width: auto !important;
+            max-width: calc(100% - 1.5rem) !important;
+            text-align: left !important;
+            display: inline-block !important;
+            border-top: none !important;
+        }
+        .pp-image-container-rf:hover .pp-image-caption-rf {
+            opacity: 1 !important;
+            transform: translateY(-2px) !important;
+        }
+        .pp-image-container-rf img {
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        }
+        .pp-image-container-rf:hover img {
+            transform: scale(1.04) !important;
+            filter: grayscale(0%) contrast(1.05) brightness(1.02) !important;
+        }
+        /* Premium Cards styling */
+        .rkf-concept__glass-card,
+        .rkf-specs__glass-card {
+            background: linear-gradient(135deg, rgba(12, 14, 20, 0.92) 0%, rgba(6, 7, 10, 0.97) 100%) !important;
+            border: 1px solid rgba(245, 166, 35, 0.18) !important;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), inset 0 0 35px rgba(245, 166, 35, 0.04) !important;
+        }
+        .rkf-concept__glass-card:hover,
+        .rkf-specs__glass-card:hover {
+            border-color: rgba(245, 166, 35, 0.45) !important;
+            box-shadow: 0 35px 70px rgba(0, 0, 0, 0.92), 0 0 35px rgba(245, 166, 35, 0.1) !important;
+        }
+        .rkf-partnership__glass-card,
+        .rkf-related__glass-card {
+            background: linear-gradient(135deg, rgba(12, 14, 20, 0.92) 0%, rgba(6, 7, 10, 0.97) 100%) !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.85) !important;
+        }
+        .rkf-partnership__glass-card:hover,
+        .rkf-related__glass-card:hover {
+            border-color: rgba(255, 255, 255, 0.15) !important;
+            box-shadow: 0 35px 70px rgba(0, 0, 0, 0.95) !important;
+        }
+        /* Staggered floaters adjustment */
+        .rkf-partnership__image-container--floating {
+            box-shadow: -20px 20px 50px rgba(0, 0, 0, 0.9), 0 0 30px rgba(245, 166, 35, 0.15) !important;
+            transform: rotate(3deg) translateY(0) !important;
+        }
+        .rkf-partnership__side:hover .rkf-partnership__image-container--floating {
+            transform: scale(1.04) rotate(0deg) translateY(-10px) !important;
+        }
+    
+/*# sourceURL=theme-tokens-inline-css */
+</style>
+<link rel='preload' as='style' onload="this.onload=null;this.rel='stylesheet'" id='google-fonts-sgh-css' href='https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&#038;family=Lexend:wght@500;700&#038;family=Lora:ital,wght@0,400;0,500;0,700;1,400;1,700&#038;display=swap' media='all' />
+<link rel="https://api.w.org/" href="https://saigonhoreca.local/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://saigonhoreca.local/wp-json/wp/v2/project/697" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://saigonhoreca.local/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress 7.0" />
+<link rel="canonical" href="https://saigonhoreca.local/du-an/yuzu-omakase/" />
+<link rel='shortlink' href='https://saigonhoreca.local/?p=697' />
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","@id":"https://saigonhoreca.local/#organization","name":"SAIGON HORECA","legalName":"CÃ”NG TY TNHH SÃ€I GÃ’N HORECA","url":"https://saigonhoreca.local/","description":"Saigon Horeca cung cáº¥p Ä‘a dáº¡ng cÃ¡c sáº£n pháº©m thiáº¿t bá»‹ báº¿p cÃ´ng nghiá»‡p vÃ  thiáº¿t bá»‹ quáº§y bar phá»¥c vá»¥ cho khÃ¡ch hÃ ng trong lÄ©nh vá»±c F&B, bao gá»“m tÆ° váº¥n thiáº¿t káº¿, thi cÃ´ng láº¯p Ä‘áº·t, cung cáº¥p thiáº¿t bá»‹, vÃ  tÆ° váº¥n váº­n hÃ nh kinh doanh.","telephone":"0901 304 365","email":"contact@saigonhoreca.com","address":{"@type":"PostalAddress","streetAddress":"Sá»‘ 40 ÄÆ°á»ng Sá»‘ 6, Khu DÃ¢n CÆ° Melosa Khang Äiá»n, PhÆ°á»ng Long TrÆ°á»ng, TP. Há»“ ChÃ­ Minh","addressLocality":"Há»“ ChÃ­ Minh","addressRegion":"Há»“ ChÃ­ Minh","addressCountry":"VN"},"logo":{"@type":"ImageObject","url":"https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/assets/images/logo.png"},"image":"https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/assets/images/logo.png","sameAs":["https://www.facebook.com/saigonhoreca","https://www.youtube.com/@saigonhoreca","https://zalo.me/0901304365"],"contactPoint":[{"@type":"ContactPoint","telephone":"0901 304 365","contactType":"sales","areaServed":"VN","availableLanguage":["Vietnamese","English"]},{"@type":"ContactPoint","telephone":"0909 040 920","contactType":"customer support","areaServed":"VN"}]}</script>
+
+<link rel="alternate" hreflang="vi" href="https://saigonhoreca.vn/du-an/yuzu-omakase/">
+<link rel="alternate" hreflang="en" href="https://saigonhoreca.com/projects/yuzu-omakase/">
+<link rel="alternate" hreflang="x-default" href="https://saigonhoreca.vn/du-an/yuzu-omakase/">
+
+    <!-- SEO Fallback: OpenGraph only (meta description is handled by
+         inc/core/seo-meta-description.php to guarantee 120-155 chars). -->
+            <meta property="og:title" content="Yuzu Omakase">
+        <meta property="og:description" content="BÆ°á»›c vÃ o tháº¿ giá»›i cá»§a Bambino Superclub, nÆ¡i Ä‘iá»u bÃ¬nh thÆ°á»ng trá»Ÿ nÃªn â€“ GiÃ¡ tá»‘t, báº£o hÃ nh chÃ­nh hÃ£ng â€“ Hotline: 0901 304 365">
+        <meta property="og:url" content="https://saigonhoreca.local/du-an/yuzu-omakase/">
+        <meta property="og:type" content="website">
+        <meta property="og:image" content="https://saigonhoreca.local/wp-content/uploads/saigonhoreca/the-royal-sgh-10.webp">
+        <meta property="og:site_name" content="Saigon Horeca">
+    
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Dark mode & Lighthouse Optimization: apply BEFORE paint to prevent flash & bypass animation delays -->
+    <script>
+    (function(){
+        // 1. Dark mode
+        var d = null;
+        try { d = localStorage.getItem('sh-dark'); } catch (e) {}
+        if (d === 'true') document.documentElement.classList.add('dark');
+    })();
+    </script>
+        </head></head>
+<body>
+<main id="primary" class="pp" tabindex="-1">
+    <section class="pp-hero-yzo">
+    <div class="pp-hero-yzo__media">
+        <video autoplay muted loop playsinline preload="metadata" aria-hidden="true" poster="">
+            <source src="https://www.yuzuomakase.com/wp-content/uploads/2023/11/Omkase_6.mp4" type="video/mp4">
+        </video>
+    </div>
+    <div class="pp-hero-yzo__overlay" aria-hidden="true"></div>
+    <div class="pp-hero-yzo__content">
+        <h1 class="pp-hero-yzo__title">Yuzu Omakase</h1>
+        <p class="pp-hero-yzo__subhead">Äá»©ng sá»‘ 1 trong Top 50 NhÃ  hÃ ng &amp; KhÃ¡ch sáº¡n hÃ ng Ä‘áº§u táº¡i ThÃ¡i Lan nÄƒm 2022</p>
+        <p class="pp-hero-yzo__subtitle">Yuzu Omakase, má»™t thiÃªn Ä‘Æ°á»ng áº©m thá»±c ná»•i tiáº¿ng vá»›i hÆ°Æ¡ng vá»‹ tinh táº¿ vÃ  khÃ´ng gian Äƒn uá»‘ng sÃ¡ng táº¡o, tá»± hÃ o lÃ  Ä‘á»‹a Ä‘iá»ƒm sá»‘ má»™t trong danh má»¥c &#039;Tá»‘t nháº¥t vá» Fine-dining/ BÃ n Äáº§u Báº¿p/ ThÆ°Æ¡ng Hiá»‡u Omakase&#039; theo cuá»™c bÃ¬nh chá»n nÄƒm 2022 cá»§a Hungry Hub.</p>
+    </div>
+</section>
+<section class="pp__section pp__section--alt pp-intro-yzo">
+  <div class="pp__container">
+    <div class="pp-intro-yzo__header">
+      <div class="pp-intro-yzo__title-block">
+        <span class="pp-text-yzo__divider" aria-hidden="true"></span>
+        <span class="pp-intro-yzo__eyebrow">Restaurant profile</span>
+        <h2 class="pp-text-yzo__title">Yuzu Omakase</h2>
+        <p class="pp-intro-yzo__lead">KhÃ´ng gian fine dining ná»•i báº­t táº¡i trung tÃ¢m TP.HCM, nÆ¡i tráº£i nghiá»‡m omakase Ä‘Ã²i há»i má»™t há»‡ báº¿p chÃ­nh xÃ¡c, sáº¡ch vÃ  váº­n hÃ nh á»•n Ä‘á»‹nh.</p>
+      </div>
+
+      <div class="pp-intro-yzo__story">
+        <p>Yuzu Omakase Vietnam táº¡i 34 Thá»§ Khoa HuÃ¢n lÃ  Ä‘iá»ƒm Ä‘áº¿n áº©m thá»±c mang tinh tháº§n Nháº­t hiá»‡n Ä‘áº¡i, Ä‘Æ°á»£c phÃ¡t triá»ƒn bá»Ÿi YUZU GROUP vÃ  gáº¯n vá»›i danh má»¥c fine dining Ä‘Æ°á»£c Hungry Hub ghi nháº­n táº¡i ThÃ¡i Lan.</p>
+        <p>Saigon Horeca Ä‘á»“ng hÃ nh trong viá»‡c tá»• chá»©c khÃ´ng gian báº¿p, lá»±a chá»n thiáº¿t bá»‹ thÃ©p khÃ´ng gá»‰ vÃ  tinh chá»‰nh luá»“ng váº­n hÃ nh Ä‘á»ƒ há»— trá»£ Ä‘áº§u báº¿p phá»¥c vá»¥ cÃ¡c tráº£i nghiá»‡m omakase cÃ³ nhá»‹p Ä‘á»™ cao.</p>
+      </div>
+    </div>
+
+    <div class="pp-intro-yzo__stats" aria-label="ThÃ´ng tin ná»•i báº­t">
+              <div class="pp-intro-yzo__stat">
+          <span>Xáº¿p háº¡ng</span>
+          <strong>Top 50 ThÃ¡i Lan</strong>
+        </div>
+              <div class="pp-intro-yzo__stat">
+          <span>MÃ´ hÃ¬nh</span>
+          <strong>Fine dining / Omakase</strong>
+        </div>
+              <div class="pp-intro-yzo__stat">
+          <span>Vai trÃ² SGH</span>
+          <strong>Thiáº¿t káº¿ &amp; thiáº¿t bá»‹ báº¿p</strong>
+        </div>
+          </div>
+
+    <div class="pp-intro-yzo__gallery" aria-label="HÃ¬nh áº£nh Yuzu Omakase">
+              <figure class="pp-intro-yzo__gallery-item pp-intro-yzo__gallery-item--large">
+          <img src="" alt="Khu vá»±c phá»¥c vá»¥ Yuzu Omakase" loading="lazy" decoding="async">
+        </figure>
+              <figure class="pp-intro-yzo__gallery-item ">
+          <img src="" alt="MÃ³n Äƒn táº¡i Yuzu Omakase" loading="lazy" decoding="async">
+        </figure>
+              <figure class="pp-intro-yzo__gallery-item ">
+          <img src="" alt="Chi tiáº¿t mÃ³n omakase" loading="lazy" decoding="async">
+        </figure>
+              <figure class="pp-intro-yzo__gallery-item ">
+          <img src="" alt="KhÃ´ng gian trÆ°ng bÃ y táº¡i Yuzu Omakase" loading="lazy" decoding="async">
+        </figure>
+              <figure class="pp-intro-yzo__gallery-item ">
+          <img src="" alt="Sáº£n pháº©m cao cáº¥p cá»§a Yuzu Omakase" loading="lazy" decoding="async">
+        </figure>
+              <figure class="pp-intro-yzo__gallery-item pp-intro-yzo__gallery-item--wide">
+          <img src="" alt="KhÃ´ng gian bÃ n Äƒn Yuzu Omakase" loading="lazy" decoding="async">
+        </figure>
+          </div>
+  </div>
+</section>
+<section class="pp__section pp__section--alt pp-concept-yzo">
+  <div class="pp__container">
+    <div class="pp-split-yzo pp-split-yzo--concept">
+      <div class="pp-split-yzo__body">
+        <span class="pp-concept-yzo__kicker">Design concept</span>
+        <span class="pp-text-yzo__divider" aria-hidden="true"></span>
+        <h2 class="pp-text-yzo__title">Ã tÆ°á»Ÿng thiáº¿t káº¿ cá»§a Yuzu Omakase</h2>
+        <div class="pp-text-yzo__body">
+          <p>Dá»±a vÃ o kinh nghiá»‡m cá»§a mÃ¬nh, Saigon Horeca Ä‘Ã£ trá»±c quan má»™t thiáº¿t káº¿ báº¿p cÃ´ng nghiá»‡p nháº±m tá»‘i Æ°u hÃ³a tÃ­nh chá»©c nÄƒng, hiá»‡u suáº¥t vÃ  tháº©m má»¹. Äiá»ƒm quan trá»ng Ä‘áº·t á»Ÿ viá»‡c Ä‘Ã¡p á»©ng cÃ¡c nhu cáº§u thá»±c táº¿ vÃ  biáº¿n khÃ´ng gian báº¿p thÃ nh má»™t nÆ¡i mÃ  sÃ¡ng táº¡o lÃ  yáº¿u tá»‘ hÃ ng Ä‘áº§u.</p>
+          <p>Thiáº¿t káº¿ tÃ­ch há»£p trang thiáº¿t bá»‹ báº¿p tá»« thÃ©p khÃ´ng gá»‰ tiÃªn tiáº¿n Ä‘Æ°á»£c tÃ¹y chá»‰nh phÃ¹ há»£p vá»›i phÆ°Æ¡ng phÃ¡p náº¥u áº©m thá»±c Ä‘áº·c biá»‡t vÃ  menu cá»§a Yuzu Omakase. Má»i khÃ­a cáº¡nh cá»§a bá»‘ trÃ­ báº¿p, tá»« sáº¯p xáº¿p cÃ¡c vá»‹ trÃ­ lÃ m viá»‡c Ä‘áº¿n viá»‡c láº¯p Ä‘áº·t cÃ¡c thiáº¿t bá»‹ chuyÃªn biá»‡t, Ä‘á»u Ä‘Æ°á»£c lÃªn káº¿ hoáº¡ch tá»‰ má»‰ Ä‘á»ƒ tÄƒng cÆ°á»ng quy trÃ¬nh lÃ m viá»‡c vÃ  tá»‘i Ä‘a hÃ³a nÄƒng suáº¥t.</p>
+        </div>
+        <div class="pp-concept-yzo__notes" aria-label="Äiá»ƒm nháº¥n thiáº¿t káº¿">
+          <span>Tá»‘i Æ°u line báº¿p</span>
+          <span>Thiáº¿t bá»‹ inox tÃ¹y chá»‰nh</span>
+          <span>Phá»¥c vá»¥ omakase chuáº©n nhá»‹p</span>
+        </div>
+      </div>
+      <div class="pp-split-yzo__media">
+        <div class="pp-concept-yzo__mask">
+          <img src="" alt="Thiáº¿t bá»‹ báº¿p cÃ´ng nghiá»‡p Saigon Horeca" loading="lazy" decoding="async" width="1366" height="768">
+          <div class="pp-concept-yzo__frame"></div>
+        </div>
+        <div class="pp-concept-yzo__caption">
+          <span>Yuzu Omakase</span>
+          <strong>KhÃ´ng gian báº¿p má»Ÿ</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="pp-section-bg-yzo" style="background-image:url('');">
+  <div class="pp-section-bg-yzo__overlay" aria-hidden="true"></div>
+  
+  <!-- Text Content (No frame, no background) -->
+  <div class="pp-section-bg-yzo__content">
+    <span class="pp-text-yzo__divider pp-text-yzo__divider--center" aria-hidden="true"></span>
+    <h2 class="pp-text-yzo__title">Sá»± há»£p tÃ¡c giá»¯a Yuzu Omakase vÃ  Saigon Horeca</h2>
+    <div class="pp-text-yzo__body">
+      <p>Giai Ä‘oáº¡n Ã½ tÆ°á»Ÿng ban Ä‘áº§u bao gá»“m cÃ¡c cuá»™c tháº£o luáº­n giá»¯a 2 bÃªn vÃ  phÃ¢n tÃ­ch Ä‘á»ƒ hiá»ƒu rÃµ vá» cÃ¡c yÃªu cáº§u cá»¥ thá»ƒ vÃ  nhu cáº§u váº­n hÃ nh cá»§a Yuzu Omakase. Äá»™i ngÅ© cá»§a Saigon Horeca Ä‘Ã£ há»£p tÃ¡c cháº·t cháº½ vá»›i cÃ¡c bÃªn liÃªn quan cá»§a Yuzu Omakase Ä‘á»ƒ náº¯m báº¯t giÃ¡ trá»‹ cá»‘t lÃµi, phong cÃ¡ch áº©m thá»±c, quy trÃ¬nh lÃ m viá»‡c vÃ  cÃ¡ch sá»­ dá»¥ng khÃ´ng gian cá»§a nhÃ  hÃ ng.</p>
+      <p>Vá»›i chuyÃªn mÃ´n vÃ  kinh nghiá»‡m cá»§a mÃ¬nh, Saigon Horeca Ä‘áº£m báº£o ráº±ng thiáº¿t káº¿ báº¿p tuÃ¢n thá»§ cÃ¡c tiÃªu chuáº©n vÃ  quy Ä‘á»‹nh ngÃ nh cÃ´ng nghiá»‡p Ä‘á»“ng thá»i táº¡o má»™t mÃ´i trÆ°á»ng khuyáº¿n khÃ­ch sÃ¡ng táº¡o áº©m thá»±c cho cÃ¡c Ä‘áº§u báº¿p. Sá»± chÃº Ã½ Ä‘áº¿n tá»«ng chi tiáº¿t cá»§a chÃºng tÃ´i bao gá»“m há»‡ thá»‘ng thÃ´ng giÃ³, giáº£i phÃ¡p lÆ°u trá»¯, xem xÃ©t vá» máº·t tiá»‡n nghi vÃ  tá»‘i Æ°u hÃ³a quy trÃ¬nh lÃ m viá»‡c, táº¡o ra khÃ´ng gian báº¿p vá»«a Ä‘Ã¡p á»©ng Ä‘á»§ chá»©c nÄƒng vá»«a gá»n gÃ ng, Ä‘áº¹p máº¯t.</p>
+      <p>Äáº·c biá»‡t ráº±ng, dá»‹ch vá»¥ tÆ° váº¥n vÃ  thiáº¿t káº¿ cá»§a Saigon Horeca cho khÃ´ng gian báº¿p cá»§a nhÃ  hÃ ng khÃ´ng chá»‰ Ä‘Ã¡p á»©ng nhu cáº§u váº­n hÃ nh mÃ  cÃ²n trá»Ÿ thÃ nh má»™t pháº§n khÃ´ng thá»ƒ thiáº¿u cá»§a sá»± Ä‘á»™c Ä‘Ã¡o cá»§a ngÃ nh áº©m thá»±c Omakase â€“ má»™t nghá»‡ thuáº­t áº©m thá»±c Ä‘áº·c sáº¯c vÃ  Ä‘á» cao tráº£i nghiá»‡m náº¥u nÆ°á»›ng trá»±c tiáº¿p.</p>
+    </div>
+  </div>
+</section>
+<section class="pp__section pp__section--alt">
+  <div class="pp__container">
+    <div class="pp-split-yzo pp-split-yzo--reverse">
+      <div class="pp-split-yzo__body">
+        <div class="pp-text-yzo__body">
+      <p>Saigon Horeca tá»± hÃ o Ä‘Ã£ táº¡o ra nhá»¯ng khÃ´ng gian báº¿p Ä‘á»™c Ä‘Ã¡o cho Yuzu Omakase, thá»ƒ hiá»‡n sá»± sÃ¡ng táº¡o Ä‘á»™c Ä‘Ã¡o cá»§a nhÃ  hÃ ng. Trang thiáº¿t bá»‹ thÃ©p khÃ´ng gá»‰ chuyÃªn dá»¥ng Ä‘Æ°á»£c láº¯p Ä‘áº·t gÃ³p pháº§n kháº³ng Ä‘á»‹nh tráº£i nghiá»‡m áº©m thá»±c riÃªng biá»‡t táº¡i nhÃ  hÃ ng. Sá»± chÃº Ã½ tá»‰ má»‰ Ä‘áº¿n tá»«ng chi tiáº¿t vÃ  cÃ¡c giáº£i phÃ¡p Ä‘Æ°á»£c tÃ¹y chá»‰nh cá»§a Saigon Horeca Ä‘Ã£ táº¡o nÃªn má»™t quáº§y báº¿p khÃ´ng chá»‰ Ä‘Ã¡p á»©ng nhu cáº§u váº­n hÃ nh mÃ  cÃ²n lÃ  trung tÃ¢m cá»§a sá»± sÃ¡ng táº¡o vÃ  xuáº¥t sáº¯c trong nghá»‡ thuáº­t áº©m thá»±c táº¡i Yuzu Omakase.</p>
+        </div>
+      </div>
+      <div class="pp-split-yzo__media">
+        <img src="" alt="Thiáº¿t bá»‹ báº¿p cÃ´ng nghiá»‡p Saigon Horeca" loading="lazy" decoding="async" width="1366" height="768">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="pp__section">
+    <div class="pp-container-shared">
+        <div class="pp-text pp-text--center" style="margin-bottom: 3rem;">
+            <span class="pp-text__divider pp-text__divider--center" aria-hidden="true"></span>
+            <h2 class="pp-text__title">Nhá»¯ng dá»± Ã¡n thiáº¿t káº¿ báº¿p ná»•i báº­t cá»§a Saigon Horeca</h2>
+        </div>
+        <div class="pp-related">
+                            <a href="https://saigonhoreca.local/du-an/casa-maria/"
+                   class="pp-related__card"
+                   aria-label="Casa Maria">
+                                            <img src="https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/saigonhoreca.vn/casa-maria/images/casa-maria-banh-mi-tapas-brunch-cafe.jpg"
+                             alt="Casa Maria"
+                             class="pp-related__img"
+                             loading="lazy" decoding="async">
+                                        <div class="pp-related__overlay" aria-hidden="true"></div>
+                    <div class="pp-related__content">
+                        <p class="pp-related__tag">Dá»± Ã¡n Horeca</p>
+                        <h3 class="pp-related__title">Casa Maria</h3>
+                    </div>
+                </a>
+                            <a href="https://saigonhoreca.local/du-an/the-brix/"
+                   class="pp-related__card"
+                   aria-label="The Brix">
+                                            <img src="https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/saigonhoreca.com/the-brix/images/The-Brix-01-1-qhaezmnlgse5yt4ngh2657wvi9qxonhxukkpp7x9ho.jpg"
+                             alt="The Brix"
+                             class="pp-related__img"
+                             loading="lazy" decoding="async">
+                                        <div class="pp-related__overlay" aria-hidden="true"></div>
+                    <div class="pp-related__content">
+                        <p class="pp-related__tag">Dá»± Ã¡n Horeca</p>
+                        <h3 class="pp-related__title">The Brix</h3>
+                    </div>
+                </a>
+                            <a href="https://saigonhoreca.local/du-an/the-royal-all-day-dining/"
+                   class="pp-related__card"
+                   aria-label="THE ROYAL - ALL DAY DINING">
+                                            <img src="https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/saigonhoreca.vn/the-royal-all-day-dining/images/du-an-the-royal-sgh.jpg"
+                             alt="THE ROYAL - ALL DAY DINING"
+                             class="pp-related__img"
+                             loading="lazy" decoding="async">
+                                        <div class="pp-related__overlay" aria-hidden="true"></div>
+                    <div class="pp-related__content">
+                        <p class="pp-related__tag">Dá»± Ã¡n Horeca</p>
+                        <h3 class="pp-related__title">THE ROYAL - ALL DAY DINING</h3>
+                    </div>
+                </a>
+                    </div>
+    </div>
+</section>
+<section class="pp__section pp__section--alt">
+    <div class="pp-container-shared">
+        <div class="pp-text pp-text--center" style="margin-bottom: 3rem;">
+            <span class="pp-text__divider pp-text__divider--center" aria-hidden="true"></span>
+            <h2 class="pp-text__title">ThÃ´ng tin liÃªn há»‡</h2>
+        </div>
+        <div class="pp-cta">
+                            <div class="pp-cta__card">
+                    <span class="pp-cta__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+                                            <h3 class="pp-cta__title">0901 304 365</h3>
+                                                                <p class="pp-cta__desc">Thá»© 2 - Thá»© 6, 8h00 - 18h00</p>
+                                                                <a href="tel:0901304365"
+                           class="pp-cta__btn">
+                            Gá»i ngay                        </a>
+                                    </div>
+                            <div class="pp-cta__card">
+                    <span class="pp-cta__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+                                            <h3 class="pp-cta__title">TP Há»“ ChÃ­ Minh</h3>
+                                                                <p class="pp-cta__desc">Sá»‘ 40, ÄÆ°á»ng Sá»‘ 6, KDC Melosa Khang Äiá»n, Long TrÆ°á»ng, TP.HCM</p>
+                                                                <a href="https://maps.app.goo.gl/SmWvPSEW2ozAq5dA6"
+                           class="pp-cta__btn" target="_blank" rel="noopener">
+                            Xem báº£n Ä‘á»“                        </a>
+                                    </div>
+                            <div class="pp-cta__card">
+                    <span class="pp-cta__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
+                                            <h3 class="pp-cta__title">contact@saigonhoreca.com</h3>
+                                                                <p class="pp-cta__desc">LiÃªn há»‡ má»i lÃºc</p>
+                                                                <a href="mailto:contact@saigonhoreca.com"
+                           class="pp-cta__btn">
+                            Gá»­i email                        </a>
+                                    </div>
+                    </div>
+    </div>
+</section>
+</main>
+
+
+</body>
+</html>

@@ -1,101 +1,133 @@
 /**
- * sol-kitchen-bar-saigon-horeca — partnership slot. .pp-section-bg-skh cinematic dark bg + glassmorphic content.
+ * sol-kitchen-bar-saigon-horeca — partnership slot.
+ * Cinematic parallax-style bg band + collaboration card grid.
+ * Techniques: clamp, color-mix, radial-gradient, backdrop-filter, fixed bg,
+ * hover transitions, prefers-reduced-motion.
  * @package SaigonHoreca
  */
 
-.pp-section-bg-skh {
+.pp-partner-solshr {
   position: relative;
-  padding: 7rem 1.5rem;
-  min-height: 70vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--b1);
+}
+
+.pp-partner-solshr__band {
+  position: relative;
+  padding-block: clamp(5rem, 14vw, 9rem);
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
+  background-attachment: fixed;
   isolation: isolate;
-  overflow: hidden;
 }
-@media (min-width: 768px) { .pp-section-bg-skh { padding: 10rem 2rem; } }
-
-.pp-section-bg-skh__overlay {
+.pp-partner-solshr__band-overlay {
   position: absolute;
   inset: 0;
   z-index: 1;
   background:
-    radial-gradient(ellipse at center,
-      color-mix(in srgb, var(--b1) 35%, transparent) 0%,
-      color-mix(in srgb, var(--b1) 80%, transparent) 100%);
+    radial-gradient(circle at 50% 40%, color-mix(in srgb, var(--solshr-clay-deep) 32%, transparent), transparent 60%),
+    linear-gradient(to bottom,
+      color-mix(in srgb, var(--b1) 78%, transparent),
+      color-mix(in srgb, var(--b1) 90%, transparent));
   pointer-events: none;
 }
-
-.pp-section-bg-skh::before {
-  content: '';
-  position: absolute;
-  top: -10%;
-  right: -8%;
-  width: 540px; height: 540px;
-  background: radial-gradient(circle, color-mix(in srgb, var(--gold) 18%, transparent) 0%, transparent 70%);
-  filter: blur(80px);
-  z-index: 1;
-  pointer-events: none;
-  opacity: 0.7;
-}
-
-.pp-section-bg-skh__content {
+.pp-partner-solshr__band-inner {
   position: relative;
   z-index: 2;
-  max-width: 880px;
-  margin: 0 auto;
+  max-width: 760px;
+  margin-inline: auto;
   text-align: center;
-  padding: 3rem 2.5rem;
-  background: color-mix(in srgb, var(--b1) 40%, transparent);
-  backdrop-filter: blur(14px) saturate(140%);
-  border: 1px solid color-mix(in srgb, var(--gold) 22%, transparent);
-  border-radius: var(--radius-md);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.5rem;
-  box-shadow:
-    0 24px 56px rgba(0, 0, 0, 0.5),
-    inset 0 1px 0 color-mix(in srgb, var(--gold) 10%, transparent);
-}
-.pp-section-bg-skh__content::before,
-.pp-section-bg-skh__content::after {
-  content: '';
-  position: absolute;
-  width: 24px; height: 24px;
-  border: 1px solid color-mix(in srgb, var(--gold) 55%, transparent);
-  pointer-events: none;
-}
-.pp-section-bg-skh__content::before {
-  top: -1px; left: -1px;
-  border-right: none; border-bottom: none;
-}
-.pp-section-bg-skh__content::after {
-  bottom: -1px; right: -1px;
-  border-left: none; border-top: none;
 }
 
-.pp-section-bg-skh__content .pp-text-skh__title {
-  margin: 0;
-  font-family: var(--font-display);
-  font-size: clamp(1.65rem, 3vw, 2.5rem);
-  font-weight: 700;
-  line-height: 1.25;
-  color: var(--bc);
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+.pp-partner-solshr__grid-wrap {
+  padding-block: clamp(3.5rem, 8vw, 6rem);
 }
-.pp-section-bg-skh__content .pp-text-skh__body {
-  font-size: clamp(0.97rem, 1.1vw, 1.05rem);
-  line-height: 1.8;
-  color: var(--bc2);
-  max-width: 700px;
-}
-.pp-section-bg-skh__content .pp-text-skh__body p {
-  margin: 0 0 1em;
+.pp-partner-solshr__head {
   text-align: center;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+  position: relative;
+  z-index: 2;
 }
-.pp-section-bg-skh__content .pp-text-skh__body p:last-child { margin-bottom: 0; }
+.pp-partner-solshr__head-title {
+  margin: 0.4rem 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 3vw, 2.1rem);
+  font-weight: 800;
+  color: var(--bc);
+}
+
+.pp-partner-solshr__grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1.1rem, 2.5vw, 1.6rem);
+}
+@media (min-width: 768px) {
+  .pp-partner-solshr__grid {
+    grid-template-columns: repeat(3, 1fr);
+    align-items: start;
+  }
+}
+
+.pp-partner-solshr__card {
+  position: relative;
+  padding: clamp(1.5rem, 3vw, 2rem);
+  background: linear-gradient(160deg,
+    color-mix(in srgb, var(--b2) 78%, transparent),
+    color-mix(in srgb, var(--b1) 70%, transparent));
+  border: 1px solid var(--bd);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition:
+    transform 0.4s var(--ease-spring),
+    border-color 0.4s var(--ease-spring),
+    box-shadow 0.4s var(--ease-spring);
+}
+.pp-partner-solshr__card:hover {
+  transform: translateY(-6px);
+  border-color: color-mix(in srgb, var(--solshr-sun) 40%, transparent);
+  box-shadow: var(--shadow-floating);
+}
+.pp-partner-solshr__card--feature {
+  border-color: color-mix(in srgb, var(--solshr-sun) 32%, transparent);
+  background: linear-gradient(160deg,
+    color-mix(in srgb, var(--solshr-sun) 10%, var(--b2)),
+    color-mix(in srgb, var(--b1) 72%, transparent));
+}
+.pp-partner-solshr__card-tag {
+  display: inline-block;
+  margin-bottom: 0.7rem;
+  padding: 0.3rem 0.7rem;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--pc);
+  background: linear-gradient(90deg, var(--solshr-sun), var(--solshr-clay));
+  border-radius: var(--radius-full);
+}
+.pp-partner-solshr__card-title {
+  margin: 0 0 0.7rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  font-weight: 700;
+  color: var(--bc);
+}
+.pp-partner-solshr__card p {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: var(--bc2);
+}
+
+@media (max-width: 991px) {
+  .pp-partner-solshr__band { background-attachment: scroll; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pp-partner-solshr__card { transition: none !important; }
+  .pp-partner-solshr__card:hover { transform: none !important; }
+}

@@ -1,1 +1,40 @@
-/** mam-mam-eatery-lounge-nang-tam-mam-com-viet — partnership slot (no content). */
+/**
+ * Project Pillar — Mâm Mâm Eatery & Lounge
+ * Section #4: partnership — Saigon Horeca design highlight (split reverse).
+ * Shell + .pp-split-mam owned by intro.css; here: lead emphasis + media tint.
+ * 100% design tokens.
+ */
+
+.pp-partnership-mam { position: relative; }
+
+/* Lead sentence — emphasised gold display line */
+.pp-partnership-mam__lead {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 1.6vw, 1.28rem);
+  font-weight: 600;
+  line-height: 1.45;
+  color: color-mix(in srgb, var(--gold) 90%, var(--bc));
+}
+
+/* Subtle warm glow anchored to the media side (technique: radial-gradient) */
+.pp-partnership-mam .pp-split-mam__media::after {
+  content: '';
+  position: absolute;
+  inset: -12% -8%;
+  z-index: 0;
+  background: radial-gradient(circle at 40% 60%,
+    color-mix(in srgb, var(--gold) 10%, transparent) 0%,
+    transparent 62%);
+  filter: blur(54px);
+  pointer-events: none;
+}
+
+.pp-partnership-mam .pp-split-mam__media .pp-image-container-shared {
+  position: relative;
+  z-index: 1;
+}
+
+.pp-partnership-mam .pp-text-mam__title {
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+}

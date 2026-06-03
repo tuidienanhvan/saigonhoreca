@@ -19,7 +19,7 @@
       "has_video_bg": false,
       "video_url": null,
       "background_overlay": true,
-      "background_image": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/mam-mam-nang-tam-mam-com-viet-1.jpg",
+      "background_image": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2025/05/mam-mam-nang-tam-mam-com-viet-1.jpg",
       "columns": [
         {
           "col_class": "elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-3901529a",
@@ -95,21 +95,21 @@
               "type": "image-carousel.default",
               "slides": [
                 {
-                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/mam-mam-nang-tam-mam-com-viet-1-1.jpg",
+                  "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2025/05/mam-mam-nang-tam-mam-com-viet-1-1.jpg",
                   "srcset": null,
                   "alt": "mam-mam-nang-tam-mam-com-viet (1)",
                   "w": null,
                   "h": null
                 },
                 {
-                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/mam-mam-nang-tam-mam-com-viet-3.jpg",
+                  "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2025/05/mam-mam-nang-tam-mam-com-viet-3.jpg",
                   "srcset": null,
                   "alt": "mam-mam-nang-tam-mam-com-viet",
                   "w": null,
                   "h": null
                 },
                 {
-                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/mam-mam-nang-tam-mam-com-viet-2.jpg",
+                  "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2025/05/mam-mam-nang-tam-mam-com-viet-2.jpg",
                   "srcset": null,
                   "alt": "mam-mam-nang-tam-mam-com-viet (2)",
                   "w": null,
@@ -127,8 +127,8 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/mam-mam-sgh.jpg",
-                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/mam-mam-sgh.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/05/mam-mam-sgh-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/05/mam-mam-sgh-600x337.jpg 600w",
+                "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2025/05/mam-mam-sgh.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2025/05/mam-mam-sgh.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/05/mam-mam-sgh-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/05/mam-mam-sgh-600x337.jpg 600w",
                 "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                 "w": "1366",
                 "h": "768"
@@ -193,8 +193,8 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/mam-mam-sgh-1.jpg",
-                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/mam-mam-sgh-1.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/05/mam-mam-sgh-1-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/05/mam-mam-sgh-1-600x337.jpg 600w",
+                "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2025/05/mam-mam-sgh-1.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2025/05/mam-mam-sgh-1.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/05/mam-mam-sgh-1-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/05/mam-mam-sgh-1-600x337.jpg 600w",
                 "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                 "w": "1366",
                 "h": "768"
@@ -203,8 +203,8 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/mam-mam-sgh-2.jpg",
-                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/mam-mam-sgh-2.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/05/mam-mam-sgh-2-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/05/mam-mam-sgh-2-600x337.jpg 600w",
+                "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2025/05/mam-mam-sgh-2.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2025/05/mam-mam-sgh-2.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/05/mam-mam-sgh-2-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/05/mam-mam-sgh-2-600x337.jpg 600w",
                 "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                 "w": "1366",
                 "h": "768"
@@ -238,8 +238,8 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/mam-mam-sgh-4.jpg",
-                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/mam-mam-sgh-4.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/05/mam-mam-sgh-4-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/05/mam-mam-sgh-4-600x337.jpg 600w",
+                "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2025/05/mam-mam-sgh-4.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2025/05/mam-mam-sgh-4.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/05/mam-mam-sgh-4-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/05/mam-mam-sgh-4-600x337.jpg 600w",
                 "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                 "w": "1366",
                 "h": "768"
@@ -303,14 +303,14 @@
               "type": "image-carousel.default",
               "slides": [
                 {
-                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/mam-mam-sgh-5.jpg",
+                  "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2025/05/mam-mam-sgh-5.jpg",
                   "srcset": null,
                   "alt": "mam-mam-sgh (5)",
                   "w": null,
                   "h": null
                 },
                 {
-                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/mam-mam-sgh-6.jpg",
+                  "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2025/05/mam-mam-sgh-6.jpg",
                   "srcset": null,
                   "alt": "mam-mam-sgh (6)",
                   "w": null,
@@ -335,8 +335,8 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/mam-mam-sgh-7.jpg",
-                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/mam-mam-sgh-7.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/05/mam-mam-sgh-7-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/05/mam-mam-sgh-7-600x337.jpg 600w",
+                "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2025/05/mam-mam-sgh-7.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2025/05/mam-mam-sgh-7.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2025/05/mam-mam-sgh-7-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2025/05/mam-mam-sgh-7-600x337.jpg 600w",
                 "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                 "w": "1366",
                 "h": "768"
@@ -353,21 +353,21 @@
               "type": "image-carousel.default",
               "slides": [
                 {
-                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/mam-mam-sgh-12.jpg",
+                  "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2025/05/mam-mam-sgh-12.jpg",
                   "srcset": null,
                   "alt": "mam-mam-sgh (12)",
                   "w": null,
                   "h": null
                 },
                 {
-                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/mam-mam-sgh-13.jpg",
+                  "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2025/05/mam-mam-sgh-13.jpg",
                   "srcset": null,
                   "alt": "mam-mam-sgh (13)",
                   "w": null,
                   "h": null
                 },
                 {
-                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2025/05/mam-mam-sgh-11.jpg",
+                  "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2025/05/mam-mam-sgh-11.jpg",
                   "srcset": null,
                   "alt": "mam-mam-sgh (11)",
                   "w": null,

@@ -1,1 +1,407 @@
-/** g-cup-coffee-bistro — partnership slot (no content). */
+/**
+ * g-cup-coffee-bistro - partnership section.
+ * Thiết kế theo phong cách tạp chí kiến trúc bất đối xứng (ArchDaily style), loại bỏ nền đen thô ráp.
+ * @package SaigonHoreca
+ */
+
+.pp-gcb-partnership-section {
+  position: relative;
+  isolation: isolate;
+  padding: clamp(5rem, 10vh, 8rem) 0;
+  overflow: hidden;
+  background: transparent !important; /* Loại bỏ lớp nền đen thô */
+  border-bottom: 1px solid rgba(212, 175, 55, 0.08);
+}
+
+/* Hoa văn CAD mờ nền kỹ thuật */
+.pp-gcb-partnership-cad-decor {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.04;
+  transition: opacity 0.6s ease;
+}
+
+.pp-gcb-partnership-section:hover .pp-gcb-partnership-cad-decor {
+  opacity: 0.07;
+}
+
+.pp-gcb-partnership-cad-decor svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Layout mạng lưới bất đối xứng tạp chí */
+.pp-gcb-partnership-editorial-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+  margin-bottom: 4rem;
+}
+
+@media (min-width: 992px) {
+  .pp-gcb-partnership-editorial-grid {
+    grid-template-columns: 1fr 1.1fr;
+    gap: 5rem;
+  }
+}
+
+/* Hộp Niken sang trọng, sắc sảo */
+.pp-gcb-partnership-glass-card {
+  position: relative;
+  background: linear-gradient(135deg, rgba(20, 20, 20, 0.7) 0%, rgba(15, 15, 15, 0.9) 100%) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 12px;
+  padding: clamp(2rem, 4vw, 3.5rem);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.pp-gcb-partnership-glass-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(212, 175, 55, 0.25) !important;
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.6),
+    0 0 20px rgba(212, 175, 55, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Tag nhãn thiết kế */
+.pp-gcb-partnership-tag {
+  display: inline-block;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+/* La bàn chuyển động lơ lửng */
+.gcb-partnership-compass-icon {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  width: 48px;
+  height: 48px;
+  color: rgba(255, 255, 255, 0.15);
+  pointer-events: none;
+  animation: spin-slow 25s linear infinite;
+  transition: color 0.4s ease;
+}
+
+.pp-gcb-partnership-glass-card:hover .gcb-partnership-compass-icon {
+  color: rgba(212, 175, 55, 0.4);
+}
+
+@keyframes spin-slow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Nẹp góc kim loại mỏng vàng kim */
+.gcb-niken-corner {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 1px solid rgba(212, 175, 55, 0.6);
+  pointer-events: none;
+  transition: all 0.4s ease;
+}
+
+.gcb-niken-corner--tl { top: -2px; left: -2px; border-right: none; border-bottom: none; }
+.gcb-niken-corner--tr { top: -2px; right: -2px; border-left: none; border-bottom: none; }
+.gcb-niken-corner--bl { bottom: -2px; left: -2px; border-right: none; border-top: none; }
+.gcb-niken-corner--br { bottom: -2px; right: -2px; border-left: none; border-top: none; }
+
+.pp-gcb-partnership-glass-card:hover .gcb-niken-corner {
+  width: 24px;
+  height: 24px;
+  border-color: var(--gold);
+}
+
+/* Collage ảnh bất đối xứng chồng lớp */
+.pp-gcb-partnership-visual-collage {
+  position: relative;
+  height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 576px) {
+  .pp-gcb-partnership-visual-collage {
+    height: 480px;
+  }
+}
+
+.pp-gcb-partnership-measuring-lines {
+  position: absolute;
+  inset: -10% -5%;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.15;
+}
+
+.pp-gcb-partnership-measuring-lines svg {
+  width: 100%;
+  height: 100%;
+}
+
+.pp-gcb-partnership-photo {
+  position: absolute;
+  z-index: 2;
+  overflow: visible; /* Thay thành visible để caption không bị cắt */
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Ảnh chính: Quầy bar - Bo tròn 16px */
+.pp-gcb-partnership-photo--main {
+  left: 0;
+  top: 10%;
+  width: 70%;
+  aspect-ratio: 1.1 / 1; /* Tỉ lệ vàng hiển thị rõ quầy bar */
+  z-index: 2;
+  border-radius: 16px !important;
+}
+
+.pp-gcb-partnership-photo--main .pp-image-container-shared {
+  border-radius: 16px !important;
+  width: 100%;
+  height: 100%;
+  overflow: visible !important;
+}
+
+.pp-gcb-partnership-photo--main img {
+  border-radius: 16px !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+/* Ảnh phụ: Blendtec - Bo tròn 12px */
+.pp-gcb-partnership-photo--sub {
+  right: 0;
+  bottom: 5%;
+  width: 50%;
+  aspect-ratio: 4 / 3;
+  z-index: 3;
+  border-radius: 12px !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: -10px 15px 35px rgba(0, 0, 0, 0.6) !important;
+}
+
+.pp-gcb-partnership-photo--sub .pp-image-container-shared {
+  border-radius: 12px !important;
+  width: 100%;
+  height: 100%;
+  overflow: visible !important;
+}
+
+.pp-gcb-partnership-photo--sub img {
+  border-radius: 12px !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+/* Hover ảnh hiệu ứng tương tác 3D */
+.pp-gcb-partnership-visual-collage:hover .pp-gcb-partnership-photo--main {
+  transform: scale(1.02) rotate(-1deg);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7);
+}
+
+.pp-gcb-partnership-visual-collage:hover .pp-gcb-partnership-photo--sub {
+  transform: scale(1.06) translate(5px, -5px) rotate(1deg);
+  box-shadow: -10px 25px 45px rgba(0, 0, 0, 0.8);
+}
+
+/* Hàng Catalog bên dưới dạng Card Blueprint */
+.pp-gcb-partnership-catalog-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-bottom: 3.5rem;
+}
+
+@media (min-width: 768px) {
+  .pp-gcb-partnership-catalog-row {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+}
+
+.pp-gcb-blueprint-card {
+  position: relative;
+  background: rgba(18, 18, 18, 0.35);
+  border: 1px dashed rgba(212, 175, 55, 0.25);
+  border-radius: 8px;
+  padding: 2.25rem 2rem;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.pp-gcb-blueprint-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(rgba(212, 175, 55, 0.05) 1px, transparent 1px);
+  background-size: 16px 16px;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* Vệt sáng quét ngang (Shimmer) khi hover */
+.pp-gcb-blueprint-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg, 
+    transparent 0%, 
+    rgba(212, 175, 55, 0.08) 50%, 
+    transparent 100%
+  );
+  transform: skewX(-25deg);
+  pointer-events: none;
+  transition: none;
+}
+
+.pp-gcb-blueprint-card:hover::after {
+  left: 150%;
+  transition: left 0.8s ease-in-out;
+}
+
+.pp-gcb-blueprint-card:hover {
+  transform: translateY(-5px);
+  background: rgba(22, 22, 22, 0.6);
+  border-color: rgba(212, 175, 55, 0.55);
+  box-shadow: 
+    0 15px 30px rgba(0, 0, 0, 0.4),
+    0 0 15px rgba(212, 175, 55, 0.08);
+}
+
+/* Nẹp góc Card Blueprint */
+.pp-gcb-blueprint-corner {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: 1px solid var(--gold);
+  pointer-events: none;
+}
+.pp-gcb-blueprint-corner--tl { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+.pp-gcb-blueprint-corner--br { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+
+.pp-gcb-blueprint-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  position: relative;
+  z-index: 2;
+}
+
+.pp-gcb-blueprint-num {
+  font-family: var(--font-mono), monospace;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--gold);
+  line-height: 1;
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+}
+
+.pp-gcb-blueprint-title {
+  font-family: var(--font-display), sans-serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--bc);
+  margin: 0;
+}
+
+.pp-gcb-blueprint-desc {
+  font-size: 0.92rem;
+  line-height: 1.75;
+  color: var(--bc2);
+  margin: 0;
+  position: relative;
+  z-index: 2;
+}
+
+/* Tag chứng nhận kỹ thuật cao cấp */
+.pp-gcb-partnership-footer-tag {
+  position: relative;
+  z-index: 2;
+}
+
+.pp-gcb-footer-tag-inner {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.06) 0%, rgba(212, 175, 55, 0.01) 100%);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 4px;
+  padding: 1.75rem 2.25rem;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  clip-path: polygon(0 0, 98% 0, 100% 20%, 100% 100%, 2% 100%, 0 80%);
+}
+
+.pp-gcb-footer-tag-inner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.05), transparent 70%);
+  pointer-events: none;
+}
+
+.pp-gcb-footer-tag-inner:hover {
+  border-color: rgba(212, 175, 55, 0.5);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.05);
+}
+
+.gcb-callout-sparkle {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: var(--gold);
+  filter: drop-shadow(0 0 4px var(--gold));
+  animation: heartbeat-gcb 3s infinite ease-in-out;
+}
+
+@keyframes heartbeat-gcb {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.2); opacity: 1; }
+}
+
+.pp-gcb-footer-tag-text {
+  font-family: var(--font-display), sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.75;
+  color: var(--gold);
+  margin: 0;
+}
+
+@media (max-width: 767px) {
+  .pp-gcb-footer-tag-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.5rem;
+  }
+}

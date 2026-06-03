@@ -1,6 +1,6 @@
-<?php
+﻿<?php
 /**
- * Project Pillar — spice-world-hotpot
+ * Project Pillar â€” spice-world-hotpot
  * Section #5: split
  * @package SaigonHoreca
  */
@@ -12,15 +12,16 @@ $uri = get_template_directory_uri();
     <div class="pp-split pp-split--reverse">
       <div class="pp-split__body">
         <span class="pp-text__divider" aria-hidden="true"></span>
-        <h2 class="pp-text__title"><?php echo esc_html__('Ý tưởng thiết kế bếp công nghiệp', 'saigonhoreca'); ?></h2>
+        <h2 class="pp-text__title"><?php echo esc_html__('Ã tÆ°á»Ÿng thiáº¿t káº¿ báº¿p cÃ´ng nghiá»‡p', 'saigonhoreca'); ?></h2>
         <div class="pp-text__body">
-      <p><?php echo esc_html__('Khu vực rửa chén được thiết kế với 2 bồn rửa kép bằng thép không gỉ, một bàn rửa, kệ gắn tường và tủ lớn bằng thép không gỉ để lưu trữ chén đĩa. Dựa trên đặc điểm hoạt động của nhà hàng, phục vụ khách hàng từ 10 giờ sáng đến 11 giờ tối, khu vực này được sử dụng để rửa chén vào cuối ngày và chuẩn bị nguyên liệu sơ chế vào sáng hôm sau, đảm bảo vệ sinh và an toàn thực phẩm bằng cách kiểm soát ô nhiễm với nguyên liệu sạch.', 'saigonhoreca'); ?></p>
-      <p><?php echo esc_html__('Khu vực này được trang bị đầy đủ 100% bởi Saigon Horeca với thiết kế và sản xuất riêng của mình. Ngoài ra, một khu vực chuẩn bị dự phòng cũng được sắp xếp gần khu vực rửa chén, phục vụ như một sự dự phòng cho các hoạt động chuẩn bị và rửa chén đồng thời.', 'saigonhoreca'); ?></p>
+      <p><?php echo esc_html__('Khu vá»±c rá»­a chÃ©n Ä‘Æ°á»£c thiáº¿t káº¿ vá»›i 2 bá»“n rá»­a kÃ©p báº±ng thÃ©p khÃ´ng gá»‰, má»™t bÃ n rá»­a, ká»‡ gáº¯n tÆ°á»ng vÃ  tá»§ lá»›n báº±ng thÃ©p khÃ´ng gá»‰ Ä‘á»ƒ lÆ°u trá»¯ chÃ©n Ä‘Ä©a. Dá»±a trÃªn Ä‘áº·c Ä‘iá»ƒm hoáº¡t Ä‘á»™ng cá»§a nhÃ  hÃ ng, phá»¥c vá»¥ khÃ¡ch hÃ ng tá»« 10 giá» sÃ¡ng Ä‘áº¿n 11 giá» tá»‘i, khu vá»±c nÃ y Ä‘Æ°á»£c sá»­ dá»¥ng Ä‘á»ƒ rá»­a chÃ©n vÃ o cuá»‘i ngÃ y vÃ  chuáº©n bá»‹ nguyÃªn liá»‡u sÆ¡ cháº¿ vÃ o sÃ¡ng hÃ´m sau, Ä‘áº£m báº£o vá»‡ sinh vÃ  an toÃ n thá»±c pháº©m báº±ng cÃ¡ch kiá»ƒm soÃ¡t Ã´ nhiá»…m vá»›i nguyÃªn liá»‡u sáº¡ch.', 'saigonhoreca'); ?></p>
+      <p><?php echo esc_html__('Khu vá»±c nÃ y Ä‘Æ°á»£c trang bá»‹ Ä‘áº§y Ä‘á»§ 100% bá»Ÿi Saigon Horeca vá»›i thiáº¿t káº¿ vÃ  sáº£n xuáº¥t riÃªng cá»§a mÃ¬nh. NgoÃ i ra, má»™t khu vá»±c chuáº©n bá»‹ dá»± phÃ²ng cÅ©ng Ä‘Æ°á»£c sáº¯p xáº¿p gáº§n khu vá»±c rá»­a chÃ©n, phá»¥c vá»¥ nhÆ° má»™t sá»± dá»± phÃ²ng cho cÃ¡c hoáº¡t Ä‘á»™ng chuáº©n bá»‹ vÃ  rá»­a chÃ©n Ä‘á»“ng thá»i.', 'saigonhoreca'); ?></p>
         </div>
       </div>
       <div class="pp-split__media">
-        <img src="<?php echo sgh_img('2024/02/swh-ban-ve-tong-the-khu-bep.png'); ?>" alt="<?php echo esc_attr__('Thiết bị bếp công nghiệp Saigon Horeca', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="1541" height="788">
+        <img src="<?php echo sgh_img('2024/02/swh-ban-ve-tong-the-khu-bep.png'); ?>" alt="<?php echo esc_attr__('Thiáº¿t bá»‹ báº¿p cÃ´ng nghiá»‡p Saigon Horeca', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="1541" height="788">
       </div>
     </div>
   </div>
 </section>
+

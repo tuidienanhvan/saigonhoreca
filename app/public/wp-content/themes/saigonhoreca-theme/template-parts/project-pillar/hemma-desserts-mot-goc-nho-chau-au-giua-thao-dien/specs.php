@@ -1,14 +1,14 @@
-<?php
+﻿<?php
 /**
- * Project Pillar — hemma-desserts-mot-goc-nho-chau-au-giua-thao-dien
+ * Project Pillar â€” hemma-desserts-mot-goc-nho-chau-au-giua-thao-dien
  * Section #5: with_gallery
  * @package SaigonHoreca
  */
 if (!defined('ABSPATH')) exit;
 $uri = get_template_directory_uri();
 ?>
-<section class="pp__section pp__section--alt">
-  <div class="pp__container">
+<section class="pp-section-hmd pp-section-hmd--alt scroll-reveal">
+  <div class="pp-container-shared">
     <div class="pp-text-hmd pp-text-hmd--center">
       <span class="pp-text-hmd__divider pp-text-hmd__divider--center" aria-hidden="true"></span>
       <h2 class="pp-text-hmd__title"><?php echo esc_html__('Thẩm mỹ và trải nghiệm đến từ giải pháp của chuyên gia', 'saigonhoreca'); ?></h2>
@@ -23,8 +23,9 @@ $uri = get_template_directory_uri();
       </div>
     </div>
     <div class="pp-gallery-hmd pp-gallery-hmd--cols-2" style="margin-top:2rem;">
-      <div class="pp-gallery-hmd__item"><img src="<?php echo sgh_img('2025/11/hemma-desserts-11-1.jpg'); ?>" alt="hemma-desserts (11)" loading="lazy" decoding="async"></div>
-      <div class="pp-gallery-hmd__item"><img src="<?php echo sgh_img('2025/11/hemma-desserts-12-1.jpg'); ?>" alt="hemma-desserts (12)" loading="lazy" decoding="async"></div>
+      <div class="pp-gallery-hmd__item pp-image-container-shared"><img src="<?php echo sgh_img('2025/11/hemma-desserts-11-1.jpg'); ?>" alt="hemma-desserts (11)" loading="lazy" decoding="async"><div class="pp-image-caption-shared"><?php echo esc_html__('Thành phẩm hoàn thiện – bếp bánh châu Âu thu nhỏ giữa Thảo Điền', 'saigonhoreca'); ?></div></div>
+      <div class="pp-gallery-hmd__item pp-image-container-shared"><img src="<?php echo sgh_img('2025/11/hemma-desserts-12-1.jpg'); ?>" alt="hemma-desserts (12)" loading="lazy" decoding="async"><div class="pp-image-caption-shared"><?php echo esc_html__('Hemma Desserts – nơi ý tưởng và kỹ thuật gặp nhau', 'saigonhoreca'); ?></div></div>
     </div>
   </div>
 </section>
+

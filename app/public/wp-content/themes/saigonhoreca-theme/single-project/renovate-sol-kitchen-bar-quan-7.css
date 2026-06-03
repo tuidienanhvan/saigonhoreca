@@ -1,0 +1,23 @@
+/**
+ * Project page-template — renovate-sol-kitchen-bar-quan-7 (layout + project tokens).
+ * SOL Kitchen & Bar Q7 renovation — warm amber / ember / copper identity
+ * derived from brand gold (--p). All accent tokens scoped to .pp--solq7.
+ * @package SaigonHoreca
+ */
+
+.pp--solq7 {
+  /* Warm amber/ember accent family (mixed from brand gold + warning + warm whites) */
+  --solq7-amber: color-mix(in srgb, var(--p) 90%, var(--bc));
+  --solq7-ember: color-mix(in srgb, var(--p) 72%, var(--er));
+  --solq7-copper: color-mix(in srgb, var(--p) 60%, var(--b1));
+  --solq7-glow: color-mix(in srgb, var(--p) 18%, transparent);
+  --solq7-glass: color-mix(in srgb, var(--b2) 70%, transparent);
+  --solq7-line: color-mix(in srgb, var(--p) 24%, transparent);
+  --solq7-grid: color-mix(in srgb, var(--bc) 4%, transparent);
+  --solq7-edge: color-mix(in srgb, var(--p) 22%, transparent);
+}
+
+body.page-template-page-project-renovate-sol-kitchen-bar-quan-7 {
+  background: var(--b1);
+  color: var(--bc);
+}

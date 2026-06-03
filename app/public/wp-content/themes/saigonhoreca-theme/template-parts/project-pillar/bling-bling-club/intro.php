@@ -7,8 +7,8 @@
 if (!defined('ABSPATH')) exit;
 $uri = get_template_directory_uri();
 ?>
-<section class="pp__section pp__section--alt pp-bbc-intro-section">
-  <div class="pp__container">
+<section class="pp-section-bbc pp-section-bbc--alt pp-bbc-intro-section">
+  <div class="pp-container-shared">
     <div class="pp-bbc-intro__grid">
       <!-- Cột trái: Diamond Glamour Editorial Grid -->
       <div class="pp-bbc-intro__text-col">
@@ -42,9 +42,10 @@ $uri = get_template_directory_uri();
       <div class="pp-bbc-intro__media-col">
         <div class="pp-bbc-intro__diamond-frame">
           <div class="pp-bbc-intro__glow-haze"></div>
-          <div class="pp-bbc-intro__img-container">
-            <img src="<?php echo sgh_img('2024/02/SGH-product-bling3.jpg'); ?>" alt="Bling Bling Club Interior" class="pp-bbc-intro__main-img" loading="lazy" decoding="async">
+          <div class="pp-bbc-intro__img-container pp-image-container-shared">
+            <img src="<?php echo sgh_img('bling-bling-club/bling-bling-club-quay-dj-bieu-dien-live.jpg'); ?>" alt="DJ booth performing live at Bling Bling Club" class="pp-bbc-intro__main-img" loading="lazy" decoding="async">
             <div class="pp-bbc-intro__img-overlay"></div>
+            <div class="pp-image-caption-shared"><?php echo esc_html__('Không gian trình diễn DJ trực tiếp sôi động và hoành tráng bên trong Bling Bling Club', 'saigonhoreca'); ?></div>
           </div>
           <div class="pp-bbc-intro__frame-borders">
             <span class="border-angle tl"></span>
@@ -60,22 +61,20 @@ $uri = get_template_directory_uri();
     <div class="pp-bbc-intro__gallery-section">
       <div class="pp-bbc-intro__gallery-title">
         <span class="star-sparkle">✦</span>
-        <h3>FACETED EXPERIENCE GALLERY</h3>
+        <h3>HÌNH ẢNH TRẢI NGHIỆM THỰC TẾ</h3>
         <span class="star-sparkle">✦</span>
       </div>
       
-      <div class="pp-gallery-bbc pp-gallery-bbc--cols-3">
-        <div class="pp-gallery-bbc__item">
-          <img src="<?php echo sgh_img('2024/02/SGH-product-bling2.jpg'); ?>" alt="Bling Bling Club 2" loading="lazy" decoding="async">
+      <div class="pp-gallery-bbc pp-gallery-bbc--duo">
+        <div class="pp-gallery-bbc__item pp-gallery-bbc__item--left pp-image-container-shared">
+          <img src="<?php echo sgh_img('bling-bling-club/bling-bling-club-mon-an-ruou-vang-bottega-rose.jpg'); ?>" alt="Bottega Rose Sparkling Wine" loading="lazy" decoding="async">
           <div class="gold-glamour-border"></div>
+          <div class="pp-image-caption-shared"><?php echo esc_html__('Phục vụ vang nổ hồng Bottega Rose phát sáng rực rỡ trong đêm tiệc', 'saigonhoreca'); ?></div>
         </div>
-        <div class="pp-gallery-bbc__item">
-          <img src="<?php echo sgh_img('2024/02/SGH-product-bling1.jpg'); ?>" alt="Bling Bling Club 1" loading="lazy" decoding="async">
+        <div class="pp-gallery-bbc__item pp-gallery-bbc__item--right pp-image-container-shared">
+          <img src="<?php echo sgh_img('bling-bling-club/bling-bling-club-quay-bar-pha-che-bartender.jpg'); ?>" alt="Professional Bartender mixing drinks" loading="lazy" decoding="async">
           <div class="gold-glamour-border"></div>
-        </div>
-        <div class="pp-gallery-bbc__item">
-          <img src="<?php echo sgh_img('2023/12/SGH-Portrait.png'); ?>" alt="Bling Bling Club 3" loading="lazy" decoding="async">
-          <div class="gold-glamour-border"></div>
+          <div class="pp-image-caption-shared"><?php echo esc_html__('Bartender tài năng trình diễn nghệ thuật pha chế tại quầy bar', 'saigonhoreca'); ?></div>
         </div>
       </div>
     </div>

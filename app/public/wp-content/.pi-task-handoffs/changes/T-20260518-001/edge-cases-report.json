@@ -1,0 +1,261 @@
+{
+  "by_category": {
+    "AMP": {
+      "total": 15,
+      "pass": 15,
+      "fail": 0
+    },
+    "WP-skip": {
+      "total": 4,
+      "pass": 3,
+      "fail": 1
+    },
+    "wp-content": {
+      "total": 1,
+      "pass": 1,
+      "fail": 0
+    },
+    "trailing-slash": {
+      "total": 2,
+      "pass": 1,
+      "fail": 1
+    },
+    "query": {
+      "total": 1,
+      "pass": 0,
+      "fail": 1
+    }
+  },
+  "results": [
+    {
+      "url": "https://saigonhoreca.local/10-meo-tiet-kiem-nang-luong-hang-dau-cho-nha-hang/amp/",
+      "status": 200,
+      "x_sgh_mirror": "HIT",
+      "expect_mirror": true,
+      "pass": true,
+      "content_sample": "<!doctype html> <html amp lang=\"vi\"> <head><script custom-element=\"amp-form\" src=\"https://cdn.ampproject.org/v0/amp-form",
+      "error": null,
+      "category": "AMP"
+    },
+    {
+      "url": "https://saigonhoreca.local/5-luu-y-khi-thiet-ke-bep-nha-hang-cao-cap/amp/",
+      "status": 200,
+      "x_sgh_mirror": "HIT",
+      "expect_mirror": true,
+      "pass": true,
+      "content_sample": "<!doctype html> <html amp lang=\"vi\"> <head><script custom-element=\"amp-form\" src=\"https://cdn.ampproject.org/v0/amp-form",
+      "error": null,
+      "category": "AMP"
+    },
+    {
+      "url": "https://saigonhoreca.local/7-tieu-chuan-thiet-ke-he-thong-hut-khoi/amp/",
+      "status": 200,
+      "x_sgh_mirror": "HIT",
+      "expect_mirror": true,
+      "pass": true,
+      "content_sample": "<!doctype html> <html amp lang=\"vi\"> <head><script custom-element=\"amp-form\" src=\"https://cdn.ampproject.org/v0/amp-form",
+      "error": null,
+      "category": "AMP"
+    },
+    {
+      "url": "https://saigonhoreca.local/7-tieu-chuan-va-trien-khai-he-thong-haccp/amp/",
+      "status": 200,
+      "x_sgh_mirror": "HIT",
+      "expect_mirror": true,
+      "pass": true,
+      "content_sample": "<!doctype html> <html amp lang=\"vi\"> <head><script custom-element=\"amp-form\" src=\"https://cdn.ampproject.org/v0/amp-form",
+      "error": null,
+      "category": "AMP"
+    },
+    {
+      "url": "https://saigonhoreca.local/bep-a-3-hong-su-lua-chon-toi-uu-cho-bep-hien-dai/amp/",
+      "status": 200,
+      "x_sgh_mirror": "HIT",
+      "expect_mirror": true,
+      "pass": true,
+      "content_sample": "<!doctype html> <html amp lang=\"vi\"> <head><script custom-element=\"amp-form\" src=\"https://cdn.ampproject.org/v0/amp-form",
+      "error": null,
+      "category": "AMP"
+    },
+    {
+      "url": "https://saigonhoreca.local/bep-an-truong-mam-non-tu-thuc-trinh-vuong/amp/",
+      "status": 200,
+      "x_sgh_mirror": "HIT",
+      "expect_mirror": true,
+      "pass": true,
+      "content_sample": "<!doctype html> <html amp lang=\"vi\"> <head><script custom-element=\"amp-form\" src=\"https://cdn.ampproject.org/v0/amp-form",
+      "error": null,
+      "category": "AMP"
+    },
+    {
+      "url": "https://saigonhoreca.local/bep-canteen-nha-may-sheh-fung/amp/",
+      "status": 200,
+      "x_sgh_mirror": "HIT",
+      "expect_mirror": true,
+      "pass": true,
+      "content_sample": "<!doctype html> <html amp lang=\"vi\"> <head><script custom-element=\"amp-form\" src=\"https://cdn.ampproject.org/v0/amp-form",
+      "error": null,
+      "category": "AMP"
+    },
+    {
+      "url": "https://saigonhoreca.local/bep-cong-nghiep-inox-thep-khong-gi/amp/",
+      "status": 200,
+      "x_sgh_mirror": "HIT",
+      "expect_mirror": true,
+      "pass": true,
+      "content_sample": "<!doctype html> <html amp lang=\"vi\"> <head><script custom-element=\"amp-form\" src=\"https://cdn.ampproject.org/v0/amp-form",
+      "error": null,
+      "category": "AMP"
+    },
+    {
+      "url": "https://saigonhoreca.local/bi-quyet-bao-quan-va-ve-sinh-tu-lanh-cong-nghiep/amp/",
+      "status": 200,
+      "x_sgh_mirror": "HIT",
+      "expect_mirror": true,
+      "pass": true,
+      "content_sample": "<!doctype html> <html amp lang=\"vi\"> <head><script custom-element=\"amp-form\" src=\"https://cdn.ampproject.org/v0/amp-form",
+      "error": null,
+      "category": "AMP"
+    },
+    {
+      "url": "https://saigonhoreca.local/bi-quyet-bao-tri-bep-nha-hang-giup-tang-tuoi-tho/amp/",
+      "status": 200,
+      "x_sgh_mirror": "HIT",
+      "expect_mirror": true,
+      "pass": true,
+      "content_sample": "<!doctype html> <html amp lang=\"vi\"> <head><script custom-element=\"amp-form\" src=\"https://cdn.ampproject.org/v0/amp-form",
+      "error": null,
+      "category": "AMP"
+    },
+    {
+      "url": "https://saigonhoreca.local/bi-quyet-hieu-qua-quan-ly-bep-an-cong-nghiep/amp/",
+      "status": 200,
+      "x_sgh_mirror": "HIT",
+      "expect_mirror": true,
+      "pass": true,
+      "content_sample": "<!doctype html> <html amp lang=\"vi\"> <head><script custom-element=\"amp-form\" src=\"https://cdn.ampproject.org/v0/amp-form",
+      "error": null,
+      "category": "AMP"
+    },
+    {
+      "url": "https://saigonhoreca.local/bi-quyet-to-chuc-quy-trinh-bep-1-chieu-hieu-qua/amp/",
+      "status": 200,
+      "x_sgh_mirror": "HIT",
+      "expect_mirror": true,
+      "pass": true,
+      "content_sample": "<!doctype html> <html amp lang=\"vi\"> <head><script custom-element=\"amp-form\" src=\"https://cdn.ampproject.org/v0/amp-form",
+      "error": null,
+      "category": "AMP"
+    },
+    {
+      "url": "https://saigonhoreca.local/bling-bling-club/amp/",
+      "status": 200,
+      "x_sgh_mirror": "HIT",
+      "expect_mirror": true,
+      "pass": true,
+      "content_sample": "<!doctype html> <html amp lang=\"vi\"> <head><script custom-element=\"amp-form\" src=\"https://cdn.ampproject.org/v0/amp-form",
+      "error": null,
+      "category": "AMP"
+    },
+    {
+      "url": "https://saigonhoreca.local/cac-nha-hang-cao-cap-nen-dau-tu-lo-nuong-josper/amp/",
+      "status": 200,
+      "x_sgh_mirror": "HIT",
+      "expect_mirror": true,
+      "pass": true,
+      "content_sample": "<!doctype html> <html amp lang=\"vi\"> <head><script custom-element=\"amp-form\" src=\"https://cdn.ampproject.org/v0/amp-form",
+      "error": null,
+      "category": "AMP"
+    },
+    {
+      "url": "https://saigonhoreca.local/cach-bao-tri-ve-sinh-lo-josper-de-keo-dai-tuoi-tho/amp/",
+      "status": 200,
+      "x_sgh_mirror": "HIT",
+      "expect_mirror": true,
+      "pass": true,
+      "content_sample": "<!doctype html> <html amp lang=\"vi\"> <head><script custom-element=\"amp-form\" src=\"https://cdn.ampproject.org/v0/amp-form",
+      "error": null,
+      "category": "AMP"
+    },
+    {
+      "url": "https://saigonhoreca.local/wp-login.php",
+      "status": 200,
+      "x_sgh_mirror": "",
+      "expect_mirror": false,
+      "pass": true,
+      "content_sample": "<!DOCTYPE html>\n\t<html lang=\"en-US\">\n\t<head>\n\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />\n\t<ti",
+      "error": null,
+      "category": "WP-skip"
+    },
+    {
+      "url": "https://saigonhoreca.local/wp-cron.php",
+      "status": 200,
+      "x_sgh_mirror": "",
+      "expect_mirror": false,
+      "pass": true,
+      "content_sample": "",
+      "error": null,
+      "category": "WP-skip"
+    },
+    {
+      "url": "https://saigonhoreca.local/xmlrpc.php",
+      "status": 0,
+      "x_sgh_mirror": "",
+      "expect_mirror": false,
+      "pass": false,
+      "content_sample": "",
+      "error": "HTTP Error 405: Method Not Allowed",
+      "category": "WP-skip"
+    },
+    {
+      "url": "https://saigonhoreca.local/wp-json/",
+      "status": 200,
+      "x_sgh_mirror": "",
+      "expect_mirror": false,
+      "pass": true,
+      "content_sample": "{\"name\":\"Saigon House\",\"description\":\"Ki\\u1ebfn t\\u1ea1o kh\\u00f4ng gian b\\u1ec1n v\\u1eefng\",\"url\":\"https:\\/\\/saigonhore",
+      "error": null,
+      "category": "WP-skip"
+    },
+    {
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/index.html",
+      "status": 200,
+      "x_sgh_mirror": "",
+      "expect_mirror": false,
+      "pass": true,
+      "content_sample": "<!DOCTYPE html>\n<html lang=\"vi\" prefix=\"og: https://ogp.me/ns#\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" con",
+      "error": null,
+      "category": "wp-content"
+    },
+    {
+      "url": "https://saigonhoreca.local/du-an",
+      "status": 200,
+      "x_sgh_mirror": "HIT",
+      "expect_mirror": false,
+      "pass": false,
+      "content_sample": "<!DOCTYPE html>\n<html lang=\"vi\" prefix=\"og: https://ogp.me/ns#\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" con",
+      "error": null,
+      "category": "trailing-slash"
+    },
+    {
+      "url": "https://saigonhoreca.local/du-an/",
+      "status": 200,
+      "x_sgh_mirror": "HIT",
+      "expect_mirror": true,
+      "pass": true,
+      "content_sample": "<!DOCTYPE html>\n<html lang=\"vi\" prefix=\"og: https://ogp.me/ns#\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" con",
+      "error": null,
+      "category": "trailing-slash"
+    },
+    {
+      "url": "https://saigonhoreca.local/?s=bep",
+      "status": 200,
+      "x_sgh_mirror": "HIT",
+      "expect_mirror": false,
+      "pass": false,
+      "content_sample": "<!DOCTYPE html>\n<html lang=\"vi\" prefix=\"og: https://ogp.me/ns#\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" con",
+      "error": null,
+      "category": "query"
+    }
+  ]
+}

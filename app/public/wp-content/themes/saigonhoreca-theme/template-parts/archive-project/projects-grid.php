@@ -12,10 +12,6 @@ $q = new WP_Query([
     'post_type'      => 'project',
     'post_status'    => 'publish',
     'posts_per_page' => -1,
-    'meta_query'     => [[
-        'key'     => '_thumbnail_id',
-        'compare' => 'EXISTS',
-    ]],
 ]);
 
 $svg_sparkle = '<svg class="sh-archive-projects__sparkle" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2 L13.5 9 L20 10.5 L13.5 12 L12 19 L10.5 12 L4 10.5 L10.5 9 Z"/></svg>';
@@ -52,8 +48,25 @@ $svg_pin     = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strok
         <?php if ($q->have_posts()) : ?>
             <div class="sh-archive-projects__grid">
                 <?php $i = 0; while ($q->have_posts()) : $q->the_post(); $i++;
-                    $title   = get_the_title();
-                    $address = function_exists('get_field') ? (string) get_field('address') : '';
+                    global $post;
+                    $post_slug = isset($post->post_name) ? $post->post_name : '';
+                    
+                    // Prioritize template comment headers, fall back to DB/ACF
+                    $title = '';
+                    if ($post_slug && function_exists('sgh_get_project_meta')) {
+                        $title = sgh_get_project_meta($post_slug, 'Title');
+                    }
+                    if (!$title) {
+                        $title = get_the_title();
+                    }
+
+                    $address = '';
+                    if ($post_slug && function_exists('sgh_get_project_meta')) {
+                        $address = sgh_get_project_meta($post_slug, 'Address');
+                    }
+                    if (!$address) {
+                        $address = function_exists('get_field') ? (string) get_field('address') : '';
+                    }
                 ?>
                     <a href="<?php the_permalink(); ?>" class="sh-archive-projects__card">
                         <?php /* Manual <img> with alt="" — WP's the_post_thumbnail() falls
@@ -64,6 +77,16 @@ $svg_pin     = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strok
                         $thumb_id  = get_post_thumbnail_id();
                         $thumb_src = $thumb_id ? wp_get_attachment_image_url($thumb_id, 'large') : '';
                         $thumb_srcset = $thumb_id ? wp_get_attachment_image_srcset($thumb_id, 'large') : '';
+                        
+                        // Retrieve custom project thumbnail configured directly in the single-project template comment
+                        global $post;
+                        if (isset($post->post_name)) {
+                            $custom_thumb = sgh_get_project_thumbnail($post->post_name);
+                            if ($custom_thumb) {
+                                $thumb_src = $custom_thumb;
+                                $thumb_srcset = '';
+                            }
+                        }
                         ?>
                         <?php if ($thumb_src) : ?>
                         <img class="sh-archive-projects__img"
@@ -80,12 +103,6 @@ $svg_pin     = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strok
                         <div class="sh-archive-projects__card-info">
                             <span class="sh-archive-projects__card-accent" aria-hidden="true"></span>
                             <h3 class="sh-archive-projects__card-title"><?php echo esc_html($title); ?></h3>
-                            <?php if ($address) : ?>
-                                <p class="sh-archive-projects__card-addr">
-                                    <span class="sh-archive-projects__pin"><?php echo $svg_pin; ?></span>
-                                    <?php echo esc_html($address); ?>
-                                </p>
-                            <?php endif; ?>
                         </div>
                     </a>
                 <?php endwhile; wp_reset_postdata(); ?>

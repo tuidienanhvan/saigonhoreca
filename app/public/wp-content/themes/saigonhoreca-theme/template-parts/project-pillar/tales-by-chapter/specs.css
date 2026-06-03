@@ -1,1 +1,27 @@
-/** tales-by-chapter — specs slot (no content). */
+/**
+ * tales-by-chapter — specs slot.
+ * Inherits .pp-split-tbc from concept.css + image + text.
+ * @package SaigonHoreca
+ */
+
+.pp-split-tbc__media img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--bd);
+  transition: border-color 0.4s var(--ease-spring), transform 0.4s var(--ease-spring);
+}
+.pp-split-tbc__media img:hover {
+  border-color: color-mix(in srgb, var(--su) 40%, transparent);
+  transform: scale(1.03);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pp-split-tbc__media img {
+    transition: none !important;
+  }
+  .pp-split-tbc__media img:hover {
+    transform: none !important;
+  }
+}

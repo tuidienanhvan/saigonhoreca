@@ -1,9 +1,0 @@
-/**
- * Project page-template — little-bear-thao-dien (layout only).
- * @package SaigonHoreca
- */
-
-body.page-template-page-project-little-bear-thao-dien {
-  background: var(--b1);
-  color: var(--bc);
-}

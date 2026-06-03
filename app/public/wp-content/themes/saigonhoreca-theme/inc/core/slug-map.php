@@ -131,3 +131,6 @@ if (!function_exists('sgh_hreflang_tags')) {
         echo '<link rel="alternate" hreflang="x-default" href="' . esc_url($vi) . '">' . "\n";
     }
 }
+
+// Tự động in thẻ hreflang vào wp_head thay vì gọi thủ công ở header.php
+add_action('wp_head', 'sgh_hreflang_tags', 2);

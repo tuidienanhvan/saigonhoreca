@@ -1,1 +1,618 @@
-/** the-brix — gallery slot. Inherits .pp-split-tbx from concept.css. */
+/**
+ * the-brix — gallery section. Staggered Bento Grid & Elegant 2-Column layouts.
+ * Palette: Deep navy + ocean teal + green accents.
+ * @package SaigonHoreca
+ */
+
+.pp-gallery-brix {
+  position: relative;
+  padding: clamp(5rem, 10vw, 9rem) 0;
+  /* Subtle gradient shift — darker than intro for section rhythm */
+  background: linear-gradient(180deg, #0c1420 0%, #0a0f1a 100%);
+  overflow: hidden;
+}
+
+/* Ambient glow — bottom-left ocean */
+.pp-gallery-brix::before {
+  content: '';
+  position: absolute;
+  bottom: -12%;
+  left: -8%;
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle,
+    rgba(8, 145, 178, 0.06) 0%,
+    transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Top-right green glow */
+.pp-gallery-brix::after {
+  content: '';
+  position: absolute;
+  top: -8%;
+  right: -10%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle,
+    rgba(16, 185, 129, 0.05) 0%,
+    transparent 70%);
+  filter: blur(70px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Header */
+.pp-gallery-brix__header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 3.5rem;
+}
+
+.pp-gallery-brix__title {
+  font-family: var(--font-display, 'Playfair Display', serif);
+  font-size: clamp(1.85rem, 3.2vw, 2.6rem);
+  font-weight: 700;
+  color: #f0fdfa;
+  line-height: 1.22;
+  margin: 0 0 1rem;
+}
+
+.pp-gallery-brix__divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, #10b981, #0891b2);
+  margin: 0 auto;
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.3);
+}
+
+.pp-gallery-brix__lead {
+  font-size: clamp(0.97rem, 1.1vw, 1.05rem);
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.58);
+  margin-top: 1.5rem;
+}
+
+/* Grid — Bento Grid Layout */
+.pp-gallery-brix__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .pp-gallery-brix__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .pp-gallery-brix__grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.75rem;
+  }
+
+  /* Bento Stagger — Item 1 bếp chính chiếm 2 cột */
+  .pp-gallery-brix__item--featured {
+    grid-column: span 2;
+    aspect-ratio: 8 / 3 !important; /* Tỉ lệ ngang rộng siêu hoành tráng */
+  }
+}
+
+/* Individual gallery item */
+.pp-gallery-brix__item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  border: 1px solid rgba(94, 234, 212, 0.08);
+  box-shadow:
+    0 14px 35px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(8, 145, 178, 0.04);
+  aspect-ratio: 4 / 3;
+  background: #0f172a;
+  transition:
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.4s,
+    box-shadow 0.4s;
+}
+
+.pp-gallery-brix__item:hover {
+  border-color: rgba(8, 145, 178, 0.40);
+  box-shadow:
+    0 20px 45px rgba(0, 0, 0, 0.75),
+    0 0 25px rgba(8, 145, 178, 0.10);
+  transform: translateY(-8px) scale(1.02);
+}
+
+/* Image treatment */
+.pp-gallery-brix__item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), filter 0.5s;
+  filter: brightness(0.85) saturate(0.95);
+}
+
+.pp-gallery-brix__item:hover img {
+  transform: scale(1.07);
+  filter: brightness(1) saturate(1.08);
+}
+
+/* Image tag label — teal accent */
+.pp-gallery-brix__item .pp-image-tag-brix {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 4;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.63rem;
+  letter-spacing: 0.12em;
+  color: #5eead4;
+  background: rgba(10, 15, 26, 0.88);
+  border: 1px solid rgba(94, 234, 212, 0.25);
+  padding: 0.3rem 0.65rem;
+  border-radius: 6px;
+  backdrop-filter: blur(6px);
+  pointer-events: none;
+  transition: border-color 0.3s;
+}
+
+.pp-gallery-brix__item:hover .pp-image-tag-brix {
+  border-color: rgba(94, 234, 212, 0.55);
+}
+
+/* ═══════════════════════════════════════════════════
+   Kitchen Workflow — Numbered Timeline (2-Column Grid)
+   ═══════════════════════════════════════════════════ */
+
+.pp-kitchen-flow-brix {
+  position: relative;
+  padding: clamp(5rem, 10vw, 9rem) 0;
+  background: #0a0f1a;
+  overflow: hidden;
+}
+
+.pp-kitchen-flow-brix__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3.5rem;
+}
+
+@media (min-width: 1024px) {
+  .pp-kitchen-flow-brix__grid {
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 4.5rem;
+    align-items: center;
+  }
+}
+
+/* Left Column: Timeline */
+.pp-kitchen-flow-brix__header-sub {
+  margin-bottom: 2.5rem;
+}
+
+.pp-kitchen-flow-brix__accent-label {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  color: #10b981;
+  display: block;
+  margin-bottom: 0.6rem;
+  font-weight: 600;
+}
+
+.pp-kitchen-flow-brix__section-title {
+  font-family: var(--font-display, 'Playfair Display', serif);
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 700;
+  color: #f0fdfa;
+  margin: 0;
+}
+
+.pp-kitchen-flow-brix__inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  /* Vertical connecting line */
+  padding-left: 2.5rem;
+}
+
+.pp-kitchen-flow-brix__inner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 1rem;
+  width: 2px;
+  background: linear-gradient(180deg,
+    rgba(8, 145, 178, 0.4) 0%,
+    rgba(16, 185, 129, 0.25) 50%,
+    rgba(94, 234, 212, 0.1) 100%);
+}
+
+.pp-kitchen-flow-brix__step {
+  position: relative;
+  padding: 1.5rem 0 1.5rem 1.5rem;
+  border-bottom: 1px solid rgba(94, 234, 212, 0.05);
+  transition: background 0.3s;
+}
+
+.pp-kitchen-flow-brix__step:last-child {
+  border-bottom: none;
+}
+
+.pp-kitchen-flow-brix__step:hover {
+  background: rgba(8, 145, 178, 0.03);
+}
+
+/* Step number marker — circle on the timeline */
+.pp-kitchen-flow-brix__marker {
+  position: absolute;
+  left: -2.5rem;
+  top: 1.5rem;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0c1628;
+  border: 2px solid rgba(8, 145, 178, 0.5);
+  border-radius: 50%;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: #5eead4;
+  letter-spacing: 0;
+  z-index: 2;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.pp-kitchen-flow-brix__step:hover .pp-kitchen-flow-brix__marker {
+  border-color: #5eead4;
+  box-shadow: 0 0 12px rgba(94, 234, 212, 0.25);
+}
+
+.pp-kitchen-flow-brix__step p {
+  margin: 0;
+  font-size: clamp(0.93rem, 1vw, 1.02rem);
+  line-height: 1.85;
+  color: rgba(255, 255, 255, 0.55);
+  transition: color 0.3s;
+}
+
+.pp-kitchen-flow-brix__step:hover p {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+@media (min-width: 768px) {
+  .pp-kitchen-flow-brix__inner {
+    padding-left: 3.5rem;
+  }
+  .pp-kitchen-flow-brix__step {
+    padding-left: 2rem;
+  }
+  .pp-kitchen-flow-brix__marker {
+    left: -3.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 0.68rem;
+  }
+}
+
+/* Right Column: Visual Card (Máy rửa bát công nghiệp) */
+.pp-kitchen-flow-brix__visual-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.pp-kitchen-flow-brix__visual-card {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  background: rgba(15, 23, 42, 0.5);
+  border: 1px solid rgba(8, 145, 178, 0.15);
+  border-radius: 20px;
+  padding: 1.25rem;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow:
+    0 20px 45px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(8, 145, 178, 0.05);
+  transition: border-color 0.4s, box-shadow 0.4s, transform 0.4s;
+}
+
+.pp-kitchen-flow-brix__visual-card:hover {
+  border-color: rgba(8, 145, 178, 0.35);
+  box-shadow:
+    0 25px 50px rgba(0, 0, 0, 0.6),
+    0 0 25px rgba(8, 145, 178, 0.1);
+  transform: translateY(-4px);
+}
+
+.pp-kitchen-flow-brix__visual-tag {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  z-index: 3;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: #5eead4;
+  background: rgba(10, 15, 26, 0.85);
+  border: 1px solid rgba(8, 145, 178, 0.25);
+  padding: 0.25rem 0.55rem;
+  border-radius: 4px;
+}
+
+.pp-kitchen-flow-brix__image-frame {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  aspect-ratio: 4 / 3;
+  background: #0f172a;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.pp-kitchen-flow-brix__image-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.85);
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), filter 0.5s;
+}
+
+.pp-kitchen-flow-brix__visual-card:hover .pp-kitchen-flow-brix__image-frame img {
+  transform: scale(1.05);
+  filter: brightness(0.98);
+}
+
+.pp-kitchen-flow-brix__visual-info {
+  margin-top: 1.25rem;
+}
+
+.pp-kitchen-flow-brix__visual-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #f0fdfa;
+  margin: 0 0 0.5rem;
+}
+
+.pp-kitchen-flow-brix__visual-desc {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* ═══════════════════════════════════════════════════
+   Bakery Section — Featured Card (2-Column Grid)
+   ═══════════════════════════════════════════════════ */
+
+.pp-bakery-brix {
+  position: relative;
+  padding: clamp(3rem, 6vw, 5rem) 0 clamp(6rem, 12vw, 10rem);
+  background: #0a0f1a;
+}
+
+.pp-bakery-brix__card {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: clamp(2rem, 4vw, 3.5rem);
+  background: rgba(15, 23, 42, 0.5);
+  border: 1px solid rgba(16, 185, 129, 0.15);
+  border-radius: 28px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow:
+    0 25px 55px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(16, 185, 129, 0.05);
+  transition: border-color 0.4s, box-shadow 0.4s;
+}
+
+.pp-bakery-brix__card:hover {
+  border-color: rgba(16, 185, 129, 0.35);
+  box-shadow:
+    0 30px 65px rgba(0, 0, 0, 0.65),
+    0 0 25px rgba(16, 185, 129, 0.06);
+}
+
+.pp-bakery-brix__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+@media (min-width: 1024px) {
+  .pp-bakery-brix__grid {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 4rem;
+    align-items: center;
+  }
+}
+
+/* Left Column: Info & Bento Equipments */
+.pp-bakery-brix__header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.pp-bakery-brix__icon {
+  font-size: 2.2rem;
+  line-height: 1;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
+}
+
+.pp-bakery-brix__title {
+  font-family: var(--font-display, 'Playfair Display', serif);
+  font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+  font-weight: 700;
+  color: #f0fdfa;
+  margin: 0;
+}
+
+.pp-bakery-brix__body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.pp-bakery-brix__highlight {
+  font-size: clamp(0.95rem, 1.05vw, 1.1rem);
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.72) !important;
+}
+
+.pp-bakery-brix__body p {
+  margin: 0;
+  font-size: clamp(0.9rem, 0.98vw, 1rem);
+  line-height: 1.85;
+  color: rgba(255, 255, 255, 0.52);
+}
+
+/* Bento list mini equipments */
+.pp-bakery-brix__equipments {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 1.75rem;
+}
+
+.pp-bakery-brix__equipments-title {
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #10b981;
+  margin: 0 0 1rem;
+}
+
+.pp-bakery-brix__equipments-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.85rem;
+}
+
+@media (min-width: 480px) {
+  .pp-bakery-brix__equipments-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+.pp-bakery-brix__equipment-item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.6);
+  padding: 0.65rem 0.85rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  transition: background 0.3s, border-color 0.3s, color 0.3s;
+}
+
+.pp-bakery-brix__equipment-item:hover {
+  background: rgba(16, 185, 129, 0.04);
+  border-color: rgba(16, 185, 129, 0.2);
+  color: #f0fdfa;
+}
+
+.pp-bakery-brix__eq-dot {
+  width: 5px;
+  height: 5px;
+  background: #10b981;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
+  flex-shrink: 0;
+}
+
+/* Right Column: Visual Lò nướng UNOX (3D Float Glass) */
+.pp-bakery-brix__visual {
+  position: relative;
+}
+
+.pp-bakery-brix__visual-card-inner {
+  position: relative;
+  background: rgba(15, 23, 42, 0.4);
+  border: 1px solid rgba(16, 185, 129, 0.15);
+  border-radius: 24px;
+  padding: 1.25rem;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.55);
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.4s, box-shadow 0.4s;
+  overflow: hidden;
+}
+
+.pp-bakery-brix__visual-card-inner:hover {
+  border-color: rgba(16, 185, 129, 0.35);
+  box-shadow:
+    0 30px 60px rgba(0, 0, 0, 0.65),
+    0 0 30px rgba(16, 185, 129, 0.08);
+  transform: scale(1.015) rotate(0.5deg);
+}
+
+.pp-bakery-brix__visual-tag {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  z-index: 3;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: #5eead4;
+  background: rgba(10, 15, 26, 0.85);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  padding: 0.25rem 0.55rem;
+  border-radius: 4px;
+}
+
+.pp-bakery-brix__visual-image {
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+  aspect-ratio: 4 / 3;
+  background: #0f172a;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.pp-bakery-brix__visual-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.82);
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), filter 0.5s;
+}
+
+.pp-bakery-brix__visual-card-inner:hover .pp-bakery-brix__visual-image img {
+  transform: scale(1.06);
+  filter: brightness(0.98);
+}
+
+.pp-bakery-brix__visual-caption {
+  margin-top: 1.25rem;
+}
+
+.pp-bakery-brix__visual-caption h5 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #f0fdfa;
+  margin: 0 0 0.5rem;
+}
+
+.pp-bakery-brix__visual-caption p {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.5);
+}

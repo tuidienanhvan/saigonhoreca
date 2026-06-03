@@ -4,7 +4,7 @@
  * @package SaigonHoreca
  */
 
-// Slugs match static-mirror/danh-muc-san-pham/* (production canonical).
+// Slugs match static-mirror/saigonhoreca.vn/danh-muc-san-pham/* (production canonical).
 $footer_services = [
     ['label' => __('Thiết bị bếp công nghiệp', 'saigonhoreca'), 'page' => '/danh-muc-san-pham/thiet-bi-bep-cong-nghiep/'],
     ['label' => __('Thiết bị quầy bar cafe', 'saigonhoreca'),   'page' => '/danh-muc-san-pham/thiet-bi-quay-bar-cafe/'],

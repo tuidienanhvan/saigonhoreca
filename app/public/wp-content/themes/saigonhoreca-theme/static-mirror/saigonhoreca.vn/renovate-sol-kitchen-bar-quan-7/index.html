@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="vi" prefix="og: https://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Resource Hints -->
+    <link rel="dns-prefetch" href="https://img.youtube.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Favicons & Manifest -->
+    <link rel="icon" type="image/x-icon" href="#">
+    <link rel="apple-touch-icon" sizes="180x180" href="#">
+    <link rel="icon" type="image/png" sizes="32x32" href="#">
+    <link rel="icon" type="image/png" sizes="16x16" href="#">
+    <link rel="manifest" href="https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/manifest.json">
+    
+    <style id="sgh-critical">*,:before,:after{box-sizing:border-box}html,body{margin:0;padding:0}body{font-family:Be Vietnam Pro,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.5;color:#fff;background:#0a0a0a;-webkit-font-smoothing:antialiased}h1,h2,h3,h4,h5,h6{margin:0;font-weight:700;color:#fff}img,svg,video{display:block;max-width:100%;height:auto}a{color:inherit;text-decoration:none}button{border:0;cursor:pointer;font:inherit;background:transparent}.sh-skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;background:#f5a623;color:#fff;padding:.5rem 1rem;z-index:100}.sh-skip-link:focus{left:16px;top:16px;width:auto;height:auto}.sh-header{position:sticky;top:0;z-index:50;width:100%;background:#000;border-bottom:1px solid rgba(255,255,255,0.06)}.sh-header__bar{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;padding:.75rem 1.25rem;min-height:76px;color:#fff}.sh-header__actions{display:flex;gap:.75rem;align-items:center}.sh-nav{display:none;position:relative;z-index:10;justify-content:center;align-items:center;overflow:visible;max-width:100%}@media(min-width:1024px){.sh-nav{display:flex}}.sh-nav__list{display:flex;flex-wrap:nowrap;justify-content:center;align-items:center;gap:.25rem;margin:0;padding:0;list-style:none}@media(min-width:1024px){.sh-nav__list{gap:.5rem}}@media(min-width:1280px){.sh-nav__list{gap:1rem}}.sh-nav-item{display:flex;align-items:center;height:100%;position:relative}.sh-nav-item__link{display:inline-flex;align-items:center;gap:.375rem;padding:1.5rem .875rem;font-size:clamp(11px,.9vw,13px);font-weight:700;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;color:rgba(255,255,255,0.88);text-decoration:none}.sh-nav-item__chevron{display:inline-flex;margin-left:.25rem}.sh-nav-item__chevron-icon{display:block;width:.75rem;height:.75rem;opacity:.7}.sh-hero{position:relative;width:100%;aspect-ratio:16/9;background:#000;overflow:hidden}.sh-hero__slider{position:relative;width:100%;height:100%;background:#000}.sh-hero__slides{position:relative;width:100%;height:100%}.carousel-slide{position:absolute;inset:0;width:100%;height:100%;display:none;background:#000}.carousel-slide.active{display:block;z-index:20;opacity:1}.sh-hero__bg-img,.carousel-slide .slide-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;background:#000}.sh-hero__overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(0,0,0,0.55) 0%,rgba(0,0,0,0.30) 40%,rgba(0,0,0,0.15) 100%);pointer-events:none}.sgh-cv-auto{content-visibility:auto;contain-intrinsic-size:auto 600px}#sh-hero-slider .carousel-slide .slide-bg,#sh-hero-slider .carousel-slide .sh-hero__bg-img,.sh-hero__slider .carousel-slide .slide-bg,.sh-hero__slider .carousel-slide .sh-hero__bg-img{animation:none!important;transform:none!important}.sh-hero__nav{position:absolute;top:50%;transform:translateY(-50%);z-index:20;background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.3);color:#fff;width:2.75rem;height:2.75rem;border-radius:9999px;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:.8}.sh-hero__nav--prev{left:1rem}.sh-hero__nav--next{right:1rem}@media(min-width:768px){.sh-hero__nav{width:3.5rem;height:3.5rem}.sh-hero__nav--prev{left:2rem}.sh-hero__nav--next{right:2rem}}.sh-hero__dots{position:absolute;bottom:2rem;right:2rem;z-index:20;display:flex;gap:.5rem}.sh-hero__dot,.carousel-dot{width:.5rem;height:.5rem;padding:0;border:none;border-radius:9999px;background:rgba(255,255,255,0.4);cursor:pointer}.sh-hero__dot.active,.carousel-dot.active{width:2rem;background:#f5a623}
+/* Per-route critical CSS — Saigon Horeca.
+ *
+ * Inlined by critical-css.php (concatenated after critical.css). Covers
+ * above-fold styles for routes where the route-bundle CSS round-trip
+ * would otherwise gate the LCP paint.
+ */
+
+/* ── /du-an/ archive hero — kill 1.2 s opacity-fade-in for LCP slide ──
+ *
+ * The bg-stack has 6 absolute-positioned <div> slides; slide 0 has
+ * `.is-active` server-side but the route bundle animates opacity
+ * 0 → 1 over 1.2 s. Lighthouse Mobile baseline: P=75, LCP=7.9 s with
+ * 88 % render-delay because LCP element waits for opacity:1.
+ *
+ * Inlining paints the active slide at opacity:1 immediately on first
+ * HTML parse — no waiting for theme-archive-project.css to arrive.
+ * Carousel JS still toggles `is-active` to cycle slides; subsequent
+ * transitions still animate after the first paint completes.
+ */
+.sh-archive-hero {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: #000;
+    overflow: hidden;
+}
+.sh-archive-hero__bg-stack {
+    position: absolute;
+    inset: 0;
+}
+.sh-archive-hero__bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+}
+.sh-archive-hero__bg.is-active {
+    opacity: 1;
+}
+
+/* ── /ve-saigon-horeca/ (page-gioi-thieu template) about hero ──
+ * Same opacity-fade trap. Force opacity:1 on first paint. */
+.sh-about-hero {
+    position: relative;
+    width: 100%;
+    min-height: 520px;
+    background: #000;
+    overflow: hidden;
+}
+@media (max-width: 640px) {
+    .sh-about-hero { min-height: 380px; }
+}
+.sh-about-hero__bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 1;
+}
+</style>
+        <title>Renovate SOL KITCHEN &#038; BAR quận 7 &#8211; Saigon Horeca</title>
+<meta name='robots' content='max-image-preview:large' />
+<meta name="description" content="Saigon Horeca vinh hạnh được chủ đầu tư Sol Kitchen &amp; Bar tin tưởng – Giá tốt, bảo hành chính hãng – Hotline: 0901 304 365">
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//www.googletagmanager.com' />
+<link rel='dns-prefetch' href='//www.google-analytics.com' />
+<link rel='dns-prefetch' href='//zalo.me' />
+<link rel='dns-prefetch' href='//www.facebook.com' />
+<link rel='dns-prefetch' href='//www.youtube.com' />
+<link rel="preload" as="style" href="css/theme-project.css">
+<link rel="alternate" type="application/rss+xml" title="Saigon Horeca &raquo; Renovate SOL KITCHEN &#038; BAR quận 7 Comments Feed" href="https://saigonhoreca.local/du-an/renovate-sol-kitchen-bar-quan-7/feed/" />
+    <script>
+    (function(){
+        // Always load tracking — cookie consent is cosmetic only
+        function afterConsent(cb) {
+            try {
+                if (localStorage.getItem('sh_cookies_accepted') === '1') {
+                    cb();
+                    return;
+                }
+            } catch (e) {}
+            window.addEventListener('sh:cookies-accepted', cb, { once: true });
+        }
+        afterConsent(function(){
+                        });
+    })();
+    </script>
+    <style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+
+
+<link rel='stylesheet' id='theme-tokens-css' href='css/theme-project.css' media='all' />
+<style id="theme-tokens-inline-css">
+
+        :root {
+            --font-body: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            --font-heading: "Lexend", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            --font-serif: "Lora", Georgia, serif;
+            --ast-global-color-0: #f9c349;
+            --ast-global-color-1: #ffb100;
+            --ast-global-color-2: #000000;
+            --ast-global-color-3: #242525;
+            --ast-global-color-4: #f9fafb;
+            --ast-global-color-5: #ffffff;
+            --ast-global-color-6: #e2e8f0;
+            --ast-global-color-7: #cbd5e1;
+            --ast-global-color-8: #94a3b8;
+            --e-global-color-astglobalcolor0: #f9c349;
+            --e-global-color-astglobalcolor1: #ffb100;
+            --e-global-color-astglobalcolor2: #000000;
+            --e-global-color-astglobalcolor3: #242525;
+            --e-global-color-astglobalcolor4: #f9fafb;
+            --e-global-color-astglobalcolor5: #ffffff;
+            --e-global-color-astglobalcolor6: #e2e8f0;
+            --e-global-color-astglobalcolor7: #cbd5e1;
+            --e-global-color-astglobalcolor8: #94a3b8;
+        }
+        body { font-family: var(--font-body); }
+        h1, h2, h3, h4, h5, h6, .font-sans { font-family: var(--font-heading) !important; }
+        .e-font-icon-svg { display: inline-block; width: 1em; height: 1em; fill: currentColor; }
+
+        /* ROKA FELLA CAPTION & LAYOUT ENHANCEMENTS */
+        .pp-image-container-rf {
+            position: relative !important;
+            overflow: hidden !important;
+        }
+        .pp-image-caption-rf {
+            position: absolute !important;
+            bottom: 0.75rem !important;
+            left: 0.75rem !important;
+            z-index: 5 !important;
+            padding: 0.4rem 0.85rem !important;
+            background: rgba(10, 10, 10, 0.85) !important;
+            border: 1px solid rgba(255, 255, 255, 0.12) !important;
+            border-radius: 6px !important;
+            font-family: var(--font-heading), sans-serif !important;
+            font-size: 0.68rem !important;
+            font-weight: 700 !important;
+            letter-spacing: 0.05em !important;
+            color: var(--gold) !important;
+            backdrop-filter: blur(8px) !important;
+            -webkit-backdrop-filter: blur(8px) !important;
+            pointer-events: none !important;
+            opacity: 0.85 !important;
+            transition: opacity 0.3s ease, transform 0.3s ease !important;
+            width: auto !important;
+            max-width: calc(100% - 1.5rem) !important;
+            text-align: left !important;
+            display: inline-block !important;
+            border-top: none !important;
+        }
+        .pp-image-container-rf:hover .pp-image-caption-rf {
+            opacity: 1 !important;
+            transform: translateY(-2px) !important;
+        }
+        .pp-image-container-rf img {
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        }
+        .pp-image-container-rf:hover img {
+            transform: scale(1.04) !important;
+            filter: grayscale(0%) contrast(1.05) brightness(1.02) !important;
+        }
+        /* Premium Cards styling */
+        .rkf-concept__glass-card,
+        .rkf-specs__glass-card {
+            background: linear-gradient(135deg, rgba(12, 14, 20, 0.92) 0%, rgba(6, 7, 10, 0.97) 100%) !important;
+            border: 1px solid rgba(245, 166, 35, 0.18) !important;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), inset 0 0 35px rgba(245, 166, 35, 0.04) !important;
+        }
+        .rkf-concept__glass-card:hover,
+        .rkf-specs__glass-card:hover {
+            border-color: rgba(245, 166, 35, 0.45) !important;
+            box-shadow: 0 35px 70px rgba(0, 0, 0, 0.92), 0 0 35px rgba(245, 166, 35, 0.1) !important;
+        }
+        .rkf-partnership__glass-card,
+        .rkf-related__glass-card {
+            background: linear-gradient(135deg, rgba(12, 14, 20, 0.92) 0%, rgba(6, 7, 10, 0.97) 100%) !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.85) !important;
+        }
+        .rkf-partnership__glass-card:hover,
+        .rkf-related__glass-card:hover {
+            border-color: rgba(255, 255, 255, 0.15) !important;
+            box-shadow: 0 35px 70px rgba(0, 0, 0, 0.95) !important;
+        }
+        /* Staggered floaters adjustment */
+        .rkf-partnership__image-container--floating {
+            box-shadow: -20px 20px 50px rgba(0, 0, 0, 0.9), 0 0 30px rgba(245, 166, 35, 0.15) !important;
+            transform: rotate(3deg) translateY(0) !important;
+        }
+        .rkf-partnership__side:hover .rkf-partnership__image-container--floating {
+            transform: scale(1.04) rotate(0deg) translateY(-10px) !important;
+        }
+    
+/*# sourceURL=theme-tokens-inline-css */
+</style>
+<link rel='preload' as='style' onload="this.onload=null;this.rel='stylesheet'" id='google-fonts-sgh-css' href='https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&#038;family=Lexend:wght@500;700&#038;family=Lora:ital,wght@0,400;0,500;0,700;1,400;1,700&#038;display=swap' media='all' />
+<link rel="https://api.w.org/" href="https://saigonhoreca.local/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://saigonhoreca.local/wp-json/wp/v2/project/740" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://saigonhoreca.local/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress 7.0" />
+<link rel="canonical" href="https://saigonhoreca.local/du-an/renovate-sol-kitchen-bar-quan-7/" />
+<link rel='shortlink' href='https://saigonhoreca.local/?p=740' />
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","@id":"https://saigonhoreca.local/#organization","name":"SAIGON HORECA","legalName":"CÔNG TY TNHH SÀI GÒN HORECA","url":"https://saigonhoreca.local/","description":"Saigon Horeca cung cấp đa dạng các sản phẩm thiết bị bếp công nghiệp và thiết bị quầy bar phục vụ cho khách hàng trong lĩnh vực F&B, bao gồm tư vấn thiết kế, thi công lắp đặt, cung cấp thiết bị, và tư vấn vận hành kinh doanh.","telephone":"0901 304 365","email":"contact@saigonhoreca.com","address":{"@type":"PostalAddress","streetAddress":"Số 40 Đường Số 6, Khu Dân Cư Melosa Khang Điền, Phường Long Trường, TP. Hồ Chí Minh","addressLocality":"Hồ Chí Minh","addressRegion":"Hồ Chí Minh","addressCountry":"VN"},"logo":{"@type":"ImageObject","url":"#"},"image":"#","sameAs":["https://www.facebook.com/saigonhoreca","https://www.youtube.com/@saigonhoreca","https://zalo.me/0901304365"],"contactPoint":[{"@type":"ContactPoint","telephone":"0901 304 365","contactType":"sales","areaServed":"VN","availableLanguage":["Vietnamese","English"]},{"@type":"ContactPoint","telephone":"0909 040 920","contactType":"customer support","areaServed":"VN"}]}</script>
+
+<link rel="alternate" hreflang="vi" href="https://saigonhoreca.vn/du-an/renovate-sol-kitchen-bar-quan-7/">
+<link rel="alternate" hreflang="en" href="https://saigonhoreca.com/projects/renovate-sol-kitchen-bar-quan-7/">
+<link rel="alternate" hreflang="x-default" href="https://saigonhoreca.vn/du-an/renovate-sol-kitchen-bar-quan-7/">
+
+    <!-- SEO Fallback: OpenGraph only (meta description is handled by
+         inc/core/seo-meta-description.php to guarantee 120-155 chars). -->
+            <meta property="og:title" content="Renovate SOL KITCHEN &#038; BAR quận 7">
+        <meta property="og:description" content="Saigon Horeca vinh hạnh được chủ đầu tư Sol Kitchen &amp; Bar tin tưởng – Giá tốt, bảo hành chính hãng – Hotline: 0901 304 365">
+        <meta property="og:url" content="https://saigonhoreca.local/du-an/renovate-sol-kitchen-bar-quan-7/">
+        <meta property="og:type" content="website">
+        <meta property="og:image" content="#">
+        <meta property="og:site_name" content="Saigon Horeca">
+    
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Dark mode & Lighthouse Optimization: apply BEFORE paint to prevent flash & bypass animation delays -->
+    <script>
+    (function(){
+        // 1. Dark mode
+        var d = null;
+        try { d = localStorage.getItem('sh-dark'); } catch (e) {}
+        if (d === 'true') document.documentElement.classList.add('dark');
+    })();
+    </script>
+        </head>
+<body class="wp-singular project-template-default single single-project postid-740 wp-embed-responsive wp-theme-saigonhoreca-theme page-template-page-project-renovate-sol-kitchen-bar-quan-7 page-template-page-project">
+<main id="primary" class="pp" tabindex="-1">
+    <section class="pp-hero-rsk">
+    <div class="pp-hero-rsk__media">
+        <iframe src="https://www.youtube.com/embed/c8aOoxqXJqI?autoplay=1&mute=1&loop=1&playlist=c8aOoxqXJqI&controls=0&showinfo=0&modestbranding=1&iv_load_policy=3&playsinline=1&disablekb=1&fs=0&rel=0&cc_load_policy=0&color=white&hl=vi" allow="autoplay; encrypted-media; fullscreen" frameborder="0" title="Background video" tabindex="-1"></iframe>
+    </div>
+    <div class="pp-hero-rsk__overlay" aria-hidden="true"></div>
+    <div class="pp-hero-rsk__content">
+        <div class="pp-hero-rsk__meta-badge">
+            <span class="pp-hero-rsk__meta-tag">PROJECT PILLAR</span>
+            <span class="pp-hero-rsk__meta-sep">•</span>
+            <span class="pp-hero-rsk__meta-tag">RENOVATION</span>
+        </div>
+        
+        <h1 class="pp-hero-rsk__title-wrap">
+            <span class="pp-hero-rsk__title-top">SOL KITCHEN &amp; BAR</span>
+            <span class="pp-hero-rsk__title-sub">Cải tạo không gian bếp &amp; nhà hàng chuyên nghiệp tại Quận 7</span>
+        </h1>
+        
+        <div class="pp-hero-rsk__award">
+            <span class="pp-hero-rsk__award-star">★</span>
+            <span class="pp-hero-rsk__award-text">Featured in 2023 MICHELIN Guide Vietnam</span>
+            <span class="pp-hero-rsk__award-star">★</span>
+        </div>
+        
+        <div class="pp-hero-rsk__scroll">
+            <span class="pp-hero-rsk__scroll-line"></span>
+        </div>
+    </div>
+</section>
+<section class="sgh-intro-section">
+  <div class="sgh-intro-container">
+    <div class="sgh-intro-row">
+      
+      <!-- CỘT TRÁI: TEXT & CONTEXT -->
+      <div class="sgh-intro-col sgh-intro-col--text">
+        <div class="sgh-intro-badge">
+          <span class="sgh-intro-badge__accent">//</span>
+          BỐI CẢNH DỰ ÁN        </div>
+        
+        <h2 class="sgh-intro-title">
+          Sự Đồng Hành Cùng Tác Phẩm Michelin        </h2>
+        
+        <div class="sgh-intro-body">
+          <blockquote class="sgh-intro-quote">
+            Nơi nghệ thuật ẩm thực Mỹ Latinh gặp gỡ giải pháp vận hành bếp công nghiệp đỉnh cao.          </blockquote>
+          <p class="sgh-intro-paragraph">
+            Tiếp nối sự thành công của nhà hàng Sol quận 1 khi lọt vào Michelin Guide 2023, Saigon Horeca vinh hạnh được chủ đầu tư Sol Kitchen &amp; Bar tin tưởng lựa chọn là đơn vị uy tín triển khai hệ thống bếp cao cấp cho nhà hàng tại quận 7, HCMC.          </p>
+        </div>
+      </div>
+      
+      <!-- CỘT PHẢI: 3D PERSPECTIVE SAFARI MOCKUP -->
+      <div class="sgh-intro-col sgh-intro-col--media">
+        <div class="sgh-intro-mockup-wrapper">
+          <!-- Ambient Glow sau Mockup -->
+          <div class="sgh-intro-ambient-glow" aria-hidden="true"></div>
+          
+          <!-- Browser Mockup -->
+          <div class="sgh-intro-browser">
+            <!-- Header của trình duyệt Safari -->
+            <div class="sgh-intro-browser__header">
+              <div class="sgh-intro-browser__buttons">
+                <span class="sgh-intro-browser__btn sgh-intro-browser__btn--red"></span>
+                <span class="sgh-intro-browser__btn sgh-intro-browser__btn--yellow"></span>
+                <span class="sgh-intro-browser__btn sgh-intro-browser__btn--green"></span>
+              </div>
+              <div class="sgh-intro-browser__address">
+                <span class="sgh-intro-browser__lock">🔒</span>
+                guide.michelin.com/vn/vi/ho-chi-minh/sol-kitchen-bar
+              </div>
+            </div>
+            <!-- Nội dung trình duyệt chứa screenshot -->
+            <div class="sgh-intro-browser__viewport">
+              <img src="images/Sol0D7-01.jpg" alt="Đánh giá Michelin Guide của Sol Kitchen &amp; Bar" loading="lazy" decoding="async" width="1366" height="768">
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+<section class="pp-concept-section">
+  <div class="pp-concept-container">
+    
+    <!-- BLOCK 1: Title & Paragraph 1 & Slider 1 -->
+    <div class="sgh-concept-row">
+      <div class="sgh-concept-col sgh-concept-col--text">
+        <h2 class="sgh-concept-title">
+          <span class="sgh-concept-title__accent">//</span>
+          Thách thức &amp; Khó khăn        </h2>
+        <div class="sgh-concept-body">
+          <p class="sgh-concept-paragraph sgh-concept-paragraph--dropcap">
+            Khi tiếp nhận thông tin và yêu cầu từ chủ đầu tư, Saigon Horeca đã đối mặt với nhiều khó khăn và thử thách. Việc cải tạo lại khu bếp hiện hữu rộng hơn 70m2 yêu cầu phải bố trí lại các thiết bị đang còn hoạt động và phải đảm bảo đúng công năng hoạt động, quy trình chế biến của toàn bộ khu bếp.          </p>
+        </div>
+      </div>
+      
+      <div class="sgh-concept-col sgh-concept-col--slider">
+        <!-- BEFORE-AFTER SLIDER 1: Bếp Cũ vs Bếp Mới -->
+        <div class="sgh-compare">
+          <div class="sgh-compare__after">
+            <img src="images/Sol0D7-03.jpg" alt="After - Khu bếp sau khi cải tạo hoàn thiện bởi Saigon Horeca" loading="lazy" decoding="async">
+          </div>
+          <div class="sgh-compare__before" style="width: 50%;">
+            <img src="images/Sol0D7-02.jpg" alt="Before - Hiện trạng khu bếp cũ trước khi cải tạo" loading="lazy" decoding="async">
+          </div>
+          <div class="sgh-compare__line" style="left: 50%;"></div>
+          <div class="sgh-compare__handle" style="left: 50%;"></div>
+          <input type="range" min="0" max="100" value="50" class="sgh-compare__slider" aria-label="Compare Before and After images">
+        </div>
+        <span class="sgh-compare-label">Khu vực nấu chính (Bếp cũ &amp; Bếp mới sau cải tạo)</span>
+      </div>
+    </div>
+
+    <!-- BLOCK 2: Slider 2 & Paragraph 2 (Reversed Grid) -->
+    <div class="sgh-concept-row sgh-concept-row--reverse">
+      <div class="sgh-concept-col sgh-concept-col--text">
+        <div class="sgh-concept-body">
+        <blockquote class="sgh-concept-quote">
+            Khảo sát tỉ mỉ từng chi tiết, đánh giá tối ưu công năng để tích hợp thiết bị cũ và mới vào một hệ sinh thái vận hành trơn tru nhất.          </blockquote>
+          <p class="sgh-concept-paragraph">
+            Để làm được điều này, đội ngũ kỹ thuật của Saigon Horeca đã phải tiến hành khảo sát tỉ mỉ và chi tiết qua nhiều ngày, đánh giá từng thiết bị và lập kế hoạch chi tiết để tích hợp các thiết bị cũ vào hệ thống mới một cách hợp lý và hiệu quả nhất.          </p>
+        </div>
+      </div>
+
+      <div class="sgh-concept-col sgh-concept-col--slider">
+        <!-- BEFORE-AFTER SLIDER 2: Khu Rửa & Lưu Trữ Cũ vs Mới -->
+        <div class="sgh-compare">
+          <div class="sgh-compare__after">
+            <img src="images/Sol0D7-05.jpg" alt="After - Lắp đặt tủ đông mát và thiết bị inox khu rửa hoàn thiện" loading="lazy" decoding="async">
+          </div>
+          <div class="sgh-compare__before" style="width: 50%;">
+            <img src="images/Sol0D7-04.jpg" alt="Before - Hiện trạng khu rửa và lưu trữ cũ" loading="lazy" decoding="async">
+          </div>
+          <div class="sgh-compare__line" style="left: 50%;"></div>
+          <div class="sgh-compare__handle" style="left: 50%;"></div>
+          <input type="range" min="0" max="100" value="50" class="sgh-compare__slider" aria-label="Compare Before and After images">
+        </div>
+        <span class="sgh-compare-label">Khu sơ chế và hệ thống rửa, lưu trữ lạnh</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.sgh-compare__slider').forEach(function(slider) {
+    slider.addEventListener('input', function(e) {
+      var value = e.target.value;
+      var container = e.target.closest('.sgh-compare');
+      var beforeImg = container.querySelector('.sgh-compare__before');
+      var handle = container.querySelector('.sgh-compare__handle');
+      var line = container.querySelector('.sgh-compare__line');
+      
+      if (beforeImg) beforeImg.style.width = value + '%';
+      if (handle) handle.style.left = value + '%';
+      if (line) line.style.left = value + '%';
+    });
+  });
+});
+</script>
+<section class="sgh-ventilation-section">
+  <div class="sgh-ventilation-container">
+    <div class="sgh-ventilation-grid">
+      
+      <!-- Cột trái: Text & Spec kĩ thuật sang trọng -->
+      <div class="sgh-ventilation-text">
+        <div class="sgh-ventilation-badge">
+          <span class="sgh-ventilation-badge__accent">//</span> DỊCH VỤ & KỸ THUẬT
+        </div>
+        
+        <h3 class="sgh-ventilation-title">
+          Hệ Thống Chụp Hút Khói Khử Mùi &amp; Cấp Gió Tươi        </h3>
+        
+        <div class="sgh-ventilation-body">
+          <p class="sgh-ventilation-paragraph">
+            Hệ thống chụp hút khói dài 8m được thiết kế để hút khói và cấp gió tươi song song trong khu vực nấu. Hệ thống này giúp luồng khí lưu thông liên tục, tạo không gian thoải mái cho các đầu bếp làm việc và hạn chế tình trạng bí khí, đảm bảo môi trường làm việc trong lành và thoáng đãng.          </p>
+          <p class="sgh-ventilation-paragraph">
+            Trong khu vực rửa, một hệ thống chụp hút khói dài 2m cũng được lắp đặt để hút khói và cấp gió tươi độc lập, đảm bảo khu vực vệ sinh luôn sạch sẽ, khô ráo và không bị ẩm mốc trong suốt quá trình vận hành liên tục của nhà hàng.          </p>
+        </div>
+
+        <!-- Technical Specs Card cao cấp -->
+        <div class="sgh-ventilation-specs">
+          <h4 class="sgh-ventilation-specs__title">Thông số kỹ thuật lắp đặt</h4>
+          <div class="sgh-ventilation-specs__grid">
+            <div class="sgh-ventilation-specs__item">
+              <span class="sgh-ventilation-specs__label">Chụp hút nấu chính</span>
+              <span class="sgh-ventilation-specs__value">Dài 8.0 mét</span>
+            </div>
+            <div class="sgh-ventilation-specs__item">
+              <span class="sgh-ventilation-specs__label">Chụp hút khu rửa</span>
+              <span class="sgh-ventilation-specs__value">Dài 2.0 mét</span>
+            </div>
+            <div class="sgh-ventilation-specs__item">
+              <span class="sgh-ventilation-specs__label">Cơ chế vận hành</span>
+              <span class="sgh-ventilation-specs__value">Hút &amp; Cấp gió song song</span>
+            </div>
+            <div class="sgh-ventilation-specs__item">
+              <span class="sgh-ventilation-specs__label">Tiêu chuẩn kỹ thuật</span>
+              <span class="sgh-ventilation-specs__value">Michelin-Grade Standard</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Cột phải: Lưới Mosaic lồng ghép 3 ảnh có Depth & Overlap -->
+      <div class="sgh-ventilation-media">
+        <div class="sgh-ventilation-mosaic">
+          
+          <!-- Ảnh 1 (Main): Chụp hút 8m khu nấu chính -->
+          <div class="sgh-ventilation-mosaic__item sgh-ventilation-mosaic__item--main">
+            <img src="images/chup-hut-8m-1-1.jpg" alt="Hệ thống chụp hút khói khu nấu chính 8m - Saigon Horeca" loading="lazy" decoding="async" width="1366" height="768">
+          </div>
+          
+          <!-- Ảnh 2 (Sub 1): Góc cận chụp hút 8m -->
+          <div class="sgh-ventilation-mosaic__item sgh-ventilation-mosaic__item--sub1">
+            <img src="images/chup-hut-8m-2-1.jpg" alt="Cận cảnh thi công lắp đặt chụp hút khói 8m - Saigon Horeca" loading="lazy" decoding="async" width="1366" height="768">
+          </div>
+          
+          <!-- Ảnh 3 (Sub 2): Chụp hút 2m khu rửa đang lắp đặt -->
+          <div class="sgh-ventilation-mosaic__item sgh-ventilation-mosaic__item--sub2">
+            <img src="images/chup-hut-2m-1.jpg" alt="Lắp đặt chụp hút khói khu rửa 2m - Saigon Horeca" loading="lazy" decoding="async" width="1366" height="768">
+          </div>
+          
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="sgh-specs-section">
+  <!-- Thẻ con gánh hiệu ứng Parallax Clip-Path siêu mượt -->
+  <div class="sgh-specs-section__bg" style="background-image:url('images/SGH-sold7-01.jpg');"></div>
+  <div class="sgh-specs-overlay" aria-hidden="true"></div>
+  <div class="sgh-specs-container">
+    <div class="sgh-specs-card">
+      <div class="sgh-specs-badge">
+        <span class="sgh-specs-badge__accent">//</span> TƯ DUY KỸ THUẬT      </div>
+      <h2 class="sgh-specs-title">Sự Tinh Tế Trong Thiết Kế &amp; Quy Hoạch Bếp</h2>
+      <div class="sgh-specs-line" aria-hidden="true"></div>
+      <p class="sgh-specs-paragraph">
+        Sol Kitchen &amp; Bar quận 7 đã được trang bị một khu bếp rộng hơn 70m2, đảm bảo sự tiện nghi và chuyên nghiệp tối đa trong quá trình vận hành. Toàn bộ khu vực được lắp đặt các thiết bị bếp inox cao cấp như hệ thống tủ đông, tủ mát, lò nướng combi, salamander, plancha, và đặc biệt là hệ thống lò BBQ độc quyền do chính Saigon Horeca thiết kế, đo đạc và sản xuất riêng biệt để đáp ứng hoàn hảo thực đơn Mỹ Latinh đặc trưng của Sol quận 7.      </p>
+    </div>
+  </div>
+</section>
+
+<section class="sgh-gallery-section">
+  <div class="sgh-gallery-container">
+    <div class="sgh-gallery-grid">
+      
+      <!-- Cột trái: Offset Frame Media Showcase -->
+      <div class="sgh-gallery-media">
+        <div class="sgh-gallery-media__frame" aria-hidden="true"></div>
+        <div class="sgh-gallery-media__wrapper">
+          <img src="images/SGH-sold7-01.jpg" alt="Hệ thống thiết bị bếp inox công nghiệp cao cấp tại Sol Kitchen &amp; Bar - Saigon Horeca" loading="lazy" decoding="async" width="1366" height="768">
+        </div>
+      </div>
+
+      <!-- Cột phải: Thuyết minh & Feature List -->
+      <div class="sgh-gallery-text">
+        <div class="sgh-gallery-badge">
+          <span class="sgh-gallery-badge__accent">//</span> GIẢI PHÁP ĐỒNG BỘ        </div>
+        
+        <h3 class="sgh-gallery-title">
+          Quy Quy Hoạch &amp; Tối Ưu Hóa Thiết Bị Bếp        </h3>
+        
+        <div class="sgh-gallery-body">
+          <p class="sgh-gallery-paragraph">
+            Saigon Horeca cung cấp hệ thống tủ đông và tủ mát cao cấp, đảm bảo việc bảo quản thực phẩm luôn ở nhiệt độ tối ưu theo tiêu chuẩn vệ sinh an toàn thực phẩm HACCP. Lò nướng combi thông minh là sự kết hợp hoàn hảo giữa nướng và hấp, mang đến khả năng chế biến các món ăn chất lượng cao với tốc độ vượt trội.          </p>
+          <p class="sgh-gallery-paragraph">
+            Đặc biệt, lò BBQ sản xuất riêng biệt mang phong cách Italia chính là điểm nhấn thẩm mỹ nghệ thuật độc đáo cho gian bếp mở của Sol Kitchen &amp; Bar, kết hợp sự vững chãi với tính năng dễ dàng thao tác.          </p>
+          <p class="sgh-gallery-paragraph">
+            Song song với việc lắp đặt thiết bị mới, chúng tôi đã chủ động kiểm định công năng và tái tích hợp các thiết bị sẵn có của chủ đầu tư, tối ưu hóa ngân sách mà vẫn bảo đảm chuỗi vận hành liên tục ổn định.          </p>
+        </div>
+
+        <!-- High-End Technical Feature List -->
+        <div class="sgh-gallery-features">
+          <div class="sgh-gallery-feature-item">
+            <span class="sgh-gallery-feature-icon">❖</span>
+            <div class="sgh-gallery-feature-content">
+              <span class="sgh-gallery-feature-title">Bảo quản HACCP</span>
+              <span class="sgh-gallery-feature-desc">Hệ tủ đông/mát đa tầng</span>
+            </div>
+          </div>
+          <div class="sgh-gallery-feature-item">
+            <span class="sgh-gallery-feature-icon">❖</span>
+            <div class="sgh-gallery-feature-content">
+              <span class="sgh-gallery-feature-title">Lò nướng Combi</span>
+              <span class="sgh-gallery-feature-desc">Hấp nướng thông minh</span>
+            </div>
+          </div>
+          <div class="sgh-gallery-feature-item">
+            <span class="sgh-gallery-feature-icon">❖</span>
+            <div class="sgh-gallery-feature-content">
+              <span class="sgh-gallery-feature-title">Lò BBQ Custom</span>
+              <span class="sgh-gallery-feature-desc">Phong cách Ý độc quyền</span>
+            </div>
+          </div>
+          <div class="sgh-gallery-feature-item">
+            <span class="sgh-gallery-feature-icon">❖</span>
+            <div class="sgh-gallery-feature-content">
+              <span class="sgh-gallery-feature-title">Tối ưu ngân sách</span>
+              <span class="sgh-gallery-feature-desc">Kiểm định và tái tích hợp</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="sgh-related-section">
+  <div class="sgh-related-container">
+    <div class="sgh-related-grid">
+      
+      <!-- Cột trái: Thuyết minh & Quote cam kết -->
+      <div class="sgh-related-text">
+        <div class="sgh-related-badge">
+          <span class="sgh-related-badge__accent">//</span> QUY TRÌNH &amp; GIÁM SÁT        </div>
+        
+        <h3 class="sgh-related-title">
+          Kỹ Thuật Thi Công &amp; Cam Kết Vững Chãi        </h3>
+        
+        <div class="sgh-related-body">
+          <p class="sgh-related-paragraph">
+            Quy trình thi công tại hiện trường được Saigon Horeca triển khai theo các tiêu chuẩn kỹ thuật nghiêm ngặt và cẩn trọng nhất. Từng khớp nối, đường ống và chi tiết kỹ thuật của hệ thống bếp đều được đội ngũ kỹ sư giám sát chặt chẽ nhằm triệt tiêu hoàn toàn rủi ro vận hành và đảm bảo an toàn lao động tuyệt đối.          </p>
+          <p class="sgh-related-paragraph">
+            Bằng sự chuyên nghiệp và tận tụy, chúng tôi bàn giao cho chủ đầu tư một công trình chỉn chu nhất, sẵn sàng đáp ứng tần suất phục vụ liên tục trong các khung giờ cao điểm tại Sol Kitchen &amp; Bar.          </p>
+        </div>
+
+        <blockquote class="sgh-related-quote">
+          “Saigon Horeca cam kết mang đến dịch vụ kỹ thuật đỉnh cao, sự tin cậy tuyệt đối trong hợp tác kinh doanh và tính thẩm mỹ cao nhất trong từng hệ thống bếp.”        </blockquote>
+      </div>
+
+      <!-- Cột phải: Lưới 3 ảnh so le lệch trục nghệ thuật -->
+      <div class="sgh-related-media">
+        <div class="sgh-related-mosaic">
+          
+          <!-- Ảnh 1 (Main): Cận cảnh lắp đặt thiết bị -->
+          <div class="sgh-related-mosaic__item sgh-related-mosaic__item--main">
+            <img src="images/thi-cong-02.jpg" alt="Quy trình lắp đặt thiết bị bếp inox công nghiệp chuyên nghiệp - Saigon Horeca" loading="lazy" decoding="async">
+          </div>
+          
+          <!-- Ảnh 2 (Sub 1): Thợ thi công chi tiết -->
+          <div class="sgh-related-mosaic__item sgh-related-mosaic__item--sub1">
+            <img src="images/thi-cong-04.jpg" alt="Thi công lắp đặt thiết bị bếp tại công trường - Saigon Horeca" loading="lazy" decoding="async">
+          </div>
+          
+          <!-- Ảnh 3 (Sub 2): Thiết bị bếp inox hoàn thiện -->
+          <div class="sgh-related-mosaic__item sgh-related-mosaic__item--sub2">
+            <img src="images/thi-cong-03.jpg" alt="Hệ thống thiết bị inox bếp công nghiệp sau lắp đặt - Saigon Horeca" loading="lazy" decoding="async">
+          </div>
+          
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="sgh-cta-section">
+  <div class="sgh-cta-container">
+    
+    <!-- High-End Integrated Split CTA Card -->
+    <div class="sgh-cta-card">
+      
+      <!-- Cột trái: Khối chữ thuyết minh -->
+      <div class="sgh-cta-content">
+        <span class="sgh-cta-badge">KẾT NỐI &amp; KHỞI TẠO</span>
+        <h2 class="sgh-cta-title">Khởi Tạo Không Gian Bếp Đẳng Cấp Cho Dự Án Của Bạn</h2>
+        
+        <div class="sgh-cta-body">
+          <p class="sgh-cta-paragraph">
+            Với kinh nghiệm và uy tín đã được khẳng định hơn 10 năm trong lĩnh vực thiết bị bếp công nghiệp &amp; quầy bar, Saigon Horeca tự hào là đối tác đáng tin cậy đồng hành cùng nhiều nhà hàng và quán Bar đẳng cấp quốc tế như Bambino, Loco Complex, Yuzu Omakase, Unic Bar, và Sol Kitchen &amp; Bar.          </p>
+          <p class="sgh-cta-paragraph">
+            Hãy để lại thông tin liên hệ nếu quý khách đang tìm kiếm một đơn vị tư vấn, thiết kế và thi công hệ thống bếp chuyên nghiệp. Saigon Horeca sẽ chủ động liên hệ, tiến hành khảo sát thực tế tại công trình để lắng nghe yêu cầu và đề xuất giải pháp tối ưu nhất - vừa tiết kiệm tối đa chi phí đầu tư, vừa bảo đảm hệ thống vận hành trơn tru và bền bỉ tuyệt đối.          </p>
+          <p class="sgh-cta-paragraph--accent">
+            Saigon Horeca | Kitchen Equipment &amp; Bar Solutions.          </p>
+        </div>
+
+        <!-- Action Button có hiệu ứng trượt sáng -->
+        <div class="sgh-cta-btn-wrapper">
+          <a href="https://saigonhoreca.local/lien-he/" class="sgh-cta-btn">
+            Liên Hệ Tư Vấn Ngay          </a>
+        </div>
+      </div>
+
+      <!-- Cột phải: Hình ảnh tích hợp trực tiếp ôm khít trong card -->
+      <div class="sgh-cta-media">
+        <div class="sgh-cta-media__wrapper">
+          <img src="images/sol-sgh.jpg" alt="Hệ thống bếp công nghiệp hoàn thiện đẳng cấp tại Sol Kitchen &amp; Bar - Saigon Horeca" loading="lazy" decoding="async" width="900" height="600">
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+</div></body>
+</html>

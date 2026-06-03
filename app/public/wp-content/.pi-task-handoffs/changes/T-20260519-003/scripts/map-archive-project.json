@@ -1,0 +1,5 @@
+[
+  {"file": "hero.php",          "blocks": [1],  "desc": "Hero banner / featured projects image strip"},
+  {"file": "trust.php",         "blocks": [2],  "desc": "Uy Tín và Chất Lượng"},
+  {"file": "projects-grid.php", "blocks": [3],  "desc": "Những Dự Án nổi bật của Saigon Horeca (grid)"}
+]

@@ -1,1 +1,255 @@
-/** roka-fella-tinh-hoa-am-thuc-nhat-ban — partnership slot (no content). */
+/**
+ * Project Pillar — Roka Fella
+ * Section #4: partnership styling (Strategic Dashboard & Staggered Octagon)
+ */
+
+.pp--rf .pp-rf-partnership {
+  position: relative;
+  padding: clamp(4.5rem, 9vw, 8.5rem) 0;
+  background-color: var(--b1);
+  overflow: hidden;
+}
+
+.pp-rf-partnership .pp-grid-12-rf {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .pp-rf-partnership .pp-grid-12-rf {
+    grid-template-columns: 45% 55%;
+  }
+}
+
+.rkf-partnership__glass-card {
+  background: color-mix(in srgb, var(--b2) 75%, transparent);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-lg, 18px);
+  padding: clamp(1.75rem, 3.5vw, 3rem);
+}
+
+.rkf-partnership__lead {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: var(--gold) !important;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+  border-left: 3px solid var(--gold);
+  padding-left: 1rem;
+}
+
+.rkf-partnership__body p {
+  margin-bottom: 1rem;
+}
+
+/* Strategic Dashboard Grid */
+.rkf-partnership__stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.rkf-partnership__stat-item {
+  position: relative;
+  background: var(--b3);
+  padding: 1.25rem;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: transform 0.4s var(--ease-spring), border-color 0.4s;
+  overflow: hidden;
+}
+
+.rkf-partnership__stat-item::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 2px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+}
+
+.rkf-partnership__stat-item:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--gold) 35%, transparent);
+}
+
+.rkf-partnership__stat-value {
+  font-family: var(--font-display);
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: var(--gold);
+  line-height: 1.1;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.rkf-partnership__stat-label {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  color: var(--bc2);
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+/* Parallax Staggered Layers & Octagon Image */
+.rkf-partnership__side {
+  position: relative;
+  height: 480px;
+  display: flex;
+  align-items: center;
+}
+
+.rkf-partnership__image-container--main {
+  width: 82%;
+  height: 380px;
+  z-index: 1;
+}
+
+.rkf-partnership__image-container--main img {
+  height: 100%;
+  object-fit: cover;
+}
+
+.rkf-partnership__image-container--floating {
+  position: absolute;
+  width: 45%;
+  height: 220px;
+  bottom: 20px;
+  right: 0;
+  z-index: 2;
+  border-radius: var(--radius-lg, 18px);
+  box-shadow: 
+    -15px 15px 40px rgba(0, 0, 0, 0.8),
+    0 0 20px color-mix(in srgb, var(--gold) 15%, transparent);
+  transform: scale(1) translateY(0);
+  transition: transform 0.6s var(--ease-spring), box-shadow 0.6s, border-color 0.6s;
+  border: 1px solid rgba(245, 166, 35, 0.2) !important;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 34px 100%, 0 calc(100% - 34px));
+}
+
+.rkf-partnership__image-container--floating .pp-image-border-decor {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  right: 8px;
+  bottom: 8px;
+  border: 1px solid rgba(245, 166, 35, 0.15);
+  border-radius: var(--radius-md, 14px);
+  pointer-events: none;
+  z-index: 3;
+  transition: border-color 0.6s var(--ease-spring);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 28px 100%, 0 calc(100% - 28px));
+}
+
+.rkf-partnership__image-container--floating::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 34px;
+  height: 34px;
+  z-index: 4;
+  pointer-events: none;
+  background: linear-gradient(135deg, transparent 49%, var(--gold) 50%, var(--gold) 54%, transparent 55%);
+  opacity: 0.7;
+}
+
+.rkf-partnership__image-container--floating:hover {
+  border-color: var(--gold) !important;
+}
+
+.rkf-partnership__image-container--floating:hover .pp-image-border-decor {
+  border-color: var(--gold) !important;
+}
+
+
+.rkf-partnership__image-clip {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: var(--radius-md, 14px);
+  background: var(--b1);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 34px 100%, 0 calc(100% - 34px));
+}
+
+.rkf-partnership__image-clip img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 0.45rem;
+  transform: scale(1);
+  transition: transform 0.8s var(--ease-spring);
+}
+
+
+.rkf-partnership__side:hover .rkf-partnership__image-container--floating {
+  transform: scale(1.03) translateY(-12px);
+  box-shadow: 
+    -20px 20px 50px rgba(0, 0, 0, 0.9),
+    0 0 30px color-mix(in srgb, var(--gold) 25%, transparent);
+}
+
+.rkf-partnership__side:hover .rkf-partnership__image-clip img {
+  transform: scale(1.04);
+}
+
+@media (max-width: 1023px) {
+  .rkf-partnership__side {
+    height: auto;
+    margin-top: 2.5rem;
+    display: block;
+  }
+
+  .rkf-partnership__image-container--main {
+    width: 100%;
+    height: 300px;
+  }
+
+  .rkf-partnership__image-container--floating {
+    position: relative;
+    width: 75%;
+    height: 200px;
+    margin: -60px 0 0 auto;
+    bottom: auto;
+    right: auto;
+  }
+}
+
+/* Image tag badge — copy from intro.css */
+.rkf-partnership__image-container--main .pp-image-tag-rf,
+.rkf-partnership__image-container--floating .pp-image-tag-rf {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 4;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  background: rgba(10, 10, 10, 0.8);
+  border: 1px solid color-mix(in srgb, var(--gold) 30%, transparent);
+  padding: 0.35rem 0.75rem;
+  border-radius: 4px;
+  backdrop-filter: blur(5px);
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+/* Watermark họa tiết sóng biển Nhật Bản (Seigaiha) chìm nghệ thuật */
+.pp-watermark-waves-rf {
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  width: clamp(300px, 45vw, 600px) !important;
+  height: auto !important;
+  color: var(--gold) !important;
+  opacity: 0.015 !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+}
+

@@ -1,3 +1,167 @@
-/** ganh-hao-noi-hon-bien-trong-tung-net-kien-truc — specs slot. Inherits .pp-split-gha from concept.css. */
+/**
+ * Project Pillar — Gành Hào
+ * Section #5: specs — split layout (image ⨯ technical equipment list, M&E blueprint feel).
+ * 0 hardcode hex brand. Blueprint grid uses --gha-grid token.
+ * @package SaigonHoreca
+ */
 
-.pp-split-gha--reverse .pp-split-gha__media { aspect-ratio: 16 / 9; }
+.pp--ganh .pp-specs-ganh {
+  position: relative;
+  padding: clamp(4.5rem, 9vw, 8rem) 0;
+  background: var(--b1);
+  overflow: hidden;
+}
+
+.pp-specs-ganh__glow {
+  position: absolute;
+  top: 18%;
+  right: -10%;
+  width: clamp(300px, 40vw, 520px);
+  aspect-ratio: 1;
+  background: radial-gradient(circle, color-mix(in srgb, var(--gha-teal) 10%, transparent) 0%, transparent 70%);
+  filter: blur(75px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.pp-specs-ganh__layout {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.75rem;
+  align-items: center;
+}
+@media (min-width: 992px) {
+  .pp-specs-ganh__layout { grid-template-columns: 1fr 1fr; gap: 4.5rem; }
+}
+
+/* Image side */
+.pp-specs-ganh__media {
+  position: relative;
+  aspect-ratio: 16 / 11;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background: var(--b3);
+  border: 1px solid var(--bd);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.5);
+  transition: border-color 0.5s var(--ease-spring), box-shadow 0.5s var(--ease-spring);
+}
+.pp-specs-ganh__media:hover {
+  border-color: color-mix(in srgb, var(--gha-sand) 45%, transparent);
+  box-shadow: 0 24px 50px color-mix(in srgb, var(--gha-teal) 16%, transparent);
+}
+.pp-specs-ganh__media img {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: saturate(1.05) contrast(1.02);
+}
+
+/* Blueprint coordinate stamps */
+.pp-specs-ganh__coord {
+  position: absolute;
+  z-index: 4;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--gha-sand) 75%, transparent);
+  background: color-mix(in srgb, var(--b1) 70%, transparent);
+  border: 1px solid color-mix(in srgb, var(--gha-sand) 30%, transparent);
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  backdrop-filter: blur(4px);
+  pointer-events: none;
+}
+.pp-specs-ganh__coord--tl { top: 14px; left: 14px; }
+.pp-specs-ganh__coord--br { bottom: 14px; right: 14px; }
+@media (max-width: 640px) { .pp-specs-ganh__coord { display: none; } }
+
+/* Body / feature list */
+.pp-specs-ganh__body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.pp-specs-ganh__divider {
+  display: block;
+  width: 56px;
+  height: 2px;
+  background: var(--gha-sand);
+  box-shadow: 0 0 14px color-mix(in srgb, var(--gha-sand) 50%, transparent);
+}
+
+.pp-specs-ganh__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.55rem, 2.8vw, 2.35rem);
+  font-weight: 700;
+  line-height: 1.22;
+  color: var(--bc);
+}
+
+.pp-specs-ganh__lead {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: clamp(0.97rem, 1.1vw, 1.05rem);
+  line-height: 1.85;
+  color: var(--bc2);
+}
+
+.pp-specs-ganh__list {
+  list-style: none;
+  margin: 0.5rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.pp-specs-ganh__feature {
+  position: relative;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-md);
+  background:
+    linear-gradient(var(--gha-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--gha-grid) 1px, transparent 1px);
+  background-size: 18px 18px;
+  background-color: color-mix(in srgb, var(--b2) 70%, transparent);
+  border: 1px solid var(--bd);
+  transition: border-color 0.4s var(--ease-spring), transform 0.4s var(--ease-spring), background-color 0.4s;
+}
+.pp-specs-ganh__feature:hover {
+  border-color: color-mix(in srgb, var(--gha-teal) 45%, transparent);
+  transform: translateX(5px);
+  background-color: color-mix(in srgb, var(--b3) 80%, transparent);
+}
+
+.pp-specs-ganh__num {
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--gha-sand);
+  letter-spacing: 0.04em;
+}
+
+.pp-specs-ganh__feature-text {
+  font-family: var(--font-sans);
+  font-size: clamp(0.92rem, 1vw, 1rem);
+  line-height: 1.5;
+  color: var(--bc);
+}
+
+.pp-specs-ganh__note {
+  margin: 0.25rem 0 0;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: var(--gha-sand-soft);
+}

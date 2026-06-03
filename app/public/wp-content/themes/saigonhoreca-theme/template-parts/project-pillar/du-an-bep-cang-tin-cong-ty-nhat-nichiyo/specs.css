@@ -1,1 +1,107 @@
-/** du-an-bep-cang-tin-cong-ty-nhat-nichiyo — specs slot (no content). */
+/**
+ * du-an-bep-cang-tin-cong-ty-nhat-nichiyo — specs slot.
+ * Sophistication narrative + M&E feature spec cards with coord labels.
+ * Owns .pp-specs-nichiyo. Reuses .pp-section-nichiyo / .pp-text-nichiyo. Scope .pp--nichiyo.
+ * @package SaigonHoreca
+ */
+
+.pp-specs-nichiyo__head {
+  max-width: 880px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+.pp-specs-nichiyo__head .pp-text-nichiyo__body {
+  text-align: center;
+  max-width: 800px;
+}
+
+/* Feature / equipment spec grid */
+.pp-specs-nichiyo__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  margin-top: clamp(2.5rem, 4vw, 3.25rem);
+  position: relative;
+  z-index: 2;
+}
+@media (min-width: 600px) {
+  .pp-specs-nichiyo__grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 992px) {
+  .pp-specs-nichiyo__grid { grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+}
+
+.pp-specs-nichiyo__card {
+  position: relative;
+  padding: clamp(1.5rem, 2.4vw, 2rem) clamp(1.25rem, 2vw, 1.6rem);
+  background: color-mix(in srgb, var(--nic-glass) 86%, transparent);
+  backdrop-filter: blur(12px) saturate(130%);
+  -webkit-backdrop-filter: blur(12px) saturate(130%);
+  border: 1px solid var(--nic-border);
+  border-top: 2px solid color-mix(in srgb, var(--nic-gold) 55%, transparent);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  overflow: hidden;
+  isolation: isolate;
+  transition:
+    transform 0.4s var(--ease-spring),
+    border-color 0.4s var(--ease-spring),
+    box-shadow 0.4s var(--ease-spring);
+}
+/* Ambient corner glow */
+.pp-specs-nichiyo__card::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  right: -30%;
+  width: 160px;
+  height: 160px;
+  z-index: -1;
+  background: radial-gradient(circle,
+    color-mix(in srgb, var(--nic-gold) 12%, transparent) 0%,
+    transparent 70%);
+  opacity: 0;
+  transition: opacity 0.45s var(--ease-spring);
+  pointer-events: none;
+}
+.pp-specs-nichiyo__card:hover {
+  transform: translateY(-6px);
+  border-color: color-mix(in srgb, var(--nic-gold) 50%, transparent);
+  box-shadow: 0 22px 50px color-mix(in srgb, var(--b1) 75%, transparent);
+}
+.pp-specs-nichiyo__card:hover::before { opacity: 1; }
+
+.pp-specs-nichiyo__coord {
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--nic-gold) 80%, transparent);
+}
+.pp-specs-nichiyo__card-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 1.6vw, 1.22rem);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--bc);
+}
+.pp-specs-nichiyo__card-desc {
+  margin: 0;
+  font-size: clamp(0.9rem, 1vw, 0.96rem);
+  line-height: 1.7;
+  color: var(--bc2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pp-specs-nichiyo__card { transition: none !important; transform: none !important; }
+  .pp-specs-nichiyo__card:hover { transform: none !important; }
+}

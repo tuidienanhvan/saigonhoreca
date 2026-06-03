@@ -1,0 +1,23 @@
+/**
+ * Project page-template — grand-marble-thuong-hieu-banh-cao-cap-nhat-ban (layout + project tokens).
+ * Premium Japanese pastry identity — warm caramel glaze & sweet-butter marble tones.
+ * Accent tokens derived 100% from global tokens (no hardcoded brand hex).
+ * @package SaigonHoreca
+ */
+
+.pp--gmarb {
+  /* Caramel = brand primary leaned warm; butter = primary + white; glaze = deep roasted base */
+  --gmarb-caramel:       var(--p);
+  --gmarb-caramel-soft:  color-mix(in srgb, var(--p) 62%, var(--wa));
+  --gmarb-butter:        color-mix(in srgb, var(--p) 46%, var(--bc));
+  --gmarb-glaze:         color-mix(in srgb, var(--b1) 80%, var(--p));
+  --gmarb-crust:         color-mix(in srgb, var(--b2) 72%, var(--p));
+  --gmarb-glass:         color-mix(in srgb, var(--b2) 70%, transparent);
+  --gmarb-line:          color-mix(in srgb, var(--p) 26%, transparent);
+  --gmarb-grid:          color-mix(in srgb, var(--bc) 4%, transparent);
+}
+
+body.page-template-page-project-grand-marble-thuong-hieu-banh-cao-cap-nhat-ban {
+  background: var(--b1);
+  color: var(--bc);
+}

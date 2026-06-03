@@ -1,305 +1,124 @@
 /**
- * tales-by-chapter — concept slot. Literary Quarterly Editorial.
- * Owns shared .pp-split-tbc (the open-book two-column layout) with:
- *  - center spine hairline (gutter rule)
- *  - page-corner curl decoration top-right of media
- *  - body-side drop-cap, ribbon-bookmark on the title
- *  - L-bracket gold ornament behind body block
- *  - reverse variant mirrors all decorative anchors
+ * tales-by-chapter — concept slot.
+ * Split layout + image frame with mask + design notes.
  * @package SaigonHoreca
  */
 
-/* ─────────────────────────────────────────────
-   OPEN-BOOK LAYOUT
-   ───────────────────────────────────────────── */
 .pp-split-tbc {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2.5rem;
+  gap: 3rem;
   align-items: center;
-  position: relative;
-  padding: 0.5rem 0;
 }
 @media (min-width: 992px) {
-  .pp-split-tbc {
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-  }
+  .pp-split-tbc { grid-template-columns: 1fr 1fr; gap: 5rem; }
   .pp-split-tbc--reverse .pp-split-tbc__media { order: 2; }
   .pp-split-tbc--reverse .pp-split-tbc__body  { order: 1; }
 }
 
-/* Center spine hairline — the binding of the open book */
-.pp-split-tbc::before {
-  content: '';
-  position: absolute;
-  top: 5%;
-  bottom: 5%;
-  left: 50%;
-  width: 1px;
-  background: linear-gradient(180deg,
-    transparent 0%,
-    color-mix(in srgb, var(--gold) 35%, transparent) 12%,
-    color-mix(in srgb, var(--gold) 50%, transparent) 50%,
-    color-mix(in srgb, var(--gold) 35%, transparent) 88%,
-    transparent 100%);
-  transform: translateX(-0.5px);
-  z-index: 1;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.6s var(--ease-spring);
-}
-@media (min-width: 992px) {
-  .pp-split-tbc::before { opacity: 1; }
-}
-/* Spine end-caps — small diamonds */
-.pp-split-tbc::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: 5%;
-  width: 8px;
-  height: 8px;
-  background: var(--gold);
-  transform: translateX(-50%) rotate(45deg);
-  z-index: 2;
-  box-shadow:
-    0 0 8px color-mix(in srgb, var(--gold) 55%, transparent),
-    0 calc((90vh - 10%) * 0) 0 var(--gold);
-  pointer-events: none;
-  opacity: 0;
-}
-@media (min-width: 992px) {
-  .pp-split-tbc::after { opacity: 0.85; }
-}
-
-/* ─────────────────────────────────────────────
-   BODY COLUMN — verso
-   ───────────────────────────────────────────── */
 .pp-split-tbc__body {
   display: flex;
   flex-direction: column;
-  gap: 1.4rem;
-  position: relative;
-  z-index: 2;
-  padding: 1.5rem 0 1.5rem 1.5rem;
-}
-@media (min-width: 992px) {
-  .pp-split-tbc__body { padding: 2rem 1rem 2rem 2.5rem; }
-  .pp-split-tbc--reverse .pp-split-tbc__body {
-    padding: 2rem 2.5rem 2rem 1rem;
-  }
-}
-
-.pp-split-tbc__body .pp-text-tbc__divider {
-  align-self: flex-start;
-  width: 140px;
-}
-.pp-split-tbc--reverse .pp-split-tbc__body .pp-text-tbc__divider {
-  align-self: flex-end;
-}
-
-.pp-split-tbc__body .pp-text-tbc__title {
-  font-size: clamp(1.65rem, 2.8vw, 2.45rem);
-  text-align: left;
-  font-family: var(--font-display);
-  font-style: italic;
-  font-weight: 700;
-  color: var(--bc);
-  line-height: 1.18;
+  gap: 1.25rem;
   position: relative;
 }
-.pp-split-tbc--reverse .pp-split-tbc__body .pp-text-tbc__title {
-  text-align: right;
-}
-.pp-split-tbc__body .pp-text-tbc__title::first-letter {
-  color: var(--gold);
-  text-shadow: 0 2px 14px color-mix(in srgb, var(--gold) 40%, transparent);
-}
-
-/* Body drop-cap (verso pages) */
-.pp-split-tbc__body .pp-text-tbc__body {
-  font-size: clamp(0.97rem, 1.1vw, 1.05rem);
-  line-height: 1.88;
-  color: var(--bc2);
-  display: flex;
-  flex-direction: column;
-  gap: 1.15rem;
-}
-.pp-split-tbc__body .pp-text-tbc__body p { margin: 0; text-align: left; }
-.pp-split-tbc--reverse .pp-split-tbc__body .pp-text-tbc__body p { text-align: right; }
-
-.pp-split-tbc__body .pp-text-tbc__body > p:first-of-type::first-letter {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-weight: 700;
-  float: left;
-  font-size: 3.3em;
-  line-height: 0.94;
-  padding: 0.06em 0.14em 0 0;
-  margin-right: 0.08em;
-  color: var(--gold);
-  text-shadow:
-    0 2px 12px color-mix(in srgb, var(--gold) 40%, transparent),
-    1px 1px 0 rgba(0, 0, 0, 0.35);
-}
-.pp-split-tbc--reverse .pp-split-tbc__body .pp-text-tbc__body > p:first-of-type::first-letter {
-  float: right;
-  padding: 0.06em 0 0 0.14em;
-  margin-left: 0.08em;
-  margin-right: 0;
-}
-
-/* L-bracket gold ornament behind body */
 .pp-split-tbc__body::before {
   content: '';
   position: absolute;
-  top: -0.5rem;
-  left: -0.25rem;
-  width: 78px;
-  height: 78px;
-  border-top: 1px solid color-mix(in srgb, var(--gold) 55%, transparent);
-  border-left: 1px solid color-mix(in srgb, var(--gold) 55%, transparent);
+  top: -1rem;
+  left: -0.75rem;
+  width: 44px;
+  height: 44px;
+  border-top: 1px solid color-mix(in srgb, var(--su) 40%, transparent);
+  border-left: 1px solid color-mix(in srgb, var(--su) 40%, transparent);
   pointer-events: none;
-  z-index: -1;
-}
-.pp-split-tbc__body::after {
-  content: '';
-  position: absolute;
-  bottom: -0.5rem;
-  right: -0.25rem;
-  width: 78px;
-  height: 78px;
-  border-bottom: 1px solid color-mix(in srgb, var(--gold) 55%, transparent);
-  border-right: 1px solid color-mix(in srgb, var(--gold) 55%, transparent);
-  pointer-events: none;
-  z-index: -1;
-}
-.pp-split-tbc--reverse .pp-split-tbc__body::before {
-  left: auto;
-  right: -0.25rem;
-  border-left: none;
-  border-right: 1px solid color-mix(in srgb, var(--gold) 55%, transparent);
-}
-.pp-split-tbc--reverse .pp-split-tbc__body::after {
-  right: auto;
-  left: -0.25rem;
-  border-right: none;
-  border-left: 1px solid color-mix(in srgb, var(--gold) 55%, transparent);
+  z-index: 0;
 }
 
-/* ─────────────────────────────────────────────
-   MEDIA COLUMN — recto plate
-   ───────────────────────────────────────────── */
+.pp-concept-tbc__kicker {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--su);
+}
+
 .pp-split-tbc__media {
   position: relative;
-  aspect-ratio: 16 / 11;
-  overflow: hidden;
+}
+
+.pp-concept-tbc__mask {
+  position: relative;
   border-radius: var(--radius-md);
-  background: var(--b3);
+  overflow: hidden;
   border: 1px solid var(--bd);
-  transition:
-    border-color 0.5s var(--ease-spring),
-    transform 0.5s var(--ease-spring),
-    box-shadow 0.5s var(--ease-spring);
-  box-shadow:
-    0 6px 18px rgba(0, 0, 0, 0.24),
-    inset 0 0 0 1px color-mix(in srgb, var(--gold) 6%, transparent);
+  transition: border-color 0.4s var(--ease-spring);
 }
-.pp-split-tbc__media:hover {
-  border-color: color-mix(in srgb, var(--gold) 55%, transparent);
-  transform: translateY(-4px);
-  box-shadow:
-    0 22px 48px rgba(0, 0, 0, 0.45),
-    inset 0 0 0 1px color-mix(in srgb, var(--gold) 18%, transparent);
+.pp-concept-tbc__mask:hover { border-color: color-mix(in srgb, var(--su) 40%, transparent); }
+.pp-concept-tbc__mask img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.7s var(--ease-spring);
 }
-.pp-split-tbc__media img {
-  width: 100%; height: 100%;
-  object-fit: cover; display: block;
-  filter: saturate(1.05) contrast(1.02);
-  transition: transform 0.9s var(--ease-spring);
-}
-.pp-split-tbc__media:hover img { transform: scale(1.06); }
+.pp-concept-tbc__mask:hover img { transform: scale(1.04); }
 
-/* Page-corner curl on media — folded recto */
-.pp-split-tbc__media::before {
-  content: '';
+.pp-concept-tbc__frame {
   position: absolute;
-  top: 0;
-  right: 0;
-  width: 48px;
-  height: 48px;
-  z-index: 3;
-  background:
-    linear-gradient(225deg,
-      color-mix(in srgb, var(--b2) 92%, transparent) 0%,
-      color-mix(in srgb, var(--b2) 72%, transparent) 46%,
-      color-mix(in srgb, var(--gold) 35%, transparent) 49%,
-      color-mix(in srgb, var(--gold) 12%, transparent) 51%,
-      transparent 55%);
-  clip-path: polygon(100% 0, 0 0, 100% 100%);
-  box-shadow: -2px 2px 6px rgba(0, 0, 0, 0.4);
-  pointer-events: none;
-}
-.pp-split-tbc--reverse .pp-split-tbc__media::before {
-  right: auto;
-  left: 0;
-  clip-path: polygon(0 0, 100% 0, 0 100%);
-  background:
-    linear-gradient(135deg,
-      color-mix(in srgb, var(--b2) 92%, transparent) 0%,
-      color-mix(in srgb, var(--b2) 72%, transparent) 46%,
-      color-mix(in srgb, var(--gold) 35%, transparent) 49%,
-      color-mix(in srgb, var(--gold) 12%, transparent) 51%,
-      transparent 55%);
-  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
-}
-
-/* Folio caption tag bottom-right */
-.pp-split-tbc__media::after {
-  content: 'Plate II';
-  position: absolute;
-  bottom: 0.85rem;
-  right: 0.85rem;
-  z-index: 4;
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 0.72rem;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: var(--bc);
-  padding: 0.45rem 0.75rem;
-  background: color-mix(in srgb, var(--b1) 55%, transparent);
-  backdrop-filter: blur(10px) saturate(140%);
-  border: 1px solid color-mix(in srgb, var(--gold) 45%, transparent);
-  border-radius: var(--radius-sm);
+  inset: 12px;
+  border: 1px solid color-mix(in srgb, var(--su) 25%, transparent);
+  border-radius: calc(var(--radius-md) - 4px);
   pointer-events: none;
   opacity: 0;
-  transform: translateY(8px);
-  transition: opacity 0.45s, transform 0.45s var(--ease-spring);
+  transition: opacity 0.4s var(--ease-spring);
 }
-.pp-split-tbc--reverse .pp-split-tbc__media::after {
-  content: 'Plate III';
-  right: auto;
-  left: 0.85rem;
+.pp-concept-tbc__mask:hover .pp-concept-tbc__frame { opacity: 1; }
+
+.pp-concept-tbc__caption {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
 }
-.pp-split-tbc__media:hover::after {
-  opacity: 1;
-  transform: translateY(0);
+.pp-concept-tbc__caption span {
+  font-family: var(--font-serif);
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--bc3);
+}
+.pp-concept-tbc__caption strong {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--bc);
 }
 
-/* Mobile — hide spine and corner curl complexity */
-@media (max-width: 991px) {
-  .pp-split-tbc__media::before { width: 32px; height: 32px; }
-  .pp-split-tbc__media::after { opacity: 1; transform: none; }
-  .pp-split-tbc__body { padding: 1.5rem 1rem; }
-  .pp-split-tbc__body::before,
-  .pp-split-tbc__body::after { width: 48px; height: 48px; }
+.pp-concept-tbc__notes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+}
+.pp-concept-tbc__notes span {
+  padding: 0.35rem 0.85rem;
+  background: color-mix(in srgb, var(--su) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--su) 15%, transparent);
+  border-radius: var(--radius-full);
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--su);
+  transition: border-color 0.3s, background 0.3s;
+}
+.pp-concept-tbc__notes span:hover {
+  border-color: color-mix(in srgb, var(--su) 40%, transparent);
+  background: color-mix(in srgb, var(--su) 15%, transparent);
 }
 
-/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  .pp-split-tbc__media,
-  .pp-split-tbc__media img,
-  .pp-split-tbc__media::after { transition: none; }
+  .pp-concept-tbc__mask img,
+  .pp-concept-tbc__mask {
+    transition: none !important;
+  }
 }

@@ -108,42 +108,42 @@
               "type": "image-carousel.default",
               "slides": [
                 {
-                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/Sol-kitchen-00001.jpg",
+                  "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/01/Sol-kitchen-00001.jpg",
                   "srcset": null,
                   "alt": "Sol-kitchen-00001.jpg",
                   "w": null,
                   "h": null
                 },
                 {
-                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/Sol-kitchen-00002.jpg",
+                  "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/01/Sol-kitchen-00002.jpg",
                   "srcset": null,
                   "alt": "Sol-kitchen-00002.jpg",
                   "w": null,
                   "h": null
                 },
                 {
-                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/Sol-kitchen-00003.jpg",
+                  "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/01/Sol-kitchen-00003.jpg",
                   "srcset": null,
                   "alt": "Sol-kitchen-00003.jpg",
                   "w": null,
                   "h": null
                 },
                 {
-                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/Sol-kitchen-00004.jpg",
+                  "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/01/Sol-kitchen-00004.jpg",
                   "srcset": null,
                   "alt": "Sol-kitchen-00004.jpg",
                   "w": null,
                   "h": null
                 },
                 {
-                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/Sol-kitchen-00005.jpg",
+                  "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/01/Sol-kitchen-00005.jpg",
                   "srcset": null,
                   "alt": "Sol-kitchen-00005.jpg",
                   "w": null,
                   "h": null
                 },
                 {
-                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/Sol-kitchen-00006.jpg",
+                  "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/01/Sol-kitchen-00006.jpg",
                   "srcset": null,
                   "alt": "Sol-kitchen-00006.jpg",
                   "w": null,
@@ -206,8 +206,8 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/Sol-kitchen-bar-7.jpeg",
-                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/Sol-kitchen-bar-7.jpeg 2047w, https://saigonhoreca.vn/wp-content/uploads/2024/01/Sol-kitchen-bar-7-768x512.jpeg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/01/Sol-kitchen-bar-7-1536x1024.jpeg 1536w, https://saigonhoreca.vn/wp-content/uploads/2024/01/Sol-kitchen-bar-7-600x400.jpeg 600w",
+                "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/01/Sol-kitchen-bar-7.jpeg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/01/Sol-kitchen-bar-7.jpeg 2047w, https://saigonhoreca.vn/wp-content/uploads/2024/01/Sol-kitchen-bar-7-768x512.jpeg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/01/Sol-kitchen-bar-7-1536x1024.jpeg 1536w, https://saigonhoreca.vn/wp-content/uploads/2024/01/Sol-kitchen-bar-7-600x400.jpeg 600w",
                 "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                 "w": "2047",
                 "h": "1365"
@@ -231,7 +231,7 @@
       "has_video_bg": false,
       "video_url": null,
       "background_overlay": true,
-      "background_image": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/SGH-projects-01.jpg",
+      "background_image": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/01/SGH-projects-01.jpg",
       "columns": [
         {
           "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-79635fcc",
@@ -284,8 +284,8 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/Sol-kitchen-bar-1.jpeg",
-                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/Sol-kitchen-bar-1.jpeg 2047w, https://saigonhoreca.vn/wp-content/uploads/2024/01/Sol-kitchen-bar-1-768x512.jpeg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/01/Sol-kitchen-bar-1-1536x1024.jpeg 1536w, https://saigonhoreca.vn/wp-content/uploads/2024/01/Sol-kitchen-bar-1-600x400.jpeg 600w",
+                "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/01/Sol-kitchen-bar-1.jpeg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/01/Sol-kitchen-bar-1.jpeg 2047w, https://saigonhoreca.vn/wp-content/uploads/2024/01/Sol-kitchen-bar-1-768x512.jpeg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/01/Sol-kitchen-bar-1-1536x1024.jpeg 1536w, https://saigonhoreca.vn/wp-content/uploads/2024/01/Sol-kitchen-bar-1-600x400.jpeg 600w",
                 "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                 "w": "2047",
                 "h": "1365"

@@ -111,21 +111,21 @@
               "type": "image-carousel.default",
               "slides": [
                 {
-                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/SGH-product-bling3.jpg",
+                  "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/02/SGH-product-bling3.jpg",
                   "srcset": null,
                   "alt": "SGH-product-bling3.jpg",
                   "w": null,
                   "h": null
                 },
                 {
-                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/SGH-product-bling2.jpg",
+                  "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/02/SGH-product-bling2.jpg",
                   "srcset": null,
                   "alt": "SGH-product-bling2.jpg",
                   "w": null,
                   "h": null
                 },
                 {
-                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/SGH-product-bling1.jpg",
+                  "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/02/SGH-product-bling1.jpg",
                   "srcset": null,
                   "alt": "SGH-product-bling1.jpg",
                   "w": null,
@@ -188,8 +188,8 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/bling-bling-club-space-1-1.jpg",
-                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/bling-bling-club-space-1-1.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2024/02/bling-bling-club-space-1-1-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/02/bling-bling-club-space-1-1-600x337.jpg 600w",
+                "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/02/bling-bling-club-space-1-1.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/02/bling-bling-club-space-1-1.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2024/02/bling-bling-club-space-1-1-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/02/bling-bling-club-space-1-1-600x337.jpg 600w",
                 "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                 "w": "1366",
                 "h": "768"
@@ -213,7 +213,7 @@
       "has_video_bg": false,
       "video_url": null,
       "background_overlay": true,
-      "background_image": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/SGH-Bambino-1.jpg",
+      "background_image": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/02/SGH-Bambino-1.jpg",
       "columns": [
         {
           "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-3807daf7",
@@ -259,7 +259,7 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/SGH-Portrait.jpg",
+                "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/02/SGH-Portrait.jpg",
                 "srcset": null,
                 "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                 "w": "600",
@@ -338,7 +338,7 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/SGH-Portraitbling.jpg",
+                "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/02/SGH-Portraitbling.jpg",
                 "srcset": null,
                 "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                 "w": "600",

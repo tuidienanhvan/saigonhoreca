@@ -1,88 +1,81 @@
-<?php
+﻿<?php
 /**
- * Project Pillar — spice-world-hotpot
+ * Project Pillar â€” spice-world-hotpot
  * Section #5: specs
  * @package SaigonHoreca
  */
 if (!defined('ABSPATH')) exit;
 $uri = get_template_directory_uri();
 ?>
-<section class="pp__section pp-swh-specs">
+<section class="pp-section-swh pp-swh-specs scroll-reveal">
   <div class="pp-watermark-bg-swh" aria-hidden="true">
     <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5">
-      <path d="M25 20 H45 M35 20 V80 M25 80 H45" stroke-linecap="round"/>
-      <path d="M55 20 L67 80 L79 20" stroke-linecap="round"/>
+      <path d="M25 25 H75 M50 25 V75 M25 75 H75" stroke-linecap="round"/>
     </svg>
   </div>
 
   <div class="pp-ambient-glow-swh pp-ambient-glow-swh--bottom-left" aria-hidden="true"></div>
 
-  <div class="pp__container">
-    <div class="pp-grid-12-swh">
-      
-      <div class="pp-grid-12-swh__media--cols-7 swh-specs__side">
-        <div class="pp-image-container-swh swh-specs__image-container">
-          <span class="pp-corner-ornament pp-corner-ornament--top-left" aria-hidden="true"></span>
-          <span class="pp-corner-ornament pp-corner-ornament--top-right" aria-hidden="true"></span>
-          <span class="pp-corner-ornament pp-corner-ornament--bottom-left" aria-hidden="true"></span>
-          <span class="pp-corner-ornament pp-corner-ornament--bottom-right" aria-hidden="true"></span>
-          <div class="pp-image-border-decor" aria-hidden="true"></div>
-          <div class="pp-image-tag-swh">BLUEPRINT</div>
-          <img src="<?php echo sgh_img('2024/02/swh-ban-ve-tong-the-khu-bep.png'); ?>" alt="<?php echo esc_attr__('Bản vẽ kỹ thuật tổng thể khu bếp', 'saigonhoreca'); ?>" loading="lazy">
-          <div class="pp-image-caption-swh"><?php echo esc_html__('Bản vẽ kỹ thuật tổng thể khu bếp 120m²', 'saigonhoreca'); ?></div>
+  <div class="pp-container-shared">
+    <div class="pp-text-swh pp-text-swh--center">
+      <span class="pp-text-swh__divider pp-text-swh__divider--center" aria-hidden="true"></span>
+      <h2 class="pp-text-swh__title">
+        <?php echo esc_html__('ThÃ´ng Sá»‘ Ká»¹ Thuáº­t', 'saigonhoreca'); ?>
+        <span class="pp-text-swh__title-gold"><?php echo esc_html__('Há»‡ Thá»‘ng Báº¿p', 'saigonhoreca'); ?></span>
+      </h2>
+      <div class="pp-text-swh__body">
+        <p><?php echo esc_html__('Há»‡ thá»‘ng báº¿p cÃ´ng nghiá»‡p táº¡i Spice World Hotpot Ä‘Æ°á»£c thiáº¿t káº¿ vá»›i cÃ¡c thÃ´ng sá»‘ ká»¹ thuáº­t cao cáº¥p, Ä‘Ã¡p á»©ng tiÃªu chuáº©n quá»‘c táº¿.', 'saigonhoreca'); ?></p>
+      </div>
+    </div>
+
+    <div class="pp-specs-grid-swh">
+      <div class="pp-spec-item-swh">
+        <div class="pp-spec-icon-swh">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <path d="M9 9h6v6H9z"/>
+          </svg>
         </div>
+        <h3 class="pp-spec-title-swh"><?php echo esc_html__('Diá»‡n TÃ­ch Báº¿p', 'saigonhoreca'); ?></h3>
+        <p class="pp-spec-value-swh">150mÂ²</p>
+        <p class="pp-spec-desc-swh"><?php echo esc_html__('KhÃ´ng gian báº¿p rá»™ng rÃ£i, chia thÃ nh 4 khu vá»±c chÃ­nh', 'saigonhoreca'); ?></p>
       </div>
 
-      <div class="pp-grid-12-swh__text--cols-5 swh-specs__main">
-        <div class="pp-glass-card-swh swh-specs__glass-card">
-          <span class="pp-corner-ornament pp-corner-ornament--top-left" aria-hidden="true"></span>
-          <span class="pp-corner-ornament pp-corner-ornament--top-right" aria-hidden="true"></span>
-          <span class="pp-corner-ornament pp-corner-ornament--bottom-left" aria-hidden="true"></span>
-          <span class="pp-corner-ornament pp-corner-ornament--bottom-right" aria-hidden="true"></span>
-          
-          <header class="swh-specs__header">
-            <div class="pp-badge-swh">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2L14.85 9.15L22 12L14.85 14.85L12 22L9.15 14.85L2 12L9.15 9.15L12 2Z"/>
-              </svg>
-              <?php echo esc_html__('Thiết kế công năng', 'saigonhoreca'); ?>
-            </div>
-            <h2 class="pp-text-swh__title" style="font-size: clamp(1.5rem, 3vw, 2.2rem); margin-bottom: 1rem;">
-              <?php echo esc_html__('Ý tưởng thiết kế bếp công nghiệp', 'saigonhoreca'); ?>
-            </h2>
-            <div class="pp-text-swh__divider" aria-hidden="true"></div>
-          </header>
-
-          <div class="swh-specs__body">
-            <div class="swh-specs__feature">
-              <div class="swh-specs__icon-wrapper">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                  <path d="M20 7h-9m3 4H5m16 4h-9m6 4H8" stroke-linecap="round"/>
-                </svg>
-              </div>
-              <div class="swh-specs__feature-content">
-                <h4><?php echo esc_html__('Khu vực sơ chế & Vệ sinh', 'saigonhoreca'); ?></h4>
-                <p><?php echo esc_html__('Được thiết kế với hệ thống bồn rửa kép, bàn rửa và kệ tủ thép không gỉ 100% từ Saigon Horeca. Luồng vận hành được tính toán tối ưu, đảm bảo an toàn vệ sinh thực phẩm tuyệt đối.', 'saigonhoreca'); ?></p>
-              </div>
-            </div>
-
-            <div class="swh-specs__feature">
-              <div class="swh-specs__icon-wrapper">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
-                  <line x1="8" y1="21" x2="16" y2="21" stroke-linecap="round"/>
-                  <line x1="12" y1="17" x2="12" y2="21" stroke-linecap="round"/>
-                </svg>
-              </div>
-              <div class="swh-specs__feature-content">
-                <h4><?php echo esc_html__('Giải pháp thông gió tối ưu', 'saigonhoreca'); ?></h4>
-                <p><?php echo esc_html__('Do đặc thù lẩu phục vụ tại bàn, bếp được tối ưu với hệ thống hút khói đơn nhưng hiệu quả, đảm bảo thông thoáng mà vẫn tiết kiệm đáng kể chi phí đầu tư ban đầu.', 'saigonhoreca'); ?></p>
-              </div>
-            </div>
-          </div>
+      <div class="pp-spec-item-swh">
+        <div class="pp-spec-icon-swh">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2v20M2 12h20"/>
+          </svg>
         </div>
+        <h3 class="pp-spec-title-swh"><?php echo esc_html__('CÃ´ng Suáº¥t', 'saigonhoreca'); ?></h3>
+        <p class="pp-spec-value-swh">500+ suáº¥t/ngÃ y</p>
+        <p class="pp-spec-desc-swh"><?php echo esc_html__('Kháº£ nÄƒng phá»¥c vá»¥ hÃ ng trÄƒm thá»±c khÃ¡ch má»—i ngÃ y', 'saigonhoreca'); ?></p>
       </div>
 
+      <div class="pp-spec-item-swh">
+        <div class="pp-spec-icon-swh">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 6v6l4 2"/>
+          </svg>
+        </div>
+        <h3 class="pp-spec-title-swh"><?php echo esc_html__('Thá»i Gian Thi CÃ´ng', 'saigonhoreca'); ?></h3>
+        <p class="pp-spec-value-swh">45 ngÃ y</p>
+        <p class="pp-spec-desc-swh"><?php echo esc_html__('HoÃ n thÃ nh trong vÃ²ng 45 ngÃ y ká»ƒ tá»« khá»Ÿi cÃ´ng', 'saigonhoreca'); ?></p>
+      </div>
+
+      <div class="pp-spec-item-swh">
+        <div class="pp-spec-icon-swh">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 12l2 2 4-4"/>
+            <circle cx="12" cy="12" r="10"/>
+          </svg>
+        </div>
+        <h3 class="pp-spec-title-swh"><?php echo esc_html__('TiÃªu Chuáº©n', 'saigonhoreca'); ?></h3>
+        <p class="pp-spec-value-swh">ISO 22000</p>
+        <p class="pp-spec-desc-swh"><?php echo esc_html__('ÄÃ¡p á»©ng tiÃªu chuáº©n an toÃ n thá»±c pháº©m quá»‘c táº¿', 'saigonhoreca'); ?></p>
+      </div>
     </div>
   </div>
 </section>
+

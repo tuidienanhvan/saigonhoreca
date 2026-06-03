@@ -1,1 +1,220 @@
-/** roka-fella-tinh-hoa-am-thuc-nhat-ban — specs slot (no content). */
+/**
+ * Project Pillar — Roka Fella
+ * Section #5: specs styling (Blueprint Grid & Code Terminal Layout)
+ */
+
+.pp--rf .pp-rf-specs {
+  position: relative;
+  padding: clamp(4.5rem, 9vw, 8.5rem) 0;
+  background-color: var(--b1);
+  overflow: hidden;
+}
+
+.pp-rf-specs .pp-grid-12-rf {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .pp-rf-specs .pp-grid-12-rf {
+    grid-template-columns: 55% 45%;
+  }
+}
+
+/* Blueprint Grid Background */
+.rkf-specs__side {
+  position: relative;
+  padding: 1.5rem;
+  background-color: #05070a; /* màu xanh đen kỹ thuật tối */
+  background-image: 
+    linear-gradient(rgba(245, 166, 35, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245, 166, 35, 0.03) 1px, transparent 1px);
+  background-size: 20px 20px;
+  border-radius: var(--radius-lg, 18px);
+  border: 1px solid rgba(245, 166, 35, 0.1);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7);
+  overflow: hidden;
+}
+
+.rkf-specs__hud-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.rkf-specs__image-container {
+  position: relative;
+  border: 1px solid rgba(245, 166, 35, 0.15);
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+  background: #020202;
+  z-index: 3;
+  overflow: hidden;
+}
+
+.rkf-specs__image-container .card-corner-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.rkf-specs__image-container img {
+  filter: contrast(1.05) brightness(0.9);
+}
+
+.rkf-specs__image-container .pp-image-border-decor {
+  border-color: rgba(245, 166, 35, 0.1);
+  inset: 10px;
+}
+
+/* Technical Code Terminal Card */
+.rkf-specs__glass-card {
+  position: relative;
+  background: #050505 !important;
+  border: 1px solid rgba(245, 166, 35, 0.08) !important;
+  border-radius: var(--radius-lg, 18px);
+  padding: clamp(1.75rem, 3.5vw, 2.75rem);
+  overflow: hidden;
+}
+
+.rkf-specs__glass-card .card-corner-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.rkf-specs__header h2.pp-text-rf__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2.3rem);
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--bc);
+  margin: 0 0 0.75rem 0;
+}
+
+.rkf-specs__body {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.rkf-specs__feature {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+/* Kẻ viền đứng mô phỏng timeline kỹ thuật */
+.rkf-specs__feature::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0; width: 2px;
+  background: rgba(255, 255, 255, 0.05);
+  transition: background-color 0.4s var(--ease-spring);
+}
+
+.rkf-specs__feature:hover::before {
+  background: var(--gold);
+}
+
+/* Icon box chứa SVG mạ vàng sang trọng */
+.rkf-specs__icon-wrapper {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem !important;
+  height: 2.75rem !important;
+  background: rgba(245, 166, 35, 0.03) !important;
+  border: 1px solid rgba(245, 166, 35, 0.15) !important;
+  border-radius: 8px;
+  color: var(--gold);
+  transition: transform 0.4s var(--ease-spring), border-color 0.4s, background-color 0.4s, box-shadow 0.4s;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+.rkf-specs__icon-wrapper svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  stroke: var(--gold);
+  transition: transform 0.4s var(--ease-spring);
+  display: block;
+}
+
+.rkf-specs__feature:hover .rkf-specs__icon-wrapper {
+  transform: translateY(-2px);
+  background: rgba(245, 166, 35, 0.08) !important;
+  border-color: var(--gold) !important;
+  box-shadow: 0 0 15px rgba(245, 166, 35, 0.2);
+}
+
+.rkf-specs__feature:hover .rkf-specs__icon-wrapper svg {
+  transform: scale(1.15) rotate(8deg);
+}
+
+.rkf-specs__feature-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.rkf-specs__feature-content h4 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--bc);
+  margin: 0;
+  letter-spacing: -0.01em;
+  transition: color 0.3s;
+}
+
+.rkf-specs__feature:hover .rkf-specs__feature-content h4 {
+  color: var(--gold);
+}
+
+.rkf-specs__feature-content p {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--bc2);
+  margin: 0;
+}
+
+/* Blueprint Coordinates & Stamp */
+.rkf-specs__coord {
+  position: absolute !important;
+  font-family: var(--font-mono), monospace !important;
+  font-size: 0.65rem !important;
+  color: rgba(245, 166, 35, 0.4) !important;
+  letter-spacing: 0.08em !important;
+  pointer-events: none;
+  z-index: 3 !important;
+  text-transform: uppercase;
+}
+.rkf-specs__coord--tl { top: 12px !important; left: 20px !important; }
+.rkf-specs__coord--tr { top: 12px !important; right: 20px !important; }
+.rkf-specs__coord--bl { bottom: 12px !important; left: 20px !important; }
+.rkf-specs__coord--br { bottom: 12px !important; right: 20px !important; }
+
+@media (max-width: 767px) {
+  .rkf-specs__coord {
+    display: none !important; /* ẩn trên điện thoại nhỏ để tránh rối mắt */
+  }
+}
+

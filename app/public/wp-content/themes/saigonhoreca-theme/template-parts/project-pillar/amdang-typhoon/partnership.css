@@ -4,7 +4,7 @@
  * @package SaigonHoreca
  */
 
-.pp--amdang-typhoon .pp-section-at-menu {
+.pp--adt .pp-section-adt-menu {
   background: var(--b1);
   padding: clamp(4rem, 10vh, 9rem) 0;
   position: relative;
@@ -12,13 +12,7 @@
   isolation: isolate;
 }
 
-.pp--amdang-typhoon .pp-container-at-menu {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 clamp(1.5rem, 5vw, 5rem);
-}
-
-.pp--amdang-typhoon .pp-grid-at-menu {
+.pp--adt .pp-grid-adt-menu {
   display: grid;
   grid-template-columns: 1fr;
   gap: 3.5rem;
@@ -26,19 +20,19 @@
 }
 
 @media (min-width: 1024px) {
-  .pp--amdang-typhoon .pp-grid-at-menu {
+  .pp--adt .pp-grid-adt-menu {
     grid-template-columns: 35% 65%;
     gap: clamp(4rem, 6vw, 7rem);
   }
 }
 
-.pp--amdang-typhoon .pp-text-at-menu {
+.pp--adt .pp-text-adt-menu {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
 
-.pp--amdang-typhoon .pp-badge-at-menu {
+.pp--adt .pp-badge-adt-menu {
   font-family: var(--font-display), sans-serif;
   font-size: 0.75rem;
   font-weight: 600;
@@ -49,12 +43,12 @@
   gap: 0.75rem;
 }
 
-.pp--amdang-typhoon .pp-badge-accent-at-menu {
+.pp--adt .pp-badge-accent-adt-menu {
   color: var(--gold);
   font-weight: 700;
 }
 
-.pp--amdang-typhoon .pp-title-at-menu {
+.pp--adt .pp-title-adt-menu {
   font-family: var(--font-display), sans-serif;
   font-size: clamp(1.8rem, 2.5vw, 2.3rem);
   font-weight: 700;
@@ -64,13 +58,13 @@
   margin: 0;
 }
 
-.pp--amdang-typhoon .pp-body-at-menu {
+.pp--adt .pp-body-adt-menu {
   display: flex;
   flex-direction: column;
   gap: 1.1rem;
 }
 
-.pp--amdang-typhoon .pp-paragraph-at-menu {
+.pp--adt .pp-paragraph-adt-menu {
   font-family: var(--font-body), sans-serif;
   font-size: clamp(0.95rem, 1.05vw, 1.05rem);
   line-height: 1.85;
@@ -80,7 +74,7 @@
 }
 
 /* Menu specs card */
-.pp--amdang-typhoon .pp-menu-specs-card {
+.pp--adt .pp-menu-specs-card {
   position: relative;
   padding: 1.5rem;
   background: rgba(255, 255, 255, 0.02);
@@ -90,7 +84,7 @@
   backdrop-filter: blur(10px);
 }
 
-.pp--amdang-typhoon .pp-menu-specs-title {
+.pp--adt .pp-menu-specs-title {
   font-family: var(--font-display), sans-serif;
   font-size: 0.75rem;
   font-weight: 700;
@@ -101,7 +95,7 @@
   padding-bottom: 0.75rem;
 }
 
-.pp--amdang-typhoon .pp-menu-specs-list {
+.pp--adt .pp-menu-specs-list {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -110,7 +104,7 @@
   gap: 1rem;
 }
 
-.pp--amdang-typhoon .pp-menu-specs-list li {
+.pp--adt .pp-menu-specs-list li {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -120,24 +114,24 @@
   line-height: 1.4;
 }
 
-.pp--amdang-typhoon .pp-menu-specs-list .spec-name {
+.pp--adt .pp-menu-specs-list .spec-name {
   color: var(--bc);
   font-weight: 600;
 }
 
-.pp--amdang-typhoon .pp-menu-specs-list .spec-value {
+.pp--adt .pp-menu-specs-list .spec-value {
   color: var(--bc3);
   text-align: right;
   font-size: 0.82rem;
 }
 
 /* MOSAIC 4-IMAGE GRID */
-.pp--amdang-typhoon .pp-media-at-menu {
+.pp--adt .pp-media-adt-menu {
   position: relative;
   width: 100%;
 }
 
-.pp--amdang-typhoon .pp-menu-mosaic {
+.pp--adt .pp-menu-mosaic {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(12, 1fr);
@@ -150,12 +144,12 @@
 }
 
 @media (max-width: 767px) {
-  .pp--amdang-typhoon .pp-menu-mosaic {
+  .pp--adt .pp-menu-mosaic {
     gap: 0.5rem;
   }
 }
 
-.pp--amdang-typhoon .pp-mosaic-item {
+.pp--adt .pp-mosaic-item {
   position: relative;
   border-radius: var(--radius);
   overflow: hidden;
@@ -165,14 +159,14 @@
   transition: transform 0.6s var(--ease-spring), border-color 0.6s var(--ease-spring), box-shadow 0.6s var(--ease-spring), z-index 0.6s;
 }
 
-.pp--amdang-typhoon .pp-mosaic-image-wrapper {
+.pp--adt .pp-mosaic-image-wrapper {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
 }
 
-.pp--amdang-typhoon .pp-mosaic-item img {
+.pp--adt .pp-mosaic-item img {
   display: block;
   width: 100%;
   height: 100%;
@@ -182,32 +176,32 @@
 }
 
 /* Vị trí các item trong lưới 12x12 */
-.pp--amdang-typhoon .pp-mosaic-item--1 {
+.pp--adt .pp-mosaic-item--1 {
   grid-column: 1 / 7;
   grid-row: 1 / 7;
   z-index: 2;
 }
 
-.pp--amdang-typhoon .pp-mosaic-item--2 {
+.pp--adt .pp-mosaic-item--2 {
   grid-column: 7 / 13;
   grid-row: 1 / 6;
   z-index: 1;
 }
 
-.pp--amdang-typhoon .pp-mosaic-item--3 {
+.pp--adt .pp-mosaic-item--3 {
   grid-column: 1 / 6;
   grid-row: 7 / 12;
   z-index: 1;
 }
 
-.pp--amdang-typhoon .pp-mosaic-item--4 {
+.pp--adt .pp-mosaic-item--4 {
   grid-column: 6 / 13;
   grid-row: 6 / 13;
   z-index: 3;
 }
 
 /* Hover effects */
-.pp--amdang-typhoon .pp-mosaic-item:hover {
+.pp--adt .pp-mosaic-item:hover {
   z-index: 10;
   border-color: var(--gold);
   box-shadow: 
@@ -216,17 +210,42 @@
   transform: scale(1.03) translateY(-4px);
 }
 
-.pp--amdang-typhoon .pp-mosaic-item:hover img {
+.pp--adt .pp-mosaic-item:hover img {
   filter: saturate(1.08) brightness(1.02);
   transform: scale(1.05);
 }
 
 /* Mobile responsive order */
 @media (max-width: 1023px) {
-  .pp--amdang-typhoon .pp-grid-at-menu .pp-text-at-menu {
+  .pp--adt .pp-grid-adt-menu .pp-text-adt-menu {
     order: 1;
   }
-  .pp--amdang-typhoon .pp-grid-at-menu .pp-media-at-menu {
+  .pp--adt .pp-grid-adt-menu .pp-media-adt-menu {
     order: 2;
   }
 }
+
+.pp--adt .pp-menu-label {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 0.75rem;
+  z-index: 3;
+  padding: 0.35rem 0.75rem;
+  background: rgba(10, 10, 10, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  font-family: var(--font-display), sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  backdrop-filter: blur(5px);
+  pointer-events: none;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.pp--adt .pp-mosaic-item:hover .pp-menu-label {
+  opacity: 1;
+}
+

@@ -1,9 +1,0 @@
-/**
- * Project page-template — the-royal-all-day-dining (layout only).
- * @package SaigonHoreca
- */
-
-body.page-template-page-project-the-royal-all-day-dining {
-  background: var(--b1);
-  color: var(--bc);
-}

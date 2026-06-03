@@ -1,101 +1,260 @@
 /**
- * little-bear-thao-dien — partnership slot. .pp-section-bg-lbt cinematic dark bg + glassmorphic content.
+ * little-bear-thao-dien — partnership slot.
+ * Cinematic background and premium grid of glassmorphic comparison cards.
  * @package SaigonHoreca
  */
 
-.pp-section-bg-lbt {
+.pp-section-bg-lb {
   position: relative;
-  padding: 7rem 1.5rem;
-  min-height: 70vh;
+  padding: 6.5rem 1.5rem;
+  min-height: 80vh;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: var(--b1);
+  isolation: isolate;
+  overflow: hidden;
+  clip-path: inset(0 0 0 0); /* Container clip-path cho parallax */
+  border-bottom: 1px solid var(--bd);
+}
+@media (min-width: 992px) {
+  .pp-section-bg-lb {
+    padding: 9.5rem 2rem;
+  }
+}
+
+.pp-section-bg-lb__bg {
+  position: fixed; /* Cố định so với viewport */
+  inset: 0;
+  width: 100%;
+  height: 100%;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  isolation: isolate;
-  overflow: hidden;
+  z-index: -2;
+  pointer-events: none;
 }
-@media (min-width: 768px) { .pp-section-bg-lbt { padding: 10rem 2rem; } }
+@media (max-width: 768px) {
+  .pp-section-bg-lb__bg {
+    position: absolute; /* Fallback trên di động để chuyển động ổn định */
+  }
+}
 
-.pp-section-bg-lbt__overlay {
+.pp-section-bg-lb__overlay {
   position: absolute;
   inset: 0;
-  z-index: 1;
+  z-index: -1;
   background:
     radial-gradient(ellipse at center,
-      color-mix(in srgb, var(--b1) 35%, transparent) 0%,
-      color-mix(in srgb, var(--b1) 80%, transparent) 100%);
+      color-mix(in srgb, var(--b1) 20%, transparent) 0%,
+      color-mix(in srgb, var(--b1) 50%, transparent) 100%),
+    linear-gradient(180deg,
+      color-mix(in srgb, var(--b1) 40%, transparent) 0%,
+      color-mix(in srgb, var(--b1) 30%, transparent) 50%,
+      color-mix(in srgb, var(--b1) 55%, transparent) 100%);
   pointer-events: none;
 }
 
-.pp-section-bg-lbt::before {
+/* Ambient glow tạo điểm nhấn */
+.pp-section-bg-lb::before {
   content: '';
   position: absolute;
-  top: -10%;
-  right: -8%;
-  width: 540px; height: 540px;
-  background: radial-gradient(circle, color-mix(in srgb, var(--gold) 18%, transparent) 0%, transparent 70%);
-  filter: blur(80px);
+  top: -15%;
+  right: -10%;
+  width: 580px;
+  height: 580px;
+  background: radial-gradient(circle, color-mix(in srgb, var(--gold) 15%, transparent) 0%, transparent 70%);
+  filter: blur(100px);
   z-index: 1;
   pointer-events: none;
-  opacity: 0.7;
+  opacity: 0.85;
 }
 
-.pp-section-bg-lbt__content {
+.pp-partnership-lb__container {
   position: relative;
   z-index: 2;
-  max-width: 880px;
+  width: 100%;
+  max-width: 1200px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+.pp-partnership-lb__header {
   text-align: center;
-  padding: 3rem 2.5rem;
-  background: color-mix(in srgb, var(--b1) 40%, transparent);
-  backdrop-filter: blur(14px) saturate(140%);
-  border: 1px solid color-mix(in srgb, var(--gold) 22%, transparent);
-  border-radius: var(--radius-md);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
-  box-shadow:
-    0 24px 56px rgba(0, 0, 0, 0.5),
-    inset 0 1px 0 color-mix(in srgb, var(--gold) 10%, transparent);
-}
-.pp-section-bg-lbt__content::before,
-.pp-section-bg-lbt__content::after {
-  content: '';
-  position: absolute;
-  width: 24px; height: 24px;
-  border: 1px solid color-mix(in srgb, var(--gold) 55%, transparent);
-  pointer-events: none;
-}
-.pp-section-bg-lbt__content::before {
-  top: -1px; left: -1px;
-  border-right: none; border-bottom: none;
-}
-.pp-section-bg-lbt__content::after {
-  bottom: -1px; right: -1px;
-  border-left: none; border-top: none;
+  gap: 1.25rem;
 }
 
-.pp-section-bg-lbt__content .pp-text-lbt__title {
+.pp-partnership-lb__header .pp-text-lb__title {
   margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(1.65rem, 3vw, 2.5rem);
+  font-size: clamp(1.85rem, 3.2vw, 2.8rem);
   font-weight: 700;
-  line-height: 1.25;
+  line-height: 1.2;
   color: var(--bc);
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.7);
 }
-.pp-section-bg-lbt__content .pp-text-lbt__body {
-  font-size: clamp(0.97rem, 1.1vw, 1.05rem);
-  line-height: 1.8;
+
+.pp-partnership-lb__lead {
+  margin: 0;
+  max-width: 640px;
+  font-size: clamp(0.96rem, 1.1vw, 1.08rem);
+  line-height: 1.7;
   color: var(--bc2);
-  max-width: 700px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
-.pp-section-bg-lbt__content .pp-text-lbt__body p {
-  margin: 0 0 1em;
+
+/* Lưới card thiết bị */
+.pp-partnership-lb__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.8rem;
+  padding-top: 1.5rem;
+}
+@media (min-width: 768px) {
+  .pp-partnership-lb__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  .pp-partnership-lb__grid {
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    gap: 2.2rem;
+  }
+}
+
+.pp-partnership-card-lb {
+  background: color-mix(in srgb, var(--b1) 72%, transparent) !important;
+  backdrop-filter: blur(20px) saturate(130%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(130%) !important;
+  border: 1px solid color-mix(in srgb, var(--bd) 85%, transparent) !important;
+  border-radius: var(--radius-md);
+  padding: 2.2rem 1.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7) !important;
+  transition: border-color 0.4s var(--ease-spring), box-shadow 0.4s var(--ease-spring), transform 0.4s var(--ease-spring);
+  position: relative;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.pp-partnership-card-lb::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 1px;
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--gold) 20%, transparent), transparent);
+}
+
+/* Họa tiết SVG bánh răng cơ khí */
+.pp-lb-gears-decor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+.pp-lb-gear {
+  animation: lb-spin linear infinite;
+}
+.pp-lb-gear--1 { animation-duration: 40s; }
+.pp-lb-gear--2 { animation-duration: 60s; animation-direction: reverse; }
+
+@keyframes lb-spin {
+  100% { transform: rotate(360deg); }
+}
+
+/* Featured card ở giữa nhô lên đặc biệt trên Desktop */
+@media (min-width: 1024px) {
+  .pp-partnership-card-lb:nth-of-type(2) {
+    transform: translateY(-0.75rem);
+    border-color: color-mix(in srgb, var(--gold) 35%, transparent) !important;
+    box-shadow: 
+      0 30px 65px rgba(0, 0, 0, 0.85),
+      0 0 30px color-mix(in srgb, var(--gold) 6%, transparent) !important;
+  }
+}
+
+.pp-partnership-card-lb:hover {
+  border-color: color-mix(in srgb, var(--gold) 60%, transparent) !important;
+  box-shadow:
+    0 40px 80px rgba(0, 0, 0, 0.95),
+    0 0 35px color-mix(in srgb, var(--gold) 15%, transparent) !important;
+  z-index: 5;
+}
+
+@media (min-width: 1024px) {
+  .pp-partnership-card-lb:hover {
+    transform: translateY(-1.25rem) scale(1.02);
+  }
+  .pp-partnership-card-lb:nth-of-type(2):hover {
+    transform: translateY(-1.5rem) scale(1.02);
+  }
+}
+
+@media (max-width: 1023px) {
+  .pp-partnership-card-lb:hover {
+    transform: translateY(-6px);
+  }
+}
+
+.pp-partnership-card-lb__header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.pp-partnership-card-lb__brand {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.pp-partnership-card-lb__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--bc);
+}
+
+.pp-partnership-card-lb__text {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--bc2);
+}
+
+.pp-partnership-lb__footer {
   text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  border-top: 1px solid var(--bd);
+  padding-top: 2.2rem;
 }
-.pp-section-bg-lbt__content .pp-text-lbt__body p:last-child { margin-bottom: 0; }
+.pp-partnership-lb__footer p {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.8;
+  color: var(--bc3);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pp-partnership-card-lb {
+    transition: none !important;
+  }
+  .pp-partnership-card-lb:hover {
+    transform: none !important;
+  }
+}

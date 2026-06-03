@@ -1,14 +1,14 @@
-<?php
+﻿<?php
 /**
- * Project Pillar — du-an-vinh-hiep
+ * Project Pillar â€” du-an-vinh-hiep
  * Section #2: with_gallery
  * @package SaigonHoreca
  */
 if (!defined('ABSPATH')) exit;
 $uri = get_template_directory_uri();
 ?>
-<section class="pp__section pp__section--alt">
-  <div class="pp__container">
+<section class="pp-section-vhp pp-section-vhp--alt scroll-reveal">
+  <div class="pp-container-shared">
     <div class="pp-text-vhp pp-text-vhp--center">
       <div class="pp-text-vhp__body">
       <p><?php echo esc_html__('Trong ngành cà phê, chất lượng không chỉ nằm ở hạt cà phê – mà còn ở cách người ta tôn trọng và tôn vinh giá trị của nó. Với Vĩnh Hiệp, doanh nghiệp xuất khẩu cà phê nhân số 1 Việt Nam niên vụ 2023–2024, mỗi không gian trong nhà máy không đơn thuần là nơi vận hành, mà còn là một phần của câu chuyện thương hiệu khi tiếp đón đối tác toàn cầu.', 'saigonhoreca'); ?></p>
@@ -18,11 +18,12 @@ $uri = get_template_directory_uri();
       </div>
     </div>
     <div class="pp-gallery-vhp pp-gallery-vhp--cols-4" style="margin-top:2rem;">
-      <div class="pp-gallery-vhp__item"><img src="<?php echo sgh_img('2025/01/sheh-fung-6.jpg'); ?>" alt="sheh-fung (6)" loading="lazy" decoding="async"></div>
-      <div class="pp-gallery-vhp__item"><img src="<?php echo sgh_img('2025/01/sheh-fung-8.jpg'); ?>" alt="sheh-fung (8)" loading="lazy" decoding="async"></div>
-      <div class="pp-gallery-vhp__item"><img src="<?php echo sgh_img('2025/01/sheh-fung-9.jpg'); ?>" alt="sheh-fung (9)" loading="lazy" decoding="async"></div>
-      <div class="pp-gallery-vhp__item"><img src="<?php echo sgh_img('2025/01/sheh-fung-7.jpg'); ?>" alt="sheh-fung (7)" loading="lazy" decoding="async"></div>
-      <div class="pp-gallery-vhp__item"><img src="<?php echo sgh_img('2025/01/sheh-fung-1-1.jpg'); ?>" alt="<?php echo esc_attr__('10 lỗi thường gặp khi sử dụng tủ lạnh công nghiệp và cách khắc phục', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="1366" height="768"></div>
+      <div class="pp-gallery-vhp__item pp-image-container-shared"><img src="<?php echo sgh_img('2025/01/sheh-fung-6.jpg'); ?>" alt="sheh-fung (6)" loading="lazy" decoding="async"><div class="pp-image-caption-shared"><?php echo esc_html__('Coffee Lab – không gian tiếp đón đối tác quốc tế', 'saigonhoreca'); ?></div></div>
+      <div class="pp-gallery-vhp__item pp-image-container-shared"><img src="<?php echo sgh_img('2025/01/sheh-fung-8.jpg'); ?>" alt="sheh-fung (8)" loading="lazy" decoding="async"><div class="pp-image-caption-shared"><?php echo esc_html__('Khu chế biến cà phê xuất khẩu chuẩn quốc tế', 'saigonhoreca'); ?></div></div>
+      <div class="pp-gallery-vhp__item pp-image-container-shared"><img src="<?php echo sgh_img('2025/01/sheh-fung-9.jpg'); ?>" alt="sheh-fung (9)" loading="lazy" decoding="async"><div class="pp-image-caption-shared"><?php echo esc_html__('Bàn cupping – nơi trình diễn gu thẩm mỹ thương hiệu', 'saigonhoreca'); ?></div></div>
+      <div class="pp-gallery-vhp__item pp-image-container-shared"><img src="<?php echo sgh_img('2025/01/sheh-fung-7.jpg'); ?>" alt="sheh-fung (7)" loading="lazy" decoding="async"><div class="pp-image-caption-shared"><?php echo esc_html__('Hệ thống bếp cao cấp tương xứng vị thế thương hiệu', 'saigonhoreca'); ?></div></div>
+      <div class="pp-gallery-vhp__item pp-image-container-shared"><img src="<?php echo sgh_img('2025/01/sheh-fung-1-1.jpg'); ?>" alt="<?php echo esc_attr__('10 lỗi thường gặp khi sử dụng tủ lạnh công nghiệp và cách khắc phục', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="1366" height="768"><div class="pp-image-caption-shared"><?php echo esc_html__('Tủ lạnh công nghiệp bảo quản nguyên liệu cà phê', 'saigonhoreca'); ?></div></div>
     </div>
   </div>
 </section>
+

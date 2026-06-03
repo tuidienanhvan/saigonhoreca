@@ -108,42 +108,42 @@
               "type": "image-carousel.default",
               "slides": [
                 {
-                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/Yuzu-Omakase-1.jpg",
+                  "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/yuzu-omakase/yuzu-omakase-nghe-nhan-sushi-quay-bieu-dien.webp",
                   "srcset": null,
-                  "alt": "Yuzu-Omakase-1.jpg",
+                  "alt": "yuzu-omakase-nghe-nhan-sushi-quay-bieu-dien.webp",
                   "w": null,
                   "h": null
                 },
                 {
-                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/Yuzu-Omakase-2.jpg",
+                  "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/01/Yuzu-Omakase-2.jpg",
                   "srcset": null,
                   "alt": "Yuzu-Omakase-2.jpg",
                   "w": null,
                   "h": null
                 },
                 {
-                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/Yuzu-Omakase-3-1.jpg",
+                  "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/01/Yuzu-Omakase-3-1.jpg",
                   "srcset": null,
                   "alt": "Yuzu-Omakase-3-1.jpg",
                   "w": null,
                   "h": null
                 },
                 {
-                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/Yuzu-Omakase-4.jpg",
+                  "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/01/Yuzu-Omakase-4.jpg",
                   "srcset": null,
                   "alt": "Yuzu-Omakase-4.jpg",
                   "w": null,
                   "h": null
                 },
                 {
-                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/Yuzu-Omakase-5.jpg",
+                  "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/01/Yuzu-Omakase-5.jpg",
                   "srcset": null,
                   "alt": "Yuzu-Omakase-5.jpg",
                   "w": null,
                   "h": null
                 },
                 {
-                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/Yuzu-Omakase-6.jpg",
+                  "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/01/Yuzu-Omakase-6.jpg",
                   "srcset": null,
                   "alt": "Yuzu-Omakase-6.jpg",
                   "w": null,
@@ -207,8 +207,8 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/SGH-Yuzu-Omakase.jpg",
-                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/SGH-Yuzu-Omakase.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2024/01/SGH-Yuzu-Omakase-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/01/SGH-Yuzu-Omakase-600x337.jpg 600w",
+                "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/01/SGH-Yuzu-Omakase.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/01/SGH-Yuzu-Omakase.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2024/01/SGH-Yuzu-Omakase-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/01/SGH-Yuzu-Omakase-600x337.jpg 600w",
                 "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                 "w": "1366",
                 "h": "768"
@@ -232,7 +232,7 @@
       "has_video_bg": false,
       "video_url": null,
       "background_overlay": true,
-      "background_image": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/SGH-Yuzu-Omakase.jpg",
+      "background_image": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/01/SGH-Yuzu-Omakase.jpg",
       "columns": [
         {
           "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-751ae5d8",
@@ -279,8 +279,8 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/Yuzu-Omakase-chef.jpg",
-                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/Yuzu-Omakase-chef.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2024/01/Yuzu-Omakase-chef-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/01/Yuzu-Omakase-chef-600x337.jpg 600w",
+                "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/01/Yuzu-Omakase-chef.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/01/Yuzu-Omakase-chef.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2024/01/Yuzu-Omakase-chef-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/01/Yuzu-Omakase-chef-600x337.jpg 600w",
                 "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                 "w": "1366",
                 "h": "768"

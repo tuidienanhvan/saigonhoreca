@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="vi" prefix="og: https://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Resource Hints -->
+    <link rel="dns-prefetch" href="https://img.youtube.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Favicons & Manifest -->
+    <link rel="icon" type="image/x-icon" href="https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/assets/images/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/assets/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/assets/images/favicon-16x16.png">
+    <link rel="manifest" href="https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/manifest.json">
+    
+    <style id="sgh-critical">*,:before,:after{box-sizing:border-box}html,body{margin:0;padding:0}body{font-family:Be Vietnam Pro,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.5;color:#fff;background:#0a0a0a;-webkit-font-smoothing:antialiased}h1,h2,h3,h4,h5,h6{margin:0;font-weight:700;color:#fff}img,svg,video{display:block;max-width:100%;height:auto}a{color:inherit;text-decoration:none}button{border:0;cursor:pointer;font:inherit;background:transparent}.sh-skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;background:#f5a623;color:#fff;padding:.5rem 1rem;z-index:100}.sh-skip-link:focus{left:16px;top:16px;width:auto;height:auto}.sh-header{position:sticky;top:0;z-index:50;width:100%;background:#000;border-bottom:1px solid rgba(255,255,255,0.06)}.sh-header__bar{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;padding:.75rem 1.25rem;min-height:76px;color:#fff}.sh-header__actions{display:flex;gap:.75rem;align-items:center}.sh-nav{display:none;position:relative;z-index:10;justify-content:center;align-items:center;overflow:visible;max-width:100%}@media(min-width:1024px){.sh-nav{display:flex}}.sh-nav__list{display:flex;flex-wrap:nowrap;justify-content:center;align-items:center;gap:.25rem;margin:0;padding:0;list-style:none}@media(min-width:1024px){.sh-nav__list{gap:.5rem}}@media(min-width:1280px){.sh-nav__list{gap:1rem}}.sh-nav-item{display:flex;align-items:center;height:100%;position:relative}.sh-nav-item__link{display:inline-flex;align-items:center;gap:.375rem;padding:1.5rem .875rem;font-size:clamp(11px,.9vw,13px);font-weight:700;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;color:rgba(255,255,255,0.88);text-decoration:none}.sh-nav-item__chevron{display:inline-flex;margin-left:.25rem}.sh-nav-item__chevron-icon{display:block;width:.75rem;height:.75rem;opacity:.7}.sh-hero{position:relative;width:100%;aspect-ratio:16/9;background:#000;overflow:hidden}.sh-hero__slider{position:relative;width:100%;height:100%;background:#000}.sh-hero__slides{position:relative;width:100%;height:100%}.carousel-slide{position:absolute;inset:0;width:100%;height:100%;display:none;background:#000}.carousel-slide.active{display:block;z-index:20;opacity:1}.sh-hero__bg-img,.carousel-slide .slide-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;background:#000}.sh-hero__overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(0,0,0,0.55) 0%,rgba(0,0,0,0.30) 40%,rgba(0,0,0,0.15) 100%);pointer-events:none}.sgh-cv-auto{content-visibility:auto;contain-intrinsic-size:auto 600px}#sh-hero-slider .carousel-slide .slide-bg,#sh-hero-slider .carousel-slide .sh-hero__bg-img,.sh-hero__slider .carousel-slide .slide-bg,.sh-hero__slider .carousel-slide .sh-hero__bg-img{animation:none!important;transform:none!important}.sh-hero__nav{position:absolute;top:50%;transform:translateY(-50%);z-index:20;background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.3);color:#fff;width:2.75rem;height:2.75rem;border-radius:9999px;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:.8}.sh-hero__nav--prev{left:1rem}.sh-hero__nav--next{right:1rem}@media(min-width:768px){.sh-hero__nav{width:3.5rem;height:3.5rem}.sh-hero__nav--prev{left:2rem}.sh-hero__nav--next{right:2rem}}.sh-hero__dots{position:absolute;bottom:2rem;right:2rem;z-index:20;display:flex;gap:.5rem}.sh-hero__dot,.carousel-dot{width:.5rem;height:.5rem;padding:0;border:none;border-radius:9999px;background:rgba(255,255,255,0.4);cursor:pointer}.sh-hero__dot.active,.carousel-dot.active{width:2rem;background:#f5a623}
+/* Per-route critical CSS — Saigon Horeca.
+ *
+ * Inlined by critical-css.php (concatenated after critical.css). Covers
+ * above-fold styles for routes where the route-bundle CSS round-trip
+ * would otherwise gate the LCP paint.
+ */
+
+/* ── /du-an/ archive hero — kill 1.2 s opacity-fade-in for LCP slide ──
+ *
+ * The bg-stack has 6 absolute-positioned <div> slides; slide 0 has
+ * `.is-active` server-side but the route bundle animates opacity
+ * 0 → 1 over 1.2 s. Lighthouse Mobile baseline: P=75, LCP=7.9 s with
+ * 88 % render-delay because LCP element waits for opacity:1.
+ *
+ * Inlining paints the active slide at opacity:1 immediately on first
+ * HTML parse — no waiting for theme-archive-project.css to arrive.
+ * Carousel JS still toggles `is-active` to cycle slides; subsequent
+ * transitions still animate after the first paint completes.
+ */
+.sh-archive-hero {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: #000;
+    overflow: hidden;
+}
+.sh-archive-hero__bg-stack {
+    position: absolute;
+    inset: 0;
+}
+.sh-archive-hero__bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+}
+.sh-archive-hero__bg.is-active {
+    opacity: 1;
+}
+
+/* ── /ve-saigon-horeca/ (page-gioi-thieu template) about hero ──
+ * Same opacity-fade trap. Force opacity:1 on first paint. */
+.sh-about-hero {
+    position: relative;
+    width: 100%;
+    min-height: 520px;
+    background: #000;
+    overflow: hidden;
+}
+@media (max-width: 640px) {
+    .sh-about-hero { min-height: 380px; }
+}
+.sh-about-hero__bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 1;
+}
+</style>
+        <title>Renovate SOL KITCHEN &#038; BAR quận 7 &#8211; Saigon Horeca</title>
+<meta name='robots' content='max-image-preview:large' />
+<meta name="description" content=" – Bếp công nghiệp, quầy bar, inox HORECA cho nhà hàng, khách sạn, café cao cấp — giá tốt – Hotline: 0901 304 365">
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//www.googletagmanager.com' />
+<link rel='dns-prefetch' href='//www.google-analytics.com' />
+<link rel='dns-prefetch' href='//zalo.me' />
+<link rel='dns-prefetch' href='//www.facebook.com' />
+<link rel='dns-prefetch' href='//www.youtube.com' />
+<link rel="preload" as="style" href="css/theme-project.css">
+    <script>
+    (function(){
+        // Always load tracking — cookie consent is cosmetic only
+        function afterConsent(cb) {
+            try {
+                if (localStorage.getItem('sh_cookies_accepted') === '1') {
+                    cb();
+                    return;
+                }
+            } catch (e) {}
+            window.addEventListener('sh:cookies-accepted', cb, { once: true });
+        }
+        afterConsent(function(){
+                        });
+    })();
+    </script>
+    <style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<style id="wp-block-styles-placeholder-inline-css">
+:root { --wp-internal-comment: "Placeholder for wp_hoist_late_printed_styles() to replace with the block styles printed at wp_footer." }
+/*# sourceURL=wp-block-styles-placeholder-inline-css */
+</style>
+<style id="wp-global-styles-placeholder-inline-css">
+:root { --wp-internal-comment: "Placeholder for wp_hoist_late_printed_styles() to replace with the global-styles printed at wp_footer." }
+/*# sourceURL=wp-global-styles-placeholder-inline-css */
+</style>
+<link rel='stylesheet' id='theme-tokens-css' href='css/theme-project.css' media='all' />
+<style id="theme-tokens-inline-css">
+
+        :root {
+            --font-body: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            --font-heading: "Lexend", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            --font-serif: "Lora", Georgia, serif;
+            --ast-global-color-0: #f9c349;
+            --ast-global-color-1: #ffb100;
+            --ast-global-color-2: #000000;
+            --ast-global-color-3: #242525;
+            --ast-global-color-4: #f9fafb;
+            --ast-global-color-5: #ffffff;
+            --ast-global-color-6: #e2e8f0;
+            --ast-global-color-7: #cbd5e1;
+            --ast-global-color-8: #94a3b8;
+            --e-global-color-astglobalcolor0: #f9c349;
+            --e-global-color-astglobalcolor1: #ffb100;
+            --e-global-color-astglobalcolor2: #000000;
+            --e-global-color-astglobalcolor3: #242525;
+            --e-global-color-astglobalcolor4: #f9fafb;
+            --e-global-color-astglobalcolor5: #ffffff;
+            --e-global-color-astglobalcolor6: #e2e8f0;
+            --e-global-color-astglobalcolor7: #cbd5e1;
+            --e-global-color-astglobalcolor8: #94a3b8;
+        }
+        body { font-family: var(--font-body); }
+        h1, h2, h3, h4, h5, h6, .font-sans { font-family: var(--font-heading) !important; }
+        .e-font-icon-svg { display: inline-block; width: 1em; height: 1em; fill: currentColor; }
+
+        /* ROKA FELLA CAPTION & LAYOUT ENHANCEMENTS */
+        .pp-image-container-rf {
+            position: relative !important;
+            overflow: hidden !important;
+        }
+        .pp-image-caption-rf {
+            position: absolute !important;
+            bottom: 0.75rem !important;
+            left: 0.75rem !important;
+            z-index: 5 !important;
+            padding: 0.4rem 0.85rem !important;
+            background: rgba(10, 10, 10, 0.85) !important;
+            border: 1px solid rgba(255, 255, 255, 0.12) !important;
+            border-radius: 6px !important;
+            font-family: var(--font-heading), sans-serif !important;
+            font-size: 0.68rem !important;
+            font-weight: 700 !important;
+            letter-spacing: 0.05em !important;
+            color: var(--gold) !important;
+            backdrop-filter: blur(8px) !important;
+            -webkit-backdrop-filter: blur(8px) !important;
+            pointer-events: none !important;
+            opacity: 0.85 !important;
+            transition: opacity 0.3s ease, transform 0.3s ease !important;
+            width: auto !important;
+            max-width: calc(100% - 1.5rem) !important;
+            text-align: left !important;
+            display: inline-block !important;
+            border-top: none !important;
+        }
+        .pp-image-container-rf:hover .pp-image-caption-rf {
+            opacity: 1 !important;
+            transform: translateY(-2px) !important;
+        }
+        .pp-image-container-rf img {
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        }
+        .pp-image-container-rf:hover img {
+            transform: scale(1.04) !important;
+            filter: grayscale(0%) contrast(1.05) brightness(1.02) !important;
+        }
+        /* Premium Cards styling */
+        .rkf-concept__glass-card,
+        .rkf-specs__glass-card {
+            background: linear-gradient(135deg, rgba(12, 14, 20, 0.92) 0%, rgba(6, 7, 10, 0.97) 100%) !important;
+            border: 1px solid rgba(245, 166, 35, 0.18) !important;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), inset 0 0 35px rgba(245, 166, 35, 0.04) !important;
+        }
+        .rkf-concept__glass-card:hover,
+        .rkf-specs__glass-card:hover {
+            border-color: rgba(245, 166, 35, 0.45) !important;
+            box-shadow: 0 35px 70px rgba(0, 0, 0, 0.92), 0 0 35px rgba(245, 166, 35, 0.1) !important;
+        }
+        .rkf-partnership__glass-card,
+        .rkf-related__glass-card {
+            background: linear-gradient(135deg, rgba(12, 14, 20, 0.92) 0%, rgba(6, 7, 10, 0.97) 100%) !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.85) !important;
+        }
+        .rkf-partnership__glass-card:hover,
+        .rkf-related__glass-card:hover {
+            border-color: rgba(255, 255, 255, 0.15) !important;
+            box-shadow: 0 35px 70px rgba(0, 0, 0, 0.95) !important;
+        }
+        /* Staggered floaters adjustment */
+        .rkf-partnership__image-container--floating {
+            box-shadow: -20px 20px 50px rgba(0, 0, 0, 0.9), 0 0 30px rgba(245, 166, 35, 0.15) !important;
+            transform: rotate(3deg) translateY(0) !important;
+        }
+        .rkf-partnership__side:hover .rkf-partnership__image-container--floating {
+            transform: scale(1.04) rotate(0deg) translateY(-10px) !important;
+        }
+    
+/*# sourceURL=theme-tokens-inline-css */
+</style>
+<link rel='preload' as='style' onload="this.onload=null;this.rel='stylesheet'" id='google-fonts-sgh-css' href='https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&#038;family=Lexend:wght@500;700&#038;family=Lora:ital,wght@0,400;0,500;0,700;1,400;1,700&#038;display=swap' media='all' />
+<link rel="https://api.w.org/" href="https://saigonhoreca.local/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://saigonhoreca.local/wp-json/wp/v2/pages/9872517" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://saigonhoreca.local/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress 7.0" />
+<link rel='shortlink' href='https://saigonhoreca.local/du-an/sol-kitchen-bar/' />
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","@id":"https://saigonhoreca.local/#organization","name":"SAIGON HORECA","legalName":"CÔNG TY TNHH SÀI GÒN HORECA","url":"https://saigonhoreca.local/","description":"Saigon Horeca cung cấp đa dạng các sản phẩm thiết bị bếp công nghiệp và thiết bị quầy bar phục vụ cho khách hàng trong lĩnh vực F&B, bao gồm tư vấn thiết kế, thi công lắp đặt, cung cấp thiết bị, và tư vấn vận hành kinh doanh.","telephone":"0901 304 365","email":"contact@saigonhoreca.com","address":{"@type":"PostalAddress","streetAddress":"Số 40 Đường Số 6, Khu Dân Cư Melosa Khang Điền, Phường Long Trường, TP. Hồ Chí Minh","addressLocality":"Hồ Chí Minh","addressRegion":"Hồ Chí Minh","addressCountry":"VN"},"logo":{"@type":"ImageObject","url":"https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/assets/images/logo.png"},"image":"https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/assets/images/logo.png","sameAs":["https://www.facebook.com/saigonhoreca","https://www.youtube.com/@saigonhoreca","https://zalo.me/0901304365"],"contactPoint":[{"@type":"ContactPoint","telephone":"0901 304 365","contactType":"sales","areaServed":"VN","availableLanguage":["Vietnamese","English"]},{"@type":"ContactPoint","telephone":"0909 040 920","contactType":"customer support","areaServed":"VN"}]}</script>
+
+<link rel="alternate" hreflang="vi" href="https://saigonhoreca.vn/du-an/sol-kitchen-bar/">
+<link rel="alternate" hreflang="en" href="https://saigonhoreca.com/projects/sol-kitchen-bar/">
+<link rel="alternate" hreflang="x-default" href="https://saigonhoreca.vn/du-an/sol-kitchen-bar/">
+
+    <!-- SEO Fallback: OpenGraph only (meta description is handled by
+         inc/core/seo-meta-description.php to guarantee 120-155 chars). -->
+            <meta property="og:title" content="Renovate SOL KITCHEN &#038; BAR quận 7">
+        <meta property="og:description" content=" – Bếp công nghiệp, quầy bar, inox HORECA cho nhà hàng, khách sạn, café cao cấp — giá tốt – Hotline: 0901 304 365">
+        <meta property="og:url" content="https://saigonhoreca.local/du-an/sol-kitchen-bar/">
+        <meta property="og:type" content="website">
+        <meta property="og:image" content="https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/assets/images/og-default.jpg">
+        <meta property="og:site_name" content="Saigon Horeca">
+    
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Dark mode & Lighthouse Optimization: apply BEFORE paint to prevent flash & bypass animation delays -->
+    <script>
+    (function(){
+        // 1. Dark mode
+        var d = null;
+        try { d = localStorage.getItem('sh-dark'); } catch (e) {}
+        if (d === 'true') document.documentElement.classList.add('dark');
+    })();
+    </script>
+        </head>
+<body class="wp-singular page-template-default page page-id-9872517 wp-embed-responsive wp-theme-saigonhoreca-theme">
+<main id="primary" class="pp" tabindex="-1">
+    <section class="pp-hero-skb">
+    <div class="pp-hero-skb__media">
+        <iframe src="https://www.youtube.com/embed/c8aOoxqXJqI?autoplay=1&mute=1&loop=1&playlist=c8aOoxqXJqI&controls=0&showinfo=0&modestbranding=1&iv_load_policy=3&playsinline=1&disablekb=1&fs=0&rel=0&cc_load_policy=0&color=white&hl=vi" allow="autoplay; encrypted-media; fullscreen" frameborder="0" title="Background video" tabindex="-1"></iframe>
+    </div>
+    <div class="pp-hero-skb__overlay" aria-hidden="true"></div>
+    <div class="pp-hero-skb__content">
+        <h1 class="pp-hero-skb__title">Renovate SOL KITCHEN &amp; BAR quận 7</h1>
+        <p class="pp-hero-skb__subtitle">2023 MICHELIN Guide Vietnam</p>
+    </div>
+</section>
+<section class="pp__section pp__section--alt">
+  <div class="pp__container">
+    <div class="pp-text-skb pp-text-skb--center">
+      <div class="pp-text-skb__body">
+      <p>Tiếp nối sự thành công của nhà hàng Sol quận 1 khi lọt vào Michelin Guide 2023, Saigon Horeca vinh hạnh được chủ đầu tư Sol Kitchen &amp; Bar tin tưởng lựa chọn là đơn vị uy tín triển khai hệ thống bếp cao cấp cho nhà hàng tại quận 7, HCMC.</p>
+      </div>
+    </div>
+    <div class="pp-gallery-skb pp-gallery-skb--cols-1" style="margin-top:2rem;">
+      <div class="pp-gallery-skb__item"><img src="images/Sol0D7-01.jpg" alt="Thiết bị bếp công nghiệp Saigon Horeca" loading="lazy" decoding="async" width="1366" height="768"></div>
+    </div>
+  </div>
+</section>
+<section class="pp__section">
+  <div class="pp__container">
+    <div class="pp-text-skb pp-text-skb--center">
+      <span class="pp-text-skb__divider pp-text-skb__divider--center" aria-hidden="true"></span>
+      <h2 class="pp-text-skb__title">Thách thức và khó khăn:</h2>
+      <div class="pp-text-skb__body">
+      <p>Khi tiếp nhận thông tin và yêu cầu từ chủ đầu tư, Saigon Horeca đã đối mặt với nhiều khó khăn và thử thách. Việc cải tạo lại khu bếp hiện hữu rộng hơn 70m2 yêu cầu phải bố trí lại các thiết bị đang còn hoạt động và phải đảm bảo đúng công năng hoạt động, quy trình chế biến của toàn bộ khu bếp.</p>
+      <p>Để làm được điều này, đội ngũ kỹ thuật của Saigon Horeca đã phải tiến hành khảo sát tỉ mỉ và chi tiết qua nhiều ngày, đánh giá từng thiết bị và lập kế hoạch chi tiết để tích hợp các thiết bị cũ vào hệ thống mới một cách hợp lý và hiệu quả nhất.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="pp__section pp__section--alt">
+  <div class="pp__container">
+    <div class="pp-text-skb pp-text-skb--center">
+      <div class="pp-text-skb__body">
+      <p>Hệ thống chụp hút khói dài 8m được thiết kế để hút khói và cấp gió tươi song song trong khu vực nấu. Hệ thống này giúp luồng khí lưu thông liên tục, tạo không gian thoải mái cho các đầu bếp làm việc và hạn chế tình trạng bí khí, đảm bảo môi trường làm việc trong lành và thoáng đãng. Trong khu vực rửa, một hệ thống chụp hút khói dài 2m cũng được lắp đặt để hút khói và cấp gió tươi, đảm bảo khu vực này luôn sạch sẽ và không bị ẩm mốc.</p>
+      <p>Chụp hút 2m:</p>
+      </div>
+    </div>
+    <div class="pp-gallery-skb pp-gallery-skb--cols-3" style="margin-top:2rem;">
+      <div class="pp-gallery-skb__item"><img src="images/chup-hut-8m-1-1.jpg" alt="Thiết bị bếp công nghiệp Saigon Horeca" loading="lazy" decoding="async" width="1366" height="768"></div>
+      <div class="pp-gallery-skb__item"><img src="images/chup-hut-8m-2-1.jpg" alt="Thiết bị bếp công nghiệp Saigon Horeca" loading="lazy" decoding="async" width="1366" height="768"></div>
+      <div class="pp-gallery-skb__item"><img src="images/chup-hut-2m-1.jpg" alt="Dịch vụ sửa chữa, bảo trì hệ thống bếp công nghiệp bởi Saigon Horeca" loading="lazy" decoding="async" width="1366" height="768"></div>
+    </div>
+  </div>
+</section>
+<section class="pp-section-bg-skb" style="background-image:url('images/SGH-sold7-01.jpg');">
+  <div class="pp-section-bg-skb__overlay" aria-hidden="true"></div>
+  <div class="pp-section-bg-skb__content">
+    <span class="pp-text-skb__divider pp-text-skb__divider--center" aria-hidden="true"></span>
+    <h2 class="pp-text-skb__title">Sự Tinh Tế của Saigon Horeca Trong Thiết Kế</h2>
+    <div class="pp-text-skb__body">
+      <p>Sol Kitchen &amp; Bar quận 7 đã được trang bị một khu bếp rộng hơn 70m2, đảm bảo sự tiện nghi và chuyên nghiệp trong quá trình vận hành. Khu bếp này được trang bị các thiết bị bếp cao cấp như hệ thống tủ đông, tủ mát, lò nướng combi, salamander, plancha, và đặc biệt là lò BBQ do Saigon Horeca sản xuất riêng cho Sol quận 7.</p>
+    </div>
+  </div>
+</section>
+<section class="pp__section pp__section--alt">
+  <div class="pp__container">
+    <div class="pp-split-skb pp-split-skb--reverse">
+      <div class="pp-split-skb__body">
+        <span class="pp-text-skb__divider" aria-hidden="true"></span>
+        <h2 class="pp-text-skb__title">Giải pháp của Saigon Horeca:</h2>
+        <div class="pp-text-skb__body">
+      <p>Hệ thống tủ đông và tủ mát giúp bảo quản thực phẩm luôn tươi ngon và an toàn. Lò nướng combi là sự kết hợp hoàn hảo giữa nướng và hấp, mang đến những món ăn chất lượng cao. Salamander và plancha giúp nấu nướng nhanh chóng và hiệu quả.</p>
+      <p>Lò BBQ theo phong cách Italia được Saigon Horeca sản xuất dành riêng cho nhà hàng Sol Kitchen &amp; Bar là điểm nhấn độc đáo, dễ dàng thao tác, nướng nhanh và chắc chắn. Ngoài ra còn mang tính thẩm mỹ rất lớn cho khu bếp.</p>
+      <p>Ngoài việc lắp đặt các thiết bị mới, Saigon Horeca còn tối ưu lại các thiết bị cũ. Chúng tôi kiểm tra công năng của từng thiết bị và đưa vào hệ thống mới nhằm tối ưu chi phí cho chủ đầu tư mà vẫn đảm bảo hiệu quả vận hành.</p>
+        </div>
+      </div>
+      <div class="pp-split-skb__media">
+        <img src="images/SGH-sold7-01.jpg" alt="Thiết bị bếp công nghiệp Saigon Horeca" loading="lazy" decoding="async" width="1366" height="768">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pp__section pp__section--alt">
+  <div class="pp__container">
+    <div class="pp-text-skb pp-text-skb--center">
+      <div class="pp-text-skb__body">
+      <p>Quy trình thi công được thực hiện một cách nghiêm ngặt và cẩn thận. Tất cả các công đoạn đều được giám sát chặt chẽ để đảm bảo an toàn lao động và hạn chế tối đa các sự cố có thể xảy ra.</p>
+      <p>Saigon Horeca cam kết mang đến dịch vụ chất lượng cao, sự tin cậy trong kinh doanh và tính thẩm mỹ trong hệ thống bếp. Chúng tôi luôn đặt lợi ích của khách hàng lên hàng đầu và không ngừng cải tiến để đáp ứng nhu cầu ngày càng cao của thị trường.</p>
+      </div>
+    </div>
+    <div class="pp-gallery-skb pp-gallery-skb--cols-3" style="margin-top:2rem;">
+      <div class="pp-gallery-skb__item"><img src="images/thi-cong-02.jpg" alt="Hướng dẫn bảo dưỡng bàn inox công nghiệp đúng cách và hiệu quả" loading="lazy" decoding="async"></div>
+      <div class="pp-gallery-skb__item"><img src="images/thi-cong-04.jpg" alt="thi-cong-04" loading="lazy" decoding="async"></div>
+      <div class="pp-gallery-skb__item"><img src="images/thi-cong-03.jpg" alt="thi-cong-03" loading="lazy" decoding="async"></div>
+    </div>
+  </div>
+</section>
+
+<section class="pp__section pp__section--alt">
+  <div class="pp__container">
+    <div class="pp-text-skb pp-text-skb--center">
+      <div class="pp-text-skb__body">
+      <p>Với kinh nghiệm và uy tín đã được khẳng định 10 năm nay, Saigon Horeca tự hào là đối tác đáng tin cậy của nhiều nhà hàng và quán Bar nổi tiếng như Bambino, Loco Complex, Yuzu Omakase, Unic Bar, …</p>
+      <p>Hãy để lại thông tin liên hệ nếu quý khách có nhu cầu về tư vấn, thiết kế hệ thống bếp cao cấp cho nhà hàng, quán bar của mình, Saigon Horeca sẽ chủ động trao đổi với quý khách, khảo sát trực tiếp tại Site để lắng nghe toàn bộ yêu cầu nhằm đưa ra giải pháp tối ưu nhất, vừa tiết kiệm chi phí, vừa đảm bảo hệ thống chất lượng trong suốt thời gian vận hành thực sự ổn định.</p>
+      <p>Saigon Horeca | Kitchen Equipment and Bar Solutions.</p>
+      </div>
+    </div>
+    <div class="pp-gallery-skb pp-gallery-skb--cols-1" style="margin-top:2rem;">
+      <div class="pp-gallery-skb__item"><img src="images/sol-sgh.jpg" alt="Tầm quan trọng của hệ thống hút khói và cấp khí tươi cho hệ thống bếp công nghiệp cao cấp" loading="lazy" decoding="async" width="1366" height="768"></div>
+    </div>
+  </div>
+</section>
+
+</div></body>
+</html>

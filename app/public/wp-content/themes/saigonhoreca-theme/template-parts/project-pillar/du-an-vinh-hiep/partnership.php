@@ -1,28 +1,29 @@
-<?php
+﻿<?php
 /**
- * Project Pillar — du-an-vinh-hiep
+ * Project Pillar â€” du-an-vinh-hiep
  * Section #4: split
  * @package SaigonHoreca
  */
 if (!defined('ABSPATH')) exit;
 $uri = get_template_directory_uri();
 ?>
-<section class="pp__section pp__section--alt">
-  <div class="pp__container">
+<section class="pp-section-vhp pp-section-vhp--alt scroll-reveal">
+  <div class="pp-container-shared">
     <div class="pp-split-vhp pp-split-vhp--reverse">
       <div class="pp-split-vhp__body">
         <span class="pp-text-vhp__divider" aria-hidden="true"></span>
-        <h2 class="pp-text-vhp__title"><?php echo esc_html__('Showroom Coffee Lab – Khi inox trở thành ngôn ngữ của thương hiệu', 'saigonhoreca'); ?></h2>
+        <h2 class="pp-text-vhp__title"><?php echo esc_html__('Khu bếp nhân viên – Hiệu quả vận hành cho suất ăn công nghiệp hiện đại', 'saigonhoreca'); ?></h2>
         <div class="pp-text-vhp__body">
-      <p><?php echo esc_html__('Điểm nhấn đặc biệt của dự Nam An ở khu vực showroom triển lãm – nơi Vĩnh Hiệp tiếp đón các đoàn khách tham quan và giới thiệu chiều sâu của cà phê Việt Nam.', 'saigonhoreca'); ?></p>
-      <p><?php echo esc_html__('Saigon Horeca được giao nhiệm vụ tư vấn và bố trí toàn bộ không gian thiết bị chế biến và phục vụ cà phê, với vật liệu chủ đạo là inox cao cấp. Nhưng inox ở đây không mang dáng dấp công nghiệp khô cứng, mà được xử lý hoàn thiện tinh xảo, đồng bộ và mang tính trưng bày.', 'saigonhoreca'); ?></p>
-      <p><?php echo esc_html__('Trung tâm của không gian là bàn cupping chuyên dụng cao cấp, được thi công hoàn toàn từ inox mạ màu, lựa chọn tông màu tương đồng với hệ nhận diện thương hiệu Vĩnh Hiệp. Đây không chỉ là bàn thử nếm, mà là một tuyên ngôn hình ảnh: sự nghiêm túc, chuẩn mực và đẳng cấp trong từng công đoạn đánh giá chất lượng cà phê.', 'saigonhoreca'); ?></p>
-      <p><?php echo esc_html__('Không gian Coffee Lab vì thế trở thành nơi mà kỹ thuật – thẩm mỹ – câu chuyện thương hiệu cùng tồn tại hài hòa.', 'saigonhoreca'); ?></p>
+      <p><?php echo esc_html__('Bên cạnh khu bếp dành riêng cho ban lãnh đạo, Saigon Horeca cũng tham gia tư vấn và triển khai khu bếp phục vụ nhân viên nhà máy – nơi đòi hỏi công suất lớn, tốc độ nhanh và tính ổn định cao.', 'saigonhoreca'); ?></p>
+      <p><?php echo esc_html__('Với đặc thù nhà máy sản xuất, suất ăn nhân viên phải được phục vụ đúng giờ, đúng định lượng và đảm bảo dinh dưỡng. Saigon Horeca đã bố trí hệ thống bếp Á công nghiệp công suất lớn, nồi nấu phở điện tự động, tủ hấp cơm đa năng và hệ thống giữ nóng thức ăn liên tục.', 'saigonhoreca'); ?></p>
+      <p><?php echo esc_html__('Toàn bộ quy trình được tổ chức theo luồng một chiều khép kín, giúp hạn chế giao chéo, giảm thời gian chờ và nâng cao năng suất phục vụ.', 'saigonhoreca'); ?></p>
         </div>
       </div>
-      <div class="pp-split-vhp__media">
+      <div class="pp-split-vhp__media pp-image-container-shared">
         <img src="<?php echo sgh_img('2025/01/sheh-fung-4.jpg'); ?>" alt="<?php echo esc_attr__('Bếp á đôi công nghiệp', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="1366" height="768">
+        <div class="pp-image-caption-shared"><?php echo esc_html__('Bếp Á công nghiệp công suất lớn cho nhân viên nhà máy', 'saigonhoreca'); ?></div>
       </div>
     </div>
   </div>
 </section>
+

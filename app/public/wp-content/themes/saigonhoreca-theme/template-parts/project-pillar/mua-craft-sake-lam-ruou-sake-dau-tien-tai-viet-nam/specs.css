@@ -1,3 +1,4 @@
-/** mua-craft-sake-lam-ruou-sake-dau-tien-tai-viet-nam — specs slot. Inherits .pp-split-mcs from concept.css. */
+/** mua-craft-sake-lam-ruou-sake-dau-tien-tai-viet-nam — specs slot.
+ *  Kế thừa .pp-split-mua / .pp-frame-mua từ concept.css. 0 hardcode hex brand. */
 
-.pp-split-mcs--reverse .pp-split-mcs__media { aspect-ratio: 16 / 9; }
+.pp-specs-mua .pp-frame-mua--wide { aspect-ratio: 16 / 9; }

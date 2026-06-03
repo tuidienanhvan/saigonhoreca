@@ -1,1 +1,27 @@
-/** moa-moa — specs slot (no content). */
+/**
+ * moa-moa — specs slot.
+ * Inherits .pp-split-moa from concept.css + image + text.
+ * @package SaigonHoreca
+ */
+
+.pp-split-moa__media img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--bd);
+  transition: border-color 0.4s var(--ease-spring), transform 0.4s var(--ease-spring);
+}
+.pp-split-moa__media img:hover {
+  border-color: color-mix(in srgb, var(--wa) 40%, transparent);
+  transform: scale(1.03);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pp-split-moa__media img {
+    transition: none !important;
+  }
+  .pp-split-moa__media img:hover {
+    transform: none !important;
+  }
+}

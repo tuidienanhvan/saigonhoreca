@@ -1,121 +1,143 @@
 /**
- * casa-maria — intro slot. OWNS shared base styles for the suffix:
- *   .pp__section / .pp__section--alt / .pp__container
- *   .pp-text-cma + __divider, __title, __body
- *   .pp-gallery-cma + cols modifiers + __item
- * Spanish Hacienda: warm terracotta+gold palette, wrought-iron filigree dividers,
- * arched portal gallery tiles (top 160px radius), bull-emblem L-bracket corners
- * on text body, hacienda 'M' watermark, talavera dot ambient pattern, drop-cap
- * first letter, multi-layer sunset glows, staggered tile entry animations.
+ * casa-maria — intro slot v2.0 (Premium Deep Red Redesign).
+ * CAD Blueprint Details & Mediterranean Earth Colors.
  * @package SaigonHoreca
  */
 
 /* ===================================================================
-   Shared section base
+   BASE SECTION SHELL, BACKGROUND GLOWS & GRID SYSTEM
    =================================================================== */
-.pp__section {
+.pp-section-cm {
   position: relative;
-  padding: 5.5rem 1.25rem;
-  background: var(--b1);
+  padding: 6rem 1.25rem;
+  background-color: var(--b1) !important;
   overflow: hidden;
   isolation: isolate;
 }
 @media (min-width: 768px) {
-  .pp__section { padding: 8rem 2rem; }
+  .pp-section-cm { padding: 9rem 2rem; }
 }
-.pp__section--alt { background: var(--b2); }
-
-.pp__container {
-  max-width: 1180px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 2;
+.pp-section-cm--alt {
+  background-color: var(--b2) !important;
+  background-image: 
+    linear-gradient(color-mix(in srgb, var(--gold) 1.5%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--gold) 1.5%, transparent) 1px, transparent 1px) !important;
+  background-size: 36px 36px !important;
+  background-position: center;
 }
 
-/* Hacienda ambient layer 1 — sunset terracotta glow top-right */
-.pp__section--alt::before {
-  content: '';
+/* AutoCAD background grid */
+.pp-cm-bg-grid {
   position: absolute;
-  top: 14%;
-  right: -10%;
-  width: 580px;
-  height: 580px;
-  background: radial-gradient(circle,
-    color-mix(in srgb, var(--gold) 8%, transparent) 0%,
-    transparent 65%);
-  filter: blur(75px);
+  inset: 0;
   pointer-events: none;
   z-index: 0;
 }
 
-/* Hacienda ambient layer 2 — warm haze bottom-left */
-.pp__section--alt::after {
+/* Mediterranean Warm Amber Glow */
+.pp-section-cm--alt::before {
   content: '';
   position: absolute;
-  bottom: -12%;
+  top: 10%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle,
+    rgba(245, 166, 35, 0.06) 0%,
+    transparent 70%);
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Mediterranean Terracotta Glow */
+.pp-section-cm--alt::after {
+  content: '';
+  position: absolute;
+  bottom: -5%;
   left: -8%;
   width: 500px;
   height: 500px;
   background: radial-gradient(circle,
-    color-mix(in srgb, var(--gold) 5%, transparent) 0%,
+    rgba(210, 125, 86, 0.05) 0%,
     transparent 70%);
-  filter: blur(82px);
+  filter: blur(90px);
   pointer-events: none;
   z-index: 0;
 }
 
-/* Talavera-tile dot ambient pattern in alt sections */
-.pp__section--alt .pp__container::before {
-  content: '';
+/* ===================================================================
+   NARRATIVE TECHNICAL LINE (ĐƯỜNG NỐI KỸ THUẬT TOÀN TRANG)
+   =================================================================== */
+.pp-cm-narrative-line {
   position: absolute;
-  top: -2rem;
-  left: -2rem;
-  right: -2rem;
-  bottom: -2rem;
+  top: 16rem;
+  bottom: 12rem;
+  left: 50%;
+  width: 1px;
+  background: linear-gradient(to bottom,
+    transparent,
+    color-mix(in srgb, var(--gold) 12%, transparent) 10%,
+    color-mix(in srgb, var(--gold) 12%, transparent) 90%,
+    transparent
+  );
+  transform: translateX(-50%);
+  z-index: 1;
+  display: none;
   pointer-events: none;
-  z-index: -1;
-  background:
-    radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--gold) 9%, transparent) 0 1.5px, transparent 2px) 0 0 / 56px 56px,
-    radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--gold) 5%, transparent) 0 1px, transparent 1.5px) 28px 28px / 56px 56px;
-  mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 0%, transparent 80%);
-  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 0%, transparent 80%);
-  opacity: 0.7;
+}
+@media (min-width: 992px) {
+  .pp-cm-narrative-line {
+    display: block;
+  }
+}
+
+/* Narrative Nodes */
+.pp-cm-narrative-node {
+  position: absolute;
+  top: 2.2rem;
+  width: 32px;
+  height: 32px;
+  background: var(--b1);
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display), sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--gold);
+  z-index: 4;
+  box-shadow: 0 0 12px color-mix(in srgb, var(--gold) 20%, transparent);
+  transition: transform 0.4s var(--ease-spring), background-color 0.3s, color 0.3s;
+}
+@media (min-width: 992px) {
+  .pp-cm-narrative-node {
+    display: flex;
+  }
+  .pp-cm-row--layout-med .pp-cm-narrative-node { right: -4.75rem; }
+  .pp-cm-row--layout-kitchen .pp-cm-narrative-node { left: -4.75rem; }
+  .pp-cm-row--layout-devices .pp-cm-narrative-node { right: -4.75rem; }
+}
+.pp-cm-row:hover .pp-cm-narrative-node {
+  transform: scale(1.1) rotate(360deg);
+  background: var(--gold);
+  color: var(--pc);
+  box-shadow: 0 0 15px var(--gold);
 }
 
 /* ===================================================================
-   pp-text-cma
+   INTRO HEADER & TITLE (Full-Width)
    =================================================================== */
-.pp-text-cma {
-  max-width: 880px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 1.6rem;
+.pp-cm-intro__header {
+  max-width: 1000px;
+  margin: 0 auto 5rem auto;
   position: relative;
-}
-.pp-text-cma--center { align-items: center; text-align: center; }
-
-/* Eyebrow on centered intro */
-.pp-text-cma--center::before {
-  content: '· LA HISTORIA ·';
-  display: inline-block;
-  font-family: var(--font-display);
-  font-size: 0.72rem;
-  letter-spacing: 0.5em;
-  text-transform: uppercase;
-  color: var(--gold);
-  padding: 0.45rem 1.2rem;
-  margin-bottom: 0.4rem;
-  border: 1px solid color-mix(in srgb, var(--gold) 32%, transparent);
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--b1) 30%, transparent);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--gold) 12%, transparent);
+  z-index: 2;
 }
 
-/* Wrought-iron filigree divider — line with talavera dots + center diamond */
-.pp-text-cma__divider {
+.pp-text-cm__divider {
   display: block;
   width: 96px;
   height: 14px;
@@ -125,225 +147,362 @@
     radial-gradient(circle at 50% 50%, var(--gold) 0 3px, transparent 4px) 100% 50% / 10px 10px no-repeat,
     linear-gradient(90deg,
       transparent 0,
-      color-mix(in srgb, var(--gold) 60%, transparent) 18%,
-      color-mix(in srgb, var(--gold) 60%, transparent) 82%,
+      color-mix(in srgb, var(--gold) 50%, transparent) 18%,
+      color-mix(in srgb, var(--gold) 50%, transparent) 82%,
       transparent 100%) 50% 50% / 100% 1px no-repeat;
-  filter: drop-shadow(0 0 6px color-mix(in srgb, var(--gold) 40%, transparent));
+  filter: drop-shadow(0 0 4px color-mix(in srgb, var(--gold) 30%, transparent));
+  margin-bottom: 2rem;
 }
-.pp-text-cma__divider::before {
+.pp-text-cm__divider::before {
   content: '';
   position: absolute;
   top: 50%; left: 50%;
   width: 8px; height: 8px;
   transform: translate(-50%, -50%) rotate(45deg);
   background: var(--gold);
-  box-shadow: 0 0 10px color-mix(in srgb, var(--gold) 60%, transparent);
 }
-.pp-text-cma__divider--center { margin-left: auto; margin-right: auto; }
 
-/* Title */
-.pp-text-cma__title {
-  margin: 0;
-  font-family: var(--font-display);
-  font-size: clamp(1.95rem, 3.8vw, 3rem);
+.pp-cm-intro__header h2.pp-text-cm__title {
+  margin: 0 0 1.5rem 0 !important;
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(2.15rem, 3.8vw, 3.25rem) !important;
   font-weight: 700;
-  line-height: 1.18;
-  letter-spacing: -0.012em;
+  line-height: 1.25 !important;
+  letter-spacing: -0.015em;
   color: var(--bc);
-  position: relative;
-}
-.pp-text-cma__title strong { color: var(--gold); font-weight: 700; }
-.pp-text-cma--center .pp-text-cma__title { margin: 0 auto; max-width: 760px; }
-
-/* Hacienda 'M' watermark behind centered title */
-.pp-text-cma--center > .pp-text-cma__title::before {
-  content: 'M';
-  position: absolute;
-  top: -4rem;
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: var(--font-display);
-  font-size: 13rem;
-  font-weight: 700;
-  line-height: 1;
-  color: color-mix(in srgb, var(--gold) 4%, transparent);
-  pointer-events: none;
-  z-index: -1;
-  letter-spacing: -0.06em;
 }
 
-/* Body */
-.pp-text-cma__body {
-  font-size: clamp(0.98rem, 1.1vw, 1.06rem);
-  line-height: 1.9;
-  color: var(--bc2);
-  max-width: 780px;
+.pp-cm-intro__header .pp-text-cm__lead {
+  font-size: clamp(1.08rem, 1.2vw, 1.28rem);
+  line-height: 1.8;
+  color: color-mix(in srgb, var(--gold) 85%, var(--bc));
+  max-width: 42rem;
+  font-style: italic;
+}
+
+/* Story flow container */
+.pp-cm-intro__story {
   display: flex;
   flex-direction: column;
-  gap: 1.15rem;
+  gap: 7rem;
+  max-width: 1100px;
+  margin: 0 auto;
   position: relative;
-  padding: 1.5rem 0;
+  z-index: 2;
 }
-.pp-text-cma--center .pp-text-cma__body { margin: 0 auto; }
-.pp-text-cma__body p { margin: 0; text-align: left; }
-.pp-text-cma--center .pp-text-cma__body p { text-align: center; }
-.pp-text-cma__body a {
-  color: var(--gold);
-  text-decoration: none;
-  border-bottom: 1px solid color-mix(in srgb, var(--gold) 45%, transparent);
-  transition: border-color 0.25s var(--ease-spring), color 0.25s;
+@media (min-width: 992px) {
+  .pp-cm-intro__story { gap: 10rem; }
 }
-.pp-text-cma__body a:hover {
-  border-color: var(--gold);
-  color: color-mix(in srgb, var(--gold) 80%, var(--bc));
-}
-.pp-text-cma__body strong { color: var(--gold); font-weight: 700; }
-.pp-text-cma__body em { color: color-mix(in srgb, var(--bc) 92%, var(--gold)); font-style: italic; }
 
-/* Drop-cap first-letter on first paragraph (Spanish manuscript flavor) */
-.pp-text-cma:not(.pp-text-cma--center) .pp-text-cma__body > p:first-of-type::first-letter {
+/* Base row grids */
+.pp-cm-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+/* Asymmetric Columns (Dàn trang bất đối xứng cao cấp) */
+@media (min-width: 992px) {
+  .pp-cm-row--asymmetric-1 {
+    grid-template-columns: 3.8fr 6.2fr;
+    gap: 6rem;
+  }
+  .pp-cm-row--asymmetric-2 {
+    grid-template-columns: 5.8fr 4.2fr;
+    gap: 6rem;
+  }
+  .pp-cm-row--asymmetric-3 {
+    grid-template-columns: 3.8fr 6.2fr;
+    gap: 6rem;
+  }
+  
+  .pp-cm-row--asymmetric-2 .pp-cm-row__text { order: 2; }
+  .pp-cm-row--asymmetric-2 .pp-cm-row__media { order: 1; }
+}
+
+/* Premium Story Card */
+.pp-intro-card-cm {
+  background: color-mix(in srgb, var(--bc) 1%, transparent) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid color-mix(in srgb, var(--bc) 3%, transparent) !important;
+  border-radius: var(--radius-lg);
+  padding: 2rem 1.75rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25) !important;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+@media (min-width: 768px) {
+  .pp-intro-card-cm { padding: 2.75rem 2.25rem; }
+}
+.pp-intro-card-cm:hover {
+  background: color-mix(in srgb, var(--bc) 2%, transparent) !important;
+  border-color: color-mix(in srgb, var(--gold) 18%, transparent) !important;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45) !important;
+  transform: translateY(-4px) !important;
+}
+
+.pp-cm-card-heading {
   font-family: var(--font-display);
-  font-size: 3.2em;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 0 0 1.5rem 0;
+  opacity: 0.85;
+}
+
+.pp-intro-card-cm__body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Dropcap & Highlight Quote */
+.pp-cm-highlight-quote p {
+  margin: 0;
+  font-size: clamp(1rem, 1.15vw, 1.12rem) !important;
+  line-height: 1.85 !important;
+  color: var(--bc) !important;
+  font-weight: 500;
+}
+
+.pp-cm-dropcap {
+  font-family: var(--font-display);
+  font-size: 3.4em;
   font-weight: 700;
   color: var(--gold);
   float: left;
-  line-height: 0.88;
-  margin: 0.12em 0.55rem 0 0;
+  line-height: 0.85;
+  margin: 0.12em 0.65rem 0 0;
   padding: 0.05em 0.1em 0 0;
-  text-shadow: 0 0 20px color-mix(in srgb, var(--gold) 35%, transparent);
+  text-shadow: 0 0 15px color-mix(in srgb, var(--gold) 30%, transparent);
 }
 
-/* Bull-emblem L-bracket corners around body */
-.pp-text-cma__body::before,
-.pp-text-cma__body::after {
-  content: '';
-  position: absolute;
-  width: 32px;
-  height: 32px;
-  pointer-events: none;
-  opacity: 0.55;
-  border: 1px solid color-mix(in srgb, var(--gold) 48%, transparent);
-}
-.pp-text-cma__body::before {
-  top: 0;
-  left: -1.75rem;
-  border-right: none;
-  border-bottom: none;
-}
-.pp-text-cma__body::after {
-  bottom: 0;
-  right: -1.75rem;
-  border-left: none;
-  border-top: none;
-}
-.pp-text-cma--center .pp-text-cma__body::before { left: 50%; transform: translateX(calc(-50% - 260px)); }
-.pp-text-cma--center .pp-text-cma__body::after  { right: 50%; transform: translateX(calc(50% + 260px)); }
-@media (max-width: 767px) {
-  .pp-text-cma__body::before,
-  .pp-text-cma__body::after { display: none; }
+.pp-cm-desc-p {
+  font-size: 0.96rem !important;
+  line-height: 1.8 !important;
+  color: var(--bc2) !important;
+  margin: 0;
 }
 
 /* ===================================================================
-   pp-gallery-cma — arched hacienda tiles
+   SVG DECORATIONS & TECHNICAL LINES
    =================================================================== */
-.pp-gallery-cma {
+.pp-cm-svg-frame-decor,
+.pp-cm-circuit-decor {
+  position: absolute;
+  inset: -15px;
+  width: calc(100% + 30px);
+  height: calc(100% + 30px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.decor-rect-rotate {
+  transform-origin: center;
+}
+.decor-circle-scale {
+  transform-origin: center;
+}
+
+/* ===================================================================
+   PREMIUM PICTURE FRAMES (4 CORNERS OF GOLD METAL)
+   =================================================================== */
+.pp-cm-luxury-frame {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding: 6px;
+}
+
+/* 4 Corner Brackets */
+.pp-cm-corner {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 1.5px solid var(--gold);
+  z-index: 3;
+  filter: drop-shadow(0 0 4px var(--gold));
+  transition: all 0.4s var(--ease-spring);
+  pointer-events: none;
+}
+.pp-cm-corner--tl { top: 0; left: 0; border-right: none; border-bottom: none; }
+.pp-cm-corner--tr { top: 0; right: 0; border-left: none; border-bottom: none; }
+.pp-cm-corner--bl { bottom: 0; left: 0; border-right: none; border-top: none; }
+.pp-cm-corner--br { bottom: 0; right: 0; border-left: none; border-top: none; }
+
+.pp-cm-luxury-frame:hover .pp-cm-corner {
+  width: 20px;
+  height: 20px;
+}
+
+/* Shared image container inside frame */
+.pp-cm-luxury-frame .pp-image-container-shared {
+  aspect-ratio: 4 / 3 !important;
+  border-radius: var(--radius-sm) !important;
+  overflow: visible !important;
+  border: 1px solid var(--bd) !important;
+  box-shadow: var(--shadow-main) !important;
+  transition: border-color 0.4s ease, transform 0.4s ease !important;
+}
+.pp-cm-luxury-frame:hover .pp-image-container-shared {
+  border-color: var(--gold) !important;
+}
+.pp-cm-luxury-frame img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.pp-cm-luxury-frame:hover img {
+  transform: scale(1.04) !important;
+}
+
+/* Aspect adjustments */
+.pp-cm-luxury-frame--med .pp-image-container-shared {
+  aspect-ratio: 4 / 3.3 !important;
+}
+.pp-cm-luxury-frame--panoramic .pp-image-container-shared {
+  aspect-ratio: 16 / 9 !important;
+}
+@media (min-width: 992px) {
+  .pp-cm-luxury-frame--panoramic .pp-image-container-shared {
+    aspect-ratio: 21 / 10 !important;
+  }
+}
+
+/* ===================================================================
+   ASYNCHRONOUS DEVICES SO LE CHỒNG ĐÈ (Asymmetric Device Overlap Grid)
+   =================================================================== */
+.pp-cm-media-devices {
+  position: relative;
+  min-height: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
+}
+@media (min-width: 576px) {
+  .pp-cm-media-devices {
+    min-height: 520px;
+    display: block; /* Quay lại block để định vị absolute so le */
+  }
+  .pp-cm-luxury-frame--device-1 {
+    position: absolute;
+    width: 68%;
+    left: 0;
+    top: 5%;
+    z-index: 1;
+  }
+  .pp-cm-luxury-frame--device-2 {
+    position: absolute;
+    width: 56%;
+    right: 0;
+    bottom: 5%;
+    z-index: 2;
+    transform: rotate(1deg);
+  }
+  .pp-cm-luxury-frame--device-2:hover {
+    transform: rotate(0) scale(1.02);
+    z-index: 5;
+  }
+}
+
+/* ===================================================================
+   MEDITERRANEAN FEATURE CARDS (BÀN HIỂN THỊ TÍNH NĂNG)
+   =================================================================== */
+.pp-cm-features-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.5rem;
-  margin-top: 3rem;
-  position: relative;
+  gap: 2rem;
+  margin: 6rem 0 4rem 0;
 }
 @media (min-width: 768px) {
-  .pp-gallery-cma { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
-  .pp-gallery-cma--cols-3 { grid-template-columns: repeat(3, 1fr); }
-  .pp-gallery-cma--cols-4 { grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
-  .pp-gallery-cma--cols-1 { grid-template-columns: 1fr; }
+  .pp-cm-features-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
-.pp-gallery-cma__item {
+.pp-cm-feature-card {
+  background: color-mix(in srgb, var(--bc) 1%, transparent) !important;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid color-mix(in srgb, var(--bc) 3%, transparent) !important;
+  border-radius: var(--radius-lg);
+  padding: 2rem 1.75rem !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25) !important;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  border-left: 2px solid color-mix(in srgb, var(--gold) 20%, transparent) !important;
+}
+.pp-cm-feature-card:hover {
+  background: color-mix(in srgb, var(--bc) 2%, transparent) !important;
+  border-color: color-mix(in srgb, var(--gold) 30%, transparent) !important;
+  border-left-color: var(--gold) !important;
+  transform: translateY(-5px) !important;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35) !important;
+}
+
+.pp-cm-feature-card__header {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-bottom: 1rem;
+}
+.pp-cm-feature-card__header h4 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--gold);
+  margin: 0;
+}
+.pp-cm-feature-icon {
+  color: var(--gold);
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 3px var(--gold));
+}
+
+.pp-cm-feature-card p {
+  font-size: 0.94rem;
+  line-height: 1.7;
+  color: var(--bc2);
+  margin: 0;
+}
+
+/* ===================================================================
+   QUOTE CHỐT HẠ NGHỆ THUẬT (Artist Quote Panel)
+   =================================================================== */
+.pp-cm-intro-quote-panel {
+  max-width: 820px;
+  margin: 5rem auto 0 auto;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--bc) 1.5%, transparent) 0%, rgba(0, 0, 0, 0.3) 100%);
+  border: 1px solid color-mix(in srgb, var(--bc) 3%, transparent);
+  border-radius: var(--radius-lg);
+  padding: 2.25rem 2.5rem;
+  text-align: center;
   position: relative;
-  aspect-ratio: 4 / 5;
   overflow: hidden;
-  border-radius: 160px 160px var(--radius-md) var(--radius-md);
-  background: var(--b3);
-  border: 1px solid color-mix(in srgb, var(--gold) 18%, transparent);
-  transition:
-    border-color 0.45s var(--ease-spring),
-    transform 0.5s var(--ease-spring),
-    box-shadow 0.5s var(--ease-spring);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
-  isolation: isolate;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3) !important;
 }
-.pp-gallery-cma--cols-4 .pp-gallery-cma__item { aspect-ratio: 3 / 4; border-radius: 110px 110px var(--radius-md) var(--radius-md); }
-.pp-gallery-cma--cols-3 .pp-gallery-cma__item { aspect-ratio: 4 / 5; }
-.pp-gallery-cma--cols-1 .pp-gallery-cma__item { aspect-ratio: 16 / 9; border-radius: 220px 220px var(--radius-md) var(--radius-md); }
-
-.pp-gallery-cma__item:hover {
-  border-color: color-mix(in srgb, var(--gold) 60%, transparent);
-  transform: translateY(-6px);
-  box-shadow:
-    0 22px 48px rgba(0, 0, 0, 0.5),
-    0 0 0 1px color-mix(in srgb, var(--gold) 35%, transparent);
+.pp-cm-intro-quote-panel p {
+  font-size: clamp(1.05rem, 1.2vw, 1.22rem);
+  line-height: 1.85;
+  color: var(--bc);
+  font-style: italic;
+  margin: 0;
 }
-
-.pp-gallery-cma__item img {
+.pp-cm-intro-quote-panel::before {
+  content: '“';
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  filter: saturate(1.08) contrast(1.03);
-  transition: transform 0.9s var(--ease-spring), filter 0.6s;
-}
-.pp-gallery-cma__item:hover img {
-  transform: scale(1.07);
-  filter: saturate(1.18) contrast(1.06);
-}
-
-/* Warm sunset gradient overlay */
-.pp-gallery-cma__item::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 1;
+  top: -1.2rem;
+  left: 2rem;
+  font-family: Georgia, serif;
+  font-size: 6rem;
+  font-weight: 700;
+  color: color-mix(in srgb, var(--gold) 4%, transparent);
+  line-height: 1;
   pointer-events: none;
-  background: linear-gradient(180deg,
-    transparent 42%,
-    color-mix(in srgb, var(--b1) 35%, transparent) 78%,
-    color-mix(in srgb, var(--b1) 70%, transparent) 100%);
-  opacity: 0.85;
-  transition: opacity 0.5s;
 }
-.pp-gallery-cma__item:hover::before { opacity: 0.55; }
-
-/* Gold filigree arch outline traces on hover */
-.pp-gallery-cma__item::after {
-  content: '';
-  position: absolute;
-  top: 8px;
-  left: 8px;
-  right: 8px;
-  bottom: 8px;
-  border-radius: inherit;
-  border: 1px solid color-mix(in srgb, var(--gold) 0%, transparent);
-  pointer-events: none;
-  z-index: 2;
-  transition: border-color 0.5s var(--ease-spring);
-}
-.pp-gallery-cma__item:hover::after {
-  border-color: color-mix(in srgb, var(--gold) 38%, transparent);
-}
-
-/* Staggered tile entry */
-@keyframes pp-cma-tile-rise {
-  from { opacity: 0; transform: translateY(24px) scale(0.97); }
-  to   { opacity: 1; transform: translateY(0)    scale(1); }
-}
-.pp-gallery-cma__item { animation: pp-cma-tile-rise 0.7s var(--ease-spring) backwards; }
-.pp-gallery-cma__item:nth-child(1) { animation-delay: 0.05s; }
-.pp-gallery-cma__item:nth-child(2) { animation-delay: 0.15s; }
-.pp-gallery-cma__item:nth-child(3) { animation-delay: 0.25s; }
-.pp-gallery-cma__item:nth-child(4) { animation-delay: 0.35s; }
-.pp-gallery-cma__item:nth-child(5) { animation-delay: 0.45s; }
-.pp-gallery-cma__item:nth-child(6) { animation-delay: 0.55s; }

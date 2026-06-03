@@ -1,0 +1,11 @@
+@import "../_tailwind-project.css";
+@import "../_tokens.css";
+
+/* Direct imports from entrypoint (lùi 3 cấp ra thư mục theme) */
+@import "../../../template-parts/project-pillar/amdang-typhoon/hero.css";
+@import "../../../template-parts/project-pillar/amdang-typhoon/intro.css";
+@import "../../../template-parts/project-pillar/amdang-typhoon/concept.css";
+@import "../../../template-parts/project-pillar/amdang-typhoon/partnership.css";
+@import "../../../template-parts/project-pillar/amdang-typhoon/specs.css";
+@import "../../../template-parts/project-pillar/amdang-typhoon/gallery.css";
+@import "../../../single-project/amdang-typhoon.css";

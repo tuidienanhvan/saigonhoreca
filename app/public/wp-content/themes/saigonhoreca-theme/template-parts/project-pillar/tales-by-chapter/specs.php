@@ -1,14 +1,14 @@
-<?php
+﻿<?php
 /**
- * Project Pillar — tales-by-chapter
+ * Project Pillar â€” tales-by-chapter
  * Section #5: text
  * @package SaigonHoreca
  */
 if (!defined('ABSPATH')) exit;
 $uri = get_template_directory_uri();
 ?>
-<section class="pp__section">
-  <div class="pp__container">
+<section class="pp-section-tbc scroll-reveal">
+  <div class="pp-container-shared">
     <div class="pp-text-tbc pp-text-tbc--center">
       <span class="pp-text-tbc__divider pp-text-tbc__divider--center" aria-hidden="true"></span>
       <h2 class="pp-text-tbc__title"><?php echo esc_html__('Khi giải pháp đứng sau triết lý', 'saigonhoreca'); ?></h2>
@@ -20,3 +20,4 @@ $uri = get_template_directory_uri();
     </div>
   </div>
 </section>
+

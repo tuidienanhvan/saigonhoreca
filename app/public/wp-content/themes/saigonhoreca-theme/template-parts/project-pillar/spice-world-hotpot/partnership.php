@@ -1,78 +1,60 @@
-<?php
+﻿<?php
 /**
- * Project Pillar — spice-world-hotpot
+ * Project Pillar â€” spice-world-hotpot
  * Section #4: partnership
  * @package SaigonHoreca
  */
 if (!defined('ABSPATH')) exit;
 $uri = get_template_directory_uri();
 ?>
-<section class="pp__section pp-swh-partnership">
+<section class="pp-section-swh pp-swh-partnership scroll-reveal">
   <div class="pp-watermark-bg-swh" aria-hidden="true">
     <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5">
-      <path d="M20 20 H80 M35 20 V80 M20 80 H46 M50 20 V80 M38 80 H62 M65 20 V80 M50 80 H80" stroke-linecap="round"/>
+      <path d="M30 30 H70 M50 30 V70 M30 70 H70" stroke-linecap="round"/>
     </svg>
   </div>
 
   <div class="pp-ambient-glow-swh pp-ambient-glow-swh--top-right" aria-hidden="true"></div>
 
-  <div class="pp__container">
+  <div class="pp-container-shared">
     <div class="pp-grid-12-swh">
       
-      <div class="pp-grid-12-swh__media--order-1 swh-partnership__side">
-        <div class="pp-image-container-swh swh-partnership__image-container">
+      <div class="pp-grid-12-swh__text--cols-5 swh-partnership__main">
+        <header class="swh-partnership__header">
+          <div class="pp-badge-swh">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2L14.85 9.15L22 12L14.85 14.85L12 22L9.15 14.85L2 12L9.15 9.15L12 2Z"/>
+            </svg>
+            <?php echo esc_html__('Äá»‘i tÃ¡c', 'saigonhoreca'); ?>
+          </div>
+          <h2 class="pp-text-swh__title">
+            <?php echo esc_html__('Saigon Horeca & Spice World', 'saigonhoreca'); ?>
+            <span class="pp-text-swh__title-gold"><?php echo esc_html__('Há»£p TÃ¡c Chiáº¿n LÆ°á»£c', 'saigonhoreca'); ?></span>
+          </h2>
+          <div class="pp-text-swh__divider" aria-hidden="true"></div>
+        </header>
+
+        <div class="swh-partnership__body">
+          <p><?php echo esc_html__('Saigon Horeca tá»± hÃ o lÃ  Ä‘á»‘i tÃ¡c chiáº¿n lÆ°á»£c cá»§a Spice World Hotpot táº¡i Viá»‡t Nam. ChÃºng tÃ´i Ä‘Ã£ cung cáº¥p giáº£i phÃ¡p báº¿p toÃ n diá»‡n, tá»« tÆ° váº¥n thiáº¿t káº¿ Ä‘áº¿n thi cÃ´ng vÃ  báº£o trÃ¬.', 'saigonhoreca'); ?></p>
+          <p><?php echo esc_html__('Vá»›i kinh nghiá»‡m hÆ¡n 10 nÄƒm trong lÄ©nh vá»±c báº¿p cÃ´ng nghiá»‡p, Saigon Horeca hiá»ƒu rÃµ nhu cáº§u Ä‘áº·c thÃ¹ cá»§a nhÃ  hÃ ng láº©u vÃ  Ä‘Ã£ táº¡o ra má»™t há»‡ thá»‘ng báº¿p hiá»‡u quáº£, an toÃ n vÃ  tháº©m má»¹.', 'saigonhoreca'); ?></p>
+          <p><?php echo esc_html__('Sá»± há»£p tÃ¡c nÃ y khÃ´ng chá»‰ mang láº¡i giáº£i phÃ¡p ká»¹ thuáº­t mÃ  cÃ²n gÃ³p pháº§n nÃ¢ng cao tráº£i nghiá»‡m áº©m thá»±c cho thá»±c khÃ¡ch táº¡i Spice World Hotpot.', 'saigonhoreca'); ?></p>
+        </div>
+      </div>
+
+      <div class="pp-grid-12-swh__media--cols-7 swh-partnership__side">
+        <div class="pp-image-container-shared swh-partnership__image-container">
           <span class="pp-corner-ornament pp-corner-ornament--top-left" aria-hidden="true"></span>
           <span class="pp-corner-ornament pp-corner-ornament--top-right" aria-hidden="true"></span>
           <span class="pp-corner-ornament pp-corner-ornament--bottom-left" aria-hidden="true"></span>
           <span class="pp-corner-ornament pp-corner-ornament--bottom-right" aria-hidden="true"></span>
           <div class="pp-image-border-decor" aria-hidden="true"></div>
-          <div class="pp-image-tag-swh">KITCHEN SYSTEM</div>
-          <img src="<?php echo sgh_img('2024/02/Spice-World-Hot-Pot-02.jpg'); ?>" alt="<?php echo esc_attr__('Spice World Kitchen Design', 'saigonhoreca'); ?>" loading="lazy">
-          <div class="pp-image-caption-swh"><?php echo esc_html__('Bố trí khu bếp công nghiệp thép không gỉ 100% bền bỉ', 'saigonhoreca'); ?></div>
-        </div>
-      </div>
-
-      <div class="pp-grid-12-swh__text--order-2 swh-partnership__main">
-        <div class="pp-glass-card-swh swh-partnership__glass-card">
-          <span class="pp-corner-ornament pp-corner-ornament--top-left" aria-hidden="true"></span>
-          <span class="pp-corner-ornament pp-corner-ornament--top-right" aria-hidden="true"></span>
-          <span class="pp-corner-ornament pp-corner-ornament--bottom-left" aria-hidden="true"></span>
-          <span class="pp-corner-ornament pp-corner-ornament--bottom-right" aria-hidden="true"></span>
-          
-          <header class="swh-partnership__header">
-            <div class="pp-badge-swh">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2L14.85 9.15L22 12L14.85 14.85L12 22L9.15 14.85L2 12L9.15 9.15L12 2Z"/>
-              </svg>
-              <?php echo esc_html__('Hợp tác chiến lược', 'saigonhoreca'); ?>
-            </div>
-            <h2 class="pp-text-swh__title" style="font-size: clamp(1.5rem, 3vw, 2.2rem); margin-bottom: 1rem;">
-              <?php echo esc_html__('Saigon Horeca tư vấn & thi công bếp', 'saigonhoreca'); ?>
-            </h2>
-            <div class="pp-text-swh__divider" aria-hidden="true"></div>
-          </header>
-
-          <div class="swh-partnership__body" style="font-size: 0.98rem; line-height: 1.75; color: var(--bc2);">
-            <p class="swh-partnership__lead" style="font-size: 1.15rem; color: var(--bc); font-weight: 600; margin-bottom: 1rem;">
-              <?php echo esc_html__('Tối ưu hóa không gian 120m² theo tiêu chuẩn quốc tế.', 'saigonhoreca'); ?>
-            </p>
-            <p><?php echo esc_html__('Để phục vụ món ăn chất lượng cao, Spice World Hot Pot Việt Nam đã tin tưởng vào Saigon Horeca như đơn vị thiết kế và thi công toàn bộ trang thiết bị nhà bếp.', 'saigonhoreca'); ?></p>
-            <p><?php echo esc_html__('Chúng tôi đã tính toán và phân bổ các khu vực chức năng dựa trên các điều kiện thực tế như thang máy và luồng vận hành, đảm bảo hiệu suất cao nhất cho nhà hàng.', 'saigonhoreca'); ?></p>
-          </div>
-
-          <div class="swh-partnership__stats">
-            <div class="swh-partnership__stat-item">
-              <span class="swh-partnership__stat-value">120m²</span>
-              <span class="swh-partnership__stat-label"><?php echo esc_html__('Diện tích bếp', 'saigonhoreca'); ?></span>
-            </div>
-            <div class="swh-partnership__stat-item">
-              <span class="swh-partnership__stat-value"><?php echo esc_html__('QUỐC TẾ', 'saigonhoreca'); ?></span>
-              <span class="swh-partnership__stat-label"><?php echo esc_html__('Tiêu chuẩn', 'saigonhoreca'); ?></span>
-            </div>
-          </div>
+          <div class="pp-image-tag-swh">PARTNERSHIP</div>
+          <img src="<?php echo sgh_img('2024/02/spice-world-hotpot-SGH-3.jpeg'); ?>" alt="<?php echo esc_attr__('Spice World Partnership', 'saigonhoreca'); ?>" loading="lazy">
+          <div class="pp-image-caption-shared"><?php echo esc_html__('Lá»… kÃ½ káº¿t há»£p tÃ¡c chiáº¿n lÆ°á»£c giá»¯a Saigon Horeca vÃ  Spice World', 'saigonhoreca'); ?></div>
         </div>
       </div>
 
     </div>
   </div>
 </section>
+

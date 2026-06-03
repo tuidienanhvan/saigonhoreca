@@ -1,315 +1,780 @@
 /**
- * the-cheezy-time — intro slot. OWNS shared base for .pp__section + .pp-text-tct + .pp-gallery-tct.
- * Cheese Wheel Editorial: wheel-slice fan divider (3 wedges), circular gallery items,
- * dairy-gold creamy accents, cheese-hole pattern ambient background.
+ * the-cheezy-time — intro slot.
+ * Advanced Creative Animations, Custom SVGs & Horizontal Cloud-Like Framing.
  * @package SaigonHoreca
  */
 
 /* =========================================================
-   BASE SECTION SHELL (owned by intro for the -tct suffix)
+   BASE SECTION SHELL & GRID SYSTEM
    ========================================================= */
-.pp__section {
+.pp-section-tct {
   position: relative;
   padding: 5rem 1.25rem;
   background: var(--b1);
   overflow: hidden;
   isolation: isolate;
 }
-@media (min-width: 768px) { .pp__section { padding: 7.5rem 2rem; } }
-.pp__section--alt { background: var(--b2); }
+@media (min-width: 768px) { 
+  .pp-section-tct { padding: 7.5rem 2rem; } 
+}
+.pp-section-tct--alt { 
+  background: var(--b2); 
+}
 
-.pp__container {
-  max-width: 1140px;
-  margin: 0 auto;
+/* Background grid block */
+.pp-tct-bg-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Subtle background lighting */
+.pp-section-tct--alt::before {
+  content: '';
+  position: absolute;
+  top: 15%;
+  right: -10%;
+  width: 580px; height: 580px;
+  background: radial-gradient(circle,
+    color-mix(in srgb, var(--gold) 4%, transparent) 0%,
+    transparent 70%);
+  filter: blur(90px);
+  pointer-events: none;
+  z-index: 0;
+}
+.pp-section-tct--alt::after {
+  content: '';
+  position: absolute;
+  bottom: -5%;
+  left: -8%;
+  width: 480px; height: 480px;
+  background: radial-gradient(circle,
+    color-mix(in srgb, var(--gold) 3%, transparent) 0%,
+    transparent 72%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* =========================================================
+   NARRATIVE CONNECTING LINE (ĐƯỜNG NỐI KẾT NỐI TOÀN TRANG)
+   ========================================================= */
+.pp-tct-narrative-line {
+  position: absolute;
+  top: 18rem;
+  bottom: 8rem;
+  left: 50%;
+  width: 1px;
+  background: linear-gradient(to bottom, 
+    transparent, 
+    rgba(245, 166, 35, 0.15) 10%, 
+    rgba(245, 166, 35, 0.15) 90%, 
+    transparent
+  );
+  transform: translateX(-50%);
+  z-index: 1;
+  display: none;
+  pointer-events: none;
+}
+@media (min-width: 992px) {
+  .pp-tct-narrative-line {
+    display: block;
+  }
+}
+
+/* Narrative Nodes on text columns */
+.pp-tct-row__text {
+  position: relative;
+}
+
+.pp-tct-narrative-node {
+  position: absolute;
+  top: 2.2rem;
+  width: 28px;
+  height: 28px;
+  background: #141620;
+  border: 1.5px solid var(--gold);
+  border-radius: 50%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading), sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--gold);
+  z-index: 4;
+  box-shadow: 0 0 10px rgba(245, 166, 35, 0.2);
+  transition: transform 0.4s var(--ease-spring), background-color 0.3s;
+}
+
+@media (min-width: 992px) {
+  .pp-tct-narrative-node {
+    display: flex;
+  }
+  .pp-tct-row--layout-river .pp-tct-narrative-node {
+    right: -4.5rem;
+  }
+  .pp-tct-row--layout-blueprint .pp-tct-narrative-node {
+    left: -4.5rem;
+  }
+  .pp-tct-row--layout-furnace .pp-tct-narrative-node {
+    right: -4.5rem;
+  }
+}
+
+.pp-tct-row:hover .pp-tct-narrative-node {
+  transform: scale(1.15);
+  background: var(--gold);
+  color: #000;
+  box-shadow: 0 0 15px var(--gold);
+}
+
+/* =========================================================
+   INTRO HEADER & TITLE (Full-Width)
+   ========================================================= */
+.pp-tct-intro__header {
+  max-width: var(--sh-content-max);
+  margin: 0 auto 4rem auto;
   position: relative;
   z-index: 2;
 }
 
-/* Dairy-glow ambient ornaments on alt sections */
-.pp__section--alt::before {
-  content: '';
-  position: absolute;
-  top: 18%;
-  right: -12%;
-  width: 560px; height: 560px;
-  background: radial-gradient(circle,
-    color-mix(in srgb, var(--gold) 7%, transparent) 0%,
-    transparent 70%);
-  filter: blur(75px);
-  pointer-events: none;
-  z-index: 0;
-}
-.pp__section--alt::after {
-  content: '';
-  position: absolute;
-  bottom: -8%;
-  left: -10%;
-  width: 460px; height: 460px;
-  background: radial-gradient(circle,
-    color-mix(in srgb, var(--gold) 5%, transparent) 0%,
-    transparent 72%);
-  filter: blur(70px);
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* Cheese-hole subtle texture across project sections */
-body.page-template-page-project-the-cheezy-time .pp__section {
-  background-image:
-    radial-gradient(circle at 8% 20%, color-mix(in srgb, var(--gold) 5%, transparent) 0 6px, transparent 7px),
-    radial-gradient(circle at 88% 78%, color-mix(in srgb, var(--gold) 5%, transparent) 0 10px, transparent 11px),
-    radial-gradient(circle at 36% 92%, color-mix(in srgb, var(--gold) 4%, transparent) 0 7px, transparent 8px),
-    radial-gradient(circle at 72% 14%, color-mix(in srgb, var(--gold) 4%, transparent) 0 5px, transparent 6px);
-}
-
-/* =========================================================
-   TEXT BLOCK — .pp-text-tct
-   ========================================================= */
-.pp-text-tct {
-  max-width: 820px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  position: relative;
-}
-.pp-text-tct--center { align-items: center; text-align: center; }
-
-/* Wheel-slice fan divider — three wedges fanning out like a cut cheese wheel */
 .pp-text-tct__divider {
   display: block;
-  width: 96px;
-  height: 24px;
-  background: transparent;
+  width: 80px;
+  height: 3px;
+  background: var(--gold);
+  margin-bottom: 2rem;
   position: relative;
-}
-.pp-text-tct__divider::before {
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: 0;
-  width: 96px;
-  height: 24px;
-  transform: translateX(-50%);
-  background:
-    conic-gradient(from 200deg at 50% 100%,
-      transparent 0deg 20deg,
-      color-mix(in srgb, var(--gold) 75%, transparent) 22deg 50deg,
-      transparent 52deg 65deg,
-      color-mix(in srgb, var(--gold) 90%, transparent) 67deg 95deg,
-      transparent 97deg 110deg,
-      color-mix(in srgb, var(--gold) 75%, transparent) 112deg 140deg,
-      transparent 142deg 360deg);
-  filter: drop-shadow(0 2px 8px color-mix(in srgb, var(--gold) 45%, transparent));
 }
 .pp-text-tct__divider::after {
   content: '';
   position: absolute;
-  bottom: -6px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 6px; height: 6px;
-  border-radius: 50%;
+  right: -12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-full);
   background: var(--gold);
-  box-shadow: 0 0 10px color-mix(in srgb, var(--gold) 70%, transparent);
+  box-shadow: 0 0 8px var(--gold);
 }
-.pp-text-tct__divider--center { margin: 0 auto; }
 
-/* Title — display, dairy-warm */
-.pp-text-tct__title {
-  margin: 0;
-  font-family: var(--font-display);
-  font-size: clamp(1.85rem, 3.6vw, 2.95rem);
+.pp-section-tct h2.pp-text-tct__title {
+  margin: 0 0 1.5rem 0 !important;
+  font-family: var(--font-heading), sans-serif;
+  font-size: clamp(2rem, 3.5vw, 3rem) !important;
   font-weight: 700;
-  line-height: 1.18;
-  letter-spacing: -0.01em;
+  line-height: 1.35 !important;
+  letter-spacing: -0.02em;
   color: var(--bc);
-  position: relative;
+  max-width: 42rem;
 }
-.pp-text-tct--center .pp-text-tct__title { margin: 0 auto; max-width: 26ch; }
-.pp-text-tct__title strong { color: var(--gold); }
 
-/* Lead body */
-.pp-text-tct__body {
-  font-size: clamp(0.97rem, 1.1vw, 1.05rem);
-  line-height: 1.85;
-  color: var(--bc2);
-  max-width: 760px;
+.pp-text-tct__lead {
+  font-size: clamp(1.05rem, 1.2vw, 1.25rem);
+  line-height: 1.75;
+  color: color-mix(in srgb, var(--gold) 85%, var(--bc));
+  max-width: 38rem;
+}
+
+/* Story flow container */
+.pp-tct-intro__story {
   display: flex;
   flex-direction: column;
-  gap: 1.1rem;
+  gap: 7rem;
+  max-width: var(--sh-content-max);
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
 }
-.pp-text-tct--center .pp-text-tct__body { margin: 0 auto; }
-.pp-text-tct__body p { margin: 0; text-align: left; position: relative; }
-.pp-text-tct--center .pp-text-tct__body p { text-align: center; }
-.pp-text-tct--center .pp-text-tct__body > p:first-child {
-  font-size: clamp(1.02rem, 1.18vw, 1.12rem);
-  color: color-mix(in srgb, var(--bc) 88%, var(--bc2));
-}
-.pp-text-tct__body a {
-  color: var(--gold);
-  text-decoration: none;
-  border-bottom: 1px solid color-mix(in srgb, var(--gold) 40%, transparent);
-  transition: border-color 0.25s var(--ease-spring), color 0.25s var(--ease-spring);
-}
-.pp-text-tct__body a:hover {
-  border-color: var(--gold);
-  color: color-mix(in srgb, var(--gold) 80%, var(--bc));
-}
-.pp-text-tct__body strong { color: var(--gold); font-weight: 700; }
-.pp-text-tct__body em {
-  color: color-mix(in srgb, var(--bc) 92%, var(--bc2));
-  font-style: italic;
+@media (min-width: 992px) {
+  .pp-tct-intro__story { gap: 11rem; }
 }
 
-/* Watermark wheel motif behind centered text */
-.pp-text-tct--center::before {
-  content: '';
-  position: absolute;
-  top: -40px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 420px;
-  height: 420px;
-  border-radius: 50%;
-  background:
-    radial-gradient(circle at center,
-      transparent 0 42%,
-      color-mix(in srgb, var(--gold) 3%, transparent) 42% 43%,
-      transparent 43% 60%,
-      color-mix(in srgb, var(--gold) 2.5%, transparent) 60% 61%,
-      transparent 61%);
-  pointer-events: none;
-  z-index: -1;
-  opacity: 0.9;
-}
-
-/* =========================================================
-   GALLERY — .pp-gallery-tct (circular cheese-wheel mosaic)
-   ========================================================= */
-.pp-gallery-tct {
+/* Base row grids */
+.pp-tct-row {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.5rem;
-  margin-top: 2.75rem;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+/* Asymmetric Columns (Dàn trang bất đối xứng nâng cao) */
+@media (min-width: 992px) {
+  .pp-tct-row--asymmetric-1 {
+    grid-template-columns: 3.8fr 6.2fr;
+    gap: 5.5rem;
+  }
+  .pp-tct-row--asymmetric-2 {
+    grid-template-columns: 5.8fr 4.2fr;
+    gap: 5.5rem;
+  }
+  .pp-tct-row--asymmetric-3 {
+    grid-template-columns: 3.8fr 6.2fr;
+    gap: 5.5rem;
+  }
+  
+  .pp-tct-row--asymmetric-2 .pp-tct-row__text {
+    order: 2;
+  }
+  .pp-tct-row--asymmetric-2 .pp-tct-row__media {
+    order: 1;
+  }
+}
+
+/* Connected Typography Card */
+.pp-intro-card-tct {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.015) 0%, rgba(255, 255, 255, 0.005) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
   position: relative;
+  overflow: hidden;
+  transition: 
+    background-color 0.4s var(--ease-spring),
+    border-color 0.4s var(--ease-spring),
+    transform 0.4s var(--ease-spring),
+    box-shadow 0.4s var(--ease-spring);
 }
 @media (min-width: 768px) {
-  .pp-gallery-tct { grid-template-columns: repeat(2, 1fr); gap: 1.75rem; }
-  .pp-gallery-tct--cols-3 { grid-template-columns: repeat(3, 1fr); }
-  .pp-gallery-tct--cols-4 { grid-template-columns: repeat(4, 1fr); gap: 1.4rem; }
-  .pp-gallery-tct--cols-1 { grid-template-columns: 1fr; }
+  .pp-intro-card-tct { padding: 2.5rem 2.25rem; }
 }
 
-.pp-gallery-tct__item {
+.pp-intro-card-tct:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+  border-color: rgba(245, 166, 35, 0.18);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45);
+}
+
+.pp-intro-card-tct__header {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-bottom: 1.25rem;
+}
+.pp-tct-header-icon-anim {
+  color: var(--gold);
+  flex-shrink: 0;
+  opacity: 0.85;
+  transition: transform 0.6s var(--ease-spring);
+}
+.pp-intro-card-tct:hover .pp-tct-header-icon-anim {
+  transform: scale(1.2) rotate(8deg);
+}
+
+.pp-tct-section-index {
+  font-family: var(--font-heading), monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+}
+
+.pp-tct-card-heading {
+  font-family: var(--font-heading), sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--bc) !important;
+  margin: 0 0 1.25rem 0 !important;
+  letter-spacing: -0.01em;
+  transition: color 0.3s ease;
+}
+.pp-intro-card-tct:hover .pp-tct-card-heading {
+  color: var(--gold) !important;
+}
+
+.pp-intro-card-tct__body {
+  font-size: 0.96rem;
+  line-height: 1.85;
+  color: var(--bc2);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.pp-intro-card-tct__body p.pp-tct-desc-p {
+  margin: 0 !important;
+  text-align: left !important;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+.pp-intro-card-tct:hover .pp-tct-desc-p {
+  opacity: 1;
+}
+
+
+/* =========================================================
+   LUXURY CLOUD-LIKE FRAME SYSTEM (ORGANIC CORNERS)
+   ========================================================= */
+.pp-tct-luxury-frame {
   position: relative;
-  aspect-ratio: 1 / 1;
+  padding: 12px;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), z-index 0.5s ease;
+}
+
+/* Wavy cloud shape for container */
+.pp-tct-luxury-frame .pp-image-container-shared {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 60px 15px 50px 20px / 20px 50px 15px 60px; /* uốn lượn mây nước */
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: var(--shadow-floating);
   overflow: hidden;
-  border-radius: 50%;
-  background: var(--b3);
-  border: 1px solid color-mix(in srgb, var(--gold) 28%, var(--bd));
-  transition:
-    border-color 0.5s var(--ease-spring),
-    transform 0.5s var(--ease-spring),
-    box-shadow 0.5s var(--ease-spring);
-  box-shadow:
-    0 12px 36px rgba(0, 0, 0, 0.28),
-    inset 0 0 0 6px color-mix(in srgb, var(--b1) 70%, transparent),
-    inset 0 0 0 7px color-mix(in srgb, var(--gold) 28%, transparent);
-}
-.pp-gallery-tct--cols-1 .pp-gallery-tct__item {
-  aspect-ratio: 16 / 9;
-  border-radius: var(--radius-md);
-  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.32);
-}
-.pp-gallery-tct__item:hover {
-  border-color: color-mix(in srgb, var(--gold) 65%, transparent);
-  transform: translateY(-6px) rotate(-1.5deg);
-  box-shadow:
-    0 22px 56px rgba(0, 0, 0, 0.38),
-    0 0 0 1px color-mix(in srgb, var(--gold) 35%, transparent),
-    inset 0 0 0 6px color-mix(in srgb, var(--b1) 70%, transparent),
-    inset 0 0 0 7px color-mix(in srgb, var(--gold) 55%, transparent);
-}
-.pp-gallery-tct--cols-1 .pp-gallery-tct__item:hover { transform: translateY(-4px); }
-
-.pp-gallery-tct__item img {
-  position: absolute;
-  inset: 0;
-  width: 100%; height: 100%;
-  object-fit: cover;
-  display: block;
-  filter: saturate(1.1) contrast(1.02);
-  transition: transform 0.8s var(--ease-spring), filter 0.8s var(--ease-spring);
-}
-.pp-gallery-tct__item:hover img {
-  transform: scale(1.08);
-  filter: saturate(1.2) contrast(1.05);
+  z-index: 1;
+  transition: 
+    border-radius 0.8s ease-in-out, 
+    border-color 0.4s ease;
 }
 
-/* Cheese-wheel slice indicator on hover — wedge cut light */
-.pp-gallery-tct__item::after {
+/* Corresponding wavy double inner line */
+.pp-tct-luxury-frame::after {
   content: '';
   position: absolute;
-  inset: 0;
-  background:
-    conic-gradient(from 270deg at 50% 50%,
-      transparent 0deg 30deg,
-      color-mix(in srgb, var(--gold) 20%, transparent) 30deg 60deg,
-      transparent 60deg 360deg);
-  opacity: 0;
-  transition: opacity 0.5s var(--ease-spring);
+  inset: 6px;
+  border: 1px solid rgba(245, 166, 35, 0.12);
   pointer-events: none;
-  mix-blend-mode: screen;
+  z-index: 2;
+  border-radius: 54px 11px 44px 16px / 16px 44px 11px 54px;
+  transition: 
+    border-color 0.4s ease, 
+    border-radius 0.8s ease-in-out;
 }
-.pp-gallery-tct__item:hover::after { opacity: 0.65; }
 
-/* Numbered hand-drawn label-tag badge */
-.pp-gallery-tct__item::before {
-  content: '01';
+/* Morphing clouds on hover */
+.pp-tct-luxury-frame:hover .pp-image-container-shared {
+  border-radius: 20px 50px 15px 60px / 60px 15px 50px 20px;
+  border-color: var(--gold);
+}
+.pp-tct-luxury-frame:hover::after {
+  border-color: rgba(245, 166, 35, 0.35);
+  border-radius: 16px 44px 11px 54px / 54px 11px 44px 16px;
+}
+
+/* Metallic corner brackets */
+.pp-tct-corner {
   position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  width: 44px; height: 44px;
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--gold);
+  pointer-events: none;
+  z-index: 3;
+  transition: 
+    width 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+    height 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+.pp-tct-corner--tl { top: 0; left: 0; border-right: none; border-bottom: none; }
+.pp-tct-corner--tr { top: 0; right: 0; border-left: none; border-bottom: none; }
+.pp-tct-corner--bl { bottom: 0; left: 0; border-right: none; border-top: none; }
+.pp-tct-corner--br { bottom: 0; right: 0; border-left: none; border-top: none; }
+
+.pp-tct-luxury-frame:hover .pp-tct-corner {
+  width: 22px;
+  height: 22px;
+  border-color: #ffffff;
+  box-shadow: 0 0 8px var(--gold);
+}
+
+.pp-tct-luxury-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: inherit !important; /* Kế thừa viền uốn lượn mây nước từ .pp-image-container-shared */
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.pp-tct-luxury-frame:hover img {
+  transform: scale(1.04);
+}
+
+
+/* =========================================================
+   LAYOUT 1: STAGGERED HORIZONTAL LANDSCAPE SHAPES
+   ========================================================= */
+.pp-tct-media-river {
+  position: relative;
+  height: 380px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: color-mix(in srgb, var(--b1) 70%, transparent);
-  backdrop-filter: blur(8px) saturate(140%);
-  border: 1px solid color-mix(in srgb, var(--gold) 50%, transparent);
-  border-radius: 50%;
-  font-family: var(--font-display);
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  color: var(--gold);
-  opacity: 0;
-  transition: opacity 0.4s var(--ease-spring), transform 0.5s var(--ease-spring);
+}
+@media (min-width: 576px) { .pp-tct-media-river { height: 440px; } }
+@media (min-width: 992px) { .pp-tct-media-river { height: 500px; } }
+
+.pp-tct-svg-frame-decor {
+  position: absolute;
+  width: 95%;
+  height: auto;
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.decor-rect-rotate {
+  transform-origin: center;
+  animation: rotate-rect 45s linear infinite;
+}
+.decor-circle-scale {
+  transform-origin: center;
+  animation: circle-scale 8s ease-in-out infinite alternate;
+}
+.decor-ripple-1 {
+  animation: ripple-shift-1 10s ease-in-out infinite alternate;
+}
+.decor-ripple-2 {
+  animation: ripple-shift-2 12s ease-in-out infinite alternate;
+}
+
+@keyframes rotate-rect {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes circle-scale {
+  0% { transform: scale(0.96); opacity: 0.3; }
+  100% { transform: scale(1.04); opacity: 0.6; }
+}
+@keyframes ripple-shift-1 {
+  from { transform: translateX(-12px); }
+  to { transform: translateX(12px); }
+}
+@keyframes ripple-shift-2 {
+  from { transform: translateX(12px); }
+  to { transform: translateX(-12px); }
+}
+
+/* Ảnh Ngang lớn (Aspect ratio: 16:10.5) */
+.pp-tct-luxury-frame--landscape-main {
+  position: absolute;
+  width: 78%;
+  aspect-ratio: 16 / 10.5;
+  left: 0;
+  top: 5%;
+  z-index: 1;
+}
+
+/* Ảnh Ngang phụ chồng mép (Aspect ratio: 16:11) */
+.pp-tct-luxury-frame--landscape-sub {
+  position: absolute;
+  width: 54%;
+  aspect-ratio: 16 / 11;
+  right: 0;
+  bottom: 5%;
   z-index: 2;
+  transform: rotate(2.5deg);
+  animation: river-image-floating 6s ease-in-out infinite alternate;
+}
+
+@keyframes river-image-floating {
+  0% { transform: rotate(2.5deg) translateY(0); }
+  100% { transform: rotate(1deg) translateY(-8px); }
+}
+
+.pp-tct-luxury-frame--landscape-main:hover {
+  transform: translateY(-5px);
+  z-index: 10; /* Nổi lên trên ảnh phụ khi hover */
+}
+.pp-tct-luxury-frame--landscape-sub:hover {
+  transform: scale(1.02) rotate(0deg) translateY(-5px);
+  z-index: 10; /* Nổi lên trên ảnh chính khi hover */
+  animation-play-state: paused;
+}
+
+/* Dropcap & Quote */
+.pp-tct-dropcap {
+  float: left;
+  font-family: var(--font-heading), sans-serif;
+  font-size: 3rem;
+  line-height: 0.85;
+  font-weight: 800;
+  color: var(--gold);
+  margin-right: 0.6rem;
+  margin-top: 0.15rem;
+  text-shadow: 0 0 10px rgba(245, 166, 35, 0.25);
+}
+
+.pp-tct-highlight-quote {
+  border-left: 2px solid var(--gold);
+  padding-left: 1.25rem;
+  font-family: var(--font-heading), sans-serif;
+  font-size: 1.08rem;
+  font-weight: 500;
+  line-height: 1.7;
+  color: var(--bc);
+  margin-bottom: 1.75rem;
+}
+
+
+/* =========================================================
+   LAYOUT 2: BLUEPRINT / TIMELINE & CIRCUIT FLOWS (HORIZONTAL)
+   ========================================================= */
+.pp-tct-circuit-decor {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+.circuit-path-1 {
+  stroke-dasharray: 200 400;
+  animation: circuit-dash-flow 12s linear infinite;
+}
+.circuit-node-1, .circuit-node-2 {
+  animation: node-blink-tech 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes circuit-dash-flow {
+  from { stroke-dashoffset: 600; }
+  to { stroke-dashoffset: 0; }
+}
+@keyframes node-blink-tech {
+  0% { opacity: 0.3; r: 2px; }
+  100% { opacity: 1; r: 4px; filter: drop-shadow(0 0 4px var(--gold)); }
+}
+
+.pp-mockup-scan-line {
+  position: absolute;
+  inset: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(245, 166, 35, 0.3), transparent);
+  box-shadow: 0 0 8px var(--gold);
+  pointer-events: none;
+  z-index: 4;
+  animation: scanning-radar-bar 4.5s linear infinite;
+}
+
+@keyframes scanning-radar-bar {
+  0% { top: 0%; opacity: 0; }
+  5% { opacity: 0.6; }
+  95% { opacity: 0.6; }
+  100% { top: 100%; opacity: 0; }
+}
+
+/* Horizontal landscape blueprint shape */
+.pp-tct-luxury-frame--blueprint {
+  width: 100%;
+}
+.pp-tct-luxury-frame--blueprint .pp-image-container-shared {
+  aspect-ratio: 16 / 10;
+}
+
+.pp-tct-luxury-frame--blueprint:hover {
+  transform: translateY(-5px);
+}
+
+/* Timeline vertical stepper */
+.pp-tct-timeline-indicator {
+  position: absolute;
+  top: 6.5rem;
+  left: 2rem;
+  bottom: 3.5rem;
+  width: 1px;
+  background: rgba(245, 166, 35, 0.15);
+  z-index: 1;
   pointer-events: none;
 }
-.pp-gallery-tct__item:hover::before {
-  opacity: 1;
-  transform: translate(-50%, -50%) scale(1.1);
+@media (min-width: 768px) {
+  .pp-tct-timeline-indicator {
+    left: 2.5rem;
+  }
 }
-.pp-gallery-tct__item:nth-child(2)::before { content: '02'; }
-.pp-gallery-tct__item:nth-child(3)::before { content: '03'; }
-.pp-gallery-tct__item:nth-child(4)::before { content: '04'; }
-.pp-gallery-tct--cols-1 .pp-gallery-tct__item::before { display: none; }
 
-/* Stagger entry */
-.pp-gallery-tct__item {
+.pp-intro-card-tct--blueprint .pp-intro-card-tct__body {
+  gap: 2rem;
+}
+
+.pp-tct-timeline-item {
+  position: relative;
+  padding-left: 2rem;
+  transition: transform 0.4s var(--ease-spring);
+}
+@media (min-width: 768px) {
+  .pp-tct-timeline-item {
+    padding-left: 2.5rem;
+  }
+}
+.pp-tct-timeline-item:hover {
+  transform: translateX(8px);
+}
+
+.pp-tct-timeline-node-wrapper {
+  position: absolute;
+  left: -4.5px;
+  top: 0.5rem;
+  width: 9px;
+  height: 9px;
+  z-index: 3;
+}
+
+.pp-tct-timeline-node {
+  position: absolute;
+  inset: 0;
+  background: var(--gold);
+  border: 2px solid #141620;
+  border-radius: 50%;
+  box-shadow: 0 0 6px var(--gold);
+  z-index: 2;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s;
+}
+
+.pp-tct-timeline-pulse {
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  width: 21px;
+  height: 21px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
   opacity: 0;
-  transform: translateY(20px) scale(0.96);
-  animation: pp-gallery-tct-rise 0.85s var(--ease-spring) forwards;
+  pointer-events: none;
+  z-index: 1;
+  animation: node-ripple-anim 2.5s cubic-bezier(0.21, 0.6, 0.35, 1) infinite;
 }
-.pp-gallery-tct__item:nth-child(1) { animation-delay: 0.05s; }
-.pp-gallery-tct__item:nth-child(2) { animation-delay: 0.15s; }
-.pp-gallery-tct__item:nth-child(3) { animation-delay: 0.25s; }
-.pp-gallery-tct__item:nth-child(4) { animation-delay: 0.35s; }
-@keyframes pp-gallery-tct-rise {
-  to { opacity: 1; transform: translateY(0) scale(1); }
+
+@keyframes node-ripple-anim {
+  0% { transform: scale(0.4); opacity: 0.8; }
+  100% { transform: scale(2.2); opacity: 0; }
 }
-@media (prefers-reduced-motion: reduce) {
-  .pp-gallery-tct__item { animation: none; opacity: 1; transform: none; }
+
+.pp-tct-timeline-item:hover .pp-tct-timeline-node {
+  transform: scale(1.4);
+  background: #ffffff;
+  box-shadow: 0 0 10px #ffffff;
+}
+
+
+/* =========================================================
+   LAYOUT 3: GLOW FURNACE (PANORAMIC HORIZONTAL WIDEIMAGE)
+   ========================================================= */
+.pp-intro-card-tct--furnace {
+  background: linear-gradient(135deg, rgba(210, 125, 86, 0.02) 0%, rgba(10, 8, 8, 0.8) 100%);
+  border: 1px solid rgba(210, 125, 86, 0.12);
+  animation: furnace-border-breath 5s ease-in-out infinite alternate;
+}
+
+@keyframes furnace-border-breath {
+  0% { border-color: rgba(210, 125, 86, 0.12); }
+  100% { border-color: rgba(210, 125, 86, 0.3); }
+}
+
+/* Fire Callout Panel */
+.pp-tct-callout-panel {
+  position: relative;
+  background: linear-gradient(135deg, rgba(210, 125, 86, 0.05) 0%, rgba(0, 0, 0, 0.25) 100%);
+  border-left: 3px solid #d27d56;
+  border-radius: 4px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 0.5rem;
+}
+.pp-tct-callout-panel:hover {
+  background: linear-gradient(135deg, rgba(210, 125, 86, 0.08) 0%, rgba(0, 0, 0, 0.3) 100%);
+}
+
+.pp-tct-callout-quote-icon {
+  position: absolute;
+  top: -0.8rem;
+  right: 1.25rem;
+  font-family: Georgia, serif;
+  font-size: 4.5rem;
+  font-weight: 700;
+  color: rgba(210, 125, 86, 0.08);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.pp-tct-callout-panel p {
+  color: #e58d62 !important;
+  font-size: 1.02rem;
+  line-height: 1.65;
+}
+
+/* Ambient ember pulsing */
+.pp-card-fire-glow {
+  position: absolute;
+  bottom: -40px; right: -40px;
+  width: 180px; height: 180px;
+  background: radial-gradient(circle, rgba(210, 125, 86, 0.08) 0%, transparent 70%);
+  filter: blur(25px);
+  pointer-events: none;
+  z-index: 1;
+  animation: ember-card-flicker 4s ease-in-out infinite alternate;
+}
+@keyframes ember-card-flicker {
+  0% { transform: scale(0.9); opacity: 0.4; }
+  100% { transform: scale(1.2); opacity: 0.9; }
+}
+
+.pp-tct-media-furnace {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pp-furnace-ember-bg {
+  position: absolute;
+  width: 85%;
+  height: 85%;
+  background: radial-gradient(circle, rgba(210, 125, 86, 0.15) 0%, transparent 70%);
+  filter: blur(25px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.pp-tct-fire-particles {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.fire-p-1, .fire-p-2, .fire-p-3, .fire-p-4 {
+  animation: particle-ascend 6s linear infinite;
+}
+.fire-p-1 { animation-delay: 0s; animation-duration: 5s; }
+.fire-p-2 { animation-delay: 1.5s; animation-duration: 6.5s; }
+.fire-p-3 { animation-delay: 3.2s; animation-duration: 5.5s; }
+.fire-p-4 { animation-delay: 4.6s; animation-duration: 4.8s; }
+
+@keyframes particle-ascend {
+  0% { transform: translateY(80px) translateX(0); opacity: 0; }
+  50% { opacity: 0.7; }
+  100% { transform: translateY(-160px) translateX(20px); opacity: 0; }
+}
+
+/* Panoramic horizontal */
+.pp-tct-luxury-frame--panoramic {
+  width: 100%;
+}
+.pp-tct-luxury-frame--panoramic:hover {
+  transform: translateY(-5px);
+}
+.pp-tct-luxury-frame--panoramic .pp-image-container-shared {
+  aspect-ratio: 16 / 9;
+}
+@media (min-width: 992px) {
+  .pp-tct-luxury-frame--panoramic .pp-image-container-shared {
+    aspect-ratio: 21 / 9;
+  }
+}
+
+.pp-tct-luxury-frame--furnace .pp-tct-corner {
+  border-color: #d27d56;
+}
+.pp-tct-luxury-frame--furnace::after {
+  border-color: rgba(210, 125, 86, 0.18);
+}
+.pp-tct-luxury-frame--furnace:hover::after {
+  border-color: rgba(210, 125, 86, 0.45);
+}
+.pp-tct-luxury-frame--furnace:hover .pp-tct-corner {
+  border-color: #ffffff;
+  box-shadow: 0 0 10px rgba(210, 125, 86, 0.8);
 }

@@ -1,101 +1,111 @@
 /**
- * grand-marble-thuong-hieu-banh-cao-cap-nhat-ban — partnership slot. .pp-section-bg-gmb cinematic dark bg + glassmorphic content.
+ * grand-marble-thuong-hieu-banh-cao-cap-nhat-ban — partnership slot.
+ * Cinematic dark background image + glassmorphic philosophy card with caramel accents.
  * @package SaigonHoreca
  */
 
-.pp-section-bg-gmb {
+.pp-section-bg-gmarb {
   position: relative;
-  padding: 7rem 1.5rem;
+  padding: clamp(6rem, 12vw, 10rem) 1.5rem;
   min-height: 70vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--b1);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-color: var(--b1);
   isolation: isolate;
   overflow: hidden;
 }
-@media (min-width: 768px) { .pp-section-bg-gmb { padding: 10rem 2rem; } }
 
-.pp-section-bg-gmb__overlay {
+.pp-section-bg-gmarb__overlay {
   position: absolute;
   inset: 0;
   z-index: 1;
   background:
-    radial-gradient(ellipse at center,
-      color-mix(in srgb, var(--b1) 35%, transparent) 0%,
-      color-mix(in srgb, var(--b1) 80%, transparent) 100%);
+    radial-gradient(ellipse at center, color-mix(in srgb, var(--b1) 32%, transparent) 0%, color-mix(in srgb, var(--b1) 82%, transparent) 100%),
+    linear-gradient(180deg, color-mix(in srgb, var(--gmarb-glaze) 30%, transparent) 0%, color-mix(in srgb, var(--b1) 60%, transparent) 100%);
   pointer-events: none;
 }
 
-.pp-section-bg-gmb::before {
-  content: '';
-  position: absolute;
-  top: -10%;
-  right: -8%;
-  width: 540px; height: 540px;
-  background: radial-gradient(circle, color-mix(in srgb, var(--gold) 18%, transparent) 0%, transparent 70%);
-  filter: blur(80px);
-  z-index: 1;
-  pointer-events: none;
-  opacity: 0.7;
-}
-
-.pp-section-bg-gmb__content {
+.pp-section-bg-gmarb__content {
   position: relative;
   z-index: 2;
-  max-width: 880px;
+  max-width: 860px;
   margin: 0 auto;
   text-align: center;
-  padding: 3rem 2.5rem;
-  background: color-mix(in srgb, var(--b1) 40%, transparent);
-  backdrop-filter: blur(14px) saturate(140%);
-  border: 1px solid color-mix(in srgb, var(--gold) 22%, transparent);
-  border-radius: var(--radius-md);
+  padding: clamp(2rem, 4vw, 3rem) clamp(1.5rem, 3vw, 2.5rem);
+  background: color-mix(in srgb, var(--gmarb-glass) 60%, transparent);
+  backdrop-filter: blur(16px) saturate(140%);
+  border: 1px solid color-mix(in srgb, var(--gmarb-caramel) 22%, transparent);
+  border-radius: var(--radius-lg);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1.35rem;
   box-shadow:
-    0 24px 56px rgba(0, 0, 0, 0.5),
-    inset 0 1px 0 color-mix(in srgb, var(--gold) 10%, transparent);
+    0 24px 64px color-mix(in srgb, var(--b1) 55%, transparent),
+    inset 0 1px 0 color-mix(in srgb, var(--gmarb-caramel) 10%, transparent);
+  transition: border-color 0.4s var(--ease-spring), transform 0.4s var(--ease-spring);
 }
-.pp-section-bg-gmb__content::before,
-.pp-section-bg-gmb__content::after {
+.pp-section-bg-gmarb__content:hover {
+  border-color: color-mix(in srgb, var(--gmarb-caramel) 40%, transparent);
+  transform: translateY(-4px);
+}
+.pp-section-bg-gmarb__content::before,
+.pp-section-bg-gmarb__content::after {
   content: '';
   position: absolute;
-  width: 24px; height: 24px;
-  border: 1px solid color-mix(in srgb, var(--gold) 55%, transparent);
+  width: 22px;
+  height: 22px;
+  border: 1px solid color-mix(in srgb, var(--gmarb-caramel) 50%, transparent);
   pointer-events: none;
 }
-.pp-section-bg-gmb__content::before {
-  top: -1px; left: -1px;
-  border-right: none; border-bottom: none;
-}
-.pp-section-bg-gmb__content::after {
-  bottom: -1px; right: -1px;
-  border-left: none; border-top: none;
-}
+.pp-section-bg-gmarb__content::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+.pp-section-bg-gmarb__content::after  { bottom: -1px; right: -1px; border-left: none; border-top: none; }
 
-.pp-section-bg-gmb__content .pp-text-gmb__title {
+.pp-section-bg-gmarb__title {
   margin: 0;
   font-family: var(--font-display);
   font-size: clamp(1.65rem, 3vw, 2.5rem);
   font-weight: 700;
   line-height: 1.25;
   color: var(--bc);
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+  text-shadow: 0 2px 12px color-mix(in srgb, var(--b1) 60%, transparent);
 }
-.pp-section-bg-gmb__content .pp-text-gmb__body {
-  font-size: clamp(0.97rem, 1.1vw, 1.05rem);
+.pp-section-bg-gmarb__body {
+  font-size: clamp(0.95rem, 1.1vw, 1.05rem);
   line-height: 1.8;
   color: var(--bc2);
-  max-width: 700px;
+  max-width: 680px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
-.pp-section-bg-gmb__content .pp-text-gmb__body p {
-  margin: 0 0 1em;
-  text-align: center;
+.pp-section-bg-gmarb__body p { margin: 0; }
+
+/* Six functional zones — pill chips */
+.pp-section-bg-gmarb__zones {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 0.2rem;
 }
-.pp-section-bg-gmb__content .pp-text-gmb__body p:last-child { margin-bottom: 0; }
+.pp-section-bg-gmarb__zones span {
+  padding: 0.5rem 0.9rem;
+  border: 1px solid color-mix(in srgb, var(--gmarb-caramel) 22%, transparent);
+  border-radius: var(--radius-full);
+  background: color-mix(in srgb, var(--b1) 38%, transparent);
+  color: var(--bc2);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pp-section-bg-gmarb__content { transition: none !important; }
+  .pp-section-bg-gmarb__content:hover { transform: none !important; }
+}

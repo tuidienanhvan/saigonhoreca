@@ -1,1 +1,510 @@
-/** the-royal-all-day-dining — gallery slot. Inherits .pp-split-trd from concept.css. */
+/**
+ * the-royal-all-day-dining — gallery slot (Gold Standard v2).
+ * Bento Mosaic Grid Layout.
+ * 0 hardcoded hex — all token vars / color-mix.
+ * @package SaigonHoreca
+ */
+
+.pp-gallery-bento-section-trd {
+  padding-block: clamp(3.5rem, 7vw, 7rem);
+  background: var(--b1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Bento Intro Header */
+.pp-bento-intro {
+  margin-bottom: clamp(2rem, 5vw, 3.5rem);
+  text-align: left;
+  max-width: 800px;
+}
+.pp-bento-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--gold);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+.pp-bento-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--bc);
+  margin: 0 0 1rem;
+}
+.pp-bento-desc {
+  font-family: var(--font-sans);
+  font-size: clamp(1rem, 1.1vw, 1.15rem);
+  line-height: 1.6;
+  color: var(--bc2);
+  margin: 0;
+}
+
+/* Bento Grid CSS */
+.pp-bento-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  grid-auto-flow: dense;
+}
+
+@media (min-width: 768px) {
+  .pp-bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 992px) {
+  .pp-bento-grid {
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: minmax(180px, auto);
+    gap: 1.75rem;
+  }
+}
+
+/* Bento Card Styles */
+.pp-bento-card {
+  position: relative;
+  background: color-mix(in srgb, var(--b2) 80%, black);
+  border: 1px solid color-mix(in srgb, var(--gold) 8%, var(--bd));
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+  transition: transform 0.4s var(--ease-spring), border-color 0.4s var(--ease-spring), box-shadow 0.4s var(--ease-spring);
+}
+
+.pp-bento-card:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--gold) 25%, transparent);
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.5);
+}
+
+.pp-bento-card__inner {
+  padding: clamp(1.5rem, 2.5vw, 2rem);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: relative;
+  z-index: 2;
+}
+
+/* Blueprint Decor SVG for Bento Cards */
+.pp-bento-blueprint-decor {
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  width: clamp(200px, 22vw, 320px);
+  height: clamp(200px, 22vw, 320px);
+  color: color-mix(in srgb, var(--gold) 16%, transparent);
+  pointer-events: none;
+  z-index: 1;
+  user-select: none;
+  filter: drop-shadow(0 0 4px color-mix(in srgb, var(--gold) 8%, transparent));
+  transition: color var(--duration-normal) var(--ease-spring),
+              transform var(--duration-normal) var(--ease-spring),
+              filter var(--duration-normal) var(--ease-spring);
+}
+
+.pp-bento-card:hover .pp-bento-blueprint-decor {
+  color: color-mix(in srgb, var(--gold) 35%, transparent);
+  transform: scale(1.05) rotate(4deg);
+  filter: drop-shadow(0 0 12px color-mix(in srgb, var(--gold) 25%, transparent));
+}
+
+.pp-bento-card__num {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: color-mix(in srgb, var(--gold) 50%, transparent);
+  margin-bottom: 0.75rem;
+}
+
+.pp-bento-card__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 1.5vw, 1.45rem);
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--bc);
+  margin: 0 0 1rem;
+}
+
+.pp-bento-card__divider {
+  width: 35px;
+  height: 1px;
+  background: var(--gold);
+  margin-bottom: 1.25rem;
+}
+
+/* Bento Cards Specific Spanning */
+@media (min-width: 992px) {
+  /* Equipment card (01): Cột 1, cao 2 hàng */
+  .pp-bento-card--equipment {
+    grid-column: 1 / 2;
+    grid-row: span 2;
+  }
+  
+  /* Image Collage: Rộng 2 cột, cao 1 hàng */
+  .pp-bento-card--image-collage {
+    grid-column: 2 / 4;
+    grid-row: span 1;
+  }
+
+  /* Ops Card: Rộng 1 cột, cao 1 hàng */
+  .pp-bento-card--ops {
+    grid-column: 4 / 5;
+    grid-row: span 1;
+  }
+
+  /* Stat Cards: Chiếm cột 2 & cột 3 của hàng 2 */
+  .pp-bento-card--stat {
+    grid-row: span 1;
+  }
+
+  /* Image Prep: Rộng 1 cột, cao từ hàng 2 sang hàng 3 */
+  .pp-bento-card--image-prep {
+    grid-column: 4 / 5;
+    grid-row: 2 / 4;
+  }
+
+  /* Core Value: Rộng 2 cột */
+  .pp-bento-card--core-val {
+    grid-column: 1 / 3;
+    grid-row: span 1;
+  }
+
+  /* Partnership Panel: Rộng 1 cột */
+  .pp-bento-card--partnership {
+    grid-column: 3 / 4;
+    grid-row: span 1;
+  }
+}
+
+/* Stat Card specific styling */
+.pp-bento-card--stat .pp-bento-card__inner {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--b2) 80%, black), color-mix(in srgb, var(--b3) 90%, black));
+}
+.pp-bento-stat__val {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 20px color-mix(in srgb, var(--gold) 20%, transparent);
+}
+.pp-bento-stat__label {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--bc3);
+}
+
+/* Image panels inside Bento */
+.pp-bento-card--image-collage,
+.pp-bento-card--image-prep {
+  padding: 0;
+  border: 1px solid color-mix(in srgb, var(--gold) 8%, var(--bd));
+}
+.pp-bento-card--image-collage .pp-image-container-shared,
+.pp-bento-card--image-prep .pp-image-container-shared {
+  width: 100%;
+  height: 100%;
+  margin-bottom: 0 !important;
+}
+.pp-bento-card--image-collage img,
+.pp-bento-card--image-prep img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Equipment List Inside Card 1 */
+.pp-bento-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.pp-bento-list li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  position: relative;
+  padding-left: 1.25rem;
+}
+.pp-bento-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.45em;
+  width: 5px;
+  height: 5px;
+  background: var(--gold);
+  border-radius: 50%;
+}
+.pp-bento-list li strong {
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--gold);
+}
+.pp-bento-list li span {
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  color: var(--bc2);
+  line-height: 1.4;
+}
+
+/* Typography elements for general cards */
+.pp-bento-card--ops p,
+.pp-bento-card--core-val p,
+.pp-bento-card--partnership p {
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--bc2);
+  margin: 0;
+}
+.pp-bento-card--ops p strong,
+.pp-bento-card--core-val p strong,
+.pp-bento-card--partnership p strong {
+  color: var(--gold);
+  font-weight: 600;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .pp-bento-card {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+/* ==========================================================================
+   Section 6: Asymmetric Closing Statement (CTA)
+   ========================================================================== */
+.pp-cta-asymmetric-trd {
+  position: relative;
+  padding: clamp(4rem, 8vw, 8rem) 0;
+  overflow: hidden;
+  background: var(--b1);
+}
+
+.pp-cta-bg-bleed {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.25) contrast(1.1);
+  transform: scale(1.05);
+  transition: transform 8s ease;
+  z-index: 1;
+}
+
+.pp-cta-asymmetric-trd:hover .pp-cta-bg-bleed {
+  transform: scale(1);
+}
+
+.pp-cta-asymmetric-trd::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    var(--b1) 0%,
+    transparent 15%,
+    transparent 85%,
+    var(--b1) 100%
+  );
+  z-index: 2;
+  pointer-events: none;
+}
+
+.pp-cta-asymmetric-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  position: relative;
+  z-index: 3;
+}
+
+@media (min-width: 992px) {
+  .pp-cta-asymmetric-grid {
+    grid-template-columns: minmax(0, 7.5fr) minmax(0, 4.5fr);
+  }
+}
+
+.pp-cta-card-floating {
+  position: relative;
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--b2) 80%, transparent) 0%,
+    color-mix(in srgb, var(--b1) 60%, transparent) 100%
+  );
+  border: 1px solid var(--bd);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: clamp(2rem, 5vw, 4rem);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-main);
+  transition: border-color var(--duration-normal) var(--ease-spring),
+              transform var(--duration-normal) var(--ease-spring),
+              box-shadow var(--duration-normal) var(--ease-spring);
+}
+
+/* Bracket Ornaments on corners */
+.pp-cta-card-floating::before,
+.pp-cta-card-floating::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border: 1.5px solid var(--gold);
+  opacity: 0.35;
+  transition: all var(--duration-normal) var(--ease-spring);
+  pointer-events: none;
+}
+.pp-cta-card-floating::before {
+  top: 20px;
+  left: 20px;
+  border-right: 0;
+  border-bottom: 0;
+}
+.pp-cta-card-floating::after {
+  bottom: 20px;
+  right: 20px;
+  border-left: 0;
+  border-top: 0;
+}
+
+.pp-cta-card-floating:hover {
+  border-color: color-mix(in srgb, var(--gold) 45%, transparent);
+  transform: translateY(-4px);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 40px color-mix(in srgb, var(--gold) 6%, transparent);
+}
+
+.pp-cta-card-floating:hover::before,
+.pp-cta-card-floating:hover::after {
+  opacity: 1;
+  width: 36px;
+  height: 36px;
+}
+
+.pp-cta-badge {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
+
+.pp-cta-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.5vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--bc);
+  margin: 0 0 1.5rem;
+}
+
+.pp-cta-line {
+  display: block;
+  width: 48px;
+  height: 2px;
+  background: var(--gold);
+  margin-bottom: 1.8rem;
+  border-radius: var(--radius-full);
+  transition: width var(--duration-normal) var(--ease-spring);
+}
+.pp-cta-card-floating:hover .pp-cta-line {
+  width: 80px;
+}
+
+.pp-cta-body {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--bc2);
+  margin-bottom: 2rem;
+}
+
+.pp-cta-quote {
+  position: relative;
+  margin: 2.5rem 0;
+  padding: 1.8rem 2.2rem;
+  background: color-mix(in srgb, var(--b3) 40%, transparent);
+  border-left: 3px solid var(--gold);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+.pp-cta-quote__icon {
+  position: absolute;
+  top: -10px;
+  left: 15px;
+  font-family: var(--font-serif);
+  font-size: 4rem;
+  color: color-mix(in srgb, var(--gold) 15%, transparent);
+  line-height: 1;
+  pointer-events: none;
+}
+
+.pp-cta-quote__text {
+  font-family: var(--font-serif);
+  font-size: 1.0625rem;
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--bc);
+  margin: 0 0 0.75rem;
+  position: relative;
+  z-index: 2;
+}
+
+.pp-cta-quote__author {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.pp-cta-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.pp-cta-tag-item {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--bc2);
+  background: color-mix(in srgb, var(--bc) 5%, transparent);
+  border: 1px solid var(--bd);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-full);
+  transition: all var(--duration-fast) ease;
+}
+
+.pp-cta-card-floating:hover .pp-cta-tag-item {
+  border-color: color-mix(in srgb, var(--gold) 20%, transparent);
+  color: var(--bc);
+}
+

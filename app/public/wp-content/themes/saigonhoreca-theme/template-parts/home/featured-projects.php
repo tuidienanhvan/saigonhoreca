@@ -21,37 +21,37 @@ $q = null;
 
 $featured = [
     [
-        'src'     => '2023/12/Amdang-Typhoon-SGH-1.jpg',
+        'src'     => 'saigonhoreca/the-royal-sgh-10.webp',
         'title'   => 'Amdang Typhoon',
         'address' => 'Asian Luxe Restaurant, HCMC',
         'url'     => sgh_url('projects_index', 'amdang-typhoon/'),
     ],
     [
-        'src'     => '2024/01/SGH-Heiwasushi-1.webp',
+        'src'     => 'saigonhoreca/the-royal-sgh-8.webp',
         'title'   => 'Heiwa Sushi Omakase',
         'address' => 'Japanese Omakase, HCMC',
         'url'     => sgh_url('projects_index', 'heiwa-sushi-omakase/'),
     ],
     [
-        'src'     => '2025/04/du-an-skyloft-by-glow.jpg',
+        'src'     => 'skyloft-by-glow/skyloft-by-glow-quay-bar-rooftop-dem.webp',
         'title'   => 'Skyloft by Glow',
         'address' => 'Rooftop Bar, President Place, Quận 1, HCMC',
         'url'     => sgh_url('projects_index', 'skyloft-by-glow/'),
     ],
     [
-        'src'     => '2025/04/du-an-grand-marble.jpg',
+        'src'     => 'saigonhoreca/SGH-mammam.webp',
         'title'   => 'Grand Marble',
         'address' => 'Thương hiệu bánh cao cấp Nhật Bản',
         'url'     => sgh_url('projects_index', 'grand-marble-thuong-hieu-banh-cao-cap-nhat-ban/'),
     ],
     [
-        'src'     => '2025/05/the-royal-sgh-1.jpg',
+        'src'     => 'saigonhoreca/the-royal-sgh-10.webp',
         'title'   => 'The Royal — All Day Dining',
         'address' => '41-47 Đông Du, Bến Nghé, Quận 1, HCMC',
         'url'     => sgh_url('projects_index', 'the-royal-all-day-dining/'),
     ],
     [
-        'src'     => '2023/12/Godmother-friendship-1.jpg',
+        'src'     => 'saigonhoreca/the-royal-sgh-10.webp',
         'title'   => 'GodMother Friendship',
         'address' => 'Bake & Brunch, Thảo Điền, HCMC',
         'url'     => sgh_url('projects_index', 'godmother-friendship/'),
@@ -68,7 +68,7 @@ $stats = [
     <div class="sh-featured-projects__inner">
 
         <!-- Intro: accent + title + desc + CTA -->
-        <div class="sh-featured-projects__head">
+        <div class="sh-featured-projects__head scroll-reveal reveal-letter-wide duration-1800">
             <span class="sh-featured-projects__accent" aria-hidden="true"></span>
             <h2 class="sh-featured-projects__title">
                 <?php esc_html_e('Những dự án tiêu biểu của Saigon Horeca', 'saigonhoreca'); ?>
@@ -91,8 +91,19 @@ $stats = [
         <div class="sh-featured-projects__grid">
             <?php
             $avatar = $uri . '/assets/images/logo.webp';
-            foreach ($featured as $item) : 
-                $img_path = $item['src'];
+            foreach ($featured as $i => $item) : 
+                // Automatically retrieve project slug from URL to fetch custom templates thumbnail dynamically
+                $slug = '';
+                if (preg_match('#/du-an/([a-z0-9\-]+)/?#', $item['url'], $m)) {
+                    $slug = $m[1];
+                }
+                
+                $custom_thumb = '';
+                if ($slug && function_exists('sgh_get_project_thumbnail')) {
+                    $custom_thumb = sgh_get_project_thumbnail($slug);
+                }
+                
+                $img_path = $custom_thumb ? str_replace(sgh_uploads_base_url() . '/', '', $custom_thumb) : $item['src'];
                 $img_ext = pathinfo($img_path, PATHINFO_EXTENSION);
                 $img_base = substr($img_path, 0, -(strlen($img_ext) + 1));
                 $img_mobile = "{$img_base}-mobile.{$img_ext}";
@@ -106,9 +117,11 @@ $stats = [
                 if ($local_mobile_exists) {
                     $srcset_attr = ' srcset="' . esc_url(sgh_img($img_mobile)) . ' 450w, ' . esc_url(sgh_img($img_path)) . ' 600w" sizes="(max-width: 576px) 450px, 600px"';
                 }
+                $delay = ($i % 3) * 150;
+                $delay_class = $delay > 0 ? " delay-{$delay}" : "";
             ?>
                 <a href="<?php echo esc_url($item['url']); ?>"
-                   class="sh-featured-projects__card">
+                   class="sh-featured-projects__card scroll-reveal reveal-spring-up duration-1800<?php echo $delay_class; ?>">
                     <img src="<?php echo esc_url(sgh_img($item['src'])); ?>"
                          <?php echo $srcset_attr; ?>
                          alt="<?php echo esc_attr($item['title']); ?>"
@@ -129,7 +142,7 @@ $stats = [
         </div>
 
         <!-- Stats strip: 80+ / 100+ / 200+ -->
-        <div class="sh-featured-projects__stats">
+        <div class="sh-featured-projects__stats scroll-reveal reveal-3d-fold-up duration-1800 delay-300">
             <?php foreach ($stats as $s) : ?>
                 <div class="sh-featured-projects__stat">
                     <div class="sh-featured-projects__stat-num"><?php echo esc_html($s['number']); ?></div>

@@ -1,213 +1,152 @@
 /**
- * g-cup-coffee-bistro — concept slot.
- * Modern Cafe Geometric · split layout with geometric grid bg + L-bracket ornament
- * + clean line layout + offset double-frame on media + espresso-trio paragraph dots.
+ * g-cup-coffee-bistro — concept slot CSS (Overlay Editorial).
+ * Bố cục chồng lớp, Glassmorphism card đè chéo, viền line mờ ảo.
+ * 100% tokens, zero hardcoded colors.
  * @package SaigonHoreca
  */
 
-/* ─────────────────────────────────────────────
-   Split shell
-   ───────────────────────────────────────────── */
-.pp-split-gcb {
+.pp-concept-section-gcb {
+  position: relative;
+  padding: 6rem 0;
+  overflow: hidden;
+}
+
+/* Bố cục trang bìa tạp chí nghệ thuật chồng đè */
+.pp-gcb-concept-editorial {
   display: grid;
   grid-template-columns: 1fr;
   gap: 2.5rem;
-  align-items: center;
-  position: relative;
-}
-@media (min-width: 992px) {
-  .pp-split-gcb {
-    grid-template-columns: 1fr 1fr;
-    gap: 4.5rem;
-  }
-  .pp-split-gcb--reverse .pp-split-gcb__media { order: 2; }
-  .pp-split-gcb--reverse .pp-split-gcb__body  { order: 1; }
-}
-
-/* Geometric grid bg pattern behind the split */
-.pp-split-gcb::before {
-  content: "";
-  position: absolute;
-  top: -3rem;
-  right: -3rem;
-  width: 280px;
-  height: 280px;
-  background-image:
-    linear-gradient(color-mix(in srgb, var(--gold) 9%, transparent) 1px, transparent 1px),
-    linear-gradient(90deg, color-mix(in srgb, var(--gold) 9%, transparent) 1px, transparent 1px);
-  background-size: 28px 28px;
-  mask-image: radial-gradient(ellipse at top right, #000 0%, transparent 75%);
-  -webkit-mask-image: radial-gradient(ellipse at top right, #000 0%, transparent 75%);
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.7;
-}
-.pp-split-gcb--reverse::before {
-  right: auto;
-  left: -3rem;
-  mask-image: radial-gradient(ellipse at top left, #000 0%, transparent 75%);
-  -webkit-mask-image: radial-gradient(ellipse at top left, #000 0%, transparent 75%);
-}
-
-/* Body column */
-.pp-split-gcb__body {
-  display: flex;
-  flex-direction: column;
-  gap: 1.4rem;
   position: relative;
   z-index: 2;
-  padding: 0.5rem 0 0.5rem 1.5rem;
 }
+
 @media (min-width: 992px) {
-  .pp-split-gcb__body { padding-left: 2rem; }
-}
-.pp-split-gcb__body .pp-text-gcb__divider { align-self: flex-start; }
-.pp-split-gcb__body .pp-text-gcb__title {
-  font-size: clamp(1.55rem, 2.6vw, 2.35rem);
-  text-align: left;
-  max-width: 22ch;
-}
-.pp-split-gcb__body .pp-text-gcb__body { text-align: left; }
-
-/* Vertical gold rule along the body's leading edge */
-.pp-split-gcb__body::after {
-  content: "";
-  position: absolute;
-  top: 0.5rem;
-  left: 0;
-  bottom: 0.5rem;
-  width: 1px;
-  background: linear-gradient(180deg,
-    var(--gold) 0%,
-    color-mix(in srgb, var(--gold) 35%, transparent) 60%,
-    transparent 100%);
-  box-shadow: 0 0 12px color-mix(in srgb, var(--gold) 28%, transparent);
-}
-.pp-split-gcb--reverse .pp-split-gcb__body {
-  padding-left: 0.5rem;
-  padding-right: 1.5rem;
-}
-@media (min-width: 992px) {
-  .pp-split-gcb--reverse .pp-split-gcb__body { padding-right: 2rem; padding-left: 0; }
-}
-.pp-split-gcb--reverse .pp-split-gcb__body::after { left: auto; right: 0; }
-
-/* L-bracket ornament around body */
-.pp-split-gcb__body::before {
-  content: "";
-  position: absolute;
-  top: -1.5rem;
-  left: -0.5rem;
-  width: 64px;
-  height: 64px;
-  border-top: 1px solid color-mix(in srgb, var(--gold) 50%, transparent);
-  border-left: 1px solid color-mix(in srgb, var(--gold) 50%, transparent);
-  pointer-events: none;
-  z-index: -1;
-  box-shadow: 0 0 24px color-mix(in srgb, var(--gold) 15%, transparent);
-}
-.pp-split-gcb--reverse .pp-split-gcb__body::before {
-  left: auto;
-  right: -0.5rem;
-  border-left: none;
-  border-right: 1px solid color-mix(in srgb, var(--gold) 50%, transparent);
+  .pp-gcb-concept-editorial {
+    grid-template-columns: 6fr 4.8fr;
+    gap: 0;
+    align-items: center;
+  }
 }
 
-/* Media column */
-.pp-split-gcb__media {
+/* Khối ảnh trái rộng */
+.pp-gcb-concept-visual {
   position: relative;
-  aspect-ratio: 16 / 10;
-  overflow: hidden;
-  border-radius: var(--radius-md);
-  background: var(--b3);
-  border: 1px solid var(--bd);
-  transition:
-    border-color 0.5s var(--ease-spring),
-    transform 0.5s var(--ease-spring),
-    box-shadow 0.5s var(--ease-spring);
-  box-shadow:
-    0 24px 48px rgba(0, 0, 0, 0.45),
-    inset 0 1px 0 color-mix(in srgb, var(--gold) 6%, transparent);
-  isolation: isolate;
-}
-.pp-split-gcb__media::before {
-  content: "";
-  position: absolute;
-  top: 14px;
-  left: 14px;
-  right: -14px;
-  bottom: -14px;
-  border: 1px solid color-mix(in srgb, var(--gold) 22%, transparent);
-  border-radius: var(--radius-md);
-  pointer-events: none;
-  z-index: -1;
-}
-.pp-split-gcb--reverse .pp-split-gcb__media::before {
-  left: -14px;
-  right: 14px;
-}
-.pp-split-gcb__media::after {
-  content: "01";
-  position: absolute;
-  bottom: 1rem;
-  left: 1rem;
-  z-index: 3;
-  font-family: var(--font-display, "Playfair Display", Georgia, serif);
-  font-style: italic;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--gold);
-  padding: 0.35rem 0.7rem;
-  background: color-mix(in srgb, var(--b1) 70%, transparent);
-  backdrop-filter: blur(10px) saturate(140%);
-  -webkit-backdrop-filter: blur(10px) saturate(140%);
-  border: 1px solid color-mix(in srgb, var(--gold) 30%, transparent);
-  border-radius: 999px;
-  letter-spacing: 0.08em;
-  pointer-events: none;
-}
-.pp-split-gcb--reverse .pp-split-gcb__media::after {
-  content: "02";
-  left: auto;
-  right: 1rem;
-}
-.pp-split-gcb__media:hover {
-  border-color: color-mix(in srgb, var(--gold) 55%, transparent);
-  transform: translateY(-4px);
-  box-shadow:
-    0 32px 64px rgba(0, 0, 0, 0.6),
-    0 0 0 1px color-mix(in srgb, var(--gold) 22%, transparent),
-    inset 0 1px 0 color-mix(in srgb, var(--gold) 14%, transparent);
-}
-.pp-split-gcb__media img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  filter: saturate(1.08) contrast(1.02);
-  transition: transform 0.85s var(--ease-spring), filter 0.6s var(--ease-spring);
-}
-.pp-split-gcb__media:hover img {
-  transform: scale(1.06);
-  filter: saturate(1.16) contrast(1.04);
 }
 
-/* Espresso-trio dot accent between paragraphs in concept body */
-.pp-split-gcb__body .pp-text-gcb__body p + p {
+.pp-gcb-concept-photo {
   position: relative;
-  padding-top: 0.4rem;
+  width: 100%;
 }
-.pp-split-gcb__body .pp-text-gcb__body p + p::before {
-  content: "";
+
+.pp-gcb-concept-photo .pp-image-container-shared {
+  aspect-ratio: 1.25 / 1 !important; /* Tỉ lệ vuông vắn, editorial hơn */
+  border: 1px solid var(--bd) !important;
+  box-shadow: var(--shadow-main) !important;
+  overflow: visible !important;
+}
+
+/* Bo góc chéo mềm mại cho ảnh xào lửa Á */
+.pp-gcb-concept-photo .pp-image-container-shared,
+.pp-gcb-concept-photo .pp-image-container-shared img {
+  border-radius: clamp(3rem, 6vw, 5rem) 0 clamp(3rem, 6vw, 5rem) 0 !important;
+}
+
+.pp-gcb-concept-photo:hover .pp-image-container-shared img {
+  transform: scale(1.03) !important;
+}
+
+/* Đường chỉ trang trí chạy dọc mép ảnh trái */
+.pp-gcb-vertical-line {
+  display: none;
+}
+
+@media (min-width: 992px) {
+  .pp-gcb-vertical-line {
+    display: block;
+    position: absolute;
+    top: -2rem;
+    left: -2rem;
+    bottom: -2rem;
+    width: 1px;
+    background: linear-gradient(to bottom, 
+      color-mix(in srgb, var(--gold) 5%, transparent),
+      var(--gold),
+      color-mix(in srgb, var(--gold) 5%, transparent)
+    );
+    z-index: 1;
+  }
+}
+
+/* Khối chữ bên phải trong hộp Niken mờ sắc sảo */
+.pp-gcb-concept-text {
+  position: relative;
+  z-index: 3;
+}
+
+.pp-gcb-niken-card {
+  background: color-mix(in srgb, var(--b2) 78%, black) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid color-mix(in srgb, var(--gold) 12%, var(--bd)) !important;
+  border-radius: 16px !important;
+  padding: 2.25rem 1.75rem;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45) !important;
+  transition: border-color 0.4s var(--ease-spring), box-shadow 0.4s var(--ease-spring) !important;
+  position: relative;
+}
+
+.gcb-niken-corner {
   position: absolute;
-  top: -0.3rem;
-  left: 0;
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: var(--gold);
-  box-shadow:
-    8px 0 0 color-mix(in srgb, var(--gold) 60%, transparent),
-    16px 0 0 color-mix(in srgb, var(--gold) 30%, transparent),
-    0 0 8px color-mix(in srgb, var(--gold) 40%, transparent);
+  width: 12px;
+  height: 12px;
+  border: 1px solid var(--gold);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.gcb-niken-corner--tl { top: 8px; left: 8px; border-right: 0; border-bottom: 0; }
+.gcb-niken-corner--tr { top: 8px; right: 8px; border-left: 0; border-bottom: 0; }
+.gcb-niken-corner--bl { bottom: 8px; left: 8px; border-right: 0; border-top: 0; }
+.gcb-niken-corner--br { bottom: 8px; right: 8px; border-left: 0; border-top: 0; }
+
+.gcb-concept-fire-icon {
+  color: var(--gold);
+  width: 24px;
+  height: 24px;
+  margin-bottom: 1rem;
+  opacity: 0.85;
+}
+
+.gcb-concept-fire-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+@media (min-width: 576px) {
+  .pp-gcb-niken-card {
+    padding: 3rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .pp-gcb-niken-card {
+    margin-left: -4rem; /* Đè đè nhẹ lên ảnh bếp Á tạo chiều sâu 3D */
+    border-radius: 20px !important;
+  }
+}
+
+.pp-gcb-niken-card:hover {
+  border-color: color-mix(in srgb, var(--gold) 45%, var(--bd)) !important;
+  box-shadow: 0 16px 50px color-mix(in srgb, var(--gold) 6%, transparent) !important;
+}
+
+.pp-gcb-concept-tag {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--gold);
 }

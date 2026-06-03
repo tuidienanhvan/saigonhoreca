@@ -1,6 +1,6 @@
-<?php
+﻿<?php
 /**
- * Project Pillar — du-nam-an-an
+ * Project Pillar â€” du-nam-an-an
  * Section #5: with_gallery
  * @package SaigonHoreca
  */
@@ -11,14 +11,15 @@ $uri = get_template_directory_uri();
   <div class="pp__container">
     <div class="pp-text pp-text--center">
       <span class="pp-text__divider pp-text__divider--center" aria-hidden="true"></span>
-      <h2 class="pp-text__title"><?php echo esc_html__('Nam An & Saigon Horeca – Sự gặp nhau của hai chuẩn mực', 'saigonhoreca'); ?></h2>
+      <h2 class="pp-text__title"><?php echo esc_html__('Nam An & Saigon Horeca â€“ Sá»± gáº·p nhau cá»§a hai chuáº©n má»±c', 'saigonhoreca'); ?></h2>
       <div class="pp-text__body">
-      <p><?php echo esc_html__('Dự án Nam An là minh chứng rõ nét cho cách Saigon Horeca đồng hành cùng chủ đầu tư từ triết lý đến giải pháp. Khi Nam An đặt ra yêu cầu cao về chất lượng bữa ăn và sự an toàn cho người cao tuổi, Saigon Horeca đáp lại bằng một hệ thống bếp được thiết kế chỉn chu, vận hành bền bỉ và hướng đến giá trị lâu dài.', 'saigonhoreca'); ?></p>
-      <p><?php echo esc_html__('Nam An – Nursing Home Kitchen không chỉ là một dự án bếp công nghiệp, mà là nơi kỹ thuật, vận hành và sự thấu cảm cùng gặp nhau – đúng với tinh thần mà Saigon Horeca luôn theo đuổi trong mỗi công trình.', 'saigonhoreca'); ?></p>
+      <p><?php echo esc_html__('Dá»± Ã¡n Nam An lÃ  minh chá»©ng rÃµ nÃ©t cho cÃ¡ch Saigon Horeca Ä‘á»“ng hÃ nh cÃ¹ng chá»§ Ä‘áº§u tÆ° tá»« triáº¿t lÃ½ Ä‘áº¿n giáº£i phÃ¡p. Khi Nam An Ä‘áº·t ra yÃªu cáº§u cao vá» cháº¥t lÆ°á»£ng bá»¯a Äƒn vÃ  sá»± an toÃ n cho ngÆ°á»i cao tuá»•i, Saigon Horeca Ä‘Ã¡p láº¡i báº±ng má»™t há»‡ thá»‘ng báº¿p Ä‘Æ°á»£c thiáº¿t káº¿ chá»‰n chu, váº­n hÃ nh bá»n bá»‰ vÃ  hÆ°á»›ng Ä‘áº¿n giÃ¡ trá»‹ lÃ¢u dÃ i.', 'saigonhoreca'); ?></p>
+      <p><?php echo esc_html__('Nam An â€“ Nursing Home Kitchen khÃ´ng chá»‰ lÃ  má»™t dá»± Ã¡n báº¿p cÃ´ng nghiá»‡p, mÃ  lÃ  nÆ¡i ká»¹ thuáº­t, váº­n hÃ nh vÃ  sá»± tháº¥u cáº£m cÃ¹ng gáº·p nhau â€“ Ä‘Ãºng vá»›i tinh tháº§n mÃ  Saigon Horeca luÃ´n theo Ä‘uá»•i trong má»—i cÃ´ng trÃ¬nh.', 'saigonhoreca'); ?></p>
       </div>
     </div>
     <div class="pp-gallery pp-gallery--cols-1" style="margin-top:2rem;">
-      <div class="pp-gallery__item"><img src="<?php echo sgh_img('2023/12/bi-quyet-tao-thuc-don-nha-hang.jpg'); ?>" alt="<?php echo esc_attr__('Thiết bị bếp công nghiệp Saigon Horeca', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="1366" height="768"></div>
+      <div class="pp-gallery__item"><img src="<?php echo sgh_img('2023/12/bi-quyet-tao-thuc-don-nha-hang.jpg'); ?>" alt="<?php echo esc_attr__('Thiáº¿t bá»‹ báº¿p cÃ´ng nghiá»‡p Saigon Horeca', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="1366" height="768"></div>
     </div>
   </div>
 </section>
+

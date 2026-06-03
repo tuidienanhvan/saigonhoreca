@@ -10,6 +10,32 @@ $title = $args['title'] ?? 'Câu Hỏi Thường Gặp';
 $bg_dark = ($args['bg'] ?? '') === 'dark';
 
 if (empty($items)) return;
+
+// Register FAQPage Schema
+$faq_schema_items = [];
+foreach ($items as $item) {
+    $faq_schema_items[] = [
+        '@type'          => 'Question',
+        'name'           => $item['q'],
+        'acceptedAnswer' => [
+            '@type' => 'Answer',
+            'text'  => wp_strip_all_tags($item['a']),
+        ],
+    ];
+}
+$faq_schema = [
+    '@context'   => 'https://schema.org',
+    '@type'      => 'FAQPage',
+    'mainEntity' => $faq_schema_items,
+];
+
+if (class_exists('SGH_SEO_Schema')) {
+    SGH_SEO_Schema::register('faq_premium', $faq_schema);
+} else {
+    add_action('wp_footer', function() use ($faq_schema) {
+        echo '<script type="application/ld+json">' . wp_json_encode($faq_schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '</script>' . "\n";
+    }, 99);
+}
 ?>
 
 <section class="sh-faq-premium <?php echo $bg_dark ? 'sh-faq-premium--dark' : ''; ?>">

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Saigon Horeca 1.0\n"
 "Report-Msgid-Bugs-To: https://saigonhoreca.vn\n"
-"POT-Creation-Date: 2026-05-22 13:35+0000\n"
-"PO-Revision-Date: 2026-05-22 13:35+0000\n"
+"POT-Creation-Date: 2026-05-30 04:22+0000\n"
+"PO-Revision-Date: 2026-05-30 04:22+0000\n"
 "Last-Translator: Saigon Horeca Team <contact@saigonhoreca.com>\n"
 "Language-Team: English <contact@saigonhoreca.com>\n"
 "Language: en_US\n"
@@ -1247,7 +1247,7 @@ msgstr "Within that overall design, the kitchen – bar – bakery system execut
 
 #: pillar-content
 msgid "Bếp bánh và bếp nấu được bố trí thành hai khu vực riêng biệt nhưng nằm sát nhau, thuận tiện cho việc vận hành. Nhờ cách chia tách này, mùi vị giữa các món ăn và bánh ngọt không bị pha lẫn, giúp giữ được chất lượng thành phẩm tốt nhất."
-msgstr "The bakery and cooking kitchen are arranged as two separate but adjacent zones, convenient for operations. Thanks to this separation, aromas between dishes and pastries do not mix, helping maintain the best product quality."
+msgstr "The pastry kitchen and the main cooking kitchen are arranged as two separate yet adjacent areas for operational convenience. Thanks to this separation, the flavors of dishes and sweet pastries do not mingle, keeping the highest quality of the finished products."
 
 #: pillar-content
 msgid "Đồng thời, chức năng của từng khu được phân chia rõ ràng: khu bếp nấu tập trung vào chế biến món mặn, còn khu bếp bánh được trang bị thiết bị chuyên dụng để làm các loại bánh ngọt và tráng miệng."
@@ -2743,15 +2743,15 @@ msgstr "The Cheezy Time"
 
 #: pillar-content
 msgid "Khi cảm hứng chợ nổi trở thành linh hồn của một công trình"
-msgstr "When floating market inspiration becomes the soul of a project"
+msgstr "When floating market inspiration becomes the soul of an architectural masterpiece"
 
 #: pillar-content
 msgid "Giữa lòng Cần Thơ – vùng đất đang chuyển mình mạnh mẽ – The Cheezy Time chọn một con đường rất riêng. Không chạy theo sự hào nhoáng, nhà hàng lấy cảm hứng từ chợ nổi miền Tây – nơi mọi giao thương, câu chuyện và kết nối đều bắt đầu từ dòng nước."
-msgstr "In the heart of Can Tho – a land in vigorous transformation – The Cheezy Time chooses a very distinct path. Not chasing glamour, the restaurant draws inspiration from Mekong Delta floating markets – where all trade, stories, and connections begin with the water."
+msgstr "In the heart of Can Tho – a land undergoing powerful transformation – The Cheezy Time chooses a unique path. Instead of chasing superficial glamor, the restaurant draws inspiration from the Western floating market – a place where all trades, stories, and connections begin from the water."
 
 #: pillar-content
 msgid "Một khoảnh khắc ngắn trên bàn ăn, một guồng quay dài phía sau cánh cửa bếp"
-msgstr "A brief moment at the table, a long rhythm behind the kitchen door"
+msgstr "A brief moment at the table, a long rotation behind the kitchen door"
 
 #: pillar-content
 msgid "Ở đó, người ta không cần bảng hiệu.Chỉ một cây bẹo, một ánh mắt, một tiếng gọi – thế là đủ để hiểu nhau."
@@ -2759,7 +2759,7 @@ msgstr "There, no signs are needed. Just a pole, a glance, a call - and that is 
 
 #: pillar-content
 msgid "Chợ nổi không ồn ào khoe sắc. Nó lặng lẽ giữ lại cái hồn của miền sông nước: sự hài hòa với thiên nhiên, sự chân thành trong cách con người đối đãi với nhau. Và chính tinh thần ấy đã trở thành nền tảng cho toàn bộ concept của The Cheezy Time – từ không gian kiến trúc, vật liệu, cho đến trải nghiệm ẩm thực."
-msgstr "Floating markets do not loudly flaunt. They quietly preserve the soul of the river region: harmony with nature, sincerity in how people treat each other. And that very spirit became the foundation for The Cheezy Time entire concept - from architectural space and materials to the dining experience."
+msgstr "The floating market is not loud and showy. It quietly preserves the soul of the riverland: harmony with nature, and sincerity in how people treat each other. And it is this very spirit that became the foundation for the entire concept of The Cheezy Time – from architectural space and materials to the culinary experience."
 
 #: pillar-content
 msgid "Thay vì tái hiện chợ nổi một cách trực diện, The Cheezy Time chọn cách kể câu chuyện miền Tây thông qua vật liệu – thứ chạm đến cảm xúc một cách âm thầm nhưng lâu dài."
@@ -2767,7 +2767,7 @@ msgstr "Rather than directly recreating floating markets, The Cheezy Time tells 
 
 #: pillar-content
 msgid "Mỗi chất liệu tại The Cheezy Time không chỉ mang chức năng thẩm mỹ. Chúng cùng nhau tạo nên một cuộc đối thoại giữa văn hoá, không gian và cảm xúc, nơi thực khách không chỉ nhìn thấy hay chạm vào, mà còn cảm nhận được tinh thần miền sông nước bằng nhiều giác quan khác nhau."
-msgstr "Each material at The Cheezy Time serves more than an aesthetic function. Together they create a dialogue between culture, space, and emotion, where diners not only see or touch, but also feel the river spirit through multiple senses."
+msgstr "Each material at The Cheezy Time serves more than just an aesthetic function. Together, they create a dialogue among culture, space, and emotion, where diners do not just see or touch, but feel the riverland spirit through multiple senses."
 
 #: pillar-content
 msgid "Điều đặc biệt của concept này nằm ở chỗ: nó không dừng lại ở khu vực phục vụ khách."
@@ -2783,7 +2783,7 @@ msgstr "It can be said that at The Cheezy Time, the concept is not just what din
 
 #: pillar-content
 msgid "Chính từ triết lý đó, giải pháp bếp công nghiệp tại The Cheezy Time không được xem là một hạng mục kỹ thuật đơn thuần, mà là cấu trúc nâng đỡ cho toàn bộ câu chuyện văn hoá và trải nghiệm ẩm thực mà nhà hàng muốn kể."
-msgstr "From that philosophy, the industrial kitchen solution at The Cheezy Time is not seen as a mere technical item, but as the supporting structure for the entire cultural story and dining experience the restaurant wants to tell."
+msgstr "From that very philosophy, the commercial kitchen solution at The Cheezy Time is not viewed as a mere technical component, but as the supporting framework for the entire cultural story and culinary experience the restaurant wishes to convey."
 
 #: pillar-content
 msgid "Một món ăn được đặt xuống bàn chỉ trong vài phút.Nhưng để khoảnh khắc ấy trọn vẹn, phía sau là cả một hệ thống vận hành không được phép sai nhịp."
@@ -2791,11 +2791,11 @@ msgstr "A dish is placed on the table in just minutes. But for that moment to be
 
 #: pillar-content
 msgid "Là căn bếp luôn đỏ lửa, nơi từng chiếc bánh pizza được canh đúng nhiệt, từng phần mỳ đút lò phải ra đúng thời điểm để giữ trọn hương vị. Là sự phối hợp thầm lặng giữa bếp và đội ngũ phục vụ – chính xác, liền mạch, không một nhịp thừa. Và là nhịp làm việc liên tục, kéo dài từ trưa đến tối, nơi mọi chi tiết đều phải được tính toán từ trước."
-msgstr "It is the kitchen always fired up, where each pizza is temperature-monitored, each baked pasta dish must come out at the right moment to preserve full flavor. It is the quiet coordination between kitchen and service team - precise, seamless, not a beat wasted. And it is the continuous working rhythm, stretching from noon to evening, where every detail must be planned in advance."
+msgstr "It is the kitchen that is always fiery hot, where each pizza is baked at the perfect temperature and every baked pasta dish must come out at the exact right moment to retain its full flavor. It is the silent cooperation between the kitchen and service staff – precise, seamless, without a single wasted move. And it is the continuous working pace, stretching from noon till night, where every detail must be calculated in advance."
 
 #: pillar-content
 msgid "Tại The Cheezy Time, trải nghiệm khách hàng không bắt đầu từ bàn ăn. Nó bắt đầu từ cách căn bếp được hình thành, tổ chức và vận hành."
-msgstr "At The Cheezy Time, the customer experience does not begin at the table. It begins with how the kitchen is formed, organized, and operated."
+msgstr "At The Cheezy Time, the customer experience does not start at the dining table. It begins with the way the kitchen is shaped, organized, and operated."
 
 #: pillar-content
 msgid "Khi concept có chiều sâu, căn bếp không thể là phần phụ"
@@ -2839,11 +2839,11 @@ msgstr "With The Cheezy Time project, Saigon Horeca did not just complete a chec
 
 #: pillar-content
 msgid "Trong cấu trúc bếp, khu bếp Âu và khu bếp pizza được tổ chức để vừa tách biệt về nhiệt và công năng, vừa kết nối mạch lạc trong luồng vận hành chung. Cấu hình thiết bị được lựa chọn nhằm đảm bảo sự ổn định và tính linh hoạt, bao gồm:"
-msgstr "In the kitchen structure, the European kitchen and pizza kitchen zones are organized to be separate in heat and function, yet coherently connected in the overall operational flow. Equipment configuration was selected to ensure stability and flexibility, including:"
+msgstr "In the kitchen structure, the European kitchen and the pizza kitchen areas are organized to be both separate in heat and function, yet coherently connected in the general operating flow. The equipment configuration is selected to ensure stability and flexibility, including:"
 
 #: pillar-content
 msgid "Lò pizza lò gạch không chỉ là một thiết bị nấu. Đây là lựa chọn mang tính định hướng trải nghiệm, giúp những chiếc pizza và món mỳ đút lò tại The Cheezy Time có được hương khói tự nhiên, lớp vỏ đặc trưng và tinh thần ẩm thực Ý nguyên bản."
-msgstr "The brick pizza oven is not just a cooking appliance. This is an experience-oriented choice, giving pizzas and baked pasta dishes at The Cheezy Time their natural smoky aroma, distinctive crust, and the authentic spirit of Italian cuisine."
+msgstr "The brick pizza oven is more than just a cooking appliance. It is an experience-oriented choice, helping the pizzas and baked pasta dishes at The Cheezy Time achieve a natural smoky aroma, a signature crust, and the authentic spirit of Italian cuisine."
 
 #: pillar-content
 msgid "Trong tổng thể concept, lò gạch đóng vai trò như \"linh hồn\" của khu bếp, nơi hương vị và cảm xúc giao thoa rõ rệt nhất."
@@ -2867,15 +2867,15 @@ msgstr "As a turnkey consulting-design-construction unit for industrial kitchen 
 
 #: pillar-content
 msgid "Thay vì tái hiện chợ nổi một cách trực diện, The Cheezy Time chọn cách kể câu chuyện miền Tây thông qua vật liệu – thứ chạm đến cảm xúc một cách âm thầm nhưng lâu dài. Ánh inox copper vàng đồng mang sắc thái của thời gian, gợi nhắc đến những giá trị được gìn giữ qua nhiều thế hệ. Chất liệu gỗ đậm màu đất phù sa tạo cảm giác trầm lắng, mộc mạc, như một ký ức quen thuộc giữa lòng thành phố đang chuyển mình. Những mảng sỏi polymer xuất hiện như dấu vết của mặt đất, của từng bước chân đi qua, góp phần hoàn thiện hình ảnh \"dòng chảy phù sa\" được bồi tụ theo thời gian."
-msgstr "Rather than directly recreating floating markets, The Cheezy Time tells the Mekong Delta story through materials - elements that touch emotions quietly yet lastingly. Copper-toned stainless steel carries the patina of time, evoking values preserved across generations. Dark alluvial wood creates a feeling of depth and rusticity, like a familiar memory in the heart of a transforming city. Polymer pebble surfaces appear as traces of the earth, completing the image of an alluvial flow accumulated over time."
+msgstr "Instead of replicating the floating market directly, The Cheezy Time chooses to tell the Western story through materials – elements that touch emotions silently yet enduringly. The metallic gleam of copper stainless steel carries the shades of time, evoking values preserved across generations. Richly colored wood representing alluvial soil creates a deep, rustic feel, like a familiar memory in the heart of a transforming city. Patches of polymer gravel appear like traces of the earth, of every step passing through, completing the image of an "
 
 #: pillar-content
 msgid "Điều đặc biệt của concept này nằm ở chỗ: nó không dừng lại ở khu vực phục vụ khách. Tinh thần \"dòng chảy\" được kéo dài đến cả những không gian phía sau – nơi ít được nhìn thấy nhưng lại quyết định nhịp sống của toàn bộ nhà hàng. The Cheezy Time được xây dựng như một concept \"sống\", nơi không gian và con người cùng vận hành trong một hệ thống liền mạch, tương tự như cách chợ nổi đã tồn tại và phát triển qua nhiều thế hệ."
-msgstr "What makes this concept special: it does not stop at the customer-facing area. The flow spirit extends to the spaces behind - rarely seen but decisive for the entire restaurant rhythm. The Cheezy Time is built as a living concept, where space and people operate in a seamless system, similar to how floating markets have existed and evolved across generations."
+msgstr "The unique aspect of this concept lies in the fact that it does not stop at the guest service area. The spirit of "
 
 #: pillar-content
 msgid "Một concept lấy cảm hứng từ chợ nổi không thể đi cùng một tư duy thiết kế cứng nhắc. Nó đòi hỏi sự linh hoạt, có trật tự nhưng không gò bó. Và chính điều đó đặt ra yêu cầu rất cao cho căn bếp phía sau – nơi phải đủ kỷ luật để vận hành hiệu quả, nhưng cũng đủ \"mềm\" để thích nghi với nhịp sống liên tục của nhà hàng."
-msgstr "A concept inspired by floating markets cannot go with a rigid design mindset. It demands flexibility, orderly but not constraining. And that places very high requirements on the kitchen behind - which must be disciplined enough to operate efficiently, yet soft enough to adapt to the restaurant continuous rhythm."
+msgstr "A concept inspired by the floating market cannot go hand-in-hand with rigid design thinking. It demands flexibility, orderly yet unconstrained. And this puts very high demands on the kitchen behind – a place that must be disciplined enough to operate efficiently, but "
 
 #: pillar-content
 msgid "Từ concept đó, Saigon Horeca tiến hành tư vấn bố trí layout bếp và khu bar, dựa trên nhịp vận hành thực tế của nhà hàng."
@@ -3207,7 +3207,7 @@ msgstr "Bếp công nghiệp The Royal được xây dựng theo triết lý %1$
 
 #: pillar-content
 msgid "\"Bếp là trái tim của nhà hàng – nơi khởi nguồn cho mọi cảm xúc thực\""
-msgstr "\"Bếp là trái tim của nhà hàng – nơi khởi nguồn cho mọi cảm xúc thực\""
+msgstr ""
 
 #: pillar-content
 msgid "Mọi khu vực trong bếp – từ sơ chế, chế biến, nấu nướng đến hoàn thiện món – đều được %1$s, tối ưu theo dòng chảy một chiều, giúp tiết kiệm thời gian, giảm thiểu sai sót và tạo nên nhịp làm việc nhịp nhàng, chính xác đến từng thao tác."
@@ -3264,3 +3264,2027 @@ msgstr "Sản phẩm cao cấp của Yuzu Omakase"
 #: pillar-content
 msgid "Không gian bàn ăn Yuzu Omakase"
 msgstr "Không gian bàn ăn Yuzu Omakase"
+
+#: pillar-content
+msgid "Phong cách thiết kế hiện đại và tinh tế của Bling Bling Club không chỉ thể hiện qua việc lựa chọn nội thất mà còn qua những chi tiết nhỏ nhất, từ hệ thống ánh sáng đến màu sắc và bố trí không gian."
+msgstr "Phong cách thiết kế hiện đại và tinh tế của Bling Bling Club không chỉ thể hiện qua việc lựa chọn nội thất mà còn qua những chi tiết nhỏ nhất, từ hệ thống ánh sáng đến màu sắc và bố trí không gian."
+
+#: pillar-content
+msgid "Sự hài hòa giữa ý tưởng sáng tạo và thực thi chuyên nghiệp từ Sài Gòn Horeca đã tạo ra một không gian cao cấp, nơi mà khách hàng trải nghiệm sự hòa hợp hoàn hảo giữa thiết kế và chất lượng thiết bị inox 304 vững chắc."
+msgstr "Sự hài hòa giữa ý tưởng sáng tạo và thực thi chuyên nghiệp từ Sài Gòn Horeca đã tạo ra một không gian cao cấp, nơi mà khách hàng trải nghiệm sự hòa hợp hoàn hảo giữa thiết kế và chất lượng thiết bị inox 304 vững chắc."
+
+#: pillar-content
+msgid "Bling Bling Club là một biểu tượng giải trí về đêm mới được xây dựng và bắt đầu hoạt động vào cuối năm 2023, tọa lạc tại trung tâm thảo điền đầy phong cách."
+msgstr "Bling Bling Club là một biểu tượng giải trí về đêm mới được xây dựng và bắt đầu hoạt động vào cuối năm 2023, tọa lạc tại trung tâm thảo điền đầy phong cách."
+
+#: pillar-content
+msgid "Bling Bling Club tự hào sở hữu không gian lớn nhất và được thiết kế tỉ mỉ nhất ở khu vực Thảo Điền. Bầu không khí của câu lạc bộ được tạo ra theo phong cách hiện đại, kết hợp hài hòa giữa hệ thống ánh sáng và âm thanh hiện đại bậc nhất."
+msgstr "Bling Bling Club tự hào sở hữu không gian lớn nhất và được thiết kế tỉ mỉ nhất ở khu vực Thảo Điền. Bầu không khí của câu lạc bộ được tạo ra theo phong cách hiện đại, kết hợp hài hòa giữa hệ thống ánh sáng và âm thanh hiện đại bậc nhất."
+
+#: pillar-content
+msgid "Tầng trệt là khu vực chính của câu lạc bộ, với một sàn nhảy rộng lớn và hệ thống âm thanh cao cấp. Tầng hai là khu vực VIP, mang lại sự riêng tư, sang trọng và sự tinh tế vượt trội."
+msgstr "Tầng trệt là khu vực chính của câu lạc bộ, với một sàn nhảy rộng lớn và hệ thống âm thanh cao cấp. Tầng hai là khu vực VIP, mang lại sự riêng tư, sang trọng và sự tinh tế vượt trội."
+
+#: pillar-content
+msgid "Bầu không khí quầy bar tinh tế và sang trọng tại Heiwa Sushi - Saigon Horeca"
+msgstr "Bầu không khí quầy bar tinh tế và sang trọng tại Heiwa Sushi - Saigon Horeca"
+
+#: pillar-content
+msgid "KHÔNG GIAN TRẢI NGHIỆM"
+msgstr "KHÔNG GIAN TRẢI NGHIỆM"
+
+#: pillar-content
+msgid "Bầu Không Khí Quầy Bar Tinh Tế & Sang Trọng"
+msgstr "Bầu Không Khí Quầy Bar Tinh Tế & Sang Trọng"
+
+#: pillar-content
+msgid "Quầy bar của Heiwa Sushi được quy hoạch tinh tế ngay cạnh gian bếp mở biểu diễn, mang đến một không gian ẩm thực sang trọng, thanh tịnh nhưng vô cùng gần gũi. Đây là nơi thực khách có thể hoàn toàn thả lỏng tâm trí, nhâm nhi những ly sake thượng hạng và thong thả thưởng thức từng món sushi tươi ngon."
+msgstr "Quầy bar của Heiwa Sushi được quy hoạch tinh tế ngay cạnh gian bếp mở biểu diễn, mang đến một không gian ẩm thực sang trọng, thanh tịnh nhưng vô cùng gần gũi. Đây là nơi thực khách có thể hoàn toàn thả lỏng tâm trí, nhâm nhi những ly sake thượng hạng và thong thả thưởng thức từng món sushi tươi ngon."
+
+#: pillar-content
+msgid "Quầy bar được chế tác thủ công hoàn toàn từ các loại gỗ tự nhiên cao cấp với tone màu trầm ấm. Kết hợp cùng mặt kính cường lực siêu trong suốt chạy dọc viền và ánh đèn vàng hắt dịu nhẹ, tạo nên nhịp điệu tĩnh lặng của nghệ thuật Wabi-Sabi."
+msgstr "Quầy bar được chế tác thủ công hoàn toàn từ các loại gỗ tự nhiên cao cấp với tone màu trầm ấm. Kết hợp cùng mặt kính cường lực siêu trong suốt chạy dọc viền và ánh đèn vàng hắt dịu nhẹ, tạo nên nhịp điệu tĩnh lặng của nghệ thuật Wabi-Sabi."
+
+#: pillar-content
+msgid "Đội ngũ thiết kế nội thất của Saigon Horeca đã khéo léo tuyển chọn vật liệu cao cấp và phối hợp tay nghề thủ công điêu luyện để mang đến một quầy bar không chỉ duy mỹ về mặt nghệ thuật mà còn đạt tiêu chuẩn công thái học tiện nghi tối đa cho thực khách."
+msgstr "Đội ngũ thiết kế nội thất của Saigon Horeca đã khéo léo tuyển chọn vật liệu cao cấp và phối hợp tay nghề thủ công điêu luyện để mang đến một quầy bar không chỉ duy mỹ về mặt nghệ thuật mà còn đạt tiêu chuẩn công thái học tiện nghi tối đa cho thực khách."
+
+#: pillar-content
+msgid "ĐỒNG HÀNH PHÁT TRIỂN"
+msgstr "ĐỒNG HÀNH PHÁT TRIỂN"
+
+#: pillar-content
+msgid "Kiến Tạo Không Gian Bếp Omakase Đẳng Cấp Cho Riêng Bạn"
+msgstr "Kiến Tạo Không Gian Bếp Omakase Đẳng Cấp Cho Riêng Bạn"
+
+#: pillar-content
+msgid "Bạn đang lên kế hoạch cho một dự án nhà hàng Omakase Nhật Bản sang trọng hay một không gian ẩm thực đỉnh cao? Hãy để Saigon Horeca đồng hành biến ý tưởng của bạn thành một thực tại vận hành hoàn mỹ nhất."
+msgstr "Bạn đang lên kế hoạch cho một dự án nhà hàng Omakase Nhật Bản sang trọng hay một không gian ẩm thực đỉnh cao? Hãy để Saigon Horeca đồng hành biến ý tưởng của bạn thành một thực tại vận hành hoàn mỹ nhất."
+
+#: pillar-content
+msgid "Liên Hệ Tư Vấn Ngay"
+msgstr "Liên Hệ Tư Vấn Ngay"
+
+#: pillar-content
+msgid "Toàn cảnh không gian quầy bar và bếp Omakase đẳng cấp tại Heiwa Sushi - Saigon Horeca"
+msgstr "Toàn cảnh không gian quầy bar và bếp Omakase đẳng cấp tại Heiwa Sushi - Saigon Horeca"
+
+#: pillar-content
+msgid "Hệ thống thiết bị tủ đông Hoshizaki và bàn inox cao cấp - Saigon Horeca"
+msgstr "Hệ thống thiết bị tủ đông Hoshizaki và bàn inox cao cấp - Saigon Horeca"
+
+#: pillar-content
+msgid "KỸ THUẬT VẬN HÀNH"
+msgstr "KỸ THUẬT VẬN HÀNH"
+
+#: pillar-content
+msgid "Hệ Thống Thiết Bị Hoshizaki & Cơ Khí Inox Cao Cấp"
+msgstr "Hệ Thống Thiết Bị Hoshizaki & Cơ Khí Inox Cao Cấp"
+
+#: pillar-content
+msgid "Trái tim vận hành của bếp Heiwa Sushi nằm ở các giải pháp thiết bị lạnh chất lượng cao từ thương hiệu Hoshizaki Nhật Bản. Tủ đông và tủ mát bảo quản nguyên liệu tươi sống được tính toán vị trí lắp đặt chính xác, tối ưu hóa tối đa lối đi và tầm với của đầu bếp trong giờ cao điểm."
+msgstr "Trái tim vận hành của bếp Heiwa Sushi nằm ở các giải pháp thiết bị lạnh chất lượng cao từ thương hiệu Hoshizaki Nhật Bản. Tủ đông và tủ mát bảo quản nguyên liệu tươi sống được tính toán vị trí lắp đặt chính xác, tối ưu hóa tối đa lối đi và tầm với của đầu bếp trong giờ cao điểm."
+
+#: pillar-content
+msgid "Hệ thống giá treo tường, chậu rửa, bàn inox 304 cao cấp do Saigon Horeca gia công sản xuất riêng cho dự án đều đạt tiêu chuẩn cơ khí hoàn mỹ. Mỗi góc chấn ép, vết hàn khí trơ đều được xử lý mài bóng mịn, triệt tiêu khe hở tích tụ vi khuẩn để đảm bảo tiêu chí Omakase Fresh khắt khe."
+msgstr "Hệ thống giá treo tường, chậu rửa, bàn inox 304 cao cấp do Saigon Horeca gia công sản xuất riêng cho dự án đều đạt tiêu chuẩn cơ khí hoàn mỹ. Mỗi góc chấn ép, vết hàn khí trơ đều được xử lý mài bóng mịn, triệt tiêu khe hở tích tụ vi khuẩn để đảm bảo tiêu chí Omakase Fresh khắt khe."
+
+#: pillar-content
+msgid "Tủ Lạnh Hoshizaki"
+msgstr "Tủ Lạnh Hoshizaki"
+
+#: pillar-content
+msgid "Bảo quản hải sản sashimi ở nhiệt độ tối ưu nhất."
+msgstr "Bảo quản hải sản sashimi ở nhiệt độ tối ưu nhất."
+
+#: pillar-content
+msgid "Inox 304 Chuẩn Sạch"
+msgstr "Inox 304 Chuẩn Sạch"
+
+#: pillar-content
+msgid "Kháng khuẩn tuyệt đối, chống gỉ sét và dễ vệ sinh."
+msgstr "Kháng khuẩn tuyệt đối, chống gỉ sét và dễ vệ sinh."
+
+#: pillar-content
+msgid "Giá Treo Tiện Lợi"
+msgstr "Giá Treo Tiện Lợi"
+
+#: pillar-content
+msgid "Tối ưu hóa không gian, tăng diện tích thao tác thực tế."
+msgstr "Tối ưu hóa không gian, tăng diện tích thao tác thực tế."
+
+#: pillar-content
+msgid "Hệ Chậu Rửa Ergonomics"
+msgstr "Hệ Chậu Rửa Ergonomics"
+
+#: pillar-content
+msgid "Thiết kế sâu lòng thông minh ngăn văng nước bẩn ra ngoài."
+msgstr "Thiết kế sâu lòng thông minh ngăn văng nước bẩn ra ngoài."
+
+#: pillar-content
+msgid "PROJECT PILLAR • OMAKASE EXPERTISE"
+msgstr "PROJECT PILLAR • OMAKASE EXPERTISE"
+
+#: pillar-content
+msgid "Kiến tạo không gian ẩm thực Nhật Bản đích thực, nơi tinh hoa ẩm thực truyền thống hội tụ cùng giải pháp vận hành bếp công nghiệp đỉnh cao."
+msgstr "Kiến tạo không gian ẩm thực Nhật Bản đích thực, nơi tinh hoa ẩm thực truyền thống hội tụ cùng giải pháp vận hành bếp công nghiệp đỉnh cao."
+
+#: pillar-content
+msgid "BỐI CẢNH DỰ ÁN"
+msgstr "BỐI CẢNH DỰ ÁN"
+
+#: pillar-content
+msgid "Không Gian Nghệ Thuật Omakase Đích Thực"
+msgstr "Không Gian Nghệ Thuật Omakase Đích Thực"
+
+#: pillar-content
+msgid "“Nơi sự tĩnh lặng của kiến trúc Zen Nhật Bản gặp gỡ sự cầu kỳ của nghệ thuật ẩm thực Omakase đỉnh cao.”"
+msgstr "“Nơi sự tĩnh lặng của kiến trúc Zen Nhật Bản gặp gỡ sự cầu kỳ của nghệ thuật ẩm thực Omakase đỉnh cao.”"
+
+#: pillar-content
+msgid "Heiwa Sushi Omakase (Số 2 Phan Văn Đáng, Quận 2, HCMC) là điểm đến đỉnh cao cho những tín đồ sành ăn yêu thích ẩm thực Nhật Bản đích thực tại Sài Gòn. Không gian nội thất của Heiwa được thiết kế tỉ mỉ, kiến tạo sự cân bằng hoàn mỹ giữa văn hóa truyền thống Wabi-Sabi và nhịp thở hiện đại đương đại."
+msgstr "Heiwa Sushi Omakase (Số 2 Phan Văn Đáng, Quận 2, HCMC) là điểm đến đỉnh cao cho những tín đồ sành ăn yêu thích ẩm thực Nhật Bản đích thực tại Sài Gòn. Không gian nội thất của Heiwa được thiết kế tỉ mỉ, kiến tạo sự cân bằng hoàn mỹ giữa văn hóa truyền thống Wabi-Sabi và nhịp thở hiện đại đương đại."
+
+#: pillar-content
+msgid "Được chủ đầu tư tin cậy lựa chọn là đơn vị thiết kế và thi công trọn gói hệ thống bếp biểu diễn cao cấp, Saigon Horeca đã quy hoạch một gian bếp mở thông minh. Nơi đây không chỉ tối ưu hóa 100% công năng vận hành khắt khe của Omakase mà còn tạo ra cầu nối tương tác trực tiếp, đánh thức trọn vẹn thị giác và cảm xúc của thực khách khi chiêm ngưỡng đầu bếp chế biến các món sashimi, sushi tinh xảo."
+msgstr "Được chủ đầu tư tin cậy lựa chọn là đơn vị thiết kế và thi công trọn gói hệ thống bếp biểu diễn cao cấp, Saigon Horeca đã quy hoạch một gian bếp mở thông minh. Nơi đây không chỉ tối ưu hóa 100% công năng vận hành khắt khe của Omakase mà còn tạo ra cầu nối tương tác trực tiếp, đánh thức trọn vẹn thị giác và cảm xúc của thực khách khi chiêm ngưỡng đầu bếp chế biến các món sashimi, sushi tinh xảo."
+
+#: pillar-content
+msgid "Không gian bếp biểu diễn tương tác tại Heiwa Sushi - Saigon Horeca"
+msgstr "Không gian bếp biểu diễn tương tác tại Heiwa Sushi - Saigon Horeca"
+
+#: pillar-content
+msgid "HOÀN THIỆN THỰC TẾ"
+msgstr "HOÀN THIỆN THỰC TẾ"
+
+#: pillar-content
+msgid "Kiến Tạo Chuẩn Xác Từng Chi Tiết Cơ Khí"
+msgstr "Kiến Tạo Chuẩn Xác Từng Chi Tiết Cơ Khí"
+
+#: pillar-content
+msgid "Tại Heiwa Sushi, sự hoàn mỹ không chỉ xuất hiện trên các đĩa thức ăn tuyệt hảo của người nghệ sĩ Omakase, mà được đảm bảo xuyên suốt từ cốt lõi hạ tầng kỹ thuật. Saigon Horeca cam kết thi công thực tế bám sát 100% bản vẽ kỹ thuật kỹ lưỡng nhất."
+msgstr "Tại Heiwa Sushi, sự hoàn mỹ không chỉ xuất hiện trên các đĩa thức ăn tuyệt hảo của người nghệ sĩ Omakase, mà được đảm bảo xuyên suốt từ cốt lõi hạ tầng kỹ thuật. Saigon Horeca cam kết thi công thực tế bám sát 100% bản vẽ kỹ thuật kỹ lưỡng nhất."
+
+#: pillar-content
+msgid "Quy trình lắp ráp thiết bị, căn chỉnh độ phẳng mặt bàn inox, tối ưu hóa các đường đi ống thoát sàn và hệ thống hút mùi đều được giám sát khắt khe bởi các kỹ sư dày dặn kinh nghiệm, mang đến một gian bếp an toàn, hiệu năng vượt trội."
+msgstr "Quy trình lắp ráp thiết bị, căn chỉnh độ phẳng mặt bàn inox, tối ưu hóa các đường đi ống thoát sàn và hệ thống hút mùi đều được giám sát khắt khe bởi các kỹ sư dày dặn kinh nghiệm, mang đến một gian bếp an toàn, hiệu năng vượt trội."
+
+#: pillar-content
+msgid "“Sự tinh tế không nằm ở những gì hào nhoáng lộ thiên, mà ẩn sâu trong sự hoàn hảo của những chi tiết cơ khí âm thầm nâng bước người đầu bếp sáng tạo nghệ thuật.”"
+msgstr "“Sự tinh tế không nằm ở những gì hào nhoáng lộ thiên, mà ẩn sâu trong sự hoàn hảo của những chi tiết cơ khí âm thầm nâng bước người đầu bếp sáng tạo nghệ thuật.”"
+
+#: pillar-content
+msgid "Đội Ngũ Kỹ Sư Saigon Horeca"
+msgstr "Đội Ngũ Kỹ Sư Saigon Horeca"
+
+#: pillar-content
+msgid "Thi công quầy bar gỗ tự nhiên cao cấp tại Heiwa Sushi - Saigon Horeca"
+msgstr "Thi công quầy bar gỗ tự nhiên cao cấp tại Heiwa Sushi - Saigon Horeca"
+
+#: pillar-content
+msgid "Hệ thống quầy Omakase hoàn thiện thực tế cực kỳ cao cấp - Saigon Horeca"
+msgstr "Hệ thống quầy Omakase hoàn thiện thực tế cực kỳ cao cấp - Saigon Horeca"
+
+#: pillar-content
+msgid "Kiểm thử thiết bị bếp inox công nghiệp trước ca vận hành - Saigon Horeca"
+msgstr "Kiểm thử thiết bị bếp inox công nghiệp trước ca vận hành - Saigon Horeca"
+
+#: pillar-content
+msgid "UY TÍN ĐỐI TÁC"
+msgstr "UY TÍN ĐỐI TÁC"
+
+#: pillar-content
+msgid "Sự Hợp Tác Giữa Heiwa Sushi & Saigon Horeca"
+msgstr "Sự Hợp Tác Giữa Heiwa Sushi & Saigon Horeca"
+
+#: pillar-content
+msgid "Sự hợp tác chặt chẽ giữa Heiwa Sushi và Saigon Horeca là minh chứng rõ ràng cho tầm quan trọng của việc quy hoạch và thiết lập hệ thống bếp chuyên nghiệp trong thành công rực rỡ của một nhà hàng Omakase. Với kinh nghiệm chuyên môn dày dặn, Saigon Horeca đã đồng hành lựa chọn và lắp đặt các dòng thiết bị nhà bếp tốt nhất, kiến tạo nên trải nghiệm trọn vẹn và an tâm tuyệt đối."
+msgstr "Sự hợp tác chặt chẽ giữa Heiwa Sushi và Saigon Horeca là minh chứng rõ ràng cho tầm quan trọng của việc quy hoạch và thiết lập hệ thống bếp chuyên nghiệp trong thành công rực rỡ của một nhà hàng Omakase. Với kinh nghiệm chuyên môn dày dặn, Saigon Horeca đã đồng hành lựa chọn và lắp đặt các dòng thiết bị nhà bếp tốt nhất, kiến tạo nên trải nghiệm trọn vẹn và an tâm tuyệt đối."
+
+#: pillar-content
+msgid "Thông số kỹ thuật lắp đặt"
+msgstr "Thông số kỹ thuật lắp đặt"
+
+#: pillar-content
+msgid "Thiết bị lạnh chính"
+msgstr "Thiết bị lạnh chính"
+
+#: pillar-content
+msgid "Hoshizaki Japan"
+msgstr "Hoshizaki Japan"
+
+#: pillar-content
+msgid "Hệ thống quầy bar"
+msgstr "Hệ thống quầy bar"
+
+#: pillar-content
+msgid "Gỗ tự nhiên & Kính"
+msgstr "Gỗ tự nhiên & Kính"
+
+#: pillar-content
+msgid "Chất liệu cơ khí"
+msgstr "Chất liệu cơ khí"
+
+#: pillar-content
+msgid "Inox 304 tiêu chuẩn"
+msgstr "Inox 304 tiêu chuẩn"
+
+#: pillar-content
+msgid "Tiêu chuẩn vệ sinh"
+msgstr "Tiêu chuẩn vệ sinh"
+
+#: pillar-content
+msgid "Omakase Fresh Standard"
+msgstr "Omakase Fresh Standard"
+
+#: pillar-content
+msgid "Hệ thống thiết bị bếp inox công nghiệp cao cấp tại Heiwa Sushi - Saigon Horeca"
+msgstr "Hệ thống thiết bị bếp inox công nghiệp cao cấp tại Heiwa Sushi - Saigon Horeca"
+
+#: pillar-content
+msgid "Địa điểm"
+msgstr "Địa điểm"
+
+#: pillar-content
+msgid "36 Nguyễn Bá Huân, Thảo Điền, TP.HCM"
+msgstr "36 Nguyễn Bá Huân, Thảo Điền, TP.HCM"
+
+#: pillar-content
+msgid "Khung giờ phục vụ"
+msgstr "Khung giờ phục vụ"
+
+#: pillar-content
+msgid "17h30 - 21h00 | Thứ ba - Chủ nhật"
+msgstr "17h30 - 21h00 | Thứ ba - Chủ nhật"
+
+#: pillar-content
+msgid "Nhận đặt bàn tối"
+msgstr "Nhận đặt bàn tối"
+
+#: pillar-content
+msgid "Đến trước 17h00"
+msgstr "Đến trước 17h00"
+
+#: pillar-content
+msgid "Thiết kế line bếp theo nhịp phục vụ dinner service"
+msgstr "Thiết kế line bếp theo nhịp phục vụ dinner service"
+
+#: pillar-content
+msgid "Tích hợp thiết bị Rational, Hoshizaki và Fujimak"
+msgstr "Tích hợp thiết bị Rational, Hoshizaki và Fujimak"
+
+#: pillar-content
+msgid "Gia công inox riêng theo mặt bằng hiện hữu"
+msgstr "Gia công inox riêng theo mặt bằng hiện hữu"
+
+#: pillar-content
+msgid "Đầu bếp làm việc tại Little Bear"
+msgstr "Đầu bếp làm việc tại Little Bear"
+
+#: pillar-content
+msgid "Bếp mở theo nhịp phục vụ"
+msgstr "Bếp mở theo nhịp phục vụ"
+
+#: pillar-content
+msgid "Không gian bar và bếp tại Little Bear"
+msgstr "Không gian bar và bếp tại Little Bear"
+
+#: pillar-content
+msgid "Bar station nhìn thẳng line bếp"
+msgstr "Bar station nhìn thẳng line bếp"
+
+#: pillar-content
+msgid "Mặt tiền Little Bear Thảo Điền"
+msgstr "Mặt tiền Little Bear Thảo Điền"
+
+#: pillar-content
+msgid "Lối vào gọn và sáng"
+msgstr "Lối vào gọn và sáng"
+
+#: pillar-content
+msgid "Chi tiết thiết bị bếp tại Little Bear"
+msgstr "Chi tiết thiết bị bếp tại Little Bear"
+
+#: pillar-content
+msgid "Thiết bị và bề mặt inox cho vận hành hàng đêm"
+msgstr "Thiết bị và bề mặt inox cho vận hành hàng đêm"
+
+#: pillar-content
+msgid "Restaurant profile"
+msgstr "Restaurant profile"
+
+#: pillar-content
+msgid "Một không gian F&B nhỏ nhưng có nhịp vận hành rõ, nơi bếp mở, quầy bar và trải nghiệm khách được giữ trong cùng một mạch liên tục."
+msgstr "Một không gian F&B nhỏ nhưng có nhịp vận hành rõ, nơi bếp mở, quầy bar và trải nghiệm khách được giữ trong cùng một mạch liên tục."
+
+#: pillar-content
+msgid "Bước vào Little Bear, khách gặp ngay chất liệu gạch ấm, cây xanh mềm và nhịp phục vụ gần gũi. Không gian nhỏ nhưng không hẹp; từng bề mặt, từng line thao tác đều cần gọn, chính xác và bền trước cường độ vận hành buổi tối."
+msgstr "Bước vào Little Bear, khách gặp ngay chất liệu gạch ấm, cây xanh mềm và nhịp phục vụ gần gũi. Không gian nhỏ nhưng không hẹp; từng bề mặt, từng line thao tác đều cần gọn, chính xác và bền trước cường độ vận hành buổi tối."
+
+#: pillar-content
+msgid "Saigon Horeca tham gia hoàn thiện căn bếp đa năng với thiết bị từ Rational, Hoshizaki, Fujimak cùng các hạng mục inox đặt riêng. Mục tiêu không chỉ là đủ công năng, mà còn là giữ cho khu bếp và quầy bar vận hành sạch, nhanh và đồng bộ với tinh thần của Little Bear."
+msgstr "Saigon Horeca tham gia hoàn thiện căn bếp đa năng với thiết bị từ Rational, Hoshizaki, Fujimak cùng các hạng mục inox đặt riêng. Mục tiêu không chỉ là đủ công năng, mà còn là giữ cho khu bếp và quầy bar vận hành sạch, nhanh và đồng bộ với tinh thần của Little Bear."
+
+#: pillar-content
+msgid "Thông tin dự án"
+msgstr "Thông tin dự án"
+
+#: pillar-content
+msgid "Vận hành thực tế"
+msgstr "Vận hành thực tế"
+
+#: pillar-content
+msgid "Phạm vi Saigon Horeca"
+msgstr "Phạm vi Saigon Horeca"
+
+#: pillar-content
+msgid "Hình ảnh Little Bear Thảo Điền"
+msgstr "Hình ảnh Little Bear Thảo Điền"
+
+#: pillar-content
+msgid "Thách thức & Khó khăn"
+msgstr "Thách thức & Khó khăn"
+
+#: pillar-content
+msgid "Khu vực nấu chính (Bếp cũ & Bếp mới sau cải tạo)"
+msgstr "Khu vực nấu chính (Bếp cũ & Bếp mới sau cải tạo)"
+
+#: pillar-content
+msgid "Khảo sát tỉ mỉ từng chi tiết, đánh giá tối ưu công năng để tích hợp thiết bị cũ và mới vào một hệ sinh thái vận hành trơn tru nhất."
+msgstr "Khảo sát tỉ mỉ từng chi tiết, đánh giá tối ưu công năng để tích hợp thiết bị cũ và mới vào một hệ sinh thái vận hành trơn tru nhất."
+
+#: pillar-content
+msgid "Khu sơ chế và hệ thống rửa, lưu trữ lạnh"
+msgstr "Khu sơ chế và hệ thống rửa, lưu trữ lạnh"
+
+#: pillar-content
+msgid "KẾT NỐI & KHỞI TẠO"
+msgstr "KẾT NỐI & KHỞI TẠO"
+
+#: pillar-content
+msgid "Khởi Tạo Không Gian Bếp Đẳng Cấp Cho Dự Án Của Bạn"
+msgstr "Khởi Tạo Không Gian Bếp Đẳng Cấp Cho Dự Án Của Bạn"
+
+#: pillar-content
+msgid "Với kinh nghiệm và uy tín đã được khẳng định hơn 10 năm trong lĩnh vực thiết bị bếp công nghiệp & quầy bar, Saigon Horeca tự hào là đối tác đáng tin cậy đồng hành cùng nhiều nhà hàng và quán Bar đẳng cấp quốc tế như Bambino, Loco Complex, Yuzu Omakase, Unic Bar, và Sol Kitchen & Bar."
+msgstr "Với kinh nghiệm và uy tín đã được khẳng định hơn 10 năm trong lĩnh vực thiết bị bếp công nghiệp & quầy bar, Saigon Horeca tự hào là đối tác đáng tin cậy đồng hành cùng nhiều nhà hàng và quán Bar đẳng cấp quốc tế như Bambino, Loco Complex, Yuzu Omakase, Unic Bar, và Sol Kitchen & Bar."
+
+#: pillar-content
+msgid "Hãy để lại thông tin liên hệ nếu quý khách đang tìm kiếm một đơn vị tư vấn, thiết kế và thi công hệ thống bếp chuyên nghiệp. Saigon Horeca sẽ chủ động liên hệ, tiến hành khảo sát thực tế tại công trình để lắng nghe yêu cầu và đề xuất giải pháp tối ưu nhất - vừa tiết kiệm tối đa chi phí đầu tư, vừa bảo đảm hệ thống vận hành trơn tru và bền bỉ tuyệt đối."
+msgstr "Hãy để lại thông tin liên hệ nếu quý khách đang tìm kiếm một đơn vị tư vấn, thiết kế và thi công hệ thống bếp chuyên nghiệp. Saigon Horeca sẽ chủ động liên hệ, tiến hành khảo sát thực tế tại công trình để lắng nghe yêu cầu và đề xuất giải pháp tối ưu nhất - vừa tiết kiệm tối đa chi phí đầu tư, vừa bảo đảm hệ thống vận hành trơn tru và bền bỉ tuyệt đối."
+
+#: pillar-content
+msgid "Saigon Horeca | Kitchen Equipment & Bar Solutions."
+msgstr "Saigon Horeca | Kitchen Equipment & Bar Solutions."
+
+#: pillar-content
+msgid "Hệ thống bếp công nghiệp hoàn thiện đẳng cấp tại Sol Kitchen & Bar - Saigon Horeca"
+msgstr "Hệ thống bếp công nghiệp hoàn thiện đẳng cấp tại Sol Kitchen & Bar - Saigon Horeca"
+
+#: pillar-content
+msgid "Hệ thống thiết bị bếp inox công nghiệp cao cấp tại Sol Kitchen & Bar - Saigon Horeca"
+msgstr "Hệ thống thiết bị bếp inox công nghiệp cao cấp tại Sol Kitchen & Bar - Saigon Horeca"
+
+#: pillar-content
+msgid "GIẢI PHÁP ĐỒNG BỘ"
+msgstr "GIẢI PHÁP ĐỒNG BỘ"
+
+#: pillar-content
+msgid "Quy Quy Hoạch & Tối Ưu Hóa Thiết Bị Bếp"
+msgstr "Quy Quy Hoạch & Tối Ưu Hóa Thiết Bị Bếp"
+
+#: pillar-content
+msgid "Saigon Horeca cung cấp hệ thống tủ đông và tủ mát cao cấp, đảm bảo việc bảo quản thực phẩm luôn ở nhiệt độ tối ưu theo tiêu chuẩn vệ sinh an toàn thực phẩm HACCP. Lò nướng combi thông minh là sự kết hợp hoàn hảo giữa nướng và hấp, mang đến khả năng chế biến các món ăn chất lượng cao với tốc độ vượt trội."
+msgstr "Saigon Horeca cung cấp hệ thống tủ đông và tủ mát cao cấp, đảm bảo việc bảo quản thực phẩm luôn ở nhiệt độ tối ưu theo tiêu chuẩn vệ sinh an toàn thực phẩm HACCP. Lò nướng combi thông minh là sự kết hợp hoàn hảo giữa nướng và hấp, mang đến khả năng chế biến các món ăn chất lượng cao với tốc độ vượt trội."
+
+#: pillar-content
+msgid "Đặc biệt, lò BBQ sản xuất riêng biệt mang phong cách Italia chính là điểm nhấn thẩm mỹ nghệ thuật độc đáo cho gian bếp mở của Sol Kitchen & Bar, kết hợp sự vững chãi với tính năng dễ dàng thao tác."
+msgstr "Đặc biệt, lò BBQ sản xuất riêng biệt mang phong cách Italia chính là điểm nhấn thẩm mỹ nghệ thuật độc đáo cho gian bếp mở của Sol Kitchen & Bar, kết hợp sự vững chãi với tính năng dễ dàng thao tác."
+
+#: pillar-content
+msgid "Song song với việc lắp đặt thiết bị mới, chúng tôi đã chủ động kiểm định công năng và tái tích hợp các thiết bị sẵn có của chủ đầu tư, tối ưu hóa ngân sách mà vẫn bảo đảm chuỗi vận hành liên tục ổn định."
+msgstr "Song song với việc lắp đặt thiết bị mới, chúng tôi đã chủ động kiểm định công năng và tái tích hợp các thiết bị sẵn có của chủ đầu tư, tối ưu hóa ngân sách mà vẫn bảo đảm chuỗi vận hành liên tục ổn định."
+
+#: pillar-content
+msgid "Bảo quản HACCP"
+msgstr "Bảo quản HACCP"
+
+#: pillar-content
+msgid "Hệ tủ đông/mát đa tầng"
+msgstr "Hệ tủ đông/mát đa tầng"
+
+#: pillar-content
+msgid "Lò nướng Combi"
+msgstr "Lò nướng Combi"
+
+#: pillar-content
+msgid "Hấp nướng thông minh"
+msgstr "Hấp nướng thông minh"
+
+#: pillar-content
+msgid "Lò BBQ Custom"
+msgstr "Lò BBQ Custom"
+
+#: pillar-content
+msgid "Phong cách Ý độc quyền"
+msgstr "Phong cách Ý độc quyền"
+
+#: pillar-content
+msgid "Tối ưu ngân sách"
+msgstr "Tối ưu ngân sách"
+
+#: pillar-content
+msgid "Kiểm định và tái tích hợp"
+msgstr "Kiểm định và tái tích hợp"
+
+#: pillar-content
+msgid "PROJECT PILLAR"
+msgstr "PROJECT PILLAR"
+
+#: pillar-content
+msgid "RENOVATION"
+msgstr "RENOVATION"
+
+#: pillar-content
+msgid "SOL KITCHEN & BAR"
+msgstr "SOL KITCHEN & BAR"
+
+#: pillar-content
+msgid "Cải tạo không gian bếp & nhà hàng chuyên nghiệp tại Quận 7"
+msgstr "Cải tạo không gian bếp & nhà hàng chuyên nghiệp tại Quận 7"
+
+#: pillar-content
+msgid "Featured in 2023 MICHELIN Guide Vietnam"
+msgstr "Featured in 2023 MICHELIN Guide Vietnam"
+
+#: pillar-content
+msgid "Sự Đồng Hành Cùng Tác Phẩm Michelin"
+msgstr "Sự Đồng Hành Cùng Tác Phẩm Michelin"
+
+#: pillar-content
+msgid "Nơi nghệ thuật ẩm thực Mỹ Latinh gặp gỡ giải pháp vận hành bếp công nghiệp đỉnh cao."
+msgstr "Nơi nghệ thuật ẩm thực Mỹ Latinh gặp gỡ giải pháp vận hành bếp công nghiệp đỉnh cao."
+
+#: pillar-content
+msgid "Đánh giá Michelin Guide của Sol Kitchen & Bar"
+msgstr "Đánh giá Michelin Guide của Sol Kitchen & Bar"
+
+#: pillar-content
+msgid "Hệ Thống Chụp Hút Khói Khử Mùi & Cấp Gió Tươi"
+msgstr "Hệ Thống Chụp Hút Khói Khử Mùi & Cấp Gió Tươi"
+
+#: pillar-content
+msgid "Hệ thống chụp hút khói dài 8m được thiết kế để hút khói và cấp gió tươi song song trong khu vực nấu. Hệ thống này giúp luồng khí lưu thông liên tục, tạo không gian thoải mái cho các đầu bếp làm việc và hạn chế tình trạng bí khí, đảm bảo môi trường làm việc trong lành và thoáng đãng."
+msgstr "Hệ thống chụp hút khói dài 8m được thiết kế để hút khói và cấp gió tươi song song trong khu vực nấu. Hệ thống này giúp luồng khí lưu thông liên tục, tạo không gian thoải mái cho các đầu bếp làm việc và hạn chế tình trạng bí khí, đảm bảo môi trường làm việc trong lành và thoáng đãng."
+
+#: pillar-content
+msgid "Trong khu vực rửa, một hệ thống chụp hút khói dài 2m cũng được lắp đặt để hút khói và cấp gió tươi độc lập, đảm bảo khu vực vệ sinh luôn sạch sẽ, khô ráo và không bị ẩm mốc trong suốt quá trình vận hành liên tục của nhà hàng."
+msgstr "Trong khu vực rửa, một hệ thống chụp hút khói dài 2m cũng được lắp đặt để hút khói và cấp gió tươi độc lập, đảm bảo khu vực vệ sinh luôn sạch sẽ, khô ráo và không bị ẩm mốc trong suốt quá trình vận hành liên tục của nhà hàng."
+
+#: pillar-content
+msgid "Chụp hút nấu chính"
+msgstr "Chụp hút nấu chính"
+
+#: pillar-content
+msgid "Dài 8.0 mét"
+msgstr "Dài 8.0 mét"
+
+#: pillar-content
+msgid "Chụp hút khu rửa"
+msgstr "Chụp hút khu rửa"
+
+#: pillar-content
+msgid "Dài 2.0 mét"
+msgstr "Dài 2.0 mét"
+
+#: pillar-content
+msgid "Cơ chế vận hành"
+msgstr "Cơ chế vận hành"
+
+#: pillar-content
+msgid "Hút & Cấp gió song song"
+msgstr "Hút & Cấp gió song song"
+
+#: pillar-content
+msgid "Tiêu chuẩn kỹ thuật"
+msgstr "Tiêu chuẩn kỹ thuật"
+
+#: pillar-content
+msgid "Michelin-Grade Standard"
+msgstr "Michelin-Grade Standard"
+
+#: pillar-content
+msgid "Hệ thống chụp hút khói khu nấu chính 8m - Saigon Horeca"
+msgstr "Hệ thống chụp hút khói khu nấu chính 8m - Saigon Horeca"
+
+#: pillar-content
+msgid "Cận cảnh thi công lắp đặt chụp hút khói 8m - Saigon Horeca"
+msgstr "Cận cảnh thi công lắp đặt chụp hút khói 8m - Saigon Horeca"
+
+#: pillar-content
+msgid "Lắp đặt chụp hút khói khu rửa 2m - Saigon Horeca"
+msgstr "Lắp đặt chụp hút khói khu rửa 2m - Saigon Horeca"
+
+#: pillar-content
+msgid "QUY TRÌNH & GIÁM SÁT"
+msgstr "QUY TRÌNH & GIÁM SÁT"
+
+#: pillar-content
+msgid "Kỹ Thuật Thi Công & Cam Kết Vững Chãi"
+msgstr "Kỹ Thuật Thi Công & Cam Kết Vững Chãi"
+
+#: pillar-content
+msgid "Quy trình thi công tại hiện trường được Saigon Horeca triển khai theo các tiêu chuẩn kỹ thuật nghiêm ngặt và cẩn trọng nhất. Từng khớp nối, đường ống và chi tiết kỹ thuật của hệ thống bếp đều được đội ngũ kỹ sư giám sát chặt chẽ nhằm triệt tiêu hoàn toàn rủi ro vận hành và đảm bảo an toàn lao động tuyệt đối."
+msgstr "Quy trình thi công tại hiện trường được Saigon Horeca triển khai theo các tiêu chuẩn kỹ thuật nghiêm ngặt và cẩn trọng nhất. Từng khớp nối, đường ống và chi tiết kỹ thuật của hệ thống bếp đều được đội ngũ kỹ sư giám sát chặt chẽ nhằm triệt tiêu hoàn toàn rủi ro vận hành và đảm bảo an toàn lao động tuyệt đối."
+
+#: pillar-content
+msgid "Bằng sự chuyên nghiệp và tận tụy, chúng tôi bàn giao cho chủ đầu tư một công trình chỉn chu nhất, sẵn sàng đáp ứng tần suất phục vụ liên tục trong các khung giờ cao điểm tại Sol Kitchen & Bar."
+msgstr "Bằng sự chuyên nghiệp và tận tụy, chúng tôi bàn giao cho chủ đầu tư một công trình chỉn chu nhất, sẵn sàng đáp ứng tần suất phục vụ liên tục trong các khung giờ cao điểm tại Sol Kitchen & Bar."
+
+#: pillar-content
+msgid "“Saigon Horeca cam kết mang đến dịch vụ kỹ thuật đỉnh cao, sự tin cậy tuyệt đối trong hợp tác kinh doanh và tính thẩm mỹ cao nhất trong từng hệ thống bếp.”"
+msgstr "“Saigon Horeca cam kết mang đến dịch vụ kỹ thuật đỉnh cao, sự tin cậy tuyệt đối trong hợp tác kinh doanh và tính thẩm mỹ cao nhất trong từng hệ thống bếp.”"
+
+#: pillar-content
+msgid "Quy trình lắp đặt thiết bị bếp inox công nghiệp chuyên nghiệp - Saigon Horeca"
+msgstr "Quy trình lắp đặt thiết bị bếp inox công nghiệp chuyên nghiệp - Saigon Horeca"
+
+#: pillar-content
+msgid "Thi công lắp đặt thiết bị bếp tại công trường - Saigon Horeca"
+msgstr "Thi công lắp đặt thiết bị bếp tại công trường - Saigon Horeca"
+
+#: pillar-content
+msgid "Hệ thống thiết bị inox bếp công nghiệp sau lắp đặt - Saigon Horeca"
+msgstr "Hệ thống thiết bị inox bếp công nghiệp sau lắp đặt - Saigon Horeca"
+
+#: pillar-content
+msgid "TƯ DUY KỸ THUẬT"
+msgstr "TƯ DUY KỸ THUẬT"
+
+#: pillar-content
+msgid "Sự Tinh Tế Trong Thiết Kế & Quy Hoạch Bếp"
+msgstr "Sự Tinh Tế Trong Thiết Kế & Quy Hoạch Bếp"
+
+#: pillar-content
+msgid "Sol Kitchen & Bar quận 7 đã được trang bị một khu bếp rộng hơn 70m2, đảm bảo sự tiện nghi và chuyên nghiệp tối đa trong quá trình vận hành. Toàn bộ khu vực được lắp đặt các thiết bị bếp inox cao cấp như hệ thống tủ đông, tủ mát, lò nướng combi, salamander, plancha, và đặc biệt là hệ thống lò BBQ độc quyền do chính Saigon Horeca thiết kế, đo đạc và sản xuất riêng biệt để đáp ứng hoàn hảo thực đơn Mỹ Latinh đặc trưng của Sol quận 7."
+msgstr "Sol Kitchen & Bar quận 7 đã được trang bị một khu bếp rộng hơn 70m2, đảm bảo sự tiện nghi và chuyên nghiệp tối đa trong quá trình vận hành. Toàn bộ khu vực được lắp đặt các thiết bị bếp inox cao cấp như hệ thống tủ đông, tủ mát, lò nướng combi, salamander, plancha, và đặc biệt là hệ thống lò BBQ độc quyền do chính Saigon Horeca thiết kế, đo đạc và sản xuất riêng biệt để đáp ứng hoàn hảo thực đơn Mỹ Latinh đặc trưng của Sol quận 7."
+
+#: pillar-content
+msgid "Bản giao hương vị giác"
+msgstr "Bản giao hương vị giác"
+
+#: pillar-content
+msgid "Kiệt tác ẩm thực Omakase"
+msgstr "Kiệt tác ẩm thực Omakase"
+
+#: pillar-content
+msgid "Sashimi cá hồi Roka Fella"
+msgstr "Sashimi cá hồi Roka Fella"
+
+#: pillar-content
+msgid "Sashimi cá hồi tươi rói cắt lát điệu nghệ"
+msgstr "Sashimi cá hồi tươi rói cắt lát điệu nghệ"
+
+#: pillar-content
+msgid "Nigiri cá ngừ Roka Fella"
+msgstr "Nigiri cá ngừ Roka Fella"
+
+#: pillar-content
+msgid "Nigiri cá ngừ đại dương tuyển chọn"
+msgstr "Nigiri cá ngừ đại dương tuyển chọn"
+
+#: pillar-content
+msgid "Nigiri bạch tuộc Roka Fella"
+msgstr "Nigiri bạch tuộc Roka Fella"
+
+#: pillar-content
+msgid "Nigiri bạch tuộc khò lửa sốt đặc biệt"
+msgstr "Nigiri bạch tuộc khò lửa sốt đặc biệt"
+
+#: pillar-content
+msgid "Sashimi sò đỏ Roka Fella"
+msgstr "Sashimi sò đỏ Roka Fella"
+
+#: pillar-content
+msgid "Sashimi sò đỏ Nhật Bản ngọt đậm"
+msgstr "Sashimi sò đỏ Nhật Bản ngọt đậm"
+
+#: pillar-content
+msgid "Nigiri trứng cá hồi Roka Fella"
+msgstr "Nigiri trứng cá hồi Roka Fella"
+
+#: pillar-content
+msgid "Nigiri trứng cá hồi Ikura rực rỡ"
+msgstr "Nigiri trứng cá hồi Ikura rực rỡ"
+
+#: pillar-content
+msgid "Nigiri tôm ngọt Roka Fella"
+msgstr "Nigiri tôm ngọt Roka Fella"
+
+#: pillar-content
+msgid "Nigiri tôm ngọt Amaebi mềm mại"
+msgstr "Nigiri tôm ngọt Amaebi mềm mại"
+
+#: pillar-content
+msgid "Nigiri cá trích ép trứng Roka Fella"
+msgstr "Nigiri cá trích ép trứng Roka Fella"
+
+#: pillar-content
+msgid "Nigiri cá trích ép trứng giòn tan lạ miệng"
+msgstr "Nigiri cá trích ép trứng giòn tan lạ miệng"
+
+#: pillar-content
+msgid "Nigiri cá cam Roka Fella"
+msgstr "Nigiri cá cam Roka Fella"
+
+#: pillar-content
+msgid "Nigiri cá cam Hamachi ngập tràn vị béo"
+msgstr "Nigiri cá cam Hamachi ngập tràn vị béo"
+
+#: pillar-content
+msgid "Sashimi bào ngư Roka Fella"
+msgstr "Sashimi bào ngư Roka Fella"
+
+#: pillar-content
+msgid "Sashimi bào ngư hấp mềm ngọt nước"
+msgstr "Sashimi bào ngư hấp mềm ngọt nước"
+
+#: pillar-content
+msgid "Vinyl Rooftop Bar"
+msgstr "Vinyl Rooftop Bar"
+
+#: pillar-content
+msgid "Ẩm thực Omakase hòa quyện cùng nốt nhạc Vinyl"
+msgstr "Ẩm thực Omakase hòa quyện cùng nốt nhạc Vinyl"
+
+#: pillar-content
+msgid "Sự giao thoa đầy say đắm giữa âm thanh mộc mạc của đĩa than và ly cocktail tinh tế tạo nên một dấu ấn khó phai."
+msgstr "Sự giao thoa đầy say đắm giữa âm thanh mộc mạc của đĩa than và ly cocktail tinh tế tạo nên một dấu ấn khó phai."
+
+#: pillar-content
+msgid "ĐỒNG HÀNH THIẾT KẾ & SẢN XUẤT"
+msgstr "ĐỒNG HÀNH THIẾT KẾ & SẢN XUẤT"
+
+#: pillar-content
+msgid "Kiến Tạo Không Gian Bếp Omakase <span class=\"pp-highlight-gold-rf\">Chuẩn Nhật Bản</span>"
+msgstr "Kiến Tạo Không Gian Bếp Omakase <span class="
+
+#: pillar-content
+msgid "Toàn bộ hệ thống quầy Sushi bảo quản lạnh chuyên nghiệp và thiết bị bếp công nghiệp của Roka Fella đều được Saigon Horeca tư vấn, thiết kế bản vẽ và gia công sản xuất trực tiếp."
+msgstr "Toàn bộ hệ thống quầy Sushi bảo quản lạnh chuyên nghiệp và thiết bị bếp công nghiệp của Roka Fella đều được Saigon Horeca tư vấn, thiết kế bản vẽ và gia công sản xuất trực tiếp."
+
+#: pillar-content
+msgid "Bạn đang tìm kiếm một đối tác tin cậy để thiết kế hệ thống bếp nhà hàng sang trọng, quầy bar hiện đại hoặc dự án F&B tiêu chuẩn quốc tế? Hãy để Saigon Horeca biến ý tưởng của bạn thành kiệt tác."
+msgstr "Bạn đang tìm kiếm một đối tác tin cậy để thiết kế hệ thống bếp nhà hàng sang trọng, quầy bar hiện đại hoặc dự án F&B tiêu chuẩn quốc tế? Hãy để Saigon Horeca biến ý tưởng của bạn thành kiệt tác."
+
+#: pillar-content
+msgid "QUY HOẠCH TỐI ƯU"
+msgstr "QUY HOẠCH TỐI ƯU"
+
+#: pillar-content
+msgid "Bản vẽ mặt bằng 2D/3D chi tiết, tối ưu luồng di chuyển một chiều chuẩn F&B."
+msgstr "Bản vẽ mặt bằng 2D/3D chi tiết, tối ưu luồng di chuyển một chiều chuẩn F&B."
+
+#: pillar-content
+msgid "SẢN XUẤT ĐỘC BẢN"
+msgstr "SẢN XUẤT ĐỘC BẢN"
+
+#: pillar-content
+msgid "Sản xuất trực tiếp thiết bị inox SUS304 cao cấp theo module thực đơn chuyên biệt."
+msgstr "Sản xuất trực tiếp thiết bị inox SUS304 cao cấp theo module thực đơn chuyên biệt."
+
+#: pillar-content
+msgid "Hệ thống thiết bị lạnh nhập khẩu Hoshizaki, bảo quản nguyên liệu tươi sống hoàn hảo."
+msgstr "Hệ thống thiết bị lạnh nhập khẩu Hoshizaki, bảo quản nguyên liệu tươi sống hoàn hảo."
+
+#: pillar-content
+msgid "LIÊN HỆ TƯ VẤN NGAY"
+msgstr "LIÊN HỆ TƯ VẤN NGAY"
+
+#: pillar-content
+msgid "Quầy Sushi chế biến tươi sống tại Roka Fella"
+msgstr "Quầy Sushi chế biến tươi sống tại Roka Fella"
+
+#: pillar-content
+msgid "Món Omakase được chế tác tinh xảo, bắt mắt"
+msgstr "Món Omakase được chế tác tinh xảo, bắt mắt"
+
+#: pillar-content
+msgid "The Cheezy Time là mô hình đặc biệt đầu tiên tại Cần Thơ kết hợp bếp Âu hiện đại và pizza tươi phong cách Ý trong cùng một không gian vận hành. Điều này đòi hỏi căn bếp không chỉ đủ công suất, mà còn phải được tổ chức sao cho hai “nhịp nấu” khác nhau có thể song song tồn tại, không chồng chéo, không triệt tiêu lẫn nhau."
+msgstr "The Cheezy Time is the first special model in Can Tho combining a modern European kitchen and fresh Italian-style pizza within the same operating space. This requires the kitchen to not only have sufficient capacity but also be organized so that two different "
+
+#: pillar-content
+msgid "Kết quả là một hệ thống vận hành êm, ổn định và gần như “vô hình” trong trải nghiệm của thực khách – đúng với tinh thần của The Cheezy Time, nơi kỹ thuật luôn đứng phía sau để nâng đỡ cảm xúc phía trước."
+msgstr "The result is an operating system that is smooth, stable, and nearly "
+
+#: pillar-content
+msgid "Lò nướng Pizza lò gạch – Linh hồn của khu bếp"
+msgstr "Brick Pizza Oven – Soul of the Kitchen"
+
+#: pillar-content
+msgid "Trong tổng thể concept, lò gạch đóng vai trò như “linh hồn” của khu bếp, nơi hương vị và cảm xúc giao thoa rõ rệt nhất."
+msgstr "Within the overall concept, the brick oven serves as the "
+
+#: pillar-content
+msgid "Lò pizza lò gạch gốm truyền thống tại The Cheezy Time - Saigon Horeca"
+msgstr "Lò pizza lò gạch gốm truyền thống tại The Cheezy Time - Saigon Horeca"
+
+#: pillar-content
+msgid "Hệ thống bếp nấu và bếp bánh bố trí sát nhau - Saigon Horeca"
+msgstr "Hệ thống bếp nấu và bếp bánh bố trí sát nhau - Saigon Horeca"
+
+#: pillar-content
+msgid "Phân chia bếp bánh và bếp nấu khoa học"
+msgstr "Scientific division of pastry and main kitchens"
+
+#: pillar-content
+msgid "Đồng thời, chức năng của từng khu được phân chia rõ ràng: khu bếp nấu tập trung vào chế biến món mặn, còn khu bếp bánh được trang bị thiết bị chuyên dụng để làm các loại bánh ngọt và tráng miệng. Cách bố trí này không chỉ hợp lý mà còn giúp đầu bếp làm việc hiệu quả, tránh va chạm và giảm áp lực trong giờ cao điểm – tất cả cho thấy một triết lý: đằng sau một trải nghiệm đẹp là một cấu trúc vận hành thông minh và tôn trọng thiết kế."
+msgstr "At the same time, the functions of each zone are clearly divided: the main kitchen focuses on savory dishes, while the pastry kitchen is equipped with specialized appliances to craft sweet cakes and desserts. This layout is not only logical but also helps chefs work efficiently, avoiding collisions and reducing stress during peak hours – all demonstrating a philosophy: behind a beautiful experience is a smart and design-respecting operational structure."
+
+#: pillar-content
+msgid "Ở đó, người ta không cần bảng hiệu. Chỉ một cây bẹo, một ánh mắt, một tiếng gọi – thế là đủ để hiểu nhau."
+msgstr "There, people do not need signboards. Just a "
+
+#: pillar-content
+msgid "Có thể nói, tại The Cheezy Time, concept không chỉ là những gì thực khách nhìn thấy khi ngồi xuống bàn. Concept nằm trong sự vận hành của dòng chảy."
+msgstr "It can be said that at The Cheezy Time, the concept is not just what diners see when they sit down. The concept lies in the operation of the flow."
+
+#: pillar-content
+msgid "Một món ăn được đặt xuống bàn chỉ trong vài phút. Nhưng để khoảnh khắc ấy trọn vẹn, phía sau là cả một hệ thống vận hành không được phép sai nhịp."
+msgstr "A dish is placed on the table in just a few minutes. But for that moment to be perfect, behind it is an entire operating system that cannot afford to miss a single beat."
+
+#: pillar-content
+msgid "Không gian nhà hàng The Cheezy Time Cần Thơ"
+msgstr "Interior space of The Cheezy Time restaurant in Can Tho"
+
+#: pillar-content
+msgid "Hệ thống bàn ghế và vật liệu mang tinh thần sông nước"
+msgstr "Dining setup and materials carrying the riverland spirit"
+
+#: pillar-content
+msgid "Thiết bị bếp công nghiệp cao cấp Saigon Horeca"
+msgstr "Premium commercial kitchen equipment by Saigon Horeca"
+
+#: pillar-content
+msgid "Khu vực soạn chia món ăn sạch sẽ ngăn nắp"
+msgstr "Clean and organized plating area for food dispatch"
+
+#: pillar-content
+msgid "Khi căn bếp trở thành phần không thể tách rời của câu chuyện"
+msgstr "When the kitchen becomes an inseparable part of the story"
+
+#: pillar-content
+msgid "The Cheezy Time không chỉ phục vụ món ăn. Nhà hàng mang đến một không gian có chiều sâu văn hoá – nơi truyền thống được kể bằng vật liệu, hình khối và cảm xúc. Và để câu chuyện ấy được kể trọn vẹn, căn bếp phía sau phải đủ mạnh để nâng đỡ mọi trải nghiệm phía trước."
+msgstr "The Cheezy Time does more than just serve dishes. The restaurant delivers a space with cultural depth – where tradition is told through materials, shapes, and emotions. And for that story to be fully told, the kitchen behind must be powerful enough to support every experience in front."
+
+#: pillar-content
+msgid "Saigon Horeca cùng chủ đầu tư bắt đầu từ việc lên ý tưởng ban đầu cho concept bếp, đặt căn bếp vào đúng vai trò của nó trong tổng thể: một trung tâm điều phối, nơi mọi luồng nguyên liệu, con người và món ăn đều phải di chuyển mạch lạc như chính tinh thần chợ nổi mà The Cheezy Time theo đuổi."
+msgstr "Saigon Horeca and the developer started by brainstorming the kitchen concept, placing the kitchen in its exact role: a coordination hub where all flows of ingredients, people, and dishes move coherently, just like the floating market spirit that The Cheezy Time pursues."
+
+#: pillar-content
+msgid "Từ concept đó, Saigon Horeca tiến hành tư vấn bố trí layout bếp và khu bar, dựa trên nhịp vận hành thực tế của nhà hàng. Hệ thống thiết bị bếp công nghiệp trong dự án được lựa chọn và lắp đặt đồng bộ, hướng đến sự ổn định, độ bền và khả năng đáp ứng cường độ vận hành liên tục."
+msgstr "From that concept, Saigon Horeca provided layout consulting for the kitchen and bar zones based on the restaurant's real-time operational rhythm. The commercial kitchen equipment system was selected and installed synchronously, aiming for stability, durability, and heavy-duty capacity."
+
+#: pillar-content
+msgid "Bên cạnh đó, giải pháp chụp hút mùi kết hợp cấp khí tươi tinh tế giúp giữ gìn không gian nhà hàng luôn trong lành, dễ chịu, gần như \"vô hình\" đối với thực khách nhưng vô cùng quan trọng đối với trải nghiệm ẩm thực đỉnh cao."
+msgstr "Furthermore, the elegant hood exhaust combined with fresh air supply solution keeps the dining environment pristine and pleasant, virtually 'invisible' to guests yet highly essential to an elevated culinary experience."
+
+#: pillar-content
+msgid "Với dự án The Cheezy Time, Saigon Horeca không chỉ hoàn thiện một danh mục hạng mục kỹ thuật. Chúng tôi tự hào đồng hành định hình một hệ thống vận hành bền vững, bảo chứng cho sự thăng hoa của trải nghiệm ẩm thực sông nước đương đại."
+msgstr "Với dự án The Cheezy Time, Saigon Horeca không chỉ hoàn thiện một danh mục hạng mục kỹ thuật. Chúng tôi tự hào đồng hành định hình một hệ thống vận hành bền vững, bảo chứng cho sự thăng hoa của trải nghiệm ẩm thực sông nước đương đại."
+
+#: pillar-content
+msgid "Hệ thống bếp công nghiệp hoàn thiện hiện đại tại The Cheezy Time - Saigon Horeca"
+msgstr "Finished modern commercial kitchen system at The Cheezy Time - Saigon Horeca"
+
+#: pillar-content
+msgid "Bản vẽ bố trí thiết bị bếp The Cheezy Time"
+msgstr "Kitchen equipment layout drawing of The Cheezy Time"
+
+#: pillar-content
+msgid "Bản vẽ kỹ thuật chi tiết phân khu thiết bị bếp The Cheezy Time"
+msgstr "Detailed technical layout drawing of kitchen equipment at The Cheezy Time"
+
+#: pillar-content
+msgid "Thông số kỹ thuật"
+msgstr "Technical Specifications"
+
+#: pillar-content
+msgid "Quy chuẩn vận hành bếp Âu & Pizza"
+msgstr "Operational standards for European & Pizza kitchens"
+
+#: pillar-content
+msgid "Quy hoạch hai nhịp nấu"
+msgstr "Two-cooking-rhythm planning"
+
+#: pillar-content
+msgid "Sắp xếp hợp lý khu bếp Âu và khu bếp pizza để song song hoạt động, tách biệt luồng nhiệt nhưng kết nối mạch lạc, không chồng chéo hay triệt tiêu năng suất lẫn nhau."
+msgstr "Rational arrangement of the European kitchen and pizza kitchen for parallel operation, separating thermal zones yet connecting coherently, ensuring no overlaps or loss of productivity."
+
+#: pillar-content
+msgid "Tủ bảo quản & Soạn chia Hoshizaki"
+msgstr "Hoshizaki Preservation & Plating counters"
+
+#: pillar-content
+msgid "Hệ thống thiết bị lạnh bảo quản nguyên liệu tươi sống chuẩn Âu và các loại đế pizza luôn ở nhiệt độ tối ưu nhất, duy trì chất lượng ẩm thực cao cấp nhất."
+msgstr "Commercial refrigeration system preserving European-standard fresh ingredients and pizza doughs at their optimal temperatures, maintaining the highest quality of culinary creation."
+
+#: pillar-content
+msgid "Không gian trình diễn nghệ thuật và quầy bar trung tâm với màn hình LED 3D khổng lồ"
+msgstr "Không gian trình diễn nghệ thuật và quầy bar trung tâm với màn hình LED 3D khổng lồ"
+
+#: pillar-content
+msgid "Không gian sảnh lounge và bàn VIP tại Bling Bling Club"
+msgstr "Không gian sảnh lounge và bàn VIP tại Bling Bling Club"
+
+#: pillar-content
+msgid "Không gian sảnh lounge sang trọng, bàn tiệc VIP lộng lẫy và khu vực quầy bar hiện đại tại Bling Bling Club"
+msgstr "Không gian sảnh lounge sang trọng, bàn tiệc VIP lộng lẫy và khu vực quầy bar hiện đại tại Bling Bling Club"
+
+#: pillar-content
+msgid "Không gian trình diễn DJ trực tiếp sôi động và hoành tráng bên trong Bling Bling Club"
+msgstr "Không gian trình diễn DJ trực tiếp sôi động và hoành tráng bên trong Bling Bling Club"
+
+#: pillar-content
+msgid "Phục vụ vang nổ hồng Bottega Rose phát sáng rực rỡ trong đêm tiệc"
+msgstr "Phục vụ vang nổ hồng Bottega Rose phát sáng rực rỡ trong đêm tiệc"
+
+#: pillar-content
+msgid "Bartender tài năng trình diễn nghệ thuật pha chế tại quầy bar"
+msgstr "Bartender tài năng trình diễn nghệ thuật pha chế tại quầy bar"
+
+#: pillar-content
+msgid "Hệ thống quầy bar pha chế cocktail inox chuyên nghiệp"
+msgstr "Hệ thống quầy bar pha chế cocktail inox chuyên nghiệp"
+
+#: pillar-content
+msgid "Hệ thống quầy bar pha chế cocktail inox chuyên nghiệp (Cocktail Station) được bố trí khoa học"
+msgstr "Hệ thống quầy bar pha chế cocktail inox chuyên nghiệp (Cocktail Station) được bố trí khoa học"
+
+#: pillar-content
+msgid "Quầy bar Wine & Cafe với tủ rượu vang và máy pha cafe"
+msgstr "Quầy bar Wine & Cafe với tủ rượu vang và máy pha cafe"
+
+#: pillar-content
+msgid "Quầy bar Wine & Cafe – Trái tim cảm xúc và kết nối của Casa Maria"
+msgstr "Quầy bar Wine & Cafe – Trái tim cảm xúc và kết nối của Casa Maria"
+
+#: pillar-content
+msgid "Điểm Chạm Cảm Xúc"
+msgstr "Điểm Chạm Cảm Xúc"
+
+#: pillar-content
+msgid "Concept Quầy Bar Wine & Cafe"
+msgstr "Concept Quầy Bar Wine & Cafe"
+
+#: pillar-content
+msgid "uầy bar không chỉ là nơi pha chế, mà là điểm giao hòa của hương vị và cảm xúc: nơi khách đến thưởng vang, thưởng cafe, chia sẻ những câu chuyện."
+msgstr "uầy bar không chỉ là nơi pha chế, mà là điểm giao hòa của hương vị và cảm xúc: nơi khách đến thưởng vang, thưởng cafe, chia sẻ những câu chuyện."
+
+#: pillar-content
+msgid "Saigon Horeca thiết kế bar với tư duy mở, nơi bartender không chỉ pha chế mà còn giao tiếp và kết nối. Hệ thống thiết bị bar, khu bảo quản rượu vang và pha cafe được tính toán để đảm bảo sự nhất quán cao độ về chất lượng ly vang luôn đúng độ lạnh, ly cafe luôn tròn hương vị."
+msgstr "Saigon Horeca thiết kế bar với tư duy mở, nơi bartender không chỉ pha chế mà còn giao tiếp và kết nối. Hệ thống thiết bị bar, khu bảo quản rượu vang và pha cafe được tính toán để đảm bảo sự nhất quán cao độ về chất lượng ly vang luôn đúng độ lạnh, ly cafe luôn tròn hương vị."
+
+#: pillar-content
+msgid "Không gian & Trải nghiệm thực tế"
+msgstr "Không gian & Trải nghiệm thực tế"
+
+#: pillar-content
+msgid "Sự hài hòa tuyệt đối giữa nét thô mộc Địa Trung Hải và hơi thở ẩm thực đương đại."
+msgstr "Sự hài hòa tuyệt đối giữa nét thô mộc Địa Trung Hải và hơi thở ẩm thực đương đại."
+
+#: pillar-content
+msgid "Bàn Brunch Địa Trung Hải tại Casa Maria"
+msgstr "Bàn Brunch Địa Trung Hải tại Casa Maria"
+
+#: pillar-content
+msgid "Bữa tiệc Brunch Địa Trung Hải ngập tràn năng lượng và sắc màu tươi mát"
+msgstr "Bữa tiệc Brunch Địa Trung Hải ngập tràn năng lượng và sắc màu tươi mát"
+
+#: pillar-content
+msgid "Nghệ Thuật Trực Quan & Trải Nghiệm"
+msgstr "Nghệ Thuật Trực Quan & Trải Nghiệm"
+
+#: pillar-content
+msgid "ột bữa tiệc Brunch Địa Trung Hải ngập tràn màu sắc với trứng ốp rực rỡ, bánh mì giòn rụm và ly nước cam mát lành – mang đến khởi đầu hoàn hảo."
+msgstr "ột bữa tiệc Brunch Địa Trung Hải ngập tràn màu sắc với trứng ốp rực rỡ, bánh mì giòn rụm và ly nước cam mát lành – mang đến khởi đầu hoàn hảo."
+
+#: pillar-content
+msgid "Mỗi hương vị, ánh sáng và chi tiết decor gỗ mộc tại Casa Maria đều được Saigon Horeca nâng niu, tạo nên một hành trình thưởng thức ẩm thực trọn vẹn cả vị giác lẫn thị giác."
+msgstr "Mỗi hương vị, ánh sáng và chi tiết decor gỗ mộc tại Casa Maria đều được Saigon Horeca nâng niu, tạo nên một hành trình thưởng thức ẩm thực trọn vẹn cả vị giác lẫn thị giác."
+
+#: pillar-content
+msgid "Các xiên tapas pintxos tại Casa Maria"
+msgstr "Các xiên tapas pintxos tại Casa Maria"
+
+#: pillar-content
+msgid "Các xiên tapas pintxos trên nền bánh mì, phục vụ trong không khí ấm cúng của Casa Maria"
+msgstr "Các xiên tapas pintxos trên nền bánh mì, phục vụ trong không khí ấm cúng của Casa Maria"
+
+#: pillar-content
+msgid "Khi thiết bị bếp hoạt động với kỷ luật và nhịp độ hoàn hảo ở phía sau, đầu bếp có thể thăng hoa tuyệt đối để sáng tạo ra những đĩa tapas tinh tế nhất."
+msgstr "Khi thiết bị bếp hoạt động với kỷ luật và nhịp độ hoàn hảo ở phía sau, đầu bếp có thể thăng hoa tuyệt đối để sáng tạo ra những đĩa tapas tinh tế nhất."
+
+#: pillar-content
+msgid "Món vẹm sốt Tây Ban Nha"
+msgstr "Món vẹm sốt Tây Ban Nha"
+
+#: pillar-content
+msgid "Vẹm xanh sốt Tây Ban Nha đậm vị biển nồng nàn"
+msgstr "Vẹm xanh sốt Tây Ban Nha đậm vị biển nồng nàn"
+
+#: pillar-content
+msgid "Món nghêu hấp Tây Ban Nha"
+msgstr "Món nghêu hấp Tây Ban Nha"
+
+#: pillar-content
+msgid "Đĩa nghêu hấp Almejas a la Marinera nóng hổi đầy kích thích vị giác"
+msgstr "Đĩa nghêu hấp Almejas a la Marinera nóng hổi đầy kích thích vị giác"
+
+#: pillar-content
+msgid "Hương Vị Tapas Đích Thực"
+msgstr "Hương Vị Tapas Đích Thực"
+
+#: pillar-content
+msgid "Từ những phần vẹm xanh sốt Tây Ban Nha đậm đà đến đĩa nghêu hấp Almejas mọng nước, từng đĩa tapas đều mang hương vị nồng ấm của biển cả Địa Trung Hải, được chế biến chuẩn xác từ căn bếp mở chuyên nghiệp do Saigon Horeca trang bị."
+msgstr "Từ những phần vẹm xanh sốt Tây Ban Nha đậm đà đến đĩa nghêu hấp Almejas mọng nước, từng đĩa tapas đều mang hương vị nồng ấm của biển cả Địa Trung Hải, được chế biến chuẩn xác từ căn bếp mở chuyên nghiệp do Saigon Horeca trang bị."
+
+#: pillar-content
+msgid "Hoàn thiện & Bàn giao"
+msgstr "Hoàn thiện & Bàn giao"
+
+#: pillar-content
+msgid "ự hoàn mỹ đến từ những chi tiết nhỏ nhất. Saigon Horeca bàn giao hệ thống bếp và bar Casa Maria đáp ứng trọn vẹn cả tiêu chuẩn công nghệ lẫn giá trị thẩm mỹ nghệ thuật."
+msgstr "ự hoàn mỹ đến từ những chi tiết nhỏ nhất. Saigon Horeca bàn giao hệ thống bếp và bar Casa Maria đáp ứng trọn vẹn cả tiêu chuẩn công nghệ lẫn giá trị thẩm mỹ nghệ thuật."
+
+#: pillar-content
+msgid "Mỗi góc nhỏ, từ những bức tranh decor nghệ thuật đến hệ thống inox sáng bóng của thiết bị bếp, đều được đội ngũ kỹ sư Saigon Horeca chăm chút tỉ mỉ. Sự hài lòng tuyệt đối của đối tác Casa Maria chính là minh chứng cho năng lực triển khai dự án F&B chuẩn quốc tế của chúng tôi."
+msgstr "Mỗi góc nhỏ, từ những bức tranh decor nghệ thuật đến hệ thống inox sáng bóng của thiết bị bếp, đều được đội ngũ kỹ sư Saigon Horeca chăm chút tỉ mỉ. Sự hài lòng tuyệt đối của đối tác Casa Maria chính là minh chứng cho năng lực triển khai dự án F&B chuẩn quốc tế của chúng tôi."
+
+#: pillar-content
+msgid "Kiến tạo không gian ẩm thực không chỉ là lắp đặt thiết bị, mà là thổi hồn vào từng trải nghiệm vận hành bền vững."
+msgstr "Kiến tạo không gian ẩm thực không chỉ là lắp đặt thiết bị, mà là thổi hồn vào từng trải nghiệm vận hành bền vững."
+
+#: pillar-content
+msgid "Chi tiết tranh nghệ thuật decor treo tường tại Casa Maria"
+msgstr "Chi tiết tranh nghệ thuật decor treo tường tại Casa Maria"
+
+#: pillar-content
+msgid "Tranh nghệ thuật decor – Điểm xuyết không gian Tây Ban Nha ấm cúng"
+msgstr "Tranh nghệ thuật decor – Điểm xuyết không gian Tây Ban Nha ấm cúng"
+
+#: pillar-content
+msgid "Triết lý đối tác bền vững từ Saigon Horeca"
+msgstr "Triết lý đối tác bền vững từ Saigon Horeca"
+
+#: pillar-content
+msgid "Casa Maria là ví dụ điển hình cho cách Saigon Horeca tiếp cận dự án F&B cao cấp: từ bếp tapas, quầy bar wine – cafe đến hệ thống bảo quản và hút mùi, mỗi giải pháp đều được thiết kế để phục vụ đúng tinh thần Tây Ban Nha hiện đại."
+msgstr "Casa Maria là ví dụ điển hình cho cách Saigon Horeca tiếp cận dự án F&B cao cấp: từ bếp tapas, quầy bar wine – cafe đến hệ thống bảo quản và hút mùi, mỗi giải pháp đều được thiết kế để phục vụ đúng tinh thần Tây Ban Nha hiện đại."
+
+#: pillar-content
+msgid "Không chỉ bán thiết bị đơn lẻ."
+msgstr "Không chỉ bán thiết bị đơn lẻ."
+
+#: pillar-content
+msgid "Không áp công thức thiết kế rập khuôn."
+msgstr "Không áp công thức thiết kế rập khuôn."
+
+#: pillar-content
+msgid "Luôn kiến tạo từ concept vận hành & cảm xúc khách hàng."
+msgstr "Luôn kiến tạo từ concept vận hành & cảm xúc khách hàng."
+
+#: pillar-content
+msgid "Một căn bếp tốt không chỉ giúp nấu ăn ngon hơn – mà còn giúp hồn cốt của concept nhà hàng được kể một cách bền vững nhất."
+msgstr "Một căn bếp tốt không chỉ giúp nấu ăn ngon hơn – mà còn giúp hồn cốt của concept nhà hàng được kể một cách bền vững nhất."
+
+#: pillar-content
+msgid "Tổng thể dự án Casa Maria do Saigon Horeca triển khai"
+msgstr "Tổng thể dự án Casa Maria do Saigon Horeca triển khai"
+
+#: pillar-content
+msgid "Mặt tiền cửa đỏ Tây Ban Nha – Sự khởi đầu đầy cảm hứng của Casa Maria"
+msgstr "Mặt tiền cửa đỏ Tây Ban Nha – Sự khởi đầu đầy cảm hứng của Casa Maria"
+
+#: pillar-content
+msgid "Khám phá dự án"
+msgstr "Khám phá dự án"
+
+#: pillar-content
+msgid "Bản giao hưởng của Tapas, Rượu vang và một nhịp điệu vận hành hoàn hảo"
+msgstr "Bản giao hưởng của Tapas, Rượu vang và một nhịp điệu vận hành hoàn hảo"
+
+#: pillar-content
+msgid "Nơi ẩm thực Tây Ban Nha hiện đại được tôn vinh từ những điều nhỏ nhất."
+msgstr "Nơi ẩm thực Tây Ban Nha hiện đại được tôn vinh từ những điều nhỏ nhất."
+
+#: pillar-content
+msgid "Bản sắc & Không gian"
+msgstr "Bản sắc & Không gian"
+
+#: pillar-content
+msgid "ọa lạc tại 15D Ngô Quang Huy, Thảo Điền, TP.HCM, nhà hàng theo mô hình Vinos – Tapas Spanish Restaurant, nơi ẩm thực Tây Ban Nha được thể hiện qua những phần tapas tinh gọn, wine tasting và cafe."
+msgstr "ọa lạc tại 15D Ngô Quang Huy, Thảo Điền, TP.HCM, nhà hàng theo mô hình Vinos – Tapas Spanish Restaurant, nơi ẩm thực Tây Ban Nha được thể hiện qua những phần tapas tinh gọn, wine tasting và cafe."
+
+#: pillar-content
+msgid "Tất cả đặt trong một không gian gần gũi, mang đậm tinh thần Địa Trung Hải hiện đại, nơi gỗ ấm, gạch nung và ánh sáng vàng hoàng hôn giao thoa một cách hài hòa."
+msgstr "Tất cả đặt trong một không gian gần gũi, mang đậm tinh thần Địa Trung Hải hiện đại, nơi gỗ ấm, gạch nung và ánh sáng vàng hoàng hôn giao thoa một cách hài hòa."
+
+#: pillar-content
+msgid "Không gian quầy bar Casa Maria"
+msgstr "Không gian quầy bar Casa Maria"
+
+#: pillar-content
+msgid "Không gian tapas bar ấm cúng mang đậm tinh thần Địa Trung Hải"
+msgstr "Không gian tapas bar ấm cúng mang đậm tinh thần Địa Trung Hải"
+
+#: pillar-content
+msgid "Đầu bếp thao tác trong hệ thống bếp chính Casa Maria"
+msgstr "Đầu bếp thao tác trong hệ thống bếp chính Casa Maria"
+
+#: pillar-content
+msgid "Đầu bếp vận hành chuyên nghiệp trong không gian bếp tapas mở"
+msgstr "Đầu bếp vận hành chuyên nghiệp trong không gian bếp tapas mở"
+
+#: pillar-content
+msgid "Thiết kế bếp Tapas"
+msgstr "Thiết kế bếp Tapas"
+
+#: pillar-content
+msgid "ới Casa Maria, câu hỏi đầu tiên không phải là \"dùng thiết bị gì\", mà là bếp phải vận hành thế nào để phục vụ đúng tinh thần tapas và wine. Tapas đòi hỏi tốc độ, sự linh hoạt và tính nhất quán cao."
+msgstr "ới Casa Maria, câu hỏi đầu tiên không phải là "
+
+#: pillar-content
+msgid "Trong dự án này, Saigon Horeca tham gia sâu từ tư duy concept đến triển khai kỹ thuật, đảm bảo toàn bộ trải nghiệm của khách đều được \"hậu thuẫn\" bởi một hệ thống bếp – bar vận hành mượt mà phía sau."
+msgstr "Trong dự án này, Saigon Horeca tham gia sâu từ tư duy concept đến triển khai kỹ thuật, đảm bảo toàn bộ trải nghiệm của khách đều được "
+
+#: pillar-content
+msgid "Thiết bị Âu tinh chỉnh"
+msgstr "Thiết bị Âu tinh chỉnh"
+
+#: pillar-content
+msgid "Hệ thống bếp Âu tại Casa Maria được thiết kế để phục vụ nhiều món nhỏ, ra liên tục nhưng không tạo áp lực lên đầu bếp. Không gian bếp được tổ chức gọn, rõ luồng, hạn chế di chuyển thừa và tránh chồng chéo thao tác."
+msgstr "Hệ thống bếp Âu tại Casa Maria được thiết kế để phục vụ nhiều món nhỏ, ra liên tục nhưng không tạo áp lực lên đầu bếp. Không gian bếp được tổ chức gọn, rõ luồng, hạn chế di chuyển thừa và tránh chồng chéo thao tác."
+
+#: pillar-content
+msgid "Thiết bị bếp Âu do Saigon Horeca cung cấp được lựa chọn theo tiêu chí vừa đủ: đủ công suất cho giờ cao điểm, đủ linh hoạt để xử lý đa dạng món tapas, nhưng không làm bếp trở nên nặng nề hay dư thừa."
+msgstr "Thiết bị bếp Âu do Saigon Horeca cung cấp được lựa chọn theo tiêu chí vừa đủ: đủ công suất cho giờ cao điểm, đủ linh hoạt để xử lý đa dạng món tapas, nhưng không làm bếp trở nên nặng nề hay dư thừa."
+
+#: pillar-content
+msgid "Hệ thống bếp Âu Casa Maria"
+msgstr "Hệ thống bếp Âu Casa Maria"
+
+#: pillar-content
+msgid "Hệ thống bếp Âu inox cao cấp bố trí khoa học, tối ưu quy trình"
+msgstr "Hệ thống bếp Âu inox cao cấp bố trí khoa học, tối ưu quy trình"
+
+#: pillar-content
+msgid "Chi tiết thiết bị bếp nấu Casa Maria"
+msgstr "Chi tiết thiết bị bếp nấu Casa Maria"
+
+#: pillar-content
+msgid "Bếp từ, griddle và tủ mát công nghiệp tích hợp tiện lợi"
+msgstr "Bếp từ, griddle và tủ mát công nghiệp tích hợp tiện lợi"
+
+#: pillar-content
+msgid "Quy trình tinh chỉnh gọn - mở"
+msgstr "Quy trình tinh chỉnh gọn - mở"
+
+#: pillar-content
+msgid "Cho phép đầu bếp phối hợp, xử lý nhiều món tapas cùng lúc mà không lo chồng chéo thao tác."
+msgstr "Cho phép đầu bếp phối hợp, xử lý nhiều món tapas cùng lúc mà không lo chồng chéo thao tác."
+
+#: pillar-content
+msgid "Thiết bị Âu chọn lọc kỹ lưỡng"
+msgstr "Thiết bị Âu chọn lọc kỹ lưỡng"
+
+#: pillar-content
+msgid "Đáp ứng tiêu chí: Vừa đủ công suất, vừa đủ linh hoạt, không dư thừa, tối ưu hóa diện tích."
+msgstr "Đáp ứng tiêu chí: Vừa đủ công suất, vừa đủ linh hoạt, không dư thừa, tối ưu hóa diện tích."
+
+#: pillar-content
+msgid "Hậu thuẫn nhịp điệu Tapas"
+msgstr "Hậu thuẫn nhịp điệu Tapas"
+
+#: pillar-content
+msgid "Đảm bảo ra món liên tục, đều tay, giúp thực khách luôn tận hưởng trọn vẹn từng khoảnh khắc."
+msgstr "Đảm bảo ra món liên tục, đều tay, giúp thực khách luôn tận hưởng trọn vẹn từng khoảnh khắc."
+
+#: pillar-content
+msgid "Căn bếp tại Casa Maria không phô trương, mà lặng lẽ tinh chỉnh để trở thành nền tảng vận hành vững chãi cho một phong cách ẩm thực Tây Ban Nha đầy cảm xúc."
+msgstr "Căn bếp tại Casa Maria không phô trương, mà lặng lẽ tinh chỉnh để trở thành nền tảng vận hành vững chãi cho một phong cách ẩm thực Tây Ban Nha đầy cảm xúc."
+
+#: pillar-content
+msgid "Giải pháp bảo quản – Trữ đông – Chuẩn mực cho nguyên liệu Tây Ban Nha"
+msgstr "Giải pháp bảo quản – Trữ đông – Chuẩn mực cho nguyên liệu Tây Ban Nha"
+
+#: pillar-content
+msgid "Lớp kỹ thuật thầm lặng nhưng quyết định trực tiếp đến độ tươi ngon của từng phần tapas."
+msgstr "Lớp kỹ thuật thầm lặng nhưng quyết định trực tiếp đến độ tươi ngon của từng phần tapas."
+
+#: pillar-content
+msgid "Hệ thống quầy bar gỗ Casa Maria"
+msgstr "Hệ thống quầy bar gỗ Casa Maria"
+
+#: pillar-content
+msgid "Hệ thống quầy bar gỗ mộc mạc và thiết bị lạnh bảo quản chuyên dụng"
+msgstr "Hệ thống quầy bar gỗ mộc mạc và thiết bị lạnh bảo quản chuyên dụng"
+
+#: pillar-content
+msgid "Bảo quản mát & trữ đông chuyên sâu"
+msgstr "Bảo quản mát & trữ đông chuyên sâu"
+
+#: pillar-content
+msgid "Thiết bị lưu trữ phù hợp hoàn hảo với nhịp nhập nguyên liệu Tây Ban Nha tươi ngon hàng ngày như phô mai Manchego, Jamón Ibérico và hải sản cao cấp."
+msgstr "Thiết bị lưu trữ phù hợp hoàn hảo với nhịp nhập nguyên liệu Tây Ban Nha tươi ngon hàng ngày như phô mai Manchego, Jamón Ibérico và hải sản cao cấp."
+
+#: pillar-content
+msgid "Kỹ thuật sơ chế Sous-vide tinh tế"
+msgstr "Kỹ thuật sơ chế Sous-vide tinh tế"
+
+#: pillar-content
+msgid "Sử dụng máy sous-vide chuyên nghiệp từ Sammic giúp kiểm soát nhiệt độ chính xác tuyệt đối, giữ trọn hương vị tự nhiên và kết cấu hoàn mỹ cho các món tapas đút lò."
+msgstr "Sử dụng máy sous-vide chuyên nghiệp từ Sammic giúp kiểm soát nhiệt độ chính xác tuyệt đối, giữ trọn hương vị tự nhiên và kết cấu hoàn mỹ cho các món tapas đút lò."
+
+#: pillar-content
+msgid "Giải pháp đóng gói chân không chuyên nghiệp"
+msgstr "Giải pháp đóng gói chân không chuyên nghiệp"
+
+#: pillar-content
+msgid "Hút chân không hỗ trợ khâu chuẩn bị bán thành phẩm tối ưu, bảo toàn nguyên liệu trong điều kiện yếm khí lý tưởng, rút ngắn thời gian chuẩn bị cho giờ cao điểm."
+msgstr "Hút chân không hỗ trợ khâu chuẩn bị bán thành phẩm tối ưu, bảo toàn nguyên liệu trong điều kiện yếm khí lý tưởng, rút ngắn thời gian chuẩn bị cho giờ cao điểm."
+
+#: pillar-content
+msgid "Máy sous-vide Sammic tại Casa Maria"
+msgstr "Máy sous-vide Sammic tại Casa Maria"
+
+#: pillar-content
+msgid "Kỹ thuật sơ chế Sous-vide bằng máy Sammic chuyên dụng"
+msgstr "Kỹ thuật sơ chế Sous-vide bằng máy Sammic chuyên dụng"
+
+#: pillar-content
+msgid "Khu vực chậu rửa và bàn thao tác sơ chế"
+msgstr "Khu vực chậu rửa và bàn thao tác sơ chế"
+
+#: pillar-content
+msgid "Khu vực chậu rửa và bàn sơ chế inox y tế chuẩn vệ sinh an toàn thực phẩm"
+msgstr "Khu vực chậu rửa và bàn sơ chế inox y tế chuẩn vệ sinh an toàn thực phẩm"
+
+#: pillar-content
+msgid "Kỹ Thuật Thầm Lặng"
+msgstr "Kỹ Thuật Thầm Lặng"
+
+#: pillar-content
+msgid "Từng thớ thịt đùi heo muối Iberico béo ngậy, từng con tôm nướng đỏ rực hay đĩa bạch tuộc Pulpo a la Gallega mọng nước – tất cả đều cần một chế độ bảo quản chuẩn xác đến từng độ C để giữ trọn vẹn kết cấu nguyên liệu."
+msgstr "Từng thớ thịt đùi heo muối Iberico béo ngậy, từng con tôm nướng đỏ rực hay đĩa bạch tuộc Pulpo a la Gallega mọng nước – tất cả đều cần một chế độ bảo quản chuẩn xác đến từng độ C để giữ trọn vẹn kết cấu nguyên liệu."
+
+#: pillar-content
+msgid "Bảo quản mát và trữ đông không chỉ là giải pháp cất trữ, mà là sự tôn trọng cốt lõi của Saigon Horeca dành cho hương vị ẩm thực nguyên bản."
+msgstr "Bảo quản mát và trữ đông không chỉ là giải pháp cất trữ, mà là sự tôn trọng cốt lõi của Saigon Horeca dành cho hương vị ẩm thực nguyên bản."
+
+#: pillar-content
+msgid "Hút mùi bếp mở"
+msgstr "Hút mùi bếp mở"
+
+#: pillar-content
+msgid "Hút mùi cho bếp mở Casa Maria"
+msgstr "Hút mùi cho bếp mở Casa Maria"
+
+#: pillar-content
+msgid "Bếp mở cần xử lý mùi ngay tại nguồn, đủ êm để không phá vỡ trải nghiệm tapas & wine của khách."
+msgstr "Bếp mở cần xử lý mùi ngay tại nguồn, đủ êm để không phá vỡ trải nghiệm tapas & wine của khách."
+
+#: pillar-content
+msgid "Hút tại nguồn:"
+msgstr "Hút tại nguồn:"
+
+#: pillar-content
+msgid "Giữ khói mùi không lan ra khu khách."
+msgstr "Giữ khói mùi không lan ra khu khách."
+
+#: pillar-content
+msgid "Gọn với kiến trúc:"
+msgstr "Gọn với kiến trúc:"
+
+#: pillar-content
+msgid "Chụp hút và tuyến ống hòa vào tổng thể bếp mở."
+msgstr "Chụp hút và tuyến ống hòa vào tổng thể bếp mở."
+
+#: pillar-content
+msgid "Vận hành êm:"
+msgstr "Vận hành êm:"
+
+#: pillar-content
+msgid "Giảm tiếng ồn và giữ không khí thư thái cho wine bar."
+msgstr "Giảm tiếng ồn và giữ không khí thư thái cho wine bar."
+
+#: pillar-content
+msgid "Hệ thống bếp nấu và chụp hút mùi Casa Maria"
+msgstr "Hệ thống bếp nấu và chụp hút mùi Casa Maria"
+
+#: pillar-content
+msgid "Hệ thống chụp hút mùi chuyên dụng và bếp nấu Âu inox đồng bộ"
+msgstr "Hệ thống chụp hút mùi chuyên dụng và bếp nấu Âu inox đồng bộ"
+
+#: pillar-content
+msgid "Chi tiết thiết bị bếp Âu Casa Maria"
+msgstr "Chi tiết thiết bị bếp Âu Casa Maria"
+
+#: pillar-content
+msgid "Chi tiết thiết bị bếp Âu và griddle inox cao cấp lắp đặt hoàn thiện"
+msgstr "Chi tiết thiết bị bếp Âu và griddle inox cao cấp lắp đặt hoàn thiện"
+
+#: pillar-content
+msgid "Giải pháp kỹ thuật tinh tế này giúp Casa Maria giữ được sự cân bằng hoàn hảo giữa khu bếp hoạt động liên tục và không gian wine bar đầy thư thái."
+msgstr "Giải pháp kỹ thuật tinh tế này giúp Casa Maria giữ được sự cân bằng hoàn hảo giữa khu bếp hoạt động liên tục và không gian wine bar đầy thư thái."
+
+#: pillar-content
+msgid "Đầu bếp xào bùng lửa trên bếp gas Á công nghiệp G-Cup Bistro"
+msgstr "Đầu bếp xào bùng lửa trên bếp gas Á công nghiệp G-Cup Bistro"
+
+#: pillar-content
+msgid "Đầu bếp thao tác kỹ thuật xào bùng lửa lớn trên hệ thống bếp Á công nghiệp công suất cao, tạo hiệu ứng caramel hóa và hương vị đậm đà cho món ăn."
+msgstr "Đầu bếp thao tác kỹ thuật xào bùng lửa lớn trên hệ thống bếp Á công nghiệp công suất cao, tạo hiệu ứng caramel hóa và hương vị đậm đà cho món ăn."
+
+#: pillar-content
+msgid "VẬN HÀNH THÔNG MINH"
+msgstr "VẬN HÀNH THÔNG MINH"
+
+#: pillar-content
+msgid "Bố trí bếp bánh & bếp nấu một chiều"
+msgstr "Bố trí bếp bánh & bếp nấu một chiều"
+
+#: pillar-content
+msgid "“Đằng sau một không gian thưởng thức nghệ thuật là cấu trúc bếp một chiều khép kín, tối ưu hóa từng mét vuông mặt bằng shophouse.”"
+msgstr "“Đằng sau một không gian thưởng thức nghệ thuật là cấu trúc bếp một chiều khép kín, tối ưu hóa từng mét vuông mặt bằng shophouse.”"
+
+#: pillar-content
+msgid "Bếp bánh và bếp nấu tại G-Cup được Saigon Horeca bố trí thành hai phân khu độc lập nhưng kề sát, giúp mùi vị các món ăn không bị pha lẫn, giữ trọn vẹn hương vị thành phẩm."
+msgstr "Bếp bánh và bếp nấu tại G-Cup được Saigon Horeca bố trí thành hai phân khu độc lập nhưng kề sát, giúp mùi vị các món ăn không bị pha lẫn, giữ trọn vẹn hương vị thành phẩm."
+
+#: pillar-content
+msgid "Toàn bộ hệ thống bàn mát, tủ lạnh quầy bar inox Hoshizaki được thiết kế âm quầy tinh tế, nâng đỡ hoàn hảo cho luồng công việc liên tục từ sáng đến tối muộn."
+msgstr "Toàn bộ hệ thống bàn mát, tủ lạnh quầy bar inox Hoshizaki được thiết kế âm quầy tinh tế, nâng đỡ hoàn hảo cho luồng công việc liên tục từ sáng đến tối muộn."
+
+#: pillar-content
+msgid "SITE PHOTO BOARD / G-CUP"
+msgstr "SITE PHOTO BOARD / G-CUP"
+
+#: pillar-content
+msgid "Hình ảnh thực tế dự án G-Cup Coffee & Bistro"
+msgstr "Hình ảnh thực tế dự án G-Cup Coffee & Bistro"
+
+#: pillar-content
+msgid "Cặp máy xay Blendtec công nghiệp G-Cup Bistro"
+msgstr "Cặp máy xay Blendtec công nghiệp G-Cup Bistro"
+
+#: pillar-content
+msgid "Cặp máy xay Blendtec công nghiệp với hộp cách âm chống ồn chuyên dụng, giữ không gian phòng ăn yên tĩnh."
+msgstr "Cặp máy xay Blendtec công nghiệp với hộp cách âm chống ồn chuyên dụng, giữ không gian phòng ăn yên tĩnh."
+
+#: pillar-content
+msgid "Hệ quầy pha chế tích hợp tủ mát Hoshizaki"
+msgstr "Hệ quầy pha chế tích hợp tủ mát Hoshizaki"
+
+#: pillar-content
+msgid "Hệ quầy pha chế tích hợp tủ mát Hoshizaki, tối ưu diện tích bảo quản nguyên liệu ngay tại line phục vụ."
+msgstr "Hệ quầy pha chế tích hợp tủ mát Hoshizaki, tối ưu diện tích bảo quản nguyên liệu ngay tại line phục vụ."
+
+#: pillar-content
+msgid "Bàn đông công nghiệp Hoshizaki hiển thị -16 độ"
+msgstr "Bàn đông công nghiệp Hoshizaki hiển thị -16 độ"
+
+#: pillar-content
+msgid "Bàn đông Hoshizaki duy trì nhiệt độ âm sâu ổn định ở mức -16°C cho kem, đá viên và nguyên liệu lạnh."
+msgstr "Bàn đông Hoshizaki duy trì nhiệt độ âm sâu ổn định ở mức -16°C cho kem, đá viên và nguyên liệu lạnh."
+
+#: pillar-content
+msgid "Bàn mát dưới quầy bar G-Cup Bistro"
+msgstr "Bàn mát dưới quầy bar G-Cup Bistro"
+
+#: pillar-content
+msgid "Bàn mát và tủ bảo quản inox dưới quầy bar được bố trí theo luồng thao tác, sạch, gọn và dễ vận hành."
+msgstr "Bàn mát và tủ bảo quản inox dưới quầy bar được bố trí theo luồng thao tác, sạch, gọn và dễ vận hành."
+
+#: pillar-content
+msgid "Kết luận"
+msgstr "Kết luận"
+
+#: pillar-content
+msgid "Không gian G-Cup Bistro - Khi thiết kế & vận hành song hành"
+msgstr "Không gian G-Cup Bistro - Khi thiết kế & vận hành song hành"
+
+#: pillar-content
+msgid "Tọa lạc tại Thủ Thiêm, G.Cup Coffee & Bistro cần một quầy bar gọn, đẹp và vận hành mượt trong mặt bằng shophouse cao cấp."
+msgstr "Tọa lạc tại Thủ Thiêm, G.Cup Coffee & Bistro cần một quầy bar gọn, đẹp và vận hành mượt trong mặt bằng shophouse cao cấp."
+
+#: pillar-content
+msgid "Saigon Horeca tổ chức quầy bar một chiều, kết nối với bếp bánh phía trong để barista thao tác nhanh, sạch và ít di chuyển thừa."
+msgstr "Saigon Horeca tổ chức quầy bar một chiều, kết nối với bếp bánh phía trong để barista thao tác nhanh, sạch và ít di chuyển thừa."
+
+#: pillar-content
+msgid "Thiết kế quầy bar pha chế chuyên nghiệp tại G-Cup Coffee & Bistro"
+msgstr "Thiết kế quầy bar pha chế chuyên nghiệp tại G-Cup Coffee & Bistro"
+
+#: pillar-content
+msgid "Quầy bar pha chế chính tại G-Cup Coffee & Bistro Thủ Thiêm."
+msgstr "Quầy bar pha chế chính tại G-Cup Coffee & Bistro Thủ Thiêm."
+
+#: pillar-content
+msgid "Khu vực quầy pha chế chính G-Cup Bistro"
+msgstr "Khu vực quầy pha chế chính G-Cup Bistro"
+
+#: pillar-content
+msgid "Station thao tác gọn, ưu tiên quy trình một chiều cho barista."
+msgstr "Station thao tác gọn, ưu tiên quy trình một chiều cho barista."
+
+#: pillar-content
+msgid "THÁCH THỨC SHOPHOUSE"
+msgstr "THÁCH THỨC SHOPHOUSE"
+
+#: pillar-content
+msgid "Thách Thức Kỹ Thuật Tại Khu Phức Hợp Cao Cấp"
+msgstr "Thách Thức Kỹ Thuật Tại Khu Phức Hợp Cao Cấp"
+
+#: pillar-content
+msgid "“Thiết kế bếp và quầy bar cho shophouse tại Metropole Thủ Thiêm đòi hỏi sự tỉ mỉ tối đa trên từng mét vuông diện tích.”"
+msgstr "“Thiết kế bếp và quầy bar cho shophouse tại Metropole Thủ Thiêm đòi hỏi sự tỉ mỉ tối đa trên từng mét vuông diện tích.”"
+
+#: pillar-content
+msgid "Khác với mặt bằng độc lập, shophouse thương mại đi kèm những quy định kỹ thuật vô cùng khắt khe về an toàn PCCC, tải trọng điện và hệ thống hút khói, cấp khí tươi để không gây ảnh hưởng đến cư dân xung quanh."
+msgstr "Khác với mặt bằng độc lập, shophouse thương mại đi kèm những quy định kỹ thuật vô cùng khắt khe về an toàn PCCC, tải trọng điện và hệ thống hút khói, cấp khí tươi để không gây ảnh hưởng đến cư dân xung quanh."
+
+#: pillar-content
+msgid "Hệ quầy beverage counter và hệ lạnh Hoshizaki shophouse"
+msgstr "Hệ quầy beverage counter và hệ lạnh Hoshizaki shophouse"
+
+#: pillar-content
+msgid "Hệ thống quầy bar được tính toán chi tiết, tích hợp hoàn hảo hệ lạnh Hoshizaki."
+msgstr "Hệ thống quầy bar được tính toán chi tiết, tích hợp hoàn hảo hệ lạnh Hoshizaki."
+
+#: pillar-content
+msgid "Cặp máy xay Blendtec công nghiệp chống ồn"
+msgstr "Cặp máy xay Blendtec công nghiệp chống ồn"
+
+#: pillar-content
+msgid "Cặp máy xay Blendtec công nghiệp tích hợp hộp chống ồn âm quầy."
+msgstr "Cặp máy xay Blendtec công nghiệp tích hợp hộp chống ồn âm quầy."
+
+#: pillar-content
+msgid "Quầy Bar Specialty (Tầng Trệt)"
+msgstr "Quầy Bar Specialty (Tầng Trệt)"
+
+#: pillar-content
+msgid "Trực diện tiếp đón khách hàng, quầy bar được tính toán chi tiết để lắp đặt máy pha specialty espresso La Marzocco, máy xay Anfim cùng hệ thống vòi rửa ly áp lực âm bàn, hỗ trợ barista thao tác nhanh chóng và sạch sẽ tối đa."
+msgstr "Trực diện tiếp đón khách hàng, quầy bar được tính toán chi tiết để lắp đặt máy pha specialty espresso La Marzocco, máy xay Anfim cùng hệ thống vòi rửa ly áp lực âm bàn, hỗ trợ barista thao tác nhanh chóng và sạch sẽ tối đa."
+
+#: pillar-content
+msgid "Bếp Bánh & Bếp Nóng (Tầng Hai)"
+msgstr "Bếp Bánh & Bếp Nóng (Tầng Hai)"
+
+#: pillar-content
+msgid "Saigon Horeca tổ chức quy trình một chiều khép kín, phân tách rõ ràng khu bếp nóng chuẩn bị món ăn nhẹ và khu bếp bánh ngọt chuẩn vị Âu để tránh giao thoa mùi vị và nhiệt độ khi hoạt động với tần suất cao."
+msgstr "Saigon Horeca tổ chức quy trình một chiều khép kín, phân tách rõ ràng khu bếp nóng chuẩn bị món ăn nhẹ và khu bếp bánh ngọt chuẩn vị Âu để tránh giao thoa mùi vị và nhiệt độ khi hoạt động với tần suất cao."
+
+#: pillar-content
+msgid "Bằng việc tính toán chuẩn xác từ khâu đi ống gió kỹ thuật cho đến định vị chi tiết từng neo thiết bị, Saigon Horeca đã hiện thực hóa không gian bếp mở hoàn mỹ, an toàn tuyệt đối và tôn vinh kiến trúc neutral sang trọng của G-Cup Bistro."
+msgstr "Bằng việc tính toán chuẩn xác từ khâu đi ống gió kỹ thuật cho đến định vị chi tiết từng neo thiết bị, Saigon Horeca đã hiện thực hóa không gian bếp mở hoàn mỹ, an toàn tuyệt đối và tôn vinh kiến trúc neutral sang trọng của G-Cup Bistro."
+
+#: pillar-content
+msgid "Cận cảnh máy pha cà phê La Marzocco bóng bẩy"
+msgstr "Cận cảnh máy pha cà phê La Marzocco bóng bẩy"
+
+#: pillar-content
+msgid "Máy pha La Marzocco bằng thép không gỉ bóng loáng."
+msgstr "Máy pha La Marzocco bằng thép không gỉ bóng loáng."
+
+#: pillar-content
+msgid "Hệ thống máy xay cà phê Anfim G-Cup Bistro"
+msgstr "Hệ thống máy xay cà phê Anfim G-Cup Bistro"
+
+#: pillar-content
+msgid "Máy xay Anfim đạt độ mịn đồng đều tối đa cho espresso."
+msgstr "Máy xay Anfim đạt độ mịn đồng đều tối đa cho espresso."
+
+#: pillar-content
+msgid "Chi tiết bộ rửa ly âm bàn"
+msgstr "Chi tiết bộ rửa ly âm bàn"
+
+#: pillar-content
+msgid "Chậu rửa tích hợp bộ rửa ly áp lực âm bàn gọn gàng."
+msgstr "Chậu rửa tích hợp bộ rửa ly áp lực âm bàn gọn gàng."
+
+#: pillar-content
+msgid "Bộ Drip Filter pha cà phê thủ công tại G-Cup Bistro"
+msgstr "Bộ Drip Filter pha cà phê thủ công tại G-Cup Bistro"
+
+#: pillar-content
+msgid "Bộ Drip Filter pha cà phê nhỏ giọt thủ công tinh tế."
+msgstr "Bộ Drip Filter pha cà phê nhỏ giọt thủ công tinh tế."
+
+#: pillar-content
+msgid "THÔNG SỐ & GIẢI PHÁP"
+msgstr "THÔNG SỐ & GIẢI PHÁP"
+
+#: pillar-content
+msgid "Giải Pháp Vận Hành Đồng Bộ"
+msgstr "Giải Pháp Vận Hành Đồng Bộ"
+
+#: pillar-content
+msgid "Hệ thống hút khói & cấp khí tươi"
+msgstr "Hệ thống hút khói & cấp khí tươi"
+
+#: pillar-content
+msgid "Thiết kế chuẩn xác từ khâu tính toán ống gió, bộ lọc mùi, đảm bảo không khí phòng ăn luôn sạch thoáng, không bị bám mùi khói từ khu shophouse."
+msgstr "Thiết kế chuẩn xác từ khâu tính toán ống gió, bộ lọc mùi, đảm bảo không khí phòng ăn luôn sạch thoáng, không bị bám mùi khói từ khu shophouse."
+
+#: pillar-content
+msgid "Hệ thống lạnh tích hợp Hoshizaki"
+msgstr "Hệ thống lạnh tích hợp Hoshizaki"
+
+#: pillar-content
+msgid "Hệ thống tủ mát và bàn đông Hoshizaki duy trì lạnh âm sâu đạt chuẩn -16°C, bảo quản kem và đá viên tối ưu ngay tại quầy pha chế."
+msgstr "Hệ thống tủ mát và bàn đông Hoshizaki duy trì lạnh âm sâu đạt chuẩn -16°C, bảo quản kem và đá viên tối ưu ngay tại quầy pha chế."
+
+#: pillar-content
+msgid "Đảm bảo quy chuẩn PCCC shophouse"
+msgstr "Đảm bảo quy chuẩn PCCC shophouse"
+
+#: pillar-content
+msgid "Lắp đặt đồng bộ với hệ trần kỹ thuật của ban quản lý Metropole, bảo đảm an toàn PCCC tuyệt đối và vận hành bền bỉ."
+msgstr "Lắp đặt đồng bộ với hệ trần kỹ thuật của ban quản lý Metropole, bảo đảm an toàn PCCC tuyệt đối và vận hành bền bỉ."
+
+#: pillar-content
+msgid "Danh Mục Thiết Bị Lắp Đặt Chiến Lược"
+msgstr "Danh Mục Thiết Bị Lắp Đặt Chiến Lược"
+
+#: pillar-content
+msgid "Tuyển chọn những thương hiệu F&B hàng đầu thế giới được Saigon Horeca tư vấn, cung cấp và lắp đặt đồng bộ tại G-Cup Bistro."
+msgstr "Tuyển chọn những thương hiệu F&B hàng đầu thế giới được Saigon Horeca tư vấn, cung cấp và lắp đặt đồng bộ tại G-Cup Bistro."
+
+#: pillar-content
+msgid "Bếp từ công nghiệp Saigon Horeca"
+msgstr "Bếp từ công nghiệp Saigon Horeca"
+
+#: pillar-content
+msgid "Hệ thống bếp từ công suất cao được sản xuất riêng, an toàn tuyệt đối, gia nhiệt tức thì và cực kỳ dễ vệ sinh lau chùi."
+msgstr "Hệ thống bếp từ công suất cao được sản xuất riêng, an toàn tuyệt đối, gia nhiệt tức thì và cực kỳ dễ vệ sinh lau chùi."
+
+#: pillar-content
+msgid "Máy rửa chén Ozti (Thổ Nhĩ Kỳ)"
+msgstr "Máy rửa chén Ozti (Thổ Nhĩ Kỳ)"
+
+#: pillar-content
+msgid "Giải pháp rửa sấy khép kín giúp tiết kiệm tối đa thời gian, nhân lực và lượng nước tiêu thụ trong các ca vận hành cao điểm."
+msgstr "Giải pháp rửa sấy khép kín giúp tiết kiệm tối đa thời gian, nhân lực và lượng nước tiêu thụ trong các ca vận hành cao điểm."
+
+#: pillar-content
+msgid "Lò hấp nướng đa năng Giorik (Ý)"
+msgstr "Lò hấp nướng đa năng Giorik (Ý)"
+
+#: pillar-content
+msgid "Thiết bị đa năng hàng đầu châu Âu hỗ trợ chế biến linh hoạt từ các món Á đến Âu, kiểm soát độ ẩm và nhiệt độ nướng đối lưu hoàn hảo."
+msgstr "Thiết bị đa năng hàng đầu châu Âu hỗ trợ chế biến linh hoạt từ các món Á đến Âu, kiểm soát độ ẩm và nhiệt độ nướng đối lưu hoàn hảo."
+
+#: pillar-content
+msgid "Hệ thống lạnh quầy bar & tủ trưng bày"
+msgstr "Hệ thống lạnh quầy bar & tủ trưng bày"
+
+#: pillar-content
+msgid "Bàn mát barista, tủ đông âm tủ mát trưng bày bánh Âu được đồng bộ hóa toàn diện, vận hành ổn định và giữ nguyên tính thẩm mỹ tinh tế."
+msgstr "Bàn mát barista, tủ đông âm tủ mát trưng bày bánh Âu được đồng bộ hóa toàn diện, vận hành ổn định và giữ nguyên tính thẩm mỹ tinh tế."
+
+#: pillar-content
+msgid "Đầu bếp sushi đang trực tiếp trình diễn và phục vụ thực khách tại quầy gỗ sồi Omakase"
+msgstr "Đầu bếp sushi đang trực tiếp trình diễn và phục vụ thực khách tại quầy gỗ sồi Omakase"
+
+#: pillar-content
+msgid "Khu bếp sơ chế và chuẩn bị nguyên liệu thực tế được tối ưu hóa bằng thiết bị inox cao cấp"
+msgstr "Khu bếp sơ chế và chuẩn bị nguyên liệu thực tế được tối ưu hóa bằng thiết bị inox cao cấp"
+
+#: pillar-content
+msgid "Toàn cảnh không gian quầy sushi bar Omakase sang trọng tích hợp âm nhạc vinyl tại Roka Fella"
+msgstr "Toàn cảnh không gian quầy sushi bar Omakase sang trọng tích hợp âm nhạc vinyl tại Roka Fella"
+
+#: pillar-content
+msgid "Sashimi Otoro Uni Roka Fella"
+msgstr "Sashimi Otoro Uni Roka Fella"
+
+#: pillar-content
+msgid "Khay nguyên liệu Sashimi thượng hạng với bụng cá ngừ Otoro, cầu gai Uni và bào ngư"
+msgstr "Khay nguyên liệu Sashimi thượng hạng với bụng cá ngừ Otoro, cầu gai Uni và bào ngư"
+
+#: pillar-content
+msgid "Nigiri Platter Roka Fella"
+msgstr "Nigiri Platter Roka Fella"
+
+#: pillar-content
+msgid "Khay sushi nigiri thập cẩm hảo hạng tuyển chọn chuẩn vị Omakase"
+msgstr "Khay sushi nigiri thập cẩm hảo hạng tuyển chọn chuẩn vị Omakase"
+
+#: pillar-content
+msgid "Wagyu Tartare Roka Fella"
+msgstr "Wagyu Tartare Roka Fella"
+
+#: pillar-content
+msgid "Bò Wagyu Tartare thượng hạng trộn lòng đỏ trứng tươi và hành tây"
+msgstr "Bò Wagyu Tartare thượng hạng trộn lòng đỏ trứng tươi và hành tây"
+
+#: pillar-content
+msgid "Sashimi Platter Roka Fella"
+msgstr "Sashimi Platter Roka Fella"
+
+#: pillar-content
+msgid "Set Sashimi thập cẩm hảo hạng với bụng cá ngừ Otoro, cá cam Hamachi và sò điệp"
+msgstr "Set Sashimi thập cẩm hảo hạng với bụng cá ngừ Otoro, cá cam Hamachi và sò điệp"
+
+#: pillar-content
+msgid "Hotate Truffle Sashimi Roka Fella"
+msgstr "Hotate Truffle Sashimi Roka Fella"
+
+#: pillar-content
+msgid "Sashimi sò điệp Nhật khè nhẹ kèm nấm Truffle đen đắt đỏ và cánh hoa nghệ thuật"
+msgstr "Sashimi sò điệp Nhật khè nhẹ kèm nấm Truffle đen đắt đỏ và cánh hoa nghệ thuật"
+
+#: pillar-content
+msgid "Madai Nigiri Roka Fella"
+msgstr "Madai Nigiri Roka Fella"
+
+#: pillar-content
+msgid "Nigiri cá tráp biển Madai bóng bẩy trang trí lá xanh và trứng cá chuồn vàng"
+msgstr "Nigiri cá tráp biển Madai bóng bẩy trang trí lá xanh và trứng cá chuồn vàng"
+
+#: pillar-content
+msgid "Hamachi Caviar Nigiri Roka Fella"
+msgstr "Hamachi Caviar Nigiri Roka Fella"
+
+#: pillar-content
+msgid "Nigiri cá cam Hamachi khè nhẹ mặt phủ trứng cá đen sang trọng"
+msgstr "Nigiri cá cam Hamachi khè nhẹ mặt phủ trứng cá đen sang trọng"
+
+#: pillar-content
+msgid "Aburi Hotate Nigiri Roka Fella"
+msgstr "Aburi Hotate Nigiri Roka Fella"
+
+#: pillar-content
+msgid "Nigiri sò điệp Nhật Bản khò lửa nhẹ (Aburi Hotate) rắc bột tiêu đen"
+msgstr "Nigiri sò điệp Nhật Bản khò lửa nhẹ (Aburi Hotate) rắc bột tiêu đen"
+
+#: pillar-content
+msgid "Kinmedai Garlic Nigiri Roka Fella"
+msgstr "Kinmedai Garlic Nigiri Roka Fella"
+
+#: pillar-content
+msgid "Nigiri cá kim mục Kinmedai khò nhẹ mặt phủ sốt tỏi đen và bột gia vị"
+msgstr "Nigiri cá kim mục Kinmedai khò nhẹ mặt phủ sốt tỏi đen và bột gia vị"
+
+#: pillar-content
+msgid "Không gian sảnh tiệc Omakase cao cấp nổi bật với mảng tường rêu xanh tự nhiên mang phong cách Wabi-Sabi"
+msgstr "Không gian sảnh tiệc Omakase cao cấp nổi bật với mảng tường rêu xanh tự nhiên mang phong cách Wabi-Sabi"
+
+#: pillar-content
+msgid "Đầu bếp tỉ mỉ đặt lát cá hồi tươi lên miếng sushi nigiri trên quầy gỗ"
+msgstr "Đầu bếp tỉ mỉ đặt lát cá hồi tươi lên miếng sushi nigiri trên quầy gỗ"
+
+#: pillar-content
+msgid "Khay gỗ lớn đựng Set sushi nigiri thập cẩm cao cấp bao gồm bụng cá ngừ Otoro, tôm ngọt và trứng cá hồi"
+msgstr "Khay gỗ lớn đựng Set sushi nigiri thập cẩm cao cấp bao gồm bụng cá ngừ Otoro, tôm ngọt và trứng cá hồi"
+
+#: pillar-content
+msgid "Concept & Vật liệu"
+msgstr "Concept & Vật liệu"
+
+#: pillar-content
+msgid "The Brix Traditional Materials Concept"
+msgstr "The Brix Traditional Materials Concept"
+
+#: pillar-content
+msgid "Ốc đảo nghỉ dưỡng biệt lập với hồ bơi vô cực xanh mát bao quanh bởi rặng dừa nhiệt đới và không gian thư giãn ngoài trời phóng khoáng"
+msgstr "Ốc đảo nghỉ dưỡng biệt lập với hồ bơi vô cực xanh mát bao quanh bởi rặng dừa nhiệt đới và không gian thư giãn ngoài trời phóng khoáng"
+
+#: pillar-content
+msgid "Không gian & Bếp"
+msgstr "Không gian & Bếp"
+
+#: pillar-content
+msgid "The refreshing and serene mood of the guests is partly contributed by Saigon Horeca, the consulting and equipment provider for the Kitchen and Pastry areas of the restaurant."
+msgstr "The refreshing and serene mood of the guests is partly contributed by Saigon Horeca, the consulting and equipment provider for the Kitchen and Pastry areas of the restaurant."
+
+#: pillar-content
+msgid "The Brix Main Kitchen Area"
+msgstr "The Brix Main Kitchen Area"
+
+#: pillar-content
+msgid "Hệ bếp nóng inox 304 liên hoàn chuyên nghiệp kết hợp tum hút mùi tiêu âm công suất lớn, giữ cho gian bếp luôn thông thoáng và sạch sẽ."
+msgstr "Hệ bếp nóng inox 304 liên hoàn chuyên nghiệp kết hợp tum hút mùi tiêu âm công suất lớn, giữ cho gian bếp luôn thông thoáng và sạch sẽ."
+
+#: pillar-content
+msgid "The Brix Cooking Station"
+msgstr "The Brix Cooking Station"
+
+#: pillar-content
+msgid "Bàn soạn chia inox trung tâm tích hợp ngăn mát under-counter, trang bị hệ đèn giữ nóng chao đồng cổ điển giúp bảo toàn hương vị món ăn trước khi ra bàn."
+msgstr "Bàn soạn chia inox trung tâm tích hợp ngăn mát under-counter, trang bị hệ đèn giữ nóng chao đồng cổ điển giúp bảo toàn hương vị món ăn trước khi ra bàn."
+
+#: pillar-content
+msgid "The Brix Pastry Area"
+msgstr "The Brix Pastry Area"
+
+#: pillar-content
+msgid "Bản vẽ quy hoạch không gian phòng bánh 18m² tối ưu hóa luồng di chuyển, giúp thợ làm bánh thao tác chuẩn xác từ nhào bột đến nướng bánh thành phẩm."
+msgstr "Bản vẽ quy hoạch không gian phòng bánh 18m² tối ưu hóa luồng di chuyển, giúp thợ làm bánh thao tác chuẩn xác từ nhào bột đến nướng bánh thành phẩm."
+
+#: pillar-content
+msgid "Tropical Pool-Side Bistro · District 2"
+msgstr "Tropical Pool-Side Bistro · District 2"
+
+#: pillar-content
+msgid "Đảo nghỉ dưỡng giữa lòng thành phố"
+msgstr "Đảo nghỉ dưỡng giữa lòng thành phố"
+
+#: pillar-content
+msgid "Nơi thiên nhiên nhiệt đới hòa quyện cùng ẩm thực Âu tinh tế — một ốc đảo xanh mát bên hồ bơi, tách biệt khỏi nhịp sống đô thị ồn ào."
+msgstr "Nơi thiên nhiên nhiệt đới hòa quyện cùng ẩm thực Âu tinh tế — một ốc đảo xanh mát bên hồ bơi, tách biệt khỏi nhịp sống đô thị ồn ào."
+
+#: pillar-content
+msgid "Khám phá"
+msgstr "Khám phá"
+
+#: pillar-content
+msgid "Ốc đảo nhiệt đới giữa lòng Sài Gòn"
+msgstr "Ốc đảo nhiệt đới giữa lòng Sài Gòn"
+
+#: pillar-content
+msgid "The Brix Tropical Pool-Side Space"
+msgstr "The Brix Tropical Pool-Side Space"
+
+#: pillar-content
+msgid "Không gian ẩm thực ngoài trời đầy thư thái bên hồ bơi, nổi bật với hệ trần lam gỗ tự nhiên đón ánh sáng tự nhiên và gió mát dịu"
+msgstr "Không gian ẩm thực ngoài trời đầy thư thái bên hồ bơi, nổi bật với hệ trần lam gỗ tự nhiên đón ánh sáng tự nhiên và gió mát dịu"
+
+#: pillar-content
+msgid "Momentum Living"
+msgstr "Momentum Living"
+
+#: pillar-content
+msgid "Ẩm thực Âu tinh tế"
+msgstr "Ẩm thực Âu tinh tế"
+
+#: pillar-content
+msgid "The Brix European Cuisine"
+msgstr "The Brix European Cuisine"
+
+#: pillar-content
+msgid "Vẻ đẹp lung linh huyền ảo của The Brix về đêm với những dải đèn ấm áp phản chiếu trên mặt nước hồ bơi xanh ngọc bích trữ tình"
+msgstr "Vẻ đẹp lung linh huyền ảo của The Brix về đêm với những dải đèn ấm áp phản chiếu trên mặt nước hồ bơi xanh ngọc bích trữ tình"
+
+#: pillar-content
+msgid "Quầy pha chế trung tâm – Giao điểm của Thẩm mỹ & Vận hành"
+msgstr "Quầy pha chế trung tâm – Giao điểm của Thẩm mỹ & Vận hành"
+
+#: pillar-content
+msgid "Quầy pha chế trung tâm không chỉ là nơi phục vụ đồ uống. Tại The Cheezy Time, đây là điểm chạm thị giác đầu tiên, kết nối mượt mà giữa không gian nhà hàng ấm cúng và nhịp sống năng động."
+msgstr "Quầy pha chế trung tâm không chỉ là nơi phục vụ đồ uống. Tại The Cheezy Time, đây là điểm chạm thị giác đầu tiên, kết nối mượt mà giữa không gian nhà hàng ấm cúng và nhịp sống năng động."
+
+#: pillar-content
+msgid "Thiết kế phối cảnh 3D quầy pha chế được Saigon Horeca tư vấn bố trí tỉ mỉ: từ hệ mặt đá cao cấp dễ vệ sinh, tủ kính trưng bày bánh ngọt tích hợp đèn LED ấm áp, cho đến logo thương hiệu phát sáng nhẹ dịu – tất cả tạo nên ấn tượng chuyên nghiệp ngay từ cái nhìn đầu tiên."
+msgstr "Thiết kế phối cảnh 3D quầy pha chế được Saigon Horeca tư vấn bố trí tỉ mỉ: từ hệ mặt đá cao cấp dễ vệ sinh, tủ kính trưng bày bánh ngọt tích hợp đèn LED ấm áp, cho đến logo thương hiệu phát sáng nhẹ dịu – tất cả tạo nên ấn tượng chuyên nghiệp ngay từ cái nhìn đầu tiên."
+
+#: pillar-content
+msgid "Thiết kế phối cảnh 3D quầy pha chế trung tâm The Cheezy Time"
+msgstr "Thiết kế phối cảnh 3D quầy pha chế trung tâm The Cheezy Time"
+
+#: pillar-content
+msgid "Thiết kế phối cảnh 3D quầy pha chế trung tâm với dải đèn LED hắt sáng mềm mại, tủ trưng bày bánh ngọt và logo nhận diện thương hiệu độc đáo."
+msgstr "Thiết kế phối cảnh 3D quầy pha chế trung tâm với dải đèn LED hắt sáng mềm mại, tủ trưng bày bánh ngọt và logo nhận diện thương hiệu độc đáo."
+
+#: pillar-content
+msgid "Hệ thống bếp gas công nghiệp bằng thép không gỉ cao cấp"
+msgstr "Hệ thống bếp gas công nghiệp bằng thép không gỉ cao cấp"
+
+#: pillar-content
+msgid "Cận cảnh hệ thống bếp gas công nghiệp bằng thép không gỉ cao cấp được lắp đặt chuẩn chỉnh cho khu vực bếp nóng."
+msgstr "Cận cảnh hệ thống bếp gas công nghiệp bằng thép không gỉ cao cấp được lắp đặt chuẩn chỉnh cho khu vực bếp nóng."
+
+#: pillar-content
+msgid "Hồn sông nước & Vật liệu"
+msgstr "Hồn sông nước & Vật liệu"
+
+#: pillar-content
+msgid "hợ nổi không ồn ào khoe sắc. Nó lặng lẽ giữ lại cái hồn của miền sông nước: sự hài hòa với thiên nhiên, sự chân thành trong cách con người đối đãi với nhau."
+msgstr "hợ nổi không ồn ào khoe sắc. Nó lặng lẽ giữ lại cái hồn của miền sông nước: sự hài hòa với thiên nhiên, sự chân thành trong cách con người đối đãi với nhau."
+
+#: pillar-content
+msgid "Và chính tinh thần ấy đã trở thành nền tảng cho toàn bộ concept của The Cheezy Time – từ không gian kiến trúc, vật liệu, cho đến trải nghiệm ẩm thực."
+msgstr "Và chính tinh thần ấy đã trở thành nền tảng cho toàn bộ concept của The Cheezy Time – từ không gian kiến trúc, vật liệu, cho đến trải nghiệm ẩm thực."
+
+#: pillar-content
+msgid "The Cheezy Time chọn kể câu chuyện miền Tây qua vật liệu: ánh inox copper vàng đồng mang sắc thái thời gian, gợi nhắc những giá trị truyền đời; chất liệu gỗ đậm màu đất phù sa trầm lắng; và sỏi polymer tựa dấu vết của mặt đất, của từng bước chân bồi tụ phù sa."
+msgstr "The Cheezy Time chọn kể câu chuyện miền Tây qua vật liệu: ánh inox copper vàng đồng mang sắc thái thời gian, gợi nhắc những giá trị truyền đời; chất liệu gỗ đậm màu đất phù sa trầm lắng; và sỏi polymer tựa dấu vết của mặt đất, của từng bước chân bồi tụ phù sa."
+
+#: pillar-content
+msgid "Một góc bài trí tinh tế bên trong nhà hàng, nơi các chất liệu gỗ, kim loại và ánh sáng vàng ấm hòa quyện tạo nên không khí lãng mạn đậm chất Ý."
+msgstr "Một góc bài trí tinh tế bên trong nhà hàng, nơi các chất liệu gỗ, kim loại và ánh sáng vàng ấm hòa quyện tạo nên không khí lãng mạn đậm chất Ý."
+
+#: pillar-content
+msgid "Bàn ghế gỗ trầm và quầy bar trung tâm tại The Cheezy Time"
+msgstr "Bàn ghế gỗ trầm và quầy bar trung tâm tại The Cheezy Time"
+
+#: pillar-content
+msgid "Không gian ẩm thực ấm cúng tại The Cheezy Time với bàn ghế gỗ sồi tự nhiên và hệ trần thép uốn cong tạo hình mui thuyền độc bản."
+msgstr "Không gian ẩm thực ấm cúng tại The Cheezy Time với bàn ghế gỗ sồi tự nhiên và hệ trần thép uốn cong tạo hình mui thuyền độc bản."
+
+#: pillar-content
+msgid "Hệ trần cong nghệ thuật tại The Cheezy Time"
+msgstr "Hệ trần cong nghệ thuật tại The Cheezy Time"
+
+#: pillar-content
+msgid "Hệ vòm tròn khoét rỗng nghệ thuật và trần thép lượn sóng tạo nên chiều sâu thị giác ấn tượng cho không gian ẩm thực miền Tây sông nước kết hợp văn hóa Ý."
+msgstr "Hệ vòm tròn khoét rỗng nghệ thuật và trần thép lượn sóng tạo nên chiều sâu thị giác ấn tượng cho không gian ẩm thực miền Tây sông nước kết hợp văn hóa Ý."
+
+#: pillar-content
+msgid "Dòng chảy vận hành"
+msgstr "Dòng chảy vận hành"
+
+#: pillar-content
+msgid "Mỗi chất liệu tạo nên một cuộc đối thoại giữa văn hoá, không gian và cảm xúc. Tinh thần \"dòng chảy\" này kéo dài đến cả những không gian phía sau – nơi quyết định nhịp sống thực sự của toàn bộ nhà hàng, tựa như cách chợ nổi đã tồn tại qua bao thế hệ."
+msgstr "Mỗi chất liệu tạo nên một cuộc đối thoại giữa văn hoá, không gian và cảm xúc. Tinh thần "
+
+#: pillar-content
+msgid "Một concept lấy cảm hứng từ chợ nổi đòi hỏi sự linh hoạt tuyệt đối. Nó yêu cầu căn bếp phía sau phải đủ kỷ luật để vận hành hiệu quả, nhưng cũng đủ \"mềm\" để thích nghi với nhịp sống liên tục của nhà hàng."
+msgstr "Một concept lấy cảm hứng từ chợ nổi đòi hỏi sự linh hoạt tuyệt đối. Nó yêu cầu căn bếp phía sau phải đủ kỷ luật để vận hành hiệu quả, nhưng cũng đủ "
+
+#: pillar-content
+msgid "Trái tim căn bếp"
+msgstr "Trái tim căn bếp"
+
+#: pillar-content
+msgid "Đó là căn bếp luôn đỏ lửa, nơi từng chiếc bánh pizza được canh đúng nhiệt, từng phần mỳ đút lò ra đúng thời điểm. Đó là sự phối hợp thầm lặng, chính xác, không một nhịp thừa giữa bếp và đội ngũ phục vụ, kéo dài liên tục từ trưa đến tối muộn."
+msgstr "Đó là căn bếp luôn đỏ lửa, nơi từng chiếc bánh pizza được canh đúng nhiệt, từng phần mỳ đút lò ra đúng thời điểm. Đó là sự phối hợp thầm lặng, chính xác, không một nhịp thừa giữa bếp và đội ngũ phục vụ, kéo dài liên tục từ trưa đến tối muộn."
+
+#: pillar-content
+msgid "Lò nướng Pizza lò gạch truyền thống tại The Cheezy Time"
+msgstr "Lò nướng Pizza lò gạch truyền thống tại The Cheezy Time"
+
+#: pillar-content
+msgid "Lò nướng Pizza bằng đất sét nung đỏ bóng đặt tại quầy bếp mở, nơi thực khách có thể trực tiếp chiêm ngưỡng nghệ thuật làm pizza thủ công."
+msgstr "Lò nướng Pizza bằng đất sét nung đỏ bóng đặt tại quầy bếp mở, nơi thực khách có thể trực tiếp chiêm ngưỡng nghệ thuật làm pizza thủ công."
+
+#: pillar-content
+msgid "Lò nướng pizza củi truyền thống của The Cheezy Time"
+msgstr "Lò nướng pizza củi truyền thống của The Cheezy Time"
+
+#: pillar-content
+msgid "Bánh pizza tươi phong cách Ý truyền thống"
+msgstr "Bánh pizza tươi phong cách Ý truyền thống"
+
+#: pillar-content
+msgid "Giải pháp từ Saigon Horeca"
+msgstr "Giải pháp từ Saigon Horeca"
+
+#: pillar-content
+msgid "Tư vấn Layout & Thiết bị"
+msgstr "Tư vấn Layout & Thiết bị"
+
+#: pillar-content
+msgid "Hệ thống Thông gió Tinh tế"
+msgstr "Hệ thống Thông gió Tinh tế"
+
+#: pillar-content
+msgid "Hệ thống tum hút khói inox The Cheezy Time"
+msgstr "Hệ thống tum hút khói inox The Cheezy Time"
+
+#: pillar-content
+msgid "Hệ thống tum hút mùi inox dạng đục lỗ tiêu âm chuyên dụng, đảm bảo tối ưu việc lưu thông không khí trong gian bếp mở."
+msgstr "Hệ thống tum hút mùi inox dạng đục lỗ tiêu âm chuyên dụng, đảm bảo tối ưu việc lưu thông không khí trong gian bếp mở."
+
+#: pillar-content
+msgid "Phin lọc mỡ inox của hệ thống hút khói"
+msgstr "Phin lọc mỡ inox của hệ thống hút khói"
+
+#: pillar-content
+msgid "Hệ thống phin lọc mỡ inox xếp lớp và máng hứng mỡ tích hợp giúp tối ưu hóa công tác vệ sinh định kỳ."
+msgstr "Hệ thống phin lọc mỡ inox xếp lớp và máng hứng mỡ tích hợp giúp tối ưu hóa công tác vệ sinh định kỳ."
+
+#: pillar-content
+msgid "Hệ gương ghép trám ô quả trám sang trọng phản chiếu không gian quầy bar và logo nổi The Royal All Day Dining"
+msgstr "Hệ gương ghép trám ô quả trám sang trọng phản chiếu không gian quầy bar và logo nổi The Royal All Day Dining"
+
+#: pillar-content
+msgid "Hệ thống gương ốp tường phản chiếu kết hợp logo nổi The Royal All Day Dining sang trọng."
+msgstr "Hệ thống gương ốp tường phản chiếu kết hợp logo nổi The Royal All Day Dining sang trọng."
+
+#: pillar-content
+msgid "Dãy ghế sofa da nâu ấm cúng dưới ánh đèn chùm cổ điển tại The Royal"
+msgstr "Dãy ghế sofa da nâu ấm cúng dưới ánh đèn chùm cổ điển tại The Royal"
+
+#: pillar-content
+msgid "Không gian sảnh ngồi với dãy sofa da bò cong cổ điển tinh tế."
+msgstr "Không gian sảnh ngồi với dãy sofa da bò cong cổ điển tinh tế."
+
+#: pillar-content
+msgid "Bàn ăn gỗ tối màu kết hợp ghế bọc da ấm cúng phong cách phòng trà Châu Âu"
+msgstr "Bàn ăn gỗ tối màu kết hợp ghế bọc da ấm cúng phong cách phòng trà Châu Âu"
+
+#: pillar-content
+msgid "Chi tiết sắp đặt bàn ăn phong cách Fine Dining cao cấp."
+msgstr "Chi tiết sắp đặt bàn ăn phong cách Fine Dining cao cấp."
+
+#: pillar-content
+msgid "Chi tiết ghế bọc nệm nhung xanh lá cao cấp và bàn gỗ tại The Royal"
+msgstr "Chi tiết ghế bọc nệm nhung xanh lá cao cấp và bàn gỗ tại The Royal"
+
+#: pillar-content
+msgid "Dãy ghế ăn bọc nhung xanh rêu đan xen da kem sang trọng."
+msgstr "Dãy ghế ăn bọc nhung xanh rêu đan xen da kem sang trọng."
+
+#: pillar-content
+msgid "Hệ thống lò nướng hấp combi và thiết bị giữ nhiệt inox công nghiệp tại The Royal"
+msgstr "Hệ thống lò nướng hấp combi và thiết bị giữ nhiệt inox công nghiệp tại The Royal"
+
+#: pillar-content
+msgid "Hệ thống quầy sơ chế chậu rửa và lưu trữ lạnh bằng inox 304 chuẩn công nghiệp"
+msgstr "Hệ thống quầy sơ chế chậu rửa và lưu trữ lạnh bằng inox 304 chuẩn công nghiệp"
+
+#: pillar-content
+msgid "The Royal là minh chứng cho cách Saigon Horeca tiếp cận dự án F&B cao cấp: từ thiết kế bếp, lựa chọn thiết bị đến triển khai lắp đặt — mỗi giải pháp đều được tối ưu để phục vụ đúng tinh thần ẩm thực sang trọng và vận hành chuyên nghiệp."
+msgstr "The Royal là minh chứng cho cách Saigon Horeca tiếp cận dự án F&B cao cấp: từ thiết kế bếp, lựa chọn thiết bị đến triển khai lắp đặt — mỗi giải pháp đều được tối ưu để phục vụ đúng tinh thần ẩm thực sang trọng và vận hành chuyên nghiệp."
+
+#: pillar-content
+msgid "Không bán thiết bị đơn lẻ — kiến tạo hệ sinh thái bếp đồng bộ."
+msgstr "Không bán thiết bị đơn lẻ — kiến tạo hệ sinh thái bếp đồng bộ."
+
+#: pillar-content
+msgid "Không áp dụng thiết kế rập khuôn — mỗi dự án là một câu chuyện riêng."
+msgstr "Không áp dụng thiết kế rập khuôn — mỗi dự án là một câu chuyện riêng."
+
+#: pillar-content
+msgid "Luôn đồng hành từ concept vận hành đến cảm xúc khách hàng."
+msgstr "Luôn đồng hành từ concept vận hành đến cảm xúc khách hàng."
+
+#: pillar-content
+msgid "Một căn bếp tốt không chỉ giúp nấu ăn ngon hơn — mà còn giúp hồn cốt của nhà hàng được kể một cách bền vững nhất."
+msgstr "Một căn bếp tốt không chỉ giúp nấu ăn ngon hơn — mà còn giúp hồn cốt của nhà hàng được kể một cách bền vững nhất."
+
+#: pillar-content
+msgid "Mặt tiền sang trọng với tông gỗ sáng và cửa kính của nhà hàng The Royal All Day Dining"
+msgstr "Mặt tiền sang trọng với tông gỗ sáng và cửa kính của nhà hàng The Royal All Day Dining"
+
+#: pillar-content
+msgid "Mặt tiền The Royal — Thiết kế kiến trúc tối giản tinh tế phản ánh giá trị bền vững"
+msgstr "Mặt tiền The Royal — Thiết kế kiến trúc tối giản tinh tế phản ánh giá trị bền vững"
+
+#: pillar-content
+msgid "Giờ hoạt động:"
+msgstr "Giờ hoạt động:"
+
+#: pillar-content
+msgid "11h00 AM – 11h00 PM (Thứ hai – Thứ bảy)"
+msgstr "11h00 AM – 11h00 PM (Thứ hai – Thứ bảy)"
+
+#: pillar-content
+msgid "Mặt tiền sang trọng phong cách hoàng gia của The Royal All Day Dining tại trung tâm Quận 1."
+msgstr "Mặt tiền sang trọng phong cách hoàng gia của The Royal All Day Dining tại trung tâm Quận 1."
+
+#: pillar-content
+msgid "Hệ thống thiết bị bếp nóng Fujimak bằng inox cao cấp tại The Royal"
+msgstr "Hệ thống thiết bị bếp nóng Fujimak bằng inox cao cấp tại The Royal"
+
+#: pillar-content
+msgid "Gian bếp inox 304 sạch sẽ sáng bóng hỗ trợ đầu bếp tối đa tại The Royal"
+msgstr "Gian bếp inox 304 sạch sẽ sáng bóng hỗ trợ đầu bếp tối đa tại The Royal"
+
+#: pillar-content
+msgid "Các vật liệu như gỗ trần, gạch nền được lựa chọn trong thiết kế dựa trên các chất liệu truyền thống Việt Nam, lấy ý tưởng từ thời kỳ công nghiệp hóa đất nước."
+msgstr "Các vật liệu như gỗ trần, gạch nền được lựa chọn trong thiết kế dựa trên các chất liệu truyền thống Việt Nam, lấy ý tưởng từ thời kỳ công nghiệp hóa đất nước."
+
+#: pillar-content
+msgid "Góp phần tạo nên tâm trạng sảng khoái và thư thái của thực khách tại The Brix có sự tham gia của Saigon Horeca, đơn vị tư vấn và cung cấp thiết bị cho khu vực Bếp và Bếp Bánh của nhà hàng."
+msgstr "Góp phần tạo nên tâm trạng sảng khoái và thư thái của thực khách tại The Brix có sự tham gia của Saigon Horeca, đơn vị tư vấn và cung cấp thiết bị cho khu vực Bếp và Bếp Bánh của nhà hàng."
+
+#: pillar-content
+msgid "Hệ thống bếp nấu chính inox tại The Brix"
+msgstr "Hệ thống bếp nấu chính inox tại The Brix"
+
+#: pillar-content
+msgid "Bàn trung tâm soạn chia inox tại The Brix"
+msgstr "Bàn trung tâm soạn chia inox tại The Brix"
+
+#: pillar-content
+msgid "Bản vẽ mặt bằng phòng bánh The Brix"
+msgstr "Bản vẽ mặt bằng phòng bánh The Brix"
+
+#: pillar-content
+msgid "Từ khu vực nhận hàng, sơ chế đến lưu trữ, nấu nướng, trình bày món ăn và rửa chén, chúng tôi sắp xếp từng khu vực theo tiêu chuẩn an toàn thực phẩm, thuận tiện cho nhân viên trong quá trình vận hành."
+msgstr "Từ khu vực nhận hàng, sơ chế đến lưu trữ, nấu nướng, trình bày món ăn và rửa chén, chúng tôi sắp xếp từng khu vực theo tiêu chuẩn an toàn thực phẩm, thuận tiện cho nhân viên trong quá trình vận hành."
+
+#: pillar-content
+msgid "Khu vực chuẩn bị và lưu trữ thực phẩm bao gồm bồn rửa, tủ lạnh, tủ đông và kệ treo tường."
+msgstr "Khu vực chuẩn bị và lưu trữ thực phẩm bao gồm bồn rửa, tủ lạnh, tủ đông và kệ treo tường."
+
+#: pillar-content
+msgid "Khu vực bếp chính được trang bị bếp chiên nhúng, bếp 6 họng, bếp phẳng, lò nướng và tum hút mùi."
+msgstr "Khu vực bếp chính được trang bị bếp chiên nhúng, bếp 6 họng, bếp phẳng, lò nướng và tum hút mùi."
+
+#: pillar-content
+msgid "Khu vực rửa chén được thiết kế theo đúng quy trình một chiều từ bàn thu gom có lỗ xả rác, vòi phun tráng, máy rửa bát đến bàn sạch và kệ úp chén đĩa..."
+msgstr "Khu vực rửa chén được thiết kế theo đúng quy trình một chiều từ bàn thu gom có lỗ xả rác, vòi phun tráng, máy rửa bát đến bàn sạch và kệ úp chén đĩa..."
+
+#: pillar-content
+msgid "Thiết kế tận dụng tối đa ánh sáng tự nhiên thông qua hệ mái kính kín, mang lại bầu không khí dễ chịu và tránh sự bí bách của không gian kín."
+msgstr "Thiết kế tận dụng tối đa ánh sáng tự nhiên thông qua hệ mái kính kín, mang lại bầu không khí dễ chịu và tránh sự bí bách của không gian kín."
+
+#: pillar-content
+msgid "Khu vực làm bánh"
+msgstr "Khu vực làm bánh"
+
+#: pillar-content
+msgid "Trong không gian rộng 18 mét vuông, chúng tôi đã lập kế hoạch cẩn thận và tối ưu hóa cách bố trí các thiết bị làm bánh, đảm bảo quy trình diễn ra trơn tru từ khâu nhào, định hình bột đến ủ bột, bảo quản và nướng. Nhờ đó, những chiếc bánh thơm ngon được tạo ra dưới bàn tay khéo léo của các đầu bếp với sự hỗ trợ từ các thiết bị chuyên dụng do Saigon Horeca cung cấp."
+msgstr "Trong không gian rộng 18 mét vuông, chúng tôi đã lập kế hoạch cẩn thận và tối ưu hóa cách bố trí các thiết bị làm bánh, đảm bảo quy trình diễn ra trơn tru từ khâu nhào, định hình bột đến ủ bột, bảo quản và nướng. Nhờ đó, những chiếc bánh thơm ngon được tạo ra dưới bàn tay khéo léo của các đầu bếp với sự hỗ trợ từ các thiết bị chuyên dụng do Saigon Horeca cung cấp."
+
+#: pillar-content
+msgid "Các thiết bị làm bánh tại The Brix bao gồm tủ lưu trữ nguyên liệu, tủ mát trưng bày, máy cán bột, lò nướng bánh và các thiết bị inox chuyên dụng khác."
+msgstr "Các thiết bị làm bánh tại The Brix bao gồm tủ lưu trữ nguyên liệu, tủ mát trưng bày, máy cán bột, lò nướng bánh và các thiết bị inox chuyên dụng khác."
+
+#: pillar-content
+msgid "Bistro nhiệt đới bên hồ bơi · Quận 2"
+msgstr "Bistro nhiệt đới bên hồ bơi · Quận 2"
+
+#: pillar-content
+msgid "Ốc đảo nghỉ dưỡng giữa lòng thành phố"
+msgstr "Ốc đảo nghỉ dưỡng giữa lòng thành phố"
+
+#: pillar-content
+msgid "Nơi thiên nhiên nhiệt đới hòa quyện cùng ẩm thực Âu tinh tế - một ốc đảo xanh mát bên hồ bơi, tách biệt khỏi nhịp sống đô thị ồn ào."
+msgstr "Nơi thiên nhiên nhiệt đới hòa quyện cùng ẩm thực Âu tinh tế - một ốc đảo xanh mát bên hồ bơi, tách biệt khỏi nhịp sống đô thị ồn ào."
+
+#: pillar-content
+msgid "Nếu cảm thấy quá ngột ngạt trước nhịp sống xô bồ của phố thị Sài Gòn và muốn tìm một nơi mát mẻ, trong lành để thư giãn, dùng bữa hoặc trò chuyện cùng bạn bè, bạn hãy đến với The Brix."
+msgstr "Nếu cảm thấy quá ngột ngạt trước nhịp sống xô bồ của phố thị Sài Gòn và muốn tìm một nơi mát mẻ, trong lành để thư giãn, dùng bữa hoặc trò chuyện cùng bạn bè, bạn hãy đến với The Brix."
+
+#: pillar-content
+msgid "Tọa lạc tại trung tâm Quận 2, nhà hàng The Brix được thiết kế như một hòn đảo nghỉ dưỡng nhiệt đới. Nơi đây sở hữu hồ bơi mát mẻ cùng khu rừng thu nhỏ xanh mướt tràn đầy sức sống."
+msgstr "Tọa lạc tại trung tâm Quận 2, nhà hàng The Brix được thiết kế như một hòn đảo nghỉ dưỡng nhiệt đới. Nơi đây sở hữu hồ bơi mát mẻ cùng khu rừng thu nhỏ xanh mướt tràn đầy sức sống."
+
+#: pillar-content
+msgid "Không gian trưng bày Momentum Living"
+msgstr "Không gian trưng bày Momentum Living"
+
+#: pillar-content
+msgid "Bên trong nhà hàng còn có phòng trưng bày của Momentum Living, với thiết kế tối giản theo xu hướng cổ điển. Sự kết hợp hài hòa giữa các gam màu sáng tối tạo nên nét thanh lịch, sang trọng."
+msgstr "Bên trong nhà hàng còn có phòng trưng bày của Momentum Living, với thiết kế tối giản theo xu hướng cổ điển. Sự kết hợp hài hòa giữa các gam màu sáng tối tạo nên nét thanh lịch, sang trọng."
+
+#: pillar-content
+msgid "Tại The Brix, thực khách không chỉ tận hưởng sự tĩnh lặng của thiên nhiên mà còn được thưởng thức những món ăn Âu tuyệt vời, góp phần tạo nên một bữa ăn trọn vẹn."
+msgstr "Tại The Brix, thực khách không chỉ tận hưởng sự tĩnh lặng của thiên nhiên mà còn được thưởng thức những món ăn Âu tuyệt vời, góp phần tạo nên một bữa ăn trọn vẹn."
+
+#: pillar-content
+msgid "Collage chi tiết thiết bị bếp chuyên dụng từ lò nướng Salamander, hệ kệ đứng đến bếp gas Fujimak."
+msgstr "Collage chi tiết thiết bị bếp chuyên dụng từ lò nướng Salamander, hệ kệ đứng đến bếp gas Fujimak."
+
+#: pillar-content
+msgid "Tư duy vận hành đan cài trong từng chi tiết"
+msgstr "Tư duy vận hành đan cài trong từng chi tiết"
+
+#: pillar-content
+msgid "Khu vực sơ chế sạch sẽ với bàn inox tích hợp chậu rửa công nghiệp và hệ thống lọc nước chuyên dụng."
+msgstr "Khu vực sơ chế sạch sẽ với bàn inox tích hợp chậu rửa công nghiệp và hệ thống lọc nước chuyên dụng."
+
+#: pillar-content
+msgid "Tư duy vận hành tối ưu một chiều."
+msgstr "Tư duy vận hành tối ưu một chiều."
+
+#: pillar-content
+msgid "Hiểu biết sâu sắc về thói quen lao động chuyên nghiệp của đầu bếp."
+msgstr "Hiểu biết sâu sắc về thói quen lao động chuyên nghiệp của đầu bếp."
+
+#: pillar-content
+msgid "Tuân thủ nghiêm ngặt các tiêu chuẩn vệ sinh an toàn thực phẩm."
+msgstr "Tuân thủ nghiêm ngặt các tiêu chuẩn vệ sinh an toàn thực phẩm."
+
+#: pillar-content
+msgid "Sự thấu cảm với nhịp sống ẩm thực và văn hóa vận hành nhà hàng đẳng cấp."
+msgstr "Sự thấu cảm với nhịp sống ẩm thực và văn hóa vận hành nhà hàng đẳng cấp."
+
+#: pillar-content
+msgid "Không gian quầy bar phản chiếu logo The Royal All Day Dining sang trọng ấm cúng."
+msgstr "Không gian quầy bar phản chiếu logo The Royal All Day Dining sang trọng ấm cúng."
+
+#: pillar-content
+msgid "Hệ thống bàn mát dưới quầy tích hợp ngăn kéo tiện dụng tại The Royal"
+msgstr "Hệ thống bàn mát dưới quầy tích hợp ngăn kéo tiện dụng tại The Royal"
+
+#: pillar-content
+msgid "Hệ thống bàn mát dưới quầy (under-counter refrigerator) tích hợp ngăn kéo tiện dụng giúp bảo quản nguyên liệu tươi ngon ngay tầm tay đầu bếp."
+msgstr "Hệ thống bàn mát dưới quầy (under-counter refrigerator) tích hợp ngăn kéo tiện dụng giúp bảo quản nguyên liệu tươi ngon ngay tầm tay đầu bếp."
+
+#: pillar-content
+msgid "Lò hấp nướng đa năng Fujimak Combi Pro hiện đại phục vụ khu bếp nóng."
+msgstr "Lò hấp nướng đa năng Fujimak Combi Pro hiện đại phục vụ khu bếp nóng."
+
+#: pillar-content
+msgid "Gian bếp sơ chế và chậu rửa inox 304 tại The Royal"
+msgstr "Gian bếp sơ chế và chậu rửa inox 304 tại The Royal"
+
+#: pillar-content
+msgid "Khu vực sơ chế tích hợp chậu rửa inox 304 sạch sẽ sáng bóng."
+msgstr "Khu vực sơ chế tích hợp chậu rửa inox 304 sạch sẽ sáng bóng."

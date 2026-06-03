@@ -1,0 +1,17 @@
+/* Product bundle — single.php universal khi post_type=product.
+   Same layout + sidebar source as posts; product overrides via
+   `.sh-single--product` block trong single-post/layout.css. */
+
+@import "./_imports-route-core.css";
+
+@import "../../../page-hero.css";
+@import "../../../sidebar.css";
+@import "../../../with-sidebar.css";
+
+@import "../../../template-parts/components/share-buttons.css";
+@import "../../../template-parts/components/wave-divider.css";
+
+/* Single (universal post + product) — layout + sidebar + cat list */
+@import "../../../template-parts/single-post/layout.css";
+@import "../../../template-parts/single-post/sidebar.css";
+@import "../../../template-parts/archive-product/sidebar.css";   /* filter-block hierarchical cho product cats */

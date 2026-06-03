@@ -36,7 +36,7 @@ $slides = [
     [
         'title' => 'Yuzu Omakase',
         'desc'  => 'Yuzu Omakase — trải nghiệm fine-dining Nhật Bản tinh tế, với bếp Teppanyaki và sushi bar được Saigon Horeca thiết kế trọn gói theo tiêu chuẩn quốc tế.',
-        'img'   => '2024/01/Yuzu-Omakase-1.webp',
+        'img'   => 'yuzu-omakase/yuzu-omakase-nghe-nhan-sushi-quay-bieu-dien.webp',
         'slug'  => 'yuzu-omakase',
     ],
     [

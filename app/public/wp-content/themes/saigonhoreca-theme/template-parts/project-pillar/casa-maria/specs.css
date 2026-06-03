@@ -1,1 +1,203 @@
-/** casa-maria — specs slot (no content). */
+/**
+ * casa-maria - specs slot
+ * Restrained technical section for the extraction system.
+ * @package SaigonHoreca
+ */
+
+.pp-specs-cm {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(3.5rem, 7vw, 6rem) 0;
+  background: var(--b1);
+}
+
+.pp-specs-cm .pp-container-shared {
+  width: min(100% - 2rem, 1080px);
+  max-width: none;
+  margin-inline: auto;
+  padding-inline: 0;
+}
+
+.pp-specs-bg-blueprint,
+.pp-specs-svg-scale,
+.pp-specs-photo-decor {
+  display: none !important;
+}
+
+.pp-specs-editorial-header {
+  display: grid;
+  gap: clamp(1.5rem, 3.5vw, 3rem);
+  padding: clamp(1.25rem, 3.2vw, 2.75rem);
+  border: 1px solid color-mix(in srgb, var(--gold) 18%, var(--bd));
+  border-bottom: 0;
+  border-radius: 16px 16px 0 0;
+  background: color-mix(in srgb, var(--b2) 82%, black);
+}
+
+.pp-specs-editorial-title,
+.pp-specs-editorial-desc {
+  min-width: 0;
+}
+
+.pp-specs-editorial-title .pp-badge-cm {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  width: fit-content;
+  margin: 0 0 0.9rem;
+  padding: 0.42rem 0.62rem;
+  border: 1px solid color-mix(in srgb, var(--gold) 24%, transparent);
+  border-radius: 999px;
+  color: var(--gold);
+  font-size: 0.68rem;
+  font-weight: 750;
+  line-height: 1;
+  letter-spacing: 0.08em;
+}
+
+.pp-specs-editorial-title .pp-text-cm__title {
+  max-width: 11em;
+  margin: 0 !important;
+  color: var(--bc) !important;
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(2rem, 3.6vw, 3.4rem) !important;
+  font-weight: 800 !important;
+  line-height: 1.04 !important;
+  letter-spacing: 0 !important;
+}
+
+.pp-specs-editorial-desc {
+  display: grid;
+  gap: 1rem;
+}
+
+.pp-specs-lead-p-cm {
+  max-width: 44rem;
+  margin: 0;
+  color: color-mix(in srgb, var(--bc) 82%, transparent);
+  font-size: clamp(0.98rem, 1.15vw, 1.06rem);
+  font-weight: 600;
+  line-height: 1.7;
+}
+
+.pp-specs-list-cm {
+  display: grid;
+  gap: 0;
+  margin: 0 !important;
+  padding: 0;
+  border-top: 1px solid color-mix(in srgb, var(--gold) 18%, transparent);
+  list-style: none;
+}
+
+.pp-specs-list-cm li {
+  position: relative;
+  padding: 1rem 0 1rem 1.2rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--gold) 12%, transparent);
+  color: color-mix(in srgb, var(--bc2) 88%, white);
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+.pp-specs-list-cm li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1.45rem;
+  width: 0.38rem;
+  height: 0.38rem;
+  border-radius: 999px;
+  background: var(--gold);
+}
+
+.pp-specs-list-cm li strong {
+  display: inline;
+  color: var(--gold);
+  font-weight: 800;
+}
+
+.pp-specs-blueprint-canvas {
+  padding: clamp(0.9rem, 2.2vw, 1.35rem);
+  border: 1px solid color-mix(in srgb, var(--gold) 18%, var(--bd));
+  border-top: 0;
+  border-radius: 0 0 16px 16px;
+  background: color-mix(in srgb, var(--b2) 82%, black);
+}
+
+.pp-specs-canvas-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(0.75rem, 1.8vw, 1rem);
+}
+
+.pp-specs-canvas-item,
+.pp-specs-photo-frame {
+  position: relative;
+  min-width: 0;
+}
+
+.pp-specs-canvas-item .pp-image-container-shared {
+  aspect-ratio: 16 / 9 !important;
+  overflow: visible !important; /* Thay đổi thành visible để caption hiển thị bên dưới chân ảnh */
+  border: 1px solid color-mix(in srgb, var(--gold) 14%, var(--bd)) !important;
+  border-radius: 10px !important;
+  background: black;
+  box-shadow: none !important;
+}
+
+.pp-specs-canvas-item .pp-image-container-shared img {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  border-radius: 10px !important; /* Đảm bảo ảnh con bo góc theo container */
+}
+
+.pp-specs-canvas-footer {
+  margin-top: 1rem;
+  padding: 0.9rem 1rem;
+  border-left: 2px solid var(--gold);
+  background: color-mix(in srgb, var(--gold) 5%, transparent);
+}
+
+.pp-specs-footer-p-cm {
+  max-width: 58rem;
+  margin: 0;
+  color: color-mix(in srgb, var(--bc) 82%, transparent);
+  font-size: 0.98rem;
+  font-style: italic;
+  font-weight: 600;
+  line-height: 1.65;
+}
+
+@media (min-width: 900px) {
+  .pp-specs-editorial-header {
+    grid-template-columns: minmax(17rem, 0.78fr) minmax(0, 1.22fr);
+    align-items: start;
+  }
+}
+
+@media (max-width: 899px) {
+  .pp-specs-canvas-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .pp-specs-cm .pp-container-shared {
+    width: min(100% - 1rem, 1080px);
+  }
+
+  .pp-specs-editorial-header {
+    padding: 1.1rem;
+    border-radius: 14px 14px 0 0;
+  }
+
+  .pp-specs-editorial-title .pp-text-cm__title {
+    font-size: clamp(1.95rem, 10vw, 2.65rem) !important;
+  }
+
+  .pp-specs-blueprint-canvas {
+    padding: 0.75rem;
+    border-radius: 0 0 14px 14px;
+  }
+}

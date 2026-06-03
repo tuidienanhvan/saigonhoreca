@@ -4,7 +4,7 @@
  * @package SaigonHoreca
  */
 
-.pp--amdang-typhoon .pp-specs-at {
+.pp--adt .pp-specs-adt {
   position: relative;
   width: 100%;
   min-height: 100vh;
@@ -17,7 +17,7 @@
   clip-path: inset(0 0 0 0); /* Tạo cửa sổ cắt cho ảnh nền ghim fixed bên trong */
 }
 
-.pp--amdang-typhoon .pp-specs-at__bg {
+.pp--adt .pp-specs-adt__bg {
   position: fixed; /* Ghim cố định vào màn hình trình duyệt */
   top: 0;
   left: 0;
@@ -32,11 +32,11 @@
 }
 
 @media (max-width: 1024px) {
-  .pp--amdang-typhoon .pp-specs-at {
+  .pp--adt .pp-specs-adt {
     clip-path: none;
     min-height: 70vh;
   }
-  .pp--amdang-typhoon .pp-specs-at__bg {
+  .pp--adt .pp-specs-adt__bg {
     position: absolute;
     height: 100%;
     width: 100%;
@@ -44,11 +44,11 @@
 }
 
 /* Hover Zoom Background Effect */
-.pp--amdang-typhoon .pp-specs-at:hover .pp-specs-at__bg {
+.pp--adt .pp-specs-adt:hover .pp-specs-adt__bg {
   transform: scale(1.08);
 }
 
-.pp--amdang-typhoon .pp-specs-at__overlay {
+.pp--adt .pp-specs-adt__overlay {
   position: absolute;
   inset: 0;
   z-index: 1;
@@ -56,7 +56,7 @@
   pointer-events: none;
 }
 
-.pp--amdang-typhoon .pp-specs-at__container {
+.pp--adt .pp-specs-adt__container {
   position: relative;
   z-index: 2;
   width: 100%;
@@ -66,7 +66,7 @@
 }
 
 /* Glassmorphic Card */
-.pp--amdang-typhoon .pp-specs-at__card {
+.pp--adt .pp-specs-adt__card {
   position: relative;
   width: 100%;
   max-width: 680px;
@@ -82,7 +82,7 @@
   transition: border-color 0.4s var(--ease-spring), box-shadow 0.4s var(--ease-spring);
 }
 
-.pp--amdang-typhoon .pp-specs-at__card:hover {
+.pp--adt .pp-specs-adt__card:hover {
   border-color: color-mix(in srgb, var(--gold) 35%, transparent);
   box-shadow: 
     0 40px 80px rgba(0, 0, 0, 0.9),
@@ -90,7 +90,7 @@
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
-.pp--amdang-typhoon .pp-specs-at__card-content {
+.pp--adt .pp-specs-adt__card-content {
   position: relative;
   z-index: 2;
   display: flex;
@@ -100,7 +100,7 @@
   gap: 1.5rem;
 }
 
-.pp--amdang-typhoon .pp-specs-at__badge {
+.pp--adt .pp-specs-adt__badge {
   font-family: var(--font-display), sans-serif;
   font-size: 0.75rem;
   font-weight: 600;
@@ -108,12 +108,12 @@
   color: color-mix(in srgb, var(--bc) 45%, transparent);
 }
 
-.pp--amdang-typhoon .pp-specs-at__badge-accent {
+.pp--adt .pp-specs-adt__badge-accent {
   color: var(--gold);
   font-weight: 700;
 }
 
-.pp--amdang-typhoon .pp-specs-at__title {
+.pp--adt .pp-specs-adt__title {
   font-family: var(--font-display), sans-serif;
   font-size: clamp(1.6rem, 2.5vw, 2.2rem);
   font-weight: 700;
@@ -123,14 +123,14 @@
   max-width: 25ch;
 }
 
-.pp--amdang-typhoon .pp-specs-at__card-divider {
+.pp--adt .pp-specs-adt__card-divider {
   width: 60px;
   height: 2px;
   background: var(--gold);
   display: block;
 }
 
-.pp--amdang-typhoon .pp-specs-at__desc {
+.pp--adt .pp-specs-adt__desc {
   font-family: var(--font-body), sans-serif;
   font-size: clamp(0.95rem, 1.05vw, 1.05rem);
   line-height: 1.85;
@@ -141,7 +141,7 @@
 }
 
 /* Parallel Corner Framers */
-.pp--amdang-typhoon .pp-specs-at__corner {
+.pp--adt .pp-specs-adt__corner {
   position: absolute;
   width: 20px;
   height: 20px;
@@ -152,14 +152,14 @@
   opacity: 0.5;
 }
 
-.pp--amdang-typhoon .pp-specs-at__corner--tl {
+.pp--adt .pp-specs-adt__corner--tl {
   top: 1.5rem;
   left: 1.5rem;
   border-right: none;
   border-bottom: none;
 }
 
-.pp--amdang-typhoon .pp-specs-at__corner--br {
+.pp--adt .pp-specs-adt__corner--br {
   bottom: 1.5rem;
   right: 1.5rem;
   border-left: none;
@@ -167,14 +167,15 @@
 }
 
 /* Hover Corner Animations */
-.pp--amdang-typhoon .pp-specs-at__card:hover .pp-specs-at__corner--tl {
+.pp--adt .pp-specs-adt__card:hover .pp-specs-adt__corner--tl {
   top: 0.75rem;
   left: 0.75rem;
   opacity: 1;
 }
 
-.pp--amdang-typhoon .pp-specs-at__card:hover .pp-specs-at__corner--br {
+.pp--adt .pp-specs-adt__card:hover .pp-specs-adt__corner--br {
   bottom: 0.75rem;
   right: 0.75rem;
   opacity: 1;
 }
+

@@ -7,24 +7,27 @@
 if (!defined('ABSPATH')) exit;
 $uri = get_template_directory_uri();
 ?>
-<section class="pp__section pp-rf-intro">
+<section class="pp-section-rf pp-rf-intro">
   <div class="pp-watermark-bg-rf" aria-hidden="true">
     <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5">
       <path d="M40 20 H60 M50 20 V80 M40 80 H60" stroke-linecap="round"/>
     </svg>
   </div>
 
-  <div class="pp-ambient-glow-rf pp-ambient-glow-rf--top-right" aria-hidden="true"></div>
+  <div class="pp-watermark-fan-rf" aria-hidden="true">
+    <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1">
+      <path d="M50 85 L15 50 A 40 40 0 0 1 85 50 Z M50 85 L32 45 M50 85 L50 40 M50 85 L68 45" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
 
-  <div class="pp__container">
+  <div class="pp-ambient-glow-rf pp-ambient-glow-rf--top-right" aria-hidden="true"></div>
+  <div class="pp-ambient-glow-rf pp-ambient-glow-rf--bottom-left" aria-hidden="true" style="opacity: 0.15; pointer-events: none;"></div>
+
+  <div class="pp-container-shared">
     <div class="pp-grid-12-rf">
       
       <div class="pp-grid-12-rf__text--cols-5 rkf-intro__main">
         <div class="pp-glass-card-roka rkf-intro__glass-card">
-          <span class="pp-corner-ornament pp-corner-ornament--top-left" aria-hidden="true"></span>
-          <span class="pp-corner-ornament pp-corner-ornament--top-right" aria-hidden="true"></span>
-          <span class="pp-corner-ornament pp-corner-ornament--bottom-left" aria-hidden="true"></span>
-          <span class="pp-corner-ornament pp-corner-ornament--bottom-right" aria-hidden="true"></span>
           
           <header class="rkf-intro__header">
             <div class="pp-badge-rf">
@@ -47,15 +50,10 @@ $uri = get_template_directory_uri();
       </div>
 
       <div class="pp-grid-12-rf__media--cols-7 rkf-intro__side">
-        <div class="pp-image-container-rf rkf-intro__image-container">
-          <span class="pp-corner-ornament pp-corner-ornament--top-left" aria-hidden="true"></span>
-          <span class="pp-corner-ornament pp-corner-ornament--top-right" aria-hidden="true"></span>
-          <span class="pp-corner-ornament pp-corner-ornament--bottom-left" aria-hidden="true"></span>
-          <span class="pp-corner-ornament pp-corner-ornament--bottom-right" aria-hidden="true"></span>
+        <div class="pp-image-container-shared rkf-intro__image-container">
           <div class="pp-image-border-decor" aria-hidden="true"></div>
-          <div class="pp-image-tag-rf">TOKYO MODERN</div>
-          <img src="<?php echo sgh_img('2020/12/roka.jpg'); ?>" alt="<?php echo esc_attr__('Roka Fella Interior Design', 'saigonhoreca'); ?>" loading="lazy">
-          <div class="pp-image-caption-rf"><?php echo esc_html__('Không gian kiến trúc Nhật Bản hiện đại, đẳng cấp tại trung tâm Quận 1', 'saigonhoreca'); ?></div>
+          <img src="<?php echo sgh_img('roka-fella/roka-fella-khong-gian-nha-hang.jpg'); ?>" alt="<?php echo esc_attr__('Roka Fella Interior Design', 'saigonhoreca'); ?>" loading="lazy">
+          <div class="pp-image-caption-shared"><?php echo esc_html__('Không gian sảnh tiệc Omakase cao cấp nổi bật với mảng tường rêu xanh tự nhiên mang phong cách Wabi-Sabi', 'saigonhoreca'); ?></div>
         </div>
       </div>
 

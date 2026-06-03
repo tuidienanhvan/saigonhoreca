@@ -1,6 +1,6 @@
-<?php
+﻿<?php
 /**
- * Project Pillar — tales-by-chapter
+ * Project Pillar â€” tales-by-chapter
  * Section #5: text
  * @package SaigonHoreca
  */
@@ -11,12 +11,13 @@ $uri = get_template_directory_uri();
   <div class="pp__container">
     <div class="pp-text pp-text--center">
       <span class="pp-text__divider pp-text__divider--center" aria-hidden="true"></span>
-      <h2 class="pp-text__title"><?php echo esc_html__('Khi giải pháp đứng sau triết lý', 'saigonhoreca'); ?></h2>
+      <h2 class="pp-text__title"><?php echo esc_html__('Khi giáº£i phÃ¡p Ä‘á»©ng sau triáº¿t lÃ½', 'saigonhoreca'); ?></h2>
       <div class="pp-text__body">
-      <p><?php echo esc_html__('Trong dự án Tales by Chapter, Saigon Horeca chọn lùi lại phía sau để làm điểm tựa kỹ thuật vững chắc. Chúng tôi tập trung vào giá trị: tạo nên một hệ thống đủ vững để một triết lý nhân văn có thể vận hành lâu dài.', 'saigonhoreca'); ?></p>
-      <p><?php echo esc_html__('Từ quầy bar tầng 1, gian bếp tầng 2 đến phòng lab tầng 3, mỗi giải pháp đều được đặt ra từ câu hỏi: điều này có thực sự phục vụ cho tinh thần zero waste và sự sáng tạo hay không?', 'saigonhoreca'); ?></p>
-      <p><?php echo esc_html__('Và khi mọi thứ được đặt đúng chỗ, câu chuyện của Tales by Chapter có thể được kể một cách trọn vẹn – không chỉ trên bàn ăn, mà cả trong cách nhà hàng vận hành mỗi ngày.', 'saigonhoreca'); ?></p>
+      <p><?php echo esc_html__('Trong dá»± Ã¡n Tales by Chapter, Saigon Horeca chá»n lÃ¹i láº¡i phÃ­a sau Ä‘á»ƒ lÃ m Ä‘iá»ƒm tá»±a ká»¹ thuáº­t vá»¯ng cháº¯c. ChÃºng tÃ´i táº­p trung vÃ o giÃ¡ trá»‹: táº¡o nÃªn má»™t há»‡ thá»‘ng Ä‘á»§ vá»¯ng Ä‘á»ƒ má»™t triáº¿t lÃ½ nhÃ¢n vÄƒn cÃ³ thá»ƒ váº­n hÃ nh lÃ¢u dÃ i.', 'saigonhoreca'); ?></p>
+      <p><?php echo esc_html__('Tá»« quáº§y bar táº§ng 1, gian báº¿p táº§ng 2 Ä‘áº¿n phÃ²ng lab táº§ng 3, má»—i giáº£i phÃ¡p Ä‘á»u Ä‘Æ°á»£c Ä‘áº·t ra tá»« cÃ¢u há»i: Ä‘iá»u nÃ y cÃ³ thá»±c sá»± phá»¥c vá»¥ cho tinh tháº§n zero waste vÃ  sá»± sÃ¡ng táº¡o hay khÃ´ng?', 'saigonhoreca'); ?></p>
+      <p><?php echo esc_html__('VÃ  khi má»i thá»© Ä‘Æ°á»£c Ä‘áº·t Ä‘Ãºng chá»—, cÃ¢u chuyá»‡n cá»§a Tales by Chapter cÃ³ thá»ƒ Ä‘Æ°á»£c ká»ƒ má»™t cÃ¡ch trá»n váº¹n â€“ khÃ´ng chá»‰ trÃªn bÃ n Äƒn, mÃ  cáº£ trong cÃ¡ch nhÃ  hÃ ng váº­n hÃ nh má»—i ngÃ y.', 'saigonhoreca'); ?></p>
       </div>
     </div>
   </div>
 </section>
+

@@ -1,0 +1,32 @@
+/**
+ * Project page-template — Gành Hào (layout + project accent tokens).
+ *
+ * Direction: "Coastal Architecture Editorial" — kiến trúc thuyền thúng úp
+ * ngược ánh bạc bên biển Vũng Tàu. Bảng màu rút ra TỪ token toàn cục
+ * (KHÔNG hardcode hex brand): xanh ngọc/lục biển (từ --su + --in) + cát ấm
+ * ánh kim (--gold). Mọi section CSS chỉ tham chiếu các biến --gha-* ở đây.
+ *
+ * @package SaigonHoreca
+ */
+
+.pp--ganh {
+  /* Teal/emerald biển — pha lục (--su) với lam (--in) cho sắc ngọc ven biển */
+  --gha-teal:        color-mix(in srgb, var(--su) 62%, var(--in));
+  --gha-teal-bright: color-mix(in srgb, var(--gha-teal) 72%, var(--bc));
+  --gha-teal-deep:   color-mix(in srgb, var(--gha-teal) 60%, var(--b1));
+
+  /* Cát ấm ánh kim — kim loại Aluminium phản chiếu nắng biển */
+  --gha-sand:        var(--gold);
+  --gha-sand-soft:   color-mix(in srgb, var(--gold) 70%, var(--bc));
+
+  /* Bề mặt kính & viền coastal */
+  --gha-glass:       color-mix(in srgb, var(--b2) 64%, transparent);
+  --gha-line:        color-mix(in srgb, var(--gha-teal) 30%, transparent);
+  --gha-line-warm:   color-mix(in srgb, var(--gha-sand) 32%, transparent);
+  --gha-grid:        color-mix(in srgb, var(--bc) 4%, transparent);
+}
+
+body.page-template-page-project-ganh-hao-noi-hon-bien-trong-tung-net-kien-truc {
+  background: var(--b1);
+  color: var(--bc);
+}

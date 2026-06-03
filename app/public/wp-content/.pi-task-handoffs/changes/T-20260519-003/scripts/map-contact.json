@@ -1,0 +1,5 @@
+[
+  {"file": "hero.php",      "blocks": [1],    "desc": "Liên hệ Sài Gòn Horeca — title hero"},
+  {"file": "form.php",      "blocks": [2],    "desc": "Contact info + form"},
+  {"file": "map.php",       "blocks": [3],    "desc": "Google Maps embed"}
+]

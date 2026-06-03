@@ -1,0 +1,247 @@
+/**
+ * Project Pillar — Roka Fella
+ * Section #6: gallery styling (Split-Screen Exhibition)
+ */
+
+.pp--rf .pp-rf-gallery {
+  position: relative;
+  padding: clamp(4.5rem, 9vw, 8.5rem) 0;
+  background-color: var(--b1);
+  overflow: hidden;
+}
+
+.rkf-gallery__layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .rkf-gallery__layout {
+    grid-template-columns: 46% 54%;
+  }
+
+  .rkf-gallery__main {
+    padding-right: 1.5rem;
+  }
+}
+
+.rkf-gallery__glass-card {
+  position: relative;
+  background: color-mix(in srgb, var(--b2) 85%, transparent);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-lg, 18px);
+  padding: clamp(1.75rem, 3.5vw, 2.75rem);
+  overflow: hidden;
+}
+
+/* SVG Corners */
+.rkf-gallery__glass-card .card-corner-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.rkf-gallery__header h2.pp-text-rf__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2.3rem);
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--bc);
+  margin: 0 0 0.75rem 0;
+}
+
+.rkf-gallery__lead {
+  font-family: var(--font-sans);
+  font-size: 0.98rem;
+  line-height: 1.75;
+  color: var(--bc2);
+  margin-bottom: 2rem;
+}
+
+/* Grid & Staggered Lift Cards */
+.rkf-gallery__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+@media (min-width: 640px) {
+  .rkf-gallery__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.rkf-gallery__item {
+  background: rgba(255, 255, 255, 0.01);
+  padding: 1.5rem;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  transition: transform 0.4s var(--ease-spring), background-color 0.4s, border-color 0.4s, box-shadow 0.4s;
+  position: relative;
+  overflow: hidden;
+}
+
+.rkf-gallery__item::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; width: 100%; height: 2px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s var(--ease-spring);
+}
+
+.rkf-gallery__item:hover {
+  transform: translateY(-5px);
+  background: color-mix(in srgb, var(--b1) 80%, transparent);
+  border-color: rgba(245, 166, 35, 0.25);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.rkf-gallery__item:hover::after {
+  transform: scaleX(1);
+}
+
+.rkf-gallery__item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  gap: 0.75rem;
+}
+
+.rkf-gallery__item strong {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--bc);
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.rkf-gallery__stat-badge {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+}
+
+.rkf-gallery__stat-badge--brand {
+  color: var(--gold);
+  border: 1px solid rgba(245, 166, 35, 0.3);
+  background: rgba(245, 166, 35, 0.05);
+}
+
+.rkf-gallery__stat-badge--metal {
+  color: #a0aec0;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.rkf-gallery__item p {
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--bc2);
+  margin: 0;
+}
+
+/* High-end Technical Note Box */
+.rkf-gallery__note-box {
+  display: flex;
+  gap: 1rem;
+  background: rgba(245, 166, 35, 0.02);
+  border-left: 3px solid var(--gold);
+  padding: 1.25rem;
+  border-radius: 0 8px 8px 0;
+  border-top: 1px solid rgba(245, 166, 35, 0.08);
+  border-right: 1px solid rgba(245, 166, 35, 0.08);
+  border-bottom: 1px solid rgba(245, 166, 35, 0.08);
+  transition: background-color 0.3s;
+}
+
+.rkf-gallery__note-box:hover {
+  background: rgba(245, 166, 35, 0.04);
+}
+
+.rkf-gallery__note-icon {
+  flex-shrink: 0;
+  color: var(--gold);
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.rkf-gallery__note-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.rkf-gallery__note {
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: var(--bc2);
+  margin: 0;
+}
+
+/* Image styling */
+.rkf-gallery__media .pp-image-container-rf {
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.6);
+}
+
+.rkf-gallery__media .pp-image-border-decor {
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+.rkf-gallery__media:hover .pp-image-border-decor {
+  border-color: var(--gold);
+}
+
+/* Image tag badge */
+.rkf-gallery__media .pp-image-tag-rf {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 4;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  background: rgba(10, 10, 10, 0.8);
+  border: 1px solid color-mix(in srgb, var(--gold) 30%, transparent);
+  padding: 0.35rem 0.75rem;
+  border-radius: 4px;
+  backdrop-filter: blur(5px);
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+/* Watermark số thứ tự 03 chìm trong Gallery */
+.pp-gallery-watermark-rf {
+  position: absolute !important;
+  top: -4rem !important;
+  right: 2rem !important;
+  font-family: var(--font-display), sans-serif !important;
+  font-size: clamp(12rem, 20vw, 24rem) !important;
+  font-weight: 800 !important;
+  color: var(--gold) !important;
+  opacity: 0.015 !important;
+  pointer-events: none !important;
+  user-select: none !important;
+  z-index: 1 !important;
+  line-height: 1 !important;
+}
+
+

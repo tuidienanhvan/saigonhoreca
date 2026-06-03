@@ -1,14 +1,14 @@
-<?php
+﻿<?php
 /**
- * Project Pillar — du-nam-an-an
+ * Project Pillar â€” du-nam-an-an
  * Section #5: with_gallery
  * @package SaigonHoreca
  */
 if (!defined('ABSPATH')) exit;
 $uri = get_template_directory_uri();
 ?>
-<section class="pp__section pp__section--alt">
-  <div class="pp__container">
+<section class="pp-section-nan pp-section-nan--alt scroll-reveal">
+  <div class="pp-container-shared">
     <div class="pp-text-nan pp-text-nan--center">
       <span class="pp-text-nan__divider pp-text-nan__divider--center" aria-hidden="true"></span>
       <h2 class="pp-text-nan__title"><?php echo esc_html__('Nam An & Saigon Horeca – Sự gặp nhau của hai chuẩn mực', 'saigonhoreca'); ?></h2>
@@ -18,7 +18,8 @@ $uri = get_template_directory_uri();
       </div>
     </div>
     <div class="pp-gallery-nan pp-gallery-nan--cols-1" style="margin-top:2rem;">
-      <div class="pp-gallery-nan__item"><img src="<?php echo sgh_img('2023/12/bi-quyet-tao-thuc-don-nha-hang.jpg'); ?>" alt="<?php echo esc_attr__('Thiết bị bếp công nghiệp Saigon Horeca', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="1366" height="768"></div>
+      <div class="pp-gallery-nan__item pp-image-container-shared"><img src="<?php echo sgh_img('2023/12/bi-quyet-tao-thuc-don-nha-hang.jpg'); ?>" alt="<?php echo esc_attr__('Thiết bị bếp công nghiệp Saigon Horeca', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="1366" height="768"><div class="pp-image-caption-shared"><?php echo esc_html__('Hệ thống bếp Nursing Home hoàn chỉnh – kỹ thuật gặp thấu cảm', 'saigonhoreca'); ?></div></div>
     </div>
   </div>
 </section>
+

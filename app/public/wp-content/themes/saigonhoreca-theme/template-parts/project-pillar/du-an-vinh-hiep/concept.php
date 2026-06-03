@@ -1,14 +1,14 @@
-<?php
+﻿<?php
 /**
- * Project Pillar — du-an-vinh-hiep
+ * Project Pillar â€” du-an-vinh-hiep
  * Section #3: split
  * @package SaigonHoreca
  */
 if (!defined('ABSPATH')) exit;
 $uri = get_template_directory_uri();
 ?>
-<section class="pp__section pp__section--alt">
-  <div class="pp__container">
+<section class="pp-section-vhp pp-section-vhp--alt scroll-reveal">
+  <div class="pp-container-shared">
     <div class="pp-split-vhp">
       <div class="pp-split-vhp__body">
         <span class="pp-text-vhp__divider" aria-hidden="true"></span>
@@ -20,9 +20,11 @@ $uri = get_template_directory_uri();
       <p><?php echo esc_html__('Ở dự án này, Saigon Horeca không chạy theo số lượng thiết bị, mà tập trung vào logic vận hành, để mỗi thao tác trong bếp đều liền mạch, tiết kiệm thời gian và giảm áp lực cho người sử dụng.', 'saigonhoreca'); ?></p>
         </div>
       </div>
-      <div class="pp-split-vhp__media">
+      <div class="pp-split-vhp__media pp-image-container-shared">
         <img src="<?php echo sgh_img('2025/01/sheh-fung-2.jpg'); ?>" alt="<?php echo esc_attr__('Thiết bị bếp công nghiệp Saigon Horeca', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="1366" height="768">
+        <div class="pp-image-caption-shared"><?php echo esc_html__('Bếp compact – chính xác – sạch tuyệt đối cho lãnh đạo', 'saigonhoreca'); ?></div>
       </div>
     </div>
   </div>
 </section>
+

@@ -1,1 +1,165 @@
-/** casa-maria — partnership slot (no content). */
+/**
+ * casa-maria — partnership slot v2.0 (Premium Cold Storage Redesign).
+ * scoped with -cm suffix, premium technical style.
+ * 100% tokens, zero hardcoded colors.
+ * @package SaigonHoreca
+ */
+
+.pp-partnership-section-cm {
+  position: relative;
+}
+
+/* Định hình tỷ lệ 4:5 cực sang trọng cho ảnh tủ đông chính */
+.pp-cm-media-partnership {
+  position: relative;
+  width: 100%;
+  overflow: visible !important;
+}
+.pp-cm-media-partnership .pp-cm-luxury-frame,
+.pp-cm-media-sub-part .pp-cm-luxury-frame {
+  overflow: visible !important;
+}
+/* Ảnh chính partnership — nghiêng nhẹ áp vào khoảng trống bên cards */
+.pp-cm-luxury-frame--partnership {
+  transform: rotate(-2deg) !important;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.pp-cm-luxury-frame--partnership:hover {
+  transform: rotate(0) scale(1.02) !important;
+}
+.pp-cm-media-partnership .pp-image-container-shared {
+  aspect-ratio: 4 / 5 !important;
+  border-radius: var(--radius-sm) !important;
+  border: 1px solid var(--bd) !important;
+  box-shadow: var(--shadow-main) !important;
+  overflow: visible !important;
+  margin-bottom: 2.4rem !important;
+}
+
+/* Solutions Grid & Thẻ Glassmorphism */
+.pp-solutions-grid-cm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.pp-solution-card-cm {
+  background: color-mix(in srgb, var(--bc) 1%, transparent) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid color-mix(in srgb, var(--bc) 3%, transparent) !important;
+  border-radius: var(--radius-md);
+  padding: 1.5rem 1.75rem !important;
+  box-shadow: var(--shadow) !important;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.pp-solution-card-cm:hover {
+  background: color-mix(in srgb, var(--bc) 2%, transparent) !important;
+  border-color: color-mix(in srgb, var(--gold) 20%, transparent) !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 
+    var(--shadow-main),
+    inset 0 1px 0 color-mix(in srgb, var(--bc) 5%, transparent) !important;
+}
+
+.pp-solution-card-header-cm {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+.pp-solution-card-icon-cm {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: color-mix(in srgb, var(--bc) 2%, transparent);
+  border: 1px solid color-mix(in srgb, var(--bc) 6%, transparent);
+  border-radius: var(--radius-sm);
+  color: var(--gold);
+  flex-shrink: 0;
+  transition: all 0.4s var(--ease-spring);
+}
+.pp-solution-card-cm:hover .pp-solution-card-icon-cm {
+  background: var(--gold);
+  color: var(--pc);
+  transform: scale(1.05) rotate(45deg);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--gold) 60%, transparent);
+}
+
+.pp-solution-card-title-cm {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--bc);
+  margin: 0;
+  transition: color 0.3s;
+}
+.pp-solution-card-cm:hover .pp-solution-card-title-cm {
+  color: var(--gold);
+}
+
+.pp-solution-card-body-cm {
+  font-size: 0.94rem;
+  line-height: 1.75;
+  color: var(--bc2);
+}
+.pp-solution-card-body-cm p {
+  margin: 0;
+}
+
+/* ===================================================================
+   ASYNCHRONOUS STORAGE DEVICES SO LE (Sous-vide & Fujimak)
+   =================================================================== */
+.pp-cm-media-sub-part {
+  position: relative;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
+  overflow: visible !important;
+}
+.pp-cm-media-sub-part .pp-image-container-shared {
+  overflow: visible !important;
+  margin-bottom: 2.4rem !important;
+}
+@media (min-width: 576px) {
+  .pp-cm-media-sub-part {
+    min-height: 650px;
+    display: block; /* Định vị absolute so le */
+  }
+  /* Ảnh 1 — nghiêng xéo trái áp vào khoảng trống trên */
+  .pp-cm-luxury-frame--sub-part-1 {
+    position: absolute;
+    width: 68%;
+    left: -2%;
+    top: 3%;
+    z-index: 1;
+    transform: rotate(-3deg);
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .pp-cm-luxury-frame--sub-part-1:hover {
+    transform: rotate(0) scale(1.03);
+    z-index: 5;
+  }
+  /* Ảnh 2 — nghiêng xéo phải áp vào khoảng trống dưới */
+  .pp-cm-luxury-frame--sub-part-2 {
+    position: absolute;
+    width: 56%;
+    right: -1%;
+    bottom: 3%;
+    z-index: 2;
+    transform: rotate(2.5deg);
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .pp-cm-luxury-frame--sub-part-2:hover {
+    transform: rotate(0) scale(1.03);
+    z-index: 5;
+  }
+}
+
+.pp-intro-card-cm--partnership-quote:hover {
+  border-right-color: var(--gold) !important;
+}

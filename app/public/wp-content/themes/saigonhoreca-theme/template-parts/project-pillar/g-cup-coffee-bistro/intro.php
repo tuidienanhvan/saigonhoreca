@@ -1,28 +1,76 @@
 <?php
 /**
- * Project Pillar — g-cup-coffee-bistro
- * Section #2: with_gallery
+ * Project Pillar - g-cup-coffee-bistro
+ * Section #2: intro (Asymmetric Cloud & Sharp Editorial Grid)
+ * Được nâng cấp để ảnh to rõ, caption chuẩn chỉnh theo _caption.css
  * @package SaigonHoreca
  */
 if (!defined('ABSPATH')) exit;
-$uri = get_template_directory_uri();
 ?>
-<section class="pp__section pp__section--alt">
-  <div class="pp__container">
-    <div class="pp-text-gcb pp-text-gcb--center">
-      <span class="pp-text-gcb__divider pp-text-gcb__divider--center" aria-hidden="true"></span>
-      <h2 class="pp-text-gcb__title"><?php echo esc_html__('Không gian G-Cup Bistro – Khi thiết kế và vận hành song hành trong từng chi tiết', 'saigonhoreca'); ?></h2>
-      <div class="pp-text-gcb__body">
-      <p><?php echo esc_html__('Tọa lạc tại tháp B/20 Nguyễn Thiện Thành, Thủ Thiêm, Thủ Đức, không gian nơi đây được thiết kế với gu thẩm mỹ rõ ràng, menu pha trộn giữa cà phê thủ công, bánh ngọt kiểu Âu và các món ăn nhẹ mang dấu ấn riêng.', 'saigonhoreca'); ?></p>
-      <p><?php echo esc_html__('Ngay từ khi bắt đầu lên ý tưởng vận hành cho không gian này, G.Cup Coffee & Bistro đã đặt ra yêu cầu rất rõ ràng: bếp, bar, và khu bếp bánh phải được thiết kế bài bản, hiện đại – nhưng vẫn gọn gàng, mượt mà và dễ sử dụng. Không gian nhỏ gọn vừa đảm bảo công năng, vừa hòa hợp với kiến trúc và trải nghiệm dịch vụ, đúng chất một quán bistro cao cấp.', 'saigonhoreca'); ?></p>
-      <p><?php echo esc_html__('Với kinh nghiệm trong các mô hình F&B cao cấp, Saigon Horeca đã đồng hành cùng G.Cup đi từ bản vẽ đến thực tế – chọn đúng thiết bị sao cho phù hợp với menu và phong cách vận hành, rồi cuối cùng là thi công và hoàn thiện toàn bộ hệ thống hút mùi – cấp khí tươi – đảm bảo mọi thứ chạy ổn định và chuyên nghiệp.', 'saigonhoreca'); ?></p>
-      <p><?php echo esc_html__('Một trong những điểm đặc biệt tại G-Cup Bistro là khả năng đồng bộ giữa thẩm mỹ kiến trúc và thiết kế bếp – bar. Không gian được phủ bằng những gam màu trung tính hiện đại, nội thất tối giản nhưng tinh tế, kết hợp cùng ánh sáng tự nhiên – tạo nên một trải nghiệm thị giác nhẹ nhàng nhưng không kém phần đẳng cấp.', 'saigonhoreca'); ?></p>
-      <p><?php echo esc_html__('Chính trong tổng thể thiết kế ấy, hệ thống bếp – bar – khu bếp bánh do Saigon Horeca thi công đóng vai trò như cấu trúc xương sống ngầm, giúp toàn bộ quán vận hành trơn tru mà vẫn đảm bảo mọi điểm nhìn đều gọn gàng, sạch sẽ và có tính thẩm mỹ cao.', 'saigonhoreca'); ?></p>
+<section class="pp-section-gcb pp-section-gcb--alt pp-gcb-intro-section" id="gcb-intro-anchor">
+  <!-- Hoa văn CAD sóng mạng mờ nhạt nền -->
+  <div class="pp-gcb-intro-wave-decor" aria-hidden="true">
+    <svg viewBox="0 0 100 20" fill="none" stroke="currentColor" stroke-width="0.3" stroke-dasharray="1 2">
+      <path d="M0 10 Q25 20 50 10 T100 10"/>
+    </svg>
+  </div>
+
+  <div class="pp-container-shared">
+    <div class="pp-gcb-editorial-grid">
+
+      <!-- Hộp chữ sắc sảo viền niken mảnh -->
+      <div class="pp-gcb-editorial-text scroll-reveal">
+        <div class="pp-gcb-editorial-text-box">
+          <span class="pp-text-gcb__divider-svg" aria-hidden="true">
+            <svg viewBox="0 0 80 4" fill="none" stroke="var(--gold)" stroke-width="2">
+              <path d="M0 2 Q20 4 40 2 T80 2" stroke-linecap="round"/>
+            </svg>
+          </span>
+          
+          <h2 class="pp-text-gcb__title">
+            <?php echo esc_html__('Không gian G-Cup Bistro - Khi thiết kế & vận hành song hành', 'saigonhoreca'); ?>
+          </h2>
+
+          <div class="pp-text-gcb__body">
+            <p class="pp-gcb-lead-p">
+              <?php echo esc_html__('Tọa lạc tại Thủ Thiêm, G.Cup Coffee & Bistro cần một quầy bar gọn, đẹp và vận hành mượt trong mặt bằng shophouse cao cấp.', 'saigonhoreca'); ?>
+            </p>
+            <p class="pp-gcb-desc-p" style="margin-top: 0.75rem;">
+              <?php echo esc_html__('Saigon Horeca tổ chức quầy bar một chiều, kết nối với bếp bánh phía trong để barista thao tác nhanh, sạch và ít di chuyển thừa.', 'saigonhoreca'); ?>
+            </p>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="pp-gallery-gcb pp-gallery-gcb--cols-2" style="margin-top:2rem;">
-      <div class="pp-gallery-gcb__item"><img src="<?php echo sgh_img('2025/05/du-an-g-cup-coffee-bistro-7.jpg'); ?>" alt="<?php echo esc_attr__('Thiết bị bếp công nghiệp Saigon Horeca', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="1366" height="768"></div>
-      <div class="pp-gallery-gcb__item"><img src="<?php echo sgh_img('2025/05/du-an-g-cup-coffee-bistro-16.jpg'); ?>" alt="<?php echo esc_attr__('Thiết bị bếp công nghiệp Saigon Horeca', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="1366" height="768"></div>
+
+      <!-- Khối media bất đối xứng ảnh bo mây đè chéo - To rõ, không móp méo -->
+      <div class="pp-gcb-editorial-media scroll-reveal">
+        <!-- Đường đo đạc định vị CAD SVG phía sau ảnh -->
+        <div class="pp-gcb-media-cad-lines" aria-hidden="true">
+          <svg viewBox="0 0 120 100" fill="none" stroke="color-mix(in srgb, var(--gold) 15%, transparent)" stroke-width="0.4">
+            <line x1="5" y1="5" x2="115" y2="5"/>
+            <line x1="5" y1="5" x2="5" y2="95"/>
+            <line x1="115" y1="5" x2="115" y2="95"/>
+            <path d="M2 5h6M112 5h6M5 2v6M5 92v6"/>
+          </svg>
+        </div>
+
+        <!-- Ảnh chính: Không gian nội thất shophouse Metropole - Bo tròn đều sang trọng -->
+        <div class="pp-image-container-shared pp-gcb-main-frame">
+          <img src="<?php echo sgh_img('g-cup-coffee-bistro/g-cup-coffee-bistro-khong-gian-noi-that-shophouse.webp'); ?>" alt="<?php echo esc_attr__('Không gian nội thất hiện đại của G-Cup Coffee & Bistro tại Metropole Thủ Thiêm', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
+          <div class="pp-image-caption-shared">
+            <?php echo esc_html__('Không gian nội thất hiện đại ấm cúng của G-Cup Coffee & Bistro tại shophouse Metropole Thủ Thiêm với hệ thống chiếu sáng nghệ thuật.', 'saigonhoreca'); ?>
+          </div>
+        </div>
+
+        <!-- Ảnh phụ: Station thao tác - Lệch tầng tinh tế -->
+        <div class="pp-image-container-shared pp-gcb-sub-frame">
+          <img src="<?php echo sgh_img('g-cup-coffee-bistro/g-cup-coffee-bistro-quay-pha-che-chinh.webp'); ?>" alt="<?php echo esc_attr__('Hệ thống quầy pha chế chuyên nghiệp tại G-Cup Bistro', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
+          <div class="pp-image-caption-shared">
+            <?php echo esc_html__('Hệ thống quầy pha chế chuyên nghiệp tích hợp khu vực rửa và sơ chế nhanh tiện lợi tối ưu diện tích.', 'saigonhoreca'); ?>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>

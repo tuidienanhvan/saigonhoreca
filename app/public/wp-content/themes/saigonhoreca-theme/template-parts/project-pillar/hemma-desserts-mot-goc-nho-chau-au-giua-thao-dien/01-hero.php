@@ -1,6 +1,6 @@
-<?php
+﻿<?php
 /**
- * Project Pillar — hemma-desserts-mot-goc-nho-chau-au-giua-thao-dien
+ * Project Pillar â€” hemma-desserts-mot-goc-nho-chau-au-giua-thao-dien
  * Section #1: hero
  * @package SaigonHoreca
  */
@@ -12,7 +12,8 @@ $uri = get_template_directory_uri();
     <div class="pp-hero__overlay" aria-hidden="true"></div>
     <div class="pp-hero__content">
         <h1 class="pp-hero__title"><?php echo esc_html__('HEMMA DESSERTS', 'saigonhoreca'); ?></h1>
-        <p class="pp-hero__subhead"><?php echo esc_html__('Một góc nhỏ châu Âu giữa Thảo Điền', 'saigonhoreca'); ?></p>
-        <p class="pp-hero__subtitle"><?php echo esc_html__('Ẩn mình ở cuối con đường Nguyễn Bá Huân, Hemma Desserts là một tiệm tráng miệng kiểu Âu nhỏ xinh được vận hành bởi hai founder trẻ người nước ngoài, cũng chính là đầu bếp đứng bếp bánh mỗi ngày.', 'saigonhoreca'); ?></p>
+        <p class="pp-hero__subhead"><?php echo esc_html__('Má»™t gÃ³c nhá» chÃ¢u Ã‚u giá»¯a Tháº£o Äiá»n', 'saigonhoreca'); ?></p>
+        <p class="pp-hero__subtitle"><?php echo esc_html__('áº¨n mÃ¬nh á»Ÿ cuá»‘i con Ä‘Æ°á»ng Nguyá»…n BÃ¡ HuÃ¢n, Hemma Desserts lÃ  má»™t tiá»‡m trÃ¡ng miá»‡ng kiá»ƒu Ã‚u nhá» xinh Ä‘Æ°á»£c váº­n hÃ nh bá»Ÿi hai founder tráº» ngÆ°á»i nÆ°á»›c ngoÃ i, cÅ©ng chÃ­nh lÃ  Ä‘áº§u báº¿p Ä‘á»©ng báº¿p bÃ¡nh má»—i ngÃ y.', 'saigonhoreca'); ?></p>
     </div>
 </section>
+

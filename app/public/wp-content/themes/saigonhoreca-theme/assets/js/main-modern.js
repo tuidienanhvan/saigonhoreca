@@ -1,18 +1,9 @@
-/**
- * SaigonHouse Modern Stack (Pure Vanilla JS + CSS Animations)
- * Stack: Tailwind v4 + Inline SVG Icons + SwiperJS
- * No React, No Framer Motion - 100% PHP-friendly
- */
 
 function shDebounce(fn, ms) { var t; return function(...args) { clearTimeout(t); t = setTimeout(() => fn.apply(this, args), ms || 100); }; }
-
 document.addEventListener('DOMContentLoaded', () => {
-
-    // 2. Native Sticky Header Logic (Performance Optimized)
     const header = document.getElementById('main-header');
     if (header) {
         let headerTicking = false;
-
         const updateHeaderState = () => {
             if (window.scrollY > 50) {
                 header.classList.add('sh-header--scrolled');
@@ -21,31 +12,18 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             headerTicking = false;
         };
-
         window.addEventListener('scroll', () => {
             if (headerTicking) return;
             headerTicking = true;
             window.requestAnimationFrame(updateHeaderState);
         }, { passive: true });
-
         updateHeaderState();
     }
-
-    // 3. Mobile Sidebar Logic (lazy-hydrated from <template>)
-    //
-    // T-016: The ~180 nodes of mobile menu markup live in
-    // `<template id="sgh-mobile-menu-tpl">` rather than the live DOM.
-    // First hamburger click clones the template into the empty
-    // `#mobile-sidebar` shell, then `bindSubmenuAccordion` wires up
-    // the per-item accordion. Subsequent clicks just toggle the open
-    // class — no re-hydration. This keeps desktop visitors from
-    // paying the DOM cost of a menu they never open.
     const mobileToggle = document.getElementById('mobile-menu-toggle');
     const mobileOverlay = document.getElementById('mobile-sidebar-overlay');
     const mobileSidebar = document.getElementById('mobile-sidebar');
     const mobileTpl = document.getElementById('sgh-mobile-menu-tpl');
     let mobileHydrated = false;
-
     function bindSubmenuAccordion(root) {
         const submenuToggles = root.querySelectorAll('.mobile-submenu-toggle');
         submenuToggles.forEach((toggle) => {
@@ -81,18 +59,14 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
-
     function hydrateMobileMenu() {
         if (mobileHydrated || !mobileTpl || !mobileSidebar) return;
         mobileSidebar.appendChild(mobileTpl.content.cloneNode(true));
         mobileHydrated = true;
-        // Wire submenu accordion now that the menu exists.
         bindSubmenuAccordion(mobileSidebar);
-        // Close button lives inside the cloned content.
         const closeBtn = mobileSidebar.querySelector('#mobile-menu-close');
         if (closeBtn) closeBtn.addEventListener('click', () => toggleSidebar(false));
     }
-
     function toggleSidebar(show) {
         if (!mobileSidebar || !mobileOverlay) return;
         if (show) {
@@ -106,21 +80,11 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.classList.remove('overflow-hidden');
         }
     }
-
     if (mobileToggle) mobileToggle.addEventListener('click', () => toggleSidebar(true));
     if (mobileOverlay) mobileOverlay.addEventListener('click', () => toggleSidebar(false));
     document.addEventListener('keydown', (event) => {
         if (event.key === 'Escape') toggleSidebar(false);
     });
-
-    // 3b. Desktop dropdown lazy-hydrate (T-016)
-    //
-    // The desktop nav walker emits each <div.sh-dropdown> panel inside a
-    // <template class="sh-dropdown-tpl"> so the ~80 nodes don't count
-    // toward Lighthouse `dom-size`. First hover/focus of a parent
-    // <li.sh-nav-item[data-sgh-dropdown="lazy"]> clones the template
-    // into the live DOM. Subsequent hovers do nothing — the dropdown
-    // panel stays mounted and CSS handles show/hide.
     document.querySelectorAll('li.sh-nav-item[data-sgh-dropdown="lazy"]').forEach((li) => {
         const tpl = li.querySelector('template.sh-dropdown-tpl');
         if (!tpl) return;
@@ -129,13 +93,9 @@ document.addEventListener('DOMContentLoaded', () => {
             li.appendChild(tpl.content.cloneNode(true));
             li.dataset.sghDropdown = 'mounted';
         };
-        // Hover and focus both trigger hydration; passive listeners
-        // because we never call preventDefault.
         li.addEventListener('pointerenter', hydrate, { once: true, passive: true });
         li.addEventListener('focusin', hydrate, { once: true });
     });
-
-    // 5. Back To Top + Scroll Progress
     const backToTop = document.getElementById('back-to-top');
     const progressCircle = document.getElementById('scroll-progress-circle');
     if (backToTop) {
@@ -143,11 +103,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const scrollTop = window.scrollY;
             const docHeight = document.documentElement.scrollHeight - window.innerHeight;
             const scrollPercent = docHeight > 0 ? Math.min(scrollTop / docHeight, 1) : 0;
-
             if (progressCircle) {
                 progressCircle.style.strokeDashoffset = String(100 - (100 * scrollPercent));
             }
-
             if (scrollTop > 100) {
                 backToTop.style.display = 'flex';
                 backToTop.style.opacity = '1';
@@ -156,40 +114,28 @@ document.addEventListener('DOMContentLoaded', () => {
                 backToTop.style.opacity = '0';
             }
         };
-
         window.addEventListener('scroll', shDebounce(updateBackToTop, 100), { passive: true });
         updateBackToTop();
-
         backToTop.addEventListener('click', (event) => {
             event.preventDefault();
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     }
-
-    // 6. Gallery Tab Switching Logic (Pure Vanilla JS)
     const tabContainers = document.querySelectorAll('#townhouse-tabs, #villa-tabs');
-
     tabContainers.forEach(container => {
         const buttons = container.querySelectorAll('.sh-tab-btn');
         const galleryGrid = container.parentElement.querySelector('#townhouse-gallery, #villa-gallery');
-
         if (!galleryGrid) return;
-
         buttons.forEach(btn => {
             btn.addEventListener('click', () => {
                 const targetCat = btn.dataset.tab;
-
-                // Update button states
                 buttons.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
-
-                // Filter gallery items with CSS animation
                 const items = galleryGrid.querySelectorAll('.sh-gallery-item');
                 items.forEach((item, idx) => {
                     const itemCat = item.dataset.category;
                     if (itemCat === targetCat) {
                         item.classList.remove('hidden');
-                        // Staggered fade-in animation
                         item.style.opacity = '0';
                         item.style.transform = 'translateY(20px) scale(0.95)';
                         setTimeout(() => {
@@ -204,27 +150,21 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     });
-
-    // 7. Scroll Reveal Animation (Intersection Observer)
     const scrollElements = document.querySelectorAll('.scroll-reveal');
-
     if (scrollElements.length > 0) {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target); // Only animate once
+                    observer.unobserve(entry.target); 
                 }
             });
         }, {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
         });
-
         scrollElements.forEach(el => observer.observe(el));
     }
-
-    // 8. Lazy-load iframe embeds (avoid early third-party JS/network costs)
     const lazyIframes = document.querySelectorAll('iframe[data-lazy-src]');
     if (lazyIframes.length > 0) {
         const loadIframe = (iframe) => {
@@ -233,7 +173,6 @@ document.addEventListener('DOMContentLoaded', () => {
             iframe.dataset.lazyLoaded = '1';
             iframe.removeAttribute('data-lazy-src');
         };
-
         if ('IntersectionObserver' in window) {
             const iframeObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach((entry) => {
@@ -244,26 +183,19 @@ document.addEventListener('DOMContentLoaded', () => {
             }, {
                 rootMargin: '350px 0px'
             });
-
             lazyIframes.forEach((iframe) => iframeObserver.observe(iframe));
         } else {
             lazyIframes.forEach(loadIframe);
         }
     }
-
-    // 9. Legacy Tab Switching Logic (for other sections using data-tab-target)
     const tabButtons = document.querySelectorAll('[data-tab-target]');
-
     if (tabButtons.length > 0) {
         tabButtons.forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
                 const target = btn.dataset.tabTarget;
                 const container = btn.closest('[data-tab-container]');
-
                 if (!container) return;
-
-                // Update Buttons State
                 const buttons = container.querySelectorAll('[data-tab-target]');
                 buttons.forEach(b => {
                     if (b === btn) {
@@ -272,11 +204,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         b.classList.remove('active');
                     }
                 });
-
-                // Filter Content
                 const contentGroup = container.getAttribute('data-tab-group');
                 const contents = document.querySelectorAll(`[data-tab-group="${contentGroup}"] .sh-tab-item`);
-
                 contents.forEach(item => {
                     const itemCat = item.dataset.category;
                     if (target === 'all' || itemCat === target) {
@@ -284,11 +213,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         item.classList.remove('animate-in-fade');
                         void item.offsetWidth;
                         item.classList.add('animate-in-fade');
-
                         item.addEventListener('animationend', () => {
                             item.classList.remove('animate-in-fade');
                         }, { once: true });
-
                     } else {
                         item.classList.add('hidden');
                         item.classList.remove('animate-in-fade');
@@ -297,15 +224,11 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
-
-    // 10. Init Cleanup for Prerendered Animations
     document.querySelectorAll('.animate-in-fade').forEach(el => {
         el.addEventListener('animationend', () => {
             el.classList.remove('animate-in-fade');
         }, { once: true });
     });
-
-    // 11. Scroll Depth Tracking � GTM events at 25%, 50%, 75%, 100%
     (function() {
         if (typeof dataLayer === 'undefined') return;
         const depthsMark = [25, 50, 75, 100];
@@ -313,14 +236,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const pageType = document.body.classList.contains('single-post') ? 'post'
             : document.body.classList.contains('page-template-page-bang-gia') ? 'pricing'
             : document.body.classList.contains('front-page') ? 'homepage' : 'other';
-
         function getScrollDepthPct() {
             const doc = document.documentElement;
             const scrollTop = window.scrollY || doc.scrollTop;
             const maxScroll = doc.scrollHeight - doc.clientHeight;
             return maxScroll > 0 ? Math.round((scrollTop / maxScroll) * 100) : 0;
         }
-
         function onScrollDepth() {
             const pct = getScrollDepthPct();
             depthsMark.forEach(function(depth) {
@@ -333,11 +254,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         }
-
         window.addEventListener('scroll', onScrollDepth, { passive: true });
     })();
-
-    // 12. Pause CSS animations when off-screen (battery saver)
     const animatedEls = document.querySelectorAll('[class*="animate-spin"]');
     if (animatedEls.length > 0) {
         const animObserver = new IntersectionObserver((entries) => {
@@ -350,8 +268,6 @@ document.addEventListener('DOMContentLoaded', () => {
             animObserver.observe(el);
         });
     }
-
-    // Share buttons � delegated event handlers
     document.addEventListener('click', function(e) {
         var popup = e.target.closest('[data-share-action="popup"]');
         if (popup) {
@@ -363,7 +279,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             return;
         }
-
         var copy = e.target.closest('[data-share-action="copy"]');
         if (copy) {
             var url = copy.dataset.shareUrl;

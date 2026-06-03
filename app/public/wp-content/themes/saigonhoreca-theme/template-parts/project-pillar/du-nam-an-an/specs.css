@@ -1,1 +1,27 @@
-/** du-nam-an-an — specs slot (no content). */
+/**
+ * du-nam-an-an — specs slot.
+ * Inherits .pp-split-nan from concept.css + image + text.
+ * @package SaigonHoreca
+ */
+
+.pp-split-nan__media img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--bd);
+  transition: border-color 0.4s var(--ease-spring), transform 0.4s var(--ease-spring);
+}
+.pp-split-nan__media img:hover {
+  border-color: color-mix(in srgb, var(--wa) 40%, transparent);
+  transform: scale(1.03);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pp-split-nan__media img {
+    transition: none !important;
+  }
+  .pp-split-nan__media img:hover {
+    transform: none !important;
+  }
+}

@@ -1,0 +1,14 @@
+T-20260518-001 Phase B - Edge case audit
+============================================================
+
+  AMP             : 15/15 pass
+  WP-skip         : 3/4 pass
+  query           : 0/1 pass
+  trailing-slash  : 1/2 pass
+  wp-content      : 1/1 pass
+
+--- Failing probes ---
+  [WP-skip] expect=WP/skip status=0 mirror= url=https://saigonhoreca.local/xmlrpc.php
+    err: HTTP Error 405: Method Not Allowed
+  [trailing-slash] expect=WP/skip status=200 mirror=HIT url=https://saigonhoreca.local/du-an
+  [query] expect=WP/skip status=200 mirror=HIT url=https://saigonhoreca.local/?s=bep

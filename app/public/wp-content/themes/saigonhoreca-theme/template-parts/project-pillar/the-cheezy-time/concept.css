@@ -1,202 +1,302 @@
 /**
  * the-cheezy-time — concept slot.
- * Owns .pp-section-bg-tct — full-bleed background image with cinematic dairy overlay,
- * concentric cheese-wheel rings ambient motif, glassmorphic content card with
- * wedge-shaped clip-path L-corner ornaments and hand-drawn label tag eyebrow.
+ * Creative Asymmetric Split Grid, SVG Decor, Timeline Accents.
  * @package SaigonHoreca
  */
 
-.pp-section-bg-tct {
+/* =========================================================
+   CONCEPT SECTION SHELL
+   ========================================================= */
+.pp-concept-section-tct {
   position: relative;
-  padding: 7rem 1.5rem;
-  min-height: 72vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--b1);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   isolation: isolate;
-  overflow: hidden;
 }
-@media (min-width: 768px) { .pp-section-bg-tct { padding: 10rem 2rem; } }
 
-/* Cinematic dairy-warm vignette */
-.pp-section-bg-tct__overlay {
+/* SVG nền hình học mờ */
+.pp-concept-bg-svg {
   position: absolute;
   inset: 0;
-  z-index: 1;
-  background:
-    radial-gradient(ellipse at center,
-      color-mix(in srgb, var(--b1) 35%, transparent) 0%,
-      color-mix(in srgb, var(--b1) 82%, transparent) 100%),
-    linear-gradient(180deg,
-      color-mix(in srgb, var(--b1) 20%, transparent) 0%,
-      transparent 30%,
-      color-mix(in srgb, var(--b1) 60%, transparent) 100%);
+  width: 100%;
+  height: 100%;
   pointer-events: none;
+  z-index: 0;
+  opacity: 0.6;
 }
 
-/* Cheese-hole texture overlay */
-.pp-section-bg-tct::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background-image:
-    radial-gradient(circle at 14% 28%, color-mix(in srgb, var(--gold) 22%, transparent) 0 12px, transparent 13px),
-    radial-gradient(circle at 82% 18%, color-mix(in srgb, var(--gold) 18%, transparent) 0 20px, transparent 21px),
-    radial-gradient(circle at 24% 84%, color-mix(in srgb, var(--gold) 24%, transparent) 0 16px, transparent 17px),
-    radial-gradient(circle at 88% 76%, color-mix(in srgb, var(--gold) 16%, transparent) 0 10px, transparent 11px),
-    radial-gradient(circle at 56% 12%, color-mix(in srgb, var(--gold) 14%, transparent) 0 8px, transparent 9px);
-  mix-blend-mode: screen;
-  opacity: 0.4;
-  pointer-events: none;
-  filter: blur(0.4px);
+/* Quỹ đạo quay SVG */
+.concept-orbit-1 {
+  transform-origin: 900px 200px;
+  animation: concept-orbit-spin 60s linear infinite;
+}
+.concept-orbit-2 {
+  transform-origin: 900px 200px;
+  animation: concept-orbit-spin 45s linear infinite reverse;
 }
 
-/* Concentric cheese-wheel ring decorations — corners */
-.pp-section-bg-tct::after {
-  content: '';
-  position: absolute;
-  top: -200px;
-  right: -200px;
-  width: 580px; height: 580px;
-  border-radius: 50%;
-  z-index: 1;
-  background:
-    radial-gradient(circle at center,
-      transparent 0 40%,
-      color-mix(in srgb, var(--gold) 18%, transparent) 40% 41%,
-      transparent 41% 56%,
-      color-mix(in srgb, var(--gold) 24%, transparent) 56% 57%,
-      transparent 57% 72%,
-      color-mix(in srgb, var(--gold) 14%, transparent) 72% 73%,
-      transparent 73%);
-  filter: blur(1.4px);
-  opacity: 0.55;
-  pointer-events: none;
-  animation: pp-concept-tct-spin 120s linear infinite;
-}
-@keyframes pp-concept-tct-spin { to { transform: rotate(-360deg); } }
-
-/* Bottom-left butter glow */
-.pp-section-bg-tct {
-  --pp-tct-glow-1: radial-gradient(circle at 10% 95%,
-    color-mix(in srgb, var(--gold) 22%, transparent) 0%,
-    transparent 55%);
+@keyframes concept-orbit-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
-/* Glassmorphic content card — wedge-clipped corners + L-bracket ornaments */
-.pp-section-bg-tct__content {
-  position: relative;
-  z-index: 2;
-  max-width: 880px;
-  margin: 0 auto;
-  text-align: center;
-  padding: 3.5rem 3rem;
-  background:
-    var(--pp-tct-glow-1),
-    color-mix(in srgb, var(--b1) 45%, transparent);
-  backdrop-filter: blur(16px) saturate(150%);
-  border: 1px solid color-mix(in srgb, var(--gold) 26%, transparent);
-  border-radius: var(--radius-md);
+/* =========================================================
+   GRID LAYOUT
+   ========================================================= */
+.pp-concept-grid-tct {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: center;
+  margin-top: 4rem;
+}
+
+@media (min-width: 1024px) {
+  .pp-concept-grid-tct {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 4.5rem;
+  }
+}
+
+/* Responsive: đảo ảnh lên trên text trên mobile */
+@media (max-width: 1023px) {
+  .pp-concept-grid-tct {
+    gap: 2rem;
+  }
+  .pp-concept-grid-tct--reverse {
+    display: flex !important;
+    flex-direction: column-reverse !important;
+  }
+}
+
+/* =========================================================
+   TEXT COLUMN — ACCENT CARD STYLE
+   ========================================================= */
+.pp-concept-text-tct {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 1.6rem;
-  box-shadow:
-    0 28px 64px rgba(0, 0, 0, 0.52),
-    inset 0 1px 0 color-mix(in srgb, var(--gold) 14%, transparent),
-    inset 0 -1px 0 color-mix(in srgb, var(--gold) 8%, transparent);
-  clip-path: polygon(
-    16px 0, calc(100% - 16px) 0, 100% 16px,
-    100% calc(100% - 16px), calc(100% - 16px) 100%,
-    16px 100%, 0 calc(100% - 16px), 0 16px
-  );
-}
-@media (min-width: 768px) {
-  .pp-section-bg-tct__content { padding: 4rem 4rem; }
+  gap: 1.25rem;
+  position: relative;
 }
 
-/* L-bracket corner brackets */
-.pp-section-bg-tct__content::before,
-.pp-section-bg-tct__content::after {
-  content: '';
+/* Thanh accent dọc bên trái */
+.pp-concept-accent-bar {
   position: absolute;
-  width: 32px; height: 32px;
-  border: 2px solid color-mix(in srgb, var(--gold) 65%, transparent);
-  pointer-events: none;
-  z-index: 3;
+  top: 0;
+  left: -1.5rem;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(to bottom,
+    var(--gold) 0%,
+    color-mix(in srgb, var(--gold) 30%, transparent) 70%,
+    transparent 100%);
+  border-radius: 3px;
+  display: none;
 }
-.pp-section-bg-tct__content::before {
-  top: 12px; left: 12px;
-  border-right: none; border-bottom: none;
-  border-top-left-radius: 4px;
-}
-.pp-section-bg-tct__content::after {
-  bottom: 12px; right: 12px;
-  border-left: none; border-top: none;
-  border-bottom-right-radius: 4px;
-}
-
-/* Hand-drawn label tag eyebrow injected before divider */
-.pp-section-bg-tct__content .pp-text-tct__divider {
-  position: relative;
-}
-.pp-section-bg-tct__content .pp-text-tct__divider::before {
-  filter: drop-shadow(0 2px 12px color-mix(in srgb, var(--gold) 70%, transparent));
+.pp-concept-accent-bar--alt {
+  background: linear-gradient(to bottom,
+    transparent 0%,
+    color-mix(in srgb, var(--gold) 30%, transparent) 30%,
+    var(--gold) 100%);
 }
 
-/* Title — large display with deep text-shadow */
-.pp-section-bg-tct__content .pp-text-tct__title {
-  margin: 0;
-  font-family: var(--font-display);
-  font-size: clamp(1.7rem, 3.1vw, 2.65rem);
+@media (min-width: 1024px) {
+  .pp-concept-accent-bar {
+    display: block;
+  }
+  .pp-concept-text-tct {
+    padding-left: 1.5rem;
+  }
+}
+
+/* Tiêu đề con */
+.pp-concept-heading-tct {
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(1.35rem, 2vw, 1.8rem);
   font-weight: 700;
-  line-height: 1.2;
-  letter-spacing: -0.005em;
-  color: var(--bc);
-  text-shadow:
-    0 3px 16px rgba(0, 0, 0, 0.7),
-    0 0 40px color-mix(in srgb, var(--gold) 14%, transparent);
-  max-width: 22ch;
-}
-
-/* Body */
-.pp-section-bg-tct__content .pp-text-tct__body {
-  font-size: clamp(0.98rem, 1.12vw, 1.08rem);
-  line-height: 1.85;
-  color: color-mix(in srgb, var(--bc) 88%, var(--bc2));
-  max-width: 680px;
-  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
-}
-.pp-section-bg-tct__content .pp-text-tct__body p {
-  margin: 0 0 1em;
-  text-align: center;
-}
-.pp-section-bg-tct__content .pp-text-tct__body p:last-child { margin-bottom: 0; }
-
-/* Caption tag — corner badge top-right */
-.pp-section-bg-tct__content > .pp-text-tct__divider::after {
-  content: '';
-}
-
-/* Subtle scan-line dairy texture — film grain alternative */
-.pp-section-bg-tct__content > * { position: relative; z-index: 1; }
-
-/* Decorative wedge accent — bottom center */
-.pp-section-bg-tct__content > .pp-text-tct__body + *,
-.pp-section-bg-tct__content > .pp-text-tct__body {
+  color: var(--gold);
+  margin: 0;
+  line-height: 1.25;
   position: relative;
 }
 
-/* Approach indicator — small dot row below the card on the section */
-.pp-section-bg-tct > .pp-section-bg-tct__content::after {
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--gold) 14%, transparent);
+/* Body wrapper */
+.pp-concept-body-tct {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
 }
 
+/* Callout box */
+.pp-concept-callout-tct {
+  position: relative;
+  padding: 1.25rem 1.25rem 1.25rem 3rem;
+  background: rgba(245, 166, 35, 0.04);
+  border: 1px solid rgba(245, 166, 35, 0.12);
+  border-radius: var(--radius-lg, 18px);
+  transition: border-color 0.4s ease, background 0.4s ease;
+}
+.pp-concept-callout-tct:hover {
+  border-color: rgba(245, 166, 35, 0.3);
+  background: rgba(245, 166, 35, 0.06);
+}
+
+.pp-concept-callout-icon {
+  position: absolute;
+  top: 1.25rem;
+  left: 1rem;
+  width: 18px;
+  height: 18px;
+  color: var(--gold);
+  opacity: 0.7;
+}
+
+.pp-concept-callout-tct p {
+  margin: 0;
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: var(--bc2);
+}
+.pp-concept-callout-tct strong {
+  color: color-mix(in srgb, var(--bc) 85%, var(--gold));
+}
+
+/* Đoạn mô tả bình thường */
+.pp-concept-desc-tct {
+  margin: 0;
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.98rem;
+  line-height: 1.8;
+  color: var(--bc2);
+  text-align: justify;
+  opacity: 0.85;
+  transition: opacity 0.3s ease;
+}
+.pp-concept-text-tct:hover .pp-concept-desc-tct {
+  opacity: 1;
+}
+
+/* =========================================================
+   TIMELINE LAYOUT (Hàng 2 — Bếp bánh & bếp nấu)
+   ========================================================= */
+.pp-concept-timeline-tct {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-left: 1.5rem;
+  border-left: 1px solid rgba(245, 166, 35, 0.15);
+  position: relative;
+}
+
+.pp-concept-timeline-item-tct {
+  position: relative;
+}
+
+/* Dot trên timeline */
+.pp-concept-timeline-dot-tct {
+  position: absolute;
+  left: -1.5rem;
+  top: 0.5rem;
+  width: 10px;
+  height: 10px;
+  background: var(--gold);
+  border-radius: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 8px rgba(245, 166, 35, 0.3);
+  transition: transform 0.3s var(--ease-spring, cubic-bezier(0.16, 1, 0.3, 1)), box-shadow 0.3s ease;
+}
+
+.pp-concept-timeline-item-tct:hover .pp-concept-timeline-dot-tct {
+  transform: translateX(-50%) scale(1.3);
+  box-shadow: 0 0 14px rgba(245, 166, 35, 0.5);
+}
+
+/* Closing italic paragraph */
+.pp-concept-closing-tct {
+  padding: 1rem 1.25rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-lg, 18px);
+}
+.pp-concept-closing-tct p {
+  margin: 0;
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.92rem;
+  line-height: 1.8;
+  color: color-mix(in srgb, var(--bc2) 80%, var(--gold));
+  font-style: italic;
+}
+
+/* =========================================================
+   MEDIA COLUMN — SVG DECOR & FRAME REFINEMENTS
+   ========================================================= */
+.pp-concept-media-tct {
+  position: relative;
+}
+
+/* SVG quỹ đạo trang trí bên cạnh ảnh */
+.pp-concept-orbit-decor,
+.pp-concept-tech-decor {
+  position: absolute;
+  inset: -15px;
+  width: calc(100% + 30px);
+  height: calc(100% + 30px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
+}
+
+/* Orbit dot quay */
+.orbit-ring-1 {
+  transform-origin: 200px 150px;
+  animation: concept-orbit-spin 40s linear infinite;
+}
+.orbit-dot-1 {
+  animation: concept-orbit-spin 40s linear infinite;
+  transform-origin: 200px 150px;
+}
+
+/* Tech rect pulse */
+.tech-rect-pulse {
+  animation: tech-dash-shift 20s linear infinite;
+}
+@keyframes tech-dash-shift {
+  from { stroke-dashoffset: 0; }
+  to { stroke-dashoffset: 100; }
+}
+
+/* Tech nodes blink */
+.tech-node-tl,
+.tech-node-br {
+  animation: tech-node-blink 3s ease-in-out infinite alternate;
+}
+.tech-node-br {
+  animation-delay: 1.5s;
+}
+@keyframes tech-node-blink {
+  0% { opacity: 0.2; }
+  100% { opacity: 0.8; }
+}
+
+/* Concept frame nhẹ hơn padding */
+.pp-tct-luxury-frame--concept {
+  position: relative;
+  z-index: 1;
+}
+
+/* Hover nhẹ nhàng nâng lên */
+.pp-concept-media-tct:hover .pp-tct-luxury-frame--concept {
+  transform: translateY(-6px);
+}
+
+/* Prefers reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  .pp-section-bg-tct::after { animation: none; }
+  .concept-orbit-1,
+  .concept-orbit-2,
+  .orbit-ring-1,
+  .orbit-dot-1,
+  .tech-rect-pulse,
+  .tech-node-tl,
+  .tech-node-br {
+    animation: none;
+  }
 }

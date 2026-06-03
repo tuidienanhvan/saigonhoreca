@@ -1,6 +1,6 @@
-<?php
+﻿<?php
 /**
- * Project Pillar — bep-an-truong-mam-non-tu-thuc-trinh-vuong
+ * Project Pillar â€” bep-an-truong-mam-non-tu-thuc-trinh-vuong
  * Section #1: hero
  * @package SaigonHoreca
  */
@@ -11,8 +11,9 @@ $uri = get_template_directory_uri();
     <div class="pp-hero__media" style="background-image:url('<?php echo sgh_img('2025/08/goi-y-thiet-ke-bep-truong-hoc.jpg'); ?>'); background-size:cover; background-position:center;"></div>
     <div class="pp-hero__overlay" aria-hidden="true"></div>
     <div class="pp-hero__content">
-        <h1 class="pp-hero__title"><?php echo esc_html__('TRƯỜNG MẦM NON TRINH VƯƠNG', 'saigonhoreca'); ?></h1>
-        <p class="pp-hero__subhead"><?php echo esc_html__('"Một bếp – 500 suất ăn – 0 phút trễ"', 'saigonhoreca'); ?></p>
-        <p class="pp-hero__subtitle"><?php echo esc_html__('500 suất ăn, 0 phút trễ — đó không chỉ là con số thể hiện hiệu suất vận hành của bếp ăn Trường Mầm Non Tư Thục Trinh Vương, mà còn là minh chứng cho sự tính toán tỉ mỉ trong từng chi tiết thiết kế mà Saigon Horeca (SGH) đã thực hiện.', 'saigonhoreca'); ?></p>
+        <h1 class="pp-hero__title"><?php echo esc_html__('TRÆ¯á»œNG Máº¦M NON TRINH VÆ¯Æ NG', 'saigonhoreca'); ?></h1>
+        <p class="pp-hero__subhead"><?php echo esc_html__('"Má»™t báº¿p â€“ 500 suáº¥t Äƒn â€“ 0 phÃºt trá»…"', 'saigonhoreca'); ?></p>
+        <p class="pp-hero__subtitle"><?php echo esc_html__('500 suáº¥t Äƒn, 0 phÃºt trá»… â€” Ä‘Ã³ khÃ´ng chá»‰ lÃ  con sá»‘ thá»ƒ hiá»‡n hiá»‡u suáº¥t váº­n hÃ nh cá»§a báº¿p Äƒn TrÆ°á»ng Máº§m Non TÆ° Thá»¥c Trinh VÆ°Æ¡ng, mÃ  cÃ²n lÃ  minh chá»©ng cho sá»± tÃ­nh toÃ¡n tá»‰ má»‰ trong tá»«ng chi tiáº¿t thiáº¿t káº¿ mÃ  Saigon Horeca (SGH) Ä‘Ã£ thá»±c hiá»‡n.', 'saigonhoreca'); ?></p>
     </div>
 </section>
+

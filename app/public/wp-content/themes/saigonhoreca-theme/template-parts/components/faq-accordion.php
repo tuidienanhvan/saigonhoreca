@@ -25,27 +25,32 @@ if ($bg === 'white') $bg_mod = 'sh-faq--white';
 elseif ($bg === 'green') $bg_mod = 'sh-faq--green';
 ?>
 
-<?php if ($schema): ?>
-<script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-        <?php foreach ($items as $i => $item):
-            $comma = ($i < count($items) - 1) ? ',' : ''; ?>
-        {
-            "@type": "Question",
-            "name": <?php echo wp_json_encode($item['q']); ?>,
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": <?php echo wp_json_encode(wp_strip_all_tags($item['a'])); ?>
-            }
-        }<?php echo $comma; ?>
-        <?php endforeach; ?>
-    ]
+<?php
+if ($schema) {
+    $faq_schema_items = [];
+    foreach ($items as $item) {
+        $faq_schema_items[] = [
+            '@type'          => 'Question',
+            'name'           => $item['q'],
+            'acceptedAnswer' => [
+                '@type' => 'Answer',
+                'text'  => wp_strip_all_tags($item['a']),
+            ],
+        ];
+    }
+    $faq_schema = [
+        '@context'   => 'https://schema.org',
+        '@type'      => 'FAQPage',
+        'mainEntity' => $faq_schema_items,
+    ];
+
+    if (class_exists('SGH_SEO_Schema')) {
+        SGH_SEO_Schema::register('faq_accordion', $faq_schema);
+    } else {
+        echo '<script type="application/ld+json">' . wp_json_encode($faq_schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '</script>' . "\n";
+    }
 }
-</script>
-<?php endif; ?>
+?>
 
 <section class="sh-faq <?php echo $bg_mod; ?>">
 

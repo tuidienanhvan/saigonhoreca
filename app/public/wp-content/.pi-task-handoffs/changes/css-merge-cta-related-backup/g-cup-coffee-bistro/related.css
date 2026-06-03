@@ -1,0 +1,79 @@
+/**
+ * g-cup-coffee-bistro — related slot (conclusion).
+ * Inherits from intro.css (.pp__section, .pp-text-gcb).
+ * @package SaigonHoreca
+ */
+
+.pp__section {
+  position: relative;
+  padding: 5rem 0;
+  background: var(--b1);
+}
+
+.pp__section .pp-text-gcb--center {
+  max-width: 860px;
+  margin-inline: auto;
+  padding: clamp(2rem, 4vw, 3rem) clamp(1.5rem, 3.5vw, 2.5rem) !important;
+  background: color-mix(in srgb, var(--b2) 75%, black) !important;
+  border: 1px solid color-mix(in srgb, var(--gold) 15%, var(--bd)) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 25px 65px rgba(0, 0, 0, 0.45) !important;
+  position: relative;
+}
+
+/* Thêm nẹp góc kỹ thuật CAD nghệ thuật */
+.pp__section .pp-text-gcb--center::before {
+  content: "";
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  width: 14px;
+  height: 14px;
+  border-left: 2px solid var(--gold);
+  border-top: 2px solid var(--gold);
+  opacity: 0.6;
+}
+
+.pp__section .pp-text-gcb--center::after {
+  content: "";
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  width: 14px;
+  height: 14px;
+  border-right: 2px solid var(--gold);
+  border-bottom: 2px solid var(--gold);
+  opacity: 0.6;
+}
+
+.pp__section .pp-text-gcb__title {
+  font-family: var(--font-display), sans-serif !important;
+  font-size: clamp(1.6rem, 3vw, 2.2rem) !important;
+  font-weight: 700 !important;
+  color: var(--gold) !important;
+  margin-bottom: 1.5rem !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.pp__section .pp-text-gcb__body {
+  display: grid;
+  gap: 1.2rem;
+  text-align: left;
+}
+
+.pp__section .pp-text-gcb__body p {
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.75;
+  color: color-mix(in srgb, var(--bc2) 90%, white);
+}
+
+.pp__section .pp-text-gcb__body p:last-child {
+  position: relative;
+  padding-left: 1.2rem;
+  border-left: 2px solid var(--gold);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--bc) !important;
+}

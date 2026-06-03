@@ -1,131 +1,502 @@
 /**
- * godmother-friendship — intro slot. Shared .pp__section + text + gallery styles.
+ * godmother-friendship — intro slot.
+ * Contains both GMF Project-Wide Shared Styles and Section 2 (Intro) Custom Styles.
  * @package SaigonHoreca
  */
 
-.pp__section {
+/* ==========================================================================
+   1. GMF PROJECT-WIDE SHARED STYLES (Used by all sections)
+   ========================================================================== */
+
+.pp--gmf .pp-section-gmf {
   position: relative;
-  padding: 5rem 1.25rem;
+  padding: clamp(4rem, 8vw, 8rem) 0;
   background: var(--b1);
   overflow: hidden;
 }
-@media (min-width: 768px) { .pp__section { padding: 7.5rem 2rem; } }
-.pp__section--alt { background: var(--b2); }
-.pp__container {
-  max-width: 1140px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 2;
+
+.pp--gmf .pp-section-gmf--alt {
+  background: var(--b2);
 }
 
-.pp__section--alt::before {
-  content: '';
+.pp--gmf .pp-grid-gmf {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .pp--gmf .pp-grid-gmf {
+    grid-template-columns: 42% 58%;
+  }
+  .pp--gmf .pp-grid-gmf--reverse .pp-grid-gmf__media { order: 1; }
+  .pp--gmf .pp-grid-gmf--reverse .pp-grid-gmf__text  { order: 2; }
+}
+
+/* Shared Glassmorphism Card */
+.pp--gmf .pp-glass-card-gmf {
+  position: relative;
+  background: color-mix(in srgb, var(--b2) 65%, transparent);
+  backdrop-filter: blur(16px) saturate(135%);
+  -webkit-backdrop-filter: blur(16px) saturate(135%);
+  border: 1px dashed color-mix(in srgb, var(--p) 25%, transparent);
+  border-radius: var(--radius-lg);
+  padding: clamp(2rem, 3.5vw, 3rem);
+  box-shadow:
+    0 24px 48px rgba(0, 0, 0, 0.45),
+    inset 0 0 40px rgba(0, 0, 0, 0.6);
+  outline: 1px solid color-mix(in srgb, var(--p) 12%, transparent);
+  outline-offset: -12px;
+  transition: transform 0.4s var(--ease-spring), border-color 0.4s, box-shadow 0.4s;
+  overflow: hidden;
+}
+
+.pp--gmf .pp-glass-card-gmf:hover {
+  transform: translateY(-5px);
+  border-color: var(--p);
+}
+
+/* Shared Corner Ornaments */
+.pp--gmf .pp-glass-card-gmf .pp-corner-ornament-gmf--tl,
+.pp--gmf .pp-glass-card-gmf .pp-corner-ornament-gmf--tr,
+.pp--gmf .pp-glass-card-gmf .pp-corner-ornament-gmf--bl,
+.pp--gmf .pp-glass-card-gmf .pp-corner-ornament-gmf--br {
   position: absolute;
-  top: 25%;
-  right: -10%;
-  width: 500px; height: 500px;
-  background: radial-gradient(circle, color-mix(in srgb, var(--gold) 5%, transparent) 0%, transparent 70%);
-  filter: blur(65px);
+  width: 14px; height: 14px;
+  border: 1px solid var(--p);
+  opacity: 0.3;
+  transition: opacity 0.4s, transform 0.4s var(--ease-spring);
+  z-index: 5;
+}
+
+.pp--gmf .pp-glass-card-gmf:hover .pp-corner-ornament-gmf--tl,
+.pp--gmf .pp-glass-card-gmf:hover .pp-corner-ornament-gmf--tr,
+.pp--gmf .pp-glass-card-gmf:hover .pp-corner-ornament-gmf--bl,
+.pp--gmf .pp-glass-card-gmf:hover .pp-corner-ornament-gmf--br {
+  opacity: 0.95;
+  transform: scale(1.1);
+}
+
+.pp--gmf .pp-glass-card-gmf .pp-corner-ornament-gmf--tl { top: 16px; left: 16px; border-right: none; border-bottom: none; }
+.pp--gmf .pp-glass-card-gmf .pp-corner-ornament-gmf--tr { top: 16px; right: 16px; border-left: none; border-bottom: none; }
+.pp--gmf .pp-glass-card-gmf .pp-corner-ornament-gmf--bl { bottom: 16px; left: 16px; border-right: none; border-top: none; }
+.pp--gmf .pp-glass-card-gmf .pp-corner-ornament-gmf--br { bottom: 16px; right: 16px; border-left: none; border-top: none; }
+
+/* Dashboard Card Bounding Box SVG */
+.pp--gmf .pp-cad-bbox-card-gmf {
+  position: absolute;
+  inset: 8px !important;
+  width: auto !important;
+  height: auto !important;
+  box-sizing: border-box !important;
+  color: color-mix(in srgb, var(--p) 25%, transparent);
   pointer-events: none;
-  z-index: 0;
+  z-index: 1;
 }
 
-.pp-text-gmf {
-  max-width: 820px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-.pp-text-gmf--center { align-items: center; text-align: center; }
-
-.pp-text-gmf__divider {
-  display: block;
-  width: 56px;
-  height: 2px;
-  background: var(--gold);
+/* Shared Project Badge */
+.pp--gmf .pp-badge-gmf {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-full);
+  background: color-mix(in srgb, var(--p) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--p) 20%, transparent);
+  color: var(--p);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
   position: relative;
-  box-shadow: 0 0 16px color-mix(in srgb, var(--gold) 50%, transparent);
+  z-index: 5;
 }
-.pp-text-gmf__divider--center { margin: 0 auto; }
-.pp-text-gmf__divider::before,
-.pp-text-gmf__divider::after {
+
+.pp--gmf .pp-badge-gmf svg {
+  width: 0.85rem;
+  height: 0.85rem;
+  display: block;
+}
+
+/* Shared Typography Styles */
+.pp--gmf .pp-text-gmf__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--bc);
+  margin: 0;
+  position: relative;
+  z-index: 5;
+}
+
+.pp--gmf .pp-text-gmf__divider {
+  width: 60px;
+  height: 2px;
+  background: var(--p);
+  margin: 1.25rem 0 0 0;
+  position: relative;
+  box-shadow: 0 0 12px var(--p);
+  z-index: 5;
+}
+
+.pp--gmf .pp-text-gmf__divider::before,
+.pp--gmf .pp-text-gmf__divider::after {
   content: '';
   position: absolute;
   top: 50%;
   width: 6px; height: 6px;
-  background: var(--gold);
+  background: var(--p);
   border-radius: 50%;
   transform: translateY(-50%);
 }
-.pp-text-gmf__divider::before { left: -14px; }
-.pp-text-gmf__divider::after { right: -14px; }
 
-.pp-text-gmf__title {
-  margin: 0;
-  font-family: var(--font-display);
-  font-size: clamp(1.85rem, 3.5vw, 2.85rem);
-  font-weight: 700;
-  line-height: 1.2;
-  color: var(--bc);
-}
-.pp-text-gmf--center .pp-text-gmf__title { margin: 0 auto; }
+.pp--gmf .pp-text-gmf__divider::before { left: -12px; }
+.pp--gmf .pp-text-gmf__divider::after { right: -12px; }
+.pp--gmf .pp-text-gmf__divider--center { margin: 1.25rem auto; }
 
-.pp-text-gmf__body {
-  font-size: clamp(0.97rem, 1.1vw, 1.05rem);
+.pp--gmf .pp-text-gmf__body {
+  font-family: var(--font-sans);
+  font-size: clamp(0.95rem, 1.1vw, 1.05rem);
   line-height: 1.85;
   color: var(--bc2);
-  max-width: 760px;
   display: flex;
   flex-direction: column;
-  gap: 1.1rem;
+  gap: 1.25rem;
+  position: relative;
+  z-index: 5;
 }
-.pp-text-gmf--center .pp-text-gmf__body { margin: 0 auto; }
-.pp-text-gmf__body p { margin: 0; text-align: left; }
-.pp-text-gmf--center .pp-text-gmf__body p { text-align: center; }
-.pp-text-gmf__body a {
-  color: var(--gold);
-  text-decoration: none;
-  border-bottom: 1px solid color-mix(in srgb, var(--gold) 40%, transparent);
-  transition: border-color 0.2s;
-}
-.pp-text-gmf__body a:hover { border-color: var(--gold); }
-.pp-text-gmf__body strong { color: var(--gold); font-weight: 700; }
-.pp-text-gmf__body em { color: color-mix(in srgb, var(--bc) 90%, var(--bc2)); font-style: italic; }
 
-/* Gallery */
-.pp-gallery-gmf {
+.pp--gmf .pp-text-gmf__body p { margin: 0; }
+.pp--gmf .pp-text-gmf__body strong { color: var(--p); font-weight: 700; }
+
+.pp--gmf .pp-grid-gmf__media .pp-image-container-shared {
+  position: relative;
+  border-radius: var(--radius-md);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
+  transition: box-shadow 0.6s var(--ease-spring), transform 0.6s var(--ease-spring);
+}
+
+.pp--gmf .pp-grid-gmf__media .pp-image-container-shared:hover {
+  box-shadow: 0 24px 50px color-mix(in srgb, var(--p) 18%, transparent);
+  transform: scale(1.01);
+}
+
+/* ==========================================================================
+   2. SECTION 2 (INTRO) CUSTOM STYLES
+   ========================================================================== */
+
+/* Background grid lines decoration */
+.pp--gmf .pp-intro-bg-grid-gmf {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  color: color-mix(in srgb, var(--p) 22%, transparent);
+}
+
+/* Custom Grid Layout */
+.pp--gmf .pp-intro-layout-gmf {
+  display: block;
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 5;
+}
+
+/* Left Column: Typography Content */
+.pp--gmf .pp-intro-content-col-gmf {
+  display: flex;
+  flex-direction: column;
+}
+
+.pp--gmf .pp-intro-eyebrow-gmf {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--p);
+  margin-bottom: 0.75rem;
+}
+
+.pp--gmf .pp-intro-title-gmf {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--bc);
+  margin: 0;
+}
+
+.pp--gmf .pp-intro-divider-gmf {
+  width: 60px;
+  height: 2px;
+  background: var(--p);
+  margin: 1.25rem 0 2rem 0;
+  position: relative;
+  box-shadow: 0 0 12px var(--p);
+}
+
+.pp--gmf .pp-intro-body-gmf {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Lead Paragraph with Dropcap */
+.pp--gmf .pp-intro-lead-gmf {
+  font-family: var(--font-sans);
+  font-size: clamp(0.95rem, 1.1vw, 1.15rem);
+  line-height: 1.85;
+  color: var(--bc2);
+  margin: 0;
+}
+
+.pp--gmf .pp-dropcap-gmf {
+  font-family: var(--font-serif);
+  font-size: 3.5rem;
+  font-weight: 700;
+  float: left;
+  line-height: 0.8;
+  margin-right: 0.75rem;
+  margin-top: 0.2rem;
+  color: var(--p);
+}
+
+/* Quote */
+.pp--gmf .pp-intro-quote-gmf {
+  border-left: 2px solid var(--p);
+  padding-left: 1.25rem;
+  margin: 0.5rem 0;
+}
+
+.pp--gmf .pp-intro-quote-gmf p {
+  font-family: var(--font-serif);
+  font-size: clamp(1.05rem, 1.2vw, 1.25rem);
+  line-height: 1.7;
+  color: var(--bc);
+  margin: 0;
+  font-style: italic;
+}
+
+/* Metadata Info Grid */
+.pp--gmf .pp-intro-meta-grid-gmf {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
-  margin-top: 2.5rem;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px dashed color-mix(in srgb, var(--bc) 10%, transparent);
 }
-@media (min-width: 768px) {
-  .pp-gallery-gmf { grid-template-columns: repeat(2, 1fr); gap: 1.75rem; }
-  .pp-gallery-gmf--cols-3 { grid-template-columns: repeat(3, 1fr); }
-  .pp-gallery-gmf--cols-4 { grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
-  .pp-gallery-gmf--cols-1 { grid-template-columns: 1fr; }
+
+@media (min-width: 640px) {
+  .pp--gmf .pp-intro-meta-grid-gmf {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
 }
-.pp-gallery-gmf__item {
+
+.pp--gmf .pp-intro-meta-item-gmf {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.pp--gmf .pp-intro-meta-label-gmf {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: color-mix(in srgb, var(--bc) 45%, transparent);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.pp--gmf .pp-intro-meta-value-gmf {
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--bc);
+}
+
+/* Right Column: Blueprint brand logo frame */
+.pp--gmf .pp-intro-visual-col-gmf {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.pp--gmf .pp-intro-blueprint-card-gmf {
   position: relative;
-  aspect-ratio: 4 / 3;
-  overflow: hidden;
+  background: color-mix(in srgb, var(--b2) 40%, transparent);
+  border: 1px dashed color-mix(in srgb, var(--p) 20%, transparent);
   border-radius: var(--radius-md);
-  background: var(--b3);
-  border: 1px solid var(--bd);
-  transition: border-color 0.4s var(--ease-spring), transform 0.4s var(--ease-spring);
+  padding: 2.2rem 1.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 
+    0 16px 36px rgba(0, 0, 0, 0.4),
+    inset 0 0 30px rgba(0, 0, 0, 0.3);
+  transition: transform 0.6s var(--ease-spring), border-color 0.4s;
+  overflow: hidden;
+  width: 100%;
 }
-.pp-gallery-gmf__item:hover {
-  border-color: color-mix(in srgb, var(--gold) 45%, transparent);
-  transform: translateY(-4px);
+
+.pp--gmf .pp-intro-blueprint-card-gmf:hover {
+  transform: translateY(-5px);
+  border-color: var(--p);
 }
-.pp-gallery-gmf__item img {
+
+.pp--gmf .pp-intro-blueprint-card-gmf .pp-cad-bbox-card-gmf {
   position: absolute;
-  inset: 0;
-  width: 100%; height: 100%;
+  inset: 8px !important;
+  width: auto !important;
+  height: auto !important;
+  box-sizing: border-box !important;
+  color: color-mix(in srgb, var(--p) 18%, transparent);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.pp--gmf .pp-intro-blueprint-card-gmf .pp-corner-ornament-gmf--tl,
+.pp--gmf .pp-intro-blueprint-card-gmf .pp-corner-ornament-gmf--tr,
+.pp--gmf .pp-intro-blueprint-card-gmf .pp-corner-ornament-gmf--bl,
+.pp--gmf .pp-intro-blueprint-card-gmf .pp-corner-ornament-gmf--br {
+  position: absolute;
+  width: 10px; height: 10px;
+  border: 1px solid var(--p);
+  opacity: 0.3;
+  transition: opacity 0.4s, transform 0.4s var(--ease-spring);
+  z-index: 5;
+}
+
+.pp--gmf .pp-intro-blueprint-card-gmf:hover .pp-corner-ornament-gmf--tl,
+.pp--gmf .pp-intro-blueprint-card-gmf:hover .pp-corner-ornament-gmf--tr,
+.pp--gmf .pp-intro-blueprint-card-gmf:hover .pp-corner-ornament-gmf--bl,
+.pp--gmf .pp-intro-blueprint-card-gmf:hover .pp-corner-ornament-gmf--br {
+  opacity: 0.9;
+  transform: scale(1.1);
+}
+
+.pp--gmf .pp-intro-blueprint-card-gmf .pp-corner-ornament-gmf--tl { top: 12px; left: 12px; border-right: none; border-bottom: none; }
+.pp--gmf .pp-intro-blueprint-card-gmf .pp-corner-ornament-gmf--tr { top: 12px; right: 12px; border-left: none; border-bottom: none; }
+.pp--gmf .pp-intro-blueprint-card-gmf .pp-corner-ornament-gmf--bl { bottom: 12px; left: 12px; border-right: none; border-top: none; }
+.pp--gmf .pp-intro-blueprint-card-gmf .pp-corner-ornament-gmf--br { bottom: 12px; right: 12px; border-left: none; border-top: none; }
+
+.pp--gmf .pp-intro-logo-wrap-gmf {
+  width: 100%;
+  aspect-ratio: 16/7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 5;
+}
+
+.pp--gmf .pp-intro-logo-wrap-gmf img {
+  max-width: 90%;
+  max-height: 80%;
+  object-fit: contain;
+}
+
+.pp--gmf .pp-blueprint-spec-gmf {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 1.25rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid color-mix(in srgb, var(--p) 10%, transparent);
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: color-mix(in srgb, var(--p) 50%, transparent);
+}
+
+/* Orange Symbol Badge integrated beautifully underneath */
+.pp--gmf .pp-intro-symbol-badge-gmf {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.1rem 1.5rem;
+  background: color-mix(in srgb, var(--b2) 20%, transparent);
+  border: 1px solid color-mix(in srgb, var(--bc) 5%, transparent);
+  border-radius: var(--radius-md);
+  transition: background 0.3s;
+}
+
+.pp--gmf .pp-intro-symbol-badge-gmf:hover {
+  background: color-mix(in srgb, var(--b2) 40%, transparent);
+}
+
+.pp--gmf .pp-intro-symbol-img-gmf {
+  width: 96px;
+  height: 72px;
+  object-fit: contain;
+  background: #f1785b; /* Brand cam đất */
+  border-radius: 6px;
+  padding: 6px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.pp--gmf .pp-intro-symbol-text-gmf {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.pp--gmf .pp-intro-symbol-text-gmf span {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: color-mix(in srgb, var(--p) 75%, transparent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.pp--gmf .pp-intro-symbol-text-gmf strong {
+  font-family: var(--font-sans);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--bc);
+}
+
+/* Container ảnh mặt tiền Kiosk Lê Lợi trong Blueprint Card */
+.pp--gmf .pp-intro-img-container-gmf {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/10;
+  overflow: hidden;
+  border-radius: 0;
+  box-shadow: none;
+  border: none;
+}
+
+.pp--gmf .pp-intro-img-container-gmf img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   display: block;
-  filter: saturate(1.06);
-  transition: transform 0.7s var(--ease-spring);
+  transition: transform 0.6s var(--ease-spring);
 }
-.pp-gallery-gmf__item:hover img { transform: scale(1.05); }
+
+/* Hover nhẹ nhàng phóng to ảnh đồng bộ với card */
+.pp--gmf .pp-intro-blueprint-card-gmf:hover .pp-intro-img-container-gmf img {
+  transform: scale(1.02);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pp--gmf .pp-intro-blueprint-card-gmf {
+    transition: none !important;
+    transform: none !important;
+  }
+  .pp--gmf .pp-intro-img-container-gmf img {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+

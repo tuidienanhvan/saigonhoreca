@@ -19,7 +19,7 @@
       "has_video_bg": false,
       "video_url": null,
       "background_overlay": true,
-      "background_image": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/SGH-Spice-World-1.jpg",
+      "background_image": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/01/SGH-Spice-World-1.jpg",
       "columns": [
         {
           "col_class": "elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-11a63b9e",
@@ -90,63 +90,63 @@
               "type": "image-carousel.default",
               "slides": [
                 {
-                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2021/09/co-my-e1632216750335.png",
+                  "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.com/wp-content/uploads/2021/09/co-my-e1632216750335.png",
                   "srcset": null,
                   "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                   "w": null,
                   "h": null
                 },
                 {
-                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2021/09/co-singapore.png",
+                  "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.com/wp-content/uploads/2021/09/co-singapore.png",
                   "srcset": null,
                   "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                   "w": null,
                   "h": null
                 },
                 {
-                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2021/09/co-myanmar.png",
+                  "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.com/wp-content/uploads/2021/09/co-myanmar.png",
                   "srcset": null,
                   "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                   "w": null,
                   "h": null
                 },
                 {
-                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2021/09/co-thai-lan.png",
+                  "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.com/wp-content/uploads/2021/09/co-thai-lan.png",
                   "srcset": null,
                   "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                   "w": null,
                   "h": null
                 },
                 {
-                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2021/09/co-trung-quoc.png",
+                  "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.com/wp-content/uploads/2021/09/co-trung-quoc.png",
                   "srcset": null,
                   "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                   "w": null,
                   "h": null
                 },
                 {
-                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2021/09/co-brunei.png",
+                  "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.com/wp-content/uploads/2021/09/co-brunei.png",
                   "srcset": null,
                   "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                   "w": null,
                   "h": null
                 },
                 {
-                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2021/09/co-y.png",
+                  "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.com/wp-content/uploads/2021/09/co-y.png",
                   "srcset": null,
                   "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                   "w": null,
                   "h": null
                 },
                 {
-                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2021/09/malaysia-e1632216285512.png",
+                  "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.com/wp-content/uploads/2021/09/malaysia-e1632216285512.png",
                   "srcset": null,
                   "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                   "w": null,
                   "h": null
                 },
                 {
-                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2021/09/co-viet-nam.png",
+                  "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.com/wp-content/uploads/2021/09/co-viet-nam.png",
                   "srcset": null,
                   "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                   "w": null,
@@ -165,21 +165,21 @@
               "type": "image-carousel.default",
               "slides": [
                 {
-                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/swh-tieu.jpeg",
+                  "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/02/swh-tieu.jpeg",
                   "srcset": null,
                   "alt": "swh-tieu",
                   "w": null,
                   "h": null
                 },
                 {
-                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/spice-world-hotpot-SGH-1.jpeg",
+                  "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/02/spice-world-hotpot-SGH-1.jpeg",
                   "srcset": null,
                   "alt": "spice-world-hotpot-SGH-1",
                   "w": null,
                   "h": null
                 },
                 {
-                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/swh-thao-qua.jpeg",
+                  "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/02/swh-thao-qua.jpeg",
                   "srcset": null,
                   "alt": "swh-thao-qua",
                   "w": null,
@@ -243,8 +243,8 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/Spice-World-Hot-Pot-03.jpg",
-                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/Spice-World-Hot-Pot-03.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2024/02/Spice-World-Hot-Pot-03-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/02/Spice-World-Hot-Pot-03-600x337.jpg 600w",
+                "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/02/Spice-World-Hot-Pot-03.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/02/Spice-World-Hot-Pot-03.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2024/02/Spice-World-Hot-Pot-03-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/02/Spice-World-Hot-Pot-03-600x337.jpg 600w",
                 "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                 "w": "1366",
                 "h": "768"
@@ -253,8 +253,8 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/Spice-World-Hot-Pot-01-qh9lyjriu1qetr5khmc83a620x52mqmw9ob7uhon00.jpg",
-                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/Spice-World-Hot-Pot-01-qh9lyjriu1qetr5khmc83a620x52mqmw9ob7uhon00.jpg 1200w, https://saigonhoreca.vn/wp-content/uploads/2024/02/Spice-World-Hot-Pot-01-qh9lyjriu1qetr5khmc83a620x52mqmw9ob7uhon00-768x384.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/02/Spice-World-Hot-Pot-01-qh9lyjriu1qetr5khmc83a620x52mqmw9ob7uhon00-600x300.jpg 600w",
+                "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/02/Spice-World-Hot-Pot-01-qh9lyjriu1qetr5khmc83a620x52mqmw9ob7uhon00.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/02/Spice-World-Hot-Pot-01-qh9lyjriu1qetr5khmc83a620x52mqmw9ob7uhon00.jpg 1200w, https://saigonhoreca.vn/wp-content/uploads/2024/02/Spice-World-Hot-Pot-01-qh9lyjriu1qetr5khmc83a620x52mqmw9ob7uhon00-768x384.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/02/Spice-World-Hot-Pot-01-qh9lyjriu1qetr5khmc83a620x52mqmw9ob7uhon00-600x300.jpg 600w",
                 "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                 "w": "1200",
                 "h": "600"
@@ -278,7 +278,7 @@
       "has_video_bg": false,
       "video_url": null,
       "background_overlay": true,
-      "background_image": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/Spice-World-Hot-Pot-02.jpg",
+      "background_image": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/02/Spice-World-Hot-Pot-02.jpg",
       "columns": [
         {
           "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-172120a0",
@@ -323,8 +323,8 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/swh-ban-ve-tong-the-khu-bep.png",
-                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/swh-ban-ve-tong-the-khu-bep.png 1541w, https://saigonhoreca.vn/wp-content/uploads/2024/02/swh-ban-ve-tong-the-khu-bep-768x393.png 768w, https://saigonhoreca.vn/wp-content/uploads/2024/02/swh-ban-ve-tong-the-khu-bep-1536x785.png 1536w, https://saigonhoreca.vn/wp-content/uploads/2024/02/swh-ban-ve-tong-the-khu-bep-600x307.png 600w",
+                "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/02/swh-ban-ve-tong-the-khu-bep.png",
+                "srcset": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/02/swh-ban-ve-tong-the-khu-bep.png 1541w, https://saigonhoreca.vn/wp-content/uploads/2024/02/swh-ban-ve-tong-the-khu-bep-768x393.png 768w, https://saigonhoreca.vn/wp-content/uploads/2024/02/swh-ban-ve-tong-the-khu-bep-1536x785.png 1536w, https://saigonhoreca.vn/wp-content/uploads/2024/02/swh-ban-ve-tong-the-khu-bep-600x307.png 600w",
                 "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                 "w": "1541",
                 "h": "788"
@@ -333,8 +333,8 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/Spice-World-Hot-Pot-03-1.jpg",
-                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/Spice-World-Hot-Pot-03-1.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2024/02/Spice-World-Hot-Pot-03-1-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/02/Spice-World-Hot-Pot-03-1-600x337.jpg 600w",
+                "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/02/Spice-World-Hot-Pot-03-1.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/02/Spice-World-Hot-Pot-03-1.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2024/02/Spice-World-Hot-Pot-03-1-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/02/Spice-World-Hot-Pot-03-1-600x337.jpg 600w",
                 "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                 "w": "1366",
                 "h": "768"
@@ -409,8 +409,8 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/swh-bv-khu-tru-dong-cat-thit-e1632327853637.png",
-                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/swh-bv-khu-tru-dong-cat-thit-e1632327853637.png 949w, https://saigonhoreca.vn/wp-content/uploads/2024/02/swh-bv-khu-tru-dong-cat-thit-e1632327853637-768x512.png 768w, https://saigonhoreca.vn/wp-content/uploads/2024/02/swh-bv-khu-tru-dong-cat-thit-e1632327853637-600x400.png 600w",
+                "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/02/swh-bv-khu-tru-dong-cat-thit-e1632327853637.png",
+                "srcset": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/02/swh-bv-khu-tru-dong-cat-thit-e1632327853637.png 949w, https://saigonhoreca.vn/wp-content/uploads/2024/02/swh-bv-khu-tru-dong-cat-thit-e1632327853637-768x512.png 768w, https://saigonhoreca.vn/wp-content/uploads/2024/02/swh-bv-khu-tru-dong-cat-thit-e1632327853637-600x400.png 600w",
                 "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                 "w": "949",
                 "h": "633"
@@ -419,8 +419,8 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/Spice-World-Hot-Pot-04.jpg",
-                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/Spice-World-Hot-Pot-04.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2024/02/Spice-World-Hot-Pot-04-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/02/Spice-World-Hot-Pot-04-600x337.jpg 600w",
+                "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/02/Spice-World-Hot-Pot-04.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/02/Spice-World-Hot-Pot-04.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2024/02/Spice-World-Hot-Pot-04-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/02/Spice-World-Hot-Pot-04-600x337.jpg 600w",
                 "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                 "w": "1366",
                 "h": "768"
@@ -454,8 +454,8 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/Spice-World-Hot-Pot-07.jpg",
-                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/Spice-World-Hot-Pot-07.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2024/02/Spice-World-Hot-Pot-07-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/02/Spice-World-Hot-Pot-07-600x337.jpg 600w",
+                "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/02/Spice-World-Hot-Pot-07.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/02/Spice-World-Hot-Pot-07.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2024/02/Spice-World-Hot-Pot-07-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/02/Spice-World-Hot-Pot-07-600x337.jpg 600w",
                 "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                 "w": "1366",
                 "h": "768"
@@ -464,8 +464,8 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/Spice-World-Hot-Pot-08.jpg",
-                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/Spice-World-Hot-Pot-08.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2024/02/Spice-World-Hot-Pot-08-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/02/Spice-World-Hot-Pot-08-600x337.jpg 600w",
+                "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/02/Spice-World-Hot-Pot-08.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/02/Spice-World-Hot-Pot-08.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2024/02/Spice-World-Hot-Pot-08-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/02/Spice-World-Hot-Pot-08-600x337.jpg 600w",
                 "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                 "w": "1366",
                 "h": "768"

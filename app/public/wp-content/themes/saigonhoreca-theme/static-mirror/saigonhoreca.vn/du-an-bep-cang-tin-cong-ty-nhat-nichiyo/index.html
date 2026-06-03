@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="vi" prefix="og: https://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Resource Hints -->
+    <link rel="dns-prefetch" href="https://img.youtube.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Favicons & Manifest -->
+    <link rel="icon" type="image/x-icon" href="https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/assets/images/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/assets/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/assets/images/favicon-16x16.png">
+    <link rel="manifest" href="https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/manifest.json">
+    
+    <style id="sgh-critical">*,:before,:after{box-sizing:border-box}html,body{margin:0;padding:0}body{font-family:Be Vietnam Pro,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.5;color:#fff;background:#0a0a0a;-webkit-font-smoothing:antialiased}h1,h2,h3,h4,h5,h6{margin:0;font-weight:700;color:#fff}img,svg,video{display:block;max-width:100%;height:auto}a{color:inherit;text-decoration:none}button{border:0;cursor:pointer;font:inherit;background:transparent}.sh-skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;background:#f5a623;color:#fff;padding:.5rem 1rem;z-index:100}.sh-skip-link:focus{left:16px;top:16px;width:auto;height:auto}.sh-header{position:sticky;top:0;z-index:50;width:100%;background:#000;border-bottom:1px solid rgba(255,255,255,0.06)}.sh-header__bar{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;padding:.75rem 1.25rem;min-height:76px;color:#fff}.sh-header__actions{display:flex;gap:.75rem;align-items:center}.sh-nav{display:none;position:relative;z-index:10;justify-content:center;align-items:center;overflow:visible;max-width:100%}@media(min-width:1024px){.sh-nav{display:flex}}.sh-nav__list{display:flex;flex-wrap:nowrap;justify-content:center;align-items:center;gap:.25rem;margin:0;padding:0;list-style:none}@media(min-width:1024px){.sh-nav__list{gap:.5rem}}@media(min-width:1280px){.sh-nav__list{gap:1rem}}.sh-nav-item{display:flex;align-items:center;height:100%;position:relative}.sh-nav-item__link{display:inline-flex;align-items:center;gap:.375rem;padding:1.5rem .875rem;font-size:clamp(11px,.9vw,13px);font-weight:700;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;color:rgba(255,255,255,0.88);text-decoration:none}.sh-nav-item__chevron{display:inline-flex;margin-left:.25rem}.sh-nav-item__chevron-icon{display:block;width:.75rem;height:.75rem;opacity:.7}.sh-hero{position:relative;width:100%;aspect-ratio:16/9;background:#000;overflow:hidden}.sh-hero__slider{position:relative;width:100%;height:100%;background:#000}.sh-hero__slides{position:relative;width:100%;height:100%}.carousel-slide{position:absolute;inset:0;width:100%;height:100%;display:none;background:#000}.carousel-slide.active{display:block;z-index:20;opacity:1}.sh-hero__bg-img,.carousel-slide .slide-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;background:#000}.sh-hero__overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(0,0,0,0.55) 0%,rgba(0,0,0,0.30) 40%,rgba(0,0,0,0.15) 100%);pointer-events:none}.sgh-cv-auto{content-visibility:auto;contain-intrinsic-size:auto 600px}#sh-hero-slider .carousel-slide .slide-bg,#sh-hero-slider .carousel-slide .sh-hero__bg-img,.sh-hero__slider .carousel-slide .slide-bg,.sh-hero__slider .carousel-slide .sh-hero__bg-img{animation:none!important;transform:none!important}.sh-hero__nav{position:absolute;top:50%;transform:translateY(-50%);z-index:20;background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.3);color:#fff;width:2.75rem;height:2.75rem;border-radius:9999px;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:.8}.sh-hero__nav--prev{left:1rem}.sh-hero__nav--next{right:1rem}@media(min-width:768px){.sh-hero__nav{width:3.5rem;height:3.5rem}.sh-hero__nav--prev{left:2rem}.sh-hero__nav--next{right:2rem}}.sh-hero__dots{position:absolute;bottom:2rem;right:2rem;z-index:20;display:flex;gap:.5rem}.sh-hero__dot,.carousel-dot{width:.5rem;height:.5rem;padding:0;border:none;border-radius:9999px;background:rgba(255,255,255,0.4);cursor:pointer}.sh-hero__dot.active,.carousel-dot.active{width:2rem;background:#f5a623}
+/* Per-route critical CSS — Saigon Horeca.
+ *
+ * Inlined by critical-css.php (concatenated after critical.css). Covers
+ * above-fold styles for routes where the route-bundle CSS round-trip
+ * would otherwise gate the LCP paint.
+ */
+
+/* ── /du-an/ archive hero — kill 1.2 s opacity-fade-in for LCP slide ──
+ *
+ * The bg-stack has 6 absolute-positioned <div> slides; slide 0 has
+ * `.is-active` server-side but the route bundle animates opacity
+ * 0 → 1 over 1.2 s. Lighthouse Mobile baseline: P=75, LCP=7.9 s with
+ * 88 % render-delay because LCP element waits for opacity:1.
+ *
+ * Inlining paints the active slide at opacity:1 immediately on first
+ * HTML parse — no waiting for theme-archive-project.css to arrive.
+ * Carousel JS still toggles `is-active` to cycle slides; subsequent
+ * transitions still animate after the first paint completes.
+ */
+.sh-archive-hero {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: #000;
+    overflow: hidden;
+}
+.sh-archive-hero__bg-stack {
+    position: absolute;
+    inset: 0;
+}
+.sh-archive-hero__bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+}
+.sh-archive-hero__bg.is-active {
+    opacity: 1;
+}
+
+/* ── /ve-saigon-horeca/ (page-gioi-thieu template) about hero ──
+ * Same opacity-fade trap. Force opacity:1 on first paint. */
+.sh-about-hero {
+    position: relative;
+    width: 100%;
+    min-height: 520px;
+    background: #000;
+    overflow: hidden;
+}
+@media (max-width: 640px) {
+    .sh-about-hero { min-height: 380px; }
+}
+.sh-about-hero__bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 1;
+}
+</style>
+        <title>Dự án bếp ăn công nghiệp bếp căng tin công ty Nhật Nichiyo &#8211; Saigon Horeca</title>
+<meta name='robots' content='max-image-preview:large' />
+<meta name="description" content="sự hợp tác với Saigon Horeca đã mang lại một bước tiến mới mẻ cho – Giá tốt, bảo hành chính hãng – Hotline: 0901 304 365">
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//www.googletagmanager.com' />
+<link rel='dns-prefetch' href='//www.google-analytics.com' />
+<link rel='dns-prefetch' href='//zalo.me' />
+<link rel='dns-prefetch' href='//www.facebook.com' />
+<link rel='dns-prefetch' href='//www.youtube.com' />
+<link rel="preload" as="style" href="https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/assets/css/dist/theme-project.css?ver=1780288762">
+<link rel="alternate" type="application/rss+xml" title="Saigon Horeca &raquo; Dự án bếp ăn công nghiệp bếp căng tin công ty Nhật Nichiyo Comments Feed" href="https://saigonhoreca.local/du-an/du-an-bep-cang-tin-cong-ty-nhat-nichiyo/feed/" />
+    <script>
+    (function(){
+        // Always load tracking — cookie consent is cosmetic only
+        function afterConsent(cb) {
+            try {
+                if (localStorage.getItem('sh_cookies_accepted') === '1') {
+                    cb();
+                    return;
+                }
+            } catch (e) {}
+            window.addEventListener('sh:cookies-accepted', cb, { once: true });
+        }
+        afterConsent(function(){
+                        });
+    })();
+    </script>
+    <style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+
+
+<link rel='stylesheet' id='theme-tokens-css' href='https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/assets/css/dist/theme-project.css?ver=1780288762' media='all' />
+<style id="theme-tokens-inline-css">
+
+        :root {
+            --font-body: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            --font-heading: "Lexend", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            --font-serif: "Lora", Georgia, serif;
+            --ast-global-color-0: #f9c349;
+            --ast-global-color-1: #ffb100;
+            --ast-global-color-2: #000000;
+            --ast-global-color-3: #242525;
+            --ast-global-color-4: #f9fafb;
+            --ast-global-color-5: #ffffff;
+            --ast-global-color-6: #e2e8f0;
+            --ast-global-color-7: #cbd5e1;
+            --ast-global-color-8: #94a3b8;
+            --e-global-color-astglobalcolor0: #f9c349;
+            --e-global-color-astglobalcolor1: #ffb100;
+            --e-global-color-astglobalcolor2: #000000;
+            --e-global-color-astglobalcolor3: #242525;
+            --e-global-color-astglobalcolor4: #f9fafb;
+            --e-global-color-astglobalcolor5: #ffffff;
+            --e-global-color-astglobalcolor6: #e2e8f0;
+            --e-global-color-astglobalcolor7: #cbd5e1;
+            --e-global-color-astglobalcolor8: #94a3b8;
+        }
+        body { font-family: var(--font-body); }
+        h1, h2, h3, h4, h5, h6, .font-sans { font-family: var(--font-heading) !important; }
+        .e-font-icon-svg { display: inline-block; width: 1em; height: 1em; fill: currentColor; }
+
+        /* ROKA FELLA CAPTION & LAYOUT ENHANCEMENTS */
+        .pp-image-container-rf {
+            position: relative !important;
+            overflow: hidden !important;
+        }
+        .pp-image-caption-rf {
+            position: absolute !important;
+            bottom: 0.75rem !important;
+            left: 0.75rem !important;
+            z-index: 5 !important;
+            padding: 0.4rem 0.85rem !important;
+            background: rgba(10, 10, 10, 0.85) !important;
+            border: 1px solid rgba(255, 255, 255, 0.12) !important;
+            border-radius: 6px !important;
+            font-family: var(--font-heading), sans-serif !important;
+            font-size: 0.68rem !important;
+            font-weight: 700 !important;
+            letter-spacing: 0.05em !important;
+            color: var(--gold) !important;
+            backdrop-filter: blur(8px) !important;
+            -webkit-backdrop-filter: blur(8px) !important;
+            pointer-events: none !important;
+            opacity: 0.85 !important;
+            transition: opacity 0.3s ease, transform 0.3s ease !important;
+            width: auto !important;
+            max-width: calc(100% - 1.5rem) !important;
+            text-align: left !important;
+            display: inline-block !important;
+            border-top: none !important;
+        }
+        .pp-image-container-rf:hover .pp-image-caption-rf {
+            opacity: 1 !important;
+            transform: translateY(-2px) !important;
+        }
+        .pp-image-container-rf img {
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        }
+        .pp-image-container-rf:hover img {
+            transform: scale(1.04) !important;
+            filter: grayscale(0%) contrast(1.05) brightness(1.02) !important;
+        }
+        /* Premium Cards styling */
+        .rkf-concept__glass-card,
+        .rkf-specs__glass-card {
+            background: linear-gradient(135deg, rgba(12, 14, 20, 0.92) 0%, rgba(6, 7, 10, 0.97) 100%) !important;
+            border: 1px solid rgba(245, 166, 35, 0.18) !important;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), inset 0 0 35px rgba(245, 166, 35, 0.04) !important;
+        }
+        .rkf-concept__glass-card:hover,
+        .rkf-specs__glass-card:hover {
+            border-color: rgba(245, 166, 35, 0.45) !important;
+            box-shadow: 0 35px 70px rgba(0, 0, 0, 0.92), 0 0 35px rgba(245, 166, 35, 0.1) !important;
+        }
+        .rkf-partnership__glass-card,
+        .rkf-related__glass-card {
+            background: linear-gradient(135deg, rgba(12, 14, 20, 0.92) 0%, rgba(6, 7, 10, 0.97) 100%) !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.85) !important;
+        }
+        .rkf-partnership__glass-card:hover,
+        .rkf-related__glass-card:hover {
+            border-color: rgba(255, 255, 255, 0.15) !important;
+            box-shadow: 0 35px 70px rgba(0, 0, 0, 0.95) !important;
+        }
+        /* Staggered floaters adjustment */
+        .rkf-partnership__image-container--floating {
+            box-shadow: -20px 20px 50px rgba(0, 0, 0, 0.9), 0 0 30px rgba(245, 166, 35, 0.15) !important;
+            transform: rotate(3deg) translateY(0) !important;
+        }
+        .rkf-partnership__side:hover .rkf-partnership__image-container--floating {
+            transform: scale(1.04) rotate(0deg) translateY(-10px) !important;
+        }
+    
+/*# sourceURL=theme-tokens-inline-css */
+</style>
+<link rel='preload' as='style' onload="this.onload=null;this.rel='stylesheet'" id='google-fonts-sgh-css' href='https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&#038;family=Lexend:wght@500;700&#038;family=Lora:ital,wght@0,400;0,500;0,700;1,400;1,700&#038;display=swap' media='all' />
+<link rel="https://api.w.org/" href="https://saigonhoreca.local/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://saigonhoreca.local/wp-json/wp/v2/project/718" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://saigonhoreca.local/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress 7.0" />
+<link rel="canonical" href="https://saigonhoreca.local/du-an/du-an-bep-cang-tin-cong-ty-nhat-nichiyo/" />
+<link rel='shortlink' href='https://saigonhoreca.local/?p=718' />
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","@id":"https://saigonhoreca.local/#organization","name":"SAIGON HORECA","legalName":"CÔNG TY TNHH SÀI GÒN HORECA","url":"https://saigonhoreca.local/","description":"Saigon Horeca cung cấp đa dạng các sản phẩm thiết bị bếp công nghiệp và thiết bị quầy bar phục vụ cho khách hàng trong lĩnh vực F&B, bao gồm tư vấn thiết kế, thi công lắp đặt, cung cấp thiết bị, và tư vấn vận hành kinh doanh.","telephone":"0901 304 365","email":"contact@saigonhoreca.com","address":{"@type":"PostalAddress","streetAddress":"Số 40 Đường Số 6, Khu Dân Cư Melosa Khang Điền, Phường Long Trường, TP. Hồ Chí Minh","addressLocality":"Hồ Chí Minh","addressRegion":"Hồ Chí Minh","addressCountry":"VN"},"logo":{"@type":"ImageObject","url":"https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/assets/images/logo.png"},"image":"https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/assets/images/logo.png","sameAs":["https://www.facebook.com/saigonhoreca","https://www.youtube.com/@saigonhoreca","https://zalo.me/0901304365"],"contactPoint":[{"@type":"ContactPoint","telephone":"0901 304 365","contactType":"sales","areaServed":"VN","availableLanguage":["Vietnamese","English"]},{"@type":"ContactPoint","telephone":"0909 040 920","contactType":"customer support","areaServed":"VN"}]}</script>
+
+<link rel="alternate" hreflang="vi" href="https://saigonhoreca.vn/du-an/du-an-bep-cang-tin-cong-ty-nhat-nichiyo/">
+<link rel="alternate" hreflang="en" href="https://saigonhoreca.com/projects/du-an-bep-cang-tin-cong-ty-nhat-nichiyo/">
+<link rel="alternate" hreflang="x-default" href="https://saigonhoreca.vn/du-an/du-an-bep-cang-tin-cong-ty-nhat-nichiyo/">
+
+    <!-- SEO Fallback: OpenGraph only (meta description is handled by
+         inc/core/seo-meta-description.php to guarantee 120-155 chars). -->
+            <meta property="og:title" content="Dự án bếp ăn công nghiệp bếp căng tin công ty Nhật Nichiyo">
+        <meta property="og:description" content="sự hợp tác với Saigon Horeca đã mang lại một bước tiến mới mẻ cho – Giá tốt, bảo hành chính hãng – Hotline: 0901 304 365">
+        <meta property="og:url" content="https://saigonhoreca.local/du-an/du-an-bep-cang-tin-cong-ty-nhat-nichiyo/">
+        <meta property="og:type" content="website">
+        <meta property="og:image" content="images/nichiyo-du-an-1.jpg">
+        <meta property="og:site_name" content="Saigon Horeca">
+    
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Dark mode & Lighthouse Optimization: apply BEFORE paint to prevent flash & bypass animation delays -->
+    <script>
+    (function(){
+        // 1. Dark mode
+        var d = null;
+        try { d = localStorage.getItem('sh-dark'); } catch (e) {}
+        if (d === 'true') document.documentElement.classList.add('dark');
+    })();
+    </script>
+        </head>
+<body class="wp-singular project-template-default single single-project postid-718 wp-embed-responsive wp-theme-saigonhoreca-theme page-template-page-project-du-an-bep-cang-tin-cong-ty-nhat-nichiyo page-template-page-project">
+<a href="#primary" class="sh-skip-link">Chuyển đến nội dung chính</a>
+<!-- Main Header (Saigon Horeca: clean dark band, no construction skyline) -->
+<header id="main-header" class="sh-header sh-header--horeca " role="banner" aria-label="Header chính của website">
+    <div class="sh-header__bar sh-header__bar--horeca ">
+        <!-- Logo -->
+        <div class="sh-logo">
+    <a href="https://saigonhoreca.local/" class="sh-logo__link" aria-label="Saigon Horeca — Trang chủ">
+        <img src="https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/assets/images/logo.webp?v=1779452060"
+             alt="Saigon Horeca"
+             width="125" height="58"
+             fetchpriority="high"
+             decoding="sync"
+             class="sh-logo__image">
+    </a>
+</div>
+
+        <!-- Desktop Navigation -->
+        <nav class="sh-nav" aria-label="Điều hướng chính">
+    <ul class="sh-nav__list">
+                <li class="sh-nav-item sh-nav-item--has-children">
+            <a href="https://saigonhoreca.local/ve-saigon-horeca/" class="sh-nav-item__link">
+                <span>Về Saigon Horeca</span>
+                                <span class="sh-nav-item__chevron" aria-hidden="true">▾</span>
+                            </a>
+                        <div class="sh-dropdown sh-dropdown--standard sh-dropdown--left">
+                <ul class="sh-dropdown__list sh-dropdown__list--stack">
+                                        <li class="sh-dropdown__item">
+                        <a href="https://saigonhoreca.local/tu-van-thiet-ke-bep-nha-hang-bep-cong-nghiep/" class="sh-dropdown__link">
+                            Tư vấn thiết kế bếp nhà hàng                        </a>
+                    </li>
+                                        <li class="sh-dropdown__item">
+                        <a href="https://saigonhoreca.local/cung-cap-thiet-bi-tu-van-thiet-ke-cho-quay-bar/" class="sh-dropdown__link">
+                            Tư vấn thiết kế quầy bar                        </a>
+                    </li>
+                                        <li class="sh-dropdown__item">
+                        <a href="https://saigonhoreca.local/danh-muc-san-pham/he-thong-hut-khoi-cap-khi-tuoi-bep-nha-hang/" class="sh-dropdown__link">
+                            Hệ thống cấp khí tươi                        </a>
+                    </li>
+                                        <li class="sh-dropdown__item">
+                        <a href="https://saigonhoreca.local/danh-muc-san-pham/he-thong-hut-khoi/" class="sh-dropdown__link">
+                            Hệ thống hút khói công nghiệp                        </a>
+                    </li>
+                                    </ul>
+            </div>
+                    </li>
+                <li class="sh-nav-item ">
+            <a href="https://saigonhoreca.local/du-an/" class="sh-nav-item__link">
+                <span>Dự Án</span>
+                            </a>
+                    </li>
+                <li class="sh-nav-item ">
+            <a href="https://saigonhoreca.local/san-pham/" class="sh-nav-item__link">
+                <span>Sản Phẩm</span>
+                            </a>
+                    </li>
+                <li class="sh-nav-item ">
+            <a href="https://saigonhoreca.local/tin-tuc/" class="sh-nav-item__link">
+                <span>Tin Tức</span>
+                            </a>
+                    </li>
+                <li class="sh-nav-item ">
+            <a href="https://saigonhoreca.local/lien-he/" class="sh-nav-item__link">
+                <span>Liên hệ</span>
+                            </a>
+                    </li>
+            </ul>
+</nav>
+
+        <!-- Right Actions -->
+        <div class="sh-header__actions">
+            <!-- Bilingual switcher: links to SAME page on opposite-language domain -->
+                                    <a href="https://saigonhoreca.com/projects/du-an-bep-cang-tin-cong-ty-nhat-nichiyo/"
+               class="sh-header__lang"
+               hreflang="en"
+               rel="alternate"
+               aria-label="English">
+                                    <!-- UK Flag SVG -->
+                    <svg class="sh-header__lang-flag" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20" width="30" height="20" style="display:inline-block; vertical-align:middle; border-radius:2px; box-shadow:0 1px 2px rgba(0,0,0,0.1);">
+                        <clipPath id="sh-uk-clip">
+                            <rect width="30" height="20" rx="2"/>
+                        </clipPath>
+                        <g clip-path="url(#sh-uk-clip)">
+                            <rect width="30" height="20" fill="#00247d"/>
+                            <path d="M0,0 L30,20 M30,0 L0,20" stroke="#fff" stroke-width="3"/>
+                            <path d="M0,0 L30,20 M30,0 L0,20" stroke="#cf142b" stroke-width="1.2"/>
+                            <path d="M15,0 V20 M0,10 H30" stroke="#fff" stroke-width="5"/>
+                            <path d="M15,0 V20 M0,10 H30" stroke="#cf142b" stroke-width="3"/>
+                        </g>
+                    </svg>
+                                <span class="sh-header__lang-label">English</span>
+            </a>
+            <!-- Mobile Menu Toggle -->
+            <button id="mobile-menu-toggle" class="sh-header__mobile-toggle" aria-label="Mở menu điều hướng" aria-expanded="false" aria-controls="mobile-sidebar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sh-header__hamburger-icon">
+                    <line x1="4" x2="20" y1="12" y2="12"/>
+                    <line x1="4" x2="20" y1="6" y2="6"/>
+                    <line x1="4" x2="20" y1="18" y2="18"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- Self-healing script to fix faulty top space when WordPress admin bar is active in PHP but hidden in UI -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var adminBar = document.getElementById('wpadminbar');
+    var header = document.getElementById('main-header');
+    if (header) {
+        if (!adminBar || window.getComputedStyle(adminBar).display === 'none' || adminBar.offsetHeight === 0) {
+            header.classList.remove('sh-header--admin-bar');
+            document.body.classList.remove('admin-bar');
+            document.documentElement.style.setProperty('margin-top', '0px', 'important');
+        }
+    }
+});
+</script>
+
+<main id="primary" class="pp pp--nichiyo" tabindex="-1">
+    <section class="pp-hero-nichiyo">
+    <div class="pp-hero-nichiyo__media" style="background-image:url('images/nichiyo-du-an-1.jpg');" aria-hidden="true"></div>
+    <div class="pp-hero-nichiyo__overlay" aria-hidden="true"></div>
+    <div class="pp-hero-nichiyo__grid" aria-hidden="true"></div>
+    <div class="pp-hero-nichiyo__disc" aria-hidden="true"></div>
+    <div class="pp-hero-nichiyo__rail pp-hero-nichiyo__rail--left" aria-hidden="true">工 · KOJO · MONOZUKURI</div>
+
+    <div class="pp-hero-nichiyo__content">
+        <div class="pp-hero-nichiyo__eyebrow">Bếp căng tin công nghiệp · Nichiyo</div>
+        <h1 class="pp-hero-nichiyo__title">Dự án bếp ăn công nghiệp bếp căng tin công ty Nhật Nichiyo</h1>
+        <div class="pp-hero-nichiyo__divider" aria-hidden="true"></div>
+        <div class="pp-hero-nichiyo__meta" aria-label="Thông tin nổi bật dự án Nichiyo">
+            <span>Warabeya Nichiyo Group</span>
+            <span>Monozukuri precision</span>
+            <span>Inox tiêu chuẩn Nhật</span>
+        </div>
+    </div>
+</section>
+<section class="pp-section-nichiyo pp-section-nichiyo--alt pp-intro-nichiyo scroll-reveal reveal-fade">
+  <div class="pp-nichiyo-glow pp-nichiyo-glow--tr" aria-hidden="true"></div>
+  <div class="pp-container-shared">
+    <div class="pp-intro-nichiyo__head">
+      <span class="pp-text-nichiyo__divider pp-text-nichiyo__divider--center" aria-hidden="true"></span>
+      <h2 class="pp-text-nichiyo__title">Nichiyo — 53 năm Monozukuri trong từng sản phẩm</h2>
+      <div class="pp-text-nichiyo__body">
+        <p>Công ty TNHH Nichiyo đánh dấu cột mốc 53 năm thành lập với sứ mệnh vững chắc là một trong những đơn vị hàng đầu trong lĩnh vực thương mại sản xuất thực phẩm, thuộc Tập đoàn Warabeya Nichiyo. Điều đặc biệt là, Nichiyo không chỉ là một doanh nghiệp thương mại thông thường mà còn là biểu tượng của sự đổi mới, sáng tạo và cam kết không ngừng nâng cao chất lượng cuộc sống thông qua thực phẩm.</p>
+        <p>Với tinh thần không ngừng khám phá và lựa chọn những sản phẩm thực phẩm đa dạng từ khắp nơi trên thế giới, Nichiyo không chỉ đáp ứng nhu cầu của thị trường mà còn tạo ra những trải nghiệm ẩm thực đầy sáng tạo và độc đáo cho khách hàng. Điều này được thể hiện qua việc không ngừng tìm kiếm và áp dụng những công nghệ tiên tiến nhất trong quá trình sản xuất, kiểm soát chất lượng, để mang lại những sản phẩm an toàn, chất lượng và dinh dưỡng cao.</p>
+      </div>
+    </div>
+
+    <div class="pp-gallery-nichiyo pp-gallery-nichiyo--cols-3">
+      <div class="pp-gallery-nichiyo__item scroll-reveal reveal-up delay-100">
+        <div class="pp-image-container-shared">
+          <img src="images/nichiyo-san-pham-3.jpg" alt="Sản phẩm thực phẩm Nichiyo" loading="lazy" decoding="async" width="600" height="800">
+          <div class="pp-image-caption-shared">Dòng sản phẩm thực phẩm tuyển chọn của Nichiyo, đại diện cho tiêu chuẩn chất lượng và an toàn nghiêm ngặt.</div>
+        </div>
+      </div>
+      <div class="pp-gallery-nichiyo__item scroll-reveal reveal-up delay-200">
+        <div class="pp-image-container-shared">
+          <img src="images/nichiyo-san-pham-1.jpg" alt="Sản phẩm thực phẩm Nichiyo" loading="lazy" decoding="async" width="600" height="800">
+          <div class="pp-image-caption-shared">Mỗi sản phẩm phản ánh tinh thần Monozukuri — chế tác tỉ mỉ và cam kết với chất lượng cuộc sống.</div>
+        </div>
+      </div>
+      <div class="pp-gallery-nichiyo__item scroll-reveal reveal-up delay-300">
+        <div class="pp-image-container-shared">
+          <img src="images/nichiyo-san-pham-2.jpg" alt="Sản phẩm thực phẩm Nichiyo" loading="lazy" decoding="async" width="600" height="800">
+          <div class="pp-image-caption-shared">Danh mục đa dạng từ khắp nơi trên thế giới, mang đến trải nghiệm ẩm thực sáng tạo và độc đáo.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="pp-concept-nichiyo scroll-reveal reveal-fade" style="background-image:url('images/nichiyo-du-an-2.jpg');">
+  <div class="pp-concept-nichiyo__overlay" aria-hidden="true"></div>
+  <div class="pp-nichiyo-glow pp-nichiyo-glow--bl" aria-hidden="true"></div>
+  <div class="pp-container-shared">
+    <div class="pp-concept-nichiyo__card scroll-reveal reveal-up-short">
+      <span class="pp-concept-nichiyo__tag">03 · Concept</span>
+      <span class="pp-text-nichiyo__divider pp-text-nichiyo__divider--center" aria-hidden="true"></span>
+      <h2 class="pp-text-nichiyo__title">Saigon Horeca: Chìa Khóa Uy Tín Cho Thiết Bị Bếp Chất Lượng</h2>
+      <div class="pp-text-nichiyo__body">
+        <p>Sứ mệnh của Nichiyo không chỉ dừng lại ở việc cung cấp thực phẩm mà còn là việc tạo ra một môi trường làm việc tích cực và đầy động lực cho nhân viên. Với tôn chỉ &quot;Nhân viên là tài sản quý báu nhất&quot;, Nichiyo luôn chú trọng đến sự phát triển cá nhân và sự hài lòng của đội ngũ nhân viên.</p>
+        <p>Ngoài ra, sự hợp tác với Saigon Horeca đã mang lại một bước tiến mới mẻ cho Nichiyo, khi cùng nhau tạo ra một căn bếp căng tin đa năng tiện nghi và hiện đại, phục vụ nhu cầu đa dạng dành riêng cho nhân viên và đội ngũ làm việc trong công ty. Điều này là một bước tiến quan trọng nhằm đảm bảo rằng môi trường làm việc không chỉ mang lại sự thoải mái và tiện nghi mà còn đáp ứng được nhu cầu ẩm thực đa dạng của nhân viên.</p>
+        <p>Căn bếp này không chỉ là nơi để chuẩn bị và phục vụ thực phẩm mà còn là một không gian sáng tạo, khích lệ sự sáng tạo và đổi mới trong quá trình làm việc hàng ngày. Sự kết hợp giữa các thiết bị hàng đầu từ các thương hiệu uy tín như Rational, Hoshizaki, Fujimak và các vật dụng bằng thép không gỉ thiết kế đặc biệt, đã tạo nên một không gian làm việc chuyên nghiệp và sáng tạo, giúp Nichiyo tiếp tục đảm bảo chất lượng sản phẩm và dịch vụ tốt nhất.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="pp-section-nichiyo pp-partnership-nichiyo scroll-reveal reveal-fade">
+  <div class="pp-nichiyo-glow pp-nichiyo-glow--bl" aria-hidden="true"></div>
+  <div class="pp-container-shared">
+    <div class="pp-partnership-nichiyo__head">
+      <span class="pp-text-nichiyo__divider pp-text-nichiyo__divider--center" aria-hidden="true"></span>
+      <h2 class="pp-text-nichiyo__title">Thiết kế bếp căng tin của Nichiyo</h2>
+      <div class="pp-text-nichiyo__body">
+        <p>Bếp căng tin này được thiết kế theo phong cách đơn giản và sạch sẽ. Với tông màu trắng và xám trung tính, không gian làm việc trở nên gọn gàng và thoải mái.</p>
+        <p>Mỗi chi tiết trong căn bếp được chọn lựa cẩn thận để tạo ra sự hài hòa và tiện ích cao. Thiết bị bếp và vật dụng bằng thép không gỉ được sắp xếp một cách thông minh, tối ưu hóa không gian và tăng hiệu suất làm việc.</p>
+        <p>Trong không gian bếp hạn chế của Nichiyo, Saigon Horeca đã thể hiện sự khéo léo thông qua việc bố trí tinh tế. Dù tuân thủ các quy định về kích thước nhà bếp, nhưng không làm hạn chế sự sáng tạo trong thiết kế. Điều này được thực hiện nhờ vào hệ thống thông gió được thiết kế tỉ mỉ, giúp không gian trở nên thông thoáng và thoải mái.</p>
+        <p>Bên cạnh đó, việc lưu trữ được tối ưu hóa và bố cục tiện dụng hỗ trợ các đầu bếp trong quá trình làm việc. Mỗi chi tiết, từ các vật dụng bằng thép không gỉ sáng bóng cho đến những kệ được đặt đúng vị trí, đều phản ánh sự hiệu quả và chuyên nghiệp trong quản lý không gian và thiết kế.</p>
+        <p>Tổng thể, sự khéo léo và tinh tế trong việc bố trí không chỉ làm cho không gian bếp trở nên gọn gàng và tiện nghi mà còn giúp tăng cường hiệu suất làm việc và sự thoải mái cho các đầu bếp. Đây thực sự là một minh chứng cho sự chuyên nghiệp và sự tận tâm của Saigon Horeca đối với khách hàng của mình.</p>
+        <p>Tất cả những điều này kết hợp với nhau để tạo ra một môi trường làm việc đơn giản, hiệu quả và thoải mái cho nhân viên.</p>
+      </div>
+    </div>
+
+    <div class="pp-gallery-nichiyo pp-gallery-nichiyo--cols-3">
+      <div class="pp-gallery-nichiyo__item scroll-reveal reveal-up delay-100">
+        <div class="pp-image-container-shared">
+          <img src="images/nichiyo-du-an-2.jpg" alt="Thiết bị bếp công nghiệp Saigon Horeca tại Nichiyo" loading="lazy" decoding="async" width="1366" height="768">
+          <div class="pp-image-caption-shared">Bố trí khu bếp gọn gàng với tông trắng – xám trung tính, tối ưu luồng thao tác của đầu bếp.</div>
+        </div>
+      </div>
+      <div class="pp-gallery-nichiyo__item scroll-reveal reveal-up delay-200">
+        <div class="pp-image-container-shared">
+          <img src="images/nichiyo-du-an-1.jpg" alt="Thiết bị bếp công nghiệp Saigon Horeca tại Nichiyo" loading="lazy" decoding="async" width="1366" height="768">
+          <div class="pp-image-caption-shared">Thiết bị inox và hệ thống thông gió được thiết kế tỉ mỉ trong không gian bếp hạn chế.</div>
+        </div>
+      </div>
+      <div class="pp-gallery-nichiyo__item scroll-reveal reveal-up delay-300">
+        <div class="pp-image-container-shared">
+          <img src="images/nichiyo-du-an-3.jpg" alt="Thiết bị bếp công nghiệp Saigon Horeca tại Nichiyo" loading="lazy" decoding="async" width="1366" height="768">
+          <div class="pp-image-caption-shared">Khu lưu trữ và kệ inox sắp xếp đúng vị trí, phản ánh sự hiệu quả và chuyên nghiệp.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="pp-section-nichiyo pp-section-nichiyo--alt pp-specs-nichiyo scroll-reveal reveal-fade">
+  <div class="pp-nichiyo-glow pp-nichiyo-glow--tr" aria-hidden="true"></div>
+  <div class="pp-container-shared">
+    <div class="pp-specs-nichiyo__head">
+      <span class="pp-text-nichiyo__divider pp-text-nichiyo__divider--center" aria-hidden="true"></span>
+      <h2 class="pp-text-nichiyo__title">Sự Tinh Tế của Saigon Horeca Trong Thiết Kế Bếp Căng Tin</h2>
+      <div class="pp-text-nichiyo__body">
+        <p>Saigon Horeca thể hiện sự tinh tế trong thiết kế bếp căng tin thông qua sự kết hợp hài hòa giữa đơn giản và tiện ích. Với tầm nhìn sáng tạo, không gian bếp được tạo ra với phong cách tối giản nhưng vẫn đảm bảo đầy đủ các tiện nghi và công nghệ hiện đại.</p>
+        <p>Mỗi chi tiết trong bếp được chăm chút tỉ mỉ, từ việc lựa chọn màu sắc trung tính như trắng và xám đến việc bố trí thiết bị và vật dụng bếp một cách thông minh và tiện lợi. Sự sắp xếp hợp lý giúp tối ưu hóa không gian và tạo ra một môi trường làm việc thoải mái và tiện nghi.</p>
+        <p>Bên cạnh đó, ánh sáng tự nhiên được tận dụng thông qua các cửa sổ lớn, tạo ra không gian sáng sủa và thoáng đãng. Các đèn led có thể điều chỉnh giúp làm tăng tính tiện ích và thẩm mỹ cho căn bếp. Việc sử dụng ánh sáng tự nhiên và đèn led điều chỉnh cường độ không chỉ làm tăng tính thẩm mỹ mà còn tạo ra một không gian làm việc sáng sủa và tạo động lực cho nhân viên.</p>
+        <p>Tất cả những yếu tố trên thể hiện sự tinh tế và am hiểu sâu sắc về nhu cầu của khách hàng, giúp Saigon Horeca định vị mình là một đối tác đáng tin cậy trong việc tạo ra những không gian bếp đẳng cấp và hiện đại, đáp ứng mọi nhu cầu của khách hàng, đặc biệt là trong lĩnh vực bếp căng tin.</p>
+      </div>
+    </div>
+
+    <div class="pp-specs-nichiyo__grid">
+              <article class="pp-specs-nichiyo__card scroll-reveal reveal-up delay-100">
+          <span class="pp-specs-nichiyo__coord" aria-hidden="true">SYS_01</span>
+          <h3 class="pp-specs-nichiyo__card-title">Bố cục tối giản</h3>
+          <p class="pp-specs-nichiyo__card-desc">Tông trắng – xám trung tính, sắp xếp thiết bị thông minh tối ưu hóa không gian.</p>
+        </article>
+              <article class="pp-specs-nichiyo__card scroll-reveal reveal-up delay-200">
+          <span class="pp-specs-nichiyo__coord" aria-hidden="true">SYS_02</span>
+          <h3 class="pp-specs-nichiyo__card-title">Thông gió tỉ mỉ</h3>
+          <p class="pp-specs-nichiyo__card-desc">Hệ thống thông gió thiết kế kỹ lưỡng giữ không gian thông thoáng, thoải mái.</p>
+        </article>
+              <article class="pp-specs-nichiyo__card scroll-reveal reveal-up delay-300">
+          <span class="pp-specs-nichiyo__coord" aria-hidden="true">SYS_03</span>
+          <h3 class="pp-specs-nichiyo__card-title">Ánh sáng tự nhiên</h3>
+          <p class="pp-specs-nichiyo__card-desc">Tận dụng cửa sổ lớn kết hợp đèn LED điều chỉnh cường độ cho không gian sáng sủa.</p>
+        </article>
+              <article class="pp-specs-nichiyo__card scroll-reveal reveal-up delay-400">
+          <span class="pp-specs-nichiyo__coord" aria-hidden="true">SYS_04</span>
+          <h3 class="pp-specs-nichiyo__card-title">Inox tiêu chuẩn</h3>
+          <p class="pp-specs-nichiyo__card-desc">Vật dụng thép không gỉ thiết kế đặc biệt, bền bỉ và dễ vệ sinh theo chuẩn công nghiệp.</p>
+        </article>
+          </div>
+  </div>
+</section>
+<section class="pp-section-nichiyo pp-gallery-nichiyo-section scroll-reveal reveal-fade">
+  <div class="pp-nichiyo-glow pp-nichiyo-glow--tr" aria-hidden="true"></div>
+  <div class="pp-container-shared">
+    <div class="pp-gallery-nichiyo__closing">
+      <div class="pp-gallery-nichiyo__closing-media scroll-reveal reveal-left-short">
+        <div class="pp-image-container-shared">
+          <img src="images/nichiyo-du-an-3.jpg" alt="Toàn cảnh bếp căng tin công nghiệp Nichiyo do Saigon Horeca thực hiện" loading="lazy" decoding="async" width="1366" height="768">
+          <div class="pp-image-caption-shared">Toàn cảnh bếp căng tin hoàn thiện — minh chứng cho sự tận tâm và chuyên nghiệp của Saigon Horeca.</div>
+        </div>
+      </div>
+      <div class="pp-gallery-nichiyo__closing-body scroll-reveal reveal-right-short">
+        <span class="pp-text-nichiyo__divider" aria-hidden="true"></span>
+        <h2 class="pp-text-nichiyo__title">Một môi trường làm việc đơn giản, hiệu quả và truyền cảm hứng</h2>
+        <div class="pp-text-nichiyo__body">
+          <p>Sự khéo léo và tinh tế trong bố trí không chỉ làm cho không gian bếp gọn gàng, tiện nghi mà còn nâng cao hiệu suất và sự thoải mái cho các đầu bếp. Tất cả kết hợp tạo nên một môi trường làm việc đơn giản, hiệu quả và đầy động lực cho đội ngũ Nichiyo.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+</body>
+</html>

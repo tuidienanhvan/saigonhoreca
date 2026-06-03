@@ -8,7 +8,7 @@ if (!defined('ABSPATH')) exit;
 $uri = get_template_directory_uri();
 ?>
 <section class="pp-hero-rkf">
-  <div class="pp-hero-rkf__media" style="background-image:url('<?php echo sgh_img('2020/12/Roka-Fella.jpg'); ?>');"></div>
+  <div class="pp-hero-rkf__media" style="background-image:url('<?php echo sgh_img('roka-fella/roka-fella-thumbnail-project-cover.jpg'); ?>');"></div>
   <div class="pp-hero-rkf__overlay" aria-hidden="true"></div>
 
   <div class="pp-ambient-glow-rf pp-ambient-glow-rf--center" aria-hidden="true"></div>

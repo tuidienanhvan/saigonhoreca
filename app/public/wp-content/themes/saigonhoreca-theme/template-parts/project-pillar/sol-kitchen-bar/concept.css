@@ -1,69 +1,59 @@
 /**
- * sol-kitchen-bar — concept slot. Shared .pp-split-skb layout (used by specs/gallery/related too).
+ * sol-kitchen-bar — concept slot.
+ * Editorial magazine layout: large image + glass card overlapping its edge.
+ * Techniques: clamp, color-mix, backdrop-filter, negative-margin depth.
  * @package SaigonHoreca
  */
 
-.pp-split-skb {
+.pp-concept-sol__layout {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2.5rem;
+  gap: clamp(1.5rem, 4vw, 2.5rem);
   align-items: center;
-  position: relative;
 }
 @media (min-width: 992px) {
-  .pp-split-skb { grid-template-columns: 1fr 1fr; gap: 4.5rem; }
-  .pp-split-skb--reverse .pp-split-skb__media { order: 2; }
-  .pp-split-skb--reverse .pp-split-skb__body  { order: 1; }
+  .pp-concept-sol__layout {
+    grid-template-columns: 1.15fr 0.85fr;
+  }
 }
 
-.pp-split-skb__body {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
+.pp-concept-sol__visual .pp-image-container-shared {
+  aspect-ratio: 4 / 3;
+}
+.pp-frame-sol--tall .pp-image-container-shared,
+.pp-concept-sol__visual.pp-frame-sol--tall {
+  aspect-ratio: 4 / 5;
+}
+
+.pp-concept-sol__card {
   position: relative;
-  z-index: 2;
+  z-index: 3;
+  padding: clamp(1.6rem, 3vw, 2.6rem);
+  background: linear-gradient(150deg,
+    color-mix(in srgb, var(--b2) 82%, transparent),
+    color-mix(in srgb, var(--b1) 70%, transparent));
+  border: 1px solid color-mix(in srgb, var(--sol-amber) 16%, transparent);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-floating);
+  backdrop-filter: blur(16px) saturate(120%);
+  -webkit-backdrop-filter: blur(16px) saturate(120%);
 }
-.pp-split-skb__body .pp-text-skb__divider { align-self: flex-start; }
-.pp-split-skb__body .pp-text-skb__title {
-  font-size: clamp(1.55rem, 2.6vw, 2.25rem);
-  text-align: left;
+@media (min-width: 992px) {
+  .pp-concept-sol__card {
+    margin-left: -4rem;   /* overlap image edge for 3D depth */
+  }
 }
 
-.pp-split-skb__media {
-  position: relative;
-  aspect-ratio: 16 / 10;
-  overflow: hidden;
-  border-radius: var(--radius-md);
-  background: var(--b3);
-  border: 1px solid var(--bd);
-  transition: border-color 0.4s var(--ease-spring);
-}
-.pp-split-skb__media:hover {
-  border-color: color-mix(in srgb, var(--gold) 45%, transparent);
-}
-.pp-split-skb__media img {
-  width: 100%; height: 100%;
-  object-fit: cover; display: block;
-  filter: saturate(1.05);
-  transition: transform 0.7s var(--ease-spring);
-}
-.pp-split-skb__media:hover img { transform: scale(1.05); }
-
-/* L-bracket ornament behind body */
-.pp-split-skb__body::before {
-  content: '';
-  position: absolute;
-  top: -1.5rem;
-  left: -1rem;
-  width: 56px; height: 56px;
-  border-top: 1px solid color-mix(in srgb, var(--gold) 40%, transparent);
-  border-left: 1px solid color-mix(in srgb, var(--gold) 40%, transparent);
-  pointer-events: none;
-  z-index: -1;
-}
-.pp-split-skb--reverse .pp-split-skb__body::before {
-  left: auto;
-  right: -1rem;
-  border-left: none;
-  border-right: 1px solid color-mix(in srgb, var(--gold) 40%, transparent);
+.pp-concept-sol__tag {
+  display: inline-block;
+  margin-bottom: 1.1rem;
+  padding: 0.4rem 0.85rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--pc);
+  background: linear-gradient(90deg, var(--sol-amber), var(--sol-ember));
+  border-radius: var(--radius-full);
 }

@@ -1,0 +1,27 @@
+/**
+ * Project page-template — du-an-bep-cang-tin-cong-ty-nhat-nichiyo (layout + project tokens).
+ * Japanese industrial canteen — monozukuri precision, hinomaru gold accents on sumi black.
+ * All accents derived from global tokens (var(--p)/--bc/--b*) via color-mix — ZERO hardcoded brand hex.
+ * @package SaigonHoreca
+ */
+
+.pp--nichiyo {
+  /* Hinomaru gold accent family (derived from brand --p) */
+  --nic-gold:        var(--p);
+  --nic-gold-soft:   color-mix(in srgb, var(--p) 70%, var(--bc));
+  --nic-gold-dim:    color-mix(in srgb, var(--p) 55%, var(--b1));
+
+  /* Sumi-ink surfaces */
+  --nic-sumi:        color-mix(in srgb, var(--b1) 88%, var(--bg-dark));
+  --nic-glass:       color-mix(in srgb, var(--b1) 72%, transparent);
+
+  /* Tatami grid line + hairline rules */
+  --nic-grid:        color-mix(in srgb, var(--bc) 5%, transparent);
+  --nic-line:        color-mix(in srgb, var(--p) 30%, transparent);
+  --nic-border:      color-mix(in srgb, var(--p) 22%, var(--bd));
+}
+
+body.page-template-page-project-du-an-bep-cang-tin-cong-ty-nhat-nichiyo {
+  background: var(--b1);
+  color: var(--bc);
+}

@@ -1,0 +1,29 @@
+/**
+ * Single-project CSS — g-cup-coffee-bistro.
+ * Root scope + scroll-reveal base.
+ * @package SaigonHoreca
+ */
+
+body.page-template-page-project-g-cup-coffee-bistro {
+  background: var(--b1);
+}
+
+.pp .scroll-reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s var(--ease-spring), transform 0.8s var(--ease-spring);
+}
+
+.pp .scroll-reveal.animate-in,
+.pp .scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pp .scroll-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

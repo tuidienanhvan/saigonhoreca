@@ -1,1 +1,131 @@
-/** yuzu-omakase — hero slot (no content). */
+/**
+ * yuzu-omakase — hero slot.
+ * Video background + Ken-Burns poster fallback + staggered title entry.
+ * @package SaigonHoreca
+ */
+
+.pp-hero-yzo {
+  position: relative;
+  height: calc(100svh - 76px);
+  min-height: 650px;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+  background-color: var(--b1);
+  isolation: isolate;
+}
+
+.pp-hero-yzo__media {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.pp-hero-yzo__media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  animation: yzo-kenburns 20s ease infinite alternate;
+}
+
+.pp-hero-yzo__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: radial-gradient(
+    circle at center,
+    transparent 20%,
+    color-mix(in srgb, var(--b1) 40%, transparent) 60%,
+    var(--b1) 100%
+  ),
+  linear-gradient(
+    to top,
+    var(--b1) 0%,
+    color-mix(in srgb, var(--b1) 50%, transparent) 40%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+.pp-hero-yzo__content {
+  position: relative;
+  z-index: 3;
+  padding: 3rem 1.5rem 6rem;
+  max-width: 860px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.pp-hero-yzo__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 7.5vw, 5.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--bc);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  text-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.8),
+    0 0 40px color-mix(in srgb, var(--p) 30%, transparent);
+  animation: yzo-rise 1.2s var(--ease-spring) 0.15s backwards;
+}
+
+.pp-hero-yzo__subhead {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: clamp(0.95rem, 1.6vw, 1.25rem);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--p);
+  letter-spacing: 0.05em;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  animation: yzo-rise 1.2s var(--ease-spring) 0.05s backwards;
+}
+
+.pp-hero-yzo__subtitle {
+  margin: 0;
+  max-width: 680px;
+  font-size: clamp(0.9rem, 1.1vw, 1.05rem);
+  line-height: 1.8;
+  color: var(--bc2);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
+  animation: yzo-rise 1.2s var(--ease-spring) 0.3s backwards;
+}
+
+@keyframes yzo-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(3rem);
+    filter: blur(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes yzo-kenburns {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.08);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pp-hero-yzo__title,
+  .pp-hero-yzo__subhead,
+  .pp-hero-yzo__subtitle,
+  .pp-hero-yzo__media video {
+    animation: none !important;
+  }
+}

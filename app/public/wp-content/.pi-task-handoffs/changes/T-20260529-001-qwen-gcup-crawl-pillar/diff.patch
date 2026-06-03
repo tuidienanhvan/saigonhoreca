@@ -1,0 +1,27 @@
+# Diff Summary — T-20260529-001
+
+## Files Modified
+| File | Change |
+|---|---|
+| template-parts/project-pillar/g-cup-coffee-bistro/specs.php | Expanded with bullet lists (3-zone model, challenges, equipment brands) from live content |
+| template-parts/project-pillar/g-cup-coffee-bistro/gallery.php | Added equipment bullet list with brand details |
+| template-parts/project-pillar/g-cup-coffee-bistro/related.php | Minor cleanup, content unchanged |
+| template-parts/project-pillar/g-cup-coffee-bistro/cta.php | Placeholder unchanged |
+| template-parts/project-pillar/g-cup-coffee-bistro/partnership.css | Created full CSS for pp-section-bg-gcb (was empty) |
+| template-parts/project-pillar/g-cup-coffee-bistro/specs.css | Created CSS for bullet lists (was empty) |
+| template-parts/project-pillar/g-cup-coffee-bistro/gallery.css | Updated comment (was empty) |
+| template-parts/project-pillar/g-cup-coffee-bistro/related.css | Updated comment (was empty) |
+| scripts/project-data/g-cup-coffee-bistro.json | sections_count: 7 → 8 |
+
+## Files Deleted (7 variant rác)
+- template-parts/project-pillar/g-cup-coffee-bistro/01-hero.php
+- template-parts/project-pillar/g-cup-coffee-bistro/02-with_gallery.php
+- template-parts/project-pillar/g-cup-coffee-bistro/03-split.php
+- template-parts/project-pillar/g-cup-coffee-bistro/04-bg_section.php
+- template-parts/project-pillar/g-cup-coffee-bistro/05-with_gallery.php
+- template-parts/project-pillar/g-cup-coffee-bistro/06-split.php
+- template-parts/project-pillar/g-cup-coffee-bistro/07-text.php
+
+## Files Created (static mirror)
+- static-mirror/saigonhoreca.vn/du-an/g-cup-coffee-bistro/index.html (323,563 bytes)
+- static-mirror/saigonhoreca.com/project/g-cup-coffee-bistro/index.html (289,601 bytes)

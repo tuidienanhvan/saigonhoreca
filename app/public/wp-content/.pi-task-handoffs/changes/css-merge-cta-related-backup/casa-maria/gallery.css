@@ -1,0 +1,91 @@
+/**
+ * casa-maria — gallery slot v2.0 (Premium Gallery Redesign).
+ * scoped with -cm suffix.
+ * 100% tokens, zero hardcoded colors.
+ * @package SaigonHoreca
+ */
+
+.pp-gallery-section-cm {
+  position: relative;
+  background: var(--b1);
+}
+
+/* Định dạng aspect-ratio cho ảnh decor trong split-cm của gallery */
+.pp-cm-media-gallery-decor .pp-image-container-shared {
+  aspect-ratio: 4 / 3 !important;
+  border-radius: var(--radius-sm) !important;
+  border: 1px solid var(--bd) !important;
+  box-shadow: var(--shadow-main) !important;
+  overflow: visible !important;
+}
+
+/* Panoramic Showcase cho hình ảnh đồ ăn tapas tràn viền nghệ thuật */
+.pp-cm-panoramic-showcase {
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  max-width: 1080px; /* Định mức giới hạn bề ngang để ảnh tụ hợp đắt giá */
+  margin-inline: auto;
+}
+.pp-cm-panoramic-showcase .pp-image-container-shared {
+  aspect-ratio: 16 / 10 !important; /* Đổi thành tỉ lệ đứng hơn để thấy rõ món ăn */
+  border-radius: var(--radius-lg) !important;
+  border: 1px solid var(--bd) !important;
+  box-shadow: var(--shadow-main) !important;
+  overflow: visible !important;
+}
+@media (min-width: 992px) {
+  .pp-cm-panoramic-showcase .pp-image-container-shared {
+    aspect-ratio: 16 / 9.6 !important; /* Tỉ lệ rạp phim điện ảnh vừa vặn, không bị dẹt dơ */
+  }
+}
+
+.pp-cm-panoramic-quote {
+  max-width: 820px;
+  margin: 1.75rem auto 0 auto;
+  text-align: center;
+}
+.pp-cm-panoramic-quote p {
+  font-size: clamp(0.98rem, 1.1vw, 1.1rem);
+  line-height: 1.8;
+  color: color-mix(in srgb, var(--gold) 85%, var(--bc));
+  margin: 0;
+  font-style: italic;
+}
+
+/* ===================================================================
+   ASYNCHRONOUS BACKSTAGE DEVICES SO LE (Máy rửa chén & Bàn giữ nóng)
+   =================================================================== */
+.pp-cm-media-gallery-backstage {
+  position: relative;
+  min-height: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
+}
+@media (min-width: 576px) {
+  .pp-cm-media-gallery-backstage {
+    min-height: 520px;
+    display: block; /* Định vị absolute so le */
+  }
+  .pp-cm-luxury-frame--backstage-1 {
+    position: absolute;
+    width: 68%;
+    left: 0;
+    top: 5%;
+    z-index: 1;
+  }
+  .pp-cm-luxury-frame--backstage-2 {
+    position: absolute;
+    width: 56%;
+    right: 0;
+    bottom: 5%;
+    z-index: 2;
+    transform: rotate(1deg);
+  }
+  .pp-cm-luxury-frame--backstage-2:hover {
+    transform: rotate(0) scale(1.02);
+    z-index: 5;
+  }
+}

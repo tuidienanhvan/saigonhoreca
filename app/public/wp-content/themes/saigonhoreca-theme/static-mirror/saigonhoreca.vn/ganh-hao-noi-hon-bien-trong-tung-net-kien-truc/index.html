@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="vi" prefix="og: https://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Resource Hints -->
+    <link rel="dns-prefetch" href="https://img.youtube.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Favicons & Manifest -->
+    <link rel="icon" type="image/x-icon" href="#">
+    <link rel="apple-touch-icon" sizes="180x180" href="#">
+    <link rel="icon" type="image/png" sizes="32x32" href="#">
+    <link rel="icon" type="image/png" sizes="16x16" href="#">
+    <link rel="manifest" href="#">
+    
+    <style id="sgh-critical">*,:before,:after{box-sizing:border-box}html,body{margin:0;padding:0}body{font-family:Be Vietnam Pro,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.5;color:#fff;background:#0a0a0a;-webkit-font-smoothing:antialiased}h1,h2,h3,h4,h5,h6{margin:0;font-weight:700;color:#fff}img,svg,video{display:block;max-width:100%;height:auto}a{color:inherit;text-decoration:none}button{border:0;cursor:pointer;font:inherit;background:transparent}.sh-skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;background:#f5a623;color:#fff;padding:.5rem 1rem;z-index:100}.sh-skip-link:focus{left:16px;top:16px;width:auto;height:auto}.sh-header{position:sticky;top:0;z-index:50;width:100%;background:#000;border-bottom:1px solid rgba(255,255,255,0.06)}.sh-header__bar{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;padding:.75rem 1.25rem;min-height:76px;color:#fff}.sh-header__actions{display:flex;gap:.75rem;align-items:center}.sh-nav{display:none;position:relative;z-index:10;justify-content:center;align-items:center;overflow:visible;max-width:100%}@media(min-width:1024px){.sh-nav{display:flex}}.sh-nav__list{display:flex;flex-wrap:nowrap;justify-content:center;align-items:center;gap:.25rem;margin:0;padding:0;list-style:none}@media(min-width:1024px){.sh-nav__list{gap:.5rem}}@media(min-width:1280px){.sh-nav__list{gap:1rem}}.sh-nav-item{display:flex;align-items:center;height:100%;position:relative}.sh-nav-item__link{display:inline-flex;align-items:center;gap:.375rem;padding:1.5rem .875rem;font-size:clamp(11px,.9vw,13px);font-weight:700;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;color:rgba(255,255,255,0.88);text-decoration:none}.sh-nav-item__chevron{display:inline-flex;margin-left:.25rem}.sh-nav-item__chevron-icon{display:block;width:.75rem;height:.75rem;opacity:.7}.sh-hero{position:relative;width:100%;aspect-ratio:16/9;background:#000;overflow:hidden}.sh-hero__slider{position:relative;width:100%;height:100%;background:#000}.sh-hero__slides{position:relative;width:100%;height:100%}.carousel-slide{position:absolute;inset:0;width:100%;height:100%;display:none;background:#000}.carousel-slide.active{display:block;z-index:20;opacity:1}.sh-hero__bg-img,.carousel-slide .slide-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;background:#000}.sh-hero__overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(0,0,0,0.55) 0%,rgba(0,0,0,0.30) 40%,rgba(0,0,0,0.15) 100%);pointer-events:none}.sgh-cv-auto{content-visibility:auto;contain-intrinsic-size:auto 600px}#sh-hero-slider .carousel-slide .slide-bg,#sh-hero-slider .carousel-slide .sh-hero__bg-img,.sh-hero__slider .carousel-slide .slide-bg,.sh-hero__slider .carousel-slide .sh-hero__bg-img{animation:none!important;transform:none!important}.sh-hero__nav{position:absolute;top:50%;transform:translateY(-50%);z-index:20;background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.3);color:#fff;width:2.75rem;height:2.75rem;border-radius:9999px;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:.8}.sh-hero__nav--prev{left:1rem}.sh-hero__nav--next{right:1rem}@media(min-width:768px){.sh-hero__nav{width:3.5rem;height:3.5rem}.sh-hero__nav--prev{left:2rem}.sh-hero__nav--next{right:2rem}}.sh-hero__dots{position:absolute;bottom:2rem;right:2rem;z-index:20;display:flex;gap:.5rem}.sh-hero__dot,.carousel-dot{width:.5rem;height:.5rem;padding:0;border:none;border-radius:9999px;background:rgba(255,255,255,0.4);cursor:pointer}.sh-hero__dot.active,.carousel-dot.active{width:2rem;background:#f5a623}
+/* Per-route critical CSS — Saigon Horeca.
+ *
+ * Inlined by critical-css.php (concatenated after critical.css). Covers
+ * above-fold styles for routes where the route-bundle CSS round-trip
+ * would otherwise gate the LCP paint.
+ */
+
+/* ── /du-an/ archive hero — kill 1.2 s opacity-fade-in for LCP slide ──
+ *
+ * The bg-stack has 6 absolute-positioned <div> slides; slide 0 has
+ * `.is-active` server-side but the route bundle animates opacity
+ * 0 → 1 over 1.2 s. Lighthouse Mobile baseline: P=75, LCP=7.9 s with
+ * 88 % render-delay because LCP element waits for opacity:1.
+ *
+ * Inlining paints the active slide at opacity:1 immediately on first
+ * HTML parse — no waiting for theme-archive-project.css to arrive.
+ * Carousel JS still toggles `is-active` to cycle slides; subsequent
+ * transitions still animate after the first paint completes.
+ */
+.sh-archive-hero {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: #000;
+    overflow: hidden;
+}
+.sh-archive-hero__bg-stack {
+    position: absolute;
+    inset: 0;
+}
+.sh-archive-hero__bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+}
+.sh-archive-hero__bg.is-active {
+    opacity: 1;
+}
+
+/* ── /ve-saigon-horeca/ (page-gioi-thieu template) about hero ──
+ * Same opacity-fade trap. Force opacity:1 on first paint. */
+.sh-about-hero {
+    position: relative;
+    width: 100%;
+    min-height: 520px;
+    background: #000;
+    overflow: hidden;
+}
+@media (max-width: 640px) {
+    .sh-about-hero { min-height: 380px; }
+}
+.sh-about-hero__bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 1;
+}
+</style>
+        <title>Gành Hào &#8211; Saigon Horeca</title>
+<meta name='robots' content='max-image-preview:large' />
+<meta name="description" content="Nhà hàng Gành Hào – cái tên đã trở nên quen thuộc với những ai yêu – Giá tốt, bảo hành chính hãng – Hotline: 0901 304 365">
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//www.googletagmanager.com' />
+<link rel='dns-prefetch' href='//www.google-analytics.com' />
+<link rel='dns-prefetch' href='//zalo.me' />
+<link rel='dns-prefetch' href='//www.facebook.com' />
+<link rel='dns-prefetch' href='//www.youtube.com' />
+<link rel="preload" as="style" href="css/theme-project.css">
+<link rel="alternate" type="application/rss+xml" title="Saigon Horeca &raquo; Gành Hào Comments Feed" href="#" />
+    <script>
+    (function(){
+        // Always load tracking — cookie consent is cosmetic only
+        function afterConsent(cb) {
+            try {
+                if (localStorage.getItem('sh_cookies_accepted') === '1') {
+                    cb();
+                    return;
+                }
+            } catch (e) {}
+            window.addEventListener('sh:cookies-accepted', cb, { once: true });
+        }
+        afterConsent(function(){
+                        });
+    })();
+    </script>
+    <style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+
+
+<link rel='stylesheet' id='theme-tokens-css' href='css/theme-project.css' media='all' />
+<style id="theme-tokens-inline-css">
+
+        :root {
+            --font-body: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            --font-heading: "Lexend", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            --font-serif: "Lora", Georgia, serif;
+            --ast-global-color-0: #f9c349;
+            --ast-global-color-1: #ffb100;
+            --ast-global-color-2: #000000;
+            --ast-global-color-3: #242525;
+            --ast-global-color-4: #f9fafb;
+            --ast-global-color-5: #ffffff;
+            --ast-global-color-6: #e2e8f0;
+            --ast-global-color-7: #cbd5e1;
+            --ast-global-color-8: #94a3b8;
+            --e-global-color-astglobalcolor0: #f9c349;
+            --e-global-color-astglobalcolor1: #ffb100;
+            --e-global-color-astglobalcolor2: #000000;
+            --e-global-color-astglobalcolor3: #242525;
+            --e-global-color-astglobalcolor4: #f9fafb;
+            --e-global-color-astglobalcolor5: #ffffff;
+            --e-global-color-astglobalcolor6: #e2e8f0;
+            --e-global-color-astglobalcolor7: #cbd5e1;
+            --e-global-color-astglobalcolor8: #94a3b8;
+        }
+        body { font-family: var(--font-body); }
+        h1, h2, h3, h4, h5, h6, .font-sans { font-family: var(--font-heading) !important; }
+        .e-font-icon-svg { display: inline-block; width: 1em; height: 1em; fill: currentColor; }
+
+        /* ROKA FELLA CAPTION & LAYOUT ENHANCEMENTS */
+        .pp-image-container-rf {
+            position: relative !important;
+            overflow: hidden !important;
+        }
+        .pp-image-caption-rf {
+            position: absolute !important;
+            bottom: 0.75rem !important;
+            left: 0.75rem !important;
+            z-index: 5 !important;
+            padding: 0.4rem 0.85rem !important;
+            background: rgba(10, 10, 10, 0.85) !important;
+            border: 1px solid rgba(255, 255, 255, 0.12) !important;
+            border-radius: 6px !important;
+            font-family: var(--font-heading), sans-serif !important;
+            font-size: 0.68rem !important;
+            font-weight: 700 !important;
+            letter-spacing: 0.05em !important;
+            color: var(--gold) !important;
+            backdrop-filter: blur(8px) !important;
+            -webkit-backdrop-filter: blur(8px) !important;
+            pointer-events: none !important;
+            opacity: 0.85 !important;
+            transition: opacity 0.3s ease, transform 0.3s ease !important;
+            width: auto !important;
+            max-width: calc(100% - 1.5rem) !important;
+            text-align: left !important;
+            display: inline-block !important;
+            border-top: none !important;
+        }
+        .pp-image-container-rf:hover .pp-image-caption-rf {
+            opacity: 1 !important;
+            transform: translateY(-2px) !important;
+        }
+        .pp-image-container-rf img {
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        }
+        .pp-image-container-rf:hover img {
+            transform: scale(1.04) !important;
+            filter: grayscale(0%) contrast(1.05) brightness(1.02) !important;
+        }
+        /* Premium Cards styling */
+        .rkf-concept__glass-card,
+        .rkf-specs__glass-card {
+            background: linear-gradient(135deg, rgba(12, 14, 20, 0.92) 0%, rgba(6, 7, 10, 0.97) 100%) !important;
+            border: 1px solid rgba(245, 166, 35, 0.18) !important;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), inset 0 0 35px rgba(245, 166, 35, 0.04) !important;
+        }
+        .rkf-concept__glass-card:hover,
+        .rkf-specs__glass-card:hover {
+            border-color: rgba(245, 166, 35, 0.45) !important;
+            box-shadow: 0 35px 70px rgba(0, 0, 0, 0.92), 0 0 35px rgba(245, 166, 35, 0.1) !important;
+        }
+        .rkf-partnership__glass-card,
+        .rkf-related__glass-card {
+            background: linear-gradient(135deg, rgba(12, 14, 20, 0.92) 0%, rgba(6, 7, 10, 0.97) 100%) !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.85) !important;
+        }
+        .rkf-partnership__glass-card:hover,
+        .rkf-related__glass-card:hover {
+            border-color: rgba(255, 255, 255, 0.15) !important;
+            box-shadow: 0 35px 70px rgba(0, 0, 0, 0.95) !important;
+        }
+        /* Staggered floaters adjustment */
+        .rkf-partnership__image-container--floating {
+            box-shadow: -20px 20px 50px rgba(0, 0, 0, 0.9), 0 0 30px rgba(245, 166, 35, 0.15) !important;
+            transform: rotate(3deg) translateY(0) !important;
+        }
+        .rkf-partnership__side:hover .rkf-partnership__image-container--floating {
+            transform: scale(1.04) rotate(0deg) translateY(-10px) !important;
+        }
+    
+/*# sourceURL=theme-tokens-inline-css */
+</style>
+<link rel='preload' as='style' onload="this.onload=null;this.rel='stylesheet'" id='google-fonts-sgh-css' href='https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&#038;family=Lexend:wght@500;700&#038;family=Lora:ital,wght@0,400;0,500;0,700;1,400;1,700&#038;display=swap' media='all' />
+<link rel="https://api.w.org/" href="#" /><link rel="alternate" title="JSON" type="application/json" href="#" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="#" />
+<meta name="generator" content="WordPress 7.0" />
+<link rel="canonical" href="#" />
+<link rel='shortlink' href='#' />
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","@id":"#","name":"SAIGON HORECA","legalName":"CÔNG TY TNHH SÀI GÒN HORECA","url":"#","description":"Saigon Horeca cung cấp đa dạng các sản phẩm thiết bị bếp công nghiệp và thiết bị quầy bar phục vụ cho khách hàng trong lĩnh vực F&B, bao gồm tư vấn thiết kế, thi công lắp đặt, cung cấp thiết bị, và tư vấn vận hành kinh doanh.","telephone":"0901 304 365","email":"contact@saigonhoreca.com","address":{"@type":"PostalAddress","streetAddress":"Số 40 Đường Số 6, Khu Dân Cư Melosa Khang Điền, Phường Long Trường, TP. Hồ Chí Minh","addressLocality":"Hồ Chí Minh","addressRegion":"Hồ Chí Minh","addressCountry":"VN"},"logo":{"@type":"ImageObject","url":"#"},"image":"#","sameAs":["https://www.facebook.com/saigonhoreca","https://www.youtube.com/@saigonhoreca","https://zalo.me/0901304365"],"contactPoint":[{"@type":"ContactPoint","telephone":"0901 304 365","contactType":"sales","areaServed":"VN","availableLanguage":["Vietnamese","English"]},{"@type":"ContactPoint","telephone":"0909 040 920","contactType":"customer support","areaServed":"VN"}]}</script>
+
+<link rel="alternate" hreflang="vi" href="#">
+<link rel="alternate" hreflang="en" href="#">
+<link rel="alternate" hreflang="x-default" href="#">
+
+    <!-- SEO Fallback: OpenGraph only (meta description is handled by
+         inc/core/seo-meta-description.php to guarantee 120-155 chars). -->
+            <meta property="og:title" content="Gành Hào">
+        <meta property="og:description" content="Nhà hàng Gành Hào – cái tên đã trở nên quen thuộc với những ai yêu – Giá tốt, bảo hành chính hãng – Hotline: 0901 304 365">
+        <meta property="og:url" content="#">
+        <meta property="og:type" content="website">
+        <meta property="og:image" content="#">
+        <meta property="og:site_name" content="Saigon Horeca">
+    
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Dark mode & Lighthouse Optimization: apply BEFORE paint to prevent flash & bypass animation delays -->
+    <script>
+    (function(){
+        // 1. Dark mode
+        var d = null;
+        try { d = localStorage.getItem('sh-dark'); } catch (e) {}
+        if (d === 'true') document.documentElement.classList.add('dark');
+    })();
+    </script>
+        </head>
+<body class="wp-singular project-template-default single single-project postid-724 wp-embed-responsive wp-theme-saigonhoreca-theme page-template-page-project-ganh-hao-noi-hon-bien-trong-tung-net-kien-truc page-template-page-project">
+<main id="primary" class="pp" tabindex="-1">
+    <section class="pp-hero-gha">
+    <div class="pp-hero-gha__media" style="background-image:url('images/ganh-hao-sgh-1.jpg'); background-size:cover; background-position:center;"></div>
+    <div class="pp-hero-gha__overlay" aria-hidden="true"></div>
+    <div class="pp-hero-gha__content">
+        <h1 class="pp-hero-gha__title">Gành Hào</h1>
+        <p class="pp-hero-gha__subtitle">– nơi hồn biển hội tụ trong từng nét kiến trúc</p>
+    </div>
+</section>
+<section class="pp__section">
+  <div class="pp__container">
+    <div class="pp-text-gha pp-text-gha--center">
+      <div class="pp-text-gha__body">
+      <p>Nhà hàng Gành Hào – cái tên đã trở nên quen thuộc với những ai yêu mến ẩm thực biển Vũng Tàu. Có lẽ, nguồn cảm hứng lớn nhất của Gành Hào chính là… biển – Ngay từ cái nhìn đầu tiên, công trình mang dáng dấp tựa như những chiếc thuyền thúng úp ngược – một hình ảnh thân quen của làng chài ven biển Việt Nam.</p>
+      <p>Chính sự giao hòa ấy – giữa hiện đại và truyền thống – đã làm nên nét riêng không thể trộn lẫn của Gành Hào.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="pp__section pp__section--alt">
+  <div class="pp__container">
+    <div class="pp-text-gha pp-text-gha--center">
+      <span class="pp-text-gha__divider pp-text-gha__divider--center" aria-hidden="true"></span>
+      <h2 class="pp-text-gha__title">Khi truyền thống gặp hiện đại trong không gian Gành Hào Mũi Đá</h2>
+      <div class="pp-text-gha__body">
+      <p>Tọa lạc tại số 09 Hạ Long, ngay khu vực cảng tàu khách cánh ngầm, Gành Hào với kiến trúc mái vòm được ốp bằng tấm Aluminium độc đáo, hòa quyện cùng mặt kính hiện đại, nơi đây tựa như một con tàu ánh bạc đang neo đậu giữa sóng gió, sẵn sàng đón tiếp những thực khách yêu hải sản và yêu cái đẹp.</p>
+      <p>Từng đường cong, từng mảng màu ánh kim đều phản chiếu nắng biển, tạo nên cảm giác công trình như đang sống và chuyển động cùng nhịp thở đại dương. Bóng phản chiếu ánh mặt trời như gợi nhắc đến vỏ sò, vảy cá, những vật thể mang hồn biển. Đó không chỉ là vẻ đẹp hình khối, mà còn là cách người thiết kế gửi gắm tinh thần của đại dương vào từng đường nét, từng mái cong, từng khoảng kính mở rộng để đón nắng, gió và mùi mặn mòi của biển khơi.</p>
+      <p>Bước vào Gành Hào, bạn như đang được chào đón vào một không gian kể chuyện, nơi mỗi góc nhỏ, mỗi món ăn đều gợi lên những câu chuyện về biển cả và những chuyến hành trình xa xôi. Tiếng sóng vỗ nhẹ nhàng, như một bản nhạc nền, khiến tâm hồn bạn thêm phần thư thái, hoà mình vào thiên nhiên và không gian nơi đây. Kiến trúc không phô trương, không gắt gỏng, mà rất đỗi lặng lẽ – mang bản sắc Á Đông, nhưng đồng thời thể hiện sự tinh tế, sáng tạo trong từng chi tiết.</p>
+      <p>Bên trong, một không gian rộng mở, đón nắng và gió biển tràn ngập, nơi mỗi bữa ăn không chỉ ngon miệng mà còn trọn vẹn về cảm xúc. Dù là một bữa ăn gia đình ấm cúng hay buổi gặp gỡ sang trọng, Gành Hào luôn là lựa chọn xứng tầm.</p>
+      <p>Không gian nhà hàng được chia thành nhiều khu vực: tầng trệt dành cho cà phê, điểm tâm sáng và cơm trưa; lầu 1 và 2 phục vụ các món hải sản và cơm Việt Nam. Thiết kế mở với các ô cửa kính lớn cho phép thực khách vừa thưởng thức món ăn, vừa ngắm nhìn biển cả mênh mông và cảm nhận làn gió biển mát lành.</p>
+      <p>Không chỉ là nơi quy tụ tinh hoa hải sản tươi sống, với đội ngũ đầu bếp nhiều năm kinh nghiệm, nhà hàng mang đến hơn 100 món ăn phong phú, từ hải sản tươi sống đến các món ăn truyền thống, đáp ứng khẩu vị đa dạng của thực khách. Gành Hào còn chinh phục thực khách bởi không gian mang đậm chất truyền thống, gần gũi mà tinh tế.</p>
+      <p>Và để giữ vững chất lượng phục vụ cũng như đảm bảo công suất hoạt động mỗi ngày, Gành Hào đã tin tưởng lựa chọn Saigon Horeca là đơn vị thiết kế và thi công hệ thống bếp công nghiệp cho toàn bộ chuỗi nhà hàng của mình.</p>
+      </div>
+    </div>
+    <div class="pp-gallery-gha pp-gallery-gha--cols-3" style="margin-top:2rem;">
+      <div class="pp-gallery-gha__item"><img src="images/ganh-hao-sgh.jpg" alt="Thiết bị bếp công nghiệp Saigon Horeca" loading="lazy" decoding="async" width="1366" height="768"></div>
+      <div class="pp-gallery-gha__item"><img src="images/ganh-hao-sgh-2.jpg" alt="Thiết bị bếp công nghiệp Saigon Horeca" loading="lazy" decoding="async" width="1366" height="768"></div>
+      <div class="pp-gallery-gha__item"><img src="images/ganh-hao-sgh-6.jpg" alt="Thiết bị bếp công nghiệp Saigon Horeca" loading="lazy" decoding="async" width="1366" height="768"></div>
+    </div>
+  </div>
+</section>
+<section class="pp-section-bg-gha" style="background-image:url('images/ganh-hao-sgh-1.jpg');">
+  <div class="pp-section-bg-gha__overlay" aria-hidden="true"></div>
+  <div class="pp-section-bg-gha__content">
+    <span class="pp-text-gha__divider pp-text-gha__divider--center" aria-hidden="true"></span>
+    <h2 class="pp-text-gha__title">Saigon Horeca – Những người kiến tạo không gian bếp, gìn giữ linh hồn ẩm thực</h2>
+    <div class="pp-text-gha__body">
+      <p>Ít ai biết rằng, sau mỗi món ăn được phục vụ tại Gành Hào là cả một hệ thống bếp vận hành chuyên nghiệp, nơi các đầu bếp có thể thao tác linh hoạt, an toàn và tối ưu thời gian. Với lưu lượng khách đông mỗi ngày, đặc biệt vào dịp lễ, Tết, hệ thống bếp của Gành Hào không chỉ cần hiện đại mà còn phải bền bỉ, khoa học và dễ dàng vận hành.</p>
+      <p>Saigon Horeca đã cùng Gành Hào lên phương án thiết kế phù hợp với đặc thù món ăn và quy trình phục vụ tại nhà hàng – trong đó có các khu vực: sơ chế hải sản, chế biến nóng, chiên xào, nướng than, hấp – luộc, và hệ thống hút khói, xử lý mùi hiệu quả nhằm đảm bảo không gian làm việc thông thoáng, sạch sẽ.</p>
+    </div>
+  </div>
+</section>
+<section class="pp__section pp__section--alt">
+  <div class="pp__container">
+    <div class="pp-split-gha pp-split-gha--reverse">
+      <div class="pp-split-gha__body">
+        <span class="pp-text-gha__divider" aria-hidden="true"></span>
+        <h2 class="pp-text-gha__title">Tinh gọn – hiệu quả – mang dấu ấn vùng biển</h2>
+        <div class="pp-text-gha__body">
+      <p>Điểm đặc biệt của dự án lần này là sự kết hợp giữa kỹ thuật hiện đại và cảm hứng địa phương. Không gian bếp vẫn giữ được chất “biển” – với luồng vận hành xoay quanh nguyên liệu tươi sống, tốc độ xử lý nhanh nhưng vẫn đảm bảo hương vị nguyên bản.</p>
+      <p>Saigon Horeca lựa chọn các thiết bị bếp gas công nghiệp, chảo xào liền bệ, bếp hấp 3 tầng, bếp nướng mặt đá, tủ lạnh công nghiệp và khu rửa đa khoang – tất cả đều bố trí khoa học, tiết kiệm diện tích mà vẫn đảm bảo công năng.</p>
+        </div>
+      </div>
+      <div class="pp-split-gha__media">
+        <img src="images/ganh-hao-sgh-7.jpg" alt="Thiết bị bếp công nghiệp Saigon Horeca" loading="lazy" decoding="async" width="1366" height="768">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="pp__section pp__section--alt">
+  <div class="pp__container">
+    <div class="pp-text-gha pp-text-gha--center">
+      <div class="pp-text-gha__body">
+      <p>Ở một nơi mà gió biển thổi ngày đêm, độ ẩm và hơi muối luôn là thách thức lớn cho mọi thiết bị kim loại – Saigon Horeca đã nghiên cứu và đưa vào các giải pháp chống gỉ, tối ưu thoát nhiệt và giảm tiếng ồn, đảm bảo gian bếp không chỉ hoạt động hiệu quả, mà còn thân thiện với nhân viên vận hành – những người đứng sau ánh đèn sân khấu ẩm thực.</p>
+      <p>Với dự án này, Saigon Horeca không chỉ bàn giao một hệ thống bếp công nghiệp, mà còn góp phần duy trì và nâng tầm trải nghiệm ẩm thực tại một địa điểm đặc biệt của Vũng Tàu. Chúng tôi tự hào khi được đồng hành cùng Gành Hào – nơi không chỉ giữ hồn biển qua từng món ăn, mà còn thể hiện sự chỉn chu từ khâu chuẩn bị phía sau.</p>
+      </div>
+    </div>
+    <div class="pp-gallery-gha pp-gallery-gha--cols-1" style="margin-top:2rem;">
+      <div class="pp-gallery-gha__item"><img src="images/ganh-hao-sgh-8.jpg" alt="Thiết bị bếp công nghiệp Saigon Horeca" loading="lazy" decoding="async" width="1366" height="768"></div>
+    </div>
+  </div>
+</section>
+
+</div></body>
+</html>

@@ -1,235 +1,156 @@
 /**
- * casa-maria — concept slot. Owns shared .pp-split-cma layout used by concept,
- * partnership (--reverse), and any other split-based slot.
- * Spanish Hacienda: arched portal media (180px top radius) with wrought-iron
- * frame border, gold filigree corner brackets behind body, bull-emblem circle
- * stamp orbiting the title, talavera dot scatter between split halves,
- * sunset glow behind media.
+ * casa-maria — concept slot v3.0 (Cinematic Fluid Editorial).
+ * Phá vỡ lưới 2 cột cũ, bố cục chồng lớp nghệ thuật, nét lượn SVG mờ ảo.
+ * 100% tokens, zero hardcoded colors.
  * @package SaigonHoreca
  */
 
-.pp-split-cma {
+.pp-concept-section-cm {
+  position: relative;
+  padding: 6rem 0;
+  overflow: hidden;
+}
+
+/* Bố cục trang bìa tạp chí nghệ thuật */
+.pp-concept-editorial-layout {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2.5rem;
-  align-items: center;
-  position: relative;
-}
-@media (min-width: 992px) {
-  .pp-split-cma {
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-  }
-  .pp-split-cma--reverse .pp-split-cma__media { order: 2; }
-  .pp-split-cma--reverse .pp-split-cma__body  { order: 1; }
-}
-
-/* Talavera dot divider between split halves (desktop) */
-@media (min-width: 992px) {
-  .pp-split-cma::before {
-    content: '';
-    position: absolute;
-    top: 10%;
-    bottom: 10%;
-    left: 50%;
-    width: 14px;
-    transform: translateX(-50%);
-    background:
-      radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--gold) 55%, transparent) 0 2px, transparent 3px) 50% 0 / 14px 22px repeat-y;
-    pointer-events: none;
-    opacity: 0.55;
-  }
-  .pp-split-cma::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 14px;
-    height: 14px;
-    transform: translate(-50%, -50%) rotate(45deg);
-    background: var(--gold);
-    box-shadow: 0 0 14px color-mix(in srgb, var(--gold) 60%, transparent);
-    pointer-events: none;
-  }
-}
-
-/* Body */
-.pp-split-cma__body {
-  display: flex;
-  flex-direction: column;
-  gap: 1.35rem;
+  gap: 2rem;
   position: relative;
   z-index: 2;
-  padding: 1.5rem 0.5rem;
-}
-.pp-split-cma__body .pp-text-cma__divider { align-self: flex-start; }
-.pp-split-cma__body .pp-text-cma__title {
-  font-size: clamp(1.65rem, 2.7vw, 2.35rem);
-  text-align: left;
-  line-height: 1.22;
 }
 
-/* Wrought-iron L-bracket corners around body (TL + BR) */
-.pp-split-cma__body::before,
-.pp-split-cma__body::after {
-  content: '';
-  position: absolute;
-  width: 48px;
-  height: 48px;
-  pointer-events: none;
-  border: 1px solid color-mix(in srgb, var(--gold) 42%, transparent);
-  z-index: -1;
-}
-.pp-split-cma__body::before {
-  top: -1.25rem;
-  left: -1.25rem;
-  border-right: none;
-  border-bottom: none;
-}
-.pp-split-cma__body::after {
-  bottom: -1.25rem;
-  right: -1.25rem;
-  border-left: none;
-  border-top: none;
-}
-.pp-split-cma--reverse .pp-split-cma__body::before {
-  left: auto;
-  right: -1.25rem;
-  border-left: none;
-  border-right: 1px solid color-mix(in srgb, var(--gold) 42%, transparent);
-}
-.pp-split-cma--reverse .pp-split-cma__body::after {
-  right: auto;
-  left: -1.25rem;
-  border-right: none;
-  border-left: 1px solid color-mix(in srgb, var(--gold) 42%, transparent);
-}
-
-/* Bull-emblem circular stamp behind upper-right of body */
-.pp-split-cma__body > .pp-text-cma__title::after {
-  content: '';
-  position: absolute;
-  top: -2.25rem;
-  right: -1rem;
-  width: 88px;
-  height: 88px;
-  border-radius: 50%;
-  border: 1px solid color-mix(in srgb, var(--gold) 32%, transparent);
-  background:
-    radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--gold) 30%, transparent) 0 3px, transparent 4px) 50% 50% / 100% 100% no-repeat,
-    radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--gold) 8%, transparent) 0 36px, transparent 38px) 50% 50% / 100% 100% no-repeat;
-  box-shadow: 0 0 24px color-mix(in srgb, var(--gold) 22%, transparent);
-  pointer-events: none;
-  z-index: -1;
-  opacity: 0.6;
-}
-.pp-split-cma--reverse .pp-split-cma__body > .pp-text-cma__title::after {
-  right: auto;
-  left: -1rem;
-}
-
-/* Body text override — left-aligned, no drop-cap in splits */
-.pp-split-cma__body .pp-text-cma__body { padding: 0; }
-.pp-split-cma__body .pp-text-cma__body::before,
-.pp-split-cma__body .pp-text-cma__body::after { display: none; }
-.pp-split-cma__body .pp-text-cma__body > p:first-of-type::first-letter {
-  font: inherit;
-  color: inherit;
-  float: none;
-  margin: 0;
-  text-shadow: none;
-}
-
-/* ===== Media — arched portal frame ===== */
-.pp-split-cma__media {
-  position: relative;
-  aspect-ratio: 4 / 5;
-  overflow: hidden;
-  border-radius: 180px 180px var(--radius-md) var(--radius-md);
-  background: var(--b3);
-  border: 1px solid color-mix(in srgb, var(--gold) 28%, transparent);
-  transition:
-    border-color 0.5s var(--ease-spring),
-    transform 0.5s var(--ease-spring),
-    box-shadow 0.5s var(--ease-spring);
-  box-shadow:
-    0 24px 56px rgba(0, 0, 0, 0.45),
-    inset 0 1px 0 color-mix(in srgb, var(--gold) 16%, transparent);
-  isolation: isolate;
-}
 @media (min-width: 992px) {
-  .pp-split-cma__media { aspect-ratio: 4 / 5; }
+  .pp-concept-editorial-layout {
+    grid-template-columns: 6fr 4.8fr;
+    gap: 0; /* Cho phép margin âm đè chéo */
+    align-items: center;
+  }
 }
-.pp-split-cma__media:hover {
-  border-color: color-mix(in srgb, var(--gold) 60%, transparent);
-  transform: translateY(-4px);
-  box-shadow:
-    0 32px 70px rgba(0, 0, 0, 0.55),
-    0 0 0 1px color-mix(in srgb, var(--gold) 38%, transparent),
-    inset 0 1px 0 color-mix(in srgb, var(--gold) 22%, transparent);
-}
-.pp-split-cma__media img {
-  position: absolute;
-  inset: 0;
+
+/* Khối ảnh trái chiếm bề ngang lớn */
+.pp-concept-visual-wrapper {
+  position: relative;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  filter: saturate(1.08) contrast(1.04);
-  transition: transform 0.9s var(--ease-spring), filter 0.6s;
-}
-.pp-split-cma__media:hover img {
-  transform: scale(1.06);
-  filter: saturate(1.18) contrast(1.06);
 }
 
-/* Sunset overlay on media */
-.pp-split-cma__media::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  background: linear-gradient(180deg,
-    transparent 50%,
-    color-mix(in srgb, var(--b1) 25%, transparent) 85%,
-    color-mix(in srgb, var(--b1) 55%, transparent) 100%);
-}
-
-/* Inner wrought-iron frame */
-.pp-split-cma__media::after {
-  content: '';
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  right: 12px;
-  bottom: 12px;
-  border-radius: 168px 168px calc(var(--radius-md) - 4px) calc(var(--radius-md) - 4px);
-  border: 1px solid color-mix(in srgb, var(--gold) 22%, transparent);
-  pointer-events: none;
-  z-index: 2;
-}
-
-/* Sunset glow behind media (off-canvas radial) */
-.pp-split-cma__media {
+.pp-concept-photo-container {
   position: relative;
-}
-.pp-split-cma {
-  isolation: isolate;
-}
-.pp-split-cma > .pp-split-cma__media {
-  z-index: 1;
+  width: 100%;
 }
 
-/* Entry stagger */
-@keyframes pp-cma-split-rise {
-  from { opacity: 0; transform: translateY(28px); }
-  to   { opacity: 1; transform: translateY(0); }
+/* Đường chỉ trang trí màu vàng chạy dọc theo mép ảnh */
+.pp-concept-vertical-line {
+  display: none;
 }
-.pp-split-cma__body  { animation: pp-cma-split-rise 0.85s 0.1s var(--ease-spring) backwards; }
-.pp-split-cma__media { animation: pp-cma-split-rise 0.95s 0.2s var(--ease-spring) backwards; }
 
-/* Small caption tag overlay on media (bottom-left badge) */
-.pp-split-cma__media::before {
-  content: '';
+@media (min-width: 992px) {
+  .pp-concept-vertical-line {
+    display: block;
+    position: absolute;
+    top: -2rem;
+    left: -2rem;
+    bottom: -2rem;
+    width: 1px;
+    background: linear-gradient(to bottom, 
+      color-mix(in srgb, var(--gold) 5%, transparent),
+      var(--gold),
+      color-mix(in srgb, var(--gold) 5%, transparent)
+    );
+    z-index: 1;
+  }
+  .pp-concept-vertical-line::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -3px;
+    width: 7px;
+    height: 7px;
+    background: var(--gold);
+    border-radius: var(--radius-full);
+    box-shadow: 0 0 8px var(--gold);
+  }
+}
+
+.pp-concept-photo-container {
+  position: relative !important;
+  width: 100%;
+}
+
+.pp-concept-photo-container .pp-image-container-shared {
+  aspect-ratio: 4 / 3 !important;
+  border-radius: var(--radius-lg) !important;
+  border: 1px solid var(--bd) !important;
+  box-shadow: var(--shadow-main) !important;
+  overflow: visible !important;
+}
+
+.pp-concept-photo-container .pp-image-container-shared img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
+  transition: transform 0.6s var(--ease-spring) !important;
+}
+
+.pp-concept-photo-container:hover .pp-image-container-shared img {
+  transform: scale(1.04) !important;
+}
+
+@media (min-width: 768px) {
+  .pp-concept-photo-container .pp-image-container-shared {
+    aspect-ratio: 16 / 10 !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .pp-concept-photo-container .pp-image-container-shared {
+    aspect-ratio: 4 / 3 !important;
+    border-radius: var(--radius-xl) 0 0 var(--radius-xl) !important; /* Bo lệch phá cách */
+  }
+}
+
+/* Khối chữ kính mờ đè chéo */
+.pp-concept-text-wrapper {
+  position: relative;
+  z-index: 3;
+}
+
+.pp-concept-glass-card {
+  background: color-mix(in srgb, var(--b2) 75%, transparent) !important;
+  backdrop-filter: blur(30px) !important;
+  -webkit-backdrop-filter: blur(30px) !important;
+  border: 1px solid color-mix(in srgb, var(--gold) 15%, transparent) !important;
+  border-radius: var(--radius-lg);
+  padding: 2.25rem 1.75rem;
+  box-shadow: var(--shadow-floating) !important;
+  transition: border-color 0.4s var(--ease-spring), box-shadow 0.4s var(--ease-spring);
+}
+
+@media (min-width: 576px) {
+  .pp-concept-glass-card {
+    padding: 3rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .pp-concept-glass-card {
+    margin-left: -5rem; /* Đè đè nhẹ lên ảnh bar tạo chiều sâu 3D */
+    border-radius: var(--radius-xl) !important;
+  }
+}
+
+.pp-concept-glass-card:hover {
+  border-color: var(--gold) !important;
+  box-shadow: 0 12px 40px color-mix(in srgb, var(--gold) 10%, transparent) !important;
+}
+
+.pp-concept-card-tag {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--gold);
 }

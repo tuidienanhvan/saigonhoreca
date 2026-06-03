@@ -19,7 +19,7 @@
       "has_video_bg": false,
       "video_url": null,
       "background_overlay": true,
-      "background_image": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/SGH-Heiwasushi-1.webp",
+      "background_image": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/01/SGH-Heiwasushi-1.webp",
       "columns": [
         {
           "col_class": "elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-5392a4ff",
@@ -110,21 +110,21 @@
               "type": "image-carousel.default",
               "slides": [
                 {
-                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/heiwasushi-04.jpg",
+                  "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/02/heiwasushi-04.jpg",
                   "srcset": null,
                   "alt": "heiwasushi-04",
                   "w": null,
                   "h": null
                 },
                 {
-                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/heiwasushi3-1.jpg",
+                  "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/02/heiwasushi3-1.jpg",
                   "srcset": null,
                   "alt": "heiwasushi3-1",
                   "w": null,
                   "h": null
                 },
                 {
-                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/heiwasushi2-1.jpg",
+                  "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/02/heiwasushi2-1.jpg",
                   "srcset": null,
                   "alt": "heiwasushi2-1",
                   "w": null,
@@ -187,8 +187,8 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/heiwasushi3-1.jpg",
-                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/heiwasushi3-1.jpg 940w, https://saigonhoreca.vn/wp-content/uploads/2024/02/heiwasushi3-1-768x644.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/02/heiwasushi3-1-600x503.jpg 600w",
+                "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/02/heiwasushi3-1.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/02/heiwasushi3-1.jpg 940w, https://saigonhoreca.vn/wp-content/uploads/2024/02/heiwasushi3-1-768x644.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/02/heiwasushi3-1-600x503.jpg 600w",
                 "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                 "w": "940",
                 "h": "788"
@@ -212,7 +212,7 @@
       "has_video_bg": false,
       "video_url": null,
       "background_overlay": true,
-      "background_image": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/Heiwa-Sushi-00002.jpg",
+      "background_image": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/02/Heiwa-Sushi-00002.jpg",
       "columns": [
         {
           "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-470f1731",
@@ -259,8 +259,8 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/Heiwa-Sushi-00004.jpg",
-                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/02/Heiwa-Sushi-00004.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2024/02/Heiwa-Sushi-00004-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/02/Heiwa-Sushi-00004-600x337.jpg 600w",
+                "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/02/Heiwa-Sushi-00004.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/02/Heiwa-Sushi-00004.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2024/02/Heiwa-Sushi-00004-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/02/Heiwa-Sushi-00004-600x337.jpg 600w",
                 "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                 "w": "1366",
                 "h": "768"

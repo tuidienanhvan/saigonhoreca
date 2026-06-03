@@ -1,1 +1,541 @@
-/** g-cup-coffee-bistro — specs slot (no content). */
+/**
+ * g-cup-coffee-bistro - specs section css.
+ * Thiết kế theo phong cách tạp chí kiến trúc bất đối xứng (ArchDaily style), loại bỏ nền đen thô ráp.
+ * @package SaigonHoreca
+ */
+
+.pp-specs-section-gcb {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(5rem, 10vh, 8rem) 0;
+  background: transparent !important; /* Loại bỏ nền đen cho cả hai partnership/specs */
+  border-bottom: 1px solid rgba(212, 175, 55, 0.08);
+}
+
+.pp-gcb-specs-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+  margin-bottom: 4rem;
+}
+
+@media (min-width: 992px) {
+  .pp-gcb-specs-grid {
+    grid-template-columns: 1.15fr 1fr;
+    gap: 5rem;
+  }
+}
+
+/* Nhãn tọa độ kỹ thuật mờ chạy xung quanh góc ảnh */
+.pp-gcb-specs-media-wrapper {
+  position: relative;
+  padding: 1.5rem;
+  min-width: 0;
+}
+
+.pp-gcb-specs-coord {
+  position: absolute;
+  font-family: var(--font-mono), monospace;
+  font-size: 10px;
+  font-weight: 600;
+  color: rgba(212, 175, 55, 0.4);
+  letter-spacing: 0.1em;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.pp-gcb-specs-coord--tl { top: 0; left: 0; }
+.pp-gcb-specs-coord--tr { top: 0; right: 0; }
+.pp-gcb-specs-coord--bl { bottom: 0; left: 0; }
+.pp-gcb-specs-coord--br { bottom: 0; right: 0; }
+
+.pp-gcb-specs-cad-lines {
+  position: absolute;
+  inset: -5% -2%;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.15;
+}
+
+.pp-gcb-specs-cad-lines svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Lưới Collage 4 ảnh nghiêng tinh tế editorial */
+.pp-gcb-specs-collage {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  grid-template-rows: auto auto;
+  gap: 1.6rem 1.4rem;
+}
+
+.pp-gcb-collage-item {
+  position: relative;
+  overflow: visible;
+}
+
+/* Aspect ratio chuẩn cho các ảnh trong collage */
+.pp-gcb-collage-item .pp-image-container-shared {
+  aspect-ratio: 4 / 3 !important;
+}
+
+/* Ảnh 1 — nghiêng trái tinh tế */
+.pp-gcb-collage-item--main {
+  grid-column: 1;
+  grid-row: 1;
+  transform: rotate(-1.5deg);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.pp-gcb-collage-item--main:hover {
+  transform: rotate(0) scale(1.02);
+  z-index: 6;
+}
+
+/* Ảnh 2 — nghiêng phải nhẹ */
+.pp-gcb-collage-item--sub-top {
+  grid-column: 2;
+  grid-row: 1;
+  transform: rotate(1.2deg);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.pp-gcb-collage-item--sub-top:hover {
+  transform: rotate(0) scale(1.02);
+  z-index: 6;
+}
+
+/* Ảnh 3 — nghiêng phải tinh tế */
+.pp-gcb-collage-item--sub-bottom {
+  grid-column: 1;
+  grid-row: 2;
+  transform: rotate(1deg);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.pp-gcb-collage-item--sub-bottom:hover {
+  transform: rotate(0) scale(1.02);
+  z-index: 6;
+}
+
+/* Ảnh 4 — nghiêng trái áp vào khoảng trống */
+.pp-gcb-collage-item--sub-corner {
+  grid-column: 2;
+  grid-row: 2;
+  transform: rotate(-1.8deg);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.pp-gcb-collage-item--sub-corner:hover {
+  transform: rotate(0) scale(1.02);
+  z-index: 6;
+}
+
+/* Luxury frame specs */
+.pp-gcb-luxury-frame--specs {
+  position: relative;
+  width: 100%;
+  overflow: visible; /* Thay thành visible để caption không bị cắt */
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.pp-gcb-luxury-frame--specs .pp-image-container-shared {
+  width: 100%;
+  overflow: visible !important;
+  margin-bottom: 0 !important; /* Gỡ bỏ margin-bottom mặc định để tránh đẩy lùi caption */
+}
+
+.pp-gcb-luxury-frame--specs img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+}
+
+/* Bo chéo sắc sảo */
+.pp-gcb-specs-sharp-frame {
+  border-radius: 12px;
+}
+
+.pp-gcb-specs-sharp-frame .pp-image-container-shared,
+.pp-gcb-specs-sharp-frame img {
+  border-radius: 12px;
+}
+
+/* Bo mây bay bổng mượt mà */
+.pp-gcb-specs-cloud-frame {
+  border-radius: 60% 40% 60% 40% / 40% 60% 40% 60% !important;
+}
+
+.pp-gcb-specs-cloud-frame .pp-image-container-shared,
+.pp-gcb-specs-cloud-frame img {
+  border-radius: 60% 40% 60% 40% / 40% 60% 40% 60% !important;
+}
+
+/* Cắt vạt chéo sắc sảo */
+.pp-gcb-specs-diagonal-frame {
+  border-radius: 12px !important;
+}
+.pp-gcb-specs-diagonal-frame .pp-image-container-shared,
+.pp-gcb-specs-diagonal-frame img {
+  border-radius: 12px !important;
+}
+
+/* Bo nghiêng mềm mại cho ảnh 4 drip filter */
+.pp-gcb-specs-tilt-frame {
+  border-radius: 14px !important;
+  border: 1px solid rgba(212, 175, 55, 0.12) !important;
+}
+.pp-gcb-specs-tilt-frame .pp-image-container-shared,
+.pp-gcb-specs-tilt-frame img {
+  border-radius: 14px !important;
+}
+
+/* Nẹp góc vàng kim cho ảnh chính */
+.pp-gcb-specs-corner {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--gold);
+  pointer-events: none;
+  z-index: 4;
+}
+
+.pp-gcb-specs-corner--tl { top: -2px; left: -2px; border-right: none; border-bottom: none; }
+.pp-gcb-specs-corner--br { bottom: -2px; right: -2px; border-left: none; border-top: none; }
+
+/* Tương tác hover collage ảnh */
+.pp-gcb-specs-collage:hover .pp-gcb-luxury-frame--specs {
+  opacity: 0.7;
+  transform: scale(0.97);
+}
+
+.pp-gcb-specs-collage .pp-gcb-luxury-frame--specs:hover {
+  opacity: 1;
+  transform: scale(1.03) rotate(0.5deg);
+  z-index: 5;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
+  border-color: var(--gold) !important;
+}
+
+/* Hộp Niken specs bên phải */
+.pp-gcb-glass-card-specs {
+  position: relative;
+  background: linear-gradient(135deg, rgba(20, 20, 20, 0.7) 0%, rgba(15, 15, 15, 0.9) 100%) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 12px;
+  padding: clamp(2rem, 3.5vw, 3rem);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.pp-gcb-glass-card-specs:hover {
+  transform: translateY(-4px);
+  border-color: rgba(212, 175, 55, 0.25) !important;
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.6),
+    0 0 20px rgba(212, 175, 55, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+}
+
+.pp-gcb-badge {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--gold) 8%, transparent);
+  color: var(--gold);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+.pp-gcb-specs-body {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.pp-gcb-specs-feature {
+  display: grid;
+  grid-template-columns: 2.5rem 1fr;
+  gap: 1.25rem;
+  align-items: start;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.pp-gcb-specs-feature:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.pp-gcb-specs-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 8px;
+  background: rgba(212, 175, 55, 0.08);
+  color: var(--gold);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  transition: all 0.3s ease;
+}
+
+.pp-gcb-glass-card-specs:hover .pp-gcb-specs-icon {
+  background: rgba(212, 175, 55, 0.15);
+  border-color: rgba(212, 175, 55, 0.4);
+  transform: scale(1.05);
+}
+
+.pp-gcb-specs-feat-content h4 {
+  margin: 0 0 0.5rem;
+  color: var(--gold);
+  font-family: var(--font-display), sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.pp-gcb-specs-feat-content p {
+  margin: 0;
+  color: var(--bc2);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+/* Equipment Showcase Catalog */
+.pp-gcb-equip-showcase {
+  margin-top: clamp(5rem, 10vw, 8rem);
+  position: relative;
+  z-index: 2;
+}
+
+.pp-gcb-equip-header {
+  text-align: center;
+  margin-bottom: clamp(3rem, 6vw, 4.5rem);
+}
+
+.pp-gcb-equip-header .pp-text-section__divider {
+  margin: 0 auto 1.25rem;
+  display: block;
+  width: 60px;
+  height: 2px;
+  background: var(--gold);
+  box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
+}
+
+.pp-gcb-equip-header .pp-text-gcb__title {
+  font-size: clamp(1.6rem, 3vw, 2.3rem);
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
+  color: var(--bc);
+  margin: 0 auto;
+  max-width: 25ch;
+  line-height: 1.25;
+}
+
+.pp-gcb-equip-subtitle {
+  color: var(--bc2);
+  max-width: 680px;
+  margin: 1rem auto 0;
+  font-size: 0.98rem;
+  line-height: 1.7;
+}
+
+/* Lưới staggered grid so le bất đối xứng nghệ thuật cho 4 card thiết bị */
+.pp-gcb-equip-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 576px) {
+  .pp-gcb-equip-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .pp-gcb-equip-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2.25rem;
+    padding-bottom: 2rem;
+  }
+
+  /* Nhịp điệu staggered nhấp nhô bất đối xứng */
+  .pp-gcb-equip-grid .pp-gcb-equip-card:nth-child(even) {
+    transform: translateY(2rem);
+  }
+}
+
+/* Card Thiết bị niken nguyên khối */
+.pp-gcb-equip-card {
+  position: relative;
+  background: linear-gradient(135deg, rgba(20, 20, 20, 0.75) 0%, rgba(15, 15, 15, 0.95) 100%) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 12px;
+  padding: 2rem 1.75rem;
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+  overflow: hidden;
+}
+
+.pp-gcb-equip-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(rgba(212, 175, 55, 0.03) 1px, transparent 1px);
+  background-size: 14px 14px;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* Shimmer quét viền sáng chạy qua card thiết bị */
+.pp-gcb-equip-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg, 
+    transparent 0%, 
+    rgba(212, 175, 55, 0.06) 50%, 
+    transparent 100%
+  );
+  transform: skewX(-20deg);
+  pointer-events: none;
+  transition: none;
+}
+
+.pp-gcb-equip-card:hover::after {
+  left: 150%;
+  transition: left 0.9s ease-in-out;
+}
+
+/* Hover tương tác lộng lẫy */
+.pp-gcb-equip-card:hover {
+  border-color: rgba(212, 175, 55, 0.45) !important;
+  box-shadow: 
+    0 25px 45px rgba(0, 0, 0, 0.6),
+    0 0 20px rgba(212, 175, 55, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+}
+
+@media (min-width: 992px) {
+  .pp-gcb-equip-card:hover {
+    transform: translateY(1.5rem) scale(1.03) !important; /* bù đắp so le chẵn và nâng nhẹ */
+  }
+  .pp-gcb-equip-grid .pp-gcb-equip-card:nth-child(odd):hover {
+    transform: translateY(-0.5rem) scale(1.03) !important;
+  }
+}
+
+@media (max-width: 991px) {
+  .pp-gcb-equip-card:hover {
+    transform: translateY(-5px) scale(1.02) !important;
+  }
+}
+
+.pp-gcb-equip-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 12px;
+  background: rgba(212, 175, 55, 0.06);
+  color: var(--gold);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  margin-bottom: 1.5rem;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+  z-index: 2;
+}
+
+.pp-gcb-equip-icon-wrap svg {
+  width: 2.25rem;
+  height: 2.25rem;
+  transition: all 0.4s ease !important;
+}
+
+.pp-gcb-equip-card:hover .pp-gcb-equip-icon-wrap {
+  background: rgba(212, 175, 55, 0.15);
+  border-color: rgba(212, 175, 55, 0.45);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+}
+
+.pp-gcb-equip-card:hover .pp-gcb-equip-icon-wrap svg {
+  transform: scale(1.15) rotate(6deg) !important;
+}
+
+.pp-gcb-equip-title {
+  color: var(--bc);
+  font-family: var(--font-display), sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.4;
+  margin: 0 0 0.75rem;
+  position: relative;
+  z-index: 2;
+}
+
+.pp-gcb-equip-desc {
+  color: var(--bc2);
+  font-size: 0.88rem;
+  line-height: 1.7;
+  margin: 0;
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 767px) {
+  .pp-gcb-specs-collage {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+    min-height: 0;
+  }
+
+  .pp-gcb-collage-item--main,
+  .pp-gcb-collage-item--sub-top,
+  .pp-gcb-collage-item--sub-bottom,
+  .pp-gcb-collage-item--sub-corner {
+    grid-column: auto;
+    grid-row: auto;
+    transform: none; /* Bỏ nghiêng trên mobile để giao diện gọn */
+  }
+
+  .pp-gcb-luxury-frame--specs {
+    aspect-ratio: 16 / 10 !important;
+  }
+
+  .pp-gcb-specs-cloud-frame,
+  .pp-gcb-specs-cloud-frame .pp-image-container-shared,
+  .pp-gcb-specs-cloud-frame img {
+    border-radius: 16px !important;
+  }
+
+  .pp-gcb-specs-diagonal-frame,
+  .pp-gcb-specs-tilt-frame {
+    clip-path: none;
+    border-radius: 16px !important;
+  }
+}

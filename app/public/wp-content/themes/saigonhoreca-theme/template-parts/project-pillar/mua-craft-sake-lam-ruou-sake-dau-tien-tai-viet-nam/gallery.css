@@ -1,1 +1,4 @@
-/** mua-craft-sake-lam-ruou-sake-dau-tien-tai-viet-nam — gallery slot. Inherits .pp-split-mcs from concept.css. */
+/** mua-craft-sake-lam-ruou-sake-dau-tien-tai-viet-nam — gallery slot.
+ *  Kế thừa .pp-split-mua + .pp-gallery-mua từ concept.css / intro.css. 0 hardcode hex brand. */
+
+.pp-gallery-sec-mua .pp-gallery-mua--cols-2 .pp-gallery-mua__item { aspect-ratio: 3 / 2; }

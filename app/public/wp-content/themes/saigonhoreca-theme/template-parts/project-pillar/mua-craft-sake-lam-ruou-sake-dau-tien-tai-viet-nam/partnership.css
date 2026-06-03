@@ -1,9 +1,10 @@
 /**
- * mua-craft-sake-lam-ruou-sake-dau-tien-tai-viet-nam — partnership slot. .pp-section-bg-mcs cinematic dark bg + glassmorphic content.
+ * mua-craft-sake-lam-ruou-sake-dau-tien-tai-viet-nam — partnership slot.
+ * Cinematic dark bg + glassmorphic content card (backdrop-filter). 0 hardcode hex brand.
  * @package SaigonHoreca
  */
 
-.pp-section-bg-mcs {
+.pp-section-bg-mua {
   position: relative;
   padding: 7rem 1.5rem;
   min-height: 70vh;
@@ -17,9 +18,9 @@
   isolation: isolate;
   overflow: hidden;
 }
-@media (min-width: 768px) { .pp-section-bg-mcs { padding: 10rem 2rem; } }
+@media (min-width: 768px) { .pp-section-bg-mua { padding: 10rem 2rem; } }
 
-.pp-section-bg-mcs__overlay {
+.pp-section-bg-mua__overlay {
   position: absolute;
   inset: 0;
   z-index: 1;
@@ -30,29 +31,31 @@
   pointer-events: none;
 }
 
-.pp-section-bg-mcs::before {
+.pp-section-bg-mua::before {
   content: '';
   position: absolute;
   top: -10%;
   right: -8%;
   width: 540px; height: 540px;
-  background: radial-gradient(circle, color-mix(in srgb, var(--gold) 18%, transparent) 0%, transparent 70%);
+  background: radial-gradient(circle, color-mix(in srgb, var(--mua-gold) 18%, transparent) 0%, transparent 70%);
   filter: blur(80px);
   z-index: 1;
   pointer-events: none;
   opacity: 0.7;
 }
 
-.pp-section-bg-mcs__content {
+/* Glassmorphic content card — đè max-width của pp-container-shared (1200 → 880). */
+.pp-section-bg-mua .pp-section-bg-mua__content {
   position: relative;
   z-index: 2;
   max-width: 880px;
   margin: 0 auto;
   text-align: center;
   padding: 3rem 2.5rem;
-  background: color-mix(in srgb, var(--b1) 40%, transparent);
+  background: var(--mua-glass);
   backdrop-filter: blur(14px) saturate(140%);
-  border: 1px solid color-mix(in srgb, var(--gold) 22%, transparent);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border: 1px solid color-mix(in srgb, var(--mua-gold) 22%, transparent);
   border-radius: var(--radius-md);
   display: flex;
   flex-direction: column;
@@ -60,26 +63,26 @@
   gap: 1.5rem;
   box-shadow:
     0 24px 56px rgba(0, 0, 0, 0.5),
-    inset 0 1px 0 color-mix(in srgb, var(--gold) 10%, transparent);
+    inset 0 1px 0 color-mix(in srgb, var(--mua-gold) 10%, transparent);
 }
-.pp-section-bg-mcs__content::before,
-.pp-section-bg-mcs__content::after {
+.pp-section-bg-mua__content::before,
+.pp-section-bg-mua__content::after {
   content: '';
   position: absolute;
   width: 24px; height: 24px;
-  border: 1px solid color-mix(in srgb, var(--gold) 55%, transparent);
+  border: 1px solid color-mix(in srgb, var(--mua-gold) 55%, transparent);
   pointer-events: none;
 }
-.pp-section-bg-mcs__content::before {
+.pp-section-bg-mua__content::before {
   top: -1px; left: -1px;
   border-right: none; border-bottom: none;
 }
-.pp-section-bg-mcs__content::after {
+.pp-section-bg-mua__content::after {
   bottom: -1px; right: -1px;
   border-left: none; border-top: none;
 }
 
-.pp-section-bg-mcs__content .pp-text-mcs__title {
+.pp-section-bg-mua__content .pp-text-mua__title {
   margin: 0;
   font-family: var(--font-display);
   font-size: clamp(1.65rem, 3vw, 2.5rem);
@@ -88,14 +91,14 @@
   color: var(--bc);
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
 }
-.pp-section-bg-mcs__content .pp-text-mcs__body {
+.pp-section-bg-mua__content .pp-text-mua__body {
   font-size: clamp(0.97rem, 1.1vw, 1.05rem);
   line-height: 1.8;
   color: var(--bc2);
   max-width: 700px;
 }
-.pp-section-bg-mcs__content .pp-text-mcs__body p {
+.pp-section-bg-mua__content .pp-text-mua__body p {
   margin: 0 0 1em;
   text-align: center;
 }
-.pp-section-bg-mcs__content .pp-text-mcs__body p:last-child { margin-bottom: 0; }
+.pp-section-bg-mua__content .pp-text-mua__body p:last-child { margin-bottom: 0; }

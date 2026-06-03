@@ -109,28 +109,28 @@
               "type": "image-carousel.default",
               "slides": [
                 {
-                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/SGH-Portrait-1.png",
+                  "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2023/12/SGH-Portrait-1.png",
                   "srcset": null,
                   "alt": "SGH-Portrait-1.png",
                   "w": null,
                   "h": null
                 },
                 {
-                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/SGH-Portrait-2.png",
+                  "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2023/12/SGH-Portrait-2.png",
                   "srcset": null,
                   "alt": "SGH-Portrait-2.png",
                   "w": null,
                   "h": null
                 },
                 {
-                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/SGH-Portrait-3.png",
+                  "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2023/12/SGH-Portrait-3.png",
                   "srcset": null,
                   "alt": "SGH-Portrait-3.png",
                   "w": null,
                   "h": null
                 },
                 {
-                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/SGH-Portrait.png",
+                  "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2023/12/SGH-Portrait.png",
                   "srcset": null,
                   "alt": "SGH-Portrait.png",
                   "w": null,
@@ -193,8 +193,8 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/bambino-saigon-horeca-1.jpg",
-                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/bambino-saigon-horeca-1.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2024/01/bambino-saigon-horeca-1-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/01/bambino-saigon-horeca-1-600x337.jpg 600w",
+                "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/01/bambino-saigon-horeca-1.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/01/bambino-saigon-horeca-1.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2024/01/bambino-saigon-horeca-1-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/01/bambino-saigon-horeca-1-600x337.jpg 600w",
                 "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                 "w": "1366",
                 "h": "768"
@@ -218,7 +218,7 @@
       "has_video_bg": false,
       "video_url": null,
       "background_overlay": true,
-      "background_image": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/SGH-Bambino-1.jpg",
+      "background_image": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2023/12/SGH-Bambino-1.jpg",
       "columns": [
         {
           "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-73a09521",
@@ -271,7 +271,7 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/SGH-Bambino-2.jpg",
+                "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2023/12/SGH-Bambino-2.jpg",
                 "srcset": null,
                 "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                 "w": "600",
@@ -363,7 +363,7 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/SGH-Bambino-3.jpg",
+                "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2023/12/SGH-Bambino-3.jpg",
                 "srcset": null,
                 "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                 "w": "600",

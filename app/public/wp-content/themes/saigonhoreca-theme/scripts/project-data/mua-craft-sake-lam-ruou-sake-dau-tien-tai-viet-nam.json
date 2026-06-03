@@ -108,28 +108,28 @@
               "type": "image-carousel.default",
               "slides": [
                 {
-                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/mua-craft-sake-food00001.jpg",
+                  "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2023/12/mua-craft-sake-food00001.jpg",
                   "srcset": null,
                   "alt": "mua-craft-sake-food00001.jpg",
                   "w": null,
                   "h": null
                 },
                 {
-                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/mua-craft-sake-food00004-1.jpg",
+                  "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2023/12/mua-craft-sake-food00004-1.jpg",
                   "srcset": null,
                   "alt": "mua-craft-sake-food00004-1.jpg",
                   "w": null,
                   "h": null
                 },
                 {
-                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/mua-craft-sake-food00003.jpg",
+                  "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2023/12/mua-craft-sake-food00003.jpg",
                   "srcset": null,
                   "alt": "mua-craft-sake-food00003.jpg",
                   "w": null,
                   "h": null
                 },
                 {
-                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/mua-craft-sake-food00002.jpg",
+                  "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2023/12/mua-craft-sake-food00002.jpg",
                   "srcset": null,
                   "alt": "mua-craft-sake-food00002.jpg",
                   "w": null,
@@ -193,7 +193,7 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/Mua-sake-kitchen.jpg",
+                "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2023/12/Mua-sake-kitchen.jpg",
                 "srcset": null,
                 "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                 "w": "600",
@@ -218,7 +218,7 @@
       "has_video_bg": false,
       "video_url": null,
       "background_overlay": true,
-      "background_image": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/Mua-sake-kitchen1.jpg",
+      "background_image": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2023/12/Mua-sake-kitchen1.jpg",
       "columns": [
         {
           "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-31a2dd6d",
@@ -266,8 +266,8 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/Mua-sake-space-1.jpg",
-                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/Mua-sake-space-1.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2023/12/Mua-sake-space-1-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2023/12/Mua-sake-space-1-600x337.jpg 600w",
+                "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2023/12/Mua-sake-space-1.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2023/12/Mua-sake-space-1.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2023/12/Mua-sake-space-1-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2023/12/Mua-sake-space-1-600x337.jpg 600w",
                 "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                 "w": "1366",
                 "h": "768"
@@ -335,7 +335,7 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/SGH-Mua-sake-people.jpg",
+                "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2023/12/SGH-Mua-sake-people.jpg",
                 "srcset": null,
                 "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                 "w": "600",
@@ -409,28 +409,28 @@
               "type": "image-gallery.default",
               "slides": [
                 {
-                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/Mua-kitchen-04.jpg",
+                  "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2023/12/Mua-kitchen-04.jpg",
                   "srcset": null,
                   "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                   "w": "600",
                   "h": "800"
                 },
                 {
-                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/Mua-kitchen-03.jpg",
+                  "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2023/12/Mua-kitchen-03.jpg",
                   "srcset": null,
                   "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                   "w": "600",
                   "h": "800"
                 },
                 {
-                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/Mua-kitchen-02.jpg",
+                  "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2023/12/Mua-kitchen-02.jpg",
                   "srcset": null,
                   "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                   "w": "600",
                   "h": "800"
                 },
                 {
-                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/Mua-kitchen-01.jpg",
+                  "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2023/12/Mua-kitchen-01.jpg",
                   "srcset": null,
                   "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                   "w": "600",

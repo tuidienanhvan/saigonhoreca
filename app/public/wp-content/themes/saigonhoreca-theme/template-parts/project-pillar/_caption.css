@@ -1,0 +1,58 @@
+/**
+* Shared Premium Image Caption component - Editorial Style
+* Inspired by high-end architectural magazines (ArchDaily style)
+* @package SaigonHoreca
+*/
+
+.pp-image-container-shared {
+position: relative !important;
+overflow: visible !important; /* Cho phép chú thích báo chí hiển thị ngoài viền ảnh */
+margin-bottom: 1.8rem !important; /* Tạo khoảng trống thở sang trọng và chỗ trống cho chú thích */
+}
+
+.pp-image-container-shared img {
+width: 100% !important;
+height: 100% !important;
+object-fit: cover !important;
+display: block !important;
+transition: transform 0.6s var(--ease-spring) !important;
+clip-path: inset(0) !important; /* Đảm bảo khi zoom ảnh, phần tràn ra ngoài biên cũ sẽ bị cắt bỏ mượt mà */
+}
+
+.pp-image-container-shared:hover img {
+transform: scale(1.03) !important;
+}
+
+.pp-image-caption-shared {
+position: absolute !important;
+top: calc(100% + 0.6rem) !important; /* Tự động neo dưới chân ảnh */
+left: 0 !important;
+right: 0 !important;
+z-index: 5 !important;
+padding: 0 !important;
+background: transparent !important;
+border: none !important;
+font-family: var(--font-display), sans-serif !important;
+font-size: 0.72rem !important; /* Kích thước nhỏ nhắn, thanh mảnh tinh tế */
+font-style: italic !important; /* Kiểu chữ nghiêng báo chí */
+font-weight: 400 !important;
+line-height: 1.4 !important;
+letter-spacing: 0.02em !important;
+color: var(--bc2, rgba(255, 255, 255, 0.45)) !important; /* Màu xám bạc nhạt mờ sang trọng */
+backdrop-filter: none !important;
+-webkit-backdrop-filter: none !important;
+pointer-events: none;
+
+/* Luôn hiển thị tĩnh, trực quan không cần hover */
+opacity: 0.85 !important;
+transform: none !important;
+transition: opacity 0.3s ease !important;
+box-sizing: border-box !important;
+box-shadow: none !important;
+text-align: left !important; /* Căn lề trái tinh tế chuẩn ArchDaily */
+}
+
+/* Đảm bảo khi hover, chú thích có độ rõ nét cao hơn một chút */
+.pp-image-container-shared:hover .pp-image-caption-shared {
+opacity: 1 !important;
+}

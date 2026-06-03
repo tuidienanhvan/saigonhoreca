@@ -1,0 +1,26 @@
+/**
+ * Project page-template — heiwa-sushi-omakase (layout + project tokens).
+ * Japanese omakase identity: warm gold accent (brand) + Wabi-Sabi wood/zen
+ * neutrals, all derived from global tokens (no hardcoded brand hex).
+ * @package SaigonHoreca
+ */
+
+.pp--hwa {
+  /* Warm gold accent (= brand) used for ornaments, dividers, dropcaps. */
+  --hwa-gold:        var(--p);
+  --hwa-gold-soft:   color-mix(in srgb, var(--p) 35%, transparent);
+  --hwa-gold-faint:  color-mix(in srgb, var(--p) 12%, transparent);
+  /* Wabi-Sabi warm neutral (wood/ember) blended from brand + base content. */
+  --hwa-ember:       color-mix(in srgb, var(--p) 60%, var(--bc));
+  /* Zen glass surface for cards. */
+  --hwa-glass:       color-mix(in srgb, var(--b2) 70%, transparent);
+  /* Faint technical grid line. */
+  --hwa-grid:        color-mix(in srgb, var(--bc) 4%, transparent);
+  /* Hairline divider/border tint. */
+  --hwa-line:        color-mix(in srgb, var(--p) 26%, transparent);
+}
+
+body.page-template-page-project-heiwa-sushi-omakase {
+  background: var(--b1);
+  color: var(--bc);
+}

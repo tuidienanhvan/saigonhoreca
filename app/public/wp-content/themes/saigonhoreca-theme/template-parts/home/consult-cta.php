@@ -11,11 +11,13 @@
  */
 if (!defined('ABSPATH')) exit;
 $uri = get_template_directory_uri();
-$bg  = sgh_img('2025/05/the-royal-sgh-8.jpg');
+$bg  = sgh_img('saigonhoreca/the-royal-sgh-8.jpg');
 ?>
-<section class="sh-consult-cta" style="background-image:url('<?php echo esc_url($bg); ?>');">
+<section class="sh-consult-cta">
+    <!-- Thẻ con gánh hiệu ứng Parallax Clip-Path siêu mượt -->
+    <div class="sh-consult-cta__bg" style="background-image:url('<?php echo esc_url($bg); ?>');"></div>
     <div class="sh-consult-cta__overlay" aria-hidden="true"></div>
-    <div class="sh-consult-cta__inner">
+    <div class="sh-consult-cta__inner scroll-reveal reveal-zoom-skew-in duration-2000">
         <span class="sh-consult-cta__divider" aria-hidden="true"></span>
         <h2 class="sh-consult-cta__title">
             <?php esc_html_e('Tư vấn giải pháp hệ thống bếp công nghiệp', 'saigonhoreca'); ?>

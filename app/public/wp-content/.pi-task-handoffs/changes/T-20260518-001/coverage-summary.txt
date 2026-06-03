@@ -1,0 +1,16 @@
+T-20260518-001 Phase A — Mirror coverage audit
+============================================================
+
+Target: https://saigonhoreca.local
+Source: C:\Users\Administrator\Local Sites\saigonhoreca-clone\logs\summary.json
+Total URLs probed: 299
+
+Status codes:
+  HTTP 200: 299/299 (100.0%)
+  HTTP 404: 0
+  Other:    0
+
+Mirror handler HIT (X-SGH-Mirror header): 299/299
+Body contains Saigon Horeca brand: 299
+Body LEAKS Saigon House (bug): 0
+Avg request time: 97.8 ms

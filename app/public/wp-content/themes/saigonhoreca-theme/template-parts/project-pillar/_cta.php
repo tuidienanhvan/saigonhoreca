@@ -35,7 +35,7 @@ $cards = [
 ];
 ?>
 <section class="pp__section pp__section--alt">
-    <div class="pp__container">
+    <div class="pp-container-shared">
         <div class="pp-text pp-text--center" style="margin-bottom: 3rem;">
             <span class="pp-text__divider pp-text__divider--center" aria-hidden="true"></span>
             <h2 class="pp-text__title">Thông tin liên hệ</h2>

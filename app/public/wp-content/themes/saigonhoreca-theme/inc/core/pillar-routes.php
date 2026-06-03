@@ -35,12 +35,37 @@ if (!function_exists('sgh_pillar_route_serve')) {
         if (!$is_canonical_path && !$is_root_alias) return;
         $slug = strtolower($m[1]);
 
+        // Bypass định tuyến ảo nếu đã có Post thật thuộc Custom Post Type project
+        $existing_project = get_posts([
+            'name'             => $slug,
+            'post_type'        => 'project',
+            'post_status'      => 'publish',
+            'numberposts'      => 1,
+            'fields'           => 'ids',
+            'no_found_rows'    => true,
+            'suppress_filters' => true,
+        ]);
+        if (!empty($existing_project)) {
+            return;
+        }
+
         // The Brix native pillar is not rebuilt to production parity yet.
         // Let static-mirror.php serve the freshly crawled production snapshot.
         if ($slug === 'the-brix') return;
 
-        $tpl_path = get_template_directory() . '/page-templates/page-project-' . $slug . '.php';
-        if (!file_exists($tpl_path)) return;
+        // Resolve template: prefer new single-project/<slug>.php (post-migration),
+        // fall back to legacy page-templates/page-project-<slug>.php for any
+        // project not yet migrated. Projects moved out of page-templates/ on
+        // 2026-05-29 — virtual route must follow them to single-project/.
+        $single_path = get_template_directory() . '/single-project/' . $slug . '.php';
+        $legacy_path = get_template_directory() . '/page-templates/page-project-' . $slug . '.php';
+        if (file_exists($single_path)) {
+            $tpl_path = $single_path;
+        } elseif (file_exists($legacy_path)) {
+            $tpl_path = $legacy_path;
+        } else {
+            return;
+        }
 
         $canonical_url = home_url('/du-an/' . $slug . '/');
 
@@ -169,3 +194,36 @@ if (!function_exists('sgh_pillar_label_from_slug')) {
         return ucwords(str_replace('-', ' ', $slug));
     }
 }
+
+// Filter single template để WordPress tự động load từ thư mục single-project/ hoặc page-templates/
+add_filter('single_template', static function($template) {
+    $post = get_queried_object();
+
+    if ($post instanceof WP_Post && $post->post_type === 'project') {
+        $slug = $post->post_name;
+        
+        // 1. Kiểm tra dự án mới ở single-project/
+        $custom_template = get_template_directory() . '/single-project/' . $slug . '.php';
+        if (file_exists($custom_template)) {
+            return $custom_template;
+        }
+        
+        // 2. Tương thích ngược: Kiểm tra dự án cũ ở page-templates/
+        $legacy_template = get_template_directory() . '/page-templates/page-project-' . $slug . '.php';
+        if (file_exists($legacy_template)) {
+            return $legacy_template;
+        }
+    }
+    return $template;
+});
+
+// Thêm class body tương thích ngược cho Custom Post Type project single pages
+add_filter('body_class', static function($classes) {
+    global $post;
+    if (is_singular('project')) {
+        $slug = $post->post_name;
+        $classes[] = 'page-template-page-project-' . $slug;
+        $classes[] = 'page-template-page-project';
+    }
+    return $classes;
+});

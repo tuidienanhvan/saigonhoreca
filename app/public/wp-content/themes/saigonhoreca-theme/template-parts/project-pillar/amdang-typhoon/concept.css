@@ -4,7 +4,7 @@
  * @package SaigonHoreca
  */
 
-.pp--amdang-typhoon .pp-split-at {
+.pp--adt .pp-split-adt {
   display: grid;
   grid-template-columns: 1fr;
   gap: 2.5rem;
@@ -12,25 +12,25 @@
   position: relative;
 }
 @media (min-width: 992px) {
-  .pp--amdang-typhoon .pp-split-at { grid-template-columns: 1fr 1fr; gap: 4.5rem; }
-  .pp--amdang-typhoon .pp-split-at--reverse .pp-split-at__media { order: 2; }
-  .pp--amdang-typhoon .pp-split-at--reverse .pp-split-at__body  { order: 1; }
+  .pp--adt .pp-split-adt { grid-template-columns: 1fr 1fr; gap: 4.5rem; }
+  .pp--adt .pp-split-adt--reverse .pp-split-adt__media { order: 2; }
+  .pp--adt .pp-split-adt--reverse .pp-split-adt__body  { order: 1; }
 }
 
-.pp--amdang-typhoon .pp-split-at__body {
+.pp--adt .pp-split-adt__body {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
   position: relative;
   z-index: 2;
 }
-.pp--amdang-typhoon .pp-split-at__body .pp-text-at__divider { align-self: flex-start; }
-.pp--amdang-typhoon .pp-split-at__body .pp-text-at__title {
+.pp--adt .pp-split-adt__body .pp-text-adt__divider { align-self: flex-start; }
+.pp--adt .pp-split-adt__body .pp-text-adt__title {
   font-size: clamp(1.55rem, 2.6vw, 2.25rem);
   text-align: left;
 }
 
-.pp--amdang-typhoon .pp-split-at__media {
+.pp--adt .pp-split-adt__media {
   position: relative;
   aspect-ratio: 16 / 10;
   overflow: hidden;
@@ -39,19 +39,19 @@
   border: 1px solid var(--bd);
   transition: border-color 0.4s var(--ease-spring);
 }
-.pp--amdang-typhoon .pp-split-at__media:hover {
+.pp--adt .pp-split-adt__media:hover {
   border-color: color-mix(in srgb, var(--gold) 45%, transparent);
 }
-.pp--amdang-typhoon .pp-split-at__media img {
+.pp--adt .pp-split-adt__media img {
   width: 100%; height: 100%;
   object-fit: cover; display: block;
   filter: saturate(1.05);
   transition: transform 0.7s var(--ease-spring);
 }
-.pp--amdang-typhoon .pp-split-at__media:hover img { transform: scale(1.05); }
+.pp--adt .pp-split-adt__media:hover img { transform: scale(1.05); }
 
 /* L-bracket ornament behind body */
-.pp--amdang-typhoon .pp-split-at__body::before {
+.pp--adt .pp-split-adt__body::before {
   content: '';
   position: absolute;
   top: -1.5rem;
@@ -62,7 +62,7 @@
   pointer-events: none;
   z-index: -1;
 }
-.pp--amdang-typhoon .pp-split-at--reverse .pp-split-at__body::before {
+.pp--adt .pp-split-adt--reverse .pp-split-adt__body::before {
   left: auto;
   right: -1rem;
   border-left: none;
@@ -70,7 +70,7 @@
 }
 
 /* CONCEPT SECTION - LUXURY ROYAL COLLAGE & DEPTH */
-.pp--amdang-typhoon .pp-section-at-concept {
+.pp--adt .pp-section-adt-concept {
   background: var(--b2);
   padding: clamp(6rem, 15vh, 11rem) 0;
   position: relative;
@@ -79,7 +79,7 @@
 }
 
 /* Đường ray trang trí chạy dọc ngầm định xuyên suốt */
-.pp--amdang-typhoon .pp-concept-rail-line {
+.pp--adt .pp-concept-rail-line {
   position: absolute;
   top: 0;
   left: 50%;
@@ -96,7 +96,7 @@
 }
 
 /* Vùng hào quang phát sáng hoàng tộc */
-.pp--amdang-typhoon .pp-concept-glow--at {
+.pp--adt .pp-concept-glow--adt {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -108,18 +108,13 @@
   z-index: 1;
 }
 
-.pp--amdang-typhoon .pp-container-at-concept {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 clamp(1.5rem, 5vw, 5rem);
+.pp--adt .pp-section-adt-concept .pp-container-shared {
   display: flex;
   flex-direction: column;
   gap: clamp(6rem, 18vh, 12rem); /* Khoảng cách sâu tạo sự rộng rãi thượng lưu */
-  position: relative;
-  z-index: 2;
 }
 
-.pp--amdang-typhoon .sgh-concept-collage-row {
+.pp--adt .sgh-concept-collage-row {
   display: grid;
   grid-template-columns: 1fr;
   gap: 3.5rem;
@@ -128,13 +123,13 @@
 }
 
 @media (min-width: 1024px) {
-  .pp--amdang-typhoon .sgh-concept-collage-row {
+  .pp--adt .sgh-concept-collage-row {
     grid-template-columns: repeat(12, 1fr);
     gap: 0; /* Khống chế bằng grid column overlap */
   }
 
   /* Khối chữ chiếm 7 cột bên trái, nằm đè lên trên */
-  .pp--amdang-typhoon .sgh-concept-collage-row .pp-text-at-concept {
+  .pp--adt .sgh-concept-collage-row .pp-text-adt-concept {
     grid-column: 1 / 8;
     grid-row: 1;
     position: relative;
@@ -142,7 +137,7 @@
   }
 
   /* Khối ảnh chiếm 7 cột bên phải, nằm chìm bên dưới */
-  .pp--amdang-typhoon .sgh-concept-collage-row .pp-media-at-concept {
+  .pp--adt .sgh-concept-collage-row .pp-media-adt-concept {
     grid-column: 6 / 13;
     grid-row: 1;
     position: relative;
@@ -152,30 +147,30 @@
   }
 
   /* Hàng 2: Đảo ngược vị trí chồng lớp */
-  .pp--amdang-typhoon .sgh-concept-collage-row--reverse .pp-text-at-concept {
+  .pp--adt .sgh-concept-collage-row--reverse .pp-text-adt-concept {
     grid-column: 6 / 13;
     grid-row: 1;
   }
 
-  .pp--amdang-typhoon .sgh-concept-collage-row--reverse .pp-media-at-concept {
+  .pp--adt .sgh-concept-collage-row--reverse .pp-media-adt-concept {
     grid-column: 1 / 8;
     grid-row: 1;
     transform: translateY(1.5rem);
   }
 
   /* Hiệu ứng hover dịch chuyển Parallax mượt mà */
-  .pp--amdang-typhoon .sgh-concept-collage-row:hover .pp-media-at-concept {
+  .pp--adt .sgh-concept-collage-row:hover .pp-media-adt-concept {
     transform: translateY(0);
   }
 
   /* Đưa ảnh lên phía trước đè lên card chữ khi hover trực tiếp vào ảnh */
-  .pp--amdang-typhoon .pp-media-at-concept:hover {
+  .pp--adt .pp-media-adt-concept:hover {
     z-index: 12;
   }
 }
 
 /* WATERMARK SỐ THỨ TỰ KHỔNG LỒ CHÌM DƯỚI NỀN */
-.pp--amdang-typhoon .pp-concept-watermark {
+.pp--adt .pp-concept-watermark {
   position: absolute;
   font-family: var(--font-display), sans-serif;
   font-size: clamp(12rem, 20vw, 24rem);
@@ -187,18 +182,18 @@
   pointer-events: none;
   user-select: none;
 }
-.pp--amdang-typhoon .sgh-concept-collage-row .pp-concept-watermark {
+.pp--adt .sgh-concept-collage-row .pp-concept-watermark {
   top: -6rem;
   left: -2rem;
 }
-.pp--amdang-typhoon .sgh-concept-collage-row--reverse .pp-concept-watermark {
+.pp--adt .sgh-concept-collage-row--reverse .pp-concept-watermark {
   top: -6rem;
   right: -2rem;
   left: auto;
 }
 
 /* LUXURY ROYAL GLASS CARD */
-.pp--amdang-typhoon .pp-concept-glass-card {
+.pp--adt .pp-concept-glass-card {
   position: relative;
   background: rgba(12, 12, 12, 0.65);
   border: 1px solid rgba(212, 175, 55, 0.15);
@@ -215,7 +210,7 @@
   transition: border-color 0.6s var(--ease-spring), box-shadow 0.6s var(--ease-spring);
 }
 
-.pp--amdang-typhoon .sgh-concept-collage-row:hover .pp-concept-glass-card {
+.pp--adt .sgh-concept-collage-row:hover .pp-concept-glass-card {
   border-color: rgba(212, 175, 55, 0.35);
   box-shadow: 
     0 35px 80px rgba(0, 0, 0, 0.65),
@@ -223,7 +218,7 @@
 }
 
 /* Huy hiệu mạ vàng trang trí góc Card */
-.pp--amdang-typhoon .pp-card-badge-ornament {
+.pp--adt .pp-card-badge-ornament {
   position: absolute;
   top: 1rem;
   right: 1.25rem;
@@ -231,7 +226,7 @@
   height: 1px;
   background: rgba(212, 175, 55, 0.4);
 }
-.pp--amdang-typhoon .pp-card-badge-ornament::before {
+.pp--adt .pp-card-badge-ornament::before {
   content: '';
   position: absolute;
   top: -4px;
@@ -242,7 +237,7 @@
   transform: rotate(45deg);
 }
 
-.pp--amdang-typhoon .pp-badge-at-concept {
+.pp--adt .pp-badge-adt-concept {
   font-family: var(--font-display), sans-serif;
   font-size: 0.72rem;
   font-weight: 600;
@@ -253,12 +248,12 @@
   gap: 0.75rem;
 }
 
-.pp--amdang-typhoon .pp-badge-accent-at-concept {
+.pp--adt .pp-badge-accent-adt-concept {
   color: var(--gold);
   font-weight: 700;
 }
 
-.pp--amdang-typhoon .pp-title-at-concept {
+.pp--adt .pp-title-adt-concept {
   font-family: var(--font-display), sans-serif;
   font-size: clamp(1.6rem, 2.3vw, 2.3rem); /* Cực kỳ thoáng đãng, không bị bóp hẹp */
   font-weight: 700;
@@ -268,13 +263,13 @@
   margin: 0;
 }
 
-.pp--amdang-typhoon .pp-body-at-concept {
+.pp--adt .pp-body-adt-concept {
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
 }
 
-.pp--amdang-typhoon .pp-paragraph-at-concept {
+.pp--adt .pp-paragraph-adt-concept {
   font-family: var(--font-body), sans-serif;
   font-size: clamp(0.95rem, 1.05vw, 1.05rem);
   line-height: 1.85;
@@ -284,7 +279,7 @@
 }
 
 /* Dropcap cổ điển Thái Lan */
-.pp--amdang-typhoon .pp-paragraph-at-concept--dropcap::first-letter {
+.pp--adt .pp-paragraph-adt-concept--dropcap::first-letter {
   font-family: var(--font-display), serif;
   font-size: 3.25rem;
   font-weight: 700;
@@ -297,7 +292,7 @@
 }
 
 /* ROYAL GOLD SEAL STATEMENT QUOTE CARD */
-.pp--amdang-typhoon .pp-quote-at-concept {
+.pp--adt .pp-quote-adt-concept {
   position: relative;
   padding: 2rem 2.25rem;
   background: linear-gradient(135deg, rgba(212, 175, 55, 0.04) 0%, transparent 100%);
@@ -312,7 +307,7 @@
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
 }
 
-.pp--amdang-typhoon .pp-quote-seal-decorator {
+.pp--adt .pp-quote-seal-decorator {
   position: absolute;
   top: -0.5rem;
   left: 1.25rem;
@@ -324,7 +319,7 @@
   pointer-events: none;
 }
 
-.pp--amdang-typhoon .pp-quote-at-concept p {
+.pp--adt .pp-quote-adt-concept p {
   font-family: var(--font-serif), Georgia, serif;
   font-size: clamp(0.95rem, 1.05vw, 1.1rem);
   line-height: 1.8;
@@ -335,7 +330,7 @@
   z-index: 2;
 }
 
-.pp--amdang-typhoon .pp-quote-author-at-concept {
+.pp--adt .pp-quote-author-adt-concept {
   display: flex;
   align-items: center;
   gap: 0.75rem;
@@ -350,7 +345,7 @@
   z-index: 2;
 }
 
-.pp--amdang-typhoon .pp-quote-line {
+.pp--adt .pp-quote-line {
   display: inline-block;
   width: 20px;
   height: 1px;
@@ -359,13 +354,13 @@
 }
 
 /* HIGH-END OFFSET DOUBLE FRAME & COLLAGE MEDIA */
-.pp--amdang-typhoon .pp-media-at-concept {
+.pp--adt .pp-media-adt-concept {
   position: relative;
   padding: 1.5rem;
   width: 100%;
 }
 
-.pp--amdang-typhoon .pp-frame-at-concept {
+.pp--adt .pp-frame-adt-concept {
   position: absolute;
   top: 0;
   left: 0;
@@ -379,24 +374,24 @@
   transition: transform 0.7s var(--ease-spring), border-color 0.7s var(--ease-spring);
 }
 
-.pp--amdang-typhoon .sgh-concept-collage-row--reverse .pp-frame-at-concept {
+.pp--adt .sgh-concept-collage-row--reverse .pp-frame-adt-concept {
   transform: translate(-2.5rem, 2.5rem);
 }
 
-.pp--amdang-typhoon .pp-frame-corner {
+.pp--adt .pp-frame-corner {
   position: absolute;
   width: 20px;
   height: 20px;
   border: 2px solid var(--gold);
   pointer-events: none;
 }
-.pp--amdang-typhoon .pp-frame-corner--tl { top: -2px; left: -2px; border-right: none; border-bottom: none; }
-.pp--amdang-typhoon .pp-frame-corner--br { bottom: -2px; right: -2px; border-left: none; border-top: none; }
-.pp--amdang-typhoon .pp-frame-corner--tr { top: -2px; right: -2px; border-left: none; border-bottom: none; }
-.pp--amdang-typhoon .pp-frame-corner--bl { bottom: -2px; left: -2px; border-right: none; border-top: none; }
+.pp--adt .pp-frame-corner--tl { top: -2px; left: -2px; border-right: none; border-bottom: none; }
+.pp--adt .pp-frame-corner--br { bottom: -2px; right: -2px; border-left: none; border-top: none; }
+.pp--adt .pp-frame-corner--tr { top: -2px; right: -2px; border-left: none; border-bottom: none; }
+.pp--adt .pp-frame-corner--bl { bottom: -2px; left: -2px; border-right: none; border-top: none; }
 
 /* Thẻ kim loại đính chéo ở góc ảnh */
-.pp--amdang-typhoon .pp-media-tag {
+.pp--adt .pp-media-tag {
   position: absolute;
   top: 2.75rem;
   right: 2.75rem;
@@ -411,12 +406,12 @@
   box-shadow: 0 4px 15px rgba(0,0,0,0.5);
   pointer-events: none;
 }
-.pp--amdang-typhoon .sgh-concept-collage-row--reverse .pp-media-tag {
+.pp--adt .sgh-concept-collage-row--reverse .pp-media-tag {
   right: auto;
   left: 2.75rem;
 }
 
-.pp--amdang-typhoon .pp-media-tag-text {
+.pp--adt .pp-media-tag-text {
   font-family: var(--font-display), sans-serif;
   font-size: 0.6rem;
   font-weight: 700;
@@ -424,7 +419,7 @@
   color: var(--gold);
 }
 
-.pp--amdang-typhoon .pp-media-tag-dot {
+.pp--adt .pp-media-tag-dot {
   width: 5px;
   height: 5px;
   background: var(--gold);
@@ -433,7 +428,7 @@
   display: inline-block;
 }
 
-.pp--amdang-typhoon .pp-wrapper-at-concept {
+.pp--adt .pp-wrapper-adt-concept {
   position: relative;
   z-index: 3;
   border-radius: 20px;
@@ -450,7 +445,7 @@
     box-shadow 0.7s var(--ease-spring);
 }
 
-.pp--amdang-typhoon .pp-wrapper-at-concept img {
+.pp--adt .pp-wrapper-adt-concept img {
   display: block;
   width: 100%;
   height: 100%;
@@ -459,7 +454,7 @@
   transition: filter 0.7s var(--ease-spring), transform 0.7s var(--ease-spring);
 }
 
-.pp--amdang-typhoon .pp-media-overlay-at-concept {
+.pp--adt .pp-media-overlay-adt-concept {
   position: absolute;
   top: 0;
   left: 0;
@@ -471,16 +466,16 @@
 }
 
 /* Hover effects */
-.pp--amdang-typhoon .pp-media-at-concept:hover .pp-frame-at-concept {
+.pp--adt .pp-media-adt-concept:hover .pp-frame-adt-concept {
   transform: translate(1.25rem, 1.25rem);
   border-color: rgba(212, 175, 55, 0.6);
 }
 
-.pp--amdang-typhoon .sgh-concept-collage-row--reverse .pp-media-at-concept:hover .pp-frame-at-concept {
+.pp--adt .sgh-concept-collage-row--reverse .pp-media-adt-concept:hover .pp-frame-adt-concept {
   transform: translate(-1.25rem, 1.25rem);
 }
 
-.pp--amdang-typhoon .pp-media-at-concept:hover .pp-wrapper-at-concept {
+.pp--adt .pp-media-adt-concept:hover .pp-wrapper-adt-concept {
   transform: translate(-0.5rem, -0.5rem);
   border-color: color-mix(in srgb, var(--gold) 45%, transparent);
   box-shadow: 
@@ -488,32 +483,35 @@
     0 15px 40px rgba(212, 175, 55, 0.18);
 }
 
-.pp--amdang-typhoon .sgh-concept-collage-row--reverse .pp-media-at-concept:hover .pp-wrapper-at-concept {
+.pp--adt .sgh-concept-collage-row--reverse .pp-media-adt-concept:hover .pp-wrapper-adt-concept {
   transform: translate(0.5rem, -0.5rem);
 }
 
-.pp--amdang-typhoon .pp-media-at-concept:hover .pp-wrapper-at-concept img {
+.pp--adt .pp-media-adt-concept:hover .pp-wrapper-adt-concept img {
   filter: grayscale(0%) contrast(1.05) brightness(0.98);
   transform: scale(1.04);
 }
 
 @media (max-width: 1023px) {
-  .pp--amdang-typhoon .sgh-concept-collage-row {
+  .pp--adt .sgh-concept-collage-row {
     gap: 2.5rem;
   }
-  .pp--amdang-typhoon .pp-media-at-concept {
+  .pp--adt .pp-media-adt-concept {
     padding: 1rem 1rem 1.5rem 1rem;
   }
-  .pp--amdang-typhoon .pp-frame-at-concept,
-  .pp--amdang-typhoon .pp-media-tag,
-  .pp--amdang-typhoon .pp-concept-watermark,
-  .pp--amdang-typhoon .pp-concept-rail-line {
+  .pp--adt .pp-frame-adt-concept,
+  .pp--adt .pp-media-tag,
+  .pp--adt .pp-concept-watermark,
+  .pp--adt .pp-concept-rail-line {
     display: none;
   }
-  .pp--amdang-typhoon .pp-wrapper-at-concept {
+  .pp--adt .pp-wrapper-adt-concept {
     width: 100%;
     transform: none !important;
   }
 }
+
+
+
 
 

@@ -14,35 +14,43 @@
     overflow: hidden;
     isolation: isolate;
     color: var(--bc);
+    clip-path: inset(0 0 0 0); /* 🌐 Tạo mặt nạ vùng cắt cố định */
 
-    /* Aspect-ratio cho desktop (image hiển thị trọn vẹn không cắt awkward) */
-    min-height: 65vh;
-    max-height: 880px;
-    padding: 7rem 1.5rem;
+    /* Aspect-ratio cho desktop */
+    min-height: 75vh;
+    max-height: 980px;
+    padding: 9rem 1.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
+}
 
-    background-color: var(--b1);
+/* Thẻ con gánh nền Parallax Fixed siêu mượt */
+.sh-consult-cta__bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-    /* Mobile fallback (iOS Safari + Android Chrome lag với fixed) */
-    background-attachment: scroll;
+    z-index: -2;
+    pointer-events: none;
+    will-change: transform;
 }
 
 @media (min-width: 768px) {
     .sh-consult-cta {
-        min-height: 75vh;
-        padding: 9rem 2rem;
+        min-height: 85vh;
+        padding: 11rem 2rem;
     }
 }
 
-@media (min-width: 1024px) and (hover: hover) {
+@media (min-width: 1024px) {
     .sh-consult-cta {
-        /* True parallax — chỉ activate trên desktop có chuột */
-        background-attachment: fixed;
-        min-height: 80vh;
+        min-height: 90vh;
+        padding: 13rem 2rem;
     }
 }
 
@@ -53,7 +61,8 @@
 .sh-consult-cta__overlay {
     position: absolute;
     inset: 0;
-    z-index: 1;
+    z-index: -1; /* Đè lên background (-2) nhưng dưới nội dung (2) */
+    pointer-events: none;
     background:
         radial-gradient(ellipse at 50% 50%,
             color-mix(in srgb, var(--b1) 35%, transparent) 0%,
@@ -63,7 +72,6 @@
             color-mix(in srgb, var(--b1) 45%, transparent) 0%,
             color-mix(in srgb, var(--b1) 30%, transparent) 50%,
             color-mix(in srgb, var(--b1) 75%, transparent) 100%);
-    pointer-events: none;
 }
 
 /* Ambient gold glow — top-left, low-key cinematic accent */
@@ -206,8 +214,8 @@
 /* Mobile refinements */
 @media (max-width: 640px) {
     .sh-consult-cta {
-        min-height: 60vh;
-        padding: 5rem 1.25rem;
+        min-height: 70vh;
+        padding: 7rem 1.25rem;
     }
     .sh-consult-cta__inner { gap: 1.25rem; }
     .sh-consult-cta__btn {

@@ -1,0 +1,323 @@
+/**
+ * Project page-template — little-bear-thao-dien (layout only).
+ * @package SaigonHoreca
+ */
+
+body.page-template-page-project-little-bear-thao-dien {
+  background: var(--b1);
+  color: var(--bc);
+}
+
+/* Style định vị và animation cho các họa tiết SVG chạy ngầm */
+.pp-lb-compass-decor {
+  position: absolute;
+  top: 15%;
+  right: -5%;
+  width: clamp(180px, 20vw, 280px);
+  height: clamp(180px, 20vw, 280px);
+  pointer-events: none;
+  z-index: 0;
+  animation: lb-spin 45s linear infinite;
+  opacity: 0.8;
+}
+
+.pp-lb-concept-svg-decor {
+  position: absolute;
+  top: 10%;
+  left: -5%;
+  width: clamp(160px, 18vw, 250px);
+  height: clamp(160px, 18vw, 250px);
+  pointer-events: none;
+  z-index: 0;
+  animation: lb-spin-reverse 50s linear infinite;
+  opacity: 0.8;
+}
+
+.pp-lb-specs-blueprint {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.75;
+}
+
+.pp-lb-partnership-svg-decor {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(80vw, 800px);
+  height: min(80vw, 800px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.8;
+}
+
+@keyframes lb-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes lb-spin-reverse {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   HIỆU ỨNG CUỘN TRANG (SCROLL REVEAL) - TỰ VIẾT KHÔNG DÙNG AOS
+   ───────────────────────────────────────────────────────────── */
+
+/* Trạng thái mặc định: Ẩn và dịch chuyển nhẹ xuống dưới */
+.pp-intro-lb .pp-intro-lb__content,
+.pp-intro-lb .pp-intro-lb__rail,
+.pp-intro-lb .pp-intro-lb__gallery-item,
+.pp-concept-lb-sec .pp-concept-lb__media-col,
+.pp-concept-lb-sec .pp-concept-lb__text-col,
+.pp-specs-lb .pp-specs-lb__media-col,
+.pp-specs-lb .pp-specs-card-lb,
+.pp-section-bg-lb .pp-partnership-lb__header,
+.pp-section-bg-lb .pp-partnership-card-lb,
+.pp-gallery-lb-sec .pp-gallery-lb__text-col,
+.pp-gallery-lb-sec .pp-gallery-lb__media-col,
+.pp-gallery-lb-sec .pp-gallery-lb__footer {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s var(--ease-spring), transform 0.8s var(--ease-spring);
+}
+
+/* Hiệu ứng trượt ngang cho phần Concept & Specs */
+.pp-concept-lb-sec .pp-concept-lb__media-col {
+  transform: translateX(-40px) translateY(0);
+}
+.pp-concept-lb-sec .pp-concept-lb__text-col {
+  transform: translateX(40px) translateY(0);
+}
+
+.pp-specs-lb .pp-specs-lb__media-col {
+  transform: translateX(-40px) translateY(0);
+}
+.pp-specs-lb .pp-specs-card-lb {
+  transform: translateX(40px) translateY(0);
+}
+
+/* Trạng thái kích hoạt: Khi section có class is-visible */
+
+/* Intro */
+.pp-intro-lb.is-visible .pp-intro-lb__content {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.1s;
+}
+.pp-intro-lb.is-visible .pp-intro-lb__rail {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.28s;
+}
+.pp-intro-lb.is-visible .pp-intro-lb__gallery-item:nth-child(2) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.2s;
+}
+.pp-intro-lb.is-visible .pp-intro-lb__gallery-item:nth-child(3) {
+  opacity: 1;
+  transform: translateY(-3rem); /* Giữ nguyên staggered */
+  transition-delay: 0.35s;
+}
+.pp-intro-lb.is-visible .pp-intro-lb__gallery-item:nth-child(4) {
+  opacity: 1;
+  transform: translateY(3rem); /* Giữ nguyên staggered */
+  transition-delay: 0.5s;
+}
+.pp-intro-lb.is-visible .pp-intro-lb__gallery-item:nth-child(5) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.65s;
+}
+
+/* Concept */
+.pp-concept-lb-sec.is-visible .pp-concept-lb__media-col,
+.pp-concept-lb-sec.is-visible .pp-concept-lb__text-col {
+  opacity: 1;
+  transform: translateX(0) translateY(0);
+}
+.pp-concept-lb-sec.is-visible .pp-concept-lb__media-col {
+  transition-delay: 0.1s;
+}
+.pp-concept-lb-sec.is-visible .pp-concept-lb__text-col {
+  transition-delay: 0.3s;
+}
+
+/* Specs */
+.pp-specs-lb.is-visible .pp-specs-lb__media-col,
+.pp-specs-lb.is-visible .pp-specs-card-lb {
+  opacity: 1;
+  transform: translateX(0) translateY(0);
+}
+.pp-specs-lb.is-visible .pp-specs-lb__media-col {
+  transition-delay: 0.15s;
+}
+.pp-specs-lb.is-visible .pp-specs-card-lb {
+  transition-delay: 0.3s;
+}
+
+/* Partnership */
+.pp-section-bg-lb.is-visible .pp-partnership-lb__header {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.1s;
+}
+.pp-section-bg-lb.is-visible .pp-partnership-card-lb:nth-of-type(1) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.25s;
+}
+.pp-section-bg-lb.is-visible .pp-partnership-card-lb:nth-of-type(2) {
+  opacity: 1;
+  transform: translateY(-0.75rem); /* Giữ Featured Card */
+  transition-delay: 0.4s;
+}
+.pp-section-bg-lb.is-visible .pp-partnership-card-lb:nth-of-type(3) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.55s;
+}
+
+/* Gallery */
+.pp-gallery-lb-sec.is-visible .pp-gallery-lb__text-col {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.1s;
+}
+.pp-gallery-lb-sec.is-visible .pp-gallery-lb__media-col {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.3s;
+}
+.pp-gallery-lb-sec.is-visible .pp-gallery-lb__footer {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.5s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pp-intro-lb .pp-intro-lb__content,
+  .pp-intro-lb .pp-intro-lb__rail,
+  .pp-intro-lb .pp-intro-lb__gallery-item,
+  .pp-concept-lb-sec .pp-concept-lb__media-col,
+  .pp-concept-lb-sec .pp-concept-lb__text-col,
+  .pp-specs-lb .pp-specs-lb__media-col,
+  .pp-specs-lb .pp-specs-card-lb,
+  .pp-section-bg-lb .pp-partnership-lb__header,
+  .pp-section-bg-lb .pp-partnership-card-lb,
+  .pp-gallery-lb-sec .pp-gallery-lb__text-col,
+  .pp-gallery-lb-sec .pp-gallery-lb__media-col,
+  .pp-gallery-lb-sec .pp-gallery-lb__footer {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+}
+}
+
+/* ─────────────────────────────────────────────────────────────
+   HIỆU ỨNG KHUNG MÂY BỒNG BỀNH BIẾN HÌNH ĐỘNG (DYNAMIC MORPHING CLOUD)
+   ───────────────────────────────────────────────────────────── */
+
+/* Cấu hình chung cho ảnh trong dự án Little Bear Thảo Điền */
+.pp--lbear .pp-image-container-shared img {
+  position: relative;
+  z-index: 2;
+  border-radius: 0 !important;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* Hiệu ứng phóng to nhẹ ảnh khi hover */
+.pp--lbear .pp-image-container-shared:hover img {
+  transform: scale(1.04) !important;
+}
+
+/* CSS cho các path SVG biến hình mượt mà */
+.pp--lbear .lb-cloud-clip-path,
+.pp--lbear .lb-cloud-border-path {
+  transition: d 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* Màu viền mặc định và khi hover của viền mạ vàng */
+.pp--lbear .lb-cloud-border-path {
+  stroke: var(--gold, #d4af37) !important;
+  opacity: 0; /* Ẩn viền mặc định để giao diện sạch sẽ hơn */
+  transition: d 0.8s cubic-bezier(0.16, 1, 0.3, 1), stroke 0.4s ease, opacity 0.4s ease !important;
+}
+
+.pp--lbear .pp-image-container-shared:hover .lb-cloud-border-path {
+  stroke: #ffffff !important; /* Hiện viền trắng lộng lẫy khi hover */
+  opacity: 0.95;
+}
+
+/* Loại bỏ hoàn toàn các lớp viền thô ráp cũ */
+.pp--lbear .pp-image-container-shared::before,
+.pp--lbear .pp-image-container-shared::after {
+  display: none !important;
+}
+
+/* Hiệu ứng mây trôi nhấp nhô nhẹ nhàng tự nhiên (Floating Animation) */
+.pp--lbear .pp-image-container-shared {
+  animation: lb-cloud-float 8s ease-in-out infinite;
+}
+
+/* Gán thời gian chạy (duration) và độ trễ (delay) khác nhau để mây trôi không đồng đều */
+.pp--lbear .pp-intro-lb__gallery-item:nth-child(2) .pp-image-container-shared {
+  animation-duration: 9s;
+  animation-delay: -1s;
+}
+.pp--lbear .pp-intro-lb__gallery-item:nth-child(3) .pp-image-container-shared {
+  animation-duration: 11s;
+  animation-delay: -3s;
+}
+.pp--lbear .pp-intro-lb__gallery-item:nth-child(4) .pp-image-container-shared {
+  animation-duration: 10s;
+  animation-delay: -5s;
+}
+.pp--lbear .pp-intro-lb__gallery-item:nth-child(5) .pp-image-container-shared {
+  animation-duration: 12s;
+  animation-delay: -2s;
+}
+
+.pp--lbear .pp-concept-lb__image-container {
+  animation-duration: 13s;
+  animation-delay: -4s;
+}
+
+.pp--lbear .pp-specs-lb__img-under {
+  animation-duration: 10s;
+  animation-delay: -1.5s;
+}
+.pp--lbear .pp-specs-lb__img-over {
+  animation-duration: 12s;
+  animation-delay: -4.5s;
+}
+
+.pp--lbear .pp-gallery-lb__img-1 {
+  animation-duration: 11s;
+  animation-delay: -2s;
+}
+.pp--lbear .pp-gallery-lb__img-2 {
+  animation-duration: 9.5s;
+  animation-delay: -5.5s;
+}
+
+@keyframes lb-cloud-float {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-6px) rotate(0.2deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+
+

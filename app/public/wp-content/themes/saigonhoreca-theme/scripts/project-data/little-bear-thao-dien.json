@@ -102,28 +102,28 @@
               "type": "image-carousel.default",
               "slides": [
                 {
-                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/Little-bear-04.jpeg",
+                  "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/01/Little-bear-04.jpeg",
                   "srcset": null,
                   "alt": "Little-bear-04",
                   "w": null,
                   "h": null
                 },
                 {
-                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/Little-bear-03.jpeg",
+                  "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/01/Little-bear-03.jpeg",
                   "srcset": null,
                   "alt": "Little-bear-03",
                   "w": null,
                   "h": null
                 },
                 {
-                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/SGH-Little-Bear.jpg",
+                  "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/01/SGH-Little-Bear.jpg",
                   "srcset": null,
                   "alt": "SGH-Little-Bear",
                   "w": null,
                   "h": null
                 },
                 {
-                  "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/SGH-Little-Bear01.jpg",
+                  "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/01/SGH-Little-Bear01.jpg",
                   "srcset": null,
                   "alt": "SGH-Little-Bear01",
                   "w": null,
@@ -186,8 +186,8 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/Little-bear-00.jpeg",
-                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/Little-bear-00.jpeg 1366w, https://saigonhoreca.vn/wp-content/uploads/2024/01/Little-bear-00-768x432.jpeg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/01/Little-bear-00-600x337.jpeg 600w",
+                "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/01/Little-bear-00.jpeg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/01/Little-bear-00.jpeg 1366w, https://saigonhoreca.vn/wp-content/uploads/2024/01/Little-bear-00-768x432.jpeg 768w, https://saigonhoreca.vn/wp-content/uploads/2024/01/Little-bear-00-600x337.jpeg 600w",
                 "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                 "w": "1366",
                 "h": "768"
@@ -211,7 +211,7 @@
       "has_video_bg": false,
       "video_url": null,
       "background_overlay": true,
-      "background_image": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/SGH-Bambino-1.jpg",
+      "background_image": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2023/12/SGH-Bambino-1.jpg",
       "columns": [
         {
           "col_class": "elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-73a09521",
@@ -257,7 +257,7 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/Little-bear-01.jpeg",
+                "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/01/Little-bear-01.jpeg",
                 "srcset": null,
                 "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                 "w": "600",
@@ -353,7 +353,7 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2024/01/Little-bear-02.jpeg",
+                "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2024/01/Little-bear-02.jpeg",
                 "srcset": null,
                 "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                 "w": "600",

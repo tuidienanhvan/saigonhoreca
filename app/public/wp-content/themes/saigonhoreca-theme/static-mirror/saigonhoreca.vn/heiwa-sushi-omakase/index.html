@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Resource Hints -->
+    <link rel="dns-prefetch" href="https://img.youtube.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Favicons & Manifest -->
+    <link rel="icon" type="image/x-icon" href="https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/assets/images/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/assets/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/assets/images/favicon-16x16.png">
+    <link rel="manifest" href="https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/manifest.json">
+    
+    <style id="sgh-critical">*,:before,:after{box-sizing:border-box}html,body{margin:0;padding:0}body{font-family:Be Vietnam Pro,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.5;color:#fff;background:#0a0a0a;-webkit-font-smoothing:antialiased}h1,h2,h3,h4,h5,h6{margin:0;font-weight:700;color:#fff}img,svg,video{display:block;max-width:100%;height:auto}a{color:inherit;text-decoration:none}button{border:0;cursor:pointer;font:inherit;background:transparent}.sh-skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;background:#f5a623;color:#fff;padding:.5rem 1rem;z-index:100}.sh-skip-link:focus{left:16px;top:16px;width:auto;height:auto}.sh-header{position:sticky;top:0;z-index:50;width:100%;background:#000;border-bottom:1px solid rgba(255,255,255,0.06)}.sh-header__bar{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;padding:.75rem 1.25rem;min-height:76px;color:#fff}.sh-header__actions{display:flex;gap:.75rem;align-items:center}.sh-nav{display:none;position:relative;z-index:10;justify-content:center;align-items:center;overflow:visible;max-width:100%}@media(min-width:1024px){.sh-nav{display:flex}}.sh-nav__list{display:flex;flex-wrap:nowrap;justify-content:center;align-items:center;gap:.25rem;margin:0;padding:0;list-style:none}@media(min-width:1024px){.sh-nav__list{gap:.5rem}}@media(min-width:1280px){.sh-nav__list{gap:1rem}}.sh-nav-item{display:flex;align-items:center;height:100%;position:relative}.sh-nav-item__link{display:inline-flex;align-items:center;gap:.375rem;padding:1.5rem .875rem;font-size:clamp(11px,.9vw,13px);font-weight:700;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;color:rgba(255,255,255,0.88);text-decoration:none}.sh-nav-item__chevron{display:inline-flex;margin-left:.25rem}.sh-nav-item__chevron-icon{display:block;width:.75rem;height:.75rem;opacity:.7}.sh-hero{position:relative;width:100%;aspect-ratio:16/9;background:#000;overflow:hidden}.sh-hero__slider{position:relative;width:100%;height:100%;background:#000}.sh-hero__slides{position:relative;width:100%;height:100%}.carousel-slide{position:absolute;inset:0;width:100%;height:100%;display:none;background:#000}.carousel-slide.active{display:block;z-index:20;opacity:1}.sh-hero__bg-img,.carousel-slide .slide-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;background:#000}.sh-hero__overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(0,0,0,0.55) 0%,rgba(0,0,0,0.30) 40%,rgba(0,0,0,0.15) 100%);pointer-events:none}.sgh-cv-auto{content-visibility:auto;contain-intrinsic-size:auto 600px}#sh-hero-slider .carousel-slide .slide-bg,#sh-hero-slider .carousel-slide .sh-hero__bg-img,.sh-hero__slider .carousel-slide .slide-bg,.sh-hero__slider .carousel-slide .sh-hero__bg-img{animation:none!important;transform:none!important}.sh-hero__nav{position:absolute;top:50%;transform:translateY(-50%);z-index:20;background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.3);color:#fff;width:2.75rem;height:2.75rem;border-radius:9999px;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:.8}.sh-hero__nav--prev{left:1rem}.sh-hero__nav--next{right:1rem}@media(min-width:768px){.sh-hero__nav{width:3.5rem;height:3.5rem}.sh-hero__nav--prev{left:2rem}.sh-hero__nav--next{right:2rem}}.sh-hero__dots{position:absolute;bottom:2rem;right:2rem;z-index:20;display:flex;gap:.5rem}.sh-hero__dot,.carousel-dot{width:.5rem;height:.5rem;padding:0;border:none;border-radius:9999px;background:rgba(255,255,255,0.4);cursor:pointer}.sh-hero__dot.active,.carousel-dot.active{width:2rem;background:#f5a623}
+/* Per-route critical CSS — Saigon Horeca.
+ *
+ * Inlined by critical-css.php (concatenated after critical.css). Covers
+ * above-fold styles for routes where the route-bundle CSS round-trip
+ * would otherwise gate the LCP paint.
+ */
+
+/* ── /du-an/ archive hero — kill 1.2 s opacity-fade-in for LCP slide ──
+ *
+ * The bg-stack has 6 absolute-positioned <div> slides; slide 0 has
+ * `.is-active` server-side but the route bundle animates opacity
+ * 0 → 1 over 1.2 s. Lighthouse Mobile baseline: P=75, LCP=7.9 s with
+ * 88 % render-delay because LCP element waits for opacity:1.
+ *
+ * Inlining paints the active slide at opacity:1 immediately on first
+ * HTML parse — no waiting for theme-archive-project.css to arrive.
+ * Carousel JS still toggles `is-active` to cycle slides; subsequent
+ * transitions still animate after the first paint completes.
+ */
+.sh-archive-hero {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: #000;
+    overflow: hidden;
+}
+.sh-archive-hero__bg-stack {
+    position: absolute;
+    inset: 0;
+}
+.sh-archive-hero__bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+}
+.sh-archive-hero__bg.is-active {
+    opacity: 1;
+}
+
+/* ── /ve-saigon-horeca/ (page-gioi-thieu template) about hero ──
+ * Same opacity-fade trap. Force opacity:1 on first paint. */
+.sh-about-hero {
+    position: relative;
+    width: 100%;
+    min-height: 520px;
+    background: #000;
+    overflow: hidden;
+}
+@media (max-width: 640px) {
+    .sh-about-hero { min-height: 380px; }
+}
+.sh-about-hero__bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 1;
+}
+</style>
+        <title>HEIWA SUSHI OMAKASE &#8211; Saigon Horeca</title>
+<meta name='robots' content='max-image-preview:large' />
+<meta name="description" content="Heiwa Sushi Omakase là điểm đến không thể bỏ qua cho những tín đồ của – Giá tốt, bảo hành chính hãng – Hotline: 0901 304 365">
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//www.googletagmanager.com' />
+<link rel='dns-prefetch' href='//www.google-analytics.com' />
+<link rel='dns-prefetch' href='//zalo.me' />
+<link rel='dns-prefetch' href='//www.facebook.com' />
+<link rel='dns-prefetch' href='//www.youtube.com' />
+<link rel="preload" as="style" href="https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/assets/css/dist/theme-project.css?ver=1780254606">
+    <script>
+    (function(){
+        // Always load tracking — cookie consent is cosmetic only
+        function afterConsent(cb) {
+            try {
+                if (localStorage.getItem('sh_cookies_accepted') === '1') {
+                    cb();
+                    return;
+                }
+            } catch (e) {}
+            window.addEventListener('sh:cookies-accepted', cb, { once: true });
+        }
+        afterConsent(function(){
+                        });
+    })();
+    </script>
+    <style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+
+
+<link rel='stylesheet' id='theme-tokens-css' href='https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/assets/css/dist/theme-project.css?ver=1780254606' media='all' />
+<style id="theme-tokens-inline-css">
+
+        :root {
+            --font-body: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            --font-heading: "Lexend", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            --font-serif: "Lora", Georgia, serif;
+            --ast-global-color-0: #f9c349;
+            --ast-global-color-1: #ffb100;
+            --ast-global-color-2: #000000;
+            --ast-global-color-3: #242525;
+            --ast-global-color-4: #f9fafb;
+            --ast-global-color-5: #ffffff;
+            --ast-global-color-6: #e2e8f0;
+            --ast-global-color-7: #cbd5e1;
+            --ast-global-color-8: #94a3b8;
+            --e-global-color-astglobalcolor0: #f9c349;
+            --e-global-color-astglobalcolor1: #ffb100;
+            --e-global-color-astglobalcolor2: #000000;
+            --e-global-color-astglobalcolor3: #242525;
+            --e-global-color-astglobalcolor4: #f9fafb;
+            --e-global-color-astglobalcolor5: #ffffff;
+            --e-global-color-astglobalcolor6: #e2e8f0;
+            --e-global-color-astglobalcolor7: #cbd5e1;
+            --e-global-color-astglobalcolor8: #94a3b8;
+        }
+        body { font-family: var(--font-body); }
+        h1, h2, h3, h4, h5, h6, .font-sans { font-family: var(--font-heading) !important; }
+        .e-font-icon-svg { display: inline-block; width: 1em; height: 1em; fill: currentColor; }
+
+        /* ROKA FELLA CAPTION & LAYOUT ENHANCEMENTS */
+        .pp-image-container-rf {
+            position: relative !important;
+            overflow: hidden !important;
+        }
+        .pp-image-caption-rf {
+            position: absolute !important;
+            bottom: 0.75rem !important;
+            left: 0.75rem !important;
+            z-index: 5 !important;
+            padding: 0.4rem 0.85rem !important;
+            background: rgba(10, 10, 10, 0.85) !important;
+            border: 1px solid rgba(255, 255, 255, 0.12) !important;
+            border-radius: 6px !important;
+            font-family: var(--font-heading), sans-serif !important;
+            font-size: 0.68rem !important;
+            font-weight: 700 !important;
+            letter-spacing: 0.05em !important;
+            color: var(--gold) !important;
+            backdrop-filter: blur(8px) !important;
+            -webkit-backdrop-filter: blur(8px) !important;
+            pointer-events: none !important;
+            opacity: 0.85 !important;
+            transition: opacity 0.3s ease, transform 0.3s ease !important;
+            width: auto !important;
+            max-width: calc(100% - 1.5rem) !important;
+            text-align: left !important;
+            display: inline-block !important;
+            border-top: none !important;
+        }
+        .pp-image-container-rf:hover .pp-image-caption-rf {
+            opacity: 1 !important;
+            transform: translateY(-2px) !important;
+        }
+        .pp-image-container-rf img {
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        }
+        .pp-image-container-rf:hover img {
+            transform: scale(1.04) !important;
+            filter: grayscale(0%) contrast(1.05) brightness(1.02) !important;
+        }
+        /* Premium Cards styling */
+        .rkf-concept__glass-card,
+        .rkf-specs__glass-card {
+            background: linear-gradient(135deg, rgba(12, 14, 20, 0.92) 0%, rgba(6, 7, 10, 0.97) 100%) !important;
+            border: 1px solid rgba(245, 166, 35, 0.18) !important;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), inset 0 0 35px rgba(245, 166, 35, 0.04) !important;
+        }
+        .rkf-concept__glass-card:hover,
+        .rkf-specs__glass-card:hover {
+            border-color: rgba(245, 166, 35, 0.45) !important;
+            box-shadow: 0 35px 70px rgba(0, 0, 0, 0.92), 0 0 35px rgba(245, 166, 35, 0.1) !important;
+        }
+        .rkf-partnership__glass-card,
+        .rkf-related__glass-card {
+            background: linear-gradient(135deg, rgba(12, 14, 20, 0.92) 0%, rgba(6, 7, 10, 0.97) 100%) !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.85) !important;
+        }
+        .rkf-partnership__glass-card:hover,
+        .rkf-related__glass-card:hover {
+            border-color: rgba(255, 255, 255, 0.15) !important;
+            box-shadow: 0 35px 70px rgba(0, 0, 0, 0.95) !important;
+        }
+        /* Staggered floaters adjustment */
+        .rkf-partnership__image-container--floating {
+            box-shadow: -20px 20px 50px rgba(0, 0, 0, 0.9), 0 0 30px rgba(245, 166, 35, 0.15) !important;
+            transform: rotate(3deg) translateY(0) !important;
+        }
+        .rkf-partnership__side:hover .rkf-partnership__image-container--floating {
+            transform: scale(1.04) rotate(0deg) translateY(-10px) !important;
+        }
+    
+/*# sourceURL=theme-tokens-inline-css */
+</style>
+<link rel='preload' as='style' onload="this.onload=null;this.rel='stylesheet'" id='google-fonts-sgh-css' href='https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&#038;family=Lexend:wght@500;700&#038;family=Lora:ital,wght@0,400;0,500;0,700;1,400;1,700&#038;display=swap' media='all' />
+<link rel="https://api.w.org/" href="https://saigonhoreca.local/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://saigonhoreca.local/wp-json/wp/v2/project/689" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://saigonhoreca.local/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress 7.0" />
+<link rel="canonical" href="https://saigonhoreca.local/du-an/heiwa-sushi-omakase/" />
+<link rel='shortlink' href='https://saigonhoreca.local/?p=689' />
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","@id":"https://saigonhoreca.local/#organization","name":"SAIGON HORECA","legalName":"CÔNG TY TNHH SÀI GÒN HORECA","url":"https://saigonhoreca.local/","description":"Saigon Horeca cung cấp đa dạng các sản phẩm thiết bị bếp công nghiệp và thiết bị quầy bar phục vụ cho khách hàng trong lĩnh vực F&B, bao gồm tư vấn thiết kế, thi công lắp đặt, cung cấp thiết bị, và tư vấn vận hành kinh doanh.","telephone":"0901 304 365","email":"contact@saigonhoreca.com","address":{"@type":"PostalAddress","streetAddress":"Số 40 Đường Số 6, Khu Dân Cư Melosa Khang Điền, Phường Long Trường, TP. Hồ Chí Minh","addressLocality":"Hồ Chí Minh","addressRegion":"Hồ Chí Minh","addressCountry":"VN"},"logo":{"@type":"ImageObject","url":"https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/assets/images/logo.png"},"image":"https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/assets/images/logo.png","sameAs":["https://www.facebook.com/saigonhoreca","https://www.youtube.com/@saigonhoreca","https://zalo.me/0901304365"],"contactPoint":[{"@type":"ContactPoint","telephone":"0901 304 365","contactType":"sales","areaServed":"VN","availableLanguage":["Vietnamese","English"]},{"@type":"ContactPoint","telephone":"0909 040 920","contactType":"customer support","areaServed":"VN"}]}</script>
+
+<link rel="alternate" hreflang="vi" href="https://saigonhoreca.vn/du-an/heiwa-sushi-omakase/">
+<link rel="alternate" hreflang="en" href="https://saigonhoreca.com/projects/heiwa-sushi-omakase/">
+<link rel="alternate" hreflang="x-default" href="https://saigonhoreca.vn/du-an/heiwa-sushi-omakase/">
+
+    <!-- SEO Fallback: OpenGraph only (meta description is handled by
+         inc/core/seo-meta-description.php to guarantee 120-155 chars). -->
+            <meta property="og:title" content="HEIWA SUSHI OMAKASE">
+        <meta property="og:description" content="Heiwa Sushi Omakase là điểm đến không thể bỏ qua cho những tín đồ của – Giá tốt, bảo hành chính hãng – Hotline: 0901 304 365">
+        <meta property="og:url" content="https://saigonhoreca.local/du-an/heiwa-sushi-omakase/">
+        <meta property="og:type" content="website">
+        <meta property="og:image" content="images/SGH-Heiwasushi-1.webp">
+        <meta property="og:site_name" content="Saigon Horeca">
+    
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Dark mode & Lighthouse Optimization: apply BEFORE paint to prevent flash & bypass animation delays -->
+    <script>
+    (function(){
+        // 1. Dark mode
+        var d = null;
+        try { d = localStorage.getItem('sh-dark'); } catch (e) {}
+        if (d === 'true') document.documentElement.classList.add('dark');
+    })();
+    </script>
+        </head>
+<body>
+<main id="primary" class="pp" tabindex="-1">
+    <section class="pp-hero-hwa">
+  <div class="pp-hero-hwa__media" style="background-image:url('images/SGH-Heiwasushi-1.webp');"></div>
+  <div class="pp-hero-hwa__overlay" aria-hidden="true"></div>
+  <div class="pp-hero-hwa__content">
+    <span class="pp-hero-hwa__subhead">// PROJECT PILLAR • OMAKASE EXPERTISE</span>
+    <h1 class="pp-hero-hwa__title">HEIWA SUSHI OMAKASE</h1>
+    <p class="pp-hero-hwa__subtitle">Kiến tạo không gian ẩm thực Nhật Bản đích thực, nơi tinh hoa ẩm thực truyền thống hội tụ cùng giải pháp vận hành bếp công nghiệp đỉnh cao.</p>
+  </div>
+  
+  <!-- Scroll indicator thanh mảnh -->
+  <div class="pp-hero-hwa__scroll" aria-hidden="true">
+    <span class="pp-hero-hwa__scroll-line"></span>
+  </div>
+</section>
+
+<section class="sgh-hwa-intro-section">
+  <div class="sgh-hwa-intro-container">
+    <div class="sgh-hwa-intro-row">
+      
+      <!-- CỘT TRÁI: TEXT & CONTEXT -->
+      <div class="sgh-hwa-intro-col sgh-hwa-intro-col--text">
+        <div class="sgh-hwa-intro-badge">
+          <span class="sgh-hwa-intro-badge__accent">//</span>
+          BỐI CẢNH DỰ ÁN        </div>
+        
+        <h2 class="sgh-hwa-intro-title">
+          Không Gian Nghệ Thuật Omakase Đích Thực        </h2>
+        
+        <blockquote class="sgh-hwa-intro-quote">
+          “Nơi sự tĩnh lặng của kiến trúc Zen Nhật Bản gặp gỡ sự cầu kỳ của nghệ thuật ẩm thực Omakase đỉnh cao.”        </blockquote>
+        
+        <div class="sgh-hwa-intro-body">
+          <p class="sgh-hwa-intro-paragraph">
+            Heiwa Sushi Omakase (Số 2 Phan Văn Đáng, Quận 2, HCMC) là điểm đến đỉnh cao cho những tín đồ sành ăn yêu thích ẩm thực Nhật Bản đích thực tại Sài Gòn. Không gian nội thất của Heiwa được thiết kế tỉ mỉ, kiến tạo sự cân bằng hoàn mỹ giữa văn hóa truyền thống Wabi-Sabi và nhịp thở hiện đại đương đại.          </p>
+          <p class="sgh-hwa-intro-paragraph">
+            Được chủ đầu tư tin cậy lựa chọn là đơn vị thiết kế và thi công trọn gói hệ thống bếp biểu diễn cao cấp, Saigon Horeca đã quy hoạch một gian bếp mở thông minh. Nơi đây không chỉ tối ưu hóa 100% công năng vận hành khắt khe của Omakase mà còn tạo ra cầu nối tương tác trực tiếp, đánh thức trọn vẹn thị giác và cảm xúc của thực khách khi chiêm ngưỡng đầu bếp chế biến các món sashimi, sushi tinh xảo.          </p>
+        </div>
+      </div>
+      
+      <!-- CỘT PHẢI: 3D PERSPECTIVE SAFARI MOCKUP -->
+      <div class="sgh-hwa-intro-col sgh-hwa-intro-col--media">
+        <div class="sgh-hwa-intro-mockup-wrapper">
+          <div class="sgh-hwa-intro-ambient-glow" aria-hidden="true"></div>
+          
+          <div class="sgh-hwa-intro-browser">
+            <div class="sgh-hwa-intro-browser__header">
+              <div class="sgh-hwa-intro-browser__buttons">
+                <span class="sgh-hwa-intro-browser__btn sgh-hwa-intro-browser__btn--red"></span>
+                <span class="sgh-hwa-intro-browser__btn sgh-hwa-intro-browser__btn--yellow"></span>
+                <span class="sgh-hwa-intro-browser__btn sgh-hwa-intro-browser__btn--green"></span>
+              </div>
+              <div class="sgh-hwa-intro-browser__address" aria-hidden="true">
+                <span class="sgh-hwa-intro-browser__lock">🔒</span> heiwasushi.vn/omakase-gallery
+              </div>
+            </div>
+            
+            <div class="sgh-hwa-intro-browser__viewport">
+              <img src="images/heiwasushi-04.jpg" alt="Không gian bếp biểu diễn tương tác tại Heiwa Sushi - Saigon Horeca" loading="lazy" decoding="async" width="1366" height="768">
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<section class="sgh-hwa-concept-section">
+  <div class="sgh-hwa-concept-container">
+    <div class="sgh-hwa-concept-grid">
+      
+      <!-- Cột trái: Offset Frame Media Showcase (Quầy Bar) -->
+      <div class="sgh-hwa-concept-media">
+        <div class="sgh-hwa-concept-media__frame" aria-hidden="true"></div>
+        <div class="sgh-hwa-concept-media__wrapper">
+          <img src="images/heiwasushi3-1.jpg" alt="Bầu không khí quầy bar tinh tế và sang trọng tại Heiwa Sushi - Saigon Horeca" loading="lazy" decoding="async" width="940" height="788">
+        </div>
+      </div>
+
+      <!-- Cột phải: Thuyết minh & Typography -->
+      <div class="sgh-hwa-concept-text">
+        <div class="sgh-hwa-concept-badge">
+          <span class="sgh-hwa-concept-badge__accent">//</span> KHÔNG GIAN TRẢI NGHIỆM        </div>
+        
+        <h3 class="sgh-hwa-concept-title">
+          Bầu Không Khí Quầy Bar Tinh Tế &amp; Sang Trọng        </h3>
+        
+        <div class="sgh-hwa-concept-body">
+          <p class="sgh-hwa-concept-paragraph">
+            Quầy bar của Heiwa Sushi được quy hoạch tinh tế ngay cạnh gian bếp mở biểu diễn, mang đến một không gian ẩm thực sang trọng, thanh tịnh nhưng vô cùng gần gũi. Đây là nơi thực khách có thể hoàn toàn thả lỏng tâm trí, nhâm nhi những ly sake thượng hạng và thong thả thưởng thức từng món sushi tươi ngon.          </p>
+          <p class="sgh-hwa-concept-paragraph">
+            Quầy bar được chế tác thủ công hoàn toàn từ các loại gỗ tự nhiên cao cấp với tone màu trầm ấm. Kết hợp cùng mặt kính cường lực siêu trong suốt chạy dọc viền và ánh đèn vàng hắt dịu nhẹ, tạo nên nhịp điệu tĩnh lặng của nghệ thuật Wabi-Sabi.          </p>
+          <p class="sgh-hwa-concept-paragraph">
+            Đội ngũ thiết kế nội thất của Saigon Horeca đã khéo léo tuyển chọn vật liệu cao cấp và phối hợp tay nghề thủ công điêu luyện để mang đến một quầy bar không chỉ duy mỹ về mặt nghệ thuật mà còn đạt tiêu chuẩn công thái học tiện nghi tối đa cho thực khách.          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="pp-section-bg-hwa">
+  <!-- Thẻ con gánh hiệu ứng Parallax Clip-Path siêu mượt -->
+  <div class="pp-section-bg-hwa__bg" style="background-image:url('images/Heiwa-Sushi-00002.jpg');"></div>
+  <div class="pp-section-bg-hwa__overlay" aria-hidden="true"></div>
+  <div class="pp-section-bg-hwa__content">
+    <span class="pp-text-hwa__divider pp-text-hwa__divider--center" aria-hidden="true"></span>
+    <h2 class="pp-text-hwa__title">Trải Nghiệm Ẩm Thực Tương Tác</h2>
+    <div class="pp-text-hwa__body">
+      <p>Tại Heiwa Sushi, sự kết hợp giữa quầy bếp và quầy bar tạo nên một trải nghiệm ẩm thực hài hòa, nơi hương vị và nghệ thuật thẩm mỹ hòa quyện vào nhau.</p>
+      <p>Trái tim của Heiwa Sushi, chính là căn bếp hiện đại và tiện nghi được Saigon Horeca chăm chút tỉ mỉ. Những thiết bị cao cấp như tủ đông Hoshizaki, quầy lạnh bảo quản thực phẩm, máy làm đá, hệ thống giá treo tường và các dụng cụ bằng thép không gỉ đóng vai trò quan trọng trong thành công của nhà hàng. Bên cạnh đó, Heiwa Sushi còn chú trọng đến việc duy trì nhiệt độ và độ ẩm thích hợp trong bếp, nhằm đảm bảo nguyên liệu luôn trong trạng thái tốt nhất.</p>
+      <p>Sự đầu tư bài bản vào hệ thống bếp không chỉ góp phần vào chất lượng món ăn mà còn tạo nên môi trường làm việc an toàn, thoải mái cho các đầu bếp. Điều này gián tiếp mang đến trải nghiệm ẩm thực tuyệt vời cho thực khách.</p>
+    </div>
+  </div>
+</section>
+<section class="sgh-hwa-specs-section">
+  <div class="sgh-hwa-specs-container">
+    <div class="sgh-hwa-specs-grid">
+      
+      <!-- Cột trái: Thuyết minh & Specs Card (Parallel Framer) -->
+      <div class="sgh-hwa-specs-text">
+        <div class="sgh-hwa-specs-badge">
+          <span class="sgh-hwa-specs-badge__accent">//</span> UY TÍN ĐỐI TÁC        </div>
+        
+        <h3 class="sgh-hwa-specs-title">
+          Sự Hợp Tác Giữa Heiwa Sushi &amp; Saigon Horeca        </h3>
+        
+        <div class="sgh-hwa-specs-body">
+          <p class="sgh-hwa-specs-paragraph">
+            Sự hợp tác chặt chẽ giữa Heiwa Sushi và Saigon Horeca là minh chứng rõ ràng cho tầm quan trọng của việc quy hoạch và thiết lập hệ thống bếp chuyên nghiệp trong thành công rực rỡ của một nhà hàng Omakase. Với kinh nghiệm chuyên môn dày dặn, Saigon Horeca đã đồng hành lựa chọn và lắp đặt các dòng thiết bị nhà bếp tốt nhất, kiến tạo nên trải nghiệm trọn vẹn và an tâm tuyệt đối.          </p>
+        </div>
+
+        <!-- Technical Specs Card (Parallel Framer) -->
+        <div class="sgh-hwa-specs-card">
+          <h4 class="sgh-hwa-specs-card__title">Thông số kỹ thuật lắp đặt</h4>
+          <div class="sgh-hwa-specs-card__grid">
+            <div class="sgh-hwa-specs-card__item">
+              <span class="sgh-hwa-specs-card__label">Thiết bị lạnh chính</span>
+              <span class="sgh-hwa-specs-card__value">Hoshizaki Japan</span>
+            </div>
+            <div class="sgh-hwa-specs-card__item">
+              <span class="sgh-hwa-specs-card__label">Hệ thống quầy bar</span>
+              <span class="sgh-hwa-specs-card__value">Gỗ tự nhiên &amp; Kính</span>
+            </div>
+            <div class="sgh-hwa-specs-card__item">
+              <span class="sgh-hwa-specs-card__label">Chất liệu cơ khí</span>
+              <span class="sgh-hwa-specs-card__value">Inox 304 tiêu chuẩn</span>
+            </div>
+            <div class="sgh-hwa-specs-card__item">
+              <span class="sgh-hwa-specs-card__label">Tiêu chuẩn vệ sinh</span>
+              <span class="sgh-hwa-specs-card__value">Omakase Fresh Standard</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cột phải: Offset Frame Showcase -->
+      <div class="sgh-hwa-specs-media">
+        <div class="sgh-hwa-specs-media__frame" aria-hidden="true"></div>
+        <div class="sgh-hwa-specs-media__wrapper">
+          <img src="images/Heiwa-Sushi-00004.jpg" alt="Hệ thống thiết bị bếp inox công nghiệp cao cấp tại Heiwa Sushi - Saigon Horeca" loading="lazy" decoding="async" width="1366" height="768">
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="sgh-hwa-gallery-section">
+  <div class="sgh-hwa-gallery-container">
+    <div class="sgh-hwa-gallery-grid">
+      
+      <!-- Cột trái: Offset Frame Showcase ảnh inox/thiết bị -->
+      <div class="sgh-hwa-gallery-media">
+        <div class="sgh-hwa-gallery-media__frame" aria-hidden="true"></div>
+        <div class="sgh-hwa-gallery-media__wrapper">
+          <img src="images/heiwasushi2-1.jpg" alt="Hệ thống thiết bị tủ đông Hoshizaki và bàn inox cao cấp - Saigon Horeca" loading="lazy" decoding="async" width="1366" height="768">
+        </div>
+      </div>
+
+      <!-- Cột phải: Thuyết minh & Lưới tính năng thiết bị bếp -->
+      <div class="sgh-hwa-gallery-text">
+        <div class="sgh-hwa-gallery-badge">
+          <span class="sgh-hwa-gallery-badge__accent">//</span> KỸ THUẬT VẬN HÀNH        </div>
+        
+        <h3 class="sgh-hwa-gallery-title">
+          Hệ Thống Thiết Bị Hoshizaki &amp; Cơ Khí Inox Cao Cấp        </h3>
+        
+        <div class="sgh-hwa-gallery-body">
+          <p class="sgh-hwa-gallery-paragraph">
+            Trái tim vận hành của bếp Heiwa Sushi nằm ở các giải pháp thiết bị lạnh chất lượng cao từ thương hiệu Hoshizaki Nhật Bản. Tủ đông và tủ mát bảo quản nguyên liệu tươi sống được tính toán vị trí lắp đặt chính xác, tối ưu hóa tối đa lối đi và tầm với của đầu bếp trong giờ cao điểm.          </p>
+          <p class="sgh-hwa-gallery-paragraph">
+            Hệ thống giá treo tường, chậu rửa, bàn inox 304 cao cấp do Saigon Horeca gia công sản xuất riêng cho dự án đều đạt tiêu chuẩn cơ khí hoàn mỹ. Mỗi góc chấn ép, vết hàn khí trơ đều được xử lý mài bóng mịn, triệt tiêu khe hở tích tụ vi khuẩn để đảm bảo tiêu chí Omakase Fresh khắt khe.          </p>
+        </div>
+
+        <!-- Technical Features Grid -->
+        <div class="sgh-hwa-gallery-features">
+          
+          <div class="sgh-hwa-gallery-feature-item">
+            <div class="sgh-hwa-gallery-feature-icon">✦</div>
+            <div class="sgh-hwa-gallery-feature-content">
+              <span class="sgh-hwa-gallery-feature-title">Tủ Lạnh Hoshizaki</span>
+              <span class="sgh-hwa-gallery-feature-desc">Bảo quản hải sản sashimi ở nhiệt độ tối ưu nhất.</span>
+            </div>
+          </div>
+          
+          <div class="sgh-hwa-gallery-feature-item">
+            <div class="sgh-hwa-gallery-feature-icon">✦</div>
+            <div class="sgh-hwa-gallery-feature-content">
+              <span class="sgh-hwa-gallery-feature-title">Inox 304 Chuẩn Sạch</span>
+              <span class="sgh-hwa-gallery-feature-desc">Kháng khuẩn tuyệt đối, chống gỉ sét và dễ vệ sinh.</span>
+            </div>
+          </div>
+
+          <div class="sgh-hwa-gallery-feature-item">
+            <div class="sgh-hwa-gallery-feature-icon">✦</div>
+            <div class="sgh-hwa-gallery-feature-content">
+              <span class="sgh-hwa-gallery-feature-title">Giá Treo Tiện Lợi</span>
+              <span class="sgh-hwa-gallery-feature-desc">Tối ưu hóa không gian, tăng diện tích thao tác thực tế.</span>
+            </div>
+          </div>
+
+          <div class="sgh-hwa-gallery-feature-item">
+            <div class="sgh-hwa-gallery-feature-icon">✦</div>
+            <div class="sgh-hwa-gallery-feature-content">
+              <span class="sgh-hwa-gallery-feature-title">Hệ Chậu Rửa Ergonomics</span>
+              <span class="sgh-hwa-gallery-feature-desc">Thiết kế sâu lòng thông minh ngăn văng nước bẩn ra ngoài.</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="sgh-hwa-related-section">
+  <div class="sgh-hwa-related-container">
+    <div class="sgh-hwa-related-grid">
+      
+      <!-- Cột trái: Thuyết minh quy trình thi công & Quote thiền ngâm -->
+      <div class="sgh-hwa-related-text">
+        <div class="sgh-hwa-related-badge">
+          <span class="sgh-hwa-related-badge__accent">//</span> HOÀN THIỆN THỰC TẾ        </div>
+        
+        <h3 class="sgh-hwa-related-title">
+          Kiến Tạo Chuẩn Xác Từng Chi Tiết Cơ Khí        </h3>
+        
+        <div class="sgh-hwa-related-body">
+          <p class="sgh-hwa-related-paragraph">
+            Tại Heiwa Sushi, sự hoàn mỹ không chỉ xuất hiện trên các đĩa thức ăn tuyệt hảo của người nghệ sĩ Omakase, mà được đảm bảo xuyên suốt từ cốt lõi hạ tầng kỹ thuật. Saigon Horeca cam kết thi công thực tế bám sát 100% bản vẽ kỹ thuật kỹ lưỡng nhất.          </p>
+          <p class="sgh-hwa-related-paragraph">
+            Quy trình lắp ráp thiết bị, căn chỉnh độ phẳng mặt bàn inox, tối ưu hóa các đường đi ống thoát sàn và hệ thống hút mùi đều được giám sát khắt khe bởi các kỹ sư dày dặn kinh nghiệm, mang đến một gian bếp an toàn, hiệu năng vượt trội.          </p>
+        </div>
+
+        <!-- Zen Blockquote Card -->
+        <div class="sgh-hwa-related-quote">
+          <p>
+            “Sự tinh tế không nằm ở những gì hào nhoáng lộ thiên, mà ẩn sâu trong sự hoàn hảo của những chi tiết cơ khí âm thầm nâng bước người đầu bếp sáng tạo nghệ thuật.”          </p>
+          <span class="sgh-hwa-related-quote__author">Đội Ngũ Kỹ Sư Saigon Horeca</span>
+        </div>
+      </div>
+
+      <!-- Cột phải: Staggered Triad Grid (Collage 3 ảnh thi công) -->
+      <div class="sgh-hwa-related-collage">
+        
+        <!-- Ảnh sau cùng bên trái (lên trên) -->
+        <div class="sgh-hwa-collage-item sgh-hwa-collage-item--top">
+          <img src="images/heiwasushi3-1.jpg" alt="Thi công quầy bar gỗ tự nhiên cao cấp tại Heiwa Sushi - Saigon Horeca" loading="lazy" decoding="async" width="800" height="600">
+        </div>
+        
+        <!-- Ảnh chính giữa trung tâm -->
+        <div class="sgh-hwa-collage-item sgh-hwa-collage-item--main">
+          <img src="images/heiwasushi-04.jpg" alt="Hệ thống quầy Omakase hoàn thiện thực tế cực kỳ cao cấp - Saigon Horeca" loading="lazy" decoding="async" width="900" height="650">
+        </div>
+        
+        <!-- Ảnh trên cùng bên phải (xuống dưới) -->
+        <div class="sgh-hwa-collage-item sgh-hwa-collage-item--bottom">
+          <img src="images/Heiwa-Sushi-00004.jpg" alt="Kiểm thử thiết bị bếp inox công nghiệp trước ca vận hành - Saigon Horeca" loading="lazy" decoding="async" width="800" height="600">
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="sgh-hwa-cta-section">
+  <div class="sgh-hwa-cta-container">
+    
+    <!-- High-End Integrated Split CTA Card -->
+    <div class="sgh-hwa-cta-card">
+      
+      <!-- Cột trái: Khối chữ thuyết minh -->
+      <div class="sgh-hwa-cta-content">
+        <div class="sgh-hwa-cta-badge">
+          <span>//</span> ĐỒNG HÀNH PHÁT TRIỂN        </div>
+        
+        <h2 class="sgh-hwa-cta-title">
+          Kiến Tạo Không Gian Bếp Omakase Đẳng Cấp Cho Riêng Bạn        </h2>
+        
+        <p class="sgh-hwa-cta-desc">
+          Bạn đang lên kế hoạch cho một dự án nhà hàng Omakase Nhật Bản sang trọng hay một không gian ẩm thực đỉnh cao? Hãy để Saigon Horeca đồng hành biến ý tưởng của bạn thành một thực tại vận hành hoàn mỹ nhất.        </p>
+        
+        <!-- Shimmer Button -->
+        <div class="sgh-hwa-cta-btn-wrapper">
+          <a href="https://saigonhoreca.local/lien-he/" class="sgh-hwa-cta-btn">
+            Liên Hệ Tư Vấn Ngay          </a>
+        </div>
+      </div>
+
+      <!-- Cột phải: Hình ảnh tích hợp trực tiếp ôm khít trong card -->
+      <div class="sgh-hwa-cta-media">
+        <div class="sgh-hwa-cta-media__wrapper">
+          <img src="images/SGH-Heiwasushi-1.webp" alt="Toàn cảnh không gian quầy bar và bếp Omakase đẳng cấp tại Heiwa Sushi - Saigon Horeca" loading="lazy" decoding="async" width="900" height="600">
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+</main>
+</body>
+</html>

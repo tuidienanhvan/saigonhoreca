@@ -1,0 +1,37 @@
+# ────────────────────────────────────────────────────────────────
+# Pi Task Handoffs — .gitignore
+# Ignore ephemeral/cache/artifact files that shouldn't be committed.
+# ────────────────────────────────────────────────────────────────
+
+# Python cache (from format-md.py)
+__pycache__/
+*.pyc
+*.pyo
+
+# Heartbeat locks (ephemeral, regenerated per task; mtime is authoritative)
+# Locks DO live in repo for crash recovery — but stale locks shouldn't accumulate.
+# Keep .lock files committed for now (active-task visibility), but ignore .tmp.
+system/locks/*.tmp.*
+system/locks/*.tmp
+
+# Generated dashboards (regenerable)
+dashboard.html
+dashboard-*.html
+
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor backup/swap files
+*~
+.*.swp
+.*.swo
+
+# Temp files from scripts
+*.tmp
+*.bak
+.tmp.*
+
+# Worktree pointer files (created by worktree-attach.sh, ephemeral)
+.task-worktrees/

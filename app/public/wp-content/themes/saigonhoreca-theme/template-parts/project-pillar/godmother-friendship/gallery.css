@@ -1,1 +1,128 @@
-/** godmother-friendship — gallery slot. Inherits .pp-split-gmf from concept.css. */
+/**
+ * godmother-friendship — gallery slot.
+ * Gallery 3-column horizontal grid with hover lift + staggered entry + Cloud Floating animation.
+ * @package SaigonHoreca
+ */
+
+/* Lưới 3 hình thiết bị bếp thực tế */
+.pp--gmf .pp-gallery-equipment-grid-gmf {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3.5rem 1.75rem; /* Gap dọc thoáng rộng chừa chỗ cho caption */
+}
+@media (min-width: 768px) {
+  .pp--gmf .pp-gallery-equipment-grid-gmf {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3.5rem 2rem;
+  }
+}
+
+.pp--gmf .pp-gallery-grid-gmf__item {
+  position: relative;
+  transition: transform 0.4s var(--ease-spring);
+}
+.pp--gmf .pp-gallery-grid-gmf__item:nth-child(1) { animation: gmf-rise 0.8s var(--ease-spring) 0.05s backwards; }
+.pp--gmf .pp-gallery-grid-gmf__item:nth-child(2) { animation: gmf-rise 0.8s var(--ease-spring) 0.15s backwards; }
+.pp--gmf .pp-gallery-grid-gmf__item:nth-child(3) { animation: gmf-rise 0.8s var(--ease-spring) 0.25s backwards; }
+
+.pp--gmf .pp-gallery-grid-gmf__item:hover {
+  transform: translateY(-8px);
+  z-index: 5;
+}
+
+/* Cloud Floating (Khung mây bồng bềnh) - Sử dụng border-radius dạng Blob */
+.pp--gmf .pp-gallery-img-container-gmf {
+  position: relative;
+  border-radius: 30px 50px 30px 40px;
+  overflow: hidden;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
+  transition: border-radius 0.8s var(--ease-spring), box-shadow 0.6s var(--ease-spring);
+}
+.pp--gmf .pp-gallery-grid-gmf__item:hover .pp-gallery-img-container-gmf {
+  animation: gmf-cloud-float 8s infinite ease-in-out;
+  box-shadow: 0 24px 50px color-mix(in srgb, var(--p) 18%, transparent);
+}
+
+/* Corner ornaments for Partner card */
+.pp--gmf .pp-partner-card-gmf .pp-corner-ornament-gmf--tr,
+.pp--gmf .pp-partner-card-gmf .pp-corner-ornament-gmf--bl {
+  position: absolute;
+  width: 14px; height: 14px;
+  border: 1px solid var(--p);
+  opacity: 0.3;
+  transition: opacity 0.4s, transform 0.4s var(--ease-spring);
+}
+.pp--gmf .pp-partner-card-gmf:hover .pp-corner-ornament-gmf--tr,
+.pp--gmf .pp-partner-card-gmf:hover .pp-corner-ornament-gmf--bl {
+  opacity: 0.95;
+  transform: scale(1.1);
+}
+.pp--gmf .pp-partner-card-gmf .pp-corner-ornament-gmf--tl { top: 16px; left: 16px; border-right: none; border-bottom: none; }
+.pp--gmf .pp-partner-card-gmf .pp-corner-ornament-gmf--tr { top: 16px; right: 16px; border-left: none; border-bottom: none; }
+.pp--gmf .pp-partner-card-gmf .pp-corner-ornament-gmf--bl { bottom: 16px; left: 16px; border-right: none; border-top: none; }
+.pp--gmf .pp-partner-card-gmf .pp-corner-ornament-gmf--br { bottom: 16px; right: 16px; border-left: none; border-top: none; }
+
+/* Cloud Floating Keyframes */
+@keyframes gmf-cloud-float {
+  0% {
+    border-radius: 30px 50px 30px 40px;
+  }
+  33% {
+    border-radius: 50% 30px 45px 30px;
+  }
+  66% {
+    border-radius: 35px 45px 30px 50px;
+  }
+  100% {
+    border-radius: 30px 50px 30px 40px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pp--gmf .pp-gallery-grid-gmf__item {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+  .pp--gmf .pp-gallery-grid-gmf__item:hover .pp-gallery-img-container-gmf {
+    animation: none !important;
+  }
+}
+
+/* ==========================================================================
+   Logo đối tác & Ảnh thực tế trong Block đối tác
+   ========================================================================== */
+
+/* Logo đối tác đặt ở trên */
+.pp--gmf .pp-partner-logo-gmf {
+  max-width: clamp(180px, 25vw, 280px);
+  margin: 0 auto 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 5;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
+  transition: transform 0.4s var(--ease-spring);
+}
+
+.pp--gmf .pp-partner-card-gmf:hover .pp-partner-logo-gmf {
+  transform: scale(1.03);
+}
+
+.pp--gmf .pp-partner-logo-gmf img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Ảnh thực tế đặt ở dưới */
+.pp--gmf .pp-partner-image-gmf {
+  margin-top: 2.5rem;
+  position: relative;
+  z-index: 5;
+  max-width: 780px;
+  margin-left: auto;
+  margin-right: auto;
+}
+

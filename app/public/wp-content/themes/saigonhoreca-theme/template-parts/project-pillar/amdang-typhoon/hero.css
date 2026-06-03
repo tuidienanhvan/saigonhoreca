@@ -4,7 +4,7 @@
  * @package SaigonHoreca
  */
 
-.pp--amdang-typhoon .pp-hero-at {
+.pp--adt .pp-hero-adt {
   position: relative;
   width: 100%;
   min-height: 100vh;
@@ -17,13 +17,13 @@
   padding: 2rem clamp(1.5rem, 6vw, 6rem) 6rem;
 }
 @media (max-width: 768px) {
-  .pp--amdang-typhoon .pp-hero-at {
+  .pp--adt .pp-hero-adt {
     min-height: 80vh;
     padding-bottom: 5rem;
   }
 }
 
-.pp--amdang-typhoon .pp-hero-at__media {
+.pp--adt .pp-hero-adt__media {
   position: absolute;
   inset: 0;
   z-index: 0;
@@ -34,11 +34,11 @@
   transition: transform 6s var(--ease-spring);
 }
 
-.pp--amdang-typhoon .pp-hero-at:hover .pp-hero-at__media {
+.pp--adt .pp-hero-adt:hover .pp-hero-adt__media {
   transform: scale(1.06);
 }
 
-.pp--amdang-typhoon .pp-hero-at__overlay {
+.pp--adt .pp-hero-adt__overlay {
   position: absolute;
   inset: 0;
   z-index: 1;
@@ -48,7 +48,7 @@
   pointer-events: none;
 }
 
-.pp--amdang-typhoon .pp-hero-at__content {
+.pp--adt .pp-hero-adt__content {
   position: relative;
   z-index: 2;
   width: 100%;
@@ -61,7 +61,7 @@
 }
 
 /* Metadata badge */
-.pp--amdang-typhoon .pp-hero-at__meta-badge {
+.pp--adt .pp-hero-adt__meta-badge {
   display: inline-flex;
   align-items: center;
   gap: 1rem;
@@ -73,7 +73,7 @@
   opacity: 0.85;
 }
 
-.pp--amdang-typhoon .pp-hero-at__meta-line {
+.pp--adt .pp-hero-adt__meta-line {
   width: 24px;
   height: 1px;
   background: var(--gold);
@@ -81,14 +81,14 @@
 }
 
 /* Title & Subtitle */
-.pp--amdang-typhoon .pp-hero-at__title {
+.pp--adt .pp-hero-adt__title {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   margin: 0;
 }
 
-.pp--amdang-typhoon .pp-hero-at__title-top {
+.pp--adt .pp-hero-adt__title-top {
   font-family: var(--font-display);
   font-size: clamp(2.8rem, 8vw, 6rem);
   font-weight: 900;
@@ -98,7 +98,7 @@
   text-shadow: 0 10px 30px rgba(0,0,0,0.8);
 }
 
-.pp--amdang-typhoon .pp-hero-at__title-sub {
+.pp--adt .pp-hero-adt__title-sub {
   font-family: var(--font-sans);
   font-size: clamp(1rem, 2vw, 1.5rem);
   font-weight: 300;
@@ -108,7 +108,7 @@
 }
 
 /* Michelin Award Badge */
-.pp--amdang-typhoon .pp-hero-at__award {
+.pp--adt .pp-hero-adt__award {
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
@@ -121,19 +121,19 @@
   transition: all 0.3s ease;
 }
 
-.pp--amdang-typhoon .pp-hero-at__award:hover {
+.pp--adt .pp-hero-adt__award:hover {
   border-color: var(--gold);
   background: rgba(245, 166, 35, 0.05);
   box-shadow: 0 8px 32px rgba(245, 166, 35, 0.15);
 }
 
-.pp--amdang-typhoon .pp-hero-at__award-icon {
+.pp--adt .pp-hero-adt__award-icon {
   color: var(--gold);
   font-size: 1.1rem;
   animation: pulse-at 2s infinite alternate;
 }
 
-.pp--amdang-typhoon .pp-hero-at__award-text {
+.pp--adt .pp-hero-adt__award-text {
   font-family: var(--font-sans);
   font-size: clamp(0.75rem, 1.2vw, 0.9rem);
   font-weight: 500;
@@ -142,7 +142,7 @@
 }
 
 /* Scroll indicator */
-.pp--amdang-typhoon .pp-hero-at__scroll {
+.pp--adt .pp-hero-adt__scroll {
   position: absolute;
   bottom: 2rem;
   z-index: 2;
@@ -153,7 +153,7 @@
   opacity: 0.7;
 }
 
-.pp--amdang-typhoon .pp-hero-at__scroll-text {
+.pp--adt .pp-hero-adt__scroll-text {
   font-family: var(--font-display);
   font-size: 0.68rem;
   font-weight: 600;
@@ -161,7 +161,7 @@
   color: var(--bc3);
 }
 
-.pp--amdang-typhoon .pp-hero-at__scroll-bar {
+.pp--adt .pp-hero-adt__scroll-bar {
   position: relative;
   width: 2px;
   height: 48px;
@@ -170,7 +170,7 @@
   overflow: hidden;
 }
 
-.pp--amdang-typhoon .pp-hero-at__scroll-dot {
+.pp--adt .pp-hero-adt__scroll-dot {
   position: absolute;
   top: 0;
   left: 0;
@@ -193,3 +193,4 @@
   0% { opacity: 0.6; transform: scale(0.95); }
   100% { opacity: 1; transform: scale(1.15); }
 }
+

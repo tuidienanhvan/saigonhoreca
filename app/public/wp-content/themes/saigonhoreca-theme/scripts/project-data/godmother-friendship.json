@@ -27,8 +27,8 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/Godmother-friendship-1.jpg",
-                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/Godmother-friendship-1.jpg 1920w, https://saigonhoreca.vn/wp-content/uploads/2023/12/Godmother-friendship-1-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2023/12/Godmother-friendship-1-1536x864.jpg 1536w, https://saigonhoreca.vn/wp-content/uploads/2023/12/Godmother-friendship-1-600x338.jpg 600w",
+                "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2023/12/Godmother-friendship-1.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2023/12/Godmother-friendship-1.jpg 1920w, https://saigonhoreca.vn/wp-content/uploads/2023/12/Godmother-friendship-1-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2023/12/Godmother-friendship-1-1536x864.jpg 1536w, https://saigonhoreca.vn/wp-content/uploads/2023/12/Godmother-friendship-1-600x338.jpg 600w",
                 "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                 "w": "1920",
                 "h": "1080"
@@ -61,7 +61,7 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2020/12/gm-bang-ten.png",
+                "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.com/wp-content/uploads/2020/12/gm-bang-ten.png",
                 "srcset": null,
                 "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                 "w": null,
@@ -200,7 +200,7 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/05/godmother4.jpeg",
+                "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.com/wp-content/uploads/2023/05/godmother4.jpeg",
                 "srcset": null,
                 "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                 "w": null,
@@ -216,7 +216,7 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/05/godmother-5.jpeg",
+                "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.com/wp-content/uploads/2023/05/godmother-5.jpeg",
                 "srcset": null,
                 "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                 "w": null,
@@ -297,8 +297,8 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/european-style-stoves.jpg",
-                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/european-style-stoves.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2023/12/european-style-stoves-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2023/12/european-style-stoves-600x337.jpg 600w",
+                "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2023/12/european-style-stoves.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2023/12/european-style-stoves.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2023/12/european-style-stoves-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2023/12/european-style-stoves-600x337.jpg 600w",
                 "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                 "w": "1366",
                 "h": "768"
@@ -307,8 +307,8 @@
             {
               "type": "image.default",
               "image": {
-                "src": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/asian-industrial-stove-image.jpg",
-                "srcset": "__TEMPLATE_URI__/static-mirror/wp-content/uploads/2023/12/asian-industrial-stove-image.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2023/12/asian-industrial-stove-image-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2023/12/asian-industrial-stove-image-600x337.jpg 600w",
+                "src": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2023/12/asian-industrial-stove-image.jpg",
+                "srcset": "__TEMPLATE_URI__/static-mirror/saigonhoreca.vn/wp-content/uploads/2023/12/asian-industrial-stove-image.jpg 1366w, https://saigonhoreca.vn/wp-content/uploads/2023/12/asian-industrial-stove-image-768x432.jpg 768w, https://saigonhoreca.vn/wp-content/uploads/2023/12/asian-industrial-stove-image-600x337.jpg 600w",
                 "alt": "Thiết bị bếp công nghiệp Saigon Horeca",
                 "w": "1366",
                 "h": "768"

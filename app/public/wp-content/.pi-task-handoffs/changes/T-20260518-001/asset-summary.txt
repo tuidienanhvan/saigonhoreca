@@ -1,0 +1,13 @@
+T-20260518-001 Phase C - Asset verification
+============================================================
+
+Source page: https://saigonhoreca.local/
+Local assets probed: 98
+
+  img     : 1/2 pass
+  link    : 47/47 pass
+  script  : 47/47 pass
+  srcset  : 2/2 pass
+
+--- Failing assets ---
+  [img] 0 data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMSIgaGVpZ2h0PSIxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjwvc3ZnPg==

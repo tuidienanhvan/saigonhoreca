@@ -1,3 +1,431 @@
-/** the-brix — specs slot. Inherits .pp-split-tbx from concept.css. */
+/**
+ * the-brix — specs section. Blueprint-inspired grid with ocean palette.
+ * Palette: Deep navy blueprint + teal accent grid lines.
+ * @package SaigonHoreca
+ */
 
-.pp-split-tbx--reverse .pp-split-tbx__media { aspect-ratio: 16 / 9; }
+.pp-specs-brix {
+  position: relative;
+  padding: clamp(5rem, 10vw, 9rem) 0;
+  background: #0a0f1a;
+  overflow: hidden;
+}
+
+/* Ambient glow — green in top right corner */
+.pp-specs-brix::before {
+  content: '';
+  position: absolute;
+  top: -8%;
+  right: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle,
+    rgba(16, 185, 129, 0.06) 0%,
+    transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.pp-specs-brix__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .pp-specs-brix__grid {
+    grid-template-columns: 50% 50%;
+    gap: 5rem;
+  }
+}
+
+/* Blueprint container — dark navy with teal grid lines */
+.pp-specs-brix__side {
+  position: relative;
+  padding: 1.8rem;
+  background-color: #0c1628;
+  background-image:
+    linear-gradient(rgba(8, 145, 178, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(8, 145, 178, 0.06) 1px, transparent 1px);
+  background-size: 22px 22px;
+  border-radius: 20px;
+  border: 1px solid rgba(8, 145, 178, 0.15);
+  box-shadow:
+    0 24px 50px rgba(0, 0, 0, 0.65),
+    inset 0 0 0 1px rgba(94, 234, 212, 0.04);
+}
+
+/* Image wave container */
+.pp-specs-brix__image-wave-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 20px;
+}
+
+/* Các sóng biển trang trí nền siêu lớn ở phía sau ảnh */
+.pp-specs-brix__background-waves {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.pp-specs-brix__giant-wave {
+  position: absolute;
+  pointer-events: none;
+  filter: drop-shadow(0px 8px 16px rgba(16, 185, 129, 0.15));
+}
+
+.pp-specs-brix__giant-wave.wave-1 {
+  bottom: -50px;
+  right: -80px;
+  width: 340px;
+  height: auto;
+  opacity: 0.85;
+  animation: brix-specs-wave-sway 8s ease-in-out infinite alternate;
+}
+
+.pp-specs-brix__giant-wave.wave-2 {
+  top: -55px;
+  left: -80px;
+  width: 300px;
+  height: auto;
+  opacity: 0.75;
+  animation: brix-specs-wave-sway 10s ease-in-out infinite alternate-reverse;
+}
+
+/* Khung nền sóng lệch góc làm bóng đổ màu lục bảo */
+.pp-specs-brix__image-wave-bg {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s;
+}
+
+.pp-specs-brix__image-wave-bg svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Khung bọc ảnh dạng clip-path sóng biển sáng tạo */
+.pp-specs-brix__image-wave-wrap {
+  position: relative;
+  z-index: 2;
+  clip-path: url(#brix-specs-image-wave-clip);
+  -webkit-clip-path: url(#brix-specs-image-wave-clip);
+  overflow: hidden;
+  box-shadow: 0 35px 80px rgba(0, 0, 0, 0.65);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.8s;
+  background: #0c1628;
+}
+
+.pp-specs-brix__image-wave-wrap img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transform: scale(1.01);
+  filter: contrast(1.04) brightness(0.90) saturate(1.1);
+  transition: transform 1.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s;
+}
+
+/* Khung viền outline sóng biển bọc khít quanh ảnh */
+.pp-specs-brix__wave-outline-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  pointer-events: none;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pp-specs-brix__wave-outline-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  filter: drop-shadow(0 2px 8px rgba(16, 185, 129, 0.4));
+}
+
+/* Bọt sóng biển trang trí */
+.pp-specs-brix__foam {
+  position: absolute;
+  width: 45px;
+  height: auto;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.pp-specs-brix__foam.foam-top-right {
+  top: 5%;
+  right: 2%;
+  animation: brix-specs-wave-sway 6s ease-in-out infinite alternate;
+}
+
+.pp-specs-brix__foam.foam-bottom-left {
+  bottom: 8%;
+  left: 1%;
+  animation: brix-specs-wave-sway 7s ease-in-out infinite alternate-reverse;
+}
+
+/* Sóng nước đè trực tiếp bên dưới chân ảnh */
+.pp-specs-brix__image-wave-overlay {
+  position: absolute;
+  bottom: -22px;
+  left: -14%;
+  width: 128%;
+  height: auto;
+  z-index: 4;
+  pointer-events: none;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pp-specs-brix__image-wave-overlay svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Hiệu ứng hover sống động */
+.pp-specs-brix__image-wave-container:hover .pp-specs-brix__image-wave-wrap {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 45px 90px rgba(16, 185, 129, 0.25), 0 25px 50px rgba(0, 0, 0, 0.7);
+}
+
+.pp-specs-brix__image-wave-container:hover .pp-specs-brix__image-wave-wrap img {
+  transform: scale(1.06);
+  filter: contrast(1.06) brightness(0.95) saturate(1.15);
+}
+
+.pp-specs-brix__image-wave-container:hover .pp-specs-brix__image-wave-bg {
+  transform: translate(-10px, -10px) scale(0.98);
+  filter: drop-shadow(0px 15px 25px rgba(16, 185, 129, 0.45));
+}
+
+.pp-specs-brix__image-wave-container:hover .pp-specs-brix__wave-outline-container {
+  transform: translateY(-8px) scale(1.01);
+}
+
+.pp-specs-brix__image-wave-container:hover .pp-specs-brix__image-wave-overlay {
+  transform: translateY(-4px) scaleY(1.1);
+}
+
+/* Animation đung đưa như sóng biển */
+@keyframes brix-specs-wave-sway {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate(4px, -3px) rotate(1deg);
+  }
+  100% {
+    transform: translate(-3px, 4px) rotate(-1deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pp-specs-brix__image-wave-wrap,
+  .pp-specs-brix__image-wave-wrap img,
+  .pp-specs-brix__image-wave-bg,
+  .pp-specs-brix__image-wave-overlay {
+    transition: none !important;
+  }
+}
+
+/* Image tag — teal accent */
+.pp-specs-brix__image-tag {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  z-index: 4;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
+  color: #5eead4;
+  background: rgba(10, 15, 26, 0.88);
+  border: 1px solid rgba(94, 234, 212, 0.30);
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  backdrop-filter: blur(6px);
+  pointer-events: none;
+}
+
+/* Text body side */
+.pp-specs-brix__body {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.2rem, 2.5vw, 2rem);
+  position: relative;
+  z-index: 2;
+}
+
+.pp-specs-brix__badge {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  color: #34d399;
+  text-transform: uppercase;
+}
+
+.pp-specs-brix__badge-accent {
+  color: #10b981;
+  font-weight: bold;
+}
+
+.pp-specs-brix__title {
+  font-family: var(--font-display, 'Playfair Display', serif);
+  font-size: clamp(1.9rem, 3.5vw, 2.6rem);
+  font-weight: 700;
+  color: #f0fdfa;
+  line-height: 1.2;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+/* Quote card with subtle SVG background */
+.pp-specs-brix__quote-card {
+  position: relative;
+  background: rgba(12, 22, 40, 0.45);
+  border: 1px solid rgba(16, 185, 129, 0.12);
+  border-radius: 16px;
+  padding: 1.8rem 2.2rem;
+  margin-top: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(8px);
+}
+
+.pp-specs-brix__quote-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, #10b981, #5eead4);
+}
+
+.pp-specs-brix__card-cocktail-svg {
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  transform: translateY(-50%);
+  width: 80px;
+  height: auto;
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity 0.5s ease;
+}
+
+.pp-specs-brix__quote-card:hover .pp-specs-brix__card-cocktail-svg {
+  opacity: 0.28;
+}
+
+.pp-specs-brix__quote-mark {
+  position: absolute;
+  top: 0px;
+  left: 18px;
+  font-family: var(--font-display, 'Playfair Display', serif);
+  font-size: 5rem;
+  line-height: 1;
+  color: rgba(16, 185, 129, 0.15);
+  user-select: none;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.pp-specs-brix__quote-text {
+  position: relative;
+  z-index: 1;
+  font-size: clamp(0.98rem, 1.15vw, 1.12rem);
+  font-style: italic;
+  line-height: 1.75;
+  color: #e2e8f0;
+  margin: 0;
+}
+
+/* Details 2 Column Grid */
+.pp-specs-brix__details {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.8rem;
+  margin-top: 0.5rem;
+}
+
+@media (min-width: 640px) {
+  .pp-specs-brix__details {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+}
+
+.pp-specs-brix__detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.pp-specs-brix__detail-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.pp-specs-brix__detail-num {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.08);
+  padding: 0.18rem 0.45rem;
+  border-radius: 4px;
+  border: 1px solid rgba(16, 185, 129, 0.15);
+}
+
+.pp-specs-brix__detail-title {
+  font-family: var(--font-display, 'Playfair Display', serif);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #f8fafc;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.pp-specs-brix__detail-desc {
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.55);
+  margin: 0;
+}
+
+/* Blueprint coordinate labels — teal monospace */
+.pp-specs-brix__coord {
+  position: absolute !important;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace) !important;
+  font-size: 0.60rem !important;
+  color: rgba(94, 234, 212, 0.35) !important;
+  letter-spacing: 0.08em !important;
+  pointer-events: none;
+  z-index: 3 !important;
+  text-transform: uppercase;
+}
+.pp-specs-brix__coord--tl { top: 10px !important; left: 18px !important; }
+.pp-specs-brix__coord--tr { top: 10px !important; right: 18px !important; }
+.pp-specs-brix__coord--bl { bottom: 10px !important; left: 18px !important; }
+.pp-specs-brix__coord--br { bottom: 10px !important; right: 18px !important; }
+
+@media (max-width: 767px) {
+  .pp-specs-brix__coord { display: none !important; }
+}

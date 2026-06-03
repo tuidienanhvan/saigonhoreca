@@ -6,6 +6,9 @@
  */
 
 /* ── Container ── */
+#sh-mobile-nav {
+    display: block;
+}
 .sh-mnav {
     position: fixed;
     bottom: 0;
@@ -21,6 +24,13 @@
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     box-shadow: 0 -2px 16px rgba(0, 0, 0, 0.5);
+}
+
+@media (min-width: 768px) {
+    #sh-mobile-nav,
+    .sh-mnav {
+        display: none !important;
+    }
 }
 
 /* ── Nav item ── */

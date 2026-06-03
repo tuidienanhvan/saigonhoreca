@@ -1,1 +1,480 @@
-/** yuzu-omakase — specs slot (no content). */
+/**
+ * yuzu-omakase — specs slot.
+ * Advanced Technical Sketchbook Layout + Blueprint Grid overlays + Staggered Glassmorphic cards.
+ * @package SaigonHoreca
+ */
+
+.pp-specs-yzo {
+  position: relative;
+  padding: clamp(5rem, 9vw, 9rem) 0;
+  /* Dark volcanic stone base with a gentle amber/gold radial spotlight at the center of the visual column */
+  background: radial-gradient(circle at 75% 50%, color-mix(in srgb, var(--p) 6%, transparent) 0%, var(--b2) 75%), var(--b2);
+  overflow: hidden;
+}
+
+/* Ambient backlight glow */
+.pp-specs-yzo__ambient-glow {
+  position: absolute;
+  top: 55%;
+  left: 75%;
+  transform: translate(-50%, -50%);
+  width: 580px;
+  height: 580px;
+  background: radial-gradient(circle, color-mix(in srgb, var(--p) 7%, transparent) 0%, transparent 75%);
+  pointer-events: none;
+  z-index: 1;
+  filter: blur(80px);
+}
+
+.pp-specs-yzo__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4.5rem;
+  align-items: center;
+}
+
+@media (min-width: 992px) {
+  .pp-specs-yzo__grid {
+    grid-template-columns: 44fr 56fr;
+    gap: 5.5rem;
+  }
+}
+
+/* Specs Content (Left Column) */
+.pp-specs-yzo__content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 2.2rem;
+}
+
+@media (min-width: 992px) {
+  .pp-specs-yzo__content {
+    position: sticky;
+    top: clamp(80px, 12vh, 120px);
+    align-self: start;
+  }
+}
+
+.pp-specs-yzo__header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.pp-specs-yzo__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--p);
+}
+
+.pp-specs-yzo__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--bc);
+}
+
+.pp-specs-yzo__title-line {
+  width: 70px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--p) 0%, transparent 100%);
+  margin-top: 0.2rem;
+}
+
+.pp-specs-yzo__list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.pp-specs-yzo__item {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1.25rem;
+  border-radius: var(--radius-md);
+  background: var(--bs);
+  border: 1px solid transparent;
+  transition: background 0.4s var(--ease-spring), border-color 0.4s var(--ease-spring), transform 0.4s var(--ease-spring);
+}
+
+.pp-specs-yzo__item:hover {
+  background: rgba(255, 255, 255, 0.025);
+  border-color: color-mix(in srgb, var(--p) 16%, transparent);
+  transform: translateX(6px);
+}
+
+.pp-specs-yzo__icon-wrapper {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.pp-specs-yzo__icon {
+  width: 46px;
+  height: 46px;
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--p) 5%, transparent);
+  border: 1px solid color-mix(in srgb, var(--p) 20%, transparent);
+  color: var(--p);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s var(--ease-spring);
+}
+
+.pp-specs-yzo__icon svg {
+  width: 20px;
+  height: 20px;
+  stroke-width: 1.25;
+}
+
+.pp-specs-yzo__icon-pulse {
+  position: absolute;
+  inset: -4px;
+  border-radius: calc(var(--radius-sm) + 2px);
+  border: 1px solid var(--p);
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.9);
+  transition: opacity 0.4s var(--ease-spring), transform 0.4s var(--ease-spring);
+}
+
+.pp-specs-yzo__item:hover .pp-specs-yzo__icon {
+  background: color-mix(in srgb, var(--p) 12%, transparent);
+  border-color: var(--bt);
+  color: #fff;
+}
+
+.pp-specs-yzo__item:hover .pp-specs-yzo__icon-pulse {
+  opacity: 0.3;
+  transform: scale(1.15);
+}
+
+.pp-specs-yzo__info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.pp-specs-yzo__item-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--bc);
+  display: flex;
+  align-items: center;
+}
+
+.pp-specs-yzo__item-num {
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--p);
+  margin-right: 0.4rem;
+}
+
+.pp-specs-yzo__item-desc {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--bc2);
+}
+
+/* Right Column (Visual Sketchbook) */
+.pp-specs-yzo__visual {
+  position: relative;
+  width: 100%;
+}
+
+.pp-specs-yzo__sketchbook {
+  position: relative;
+  width: 100%;
+  z-index: 2;
+  overflow: visible;
+}
+
+/* Layer 1: Backdrop blueprint grid */
+.pp-specs-yzo__grid-overlay {
+  position: absolute;
+  inset: -4rem -2rem;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.pp-specs-yzo__grid-overlay svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Standard M&E technical tags metadata block */
+.pp-specs-yzo__blueprint-meta {
+  position: absolute;
+  top: -3.5rem;
+  left: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.pp-specs-yzo__meta-row {
+  display: flex;
+  gap: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+
+.pp-specs-yzo__meta-label {
+  color: color-mix(in srgb, var(--p) 35%, transparent);
+  font-weight: 500;
+}
+
+.pp-specs-yzo__meta-val {
+  color: color-mix(in srgb, var(--p) 75%, transparent);
+}
+
+/* Flow connector SVG overlay */
+.pp-specs-yzo__flow-connector {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.pp-specs-yzo__flow-connector svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Layer 2: Collage grid without overlapping */
+.pp-specs-yzo__collage {
+  position: relative;
+  z-index: 4;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3.5rem;
+  margin-top: 2rem;
+  overflow: visible;
+}
+
+@media (min-width: 768px) {
+  .pp-specs-yzo__collage {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+}
+
+.pp-specs-yzo__wrapper {
+  position: relative;
+  width: 100%;
+  overflow: visible;
+}
+
+.pp-specs-yzo__wrapper--base {
+  z-index: 5;
+}
+
+.pp-specs-yzo__wrapper--overlay {
+  z-index: 10;
+  transition: transform 0.5s var(--ease-spring);
+}
+
+@media (min-width: 992px) {
+  .pp-specs-yzo__wrapper--overlay {
+    margin-top: 4.5rem; /* Tác dụng so le nghệ thuật nhưng không chồng đè */
+  }
+}
+
+.pp-specs-yzo__wrapper--overlay:hover {
+  transform: translateY(-5px);
+}
+
+.pp-specs-yzo__fig {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  border-radius: var(--radius-lg);
+  overflow: visible !important;
+  border: 1px solid color-mix(in srgb, var(--p) 22%, transparent);
+  box-shadow: 0 35px 80px rgba(0, 0, 0, 0.85);
+  transition: border-color 0.4s var(--ease-spring);
+}
+
+.pp-specs-yzo__wrapper--overlay:hover .pp-specs-yzo__fig {
+  border-color: color-mix(in srgb, var(--p) 45%, transparent);
+}
+
+.pp-specs-yzo__fig img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: calc(var(--radius-lg) - 1px);
+}
+
+/* Vector annotations directly on images */
+.pp-specs-yzo__image-dimension {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  pointer-events: none;
+}
+
+.pp-specs-yzo__image-dimension svg {
+  width: 100%;
+  height: 100%;
+}
+
+.pp-specs-yzo__lens-target {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  width: 44px;
+  height: 44px;
+  z-index: 7;
+  pointer-events: none;
+}
+
+.pp-specs-yzo__lens-target svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Architect Note Cards - Redesigned to stack cleanly below images */
+.pp-specs-yzo__note-card-new {
+  margin-top: 1.25rem;
+  padding: 1.25rem 1.5rem;
+  border-radius: var(--radius-md);
+  background: rgba(12, 12, 12, 0.74);
+  backdrop-filter: blur(18px) saturate(130%);
+  -webkit-backdrop-filter: blur(18px) saturate(130%);
+  border: 1px solid color-mix(in srgb, var(--p) 16%, transparent);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+  transition: border-color 0.4s var(--ease-spring), transform 0.4s var(--ease-spring);
+}
+
+.pp-specs-yzo__wrapper:hover .pp-specs-yzo__note-card-new {
+  border-color: color-mix(in srgb, var(--p) 35%, transparent);
+}
+
+.pp-specs-yzo__note-header-new {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--p) 12%, transparent);
+  padding-bottom: 0.5rem;
+}
+
+.pp-specs-yzo__note-title-new {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--p);
+  letter-spacing: 0.05em;
+}
+
+.pp-specs-yzo__note-status-new {
+  font-family: var(--font-mono);
+  font-size: 0.54rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: var(--radius-xs);
+  line-height: 1;
+}
+
+.pp-specs-yzo__note-status-new--approved {
+  color: #4ade80;
+  border: 1px solid rgba(74, 222, 128, 0.22);
+}
+
+.pp-specs-yzo__note-status-new--ready {
+  color: #60a5fa;
+  border: 1px solid rgba(96, 165, 250, 0.22);
+}
+
+.pp-specs-yzo__note-desc-new {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--bc2);
+}
+
+.pp-specs-yzo__note-desc-new strong {
+  color: var(--bc);
+  font-weight: 600;
+  margin-right: 0.25rem;
+}
+
+/* Responsive Adaptive Styles (Mobile & Tablet) */
+@media (max-width: 991px) {
+  .pp-specs-yzo {
+    padding: clamp(4rem, 8vw, 6rem) 0;
+  }
+  
+  .pp-specs-yzo__grid {
+    gap: 4rem;
+  }
+  
+  .pp-specs-yzo__collage {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 5.5rem;
+    margin-top: 2rem;
+  }
+  
+  .pp-specs-yzo__wrapper {
+    position: relative !important;
+    width: 100% !important;
+    top: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    right: auto !important;
+    transform: none !important;
+  }
+  
+  .pp-specs-yzo__note-card {
+    position: relative !important;
+    bottom: auto !important;
+    left: auto !important;
+    right: auto !important;
+    width: 100% !important;
+    margin-top: 1.5rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  }
+  
+  .pp-specs-yzo__fig {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+  }
+  
+  .pp-specs-yzo__flow-connector,
+  .pp-specs-yzo__grid-overlay,
+  .pp-specs-yzo__image-dimension,
+  .pp-specs-yzo__lens-target {
+    display: none !important;
+  }
+  
+  .pp-specs-yzo__blueprint-meta {
+    position: relative;
+    top: auto;
+    margin-bottom: 2rem;
+  }
+  
+  .pp-specs-yzo__ambient-glow {
+    display: none !important;
+  }
+}

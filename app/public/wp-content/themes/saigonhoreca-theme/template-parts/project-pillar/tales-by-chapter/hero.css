@@ -1,285 +1,110 @@
 /**
  * tales-by-chapter — hero slot.
- * Literary Quarterly Editorial: parchment overlay, ribbon-bookmark corner,
- * illuminated serif title with drop-cap, ambient gold glow, ornamental hairline frame.
+ * Video background + Ken-Burns poster fallback + staggered title entry.
+ * Plant-based zero waste theme with green accents.
  * @package SaigonHoreca
  */
 
 .pp-hero-tbc {
   position: relative;
-  min-height: 92vh;
+  height: calc(100svh - 76px);
+  min-height: 620px;
+  width: 100%;
   display: flex;
   align-items: flex-end;
-  justify-content: flex-start;
+  justify-content: center;
   overflow: hidden;
-  isolation: isolate;
   background-color: var(--b1);
-  padding: 6rem 1.5rem 5rem;
-}
-@media (min-width: 768px) {
-  .pp-hero-tbc { min-height: 96vh; padding: 8rem 3rem 7rem; }
-}
-@media (min-width: 1200px) {
-  .pp-hero-tbc { padding: 9rem 5rem 8rem; }
 }
 
-/* Full-bleed media — cover plate of the volume */
 .pp-hero-tbc__media {
   position: absolute;
   inset: 0;
-  z-index: 0;
-  background-size: cover;
-  background-position: center;
-  transform: scale(1.04);
-  filter: saturate(1.04) contrast(1.02);
-  transition: transform 1.4s var(--ease-spring);
+  z-index: 1;
 }
-.pp-hero-tbc:hover .pp-hero-tbc__media { transform: scale(1.07); }
+.pp-hero-tbc__media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
 
-/* Parchment-ink overlay — warm aged paper wash with vignette */
 .pp-hero-tbc__overlay {
   position: absolute;
   inset: 0;
-  z-index: 1;
+  z-index: 2;
+  background: linear-gradient(
+    to top,
+    var(--b1) 0%,
+    color-mix(in srgb, var(--b1) 65%, transparent) 35%,
+    transparent 70%
+  );
   pointer-events: none;
-  background:
-    radial-gradient(ellipse at 22% 78%,
-      color-mix(in srgb, var(--b1) 78%, transparent) 0%,
-      color-mix(in srgb, var(--b1) 35%, transparent) 45%,
-      transparent 75%),
-    linear-gradient(180deg,
-      color-mix(in srgb, var(--b1) 28%, transparent) 0%,
-      transparent 35%,
-      color-mix(in srgb, var(--b1) 55%, transparent) 100%),
-    radial-gradient(circle at 78% 12%,
-      color-mix(in srgb, var(--gold) 8%, transparent) 0%,
-      transparent 55%);
 }
 
-/* Parchment grain texture */
-.pp-hero-tbc::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  background:
-    repeating-linear-gradient(
-      92deg,
-      transparent 0 3px,
-      color-mix(in srgb, var(--gold) 1.4%, transparent) 3px 4px),
-    repeating-linear-gradient(
-      0deg,
-      transparent 0 5px,
-      rgba(0, 0, 0, 0.04) 5px 6px);
-  mix-blend-mode: overlay;
-  opacity: 0.55;
-}
-
-/* Ambient gold glow */
-.pp-hero-tbc::after {
-  content: '';
-  position: absolute;
-  top: -8%;
-  right: -6%;
-  width: 620px;
-  height: 620px;
-  z-index: 1;
-  background: radial-gradient(circle,
-    color-mix(in srgb, var(--gold) 16%, transparent) 0%,
-    transparent 65%);
-  filter: blur(72px);
-  pointer-events: none;
-  opacity: 0.75;
-}
-
-/* Content column */
 .pp-hero-tbc__content {
   position: relative;
   z-index: 3;
-  max-width: 760px;
+  padding: 3rem 1.5rem 5rem;
+  max-width: 820px;
+  text-align: center;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  padding: 2.25rem 2rem 2.25rem 2.5rem;
-}
-@media (min-width: 992px) {
-  .pp-hero-tbc__content {
-    padding: 2.75rem 3rem 2.75rem 3.25rem;
-    margin-left: 2rem;
-  }
+  align-items: center;
+  gap: 1rem;
 }
 
-/* Hairline editorial frame */
-.pp-hero-tbc__content::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  border-left: 1px solid color-mix(in srgb, var(--gold) 45%, transparent);
-  border-top: 1px solid color-mix(in srgb, var(--gold) 18%, transparent);
-  box-shadow:
-    inset 0 0 0 1px color-mix(in srgb, var(--gold) 6%, transparent),
-    -10px 10px 0 -9px color-mix(in srgb, var(--gold) 30%, transparent);
-}
-
-/* Ribbon-bookmark corner */
-.pp-hero-tbc__content::after {
-  content: '';
-  position: absolute;
-  top: -1px;
-  left: 2.5rem;
-  width: 32px;
-  height: 92px;
-  background: linear-gradient(180deg,
-    var(--gold) 0%,
-    color-mix(in srgb, var(--gold) 75%, var(--b1)) 100%);
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 78%, 0 100%);
-  box-shadow:
-    0 6px 18px rgba(0, 0, 0, 0.45),
-    inset 0 1px 0 color-mix(in srgb, var(--gold) 35%, white);
-  pointer-events: none;
-  opacity: 0.92;
-}
-@media (min-width: 992px) {
-  .pp-hero-tbc__content::after { left: 3.25rem; height: 108px; width: 36px; }
-}
-
-/* Eyebrow chapter mark */
-.pp-hero-tbc__content > *:first-child::before {
-  content: 'Chapter \00B7 I';
-  display: block;
-  font-family: var(--font-display);
-  font-size: 0.78rem;
-  letter-spacing: 0.42em;
-  text-transform: uppercase;
-  color: color-mix(in srgb, var(--gold) 85%, var(--bc));
-  margin-bottom: 1.25rem;
-  padding-left: 3rem;
-  position: relative;
-}
-.pp-hero-tbc__content > *:first-child::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0.55em;
-  width: 2.4rem;
-  height: 1px;
-  background: linear-gradient(90deg,
-    color-mix(in srgb, var(--gold) 80%, transparent),
-    transparent);
-}
-
-/* Illuminated serif title */
 .pp-hero-tbc__title {
   margin: 0;
   font-family: var(--font-display);
-  font-weight: 700;
-  font-style: italic;
-  font-size: clamp(2.5rem, 6.2vw, 5.25rem);
-  line-height: 1.02;
-  letter-spacing: -0.012em;
+  font-size: clamp(2.4rem, 7vw, 5rem);
+  font-weight: 800;
+  line-height: 1.05;
   color: var(--bc);
+  letter-spacing: 0.02em;
   text-shadow:
-    0 2px 18px rgba(0, 0, 0, 0.55),
-    0 1px 0 color-mix(in srgb, var(--gold) 22%, transparent);
-  position: relative;
-}
-.pp-hero-tbc__title::first-letter {
-  font-size: 1.18em;
-  color: var(--gold);
-  text-shadow:
-    0 2px 22px color-mix(in srgb, var(--gold) 50%, transparent),
-    0 1px 0 rgba(0, 0, 0, 0.4);
-  padding-right: 0.04em;
+    0 4px 24px rgba(0, 0, 0, 0.7),
+    0 0 60px color-mix(in srgb, var(--su) 12%, transparent);
+  animation: tbc-rise 0.9s var(--ease-spring) 0.15s backwards;
 }
 
-/* Subhead with quote-mark */
 .pp-hero-tbc__subhead {
   margin: 0;
-  font-family: var(--font-display);
+  font-family: var(--font-serif);
+  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
   font-style: italic;
-  font-size: clamp(1.05rem, 1.55vw, 1.32rem);
-  line-height: 1.55;
-  color: color-mix(in srgb, var(--bc) 88%, var(--bc2));
-  max-width: 620px;
-  position: relative;
-  padding-left: 1.1rem;
-  border-left: 1px solid color-mix(in srgb, var(--gold) 55%, transparent);
-  margin-top: 0.5rem;
-}
-.pp-hero-tbc__subhead::before {
-  content: '\201C';
-  position: absolute;
-  left: -0.6rem;
-  top: -1.6rem;
-  font-family: var(--font-display);
-  font-size: 3.6rem;
-  line-height: 1;
-  color: color-mix(in srgb, var(--gold) 55%, transparent);
-  pointer-events: none;
+  font-weight: 400;
+  color: var(--su);
+  opacity: 0.9;
+  animation: tbc-rise 0.9s var(--ease-spring) 0.05s backwards;
 }
 
-/* Edition ornament strip beneath title block */
-.pp-hero-tbc__content > *:last-child::after {
-  content: '';
-  display: block;
-  margin-top: 1.75rem;
-  width: 100%;
-  max-width: 320px;
-  height: 14px;
-  background:
-    radial-gradient(circle at 50% 50%,
-      var(--gold) 0 3px,
-      transparent 3.5px),
-    linear-gradient(90deg,
-      transparent 0%,
-      color-mix(in srgb, var(--gold) 60%, transparent) 18%,
-      color-mix(in srgb, var(--gold) 60%, transparent) 82%,
-      transparent 100%);
-  background-size: 100% 100%, 100% 1px;
-  background-position: 50% 50%, 50% 50%;
-  background-repeat: no-repeat;
-  opacity: 0.85;
+.pp-hero-tbc__subtitle {
+  margin: 0;
+  max-width: 640px;
+  font-size: clamp(0.9rem, 1.1vw, 1rem);
+  line-height: 1.75;
+  color: var(--bc2);
+  animation: tbc-rise 0.9s var(--ease-spring) 0.35s backwards;
 }
 
-/* Scroll indicator overleaf */
-.pp-hero-tbc > .pp-hero-tbc__overlay::after {
-  content: 'continued overleaf';
-  position: absolute;
-  bottom: 2rem;
-  right: 2.5rem;
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 0.78rem;
-  letter-spacing: 0.22em;
-  color: color-mix(in srgb, var(--bc2) 80%, transparent);
-  text-transform: lowercase;
-  padding-right: 0;
-  border-bottom: 1px solid color-mix(in srgb, var(--gold) 35%, transparent);
-  padding-bottom: 0.4rem;
-}
-.pp-hero-tbc > .pp-hero-tbc__overlay::before {
-  content: '';
-  position: absolute;
-  bottom: 3.5rem;
-  right: 2.5rem;
-  width: 1px;
-  height: 3rem;
-  background: linear-gradient(180deg,
-    transparent,
-    color-mix(in srgb, var(--gold) 75%, transparent));
-}
-
-@media (max-width: 767px) {
-  .pp-hero-tbc__content::after { left: 1.5rem; height: 78px; width: 26px; }
-  .pp-hero-tbc__content { padding-left: 1.75rem; }
-  .pp-hero-tbc__content > *:first-child::before { padding-left: 2.2rem; font-size: 0.7rem; }
-  .pp-hero-tbc > .pp-hero-tbc__overlay::after,
-  .pp-hero-tbc > .pp-hero-tbc__overlay::before { display: none; }
+@keyframes tbc-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(2rem);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .pp-hero-tbc__media { transition: none; transform: none; }
-  .pp-hero-tbc:hover .pp-hero-tbc__media { transform: none; }
+  .pp-hero-tbc__title,
+  .pp-hero-tbc__subhead,
+  .pp-hero-tbc__subtitle {
+    animation: none !important;
+  }
 }

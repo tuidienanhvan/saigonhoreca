@@ -1,18 +1,21 @@
 <?php
 /**
  * Project Pillar — the-brix
- * Section #6: text
+ * Section #6: partnership
  * @package SaigonHoreca
  */
 if (!defined('ABSPATH')) exit;
 $uri = get_template_directory_uri();
 ?>
-<section class="pp__section">
-  <div class="pp__container">
-    <div class="pp-text-tbx pp-text-tbx--center">
-      <div class="pp-text-tbx__body">
-      <p><?php echo esc_html__('Inside the restaurant, there is also a Momentum Living exhibition room, with a minimalist design following a classic trend. The harmonious combination of bright and dark colors creates an elegant and sophisticated ambiance.', 'saigonhoreca'); ?></p>
-      </div>
+<section class="pp-partnership-brix">
+  <div class="pp-partnership-brix__bg" style="background-image:url('<?php echo sgh_img('the-brix/the-brix-khong-gian-be-boi-ngoai-troi.jpg'); ?>');"></div>
+  <div class="pp-partnership-brix__overlay" aria-hidden="true"></div>
+
+  <div class="pp-partnership-brix__content scroll-reveal">
+    <h2 class="pp-partnership-brix__title"><?php echo esc_html__('Không gian trưng bày Momentum Living', 'saigonhoreca'); ?></h2>
+    <div class="pp-partnership-brix__divider" aria-hidden="true"></div>
+    <div class="pp-partnership-brix__text">
+      <p><?php echo esc_html__('Bên trong nhà hàng còn có phòng trưng bày của Momentum Living, với thiết kế tối giản theo xu hướng cổ điển. Sự kết hợp hài hòa giữa các gam màu sáng tối tạo nên nét thanh lịch, sang trọng.', 'saigonhoreca'); ?></p>
     </div>
   </div>
 </section>

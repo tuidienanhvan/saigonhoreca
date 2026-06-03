@@ -1,1 +1,1387 @@
-/** roka-fella-tinh-hoa-am-thuc-nhat-ban — gallery slot (no content). */
+/**
+ * Project Pillar — Roka Fella
+ * Section #6: gallery styling (Split-Screen Exhibition)
+ */
+
+.pp--rf .pp-rf-gallery {
+  position: relative;
+  padding: clamp(4.5rem, 9vw, 8.5rem) 0;
+  background-color: var(--b1);
+  overflow: hidden;
+}
+
+.rkf-gallery__layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .rkf-gallery__layout {
+    grid-template-columns: 46% 54%;
+  }
+
+  .rkf-gallery__main {
+    padding-right: 1.5rem;
+  }
+}
+
+.rkf-gallery__glass-card {
+  position: relative;
+  background: color-mix(in srgb, var(--b2) 85%, transparent);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-lg, 18px);
+  padding: clamp(1.75rem, 3.5vw, 2.75rem);
+  overflow: hidden;
+}
+
+/* SVG Corners */
+.rkf-gallery__glass-card .card-corner-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.rkf-gallery__header h2.pp-text-rf__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2.3rem);
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--bc);
+  margin: 0 0 0.75rem 0;
+}
+
+.rkf-gallery__lead {
+  font-family: var(--font-sans);
+  font-size: 0.98rem;
+  line-height: 1.75;
+  color: var(--bc2);
+  margin-bottom: 2rem;
+}
+
+/* Grid & Staggered Lift Cards */
+.rkf-gallery__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+@media (min-width: 640px) {
+  .rkf-gallery__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.rkf-gallery__item {
+  background: rgba(255, 255, 255, 0.01);
+  padding: 1.5rem;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  transition: transform 0.4s var(--ease-spring), background-color 0.4s, border-color 0.4s, box-shadow 0.4s;
+  position: relative;
+  overflow: hidden;
+}
+
+.rkf-gallery__item::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; width: 100%; height: 2px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s var(--ease-spring);
+}
+
+.rkf-gallery__item:hover {
+  transform: translateY(-5px);
+  background: color-mix(in srgb, var(--b1) 80%, transparent);
+  border-color: rgba(245, 166, 35, 0.25);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.rkf-gallery__item:hover::after {
+  transform: scaleX(1);
+}
+
+.rkf-gallery__item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  gap: 0.75rem;
+}
+
+.rkf-gallery__item strong {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--bc);
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.rkf-gallery__stat-badge {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+}
+
+.rkf-gallery__stat-badge--brand {
+  color: var(--gold);
+  border: 1px solid rgba(245, 166, 35, 0.3);
+  background: rgba(245, 166, 35, 0.05);
+}
+
+.rkf-gallery__stat-badge--metal {
+  color: #a0aec0;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.rkf-gallery__item p {
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--bc2);
+  margin: 0;
+}
+
+/* High-end Technical Note Box */
+.rkf-gallery__note-box {
+  display: flex;
+  gap: 1rem;
+  background: rgba(245, 166, 35, 0.02);
+  border-left: 3px solid var(--gold);
+  padding: 1.25rem;
+  border-radius: 0 8px 8px 0;
+  border-top: 1px solid rgba(245, 166, 35, 0.08);
+  border-right: 1px solid rgba(245, 166, 35, 0.08);
+  border-bottom: 1px solid rgba(245, 166, 35, 0.08);
+  transition: background-color 0.3s;
+}
+
+.rkf-gallery__note-box:hover {
+  background: rgba(245, 166, 35, 0.04);
+}
+
+.rkf-gallery__note-icon {
+  flex-shrink: 0;
+  color: var(--gold);
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.rkf-gallery__note-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.rkf-gallery__note {
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: var(--bc2);
+  margin: 0;
+}
+
+/* Image styling */
+.rkf-gallery__media .pp-image-container-rf {
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.6);
+}
+
+.rkf-gallery__media .pp-image-border-decor {
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+.rkf-gallery__media:hover .pp-image-border-decor {
+  border-color: var(--gold);
+}
+
+/* Image tag badge */
+.rkf-gallery__media .pp-image-tag-rf {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 4;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  background: rgba(10, 10, 10, 0.8);
+  border: 1px solid color-mix(in srgb, var(--gold) 30%, transparent);
+  padding: 0.35rem 0.75rem;
+  border-radius: 4px;
+  backdrop-filter: blur(5px);
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+/* Watermark số thứ tự 03 chìm trong Gallery */
+.pp-gallery-watermark-rf {
+  position: absolute !important;
+  top: -4rem !important;
+  right: 2rem !important;
+  font-family: var(--font-display), sans-serif !important;
+  font-size: clamp(12rem, 20vw, 24rem) !important;
+  font-weight: 800 !important;
+  color: var(--gold) !important;
+  opacity: 0.015 !important;
+  pointer-events: none !important;
+  user-select: none !important;
+  z-index: 1 !important;
+  line-height: 1 !important;
+}
+
+
+
+/* ===== merged from related.css — markup đã ở gallery.php (T-034 section 7). Merged để gỡ related.css =====*/
+/**
+ * Project Pillar — Roka Fella
+ * Section #7: related styling (Cinematic Vinyl Bar & Vinyl Record Watermark)
+ */
+
+.pp--rf .pp-rf-related {
+  position: relative;
+  padding: clamp(4.5rem, 9vw, 8.5rem) 0;
+  background-color: var(--b1);
+  overflow: hidden;
+}
+
+.pp-rf-related .pp-grid-12-rf {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .pp-rf-related .pp-grid-12-rf {
+    grid-template-columns: 45% 55%;
+  }
+}
+
+.rkf-related__glass-card {
+  position: relative;
+  background: color-mix(in srgb, var(--b2) 85%, transparent);
+  border: 1px dashed color-mix(in srgb, var(--gold) 35%, transparent);
+  border-radius: var(--radius-lg, 18px);
+  padding: clamp(2rem, 3.5vw, 3rem);
+  box-shadow: 
+    0 24px 50px rgba(0, 0, 0, 0.5),
+    inset 0 0 35px rgba(0, 0, 0, 0.7);
+  outline: 1px solid color-mix(in srgb, var(--gold) 15%, transparent);
+  outline-offset: -12px;
+  transition: transform 0.4s var(--ease-spring), border-color 0.4s, outline-color 0.4s;
+  overflow: visible;
+}
+
+.rkf-related__glass-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--gold);
+  outline-color: color-mix(in srgb, var(--gold) 50%, transparent);
+}
+
+/* card-corner-svg */
+.pp-rf-related .card-corner-svg {
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  width: calc(100% + 12px);
+  height: calc(100% + 12px);
+  pointer-events: none;
+  z-index: 4;
+  transition: transform 0.6s var(--ease-spring);
+}
+
+.rkf-related__glass-card:hover .card-corner-svg,
+.rkf-related__image-container:hover .card-corner-svg {
+  transform: scale(1.015);
+}
+
+.rkf-related__header h2.pp-text-rf__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3vw, 2.3rem);
+  font-weight: 700;
+  color: var(--bc);
+  line-height: 1.25;
+}
+
+.rkf-related__body {
+  font-family: var(--font-sans);
+  font-size: clamp(0.95rem, 1.1vw, 1.02rem);
+  line-height: 1.85;
+  color: var(--bc2);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  text-align: justify;
+}
+
+.rkf-related__body p:first-of-type::first-letter {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 3.5rem;
+  font-weight: 700;
+  float: left;
+  line-height: 0.85;
+  margin-right: 0.75rem;
+  margin-top: 0.15rem;
+  color: var(--gold);
+}
+
+.rkf-related__header .pp-text-rf__divider {
+  width: 60px;
+  height: 2px;
+  background: var(--gold);
+  margin: 1.5rem 0;
+  box-shadow: 0 0 8px var(--gold);
+}
+
+/* Vinyl Bar Image */
+.rkf-related__image-container {
+  border-radius: var(--radius-lg, 18px);
+  overflow: hidden;
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.75);
+}
+
+.rkf-related__image-container img {
+  filter: contrast(1.05) brightness(0.95);
+  transition: transform 1.2s var(--ease-spring), filter 0.6s;
+}
+
+.rkf-related__image-container:hover img {
+  transform: scale(1.05) rotate(0.5deg);
+  filter: contrast(1.08) brightness(1);
+}
+
+/* Vinyl record spinning watermark */
+.pp-rf-related .rkf-vinyl-record {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  animation: rkf-vinyl-spin 25s linear infinite !important;
+  opacity: 0.025 !important;
+  width: clamp(320px, 45vw, 500px) !important;
+  height: clamp(320px, 45vw, 500px) !important;
+  color: var(--gold) !important;
+  z-index: 1 !important;
+  border-radius: 50% !important;
+  box-shadow: 0 0 80px rgba(212, 175, 55, 0.03) !important;
+  pointer-events: none;
+}
+
+.pp-rf-related .rkf-vinyl-record::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important; left: 0 !important; width: 100% !important; height: 100% !important;
+  background: conic-gradient(from 0deg, transparent 35%, rgba(212,175,55,0.08) 50%, transparent 65%, transparent 90%, rgba(212,175,55,0.08) 95%, transparent 100%) !important;
+  border-radius: 50% !important;
+  pointer-events: none !important;
+}
+
+@keyframes rkf-vinyl-spin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pp-rf-related .rkf-vinyl-record {
+    animation: none !important;
+  }
+}
+
+/* Image tag badge */
+.rkf-related__image-container .pp-image-tag-rf {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 4;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  background: rgba(10, 10, 10, 0.8);
+  border: 1px solid color-mix(in srgb, var(--gold) 30%, transparent);
+  padding: 0.35rem 0.75rem;
+  border-radius: 4px;
+  backdrop-filter: blur(5px);
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+/* Quote mạ vàng chỉ kép */
+.rkf-related__quote {
+  position: relative;
+  margin-top: 2rem;
+  padding: 0.75rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  z-index: 2;
+}
+
+.rkf-related__quote-line {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212,175,55,0.5), transparent);
+  margin: 0.5rem 0;
+  position: relative;
+}
+
+.rkf-related__quote-line::after {
+  content: '';
+  position: absolute;
+  top: -1px; left: 50%;
+  transform: translateX(-50%);
+  width: 40px; height: 3px;
+  background: var(--gold);
+  box-shadow: 0 0 6px var(--gold);
+}
+
+.rkf-related__quote blockquote {
+  font-family: var(--font-serif), serif;
+  font-size: clamp(0.95rem, 1.2vw, 1.15rem);
+  font-style: italic;
+  color: var(--gold);
+  line-height: 1.6;
+  margin: 0;
+  padding: 0.5rem 1.5rem;
+  font-weight: 500;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* Khung góc mạ vàng nghệ thuật cho ảnh bàn giao */
+.rkf-related__image-container .pp-corner-ornament {
+  position: absolute !important;
+  width: 16px !important;
+  height: 16px !important;
+  border: 1px solid var(--gold) !important;
+  opacity: 0.35 !important;
+  transition: opacity 0.4s, transform 0.4s var(--ease-spring);
+  z-index: 3 !important;
+}
+
+.rkf-related__image-container:hover .pp-corner-ornament {
+  opacity: 0.95 !important;
+  transform: scale(1.1);
+}
+
+.rkf-related__image-container .pp-corner-ornament--top-left { top: 16px; left: 16px; border-right: none !important; border-bottom: none !important; }
+.rkf-related__image-container .pp-corner-ornament--top-right { top: 16px; right: 16px; border-left: none !important; border-bottom: none !important; }
+.rkf-related__image-container .pp-corner-ornament--bottom-left { bottom: 16px; left: 16px; border-right: none !important; border-top: none !important; }
+.rkf-related__image-container .pp-corner-ornament--bottom-right { bottom: 16px; right: 16px; border-left: none !important; border-top: none !important; }
+
+
+
+/* ===== merged from cta.css — markup đã ở gallery.php (T-034 section 8). Merged để gỡ cta.css =====*/
+/**
+ * Project Pillar — Roka Fella
+ * Section #8: cta & extended galleries (Gastronomy Mosaic, Vinyl Music & Grand CTA)
+ */
+
+/* ==========================================================================
+   Section 8A: Omakase Gastronomy Showcase
+   ========================================================================== */
+
+.pp-rf-cta-taste {
+  position: relative;
+  background-color: var(--b1);
+  padding: clamp(4.5rem, 8vw, 7.5rem) 0;
+  overflow: hidden;
+}
+
+.rkf-cta__header-wrapper {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.rkf-cta__header-wrapper .pp-text-rf__title {
+  margin-top: 0.5rem;
+}
+
+/* Mosaic Layout for 9-image gallery */
+.pp-gallery-rf {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+@media (min-width: 640px) {
+  .pp-gallery-rf {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .pp-gallery-rf {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding-bottom: 2rem;
+  }
+  
+  /* Tạo hiệu ứng khảm so le (Mosaic) cho lưới */
+  .pp-gallery-rf .pp-gallery-rf__item:nth-child(3n-1) {
+    transform: translateY(25px);
+  }
+}
+
+.pp-gallery-rf__item {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg, 16px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+  aspect-ratio: 1;
+  background: var(--b3);
+  transition: 
+    transform 0.5s var(--ease-spring),
+    border-color 0.4s,
+    box-shadow 0.4s;
+}
+
+.pp-gallery-rf__item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s var(--ease-spring), filter 0.5s;
+  filter: brightness(0.85) saturate(0.95);
+}
+
+/* Hover effects for Gastronomy */
+.pp-gallery-rf__item:hover {
+  border-color: rgba(245, 166, 35, 0.5);
+  box-shadow: 
+    0 20px 45px rgba(0, 0, 0, 0.85),
+    0 0 25px rgba(245, 166, 35, 0.15);
+}
+
+@media (min-width: 1024px) {
+  .pp-gallery-rf .pp-gallery-rf__item:nth-child(3n-1):hover {
+    transform: translateY(15px) scale(1.04);
+  }
+  .pp-gallery-rf .pp-gallery-rf__item:nth-child(3n):hover,
+  .pp-gallery-rf .pp-gallery-rf__item:nth-child(3n-2):hover {
+    transform: translateY(-10px) scale(1.04);
+  }
+}
+
+@media (max-width: 1023px) {
+  .pp-gallery-rf__item:hover {
+    transform: translateY(-6px) scale(1.03);
+  }
+}
+
+.pp-gallery-rf__item:hover img {
+  transform: scale(1.06);
+  filter: brightness(1) saturate(1.05);
+}
+
+/* Image tag badge for food */
+.pp-gallery-rf__item .pp-image-tag-rf {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  z-index: 4;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  color: var(--gold);
+  background: rgba(10, 10, 10, 0.85);
+  border: 1px solid rgba(245, 166, 35, 0.25);
+  padding: 0.3rem 0.65rem;
+  border-radius: 4px;
+  backdrop-filter: blur(4px);
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+
+/* ==========================================================================
+   Section 8B: Vinyl Mixology & Music Lounge
+   ========================================================================== */
+
+.pp-rf-cta-music {
+  position: relative;
+  background-color: var(--b2);
+  padding: clamp(4.5rem, 8vw, 7.5rem) 0;
+  overflow: hidden;
+}
+
+.rkf-music__split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .rkf-music__split {
+    grid-template-columns: 45% 55%;
+  }
+}
+
+/* Vinyl Player Visual styling */
+.rkf-music__visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.rkf-turntable {
+  position: relative;
+  width: min(100%, 420px);
+  aspect-ratio: 1.15;
+  background: linear-gradient(135deg, #161821 0%, #090a0e 100%);
+  border-radius: 24px;
+  box-shadow: 
+    0 35px 80px rgba(0, 0, 0, 0.9),
+    inset 0 0 30px rgba(0, 0, 0, 0.85),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(245, 166, 35, 0.18);
+  display: grid;
+  grid-template-columns: 22% 78%;
+  padding: 22px;
+  gap: 15px;
+  overflow: hidden;
+  align-items: center;
+}
+
+/* Các chi tiết ốc vít cơ khí ở góc đế máy */
+.rkf-turntable::before,
+.rkf-turntable::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #aaa, #333);
+  box-shadow: inset 0 1px 1px rgba(255,255,255,0.2);
+  opacity: 0.6;
+}
+.rkf-turntable::before { top: 12px; left: 12px; }
+.rkf-turntable::after { bottom: 12px; right: 12px; }
+
+/* Bảng điều khiển cơ khí chải xước */
+.rkf-turntable__dashboard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  border-right: 1px dashed rgba(245, 166, 35, 0.15);
+  padding-right: 15px;
+  z-index: 2;
+}
+
+.rkf-turntable__brand {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: rgba(245, 166, 35, 0.55);
+  text-align: center;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(245, 166, 35, 0.1);
+  padding-bottom: 6px;
+  margin-top: 5px;
+}
+
+.rkf-btn-group {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+
+/* Nút Start/Stop kim loại nổi 3D mạ vàng chải xước */
+.rkf-btn-metal {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  background: radial-gradient(circle at 35% 35%, #ffffff 0%, #cccccc 20%, #777777 60%, #222222 90%);
+  box-shadow: 
+    0 5px 10px rgba(0,0,0,0.6),
+    inset 0 2px 2px rgba(255,255,255,0.4),
+    inset 0 -2px 2px rgba(0,0,0,0.5);
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.rkf-btn-metal:active {
+  transform: scale(0.95);
+  box-shadow: 
+    0 2px 4px rgba(0,0,0,0.6),
+    inset 0 1px 1px rgba(0,0,0,0.6);
+}
+
+.rkf-btn-metal::before {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, #ffe699, #d4951b, #805500, #ffe699, #d4951b, #805500, #ffe699);
+  box-shadow: inset 0 1px 2px rgba(255,255,255,0.3);
+}
+
+.rkf-btn-dot {
+  position: relative;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #ff3b30;
+  box-shadow: 0 0 8px #ff3b30, inset 0 1px 1px rgba(255,255,255,0.3);
+  transition: background-color 0.4s, box-shadow 0.4s;
+  z-index: 1;
+}
+
+/* Công tắc chuyển đổi tốc độ */
+.rkf-speed-switch {
+  display: flex;
+  gap: 5px;
+  background: rgba(0, 0, 0, 0.45);
+  padding: 3px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.rkf-btn-speed {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.35);
+  padding: 3px 6px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s var(--ease-spring);
+}
+
+.rkf-btn-speed.active {
+  color: #000;
+  background: var(--gold);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.4);
+}
+
+/* Pitch Control */
+.rkf-pitch-control {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 5px;
+}
+
+.rkf-knob-metal {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #888888 0%, #333333 60%, #111111 100%);
+  box-shadow: 
+    0 4px 6px rgba(0,0,0,0.5),
+    inset 0 1px 1px rgba(255,255,255,0.25);
+  position: relative;
+}
+
+/* Các khía cơ khí răng cưa bao núm vặn */
+.rkf-knob-metal::before {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  border-radius: 50%;
+  background: repeating-conic-gradient(from 0deg, #111 0deg 12deg, #444 12deg 24deg);
+}
+
+.rkf-knob-metal::after {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #ffe699 0%, #d4951b 60%, #664d14 100%);
+  box-shadow: inset 0 1px 2px rgba(255,255,255,0.4);
+}
+
+.rkf-pitch-labels {
+  font-family: var(--font-mono);
+  font-size: 0.5rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.35);
+  text-transform: uppercase;
+}
+
+/* Mâm Platter nâng đỡ đĩa than */
+.rkf-turntable__platter {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+/* Mâm Platter đúc nhôm chải nhám */
+.rkf-turntable__platter::before {
+  content: '';
+  position: absolute;
+  width: 90%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, #252832 0%, #171920 50%, #08090c 100%);
+  border: 3px solid #222;
+  box-shadow: 
+    0 12px 30px rgba(0, 0, 0, 0.75),
+    inset 0 2px 5px rgba(255,255,255,0.06),
+    inset 0 -3px 5px rgba(0,0,0,0.85);
+}
+
+/* Hạt khía đo tốc độ mâm xoay (Strobe Lines) */
+.rkf-turntable__platter::after {
+  content: '';
+  position: absolute;
+  width: 90%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 2px dashed rgba(245, 166, 35, 0.14);
+  pointer-events: none;
+}
+
+/* Đĩa than (Vinyl Record) */
+.rkf-music__vinyl-record {
+  width: 82%;
+  height: 82%;
+  border-radius: 50%;
+  background: radial-gradient(circle, #1f2128 0%, #08090b 100%);
+  position: relative;
+  box-shadow: 
+    0 10px 25px rgba(0, 0, 0, 0.7),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+  animation: rkf-vinyl-spin 9s linear infinite;
+  animation-play-state: paused;
+  transition: transform 0.5s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  z-index: 2;
+}
+
+/* Rãnh âm thanh trên đĩa than */
+.rkf-vinyl-grooves {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: repeating-radial-gradient(circle, transparent 0px, transparent 4px, rgba(255, 255, 255, 0.015) 5px, transparent 6px, rgba(0, 0, 0, 0.45) 8px);
+  pointer-events: none;
+}
+
+/* Quét sáng phản chiếu đĩa than (Reflective Sheen Conic Glow) */
+.rkf-vinyl-grooves::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: conic-gradient(
+    from 45deg, 
+    transparent 12%, 
+    rgba(255, 255, 255, 0.06) 20%, 
+    transparent 28%, 
+    transparent 62%, 
+    rgba(255, 255, 255, 0.06) 70%, 
+    transparent 78%
+  );
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  border-radius: 50%;
+}
+
+.rkf-turntable:hover .rkf-music__vinyl-record {
+  animation-play-state: running; /* Kích hoạt quay đĩa than khi hover */
+}
+
+/* Nhãn đĩa cổ điển retro (Vinyl Label Center) */
+.rkf-music__vinyl-center {
+  position: absolute;
+  width: 32%;
+  height: 32%;
+  border-radius: 50%;
+  background: #000000;
+  border: 2px solid var(--gold);
+  box-shadow: 
+    inset 0 0 12px rgba(0,0,0,0.95),
+    0 0 5px rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.rkf-vinyl-label-inner {
+  width: 90%;
+  height: 90%;
+  border-radius: 50%;
+  border: 1px solid rgba(245, 166, 35, 0.25);
+  background: #0f1013;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.rkf-vinyl-label-text {
+  font-family: var(--font-mono);
+  font-size: 0.36rem;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  color: var(--gold);
+  text-align: center;
+  text-transform: uppercase;
+  white-space: nowrap;
+  animation: rkf-label-text-glow 3s ease-in-out infinite alternate;
+  display: block;
+}
+
+/* Cục chặn đĩa than bằng đồng thau nặng ở tâm trục (Record Weight Stabilizer) */
+.rkf-vinyl-stabilizer {
+  position: absolute;
+  width: 14%;
+  height: 14%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #ffffff 0%, #cca352 18%, #b38624 45%, #664d14 80%, #1f1706 100%);
+  box-shadow: 
+    0 5px 10px rgba(0,0,0,0.7),
+    inset 0 1px 1px rgba(255,255,255,0.45);
+  z-index: 3;
+}
+
+.rkf-vinyl-stabilizer::before {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.25);
+  background: repeating-radial-gradient(circle, transparent 0px, transparent 1px, rgba(0,0,0,0.3) 2px);
+}
+
+.rkf-vinyl-stabilizer::after {
+  content: '';
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #000;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Hệ thống cần kim cơ khí (Tonearm Mechanical System) */
+.rkf-turntable__tonearm-system {
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  pointer-events: none;
+  z-index: 4;
+}
+
+/* Đế Tonearm Gimbal mạ vàng chải xước */
+.rkf-tonearm-base {
+  position: absolute;
+  top: 32px;
+  right: 42px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #555555 0%, #222222 70%);
+  border: 1px solid rgba(0,0,0,0.65);
+  box-shadow: 
+    0 6px 12px rgba(0,0,0,0.55),
+    inset 0 1px 2px rgba(255,255,255,0.2);
+}
+
+.rkf-tonearm-base::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, #ffe699, #d4951b, #805500, #ffe699);
+  border: 1px solid rgba(0,0,0,0.45);
+  box-shadow: inset 0 1px 1px rgba(255,255,255,0.2);
+}
+
+.rkf-tonearm-base::after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  height: 18px;
+  background: linear-gradient(to right, #666, #222);
+  border-radius: 2px;
+  left: -7px;
+  top: 14px;
+  transform: rotate(-35deg);
+  box-shadow: 1px 2px 4px rgba(0,0,0,0.5);
+}
+
+/* Cần đọc Tonearm mạ crom bóng */
+.rkf-music__vinyl-arm {
+  position: absolute;
+  top: 48px;
+  right: 64px;
+  width: 8px;
+  height: 160px;
+  background: linear-gradient(to right, #ffffff 0%, #bbbbbb 30%, #666666 70%, #dddddd 100%);
+  border-radius: 4px;
+  transform-origin: 4px 6px;
+  transform: rotate(18deg);
+  transition: transform 0.9s cubic-bezier(0.25, 0.8, 0.3, 1.08);
+  box-shadow: 4px 14px 25px rgba(0,0,0,0.5);
+}
+
+/* Quả cân đối trọng ở đuôi cần */
+.rkf-tonearm-counterweight {
+  position: absolute;
+  top: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 26px;
+  background: linear-gradient(to right, #222, #555, #111);
+  border-radius: 3px;
+  border: 1px solid rgba(0,0,0,0.5);
+}
+
+.rkf-tonearm-counterweight::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: -2px;
+  right: -2px;
+  height: 6px;
+  background: repeating-linear-gradient(90deg, #ffe699 0px 1px, transparent 2px 4px);
+  opacity: 0.75;
+}
+
+.rkf-tonearm-counterweight::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 10px;
+  background: radial-gradient(circle, #ffe699 0%, #d4951b 80%);
+  border-radius: 2px;
+}
+
+/* Đầu kim đọc Cartridge mạ vàng phát sáng */
+.rkf-tonearm-cartridge {
+  position: absolute;
+  bottom: -4px;
+  left: -6px;
+  width: 14px;
+  height: 30px;
+  background: linear-gradient(135deg, #111 0%, #333 100%);
+  border-radius: 2px;
+  border-bottom: 4px solid var(--gold);
+  transform-origin: top center;
+  transform: rotate(-12deg);
+}
+
+.rkf-tonearm-cartridge::before {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 8px;
+  background: #eaeaea;
+}
+
+/* Đèn LED Stylus Lamp rọi sáng rãnh đĩa */
+.rkf-tonearm-cartridge::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+  filter: blur(2px);
+  opacity: 0.35;
+  transition: opacity 0.5s, filter 0.5s;
+}
+
+/* Tương tác khi HOVER vào cả hệ máy */
+.rkf-turntable:hover .rkf-music__vinyl-arm {
+  transform: rotate(26deg); /* Kim dịch chuyển tự động vào rãnh đĩa */
+}
+
+.rkf-turntable:hover .rkf-tonearm-cartridge::after {
+  opacity: 1;
+  filter: blur(3px);
+  box-shadow: 0 0 12px var(--gold); /* Đèn LED rọi sáng rực rỡ */
+}
+
+.rkf-turntable:hover .rkf-btn-dot {
+  background: #4cd964; /* Đèn tín hiệu đổi sang màu xanh hoạt động */
+  box-shadow: 0 0 10px #4cd964;
+}
+
+/* Text Column styling */
+.rkf-music__text-column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.rkf-music__subtitle {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.5vw, 2.1rem);
+  font-weight: 700;
+  color: var(--bc);
+  margin: 0.5rem 0 1.5rem 0;
+  line-height: 1.3;
+}
+
+.rkf-music__glass-card {
+  background: linear-gradient(135deg, rgba(12, 14, 20, 0.95) 0%, rgba(6, 7, 10, 0.98) 100%) !important;
+  border: 1px solid rgba(245, 166, 35, 0.15) !important;
+  border-radius: var(--radius-lg, 18px);
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  box-shadow: 0 25px 55px rgba(0, 0, 0, 0.7) !important;
+  position: relative;
+}
+
+.rkf-music__body-text {
+  font-family: var(--font-sans);
+  font-size: 0.98rem;
+  line-height: 1.8;
+  color: var(--bc2);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: justify;
+}
+
+
+/* ==========================================================================
+   Section 8C: Grand Saigon Horeca Corporate Call-to-Action
+   ========================================================================== */
+
+.pp-rf-cta-corporate {
+  position: relative;
+  background-color: var(--b1);
+  padding: clamp(5rem, 10vw, 9rem) 0;
+  overflow: hidden;
+}
+
+/* Dynamic grid pattern background */
+.pp-cta-grid-pattern-rf {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(245, 166, 35, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245, 166, 35, 0.03) 1px, transparent 1px);
+  background-size: 30px 30px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.rkf-cta-corp__box {
+  position: relative;
+  z-index: 2;
+  max-width: 960px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, rgba(14, 17, 24, 0.96) 0%, rgba(8, 10, 14, 0.99) 100%);
+  border: 1px solid rgba(245, 166, 35, 0.22);
+  border-radius: 24px;
+  padding: clamp(2rem, 5vw, 4.5rem) clamp(1.5rem, 4vw, 3.5rem);
+  text-align: center;
+  box-shadow: 
+    0 40px 80px rgba(0, 0, 0, 0.85),
+    inset 0 0 40px rgba(245, 166, 35, 0.05);
+}
+
+.rkf-cta-corp__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 800;
+  color: var(--bc);
+  line-height: 1.25;
+  margin: 0 auto 1.5rem auto;
+  max-width: 780px;
+}
+
+.pp-highlight-gold-rf {
+  background: linear-gradient(to right, #ffe699, var(--gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline;
+}
+
+.rkf-cta-corp__desc {
+  font-family: var(--font-sans);
+  font-size: clamp(0.98rem, 1.15vw, 1.1rem);
+  line-height: 1.8;
+  color: var(--bc2);
+  max-width: 760px;
+  margin: 0 auto 3rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.rkf-cta-corp__desc p {
+  margin: 0;
+}
+
+/* Specs horizontal grid */
+.rkf-cta-corp__specs-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.75rem;
+  margin-bottom: 3.5rem;
+  text-align: left;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .rkf-cta-corp__specs-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+}
+
+.rkf-cta-corp__spec-item {
+  position: relative;
+  background: rgba(255, 255, 255, 0.02);
+  padding: 1.5rem 1.5rem 1.75rem 1.5rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  transition: transform 0.4s var(--ease-spring), border-color 0.4s;
+}
+
+.rkf-cta-corp__spec-item:hover {
+  transform: translateY(-6px);
+  border-color: rgba(245, 166, 35, 0.35);
+}
+
+.rkf-cta-corp__spec-num {
+  font-family: var(--font-mono);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+  display: block;
+  margin-bottom: 0.75rem;
+  opacity: 0.85;
+}
+
+.rkf-cta-corp__spec-content strong {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--bc);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.rkf-cta-corp__spec-content span {
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--bc3);
+  display: block;
+}
+
+/* Action button styling */
+.rkf-cta-corp__btn-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.rkf-cta-corp__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: linear-gradient(135deg, var(--gold) 0%, #d4951b 100%);
+  color: #000 !important;
+  font-family: var(--font-display);
+  font-size: 0.92rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  padding: 1.1rem 2.2rem;
+  border-radius: 8px;
+  box-shadow: 
+    0 15px 35px rgba(245, 166, 35, 0.25),
+    0 0 1px 1px rgba(255, 255, 255, 0.1) inset;
+  transition: transform 0.4s var(--ease-spring), box-shadow 0.4s;
+  text-decoration: none;
+}
+
+.rkf-cta-corp__btn svg {
+  width: 1.1rem;
+  height: 1.1rem;
+  stroke-width: 2.5;
+  transition: transform 0.4s var(--ease-spring);
+}
+
+.rkf-cta-corp__btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 
+    0 20px 45px rgba(245, 166, 35, 0.35),
+    0 0 25px rgba(245, 166, 35, 0.2);
+}
+
+.rkf-cta-corp__btn:hover svg {
+  transform: translateX(5px);
+}
+
+/* Hiệu ứng chuyển động (Mechanical Animations) */
+@keyframes rkf-vinyl-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rkf-label-text-glow {
+  from {
+    text-shadow: 0 0 2px rgba(245, 166, 35, 0.3);
+    color: rgba(245, 166, 35, 0.85);
+  }
+  to {
+    text-shadow: 0 0 8px rgba(245, 166, 35, 0.7);
+    color: rgba(245, 166, 35, 1);
+  }
+}

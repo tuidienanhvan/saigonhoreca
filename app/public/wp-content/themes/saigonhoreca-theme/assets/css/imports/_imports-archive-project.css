@@ -1,0 +1,13 @@
+/* Project archive (/du-an/) — dark luxe rebuild.
+   3 section CSS pairs: hero + trust + projects-grid (BEM, no Tailwind utility). */
+
+@import "./_imports-route-core.css";
+
+@import "../../../archive.css";
+
+/* /du-an/ template-parts (rewrite — match dark theme đồng bộ homepage) */
+@import "../../../template-parts/archive-project/hero.css";
+@import "../../../template-parts/archive-project/trust.css";
+@import "../../../template-parts/archive-project/projects-grid.css";
+
+

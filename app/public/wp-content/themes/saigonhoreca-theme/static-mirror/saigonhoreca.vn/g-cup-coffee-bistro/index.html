@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="vi" prefix="og: https://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Resource Hints -->
+    <link rel="dns-prefetch" href="https://img.youtube.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Favicons & Manifest -->
+    <link rel="icon" type="image/x-icon" href="https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/assets/images/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/assets/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/assets/images/favicon-16x16.png">
+    <link rel="manifest" href="https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/manifest.json">
+    
+    <style id="sgh-critical">*,:before,:after{box-sizing:border-box}html,body{margin:0;padding:0}body{font-family:Be Vietnam Pro,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.5;color:#fff;background:#0a0a0a;-webkit-font-smoothing:antialiased}h1,h2,h3,h4,h5,h6{margin:0;font-weight:700;color:#fff}img,svg,video{display:block;max-width:100%;height:auto}a{color:inherit;text-decoration:none}button{border:0;cursor:pointer;font:inherit;background:transparent}.sh-skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;background:#f5a623;color:#fff;padding:.5rem 1rem;z-index:100}.sh-skip-link:focus{left:16px;top:16px;width:auto;height:auto}.sh-header{position:sticky;top:0;z-index:50;width:100%;background:#000;border-bottom:1px solid rgba(255,255,255,0.06)}.sh-header__bar{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;padding:.75rem 1.25rem;min-height:76px;color:#fff}.sh-header__actions{display:flex;gap:.75rem;align-items:center}.sh-nav{display:none;position:relative;z-index:10;justify-content:center;align-items:center;overflow:visible;max-width:100%}@media(min-width:1024px){.sh-nav{display:flex}}.sh-nav__list{display:flex;flex-wrap:nowrap;justify-content:center;align-items:center;gap:.25rem;margin:0;padding:0;list-style:none}@media(min-width:1024px){.sh-nav__list{gap:.5rem}}@media(min-width:1280px){.sh-nav__list{gap:1rem}}.sh-nav-item{display:flex;align-items:center;height:100%;position:relative}.sh-nav-item__link{display:inline-flex;align-items:center;gap:.375rem;padding:1.5rem .875rem;font-size:clamp(11px,.9vw,13px);font-weight:700;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;color:rgba(255,255,255,0.88);text-decoration:none}.sh-nav-item__chevron{display:inline-flex;margin-left:.25rem}.sh-nav-item__chevron-icon{display:block;width:.75rem;height:.75rem;opacity:.7}.sh-hero{position:relative;width:100%;aspect-ratio:16/9;background:#000;overflow:hidden}.sh-hero__slider{position:relative;width:100%;height:100%;background:#000}.sh-hero__slides{position:relative;width:100%;height:100%}.carousel-slide{position:absolute;inset:0;width:100%;height:100%;display:none;background:#000}.carousel-slide.active{display:block;z-index:20;opacity:1}.sh-hero__bg-img,.carousel-slide .slide-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;background:#000}.sh-hero__overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(0,0,0,0.55) 0%,rgba(0,0,0,0.30) 40%,rgba(0,0,0,0.15) 100%);pointer-events:none}.sgh-cv-auto{content-visibility:auto;contain-intrinsic-size:auto 600px}#sh-hero-slider .carousel-slide .slide-bg,#sh-hero-slider .carousel-slide .sh-hero__bg-img,.sh-hero__slider .carousel-slide .slide-bg,.sh-hero__slider .carousel-slide .sh-hero__bg-img{animation:none!important;transform:none!important}.sh-hero__nav{position:absolute;top:50%;transform:translateY(-50%);z-index:20;background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.3);color:#fff;width:2.75rem;height:2.75rem;border-radius:9999px;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:.8}.sh-hero__nav--prev{left:1rem}.sh-hero__nav--next{right:1rem}@media(min-width:768px){.sh-hero__nav{width:3.5rem;height:3.5rem}.sh-hero__nav--prev{left:2rem}.sh-hero__nav--next{right:2rem}}.sh-hero__dots{position:absolute;bottom:2rem;right:2rem;z-index:20;display:flex;gap:.5rem}.sh-hero__dot,.carousel-dot{width:.5rem;height:.5rem;padding:0;border:none;border-radius:9999px;background:rgba(255,255,255,0.4);cursor:pointer}.sh-hero__dot.active,.carousel-dot.active{width:2rem;background:#f5a623}
+/* Per-route critical CSS — Saigon Horeca.
+ *
+ * Inlined by critical-css.php (concatenated after critical.css). Covers
+ * above-fold styles for routes where the route-bundle CSS round-trip
+ * would otherwise gate the LCP paint.
+ */
+
+/* ── /du-an/ archive hero — kill 1.2 s opacity-fade-in for LCP slide ──
+ *
+ * The bg-stack has 6 absolute-positioned <div> slides; slide 0 has
+ * `.is-active` server-side but the route bundle animates opacity
+ * 0 → 1 over 1.2 s. Lighthouse Mobile baseline: P=75, LCP=7.9 s with
+ * 88 % render-delay because LCP element waits for opacity:1.
+ *
+ * Inlining paints the active slide at opacity:1 immediately on first
+ * HTML parse — no waiting for theme-archive-project.css to arrive.
+ * Carousel JS still toggles `is-active` to cycle slides; subsequent
+ * transitions still animate after the first paint completes.
+ */
+.sh-archive-hero {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: #000;
+    overflow: hidden;
+}
+.sh-archive-hero__bg-stack {
+    position: absolute;
+    inset: 0;
+}
+.sh-archive-hero__bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+}
+.sh-archive-hero__bg.is-active {
+    opacity: 1;
+}
+
+/* ── /ve-saigon-horeca/ (page-gioi-thieu template) about hero ──
+ * Same opacity-fade trap. Force opacity:1 on first paint. */
+.sh-about-hero {
+    position: relative;
+    width: 100%;
+    min-height: 520px;
+    background: #000;
+    overflow: hidden;
+}
+@media (max-width: 640px) {
+    .sh-about-hero { min-height: 380px; }
+}
+.sh-about-hero__bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 1;
+}
+</style>
+        <title>G.CUP COFFEE &amp; BISTRO &#8211; Saigon Horeca</title>
+<meta name='robots' content='max-image-preview:large' />
+<meta name="description" content="“Mâm cơm” bước ra thế giới – Khi không gian kể chuyện trở thành cầu – Giá tốt, bảo hành chính hãng – Hotline: 0901 304 365">
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//www.googletagmanager.com' />
+<link rel='dns-prefetch' href='//www.google-analytics.com' />
+<link rel='dns-prefetch' href='//zalo.me' />
+<link rel='dns-prefetch' href='//www.facebook.com' />
+<link rel='dns-prefetch' href='//www.youtube.com' />
+<link rel="preload" as="style" href="css/theme-project.css">
+<link rel="alternate" type="application/rss+xml" title="Saigon Horeca &raquo; G.CUP COFFEE &amp; BISTRO Comments Feed" href="https://saigonhoreca.local/du-an/g-cup-coffee-bistro/feed/" />
+    <script>
+    (function(){
+        // Always load tracking — cookie consent is cosmetic only
+        function afterConsent(cb) {
+            try {
+                if (localStorage.getItem('sh_cookies_accepted') === '1') {
+                    cb();
+                    return;
+                }
+            } catch (e) {}
+            window.addEventListener('sh:cookies-accepted', cb, { once: true });
+        }
+        afterConsent(function(){
+                        });
+    })();
+    </script>
+    <style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+
+
+<link rel='stylesheet' id='theme-tokens-css' href='css/theme-project.css' media='all' />
+<style id="theme-tokens-inline-css">
+
+        :root {
+            --font-body: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            --font-heading: "Lexend", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            --font-serif: "Lora", Georgia, serif;
+            --ast-global-color-0: #f9c349;
+            --ast-global-color-1: #ffb100;
+            --ast-global-color-2: #000000;
+            --ast-global-color-3: #242525;
+            --ast-global-color-4: #f9fafb;
+            --ast-global-color-5: #ffffff;
+            --ast-global-color-6: #e2e8f0;
+            --ast-global-color-7: #cbd5e1;
+            --ast-global-color-8: #94a3b8;
+            --e-global-color-astglobalcolor0: #f9c349;
+            --e-global-color-astglobalcolor1: #ffb100;
+            --e-global-color-astglobalcolor2: #000000;
+            --e-global-color-astglobalcolor3: #242525;
+            --e-global-color-astglobalcolor4: #f9fafb;
+            --e-global-color-astglobalcolor5: #ffffff;
+            --e-global-color-astglobalcolor6: #e2e8f0;
+            --e-global-color-astglobalcolor7: #cbd5e1;
+            --e-global-color-astglobalcolor8: #94a3b8;
+        }
+        body { font-family: var(--font-body); }
+        h1, h2, h3, h4, h5, h6, .font-sans { font-family: var(--font-heading) !important; }
+        .e-font-icon-svg { display: inline-block; width: 1em; height: 1em; fill: currentColor; }
+
+        /* ROKA FELLA CAPTION & LAYOUT ENHANCEMENTS */
+        .pp-image-container-rf {
+            position: relative !important;
+            overflow: hidden !important;
+        }
+        .pp-image-caption-rf {
+            position: absolute !important;
+            bottom: 0.75rem !important;
+            left: 0.75rem !important;
+            z-index: 5 !important;
+            padding: 0.4rem 0.85rem !important;
+            background: rgba(10, 10, 10, 0.85) !important;
+            border: 1px solid rgba(255, 255, 255, 0.12) !important;
+            border-radius: 6px !important;
+            font-family: var(--font-heading), sans-serif !important;
+            font-size: 0.68rem !important;
+            font-weight: 700 !important;
+            letter-spacing: 0.05em !important;
+            color: var(--gold) !important;
+            backdrop-filter: blur(8px) !important;
+            -webkit-backdrop-filter: blur(8px) !important;
+            pointer-events: none !important;
+            opacity: 0.85 !important;
+            transition: opacity 0.3s ease, transform 0.3s ease !important;
+            width: auto !important;
+            max-width: calc(100% - 1.5rem) !important;
+            text-align: left !important;
+            display: inline-block !important;
+            border-top: none !important;
+        }
+        .pp-image-container-rf:hover .pp-image-caption-rf {
+            opacity: 1 !important;
+            transform: translateY(-2px) !important;
+        }
+        .pp-image-container-rf img {
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        }
+        .pp-image-container-rf:hover img {
+            transform: scale(1.04) !important;
+            filter: grayscale(0%) contrast(1.05) brightness(1.02) !important;
+        }
+        /* Premium Cards styling */
+        .rkf-concept__glass-card,
+        .rkf-specs__glass-card {
+            background: linear-gradient(135deg, rgba(12, 14, 20, 0.92) 0%, rgba(6, 7, 10, 0.97) 100%) !important;
+            border: 1px solid rgba(245, 166, 35, 0.18) !important;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), inset 0 0 35px rgba(245, 166, 35, 0.04) !important;
+        }
+        .rkf-concept__glass-card:hover,
+        .rkf-specs__glass-card:hover {
+            border-color: rgba(245, 166, 35, 0.45) !important;
+            box-shadow: 0 35px 70px rgba(0, 0, 0, 0.92), 0 0 35px rgba(245, 166, 35, 0.1) !important;
+        }
+        .rkf-partnership__glass-card,
+        .rkf-related__glass-card {
+            background: linear-gradient(135deg, rgba(12, 14, 20, 0.92) 0%, rgba(6, 7, 10, 0.97) 100%) !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.85) !important;
+        }
+        .rkf-partnership__glass-card:hover,
+        .rkf-related__glass-card:hover {
+            border-color: rgba(255, 255, 255, 0.15) !important;
+            box-shadow: 0 35px 70px rgba(0, 0, 0, 0.95) !important;
+        }
+        /* Staggered floaters adjustment */
+        .rkf-partnership__image-container--floating {
+            box-shadow: -20px 20px 50px rgba(0, 0, 0, 0.9), 0 0 30px rgba(245, 166, 35, 0.15) !important;
+            transform: rotate(3deg) translateY(0) !important;
+        }
+        .rkf-partnership__side:hover .rkf-partnership__image-container--floating {
+            transform: scale(1.04) rotate(0deg) translateY(-10px) !important;
+        }
+    
+/*# sourceURL=theme-tokens-inline-css */
+</style>
+<link rel='preload' as='style' onload="this.onload=null;this.rel='stylesheet'" id='google-fonts-sgh-css' href='https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&#038;family=Lexend:wght@500;700&#038;family=Lora:ital,wght@0,400;0,500;0,700;1,400;1,700&#038;display=swap' media='all' />
+<link rel="https://api.w.org/" href="https://saigonhoreca.local/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://saigonhoreca.local/wp-json/wp/v2/project/723" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://saigonhoreca.local/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress 7.0" />
+<link rel="canonical" href="https://saigonhoreca.local/du-an/g-cup-coffee-bistro/" />
+<link rel='shortlink' href='https://saigonhoreca.local/?p=723' />
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","@id":"https://saigonhoreca.local/#organization","name":"SAIGON HORECA","legalName":"CÔNG TY TNHH SÀI GÒN HORECA","url":"https://saigonhoreca.local/","description":"Saigon Horeca cung cấp đa dạng các sản phẩm thiết bị bếp công nghiệp và thiết bị quầy bar phục vụ cho khách hàng trong lĩnh vực F&B, bao gồm tư vấn thiết kế, thi công lắp đặt, cung cấp thiết bị, và tư vấn vận hành kinh doanh.","telephone":"0901 304 365","email":"contact@saigonhoreca.com","address":{"@type":"PostalAddress","streetAddress":"Số 40 Đường Số 6, Khu Dân Cư Melosa Khang Điền, Phường Long Trường, TP. Hồ Chí Minh","addressLocality":"Hồ Chí Minh","addressRegion":"Hồ Chí Minh","addressCountry":"VN"},"logo":{"@type":"ImageObject","url":"https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/assets/images/logo.png"},"image":"https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/assets/images/logo.png","sameAs":["https://www.facebook.com/saigonhoreca","https://www.youtube.com/@saigonhoreca","https://zalo.me/0901304365"],"contactPoint":[{"@type":"ContactPoint","telephone":"0901 304 365","contactType":"sales","areaServed":"VN","availableLanguage":["Vietnamese","English"]},{"@type":"ContactPoint","telephone":"0909 040 920","contactType":"customer support","areaServed":"VN"}]}</script>
+
+<link rel="alternate" hreflang="vi" href="https://saigonhoreca.vn/du-an/g-cup-coffee-bistro/">
+<link rel="alternate" hreflang="en" href="https://saigonhoreca.com/projects/g-cup-coffee-bistro/">
+<link rel="alternate" hreflang="x-default" href="https://saigonhoreca.vn/du-an/g-cup-coffee-bistro/">
+
+    <!-- SEO Fallback: OpenGraph only (meta description is handled by
+         inc/core/seo-meta-description.php to guarantee 120-155 chars). -->
+            <meta property="og:title" content="G.CUP COFFEE &amp; BISTRO">
+        <meta property="og:description" content="“Mâm cơm” bước ra thế giới – Khi không gian kể chuyện trở thành cầu – Giá tốt, bảo hành chính hãng – Hotline: 0901 304 365">
+        <meta property="og:url" content="https://saigonhoreca.local/du-an/g-cup-coffee-bistro/">
+        <meta property="og:type" content="website">
+        <meta property="og:image" content="images/du-an-g-cup-coffee-bistro-1.jpg">
+        <meta property="og:site_name" content="Saigon Horeca">
+    
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Dark mode: apply BEFORE paint to prevent flash -->
+    <script>
+    (function(){
+        var d = null;
+        try { d = localStorage.getItem('sh-dark'); } catch (e) {}
+        if (d === 'true') document.documentElement.classList.add('dark');
+    })();
+    </script>
+    </head>
+<body class="wp-singular project-template-default single single-project postid-723 wp-embed-responsive wp-theme-saigonhoreca-theme page-template-page-project-g-cup-coffee-bistro page-template-page-project">
+<main id="primary" class="pp pp--gcb" tabindex="-1">
+    <section class="pp-hero-gcb">
+    <div class="pp-hero-gcb__media" style="background-image:url('images/g-cup-coffee-bistro-hero.jpg');"></div>
+    <div class="pp-hero-gcb__overlay" aria-hidden="true"></div>
+
+    <div class="pp-ambient-glow-gcb pp-ambient-glow-gcb--center" aria-hidden="true"></div>
+
+    <div class="pp-hero-gcb__content">
+        <h1 class="pp-hero-gcb__title scroll-reveal">G.CUP COFFEE &amp; BISTRO</h1>
+        <p class="pp-hero-gcb__subhead scroll-reveal">Bếp vận hành đồng điệu với không gian được trau chuốt đến từng chi tiết</p>
+        <p class="pp-hero-gcb__subtitle scroll-reveal">Giữa lòng Metropole Thủ Thiêm – khu đô thị hiện đại và sôi động bậc nhất TP.HCM – G.Cup Coffee &amp; Bistro chọn cho mình một hướng đi riêng: tinh tế, trau chuốt và đặt trọn tâm huyết vào từng trải nghiệm của khách hàng.</p>
+    </div>
+</section>
+<section class="pp-section-gcb pp-section-gcb--alt">
+  <!-- Gradient Grids & SVG hoa văn chuyển động mờ dưới nền -->
+  <svg class="pp-gcb-bg-grid" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="position: absolute; inset: 0; opacity: 0.15; pointer-events: none;">
+    <defs>
+      <pattern id="gcb-grid" width="60" height="60" patternUnits="userSpaceOnUse">
+        <path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(245, 166, 35, 0.05)" stroke-width="1"/>
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#gcb-grid)" />
+    <circle cx="20%" cy="40%" r="300" stroke="rgba(245, 166, 35, 0.03)" stroke-width="1" stroke-dasharray="10 15" class="gcb-orbit-anim"/>
+  </svg>
+
+  <div class="pp-container-shared">
+    <!-- Asymmetric Editorial Grid: Chữ trái 4.8fr / Ảnh phải 7.2fr -->
+    <div class="pp-gcb-editorial-grid">
+      
+      <!-- Cột chữ (40%) -->
+      <div class="pp-gcb-editorial-text scroll-reveal">
+        <span class="pp-text-gcb__divider" aria-hidden="true"></span>
+        <h2 class="pp-text-gcb__title" style="margin-top: 1rem; margin-bottom: 2rem;">
+          Không gian G-Cup Bistro – Khi thiết kế &amp; vận hành song hành        </h2>
+        
+        <div class="pp-text-gcb__body">
+          <div class="pp-gcb-highlight-quote" style="border-left: 2px solid var(--gold); padding-left: 1.25rem; margin-bottom: 1.5rem;">
+            <p style="font-size: 1.05rem; line-height: 1.8; font-weight: 500; font-style: italic; color: var(--bc);">
+              <span class="pp-gcb-dropcap" style="font-size: 3rem; float: left; line-height: 0.8; margin-right: 0.5rem; color: var(--gold); font-family: var(--font-display);">T</span>ọa lạc tại Thủ Thiêm – khu đô thị hiện đại bậc nhất, G.Cup Coffee &amp; Bistro chọn gu thẩm mỹ tinh tế, pha trộn giữa cà phê thủ công và món ăn nhẹ đầy phong cách.            </p>
+            <div style="clear: both;"></div>
+          </div>
+          
+          <p class="pp-gcb-desc-p">
+            Yêu cầu đặt ra cực kỳ khắt khe: quầy bar và khu bếp bánh phải gọn gàng, mượt mà và dễ vận hành trong diện tích giới hạn của shophouse cao cấp.          </p>
+          <p class="pp-gcb-desc-p">
+            Saigon Horeca đồng hành thiết kế quầy bar một chiều thông minh, kết nối mạch lạc với bếp bánh phía trong, đảm bảo trải nghiệm hoàn hảo cho barista và thực khách.          </p>
+        </div>
+      </div>
+
+      <!-- Cột ảnh (60%) uốn lượn xếp chồng tạo chiều sâu 3D -->
+      <div class="pp-gcb-editorial-media">
+        <!-- SVG trang trí vòng tròn kỹ thuật -->
+        <svg class="pp-gcb-circle-decor" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="position: absolute; top: -10%; right: -10%; width: 60%; opacity: 0.08; pointer-events: none;">
+          <circle cx="200" cy="200" r="180" stroke="var(--gold)" stroke-width="1.5" stroke-dasharray="8 6"/>
+          <circle cx="200" cy="200" r="130" stroke="var(--gold)" stroke-width="0.8"/>
+        </svg>
+
+        <!-- Ảnh lớn làm nền chính -->
+        <div class="pp-gcb-luxury-frame pp-gcb-luxury-frame--main scroll-reveal">
+          <span class="pp-gcb-corner pp-gcb-corner--tl"></span>
+          <span class="pp-gcb-corner pp-gcb-corner--tr"></span>
+          <span class="pp-gcb-corner pp-gcb-corner--bl"></span>
+          <span class="pp-gcb-corner pp-gcb-corner--br"></span>
+          <div class="pp-image-container-shared" style="aspect-ratio: 16 / 10;">
+            <img src="images/g-cup-coffee-bistro-hero.jpg" alt="Thiết kế quầy bar pha chế chuyên nghiệp tại G-Cup Coffee &amp; Bistro" loading="lazy" decoding="async">
+            <div class="pp-image-caption-shared">
+              Thiết kế quầy bar pha chế chuyên nghiệp tại G-Cup Coffee &amp; Bistro Thủ Thiêm với máy pha cà phê La Marzocco cao cấp và hệ đèn sợi đốt ấm áp.            </div>
+          </div>
+        </div>
+
+        <!-- Ảnh nhỏ đè chéo lệch góc bên dưới -->
+        <div class="pp-gcb-luxury-frame pp-gcb-luxury-frame--sub scroll-reveal" style="margin-top: -5rem; margin-left: 4rem; position: relative; z-index: 5;">
+          <span class="pp-gcb-corner pp-gcb-corner--tl"></span>
+          <span class="pp-gcb-corner pp-gcb-corner--tr"></span>
+          <span class="pp-gcb-corner pp-gcb-corner--bl"></span>
+          <span class="pp-gcb-corner pp-gcb-corner--br"></span>
+          <div class="pp-image-container-shared" style="aspect-ratio: 4 / 3;">
+            <img src="images/g-cup-coffee-bistro-coffee-station.jpg" alt="Khu vực quầy pha chế chính G-Cup Bistro" loading="lazy" decoding="async">
+            <div class="pp-image-caption-shared">
+              Khu vực quầy pha chế chính G-Cup Bistro được thiết kế thông minh, tối ưu hóa quy trình một chiều cho barista thao tác chuẩn xác.            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<section class="pp-section-gcb pp-concept-section-gcb pp-section-gcb--alt">
+  <div class="pp-container-shared">
+
+    <!-- Họa tiết SVG sóng cà phê và các hạt espresso rơi nhẹ -->
+    <svg class="pp-gcb-bg-fluid" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="position: absolute; top: 15%; left: 5%; width: 45%; height: 70%; opacity: 0.05; pointer-events: none; z-index: 1;">
+      <path d="M50 450 C 150 350, 220 520, 320 400 C 420 280, 350 180, 450 120 C 550 60, 580 120, 650 80" stroke="var(--gold)" stroke-width="1.2" stroke-dasharray="6 4"/>
+      <circle cx="450" cy="120" r="30" stroke="var(--gold)" stroke-width="0.5" stroke-dasharray="2 3"/>
+      <circle cx="450" cy="120" r="50" stroke="var(--gold)" stroke-width="0.5"/>
+    </svg>
+
+    <!-- Cấu trúc Layout nghệ thuật chồng lớp: Ảnh Trái rộng / Card chữ kính mờ đè chéo bên Phải -->
+    <div class="pp-gcb-concept-editorial">
+      
+      <!-- Khối ảnh lớn bên trái (Bếp Á xào bùng lửa cực kỳ động) -->
+      <div class="pp-gcb-concept-visual scroll-reveal">
+        <div class="pp-gcb-concept-photo">
+          <!-- Đường line trang trí màu vàng chạy dọc theo mép ảnh -->
+          <span class="pp-gcb-vertical-line" aria-hidden="true"></span>
+          
+          <div class="pp-image-container-shared" style="aspect-ratio: 16 / 10;">
+            <img src="images/g-cup-coffee-bistro-chef-wok.jpg" alt="Đầu bếp xào bùng lửa trên bếp gas Á công nghiệp G-Cup Bistro" loading="lazy" decoding="async">
+            <div class="pp-image-caption-shared">
+              Đầu bếp thao tác kỹ thuật xào bùng lửa lớn trên hệ thống bếp Á công nghiệp công suất cao, tạo hiệu ứng caramel hóa và hương vị đậm đà cho món ăn.            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Khối chữ kính mờ đè chéo nghệ thuật bên phải -->
+      <div class="pp-gcb-concept-text scroll-reveal">
+        <div class="pp-gcb-concept-glass-card">
+          <span class="pp-gcb-concept-tag">VẬN HÀNH THÔNG MINH</span>
+          <h3 class="pp-gcb-card-heading" style="font-size: clamp(1.6rem, 2.8vw, 2.2rem); margin-top: 0.75rem; margin-bottom: 1.5rem; line-height: 1.25; color: var(--bc); font-family: var(--font-display);">
+            Bố trí bếp bánh &amp; bếp nấu một chiều          </h3>
+          
+          <div class="pp-gcb-concept-card-body">
+            <div class="pp-gcb-highlight-quote" style="border-left: 2px solid var(--gold); padding-left: 1.25rem; margin-bottom: 1.5rem;">
+              <p style="font-size: 0.98rem; line-height: 1.7; font-weight: 500; font-style: italic; color: var(--bc);">
+                “Đằng sau một không gian thưởng thức nghệ thuật là cấu trúc bếp một chiều khép kín, tối ưu hóa từng mét vuông mặt bằng shophouse.”              </p>
+            </div>
+            
+            <p class="pp-gcb-desc-p" style="font-size: 0.92rem; line-height: 1.8; color: var(--bc2); margin-bottom: 1rem;">
+              Bếp bánh và bếp nấu tại G-Cup được Saigon Horeca bố trí thành hai phân khu độc lập nhưng kề sát, giúp mùi vị các món ăn không bị pha lẫn, giữ trọn vẹn hương vị thành phẩm.            </p>
+            <p class="pp-gcb-desc-p" style="font-size: 0.92rem; line-height: 1.8; color: var(--bc2); margin: 0;">
+              Toàn bộ hệ thống bàn mát, tủ lạnh quầy bar inox Hoshizaki được thiết kế âm quầy tinh tế, nâng đỡ hoàn hảo cho luồng công việc liên tục từ sáng đến tối muộn.            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+<section class="pp-section-bg-gcb" style="background-image:url('images/g-cup-coffee-bistro-drip-filter.jpg');">
+  <div class="pp-section-bg-gcb__overlay" aria-hidden="true"></div>
+  <div class="pp-section-bg-gcb__content pp-container-shared scroll-reveal">
+    <span class="pp-text-gcb__divider pp-text-gcb__divider--center" aria-hidden="true"></span>
+    <h2 class="pp-text-gcb__title">Thách thức trong thi công bếp &amp; bar cho khu phức hợp cao cấp</h2>
+    <div class="pp-text-gcb__body">
+      <p>Thi công bếp công nghiệp và quầy bar cho quán cà phê – nhà hàng tại các khu phức hợp cao cấp như Metropole Thủ Thiêm không hề đơn giản. Ngoài yêu cầu khắt khe về kỹ thuật, các yếu tố an toàn và tránh tối đa ảnh hưởng tới môi trường và cư dân xung quanh, đơn vị thi công cần hiểu rõ về không gian, quy trình vận hành, yếu tố thẩm mỹ và đặc biệt là phải đặt mình vào vị trí người sử dụng để mang lại trải nghiệm tốt nhất.</p>
+      <p>Trong những căn shophouse hoặc mặt bằng thương mại điển hình, diện tích dành cho bếp, bar hay khu bánh thường được thiết kế khá gọn gàng. Thế nhưng phía sau sự tối giản ấy là cả một hệ thống vận hành có công suất lớn, phải đủ linh hoạt để xử lý giờ cao điểm mà vẫn bền bỉ trong suốt nhiều giờ làm việc liên tục.</p>
+    </div>
+  </div>
+</section>
+<section class="pp-section-gcb pp-specs-section-gcb">
+  <div class="pp-container-shared">
+    <div class="pp-gcb-specs-grid">
+      
+      <!-- Cột trái (7 cột/60%): Cụm Collage 3 ảnh thiết bị Bar kỹ thuật xếp chồng lệch góc nghệ thuật -->
+      <div class="pp-gcb-specs-media">
+        <!-- Nhãn tọa độ kỹ thuật mờ chạy xung quanh góc ảnh -->
+        <div class="pp-gcb-specs-coord pp-gcb-specs-coord--tl" aria-hidden="true">METROPOLE_SH_02 / CAD_v1.8</div>
+        <div class="pp-gcb-specs-coord pp-gcb-specs-coord--tr" aria-hidden="true">SCALE: 1:25 @ A3</div>
+        <div class="pp-gcb-specs-coord pp-gcb-specs-coord--bl" aria-hidden="true">SYS_COORD: 10.7719° N, 106.7214° E</div>
+        <div class="pp-gcb-specs-coord pp-gcb-specs-coord--br" aria-hidden="true">SAIGON HORECA © 2026</div>
+
+        <div class="pp-gcb-specs-collage">
+          <!-- Ảnh 1 (Ảnh chính): Máy pha La Marzocco phản chiếu bóng loáng -->
+          <div class="pp-gcb-collage-item pp-gcb-collage-item--main scroll-reveal">
+            <div class="pp-gcb-luxury-frame pp-gcb-luxury-frame--specs">
+              <span class="pp-gcb-corner pp-gcb-corner--tl"></span>
+              <span class="pp-gcb-corner pp-gcb-corner--tr"></span>
+              <span class="pp-gcb-corner pp-gcb-corner--bl"></span>
+              <span class="pp-gcb-corner pp-gcb-corner--br"></span>
+              <div class="pp-image-container-shared" style="aspect-ratio: 16 / 10;">
+                <img src="images/g-cup-coffee-bistro-lamarzocco-reflection.jpg" alt="Cận cảnh máy pha cà phê La Marzocco bóng bẩy" loading="lazy" decoding="async">
+                <div class="pp-image-caption-shared">Cận cảnh máy pha cà phê La Marzocco bằng thép không gỉ bóng loáng, phản chiếu sự chỉn chu của không gian.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ảnh 2 (Ảnh phụ đè góc trên): Máy xay cà phê Anfim -->
+          <div class="pp-gcb-collage-item pp-gcb-collage-item--sub-top scroll-reveal" style="margin-top: -3rem; margin-left: 5rem; position: relative; z-index: 4;">
+            <div class="pp-gcb-luxury-frame pp-gcb-luxury-frame--specs">
+              <span class="pp-gcb-corner pp-gcb-corner--tl"></span>
+              <span class="pp-gcb-corner pp-gcb-corner--tr"></span>
+              <span class="pp-gcb-corner pp-gcb-corner--bl"></span>
+              <span class="pp-gcb-corner pp-gcb-corner--br"></span>
+              <div class="pp-image-container-shared" style="aspect-ratio: 4 / 3;">
+                <img src="images/g-cup-coffee-bistro-coffee-grinders.jpg" alt="Hệ thống máy xay cà phê Anfim G-Cup Bistro" loading="lazy" decoding="async">
+                <div class="pp-image-caption-shared">Hệ thống máy xay kỹ thuật số Anfim chuyên nghiệp đạt độ mịn đồng đều tối đa cho espresso.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ảnh 3 (Ảnh phụ đè góc dưới): Bộ rửa ly âm bàn và chậu rửa bar -->
+          <div class="pp-gcb-collage-item pp-gcb-collage-item--sub-bottom scroll-reveal" style="margin-top: -4rem; margin-right: 4rem; position: relative; z-index: 5;">
+            <div class="pp-gcb-luxury-frame pp-gcb-luxury-frame--specs">
+              <span class="pp-gcb-corner pp-gcb-corner--tl"></span>
+              <span class="pp-gcb-corner pp-gcb-corner--tr"></span>
+              <span class="pp-gcb-corner pp-gcb-corner--bl"></span>
+              <span class="pp-gcb-corner pp-gcb-corner--br"></span>
+              <div class="pp-image-container-shared" style="aspect-ratio: 4 / 3;">
+                <img src="images/g-cup-coffee-bistro-bar-details.jpg" alt="Chi tiết bộ rửa ly âm bàn" loading="lazy" decoding="async">
+                <div class="pp-image-caption-shared">Chi tiết chậu rửa bar tích hợp bộ rửa ly áp lực và knock box âm bàn giúp barista thao tác cực kỳ nhanh gọn.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cột phải (5 cột/40%): Thông số kỹ thuật & Giải pháp cơ điện -->
+      <div class="pp-gcb-specs-info scroll-reveal">
+        <div class="pp-gcb-glass-card-specs">
+          <header class="pp-gcb-specs-header">
+            <div class="pp-gcb-badge">
+              <svg viewBox="0 0 24 24" fill="currentColor" style="width:14px; height:14px; margin-right:6px;" aria-hidden="true">
+                <path d="M12 2L14.85 9.15L22 12L14.85 14.85L12 22L9.15 14.85L2 12L9.15 9.15L12 2Z"/>
+              </svg>
+              THÔNG SỐ &amp; GIẢI PHÁP            </div>
+            <h2 class="pp-text-gcb__title" style="font-size: clamp(1.4rem, 2.4vw, 1.9rem); margin-top: 0.5rem; margin-bottom: 1.25rem;">
+              Giải Pháp Vận Hành Đồng Bộ            </h2>
+          </header>
+
+          <div class="pp-gcb-specs-body">
+            <div class="pp-gcb-specs-feature">
+              <div class="pp-gcb-specs-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:18px; height:18px;" aria-hidden="true">
+                  <path d="M20 7h-9m3 4H5m16 4h-9m6 4H8" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="pp-gcb-specs-feat-content">
+                <h4>Hệ thống hút khói &amp; cấp khí tươi</h4>
+                <p>Thiết kế chuẩn xác từ khâu tính toán ống gió, bộ lọc mùi, đảm bảo không khí phòng ăn luôn sạch thoáng, không bị bám mùi khói từ khu shophouse.</p>
+              </div>
+            </div>
+
+            <div class="pp-gcb-specs-feature" style="margin-top: 1.25rem;">
+              <div class="pp-gcb-specs-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:18px; height:18px;" aria-hidden="true">
+                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                  <line x1="8" y1="21" x2="16" y2="21" stroke-linecap="round"/>
+                  <line x1="12" y1="17" x2="12" y2="21" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="pp-gcb-specs-feat-content">
+                <h4>Hệ thống lạnh tích hợp Hoshizaki</h4>
+                <p>Hệ thống tủ mát và bàn đông Hoshizaki duy trì lạnh âm sâu đạt chuẩn -16°C, bảo quản kem và đá viên tối ưu ngay tại quầy pha chế.</p>
+              </div>
+            </div>
+
+            <div class="pp-gcb-specs-feature" style="margin-top: 1.25rem;">
+              <div class="pp-gcb-specs-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:18px; height:18px;" aria-hidden="true">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+              </div>
+              <div class="pp-gcb-specs-feat-content">
+                <h4>Đảm bảo quy chuẩn PCCC shophouse</h4>
+                <p>Lắp đặt đồng bộ với hệ trần kỹ thuật của ban quản lý Metropole, bảo đảm an toàn PCCC tuyệt đối và vận hành bền bỉ.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<section class="pp-section-gcb pp-gallery-section-gcb pp-section-gcb--alt">
+  <div class="pp-container-shared">
+    
+    <!-- Tiêu đề lớn -->
+    <div class="pp-text-gcb pp-text-gcb--center scroll-reveal" style="margin-bottom: 3.5rem;">
+      <span class="pp-text-gcb__divider pp-text-gcb__divider--center" aria-hidden="true"></span>
+      <h2 class="pp-text-gcb__title">Hình ảnh thực tế dự án G-Cup Coffee &amp; Bistro</h2>
+    </div>
+
+    <!-- Lưới Metro bất đối xứng (Asymmetric Mosaic Grid) -->
+    <div class="pp-gcb-metro-grid">
+      
+      <!-- Ảnh 1 (Chiếm 2 cột ngang): Máy xay Blendtec WildSide+ -->
+      <div class="pp-gcb-metro-item pp-gcb-metro-item--wide scroll-reveal">
+        <div class="pp-gcb-luxury-frame">
+          <span class="pp-gcb-corner pp-gcb-corner--tl"></span>
+          <span class="pp-gcb-corner pp-gcb-corner--tr"></span>
+          <span class="pp-gcb-corner pp-gcb-corner--bl"></span>
+          <span class="pp-gcb-corner pp-gcb-corner--br"></span>
+          <div class="pp-image-container-shared" style="aspect-ratio: 16 / 10;">
+            <img src="images/g-cup-coffee-bistro-blendtec-blenders.jpg" alt="Cặp máy xay Blendtec công nghiệp G-Cup Bistro" loading="lazy" decoding="async">
+            <div class="pp-image-caption-shared">
+              Cặp máy xay Blendtec công nghiệp với hộp cách âm chống ồn chuyên dụng, đảm bảo không gian yên tĩnh của phòng ăn không bị ảnh hưởng.            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ảnh 2: Quầy bar beverage counter đứng cạnh -->
+      <div class="pp-gcb-metro-item scroll-reveal">
+        <div class="pp-gcb-luxury-frame">
+          <span class="pp-gcb-corner pp-gcb-corner--tl"></span>
+          <span class="pp-gcb-corner pp-gcb-corner--tr"></span>
+          <span class="pp-gcb-corner pp-gcb-corner--bl"></span>
+          <span class="pp-gcb-corner pp-gcb-corner--br"></span>
+          <div class="pp-image-container-shared" style="aspect-ratio: 4 / 3;">
+            <img src="images/g-cup-coffee-bistro-beverage-counter.jpg" alt="Hệ quầy pha chế tích hợp tủ mát Hoshizaki" loading="lazy" decoding="async">
+            <div class="pp-image-caption-shared">
+              Hệ quầy pha chế tích hợp tủ mát Hoshizaki bên dưới, giúp tối ưu hóa diện tích bảo quản nguyên liệu pha chế tại quầy.            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ảnh 3: Bàn đông Hoshizaki góc nghiêng và bộ xay -->
+      <div class="pp-gcb-metro-item scroll-reveal">
+        <div class="pp-gcb-luxury-frame">
+          <span class="pp-gcb-corner pp-gcb-corner--tl"></span>
+          <span class="pp-gcb-corner pp-gcb-corner--tr"></span>
+          <span class="pp-gcb-corner pp-gcb-corner--bl"></span>
+          <span class="pp-gcb-corner pp-gcb-corner--br"></span>
+          <div class="pp-image-container-shared" style="aspect-ratio: 4 / 3;">
+            <img src="images/g-cup-coffee-bistro-hoshizaki-freezer.jpg" alt="Bàn đông công nghiệp Hoshizaki hiển thị -16 độ" loading="lazy" decoding="async">
+            <div class="pp-image-caption-shared">
+              Bàn đông công nghiệp Hoshizaki duy trì nhiệt độ âm sâu ổn định ở mức -16°C, bảo quản kem và đá viên đạt chuẩn chất lượng.            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ảnh 4 (Chiếm 2 cột ngang): Quầy bar một chiều Hoshizaki -->
+      <div class="pp-gcb-metro-item pp-gcb-metro-item--wide scroll-reveal">
+        <div class="pp-gcb-luxury-frame">
+          <span class="pp-gcb-corner pp-gcb-corner--tl"></span>
+          <span class="pp-gcb-corner pp-gcb-corner--tr"></span>
+          <span class="pp-gcb-corner pp-gcb-corner--bl"></span>
+          <span class="pp-gcb-corner pp-gcb-corner--br"></span>
+          <div class="pp-image-container-shared" style="aspect-ratio: 16 / 10;">
+            <img src="images/g-cup-coffee-bistro-underbar-fridges.jpg" alt="Bàn mát dưới quầy bar G-Cup Bistro" loading="lazy" decoding="async">
+            <div class="pp-image-caption-shared">
+              Hệ thống bàn mát và tủ bảo quản inox Hoshizaki dưới quầy bar được bố trí thông minh, đảm bảo vệ sinh và giữ lạnh tối ưu.            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<section class="pp__section">
+  <div class="pp-container-shared">
+    <div class="pp-text-gcb pp-text-gcb--center scroll-reveal">
+      <span class="pp-text-gcb__divider pp-text-gcb__divider--center" aria-hidden="true"></span>
+      <h2 class="pp-text-gcb__title">Kết luận</h2>
+      <div class="pp-text-gcb__body">
+        <p>Đây là giải pháp được lựa chọn sau khi phân tích kỹ điều kiện công trình và định hướng thiết kế không gian mở của quán đảm bảo không ảnh hưởng đến không gian chung, vừa an toàn, vừa thẩm mỹ – đúng tiêu chuẩn của các khu phức hợp cao cấp như Metropole Thủ Thiêm.</p>
+        <p>Với G-Cup, mỗi không gian đều mang theo một câu chuyện riêng. Và Saigon Horeca là người vinh dự được góp phần kể nên câu chuyện đó – bằng những giải pháp kỹ thuật tinh gọn, thông minh và linh hoạt, phù hợp với từng mét vuông mặt bằng.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main></body>
+</html>

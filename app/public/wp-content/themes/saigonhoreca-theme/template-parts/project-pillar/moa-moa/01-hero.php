@@ -1,6 +1,6 @@
-<?php
+﻿<?php
 /**
- * Project Pillar — moa-moa
+ * Project Pillar â€” moa-moa
  * Section #1: hero
  * @package SaigonHoreca
  */
@@ -12,6 +12,7 @@ $uri = get_template_directory_uri();
     <div class="pp-hero__overlay" aria-hidden="true"></div>
     <div class="pp-hero__content">
         <h1 class="pp-hero__title">Casa Maria</h1>
-        <p class="pp-hero__subhead"><?php echo esc_html__('Khi tinh thần ẩm thực Ý sống trọn trong một gian bếp thủ công giữa lòng Sài Gòn', 'saigonhoreca'); ?></p>
+        <p class="pp-hero__subhead"><?php echo esc_html__('Khi tinh tháº§n áº©m thá»±c Ã sá»‘ng trá»n trong má»™t gian báº¿p thá»§ cÃ´ng giá»¯a lÃ²ng SÃ i GÃ²n', 'saigonhoreca'); ?></p>
     </div>
 </section>
+

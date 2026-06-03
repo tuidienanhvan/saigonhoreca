@@ -1,8 +1,9 @@
 /* Tailwind v4 with explicit source declarations (source(none) disables
    auto-detection). Component CSS bundled via `_imports.css` so all
    `.sh-*` rules ship in the same render-blocking link. */
-@import "tailwindcss" source(none);
+@import "./_tokens.css";
 @import "./_imports.css";
+@import "tailwindcss" source(none);
 
 @source "../../*.php";
 @source "../../inc/**/*.php";
@@ -23,5 +24,3 @@
    so `inc/core/*` and template-parts/components/* keep working
    without code changes.
    ═══════════════════════════════════════════════════════════════ */
-
-@import "./_tokens.css";

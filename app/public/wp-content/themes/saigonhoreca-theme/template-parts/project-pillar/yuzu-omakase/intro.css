@@ -1,1 +1,277 @@
-/** yuzu-omakase — intro slot (no content). */
+/**
+ * yuzu-omakase — intro slot.
+ * Asymmetric layout + grid + stats bar + ambient gold glow + scroll-reveal.
+ * @package SaigonHoreca
+ */
+
+.pp-intro-yzo {
+  position: relative;
+  padding: clamp(4rem, 8vw, 8rem) 0;
+  background: var(--b2);
+  overflow: hidden;
+}
+
+/* Background SVG decoration */
+.pp-intro-yzo__bg-svg {
+  position: absolute;
+  top: 10%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 1;
+  animation: yzo-spin 60s linear infinite;
+}
+
+@keyframes yzo-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.pp-intro-yzo__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: start;
+  position: relative;
+  z-index: 2;
+}
+
+@media (min-width: 992px) {
+  .pp-intro-yzo__grid {
+    grid-template-columns: 38fr 62fr;
+    gap: 4.5rem;
+  }
+  
+  /* Cấu hình Sticky cho cột chữ trôi theo lưới ảnh, tránh trống hoác */
+  .pp-intro-yzo__content {
+    position: sticky;
+    top: clamp(80px, 11vh, 110px);
+    align-self: start;
+  }
+}
+
+/* Typographic Column */
+.pp-intro-yzo__content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Styling cụm CAD diagram trang trí */
+.pp-intro-yzo__cad-diagram {
+  margin-top: 1.5rem;
+  width: 100%;
+  border-radius: var(--radius-md);
+  border: 1px dashed color-mix(in srgb, var(--p) 16%, transparent);
+  padding: 0.5rem;
+  background: var(--bs);
+  transition: border-color 0.4s var(--ease-spring);
+}
+
+.pp-intro-yzo__cad-diagram:hover {
+  border-color: color-mix(in srgb, var(--p) 30%, transparent);
+}
+
+.pp-intro-yzo__cad-diagram svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.pp-intro-yzo__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--p);
+}
+
+.pp-intro-yzo__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--bc);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.pp-intro-yzo__divider {
+  display: block;
+  width: 60px;
+  height: 2px;
+  background: var(--p);
+  position: relative;
+  box-shadow: 0 0 10px color-mix(in srgb, var(--p) 30%, transparent);
+}
+
+.pp-intro-yzo__description {
+  font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+  line-height: 1.8;
+  color: var(--bc2);
+}
+
+.pp-intro-yzo__description p {
+  margin: 0 0 1.25rem;
+}
+
+.pp-intro-yzo__description p:last-child {
+  margin: 0;
+}
+
+/* Dropcap style */
+.pp-intro-yzo__dropcap {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  float: left;
+  line-height: 0.8;
+  padding-right: 0.5rem;
+  padding-top: 0.1rem;
+  color: var(--p);
+  font-weight: 800;
+}
+
+/* Blockquote Style */
+.pp-intro-yzo__quote {
+  margin: 0.5rem 0;
+  padding-left: 1.5rem;
+  border-left: 2px solid var(--p);
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1rem, 1.3vw, 1.2rem);
+  color: var(--p);
+  line-height: 1.6;
+}
+
+/* Stats block */
+.pp-intro-yzo__stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+@media (max-width: 576px) {
+  .pp-intro-yzo__stats {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+}
+
+.pp-intro-yzo__stat {
+  padding: 1.25rem 1rem;
+  background: var(--b3);
+  border: 1px solid var(--bd);
+  border-radius: var(--radius-md);
+  transition: border-color 0.4s var(--ease-spring), transform 0.4s var(--ease-spring);
+}
+
+.pp-intro-yzo__stat:hover {
+  border-color: var(--bt);
+  transform: translateY(-3px);
+}
+
+.pp-intro-yzo__stat-label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--bc3);
+  margin-bottom: 0.4rem;
+}
+
+.pp-intro-yzo__stat-value {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  color: var(--p);
+}
+
+/* Visual Column (Asymmetric Images) */
+.pp-intro-yzo__visual {
+  position: relative;
+}
+
+.pp-intro-yzo__asymmetric-grid-four {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  overflow: visible;
+}
+
+.pp-intro-yzo__fig--wide-top {
+  grid-column: span 2;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-lg);
+  overflow: visible !important;
+  border: 1px solid var(--bd);
+  margin-bottom: 2.2rem !important;
+}
+
+.pp-intro-yzo__fig--wide-top img {
+  border-radius: calc(var(--radius-lg) - 1px);
+}
+
+.pp-intro-yzo__fig--normal-left {
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-md);
+  overflow: visible !important;
+  border: 1px solid var(--bd);
+  margin-bottom: 2.2rem !important;
+}
+
+.pp-intro-yzo__fig--normal-left img {
+  border-radius: calc(var(--radius-md) - 1px);
+}
+
+.pp-intro-yzo__fig--normal-right {
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-md);
+  overflow: visible !important;
+  border: 1px solid var(--bd);
+  margin-bottom: 2.2rem !important;
+}
+
+.pp-intro-yzo__fig--normal-right img {
+  border-radius: calc(var(--radius-md) - 1px);
+}
+
+.pp-intro-yzo__fig--wide-bot {
+  grid-column: span 2;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-lg);
+  overflow: visible !important;
+  border: 1px solid var(--bd);
+  margin-bottom: 2.2rem !important;
+}
+
+.pp-intro-yzo__fig--wide-bot img {
+  border-radius: calc(var(--radius-lg) - 1px);
+}
+
+@media (max-width: 576px) {
+  .pp-intro-yzo__asymmetric-grid-four {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .pp-intro-yzo__fig--wide-top,
+  .pp-intro-yzo__fig--wide-bot {
+    grid-column: span 1 !important;
+    aspect-ratio: 4 / 3 !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pp-intro-yzo__bg-svg {
+    animation: none !important;
+  }
+  .pp-intro-yzo__stat {
+    transition: none !important;
+  }
+}

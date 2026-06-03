@@ -1,1 +1,206 @@
-/** the-cheezy-time — specs slot (no content). */
+/**
+ * the-cheezy-time — specs slot.
+ * Blueprint & Glass Card Layout.
+ * @package SaigonHoreca
+ */
+
+.pp-specs-tct {
+  position: relative;
+  background: var(--b2);
+  overflow: hidden;
+  padding: 8rem 0;
+}
+
+.pp-grid-12-tct {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .pp-grid-12-tct {
+    grid-template-columns: 58% 42%;
+    gap: 4.5rem;
+  }
+}
+
+/* Blueprint Frame & Stamp */
+.pp-specs-side-tct {
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  padding: 3rem 1.5rem 4.5rem; /* Tăng padding đáy để chừa khoảng trống cho ảnh absolute */
+}
+
+.pp-specs-coord-tct {
+  position: absolute;
+  font-family: monospace;
+  font-size: 0.68rem;
+  color: color-mix(in srgb, var(--gold) 45%, transparent);
+  letter-spacing: 0.05em;
+  pointer-events: none;
+  z-index: 5;
+}
+.pp-specs-coord-tct--tl { top: 1rem; left: 1.5rem; }
+.pp-specs-coord-tct--tr { top: 1rem; right: 1.5rem; }
+.pp-specs-coord-tct--bl { bottom: 1rem; left: 1.5rem; display: none; }
+.pp-specs-coord-tct--br { bottom: 1rem; right: 1.5rem; display: none; }
+
+@media (min-width: 768px) {
+  .pp-specs-coord-tct--bl,
+  .pp-specs-coord-tct--br {
+    display: block;
+  }
+  .pp-specs-side-tct {
+    padding: 3.5rem 2.5rem 6rem;
+  }
+}
+
+/* Cụm Collage 2 Ảnh so le xếp chồng */
+.pp-specs-collage {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Ảnh 1: Bản vẽ kỹ thuật (Nền sau) */
+.pp-specs-collage-item--blueprint {
+  width: 75%;
+  position: relative;
+  z-index: 2;
+  transition: transform 0.4s var(--ease-spring), z-index 0.3s ease, filter 0.3s ease;
+  filter: opacity(0.85) grayscale(20%);
+}
+
+.pp-specs-collage-item--blueprint img {
+  filter: contrast(1.1) brightness(0.9);
+}
+
+/* Ảnh 2: Thực tế thi công hoàn thiện (Đè trước) */
+.pp-specs-collage-item--real {
+  width: 75%;
+  position: absolute;
+  right: 0;
+  bottom: -4rem; /* Đẩy lùi xuống dưới để tạo cấu trúc so le */
+  z-index: 3;
+  transition: transform 0.4s var(--ease-spring), z-index 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+/* Tương tác khi di chuột vào từng ảnh */
+.pp-specs-collage-item--real:hover {
+  z-index: 4;
+  transform: scale(1.04) translateY(-5px);
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.5);
+}
+
+.pp-specs-collage-item--blueprint:hover {
+  z-index: 4;
+  transform: scale(1.04) translateY(-5px);
+  filter: opacity(1) grayscale(0);
+}
+
+/* Tương tác toàn cụm */
+.pp-specs-collage:hover .pp-specs-collage-item--blueprint:not(:hover) {
+  transform: translateX(-5px) translateY(-5px) scale(0.98);
+}
+.pp-specs-collage:hover .pp-specs-collage-item--real:not(:hover) {
+  transform: translateX(5px) translateY(5px) scale(0.98);
+}
+
+/* Glass Card */
+.pp-glass-card-tct {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 2.5rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.pp-glass-card-tct:hover {
+  border-color: rgba(245, 166, 35, 0.15);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+}
+
+.pp-badge-tct {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.85rem;
+  background: rgba(249, 195, 73, 0.08);
+  border: 1px solid color-mix(in srgb, var(--gold) 35%, transparent);
+  border-radius: 30px;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.pp-specs-feature-tct {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  transition: transform 0.3s ease;
+}
+
+.pp-specs-feature-tct:hover {
+  transform: translateX(5px);
+}
+
+.pp-specs-icon-wrapper-tct {
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+  color: var(--gold);
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.pp-specs-feature-tct:hover .pp-specs-icon-wrapper-tct {
+  background: var(--gold);
+  color: var(--b1);
+  border-color: var(--gold);
+}
+
+/* ---------------------------------------------------------
+   RESPONSIVE DESIGN
+   --------------------------------------------------------- */
+@media (max-width: 1023px) {
+  .pp-specs-tct {
+    padding: 6rem 0;
+  }
+  .pp-grid-12-tct {
+    gap: 6rem; /* Tăng khoảng cách để chứa được phần ảnh đè thụt xuống */
+  }
+  .pp-specs-side-tct {
+    padding: 3rem 2rem 5.5rem;
+  }
+}
+
+@media (max-width: 575px) {
+  .pp-specs-tct {
+    padding: 4rem 0;
+  }
+  .pp-grid-12-tct {
+    gap: 4.5rem;
+  }
+  .pp-specs-side-tct {
+    padding: 2rem 1rem 4rem;
+  }
+  .pp-specs-collage-item--real {
+    bottom: -3.5rem;
+  }
+  .pp-glass-card-tct {
+    padding: 1.75rem;
+  }
+}

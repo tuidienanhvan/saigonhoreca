@@ -1,0 +1,810 @@
+{
+  "by_kind": {
+    "link": {
+      "total": 47,
+      "pass": 47,
+      "fail": 0
+    },
+    "script": {
+      "total": 47,
+      "pass": 47,
+      "fail": 0
+    },
+    "img": {
+      "total": 2,
+      "pass": 1,
+      "fail": 1
+    },
+    "srcset": {
+      "total": 2,
+      "pass": 2,
+      "fail": 0
+    }
+  },
+  "results": [
+    {
+      "kind": "link",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/themes/astra/assets/css/minified/main.min.css?ver=4.13.0",
+      "status": 200,
+      "size": 44801,
+      "content_type": "text/css",
+      "pass": true
+    },
+    {
+      "kind": "link",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/cache/min/1/wp-content/plugins/header-footer-elementor/inc/widgets-css/frontend.css?ver=1779101717",
+      "status": 200,
+      "size": 70584,
+      "content_type": "text/css",
+      "pass": true
+    },
+    {
+      "kind": "link",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/cache/min/1/wp-content/plugins/header-footer-elementor/inc/widgets-css/woo-products.css?ver=1779101717",
+      "status": 200,
+      "size": 4093,
+      "content_type": "text/css",
+      "pass": true
+    },
+    {
+      "kind": "link",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/themes/astra/assets/css/minified/compatibility/woocommerce/woocommerce-layout-grid.min.css?ver=4.13.0",
+      "status": 200,
+      "size": 16740,
+      "content_type": "text/css",
+      "pass": true
+    },
+    {
+      "kind": "link",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/themes/astra/assets/css/minified/compatibility/woocommerce/woocommerce-smallscreen-grid.min.css?ver=4.13.0",
+      "status": 200,
+      "size": 6205,
+      "content_type": "text/css",
+      "pass": true
+    },
+    {
+      "kind": "link",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/cache/min/1/wp-content/themes/astra/assets/css/minified/compatibility/woocommerce/woocommerce-grid.min.css?ver=1779101717",
+      "status": 200,
+      "size": 118966,
+      "content_type": "text/css",
+      "pass": true
+    },
+    {
+      "kind": "link",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/cache/min/1/wp-content/plugins/ar-contactus/res/css/contactus.min.css?ver=1779101717",
+      "status": 200,
+      "size": 132480,
+      "content_type": "text/css",
+      "pass": true
+    },
+    {
+      "kind": "link",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/cache/min/1/wp-content/plugins/ar-contactus/res/css/generated-mobile.css?ver=1779103017",
+      "status": 200,
+      "size": 2003,
+      "content_type": "text/css",
+      "pass": true
+    },
+    {
+      "kind": "link",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/cache/min/1/releases/v5.8.1/css/all.css?ver=1779101717",
+      "status": 200,
+      "size": 55972,
+      "content_type": "text/css",
+      "pass": true
+    },
+    {
+      "kind": "link",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/cache/min/1/wp-content/plugins/header-footer-elementor/assets/css/header-footer-elementor.css?ver=1779101717",
+      "status": 200,
+      "size": 493,
+      "content_type": "text/css",
+      "pass": true
+    },
+    {
+      "kind": "link",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/uploads/elementor/css/custom-frontend.min.css?ver=1779101716",
+      "status": 200,
+      "size": 54847,
+      "content_type": "text/css",
+      "pass": true
+    },
+    {
+      "kind": "link",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/plugins/essential-addons-for-elementor-lite/assets/front-end/css/view/general.min.css?ver=6.6.2",
+      "status": 200,
+      "size": 7746,
+      "content_type": "text/css",
+      "pass": true
+    },
+    {
+      "kind": "link",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/cache/min/1/wp-content/uploads/essential-addons-elementor/eael-90.css?ver=1779103159",
+      "status": 200,
+      "size": 30459,
+      "content_type": "text/css",
+      "pass": true
+    },
+    {
+      "kind": "link",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/uploads/elementor/css/post-9.css?ver=1779101717",
+      "status": 200,
+      "size": 1636,
+      "content_type": "text/css",
+      "pass": true
+    },
+    {
+      "kind": "link",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/plugins/elementor/assets/lib/animations/styles/fadeInUp.min.css?ver=4.0.3",
+      "status": 200,
+      "size": 130,
+      "content_type": "text/css",
+      "pass": true
+    },
+    {
+      "kind": "link",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/cache/min/1/wp-content/plugins/elementor/assets/lib/swiper/v8/css/swiper.min.css?ver=1779101719",
+      "status": 200,
+      "size": 16223,
+      "content_type": "text/css",
+      "pass": true
+    },
+    {
+      "kind": "link",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/plugins/elementor/assets/css/conditionals/e-swiper.min.css?ver=4.0.3",
+      "status": 200,
+      "size": 5486,
+      "content_type": "text/css",
+      "pass": true
+    },
+    {
+      "kind": "link",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/uploads/elementor/css/custom-pro-widget-slides.min.css?ver=1779101717",
+      "status": 200,
+      "size": 2298,
+      "content_type": "text/css",
+      "pass": true
+    },
+    {
+      "kind": "link",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/plugins/elementor/assets/css/widget-heading.min.css?ver=4.0.3",
+      "status": 200,
+      "size": 560,
+      "content_type": "text/css",
+      "pass": true
+    },
+    {
+      "kind": "link",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/plugins/elementor/assets/css/widget-divider.min.css?ver=4.0.3",
+      "status": 200,
+      "size": 4258,
+      "content_type": "text/css",
+      "pass": true
+    },
+    {
+      "kind": "link",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/plugins/elementor/assets/lib/animations/styles/e-animation-grow.min.css?ver=4.0.3",
+      "status": 200,
+      "size": 198,
+      "content_type": "text/css",
+      "pass": true
+    },
+    {
+      "kind": "link",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/plugins/elementor/assets/css/widget-image.min.css?ver=4.0.3",
+      "status": 200,
+      "size": 214,
+      "content_type": "text/css",
+      "pass": true
+    },
+    {
+      "kind": "link",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/plugins/elementor/assets/css/widget-counter.min.css?ver=4.0.3",
+      "status": 200,
+      "size": 753,
+      "content_type": "text/css",
+      "pass": true
+    },
+    {
+      "kind": "link",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/uploads/elementor/css/custom-widget-icon-list.min.css?ver=1779101717",
+      "status": 200,
+      "size": 10282,
+      "content_type": "text/css",
+      "pass": true
+    },
+    {
+      "kind": "link",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/uploads/elementor/css/custom-widget-icon-box.min.css?ver=1779101717",
+      "status": 200,
+      "size": 4753,
+      "content_type": "text/css",
+      "pass": true
+    },
+    {
+      "kind": "link",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/plugins/elementor/assets/css/widget-image-carousel.min.css?ver=4.0.3",
+      "status": 200,
+      "size": 342,
+      "content_type": "text/css",
+      "pass": true
+    },
+    {
+      "kind": "link",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/uploads/elementor/css/custom-widget-star-rating.min.css?ver=1779101717",
+      "status": 200,
+      "size": 4829,
+      "content_type": "text/css",
+      "pass": true
+    },
+    {
+      "kind": "link",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/uploads/elementor/css/post-90.css?ver=1779103158",
+      "status": 200,
+      "size": 74433,
+      "content_type": "text/css",
+      "pass": true
+    },
+    {
+      "kind": "link",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/cache/min/1/wp-content/uploads/astra-addon/astra-addon-69e10196bf7196-51629470.css?ver=1779101717",
+      "status": 200,
+      "size": 80421,
+      "content_type": "text/css",
+      "pass": true
+    },
+    {
+      "kind": "link",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/themes/astra-child/style.css?ver=1.0.0",
+      "status": 200,
+      "size": 1178,
+      "content_type": "text/css",
+      "pass": true
+    },
+    {
+      "kind": "link",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/cache/min/1/wp-content/plugins/elementor/assets/lib/eicons/css/elementor-icons.min.css?ver=1779101717",
+      "status": 200,
+      "size": 22176,
+      "content_type": "text/css",
+      "pass": true
+    },
+    {
+      "kind": "link",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/plugins/elementor/assets/css/widget-icon-list.min.css?ver=3.24.3",
+      "status": 200,
+      "size": 10255,
+      "content_type": "text/css",
+      "pass": true
+    },
+    {
+      "kind": "link",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/plugins/elementor/assets/css/widget-social-icons.min.css?ver=3.24.0",
+      "status": 200,
+      "size": 5110,
+      "content_type": "text/css",
+      "pass": true
+    },
+    {
+      "kind": "link",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/cache/min/1/wp-content/plugins/elementor/assets/lib/font-awesome/css/brands.css?ver=1779101717",
+      "status": 200,
+      "size": 1092,
+      "content_type": "text/css",
+      "pass": true
+    },
+    {
+      "kind": "link",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/cache/min/1/wp-content/plugins/elementor/assets/lib/font-awesome/css/fontawesome.css?ver=1779101717",
+      "status": 200,
+      "size": 58099,
+      "content_type": "text/css",
+      "pass": true
+    },
+    {
+      "kind": "link",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/cache/min/1/wp-content/plugins/elementor/assets/lib/font-awesome/css/solid.css?ver=1779101717",
+      "status": 200,
+      "size": 1086,
+      "content_type": "text/css",
+      "pass": true
+    },
+    {
+      "kind": "link",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/plugins/elementor-pro/assets/css/widget-blockquote.min.css?ver=3.25.0",
+      "status": 200,
+      "size": 5236,
+      "content_type": "text/css",
+      "pass": true
+    },
+    {
+      "kind": "link",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/plugins/elementor-pro/assets/css/widget-mega-menu.min.css?ver=3.26.2",
+      "status": 200,
+      "size": 19786,
+      "content_type": "text/css",
+      "pass": true
+    },
+    {
+      "kind": "link",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/plugins/elementor-pro/assets/css/widget-nav-menu.min.css?ver=3.26.0",
+      "status": 200,
+      "size": 27363,
+      "content_type": "text/css",
+      "pass": true
+    },
+    {
+      "kind": "link",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/cache/min/1/wp-content/plugins/elementor/assets/lib/font-awesome/css/all.min.css?ver=1779103159",
+      "status": 200,
+      "size": 60583,
+      "content_type": "text/css",
+      "pass": true
+    },
+    {
+      "kind": "link",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/plugins/elementor/assets/lib/font-awesome/css/v4-shims.min.css?ver=6.6.2",
+      "status": 200,
+      "size": 26702,
+      "content_type": "text/css",
+      "pass": true
+    },
+    {
+      "kind": "script",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-includes/js/jquery/jquery.min.js?ver=3.7.1",
+      "status": 200,
+      "size": 87553,
+      "content_type": "application/javascript",
+      "pass": true
+    },
+    {
+      "kind": "script",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1",
+      "status": 200,
+      "size": 13577,
+      "content_type": "application/javascript",
+      "pass": true
+    },
+    {
+      "kind": "script",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js?ver=2.7.0-wc.9.3.6",
+      "status": 200,
+      "size": 9636,
+      "content_type": "application/javascript",
+      "pass": true
+    },
+    {
+      "kind": "script",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js?ver=9.3.6",
+      "status": 200,
+      "size": 4035,
+      "content_type": "application/javascript",
+      "pass": true
+    },
+    {
+      "kind": "script",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js?ver=2.1.4-wc.9.3.6",
+      "status": 200,
+      "size": 1720,
+      "content_type": "application/javascript",
+      "pass": true
+    },
+    {
+      "kind": "script",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js?ver=9.3.6",
+      "status": 200,
+      "size": 2821,
+      "content_type": "application/javascript",
+      "pass": true
+    },
+    {
+      "kind": "script",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/plugins/ar-contactus/res/js/contactus.min.js?ver=2.2.7",
+      "status": 200,
+      "size": 37928,
+      "content_type": "application/javascript",
+      "pass": true
+    },
+    {
+      "kind": "script",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/plugins/ar-contactus/res/js/scripts.js?ver=2.2.7",
+      "status": 200,
+      "size": 5436,
+      "content_type": "application/javascript",
+      "pass": true
+    },
+    {
+      "kind": "script",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/plugins/elementor/assets/lib/font-awesome/js/v4-shims.min.js?ver=6.6.2",
+      "status": 200,
+      "size": 15073,
+      "content_type": "application/javascript",
+      "pass": true
+    },
+    {
+      "kind": "link",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/uploads/2023/11/SGH-logo-site-identity-100x100.png",
+      "status": 200,
+      "size": 4826,
+      "content_type": "image/png",
+      "pass": true
+    },
+    {
+      "kind": "link",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/uploads/2023/11/SGH-logo-site-identity.png",
+      "status": 200,
+      "size": 5081,
+      "content_type": "image/png",
+      "pass": true
+    },
+    {
+      "kind": "img",
+      "url": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMSIgaGVpZ2h0PSIxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjwvc3ZnPg==",
+      "status": 0,
+      "size": 67,
+      "content_type": "image/svg+xml",
+      "pass": false
+    },
+    {
+      "kind": "img",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/uploads/2025/05/du-an-g-cup-coffee-bistro-1.jpg",
+      "status": 200,
+      "size": 149617,
+      "content_type": "image/jpeg",
+      "pass": true
+    },
+    {
+      "kind": "srcset",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/uploads/2025/05/du-an-g-cup-coffee-bistro-1-768x432.jpg",
+      "status": 200,
+      "size": 43647,
+      "content_type": "image/jpeg",
+      "pass": true
+    },
+    {
+      "kind": "srcset",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/uploads/2025/05/du-an-g-cup-coffee-bistro-1-600x337.jpg",
+      "status": 200,
+      "size": 30105,
+      "content_type": "image/jpeg",
+      "pass": true
+    },
+    {
+      "kind": "script",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/plugins/ar-contactus/res/js/maskedinput.min.js?version=2.2.7",
+      "status": 200,
+      "size": 21,
+      "content_type": "application/javascript",
+      "pass": true
+    },
+    {
+      "kind": "link",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/cache/min/1/wp-content/plugins/woocommerce/assets/client/blocks/wc-blocks.css?ver=1779101717",
+      "status": 200,
+      "size": 12793,
+      "content_type": "text/css",
+      "pass": true
+    },
+    {
+      "kind": "link",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/plugins/woocommerce/assets/css/photoswipe/photoswipe.min.css?ver=9.3.6",
+      "status": 200,
+      "size": 3287,
+      "content_type": "text/css",
+      "pass": true
+    },
+    {
+      "kind": "link",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/plugins/woocommerce/assets/css/photoswipe/default-skin/default-skin.min.css?ver=9.3.6",
+      "status": 200,
+      "size": 7887,
+      "content_type": "text/css",
+      "pass": true
+    },
+    {
+      "kind": "link",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/plugins/wpforms/assets/css/wpforms-full.min.css?ver=1.7.5.3",
+      "status": 200,
+      "size": 40125,
+      "content_type": "text/css",
+      "pass": true
+    },
+    {
+      "kind": "script",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/themes/astra/assets/js/minified/frontend.min.js?ver=4.13.0",
+      "status": 200,
+      "size": 25664,
+      "content_type": "application/javascript",
+      "pass": true
+    },
+    {
+      "kind": "script",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/themes/astra/assets/js/minified/sticky-sidebar.min.js?ver=4.13.0",
+      "status": 200,
+      "size": 1549,
+      "content_type": "application/javascript",
+      "pass": true
+    },
+    {
+      "kind": "script",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/plugins/essential-addons-for-elementor-lite/assets/front-end/js/view/general.min.js?ver=6.6.2",
+      "status": 200,
+      "size": 11619,
+      "content_type": "application/javascript",
+      "pass": true
+    },
+    {
+      "kind": "script",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/uploads/essential-addons-elementor/eael-90.js?ver=1777046499",
+      "status": 200,
+      "size": 4198,
+      "content_type": "application/javascript",
+      "pass": true
+    },
+    {
+      "kind": "script",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-includes/js/imagesloaded.min.js?ver=5.0.0",
+      "status": 200,
+      "size": 5520,
+      "content_type": "application/javascript",
+      "pass": true
+    },
+    {
+      "kind": "script",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/plugins/elementor/assets/lib/swiper/v8/swiper.min.js?ver=8.4.5",
+      "status": 200,
+      "size": 143709,
+      "content_type": "application/javascript",
+      "pass": true
+    },
+    {
+      "kind": "script",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/plugins/elementor/assets/js/webpack.runtime.min.js?ver=4.0.3",
+      "status": 200,
+      "size": 5722,
+      "content_type": "application/javascript",
+      "pass": true
+    },
+    {
+      "kind": "script",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/plugins/elementor/assets/js/frontend-modules.min.js?ver=4.0.3",
+      "status": 200,
+      "size": 50602,
+      "content_type": "application/javascript",
+      "pass": true
+    },
+    {
+      "kind": "script",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-includes/js/jquery/ui/core.min.js?ver=1.13.3",
+      "status": 200,
+      "size": 21464,
+      "content_type": "application/javascript",
+      "pass": true
+    },
+    {
+      "kind": "script",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/plugins/elementor/assets/js/frontend.min.js?ver=4.0.3",
+      "status": 200,
+      "size": 31928,
+      "content_type": "application/javascript",
+      "pass": true
+    },
+    {
+      "kind": "script",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/plugins/elementor/assets/lib/jquery-numerator/jquery-numerator.min.js?ver=0.2.1",
+      "status": 200,
+      "size": 1801,
+      "content_type": "application/javascript",
+      "pass": true
+    },
+    {
+      "kind": "script",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-includes/js/dist/dom-ready.min.js?ver=f77871ff7694fffea381",
+      "status": 200,
+      "size": 457,
+      "content_type": "application/javascript",
+      "pass": true
+    },
+    {
+      "kind": "script",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/plugins/astra-pro-sites/inc/lib/onboarding/assets/dist/template-preview/main.js?ver=aabd2ae4238bd052108b",
+      "status": 200,
+      "size": 6573,
+      "content_type": "application/javascript",
+      "pass": true
+    },
+    {
+      "kind": "script",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/plugins/woocommerce/assets/js/flexslider/jquery.flexslider.min.js?ver=2.7.2-wc.9.3.6",
+      "status": 200,
+      "size": 21446,
+      "content_type": "application/javascript",
+      "pass": true
+    },
+    {
+      "kind": "script",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/uploads/astra-addon/astra-addon-69e10196bfaca9-53443955.js?ver=4.13.0",
+      "status": 200,
+      "size": 38053,
+      "content_type": "application/javascript",
+      "pass": true
+    },
+    {
+      "kind": "script",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/plugins/astra-addon/assets/js/minified/purify.min.js?ver=4.13.0",
+      "status": 200,
+      "size": 23234,
+      "content_type": "application/javascript",
+      "pass": true
+    },
+    {
+      "kind": "script",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/plugins/astra-addon/addons/woocommerce/assets/js/minified/single-product-ajax-cart.min.js?ver=4.13.0",
+      "status": 200,
+      "size": 3610,
+      "content_type": "application/javascript",
+      "pass": true
+    },
+    {
+      "kind": "script",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/plugins/woocommerce/assets/js/sourcebuster/sourcebuster.min.js?ver=9.3.6",
+      "status": 200,
+      "size": 15315,
+      "content_type": "application/javascript",
+      "pass": true
+    },
+    {
+      "kind": "script",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/plugins/woocommerce/assets/js/frontend/order-attribution.min.js?ver=9.3.6",
+      "status": 200,
+      "size": 2356,
+      "content_type": "application/javascript",
+      "pass": true
+    },
+    {
+      "kind": "script",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/plugins/wp-smush-pro/app/assets/js/smush-lazy-load.min.js?ver=4.0.2",
+      "status": 200,
+      "size": 23231,
+      "content_type": "application/javascript",
+      "pass": true
+    },
+    {
+      "kind": "script",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/plugins/elementor-pro/assets/js/webpack-pro.runtime.min.js?ver=4.0.3",
+      "status": 200,
+      "size": 6242,
+      "content_type": "application/javascript",
+      "pass": true
+    },
+    {
+      "kind": "script",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-includes/js/dist/hooks.min.js?ver=dd5603f07f9220ed27f1",
+      "status": 200,
+      "size": 5661,
+      "content_type": "application/javascript",
+      "pass": true
+    },
+    {
+      "kind": "script",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-includes/js/dist/i18n.min.js?ver=c26c3dc7bed366793375",
+      "status": 200,
+      "size": 5314,
+      "content_type": "application/javascript",
+      "pass": true
+    },
+    {
+      "kind": "script",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/plugins/elementor-pro/assets/js/frontend.min.js?ver=4.0.3",
+      "status": 200,
+      "size": 23939,
+      "content_type": "application/javascript",
+      "pass": true
+    },
+    {
+      "kind": "script",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/plugins/elementor-pro/assets/js/elements-handlers.min.js?ver=4.0.3",
+      "status": 200,
+      "size": 43922,
+      "content_type": "application/javascript",
+      "pass": true
+    },
+    {
+      "kind": "script",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-includes/js/underscore.min.js?ver=1.13.7",
+      "status": 200,
+      "size": 18905,
+      "content_type": "application/javascript",
+      "pass": true
+    },
+    {
+      "kind": "script",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-includes/js/wp-util.min.js?ver=6.9.4",
+      "status": 200,
+      "size": 1431,
+      "content_type": "application/javascript",
+      "pass": true
+    },
+    {
+      "kind": "script",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/plugins/wpforms/assets/js/integrations/elementor/frontend.min.js?ver=1.7.5.3",
+      "status": 200,
+      "size": 754,
+      "content_type": "application/javascript",
+      "pass": true
+    },
+    {
+      "kind": "script",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/plugins/woocommerce/assets/js/zoom/jquery.zoom.min.js?ver=1.7.21-wc.9.3.6",
+      "status": 200,
+      "size": 2673,
+      "content_type": "application/javascript",
+      "pass": true
+    },
+    {
+      "kind": "script",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/plugins/woocommerce/assets/js/photoswipe/photoswipe.min.js?ver=4.1.1-wc.9.3.6",
+      "status": 200,
+      "size": 31626,
+      "content_type": "application/javascript",
+      "pass": true
+    },
+    {
+      "kind": "script",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/plugins/woocommerce/assets/js/photoswipe/photoswipe-ui-default.min.js?ver=4.1.1-wc.9.3.6",
+      "status": 200,
+      "size": 9749,
+      "content_type": "application/javascript",
+      "pass": true
+    },
+    {
+      "kind": "script",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart-variation.min.js?ver=9.3.6",
+      "status": 200,
+      "size": 13789,
+      "content_type": "application/javascript",
+      "pass": true
+    },
+    {
+      "kind": "script",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/plugins/woocommerce/assets/js/frontend/single-product.min.js?ver=9.3.6",
+      "status": 200,
+      "size": 6669,
+      "content_type": "application/javascript",
+      "pass": true
+    },
+    {
+      "kind": "script",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/plugins/wpforms/assets/lib/jquery.validate.min.js?ver=1.19.4",
+      "status": 200,
+      "size": 24489,
+      "content_type": "application/javascript",
+      "pass": true
+    },
+    {
+      "kind": "script",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/plugins/wpforms/assets/lib/mailcheck.min.js?ver=1.1.2",
+      "status": 200,
+      "size": 4014,
+      "content_type": "application/javascript",
+      "pass": true
+    },
+    {
+      "kind": "script",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/plugins/wpforms/assets/lib/punycode.min.js?ver=1.0.0",
+      "status": 200,
+      "size": 1713,
+      "content_type": "application/javascript",
+      "pass": true
+    },
+    {
+      "kind": "script",
+      "url": "https://saigonhoreca.local/wp-content/themes/saigonhoreca-theme/static-mirror/wp-content/plugins/wpforms/assets/js/wpforms.min.js?ver=1.7.5.3",
+      "status": 200,
+      "size": 31145,
+      "content_type": "application/javascript",
+      "pass": true
+    }
+  ]
+}

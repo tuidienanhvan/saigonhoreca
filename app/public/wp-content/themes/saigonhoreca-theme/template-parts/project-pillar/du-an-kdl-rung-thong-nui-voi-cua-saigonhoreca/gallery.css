@@ -1,1 +1,50 @@
-/** du-an-kdl-rung-thong-nui-voi-cua-saigonhoreca — gallery slot (no content). */
+/**
+ * du-an-kdl-rung-thong-nui-voi-cua-saigonhoreca — gallery slot.
+ * Masonry-style grid with shared image partials.
+ * @package SaigonHoreca
+ */
+
+.pp-gallery-kdl {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+}
+@media (max-width: 768px) { .pp-gallery-kdl { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .pp-gallery-kdl { grid-template-columns: 1fr; } }
+
+.pp-gallery-kdl__item {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background: var(--b3);
+  border: 1px solid var(--bd);
+  transition: border-color 0.4s var(--ease-spring), transform 0.4s var(--ease-spring);
+}
+.pp-gallery-kdl__item:hover {
+  border-color: color-mix(in srgb, var(--su) 45%, transparent);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px color-mix(in srgb, var(--su) 10%, transparent);
+}
+.pp-gallery-kdl__item--large { grid-row: span 2; }
+.pp-gallery-kdl__item--wide { grid-column: span 2; }
+@media (max-width: 768px) { .pp-gallery-kdl__item--wide { grid-column: span 1; } }
+
+.pp-gallery-kdl__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.7s var(--ease-spring);
+}
+.pp-gallery-kdl__item:hover img { transform: scale(1.05); }
+
+@media (prefers-reduced-motion: reduce) {
+  .pp-gallery-kdl__item,
+  .pp-gallery-kdl__item img {
+    transition: none !important;
+  }
+  .pp-gallery-kdl__item:hover {
+    transform: none !important;
+  }
+}
