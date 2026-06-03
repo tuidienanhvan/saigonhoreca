@@ -262,9 +262,6 @@ require $inc . 'core/perf-config.php';       // Perf constants + filter helpers
 require $inc . 'core/img-helper.php';        // sgh_img() — env-aware uploads URL (local mirror vs prod)
 require $inc . 'core/slug-map.php';          // Bilingual slug map (vi ↔ en) + counterpart URL switcher
 require $inc . 'core/pillar-routes.php';     // Auto-route /du-an/<slug>/ to page-pillar-*.php (BEM rebuild)
-if (function_exists('sgh_is_local_static_mirror_enabled') && sgh_is_local_static_mirror_enabled()) {
-    require $inc . 'core/static-mirror.php'; // Local/dev scraped HTML fallback only.
-}
 require $inc . 'core/cpt-registration.php';  // CPT `project`+`product` + taxonomies (Phase 2 data layer)
 
 add_filter('template_include', function ($template) {
@@ -405,7 +402,6 @@ require $inc . 'core/pi-seo-resolver.php';   // Pi-managed SEO meta/options reso
 require $inc . 'core/seo-manager.php';        // Centralized hub for all SEO, robots, schema, performance, and HTML rewrite rules
 require $inc . 'core/webp-conversion.php';      // WebP sibling generation + runtime serve (Accept-aware)
 require $inc . 'core/redirect-manager.php';  // Redirect frontend handler
-require $inc . 'core/website-features.php';  // Shortcodes (calculator, gallery, etc.)
 
 // Navigation walkers
 require_once $inc . 'core/class-mobile-walker.php';
