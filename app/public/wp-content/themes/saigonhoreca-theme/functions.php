@@ -402,11 +402,7 @@ require $inc . 'core/section-images.php';    // Media library helper
 require $inc . 'core/breadcrumbs.php';       // Breadcrumbs renderer
 require $inc . 'core/cache-helpers.php';     // Theme cache helpers
 require $inc . 'core/pi-seo-resolver.php';   // Pi-managed SEO meta/options resolver
-require $inc . 'core/seo-meta-description.php'; // Phase 1: Auto meta description (120-155 chars)
-require $inc . 'core/seo-robots.php';           // Phase 1: Force index,follow on critical category URLs
-require $inc . 'core/seo-schema.php';           // Phase 2: JSON-LD (LocalBusiness, WebSite, Product)
-require $inc . 'core/seo-robots-txt.php';       // Phase 3: robots.txt + pagination noindex
-require $inc . 'core/seo-performance.php';      // Phase 4: img attrs, resource hints, strip emoji/oembed
+require $inc . 'core/seo-manager.php';        // Centralized hub for all SEO, robots, schema, performance, and HTML rewrite rules
 require $inc . 'core/webp-conversion.php';      // WebP sibling generation + runtime serve (Accept-aware)
 require $inc . 'core/redirect-manager.php';  // Redirect frontend handler
 require $inc . 'core/website-features.php';  // Shortcodes (calculator, gallery, etc.)
