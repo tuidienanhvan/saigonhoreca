@@ -1,21 +1,19 @@
 <?php
 /**
  * Project Pillar — heiwa-sushi-omakase
- * Section #1: hero — Ken-Burns omakase space with zen glass content card.
+ * Section #1: hero — full-bleed omakase space using the Parallax Clip-Path
+ * technique (clip-path inset on the section confines a position:fixed bg = a
+ * GPU-smooth, JS-free parallax). Bright image, NO dark overlay/panel behind the
+ * title (owner feedback): only a LIGHT token gradient + legibility text-shadow.
  * @package SaigonHoreca
  */
 if (!defined('ABSPATH')) exit;
 $uri = get_template_directory_uri();
 ?>
 <section class="pp-hero-hwa">
-  <div class="pp-hero-hwa__media" style="background-image:url('<?php echo sgh_img('heiwa-sushi-omakase/heiwa-sushi-omakase-quay-bar-bieu-dien-omakase.webp'); ?>');" aria-hidden="true"></div>
+  <!-- Thẻ con gánh hiệu ứng Parallax Clip-Path siêu mượt (position:fixed bị section clip-path giới hạn) -->
+  <div class="pp-hero-hwa__bg" style="background-image:url('<?php echo sgh_img('heiwa-sushi-omakase/heiwa-sushi-omakase-quay-bar-bieu-dien-omakase.webp'); ?>');" aria-hidden="true"></div>
   <div class="pp-hero-hwa__overlay" aria-hidden="true"></div>
-  <div class="pp-hero-hwa__grid" aria-hidden="true"></div>
-
-  <div class="pp-hero-hwa__glow pp-hero-hwa__glow--lt" aria-hidden="true"></div>
-  <div class="pp-hero-hwa__glow pp-hero-hwa__glow--rb" aria-hidden="true"></div>
-  <div class="pp-hero-hwa__rail pp-hero-hwa__rail--left" aria-hidden="true">OMAKASE / DISTRICT 2</div>
-  <div class="pp-hero-hwa__rail pp-hero-hwa__rail--right" aria-hidden="true">SUSHI BAR SYSTEM / SGH</div>
 
   <div class="pp-hero-hwa__content">
     <span class="pp-hero-hwa__subhead">// <?php echo esc_html__('PROJECT PILLAR • OMAKASE EXPERTISE', 'saigonhoreca'); ?></span>

@@ -32,7 +32,7 @@ $uri = get_template_directory_uri();
                 <span class="sh-contact-map__marker sh-contact-map__marker--br">+</span>
                 
                 <img
-                    src="<?php echo esc_url(sgh_img('2023/12/bia-bep-cong-nghiep-inox.jpg')); ?>"
+                    src="<?php echo esc_url(sgh_img('saigonhoreca/bia-bep-cong-nghiep-inox.jpg')); ?>"
                     alt="Bếp công nghiệp inox Saigon Horeca"
                     loading="lazy"
                     width="640"

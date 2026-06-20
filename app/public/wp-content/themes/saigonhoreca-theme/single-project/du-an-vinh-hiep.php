@@ -1,7 +1,7 @@
 <?php
 /**
  * Single Project Template — Dự án Vĩnh Hiệp – Coffee Lab
- * Thumbnail: 2025/04/du-an-sheh-fung.jpg
+ * Thumbnail: du-an-vinh-hiep/vinh-hiep-toan-canh-nha-may-tu-tren-cao.webp
  *
  * Auto-routed via inc/core/pillar-routes.php for /du-an/du-an-vinh-hiep/.
  *

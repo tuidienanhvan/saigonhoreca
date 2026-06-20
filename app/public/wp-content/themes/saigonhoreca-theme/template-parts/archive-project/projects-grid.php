@@ -74,29 +74,18 @@ $svg_pin     = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strok
                                 axe `image-redundant-alt` (alt duplicates the <h3> below).
                                 The <h3> inside provides the accessible name for the link. */ ?>
                         <?php
-                        $thumb_id  = get_post_thumbnail_id();
-                        $thumb_src = $thumb_id ? wp_get_attachment_image_url($thumb_id, 'large') : '';
-                        $thumb_srcset = $thumb_id ? wp_get_attachment_image_srcset($thumb_id, 'large') : '';
-                        
-                        // Retrieve custom project thumbnail configured directly in the single-project template comment
+                        // Responsive cover: native attachment (auto srcset/sizes) with a
+                        // never-empty URL fallback so a card is never blank.
                         global $post;
-                        if (isset($post->post_name)) {
-                            $custom_thumb = sgh_get_project_thumbnail($post->post_name);
-                            if ($custom_thumb) {
-                                $thumb_src = $custom_thumb;
-                                $thumb_srcset = '';
-                            }
+                        // Một cover duy nhất / dự án (không phụ thuộc size-variant WP sinh):
+                        // luôn render file cover chính theo GOLD convention qua sgh_project_cover_url.
+                        if (function_exists('sgh_project_cover_url')) {
+                            printf(
+                                '<img class="sh-archive-projects__img" src="%s" width="1024" height="576" alt="" loading="lazy" decoding="async">',
+                                esc_url(sgh_project_cover_url($post->post_name))
+                            );
                         }
                         ?>
-                        <?php if ($thumb_src) : ?>
-                        <img class="sh-archive-projects__img"
-                             src="<?php echo esc_url($thumb_src); ?>"
-                             <?php if ($thumb_srcset) : ?>srcset="<?php echo esc_attr($thumb_srcset); ?>"<?php endif; ?>
-                             sizes="(max-width: 768px) 100vw, 33vw"
-                             width="1024" height="576"
-                             alt=""
-                             loading="lazy" decoding="async">
-                        <?php endif; ?>
                         <span class="sh-archive-projects__num" aria-hidden="true">
                             <?php echo sprintf('%02d', $i); ?>
                         </span>

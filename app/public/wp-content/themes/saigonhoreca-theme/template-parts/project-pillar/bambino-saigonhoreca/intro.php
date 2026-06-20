@@ -86,7 +86,7 @@ $uri = get_template_directory_uri();
                 <path d="M 100 88 L 100 100 L 88 100" stroke="rgba(212, 175, 55, 0.4)" stroke-width="1" />
               </svg>
               <img src="<?php echo sgh_img('bambino/bambino-mon-an-salad-rau-kem-pasta.png'); ?>" alt="<?php echo esc_attr__('Salad rau xà lách tươi ăn kèm Pasta sốt kem cà chua tại Bambino', 'saigonhoreca'); ?>" loading="eager" decoding="async">
-              <div class="pp-image-caption-shared"><?php echo esc_html__('Tô xà lách xanh tươi giòn kết hợp mì Ý Conchiglie sốt kem cà chua', 'saigonhoreca'); ?></div>
+              <div class="pp-image-caption-shared"><?php echo esc_html__('Lá xà lách búp xanh giòn trong ly inox bên đĩa mì ống sốt cà chua kem đỏ cam đậm đà', 'saigonhoreca'); ?></div>
             </div>
 
           </div>

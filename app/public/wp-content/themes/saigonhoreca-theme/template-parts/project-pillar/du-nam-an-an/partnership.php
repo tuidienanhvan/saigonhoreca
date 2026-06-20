@@ -1,30 +1,45 @@
-﻿<?php
+<?php
 /**
- * Project Pillar â€” du-nam-an-an
- * Section #4: split
+ * Project Pillar — du-nam-an-an
+ * Section #4 (route) — partnership: Nam An & Saigon Horeca.
+ * Glassmorphic statement over a Parallax Clip-Path kitchen backdrop (GPU-smooth, no JS).
  * @package SaigonHoreca
  */
 if (!defined('ABSPATH')) exit;
 $uri = get_template_directory_uri();
 ?>
-<section class="pp-section-nan pp-section-nan--alt scroll-reveal">
+<section class="pp-section-bg-nan">
+  <!-- Thẻ con gánh hiệu ứng Parallax Clip-Path siêu mượt (position:fixed bị clip-path của section giam lại) -->
+  <div class="pp-section-bg-nan__bg" style="background-image:url('<?php echo esc_url(sgh_img('du-nam-an-an/nam-an-toan-canh-cong-trinh-ngoai-that.webp')); ?>');" aria-hidden="true"></div>
+  <div class="pp-section-bg-nan__overlay" aria-hidden="true"></div>
+
   <div class="pp-container-shared">
-    <div class="pp-split-nan pp-split-nan--reverse">
-      <div class="pp-split-nan__body">
-        <span class="pp-text-nan__divider" aria-hidden="true"></span>
-        <h2 class="pp-text-nan__title"><?php echo esc_html__('An toàn và vệ sinh – Tiêu chuẩn được tích hợp trong từng chi tiết', 'saigonhoreca'); ?></h2>
-        <div class="pp-text-nan__body">
-      <p><?php echo esc_html__('Trong môi trường chăm sóc người cao tuổi, an toàn thực phẩm không chỉ là yêu cầu kỹ thuật, mà còn là cam kết nhân văn. Mọi thiết bị, bề mặt và quy trình vận hành đều phải đáp ứng tiêu chuẩn vệ sinh nghiêm ngặt.', 'saigonhoreca'); ?></p>
-      <p><?php echo esc_html__('Saigon Horeca đã tư vấn và triển khai hệ thống thoát nước, lọc rác và xử lý nước thải ngay tại khu vực bếp, giúp giảm thiểu nguy cơ ô nhiễm và duy trì môi trường sạch sẽ liên tục.', 'saigonhoreca'); ?></p>
-      <p><?php echo esc_html__('Dự án Nam An An là một trong những dự án đặc biệt nhất mà Saigon Horeca đã thực hiện – không phải vì quy mô, mà vì tính nhân văn và trọng trách xã hội đi kèm. Không gian bếp không chỉ được xây dựng để nấu, mà để chăm sóc.', 'saigonhoreca'); ?></p>
-      <p><?php echo esc_html__('Với Nam An, Saigon Horeca chứng minh rằng: thiết kế bếp công nghiệp không chỉ là kỹ thuật, mà còn là sự thấu hiểu con người và mô hình.', 'saigonhoreca'); ?></p>
-        </div>
+    <div class="pp-section-bg-nan__content">
+      <span class="pp-badge-nan">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <path d="M8 13a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm8 0a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM2 21a6 6 0 0 1 12 0m-2 0a6 6 0 0 1 10 0" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <?php echo esc_html__('Hợp tác', 'saigonhoreca'); ?>
+      </span>
+
+      <h2 class="pp-section-bg-nan__title"><?php echo esc_html__('Nam An & Saigon Horeca – Sự gặp nhau của hai chuẩn mực', 'saigonhoreca'); ?></h2>
+      <span class="pp-text-nan__divider pp-text-nan__divider--center" aria-hidden="true"></span>
+
+      <div class="pp-section-bg-nan__body">
+        <p><?php echo esc_html__('Dự án Nam An là minh chứng rõ nét cho cách Saigon Horeca đồng hành cùng chủ đầu tư từ triết lý đến giải pháp. Khi Nam An đặt ra yêu cầu cao về chất lượng bữa ăn và sự an toàn cho người cao tuổi, Saigon Horeca đáp lại bằng một hệ thống bếp được thiết kế chỉn chu, vận hành bền bỉ và hướng đến giá trị lâu dài.', 'saigonhoreca'); ?></p>
+        <p><?php echo esc_html__('Nam An – Nursing Home Kitchen không chỉ là một dự án bếp công nghiệp, mà là nơi kỹ thuật, vận hành và sự thấu cảm cùng gặp nhau – đúng với tinh thần mà Saigon Horeca luôn theo đuổi trong mỗi công trình.', 'saigonhoreca'); ?></p>
       </div>
-      <div class="pp-split-nan__media pp-image-container-shared">
-        <img src="<?php echo sgh_img('2025/01/sheh-fung-4.jpg'); ?>" alt="<?php echo esc_attr__('Bếp á đôi công nghiệp', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="1366" height="768">
-        <div class="pp-image-caption-shared"><?php echo esc_html__('Hệ thống thoát nước và xử lý vệ sinh tích hợp trong bếp', 'saigonhoreca'); ?></div>
+
+      <div class="pp-section-bg-nan__stats">
+        <div class="pp-section-bg-nan__stat">
+          <strong><?php echo esc_html__('Kỹ thuật', 'saigonhoreca'); ?></strong>
+          <span><?php echo esc_html__('Thiết kế chỉn chu, vận hành bền bỉ', 'saigonhoreca'); ?></span>
+        </div>
+        <div class="pp-section-bg-nan__stat">
+          <strong><?php echo esc_html__('Thấu cảm', 'saigonhoreca'); ?></strong>
+          <span><?php echo esc_html__('Hướng đến giá trị lâu dài', 'saigonhoreca'); ?></span>
+        </div>
       </div>
     </div>
   </div>
 </section>
-

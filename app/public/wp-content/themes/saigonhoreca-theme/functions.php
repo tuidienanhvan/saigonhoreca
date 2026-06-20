@@ -260,9 +260,12 @@ require $inc . 'config/contact-info.php';    // Company phone, email, address
 require $inc . 'config/site-structure.php';  // Pages, categories, menu definitions
 require $inc . 'core/perf-config.php';       // Perf constants + filter helpers
 require $inc . 'core/img-helper.php';        // sgh_img() — env-aware uploads URL (local mirror vs prod)
+require $inc . 'core/project-cover.php';      // project cover resolver — cached map + fallback chain (never-black)
+require $inc . 'core/bot-optimize.php';      // sgh_is_bot() — bots/Lighthouse get light render (no fixed parallax)
 require $inc . 'core/slug-map.php';          // Bilingual slug map (vi ↔ en) + counterpart URL switcher
 require $inc . 'core/pillar-routes.php';     // Auto-route /du-an/<slug>/ to page-pillar-*.php (BEM rebuild)
 require $inc . 'core/cpt-registration.php';  // CPT `project`+`product` + taxonomies (Phase 2 data layer)
+require $inc . 'core/media-routing.php';      // Route new uploads: product->products/<slug>/, post->blog/<slug>/
 
 add_filter('template_include', function ($template) {
     if (is_front_page()) {
@@ -399,7 +402,10 @@ require $inc . 'core/section-images.php';    // Media library helper
 require $inc . 'core/breadcrumbs.php';       // Breadcrumbs renderer
 require $inc . 'core/cache-helpers.php';     // Theme cache helpers
 require $inc . 'core/pi-seo-resolver.php';   // Pi-managed SEO meta/options resolver
-require $inc . 'core/seo-manager.php';        // Centralized hub for all SEO, robots, schema, performance, and HTML rewrite rules
+require $inc . 'core/seo-meta.php';           // Saigon Horeca SEO Meta & Social Tags Module
+require $inc . 'core/seo-robots.php';         // Saigon Horeca SEO Robots & Canonical Module
+require $inc . 'core/seo-schema.php';         // Saigon Horeca JSON-LD Structured Data Schema Module
+require $inc . 'core/seo-performance.php';    // Saigon Horeca SEO Performance & Security Module
 require $inc . 'core/webp-conversion.php';      // WebP sibling generation + runtime serve (Accept-aware)
 require $inc . 'core/redirect-manager.php';  // Redirect frontend handler
 
@@ -413,16 +419,25 @@ require $inc . 'customizer/init.php';
 // Admin modules (brand-specific — not in plugins)
 // Also load for REST API requests so /pi/v1/* endpoints can access SGH_Dashboard, sync functions, etc.
 $is_rest_api = (defined('REST_REQUEST') && REST_REQUEST) 
-    || (isset($_SERVER['REQUEST_URI']) && str_contains($_SERVER['REQUEST_URI'], 'wp-json/pi/'));
+    || (isset($_SERVER['REQUEST_URI']) && strpos($_SERVER['REQUEST_URI'], 'wp-json/pi/') !== false);
 
 if (is_admin() || wp_doing_ajax() || $is_rest_api) {
-    require $inc . 'admin/front-page-meta.php';      // Homepage section metabox
-    require $inc . 'admin/dashboard-class.php';      // SGH_Dashboard class (SGH-specific stats)
-    require $inc . 'admin/dashboard-menu-def.php';   // sgh_dashboard_get_menu_definition() " brand-specific menu tree
-    require $inc . 'admin/sync/sync-setup.php';      // Favicons, menu sync
-    require $inc . 'admin/sync/sync-deploy.php';     // .htaccess, robots.txt deploy
-    require $inc . 'admin/sync/sync-data.php';       // DB-to-JSON export, WebP convert
-    require $inc . 'admin/notifications.php';        // Admin notices
+    // Guarded so a missing optional module never fatals wp-admin / ajax / REST
+    // (a bare require of an absent file 500s every /wp-json/pi/* call + wp-admin).
+    foreach ([
+        'admin/front-page-meta.php',     // Homepage section metabox
+        'admin/dashboard-class.php',     // SGH_Dashboard class (SGH-specific stats)
+        'admin/dashboard-menu-def.php',  // sgh_dashboard_get_menu_definition() — brand menu tree
+        'admin/sync/sync-setup.php',     // Favicons, menu sync
+        'admin/sync/sync-deploy.php',    // .htaccess, robots.txt deploy
+        'admin/sync/sync-data.php',      // DB-to-JSON export, WebP convert
+        'admin/notifications.php',       // Admin notices (optional — may be absent)
+    ] as $sgh_admin_mod) {
+        $sgh_admin_path = $inc . $sgh_admin_mod;
+        if (file_exists($sgh_admin_path)) {
+            require $sgh_admin_path;
+        }
+    }
 }
 
 add_filter('pi_api_overview_stats', function ($stats) {
@@ -628,6 +643,11 @@ require $inc . 'core/markdown-filters.php';
 require $inc . 'tools/reimport-products.php';   // Admin-only ?sgh_reimport_products=1
 require $inc . 'tools/clean-elementor-posts.php'; // Admin-only ?sgh_clean_elementor=1
 require $inc . 'tools/recrawl-posts.php';        // Admin-only ?sgh_recrawl_posts=1
+require $inc . 'tools/import-content.php';       // Admin-only ?sgh_import_content=1 (import WXR blog/product)
+require $inc . 'tools/convert-webp.php';         // Admin-only ?sgh_convert_webp=1 (PNG/JPG/JPEG → WebP)
+require $inc . 'tools/upload-zip.php';            // Admin-only ?sgh_upload_zip=1 (upload .zip → giải nén vào uploads)
+require $inc . 'tools/seed-content.php';          // Admin-only ?sgh_seed=1 (seed 30 dự án + fix template trang Về/Liên hệ)
+require $inc . 'tools/import-projects.php';       // Admin-only ?sgh_import_projects=1 (tạo 30 dự án + fix trang Về/Liên hệ)
 
 // ============================================================================
 // 7. SEO HOOKS
@@ -859,6 +879,10 @@ if (!function_exists('sgh_static_cache_path_for_uri')) {
 
 if (!function_exists('sgh_static_cache_is_cacheable')) {
     function sgh_static_cache_is_cacheable(): bool {
+        // Bots get a UA-specific render (no fixed parallax — inc/core/bot-optimize.php).
+        // NEVER cache a bot response: a UA-agnostic static cache would otherwise serve
+        // that bot (no-parallax) HTML to humans. Bots always render fresh instead.
+        if (function_exists('sgh_is_bot') && sgh_is_bot()) return false;
         if (defined('DOING_AJAX') && DOING_AJAX) return false;
         if (defined('DOING_CRON') && DOING_CRON) return false;
         if (defined('REST_REQUEST') && REST_REQUEST) return false;

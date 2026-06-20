@@ -553,6 +553,18 @@
   transition-delay: 0.1s;
 }
 
+/* Click / keyboard open (accessible disclosure) — mirrors the :hover reveal. */
+.sh-about-intro__panel.is-open .sh-about-intro__panel-content { grid-template-rows: 1fr; }
+.sh-about-intro__panel.is-open .sh-about-intro__panel-content-inner {
+  opacity: 1;
+  transform: translateY(0);
+  padding-bottom: 1.25rem;
+  transition-delay: 0.1s;
+}
+.sh-about-intro__panel.is-open .sh-about-intro__panel-trigger { opacity: 1; transform: rotate(135deg); }
+.sh-about-intro__panel-header[role="button"] { cursor: pointer; }
+.sh-about-intro__panel-header[role="button"]:focus-visible { outline: 2px solid var(--p); outline-offset: 3px; }
+
 
 /* ── Volumetric SVG Micro-animations ───────────────────────────── */
 

@@ -1,13 +1,26 @@
 /**
  * mua-craft-sake-lam-ruou-sake-dau-tien-tai-viet-nam — hero slot.
- * Minimalist Japanese sake brewery — Hinoki wood + golden yeast tones.
- * Accent tokens scoped trong .pp--mua (single-project css). 0 hardcode hex brand.
+ * Minimalist Japanese sake brewery — text-on-bright-image (NO dark overlay,
+ * NO panel behind title). Chỉ text-shadow để đọc rõ trên ảnh sáng.
+ * Accent tokens scope trong .pp--mua (single-project css). 0 hardcode hex brand.
+ *
+ * Kỹ thuật Parallax (background-attachment:fixed — đáng tin cậy, KHÔNG JS):
+ *   - section: position:relative; isolation:isolate; overflow:hidden (KHÔNG clip-path).
+ *   - .__bg: position:absolute; inset:0; background center/cover;
+ *     background-attachment:fixed ⇒ bg neo theo viewport = parallax; z-index:-2.
+ *   - .__video: iframe nền position:absolute; inset:0; z-index:-1.
+ *   - .__overlay: gradient token NHẸ giữ ảnh sáng; z-index:-1.
+ *   - content: z-index trên cùng + text-shadow cho dễ đọc.
+ *   - Mobile (<=768px): __bg background-attachment:scroll (fixed bị giật trên mobile).
+ * Techniques khác: radial-gradient ambient glow · clamp() type · color-mix
+ *   tints · prefers-reduced-motion.
  * @package SaigonHoreca
  */
 
 .pp-hero-mua {
   position: relative;
   width: 100%;
+  height: calc(100svh - 76px);
   min-height: 88vh;
   display: flex;
   align-items: center;
@@ -16,52 +29,57 @@
   background: var(--b1);
   isolation: isolate;
 }
-@media (max-width: 768px) { .pp-hero-mua { min-height: 70vh; } }
-
-.pp-hero-mua__media {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  filter: saturate(0.96) brightness(0.82);
+@supports (height: 100dvh) {
+  .pp-hero-mua { height: calc(100dvh - 76px); }
 }
-.pp-hero-mua__media img,
-.pp-hero-mua__media iframe,
-.pp-hero-mua__media video {
+@media (max-width: 768px) { .pp-hero-mua { height: auto; min-height: 70vh; } }
+
+/* Lớp nền ảnh hero thật — background-attachment:fixed cho parallax đáng tin cậy. */
+.pp-hero-mua__bg {
   position: absolute;
   inset: 0;
-  width: 100%; height: 100%;
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* parallax đáng tin cậy — bg neo theo viewport, auto-clip vào box này */
+  z-index: -2;
+  pointer-events: none;
+  filter: saturate(1.02);
+}
+/* Video nền phủ lên ảnh — absolute, neo trong khung hero (không còn clip-path). */
+.pp-hero-mua__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   display: block;
   border: none;
-}
-/* Poster ảnh tĩnh nằm dưới iframe — Ken Burns chậm cho chiều sâu điện ảnh. */
-.pp-hero-mua__poster {
-  z-index: 0;
-  animation: mua-ken-burns var(--sh-ken-burns-duration, 14s) ease-in-out infinite alternate;
-}
-.pp-hero-mua__media iframe { z-index: 1; }
-
-.pp-hero-mua__overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  background:
-    radial-gradient(ellipse at 50% 70%,
-      var(--mua-glow) 0%,
-      transparent 60%),
-    linear-gradient(180deg,
-      color-mix(in srgb, var(--b1) 40%, transparent) 0%,
-      color-mix(in srgb, var(--b1) 90%, transparent) 100%);
+  z-index: -1;
   pointer-events: none;
 }
 
-/* Zen sake brewery ambient glows */
+/* Overlay gradient token NHẸ — giữ ảnh sáng/tươi, KHÔNG phải lớp đen che ảnh. */
+.pp-hero-mua__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(180deg,
+    color-mix(in srgb, var(--b1) 45%, transparent) 0%,
+    color-mix(in srgb, var(--b1) 25%, transparent) 50%,
+    color-mix(in srgb, var(--b1) 55%, transparent) 100%);
+}
+
+/* Zen sake brewery ambient glows — chỉ ánh sáng dịu, KHÔNG phải lớp đen che ảnh. */
 .pp-hero-mua::before,
 .pp-hero-mua::after {
   content: '';
   position: absolute;
   border-radius: 50%;
-  filter: blur(80px);
+  filter: blur(90px);
   pointer-events: none;
   z-index: 2;
 }
@@ -69,13 +87,40 @@
   top: -8%; left: -8%;
   width: 460px; height: 460px;
   background: radial-gradient(circle, color-mix(in srgb, var(--mua-warm) 16%, transparent) 0%, transparent 70%);
-  opacity: 0.6;
+  opacity: 0.5;
 }
 .pp-hero-mua::after {
   bottom: -10%; right: -6%;
   width: 520px; height: 520px;
-  background: radial-gradient(circle, var(--mua-mist) 0%, transparent 70%);
+  background: radial-gradient(circle, color-mix(in srgb, var(--mua-gold) 12%, transparent) 0%, transparent 70%);
   opacity: 0.5;
+}
+
+/* Mobile fallback: background-attachment:fixed bị giật trên mobile ⇒ scroll. */
+@media (max-width: 768px) {
+  .pp-hero-mua__bg {
+    position: absolute;
+    background-attachment: scroll;
+  }
+  .pp-hero-mua__video {
+    position: absolute;
+  }
+}
+
+/* Đại tự "酒" (sake) chìm nghệ thuật, watermark thương hiệu. */
+.pp-hero-mua__kanji {
+  position: absolute;
+  right: clamp(1rem, 6vw, 6rem);
+  bottom: clamp(-1rem, 1vw, 1rem);
+  z-index: 2;
+  font-family: var(--font-serif), serif;
+  font-size: clamp(9rem, 26vw, 26rem);
+  font-weight: 700;
+  line-height: 1;
+  color: color-mix(in srgb, var(--bc) 9%, transparent);
+  text-shadow: 0 2px 30px rgba(0, 0, 0, 0.35);
+  pointer-events: none;
+  user-select: none;
 }
 
 .pp-hero-mua__content {
@@ -94,11 +139,12 @@
 .pp-hero-mua__subhead {
   margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(0.7rem, 1.4vw, 0.82rem);
+  font-size: clamp(0.72rem, 1.4vw, 0.86rem);
   font-weight: 700;
   letter-spacing: 0.4em;
   text-transform: uppercase;
   color: var(--mua-gold);
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.55);
 }
 
 .pp-hero-mua__title {
@@ -110,9 +156,8 @@
   color: var(--bc);
   letter-spacing: 0.005em;
   max-width: 22ch;
-  text-shadow:
-    0 4px 24px rgba(0, 0, 0, 0.7),
-    0 0 40px color-mix(in srgb, var(--mua-warm) 18%, transparent);
+  /* Text-on-image: chỉ shadow, KHÔNG nền/khung phía sau chữ. */
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.55);
 }
 
 .pp-hero-mua__divider {
@@ -140,14 +185,12 @@
   max-width: 640px;
   font-size: clamp(0.97rem, 1.1vw, 1.08rem);
   line-height: 1.8;
-  color: var(--bc2);
-}
-
-@keyframes mua-ken-burns {
-  0%   { transform: scale(var(--sh-ken-burns-scale-start, 1)); }
-  100% { transform: scale(var(--sh-ken-burns-scale-end, 1.12)); }
+  color: var(--bc);
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.55);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .pp-hero-mua__poster { animation: none !important; }
+  /* Parallax dùng background-attachment:fixed — neo bg về scroll để loại bỏ
+     chuyển động cuộn cho người dùng nhạy cảm với chuyển động. */
+  .pp-hero-mua__bg { background-attachment: scroll !important; }
 }

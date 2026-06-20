@@ -12,8 +12,8 @@
 if (!defined('ABSPATH')) exit;
 
 $uri = get_template_directory_uri();
-$blueprint_img = sgh_img('2024/02/swh-ban-ve-tong-the-khu-bep.webp');
-$showcase_img  = sgh_img('2024/02/The-Brix-05-1-768x432.webp');$intro_items = [
+$blueprint_img = sgh_img('spice-world-hotpot/swh-ban-ve-tong-the-khu-bep.png');
+$showcase_img  = sgh_img('the-brix/the-brix-he-thong-bep-nau-chinh-inox.webp');$intro_items = [
     [
         'number' => '01',
         'subtitle' => '',
@@ -95,7 +95,7 @@ $showcase_img  = sgh_img('2024/02/The-Brix-05-1-768x432.webp');$intro_items = [
                       <path d="M24 18V25" stroke="url(#grad-team-luxe)" stroke-width="1.5" stroke-opacity="0.5"/>
                     </svg>',
         'title'  => __('Đội ngũ chuyên nghiệp', 'saigonhoreca'),
-        'desc'   => 'Đội ngũ kỹ sư, chuyên viên giàu kinh nghiệm thực chiến. Tư vấn đo đạc **khảo sát thực địa**, dựng layout 2D/3D tối ưu công năng đến thi công bàn giao trọn gói.',
+        'desc'   => 'Đội ngũ kỹ sư, chuyên viên giàu kinh nghiệm thực chiến. Tư vấn đo đạc <strong>khảo sát thực địa</strong>, dựng layout 2D/3D tối ưu công năng đến thi công bàn giao trọn gói.',
     ],
 ];
 ?>
@@ -134,7 +134,7 @@ $showcase_img  = sgh_img('2024/02/The-Brix-05-1-768x432.webp');$intro_items = [
 
                 <!-- Showcase Premium Real Image -->
                 <div class="sh-about-intro__showcase-frame">
-                    <img class="sh-about-intro__showcase-img" src="<?php echo esc_url($showcase_img); ?>" alt="Thiết kế bếp nhà hàng cao cấp Saigon Horeca thực hiện" loading="eager" fetchpriority="high" />
+                    <img class="sh-about-intro__showcase-img" src="<?php echo esc_url($showcase_img); ?>" alt="Thiết kế bếp nhà hàng cao cấp Saigon Horeca thực hiện" width="800" height="500" loading="lazy" />
                     
                     <!-- Glassmorphic Badge -->
                     <div class="sh-about-intro__glass-badge">
@@ -163,7 +163,7 @@ $showcase_img  = sgh_img('2024/02/The-Brix-05-1-768x432.webp');$intro_items = [
                         <!-- Border line indicator top -->
                         <div class="sh-about-intro__panel-border-top"></div>
                         
-                        <div class="sh-about-intro__panel-header">
+                        <div class="sh-about-intro__panel-header" role="button" tabindex="0" aria-expanded="false" aria-controls="about-panel-<?php echo $index; ?>">
                             <!-- Left: Number & Subtitle -->
                             <div class="sh-about-intro__panel-number-wrap">
                                 <span class="sh-about-intro__panel-num"><?php echo esc_html($item['number']); ?></span>
@@ -189,7 +189,7 @@ $showcase_img  = sgh_img('2024/02/The-Brix-05-1-768x432.webp');$intro_items = [
                         </div>
 
                         <!-- Expandable Content Box -->
-                        <div class="sh-about-intro__panel-content">
+                        <div class="sh-about-intro__panel-content" id="about-panel-<?php echo $index; ?>">
                             <div class="sh-about-intro__panel-content-inner">
                                 <p class="sh-about-intro__panel-desc"><?php echo $item['desc']; ?></p>
                             </div>
@@ -197,6 +197,24 @@ $showcase_img  = sgh_img('2024/02/The-Brix-05-1-768x432.webp');$intro_items = [
                     </div>
                 <?php endforeach; ?>
             </div>
+
+            <script>
+            /* Accessible disclosure: panels were :hover-only (keyboard/touch couldn't open). */
+            (function(){
+              document.querySelectorAll('.sh-about-intro__panel-header[role="button"]').forEach(function(h){
+                function toggle(){
+                  var p = h.closest('.sh-about-intro__panel');
+                  var open = h.getAttribute('aria-expanded') === 'true';
+                  h.setAttribute('aria-expanded', open ? 'false' : 'true');
+                  if (p) p.classList.toggle('is-open', !open);
+                }
+                h.addEventListener('click', toggle);
+                h.addEventListener('keydown', function(e){
+                  if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') { e.preventDefault(); toggle(); }
+                });
+              });
+            })();
+            </script>
         </div>
 
     </div>

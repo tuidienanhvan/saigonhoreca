@@ -138,7 +138,7 @@ $spec_items = [
                   </svg>
                 </div>
 
-                <img src="<?php echo esc_url(sgh_img('yuzu-omakase/yuzu-omakase-hop-son-mai-trung-ca-tam-caviar.webp')); ?>" alt="<?php echo esc_attr__('Hộp sơn mài xanh ngọc đựng trứng cá tầm Caviar hảo hạng', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
+                <img src="<?php echo esc_url(sgh_img('yuzu-omakase/yuzu-omakase-hop-son-mai-trung-ca-tam-caviar.webp')); ?>" alt="<?php echo esc_attr__('Hộp trình bày xanh rêu chứa hộp thiếc trứng cá tầm Beluga, tỏa khói đá khô trên khay kim loại', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
               </figure>
               
               <!-- Architect Note Card (Bottom) -->
@@ -149,7 +149,7 @@ $spec_items = [
                 </div>
                 <p class="pp-specs-yzo__note-desc-new">
                   <strong><?php echo esc_html__('Ngăn bảo ôn lạnh chuyên dụng:', 'saigonhoreca'); ?></strong>
-                  <?php echo esc_html__('Hộp sơn mài xanh ngọc đựng trứng cá tầm Caviar được tích hợp ngăn bảo ôn lạnh chuyên dụng của Saigon Horeca, duy trì độ lạnh ổn định từ -2°C đến 2°C giúp bảo tồn trọn vẹn hương vị tinh khiết.', 'saigonhoreca'); ?>
+                  <?php echo esc_html__('Hộp trình bày bọc nhung xanh rêu mở nắp khoe hộp thiếc trứng cá tầm Beluga (Caspian House of Caviar), khói đá khô lan tỏa trên khay kim loại — nghi thức phục vụ giữ lạnh chuẩn xác cho nguyên liệu thượng hạng.', 'saigonhoreca'); ?>
                 </p>
               </div>
             </div>
@@ -169,7 +169,7 @@ $spec_items = [
                   </svg>
                 </div>
 
-                <img src="<?php echo esc_url(sgh_img('yuzu-omakase/yuzu-omakase-can-canh-mon-an-nigiri-sushi.webp')); ?>" alt="<?php echo esc_attr__('Nigiri sushi cao cấp chế tác thủ công', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
+                <img src="<?php echo esc_url(sgh_img('yuzu-omakase/yuzu-omakase-can-canh-mon-an-nigiri-sushi.webp')); ?>" alt="<?php echo esc_attr__('Bánh nướng phủ cồi nhím biển uni và lát nấm truffle đen trước bình phong vàng vẽ núi Phú Sĩ', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
               </figure>
               
               <!-- Architect Note Card (Bottom) -->
@@ -180,7 +180,7 @@ $spec_items = [
                 </div>
                 <p class="pp-specs-yzo__note-desc-new">
                   <strong><?php echo esc_html__('Bày biện nghệ thuật trên đĩa đá:', 'saigonhoreca'); ?></strong>
-                  <?php echo esc_html__('Sự sắp đặt tinh tế của tác phẩm Nigiri sushi phủ nhũ vàng và trứng cá Caviar cao cấp trên đĩa đá bazan đen tự nhiên, tạo điểm nhấn thị giác đẳng cấp hoàng gia.', 'saigonhoreca'); ?>
+                  <?php echo esc_html__('Miếng bánh nướng giòn phủ cồi nhím biển (uni) vàng óng và lát nấm truffle đen bào mỏng, đặt trước bình phong sơn son thếp vàng vẽ núi Phú Sĩ — sự giao thoa giữa nguyên liệu thượng hạng và nghệ thuật bày biện Omakase.', 'saigonhoreca'); ?>
                 </p>
               </div>
             </div>

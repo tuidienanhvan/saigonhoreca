@@ -1,1 +1,247 @@
-/** bep-canteen-nha-may-sheh-fung — gallery slot (no content). */
+/**
+ * bep-canteen-nha-may-sheh-fung — Section #6: gallery
+ * GOLD uniform editorial grid (equal 4/3 tiles · clean tiling, zero voids)
+ * + corporate call-to-action box.
+ * Reuses shared .pp-section-shf / .pp-badge-shf / .pp-text-shf__* from intro.css
+ * and .pp-image-container-shared / .pp-image-caption-shared from _caption.css.
+ * Direction: Industrial Factory Canteen. 100% tokens, zero hardcoded hex.
+ */
+
+/* ===== Editorial header ===== */
+.pp-mosaic-shf__header {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.1rem;
+  max-width: 52rem;
+  margin-bottom: clamp(2.75rem, 5.5vw, 4rem);
+}
+.pp-mosaic-shf__header .pp-text-shf__title { max-width: 24ch; }
+.pp-mosaic-shf__lead {
+  margin: 0.35rem 0 0;
+  max-width: 60ch;
+  font-size: clamp(0.95rem, 1.05vw, 1.04rem);
+  line-height: 1.85;
+  color: var(--bc2);
+}
+
+/* ===== Uniform gallery grid =====
+   Mobile  : 1 col (stacked)
+   ≥600px  : 2 cols
+   ≥992px  : 3 cols.
+   Every tile is a fixed 4/3 frame, so tiles pack cleanly with ZERO empty
+   gaps (no spans, no grid-auto-rows). row-gap kept generous so the shared
+   caption (anchored BELOW each tile) has breathing room and the layout
+   stays CLS-safe. */
+.pp-mosaic-shf {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1.5rem, 2.6vw, 2.25rem) clamp(1.25rem, 2vw, 1.75rem);
+  margin-bottom: clamp(3.5rem, 7vw, 6rem);
+}
+@media (min-width: 600px) {
+  .pp-mosaic-shf {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 992px) {
+  .pp-mosaic-shf {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ambient radial glow behind the collage */
+.pp-mosaic-shf::before {
+  content: '';
+  position: absolute;
+  inset: -8% -6%;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(60% 55% at 22% 28%, color-mix(in srgb, var(--gold) 9%, transparent) 0%, transparent 60%),
+    radial-gradient(50% 50% at 82% 78%, color-mix(in srgb, var(--gold) 6%, transparent) 0%, transparent 62%);
+  filter: blur(8px);
+}
+
+/* faint technical numeric watermark */
+.pp-mosaic-shf__watermark {
+  position: absolute;
+  top: -2.5rem;
+  right: -0.5rem;
+  z-index: 0;
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(7rem, 16vw, 15rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: color-mix(in srgb, var(--gold) 5%, transparent);
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ===== Mosaic tiles ===== */
+.pp-mosaic-shf__item {
+  position: relative;
+  z-index: 1;
+  aspect-ratio: 4 / 3;            /* uniform tile — all tiles share this ratio */
+  overflow: hidden !important;     /* keep zoom clipped; caption is OUTSIDE this box */
+  border-radius: var(--radius-md);
+  background: var(--b3);
+  border: 1px solid color-mix(in srgb, var(--bd) 70%, var(--gold));
+  box-shadow:
+    0 16px 32px rgba(0, 0, 0, 0.32),
+    inset 0 1px 0 color-mix(in srgb, var(--gold) 12%, transparent);
+  transition:
+    border-color 0.45s var(--ease-spring),
+    transform    0.45s var(--ease-spring),
+    box-shadow   0.45s var(--ease-spring);
+}
+
+.pp-mosaic-shf__item:hover {
+  border-color: color-mix(in srgb, var(--gold) 55%, transparent);
+  transform: translateY(-6px);
+  box-shadow:
+    0 26px 48px rgba(0, 0, 0, 0.46),
+    0 0 26px color-mix(in srgb, var(--gold) 16%, transparent),
+    0 0 0 1px color-mix(in srgb, var(--gold) 30%, transparent);
+}
+
+/* image fills the tile (the shared rule already sets object-fit/transition) */
+.pp-mosaic-shf__item img {
+  position: absolute;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block;
+  border-radius: inherit;
+  filter: saturate(0.99) contrast(1.03) brightness(1.02);
+  transition: transform 0.85s var(--ease-spring), filter 0.6s !important;
+}
+.pp-mosaic-shf__item:hover img {
+  transform: scale(1.05) !important;
+  filter: saturate(1.05) contrast(1.05) brightness(1.04);
+}
+
+/* corner bolt accent — bottom-right */
+.pp-mosaic-shf__item::after {
+  content: '';
+  position: absolute;
+  bottom: 0.6rem;
+  right: 0.6rem;
+  z-index: 4;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--gold);
+  opacity: 0.85;
+  box-shadow:
+    0 0 0 2px color-mix(in srgb, var(--b1) 70%, transparent),
+    0 0 10px color-mix(in srgb, var(--gold) 60%, transparent);
+}
+
+/* caption anchored BELOW each tile (shared component) — keep clear of the frame */
+.pp-mosaic-shf__item .pp-image-caption-shared {
+  top: calc(100% + 0.65rem) !important;
+}
+
+/* ===== Corporate CTA ===== */
+.pp-cta-shf {
+  position: relative;
+  margin-top: clamp(3.5rem, 7vw, 6rem);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  padding: clamp(2.5rem, 6vw, 5rem) clamp(1.5rem, 5vw, 4rem);
+  background:
+    radial-gradient(circle at 50% 0%, color-mix(in srgb, var(--gold) 8%, transparent) 0%, transparent 60%),
+    linear-gradient(180deg, var(--b2) 0%, var(--b1) 100%);
+  border: 1px solid color-mix(in srgb, var(--gold) 18%, transparent);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+  isolation: isolate;
+}
+/* technical grid pattern overlay */
+.pp-cta-shf__grid-pattern {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  background:
+    linear-gradient(color-mix(in srgb, var(--gold) 3%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--gold) 3%, transparent) 1px, transparent 1px);
+  background-size: 38px 38px;
+  -webkit-mask-image: radial-gradient(circle at 50% 40%, #000 0%, transparent 75%);
+          mask-image: radial-gradient(circle at 50% 40%, #000 0%, transparent 75%);
+}
+
+.pp-cta-shf__inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.25rem;
+  max-width: 46rem;
+  margin: 0 auto;
+}
+.pp-cta-shf__badge { margin: 0 auto; }
+.pp-cta-shf__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 4vw, 3rem);
+  font-weight: 800;
+  line-height: 1.18;
+  letter-spacing: -0.015em;
+  color: var(--bc);
+  max-width: 20ch;
+}
+.pp-cta-shf__desc {
+  margin: 0;
+  font-size: clamp(0.98rem, 1.2vw, 1.1rem);
+  line-height: 1.8;
+  color: var(--bc2);
+  max-width: 50ch;
+}
+
+/* button */
+.pp-cta-shf__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-top: 0.5rem;
+  padding: 0.95rem 2rem;
+  border-radius: var(--radius-full);
+  font-family: var(--font-display);
+  font-size: clamp(0.85rem, 1.1vw, 0.98rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--pc);
+  background: var(--gold);
+  border: 1px solid var(--gold);
+  box-shadow: 0 10px 28px color-mix(in srgb, var(--gold) 28%, transparent);
+  transition: transform 0.35s var(--ease-spring), box-shadow 0.35s var(--ease-spring), background-color 0.35s var(--ease-spring);
+}
+.pp-cta-shf__btn svg { width: 1.1rem; height: 1.1rem; display: block; transition: transform 0.35s var(--ease-spring); }
+.pp-cta-shf__btn:hover {
+  transform: translateY(-3px);
+  background: color-mix(in srgb, var(--gold) 88%, var(--bc));
+  box-shadow: 0 16px 38px color-mix(in srgb, var(--gold) 40%, transparent);
+}
+.pp-cta-shf__btn:hover svg { transform: translateX(5px); }
+
+@media (prefers-reduced-motion: reduce) {
+  .pp-mosaic-shf__item,
+  .pp-mosaic-shf__item img,
+  .pp-mosaic-shf__item .pp-image-caption-shared,
+  .pp-cta-shf__btn,
+  .pp-cta-shf__btn svg {
+    transition: none !important;
+    transform: none !important;
+  }
+}

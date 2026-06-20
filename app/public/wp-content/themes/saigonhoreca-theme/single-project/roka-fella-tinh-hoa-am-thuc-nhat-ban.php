@@ -9,7 +9,7 @@
  */
 get_header(); ?>
 
-<main id="primary" class="pp pp--rkf" tabindex="-1">
+<main id="primary" class="pp pp--rkf pp--rf" tabindex="-1">
     <?php
     get_template_part('template-parts/project-pillar/roka-fella-tinh-hoa-am-thuc-nhat-ban/hero');
     get_template_part('template-parts/project-pillar/roka-fella-tinh-hoa-am-thuc-nhat-ban/intro');

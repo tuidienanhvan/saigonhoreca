@@ -1,7 +1,10 @@
 /**
  * Project Pillar — Gành Hào
- * Section #1: hero — "con tàu ánh bạc neo đậu giữa sóng" (ken-burns + ambient sea/sand glow).
- * 100% token vars / color-mix — 0 hardcode hex brand.
+ * Section #1: hero — "con tàu ánh bạc neo đậu giữa sóng" (Parallax + ambient sea/sand glow).
+ * Kỹ thuật parallax KHÔNG JavaScript: thẻ con __bg dùng background-attachment:fixed (cách tin cậy đã verify
+ * trên sol-kitchen-bar) → bg neo theo viewport, cuộn trang tạo parallax. Thay cho clip-path + position:fixed cũ.
+ * Chữ đặt TRỰC TIẾP trên ảnh sáng — không lớp phủ đen, không khung nền chữ (per owner).
+ * Legibility nhờ text-shadow nhẹ + overlay token NHẸ. 100% token vars / color-mix — 0 hardcode hex brand.
  * @package SaigonHoreca
  */
 
@@ -25,46 +28,49 @@
   .pp--ganh .pp-hero-ganh { min-height: 70vh; }
 }
 
-.pp-hero-ganh__media {
+/* Parallax bg — background-attachment:fixed (cách parallax tin cậy, bg neo theo viewport, auto-clip vào box này) */
+.pp-hero-ganh__bg {
   position: absolute;
   inset: 0;
-  z-index: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  filter: saturate(1.08) brightness(0.82) contrast(1.03);
-  animation: gha-ken-burns var(--sh-ken-burns-duration, 8s) ease-in-out infinite alternate;
+  background-attachment: fixed;
+  /* Ảnh giữ độ SÁNG nguyên bản — không làm tối (per owner). Chỉ tinh chỉnh nhẹ độ rực. */
+  filter: saturate(1.06) contrast(1.02);
+  pointer-events: none;
 }
 
+/* Overlay token NHẸ — giữ ảnh SÁNG/rõ, KHÔNG phải scrim đen dày */
 .pp-hero-ganh__overlay {
   position: absolute;
   inset: 0;
-  z-index: 1;
+  z-index: -1;
   pointer-events: none;
-  background:
-    radial-gradient(ellipse at 50% 72%,
-      color-mix(in srgb, var(--gha-teal) 16%, transparent) 0%,
-      transparent 60%),
-    linear-gradient(180deg,
-      color-mix(in srgb, var(--gha-teal-deep) 32%, transparent) 0%,
-      color-mix(in srgb, var(--b1) 55%, transparent) 55%,
-      var(--b1) 100%);
+  background: linear-gradient(180deg,
+    color-mix(in srgb, var(--b1) 45%, transparent) 0%,
+    color-mix(in srgb, var(--b1) 25%, transparent) 50%,
+    color-mix(in srgb, var(--b1) 55%, transparent) 100%);
 }
 
-/* Coastal ambient glows for depth */
+/* Coastal ambient glows — chỉ là vầng sáng trang trí ở rìa, KHÔNG phải lớp phủ tối sau chữ */
 .pp-hero-ganh__glow {
   position: absolute;
   z-index: 1;
   border-radius: 50%;
   filter: blur(80px);
+  mix-blend-mode: screen;
   pointer-events: none;
 }
 .pp-hero-ganh__glow--sea {
   top: -8%; left: -8%;
   width: clamp(280px, 38vw, 480px);
   aspect-ratio: 1;
-  background: radial-gradient(circle, color-mix(in srgb, var(--gha-teal) 26%, transparent) 0%, transparent 70%);
-  opacity: 0.8;
+  background: radial-gradient(circle, color-mix(in srgb, var(--gha-teal-bright) 22%, transparent) 0%, transparent 70%);
+  opacity: 0.55;
   animation: gha-drift 14s ease-in-out infinite alternate;
 }
 .pp-hero-ganh__glow--sand {
@@ -72,7 +78,7 @@
   width: clamp(300px, 42vw, 540px);
   aspect-ratio: 1;
   background: radial-gradient(circle, color-mix(in srgb, var(--gha-sand) 16%, transparent) 0%, transparent 70%);
-  opacity: 0.6;
+  opacity: 0.5;
   animation: gha-drift 18s ease-in-out infinite alternate-reverse;
 }
 
@@ -104,9 +110,8 @@
   line-height: 1.05;
   color: var(--bc);
   letter-spacing: -0.012em;
-  text-shadow:
-    0 4px 24px rgba(0, 0, 0, 0.7),
-    0 0 60px color-mix(in srgb, var(--gha-teal) 20%, transparent);
+  /* Chữ trên ảnh sáng — bóng chữ nhẹ vừa đủ rõ, không cần khung nền */
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.55);
 }
 
 .pp-hero-ganh__subtitle {
@@ -117,7 +122,7 @@
   font-size: clamp(1.05rem, 1.8vw, 1.45rem);
   line-height: 1.6;
   color: var(--gha-sand-soft);
-  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.55);
 }
 
 .pp-hero-ganh__divider {
@@ -141,10 +146,6 @@
 .pp-hero-ganh__divider::before { left: -12px; }
 .pp-hero-ganh__divider::after  { right: -12px; }
 
-@keyframes gha-ken-burns {
-  0%   { transform: scale(var(--sh-ken-burns-scale-start, 1)); }
-  100% { transform: scale(var(--sh-ken-burns-scale-end, 1.08)); }
-}
 @keyframes gha-rise {
   0%   { opacity: 0; transform: translateY(28px); }
   100% { opacity: 1; transform: translateY(0); }
@@ -154,8 +155,15 @@
   100% { transform: translate3d(24px, -18px, 0); }
 }
 
+/* Mobile: background-attachment:fixed giật trên iOS — fallback scroll ổn định (giữ position:absolute) */
+@media (max-width: 768px) {
+  .pp-hero-ganh__bg {
+    position: absolute;
+    background-attachment: scroll;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .pp-hero-ganh__media,
   .pp-hero-ganh__glow,
   .pp-hero-ganh__content {
     animation: none !important;

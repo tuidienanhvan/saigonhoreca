@@ -52,7 +52,7 @@ $contact = $args['contact'] ?? (function_exists('saigonhouse_get_contact_info') 
         <!-- Right side: Search + CTA (desktop only) -->
         <div class="sh-topbar__actions">
              <form role="search" method="get" class="sh-topbar__search" action="<?php echo home_url('/'); ?>">
-<input type="search" class="sh-topbar__search-input" placeholder="<?php esc_attr_e('Tìm kiếm...', 'saigonhoreca'); ?>" value="<?php echo get_search_query(); ?>" name="s" />
+<input type="search" class="sh-topbar__search-input" aria-label="<?php esc_attr_e('Tìm kiếm', 'saigonhoreca'); ?>" placeholder="<?php esc_attr_e('Tìm kiếm...', 'saigonhoreca'); ?>" value="<?php echo get_search_query(); ?>" name="s" />
                   <button type="submit" class="sh-topbar__search-btn" aria-label="<?php esc_attr_e('Tìm kiếm', 'saigonhoreca'); ?>">
                      <?php echo sh_icon('search', 'sh-topbar__search-icon'); ?>
                  </button>

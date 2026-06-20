@@ -47,6 +47,39 @@ add_filter('locale', function ($locale) {
     return substr($host, -4) === '.com' ? 'en_US' : 'vi';
 });
 
+// Multi-domain home_url: internal links follow the domain the visitor is ON.
+// .vn ↔ .com share one install but home_url is fixed in DB — without this, links
+// rendered on .com would point at .vn (wrong domain). Scoped to the known SGH
+// production domains; front-end only; .local / unknown hosts pass through unchanged
+// so local dev + admin/REST/cron are never affected.
+add_filter('home_url', function ($url, $path) {
+    if (is_admin()
+        || (defined('REST_REQUEST') && REST_REQUEST)
+        || (defined('DOING_CRON') && DOING_CRON)
+        || (defined('WP_CLI') && WP_CLI)) {
+        return $url;
+    }
+    $host = isset($_SERVER['HTTP_HOST']) ? strtolower($_SERVER['HTTP_HOST']) : '';
+    if ($host === '' || !preg_match('/^(www\.)?saigonhoreca\.(vn|com)$/', $host)) {
+        return $url; // .local / unknown host → untouched (dev + admin safe)
+    }
+    // 1) Internal links follow the visitor's domain (.com stays .com, .vn stays .vn).
+    $url = preg_replace('#^(https?://)[^/]+#', '${1}' . $host, $url, 1);
+    // 2) On the English (.com) site, translate the structural VI prefix → EN
+    //    (/du-an/→/projects/, /lien-he/→/contact/, /san-pham/→/products/, …) so
+    //    EVERY home_url()/sgh_url() call is correct without per-link edits.
+    //    Idempotent on already-EN paths; only the FIRST path segment is mapped.
+    if (substr($host, -4) === '.com' && function_exists('sgh_translate_path')
+        && is_string($path) && isset($path[0]) && $path[0] === '/') {
+        $tp = sgh_translate_path($path, true);
+        if ($tp !== $path && preg_match('#^(https?://[^/]+)#', $url, $mm)) {
+            $qpos = strpos($url, '?');
+            $url  = $mm[1] . $tp . ($qpos !== false ? substr($url, $qpos) : '');
+        }
+    }
+    return $url;
+}, 20, 2);
+
 if (!function_exists('sgh_slug')) {
     /**
      * Get section slug for CURRENT site language.
@@ -122,6 +155,17 @@ if (!function_exists('sgh_hreflang_tags')) {
      * Call from header.php inside <head>.
      */
     function sgh_hreflang_tags() {
+        // Only emit cross-language alternates where a clean reciprocal counterpart can
+        // exist — otherwise hreflang points at 404 / non-reciprocal URLs (Google flags it).
+        if (is_admin() || is_feed() || is_404() || is_search() || is_attachment()) return;
+        if (max((int) get_query_var('paged'), (int) get_query_var('page')) >= 2) return; // paginated
+        if (is_singular() && function_exists('sgh_pi_get_post_seo')) {                    // noindex singular
+            $o = get_queried_object();
+            if ($o && !empty($o->ID)) {
+                $seo = sgh_pi_get_post_seo($o->ID);
+                if (!empty($seo['noindex'])) return;
+            }
+        }
         $path = isset($_SERVER['REQUEST_URI']) ? strtok($_SERVER['REQUEST_URI'], '?') : '/';
         $vi   = 'https://saigonhoreca.vn'  . sgh_translate_path($path, false);
         $en   = 'https://saigonhoreca.com' . sgh_translate_path($path, true);

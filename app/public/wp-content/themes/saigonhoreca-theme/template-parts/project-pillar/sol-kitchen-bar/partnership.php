@@ -7,7 +7,9 @@
 if (!defined('ABSPATH')) exit;
 ?>
 <section class="pp-partner-sol scroll-reveal">
-  <div class="pp-partner-sol__band" style="background-image:url('<?php echo sgh_img('sol-kitchen-bar/SGH-sold7-01.jpg'); ?>');">
+  <div class="pp-partner-sol__band">
+    <!-- Thẻ con gánh hiệu ứng Parallax Clip-Path siêu mượt (position:fixed) -->
+    <div class="pp-partner-sol__band-bg" aria-hidden="true" style="background-image:url('<?php echo sgh_img('sol-kitchen-bar/sol-kitchen-bar-bep-nong-hood-inox-lo-rational-eka.webp'); ?>');"></div>
     <div class="pp-partner-sol__band-overlay" aria-hidden="true"></div>
     <div class="pp-container-shared">
       <div class="pp-partner-sol__band-inner">

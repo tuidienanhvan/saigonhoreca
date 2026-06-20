@@ -1,16 +1,20 @@
 <?php
 /**
  * Project Pillar — grand-marble-thuong-hieu-banh-cao-cap-nhat-ban
- * Section #1: hero — Ken-Burns pastry banner with warm caramel ambient glow.
+ * Section #1: hero — bright pastry banner using the Parallax Clip-Path technique
+ * (NO JS, GPU-smooth): the section is clip-path:inset(0) so a position:fixed bg
+ * child is confined to the section = parallax. Text sits directly on the bright
+ * image (only a LIGHT token gradient overlay, no dark scrim, no panel) with
+ * text-shadow for legibility.
  * @package SaigonHoreca
  */
 if (!defined('ABSPATH')) exit;
 $uri = get_template_directory_uri();
 ?>
 <section class="pp-hero-gmarb">
-    <div class="pp-hero-gmarb__media" style="background-image:url('<?php echo sgh_img('grand-marble-thuong-hieu-banh-cao-cap-nhat-ban/grand-marble-hero.jpg'); ?>');" aria-hidden="true"></div>
+    <!-- Thẻ con gánh hiệu ứng Parallax Clip-Path siêu mượt (position:fixed) -->
+    <div class="pp-hero-gmarb__bg" style="background-image:url('<?php echo sgh_img('grand-marble-thuong-hieu-banh-cao-cap-nhat-ban/grand-marble-hero.jpg'); ?>');" aria-hidden="true"></div>
     <div class="pp-hero-gmarb__overlay" aria-hidden="true"></div>
-    <div class="pp-hero-gmarb__grid" aria-hidden="true"></div>
 
     <div class="pp-hero-gmarb__glow pp-hero-gmarb__glow--lt" aria-hidden="true"></div>
     <div class="pp-hero-gmarb__glow pp-hero-gmarb__glow--rb" aria-hidden="true"></div>

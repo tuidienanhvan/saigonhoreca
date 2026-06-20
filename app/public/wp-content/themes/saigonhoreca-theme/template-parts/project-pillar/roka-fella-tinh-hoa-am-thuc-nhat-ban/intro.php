@@ -52,8 +52,8 @@ $uri = get_template_directory_uri();
       <div class="pp-grid-12-rf__media--cols-7 rkf-intro__side">
         <div class="pp-image-container-shared rkf-intro__image-container">
           <div class="pp-image-border-decor" aria-hidden="true"></div>
-          <img src="<?php echo sgh_img('roka-fella/roka-fella-khong-gian-nha-hang.jpg'); ?>" alt="<?php echo esc_attr__('Roka Fella Interior Design', 'saigonhoreca'); ?>" loading="lazy">
-          <div class="pp-image-caption-shared"><?php echo esc_html__('Không gian sảnh tiệc Omakase cao cấp nổi bật với mảng tường rêu xanh tự nhiên mang phong cách Wabi-Sabi', 'saigonhoreca'); ?></div>
+          <img src="<?php echo sgh_img('roka-fella/roka-fella-khong-gian-nha-hang.jpg'); ?>" alt="<?php echo esc_attr__('Không gian quầy sushi Omakase tường rêu xanh Roka Fella', 'saigonhoreca'); ?>" loading="lazy">
+          <div class="pp-image-caption-shared"><?php echo esc_html__('Quầy sushi đá đen dài ôm trọn mảng tường rêu xanh sống, kiến tạo không gian Omakase tĩnh mặc theo tinh thần Wabi-Sabi', 'saigonhoreca'); ?></div>
         </div>
       </div>
 

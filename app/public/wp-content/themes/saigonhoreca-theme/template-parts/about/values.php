@@ -11,7 +11,7 @@
  */
 if (!defined('ABSPATH')) exit;
 $uri    = get_template_directory_uri();
-$bg_img = sgh_img('2024/02/SGH-Bambino-1.jpg');
+$bg_img = sgh_img('bambino/bambino-khong-gian-am-thuc-y-sang-trong.webp');
 
 // 3 values với SVG icons riêng mỗi cái
 $values = [

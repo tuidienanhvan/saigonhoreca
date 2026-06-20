@@ -106,8 +106,8 @@ $uri = get_template_directory_uri();
 
           <!-- Ảnh chính -->
           <div class="bb-bar-media pp-image-container-shared">
-            <img src="<?php echo sgh_img('bambino/bambino-quay-bar-va-may-rua-ly-winterhalter.jpg'); ?>" alt="Thiết bị quầy bar và hệ quầy chuẩn bị inox của Saigon Horeca tại Bambino" loading="lazy" decoding="async" width="600" height="800">
-            <div class="pp-image-caption-shared"><?php echo esc_html__('Hệ thống quầy bar cocktail bọc đồng và quầy chuẩn bị inox (backbar) cao cấp', 'saigonhoreca'); ?></div>
+            <img src="<?php echo sgh_img('bambino/bambino-quay-bar-va-may-rua-ly-winterhalter.jpg'); ?>" alt="Bartender pha chế tại quầy bar bọc đồng với decanter và kệ ly back-bar tại Bambino" loading="lazy" decoding="async" width="600" height="800">
+            <div class="pp-image-caption-shared"><?php echo esc_html__('Mặt quầy bar bọc đồng ánh kim với dãy decanter bitters nhiều màu và ly cocktail coupe, sau lưng là kệ ly back-bar chiếu sáng', 'saigonhoreca'); ?></div>
           </div>
           
         </div>
@@ -145,7 +145,7 @@ $uri = get_template_directory_uri();
       </div>
 
       <!-- Cột phải: Ảnh quầy bar thực tế ôm khít -->
-      <div class="sgh-bambino-cta-media" style="background-image: url('<?php echo sgh_img('bambino/bambino-khong-gian-am-thuc-y-sang-trong.jpg'); ?>');">
+      <div class="sgh-bambino-cta-media" style="background-image: url('<?php echo sgh_img('bambino/bambino-saigon-horeca-khong-gian-fine-dining-buoi-toi.webp'); ?>');">
         <div class="sgh-bambino-cta-media-overlay"></div>
       </div>
 

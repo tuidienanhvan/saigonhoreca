@@ -1,7 +1,7 @@
 <?php
 /**
  * Single Project Template — Renovate SOL KITCHEN & BAR quận 7
- * Thumbnail: sol-kitchen-bar-saigon-horeca/SGH-projects-01-1024x576.webp
+ * Thumbnail: sol-kitchen-bar-saigon-horeca/sol-kitchen-bar-mat-tien-toa-nha-goc-duong-ban-dem.webp
  *
  * Auto-routed via inc/core/pillar-routes.php for /du-an/sol-kitchen-bar/.
  *

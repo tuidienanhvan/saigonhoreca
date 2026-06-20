@@ -1,50 +1,148 @@
 /**
- * du-an-kdl-rung-thong-nui-voi-cua-saigonhoreca — gallery slot.
- * Masonry-style grid with shared image partials.
- * @package SaigonHoreca
+ * Project Pillar — KDL Rừng Thông Núi Voi
+ * Section #6: gallery styling — GOLD editorial UNIFORM GRID
+ * Every tile shares the same 4/3 aspect-ratio so tiles tile cleanly with ZERO
+ * empty gaps (no span / no grid-auto-rows void) · gold accents ·
+ * shared caption renders BELOW each frame (CLS-safe, row-gap leaves room).
+ * 100% tokens · zero hardcoded hex. Green = color-mix(var(--su)), gold = var(--gold).
  */
 
-.pp-gallery-kdl {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.25rem;
-  margin-top: 2.5rem;
+/* ── Section + header ────────────────────────────────────────── */
+.pp--kdl .pp-gallery-section-kdl {
+  isolation: isolate;
 }
-@media (max-width: 768px) { .pp-gallery-kdl { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 480px) { .pp-gallery-kdl { grid-template-columns: 1fr; } }
+.pp--kdl .pp-gallery-section-kdl__header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto clamp(2.5rem, 5vw, 4rem);
+}
+.pp--kdl .pp-gallery-section-kdl__header .pp-text-kdl__title { margin-top: 0.5rem; }
+.pp--kdl .pp-gallery-section-kdl__lead {
+  font-family: var(--font-sans);
+  font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+  line-height: 1.75;
+  color: var(--bc2);
+  margin-top: 0.5rem;
+}
 
-.pp-gallery-kdl__item {
+/* ── Faint biên tập numeric watermark (ambient, behind grid) ──── */
+.pp--kdl .pp-gallery-watermark-kdl {
+  position: absolute;
+  top: clamp(1rem, 3vw, 2.5rem);
+  right: clamp(1rem, 5vw, 4rem);
+  z-index: 0;
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(8rem, 18vw, 18rem);
+  font-weight: 800;
+  line-height: 0.8;
+  letter-spacing: -0.04em;
+  color: color-mix(in srgb, var(--gold) 60%, var(--bc));
+  opacity: 0.04;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ── Uniform editorial grid (no span / no auto-rows void) ─────── */
+.pp--kdl .pp-gallery-mosaic-kdl {
   position: relative;
-  overflow: hidden;
-  border-radius: var(--radius-md);
-  background: var(--b3);
-  border: 1px solid var(--bd);
-  transition: border-color 0.4s var(--ease-spring), transform 0.4s var(--ease-spring);
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr;
+  /* comfortable row-gap leaves room for the below-image captions */
+  gap: clamp(1.5rem, 2.6vw, 2.25rem) clamp(1.25rem, 2vw, 1.75rem);
 }
-.pp-gallery-kdl__item:hover {
-  border-color: color-mix(in srgb, var(--su) 45%, transparent);
-  transform: translateY(-4px);
-  box-shadow: 0 16px 40px color-mix(in srgb, var(--su) 10%, transparent);
+@media (min-width: 600px) {
+  .pp--kdl .pp-gallery-mosaic-kdl {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
-.pp-gallery-kdl__item--large { grid-row: span 2; }
-.pp-gallery-kdl__item--wide { grid-column: span 2; }
-@media (max-width: 768px) { .pp-gallery-kdl__item--wide { grid-column: span 1; } }
+@media (min-width: 992px) {
+  .pp--kdl .pp-gallery-mosaic-kdl {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
 
-.pp-gallery-kdl__item img {
+/* ── Mosaic tile (shared frame + caption BELOW) ──────────────── */
+.pp--kdl .pp-gallery-mosaic-kdl__item {
+  position: relative;
+  margin: 0;
+  /* KEEP overflow visible so the shared caption shows BELOW the frame.
+     The image itself is clipped (rounded) instead of the container. */
+  overflow: visible !important;
+  margin-bottom: 0 !important; /* row-gap handles spacing for captions */
+  border-radius: var(--radius-lg);
+  aspect-ratio: 4 / 3;
+  transition: transform 0.5s var(--ease-spring);
+}
+.pp--kdl .pp-gallery-mosaic-kdl__item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.7s var(--ease-spring);
+  border-radius: var(--radius-lg);
+  background: var(--b3);
+  border: 1px solid var(--bd);
+  box-shadow: 0 14px 34px color-mix(in srgb, var(--b1) 55%, transparent);
+  filter: saturate(0.99) contrast(1.03) brightness(1.02);
+  transition: transform 0.8s var(--ease-spring), filter 0.5s,
+              border-color 0.4s, box-shadow 0.4s;
 }
-.pp-gallery-kdl__item:hover img { transform: scale(1.05); }
 
+/* Gold decorative frame overlay (hairline inset, lights up on hover) */
+.pp--kdl .pp-gallery-mosaic-kdl__frame {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  border-radius: var(--radius-lg);
+  border: 1px solid transparent;
+  box-shadow: inset 0 0 0 0 transparent;
+  pointer-events: none;
+  transition: border-color 0.4s var(--ease-spring),
+              box-shadow 0.4s var(--ease-spring);
+}
+
+/* Hover: lift + scale + gold accent border + glow */
+.pp--kdl .pp-gallery-mosaic-kdl__item:hover {
+  transform: translateY(-6px);
+  z-index: 4;
+}
+.pp--kdl .pp-gallery-mosaic-kdl__item:hover img {
+  transform: scale(1.04);
+  filter: saturate(1.14) brightness(1.02);
+  border-color: color-mix(in srgb, var(--gold) 45%, transparent);
+  box-shadow: 0 24px 54px color-mix(in srgb, var(--gold) 18%, transparent);
+}
+.pp--kdl .pp-gallery-mosaic-kdl__item:hover .pp-gallery-mosaic-kdl__frame {
+  border-color: color-mix(in srgb, var(--gold) 55%, transparent);
+  box-shadow: inset 0 0 0 3px color-mix(in srgb, var(--gold) 10%, transparent);
+}
+
+/* Shared caption (from _caption.css) sits BELOW each frame — give it a tidy
+   gold tick + a touch more presence than the muted default. */
+.pp--kdl .pp-gallery-mosaic-kdl__item .pp-image-caption-shared {
+  padding-left: 0.85rem !important;
+  border-left: 2px solid color-mix(in srgb, var(--gold) 55%, transparent) !important;
+  color: var(--bc2) !important;
+  opacity: 0.9 !important;
+}
+.pp--kdl .pp-gallery-mosaic-kdl__item:hover .pp-image-caption-shared {
+  color: color-mix(in srgb, var(--gold) 80%, var(--bc)) !important;
+  opacity: 1 !important;
+}
+
+/* ── Reduced-motion guard ────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
-  .pp-gallery-kdl__item,
-  .pp-gallery-kdl__item img {
+  .pp--kdl .pp-gallery-mosaic-kdl__item,
+  .pp--kdl .pp-gallery-mosaic-kdl__item img,
+  .pp--kdl .pp-gallery-mosaic-kdl__frame,
+  .pp--kdl .pp-gallery-mosaic-kdl__item .pp-image-caption-shared {
     transition: none !important;
+    animation: none !important;
   }
-  .pp-gallery-kdl__item:hover {
+  .pp--kdl .pp-gallery-mosaic-kdl__item:hover {
+    transform: none !important;
+  }
+  .pp--kdl .pp-gallery-mosaic-kdl__item:hover img {
     transform: none !important;
   }
 }

@@ -100,3 +100,11 @@
   .pp-specs-sol__img--base { width: 88%; }
   .pp-specs-sol__img--over { width: 54%; }
 }
+
+/* ── Reduced motion: neutralise hover transitions for users who opt out ── */
+@media (prefers-reduced-motion: reduce) {
+  .pp-specs-sol__list li {
+    animation: none;
+    transition: none;
+  }
+}

@@ -1,1 +1,136 @@
-/** bep-canteen-nha-may-sheh-fung — specs slot (no content). */
+/**
+ * bep-canteen-nha-may-sheh-fung — Section #5: specs
+ * Closing differentiator statement (centered lead) + 3-card capability grid
+ * with industrial spec cards (NO.## numbers, icon plate, hi-vis top rail).
+ * Direction: Industrial Factory Canteen. 100% tokens, zero hardcoded hex.
+ */
+
+/* ===== Centered header / lead ===== */
+.pp-specs-shf__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.1rem;
+  max-width: 56rem;
+  margin: 0 auto clamp(2.5rem, 5vw, 3.75rem);
+}
+.pp-specs-shf__header .pp-text-shf__divider { margin: 0.25rem auto; }
+.pp-specs-shf__header .pp-text-shf__title { max-width: 22ch; }
+
+.pp-specs-shf__lead {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  margin-top: 0.5rem;
+  font-size: clamp(0.96rem, 1.1vw, 1.05rem);
+  line-height: 1.85;
+  color: var(--bc2);
+}
+.pp-specs-shf__lead p { margin: 0; }
+
+/* ===== Capability grid ===== */
+.pp-specs-shf__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+@media (min-width: 640px)  { .pp-specs-shf__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 992px)  { .pp-specs-shf__grid { grid-template-columns: repeat(3, 1fr); gap: 1.75rem; } }
+
+.pp-specs-shf__card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: clamp(1.5rem, 3vw, 2.1rem);
+  border-radius: var(--radius-md);
+  background: linear-gradient(180deg,
+    color-mix(in srgb, var(--b2) 72%, transparent) 0%,
+    color-mix(in srgb, var(--b1) 80%, transparent) 100%);
+  border: 1px solid color-mix(in srgb, var(--bd) 80%, var(--gold));
+  backdrop-filter: blur(10px) saturate(130%);
+  -webkit-backdrop-filter: blur(10px) saturate(130%);
+  overflow: hidden;
+  transition:
+    transform 0.4s var(--ease-spring),
+    border-color 0.4s var(--ease-spring),
+    box-shadow 0.4s var(--ease-spring);
+}
+/* hi-vis top rail */
+.pp-specs-shf__card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+  transform: scaleX(0.4);
+  transform-origin: left;
+  transition: transform 0.5s var(--ease-spring);
+}
+.pp-specs-shf__card:hover {
+  transform: translateY(-6px);
+  border-color: color-mix(in srgb, var(--gold) 40%, transparent);
+  box-shadow:
+    0 22px 44px rgba(0, 0, 0, 0.34),
+    0 0 26px color-mix(in srgb, var(--gold) 12%, transparent);
+}
+.pp-specs-shf__card:hover::before { transform: scaleX(1); }
+
+.pp-specs-shf__card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.pp-specs-shf__card-num {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 900;
+  line-height: 1;
+  color: color-mix(in srgb, var(--gold) 22%, transparent);
+  transition: color 0.4s var(--ease-spring);
+}
+.pp-specs-shf__card:hover .pp-specs-shf__card-num { color: color-mix(in srgb, var(--gold) 50%, transparent); }
+
+.pp-specs-shf__card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: var(--radius-sm);
+  color: var(--gold);
+  background: color-mix(in srgb, var(--gold) 6%, transparent);
+  border: 1px solid color-mix(in srgb, var(--gold) 24%, transparent);
+  transition: transform 0.4s var(--ease-spring), box-shadow 0.4s var(--ease-spring);
+}
+.pp-specs-shf__card-icon svg { width: 1.5rem; height: 1.5rem; display: block; }
+.pp-specs-shf__card:hover .pp-specs-shf__card-icon {
+  transform: rotate(6deg) scale(1.08);
+  box-shadow: 0 0 18px color-mix(in srgb, var(--gold) 24%, transparent);
+}
+
+.pp-specs-shf__card-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 1.6vw, 1.35rem);
+  font-weight: 700;
+  color: var(--bc);
+  letter-spacing: -0.01em;
+}
+.pp-specs-shf__card-text {
+  margin: 0;
+  font-size: clamp(0.9rem, 1.05vw, 0.98rem);
+  line-height: 1.7;
+  color: var(--bc2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pp-specs-shf__card,
+  .pp-specs-shf__card::before,
+  .pp-specs-shf__card-num,
+  .pp-specs-shf__card-icon {
+    transition: none !important;
+    transform: none !important;
+  }
+}

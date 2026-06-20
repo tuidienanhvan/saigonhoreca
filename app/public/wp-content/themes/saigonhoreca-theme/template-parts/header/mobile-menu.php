@@ -32,7 +32,7 @@ $theme_uri  = get_template_directory_uri();
             <?php echo sh_icon('list', 'sh-mobile__header-icon'); ?>
             Menu
         </span>
-        <button id="mobile-menu-close" class="sh-mobile__close-btn">
+        <button id="mobile-menu-close" class="sh-mobile__close-btn" aria-label="<?php esc_attr_e('Đóng menu', 'saigonhoreca'); ?>">
             <?php echo sh_icon('chevron-right', 'sh-mobile__close-icon'); ?>
         </button>
     </div>
@@ -45,7 +45,7 @@ $theme_uri  = get_template_directory_uri();
                 <span class="sh-mobile__search-icon-wrap">
                     <?php echo sh_icon('search', 'sh-mobile__search-svg'); ?>
                 </span>
-                <input type="search" name="s" class="sh-mobile__search-input" placeholder="<?php esc_attr_e('Tìm kiếm...', 'saigonhoreca'); ?>">
+                <input type="search" name="s" class="sh-mobile__search-input" aria-label="<?php esc_attr_e('Tìm kiếm', 'saigonhoreca'); ?>" placeholder="<?php esc_attr_e('Tìm kiếm...', 'saigonhoreca'); ?>">
             </form>
         </div>
 

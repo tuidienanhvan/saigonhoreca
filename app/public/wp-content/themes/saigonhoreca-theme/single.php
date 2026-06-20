@@ -133,7 +133,7 @@ $root_class = 'sh-single' . ($is_product ? ' sh-single--product' : '');
 
                     <!-- ═══ TOC (chỉ post — sản phẩm không cần) ═══ -->
                     <?php if (!$is_product) : ?>
-                        <div id="toc-container" class="sh-single__toc" style="display:none;">
+                        <div id="toc-container" class="sh-single__toc hidden">
                             <div class="sh-single__toc-header">
                                 <h3 class="sh-single__toc-title">
                                     <?php echo sh_icon('list', 'sh-single__toc-icon'); ?> Nội dung bài viết

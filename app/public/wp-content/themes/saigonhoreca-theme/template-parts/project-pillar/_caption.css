@@ -56,3 +56,14 @@ text-align: left !important; /* Căn lề trái tinh tế chuẩn ArchDaily */
 .pp-image-container-shared:hover .pp-image-caption-shared {
 opacity: 1 !important;
 }
+
+/* FIX (2026-06-08): nhiều section dùng khung bo góc `.pp-frame-*`/media có `overflow:hidden !important`
+   ĐẶT CHUNG element với `.pp-image-container-shared` → cắt mất chú thích báo chí (neo dưới chân ảnh).
+   Double-class (specificity 0,2,0) thắng mọi single-class frame để ép container hiển thị chú thích,
+   và bo góc lên chính tấm ảnh để vẫn giữ khung bo tròn. */
+.pp-image-container-shared.pp-image-container-shared {
+overflow: visible !important;
+}
+.pp-image-container-shared.pp-image-container-shared > img {
+border-radius: inherit;
+}

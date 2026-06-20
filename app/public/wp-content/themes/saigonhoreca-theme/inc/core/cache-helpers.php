@@ -116,6 +116,10 @@ if (!function_exists('sgh_static_cache_is_cacheable')) {
      * @return bool
      */
     function sgh_static_cache_is_cacheable(): bool {
+        // Bots get a UA-specific render (no fixed parallax — inc/core/bot-optimize.php).
+        // NEVER cache a bot response: a UA-agnostic static cache would otherwise serve
+        // that bot (no-parallax) HTML to humans. Bots always render fresh instead.
+        if (function_exists('sgh_is_bot') && sgh_is_bot()) return false;
         if (defined('DOING_AJAX') && DOING_AJAX) return false;
         if (defined('DOING_CRON') && DOING_CRON) return false;
         if (defined('REST_REQUEST') && REST_REQUEST) return false;

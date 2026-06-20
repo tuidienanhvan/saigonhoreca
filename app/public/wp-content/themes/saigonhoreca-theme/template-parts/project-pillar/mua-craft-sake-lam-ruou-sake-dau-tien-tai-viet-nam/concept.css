@@ -1,6 +1,10 @@
 /**
  * mua-craft-sake-lam-ruou-sake-dau-tien-tai-viet-nam — concept slot.
- * Shared .pp-split-mua layout (dùng lại bởi specs/gallery). 0 hardcode hex brand.
+ * Shared .pp-split-mua layout + .pp-card-mua glass/paper card + .pp-frame-mua
+ * (dùng lại bởi specs/gallery). 0 hardcode hex brand.
+ * Techniques: CSS grid asymmetric split · backdrop-filter glass card
+ *   · color-mix tints · clamp() type · var(--ease-spring) transitions
+ *   · zen-paper outline inset ornament · prefers-reduced-motion guard.
  * @package SaigonHoreca
  */
 
@@ -10,6 +14,7 @@
   gap: 2.5rem;
   align-items: center;
   position: relative;
+  z-index: 2;
 }
 @media (min-width: 992px) {
   .pp-split-mua { grid-template-columns: 1fr 1fr; gap: 4.5rem; }
@@ -30,6 +35,48 @@
   text-align: left;
 }
 
+/* ─── Card — zen-paper glass (backdrop-filter + outline inset + corner brackets) ─── */
+.pp-card-mua {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: clamp(1.75rem, 3.5vw, 2.75rem);
+  border-radius: var(--radius-lg);
+  background: var(--mua-glass);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border: 1px solid color-mix(in srgb, var(--mua-gold) 18%, transparent);
+  box-shadow: 0 24px 52px rgba(0, 0, 0, 0.45);
+  transition: transform 0.4s var(--ease-spring), border-color 0.4s var(--ease-spring), box-shadow 0.4s var(--ease-spring);
+}
+.pp-card-mua--paper {
+  border-style: dashed;
+  outline: 1px solid color-mix(in srgb, var(--mua-gold) 14%, transparent);
+  outline-offset: -12px;
+}
+.pp-card-mua:hover {
+  transform: translateY(-5px);
+  border-color: color-mix(in srgb, var(--mua-gold) 50%, transparent);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.55), 0 0 30px color-mix(in srgb, var(--mua-gold) 12%, transparent);
+}
+/* Góc trang trí mạ vàng. */
+.pp-card-mua::before,
+.pp-card-mua::after {
+  content: '';
+  position: absolute;
+  width: 22px; height: 22px;
+  border: 1px solid color-mix(in srgb, var(--mua-gold) 55%, transparent);
+  pointer-events: none;
+  opacity: 0.5;
+  transition: opacity 0.4s var(--ease-spring);
+}
+.pp-card-mua::before { top: 14px; left: 14px; border-right: none; border-bottom: none; }
+.pp-card-mua::after  { bottom: 14px; right: 14px; border-left: none; border-top: none; }
+.pp-card-mua:hover::before,
+.pp-card-mua:hover::after { opacity: 0.95; }
+.pp-card-mua .pp-text-mua__divider { align-self: flex-start; }
+
 /* Media frame — pp-image-container-shared lo phần ảnh + caption; frame thêm viền + bo góc. */
 .pp-split-mua__media {
   position: relative;
@@ -40,8 +87,9 @@
   border-radius: var(--radius-md);
   border: 1px solid var(--bd);
   background: var(--b3);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5);
   margin-bottom: 2.4rem;
-  transition: border-color 0.4s var(--ease-spring);
+  transition: border-color 0.4s var(--ease-spring), box-shadow 0.4s var(--ease-spring);
 }
 .pp-frame-mua > img {
   border-radius: var(--radius-md);
@@ -49,23 +97,13 @@
 }
 .pp-split-mua__media:hover .pp-frame-mua {
   border-color: color-mix(in srgb, var(--mua-gold) 45%, transparent);
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.6), 0 0 26px color-mix(in srgb, var(--mua-gold) 14%, transparent);
 }
 
-/* L-bracket ornament behind body */
-.pp-split-mua__body::before {
-  content: '';
-  position: absolute;
-  top: -1.5rem;
-  left: -1rem;
-  width: 56px; height: 56px;
-  border-top: 1px solid var(--mua-line);
-  border-left: 1px solid var(--mua-line);
-  pointer-events: none;
-  z-index: -1;
-}
-.pp-split-mua--reverse .pp-split-mua__body::before {
-  left: auto;
-  right: -1rem;
-  border-left: none;
-  border-right: 1px solid var(--mua-line);
+@media (prefers-reduced-motion: reduce) {
+  .pp-card-mua,
+  .pp-frame-mua {
+    transition: none !important;
+    transform: none !important;
+  }
 }

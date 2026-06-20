@@ -161,7 +161,7 @@ $uri = get_template_directory_uri();
 
           <!-- Lớp 3: Ảnh chính được clip-path theo hình sóng nước -->
           <div class="pp-concept-brix__image-wave-wrap">
-            <img src="<?php echo sgh_img('the-brix/the-brix-quay-bar-be-boi-tropical.jpg'); ?>" alt="<?php echo esc_attr__('The Brix Traditional Materials Concept', 'saigonhoreca'); ?>" loading="lazy">
+            <img src="<?php echo sgh_img('the-brix/the-brix-quay-bar-be-boi-tropical.jpg'); ?>" alt="<?php echo esc_attr__('Quầy bar The Brix dưới trần lam gỗ cong với giường xích đu và cây nhiệt đới', 'saigonhoreca'); ?>" loading="lazy">
           </div>
 
           <!-- Lớp 4: KHUNG VIỀN SÓNG BIỂN NGHỆ THUẬT (Creative Wave Outline Border) bọc ngoài khít khao -->
@@ -238,7 +238,7 @@ $uri = get_template_directory_uri();
         </div>
 
         <div class="pp-image-caption-shared" style="margin-top: 1.8rem; text-align: center;">
-          <?php echo esc_html__('Hồ bơi vô cực trung tâm ôm trọn không gian thưởng thức ngoài trời phóng khoáng', 'saigonhoreca'); ?>
+          <?php echo esc_html__('Quầy bar trung tâm dưới hệ trần lam gỗ cong uốn lượn nghệ thuật, điểm xuyết giường xích đu treo và cây nhiệt đới rợp bóng, gợi cảm giác nghỉ dưỡng giữa khu rừng nhiệt đới thu nhỏ.', 'saigonhoreca'); ?>
         </div>
       </div>
 

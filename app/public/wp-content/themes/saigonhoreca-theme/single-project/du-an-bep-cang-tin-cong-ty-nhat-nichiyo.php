@@ -1,7 +1,7 @@
 <?php
 /**
  * Single Project Template — Dự án bếp ăn công nghiệp bếp căng tin công ty Nhật Nichiyo
- * Thumbnail: du-an-bep-cang-tin-cong-ty-nhat-nichiyo/nichiyo-du-an-1-1024x576.webp
+ * Thumbnail: du-an-bep-cang-tin-cong-ty-nhat-nichiyo/du-an-bep-cang-tin-cong-ty-nhat-nichiyo-thumbnail-project-cover.webp
  *
  * Auto-routed via inc/core/pillar-routes.php for /du-an/du-an-bep-cang-tin-cong-ty-nhat-nichiyo/.
  *

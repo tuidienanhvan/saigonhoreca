@@ -23,8 +23,8 @@ if (!defined('ABSPATH')) exit;
       </div>
       <div class="pp-intro-sol__media scroll-reveal">
         <div class="pp-image-container-shared pp-frame-sol">
-          <img src="<?php echo sgh_img('sol-kitchen-bar/Sol0D7-01.jpg'); ?>" alt="<?php echo esc_attr__('Hệ thống bếp cao cấp Sol Kitchen & Bar quận 7 do Saigon Horeca triển khai', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="1366" height="768">
-          <div class="pp-image-caption-shared"><?php echo esc_html__('Khu bếp Sol quận 7 sau cải tạo — bố trí thiết bị gọn gàng, sẵn sàng cho nhịp vận hành của một nhà hàng đạt chuẩn Michelin.', 'saigonhoreca'); ?></div>
+          <img src="<?php echo sgh_img('sol-kitchen-bar/sol-kitchen-bar-michelin-guide-mon-an-steak-quay-bar.webp'); ?>" alt="<?php echo esc_attr__('Trang MICHELIN Guide của Sol Kitchen & Bar với món bò nướng trên cơm, món khai vị sốt vàng và quầy bar chữ Sol', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="1366" height="768">
+          <div class="pp-image-caption-shared"><?php echo esc_html__('Sol Kitchen & Bar trên MICHELIN Guide — từ món bò nướng đến quầy bar mang dấu ấn riêng, minh chứng cho đẳng cấp ẩm thực mà Saigon Horeca đồng hành.', 'saigonhoreca'); ?></div>
         </div>
       </div>
     </div>

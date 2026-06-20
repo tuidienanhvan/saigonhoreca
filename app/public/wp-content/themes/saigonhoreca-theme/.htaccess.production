@@ -68,6 +68,8 @@ RewriteCond %{REQUEST_METHOD} =GET
 RewriteCond %{QUERY_STRING} ^$
 RewriteCond %{HTTP_COOKIE} !(^|;\ *)(wordpress_logged_in_|wp-postpass_|comment_author_) [NC]
 RewriteCond %{REQUEST_URI} !^/(wp-admin|wp-login\.php|wp-json|wp-cron\.php|xmlrpc\.php|wp-comments-post\.php|wp-content|wp-includes)(/|$) [NC]
+# Skip cache for bots/audits → they hit PHP for the UA-specific light render (no fixed parallax).
+RewriteCond %{HTTP_USER_AGENT} !(bot|crawl|spider|slurp|mediapartners|lighthouse|pagespeed|gtmetrix|pingdom|headless|facebookexternalhit|embedly|whatsapp|telegram|discord) [NC]
 RewriteCond %{DOCUMENT_ROOT}/wp-content/cache/sgh-static%{REQUEST_URI}index.html -f
 RewriteRule ^ /wp-content/cache/sgh-static%{REQUEST_URI}index.html [L,T=text/html,E=SGH_STATIC_CACHE:HIT]
 
@@ -76,6 +78,8 @@ RewriteCond %{REQUEST_METHOD} =GET
 RewriteCond %{QUERY_STRING} ^$
 RewriteCond %{HTTP_COOKIE} !(^|;\ *)(wordpress_logged_in_|wp-postpass_|comment_author_) [NC]
 RewriteCond %{REQUEST_URI} !^/(wp-admin|wp-login\.php|wp-json|wp-cron\.php|xmlrpc\.php|wp-comments-post\.php|wp-content|wp-includes)(/|$) [NC]
+# Skip cache for bots/audits → they hit PHP for the UA-specific light render (no fixed parallax).
+RewriteCond %{HTTP_USER_AGENT} !(bot|crawl|spider|slurp|mediapartners|lighthouse|pagespeed|gtmetrix|pingdom|headless|facebookexternalhit|embedly|whatsapp|telegram|discord) [NC]
 RewriteCond %{DOCUMENT_ROOT}/wp-content/cache/sgh-static%{REQUEST_URI}/index.html -f
 RewriteRule ^ /wp-content/cache/sgh-static%{REQUEST_URI}/index.html [L,T=text/html,E=SGH_STATIC_CACHE:HIT]
 </IfModule>

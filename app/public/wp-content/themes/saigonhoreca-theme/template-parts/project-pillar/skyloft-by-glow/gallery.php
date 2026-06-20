@@ -21,20 +21,6 @@ $uri = get_template_directory_uri();
 
     <!-- PHÂN KHU 1: THE GRAND VENUE (Lưới bất đối xứng: Ảnh Không gian ngang hoành tráng + Trích dẫn triết lý) -->
     <div class="pp-gallery-sky__row pp-gallery-sky__row--editorial scroll-reveal">
-      <!-- Ảnh Đêm tiệc Rooftop (Ngang) chiếm 58% -->
-      <div class="pp-gallery-sky__editorial-media">
-        <div class="pp-image-container-shared pp-gallery-sky__frame-cad pp-gallery-sky__frame-cad--landscape">
-          <img src="<?php echo sgh_img('skyloft-by-glow/skyloft-by-glow-dem-tiec-rooftop-anh-den-san-khau.webp'); ?>" alt="<?php echo esc_attr__('Đêm tiệc rooftop tại Skyloft by Glow', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
-          <div class="pp-gallery-sky__img-meta">
-            <span class="pp-gallery-sky__meta-tag"><?php echo esc_html__('CAP_01 // THE ATMOSPHERE', 'saigonhoreca'); ?></span>
-          </div>
-        </div>
-        <div class="pp-gallery-sky__editorial-caption">
-          <strong><?php echo esc_html__('Vận hành công suất tối đa:', 'saigonhoreca'); ?></strong>
-          <?php echo esc_html__('Bố trí mặt bằng quầy bar và hệ thống bàn ghế tối ưu luồng giao thông của khách hàng lẫn nhân viên phục vụ, đảm bảo tốc độ phục vụ chuẩn xác ngay cả trong khung giờ đêm cao điểm náo nhiệt nhất.', 'saigonhoreca'); ?>
-        </div>
-      </div>
-
       <!-- Khối trích dẫn nghệ thuật pha chế (Quote Card) chiếm 42% -->
       <div class="pp-gallery-sky__text-card pp-gallery-sky__text-card--quote-new">
         <div class="pp-sky-card-glow-border"></div>

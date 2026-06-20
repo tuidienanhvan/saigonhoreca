@@ -24,8 +24,8 @@ $uri = get_template_directory_uri();
       </div>
       <div class="pp-split-gmarb__media scroll-reveal reveal-right delay-150">
         <div class="pp-image-container-shared pp-frame-gmarb">
-          <img src="<?php echo sgh_img('grand-marble-thuong-hieu-banh-cao-cap-nhat-ban/grand-marble-nghe-nhan-banh.jpg'); ?>" alt="<?php echo esc_attr__('Nghệ nhân Grand Marble chế tác bánh Danish Marble thủ công', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="800" height="600">
-          <div class="pp-image-caption-shared"><?php echo esc_html__('Đôi bàn tay tài hoa của nghệ nhân Kyoto tạo nên những lớp vân marble đặc trưng, dấu ấn riêng của thương hiệu Grand Marble.', 'saigonhoreca'); ?></div>
+          <img src="<?php echo sgh_img('grand-marble-thuong-hieu-banh-cao-cap-nhat-ban/grand-marble-nghe-nhan-banh.jpg'); ?>" alt="<?php echo esc_attr__('Hộp quà Grand Marble đỏ và các lát bánh Danish Marble vân marble, matcha trên đĩa đá', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="800" height="600">
+          <div class="pp-image-caption-shared"><?php echo esc_html__('Hộp quà đỏ trứ danh cùng những lát Danish Marble vân nguyên bản và vân matcha bày trên đĩa đá phiến – trọn vẹn tinh thần quà tặng cao cấp đến từ Kyoto.', 'saigonhoreca'); ?></div>
         </div>
       </div>
     </div>

@@ -1,11 +1,15 @@
 /**
  * heiwa-sushi-omakase — intro slot.
- * Clean, premium minimalist Japanese Zen intro layout with 3D Perspective Safari Mockup.
+ * Editorial "Bối cảnh dự án": asymmetric text + single showcase image.
+ * Also hosts the Heiwa SHARED building blocks (section shell, ambient glow,
+ * typography, image frame) consumed by the other Heiwa sections.
+ * Image captions are governed by the SHARED _caption.css — no per-project
+ * caption overrides here.
  * @package SaigonHoreca
  */
 
 /* ─────────────────────────────────────────────────────────────
-   SHARED CLASSES (CÁC CLASS DÙNG CHUNG CHO CẢ DỰ ÁN HEIWA)
+   SHARED SHELL + ACCENTS (all Heiwa sections)
    ───────────────────────────────────────────────────────────── */
 .pp-section-hwa {
   position: relative;
@@ -23,66 +27,51 @@
   position: absolute;
   width: 85%;
   height: 85%;
-  background: radial-gradient(circle, color-mix(in srgb, var(--gold) 5%, transparent) 0%, transparent 70%);
-  filter: blur(55px);
+  background: radial-gradient(circle, color-mix(in srgb, var(--gold) 6%, transparent) 0%, transparent 70%);
+  filter: blur(60px);
   pointer-events: none;
   z-index: 0;
 }
+.pp-hwa-ambient-glow--tr { top: -10%; right: -10%; }
+.pp-hwa-ambient-glow--bl { bottom: -10%; left: -10%; }
 
-.pp-hwa-ambient-glow--tr {
-  top: -10%;
-  right: -10%;
-}
-
-.pp-hwa-ambient-glow--bl {
-  bottom: -10%;
-  left: -10%;
-}
-
-/* Typography dùng chung cho Heiwa */
+/* Shared typography */
 .pp-text-hwa__badge {
-  font-family: var(--font-display), sans-serif;
+  font-family: var(--font-display);
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.15em;
   color: color-mix(in srgb, var(--bc) 45%, transparent);
   margin-bottom: 1rem;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 0.75rem;
 }
-
 .pp-text-hwa__badge-accent {
-  font-family: var(--font-display), monospace;
+  font-family: var(--font-mono);
   color: var(--gold);
   letter-spacing: 0.25em;
   font-weight: 700;
 }
 
 .pp-text-hwa__title {
-  font-family: var(--font-display), sans-serif;
+  font-family: var(--font-display);
   font-size: clamp(1.8rem, 3vw, 2.6rem);
   font-weight: 700;
   line-height: 1.25;
   letter-spacing: -0.015em;
   color: var(--bc);
-  margin: 0 0 2rem 0;
+  margin: 0 0 1.25rem 0;
 }
 
-.pp-text-hwa__body {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+.pp-text-hwa__divider {
+  width: 60px;
+  height: 2px;
+  margin: 0 0 1.5rem;
+  background: linear-gradient(90deg, var(--gold), color-mix(in srgb, var(--gold) 15%, transparent));
+  box-shadow: 0 0 10px color-mix(in srgb, var(--gold) 50%, transparent);
 }
-
-.pp-text-hwa__body p {
-  font-family: var(--font-body), sans-serif;
-  font-size: clamp(0.95rem, 1.05vw, 1.05rem);
-  line-height: 1.85;
-  color: color-mix(in srgb, var(--bc) 75%, transparent);
-  margin: 0;
-  text-align: justify;
-}
+.pp-text-hwa__divider--center { margin-inline: auto; }
 
 .pp-text-hwa__quote {
   font-family: var(--font-serif);
@@ -92,233 +81,86 @@
   color: var(--gold);
   border-left: 2px solid var(--gold);
   padding-left: 1.5rem;
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 1.5rem 0;
 }
 
-.pp-text-hwa__divider {
-  margin: 0.2rem auto;
-  width: 60px;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--p), transparent);
-  box-shadow: 0 0 10px var(--p);
+.pp-text-hwa__body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.pp-text-hwa__body p {
+  font-family: var(--font-body);
+  font-size: clamp(0.95rem, 1.05vw, 1.05rem);
+  line-height: 1.85;
+  color: var(--bc2);
+  margin: 0;
+  text-align: justify;
 }
 
-/* Khung ảnh & caption dùng chung */
+/* Shared image frame (caption styling is inherited from _caption.css) */
 .pp-frame-hwa {
   position: relative;
   border-radius: var(--radius-lg);
   overflow: hidden;
+  border: 1px solid var(--hwa-line);
+  box-shadow: 0 24px 55px rgba(0, 0, 0, 0.5);
+  transition: transform 0.6s var(--ease-spring), border-color 0.4s, box-shadow 0.6s var(--ease-spring);
 }
-
-.pp-image-container-shared {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
+.pp-frame-hwa:hover {
+  transform: translateY(-4px);
+  border-color: var(--gold);
+  box-shadow: 0 30px 65px color-mix(in srgb, var(--gold) 22%, transparent);
 }
-
-.pp-image-container-shared img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.pp-image-caption-shared {
+.pp-frame-hwa::before,
+.pp-frame-hwa::after {
+  content: '';
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 1rem;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-  color: var(--white);
-  font-size: 0.75rem;
-  line-height: 1.4;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 0.4s var(--ease-spring), transform 0.4s var(--ease-spring);
+  z-index: 4;
+  width: 26px;
+  height: 26px;
+  border: 1.5px solid var(--hwa-gold-soft);
   pointer-events: none;
-  z-index: 5;
+  transition: border-color 0.4s, transform 0.4s var(--ease-spring);
 }
-
-.pp-frame-hwa:hover .pp-image-caption-shared,
-.pp-frame-hwa-artistic:hover .pp-image-caption-shared {
-  opacity: 1;
-  transform: translateY(0);
-}
+.pp-frame-hwa::before { top: 10px; left: 10px; border-right: none; border-bottom: none; }
+.pp-frame-hwa::after  { right: 10px; bottom: 10px; border-left: none; border-top: none; }
+.pp-frame-hwa:hover::before { transform: translate(-3px, -3px); border-color: var(--gold); }
+.pp-frame-hwa:hover::after  { transform: translate(3px, 3px); border-color: var(--gold); }
 
 /* ─────────────────────────────────────────────────────────────
-   INTRO SPECIFIC CLASSES
+   INTRO LAYOUT — asymmetric editorial
    ───────────────────────────────────────────────────────────── */
-.pp-intro-hwa {
-  background: var(--b2);
-}
-
-.pp-intro-hwa--poster {
+.pp-intro-hwa__grid {
   position: relative;
-}
-
-.pp-hwa-poster-grid {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 1;
-}
-
-/* ── Bố cục 2 cột phẳng đối xứng (1 ảnh đơn sang trọng) ── */
-.pp-intro-hwa__two-cols {
+  z-index: 2;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 3.5rem;
-  position: relative;
-  z-index: 2;
+  gap: 3rem;
+  align-items: center;
 }
-
 @media (min-width: 992px) {
-  .pp-intro-hwa__two-cols {
-    /* 52% ảnh bên trái, 48% chữ bên phải làm đối trọng hoàn hảo */
+  .pp-intro-hwa__grid {
     grid-template-columns: 0.52fr 0.48fr;
-    gap: 5.5rem;
-    align-items: center;
+    gap: 5rem;
   }
 }
 
-/* Cột phải chứa chữ thoáng đãng */
-.pp-intro-hwa__content-col {
+.pp-intro-hwa__text { position: relative; z-index: 2; }
+
+.pp-intro-hwa__media { position: relative; z-index: 2; }
+
+.pp-intro-hwa__figure {
+  aspect-ratio: 4 / 5;
   width: 100%;
 }
-
-.pp-intro-hwa__poster-text {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  position: relative;
-  z-index: 2;
+@media (min-width: 992px) {
+  .pp-intro-hwa__figure { aspect-ratio: 3 / 4; }
 }
 
-/* Cột trái chứa 1 ảnh đơn sang trọng */
-.pp-intro-hwa__media-col {
-  width: 100%;
-  position: relative;
+@media (prefers-reduced-motion: reduce) {
+  .pp-frame-hwa,
+  .pp-frame-hwa:hover { transition: none !important; transform: none !important; }
+  .pp-frame-hwa:hover::before,
+  .pp-frame-hwa:hover::after { transform: none !important; }
 }
-
-.pp-intro-hwa__single-image {
-  aspect-ratio: 4 / 5 !important;
-  width: 100%;
-  transition: transform 0.6s var(--ease-spring), box-shadow 0.6s var(--ease-spring), border-color 0.4s !important;
-}
-
-.pp-intro-hwa__single-image:hover {
-  transform: scale(1.02) !important;
-  border-color: var(--p) !important;
-  box-shadow: 0 30px 65px color-mix(in srgb, var(--p) 25%, transparent) !important;
-}
-
-.pp-hwa-mosaic-item:hover {
-  transform: scale(1.03) rotate(0deg) !important;
-  border-color: var(--p) !important;
-  box-shadow: 0 30px 65px color-mix(in srgb, var(--p) 25%, transparent) !important;
-  z-index: 10 !important; /* Luôn nổi bật trên cùng khi rê chuột vào */
-}
-
-/* Khung ảnh poster nghệ thuật trôi nổi phẳng */
-.pp-frame-hwa--poster-art {
-  position: relative;
-  border-radius: var(--radius-lg) !important;
-  border: 1px solid var(--hwa-line) !important;
-  background: var(--b2);
-  box-shadow: 
-    -20px 20px 50px rgba(0, 0, 0, 0.65),
-    0 10px 30px rgba(0, 0, 0, 0.45) !important;
-  transition: box-shadow 0.6s var(--ease-spring), transform 0.6s var(--ease-spring) !important;
-}
-
-.pp-frame-hwa--poster-art::before,
-.pp-frame-hwa--poster-art::after {
-  content: '' !important;
-  position: absolute !important;
-  z-index: 4 !important;
-  width: 24px !important;
-  height: 24px !important;
-  border: 1.5px dashed color-mix(in srgb, var(--p) 35%, transparent) !important;
-  pointer-events: none !important;
-  display: block !important;
-  transition: border-color 0.4s, transform 0.4s var(--ease-spring) !important;
-}
-.pp-frame-hwa--poster-art::before { top: -8px !important; left: -8px !important; border-right: none !important; border-bottom: none !important; }
-.pp-frame-hwa--poster-art::after  { right: -8px !important; bottom: -8px !important; border-left: none !important; border-top: none !important; }
-
-.pp-frame-hwa--poster-art:hover::before { transform: translate(-4px, -4px); border-color: var(--p) !important; }
-.pp-frame-hwa--poster-art:hover::after  { transform: translate(4px, 4px); border-color: var(--p) !important; }
-
-@media (max-width: 991px) {
-  .pp-intro-hwa__mosaic-grid {
-    gap: 3.5rem;
-  }
-  .pp-intro-hwa__mosaic-wrapper {
-    gap: 3rem;
-  }
-  .pp-hwa-mosaic-item--top-left,
-  .pp-hwa-mosaic-item--middle-right,
-  .pp-hwa-mosaic-item--bottom-left {
-    width: 100%;
-    transform: none;
-    aspect-ratio: 16 / 10 !important;
-  }
-}
-
-/* ─────────────────────────────────────────────────────────────
-   LAYOUT TRÁI 4 ẢNH BẤT ĐỐI XỨNG WABI-SABI (GRID FOUR)
-   ───────────────────────────────────────────────────────────── */
-.pp-intro-hwa__grid-four {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-}
-
-.pp-intro-hwa__grid-item {
-  aspect-ratio: 1 / 1;
-  width: 100%;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--hwa-line) !important;
-  transition: transform 0.6s var(--ease-spring), box-shadow 0.6s var(--ease-spring), border-color 0.4s !important;
-}
-
-.pp-intro-hwa__grid-item:hover {
-  border-color: var(--p) !important;
-  box-shadow: 0 25px 50px color-mix(in srgb, var(--p) 25%, transparent) !important;
-  z-index: 5;
-}
-
-@media (min-width: 768px) {
-  .pp-intro-hwa__grid-four {
-    gap: 1.5rem;
-  }
-  .pp-intro-hwa__grid-item:nth-child(1) {
-    transform: translateY(-0.75rem);
-  }
-  .pp-intro-hwa__grid-item:nth-child(2) {
-    transform: translateY(1.25rem);
-  }
-  .pp-intro-hwa__grid-item:nth-child(3) {
-    transform: translateY(-1.25rem);
-  }
-  .pp-intro-hwa__grid-item:nth-child(4) {
-    transform: translateY(0.75rem);
-  }
-  
-  .pp-intro-hwa__grid-item:nth-child(1):hover {
-    transform: translateY(-1.25rem) scale(1.03) !important;
-  }
-  .pp-intro-hwa__grid-item:nth-child(2):hover {
-    transform: translateY(0.75rem) scale(1.03) !important;
-  }
-  .pp-intro-hwa__grid-item:nth-child(3):hover {
-    transform: translateY(-1.75rem) scale(1.03) !important;
-  }
-  .pp-intro-hwa__grid-item:nth-child(4):hover {
-    transform: translateY(0.25rem) scale(1.03) !important;
-  }
-}
-

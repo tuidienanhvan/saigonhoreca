@@ -1,7 +1,7 @@
 <?php
 /**
  * Single Project Template — Dự Nam An An
- * Thumbnail: 2025/04/du-an-sheh-fung.jpg
+ * Thumbnail: du-nam-an-an/nam-an-mat-ngoai-toa-nha-anh-bia-du-an.webp
  *
  * Auto-routed via inc/core/pillar-routes.php for /du-an/du-nam-an-an/.
  *

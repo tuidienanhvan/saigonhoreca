@@ -1,6 +1,17 @@
 /**
  * mua-craft-sake-lam-ruou-sake-dau-tien-tai-viet-nam — partnership slot.
- * Cinematic dark bg + glassmorphic content card (backdrop-filter). 0 hardcode hex brand.
+ * Full-bleed bg band + glassmorphic content card (backdrop-filter) + stat dashboard.
+ *
+ * Kỹ thuật Parallax (background-attachment:fixed — full-bleed background-image band):
+ *   - section: position:relative; isolation:isolate; overflow:hidden (KHÔNG clip-path).
+ *   - .__bg: position:absolute; inset:0; background center/cover;
+ *     background-attachment:fixed ⇒ bg neo theo viewport = parallax; z-index:-2.
+ *   - .__overlay: gradient token NHẸ giữ ảnh sáng; z-index:-1.
+ *   - content: z-index trên cùng + text-shadow cho dễ đọc.
+ *   - Mobile (<=768px): __bg background-attachment:scroll (fixed bị giật trên mobile).
+ * Techniques khác: backdrop-filter glass card · radial-gradient ambient glow
+ *   · color-mix tints · clamp() type · CSS grid stat dashboard
+ *   · var(--ease-spring) transitions · reduced-motion. 0 hardcode hex brand.
  * @package SaigonHoreca
  */
 
@@ -12,23 +23,35 @@
   align-items: center;
   justify-content: center;
   background-color: var(--b1);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   isolation: isolate;
   overflow: hidden;
 }
 @media (min-width: 768px) { .pp-section-bg-mua { padding: 10rem 2rem; } }
 
+/* Lớp nền ảnh thật — background-attachment:fixed cho parallax đáng tin cậy. */
+.pp-section-bg-mua__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* parallax đáng tin cậy — bg neo theo viewport, auto-clip vào box này */
+  z-index: -2;
+  pointer-events: none;
+}
+
+/* Overlay gradient token NHẸ — giữ ảnh sáng/tươi, KHÔNG phải lớp đen che ảnh. */
 .pp-section-bg-mua__overlay {
   position: absolute;
   inset: 0;
-  z-index: 1;
-  background:
-    radial-gradient(ellipse at center,
-      color-mix(in srgb, var(--b1) 35%, transparent) 0%,
-      color-mix(in srgb, var(--b1) 80%, transparent) 100%);
+  z-index: -1;
   pointer-events: none;
+  background: linear-gradient(180deg,
+    color-mix(in srgb, var(--b1) 45%, transparent) 0%,
+    color-mix(in srgb, var(--b1) 25%, transparent) 50%,
+    color-mix(in srgb, var(--b1) 55%, transparent) 100%);
 }
 
 .pp-section-bg-mua::before {
@@ -44,23 +67,31 @@
   opacity: 0.7;
 }
 
-/* Glassmorphic content card — đè max-width của pp-container-shared (1200 → 880). */
+/* Mobile fallback: background-attachment:fixed bị giật trên mobile ⇒ scroll. */
+@media (max-width: 768px) {
+  .pp-section-bg-mua__bg {
+    position: absolute;
+    background-attachment: scroll;
+  }
+}
+
+/* Glassmorphic content card — đè max-width của pp-container-shared (1200 → 920). */
 .pp-section-bg-mua .pp-section-bg-mua__content {
   position: relative;
   z-index: 2;
-  max-width: 880px;
+  max-width: 920px;
   margin: 0 auto;
   text-align: center;
-  padding: 3rem 2.5rem;
+  padding: clamp(2.25rem, 4vw, 3.25rem) clamp(1.5rem, 3.5vw, 3rem);
   background: var(--mua-glass);
   backdrop-filter: blur(14px) saturate(140%);
   -webkit-backdrop-filter: blur(14px) saturate(140%);
   border: 1px solid color-mix(in srgb, var(--mua-gold) 22%, transparent);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1.4rem;
   box-shadow:
     0 24px 56px rgba(0, 0, 0, 0.5),
     inset 0 1px 0 color-mix(in srgb, var(--mua-gold) 10%, transparent);
@@ -95,10 +126,71 @@
   font-size: clamp(0.97rem, 1.1vw, 1.05rem);
   line-height: 1.8;
   color: var(--bc2);
-  max-width: 700px;
+  max-width: 720px;
 }
 .pp-section-bg-mua__content .pp-text-mua__body p {
   margin: 0 0 1em;
   text-align: center;
 }
 .pp-section-bg-mua__content .pp-text-mua__body p:last-child { margin-bottom: 0; }
+.pp-section-bg-mua__lead {
+  color: var(--bc) !important;
+  font-weight: 600;
+}
+
+/* Stat dashboard — đối tác Saigon Horeca (rút từ copy thật: Fujimak/inox/trọn gói). */
+.pp-section-bg-mua__stats {
+  list-style: none;
+  margin: 0.5rem 0 0;
+  padding: 1.6rem 0 0;
+  width: 100%;
+  border-top: 1px solid color-mix(in srgb, var(--mua-gold) 18%, transparent);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+@media (min-width: 560px) {
+  .pp-section-bg-mua__stats { grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+}
+.pp-section-bg-mua__stat {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 1rem 1.1rem;
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--b1) 40%, transparent);
+  border: 1px solid var(--bd);
+  overflow: hidden;
+  transition: transform 0.4s var(--ease-spring), border-color 0.4s var(--ease-spring);
+}
+.pp-section-bg-mua__stat::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 2px;
+  background: linear-gradient(90deg, var(--mua-gold), transparent);
+}
+.pp-section-bg-mua__stat:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--mua-gold) 38%, transparent);
+}
+.pp-section-bg-mua__stat-value {
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 1.7vw, 1.4rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: 0.04em;
+  color: var(--mua-gold);
+}
+.pp-section-bg-mua__stat-label {
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: var(--bc2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pp-section-bg-mua__stat { transition: none !important; transform: none !important; }
+  /* Neo bg về scroll để loại bỏ chuyển động cuộn parallax. */
+  .pp-section-bg-mua__bg { background-attachment: scroll !important; }
+}

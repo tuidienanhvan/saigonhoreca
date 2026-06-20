@@ -75,25 +75,25 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, var(--bg-alt), var(--bg));
+    gap: 0.5rem;
+    background: linear-gradient(135deg, color-mix(in srgb, var(--brand) 12%, var(--bg-alt)), var(--bg));
 }
 
 .sh-card__placeholder-logo {
-    height: 2rem;
+    height: 2.75rem;
     width: auto;
-    opacity: 0.3;
-    filter: grayscale(1);
+    opacity: 0.9;
 }
 
-@media (min-width: 768px) { .sh-card__placeholder-logo { height: 3rem; } }
+@media (min-width: 768px) { .sh-card__placeholder-logo { height: 3.5rem; } }
 
 .sh-card__placeholder-text {
     display: none;
-    font-size: 0.5625rem;
+    font-size: 0.6875rem;
     font-weight: 700;
-    color: var(--text-1-muted);
-    margin-top: 0.5rem;
-    letter-spacing: 0.05em;
+    color: color-mix(in srgb, var(--brand) 78%, var(--text-1-muted));
+    margin-top: 0;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
 }
 

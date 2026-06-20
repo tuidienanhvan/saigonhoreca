@@ -79,7 +79,7 @@ $uri = get_template_directory_uri();
           <div class="pp-image-container-shared" style="aspect-ratio: 16 / 10;">
             <img src="<?php echo sgh_img('the-cheezy-time/the-cheezy-time-bar-counter-3d.jpg'); ?>" alt="<?php echo esc_attr__('Thiết kế phối cảnh 3D quầy pha chế trung tâm The Cheezy Time', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
             <div class="pp-image-caption-shared">
-              <?php echo esc_html__('Thiết kế phối cảnh 3D quầy pha chế trung tâm với dải đèn LED hắt sáng mềm mại, tủ trưng bày bánh ngọt và logo nhận diện thương hiệu độc đáo.', 'saigonhoreca'); ?>
+              <?php echo esc_html__('Phối cảnh 3D quầy pha chế trung tâm: dải đèn LED hắt sáng ấm dưới mặt quầy, kệ rượu cùng cụm vòi bia, tủ kính trưng bày và logo thương hiệu nổi bật trên nền tường gạch.', 'saigonhoreca'); ?>
             </div>
           </div>
         </div>

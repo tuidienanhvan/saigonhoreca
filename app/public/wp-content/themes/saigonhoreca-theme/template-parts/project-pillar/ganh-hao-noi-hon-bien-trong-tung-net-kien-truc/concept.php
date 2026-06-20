@@ -28,15 +28,15 @@ if (!defined('ABSPATH')) exit;
 
     <div class="pp-concept-ganh__gallery">
       <figure class="pp-concept-ganh__shot pp-image-container-shared scroll-reveal reveal-up delay-100">
-        <img src="<?php echo sgh_img('ganh-hao-noi-hon-bien-trong-tung-net-kien-truc/ganh-hao-sgh.jpg'); ?>" alt="<?php echo esc_attr__('Kiến trúc mái vòm ánh bạc nhà hàng Gành Hào', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="1366" height="768">
+        <img src="<?php echo sgh_img('ganh-hao-noi-hon-bien-trong-tung-net-kien-truc/ganh-hao-mai-vom-luon-song-inox-huong-bien.webp'); ?>" alt="<?php echo esc_attr__('Kiến trúc mái vòm lượn sóng ốp inox và vách kính của nhà hàng hải sản Gành Hào nhìn từ trên cao hướng ra biển Vũng Tàu', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="1366" height="768">
         <figcaption class="pp-image-caption-shared"><?php echo esc_html__('Mái vòm Aluminium ánh bạc – con tàu neo đậu giữa nắng gió Vũng Tàu', 'saigonhoreca'); ?></figcaption>
       </figure>
       <figure class="pp-concept-ganh__shot pp-image-container-shared scroll-reveal reveal-up delay-200">
-        <img src="<?php echo sgh_img('ganh-hao-noi-hon-bien-trong-tung-net-kien-truc/ganh-hao-sgh-2.jpg'); ?>" alt="<?php echo esc_attr__('Không gian nội thất mở đón nắng biển tại Gành Hào', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="1366" height="768">
+        <img src="<?php echo sgh_img('ganh-hao-noi-hon-bien-trong-tung-net-kien-truc/ganh-hao-ngoai-that-mai-vom-kinh-hoang-hon-ben-bien.webp'); ?>" alt="<?php echo esc_attr__('Ngoại thất nhà hàng Gành Hào với mái vòm kính cong và bảng hiệu phát sáng bên vịnh biển lúc hoàng hôn', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="1366" height="768">
         <figcaption class="pp-image-caption-shared"><?php echo esc_html__('Ô cửa kính lớn mở rộng tầm nhìn ra biển khơi mênh mông', 'saigonhoreca'); ?></figcaption>
       </figure>
       <figure class="pp-concept-ganh__shot pp-image-container-shared scroll-reveal reveal-up delay-300">
-        <img src="<?php echo sgh_img('ganh-hao-noi-hon-bien-trong-tung-net-kien-truc/ganh-hao-sgh-6.jpg'); ?>" alt="<?php echo esc_attr__('Chi tiết kiến trúc Á Đông tinh tế tại Gành Hào', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="1366" height="768">
+        <img src="<?php echo sgh_img('ganh-hao-noi-hon-bien-trong-tung-net-kien-truc/ganh-hao-kien-truc-mai-vom-tren-bien-luc-hoang-hon.webp'); ?>" alt="<?php echo esc_attr__('Kiến trúc nhà hàng Gành Hào với mái vòm cong và dù xanh nhô ra mặt biển trên cọc bê tông lúc hoàng hôn', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="1366" height="768">
         <figcaption class="pp-image-caption-shared"><?php echo esc_html__('Bản sắc Á Đông lặng lẽ trong từng đường cong, mảng màu ánh kim', 'saigonhoreca'); ?></figcaption>
       </figure>
     </div>

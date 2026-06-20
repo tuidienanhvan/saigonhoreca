@@ -1,0 +1,39 @@
+═══════════════════════════════════════════════════════════════════
+ SAIGON HORECA THEME — DEPLOY NOTES  (sau dọn dẹp 2026-06-09)
+═══════════════════════════════════════════════════════════════════
+
+ĐÃ DỌN: theme 137.7 MB → 13.7 MB. Phần thừa đã MOVE (reversible) ra:
+   C:\Users\Administrator\_sgh-cleanup-backup\
+   • static-mirror/ (98.6 MB) — HTML crawl CŨ của .vn/.com. Handler
+     (inc/core/static-mirror.php) KHÔNG được require → không phục vụ route nào.
+     → Theme giờ dùng TEMPLATE RIÊNG: single-project/<slug>.php + page-templates/
+       + template-parts/. KHÔNG còn "page cũ". (30 dự án, route qua pillar-routes.php)
+   • node_modules/ (17.8 MB) — chỉ cần khi REBUILD CSS. Khôi phục:
+       cd <theme> && npm install
+   • graphify-out/ · scratch/ · tmp-download/ · _tmp/ · all_prod_urls.txt — dev/artifact.
+
+───────────────────────────────────────────────────────────────────
+ CÁCH DEPLOY (QUAN TRỌNG)
+───────────────────────────────────────────────────────────────────
+✅ KHUYẾN NGHỊ — UPLOAD TRỰC TIẾP cả thư mục theme (13.7 MB) qua FTP/cPanel/zip:
+   Đã có sẵn assets/css/dist/*.css (CSS đã build) + ảnh + font → web đủ style,
+   KHÔNG cần node_modules trên server.
+
+⚠ NẾU deploy bằng GIT: .gitignore đang loại dist/ + *.png/jpg/webp/svg/woff/ttf
+   → server sẽ THIẾU CSS-đã-build + ảnh + font → WEB VỠ STYLE.
+   Cách xử lý: hoặc (a) dùng direct upload (khuyến nghị), hoặc (b) trên server chạy
+   `npm install && npm run build` (cần Node), hoặc (c) force-add dist/ + assets/images + fonts.
+
+───────────────────────────────────────────────────────────────────
+ UPLOADS
+───────────────────────────────────────────────────────────────────
+Đăng cả thư mục wp-content/uploads (52.7 MB) — đã rà: KHÔNG có file rác/script/backup,
+chỉ ảnh thật (per-slug + year-folders). Upload nguyên trạng.
+(Nếu muốn slim thêm: cần audit ảnh mồ côi — báo Claude làm riêng, có rủi ro nên làm cẩn thận.)
+
+───────────────────────────────────────────────────────────────────
+ ĐA NGÔN NGỮ (.vn ↔ .com)
+───────────────────────────────────────────────────────────────────
+slug-map.php: .vn=vi (/du-an/, /lien-he/…) ↔ .com=en (/projects/, /contact/…).
+home_url filter tự đổi domain + dịch prefix theo host. Switcher/hreflang cross-link.
+.com hiện 301→.vn (chưa bật site EN) — logic sẵn sàng khi bật.

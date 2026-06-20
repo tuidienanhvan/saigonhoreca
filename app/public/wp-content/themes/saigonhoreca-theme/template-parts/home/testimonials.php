@@ -44,7 +44,7 @@ $star = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d
 <section  class="sh-testimonials" aria-label="<?php esc_attr_e('Cảm nhận khách hàng', 'saigonhoreca'); ?>">
     <div class="sh-testimonials__inner">
 
-        <header class="sh-testimonials__header scroll-reveal reveal-letter-wide duration-2000">
+        <header class="sh-testimonials__header scroll-reveal reveal-up duration-2000">
             <span class="sh-testimonials__divider" aria-hidden="true"></span>
             <h2 class="sh-testimonials__title"><?php esc_html_e('Cảm nhận từ khách hàng', 'saigonhoreca'); ?></h2>
             <p class="sh-testimonials__subtitle">

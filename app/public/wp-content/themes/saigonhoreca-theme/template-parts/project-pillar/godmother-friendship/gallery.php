@@ -85,8 +85,8 @@ $uri = get_template_directory_uri();
       <!-- Ảnh nội thất quầy bar gỗ và bàn đá terrazzo ở dưới -->
       <div class="pp-partner-image-gmf">
         <div class="pp-image-container-shared pp-gallery-img-container-gmf">
-          <img src="<?php echo sgh_img('godmother-friendship/godmother-friendship-noi-that-quay-bar-go-va-ban-terrazzo.webp'); ?>" alt="<?php echo esc_attr__('Không gian quầy bar gỗ và bàn đá terrazzo thực tế tại Godmother Friendship', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
-          <div class="pp-image-caption-shared"><?php echo esc_html__('Không gian quầy bar kết hợp hài hòa giữa chất liệu gỗ ấm áp và mặt bàn đá terrazzo hiện đại tại Godmother Friendship.', 'saigonhoreca'); ?></div>
+          <img src="<?php echo sgh_img('godmother-friendship/godmother-friendship-noi-that-quay-bar-go-va-ban-terrazzo.webp'); ?>" alt="<?php echo esc_attr__('Khu phòng ăn bàn mặt đá terrazzo và ghế da nâu hoàn thiện thực tế tại GodMother Friendship', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
+          <div class="pp-image-caption-shared"><?php echo esc_html__('Khu phòng ăn brunch hoàn thiện thực tế: dãy bàn mặt đá terrazzo, ghế bành da nâu đỏ và hệ trần nan gỗ sồi ấm áp, kết tinh sự giao thoa chất liệu gỗ và terrazzo tại GodMother Friendship.', 'saigonhoreca'); ?></div>
         </div>
       </div>
     </div>

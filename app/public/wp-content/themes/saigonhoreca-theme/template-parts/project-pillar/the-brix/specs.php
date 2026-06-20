@@ -162,7 +162,7 @@ $uri = get_template_directory_uri();
           <!-- Lớp 3: Khung bọc ảnh chính được clip-path theo hình sóng nước -->
           <div class="pp-specs-brix__image-wave-wrap">
             <div class="pp-specs-brix__image-tag">European Cuisine</div>
-            <img src="<?php echo sgh_img('the-brix/the-brix-khong-gian-am-thuc-len-den-dem.jpg'); ?>" alt="<?php echo esc_attr__('The Brix European Cuisine', 'saigonhoreca'); ?>" loading="lazy">
+            <img src="<?php echo sgh_img('the-brix/the-brix-khong-gian-am-thuc-len-den-dem.jpg'); ?>" alt="<?php echo esc_attr__('Không gian The Brix về đêm với đèn ấm áp phản chiếu trên mặt hồ bơi', 'saigonhoreca'); ?>" loading="lazy">
           </div>
 
           <!-- Lớp 4: KHUNG VIỀN SÓNG BIỂN NGHỆ THUẬT bọc ngoài khít khao -->

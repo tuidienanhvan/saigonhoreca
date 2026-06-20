@@ -14,8 +14,8 @@ $uri = get_template_directory_uri();
       <!-- Cinematic widescreen image header -->
       <div class="pp-partnership-card-trd__visual">
         <figure class="pp-image-container-shared pp-partnership-card-trd__figure">
-          <img src="<?php echo sgh_img('the-royal-all-day-dining/the-royal-all-day-dining-ban-mat-ngan-keo-undercounter.jpg'); ?>" alt="<?php echo esc_attr__('Hệ thống bàn mát dưới quầy tích hợp ngăn kéo tiện dụng tại The Royal', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="1366" height="768">
-          <figcaption class="pp-image-caption-shared"><?php echo esc_html__('Hệ thống bàn mát dưới quầy (under-counter refrigerator) tích hợp ngăn kéo tiện dụng giúp bảo quản nguyên liệu tươi ngon ngay tầm tay đầu bếp.', 'saigonhoreca'); ?></figcaption>
+          <img src="<?php echo sgh_img('the-royal-all-day-dining/the-royal-all-day-dining-ban-mat-ngan-keo-undercounter.jpg'); ?>" alt="<?php echo esc_attr__('Dãy bàn inox và chậu rửa khu sơ chế bếp công nghiệp dưới đèn thả đồng vàng tại The Royal', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="1366" height="768">
+          <figcaption class="pp-image-caption-shared"><?php echo esc_html__('Dãy bàn inox và chậu rửa khu sơ chế bố trí một chiều dưới ánh đèn thả đồng vàng, tối ưu thao tác và đảm bảo vệ sinh cho đầu bếp The Royal.', 'saigonhoreca'); ?></figcaption>
         </figure>
       </div>
 

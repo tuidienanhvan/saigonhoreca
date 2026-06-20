@@ -1,7 +1,7 @@
 <?php
 /**
  * Single Project Template — HEIWA SUSHI OMAKASE
- * Thumbnail: heiwa-sushi-omakase/heiwa-sushi-omakase-tong-quan-khong-gian-1024x576.webp
+ * Thumbnail: heiwa-sushi-omakase/heiwa-sushi-omakase-thumbnail-project-cover.webp
  *
  * Auto-routed via inc/core/pillar-routes.php for /du-an/heiwa-sushi-omakase/.
  *

@@ -464,11 +464,11 @@ add_action('wp_head', function () {
         }
         return;
     } elseif (is_page_template('page-templates/page-gioi-thieu.php') || is_page('ve-saigon-horeca') || is_page('gioi-thieu')) {
-        $preload_img = sgh_img('2023/12/bia-bep-cong-nghiep-inox.webp');
+        $preload_img = sgh_img('saigonhoreca/bia-bep-cong-nghiep-inox.webp');
     } elseif (is_page_template('page-templates/page-lien-he.php') || is_page('lien-he')) {
-        $preload_img = sgh_img('2023/12/Saigon-Horeca-thiet-bi-bep-cong-nghiep.webp');
+        $preload_img = sgh_img('saigonhoreca/Saigon-Horeca-thiet-bi-bep-cong-nghiep.webp');
     } elseif (is_post_type_archive('project') || is_tax('project_category') || is_page('du-an')) {
-        $preload_img = sgh_img('2024/06/Sol0D7-05.webp');
+        $preload_img = sgh_img('renovate-sol-kitchen-bar-quan-7/Sol0D7-05.webp');
     }
 
     if (!empty($preload_img)) {

@@ -12,6 +12,12 @@
 
 get_header(); ?>
 
+<style id="sh-archive-layout-fix">
+/* An toàn: khi sidebar không render (vd prod chưa có category), layout về 1 cột
+   để grid sản phẩm chiếm full chiều rộng thay vì dồn vào cột 260px. */
+.sh-archive__layout:has(> .sh-archive__main:only-child){grid-template-columns:1fr !important;}
+</style>
+
 <main id="primary" class="sh-archive sh-archive--product" tabindex="-1">
     <?php
     // 1. Hero — title + count + breadcrumb-style badge

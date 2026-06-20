@@ -16,7 +16,7 @@ $partners = [];
 for ($i = 1; $i <= 12; $i++) {
     $num = str_pad($i, 5, '0', STR_PAD_LEFT);
     $partners[] = [
-        'src' => sgh_img('2025/04/SGH-partner') . $num . '.webp',
+        'src' => sgh_img('saigonhoreca/SGH-partner' . $num . '.webp'),
         'alt' => 'Đối tác Saigon Horeca ' . $i,
     ];
 }
@@ -83,7 +83,7 @@ for ($i = 1; $i <= 12; $i++) {
                 <!-- Main finished project image -->
                 <div class="sh-about-partners__img-main-frame">
                     <img
-                        src="<?php echo esc_url(sgh_img('2024/02/The-Brix-05-1-600x337.webp')); ?>"
+                        src="<?php echo esc_url(sgh_img('the-brix/the-brix-khong-gian-am-thuc-len-den-dem.webp')); ?>"
                         alt="Du an nha hang cao cap The Brix — Saigon Horeca thi cong"
                         loading="lazy"
                         decoding="async"
@@ -99,7 +99,7 @@ for ($i = 1; $i <= 12; $i++) {
                 <!-- Secondary accent image (3D Overlap) -->
                 <div class="sh-about-partners__img-accent-frame">
                     <img
-                        src="<?php echo esc_url(sgh_img('2024/02/SGH-Bambino-1-600x337.webp')); ?>"
+                        src="<?php echo esc_url(sgh_img('bambino/bambino-thiet-bi-bep-nau-nhap-khau.webp')); ?>"
                         alt="He thong bep cong nghiep inox cao cap"
                         loading="lazy"
                         decoding="async"

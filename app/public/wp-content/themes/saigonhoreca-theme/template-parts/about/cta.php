@@ -9,7 +9,7 @@
  */
 if (!defined('ABSPATH')) exit;
 $uri    = get_template_directory_uri();
-$bg_url = sgh_img('2023/12/Saigon-Horeca-thiet-bi-bep-cong-nghiep.jpg');
+$bg_url = sgh_img('saigonhoreca/Saigon-Horeca-thiet-bi-bep-cong-nghiep.jpg');
 
 $extra_testimonials = [
     [

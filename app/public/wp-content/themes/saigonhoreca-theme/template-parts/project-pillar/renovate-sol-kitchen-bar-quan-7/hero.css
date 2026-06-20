@@ -1,7 +1,16 @@
 /**
  * renovate-sol-kitchen-bar-quan-7 — hero slot.
- * Ken-Burns cinematic backdrop + staggered entry + warm ambient glow.
- * Techniques: ken-burns, radial-gradient glow, glassmorphism, clamp(), staggered entry, prefers-reduced-motion.
+ * Full-bleed backdrop via the reliable background-attachment:fixed parallax:
+ *   - section: position:relative; isolation:isolate; overflow:hidden (NO clip-path —
+ *     a clip-path would become the containing block for a fixed child and kill parallax).
+ *   - __bg: position:absolute; inset:0; z-index:-2; background center/cover +
+ *     background-attachment:fixed (viewport-anchored paint = the parallax, no JS).
+ *   - __overlay: position:absolute; z-index:-1; LIGHT token gradient (keeps photo bright).
+ *   - mobile fallback switches __bg to background-attachment:scroll (fixed janks on mobile).
+ * Title sits DIRECTLY on the bright image (no dark scrim, no panel behind text);
+ * legibility via text-shadow only (owner feedback).
+ * Techniques: background-attachment:fixed parallax, radial-gradient glow, clamp(), staggered keyframe
+ * entry, scroll-cue keyframe, prefers-reduced-motion.
  * @package SaigonHoreca
  */
 
@@ -15,30 +24,65 @@
   justify-content: flex-start;
   overflow: hidden;
   isolation: isolate;
+  /* Parallax via background-attachment:fixed on __bg (no clip-path: clip-path would
+     make this section the containing block for a position:fixed child and kill parallax). */
   background-color: var(--b1);
   text-align: left;
   padding-inline: clamp(1.25rem, 7vw, 7rem);
 }
+@supports (height: 100dvh) {
+  .pp-hero-solq7 { height: 100dvh; }
+}
 
+/* Background video (YouTube) — covers the hero; poster image on __media shows until it loads. */
 .pp-hero-solq7__media {
   position: absolute;
   inset: 0;
-  z-index: 1;
+  z-index: -2;
+  overflow: hidden;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  filter: saturate(1.06) contrast(1.06) brightness(0.66);
-  animation: solq7-ken-burns var(--sh-ken-burns-duration, 8s) ease-in-out infinite alternate;
+}
+.pp-hero-solq7__media iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: max(100vw, 177.78vh);
+  height: max(56.25vw, 100vh);
+  transform: translate(-50%, -50%) scale(1.06);
+  border: 0;
+  pointer-events: none;
 }
 
+.pp-hero-solq7__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* Reliable parallax: viewport-fixed paint without a clip-path containing block. */
+  background-attachment: fixed;
+  pointer-events: none;
+  /* Bright, un-dimmed image — owner feedback: no dark overlay behind hero. */
+  filter: saturate(1.04) contrast(1.03);
+}
+
+/* LIGHT token gradient overlay — keeps the photo visible/bright (no heavy black scrim) */
 .pp-hero-solq7__overlay {
   position: absolute;
   inset: 0;
-  z-index: 2;
+  z-index: -1;
   pointer-events: none;
-  background:
-    linear-gradient(90deg, color-mix(in srgb, var(--b1) 90%, transparent) 0%, color-mix(in srgb, var(--b1) 44%, transparent) 50%, color-mix(in srgb, var(--b1) 28%, transparent) 100%),
-    linear-gradient(to bottom, color-mix(in srgb, var(--b1) 24%, transparent) 0%, color-mix(in srgb, var(--b1) 74%, transparent) 78%, var(--b1) 100%);
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--b1) 45%, transparent) 0%,
+    color-mix(in srgb, var(--b1) 25%, transparent) 50%,
+    color-mix(in srgb, var(--b1) 55%, transparent) 100%
+  );
 }
 
 .pp-hero-solq7__grid {
@@ -87,7 +131,8 @@
   font-size: 0.68rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: color-mix(in srgb, var(--bc) 42%, transparent);
+  color: color-mix(in srgb, var(--bc) 58%, transparent);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
   pointer-events: none;
 }
 .pp-hero-solq7__rail--left {
@@ -102,33 +147,17 @@
 }
 
 .pp-hero-solq7__content {
+  /* No background / border / panel — text sits DIRECTLY on the bright image.
+     Legibility comes from per-element text-shadow only. */
   position: relative;
   z-index: 3;
   width: min(780px, 100%);
-  padding: clamp(2rem, 4vw, 3.25rem);
+  padding: clamp(0.5rem, 2vw, 1rem) 0;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 1.25rem;
-  background: linear-gradient(135deg, color-mix(in srgb, var(--solq7-glass) 92%, transparent), color-mix(in srgb, var(--b1) 46%, transparent));
-  border: 1px solid var(--solq7-edge);
-  border-left: 2px solid color-mix(in srgb, var(--p) 64%, transparent);
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-floating);
-  backdrop-filter: blur(18px) saturate(130%);
-  -webkit-backdrop-filter: blur(18px) saturate(130%);
 }
-.pp-hero-solq7__content::before,
-.pp-hero-solq7__content::after {
-  content: '';
-  position: absolute;
-  width: 28px;
-  height: 28px;
-  border: 1px solid color-mix(in srgb, var(--p) 55%, transparent);
-  pointer-events: none;
-}
-.pp-hero-solq7__content::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
-.pp-hero-solq7__content::after  { right: -1px; bottom: -1px; border-left: none; border-top: none; }
 
 .pp-hero-solq7__badge {
   display: inline-flex;
@@ -140,6 +169,7 @@
   letter-spacing: 0.24em;
   text-transform: uppercase;
   color: color-mix(in srgb, var(--solq7-amber) 92%, var(--bc));
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.55);
   animation: solq7-rise 0.9s var(--ease-spring) 0.15s backwards;
 }
 .pp-hero-solq7__badge-sep { color: color-mix(in srgb, var(--p) 70%, transparent); }
@@ -157,18 +187,20 @@
   line-height: 1.04;
   letter-spacing: 0.005em;
   color: var(--bc);
+  /* Legibility on the bright image (owner spec) */
   text-shadow:
-    0 4px 24px color-mix(in srgb, var(--b1) 70%, transparent),
-    0 0 60px color-mix(in srgb, var(--p) 18%, transparent);
+    0 2px 18px rgba(0, 0, 0, 0.55),
+    0 0 60px color-mix(in srgb, var(--p) 16%, transparent);
   animation: solq7-rise 0.9s var(--ease-spring) 0.1s backwards;
 }
 .pp-hero-solq7__title-sub {
   font-family: var(--font-sans);
   font-size: clamp(1rem, 1.8vw, 1.3rem);
-  font-weight: 400;
+  font-weight: 500;
   line-height: 1.5;
-  color: var(--bc2);
+  color: var(--bc);
   max-width: 36ch;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.55);
   animation: solq7-rise 0.9s var(--ease-spring) 0.26s backwards;
 }
 
@@ -200,18 +232,25 @@
   gap: 0.65rem;
   min-height: 2.1rem;
   padding: 0.5rem 0.95rem;
-  border: 1px solid color-mix(in srgb, var(--p) 26%, transparent);
+  border: 1px solid color-mix(in srgb, var(--p) 34%, transparent);
   border-radius: var(--radius-full);
-  background: color-mix(in srgb, var(--b1) 46%, transparent);
+  /* Self-contained chip (not a panel behind the title) — kept legible on bright media. */
+  background: color-mix(in srgb, var(--b1) 58%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   animation: solq7-rise 0.9s var(--ease-spring) 0.42s backwards;
 }
-.pp-hero-solq7__award-star { color: var(--p); font-size: 0.85rem; }
+.pp-hero-solq7__award-star {
+  color: var(--p);
+  font-size: 0.85rem;
+  text-shadow: 0 0 10px color-mix(in srgb, var(--p) 55%, transparent);
+}
 .pp-hero-solq7__award-text {
   font-family: var(--font-mono);
   font-size: 0.72rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--bc2);
+  color: var(--bc);
 }
 
 .pp-hero-solq7__scroll {
@@ -241,10 +280,16 @@
   .pp-hero-solq7__content { padding: 1.65rem; }
 }
 
-@keyframes solq7-ken-burns {
-  0%   { transform: scale(var(--sh-ken-burns-scale-start, 1)); }
-  100% { transform: scale(var(--sh-ken-burns-scale-end, 1.12)); }
+/* Mobile fallback — background-attachment:fixed parallax is janky on mobile */
+@media (max-width: 768px) {
+  .pp-hero-solq7__bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-attachment: scroll;
+  }
 }
+
 @keyframes solq7-rise {
   0%   { opacity: 0; transform: translateY(2rem); filter: blur(6px); }
   100% { opacity: 1; transform: translateY(0); filter: blur(0); }
@@ -255,7 +300,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .pp-hero-solq7__media,
   .pp-hero-solq7__badge,
   .pp-hero-solq7__title-top,
   .pp-hero-solq7__title-sub,
@@ -264,4 +308,6 @@
   .pp-hero-solq7__scroll-line {
     animation: none !important;
   }
+  /* Disable fixed-parallax for users who prefer reduced motion */
+  .pp-hero-solq7__bg { position: absolute; background-attachment: scroll; }
 }

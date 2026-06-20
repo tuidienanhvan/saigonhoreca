@@ -1,185 +1,205 @@
 /**
- * bep-an-truong-mam-non-tu-thuc-trinh-vuong — concept slot.
- * Direction: School Cafeteria — split layout with rounded lunchbox media +
- * cafeteria-card body, schedule-tag bracket ornaments, gridded micro-pattern.
- * Owns .pp-split-tvg (also used by specs/gallery/related).
- * @package SaigonHoreca
+ * Project Pillar — Trường Mầm Non Trinh Vương
+ * Section #3: concept styling (Quy Trình Một Chiều — Timeline Spec Panel · milk-glass cards)
+ * 100% tokens · zero hardcoded hex. Pastel teal/orange via color-mix(var(--su)/var(--gold)).
  */
 
-.pp-split-tvg {
+.pp-concept-tvg {
+  position: relative;
+  padding: clamp(4rem, 8vw, 7.5rem) 0;
+  background-color: var(--b2);
+  overflow: hidden;
+}
+
+.pp-concept-tvg__glow {
+  position: absolute;
+  bottom: -14%;
+  left: -8%;
+  width: clamp(320px, 44vw, 600px);
+  height: clamp(320px, 44vw, 600px);
+  border-radius: var(--radius-full);
+  background: radial-gradient(circle, color-mix(in srgb, var(--su) 15%, transparent) 0%, transparent 70%);
+  filter: blur(95px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.pp-concept-tvg__head {
+  position: relative;
+  z-index: 2;
+  max-width: 760px;
+  margin: 0 auto clamp(2.5rem, 5vw, 4rem);
+  text-align: center;
+}
+
+.pp-concept-tvg__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.4rem 0.95rem;
+  border-radius: var(--radius-full);
+  font-family: var(--font-display);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--su) 60%, var(--bc));
+  background: color-mix(in srgb, var(--su) 12%, transparent);
+  border: 1.5px solid color-mix(in srgb, var(--su) 30%, transparent);
+  margin-bottom: 1.1rem;
+}
+.pp-concept-tvg__badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: var(--radius-full);
+  background: color-mix(in srgb, var(--su) 80%, transparent);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--su) 60%, transparent);
+}
+
+.pp-concept-tvg__title {
+  margin: 0 0 1rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 3.4vw, 2.6rem);
+  font-weight: 800;
+  line-height: 1.18;
+  letter-spacing: -0.015em;
+  color: var(--bc);
+}
+.pp-concept-tvg__lead {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: clamp(0.96rem, 1.12vw, 1.06rem);
+  line-height: 1.8;
+  color: var(--bc2);
+}
+
+/* ── One-way timeline ── */
+.pp-concept-tvg__timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  z-index: 2;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2.5rem;
-  align-items: center;
-  position: relative;
+  gap: 1.5rem;
 }
-@media (min-width: 992px) {
-  .pp-split-tvg {
-    grid-template-columns: 1.05fr 1fr;
-    gap: 4.5rem;
+@media (min-width: 640px) {
+  .pp-concept-tvg__timeline {
+    grid-template-columns: repeat(2, 1fr);
   }
-  .pp-split-tvg--reverse .pp-split-tvg__media { order: 2; }
-  .pp-split-tvg--reverse .pp-split-tvg__body  { order: 1; }
 }
-@media (min-width: 1200px) {
-  .pp-split-tvg { gap: 5.5rem; }
+@media (min-width: 1100px) {
+  .pp-concept-tvg__timeline {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+  }
 }
 
-/* Body — cafeteria menu-board card */
-.pp-split-tvg__body {
+.pp-concept-tvg__step {
   position: relative;
-  z-index: 2;
+  animation: tvg-step-in 0.7s var(--ease-spring) both;
+  animation-delay: calc(var(--tvg-i, 0) * 90ms);
+}
+
+/* One-way connector arrow between steps (desktop only) */
+@media (min-width: 1100px) {
+  .pp-concept-tvg__step::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -0.7rem;
+    width: 1.1rem;
+    height: 1.1rem;
+    transform: translateY(-50%) rotate(45deg);
+    border-top: 2.5px solid color-mix(in srgb, var(--su) 55%, transparent);
+    border-right: 2.5px solid color-mix(in srgb, var(--su) 55%, transparent);
+    z-index: 3;
+  }
+  .pp-concept-tvg__step:last-child::after { display: none; }
+}
+
+/* Milk-glass card — kính trắng sữa trong suốt, cảm giác sạch sẽ vô trùng (dossier) */
+.pp-concept-tvg__card {
+  position: relative;
+  height: 100%;
+  padding: 1.6rem 1.4rem;
+  border-radius: 24px;
+  background: color-mix(in srgb, var(--bc) 7%, color-mix(in srgb, var(--b1) 55%, transparent));
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border: 1.5px solid color-mix(in srgb, var(--bc) 10%, transparent);
+  box-shadow:
+    0 16px 38px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 color-mix(in srgb, var(--bc) 12%, transparent);
   display: flex;
   flex-direction: column;
-  gap: 1.35rem;
-  padding: 2.25rem 2rem;
-  background: color-mix(in srgb, var(--b1) 75%, transparent);
-  border: 1.5px solid var(--bd);
-  border-radius: 28px;
-  box-shadow:
-    0 18px 42px rgba(0, 0, 0, 0.18),
-    inset 0 1px 0 color-mix(in srgb, var(--gold) 8%, transparent);
-  isolation: isolate;
+  gap: 0.7rem;
+  transition: transform 0.45s var(--ease-spring), border-color 0.45s, box-shadow 0.45s;
 }
-@media (min-width: 992px) {
-  .pp-split-tvg__body {
-    padding: 2.75rem 2.5rem;
-  }
+.pp-concept-tvg__card:hover {
+  transform: translateY(-6px);
+  border-color: color-mix(in srgb, var(--su) 45%, transparent);
+  box-shadow:
+    0 24px 48px rgba(0, 0, 0, 0.26),
+    0 0 0 1px color-mix(in srgb, var(--su) 30%, transparent);
 }
 
-/* Schedule-tag corner badge */
-.pp-split-tvg__body::before {
-  content: 'CHƯƠNG TRÌNH';
-  position: absolute;
-  top: -12px;
-  left: 24px;
-  padding: 5px 12px;
-  font-family: var(--font-display);
-  font-size: 0.66rem;
+.pp-concept-tvg__num {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
   font-weight: 700;
-  letter-spacing: 0.2em;
-  color: var(--b1);
-  background: var(--gold);
-  border-radius: 999px;
-  z-index: 3;
-  box-shadow: 0 4px 12px color-mix(in srgb, var(--gold) 35%, transparent);
-}
-.pp-split-tvg--reverse .pp-split-tvg__body::before {
-  left: auto;
-  right: 24px;
+  letter-spacing: 0.08em;
+  color: color-mix(in srgb, var(--gold) 90%, transparent);
 }
 
-/* Bottom stacked-rectangle ornament */
-.pp-split-tvg__body::after {
-  content: '';
-  position: absolute;
-  bottom: -8px;
-  right: 32px;
-  width: 72px; height: 8px;
-  background:
-    linear-gradient(to right,
-      color-mix(in srgb, var(--gold) 75%, transparent) 0 35%,
-      transparent 35% 42%,
-      color-mix(in srgb, var(--gold) 50%, transparent) 42% 80%,
-      transparent 80% 88%,
-      color-mix(in srgb, var(--gold) 25%, transparent) 88% 100%);
-  border-radius: 5px;
+.pp-concept-tvg__icon {
+  width: 3rem;
+  height: 3rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--su) 13%, transparent);
+  border: 1.5px solid color-mix(in srgb, var(--su) 28%, transparent);
+  color: color-mix(in srgb, var(--su) 75%, var(--bc));
+  transition: transform 0.45s var(--ease-spring), background-color 0.45s, color 0.45s;
 }
-.pp-split-tvg--reverse .pp-split-tvg__body::after {
-  right: auto;
-  left: 32px;
-}
-
-.pp-split-tvg__body .pp-text-tvg__divider { align-self: flex-start; }
-.pp-split-tvg__body .pp-text-tvg__title {
-  font-size: clamp(1.6rem, 2.7vw, 2.35rem);
-  text-align: left;
-  line-height: 1.18;
-}
-.pp-split-tvg__body .pp-text-tvg__body {
-  max-width: none;
-  font-size: clamp(0.96rem, 1.05vw, 1.02rem);
-  line-height: 1.8;
-}
-
-/* Media — rounded lunchbox photo frame */
-.pp-split-tvg__media {
-  position: relative;
-  aspect-ratio: 16 / 11;
-  overflow: hidden;
-  border-radius: 28px;
-  background: var(--b3);
-  border: 1.5px solid var(--bd);
-  transition:
-    border-color 0.5s var(--ease-spring),
-    transform 0.5s var(--ease-spring),
-    box-shadow 0.5s var(--ease-spring);
-  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.22);
-  isolation: isolate;
-}
-.pp-split-tvg__media:hover {
-  border-color: color-mix(in srgb, var(--gold) 55%, transparent);
-  transform: translateY(-4px);
-  box-shadow:
-    0 24px 54px rgba(0, 0, 0, 0.3),
-    0 0 0 4px color-mix(in srgb, var(--gold) 12%, transparent);
-}
-.pp-split-tvg__media img {
-  width: 100%; height: 100%;
-  object-fit: cover;
+.pp-concept-tvg__icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
   display: block;
-  filter: saturate(1.08);
-  transition: transform 0.8s var(--ease-spring);
 }
-.pp-split-tvg__media:hover img { transform: scale(1.06); }
-
-/* Lunchbox layer ornament — top-right of media */
-.pp-split-tvg__media::after {
-  content: '';
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  width: 44px; height: 6px;
-  background:
-    linear-gradient(to right,
-      var(--gold) 0 38%,
-      transparent 38% 48%,
-      color-mix(in srgb, var(--gold) 60%, transparent) 48% 90%,
-      transparent 90% 100%);
-  border-radius: 3px;
-  z-index: 2;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
-}
-/* Gridded micro-overlay on media (planner-feel) */
-.pp-split-tvg__media::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  background:
-    repeating-linear-gradient(
-      to bottom,
-      transparent 0 39px,
-      color-mix(in srgb, var(--b1) 14%, transparent) 39px 40px
-    );
-  opacity: 0.4;
-  mix-blend-mode: multiply;
+.pp-concept-tvg__card:hover .pp-concept-tvg__icon {
+  transform: scale(1.08) rotate(-4deg);
+  background: color-mix(in srgb, var(--su) 22%, transparent);
 }
 
-/* Decorative bg glow behind split */
-.pp-split-tvg::before {
-  content: '';
-  position: absolute;
-  top: 30%;
-  left: 35%;
-  width: 380px; height: 380px;
-  background: radial-gradient(
-    circle,
-    color-mix(in srgb, var(--gold) 10%, transparent) 0%,
-    transparent 70%
-  );
-  filter: blur(70px);
-  pointer-events: none;
-  z-index: 0;
+.pp-concept-tvg__step-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--bc);
+}
+.pp-concept-tvg__step-desc {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--bc2);
+}
+
+@keyframes tvg-step-in {
+  0%   { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pp-concept-tvg__step,
+  .pp-concept-tvg__card,
+  .pp-concept-tvg__icon {
+    animation: none !important;
+    transition: none !important;
+  }
 }

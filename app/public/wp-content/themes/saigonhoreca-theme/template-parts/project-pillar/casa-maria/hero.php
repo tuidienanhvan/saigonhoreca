@@ -15,7 +15,6 @@ $uri = get_template_directory_uri();
     <p class="pp-hero-cm__subhead"><?php echo esc_html__('Khi không gian Tapas & Wine cần một căn bếp "biết kể chuyện"', 'saigonhoreca'); ?></p>
   </div>
   <div class="pp-hero-cm__scroll-indicator">
-    <span class="pp-hero-cm__scroll-text"><?php echo esc_html__('Khám phá dự án', 'saigonhoreca'); ?></span>
     <svg class="pp-hero-cm__scroll-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18">
       <path d="M12 5v14M5 12l7 7 7-7" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>

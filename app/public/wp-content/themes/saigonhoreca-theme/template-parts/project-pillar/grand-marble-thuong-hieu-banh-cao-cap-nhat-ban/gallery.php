@@ -9,6 +9,7 @@ $uri = get_template_directory_uri();
 ?>
 <section class="pp-section-gmarb pp-gallery-section-gmarb scroll-reveal">
   <div class="pp-gmarb-glow pp-gmarb-glow--bl" aria-hidden="true"></div>
+  <div class="pp-gmarb-glow pp-gmarb-glow--tr" aria-hidden="true"></div>
 
   <div class="pp-container-shared">
     <div class="pp-gallery-gmarb__head scroll-reveal reveal-up">
@@ -18,27 +19,40 @@ $uri = get_template_directory_uri();
     </div>
 
     <div class="pp-gallery-gmarb">
-      <figure class="pp-gallery-gmarb__item pp-gallery-gmarb__item--wide scroll-reveal reveal-up">
-        <div class="pp-image-container-shared">
-          <img src="<?php echo sgh_img('grand-marble-thuong-hieu-banh-cao-cap-nhat-ban/grand-marble-hoa-van-marble.jpg'); ?>" alt="<?php echo esc_attr__('Hoa văn vân đá marble trên bánh Grand Marble', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
-          <figcaption class="pp-image-caption-shared"><?php echo esc_html__('Các họa tiết vân đá marble đặc trưng – kết quả của tài năng và sự tận tụy của những nghệ nhân làm bánh.', 'saigonhoreca'); ?></figcaption>
+      <span class="pp-gallery-gmarb__watermark" aria-hidden="true">04</span>
+
+      <!-- Tile 01 — vân đá marble -->
+      <figure class="pp-gallery-gmarb__item scroll-reveal reveal-up">
+        <div class="pp-image-container-shared pp-gallery-gmarb__frame">
+          <span class="pp-gallery-gmarb__index" aria-hidden="true">01</span>
+          <img src="<?php echo sgh_img('grand-marble-thuong-hieu-banh-cao-cap-nhat-ban/grand-marble-hoa-van-marble.jpg'); ?>" alt="<?php echo esc_attr__('Hai phụ nữ mặc kimono trước cửa hàng Grand Marble phong cách Kyoto truyền thống', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
+          <figcaption class="pp-image-caption-shared"><?php echo esc_html__('Mặt tiền cửa hàng Grand Marble giữa lòng cố đô Kyoto, nơi rèm noren và đèn lồng đỏ gìn giữ nét truyền thống Nhật Bản trong từng chiếc bánh.', 'saigonhoreca'); ?></figcaption>
         </div>
       </figure>
-      <figure class="pp-gallery-gmarb__item pp-gallery-gmarb__item--tall scroll-reveal reveal-up delay-100">
-        <div class="pp-image-container-shared">
-          <img src="<?php echo sgh_img('grand-marble-thuong-hieu-banh-cao-cap-nhat-ban/grand-marble-lo-nuong-chanmag.jpg'); ?>" alt="<?php echo esc_attr__('Lò nướng Chanmag tại khu làm bánh Grand Marble', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
-          <figcaption class="pp-image-caption-shared"><?php echo esc_html__('Khu Làm Bánh với tủ ủ bột, lò nướng Chanmag và bàn inox mặt đá hoa cương cho các thao tác tạo hình.', 'saigonhoreca'); ?></figcaption>
+
+      <!-- Tile 02 — hộp quà & các vị Danish Marble -->
+      <figure class="pp-gallery-gmarb__item scroll-reveal reveal-up delay-100">
+        <div class="pp-image-container-shared pp-gallery-gmarb__frame">
+          <span class="pp-gallery-gmarb__index" aria-hidden="true">02</span>
+          <img src="<?php echo sgh_img('grand-marble-thuong-hieu-banh-cao-cap-nhat-ban/grand-marble-original-taste.webp'); ?>" alt="<?php echo esc_attr__('Các lát Danish Marble nhiều vị bên hai hộp quà cam và champagne Grand Marble', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
+          <figcaption class="pp-image-caption-shared"><?php echo esc_html__('Bộ sưu tập Danish Marble nhiều hương vị khoe vân ruột óng ả bên hai hộp quà sắc cam và champagne – thành phẩm hoàn thiện sẵn sàng trao tay thực khách.', 'saigonhoreca'); ?></figcaption>
         </div>
       </figure>
+
+      <!-- Tile 03 — bàn thao tác inox -->
       <figure class="pp-gallery-gmarb__item scroll-reveal reveal-up delay-150">
-        <div class="pp-image-container-shared">
+        <div class="pp-image-container-shared pp-gallery-gmarb__frame">
+          <span class="pp-gallery-gmarb__index" aria-hidden="true">03</span>
           <img src="<?php echo sgh_img('grand-marble-thuong-hieu-banh-cao-cap-nhat-ban/grand-marble-ban-thao-tac.jpg'); ?>" alt="<?php echo esc_attr__('Bàn thao tác inox khu kiểm tra đóng gói Grand Marble', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
-          <figcaption class="pp-image-caption-shared"><?php echo esc_html__('Khu Kiểm Tra và Đóng Gói thủ công với bồn rửa, máy cắt bánh và bàn inox, hoàn thiện từng hộp bánh.', 'saigonhoreca'); ?></figcaption>
+          <figcaption class="pp-image-caption-shared"><?php echo esc_html__('Bàn thao tác inox mặt trắng cùng kệ chứa và xe giá nhiều tầng – không gian sạch sẽ, vững chãi cho công đoạn hoàn thiện và đóng gói bánh.', 'saigonhoreca'); ?></figcaption>
         </div>
       </figure>
+
+      <!-- Tile 04 — bản vẽ kỹ thuật -->
       <figure class="pp-gallery-gmarb__item scroll-reveal reveal-up delay-200">
-        <div class="pp-image-container-shared">
-          <img src="<?php echo sgh_img('grand-marble-thuong-hieu-banh-cao-cap-nhat-ban/grand-marble-ban-ve-khu-vuc-3.png'); ?>" alt="<?php echo esc_attr__('Bản vẽ bố trí khu vực chức năng phòng làm bánh Grand Marble', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
+        <div class="pp-image-container-shared pp-gallery-gmarb__frame">
+          <span class="pp-gallery-gmarb__index" aria-hidden="true">04</span>
+          <img src="<?php echo sgh_img('grand-marble-thuong-hieu-banh-cao-cap-nhat-ban/grand-marble-ban-ve-mat-bang-khu-lo-banh-phong-lam-mat.webp'); ?>" alt="<?php echo esc_attr__('Bản vẽ bố trí khu vực chức năng phòng làm bánh Grand Marble', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
           <figcaption class="pp-image-caption-shared"><?php echo esc_html__('Bản vẽ kỹ thuật khu vực chức năng, cơ sở để thi công và lắp đặt thiết bị đúng chuẩn vận hành.', 'saigonhoreca'); ?></figcaption>
         </div>
       </figure>
@@ -52,8 +66,8 @@ $uri = get_template_directory_uri();
     <div class="pp-split-gmarb pp-split-gmarb--reverse">
       <div class="pp-split-gmarb__media scroll-reveal reveal-right">
         <div class="pp-image-container-shared pp-frame-gmarb">
-          <img src="<?php echo sgh_img('grand-marble-thuong-hieu-banh-cao-cap-nhat-ban/grand-marble-chocolate-marou.jpg'); ?>" alt="<?php echo esc_attr__('Bộ ba hương vị chocolate Marou độc quyền của Grand Marble Việt Nam', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="800" height="600">
-          <figcaption class="pp-image-caption-shared"><?php echo esc_html__('Bộ ba hương vị độc quyền sử dụng chocolate Marou thượng hạng – dấu ấn riêng của Grand Marble tại Việt Nam.', 'saigonhoreca'); ?></figcaption>
+          <img src="<?php echo sgh_img('grand-marble-thuong-hieu-banh-cao-cap-nhat-ban/grand-marble-chocolate-marou.jpg'); ?>" alt="<?php echo esc_attr__('Hai ổ Danish Marble cắt đôi vị chocolate và caramel cùng hạnh nhân, caramel của Grand Marble', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="800" height="600">
+          <figcaption class="pp-image-caption-shared"><?php echo esc_html__('Hai ổ Danish Marble cắt đôi khoe vân ruột óng ả – một vị chocolate điểm hạnh nhân, một vị caramel ngọt ngào, tinh tuý hương vị Grand Marble.', 'saigonhoreca'); ?></figcaption>
         </div>
       </div>
       <div class="pp-split-gmarb__body scroll-reveal reveal-left delay-150">

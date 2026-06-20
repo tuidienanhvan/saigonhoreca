@@ -1,1 +1,140 @@
-/** spice-world-hotpot — concept slot (no content). */
+/**
+ * Project Pillar — Spice World Hot Pot
+ * Section #3: concept — image-left / text-right, "old world meets modern".
+ * Red+black+white duality echoed in the stat bar. Tokens only.
+ */
+
+.pp-swh-concept {
+  position: relative;
+  padding: clamp(4rem, 9vw, 8rem) 0;
+  background-color: var(--b2);
+  overflow: hidden;
+}
+
+.pp-swh-concept__glow {
+  position: absolute;
+  bottom: -12%;
+  left: -8%;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  filter: blur(110px);
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(circle, color-mix(in srgb, var(--er) 14%, transparent) 0%, transparent 70%);
+}
+
+.pp-swh-concept__num-watermark {
+  position: absolute;
+  top: -3rem;
+  right: 1rem;
+  font-family: var(--font-display);
+  font-size: clamp(10rem, 22vw, 22rem);
+  font-weight: 800;
+  line-height: 1;
+  color: color-mix(in srgb, var(--gold) 4%, transparent);
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+.pp-swh-concept__grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2.5rem, 5vw, 3.5rem);
+  align-items: center;
+}
+@media (min-width: 1024px) {
+  .pp-swh-concept__grid { grid-template-columns: 1.1fr 0.9fr; }
+}
+
+.pp-swh-concept__main,
+.pp-swh-concept__side { min-width: 0; }
+
+.pp-swh-concept__figure { margin: 0 0 1.8rem; }
+.pp-swh-concept__figure img { aspect-ratio: 16 / 9; }
+
+.pp-swh-concept__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--bc);
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.pp-swh-concept__title-gold {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(1rem, 1.7vw, 1.35rem);
+  color: var(--gold);
+}
+
+.pp-swh-concept__body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  margin-bottom: 2rem;
+}
+.pp-swh-concept__body p {
+  font-family: var(--font-sans);
+  font-size: clamp(0.92rem, 1vw, 1rem);
+  line-height: 1.8;
+  color: var(--bc2);
+  margin: 0;
+  text-align: justify;
+}
+
+/* Stat bar — red/gold accents, glass surface */
+.pp-swh-concept__stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--bd);
+}
+.pp-swh-concept__stat {
+  position: relative;
+  text-align: center;
+  padding: 1.1rem 0.5rem;
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--b3) 80%, transparent);
+  border: 1px solid var(--bd);
+  overflow: hidden;
+  transition: transform 0.4s var(--ease-spring), border-color 0.4s;
+}
+.pp-swh-concept__stat::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 2px;
+  background: linear-gradient(90deg, var(--er), var(--gold), transparent);
+}
+.pp-swh-concept__stat:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--gold) 40%, transparent);
+}
+.pp-swh-concept__stat-value {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  font-weight: 800;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 0.35rem;
+}
+.pp-swh-concept__stat-label {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  color: var(--bc2);
+  margin: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pp-swh-concept__stat { transition: none !important; }
+}

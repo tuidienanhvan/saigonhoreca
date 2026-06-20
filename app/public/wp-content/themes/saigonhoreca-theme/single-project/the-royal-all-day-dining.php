@@ -1,7 +1,7 @@
 <?php
 /**
  * Single Project Template — THE ROYAL - ALL DAY DINING
- * Thumbnail: the-royal-all-day-dining/the-royal-all-day-dining-khu-so-che-chau-rua.webp
+ * Thumbnail: the-royal-all-day-dining/the-royal-all-day-dining-thumbnail-project-cover.webp
  *
  * Auto-routed via inc/core/pillar-routes.php for /du-an/the-royal-all-day-dining/.
  *

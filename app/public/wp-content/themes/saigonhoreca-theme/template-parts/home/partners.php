@@ -14,7 +14,7 @@ for ($i = 1; $i <= 12; $i++) {
 ?>
 <section  class="sh-partners">
     <div class="sh-partners__inner">
-        <header class="sh-partners__header scroll-reveal reveal-letter-wide duration-2000">
+        <header class="sh-partners__header scroll-reveal reveal-up duration-2000">
             <span class="sh-partners__accent" aria-hidden="true"></span>
             <h2 class="sh-partners__title"><?php esc_html_e('Đối tác của Saigon Horeca', 'saigonhoreca'); ?></h2>
         </header>

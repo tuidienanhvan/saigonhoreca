@@ -1,110 +1,210 @@
 /**
  * du-nam-an-an — hero slot.
- * Video background + Ken-Burns poster fallback + staggered title entry.
- * Nursing home theme with warm amber accents.
- * @package SaigonHoreca
+ * Full-viewport poster + Parallax Clip-Path (GPU-smooth, no JS) + staggered title entry.
+ * Nursing Home Kitchen mood: warm gold care-glow over a clinical-clean kitchen.
+ * Technique: section clip-path:inset() giam một .__bg position:fixed lại trong khung
+ * section → parallax thật mượt mà không cần JavaScript. Tokens only. @package SaigonHoreca
  */
 
-.pp-hero-nan {
+.pp--nan .pp-hero-nan {
   position: relative;
+  /* Fill viewport area below the 76px sticky header (matches roka gold). */
   height: calc(100svh - 76px);
-  min-height: 620px;
+  min-height: 600px;
   width: 100%;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
   overflow: hidden;
   background-color: var(--b1);
+  text-align: center;
+  isolation: isolate;
+}
+@supports (height: 100dvh) {
+  .pp--nan .pp-hero-nan { height: calc(100dvh - 76px); }
 }
 
-.pp-hero-nan__media {
+.pp--nan .pp-hero-nan__bg {
   position: absolute;
   inset: 0;
-  z-index: 1;
-}
-.pp-hero-nan__media video {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.pp-hero-nan__overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  background: linear-gradient(
-    to top,
-    var(--b1) 0%,
-    color-mix(in srgb, var(--b1) 65%, transparent) 35%,
-    transparent 70%
-  );
+  z-index: -2;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* Reliable parallax — bg fixed to viewport, auto-clipped to this absolute box. */
+  background-attachment: fixed;
+  filter: saturate(1.04) contrast(1.03);
   pointer-events: none;
 }
 
-.pp-hero-nan__content {
+.pp--nan .pp-hero-nan__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  /* Light token gradient — giữ ảnh sáng rõ, KHÔNG phải scrim đen nặng. */
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--b1) 45%, transparent) 0%,
+    color-mix(in srgb, var(--b1) 25%, transparent) 50%,
+    color-mix(in srgb, var(--b1) 55%, transparent) 100%
+  );
+}
+
+.pp--nan .pp-ambient-glow-nan {
+  position: absolute;
+  width: clamp(320px, 60vw, 620px);
+  height: clamp(320px, 60vw, 620px);
+  border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--gold) 9%, transparent) 0%, transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 2;
+}
+.pp--nan .pp-ambient-glow-nan--center {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.pp--nan .pp-hero-nan__content {
   position: relative;
   z-index: 3;
-  padding: 3rem 1.5rem 5rem;
-  max-width: 820px;
-  text-align: center;
+  padding: 0 1.5rem;
+  max-width: 860px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 1.1rem;
 }
 
-.pp-hero-nan__title {
+.pp--nan .pp-hero-nan__mark {
+  width: 2.6rem;
+  height: 2.6rem;
+  color: var(--gold);
+  filter: drop-shadow(0 0 12px color-mix(in srgb, var(--gold) 55%, transparent));
+  animation: nan-pulse 3.2s ease-in-out infinite alternate, nan-rise 0.9s var(--ease-spring) 0.05s backwards;
+}
+.pp--nan .pp-hero-nan__mark svg { width: 100%; height: 100%; display: block; }
+
+.pp--nan .pp-hero-nan__subhead {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: clamp(0.72rem, 1.4vw, 0.92rem);
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--bc) 72%, transparent);
+  animation: nan-rise 0.9s var(--ease-spring) 0.18s backwards;
+}
+
+.pp--nan .pp-hero-nan__title {
   margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(2.4rem, 7vw, 5rem);
+  font-size: clamp(2.4rem, 6.4vw, 5rem);
   font-weight: 800;
   line-height: 1.05;
+  letter-spacing: -0.01em;
   color: var(--bc);
-  letter-spacing: 0.02em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
   text-shadow:
-    0 4px 24px rgba(0, 0, 0, 0.7),
-    0 0 60px color-mix(in srgb, var(--wa) 12%, transparent);
-  animation: nan-rise 0.9s var(--ease-spring) 0.15s backwards;
+    0 2px 18px rgba(0, 0, 0, 0.55),
+    0 0 60px color-mix(in srgb, var(--gold) 14%, transparent);
+  animation: nan-rise 0.9s var(--ease-spring) 0.28s backwards;
 }
 
-.pp-hero-nan__subhead {
-  margin: 0;
+.pp--nan .pp-hero-nan__title-sub {
   font-family: var(--font-serif);
-  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
   font-style: italic;
   font-weight: 400;
-  color: var(--wa);
-  opacity: 0.9;
-  animation: nan-rise 0.9s var(--ease-spring) 0.05s backwards;
+  font-size: clamp(1rem, 2.2vw, 1.6rem);
+  line-height: 1.4;
+  max-width: 32ch;
+  color: var(--gold);
+  letter-spacing: normal;
+  text-transform: none;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.55);
 }
 
-.pp-hero-nan__subtitle {
-  margin: 0;
-  max-width: 640px;
-  font-size: clamp(0.9rem, 1.1vw, 1rem);
-  line-height: 1.75;
-  color: var(--bc2);
-  animation: nan-rise 0.9s var(--ease-spring) 0.35s backwards;
+.pp--nan .pp-hero-nan__divider {
+  position: relative;
+  width: 80px;
+  height: 2px;
+  margin-top: 0.85rem;
+  background: var(--gold);
+  box-shadow: 0 0 12px var(--gold);
+  animation: nan-rise 0.9s var(--ease-spring) 0.4s backwards;
+}
+.pp--nan .pp-hero-nan__divider::before,
+.pp--nan .pp-hero-nan__divider::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+.pp--nan .pp-hero-nan__divider::before { left: -12px; }
+.pp--nan .pp-hero-nan__divider::after  { right: -12px; }
+
+.pp--nan .pp-hero-nan__scroll {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--bc3);
+  opacity: 0.8;
+}
+.pp--nan .pp-hero-nan__scroll-arrow {
+  color: var(--gold);
+  animation: nan-bob 2.2s ease-in-out infinite;
 }
 
 @keyframes nan-rise {
-  0% {
-    opacity: 0;
-    transform: translateY(2rem);
-    filter: blur(4px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-    filter: blur(0);
+  0%   { opacity: 0; transform: translateY(2rem); filter: blur(4px); }
+  100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+@keyframes nan-pulse {
+  0%   { transform: scale(0.94); filter: drop-shadow(0 0 8px color-mix(in srgb, var(--gold) 35%, transparent)); }
+  100% { transform: scale(1.06); filter: drop-shadow(0 0 18px color-mix(in srgb, var(--gold) 80%, transparent)); }
+}
+@keyframes nan-bob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(5px); }
+}
+
+/* Mobile fallback: background-attachment:fixed bị giật trên mobile → scroll. */
+@media (max-width: 768px) {
+  .pp--nan .pp-hero-nan__bg {
+    position: absolute;
+    background-attachment: scroll;
+    width: 100%;
+    height: 100%;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .pp-hero-nan__title,
-  .pp-hero-nan__subhead,
-  .pp-hero-nan__subtitle {
+  .pp--nan .pp-hero-nan__mark,
+  .pp--nan .pp-hero-nan__subhead,
+  .pp--nan .pp-hero-nan__title,
+  .pp--nan .pp-hero-nan__divider,
+  .pp--nan .pp-hero-nan__scroll-arrow {
     animation: none !important;
   }
 }

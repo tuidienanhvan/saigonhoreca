@@ -1,13 +1,16 @@
 <?php
 /**
  * Project Pillar — sol-kitchen-bar-saigon-horeca
- * Section #4: specs — technical collage + kitchen/bar design feature list.
+ * Section #4: specs — technical collage (offset framed images) + design
+ * feature list, blueprint coords + numbered watermark.
+ * Copy: Saigon Horeca kitchen & bar design = efficiency + sophistication.
  * @package SaigonHoreca
  */
 if (!defined('ABSPATH')) exit;
 ?>
 <section class="pp-section-solshr pp-specs-solshr scroll-reveal">
   <div class="pp-solshr-ambient pp-solshr-ambient--tr" aria-hidden="true"></div>
+  <div class="pp-specs-solshr__watermark" aria-hidden="true">03</div>
 
   <div class="pp-container-shared">
     <div class="pp-specs-solshr__layout">
@@ -15,12 +18,12 @@ if (!defined('ABSPATH')) exit;
         <span class="pp-specs-solshr__coord pp-specs-solshr__coord--tl">SYS_COORD KITCHEN</span>
         <span class="pp-specs-solshr__coord pp-specs-solshr__coord--br">BAR / LATIN A.</span>
         <div class="pp-image-container-shared pp-specs-solshr__img pp-specs-solshr__img--base">
-          <img src="<?php echo sgh_img('sol-kitchen-bar-saigon-horeca/Sol-kitchen-bar-1.jpeg'); ?>" alt="<?php echo esc_attr__('Thiết kế bếp và quầy bar SOL Kitchen & Bar bởi Saigon Horeca', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
+          <img src="<?php echo esc_url(sgh_img('sol-kitchen-bar-saigon-horeca/sol-kitchen-bar-khu-bep-mo-dau-bep-dang-nau.webp')); ?>" alt="<?php echo esc_attr__('Khu bếp mở của nhà hàng Sol Kitchen & Bar với đầu bếp mặc đồng phục đen tạp dề cam đang nấu tại dãy bếp inox và chụp hút khói thép', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
           <div class="pp-image-caption-shared"><?php echo esc_html__('Khu bếp và quầy bar được bố trí hiệu quả, thẩm mỹ và phù hợp chủ đề Latin American.', 'saigonhoreca'); ?></div>
         </div>
         <div class="pp-image-container-shared pp-specs-solshr__img pp-specs-solshr__img--over">
-          <img src="<?php echo sgh_img('sol-kitchen-bar-saigon-horeca/Sol-kitchen-00002.jpg'); ?>" alt="<?php echo esc_attr__('Chi tiết không gian SOL Kitchen & Bar', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
-          <div class="pp-image-caption-shared"><?php echo esc_html__('Điều kiện làm việc lý tưởng cho đội ngũ bếp.', 'saigonhoreca'); ?></div>
+          <img src="<?php echo esc_url(sgh_img('sol-kitchen-bar-saigon-horeca/sol-kitchen-bar-mon-xa-lach-nuong-cam-caramel.webp')); ?>" alt="<?php echo esc_attr__('Món xà lách nướng áp chảo với cam caramel và sốt kem tại Sol Kitchen & Bar', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
+          <div class="pp-image-caption-shared"><?php echo esc_html__('Xà lách baby gem nướng áp chảo xém cạnh, điểm cam caramel hoá mặt đường trên nền sốt kem — món khai vị Latin tinh tế, cân bằng giữa vị đắng nhẹ và ngọt thơm.', 'saigonhoreca'); ?></div>
         </div>
       </div>
 

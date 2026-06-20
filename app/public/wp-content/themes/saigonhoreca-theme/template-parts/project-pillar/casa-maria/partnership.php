@@ -42,7 +42,7 @@ $uri = get_template_directory_uri();
           <div class="pp-image-container-shared">
             <img src="<?php echo sgh_img('casa-maria/casa-maria-goc-quay-bar-decor-go.jpg'); ?>" alt="<?php echo esc_attr__('Hệ thống quầy bar gỗ Casa Maria', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
             <div class="pp-image-caption-shared">
-              <?php echo esc_html__('Hệ thống quầy bar gỗ mộc mạc và thiết bị lạnh bảo quản chuyên dụng', 'saigonhoreca'); ?>
+              <?php echo esc_html__('Quầy bar gỗ mộc mạc cùng dàn poster Tây Ban Nha và máy pha cafe, điểm nhấn ấm cúng cho không gian wine bar', 'saigonhoreca'); ?>
             </div>
           </div>
         </div>

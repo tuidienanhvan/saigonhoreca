@@ -1,250 +1,286 @@
 /**
- * du-an-vinh-hiep — hero slot.
- * COFFEE LAB BRUTALIST direction.
- * Motifs: concrete repeating-stripe overlay, vertical espresso-steam wisp gradients
- * at corners, monospace lab-tag eyebrow ("BREW ZONE / 01"), brutalist slab title
- * with off-grid ribbon underline, raw industrial annotations.
- * Targets existing .pp-hero markup (suffix-isolated by parent body class).
+ * Project Pillar — du-an-vinh-hiep · Section #1: hero
+ * Concept: COFFEE LAB — Industrial Stainless Atelier.
+ * Full-viewport cinematic hero over the Vĩnh Hiệp export factory, with a
+ * technical blueprint grid, monospace lab eyebrow, slab display title and a
+ * stainless-gold ribbon divider. 100% design-token colours.
+ * Scoped by route body class so it cannot leak to other pillars.
  * @package SaigonHoreca
  */
 
-/* ─────────────────────────────────────────────
-   01 · Stage — Brew Chamber
-   ───────────────────────────────────────────── */
-body.page-template-page-project-du-an-vinh-hiep .pp-hero {
+body.page-template-page-project-du-an-vinh-hiep .pp-hero-vhp {
   position: relative;
-  isolation: isolate;
-  overflow: hidden;
-  min-height: 86vh;
+  /* Fill full viewport area below sticky header (76px). */
+  height: calc(100svh - 76px);
+  min-height: 600px;
+  width: 100%;
   display: flex;
-  align-items: flex-end;
-  padding: 4rem 1.25rem 3.5rem;
-  background: var(--b1);
+  align-items: center;
+  overflow: hidden;
+  isolation: isolate;
+  background-color: var(--b1);
 }
-@media (min-width: 768px) {
-  body.page-template-page-project-du-an-vinh-hiep .pp-hero {
-    min-height: 92vh;
-    padding: 6rem 3rem 5rem;
+@supports (height: 100dvh) {
+  body.page-template-page-project-du-an-vinh-hiep .pp-hero-vhp {
+    height: calc(100dvh - 76px);
   }
 }
 
-/* Background media — slow zoom, low saturation roast-bean tone */
-body.page-template-page-project-du-an-vinh-hiep .pp-hero__media {
+/* Parallax bg — position:absolute + background-attachment:fixed (no clip-path, no JS).
+   Reliable parallax: the image is pinned to the viewport via background-attachment.
+   Low-saturation roast/steel tone; photo kept bright. */
+body.page-template-page-project-du-an-vinh-hiep .pp-hero-vhp__bg {
   position: absolute;
   inset: 0;
-  z-index: 0;
-  background-size: cover;
+  width: 100%;
+  height: 100%;
   background-position: center;
-  filter: saturate(0.78) contrast(1.08) brightness(0.62);
-  transform: scale(1.04);
-  transition: transform 1.6s var(--ease-spring), filter 1.2s ease;
-  will-change: transform;
-}
-body.page-template-page-project-du-an-vinh-hiep .pp-hero:hover .pp-hero__media {
-  transform: scale(1.08);
-  filter: saturate(0.88) contrast(1.1) brightness(0.66);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  filter: saturate(0.92) contrast(1.04);
+  z-index: -2;
+  pointer-events: none;
 }
 
-/* Cinematic overlay — espresso-brown vignette */
-body.page-template-page-project-du-an-vinh-hiep .pp-hero__overlay {
+/* Light token overlay — keeps the photo visible/bright (NOT a heavy black scrim) */
+body.page-template-page-project-du-an-vinh-hiep .pp-hero-vhp__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--b1) 45%, transparent) 0%,
+    color-mix(in srgb, var(--b1) 25%, transparent) 50%,
+    color-mix(in srgb, var(--b1) 55%, transparent) 100%
+  );
+}
+
+/* Technical blueprint grid */
+body.page-template-page-project-du-an-vinh-hiep .pp-hero-vhp__grid {
   position: absolute;
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  background:
-    linear-gradient(180deg,
-      color-mix(in srgb, var(--b1) 70%, transparent) 0%,
-      color-mix(in srgb, var(--b1) 28%, transparent) 38%,
-      color-mix(in srgb, var(--b1) 55%, transparent) 72%,
-      color-mix(in srgb, var(--b1) 96%, transparent) 100%),
-    radial-gradient(ellipse at 18% 82%,
-      color-mix(in srgb, var(--gold) 14%, transparent) 0%,
-      transparent 55%);
-}
-
-/* ─────────────────────────────────────────────
-   02 · Concrete stripe overlay (defining motif)
-   ───────────────────────────────────────────── */
-body.page-template-page-project-du-an-vinh-hiep .pp-hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  pointer-events: none;
   background-image:
-    repeating-linear-gradient(
-      90deg,
-      transparent 0,
-      transparent 7px,
-      color-mix(in srgb, var(--bc) 4%, transparent) 7px,
-      color-mix(in srgb, var(--bc) 4%, transparent) 8px
-    ),
-    repeating-linear-gradient(
-      0deg,
-      transparent 0,
-      transparent 22px,
-      color-mix(in srgb, var(--bc) 2.5%, transparent) 22px,
-      color-mix(in srgb, var(--bc) 2.5%, transparent) 23px
-    );
-  mix-blend-mode: overlay;
-  opacity: 0.55;
+    linear-gradient(color-mix(in srgb, var(--gold) 4%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--gold) 4%, transparent) 1px, transparent 1px);
+  background-size: 46px 46px;
+  mask-image: linear-gradient(180deg, transparent 0%, var(--bg-dark) 35%, var(--bg-dark) 70%, transparent 100%);
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, var(--bg-dark) 35%, var(--bg-dark) 70%, transparent 100%);
+  opacity: 0.7;
 }
 
-/* ─────────────────────────────────────────────
-   03 · Espresso steam vertical wisps at corners
-   ───────────────────────────────────────────── */
-body.page-template-page-project-du-an-vinh-hiep .pp-hero::after {
-  content: '';
+/* Ambient gold glow */
+body.page-template-page-project-du-an-vinh-hiep .pp-ambient-glow-vhp {
   position: absolute;
-  inset: 0;
-  z-index: 2;
+  width: clamp(320px, 45vw, 560px);
+  height: clamp(320px, 45vw, 560px);
+  border-radius: 50%;
+  background: radial-gradient(circle,
+    color-mix(in srgb, var(--gold) 9%, transparent) 0%,
+    transparent 70%);
+  filter: blur(80px);
   pointer-events: none;
-  background:
-    linear-gradient(180deg,
-      color-mix(in srgb, var(--gold) 9%, transparent) 0%,
-      color-mix(in srgb, var(--gold) 4%, transparent) 35%,
-      transparent 75%) 4% 0/52px 100% no-repeat,
-    linear-gradient(180deg,
-      color-mix(in srgb, var(--gold) 7%, transparent) 0%,
-      color-mix(in srgb, var(--gold) 3%, transparent) 40%,
-      transparent 80%) 96% 0/68px 100% no-repeat,
-    linear-gradient(0deg,
-      color-mix(in srgb, var(--gold) 6%, transparent) 0%,
-      transparent 45%) 12% 100%/40px 100% no-repeat;
-  filter: blur(14px);
-  opacity: 0.85;
+  z-index: 1;
+}
+body.page-template-page-project-du-an-vinh-hiep .pp-ambient-glow-vhp--corner {
+  bottom: -12%;
+  left: -8%;
 }
 
-/* ─────────────────────────────────────────────
-   04 · Content — Asymmetric grid
-   ───────────────────────────────────────────── */
-body.page-template-page-project-du-an-vinh-hiep .pp-hero__content {
+/* Content */
+body.page-template-page-project-du-an-vinh-hiep .pp-hero-vhp__content {
   position: relative;
   z-index: 3;
-  width: 100%;
-  max-width: 1280px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
-  align-items: end;
-}
-@media (min-width: 992px) {
-  body.page-template-page-project-du-an-vinh-hiep .pp-hero__content {
-    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
-    gap: 4rem;
-  }
+  max-width: 760px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.1rem;
 }
 
-/* Monospace lab-tag eyebrow */
-body.page-template-page-project-du-an-vinh-hiep .pp-hero__content::before {
-  content: '◆ BREW ZONE / VHP—01 / EXPORT GRADE';
-  display: inline-block;
-  grid-column: 1 / -1;
+/* Monospace lab eyebrow */
+body.page-template-page-project-du-an-vinh-hiep .pp-hero-vhp__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
   font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.32em;
+  font-size: clamp(0.68rem, 1.4vw, 0.82rem);
+  letter-spacing: 0.26em;
   text-transform: uppercase;
-  color: color-mix(in srgb, var(--gold) 85%, var(--bc));
-  padding: 0.45rem 0.85rem;
-  border: 1px solid color-mix(in srgb, var(--gold) 42%, transparent);
-  border-left: 3px solid var(--gold);
-  background: color-mix(in srgb, var(--b1) 55%, transparent);
-  backdrop-filter: blur(8px) saturate(135%);
-  justify-self: start;
-  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.55);
+  color: color-mix(in srgb, var(--gold) 88%, var(--bc));
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.6);
+}
+body.page-template-page-project-du-an-vinh-hiep .pp-hero-vhp__eyebrow-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: var(--radius-full);
+  background: var(--gold);
+  box-shadow: 0 0 10px var(--gold);
+  animation: pp-vhp-pulse 2.4s ease-in-out infinite;
 }
 
-/* Brutalist title */
-body.page-template-page-project-du-an-vinh-hiep .pp-hero__title {
+/* Slab display title */
+body.page-template-page-project-du-an-vinh-hiep .pp-hero-vhp__title {
   margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(2.2rem, 6vw, 4.85rem);
+  font-size: clamp(2.4rem, 6.4vw, 5rem);
   font-weight: 800;
-  line-height: 0.98;
-  letter-spacing: -0.018em;
+  line-height: 1.0;
+  letter-spacing: -0.02em;
   color: var(--bc);
-  text-shadow: 0 3px 24px rgba(0, 0, 0, 0.65);
-  position: relative;
-  padding-bottom: 1.35rem;
+  text-shadow: 0 3px 26px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
 }
-body.page-template-page-project-du-an-vinh-hiep .pp-hero__title::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: clamp(120px, 22vw, 220px);
-  height: 4px;
+body.page-template-page-project-du-an-vinh-hiep .pp-hero-vhp__title-sub {
+  font-family: var(--font-mono);
+  font-size: clamp(0.95rem, 2.2vw, 1.6rem);
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Stainless-gold ribbon divider */
+body.page-template-page-project-du-an-vinh-hiep .pp-hero-vhp__divider {
+  position: relative;
+  width: clamp(110px, 20vw, 200px);
+  height: 3px;
   background: linear-gradient(90deg,
     var(--gold) 0%,
-    color-mix(in srgb, var(--gold) 80%, #5a3a20) 60%,
+    color-mix(in srgb, var(--gold) 75%, var(--ph)) 55%,
     transparent 100%);
-  box-shadow: 0 0 22px color-mix(in srgb, var(--gold) 55%, transparent);
+  box-shadow: 0 0 18px color-mix(in srgb, var(--gold) 55%, transparent);
+}
+body.page-template-page-project-du-an-vinh-hiep .pp-hero-vhp__divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--gold);
+  transform: translateY(-50%);
+  box-shadow: 0 0 10px var(--gold);
 }
 
 /* Subhead */
-body.page-template-page-project-du-an-vinh-hiep .pp-hero__subhead {
+body.page-template-page-project-du-an-vinh-hiep .pp-hero-vhp__subhead {
   margin: 0;
-  font-size: clamp(0.98rem, 1.25vw, 1.15rem);
-  line-height: 1.65;
-  color: color-mix(in srgb, var(--bc) 88%, var(--bc2));
-  max-width: 36ch;
-  position: relative;
-  padding-left: 1.25rem;
-  border-left: 1px solid color-mix(in srgb, var(--gold) 45%, transparent);
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.02rem, 1.6vw, 1.32rem);
+  line-height: 1.6;
+  color: color-mix(in srgb, var(--bc) 90%, var(--bc2));
+  max-width: 44ch;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.55);
 }
-@media (min-width: 992px) {
-  body.page-template-page-project-du-an-vinh-hiep .pp-hero__subhead {
-    align-self: end;
-    padding-bottom: 0.6rem;
-  }
-}
-body.page-template-page-project-du-an-vinh-hiep .pp-hero__subhead::after {
-  content: '— ROAST PROFILE · 24/01';
-  display: block;
-  margin-top: 0.85rem;
+
+/* Technical meta strip */
+body.page-template-page-project-du-an-vinh-hiep .pp-hero-vhp__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0.75rem;
+  padding-top: 1rem;
+  border-top: 1px dashed color-mix(in srgb, var(--gold) 34%, transparent);
   font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.28em;
+  font-size: clamp(0.6rem, 1.2vw, 0.72rem);
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: color-mix(in srgb, var(--gold) 75%, var(--bc2));
-  opacity: 0.85;
+  color: color-mix(in srgb, var(--bc) 72%, var(--bc2));
+}
+body.page-template-page-project-du-an-vinh-hiep .pp-hero-vhp__meta-sep {
+  color: var(--gold);
+  opacity: 0.6;
 }
 
-/* Entry animation */
-body.page-template-page-project-du-an-vinh-hiep .pp-hero__content > *,
-body.page-template-page-project-du-an-vinh-hiep .pp-hero__title,
-body.page-template-page-project-du-an-vinh-hiep .pp-hero__subhead {
-  animation: pp-hero-vhp-rise 0.9s var(--ease-spring) both;
+/* Scroll indicator */
+body.page-template-page-project-du-an-vinh-hiep .pp-hero-vhp__scroll {
+  position: absolute;
+  bottom: 1.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--bc) 70%, var(--bc2));
+  opacity: 0.8;
 }
-body.page-template-page-project-du-an-vinh-hiep .pp-hero__title { animation-delay: 0.18s; }
-body.page-template-page-project-du-an-vinh-hiep .pp-hero__subhead { animation-delay: 0.32s; }
+body.page-template-page-project-du-an-vinh-hiep .pp-hero-vhp__scroll-arrow {
+  color: var(--gold);
+  filter: drop-shadow(0 0 4px color-mix(in srgb, var(--gold) 40%, transparent));
+  animation: pp-vhp-bounce 2s ease-in-out infinite;
+}
 
-@keyframes pp-hero-vhp-rise {
+/* Entry animations */
+body.page-template-page-project-du-an-vinh-hiep .pp-hero-vhp__eyebrow,
+body.page-template-page-project-du-an-vinh-hiep .pp-hero-vhp__title,
+body.page-template-page-project-du-an-vinh-hiep .pp-hero-vhp__divider,
+body.page-template-page-project-du-an-vinh-hiep .pp-hero-vhp__subhead,
+body.page-template-page-project-du-an-vinh-hiep .pp-hero-vhp__meta {
+  animation: pp-vhp-rise 0.9s var(--ease-spring) both;
+}
+body.page-template-page-project-du-an-vinh-hiep .pp-hero-vhp__title { animation-delay: 0.12s; }
+body.page-template-page-project-du-an-vinh-hiep .pp-hero-vhp__divider { animation-delay: 0.22s; }
+body.page-template-page-project-du-an-vinh-hiep .pp-hero-vhp__subhead { animation-delay: 0.3s; }
+body.page-template-page-project-du-an-vinh-hiep .pp-hero-vhp__meta { animation-delay: 0.4s; }
+
+@keyframes pp-vhp-rise {
   0%   { opacity: 0; transform: translateY(22px); }
   100% { opacity: 1; transform: translateY(0); }
 }
+@keyframes pp-vhp-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.45; transform: scale(0.7); }
+}
+@keyframes pp-vhp-bounce {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(5px); }
+}
 
-/* Serial-number bottom strip */
-body.page-template-page-project-du-an-vinh-hiep .pp-hero__content::after {
-  content: 'NO. 001 · SAIGON HORECA · VĨNH HIỆP · GIA LAI';
-  grid-column: 1 / -1;
-  margin-top: 1.5rem;
-  padding-top: 1rem;
-  border-top: 1px dashed color-mix(in srgb, var(--gold) 38%, transparent);
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  letter-spacing: 0.36em;
-  text-transform: uppercase;
-  color: color-mix(in srgb, var(--bc) 70%, var(--bc2));
-  text-align: right;
+/* Responsive */
+@media (max-width: 767px) {
+  body.page-template-page-project-du-an-vinh-hiep .pp-hero-vhp__content {
+    gap: 0.9rem;
+  }
+  body.page-template-page-project-du-an-vinh-hiep .pp-hero-vhp__meta {
+    font-size: 0.6rem;
+  }
+}
+
+/* Mobile fallback: background-attachment:fixed is janky on small screens — use scroll. */
+@media (max-width: 768px) {
+  body.page-template-page-project-du-an-vinh-hiep .pp-hero-vhp__bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-attachment: scroll;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  body.page-template-page-project-du-an-vinh-hiep .pp-hero__media,
-  body.page-template-page-project-du-an-vinh-hiep .pp-hero__content > * {
+  body.page-template-page-project-du-an-vinh-hiep .pp-hero-vhp__eyebrow,
+  body.page-template-page-project-du-an-vinh-hiep .pp-hero-vhp__eyebrow-dot,
+  body.page-template-page-project-du-an-vinh-hiep .pp-hero-vhp__title,
+  body.page-template-page-project-du-an-vinh-hiep .pp-hero-vhp__divider,
+  body.page-template-page-project-du-an-vinh-hiep .pp-hero-vhp__subhead,
+  body.page-template-page-project-du-an-vinh-hiep .pp-hero-vhp__meta,
+  body.page-template-page-project-du-an-vinh-hiep .pp-hero-vhp__scroll-arrow {
     animation: none !important;
-    transition: none !important;
     transform: none !important;
     opacity: 1 !important;
   }

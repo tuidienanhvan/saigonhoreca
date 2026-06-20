@@ -24,7 +24,7 @@ $uri = get_template_directory_uri();
       <div class="pp-grid-12-rf__media--cols-7 rkf-concept__side">
         <div class="pp-image-container-shared rkf-concept__image-container">
           <div class="pp-image-border-decor" aria-hidden="true"></div>
-          <img src="<?php echo sgh_img('roka-fella/roka-fella-goc-quay-bar-nhat-ban.jpg'); ?>" alt="<?php echo esc_attr__('Roka Fella Omakase Counter', 'saigonhoreca'); ?>" loading="lazy">
+          <img src="<?php echo sgh_img('roka-fella/roka-fella-goc-quay-bar-nhat-ban.jpg'); ?>" alt="<?php echo esc_attr__('Đầu bếp sushi trình diễn phục vụ thực khách tại quầy Omakase Roka Fella', 'saigonhoreca'); ?>" loading="lazy">
           <div class="pp-image-caption-shared"><?php echo esc_html__('Đầu bếp sushi đang trực tiếp trình diễn và phục vụ thực khách tại quầy gỗ sồi Omakase', 'saigonhoreca'); ?></div>
         </div>
       </div>

@@ -1,208 +1,157 @@
 /**
- * du-an-vinh-hiep — concept slot.
- * COFFEE LAB BRUTALIST split: 50/50 with brutalist concrete frame on the media,
- * step-annotation list ("ROAST · STEP 01–04") layered behind the body text,
- * monospace technical labels, and a heavy gold left-rule on the body column.
- * Owns: .pp-split-vhp (shared with partnership/specs).
+ * Project Pillar — du-an-vinh-hiep · Section #3: concept
+ * Concept: COFFEE LAB — Industrial Stainless Atelier.
+ * Split layout: blueprint-framed media (HUD coords + SVG corner brackets) and a
+ * stainless glass card with gilded corner brackets describing the leadership
+ * kitchen. 100% tokens, color-mix tints only.
  * @package SaigonHoreca
  */
 
-/* ─────────────────────────────────────────────
-   01 · Split shell
-   ───────────────────────────────────────────── */
-.pp-split-vhp {
+body.page-template-page-project-du-an-vinh-hiep .pp-concept-vhp__grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2.75rem;
+  gap: 3rem;
   align-items: center;
   position: relative;
-  isolation: isolate;
-}
-@media (min-width: 992px) {
-  .pp-split-vhp {
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-  }
-  .pp-split-vhp--reverse .pp-split-vhp__media { order: 2; }
-  .pp-split-vhp--reverse .pp-split-vhp__body  { order: 1; }
-}
-
-/* Decorative roast-step watermark behind body */
-.pp-split-vhp::before {
-  content: 'ROAST / 04';
-  position: absolute;
-  top: -3rem;
-  right: -1rem;
-  font-family: var(--font-display);
-  font-size: clamp(4rem, 12vw, 9rem);
-  font-weight: 800;
-  line-height: 0.85;
-  letter-spacing: -0.04em;
-  color: color-mix(in srgb, var(--gold) 4.5%, transparent);
-  pointer-events: none;
-  z-index: -1;
-  user-select: none;
-  white-space: nowrap;
-}
-.pp-split-vhp--reverse::before {
-  right: auto;
-  left: -1rem;
-  content: 'CUPPING / 05';
-}
-
-/* ─────────────────────────────────────────────
-   02 · Body column — gold left rule + step list
-   ───────────────────────────────────────────── */
-.pp-split-vhp__body {
-  display: flex;
-  flex-direction: column;
-  gap: 1.4rem;
-  position: relative;
   z-index: 2;
-  padding-left: 1.5rem;
-  border-left: 3px solid color-mix(in srgb, var(--gold) 75%, transparent);
 }
 @media (min-width: 992px) {
-  .pp-split-vhp__body {
-    padding-left: 2rem;
-  }
-  .pp-split-vhp--reverse .pp-split-vhp__body {
-    padding-left: 0;
-    padding-right: 2rem;
-    border-left: none;
-    border-right: 3px solid color-mix(in srgb, var(--gold) 75%, transparent);
+  body.page-template-page-project-du-an-vinh-hiep .pp-concept-vhp__grid {
+    grid-template-columns: 54% 46%;
+    gap: 4rem;
   }
 }
 
-.pp-split-vhp__body .pp-text-vhp__divider {
-  align-self: flex-start;
-}
-.pp-split-vhp__body .pp-text-vhp__title {
-  font-size: clamp(1.55rem, 2.6vw, 2.35rem);
-  text-align: left;
-  line-height: 1.18;
-}
-.pp-split-vhp__body .pp-text-vhp__title::after { display: none; }
-
-/* Step-annotation strip attached to body */
-.pp-split-vhp__body::after {
-  content: 'STEP · 03 / 05  →  COMPACT KITCHEN';
-  display: inline-block;
-  align-self: flex-start;
-  margin-top: 0.4rem;
-  padding: 0.45rem 0.75rem;
-  font-family: var(--font-mono);
-  font-size: 0.66rem;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: color-mix(in srgb, var(--gold) 88%, var(--bc));
-  background: color-mix(in srgb, var(--b3) 60%, transparent);
-  border: 1px dashed color-mix(in srgb, var(--gold) 38%, transparent);
-}
-.pp-split-vhp--reverse .pp-split-vhp__body::after {
-  content: 'STEP · 05 / 05  →  CUPPING TABLE';
-}
-
-/* ─────────────────────────────────────────────
-   03 · Media column — brutalist concrete frame
-   ───────────────────────────────────────────── */
-.pp-split-vhp__media {
+/* ── Media — blueprint frame ─────────────────────────────────── */
+body.page-template-page-project-du-an-vinh-hiep .pp-concept-vhp__media {
   position: relative;
-  aspect-ratio: 16 / 11;
-  overflow: hidden;
-  border-radius: 2px;
+  padding: 1.25rem;
+  background-color: color-mix(in srgb, var(--b1) 70%, var(--bg-dark));
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--gold) 3%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--gold) 3%, transparent) 1px, transparent 1px);
+  background-size: 20px 20px;
+  border: 1px solid color-mix(in srgb, var(--gold) 12%, transparent);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 22px 48px rgba(0, 0, 0, 0.6);
+}
+
+body.page-template-page-project-du-an-vinh-hiep .pp-concept-vhp__hud {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+body.page-template-page-project-du-an-vinh-hiep .pp-concept-vhp__coord {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--gold) 45%, transparent);
+}
+body.page-template-page-project-du-an-vinh-hiep .pp-concept-vhp__coord--tl { top: 0.45rem; left: 0.7rem; }
+body.page-template-page-project-du-an-vinh-hiep .pp-concept-vhp__coord--br { bottom: 0.45rem; right: 0.7rem; }
+
+body.page-template-page-project-du-an-vinh-hiep .pp-concept-vhp__image {
+  position: relative;
+  border-radius: var(--radius-md);
+  border: 1px solid color-mix(in srgb, var(--gold) 14%, transparent);
   background: var(--b3);
-  border: 1px solid var(--bd);
-  transition: border-color 0.5s var(--ease-spring), transform 0.5s var(--ease-spring);
-  /* Outer concrete frame via outline + offset */
-  outline: 1px solid color-mix(in srgb, var(--gold) 30%, transparent);
-  outline-offset: 10px;
+  aspect-ratio: 16 / 11;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.55);
+  transition: box-shadow 0.6s var(--ease-spring), border-color 0.5s var(--ease-spring);
+  z-index: 1;
 }
-.pp-split-vhp__media:hover {
-  border-color: color-mix(in srgb, var(--gold) 60%, transparent);
+body.page-template-page-project-du-an-vinh-hiep .pp-concept-vhp__image:hover {
+  border-color: color-mix(in srgb, var(--gold) 55%, transparent);
+  box-shadow: 0 22px 46px color-mix(in srgb, var(--gold) 16%, transparent);
 }
-.pp-split-vhp__media img {
+body.page-template-page-project-du-an-vinh-hiep .pp-concept-vhp__image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  filter: saturate(0.92) contrast(1.06);
-  transition: transform 0.9s var(--ease-spring), filter 0.6s ease;
+  filter: saturate(0.9) contrast(1.06) brightness(0.96);
 }
-.pp-split-vhp__media:hover img {
-  transform: scale(1.05);
-  filter: saturate(1.05) contrast(1.08);
-}
-
-/* Top-left technical badge on media */
-.pp-split-vhp__media::before {
-  content: 'KIT-A · LEADERSHIP DINING · IND-GRADE';
+body.page-template-page-project-du-an-vinh-hiep .pp-concept-vhp__corner-svg {
   position: absolute;
-  top: 0.7rem;
-  left: 0.7rem;
-  z-index: 3;
-  padding: 0.4rem 0.65rem;
-  font-family: var(--font-mono);
-  font-size: 0.62rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: color-mix(in srgb, var(--gold) 92%, var(--bc));
-  background: color-mix(in srgb, var(--b1) 78%, transparent);
-  backdrop-filter: blur(6px) saturate(140%);
-  border: 1px solid color-mix(in srgb, var(--gold) 40%, transparent);
-  border-left: 2px solid var(--gold);
-}
-.pp-split-vhp--reverse .pp-split-vhp__media::before {
-  content: 'LAB-B · CUPPING STATION · STAINLESS';
-}
-
-/* Bottom-right roast meta */
-.pp-split-vhp__media::after {
-  content: '◆ 24/01  ·  GIA LAI  ·  EXPORT';
-  position: absolute;
-  bottom: 0.7rem;
-  right: 0.7rem;
-  z-index: 3;
-  padding: 0.32rem 0.55rem;
-  font-family: var(--font-mono);
-  font-size: 0.6rem;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: color-mix(in srgb, var(--bc) 86%, var(--bc2));
-  background: color-mix(in srgb, var(--b1) 70%, transparent);
-  backdrop-filter: blur(6px);
-  border-top: 1px solid color-mix(in srgb, var(--gold) 35%, transparent);
-}
-
-/* Concrete scanline overlay on media */
-.pp-split-vhp__media {
-  background-image: repeating-linear-gradient(
-    0deg,
-    transparent 0,
-    transparent 14px,
-    color-mix(in srgb, var(--bc) 3%, transparent) 14px,
-    color-mix(in srgb, var(--bc) 3%, transparent) 15px
-  );
-}
-
-/* ─────────────────────────────────────────────
-   04 · Brutalist L-bracket ornaments on body
-   ───────────────────────────────────────────── */
-.pp-split-vhp__body::before {
-  content: '';
-  position: absolute;
-  top: -1.5rem;
-  left: -1.5rem;
-  width: 56px;
-  height: 56px;
-  border-top: 2px solid color-mix(in srgb, var(--gold) 60%, transparent);
-  border-left: 2px solid color-mix(in srgb, var(--gold) 60%, transparent);
+  inset: 0;
+  width: 100%;
+  height: 100%;
   pointer-events: none;
-  z-index: -1;
+  z-index: 3;
 }
-.pp-split-vhp--reverse .pp-split-vhp__body::before {
-  left: auto;
-  right: -1.5rem;
-  border-left: none;
-  border-right: 2px solid color-mix(in srgb, var(--gold) 60%, transparent);
+
+/* ── Text glass card ─────────────────────────────────────────── */
+body.page-template-page-project-du-an-vinh-hiep .pp-concept-vhp__card {
+  position: relative;
+  background: color-mix(in srgb, var(--b3) 70%, transparent);
+  backdrop-filter: blur(16px) saturate(135%);
+  -webkit-backdrop-filter: blur(16px) saturate(135%);
+  border: 1px dashed color-mix(in srgb, var(--gold) 30%, transparent);
+  border-radius: var(--radius-lg);
+  padding: clamp(1.75rem, 3.5vw, 2.75rem);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.45), inset 0 0 40px rgba(0, 0, 0, 0.4);
+  outline: 1px solid color-mix(in srgb, var(--gold) 12%, transparent);
+  outline-offset: -10px;
+  transition: transform 0.4s var(--ease-spring), border-color 0.4s var(--ease-spring), outline-color 0.4s var(--ease-spring);
+}
+body.page-template-page-project-du-an-vinh-hiep .pp-concept-vhp__card:hover {
+  transform: translateY(-5px);
+  border-color: var(--gold);
+  outline-color: color-mix(in srgb, var(--gold) 45%, transparent);
+}
+
+/* Gilded corner brackets */
+body.page-template-page-project-du-an-vinh-hiep .pp-concept-vhp__corner {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--gold);
+  opacity: 0.35;
+  transition: opacity 0.4s var(--ease-spring), transform 0.4s var(--ease-spring);
+}
+body.page-template-page-project-du-an-vinh-hiep .pp-concept-vhp__card:hover .pp-concept-vhp__corner {
+  opacity: 0.95;
+  transform: scale(1.12);
+}
+body.page-template-page-project-du-an-vinh-hiep .pp-concept-vhp__corner--tl { top: 14px; left: 14px; border-right: none; border-bottom: none; }
+body.page-template-page-project-du-an-vinh-hiep .pp-concept-vhp__corner--br { bottom: 14px; right: 14px; border-left: none; border-top: none; }
+
+body.page-template-page-project-du-an-vinh-hiep .pp-concept-vhp__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--bc);
+}
+
+body.page-template-page-project-du-an-vinh-hiep .pp-concept-vhp__body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.05rem;
+  font-family: var(--font-sans);
+  font-size: clamp(0.92rem, 1.05vw, 1rem);
+  line-height: 1.8;
+  color: var(--bc2);
+}
+body.page-template-page-project-du-an-vinh-hiep .pp-concept-vhp__body p { margin: 0; }
+body.page-template-page-project-du-an-vinh-hiep .pp-concept-vhp__closing {
+  padding-left: 1rem;
+  border-left: 2px solid color-mix(in srgb, var(--gold) 55%, transparent);
+  color: color-mix(in srgb, var(--bc) 88%, var(--bc2));
+  font-weight: 500;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.page-template-page-project-du-an-vinh-hiep .pp-concept-vhp__card,
+  body.page-template-page-project-du-an-vinh-hiep .pp-concept-vhp__corner,
+  body.page-template-page-project-du-an-vinh-hiep .pp-concept-vhp__image {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
 }

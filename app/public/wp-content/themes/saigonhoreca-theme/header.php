@@ -30,19 +30,10 @@
         sgh_inline_theme_css();
     }
     ?>
-    <?php if (is_front_page()) : ?>
-    <!-- Preload Home Hero Image (LCP Responsive Optimizer) -->
-    <?php
-    $img_orig = sgh_img('saigonhoreca/SGH-banner-1.webp');
-    $img_ext = pathinfo('saigonhoreca/SGH-banner-1.webp', PATHINFO_EXTENSION);
-    $img_base = substr('saigonhoreca/SGH-banner-1.webp', 0, -(strlen($img_ext) + 1));
-    $img_mobile = sgh_img("{$img_base}-mobile.{$img_ext}");
-    ?>
-    <link rel="preload" href="<?php echo esc_url($img_orig); ?>" as="image" 
-          imagesrcset="<?php echo esc_url($img_mobile); ?> 600w, <?php echo esc_url($img_orig); ?> 1200w" 
-          imagesizes="(max-width: 576px) 600px, 100vw"
-          fetchpriority="high">
-    <?php endif; ?>
+    <?php /* Home hero LCP preload is emitted dynamically in inc/core/enqueue.php
+             (real hero image via _pi_hero_1_bg / latest featured). The old hardcoded
+             SGH-banner-1.webp preload here was a DUPLICATE pointing at a non-existent
+             file — removed so only ONE correct hero image competes for fetchpriority. */ ?>
     <?php
     wp_head();
     ?>
@@ -93,9 +84,7 @@
             <?php
             $sgh_is_en   = function_exists('sgh_is_english_site') ? sgh_is_english_site() : false;
             $sgh_alt_url = function_exists('sgh_counterpart_url') ? sgh_counterpart_url() : ($sgh_is_en ? 'https://saigonhoreca.vn/' : 'https://saigonhoreca.com/');
-            $sgh_alt_flag = $sgh_is_en
-                ? '2023/11/Vietnam-flag.jpeg'
-                : '2023/11/English-flag-e1701229840457.jpeg';
+            // Flag rendered as inline SVG below — no uploads image needed (removed dead 2023/11 flag refs).
             $sgh_alt_label = $sgh_is_en ? 'Tiếng Việt' : 'English';
             $sgh_alt_hreflang = $sgh_is_en ? 'vi' : 'en';
             ?>

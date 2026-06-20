@@ -1,116 +1,194 @@
 /**
- * du-an-bep-cang-tin-cong-ty-nhat-nichiyo — gallery slot (closing block).
- * Split editorial closing: framed toàn-cảnh visual + đúc kết statement.
- * Owns .pp-gallery-nichiyo-section. Reuses .pp-section-nichiyo / .pp-text-nichiyo. Scope .pp--nichiyo.
+ * du-an-bep-cang-tin-cong-ty-nhat-nichiyo — gallery slot (GOLD editorial grid).
+ * Uniform 4/3 CSS-Grid of real project + product shots, with origami-clip
+ * tiles, gold L-brackets, hover lift+scale, faint numeric watermark + ambient glow,
+ * followed by the closing đúc kết statement.
+ * Owns .pp-gallery-nichiyo-section + .pp-gallery-nichiyo-mosaic.
+ * Reuses .pp-section-nichiyo / .pp-text-nichiyo / .pp-nichiyo-glow. Scope .pp--nichiyo.
+ * Tokens only (var(--nic-*) / --bc / --b* / --radius-* / --ease-spring + color-mix). CLS-safe.
  * @package SaigonHoreca
  */
 
 .pp-gallery-nichiyo-section {
   background:
     radial-gradient(circle at 80% 16%, color-mix(in srgb, var(--nic-gold) 6%, transparent), transparent 34%),
+    radial-gradient(circle at 12% 88%, color-mix(in srgb, var(--nic-gold) 4%, transparent), transparent 34%),
     var(--b1);
 }
 
-.pp-gallery-nichiyo__closing {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: clamp(2rem, 4vw, 3.5rem);
-  align-items: center;
-  position: relative;
-  z-index: 2;
-}
-@media (min-width: 992px) {
-  .pp-gallery-nichiyo__closing { grid-template-columns: 0.62fr 0.38fr; gap: clamp(3rem, 5vw, 5rem); }
-}
-
-/* Framed visual — origami clip + gold L-brackets */
-.pp-gallery-nichiyo__closing-media {
-  position: relative;
-  z-index: 2;
-}
-.pp-gallery-nichiyo__closing-media .pp-image-container-shared {
-  position: relative;
-  aspect-ratio: 16 / 10;
-  overflow: hidden;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--nic-border);
-  background: var(--b2);
-  box-shadow: var(--shadow-floating);
-  margin-bottom: 0 !important;
-  clip-path: polygon(
-    0 0,
-    calc(100% - 22px) 0,
-    100% 22px,
-    100% 100%,
-    22px 100%,
-    0 calc(100% - 22px)
-  );
-}
-.pp-gallery-nichiyo__closing-media .pp-image-container-shared img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.pp-gallery-nichiyo__closing-media .pp-image-caption-shared {
-  position: absolute;
-  left: 1rem;
-  right: 1rem;
-  bottom: 1rem;
-  top: auto;
-  padding: 0.7rem 0.85rem;
-  border: 1px solid color-mix(in srgb, var(--bc) 8%, transparent);
-  border-radius: var(--radius-sm);
-  background: color-mix(in srgb, var(--b1) 74%, transparent);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  color: color-mix(in srgb, var(--bc) 78%, transparent);
-  opacity: 0;
-  transform: translateY(0.6rem);
-  visibility: hidden;
-  transition: opacity 0.35s var(--ease-spring), transform 0.35s var(--ease-spring), visibility 0.35s var(--ease-spring);
-  margin-bottom: 0 !important;
-}
-.pp-gallery-nichiyo__closing-media:hover .pp-image-caption-shared {
-  opacity: 1;
-  transform: translateY(0);
-  visibility: visible;
-}
-
-/* Corner L-brackets on the frame */
-.pp-gallery-nichiyo__closing-media::before,
-.pp-gallery-nichiyo__closing-media::after {
-  content: '';
-  position: absolute;
-  z-index: 4;
-  width: 24px;
-  height: 24px;
-  border: 1px solid color-mix(in srgb, var(--nic-gold) 55%, transparent);
-  pointer-events: none;
-}
-.pp-gallery-nichiyo__closing-media::before { top: -6px; left: -6px; border-right: none; border-bottom: none; }
-.pp-gallery-nichiyo__closing-media::after  { right: -6px; bottom: -6px; border-left: none; border-top: none; }
-
-/* Editorial closing body */
-.pp-gallery-nichiyo__closing-body {
+/* ============================================================
+ * Mosaic header — badge + tatami divider + title
+ * ============================================================ */
+.pp-gallery-nichiyo-mosaic__head {
+  max-width: 860px;
+  margin: 0 auto clamp(2.5rem, 4.5vw, 3.75rem);
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
   gap: 1.25rem;
   position: relative;
   z-index: 2;
 }
-.pp-gallery-nichiyo__closing-body .pp-text-nichiyo__title { max-width: 18ch; }
-.pp-gallery-nichiyo__closing-body .pp-text-nichiyo__body { text-align: left; }
+.pp-gallery-nichiyo-mosaic__head .pp-text-nichiyo__body { text-align: center; }
 
-@media (max-width: 767px) {
-  .pp-gallery-nichiyo__closing-media .pp-image-caption-shared {
-    opacity: 1;
-    visibility: visible;
-    transform: none;
-  }
+.pp-gallery-nichiyo-mosaic__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.95rem;
+  border: 1px solid color-mix(in srgb, var(--nic-gold) 32%, transparent);
+  border-radius: var(--radius-full);
+  background: color-mix(in srgb, var(--nic-gold) 7%, transparent);
+  color: color-mix(in srgb, var(--nic-gold) 88%, var(--bc));
+  font-family: var(--font-display);
+  font-size: clamp(0.68rem, 1vw, 0.78rem);
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.pp-gallery-nichiyo-mosaic__badge svg {
+  width: 0.9rem;
+  height: 0.9rem;
+  color: var(--nic-gold);
+  flex-shrink: 0;
 }
 
+/* ============================================================
+ * Uniform mosaic grid — every tile equal 4/3, tiles cleanly with
+ * ZERO empty gaps. Generous row-gap leaves room for the shared
+ * caption (renders BELOW each image per _caption.css).
+ * ============================================================ */
+.pp-gallery-nichiyo-mosaic {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1.5rem, 2.6vw, 2.25rem) clamp(1.25rem, 2vw, 1.75rem);
+  margin-bottom: clamp(3.5rem, 6vw, 5.5rem);
+}
+
+@media (min-width: 600px) {
+  .pp-gallery-nichiyo-mosaic { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 992px) {
+  .pp-gallery-nichiyo-mosaic { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Faint numeric watermark — section index, sumi-deep gold */
+.pp-gallery-nichiyo-mosaic__watermark {
+  position: absolute;
+  top: clamp(-3.5rem, -5vw, -2rem);
+  right: 0.5rem;
+  z-index: 0;
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(8rem, 18vw, 18rem);
+  font-weight: 800;
+  line-height: 1;
+  color: color-mix(in srgb, var(--nic-gold) 4%, transparent);
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ── Tile shell — origami clip on the IMAGE, gold hairline frame.
+   Container keeps overflow:visible (shared) so the below caption shows. ── */
+.pp-gallery-nichiyo-mosaic__item {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 0 !important; /* row-gap owns the caption spacing */
+}
+
+.pp-gallery-nichiyo-mosaic__item img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--nic-border);
+  background: var(--b3);
+  filter: saturate(0.99) contrast(1.03) brightness(1.02);
+  box-shadow: 0 14px 34px color-mix(in srgb, var(--b1) 78%, transparent);
+  clip-path: polygon(
+    0 0,
+    calc(100% - 18px) 0,
+    100% 18px,
+    100% 100%,
+    18px 100%,
+    0 calc(100% - 18px)
+  );
+  transition:
+    transform 0.55s var(--ease-spring),
+    border-color 0.45s var(--ease-spring),
+    box-shadow 0.45s var(--ease-spring),
+    filter 0.55s var(--ease-spring);
+}
+
+/* Gold L-bracket — fades in on hover (top-left) */
+.pp-gallery-nichiyo-mosaic__item::before {
+  content: '';
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  width: 22px;
+  height: 22px;
+  z-index: 3;
+  border-top: 1px solid color-mix(in srgb, var(--nic-gold) 65%, transparent);
+  border-left: 1px solid color-mix(in srgb, var(--nic-gold) 65%, transparent);
+  opacity: 0;
+  transform: translate(4px, 4px);
+  transition: opacity 0.4s var(--ease-spring), transform 0.4s var(--ease-spring);
+  pointer-events: none;
+}
+
+.pp-gallery-nichiyo-mosaic__item:hover img {
+  transform: translateY(-6px) scale(1.015);
+  border-color: color-mix(in srgb, var(--nic-gold) 55%, transparent);
+  filter: saturate(1.04) contrast(1.05) brightness(1.04);
+  box-shadow:
+    0 22px 48px color-mix(in srgb, var(--b1) 85%, transparent),
+    0 0 0 1px color-mix(in srgb, var(--nic-gold) 28%, transparent);
+}
+.pp-gallery-nichiyo-mosaic__item:hover::before {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+/* The shared image hover zoom would fight the tile lift — neutralize it,
+   the tile owns the motion. */
+.pp-gallery-nichiyo-mosaic__item:hover .pp-image-container-shared img,
+.pp-gallery-nichiyo-mosaic__item.pp-image-container-shared:hover img {
+  transform: translateY(-6px) scale(1.015) !important;
+}
+
+/* ============================================================
+ * Closing editorial statement (kept from previous closing block)
+ * ============================================================ */
+.pp-gallery-nichiyo__closing {
+  position: relative;
+  z-index: 2;
+  max-width: 720px;
+  margin: 0 auto;
+  padding-top: clamp(2rem, 4vw, 3rem);
+  border-top: 1px solid var(--nic-border);
+}
+.pp-gallery-nichiyo__closing-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.25rem;
+}
+.pp-gallery-nichiyo__closing-body .pp-text-nichiyo__title { max-width: 26ch; }
+.pp-gallery-nichiyo__closing-body .pp-text-nichiyo__body { text-align: center; }
+
 @media (prefers-reduced-motion: reduce) {
-  .pp-gallery-nichiyo__closing-media .pp-image-container-shared img { transition: none !important; transform: none !important; }
+  .pp-gallery-nichiyo-mosaic__item img,
+  .pp-gallery-nichiyo-mosaic__item::before {
+    transition: none !important;
+  }
+  .pp-gallery-nichiyo-mosaic__item:hover img,
+  .pp-gallery-nichiyo-mosaic__item:hover .pp-image-container-shared img,
+  .pp-gallery-nichiyo-mosaic__item.pp-image-container-shared:hover img {
+    transform: none !important;
+  }
 }

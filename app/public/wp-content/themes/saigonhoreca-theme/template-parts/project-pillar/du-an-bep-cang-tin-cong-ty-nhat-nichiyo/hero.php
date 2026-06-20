@@ -1,14 +1,15 @@
 <?php
 /**
  * Project Pillar — du-an-bep-cang-tin-cong-ty-nhat-nichiyo
- * Section #1: hero — Japanese industrial canteen, Ken-Burns kitchen + hinomaru disc.
+ * Section #1: hero — Japanese industrial canteen, Parallax Clip-Path kitchen + hinomaru disc.
  * @package SaigonHoreca
  */
 if (!defined('ABSPATH')) exit;
 $uri = get_template_directory_uri();
 ?>
 <section class="pp-hero-nichiyo">
-    <div class="pp-hero-nichiyo__media" style="background-image:url('<?php echo sgh_img('du-an-bep-cang-tin-cong-ty-nhat-nichiyo/nichiyo-du-an-1.jpg'); ?>');" aria-hidden="true"></div>
+    <!-- Thẻ con gánh hiệu ứng Parallax Clip-Path siêu mượt (no-JS, GPU) -->
+    <div class="pp-hero-nichiyo__bg" style="background-image:url('<?php echo sgh_img('du-an-bep-cang-tin-cong-ty-nhat-nichiyo/nichiyo-bon-rua-inox-goc-bep-cong-nghiep.webp'); ?>');" aria-hidden="true"></div>
     <div class="pp-hero-nichiyo__overlay" aria-hidden="true"></div>
     <div class="pp-hero-nichiyo__grid" aria-hidden="true"></div>
     <div class="pp-hero-nichiyo__disc" aria-hidden="true"></div>

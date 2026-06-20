@@ -29,7 +29,7 @@ if (!$q->have_posts()) return;
 ?>
 <section class="sh-latest-news">
     <div class="sh-latest-news__inner">
-        <header class="sh-latest-news__header scroll-reveal reveal-letter-wide duration-2000">
+        <header class="sh-latest-news__header scroll-reveal reveal-up duration-2000">
             <div>
                 <span class="sh-latest-news__eyebrow">News</span>
                 <h2 class="sh-latest-news__title"><?php esc_html_e('Tin tức mới', 'saigonhoreca'); ?></h2>

@@ -10,20 +10,27 @@
 
 if (!defined('ABSPATH')) exit;
 
-$all_cats = get_terms([
-    'taxonomy'   => 'product_category',
-    'hide_empty' => true,
-    'orderby'    => 'name',
-]);
-$brands = get_terms([
-    'taxonomy'   => 'product_brand',
-    'hide_empty' => true,
-    'orderby'    => 'name',
-]);
+// Categories: theme taxonomy `product_category` (local) — fall back to
+// WooCommerce `product_cat` (production dùng WooCommerce → products nằm ở
+// product_cat, không phải product_category → tránh sidebar rỗng làm vỡ layout).
+$cat_tax  = 'product_category';
+$all_cats = taxonomy_exists($cat_tax)
+    ? get_terms(['taxonomy' => $cat_tax, 'hide_empty' => true, 'orderby' => 'name'])
+    : [];
+if ((is_wp_error($all_cats) || empty($all_cats)) && taxonomy_exists('product_cat')) {
+    $cat_tax  = 'product_cat';
+    $all_cats = get_terms(['taxonomy' => $cat_tax, 'hide_empty' => true, 'orderby' => 'name']);
+}
+if (is_wp_error($all_cats)) $all_cats = [];
+
+$brands = taxonomy_exists('product_brand')
+    ? get_terms(['taxonomy' => 'product_brand', 'hide_empty' => true, 'orderby' => 'name'])
+    : [];
+if (is_wp_error($brands)) $brands = [];
 
 if (empty($all_cats) && empty($brands)) return;
 
-$current_term = is_tax(['product_category', 'product_brand']) ? get_queried_object() : null;
+$current_term = is_tax([$cat_tax, 'product_brand']) ? get_queried_object() : null;
 
 // Build parent → children map
 $by_parent = [];
@@ -38,8 +45,8 @@ if (!is_wp_error($all_cats)) {
 /**
  * Recursive renderer — outputs <li> for one term + its children as nested <ul>.
  */
-$render_cat = function ($term, $depth = 0) use (&$render_cat, &$by_parent, $current_term) {
-    $is_current = $current_term && $current_term->taxonomy === 'product_category'
+$render_cat = function ($term, $depth = 0) use (&$render_cat, &$by_parent, $current_term, $cat_tax) {
+    $is_current = $current_term && $current_term->taxonomy === $cat_tax
         && (int) $current_term->term_id === (int) $term->term_id;
     $children = $by_parent[$term->term_id] ?? [];
     ?>

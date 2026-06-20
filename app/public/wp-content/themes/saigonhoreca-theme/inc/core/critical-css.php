@@ -191,19 +191,19 @@ if (!function_exists('sgh_preload_route_lcp_image')) {
         // ── /du-an/ archive — first hero slide background image ──
         if (is_post_type_archive('project') || (is_archive() && (string) get_query_var('post_type') === 'project') || is_page('du-an')) {
             if (function_exists('sgh_img')) {
-                $url = sgh_img('2024/06/Sol0D7-05.webp');
+                $url = sgh_img('renovate-sol-kitchen-bar-quan-7/Sol0D7-05.webp');
             }
         }
         // ── /ve-saigon-horeca/ (page-gioi-thieu template) — about hero ──
         elseif (is_page_template('page-templates/page-gioi-thieu.php') || is_page('ve-saigon-horeca') || is_page('gioi-thieu')) {
             if (function_exists('sgh_img')) {
-                $url = sgh_img('2023/12/bia-bep-cong-nghiep-inox.webp');
+                $url = sgh_img('saigonhoreca/bia-bep-cong-nghiep-inox.webp');
             }
         }
         // ── /lien-he/ — contact hero ──
         elseif (is_page_template('page-templates/page-lien-he.php') || is_page('lien-he')) {
             if (function_exists('sgh_img')) {
-                $url = sgh_img('2023/12/Saigon-Horeca-thiet-bi-bep-cong-nghiep.webp');
+                $url = sgh_img('saigonhoreca/Saigon-Horeca-thiet-bi-bep-cong-nghiep.webp');
             }
         }
         elseif (is_singular('post')) {

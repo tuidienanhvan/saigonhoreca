@@ -8,6 +8,7 @@ if (!defined('ABSPATH')) exit;
 $uri = get_template_directory_uri();
 ?>
 <section class="pp__section pp-partnership-mam">
+  <div class="pp-partnership-mam__watermark" aria-hidden="true">02</div>
   <div class="pp-container-shared">
     <div class="pp-split-mam pp-split-mam--reverse scroll-reveal">
       <div class="pp-split-mam__body">
@@ -24,7 +25,7 @@ $uri = get_template_directory_uri();
       </div>
       <div class="pp-split-mam__media">
         <div class="pp-image-container-shared">
-          <img src="<?php echo sgh_img('mam-mam-eatery-lounge-nang-tam-mam-com-viet/mam-mam-sgh-4.jpg'); ?>" alt="<?php echo esc_attr__('Quầy bar inox uốn cong do Saigon Horeca thiết kế tại Mâm Mâm', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="1366" height="768">
+          <img src="<?php echo sgh_img('mam-mam-eatery-lounge-nang-tam-mam-com-viet/mam-mam-quay-bar-inox-uon-cong-tu-mat-ngam-bon-rua.webp'); ?>" alt="<?php echo esc_attr__('Quầy bar inox uốn cong tích hợp bồn rửa, tủ mát ngầm và tháp bia do Saigon Horeca thi công tại Mâm Mâm', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="1366" height="768">
           <div class="pp-image-caption-shared"><?php echo esc_html__('Quầy bar inox với đường nét uốn cong mềm mại, phân tách rõ ràng khu bếp và bar', 'saigonhoreca'); ?></div>
         </div>
       </div>

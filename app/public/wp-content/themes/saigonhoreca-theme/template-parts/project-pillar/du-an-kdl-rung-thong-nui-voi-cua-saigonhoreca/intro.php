@@ -1,31 +1,68 @@
-﻿<?php
+<?php
 /**
- * Project Pillar â€” du-an-kdl-rung-thong-nui-voi-cua-saigonhoreca
- * Section #2: with_gallery
+ * Project Pillar — du-an-kdl-rung-thong-nui-voi-cua-saigonhoreca
+ * Section #2: intro (Editorial asymmetric — story + forest gallery)
  * @package SaigonHoreca
  */
 if (!defined('ABSPATH')) exit;
 $uri = get_template_directory_uri();
 ?>
-<section class="pp-section-rtn pp-section-rtn--alt scroll-reveal">
+<section class="pp-section-kdl pp-intro-kdl">
+  <div class="pp-leaf-watermark-kdl" aria-hidden="true">
+    <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.2">
+      <path d="M50 90 C50 60 30 40 20 20 C45 25 55 45 55 70 M50 90 C50 55 70 38 82 18 C58 24 48 46 48 72" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+
+  <div class="pp-ambient-glow-kdl pp-ambient-glow-kdl--top-right" aria-hidden="true"></div>
+  <div class="pp-ambient-glow-kdl pp-ambient-glow-kdl--bottom-left" aria-hidden="true"></div>
+
   <div class="pp-container-shared">
-    <div class="pp-text-rtn pp-text-rtn--center">
-      <span class="pp-text-rtn__divider pp-text-rtn__divider--center" aria-hidden="true"></span>
-      <h2 class="pp-text-rtn__title"><?php echo esc_html__('KDL Rá»«ng ThÃ´ng NÃºi Voi', 'saigonhoreca'); ?></h2>
-      <div class="pp-text-rtn__body">
-      <p><?php echo esc_html__('ThiÃªn nhiÃªn hÃ¹ng vÄ© â€“ tráº£i nghiá»‡m tuyá»‡t vá»i.', 'saigonhoreca'); ?></p>
-      <p><?php echo esc_html__('Trá»‘n phá»‘ vá» rá»«ng, Ä‘áº¯m chÃ¬m trong thiÃªn nhiÃªn hÃ¹ng vÄ© táº¡i KDL Rá»«ng ThÃ´ng NÃºi Voi', 'saigonhoreca'); ?></p>
-      <p><?php echo esc_html__('KDL Rá»«ng ThÃ´ng NÃºi Voi lÃ  Ä‘iá»ƒm Ä‘áº¿n lÃ½ tÆ°á»Ÿng Ä‘á»ƒ du khÃ¡ch thÆ°á»Ÿng thá»©c vÄƒn hÃ³a áº©m thá»±c TÃ¢y NguyÃªn Ä‘á»™c Ä‘Ã¡o. Vá»›i 6 nhÃ  hÃ ng riÃªng biá»‡t giá»¯a khu vá»±c rá»«ng thÃ´ng nguyÃªn báº£n, má»—i nÆ¡i Ä‘á»u cÃ³ phong cÃ¡ch vÃ  thá»±c Ä‘Æ¡n phong phÃº. CÃ¡c mÃ³n Äƒn truyá»n thá»‘ng vÃ  hiá»‡n Ä‘áº¡i Ä‘á»u Ä‘Æ°á»£c cháº¿ biáº¿n tá»« nguyÃªn liá»‡u tÆ°Æ¡i ngon, Ä‘áº£m báº£o an toÃ n vá»‡ sinh thá»±c pháº©m, Ä‘áº£m báº£o quÃ½ thá»±c khÃ¡ch sáº½ cÃ³ nhá»¯ng tráº£i nghiá»‡m áº©m thá»±c tuyá»‡t vá»i trong khÃ´ng gian sang trá»ng, tá»« cÆ¡m lam, mÃ³n nÆ°á»›ng Ä‘áº­m Ä‘Ã  Ä‘áº¿n rÆ°á»£u cáº§n ná»“ng nÃ n, táº¥t cáº£ Ä‘á»u Ä‘Æ°á»£c cháº¿ biáº¿n tinh táº¿ vÃ  Ä‘áº§y nghá»‡ thuáº­t.', 'saigonhoreca'); ?></p>
-      <p><?php echo esc_html__('Vá»›i yÃªu cáº§u kháº¯t khe vá» cháº¥t lÆ°á»£ng thiáº¿t bá»‹ báº¿p vÃ  vá»‹ trÃ­ náº±m trong rá»«ng nguyÃªn sinh, Saigon Horeca Ä‘Ã£ thiáº¿t káº¿ vÃ  thi cÃ´ng há»‡ thá»‘ng báº¿p cao cáº¥p Ä‘Ã¡p á»©ng má»i yÃªu cáº§u tá»« chá»§ Ä‘áº§u tÆ°. Layout báº¿p Ä‘Æ°á»£c thiáº¿t káº¿ tá»‘i Æ°u, quy trÃ¬nh lÃ m viá»‡c rÃµ rÃ ng, Ä‘áº£m báº£o mÃ´i trÆ°á»ng lÃ m viá»‡c sáº¡ch sáº½ vÃ  an toÃ n. Há»‡ thá»‘ng báº¿p cá»§a Saigon Horeca triá»ƒn khai luÃ´n váº­n hÃ nh má»™t cÃ¡ch trÆ¡n tru, duy trÃ¬ quy trÃ¬nh vá»‡ sinh an toÃ n thá»±c pháº©m, giÃºp nhÃ  hÃ ng phá»¥c vá»¥ thá»±c khÃ¡ch má»™t cÃ¡ch hoÃ n háº£o nháº¥t, Ä‘Ã¡p á»©ng má»i phong cÃ¡ch áº©m thá»±c cá»§a cÃ¡c nhÃ  hÃ ng trong KDL.', 'saigonhoreca'); ?></p>
+    <div class="pp-grid-12-kdl">
+
+      <div class="pp-grid-12-kdl__text">
+        <header class="pp-intro-kdl__header">
+          <div class="pp-badge-kdl">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3 L18 12 H14 L19 20 H5 L10 12 H6 Z"/>
+            </svg>
+            <?php echo esc_html__('Giới thiệu dự án', 'saigonhoreca'); ?>
+          </div>
+          <h2 class="pp-text-kdl__title"><?php echo esc_html__('KDL Rừng Thông Núi Voi', 'saigonhoreca'); ?></h2>
+          <div class="pp-text-kdl__divider" aria-hidden="true"></div>
+        </header>
+
+        <div class="pp-intro-kdl__body">
+          <p><?php echo esc_html__('Trốn phố về rừng, đắm chìm trong thiên nhiên hùng vĩ tại KDL Rừng Thông Núi Voi — điểm đến lý tưởng để du khách thưởng thức văn hóa ẩm thực Tây Nguyên độc đáo.', 'saigonhoreca'); ?></p>
+          <p><?php echo esc_html__('Với 6 nhà hàng riêng biệt nằm giữa khu rừng thông nguyên bản, mỗi nơi đều mang phong cách và thực đơn phong phú. Các món ăn truyền thống và hiện đại đều được chế biến từ nguyên liệu tươi ngon, đảm bảo an toàn vệ sinh thực phẩm — từ cơm lam, món nướng đậm đà đến rượu cần nồng nàn, tất cả đều được chế biến tinh tế và đầy nghệ thuật.', 'saigonhoreca'); ?></p>
+          <p><?php echo esc_html__('Với yêu cầu khắt khe về chất lượng thiết bị bếp và vị trí nằm trong rừng nguyên sinh, Saigon Horeca đã thiết kế và thi công hệ thống bếp cao cấp đáp ứng mọi yêu cầu từ chủ đầu tư, vận hành trơn tru và duy trì quy trình vệ sinh an toàn thực phẩm.', 'saigonhoreca'); ?></p>
+        </div>
+
+        <div class="pp-intro-kdl__stats">
+          <div class="pp-intro-kdl__stat">
+            <span class="pp-intro-kdl__stat-value">06</span>
+            <span class="pp-intro-kdl__stat-label"><?php echo esc_html__('Nhà hàng riêng biệt', 'saigonhoreca'); ?></span>
+          </div>
+          <div class="pp-intro-kdl__stat">
+            <span class="pp-intro-kdl__stat-value">400</span>
+            <span class="pp-intro-kdl__stat-label"><?php echo esc_html__('Khách / nhà hàng lớn nhất', 'saigonhoreca'); ?></span>
+          </div>
+          <div class="pp-intro-kdl__stat">
+            <span class="pp-intro-kdl__stat-value">100%</span>
+            <span class="pp-intro-kdl__stat-label"><?php echo esc_html__('An toàn vệ sinh thực phẩm', 'saigonhoreca'); ?></span>
+          </div>
+        </div>
       </div>
+
+      <div class="pp-grid-12-kdl__media pp-intro-kdl__side">
+        <div class="pp-image-container-shared pp-intro-kdl__image-container">
+          <div class="pp-image-border-decor-kdl" aria-hidden="true"></div>
+          <img src="<?php echo sgh_img('du-an-kdl-rung-thong-nui-voi-cua-saigonhoreca/kdl-rung-thong-nui-voi-ban-tiec-ngoai-troi-hoang-hon.webp'); ?>" alt="<?php echo esc_attr__('Bàn tiệc ngoài trời giữa rừng thông Núi Voi lúc hoàng hôn', 'saigonhoreca'); ?>" loading="lazy" width="600" height="800">
+          <div class="pp-image-caption-shared"><?php echo esc_html__('Bàn tiệc ngoài trời bên ly vang — không gian nhà hàng hòa mình giữa rừng thông lúc hoàng hôn', 'saigonhoreca'); ?></div>
+        </div>
+      </div>
+
     </div>
-    <div class="pp-gallery-rtn pp-gallery-rtn--cols-4" style="margin-top:2rem;">
-      <div class="pp-gallery-rtn__item pp-image-container-shared"><img src="<?php echo sgh_img('2024/08/2-1.png'); ?>" alt="2" loading="lazy" decoding="async"><div class="pp-image-caption-shared"><?php echo esc_html__('KhÃ´ng gian nhÃ  hÃ ng giá»¯a rá»«ng thÃ´ng nguyÃªn báº£n', 'saigonhoreca'); ?></div></div>
-      <div class="pp-gallery-rtn__item pp-image-container-shared"><img src="<?php echo sgh_img('2024/08/1-1.png'); ?>" alt="1" loading="lazy" decoding="async"><div class="pp-image-caption-shared"><?php echo esc_html__('Kiáº¿n trÃºc hÃ²a há»£p vá»›i thiÃªn nhiÃªn TÃ¢y NguyÃªn', 'saigonhoreca'); ?></div></div>
-      <div class="pp-gallery-rtn__item pp-image-container-shared"><img src="<?php echo sgh_img('2024/08/3-1.png'); ?>" alt="3" loading="lazy" decoding="async"><div class="pp-image-caption-shared"><?php echo esc_html__('Há»‡ thá»‘ng báº¿p cao cáº¥p Ä‘Ã¡p á»©ng tiÃªu chuáº©n vá»‡ sinh', 'saigonhoreca'); ?></div></div>
-      <div class="pp-gallery-rtn__item pp-image-container-shared"><img src="<?php echo sgh_img('2024/08/4-1.png'); ?>" alt="4" loading="lazy" decoding="async"><div class="pp-image-caption-shared"><?php echo esc_html__('Quy trÃ¬nh váº­n hÃ nh báº¿p khoa há»c vÃ  hiá»‡u quáº£', 'saigonhoreca'); ?></div></div>
-      <div class="pp-gallery-rtn__item pp-image-container-shared"><img src="<?php echo sgh_img('2024/08/nha-hang-voi-vang-2.png'); ?>" alt="<?php echo esc_attr__('Báº¿p nhÃ  hÃ ng KDL Rá»«ng ThÃ´ng NÃºi Voi', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="1366" height="768"><div class="pp-image-caption-shared"><?php echo esc_html__('Báº¿p nhÃ  hÃ ng Con Voi VÃ ng – sá»©c chá»©a 400 khÃ¡ch', 'saigonhoreca'); ?></div></div>
-    </div>
+
   </div>
 </section>
-

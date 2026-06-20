@@ -1,7 +1,7 @@
 <?php
 /**
  * Single Project Template — HEMMA DESSERTS
- * Thumbnail: 2025/11/du-an-hemma-desserts-sgh.jpg
+ * Thumbnail: hemma-desserts-mot-goc-nho-chau-au-giua-thao-dien/hemma-desserts-mot-goc-nho-chau-au-giua-thao-dien-thumbnail-project-cover.webp
  *
  * Auto-routed via inc/core/pillar-routes.php for /du-an/hemma-desserts-mot-goc-nho-chau-au-giua-thao-dien/.
  *

@@ -204,9 +204,9 @@ $uri = get_template_directory_uri();
             <span class="pp-tct-corner pp-tct-corner--br"></span>
             
             <div class="pp-image-container-shared">
-              <img src="<?php echo sgh_img('the-cheezy-time/the-cheezy-time-pizza-oven.jpg'); ?>" alt="<?php echo esc_attr__('Lò nướng Pizza lò gạch truyền thống tại The Cheezy Time', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="1366" height="768">
+              <img src="<?php echo sgh_img('the-cheezy-time/the-cheezy-time-pizza-oven.jpg'); ?>" alt="<?php echo esc_attr__('Lò nướng pizza vòm men đỏ tại quầy bếp mở The Cheezy Time', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="1366" height="768">
               <div class="pp-image-caption-shared">
-                <?php echo esc_html__('Lò nướng Pizza bằng đất sét nung đỏ bóng đặt tại quầy bếp mở, nơi thực khách có thể trực tiếp chiêm ngưỡng nghệ thuật làm pizza thủ công.', 'saigonhoreca'); ?>
+                <?php echo esc_html__('Lò nướng pizza vòm tròn phủ men sứ đỏ booc-đô bóng gương, đặt ngay quầy bếp mở để thực khách trực tiếp chiêm ngưỡng người thợ thao tác bánh thủ công bên ánh lửa.', 'saigonhoreca'); ?>
               </div>
             </div>
           </div>

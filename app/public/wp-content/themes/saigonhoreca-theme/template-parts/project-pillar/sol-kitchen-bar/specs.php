@@ -15,11 +15,11 @@ if (!defined('ABSPATH')) exit;
         <span class="pp-specs-sol__coord pp-specs-sol__coord--tl">SYS_COORD 08M</span>
         <span class="pp-specs-sol__coord pp-specs-sol__coord--br">CFM / FRESH-AIR</span>
         <div class="pp-image-container-shared pp-specs-sol__img pp-specs-sol__img--base">
-          <img src="<?php echo sgh_img('sol-kitchen-bar/chup-hut-8m-1-1.jpg'); ?>" alt="<?php echo esc_attr__('Hệ thống chụp hút khói 8m khu vực nấu Sol Kitchen & Bar', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
+          <img src="<?php echo sgh_img('sol-kitchen-bar/sol-kitchen-bar-chup-hut-khoi-inox-8m-khu-nau.webp'); ?>" alt="<?php echo esc_attr__('Hệ thống chụp hút khói inox dài khoảng 8m trên trần khu bếp nấu Sol Kitchen & Bar Quận 7, đang thi công lắp đặt', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
           <div class="pp-image-caption-shared"><?php echo esc_html__('Hệ thống chụp hút 8m hút khói và cấp gió tươi song song trong khu vực nấu.', 'saigonhoreca'); ?></div>
         </div>
         <div class="pp-image-container-shared pp-specs-sol__img pp-specs-sol__img--over">
-          <img src="<?php echo sgh_img('sol-kitchen-bar/chup-hut-2m-1.jpg'); ?>" alt="<?php echo esc_attr__('Chụp hút khói 2m khu vực rửa Sol Kitchen & Bar', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
+          <img src="<?php echo sgh_img('sol-kitchen-bar/sol-kitchen-bar-tho-lap-dat-chup-hut-khoi-inox-2m.webp'); ?>" alt="<?php echo esc_attr__('Thợ Saigon Horeca thi công lắp đặt chụp hút khói inox cỡ lớn trên giàn giáo tại bếp Sol Kitchen & Bar Quận 7', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
           <div class="pp-image-caption-shared"><?php echo esc_html__('Chụp hút 2m khu vực rửa.', 'saigonhoreca'); ?></div>
         </div>
       </div>

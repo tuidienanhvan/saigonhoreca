@@ -1,8 +1,12 @@
 /**
  * sol-kitchen-bar — hero slot.
- * Cinematic video backdrop + warm overlay + staggered title entry.
- * Techniques: clamp, radial-gradient, backdrop-filter, mask-image,
- * @keyframes, prefers-reduced-motion.
+ * GPU-smooth Parallax Clip-Path: the section is clipped with clip-path:inset(0)
+ * which confines a position:fixed bg child to the section bounds = the parallax.
+ * NO JavaScript. Title sits DIRECTLY on the image with a legibility text-shadow —
+ * NO dark overlay, NO panel behind the text (per owner feedback:
+ * "hero không cần lớp nền đen và nền khung chữ"); only a LIGHT token gradient overlay.
+ * Techniques: clip-path parallax, position:fixed bg, clamp, radial-gradient,
+ * color-mix, staggered @keyframes, prefers-reduced-motion, mobile fixed→absolute fallback.
  * @package SaigonHoreca
  */
 
@@ -20,80 +24,62 @@
   isolation: isolate;
   padding-inline: clamp(1.25rem, 7vw, 7rem);
 }
+@supports (height: 100dvh) {
+  .pp-hero-sol { height: calc(100dvh - 76px); }
+}
 
-/* Full-bleed YouTube video, scaled to cover */
+/* Full-bleed BRIGHT project image — position:fixed, confined by the section's
+   clip-path for a GPU-smooth parallax. No darkening filter. */
 .pp-hero-sol__media {
   position: absolute;
   inset: 0;
-  z-index: 1;
-  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* reliable parallax — bg fixed to viewport, auto-clipped to this box */
+  filter: saturate(1.05) contrast(1.02);
   pointer-events: none;
 }
-.pp-hero-sol__media iframe {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 100vw;
-  height: 56.25vw;            /* 16:9 */
-  min-height: 100%;
-  min-width: 177.78vh;        /* cover both ways */
-  transform: translate(-50%, -50%);
-  border: 0;
-  filter: saturate(1.06) contrast(1.05) brightness(0.66);
-}
 
+/* LIGHT token gradient overlay — keeps the photo bright/visible, NOT a black scrim. */
 .pp-hero-sol__overlay {
   position: absolute;
   inset: 0;
-  z-index: 2;
-  background:
-    linear-gradient(90deg,
-      color-mix(in srgb, var(--b1) 90%, transparent) 0%,
-      color-mix(in srgb, var(--b1) 44%, transparent) 50%,
-      color-mix(in srgb, var(--sol-ember-deep) 40%, transparent) 100%),
-    linear-gradient(to bottom,
-      color-mix(in srgb, var(--b1) 20%, transparent) 0%,
-      color-mix(in srgb, var(--b1) 74%, transparent) 80%,
-      var(--b1) 100%);
+  z-index: -1;
   pointer-events: none;
+  background: linear-gradient(180deg,
+    color-mix(in srgb, var(--b1) 45%, transparent),
+    color-mix(in srgb, var(--b1) 25%, transparent) 50%,
+    color-mix(in srgb, var(--b1) 55%, transparent));
 }
 
-.pp-hero-sol__grid {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  background:
-    linear-gradient(var(--sol-grid) 1px, transparent 1px),
-    linear-gradient(90deg, var(--sol-grid) 1px, transparent 1px),
-    radial-gradient(circle at 80% 28%, color-mix(in srgb, var(--sol-amber) 10%, transparent), transparent 34%);
-  background-size: 44px 44px, 44px 44px, auto;
-  mask-image: linear-gradient(90deg, black 0%, transparent 80%);
-  opacity: 0.7;
-  pointer-events: none;
-}
-
+/* Warm ambient glows — subtle accents only, they do NOT darken the image */
 .pp-hero-sol__glow {
   position: absolute;
   border-radius: 50%;
   filter: blur(94px);
   pointer-events: none;
   z-index: 2;
+  mix-blend-mode: screen;
 }
 .pp-hero-sol__glow--lt {
   top: -12%;
   left: -8%;
   width: 520px;
   height: 520px;
-  background: radial-gradient(circle, color-mix(in srgb, var(--sol-amber) 16%, transparent) 0%, transparent 70%);
-  opacity: 0.7;
+  background: radial-gradient(circle, color-mix(in srgb, var(--sol-amber) 22%, transparent) 0%, transparent 70%);
+  opacity: 0.55;
 }
 .pp-hero-sol__glow--rb {
   bottom: -14%;
   right: -6%;
   width: 560px;
   height: 560px;
-  background: radial-gradient(circle, color-mix(in srgb, var(--sol-ember) 14%, transparent) 0%, transparent 70%);
-  opacity: 0.55;
+  background: radial-gradient(circle, color-mix(in srgb, var(--sol-ember) 20%, transparent) 0%, transparent 70%);
+  opacity: 0.45;
 }
 
 .pp-hero-sol__rail {
@@ -104,7 +90,8 @@
   font-size: 0.66rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: color-mix(in srgb, var(--bc) 40%, transparent);
+  color: color-mix(in srgb, var(--bc) 72%, transparent);
+  text-shadow: 0 1px 8px color-mix(in srgb, var(--b1) 70%, transparent);
   pointer-events: none;
 }
 .pp-hero-sol__rail--left {
@@ -118,45 +105,15 @@
   transform-origin: right center;
 }
 
+/* Content sits directly on the image — no background/border/shadow panel. */
 .pp-hero-sol__content {
   position: relative;
   z-index: 3;
   width: min(760px, 100%);
-  padding: clamp(2rem, 4vw, 3.25rem);
-  background: linear-gradient(135deg,
-    var(--sol-glass),
-    color-mix(in srgb, var(--b1) 46%, transparent));
-  border: 1px solid color-mix(in srgb, var(--sol-amber) 18%, transparent);
-  border-left: 2px solid color-mix(in srgb, var(--sol-amber) 64%, transparent);
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-floating);
-  backdrop-filter: blur(16px) saturate(128%);
-  -webkit-backdrop-filter: blur(16px) saturate(128%);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 1.15rem;
-}
-.pp-hero-sol__content::before,
-.pp-hero-sol__content::after {
-  content: '';
-  position: absolute;
-  width: 28px;
-  height: 28px;
-  border: 1px solid color-mix(in srgb, var(--sol-amber) 55%, transparent);
-  pointer-events: none;
-}
-.pp-hero-sol__content::before {
-  top: -1px;
-  left: -1px;
-  border-right: none;
-  border-bottom: none;
-}
-.pp-hero-sol__content::after {
-  right: -1px;
-  bottom: -1px;
-  border-left: none;
-  border-top: none;
 }
 
 .pp-hero-sol__subhead {
@@ -166,7 +123,8 @@
   font-weight: 600;
   letter-spacing: 0.26em;
   text-transform: uppercase;
-  color: color-mix(in srgb, var(--sol-amber) 90%, var(--bc));
+  color: color-mix(in srgb, var(--sol-amber) 92%, var(--bc));
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.55);
   animation: sol-rise 0.9s var(--ease-spring) 0.2s backwards;
 }
 
@@ -179,9 +137,7 @@
   color: var(--bc);
   letter-spacing: 0.005em;
   max-width: 16ch;
-  text-shadow:
-    0 4px 24px color-mix(in srgb, var(--b1) 70%, transparent),
-    0 0 60px color-mix(in srgb, var(--sol-ember) 22%, transparent);
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.55);
   animation: sol-rise 0.9s var(--ease-spring) 0.1s backwards;
 }
 
@@ -219,14 +175,17 @@
   align-items: center;
   min-height: 2.1rem;
   padding: 0.45rem 0.8rem;
-  border: 1px solid color-mix(in srgb, var(--sol-amber) 20%, transparent);
+  border: 1px solid color-mix(in srgb, var(--sol-amber) 38%, transparent);
   border-radius: var(--radius-full);
-  background: color-mix(in srgb, var(--b1) 42%, transparent);
-  color: var(--bc2);
+  background: color-mix(in srgb, var(--b1) 38%, transparent);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: var(--bc);
   font-family: var(--font-mono);
   font-size: 0.7rem;
   letter-spacing: 0.07em;
   text-transform: uppercase;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.45);
 }
 
 @media (max-width: 767px) {
@@ -235,8 +194,17 @@
     min-height: 600px;
   }
   .pp-hero-sol__rail { display: none; }
-  .pp-hero-sol__content { padding: 1.6rem; }
   .pp-hero-sol__title { max-width: 100%; }
+}
+
+/* Parallax fixed bg is janky on mobile → switch to absolute (scrolls with page). */
+@media (max-width: 768px) {
+  .pp-hero-sol__media {
+    position: absolute;
+    background-attachment: scroll;
+    width: 100%;
+    height: 100%;
+  }
 }
 
 @keyframes sol-rise {

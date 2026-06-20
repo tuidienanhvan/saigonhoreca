@@ -26,8 +26,18 @@
   transition-property: opacity, transform, filter, letter-spacing, clip-path, background-color, box-shadow;
   transition-duration: var(--reveal-duration);
   transition-timing-function: var(--ease-cinematic);
-  /* Bật GPU layer promotion CHỈ khi element chuẩn bị animate */
-  will-change: transform, opacity, filter, clip-path;
+  /* will-change ĐÃ BỎ có chủ đích.
+     'transform' / 'filter' / 'clip-path' đều tạo CONTAINING BLOCK cho con —
+     nếu một reveal-* lỡ nằm trên <section> parallax, will-change sẽ phá
+     position:fixed / background-attachment:fixed của ảnh nền (parallax chết)
+     ngay cả TRƯỚC khi animate. Trình duyệt hiện đại tự promote GPU layer trong
+     lúc transition transform/opacity nên hint là thừa; bỏ hint còn giảm số
+     compositor layer giữ thường trực → tốt cho Lighthouse.
+
+     QUY TẮC AN TOÀN PARALLAX: <section> mang ảnh nền fixed KHÔNG gắn reveal-*
+     trực tiếp. Đặt reveal-* vào thẻ CON (vd .__content — là anh-em, không phải
+     tổ-tiên của ảnh nền) hoặc dùng '.scroll-reveal' trơn (opacity-only, không
+     transition/transform/will-change). Xem template-parts/.../partnership.php. */
 }
 
 /* ─────────────────────────────────────────────────────────────

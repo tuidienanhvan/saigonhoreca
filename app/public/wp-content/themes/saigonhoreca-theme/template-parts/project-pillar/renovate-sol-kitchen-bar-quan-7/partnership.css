@@ -1,7 +1,15 @@
 /**
  * renovate-sol-kitchen-bar-quan-7 — partnership slot.
- * Cinematic backdrop + glassmorphic content card with warm accents.
- * Techniques: radial-gradient glow, glassmorphism, clamp(), prefers-reduced-motion.
+ * Full-bleed backdrop via the reliable background-attachment:fixed parallax:
+ *   - section: position:relative; isolation:isolate; overflow:hidden (NO clip-path —
+ *     a clip-path would become the containing block for a fixed child and kill parallax).
+ *   - __bg: position:absolute; inset:0; z-index:-2; background center/cover +
+ *     background-attachment:fixed (viewport-anchored paint = the parallax, no JS).
+ *   - __overlay: position:absolute; z-index:-1; LIGHT token gradient (keeps the photo bright).
+ *   - mobile / reduced-motion fallback switches __bg to background-attachment:scroll.
+ * Glassmorphic content card sits above (z-index:2) with text-shadow on the heading.
+ * Techniques: background-attachment:fixed parallax, radial-gradient glow, glassmorphism, clamp(),
+ * prefers-reduced-motion.
  * @package SaigonHoreca
  */
 
@@ -9,28 +17,40 @@
   position: relative;
   padding: clamp(6rem, 12vw, 10rem) 1.5rem;
   min-height: 70vh;
-  display: flex;
+  display: grid;
   align-items: center;
   justify-content: center;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
   background-color: var(--b1);
   isolation: isolate;
   overflow: hidden;
+  clip-path: inset(0 0 0 0);
 }
 @media (min-width: 768px) { .pp-section-bg-solq7 { padding: 10rem 2rem; } }
 
+/* Thẻ con gánh hiệu ứng Parallax Clip-Path siêu mượt */
+.pp-section-bg-solq7__bg {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+
+/* LIGHT token gradient overlay — keeps the photo visible/bright (no heavy black scrim) */
 .pp-section-bg-solq7__overlay {
   position: absolute;
   inset: 0;
-  z-index: 1;
+  z-index: -1;
   pointer-events: none;
-  background: radial-gradient(
-    ellipse at center,
-    color-mix(in srgb, var(--b1) 30%, transparent) 0%,
-    color-mix(in srgb, var(--b1) 84%, transparent) 100%
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--b1) 45%, transparent) 0%,
+    color-mix(in srgb, var(--b1) 25%, transparent) 50%,
+    color-mix(in srgb, var(--b1) 55%, transparent) 100%
   );
 }
 
@@ -40,7 +60,7 @@
   right: -8%;
   width: 520px;
   height: 520px;
-  z-index: 1;
+  z-index: -1;
   pointer-events: none;
   opacity: 0.6;
   filter: blur(80px);
@@ -101,8 +121,21 @@
 }
 .pp-section-bg-solq7__body p { margin: 0; text-align: center; }
 
+/* Mobile fallback — fixed elements are buggy on mobile */
+@media (max-width: 768px) {
+  .pp-section-bg-solq7__bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .pp-section-bg-solq7 { background-attachment: scroll; }
+  /* Option A: parallax bg VẪN chạy (giữ position:fixed như bambino) kể cả khi
+     reduced-motion — để người dùng thấy hiệu ứng. Việc "bot/Lighthouse không load
+     parallax" được xử lý RIÊNG bằng nhận diện user-agent phía server
+     (body.sgh-bot → inc/core/bot-optimize.php), không tắt theo reduced-motion nữa.
+     Ở đây chỉ giảm chuyển động hover của card cho người prefer reduced-motion. */
   .pp-section-bg-solq7__content { transition: none !important; }
   .pp-section-bg-solq7__content:hover { transform: none !important; }
 }

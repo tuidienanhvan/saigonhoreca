@@ -8,6 +8,7 @@ if (!defined('ABSPATH')) exit;
 $uri = get_template_directory_uri();
 ?>
 <section class="pp__section pp__section--alt pp-specs-mam">
+  <div class="pp-specs-mam__watermark" aria-hidden="true">03</div>
   <div class="pp-container-shared">
     <div class="pp-text-mam pp-text-mam--center scroll-reveal">
       <span class="pp-split-mam__tag pp-specs-mam__tag"><?php echo esc_html__('Bếp chuẩn fine dining', 'saigonhoreca'); ?></span>
@@ -27,28 +28,28 @@ $uri = get_template_directory_uri();
 
     <div class="pp-gallery-mam pp-gallery-mam--cols-3 scroll-reveal">
       <div class="pp-image-container-shared pp-gallery-mam__item">
-        <img src="<?php echo sgh_img('mam-mam-eatery-lounge-nang-tam-mam-com-viet/mam-mam-sgh-5.jpg'); ?>" alt="<?php echo esc_attr__('Gian bếp inox cao cấp Mâm Mâm', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
+        <img src="<?php echo sgh_img('mam-mam-eatery-lounge-nang-tam-mam-com-viet/mam-mam-day-bep-inox-cong-nghiep-tuong-gach-do.webp'); ?>" alt="<?php echo esc_attr__('Dãy bếp inox công nghiệp Mâm Mâm: bếp từ, bếp gas và chụp hút mùi inox trên nền tường gạch đỏ', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
         <div class="pp-image-caption-shared"><?php echo esc_html__('Gian bếp inox cao cấp với khu chế biến phân tách rõ ràng theo chuẩn chuyên nghiệp', 'saigonhoreca'); ?></div>
       </div>
       <div class="pp-image-container-shared pp-gallery-mam__item">
-        <img src="<?php echo sgh_img('mam-mam-eatery-lounge-nang-tam-mam-com-viet/mam-mam-sgh-6.jpg'); ?>" alt="<?php echo esc_attr__('Hệ thống thiết bị bếp công suất cao Mâm Mâm', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
+        <img src="<?php echo sgh_img('mam-mam-eatery-lounge-nang-tam-mam-com-viet/mam-mam-bep-cong-nghiep-chup-hut-khoi-day-bep-inox.webp'); ?>" alt="<?php echo esc_attr__('Khu bếp công nghiệp Mâm Mâm với chụp hút khói inox lớn, dãy bếp gas và tủ mát inox trên tường gạch men đỏ', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
         <div class="pp-image-caption-shared"><?php echo esc_html__('Dàn thiết bị nấu nướng công suất cao phối cùng hệ hút mùi inox hiện đại', 'saigonhoreca'); ?></div>
       </div>
       <div class="pp-image-container-shared pp-gallery-mam__item">
-        <img src="<?php echo sgh_img('mam-mam-eatery-lounge-nang-tam-mam-com-viet/mam-mam-sgh-7.jpg'); ?>" alt="<?php echo esc_attr__('Thiết bị bếp công nghiệp Saigon Horeca tại Mâm Mâm', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="1366" height="768">
-        <div class="pp-image-caption-shared"><?php echo esc_html__('Quầy bar inox uốn cong tích hợp tủ mát và khu pha chế tối ưu công năng', 'saigonhoreca'); ?></div>
+        <img src="<?php echo sgh_img('mam-mam-eatery-lounge-nang-tam-mam-com-viet/mam-mam-bep-au-inox-ke-giu-nong-tuong-gach-do.webp'); ?>" alt="<?php echo esc_attr__('Bếp inox công nghiệp dãy dài có kệ giữ nóng phía trên và tường ốp gạch đỏ tại khu bếp Mâm Mâm do Saigon Horeca thi công', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="1366" height="768">
+        <div class="pp-image-caption-shared"><?php echo esc_html__('Dãy bếp Âu inox công suất cao tích hợp kệ giữ nóng, dựng trên nền tường gạch đỏ ấm lửa gian bếp xưa', 'saigonhoreca'); ?></div>
       </div>
       <div class="pp-image-container-shared pp-gallery-mam__item">
-        <img src="<?php echo sgh_img('mam-mam-eatery-lounge-nang-tam-mam-com-viet/mam-mam-sgh-12.jpg'); ?>" alt="<?php echo esc_attr__('Khu sơ chế bếp Mâm Mâm', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
-        <div class="pp-image-caption-shared"><?php echo esc_html__('Khu sơ chế và chế biến được bố trí khoa học theo lưu trình một chiều', 'saigonhoreca'); ?></div>
+        <img src="<?php echo sgh_img('mam-mam-eatery-lounge-nang-tam-mam-com-viet/mam-mam-quay-bar-lounge-tu-mat-trung-bay-ruou.webp'); ?>" alt="<?php echo esc_attr__('Quầy bar lounge Mâm Mâm với tủ mát inox âm quầy, ly thủy tinh và kệ rượu trưng bày', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
+        <div class="pp-image-caption-shared"><?php echo esc_html__('Quầy bar lounge inox với tủ mát âm quầy, dàn ly thủy tinh và kệ rượu hắt sáng – sân khấu của những ly cocktail', 'saigonhoreca'); ?></div>
       </div>
       <div class="pp-image-container-shared pp-gallery-mam__item">
-        <img src="<?php echo sgh_img('mam-mam-eatery-lounge-nang-tam-mam-com-viet/mam-mam-sgh-13.jpg'); ?>" alt="<?php echo esc_attr__('Thiết bị lạnh công nghiệp Mâm Mâm', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
-        <div class="pp-image-caption-shared"><?php echo esc_html__('Hệ thống bàn mát, tủ đông công nghiệp giữ trọn độ tươi ngon của nguyên liệu', 'saigonhoreca'); ?></div>
+        <img src="<?php echo sgh_img('mam-mam-eatery-lounge-nang-tam-mam-com-viet/mam-mam-quay-bar-inox-mang-giu-chai-bon-rua.webp'); ?>" alt="<?php echo esc_attr__('Quầy bar inox Mâm Mâm với máng giữ chai rượu, bồn rửa vòi inox và tủ mát ngầm Talos', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
+        <div class="pp-image-caption-shared"><?php echo esc_html__('Quầy bar pha chế inox với máng giữ chai, bồn rửa và tủ mát ngầm Talos – tối ưu thao tác cho bartender', 'saigonhoreca'); ?></div>
       </div>
       <div class="pp-image-container-shared pp-gallery-mam__item">
-        <img src="<?php echo sgh_img('mam-mam-eatery-lounge-nang-tam-mam-com-viet/mam-mam-sgh-11.jpg'); ?>" alt="<?php echo esc_attr__('Tổng thể gian bếp Mâm Mâm do Saigon Horeca thi công', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
-        <div class="pp-image-caption-shared"><?php echo esc_html__('Tổng thể gian bếp inox sáng sủa, sạch sẽ và chuyên nghiệp do Saigon Horeca thi công', 'saigonhoreca'); ?></div>
+        <img src="<?php echo sgh_img('mam-mam-eatery-lounge-nang-tam-mam-com-viet/mam-mam-quay-bar-pha-che-inox-bon-rua-tu-mat-gam.webp'); ?>" alt="<?php echo esc_attr__('Quầy bar pha chế inox chữ L có bồn rửa, kệ chai và tủ mát gầm tại Mâm Mâm do Saigon Horeca thi công', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
+        <div class="pp-image-caption-shared"><?php echo esc_html__('Quầy bar pha chế inox chữ L với bồn rửa, máng giữ chai và tủ mát gầm – gọn gàng, chuẩn vận hành do Saigon Horeca thi công', 'saigonhoreca'); ?></div>
       </div>
     </div>
   </div>

@@ -1,124 +1,124 @@
 /**
- * moa-moa — concept slot.
- * Split layout + image frame with mask + design notes.
- * @package SaigonHoreca
+ * Project Pillar — Moa Moa Pasta Club
+ * Section #3: concept styling — glass card + gilded corner ornaments + image aura.
+ * 100% tokens, zero hardcoded hex.
  */
 
-.pp-split-moa {
+.pp-moa-concept .pp-grid-moa {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 3rem;
+  gap: 3.5rem;
   align-items: center;
 }
-@media (min-width: 992px) {
-  .pp-split-moa { grid-template-columns: 1fr 1fr; gap: 5rem; }
-  .pp-split-moa--reverse .pp-split-moa__media { order: 2; }
-  .pp-split-moa--reverse .pp-split-moa__body  { order: 1; }
+@media (min-width: 1024px) {
+  .pp-moa-concept .pp-grid-moa {
+    grid-template-columns: 55% 45%;
+  }
 }
 
-.pp-split-moa__body {
+/* Watermark số thứ tự chìm */
+.pp-concept-watermark-moa {
+  position: absolute;
+  top: -4rem;
+  right: 2rem;
+  font-family: var(--font-display);
+  font-size: clamp(12rem, 20vw, 24rem);
+  font-weight: 800;
+  color: var(--gold);
+  opacity: 0.02;
+  pointer-events: none;
+  user-select: none;
+  z-index: 1;
+  line-height: 1;
+}
+
+/* Glass card (glassmorphism) */
+.moa-concept__card {
+  position: relative;
+  background: color-mix(in srgb, var(--b2) 70%, transparent);
+  backdrop-filter: blur(22px) saturate(140%);
+  -webkit-backdrop-filter: blur(22px) saturate(140%);
+  border: 1px solid color-mix(in srgb, var(--gold) 16%, transparent);
+  border-radius: var(--radius-lg);
+  padding: clamp(2rem, 3.5vw, 3rem);
+  box-shadow:
+    0 24px 48px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 color-mix(in srgb, var(--gold) 8%, transparent);
+  transition: transform 0.4s var(--ease-spring), border-color 0.4s var(--ease-spring), box-shadow 0.4s var(--ease-spring);
+  z-index: 2;
+}
+.moa-concept__card:hover {
+  transform: translateY(-5px);
+  border-color: color-mix(in srgb, var(--gold) 45%, transparent);
+  box-shadow: 0 28px 60px color-mix(in srgb, var(--gold) 12%, transparent);
+}
+
+/* Gilded corner ornaments */
+.moa-concept__card .pp-corner-ornament {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 1px solid var(--gold);
+  opacity: 0.3;
+  transition: opacity 0.4s var(--ease-spring), transform 0.4s var(--ease-spring);
+}
+.moa-concept__card:hover .pp-corner-ornament {
+  opacity: 0.95;
+  transform: scale(1.1);
+}
+.moa-concept__card .pp-corner-ornament--top-left { top: 16px; left: 16px; border-right: none; border-bottom: none; }
+.moa-concept__card .pp-corner-ornament--top-right { top: 16px; right: 16px; border-left: none; border-bottom: none; }
+.moa-concept__card .pp-corner-ornament--bottom-left { bottom: 16px; left: 16px; border-right: none; border-top: none; }
+.moa-concept__card .pp-corner-ornament--bottom-right { bottom: 16px; right: 16px; border-left: none; border-top: none; }
+
+.moa-concept__body {
+  font-family: var(--font-sans);
+  font-size: clamp(0.95rem, 1.1vw, 1.02rem);
+  line-height: 1.85;
+  color: var(--bc2);
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
-  position: relative;
-}
-.pp-split-moa__body::before {
-  content: '';
-  position: absolute;
-  top: -1rem;
-  left: -0.75rem;
-  width: 44px;
-  height: 44px;
-  border-top: 1px solid color-mix(in srgb, var(--wa) 40%, transparent);
-  border-left: 1px solid color-mix(in srgb, var(--wa) 40%, transparent);
-  pointer-events: none;
-  z-index: 0;
+  margin-top: 1.75rem;
+  text-align: justify;
 }
 
-.pp-concept-moa__kicker {
-  display: inline-block;
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--wa);
-}
-
-.pp-split-moa__media {
+/* Image with glowing aura */
+.moa-concept__image-container {
   position: relative;
-}
-
-.pp-concept-moa__mask {
-  position: relative;
-  border-radius: var(--radius-md);
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-lg);
   overflow: hidden;
   border: 1px solid var(--bd);
-  transition: border-color 0.4s var(--ease-spring);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
+  transition: box-shadow 0.6s var(--ease-spring), border-color 0.6s var(--ease-spring);
 }
-.pp-concept-moa__mask:hover { border-color: color-mix(in srgb, var(--wa) 40%, transparent); }
-.pp-concept-moa__mask img {
-  width: 100%;
-  height: auto;
-  display: block;
-  transition: transform 0.7s var(--ease-spring);
+.moa-concept__image-container:hover {
+  border-color: color-mix(in srgb, var(--gold) 40%, transparent);
+  box-shadow: 0 24px 50px color-mix(in srgb, var(--gold) 18%, transparent);
 }
-.pp-concept-moa__mask:hover img { transform: scale(1.04); }
-
-.pp-concept-moa__frame {
+.moa-concept__image-decor {
   position: absolute;
   inset: 12px;
-  border: 1px solid color-mix(in srgb, var(--wa) 25%, transparent);
-  border-radius: calc(var(--radius-md) - 4px);
+  border: 1px dashed color-mix(in srgb, var(--gold) 20%, transparent);
+  border-radius: calc(var(--radius-lg) - 6px);
   pointer-events: none;
+  z-index: 4;
   opacity: 0;
-  transition: opacity 0.4s var(--ease-spring);
+  transition: opacity 0.5s var(--ease-spring), border-color 0.5s var(--ease-spring);
 }
-.pp-concept-moa__mask:hover .pp-concept-moa__frame { opacity: 1; }
-
-.pp-concept-moa__caption {
-  margin-top: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
-.pp-concept-moa__caption span {
-  font-family: var(--font-serif);
-  font-size: 0.85rem;
-  font-style: italic;
-  color: var(--bc3);
-}
-.pp-concept-moa__caption strong {
-  font-family: var(--font-display);
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--bc);
-}
-
-.pp-concept-moa__notes {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-  margin-top: 0.5rem;
-}
-.pp-concept-moa__notes span {
-  padding: 0.35rem 0.85rem;
-  background: color-mix(in srgb, var(--wa) 8%, transparent);
-  border: 1px solid color-mix(in srgb, var(--wa) 15%, transparent);
-  border-radius: var(--radius-full);
-  font-size: 0.72rem;
-  font-weight: 500;
-  color: var(--wa);
-  transition: border-color 0.3s, background 0.3s;
-}
-.pp-concept-moa__notes span:hover {
-  border-color: color-mix(in srgb, var(--wa) 40%, transparent);
-  background: color-mix(in srgb, var(--wa) 15%, transparent);
+.moa-concept__image-container:hover .moa-concept__image-decor {
+  opacity: 1;
+  border-color: color-mix(in srgb, var(--gold) 55%, transparent);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .pp-concept-moa__mask img,
-  .pp-concept-moa__mask {
+  .moa-concept__card,
+  .moa-concept__card .pp-corner-ornament,
+  .moa-concept__image-container,
+  .moa-concept__image-decor {
     transition: none !important;
+    transform: none !important;
+    animation: none !important;
   }
 }

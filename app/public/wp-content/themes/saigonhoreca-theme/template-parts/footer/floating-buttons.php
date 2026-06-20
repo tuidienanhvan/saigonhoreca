@@ -16,6 +16,14 @@ if (! defined('ABSPATH')) {
 $contact = $args['contact'] ?? (function_exists('saigonhouse_get_contact_info') ? saigonhouse_get_contact_info() : []);
 $hotline_raw = $contact['hotline_raw'] ?? str_replace([' ', '.', ','], '', $contact['hotline'] ?? '');
 ?>
+<style id="sh-fab-fix">
+/* Fix: nút "lên đầu trang" nổi PHÍA TRÊN cụm nút (ngoài flex flow) — không đẩy
+   phone/Zalo xuống khi cuộn, đúng cả khi widget đã kéo (neo top). Ghi đè bundle. */
+#back-to-top{position:absolute;left:50%;bottom:calc(100% + var(--spacing, 8px) * 2.5);transform:translateX(-50%);}
+#back-to-top:hover{transform:translateX(-50%) translateY(-3px);}
+/* A11y touch-target ≥48px trên mobile (ghi đè bundle 40px) */
+@media(max-width:767px){#sh-floating-buttons #back-to-top,#sh-floating-buttons #sh-toggle,#sh-floating-buttons .sh-phone-float,#sh-floating-buttons .sh-zalo-btn,#sh-floating-buttons .sh-fb-btn{width:48px;height:48px;}}
+</style>
 <div id="sh-floating-buttons">
     <a href="#" id="back-to-top" aria-label="<?php esc_attr_e('Cuộn lên đầu trang', 'saigonhoreca'); ?>" role="button">
         <svg class="sh-scroll-ring" viewBox="0 0 36 36">

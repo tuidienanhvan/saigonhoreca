@@ -33,11 +33,11 @@ $uri = get_template_directory_uri();
 
         <div class="pp-specs-gmarb__collage">
           <div class="pp-image-container-shared pp-specs-gmarb__frame pp-specs-gmarb__frame--main">
-            <img src="<?php echo sgh_img('grand-marble-thuong-hieu-banh-cao-cap-nhat-ban/grand-marble-ban-ve-bo-tri-thiet-bi.png'); ?>" alt="<?php echo esc_attr__('Bản vẽ bố trí thiết bị tổng thể phòng làm bánh Grand Marble', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="1322" height="852">
+            <img src="<?php echo sgh_img('grand-marble-thuong-hieu-banh-cao-cap-nhat-ban/grand-marble-ban-ve-bo-tri-thiet-bi.webp'); ?>" alt="<?php echo esc_attr__('Bản vẽ bố trí thiết bị tổng thể phòng làm bánh Grand Marble', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="1322" height="852">
             <div class="pp-image-caption-shared"><?php echo esc_html__('Bản vẽ bố trí thiết bị tổng thể, phân chia sáu khu vực chức năng theo luồng vận hành một chiều của phòng làm bánh.', 'saigonhoreca'); ?></div>
           </div>
           <div class="pp-image-container-shared pp-specs-gmarb__frame pp-specs-gmarb__frame--float">
-            <img src="<?php echo sgh_img('grand-marble-thuong-hieu-banh-cao-cap-nhat-ban/grand-marble-ban-ve-khu-vuc-1.png'); ?>" alt="<?php echo esc_attr__('Bản vẽ chi tiết khu vực tiếp nhận nguyên liệu Grand Marble', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="975" height="595">
+            <img src="<?php echo sgh_img('grand-marble-thuong-hieu-banh-cao-cap-nhat-ban/grand-marble-ban-ve-mat-bang-khu-tiep-nhan-kho-lanh.webp'); ?>" alt="<?php echo esc_attr__('Bản vẽ chi tiết khu vực tiếp nhận nguyên liệu Grand Marble', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="975" height="595">
             <div class="pp-image-caption-shared"><?php echo esc_html__('Bản vẽ chi tiết một khu vực chức năng, thể hiện vị trí cân, bồn rửa, phòng lạnh và hệ kệ inox.', 'saigonhoreca'); ?></div>
           </div>
         </div>

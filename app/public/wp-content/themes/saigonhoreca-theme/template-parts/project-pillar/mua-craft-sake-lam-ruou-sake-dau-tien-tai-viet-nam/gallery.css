@@ -1,4 +1,137 @@
 /** mua-craft-sake-lam-ruou-sake-dau-tien-tai-viet-nam — gallery slot.
- *  Kế thừa .pp-split-mua + .pp-gallery-mua từ concept.css / intro.css. 0 hardcode hex brand. */
+ *  CLEAN UNIFORM GRID (lưới ô đều, mỗi ô tỉ lệ 4/3 — không còn khảm bất đối xứng
+ *    gây khoảng đen rỗng vì tile span 2 hàng dưới grid-auto-rows:1fr).
+ *  Kế thừa .pp-split-mua + .pp-card-mua từ concept.css · badge/glow/watermark/text
+ *    từ intro.css · khung + chú thích báo chí từ _caption.css.
+ *  Techniques: CSS Grid uniform 1→2→3 cột · aspect-ratio 4/3 đồng nhất CLS-safe ·
+ *    color-mix tints · clamp() type · var(--ease-spring) hover lift+scale + viền vàng ·
+ *    radial-gradient ambient glow · SVG sigil watermark · prefers-reduced-motion guard.
+ *  0 hardcode hex brand.
+ *  @package SaigonHoreca */
 
-.pp-gallery-sec-mua .pp-gallery-mua--cols-2 .pp-gallery-mua__item { aspect-ratio: 3 / 2; }
+/* ─── Đầu mục lưới (badge + title + divider) căn giữa ─── */
+.pp-mosaic-mua__head {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.1rem;
+  margin-bottom: clamp(2.5rem, 5vw, 3.75rem);
+}
+.pp-mosaic-mua__head .pp-text-mua__title {
+  font-size: clamp(1.65rem, 3vw, 2.5rem);
+  max-width: 22ch;
+}
+
+/* ─── SVG sigil chìm (vòng tròn zen + nét đại tự 酒) ─── */
+.pp-mosaic-mua__sigil {
+  position: absolute;
+  z-index: 0;
+  top: clamp(1.5rem, 4vw, 3.5rem);
+  left: clamp(-2rem, 2vw, 1rem);
+  width: clamp(180px, 28vw, 360px);
+  height: clamp(180px, 28vw, 360px);
+  opacity: 0.05;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ─── UNIFORM GRID ─── */
+.pp-mosaic-mua {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr;          /* mobile: 1 cột */
+  /* row-gap rộng cho chú thích báo chí (.pp-image-caption-shared neo dưới ảnh) */
+  gap: clamp(1.5rem, 2.6vw, 2.25rem) clamp(1.25rem, 2vw, 1.75rem);
+  margin-top: 0.5rem;
+}
+
+@media (min-width: 600px) {
+  .pp-mosaic-mua {
+    grid-template-columns: repeat(2, 1fr);   /* tablet: 2 cột */
+  }
+}
+
+@media (min-width: 992px) {
+  .pp-mosaic-mua {
+    grid-template-columns: repeat(3, 1fr);   /* desktop: 3 cột đều */
+  }
+}
+
+/* ─── Tile chung — khung ảnh mạ vàng (đặt cùng .pp-image-container-shared) ─── */
+.pp-mosaic-mua__item {
+  position: relative;
+  aspect-ratio: 4 / 3;                       /* MỌI ô cùng tỉ lệ — lưới khít, 0 khoảng rỗng */
+  border-radius: var(--radius-md);
+  background: var(--b3);
+  border: 1px solid var(--bd);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.42);
+  overflow: visible;                          /* để chú thích hiển thị dưới ảnh */
+  transition:
+    transform 0.5s var(--ease-spring),
+    border-color 0.45s var(--ease-spring),
+    box-shadow 0.45s var(--ease-spring);
+}
+
+/* Ảnh phủ kín ô, bo góc đồng bộ; chú thích neo dưới chân ô (shared).
+   Ảnh raw tối → filter KHÔNG làm tối (brightness >= 1). */
+.pp-mosaic-mua__item > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  object-fit: cover;
+  filter: saturate(0.99) contrast(1.03) brightness(1.02);
+  transition: transform 0.7s var(--ease-spring), filter 0.5s var(--ease-spring);
+}
+
+/* Viền vàng tinh tế chạy khi hover (overlay không cản chú thích) */
+.pp-mosaic-mua__item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  box-shadow: inset 0 0 0 0 color-mix(in srgb, var(--mua-gold) 0%, transparent);
+  pointer-events: none;
+  transition: border-color 0.45s var(--ease-spring), box-shadow 0.45s var(--ease-spring);
+  z-index: 2;
+}
+
+.pp-mosaic-mua__item:hover {
+  transform: translateY(-6px);
+  border-color: color-mix(in srgb, var(--mua-gold) 45%, transparent);
+  box-shadow:
+    0 26px 54px rgba(0, 0, 0, 0.58),
+    0 0 30px color-mix(in srgb, var(--mua-gold) 16%, transparent);
+}
+.pp-mosaic-mua__item:hover > img {
+  transform: scale(1.05);
+  filter: saturate(1.05) contrast(1.04) brightness(1.05);
+}
+.pp-mosaic-mua__item:hover::after {
+  border-color: color-mix(in srgb, var(--mua-gold) 55%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--mua-gold) 30%, transparent);
+}
+
+/* Lời kết căn giữa thêm chỗ thở phía trên (caption ô cuối cùng cần khoảng trống). */
+.pp-gallery-sec-mua .pp-text-mua--center { margin-top: clamp(2.5rem, 5vw, 4rem); }
+
+/* ─── prefers-reduced-motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  .pp-mosaic-mua__item,
+  .pp-mosaic-mua__item > img,
+  .pp-mosaic-mua__item::after {
+    transition: none !important;
+  }
+  .pp-mosaic-mua__item:hover {
+    transform: none !important;
+  }
+  .pp-mosaic-mua__item:hover > img {
+    transform: none !important;
+  }
+}

@@ -113,7 +113,7 @@ $uri = get_template_directory_uri();
           <!-- Container ảnh chính -->
           <div class="pp-concept-bam__image-container pp-image-container-shared">
             <img src="<?php echo sgh_img('bambino/bambino-khong-gian-am-thuc-y-sang-trong.jpg'); ?>" alt="<?php echo esc_attr__('Thiết kế không gian ẩm thực Ý sang trọng tại Bambino', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
-            <div class="pp-image-caption-shared"><?php echo esc_html__('Không gian sảnh tiệc chính sang trọng và ấm cúng tại nhà hàng Bambino', 'saigonhoreca'); ?></div>
+            <div class="pp-image-caption-shared"><?php echo esc_html__('Phòng ăn ấm cúng với tủ rượu vang kính chiếu sáng vàng ấm và bàn set ly tinh tế tại Bambino', 'saigonhoreca'); ?></div>
           </div>
         </div>
       </div>

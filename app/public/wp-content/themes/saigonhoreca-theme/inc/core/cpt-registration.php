@@ -143,9 +143,37 @@ if (!function_exists('shr_register_taxonomies')) {
             'public'            => true,
             'rewrite'           => ['slug' => 'thuong-hieu', 'with_front' => false],
         ]);
+
+        // ── Taxonomy: product_cat (WooCommerce legacy — HỒI SINH) ──
+        // Production: sản phẩm cũ categorize bằng WooCommerce `product_cat`. Khi
+        // WooCommerce TẮT, taxonomy này không đăng ký → danh mục "mồ côi" (data
+        // còn trong DB nhưng không query được → /san-pham/ mất sidebar). Đăng ký
+        // lại (CHỈ khi WooCommerce chưa đăng ký, tránh xung đột) để hồi sinh danh
+        // mục cũ + sản phẩm giữ ảnh thật. filter-sidebar.php tự fallback sang nó.
+        if (!taxonomy_exists('product_cat')) {
+            register_taxonomy('product_cat', ['product'], [
+                'labels'       => ['name' => 'Danh mục sản phẩm', 'menu_name' => 'Danh mục SP'],
+                'hierarchical' => true,
+                'show_in_rest' => true,
+                'public'       => true,
+                'rewrite'      => ['slug' => 'product-category', 'with_front' => false],
+            ]);
+        }
     }
 }
 add_action('init', 'shr_register_taxonomies', 0);
+
+// Cho archive của product_cat (danh mục cũ) dùng template sản phẩm cho đẹp.
+if (!function_exists('shr_product_cat_template')) {
+    function shr_product_cat_template($template) {
+        if (is_tax('product_cat')) {
+            $alt = locate_template(['archive-product.php']);
+            if ($alt) return $alt;
+        }
+        return $template;
+    }
+}
+add_filter('template_include', 'shr_product_cat_template', 99);
 
 if (!function_exists('shr_flush_rewrite_on_theme_switch')) {
     /**

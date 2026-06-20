@@ -1,7 +1,7 @@
 <?php
 /**
  * Single Project Template — SOL KITCHEN & BAR
- * Thumbnail: sol-kitchen-bar-saigon-horeca/SGH-projects-01-1024x576.webp
+ * Thumbnail: sol-kitchen-bar-saigon-horeca/sol-kitchen-bar-saigon-horeca-thumbnail-project-cover.webp
  *
  * Auto-routed via inc/core/pillar-routes.php for /du-an/sol-kitchen-bar-saigon-horeca/.
  *

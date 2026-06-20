@@ -1,110 +1,224 @@
 /**
- * du-an-kdl-rung-thong-nui-voi-cua-saigonhoreca — hero slot.
- * Video background + Ken-Burns poster fallback + staggered title entry.
- * Nature/ecological theme with green accents.
- * @package SaigonHoreca
+ * Project Pillar — KDL Rừng Thông Núi Voi
+ * Section #1: hero styling (Pine-forest full-viewport · airy green + gold)
+ * 100% tokens · zero hardcoded hex. Green mood derived via color-mix from var(--su).
  */
 
-.pp-hero-kdl {
+.pp--kdl .pp-hero-kdl {
   position: relative;
+  /* Reliable parallax via background-attachment:fixed on the bg layer (no clip-path). */
+  isolation: isolate;
+  /* Fill full viewport area below sticky header (76px). */
   height: calc(100svh - 76px);
-  min-height: 620px;
+  min-height: 600px;
   width: 100%;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
   overflow: hidden;
   background-color: var(--b1);
+  text-align: center;
 }
 
-.pp-hero-kdl__media {
+@supports (height: 100dvh) {
+  .pp--kdl .pp-hero-kdl {
+    height: calc(100dvh - 76px);
+  }
+}
+
+/* Bg layer — reliable parallax via background-attachment:fixed (bg pinned to viewport, clipped to this box) */
+.pp--kdl .pp-hero-kdl__bg {
   position: absolute;
   inset: 0;
-  z-index: 1;
-}
-.pp-hero-kdl__media video {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.pp-hero-kdl__overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  background: linear-gradient(
-    to top,
-    var(--b1) 0%,
-    color-mix(in srgb, var(--b1) 65%, transparent) 35%,
-    transparent 70%
-  );
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  z-index: -2;
   pointer-events: none;
 }
 
-.pp-hero-kdl__content {
+/* Light token overlay — keeps the photo bright/visible, not a heavy black scrim */
+.pp--kdl .pp-hero-kdl__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--b1) 45%, transparent) 0%,
+    color-mix(in srgb, var(--b1) 25%, transparent) 50%,
+    color-mix(in srgb, var(--b1) 55%, transparent) 100%
+  );
+}
+
+/* Airy mist drifting across the canopy */
+.pp--kdl .pp-hero-kdl__mist {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(60% 45% at 25% 30%, color-mix(in srgb, var(--bc) 9%, transparent) 0%, transparent 60%),
+    radial-gradient(55% 40% at 80% 65%, color-mix(in srgb, var(--su) 10%, transparent) 0%, transparent 60%);
+  mix-blend-mode: screen;
+  opacity: 0.7;
+  animation: kdl-mist-drift 22s ease-in-out infinite alternate;
+}
+
+.pp--kdl .pp-hero-kdl__content {
   position: relative;
   z-index: 3;
-  padding: 3rem 1.5rem 5rem;
-  max-width: 820px;
-  text-align: center;
+  padding: 0 1.5rem;
+  max-width: 860px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 1.1rem;
 }
 
-.pp-hero-kdl__title {
-  margin: 0;
+.pp--kdl .pp-hero-kdl__emblem {
+  width: 2.6rem;
+  height: 2.6rem;
+  color: color-mix(in srgb, var(--su) 55%, var(--gold));
+  filter: drop-shadow(0 0 14px color-mix(in srgb, var(--su) 55%, transparent));
+  animation: kdl-emblem-sway 5s ease-in-out infinite alternate;
+}
+
+.pp--kdl .pp-hero-kdl__emblem svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.pp--kdl .pp-hero-kdl__eyebrow {
+  font-family: var(--font-mono);
+  font-size: clamp(0.7rem, 1.5vw, 0.92rem);
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  color: color-mix(in srgb, var(--bc) 78%, transparent);
+}
+
+.pp--kdl .pp-hero-kdl__title {
   font-family: var(--font-display);
-  font-size: clamp(2.4rem, 7vw, 5rem);
+  font-size: clamp(2.3rem, 6vw, 4.4rem);
   font-weight: 800;
-  line-height: 1.05;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
   color: var(--bc);
-  letter-spacing: 0.02em;
-  text-shadow:
-    0 4px 24px rgba(0, 0, 0, 0.7),
-    0 0 60px color-mix(in srgb, var(--su) 12%, transparent);
-  animation: kdl-rise 0.9s var(--ease-spring) 0.15s backwards;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+  text-shadow: 0 2px 18px color-mix(in srgb, var(--b1) 55%, transparent), 0 1px 30px color-mix(in srgb, var(--b1) 45%, transparent);
 }
 
-.pp-hero-kdl__subhead {
-  margin: 0;
+.pp--kdl .pp-hero-kdl__title-sub {
   font-family: var(--font-serif);
-  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
   font-style: italic;
+  font-size: clamp(1.05rem, 2.5vw, 1.7rem);
   font-weight: 400;
-  color: var(--su);
-  opacity: 0.9;
-  animation: kdl-rise 0.9s var(--ease-spring) 0.05s backwards;
+  letter-spacing: normal;
+  text-transform: none;
+  color: color-mix(in srgb, var(--su) 35%, var(--gold));
+  text-shadow: 0 2px 18px color-mix(in srgb, var(--b1) 55%, transparent);
 }
 
-.pp-hero-kdl__subtitle {
-  margin: 0;
-  max-width: 640px;
-  font-size: clamp(0.9rem, 1.1vw, 1rem);
-  line-height: 1.75;
+.pp--kdl .pp-hero-kdl__divider {
+  position: relative;
+  width: 92px;
+  height: 2px;
+  margin-top: 0.5rem;
+  background: linear-gradient(90deg, transparent, var(--gold), color-mix(in srgb, var(--su) 70%, var(--gold)), var(--gold), transparent);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--su) 50%, var(--gold));
+}
+
+.pp--kdl .pp-hero-kdl__divider::before,
+.pp--kdl .pp-hero-kdl__divider::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  background: var(--gold);
+  border-radius: var(--radius-full);
+  transform: translateY(-50%);
+  box-shadow: 0 0 8px var(--gold);
+}
+.pp--kdl .pp-hero-kdl__divider::before { left: -14px; }
+.pp--kdl .pp-hero-kdl__divider::after  { right: -14px; }
+
+.pp--kdl .pp-hero-kdl__lead {
+  font-family: var(--font-sans);
+  font-size: clamp(0.95rem, 1.4vw, 1.12rem);
+  line-height: 1.7;
   color: var(--bc2);
-  animation: kdl-rise 0.9s var(--ease-spring) 0.35s backwards;
+  max-width: 600px;
+  margin-top: 0.35rem;
 }
 
-@keyframes kdl-rise {
-  0% {
-    opacity: 0;
-    transform: translateY(2rem);
-    filter: blur(4px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-    filter: blur(0);
+/* Scroll cue */
+.pp--kdl .pp-hero-kdl__scroll {
+  position: absolute;
+  bottom: 1.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  width: 24px;
+  height: 40px;
+  border: 1.5px solid color-mix(in srgb, var(--bc) 35%, transparent);
+  border-radius: var(--radius-full);
+  display: flex;
+  justify-content: center;
+  padding-top: 7px;
+}
+
+.pp--kdl .pp-hero-kdl__scroll-dot {
+  width: 4px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  background: color-mix(in srgb, var(--su) 60%, var(--gold));
+  animation: kdl-scroll-bob 1.8s var(--ease-spring) infinite;
+}
+
+/* Animations */
+@keyframes kdl-mist-drift {
+  0%   { transform: translateX(-3%) translateY(0); opacity: 0.55; }
+  100% { transform: translateX(4%) translateY(-2%); opacity: 0.8; }
+}
+
+@keyframes kdl-emblem-sway {
+  0%   { transform: rotate(-6deg) scale(0.96); }
+  100% { transform: rotate(6deg) scale(1.05); }
+}
+
+@keyframes kdl-scroll-bob {
+  0%   { transform: translateY(0); opacity: 0.3; }
+  50%  { transform: translateY(10px); opacity: 1; }
+  100% { transform: translateY(0); opacity: 0.3; }
+}
+
+@media (max-width: 767px) {
+  .pp--kdl .pp-hero-kdl__scroll { display: none; }
+}
+
+/* Mobile fallback: background-attachment:fixed is janky on mobile — pin bg to the section */
+@media (max-width: 768px) {
+  .pp--kdl .pp-hero-kdl__bg {
+    position: absolute;
+    background-attachment: scroll;
+    width: 100%;
+    height: 100%;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .pp-hero-kdl__title,
-  .pp-hero-kdl__subhead,
-  .pp-hero-kdl__subtitle {
+  .pp--kdl .pp-hero-kdl__mist,
+  .pp--kdl .pp-hero-kdl__emblem,
+  .pp--kdl .pp-hero-kdl__scroll-dot {
     animation: none !important;
   }
 }

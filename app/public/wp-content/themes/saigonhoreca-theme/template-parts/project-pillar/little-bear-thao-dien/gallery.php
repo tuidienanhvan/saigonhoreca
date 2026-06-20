@@ -58,14 +58,14 @@ $uri = get_template_directory_uri();
           
           <!-- Ảnh 1: Quầy bar thực tế -->
           <div class="pp-image-container-shared pp-gallery-lb__img-1">
-            <img src="<?php echo sgh_img('little-bear-thao-dien/little-bear-thao-dien-quay-bar-phuc-vu.jpg'); ?>" alt="<?php echo esc_attr__('Khu vực hậu cần quầy bar inox và hệ tủ trữ lạnh rượu vang tại Little Bear', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="600" height="800">
-            <div class="pp-image-caption-shared"><?php echo esc_html__('Không gian hậu cần quầy bar inox 304 kết hợp tủ trữ rượu vang mặt kính tối tân cùng hệ thống bàn mát undercounter, giúp tối ưu hóa dung tích trữ đông nguyên liệu và bảo quan nhiệt độ chuẩn xác.', 'saigonhoreca'); ?></div>
+            <img src="<?php echo sgh_img('little-bear-thao-dien/little-bear-thao-dien-quay-bar-phuc-vu.jpg'); ?>" alt="<?php echo esc_attr__('Khu hậu cần inox với bàn soạn, tủ trưng mặt kính và dàn tủ lạnh đứng tại Little Bear', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="600" height="800">
+            <div class="pp-image-caption-shared"><?php echo esc_html__('Khu hậu cần inox 304 với bàn soạn liền mạch, tủ trưng mặt kính xếp gọn chén ly và dàn tủ lạnh đứng reach-in, giữ nguyên liệu tươi sạch và quy trình soạn rửa luôn ngăn nắp.', 'saigonhoreca'); ?></div>
           </div>
 
           <!-- Ảnh 2: Không gian ăn uống nhìn vào bếp -->
           <div class="pp-image-container-shared pp-gallery-lb__img-2">
-            <img src="<?php echo sgh_img('little-bear-thao-dien/little-bear-thao-dien-khong-gian-bep-bar.jpg'); ?>" alt="<?php echo esc_attr__('Không gian quầy bar mở và line bếp hiện đại tại Little Bear Thảo Điền', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="600" height="800">
-            <div class="pp-image-caption-shared"><?php echo esc_html__('Không gian quầy bar mở đối diện line bếp nóng, nơi thực khách có thể trực tiếp tương tác và chiêm ngưỡng nghệ thuật ẩm thực tinh tế.', 'saigonhoreca'); ?></div>
+            <img src="<?php echo sgh_img('little-bear-thao-dien/little-bear-thao-dien-khong-gian-bep-bar.jpg'); ?>" alt="<?php echo esc_attr__('Bàn ăn tròn nhìn vào ô vòm bếp mở có đèn neon ly rượu tại Little Bear Thảo Điền', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="600" height="800">
+            <div class="pp-image-caption-shared"><?php echo esc_html__('Bàn ăn tròn mặt đá bên ghế băng da bò mở thẳng vào ô vòm bếp mở rực neon ly vang, để thực khách vừa dùng bữa vừa chiêm ngưỡng nghệ thuật chế biến của các đầu bếp.', 'saigonhoreca'); ?></div>
           </div>
 
         </div>

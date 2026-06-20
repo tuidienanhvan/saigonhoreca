@@ -68,7 +68,7 @@ $stats = [
     <div class="sh-featured-projects__inner">
 
         <!-- Intro: accent + title + desc + CTA -->
-        <div class="sh-featured-projects__head scroll-reveal reveal-letter-wide duration-1800">
+        <div class="sh-featured-projects__head scroll-reveal reveal-up duration-1800">
             <span class="sh-featured-projects__accent" aria-hidden="true"></span>
             <h2 class="sh-featured-projects__title">
                 <?php esc_html_e('Những dự án tiêu biểu của Saigon Horeca', 'saigonhoreca'); ?>
@@ -78,7 +78,7 @@ $stats = [
             </p>
             <a href="<?php echo esc_url(sgh_url('projects_index')); ?>" class="sh-featured-projects__cta">
                 <span><?php esc_html_e('Xem tất cả dự án', 'saigonhoreca'); ?></span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" style="flex:0 0 auto;">
                     <path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
             </a>
@@ -99,8 +99,8 @@ $stats = [
                 }
                 
                 $custom_thumb = '';
-                if ($slug && function_exists('sgh_get_project_thumbnail')) {
-                    $custom_thumb = sgh_get_project_thumbnail($slug);
+                if ($slug && function_exists('sgh_project_cover_url')) {
+                    $custom_thumb = sgh_project_cover_url($slug);
                 }
                 
                 $img_path = $custom_thumb ? str_replace(sgh_uploads_base_url() . '/', '', $custom_thumb) : $item['src'];

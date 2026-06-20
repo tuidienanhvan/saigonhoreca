@@ -147,8 +147,19 @@ Ba pillar canonical — pattern tối ưu nhất, học theo:
 | 19 | renovate-sol-kitchen-bar-quan-7 | `solq7` | Cải tạo kitchen & bar Q7, accent amber/ember | `/du-an/renovate-sol-kitchen-bar-quan-7/` · `.com/renovate-sol-kitchen-bar-district-7/` |
 | 20 | mua-craft-sake-lam-ruou-sake-dau-tien-tai-viet-nam | `mua` | Craft sake brewery đầu tiên VN | `/du-an/mua-craft-sake-lam-ruou-sake-dau-tien-tai-viet-nam/` · `.com/mua-craft-sake-vietnams-first-craft-sake-brewery/` |
 | 21 | du-an-bep-cang-tin-cong-ty-nhat-nichiyo | `nichiyo` | Bếp căng tin công nghiệp Nichiyo | `/du-an/du-an-bep-cang-tin-cong-ty-nhat-nichiyo/` · `.com/industrial-kitchen-canteen-kitchen-of-nichiyo/` |
+| 22 | du-an-kdl-rung-thong-nui-voi-cua-saigonhoreca | `kdl` | KDL Rừng Thông Núi Voi, bếp khu du lịch Tây Nguyên | `/du-an/du-an-kdl-rung-thong-nui-voi-cua-saigonhoreca/` |
+| 23 | moa-moa | `moa` | Eatery, hero + concept + gallery | `/du-an/moa-moa/` |
+| 24 | du-nam-an-an | `nan` | An toàn & hiệu quả, accent ổn định | `/du-an/du-nam-an-an/` |
+| 25 | tales-by-chapter | `tbc` | All-day dining theo "chương", 6 section | `/du-an/tales-by-chapter/` |
+| 26 | hemma-desserts-mot-goc-nho-chau-au-giua-thao-dien | `hmd` | Dessert kiểu Âu 11m², drop-cap + numeral watermark | `/du-an/hemma-desserts-mot-goc-nho-chau-au-giua-thao-dien/` |
+| 27 | du-an-vinh-hiep | `vhp` | Vĩnh Hiệp Coffee Lab, 6 section | `/du-an/du-an-vinh-hiep/` |
+| 28 | bep-an-truong-mam-non-tu-thuc-trinh-vuong | `tvg` | Bếp ăn trường mầm non Trinh Vương, luồng 1 chiều inox 304 | `/du-an/bep-an-truong-mam-non-tu-thuc-trinh-vuong/` |
+| 29 | bep-canteen-nha-may-sheh-fung | `shf` | Bếp canteen nhà máy Sheh Fung, 7 section + cta | `/du-an/bep-canteen-nha-may-sheh-fung/` |
+| 30 | spice-world-hotpot | `swh` | Lẩu Tứ Xuyên, hero parallax + chips cờ quốc tế | `/du-an/spice-world-hotpot/` |
 
-> **Đang chờ làm (10)**: yuzu-omakase, elephant(kdl-rung-thong), moa-moa, du-nam-an-an, tales-by-chapter, hemma-desserts, du-an-vinh-hiep, bep-an-truong-mam-non, sheh-fung, spice-world-hotpot. → Mỗi cái xong thì bổ sung vào bảng 4.2 + xóa khỏi danh sách này.
+> **Đang chờ làm**: (hết pillar trong batch này) — chỉ còn `yuzu-omakase` cần đối chiếu trạng thái riêng + task refactor `remove-related-cta` (TASK-20260529-034). → Mỗi cái xong thì bổ sung vào bảng 4.2.
+>
+> **Lưu ý (2026-06-10)**: rows 22-30 verified qua inspection (curl markup + visual screenshot trên .local) sau sự cố NUL-corruption làm mất dossier/return gốc. Đã archive về `.pi-task-handoffs/archive/2026-05/TASK-...`.
 
 ### 4.3 Checklist trước khi thêm vào registry
 - [ ] 0 hex màu brand hardcode (chỉ `var(--*)` / `color-mix`)

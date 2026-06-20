@@ -6,43 +6,91 @@
  * motion logic stays identical (Ken Burns zoom 6s + cross-fade 1.2s +
  * `is-hero-ready` class trigger from `assets/js/hero-carousel.js`).
  *
- * Differences from saigonhouse hero:
- *   - Caption text (TƯ VẤN / BESPOKE / etc.) is BAKED into the JPGs, so
- *     no HTML overlay needed. Just bg image + light overlay.
- *   - 2 production banners (SGH-banner.jpg, SGH-banner-02.jpg).
- *
- * IMPORTANT — DOM structure that the JS expects:
- *   <section class="sh-hero">
- *     <div id="sh-hero-slider" class="sh-hero__slider">   ← id HERE, not on section
- *       <div class="sh-hero__slides">
- *         <div class="carousel-slide active" style="display:block;opacity:1;z-index:20;">
- *           <img class="slide-bg sh-hero__bg-img" …>     ← BOTH classes for CSS+JS compat
- *           <div class="sh-hero__overlay"></div>
- *         </div>
- *       </div>
- *       <button id="hero-prev">…</button>
- *       <button id="hero-next">…</button>
- *       <div class="sh-hero__dots">
- *         <button class="carousel-dot sh-hero__dot active" data-index="0"></button>
- *       </div>
- *     </div>
- *   </section>
- *
  * @package SaigonHoreca
  */
 if (!defined('ABSPATH')) exit;
 $uri = get_template_directory_uri();
 
-$slides = [
-    [
-        'img' => 'saigonhoreca/SGH-banner-1.webp',
-        'alt' => 'Bespoke Kitchen & Bar — Saigon Horeca',
-    ],
-    [
-        'img' => 'saigonhoreca/SGH-banner-02.webp',
-        'alt' => 'Tư vấn thiết kế thi công bếp công nghiệp — Saigon Horeca',
-    ],
-];
+// Query 5 projects for the hero slider dynamically
+$slides = [];
+$q_hero = new WP_Query([
+    'post_type'      => 'project',
+    'post_status'    => 'publish',
+    'posts_per_page' => 5,
+    'orderby'        => 'date',
+    'order'          => 'DESC',
+]);
+
+if ($q_hero->have_posts()) {
+    while ($q_hero->have_posts()) {
+        $q_hero->the_post();
+        global $post;
+        $post_slug = isset($post->post_name) ? $post->post_name : '';
+        
+        // Cover attachment (đã responsive sau khi sgh_project_cover_ensure chạy)
+        // → ưu tiên dùng cho srcset; fallback URL folder nếu chưa có attachment.
+        $thumb_id  = get_post_thumbnail_id();
+        $thumb_src = '';
+        if ($thumb_id) {
+            $thumb_src = wp_get_attachment_image_url($thumb_id, 'large');
+        }
+        if (!$thumb_src && $post_slug && function_exists('sgh_project_cover_url')) {
+            $thumb_src = sgh_project_cover_url($post_slug);
+        }
+
+        // Skip if no image is available
+        if (!$thumb_src) {
+            continue;
+        }
+        
+        $title = '';
+        if ($post_slug && function_exists('sgh_get_project_meta')) {
+            $title = sgh_get_project_meta($post_slug, 'Title');
+        }
+        if (!$title) {
+            $title = get_the_title();
+        }
+        
+        $address = '';
+        if ($post_slug && function_exists('sgh_get_project_meta')) {
+            $address = sgh_get_project_meta($post_slug, 'Address');
+        }
+        if (!$address) {
+            $address = function_exists('get_field') ? (string) get_field('address') : '';
+        }
+        
+        $subtitle = $address ? "Dự án thiết bị bếp công nghiệp và quầy bar cao cấp tại " . $address : "Tư vấn thiết kế, sản xuất và thi công trọn gói bếp nhà hàng chuyên nghiệp.";
+        
+        $slides[] = [
+            'img' => $thumb_src,
+            'thumb_id' => $thumb_id,
+            'alt' => $title . ' — Saigon Horeca',
+            'title' => $title,
+            'subtitle' => $subtitle,
+            'btn_text_1' => 'CHI TIẾT DỰ ÁN',
+            'btn_link_1' => get_permalink(),
+            'btn_text_2' => 'LIÊN HỆ NGAY',
+            'btn_link_2' => sgh_url('contact'),
+        ];
+    }
+    wp_reset_postdata();
+}
+
+// Fallback slides if no projects found with thumbnails
+if (empty($slides)) {
+    $slides = [
+        [
+            'img' => esc_url(sgh_img('saigonhoreca/SGH-banner-02.webp')),
+            'alt' => 'Bespoke Kitchen & Bar — Saigon Horeca',
+            'title' => 'BẾP & BAR CÔNG NGHIỆP THẬT BẢN SẮC',
+            'subtitle' => 'Tư vấn thiết kế, sản xuất thiết bị inox và thi công trọn gói hệ thống bếp công nghiệp nhà hàng, quầy bar cao cấp.',
+            'btn_text_1' => 'XEM DỰ ÁN',
+            'btn_link_1' => sgh_url('projects_index'),
+            'btn_text_2' => 'LIÊN HỆ NGAY',
+            'btn_link_2' => sgh_url('contact'),
+        ]
+    ];
+}
 ?>
 <section class="sh-hero" aria-label="<?php esc_attr_e('Slider giới thiệu Saigon Horeca', 'saigonhoreca'); ?>">
     <div id="sh-hero-slider" class="sh-hero__slider">
@@ -59,14 +107,11 @@ $slides = [
                      style="<?php echo esc_attr($initial_style); ?>"
                      data-index="<?php echo (int) $index; ?>">
                     <?php
-                    $img_ext = pathinfo($s['img'], PATHINFO_EXTENSION);
-                    $img_base = substr($s['img'], 0, -(strlen($img_ext) + 1));
-                    $img_mobile = "{$img_base}-mobile.{$img_ext}";
+                    $hero_srcset = !empty($s['thumb_id']) ? wp_get_attachment_image_srcset($s['thumb_id'], 'large') : '';
                     ?>
                     <img
-                        src="<?php echo esc_url(sgh_img("{$s['img']}")); ?>"
-                        srcset="<?php echo esc_url(sgh_img($img_mobile)); ?> 600w, <?php echo esc_url(sgh_img("{$s['img']}")); ?> 1200w"
-                        sizes="(max-width: 576px) 600px, 100vw"
+                        src="<?php echo esc_url($s['img']); ?>"
+                        <?php if ($hero_srcset) : ?>srcset="<?php echo esc_attr($hero_srcset); ?>" sizes="(max-width: 768px) 100vw, 1200px"<?php endif; ?>
                         alt="<?php echo esc_attr($s['alt']); ?>"
                         width="1200" height="675"
                         loading="<?php echo esc_attr($loading_attr); ?>"
@@ -74,6 +119,30 @@ $slides = [
                         class="slide-bg sh-hero__bg-img"
                     />
                     <div class="sh-hero__overlay"></div>
+                    
+                    <!-- Lớp phủ nội dung chữ động -->
+                    <div class="sh-hero__content-box">
+                        <div class="sh-hero__container">
+                            <?php if ($index === 0) : ?>
+                                <h1 class="sh-hero__title"><?php echo esc_html($s['title']); ?></h1>
+                            <?php else : ?>
+                                <h2 class="sh-hero__title"><?php echo esc_html($s['title']); ?></h2>
+                            <?php endif; ?>
+                            <p class="sh-hero__subtitle"><?php echo esc_html($s['subtitle']); ?></p>
+                            <div class="sh-hero__actions">
+                                <?php if (!empty($s['btn_text_1'])) : ?>
+                                    <a href="<?php echo esc_url($s['btn_link_1']); ?>" class="sh-hero__btn sh-hero__btn--primary">
+                                        <?php echo esc_html($s['btn_text_1']); ?>
+                                    </a>
+                                <?php endif; ?>
+                                <?php if (!empty($s['btn_text_2'])) : ?>
+                                    <a href="<?php echo esc_url($s['btn_link_2']); ?>" class="sh-hero__btn sh-hero__btn--secondary">
+                                        <?php echo esc_html($s['btn_text_2']); ?>
+                                    </a>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             <?php endforeach; ?>
         </div>

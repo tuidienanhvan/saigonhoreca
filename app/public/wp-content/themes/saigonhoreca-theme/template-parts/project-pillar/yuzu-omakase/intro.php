@@ -124,7 +124,7 @@ $stats = [
           <!-- Ảnh 1: Thuyền cầu gai Uni (Wide) -->
           <figure class="pp-image-container-shared pp-intro-yzo__fig--wide-top scroll-reveal">
             <img src="<?php echo esc_url(sgh_img('yuzu-omakase/yuzu-omakase-thuyen-cau-gai-uni-thuong-hang.webp')); ?>" alt="<?php echo esc_attr__('Thuyền gỗ bày biện cồi cầu gai Nhật Bản Uni tươi rói', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
-            <div class="pp-image-caption-shared"><?php echo esc_html__('Thuyền gỗ bày biện cồi cầu gai Nhật Bản (Uni) tươi rói bên cạnh cặp tượng vàng chiêu tài, nâng tầm trải nghiệm ẩm thực thượng hạng.', 'saigonhoreca'); ?></div>
+            <div class="pp-image-caption-shared"><?php echo esc_html__('Thuyền sơn mài bày kín cồi cầu gai Nhật Bản (Uni) vàng óng, cánh buồm thư pháp chữ Phúc cùng tượng thần tài mạ vàng chiêu tài — nghi thức trình bày nâng tầm trải nghiệm hải sản thượng hạng.', 'saigonhoreca'); ?></div>
           </figure>
 
           <!-- Ảnh 2: Sashimi tôm hùm tre (Normal) -->
@@ -142,7 +142,7 @@ $stats = [
           <!-- Ảnh 4: Không gian quầy trà và bonsai mạ vàng (Wide) -->
           <figure class="pp-image-container-shared pp-intro-yzo__fig--wide-bot scroll-reveal">
             <img src="<?php echo esc_url(sgh_img('yuzu-omakase/yuzu-omakase-quay-tra-chieu-cay-canh-bonsai-ma-vang.webp')); ?>" alt="<?php echo esc_attr__('Không gian thưởng trà thiền tịnh tĩnh lặng với điểm nhấn là cây bonsai mạ vàng', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
-            <div class="pp-image-caption-shared"><?php echo esc_html__('Không gian thưởng trà thiền tịnh tĩnh lặng với điểm nhấn là cây bonsai mạ vàng lấp lánh bên cạnh bộ ấm trà thủy tinh thanh khiết.', 'saigonhoreca'); ?></div>
+            <div class="pp-image-caption-shared"><?php echo esc_html__('Cây bonsai lá mạ vàng trong chậu vàng làm điểm nhấn trên quầy gỗ, bên cạnh đĩa gốm hình hoa bày món tráng miệng hình quả yuzu — chi tiết trang trí tôn lên không gian Omakase tinh tế.', 'saigonhoreca'); ?></div>
           </figure>
 
         </div>

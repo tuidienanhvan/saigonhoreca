@@ -42,17 +42,10 @@ $uri = get_template_directory_uri();
         <div class="pp-specs-lb__collage">
           <!-- Ảnh nền chính (Bản vẽ thực tế line bếp) -->
           <div class="pp-image-container-shared pp-specs-lb__img-under">
-            <img src="<?php echo sgh_img('little-bear-thao-dien/little-bear-thao-dien-ban-ngan-keo-tumat.jpg'); ?>" alt="<?php echo esc_attr__('Hệ thống bếp nướng than hoa, lò hấp nướng đa năng Rational và bếp phẳng hồng ngoại tại Little Bear', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="600" height="800">
+            <img src="<?php echo sgh_img('little-bear-thao-dien/little-bear-thao-dien-ban-ngan-keo-tumat.jpg'); ?>" alt="<?php echo esc_attr__('Lò hấp nướng đa năng Rational Combi và line bếp hồng ngoại phẳng inox tại Little Bear', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="600" height="800">
             <div class="pp-image-caption-shared"><?php echo esc_html__('Bố cục bếp M&E đỉnh cao tích hợp lò hấp nướng đa năng Rational Combi hiện đại cùng bếp hồng ngoại phẳng inox 304, mang đến giải pháp vận hành an toàn, vệ sinh và tiết kiệm năng lượng tối đa.', 'saigonhoreca'); ?></div>
           </div>
 
-          <!-- Ảnh chồng đè góc (Cận cảnh bếp phẳng) -->
-          <div class="pp-image-container-shared pp-specs-lb__img-over">
-            <div class="pp-specs-lb__img-over-inner">
-              <img src="<?php echo sgh_img('little-bear-thao-dien/little-bear-thao-dien-chi-tiet-bep-inox.jpg'); ?>" alt="<?php echo esc_attr__('Cận cảnh mặt bếp hồng ngoại phẳng cao cấp và chảo thép đen carbon tại khu vực bếp nóng Little Bear', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="600" height="800">
-            </div>
-            <div class="pp-image-caption-shared"><?php echo esc_html__('Chi tiết gia công cạnh tủ inox 304 phẳng mịn không tì vết, tối ưu hóa vệ sinh và độ bền bỉ trong bếp nóng.', 'saigonhoreca'); ?></div>
-          </div>
         </div>
       </div>
 

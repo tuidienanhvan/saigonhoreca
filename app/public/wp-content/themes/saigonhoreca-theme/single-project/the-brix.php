@@ -1,7 +1,7 @@
 <?php
 /**
  * Single Project Template — The Brix
- * Thumbnail: the-brix/the-brix-khong-gian-am-thuc-len-den-dem.webp
+ * Thumbnail: the-brix/the-brix-thumbnail-project-cover.webp
  *
  * Auto-routed via inc/core/pillar-routes.php for /du-an/the-brix/.
  *

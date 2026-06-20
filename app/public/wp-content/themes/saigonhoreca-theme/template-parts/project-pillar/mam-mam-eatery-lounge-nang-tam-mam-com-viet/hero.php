@@ -1,15 +1,18 @@
 <?php
 /**
  * Project Pillar — mam-mam-eatery-lounge-nang-tam-mam-com-viet
- * Section #1: hero — Vietnamese Modern Heritage. Cinematic Ken-Burns
- * hero with rice-grain gold texture, conical-hat arc ornament, mâm motif.
+ * Section #1: hero — Vietnamese Modern Heritage. Full-bleed background image
+ * with reliable CSS parallax (no JS): __bg uses background-attachment:fixed,
+ * light token overlay keeps the photo bright, text-shadow
+ * for legibility. Rice-grain gold texture, conical-hat arc ornament, mâm motif.
  * @package SaigonHoreca
  */
 if (!defined('ABSPATH')) exit;
 $uri = get_template_directory_uri();
 ?>
 <section class="pp-hero-mam">
-    <div class="pp-hero-mam__media" style="background-image:url('<?php echo sgh_img('mam-mam-eatery-lounge-nang-tam-mam-com-viet/mam-mam-nang-tam-mam-com-viet-1.jpg'); ?>');" aria-hidden="true"></div>
+    <!-- Thẻ con tạo hiệu ứng Parallax bằng background-attachment:fixed (không JS) -->
+    <div class="pp-hero-mam__bg" style="background-image:url('<?php echo sgh_img('mam-mam-eatery-lounge-nang-tam-mam-com-viet/mam-mam-khu-lounge-ghe-banh-nhin-ra-quay-bar.webp'); ?>');" aria-hidden="true"></div>
     <div class="pp-hero-mam__overlay" aria-hidden="true"></div>
     <div class="pp-hero-mam__glow" aria-hidden="true"></div>
     <div class="pp-hero-mam__tray" aria-hidden="true"></div>

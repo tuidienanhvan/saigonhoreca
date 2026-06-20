@@ -88,9 +88,9 @@ $uri = get_template_directory_uri();
               <path d="M 20,100 L 0,100 L 0,80" stroke="var(--gold)" stroke-width="1.5" fill="none" opacity="0.3"/>
             </svg>
             <div class="pp-image-container-shared">
-              <img src="<?php echo sgh_img('casa-maria/casa-maria-he-thong-bep-nau-au-inox.jpg'); ?>" alt="<?php echo esc_attr__('Hệ thống bếp nấu và chụp hút mùi Casa Maria', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
+              <img src="<?php echo sgh_img('casa-maria/casa-maria-signboard-spanish-kitchen.jpg'); ?>" alt="<?php echo esc_attr__('Mặt tiền và bảng hiệu Casa Maria Spanish Kitchen', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
               <div class="pp-image-caption-shared">
-                <?php echo esc_html__('Hệ thống chụp hút mùi chuyên dụng và bếp nấu Âu inox đồng bộ', 'saigonhoreca'); ?>
+                <?php echo esc_html__('Bảng hiệu đỏ Casa Maria Spanish Kitchen bên hiên gỗ ngoài trời, nơi nhịp bếp mở êm ái hòa cùng không gian thư thái', 'saigonhoreca'); ?>
               </div>
             </div>
           </div>
@@ -107,9 +107,9 @@ $uri = get_template_directory_uri();
               <path d="M 20,100 L 0,100 L 0,80" stroke="var(--gold)" stroke-width="1.5" fill="none" opacity="0.3"/>
             </svg>
             <div class="pp-image-container-shared">
-              <img src="<?php echo sgh_img('casa-maria/casa-maria-thiet-bi-bep-au-griddle-tu-lanh.jpg'); ?>" alt="<?php echo esc_attr__('Chi tiết thiết bị bếp Âu Casa Maria', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
+              <img src="<?php echo sgh_img('casa-maria/casa-maria-banh-ngot-basque-cheesecake-cafe.jpg'); ?>" alt="<?php echo esc_attr__('Bánh Basque cheesecake và ly cafe Casa Maria', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
               <div class="pp-image-caption-shared">
-                <?php echo esc_html__('Chi tiết thiết bị bếp Âu và griddle inox cao cấp lắp đặt hoàn thiện', 'saigonhoreca'); ?>
+                <?php echo esc_html__('Lát Basque cheesecake rưới sốt caramel cùng ly cafe sữa nóng, thành quả ngọt ngào từ căn bếp vận hành êm ái', 'saigonhoreca'); ?>
               </div>
             </div>
           </div>

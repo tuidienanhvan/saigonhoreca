@@ -24,8 +24,8 @@ $uri = get_template_directory_uri();
       <div class="pp-intro-brix__side">
         <div class="pp-image-container-shared pp-intro-brix__image-container">
           <div class="pp-intro-brix__image-tag">Resort Living</div>
-          <img src="<?php echo sgh_img('the-brix/the-brix-khong-gian-am-thuc-len-den-dem.jpg'); ?>" alt="<?php echo esc_attr__('The Brix Tropical Pool-Side Space', 'saigonhoreca'); ?>" loading="lazy">
-          <div class="pp-image-caption-shared"><?php echo esc_html__('Không gian ẩm thực ngoài trời đầy thư thái bên hồ bơi, nổi bật với hệ trần lam gỗ tự nhiên đón ánh sáng tự nhiên và gió mát dịu', 'saigonhoreca'); ?></div>
+          <img src="<?php echo sgh_img('the-brix/the-brix-khong-gian-am-thuc-len-den-dem.jpg'); ?>" alt="<?php echo esc_attr__('Khu lounge ngoài trời The Brix với ô dù và sofa bên hồ bơi lúc chạng vạng', 'saigonhoreca'); ?>" loading="lazy">
+          <div class="pp-image-caption-shared"><?php echo esc_html__('Khu lounge ngoài trời lúc chạng vạng với hệ ô dù canvas mềm mại và ghế sofa thấp bên hồ bơi, ánh đèn ấm vàng cùng rặng cây nhiệt đới rợp bóng kiến tạo trải nghiệm nghỉ dưỡng thư thái.', 'saigonhoreca'); ?></div>
         </div>
       </div>
 

@@ -7,6 +7,9 @@
 if (!defined('ABSPATH')) exit;
 ?>
 <section class="pp-section-solq7 pp-gallery-section-solq7 scroll-reveal">
+  <div class="pp-solq7-ambient-glow pp-solq7-ambient-glow--tr pp-gallery-solq7__glow" aria-hidden="true"></div>
+  <div class="pp-gallery-solq7__watermark" aria-hidden="true">06</div>
+
   <div class="pp-container-shared">
     <header class="pp-gallery-solq7__head scroll-reveal">
       <span class="pp-text-solq7__tag"><span class="pp-text-solq7__tag-accent">//</span> <?php echo esc_html__('GIẢI PHÁP ĐỒNG BỘ', 'saigonhoreca'); ?></span>
@@ -15,39 +18,39 @@ if (!defined('ABSPATH')) exit;
     </header>
 
     <div class="pp-gallery-solq7">
-      <div class="pp-gallery-solq7__item pp-gallery-solq7__item--wide scroll-reveal">
+      <div class="pp-gallery-solq7__item scroll-reveal">
         <div class="pp-image-container-shared">
-          <img src="<?php echo sgh_img('renovate-sol-kitchen-bar-quan-7/sol-sgh.jpg'); ?>" alt="<?php echo esc_attr__('Hệ thống bếp công nghiệp hoàn thiện tại Sol Kitchen & Bar - Saigon Horeca', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
+          <img src="<?php echo sgh_img('renovate-sol-kitchen-bar-quan-7/sol-kitchen-bar-q7-chup-hut-khoi-inox-hoan-thien.webp'); ?>" alt="<?php echo esc_attr__('Hệ thống chụp hút khói inox hoàn thiện khắc logo Sol Kitchen & Bar tại bếp công nghiệp Quận 7', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
           <div class="pp-image-caption-shared"><?php echo esc_html__('Toàn cảnh gian bếp hoàn thiện với hệ thiết bị inox cao cấp, sẵn sàng cho tần suất phục vụ cao điểm.', 'saigonhoreca'); ?></div>
-        </div>
-      </div>
-      <div class="pp-gallery-solq7__item pp-gallery-solq7__item--tall scroll-reveal">
-        <div class="pp-image-container-shared">
-          <img src="<?php echo sgh_img('renovate-sol-kitchen-bar-quan-7/lo-bbq-sgh.jpg'); ?>" alt="<?php echo esc_attr__('Lò BBQ phong cách Ý sản xuất riêng cho Sol Kitchen & Bar - Saigon Horeca', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
-          <div class="pp-image-caption-shared"><?php echo esc_html__('Lò BBQ độc quyền phong cách Ý, điểm nhấn thẩm mỹ cho gian bếp mở phục vụ thực đơn Mỹ Latinh.', 'saigonhoreca'); ?></div>
         </div>
       </div>
       <div class="pp-gallery-solq7__item scroll-reveal">
         <div class="pp-image-container-shared">
-          <img src="<?php echo sgh_img('renovate-sol-kitchen-bar-quan-7/chup-hut-8m-2-1.jpg'); ?>" alt="<?php echo esc_attr__('Cận cảnh thi công lắp đặt chụp hút khói 8m - Saigon Horeca', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
+          <img src="<?php echo sgh_img('renovate-sol-kitchen-bar-quan-7/sol-kitchen-bar-q7-lo-nuong-bbq-inox-tay-quay.webp'); ?>" alt="<?php echo esc_attr__('Lò nướng BBQ inox công nghiệp có tay quay nâng hạ vỉ, lót gạch chịu lửa, do Saigon Horeca sản xuất cho bếp Sol Kitchen & Bar Quận 7', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
+          <div class="pp-image-caption-shared"><?php echo esc_html__('Lò BBQ phong cách Ý sản xuất riêng cho Sol Quận 7, điểm nhấn thẩm mỹ cho gian bếp mở.', 'saigonhoreca'); ?></div>
+        </div>
+      </div>
+      <div class="pp-gallery-solq7__item scroll-reveal">
+        <div class="pp-image-container-shared">
+          <img src="<?php echo sgh_img('renovate-sol-kitchen-bar-quan-7/sol-kitchen-bar-q7-thi-cong-lap-dat-ong-hut-khoi-inox.webp'); ?>" alt="<?php echo esc_attr__('Thi công lắp đặt hệ thống ống hút khói inox dài trên trần tại công trình bếp Sol Kitchen & Bar Quận 7', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
           <div class="pp-image-caption-shared"><?php echo esc_html__('Cận cảnh lắp đặt chụp hút khói 8m khu nấu chính, đường ghép inox được gia công tỉ mỉ.', 'saigonhoreca'); ?></div>
         </div>
       </div>
       <div class="pp-gallery-solq7__item scroll-reveal">
         <div class="pp-image-container-shared">
-          <img src="<?php echo sgh_img('renovate-sol-kitchen-bar-quan-7/thi-cong-02.jpg'); ?>" alt="<?php echo esc_attr__('Quy trình lắp đặt thiết bị bếp inox công nghiệp - Saigon Horeca', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
-          <div class="pp-image-caption-shared"><?php echo esc_html__('Đội ngũ kỹ thuật lắp đặt thiết bị bếp inox theo tiêu chuẩn nghiêm ngặt tại công trường.', 'saigonhoreca'); ?></div>
-        </div>
-      </div>
-      <div class="pp-gallery-solq7__item pp-gallery-solq7__item--wide scroll-reveal">
-        <div class="pp-image-container-shared">
-          <img src="<?php echo sgh_img('renovate-sol-kitchen-bar-quan-7/du-an-sol-kitchenbar-1.jpg'); ?>" alt="<?php echo esc_attr__('Không gian Sol Kitchen & Bar sau cải tạo - Saigon Horeca', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
-          <div class="pp-image-caption-shared"><?php echo esc_html__('Không gian Sol Kitchen & Bar Quận 7 sau cải tạo, kết hợp hài hòa giữa bếp vận hành và trải nghiệm thực khách.', 'saigonhoreca'); ?></div>
+          <img src="<?php echo sgh_img('renovate-sol-kitchen-bar-quan-7/sol-kitchen-bar-q7-thi-cong-lap-dat-bep-inox-boc-nilon.webp'); ?>" alt="<?php echo esc_attr__('Thi công lắp đặt thiết bị bếp inox công nghiệp còn bọc nilon tại công trường Sol Kitchen & Bar Quận 7', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
+          <div class="pp-image-caption-shared"><?php echo esc_html__('Thiết bị bếp inox còn nguyên lớp bọc nilon trong giai đoạn lắp đặt, hệ ống gió chạy dọc trần ngói tại công trường.', 'saigonhoreca'); ?></div>
         </div>
       </div>
       <div class="pp-gallery-solq7__item scroll-reveal">
         <div class="pp-image-container-shared">
-          <img src="<?php echo sgh_img('renovate-sol-kitchen-bar-quan-7/thi-cong-04.jpg'); ?>" alt="<?php echo esc_attr__('Thi công lắp đặt thiết bị bếp tại công trường - Saigon Horeca', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
+          <img src="<?php echo sgh_img('renovate-sol-kitchen-bar-quan-7/sol-kitchen-bar-q7-bep-inox-hoan-thien-chup-hut-lo-hap.webp'); ?>" alt="<?php echo esc_attr__('Bếp mở inox hoàn thiện với cụm chụp hút khắc logo Sol Kitchen & Bar, lò combi RATIONAL, lò đối lưu EKA và khay nguyên liệu tươi', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
+          <div class="pp-image-caption-shared"><?php echo esc_html__('Bếp mở inox hoàn thiện: chụp hút khắc logo Sol, lò RATIONAL & EKA cùng khay nguyên liệu tươi sẵn sàng phục vụ.', 'saigonhoreca'); ?></div>
+        </div>
+      </div>
+      <div class="pp-gallery-solq7__item scroll-reveal">
+        <div class="pp-image-container-shared">
+          <img src="<?php echo sgh_img('renovate-sol-kitchen-bar-quan-7/sol-kitchen-bar-q7-thi-cong-lap-quay-bep-inox-cong-truong.webp'); ?>" alt="<?php echo esc_attr__('Thi công lắp đặt quầy bếp inox tại công trường cải tạo, tường đang đập phá còn xà bần tại Sol Kitchen & Bar Quận 7', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
           <div class="pp-image-caption-shared"><?php echo esc_html__('Từng khớp nối và đường ống được giám sát chặt chẽ nhằm triệt tiêu rủi ro vận hành.', 'saigonhoreca'); ?></div>
         </div>
       </div>
@@ -63,8 +66,8 @@ if (!defined('ABSPATH')) exit;
     <div class="pp-split-solq7 pp-split-solq7--reverse pp-outro-solq7__layout">
       <div class="pp-split-solq7__media scroll-reveal">
         <div class="pp-image-container-shared pp-frame-solq7 pp-frame-solq7--panorama">
-          <img src="<?php echo sgh_img('renovate-sol-kitchen-bar-quan-7/SGH-sold7-01.jpg'); ?>" alt="<?php echo esc_attr__('Hệ thống thiết bị bếp inox công nghiệp cao cấp tại Sol Kitchen & Bar - Saigon Horeca', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
-          <div class="pp-image-caption-shared"><?php echo esc_html__('Công trình bàn giao chỉn chu, sẵn sàng đáp ứng tần suất phục vụ liên tục trong khung giờ cao điểm.', 'saigonhoreca'); ?></div>
+          <img src="<?php echo sgh_img('renovate-sol-kitchen-bar-quan-7/renovate-sol-kitchen-bar-quan-7-thi-cong-lap-dat-lo-rational.webp'); ?>" alt="<?php echo esc_attr__('Giai đoạn lắp đặt thiết bị bếp tại Sol Kitchen & Bar Quận 7: lò combi RATIONAL, tủ inox và tủ mát còn bọc nilon đặt sát tường ốp gạch đen của công trường', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
+          <div class="pp-image-caption-shared"><?php echo esc_html__('Thiết bị inox và lò RATIONAL được tập kết, bọc kỹ và lắp đặt theo trình tự để bảo đảm chuỗi vận hành liên tục, ổn định.', 'saigonhoreca'); ?></div>
         </div>
       </div>
 

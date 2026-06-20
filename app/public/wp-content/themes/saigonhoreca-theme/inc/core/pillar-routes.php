@@ -34,6 +34,19 @@ if (!function_exists('sgh_pillar_route_serve')) {
 
         if (!$is_canonical_path && !$is_root_alias) return;
         $slug = strtolower($m[1]);
+        // Language-aware project prefix — 'du-an' on .vn, 'projects' on .com.
+        $proj = function_exists('sgh_slug') ? sgh_slug('projects_index') : 'du-an';
+
+        // ── Consolidation 301s: retired / duplicate slugs → canonical URL.
+        // sol-kitchen-bar was an older duplicate of the Sol Quận 7 renovation;
+        // the canonical page is renovate-sol-kitchen-bar-quan-7. Avoids dup content.
+        $sgh_route_301 = [
+            'sol-kitchen-bar' => 'renovate-sol-kitchen-bar-quan-7',
+        ];
+        if (isset($sgh_route_301[$slug])) {
+            wp_safe_redirect(home_url('/' . $proj . '/' . $sgh_route_301[$slug] . '/'), 301);
+            exit;
+        }
 
         // Bypass định tuyến ảo nếu đã có Post thật thuộc Custom Post Type project
         $existing_project = get_posts([
@@ -67,11 +80,11 @@ if (!function_exists('sgh_pillar_route_serve')) {
             return;
         }
 
-        $canonical_url = home_url('/du-an/' . $slug . '/');
+        $canonical_url = home_url('/' . $proj . '/' . $slug . '/');
 
         // If a real WP Page exists under /du-an/<slug>/, let WP render the
         // canonical path natively, but still support root alias redirects.
-        $existing = get_page_by_path('du-an/' . $slug);
+        $existing = get_page_by_path($proj . '/' . $slug);
         if ($existing) {
             if ($is_root_alias) {
                 wp_safe_redirect(get_permalink($existing), 301);
@@ -137,8 +150,8 @@ if (!function_exists('sgh_pillar_route_serve')) {
         $wp_query->posts             = [ $post ];
         $wp_query->post_count        = 1;
         $wp_query->found_posts       = 1;
-        $wp_query->query             = [ 'pagename' => 'du-an/' . $slug ];
-        $wp_query->query_vars['pagename'] = 'du-an/' . $slug;
+        $wp_query->query             = [ 'pagename' => $proj . '/' . $slug ];
+        $wp_query->query_vars['pagename'] = $proj . '/' . $slug;
         $wp_query->query_vars['page_id']  = $post->ID;
         status_header(200);
 

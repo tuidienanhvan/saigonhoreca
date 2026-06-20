@@ -1,44 +1,128 @@
 /**
  * sol-kitchen-bar-saigon-horeca — gallery slot.
- * Metro image grid (with shared captions) + closing remarks split block.
- * Techniques: clamp, color-mix, grid metro layout, hover zoom (shared), reveal.
+ * GOLD editorial gallery — CLEAN UNIFORM GRID (1 → 2 → 3 cột), mọi tile cùng
+ * tỉ lệ 4/3 để xếp khít, KHÔNG còn khoảng đen trống (no span / no auto-rows).
+ * Techniques: clamp() type, color-mix tints, uniform responsive grid, shared
+ *             caption (neo dưới ảnh), ambient radial glow, faint numeric +
+ *             SVG sun watermark, hover lift + scale (--ease-spring) + gold
+ *             border, scroll-reveal, prefers-reduced-motion guard.
+ *             Tokens only, no hardcoded colors.
  * @package SaigonHoreca
  */
+
+.pp-gallery-solshr {
+  position: relative;
+  overflow: hidden;
+}
+
+.pp-gallery-solshr__watermark {
+  position: absolute;
+  top: -3.5rem;
+  left: 1.5rem;
+  z-index: 0;
+  font-family: var(--font-display);
+  font-size: clamp(11rem, 22vw, 22rem);
+  font-weight: 800;
+  line-height: 1;
+  color: color-mix(in srgb, var(--solshr-sun) 4%, transparent);
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Vầng sáng radial gold ấm áp khuếch tán phía sau lưới ảnh */
+.pp-gallery-solshr__glow {
+  position: absolute;
+  z-index: 0;
+  top: 8%;
+  right: -10%;
+  width: clamp(22rem, 48vw, 46rem);
+  height: clamp(22rem, 48vw, 46rem);
+  border-radius: var(--radius-full);
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--solshr-sun) 12%, transparent) 0%,
+    color-mix(in srgb, var(--solshr-clay) 7%, transparent) 38%,
+    transparent 70%
+  );
+  pointer-events: none;
+  filter: blur(8px);
+}
+
+/* Vân chìm SVG mặt trời hacienda */
+.pp-gallery-solshr__sun {
+  position: absolute;
+  z-index: 0;
+  bottom: -6rem;
+  left: -5rem;
+  width: clamp(16rem, 30vw, 30rem);
+  height: clamp(16rem, 30vw, 30rem);
+  color: color-mix(in srgb, var(--solshr-sun) 5%, transparent);
+  pointer-events: none;
+  user-select: none;
+}
 
 .pp-gallery-solshr__head {
   text-align: center;
   max-width: 720px;
   margin: 0 auto clamp(2rem, 4vw, 3rem);
+  position: relative;
+  z-index: 2;
 }
 
-.pp-gallery-solshr__grid {
+/* ── UNIFORM GRID ────────────────────────────────────────────
+   1 cột (mobile) → 2 cột (≥600) → 3 cột (≥992). Mọi tile cùng tỉ lệ
+   4/3 nên lưới xếp khít, không khoảng trống. Row-gap rộng để chú thích
+   báo chí (neo dưới chân ảnh) có chỗ thở. */
+.pp-gallery-solshr__mosaic {
+  position: relative;
+  z-index: 2;
   display: grid;
   grid-template-columns: 1fr;
-  gap: clamp(1rem, 2vw, 1.5rem);
+  gap: clamp(1.5rem, 2.6vw, 2.25rem) clamp(1.25rem, 2vw, 1.75rem);
 }
-@media (min-width: 768px) {
-  .pp-gallery-solshr__grid {
+
+@media (min-width: 600px) {
+  .pp-gallery-solshr__mosaic {
     grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: 1fr;
   }
-  .pp-gallery-solshr__item--wide {
-    grid-column: span 2;
+}
+
+@media (min-width: 992px) {
+  .pp-gallery-solshr__mosaic {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
 .pp-gallery-solshr__item {
   margin: 0;
+  position: relative;
 }
-.pp-gallery-solshr__item .pp-image-container-shared {
-  height: 100%;
+
+/* Khung ảnh — bo góc, viền gold mảnh, đổ bóng sâu; mọi tile cùng tỉ lệ 4/3.
+   Nâng + phóng nhẹ khi hover. */
+.pp-gallery-solshr__frame {
   border-radius: var(--radius-lg);
   overflow: hidden !important;
   border: 1px solid color-mix(in srgb, var(--solshr-sun) 12%, transparent);
-  box-shadow: var(--shadow);
-  aspect-ratio: 16 / 10;
+  box-shadow: var(--shadow-main);
+  aspect-ratio: 4 / 3;
+  transition:
+    transform 0.6s var(--ease-spring),
+    border-color 0.5s var(--ease-spring),
+    box-shadow 0.5s var(--ease-spring);
 }
-.pp-gallery-solshr__item--wide .pp-image-container-shared {
-  aspect-ratio: 21 / 9;
+.pp-gallery-solshr__frame:hover {
+  transform: translateY(-6px) scale(1.012);
+  border-color: color-mix(in srgb, var(--solshr-sun) 55%, transparent);
+  box-shadow:
+    var(--shadow-floating),
+    0 0 26px color-mix(in srgb, var(--solshr-sun) 16%, transparent);
+}
+
+/* Ảnh gốc tối — KHÔNG làm tối thêm; nâng nhẹ độ sáng để khung ảnh tươi hơn */
+.pp-gallery-solshr__frame img {
+  filter: saturate(0.99) contrast(1.03) brightness(1.02);
+  border-radius: inherit;
 }
 
 .pp-outro-solshr__layout {
@@ -62,6 +146,12 @@
   color: color-mix(in srgb, var(--solshr-sun) 88%, var(--bc));
 }
 
-@media (max-width: 991px) {
-  .pp-gallery-solshr__item--wide .pp-image-container-shared { aspect-ratio: 16 / 9; }
+@media (prefers-reduced-motion: reduce) {
+  .pp-gallery-solshr__frame,
+  .pp-outro-solshr__media .pp-image-container-shared {
+    transition: none !important;
+  }
+  .pp-gallery-solshr__frame:hover {
+    transform: none !important;
+  }
 }

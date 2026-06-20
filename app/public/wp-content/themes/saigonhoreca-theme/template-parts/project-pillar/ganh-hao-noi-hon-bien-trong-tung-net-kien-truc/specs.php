@@ -21,7 +21,7 @@ $gha_equipment = array(
       <div class="pp-specs-ganh__media pp-image-container-shared scroll-reveal reveal-left">
         <span class="pp-specs-ganh__coord pp-specs-ganh__coord--tl" aria-hidden="true">SYS_COORD</span>
         <span class="pp-specs-ganh__coord pp-specs-ganh__coord--br" aria-hidden="true">SCALE 1:1</span>
-        <img src="<?php echo sgh_img('ganh-hao-noi-hon-bien-trong-tung-net-kien-truc/ganh-hao-sgh-7.jpg'); ?>" alt="<?php echo esc_attr__('Hệ thống bếp công nghiệp Saigon Horeca tại Gành Hào', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="1366" height="768">
+        <img src="<?php echo sgh_img('ganh-hao-noi-hon-bien-trong-tung-net-kien-truc/ganh-hao-bep-cong-nghiep-inox-saigon-horeca.webp'); ?>" alt="<?php echo esc_attr__('Hệ thống bếp công nghiệp inox với bàn chế biến và chụp hút khói do Saigon Horeca thi công tại Gành Hào', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="1366" height="768">
         <figcaption class="pp-image-caption-shared"><?php echo esc_html__('Luồng vận hành xoay quanh nguyên liệu tươi sống – tốc độ nhanh, hương vị nguyên bản', 'saigonhoreca'); ?></figcaption>
       </div>
 

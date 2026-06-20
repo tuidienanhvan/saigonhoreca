@@ -34,8 +34,8 @@ foreach (glob($data_dir . '/*.json') as $f) {
     $thumb_url = '';
 
     // Highest Priority: Retrieve custom thumbnail from single PHP template comments
-    if (function_exists('sgh_get_project_thumbnail')) {
-        $thumb_url = sgh_get_project_thumbnail($slug);
+    if (function_exists('sgh_project_cover_url')) {
+        $thumb_url = sgh_project_cover_url($slug);
     }
 
     // Fallback: Retrieve thumbnail from WordPress database
@@ -117,7 +117,7 @@ if (empty($related)) return;
         </div>
         <div class="pp-related">
             <?php foreach ($related as $r) : ?>
-                <a href="<?php echo esc_url(home_url('/du-an/' . $r['slug'] . '/')); ?>"
+                <a href="<?php echo esc_url(sgh_url('projects_index', $r['slug'])); ?>"
                    class="pp-related__card"
                    aria-label="<?php echo esc_attr($r['title']); ?>">
                     <?php if ($r['thumb']) : ?>

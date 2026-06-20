@@ -7,6 +7,28 @@
 
 .pp-partnership-mam { position: relative; }
 
+/* Giant chìm "02" watermark numeral — left edge, mirrors concept's "01" */
+.pp-partnership-mam__watermark {
+  position: absolute;
+  top: clamp(-3.5rem, -3.5vw, -2.5rem);
+  left: clamp(0.5rem, 2.5vw, 2.5rem);
+  font-family: var(--font-display);
+  font-size: clamp(8rem, 18vw, 20rem);
+  font-weight: 800;
+  line-height: 1;
+  color: var(--gold);
+  opacity: 0.04;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  animation: pp-partnership-mam-float 10s var(--ease-spring) infinite alternate;
+}
+
+@keyframes pp-partnership-mam-float {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-1.1rem); }
+}
+
 /* Lead sentence — emphasised gold display line */
 .pp-partnership-mam__lead {
   margin: 0;
@@ -37,4 +59,9 @@
 
 .pp-partnership-mam .pp-text-mam__title {
   font-size: clamp(1.7rem, 3vw, 2.4rem);
+}
+
+/* Reduced motion (technique: prefers-reduced-motion) */
+@media (prefers-reduced-motion: reduce) {
+  .pp-partnership-mam__watermark { animation: none !important; }
 }
