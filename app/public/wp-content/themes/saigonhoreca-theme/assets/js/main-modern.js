@@ -113,45 +113,8 @@ document.addEventListener('DOMContentLoaded', () => {
         li.addEventListener('pointerenter', hydrate, { once: true, passive: true });
         li.addEventListener('focusin', hydrate, { once: true });
     });
-    const backToTop = document.getElementById('back-to-top');
-    const progressCircle = document.getElementById('scroll-progress-circle');
-    if (backToTop) {
-        const updateBackToTop = () => {
-            const scrollTop = window.scrollY;
-            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const scrollPercent = docHeight > 0 ? Math.min(scrollTop / docHeight, 1) : 0;
-            if (progressCircle) {
-                progressCircle.style.strokeDashoffset = String(100 - (100 * scrollPercent));
-            }
-            if (scrollTop > 100) {
-                backToTop.style.display = 'flex';
-                backToTop.style.opacity = '1';
-            } else {
-                backToTop.style.display = 'none';
-                backToTop.style.opacity = '0';
-            }
-        };
-        window.addEventListener('scroll', shDebounce(updateBackToTop, 100), { passive: true });
-        updateBackToTop();
-        backToTop.addEventListener('click', (event) => {
-            event.preventDefault();
-            const startY = window.scrollY;
-            const duration = 800; // 800ms for smooth luxury glide
-            const startTime = performance.now();
-
-            function scrollStep(currentTime) {
-                const elapsed = currentTime - startTime;
-                const progress = Math.min(elapsed / duration, 1);
-                // Ease-out cubic formula
-                const ease = 1 - Math.pow(1 - progress, 3);
-                window.scrollTo(0, startY * (1 - ease));
-                if (progress < 1) {
-                    requestAnimationFrame(scrollStep);
-                }
-            }
-            requestAnimationFrame(scrollStep);
-        });
-    }
+    // Back-to-top: gộp về assets/js/floating-buttons.js (cùng file với
+    // logic kéo-thả của #sh-floating-buttons — trước đây bị tách 2 nơi).
     const tabContainers = document.querySelectorAll('#townhouse-tabs, #villa-tabs');
     tabContainers.forEach(container => {
         const buttons = container.querySelectorAll('.sh-tab-btn');

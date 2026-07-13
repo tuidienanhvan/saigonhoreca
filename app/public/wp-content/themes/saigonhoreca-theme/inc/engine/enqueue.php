@@ -212,6 +212,12 @@ add_action('wp_enqueue_scripts', function () {
     list($tt_url, $tt_ver) = sgh_js_path('theme-toggle.js', $dir, $uri);
     wp_enqueue_script('theme-toggle', $tt_url, [], $tt_ver, true);
 
+    // Floating buttons (back-to-top + kéo-thả) — render vô điều kiện ở mọi trang
+    // qua template-parts/footer/floating-buttons.php, nên enqueue site-wide.
+    // Deps ['main-modern'] để dùng chung shDebounce toàn cục (không định nghĩa lại).
+    list($fb_url, $fb_ver) = sgh_js_path('floating-buttons.js', $dir, $uri);
+    wp_enqueue_script('sh-floating-buttons', $fb_url, ['main-modern'], $fb_ver, true);
+
     // Pillar pages giữ scroll behavior bình thường (match production) —
     // không load parallax JS. Nếu muốn re-enable sau, restore block này
 
