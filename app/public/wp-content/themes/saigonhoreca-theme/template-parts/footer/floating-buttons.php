@@ -26,14 +26,6 @@ if (!function_exists('is_plugin_active')) {
 }
 $sh_chatbot_active = is_plugin_active('pi-chatbot/pi-chatbot.php');
 ?>
-<style id="sh-fab-fix">
-/* Fix: nút "lên đầu trang" nổi PHÍA TRÊN cụm nút (ngoài flex flow) — không đẩy
-   phone/Zalo xuống khi cuộn, đúng cả khi widget đã kéo (neo top). Ghi đè bundle. */
-#back-to-top{position:absolute;left:50%;bottom:calc(100% + var(--spacing, 8px) * 2.5);transform:translateX(-50%);}
-#back-to-top:hover{transform:translateX(-50%) translateY(-3px);}
-/* A11y touch-target ≥48px trên mobile (ghi đè bundle 40px) */
-@media(max-width:767px){#sh-floating-buttons #back-to-top,#sh-floating-buttons #sh-toggle,#sh-floating-buttons .sh-phone-float,#sh-floating-buttons .sh-zalo-btn,#sh-floating-buttons .sh-fb-btn{width:48px;height:48px;}}
-</style>
 <div id="sh-floating-buttons">
     <a href="#" id="back-to-top" aria-label="<?php esc_attr_e('Cuộn lên đầu trang', 'saigonhoreca'); ?>" role="button">
         <svg class="sh-scroll-ring" viewBox="0 0 36 36">
@@ -179,11 +171,6 @@ $sh_chatbot_active = is_plugin_active('pi-chatbot/pi-chatbot.php');
     }
 
     el.addEventListener('mousedown', function (e) {
-        if (e.target.closest('a, button')) {
-            startX = e.clientX;
-            startY = e.clientY;
-        }
-
         var rect = el.getBoundingClientRect();
         isDragging = true;
         wasDragged = false;
@@ -261,7 +248,11 @@ $sh_chatbot_active = is_plugin_active('pi-chatbot/pi-chatbot.php');
         }
     }, true);
 
-    el.addEventListener('click', function () {
+    el.addEventListener('click', function (e) {
+        // Chỉ tính double-tap-để-reset khi KHÔNG trúng 1 nút chức năng (a/button) —
+        // double-click nhanh vào Zalo/Facebook/Chatbot không được vô tình reset vị trí.
+        if (e.target.closest('a, button')) return;
+
         var now = Date.now();
         if (now - lastTap < 350) {
             localStorage.removeItem(STORE_KEY);
