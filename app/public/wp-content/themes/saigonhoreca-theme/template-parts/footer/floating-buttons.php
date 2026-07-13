@@ -15,6 +15,16 @@ if (! defined('ABSPATH')) {
 
 $contact = $args['contact'] ?? (function_exists('saigonhouse_get_contact_info') ? saigonhouse_get_contact_info() : []);
 $hotline_raw = $contact['hotline_raw'] ?? str_replace([' ', '.', ','], '', $contact['hotline'] ?? '');
+
+// Nút bật/tắt AI Chatbot — CHỈ hiện khi plugin Pi Chatbot thật sự active.
+// Panel chat + toàn bộ logic (đọc ngữ cảnh bài viết đang xem, gắn sự kiện click
+// vào #sh-toggle) do plugin tự render qua wp_footer (xem footer.php) — theme chỉ
+// cung cấp đúng markup theo "hợp đồng" ID mà CSS floating-buttons.css đã định
+// sẵn từ trước (#sh-toggle / #sh-ic-chat / #sh-ic-x / #sh-badge).
+if (!function_exists('is_plugin_active')) {
+    require_once ABSPATH . 'wp-admin/includes/plugin.php';
+}
+$sh_chatbot_active = is_plugin_active('pi-chatbot/pi-chatbot.php');
 ?>
 <style id="sh-fab-fix">
 /* Fix: nút "lên đầu trang" nổi PHÍA TRÊN cụm nút (ngoài flex flow) — không đẩy
@@ -51,6 +61,14 @@ $hotline_raw = $contact['hotline_raw'] ?? str_replace([' ', '.', ','], '', $cont
             <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
         </svg>
     </a>
+    <?php endif; ?>
+
+    <?php if ($sh_chatbot_active) : ?>
+    <button type="button" id="sh-toggle" aria-label="<?php esc_attr_e('Mở trợ lý AI tư vấn', 'saigonhoreca'); ?>" data-gtm-click="click_chatbot" data-gtm-location="floating_button">
+        <svg id="sh-ic-chat" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <svg id="sh-ic-x" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        <span id="sh-badge" aria-hidden="true"></span>
+    </button>
     <?php endif; ?>
 </div>
 
