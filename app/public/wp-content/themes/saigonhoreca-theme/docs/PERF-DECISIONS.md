@@ -100,6 +100,31 @@ theo `window.load` chứ không chỉ intersection (vì hero luôn nằm trong v
 - Cả 2 mode dùng chung 1 handle (`google-fonts-sgh`) nên cơ chế async-swap
   (`style_loader_tag` filter) áp dụng đồng nhất — đã verify.
 
+## 4d-2. Checklist đo PSI thật để quyết định font mode (Bước 4, chưa thực hiện)
+
+Claude KHÔNG tự deploy được — dưới đây là quy trình để bạn (hoặc phiên Claude có quyền
+deploy) tự chạy sau khi đưa code lên production:
+
+1. **Deploy code hiện tại lên saigonhoreca.vn** qua `npm run deploy:package` (xem
+   DEPLOY-NOTES.txt) — mặc định `fonts.mode = 'google'`, không đổi hành vi hiện tại.
+2. **Đo baseline (mode google, y hệt hiện tại)**: PageSpeed Insights
+   (pagespeed.web.dev) trên `https://saigonhoreca.vn/` — chạy **10 lần**, cách nhau
+   ≥ 60s (né giờ cao điểm/CDN cache warm-up lệch), ghi lại **median** LCP + Performance
+   score (mobile). Lưu vào `docs/perf-baselines/psi-google-prod.md`.
+3. **Bật self-host tạm thời**: thêm vào `mu-plugins/` (hoặc functions.php tạm) —
+   `add_filter('sgh_fonts_mode', fn() => 'self');` — deploy lại.
+4. **Đo lại 10 lần y hệt bước 2** trên cùng URL, cùng khung giờ nếu có thể. Lưu vào
+   `docs/perf-baselines/psi-self-prod.md`.
+5. **So sánh median LCP + Performance score** — chỉ đổi mặc định trong
+   `inc/config/fonts.php` (`sgh_fonts_mode()` trả `'self'` thay vì `'google'`) nếu
+   self-host thắng RÕ RỆT (không phải chênh lệch trong khoảng nhiễu đo — PSI thật trên
+   production ổn định hơn máy dev nhiều nhưng vẫn có dao động tự nhiên, cần median đủ mẫu
+   mới kết luận).
+6. **Nếu self-host thua hoặc ngang bằng**: giữ nguyên mặc định `'google'`, xoá filter tạm,
+   giữ code self-host làm hạ tầng dự phòng (không xoá — đã có sẵn cho project khác dùng
+   font khác).
+7. Ghi kết quả + quyết định cuối vào mục này (thay thế đoạn "chưa thực hiện" ở trên).
+
 ## 4e. Fallback telemetry (Phase 8, 07/2026)
 
 `sgh_log_project_bundle_fallback()` (`inc/engine/cache-helpers.php`) ghi vào option

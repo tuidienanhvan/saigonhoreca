@@ -37,7 +37,7 @@ if (!function_exists('saigonhouse_auto_setup_front_page')) {
 
 // Tự động deploy .htaccess, robots.txt, và OG image khi kích hoạt theme (add/switch theme)
 add_action('after_switch_theme', function() {
-    $deploy_file = get_template_directory() . '/inc/admin/sync/sync-deploy.php';
+    $deploy_file = get_template_directory() . '/inc/site/admin/sync/sync-deploy.php';
     if (file_exists($deploy_file)) {
         require_once $deploy_file;
     }
@@ -86,7 +86,7 @@ add_action('wp_loaded', function() {
     $need_og_image = !file_exists($og_image_path);
 
     if ($need_htaccess || $need_robots || $need_og_image) {
-        $deploy_file = get_template_directory() . '/inc/admin/sync/sync-deploy.php';
+        $deploy_file = get_template_directory() . '/inc/site/admin/sync/sync-deploy.php';
         if (file_exists($deploy_file)) {
             require_once $deploy_file;
         }

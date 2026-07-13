@@ -31,33 +31,7 @@ if (!function_exists('mb_strlen')) {
     function mb_strlen($str, $encoding = 'UTF-8') { return strlen($str); }
 }
 
-// Disable WP UPDATE CHECKS only — không chặn Plugin Install / Search API.
-// 1. Return empty data for update transients (prevents stale check trigger)
-add_filter('pre_site_transient_update_plugins', function() { return (object) ['last_checked' => time(), 'response' => [], 'translations' => [], 'no_update' => []]; });
-add_filter('pre_site_transient_update_themes',  function() { return (object) ['last_checked' => time(), 'response' => [], 'translations' => [], 'no_update' => []]; });
-add_filter('pre_site_transient_update_core',    function() { return (object) ['last_checked' => time(), 'version_checked' => get_bloginfo('version'), 'updates' => []]; });
-// 2. Block CHỈ các endpoint update-check (không chặn plugin install / browse / download)
-add_filter('pre_http_request', function($pre, $args, $url) {
-    $block_patterns = [
-        '/core/version-check/',      // Core update check
-        '/plugins/update-check/',    // Plugin update check
-        '/themes/update-check/',     // Theme update check
-        '/core/credits/',            // Credits ping (not essential)
-    ];
-    foreach ($block_patterns as $needle) {
-        if (stripos($url, $needle) !== false) {
-            return ['response' => ['code' => 200], 'body' => ''];
-        }
-    }
-    return $pre;
-}, 1, 3);
-// 3. Remove scheduled cron events at earliest hook
-add_action('init', function() {
-    remove_action('wp_version_check', 'wp_version_check');
-    remove_action('wp_update_plugins', 'wp_update_plugins');
-    remove_action('wp_update_themes', 'wp_update_themes');
-    remove_action('wp_maybe_auto_update', 'wp_maybe_auto_update');
-}, 1);
+require get_template_directory() . '/inc/engine/update-blocker.php';
 
 /**
  * ── Performance: Disable Emojis & oEmbed ────────────────────
@@ -429,14 +403,14 @@ if (is_admin() || wp_doing_ajax() || $is_rest_api) {
     // Guarded so a missing optional module never fatals wp-admin / ajax / REST
     // (a bare require of an absent file 500s every /wp-json/pi/* call + wp-admin).
     foreach ([
-        'admin/front-page-meta.php',     // Homepage section metabox
-        'admin/dashboard-class.php',     // SGH_Dashboard class (SGH-specific stats)
-        'admin/dashboard-menu-def.php',  // sgh_dashboard_get_menu_definition() — brand menu tree
-        'admin/sync/sync-setup.php',     // Favicons, menu sync
-        'admin/sync/sync-deploy.php',    // .htaccess, robots.txt deploy
-        'admin/sync/sync-data.php',      // DB-to-JSON export, WebP convert
-        'admin/notifications.php',       // Admin notices (optional — may be absent)
-        'tools/import-gdocs.php',        // wp-admin: Posts > Import Google Docs (paste link → draft "tin tức")
+        'site/admin/front-page-meta.php',     // Homepage section metabox
+        'site/admin/dashboard-class.php',     // SGH_Dashboard class (SGH-specific stats)
+        'site/admin/dashboard-menu-def.php',  // sgh_dashboard_get_menu_definition() — brand menu tree
+        'site/admin/sync/sync-setup.php',     // Favicons, menu sync
+        'site/admin/sync/sync-deploy.php',    // .htaccess, robots.txt deploy
+        'site/admin/sync/sync-data.php',      // DB-to-JSON export, WebP convert
+        'site/admin/notifications.php',       // Admin notices (optional — may be absent)
+        'site/tools/import-gdocs.php',        // wp-admin: Posts > Import Google Docs (paste link → draft "tin tức")
     ] as $sgh_admin_mod) {
         $sgh_admin_path = $inc . $sgh_admin_mod;
         if (file_exists($sgh_admin_path)) {
@@ -497,64 +471,8 @@ add_action('admin_init', function () {
  */
 
 
-/**
- * Force HTTPS on every URL WordPress generates.
- *
- * `siteurl` and `home` options in the DB still hold `http://` because
- * the site was created over plain HTTP. Filtering them in PHP is safer
- * than a DB migration — every call to `home_url()`, `site_url()`,
- * `wp_get_attachment_url()` etc. picks up the HTTPS scheme without
- * needing a one-shot search-replace.
- *
- * T-020: required for Lighthouse Best Practices `is-on-https` audit.
- */
-$sgh_force_https_url = static function($url) {
-    if (is_string($url) && strpos($url, 'http://') === 0) {
-        return 'https://' . substr($url, 7);
-    }
-    return $url;
-};
-add_filter('option_siteurl', $sgh_force_https_url);
-add_filter('option_home', $sgh_force_https_url);
-add_filter('wp_get_attachment_url', $sgh_force_https_url);
-add_filter('wp_get_attachment_image_src', static function($image) use ($sgh_force_https_url) {
-    if (is_array($image) && !empty($image[0])) {
-        $image[0] = $sgh_force_https_url($image[0]);
-    }
-    return $image;
-});
-add_filter('wp_calculate_image_srcset', static function($sources) use ($sgh_force_https_url) {
-    if (is_array($sources)) {
-        foreach ($sources as &$s) {
-            if (isset($s['url'])) {
-                $s['url'] = $sgh_force_https_url($s['url']);
-            }
-        }
-    }
-    return $sources;
-});
-
-/**
- * Final-output HTTPS rewrite. Catches any HTTP URLs that slip through
- * the option/attachment filters (menu hrefs, permalinks, post_content
- * with hardcoded URLs, etc.). Runs after the response body is fully
- * rendered but before it leaves the server.
- *
- * Hooked late (priority 999) on `template_redirect` to register an
- * `ob_start` callback that survives until WP closes the buffer.
- */
-add_action('template_redirect', static function() {
-    $is_https = is_ssl()
-        || (!empty($_SERVER['HTTPS']) && strtolower((string) $_SERVER['HTTPS']) !== 'off')
-        || (!empty($_SERVER['HTTP_X_FORWARDED_PROTO']) && strtolower((string) $_SERVER['HTTP_X_FORWARDED_PROTO']) === 'https');
-
-    if (!$is_https || is_admin() || wp_doing_ajax() || defined('REST_REQUEST')) {
-        return;
-    }
-    ob_start(static function($buffer) {
-        return str_replace('http://saigonhoreca.local', 'https://saigonhoreca.local', (string) $buffer);
-    });
-}, 999);
+// Force HTTPS on every URL WordPress generates — moved to inc/engine/https-rewrite.php.
+require get_template_directory() . '/inc/engine/https-rewrite.php';
 
 /**
  * Redirect /saigon-admin †' WP Admin dashboard
@@ -598,35 +516,8 @@ add_action('template_redirect', function () {
 // 4. QUERY MODIFICATIONS
 // ============================================================================
 
-/**
- * Posts with featured images appear first in archives
- */
-add_filter('posts_join', function ($join, $query) {
-    if (is_admin() || !$query->is_main_query()) return $join;
-    if ($query->is_home() || $query->is_archive() || $query->is_tag() || $query->is_category()) {
-        global $wpdb;
-        if (strpos($join, 'AS mt_thumb') === false) {
-            $join .= " LEFT JOIN {$wpdb->postmeta} AS mt_thumb ON ({$wpdb->posts}.ID = mt_thumb.post_id AND mt_thumb.meta_key = '_thumbnail_id') ";
-        }
-    }
-    return $join;
-}, 10, 2);
-
-add_filter('posts_orderby', function ($orderby, $query) {
-    if (is_admin() || !$query->is_main_query()) return $orderby;
-    if ($query->is_home() || $query->is_archive() || $query->is_tag() || $query->is_category()) {
-        global $wpdb;
-        $orderby = "IF(mt_thumb.meta_value IS NOT NULL, 1, 0) DESC, {$wpdb->posts}.post_date DESC";
-    }
-    return $orderby;
-}, 10, 2);
-
-add_action('pre_get_posts', function ($query) {
-    if (is_admin() || !$query->is_main_query()) return;
-    if ($query->is_archive() || $query->is_category() || $query->is_tag() || $query->is_search() || $query->is_home()) {
-        $query->set('posts_per_page', 9);
-    }
-});
+// Query modifications (featured-image-first ordering, posts_per_page) — moved to inc/engine/query-mods.php.
+require $inc . 'engine/query-mods.php';
 
 
 
@@ -647,14 +538,14 @@ add_action('template_redirect', function () {
 }, 1);
 
 require $inc . 'engine/markdown-filters.php';
-require $inc . 'tools/reimport-products.php';   // Admin-only ?sgh_reimport_products=1
-require $inc . 'tools/clean-elementor-posts.php'; // Admin-only ?sgh_clean_elementor=1
-require $inc . 'tools/recrawl-posts.php';        // Admin-only ?sgh_recrawl_posts=1
-require $inc . 'tools/import-content.php';       // Admin-only ?sgh_import_content=1 (import WXR blog/product)
-require $inc . 'tools/convert-webp.php';         // Admin-only ?sgh_convert_webp=1 (PNG/JPG/JPEG → WebP)
-require $inc . 'tools/upload-zip.php';            // Admin-only ?sgh_upload_zip=1 (upload .zip → giải nén vào uploads)
-require $inc . 'tools/seed-content.php';          // Admin-only ?sgh_seed=1 (seed 30 dự án + fix template trang Về/Liên hệ)
-require $inc . 'tools/import-projects.php';       // Admin-only ?sgh_import_projects=1 (tạo 30 dự án + fix trang Về/Liên hệ)
+require $inc . 'site/tools/reimport-products.php';   // Admin-only ?sgh_reimport_products=1
+require $inc . 'site/tools/clean-elementor-posts.php'; // Admin-only ?sgh_clean_elementor=1
+require $inc . 'site/tools/recrawl-posts.php';        // Admin-only ?sgh_recrawl_posts=1
+require $inc . 'site/tools/import-content.php';       // Admin-only ?sgh_import_content=1 (import WXR blog/product)
+require $inc . 'site/tools/convert-webp.php';         // Admin-only ?sgh_convert_webp=1 (PNG/JPG/JPEG → WebP)
+require $inc . 'site/tools/upload-zip.php';            // Admin-only ?sgh_upload_zip=1 (upload .zip → giải nén vào uploads)
+require $inc . 'site/tools/seed-content.php';          // Admin-only ?sgh_seed=1 (seed 30 dự án + fix template trang Về/Liên hệ)
+require $inc . 'site/tools/import-projects.php';       // Admin-only ?sgh_import_projects=1 (tạo 30 dự án + fix trang Về/Liên hệ)
 
 // ============================================================================
 // 7. SEO HOOKS
@@ -750,72 +641,8 @@ function saigonhouse_get_post_thumbnail_data($post_id = null, $size = 'large') {
     return ['url' => $image_url, 'id' => $image_id];
 }
 
-/**
- * ── Best Practices: Security Headers ────────────────────────
- * Implements HSTS, CSP, X-Frame-Options, etc.
- * Target: 100/100 in Lighthouse Best Practices.
- */
-add_action('send_headers', function() {
-    if (is_admin()) return;
-
-    $is_https = is_ssl()
-        || (!empty($_SERVER['HTTPS']) && strtolower((string) $_SERVER['HTTPS']) !== 'off')
-        || (!empty($_SERVER['HTTP_X_FORWARDED_PROTO']) && strtolower((string) $_SERVER['HTTP_X_FORWARDED_PROTO']) === 'https');
-
-    // HSTS — only valid on HTTPS (browsers ignore on HTTP; sending it
-    // anyway causes a console warning on local HTTP dev).
-    if ($is_https) {
-        header('Strict-Transport-Security: max-age=31536000; includeSubDomains; preload');
-    }
-
-    // X-Frame-Options — prevent clickjacking
-    header('X-Frame-Options: SAMEORIGIN');
-
-    // X-Content-Type-Options — prevent MIME sniffing
-    header('X-Content-Type-Options: nosniff');
-
-    // Referrer Policy
-    header('Referrer-Policy: strict-origin-when-cross-origin');
-
-    // Permissions Policy
-    header('Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()');
-
-    // Cross-Origin-Opener-Policy — browsers ignore on non-HTTPS and emit
-    // a console warning ("untrustworthy origin"). Only send on HTTPS.
-    if ($is_https) {
-        header('Cross-Origin-Opener-Policy: same-origin');
-    }
-
-    // Content Security Policy — tuned for saigonhoreca's Elementor +
-    // Astra + WooCommerce + GA4 stack served via the static mirror.
-    // The saigonhouse parent theme had a tight saigonhouse-plugin CSP
-    // that broke runtime here (9× font-src violations, GA collect blocks,
-    // WooCommerce webpack chunks refused). Relaxed scopes:
-    //   - font-src: + https: (FontAwesome, Astra subsets, third-party icon sets)
-    //   - script-src: + https: (Astra + Elementor + Woo chunks under same host)
-    //   - connect-src: + https://*.google.com https://*.analytics.google.com
-    //     (GA4 routes traffic through analytics.google.com and www.google.com)
-    //   - style-src: + https: (Astra inline + Elementor)
-    //   - img-src: blob: https: (already permissive)
-    // Future hardening (production): replace with nonced CSP per real plugin
-    // set; static mirror is dev-only so trade some strictness for working UI.
-    $csp = [
-        "default-src 'self'",
-        "script-src 'self' 'unsafe-inline' 'unsafe-eval' https: blob:",
-        "script-src-elem 'self' 'unsafe-inline' https: blob:",
-        "style-src 'self' 'unsafe-inline' https:",
-        "font-src 'self' data: https:",
-        "img-src 'self' data: blob: https:",
-        "media-src 'self' https:",
-        "connect-src 'self' https: wss:",
-        "frame-src 'self' https:",
-        "object-src 'none'",
-        "base-uri 'self'",
-        "form-action 'self' https:",
-        "frame-ancestors 'self'",
-    ];
-    header('Content-Security-Policy: ' . implode('; ', $csp));
-});
+// Security headers (HSTS, CSP, X-Frame-Options...) — moved to inc/engine/security-headers.php.
+require $inc . 'engine/security-headers.php';
 
 /**
  * ── Smart Author Redirect ────────────────────────────────────
@@ -841,129 +668,14 @@ add_action('template_redirect', function() {
     }
 });
 
-/**
- * ─────────────────────────────────────────────────────────────────────
- * Static HTML Cache — ported from saigonhouse-theme.
- *
- * Companion to the Apache rewrite in `.htaccess` (block "4. STATIC HTML
- * CACHE"). The .htaccess rule serves `wp-content/cache/sgh-static/{path}/
- * index.html` directly when the file exists, bypassing PHP entirely →
- * TTFB drops from ~300-500 ms (full PHP boot) to ~50 ms (Apache static
- * file serve). This callback POPULATES that file on cache-miss so the
- * second visit can hit the rewrite.
- *
- * Cache key = REQUEST_URI (e.g. `/` → `sgh-static/index.html`,
- * `/lien-he/` → `sgh-static/lien-he/index.html`).
- *
- * Cacheable when ALL hold:
- *   - GET request + status 200
- *   - Not admin / AJAX / REST / CLI / cron
- *   - Not a logged-in / commenter / postpass cookie
- *   - No query string
- *   - Output is a real HTML page (≥ 1 KB)
- *
- * Invalidated by save_post, comment_post, switch_theme, wp_update_nav_menu,
- * and selected option updates.
- * ─────────────────────────────────────────────────────────────────────
- */
-if (!function_exists('sgh_static_cache_dir')) {
-    function sgh_static_cache_dir(): string {
-        return WP_CONTENT_DIR . '/cache/sgh-static';
-    }
-}
-
-if (!function_exists('sgh_static_cache_path_for_uri')) {
-    function sgh_static_cache_path_for_uri(string $uri): string {
-        $uri = strtok($uri, '?');
-        if ($uri === false) $uri = '/';
-        $uri = trim($uri, '/');
-        // Sanitize: only allow [a-zA-Z0-9/_-], reject everything else
-        // (cache poisoning guard — REQUEST_URI is user-controlled).
-        if ($uri !== '' && !preg_match('#^[a-zA-Z0-9/_-]+$#', $uri)) return '';
-        return sgh_static_cache_dir() . ($uri === '' ? '/index.html' : '/' . $uri . '/index.html');
-    }
-}
-
-if (!function_exists('sgh_static_cache_is_cacheable')) {
-    function sgh_static_cache_is_cacheable(): bool {
-        // Bots get a UA-specific render (no fixed parallax — inc/core/bot-optimize.php).
-        // NEVER cache a bot response: a UA-agnostic static cache would otherwise serve
-        // that bot (no-parallax) HTML to humans. Bots always render fresh instead.
-        if (function_exists('sgh_is_bot') && sgh_is_bot()) return false;
-        if (defined('DOING_AJAX') && DOING_AJAX) return false;
-        if (defined('DOING_CRON') && DOING_CRON) return false;
-        if (defined('REST_REQUEST') && REST_REQUEST) return false;
-        if (defined('WP_CLI') && WP_CLI) return false;
-        if (is_admin()) return false;
-        if (!isset($_SERVER['REQUEST_METHOD']) || strtoupper((string) $_SERVER['REQUEST_METHOD']) !== 'GET') return false;
-        if (!empty($_GET)) return false;
-        if (is_user_logged_in()) return false;
-        if (is_preview() || (function_exists('is_customize_preview') && is_customize_preview())) return false;
-        if (!empty($_SERVER['HTTP_COOKIE'])) {
-            $cookie = (string) $_SERVER['HTTP_COOKIE'];
-            if (stripos($cookie, 'wordpress_logged_in_') !== false) return false;
-            if (stripos($cookie, 'wp-postpass_') !== false) return false;
-            if (stripos($cookie, 'comment_author_') !== false) return false;
-        }
-        return true;
-    }
-}
-
-add_action('template_redirect', static function() {
-    if (!sgh_static_cache_is_cacheable()) { return; }
-    $uri = isset($_SERVER['REQUEST_URI']) ? (string) $_SERVER['REQUEST_URI'] : '/';
-    $path = sgh_static_cache_path_for_uri($uri);
-    if ($path === '') return;
-    ob_start(static function($buffer) use ($path) {
-        if (http_response_code() !== 200) return $buffer;
-        if (strlen($buffer) < 1024) return $buffer;
-        if (strpos($buffer, '<title>Error') !== false) return $buffer;
-        
-        // Kiểm tra xem buffer có bị nén gzip (1f 8b / 31 139) không
-        $is_gzip = (strlen($buffer) >= 2 && ord($buffer[0]) === 0x1f && ord($buffer[1]) === 0x8b);
-        $data_to_write = $buffer;
-        if ($is_gzip) {
-            // Nếu đã bị gzip, ta giải nén trước khi lưu làm file index.html tĩnh,
-            // vì nếu không Apache / Nginx sẽ serve file html bị gzip trực tiếp mà không có Content-Encoding: gzip,
-            // hoặc trình duyệt sẽ tải về thay vì hiển thị.
-            $decompressed = @gzdecode($buffer);
-            if ($decompressed !== false) {
-                $data_to_write = $decompressed;
-            } else {
-                return $buffer; // Không thể giải nén thì không cache
-            }
-        }
-        
-        $dir = dirname($path);
-        if (!is_dir($dir)) @mkdir($dir, 0755, true);
-        @file_put_contents($path, $data_to_write, LOCK_EX);
-        return $buffer;
-    });
-}, 2);
-
-if (!function_exists('sgh_static_cache_flush')) {
-    function sgh_static_cache_flush(): void {
-        $dir = sgh_static_cache_dir();
-        if (!is_dir($dir)) return;
-        $it = new RecursiveIteratorIterator(
-            new RecursiveDirectoryIterator($dir, RecursiveDirectoryIterator::SKIP_DOTS),
-            RecursiveIteratorIterator::CHILD_FIRST
-        );
-        foreach ($it as $f) {
-            if ($f->isFile()) @unlink($f->getPathname());
-            elseif ($f->isDir()) @rmdir($f->getPathname());
-        }
-    }
-}
-add_action('save_post', 'sgh_static_cache_flush');
-add_action('comment_post', 'sgh_static_cache_flush');
-add_action('switch_theme', 'sgh_static_cache_flush');
-add_action('wp_update_nav_menu', 'sgh_static_cache_flush');
-add_action('updated_option', static function($option) {
-    if (in_array($option, ['siteurl', 'home', 'blogname', 'blogdescription', 'permalink_structure', 'page_on_front', 'page_for_posts'], true)) {
-        sgh_static_cache_flush();
-    }
-});
+// Static HTML Cache: logic đầy đủ (dir/path/is_cacheable/flush + hook
+// template_redirect/save_post/comment_post/switch_theme/updated_option) đã
+// nằm trong inc/engine/cache-helpers.php — block này TỪNG bị trùng lặp ở
+// đây (dead code do function_exists() guard, cache-helpers.php load trước
+// nên luôn thắng) VÀ 2 add_action('template_redirect') cùng priority 2 từ
+// 2 nơi từng lồng ob_start() vào nhau. Đã dọn 07/2026: merge fix gzip-decode
+// (từng chỉ có ở bản dead-code này) vào bản đang chạy thật trong
+// cache-helpers.php, rồi xoá hẳn block trùng ở đây.
 
 /**
  * Heading-order fix for /gioi-thieu/ legacy WP page content.

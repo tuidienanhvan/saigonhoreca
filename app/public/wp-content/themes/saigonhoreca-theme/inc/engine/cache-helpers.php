@@ -174,9 +174,24 @@ add_action('template_redirect', static function() {
         if (http_response_code() !== 200) return $buffer;
         if (strlen($buffer) < 1024) return $buffer;
         if (strpos($buffer, '<title>Error') !== false) return $buffer;
+
+        // Kiểm tra xem buffer có bị nén gzip (1f 8b) không — nếu ghi thẳng buffer
+        // đã gzip vào file .html tĩnh, Apache/Nginx sẽ serve nó không kèm header
+        // Content-Encoding: gzip, khiến trình duyệt tải file về thay vì hiển thị.
+        $is_gzip = (strlen($buffer) >= 2 && ord($buffer[0]) === 0x1f && ord($buffer[1]) === 0x8b);
+        $data_to_write = $buffer;
+        if ($is_gzip) {
+            $decompressed = @gzdecode($buffer);
+            if ($decompressed !== false) {
+                $data_to_write = $decompressed;
+            } else {
+                return $buffer; // Không thể giải nén thì không cache
+            }
+        }
+
         $dir = dirname($path);
         if (!is_dir($dir)) @mkdir($dir, 0755, true);
-        @file_put_contents($path, $buffer, LOCK_EX);
+        @file_put_contents($path, $data_to_write, LOCK_EX);
         return $buffer;
     });
 }, 2);

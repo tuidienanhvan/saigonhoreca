@@ -2,7 +2,7 @@
 /**
  * Seed nội dung "mồi" cho site MỚI (deploy lần đầu lên production):
  *   1. Import 30 bài dự án (CPT `project`) từ data đóng gói sẵn trong theme
- *      (inc/tools/data/projects-seed.json) — để /du-an/ + featured-projects
+ *      (inc/site/tools/data/projects-seed.json) — để /du-an/ + featured-projects
  *      (WP_Query trên CPT) có dữ liệu hiển thị. Dự án render theo slug + ảnh
  *      folder, nên chỉ cần title + slug + excerpt (không kèm nội dung cũ).
  *   2. Đổi template + tắt Elementor cho trang "Về Saigon Horeca" & "Liên hệ"
@@ -38,7 +38,7 @@ add_action('init', function () {
     echo "=== SGH Seed Content — " . ($is_run ? 'RUN' : 'DRY RUN') . " ===\n\n";
 
     // ── 1. Import projects ──
-    $seed_file = get_template_directory() . '/inc/tools/data/projects-seed.json';
+    $seed_file = get_template_directory() . '/inc/site/tools/data/projects-seed.json';
     echo "[1] DỰ ÁN (CPT project)\n";
     if (!file_exists($seed_file)) {
         echo "  LỖI: không thấy data/projects-seed.json\n";

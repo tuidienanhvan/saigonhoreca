@@ -1,15 +1,26 @@
 # ARCHITECTURE — Kiến trúc 3 tầng saigonhoreca-theme
 
-> Trạng thái (07/2026): `inc/core/` đã xoá — 22 file engine chuyển sang `inc/engine/`,
-> 5 file site-specific (auto-setup, project-cover, section-images, pi-seo-resolver,
-> temp-migration) chuyển sang `inc/site/`. Verify: 0 lỗi PHP + HTML-diff 652 URL toàn site
-> (chênh lệch còn lại 100% là widget "dự án/sản phẩm liên quan" random mỗi lần tải).
-> `inc/admin/`, `inc/customizer/`, `inc/tools/` CHƯA di chuyển vào `inc/site/` — để ở top-level
-> hiện tại vì có require_once nội bộ tương đối (dashboard-class.php → sync/*) rủi ro cao hơn
-> khi verify (không có HTML frontend để diff cho phần admin-only); follow-up sau nếu cần.
-> functions.php CHƯA được tách nốt phần logic inline (static-html-cache, security-headers,
-> https-rewrite, query-mods, update-blocker) — vẫn nằm trong functions.php, việc tách đó
-> chỉ có giá trị tổ chức code chứ không ảnh hưởng hiệu năng, đã ưu tiên lùi sau Phase 6/7.
+> Trạng thái (07/2026): `inc/` giờ CHỈ còn 4 thư mục: `config/`, `engine/`, `site/`,
+> `customizer/`. `inc/core/` đã xoá — 22 file engine ở `inc/engine/`. `inc/site/` chứa
+> auto-setup, project-cover, section-images, pi-seo-resolver, temp-migration + toàn bộ
+> `admin/` (dashboard, sync/) và `tools/` (import/seed/convert scripts) đã gom vào đây
+> (trước ở top-level `inc/`). Lo ngại ban đầu về `require_once` tương đối giữa các file
+> admin hoá ra KHÔNG có thật (đã grep xác nhận zero coupling relative-path giữa
+> dashboard-class.php ↔ sync/*) — chỉ có 3 chỗ tự tham chiếu path tuyệt đối từ theme root
+> (auto-setup.php → sync-deploy.php, seed-content.php → data/projects-seed.json,
+> front-page-meta.php → front-page-meta.css), cả 3 đã cập nhật path. Verify: HTML-diff
+> 652 URL + kiểm tra `/wp-json/pi/v1/*` (nhánh `$is_rest_api` chạy toàn bộ 8 file admin-only
+> require) trả JSON 404 sạch, không lỗi PHP.
+>
+> `functions.php` đã tách 5 module vào `inc/engine/`: `update-blocker.php`,
+> `https-rewrite.php`, `query-mods.php`, `security-headers.php`. Khối "static HTML cache"
+> hoá ra là **dead code trùng lặp** với `cache-helpers.php` (đã tồn tại từ trước, load
+> trước nên luôn thắng theo `function_exists()` guard) — thay vì tạo bản sao thứ 3, đã
+> merge fix gzip-decode (chỉ có ở bản dead-code) vào bản đang chạy thật trong
+> `cache-helpers.php`, rồi xoá hẳn khối trùng trong functions.php. Tác dụng phụ: xoá luôn
+> 2 lần đăng ký trùng `add_action('template_redirect', ...)` cùng priority 2 (2 khối từng
+> lồng `ob_start()` vào nhau — lãng phí, giờ chỉ còn 1).
+>
 > Đọc kèm: `docs/PERF-DECISIONS.md` (bắt buộc trước khi đụng cơ chế nạp tài nguyên).
 
 ## Tầng 1 — ENGINE (`inc/engine/` — tái sử dụng được cho mọi project)

@@ -15,9 +15,9 @@ function saigonhouse_front_page_meta_admin_styles($hook) {
     }
     wp_enqueue_style(
         'saigonhouse-front-page-meta',
-        get_template_directory_uri() . '/inc/admin/front-page-meta.css',
+        get_template_directory_uri() . '/inc/site/admin/front-page-meta.css',
         [],
-        filemtime(get_template_directory() . '/inc/admin/front-page-meta.css')
+        filemtime(get_template_directory() . '/inc/site/admin/front-page-meta.css')
     );
 }
 add_action('admin_enqueue_scripts', 'saigonhouse_front_page_meta_admin_styles');
