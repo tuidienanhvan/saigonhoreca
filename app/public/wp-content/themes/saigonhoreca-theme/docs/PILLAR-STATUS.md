@@ -18,18 +18,38 @@
   biết 2 tên này là một. Verify: `/du-an/grand-marble/` giờ load đúng
   `theme-project-grand-marble-thuong-hieu-banh-cao-cap-nhat-ban.css`.
 
-## project-render.py — KHÔNG khớp quy ước hiện tại (quan trọng)
+## project-render.py — ĐÃ SỬA (Bước 5, 07/2026): tên file semantic theo vị trí
 
-`scripts/project-render.py` (generator cũ) sinh tên file theo kiểu tự phân loại
-Elementor section: `01-hero.php`, `02-text.php`, `03-split.php`... Nhưng **34 dự án đã
-publish dùng tên section CỐ ĐỊNH**: `hero.php`, `intro.php`, `concept.php`,
-`partnership.php`, `specs.php`, `gallery.php` (đúng theo
-`docs/project-pillar-standard.md`).
+**Trước đây**: generator tự phân loại Elementor section theo cấu trúc → tên file
+`01-hero.php`, `02-text.php`, `03-split.php`... KHÔNG khớp quy ước 34 dự án đã publish
+(`hero.php`, `intro.php`, `concept.php`, `partnership.php`, `specs.php`, `gallery.php`).
 
-→ Generator **không phải** nguồn tạo ra cấu trúc hiện tại như-đang-thấy, hoặc đã bị hand-edit
-nặng sau khi sinh, hoặc dùng phiên bản tooling khác trước đó đã thất lạc. **Không coi
-project-render.py là pipeline đáng tin để tự động tái tạo 34 dự án hiện có** — chạy nó sẽ
-ra cấu trúc KHÁC với convention thật.
+**Nguyên nhân gốc không phải chỉ là tên gọi khác nhau**: `intro`/`concept`/`partnership`/
+`specs` là phân loại theo Ý NGHĨA NỘI DUNG (đoạn này nói về gì), trong khi generator chỉ
+phân loại được theo CẤU TRÚC HTML (mấy cột, có ảnh không) — 4 loại trên có cấu trúc HTML
+giống hệt nhau (1 khối heading+text, đôi khi kèm ảnh), không có cách nào suy luận ngữ
+nghĩa từ cấu trúc. Kiểm tra trực tiếp nội dung 34 dự án thật còn cho thấy mỗi dự án có
+BEM prefix riêng (`pp-cm-` casa-maria, `pp-hero-bam` bambino...) + trang trí SVG/CSS riêng
+— rõ ràng là thiết kế TAY sau khi có khung, không phải output thuần tự động của bất kỳ
+generator nào.
+
+**Đã sửa** (theo quyết định: chỉ sửa tên file + thứ tự cố định, KHÔNG cố suy luận ngữ
+nghĩa): `semantic_name_for_index()` gán tên theo VỊ TRÍ section — section 1→`hero.php`,
+2→`intro.php`, 3→`concept.php`, 4→`partnership.php`, 5→`specs.php`, 6+→`gallery.php`
+(section 7 trở đi trùng tên → `gallery-2.php`, `gallery-3.php`...). Renderer chọn LAYOUT
+(hero/split/gallery/text...) vẫn dựa theo `classify()` cấu trúc như cũ — chỉ tên file đổi.
+Đã test bằng JSON tổng hợp 6 và 7 section (không đụng project-data thật), verify đúng tên
++ đúng xử lý trùng `gallery-2.php`.
+
+**Giới hạn còn lại (đã ghi rõ trong code comment)**: output vẫn là **bản nháp generic**
+(class dùng chung `pp-hero__title`, `pp-text__title`...) — người dùng vẫn phải tự thêm
+BEM prefix + trang trí riêng cho từng dự án như 34 dự án hiện có, generator không thay
+thế bước thiết kế tay đó, chỉ tạo khung khởi đầu đúng tên file.
+
+`scripts/project-extract.py` (bước tạo JSON từ HTML scrape) vẫn phụ thuộc
+`static-mirror/du-an/<slug>/index.html` — thư mục này đã bị dọn khỏi theme (chuyển vào
+`_sgh-cleanup-backup` theo `DEPLOY-NOTES.txt` đợt 06/2026) → cần khôi phục mirror hoặc
+viết JSON tay trước khi chạy render.
 
 `scripts/project-extract.py` cũng phụ thuộc `static-mirror/du-an/<slug>/index.html` —
 thư mục này đã bị dọn khỏi theme (chuyển vào `_sgh-cleanup-backup` theo `DEPLOY-NOTES.txt`
@@ -48,10 +68,10 @@ riêng (không phải việc của Claude phiên nâng cấp perf này).
    imports manifest (an toàn, boilerplate cố định). In checklist phần còn thiếu.
 2. Tạo `scripts/project-data/<slug>.json` (viết tay hoặc restore static-mirror rồi chạy
    `project-extract.py`).
-3. Tạo 6 file `.php` + 6 file `.css` trong `template-parts/project-pillar/<slug>/` theo
-   đúng tên section chuẩn (xem `docs/project-pillar-standard.md`) — có thể dùng
-   `project-render.py <slug>` làm điểm khởi đầu rồi **đổi tên file thủ công** về đúng quy
-   ước (01-hero.php → hero.php...), hoặc copy cấu trúc từ 1 dự án tương tự làm khung.
+3. Tạo 6 file `.php` + 6 file `.css` trong `template-parts/project-pillar/<slug>/` —
+   `project-render.py <slug>` giờ SINH ĐÚNG tên (`hero.php`, `intro.php`, `concept.php`,
+   `partnership.php`, `specs.php`, `gallery.php`), không cần đổi tên tay nữa. Output vẫn
+   là khung generic — thêm BEM prefix + trang trí riêng theo phong cách dự án tương tự.
 4. Tạo `single-project/<slug>.php` + `.css` (wrapper: get_header → 6 get_template_part →
    `_related` + `_cta` → get_footer — copy 1 wrapper có sẵn làm mẫu, ~24 dòng).
 5. Nếu slug post WordPress khác tên thư mục pillar: thêm alias vào
@@ -61,6 +81,9 @@ riêng (không phải việc của Claude phiên nâng cấp perf này).
 
 ## Việc CHƯA làm (để lại có chủ đích, không phải bỏ sót)
 
-- Chuẩn hoá `project-render.py` để tên file output khớp quy ước — cần hiểu rõ logic
-  phân loại `render_hero/render_split/render_gallery/...` và ánh xạ đúng sang 6 tên cố
-  định, rủi ro làm sai nếu không có test coverage; để dành cho phiên làm việc riêng.
+- Auto-phân loại NGỮ NGHĨA nội dung (biết section nào thật sự "nói về concept" khác
+  "nói về partnership") — không khả thi đáng tin bằng heuristic cấu trúc, cần AI đọc
+  hiểu nội dung thật hoặc người xác nhận tay. Vị trí cố định (Bước 5) là giải pháp thực
+  tế, chấp nhận được vì 34 dự án cũng đi theo đúng thứ tự này.
+- `project-extract.py` cần `static-mirror/` được khôi phục để chạy — chưa làm vì không có
+  yêu cầu cụ thể; JSON có thể viết tay cho dự án mới trong lúc chờ.
