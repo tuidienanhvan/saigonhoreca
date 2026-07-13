@@ -1,0 +1,20 @@
+[
+  {
+    "url": "https://saigonhoreca.local/",
+    "mode": "mobile",
+    "score": 95,
+    "lcp": 2715,
+    "tbt": 0,
+    "cls": 0.001,
+    "si": 1841
+  },
+  {
+    "url": "https://saigonhoreca.local/10-meo-tiet-kiem-nang-luong-hang-dau-cho-nha-hang/",
+    "mode": "mobile",
+    "score": 68,
+    "lcp": 5164,
+    "tbt": 29,
+    "cls": 0.117,
+    "si": 3981
+  }
+]

@@ -7,7 +7,8 @@
 
 .pp-hero-shf {
   position: relative;
-  height: calc(100svh - 76px);
+  height: calc(100vh - 76px);
+  height: calc(100dvh - 76px);
   min-height: 600px;
   width: 100%;
   display: flex;
@@ -16,11 +17,8 @@
   isolation: isolate;
   background-color: var(--b1);
 }
-@supports (height: 100dvh) {
-  .pp-hero-shf { height: calc(100dvh - 76px); }
-}
 
-/* ── Layer 1: photographic media — background-attachment:fixed = reliable parallax ── */
+/* ── Layer 1: photographic media — background-attachment: scroll;= reliable parallax ── */
 .pp-hero-shf__bg {
   position: absolute;
   inset: 0;
@@ -31,7 +29,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed; /* reliable parallax — bg fixed to viewport, auto-clipped to this box */
+  background-attachment: scroll; /* reliable parallax — bg fixed to viewport, auto-clipped to this box */
   filter: saturate(1.06) contrast(1.03);
 }
 
@@ -200,7 +198,7 @@
   }
 }
 
-/* background-attachment:fixed is janky on mobile → scroll (keep position:absolute) */
+/* background-attachment: scroll;is janky on mobile → scroll (keep position:absolute) */
 @media (max-width: 768px) {
   .pp-hero-shf__bg {
     position: absolute;

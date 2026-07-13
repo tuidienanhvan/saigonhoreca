@@ -9,12 +9,13 @@ $uri = get_template_directory_uri();
 ?>
 <section class="pp-hero-moa">
   <!-- Thẻ con gánh hiệu ứng Parallax: position:absolute + background-attachment:fixed → ảnh ghim theo viewport, mượt, không cần JS -->
-  <div class="pp-hero-moa__bg" style="background-image:url('<?php echo sgh_img('moa-moa/moa-moa-khong-gian-an-trong-nha-nhin-pho-quan-1.webp'); ?>');" role="img" aria-label="<?php echo esc_attr__('Không gian Moa Moa Pasta Club nhìn ra trung tâm Quận 1', 'saigonhoreca'); ?>"></div>
+  <div class="pp-hero-moa__bg" style="background-image:url('<?php echo sgh_img('moa-moa/moa-moa-thumbnail-project-cover.webp'); ?>');" role="img" aria-label="<?php echo esc_attr__('Không gian Moa Moa Pasta Club nhìn ra trung tâm Quận 1', 'saigonhoreca'); ?>"></div>
   <div class="pp-hero-moa__overlay" aria-hidden="true"></div>
 
   <div class="pp-ambient-glow-moa pp-ambient-glow-moa--center" aria-hidden="true"></div>
 
-  <div class="pp-hero-moa__content">
+  <!-- Removed text content overlay as the background image already contains baked-in titles
+<div class="pp-hero-moa__content">
     <div class="pp-hero-moa__emblem" aria-hidden="true">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
         <path d="M5 3c0 4 3 6 7 6s7-2 7 6c0 4-3 6-7 6s-7-2-7-6" stroke-linecap="round"/>
@@ -29,6 +30,7 @@ $uri = get_template_directory_uri();
     </h1>
     <div class="pp-hero-moa__divider" aria-hidden="true"></div>
   </div>
+-->
 
   <a href="#moa-intro" class="pp-hero-moa__scroll" aria-label="<?php echo esc_attr__('Cuộn xuống', 'saigonhoreca'); ?>">
     <svg class="pp-hero-moa__scroll-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18" aria-hidden="true">

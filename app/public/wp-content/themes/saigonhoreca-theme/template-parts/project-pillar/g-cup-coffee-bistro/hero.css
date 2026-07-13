@@ -12,7 +12,9 @@
 .pp-hero-gcb {
   position: relative;
   width: 100%;
-  min-height: 88vh;
+  height: calc(100vh - 76px);
+  height: calc(100dvh - 76px);
+  min-height: 600px;
   display: flex;
   align-items: flex-end;
   justify-content: flex-start;
@@ -20,7 +22,6 @@
   isolation: isolate;
   background: var(--b1);
 }
-@media (min-width: 992px) { .pp-hero-gcb { min-height: 100vh; } }
 
 /* ─────────────────────────────────────────────
    Background media — Ken-Burns breathing zoom

@@ -149,7 +149,7 @@ Ba pillar canonical — pattern tối ưu nhất, học theo:
 | 21 | du-an-bep-cang-tin-cong-ty-nhat-nichiyo | `nichiyo` | Bếp căng tin công nghiệp Nichiyo | `/du-an/du-an-bep-cang-tin-cong-ty-nhat-nichiyo/` · `.com/industrial-kitchen-canteen-kitchen-of-nichiyo/` |
 | 22 | du-an-kdl-rung-thong-nui-voi-cua-saigonhoreca | `kdl` | KDL Rừng Thông Núi Voi, bếp khu du lịch Tây Nguyên | `/du-an/du-an-kdl-rung-thong-nui-voi-cua-saigonhoreca/` |
 | 23 | moa-moa | `moa` | Eatery, hero + concept + gallery | `/du-an/moa-moa/` |
-| 24 | du-nam-an-an | `nan` | An toàn & hiệu quả, accent ổn định | `/du-an/du-nam-an-an/` |
+| 24 | vien-duong-lao-nam-an | `nan` | An toàn & hiệu quả, accent ổn định | `/du-an/vien-duong-lao-nam-an/` |
 | 25 | tales-by-chapter | `tbc` | All-day dining theo "chương", 6 section | `/du-an/tales-by-chapter/` |
 | 26 | hemma-desserts-mot-goc-nho-chau-au-giua-thao-dien | `hmd` | Dessert kiểu Âu 11m², drop-cap + numeral watermark | `/du-an/hemma-desserts-mot-goc-nho-chau-au-giua-thao-dien/` |
 | 27 | du-an-vinh-hiep | `vhp` | Vĩnh Hiệp Coffee Lab, 6 section | `/du-an/du-an-vinh-hiep/` |

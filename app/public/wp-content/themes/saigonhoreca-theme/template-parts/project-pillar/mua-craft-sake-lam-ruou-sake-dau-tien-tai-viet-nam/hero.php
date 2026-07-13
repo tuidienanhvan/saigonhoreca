@@ -20,7 +20,7 @@ if (!defined('ABSPATH')) exit;
     <!-- Lớp nền Parallax Clip-Path: ảnh hero thật, position:fixed (giam bởi clip-path của section) -->
     <div class="pp-hero-mua__bg" aria-hidden="true" style="background-image:url('<?php echo sgh_img('mua-craft-sake-lam-ruou-sake-dau-tien-tai-viet-nam/mua-craft-sake-hero.jpg'); ?>');"></div>
     <!-- Video nền phủ lên ảnh, cũng fixed để cùng nhịp parallax với clip-path -->
-    <iframe class="pp-hero-mua__video" src="https://www.youtube.com/embed/38Dr2BO7xzE?autoplay=1&mute=1&loop=1&playlist=38Dr2BO7xzE&controls=0&showinfo=0&modestbranding=1&iv_load_policy=3&playsinline=1&disablekb=1&fs=0&rel=0&cc_load_policy=0&color=white&hl=vi" allow="autoplay; encrypted-media; fullscreen" frameborder="0" title="<?php echo esc_attr__('Video nền Mùa Craft Sake', 'saigonhoreca'); ?>" tabindex="-1" loading="lazy" aria-hidden="true"></iframe>
+    <iframe class="pp-hero-mua__video" data-lazy-src="https://www.youtube.com/embed/38Dr2BO7xzE?autoplay=1&mute=1&loop=1&playlist=38Dr2BO7xzE&controls=0&showinfo=0&modestbranding=1&iv_load_policy=3&playsinline=1&disablekb=1&fs=0&rel=0&cc_load_policy=0&color=white&hl=vi" allow="autoplay; encrypted-media; fullscreen" frameborder="0" title="<?php echo esc_attr__('Video nền Mùa Craft Sake', 'saigonhoreca'); ?>" tabindex="-1" aria-hidden="true"></iframe>
     <!-- Overlay gradient token NHẸ — giữ ảnh sáng, KHÔNG phải lớp đen -->
     <div class="pp-hero-mua__overlay" aria-hidden="true"></div>
     <div class="pp-hero-mua__kanji" aria-hidden="true">酒</div>

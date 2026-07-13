@@ -24,7 +24,12 @@ get_header(); ?>
     get_template_part('template-parts/archive-product/hero');
     ?>
 
-    <div class="sh-archive__layout">
+    <div class="sh-archive__tabs">
+        <button class="sh-archive__tab-btn is-active" data-target="products"><?php _e('Sản phẩm', 'saigonhoreca'); ?></button>
+        <button class="sh-archive__tab-btn" data-target="categories"><?php _e('Danh mục hàng', 'saigonhoreca'); ?></button>
+    </div>
+
+    <div class="sh-archive__layout sh-active-tab--products">
         <?php
         // 2. Sidebar — category + brand filters
         get_template_part('template-parts/archive-product/filter-sidebar');
@@ -44,5 +49,54 @@ get_header(); ?>
         </div>
     </div>
 </main>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    var tabs = document.querySelectorAll('.sh-archive__tab-btn');
+    var layout = document.querySelector('.sh-archive__layout');
+    if (!tabs.length || !layout) return;
+
+    // Tối ưu logic: Khi đang ở trang danh mục/thương hiệu cụ thể, luôn đảm bảo hiển thị tab Sản phẩm mặc định
+    var isTaxonomyPage = document.body.classList.contains('tax-product_category') || 
+                         document.body.classList.contains('tax-product_cat') || 
+                         document.body.classList.contains('tax-product_brand');
+    if (isTaxonomyPage) {
+        var productsTab = document.querySelector('.sh-archive__tab-btn[data-target="products"]');
+        var categoriesTab = document.querySelector('.sh-archive__tab-btn[data-target="categories"]');
+        if (productsTab && categoriesTab) {
+            categoriesTab.classList.remove('is-active');
+            productsTab.classList.add('is-active');
+            layout.classList.remove('sh-active-tab--categories');
+            layout.classList.add('sh-active-tab--products');
+        }
+    }
+
+    tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+            tabs.forEach(function (t) { t.classList.remove('is-active'); });
+            this.classList.add('is-active');
+
+            var target = this.getAttribute('data-target');
+            if (target === 'products') {
+                layout.classList.remove('sh-active-tab--categories');
+                layout.classList.add('sh-active-tab--products');
+            } else {
+                layout.classList.remove('sh-active-tab--products');
+                layout.classList.add('sh-active-tab--categories');
+            }
+            
+            // Smooth scroll to content top (with offset for sticky header + tabs)
+            var headerOffset = 120;
+            var elementPosition = layout.getBoundingClientRect().top;
+            var offsetPosition = elementPosition + window.scrollY - headerOffset;
+            
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+        });
+    });
+});
+</script>
 
 <?php get_footer();

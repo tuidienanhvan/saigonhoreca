@@ -17,6 +17,10 @@ $uri = get_template_directory_uri();
         <div class="pp-image-container-shared moa-specs__image-container">
           <div class="moa-specs__image-decor" aria-hidden="true"></div>
           <img src="<?php echo sgh_img('moa-moa/moa-moa-thit-ap-chao-khoai-tay-huong-thao.webp'); ?>" alt="<?php echo esc_attr__('Thịt bò áp chảo ăn kèm khoai tây chiên và hương thảo tại Moa Moa', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="1366" height="768">
+          <!-- Khung viền SVG vẽ nét khớp với clip path (Dough Shape 3) -->
+          <svg class="moa-specs__image-border" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M 15,6 C 42,-1 78,5 88,18 C 98,32 95,65 90,85 C 82,98 48,99 30,96 C 12,92 3,78 1,50 C -1,28 3,12 15,6 Z" vector-effect="non-scaling-stroke" />
+          </svg>
           <div class="pp-image-caption-shared"><?php echo esc_html__('Thịt bò áp chảo cùng khoai tây vàng giòn và hương thảo – dấu ấn món Âu chuẩn vị tại Moa Moa', 'saigonhoreca'); ?></div>
         </div>
       </div>

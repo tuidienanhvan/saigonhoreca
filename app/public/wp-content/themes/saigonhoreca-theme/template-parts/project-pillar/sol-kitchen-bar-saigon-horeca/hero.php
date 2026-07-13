@@ -12,7 +12,7 @@ if (!defined('ABSPATH')) exit;
 <section class="pp-hero-solshr">
     <!-- Thẻ con gánh hiệu ứng Parallax Clip-Path siêu mượt (position:fixed bị section clip) -->
     <div class="pp-hero-solshr__media" style="background-image:url('<?php echo esc_url(sgh_img('sol-kitchen-bar-saigon-horeca/sol-kitchen-bar-saigon-horeca-khong-gian-quay-bar-bistro.webp')); ?>');" aria-hidden="true">
-        <iframe src="https://www.youtube.com/embed/145Vplgi3TA?autoplay=1&mute=1&loop=1&playlist=145Vplgi3TA&controls=0&showinfo=0&modestbranding=1&iv_load_policy=3&playsinline=1&disablekb=1&fs=0&rel=0&cc_load_policy=0&color=white&hl=vi" allow="autoplay; encrypted-media; fullscreen" frameborder="0" title="Background video Sol Kitchen & Bar" tabindex="-1"></iframe>
+        <iframe data-lazy-src="https://www.youtube.com/embed/145Vplgi3TA?autoplay=1&mute=1&loop=1&playlist=145Vplgi3TA&controls=0&showinfo=0&modestbranding=1&iv_load_policy=3&playsinline=1&disablekb=1&fs=0&rel=0&cc_load_policy=0&color=white&hl=vi" allow="autoplay; encrypted-media; fullscreen" frameborder="0" title="Background video Sol Kitchen & Bar" tabindex="-1" aria-hidden="true"></iframe>
     </div>
     <div class="pp-hero-solshr__overlay" aria-hidden="true"></div>
 

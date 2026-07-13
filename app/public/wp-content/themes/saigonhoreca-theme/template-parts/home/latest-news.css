@@ -3,18 +3,56 @@
 @media (min-width:768px){.sh-latest-news{padding:7rem 0}}
 .sh-latest-news__inner{max-width:1280px;margin:0 auto;padding:0 1rem}
 @media (min-width:768px){.sh-latest-news__inner{padding:0 2rem}}
-.sh-latest-news__header{text-align:center;margin-bottom:3rem}
+.sh-latest-news__header{position:relative;text-align:center;margin-bottom:3rem;padding:2.5rem 1rem}
 @media (min-width:768px){.sh-latest-news__header{margin-bottom:4rem}}
+
+/* T-024: trang trí header "Tin tức mới" — motif mượn từ house style
+   (consult-cta glow blob, sparkle 8-cánh của roka-fella, corner-frame mở
+   góc của bambino-saigonhoreca) + 1 SVG gốc "broadcast rings" hợp chủ đề
+   tin tức, chưa có ở đâu khác trong theme. */
+.sh-latest-news__heading,.sh-latest-news__view-all{position:relative;z-index:1}
+
+.sh-latest-news__glow{position:absolute;z-index:0;pointer-events:none;border-radius:50%}
+.sh-latest-news__glow--a{top:-15%;left:10%;width:420px;height:420px;background:radial-gradient(circle,color-mix(in srgb,var(--gold) 16%,transparent) 0%,transparent 70%);filter:blur(75px);opacity:.55}
+.sh-latest-news__glow--b{bottom:-20%;right:8%;width:380px;height:380px;background:radial-gradient(circle,color-mix(in srgb,var(--gold) 10%,transparent) 0%,transparent 70%);filter:blur(80px);opacity:.45}
+
+.sh-latest-news__bg-signal{position:absolute;top:50%;left:50%;width:460px;height:460px;max-width:70vw;transform:translate(-50%,-50%);color:var(--gold);opacity:.05;z-index:0;pointer-events:none}
+
+.sh-latest-news__frame{position:absolute;inset:0;width:100%;height:100%;color:color-mix(in srgb,var(--gold) 45%,transparent);z-index:0;pointer-events:none}
+
+.sh-latest-news__eyebrow{display:inline-flex;align-items:center;gap:.4rem;background:color-mix(in srgb,var(--gold) 10%,transparent);border:1px solid color-mix(in srgb,var(--gold) 22%,transparent);border-radius:999px;padding:.35rem .9rem .35rem .7rem;color:var(--gold);text-transform:uppercase;letter-spacing:.14em;font-size:.75rem;font-weight:700}
+.sh-latest-news__sparkle{width:12px;height:12px;flex-shrink:0;filter:drop-shadow(0 0 6px color-mix(in srgb,var(--gold) 60%,transparent));animation:sh-news-sparkle 3s ease-in-out infinite alternate}
+@keyframes sh-news-sparkle{from{transform:scale(.9) rotate(0deg)}to{transform:scale(1.2) rotate(20deg)}}
+
+.sh-latest-news__rule{position:relative;display:block;width:56px;height:2px;margin:1.15rem auto;background:var(--gold);box-shadow:0 0 16px color-mix(in srgb,var(--gold) 65%,transparent)}
+.sh-latest-news__rule::before,.sh-latest-news__rule::after{content:'';position:absolute;top:50%;width:6px;height:6px;border-radius:50%;background:var(--gold);transform:translateY(-50%);box-shadow:0 0 8px color-mix(in srgb,var(--gold) 55%,transparent)}
+.sh-latest-news__rule::before{left:-14px}
+.sh-latest-news__rule::after{right:-14px}
+
 .sh-latest-news__title{color:#fff;text-transform:uppercase;letter-spacing:.02em;margin:0 0 1rem;font-size:clamp(1.75rem,4vw,2.75rem);font-weight:700;line-height:1.2}
+.sh-latest-news__title-accent{background:linear-gradient(135deg,var(--gold) 20%,#fff 50%,var(--gold) 80%);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:sh-news-shine 6s linear infinite}
+@keyframes sh-news-shine{to{background-position:200% center}}
+
+@media (max-width:640px){.sh-latest-news__glow,.sh-latest-news__bg-signal{display:none}}
 .sh-latest-news__view-all{color:#f5a623;text-transform:uppercase;letter-spacing:.05em;border:1px solid #f5a623;border-radius:4px;align-items:center;gap:.5rem;margin-top:1rem;padding:.625rem 1.5rem;font-size:.875rem;font-weight:600;text-decoration:none;transition:background .2s,color .2s;display:inline-flex}
 .sh-latest-news__view-all:hover{color:#000;background:#f5a623}
 .sh-latest-news__view-all svg{width:16px;height:16px}
+/* T-023: bento/editorial layout — card đầu tiên (--featured, do PHP tự gắn)
+   trở thành ảnh-phủ-nền lớn với chữ đè gradient, 2 card còn lại xếp dạng
+   list ngang thu gọn bên cạnh. Thay cho lưới 3 ô đều nhàm chán trước đây. */
 .sh-latest-news__grid{grid-template-columns:1fr;gap:1.5rem;display:grid}
-@media (min-width:768px){.sh-latest-news__grid{grid-template-columns:repeat(2,1fr)}}
-@media (min-width:1024px){.sh-latest-news__grid{grid-template-columns:repeat(3,1fr)}}
-.sh-latest-news__card{background:#1a1a1a;border:1px solid #ffffff0f;border-radius:8px;transition:border-color .25s,transform .2s;overflow:hidden}
+@media (min-width:768px){
+    .sh-latest-news__grid{grid-template-columns:repeat(2,1fr)}
+    .sh-latest-news__card--featured{grid-column:1 / -1}
+}
+@media (min-width:1024px){
+    .sh-latest-news__grid{grid-template-columns:1.3fr 1fr;grid-template-rows:repeat(2,minmax(200px,1fr));gap:1.75rem}
+    .sh-latest-news__card--featured{grid-column:1;grid-row:1 / span 2}
+}
+.sh-latest-news__card{position:relative;background:#1a1a1a;border:1px solid #ffffff0f;border-radius:8px;transition:border-color .25s,transform .2s,box-shadow .25s;overflow:hidden}
 .sh-latest-news__card:hover{border-color:#f5a62380;transform:translateY(-3px)}
-.sh-latest-news__card--featured{grid-area:span 1/span 1}
+.sh-latest-news__card--featured:hover{box-shadow:0 20px 50px #00000080}
+.sh-latest-news__card--featured::before{content:'Mới nhất';position:absolute;top:1.25rem;left:1.25rem;z-index:2;background:#f5a623;color:#0a0a0a;font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;padding:.35rem .75rem;border-radius:999px;box-shadow:0 4px 14px #00000066}
 .sh-latest-news__link{color:inherit;text-decoration:none;display:block}
 .sh-latest-news__thumb{aspect-ratio:16/10;background:#222;overflow:hidden}
 .sh-latest-news__thumb img{object-fit:cover;width:100%;height:100%;transition:transform .5s}
@@ -26,3 +64,24 @@
 .sh-latest-news__excerpt{color:#ffffffa6;-webkit-line-clamp:2;-webkit-box-orient:vertical;margin:0 0 1rem;font-size:.9375rem;line-height:1.65;display:-webkit-box;overflow:hidden}
 .sh-latest-news__readmore{color:#ffffffa6;border-bottom:1px solid;padding-bottom:2px;font-size:.875rem;font-weight:600;text-decoration:none;transition:color .2s;display:inline-block}
 .sh-latest-news__link:hover .sh-latest-news__readmore{color:#f5a623}
+
+/* ── Featured: ảnh phủ nền toàn card, chữ đè gradient dưới đáy ── */
+@media (min-width:1024px){
+    .sh-latest-news__card--featured{min-height:420px}
+    .sh-latest-news__card--featured .sh-latest-news__link{position:relative;display:flex;flex-direction:column;height:100%}
+    .sh-latest-news__card--featured .sh-latest-news__thumb{position:absolute;inset:0;aspect-ratio:auto;height:100%}
+    .sh-latest-news__card--featured .sh-latest-news__body{position:relative;z-index:1;margin-top:auto;padding:2.25rem 1.75rem 1.75rem;background:linear-gradient(to top,rgba(0,0,0,.94) 15%,rgba(0,0,0,.6) 60%,transparent 100%)}
+    .sh-latest-news__card--featured .sh-latest-news__card-title{font-size:clamp(1.35rem,2vw,1.75rem);-webkit-line-clamp:3}
+    .sh-latest-news__card--featured .sh-latest-news__excerpt{color:#ffffffcc}
+    .sh-latest-news__card--featured .sh-latest-news__readmore{color:#f5a623;border:1px solid #f5a62380;border-radius:999px;padding:.5rem 1.1rem;text-transform:uppercase;letter-spacing:.04em;font-size:.75rem}
+    .sh-latest-news__card--featured .sh-latest-news__readmore:hover{background:#f5a623;color:#0a0a0a}
+
+    /* ── 2 card phụ: dạng list ngang gọn, thu hẹp chiều cao ── */
+    .sh-latest-news__card:not(.sh-latest-news__card--featured) .sh-latest-news__link{display:flex;flex-direction:row;height:100%}
+    .sh-latest-news__card:not(.sh-latest-news__card--featured) .sh-latest-news__thumb{width:42%;flex-shrink:0;aspect-ratio:auto;height:100%}
+    .sh-latest-news__card:not(.sh-latest-news__card--featured) .sh-latest-news__body{flex:1;min-width:0;padding:1.25rem 1.25rem 1.25rem 1.5rem;display:flex;flex-direction:column;justify-content:center}
+    .sh-latest-news__card:not(.sh-latest-news__card--featured) .sh-latest-news__excerpt,
+    .sh-latest-news__card:not(.sh-latest-news__card--featured) .sh-latest-news__readmore{display:none}
+    .sh-latest-news__card:not(.sh-latest-news__card--featured) .sh-latest-news__card-title{font-size:1rem;-webkit-line-clamp:3;margin-bottom:0}
+    .sh-latest-news__card:not(.sh-latest-news__card--featured) .sh-latest-news__date{margin-bottom:.4rem}
+}

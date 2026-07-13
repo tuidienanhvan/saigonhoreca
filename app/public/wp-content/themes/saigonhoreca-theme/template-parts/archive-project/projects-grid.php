@@ -74,15 +74,25 @@ $svg_pin     = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strok
                                 axe `image-redundant-alt` (alt duplicates the <h3> below).
                                 The <h3> inside provides the accessible name for the link. */ ?>
                         <?php
-                        // Responsive cover: native attachment (auto srcset/sizes) with a
-                        // never-empty URL fallback so a card is never blank.
-                        global $post;
-                        // Một cover duy nhất / dự án (không phụ thuộc size-variant WP sinh):
-                        // luôn render file cover chính theo GOLD convention qua sgh_project_cover_url.
-                        if (function_exists('sgh_project_cover_url')) {
+                        $thumb_src = '';
+                        $thumb_id = get_post_thumbnail_id();
+                        
+                        if (!$thumb_id && function_exists('sgh_project_cover_ensure')) {
+                            $thumb_id = sgh_project_cover_ensure($post->ID);
+                        }
+                        
+                        if ($thumb_id) {
+                            $thumb_src = wp_get_attachment_image_url($thumb_id, 'large');
+                        }
+                        
+                        if (!$thumb_src && function_exists('sgh_project_cover_url') && $post_slug) {
+                            $thumb_src = sgh_project_cover_url($post_slug);
+                        }
+                        
+                        if ($thumb_src) {
                             printf(
                                 '<img class="sh-archive-projects__img" src="%s" width="1024" height="576" alt="" loading="lazy" decoding="async">',
-                                esc_url(sgh_project_cover_url($post->post_name))
+                                esc_url($thumb_src)
                             );
                         }
                         ?>

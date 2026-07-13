@@ -8,9 +8,23 @@
 .sh-archive-hero {
     position: relative;
     overflow: hidden;
-    height: clamp(520px, 75vh, 720px);
+    height: calc(100vh - 76px);
+    height: calc(100dvh - 76px);
+    min-height: 620px;
     color: #fff;
     background: var(--b1);
+}
+@media (max-width: 1024px) {
+    .sh-archive-hero {
+        height: 80dvh;
+        min-height: 560px;
+    }
+}
+@media (max-width: 768px) {
+    .sh-archive-hero {
+        height: 70dvh;
+        min-height: 520px;
+    }
 }
 
 /* ── Background layers (fade qua các ảnh) ── */
@@ -158,15 +172,9 @@
        viền vàng card đầu/cuối khi active. */
     padding: 0.75rem 0.75rem 1rem;
     scroll-padding-inline: 0.75rem;
-    scrollbar-width: thin;
-    scrollbar-color: rgba(245, 166, 35, 0.4) transparent;
     -webkit-overflow-scrolling: touch;
     scroll-snap-type: x mandatory;
-}
-.sh-archive-hero__cards::-webkit-scrollbar { height: 4px; }
-.sh-archive-hero__cards::-webkit-scrollbar-thumb {
-    background: rgba(245, 166, 35, 0.4);
-    border-radius: 4px;
+    /* scrollbar (thin, gold, luôn hiện) chuyển sang assets/css/_tokens.css — 1 nơi duy nhất */
 }
 @media (min-width: 1024px) {
     .sh-archive-hero__cards { gap: 1rem; padding: 0.75rem; scroll-padding-inline: 0.75rem; }
@@ -175,6 +183,7 @@
 /* Card không lift translateY (sẽ bị cắt nếu cards container scroll).
    Active state dùng OUTLINE bên trong + shadow + opacity. */
 .sh-archive-hero__card {
+    display: block;
     position: relative;
     flex: 0 0 240px;
     aspect-ratio: 4 / 3;

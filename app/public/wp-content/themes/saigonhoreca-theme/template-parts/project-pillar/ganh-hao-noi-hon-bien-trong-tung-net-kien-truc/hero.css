@@ -1,7 +1,7 @@
 /**
  * Project Pillar — Gành Hào
  * Section #1: hero — "con tàu ánh bạc neo đậu giữa sóng" (Parallax + ambient sea/sand glow).
- * Kỹ thuật parallax KHÔNG JavaScript: thẻ con __bg dùng background-attachment:fixed (cách tin cậy đã verify
+ * Kỹ thuật parallax KHÔNG JavaScript: thẻ con __bg dùng background-attachment: scroll;(cách tin cậy đã verify
  * trên sol-kitchen-bar) → bg neo theo viewport, cuộn trang tạo parallax. Thay cho clip-path + position:fixed cũ.
  * Chữ đặt TRỰC TIẾP trên ảnh sáng — không lớp phủ đen, không khung nền chữ (per owner).
  * Legibility nhờ text-shadow nhẹ + overlay token NHẸ. 100% token vars / color-mix — 0 hardcode hex brand.
@@ -10,7 +10,8 @@
 
 .pp--ganh .pp-hero-ganh {
   position: relative;
-  height: calc(100svh - 76px);
+  height: calc(100vh - 76px);
+  height: calc(100dvh - 76px);
   min-height: 600px;
   width: 100%;
   display: flex;
@@ -21,14 +22,11 @@
   isolation: isolate;
   text-align: center;
 }
-@supports (height: 100dvh) {
-  .pp--ganh .pp-hero-ganh { height: calc(100dvh - 76px); }
-}
 @media (max-width: 768px) {
   .pp--ganh .pp-hero-ganh { min-height: 70vh; }
 }
 
-/* Parallax bg — background-attachment:fixed (cách parallax tin cậy, bg neo theo viewport, auto-clip vào box này) */
+/* Parallax bg — background-attachment: scroll;(cách parallax tin cậy, bg neo theo viewport, auto-clip vào box này) */
 .pp-hero-ganh__bg {
   position: absolute;
   inset: 0;
@@ -38,7 +36,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-attachment: scroll;
   /* Ảnh giữ độ SÁNG nguyên bản — không làm tối (per owner). Chỉ tinh chỉnh nhẹ độ rực. */
   filter: saturate(1.06) contrast(1.02);
   pointer-events: none;
@@ -155,7 +153,7 @@
   100% { transform: translate3d(24px, -18px, 0); }
 }
 
-/* Mobile: background-attachment:fixed giật trên iOS — fallback scroll ổn định (giữ position:absolute) */
+/* Mobile: background-attachment: scroll;giật trên iOS — fallback scroll ổn định (giữ position:absolute) */
 @media (max-width: 768px) {
   .pp-hero-ganh__bg {
     position: absolute;

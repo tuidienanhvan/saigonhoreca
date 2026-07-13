@@ -11,7 +11,7 @@ if (!defined('ABSPATH')) exit;
 ?>
 <section class="pp-hero-sol">
     <!-- Thẻ con gánh hiệu ứng Parallax Clip-Path siêu mượt (position:fixed) -->
-    <div class="pp-hero-sol__media" aria-hidden="true" style="background-image:url('<?php echo esc_url(sgh_img('sol-kitchen-bar/sol-kitchen-bar-chop-hut-mui-inox-khac-logo.webp')); ?>');"></div>
+    <div class="pp-hero-sol__media" aria-hidden="true" style="background-image:url('<?php echo esc_url(sgh_img('sol-kitchen-bar-saigon-horeca/sol-kitchen-bar-mat-tien-toa-nha-goc-duong-ban-dem.webp')); ?>');"></div>
     <div class="pp-hero-sol__overlay" aria-hidden="true"></div>
 
     <div class="pp-hero-sol__glow pp-hero-sol__glow--lt" aria-hidden="true"></div>
@@ -20,7 +20,8 @@ if (!defined('ABSPATH')) exit;
     <div class="pp-hero-sol__rail pp-hero-sol__rail--left" aria-hidden="true">KITCHEN RENOVATION / DISTRICT 7</div>
     <div class="pp-hero-sol__rail pp-hero-sol__rail--right" aria-hidden="true">SGH M&amp;E SYSTEM</div>
 
-    <div class="pp-hero-sol__content">
+    <!-- Removed text content overlay as the background image already contains baked-in titles
+<div class="pp-hero-sol__content">
         <div class="pp-hero-sol__subhead"><?php echo esc_html__('2023 MICHELIN Guide Vietnam', 'saigonhoreca'); ?></div>
         <h1 class="pp-hero-sol__title"><?php echo esc_html__('Renovate SOL KITCHEN & BAR quận 7', 'saigonhoreca'); ?></h1>
         <div class="pp-hero-sol__divider" aria-hidden="true"></div>
@@ -30,4 +31,5 @@ if (!defined('ABSPATH')) exit;
             <span><?php echo esc_html__('Lò BBQ riêng', 'saigonhoreca'); ?></span>
         </div>
     </div>
+-->
 </section>

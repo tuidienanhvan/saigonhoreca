@@ -11,7 +11,7 @@
 }
 .sh-bc__container {
     margin-inline: auto;
-    max-width: 1200px;
+    max-width: var(--container-max); /* 1200px — token SSOT */
     padding-inline: calc(var(--spacing) * 4);
 }
 .sh-bc__list {
@@ -90,24 +90,10 @@ button {
     border-radius: 0;
 }
 
-/* ── Custom scrollbar (brand color) ── */
-html {
-    scrollbar-width: thin;
-    scrollbar-color: var(--brand) var(--bg-alt);
-}
-::-webkit-scrollbar { width: calc(var(--spacing) * 2); height: calc(var(--spacing) * 2); }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb {
-    background: var(--brand);
-    border: 2px solid var(--bg-alt);
-    border-radius: 5px;
-}
-::-webkit-scrollbar-thumb:hover { background: var(--brand-dark); }
-@media (min-width: 1024px) {
-    ::-webkit-scrollbar { width: calc(var(--spacing) * 2.5); height: calc(var(--spacing) * 2.5); }
-}
-.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
-.scrollbar-hide::-webkit-scrollbar { display: none; }
+/* Mọi CSS scrollbar của theme (auto-hide toàn cục + carousel/mobile-menu
+   riêng) đã dồn về assets/css/_tokens.css — SINGLE SOURCE OF TRUTH, tìm
+   sửa scrollbar thì luôn mở đúng 1 file đó, không rải rác. `.scrollbar-hide`
+   và `.sh-hscroll` từng ở đây đã xoá hẳn (0 usage thật trong toàn theme). */
 
 /* ── Search input — strip native UA chrome ── */
 input[type="search"] { -webkit-appearance: none; appearance: none; }
@@ -115,14 +101,6 @@ input[type="search"]::-webkit-search-decoration,
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-results-button,
 input[type="search"]::-webkit-search-results-decoration { display: none; -webkit-appearance: none; }
-
-/* ── Horizontal scroll snap (carousels / partner strip / etc.) ── */
-.sh-hscroll {
-    scroll-snap-type: x mandatory;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-}
-.sh-hscroll::-webkit-scrollbar { display: none; }
 
 /* ── Body font fallback for editor / Gutenberg content ── */
 .wp-block-table,

@@ -10,7 +10,7 @@ $uri = get_template_directory_uri();
 ?>
 <section class="pp-hero-swh">
   <!-- Thẻ con gánh hiệu ứng Parallax Clip-Path siêu mượt (position:fixed bị clip-path của section giữ lại) -->
-  <div class="pp-hero-swh__bg" style="background-image:url('<?php echo esc_url(sgh_img('spice-world-hotpot/spice-world-hotpot-mat-tien-bien-hieu-ban-ngay.jpg')); ?>');" aria-hidden="true"></div>
+  <div class="pp-hero-swh__bg" style="background-image:url('<?php echo esc_url(sgh_img('spice-world-hotpot/spice-world-hotpot-thumbnail-project-cover.webp')); ?>');" aria-hidden="true"></div>
   <div class="pp-hero-swh__overlay" aria-hidden="true"></div>
 
   <!-- Hơi lẩu bốc lên & ánh lửa Tứ Xuyên (gentle steam + Sichuan fire glow) -->
@@ -20,7 +20,8 @@ $uri = get_template_directory_uri();
     <span></span><span></span><span></span>
   </div>
 
-  <div class="pp-hero-swh__content">
+  <!-- Removed text content overlay as the background image already contains baked-in titles
+<div class="pp-hero-swh__content">
     <div class="pp-hero-swh__icon" aria-hidden="true">
       <svg viewBox="0 0 24 24" fill="currentColor">
         <path d="M12 2L14.85 9.15L22 12L14.85 14.85L12 22L9.15 14.85L2 12L9.15 9.15L12 2Z"/>
@@ -34,4 +35,5 @@ $uri = get_template_directory_uri();
     </h1>
     <div class="pp-hero-swh__divider" aria-hidden="true"></div>
   </div>
+-->
 </section>

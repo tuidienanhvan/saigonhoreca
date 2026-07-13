@@ -172,7 +172,7 @@ function sh_footer_has_widgets(): bool {
 }
 
 // Load the Sidebar Menu Walker (depends on sh_icon())
-require_once get_template_directory() . '/inc/core/class-sidebar-walker.php';
+require_once get_template_directory() . '/inc/engine/class-sidebar-walker.php';
 
 /**
  * Auto-enforce permalink structure on theme activation.
@@ -256,16 +256,20 @@ $inc = get_template_directory() . '/inc/';
 
 // Config (brand-specific " theme only)
 require $inc . 'config/constants.php';       // SGH_SITE_NAME, FB_APP_ID, etc.
+require $inc . 'config/domains.php';         // Production hostnames (.vn/.com)
 require $inc . 'config/contact-info.php';    // Company phone, email, address
 require $inc . 'config/site-structure.php';  // Pages, categories, menu definitions
-require $inc . 'core/perf-config.php';       // Perf constants + filter helpers
-require $inc . 'core/img-helper.php';        // sgh_img() — env-aware uploads URL (local mirror vs prod)
-require $inc . 'core/project-cover.php';      // project cover resolver — cached map + fallback chain (never-black)
-require $inc . 'core/bot-optimize.php';      // sgh_is_bot() — bots/Lighthouse get light render (no fixed parallax)
-require $inc . 'core/slug-map.php';          // Bilingual slug map (vi ↔ en) + counterpart URL switcher
-require $inc . 'core/pillar-routes.php';     // Auto-route /du-an/<slug>/ to page-pillar-*.php (BEM rebuild)
-require $inc . 'core/cpt-registration.php';  // CPT `project`+`product` + taxonomies (Phase 2 data layer)
-require $inc . 'core/media-routing.php';      // Route new uploads: product->products/<slug>/, post->blog/<slug>/
+require $inc . 'config/routes.php';          // Route → CSS bundle + hero-preload map
+require $inc . 'config/fonts.php';           // Font families + color-token palette
+require $inc . 'engine/perf-config.php';       // Perf constants + filter helpers
+require $inc . 'engine/img-helper.php';        // sgh_img() — env-aware uploads URL (local mirror vs prod)
+require $inc . 'site/project-cover.php';      // project cover resolver — cached map + fallback chain (never-black)
+require $inc . 'engine/bot-optimize.php';      // sgh_is_bot() — bots/Lighthouse get light render (no fixed parallax)
+require $inc . 'engine/slug-map.php';          // Bilingual slug map (vi ↔ en) + counterpart URL switcher
+require $inc . 'engine/pillar-routes.php';     // Auto-route /du-an/<slug>/ to page-pillar-*.php (BEM rebuild)
+require $inc . 'site/temp-migration.php';    // Temporary migration for Nam An project slug
+require $inc . 'engine/cpt-registration.php';  // CPT `project`+`product` + taxonomies (Phase 2 data layer)
+require $inc . 'engine/media-routing.php';      // Route new uploads: product->products/<slug>/, post->blog/<slug>/
 
 add_filter('template_include', function ($template) {
     if (is_front_page()) {
@@ -394,24 +398,24 @@ add_action('admin_notices', function () {
 // THEME MODULES -- Brand-specific, not in plugins
 // ============================================================================
 
-require $inc . 'core/enqueue.php';           // Frontend assets (JS, CSS, fonts)
-require $inc . 'core/critical-css.php';      // Inline theme.css + dequeue external (T-014 restore)
-require $inc . 'core/auto-setup.php';        // Theme activation (front page, menu)
-require $inc . 'core/svg-icons.php';         // Inline SVG icons
-require $inc . 'core/section-images.php';    // Media library helper
-require $inc . 'core/breadcrumbs.php';       // Breadcrumbs renderer
-require $inc . 'core/cache-helpers.php';     // Theme cache helpers
-require $inc . 'core/pi-seo-resolver.php';   // Pi-managed SEO meta/options resolver
-require $inc . 'core/seo-meta.php';           // Saigon Horeca SEO Meta & Social Tags Module
-require $inc . 'core/seo-robots.php';         // Saigon Horeca SEO Robots & Canonical Module
-require $inc . 'core/seo-schema.php';         // Saigon Horeca JSON-LD Structured Data Schema Module
-require $inc . 'core/seo-performance.php';    // Saigon Horeca SEO Performance & Security Module
-require $inc . 'core/webp-conversion.php';      // WebP sibling generation + runtime serve (Accept-aware)
-require $inc . 'core/redirect-manager.php';  // Redirect frontend handler
+require $inc . 'engine/enqueue.php';           // Frontend assets (JS, CSS, fonts)
+require $inc . 'engine/critical-css.php';      // Inline theme.css + dequeue external (T-014 restore)
+require $inc . 'site/auto-setup.php';        // Theme activation (front page, menu)
+require $inc . 'engine/svg-icons.php';         // Inline SVG icons
+require $inc . 'site/section-images.php';    // Media library helper
+require $inc . 'engine/breadcrumbs.php';       // Breadcrumbs renderer
+require $inc . 'engine/cache-helpers.php';     // Theme cache helpers
+require $inc . 'site/pi-seo-resolver.php';   // Pi-managed SEO meta/options resolver
+require $inc . 'engine/seo-meta.php';           // Saigon Horeca SEO Meta & Social Tags Module
+require $inc . 'engine/seo-robots.php';         // Saigon Horeca SEO Robots & Canonical Module
+require $inc . 'engine/seo-schema.php';         // Saigon Horeca JSON-LD Structured Data Schema Module
+require $inc . 'engine/seo-performance.php';    // Saigon Horeca SEO Performance & Security Module
+require $inc . 'engine/webp-conversion.php';      // WebP sibling generation + runtime serve (Accept-aware)
+require $inc . 'engine/redirect-manager.php';  // Redirect frontend handler
 
 // Navigation walkers
-require_once $inc . 'core/class-mobile-walker.php';
-require_once $inc . 'core/class-desktop-walker.php';
+require_once $inc . 'engine/class-mobile-walker.php';
+require_once $inc . 'engine/class-desktop-walker.php';
 
 // Customizer (theme color, footer, etc.)
 require $inc . 'customizer/init.php';
@@ -432,6 +436,7 @@ if (is_admin() || wp_doing_ajax() || $is_rest_api) {
         'admin/sync/sync-deploy.php',    // .htaccess, robots.txt deploy
         'admin/sync/sync-data.php',      // DB-to-JSON export, WebP convert
         'admin/notifications.php',       // Admin notices (optional — may be absent)
+        'tools/import-gdocs.php',        // wp-admin: Posts > Import Google Docs (paste link → draft "tin tức")
     ] as $sgh_admin_mod) {
         $sgh_admin_path = $inc . $sgh_admin_mod;
         if (file_exists($sgh_admin_path)) {
@@ -471,6 +476,8 @@ add_action('init', function () {
         update_option('blogdescription', SGH_SITE_TAGLINE);
     }
 });
+
+
 
 /**
  * Ensure Publish metabox is always visible
@@ -639,7 +646,7 @@ add_action('template_redirect', function () {
     }
 }, 1);
 
-require $inc . 'core/markdown-filters.php';
+require $inc . 'engine/markdown-filters.php';
 require $inc . 'tools/reimport-products.php';   // Admin-only ?sgh_reimport_products=1
 require $inc . 'tools/clean-elementor-posts.php'; // Admin-only ?sgh_clean_elementor=1
 require $inc . 'tools/recrawl-posts.php';        // Admin-only ?sgh_recrawl_posts=1
@@ -903,7 +910,7 @@ if (!function_exists('sgh_static_cache_is_cacheable')) {
 }
 
 add_action('template_redirect', static function() {
-    error_log('[CACHE] template_redirect fired, uri='.$_SERVER['REQUEST_URI']);if (!sgh_static_cache_is_cacheable()) { error_log('[CACHE] not cacheable'); return; }
+    if (!sgh_static_cache_is_cacheable()) { return; }
     $uri = isset($_SERVER['REQUEST_URI']) ? (string) $_SERVER['REQUEST_URI'] : '/';
     $path = sgh_static_cache_path_for_uri($uri);
     if ($path === '') return;

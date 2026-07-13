@@ -6,10 +6,11 @@
 
 .pp-hero-tvg {
   position: relative;
-  /* Isolation contains the bg layer; parallax via background-attachment:fixed (reliable, no clip-path containing-block trap) */
+  /* Isolation contains the bg layer; parallax via background-attachment: scroll;(reliable, no clip-path containing-block trap) */
   isolation: isolate;
-  /* Full viewport area below sticky header (76px) — same approach as roka gold */
-  height: calc(100svh - 76px);
+  /* Fill viewport area below sticky header (76px) — same approach as roka gold */
+  height: calc(100vh - 76px);
+  height: calc(100dvh - 76px);
   min-height: 600px;
   width: 100%;
   display: flex;
@@ -20,13 +21,7 @@
   text-align: center;
 }
 
-@supports (height: 100dvh) {
-  .pp-hero-tvg {
-    height: calc(100dvh - 76px);
-  }
-}
-
-/* Reliable parallax: bg layer is absolute (clipped to this box) with background-attachment:fixed pinning the photo to the viewport. No JS. */
+/* Reliable parallax: bg layer is absolute (clipped to this box) with background-attachment: scroll;pinning the photo to the viewport. No JS. */
 .pp-hero-tvg__bg {
   position: absolute;
   inset: 0;
@@ -37,7 +32,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed; /* reliable parallax — bg fixed to viewport, auto-clipped to this box */
+  background-attachment: scroll; /* reliable parallax — bg fixed to viewport, auto-clipped to this box */
   /* Brighter, cleaner than cinematic-dark — Safe-Kitchen mood */
   filter: saturate(1.08) brightness(1.02);
 }
@@ -248,7 +243,7 @@
   .pp-hero-tvg__stat { min-width: 104px; padding: 0.8rem 1rem; }
 }
 
-/* Mobile fallback: background-attachment:fixed is janky on touch — scroll the bg with the page instead */
+/* Mobile fallback: background-attachment: scroll;is janky on touch — scroll the bg with the page instead */
 @media (max-width: 768px) {
   .pp-hero-tvg__bg {
     position: absolute;

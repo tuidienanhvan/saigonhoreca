@@ -30,9 +30,27 @@ if (!$q->have_posts()) return;
 <section class="sh-latest-news">
     <div class="sh-latest-news__inner">
         <header class="sh-latest-news__header scroll-reveal reveal-up duration-2000">
-            <div>
-                <span class="sh-latest-news__eyebrow">News</span>
-                <h2 class="sh-latest-news__title"><?php esc_html_e('Tin tức mới', 'saigonhoreca'); ?></h2>
+            <div class="sh-latest-news__glow sh-latest-news__glow--a" aria-hidden="true"></div>
+            <div class="sh-latest-news__glow sh-latest-news__glow--b" aria-hidden="true"></div>
+            <svg class="sh-latest-news__bg-signal" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+                <circle cx="100" cy="100" r="30" stroke="currentColor" stroke-width="1"/>
+                <circle cx="100" cy="100" r="60" stroke="currentColor" stroke-width="1"/>
+                <circle cx="100" cy="100" r="90" stroke="currentColor" stroke-width="1"/>
+                <path d="M100 6 L100 26 M100 174 L100 194 M6 100 L26 100 M174 100 L194 100" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+            </svg>
+            <svg class="sh-latest-news__frame" viewBox="0 0 100 100" preserveAspectRatio="none" fill="none" aria-hidden="true">
+                <path d="M 0 12 L 0 0 L 12 0" stroke="currentColor" stroke-width="1"/>
+                <path d="M 100 12 L 100 0 L 88 0" stroke="currentColor" stroke-width="1"/>
+                <path d="M 0 88 L 0 100 L 12 100" stroke="currentColor" stroke-width="1"/>
+                <path d="M 100 88 L 100 100 L 88 100" stroke="currentColor" stroke-width="1"/>
+            </svg>
+            <div class="sh-latest-news__heading">
+                <span class="sh-latest-news__eyebrow">
+                    <svg class="sh-latest-news__sparkle" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2L14.85 9.15L22 12L14.85 14.85L12 22L9.15 14.85L2 12L9.15 9.15L12 2Z"/></svg>
+                    <?php esc_html_e('News', 'saigonhoreca'); ?>
+                </span>
+                <span class="sh-latest-news__rule" aria-hidden="true"></span>
+                <h2 class="sh-latest-news__title"><?php esc_html_e('Tin tức', 'saigonhoreca'); ?> <span class="sh-latest-news__title-accent"><?php esc_html_e('mới', 'saigonhoreca'); ?></span></h2>
             </div>
             <a href="<?php echo esc_url(sgh_url('news')); ?>" class="sh-latest-news__view-all">
                 <span><?php esc_html_e('Xem tất cả', 'saigonhoreca'); ?></span>

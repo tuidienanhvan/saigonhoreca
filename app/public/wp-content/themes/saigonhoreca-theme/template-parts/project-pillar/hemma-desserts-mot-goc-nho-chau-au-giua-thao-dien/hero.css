@@ -10,7 +10,8 @@
 .pp-hero-hmd {
   position: relative;
   /* Fill full viewport area below sticky header (76px) — gold-ref pattern. */
-  height: calc(100svh - 76px);
+  height: calc(100vh - 76px);
+  height: calc(100dvh - 76px);
   min-height: 600px;
   width: 100%;
   display: flex;
@@ -20,16 +21,13 @@
   isolation: isolate;
   /* Parallax tin cậy: KHÔNG dùng clip-path (clip-path biến section thành
      containing block cho thẻ con position:fixed → nền cuộn theo, mất parallax).
-     Thay bằng background-attachment:fixed trên lớp nền (xem .pp-hero-hmd__bg). */
+     Thay bằng background-attachment: scroll;trên lớp nền (xem .pp-hero-hmd__bg). */
   background-color: var(--b1);
   text-align: center;
 }
-@supports (height: 100dvh) {
-  .pp-hero-hmd { height: calc(100dvh - 76px); }
-}
 
-/* --- Media plate (parallax via background-attachment:fixed) ------------- */
-/* Lớp nền absolute phủ kín section; background-attachment:fixed neo ảnh vào
+/* --- Media plate (parallax via background-attachment: scroll;) ------------- */
+/* Lớp nền absolute phủ kín section; background-attachment: scroll;neo ảnh vào
    viewport = parallax mượt, không JS, tin cậy (không lệ thuộc clip-path). */
 .pp-hero-hmd__bg {
   position: absolute;
@@ -41,7 +39,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-attachment: scroll;
   filter: saturate(1.05) contrast(0.98);
 }
 
@@ -213,7 +211,7 @@
 }
 
 /* --- Mobile parallax fallback ----------------------------------------- */
-/* background-attachment:fixed giật/lag trên mobile → đổi về scroll cho ổn định. */
+/* background-attachment: scroll;giật/lag trên mobile → đổi về scroll cho ổn định. */
 @media (max-width: 768px) {
   .pp-hero-hmd__bg {
     position: absolute;

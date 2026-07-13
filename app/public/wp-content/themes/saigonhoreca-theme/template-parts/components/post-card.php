@@ -58,7 +58,7 @@ if (isset($args['thumb_url'])) {
                 echo wp_get_attachment_image($img_id, 'large', false, $img_attrs); 
             elseif (strpos($img_url, 'placeholder.svg') !== false) : ?>
                 <div class="sh-card__placeholder">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.webp" alt="Saigon Horeca" class="sh-card__placeholder-logo" loading="<?php echo esc_attr($loading); ?>" <?php if ($fetchpriority) echo 'fetchpriority="high"'; ?>>
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo-header.webp" alt="Saigon Horeca" class="sh-card__placeholder-logo" loading="<?php echo esc_attr($loading); ?>" <?php if ($fetchpriority) echo 'fetchpriority="high"'; ?>>
                     <span class="sh-card__placeholder-text">SaigonHoreca</span>
                 </div>
             <?php else : ?>

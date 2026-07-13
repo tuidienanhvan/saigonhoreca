@@ -1,0 +1,30 @@
+{
+  "ci": {
+    "collect": {
+      "url": [
+        "https://saigonhoreca.local/",
+        "https://saigonhoreca.local/lien-he/",
+        "https://saigonhoreca.local/du-an/"
+      ],
+      "numberOfRuns": 3,
+      "settings": {
+        "chromeFlags": "--headless=new --ignore-certificate-errors",
+        "onlyCategories": ["performance"],
+        "budgets": null
+      }
+    },
+    "assert": {
+      "budgetsFile": "./budget.json",
+      "assertions": {
+        "categories:performance": ["error", { "minScore": 0.99 }],
+        "largest-contentful-paint": ["error", { "maxNumericValue": 2500 }],
+        "cumulative-layout-shift": ["error", { "maxNumericValue": 0.05 }],
+        "total-blocking-time": ["error", { "maxNumericValue": 200 }]
+      }
+    },
+    "upload": {
+      "target": "filesystem",
+      "outputDir": "./docs/perf-baselines/lhci"
+    }
+  }
+}

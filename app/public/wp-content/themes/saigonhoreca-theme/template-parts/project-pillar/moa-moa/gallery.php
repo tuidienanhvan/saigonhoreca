@@ -68,7 +68,17 @@ $gallery = [
       <span class="pp-gallery-moa__index" aria-hidden="true">MOA · 04</span>
 
       <?php foreach ($gallery as $i => $img): ?>
-        <figure class="pp-gallery-moa__item pp-image-container-shared pp-gallery-moa__item--<?php echo esc_attr($img['role']); ?>">
+        <?php 
+          // Các path viền cho 4 ảnh trong Gallery tương ứng với clipPath dough-4, 5, 6, 7
+          $border_paths = [
+            'M 12,8 C 38,1 70,4 88,12 C 98,22 99,50 95,78 C 90,92 72,98 48,97 C 25,96 8,88 4,65 C -4,48 2,22 12,8 Z', // dough-4
+            'M 6,15 C 20,5 65,-2 85,8 C 98,18 96,48 94,72 C 92,90 72,99 50,97 C 28,95 10,85 4,62 C -4,42 1,22 6,15 Z', // dough-5
+            'M 15,8 C 45,2 78,5 90,18 C 100,32 96,58 92,80 C 88,95 62,99 45,96 C 28,93 10,82 4,58 C -4,38 2,18 15,8 Z', // dough-6
+            'M 5,10 C 30,3 70,5 92,12 C 98,22 99,52 97,75 C 95,92 75,98 50,97 C 25,96 8,88 3,65 C -3,45 1,22 5,10 Z'  // dough-7
+          ];
+          $current_path = isset($border_paths[$i]) ? $border_paths[$i] : $border_paths[0];
+        ?>
+        <figure class="pp-gallery-moa__item pp-image-container-shared pp-gallery-moa__item--<?php echo esc_attr($img['role']); ?> moa-gallery__item-custom">
           <span class="pp-gallery-moa__corner" aria-hidden="true"></span>
           <img
             src="<?php echo sgh_img($img['src']); ?>"
@@ -77,6 +87,10 @@ $gallery = [
             decoding="async"
             width="1366"
             height="768">
+          <!-- Khung viền SVG vẽ nét khớp với clip path tương ứng trong Gallery -->
+          <svg class="moa-gallery__image-border" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            <path d="<?php echo esc_attr($current_path); ?>" vector-effect="non-scaling-stroke" />
+          </svg>
           <span class="pp-gallery-moa__num" aria-hidden="true"><?php echo esc_html(sprintf('%02d', $i + 1)); ?></span>
           <div class="pp-image-caption-shared"><?php echo esc_html($img['caption']); ?></div>
         </figure>

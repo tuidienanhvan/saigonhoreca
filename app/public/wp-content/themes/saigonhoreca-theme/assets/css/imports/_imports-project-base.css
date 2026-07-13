@@ -1,0 +1,12 @@
+/* Project bundle shared base — imported by every per-slug project bundle.
+   Reuses _imports-route-core.css (same header/footer/nav/buttons/cards +
+   reveal.css) instead of re-declaring the same 21 imports verbatim. */
+
+@import "./_imports-route-core.css";
+
+/* Shared partials (project-pillar specific, not part of route-core) */
+@import "../../../template-parts/project-pillar/_text.css";
+@import "../../../template-parts/project-pillar/_cta.css";
+@import "../../../template-parts/project-pillar/_related.css";
+@import "../../../template-parts/project-pillar/_caption.css";
+@import "../../../template-parts/project-pillar/_container.css";

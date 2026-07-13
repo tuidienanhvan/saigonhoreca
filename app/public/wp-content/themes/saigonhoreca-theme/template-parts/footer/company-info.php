@@ -1,6 +1,6 @@
 <?php
 $contact = $args['contact'] ?? (function_exists('saigonhouse_get_contact_info') ? saigonhouse_get_contact_info() : []);
-$logo_url = $args['logo_url'] ?? get_template_directory_uri() . '/assets/images/apple-touch-icon.png';
+$logo_url = $args['logo_url'] ?? get_template_directory_uri() . '/assets/images/apple-touch-icon.webp';
 ?>
 <div class="sh-footer__company">
     <div class="sh-footer__logo-wrap">

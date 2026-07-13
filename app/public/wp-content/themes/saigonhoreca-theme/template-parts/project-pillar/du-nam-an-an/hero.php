@@ -14,7 +14,8 @@ $uri = get_template_directory_uri();
   <div class="pp-hero-nan__overlay" aria-hidden="true"></div>
   <div class="pp-ambient-glow-nan pp-ambient-glow-nan--center" aria-hidden="true"></div>
 
-  <div class="pp-hero-nan__content">
+  <!-- Removed text content overlay as the background image already contains baked-in titles
+<div class="pp-hero-nan__content">
     <div class="pp-hero-nan__mark" aria-hidden="true">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
         <path d="M12 21s-7.5-4.35-7.5-9.75A4.25 4.25 0 0 1 12 8.5a4.25 4.25 0 0 1 7.5 2.75C19.5 16.65 12 21 12 21Z" stroke-linecap="round" stroke-linejoin="round"/>
@@ -28,6 +29,7 @@ $uri = get_template_directory_uri();
     </h1>
     <div class="pp-hero-nan__divider" aria-hidden="true"></div>
   </div>
+-->
 
   <div class="pp-hero-nan__scroll" aria-hidden="true">
     <svg class="pp-hero-nan__scroll-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18">

@@ -9,13 +9,14 @@ $uri = get_template_directory_uri();
 ?>
 <section class="pp-hero-tvg">
   <!-- Thẻ con gánh hiệu ứng Parallax Clip-Path siêu mượt (background position:fixed, không JS) -->
-  <div class="pp-hero-tvg__bg" style="background-image:url('<?php echo sgh_img('bep-an-truong-mam-non-tu-thuc-trinh-vuong/goi-y-thiet-ke-bep-truong-hoc.jpg'); ?>');"></div>
+  <div class="pp-hero-tvg__bg" style="background-image:url('<?php echo sgh_img('bep-an-truong-mam-non-tu-thuc-trinh-vuong/bep-an-truong-mam-non-tu-thuc-trinh-vuong-thumbnail-project-cover.webp'); ?>');"></div>
   <div class="pp-hero-tvg__overlay" aria-hidden="true"></div>
 
   <div class="pp-hero-tvg__glow pp-hero-tvg__glow--mint" aria-hidden="true"></div>
   <div class="pp-hero-tvg__glow pp-hero-tvg__glow--warm" aria-hidden="true"></div>
 
-  <div class="pp-hero-tvg__content">
+  <!-- Removed text content overlay as the background image already contains baked-in titles
+<div class="pp-hero-tvg__content">
     <div class="pp-hero-tvg__badge" aria-hidden="true">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
         <path d="M5 11a7 7 0 0 1 14 0v1H5v-1Z" stroke-linecap="round" stroke-linejoin="round"/>
@@ -51,6 +52,7 @@ $uri = get_template_directory_uri();
       </div>
     </div>
   </div>
+-->
 
   <div class="pp-hero-tvg__scroll" aria-hidden="true">
     <svg class="pp-hero-tvg__scroll-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="18" height="18">

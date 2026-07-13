@@ -33,7 +33,7 @@ $theme_uri  = get_template_directory_uri();
             Menu
         </span>
         <button id="mobile-menu-close" class="sh-mobile__close-btn" aria-label="<?php esc_attr_e('Đóng menu', 'saigonhoreca'); ?>">
-            <?php echo sh_icon('chevron-right', 'sh-mobile__close-icon'); ?>
+            <?php echo sh_icon('x', 'sh-mobile__close-icon'); ?>
         </button>
     </div>
 
@@ -84,16 +84,24 @@ $theme_uri  = get_template_directory_uri();
                 ?>
                 <ul class="sh-mobile__menu-list">
                     <?php foreach ($fallback_items as $item) : ?>
-                    <li class="sh-mobile__menu-item <?php echo !empty($item['submenu']) ? 'sh-mobile__menu-item--has-children' : ''; ?>">
-                        <a href="<?php echo esc_url($item['url'] ?? home_url('/')); ?>" class="sh-mobile__menu-link">
-                            <?php echo esc_html($item['title']); ?>
-                        </a>
+                    <li class="sh-mob-item <?php echo !empty($item['submenu']) ? 'sh-mob-item--has-children' : ''; ?>">
+                        <div class="sh-mob-item__row">
+                            <a href="<?php echo esc_url($item['url'] ?? home_url('/')); ?>" class="sh-mob-item__link">
+                                <?php echo esc_html($item['title']); ?>
+                            </a>
+                            <?php if (!empty($item['submenu'])) : ?>
+                            <button class="mobile-submenu-toggle sh-mob-item__toggle">
+                                <?php echo sh_icon('chevron-down', 'sh-mob-item__toggle-icon'); ?>
+                            </button>
+                            <?php endif; ?>
+                        </div>
                         <?php if (!empty($item['submenu'])) : ?>
-                        <ul class="sh-mobile__submenu">
+                        <ul class="sub-menu sh-mob-submenu">
                             <?php foreach ($item['submenu'] as $sub) : ?>
-                            <li class="sh-mobile__submenu-item">
-                                <a href="<?php echo esc_url($sub['url'] ?? home_url('/')); ?>" class="sh-mobile__submenu-link">
-                                    <?php echo esc_html($sub['title']); ?>
+                            <li class="sh-mob-sub-item">
+                                <a href="<?php echo esc_url($sub['url'] ?? home_url('/')); ?>" class="sh-mob-sub-item__link">
+                                    <span class="sh-mob-sub-item__dot"></span>
+                                    <span class="sh-mob-sub-item__text"><?php echo esc_html($sub['title']); ?></span>
                                 </a>
                             </li>
                             <?php endforeach; ?>

@@ -8,12 +8,13 @@ if (!defined('ABSPATH')) exit;
 $uri = get_template_directory_uri();
 ?>
 <section class="pp-hero-rkf">
-  <div class="pp-hero-rkf__media" style="background-image:url('<?php echo sgh_img('roka-fella/roka-fella-thumbnail-project-cover.jpg'); ?>');"></div>
+  <div class="pp-hero-rkf__media" style="background-image:url('<?php echo sgh_img('roka-fella/roka-fella-thumbnail-project-cover.webp'); ?>');"></div>
   <div class="pp-hero-rkf__overlay" aria-hidden="true"></div>
 
   <div class="pp-ambient-glow-rf pp-ambient-glow-rf--center" aria-hidden="true"></div>
 
-  <div class="pp-hero-rkf__content">
+  <!-- Removed text content overlay as the background image already contains baked-in titles
+<div class="pp-hero-rkf__content">
     <div class="pp-hero-rkf__star" aria-hidden="true">
       <svg viewBox="0 0 24 24" fill="currentColor">
         <path d="M12 2L14.85 9.15L22 12L14.85 14.85L12 22L9.15 14.85L2 12L9.15 9.15L12 2Z"/>
@@ -27,4 +28,5 @@ $uri = get_template_directory_uri();
     </h1>
     <div class="pp-hero-rkf__divider" aria-hidden="true"></div>
   </div>
+-->
 </section>

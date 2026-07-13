@@ -18,6 +18,10 @@ $uri = get_template_directory_uri();
         <div class="pp-image-container-shared moa-concept__image-container">
           <div class="moa-concept__image-decor" aria-hidden="true"></div>
           <img src="<?php echo sgh_img('moa-moa/moa-moa-khong-gian-an-uong-ban-ghe-go-view-thanh-pho.webp'); ?>" alt="<?php echo esc_attr__('Khu vực ăn uống trong nhà với bàn ghế gỗ và vách kính lớn nhìn ra phố Quận 1 tại Moa Moa', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="1366" height="768">
+          <!-- Khung viền SVG vẽ nét khớp với clip path (Dough Shape 2) -->
+          <svg class="moa-concept__image-border" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M 10,5 C 35,1 72,-2 90,15 C 102,32 98,60 92,82 C 86,96 58,99 40,97 C 20,95 5,85 2,60 C -2,38 2,16 10,5 Z" vector-effect="non-scaling-stroke" />
+          </svg>
           <div class="pp-image-caption-shared"><?php echo esc_html__('Khu vực ăn uống ấm cúng với vách kính lớn nhìn ra phố Quận 1 lúc chạng vạng', 'saigonhoreca'); ?></div>
         </div>
       </div>

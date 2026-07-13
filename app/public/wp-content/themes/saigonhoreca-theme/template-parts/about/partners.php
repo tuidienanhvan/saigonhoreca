@@ -83,8 +83,8 @@ for ($i = 1; $i <= 12; $i++) {
                 <!-- Main finished project image -->
                 <div class="sh-about-partners__img-main-frame">
                     <img
-                        src="<?php echo esc_url(sgh_img('the-brix/the-brix-khong-gian-am-thuc-len-den-dem.webp')); ?>"
-                        alt="Du an nha hang cao cap The Brix — Saigon Horeca thi cong"
+                        src="<?php echo esc_url(sgh_img('the-royal-all-day-dining/the-royal-all-day-dining-quay-bep-mo-gach-xanh-fujimak.webp')); ?>"
+                        alt="Dự án nhà hàng cao cấp The Royal All Day Dining — Saigon Horeca thi công"
                         loading="lazy"
                         decoding="async"
                         width="600"
@@ -99,8 +99,8 @@ for ($i = 1; $i <= 12; $i++) {
                 <!-- Secondary accent image (3D Overlap) -->
                 <div class="sh-about-partners__img-accent-frame">
                     <img
-                        src="<?php echo esc_url(sgh_img('bambino/bambino-thiet-bi-bep-nau-nhap-khau.webp')); ?>"
-                        alt="He thong bep cong nghiep inox cao cap"
+                        src="<?php echo esc_url(sgh_img('saigonhoreca/Saigon-Horeca-thiet-bi-bep-cong-nghiep.webp')); ?>"
+                        alt="Hệ thống bếp công nghiệp inox Saigon Horeca lắp đặt"
                         loading="lazy"
                         decoding="async"
                         width="600"

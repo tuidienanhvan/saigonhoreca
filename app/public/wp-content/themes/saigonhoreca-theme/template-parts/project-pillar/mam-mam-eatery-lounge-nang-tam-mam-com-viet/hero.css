@@ -2,17 +2,19 @@
  * Project Pillar — Mâm Mâm Eatery & Lounge
  * Section #1: hero — Vietnamese Modern Heritage.
  * Full-bleed background image with reliable CSS parallax (no JS): the __bg uses
- * background-attachment:fixed, a LIGHT token overlay keeps
+ * background-attachment: scroll;, a LIGHT token overlay keeps
  * the photo bright, and text-shadow keeps the title legible. Rice-grain gold
  * dot texture, conical-hat arc ornament, mâm-tray glow. 100% design tokens.
  */
 
 .pp-hero-mam {
   position: relative;
-  /* Parallax via background-attachment:fixed on the absolute __bg (reliable). */
+  /* Parallax via background-attachment: scroll;on the absolute __bg (reliable). */
   isolation: isolate;
   overflow: hidden;
-  min-height: calc(100svh - 76px);
+  height: calc(100vh - 76px);
+  height: calc(100dvh - 76px);
+  min-height: 600px;
   display: flex;
   align-items: flex-end;
   justify-content: flex-start;
@@ -21,15 +23,11 @@
   padding: 5rem 1.25rem 4rem;
 }
 
-@supports (height: 100dvh) {
-  .pp-hero-mam { min-height: 100dvh; }
-}
-
 @media (min-width: 768px) {
   .pp-hero-mam { padding: 8rem 4rem 6rem; }
 }
 
-/* Parallax background (technique: background-attachment:fixed — reliable).
+/* Parallax background (technique: background-attachment: scroll;— reliable).
    Owner brief: text sits on the BRIGHT image — only a LIGHT overlay, no dark
    scrim. Image is kept bright (slight lift) so the hero reads as luminous. */
 .pp-hero-mam__bg {
@@ -40,7 +38,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-attachment: scroll;
   filter: saturate(1.12) brightness(1.04) contrast(1.02);
   z-index: -2;
   pointer-events: none;
@@ -250,7 +248,7 @@
   transform: translateY(0);
 }
 
-/* Mobile fallback: background-attachment:fixed is janky on mobile, use scroll
+/* Mobile fallback: background-attachment: scroll;is janky on mobile, use scroll
    (keep position:absolute). */
 @media (max-width: 768px) {
   .pp-hero-mam__bg {

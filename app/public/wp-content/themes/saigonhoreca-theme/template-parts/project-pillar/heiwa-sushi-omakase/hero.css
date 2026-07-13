@@ -10,7 +10,8 @@
 
 .pp-hero-hwa {
   position: relative;
-  height: calc(100svh - 76px);
+  height: calc(100vh - 76px);
+  height: calc(100dvh - 76px);
   min-height: 680px;
   width: 100%;
   display: flex;
@@ -23,12 +24,7 @@
   padding-inline: clamp(1.5rem, 8vw, 8.5rem);
 }
 
-@supports (height: 100dvh) {
-  .pp-hero-hwa { height: calc(100dvh - 76px); }
-}
-
-/* Full-bleed BRIGHT image — position:absolute + background-attachment:fixed
-   gives a reliable GPU-smooth parallax (bg fixed to viewport, auto-clipped to this box). */
+/* Full-bleed BRIGHT image — position:absolute + background-attachment: scroll;gives a reliable GPU-smooth parallax (bg fixed to viewport, auto-clipped to this box). */
 .pp-hero-hwa__bg {
   position: absolute;
   inset: 0;
@@ -38,7 +34,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed; /* reliable parallax — bg fixed to viewport, auto-clipped to this box */
+  background-attachment: scroll; /* reliable parallax — bg fixed to viewport, auto-clipped to this box */
   pointer-events: none;
   /* Bright image — keep it luminous per owner feedback. */
   filter: saturate(1.04) contrast(1.03) brightness(1.02);
@@ -193,7 +189,7 @@
   100% { top: 56px; }
 }
 
-/* Mobile fallback: background-attachment:fixed is janky on touch — pin the bg to the page. */
+/* Mobile fallback: background-attachment: scroll;is janky on touch — pin the bg to the page. */
 @media (max-width: 768px) {
   .pp-hero-hwa__bg { position: absolute; background-attachment: scroll; }
 }

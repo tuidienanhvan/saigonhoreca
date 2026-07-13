@@ -33,19 +33,16 @@ foreach (glob($data_dir . '/*.json') as $f) {
     // verify file_exists để tránh broken thumbnails.
     $thumb_url = '';
 
-    // Highest Priority: Retrieve custom thumbnail from single PHP template comments
-    if (function_exists('sgh_project_cover_url')) {
-        $thumb_url = sgh_project_cover_url($slug);
-    }
-
-    // Fallback: Retrieve thumbnail from WordPress database
-    if (!$thumb_url) {
-        $proj_post = get_page_by_path($slug, OBJECT, 'project');
-        if ($proj_post) {
+    // Highest Priority: Retrieve thumbnail from WordPress database
+    $proj_post = get_page_by_path($slug, OBJECT, 'project');
+    if ($proj_post) {
+        if (function_exists('sgh_project_cover_ensure')) {
+            $thumb_id = sgh_project_cover_ensure($proj_post->ID);
+        } else {
             $thumb_id = get_post_thumbnail_id($proj_post->ID);
-            if ($thumb_id) {
-                $thumb_url = wp_get_attachment_image_url($thumb_id, 'large');
-            }
+        }
+        if ($thumb_id) {
+            $thumb_url = wp_get_attachment_image_url($thumb_id, 'large');
         }
     }
 

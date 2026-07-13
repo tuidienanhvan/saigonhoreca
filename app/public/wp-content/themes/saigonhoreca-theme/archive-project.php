@@ -4,7 +4,7 @@
  *
  * Saigonhouse-theme pattern: archive template orchestrates template-parts.
  * Section content extracted directly from the production saigonhoreca.vn
- * /du-an/ scrape (3 Elementor blocks: hero, trust, projects-grid).
+ * /du-an/ scrape (3 blocks: hero, trust, projects-grid).
  *
  * The projects-grid block contains the production HTML for the grid; over
  * time it can be replaced with a dynamic WP_Query over the imported CPT
@@ -14,7 +14,9 @@
  * @package SaigonHoreca
  */
 
-get_header(); ?>
+get_header(); 
+delete_transient('sgh_cover_map_v1');
+?>
 
 <main id="primary" class="sh-archive sh-archive--project" tabindex="-1">
     <?php

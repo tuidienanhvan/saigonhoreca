@@ -12,10 +12,11 @@ $uri = get_template_directory_uri();
 ?>
 <section class="pp-hero-hwa">
   <!-- Thẻ con gánh hiệu ứng Parallax Clip-Path siêu mượt (position:fixed bị section clip-path giới hạn) -->
-  <div class="pp-hero-hwa__bg" style="background-image:url('<?php echo sgh_img('heiwa-sushi-omakase/heiwa-sushi-omakase-quay-bar-bieu-dien-omakase.webp'); ?>');" aria-hidden="true"></div>
+  <div class="pp-hero-hwa__bg" style="background-image:url('<?php echo sgh_img('heiwa-sushi-omakase/heiwa-sushi-omakase-thumbnail-project-cover.webp'); ?>');" aria-hidden="true"></div>
   <div class="pp-hero-hwa__overlay" aria-hidden="true"></div>
 
-  <div class="pp-hero-hwa__content">
+  <!-- Removed text content overlay as the background image already contains baked-in titles
+<div class="pp-hero-hwa__content">
     <span class="pp-hero-hwa__subhead">// <?php echo esc_html__('PROJECT PILLAR • OMAKASE EXPERTISE', 'saigonhoreca'); ?></span>
     <h1 class="pp-hero-hwa__title"><?php echo esc_html__('Heiwa Sushi Omakase', 'saigonhoreca'); ?></h1>
     <div class="pp-hero-hwa__divider" aria-hidden="true"></div>
@@ -26,6 +27,7 @@ $uri = get_template_directory_uri();
       <span><?php echo esc_html__('Wabi-Sabi', 'saigonhoreca'); ?></span>
     </div>
   </div>
+-->
 
   <div class="pp-hero-hwa__scroll" aria-hidden="true">
     <span class="pp-hero-hwa__scroll-line"></span>

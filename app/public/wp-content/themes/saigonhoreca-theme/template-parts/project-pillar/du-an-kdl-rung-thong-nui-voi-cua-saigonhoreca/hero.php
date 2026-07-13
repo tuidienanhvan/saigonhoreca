@@ -9,11 +9,12 @@ $uri = get_template_directory_uri();
 ?>
 <section class="pp-hero-kdl">
   <!-- Thẻ con gánh hiệu ứng Parallax Clip-Path siêu mượt (không JS, GPU-smooth) -->
-  <div class="pp-hero-kdl__bg" style="background-image:url('<?php echo sgh_img('du-an-kdl-rung-thong-nui-voi-cua-saigonhoreca/kdl-rung-thong-nui-voi-nha-go-mai-ngoi-giua-rung-thong.webp'); ?>');"></div>
+  <div class="pp-hero-kdl__bg" style="background-image:url('<?php echo sgh_img('du-an-kdl-rung-thong-nui-voi-cua-saigonhoreca/du-an-kdl-rung-thong-nui-voi-cua-saigonhoreca-thumbnail-project-cover.webp'); ?>');"></div>
   <div class="pp-hero-kdl__overlay" aria-hidden="true"></div>
   <div class="pp-hero-kdl__mist" aria-hidden="true"></div>
 
-  <div class="pp-hero-kdl__content">
+  <!-- Removed text content overlay as the background image already contains baked-in titles
+<div class="pp-hero-kdl__content">
     <div class="pp-hero-kdl__emblem" aria-hidden="true">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
         <path d="M12 3 L18 12 H14 L19 20 H5 L10 12 H6 Z"/>
@@ -32,6 +33,7 @@ $uri = get_template_directory_uri();
 
     <p class="pp-hero-kdl__lead"><?php echo esc_html__('Saigon Horeca và hành trình kiến tạo không gian bếp cho ẩm thực Tây Nguyên tinh tế giữa lòng rừng thông nguyên bản.', 'saigonhoreca'); ?></p>
   </div>
+-->
 
   <div class="pp-hero-kdl__scroll" aria-hidden="true">
     <span class="pp-hero-kdl__scroll-dot"></span>

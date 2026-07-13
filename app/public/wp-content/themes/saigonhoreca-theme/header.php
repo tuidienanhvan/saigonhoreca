@@ -15,9 +15,9 @@
 
     <!-- Favicons & Manifest -->
     <link rel="icon" type="image/x-icon" href="<?php echo esc_url($theme_uri . '/assets/images/favicon.ico'); ?>">
-    <link rel="apple-touch-icon" sizes="180x180" href="<?php echo esc_url($theme_uri . '/assets/images/apple-touch-icon.png'); ?>">
-    <link rel="icon" type="image/png" sizes="32x32" href="<?php echo esc_url($theme_uri . '/assets/images/favicon-32x32.png'); ?>">
-    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo esc_url($theme_uri . '/assets/images/favicon-16x16.png'); ?>">
+    <link rel="apple-touch-icon" sizes="180x180" href="<?php echo esc_url($theme_uri . '/assets/images/apple-touch-icon.webp'); ?>">
+    <link rel="icon" type="image/webp" sizes="32x32" href="<?php echo esc_url($theme_uri . '/assets/images/favicon-32x32.webp'); ?>">
+    <link rel="icon" type="image/webp" sizes="16x16" href="<?php echo esc_url($theme_uri . '/assets/images/favicon-16x16.webp'); ?>">
     <link rel="manifest" href="<?php echo esc_url($theme_uri . '/manifest.json'); ?>">
     <?php if (file_exists($theme_dir . '/assets/images/safari-pinned-tab.svg')) : ?>
     <link rel="mask-icon" href="<?php echo esc_url($theme_uri . '/assets/images/safari-pinned-tab.svg'); ?>" color="#5bbad5">

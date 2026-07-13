@@ -8,7 +8,8 @@
 
 .pp-hero-swh {
   position: relative;
-  height: calc(100svh - 76px);
+  height: calc(100vh - 76px);
+  height: calc(100dvh - 76px);
   min-height: 600px;
   width: 100%;
   display: flex;
@@ -20,13 +21,7 @@
   isolation: isolate;
 }
 
-@supports (height: 100dvh) {
-  .pp-hero-swh {
-    height: calc(100dvh - 76px);
-  }
-}
-
-/* Parallax bg: background-attachment:fixed = parallax dang tin cay (bg gan vao viewport, tu dong clip vao box nay) */
+/* Parallax bg: background-attachment: scroll;= parallax dang tin cay (bg gan vao viewport, tu dong clip vao box nay) */
 .pp-hero-swh__bg {
   position: absolute;
   inset: 0;
@@ -35,7 +30,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-attachment: scroll;
   z-index: -2;
   pointer-events: none;
   filter: saturate(1.12) contrast(1.04);
@@ -204,7 +199,7 @@
   }
 }
 
-/* Mobile fallback: background-attachment:fixed bi giat tren mobile -> chuyen ve scroll */
+/* Mobile fallback: background-attachment: scroll;bi giat tren mobile -> chuyen ve scroll */
 @media (max-width: 768px) {
   .pp-hero-swh__bg {
     background-attachment: scroll;

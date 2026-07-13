@@ -1,0 +1,8 @@
+/* Project bundle — the-cheezy-time only. */
+@import "../../../template-parts/project-pillar/the-cheezy-time/hero.css";
+@import "../../../template-parts/project-pillar/the-cheezy-time/intro.css";
+@import "../../../template-parts/project-pillar/the-cheezy-time/concept.css";
+@import "../../../template-parts/project-pillar/the-cheezy-time/partnership.css";
+@import "../../../template-parts/project-pillar/the-cheezy-time/specs.css";
+@import "../../../template-parts/project-pillar/the-cheezy-time/gallery.css";
+@import "../../../single-project/the-cheezy-time.css";

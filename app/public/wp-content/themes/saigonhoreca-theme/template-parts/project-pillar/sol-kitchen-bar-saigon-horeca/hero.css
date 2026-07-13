@@ -12,7 +12,8 @@
 
 .pp-hero-solshr {
   position: relative;
-  height: calc(100svh - 76px);
+  height: calc(100vh - 76px);
+  height: calc(100dvh - 76px);
   min-height: 660px;
   width: 100%;
   display: flex;
@@ -24,13 +25,8 @@
   isolation: isolate;
   padding-inline: clamp(1.25rem, 7vw, 7rem);
 }
-@supports (height: 100dvh) {
-  .pp-hero-solshr {
-    height: calc(100dvh - 76px);
-  }
-}
 
-/* Bright image backdrop — background-attachment:fixed produces the parallax (reliable). */
+/* Bright image backdrop — background-attachment: scroll;produces the parallax (reliable). */
 /* Background video (YouTube) — covers the hero; poster image on __media shows until it loads. */
 .pp-hero-solshr__media {
   position: absolute;
@@ -61,7 +57,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-attachment: scroll;
   pointer-events: none;
 }
 

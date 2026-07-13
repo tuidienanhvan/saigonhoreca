@@ -1,0 +1,8 @@
+/* Project bundle — the-brix only. */
+@import "../../../template-parts/project-pillar/the-brix/hero.css";
+@import "../../../template-parts/project-pillar/the-brix/intro.css";
+@import "../../../template-parts/project-pillar/the-brix/concept.css";
+@import "../../../template-parts/project-pillar/the-brix/partnership.css";
+@import "../../../template-parts/project-pillar/the-brix/specs.css";
+@import "../../../template-parts/project-pillar/the-brix/gallery.css";
+@import "../../../single-project/the-brix.css";

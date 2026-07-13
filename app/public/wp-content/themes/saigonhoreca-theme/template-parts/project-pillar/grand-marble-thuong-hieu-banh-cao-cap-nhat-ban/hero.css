@@ -11,7 +11,8 @@
 
 .pp-hero-gmarb {
   position: relative;
-  height: calc(100svh - 76px);
+  height: calc(100vh - 76px);
+  height: calc(100dvh - 76px);
   min-height: 660px;
   width: 100%;
   display: flex;
@@ -23,11 +24,8 @@
   isolation: isolate;
   padding-inline: clamp(1.25rem, 7vw, 7rem);
 }
-@supports (height: 100dvh) {
-  .pp-hero-gmarb { height: 100dvh; }
-}
 
-/* Parallax background — position:absolute box, background-attachment:fixed for
+/* Parallax background — position:absolute box, background-attachment: scroll;for
    reliable GPU-smooth parallax (bg pinned to viewport, auto-clipped to this box). */
 .pp-hero-gmarb__bg {
   position: absolute;
@@ -38,7 +36,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-attachment: scroll;
   pointer-events: none;
   /* Bright image — slight saturation/contrast lift, no darkening brightness. */
   filter: saturate(1.08) contrast(1.04);
@@ -209,7 +207,7 @@
   .pp-hero-gmarb__title { max-width: 14ch; }
 }
 
-/* Mobile fallback — background-attachment:fixed is janky on mobile, scroll with page. */
+/* Mobile fallback — background-attachment: scroll;is janky on mobile, scroll with page. */
 @media (max-width: 768px) {
   .pp-hero-gmarb__bg {
     position: absolute;

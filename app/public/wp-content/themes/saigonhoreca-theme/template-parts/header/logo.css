@@ -7,8 +7,6 @@
 
 .sh-logo {
     flex-shrink: 0;
-    max-height: 56px;
-    overflow: hidden;
 }
 .sh-logo__link {
     display: flex;

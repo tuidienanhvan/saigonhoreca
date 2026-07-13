@@ -1,0 +1,8 @@
+/* Project bundle — godmother-friendship only. */
+@import "../../../template-parts/project-pillar/godmother-friendship/hero.css";
+@import "../../../template-parts/project-pillar/godmother-friendship/intro.css";
+@import "../../../template-parts/project-pillar/godmother-friendship/concept.css";
+@import "../../../template-parts/project-pillar/godmother-friendship/partnership.css";
+@import "../../../template-parts/project-pillar/godmother-friendship/specs.css";
+@import "../../../template-parts/project-pillar/godmother-friendship/gallery.css";
+@import "../../../single-project/godmother-friendship.css";

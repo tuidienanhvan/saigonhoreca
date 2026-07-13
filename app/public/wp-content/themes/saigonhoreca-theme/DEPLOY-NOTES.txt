@@ -13,16 +13,32 @@
    • graphify-out/ · scratch/ · tmp-download/ · _tmp/ · all_prod_urls.txt — dev/artifact.
 
 ───────────────────────────────────────────────────────────────────
- CÁCH DEPLOY (QUAN TRỌNG)
+ CÁCH DEPLOY (QUAN TRỌNG — cập nhật 07/2026)
 ───────────────────────────────────────────────────────────────────
-✅ KHUYẾN NGHỊ — UPLOAD TRỰC TIẾP cả thư mục theme (13.7 MB) qua FTP/cPanel/zip:
-   Đã có sẵn assets/css/dist/*.css (CSS đã build) + ảnh + font → web đủ style,
-   KHÔNG cần node_modules trên server.
+✅ ĐƯỜNG DUY NHẤT ĐƯỢC KHUYẾN NGHỊ — dùng script đóng gói tự động:
+
+     npm run deploy:package
+
+   Script này (scripts/package-deploy.mjs):
+   1. Build lại CSS+JS (node scripts/build.mjs --force).
+   2. Chạy cổng chặn Lighthouse (npm run perf) — FAIL = KHÔNG đóng gói. Muốn bỏ qua
+      (không khuyến khích) thêm --skip-gate.
+   3. Gom đúng bộ file cần cho production (dist/, ảnh, font, .htaccess.production...),
+      LOẠI node_modules/scripts/scratch/docs/*.bak*/project-data JSON.
+   4. Nén thành zip tại <site-root>/_sgh-deploy-packages/saigonhoreca-theme-<ngày>.zip.
+
+   Upload thẳng zip đó qua FTP/cPanel — không cần node_modules trên server.
 
 ⚠ NẾU deploy bằng GIT: .gitignore đang loại dist/ + *.png/jpg/webp/svg/woff/ttf
-   → server sẽ THIẾU CSS-đã-build + ảnh + font → WEB VỠ STYLE.
-   Cách xử lý: hoặc (a) dùng direct upload (khuyến nghị), hoặc (b) trên server chạy
-   `npm install && npm run build` (cần Node), hoặc (c) force-add dist/ + assets/images + fonts.
+   → server sẽ THIẾU CSS-đã-build + ảnh + font → WEB VỠ STYLE. Nếu vẫn muốn dùng git,
+   phải force-add dist/ + assets/images + fonts, hoặc chạy `npm install && npm run build`
+   trên server (cần Node) — nhưng ưu tiên `npm run deploy:package` vì đã có cổng Lighthouse.
+
+CHECKLIST SAU DEPLOY:
+   [ ] Xác nhận .htaccess.production đã upload đúng vị trí (đổi tên thành .htaccess nếu cần).
+   [ ] PageSpeed Insights trên saigonhoreca.vn: home + 2 trang pillar + /lien-he/,
+       cả mobile lẫn desktop — phải đạt 100 (đây là con số đáng tin, không phải lab local).
+   [ ] `npm run perf:all -- --sample` local trước khi deploy để có scoreboard đối chiếu.
 
 ───────────────────────────────────────────────────────────────────
  UPLOADS

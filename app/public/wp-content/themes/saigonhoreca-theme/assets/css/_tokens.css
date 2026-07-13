@@ -51,6 +51,14 @@
   --radius-full: 9999px;
 
   --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* ── Canonical breakpoints (SSOT) — khớp Tailwind v4 default,
+     khai báo tường minh để mọi @media trong theme dùng cùng 1 thang.
+     sm 640 · md 768 · lg 1024 · xl 1280. ── */
+  --breakpoint-sm: 40rem;   /* 640px */
+  --breakpoint-md: 48rem;   /* 768px */
+  --breakpoint-lg: 64rem;   /* 1024px */
+  --breakpoint-xl: 80rem;   /* 1280px */
 }
 
 /* ─── DEFAULT THEME — DARK LUXE (only theme; no toggle) ─────── */
@@ -99,19 +107,13 @@
   --brand-100:       rgba(245, 166, 35, 0.12);
   --on-brand:        var(--pc);
 
-  /* Secondary / Gold accent (same as brand cho consistency) */
-  --secondary:       #f5a623;
-  --secondary-dark:  #d18910;
-  --secondary-light: #ffd166;
-  --secondary-hover: #ffb100;
-  --gold:            #f5a623;
-  --gold-dim:        #d18910;
-
-  /* Accent (theme.json — gold) */
-  --accent:          #f5a623;
-  --accent-dark:     #d18910;
-  --accent-light:    #ffd166;
-  --value-accent:    var(--accent);
+  /* Secondary / Gold accent — same brand color as --p/--ph, aliased (not
+     re-hardcoded) so there is exactly ONE place to change the brand color. */
+  --secondary:       var(--p);
+  --secondary-dark:  var(--ph);
+  --secondary-hover: #ffb100;   /* distinct shade, not a --ph duplicate — keep literal */
+  --gold:            var(--p);
+  --gold-dim:        var(--ph);
 
   /* Red — KHÔNG phải brand, chỉ dùng cho status danger / error */
   --color-error:     #c1272d;
@@ -151,11 +153,9 @@
   /* Fonts (alias Pi → legacy) */
   --font-body:    var(--font-sans);
   --font-heading: var(--font-display);
-  --font-serif:   var(--font-serif);
 
   /* Radius */
   --radius:     14px;
-  --sh-radius:  14px;
 
   /* Shadows (deep on dark theme) */
   --shadow:          0 4px 16px rgba(0, 0, 0, 0.5);
@@ -163,12 +163,27 @@
   --shadow-floating: 0 12px 36px rgba(0, 0, 0, 0.7);
 
   /* Brand-specific accents */
-  --sh-color-zalo:           #0068ff;
   --sh-comments-accent:        var(--p);
   --sh-comments-accent-strong: var(--ph);
 
   /* Layout */
   --sh-content-max:  80rem;
+  --container-max:   1200px;   /* container thường (section width) */
+
+  /* ── Hero height canon (SSOT) ──
+     Full viewport trừ header 76px; fallback vh cho browser cũ + dvh mobile-safe.
+     Dùng cho .sh-hero (home) và .pp-hero (project). */
+  --hero-h-fallback: calc(100vh - 76px);
+  --hero-h:          calc(100dvh - 76px);
+  --hero-min:        620px;
+  --hero-min-lg:     560px;    /* @media max-width 1024px */
+  --hero-min-md:     520px;    /* @media max-width 768px */
+
+  /* ── Heading clamp scale (SSOT, fluid) ──
+     Lớp global (.h1/.h2/.h3 + h1-h3 base) sẽ tham chiếu. */
+  --fs-h1: clamp(2.5rem, 5vw, 4rem);
+  --fs-h2: clamp(2rem, 4vw, 3rem);
+  --fs-h3: clamp(1.5rem, 3vw, 2rem);
 
   /* Hero ken-burns animation tunables */
   --sh-ken-burns-duration:    6s;
@@ -213,23 +228,66 @@
   }
 }
 
-/* --- CUSTOM SCROLLBAR (gold thumb trên track đen) --- */
+/* --- CUSTOM SCROLLBAR (auto-hide: ẩn mặc định, hiện khi đang cuộn) ---
+   `.is-scrolling` được main-modern.js gắn vào <html> lúc scroll và tự gỡ
+   ~800ms sau khi cuộn dừng (xem autoHideScrollbar() trong file đó — 1 nơi
+   global duy nhất, không lặp lại logic ở CSS nào khác). Firefox
+   (scrollbar-color) không hỗ trợ transition mượt nên chỉ đổi tức thời;
+   Chrome/Edge/Safari (::-webkit-scrollbar-thumb) fade mượt qua opacity. */
 * {
   scrollbar-width: thin;
-  scrollbar-color: color-mix(in srgb, var(--gold) 45%, transparent) var(--b1);
+  scrollbar-color: transparent transparent;
+}
+html.is-scrolling, html.is-scrolling * {
+  scrollbar-color: color-mix(in srgb, var(--p) 45%, transparent) var(--b1);
 }
 ::-webkit-scrollbar { width: 10px; height: 10px; }
-::-webkit-scrollbar-track { background: var(--b1); }
+::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb {
-  background: color-mix(in srgb, var(--gold) 45%, transparent);
-  border: 2px solid var(--b1);
+  background: color-mix(in srgb, var(--p) 45%, transparent);
+  border: 2px solid transparent;
+  background-clip: padding-box;
   border-radius: 10px;
-  transition: background 0.3s ease;
+  opacity: 0;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease;
+}
+html.is-scrolling::-webkit-scrollbar-thumb, html.is-scrolling ::-webkit-scrollbar-thumb {
+  opacity: 1;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: color-mix(in srgb, var(--gold) 75%, transparent);
+  background: color-mix(in srgb, var(--p) 75%, transparent);
 }
-::-webkit-scrollbar-corner { background: var(--b1); }
+::-webkit-scrollbar-corner { background: transparent; }
+
+/* Không auto-hide trên thiết bị chạm — scrollbar cảm ứng vốn đã tự ẩn/hiện
+   theo hệ điều hành, giữ .is-scrolling luôn "on" tránh xung đột 2 lớp ẩn/hiện. */
+@media (hover: none) and (pointer: coarse) {
+  * { scrollbar-color: color-mix(in srgb, var(--p) 45%, transparent) transparent; }
+  ::-webkit-scrollbar-thumb { opacity: 1; }
+}
+
+/* ── Ngoại lệ scrollbar theo component (3 chỗ, gộp về đây 2026-07 —
+   trước rải rác ở mobile-menu.css/hero.css/trust.css, giờ 1 nơi duy nhất) ── */
+
+/* Mobile menu sidebar: ẩn hẳn thanh cuộn, không theo auto-hide toàn cục. */
+.sh-mobile__body { -ms-overflow-style: none; scrollbar-width: none; }
+.sh-mobile__body::-webkit-scrollbar { display: none; }
+
+/* Archive-project hero carousel: thanh mảnh (4px) LUÔN hiện (gợi ý còn
+   cuộn được), không auto-hide — carousel nhỏ nên cần affordance rõ ngay. */
+.sh-archive-hero__cards {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--gold) 40%, transparent) transparent;
+}
+.sh-archive-hero__cards::-webkit-scrollbar { height: 4px; }
+.sh-archive-hero__cards::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--gold) 40%, transparent);
+  border-radius: 4px;
+}
+
+/* Archive-project trust track: ẩn hẳn — có dot/nav riêng, không cần thanh cuộn. */
+.sh-archive-trust__track { scrollbar-width: none; }
+.sh-archive-trust__track::-webkit-scrollbar { display: none; }
 
 /* --- CONTENT-VISIBILITY OPTIMIZATION --- */
 .sgh-cv-auto {

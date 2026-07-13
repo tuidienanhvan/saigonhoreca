@@ -1,7 +1,8 @@
 /* ── sh-about-cta ─────────────────────────────────────────────── */
 .sh-about-cta {
   background: var(--b2);    /* cùng bg với sh-about-testimonials phía trên */
-  padding: 3rem 1.25rem 6rem; /* padding-top nhỏ — tiếp liền không có seam */
+  padding: 0 1.5rem 7rem; /* padding-top 0 — tiếp liền không có seam */
+  position: relative;
 }
 
 .sh-about-cta__inner {
@@ -9,69 +10,83 @@
   margin-inline: auto;
   display: flex;
   flex-direction: column;
-  gap: 4rem;
+  gap: 6rem;
 }
 
-/* ── Separator dòng giữa 2 nhóm review ───────────────────────── */
+/* ── Extra reviews grid ──────────────────────────────────────── */
 .sh-about-cta__reviews {
   display: grid;
   gap: 2rem;
   grid-template-columns: 1fr;
   /* Đường kẻ phân cách nhẹ phía trên */
-  border-top: 1px solid var(--bd);
-  padding-top: 3rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 4rem;
 }
 
 @media (min-width: 768px) {
-  .sh-about-cta__reviews { grid-template-columns: repeat(3, 1fr); }
+  .sh-about-cta__reviews {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 /* ── Review card (cùng style với testimonials__card) ─────────── */
 .sh-about-cta__review-card {
   position: relative;
-  background: var(--b3);
-  border: 1px solid var(--bd);
+  background: rgba(26, 26, 26, 0.45);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(245, 166, 35, 0.08);
   border-radius: var(--radius-lg);
-  padding: 2rem;
+  padding: 2.2rem 2rem;
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 1.5rem;
   overflow: hidden;
-  transition: border-color 0.25s ease, transform 0.3s var(--ease-spring);
+  transition: border-color 0.4s ease, transform 0.4s var(--ease-spring), box-shadow 0.4s ease;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
 }
 
 .sh-about-cta__review-card::before {
-  content: '"';
+  content: '“';
   position: absolute;
-  top: -0.5rem;
-  right: 1.25rem;
-  font-size: 8rem;
+  top: -1rem;
+  right: 1.5rem;
+  font-size: 9rem;
   font-family: Georgia, serif;
   line-height: 1;
   color: var(--p);
-  opacity: 0.06;
+  opacity: 0.04;
   pointer-events: none;
   user-select: none;
+  transition: opacity 0.4s ease, transform 0.4s var(--ease-spring);
 }
 
 .sh-about-cta__review-card:hover {
-  border-color: color-mix(in srgb, var(--p) 40%, transparent);
-  transform: translateY(-5px);
+  border-color: rgba(245, 166, 35, 0.35);
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6), 0 0 15px rgba(245, 166, 35, 0.1);
+}
+
+.sh-about-cta__review-card:hover::before {
+  opacity: 0.12;
+  transform: translateY(4px) scale(1.05);
 }
 
 .sh-about-cta__stars {
   display: flex;
-  gap: 0.2rem;
+  gap: 0.25rem;
 }
 
 .sh-about-cta__stars svg {
-  width: 1rem;
-  height: 1rem;
+  width: 1.15rem;
+  height: 1.15rem;
   fill: var(--p);
+  filter: drop-shadow(0 0 4px rgba(245, 166, 35, 0.4));
+  animation: star-glow-pulse 3s infinite ease-in-out alternate;
 }
 
 .sh-about-cta__review-quote {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   line-height: 1.85;
   color: var(--bc2);
   font-style: italic;
@@ -80,70 +95,113 @@
 }
 
 .sh-about-cta__review-quote strong {
-  color: var(--bc);
-  font-weight: 600;
+  color: var(--p);
+  font-weight: 700;
   font-style: normal;
 }
 
 .sh-about-cta__review-footer {
-  border-top: 1px solid var(--bd);
-  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 1.25rem;
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 1rem;
 }
 
 .sh-about-cta__review-footer::before {
   content: attr(data-initial, '?');
   flex-shrink: 0;
-  width: 2.25rem;
-  height: 2.25rem;
-  background: color-mix(in srgb, var(--p) 15%, transparent);
-  border: 1px solid color-mix(in srgb, var(--p) 30%, transparent);
+  width: 2.6rem;
+  height: 2.6rem;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--p) 20%, transparent) 0%, color-mix(in srgb, var(--p) 5%, transparent) 100%);
+  border: 1px solid color-mix(in srgb, var(--p) 35%, transparent);
   border-radius: var(--radius-full);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.8rem;
-  font-weight: 800;
+  font-size: 0.95rem;
+  font-weight: 900;
   color: var(--p);
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: transform 0.4s var(--ease-spring);
+}
+
+.sh-about-cta__review-card:hover .sh-about-cta__review-footer::before {
+  transform: scale(1.08) rotate(5deg);
+  border-color: var(--p);
+  background: var(--p);
+  color: var(--b1);
 }
 
 .sh-about-cta__review-footer-text {
   display: flex;
   flex-direction: column;
-  gap: 0.15rem;
+  gap: 0.2rem;
   min-width: 0;
 }
 
 .sh-about-cta__review-author {
-  font-weight: 700;
+  font-weight: 800;
   font-style: normal;
   color: var(--bc);
-  font-size: 0.875rem;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
 }
 
 .sh-about-cta__review-company {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   color: var(--bc3);
+  font-weight: 600;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-/* ── CTA Banner ───────────────────────────────────────────────── */
+
+/* ── CTA Cinematic Banner ─────────────────────────────────────────── */
 .sh-about-cta__banner {
   position: relative;
   border-radius: var(--radius-xl);
   overflow: hidden;
-  background-size: cover;
-  background-position: center;
-  padding: 5rem 2rem;
+  padding: 6rem 2rem;
   text-align: center;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(245, 166, 35, 0.15);
 }
 
 @media (min-width: 1024px) {
-  .sh-about-cta__banner { padding: 7rem 3rem; }
+  .sh-about-cta__banner {
+    padding: 8rem 4rem;
+  }
+}
+
+/* Technical grid line overlay to represent drafting/blueprint of spaces */
+.sh-about-cta__banner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(245, 166, 35, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(245, 166, 35, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: center;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Background image container with slow motion Ken Burns */
+.sh-about-cta__banner {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: transform 0.6s var(--ease-spring);
+}
+
+.sh-about-cta__banner:hover {
+  transform: translateY(-4px);
+  border-color: var(--p);
+  box-shadow: 0 35px 80px rgba(0, 0, 0, 0.85), 0 0 20px rgba(245, 166, 35, 0.15);
 }
 
 .sh-about-cta__banner-overlay {
@@ -151,79 +209,124 @@
   inset: 0;
   background: linear-gradient(
     135deg,
-    rgba(0,0,0,0.88) 0%,
-    rgba(0,0,0,0.72) 100%
+    rgba(10, 10, 10, 0.94) 0%,
+    rgba(10, 10, 10, 0.78) 50%,
+    rgba(245, 166, 35, 0.08) 100%
   );
+  z-index: 0;
 }
 
 .sh-about-cta__banner-content {
   position: relative;
   z-index: 2;
-  max-width: 44rem;
+  max-width: 46rem;
   margin-inline: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.25rem;
+  gap: 1.5rem;
 }
 
 .sh-about-cta__banner-title {
-  font-size: clamp(1.8rem, 4vw, 2.8rem);
-  font-weight: 900;
+  font-family: var(--font-body, "Be Vietnam Pro", sans-serif); /* Sửa lỗi font chữ ko dấu */
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 950;
   text-transform: uppercase;
   color: var(--bc);
   margin: 0;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  background: linear-gradient(135deg, #fff 30%, #ffd166 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5));
 }
 
 .sh-about-cta__banner-sub {
-  font-size: 1rem;
+  font-size: 1.05rem;
   color: var(--bc2);
-  line-height: 1.7;
-  max-width: 36rem;
+  line-height: 1.8;
+  max-width: 38rem;
   margin: 0;
+  font-weight: 500;
 }
 
 .sh-about-cta__banner-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 1.25rem;
   justify-content: center;
-  margin-top: 0.5rem;
+  margin-top: 1rem;
 }
 
-/* Buttons */
+/* Premium Buttons */
 .sh-about-cta__btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.85rem 2rem;
+  padding: 1.05rem 2.5rem;
   border-radius: var(--radius-sm);
-  font-size: 0.85rem;
-  font-weight: 700;
+  font-size: 0.88rem;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
   text-decoration: none;
-  transition: transform 0.25s var(--ease-spring), background 0.2s ease;
+  transition: all 0.4s var(--ease-spring);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
 }
 
 .sh-about-cta__btn--primary {
-  background: var(--p);
-  color: var(--pc);
+  background: linear-gradient(135deg, #facc15 0%, #f5a623 100%);
+  color: #0c0d14 !important;
+  box-shadow: 0 10px 30px rgba(245, 166, 35, 0.45), 0 0 0 4px rgba(245, 166, 35, 0.15);
+  position: relative;
+  overflow: hidden;
+  animation: cta-pulse-glow 2s infinite alternate;
+}
+
+@keyframes cta-pulse-glow {
+  0% {
+    box-shadow: 0 10px 25px rgba(245, 166, 35, 0.35), 0 0 0 2px rgba(245, 166, 35, 0.08);
+  }
+  100% {
+    box-shadow: 0 12px 35px rgba(245, 166, 35, 0.65), 0 0 0 8px rgba(245, 166, 35, 0.25);
+  }
+}
+
+.sh-about-cta__btn--primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 30%;
+  height: 100%;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transform: skewX(-25deg);
+  transition: left 0.6s ease;
 }
 
 .sh-about-cta__btn--primary:hover {
-  background: var(--ph);
-  transform: translateY(-2px);
+  background: linear-gradient(135deg, #ffd166 0%, #fbbf24 100%);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 45px rgba(245, 166, 35, 0.85), 0 0 0 12px rgba(245, 166, 35, 0.35);
+}
+
+.sh-about-cta__btn--primary:hover::before {
+  left: 150%;
 }
 
 .sh-about-cta__btn--outline {
-  background: rgba(255,255,255,0.08);
+  background: rgba(26, 26, 26, 0.6);
   color: var(--bc);
-  border: 1.5px solid var(--bt);
-  backdrop-filter: blur(8px);
+  border: 1.5px solid rgba(245, 166, 35, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .sh-about-cta__btn--outline:hover {
-  background: rgba(255,255,255,0.16);
-  transform: translateY(-2px);
+  background: rgba(245, 166, 35, 0.1);
+  border-color: var(--p);
+  color: var(--p);
+  transform: translateY(-4px);
+  box-shadow: 0 15px 35px rgba(245, 166, 35, 0.2);
 }

@@ -1,0 +1,497 @@
+[
+  {
+    "url": "https://saigonhoreca.local/",
+    "mode": "mobile",
+    "score": 69,
+    "lcp": 4820,
+    "tbt": 85,
+    "cls": 0.001,
+    "si": 6024
+  },
+  {
+    "url": "https://saigonhoreca.local/tin-tuc/",
+    "mode": "mobile",
+    "score": 80,
+    "lcp": 3784,
+    "tbt": 0,
+    "cls": 0.001,
+    "si": 3880
+  },
+  {
+    "url": "https://saigonhoreca.local/ve-saigon-horeca/",
+    "mode": "mobile",
+    "score": 65,
+    "lcp": 5207,
+    "tbt": 176,
+    "cls": 0.001,
+    "si": 6182
+  },
+  {
+    "url": "https://saigonhoreca.local/lien-he/",
+    "mode": "mobile",
+    "score": 79,
+    "lcp": 3913,
+    "tbt": 0,
+    "cls": 0.004,
+    "si": 4185
+  },
+  {
+    "url": "https://saigonhoreca.local/san-pham/",
+    "mode": "mobile",
+    "score": 79,
+    "lcp": 3790,
+    "tbt": 0,
+    "cls": 0.005,
+    "si": 4280
+  },
+  {
+    "url": "https://saigonhoreca.local/gioi-thieu/",
+    "mode": "mobile",
+    "score": 71,
+    "lcp": 4985,
+    "tbt": 0,
+    "cls": 0.001,
+    "si": 4196
+  },
+  {
+    "url": "https://saigonhoreca.local/gio-hang-2/",
+    "mode": "mobile",
+    "score": 83,
+    "lcp": 3542,
+    "tbt": 0,
+    "cls": 0.001,
+    "si": 3733
+  },
+  {
+    "url": "https://saigonhoreca.local/thanh-toan/",
+    "mode": "mobile",
+    "score": 80,
+    "lcp": 3564,
+    "tbt": 0,
+    "cls": 0.001,
+    "si": 5130
+  },
+  {
+    "url": "https://saigonhoreca.local/gio-hang/",
+    "mode": "mobile",
+    "score": 82,
+    "lcp": 3560,
+    "tbt": 0,
+    "cls": 0.001,
+    "si": 3662
+  },
+  {
+    "url": "https://saigonhoreca.local/du-an/amdang-typhoon/",
+    "mode": "mobile",
+    "score": 69,
+    "lcp": 5069,
+    "tbt": 0,
+    "cls": 0.001,
+    "si": 4913
+  },
+  {
+    "url": "https://saigonhoreca.local/du-an/godmother-friendship/",
+    "mode": "mobile",
+    "score": 91,
+    "lcp": 3325,
+    "tbt": 0,
+    "cls": 0,
+    "si": 2313
+  },
+  {
+    "url": "https://saigonhoreca.local/du-an/grand-marble/",
+    "mode": "mobile",
+    "score": 68,
+    "lcp": 5443,
+    "tbt": 0,
+    "cls": 0.093,
+    "si": 4024
+  },
+  {
+    "url": "https://saigonhoreca.local/du-an/heiwa-sushi-omakase/",
+    "mode": "mobile",
+    "score": 89,
+    "lcp": 3615,
+    "tbt": 0,
+    "cls": 0,
+    "si": 2136
+  },
+  {
+    "url": "https://saigonhoreca.local/du-an/little-bear-thao-dien/",
+    "mode": "mobile",
+    "score": 69,
+    "lcp": 4880,
+    "tbt": 0,
+    "cls": 0.014,
+    "si": 5706
+  },
+  {
+    "url": "https://saigonhoreca.local/du-an/mua-craft-sake-lam-ruou-sake-dau-tien-tai-viet-nam/",
+    "mode": "mobile",
+    "score": 74,
+    "lcp": 4667,
+    "tbt": 0,
+    "cls": 0.011,
+    "si": 3994
+  },
+  {
+    "url": "https://saigonhoreca.local/du-an/skyloft-by-glow/",
+    "mode": "mobile",
+    "score": 71,
+    "lcp": 4770,
+    "tbt": 0,
+    "cls": 0,
+    "si": 4770
+  },
+  {
+    "url": "https://saigonhoreca.local/du-an/sol-kitchen-bar-saigon-horeca/",
+    "mode": "mobile",
+    "score": 60,
+    "lcp": 8854,
+    "tbt": 0,
+    "cls": 0.001,
+    "si": 6075
+  },
+  {
+    "url": "https://saigonhoreca.local/du-an/the-brix/",
+    "mode": "mobile",
+    "score": 69,
+    "lcp": 5260,
+    "tbt": 0,
+    "cls": 0,
+    "si": 4492
+  },
+  {
+    "url": "https://saigonhoreca.local/du-an/the-royal-all-day-dining/",
+    "mode": "mobile",
+    "score": 69,
+    "lcp": 5076,
+    "tbt": 46,
+    "cls": 0.007,
+    "si": 4926
+  },
+  {
+    "url": "https://saigonhoreca.local/du-an/yuzu-omakase/",
+    "mode": "mobile",
+    "score": 74,
+    "lcp": 4532,
+    "tbt": 19,
+    "cls": 0.001,
+    "si": 4168
+  },
+  {
+    "url": "https://saigonhoreca.local/du-an/bep-an-truong-mam-non-tu-thuc-trinh-vuong/",
+    "mode": "mobile",
+    "score": 72,
+    "lcp": 4823,
+    "tbt": 0,
+    "cls": 0,
+    "si": 4304
+  },
+  {
+    "url": "https://saigonhoreca.local/du-an/bep-canteen-nha-may-sheh-fung/",
+    "mode": "mobile",
+    "score": 94,
+    "lcp": 2925,
+    "tbt": 0,
+    "cls": 0,
+    "si": 2416
+  },
+  {
+    "url": "https://saigonhoreca.local/du-an/bling-bling-club/",
+    "mode": "mobile",
+    "score": 66,
+    "lcp": 5407,
+    "tbt": 0,
+    "cls": 0.007,
+    "si": 5732
+  },
+  {
+    "url": "https://saigonhoreca.local/du-an/casa-maria/",
+    "mode": "mobile",
+    "score": 68,
+    "lcp": 5414,
+    "tbt": 0,
+    "cls": 0,
+    "si": 4710
+  },
+  {
+    "url": "https://saigonhoreca.local/du-an/du-an-bep-cang-tin-cong-ty-nhat-nichiyo/",
+    "mode": "mobile",
+    "score": 94,
+    "lcp": 2968,
+    "tbt": 0,
+    "cls": 0,
+    "si": 2307
+  },
+  {
+    "url": "https://saigonhoreca.local/du-an/du-an-kdl-rung-thong-nui-voi-cua-saigonhoreca/",
+    "mode": "mobile",
+    "score": 70,
+    "lcp": 5412,
+    "tbt": 0,
+    "cls": 0,
+    "si": 4355
+  },
+  {
+    "url": "https://saigonhoreca.local/du-an/du-an-vinh-hiep/",
+    "mode": "mobile",
+    "score": 69,
+    "lcp": 5266,
+    "tbt": 0,
+    "cls": 0,
+    "si": 4561
+  },
+  {
+    "url": "https://saigonhoreca.local/du-an/vien-duong-lao-nam-an/",
+    "mode": "mobile",
+    "score": 80,
+    "lcp": 4577,
+    "tbt": 0,
+    "cls": 0,
+    "si": 3863
+  },
+  {
+    "url": "https://saigonhoreca.local/du-an/g-cup-coffee-bistro/",
+    "mode": "mobile",
+    "score": 72,
+    "lcp": 4841,
+    "tbt": 0,
+    "cls": 0.038,
+    "si": 4333
+  },
+  {
+    "url": "https://saigonhoreca.local/du-an/ganh-hao-noi-hon-bien-trong-tung-net-kien-truc/",
+    "mode": "mobile",
+    "score": 68,
+    "lcp": 5427,
+    "tbt": 0,
+    "cls": 0,
+    "si": 4722
+  },
+  {
+    "url": "https://saigonhoreca.local/du-an/hemma-desserts-mot-goc-nho-chau-au-giua-thao-dien/",
+    "mode": "mobile",
+    "score": 70,
+    "lcp": 4922,
+    "tbt": 0,
+    "cls": 0,
+    "si": 4771
+  },
+  {
+    "url": "https://saigonhoreca.local/du-an/mam-mam-eatery-lounge-nang-tam-mam-com-viet/",
+    "mode": "mobile",
+    "score": 69,
+    "lcp": 5014,
+    "tbt": 71,
+    "cls": 0,
+    "si": 4741
+  },
+  {
+    "url": "https://saigonhoreca.local/du-an/moa-moa/",
+    "mode": "mobile",
+    "score": 59,
+    "lcp": 6893,
+    "tbt": 203,
+    "cls": 0,
+    "si": 5523
+  },
+  {
+    "url": "https://saigonhoreca.local/du-an/renovate-sol-kitchen-bar-quan-7/",
+    "mode": "mobile",
+    "score": 61,
+    "lcp": 7132,
+    "tbt": 33,
+    "cls": 0.013,
+    "si": 6414
+  },
+  {
+    "url": "https://saigonhoreca.local/du-an/tales-by-chapter/",
+    "mode": "mobile",
+    "score": 63,
+    "lcp": 5859,
+    "tbt": 228,
+    "cls": 0,
+    "si": 4725
+  },
+  {
+    "url": "https://saigonhoreca.local/du-an/the-cheezy-time/",
+    "mode": "mobile",
+    "score": 70,
+    "lcp": 5045,
+    "tbt": 0,
+    "cls": 0,
+    "si": 4589
+  },
+  {
+    "url": "https://saigonhoreca.local/du-an/spice-world-hotpot/",
+    "mode": "mobile",
+    "score": 88,
+    "lcp": 3778,
+    "tbt": 0,
+    "cls": 0,
+    "si": 2719
+  },
+  {
+    "url": "https://saigonhoreca.local/du-an/bambino-saigonhoreca/",
+    "mode": "mobile",
+    "score": 66,
+    "lcp": 5560,
+    "tbt": 24,
+    "cls": 0.001,
+    "si": 6106
+  },
+  {
+    "url": "https://saigonhoreca.local/du-an/roka-fella-tinh-hoa-am-thuc-nhat-ban/",
+    "mode": "mobile",
+    "score": 69,
+    "lcp": 5041,
+    "tbt": 0,
+    "cls": 0,
+    "si": 4766
+  },
+  {
+    "url": "https://saigonhoreca.local/10-meo-tiet-kiem-nang-luong-hang-dau-cho-nha-hang/",
+    "mode": "mobile",
+    "score": 68,
+    "lcp": 5276,
+    "tbt": 114,
+    "cls": 0,
+    "si": 5484
+  },
+  {
+    "url": "https://saigonhoreca.local/5-luu-y-khi-thiet-ke-bep-nha-hang-cao-cap/",
+    "mode": "mobile",
+    "score": 64,
+    "lcp": 7297,
+    "tbt": 0,
+    "cls": 0.105,
+    "si": 3954
+  },
+  {
+    "url": "https://saigonhoreca.local/7-tieu-chuan-thiet-ke-he-thong-hut-khoi/",
+    "mode": "mobile",
+    "score": 68,
+    "lcp": 5349,
+    "tbt": 0,
+    "cls": 0.093,
+    "si": 4053
+  },
+  {
+    "url": "https://saigonhoreca.local/7-tieu-chuan-va-trien-khai-he-thong-haccp/",
+    "mode": "mobile",
+    "score": 59,
+    "lcp": 5072,
+    "tbt": 0,
+    "cls": 0.243,
+    "si": 4169
+  },
+  {
+    "url": "https://saigonhoreca.local/bep-a-3-hong-su-lua-chon-toi-uu-cho-bep-hien-dai/",
+    "mode": "mobile",
+    "score": 58,
+    "lcp": 4704,
+    "tbt": 0,
+    "cls": 0.316,
+    "si": 3947
+  },
+  {
+    "url": "https://saigonhoreca.local/san-pham/ban-dong-ft-126ma-s-hoshizaki/",
+    "mode": "mobile",
+    "score": 98,
+    "lcp": 2122,
+    "tbt": 0,
+    "cls": 0.01,
+    "si": 1974
+  },
+  {
+    "url": "https://saigonhoreca.local/san-pham/ban-giu-am-chen-dia-fht1560-fujimak-japan/",
+    "mode": "mobile",
+    "score": 87,
+    "lcp": 3125,
+    "tbt": 0,
+    "cls": 0.022,
+    "si": 3432
+  },
+  {
+    "url": "https://saigonhoreca.local/san-pham/ban-giu-am-chen-dia-fhta1275-fujimak-japan/",
+    "mode": "mobile",
+    "score": 98,
+    "lcp": 1982,
+    "tbt": 0,
+    "cls": 0.007,
+    "si": 2215
+  },
+  {
+    "url": "https://saigonhoreca.local/san-pham/ban-giu-am-chen-dia-fhta1290-fujimak-japan/",
+    "mode": "mobile",
+    "score": 78,
+    "lcp": 4015,
+    "tbt": 0,
+    "cls": 0.007,
+    "si": 3940
+  },
+  {
+    "url": "https://saigonhoreca.local/san-pham/ban-giu-am-chen-dia-fhta1575-fujimak-japan/",
+    "mode": "mobile",
+    "score": 88,
+    "lcp": 3069,
+    "tbt": 0,
+    "cls": 0.006,
+    "si": 3435
+  },
+  {
+    "url": "https://saigonhoreca.local/category/tin-tuc/",
+    "mode": "mobile",
+    "score": 98,
+    "lcp": 2109,
+    "tbt": 45,
+    "cls": 0.001,
+    "si": 2327
+  },
+  {
+    "url": "https://saigonhoreca.local/category/saigon-horeca/",
+    "mode": "mobile",
+    "score": 80,
+    "lcp": 3775,
+    "tbt": 0,
+    "cls": 0.002,
+    "si": 3866
+  },
+  {
+    "url": "https://saigonhoreca.local/category/thiet-bi-bep-cong-nghiep/",
+    "mode": "mobile",
+    "score": 79,
+    "lcp": 3864,
+    "tbt": 0,
+    "cls": 0.002,
+    "si": 3968
+  },
+  {
+    "url": "https://saigonhoreca.local/category/thiet-bi-bep-theo-mo-hinh-kinh-doanh/",
+    "mode": "mobile",
+    "score": 81,
+    "lcp": 3697,
+    "tbt": 0,
+    "cls": 0.009,
+    "si": 3993
+  },
+  {
+    "url": "https://saigonhoreca.local/category/thiet-bi-bar-cafe/",
+    "mode": "mobile",
+    "score": 81,
+    "lcp": 3708,
+    "tbt": 0,
+    "cls": 0.002,
+    "si": 3856
+  },
+  {
+    "url": "https://saigonhoreca.local/category/inox-kitchen-equipment/",
+    "mode": "mobile",
+    "score": 81,
+    "lcp": 3711,
+    "tbt": 0,
+    "cls": 0.002,
+    "si": 3768
+  }
+]

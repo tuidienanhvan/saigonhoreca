@@ -6,7 +6,8 @@
 
 .pp-hero-sky {
   position: relative;
-  height: calc(100svh - 76px);
+  height: calc(100vh - 76px);
+  height: calc(100dvh - 76px);
   min-height: 680px;
   width: 100%;
   display: flex;

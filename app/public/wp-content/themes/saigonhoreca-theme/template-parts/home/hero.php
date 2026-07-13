@@ -121,15 +121,9 @@ if (empty($slides)) {
                     <div class="sh-hero__overlay"></div>
                     
                     <!-- Lớp phủ nội dung chữ động -->
-                    <div class="sh-hero__content-box">
+                    <div class="sh-hero__content-box sh-hero__content-box--bottom">
                         <div class="sh-hero__container">
-                            <?php if ($index === 0) : ?>
-                                <h1 class="sh-hero__title"><?php echo esc_html($s['title']); ?></h1>
-                            <?php else : ?>
-                                <h2 class="sh-hero__title"><?php echo esc_html($s['title']); ?></h2>
-                            <?php endif; ?>
-                            <p class="sh-hero__subtitle"><?php echo esc_html($s['subtitle']); ?></p>
-                            <div class="sh-hero__actions">
+                            <div class="sh-hero__actions sh-hero__actions--bottom">
                                 <?php if (!empty($s['btn_text_1'])) : ?>
                                     <a href="<?php echo esc_url($s['btn_link_1']); ?>" class="sh-hero__btn sh-hero__btn--primary">
                                         <?php echo esc_html($s['btn_text_1']); ?>

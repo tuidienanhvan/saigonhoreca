@@ -13,7 +13,7 @@ $uri = get_template_directory_uri();
 ?>
 <section class="pp-hero-gmarb">
     <!-- Thẻ con gánh hiệu ứng Parallax Clip-Path siêu mượt (position:fixed) -->
-    <div class="pp-hero-gmarb__bg" style="background-image:url('<?php echo sgh_img('grand-marble-thuong-hieu-banh-cao-cap-nhat-ban/grand-marble-hero.jpg'); ?>');" aria-hidden="true"></div>
+    <div class="pp-hero-gmarb__bg" style="background-image:url('<?php echo sgh_img('grand-marble-thuong-hieu-banh-cao-cap-nhat-ban/grand-marble-thuong-hieu-banh-cao-cap-nhat-ban-thumbnail-project-cover.webp'); ?>');" aria-hidden="true"></div>
     <div class="pp-hero-gmarb__overlay" aria-hidden="true"></div>
 
     <div class="pp-hero-gmarb__glow pp-hero-gmarb__glow--lt" aria-hidden="true"></div>
@@ -21,7 +21,8 @@ $uri = get_template_directory_uri();
     <div class="pp-hero-gmarb__rail pp-hero-gmarb__rail--left" aria-hidden="true">KYOTO &middot; SINCE 1996</div>
     <div class="pp-hero-gmarb__rail pp-hero-gmarb__rail--right" aria-hidden="true">MARBLE DANISH / SGH</div>
 
-    <div class="pp-hero-gmarb__content scroll-reveal reveal-up">
+    <!-- Removed text content overlay as the background image already contains baked-in titles
+<div class="pp-hero-gmarb__content scroll-reveal reveal-up">
         <div class="pp-hero-gmarb__subhead"><?php echo esc_html__('Thương hiệu bánh cao cấp Nhật Bản', 'saigonhoreca'); ?></div>
         <h1 class="pp-hero-gmarb__title"><?php echo esc_html__('Grand Marble', 'saigonhoreca'); ?></h1>
         <div class="pp-hero-gmarb__divider" aria-hidden="true"></div>
@@ -32,4 +33,5 @@ $uri = get_template_directory_uri();
             <span><?php echo esc_html__('Chocolate Marou', 'saigonhoreca'); ?></span>
         </div>
     </div>
+-->
 </section>

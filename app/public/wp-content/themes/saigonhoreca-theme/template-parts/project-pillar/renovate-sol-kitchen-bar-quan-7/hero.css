@@ -1,22 +1,23 @@
 /**
  * renovate-sol-kitchen-bar-quan-7 — hero slot.
- * Full-bleed backdrop via the reliable background-attachment:fixed parallax:
+ * Full-bleed backdrop via the reliable background-attachment: scroll;parallax:
  *   - section: position:relative; isolation:isolate; overflow:hidden (NO clip-path —
  *     a clip-path would become the containing block for a fixed child and kill parallax).
  *   - __bg: position:absolute; inset:0; z-index:-2; background center/cover +
- *     background-attachment:fixed (viewport-anchored paint = the parallax, no JS).
+ *     background-attachment: scroll;(viewport-anchored paint = the parallax, no JS).
  *   - __overlay: position:absolute; z-index:-1; LIGHT token gradient (keeps photo bright).
  *   - mobile fallback switches __bg to background-attachment:scroll (fixed janks on mobile).
  * Title sits DIRECTLY on the bright image (no dark scrim, no panel behind text);
  * legibility via text-shadow only (owner feedback).
- * Techniques: background-attachment:fixed parallax, radial-gradient glow, clamp(), staggered keyframe
+ * Techniques: background-attachment: scroll;parallax, radial-gradient glow, clamp(), staggered keyframe
  * entry, scroll-cue keyframe, prefers-reduced-motion.
  * @package SaigonHoreca
  */
 
 .pp-hero-solq7 {
   position: relative;
-  height: calc(100svh - 76px);
+  height: calc(100vh - 76px);
+  height: calc(100dvh - 76px);
   min-height: 660px;
   width: 100%;
   display: flex;
@@ -24,14 +25,11 @@
   justify-content: flex-start;
   overflow: hidden;
   isolation: isolate;
-  /* Parallax via background-attachment:fixed on __bg (no clip-path: clip-path would
+  /* Parallax via background-attachment: scroll;on __bg (no clip-path: clip-path would
      make this section the containing block for a position:fixed child and kill parallax). */
   background-color: var(--b1);
   text-align: left;
   padding-inline: clamp(1.25rem, 7vw, 7rem);
-}
-@supports (height: 100dvh) {
-  .pp-hero-solq7 { height: 100dvh; }
 }
 
 /* Background video (YouTube) — covers the hero; poster image on __media shows until it loads. */
@@ -65,7 +63,7 @@
   background-position: center;
   background-repeat: no-repeat;
   /* Reliable parallax: viewport-fixed paint without a clip-path containing block. */
-  background-attachment: fixed;
+  background-attachment: scroll;
   pointer-events: none;
   /* Bright, un-dimmed image — owner feedback: no dark overlay behind hero. */
   filter: saturate(1.04) contrast(1.03);
@@ -280,7 +278,7 @@
   .pp-hero-solq7__content { padding: 1.65rem; }
 }
 
-/* Mobile fallback — background-attachment:fixed parallax is janky on mobile */
+/* Mobile fallback — background-attachment: scroll;parallax is janky on mobile */
 @media (max-width: 768px) {
   .pp-hero-solq7__bg {
     position: absolute;
@@ -295,8 +293,9 @@
   100% { opacity: 1; transform: translateY(0); filter: blur(0); }
 }
 @keyframes solq7-scroll {
-  0%   { top: -60%; }
-  100% { top: 100%; }
+  /* GPU-only: static top:-60% (base position) + transform thay vì animate top trực tiếp */
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(160%); }
 }
 
 @media (prefers-reduced-motion: reduce) {

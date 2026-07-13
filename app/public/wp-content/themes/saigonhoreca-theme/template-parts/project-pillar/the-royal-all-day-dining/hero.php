@@ -8,9 +8,10 @@ if (!defined('ABSPATH')) exit;
 $uri = get_template_directory_uri();
 ?>
 <section class="pp-hero-trd">
-    <div class="pp-hero-trd__media" style="background-image:url('<?php echo sgh_img('the-royal-all-day-dining/the-royal-all-day-dining-mat-tien-nha-hang.webp'); ?>'); background-size:cover; background-position:center;" data-ken-burns></div>
+    <div class="pp-hero-trd__media" style="background-image:url('<?php echo sgh_img('the-royal-all-day-dining/the-royal-all-day-dining-thumbnail-project-cover.webp'); ?>'); background-size:cover; background-position:center;" data-ken-burns></div>
     <div class="pp-hero-trd__overlay" aria-hidden="true"></div>
-    <div class="pp-hero-trd__content">
+    <!-- Removed text content overlay as the background image already contains baked-in titles
+<div class="pp-hero-trd__content">
         <!-- Royal Glassmorphism Architectural Card -->
         <div class="pp-hero-trd__card">
             <!-- Royal Crown & Serif R Emblem Logo in SVG -->
@@ -44,4 +45,5 @@ $uri = get_template_directory_uri();
             </div>
         </div>
     </div>
+-->
 </section>

@@ -1,0 +1,8 @@
+/* Project bundle — heiwa-sushi-omakase only. */
+@import "../../../template-parts/project-pillar/heiwa-sushi-omakase/hero.css";
+@import "../../../template-parts/project-pillar/heiwa-sushi-omakase/intro.css";
+@import "../../../template-parts/project-pillar/heiwa-sushi-omakase/concept.css";
+@import "../../../template-parts/project-pillar/heiwa-sushi-omakase/partnership.css";
+@import "../../../template-parts/project-pillar/heiwa-sushi-omakase/specs.css";
+@import "../../../template-parts/project-pillar/heiwa-sushi-omakase/gallery.css";
+@import "../../../single-project/heiwa-sushi-omakase.css";

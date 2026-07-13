@@ -58,13 +58,36 @@
 }
 
 .sh-about-values__title {
-  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+  font-size: clamp(2rem, 3.8vw, 3rem);
   font-weight: 950;
   text-transform: uppercase;
   color: var(--bc);
   line-height: 1.15;
   margin: 0;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
+}
+
+/* Luxury WordArt typographic enhancements */
+.sh-wordart-1 {
+  background: linear-gradient(135deg, #ffffff 40%, #ffd166 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+}
+
+.sh-wordart-2 {
+  background: linear-gradient(135deg, var(--p) 20%, #ffd166 60%, #fff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 6px rgba(245, 166, 35, 0.25));
+  position: relative;
+}
+
+.sh-wordart-3 {
+  background: linear-gradient(135deg, #ffffff 40%, #ffd166 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
 }
 
 .sh-about-values__title-sep {
@@ -116,8 +139,9 @@
 }
 
 .sh-about-values__card-icon svg {
-  width: 1.35rem;
-  height: 1.35rem;
+  width: 1.85rem;
+  height: 1.85rem;
+  overflow: visible !important;
   transition: transform 0.5s var(--ease-spring), filter 0.4s ease;
 }
 
@@ -154,16 +178,14 @@
 }
 
 .sh-about-values__card:hover .sh-about-values__card-icon {
-  background-color: var(--p);
-  color: var(--b1);
-  border-color: var(--ph);
-  box-shadow: 0 0 18px rgba(245, 166, 35, 0.45);
-  transform: scale(1.08) rotate(8deg);
+  background-color: rgba(26, 26, 26, 0.85);
+  border-color: var(--p);
+  box-shadow: 0 0 20px rgba(245, 166, 35, 0.4);
+  transform: scale(1.1) rotate(5deg);
 }
 
 .sh-about-values__card:hover .sh-about-values__card-icon svg {
-  transform: scale(1.1);
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+  filter: drop-shadow(0 0 8px rgba(245, 166, 35, 0.8));
 }
 
 .sh-about-values__card:hover .sh-about-values__card-label {
@@ -239,10 +261,22 @@
   justify-content: center;
   padding: 4.5rem 1.5rem;
   min-height: 560px;
+  /* Chamfered cut tech corner frame shape */
+  clip-path: polygon(0 0, 92% 0, 100% 8%, 100% 100%, 8% 100%, 0 92%);
 }
 
 @media (min-width: 768px)  { .sh-about-values__right { padding: 5rem 3.5rem; } }
 @media (min-width: 1280px) { .sh-about-values__right { padding: 6.5rem 5.5rem; } }
+
+/* Technical Corner Frame SVG overlay */
+.sh-about-values__tech-frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 4; /* Overlay on top of Ken Burns but below content card */
+  pointer-events: none;
+}
 
 /* Ken Burns Background Image Div */
 .sh-about-values__right-bg {
@@ -321,7 +355,7 @@
 /* Glassmorphic 3D Content Card with Gold Offset Border */
 .sh-about-values__glass-card {
   position: relative;
-  z-index: 3;
+  z-index: 5; /* Sit on top of the technical frame */
   width: 100%;
   max-width: 36rem;
   background: rgba(20, 20, 20, 0.65);
@@ -451,6 +485,97 @@
   line-height: 1.85;
   color: var(--bc2);
   margin: 0;
+}
+
+/* ── Luxury SVG Technical Animations ─────────────────────────── */
+.sh-about-values__svg-icon {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Sáng tạo (Creativity) Animations */
+.sh-about-values__card:hover .svg-creativity-orbit {
+  animation: 10s linear infinite spin-clockwise;
+  transform-origin: 24px 24px;
+}
+.sh-about-values__card:hover .svg-creativity-particle {
+  animation: 2s ease-in-out infinite alternate pulse-particle;
+}
+.sh-about-values__card:hover .svg-creativity-bulb {
+  animation: 1.8s ease-in-out infinite alternate glow-bulb;
+}
+.sh-about-values__card:hover .svg-creativity-star {
+  animation: 1s ease-in-out infinite alternate pulse-star;
+  transform-origin: 24px 19.5px;
+}
+
+@keyframes spin-clockwise {
+  to { transform: rotate(360deg); }
+}
+@keyframes pulse-particle {
+  0% { opacity: 0.3; transform: scale(0.9) translate(-1px, -1px); }
+  100% { opacity: 1; transform: scale(1.1) translate(1px, 1px); }
+}
+@keyframes glow-bulb {
+  0% { stroke-width: 1.8px; filter: drop-shadow(0 0 1px var(--p)); }
+  100% { stroke-width: 2.3px; filter: drop-shadow(0 0 8px var(--p)); }
+}
+@keyframes pulse-star {
+  0% { transform: scale(0.9); fill-opacity: 0.7; }
+  100% { transform: scale(1.15); fill-opacity: 1; }
+}
+
+/* Nghệ thuật (Artistry) Animations */
+.sh-about-values__card:hover .svg-artistry-spiral {
+  stroke-dasharray: 200;
+  stroke-dashoffset: 200;
+  animation: 2s ease-in-out forwards draw-spiral;
+}
+.sh-about-values__card:hover .svg-artistry-compass {
+  animation: 3s ease-in-out infinite alternate swing-compass;
+  transform-origin: 24px 8px;
+}
+.sh-about-values__card:hover .svg-artistry-grid {
+  animation: 2s ease-in-out infinite alternate pulse-grid;
+}
+
+@keyframes draw-spiral {
+  to { stroke-dashoffset: 0; }
+}
+@keyframes swing-compass {
+  0% { transform: rotate(-5deg); }
+  100% { transform: rotate(5deg); }
+}
+@keyframes pulse-grid {
+  0% { opacity: 0.1; }
+  100% { opacity: 0.35; }
+}
+
+/* Tinh tế (Refinement) Animations */
+.svg-refinement-target {
+  transform-origin: 24px 24px;
+}
+.sh-about-values__card:hover .svg-refinement-target {
+  animation: 15s linear infinite spin-counter-clockwise;
+}
+.sh-about-values__card:hover .svg-refinement-diamond {
+  animation: 2s ease-in-out infinite alternate float-diamond;
+}
+.sh-about-values__card:hover .svg-refinement-beam {
+  animation: 1.5s ease-in-out infinite alternate flash-beams;
+}
+
+@keyframes spin-counter-clockwise {
+  to { transform: rotate(-360deg); }
+}
+@keyframes float-diamond {
+  0% { transform: translateY(0) scale(1); filter: drop-shadow(0 0 0 transparent); }
+  100% { transform: translateY(-2px) scale(1.02); filter: drop-shadow(0 0 8px var(--p)); }
+}
+@keyframes flash-beams {
+  0% { opacity: 0.2; stroke-width: 1px; }
+  100% { opacity: 0.8; stroke-width: 1.5px; }
 }
 
 /* ── Responsive Stack ────────────────────────────────────────── */

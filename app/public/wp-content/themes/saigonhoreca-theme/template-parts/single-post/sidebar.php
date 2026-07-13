@@ -169,11 +169,10 @@ $sidebar_label      = $is_product ? __('Thông tin sản phẩm', 'saigonhoreca'
 </aside>
 
 <script>
-/* Bài đã xem (post version) — dùng key riêng `sgh:viewed-posts`.
-   Dữ liệu bài viết hiện tại được PHP nhúng trực tiếp an toàn tuyệt đối.
-   Hiển thị cả bài viết hiện tại kèm badge "Đang xem" cực kỳ chuyên nghiệp. */
+/* Bài / Sản phẩm đã xem — Tự động lưu và hiển thị danh sách vừa xem từ localStorage.
+   Hỗ trợ cả post và product CPT dựa trên data-storage-key tương ứng. */
 (function () {
-    var block = document.querySelector('.sh-sidebar-viewed[data-storage-key="sgh:viewed-posts"]');
+    var block = document.querySelector('.sh-sidebar-viewed');
     if (!block) return;
     var KEY = block.dataset.storageKey;
     var MAX = 6;

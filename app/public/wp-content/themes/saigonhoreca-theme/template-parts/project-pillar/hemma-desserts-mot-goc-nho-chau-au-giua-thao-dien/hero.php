@@ -10,12 +10,13 @@ $uri = get_template_directory_uri();
 ?>
 <section class="pp-hero-hmd">
   <!-- Lớp nền gánh hiệu ứng parallax siêu mượt qua background-attachment:fixed (không dùng clip-path) -->
-  <div class="pp-hero-hmd__bg" style="background-image:url('<?php echo sgh_img('hemma-desserts-mot-goc-nho-chau-au-giua-thao-dien/hemma-desserts-khong-gian-quan-cafe-trang-mieng-au-am-cung.jpg'); ?>');" aria-hidden="true"></div>
+  <div class="pp-hero-hmd__bg" style="background-image:url('<?php echo sgh_img('hemma-desserts-mot-goc-nho-chau-au-giua-thao-dien/hemma-desserts-mot-goc-nho-chau-au-giua-thao-dien-thumbnail-project-cover.webp'); ?>');" aria-hidden="true"></div>
   <div class="pp-hero-hmd__overlay" aria-hidden="true"></div>
   <div class="pp-hero-hmd__glow" aria-hidden="true"></div>
 
   <div class="pp-container-shared">
-    <div class="pp-hero-hmd__content">
+    <!-- Removed text content overlay as the background image already contains baked-in titles
+<div class="pp-hero-hmd__content">
       <span class="pp-hero-hmd__eyebrow"><?php echo esc_html__('Patisserie Européenne · Thảo Điền', 'saigonhoreca'); ?></span>
       <h1 class="pp-hero-hmd__title">
         <?php echo esc_html__('Hemma Desserts', 'saigonhoreca'); ?>
@@ -24,6 +25,7 @@ $uri = get_template_directory_uri();
       <div class="pp-hero-hmd__divider" aria-hidden="true"></div>
       <p class="pp-hero-hmd__subtitle"><?php echo esc_html__('Ẩn mình ở cuối con đường Nguyễn Bá Huân, Hemma Desserts là một tiệm tráng miệng kiểu Âu nhỏ xinh được vận hành bởi hai founder trẻ người nước ngoài, cũng chính là đầu bếp đứng bếp bánh mỗi ngày.', 'saigonhoreca'); ?></p>
     </div>
+-->
   </div>
 
   <div class="pp-hero-hmd__scroll" aria-hidden="true">

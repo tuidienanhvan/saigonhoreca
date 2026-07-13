@@ -17,7 +17,8 @@ $uri = get_template_directory_uri();
     <div class="pp-hero-sky__rail pp-hero-sky__rail--left" aria-hidden="true"><?php echo esc_html__('ROOFTOP BAR / QUẬN 1', 'saigonhoreca'); ?></div>
     <div class="pp-hero-sky__rail pp-hero-sky__rail--right" aria-hidden="true"><?php echo esc_html__('HỆ THỐNG QUẦY BAR / SGH', 'saigonhoreca'); ?></div>
 
-    <div class="pp-hero-sky__content">
+    <!-- Removed text content overlay as the background image already contains baked-in titles
+<div class="pp-hero-sky__content">
         <span class="pp-hero-sky__subhead"><?php echo esc_html__('Rooftop • Quầy Bar • Skyline', 'saigonhoreca'); ?></span>
         <h1 class="pp-hero-sky__title"><?php echo esc_html__('Skyloft by Glow', 'saigonhoreca'); ?></h1>
         <div class="pp-hero-sky__divider" aria-hidden="true"></div>
@@ -27,5 +28,6 @@ $uri = get_template_directory_uri();
             <span><?php echo esc_html__('Quầy bar thiết kế riêng', 'saigonhoreca'); ?></span>
         </div>
     </div>
+-->
 </section>
 

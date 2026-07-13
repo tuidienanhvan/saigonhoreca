@@ -4,10 +4,10 @@
  * NO panel behind title). Chỉ text-shadow để đọc rõ trên ảnh sáng.
  * Accent tokens scope trong .pp--mua (single-project css). 0 hardcode hex brand.
  *
- * Kỹ thuật Parallax (background-attachment:fixed — đáng tin cậy, KHÔNG JS):
+ * Kỹ thuật Parallax (background-attachment: scroll;— đáng tin cậy, KHÔNG JS):
  *   - section: position:relative; isolation:isolate; overflow:hidden (KHÔNG clip-path).
  *   - .__bg: position:absolute; inset:0; background center/cover;
- *     background-attachment:fixed ⇒ bg neo theo viewport = parallax; z-index:-2.
+ *     background-attachment: scroll;⇒ bg neo theo viewport = parallax; z-index:-2.
  *   - .__video: iframe nền position:absolute; inset:0; z-index:-1.
  *   - .__overlay: gradient token NHẸ giữ ảnh sáng; z-index:-1.
  *   - content: z-index trên cùng + text-shadow cho dễ đọc.
@@ -20,7 +20,8 @@
 .pp-hero-mua {
   position: relative;
   width: 100%;
-  height: calc(100svh - 76px);
+  height: calc(100vh - 76px);
+  height: calc(100dvh - 76px);
   min-height: 88vh;
   display: flex;
   align-items: center;
@@ -29,12 +30,9 @@
   background: var(--b1);
   isolation: isolate;
 }
-@supports (height: 100dvh) {
-  .pp-hero-mua { height: calc(100dvh - 76px); }
-}
 @media (max-width: 768px) { .pp-hero-mua { height: auto; min-height: 70vh; } }
 
-/* Lớp nền ảnh hero thật — background-attachment:fixed cho parallax đáng tin cậy. */
+/* Lớp nền ảnh hero thật — background-attachment: scroll;cho parallax đáng tin cậy. */
 .pp-hero-mua__bg {
   position: absolute;
   inset: 0;
@@ -43,7 +41,7 @@
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  background-attachment: fixed; /* parallax đáng tin cậy — bg neo theo viewport, auto-clip vào box này */
+  background-attachment: scroll; /* parallax đáng tin cậy — bg neo theo viewport, auto-clip vào box này */
   z-index: -2;
   pointer-events: none;
   filter: saturate(1.02);
@@ -96,7 +94,7 @@
   opacity: 0.5;
 }
 
-/* Mobile fallback: background-attachment:fixed bị giật trên mobile ⇒ scroll. */
+/* Mobile fallback: background-attachment: scroll;bị giật trên mobile ⇒ scroll. */
 @media (max-width: 768px) {
   .pp-hero-mua__bg {
     position: absolute;
@@ -190,7 +188,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  /* Parallax dùng background-attachment:fixed — neo bg về scroll để loại bỏ
+  /* Parallax dùng background-attachment: scroll;— neo bg về scroll để loại bỏ
      chuyển động cuộn cho người dùng nhạy cảm với chuyển động. */
   .pp-hero-mua__bg { background-attachment: scroll !important; }
 }

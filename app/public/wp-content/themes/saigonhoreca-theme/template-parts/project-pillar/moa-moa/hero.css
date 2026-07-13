@@ -8,7 +8,8 @@
   position: relative;
   isolation: isolate;
   /* Fill full viewport area below sticky header (76px). */
-  height: calc(100svh - 76px);
+  height: calc(100vh - 76px);
+  height: calc(100dvh - 76px);
   min-height: 620px;
   width: 100%;
   display: flex;
@@ -19,13 +20,7 @@
   text-align: center;
 }
 
-@supports (height: 100dvh) {
-  .pp-hero-moa {
-    height: calc(100dvh - 76px);
-  }
-}
-
-/* Parallax tin cậy: bg-layer position:absolute phủ kín section, dùng background-attachment:fixed → ảnh ghim theo viewport, tự clip trong box = parallax mượt, không cần JS */
+/* Nền tĩnh cuộn bình thường (không dùng background-attachment: scroll;để tránh hiệu ứng parallax) */
 .pp-hero-moa__bg {
   position: absolute;
   inset: 0;
@@ -34,7 +29,6 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed;
   z-index: -2;
   pointer-events: none;
   filter: saturate(1.06) contrast(1.03);
@@ -130,8 +124,9 @@
   color: var(--gold);
   letter-spacing: normal;
   text-transform: none;
-  max-width: 600px;
+  max-width: 90vw;
   text-shadow: 0 2px 18px rgba(0, 0, 0, 0.55);
+  white-space: nowrap;
 }
 
 .pp-hero-moa__divider {
@@ -196,7 +191,7 @@
   50%      { transform: translateY(4px); }
 }
 
-/* background-attachment:fixed bị giật trên mobile → fallback về scroll (ảnh cuộn theo trang như bình thường) */
+/* background-attachment: scroll;bị giật trên mobile → fallback về scroll (ảnh cuộn theo trang như bình thường) */
 @media (max-width: 768px) {
   .pp-hero-moa__bg {
     position: absolute;

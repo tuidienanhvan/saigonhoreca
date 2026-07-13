@@ -9,7 +9,7 @@ $uri = get_template_directory_uri();
 ?>
 <section class="pp-hero-vhp">
   <!-- Thẻ con gánh hiệu ứng Parallax (position:absolute + background-attachment:fixed, mobile fallback: scroll) -->
-  <div class="pp-hero-vhp__bg" style="background-image:url('<?php echo sgh_img('du-an-vinh-hiep/vinh-hiep-bep-xao-tu-cong-nghiep-inox.webp'); ?>');" aria-hidden="true"></div>
+  <div class="pp-hero-vhp__bg" style="background-image:url('<?php echo sgh_img('du-an-vinh-hiep/vinh-hiep-toan-canh-nha-may-tu-tren-cao.webp'); ?>');" aria-hidden="true"></div>
   <div class="pp-hero-vhp__overlay" aria-hidden="true"></div>
 
   <!-- Lưới kỹ thuật blueprint chạy ngầm -->
@@ -17,7 +17,8 @@ $uri = get_template_directory_uri();
   <div class="pp-ambient-glow-vhp pp-ambient-glow-vhp--corner" aria-hidden="true"></div>
 
   <div class="pp-container-shared">
-    <div class="pp-hero-vhp__content">
+    <!-- Removed text content overlay as the background image already contains baked-in titles
+<div class="pp-hero-vhp__content">
       <div class="pp-hero-vhp__eyebrow">
         <span class="pp-hero-vhp__eyebrow-dot" aria-hidden="true"></span>
         <?php echo esc_html__('Coffee Lab · Nhà máy cà phê xuất khẩu', 'saigonhoreca'); ?>
@@ -42,6 +43,7 @@ $uri = get_template_directory_uri();
         <span class="pp-hero-vhp__meta-item">Saigon Horeca</span>
       </div>
     </div>
+-->
   </div>
 
   <div class="pp-hero-vhp__scroll" aria-hidden="true">

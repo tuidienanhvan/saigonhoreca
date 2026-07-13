@@ -11,7 +11,8 @@
 body.page-template-page-project-du-an-vinh-hiep .pp-hero-vhp {
   position: relative;
   /* Fill full viewport area below sticky header (76px). */
-  height: calc(100svh - 76px);
+  height: calc(100vh - 76px);
+  height: calc(100dvh - 76px);
   min-height: 600px;
   width: 100%;
   display: flex;
@@ -20,13 +21,8 @@ body.page-template-page-project-du-an-vinh-hiep .pp-hero-vhp {
   isolation: isolate;
   background-color: var(--b1);
 }
-@supports (height: 100dvh) {
-  body.page-template-page-project-du-an-vinh-hiep .pp-hero-vhp {
-    height: calc(100dvh - 76px);
-  }
-}
 
-/* Parallax bg — position:absolute + background-attachment:fixed (no clip-path, no JS).
+/* Parallax bg — position:absolute + background-attachment: scroll;(no clip-path, no JS).
    Reliable parallax: the image is pinned to the viewport via background-attachment.
    Low-saturation roast/steel tone; photo kept bright. */
 body.page-template-page-project-du-an-vinh-hiep .pp-hero-vhp__bg {
@@ -37,7 +33,7 @@ body.page-template-page-project-du-an-vinh-hiep .pp-hero-vhp__bg {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-attachment: scroll;
   filter: saturate(0.92) contrast(1.04);
   z-index: -2;
   pointer-events: none;
@@ -262,7 +258,7 @@ body.page-template-page-project-du-an-vinh-hiep .pp-hero-vhp__meta { animation-d
   }
 }
 
-/* Mobile fallback: background-attachment:fixed is janky on small screens — use scroll. */
+/* Mobile fallback: background-attachment: scroll;is janky on small screens — use scroll. */
 @media (max-width: 768px) {
   body.page-template-page-project-du-an-vinh-hiep .pp-hero-vhp__bg {
     position: absolute;

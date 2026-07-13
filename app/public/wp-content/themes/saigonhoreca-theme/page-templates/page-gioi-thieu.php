@@ -32,9 +32,6 @@ get_header(); ?>
     // 4. Values — giá trị + cách tiếp cận
     get_template_part('template-parts/about/values');
 
-    // 5. Testimonials — Nhận xét từ khách hàng
-    get_template_part('template-parts/about/testimonials');
-
     // 6. CTA — Final call to action
     get_template_part('template-parts/about/cta');
     ?>

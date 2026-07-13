@@ -1,0 +1,105 @@
+/**
+ * vien-duong-lao-nam-an — gallery slot (GOLD editorial uniform grid).
+ * Centered header + clean uniform grid on shared image+caption frames.
+ * Tokens only (color-mix tints), clamp() type; hover motion guarded by prefers-reduced-motion.
+ * @package SaigonHoreca
+ */
+
+.pp--nan .pp-gallery-section-nan {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--b2);
+}
+
+/* ── Faint numeric watermark (editorial gold accent) ── */
+.pp--nan .pp-gallery-nan__watermark {
+  position: absolute;
+  top: clamp(-3rem, -4vw, -1.5rem);
+  right: clamp(0.5rem, 4vw, 3rem);
+  z-index: 1;
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(9rem, 22vw, 22rem);
+  font-weight: 800;
+  line-height: 1;
+  color: color-mix(in srgb, var(--gold) 4%, transparent);
+  pointer-events: none;
+  user-select: none;
+}
+
+.pp--nan .pp-gallery-section-nan__head {
+  max-width: 760px;
+  margin: 0 auto clamp(2.5rem, 5vw, 3.5rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.pp--nan .pp-gallery-section-nan__title { text-align: center; }
+.pp--nan .pp-gallery-section-nan__lead {
+  margin: 0;
+  font-size: clamp(0.95rem, 1.15vw, 1.05rem);
+  line-height: 1.8;
+  color: var(--bc2);
+}
+
+/* ── Uniform gallery grid ──
+   1 col (mobile) → 2 cols @600px → 3 cols @992px.
+   Generous row-gap so the shared caption (anchored below each image) breathes. */
+.pp--nan .pp-gallery-nan {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1.5rem, 2.6vw, 2.25rem) clamp(1.25rem, 2vw, 1.75rem);
+}
+@media (min-width: 600px) {
+  .pp--nan .pp-gallery-nan { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 992px) {
+  .pp--nan .pp-gallery-nan { grid-template-columns: repeat(4, 1fr); }
+}
+
+.pp--nan .pp-gallery-nan__item { margin: 0; min-width: 0; }
+
+/* Shared frame: every tile equal 4/3 → tiles cleanly with zero gaps + gold-on-hover treatment */
+.pp--nan .pp-gallery-nan__frame {
+  height: 100%;
+  border-radius: var(--radius-md);
+  overflow: visible !important;
+  background: var(--b3);
+  border: 1px solid var(--bd);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+  transition:
+    border-color 0.45s var(--ease-spring),
+    transform 0.45s var(--ease-spring),
+    box-shadow 0.45s var(--ease-spring);
+}
+.pp--nan .pp-gallery-nan__frame img {
+  aspect-ratio: 4 / 3;
+  border-radius: inherit;
+  /* Dark raw photos — never darken: brightness held at >= 1.0 */
+  filter: saturate(0.99) contrast(1.03) brightness(1.02);
+  transition: transform 0.7s var(--ease-spring), filter 0.5s ease;
+}
+
+/* Hover: lift + scale + subtle gold border/glow */
+.pp--nan .pp-gallery-nan__frame:hover {
+  transform: translateY(-6px);
+  border-color: color-mix(in srgb, var(--gold) 50%, transparent);
+  box-shadow:
+    0 22px 48px rgba(0, 0, 0, 0.6),
+    0 0 22px color-mix(in srgb, var(--gold) 14%, transparent);
+}
+.pp--nan .pp-gallery-nan__frame:hover img {
+  transform: scale(1.05);
+  filter: saturate(1.04) contrast(1.05) brightness(1.04);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pp--nan .pp-gallery-nan__frame,
+  .pp--nan .pp-gallery-nan__frame img {
+    transition: none !important;
+  }
+  .pp--nan .pp-gallery-nan__frame:hover,
+  .pp--nan .pp-gallery-nan__frame:hover img {
+    transform: none !important;
+  }
+}

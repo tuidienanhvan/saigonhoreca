@@ -985,6 +985,7 @@
     border-radius: var(--radius-md);
     overflow: hidden;
     text-decoration: none;
+    text-align: left;
     transition: border-color var(--duration-normal) var(--ease-spring), transform var(--duration-normal) var(--ease-spring);
 }
 .sh-single--product .sh-single__related .sh-product-card:hover {
@@ -1005,4 +1006,5 @@
     font-weight: 600;
     line-height: 1.35;
     color: var(--bc);
+    text-align: left;
 }

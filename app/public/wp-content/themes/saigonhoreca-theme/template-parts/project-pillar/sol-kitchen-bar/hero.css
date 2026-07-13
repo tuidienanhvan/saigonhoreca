@@ -12,7 +12,8 @@
 
 .pp-hero-sol {
   position: relative;
-  height: calc(100svh - 76px);
+  height: calc(100vh - 76px);
+  height: calc(100dvh - 76px);
   min-height: 660px;
   width: 100%;
   display: flex;
@@ -23,9 +24,6 @@
   text-align: left;
   isolation: isolate;
   padding-inline: clamp(1.25rem, 7vw, 7rem);
-}
-@supports (height: 100dvh) {
-  .pp-hero-sol { height: calc(100dvh - 76px); }
 }
 
 /* Full-bleed BRIGHT project image — position:fixed, confined by the section's
@@ -39,7 +37,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed; /* reliable parallax — bg fixed to viewport, auto-clipped to this box */
+  background-attachment: scroll; /* reliable parallax — bg fixed to viewport, auto-clipped to this box */
   filter: saturate(1.05) contrast(1.02);
   pointer-events: none;
 }

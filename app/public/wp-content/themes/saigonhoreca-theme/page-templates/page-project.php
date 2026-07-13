@@ -19,7 +19,6 @@
 get_header(); ?>
 
 <main id="primary" class="sh-project-pillar" tabindex="-1">
-    <div class="elementor elementor-12856" data-elementor-type="wp-page" data-elementor-id="12856">
         <?php
         // 1. Hero banner with YouTube background
         get_template_part('template-parts/project/hero');
@@ -45,7 +44,6 @@ get_header(); ?>
         // 8. Contact CTA with WPForms
         get_template_part('template-parts/project/cta');
         ?>
-    </div>
 </main>
 
 <?php get_footer();
