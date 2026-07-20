@@ -1,0 +1,414 @@
+[
+  {
+    "group": "1_ma_san_pham",
+    "query": "FT-126MA-S",
+    "relevant_ids": [555],
+    "note": "P2 audit 2026-07-20: sửa nhãn — 1053 thực ra là FT-158MA-S (mã khác), sản phẩm khớp CHÍNH XÁC FT-126MA-S là post_id 555 (\"Bàn đông FT-126MA-S – Hoshizaki\"). So sánh với RT-126MA-S (1552) và HR-126MA-S (1065) — 3 dòng khác nhau cùng số 126. Tiền tố FT/RT/HR không được đưa vào phần này (bug: 2 ký tự → chỉ +0.01)."
+  },
+  {
+    "group": "1_ma_san_pham",
+    "query": "RT-126MA-S",
+    "relevant_ids": [1552],
+    "note": "P2 audit 2026-07-20: sửa nhãn — 1057 thực ra là biến thể RT-126MA-SSG (cửa kính trượt), sản phẩm khớp CHÍNH XÁC RT-126MA-S là post_id 1552 (\"Bàn mát RT-126MA-S – Hoshizaki\"). Bàn mát, KHÔNG phải bàn đông FT-126MA-S (555)."
+  },
+  {
+    "group": "1_ma_san_pham",
+    "query": "HR-126MA-S",
+    "relevant_ids": [1065],
+    "note": "Tủ mát, khác cả FT- và RT-."
+  },
+  {
+    "group": "1_ma_san_pham",
+    "query": "tủ đông FT-158MA-S",
+    "relevant_ids": [1053, 1055],
+    "note": "1053 khớp chính xác model; cho phép 1055 (FT-98MA-S, cùng dòng FT) là gần đúng."
+  },
+  {
+    "group": "1_ma_san_pham",
+    "query": "IM-65NE",
+    "relevant_ids": [638, 639],
+    "note": "2 biến thể cùng model gốc."
+  },
+  {
+    "group": "1_ma_san_pham",
+    "query": "IM-65NE-S",
+    "relevant_ids": [608],
+    "note": "Biến thể hình ngôi sao — mã đầy đủ phải trỏ đúng biến thể, không lẫn IM-65NE thường."
+  },
+  {
+    "group": "1_ma_san_pham",
+    "query": "FM-150KE",
+    "relevant_ids": [618],
+    "note": null
+  },
+  {
+    "group": "1_ma_san_pham",
+    "query": "SRM-105A",
+    "relevant_ids": [643],
+    "note": null
+  },
+  {
+    "group": "1_ma_san_pham",
+    "query": "model UX-100",
+    "relevant_ids": [653],
+    "note": null
+  },
+  {
+    "group": "1_ma_san_pham",
+    "query": "PS-22",
+    "relevant_ids": [659],
+    "note": "Máy xay thịt — mã 4 ký tự, không nhầm sang máy khác."
+  },
+  {
+    "group": "1_ma_san_pham",
+    "query": "HF-128MA-S",
+    "relevant_ids": [665],
+    "note": null
+  },
+  {
+    "group": "1_ma_san_pham",
+    "query": "KM-130C",
+    "relevant_ids": [607],
+    "note": null
+  },
+  {
+    "group": "1_ma_san_pham",
+    "query": "SE-204",
+    "relevant_ids": [596],
+    "note": null
+  },
+  {
+    "group": "1_ma_san_pham",
+    "query": "DCM-120KE",
+    "relevant_ids": [614],
+    "note": null
+  },
+  {
+    "group": "1_ma_san_pham",
+    "query": "OBM1080T",
+    "relevant_ids": [1349],
+    "note": null
+  },
+
+  {
+    "group": "2_danh_tu_ngan",
+    "query": "máy làm đá tự động",
+    "relevant_ids": [606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633,634,635,636,637,638,639,640,641,642,643,644,645,646,647,1205,1207,1209,1211,1213,1215,1217,1219,1221,1223,1225,1227,1229,1231,1233,1235,1237,1239,1241,1243,1245,1247,1249,2970],
+    "note": "CÂU BUG GỐC. 'đá'(2 ký tự)+'tự'(2 ký tự) chỉ +0.01, 'động'(4 ký tự) thành AND bắt buộc → hiện trả máy ép/máy xay/máy đóng gói. 66 máy làm đá thật trong kho."
+  },
+  {
+    "group": "2_danh_tu_ngan",
+    "query": "bếp ga công nghiệp",
+    "relevant_ids": [564,565,566,567,568],
+    "note": "'ga' 2 ký tự."
+  },
+  {
+    "group": "2_danh_tu_ngan",
+    "query": "bếp gas 2 họng",
+    "relevant_ids": [564,565],
+    "note": null
+  },
+  {
+    "group": "2_danh_tu_ngan",
+    "query": "máy rửa ly",
+    "relevant_ids": [655,656],
+    "note": "'ly' 2 ký tự."
+  },
+  {
+    "group": "2_danh_tu_ngan",
+    "query": "máy hút chân không",
+    "relevant_ids": [596,597,598],
+    "note": null
+  },
+  {
+    "group": "2_danh_tu_ngan",
+    "query": "thùng đá lưu trữ",
+    "relevant_ids": [662,1147,1149],
+    "note": null
+  },
+  {
+    "group": "2_danh_tu_ngan",
+    "query": "đá viên nhỏ",
+    "relevant_ids": [645,646,647],
+    "note": null
+  },
+  {
+    "group": "2_danh_tu_ngan",
+    "query": "đá vảy",
+    "relevant_ids": [612,613,1239,1245,1247],
+    "note": null
+  },
+  {
+    "group": "2_danh_tu_ngan",
+    "query": "máy làm đá vảy tự động",
+    "relevant_ids": [614,615],
+    "note": null
+  },
+  {
+    "group": "2_danh_tu_ngan",
+    "query": "đá hình ngôi sao",
+    "relevant_ids": [608],
+    "note": null
+  },
+  {
+    "group": "2_danh_tu_ngan",
+    "query": "đá hình trái tim",
+    "relevant_ids": [609],
+    "note": null
+  },
+  {
+    "group": "2_danh_tu_ngan",
+    "query": "đá nugget",
+    "relevant_ids": [610,611,1241,1243,1249],
+    "note": null
+  },
+  {
+    "group": "2_danh_tu_ngan",
+    "query": "chiên nhúng ga",
+    "relevant_ids": [572],
+    "note": null
+  },
+  {
+    "group": "2_danh_tu_ngan",
+    "query": "bếp gas không chân",
+    "relevant_ids": [566,567,568],
+    "note": null
+  },
+  {
+    "group": "2_danh_tu_ngan",
+    "query": "lò nướng bằng ga",
+    "relevant_ids": [590],
+    "note": null
+  },
+  {
+    "group": "2_danh_tu_ngan",
+    "query": "đá cho quán bar",
+    "relevant_ids": [606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633,634,635,636,637,638,639,640,641,642,643,644,645,646,647,1205,1207,1209,1211,1213,1215,1217,1219,1221,1223,1225,1227,1229,1231,1233,1235,1237,1239,1241,1243,1245,1247,1249,2970],
+    "note": "Diễn đạt tự nhiên, không nhắc 'làm đá' trực tiếp."
+  },
+
+  {
+    "group": "4_tieng_anh_truc_tiep",
+    "query": "Hoshizaki IM-65NE",
+    "relevant_ids": [638,639],
+    "note": "Brand + model bằng tiếng Anh/Latin — đường gốc phải không bị index song ngữ (bước 5) phá."
+  },
+  {
+    "group": "4_tieng_anh_truc_tiep",
+    "query": "Sammic UX-100 dishwasher",
+    "relevant_ids": [653],
+    "note": "Từ tiếng Anh 'dishwasher' không có trong index — kỳ vọng vẫn ra đúng nhờ 'UX-100' khớp mã."
+  },
+  {
+    "group": "4_tieng_anh_truc_tiep",
+    "query": "Fujimak gas stove FGTLS1260",
+    "relevant_ids": [564],
+    "note": null
+  },
+  {
+    "group": "4_tieng_anh_truc_tiep",
+    "query": "Winterhalter P50",
+    "relevant_ids": [652],
+    "note": null
+  },
+  {
+    "group": "4_tieng_anh_truc_tiep",
+    "query": "Giorik CE74TT",
+    "relevant_ids": [563],
+    "note": null
+  },
+  {
+    "group": "4_tieng_anh_truc_tiep",
+    "query": "Berjaya SDF12D",
+    "relevant_ids": [1487],
+    "note": null
+  },
+  {
+    "group": "4_tieng_anh_truc_tiep",
+    "query": "ice maker IM-100A",
+    "relevant_ids": [622],
+    "note": "Nửa Anh nửa mã — 'ice maker' không có trong index Việt hiện tại, phải dựa vào mã."
+  },
+
+  {
+    "group": "5_tu_khoa_ky_thuat",
+    "query": "tủ đông đứng 4 cửa",
+    "relevant_ids": [665,666],
+    "note": null
+  },
+  {
+    "group": "5_tu_khoa_ky_thuat",
+    "query": "bàn mát 2 cửa",
+    "relevant_ids": [1049,1057,1059],
+    "note": null
+  },
+  {
+    "group": "5_tu_khoa_ky_thuat",
+    "query": "lò nướng combi",
+    "relevant_ids": [1051,1453,1455],
+    "note": null
+  },
+  {
+    "group": "5_tu_khoa_ky_thuat",
+    "query": "máy rửa chén công nghiệp",
+    "relevant_ids": [652,653,654,1349,1357],
+    "note": "'công'/'nghiệp' là stopword (đã audit trước) nên chỉ còn 'máy rửa chén' — kiểm tra không bị mất tín hiệu."
+  },
+  {
+    "group": "5_tu_khoa_ky_thuat",
+    "query": "máy xay thịt công nghiệp",
+    "relevant_ids": [659],
+    "note": null
+  },
+  {
+    "group": "5_tu_khoa_ky_thuat",
+    "query": "máy ép trái cây",
+    "relevant_ids": [595],
+    "note": "'trái cây' không có trong tiêu đề gốc ('Máy Ép LI-240') — đo mức độ generalize thật của hệ thống."
+  },
+  {
+    "group": "5_tu_khoa_ky_thuat",
+    "query": "tủ chiên nhúng đôi",
+    "relevant_ids": [1487],
+    "note": null
+  },
+  {
+    "group": "5_tu_khoa_ky_thuat",
+    "query": "tủ chiên nhúng đơn",
+    "relevant_ids": [1489],
+    "note": null
+  },
+  {
+    "group": "5_tu_khoa_ky_thuat",
+    "query": "sản phẩm Hoshizaki",
+    "relevant_ids": [606,607,608,609,610],
+    "note": "Chỉ brand, không kèm mô tả — kiểm tra nhánh search_within_brand() fallback."
+  },
+  {
+    "group": "5_tu_khoa_ky_thuat",
+    "query": "thiết bị bếp Sammic",
+    "relevant_ids": [595,596,597,598,653,654,659],
+    "note": null
+  },
+  {
+    "group": "5_tu_khoa_ky_thuat",
+    "query": "Hoshizaki với Winterhalter cái nào tốt hơn",
+    "relevant_ids": [606,652],
+    "note": "So sánh 2 brand — kiểm tra search_within_brands() đa brand."
+  },
+  {
+    "group": "5_tu_khoa_ky_thuat",
+    "query": "tủ mát đứng loại D650",
+    "relevant_ids": [1065,1069],
+    "note": null
+  },
+  {
+    "group": "5_tu_khoa_ky_thuat",
+    "query": "tủ mát có khay bánh",
+    "relevant_ids": [1067],
+    "note": null
+  },
+  {
+    "group": "5_tu_khoa_ky_thuat",
+    "query": "chiên nhúng điện để bàn",
+    "relevant_ids": [570],
+    "note": null
+  },
+  {
+    "group": "5_tu_khoa_ky_thuat",
+    "query": "bếp điện 4 họng",
+    "relevant_ids": [563],
+    "note": null
+  },
+  {
+    "group": "5_tu_khoa_ky_thuat",
+    "query": "máy làm đá viên lớn",
+    "relevant_ids": [640,641,642],
+    "note": null
+  },
+  {
+    "group": "5_tu_khoa_ky_thuat",
+    "query": "báo giá tủ đông Hoshizaki",
+    "relevant_ids": [665],
+    "note": "Từ comment source (bug đã ghi nhận) — kiểm tra strip_intent_phrases() bóc 'báo giá' đúng, còn lại 'tủ đông Hoshizaki'."
+  },
+  {
+    "group": "5_tu_khoa_ky_thuat",
+    "query": "tủ lạnh công nghiệp inox 4 cánh",
+    "relevant_ids": [665,666,669,670,1063,1071],
+    "note": "Từ comment source — câu tự nhiên nhiều từ, trước đây tạo ~4 token AND bắt buộc, trả rỗng oan."
+  },
+  {
+    "group": "5_tu_khoa_ky_thuat",
+    "query": "máy đóng gói chân không",
+    "relevant_ids": [596,597,598],
+    "note": null
+  },
+  {
+    "group": "5_tu_khoa_ky_thuat",
+    "query": "thùng đá 217kg",
+    "relevant_ids": [1147],
+    "note": null
+  },
+
+  {
+    "group": "6_tan_gau",
+    "query": "Báo giá",
+    "relevant_ids": [],
+    "note": "Từ comment source — 0/381 SP có giá tiền thật. Đây là price-intent, is_price_intent() phải bắt được, KHÔNG đưa sản phẩm ngẫu nhiên làm nguồn."
+  },
+  {
+    "group": "6_tan_gau",
+    "query": "Anh thích em",
+    "relevant_ids": [],
+    "note": "Câu tán gẫu — từ comment source, bug cũ."
+  },
+  {
+    "group": "6_tan_gau",
+    "query": "Tôi muốn có người yêu",
+    "relevant_ids": [],
+    "note": "Câu tán gẫu — từ comment source, bug cũ ('người' là danh từ chung)."
+  },
+  {
+    "group": "6_tan_gau",
+    "query": "liên hệ như nào",
+    "relevant_ids": [],
+    "note": "Contact-intent, không phải retrieval sản phẩm — is_contact_intent() phải bắt trước khi vào search()."
+  },
+  {
+    "group": "6_tan_gau",
+    "query": "chào shop",
+    "relevant_ids": [],
+    "note": null
+  },
+  {
+    "group": "6_tan_gau",
+    "query": "cảm ơn nhé",
+    "relevant_ids": [],
+    "note": null
+  },
+  {
+    "group": "6_tan_gau",
+    "query": "hôm nay trời đẹp quá",
+    "relevant_ids": [],
+    "note": null
+  },
+  {
+    "group": "6_tan_gau",
+    "query": "shop có ship không",
+    "relevant_ids": [],
+    "note": "Câu hỏi dịch vụ chung chung, không mô tả sản phẩm cụ thể — chấp nhận rỗng hoặc service-intent."
+  },
+  {
+    "group": "6_tan_gau",
+    "query": "cho hỏi giờ mở cửa",
+    "relevant_ids": [],
+    "note": null
+  },
+  {
+    "group": "6_tan_gau",
+    "query": "bạn tên gì",
+    "relevant_ids": [],
+    "note": null
+  }
+]
