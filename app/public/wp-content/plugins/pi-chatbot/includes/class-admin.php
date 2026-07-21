@@ -99,6 +99,34 @@ class Pi_Chatbot_Admin {
                 </table>
                 <?php submit_button(__('Lưu cấu hình', 'pi-chatbot')); ?>
             </form>
+
+            <hr>
+
+            <h2><?php esc_html_e('Router (Adaptive RAG) — lưới an toàn cho câu hỏi tiếng Việt không nhắc brand', 'pi-chatbot'); ?></h2>
+            <p class="description">
+                <?php esc_html_e('CHỈ chạy khi tìm kiếm thường (rule-based) đã trả rỗng — không thay thế, không chạy cho mọi câu. Mặc định TẮT, chỉ bật sau khi đã xem qua tests/eval-retrieval.php. Xem docs/plans/pi-chatbot-adaptive-router.md.', 'pi-chatbot'); ?>
+            </p>
+            <form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
+                <?php wp_nonce_field('pi_chatbot_save_settings'); ?>
+                <input type="hidden" name="action" value="pi_chatbot_save_settings">
+                <table class="form-table">
+                    <tr>
+                        <th><label for="router_enabled"><?php esc_html_e('Bật router', 'pi-chatbot'); ?></label></th>
+                        <td><label><input type="checkbox" id="router_enabled" name="router_enabled" value="1" <?php checked(!empty($settings['router_enabled'])); ?>> <?php esc_html_e('Bật', 'pi-chatbot'); ?></label></td>
+                    </tr>
+                    <tr>
+                        <th><label for="router_model"><?php esc_html_e('Model router', 'pi-chatbot'); ?></label></th>
+                        <td><input type="text" class="regular-text" id="router_model" name="router_model" value="<?php echo esc_attr($settings['router_model']); ?>">
+                            <p class="description"><?php esc_html_e('Nên dùng model turbo KHÔNG reasoning (vd codestral-latest) — model reasoning như gpt-oss:20b tốn token vào suy luận ẩn, đo thật trả về rỗng khi dùng làm router.', 'pi-chatbot'); ?></p></td>
+                    </tr>
+                    <tr>
+                        <th><label for="router_keys"><?php esc_html_e('API keys riêng cho router', 'pi-chatbot'); ?></label></th>
+                        <td><textarea class="large-text code" rows="2" id="router_keys" name="router_keys"><?php echo esc_textarea(implode("\n", $settings['router_keys'])); ?></textarea>
+                            <p class="description"><?php esc_html_e('Để trống = dùng chung API keys LLM7 ở trên.', 'pi-chatbot'); ?></p></td>
+                    </tr>
+                </table>
+                <?php submit_button(__('Lưu cấu hình router', 'pi-chatbot')); ?>
+            </form>
         </div>
         <?php
     }
@@ -138,6 +166,21 @@ class Pi_Chatbot_Admin {
         $settings['model']      = sanitize_text_field(wp_unslash($_POST['model'] ?? $settings['model']));
         $settings['top_k']      = max(1, min(20, (int) ($_POST['top_k'] ?? $settings['top_k'])));
         $settings['rate_limit'] = max(1, min(100, (int) ($_POST['rate_limit'] ?? $settings['rate_limit'])));
+
+        // Router — form riêng (2 form trên cùng trang), field chỉ có mặt khi đúng form
+        // đó được submit. checkbox 'router_enabled' vắng mặt trong $_POST nghĩa là bỏ
+        // tick (HTML không gửi checkbox chưa check) — CHỈ coi là "tắt" khi form router
+        // thực sự được gửi (nhận diện qua sự có mặt của 'router_model'), tránh form
+        // "Lưu cấu hình generation" (không có field router) vô tình tắt router đang bật.
+        if (isset($_POST['router_model'])) {
+            $settings['router_enabled'] = !empty($_POST['router_enabled']);
+            $settings['router_model']   = sanitize_text_field(wp_unslash($_POST['router_model']));
+            if (isset($_POST['router_keys'])) {
+                $raw_router = wp_unslash($_POST['router_keys']);
+                $rkeys = is_string($raw_router) ? preg_split('/\r\n|\r|\n/', $raw_router) : [];
+                $settings['router_keys'] = array_values(array_filter(array_map('trim', $rkeys)));
+            }
+        }
         // autoload=false — option chứa API key, không cần nạp vào mọi request
         // front-end (chỉ pi_chatbot_settings() mới cần đọc, không phải mọi trang).
         update_option(PI_CHATBOT_OPTION, $settings, false);

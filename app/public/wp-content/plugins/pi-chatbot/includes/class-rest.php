@@ -98,6 +98,27 @@ class Pi_Chatbot_Rest {
             $product_context = Pi_Chatbot_Retriever::search($residual, (int) $settings['top_k']);
             if ($product_context) {
                 $context = array_merge($context, $product_context);
+            } elseif (!$is_contact && !$is_price && !$is_service && !$is_project) {
+                // Đường nhanh (rule-based + known_brands() + search()) đã thất bại VÀ
+                // đây không phải câu đã được intent khác xử lý — đúng khe hở đã đo:
+                // "lò than hoa" không nhắc brand, tiêu đề sản phẩm tiếng Anh. Router
+                // CHỈ chạy tới đây, không bao giờ chạy khi đường nhanh đã có kết quả
+                // (xem docs/plans/pi-chatbot-adaptive-router.md) — mặc định TẮT
+                // (router_enabled=false), bật tay sau khi review.
+                $enrichment = Pi_Chatbot_Router::enrich($message);
+                if ($enrichment) {
+                    $enriched_query = trim(implode(' ', array_merge(
+                        $enrichment['keywords_en'],
+                        $enrichment['keywords_vi'],
+                        $enrichment['brand'] ? [$enrichment['brand']] : []
+                    )));
+                    if ($enriched_query !== '') {
+                        $enriched_context = Pi_Chatbot_Retriever::search($enriched_query, (int) $settings['top_k']);
+                        if ($enriched_context) {
+                            $context = array_merge($context, $enriched_context);
+                        }
+                    }
+                }
             }
         }
 

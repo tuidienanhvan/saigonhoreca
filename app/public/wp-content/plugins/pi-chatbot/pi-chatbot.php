@@ -24,7 +24,11 @@ define('PI_CHATBOT_OPTION', 'pi_chatbot_settings');
 require_once PI_CHATBOT_DIR . 'includes/class-indexer.php';
 require_once PI_CHATBOT_DIR . 'includes/class-entities.php';
 require_once PI_CHATBOT_DIR . 'includes/class-retriever.php';
+require_once PI_CHATBOT_DIR . 'includes/class-llm-client.php';
 require_once PI_CHATBOT_DIR . 'includes/class-generator.php';
+// class-router.php SAU class-entities.php (dùng known_brands()) và class-indexer.php
+// (dùng table_name() cho few-shot) — thứ tự load cố định như các file khác trong plugin.
+require_once PI_CHATBOT_DIR . 'includes/class-router.php';
 require_once PI_CHATBOT_DIR . 'includes/class-rest.php';
 require_once PI_CHATBOT_DIR . 'includes/class-admin.php';
 
@@ -49,12 +53,12 @@ function pi_chatbot_bootstrap() {
  * Pi Chatbot (migration 1 lần từ bản cũ đã hoàn tất, hàm migration đã xoá khỏi
  * source — xem lịch sử sửa đổi nếu cần biết chi tiết).
  *
- * Ép kiểu llm7_keys về mảng NGAY TẠI ĐÂY — 1 chỗ duy nhất, đóng cùng lúc 3 đường
- * fatal PHP 8 nếu option này từng bị lưu sai kiểu (scalar thay vì mảng):
+ * Ép kiểu llm7_keys/router_keys về mảng NGAY TẠI ĐÂY — 1 chỗ duy nhất, đóng cùng lúc
+ * 3 đường fatal PHP 8 nếu option này từng bị lưu sai kiểu (scalar thay vì mảng):
  * implode() lúc render trang admin, preg_split() lúc lưu settings, và
- * foreach ($keys as $key) trong Generator::call_llm7() ở ngay request đang phục
- * vụ khách — fatal ở đây là fatal trên đường trả lời chat, nặng hơn nhiều so với
- * fatal ở trang admin.
+ * foreach ($keys as $key) trong Pi_Chatbot_LLM_Client::call() ở ngay request đang
+ * phục vụ khách — fatal ở đây là fatal trên đường trả lời chat, nặng hơn nhiều so
+ * với fatal ở trang admin.
  */
 function pi_chatbot_settings() {
     $defaults = [
@@ -62,12 +66,24 @@ function pi_chatbot_settings() {
         'model'      => 'gpt-oss:20b',
         'top_k'      => 6,
         'rate_limit' => 10, // số câu hỏi / phút / IP
+        // Router (Adaptive RAG) — MẶC ĐỊNH TẮT. Chỉ bật tay sau khi review, đúng bài
+        // học từ y văn (Barnett et al. arXiv:2401.05856: "kiểm chứng RAG chỉ khả thi
+        // lúc vận hành thật"; 80% dự án RAG doanh nghiệp thất bại nghiêm trọng) —
+        // không bật tràn lan ngay từ đầu. Xem docs/plans/pi-chatbot-adaptive-router.md.
+        'router_enabled' => false,
+        'router_model'   => 'codestral-latest', // model turbo, không reasoning — đo thật
+        // 1,8s TB, KHÁC hẳn model generator (gpt-oss:20b tốn 2,9s + trả rỗng nếu dùng
+        // làm router, vì nó là reasoning model nuốt hết max_tokens vào field ẩn).
+        'router_keys'    => [], // rỗng = dùng chung llm7_keys — tách riêng nếu muốn key khác
     ];
     $saved = get_option(PI_CHATBOT_OPTION, []);
     if (!is_array($saved)) $saved = [];
     $settings = array_merge($defaults, $saved);
     if (!is_array($settings['llm7_keys'])) {
         $settings['llm7_keys'] = array_filter([(string) $settings['llm7_keys']]);
+    }
+    if (!is_array($settings['router_keys'])) {
+        $settings['router_keys'] = array_filter([(string) $settings['router_keys']]);
     }
     return $settings;
 }

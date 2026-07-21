@@ -11,8 +11,6 @@ if (!defined('ABSPATH')) exit;
 
 class Pi_Chatbot_Generator {
 
-    const API_URL = 'https://api.llm7.io/v1/chat/completions';
-
     const SYSTEM_PROMPT = "Bạn là trợ lý tư vấn của Saigon Horeca — chuyên cung cấp thiết bị bếp công nghiệp, nhà hàng, khách sạn (bếp Âu/Á, lò nướng, tủ lạnh công nghiệp, thiết bị rửa...).\n"
         . "Chỉ trả lời dựa trên THÔNG TIN THAM KHẢO được cung cấp bên dưới — không bịa thêm sản phẩm, giá, thông số không có trong đó.\n"
         . "Nếu khách hỏi CHUNG CHUNG kiểu \"bên mình có gì\", \"bán những gì\" và KHÔNG có thông tin tham khảo cụ thể: được phép giới thiệu NGẮN các NHÓM sản phẩm chính theo mô tả công ty ở trên (bếp Âu/Á, lò nướng, tủ lạnh công nghiệp, thiết bị rửa...) rồi hỏi lại khách muốn xem loại nào — đây là mô tả chung về công ty, không phải bịa sản phẩm cụ thể.\n"
@@ -67,10 +65,12 @@ class Pi_Chatbot_Generator {
             'max_tokens' => 2000,
         ];
 
-        $response = self::call_llm7($body, $settings['llm7_keys']);
+        $response = Pi_Chatbot_LLM_Client::call(
+            $body, $settings['llm7_keys'], self::TIMEOUT_SECONDS, self::MAX_KEY_ATTEMPTS, 'pi-chatbot-generator'
+        );
         if (is_wp_error($response)) return $response;
 
-        $answer = trim((string) ($response['choices'][0]['message']['content'] ?? ''));
+        $answer = Pi_Chatbot_LLM_Client::content($response);
         if ($answer === '') {
             return new WP_Error('pi_chatbot_empty', 'Không nhận được câu trả lời từ mô hình.');
         }
@@ -128,43 +128,4 @@ class Pi_Chatbot_Generator {
      * giữ 1 worker rất lâu nếu admin cấu hình nhiều key và tất cả đều chậm/lỗi). */
     const TIMEOUT_SECONDS = 20;
     const MAX_KEY_ATTEMPTS = 2;
-
-    /** Round-robin qua tối đa MAX_KEY_ATTEMPTS key LLM7 — key nào lỗi (hết quota/timeout) thử key kế tiếp. */
-    private static function call_llm7($body, $keys) {
-        $last_error = null;
-        $attempts = 0;
-        foreach ($keys as $key) {
-            if (!$key) continue;
-            if ($attempts >= self::MAX_KEY_ATTEMPTS) break;
-            $attempts++;
-
-            $res = wp_remote_post(self::API_URL, [
-                'timeout' => self::TIMEOUT_SECONDS,
-                'headers' => [
-                    'Content-Type'  => 'application/json',
-                    'Authorization' => 'Bearer ' . $key,
-                ],
-                'body' => wp_json_encode($body),
-            ]);
-
-            if (is_wp_error($res)) {
-                $last_error = $res;
-                error_log('[pi-chatbot] LLM7 request failed (key ' . $attempts . '/' . self::MAX_KEY_ATTEMPTS . '): ' . $res->get_error_message());
-                continue;
-            }
-
-            $code = wp_remote_retrieve_response_code($res);
-            $raw  = wp_remote_retrieve_body($res);
-            $data = json_decode($raw, true);
-
-            if ($code >= 200 && $code < 300 && is_array($data) && !empty($data['choices'])) {
-                return $data;
-            }
-
-            error_log('[pi-chatbot] LLM7 trả lỗi HTTP ' . $code . ' (key ' . $attempts . '/' . self::MAX_KEY_ATTEMPTS . '): ' . substr((string) $raw, 0, 500));
-            $last_error = new WP_Error('pi_chatbot_llm7_error', 'LLM7 trả lỗi (HTTP ' . $code . ').', $raw);
-        }
-
-        return $last_error ?: new WP_Error('pi_chatbot_no_key', 'Chưa cấu hình API key LLM7.');
-    }
 }
