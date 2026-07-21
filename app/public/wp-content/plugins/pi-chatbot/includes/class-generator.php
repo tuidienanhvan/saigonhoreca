@@ -56,16 +56,16 @@ class Pi_Chatbot_Generator {
         // first classify a language, then obey — an extra reasoning step it
         // unreliably skips under a large opposing-language context. Naming the
         // target language directly is a much simpler, one-step instruction to
-        // follow, so detect Vietnamese via its diacritics (a customer question
-        // containing them is Vietnamese; the practical vi/en split this site
-        // actually sees) and always spell out the target language explicitly.
-        $looks_vietnamese = (bool) preg_match(
-            '/[àáạảãăằắẳẵặâầấẩẫậèéẹẻẽêềếểễệđìíịỉĩòóọỏõôồốổỗộơờớởỡợùúụủũưừứửữựỳýỵỷỹ]/iu',
-            $question
-        );
-        $language_note = $looks_vietnamese
-            ? '(Nhắc lại: viết TOÀN BỘ câu trả lời bằng tiếng Việt.)'
-            : '(Reminder: write your ENTIRE answer in English. Do not use any Vietnamese, even though the reference information above is in Vietnamese.)';
+        // follow.
+        //
+        // A first version of this fix hardcoded "not Vietnamese -> English",
+        // which fixed English but broke every OTHER language: a Chinese
+        // question got forced into an English answer (verified live), because
+        // the instruction explicitly told the model to write in English no
+        // matter what. Detecting language by Unicode SCRIPT RANGE instead (not
+        // just "has Vietnamese diacritics or not") covers the actual set of
+        // customer languages this site expects and names each one explicitly.
+        $language_note = self::build_language_note($question);
         $user_prompt = "REFERENCE INFORMATION:\n{$context_text}\n\nCUSTOMER QUESTION: {$question}\n\n{$language_note}";
 
         $body = [
@@ -123,6 +123,38 @@ class Pi_Chatbot_Generator {
     }
 
     /**
+     * Detects the customer's language by Unicode SCRIPT RANGE and returns a
+     * reminder that names it EXPLICITLY (see the call site's docblock for why
+     * a named language works far more reliably than a referential "same
+     * language as the question" instruction on a cheap model). Order matters:
+     * Hiragana/Katakana is checked before bare CJK ideographs so a Japanese
+     * sentence containing kanji isn't misclassified as Chinese; a Vietnamese
+     * question is Latin script plus its distinctive diacritics, checked
+     * before the plain-Latin/English fallback.
+     */
+    private static function build_language_note($question) {
+        if (preg_match('/[àáạảãăằắẳẵặâầấẩẫậèéẹẻẽêềếểễệđìíịỉĩòóọỏõôồốổỗộơờớởỡợùúụủũưừứửữựỳýỵỷỹ]/iu', $question)) {
+            return '(Nhắc lại: viết TOÀN BỘ câu trả lời bằng tiếng Việt.)';
+        }
+        if (preg_match('/[\x{3040}-\x{30ff}]/u', $question)) { // Hiragana/Katakana -> Japanese
+            return '(リマインダー: 回答は必ず日本語で書いてください。参考情報がベトナム語であっても、日本語のみで回答してください。)';
+        }
+        if (preg_match('/[\x{ac00}-\x{d7a3}]/u', $question)) { // Hangul -> Korean
+            return '(리마인더: 답변 전체를 한국어로 작성하세요. 참고 정보가 베트남어로 되어 있어도 한국어로만 답변하세요.)';
+        }
+        if (preg_match('/[\x{4e00}-\x{9fff}]/u', $question)) { // CJK ideographs w/o kana -> Chinese
+            return '(提醒：请务必用中文回答全部内容。即使参考信息是越南语，也只能用中文回答。)';
+        }
+        if (preg_match('/[\x{0400}-\x{04ff}]/u', $question)) { // Cyrillic -> Russian
+            return '(Напоминание: пишите ВЕСЬ ответ на русском языке. Не используйте вьетнамский, даже если справочная информация выше на вьетнамском.)';
+        }
+        // Latin script, no Vietnamese diacritics -> the common realistic
+        // fallback for this site (English), not a generic referential
+        // instruction — see docblock at the call site for why that failed.
+        return '(Reminder: write your ENTIRE answer in English. Do not use any Vietnamese, even though the reference information above is in Vietnamese.)';
+    }
+
+    /**
      * Detects a degenerate answer that repeats one phrase over and over
      * ("steam oven range steam oven range...") — a real error seen while
      * testing with the free-tier gpt-oss:20b model. Simple heuristic: if one
@@ -131,6 +163,18 @@ class Pi_Chatbot_Generator {
      */
     private static function looks_degenerate($text) {
         $words = preg_split('/\s+/u', trim($text));
+        // Drop tokens with no letters/digits at all (bare "-"/"*"/"•" bullet
+        // markers, stray punctuation) before counting — a real false positive
+        // was caught live on a Japanese answer: 4 markdown bullets + 4
+        // sub-bullets means 8 lone "-" tokens, and CJK text has no spaces
+        // between words, so the total token count was only 31 (mostly single
+        // giant Japanese chunks) — 8/31 = 25.8%, just over the threshold,
+        // wrongly flagging a well-formed, non-repetitive product list as
+        // "abnormal repetition". A bullet marker repeating once per list item
+        // is structural, not a sign the MODEL is looping.
+        $words = array_values(array_filter($words, function ($w) {
+            return (bool) preg_match('/[\p{L}\p{N}]/u', $w);
+        }));
         $total = count($words);
         if ($total < 20) return false; // too short a sample to judge reliably, avoid false positives
         $counts = array_count_values(array_map('mb_strtolower', $words));
