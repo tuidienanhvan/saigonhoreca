@@ -63,6 +63,18 @@ class Pi_Chatbot_Retriever {
         // lung tung). Coi như stopword để câu chào thuần không kéo theo nguồn giả.
         'chào', 'chao', 'hi', 'hello', 'alo', 'dạ', 'vâng', 'ok', 'oke', 'okay',
         'cảm', 'ơn', 'cám', 'thanks', 'hey',
+        // "shop" — từ mượn tiếng Anh cực phổ biến trong cách khách Việt xưng hô
+        // với người bán ("chào shop", "shop ơi"...). Trước khi có 147 sản phẩm
+        // tiếng Anh (đợt import brand mới 2026-07-21), không ai để ý vì toàn bộ
+        // content_text đều tiếng Việt — "shop" không hề xuất hiện đâu trong dữ
+        // liệu để gây hại. Giờ mô tả tiếng Anh của sản phẩm mới có câu marketing
+        // dùng đúng chữ "shops" (vd "bakeries, pastry shops and hotels"), nên
+        // "chào shop" thật sự khớp nhầm sản phẩm không liên quan (bug đo được
+        // qua eval-retrieval.php: nhóm 6_tan_gau tụt 0.800→0.700). Chỉ thêm từ
+        // này — "free"/"new" cũng có nguy cơ tương tự (đã thử) nhưng CHƯA có
+        // ca thật nào trong bộ 68 câu bị fail vì chúng, nên chưa thêm (nguyên
+        // tắc: chỉ thêm stopword khi có bằng chứng thật, tránh whack-a-mole).
+        'shop',
         // Đại từ xưng hô + động từ tán gẫu thông thường — bug thật bắt được: "Anh
         // thích em" (câu tán gẫu, không phải hỏi sản phẩm) vẫn còn lại "anh"+"thích"
         // sau lọc, cả 2 đều là từ rất phổ biến trong văn bản marketing/mô tả sản
