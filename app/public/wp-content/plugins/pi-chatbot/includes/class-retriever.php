@@ -91,6 +91,15 @@ class Pi_Chatbot_Retriever {
         // đúng) — sản phẩm THẬT cũng chứa từ này nên vẫn khớp. Phải chặn ở tầng từ
         // vựng vì bản thân từ không mang tín hiệu phân biệt sản phẩm nào cả.
         'người',
+        // "bé" — bug thật bắt được: "Chào em bé" chỉ còn lại "bé" (2 ký tự) sau lọc,
+        // rơi vào $short (LIKE fallback cho token dưới MIN_TOKEN_LENGTH — cố ý giữ
+        // để tra được mã hàng ngắn như "hr"/"se"). Nhưng "bé" KHÔNG phải mã hàng, nó
+        // là từ xã giao ("em bé"), và LIKE '%bé%' khớp bừa vào bất kỳ từ nào CHỨA "bé"
+        // làm chuỗi con — "sắc bén" (dao/lưỡi cắt), "khóa trẻ em"... khớp trúng 3 sản
+        // phẩm không liên quan (Bếp Điện, 2 Máy Cắt Thịt) chỉ vì mô tả có chữ "bén".
+        // Coi là stopword — cùng nguyên tắc với "người"/"chào": từ quá chung chung để
+        // phân biệt sản phẩm, và ở đây còn gây substring-match sai do quá ngắn.
+        'bé',
     ];
 
     /**

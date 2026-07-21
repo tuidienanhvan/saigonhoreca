@@ -73,8 +73,16 @@
     // không cần sửa thêm file JS này.
     input.maxLength = PiChatbotConfig.maxLength || 500;
 
-    var isOpen = false;
+    var isOpen = sessionStorage.getItem('pi_cb_isOpen') === 'true';
     var greeted = false;
+    
+    var chatHistory = [];
+    try {
+        var savedHistory = sessionStorage.getItem('pi_cb_history');
+        if (savedHistory) chatHistory = JSON.parse(savedHistory);
+    } catch (e) {}
+    var isRestoring = false;
+
 
     // === Trạng thái gửi — gom về DUY NHẤT resetSendState() sở hữu ===============
     // Trước đây isSending/sendBtn.disabled rải rác trong 3 callback (.then/.catch/
@@ -106,17 +114,24 @@
     var FOCUSABLE_SELECTOR = 'a[href], button:not([disabled]), input:not([disabled]), textarea, summary, [tabindex]:not([tabindex="-1"])';
 
     // Nhãn hiển thị TÁCH khỏi câu thật sự gửi đi — trước đây nút gửi thẳng nhãn kèm
-    // emoji làm câu hỏi ("💰 Báo giá"), sau lọc stopword chỉ còn "báo" (vì "giá" đã
+    // emoji làm câu hỏi ("[emoji] Báo giá"), sau lọc stopword chỉ còn "báo" (vì "giá" đã
     // là stopword) → khớp bừa 6 sản phẩm ngẫu nhiên làm "Nguồn" (bug thật đo được).
     // Đồng thời tách cache theo emoji ở đúng 4 đường vào nóng nhất. 4 câu bên dưới
     // đã kiểm chứng qua Pi_Chatbot_Retriever: mỗi câu trúng đúng 1 ý định (giá/dự
     // án/dịch vụ/liên hệ) và phần dư sau khi bóc cụm từ ý định rơi hết về stopword
     // — không còn đính nguồn sản phẩm giả nào.
+    //
+    // icon là SVG nét — KHÔNG dùng emoji (emoji hiển thị khác nhau tuỳ font hệ điều
+    // hành, SVG kế thừa currentColor nên tự khớp theme --cb-accent).
+    var ICON_TAG_SVG = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41 13 21a2 2 0 0 1-2.83 0L3 13.83a2 2 0 0 1 0-2.83L10.59 3.4A2 2 0 0 1 12 2.83H19a2 2 0 0 1 2 2v6.17a2 2 0 0 1-.41 1.41Z"/><circle cx="8.5" cy="8.5" r="1.5"/></svg>';
+    var ICON_IMAGE_SVG = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-4.35-4.35a2 2 0 0 0-2.83 0L6 18"/></svg>';
+    var ICON_CLIPBOARD_SVG = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M9 12h6"/><path d="M9 16h6"/></svg>';
+    var ICON_PHONE_SVG = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>';
     var QUICK_REPLIES = [
-        { label: '💰 Báo giá', query: 'Cho mình xin báo giá ạ' },
-        { label: '🏭 Mẫu thiết kế', query: 'Cho mình mẫu thiết kế đã thi công ạ' },
-        { label: '📋 Dịch vụ', query: 'Bên mình có dịch vụ gì ạ' },
-        { label: '📞 Liên hệ', query: 'Cho mình xin liên hệ ạ' }
+        { icon: ICON_TAG_SVG, label: 'Báo giá', query: 'Cho mình xin báo giá ạ' },
+        { icon: ICON_IMAGE_SVG, label: 'Mẫu thiết kế', query: 'Cho mình mẫu thiết kế đã thi công ạ' },
+        { icon: ICON_CLIPBOARD_SVG, label: 'Dịch vụ', query: 'Bên mình có dịch vụ gì ạ' },
+        { icon: ICON_PHONE_SVG, label: 'Liên hệ', query: 'Cho mình xin liên hệ ạ' }
     ];
 
     function setStatus(text) {
@@ -196,6 +211,7 @@
 
     function setOpen(open) {
         isOpen = open;
+        sessionStorage.setItem('pi_cb_isOpen', open ? 'true' : 'false');
         panel.hidden = !open;
         panel.classList.toggle('is-open', open);
         toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
@@ -228,8 +244,16 @@
     }
 
     function renderGreeting() {
-        addMessage('bot', 'Xin chào! 👋\nEm là trợ lý AI của Saigon Horeca. Anh/chị cần tư vấn gì ạ?');
-        addQuickReplies(QUICK_REPLIES);
+        if (chatHistory && chatHistory.length > 0) {
+            isRestoring = true;
+            chatHistory.forEach(function (msg) {
+                addMessage(msg.role, msg.text, msg.sources);
+            });
+            isRestoring = false;
+        } else {
+            addMessage('bot', 'Xin chào!\nEm là trợ lý AI của Saigon Horeca. Anh/chị cần tư vấn gì ạ?');
+            addQuickReplies(QUICK_REPLIES);
+        }
     }
 
     toggle.addEventListener('click', function () {
@@ -250,6 +274,8 @@
         if (cooldownTick) { clearInterval(cooldownTick); cooldownTick = null; }
         cooldownEl.hidden = true;
         messages.innerHTML = '';
+        chatHistory = [];
+        sessionStorage.removeItem('pi_cb_history');
         resetSendState();
         renderGreeting();
         input.value = '';
@@ -307,7 +333,14 @@
         items.forEach(function (item) {
             var btn = document.createElement('button');
             btn.className = 'pi-cb-qr-btn';
-            btn.textContent = item.label;
+            var icon = document.createElement('span');
+            icon.className = 'pi-cb-qr-icon';
+            icon.setAttribute('aria-hidden', 'true');
+            icon.innerHTML = item.icon;
+            btn.appendChild(icon);
+            var label = document.createElement('span');
+            label.textContent = item.label;
+            btn.appendChild(label);
             btn.addEventListener('click', function () {
                 var qrs = messages.querySelectorAll('.pi-cb-quick-replies');
                 qrs.forEach(function (qr) { qr.remove(); });
@@ -319,17 +352,12 @@
         messages.scrollTop = messages.scrollHeight;
     }
 
-    function addMessage(role, text, sources) {
-        var wrap = document.createElement('div');
-        wrap.className = 'pi-cb-msg-wrap pi-cb-msg-wrap--' + role;
+    var BOT_SVG = '<svg class="pi-cb-bot-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1M20 11a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1h-1" /><path d="M12 6V3M10 3h4" /><rect x="5" y="6" width="14" height="12" rx="3" /><circle cx="9" cy="11" r="1" fill="currentColor" /><circle cx="15" cy="11" r="1" fill="currentColor" /><path d="M10 14a2 2 0 0 0 4 0" /></svg>';
 
-        if (role === 'bot' || role === 'error') {
-            var avatar = document.createElement('div');
-            avatar.className = 'pi-cb-avatar';
-            avatar.innerHTML = '<svg class="pi-cb-bot-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1M20 11a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1h-1" /><path d="M12 6V3M10 3h4" /><rect x="5" y="6" width="14" height="12" rx="3" /><circle cx="9" cy="11" r="1" fill="currentColor" /><circle cx="15" cy="11" r="1" fill="currentColor" /><path d="M10 14a2 2 0 0 0 4 0" /></svg>';
-            wrap.appendChild(avatar);
-        }
-
+    /** Dựng riêng phần bong bóng (không kèm wrap/avatar) — addMessage() dùng cho
+     *  luồng thường; revealTraceThenAnswer() dùng lại để gắn bong bóng trả lời
+     *  vào CHUNG 1 avatar với card tiến trình, thay vì tạo avatar thứ 2. */
+    function buildMsgBubble(role, text, sources) {
         var el = document.createElement('div');
         el.className = 'pi-cb-msg pi-cb-msg--' + role;
         el.textContent = text;
@@ -362,10 +390,207 @@
             srcWrap.appendChild(srcList);
             el.appendChild(srcWrap);
         }
+        return el;
+    }
+
+    function addMessage(role, text, sources) {
+        if (!isRestoring && (role === 'user' || role === 'bot')) {
+            chatHistory.push({ role: role, text: text, sources: sources || [] });
+            sessionStorage.setItem('pi_cb_history', JSON.stringify(chatHistory));
+        }
+
+        var wrap = document.createElement('div');
+        wrap.className = 'pi-cb-msg-wrap pi-cb-msg-wrap--' + role;
+
+        if (role === 'bot' || role === 'error') {
+            var avatar = document.createElement('div');
+            avatar.className = 'pi-cb-avatar';
+            avatar.innerHTML = BOT_SVG;
+            wrap.appendChild(avatar);
+        }
+
+        var el = buildMsgBubble(role, text, sources);
         wrap.appendChild(el);
         messages.appendChild(wrap);
         messages.scrollTop = messages.scrollHeight;
         return el;
+    }
+    function wait(ms) {
+        return new Promise(function (resolve) { setTimeout(resolve, ms); });
+    }
+
+    /** Mở 1 lượt trả lời của bot — 1 avatar DUY NHẤT dùng chung cho cả card tiến
+     *  trình lẫn bong bóng trả lời cuối, thay vì mỗi tầng là 1 "đoạn chat" riêng
+     *  với avatar riêng (bug đã sửa: trước đây renderStep() tạo hẳn 1 wrap+avatar
+     *  mới mỗi tầng, trông như 3 tin nhắn tách rời của bot). Trả về `col` — cột
+     *  dọc chứa card tiến trình rồi tới bong bóng trả lời, cùng 1 hàng với avatar. */
+    function beginBotTurn() {
+        var wrap = document.createElement('div');
+        wrap.className = 'pi-cb-msg-wrap pi-cb-msg-wrap--bot';
+        var avatar = document.createElement('div');
+        avatar.className = 'pi-cb-avatar';
+        avatar.innerHTML = BOT_SVG;
+        wrap.appendChild(avatar);
+        var col = document.createElement('div');
+        col.className = 'pi-cb-msg-col';
+        wrap.appendChild(col);
+        messages.appendChild(wrap);
+        messages.scrollTop = messages.scrollHeight;
+        return col;
+    }
+
+    /** Gắn bong bóng trả lời cuối vào CHUNG cột với card tiến trình (không tạo
+     *  avatar/wrap thứ 2) — vẫn lưu vào lịch sử/sessionStorage như addMessage(). */
+    function finishBotTurn(col, text, sources) {
+        if (!isRestoring) {
+            chatHistory.push({ role: 'bot', text: text, sources: sources || [] });
+            sessionStorage.setItem('pi_cb_history', JSON.stringify(chatHistory));
+        }
+        col.appendChild(buildMsgBubble('bot', text, sources));
+        messages.scrollTop = messages.scrollHeight;
+    }
+
+    /** 1 card DUY NHẤT chứa cả 2 hàng "phân tích"/"tìm kiếm", nối liền nhau bằng
+     *  đường kẻ chia (xem CSS .pi-cb-step-row + .pi-cb-step-row) — KHÔNG phải 2
+     *  khối tách rời. Không icon riêng cho từng hàng — 1 icon svg (avatar bot)
+     *  cho toàn bộ lượt trả lời là đủ, thêm icon phụ mỗi hàng chỉ rối mắt. */
+    function renderProgressCard(col) {
+        var card = document.createElement('div');
+        card.className = 'pi-cb-progress';
+        col.appendChild(card);
+        messages.scrollTop = messages.scrollHeight;
+        return card;
+    }
+
+    /** 1 hàng trong card tiến trình — <details> thật (bấm mở lại được sau khi
+     *  xong), bắt đầu ở trạng thái "Đang…" có 3 chấm nhảy, chốt nhãn thật bằng
+     *  finishStep() khi bước đó xong. KHÔNG gắn aria-hidden lên cả hàng — để
+     *  trình đọc màn hình vào <details> được như mọi nơi khác trong widget. */
+    function renderStepRow(card, kind, label) {
+        var details = document.createElement('details');
+        details.className = 'pi-cb-step-row pi-cb-step-row--' + kind;
+        details.open = true;
+
+        var summary = document.createElement('summary');
+        var labelEl = document.createElement('span');
+        labelEl.className = 'pi-cb-step-label-text';
+        labelEl.textContent = label;
+        summary.appendChild(labelEl);
+        var dots = document.createElement('span');
+        dots.className = 'pi-cb-step-dots';
+        dots.setAttribute('aria-hidden', 'true');
+        dots.innerHTML = '<span class="dot"></span><span class="dot"></span><span class="dot"></span>';
+        summary.appendChild(dots);
+        details.appendChild(summary);
+
+        var body = document.createElement('div');
+        body.className = 'pi-cb-step-body';
+        details.appendChild(body);
+
+        card.appendChild(details);
+        messages.scrollTop = messages.scrollHeight;
+        return { details: details, labelEl: labelEl, dots: dots, body: body };
+    }
+
+    /** Chốt nhãn thật + danh sách chi tiết cho 1 hàng, tắt 3 chấm "đang…". */
+    function finishStep(step, label, detailLines) {
+        step.labelEl.textContent = label;
+        step.dots.remove();
+        step.body.innerHTML = '';
+        (detailLines || []).forEach(function (line) {
+            var p = document.createElement('div');
+            p.className = 'pi-cb-step-line';
+            p.textContent = line;
+            step.body.appendChild(p);
+        });
+    }
+
+    /** Nhãn + chi tiết cho hàng "phân tích" — 1 hàm DUY NHẤT quyết định cả nhãn lẫn
+     *  nội dung, để 2 thứ không bao giờ lệch pha nhau (bug đã sửa: nhãn cũ "Đã xác
+     *  định: câu hỏi về sản phẩm" hiện CẢ khi found_count=0 và câu chỉ là "chào" —
+     *  sai, vì is_price/contact/service/project_intent() đều KHÔNG khớp và search()
+     *  cũng không ra kết quả nào, tức hệ thống chưa hề "xác định" được gì cụ thể).
+     *  Nhánh theo đúng thứ tự request thật đã chạy: ý định rule-based trước, rồi
+     *  router (chỉ chạy khi rule-based thất bại), rồi mới tới trường hợp không
+     *  khớp gì — LUÔN có ít nhất 1 dòng chi tiết thật, không để trống. */
+    function describeThink(trace) {
+        switch (trace.intent) {
+            case 'price':
+                return { label: 'Đã xác định: câu hỏi về báo giá', lines: ['Áp dụng chính sách báo giá cố định của công ty, không tra dữ liệu sản phẩm.'] };
+            case 'contact':
+                return { label: 'Đã xác định: câu hỏi về liên hệ', lines: ['Dùng thông tin liên hệ có sẵn của công ty.'] };
+            case 'service':
+                return { label: 'Đã xác định: câu hỏi về dịch vụ', lines: ['Dùng mô tả dịch vụ có sẵn của công ty.'] };
+            case 'project':
+                return { label: 'Đã xác định: câu hỏi về dự án đã thi công', lines: ['Tìm trong danh sách dự án đã thi công.'] };
+        }
+        if (trace.router_used) {
+            var lines = [];
+            if (trace.router_keywords && trace.router_keywords.length) {
+                lines.push('Từ khoá suy ra: ' + trace.router_keywords.join(', '));
+            }
+            if (trace.router_brand) lines.push('Thương hiệu nhận diện: ' + trace.router_brand);
+            if (!lines.length) lines.push('Đã suy luận thêm để xác định sản phẩm phù hợp.');
+            return { label: 'Đã suy luận thêm để tìm đúng sản phẩm', lines: lines };
+        }
+        if (trace.found_count > 0) {
+            return { label: 'Đã xác định: câu hỏi về sản phẩm', lines: ['Tìm trực tiếp theo từ khoá trong câu hỏi.'] };
+        }
+        // Không khớp ý định nào VÀ không tìm thấy gì — đúng trường hợp câu chào/chit-
+        // chat, KHÔNG được gọi là "câu hỏi về sản phẩm" (sai thực tế, đã bị bắt lỗi).
+        return { label: 'Không phát hiện ý định cụ thể', lines: ['Không khớp ý định giá/liên hệ/dịch vụ/dự án nào và không tìm thấy sản phẩm liên quan — trả lời chung.'] };
+    }
+
+    /** Diễn hoạt ĐÚNG 3 tầng đã chốt, gộp chung 1 avatar/1 card liên kết (không
+     *  chia 3 đoạn chat như bản trước): (1) phân tích câu hỏi — luôn hiện, ý định
+     *  thật từ trace.intent hoặc router nếu có chạy; (2) tìm trong dữ liệu — luôn
+     *  hiện, từ khoá + số kết quả thật; (3) bong bóng trả lời, GẮN VÀO CÙNG cột
+     *  với card ở trên. Mỗi hàng mở ra ở trạng thái "Đang…" có 3 chấm TRƯỚC, giữ
+     *  1 nhịp rồi mới chốt nhãn thật và thu gọn. Nội dung mỗi hàng LUÔN LÀ THẬT
+     *  (trace từ class-rest.php) — không bịa suy luận nào khi router không chạy,
+     *  chỉ dùng ý định đã có sẵn (is_price_intent()/is_contact_intent()/... đã
+     *  chạy cho MỌI câu hỏi). `stillCurrent` là closure kiểm seq — bấm Làm mới
+     *  giữa lúc diễn hoạt thì dừng lặng lẽ, không chèn gì vào transcript đã xoá. */
+    function revealTraceThenAnswer(trace, answerText, sources, stillCurrent) {
+        setTyping(false);
+        var col = beginBotTurn();
+        if (!trace) {
+            finishBotTurn(col, answerText, sources);
+            return Promise.resolve();
+        }
+
+        var card = renderProgressCard(col);
+
+        // Tầng 1 — phân tích câu hỏi (luôn hiện).
+        var thinkStep = renderStepRow(card, 'thinking', 'Đang phân tích câu hỏi');
+        setStatus('Đang phân tích câu hỏi…');
+
+        return wait(700).then(function () {
+            if (!stillCurrent()) return;
+
+            var think = describeThink(trace);
+            finishStep(thinkStep, think.label, think.lines);
+            thinkStep.details.open = false;
+
+            // Tầng 2 — tìm trong dữ liệu (luôn hiện, NỐI TIẾP trong cùng card).
+            setStatus('Đang tìm trong dữ liệu…');
+            var searchStep = renderStepRow(card, 'search', 'Đang tìm trong dữ liệu');
+
+            return wait(750).then(function () {
+                if (!stillCurrent()) return;
+
+                var searchLabel = trace.found_count > 0
+                    ? 'Đã tìm — ' + trace.found_count + ' kết quả liên quan'
+                    : 'Đã tìm — không thấy kết quả phù hợp';
+                var searchLines = [];
+                if (trace.search_query) searchLines.push('Từ khoá: ' + trace.search_query);
+                finishStep(searchStep, searchLabel, searchLines);
+                searchStep.details.open = false;
+
+                // Tầng 3 — bong bóng trả lời, cùng cột/avatar với card ở trên.
+                finishBotTurn(col, answerText, sources);
+            });
+        });
     }
 
     function setTyping(on) {
@@ -471,12 +696,24 @@
             })
             .then(function (r) {
                 if (seq !== requestSeq) return;
+                // Dọn timer NGAY khi có phản hồi — không đợi resetSendState() ở .finally()
+                // (giờ bị trì hoãn tới lúc diễn hoạt xong ~1.1s). Không dọn sớm thì
+                // slowTimer/hardTimer có thể bắn nhầm "vẫn đang tìm"/abort ngay giữa
+                // lúc đang hiện 2 khối "Đã tìm kiếm"/"Đã suy nghĩ" của MỘT câu đã
+                // xong rồi.
+                clearTimers();
+                showSlowHint(false);
                 if (r.ok) {
                     if (r.data && typeof r.data.answer === 'string') {
-                        addMessage('bot', r.data.answer, r.data.sources);
-                    } else {
-                        addMessage('error', 'Có lỗi xảy ra, vui lòng thử lại.');
+                        // Trả về promise của diễn hoạt tuần tự để .finally() phía dưới
+                        // đợi nó xong rồi mới đưa panel về trạng thái rảnh — nếu không,
+                        // resetSendState() (gỡ readonly, mở lại nút gửi) sẽ chạy TRƯỚC
+                        // khi 2 khối "Đã tìm kiếm"/"Đã suy nghĩ" kịp diễn xong.
+                        return revealTraceThenAnswer(r.data.trace, r.data.answer, r.data.sources, function () {
+                            return seq === requestSeq;
+                        });
                     }
+                    addMessage('error', 'Có lỗi xảy ra, vui lòng thử lại.');
                     return;
                 }
                 if (r.status === 429) startCooldown(60000);
@@ -505,4 +742,9 @@
         if (Date.now() < cooldownEnd) { setStatus(cooldownMessage()); return; }
         send();
     });
+
+    // Khởi tạo trạng thái ban đầu nếu người dùng đang mở panel ở trang trước
+    if (isOpen) {
+        setOpen(true);
+    }
 })();

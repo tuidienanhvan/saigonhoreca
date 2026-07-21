@@ -92,6 +92,8 @@ class Pi_Chatbot_Rest {
         // brand nhưng vẫn phải ra đúng sản phẩm; "báo giá" thuần thì phần dư rỗng,
         // không chạy full-text nên không đính nguồn giả.
         $router_used = false;
+        $router_keywords = [];
+        $router_brand = null;
         $residual = ($is_contact || $is_price || $is_service || $is_project)
             ? Pi_Chatbot_Retriever::strip_intent_phrases($message)
             : $message;
@@ -109,6 +111,8 @@ class Pi_Chatbot_Rest {
                 $enrichment = Pi_Chatbot_Router::enrich($message);
                 if ($enrichment) {
                     $router_used = true;
+                    $router_keywords = array_merge($enrichment['keywords_vi'], $enrichment['keywords_en']);
+                    $router_brand = $enrichment['brand'] ?: null;
                     $enriched_query = trim(implode(' ', array_merge(
                         $enrichment['keywords_en'],
                         $enrichment['keywords_vi'],
@@ -135,6 +139,21 @@ class Pi_Chatbot_Rest {
         if (is_wp_error($result)) {
             return new WP_Error('pi_chatbot_generation_failed', 'Trợ lý đang bận, vui lòng thử lại sau ít phút hoặc gọi hotline.', ['status' => 502]);
         }
+
+        // "trace" — dữ liệu THẬT đã xảy ra trong request này (không phải chain-of-
+        // thought của model sinh câu trả lời — LLM7 không trả riêng field đó cho
+        // gpt-oss:20b). Frontend dùng để dựng 2 khối "Đã tìm kiếm"/"Đã suy nghĩ"
+        // kiểu Claude. router_keywords/router_brand CHỈ có giá trị khi router thật
+        // sự chạy — rỗng nghĩa là không có bước suy luận nào xảy ra, không bịa ra
+        // nội dung giả cho khối "suy nghĩ".
+        $result['trace'] = [
+            'intent'          => $is_price ? 'price' : ($is_contact ? 'contact' : ($is_service ? 'service' : ($is_project ? 'project' : null))),
+            'search_query'    => trim($residual),
+            'found_count'     => count($context),
+            'router_used'     => $router_used,
+            'router_keywords' => $router_keywords,
+            'router_brand'    => $router_brand,
+        ];
 
         set_transient($cache_key, $result, HOUR_IN_SECONDS);
         return rest_ensure_response($result);

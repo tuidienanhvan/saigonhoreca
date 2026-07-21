@@ -185,6 +185,15 @@
     align-items: center;
     justify-content: center;
 }
+/* Cột dọc dùng CHUNG 1 avatar cho cả card tiến trình lẫn bong bóng trả lời của
+   1 lượt bot — thay vì mỗi tầng là 1 hàng avatar riêng (đã sửa theo phản hồi:
+   "phải liên kết với nhau, 1 icon svg thôi, không chia ra 3 đoạn chat"). */
+#pi-chatbot-panel .pi-cb-msg-col {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+}
 #pi-chatbot-panel .pi-cb-msg {
     padding: 12px 16px;
     border-radius: 14px;
@@ -249,6 +258,92 @@
     display: inline-block;
 }
 #pi-chatbot-panel .pi-cb-source-item a:hover { text-decoration: underline; }
+/* ── Card tiến trình: 2 tầng "phân tích câu hỏi"/"tìm trong dữ liệu" NỐI LIỀN
+   trong CÙNG 1 card (kiểu Claude) ── nội dung là ý định/từ khoá/kết quả THẬT
+   của request (xem class-rest.php trace + JS renderStepRow/finishStep). Toàn
+   bộ card dùng CHUNG 1 avatar với bong bóng trả lời phía dưới (beginBotTurn())
+   — không phải 3 "đoạn chat" tách rời, không icon riêng mỗi hàng (1 icon svg
+   avatar là đủ, thêm icon phụ chỉ rối mắt). Mỗi hàng là 1 <details> mở ra ở
+   trạng thái "Đang…" có 3 chấm nhảy TRƯỚC, giữ 1 nhịp rồi mới chốt nhãn thật +
+   thu gọn — tạo cảm giác đang xử lý tuần tự, không phải hiện ra cùng lúc. Vẫn
+   bấm mở lại được sau khi xong (đúng bất biến a11y: không aria-hidden lên cả
+   hàng, chỉ 3 chấm trang trí mới aria-hidden). */
+#pi-chatbot-panel .pi-cb-progress {
+    background: color-mix(in srgb, var(--cb-text) 5%, transparent);
+    border: 1px solid var(--cb-border);
+    border-radius: 12px;
+    overflow: hidden;
+    font-size: 13px;
+    color: var(--cb-text-muted);
+}
+#pi-chatbot-panel .pi-cb-step-row + .pi-cb-step-row {
+    border-top: 1px solid var(--cb-border);
+}
+#pi-chatbot-panel .pi-cb-step-row summary {
+    list-style: none;
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 11px 14px;
+    font-weight: 500;
+    transition: color 0.2s ease, background 0.2s ease;
+}
+#pi-chatbot-panel .pi-cb-step-row summary::-webkit-details-marker { display: none; }
+#pi-chatbot-panel .pi-cb-step-row summary::before {
+    content: "";
+    flex-shrink: 0;
+    width: 0;
+    height: 0;
+    border-left: 5px solid var(--cb-text-muted);
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    transition: transform 0.2s ease;
+}
+#pi-chatbot-panel .pi-cb-step-row[open] summary::before {
+    transform: rotate(90deg);
+}
+#pi-chatbot-panel .pi-cb-step-row summary:hover {
+    color: var(--cb-text);
+    background: color-mix(in srgb, var(--cb-text) 3%, transparent);
+}
+#pi-chatbot-panel .pi-cb-step-label-text {
+    flex: 1;
+    min-width: 0;
+}
+/* 3 chấm nhảy inline — tái dùng đúng animation pi-cb-bounce của typing dots,
+   chỉ khác kích thước/màu, để không định nghĩa 2 kiểu "đang xử lý" khác nhau
+   trong cùng 1 widget. */
+#pi-chatbot-panel .pi-cb-step-dots {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    flex-shrink: 0;
+}
+#pi-chatbot-panel .pi-cb-step-dots .dot {
+    width: 4px;
+    height: 4px;
+    background-color: var(--cb-accent);
+    border-radius: 50%;
+    animation: pi-cb-bounce 1.4s infinite ease-in-out both;
+}
+#pi-chatbot-panel .pi-cb-step-dots .dot:nth-child(1) { animation-delay: -0.32s; }
+#pi-chatbot-panel .pi-cb-step-dots .dot:nth-child(2) { animation-delay: -0.16s; }
+#pi-chatbot-panel .pi-cb-step-body {
+    padding: 0 14px 12px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+#pi-chatbot-panel .pi-cb-step-body:empty {
+    display: none;
+}
+#pi-chatbot-panel .pi-cb-step-line {
+    font-size: 12px;
+    line-height: 1.4;
+}
+
 #pi-chatbot-panel .pi-cb-typing {
     display: flex;
     align-items: center;
@@ -292,6 +387,15 @@
     transition: all 0.2s ease;
     font-weight: 500;
     backdrop-filter: blur(4px);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+/* Icon SVG nét thay emoji trong nhãn — kế thừa currentColor nên tự khớp
+   var(--cb-accent) của nút, không như emoji phụ thuộc font hệ điều hành. */
+#pi-chatbot-panel .pi-cb-qr-icon {
+    display: inline-flex;
+    flex-shrink: 0;
 }
 #pi-chatbot-panel .pi-cb-qr-btn:hover {
     background: var(--cb-accent-soft);
@@ -433,8 +537,10 @@
        mà người dùng bật reduced-motion muốn tắt. 3 chấm vẫn hiện ở kích thước tự
        nhiên (không animation = không co về scale(0)), an toàn vì #pi-cb-status
        giờ cung cấp trạng thái thật bằng chữ, không còn phụ thuộc hoạt ảnh này. */
+    /* Vẫn cho phép 3 chấm nhảy nhẹ (hoặc bình thường) vì người dùng muốn thấy tín hiệu đang type.
+       Đã gỡ bỏ animation: none; */
     #pi-chatbot-panel .pi-cb-typing .dot {
-        animation: none;
+        /* animation: none; */
     }
     #pi-chatbot-panel .pi-cb-qr-btn:hover,
     #pi-chatbot-panel .pi-cb-send:hover:not(:disabled):not([aria-disabled="true"]) {
@@ -444,7 +550,9 @@
     #pi-chatbot-panel .pi-cb-input,
     #pi-chatbot-panel .pi-cb-qr-btn,
     #pi-chatbot-panel .pi-cb-send,
-    #pi-chatbot-panel .pi-cb-sources summary {
+    #pi-chatbot-panel .pi-cb-sources summary,
+    #pi-chatbot-panel .pi-cb-step-row summary,
+    #pi-chatbot-panel .pi-cb-step-row summary::before {
         transition: none;
     }
 }
