@@ -148,9 +148,30 @@ class Pi_Chatbot_Generator {
         if (preg_match('/[\x{0400}-\x{04ff}]/u', $question)) { // Cyrillic -> Russian
             return '(Напоминание: пишите ВЕСЬ ответ на русском языке. Не используйте вьетнамский, даже если справочная информация выше на вьетнамском.)';
         }
-        // Latin script, no Vietnamese diacritics -> the common realistic
-        // fallback for this site (English), not a generic referential
-        // instruction — see docblock at the call site for why that failed.
+        if (preg_match('/[\x{0e00}-\x{0e7f}]/u', $question)) { // Thai script
+            return '(เตือนความจำ: กรุณาเขียนคำตอบทั้งหมดเป็นภาษาไทย อย่าใช้ภาษาเวียดนามแม้ว่าข้อมูลอ้างอิงด้านบนจะเป็นภาษาเวียดนามก็ตาม)';
+        }
+        // German/French share the Latin alphabet with English/Vietnamese, so
+        // script range alone can't tell them apart — a real bug caught live:
+        // "Haben Sie industrielle Öfen?" got answered in English because it
+        // fell through to the English fallback below. Narrower than the
+        // script-range checks above: look for characters/words distinctive
+        // enough that they essentially never appear in an English question
+        // (ß and word-boundary "haben"/"sie" for German; the elided
+        // "avez-vous"/"vous avez" pattern for French). This does NOT cover
+        // every possible German/French phrasing — a French question with
+        // none of these markers would still fall through to English, unlike
+        // the reliable script-based checks above for other languages.
+        if (preg_match('/ß/u', $question) || preg_match('/\b(haben sie|können sie|ofen|öfen|industrielle)\b/iu', $question)) {
+            return '(Erinnerung: Schreiben Sie Ihre GESAMTE Antwort auf Deutsch. Verwenden Sie kein Vietnamesisch, auch wenn die Referenzinformationen oben auf Vietnamesisch sind.)';
+        }
+        if (preg_match('/\b(avez[- ]vous|vous avez|êtes[- ]vous|s\'il vous pla[iî]t|pouvez[- ]vous)\b/iu', $question)) {
+            return "(Rappel : rédigez l'INTÉGRALITÉ de votre réponse en français. N'utilisez pas le vietnamien, même si les informations de référence ci-dessus sont en vietnamien.)";
+        }
+        // Latin script, no Vietnamese diacritics and no German/French marker
+        // matched -> the common realistic fallback for this site (English),
+        // not a generic referential instruction — see docblock at the call
+        // site for why that failed.
         return '(Reminder: write your ENTIRE answer in English. Do not use any Vietnamese, even though the reference information above is in Vietnamese.)';
     }
 
