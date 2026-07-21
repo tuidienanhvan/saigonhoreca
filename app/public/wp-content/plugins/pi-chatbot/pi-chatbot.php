@@ -22,6 +22,7 @@ define('PI_CHATBOT_TABLE', 'pi_chatbot_index');
 define('PI_CHATBOT_OPTION', 'pi_chatbot_settings');
 
 require_once PI_CHATBOT_DIR . 'includes/class-indexer.php';
+require_once PI_CHATBOT_DIR . 'includes/class-log.php';
 require_once PI_CHATBOT_DIR . 'includes/class-entities.php';
 require_once PI_CHATBOT_DIR . 'includes/class-retriever.php';
 require_once PI_CHATBOT_DIR . 'includes/class-llm-client.php';
@@ -33,11 +34,13 @@ require_once PI_CHATBOT_DIR . 'includes/class-rest.php';
 require_once PI_CHATBOT_DIR . 'includes/class-admin.php';
 
 register_activation_hook(__FILE__, ['Pi_Chatbot_Indexer', 'on_activate']);
+register_activation_hook(__FILE__, ['Pi_Chatbot_Log', 'on_activate']);
 
 add_action('plugins_loaded', 'pi_chatbot_bootstrap');
 function pi_chatbot_bootstrap() {
     load_plugin_textdomain('pi-chatbot', false, dirname(plugin_basename(__FILE__)) . '/languages');
     Pi_Chatbot_Indexer::maybe_upgrade();
+    Pi_Chatbot_Log::maybe_upgrade();
     Pi_Chatbot_Indexer::instance();
     Pi_Chatbot_Rest::instance();
     Pi_Chatbot_Admin::instance();

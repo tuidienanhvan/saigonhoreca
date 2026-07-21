@@ -127,7 +127,59 @@ class Pi_Chatbot_Admin {
                 </table>
                 <?php submit_button(__('Lưu cấu hình router', 'pi-chatbot')); ?>
             </form>
+
+            <hr>
+
+            <?php $this->render_learning_section(); ?>
         </div>
+        <?php
+    }
+
+    /**
+     * Học từ hội thoại — soi log câu hỏi thật để tìm khoảng trống dữ liệu, thay vì
+     * đoán. Cảm hứng từ pattern "sync_turn + curator" của Hermes Agent (NousResearch,
+     * github.com/NousResearch/hermes-agent): ghi mỗi lượt hỏi, sau đó gom lại thành
+     * tín hiệu học được. Ở quy mô pi-chatbot, "curator" chỉ là 1 câu GROUP BY —
+     * không cần LLM tóm tắt hội thoại như Hermes vì bài toán ở đây hẹp hơn nhiều
+     * (tìm câu hỏi lặp lại 0 kết quả), không phải xây mô hình người dùng đa phiên.
+     */
+    private function render_learning_section() {
+        $stats = Pi_Chatbot_Log::stats();
+        $top = Pi_Chatbot_Log::top_unanswered(15, 30);
+        ?>
+        <h2><?php esc_html_e('Học từ hội thoại — khoảng trống dữ liệu', 'pi-chatbot'); ?></h2>
+        <p class="description">
+            <?php esc_html_e('Ghi lại mỗi câu hỏi thật (không tính câu đã trả lời từ cache) và việc có tìm thấy sản phẩm/context hay không. Bảng dưới là câu hỏi lặp lại nhiều lần nhất trong 30 ngày mà KHÔNG tìm thấy gì — dấu hiệu thiếu dữ liệu hoặc thiếu từ khoá, đo được thay vì phán đoán.', 'pi-chatbot'); ?>
+        </p>
+        <p>
+            <?php echo esc_html(sprintf(
+                /* translators: 1: total logged, 2: unanswered count, 3: distinct unanswered, 4: last 24h */
+                __('Tổng câu đã log: %1$d — không tìm thấy context: %2$d (%3$d câu hỏi khác nhau) — 24h gần nhất: %4$d', 'pi-chatbot'),
+                $stats['total'], $stats['total_unanswered'], $stats['distinct_unanswered'], $stats['last_24h']
+            )); ?>
+        </p>
+        <?php if (empty($top)) : ?>
+            <p><em><?php esc_html_e('Chưa có câu hỏi nào bị thiếu context trong 30 ngày qua.', 'pi-chatbot'); ?></em></p>
+        <?php else : ?>
+            <table class="widefat striped" style="max-width: 900px;">
+                <thead>
+                    <tr>
+                        <th><?php esc_html_e('Câu hỏi', 'pi-chatbot'); ?></th>
+                        <th style="width:100px;"><?php esc_html_e('Số lần', 'pi-chatbot'); ?></th>
+                        <th style="width:180px;"><?php esc_html_e('Gần nhất', 'pi-chatbot'); ?></th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php foreach ($top as $row) : ?>
+                    <tr>
+                        <td><?php echo esc_html($row->question_norm); ?></td>
+                        <td><?php echo esc_html($row->cnt); ?></td>
+                        <td><?php echo esc_html($row->last_seen); ?></td>
+                    </tr>
+                <?php endforeach; ?>
+                </tbody>
+            </table>
+        <?php endif; ?>
         <?php
     }
 

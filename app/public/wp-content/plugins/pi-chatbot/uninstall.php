@@ -19,12 +19,16 @@ $wpdb->query("DROP TABLE IF EXISTS {$table}");
 $wpdb->query("DROP TABLE IF EXISTS {$table}_shadow");
 $wpdb->query("DROP TABLE IF EXISTS {$table}_old");
 
+$log_table = $wpdb->prefix . 'pi_chatbot_log';
+$wpdb->query("DROP TABLE IF EXISTS {$log_table}");
+
 delete_option('pi_chatbot_settings');
 delete_option('pi_chatbot_index_count');
 delete_option('pi_chatbot_last_reindex');
 delete_option('pi_chatbot_key_migrated_v1');
 delete_option('pi_chatbot_db_version');
 delete_option('pi_chatbot_index_version');
+delete_option('pi_chatbot_log_db_version');
 
 // Transient động (rate-limit theo IP, cache câu trả lời theo hash câu hỏi, danh
 // sách brand cache) có hậu tố md5 thay đổi theo request — không thể delete_option()

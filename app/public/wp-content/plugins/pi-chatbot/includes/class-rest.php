@@ -91,6 +91,7 @@ class Pi_Chatbot_Rest {
         // (guard cũ) cho "khách có mô tả sản phẩm": "báo giá tủ đông Hoshizaki" không
         // brand nhưng vẫn phải ra đúng sản phẩm; "báo giá" thuần thì phần dư rỗng,
         // không chạy full-text nên không đính nguồn giả.
+        $router_used = false;
         $residual = ($is_contact || $is_price || $is_service || $is_project)
             ? Pi_Chatbot_Retriever::strip_intent_phrases($message)
             : $message;
@@ -107,6 +108,7 @@ class Pi_Chatbot_Rest {
                 // (router_enabled=false), bật tay sau khi review.
                 $enrichment = Pi_Chatbot_Router::enrich($message);
                 if ($enrichment) {
+                    $router_used = true;
                     $enriched_query = trim(implode(' ', array_merge(
                         $enrichment['keywords_en'],
                         $enrichment['keywords_vi'],
@@ -121,6 +123,12 @@ class Pi_Chatbot_Rest {
                 }
             }
         }
+
+        // Log CHỈ trên đường tươi (không phải cache hit — câu đã cache là lặp lại
+        // của 1 câu đã log trước đó, log lại sẽ thổi phồng đếm mà không thêm tín hiệu
+        // mới). Ghi trước khi gọi Generator để vẫn có dữ liệu ngay cả khi LLM lỗi —
+        // "có tìm thấy context hay không" là tín hiệu độc lập với việc sinh câu trả lời.
+        Pi_Chatbot_Log::record($normalized, !empty($context), count($context), $router_used);
 
         $result = Pi_Chatbot_Generator::answer($message, $context);
 
