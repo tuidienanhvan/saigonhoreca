@@ -1,18 +1,20 @@
 <?php
 /**
- * Log hội thoại — ghi lại mỗi câu hỏi THẬT (không phải cache hit) cùng việc có tìm
- * thấy context hay không, để soi ra khoảng trống dữ liệu bằng SQL thuần thay vì
- * phán đoán.
+ * Conversation log — records every REAL question (not a cache hit) along with
+ * whether context was found for it, so data gaps can be surfaced with plain SQL
+ * instead of guesswork.
  *
- * Cảm hứng từ pattern MemoryProvider.sync_turn() của Hermes Agent (NousResearch) —
- * ghi lại mỗi lượt hội thoại để tầng "curator" sau này gom thành insight — nhưng
- * đơn giản hoá triệt để cho đúng quy mô pi-chatbot: Hermes chạy 1 process dài hạn
- * nên sync_turn() phải né executor riêng + timeout để không treo turn đang chạy.
- * pi-chatbot là request/response 1 lần của PHP-FPM, 1 câu INSERT tốn <5ms — không
- * cần thread nền, không cần circuit breaker. "Curator" ở đây cũng không phải LLM
- * tóm tắt hội thoại (tốn tiền, tốn 8s/lần) mà là 1 câu GROUP BY tìm câu hỏi lặp lại
- * nhiều lần mà 0 kết quả — cùng mục đích (biến log thô thành tín hiệu học được),
- * khác công cụ.
+ * Inspired by the MemoryProvider.sync_turn() pattern from Hermes Agent
+ * (NousResearch) — logging every conversation turn so a later "curator" layer
+ * can distill it into insights — but radically simplified to match pi-chatbot's
+ * scale: Hermes runs as a long-lived process, so sync_turn() has to dodge onto
+ * a separate executor plus a timeout so it doesn't hang the turn in progress.
+ * pi-chatbot is a single request/response cycle in PHP-FPM, where one INSERT
+ * costs <5ms — no background thread needed, no circuit breaker needed. The
+ * "curator" here also isn't an LLM summarizing the conversation (costly, ~8s
+ * per call) but a single GROUP BY query finding questions asked repeatedly with
+ * 0 results — same goal (turning raw logs into a learnable signal), different
+ * tool.
  *
  * @package PiChatbot
  */
@@ -23,7 +25,7 @@ class Pi_Chatbot_Log {
 
     const DB_VERSION = 1;
 
-    /** Giữ log tối đa bao lâu — bảng tự bounded, không cần cron riêng. */
+    /** Maximum log retention period — the table is self-bounding, no separate cron needed. */
     const RETENTION_DAYS = 180;
 
     public static function table_name() {
@@ -31,7 +33,7 @@ class Pi_Chatbot_Log {
         return $wpdb->prefix . 'pi_chatbot_log';
     }
 
-    /** Cùng pattern maybe_upgrade() của Indexer — so DB_VERSION, dbDelta nếu lệch. */
+    /** Same pattern as the Indexer's maybe_upgrade() — compare DB_VERSION, run dbDelta if mismatched. */
     public static function maybe_upgrade() {
         if ((int) get_option('pi_chatbot_log_db_version') === self::DB_VERSION) return;
         self::create_table();
@@ -49,9 +51,9 @@ class Pi_Chatbot_Log {
         $charset_collate = $wpdb->get_charset_collate();
 
         require_once ABSPATH . 'wp-admin/includes/upgrade.php';
-        // FULLTEXT trên question_norm để sau này có thể tự dò lại log (kiểu FTS5 của
-        // Hermes) — chưa có UI dùng tới, nhưng thêm ngay bây giờ rẻ hơn ALTER TABLE
-        // sau này trên bảng đã có dữ liệu.
+        // FULLTEXT on question_norm so the log can be searched later (similar to
+        // Hermes's FTS5) — no UI uses it yet, but adding it now is cheaper than an
+        // ALTER TABLE later once the table already holds data.
         $sql = "CREATE TABLE {$table} (
             id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
             question_norm VARCHAR(500) NOT NULL,
@@ -67,10 +69,12 @@ class Pi_Chatbot_Log {
     }
 
     /**
-     * Ghi 1 lượt hỏi. KHÔNG BAO GIỜ được làm hỏng đường trả lời khách — thất bại thì
-     * lặng lẽ bỏ qua (đúng nguyên tắc "provider failure never blocks the turn" của
-     * MemoryManager bên Hermes, chỉ khác là ở đây không cần thread nền vì bản thân
-     * request đã đồng bộ và insert rẻ).
+     * Records one turn's question. Must NEVER be allowed to break the answer
+     * path for the customer — on failure, it fails silently (the same
+     * "provider failure never blocks the turn" principle as Hermes's
+     * MemoryManager, the only difference being that no background thread is
+     * needed here since the request itself is already synchronous and the
+     * insert is cheap).
      */
     public static function record($question_norm, $had_context, $source_count, $router_used) {
         global $wpdb;
@@ -89,9 +93,10 @@ class Pi_Chatbot_Log {
             ['%s', '%d', '%d', '%d', '%s']
         );
 
-        // Dọn log cũ cơ hội chủ nghĩa (giống cách WP core dọn transient hết hạn) —
-        // 1/500 lượt ghi thay vì cron riêng, đủ để bảng không phình vô hạn ở quy mô
-        // vài trăm câu hỏi/ngày mà không cần thêm hạ tầng.
+        // Opportunistically prune old log entries (the same way WP core cleans up
+        // expired transients) — 1/500 writes instead of a dedicated cron, enough
+        // to keep the table from growing unbounded at a scale of a few hundred
+        // questions/day without adding extra infrastructure.
         if (wp_rand(1, 500) === 1) {
             self::prune();
         }
@@ -106,9 +111,10 @@ class Pi_Chatbot_Log {
     }
 
     /**
-     * Câu hỏi lặp lại nhiều lần nhất mà KHÔNG tìm thấy context — tín hiệu khoảng
-     * trống dữ liệu/từ khoá thật, đo được thay vì đoán. Đây là "curator" của
-     * pi-chatbot: không cần LLM tóm tắt, GROUP BY trên dữ liệu thô là đủ.
+     * The most frequently repeated questions that FOUND NO context — a measured
+     * (not guessed) signal of real data/keyword gaps. This is pi-chatbot's
+     * "curator": no LLM summarization needed, a GROUP BY over the raw data is
+     * enough.
      */
     public static function top_unanswered($limit = 15, $days = 30) {
         global $wpdb;
@@ -125,7 +131,7 @@ class Pi_Chatbot_Log {
         ));
     }
 
-    /** Số liệu tổng quan cho trang admin. */
+    /** Overview stats for the admin page. */
     public static function stats() {
         global $wpdb;
         $table = self::table_name();

@@ -1,6 +1,6 @@
 <?php
 /**
- * Admin — trang cấu hình đơn giản: nút Reindex, đếm bản ghi, cấu hình key LLM7/model.
+ * Admin — simple config page: Reindex button, record count, LLM7 key/model config.
  *
  * @package PiChatbot
  */
@@ -48,41 +48,41 @@ class Pi_Chatbot_Admin {
             <?php if ($notice !== null) : ?>
                 <div class="notice notice-success"><p><?php echo esc_html(sprintf(
                     /* translators: %d: number of indexed records */
-                    __('Đã reindex xong — %d bản ghi.', 'pi-chatbot'), $notice
+                    __('Reindex complete — %d records.', 'pi-chatbot'), $notice
                 )); ?></p></div>
             <?php endif; ?>
             <?php if (!empty($_GET['reindex_error'])) : ?>
                 <div class="notice notice-error"><p><?php echo esc_html(sprintf(
                     /* translators: %s: error message */
-                    __('Reindex thất bại: %s', 'pi-chatbot'),
+                    __('Reindex failed: %s', 'pi-chatbot'),
                     sanitize_text_field(wp_unslash($_GET['reindex_error']))
                 )); ?></p></div>
             <?php endif; ?>
             <?php if ($saved) : ?>
-                <div class="notice notice-success"><p><?php esc_html_e('Đã lưu cấu hình.', 'pi-chatbot'); ?></p></div>
+                <div class="notice notice-success"><p><?php esc_html_e('Settings saved.', 'pi-chatbot'); ?></p></div>
             <?php endif; ?>
 
-            <h2><?php esc_html_e('Chỉ mục dữ liệu', 'pi-chatbot'); ?></h2>
-            <p><?php esc_html_e('Số bản ghi đã index:', 'pi-chatbot'); ?> <strong><?php echo esc_html($count); ?></strong>
-                <?php if ($last) : ?> — <?php esc_html_e('lần reindex gần nhất:', 'pi-chatbot'); ?> <?php echo esc_html($last); ?><?php endif; ?></p>
+            <h2><?php esc_html_e('Data index', 'pi-chatbot'); ?></h2>
+            <p><?php esc_html_e('Records indexed:', 'pi-chatbot'); ?> <strong><?php echo esc_html($count); ?></strong>
+                <?php if ($last) : ?> — <?php esc_html_e('last reindex:', 'pi-chatbot'); ?> <?php echo esc_html($last); ?><?php endif; ?></p>
 
             <form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
                 <?php wp_nonce_field('pi_chatbot_reindex'); ?>
                 <input type="hidden" name="action" value="pi_chatbot_reindex">
-                <?php submit_button(__('Reindex ngay', 'pi-chatbot'), 'primary'); ?>
+                <?php submit_button(__('Reindex now', 'pi-chatbot'), 'primary'); ?>
             </form>
 
             <hr>
 
-            <h2><?php esc_html_e('Cấu hình generation (LLM7 API — gọi thẳng, không qua proxy)', 'pi-chatbot'); ?></h2>
+            <h2><?php esc_html_e('Generation settings (LLM7 API — called directly, no proxy)', 'pi-chatbot'); ?></h2>
             <form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
                 <?php wp_nonce_field('pi_chatbot_save_settings'); ?>
                 <input type="hidden" name="action" value="pi_chatbot_save_settings">
                 <table class="form-table">
                     <tr>
-                        <th><label for="llm7_keys"><?php esc_html_e('API keys LLM7', 'pi-chatbot'); ?></label></th>
+                        <th><label for="llm7_keys"><?php esc_html_e('LLM7 API keys', 'pi-chatbot'); ?></label></th>
                         <td><textarea class="large-text code" rows="4" id="llm7_keys" name="llm7_keys"><?php echo esc_textarea(implode("\n", $settings['llm7_keys'])); ?></textarea>
-                            <p class="description"><?php esc_html_e('Mỗi dòng 1 key — round-robin, key nào lỗi/hết quota tự chuyển key kế tiếp.', 'pi-chatbot'); ?></p></td>
+                            <p class="description"><?php esc_html_e('One key per line — round-robin, any key that errors/runs out of quota automatically moves to the next key.', 'pi-chatbot'); ?></p></td>
                     </tr>
                     <tr>
                         <th><label for="model"><?php esc_html_e('Model', 'pi-chatbot'); ?></label></th>
@@ -93,39 +93,39 @@ class Pi_Chatbot_Admin {
                         <td><input type="number" min="1" max="20" id="top_k" name="top_k" value="<?php echo esc_attr($settings['top_k']); ?>"></td>
                     </tr>
                     <tr>
-                        <th><label for="rate_limit"><?php esc_html_e('Giới hạn (câu/phút/IP)', 'pi-chatbot'); ?></label></th>
+                        <th><label for="rate_limit"><?php esc_html_e('Rate limit (requests/min/IP)', 'pi-chatbot'); ?></label></th>
                         <td><input type="number" min="1" max="100" id="rate_limit" name="rate_limit" value="<?php echo esc_attr($settings['rate_limit']); ?>"></td>
                     </tr>
                 </table>
-                <?php submit_button(__('Lưu cấu hình', 'pi-chatbot')); ?>
+                <?php submit_button(__('Save settings', 'pi-chatbot')); ?>
             </form>
 
             <hr>
 
-            <h2><?php esc_html_e('Router (Adaptive RAG) — lưới an toàn cho câu hỏi tiếng Việt không nhắc brand', 'pi-chatbot'); ?></h2>
+            <h2><?php esc_html_e('Router (LLM intent classifier)', 'pi-chatbot'); ?></h2>
             <p class="description">
-                <?php esc_html_e('CHỈ chạy khi tìm kiếm thường (rule-based) đã trả rỗng — không thay thế, không chạy cho mọi câu. Mặc định TẮT, chỉ bật sau khi đã xem qua tests/eval-retrieval.php. Xem docs/plans/pi-chatbot-adaptive-router.md.', 'pi-chatbot'); ?>
+                <?php esc_html_e('Runs on EVERY message — classifies intent (price/contact/service/project/product) and extracts search keywords. Replaced the old rule-based Vietnamese keyword matching by product decision (accepted trade-off: one LLM7 call per message instead of instant/free classification). If disabled, the bot degrades to a plain product search on the raw message with no price/contact/service/project handling. See docs/plans/pi-chatbot-adaptive-router.md.', 'pi-chatbot'); ?>
             </p>
             <form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
                 <?php wp_nonce_field('pi_chatbot_save_settings'); ?>
                 <input type="hidden" name="action" value="pi_chatbot_save_settings">
                 <table class="form-table">
                     <tr>
-                        <th><label for="router_enabled"><?php esc_html_e('Bật router', 'pi-chatbot'); ?></label></th>
-                        <td><label><input type="checkbox" id="router_enabled" name="router_enabled" value="1" <?php checked(!empty($settings['router_enabled'])); ?>> <?php esc_html_e('Bật', 'pi-chatbot'); ?></label></td>
+                        <th><label for="router_enabled"><?php esc_html_e('Enable router', 'pi-chatbot'); ?></label></th>
+                        <td><label><input type="checkbox" id="router_enabled" name="router_enabled" value="1" <?php checked(!empty($settings['router_enabled'])); ?>> <?php esc_html_e('Enabled', 'pi-chatbot'); ?></label></td>
                     </tr>
                     <tr>
-                        <th><label for="router_model"><?php esc_html_e('Model router', 'pi-chatbot'); ?></label></th>
+                        <th><label for="router_model"><?php esc_html_e('Router model', 'pi-chatbot'); ?></label></th>
                         <td><input type="text" class="regular-text" id="router_model" name="router_model" value="<?php echo esc_attr($settings['router_model']); ?>">
-                            <p class="description"><?php esc_html_e('Nên dùng model turbo KHÔNG reasoning (vd codestral-latest) — model reasoning như gpt-oss:20b tốn token vào suy luận ẩn, đo thật trả về rỗng khi dùng làm router.', 'pi-chatbot'); ?></p></td>
+                            <p class="description"><?php esc_html_e('Use a turbo model WITHOUT reasoning (e.g. codestral-latest) — reasoning models like gpt-oss:20b spend tokens on hidden reasoning and, measured for real, return empty output when used as a router.', 'pi-chatbot'); ?></p></td>
                     </tr>
                     <tr>
-                        <th><label for="router_keys"><?php esc_html_e('API keys riêng cho router', 'pi-chatbot'); ?></label></th>
+                        <th><label for="router_keys"><?php esc_html_e('Dedicated API keys for the router', 'pi-chatbot'); ?></label></th>
                         <td><textarea class="large-text code" rows="2" id="router_keys" name="router_keys"><?php echo esc_textarea(implode("\n", $settings['router_keys'])); ?></textarea>
-                            <p class="description"><?php esc_html_e('Để trống = dùng chung API keys LLM7 ở trên.', 'pi-chatbot'); ?></p></td>
+                            <p class="description"><?php esc_html_e('Leave empty to share the LLM7 API keys above.', 'pi-chatbot'); ?></p></td>
                     </tr>
                 </table>
-                <?php submit_button(__('Lưu cấu hình router', 'pi-chatbot')); ?>
+                <?php submit_button(__('Save router settings', 'pi-chatbot')); ?>
             </form>
 
             <hr>
@@ -136,37 +136,38 @@ class Pi_Chatbot_Admin {
     }
 
     /**
-     * Học từ hội thoại — soi log câu hỏi thật để tìm khoảng trống dữ liệu, thay vì
-     * đoán. Cảm hứng từ pattern "sync_turn + curator" của Hermes Agent (NousResearch,
-     * github.com/NousResearch/hermes-agent): ghi mỗi lượt hỏi, sau đó gom lại thành
-     * tín hiệu học được. Ở quy mô pi-chatbot, "curator" chỉ là 1 câu GROUP BY —
-     * không cần LLM tóm tắt hội thoại như Hermes vì bài toán ở đây hẹp hơn nhiều
-     * (tìm câu hỏi lặp lại 0 kết quả), không phải xây mô hình người dùng đa phiên.
+     * Learning from conversations — inspects real question logs to find data gaps
+     * instead of guessing. Inspired by the "sync_turn + curator" pattern from Hermes
+     * Agent (NousResearch, github.com/NousResearch/hermes-agent): log every turn, then
+     * aggregate into learned signals. At pi-chatbot's scale, the "curator" is just a
+     * single GROUP BY query — no LLM summarization needed like Hermes, because the
+     * problem here is much narrower (finding repeated zero-result questions), not
+     * building a multi-session user model.
      */
     private function render_learning_section() {
         $stats = Pi_Chatbot_Log::stats();
         $top = Pi_Chatbot_Log::top_unanswered(15, 30);
         ?>
-        <h2><?php esc_html_e('Học từ hội thoại — khoảng trống dữ liệu', 'pi-chatbot'); ?></h2>
+        <h2><?php esc_html_e('Learning from conversations — data gaps', 'pi-chatbot'); ?></h2>
         <p class="description">
-            <?php esc_html_e('Ghi lại mỗi câu hỏi thật (không tính câu đã trả lời từ cache) và việc có tìm thấy sản phẩm/context hay không. Bảng dưới là câu hỏi lặp lại nhiều lần nhất trong 30 ngày mà KHÔNG tìm thấy gì — dấu hiệu thiếu dữ liệu hoặc thiếu từ khoá, đo được thay vì phán đoán.', 'pi-chatbot'); ?>
+            <?php esc_html_e('Logs every real question (excluding ones answered from cache) and whether a matching product/context was found. The table below shows the most-repeated questions in the last 30 days that found NOTHING — a measured, not guessed, signal of missing data or missing keywords.', 'pi-chatbot'); ?>
         </p>
         <p>
             <?php echo esc_html(sprintf(
                 /* translators: 1: total logged, 2: unanswered count, 3: distinct unanswered, 4: last 24h */
-                __('Tổng câu đã log: %1$d — không tìm thấy context: %2$d (%3$d câu hỏi khác nhau) — 24h gần nhất: %4$d', 'pi-chatbot'),
+                __('Total logged questions: %1$d — no context found: %2$d (%3$d distinct questions) — last 24h: %4$d', 'pi-chatbot'),
                 $stats['total'], $stats['total_unanswered'], $stats['distinct_unanswered'], $stats['last_24h']
             )); ?>
         </p>
         <?php if (empty($top)) : ?>
-            <p><em><?php esc_html_e('Chưa có câu hỏi nào bị thiếu context trong 30 ngày qua.', 'pi-chatbot'); ?></em></p>
+            <p><em><?php esc_html_e('No questions missing context in the last 30 days.', 'pi-chatbot'); ?></em></p>
         <?php else : ?>
             <table class="widefat striped" style="max-width: 900px;">
                 <thead>
                     <tr>
-                        <th><?php esc_html_e('Câu hỏi', 'pi-chatbot'); ?></th>
-                        <th style="width:100px;"><?php esc_html_e('Số lần', 'pi-chatbot'); ?></th>
-                        <th style="width:180px;"><?php esc_html_e('Gần nhất', 'pi-chatbot'); ?></th>
+                        <th><?php esc_html_e('Question', 'pi-chatbot'); ?></th>
+                        <th style="width:100px;"><?php esc_html_e('Count', 'pi-chatbot'); ?></th>
+                        <th style="width:180px;"><?php esc_html_e('Last seen', 'pi-chatbot'); ?></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -184,15 +185,17 @@ class Pi_Chatbot_Admin {
     }
 
     public function handle_reindex() {
-        if (!current_user_can('manage_options')) wp_die('Không có quyền.');
+        if (!current_user_can('manage_options')) wp_die('Permission denied.');
         check_admin_referer('pi_chatbot_reindex');
-        // Reindex là DB thuần (không còn gọi LLM) nên chỉ mất vài giây cho ~419 bản
-        // ghi — set_time_limit chỉ để phòng khi catalog phình to sau này.
+        // Reindex is pure DB work (no more LLM calls) so it only takes a few seconds for
+        // ~419 records — set_time_limit is just a safeguard in case the catalog grows
+        // much larger later.
         if (function_exists('set_time_limit')) set_time_limit(0);
         $result = Pi_Chatbot_Indexer::reindex_all();
-        // Trước đây không phân nhánh — reindex_all() lỗi vẫn hiện thông báo xanh
-        // "thành công" (đúng kiểu lỗi đã làm hỏng plugin lần trước: RENAME TABLE
-        // fail im lặng, admin không hề biết index không hề được cập nhật).
+        // Previously there was no branching here — if reindex_all() failed, it still
+        // showed a green "success" notice (exactly the kind of bug that broke the
+        // plugin last time: RENAME TABLE failed silently and the admin had no idea the
+        // index hadn't actually been updated).
         $args = is_wp_error($result)
             ? ['page' => 'pi-chatbot', 'reindex_error' => rawurlencode($result->get_error_message())]
             : ['page' => 'pi-chatbot', 'reindexed' => (int) $result];
@@ -201,17 +204,18 @@ class Pi_Chatbot_Admin {
     }
 
     public function handle_save_settings() {
-        if (!current_user_can('manage_options')) wp_die('Không có quyền.');
+        if (!current_user_can('manage_options')) wp_die('Permission denied.');
         check_admin_referer('pi_chatbot_save_settings');
 
         $settings = pi_chatbot_settings();
         if (isset($_POST['llm7_keys'])) {
             $raw = wp_unslash($_POST['llm7_keys']);
-            // $_POST['llm7_keys'] LUÔN phải là string (textarea, không phải mảng) —
-            // nhưng 1 request thủ công gửi llm7_keys[]=a&llm7_keys[]=b sẽ đưa mảng
-            // vào đây, và preg_split() trên mảng là TypeError fatal ở PHP 8 (nonce +
-            // capability đã chặn CSRF nên không phải vector tấn công, nhưng vẫn là
-            // fatal thật nếu admin tự gõ nhầm URL hoặc dùng công cụ test API).
+            // $_POST['llm7_keys'] should ALWAYS be a string (textarea, not an array) —
+            // but a hand-crafted request sending llm7_keys[]=a&llm7_keys[]=b would put an
+            // array here, and preg_split() on an array is a fatal TypeError on PHP 8
+            // (nonce + capability check already block CSRF so this isn't an attack
+            // vector, but it's still a real fatal if an admin mistypes a URL or uses an
+            // API testing tool).
             $keys = is_string($raw) ? preg_split('/\r\n|\r|\n/', $raw) : [];
             $settings['llm7_keys'] = array_values(array_filter(array_map('trim', $keys)));
         }
@@ -219,11 +223,13 @@ class Pi_Chatbot_Admin {
         $settings['top_k']      = max(1, min(20, (int) ($_POST['top_k'] ?? $settings['top_k'])));
         $settings['rate_limit'] = max(1, min(100, (int) ($_POST['rate_limit'] ?? $settings['rate_limit'])));
 
-        // Router — form riêng (2 form trên cùng trang), field chỉ có mặt khi đúng form
-        // đó được submit. checkbox 'router_enabled' vắng mặt trong $_POST nghĩa là bỏ
-        // tick (HTML không gửi checkbox chưa check) — CHỈ coi là "tắt" khi form router
-        // thực sự được gửi (nhận diện qua sự có mặt của 'router_model'), tránh form
-        // "Lưu cấu hình generation" (không có field router) vô tình tắt router đang bật.
+        // Router — separate form (2 forms on the same page), the field is only present
+        // when that specific form was submitted. The 'router_enabled' checkbox being
+        // absent from $_POST means it was unchecked (HTML doesn't send an unchecked
+        // checkbox) — ONLY treat it as "disabled" when the router form was actually
+        // submitted (detected via the presence of 'router_model'), to avoid the
+        // "Save settings" form (which has no router field) accidentally disabling a
+        // router that's currently enabled.
         if (isset($_POST['router_model'])) {
             $settings['router_enabled'] = !empty($_POST['router_enabled']);
             $settings['router_model']   = sanitize_text_field(wp_unslash($_POST['router_model']));
@@ -233,8 +239,8 @@ class Pi_Chatbot_Admin {
                 $settings['router_keys'] = array_values(array_filter(array_map('trim', $rkeys)));
             }
         }
-        // autoload=false — option chứa API key, không cần nạp vào mọi request
-        // front-end (chỉ pi_chatbot_settings() mới cần đọc, không phải mọi trang).
+        // autoload=false — this option contains an API key, no need to load it on every
+        // front-end request (only pi_chatbot_settings() needs to read it, not every page).
         update_option(PI_CHATBOT_OPTION, $settings, false);
 
         wp_safe_redirect(add_query_arg(['page' => 'pi-chatbot', 'saved' => 1], admin_url('admin.php')));

@@ -1,16 +1,22 @@
 <?php
 /**
- * Router — lưới an toàn CHỈ chạy khi đường nhanh (intent rule-based + known_brands()
- * + Retriever::search()) đã trả rỗng. KHÔNG thay thế đường nhanh — xem
- * docs/plans/pi-chatbot-adaptive-router.md cho toàn bộ lý do thiết kế và căn cứ
- * học thuật (Self-RAG arXiv:2310.11511, "Small Models Big Insights" arXiv:2402.12052,
- * "To Retrieve or Not to Retrieve?" arXiv:2501.09292 — kích hoạt retrieval theo
- * bất định thay vì luôn chạy giảm ~50% lượt gọi mà gần như không mất độ chính xác).
+ * Router — LLM classifier that runs on EVERY message: decides intent
+ * (price/contact/service/project/product/none) and, for product questions,
+ * extracts search keywords + brand. Replaces the old rule-based keyword
+ * matching (is_price_intent()/is_contact_intent()/... — removed from
+ * class-retriever.php) now that the "3-tier" pipeline (classify -> retrieve
+ * -> answer) is fully LLM-driven end to end, per explicit product decision:
+ * the old fast-path kept classification instant and free, but the team opted
+ * to trade that for a single LLM-first design instead of maintaining two
+ * parallel classifiers (Vietnamese keyword lists AND an LLM fallback).
  *
- * Khoảng trống đang vá: khách hỏi tiếng Việt, KHÔNG nhắc brand, từ vựng Việt không
- * trùng tiêu đề Anh (đo thật: "lò than hoa" → 0 kết quả, trong khi
- * "charcoal oven for restaurant" → đúng — hệ thống hiện tại KHÔNG kém tiếng Anh,
- * chỉ thiếu bước dịch Việt→Anh theo ngữ cảnh sản phẩm).
+ * Cost/latency trade-off accepted: every message now costs one LLM7 call
+ * (router model, ~1.8s avg) before generation, vs. only on rule-based misses
+ * previously. See docs/plans/pi-chatbot-adaptive-router.md for the original
+ * academic grounding (Self-RAG arXiv:2310.11511, "Small Models Big Insights"
+ * arXiv:2402.12052, "To Retrieve or Not to Retrieve?" arXiv:2501.09292) —
+ * that design treated the router as a fallback-only safety net; this version
+ * promotes it to the primary classifier per product decision.
  *
  * @package PiChatbot
  */
@@ -18,29 +24,34 @@
 if (!defined('ABSPATH')) exit;
 
 class Pi_Chatbot_Router {
-    /** Đổi prompt thì bump số này — cache cũ tự vô hiệu, không cần dò xoá thủ công. */
-    const PROMPT_VERSION = 1;
+    /** Bump this when the prompt/schema changes — old cached responses become
+     *  invalid automatically instead of needing a manual cache purge. */
+    const PROMPT_VERSION = 2;
 
     const MODEL_DEFAULT = 'codestral-latest';
-    // 1 lần gọi, KHÔNG retry — khác Generator (2 key). Router là lưới an toàn PHỤ,
-    // không đáng đánh đổi thêm giây chờ cho 1 lần thử lại (xem plan, mục "Guardrail").
+    // Single attempt, no retry — unlike Generator (2 keys). An extra retry
+    // second here is not worth the added wait on the now-mandatory classify step.
     const TIMEOUT_SECONDS = 8;
     const MAX_KEY_ATTEMPTS = 1;
 
-    const CACHE_TTL_POSITIVE = 30 * DAY_IN_SECONDS; // bản dịch 1 cụm từ không đổi theo catalog
-    const CACHE_TTL_NEGATIVE = 10 * MINUTE_IN_SECONDS; // tránh hammering LLM7 khi 1 câu lỗi lặp lại
+    const CACHE_TTL_POSITIVE = 30 * DAY_IN_SECONDS; // a phrase's classification doesn't change with the catalog
+    const CACHE_TTL_NEGATIVE = 10 * MINUTE_IN_SECONDS; // avoid hammering LLM7 on a repeatedly-failing question
 
-    // Circuit breaker — cùng nguyên tắc atomic-bucket đã dùng ở
-    // Pi_Chatbot_Rest::check_rate_limit() (bài học: race condition đã xảy ra thật
-    // với get_transient()/set_transient() đọc-sửa-ghi không nguyên tử).
-    const BREAKER_WINDOW_SECONDS = 300; // 5 phút/bucket
+    // Circuit breaker — same atomic-bucket pattern as
+    // Pi_Chatbot_Rest::check_rate_limit() (lesson learned: a real race
+    // condition previously existed with the non-atomic get_transient()/
+    // set_transient() read-modify-write).
+    const BREAKER_WINDOW_SECONDS = 300; // 5-minute bucket
     const BREAKER_FAIL_THRESHOLD = 5;
 
+    /** Valid intent values the model may return. */
+    const VALID_INTENTS = ['price', 'contact', 'service', 'project', 'product', 'none'];
+
     /**
-     * @param string $question Câu hỏi GỐC (chưa bóc intent) — router cần ngữ cảnh đầy đủ.
-     * @return array{keywords_en:string[],keywords_vi:string[],brand:?string}|null
-     *   null = tắt/breaker mở/lỗi/không phải câu hỏi sản phẩm — gọi nơi dùng PHẢI coi
-     *   null như "không enrich được", giữ nguyên hành vi rỗng như khi chưa có router.
+     * @param string $question Raw customer message.
+     * @return array{intent:string,keywords_en:string[],keywords_vi:string[],brand:?string}|null
+     *   null = router disabled/breaker open/error — caller must treat null the
+     *   same as "could not classify" and fall back to a plain product search.
      */
     public static function enrich($question) {
         $settings = pi_chatbot_settings();
@@ -80,8 +91,9 @@ class Pi_Chatbot_Router {
 
         $parsed = self::parse_response(Pi_Chatbot_LLM_Client::content($response));
         if ($parsed === null) {
-            // Model trả về nhưng không phải JSON dùng được — KHÔNG tính là lỗi hạ
-            // tầng (breaker không cần mở), nhưng vẫn cache âm để khỏi hỏi lại ngay.
+            // Model responded but not with usable JSON — not a downstream failure
+            // (breaker stays closed), but still cache negative to avoid re-asking
+            // immediately.
             set_transient($cache_key, 'NEGATIVE', self::CACHE_TTL_NEGATIVE);
             return null;
         }
@@ -92,10 +104,10 @@ class Pi_Chatbot_Router {
     }
 
     /**
-     * Few-shot song ngữ THẬT từ chính DB thay vì để model dịch mù (theo
-     * arXiv:2409.12880 — ví dụ song ngữ thật cải thiện +15,3% so với zero-shot cho
-     * cặp ngôn ngữ model yếu). Cache 1 ngày — không cần tính lại mỗi lần router chạy,
-     * catalog không đổi nhanh tới mức cần tươi hơn thế.
+     * Real bilingual few-shot examples pulled straight from the DB instead of
+     * letting the model translate blind (per arXiv:2409.12880 — real bilingual
+     * examples improve +15.3% over zero-shot for weak-resource language pairs).
+     * Cached for 1 day — the catalog doesn't change fast enough to need fresher.
      */
     private static function few_shot_examples() {
         $cache_key = 'pi_chatbot_rtr_fewshot';
@@ -120,24 +132,29 @@ class Pi_Chatbot_Router {
     private static function build_messages($question) {
         $examples = self::few_shot_examples();
         $example_lines = array_map(function ($e) {
-            return sprintf('- "%s" xuất hiện trong sản phẩm có tiêu đề tiếng Anh: "%s"', $e['vi'], $e['en_context']);
+            return sprintf('- "%s" appears on products whose English title is: "%s"', $e['vi'], $e['en_context']);
         }, $examples);
 
         $known_brands = array_values(array_unique(array_values(Pi_Chatbot_Entities::known_brands())));
 
-        $system = "Bạn là bộ phân loại + dịch thuật cho chatbot bán thiết bị bếp công nghiệp "
-            . "(catalog tiêu đề TIẾNG ANH, khách hỏi có thể bằng tiếng Việt/Anh/Nhật/khác).\n"
-            . "Ví dụ thuật ngữ ngành THẬT từ catalog (dùng để dịch đúng, không đoán chung chung):\n"
+        $system = "You are the intent classifier + translator for a commercial kitchen equipment chatbot "
+            . "(catalog titles are in ENGLISH; customers may ask in Vietnamese/English/Japanese/other languages).\n"
+            . "Real industry-term examples from the catalog (use these for accurate translation, don't guess generically):\n"
             . implode("\n", $example_lines) . "\n\n"
-            . "Danh sách brand THẬT đã có (chỉ chọn nguyên văn từ đây, không bịa brand khác): "
+            . "Known REAL brand list (pick verbatim from here only, never invent a brand): "
             . implode(', ', $known_brands) . "\n\n"
-            . "Trả lời DUY NHẤT bằng JSON, không thêm chữ nào khác:\n"
-            . "{\"is_product_question\":true/false,\"keywords_en\":[\"...\"],\"keywords_vi\":[\"...\"],\"brand\":\"...\"or null}\n"
-            . "is_product_question=false nếu câu hỏi không phải về sản phẩm/thiết bị bếp cụ thể "
-            . "(chào hỏi, tán gẫu, ngoài phạm vi) — khi đó các field khác để rỗng.\n"
-            . "keywords_en: 2-5 từ khoá tiếng Anh mô tả ĐÚNG loại thiết bị (dùng thuật ngữ ngành "
-            . "bếp công nghiệp thật, không dịch từng chữ máy móc).\n"
-            . "keywords_vi: từ khoá tiếng Việt gốc còn lại sau khi bỏ các từ chào hỏi/đệm.";
+            . "Reply with ONLY this JSON, no other text:\n"
+            . "{\"intent\":\"price|contact|service|project|product|none\",\"keywords_en\":[\"...\"],\"keywords_vi\":[\"...\"],\"brand\":\"...\"or null}\n"
+            . "intent meanings:\n"
+            . "  price   — asking about pricing/quote/cost (no keywords needed)\n"
+            . "  contact — asking for contact info/hotline/address/email (no keywords needed)\n"
+            . "  service — asking about services offered (design consulting, installation, warranty; no keywords needed)\n"
+            . "  project — asking about completed projects/design samples/portfolio (no keywords needed)\n"
+            . "  product — asking about a specific piece of equipment/product — MUST include keywords_en/keywords_vi\n"
+            . "  none    — greeting/small talk/out of scope (not about kitchen equipment, pricing, services, contact, or projects) — leave other fields empty\n"
+            . "keywords_en: 2-5 English keywords describing the EXACT equipment type (use real commercial-kitchen "
+            . "industry terms, not a literal word-for-word translation). Only for intent=product.\n"
+            . "keywords_vi: the original Vietnamese keywords remaining after stripping greeting/filler words. Only for intent=product.";
 
         return [
             ['role' => 'system', 'content' => $system],
@@ -146,9 +163,10 @@ class Pi_Chatbot_Router {
     }
 
     /**
-     * Parse phòng thủ — model hay bọc JSON trong ```json fence hoặc thêm chữ thừa
-     * trước/sau (đã quan sát thật ở Generator/analyzer trước). Bóc fence rồi tìm
-     * khối {...} cân bằng ngoặc đầu tiên thay vì json_decode() thẳng chuỗi thô.
+     * Defensive parsing — the model often wraps JSON in a ```json fence or adds
+     * stray text before/after (observed in practice with Generator/analyzer
+     * before). Strip the fence, then find the first balanced {...} block
+     * instead of calling json_decode() on the raw string directly.
      */
     private static function parse_response($text) {
         if ($text === '') return null;
@@ -174,25 +192,23 @@ class Pi_Chatbot_Router {
     }
 
     /**
-     * Validate + chống hallucination:
-     * - brand PHẢI khớp nguyên văn 1 brand thật trong known_brands() — không khớp thì
-     *   bỏ field (degrade từng phần, đúng nguyên tắc detect_brand_from_title() dùng),
-     *   KHÔNG vứt cả kết quả chỉ vì brand sai.
-     * - keywords_en/keywords_vi giới hạn tối đa 8 phần tử, mỗi phần tử ≤ 40 ký tự —
-     *   chặn model xả dài. Chuỗi rỗng/không phải string bị loại.
-     * - is_product_question === false (RÕ RÀNG, không phải "field vắng mặt") → trả
-     *   null. Đo thật bắt được bug: model hay BỎ QUA field này dù vẫn trích đúng
-     *   keywords (model tuân JSON schema không ổn định, đặc điểm chung của model
-     *   turbo/rẻ) — dùng empty() coi field thiếu như false sẽ loại oan kết quả tốt.
-     *   Tín hiệu đáng tin hơn: có keywords hay không (model không tự sinh keyword
-     *   cho câu nó thấy không liên quan sản phẩm).
+     * Validate + guard against hallucination:
+     * - intent must be one of VALID_INTENTS; anything else (missing, typo,
+     *   invalid value) falls back to 'product' IF keywords are present
+     *   (model still did useful extraction work, don't discard it over a
+     *   malformed intent field), otherwise to 'none' (safest default — no
+     *   context is better than wrong context).
+     * - brand MUST match a real brand in known_brands() verbatim — no match
+     *   drops the field (partial degrade, same principle used by
+     *   detect_brand_from_title()), it does NOT discard the whole result just
+     *   because the brand guess was wrong.
+     * - keywords_en/keywords_vi capped at 8 items, each ≤ 40 chars — stops the
+     *   model from dumping long text. Empty/non-string entries are dropped.
      */
     private static function validate($parsed) {
-        if (array_key_exists('is_product_question', $parsed)) {
-            $flag = $parsed['is_product_question'];
-            // Chấp nhận cả boolean false lẫn chuỗi "false" (model JSON hoá không
-            // nhất quán) — nhưng KHÔNG dùng empty() vì 0/"" cũng empty, dễ hiểu sai.
-            if ($flag === false || $flag === 'false') return null;
+        $intent = isset($parsed['intent']) && is_string($parsed['intent']) ? trim($parsed['intent']) : '';
+        if (!in_array($intent, self::VALID_INTENTS, true)) {
+            $intent = null; // resolved below once we know whether keywords exist
         }
 
         $clean_list = function ($v) {
@@ -210,7 +226,11 @@ class Pi_Chatbot_Router {
 
         $keywords_en = $clean_list($parsed['keywords_en'] ?? []);
         $keywords_vi = $clean_list($parsed['keywords_vi'] ?? []);
-        if (!$keywords_en && !$keywords_vi) return null;
+
+        if ($intent === null) {
+            $intent = ($keywords_en || $keywords_vi) ? 'product' : 'none';
+        }
+        if ($intent === 'none') return null;
 
         $brand = null;
         if (!empty($parsed['brand']) && is_string($parsed['brand'])) {
@@ -218,10 +238,10 @@ class Pi_Chatbot_Router {
             foreach (Pi_Chatbot_Entities::known_brands() as $full) {
                 if (strcasecmp($full, $claimed) === 0) { $brand = $full; break; }
             }
-            // Không khớp → $brand giữ null, KHÔNG dùng chuỗi model tự bịa.
+            // No match -> $brand stays null, never use the model's made-up string.
         }
 
-        return ['keywords_en' => $keywords_en, 'keywords_vi' => $keywords_vi, 'brand' => $brand];
+        return ['intent' => $intent, 'keywords_en' => $keywords_en, 'keywords_vi' => $keywords_vi, 'brand' => $brand];
     }
 
     private static function breaker_bucket() {
@@ -237,8 +257,8 @@ class Pi_Chatbot_Router {
         return $count >= self::BREAKER_FAIL_THRESHOLD;
     }
 
-    /** Atomic increment — cùng pattern INSERT...ON DUPLICATE KEY UPDATE đã dùng ở
-     *  check_rate_limit(), không phải get_transient()/set_transient() đọc-sửa-ghi. */
+    /** Atomic increment — same INSERT...ON DUPLICATE KEY UPDATE pattern used by
+     *  check_rate_limit(), not a get_transient()/set_transient() read-modify-write. */
     private static function bump_breaker_failure() {
         global $wpdb;
         $key = '_transient_pi_chatbot_rtr_fail_' . self::breaker_bucket();

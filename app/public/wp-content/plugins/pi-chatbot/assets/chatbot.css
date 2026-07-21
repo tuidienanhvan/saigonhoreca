@@ -1,41 +1,43 @@
-/* Pi Chatbot — layout theo mẫu Saigon House (header/quick-reply/messages/footer/
-   AI-engine-row), nhưng MÀU theo đúng token thật của theme saigonhoreca (đen+vàng,
-   _tokens.css) — không giữ bảng màu xanh lá gốc của Saigon House. Alias --cb-* map
-   thẳng sang token theme để phần còn lại của file không phải sửa từng dòng riêng lẻ.
+/* Pi Chatbot — layout modeled on the Saigon House template (header/quick-reply/messages/footer/
+   AI-engine-row), but the COLORS follow the actual theme tokens of saigonhoreca (black+gold,
+   _tokens.css) — not keeping Saigon House's original green palette. The --cb-* aliases map
+   directly to the theme tokens so the rest of the file doesn't need each line edited individually.
 */
 
 :root {
-    --cb-accent:       var(--cb-accent-custom, var(--p, var(--gold)));           /* Tự động lấy primary color của theme */
+    --cb-accent:       var(--cb-accent-custom, var(--p, var(--gold)));           /* Automatically picks up the theme's primary color */
     --cb-accent-hover: var(--cb-accent-custom-hover, var(--ph, var(--gold-dim, color-mix(in srgb, var(--cb-accent) 80%, #000))));
-    --cb-accent-text:  var(--pc, #000);        /* Chữ trên nền accent, đúng quy ước site */
+    --cb-accent-text:  var(--pc, #000);        /* Text on the accent background, matching the site's convention */
     --cb-accent-soft:  color-mix(in srgb, var(--cb-accent) 12%, transparent);
     --cb-accent-ring:  color-mix(in srgb, var(--cb-accent) 25%, transparent);
     --cb-accent-glow:  color-mix(in srgb, var(--cb-accent) 30%, transparent);
     --cb-accent-glow-dim: color-mix(in srgb, var(--cb-accent) 4%, transparent);
-    --cb-dark:         var(--b1);              /* Nền panel/khung tin nhắn */
-    --cb-darker:       var(--b1);              /* Ô nhập */
-    --cb-slate:        var(--b2);              /* Bong bóng chat bot */
+    --cb-dark:         var(--b1);              /* Panel/message-frame background */
+    --cb-darker:       var(--b1);              /* Input field */
+    --cb-slate:        var(--b2);              /* Bot chat bubble */
     --cb-text:         var(--bc);
     --cb-text-muted:   var(--bc3, var(--bc2));
     --cb-border:       var(--border-default, var(--bd));
-    --cb-online:       var(--su, #16a34a);     /* Chấm online trạng thái */
+    --cb-online:       var(--su, #16a34a);     /* Online status dot */
     --cb-error-bg:      color-mix(in srgb, var(--danger, #c1272d) 20%, var(--b2));
     --cb-error-text:    var(--bc);
 }
 
 #pi-chatbot-panel {
     position: fixed;
-    right: 88px; /* Bên trái cụm nút nổi */
-    /* Khớp ĐÚNG bottom của #sh-floating-buttons (16px, floating-buttons.css) —
-       đáy panel thẳng hàng với đáy cụm nút thay vì lệch tuỳ ý. */
+    right: 88px; /* Left of the floating button cluster */
+    /* Matches the EXACT bottom of #sh-floating-buttons (16px, floating-buttons.css) —
+       the panel's bottom edge lines up with the button cluster's bottom instead of being
+       offset arbitrarily. */
     bottom: 16px;
     width: clamp(320px, 88vw, 390px);
     height: clamp(400px, 68dvh, 620px);
-    /* height floor 400px vượt quá viewport ĐIỆN THOẠI NẰM NGANG (~375px cao) — @media
-       max-width bên dưới khoá theo WIDTH nên không áp dụng ở đó (812px ngang > 767px).
-       Kết quả: header (chứa nút đóng/reset) bị đẩy lên trên khỏi màn hình, không bấm
-       được. max-height thắng height trong used-value resolution nên 1 dòng này chặn
-       cả lớp bug — không cần thêm @media max-height riêng. */
+    /* The 400px height floor exceeds the viewport height on a PHONE IN LANDSCAPE (~375px
+       tall) — the @media max-width rule below only gates on WIDTH, so it doesn't apply
+       there (812px landscape width > 767px). Result: the header (containing the
+       close/reset buttons) gets pushed above the screen and becomes unclickable.
+       max-height wins over height in used-value resolution, so this one line blocks the
+       whole bug class — no separate @media max-height rule needed. */
     max-height: calc(100dvh - 32px);
     background: color-mix(in srgb, var(--cb-dark, #121212) 85%, transparent);
     backdrop-filter: blur(20px);
@@ -51,8 +53,9 @@
     transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
 }
 
-/* backdrop-filter không hỗ trợ (hoặc bị tắt) -> nền trong suốt 85% đè lên nội
-   dung trang sống phía sau, chữ gần như không đọc được. Fallback nền đặc. */
+/* backdrop-filter unsupported (or disabled) -> the 85%-transparent background sits over
+   the live page content behind it, making text nearly unreadable. Fallback to an opaque
+   background. */
 @supports not ((backdrop-filter: blur(20px)) or (-webkit-backdrop-filter: blur(20px))) {
     #pi-chatbot-panel {
         background: var(--cb-dark, #121212);
@@ -150,9 +153,9 @@
 #pi-chatbot-panel .pi-cb-messages {
     flex: 1;
     overflow-y: auto;
-    /* Chặn cuộn chuỗi (scroll chaining) sang trang nền khi chạm đáy/đỉnh khung tin
-       nhắn trên thiết bị cảm ứng — không có dòng này thì cuộn tiếp tục cuộn cả
-       trang phía sau panel, gây cảm giác "tuột tay". */
+    /* Blocks scroll chaining to the background page when hitting the bottom/top of the
+       message frame on touch devices — without this line, scrolling continues onto the
+       page behind the panel, giving a "slipped out of your hand" feeling. */
     overscroll-behavior: contain;
     padding: 20px;
     display: flex;
@@ -185,9 +188,10 @@
     align-items: center;
     justify-content: center;
 }
-/* Cột dọc dùng CHUNG 1 avatar cho cả card tiến trình lẫn bong bóng trả lời của
-   1 lượt bot — thay vì mỗi tầng là 1 hàng avatar riêng (đã sửa theo phản hồi:
-   "phải liên kết với nhau, 1 icon svg thôi, không chia ra 3 đoạn chat"). */
+/* Vertical column sharing a SINGLE avatar for both the progress card and the answer
+   bubble of 1 bot turn — instead of each tier being its own avatar row (fixed per
+   feedback: "they need to be linked together, just 1 svg icon, don't split into 3 chat
+   messages"). */
 #pi-chatbot-panel .pi-cb-msg-col {
     display: flex;
     flex-direction: column;
@@ -258,16 +262,16 @@
     display: inline-block;
 }
 #pi-chatbot-panel .pi-cb-source-item a:hover { text-decoration: underline; }
-/* ── Card tiến trình: 2 tầng "phân tích câu hỏi"/"tìm trong dữ liệu" NỐI LIỀN
-   trong CÙNG 1 card (kiểu Claude) ── nội dung là ý định/từ khoá/kết quả THẬT
-   của request (xem class-rest.php trace + JS renderStepRow/finishStep). Toàn
-   bộ card dùng CHUNG 1 avatar với bong bóng trả lời phía dưới (beginBotTurn())
-   — không phải 3 "đoạn chat" tách rời, không icon riêng mỗi hàng (1 icon svg
-   avatar là đủ, thêm icon phụ chỉ rối mắt). Mỗi hàng là 1 <details> mở ra ở
-   trạng thái "Đang…" có 3 chấm nhảy TRƯỚC, giữ 1 nhịp rồi mới chốt nhãn thật +
-   thu gọn — tạo cảm giác đang xử lý tuần tự, không phải hiện ra cùng lúc. Vẫn
-   bấm mở lại được sau khi xong (đúng bất biến a11y: không aria-hidden lên cả
-   hàng, chỉ 3 chấm trang trí mới aria-hidden). */
+/* ── Progress card: the 2 tiers "analyzing the question"/"searching the data" JOINED
+   in the SAME card (Claude-style) — the content is the REAL intent/keywords/results of
+   the request (see class-rest.php trace + JS renderStepRow/finishStep). The whole card
+   shares 1 avatar with the answer bubble below it (beginBotTurn()) — not 3 separate
+   "chat messages", no separate icon per row (1 svg avatar icon is enough; a secondary
+   icon per row would only clutter the view). Each row is a <details> that opens in an
+   "…ing" state with 3 bouncing dots FIRST, holds for a beat, then finalizes the real
+   label + collapses — creating the feel of sequential processing rather than everything
+   appearing at once. Still reopenable after completion (correct a11y invariant: no
+   aria-hidden on the whole row, only the 3 decorative dots get aria-hidden). */
 #pi-chatbot-panel .pi-cb-progress {
     background: color-mix(in srgb, var(--cb-text) 5%, transparent);
     border: 1px solid var(--cb-border);
@@ -308,13 +312,41 @@
     color: var(--cb-text);
     background: color-mix(in srgb, var(--cb-text) 3%, transparent);
 }
-#pi-chatbot-panel .pi-cb-step-label-text {
+/* Text column for 1 row: the FIXED tier heading ("Thinking"/"Data lookup") on top, the
+   REAL result (changes per question) below — previously there was only the result line,
+   with no indication of which tier was being shown. */
+#pi-chatbot-panel .pi-cb-step-text {
     flex: 1;
     min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
 }
-/* 3 chấm nhảy inline — tái dùng đúng animation pi-cb-bounce của typing dots,
-   chỉ khác kích thước/màu, để không định nghĩa 2 kiểu "đang xử lý" khác nhau
-   trong cùng 1 widget. */
+#pi-chatbot-panel .pi-cb-step-eyebrow {
+    font-size: 10.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--cb-accent);
+    opacity: 0.85;
+}
+#pi-chatbot-panel .pi-cb-step-label-text {
+    min-width: 0;
+}
+/* The REAL elapsed seconds shown for that row (measured with performance.now(), see JS
+   finishStep) — tabular-nums so the layout doesn't jump when the number changes, dimmer
+   than the main label since it's a secondary detail, similar to how Claude shows
+   "Thought for Xs". */
+#pi-chatbot-panel .pi-cb-step-time {
+    flex-shrink: 0;
+    font-size: 11px;
+    font-variant-numeric: tabular-nums;
+    color: var(--cb-text-muted);
+    opacity: 0.7;
+}
+/* Inline bouncing dots — reuses the exact same pi-cb-bounce animation as the typing
+   dots, only differing in size/color, so there aren't 2 different "processing" styles
+   defined in the same widget. */
 #pi-chatbot-panel .pi-cb-step-dots {
     display: inline-flex;
     align-items: center;
@@ -391,8 +423,9 @@
     align-items: center;
     gap: 6px;
 }
-/* Icon SVG nét thay emoji trong nhãn — kế thừa currentColor nên tự khớp
-   var(--cb-accent) của nút, không như emoji phụ thuộc font hệ điều hành. */
+/* Stroke SVG icon replacing the emoji in the label — inherits currentColor so it
+   automatically matches the button's var(--cb-accent), unlike emoji which depends on
+   the OS font. */
 #pi-chatbot-panel .pi-cb-qr-icon {
     display: inline-flex;
     flex-shrink: 0;
@@ -464,9 +497,9 @@
     opacity: 0.7;
     cursor: default;
 }
-/* Gợi ý "vẫn đang tìm" hiện sau 12s chờ — cùng thông tin với #pi-cb-status cho
-   trình đọc màn hình, nhưng người dùng SÁNG MẮT cũng thiếu tín hiệu suốt 8-40s
-   nếu chỉ có 3 chấm nhảy không đổi. */
+/* "Still searching" hint shown after 12s of waiting — same information as
+   #pi-cb-status for screen readers, but SIGHTED users also lack a signal for 8-40s if
+   all they see is the 3 unchanging bouncing dots. */
 #pi-chatbot-panel .pi-cb-slow-hint {
     font-size: 11px;
     color: var(--cb-text-muted);
@@ -507,17 +540,17 @@
         left: 12px !important;
         right: 12px !important;
         top: calc(76px + env(safe-area-inset-top, 0px) + 16px) !important; /* Header is ~76px, add 16px gap so it doesn't overlap header's bottom border */
-        /* Khớp ĐÚNG bottom mobile của #sh-floating-buttons (calc(65px + safe-area),
-           floating-buttons.css) thay vì công thức lệch riêng như trước. */
+        /* Matches the EXACT mobile bottom of #sh-floating-buttons (calc(65px + safe-area),
+           floating-buttons.css) instead of a separately offset formula like before. */
         bottom: calc(65px + env(safe-area-inset-bottom, 0px)) !important;
         width: auto !important;
         height: auto !important;
     }
 }
 
-/* Trước đây CHỈ .pi-cb-input có focus-visible — nút đóng/reset/gửi, link nguồn,
-   và <summary> hoàn toàn vô hình khi nhận focus bàn phím. Focus trap dẫn Tab
-   xuyên suốt các phần tử này nhưng người dùng không thấy mình đang ở đâu. */
+/* Previously ONLY .pi-cb-input had focus-visible — the close/reset/send buttons, source
+   links, and <summary> were completely invisible when receiving keyboard focus. The
+   focus trap moves Tab through these elements but the user couldn't see where they were. */
 #pi-chatbot-panel button:focus-visible,
 #pi-chatbot-panel a[href]:focus-visible,
 #pi-chatbot-panel summary:focus-visible {
@@ -532,13 +565,14 @@
     #pi-chatbot-panel.is-open {
         animation: none;
     }
-    /* Tắt chuyển động vô hạn của 3 chấm typing — đây là chuyển động sống lâu nhất
-       trong toàn widget (chạy suốt 8-40s chờ LLM), đúng loại "animation vô hạn"
-       mà người dùng bật reduced-motion muốn tắt. 3 chấm vẫn hiện ở kích thước tự
-       nhiên (không animation = không co về scale(0)), an toàn vì #pi-cb-status
-       giờ cung cấp trạng thái thật bằng chữ, không còn phụ thuộc hoạt ảnh này. */
-    /* Vẫn cho phép 3 chấm nhảy nhẹ (hoặc bình thường) vì người dùng muốn thấy tín hiệu đang type.
-       Đã gỡ bỏ animation: none; */
+    /* Disables the infinite motion of the 3 typing dots — the longest-lived animation in
+       the whole widget (runs for the entire 8-40s wait for the LLM), exactly the kind of
+       "infinite animation" that prefers-reduced-motion users want turned off. The 3 dots
+       still show at their natural size (no animation = no shrinking to scale(0)), which
+       is safe because #pi-cb-status now provides the real status as text and no longer
+       depends on this animation. */
+    /* Still allow the 3 dots to bounce gently (or normally) since users want to see a
+       signal that typing is happening. animation: none; has been removed. */
     #pi-chatbot-panel .pi-cb-typing .dot {
         /* animation: none; */
     }

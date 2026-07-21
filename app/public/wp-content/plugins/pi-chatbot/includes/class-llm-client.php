@@ -1,10 +1,12 @@
 <?php
 /**
- * LLM Client — gọi LLM7 API dùng chung cho Generator (soạn câu trả lời) và Router
- * (quyết định có cần enrich retrieval không). Tách khỏi Generator để mỗi bên tự
- * cấu hình timeout/số lần thử riêng — Router cần 1 lần gọi, timeout ngắn (lưới an
- * toàn phụ, không đáng đánh đổi thêm giây chờ cho retry); Generator cần 2 lần thử,
- * timeout dài hơn (đường chính, đáng đánh đổi để tăng tỉ lệ thành công).
+ * LLM Client — calls the LLM7 API, shared by the Generator (composing answers)
+ * and the Router (deciding whether retrieval enrichment is needed). Split out
+ * of Generator so each caller can configure its own timeout/retry count —
+ * Router needs a single call with a short timeout (a secondary safety net, not
+ * worth trading extra wait time for retries); Generator needs 2 attempts with a
+ * longer timeout (the main path, where a higher success rate is worth the
+ * trade-off).
  *
  * @package PiChatbot
  */
@@ -15,15 +17,17 @@ class Pi_Chatbot_LLM_Client {
     const API_URL = 'https://api.llm7.io/v1/chat/completions';
 
     /**
-     * Round-robin qua tối đa $max_attempts key LLM7 — key nào lỗi (hết quota/timeout)
-     * thử key kế tiếp. Nguyên văn logic đã có ở Generator::call_llm7() trước đây,
-     * chỉ tham số hoá timeout/max_attempts thay vì hằng số cứng của riêng Generator.
+     * Round-robins through up to $max_attempts LLM7 keys — if a key fails
+     * (quota exhausted/timeout), try the next one. Logic is unchanged from what
+     * previously lived in Generator::call_llm7(); only the timeout/max_attempts
+     * are now parameterized instead of being Generator's own hardcoded
+     * constants.
      *
-     * @param array    $body         Payload gửi tới LLM7 (model, messages, ...).
-     * @param string[] $keys         Danh sách key, thử theo thứ tự.
-     * @param int      $timeout      Giây, áp dụng cho MỖI lần gọi.
-     * @param int      $max_attempts Số key tối đa được thử.
-     * @param string   $log_prefix   Tiền tố log để phân biệt Generator/Router trong error_log.
+     * @param array    $body         Payload sent to LLM7 (model, messages, ...).
+     * @param string[] $keys         List of keys, tried in order.
+     * @param int      $timeout      Seconds, applied to EACH call.
+     * @param int      $max_attempts Maximum number of keys to try.
+     * @param string   $log_prefix   Log prefix to distinguish Generator/Router in error_log.
      * @return array|WP_Error
      */
     public static function call($body, $keys, $timeout, $max_attempts, $log_prefix = 'pi-chatbot') {
@@ -57,14 +61,14 @@ class Pi_Chatbot_LLM_Client {
                 return $data;
             }
 
-            error_log("[{$log_prefix}] LLM7 trả lỗi HTTP {$code} (key {$attempts}/{$max_attempts}): " . substr((string) $raw, 0, 500));
-            $last_error = new WP_Error('pi_chatbot_llm7_error', 'LLM7 trả lỗi (HTTP ' . $code . ').', $raw);
+            error_log("[{$log_prefix}] LLM7 returned HTTP error {$code} (key {$attempts}/{$max_attempts}): " . substr((string) $raw, 0, 500));
+            $last_error = new WP_Error('pi_chatbot_llm7_error', 'LLM7 returned an error (HTTP ' . $code . ').', $raw);
         }
 
-        return $last_error ?: new WP_Error('pi_chatbot_no_key', 'Chưa cấu hình API key LLM7.');
+        return $last_error ?: new WP_Error('pi_chatbot_no_key', 'No LLM7 API key configured.');
     }
 
-    /** Rút content text từ response thô — dùng chung, tránh lặp lại ?? chuỗi ở nhiều nơi. */
+    /** Extracts the content text from a raw response — shared helper to avoid repeating the same ?? chain in multiple places. */
     public static function content($response) {
         return trim((string) ($response['choices'][0]['message']['content'] ?? ''));
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * Retriever — full-text search có trọng số, không embedding/vector DB.
+ * Retriever — weighted full-text search, no embeddings/vector DB.
  *
  * @package PiChatbot
  */
@@ -9,36 +9,40 @@ if (!defined('ABSPATH')) exit;
 
 class Pi_Chatbot_Retriever {
 
-    // Gom hằng số dùng lặp lại nhiều nơi trong file (audit flag: trước đây là số
-    // cứng rải rác — 3 xuất hiện ở cả extract_keyword_list lẫn docblock, 400 chỉ
-    // ở make_excerpt nhưng đặt tên cho rõ nghĩa, dễ chỉnh 1 chỗ khi cần).
-    const MIN_TOKEN_LENGTH = 3; // khớp innodb_ft_min_token_size mặc định của MySQL
+    // Constants used repeatedly throughout the file (audit flag: previously these
+    // were hardcoded numbers scattered around — 3 appeared both in
+    // extract_keyword_list and in docblocks, 400 only in make_excerpt — now named
+    // for clarity and so they can be tuned in one place when needed).
+    const MIN_TOKEN_LENGTH = 3; // matches MySQL's default innodb_ft_min_token_size
     const EXCERPT_LENGTH = 400;
-    const OR_FALLBACK_SCORE_RATIO = 0.35; // quorum: giữ kết quả ≥35% điểm cao nhất
+    const OR_FALLBACK_SCORE_RATIO = 0.35; // quorum: keep results scoring ≥35% of the top score
 
     /**
-     * P2 audit 2026-07-20 — sửa bug: bonus phẳng 0.01/từ ở verify_and_score()
-     * không bao giờ đảo được thứ hạng thật (gap giữa các hạng đo được 0.1-0.3,
-     * bonus tối đa cũ 4×0.01=0.04 — nhỏ hơn 1 bậc). Đồng thời từ 2 ký tự
-     * (MIN_TOKEN_LENGTH) không index được qua FULLTEXT (innodb_ft_min_token_size=3)
-     * nên KHÔNG THỂ đưa thẳng vào MATCH AGAINST — sửa đúng phải là: (a) đo độ
-     * hiếm thật (IDF) cho mọi từ kể cả từ ngắn, (b) từ ngắn hiếm được thêm làm
-     * điều kiện LIKE bắt buộc (không chỉ cộng điểm), (c) trọng số điểm theo
-     * IDF × vị trí trường (title ≫ brand/category > content) thay vì phẳng.
-     * Câu bug gốc: "máy làm đá tự động" → long=[máy,động] short=[đá,tự].
-     * "đá" hiếm (66/381 SP, IDF cao) phải thắng "động" phổ biến (IDF thấp).
+     * P2 audit 2026-07-20 — bug fix: the flat 0.01/word bonus in verify_and_score()
+     * could never actually flip real rankings (the measured gap between ranks was
+     * 0.1-0.3, while the old max bonus was 4×0.01=0.04 — smaller than a single rank
+     * step). At the same time, 2-character words (below MIN_TOKEN_LENGTH) can't be
+     * indexed by FULLTEXT (innodb_ft_min_token_size=3), so they CANNOT be fed
+     * directly into MATCH AGAINST — the correct fix is: (a) measure true rarity
+     * (IDF) for every word, including short ones, (b) rare short words get added as
+     * a mandatory LIKE condition (not just a score bonus), (c) score weighting is
+     * IDF × field position (title ≫ brand/category > content) instead of flat.
+     * The original bug case: "máy làm đá tự động" ("automatic ice machine") →
+     * long=[máy,động] short=[đá,tự]. "đá" ("ice") is rare (66/381 products, high IDF)
+     * and should outrank the common "động" ("auto-", low IDF).
      */
-    const IDF_RARE_THRESHOLD = 1.0;  // log(N/df) > 1.0 ~ df dưới ~37% tổng số SP
-    const IDF_FLOOR = 0.15;          // sàn — từ cực phổ biến vẫn có chút trọng số
+    const IDF_RARE_THRESHOLD = 1.0;  // log(N/df) > 1.0 ~ df below ~37% of total products
+    const IDF_FLOOR = 0.15;          // floor — extremely common words still keep a little weight
     const FIELD_WEIGHT_TITLE = 1.0;
     const FIELD_WEIGHT_BRAND_CATEGORY = 0.6;
     const FIELD_WEIGHT_CONTENT = 0.3;
 
     /**
-     * Stopword tiếng Việt phổ biến — MySQL FULLTEXT chỉ có stopword list tiếng Anh
-     * mặc định nên "của/và/có/không/về..." không bị lọc, làm lệch điểm về phía các
-     * trang dài (project) lặp nhiều từ chức năng thay vì trang thật sự liên quan.
-     * Lọc thủ công ở tầng ứng dụng trước khi build câu truy vấn FULLTEXT.
+     * Common Vietnamese stopwords — MySQL FULLTEXT only ships a default English
+     * stopword list, so words like "của/và/có/không/về..." ("of/and/have/not/about")
+     * don't get filtered, skewing scores toward long pages (projects) that repeat
+     * many function words rather than pages that are actually relevant. Filtered
+     * manually at the application layer before building the FULLTEXT query.
      */
     private static $stopwords = [
         'là', 'và', 'của', 'có', 'không', 'về', 'cho', 'với', 'các', 'những',
@@ -48,163 +52,94 @@ class Pi_Chatbot_Retriever {
         'như', 'từ', 'trên', 'dưới', 'nào', 'gì', 'sao', 'làm', 'bị', 'còn',
         'hay', 'hoặc', 'nếu', 'vì', 'nên', 'do', 'bởi', 'lại', 'đây', 'kìa',
         'bên', 'ấy', 'vầy', 'ha', 'nhỉ',
-        // Danh từ chung chung xuất hiện gần như trong mọi bản ghi (không phân biệt được
-        // đối tượng cụ thể) — lọc riêng khỏi stopword ngữ pháp ở trên. "công"/"nghiệp"
-        // thêm sau audit 2026-07-18: "thiết bị bếp công nghiệp" là tagline của site,
-        // lặp lại trong hầu hết trang dự án lẫn sản phẩm — ở tầng quorum (OR fallback,
-        // xem search_fulltext) 2 từ này một mình đủ khiến trang dự án dài thắng điểm
-        // sản phẩm thật (bug thật bắt được khi test lại câu hỏi mẫu trong audit: "tủ
-        // lạnh công nghiệp inox 4 cánh" trả về toàn trang dự án, không ra tủ lạnh nào).
+        // Generic nouns that appear in almost every record (don't distinguish any
+        // specific subject) — filtered separately from the grammatical stopwords
+        // above. "công"/"nghiệp" ("industrial") added after the 2026-07-18 audit:
+        // "thiết bị bếp công nghiệp" ("industrial kitchen equipment") is the site's
+        // tagline, repeated in nearly every project page as well as product pages —
+        // at the quorum tier (OR fallback, see search_fulltext) these two words
+        // alone were enough to make a long project page outscore a real product
+        // (real bug caught when re-testing a sample audit question: "tủ lạnh công
+        // nghiệp inox 4 cánh" ["industrial 4-door stainless steel fridge"] returned
+        // only project pages, no fridges at all).
         'sản', 'phẩm', 'loại', 'cái', 'chiếc', 'giá', 'bao', 'nhiêu', 'hàng', 'đồ',
         'công', 'nghiệp',
-        // Chào hỏi/xã giao — các trang (đặc biệt trang dự án, giới thiệu) hay lặp
-        // "xin chào", "cảm ơn quý khách" trong nội dung, nên câu chào đơn thuần dễ
-        // khớp trúng những trang không liên quan (bug đã gặp: hỏi "chào" ra nguồn
-        // lung tung). Coi như stopword để câu chào thuần không kéo theo nguồn giả.
+        // Greetings/pleasantries — pages (especially project and about-us pages)
+        // often repeat "xin chào" ("hello"), "cảm ơn quý khách" ("thank you,
+        // valued customer") in their content, so a plain greeting easily matches
+        // unrelated pages (bug observed: asking "chào" ["hi"] returned scattered,
+        // irrelevant sources). Treated as stopwords so a pure greeting doesn't
+        // drag in fake sources.
         'chào', 'chao', 'hi', 'hello', 'alo', 'dạ', 'vâng', 'ok', 'oke', 'okay',
         'cảm', 'ơn', 'cám', 'thanks', 'hey',
-        // "shop" — từ mượn tiếng Anh cực phổ biến trong cách khách Việt xưng hô
-        // với người bán ("chào shop", "shop ơi"...). Trước khi có 147 sản phẩm
-        // tiếng Anh (đợt import brand mới 2026-07-21), không ai để ý vì toàn bộ
-        // content_text đều tiếng Việt — "shop" không hề xuất hiện đâu trong dữ
-        // liệu để gây hại. Giờ mô tả tiếng Anh của sản phẩm mới có câu marketing
-        // dùng đúng chữ "shops" (vd "bakeries, pastry shops and hotels"), nên
-        // "chào shop" thật sự khớp nhầm sản phẩm không liên quan (bug đo được
-        // qua eval-retrieval.php: nhóm 6_tan_gau tụt 0.800→0.700). Chỉ thêm từ
-        // này — "free"/"new" cũng có nguy cơ tương tự (đã thử) nhưng CHƯA có
-        // ca thật nào trong bộ 68 câu bị fail vì chúng, nên chưa thêm (nguyên
-        // tắc: chỉ thêm stopword khi có bằng chứng thật, tránh whack-a-mole).
+        // "shop" — an extremely common English loanword in how Vietnamese
+        // customers address a seller ("chào shop" ["hi there, shop"], "shop
+        // ơi"...). Before the site had 147 English-language products (added in
+        // the 2026-07-21 new-brand import), nobody noticed because content_text
+        // was entirely Vietnamese — "shop" never appeared anywhere in the data to
+        // cause harm. Now the English descriptions of the new products contain
+        // marketing copy that literally uses the word "shops" (e.g. "bakeries,
+        // pastry shops and hotels"), so "chào shop" genuinely matches unrelated
+        // products (bug measured via eval-retrieval.php: the 6_tan_gau
+        // ["small talk"] test group dropped 0.800→0.700). Only this word was
+        // added — "free"/"new" carry a similar risk (tried) but had NO real
+        // failing case in the 68-question test set yet, so they were not added
+        // (principle: only add a stopword with real evidence, to avoid
+        // whack-a-mole).
         'shop',
-        // Đại từ xưng hô + động từ tán gẫu thông thường — bug thật bắt được: "Anh
-        // thích em" (câu tán gẫu, không phải hỏi sản phẩm) vẫn còn lại "anh"+"thích"
-        // sau lọc, cả 2 đều là từ rất phổ biến trong văn bản marketing/mô tả sản
-        // phẩm ("anh/chị", "khách hàng yêu thích"...) nên khớp bừa ra nguồn sản phẩm
-        // không liên quan. Coi là stopword — câu tán gẫu thuần sẽ không còn từ khoá
-        // nào, rơi về context rỗng, AI trả lời xã giao bình thường không kèm nguồn.
+        // Address pronouns + common small-talk verbs — real bug caught: "Anh
+        // thích em" ("I like you" — small talk, not a product question) still
+        // left "anh" ("you"/"brother") + "thích" ("like") after filtering, both
+        // very common words in marketing copy/product descriptions ("anh/chị"
+        // ["sir/madam"], "khách hàng yêu thích" ["customers love"]...), so they
+        // matched unrelated product sources indiscriminately. Treated as
+        // stopwords — a pure small-talk message ends up with no keywords left,
+        // falls back to empty context, and the AI replies conversationally
+        // without attaching sources.
         'anh', 'chị', 'cô', 'chú', 'bác', 'ông', 'bà', 'em', 'tao', 'mày', 'nó', 'ta',
         'thích', 'yêu', 'ghét', 'nhớ', 'thương', 'đẹp', 'xấu', 'giỏi', 'vui', 'buồn', 'cưng',
         'ghê', 'quá', 'lắm', 'trời', 'ối', 'ủa', 'ừ', 'ừm', 'dạo',
-        // "người" — bug thật bắt được: "Tôi muốn có người yêu" chỉ còn lại "người"
-        // sau lọc, nhưng đây là danh từ CỰC kỳ chung chung, xuất hiện tự nhiên trong
-        // rất nhiều mô tả sản phẩm thật ("phù hợp phục vụ đông người", "tiết kiệm
-        // nhân công"...). Không phải lỗi project-vs-product (only_products() đã lọc
-        // đúng) — sản phẩm THẬT cũng chứa từ này nên vẫn khớp. Phải chặn ở tầng từ
-        // vựng vì bản thân từ không mang tín hiệu phân biệt sản phẩm nào cả.
+        // "người" ("person/people") — real bug caught: "Tôi muốn có người yêu"
+        // ("I want a girlfriend/boyfriend") left only "người" after filtering,
+        // but this is an EXTREMELY generic noun that occurs naturally in a great
+        // many real product descriptions ("phù hợp phục vụ đông người" ["suited
+        // for serving large crowds"], "tiết kiệm nhân công" ["saves on
+        // labor"]...). This isn't a project-vs-product issue (only_products()
+        // already filters correctly) — REAL products also contain this word, so
+        // it still matches. Must be blocked at the vocabulary level, since the
+        // word itself carries no signal that distinguishes any particular
+        // product.
         'người',
-        // "bé" — bug thật bắt được: "Chào em bé" chỉ còn lại "bé" (2 ký tự) sau lọc,
-        // rơi vào $short (LIKE fallback cho token dưới MIN_TOKEN_LENGTH — cố ý giữ
-        // để tra được mã hàng ngắn như "hr"/"se"). Nhưng "bé" KHÔNG phải mã hàng, nó
-        // là từ xã giao ("em bé"), và LIKE '%bé%' khớp bừa vào bất kỳ từ nào CHỨA "bé"
-        // làm chuỗi con — "sắc bén" (dao/lưỡi cắt), "khóa trẻ em"... khớp trúng 3 sản
-        // phẩm không liên quan (Bếp Điện, 2 Máy Cắt Thịt) chỉ vì mô tả có chữ "bén".
-        // Coi là stopword — cùng nguyên tắc với "người"/"chào": từ quá chung chung để
-        // phân biệt sản phẩm, và ở đây còn gây substring-match sai do quá ngắn.
+        // "bé" ("little/baby") — real bug caught: "Chào em bé" ("hello baby")
+        // left only "bé" (2 characters) after filtering, landing in $short (the
+        // LIKE fallback for tokens below MIN_TOKEN_LENGTH — kept intentionally so
+        // short product codes like "hr"/"se" can still be looked up). But "bé" is
+        // NOT a product code, it's a pleasantry ("em bé" = "baby"), and
+        // LIKE '%bé%' matches indiscriminately against any word CONTAINING "bé"
+        // as a substring — "sắc bén" ("sharp" — knife/blade), "khóa trẻ em"
+        // ("child lock")... matched 3 unrelated products (an electric stove, 2
+        // meat slicers) just because their descriptions contained "bén" ("sharp").
+        // Treated as a stopword — same principle as "người"/"chào": the word is
+        // too generic to distinguish any product, and here it also causes a false
+        // substring match because it's so short.
         'bé',
     ];
 
-    /**
-     * Từ khoá nhận diện ý định "hỏi thông tin liên hệ" — hotline/địa chỉ/email/liên hệ.
-     * Trang "Liên Hệ" thật (`/lien-he/`) chỉ có ~10 ký tự trong index (nội dung là
-     * form/shortcode, `post_content` gần rỗng) nên KHÔNG BAO GIỜ thắng full-text so
-     * với các trang dự án dài lỡ nhắc "liên hệ" nhiều lần trong bài (CTA cuối bài) —
-     * bug thật đã gặp: hỏi "liên hệ như nào" ra toàn dự án không liên quan làm nguồn.
-     * Nhận diện riêng, trả thẳng dữ liệu liên hệ THẬT (saigonhouse_get_contact_info,
-     * theme đã có sẵn) thay vì để full-text tự đoán.
-     */
-    private static $contact_keywords = ['liên hệ', 'lien he', 'hotline', 'số điện thoại', 'sdt', 'sđt', 'địa chỉ', 'dia chi', 'email'];
-
-    /**
-     * Từ khoá nhận diện ý định "hỏi giá". Đo trực tiếp trên dữ liệu thật trước khi
-     * thêm 'giá' trần: 0/381 tiêu đề sản phẩm dùng "giá" như danh từ (giá inox/giá
-     * kệ/giá đỡ...) — an toàn dùng bare "giá" không sợ cướp mất câu hỏi kệ/giá đỡ
-     * thật. Kho hàng có 0/381 sản phẩm chứa giá tiền (VNĐ/VND/mẫu số tiền đều = 0)
-     * nên KHÔNG có đường nào trả lời giá đúng bằng full-text — phải trả lời thật
-     * thà là giá tuỳ cấu hình, mời gọi hotline, thay vì để full-text đính bừa 6 sản
-     * phẩm ngẫu nhiên làm "Nguồn" (bug thật đo được: "Báo giá" → top là "Tủ đông
-     * làm lạnh nhanh AT-5 Sammic", không liên quan gì tới câu hỏi).
-     */
-    private static $price_keywords = [
-        'báo giá', 'bao gia', 'bảng giá', 'bang gia', 'giá bao nhiêu', 'gia bao nhieu',
-        'bao nhiêu tiền', 'bao nhieu tien', 'giá cả', 'gia ca', 'giá thành', 'gia thanh',
-        'giá sỉ', 'gia si', 'giá lẻ', 'gia le', 'chi phí', 'chi phi', 'mấy tiền', 'may tien',
-        'chiết khấu', 'chiet khau', 'khuyến mãi', 'khuyen mai', 'giá',
-    ];
-
-    /**
-     * Từ khoá nhận diện ý định "hỏi dịch vụ" — dịch vụ thật (tư vấn thiết kế, thi
-     * công lắp đặt, cung cấp thiết bị, tư vấn vận hành) nằm trong mô tả công ty của
-     * theme, KHÔNG nằm trong bảng index: 5/8 bản ghi post_type=page gần như rỗng
-     * (3 trang 0 ký tự), không đủ để full-text trả lời.
-     */
-    private static $service_keywords = ['dịch vụ', 'dich vu', 'lắp đặt', 'lap dat', 'bảo hành', 'bao hanh', 'bảo trì', 'bao tri', 'tư vấn thiết kế', 'tu van thiet ke'];
-
-    /**
-     * Từ khoá nhận diện ý định "hỏi mẫu thiết kế / dự án đã thi công" — nội dung
-     * này nằm trong 30 bản ghi post_type=project (trung bình 5.234 ký tự — sâu nhất
-     * site), nhưng only_products() chặn project khỏi MỌI đường retrieval khác.
-     * Khoá ý định là cách MỞ đường riêng cho project mà KHÔNG nới lỏng only_products()
-     * ở đường sản phẩm: project chỉ thi đấu với project, không bao giờ trộn vào câu
-     * hỏi sản phẩm thường.
-     */
-    private static $project_keywords = ['mẫu thiết kế', 'mau thiet ke', 'dự án', 'du an', 'công trình', 'cong trinh', 'đã thi công', 'da thi cong', 'mẫu bếp', 'mau bep'];
-
-    /** So khớp câu hỏi (đã hạ chữ thường) với 1 danh sách từ khoá — dùng chung cho
-     *  mọi intent (contact/price/service/project) thay vì lặp lại cùng 1 vòng lặp. */
-    private static function match_intent($question, $keywords) {
-        $q = mb_strtolower(trim((string) $question));
-        foreach ($keywords as $kw) {
-            if (mb_strpos($q, $kw) !== false) return true;
-        }
-        return false;
-    }
-
-    public static function is_contact_intent($question) {
-        return self::match_intent($question, self::$contact_keywords);
-    }
-
-    public static function is_price_intent($question) {
-        return self::match_intent($question, self::$price_keywords);
-    }
-
-    public static function is_service_intent($question) {
-        return self::match_intent($question, self::$service_keywords);
-    }
-
-    public static function is_project_intent($question) {
-        return self::match_intent($question, self::$project_keywords);
-    }
-
-    /**
-     * Bỏ các cụm từ đã kích hoạt intent (liên hệ/giá/dịch vụ) khỏi câu hỏi trước khi
-     * đưa vào retrieval — phần còn lại mới là mô tả sản phẩm thật. Không bóc thì
-     * "báo giá" sau lọc stopword chỉ còn "báo" (vì "giá" đã là stopword) → truy vấn
-     * +báo* khớp bừa (bug thật đo được). "báo giá tủ đông Hoshizaki" → bóc còn "tủ
-     * đông Hoshizaki" → vẫn ra đúng sản phẩm, không mất phần mô tả thật.
-     */
-    public static function strip_intent_phrases($question) {
-        $result = (string) $question;
-        $all = array_merge(self::$contact_keywords, self::$price_keywords, self::$service_keywords, self::$project_keywords);
-        // Sort dài trước để "báo giá" bị bóc trước "giá" (tránh bóc 1 phần rồi để
-        // sót ký tự rác giữa câu).
-        usort($all, function ($a, $b) { return mb_strlen($b) - mb_strlen($a); });
-        foreach ($all as $kw) {
-            $result = str_ireplace($kw, ' ', $result);
-        }
-        return trim(preg_replace('/\s+/u', ' ', $result));
-    }
-
-    /** Context tổng hợp từ dữ liệu liên hệ thật của theme — không qua full-text. */
+    /** Contact info assembled from the theme's real data — no full-text search
+     *  involved. Dispatched by Pi_Chatbot_Router's intent='contact' classification
+     *  (rule-based keyword matching was removed — the router now classifies
+     *  every message). */
     public static function contact_context() {
         if (!function_exists('saigonhouse_get_contact_info')) return [];
         $c = saigonhouse_get_contact_info();
         $excerpt = sprintf(
-            'Hotline: %s (hoặc %s). Email: %s. Địa chỉ: %s. Website: %s.',
+            'Hotline: %s (or %s). Email: %s. Address: %s. Website: %s.',
             $c['hotline'] ?? '', $c['hotline_alt'] ?? '', $c['email_primary'] ?? '',
             $c['address'] ?? '', $c['website'] ?? ''
         );
         return [[
             'post_id'  => 0,
-            'title'    => 'Thông tin liên hệ Saigon Horeca',
+            'title'    => 'Saigon Horeca contact information',
             'brand'    => '',
             'category' => '',
             'url'      => home_url('/lien-he/'),
@@ -214,22 +149,24 @@ class Pi_Chatbot_Retriever {
     }
 
     /**
-     * Context trung thực cho câu hỏi giá — KHÔNG bịa số, KHÔNG đính sản phẩm ngẫu
-     * nhiên làm nguồn (bug cũ). Đây phải NẰM TRONG context (không chỉ trong system
-     * prompt) vì SYSTEM_PROMPT bắt model chỉ trả lời dựa trên context — thiếu dữ
-     * liệu ở đây thì model sẽ tự sáng tác thay vì nói thật là chưa có giá niêm yết.
+     * Honest context for pricing questions — no invented numbers, no random
+     * product attached as a source (old bug). This MUST live in the context
+     * (not just the system prompt) because SYSTEM_PROMPT tells the model to
+     * answer only from context — without data here the model would make
+     * something up instead of truthfully saying pricing isn't listed.
+     * Dispatched by Pi_Chatbot_Router's intent='price'.
      */
     public static function price_context() {
         if (!function_exists('saigonhouse_get_contact_info')) return [];
         $c = saigonhouse_get_contact_info();
         $excerpt = sprintf(
-            'Giá thiết bị bếp công nghiệp phụ thuộc cấu hình, kích thước và số lượng đặt hàng nên không niêm yết cố định trên website. '
-            . 'Quý khách vui lòng liên hệ hotline %s (hoặc %s) hoặc email %s để được báo giá chính xác theo nhu cầu.',
+            'Pricing for commercial kitchen equipment depends on configuration, size, and order quantity, so it is not listed on the website. '
+            . 'Please contact hotline %s (or %s) or email %s for an accurate quote.',
             $c['hotline'] ?? '', $c['hotline_alt'] ?? '', $c['email_primary'] ?? ''
         );
         return [[
             'post_id'  => 0,
-            'title'    => 'Chính sách báo giá Saigon Horeca',
+            'title'    => 'Saigon Horeca pricing policy',
             'brand'    => '',
             'category' => '',
             'url'      => home_url('/lien-he/'),
@@ -238,7 +175,9 @@ class Pi_Chatbot_Retriever {
         ]];
     }
 
-    /** Context mô tả dịch vụ thật của công ty — chính xác hơn 8 trang page (5/8 gần rỗng). */
+    /** Real company service description — more accurate than the 8 static
+     *  `page` posts (5/8 of which are near-empty). Dispatched by
+     *  Pi_Chatbot_Router's intent='service'. */
     public static function service_context() {
         if (!function_exists('saigonhouse_get_contact_info')) return [];
         $c = saigonhouse_get_contact_info();
@@ -246,7 +185,7 @@ class Pi_Chatbot_Retriever {
         if ($desc === '') return [];
         return [[
             'post_id'  => 0,
-            'title'    => 'Dịch vụ Saigon Horeca',
+            'title'    => 'Saigon Horeca services',
             'brand'    => '',
             'category' => '',
             'url'      => home_url('/gioi-thieu/'),
@@ -256,10 +195,10 @@ class Pi_Chatbot_Retriever {
     }
 
     /**
-     * Tìm trong 30 bản ghi post_type=project — CHỈ chạy khi is_project_intent() đã
-     * xác nhận khách hỏi đúng về mẫu thiết kế/dự án. Project không bao giờ trộn vào
-     * đường sản phẩm (only_products() vẫn nguyên vẹn ở mọi nơi khác) — đây là
-     * đường RIÊNG, khoá bằng ý định, không phải nới lỏng luật cũ.
+     * Search the 30 post_type=project records — dispatched by Pi_Chatbot_Router's
+     * intent='project' classification. Projects never mix into the product
+     * path (only_products() stays intact everywhere else) — this is a
+     * dedicated path, gated by intent, not a relaxation of that rule.
      */
     public static function search_projects($question, $top_k = 4) {
         list($long, $short) = self::extract_keyword_list($question);
@@ -281,9 +220,10 @@ class Pi_Chatbot_Retriever {
             if ($rows) return self::format_rows($rows, $words);
         }
 
-        // Không khớp từ khoá cụ thể nào (câu hỏi kiểu "cho xem mẫu thiết kế" chung
-        // chung) — vẫn trả vài dự án thật thay vì rơi vào "không tìm thấy" oan uổng,
-        // giống hệt tinh thần search_within_brand().
+        // No specific keyword matched (a generic question like "cho xem mẫu thiết
+        // kế" ["show me a design sample"]) — still return a few real projects
+        // instead of wrongly falling back to "not found", in the same spirit as
+        // search_within_brand().
         $rows = $wpdb->get_results($wpdb->prepare(
             "SELECT post_id, post_type, title, brand, category, url, content_text, 1.0 AS score
              FROM {$table} WHERE post_type = 'project'
@@ -294,27 +234,31 @@ class Pi_Chatbot_Retriever {
     }
 
     /**
-     * Trả top-K bản ghi liên quan nhất tới câu hỏi.
+     * Return the top-K records most relevant to the question.
      *
-     * Chiến lược "entity-first" (đúc kết sau nghiên cứu RAG cho dữ liệu nhỏ, không
-     * vector DB — xem class-entities.php): nếu câu hỏi nhắc TÊN THƯƠNG HIỆU thật đã
-     * biết, lọc CỨNG theo cột `brand` trước (WHERE brand = X — chính xác 100%), rồi
-     * mới dùng full-text để XẾP HẠNG trong phạm vi đó. Full-text bag-of-words thuần
-     * (coi brand ngang hàng mọi từ khác trong 1 điều kiện AND lớn) từng gây sai lệch
-     * khi câu hỏi có thêm từ phổ biến — lọc cứng theo brand loại bỏ hẳn rủi ro đó.
-     * Không nhận diện brand thì mới rơi về full-text thuần trên toàn bộ index.
+     * "Entity-first" strategy (arrived at after researching RAG for small
+     * datasets with no vector DB — see class-entities.php): if the question
+     * mentions a real, already-known BRAND NAME, filter HARD on the `brand`
+     * column first (WHERE brand = X — 100% precise), and only THEN use
+     * full-text to RANK within that scope. Pure bag-of-words full-text (treating
+     * brand as just another word ANDed with everything else) previously caused
+     * inaccuracies when the question had extra common words — hard-filtering by
+     * brand eliminates that risk entirely. Only falls back to pure full-text
+     * over the whole index when no brand is recognized.
      */
     public static function search($question, $top_k = 6) {
         $question = trim(wp_strip_all_tags($question));
         if ($question === '') return [];
 
-        // Tầng 0 — mã sản phẩm (P2 audit 2026-07-20, Bước 3 của plan). Mã kiểu
-        // "FT-126MA-S" là ĐỊNH DANH, không phải cụm từ ngữ nghĩa — tokenizer
-        // thường cắt theo mọi ký tự không phải chữ/số nên vỡ thành ft/126ma/s,
-        // và hậu tố 1 ký tự "s" bị extract_keyword_list() vứt bỏ hoàn toàn
-        // (< 2 ký tự) → không còn phân biệt được "FT-126MA-S" với biến thể
-        // "FT-126MA-S-3D"/"FT-126MA-S-ML". Khớp trực tiếp vào title trước khi
-        // vào FULLTEXT giải quyết đúng gốc, không phải vá thêm luật cho tokenizer.
+        // Tier 0 — product codes (P2 audit 2026-07-20, step 3 of the plan). A
+        // code like "FT-126MA-S" is an IDENTIFIER, not a semantic phrase — the
+        // tokenizer usually splits on every non-alphanumeric character, breaking
+        // it into ft/126ma/s, and the 1-character suffix "s" gets dropped
+        // entirely by extract_keyword_list() (< 2 characters) → so "FT-126MA-S"
+        // could no longer be distinguished from variants like
+        // "FT-126MA-S-3D"/"FT-126MA-S-ML". Matching directly against the title
+        // before falling through to FULLTEXT fixes the root cause, rather than
+        // patching more rules onto the tokenizer.
         $codes = self::extract_product_codes($question);
         if ($codes) {
             $code_results = self::search_by_product_code($codes, $top_k);
@@ -324,8 +268,9 @@ class Pi_Chatbot_Retriever {
         list($long, $short) = self::extract_keyword_list($question);
         if (!$long && !$short) return [];
 
-        // Pi_Chatbot_Entities luôn được require_once trước Retriever ở pi-chatbot.php
-        // (thứ tự load cố định) — không cần class_exists() phòng thủ.
+        // Pi_Chatbot_Entities is always require_once'd before Retriever in
+        // pi-chatbot.php (fixed load order) — no need for a defensive
+        // class_exists() check.
         $brands = Pi_Chatbot_Entities::extract_brands($question);
         if ($brands) {
             return self::search_within_brands($brands, $long, $short, $top_k);
@@ -335,12 +280,15 @@ class Pi_Chatbot_Retriever {
     }
 
     /**
-     * Nhận diện NHIỀU brand trong 1 câu hỏi (trước đây chỉ lấy brand đầu tiên khớp,
-     * brand thứ 2 trở đi bị bỏ qua hoàn toàn — audit flag: câu so sánh kiểu
-     * "Hoshizaki với Giorik cái nào tốt hơn" chỉ lọc cứng theo 1 trong 2 brand).
-     * 1 brand: xử lý như cũ. ≥2 brand: chia đều $top_k cho từng brand rồi gộp kết
-     * quả — đảm bảo MỖI brand đều có đại diện trong context, tránh brand có điểm
-     * full-text cao hơn lấn át hoàn toàn brand còn lại trong câu hỏi so sánh.
+     * Recognize MULTIPLE brands in a single question (previously only the first
+     * matched brand was used, any brand from the second onward was dropped
+     * entirely — audit flag: a comparison question like "Hoshizaki với Giorik
+     * cái nào tốt hơn" ["which is better, Hoshizaki or Giorik"] only hard-filtered
+     * on one of the two brands). 1 brand: handled as before. ≥2 brands: split
+     * $top_k evenly across each brand and merge the results — ensuring EVERY
+     * brand gets representation in the context, preventing a brand with a
+     * higher full-text score from completely drowning out the other brand in a
+     * comparison question.
      */
     private static function search_within_brands($brands, $long, $short, $top_k) {
         if (count($brands) === 1) {
@@ -355,11 +303,12 @@ class Pi_Chatbot_Retriever {
     }
 
     /**
-     * Tìm trong phạm vi 1 brand đã nhận diện chắc chắn. Thử full-text trên các từ
-     * khoá còn lại trước (xếp hạng đúng sản phẩm cụ thể hơn); nếu rỗng (câu hỏi chỉ
-     * nhắc brand không kèm mô tả, hoặc mô tả không khớp từ nào) vẫn trả về vài sản
-     * phẩm THẬT của brand đó (không lọc từ khoá) — AI luôn có dữ liệu thật để trả
-     * lời thay vì rơi vào "không tìm thấy" một cách oan uổng.
+     * Search within the scope of a single confidently-recognized brand. Try
+     * full-text on the remaining keywords first (ranks specific products more
+     * accurately); if empty (the question only mentions the brand with no
+     * description, or the description matches no words) still return a few
+     * REAL products of that brand (no keyword filtering) — the AI always has
+     * real data to answer from instead of wrongly falling into "not found".
      */
     private static function search_within_brand($brand, $long, $short, $top_k) {
         if ($long || $short) {
@@ -367,19 +316,22 @@ class Pi_Chatbot_Retriever {
             if ($results) return $results;
         }
 
-        // Fallback: full-text không khớp gì trong phạm vi brand (câu hỏi chỉ nhắc
-        // brand không kèm mô tả, hoặc mô tả không khớp từ nào). Trước đây thiếu
-        // "AND post_type = 'product'" và gọi thẳng format_rows() bỏ qua
-        // only_products() — vi phạm nguyên tắc chỉ-sản-phẩm mà mọi đường khác trong
-        // file này tuân thủ, để lọt project/page có gắn brand làm nguồn. Thêm điều
-        // kiện SQL + vẫn lọc lại bằng only_products() (đai + dây), và truyền $words
-        // vào format_rows() để make_excerpt() cắt đúng chỗ khớp thay vì lấy đoạn
-        // intro đầu bài.
+        // Fallback: full-text matched nothing within the brand's scope (the
+        // question only mentions the brand with no description, or the
+        // description matches no words). Previously this was missing
+        // "AND post_type = 'product'" and called format_rows() directly,
+        // bypassing only_products() — violating the products-only rule that
+        // every other path in this file follows, letting a project/page tagged
+        // with the brand slip in as a source. Added the SQL condition + still
+        // re-filter with only_products() (belt and suspenders), and pass $words
+        // into format_rows() so make_excerpt() trims at the actual match point
+        // instead of grabbing the intro paragraph.
         //
-        // ORDER BY CHAR_LENGTH DESC thay vì post_id DESC: đường này không có tín
-        // hiệu relevance nào theo định nghĩa (full-text đã thử và không khớp), nên
-        // "sản phẩm có mô tả đầy đủ nhất" là đại diện tốt hơn "sản phẩm tạo gần đây
-        // nhất" — đo được 43,6% sản phẩm dưới 200 ký tự chỉ là spec thô.
+        // ORDER BY CHAR_LENGTH DESC instead of post_id DESC: this path has no
+        // relevance signal by definition (full-text was already tried and
+        // matched nothing), so "product with the fullest description" is a
+        // better representative than "most recently created product" — measured
+        // 43.6% of products under 200 characters are just a bare spec sheet.
         global $wpdb;
         $table = Pi_Chatbot_Indexer::table_name();
         $rows = $wpdb->get_results($wpdb->prepare(
@@ -392,8 +344,9 @@ class Pi_Chatbot_Retriever {
     }
 
     /**
-     * Tổng số sản phẩm sống trong index — mẫu số cho IDF. Cache 1 request
-     * (search() chỉ gọi hàm này gián tiếp 1 lần/câu hỏi qua compute_idf()).
+     * Total number of live products in the index — the denominator for IDF.
+     * Cached per-request (search() only calls this indirectly once per question,
+     * via compute_idf()).
      */
     private static $product_count_cache = null;
 
@@ -408,14 +361,15 @@ class Pi_Chatbot_Retriever {
     }
 
     /**
-     * Đo độ hiếm THẬT (document frequency) cho từng từ khoá — cả $long lẫn
-     * $short — rồi quy ra IDF. Đây là số liệu dùng chung cho cả việc quyết
-     * định từ nào bắt buộc trong SQL lẫn trọng số chấm điểm ở verify_and_score(),
-     * để 2 nơi không lệch nhau. Tốn 1 query COUNT/từ khoá (thường 2-5 từ/câu
-     * hỏi) — chấp nhận được, đã đo COUNT(*) trên post_type qua chỉ mục dưới 5ms
-     * ở quy mô 381-10.000 SP.
+     * Measure the TRUE rarity (document frequency) of each keyword — both $long
+     * and $short — then convert to IDF. This is the shared figure used both to
+     * decide which words are mandatory in the SQL and for the score weighting
+     * in verify_and_score(), so the two stay consistent with each other. Costs
+     * 1 COUNT query per keyword (typically 2-5 words/question) — acceptable,
+     * measured COUNT(*) on post_type via the index at under 5ms at a scale of
+     * 381-10,000 products.
      *
-     * @return array<string,array{df:int,idf:float}> key = từ đã hạ chữ thường
+     * @return array<string,array{df:int,idf:float}> key = lowercased word
      */
     private static function compute_idf($words) {
         global $wpdb;
@@ -426,15 +380,19 @@ class Pi_Chatbot_Retriever {
             $key = mb_strtolower($w);
             if (isset($out[$key])) continue;
             $like = '%' . $wpdb->esc_like($key) . '%';
-            // P2 audit 2026-07-20 — bắt được collation mặc định (utf8mb4_unicode_520_ci)
-            // so khớp LỎNG dấu tiếng Việt: LIKE '%đá%' khớp NHẦM cả "Bàn đông" (không
-            // hề chứa "đá"). Đo thật: df("đá") = 164 qua collation mặc định nhưng chỉ
-            // 66-80 sản phẩm thật chứa "đá" (đếm bằng mb_strpos PHP, so khớp chính xác
-            // ở verify_and_score()). df bị thổi phồng → IDF tụt sai (0.84, dưới ngưỡng
-            // "hiếm" 1.0) → chính từ cần cứu lại KHÔNG được coi là hiếm. Ép COLLATE
-            // utf8mb4_bin cho LIKE để đếm DF khớp CHÍNH XÁC dấu, nhất quán với cách
-            // verify_and_score() đang so khớp (mb_strpos PHP không bị ảnh hưởng bởi
-            // collation MySQL, vốn đã "đúng" — SQL COUNT() phải theo, không phải ngược lại).
+            // P2 audit 2026-07-20 — caught the default collation
+            // (utf8mb4_unicode_520_ci) doing LOOSE Vietnamese diacritic matching:
+            // LIKE '%đá%' ("ice") WRONGLY matched "Bàn đông" ("freezer table" — does
+            // not contain "đá" at all). Measured: df("đá") = 164 under the default
+            // collation, but only 66-80 real products actually contain "đá" (counted
+            // via PHP's mb_strpos, which does the accurate comparison in
+            // verify_and_score()). The inflated df pushed IDF down incorrectly
+            // (0.84, below the "rare" threshold of 1.0) → the very word we needed to
+            // rescue was NOT treated as rare. Force COLLATE utf8mb4_bin on the LIKE
+            // so DF is counted with EXACT diacritic matching, consistent with how
+            // verify_and_score() already compares (PHP's mb_strpos is unaffected by
+            // MySQL collation, and is already "correct" — the SQL COUNT() must
+            // follow it, not the other way around).
             $df = (int) $wpdb->get_var($wpdb->prepare(
                 "SELECT COUNT(*) FROM {$table} WHERE post_type = 'product' AND
                  (LOWER(title) LIKE %s COLLATE utf8mb4_bin OR LOWER(brand) LIKE %s COLLATE utf8mb4_bin
@@ -448,56 +406,72 @@ class Pi_Chatbot_Retriever {
     }
 
     /**
-     * Full-text BOOLEAN MODE — 2 tầng, không còn ép AND cho MỌI câu hỏi (bug đã tìm
-     * thấy khi audit: câu hỏi tự nhiên nhiều từ như "tủ lạnh công nghiệp inox 4 cánh"
-     * tạo ~4 token bắt buộc, không record nào đủ cả 4 thì trả rỗng oan dù có sản phẩm
-     * khớp 3/4).
+     * Full-text BOOLEAN MODE — 2 tiers, no longer forcing AND for EVERY question
+     * (bug found during audit: a natural multi-word question like "tủ lạnh công
+     * nghiệp inox 4 cánh" ["industrial 4-door stainless steel fridge"] produces
+     * ~4 mandatory tokens; if no record has all 4, the result was wrongly empty
+     * even though a product matched 3/4).
      *
-     * Tầng 1 — AND (mỗi từ +bắt buộc): thử trước, LUÔN lọc lại chỉ giữ post_type=
-     *   product trong kết quả — không chỉ "kiểm tra có sản phẩm nào không rồi trả
-     *   nguyên cả rows" như bản trước (2 bug thật bắt được từ cách làm cũ):
-     *     (a) AND khớp cả product LẪN project cùng lúc — bản cũ trả nguyên rows nên
-     *         lẫn cả project không liên quan vào context dù có sản phẩm thật đi kèm.
-     *     (b) Đường tắt "chỉ còn 1 từ khoá thì bỏ qua kiểm tra sản phẩm" (audit cũ)
-     *         hoá ra KHÔNG an toàn: câu tán gẫu "Tôi muốn có người yêu" sau khi lọc
-     *         stopword chỉ còn "người" — từ cực phổ biến trong mọi mô tả sản phẩm
-     *         ("phù hợp cho nhiều người", "đội ngũ nhân viên"...) — bản cũ nhận bừa
-     *         kết quả AND 1-từ này làm nguồn dù chẳng liên quan gì tới sản phẩm.
-     *   Sửa: BỎ HẲN đường tắt theo count($words), luôn lọc post_type=product bất kể
-     *   còn lại mấy từ khoá — 1 từ khoá phổ biến giờ cũng phải tự chứng minh khớp
-     *   được sản phẩm thật mới được coi là kết quả.
-     * Tầng 2 — quorum (OR có trọng số theo số từ khớp, không dấu +): chạy khi tầng 1
-     *   không có sản phẩm nào VÀ có ≥2 từ khoá (1 từ thì AND=OR, không cần fallback,
-     *   đã biết chắc không có sản phẩm nào khớp). Lọc theo ngưỡng điểm tương đối
-     *   (≥35% điểm cao nhất) rồi CHỈ GIỮ LẠI sản phẩm thật — không tái diễn bug
-     *   "chào"/"bên"/"xe máy điện"/"người" cũ. Nếu quorum cũng không có sản phẩm nào
-     *   → trả rỗng, thà "chưa có thông tin" còn hơn đưa nhầm nguồn không liên quan.
+     * Tier 1 — AND (each word +mandatory): tried first, ALWAYS filters the
+     *   result down to post_type=product afterward — not just "check whether any
+     *   product exists then return the raw rows" like the previous version
+     *   (2 real bugs caught from that old approach):
+     *     (a) AND matched product AND project simultaneously — the old version
+     *         returned raw rows, so unrelated projects leaked into the context
+     *         even when real products were also present.
+     *     (b) The shortcut "if only 1 keyword remains, skip the product check"
+     *         (old audit) turned out to be UNSAFE: the small-talk message "Tôi
+     *         muốn có người yêu" ["I want a girlfriend/boyfriend"], after
+     *         stopword filtering, left only "người" ("person") — an extremely
+     *         common word in every product description ("phù hợp cho nhiều
+     *         người" ["suits many people"], "đội ngũ nhân viên" ["staff
+     *         team"]...) — the old version blindly accepted this 1-word AND
+     *         result as a source even though it had nothing to do with any
+     *         product.
+     *   Fix: the count($words) shortcut was REMOVED ENTIRELY — post_type=product
+     *   is always filtered regardless of how many keywords remain — even a
+     *   single common keyword must now prove it matches a real product before
+     *   being treated as a result.
+     * Tier 2 — quorum (OR weighted by number of matched words, no + sign): runs
+     *   when tier 1 has no products AND there are ≥2 keywords (with 1 keyword,
+     *   AND=OR, so no fallback is needed — it's already certain no product
+     *   matched). Filters by a relative score threshold (≥35% of the top score),
+     *   then KEEPS ONLY real products — avoiding a repeat of the old
+     *   "chào"/"bên"/"xe máy điện"/"người" bugs. If quorum also finds no products
+     *   → return empty; better to say "no information" than to hand back an
+     *   irrelevant source.
      *
-     * @param string[] $words Từ khoá đã lọc stopword (chưa gắn +/*).
-     * @param string   $brand Nếu khác rỗng, giới hạn thêm WHERE brand = $brand.
+     * @param string[] $words Keywords with stopwords already filtered (not yet suffixed with +/*).
+     * @param string   $brand If non-empty, adds an additional WHERE brand = $brand constraint.
      */
     private static function search_fulltext($long, $short, $top_k, $brand = '') {
         global $wpdb;
         $table = Pi_Chatbot_Indexer::table_name();
         $all_words = array_merge($long, $short);
-        // Over-fetch: dedupe_by_content() có thể co ngót kết quả (nhóm 8 sản phẩm
-        // trùng content_text chỉ giữ 2 đại diện) — lấy dư trước LIMIT thật rồi cắt
-        // lại đúng $top_k sau khi gộp, để 1 nhóm trùng không làm hụt số kết quả.
+        // Over-fetch: dedupe_by_content() can shrink the result set (a group of
+        // 8 products with identical content_text keeps only 2 representatives)
+        // — fetch extra before the real LIMIT, then trim back down to exactly
+        // $top_k after merging, so one duplicate group doesn't shrink the
+        // result count.
         $fetch_k = $top_k * 3;
 
         if (empty($long)) {
-            // Quét CẢ 4 cột mà verify_and_score() dùng làm haystack (title, brand,
-            // category, content_text) — trước đây chỉ lọc content_text, nên token 2
-            // ký tự chỉ nằm ở tiêu đề (mã hàng: "hr", "se", "ob") bị SQL loại trước
-            // khi PHP kịp xác minh. Nguyên tắc: SQL là bộ lọc RECALL, verify_and_score()
-            // là bộ lọc PRECISION — recall hẹp hơn precision là sai chiều.
+            // Scan ALL 4 columns that verify_and_score() uses as its haystack
+            // (title, brand, category, content_text) — previously only
+            // content_text was filtered, so a 2-character token that only lived
+            // in the title (a product code like "hr", "se", "ob") got dropped by
+            // SQL before PHP ever had a chance to verify it. Principle: SQL is
+            // the RECALL filter, verify_and_score() is the PRECISION filter —
+            // recall narrower than precision is backwards.
             $like_query = "";
             $args = [];
             foreach ($short as $w) {
-                // LOWER(...) COLLATE utf8mb4_bin: khớp CHÍNH XÁC dấu (bin) nhưng vẫn
-                // không phân biệt hoa/thường (token đã lowercase, tiêu đề SP thì viết
-                // hoa mã model như "HR-", "FT-" — bin thuần không LOWER() sẽ lệch case
-                // và mất luôn kết quả đúng, đã bắt lỗi này khi test HR-126MA-S).
+                // LOWER(...) COLLATE utf8mb4_bin: matches EXACT diacritics (bin)
+                // but is still case-insensitive (tokens are already lowercased,
+                // while product titles capitalize model codes like "HR-", "FT-"
+                // — plain bin without LOWER() would mismatch on case and lose
+                // valid results; this bug was caught while testing
+                // HR-126MA-S).
                 $like_query .= " AND (LOWER(title) LIKE %s COLLATE utf8mb4_bin OR LOWER(brand) LIKE %s COLLATE utf8mb4_bin
                                   OR LOWER(category) LIKE %s COLLATE utf8mb4_bin OR LOWER(content_text) LIKE %s COLLATE utf8mb4_bin)";
                 $pattern = '%' . $wpdb->esc_like(mb_strtolower($w)) . '%';
@@ -518,18 +492,21 @@ class Pi_Chatbot_Retriever {
             return [];
         }
 
-        // P2 audit 2026-07-20 — IDF thật cho MỌI từ khoá (kể cả $short), dùng
-        // chung cho việc xây SQL lẫn chấm điểm để 2 nơi nhất quán với nhau.
+        // P2 audit 2026-07-20 — true IDF for EVERY keyword (including $short),
+        // shared between building the SQL and score weighting so the two stay
+        // consistent.
         $idf = self::compute_idf($all_words);
 
-        // Tầng 1 — FULLTEXT trên $long: từ HIẾM (idf cao) mới +bắt buộc, từ phổ
-        // biến để tuỳ chọn (P2: nới AND cứng — trước đây MỌI $long đều bắt
-        // buộc, câu tự nhiên nhiều từ như "tủ lạnh công nghiệp inox 4 cánh" dễ
-        // trả rỗng oan vì không SP nào đủ cả 4 từ).
-        // Kèm LIKE bắt buộc cho $short HIẾM — đây là chỗ sửa đúng bug "đá":
-        // innodb_ft_min_token_size=3 khiến từ <3 ký tự KHÔNG THỂ đưa vào MATCH
-        // AGAINST, nhưng vẫn phải LỌC được kết quả thật, không chỉ cộng điểm
-        // 0.01 vô nghĩa như bản cũ.
+        // Tier 1 — FULLTEXT on $long: only RARE words (high idf) are
+        // +mandatory, common words remain optional (P2: relaxing the hard AND —
+        // previously EVERY $long word was mandatory, so a natural multi-word
+        // question like "tủ lạnh công nghiệp inox 4 cánh" easily returned
+        // wrongly empty because no product had all 4 words).
+        // Also adds a mandatory LIKE for RARE $short words — this is the actual
+        // fix for the "đá" bug: innodb_ft_min_token_size=3 means words under 3
+        // characters CANNOT be put into MATCH AGAINST, but they still need to
+        // actually FILTER results, not just add a meaningless 0.01 score bonus
+        // like the old version did.
         $rare_long = array_values(array_filter($long, function ($w) use ($idf) {
             return ($idf[mb_strtolower($w)]['idf'] ?? self::IDF_FLOOR) > self::IDF_RARE_THRESHOLD;
         }));
@@ -542,21 +519,25 @@ class Pi_Chatbot_Retriever {
             return ($idf[mb_strtolower($w)]['idf'] ?? self::IDF_FLOOR) > self::IDF_RARE_THRESHOLD;
         }));
 
-        // P2 audit 2026-07-20 (vá regression) — MATCH()...AGAINST() tự nó CHƯA
-        // BAO GIỜ được sửa collation (chỉ các mệnh đề LIKE phụ trợ trong
-        // compute_idf()/mandatory_like được ép utf8mb4_bin) — FULLTEXT index
-        // dùng thẳng collation mặc định của cột (utf8mb4_unicode_520_ci, khớp
-        // lỏng dấu) để build token lúc index, không sửa được bằng COLLATE ở
-        // phía câu query. Đo thật bắt được: 'cửa' = 'của' COLLATE mặc định → 1
-        // (SQL coi bằng nhau!) — "+cửa*" trong AND bắt buộc lặng lẽ khớp NHẦM
-        // "của" (từ đệm cực phổ biến, gần như câu tiếng Việt nào cũng có).
-        // verify_and_score() cũ chỉ đòi TỔNG có ≥1 từ khớp thật (accent-sensitive
-        // qua mb_strpos) — không đòi TỪNG từ + bắt buộc phải khớp thật — nên 1
-        // sản phẩm chỉ thật sự chứa "giờ"/"mở" (khớp ngẫu nhiên trong content,
-        // không liên quan) vẫn lọt qua nhờ "của" (không phải "cửa") đã mở khoá
-        // AND ở tầng SQL. Sửa đúng gốc: sau khi SQL trả candidate, đòi TỪNG từ
-        // bắt buộc (rare_long + rare_short) phải khớp CHÍNH XÁC dấu qua PHP —
-        // khôi phục đúng lời hứa "AND" mà tầng 1 tuyên bố.
+        // P2 audit 2026-07-20 (regression patch) — MATCH()...AGAINST() itself
+        // has NEVER had its collation fixed (only the auxiliary LIKE clauses in
+        // compute_idf()/mandatory_like were forced to utf8mb4_bin) — the
+        // FULLTEXT index uses the column's default collation
+        // (utf8mb4_unicode_520_ci, loose diacritic matching) to build tokens at
+        // index time, which cannot be fixed with a COLLATE on the query side.
+        // Measured in practice: 'cửa' = 'của' under the default collation → 1
+        // (SQL considers them equal!) — "+cửa*" ["door"] as a mandatory AND term
+        // silently and wrongly matched "của" ["of" — an extremely common filler
+        // word present in almost every Vietnamese sentence]. The old
+        // verify_and_score() only required that AT LEAST 1 word matched for real
+        // in total (accent-sensitive, via mb_strpos) — not that EVERY mandatory
+        // word matched for real — so a product that genuinely only contained
+        // "giờ"/"mở" ["hour"/"open" — matched randomly in the content,
+        // unrelated] still slipped through because "của" (not "cửa") had
+        // silently unlocked the AND at the SQL tier. Fixed at the root: after
+        // SQL returns candidates, EVERY mandatory word (rare_long + rare_short)
+        // must be verified to match EXACTLY (diacritic-sensitive) via PHP —
+        // restoring the actual "AND" promise that tier 1 claims to make.
         $rows = self::run_fulltext_query($table, $fulltext_query, $brand, $fetch_k, $rare_short);
         $rows = self::verify_and_score($rows, $long, $short, $idf);
         $product_rows = self::require_literal_all(
@@ -567,10 +548,12 @@ class Pi_Chatbot_Retriever {
             return self::format_rows(array_slice($product_rows, 0, $top_k), $all_words);
         }
 
-        // Fallback A — bỏ ràng buộc LIKE bắt buộc của $short hiếm (có thể quá
-        // chặt với câu mô tả gián tiếp không dùng đúng chữ đó). "đá" vẫn ảnh
-        // hưởng điểm qua verify_and_score() dù không còn lọc cứng ở đây. Vẫn
-        // giữ require_literal_all cho $rare_long — nới $short, không nới nghĩa AND.
+        // Fallback A — drop the mandatory LIKE constraint on rare $short words
+        // (may be too strict for a question that describes something
+        // indirectly without using that exact word). "đá" still affects the
+        // score via verify_and_score() even though it's no longer hard-filtered
+        // here. Still keeps require_literal_all for $rare_long — relaxing
+        // $short, not the meaning of AND.
         if ($rare_short) {
             $rows = self::run_fulltext_query($table, $fulltext_query, $brand, $fetch_k, []);
             $rows = self::verify_and_score($rows, $long, $short, $idf);
@@ -585,8 +568,8 @@ class Pi_Chatbot_Retriever {
 
         if (count($long) < 2) return [];
 
-        // Tầng 2 — quorum thuần (không dấu +) trên $long, benchmark theo điểm
-        // đã cộng IDF thay vì điểm MySQL thô như bản cũ.
+        // Tier 2 — pure quorum (no + sign) on $long, benchmarked against the
+        // IDF-weighted score instead of the raw MySQL score like the old version.
         $or_query = implode(' ', array_map(function ($w) { return $w . '*'; }, $long));
         $rows = self::run_fulltext_query($table, $or_query, $brand, $fetch_k);
         if (!$rows) return [];
@@ -594,25 +577,27 @@ class Pi_Chatbot_Retriever {
         $rows = self::verify_and_score($rows, $long, $short, $idf);
         if (!$rows) return [];
 
-        // Benchmark điểm CHỈ so trong nhóm product với nhau — không phải toàn bộ
-        // $rows (product lẫn project). verify_and_score() resort thuần theo điểm,
-        // không còn giữ thứ tự "product trước project" mà run_fulltext_query() cố
-        // tình xếp (xem comment ở đó); nếu lấy $top_score từ $rows[0] sau resort,
-        // một trang project bị thổi điểm cao do lặp từ khoá có thể đẩy ngưỡng lên,
-        // loại oan product hợp lệ điểm thấp hơn — tái diễn đúng bug mà thứ tự SQL
-        // cũ được thiết kế để chặn.
+        // Benchmark the score ONLY among products, not across all of $rows
+        // (products mixed with projects). verify_and_score() re-sorts purely by
+        // score, no longer preserving the "products before projects" order that
+        // run_fulltext_query() deliberately applies (see the comment there); if
+        // $top_score were taken from $rows[0] after the re-sort, a project page
+        // inflated by keyword repetition could push the threshold up and wrongly
+        // exclude a valid, lower-scoring product — reproducing exactly the bug
+        // that the old SQL ordering was designed to prevent.
         $products = self::only_products($rows);
         if (!$products) return [];
 
-        // P2 audit 2026-07-20 (vá regression) — Tier 2 (quorum) là tầng RỦI RO
-        // NHẤT trong file: không dấu +, chấp nhận khớp từng phần. Ngưỡng tương
-        // đối (35% điểm cao nhất) không đủ khi TOÀN BỘ ứng viên đều là khớp
-        // ngẫu nhiên trong content_text — không có tín hiệu "sản phẩm thật liên
-        // quan" nào để so 35% với. Lọc trước: chỉ giữ sản phẩm có ÍT NHẤT 1 từ
-        // khớp ở title/brand/category (has_strong_field_hit, xem verify_and_score()).
-        // Nếu không còn sản phẩm nào qua được lọc này → trả rỗng, đúng tinh thần
-        // "thà chưa có thông tin còn hơn đưa nhầm nguồn" đã ghi trong docblock
-        // của hàm này.
+        // P2 audit 2026-07-20 (regression patch) — Tier 2 (quorum) is the
+        // RISKIEST tier in the file: no + sign, accepts partial matches. The
+        // relative threshold (35% of the top score) isn't enough when EVERY
+        // candidate is just a random match inside content_text — there's no
+        // "genuinely relevant real product" signal to compare 35% against.
+        // Pre-filter: keep only products with AT LEAST 1 word matching in
+        // title/brand/category (has_strong_field_hit, see verify_and_score()).
+        // If no products survive this filter → return empty, consistent with
+        // the "better to say no information than hand back the wrong source"
+        // principle documented in this function's docblock.
         $products = array_values(array_filter($products, function ($r) {
             return !empty($r->has_strong_field_hit);
         }));
@@ -627,13 +612,15 @@ class Pi_Chatbot_Retriever {
     }
 
     /**
-     * Gộp bản ghi có content_text TRÙNG Y HỆT (chuẩn hoá khoảng trắng) — đo được
-     * trên dữ liệu thật: 28 sản phẩm / 9 nhóm, nhóm lớn nhất 8 sản phẩm (cùng
-     * model, khác cấu hình ngăn kéo/cửa — biến thể THẬT, khác tiêu đề, nhưng
-     * content_text giống hệt). Không gộp thì 1 truy vấn trúng nhóm này có thể
-     * chiếm trọn top-K bằng 1 thông số duy nhất lặp 8 lần.
-     * Giữ tối đa MAX_PER_DUPLICATE_GROUP đại diện điểm cao nhất mỗi nhóm — vẫn
-     * cho khách thấy có nhiều lựa chọn, không giả vờ chỉ có 1 sản phẩm.
+     * Merge records whose content_text is IDENTICAL (whitespace-normalized) —
+     * measured on real data: 28 products / 9 groups, the largest group having
+     * 8 products (same model, different drawer/door configuration — REAL
+     * variants, different titles, but identical content_text). Without merging,
+     * a query that hits this group could fill the entire top-K with a single
+     * spec repeated 8 times.
+     * Keeps up to MAX_PER_DUPLICATE_GROUP top-scoring representatives per group
+     * — still shows the customer multiple options, without pretending there's
+     * only 1 product.
      */
     const MAX_PER_DUPLICATE_GROUP = 2;
 
@@ -652,15 +639,17 @@ class Pi_Chatbot_Retriever {
     }
 
     /**
-     * P2 audit 2026-07-20 — thay bonus phẳng 0.01/từ (không bao giờ đảo được
-     * thứ hạng thật, gap đo được 0.1-0.3 giữa các hạng liền kề) bằng điểm có
-     * trọng số 2 chiều: (a) THEO TRƯỜNG — khớp ở title đáng giá hơn brand/
-     * category, đáng giá hơn nữa so với content_text (mô tả phụ trợ); (b) THEO
-     * ĐỘ HIẾM (IDF) — từ chỉ xuất hiện ở vài SP (như "đá", 66/381) đáng giá
-     * hơn nhiều so với từ phổ biến (như "động", xuất hiện trong nhiều SP qua
-     * "tự động"). $idf tính sẵn ở search_fulltext() qua compute_idf() — truyền
-     * vào để tránh tính lại COUNT() nhiều lần cho cùng 1 câu hỏi; nếu gọi rời
-     * (không qua search_fulltext, ví dụ test) thì tự tính.
+     * P2 audit 2026-07-20 — replaces the flat 0.01/word bonus (which could
+     * never flip real rankings — the measured gap between adjacent ranks was
+     * 0.1-0.3) with a two-dimensional weighted score: (a) BY FIELD — a match in
+     * the title is worth more than brand/category, which is worth more still
+     * than content_text (supporting description); (b) BY RARITY (IDF) — a word
+     * appearing in only a few products (like "đá" ["ice"], 66/381) is worth
+     * much more than a common word (like "động", which appears in many
+     * products via "tự động" ["automatic"]). $idf is already computed in
+     * search_fulltext() via compute_idf() — passed in to avoid recomputing
+     * COUNT() repeatedly for the same question; if called standalone (not via
+     * search_fulltext, e.g. in tests) it computes it itself.
      */
     private static function verify_and_score($rows, $long, $short, $idf = null) {
         if (!is_array($rows)) return [];
@@ -677,16 +666,20 @@ class Pi_Chatbot_Retriever {
 
             $weighted = 0.0;
             $hits = 0;
-            // P2 audit 2026-07-20 (vá regression) — sàn điểm tuyệt đối cũ
-            // (OR_FALLBACK_MIN_ABS_SCORE) bị xoá khi đổi sang thang điểm IDF mà
-            // không thay bằng gì tương đương — tái mở bug lớp F7: câu hoàn toàn
-            // không liên quan sản phẩm ("cho hỏi giờ mở cửa") khớp "giờ"/"mở"
-            // thuần tuý NGẪU NHIÊN trong content_text (vd "mỗi giờ", "mở rộng
-            // khả năng" — không hề nói về sản phẩm) vẫn đủ điểm qua ngưỡng
-            // tương đối 35%. Đo thật: field content-only 2 từ này cộng dồn
-            // 2.588 điểm, đủ lọt. Sửa đúng gốc: theo dõi có ít nhất 1 từ khớp
-            // ở TITLE/BRAND/CATEGORY hay không — tín hiệu sản phẩm THỰC SỰ
-            // liên quan, khác hẳn từ trùng hợp lọt vào giữa content_text dài.
+            // P2 audit 2026-07-20 (regression patch) — the old absolute score
+            // floor (OR_FALLBACK_MIN_ABS_SCORE) was removed when switching to
+            // the IDF-based scale without an equivalent replacement — reopening
+            // an F7-class bug: a message completely unrelated to products
+            // ("cho hỏi giờ mở cửa" ["what time do you open"]) matching
+            // "giờ"/"mở" ["hour"/"open"] purely by COINCIDENCE inside
+            // content_text (e.g. "mỗi giờ" ["every hour"], "mở rộng khả năng"
+            // ["expand capability"] — not talking about the product at all)
+            // still scored high enough to clear the 35% relative threshold.
+            // Measured in practice: content-only field score for these 2 words
+            // added up to 2.588, enough to slip through. Fixed at the root: track
+            // whether at least one word matched in TITLE/BRAND/CATEGORY — a
+            // signal of a GENUINELY relevant product, unlike a coincidental word
+            // buried in a long content_text.
             $has_strong_field_hit = false;
             foreach ($all_words as $w) {
                 $wl = mb_strtolower($w);
@@ -724,13 +717,14 @@ class Pi_Chatbot_Retriever {
     }
 
     /**
-     * Đòi TỪNG từ trong $mandatory_words phải khớp CHÍNH XÁC dấu (mb_strpos,
-     * không bị collation MySQL bỏ dấu) ở ĐÂU ĐÓ trong title/brand/category/
-     * content — không chỉ "tổng có ≥1 từ khớp" như verify_and_score(). Khôi
-     * phục đúng nghĩa "AND" mà +word* trong FULLTEXT tuyên bố nhưng không giữ
-     * được do MATCH()...AGAINST() dùng collation mặc định của cột (khớp lỏng
-     * dấu — "cửa"="của"). $mandatory_words rỗng → không lọc gì (không có từ
-     * nào bắt buộc ở tầng này).
+     * Requires EVERY word in $mandatory_words to match with EXACT diacritics
+     * (via mb_strpos, unaffected by MySQL's diacritic-stripping collation)
+     * SOMEWHERE in title/brand/category/content — not just "at least 1 word
+     * matched in total" like verify_and_score(). Restores the true meaning of
+     * "AND" that +word* in FULLTEXT claims to provide but doesn't, because
+     * MATCH()...AGAINST() uses the column's default collation (loose diacritic
+     * matching — "cửa"="của"). Empty $mandatory_words → no filtering (no word
+     * is mandatory at this tier).
      */
     private static function require_literal_all($rows, $mandatory_words) {
         if (!$mandatory_words) return $rows;
@@ -751,14 +745,15 @@ class Pi_Chatbot_Retriever {
     }
 
     /**
-     * 1 lần prepare() duy nhất (không nest prepare() lồng nhau nữa — pattern cũ tuy
-     * an toàn trên WP hiện tại vì $brand luôn lấy từ whitelist cột DB, nhưng vẫn là
-     * smell dễ gây hiểu lầm khi review — audit 2026-07-18 flag). Điều kiện brand
-     * được gộp thẳng vào SQL + mảng args thay vì string nối sẵn.
+     * A single prepare() call (no more nested prepare() calls — the old pattern
+     * was safe on the current WP setup since $brand always comes from a DB
+     * column whitelist, but was still a smell that's easy to misread during
+     * review — flagged in the 2026-07-18 audit). The brand condition is folded
+     * directly into the SQL + args array instead of pre-concatenated strings.
      *
-     * @param string[] $mandatory_like P2: từ ngắn HIẾM không index được qua FULLTEXT
-     *   (innodb_ft_min_token_size=3) — thêm làm điều kiện LIKE AND bắt buộc để
-     *   chúng thật sự LỌC được kết quả (xem search_fulltext()).
+     * @param string[] $mandatory_like P2: rare short words that can't be indexed
+     *   by FULLTEXT (innodb_ft_min_token_size=3) — added as a mandatory LIKE AND
+     *   condition so they can actually FILTER results (see search_fulltext()).
      */
     private static function run_fulltext_query($table, $match_query, $brand, $top_k, $mandatory_like = []) {
         global $wpdb;
@@ -769,12 +764,15 @@ class Pi_Chatbot_Retriever {
         $args = [$match_query, $match_query];
 
         foreach ($mandatory_like as $w) {
-            // Cùng lý do COLLATE utf8mb4_bin như compute_idf() — collation mặc định
-            // của cột khớp lỏng dấu tiếng Việt (vd "đông" khớp nhầm "%đá%"), lọc
-            // "bắt buộc" mà khớp lỏng thì không còn lọc được gì. LOWER(...) trước
-            // COLLATE bin để vẫn không phân biệt hoa/thường (mã model viết hoa như
-            // "HR-126MA-S" nhưng token đã lowercase — bin thuần không LOWER() làm
-            // lệch case và mất kết quả đúng, bắt lỗi này khi test HR-126MA-S).
+            // Same reasoning as the COLLATE utf8mb4_bin in compute_idf() — the
+            // column's default collation loosely matches Vietnamese diacritics
+            // (e.g. "đông" falsely matching "%đá%"), and a "mandatory" filter
+            // that matches loosely isn't actually filtering anything. LOWER(...)
+            // is applied before COLLATE bin so it stays case-insensitive (model
+            // codes are capitalized like "HR-126MA-S" but tokens are already
+            // lowercased — plain bin without LOWER() would mismatch on case and
+            // lose valid results; this bug was caught while testing
+            // HR-126MA-S).
             $sql .= " AND (LOWER(title) LIKE %s COLLATE utf8mb4_bin OR LOWER(brand) LIKE %s COLLATE utf8mb4_bin
                       OR LOWER(category) LIKE %s COLLATE utf8mb4_bin OR LOWER(content_text) LIKE %s COLLATE utf8mb4_bin)";
             $pattern = '%' . $wpdb->esc_like(mb_strtolower($w)) . '%';
@@ -786,17 +784,19 @@ class Pi_Chatbot_Retriever {
             $args[] = $brand;
         }
 
-        // Ưu tiên post_type='product' trước khi xếp theo score — khách hỏi "có bán X
-        // không" gần như luôn muốn sản phẩm, trong khi trang dự án (project) dài, văn
-        // xuôi tự do dễ vô tình đạt điểm ngang/cao hơn ở tầng quorum (OR) chỉ vì lặp
-        // từ khoá nhiều lần trong bài, không thực sự "về" chủ đề khách hỏi.
+        // Prioritize post_type='product' before ordering by score — a customer
+        // asking "do you sell X" almost always wants products, while long,
+        // free-flowing project pages can easily score equal or higher at the
+        // quorum (OR) tier just by repeating a keyword many times in the text,
+        // without actually being "about" what the customer asked.
         $sql .= " ORDER BY (post_type = 'product') DESC, score DESC LIMIT %d";
         $args[] = $top_k;
 
         $rows = $wpdb->get_results($wpdb->prepare($sql, $args));
-        // get_results() trả null (không phải []) khi query lỗi — log 1 chỗ duy nhất
-        // ở boundary này thay vì để mỗi hàm downstream tự warning rời rạc, thứ chỉ
-        // che mất nguyên nhân thật (bảng thiếu, FULLTEXT index hỏng...).
+        // get_results() returns null (not []) when the query errors — log it in
+        // one place at this boundary instead of letting every downstream
+        // function raise its own scattered warning, which would only obscure
+        // the real cause (missing table, broken FULLTEXT index, etc.).
         if ($rows === null && $wpdb->last_error) {
             error_log('[pi-chatbot] retrieval query that failed: ' . $wpdb->last_error);
         }
@@ -821,22 +821,28 @@ class Pi_Chatbot_Retriever {
     }
 
     /**
-     * Bỏ stopword tiếng Việt, trả DANH SÁCH từ khoá thô (chưa gắn +/* — search_fulltext()
-     * tự xây cả 2 phiên bản AND/OR từ list này). Tách từ theo đúng ranh giới mà MySQL
-     * FULLTEXT parser mặc định dùng (mọi ký tự không phải chữ/số đều là dấu phân cách —
-     * kể cả gạch nối) để mã sản phẩm dạng "FT-126MA-S" khớp đúng token đã index
-     * ("ft", "126ma", "s") thay vì bị dính liền thành 1 từ sai.
+     * Strips Vietnamese stopwords, returns a RAW keyword LIST (not yet suffixed
+     * with +/* — search_fulltext() builds both the AND/OR versions itself from
+     * this list). Splits words along the same boundaries MySQL's default
+     * FULLTEXT parser uses (every non-alphanumeric character is a separator —
+     * including hyphens), so a product code like "FT-126MA-S" matches the
+     * exact tokens that were indexed ("ft", "126ma", "s") instead of being
+     * glued into one wrong word.
      *
-     * Lọc token < 3 ký tự: MySQL (innodb_ft_min_token_size mặc định = 3) không index
-     * token ngắn hơn ngưỡng này — nếu vẫn đưa "ft" (2 ký tự) vào làm điều kiện bắt
-     * buộc, token đó sẽ không bao giờ khớp được gì và cả câu AND sẽ luôn trả rỗng dù các từ khoá
-     * còn lại (vd "126ma") thực ra khớp đúng sản phẩm.
+     * Filters out tokens < 3 characters: MySQL (default
+     * innodb_ft_min_token_size = 3) doesn't index tokens shorter than this
+     * threshold — if "ft" (2 characters) were still used as a mandatory
+     * condition, that token could never match anything and the whole AND
+     * clause would always return empty, even though the remaining keywords
+     * (e.g. "126ma") actually match a real product.
      */
     /**
-     * Trích chuỗi dạng mã sản phẩm (chữ + số, có thể có gạch nối) ra khỏi câu hỏi
-     * THÔ (chưa lowercase/chuẩn hoá) — "FT-126MA-S", "UX-100", "DCM-60KE", "D650".
-     * Yêu cầu bắt đầu bằng 1-4 chữ cái rồi có ít nhất 1 chữ số — loại được từ
-     * tiếng Việt/Anh thường (không chứa số) mà không cần whitelist ký tự.
+     * Extracts product-code-like strings (letters + digits, possibly with
+     * hyphens) from the RAW question (not yet lowercased/normalized) —
+     * "FT-126MA-S", "UX-100", "DCM-60KE", "D650". Requires starting with 1-4
+     * letters followed by at least 1 digit — this excludes ordinary
+     * Vietnamese/English words (which contain no digits) without needing a
+     * character whitelist.
      */
     private static function extract_product_codes($question) {
         if (!preg_match_all('/\b[A-Za-z]{1,4}-?\d[A-Za-z0-9-]{0,14}\b/u', $question, $m)) {
@@ -846,15 +852,17 @@ class Pi_Chatbot_Retriever {
     }
 
     /**
-     * Khớp trực tiếp từng mã vào cột title (LIKE, không qua FULLTEXT — mã sản
-     * phẩm là chuỗi ASCII, không dính bug collation dấu tiếng Việt, nhưng vẫn ép
-     * LOWER()+bin để nhất quán và tránh MySQL tự ý coi các ký tự gần giống nhau
-     * là bằng nhau). Ranking: khớp NGUYÊN TỪ (có ranh giới ký tự không phải
-     * chữ/số hai bên, hoặc đầu/cuối chuỗi) được ưu tiên tuyệt đối so với khớp
-     * substring của một mã dài hơn — đây chính là cách phân biệt "RT-126MA-S"
-     * (khớp nguyên từ) với "RT-126MA-SSG"/"RT-126MA-S-3D" (chỉ là substring).
-     * Trong cùng nhóm ưu tiên, tiêu đề NGẮN HƠN xếp trước — biến thể có hậu tố
-     * thêm luôn dài hơn bản gốc.
+     * Matches each code directly against the title column (LIKE, not FULLTEXT
+     * — product codes are ASCII strings, so they don't hit the Vietnamese
+     * diacritic collation bug, but LOWER()+bin is still forced for consistency
+     * and to prevent MySQL from treating visually similar characters as
+     * equal). Ranking: a WHOLE-WORD match (bounded by non-alphanumeric
+     * characters on both sides, or the start/end of the string) is given
+     * absolute priority over a substring match within a longer code — this is
+     * exactly how "RT-126MA-S" (whole-word match) is distinguished from
+     * "RT-126MA-SSG"/"RT-126MA-S-3D" (mere substrings). Within the same
+     * priority group, a SHORTER title ranks first — a variant with an added
+     * suffix is always longer than the base one.
      */
     private static function search_by_product_code($codes, $top_k) {
         global $wpdb;
@@ -908,12 +916,16 @@ class Pi_Chatbot_Retriever {
     }
 
     /**
-     * Trích excerpt QUANH vị trí khớp từ khoá đầu tiên tìm thấy, thay vì luôn lấy
-     * $len ký tự đầu content_text (bug đã tìm thấy khi audit: đoạn thực sự khớp câu
-     * hỏi — spec, công suất, giá — thường nằm sâu trong body, còn đầu chuỗi thường
-     * chỉ là intro/marketing chung chung; LLM nhận nhầm phần vô ích, sản phẩm xếp
-     * hạng đúng nhưng trả lời vẫn yếu hoặc "chưa có thông tin"). Không có $words
-     * (vd fallback brand không lọc từ khoá) thì giữ hành vi cũ — lấy đầu chuỗi.
+     * Extracts the excerpt AROUND the position of the first keyword match
+     * found, instead of always taking the first $len characters of
+     * content_text (bug found during audit: the passage that actually
+     * addresses the question — specs, power rating, price — is often deep in
+     * the body, while the start of the string is usually just a generic
+     * intro/marketing blurb; the LLM would receive the useless part, and the
+     * product would rank correctly but still answer weakly or say "no
+     * information available"). When there are no $words (e.g. the brand
+     * fallback with no keyword filtering), keeps the old behavior — take the
+     * start of the string.
      */
     private static function make_excerpt($text, $len, $words = []) {
         $text = trim(preg_replace('/\s+/', ' ', $text));
@@ -934,8 +946,9 @@ class Pi_Chatbot_Retriever {
             return mb_substr($text, 0, $len) . '…';
         }
 
-        // Cửa sổ quanh vị trí khớp: 1/4 chiều dài trước, phần còn lại sau — giữ chút
-        // ngữ cảnh đứng trước từ khoá thay vì cắt đúng ngay tại từ khoá.
+        // Window around the match position: 1/4 of the length before, the rest
+        // after — keeps a bit of context preceding the keyword instead of
+        // cutting right at the keyword itself.
         $before = (int) floor($len * 0.25);
         $start = max(0, $match_pos - $before);
         $snippet = mb_substr($text, $start, $len);

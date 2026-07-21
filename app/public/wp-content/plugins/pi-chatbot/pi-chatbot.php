@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Pi Chatbot
- * Description: Trợ lý AI tư vấn sản phẩm cho Saigon Horeca — retrieval full-text nội bộ (không embedding/vector DB, quy mô dữ liệu chưa cần) + generation gọi thẳng LLM7 API (không qua proxy trung gian). Gắn vào nút #sh-toggle theme đã có sẵn.
+ * Description: AI assistant for product consultation for Saigon Horeca — internal full-text retrieval (no embedding/vector DB, data scale doesn't warrant it yet) + generation calling the LLM7 API directly (no intermediate proxy). Attaches to the theme's existing #sh-toggle button.
  * Version: 1.0.0
  * Requires at least: 5.9
  * Requires PHP: 7.4
@@ -27,8 +27,8 @@ require_once PI_CHATBOT_DIR . 'includes/class-entities.php';
 require_once PI_CHATBOT_DIR . 'includes/class-retriever.php';
 require_once PI_CHATBOT_DIR . 'includes/class-llm-client.php';
 require_once PI_CHATBOT_DIR . 'includes/class-generator.php';
-// class-router.php SAU class-entities.php (dùng known_brands()) và class-indexer.php
-// (dùng table_name() cho few-shot) — thứ tự load cố định như các file khác trong plugin.
+// class-router.php loads AFTER class-entities.php (uses known_brands()) and class-indexer.php
+// (uses table_name() for few-shot) — load order is fixed, same as the other files in this plugin.
 require_once PI_CHATBOT_DIR . 'includes/class-router.php';
 require_once PI_CHATBOT_DIR . 'includes/class-rest.php';
 require_once PI_CHATBOT_DIR . 'includes/class-admin.php';
@@ -46,38 +46,49 @@ function pi_chatbot_bootstrap() {
     Pi_Chatbot_Admin::instance();
 }
 
+// Listen for the theme's 'sgh_after_flush_cache' action (the /flush-cache endpoint) — one
+// click/call clears both the theme's static cache and the chatbot's answer cache. If the
+// active theme isn't saigonhoreca-theme (hook doesn't exist), this add_action() is
+// harmless — it simply never gets called.
+add_action('sgh_after_flush_cache', ['Pi_Chatbot_Indexer', 'flush_answer_cache']);
+
 /**
- * Cấu hình hiệu lực = default merge với option đã lưu (đổi qua trang admin).
- * llm7_keys: key LLM7 (round-robin nếu thêm nhiều key qua trang admin) — gọi THẲNG
- * https://api.llm7.io, KHÔNG qua Luna-Proxy/Qwen.
+ * Effective config = defaults merged with the saved option (changed via the admin page).
+ * llm7_keys: LLM7 keys (round-robin if multiple are added via the admin page) — calls
+ * https://api.llm7.io DIRECTLY, NOT through Luna-Proxy/Qwen.
  *
- * Không hardcode key mặc định ở đây — secret sống trong source không rotate được
- * nếu không sửa code. Key sống hoàn toàn trong option DB, nhập/đổi qua trang admin
- * Pi Chatbot (migration 1 lần từ bản cũ đã hoàn tất, hàm migration đã xoá khỏi
- * source — xem lịch sử sửa đổi nếu cần biết chi tiết).
+ * Don't hardcode a default key here — a secret living in source can't be rotated
+ * without a code change. The key lives entirely in the DB option, entered/changed via
+ * the Pi Chatbot admin page (the one-time migration from the old version is complete,
+ * the migration function has been removed from source — see the change history if you
+ * need the details).
  *
- * Ép kiểu llm7_keys/router_keys về mảng NGAY TẠI ĐÂY — 1 chỗ duy nhất, đóng cùng lúc
- * 3 đường fatal PHP 8 nếu option này từng bị lưu sai kiểu (scalar thay vì mảng):
- * implode() lúc render trang admin, preg_split() lúc lưu settings, và
- * foreach ($keys as $key) trong Pi_Chatbot_LLM_Client::call() ở ngay request đang
- * phục vụ khách — fatal ở đây là fatal trên đường trả lời chat, nặng hơn nhiều so
- * với fatal ở trang admin.
+ * Cast llm7_keys/router_keys to arrays RIGHT HERE — a single place that simultaneously
+ * closes off 3 PHP 8 fatal-error paths if this option was ever saved with the wrong type
+ * (scalar instead of array): implode() when rendering the admin page, preg_split() when
+ * saving settings, and foreach ($keys as $key) in Pi_Chatbot_LLM_Client::call() on the
+ * very request serving a customer — a fatal here is a fatal on the chat response path,
+ * far worse than a fatal on the admin page.
  */
 function pi_chatbot_settings() {
     $defaults = [
         'llm7_keys'  => [],
         'model'      => 'gpt-oss:20b',
         'top_k'      => 6,
-        'rate_limit' => 10, // số câu hỏi / phút / IP
-        // Router (Adaptive RAG) — MẶC ĐỊNH TẮT. Chỉ bật tay sau khi review, đúng bài
-        // học từ y văn (Barnett et al. arXiv:2401.05856: "kiểm chứng RAG chỉ khả thi
-        // lúc vận hành thật"; 80% dự án RAG doanh nghiệp thất bại nghiêm trọng) —
-        // không bật tràn lan ngay từ đầu. Xem docs/plans/pi-chatbot-adaptive-router.md.
-        'router_enabled' => false,
-        'router_model'   => 'codestral-latest', // model turbo, không reasoning — đo thật
-        // 1,8s TB, KHÁC hẳn model generator (gpt-oss:20b tốn 2,9s + trả rỗng nếu dùng
-        // làm router, vì nó là reasoning model nuốt hết max_tokens vào field ẩn).
-        'router_keys'    => [], // rỗng = dùng chung llm7_keys — tách riêng nếu muốn key khác
+        'rate_limit' => 10, // questions / minute / IP
+        // Router — ON BY DEFAULT. It is now the ONLY intent classifier (the old
+        // rule-based Vietnamese keyword matching in class-retriever.php was
+        // removed by product decision, trading instant/free classification
+        // for a single LLM-first design). Disabling it does not just remove a
+        // fallback — it removes price/contact/service/project handling
+        // entirely, degrading every message to a plain product search on the
+        // raw text. See docs/plans/pi-chatbot-adaptive-router.md.
+        'router_enabled' => true,
+        'router_model'   => 'codestral-latest', // turbo model, no reasoning — measured for real
+        // 1.8s average, very different from the generator model (gpt-oss:20b takes 2.9s +
+        // returns empty when used as router, since it's a reasoning model that eats all of
+        // max_tokens into a hidden field).
+        'router_keys'    => [], // empty = share llm7_keys — split out if you want a different key
     ];
     $saved = get_option(PI_CHATBOT_OPTION, []);
     if (!is_array($saved)) $saved = [];
@@ -99,11 +110,12 @@ function pi_chatbot_enqueue_frontend() {
     if (!function_exists('is_plugin_active')) {
         require_once ABSPATH . 'wp-admin/includes/plugin.php';
     }
-    // Theme chỉ render nút #sh-toggle khi plugin này active — an toàn khi tự kiểm tra lại ở đây.
+    // The theme only renders the #sh-toggle button when this plugin is active — safe to double-check here too.
     if (!is_plugin_active('pi-chatbot/pi-chatbot.php')) return;
 
-    // Bust cache theo mtime file thay vì version tĩnh — sửa CSS/JS là trình duyệt tải
-    // bản mới ngay, không cần bump version tay hay xoá cache thủ công.
+    // Bust cache based on file mtime instead of a static version — editing CSS/JS means
+    // the browser loads the new version immediately, no need to bump a version by hand
+    // or clear cache manually.
     $css_file = PI_CHATBOT_DIR . 'assets/chatbot.css';
     $js_file  = PI_CHATBOT_DIR . 'assets/chatbot.js';
     wp_enqueue_style('pi-chatbot', PI_CHATBOT_URL . 'assets/chatbot.css', [], file_exists($css_file) ? filemtime($css_file) : PI_CHATBOT_VERSION);
@@ -111,9 +123,9 @@ function pi_chatbot_enqueue_frontend() {
     wp_localize_script('pi-chatbot', 'PiChatbotConfig', [
         'restUrl'   => esc_url_raw(rest_url('pi/v1/chatbot/ask')),
         'nonce'     => wp_create_nonce('wp_rest'),
-        // Cùng nguồn với Pi_Chatbot_Rest::MAX_MESSAGE_LENGTH — trước đây "500" là số
-        // cứng riêng ở cả PHP lẫn thuộc tính maxlength trong chatbot.js, dễ lệch nếu
-        // sau này đổi 1 chỗ mà quên chỗ kia.
+        // Same source as Pi_Chatbot_Rest::MAX_MESSAGE_LENGTH — previously "500" was a
+        // hardcoded number in both PHP and the maxlength attribute in chatbot.js,
+        // easy to drift out of sync if one gets changed later and the other is forgotten.
         'maxLength' => Pi_Chatbot_Rest::MAX_MESSAGE_LENGTH,
     ]);
 }

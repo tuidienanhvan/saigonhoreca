@@ -1,15 +1,17 @@
 <?php
 /**
- * Entities — nhận diện thương hiệu (brand) THẬT trong câu hỏi bằng cách so khớp
- * với danh sách brand THẬT đã index, thay vì để full-text tự đoán qua token.
+ * Entities — detect REAL brands in the customer's question by matching against
+ * the list of REAL indexed brands, instead of letting full-text guess via tokens.
  *
- * Lý do (đúc kết sau nhiều vòng vá bug retrieval): full-text bag-of-words coi
- * "Hoshizaki" ngang hàng với mọi từ khác trong câu — nếu câu có thêm từ phổ biến
- * (chào/bên/liên hệ...) thì các từ đó có thể lấn át, hoặc brand bị pha loãng
- * trong 1 điều kiện AND lớn. Nhận diện brand THẬT trước rồi lọc CỨNG theo cột
- * `brand` (WHERE brand = X) đảm bảo 100% kết quả đúng thương hiệu khách hỏi,
- * full-text chỉ dùng để XẾP HẠNG trong phạm vi đã lọc — đúng pattern "entity-first
- * structured filtering" khuyến nghị cho RAG quy mô nhỏ không dùng vector DB.
+ * Rationale (distilled after several rounds of retrieval bug fixes): full-text
+ * bag-of-words treats "Hoshizaki" the same as every other word in the sentence —
+ * if the sentence has extra common words (hi/at/contact...), those words can
+ * overpower it, or the brand gets diluted inside one large AND condition.
+ * Detecting the REAL brand first and then applying a HARD filter on the `brand`
+ * column (WHERE brand = X) guarantees 100% of results match the brand the
+ * customer actually asked about; full-text is only used to RANK within the
+ * already-filtered scope — the "entity-first structured filtering" pattern
+ * recommended for small-scale RAG without a vector DB.
  *
  * @package PiChatbot
  */
@@ -21,27 +23,30 @@ class Pi_Chatbot_Entities {
     const TAXONOMY_CACHE_KEY = 'pi_chatbot_taxonomy_brands';
 
     /**
-     * Dựng map [tên_thường_dùng => tên_đầy_đủ_chuẩn] từ 1 danh sách tên brand đầy đủ.
-     * Dùng chung cho cả known_brands() (nguồn: bảng index) lẫn taxonomy_brands()
-     * (nguồn: taxonomy) — 2 nguồn khác nhau nhưng luật so khớp phải giống hệt nhau,
-     * nếu tách ra viết 2 lần sẽ lệch nhau lúc sửa.
+     * Build a map [commonly_used_name => canonical_full_name] from a list of full
+     * brand names. Shared by both known_brands() (source: index table) and
+     * taxonomy_brands() (source: taxonomy) — two different sources, but the
+     * matching rules must stay identical; writing them twice separately would
+     * cause them to drift apart on the next edit.
      */
     private static function build_brand_map($full_names) {
         $map = [];
-        // Gom base -> [full,...] trước, KHÔNG ghi thẳng vào $map — ghi đè vô điều
-        // kiện (bản cũ) khiến 2 brand cùng tiền tố trước dấu gạch (vd tương lai
-        // "Giorik-Italia" + "Giorik-Spain") gộp làm 1 base "giorik", brand thua bị
-        // MySQL trả về sau cùng sẽ thắng và brand kia biến mất vĩnh viễn khỏi
-        // đường lọc cứng WHERE brand = X — không lỗi, không cảnh báo, chỉ lặng lẽ
-        // không bao giờ tìm thấy được.
+        // Group base -> [full,...] first, do NOT write directly into $map —
+        // unconditional overwrite (the old version) meant that two brands sharing
+        // the same prefix before the dash (e.g. a future "Giorik-Italia" +
+        // "Giorik-Spain") would collapse into one base "giorik", and whichever
+        // brand MySQL returned last would win while the other silently vanished
+        // forever from the hard-filter path WHERE brand = X — no error, no
+        // warning, it would simply never be found again.
         $bases = [];
         foreach ($full_names as $full) {
             $full = trim((string) $full);
             if ($full === '') continue;
-            $map[mb_strtolower($full)] = $full; // tên đầy đủ luôn khớp được, không nhập nhằng
+            $map[mb_strtolower($full)] = $full; // the full name always matches unambiguously
 
-            // "Giorik-Italia" -> base "Giorik" (phần trước dấu gạch ngang đầu tiên) —
-            // khách thường gõ tên ngắn, không kèm hậu tố xuất xứ (-Italia/-Germany...).
+            // "Giorik-Italia" -> base "Giorik" (the part before the first dash) —
+            // customers usually type the short name, without the country-of-origin
+            // suffix (-Italia/-Germany...).
             $base = trim(preg_replace('/[\-–—].*$/u', '', $full));
             if ($base === '') continue;
             $lb = mb_strtolower($base);
@@ -49,27 +54,31 @@ class Pi_Chatbot_Entities {
             if (!in_array($full, $bases[$lb], true)) $bases[$lb][] = $full;
         }
         foreach ($bases as $lb => $fulls) {
-            // Base nhập nhằng (≥2 brand cùng tên gốc) HOẶC trùng luôn 1 tên đầy đủ
-            // brand khác -> KHÔNG tạo lối tắt. Cả 2 brand vẫn khớp được bằng tên
-            // đầy đủ, chỉ mất mỗi lối tắt gõ tên ngắn — cùng nguyên tắc với
-            // detect_brand_from_title() trả null khi nhập nhằng thay vì đoán bừa.
+            // Ambiguous base (>=2 brands sharing the same root name) OR it collides
+            // with another brand's full name -> do NOT create a shortcut. Both
+            // brands can still be matched via their full name; only the short-name
+            // shortcut is lost — same principle as detect_brand_from_title()
+            // returning null on ambiguity instead of guessing blindly.
             if (count($fulls) === 1 && !isset($map[$lb])) $map[$lb] = $fulls[0];
         }
-        // So từ dài nhất trước — tránh brand ngắn (vd "Sammic") khớp nhầm vào giữa
-        // 1 tên brand dài khác vô tình chứa chuỗi con trùng. Sort 1 lần rồi cache.
+        // Compare longest names first — avoids a short brand (e.g. "Sammic")
+        // accidentally matching as a substring inside another, longer brand name.
+        // Sort once, then cache.
         uksort($map, function ($a, $b) { return mb_strlen($b) - mb_strlen($a); });
         return $map;
     }
 
     /**
-     * Danh sách brand thật ĐÃ INDEX, dạng [base_name_thường_dùng => tên_đầy_đủ_trong_DB]
-     * — ĐÃ SẮP XẾP sẵn theo độ dài tên giảm dần (dài trước) trước khi cache, thay vì
-     * uksort() lại mỗi lần gọi extract_brand()/extract_brands() (audit flag: sort lại
-     * toàn bộ map mỗi request dù chỉ 6 brand hiện tại — rẻ nhưng vô ích khi kết quả
-     * sort không đổi giữa các lần cache còn hiệu lực trong ngày).
+     * List of REAL, INDEXED brands, as [common_base_name => full_name_in_DB] —
+     * ALREADY SORTED by descending name length before caching, instead of calling
+     * uksort() again on every extract_brand()/extract_brands() call (audit flag:
+     * re-sorting the whole map every request even with only 6 brands today is
+     * cheap but pointless when the sort result never changes while the cache is
+     * still valid for the day).
      *
-     * Dùng cho phía CÂU HỎI: chỉ nhận diện brand thực sự có sản phẩm trong index,
-     * tránh lọc cứng theo 1 brand không có bản ghi nào rồi trả rỗng oan.
+     * Used on the QUESTION side: only recognizes brands that actually have
+     * products in the index, avoiding a hard filter on a brand with zero records
+     * that would wrongly return an empty result.
      */
     public static function known_brands() {
         $cached = get_transient(self::CACHE_KEY);
@@ -85,14 +94,15 @@ class Pi_Chatbot_Entities {
     }
 
     /**
-     * Danh sách brand từ TAXONOMY `product_brand` — nguồn chuẩn, đầy đủ (12 term),
-     * KHÔNG phụ thuộc bảng index.
+     * List of brands from the `product_brand` TAXONOMY — the canonical, complete
+     * source (12 terms), NOT dependent on the index table.
      *
-     * BẮT BUỘC tách riêng khỏi known_brands(): known_brands() đọc chính bảng index,
-     * mà detect_brand_from_title() lại được gọi TRONG lúc đang dựng bảng shadow —
-     * dùng known_brands() ở đó sẽ thành lỗi bootstrap gà-và-trứng (đọc bảng chưa
-     * dựng xong, hoặc tệ hơn là đọc bảng cũ rồi tự khoá mình ở 6 brand đang có
-     * thay vì thấy đủ 12 brand thật trong taxonomy).
+     * MUST be kept separate from known_brands(): known_brands() reads the index
+     * table itself, and detect_brand_from_title() is called WHILE that shadow
+     * table is still being built — using known_brands() there would cause a
+     * chicken-and-egg bootstrap bug (reading a table that isn't finished yet, or
+     * worse, reading the old table and locking itself to the 6 brands currently
+     * present instead of seeing all 12 real brands in the taxonomy).
      */
     public static function taxonomy_brands() {
         $cached = get_transient(self::TAXONOMY_CACHE_KEY);
@@ -112,17 +122,19 @@ class Pi_Chatbot_Entities {
     }
 
     /**
-     * Bóc brand từ TIÊU ĐỀ sản phẩm khi taxonomy để trống.
+     * Extract the brand from a product TITLE when the taxonomy field is empty.
      *
-     * So khớp với danh sách 12 brand THẬT trong taxonomy rồi trả về TÊN ĐẦY ĐỦ
-     * CHUẨN — KHÔNG cắt chuỗi theo dấu gạch ngang. Cách cắt theo gạch ngang cuối
-     * (`/-\s*([^-]+)$/`) là bug thật đã đo được: 8/12 brand có dạng "Brand-QuốcGia"
-     * (Fujimak-Japan, Berjaya-Malaysia, Winterhalter-Germany...) nên nó lấy ra
-     * "Japan"/"Malaysia"/"Germany" — sai 96/271 bản ghi, và sai kiểu tệ hơn để
-     * trống vì giá trị rác đó lọt vào cả cột brand lẫn FULLTEXT index.
+     * Matches against the list of 12 REAL brands in the taxonomy and returns the
+     * CANONICAL FULL NAME — does NOT split the string on a dash. Splitting on the
+     * dash is a real, measured bug: 8/12 brands follow the "Brand-Country" pattern
+     * (Fujimak-Japan, Berjaya-Malaysia, Winterhalter-Germany...), so that approach
+     * would extract "Japan"/"Malaysia"/"Germany" — wrong in 96/271 records, and
+     * worse, that garbage value would leak into both the brand column and the
+     * FULLTEXT index.
      *
-     * Trả null khi không khớp brand nào HOẶC khớp từ 2 brand trở lên (nhập nhằng —
-     * thà để trống rồi rơi về full-text còn hơn gán sai một cách im lặng).
+     * Returns null when no brand matches OR when 2 or more brands match
+     * (ambiguous — better to leave it empty and fall back to full-text than to
+     * silently assign the wrong brand).
      */
     public static function detect_brand_from_title($title) {
         $haystack = mb_strtolower((string) $title);
@@ -142,16 +154,17 @@ class Pi_Chatbot_Entities {
         delete_transient(self::TAXONOMY_CACHE_KEY);
     }
 
-    /** Trả tên brand THẬT đầu tiên khớp (đúng như trong DB) nếu câu hỏi nhắc tới, ngược lại null. */
+    /** Returns the first REAL brand name matched (exactly as stored in the DB) if the question mentions one, otherwise null. */
     public static function extract_brand($question) {
         $brands = self::extract_brands($question);
         return $brands ? $brands[0] : null;
     }
 
     /**
-     * Trả TẤT CẢ brand thật khớp trong câu hỏi (không chỉ 1) — cho phép so sánh
-     * cross-brand kiểu "Hoshizaki với Giorik cái nào tốt hơn" (trước đây chỉ nhận
-     * diện được 1 brand đầu tiên, brand thứ 2 bị bỏ qua hoàn toàn — audit flag).
+     * Returns ALL real brands matched in the question (not just one) — allows
+     * cross-brand comparisons like "Hoshizaki vs Giorik, which is better"
+     * (previously only the first brand was recognized, and a second brand was
+     * completely ignored — audit flag).
      */
     public static function extract_brands($question) {
         $q = mb_strtolower((string) $question);

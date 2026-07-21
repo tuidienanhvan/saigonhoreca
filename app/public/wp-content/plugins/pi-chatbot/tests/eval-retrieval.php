@@ -1,36 +1,37 @@
 <?php
 /**
- * eval-retrieval.php — Bộ đo hồi quy cho Pi_Chatbot_Retriever::search().
+ * eval-retrieval.php — Regression harness for Pi_Chatbot_Retriever::search().
  *
- * Chạy 60-100 câu hỏi thật (tests/golden-queries.json), so kết quả trả về với
- * ID sản phẩm đúng đã xác minh tay. Báo cáo hit@1/hit@3/recall@5/MRR THEO TỪNG
- * NHÓM (không chỉ số tổng — số tổng che mất chỗ hỏng, bài học rút ra từ đợt
- * đánh giá lần trước chỉ dùng 4 câu và không kết luận được gì).
+ * Runs 60-100 real questions (tests/golden-queries.json), compares the
+ * returned results against manually-verified correct product IDs. Reports
+ * hit@1/hit@3/recall@5/MRR PER GROUP (not just an overall number — an overall
+ * number hides where things are broken, a lesson learned from an earlier
+ * evaluation that used only 4 questions and couldn't conclude anything).
  *
- * Chạy (eval-file chỉ nhận positional arg, KHÔNG nhận --flag — WP-CLI tự
- * chặn --flag lạ trước khi vào file):
+ * Run it (eval-file only accepts positional args, NOT --flags — WP-CLI blocks
+ * unknown --flags before the file even runs):
  *   wp eval-file wp-content/plugins/pi-chatbot/tests/eval-retrieval.php
  *   wp eval-file wp-content/plugins/pi-chatbot/tests/eval-retrieval.php save-baseline
  *   wp eval-file wp-content/plugins/pi-chatbot/tests/eval-retrieval.php compare=baseline.json
  */
 
 if (!defined('ABSPATH')) {
-    fwrite(STDERR, "Phải chạy qua `wp eval-file`, không chạy PHP CLI trực tiếp.\n");
+    fwrite(STDERR, "Must be run via `wp eval-file`, not directly with the PHP CLI.\n");
     exit(1);
 }
 
 $golden_path = __DIR__ . '/golden-queries.json';
 if (!file_exists($golden_path)) {
-    fwrite(STDERR, "Không tìm thấy $golden_path\n");
+    fwrite(STDERR, "Could not find $golden_path\n");
     exit(1);
 }
 $golden = json_decode(file_get_contents($golden_path), true);
 if (!is_array($golden)) {
-    fwrite(STDERR, "golden-queries.json không parse được JSON hợp lệ.\n");
+    fwrite(STDERR, "golden-queries.json did not parse as valid JSON.\n");
     exit(1);
 }
 
-// ── Chạy retrieval + tính metric cho từng câu ──────────────────────────────
+// ── Run retrieval + compute metrics per question ───────────────────────────
 
 function pi_eval_metrics_for_query($expected_ids, $result_post_ids) {
     $expected = array_map('intval', $expected_ids);
@@ -50,8 +51,9 @@ function pi_eval_metrics_for_query($expected_ids, $result_post_ids) {
         }
     }
 
-    // Nhóm "tán gẫu / ngoài phạm vi" — expected_ids rỗng nghĩa là "không nên trả
-    // sản phẩm nào". Coi là "đúng" nếu retrieval trả rỗng hoặc rất ít.
+    // The "small talk / out of scope" group — an empty expected_ids means
+    // "should return no products at all". Counted as "correct" if retrieval
+    // returns nothing or very little.
     if (empty($expected)) {
         $ok = empty($got) ? 1 : 0;
         return ['hit1' => $ok, 'hit3' => $ok, 'recall5' => $ok, 'mrr' => $ok, 'is_negative' => true];
@@ -87,10 +89,10 @@ foreach ($golden as $item) {
     $by_group[$group]['mrr'] += $m['mrr'];
 }
 
-// ── Báo cáo ─────────────────────────────────────────────────────────────
+// ── Report ──────────────────────────────────────────────────────────────
 
-echo "\n=== pi-chatbot retrieval eval — " . count($golden) . " câu, " . count($by_group) . " nhóm ===\n\n";
-printf("%-28s %5s %8s %8s %10s %8s\n", "Nhóm", "N", "hit@1", "hit@3", "recall@5", "MRR");
+echo "\n=== pi-chatbot retrieval eval — " . count($golden) . " queries, " . count($by_group) . " groups ===\n\n";
+printf("%-28s %5s %8s %8s %10s %8s\n", "Group", "N", "hit@1", "hit@3", "recall@5", "MRR");
 $overall = ['n' => 0, 'hit1' => 0, 'hit3' => 0, 'recall5' => 0.0, 'mrr' => 0.0];
 foreach ($by_group as $group => $g) {
     printf(
@@ -107,12 +109,12 @@ foreach ($by_group as $group => $g) {
 echo str_repeat('-', 72) . "\n";
 printf(
     "%-28s %5d %8.3f %8.3f %10.3f %8.3f\n",
-    "TỔNG", $overall['n'], $overall['hit1'] / $overall['n'], $overall['hit3'] / $overall['n'],
+    "TOTAL", $overall['n'], $overall['hit1'] / $overall['n'], $overall['hit3'] / $overall['n'],
     $overall['recall5'] / $overall['n'], $overall['mrr'] / $overall['n']
 );
 
-// Liệt kê câu trượt (hit@3 = 0, không phải nhóm negative) — chỗ cần nhìn kỹ nhất
-echo "\n--- Câu trượt (hit@3 = 0) ---\n";
+// List failed queries (hit@3 = 0, excluding the negative group) — the part that needs the closest look
+echo "\n--- Failed queries (hit@3 = 0) ---\n";
 $miss_count = 0;
 foreach ($rows as $r) {
     if (!$r['is_negative'] && $r['hit3'] === 0) {
@@ -123,13 +125,13 @@ foreach ($rows as $r) {
         }
     }
 }
-if ($miss_count > 20) echo "  ... và " . ($miss_count - 20) . " câu khác\n";
-if ($miss_count === 0) echo "  (không có)\n";
+if ($miss_count > 20) echo "  ... and " . ($miss_count - 20) . " more\n";
+if ($miss_count === 0) echo "  (none)\n";
 
-// ── Lưu / so sánh baseline ──────────────────────────────────────────────
+// ── Save / compare baseline ────────────────────────────────────────────
 
-// `wp eval-file <file> <arg>...` — WP-CLI đưa các positional arg sau tên file
-// vào biến $args trong scope của file (không phải $argv/$_SERVER).
+// `wp eval-file <file> <arg>...` — WP-CLI puts positional args after the
+// filename into the $args variable in the file's scope (not $argv/$_SERVER).
 $eval_args = isset($args) && is_array($args) ? $args : [];
 $save_baseline = in_array('save-baseline', $eval_args, true);
 $compare_file = null;
@@ -151,16 +153,16 @@ $snapshot['overall'] = [
 
 if ($save_baseline) {
     file_put_contents(__DIR__ . '/baseline.json', json_encode($snapshot, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
-    echo "\n[eval] Đã lưu baseline vào tests/baseline.json\n";
+    echo "\n[eval] Saved baseline to tests/baseline.json\n";
 }
 
 if ($compare_file && file_exists(__DIR__ . '/' . $compare_file)) {
     $base = json_decode(file_get_contents(__DIR__ . '/' . $compare_file), true);
-    echo "\n=== So với baseline ($compare_file) ===\n";
-    printf("%-28s %10s %10s %10s %10s\n", "Nhóm", "Δhit@1", "Δhit@3", "Δrecall@5", "ΔMRR");
+    echo "\n=== Compared to baseline ($compare_file) ===\n";
+    printf("%-28s %10s %10s %10s %10s\n", "Group", "Δhit@1", "Δhit@3", "Δrecall@5", "ΔMRR");
     foreach ($snapshot['by_group'] as $group => $g) {
         $b = $base['by_group'][$group] ?? null;
-        if (!$b) { printf("%-28s (nhóm mới, không có baseline)\n", $group); continue; }
+        if (!$b) { printf("%-28s (new group, no baseline)\n", $group); continue; }
         printf(
             "%-28s %+10.3f %+10.3f %+10.3f %+10.3f\n",
             $group, $g['hit1'] - $b['hit1'], $g['hit3'] - $b['hit3'],
@@ -170,7 +172,7 @@ if ($compare_file && file_exists(__DIR__ . '/' . $compare_file)) {
     $bo = $base['overall'];
     printf(
         "%-28s %+10.3f %+10.3f %+10.3f %+10.3f\n",
-        "TỔNG", $snapshot['overall']['hit1'] - $bo['hit1'], $snapshot['overall']['hit3'] - $bo['hit3'],
+        "TOTAL", $snapshot['overall']['hit1'] - $bo['hit1'], $snapshot['overall']['hit3'] - $bo['hit3'],
         $snapshot['overall']['recall5'] - $bo['recall5'], $snapshot['overall']['mrr'] - $bo['mrr']
     );
 }
