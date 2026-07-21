@@ -206,6 +206,20 @@
     white-space: pre-wrap;
     word-break: break-word;
 }
+/* URLs the model writes inline inside its answer (e.g. "Xem thêm: https://...")
+   are turned into real links by appendLinkifiedText() in chatbot.js — always
+   underlined (not just on hover) so a link sitting inside a paragraph of plain
+   text reads as clickable at a glance, unlike the Sources list where the
+   bullet + details/summary structure already signals interactivity. */
+#pi-chatbot-panel .pi-cb-msg a {
+    color: var(--cb-accent);
+    text-decoration: underline;
+    text-decoration-color: var(--cb-accent);
+    word-break: break-all;
+}
+#pi-chatbot-panel .pi-cb-msg a:hover {
+    color: var(--cb-accent-hover);
+}
 #pi-chatbot-panel .pi-cb-msg-wrap--bot .pi-cb-msg {
     background: color-mix(in srgb, var(--cb-text) 4%, transparent);
     border: 1px solid var(--cb-border);

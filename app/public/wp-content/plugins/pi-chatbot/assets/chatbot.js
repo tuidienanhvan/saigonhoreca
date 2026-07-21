@@ -377,10 +377,51 @@
     /** Builds just the bubble part (without the wrap/avatar) — addMessage() uses this for
      *  the normal flow; revealTraceThenAnswer() reuses it to attach the answer bubble to
      *  the SAME avatar as the progress card, instead of creating a second avatar. */
+    /** Turns raw http(s) URLs embedded in plain text into real clickable
+     *  <a> elements — built via DOM (textContent per piece), never innerHTML,
+     *  so this keeps the same security invariant as the rest of the file
+     *  (no server-supplied string is ever parsed as HTML). Trailing
+     *  punctuation right after a URL (".", ")", "!"...) is split back out as
+     *  plain text so a sentence-ending period doesn't get swallowed into the
+     *  link href. */
+    var URL_RE = /(https?:\/\/[^\s<>"]+)/g;
+    function appendLinkifiedText(el, text) {
+        var lastIndex = 0;
+        var match;
+        URL_RE.lastIndex = 0;
+        while ((match = URL_RE.exec(text)) !== null) {
+            if (match.index > lastIndex) {
+                el.appendChild(document.createTextNode(text.slice(lastIndex, match.index)));
+            }
+            var url = match[0];
+            var trail = '';
+            var trailMatch = url.match(/[.,;:!?)\]}]+$/);
+            if (trailMatch) {
+                trail = trailMatch[0];
+                url = url.slice(0, url.length - trail.length);
+            }
+            if (isSafeUrl(url)) {
+                var a = document.createElement('a');
+                a.href = url;
+                a.target = '_blank';
+                a.rel = 'noopener';
+                a.textContent = url;
+                el.appendChild(a);
+            } else {
+                el.appendChild(document.createTextNode(url));
+            }
+            if (trail) el.appendChild(document.createTextNode(trail));
+            lastIndex = match.index + match[0].length;
+        }
+        if (lastIndex < text.length) {
+            el.appendChild(document.createTextNode(text.slice(lastIndex)));
+        }
+    }
+
     function buildMsgBubble(role, text, sources) {
         var el = document.createElement('div');
         el.className = 'pi-cb-msg pi-cb-msg--' + role;
-        el.textContent = text;
+        appendLinkifiedText(el, text);
         if (sources && sources.length) {
             var srcWrap = document.createElement('details');
             srcWrap.className = 'pi-cb-sources';

@@ -47,7 +47,26 @@ class Pi_Chatbot_Generator {
             $context_text = implode("\n", $lines);
         }
 
-        $user_prompt = "REFERENCE INFORMATION:\n{$context_text}\n\nCUSTOMER QUESTION: {$question}";
+        // Even a same-language reminder placed right next to the question (see
+        // below) wasn't enough on its own — verified live: a long, ALL-Vietnamese
+        // reference block (6 projects worth of descriptions) still made
+        // gpt-oss:20b answer in Vietnamese to an English question despite BOTH
+        // the system prompt AND a "same language as the question" reminder here.
+        // Referential instructions ("same language as X") ask a cheap model to
+        // first classify a language, then obey — an extra reasoning step it
+        // unreliably skips under a large opposing-language context. Naming the
+        // target language directly is a much simpler, one-step instruction to
+        // follow, so detect Vietnamese via its diacritics (a customer question
+        // containing them is Vietnamese; the practical vi/en split this site
+        // actually sees) and always spell out the target language explicitly.
+        $looks_vietnamese = (bool) preg_match(
+            '/[àáạảãăằắẳẵặâầấẩẫậèéẹẻẽêềếểễệđìíịỉĩòóọỏõôồốổỗộơờớởỡợùúụủũưừứửữựỳýỵỷỹ]/iu',
+            $question
+        );
+        $language_note = $looks_vietnamese
+            ? '(Nhắc lại: viết TOÀN BỘ câu trả lời bằng tiếng Việt.)'
+            : '(Reminder: write your ENTIRE answer in English. Do not use any Vietnamese, even though the reference information above is in Vietnamese.)';
+        $user_prompt = "REFERENCE INFORMATION:\n{$context_text}\n\nCUSTOMER QUESTION: {$question}\n\n{$language_note}";
 
         $body = [
             'model'    => $settings['model'],
