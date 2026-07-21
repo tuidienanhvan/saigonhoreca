@@ -152,21 +152,34 @@ class Pi_Chatbot_Generator {
             return '(เตือนความจำ: กรุณาเขียนคำตอบทั้งหมดเป็นภาษาไทย อย่าใช้ภาษาเวียดนามแม้ว่าข้อมูลอ้างอิงด้านบนจะเป็นภาษาเวียดนามก็ตาม)';
         }
         // German/French share the Latin alphabet with English/Vietnamese, so
-        // script range alone can't tell them apart — a real bug caught live:
-        // "Haben Sie industrielle Öfen?" got answered in English because it
-        // fell through to the English fallback below. Narrower than the
-        // script-range checks above: look for characters/words distinctive
-        // enough that they essentially never appear in an English question
-        // (ß and word-boundary "haben"/"sie" for German; the elided
-        // "avez-vous"/"vous avez" pattern for French). This does NOT cover
-        // every possible German/French phrasing — a French question with
-        // none of these markers would still fall through to English, unlike
-        // the reliable script-based checks above for other languages.
-        if (preg_match('/ß/u', $question) || preg_match('/\b(haben sie|können sie|ofen|öfen|industrielle)\b/iu', $question)) {
-            return '(Erinnerung: Schreiben Sie Ihre GESAMTE Antwort auf Deutsch. Verwenden Sie kein Vietnamesisch, auch wenn die Referenzinformationen oben auf Vietnamesisch sind.)';
-        }
-        if (preg_match('/\b(avez[- ]vous|vous avez|êtes[- ]vous|s\'il vous pla[iî]t|pouvez[- ]vous)\b/iu', $question)) {
+        // script range alone can't tell them apart. A first attempt matched a
+        // handful of fixed PHRASES (e.g. "avez-vous", "haben sie") — verified
+        // live to be too narrow: "Je voudrais des informations sur les fours
+        // industriels pour ma cuisine." contains none of those phrases and
+        // still fell through to the English fallback, answering a French
+        // question in English. Counting matches against a small list of
+        // common FUNCTION WORDS (je/des/les/pour/vos/vous...) is far more
+        // robust than a handful of fixed phrases, since ordinary sentences
+        // are built from a small closed set of grammatical words regardless
+        // of how the sentence is phrased — 2+ hits is a strong signal, these
+        // words essentially never appear in genuine English text. Still not
+        // full language detection (no accent required, so it can't
+        // distinguish French from, say, Portuguese if they shared enough
+        // stopwords — but French/German don't overlap with each other or with
+        // English here, which is the realistic ambiguity this site faces).
+        $fr_hits = preg_match_all(
+            '/\b(je|voudrais|des|les|pour|vos|votre|nous|avec|dans|sur|quel|quelle|c\'est|qu\'est|où|bonjour|merci|fours?|cuisine)\b/iu',
+            $question
+        );
+        if ($fr_hits >= 2) {
             return "(Rappel : rédigez l'INTÉGRALITÉ de votre réponse en français. N'utilisez pas le vietnamien, même si les informations de référence ci-dessus sont en vietnamien.)";
+        }
+        $de_hits = preg_match_all(
+            '/\b(ich|möchte|die|der|das|für|ihre|wir|mit|und|auf|welche|wo|danke|hallo|haben|sie|können|öfen?|industrielle)\b/iu',
+            $question
+        );
+        if ($de_hits >= 2 || preg_match('/ß/u', $question)) {
+            return '(Erinnerung: Schreiben Sie Ihre GESAMTE Antwort auf Deutsch. Verwenden Sie kein Vietnamesisch, auch wenn die Referenzinformationen oben auf Vietnamesisch sind.)';
         }
         // Latin script, no Vietnamese diacritics and no German/French marker
         // matched -> the common realistic fallback for this site (English),
