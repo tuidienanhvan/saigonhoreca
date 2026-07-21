@@ -1,16 +1,22 @@
 /* ═══════════════════════════════════════════════════════════════
-   SAIGON HORECA THEME — DARK LUXE EDITION
+   SAIGON HORECA THEME — TOKENS (structure, brand-agnostic)
    ─────────────────────────────────────────────────────────────
-   BRAND = GOLD (#f5a623) — vàng kim sang trọng.
-   Palette: BLACK + GOLD + WHITE — đen + vàng kim + trắng.
-   Red (#c1272d) chỉ dùng cho status `--er`/`--danger` (form
-   validation errors), KHÔNG phải brand.
-   No light/dark toggle — dark IS the default and only theme.
+   pi-design-system v1.0.0 (xem D:\Documents\pi-design-system)
+   Nguồn gốc: tokens/_theme.css của pi-design-system — copy nguyên
+   bản, không sửa khi cập nhật brand. Giá trị màu thật + legacy
+   aliases nằm ở ./_brand.css.
 
-   SINGLE SOURCE OF TRUTH cho mọi style-*.css route bundle.
-   Mọi route (home/about/contact/single/archive/...) đều
-   `@import "./_tokens.css"` để đảm bảo cùng 1 palette.
+   SINGLE SOURCE OF TRUTH cho mọi style-*.css route bundle. Mọi route
+   (home/about/contact/single/archive/...) đều `@import "./_tokens.css"`
+   để đảm bảo cùng 1 cấu trúc + cùng 1 palette.
    ═══════════════════════════════════════════════════════════════ */
+
+/* scroll.css + _brand.css đi kèm _tokens vào MỌI bundle (~45
+   entrypoint) — 2 dòng duy nhất ở đây, không import lại ở style.css
+   hay entrypoint nào khác. Tách _brand.css riêng để giá trị brand
+   (màu thật) độc lập khỏi cấu trúc token (pi-design-system). */
+@import "./scroll.css";
+@import "./_brand.css";
 
 @theme {
   --font-sans:    "Be Vietnam Pro", ui-sans-serif, system-ui, sans-serif;
@@ -61,112 +67,9 @@
   --breakpoint-xl: 80rem;   /* 1280px */
 }
 
-/* ─── DEFAULT THEME — DARK LUXE (only theme; no toggle) ─────── */
+/* ─── Layout / hero / heading tokens — saigonhoreca-specific,
+   KHÔNG phải màu brand nên ở lại đây (không đưa vào _brand.css) ── */
 :root {
-  color-scheme: dark;
-
-  /* Primary brand — VÀNG KIM (saigonhoreca brand).
-     Text on brand surface is BLACK (vàng nền tối + chữ đen). */
-  --p:  #f5a623;   /* gold */
-  --ph: #d18910;   /* gold-dim (hover) */
-  --pc: #000000;   /* text trên brand bg (vàng) */
-
-  /* Base (Backgrounds — black to near-black palette) */
-  --b1: #0a0a0a;
-  --b2: #131313;
-  --b3: #1a1a1a;
-  --b4: #1f1f1f;
-
-  /* Content (Text — white scale) */
-  --bc:  #ffffff;
-  --bc2: rgba(255, 255, 255, 0.78);
-  --bc3: rgba(255, 255, 255, 0.55);
-
-  /* Borders (subtle white at low alpha) */
-  --bd: rgba(255, 255, 255, 0.08);
-  --bs: rgba(255, 255, 255, 0.04);
-  --bt: rgba(255, 255, 255, 0.18);
-
-  /* Status colors */
-  --su: #16a34a;
-  --wa: #f5a623;
-  --er: #c1272d;
-  --in: #2563eb;
-
-  --duration-normal: 0.5s;
-
-  /* ── Legacy aliases (saigonhoreca-theme inheritance) ── */
-
-  /* Brand (= gold). Aliases để code cũ var(--brand) vẫn map vào vàng. */
-  --brand:           var(--p);            /* #f5a623 gold */
-  --brand-hover:     var(--ph);           /* #d18910 gold-dim */
-  --brand-dark:      var(--ph);
-  --brand-light:     #ffd166;             /* gold-lighter */
-  --brand-content:   var(--pc);           /* #000 — text trên gold bg */
-  --brand-50:        rgba(245, 166, 35, 0.06);
-  --brand-100:       rgba(245, 166, 35, 0.12);
-  --on-brand:        var(--pc);
-
-  /* Secondary / Gold accent — same brand color as --p/--ph, aliased (not
-     re-hardcoded) so there is exactly ONE place to change the brand color. */
-  --secondary:       var(--p);
-  --secondary-dark:  var(--ph);
-  --secondary-hover: #ffb100;   /* distinct shade, not a --ph duplicate — keep literal */
-  --gold:            var(--p);
-  --gold-dim:        var(--ph);
-
-  /* Red — KHÔNG phải brand, chỉ dùng cho status danger / error */
-  --color-error:     #c1272d;
-  --color-error-dark:#a31f24;
-
-  /* Status aliases */
-  --success:         var(--su);
-  --warning:         var(--wa);
-  --danger:          var(--er);
-  --info:            var(--in);
-
-  /* Backgrounds */
-  --bg:              var(--b1);
-  --bg-alt:          var(--b3);
-  --bg-dark:         #000000;
-  --bg-card:         var(--b2);
-  --bg-input:        var(--b3);
-  --bg-elevated:     var(--b4);
-  --color-surface-alt: var(--b3);
-
-  /* Text */
-  --text-1:          var(--bc);
-  --text-1-2:        var(--bc2);
-  --text-1-3:        var(--bc2);
-  --text-1-muted:    var(--bc3);
-  --text-2:          var(--bc2);
-  --text-3:          var(--bc3);
-  --color-text:      var(--bc);
-  --sh-heading:      var(--bc);
-
-  /* Borders */
-  --border-default:        var(--bd);
-  --border-default-light:  var(--bs);
-  --border-subtle:         var(--bs);
-  --border-strong:         var(--bt);
-
-  /* Fonts (alias Pi → legacy) */
-  --font-body:    var(--font-sans);
-  --font-heading: var(--font-display);
-
-  /* Radius */
-  --radius:     14px;
-
-  /* Shadows (deep on dark theme) */
-  --shadow:          0 4px 16px rgba(0, 0, 0, 0.5);
-  --shadow-main:     0 8px 28px rgba(0, 0, 0, 0.6);
-  --shadow-floating: 0 12px 36px rgba(0, 0, 0, 0.7);
-
-  /* Brand-specific accents */
-  --sh-comments-accent:        var(--p);
-  --sh-comments-accent-strong: var(--ph);
-
-  /* Layout */
   --sh-content-max:  80rem;
   --container-max:   1200px;   /* container thường (section width) */
 
@@ -196,98 +99,34 @@
 }
 
 /* ─── GLOBAL BASE ────────────────────────────────────────────── */
-@layer base {
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  html, body {
-    background-color: var(--b1);
-    color: var(--bc);
-    -webkit-font-smoothing: antialiased;
-    scroll-behavior: smooth;
-    font-family: var(--font-sans);
-    /* Chặn horizontal scroll do `100vw` (Windows scrollbar ~15px) hoặc
-       element bleed ngoài viewport. `overflow-x: clip` thay vì `hidden`
-       để KHÔNG phá sticky positioning. */
-    overflow-x: clip;
-  }
-
-  body {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    min-height: 100vh;
-  }
-
-  img { @apply max-w-full h-auto; }
-  a   { @apply transition-colors duration-200; }
-
-  h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-display);
-    color: var(--bc);
-    line-height: 1.25;
-  }
+html, body {
+  background-color: var(--b1);
+  color: var(--bc);
+  -webkit-font-smoothing: antialiased;
+  font-family: var(--font-sans);
+  overflow-x: clip;
 }
 
-/* --- CUSTOM SCROLLBAR (auto-hide: ẩn mặc định, hiện khi đang cuộn) ---
-   `.is-scrolling` được main-modern.js gắn vào <html> lúc scroll và tự gỡ
-   ~800ms sau khi cuộn dừng (xem autoHideScrollbar() trong file đó — 1 nơi
-   global duy nhất, không lặp lại logic ở CSS nào khác). Firefox
-   (scrollbar-color) không hỗ trợ transition mượt nên chỉ đổi tức thời;
-   Chrome/Edge/Safari (::-webkit-scrollbar-thumb) fade mượt qua opacity. */
-* {
-  scrollbar-width: thin;
-  scrollbar-color: transparent transparent;
-}
-html.is-scrolling, html.is-scrolling * {
-  scrollbar-color: color-mix(in srgb, var(--p) 45%, transparent) var(--b1);
-}
-::-webkit-scrollbar { width: 10px; height: 10px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb {
-  background: color-mix(in srgb, var(--p) 45%, transparent);
-  border: 2px solid transparent;
-  background-clip: padding-box;
-  border-radius: 10px;
-  opacity: 0;
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease;
-}
-html.is-scrolling::-webkit-scrollbar-thumb, html.is-scrolling ::-webkit-scrollbar-thumb {
-  opacity: 1;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: color-mix(in srgb, var(--p) 75%, transparent);
-}
-::-webkit-scrollbar-corner { background: transparent; }
-
-/* Không auto-hide trên thiết bị chạm — scrollbar cảm ứng vốn đã tự ẩn/hiện
-   theo hệ điều hành, giữ .is-scrolling luôn "on" tránh xung đột 2 lớp ẩn/hiện. */
-@media (hover: none) and (pointer: coarse) {
-  * { scrollbar-color: color-mix(in srgb, var(--p) 45%, transparent) transparent; }
-  ::-webkit-scrollbar-thumb { opacity: 1; }
+body {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  min-height: 100vh;
 }
 
-/* ── Ngoại lệ scrollbar theo component (3 chỗ, gộp về đây 2026-07 —
-   trước rải rác ở mobile-menu.css/hero.css/trust.css, giờ 1 nơi duy nhất) ── */
+img { max-width: 100%; height: auto; }
+a   { transition: color 0.2s; }
 
-/* Mobile menu sidebar: ẩn hẳn thanh cuộn, không theo auto-hide toàn cục. */
-.sh-mobile__body { -ms-overflow-style: none; scrollbar-width: none; }
-.sh-mobile__body::-webkit-scrollbar { display: none; }
-
-/* Archive-project hero carousel: thanh mảnh (4px) LUÔN hiện (gợi ý còn
-   cuộn được), không auto-hide — carousel nhỏ nên cần affordance rõ ngay. */
-.sh-archive-hero__cards {
-  scrollbar-width: thin;
-  scrollbar-color: color-mix(in srgb, var(--gold) 40%, transparent) transparent;
-}
-.sh-archive-hero__cards::-webkit-scrollbar { height: 4px; }
-.sh-archive-hero__cards::-webkit-scrollbar-thumb {
-  background: color-mix(in srgb, var(--gold) 40%, transparent);
-  border-radius: 4px;
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  color: var(--bc);
+  line-height: 1.25;
 }
 
-/* Archive-project trust track: ẩn hẳn — có dot/nav riêng, không cần thanh cuộn. */
-.sh-archive-trust__track { scrollbar-width: none; }
-.sh-archive-trust__track::-webkit-scrollbar { display: none; }
+/* Scroll/scrollbar rules: TOÀN BỘ nằm ở assets/css/scroll.css (SSOT),
+   được import ở dòng @import đầu file này. */
 
 /* --- CONTENT-VISIBILITY OPTIMIZATION --- */
 .sgh-cv-auto {
