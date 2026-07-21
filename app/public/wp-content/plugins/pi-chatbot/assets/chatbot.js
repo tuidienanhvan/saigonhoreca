@@ -257,6 +257,16 @@
                 addMessage(msg.role, msg.text, msg.sources);
             });
             isRestoring = false;
+            // Quick-reply buttons should show whenever the customer hasn't actually
+            // asked anything yet — not just on a brand-new session. Previously this
+            // branch (restoring a NON-empty history) never showed them again, so a
+            // page reload right after opening the panel (history = just the saved
+            // greeting, no user message yet) silently lost the buttons, while the
+            // Reset button — which clears history to [] and falls to the "else"
+            // branch below — still showed them. Same starting state, inconsistent
+            // outcome depending on reload vs. reset.
+            var hasUserMessage = chatHistory.some(function (msg) { return msg.role === 'user'; });
+            if (!hasUserMessage) addQuickReplies(QUICK_REPLIES);
         } else {
             addMessage('bot', 'Hello!\nI\'m Saigon Horeca\'s AI assistant. What can I help you with today?');
             addQuickReplies(QUICK_REPLIES);

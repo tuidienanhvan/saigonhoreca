@@ -132,10 +132,19 @@ class Pi_Chatbot_Retriever {
     public static function contact_context() {
         if (!function_exists('saigonhouse_get_contact_info')) return [];
         $c = saigonhouse_get_contact_info();
+        // Facebook/Zalo/YouTube were missing here even though
+        // saigonhouse_get_contact_info() (theme) has always returned them —
+        // a real bug caught live: a customer asked for the Facebook page and
+        // the bot said it didn't have that information, despite the URL
+        // existing right in the theme's contact-info config the whole time.
+        // SYSTEM_PROMPT forbids answering from anything not in this context,
+        // so any field missing here is a field the bot can never mention,
+        // no matter how obviously "known" it seems.
         $excerpt = sprintf(
-            'Hotline: %s (or %s). Email: %s. Address: %s. Website: %s.',
+            'Hotline: %s (or %s). Email: %s. Address: %s. Website: %s. Facebook: %s. Zalo: %s. YouTube: %s.',
             $c['hotline'] ?? '', $c['hotline_alt'] ?? '', $c['email_primary'] ?? '',
-            $c['address'] ?? '', $c['website'] ?? ''
+            $c['address'] ?? '', $c['website'] ?? '', $c['facebook'] ?? '',
+            $c['zalo'] ?? '', $c['youtube'] ?? ''
         );
         return [[
             'post_id'  => 0,
