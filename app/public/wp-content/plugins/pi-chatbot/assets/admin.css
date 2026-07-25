@@ -1,0 +1,318 @@
+/**
+ * Pi Chatbot — admin page skin, black + gold to match the saigonhoreca brand
+ * (pi-design-system tokens: D:\Documents\pi-design-system, values copied
+ * literally from the theme's own _brand.css rather than imported at runtime —
+ * this file has no build step and must not depend on the theme being active).
+ *
+ * Scoped entirely under .pi-chatbot-admin so nothing here can leak onto any
+ * other wp-admin screen — WP's own admin chrome (top toolbar, side menu)
+ * intentionally stays untouched.
+ */
+
+.pi-chatbot-admin {
+  --pi-p: #f5a623;
+  --pi-ph: #d18910;
+  --pi-pc: #000000;
+  --pi-b1: #0a0a0a;
+  --pi-b2: #131313;
+  --pi-b3: #1a1a1a;
+  --pi-b4: #1f1f1f;
+  --pi-bc: #ffffff;
+  --pi-bc2: rgba(255, 255, 255, 0.78);
+  --pi-bc3: rgba(255, 255, 255, 0.55);
+  --pi-bd: rgba(255, 255, 255, 0.10);
+  --pi-bs: rgba(255, 255, 255, 0.05);
+  --pi-bt: rgba(255, 255, 255, 0.20);
+  --pi-su: #16a34a;
+  --pi-wa: #f5a623;
+  --pi-er: #e15a5f;
+  --pi-in: #4d82ea;
+  --pi-radius-sm: 8px;
+  --pi-radius-md: 12px;
+  --pi-radius-lg: 16px;
+
+  color: var(--pi-bc2);
+  font-size: 14px;
+  line-height: 1.6;
+
+  /* Full-bleed dark surface, not a boxed column with empty space beside it.
+   * The whole content area is painted here, not just individual cards —
+   * without this, WP admin's own default light page background (#f0f0f1)
+   * shows through around the masthead and between cards. Negative margins
+   * pull the dark surface out to the actual edges of #wpbody-content (WP's
+   * own .wrap already carries a 20px right margin + a small left offset)
+   * so there is no light gutter OR empty dark gutter on either side —
+   * width:auto + no max-width means it fills whatever space the admin menu
+   * (expanded or collapsed) leaves available, at any viewport size.
+   */
+  width: auto;
+  max-width: none;
+  background: var(--pi-b1);
+  margin: 0 -20px 0 -2px;
+  padding: 24px 26px 60px;
+  min-height: calc(100vh - 46px); /* fills the viewport below the WP admin toolbar */
+}
+
+/* Cards and field grids fill the full width of that dark surface — nothing
+ * inside should be narrower than its parent just because it used to sit
+ * inside a max-width:940px column. */
+.pi-chatbot-admin .pi-cba-card { width: 100%; }
+.pi-chatbot-admin form { width: 100%; }
+
+.pi-chatbot-admin * { box-sizing: border-box; }
+
+/* ── Masthead ─────────────────────────────────────────────────────────── */
+.pi-cba-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 24px;
+}
+.pi-cba-head .dashicons {
+  color: var(--pi-p);
+  font: normal 24px/1 dashicons;
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  vertical-align: middle;
+  flex: none;
+}
+.pi-cba-head h1 {
+  margin: 0;
+  padding: 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--pi-bc);
+}
+.pi-cba-head .pi-cba-sub {
+  margin: 2px 0 0;
+  font-size: 12.5px;
+  color: var(--pi-bc3);
+}
+
+/* ── Notices ──────────────────────────────────────────────────────────── */
+.pi-cba-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 16px;
+  border-radius: var(--pi-radius-sm);
+  margin: 0 0 16px;
+  font-size: 13.5px;
+  border: 1px solid;
+}
+.pi-cba-notice.success { background: rgba(22, 163, 74, 0.12); border-color: rgba(22, 163, 74, 0.35); color: #7fe0a3; }
+.pi-cba-notice.error   { background: rgba(225, 90, 95, 0.12); border-color: rgba(225, 90, 95, 0.35); color: #f5a3a6; }
+.pi-cba-notice .dashicons { font-size: 18px; width: 18px; height: 18px; flex: none; margin-top: 1px; }
+
+/* ── Cards ────────────────────────────────────────────────────────────── */
+.pi-cba-card {
+  background: var(--pi-b2);
+  border: 1px solid var(--pi-bd);
+  border-radius: var(--pi-radius-lg);
+  padding: 22px 24px;
+  margin: 0 0 20px;
+}
+.pi-cba-card + .pi-cba-card { margin-top: 20px; }
+.pi-cba-eyebrow {
+  display: block;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--pi-p);
+  margin: 0 0 6px;
+}
+.pi-cba-card h2 {
+  margin: 0 0 8px;
+  padding: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--pi-bc);
+}
+.pi-cba-card > .pi-cba-desc {
+  margin: 0 0 18px;
+  max-width: 70ch;
+  color: var(--pi-bc3);
+  font-size: 13px;
+}
+.pi-cba-card hr {
+  border: none;
+  border-top: 1px solid var(--pi-bs);
+  margin: 20px 0;
+}
+
+/* ── Field grid (replaces WP's default .form-table inside our cards) ───── */
+.pi-cba-fields { display: flex; flex-direction: column; gap: 18px; }
+.pi-cba-field { display: grid; grid-template-columns: 220px 1fr; gap: 16px; align-items: start; }
+@media (max-width: 782px) {
+  .pi-cba-field { grid-template-columns: 1fr; }
+}
+.pi-cba-field label.pi-cba-label {
+  padding-top: 8px;
+  font-weight: 600;
+  color: var(--pi-bc);
+  font-size: 13px;
+}
+.pi-cba-field .pi-cba-desc {
+  margin: 6px 0 0;
+  font-size: 12px;
+  color: var(--pi-bc3);
+  max-width: 60ch;
+}
+.pi-cba-checkbox-row { display: flex; align-items: center; gap: 8px; padding-top: 8px; }
+.pi-cba-checkbox-row label { color: var(--pi-bc); font-size: 13px; font-weight: 500; }
+
+/* ── Inputs ───────────────────────────────────────────────────────────── */
+.pi-chatbot-admin input[type="text"],
+.pi-chatbot-admin input[type="number"],
+.pi-chatbot-admin input[type="password"],
+.pi-chatbot-admin textarea {
+  background: var(--pi-b3);
+  border: 1px solid var(--pi-bd);
+  border-radius: var(--pi-radius-sm);
+  color: var(--pi-bc);
+  padding: 8px 12px;
+  font-size: 13px;
+  width: 100%;
+  max-width: 460px;
+}
+.pi-chatbot-admin textarea { max-width: 100%; font-family: ui-monospace, "SFMono-Regular", Consolas, monospace; }
+.pi-chatbot-admin input[type="number"] { max-width: 100px; }
+.pi-chatbot-admin input:focus,
+.pi-chatbot-admin textarea:focus {
+  border-color: var(--pi-p);
+  outline: 2px solid rgba(245, 166, 35, 0.35);
+  outline-offset: 0;
+  box-shadow: none;
+}
+.pi-chatbot-admin input[type="checkbox"] {
+  border-color: var(--pi-bt);
+  background: var(--pi-b3);
+}
+.pi-chatbot-admin input[type="checkbox"]:checked {
+  background: var(--pi-p);
+  border-color: var(--pi-p);
+}
+
+/* ── Buttons ──────────────────────────────────────────────────────────── */
+.pi-chatbot-admin .button-primary {
+  background: var(--pi-p);
+  border-color: var(--pi-p);
+  color: var(--pi-pc);
+  font-weight: 700;
+  text-shadow: none;
+  box-shadow: none;
+  border-radius: var(--pi-radius-sm);
+}
+.pi-chatbot-admin .button-primary:hover,
+.pi-chatbot-admin .button-primary:focus {
+  background: var(--pi-ph);
+  border-color: var(--pi-ph);
+  color: var(--pi-pc);
+}
+.pi-chatbot-admin .button-secondary {
+  background: var(--pi-b3);
+  border-color: var(--pi-bt);
+  color: var(--pi-bc);
+  border-radius: var(--pi-radius-sm);
+  box-shadow: none;
+}
+.pi-chatbot-admin .button-secondary:hover { border-color: var(--pi-p); color: var(--pi-p); }
+
+/* ── Key list widget (JS-enhanced; the plain textarea is the no-JS fallback) ── */
+.pi-key-list-source.pi-enhanced { position: absolute; width: 1px; height: 1px; overflow: hidden; opacity: 0; pointer-events: none; }
+.pi-key-list { display: flex; flex-direction: column; gap: 8px; max-width: 620px; }
+.pi-key-row { display: flex; align-items: center; gap: 6px; }
+.pi-key-row input[type="password"],
+.pi-key-row input[type="text"] {
+  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  font-size: 12.5px;
+  max-width: none;
+  flex: 1 1 auto;
+}
+.pi-key-row .pi-key-idx {
+  flex: none;
+  width: 22px;
+  text-align: center;
+  font-size: 11px;
+  color: var(--pi-bc3);
+  font-variant-numeric: tabular-nums;
+}
+.pi-key-icon-btn {
+  flex: none;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--pi-b3);
+  border: 1px solid var(--pi-bd);
+  border-radius: var(--pi-radius-sm);
+  color: var(--pi-bc3);
+  cursor: pointer;
+  padding: 0;
+}
+.pi-key-icon-btn:hover { color: var(--pi-bc); border-color: var(--pi-bt); }
+.pi-key-icon-btn.pi-key-remove:hover { color: var(--pi-er); border-color: var(--pi-er); }
+.pi-key-add {
+  align-self: flex-start;
+  margin-top: 2px;
+  background: transparent;
+  border: 1px dashed var(--pi-bt);
+  border-radius: var(--pi-radius-sm);
+  color: var(--pi-p);
+  font-size: 12.5px;
+  font-weight: 600;
+  padding: 7px 14px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.pi-key-add:hover { border-color: var(--pi-p); background: rgba(245, 166, 35, 0.08); }
+.pi-key-empty { font-size: 12px; color: var(--pi-bc3); font-style: italic; }
+
+/* ── Status pills ─────────────────────────────────────────────────────── */
+.pi-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 999px;
+  letter-spacing: 0.02em;
+}
+.pi-pill::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.pi-pill.good { background: rgba(22, 163, 74, 0.14); color: #7fe0a3; }
+.pi-pill.warn { background: rgba(245, 166, 35, 0.14); color: var(--pi-p); }
+.pi-pill.bad  { background: rgba(225, 90, 95, 0.14); color: #f5a3a6; }
+.pi-pill.neutral { background: var(--pi-b3); color: var(--pi-bc3); }
+
+/* ── Stat strip (Data index) ─────────────────────────────────────────── */
+.pi-cba-stats { display: flex; gap: 24px; flex-wrap: wrap; margin: 0 0 18px; }
+.pi-cba-stat-num { font-size: 24px; font-weight: 700; color: var(--pi-bc); font-variant-numeric: tabular-nums; line-height: 1.1; }
+.pi-cba-stat-label { font-size: 11px; color: var(--pi-bc3); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 3px; }
+
+/* ── Learning table ───────────────────────────────────────────────────── */
+.pi-cba-table-wrap { overflow-x: auto; border: 1px solid var(--pi-bd); border-radius: var(--pi-radius-md); }
+.pi-chatbot-admin table.pi-cba-table { border-collapse: collapse; width: 100%; background: var(--pi-b3); margin: 0; }
+.pi-chatbot-admin table.pi-cba-table th {
+  text-align: left;
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--pi-bc3);
+  background: var(--pi-b4);
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--pi-bd);
+}
+.pi-chatbot-admin table.pi-cba-table td {
+  padding: 9px 14px;
+  border-bottom: 1px solid var(--pi-bs);
+  color: var(--pi-bc2);
+  font-size: 13px;
+}
+.pi-chatbot-admin table.pi-cba-table tr:last-child td { border-bottom: none; }
+.pi-chatbot-admin table.pi-cba-table td.num { font-variant-numeric: tabular-nums; color: var(--pi-bc); font-weight: 600; }

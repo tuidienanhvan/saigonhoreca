@@ -2,6 +2,14 @@
 /**
  * Admin — simple config page: Reindex button, record count, LLM7 key/model config.
  *
+ * Visual layer only (assets/admin.css + assets/admin.js, both scoped to this
+ * one page) is styled to the saigonhoreca brand tokens (black + gold — see
+ * D:\Documents\pi-design-system and the theme's own _brand.css, values copied
+ * literally since this page has no build step and must not depend on the
+ * theme being active). Every form field's name/id and every hidden guard
+ * field is UNCHANGED from before — handle_save_settings()/handle_reindex()
+ * were not touched, only render_page() and its helpers.
+ *
  * @package PiChatbot
  */
 
@@ -19,6 +27,7 @@ class Pi_Chatbot_Admin {
         add_action('admin_menu', [$this, 'add_menu']);
         add_action('admin_post_pi_chatbot_reindex', [$this, 'handle_reindex']);
         add_action('admin_post_pi_chatbot_save_settings', [$this, 'handle_save_settings']);
+        add_action('admin_enqueue_scripts', [$this, 'enqueue_assets']);
     }
 
     public function add_menu() {
@@ -33,6 +42,19 @@ class Pi_Chatbot_Admin {
         );
     }
 
+    /** Loaded ONLY on this plugin's own admin page — checked by hook suffix,
+     *  not by $_GET['page'], so a URL query string can't trick another screen
+     *  into loading this CSS/JS. filemtime versioning matches the pattern
+     *  already used for the public-facing widget assets in pi-chatbot.php. */
+    public function enqueue_assets($hook) {
+        if ($hook !== 'toplevel_page_pi-chatbot') return;
+        wp_enqueue_style('dashicons');
+        $css_file = PI_CHATBOT_DIR . 'assets/admin.css';
+        $js_file  = PI_CHATBOT_DIR . 'assets/admin.js';
+        wp_enqueue_style('pi-chatbot-admin', PI_CHATBOT_URL . 'assets/admin.css', ['dashicons'], file_exists($css_file) ? filemtime($css_file) : PI_CHATBOT_VERSION);
+        wp_enqueue_script('pi-chatbot-admin', PI_CHATBOT_URL . 'assets/admin.js', [], file_exists($js_file) ? filemtime($js_file) : PI_CHATBOT_VERSION, true);
+    }
+
     public function render_page() {
         if (!current_user_can('manage_options')) return;
 
@@ -42,96 +64,126 @@ class Pi_Chatbot_Admin {
         $notice = isset($_GET['reindexed']) ? (int) $_GET['reindexed'] : null;
         $saved = isset($_GET['saved']);
         ?>
-        <div class="wrap">
-            <h1><?php esc_html_e('Pi Chatbot', 'pi-chatbot'); ?></h1>
+        <div class="wrap pi-chatbot-admin">
+            <div class="pi-cba-head">
+                <span class="dashicons dashicons-format-chat" aria-hidden="true"></span>
+                <div>
+                    <h1><?php esc_html_e('Pi Chatbot', 'pi-chatbot'); ?></h1>
+                    <p class="pi-cba-sub"><?php esc_html_e('Retrieval + generation settings for the Saigon Horeca sales assistant.', 'pi-chatbot'); ?></p>
+                </div>
+            </div>
 
             <?php if ($notice !== null) : ?>
-                <div class="notice notice-success"><p><?php echo esc_html(sprintf(
+                <div class="pi-cba-notice success"><span class="dashicons dashicons-yes-alt"></span><p><?php echo esc_html(sprintf(
                     /* translators: %d: number of indexed records */
                     __('Reindex complete — %d records.', 'pi-chatbot'), $notice
                 )); ?></p></div>
             <?php endif; ?>
             <?php if (!empty($_GET['reindex_error'])) : ?>
-                <div class="notice notice-error"><p><?php echo esc_html(sprintf(
+                <div class="pi-cba-notice error"><span class="dashicons dashicons-warning"></span><p><?php echo esc_html(sprintf(
                     /* translators: %s: error message */
                     __('Reindex failed: %s', 'pi-chatbot'),
                     sanitize_text_field(wp_unslash($_GET['reindex_error']))
                 )); ?></p></div>
             <?php endif; ?>
             <?php if ($saved) : ?>
-                <div class="notice notice-success"><p><?php esc_html_e('Settings saved.', 'pi-chatbot'); ?></p></div>
+                <div class="pi-cba-notice success"><span class="dashicons dashicons-yes-alt"></span><p><?php esc_html_e('Settings saved.', 'pi-chatbot'); ?></p></div>
             <?php endif; ?>
-            <h2><?php esc_html_e('Data index', 'pi-chatbot'); ?></h2>
-            <p><?php esc_html_e('Records indexed:', 'pi-chatbot'); ?> <strong><?php echo esc_html($count); ?></strong>
-                <?php if ($last) : ?> — <?php esc_html_e('last reindex:', 'pi-chatbot'); ?> <?php echo esc_html($last); ?><?php endif; ?></p>
 
-            <form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
-                <?php wp_nonce_field('pi_chatbot_reindex'); ?>
-                <input type="hidden" name="action" value="pi_chatbot_reindex">
-                <?php submit_button(__('Reindex now', 'pi-chatbot'), 'primary'); ?>
-            </form>
+            <div class="pi-cba-card">
+                <span class="pi-cba-eyebrow">01 — Index</span>
+                <h2><?php esc_html_e('Data index', 'pi-chatbot'); ?></h2>
+                <div class="pi-cba-stats">
+                    <div>
+                        <div class="pi-cba-stat-num"><?php echo esc_html($count); ?></div>
+                        <div class="pi-cba-stat-label"><?php esc_html_e('Records indexed', 'pi-chatbot'); ?></div>
+                    </div>
+                    <?php if ($last) : ?>
+                    <div>
+                        <div class="pi-cba-stat-num" style="font-size:14px;padding-top:5px;"><?php echo esc_html($last); ?></div>
+                        <div class="pi-cba-stat-label"><?php esc_html_e('Last reindex', 'pi-chatbot'); ?></div>
+                    </div>
+                    <?php endif; ?>
+                </div>
+                <form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
+                    <?php wp_nonce_field('pi_chatbot_reindex'); ?>
+                    <input type="hidden" name="action" value="pi_chatbot_reindex">
+                    <?php submit_button(__('Reindex now', 'pi-chatbot'), 'primary', 'submit', false); ?>
+                </form>
+            </div>
 
-            <hr>
+            <div class="pi-cba-card">
+                <span class="pi-cba-eyebrow">02 — Generation</span>
+                <h2><?php esc_html_e('Generation settings', 'pi-chatbot'); ?></h2>
+                <p class="pi-cba-desc"><?php esc_html_e('LLM7 API — called directly, no proxy.', 'pi-chatbot'); ?></p>
+                <form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
+                    <?php wp_nonce_field('pi_chatbot_save_settings'); ?>
+                    <input type="hidden" name="action" value="pi_chatbot_save_settings">
+                    <div class="pi-cba-fields">
+                        <div class="pi-cba-field">
+                            <label class="pi-cba-label" for="llm7_keys"><?php esc_html_e('LLM7 API keys', 'pi-chatbot'); ?></label>
+                            <div>
+                                <textarea class="pi-key-list-source" rows="4" id="llm7_keys" name="llm7_keys"><?php echo esc_textarea(implode("\n", $settings['llm7_keys'])); ?></textarea>
+                                <p class="pi-cba-desc"><?php esc_html_e('Round-robin — any key that errors or runs out of quota automatically moves to the next one. Add as many as you have; more keys means more headroom under load.', 'pi-chatbot'); ?></p>
+                            </div>
+                        </div>
+                        <div class="pi-cba-field">
+                            <label class="pi-cba-label" for="model"><?php esc_html_e('Model', 'pi-chatbot'); ?></label>
+                            <input type="text" id="model" name="model" value="<?php echo esc_attr($settings['model']); ?>">
+                        </div>
+                        <div class="pi-cba-field">
+                            <label class="pi-cba-label" for="top_k"><?php esc_html_e('Top-K context', 'pi-chatbot'); ?></label>
+                            <input type="number" min="1" max="20" id="top_k" name="top_k" value="<?php echo esc_attr($settings['top_k']); ?>">
+                        </div>
+                        <div class="pi-cba-field">
+                            <label class="pi-cba-label" for="rate_limit"><?php esc_html_e('Rate limit', 'pi-chatbot'); ?></label>
+                            <div>
+                                <input type="number" min="1" max="100" id="rate_limit" name="rate_limit" value="<?php echo esc_attr($settings['rate_limit']); ?>">
+                                <p class="pi-cba-desc"><?php esc_html_e('Requests per minute, per visitor IP.', 'pi-chatbot'); ?></p>
+                            </div>
+                        </div>
+                    </div>
+                    <?php submit_button(__('Save settings', 'pi-chatbot'), 'primary', 'submit', false, ['style' => 'margin-top:18px;']); ?>
+                </form>
+            </div>
 
-            <h2><?php esc_html_e('Generation settings (LLM7 API — called directly, no proxy)', 'pi-chatbot'); ?></h2>
-            <form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
-                <?php wp_nonce_field('pi_chatbot_save_settings'); ?>
-                <input type="hidden" name="action" value="pi_chatbot_save_settings">
-                <table class="form-table">
-                    <tr>
-                        <th><label for="llm7_keys"><?php esc_html_e('LLM7 API keys', 'pi-chatbot'); ?></label></th>
-                        <td><textarea class="large-text code" rows="4" id="llm7_keys" name="llm7_keys"><?php echo esc_textarea(implode("\n", $settings['llm7_keys'])); ?></textarea>
-                            <p class="description"><?php esc_html_e('One key per line — round-robin, any key that errors/runs out of quota automatically moves to the next key.', 'pi-chatbot'); ?></p></td>
-                    </tr>
-                    <tr>
-                        <th><label for="model"><?php esc_html_e('Model', 'pi-chatbot'); ?></label></th>
-                        <td><input type="text" class="regular-text" id="model" name="model" value="<?php echo esc_attr($settings['model']); ?>"></td>
-                    </tr>
-                    <tr>
-                        <th><label for="top_k"><?php esc_html_e('Top-K context', 'pi-chatbot'); ?></label></th>
-                        <td><input type="number" min="1" max="20" id="top_k" name="top_k" value="<?php echo esc_attr($settings['top_k']); ?>"></td>
-                    </tr>
-                    <tr>
-                        <th><label for="rate_limit"><?php esc_html_e('Rate limit (requests/min/IP)', 'pi-chatbot'); ?></label></th>
-                        <td><input type="number" min="1" max="100" id="rate_limit" name="rate_limit" value="<?php echo esc_attr($settings['rate_limit']); ?>"></td>
-                    </tr>
-                </table>
-                <?php submit_button(__('Save settings', 'pi-chatbot')); ?>
-            </form>
-
-            <hr>
-
-            <h2><?php esc_html_e('Router (LLM intent classifier)', 'pi-chatbot'); ?></h2>
-            <p class="description">
-                <?php esc_html_e('Runs on EVERY message — classifies intent (price/contact/service/project/product) and extracts search keywords. Replaced the old rule-based Vietnamese keyword matching by product decision (accepted trade-off: one LLM7 call per message instead of instant/free classification). If disabled, the bot degrades to a plain product search on the raw message with no price/contact/service/project handling. See docs/plans/pi-chatbot-adaptive-router.md.', 'pi-chatbot'); ?>
-            </p>
-            <form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
-                <?php wp_nonce_field('pi_chatbot_save_settings'); ?>
-                <input type="hidden" name="action" value="pi_chatbot_save_settings">
-                <table class="form-table">
-                    <tr>
-                        <th><label for="router_enabled"><?php esc_html_e('Enable router', 'pi-chatbot'); ?></label></th>
-                        <td><label><input type="checkbox" id="router_enabled" name="router_enabled" value="1" <?php checked(!empty($settings['router_enabled'])); ?>> <?php esc_html_e('Enabled', 'pi-chatbot'); ?></label></td>
-                    </tr>
-                    <tr>
-                        <th><label for="router_model"><?php esc_html_e('Router model', 'pi-chatbot'); ?></label></th>
-                        <td><input type="text" class="regular-text" id="router_model" name="router_model" value="<?php echo esc_attr($settings['router_model']); ?>">
-                            <p class="description"><?php esc_html_e('Use a turbo model WITHOUT reasoning (e.g. codestral-latest) — reasoning models like gpt-oss:20b spend tokens on hidden reasoning and, measured for real, return empty output when used as a router.', 'pi-chatbot'); ?></p></td>
-                    </tr>
-                    <tr>
-                        <th><label for="router_keys"><?php esc_html_e('Dedicated API keys for the router', 'pi-chatbot'); ?></label></th>
-                        <td><textarea class="large-text code" rows="2" id="router_keys" name="router_keys"><?php echo esc_textarea(implode("\n", $settings['router_keys'])); ?></textarea>
-                            <p class="description"><?php esc_html_e('Leave empty to share the LLM7 API keys above.', 'pi-chatbot'); ?></p></td>
-                    </tr>
-                </table>
-                <?php submit_button(__('Save router settings', 'pi-chatbot')); ?>
-            </form>
-
-            <hr>
+            <div class="pi-cba-card">
+                <span class="pi-cba-eyebrow">03 — Router</span>
+                <h2><?php esc_html_e('Router (LLM intent classifier)', 'pi-chatbot'); ?></h2>
+                <p class="pi-cba-desc">
+                    <?php esc_html_e('Runs on every message — classifies intent (price/contact/service/project/product) and extracts search keywords. If disabled, the bot degrades to a plain product search on the raw message with no price/contact/service/project handling.', 'pi-chatbot'); ?>
+                </p>
+                <form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
+                    <?php wp_nonce_field('pi_chatbot_save_settings'); ?>
+                    <input type="hidden" name="action" value="pi_chatbot_save_settings">
+                    <div class="pi-cba-fields">
+                        <div class="pi-cba-field">
+                            <span class="pi-cba-label"><?php esc_html_e('Enable router', 'pi-chatbot'); ?></span>
+                            <div class="pi-cba-checkbox-row">
+                                <input type="checkbox" id="router_enabled" name="router_enabled" value="1" <?php checked(!empty($settings['router_enabled'])); ?>>
+                                <label for="router_enabled"><?php esc_html_e('Enabled', 'pi-chatbot'); ?></label>
+                            </div>
+                        </div>
+                        <div class="pi-cba-field">
+                            <label class="pi-cba-label" for="router_model"><?php esc_html_e('Router model', 'pi-chatbot'); ?></label>
+                            <div>
+                                <input type="text" id="router_model" name="router_model" value="<?php echo esc_attr($settings['router_model']); ?>">
+                                <p class="pi-cba-desc"><?php esc_html_e('A fast turbo model WITHOUT reasoning (e.g. codestral-latest) — reasoning models spend tokens on hidden reasoning and can return empty output when used as a router.', 'pi-chatbot'); ?></p>
+                            </div>
+                        </div>
+                        <div class="pi-cba-field">
+                            <label class="pi-cba-label" for="router_keys"><?php esc_html_e('Dedicated router keys', 'pi-chatbot'); ?></label>
+                            <div>
+                                <textarea class="pi-key-list-source" rows="2" id="router_keys" name="router_keys"><?php echo esc_textarea(implode("\n", $settings['router_keys'])); ?></textarea>
+                                <p class="pi-cba-desc"><?php esc_html_e('Leave empty to share the LLM7 API keys above.', 'pi-chatbot'); ?></p>
+                            </div>
+                        </div>
+                    </div>
+                    <?php submit_button(__('Save router settings', 'pi-chatbot'), 'primary', 'submit', false, ['style' => 'margin-top:18px;']); ?>
+                </form>
+            </div>
 
             <?php $this->render_accuracy_section($settings); ?>
-
-            <hr>
 
             <?php $this->render_learning_section(); ?>
         </div>
@@ -146,44 +198,66 @@ class Pi_Chatbot_Admin {
      */
     private function render_accuracy_section($settings) {
         ?>
-        <h2><?php esc_html_e('Max accuracy (adaptive)', 'pi-chatbot'); ?></h2>
-        <p class="description" style="max-width:820px;">
-            <?php esc_html_e('The router labels every product question easy or hard. Easy questions keep the existing fast path. Hard ones — vague, comparative, multi-constraint, use-case-shaped, or mixed-language — additionally run semantic search fused with keyword search, an LLM reranking pass, and a fact check of the answer against the retrieved data. Those questions take roughly 20-30 seconds instead of 10, which is the trade this page exists to make explicit.', 'pi-chatbot'); ?>
-        </p>
+        <div class="pi-cba-card">
+            <span class="pi-cba-eyebrow">04 — Adaptive pipeline</span>
+            <h2><?php esc_html_e('Max accuracy', 'pi-chatbot'); ?></h2>
+            <p class="pi-cba-desc" style="max-width:640px;">
+                <?php esc_html_e('The router labels every product question easy or hard. Easy questions keep the fast path. Hard ones — vague, comparative, multi-constraint, use-case-shaped, or mixed-language — additionally run an LLM reranking pass and a fact check of the answer against the retrieved data, taking roughly 20-30 seconds instead of 10.', 'pi-chatbot'); ?>
+            </p>
 
-        <form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
-            <?php wp_nonce_field('pi_chatbot_save_settings'); ?>
-            <input type="hidden" name="action" value="pi_chatbot_save_settings">
-            <input type="hidden" name="accuracy_form" value="1">
-            <table class="form-table">
-                <tr>
-                    <th><label for="max_accuracy_enabled"><?php esc_html_e('Adaptive max accuracy', 'pi-chatbot'); ?></label></th>
-                    <td><label><input type="checkbox" id="max_accuracy_enabled" name="max_accuracy_enabled" value="1" <?php checked(!empty($settings['max_accuracy_enabled'])); ?>> <?php esc_html_e('Enabled', 'pi-chatbot'); ?></label>
-                        <p class="description"><?php esc_html_e('Off = every question takes the fast path, exactly as before this feature existed.', 'pi-chatbot'); ?></p></td>
-                </tr>
-                <tr>
-                    <th><label for="rerank_enabled"><?php esc_html_e('LLM reranking', 'pi-chatbot'); ?></label></th>
-                    <td><label><input type="checkbox" id="rerank_enabled" name="rerank_enabled" value="1" <?php checked(!empty($settings['rerank_enabled'])); ?>> <?php esc_html_e('Enabled', 'pi-chatbot'); ?></label>
-                        <p class="description"><?php esc_html_e('Re-orders the retrieved products by reading them against the question. This is what tells a 2-burner range apart from a 4-burner one when the titles are otherwise identical.', 'pi-chatbot'); ?></p></td>
-                </tr>
-                <tr>
-                    <th><label for="rerank_model"><?php esc_html_e('Reranking / fact-check model', 'pi-chatbot'); ?></label></th>
-                    <td><input type="text" class="regular-text" id="rerank_model" name="rerank_model" value="<?php echo esc_attr($settings['rerank_model']); ?>">
-                        <p class="description"><?php esc_html_e('Same kind of fast, non-reasoning model as the router.', 'pi-chatbot'); ?></p></td>
-                </tr>
-                <tr>
-                    <th><label for="verify_enabled"><?php esc_html_e('Fact-check answers', 'pi-chatbot'); ?></label></th>
-                    <td><label><input type="checkbox" id="verify_enabled" name="verify_enabled" value="1" <?php checked(!empty($settings['verify_enabled'])); ?>> <?php esc_html_e('Enabled', 'pi-chatbot'); ?></label>
-                        <p class="description"><?php esc_html_e('A second model checks the written answer against the retrieved data and sends it back once if it finds an invented price, capacity or model number.', 'pi-chatbot'); ?></p></td>
-                </tr>
-                <tr>
-                    <th><label for="multi_query_max"><?php esc_html_e('Extra query rewrites', 'pi-chatbot'); ?></label></th>
-                    <td><input type="number" min="0" max="5" id="multi_query_max" name="multi_query_max" value="<?php echo esc_attr($settings['multi_query_max']); ?>">
-                        <p class="description"><?php esc_html_e('How many alternative phrasings of a hard question to search alongside the original. 0 disables multi-query.', 'pi-chatbot'); ?></p></td>
-                </tr>
-            </table>
-            <?php submit_button(__('Save accuracy settings', 'pi-chatbot')); ?>
-        </form>
+            <form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
+                <?php wp_nonce_field('pi_chatbot_save_settings'); ?>
+                <input type="hidden" name="action" value="pi_chatbot_save_settings">
+                <input type="hidden" name="accuracy_form" value="1">
+                <div class="pi-cba-fields">
+                    <div class="pi-cba-field">
+                        <span class="pi-cba-label"><?php esc_html_e('Adaptive max accuracy', 'pi-chatbot'); ?></span>
+                        <div>
+                            <div class="pi-cba-checkbox-row">
+                                <input type="checkbox" id="max_accuracy_enabled" name="max_accuracy_enabled" value="1" <?php checked(!empty($settings['max_accuracy_enabled'])); ?>>
+                                <label for="max_accuracy_enabled"><?php esc_html_e('Enabled', 'pi-chatbot'); ?></label>
+                            </div>
+                            <p class="pi-cba-desc"><?php esc_html_e('Off = every question takes the fast path, exactly as before this feature existed.', 'pi-chatbot'); ?></p>
+                        </div>
+                    </div>
+                    <div class="pi-cba-field">
+                        <span class="pi-cba-label"><?php esc_html_e('LLM reranking', 'pi-chatbot'); ?></span>
+                        <div>
+                            <div class="pi-cba-checkbox-row">
+                                <input type="checkbox" id="rerank_enabled" name="rerank_enabled" value="1" <?php checked(!empty($settings['rerank_enabled'])); ?>>
+                                <label for="rerank_enabled"><?php esc_html_e('Enabled', 'pi-chatbot'); ?></label>
+                            </div>
+                            <p class="pi-cba-desc"><?php esc_html_e('Re-orders retrieved products by reading them against the question — tells a 2-burner range apart from a 4-burner one when the titles are otherwise identical.', 'pi-chatbot'); ?></p>
+                        </div>
+                    </div>
+                    <div class="pi-cba-field">
+                        <label class="pi-cba-label" for="rerank_model"><?php esc_html_e('Reranking / fact-check model', 'pi-chatbot'); ?></label>
+                        <div>
+                            <input type="text" id="rerank_model" name="rerank_model" value="<?php echo esc_attr($settings['rerank_model']); ?>">
+                            <p class="pi-cba-desc"><?php esc_html_e('Same kind of fast, non-reasoning model as the router.', 'pi-chatbot'); ?></p>
+                        </div>
+                    </div>
+                    <div class="pi-cba-field">
+                        <span class="pi-cba-label"><?php esc_html_e('Fact-check answers', 'pi-chatbot'); ?></span>
+                        <div>
+                            <div class="pi-cba-checkbox-row">
+                                <input type="checkbox" id="verify_enabled" name="verify_enabled" value="1" <?php checked(!empty($settings['verify_enabled'])); ?>>
+                                <label for="verify_enabled"><?php esc_html_e('Enabled', 'pi-chatbot'); ?></label>
+                            </div>
+                            <p class="pi-cba-desc"><?php esc_html_e('A second model checks the answer against the retrieved data and rewrites it once if it finds an invented price, capacity or model number.', 'pi-chatbot'); ?></p>
+                        </div>
+                    </div>
+                    <div class="pi-cba-field">
+                        <label class="pi-cba-label" for="multi_query_max"><?php esc_html_e('Extra query rewrites', 'pi-chatbot'); ?></label>
+                        <div>
+                            <input type="number" min="0" max="5" id="multi_query_max" name="multi_query_max" value="<?php echo esc_attr($settings['multi_query_max']); ?>">
+                            <p class="pi-cba-desc"><?php esc_html_e('How many alternative phrasings of a hard question to search alongside the original. 0 disables multi-query.', 'pi-chatbot'); ?></p>
+                        </div>
+                    </div>
+                </div>
+                <?php submit_button(__('Save accuracy settings', 'pi-chatbot'), 'primary', 'submit', false, ['style' => 'margin-top:18px;']); ?>
+            </form>
+        </div>
         <?php
     }
 
@@ -200,39 +274,54 @@ class Pi_Chatbot_Admin {
         $stats = Pi_Chatbot_Log::stats();
         $top = Pi_Chatbot_Log::top_unanswered(15, 30);
         ?>
-        <h2><?php esc_html_e('Learning from conversations — data gaps', 'pi-chatbot'); ?></h2>
-        <p class="description">
-            <?php esc_html_e('Logs every real question (excluding ones answered from cache) and whether a matching product/context was found. The table below shows the most-repeated questions in the last 30 days that found NOTHING — a measured, not guessed, signal of missing data or missing keywords.', 'pi-chatbot'); ?>
-        </p>
-        <p>
-            <?php echo esc_html(sprintf(
-                /* translators: 1: total logged, 2: unanswered count, 3: distinct unanswered, 4: last 24h */
-                __('Total logged questions: %1$d — no context found: %2$d (%3$d distinct questions) — last 24h: %4$d', 'pi-chatbot'),
-                $stats['total'], $stats['total_unanswered'], $stats['distinct_unanswered'], $stats['last_24h']
-            )); ?>
-        </p>
-        <?php if (empty($top)) : ?>
-            <p><em><?php esc_html_e('No questions missing context in the last 30 days.', 'pi-chatbot'); ?></em></p>
-        <?php else : ?>
-            <table class="widefat striped" style="max-width: 900px;">
-                <thead>
-                    <tr>
-                        <th><?php esc_html_e('Question', 'pi-chatbot'); ?></th>
-                        <th style="width:100px;"><?php esc_html_e('Count', 'pi-chatbot'); ?></th>
-                        <th style="width:180px;"><?php esc_html_e('Last seen', 'pi-chatbot'); ?></th>
-                    </tr>
-                </thead>
-                <tbody>
-                <?php foreach ($top as $row) : ?>
-                    <tr>
-                        <td><?php echo esc_html($row->question_norm); ?></td>
-                        <td><?php echo esc_html($row->cnt); ?></td>
-                        <td><?php echo esc_html($row->last_seen); ?></td>
-                    </tr>
-                <?php endforeach; ?>
-                </tbody>
-            </table>
-        <?php endif; ?>
+        <div class="pi-cba-card">
+            <span class="pi-cba-eyebrow">05 — Data gaps</span>
+            <h2><?php esc_html_e('Learning from conversations', 'pi-chatbot'); ?></h2>
+            <p class="pi-cba-desc">
+                <?php esc_html_e('Logs every real question (excluding cache hits) and whether a matching product/context was found. The table shows the most-repeated questions in the last 30 days that found NOTHING — a measured signal of missing data or missing keywords.', 'pi-chatbot'); ?>
+            </p>
+            <div class="pi-cba-stats">
+                <div>
+                    <div class="pi-cba-stat-num"><?php echo esc_html($stats['total']); ?></div>
+                    <div class="pi-cba-stat-label"><?php esc_html_e('Logged questions', 'pi-chatbot'); ?></div>
+                </div>
+                <div>
+                    <div class="pi-cba-stat-num"><?php echo esc_html($stats['total_unanswered']); ?></div>
+                    <div class="pi-cba-stat-label"><?php echo esc_html(sprintf(
+                        /* translators: %d: distinct unanswered question count */
+                        __('No context found (%d distinct)', 'pi-chatbot'), $stats['distinct_unanswered']
+                    )); ?></div>
+                </div>
+                <div>
+                    <div class="pi-cba-stat-num"><?php echo esc_html($stats['last_24h']); ?></div>
+                    <div class="pi-cba-stat-label"><?php esc_html_e('Last 24h', 'pi-chatbot'); ?></div>
+                </div>
+            </div>
+            <?php if (empty($top)) : ?>
+                <p><em><?php esc_html_e('No questions missing context in the last 30 days.', 'pi-chatbot'); ?></em></p>
+            <?php else : ?>
+                <div class="pi-cba-table-wrap">
+                    <table class="pi-cba-table">
+                        <thead>
+                            <tr>
+                                <th><?php esc_html_e('Question', 'pi-chatbot'); ?></th>
+                                <th style="width:90px;"><?php esc_html_e('Count', 'pi-chatbot'); ?></th>
+                                <th style="width:170px;"><?php esc_html_e('Last seen', 'pi-chatbot'); ?></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php foreach ($top as $row) : ?>
+                            <tr>
+                                <td><?php echo esc_html($row->question_norm); ?></td>
+                                <td class="num"><?php echo esc_html($row->cnt); ?></td>
+                                <td><?php echo esc_html($row->last_seen); ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+            <?php endif; ?>
+        </div>
         <?php
     }
 
