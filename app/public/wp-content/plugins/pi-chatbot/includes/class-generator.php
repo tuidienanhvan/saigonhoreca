@@ -289,6 +289,48 @@ class Pi_Chatbot_Generator {
         if ($de_hits >= 2 || preg_match('/ß/u', $question)) {
             return '(Erinnerung: Schreiben Sie Ihre GESAMTE Antwort auf Deutsch. Verwenden Sie kein Vietnamesisch, auch wenn die Referenzinformationen oben auf Vietnamesisch sind.)';
         }
+        // UNACCENTED VIETNAMESE — the last branch before the English fallback,
+        // and the one that matters most in practice on this site. Vietnamese
+        // typed without diacritics is extremely common (phone keyboards, speed,
+        // habit), and it is invisible to every check above: it is plain Latin
+        // script with no tone marks at all.
+        //
+        // Left unhandled it produced a genuinely bad result once retrieval
+        // learned to answer these questions (see Retriever::search_unaccented):
+        // "tu dong 2 canh" now finds the right 2-door freezers and then
+        // described them to a Vietnamese customer IN ENGLISH.
+        //
+        // Detection is the same counting approach already used for French and
+        // German above, with one addition: English is scored too, and the
+        // higher score wins. Scoring only Vietnamese would misfire on genuine
+        // English questions, which are also plain unaccented Latin — and this
+        // site really does get those (a whole golden-set group is English).
+        // Ties go to English, keeping the previous behaviour as the default.
+        //
+        // The word list mixes function words with unaccented forms of this
+        // catalog's own vocabulary, because a short product question ("tu dong 2
+        // canh") often contains no function words at all — the FR/DE lists
+        // above can rely on function words alone only because those questions
+        // are full sentences.
+        //
+        // "gas" and "inox" are deliberately ABSENT despite being everyday
+        // Vietnamese words here: they are spelled identically in English, and
+        // including "gas" was measured sending "Fujimak gas stove FGTLS1260" —
+        // a real English golden-set question — down the Vietnamese branch.
+        // Dropping both costs nothing (Vietnamese detection stays at 43/47)
+        // and takes English back to 7/7.
+        $vi_hits = preg_match_all(
+            '/\b(khong|duoc|nhieu|muon|giup|minh|loai|cai|nao|voi|cua|cho|gia|bao|thiet|quan|hang|mua|tot|gium|toi|nay|kieu|dung|tich|cong suat|bep|lo|tu|may|ban|chien|nuong|rua|da|ly|chen|dia|hong|canh|ngan|dong|mat|nong|lanh|hap|nuoc|dien|cong nghiep|nha hang|quan an)\b/iu',
+            $question
+        );
+        $en_hits = preg_match_all(
+            '/\b(the|is|are|do|does|you|your|have|has|what|which|how|for|with|need|want|looking|price|about|can|please|and|of|in|on|me|my|any|there|this|that|best|good|buy|show)\b/iu',
+            $question
+        );
+        if ($vi_hits > $en_hits) {
+            return '(Nhắc lại: viết TOÀN BỘ câu trả lời bằng tiếng Việt CÓ DẤU đầy đủ, kể cả khi khách hàng gõ không dấu.)';
+        }
+
         // Latin script, no Vietnamese diacritics and no German/French marker
         // matched -> the common realistic fallback for this site (English),
         // not a generic referential instruction — see docblock at the call

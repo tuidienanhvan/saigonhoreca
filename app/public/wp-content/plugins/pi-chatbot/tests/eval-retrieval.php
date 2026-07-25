@@ -17,9 +17,10 @@
  * mode=hybrid runs Retriever::search_hybrid() instead — the retrieval half of
  * the max-accuracy pipeline. Deliberately WITHOUT the router and the reranker:
  * both are LLM calls, which would make the run cost money, take ~20 minutes, and
- * produce a different number every time. What this measures is whether fusing
- * the semantic leg into the lexical one helps or hurts, which is the part that
- * has to be provably non-regressive before anything is dispatched to it.
+ * produce a different number every time. Note that without the router there are
+ * no query rewrites to fuse, so this run exercises the fusion plumbing rather
+ * than the multi-query benefit it exists for — its job is to prove the plumbing
+ * is non-regressive.
  *   wp eval-file .../eval-retrieval.php mode=hybrid compare=baseline.json
  *   wp eval-file .../eval-retrieval.php mode=hybrid save-baseline=baseline-hybrid.json
  */
@@ -83,11 +84,6 @@ if (!in_array($mode, ['lexical', 'hybrid'], true)) {
     fwrite(STDERR, "Unknown mode '{$mode}' — expected lexical or hybrid.\n");
     exit(1);
 }
-if ($mode === 'hybrid') {
-    $emb_ready = Pi_Chatbot_Embeddings::is_available();
-    echo "\n[eval] mode=hybrid — semantic leg " . ($emb_ready ? 'ACTIVE' : 'INACTIVE (no key / not backfilled: this measures lexical fusion only)') . "\n";
-}
-
 $by_group = [];
 $rows = [];
 

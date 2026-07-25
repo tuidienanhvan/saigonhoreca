@@ -281,89 +281,229 @@ class Pi_Chatbot_Retriever {
         // pi-chatbot.php (fixed load order) — no need for a defensive
         // class_exists() check.
         $brands = Pi_Chatbot_Entities::extract_brands($question);
-        if ($brands) {
-            return self::search_within_brands($brands, $long, $short, $top_k);
-        }
+        $results = $brands
+            ? self::search_within_brands($brands, $long, $short, $top_k)
+            : self::search_fulltext($long, $short, $top_k, '');
+        if ($results) return $results;
 
-        return self::search_fulltext($long, $short, $top_k, '');
+        // Tier 3 — accent-folded last resort. Runs ONLY when everything above
+        // found nothing, which is what makes it safe to add: it can turn an
+        // empty answer into a good one, and by construction can never reorder or
+        // displace a result the exact-diacritic tiers already produced.
+        if (!self::looks_unaccented($question)) return [];
+        return self::search_unaccented($long, $short, $top_k);
     }
 
     /**
-     * Semantic leg of hybrid retrieval — cosine similarity between the question's
-     * embedding and each product's stored embedding.
+     * True when the question contains no Vietnamese tone marks — the signal that
+     * the customer typed without diacritics and a folded match is worth trying.
      *
-     * This EXISTS ALONGSIDE search(), it does not replace it. Lexical matching is
-     * exact where it works: a model code, a brand name, or a rare technical term
-     * either appears in the row or it doesn't, and no embedding beats that. What
-     * it cannot do is match a customer who describes a NEED ("quán 50 chỗ cần
-     * gì") against a catalog that names PRODUCTS, or bridge Vietnamese typed
-     * without diacritics onto a diacritic-exact literal check. That is the gap
-     * this fills — which is why the two are fused rather than one replacing the
-     * other.
+     * This gate is what makes Tier 3 safe, and it was added because of a measured
+     * regression, not as a precaution: without it, "cho hỏi giờ mở cửa" ("what
+     * time do you open") folded to match "1 Cửa" ("1 door") in a display-fridge
+     * title, and "bạn tên gì" ("what's your name") pulled in four products.
+     * Both cost the small-talk group 0.100 on the golden set.
      *
-     * Returns [] rather than failing when embeddings are unconfigured, not yet
-     * backfilled, or the provider's breaker is open, so every caller degrades
-     * cleanly to lexical-only.
-     *
-     * @param array $opts brands: string[] to restrict the scan (a recognized
-     *   brand is a 100%-precision filter; applying it here keeps the semantic
-     *   leg from dragging a different brand's product into a brand-specific
-     *   question).
-     * @return array Same shape as search().
+     * The reasoning is simple: those questions were typed WITH full diacritics,
+     * so there is no transliteration problem to solve. Folding them away only
+     * destroys the information that was keeping short Vietnamese function words
+     * ("cửa", "mở", "tên") from colliding with real product vocabulary. A
+     * customer who typed accents correctly and matched nothing genuinely has no
+     * answer in the catalog, and saying so is the right response.
      */
-    public static function search_semantic($question, $top_k = 20, $opts = []) {
-        $question = trim(wp_strip_all_tags((string) $question));
-        if ($question === '') return [];
-        if (!Pi_Chatbot_Embeddings::is_available()) return [];
-
-        $query_vector = Pi_Chatbot_Embeddings::embed_query($question);
-        if (!$query_vector) return [];
-
-        // Scope by post_id from the index table rather than filtering the result
-        // set afterwards: the vectors table also holds 'project' rows, and
-        // filtering post-hoc would silently shrink the candidate pool below
-        // $top_k. Every other path in this file is products-only; so is this one.
-        $scope_ids = self::product_id_scope($opts['brands'] ?? []);
-        if (!$scope_ids) return [];
-
-        $vectors = Pi_Chatbot_Embeddings::load_vectors($scope_ids);
-        if (!$vectors) return [];
-
-        $scores = [];
-        foreach ($vectors as $post_id => $vector) {
-            $scores[$post_id] = Pi_Chatbot_Embeddings::dot($query_vector, $vector);
-        }
-        arsort($scores);
-        $top_ids = array_slice(array_keys($scores), 0, max(1, (int) $top_k));
-        if (!$top_ids) return [];
-
-        $rows = self::fetch_rows_by_ids($top_ids);
-        foreach ($rows as $row) {
-            $row->score = (float) ($scores[(int) $row->post_id] ?? 0.0);
-        }
-        list($long, $short) = self::extract_keyword_list($question);
-        return self::format_rows(self::dedupe_by_content($rows), array_merge($long, $short));
+    private static function looks_unaccented($question) {
+        return !preg_match(
+            '/[àáạảãăằắẳẵặâầấẩẫậèéẹẻẽêềếểễệđìíịỉĩòóọỏõôồốổỗộơờớởỡợùúụủũưừứửữựỳýỵỷỹ]/iu',
+            (string) $question
+        );
     }
 
     /**
-     * Hybrid retrieval: the lexical pipeline and the semantic pipeline are each
-     * run over the original question plus the router's rewrites, and every
-     * resulting ranking is fused with Reciprocal Rank Fusion.
+     * Vietnamese typed without diacritics ("tu dong" for "tủ đông") is not an
+     * edge case — measured against the golden set, stripping diacritics from the
+     * 37 accented questions collapses hit@3 from 0.838 to 0.324, and 18 of the
+     * 19 lost queries return NOTHING AT ALL rather than something wrong. Phone
+     * keyboards, habit and speed all produce it constantly.
      *
-     * RRF (score = sum of 1/(k + rank)) rather than a weighted blend of the two
-     * scores, because those scores are not on comparable scales and never can
-     * be: the lexical score is an unbounded sum of IDF x field weights (observed
-     * range roughly 0.5-8), while cosine similarity is bounded to [-1, 1].
-     * Normalizing them against each other would require a tuning constant per
-     * query shape; RRF only reads POSITION, so it needs no tuning and cannot let
-     * one leg's scale swamp the other. k=60 is the constant from the original
-     * paper and is deliberately left alone.
+     * The exact-diacritic matching that causes this is deliberate and must stay:
+     * it was added to fix real false positives where MySQL's default collation
+     * treats "đá"/"đa"/"da" as equal, and relaxing it globally would reopen that.
+     * So the folded match is a separate, LAST tier instead — the loose comparison
+     * only ever applies to questions that already had no answer, where a
+     * plausible match strictly beats an empty result.
      *
-     * Multi-query matters more here than it looks: each rewrite is an
-     * independent shot at the catalog's own vocabulary, and a product that ranks
-     * mid-table for three different phrasings fuses ABOVE one that ranks first
-     * for a single phrasing and nowhere for the others — which is exactly the
-     * signal that separates a genuine match from a lucky keyword collision.
+     * Two guards keep it from becoming a junk generator on those questions:
+     *   1. EVERY substantial word must be present in folded form (not "any word
+     *      matched"), and
+     *   2. at least one of them must hit title/brand/category — the same
+     *      "strong field hit" rule that stops a coincidental word buried in a
+     *      long description from qualifying elsewhere in this file.
+     *
+     * @param string[] $long  Keywords at/above the FULLTEXT token length.
+     * @param string[] $short Keywords below it.
+     */
+    private static function search_unaccented($long, $short, $top_k) {
+        if (!$long) return []; // nothing substantial enough to match on
+
+        global $wpdb;
+        $table = self::table_name_for_search();
+
+        // NOT re-filtering against a folded stopword list here, despite the
+        // obvious appeal: several unaccented function words ("ban"/"bạn",
+        // "gia"/"giá", "cua"/"của") ARE already on $stopwords in accented form
+        // and do slip through. Adding that filter was tried and measured — it
+        // cost 0.054 hit@3 on the unaccented benchmark (folding makes "cửa"
+        // (door), a real product attribute, collide with "của" (of)) and
+        // prevented nothing, because every small-talk question that leaks today
+        // is matched by the FULLTEXT tier above and never reaches this one. The
+        // file's own rule applies: only add a stopword against a real failing
+        // case, or it is just whack-a-mole with a measurable price.
+        $folded = [];
+        foreach ($long as $w) {
+            $f = self::fold_diacritics($w);
+            if ($f !== '') $folded[] = $f;
+        }
+        if (!$folded) return [];
+
+        // utf8mb4_unicode_520_ci is the collation that folds Vietnamese
+        // diacritics (verified against this catalog: '%tu dong%' matches 31
+        // products under 520_ci and 0 under unicode_ci/general_ci). It is applied
+        // to the COMPARISON only, never to the stored data.
+        $sql = "SELECT post_id, post_type, title, brand, category, url, content_text, 1.0 AS score
+                FROM {$table} WHERE post_type = 'product'";
+        $args = [];
+        foreach ($folded as $f) {
+            $sql .= " AND (title COLLATE utf8mb4_unicode_520_ci LIKE %s
+                       OR brand COLLATE utf8mb4_unicode_520_ci LIKE %s
+                       OR category COLLATE utf8mb4_unicode_520_ci LIKE %s
+                       OR content_text COLLATE utf8mb4_unicode_520_ci LIKE %s)";
+            $pattern = '%' . $wpdb->esc_like($f) . '%';
+            array_push($args, $pattern, $pattern, $pattern, $pattern);
+        }
+        // Pull deeper than $top_k: the SQL filter is loose by design, and the
+        // PHP scoring below is what actually decides the order.
+        $sql .= ' LIMIT %d';
+        $args[] = max(1, (int) $top_k) * 8;
+
+        $rows = $wpdb->get_results($wpdb->prepare($sql, $args));
+        if ($rows === null && $wpdb->last_error) {
+            error_log('[pi-chatbot] unaccented fallback query failed: ' . $wpdb->last_error);
+            return [];
+        }
+        if (!$rows) return [];
+
+        $scored = [];
+        foreach (self::only_products($rows) as $row) {
+            $title_f = self::fold_diacritics($row->title);
+            $brand_f = self::fold_diacritics($row->brand);
+            $cat_f   = self::fold_diacritics($row->category);
+            $body_f  = self::fold_diacritics($row->content_text);
+
+            $weighted = 0.0;
+            $strong = false;
+            $all_present = true;
+            foreach ($folded as $f) {
+                if (mb_strpos($title_f, $f) !== false) {
+                    $weighted += self::FIELD_WEIGHT_TITLE;
+                    $strong = true;
+                } elseif (mb_strpos($brand_f, $f) !== false || mb_strpos($cat_f, $f) !== false) {
+                    $weighted += self::FIELD_WEIGHT_BRAND_CATEGORY;
+                    $strong = true;
+                } elseif (mb_strpos($body_f, $f) !== false) {
+                    $weighted += self::FIELD_WEIGHT_CONTENT;
+                } else {
+                    $all_present = false;
+                    break;
+                }
+            }
+            if (!$all_present || !$strong) continue;
+
+            // Short words (below the FULLTEXT token length) can't gate the SQL,
+            // but they still carry meaning — "2 cửa", "4 họng" — so they add
+            // score when present rather than being discarded entirely.
+            foreach ($short as $w) {
+                $f = self::fold_diacritics($w);
+                if ($f !== '' && mb_strpos($title_f, $f) !== false) $weighted += self::FIELD_WEIGHT_TITLE;
+            }
+
+            $row->score = $weighted;
+            $scored[] = $row;
+        }
+        if (!$scored) return [];
+
+        usort($scored, function ($a, $b) {
+            if ($a->score === $b->score) {
+                // Tie-break on the shorter title: with no diacritics to
+                // discriminate, the base model beats a longer variant of it, the
+                // same reasoning search_by_product_code() uses.
+                return mb_strlen($a->title) <=> mb_strlen($b->title);
+            }
+            return (float) $b->score <=> (float) $a->score;
+        });
+
+        return self::format_rows(
+            array_slice(self::dedupe_by_content($scored), 0, $top_k),
+            array_merge($long, $short)
+        );
+    }
+
+    /**
+     * Strips Vietnamese tone marks and đ/Đ, lowercasing as it goes.
+     *
+     * An explicit character map rather than iconv()/Normalizer: iconv's
+     * //TRANSLIT output depends on the server's locale and libc build (it can
+     * emit "d" or "?" or drop the character entirely for đ), and intl is not
+     * guaranteed on cPanel shared hosting. A hardcoded table gives the same
+     * answer on every host, which matters because retrieval results would
+     * otherwise differ between the dev machine and production.
+     */
+    public static function fold_diacritics($text) {
+        static $map = null;
+        if ($map === null) {
+            $map = [
+                'à'=>'a','á'=>'a','ạ'=>'a','ả'=>'a','ã'=>'a',
+                'â'=>'a','ầ'=>'a','ấ'=>'a','ậ'=>'a','ẩ'=>'a','ẫ'=>'a',
+                'ă'=>'a','ằ'=>'a','ắ'=>'a','ặ'=>'a','ẳ'=>'a','ẵ'=>'a',
+                'è'=>'e','é'=>'e','ẹ'=>'e','ẻ'=>'e','ẽ'=>'e',
+                'ê'=>'e','ề'=>'e','ế'=>'e','ệ'=>'e','ể'=>'e','ễ'=>'e',
+                'ì'=>'i','í'=>'i','ị'=>'i','ỉ'=>'i','ĩ'=>'i',
+                'ò'=>'o','ó'=>'o','ọ'=>'o','ỏ'=>'o','õ'=>'o',
+                'ô'=>'o','ồ'=>'o','ố'=>'o','ộ'=>'o','ổ'=>'o','ỗ'=>'o',
+                'ơ'=>'o','ờ'=>'o','ớ'=>'o','ợ'=>'o','ở'=>'o','ỡ'=>'o',
+                'ù'=>'u','ú'=>'u','ụ'=>'u','ủ'=>'u','ũ'=>'u',
+                'ư'=>'u','ừ'=>'u','ứ'=>'u','ự'=>'u','ử'=>'u','ữ'=>'u',
+                'ỳ'=>'y','ý'=>'y','ỵ'=>'y','ỷ'=>'y','ỹ'=>'y',
+                'đ'=>'d',
+            ];
+        }
+        return strtr(mb_strtolower((string) $text), $map);
+    }
+
+    /** Single place the table name is resolved for search paths — keeps the new
+     *  fallback from drifting away from the rest of the file if that ever changes. */
+    private static function table_name_for_search() {
+        return Pi_Chatbot_Indexer::table_name();
+    }
+
+
+    /**
+     * Multi-query retrieval: the lexical pipeline is run once per phrasing — the
+     * customer's original question plus the router's rewrites — and the
+     * resulting rankings are fused with Reciprocal Rank Fusion.
+     *
+     * Each rewrite is an independent shot at the catalog's own vocabulary, and
+     * fusion is what turns that into a signal: a product ranked mid-table for
+     * three different phrasings ends up ABOVE one ranked first for a single
+     * phrasing and nowhere for the others. That difference is precisely what
+     * separates a genuine match from a lucky keyword collision, and no single
+     * query can express it.
+     *
+     * RRF (score = sum of 1/(k + rank)) rather than summing the underlying
+     * scores: those scores are unbounded sums of IDF x field weight, so one
+     * phrasing that happens to hit a rare word can outweigh agreement across all
+     * the others. RRF reads POSITION only, needs no tuning, and cannot be
+     * swamped by one list's scale. k=60 is the constant from the original paper
+     * and is deliberately left alone.
      *
      * @param array $opts extra_queries: string[] router rewrites.
      * @return array Same shape as search().
@@ -375,7 +515,7 @@ class Pi_Chatbot_Retriever {
         // Tier 0 short-circuits fusion for the same reason it short-circuits
         // search(): a product code is an IDENTIFIER, and an exact identifier
         // match is ground truth, not one opinion among several. Fusing it with
-        // semantic neighbours can only dilute a result that is already certain —
+        // near-miss neighbours can only dilute a result that is already certain —
         // measured on the golden set, letting a code query through the full
         // pipeline was the ONLY regression the reranker caused
         // ("tủ đông FT-158MA-S"), because a model re-reading titles has nothing
@@ -401,24 +541,10 @@ class Pi_Chatbot_Retriever {
             if ($variant !== '' && !in_array($variant, $queries, true)) $queries[] = $variant;
         }
 
-        // Brands are resolved ONCE from the original question (plus whatever the
-        // router validated) and reused for every variant: a rewrite frequently
-        // drops the brand name, and re-detecting per variant would quietly widen
-        // the scope the original question had deliberately narrowed.
-        $brands = Pi_Chatbot_Entities::extract_brands($question);
-        if (!empty($opts['brand']) && !in_array($opts['brand'], $brands, true)) {
-            $brands[] = $opts['brand'];
-        }
-
-        $semantic_on = Pi_Chatbot_Embeddings::is_available($settings);
         $ranked_lists = [];
         foreach ($queries as $q) {
             $lexical = self::search($q, $pool);
             if ($lexical) $ranked_lists[] = $lexical;
-            if ($semantic_on) {
-                $semantic = self::search_semantic($q, $pool, ['brands' => $brands]);
-                if ($semantic) $ranked_lists[] = $semantic;
-            }
         }
         if (!$ranked_lists) return [];
 
@@ -449,29 +575,6 @@ class Pi_Chatbot_Retriever {
             $all_words = array_merge($all_words, $long, $short);
         }
         return self::format_rows(self::dedupe_by_content($rows), array_values(array_unique($all_words)));
-    }
-
-    /**
-     * Product post_ids that semantic search is allowed to consider, optionally
-     * narrowed to recognized brands. Returns [] when a brand filter matches
-     * nothing — the caller treats that as "no semantic results" rather than
-     * silently widening back out to the whole catalog.
-     */
-    private static function product_id_scope(array $brands) {
-        global $wpdb;
-        $table = Pi_Chatbot_Indexer::table_name();
-        $brands = array_values(array_filter(array_map('strval', $brands)));
-
-        if ($brands) {
-            $placeholders = implode(',', array_fill(0, count($brands), '%s'));
-            $ids = $wpdb->get_col($wpdb->prepare(
-                "SELECT post_id FROM {$table} WHERE post_type = 'product' AND brand IN ({$placeholders})",
-                $brands
-            ));
-        } else {
-            $ids = $wpdb->get_col("SELECT post_id FROM {$table} WHERE post_type = 'product'");
-        }
-        return array_map('intval', (array) $ids);
     }
 
     /**

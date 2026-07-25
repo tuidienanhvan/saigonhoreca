@@ -101,7 +101,6 @@ class Pi_Chatbot_Rest {
         $difficulty = null;
         $ambiguity_reason = '';
         $query_variants = [];
-        $semantic_used = false;
         $rerank_used = false;
         $rerank_confidence = null;
         $low_confidence = false;
@@ -159,7 +158,6 @@ class Pi_Chatbot_Rest {
                             'extra_queries' => $query_variants,
                             'brand'         => $router_brand,
                         ]) ?: [];
-                        $semantic_used = Pi_Chatbot_Embeddings::is_available($settings);
                         $mark('retrieve_hybrid');
 
                         // Skip reranking when an exact product code already
@@ -261,7 +259,6 @@ class Pi_Chatbot_Rest {
             'difficulty'        => $difficulty,
             'ambiguity_reason'  => $ambiguity_reason,
             'query_variants'    => $query_variants,
-            'semantic_used'     => $semantic_used,
             'rerank_used'       => $rerank_used,
             'rerank_confidence' => $rerank_confidence,
             'low_confidence'    => $low_confidence,

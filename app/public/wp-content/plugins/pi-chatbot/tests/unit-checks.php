@@ -59,57 +59,104 @@ function pi_call_private($class, $method, array $args) {
 
 echo "\n=== pi-chatbot unit checks ===\n";
 
-// ── Vector codec ───────────────────────────────────────────────────────────
-// A silent bug here would not throw; it would just make every similarity score
-// subtly wrong, which no ranking metric could attribute back to this code.
-echo "\n[Pi_Chatbot_Embeddings — vector codec]\n";
+// ── Accent-folded fallback tier ────────────────────────────────────────────
+// Vietnamese typed without diacritics is the single largest measured retrieval
+// gap: stripping accents from the 37 accented golden questions collapses hit@3
+// from 0.838 to 0.324, with 18 of the 19 losses returning NOTHING. Tier 3 exists
+// for exactly that, and its guards are what keep it from becoming a junk
+// generator, so both the folding and the guards are asserted here.
+echo "
+[Pi_Chatbot_Retriever::fold_diacritics]
+";
+pi_check('folds tone marks and đ', Pi_Chatbot_Retriever::fold_diacritics('Tủ Đông') === 'tu dong');
+pi_check('folds every Vietnamese vowel family',
+    Pi_Chatbot_Retriever::fold_diacritics('ăâêôơư đá ệ ữ ỹ') === 'aaeoou da e u y');
+pi_check('leaves unaccented text untouched',
+    Pi_Chatbot_Retriever::fold_diacritics('FT-126MA-S') === 'ft-126ma-s');
+pi_check('is idempotent',
+    Pi_Chatbot_Retriever::fold_diacritics(Pi_Chatbot_Retriever::fold_diacritics('Máy Làm Đá'))
+        === Pi_Chatbot_Retriever::fold_diacritics('Máy Làm Đá'));
 
-$vec = [];
-for ($i = 0; $i < 768; $i++) $vec[] = sin($i) * 0.37;
-
-$packed = Pi_Chatbot_Embeddings::pack_vector($vec);
-pi_check('pack_vector produces 4 bytes per dimension', strlen($packed) === 768 * 4, strlen($packed) . ' bytes');
-
-$unpacked = Pi_Chatbot_Embeddings::unpack_vector($packed);
-pi_check('unpack_vector restores the dimension count', count($unpacked) === 768, count($unpacked) . ' dims');
-pi_check('unpack_vector returns a 0-indexed list', array_keys($unpacked)[0] === 0);
-
-$max_drift = 0.0;
-foreach ($vec as $i => $v) $max_drift = max($max_drift, abs($v - $unpacked[$i]));
-// float32 keeps ~7 significant decimal digits; anything past 1e-6 would mean the
-// pack format is wrong, not that precision was lost.
-pi_check('round-trip stays within float32 precision', $max_drift < 1e-6, 'max drift ' . $max_drift);
-
-$normalize = new ReflectionMethod('Pi_Chatbot_Embeddings', 'normalize');
-$normalize->setAccessible(true);
-$unit = $normalize->invoke(null, $vec);
-$len = sqrt(Pi_Chatbot_Embeddings::dot($unit, $unit));
-pi_check('normalize returns a unit vector', abs($len - 1.0) < 1e-9, 'length ' . $len);
-
-pi_check('dot of a unit vector with itself is 1', abs(Pi_Chatbot_Embeddings::dot($unit, $unit) - 1.0) < 1e-9);
-$opposite = array_map(function ($x) { return -$x; }, $unit);
-pi_check('dot of opposing vectors is -1', abs(Pi_Chatbot_Embeddings::dot($unit, $opposite) + 1.0) < 1e-9);
-pi_check('normalize leaves an all-zero vector alone (no division by zero)',
-    $normalize->invoke(null, [0.0, 0.0, 0.0]) === [0.0, 0.0, 0.0]);
-
-// ── Graceful degradation ───────────────────────────────────────────────────
-// The whole no-regression guarantee rests on this: with no key configured, the
-// semantic leg must contribute nothing rather than erroring.
-echo "\n[Semantic degradation without a provider]\n";
-$settings = pi_chatbot_settings();
-$has_key = Pi_Chatbot_Embeddings::is_configured($settings);
-if ($has_key) {
-    echo "  skip (an embedding provider IS configured — these checks assert the unconfigured path)\n";
-} else {
-    pi_check('is_available() is false with no key', !Pi_Chatbot_Embeddings::is_available($settings));
-    pi_check('search_semantic() returns an empty array, not an error',
-        Pi_Chatbot_Retriever::search_semantic('tủ đông 2 cánh', 5) === []);
-    $hybrid = Pi_Chatbot_Retriever::search_hybrid('tủ đông 2 cánh', 6);
-    $lexical = Pi_Chatbot_Retriever::search('tủ đông 2 cánh', 6);
-    pi_check('search_hybrid() still returns results (lexical only)', !empty($hybrid));
-    pi_check('search_hybrid() top result matches lexical search',
-        !empty($hybrid) && !empty($lexical) && $hybrid[0]['post_id'] === $lexical[0]['post_id']);
+echo "
+[Unaccented questions now retrieve]
+";
+foreach ([
+    'may lam da tu dong' => 'đá',
+    'da vay'             => 'vảy',
+    'bep gas'            => 'gas',
+] as $q => $expect_word) {
+    $r = Pi_Chatbot_Retriever::search($q, 3);
+    pi_check("\"{$q}\" returns results", !empty($r), count($r) . ' results');
+    pi_check("\"{$q}\" results are on-topic",
+        !empty($r) && mb_stripos($r[0]['title'], $expect_word) !== false,
+        !empty($r) ? $r[0]['title'] : 'none');
 }
+
+echo "
+[Tier 3 only fires as a genuine last resort]
+";
+$looks = new ReflectionMethod('Pi_Chatbot_Retriever', 'looks_unaccented');
+$looks->setAccessible(true);
+pi_check('a fully accented question is NOT treated as unaccented',
+    !$looks->invoke(null, 'cho hỏi giờ mở cửa'));
+pi_check('a plain-ASCII question IS treated as unaccented',
+    $looks->invoke(null, 'may lam da'));
+// The real invariant is NOT "accented small talk returns nothing" — some of it
+// already matched products through the FULLTEXT tier long before Tier 3 existed
+// ("cho hỏi giờ mở cửa" pulls in display fridges via "cửa"/"door", a pre-existing
+// false positive this work neither caused nor fixed). Asserting that would be
+// testing someone else's bug and would fail for the wrong reason.
+//
+// What Tier 3 guarantees is narrower and is what gets asserted: for an accented
+// question it CONTRIBUTES NOTHING, so the final result is exactly what the
+// earlier tiers produced. That is the property that kept the small-talk group at
+// +0.000 when the unguarded version cost it 0.100.
+$fulltext = new ReflectionMethod('Pi_Chatbot_Retriever', 'search_fulltext');
+$fulltext->setAccessible(true);
+$keywords = new ReflectionMethod('Pi_Chatbot_Retriever', 'extract_keyword_list');
+$keywords->setAccessible(true);
+foreach (['cho hỏi giờ mở cửa', 'bạn tên gì', 'máy bay trực thăng'] as $accented) {
+    list($long, $short) = $keywords->invoke(null, $accented);
+    $tiers12 = $long || $short ? $fulltext->invoke(null, $long, $short, 6, '') : [];
+    $actual  = Pi_Chatbot_Retriever::search($accented, 6);
+    pi_check("accented \"{$accented}\" gets no Tier 3 contribution",
+        array_column($actual, 'post_id') === array_column($tiers12, 'post_id'),
+        count($actual) . ' vs ' . count($tiers12));
+}
+
+// ── Language detection for unaccented Vietnamese ───────────────────────────
+// Added because making Tier 3 work exposed the follow-on defect: "tu dong 2
+// canh" started finding the right freezers and then describing them to a
+// Vietnamese customer in English, since every Vietnamese check above keys on
+// tone marks this question does not have.
+echo "
+[Language: unaccented Vietnamese vs English]
+";
+$note = new ReflectionMethod('Pi_Chatbot_Generator', 'build_language_note');
+$note->setAccessible(true);
+$lang = function ($q) use ($note) {
+    $n = $note->invoke(null, $q);
+    if (mb_strpos($n, 'tiếng Việt') !== false) return 'VI';
+    if (mb_strpos($n, 'English') !== false) return 'EN';
+    if (mb_strpos($n, 'français') !== false) return 'FR';
+    if (mb_strpos($n, 'Deutsch') !== false) return 'DE';
+    return '?';
+};
+foreach (['tu dong 2 canh', 'may lam da tu dong', 'bep chien nhung cong nghiep'] as $q) {
+    pi_check("unaccented \"{$q}\" -> Vietnamese", $lang($q) === 'VI', $lang($q));
+}
+// The regression this guard was measured against: "gas" is an everyday
+// Vietnamese word AND an English one, and including it sent a real English
+// question down the Vietnamese branch.
+foreach (['Fujimak gas stove FGTLS1260', 'commercial dishwasher', 'do you have ice machines'] as $q) {
+    pi_check("English \"{$q}\" -> English", $lang($q) === 'EN', $lang($q));
+}
+pi_check('accented Vietnamese is still Vietnamese', $lang('tủ đông 2 cánh') === 'VI');
+// The other languages must be untouched — they are checked by script range
+// BEFORE any of this counting runs.
+pi_check('French is unaffected',
+    $lang('Je voudrais des informations sur les fours industriels.') === 'FR');
+pi_check('German is unaffected', $lang('Ich möchte industrielle Öfen kaufen') === 'DE');
 
 // ── Product codes bypass the expensive path ────────────────────────────────
 // An exact identifier match is ground truth. Reranking it was the ONLY

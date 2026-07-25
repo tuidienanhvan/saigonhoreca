@@ -108,11 +108,11 @@
     var SLOW_NOTICE_MS = 12000;
     // 75s. The previous 45s was sized against the fast path's worst case (20s generator
     // timeout x 2 fallback keys). The adaptive max-accuracy path (see class-rest.php) adds
-    // an embedding call, an LLM reranking pass and a fact check that can itself trigger one
-    // regeneration — worst case roughly router 8s + embed 25s + rerank 15s + generate 40s +
-    // verify 12s. The server raises its own limit to 60s for that path; the client must sit
-    // ABOVE the server's ceiling, otherwise the browser aborts a request that was about to
-    // succeed and the customer sees a timeout for work that actually completed.
+    // an LLM reranking pass and a fact check that can itself trigger one regeneration —
+    // worst case roughly router 8s + rerank 15s + generate 40s + verify 12s. The server
+    // raises its own limit to 60s for that path; the client must sit ABOVE the server's
+    // ceiling, otherwise the browser aborts a request that was about to succeed and the
+    // customer sees a timeout for work that actually completed.
     //
     // Note this does NOT slow the common case: an easy question still returns in ~10s, and
     // SLOW_NOTICE_MS keeps telling the customer something is happening either way.
@@ -695,11 +695,9 @@
                     : 'Searched — no matching results found';
                 var searchLines = [];
                 if (trace.search_query) searchLines.push('Keywords: ' + trace.search_query);
-                // All of these are REAL flags from the server (class-rest.php), never
-                // assumed from the mode: semantic search is skipped when no key is set
-                // or the backfill hasn't run, and reranking is skipped when the model
-                // call fails — claiming either happened would be inventing a step.
-                if (trace.semantic_used) searchLines.push('Also searched by meaning, not just keywords.');
+                // Both are REAL flags from the server (class-rest.php), never assumed
+                // from the mode: reranking is skipped when the model call fails, and
+                // claiming a step that did not run would be inventing reasoning.
                 if (trace.query_variants && trace.query_variants.length) {
                     searchLines.push('Also tried: ' + trace.query_variants.join(' · '));
                 }

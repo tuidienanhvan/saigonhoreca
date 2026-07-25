@@ -21,10 +21,6 @@ define('PI_CHATBOT_URL', plugin_dir_url(__FILE__));
 define('PI_CHATBOT_TABLE', 'pi_chatbot_index');
 define('PI_CHATBOT_OPTION', 'pi_chatbot_settings');
 
-// class-embeddings.php has no dependencies of its own and BOTH class-indexer.php
-// (creates/refreshes the vectors table) and class-retriever.php (semantic leg of
-// hybrid search) call into it — so it loads first.
-require_once PI_CHATBOT_DIR . 'includes/class-embeddings.php';
 require_once PI_CHATBOT_DIR . 'includes/class-indexer.php';
 require_once PI_CHATBOT_DIR . 'includes/class-log.php';
 require_once PI_CHATBOT_DIR . 'includes/class-entities.php';
@@ -57,11 +53,6 @@ function pi_chatbot_bootstrap() {
 // active theme isn't saigonhoreca-theme (hook doesn't exist), this add_action() is
 // harmless — it simply never gets called.
 add_action('sgh_after_flush_cache', ['Pi_Chatbot_Indexer', 'flush_answer_cache']);
-
-// Background embedding backfill — a self-rescheduling single event, so a few
-// hundred documents are embedded in rate-limit-friendly batches instead of one
-// long synchronous loop. See Pi_Chatbot_Embeddings::schedule_backfill().
-add_action(Pi_Chatbot_Embeddings::CRON_HOOK, ['Pi_Chatbot_Embeddings', 'run_backfill_cron']);
 
 /**
  * Effective config = defaults merged with the saved option (changed via the admin page).
@@ -103,28 +94,23 @@ function pi_chatbot_settings() {
 
         // ── Max-accuracy pipeline ───────────────────────────────────────────
         // The router labels each question easy/hard; only 'hard' ones take the
-        // expensive path (hybrid retrieval -> LLM rerank -> faithfulness check).
-        // Latency on that path is deliberately unbounded-ish (~30s worst case)
+        // expensive path (multi-query retrieval -> LLM rerank -> faithfulness
+        // check). Latency there is deliberately generous (~30s worst case)
         // because the questions that reach it are exactly the ones the fast
         // lexical pipeline measurably gets wrong. Turning this off restores the
         // previous behaviour exactly — every question takes the fast path.
+        //
+        // There is deliberately NO embedding/vector provider here. A semantic
+        // leg was built and measured, then removed: it needed a SECOND external
+        // API (on top of LLM7) with its own key, quota and failure mode, while
+        // the capability it was meant to add — understanding a question phrased
+        // differently from the catalog — is already supplied by the router's
+        // query rewrites and the reranker, both on the LLM7 dependency that
+        // already exists. Measurement also showed the real retrieval gap was
+        // not semantic at all: it was customers typing Vietnamese without
+        // diacritics, which costs hit@3 0.838 -> 0.324 and is fixed for free by
+        // Retriever::search_unaccented().
         'max_accuracy_enabled' => true,
-
-        // Semantic leg. Free-tier providers callable with plain wp_remote_post
-        // (the production host is cPanel shared hosting — no Python service is
-        // possible, which is why this is an HTTP API and not a local model).
-        //   gemini — gemini-embedding-001, top-ranked multilingual, VI supported
-        //   jina   — jina-embeddings-v3, fallback if Google quota is exhausted
-        // 768 dims: a Matryoshka truncation of the model's full 3072, ~4x less
-        // storage and PHP math for a negligible ranking difference. Changing
-        // this value invalidates every stored vector (it is part of the model
-        // stamp) and requires a full re-embed.
-        'embedding_provider' => 'gemini',
-        'embedding_model'    => 'gemini-embedding-001',
-        'embedding_dims'     => 768,
-        'gemini_api_key'     => '',
-        'jina_api_key'       => '',
-        'hybrid_enabled'     => true,
 
         // Reranking + verification, both on the router model (fast, non-reasoning).
         'rerank_enabled' => true,
@@ -151,12 +137,8 @@ function pi_chatbot_settings() {
     // Same defensive casting rationale as the key arrays above: these are read on
     // the customer request path, where a wrong type saved into the option would
     // be a fatal on the chat response, not just on the admin page.
-    $settings['embedding_dims']  = max(64, min(3072, (int) $settings['embedding_dims']));
     $settings['multi_query_max'] = max(0, min(5, (int) $settings['multi_query_max']));
     $settings['rrf_k']           = max(1, min(500, (int) $settings['rrf_k']));
-    if (!in_array($settings['embedding_provider'], ['gemini', 'jina'], true)) {
-        $settings['embedding_provider'] = 'gemini';
-    }
     return $settings;
 }
 

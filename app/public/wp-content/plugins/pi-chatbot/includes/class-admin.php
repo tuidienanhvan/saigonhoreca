@@ -19,7 +19,6 @@ class Pi_Chatbot_Admin {
         add_action('admin_menu', [$this, 'add_menu']);
         add_action('admin_post_pi_chatbot_reindex', [$this, 'handle_reindex']);
         add_action('admin_post_pi_chatbot_save_settings', [$this, 'handle_save_settings']);
-        add_action('admin_post_pi_chatbot_embed', [$this, 'handle_embed']);
     }
 
     public function add_menu() {
@@ -62,21 +61,6 @@ class Pi_Chatbot_Admin {
             <?php if ($saved) : ?>
                 <div class="notice notice-success"><p><?php esc_html_e('Settings saved.', 'pi-chatbot'); ?></p></div>
             <?php endif; ?>
-            <?php if (isset($_GET['embedded'])) : ?>
-                <div class="notice notice-success"><p><?php echo esc_html(sprintf(
-                    /* translators: 1: number embedded this batch, 2: number still pending */
-                    __('Embedded %1$d records — %2$d still pending. The rest continue in the background; reload this page to watch the count.', 'pi-chatbot'),
-                    (int) $_GET['embedded'], (int) ($_GET['pending'] ?? 0)
-                )); ?></p></div>
-            <?php endif; ?>
-            <?php if (!empty($_GET['embed_error'])) : ?>
-                <div class="notice notice-error"><p><?php echo esc_html(sprintf(
-                    /* translators: %s: error message */
-                    __('Building embeddings failed: %s', 'pi-chatbot'),
-                    sanitize_text_field(wp_unslash($_GET['embed_error']))
-                )); ?></p></div>
-            <?php endif; ?>
-
             <h2><?php esc_html_e('Data index', 'pi-chatbot'); ?></h2>
             <p><?php esc_html_e('Records indexed:', 'pi-chatbot'); ?> <strong><?php echo esc_html($count); ?></strong>
                 <?php if ($last) : ?> — <?php esc_html_e('last reindex:', 'pi-chatbot'); ?> <?php echo esc_html($last); ?><?php endif; ?></p>
@@ -161,39 +145,11 @@ class Pi_Chatbot_Admin {
      * nothing, and splitting them across the page made that easy to get wrong.
      */
     private function render_accuracy_section($settings) {
-        $emb = Pi_Chatbot_Embeddings::stats($settings);
-        $configured = Pi_Chatbot_Embeddings::is_configured($settings);
-        $breaker = Pi_Chatbot_Embeddings::breaker_open();
         ?>
         <h2><?php esc_html_e('Max accuracy (adaptive)', 'pi-chatbot'); ?></h2>
         <p class="description" style="max-width:820px;">
             <?php esc_html_e('The router labels every product question easy or hard. Easy questions keep the existing fast path. Hard ones — vague, comparative, multi-constraint, use-case-shaped, or mixed-language — additionally run semantic search fused with keyword search, an LLM reranking pass, and a fact check of the answer against the retrieved data. Those questions take roughly 20-30 seconds instead of 10, which is the trade this page exists to make explicit.', 'pi-chatbot'); ?>
         </p>
-
-        <p>
-            <strong><?php esc_html_e('Embeddings:', 'pi-chatbot'); ?></strong>
-            <?php echo esc_html(sprintf(
-                /* translators: 1: embedded count, 2: total indexed */
-                __('%1$d / %2$d records embedded', 'pi-chatbot'), $emb['embedded'], $emb['total']
-            )); ?>
-            <?php if (!$configured) : ?>
-                — <em><?php esc_html_e('not active: add an API key below and keep "semantic search" enabled.', 'pi-chatbot'); ?></em>
-            <?php elseif ($breaker) : ?>
-                — <em><?php esc_html_e('paused: the embedding provider failed repeatedly, retrying automatically in a few minutes.', 'pi-chatbot'); ?></em>
-            <?php elseif ($emb['pending'] > 0) : ?>
-                — <em><?php esc_html_e('backfill in progress in the background.', 'pi-chatbot'); ?></em>
-            <?php else : ?>
-                — <em><?php esc_html_e('up to date.', 'pi-chatbot'); ?></em>
-            <?php endif; ?>
-        </p>
-        <form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
-            <?php wp_nonce_field('pi_chatbot_embed'); ?>
-            <input type="hidden" name="action" value="pi_chatbot_embed">
-            <?php submit_button(__('Build embeddings now', 'pi-chatbot'), 'secondary', 'submit', false); ?>
-            <span class="description" style="margin-left:8px;">
-                <?php esc_html_e('Runs one batch immediately, then continues in the background. Records whose content has not changed are skipped, so re-running is cheap.', 'pi-chatbot'); ?>
-            </span>
-        </form>
 
         <form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
             <?php wp_nonce_field('pi_chatbot_save_settings'); ?>
@@ -204,38 +160,6 @@ class Pi_Chatbot_Admin {
                     <th><label for="max_accuracy_enabled"><?php esc_html_e('Adaptive max accuracy', 'pi-chatbot'); ?></label></th>
                     <td><label><input type="checkbox" id="max_accuracy_enabled" name="max_accuracy_enabled" value="1" <?php checked(!empty($settings['max_accuracy_enabled'])); ?>> <?php esc_html_e('Enabled', 'pi-chatbot'); ?></label>
                         <p class="description"><?php esc_html_e('Off = every question takes the fast path, exactly as before this feature existed.', 'pi-chatbot'); ?></p></td>
-                </tr>
-                <tr>
-                    <th><label for="hybrid_enabled"><?php esc_html_e('Semantic search', 'pi-chatbot'); ?></label></th>
-                    <td><label><input type="checkbox" id="hybrid_enabled" name="hybrid_enabled" value="1" <?php checked(!empty($settings['hybrid_enabled'])); ?>> <?php esc_html_e('Enabled', 'pi-chatbot'); ?></label>
-                        <p class="description"><?php esc_html_e('Fuses meaning-based matching with keyword matching. Catches questions that describe a need instead of naming a product, and Vietnamese typed without diacritics.', 'pi-chatbot'); ?></p></td>
-                </tr>
-                <tr>
-                    <th><label for="embedding_provider"><?php esc_html_e('Embedding provider', 'pi-chatbot'); ?></label></th>
-                    <td>
-                        <select id="embedding_provider" name="embedding_provider">
-                            <option value="gemini" <?php selected($settings['embedding_provider'], 'gemini'); ?>>Google Gemini (gemini-embedding-001)</option>
-                            <option value="jina" <?php selected($settings['embedding_provider'], 'jina'); ?>>Jina (jina-embeddings-v3)</option>
-                        </select>
-                        <p class="description"><?php esc_html_e('Both have a free tier and both handle Vietnamese. Switching provider or dimension count invalidates every stored vector — the backfill re-runs from scratch.', 'pi-chatbot'); ?></p>
-                    </td>
-                </tr>
-                <tr>
-                    <th><label for="embedding_model"><?php esc_html_e('Embedding model', 'pi-chatbot'); ?></label></th>
-                    <td><input type="text" class="regular-text" id="embedding_model" name="embedding_model" value="<?php echo esc_attr($settings['embedding_model']); ?>"></td>
-                </tr>
-                <tr>
-                    <th><label for="embedding_dims"><?php esc_html_e('Dimensions', 'pi-chatbot'); ?></label></th>
-                    <td><input type="number" min="64" max="3072" id="embedding_dims" name="embedding_dims" value="<?php echo esc_attr($settings['embedding_dims']); ?>">
-                        <p class="description"><?php esc_html_e('768 is a good default — a shorter, truncated version of the full vector that stores about four times smaller for a negligible ranking difference.', 'pi-chatbot'); ?></p></td>
-                </tr>
-                <tr>
-                    <th><label for="gemini_api_key"><?php esc_html_e('Google AI Studio API key', 'pi-chatbot'); ?></label></th>
-                    <td><input type="password" class="large-text code" id="gemini_api_key" name="gemini_api_key" value="<?php echo esc_attr($settings['gemini_api_key']); ?>" autocomplete="off"></td>
-                </tr>
-                <tr>
-                    <th><label for="jina_api_key"><?php esc_html_e('Jina API key', 'pi-chatbot'); ?></label></th>
-                    <td><input type="password" class="large-text code" id="jina_api_key" name="jina_api_key" value="<?php echo esc_attr($settings['jina_api_key']); ?>" autocomplete="off"></td>
                 </tr>
                 <tr>
                     <th><label for="rerank_enabled"><?php esc_html_e('LLM reranking', 'pi-chatbot'); ?></label></th>
@@ -331,30 +255,6 @@ class Pi_Chatbot_Admin {
         exit;
     }
 
-    /**
-     * Runs ONE embedding batch synchronously so the admin gets immediate proof
-     * the API key works, then hands the remainder to the background job. Not a
-     * full synchronous loop: hundreds of records against a rate-limited free
-     * tier would either trip the limit or hold the request until the browser
-     * gives up — and unlike the reindex button, the failure would be the
-     * provider's, with nothing useful to show for the wait.
-     */
-    public function handle_embed() {
-        if (!current_user_can('manage_options')) wp_die('Permission denied.');
-        check_admin_referer('pi_chatbot_embed');
-        if (function_exists('set_time_limit')) @set_time_limit(120);
-
-        $result = Pi_Chatbot_Embeddings::backfill_batch(40);
-        if (!empty($result['error'])) {
-            $args = ['page' => 'pi-chatbot', 'embed_error' => rawurlencode($result['error'])];
-        } else {
-            if (!$result['done']) Pi_Chatbot_Embeddings::schedule_backfill();
-            $args = ['page' => 'pi-chatbot', 'embedded' => (int) $result['embedded'], 'pending' => (int) $result['pending']];
-        }
-        wp_safe_redirect(add_query_arg($args, admin_url('admin.php')));
-        exit;
-    }
-
     public function handle_save_settings() {
         if (!current_user_can('manage_options')) wp_die('Permission denied.');
         check_admin_referer('pi_chatbot_save_settings');
@@ -400,28 +300,12 @@ class Pi_Chatbot_Admin {
         // later by renaming or removing whichever field it happened to test.
         if (isset($_POST['accuracy_form'])) {
             $settings['max_accuracy_enabled'] = !empty($_POST['max_accuracy_enabled']);
-            $settings['hybrid_enabled']       = !empty($_POST['hybrid_enabled']);
             $settings['rerank_enabled']       = !empty($_POST['rerank_enabled']);
             $settings['verify_enabled']       = !empty($_POST['verify_enabled']);
 
-            $provider = sanitize_text_field(wp_unslash($_POST['embedding_provider'] ?? ''));
-            if (in_array($provider, ['gemini', 'jina'], true)) $settings['embedding_provider'] = $provider;
-
-            $settings['embedding_model'] = sanitize_text_field(wp_unslash($_POST['embedding_model'] ?? $settings['embedding_model']));
-            $settings['embedding_dims']  = max(64, min(3072, (int) ($_POST['embedding_dims'] ?? $settings['embedding_dims'])));
             $settings['rerank_model']    = sanitize_text_field(wp_unslash($_POST['rerank_model'] ?? $settings['rerank_model']));
             $settings['multi_query_max'] = max(0, min(5, (int) ($_POST['multi_query_max'] ?? $settings['multi_query_max'])));
 
-            // API keys are trimmed but NOT sanitize_text_field()'d — that strips
-            // characters that are legal inside an opaque credential, which would
-            // save a subtly corrupted key that then fails authentication with no
-            // indication why.
-            foreach (['gemini_api_key', 'jina_api_key'] as $key_field) {
-                if (isset($_POST[$key_field])) {
-                    $raw = wp_unslash($_POST[$key_field]);
-                    $settings[$key_field] = is_string($raw) ? trim($raw) : '';
-                }
-            }
         }
 
         // autoload=false — this option contains an API key, no need to load it on every
