@@ -43,6 +43,42 @@ if (!is_array($golden)) {
 
 // ── Run retrieval + compute metrics per question ───────────────────────────
 
+/**
+ * Two scoring criteria, because not every question has a fixed right answer.
+ *
+ * "sản phẩm Hoshizaki" ("Hoshizaki products") cannot be scored against a list of
+ * ids: Hoshizaki has 206 products in this catalog and ANY of them answers the
+ * question. The original label picked 5 of the 206, so retrieval returning five
+ * genuine Hoshizaki products scored ZERO — the harness was reporting a failure
+ * where the system was right. Those questions now carry
+ * "criterion":"brand" and are scored on whether the results ARE that brand.
+ *
+ * Everything else keeps the id-list criterion, which is the stricter and more
+ * useful measure wherever a specific product really is the answer.
+ */
+function pi_eval_metrics_for_brand($brand, $result_rows) {
+    $is_match = function ($row) use ($brand) {
+        return isset($row['brand']) && strcasecmp(trim($row['brand']), $brand) === 0;
+    };
+    $flags = array_map($is_match, $result_rows);
+
+    $hit1 = !empty($flags[0]) ? 1 : 0;
+    $hit3 = in_array(true, array_slice($flags, 0, 3), true) ? 1 : 0;
+    // For a brand question "recall" against a 206-product brand is meaningless;
+    // what matters is that the results the customer sees are on-brand, so this
+    // slot reports PRECISION@5. Named in the output as recall@5 for column
+    // compatibility — the distinction is documented here rather than widening
+    // every report table for two rows.
+    $top5 = array_slice($flags, 0, 5);
+    $recall5 = $top5 ? count(array_filter($top5)) / count($top5) : 0.0;
+
+    $mrr = 0.0;
+    foreach ($flags as $rank => $ok) {
+        if ($ok) { $mrr = 1.0 / ($rank + 1); break; }
+    }
+    return ['hit1' => $hit1, 'hit3' => $hit3, 'recall5' => $recall5, 'mrr' => $mrr, 'is_negative' => false];
+}
+
 function pi_eval_metrics_for_query($expected_ids, $result_post_ids) {
     $expected = array_map('intval', $expected_ids);
     $got = array_map('intval', $result_post_ids);
@@ -50,8 +86,17 @@ function pi_eval_metrics_for_query($expected_ids, $result_post_ids) {
     $hit1 = (!empty($got) && in_array($got[0], $expected, true)) ? 1 : 0;
     $top3 = array_slice($got, 0, 3);
     $hit3 = (array_intersect($top3, $expected)) ? 1 : 0;
+    // Denominator is min(5, |expected|), NOT |expected|. Several questions name a
+    // product CATEGORY rather than one model ("bàn mát 2 cửa" matches 17 products
+    // in this catalog, "lò nướng combi" 7), and dividing 5 result slots by 17
+    // possible answers caps the score at 0.29 no matter how perfect the results
+    // are — measuring the size of the label set instead of the quality of the
+    // retrieval. Capping asks the answerable question: of the slots that COULD
+    // have held a correct answer, how many did.
     $top5 = array_slice($got, 0, 5);
-    $recall5 = $expected ? (count(array_intersect($top5, $expected)) / count($expected)) : 0.0;
+    $recall5 = $expected
+        ? (count(array_intersect($top5, $expected)) / min(5, count($expected)))
+        : 0.0;
 
     $mrr = 0.0;
     foreach ($got as $rank => $pid) {
@@ -64,6 +109,15 @@ function pi_eval_metrics_for_query($expected_ids, $result_post_ids) {
     // The "small talk / out of scope" group — an empty expected_ids means
     // "should return no products at all". Counted as "correct" if retrieval
     // returns nothing or very little.
+    //
+    // This group does NOT score 1.000, and that is expected: this harness calls
+    // Retriever::search() DIRECTLY, with no router in front of it. In production
+    // small talk never reaches retrieval at all — the router classifies it as
+    // intent='none' and class-rest.php skips retrieval entirely (see the 'none'
+    // case there). So a miss here means "keyword matching alone would have
+    // returned products", which is true but not what a customer experiences.
+    // Read this group as a measure of the retriever's raw noise floor, not as a
+    // live defect count.
     if (empty($expected)) {
         $ok = empty($got) ? 1 : 0;
         return ['hit1' => $ok, 'hit3' => $ok, 'recall5' => $ok, 'mrr' => $ok, 'is_negative' => true];
@@ -99,9 +153,13 @@ foreach ($golden as $item) {
         : Pi_Chatbot_Retriever::search($q, 6);
     $got_ids = array_map(function ($r) { return $r['post_id']; }, $results);
 
-    $m = pi_eval_metrics_for_query($expected, $got_ids);
+    $m = ($item['criterion'] ?? '') === 'brand'
+        ? pi_eval_metrics_for_brand($item['criterion_value'], $results)
+        : pi_eval_metrics_for_query($expected, $got_ids);
     $m['query'] = $q;
-    $m['expected'] = $expected;
+    $m['expected'] = ($item['criterion'] ?? '') === 'brand'
+        ? ['brand:' . $item['criterion_value']]
+        : $expected;
     $m['got'] = $got_ids;
     $rows[] = $m;
 
