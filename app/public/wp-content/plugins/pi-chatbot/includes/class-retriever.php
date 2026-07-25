@@ -1031,7 +1031,21 @@ class Pi_Chatbot_Retriever {
         }
 
         usort($kept, function($a, $b) {
-            return (float)$b->score <=> (float)$a->score;
+            $cmp = (float) $b->score <=> (float) $a->score;
+            if ($cmp !== 0) return $cmp;
+            // Tie-break, not just a stability nicety: two near-duplicate
+            // products (e.g. "Tủ Chiên Nhúng Đôi FSSDF12D" vs the base model
+            // "Tủ Chiên Nhúng Đôi SDF12D") can score EXACTLY equal — same
+            // keyword hits, same field weights. Without a deterministic
+            // secondary key, which one lands first depends on the physical row
+            // order MySQL happens to return, which is NOT guaranteed stable —
+            // confirmed live: the same query returned a different top-1 after
+            // unrelated writes elsewhere in the table changed that order,
+            // while the code computing the tie never changed. Same reasoning
+            // Tier 3 (search_unaccented) already uses for this exact shape of
+            // tie: a shorter title is the base model, a longer one is usually
+            // a suffixed variant of it — shorter wins.
+            return mb_strlen((string) $a->title) <=> mb_strlen((string) $b->title);
         });
 
         return $kept;
@@ -1235,7 +1249,14 @@ class Pi_Chatbot_Retriever {
         if (!$candidates) return [];
 
         $rows = array_values($candidates);
-        usort($rows, function ($a, $b) { return (float) $b->score <=> (float) $a->score; });
+        usort($rows, function ($a, $b) {
+            $cmp = (float) $b->score <=> (float) $a->score;
+            // Same deterministic tie-break as verify_and_score() below — an
+            // exact-match score already bakes in a length penalty
+            // (min(90, strlen*0.1)), so an exact tie here means identical
+            // title length too, which the length penalty alone can't break.
+            return $cmp !== 0 ? $cmp : (int) $a->post_id <=> (int) $b->post_id;
+        });
         $rows = self::dedupe_by_content($rows);
         return self::format_rows(array_slice($rows, 0, $top_k), $codes);
     }

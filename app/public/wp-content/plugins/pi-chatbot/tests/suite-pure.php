@@ -130,6 +130,31 @@ pi_check('a title hit sets has_strong_field_hit', !empty($scored[0]->has_strong_
 pi_check('a content-only hit does NOT set has_strong_field_hit',
     isset($scored[1]) && empty($scored[1]->has_strong_field_hit));
 
+// Deterministic tie-break: two rows with genuinely EQUAL computed scores must
+// always resolve the same way, not depend on the physical row order the
+// database happened to hand back. Traced from a real regression: "tủ chiên
+// nhúng đôi" ("double dip freezer") returned a different top-1 answer after
+// unrelated writes elsewhere in the live table changed MySQL's tie order,
+// while neither the query nor the code had changed — a customer asking the
+// exact same question could get a different first answer depending on server
+// state. Fixed by breaking ties on title length (shorter = the base model,
+// same reasoning search_unaccented() already used one tier up).
+$tie_idf = ['tu' => ['df' => 50, 'idf' => 1.0]];
+$tie_rows = [
+    pi_row(['post_id' => 101, 'title' => 'Tu Chien Nhung Doi FSSDF12D', 'score' => 0.0]),
+    pi_row(['post_id' => 102, 'title' => 'Tu Chien Nhung Doi SDF12D', 'score' => 0.0]),
+];
+$tie_scored = pi_call_private('Pi_Chatbot_Retriever', 'verify_and_score', [$tie_rows, ['tu'], [], $tie_idf]);
+pi_check('tied scores are broken by title length, not left to row order',
+    count($tie_scored) === 2 && abs($tie_scored[0]->score - $tie_scored[1]->score) < 1e-9
+        && $tie_scored[0]->post_id === 102,
+    isset($tie_scored[0]) ? "top1={$tie_scored[0]->post_id} score={$tie_scored[0]->score}" : 'empty');
+// Reversing the input order must not change the outcome — proves the result
+// comes from the tie-break rule, not from whichever row PHP saw first.
+$tie_scored_rev = pi_call_private('Pi_Chatbot_Retriever', 'verify_and_score', [array_reverse($tie_rows), ['tu'], [], $tie_idf]);
+pi_check('tie-break result is independent of input order',
+    isset($tie_scored_rev[0]) && $tie_scored_rev[0]->post_id === 102);
+
 // ── Retriever::format_rows ───────────────────────────────────────────────────
 pi_section('Retriever::format_rows');
 
