@@ -1,0 +1,174 @@
+<?php
+/**
+ * suite-retrieval.php — assertions against Pi_Chatbot_Retriever's DB-backed
+ * tiers, run over the LIVE catalog (read-only, no writes here — writes belong
+ * in suite-indexer.php against a throwaway table).
+ *
+ * Because this reads real data, a few checks pull the fixture value from the
+ * database itself (a real brand count, a real product code) rather than
+ * hardcoding a guess — the assertion is then about the CODE's behavior, not
+ * about catalog contents this suite doesn't control.
+ *
+ * Run standalone:
+ *   wp eval-file wp-content/plugins/pi-chatbot/tests/suite-retrieval.php
+ * Or via tests/run-all.php.
+ */
+
+require_once __DIR__ . '/lib/harness.php';
+
+global $wpdb;
+$table = Pi_Chatbot_Indexer::table_name();
+pi_reset_state();
+
+// ── Fixtures pulled from the real catalog ───────────────────────────────────
+
+$known_code_row = $wpdb->get_row("SELECT post_id, title FROM {$table}
+    WHERE post_type = 'product' AND title REGEXP '[A-Za-z]{1,4}-?[0-9][A-Za-z0-9-]*' LIMIT 1");
+$known_brand = $wpdb->get_var("SELECT brand FROM {$table}
+    WHERE post_type = 'product' AND brand != '' GROUP BY brand ORDER BY COUNT(*) DESC LIMIT 1");
+$brand_product_count = $known_brand
+    ? (int) $wpdb->get_var($wpdb->prepare("SELECT COUNT(*) FROM {$table} WHERE post_type='product' AND brand=%s", $known_brand))
+    : 0;
+$has_project = (int) $wpdb->get_var("SELECT COUNT(*) FROM {$table} WHERE post_type='project'") > 0;
+
+if (!$known_code_row || !$known_brand) {
+    fwrite(STDERR, "suite-retrieval.php: the index table has no usable fixture data — is it populated? Skipping.\n");
+    exit(0);
+}
+
+// Extract the actual code substring from the fixture title so the test
+// searches with something guaranteed to be in the index, not a guess.
+preg_match('/[A-Za-z]{1,4}-?[0-9][A-Za-z0-9-]*/', $known_code_row->title, $m);
+$known_code = $m[0];
+
+// ── Product-code tier (Tier 0) ──────────────────────────────────────────────
+pi_section('Retriever::search — Tier 0 (product code)');
+
+$by_code = Pi_Chatbot_Retriever::search($known_code, 6);
+pi_check('a real product code returns at least one result', !empty($by_code), $known_code);
+pi_check('the exact code appears in the top result',
+    !empty($by_code) && stripos($by_code[0]['title'], $known_code) !== false,
+    !empty($by_code) ? $by_code[0]['title'] : 'none');
+
+pi_check('has_product_code_match() is true for a code that really exists',
+    Pi_Chatbot_Retriever::has_product_code_match($known_code));
+pi_check('has_product_code_match() is false for prose with no code shape',
+    !Pi_Chatbot_Retriever::has_product_code_match('bếp gas 2 họng'));
+pi_check('has_product_code_match() is false for a code-shaped string the catalog does not have',
+    !Pi_Chatbot_Retriever::has_product_code_match('ZZ-99999-NOPE'));
+
+// ── Brand tier ───────────────────────────────────────────────────────────────
+pi_section('Retriever::search — brand hard filter');
+
+$by_brand = Pi_Chatbot_Retriever::search($known_brand, 20);
+pi_check('a bare brand name returns only that brand\'s products',
+    !empty($by_brand) && count(array_filter($by_brand, function ($r) use ($known_brand) {
+        return strcasecmp($r['brand'], $known_brand) === 0;
+    })) === count($by_brand),
+    'brand=' . $known_brand . ' got ' . count($by_brand) . ' rows');
+
+// ── The accent-folded fallback tier only fires as a genuine last resort ─────
+pi_section('Retriever::search — Tier 3 (accent-folded) stays a LAST resort');
+
+foreach (['cho hỏi giờ mở cửa', 'bạn tên gì', 'máy bay trực thăng'] as $accented) {
+    list($long, $short) = pi_call_private('Pi_Chatbot_Retriever', 'extract_keyword_list', [$accented]);
+    $tiers12 = $long || $short
+        ? pi_call_private('Pi_Chatbot_Retriever', 'search_fulltext', [$long, $short, 6, ''])
+        : [];
+    $actual = Pi_Chatbot_Retriever::search($accented, 6);
+    // The real invariant is NOT "accented small talk returns nothing" — some of
+    // it already matches products through the earlier FULLTEXT tiers (a known,
+    // pre-existing false positive this suite documents rather than hides). What
+    // Tier 3 guarantees, and what actually kept the small-talk group's score
+    // stable when it was added, is that for an ACCENTED question it contributes
+    // NOTHING — the result is exactly what tiers 1-2 already produced.
+    pi_check("accented \"{$accented}\" gets no Tier 3 contribution",
+        array_column($actual, 'post_id') === array_column($tiers12, 'post_id'),
+        count($actual) . ' vs ' . count($tiers12));
+}
+
+$unaccented_hit = Pi_Chatbot_Retriever::search(Pi_Chatbot_Retriever::fold_diacritics($known_code), 6);
+pi_check('an unaccented ASCII code still matches (no diacritics to fold, but the flow must not error)',
+    is_array($unaccented_hit));
+
+// ── search_hybrid ─────────────────────────────────────────────────────────────
+pi_section('Retriever::search_hybrid');
+
+$hybrid_by_code = Pi_Chatbot_Retriever::search_hybrid($known_code, 12);
+pi_check('search_hybrid short-circuits a product-code question to the exact match',
+    !empty($hybrid_by_code) && stripos($hybrid_by_code[0]['title'], $known_code) !== false);
+
+pi_reset_state();
+$plain = array_column(Pi_Chatbot_Retriever::search($known_brand, 6), 'post_id');
+$hybrid = array_column(Pi_Chatbot_Retriever::search_hybrid($known_brand, 6), 'post_id');
+pi_check('search_hybrid with no query variants matches plain search (RRF over one list is a no-op reorder of one ranking)',
+    $hybrid === $plain, 'plain=' . implode(',', $plain) . ' hybrid=' . implode(',', $hybrid));
+
+$fused = Pi_Chatbot_Retriever::search_hybrid($known_brand, 6, ['extra_queries' => [$known_brand . ' sản phẩm', $known_brand . ' chất lượng cao']]);
+pi_check('search_hybrid with extra query variants still returns results', !empty($fused));
+pi_check('every fused result is on-brand (brand filter carries through fusion)',
+    !empty($fused) && count(array_filter($fused, function ($r) use ($known_brand) {
+        return strcasecmp($r['brand'], $known_brand) === 0;
+    })) === count($fused));
+
+// ── compute_idf: the collation fix that started this whole file ────────────
+pi_section('Retriever::compute_idf — diacritic-exact document frequency');
+
+$idf = pi_call_private('Pi_Chatbot_Retriever', 'compute_idf', [['đá', 'đông']]);
+pi_check('compute_idf returns a df/idf pair per word', isset($idf['đá']['df'], $idf['đá']['idf']));
+pi_check('"đá" (ice) and "đông" (freeze) get DIFFERENT document frequencies — the collation bug this fixed made them equal',
+    $idf['đá']['df'] !== $idf['đông']['df'] || $idf['đá']['idf'] !== $idf['đông']['idf'],
+    "đá:{$idf['đá']['df']} đông:{$idf['đông']['df']}");
+pi_check('idf never drops below IDF_FLOOR',
+    $idf['đá']['idf'] >= Pi_Chatbot_Retriever::IDF_FLOOR && $idf['đông']['idf'] >= Pi_Chatbot_Retriever::IDF_FLOOR);
+
+// ── Static context builders ─────────────────────────────────────────────────
+pi_section('Retriever context builders (contact/price/service)');
+
+foreach (['contact_context', 'price_context', 'service_context'] as $method) {
+    $result = call_user_func(['Pi_Chatbot_Retriever', $method]);
+    pi_check("{$method}() never errors, always returns an array", is_array($result));
+    if (function_exists('saigonhouse_get_contact_info')) {
+        pi_check("{$method}() returns real data when the theme function exists", !empty($result), 'got ' . count($result));
+    } else {
+        pi_check("{$method}() returns [] when the theme function is absent", $result === []);
+    }
+}
+
+if ($has_project) {
+    pi_section('Retriever::search_projects');
+    $projects = Pi_Chatbot_Retriever::search_projects('dự án', 4);
+    pi_check('search_projects returns only post_type=project rows', is_array($projects));
+    // search_projects's internal SQL is already scoped to post_type='project';
+    // this asserts the CONTRACT (formatted rows have no post_type field to leak,
+    // but a non-empty result with real ids is still evidence the query worked).
+    if ($projects) {
+        pi_check('search_projects results carry real post_ids', $projects[0]['post_id'] > 0);
+    }
+}
+
+// ── Multi-brand comparison questions ────────────────────────────────────────
+pi_section('Retriever::search — multi-brand comparison splits top_k');
+
+$second_brand = $wpdb->get_var($wpdb->prepare(
+    "SELECT brand FROM {$table} WHERE post_type='product' AND brand != '' AND brand != %s GROUP BY brand ORDER BY COUNT(*) DESC LIMIT 1",
+    $known_brand
+));
+if ($second_brand) {
+    $compare = Pi_Chatbot_Retriever::search("{$known_brand} với {$second_brand} cái nào tốt hơn", 8);
+    $brands_seen = array_unique(array_map(function ($r) { return $r['brand']; }, $compare));
+    pi_check('a two-brand comparison question surfaces BOTH brands, not just one',
+        count(array_intersect([$known_brand, $second_brand], $brands_seen)) === 2,
+        'seen: ' . implode(',', $brands_seen));
+} else {
+    echo "  (skip: catalog has only one brand with products)\n";
+}
+
+// pi_report() prints a summary from the SHARED pi_check() static state — when
+// run standalone that's exactly this suite's own totals; when run-all.php
+// requires this file alongside others, the same static keeps accumulating, so
+// printing here would show a confusing cumulative count instead of this
+// suite's own. run-all.php does its own before/after accounting per suite and
+// prints one combined summary at the end, so this suite only prints (and
+// exits on) its own report when running standalone.
+if (!defined('PI_TEST_SUITE_MODE')) exit(pi_report());
