@@ -27,8 +27,13 @@ class Pi_Chatbot_Router {
     /** Bump this when the prompt/schema changes — old cached responses become
      *  invalid automatically instead of needing a manual cache purge.
      *  3 — added difficulty/query_variants/ambiguity_reason (adaptive
-     *  max-accuracy dispatch, see class-rest.php). */
-    const PROMPT_VERSION = 3;
+     *  max-accuracy dispatch, see class-rest.php).
+     *  4 — intent='none' is now a RETURNED verdict instead of being collapsed
+     *  to null. The stored shape did not change, but its MEANING did: entries
+     *  cached under v3 recorded small talk as 'NEGATIVE', which the new code
+     *  would still read as "the router failed" and answer with a product
+     *  search. Bumping retires them immediately instead of waiting out the TTL. */
+    const PROMPT_VERSION = 4;
 
     const MODEL_DEFAULT = 'codestral-latest';
     // Single attempt, no retry — unlike Generator (2 keys). An extra retry
@@ -253,7 +258,24 @@ class Pi_Chatbot_Router {
         if ($intent === null) {
             $intent = ($keywords_en || $keywords_vi) ? 'product' : 'none';
         }
-        if ($intent === 'none') return null;
+
+        // 'none' is RETURNED, not collapsed to null.
+        //
+        // It used to return null here, reasoning that "no context is better than
+        // wrong context" — but null is also what this method returns when the
+        // router is disabled, its breaker is open, or its reply was unparseable,
+        // and class-rest.php responds to null by running a plain product search
+        // on the raw message. So a CORRECT verdict of "this is small talk" was
+        // indistinguishable from a failure, and produced the exact outcome the
+        // comment was trying to avoid: "bạn tên gì" ("what's your name") came
+        // back holding four freezers, and "cho hỏi giờ mở cửa" ("what time do
+        // you open") six display fridges.
+        //
+        // Traced from the other end first — those questions were blamed on
+        // keyword matching, and two separate stopword fixes were tried and
+        // measured before the router turned out to have classified them
+        // perfectly all along. A successful negative answer must stay
+        // distinguishable from no answer.
 
         $brand = null;
         if (!empty($parsed['brand']) && is_string($parsed['brand'])) {

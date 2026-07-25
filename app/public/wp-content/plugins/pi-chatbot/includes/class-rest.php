@@ -118,6 +118,15 @@ class Pi_Chatbot_Rest {
             $query_variants = $enrichment['query_variants'];
 
             switch ($intent) {
+                case 'none':
+                    // Greeting, small talk, or off-topic. The router said so
+                    // explicitly, so retrieval is SKIPPED rather than run on the
+                    // raw message — searching a product catalogue for "what's
+                    // your name" is how four freezers used to end up attached to
+                    // that answer as "sources". The generator handles an empty
+                    // context conversationally (see its system prompt).
+                    $context = [];
+                    break;
                 case 'contact':
                     $context = Pi_Chatbot_Retriever::contact_context();
                     break;

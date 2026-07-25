@@ -222,6 +222,39 @@ pi_check('duplicate variants are dropped',
 $out = pi_call_private('Pi_Chatbot_Router', 'validate', [array_merge($base, ['difficulty' => 'easy', 'query_variants' => ['a', 'b']])]);
 pi_check('easy questions carry no variants', is_array($out) && $out['query_variants'] === []);
 
+// ── A negative verdict must stay distinguishable from a failure ────────────
+// validate() used to collapse intent='none' to null. null is ALSO what enrich()
+// returns when the router is disabled, its breaker is open, or its reply was
+// garbage — and class-rest.php answers null by running a product search on the
+// raw message. So "this is small talk" and "the router broke" were the same
+// value, and small talk came back holding freezers.
+echo "
+[Pi_Chatbot_Router::validate — 'none' is a verdict, not a failure]
+";
+
+$out = pi_call_private('Pi_Chatbot_Router', 'validate', [
+    ['intent' => 'none', 'keywords_en' => [], 'keywords_vi' => [], 'brand' => null],
+]);
+pi_check("intent='none' is returned, not collapsed to null", is_array($out));
+pi_check("intent='none' survives validation intact",
+    is_array($out) && $out['intent'] === 'none', is_array($out) ? $out['intent'] : 'null');
+pi_check("'none' carries no keywords", is_array($out) && $out['keywords_en'] === [] && $out['keywords_vi'] === []);
+pi_check("'none' is never routed to the expensive path",
+    is_array($out) && $out['difficulty'] === 'easy');
+
+// A reply with no usable intent AND no keywords still resolves to 'none' rather
+// than guessing 'product' — no context beats wrong context.
+$out = pi_call_private('Pi_Chatbot_Router', 'validate', [['keywords_en' => [], 'keywords_vi' => []]]);
+pi_check('an empty reply resolves to none', is_array($out) && $out['intent'] === 'none');
+
+// But keywords present with a broken intent field still means a product search —
+// the model did useful extraction, don't discard it over a malformed field.
+$out = pi_call_private('Pi_Chatbot_Router', 'validate', [
+    ['intent' => 'prodcut', 'keywords_en' => ['freezer'], 'keywords_vi' => []],
+]);
+pi_check('a misspelled intent with keywords still means product',
+    is_array($out) && $out['intent'] === 'product', is_array($out) ? $out['intent'] : 'null');
+
 // ── Reranker may reorder, never invent ─────────────────────────────────────
 echo "\n[Pi_Chatbot_Reranker::apply — reorder only, never invent]\n";
 
