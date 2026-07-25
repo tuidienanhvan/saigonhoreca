@@ -25,8 +25,10 @@ if (!defined('ABSPATH')) exit;
 
 class Pi_Chatbot_Router {
     /** Bump this when the prompt/schema changes — old cached responses become
-     *  invalid automatically instead of needing a manual cache purge. */
-    const PROMPT_VERSION = 2;
+     *  invalid automatically instead of needing a manual cache purge.
+     *  3 — added difficulty/query_variants/ambiguity_reason (adaptive
+     *  max-accuracy dispatch, see class-rest.php). */
+    const PROMPT_VERSION = 3;
 
     const MODEL_DEFAULT = 'codestral-latest';
     // Single attempt, no retry — unlike Generator (2 keys). An extra retry
@@ -47,9 +49,17 @@ class Pi_Chatbot_Router {
     /** Valid intent values the model may return. */
     const VALID_INTENTS = ['price', 'contact', 'service', 'project', 'product', 'none'];
 
+    /** Difficulty labels. 'hard' is the ONLY value that triggers the expensive
+     *  max-accuracy pipeline, so anything unrecognized must degrade to 'easy'. */
+    const VALID_DIFFICULTY = ['easy', 'hard'];
+
+    /** Caps on the rewrite list — see validate(). */
+    const MAX_QUERY_VARIANTS = 3;
+    const MAX_VARIANT_LENGTH = 80;
+
     /**
      * @param string $question Raw customer message.
-     * @return array{intent:string,keywords_en:string[],keywords_vi:string[],brand:?string}|null
+     * @return array{intent:string,keywords_en:string[],keywords_vi:string[],brand:?string,difficulty:string,query_variants:string[],ambiguity_reason:string}|null
      *   null = router disabled/breaker open/error — caller must treat null the
      *   same as "could not classify" and fall back to a plain product search.
      */
@@ -76,7 +86,12 @@ class Pi_Chatbot_Router {
             'model'       => $model,
             'messages'    => self::build_messages($question),
             'temperature' => 0,
-            'max_tokens'  => 300,
+            // 450, up from 300: the schema now also carries query_variants (up
+            // to 3 rewrites) and ambiguity_reason. Too small a budget here does
+            // not shorten the answer — it truncates the JSON mid-object, and a
+            // truncated object fails parse_response() outright, silently
+            // dropping classification for that message.
+            'max_tokens'  => 450,
         ];
 
         $response = Pi_Chatbot_LLM_Client::call(
@@ -144,7 +159,8 @@ class Pi_Chatbot_Router {
             . "Known REAL brand list (pick verbatim from here only, never invent a brand): "
             . implode(', ', $known_brands) . "\n\n"
             . "Reply with ONLY this JSON, no other text:\n"
-            . "{\"intent\":\"price|contact|service|project|product|none\",\"keywords_en\":[\"...\"],\"keywords_vi\":[\"...\"],\"brand\":\"...\"or null}\n"
+            . "{\"intent\":\"price|contact|service|project|product|none\",\"keywords_en\":[\"...\"],\"keywords_vi\":[\"...\"],"
+            . "\"brand\":\"...\"or null,\"difficulty\":\"easy|hard\",\"query_variants\":[\"...\"],\"ambiguity_reason\":\"...\"}\n"
             . "intent meanings:\n"
             . "  price   — asking about pricing/quote/cost (no keywords needed)\n"
             . "  contact — asking for contact info/hotline/address/email (no keywords needed)\n"
@@ -154,7 +170,22 @@ class Pi_Chatbot_Router {
             . "  none    — greeting/small talk/out of scope (not about kitchen equipment, pricing, services, contact, or projects) — leave other fields empty\n"
             . "keywords_en: 2-5 English keywords describing the EXACT equipment type (use real commercial-kitchen "
             . "industry terms, not a literal word-for-word translation). Only for intent=product.\n"
-            . "keywords_vi: the original Vietnamese keywords remaining after stripping greeting/filler words. Only for intent=product.";
+            . "keywords_vi: the original Vietnamese keywords remaining after stripping greeting/filler words. Only for intent=product.\n\n"
+            . "difficulty: how hard this question is to answer by KEYWORD SEARCH ALONE. Only for intent=product; use \"easy\" otherwise.\n"
+            . "  hard — ANY of: the question is vague about which product is wanted (\"cái nào tốt\", \"loại nào phù hợp\", "
+            . "\"tư vấn giúp\"); it compares or asks to choose between options; it stacks 2+ constraints (type AND capacity, "
+            . "brand AND budget, size AND power); it describes a USE CASE or a problem rather than naming equipment "
+            . "(\"quán 50 chỗ cần gì\", \"bếp nhà hàng Nhật\"); it names a model code you do not recognize; it mixes languages; "
+            . "or the only usable keywords are broad category words that would match dozens of products.\n"
+            . "  easy — it clearly names a specific equipment type, model, or brand, and one keyword search would plausibly "
+            . "land on the right product.\n"
+            . "query_variants: ONLY when difficulty=hard. Up to 3 alternative phrasings of the SAME information need, "
+            . "written the way this catalog words things. Make them genuinely different from each other — one using the "
+            . "English industry term, one using the Vietnamese term a customer would type, and one written in Vietnamese "
+            . "WITHOUT diacritics (many customers type that way). Do NOT restate the original question verbatim. "
+            . "Empty array when difficulty=easy.\n"
+            . "ambiguity_reason: when difficulty=hard, one short phrase (max 12 words) naming what is ambiguous. "
+            . "Empty string when easy.";
 
         return [
             ['role' => 'system', 'content' => $system],
@@ -163,32 +194,13 @@ class Pi_Chatbot_Router {
     }
 
     /**
-     * Defensive parsing — the model often wraps JSON in a ```json fence or adds
-     * stray text before/after (observed in practice with Generator/analyzer
-     * before). Strip the fence, then find the first balanced {...} block
-     * instead of calling json_decode() on the raw string directly.
+     * Defensive parsing (fenced/padded JSON) now lives in
+     * Pi_Chatbot_LLM_Client::extract_json() — the Reranker and the Generator's
+     * faithfulness check parse the same way, and one shared implementation
+     * means a fix lands in all three at once.
      */
     private static function parse_response($text) {
-        if ($text === '') return null;
-        $text = preg_replace('/^```(?:json)?\s*/i', '', trim($text));
-        $text = preg_replace('/\s*```$/', '', $text);
-
-        $start = strpos($text, '{');
-        if ($start === false) return null;
-        $depth = 0;
-        $end = null;
-        for ($i = $start; $i < strlen($text); $i++) {
-            if ($text[$i] === '{') $depth++;
-            elseif ($text[$i] === '}') {
-                $depth--;
-                if ($depth === 0) { $end = $i; break; }
-            }
-        }
-        if ($end === null) return null;
-
-        $json = substr($text, $start, $end - $start + 1);
-        $data = json_decode($json, true);
-        return is_array($data) ? $data : null;
+        return Pi_Chatbot_LLM_Client::extract_json($text);
     }
 
     /**
@@ -204,6 +216,17 @@ class Pi_Chatbot_Router {
      *   because the brand guess was wrong.
      * - keywords_en/keywords_vi capped at 8 items, each ≤ 40 chars — stops the
      *   model from dumping long text. Empty/non-string entries are dropped.
+     * - difficulty FAILS SAFE to 'easy': anything missing, misspelled or
+     *   unexpected takes the fast path. The failure modes are asymmetric — a
+     *   hard question wrongly sent down the fast path just answers the way it
+     *   did before this feature existed, while an easy question wrongly sent
+     *   down the max path costs 3 extra LLM calls and ~30 seconds of the
+     *   customer's time. Also forced to 'easy' for every non-product intent:
+     *   price/contact/service answer from static text, so reranking and
+     *   faithfulness-checking them would spend the entire budget on nothing.
+     * - query_variants capped at MAX_QUERY_VARIANTS x MAX_VARIANT_LENGTH and
+     *   dropped entirely when difficulty is 'easy' — these strings are fed
+     *   straight into retrieval, so an unbounded model field must not reach SQL.
      */
     private static function validate($parsed) {
         $intent = isset($parsed['intent']) && is_string($parsed['intent']) ? trim($parsed['intent']) : '';
@@ -241,7 +264,37 @@ class Pi_Chatbot_Router {
             // No match -> $brand stays null, never use the model's made-up string.
         }
 
-        return ['intent' => $intent, 'keywords_en' => $keywords_en, 'keywords_vi' => $keywords_vi, 'brand' => $brand];
+        $difficulty = isset($parsed['difficulty']) && is_string($parsed['difficulty'])
+            ? strtolower(trim($parsed['difficulty'])) : '';
+        if (!in_array($difficulty, self::VALID_DIFFICULTY, true)) $difficulty = 'easy';
+        if ($intent !== 'product') $difficulty = 'easy';
+
+        $variants = [];
+        if ($difficulty === 'hard' && !empty($parsed['query_variants']) && is_array($parsed['query_variants'])) {
+            foreach ($parsed['query_variants'] as $v) {
+                if (!is_string($v)) continue;
+                $v = trim(preg_replace('/\s+/u', ' ', $v));
+                if ($v === '' || mb_strlen($v) > self::MAX_VARIANT_LENGTH) continue;
+                if (in_array($v, $variants, true)) continue;
+                $variants[] = $v;
+                if (count($variants) >= self::MAX_QUERY_VARIANTS) break;
+            }
+        }
+
+        $reason = '';
+        if ($difficulty === 'hard' && !empty($parsed['ambiguity_reason']) && is_string($parsed['ambiguity_reason'])) {
+            $reason = mb_substr(trim(preg_replace('/\s+/u', ' ', $parsed['ambiguity_reason'])), 0, 120);
+        }
+
+        return [
+            'intent'           => $intent,
+            'keywords_en'      => $keywords_en,
+            'keywords_vi'      => $keywords_vi,
+            'brand'            => $brand,
+            'difficulty'       => $difficulty,
+            'query_variants'   => $variants,
+            'ambiguity_reason' => $reason,
+        ];
     }
 
     private static function breaker_bucket() {

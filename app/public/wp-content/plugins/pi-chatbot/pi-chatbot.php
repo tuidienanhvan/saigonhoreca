@@ -21,6 +21,10 @@ define('PI_CHATBOT_URL', plugin_dir_url(__FILE__));
 define('PI_CHATBOT_TABLE', 'pi_chatbot_index');
 define('PI_CHATBOT_OPTION', 'pi_chatbot_settings');
 
+// class-embeddings.php has no dependencies of its own and BOTH class-indexer.php
+// (creates/refreshes the vectors table) and class-retriever.php (semantic leg of
+// hybrid search) call into it — so it loads first.
+require_once PI_CHATBOT_DIR . 'includes/class-embeddings.php';
 require_once PI_CHATBOT_DIR . 'includes/class-indexer.php';
 require_once PI_CHATBOT_DIR . 'includes/class-log.php';
 require_once PI_CHATBOT_DIR . 'includes/class-entities.php';
@@ -30,6 +34,8 @@ require_once PI_CHATBOT_DIR . 'includes/class-generator.php';
 // class-router.php loads AFTER class-entities.php (uses known_brands()) and class-indexer.php
 // (uses table_name() for few-shot) — load order is fixed, same as the other files in this plugin.
 require_once PI_CHATBOT_DIR . 'includes/class-router.php';
+// class-reranker.php uses Pi_Chatbot_LLM_Client — loaded above.
+require_once PI_CHATBOT_DIR . 'includes/class-reranker.php';
 require_once PI_CHATBOT_DIR . 'includes/class-rest.php';
 require_once PI_CHATBOT_DIR . 'includes/class-admin.php';
 
@@ -51,6 +57,11 @@ function pi_chatbot_bootstrap() {
 // active theme isn't saigonhoreca-theme (hook doesn't exist), this add_action() is
 // harmless — it simply never gets called.
 add_action('sgh_after_flush_cache', ['Pi_Chatbot_Indexer', 'flush_answer_cache']);
+
+// Background embedding backfill — a self-rescheduling single event, so a few
+// hundred documents are embedded in rate-limit-friendly batches instead of one
+// long synchronous loop. See Pi_Chatbot_Embeddings::schedule_backfill().
+add_action(Pi_Chatbot_Embeddings::CRON_HOOK, ['Pi_Chatbot_Embeddings', 'run_backfill_cron']);
 
 /**
  * Effective config = defaults merged with the saved option (changed via the admin page).
@@ -89,6 +100,44 @@ function pi_chatbot_settings() {
         // returns empty when used as router, since it's a reasoning model that eats all of
         // max_tokens into a hidden field).
         'router_keys'    => [], // empty = share llm7_keys — split out if you want a different key
+
+        // ── Max-accuracy pipeline ───────────────────────────────────────────
+        // The router labels each question easy/hard; only 'hard' ones take the
+        // expensive path (hybrid retrieval -> LLM rerank -> faithfulness check).
+        // Latency on that path is deliberately unbounded-ish (~30s worst case)
+        // because the questions that reach it are exactly the ones the fast
+        // lexical pipeline measurably gets wrong. Turning this off restores the
+        // previous behaviour exactly — every question takes the fast path.
+        'max_accuracy_enabled' => true,
+
+        // Semantic leg. Free-tier providers callable with plain wp_remote_post
+        // (the production host is cPanel shared hosting — no Python service is
+        // possible, which is why this is an HTTP API and not a local model).
+        //   gemini — gemini-embedding-001, top-ranked multilingual, VI supported
+        //   jina   — jina-embeddings-v3, fallback if Google quota is exhausted
+        // 768 dims: a Matryoshka truncation of the model's full 3072, ~4x less
+        // storage and PHP math for a negligible ranking difference. Changing
+        // this value invalidates every stored vector (it is part of the model
+        // stamp) and requires a full re-embed.
+        'embedding_provider' => 'gemini',
+        'embedding_model'    => 'gemini-embedding-001',
+        'embedding_dims'     => 768,
+        'gemini_api_key'     => '',
+        'jina_api_key'       => '',
+        'hybrid_enabled'     => true,
+
+        // Reranking + verification, both on the router model (fast, non-reasoning).
+        'rerank_enabled' => true,
+        'rerank_model'   => 'codestral-latest',
+        'verify_enabled' => true,
+
+        // Extra router-generated query rewrites fused into the same result pool.
+        'multi_query_max' => 2,
+        // Reciprocal Rank Fusion constant. 60 is the value from the original RRF
+        // paper (Cormack et al. 2009) and is deliberately NOT tuned here — the
+        // whole point of choosing RRF over weighted score blending is that it
+        // needs no tuning against incomparable score scales.
+        'rrf_k' => 60,
     ];
     $saved = get_option(PI_CHATBOT_OPTION, []);
     if (!is_array($saved)) $saved = [];
@@ -98,6 +147,15 @@ function pi_chatbot_settings() {
     }
     if (!is_array($settings['router_keys'])) {
         $settings['router_keys'] = array_filter([(string) $settings['router_keys']]);
+    }
+    // Same defensive casting rationale as the key arrays above: these are read on
+    // the customer request path, where a wrong type saved into the option would
+    // be a fatal on the chat response, not just on the admin page.
+    $settings['embedding_dims']  = max(64, min(3072, (int) $settings['embedding_dims']));
+    $settings['multi_query_max'] = max(0, min(5, (int) $settings['multi_query_max']));
+    $settings['rrf_k']           = max(1, min(500, (int) $settings['rrf_k']));
+    if (!in_array($settings['embedding_provider'], ['gemini', 'jina'], true)) {
+        $settings['embedding_provider'] = 'gemini';
     }
     return $settings;
 }

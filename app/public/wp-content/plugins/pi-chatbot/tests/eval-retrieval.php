@@ -13,6 +13,15 @@
  *   wp eval-file wp-content/plugins/pi-chatbot/tests/eval-retrieval.php
  *   wp eval-file wp-content/plugins/pi-chatbot/tests/eval-retrieval.php save-baseline
  *   wp eval-file wp-content/plugins/pi-chatbot/tests/eval-retrieval.php compare=baseline.json
+ *
+ * mode=hybrid runs Retriever::search_hybrid() instead — the retrieval half of
+ * the max-accuracy pipeline. Deliberately WITHOUT the router and the reranker:
+ * both are LLM calls, which would make the run cost money, take ~20 minutes, and
+ * produce a different number every time. What this measures is whether fusing
+ * the semantic leg into the lexical one helps or hurts, which is the part that
+ * has to be provably non-regressive before anything is dispatched to it.
+ *   wp eval-file .../eval-retrieval.php mode=hybrid compare=baseline.json
+ *   wp eval-file .../eval-retrieval.php mode=hybrid save-baseline=baseline-hybrid.json
  */
 
 if (!defined('ABSPATH')) {
@@ -62,6 +71,23 @@ function pi_eval_metrics_for_query($expected_ids, $result_post_ids) {
     return ['hit1' => $hit1, 'hit3' => $hit3, 'recall5' => $recall5, 'mrr' => $mrr, 'is_negative' => false];
 }
 
+// `wp eval-file <file> <arg>...` — WP-CLI puts positional args after the
+// filename into the $args variable in the file's scope (not $argv/$_SERVER).
+// Parsed up here because the retrieval mode has to be known before the loop.
+$eval_args = isset($args) && is_array($args) ? $args : [];
+$mode = 'lexical';
+foreach ($eval_args as $a) {
+    if (strpos($a, 'mode=') === 0) $mode = substr($a, strlen('mode='));
+}
+if (!in_array($mode, ['lexical', 'hybrid'], true)) {
+    fwrite(STDERR, "Unknown mode '{$mode}' — expected lexical or hybrid.\n");
+    exit(1);
+}
+if ($mode === 'hybrid') {
+    $emb_ready = Pi_Chatbot_Embeddings::is_available();
+    echo "\n[eval] mode=hybrid — semantic leg " . ($emb_ready ? 'ACTIVE' : 'INACTIVE (no key / not backfilled: this measures lexical fusion only)') . "\n";
+}
+
 $by_group = [];
 $rows = [];
 
@@ -70,7 +96,11 @@ foreach ($golden as $item) {
     $group = $item['group'];
     $expected = $item['relevant_ids'] ?? [];
 
-    $results = Pi_Chatbot_Retriever::search($q, 6);
+    // No extra_queries: those come from the router at runtime, and an LLM call
+    // per question would make this harness slow, costly and non-deterministic.
+    $results = $mode === 'hybrid'
+        ? Pi_Chatbot_Retriever::search_hybrid($q, 6)
+        : Pi_Chatbot_Retriever::search($q, 6);
     $got_ids = array_map(function ($r) { return $r['post_id']; }, $results);
 
     $m = pi_eval_metrics_for_query($expected, $got_ids);
@@ -91,7 +121,7 @@ foreach ($golden as $item) {
 
 // ── Report ──────────────────────────────────────────────────────────────
 
-echo "\n=== pi-chatbot retrieval eval — " . count($golden) . " queries, " . count($by_group) . " groups ===\n\n";
+echo "\n=== pi-chatbot retrieval eval [{$mode}] — " . count($golden) . " queries, " . count($by_group) . " groups ===\n\n";
 printf("%-28s %5s %8s %8s %10s %8s\n", "Group", "N", "hit@1", "hit@3", "recall@5", "MRR");
 $overall = ['n' => 0, 'hit1' => 0, 'hit3' => 0, 'recall5' => 0.0, 'mrr' => 0.0];
 foreach ($by_group as $group => $g) {
@@ -130,16 +160,22 @@ if ($miss_count === 0) echo "  (none)\n";
 
 // ── Save / compare baseline ────────────────────────────────────────────
 
-// `wp eval-file <file> <arg>...` — WP-CLI puts positional args after the
-// filename into the $args variable in the file's scope (not $argv/$_SERVER).
-$eval_args = isset($args) && is_array($args) ? $args : [];
+// $eval_args was parsed before the run loop (the retrieval mode had to be known
+// first). save-baseline accepts an optional filename so a hybrid run can be
+// snapshotted without overwriting the lexical baseline every other run
+// contract-checks against.
 $save_baseline = in_array('save-baseline', $eval_args, true);
+$baseline_file = 'baseline.json';
 $compare_file = null;
 foreach ($eval_args as $a) {
     if (strpos($a, 'compare=') === 0) $compare_file = substr($a, strlen('compare='));
+    if (strpos($a, 'save-baseline=') === 0) {
+        $save_baseline = true;
+        $baseline_file = basename(substr($a, strlen('save-baseline=')));
+    }
 }
 
-$snapshot = ['by_group' => [], 'overall' => []];
+$snapshot = ['mode' => $mode, 'by_group' => [], 'overall' => []];
 foreach ($by_group as $group => $g) {
     $snapshot['by_group'][$group] = [
         'n' => $g['n'], 'hit1' => $g['hit1'] / $g['n'], 'hit3' => $g['hit3'] / $g['n'],
@@ -152,8 +188,8 @@ $snapshot['overall'] = [
 ];
 
 if ($save_baseline) {
-    file_put_contents(__DIR__ . '/baseline.json', json_encode($snapshot, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
-    echo "\n[eval] Saved baseline to tests/baseline.json\n";
+    file_put_contents(__DIR__ . '/' . $baseline_file, json_encode($snapshot, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+    echo "\n[eval] Saved baseline to tests/{$baseline_file}\n";
 }
 
 if ($compare_file && file_exists(__DIR__ . '/' . $compare_file)) {

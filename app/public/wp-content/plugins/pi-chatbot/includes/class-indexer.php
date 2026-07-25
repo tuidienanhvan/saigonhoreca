@@ -22,8 +22,13 @@ class Pi_Chatbot_Indexer {
      * manual deactivate/activate (this was the root cause of SAG's entities table
      * never being created, which in turn made the RENAME TABLE fail outright and
      * silently broke reindexing).
+     *
+     * 3 — added the sibling wp_pi_chatbot_vectors table (semantic embeddings for
+     * hybrid retrieval, see class-embeddings.php). Existing sites get the table
+     * on the next plugins_loaded; the vectors themselves are backfilled
+     * separately (cron/admin button), never inline here.
      */
-    const DB_VERSION = 2;
+    const DB_VERSION = 3;
 
     /** Minimum length threshold to index — only applies to post types other than 'product'. */
     const MIN_INDEXABLE_LENGTH = 100;
@@ -64,8 +69,16 @@ class Pi_Chatbot_Indexer {
         }
     }
 
+    /**
+     * The vectors table is created HERE, not inside create_table_at() —
+     * create_table_at() also builds the reindex shadow table, and there must be
+     * exactly one vectors table for the whole site, not a fresh empty one per
+     * reindex (that is the entire reason embeddings live in their own table
+     * rather than a column on this one).
+     */
     public static function create_table() {
         self::create_table_at(self::table_name());
+        Pi_Chatbot_Embeddings::create_table();
     }
 
     private static function create_table_at($table) {
@@ -165,6 +178,13 @@ class Pi_Chatbot_Indexer {
         // Pi_Chatbot_Entities is always require_once'd before any hook runs (fixed
         // load order in pi-chatbot.php) — no need for a defensive class_exists().
         Pi_Chatbot_Entities::flush_cache();
+        // Embeddings are refreshed by a background job, NOT inline: a reindex is
+        // pure local DB work measured in seconds, while embedding ~530 documents
+        // means dozens of rate-limited API calls. Queuing keeps "Reindex now"
+        // fast and keeps a failing embedding provider from ever making a reindex
+        // look broken. Rows whose content didn't actually change are skipped by
+        // the content_hash check, so a reindex that changed nothing costs nothing.
+        Pi_Chatbot_Embeddings::schedule_backfill();
         return $count;
     }
 
@@ -280,6 +300,10 @@ class Pi_Chatbot_Indexer {
     public static function remove_post($post_id) {
         global $wpdb;
         $wpdb->delete(self::table_name(), ['post_id' => $post_id], ['%d']);
+        // Drop the vector too — otherwise an unpublished/deleted product would
+        // keep scoring in semantic search and could be returned as a source for
+        // a page that no longer exists.
+        Pi_Chatbot_Embeddings::delete_post($post_id);
         self::bump_index_version();
     }
 
@@ -297,6 +321,10 @@ class Pi_Chatbot_Indexer {
 
         if ($post->post_status === 'publish') {
             self::index_post($post_id);
+            // Queue rather than embed inline: save_post runs inside the editor's
+            // save request, and a slow/failing embedding API would then show up
+            // to the editor as a slow or broken "Update" button.
+            Pi_Chatbot_Embeddings::schedule_backfill();
         } else {
             self::remove_post($post_id);
         }

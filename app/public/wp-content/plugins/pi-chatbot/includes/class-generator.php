@@ -23,29 +23,40 @@ class Pi_Chatbot_Generator {
         . "Answer briefly, in a friendly and professional advisory tone. Do not use Markdown tables or the |, #, ** characters — plain prose or simple dashes only, since the chat UI doesn't render Markdown.";
 
     /**
+     * Renders the retrieval context into the exact block the model is told to
+     * answer from. Shared with verify() ON PURPOSE: a faithfulness check that
+     * reads even a slightly different rendering than the one the answer was
+     * written against would flag correct answers as unsupported.
+     */
+    public static function context_to_text($context) {
+        if (empty($context)) {
+            return "(No matching product/page found in the internal data.)";
+        }
+        $lines = [];
+        foreach ($context as $item) {
+            $lines[] = sprintf(
+                "- %s%s%s — %s\n  %s",
+                $item['title'],
+                $item['brand'] ? " (Brand: {$item['brand']})" : '',
+                $item['category'] ? " [{$item['category']}]" : '',
+                $item['url'],
+                $item['excerpt']
+            );
+        }
+        return implode("\n", $lines);
+    }
+
+    /**
      * @param string $question
      * @param array  $context Result from Pi_Chatbot_Retriever::search()
+     * @param array  $options correction: feedback from a failed faithfulness
+     *   check, appended to the system prompt on the single retry.
      * @return array{answer:string, sources:array}|WP_Error
      */
-    public static function answer($question, $context) {
+    public static function answer($question, $context, $options = []) {
         $settings = pi_chatbot_settings();
 
-        if (empty($context)) {
-            $context_text = "(No matching product/page found in the internal data.)";
-        } else {
-            $lines = [];
-            foreach ($context as $item) {
-                $lines[] = sprintf(
-                    "- %s%s%s — %s\n  %s",
-                    $item['title'],
-                    $item['brand'] ? " (Brand: {$item['brand']})" : '',
-                    $item['category'] ? " [{$item['category']}]" : '',
-                    $item['url'],
-                    $item['excerpt']
-                );
-            }
-            $context_text = implode("\n", $lines);
-        }
+        $context_text = self::context_to_text($context);
 
         // Even a same-language reminder placed right next to the question (see
         // below) wasn't enough on its own — verified live: a long, ALL-Vietnamese
@@ -68,10 +79,22 @@ class Pi_Chatbot_Generator {
         $language_note = self::build_language_note($question);
         $user_prompt = "REFERENCE INFORMATION:\n{$context_text}\n\nCUSTOMER QUESTION: {$question}\n\n{$language_note}";
 
+        // The correction is appended to the SYSTEM prompt rather than the user
+        // prompt so it carries the same weight as the no-inventing rule it is
+        // enforcing — a "you got this wrong" note buried after the reference
+        // block reads as part of the customer's message, not as an instruction.
+        $system_prompt = self::SYSTEM_PROMPT;
+        if (!empty($options['correction'])) {
+            $system_prompt .= "\n\nIMPORTANT — your previous draft was rejected by a fact check: "
+                . trim((string) $options['correction'])
+                . "\nWrite a new answer using ONLY facts present in the REFERENCE INFORMATION. "
+                . "If the reference does not support a claim, leave it out entirely rather than softening it.";
+        }
+
         $body = [
             'model'    => $settings['model'],
             'messages' => [
-                ['role' => 'system', 'content' => self::SYSTEM_PROMPT],
+                ['role' => 'system', 'content' => $system_prompt],
                 ['role' => 'user', 'content' => $user_prompt],
             ],
             'temperature' => 0.3,
@@ -121,6 +144,91 @@ class Pi_Chatbot_Generator {
             }, $context),
         ];
     }
+
+    /**
+     * Faithfulness check — a second model reads the answer against the same
+     * reference block and reports any claim the reference does not support.
+     *
+     * This is the last line of a defence that starts with the system prompt's
+     * no-inventing rule, and it exists because that rule is a SOFT guardrail:
+     * the model can still drift, and the drift that matters commercially is
+     * inventing a price, a capacity or a model number that a customer will
+     * quote back. Run only on the max-accuracy path — the questions routed
+     * there are the ambiguous ones, which are precisely where a model is most
+     * tempted to fill a gap with something plausible.
+     *
+     * Uses the router-class model (fast, non-reasoning), not the answer model:
+     * checking "is every claim present in this text" is a comparison task, and
+     * asking the same model that wrote the answer to grade it invites it to
+     * defend its own output.
+     *
+     * @return array{faithful:bool,issue:string}|null null = check unavailable
+     *   (disabled, no key, unparseable reply). A check that could not run must
+     *   never be reported as a check that passed — the caller distinguishes
+     *   null from ['faithful' => false].
+     */
+    public static function verify($question, $context, $answer) {
+        $settings = pi_chatbot_settings();
+        if (empty($settings['verify_enabled'])) return null;
+        $answer = trim((string) $answer);
+        if ($answer === '') return null;
+
+        $keys = !empty($settings['router_keys']) ? $settings['router_keys'] : $settings['llm7_keys'];
+        if (empty($keys)) return null;
+
+        $system = "You are a strict fact checker for a commercial kitchen equipment shop's chatbot.\n"
+            . "Decide whether every factual claim in ANSWER is supported by REFERENCE.\n"
+            . "Claims that matter: product names, model codes, brands, prices, capacities, dimensions, "
+            . "power ratings, stock availability, warranty terms.\n"
+            . "NOT violations — do not flag these:\n"
+            . "- polite phrasing, greetings, offers to help further, invitations to call the hotline\n"
+            . "- saying that information is unavailable, or asking the customer a clarifying question\n"
+            . "- naming broad product CATEGORIES the shop sells in a general introduction\n"
+            . "- translating or paraphrasing the reference into the customer's language\n"
+            . "A violation is a SPECIFIC fact stated as true that REFERENCE does not contain.\n\n"
+            . "Reply with ONLY this JSON, no other text:\n"
+            . "{\"faithful\":true}  or  {\"faithful\":false,\"issue\":\"<the unsupported claim, max 20 words>\"}";
+
+        $user = "REFERENCE:\n" . self::context_to_text($context)
+            . "\n\nCUSTOMER QUESTION: {$question}\n\nANSWER:\n{$answer}";
+
+        $response = Pi_Chatbot_LLM_Client::call(
+            [
+                'model'       => !empty($settings['rerank_model']) ? $settings['rerank_model'] : Pi_Chatbot_Reranker::MODEL_DEFAULT,
+                'messages'    => [
+                    ['role' => 'system', 'content' => $system],
+                    ['role' => 'user', 'content' => $user],
+                ],
+                'temperature' => 0,
+                'max_tokens'  => 150,
+            ],
+            $keys,
+            self::VERIFY_TIMEOUT_SECONDS,
+            1,
+            'pi-chatbot-verifier'
+        );
+        if (is_wp_error($response)) return null;
+
+        $parsed = Pi_Chatbot_LLM_Client::extract_json(Pi_Chatbot_LLM_Client::content($response));
+        if (!is_array($parsed) || !array_key_exists('faithful', $parsed)) return null;
+
+        // Only an explicit boolean false counts as a failure. A missing or
+        // non-boolean value means the checker did not actually reach a verdict,
+        // and discarding a good answer on that basis would be worse than the
+        // unverified claim it was meant to catch.
+        $faithful = !($parsed['faithful'] === false || $parsed['faithful'] === 'false');
+        $issue = '';
+        if (!$faithful && !empty($parsed['issue']) && is_string($parsed['issue'])) {
+            $issue = mb_substr(trim($parsed['issue']), 0, 200);
+        }
+        return ['faithful' => $faithful, 'issue' => $issue];
+    }
+
+    /** Shorter than the answer timeout — the check reads existing text and
+     *  emits one small JSON object, so a slow reply here means something is
+     *  wrong, and waiting on it just adds to a request the customer is already
+     *  waiting ~30s for. */
+    const VERIFY_TIMEOUT_SECONDS = 12;
 
     /**
      * Detects the customer's language by Unicode SCRIPT RANGE and returns a

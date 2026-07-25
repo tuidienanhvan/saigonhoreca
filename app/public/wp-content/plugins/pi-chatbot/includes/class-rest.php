@@ -85,12 +85,38 @@ class Pi_Chatbot_Rest {
         $router_brand = null;
         $search_query = '';
 
+        // Per-stage wall-clock, measured not estimated — this is what the
+        // frontend's progress card reports, and it is the only way to tell which
+        // stage is responsible when the max-accuracy path feels slow.
+        $steps = [];
+        $started = microtime(true);
+        $mark = function ($name) use (&$steps, &$started) {
+            $now = microtime(true);
+            $steps[] = ['step' => $name, 'ms' => (int) round(($now - $started) * 1000)];
+            $started = $now;
+        };
+
+        // Adaptive dispatch state — see the max-accuracy branch below.
+        $mode = 'fast';
+        $difficulty = null;
+        $ambiguity_reason = '';
+        $query_variants = [];
+        $semantic_used = false;
+        $rerank_used = false;
+        $rerank_confidence = null;
+        $low_confidence = false;
+        $verified = null;
+
         $enrichment = Pi_Chatbot_Router::enrich($message);
+        $mark('router');
         if ($enrichment) {
             $router_used = true;
             $intent = $enrichment['intent'];
             $router_keywords = array_merge($enrichment['keywords_vi'], $enrichment['keywords_en']);
             $router_brand = $enrichment['brand'] ?: null;
+            $difficulty = $enrichment['difficulty'];
+            $ambiguity_reason = $enrichment['ambiguity_reason'];
+            $query_variants = $enrichment['query_variants'];
 
             switch ($intent) {
                 case 'contact':
@@ -112,16 +138,71 @@ class Pi_Chatbot_Rest {
                         $enrichment['brand'] ? [$enrichment['brand']] : []
                     )));
                     if ($search_query === '') $search_query = $message;
-                    $context = Pi_Chatbot_Retriever::search($search_query, (int) $settings['top_k']) ?: [];
+
+                    // MAX-ACCURACY PATH — taken only when the router judged this
+                    // question hard for keyword search: vague, comparative,
+                    // multi-constraint, use-case-shaped, or mixed-language. Those
+                    // are the questions the lexical pipeline measurably gets
+                    // wrong (on the golden set its misses are near-miss ORDERING
+                    // failures, not misses), and they are rare enough that
+                    // spending three extra model calls on them is affordable.
+                    // Everything else keeps the fast path unchanged.
+                    if (!empty($settings['max_accuracy_enabled']) && $difficulty === 'hard') {
+                        $mode = 'max';
+                        // Hybrid retrieval + rerank + verify can legitimately run
+                        // ~30s end to end; the usual 30s cap on shared hosting
+                        // would kill the request mid-flight and show the customer
+                        // a generic failure after they had already waited.
+                        if (function_exists('set_time_limit')) @set_time_limit(60);
+
+                        $candidates = Pi_Chatbot_Retriever::search_hybrid($search_query, Pi_Chatbot_Reranker::MAX_CANDIDATES, [
+                            'extra_queries' => $query_variants,
+                            'brand'         => $router_brand,
+                        ]) ?: [];
+                        $semantic_used = Pi_Chatbot_Embeddings::is_available($settings);
+                        $mark('retrieve_hybrid');
+
+                        // Skip reranking when an exact product code already
+                        // selected the results — see
+                        // Retriever::has_product_code_match(). Measured on the
+                        // golden set, this was the reranker's only regression:
+                        // it reordered rows an identifier had already pinned
+                        // exactly, and every change it could make was a
+                        // downgrade.
+                        if (Pi_Chatbot_Retriever::has_product_code_match($message)) {
+                            $context = array_slice($candidates, 0, (int) $settings['top_k']);
+                        } else {
+                            $rerank = Pi_Chatbot_Reranker::rerank($message, $candidates, (int) $settings['top_k']);
+                            $rerank_used = $rerank['used'];
+                            $rerank_confidence = $rerank['confidence'];
+                            $context = $rerank['results'];
+                        }
+                        $mark('rerank');
+
+                        // The reranker read every candidate and marked none of
+                        // the top ones as actually answering the question. Handing
+                        // that context to the generator anyway is how a confident
+                        // wrong answer gets written — pass no context instead, so
+                        // the system prompt's honest "I don't have that yet, here
+                        // is the hotline" path takes over.
+                        if ($rerank_used && $rerank_confidence !== null && $rerank_confidence <= 0.0) {
+                            $low_confidence = true;
+                            $context = [];
+                        }
+                    } else {
+                        $context = Pi_Chatbot_Retriever::search($search_query, (int) $settings['top_k']) ?: [];
+                    }
                     break;
             }
         } else {
             // Router unavailable (disabled/circuit-open/error) — degrade to a
             // plain product search on the raw message rather than leaving the
-            // customer with no answer at all.
+            // customer with no answer at all. Deliberately NOT the max path: with
+            // no difficulty signal there is nothing to justify the extra cost.
             $search_query = $message;
             $context = Pi_Chatbot_Retriever::search($message, (int) $settings['top_k']) ?: [];
         }
+        if ($mode !== 'max') $mark('retrieve');
 
         // Log ONLY on the fresh path (not cache hits — a cached question is a
         // repeat of one already logged; logging it again would inflate counts
@@ -131,9 +212,31 @@ class Pi_Chatbot_Rest {
         Pi_Chatbot_Log::record($normalized, !empty($context), count($context), $router_used);
 
         $result = Pi_Chatbot_Generator::answer($message, $context);
+        $mark('generate');
 
         if (is_wp_error($result)) {
             return new WP_Error('pi_chatbot_generation_failed', 'The assistant is busy right now — please try again in a few minutes or call our hotline.', ['status' => 502]);
+        }
+
+        // Faithfulness check, max path only. One retry, then accept: a second
+        // failure means the model cannot express this answer within the
+        // reference, and looping further would spend the customer's remaining
+        // patience without new information. The unverified flag is carried in
+        // the trace so a real failure rate is measurable rather than assumed.
+        if ($mode === 'max' && !empty($context)) {
+            $check = Pi_Chatbot_Generator::verify($message, $context, $result['answer']);
+            if ($check !== null) {
+                $verified = $check['faithful'];
+                if (!$check['faithful']) {
+                    $retry = Pi_Chatbot_Generator::answer($message, $context, ['correction' => $check['issue']]);
+                    if (!is_wp_error($retry)) {
+                        $result = $retry;
+                        $recheck = Pi_Chatbot_Generator::verify($message, $context, $result['answer']);
+                        $verified = $recheck === null ? null : $recheck['faithful'];
+                    }
+                }
+            }
+            $mark('verify');
         }
 
         // "trace" — REAL data from what actually happened in this request (not
@@ -143,6 +246,9 @@ class Pi_Chatbot_Rest {
         // router_brand are only populated when the router actually classified
         // the message as intent=product — an empty array means no reasoning
         // step happened, so the UI never fabricates content for that panel.
+        //
+        // Everything below 'router_brand' is ADDITIVE — an older cached frontend
+        // reading only the original six fields keeps working unchanged.
         $result['trace'] = [
             'intent'          => $intent,
             'search_query'    => $search_query,
@@ -150,6 +256,17 @@ class Pi_Chatbot_Rest {
             'router_used'     => $router_used,
             'router_keywords' => $router_keywords,
             'router_brand'    => $router_brand,
+            // Adaptive pipeline.
+            'mode'              => $mode,
+            'difficulty'        => $difficulty,
+            'ambiguity_reason'  => $ambiguity_reason,
+            'query_variants'    => $query_variants,
+            'semantic_used'     => $semantic_used,
+            'rerank_used'       => $rerank_used,
+            'rerank_confidence' => $rerank_confidence,
+            'low_confidence'    => $low_confidence,
+            'verified'          => $verified,
+            'steps'             => $steps,
         ];
 
         set_transient($cache_key, $result, HOUR_IN_SECONDS);

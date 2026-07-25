@@ -289,6 +289,220 @@ class Pi_Chatbot_Retriever {
     }
 
     /**
+     * Semantic leg of hybrid retrieval — cosine similarity between the question's
+     * embedding and each product's stored embedding.
+     *
+     * This EXISTS ALONGSIDE search(), it does not replace it. Lexical matching is
+     * exact where it works: a model code, a brand name, or a rare technical term
+     * either appears in the row or it doesn't, and no embedding beats that. What
+     * it cannot do is match a customer who describes a NEED ("quán 50 chỗ cần
+     * gì") against a catalog that names PRODUCTS, or bridge Vietnamese typed
+     * without diacritics onto a diacritic-exact literal check. That is the gap
+     * this fills — which is why the two are fused rather than one replacing the
+     * other.
+     *
+     * Returns [] rather than failing when embeddings are unconfigured, not yet
+     * backfilled, or the provider's breaker is open, so every caller degrades
+     * cleanly to lexical-only.
+     *
+     * @param array $opts brands: string[] to restrict the scan (a recognized
+     *   brand is a 100%-precision filter; applying it here keeps the semantic
+     *   leg from dragging a different brand's product into a brand-specific
+     *   question).
+     * @return array Same shape as search().
+     */
+    public static function search_semantic($question, $top_k = 20, $opts = []) {
+        $question = trim(wp_strip_all_tags((string) $question));
+        if ($question === '') return [];
+        if (!Pi_Chatbot_Embeddings::is_available()) return [];
+
+        $query_vector = Pi_Chatbot_Embeddings::embed_query($question);
+        if (!$query_vector) return [];
+
+        // Scope by post_id from the index table rather than filtering the result
+        // set afterwards: the vectors table also holds 'project' rows, and
+        // filtering post-hoc would silently shrink the candidate pool below
+        // $top_k. Every other path in this file is products-only; so is this one.
+        $scope_ids = self::product_id_scope($opts['brands'] ?? []);
+        if (!$scope_ids) return [];
+
+        $vectors = Pi_Chatbot_Embeddings::load_vectors($scope_ids);
+        if (!$vectors) return [];
+
+        $scores = [];
+        foreach ($vectors as $post_id => $vector) {
+            $scores[$post_id] = Pi_Chatbot_Embeddings::dot($query_vector, $vector);
+        }
+        arsort($scores);
+        $top_ids = array_slice(array_keys($scores), 0, max(1, (int) $top_k));
+        if (!$top_ids) return [];
+
+        $rows = self::fetch_rows_by_ids($top_ids);
+        foreach ($rows as $row) {
+            $row->score = (float) ($scores[(int) $row->post_id] ?? 0.0);
+        }
+        list($long, $short) = self::extract_keyword_list($question);
+        return self::format_rows(self::dedupe_by_content($rows), array_merge($long, $short));
+    }
+
+    /**
+     * Hybrid retrieval: the lexical pipeline and the semantic pipeline are each
+     * run over the original question plus the router's rewrites, and every
+     * resulting ranking is fused with Reciprocal Rank Fusion.
+     *
+     * RRF (score = sum of 1/(k + rank)) rather than a weighted blend of the two
+     * scores, because those scores are not on comparable scales and never can
+     * be: the lexical score is an unbounded sum of IDF x field weights (observed
+     * range roughly 0.5-8), while cosine similarity is bounded to [-1, 1].
+     * Normalizing them against each other would require a tuning constant per
+     * query shape; RRF only reads POSITION, so it needs no tuning and cannot let
+     * one leg's scale swamp the other. k=60 is the constant from the original
+     * paper and is deliberately left alone.
+     *
+     * Multi-query matters more here than it looks: each rewrite is an
+     * independent shot at the catalog's own vocabulary, and a product that ranks
+     * mid-table for three different phrasings fuses ABOVE one that ranks first
+     * for a single phrasing and nowhere for the others — which is exactly the
+     * signal that separates a genuine match from a lucky keyword collision.
+     *
+     * @param array $opts extra_queries: string[] router rewrites.
+     * @return array Same shape as search().
+     */
+    public static function search_hybrid($question, $top_k = 12, $opts = []) {
+        $question = trim(wp_strip_all_tags((string) $question));
+        if ($question === '') return [];
+
+        // Tier 0 short-circuits fusion for the same reason it short-circuits
+        // search(): a product code is an IDENTIFIER, and an exact identifier
+        // match is ground truth, not one opinion among several. Fusing it with
+        // semantic neighbours can only dilute a result that is already certain —
+        // measured on the golden set, letting a code query through the full
+        // pipeline was the ONLY regression the reranker caused
+        // ("tủ đông FT-158MA-S"), because a model re-reading titles has nothing
+        // to add to a string that either matches or doesn't.
+        $codes = self::extract_product_codes($question);
+        if ($codes) {
+            $code_results = self::search_by_product_code($codes, $top_k);
+            if ($code_results) return $code_results;
+        }
+
+        $settings = pi_chatbot_settings();
+        $rrf_k = (int) $settings['rrf_k'];
+
+        // Gather deeper than we return: fusion needs to see a result at rank 8
+        // in one list to reward it for also appearing at rank 6 in another. A
+        // pool cut to $top_k would throw that evidence away before fusing.
+        $pool = max(20, (int) $top_k * 3);
+
+        $queries = [$question];
+        $max_variants = (int) $settings['multi_query_max'];
+        foreach (array_slice((array) ($opts['extra_queries'] ?? []), 0, max(0, $max_variants)) as $variant) {
+            $variant = trim((string) $variant);
+            if ($variant !== '' && !in_array($variant, $queries, true)) $queries[] = $variant;
+        }
+
+        // Brands are resolved ONCE from the original question (plus whatever the
+        // router validated) and reused for every variant: a rewrite frequently
+        // drops the brand name, and re-detecting per variant would quietly widen
+        // the scope the original question had deliberately narrowed.
+        $brands = Pi_Chatbot_Entities::extract_brands($question);
+        if (!empty($opts['brand']) && !in_array($opts['brand'], $brands, true)) {
+            $brands[] = $opts['brand'];
+        }
+
+        $semantic_on = Pi_Chatbot_Embeddings::is_available($settings);
+        $ranked_lists = [];
+        foreach ($queries as $q) {
+            $lexical = self::search($q, $pool);
+            if ($lexical) $ranked_lists[] = $lexical;
+            if ($semantic_on) {
+                $semantic = self::search_semantic($q, $pool, ['brands' => $brands]);
+                if ($semantic) $ranked_lists[] = $semantic;
+            }
+        }
+        if (!$ranked_lists) return [];
+
+        $fused = [];
+        foreach ($ranked_lists as $list) {
+            foreach (array_values($list) as $rank => $row) {
+                $post_id = (int) $row['post_id'];
+                $fused[$post_id] = ($fused[$post_id] ?? 0.0) + 1.0 / ($rrf_k + $rank + 1);
+            }
+        }
+        arsort($fused);
+        $top_ids = array_slice(array_keys($fused), 0, max(1, (int) $top_k));
+        if (!$top_ids) return [];
+
+        // Re-fetch as rows instead of reusing the formatted arrays from the legs:
+        // dedupe_by_content() compares full content_text (a formatted row only
+        // carries a 400-char excerpt, and the same product can produce DIFFERENT
+        // excerpts under different query variants), and re-running make_excerpt()
+        // over the union of all query words gives the LLM a passage chosen
+        // against everything that was asked, not just the first phrasing.
+        $rows = self::fetch_rows_by_ids($top_ids);
+        foreach ($rows as $row) {
+            $row->score = (float) ($fused[(int) $row->post_id] ?? 0.0);
+        }
+        $all_words = [];
+        foreach ($queries as $q) {
+            list($long, $short) = self::extract_keyword_list($q);
+            $all_words = array_merge($all_words, $long, $short);
+        }
+        return self::format_rows(self::dedupe_by_content($rows), array_values(array_unique($all_words)));
+    }
+
+    /**
+     * Product post_ids that semantic search is allowed to consider, optionally
+     * narrowed to recognized brands. Returns [] when a brand filter matches
+     * nothing — the caller treats that as "no semantic results" rather than
+     * silently widening back out to the whole catalog.
+     */
+    private static function product_id_scope(array $brands) {
+        global $wpdb;
+        $table = Pi_Chatbot_Indexer::table_name();
+        $brands = array_values(array_filter(array_map('strval', $brands)));
+
+        if ($brands) {
+            $placeholders = implode(',', array_fill(0, count($brands), '%s'));
+            $ids = $wpdb->get_col($wpdb->prepare(
+                "SELECT post_id FROM {$table} WHERE post_type = 'product' AND brand IN ({$placeholders})",
+                $brands
+            ));
+        } else {
+            $ids = $wpdb->get_col("SELECT post_id FROM {$table} WHERE post_type = 'product'");
+        }
+        return array_map('intval', (array) $ids);
+    }
+
+    /**
+     * Fetches index rows for the given ids, RETURNED IN THE ORDER GIVEN — a
+     * plain `WHERE post_id IN (...)` comes back in whatever order the storage
+     * engine likes, which would silently discard the ranking the caller just
+     * computed.
+     */
+    private static function fetch_rows_by_ids(array $ids) {
+        global $wpdb;
+        $ids = array_values(array_unique(array_map('intval', $ids)));
+        if (!$ids) return [];
+        $table = Pi_Chatbot_Indexer::table_name();
+        $placeholders = implode(',', array_fill(0, count($ids), '%d'));
+        $rows = $wpdb->get_results($wpdb->prepare(
+            "SELECT post_id, post_type, title, brand, category, url, content_text, 0.0 AS score
+             FROM {$table} WHERE post_id IN ({$placeholders})",
+            $ids
+        ));
+        if (!$rows) return [];
+
+        $by_id = [];
+        foreach ($rows as $row) $by_id[(int) $row->post_id] = $row;
+        $ordered = [];
+        foreach ($ids as $id) {
+            if (isset($by_id[$id])) $ordered[] = $by_id[$id];
+        }
+        return self::only_products($ordered);
+    }
+
+    /**
      * Recognize MULTIPLE brands in a single question (previously only the first
      * matched brand was used, any brand from the second onward was dropped
      * entirely — audit flag: a comparison question like "Hoshizaki với Giorik
@@ -858,6 +1072,21 @@ class Pi_Chatbot_Retriever {
             return [];
         }
         return array_values(array_unique($m[0]));
+    }
+
+    /**
+     * True when the question names something that looks like a product code AND
+     * that code actually matches a product. Used by the REST layer to skip LLM
+     * reranking: reranking reorders by judgement, and there is nothing to judge
+     * once an exact identifier has already selected the row. Checking that the
+     * code MATCHES (not merely that one is present) matters — a customer can
+     * mention a code that isn't in the catalog, and that question does still
+     * benefit from the full pipeline.
+     */
+    public static function has_product_code_match($question) {
+        $codes = self::extract_product_codes(trim(wp_strip_all_tags((string) $question)));
+        if (!$codes) return false;
+        return (bool) self::search_by_product_code($codes, 1);
     }
 
     /**

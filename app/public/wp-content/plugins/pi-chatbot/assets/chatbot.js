@@ -106,14 +106,17 @@
     var isSending = false;
 
     var SLOW_NOTICE_MS = 12000;
-    // 45s = safety margin above the model's worst-case 40s (20s timeout x 2 fallback keys —
-    // see class-generator.php TIMEOUT_SECONDS/MAX_KEY_ATTEMPTS). The 502s actually observed
-    // in the field came at 10.25s, which doesn't match the 40s model — possibly a
-    // gateway/CDN with its own shorter timeout, or an error originating from LLM7 itself
-    // that got reclad as the plugin's 502. Keeping 45s to stay safe; if real-world
-    // monitoring shows requests never exceed ~15s, lowering it to 25s would give a much
-    // better error experience.
-    var HARD_TIMEOUT_MS = 45000;
+    // 75s. The previous 45s was sized against the fast path's worst case (20s generator
+    // timeout x 2 fallback keys). The adaptive max-accuracy path (see class-rest.php) adds
+    // an embedding call, an LLM reranking pass and a fact check that can itself trigger one
+    // regeneration — worst case roughly router 8s + embed 25s + rerank 15s + generate 40s +
+    // verify 12s. The server raises its own limit to 60s for that path; the client must sit
+    // ABOVE the server's ceiling, otherwise the browser aborts a request that was about to
+    // succeed and the customer sees a timeout for work that actually completed.
+    //
+    // Note this does NOT slow the common case: an easy question still returns in ~10s, and
+    // SLOW_NOTICE_MS keeps telling the customer something is happening either way.
+    var HARD_TIMEOUT_MS = 75000;
 
     var FOCUSABLE_SELECTOR = 'a[href], button:not([disabled]), input:not([disabled]), textarea, summary, [tabindex]:not([tabindex="-1"])';
 
@@ -623,8 +626,21 @@
                 lines.push('Inferred keywords: ' + trace.router_keywords.join(', '));
             }
             if (trace.router_brand) lines.push('Brand detected: ' + trace.router_brand);
+            // Only stated when the server actually took the max-accuracy path — this
+            // reads to the customer as an explanation for a longer wait, so it must
+            // never appear on a request that in fact took the fast path.
+            if (trace.mode === 'max') {
+                lines.push(trace.ambiguity_reason
+                    ? 'This question needs care: ' + trace.ambiguity_reason
+                    : 'This question has more than one possible answer, so a deeper search is running.');
+            }
             if (!lines.length) lines.push('Did additional reasoning to identify the right product.');
-            return { label: 'Did additional reasoning to find the right product', lines: lines };
+            return {
+                label: trace.mode === 'max'
+                    ? 'Ran a deeper analysis to find the right product'
+                    : 'Did additional reasoning to find the right product',
+                lines: lines
+            };
         }
         if (trace.found_count > 0) {
             return { label: 'Identified: product question', lines: ['Searched directly by keywords in the question.'] };
@@ -679,13 +695,65 @@
                     : 'Searched — no matching results found';
                 var searchLines = [];
                 if (trace.search_query) searchLines.push('Keywords: ' + trace.search_query);
+                // All of these are REAL flags from the server (class-rest.php), never
+                // assumed from the mode: semantic search is skipped when no key is set
+                // or the backfill hasn't run, and reranking is skipped when the model
+                // call fails — claiming either happened would be inventing a step.
+                if (trace.semantic_used) searchLines.push('Also searched by meaning, not just keywords.');
+                if (trace.query_variants && trace.query_variants.length) {
+                    searchLines.push('Also tried: ' + trace.query_variants.join(' · '));
+                }
+                if (trace.rerank_used) searchLines.push('Re-read every result and ranked them against your question.');
                 finishStep(searchStep, searchLabel, searchLines);
                 searchStep.details.open = false;
 
-                // Tier 3 — answer bubble, sharing the column/avatar with the card above.
-                finishBotTurn(col, answerText, sources);
+                if (!needsVerifyStep(trace)) {
+                    // Tier 3 — answer bubble, sharing the column/avatar with the card above.
+                    finishBotTurn(col, answerText, sources);
+                    return;
+                }
+
+                // Optional tier — the fact check, shown ONLY when it actually ran, so
+                // the customer never sees a "checked" claim on an unchecked answer.
+                setStatus('Checking the answer…');
+                var verifyStep = renderStepRow(card, 'search', 'Fact check', 'Checking the answer against the data');
+
+                return wait(600).then(function () {
+                    if (!stillCurrent()) return;
+                    var v = describeVerify(trace);
+                    finishStep(verifyStep, v.label, v.lines);
+                    verifyStep.details.open = false;
+                    finishBotTurn(col, answerText, sources);
+                });
             });
         });
+    }
+
+    /** The fact-check row is shown when the server reports a verdict (true OR false) or
+     *  when it deliberately withheld the retrieved results as irrelevant. `verified` is
+     *  null both on the fast path and when the check could not run — neither of those may
+     *  render a row, which is why this tests for null explicitly rather than truthiness. */
+    function needsVerifyStep(trace) {
+        return trace.mode === 'max' && (trace.verified === true || trace.verified === false || trace.low_confidence === true);
+    }
+
+    function describeVerify(trace) {
+        if (trace.low_confidence) {
+            return {
+                label: 'No confident match — answering honestly',
+                lines: ['None of the products found were a genuine match for your question, so nothing was guessed.']
+            };
+        }
+        if (trace.verified === false) {
+            return {
+                label: 'Rewritten after the fact check',
+                lines: ['A claim was not backed by the product data, so the answer was written again from the data only.']
+            };
+        }
+        return {
+            label: 'Checked — every detail comes from the product data',
+            lines: ['The answer was compared against the retrieved products; nothing was invented.']
+        };
     }
 
     function setTyping(on) {

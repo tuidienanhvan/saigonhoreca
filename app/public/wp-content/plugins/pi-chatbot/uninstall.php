@@ -24,6 +24,16 @@ $wpdb->query("DROP TABLE IF EXISTS {$table}_old");
 $log_table = $wpdb->prefix . 'pi_chatbot_log';
 $wpdb->query("DROP TABLE IF EXISTS {$log_table}");
 
+// Semantic embeddings (see class-embeddings.php) — a separate table precisely so
+// it survives reindex swaps, which also means nothing else would ever drop it.
+$vectors_table = $wpdb->prefix . 'pi_chatbot_vectors';
+$wpdb->query("DROP TABLE IF EXISTS {$vectors_table}");
+
+// The embedding backfill is a self-rescheduling single cron event: if one is
+// pending at uninstall, WordPress would keep firing a hook whose callback no
+// longer exists.
+wp_clear_scheduled_hook('pi_chatbot_embed_backfill');
+
 delete_option('pi_chatbot_settings');
 delete_option('pi_chatbot_index_count');
 delete_option('pi_chatbot_last_reindex');

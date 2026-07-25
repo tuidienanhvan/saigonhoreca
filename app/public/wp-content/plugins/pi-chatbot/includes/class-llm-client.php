@@ -72,4 +72,41 @@ class Pi_Chatbot_LLM_Client {
     public static function content($response) {
         return trim((string) ($response['choices'][0]['message']['content'] ?? ''));
     }
+
+    /**
+     * Defensive JSON extraction from a model reply. Originally lived privately in
+     * Pi_Chatbot_Router; moved here once the Reranker and the Generator's
+     * faithfulness check needed the exact same behaviour — three copies of a
+     * parser is three places for a fix to be applied to only two of them.
+     *
+     * Models routinely wrap JSON in a ```json fence or pad it with a sentence of
+     * commentary, so this strips the fence and then walks forward to the first
+     * BALANCED {...} block instead of handing the raw string to json_decode()
+     * (which fails outright on any surrounding text).
+     *
+     * @return array|null null when nothing parseable was found.
+     */
+    public static function extract_json($text) {
+        $text = trim((string) $text);
+        if ($text === '') return null;
+        $text = preg_replace('/^```(?:json)?\s*/i', '', $text);
+        $text = preg_replace('/\s*```$/', '', $text);
+
+        $start = strpos($text, '{');
+        if ($start === false) return null;
+        $depth = 0;
+        $end = null;
+        $len = strlen($text);
+        for ($i = $start; $i < $len; $i++) {
+            if ($text[$i] === '{') $depth++;
+            elseif ($text[$i] === '}') {
+                $depth--;
+                if ($depth === 0) { $end = $i; break; }
+            }
+        }
+        if ($end === null) return null;
+
+        $data = json_decode(substr($text, $start, $end - $start + 1), true);
+        return is_array($data) ? $data : null;
+    }
 }
