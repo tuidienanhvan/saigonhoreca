@@ -373,14 +373,74 @@ class Pi_Chatbot_Generator {
      * so strip raw syntax here instead of building a Markdown renderer on the
      * client (the client uses plain textContent, not innerHTML — that
      * security invariant is kept on purpose, not traded away for a display
-     * feature). Only handles simple INLINE syntax; a stray | table could
-     * still slip through if the model deliberately breaks the rule — but the
-     * prompt already forbids it clearly, and this is just a backstop.
+     * feature).
+     *
+     * A Markdown table WAS the one gap this function's own earlier comment
+     * predicted ("a stray | table could still slip through") — confirmed live
+     * during a 107-question quality audit: asked to explain the difference
+     * between two ice machine types, the model answered with a full
+     * `| column | column |` table despite the system prompt forbidding it. The
+     * raw pipe characters render as literal garbage in the plain-text widget.
+     * table_to_lines() converts each row into a plain dash-joined line instead
+     * of just deleting it — the customer still gets the comparison, in the
+     * prose format the UI can actually show.
      */
     private static function strip_markdown($text) {
         $text = preg_replace('/\*\*(.+?)\*\*/u', '$1', $text);   // **bold** -> bold
         $text = preg_replace('/^#{1,6}\s*/mu', '', $text);        // # Heading -> Heading
+        $text = self::table_to_lines($text);
         return $text;
+    }
+
+    /**
+     * Rewrites Markdown table blocks into plain dash-joined lines.
+     *
+     * Walks the text line by line rather than matching the whole block with one
+     * regex — a table can be preceded/followed by ordinary prose, and a single
+     * multiline pattern would risk swallowing text outside the table.
+     * Recognizes a table by its SEPARATOR row (`|---|:--:|--|` or similar,
+     * checked as the second row of a run of `|`-containing lines) — the
+     * standard Markdown signal a table exists rather than a sentence that
+     * happens to contain a pipe character.
+     */
+    private static function table_to_lines($text) {
+        $lines = explode("\n", $text);
+        $out = [];
+        $i = 0;
+        $n = count($lines);
+        $is_row = function ($line) { return strpos($line, '|') !== false; };
+        $is_separator = function ($line) {
+            return (bool) preg_match('/^\s*\|?(\s*:?-{2,}:?\s*\|)+\s*:?-{2,}:?\s*\|?\s*$/u', $line);
+        };
+
+        while ($i < $n) {
+            $line = $lines[$i];
+            if ($is_row($line) && $i + 1 < $n && $is_separator($lines[$i + 1])) {
+                // Header row + separator row confirmed -> this is a real table.
+                // Emit the header as one dash-joined line, drop the separator,
+                // then convert every subsequent row until the table ends.
+                $out[] = self::table_row_to_line($line);
+                $i += 2; // skip header + separator
+                while ($i < $n && $is_row($lines[$i])) {
+                    $converted = self::table_row_to_line($lines[$i]);
+                    if ($converted !== '') $out[] = $converted;
+                    $i++;
+                }
+                continue;
+            }
+            $out[] = $line;
+            $i++;
+        }
+        return implode("\n", $out);
+    }
+
+    /** "| A | B | C |" -> "A - B - C". Empty cells (common in the outer edge
+     *  columns of a `|`-delimited row) are dropped rather than kept as blanks. */
+    private static function table_row_to_line($row) {
+        $cells = explode('|', trim($row));
+        $cells = array_map('trim', $cells);
+        $cells = array_values(array_filter($cells, function ($c) { return $c !== ''; }));
+        return implode(' - ', $cells);
     }
 
     /** Short timeout + a capped number of key attempts per request — keeps a

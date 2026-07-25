@@ -193,6 +193,28 @@ pi_check('bold markers are stripped, text kept', $strip('**Hoshizaki**') === 'Ho
 pi_check('a leading heading marker is stripped', trim($strip("# Tiêu đề\nnội dung")) === "Tiêu đề\nnội dung");
 pi_check('plain text passes through untouched', $strip('không có markdown') === 'không có markdown');
 
+// The real case that slipped through during a live quality audit: asked to
+// compare two product types, the model answered with a full Markdown table
+// despite the system prompt forbidding it — the raw `|` characters would have
+// rendered as garbage in the plain-text chat widget.
+$table = "Trước bảng.\n| Loại | Đặc điểm |\n|---|---|\n| Đá viên | Bền |\n| Đá vảy | Nhanh |\nSau bảng.";
+$stripped_table = $strip($table);
+pi_check('a Markdown table is rewritten into plain dash-joined lines',
+    strpos($stripped_table, '|') === false, $stripped_table);
+pi_check('table rows keep their information (header + both data rows survive)',
+    strpos($stripped_table, 'Loại - Đặc điểm') !== false
+        && strpos($stripped_table, 'Đá viên - Bền') !== false
+        && strpos($stripped_table, 'Đá vảy - Nhanh') !== false,
+    $stripped_table);
+pi_check('prose before and after the table is preserved untouched',
+    strpos($stripped_table, 'Trước bảng.') !== false && strpos($stripped_table, 'Sau bảng.') !== false);
+
+// A lone "|" in ordinary prose (e.g. "A hoặc B | tuỳ nhu cầu") is NOT a table —
+// no separator row follows it — and must be left alone, not mangled.
+$not_a_table = 'Sản phẩm A hoặc B | tuỳ nhu cầu của bạn.';
+pi_check('a stray pipe with no separator row is left untouched (not a real table)',
+    $strip($not_a_table) === $not_a_table, $strip($not_a_table));
+
 // ── Generator::build_language_note ──────────────────────────────────────────
 pi_section('Generator::build_language_note (script-range + word-count detection)');
 
