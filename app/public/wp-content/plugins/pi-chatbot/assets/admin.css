@@ -35,21 +35,31 @@
   font-size: 14px;
   line-height: 1.6;
 
-  /* Full-bleed dark surface, not a boxed column with empty space beside it.
+  /* Full-width dark surface, not a boxed column with empty space beside it.
    * The whole content area is painted here, not just individual cards —
    * without this, WP admin's own default light page background (#f0f0f1)
-   * shows through around the masthead and between cards. Negative margins
-   * pull the dark surface out to the actual edges of #wpbody-content (WP's
-   * own .wrap already carries a 20px right margin + a small left offset)
-   * so there is no light gutter OR empty dark gutter on either side —
-   * width:auto + no max-width means it fills whatever space the admin menu
-   * (expanded or collapsed) leaves available, at any viewport size.
+   * shows through around the masthead and between cards.
+   *
+   * NOT using negative margins to bleed past WP's own .wrap edges: a first
+   * version tried that (assuming WP's default 20px/2px .wrap margins) and it
+   * produced a real horizontal scrollbar on the actual site — this
+   * installation's admin layout doesn't match that assumption closely enough
+   * for pixel-exact negative margins to be safe. width:100% fills whatever
+   * .wrap already gives it with zero risk of exceeding the viewport, which
+   * matters far more than a few extra pixels of edge bleed.
+   *
+   * overflow-x:hidden is a deliberate backstop, not a fix for a specific
+   * known cause — it ensures that if any descendant (a long unmasked API
+   * key, a wide table on a narrow screen) tries to force extra width, it
+   * clips inside this box instead of ever reopening a page-level scrollbar.
    */
-  width: auto;
-  max-width: none;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
   background: var(--pi-b1);
-  margin: 0 -20px 0 -2px;
-  padding: 24px 26px 60px;
+  margin: 0;
+  padding: 24px 24px 60px;
   min-height: calc(100vh - 46px); /* fills the viewport below the WP admin toolbar */
 }
 
@@ -223,13 +233,20 @@
 /* ── Key list widget (JS-enhanced; the plain textarea is the no-JS fallback) ── */
 .pi-key-list-source.pi-enhanced { position: absolute; width: 1px; height: 1px; overflow: hidden; opacity: 0; pointer-events: none; }
 .pi-key-list { display: flex; flex-direction: column; gap: 8px; max-width: 620px; }
-.pi-key-row { display: flex; align-items: center; gap: 6px; }
+.pi-key-row { display: flex; align-items: center; gap: 6px; min-width: 0; }
 .pi-key-row input[type="password"],
 .pi-key-row input[type="text"] {
   font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
   font-size: 12.5px;
   max-width: none;
   flex: 1 1 auto;
+  /* Flex items default to min-width:auto, which means "never shrink below
+   * my content's natural width" — a long pasted key is exactly the kind of
+   * content that triggers this and forces the row (and everything above it)
+   * wider than its container. min-width:0 is the standard fix: it lets the
+   * input actually shrink to fit and scroll its own text internally instead
+   * of pushing the page into a horizontal scrollbar. */
+  min-width: 0;
 }
 .pi-key-row .pi-key-idx {
   flex: none;
