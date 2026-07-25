@@ -29,4 +29,13 @@ cd "$WP_ROOT" || exit 1
   -d extension=exif -d extension=fileinfo -d extension=gd -d extension=zip -d extension=intl \
   -d mysqli.default_port="$MYSQL_PORT" \
   -d error_reporting=0 -d display_errors=0 -d memory_limit=1G \
+  -d max_execution_time=0 \
   ~/wp-cli.phar "$@"
+
+# Note on max_execution_time=0 above: it must be passed on the command line (a
+# PHP_INI_ALL directive applied at startup), not left to a script's own
+# set_time_limit(0) call. On this Windows PHP build, set_time_limit() at
+# runtime was observed to have NO effect — a long-running eval-file (a
+# 107-question live LLM audit) was still killed at exactly 60s despite calling
+# set_time_limit(0) near the top of the script. The -d flag does not have that
+# problem since it's applied before the script starts.
