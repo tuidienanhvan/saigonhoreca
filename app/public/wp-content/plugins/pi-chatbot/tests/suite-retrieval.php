@@ -164,6 +164,41 @@ if ($second_brand) {
     echo "  (skip: catalog has only one brand with products)\n";
 }
 
+// ── MySQL relevance must not outvote the IDF × field scorer ─────────────────
+// Regression guard for the defect found on 2026-07-26: MySQL's boolean-mode
+// score is an unbounded term-frequency sum and this catalog's `category`
+// column is SEO-stuffed, so a product that merely REPEATS a common word in its
+// category outscored products that genuinely have the discriminating word in
+// their TITLE. Measured on this exact query: the stuffed rows scored 8.971 raw
+// vs 4.003 for the correct ones — a gap no field weight could close, because
+// the raw score was being added to the weighted score unnormalized.
+//
+// Asserted at the behavioural level (which products come back), not by
+// inspecting MYSQL_SCORE_WEIGHT: the constant is an implementation detail and
+// may legitimately be retuned, but "the title match wins" must not regress.
+pi_section('Retriever::search — a keyword-stuffed category cannot outrank a title match');
+
+$rows = Pi_Chatbot_Retriever::search('bếp gas 2 họng', 6);
+$titles = array_map(function ($r) { return mb_strtolower($r['title']); }, $rows);
+$top3 = array_slice($titles, 0, 3);
+$with_hong = array_values(array_filter($top3, function ($t) { return mb_strpos($t, 'họng') !== false; }));
+
+pi_check('"bếp gas 2 họng" returns results at all', !empty($rows));
+pi_check('every one of the top 3 has the discriminating word "họng" in its title',
+    count($top3) === 3 && count($with_hong) === 3,
+    'top3: ' . implode(' | ', $top3));
+
+// Same defect, different shape: here the discriminating word is SHORTER than
+// innodb_ft_min_token_size (2 chars), so it never reaches MATCH() at all and
+// only the PHP scorer can tell "máy rửa ly" (glass washer) from "máy rửa chén"
+// (dish washer) — both sit in the same "Máy rửa ly chén" category.
+$rows_ly = Pi_Chatbot_Retriever::search('máy rửa ly', 6);
+$top3_ly = array_slice(array_map(function ($r) { return mb_strtolower($r['title']); }, $rows_ly), 0, 3);
+$is_ly = array_values(array_filter($top3_ly, function ($t) { return mb_strpos($t, 'rửa ly') !== false; }));
+pi_check('"máy rửa ly" ranks glass washers above dish washers despite the shared category',
+    !empty($top3_ly) && count($is_ly) >= 2,
+    'top3: ' . implode(' | ', $top3_ly));
+
 // pi_report() prints a summary from the SHARED pi_check() static state — when
 // run standalone that's exactly this suite's own totals; when run-all.php
 // requires this file alongside others, the same static keeps accumulating, so

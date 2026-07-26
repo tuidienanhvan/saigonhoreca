@@ -38,6 +38,45 @@ class Pi_Chatbot_Retriever {
     const FIELD_WEIGHT_CONTENT = 0.3;
 
     /**
+     * How much MySQL's own MATCH() relevance is allowed to contribute, AFTER
+     * being normalized to 0..1 against the top-scoring row of the same result
+     * set (see verify_and_score()).
+     *
+     * Why normalize at all: MySQL's boolean-mode score is an unbounded
+     * term-frequency sum, so it rewards REPETITION, and the category column on
+     * this catalog is SEO-stuffed ("Bếp Gas Công Nghiệp, Thiết Bị Bếp Công
+     * Nghiệp, Thiết Bị Bếp Công Nghiệp Sài Gòn" — "bếp" 3×). Measured on
+     * "bếp gas 2 họng": the products that genuinely have "họng" in the title
+     * scored 4.003 while products WITHOUT the word anywhere in the title scored
+     * 8.971 purely on that repetition — a 4.97 gap the IDF×field bonus (max
+     * ~1.88 here) could never overcome. The raw score was being ADDED to the
+     * IDF-weighted score, so the stuffed field silently outvoted every
+     * carefully-weighted signal in this file.
+     *
+     * Normalized, MySQL relevance keeps the job it is actually good at — a
+     * cheap tie-break among rows the PHP scorer rates equally — without being
+     * able to override it.
+     *
+     * Value chosen by measurement, not taste. Swept over the 68-query golden
+     * set (tests/eval-retrieval.php), hit@1 / hit@3:
+     *
+     *     w=0.0   0.912 / 0.956   <- dropping MySQL entirely is WORSE
+     *     w=0.1   0.912 / 0.971
+     *     w=0.25  0.912 / 0.971
+     *     w=0.5   0.912 / 0.971
+     *     w=0.75  0.912 / 0.971   <- flat optimum, 0.1 .. 1.25
+     *     w=1.0   0.912 / 0.971
+     *     w=1.25  0.912 / 0.971
+     *     w=1.5   0.897 / 0.971   <- hit@1 starts degrading
+     *     w=3.0   0.897 / 0.971
+     *
+     * 0.7 is the middle of the flat region, deliberately not an edge: both
+     * cliffs (0.0 and 1.5) are far away, so the value is not tuned to this
+     * particular golden set's boundary.
+     */
+    const MYSQL_SCORE_WEIGHT = 0.7;
+
+    /**
      * Common Vietnamese stopwords — MySQL FULLTEXT only ships a default English
      * stopword list, so words like "của/và/có/không/về..." ("of/and/have/not/about")
      * don't get filtered, skewing scores toward long pages (projects) that repeat
@@ -1025,9 +1064,23 @@ class Pi_Chatbot_Retriever {
             }
             if ($hits === 0) continue;
 
-            $r->score = (float) $r->score + $weighted;
+            // Keep the raw MySQL relevance aside; it is folded in below, once
+            // the whole result set is known and it can be normalized against
+            // the set's own maximum (see MYSQL_SCORE_WEIGHT).
+            $r->mysql_score = (float) $r->score;
+            $r->score = $weighted;
             $r->has_strong_field_hit = $has_strong_field_hit;
             $kept[] = $r;
+        }
+
+        $max_mysql = 0.0;
+        foreach ($kept as $r) {
+            if ($r->mysql_score > $max_mysql) $max_mysql = $r->mysql_score;
+        }
+        if ($max_mysql > 0) {
+            foreach ($kept as $r) {
+                $r->score += self::MYSQL_SCORE_WEIGHT * ($r->mysql_score / $max_mysql);
+            }
         }
 
         usort($kept, function($a, $b) {
