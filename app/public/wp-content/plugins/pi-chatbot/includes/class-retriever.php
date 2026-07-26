@@ -744,7 +744,17 @@ class Pi_Chatbot_Retriever {
         foreach ($words as $w) {
             $key = mb_strtolower($w);
             if (isset($out[$key])) continue;
-            $like = '%' . $wpdb->esc_like($key) . '%';
+            // Numeric tokens are matched on word boundaries everywhere else
+            // (see word_matches()), so DF must be counted the same way or the
+            // two disagree: '%2%' matches every model code containing a 2 and
+            // would report df ≈ the whole catalog, flooring IDF to 0.15 and
+            // making the very word the customer emphasised ("2 cửa") weightless
+            // — the exact failure mode this fix exists to remove. A
+            // space-padded LIKE is the SQL approximation of a word boundary;
+            // it is intentionally a little narrower than word_matches() (it
+            // won't see "2-cửa"), which is the safe direction here: DF is only
+            // an estimate of rarity, and PHP does the authoritative matching.
+            $like = self::like_pattern($key);
             // P2 audit 2026-07-20 — caught the default collation
             // (utf8mb4_unicode_520_ci) doing LOOSE Vietnamese diacritic matching:
             // LIKE '%đá%' ("ice") WRONGLY matched "Bàn đông" ("freezer table" — does
@@ -839,7 +849,7 @@ class Pi_Chatbot_Retriever {
                 // HR-126MA-S).
                 $like_query .= " AND (LOWER(title) LIKE %s COLLATE utf8mb4_bin OR LOWER(brand) LIKE %s COLLATE utf8mb4_bin
                                   OR LOWER(category) LIKE %s COLLATE utf8mb4_bin OR LOWER(content_text) LIKE %s COLLATE utf8mb4_bin)";
-                $pattern = '%' . $wpdb->esc_like(mb_strtolower($w)) . '%';
+                $pattern = self::like_pattern(mb_strtolower($w));
                 array_push($args, $pattern, $pattern, $pattern, $pattern);
             }
             $sql = "SELECT post_id, post_type, title, brand, category, url, content_text, 1.0 AS score
@@ -1048,13 +1058,13 @@ class Pi_Chatbot_Retriever {
             $has_strong_field_hit = false;
             foreach ($all_words as $w) {
                 $wl = mb_strtolower($w);
-                if (mb_strpos($title_l, $wl) !== false) {
+                if (self::word_matches($title_l, $wl)) {
                     $field_w = self::FIELD_WEIGHT_TITLE;
                     $has_strong_field_hit = true;
-                } elseif (mb_strpos($brand_l, $wl) !== false || mb_strpos($cat_l, $wl) !== false) {
+                } elseif (self::word_matches($brand_l, $wl) || self::word_matches($cat_l, $wl)) {
                     $field_w = self::FIELD_WEIGHT_BRAND_CATEGORY;
                     $has_strong_field_hit = true;
-                } elseif (mb_strpos($body_l, $wl) !== false) {
+                } elseif (self::word_matches($body_l, $wl)) {
                     $field_w = self::FIELD_WEIGHT_CONTENT;
                 } else {
                     continue;
@@ -1132,7 +1142,7 @@ class Pi_Chatbot_Retriever {
             (string) $row->category . ' ' . (string) $row->content_text
         );
         foreach ($words as $w) {
-            if (mb_strpos($haystack, mb_strtolower($w)) === false) return false;
+            if (!self::word_matches($haystack, mb_strtolower($w))) return false;
         }
         return true;
     }
@@ -1168,7 +1178,7 @@ class Pi_Chatbot_Retriever {
             // HR-126MA-S).
             $sql .= " AND (LOWER(title) LIKE %s COLLATE utf8mb4_bin OR LOWER(brand) LIKE %s COLLATE utf8mb4_bin
                       OR LOWER(category) LIKE %s COLLATE utf8mb4_bin OR LOWER(content_text) LIKE %s COLLATE utf8mb4_bin)";
-            $pattern = '%' . $wpdb->esc_like(mb_strtolower($w)) . '%';
+            $pattern = self::like_pattern(mb_strtolower($w));
             array_push($args, $pattern, $pattern, $pattern, $pattern);
         }
 
@@ -1314,13 +1324,63 @@ class Pi_Chatbot_Retriever {
         return self::format_rows(array_slice($rows, 0, $top_k), $codes);
     }
 
+    /**
+     * Does $word occur in $haystack?
+     *
+     * Substring matching for normal words — deliberately kept, because Vietnamese
+     * compounds and the catalog's inconsistent spacing mean a strict word-boundary
+     * rule LOSES real matches. That was measured, not assumed: making boundary
+     * matching global cost 0.062 hit@1 on the short-noun group and fixed nothing,
+     * so it was reverted.
+     *
+     * Purely NUMERIC tokens are the one justified exception, and only because
+     * substring matching is actively wrong for them: "2" appears inside "RT-126MA-S",
+     * "1260", "FGTC60-45" and most other model codes in this catalog, so as a
+     * substring it matches nearly everything and carries no information. As a whole
+     * word it means exactly what the customer said — 2 doors, 2 burners.
+     *
+     * The haystack is normalized the same way extract_keyword_list() normalizes the
+     * question (every non-alphanumeric run becomes a space), so "2 Cửa", "2-cửa" and
+     * "(2 cửa)" all match, while "126MA" does not.
+     */
+    /**
+     * SQL counterpart of word_matches(): the LIKE pattern for one lowercased
+     * keyword. Numeric tokens get space-padded so they behave as whole words
+     * ('%2%' would match every model code containing a 2 — see word_matches()
+     * for why that is wrong). Slightly narrower than the PHP check on purpose:
+     * SQL is the recall filter, PHP is the authoritative precision filter, so
+     * SQL erring narrow on a token PHP will re-check is safe, while erring wide
+     * is what caused the bug.
+     */
+    private static function like_pattern($word_l) {
+        global $wpdb;
+        return ctype_digit($word_l)
+            ? '% ' . $wpdb->esc_like($word_l) . ' %'
+            : '%' . $wpdb->esc_like($word_l) . '%';
+    }
+
+    private static function word_matches($haystack_l, $word_l) {
+        if (!ctype_digit($word_l)) {
+            return mb_strpos($haystack_l, $word_l) !== false;
+        }
+        $normalized = ' ' . preg_replace('/[^\p{L}\p{N}]+/u', ' ', $haystack_l) . ' ';
+        return mb_strpos($normalized, ' ' . $word_l . ' ') !== false;
+    }
+
     private static function extract_keyword_list($question) {
         $normalized = preg_replace('/[^\p{L}\p{N}]+/u', ' ', mb_strtolower($question));
         $words = preg_split('/\s+/', $normalized, -1, PREG_SPLIT_NO_EMPTY);
         $long = []; $short = [];
         foreach ($words as $word) {
             if (in_array($word, self::$stopwords, true)) continue;
-            if (mb_strlen($word) < 2) continue;
+            // Single characters are noise EXCEPT bare digits. In this catalog a
+            // lone number is very often the whole point of the question —
+            // "bàn mát 2 cửa", "bếp gas 4 họng", "tủ 6 cánh" — and dropping it
+            // made every variant of a family score identically, so which one
+            // came first was effectively arbitrary. Digits are matched on word
+            // boundaries (see word_matches()), never as substrings, or "2"
+            // would hit every model code containing a 2 ("RT-126MA-S").
+            if (mb_strlen($word) < 2 && !ctype_digit($word)) continue;
             if (mb_strlen($word) < self::MIN_TOKEN_LENGTH) {
                 $short[] = $word;
             } else {

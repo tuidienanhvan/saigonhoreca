@@ -16,13 +16,29 @@ pi_section('Retriever::extract_keyword_list');
 
 list($long, $short) = pi_call_private('Pi_Chatbot_Retriever', 'extract_keyword_list', ['tủ đông 2 cánh Hoshizaki']);
 pi_check('splits into long/short by MIN_TOKEN_LENGTH', in_array('hoshizaki', $long, true) && in_array('đông', $long, true));
-// A single-character token ("2") is dropped entirely by the mb_strlen < 2 noise
-// filter — it never reaches the short/long split at all. "tủ" (2 chars) clears
-// that filter and, being below MIN_TOKEN_LENGTH (3), lands in $short. Verified
-// directly against the method (in_array('2', $short) is FALSE) before asserting
-// — an earlier version of this check wrongly assumed the digit would appear.
-pi_check('a single-character token is dropped as noise, not kept in $short',
-    !in_array('2', $short, true), implode(',', $short));
+// Single-character tokens are noise EXCEPT bare digits, which this catalog
+// leans on heavily ("2 cửa", "4 họng", "6 cánh"): dropping them made every
+// variant of a product family score identically, so which one ranked first was
+// effectively arbitrary. Keeping "2" is worth +0.050 hit@1 on the technical
+// group — but only together with the word-boundary rule in word_matches(),
+// since as a plain substring "2" matches most model codes in the catalog
+// ("RT-126MA-S") and means nothing. Changed 2026-07-26; this check previously
+// asserted the opposite.
+pi_check('a single-character DIGIT is kept (it is a real qualifier here)',
+    in_array('2', $short, true), implode(',', $short));
+
+list($long_l, $short_l) = pi_call_private('Pi_Chatbot_Retriever', 'extract_keyword_list', ['tủ đông x cánh']);
+pi_check('a single-character LETTER is still dropped as noise',
+    !in_array('x', $short_l, true) && !in_array('x', $long_l, true),
+    implode(',', array_merge($long_l, $short_l)));
+
+// The whole point of keeping the digit: it must behave as a WORD, never as a
+// substring, or it matches nearly every product code and carries no signal.
+pi_check('word_matches() treats a digit as a whole word, not a substring',
+    pi_call_private('Pi_Chatbot_Retriever', 'word_matches', ['bàn mát 2 cửa rt-128ma-s', '2']) === true
+    && pi_call_private('Pi_Chatbot_Retriever', 'word_matches', ['bàn mát 1 cửa rt-126ma-s', '2']) === false);
+pi_check('word_matches() still uses substring matching for non-numeric words',
+    pi_call_private('Pi_Chatbot_Retriever', 'word_matches', ['bàn đông ft-158ma-s', 'đông']) === true);
 pi_check('a genuine short (<MIN_TOKEN_LENGTH) word lands in $short',
     in_array('tủ', $short, true), implode(',', $short));
 
