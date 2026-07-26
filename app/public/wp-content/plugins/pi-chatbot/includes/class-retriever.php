@@ -144,6 +144,38 @@ class Pi_Chatbot_Retriever {
         'người', 'bé',
         'thích', 'yêu', 'ghét', 'nhớ', 'thương', 'đẹp', 'xấu', 'giỏi', 'vui', 'buồn', 'cưng',
         'ghê', 'quá', 'lắm', 'trời', 'ối', 'ủa', 'ừ', 'ừm', 'dạo',
+
+        // English grammatical function words — the same closed class as the
+        // Vietnamese list above (pronouns, articles, prepositions, auxiliary
+        // and request verbs), added because this catalog is NOT Vietnamese-only
+        // (~28% of titles are English-language imported lines, and the widget's
+        // own quick-reply buttons — 4_tieng_anh_truc_tiep in the golden set
+        // covers real English product questions too) yet this list previously
+        // filtered nothing in English at all: every English function word
+        // survived as a "real" keyword.
+        //
+        // Measured, concretely: "Please give me your contact information" —
+        // the widget's own Contact quick-reply button — matched an unrelated
+        // "Meat Ageing Cabinet" product purely because its description happens
+        // to say "...for all YOUR meat ageing needs"; "your" is exactly as
+        // empty of product signal as Vietnamese "của"/"bạn" already stopworded
+        // above, it simply had no English counterpart in the list.
+        //
+        // This is a standard, closed, language-general set (the same category
+        // any English NLP stopword list ships) — it does not name a single
+        // catalog word or a single observed bug the way the discovery example
+        // is described; membership test: the word carries no meaning on its
+        // own in ANY English sentence, equipment-related or not.
+        'a', 'an', 'the', 'is', 'are', 'am', 'was', 'were', 'be', 'been', 'being',
+        'do', 'does', 'did', 'have', 'has', 'had', 'will', 'would', 'shall', 'should',
+        'can', 'could', 'may', 'might', 'must',
+        'i', 'you', 'your', 'yours', 'he', 'she', 'it', 'its', 'we', 'us', 'our',
+        'they', 'them', 'their', 'me', 'my', 'mine', 'him', 'her', 'hers',
+        'this', 'that', 'these', 'those',
+        'of', 'for', 'with', 'about', 'to', 'from', 'in', 'on', 'at', 'by', 'as',
+        'and', 'or', 'but', 'if', 'so', 'than',
+        'what', 'which', 'who', 'whom', 'how', 'when', 'where', 'why',
+        'please', 'give', 'show', 'tell', 'let',
     ];
 
     /** Contact info assembled from the theme's real data — no full-text search

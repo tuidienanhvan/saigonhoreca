@@ -227,6 +227,38 @@ pi_check('asking for the -ML variant explicitly still returns the -ML variant',
     !empty($ml_rows) && mb_strpos(mb_strtolower($ml_rows[0]['title']), 'ft-158ma-s-ml') !== false,
     'top1: ' . ($ml_rows ? $ml_rows[0]['title'] : '(none)'));
 
+// ── Quick-reply buttons must never leak a product ───────────────────────────
+// assets/chatbot.js's QUICK_REPLIES sends these 4 exact English strings as the
+// raw customer message when the router is unavailable (disabled/circuit-open/
+// LLM7 down — see class-rest.php's "Router unavailable" fallback, which calls
+// Retriever::search() directly on the raw message). The widget comment used
+// to claim these were "verified via Pi_Chatbot_Retriever" — a ONE-TIME manual
+// check with nothing enforcing it stayed true. It didn't: re-running it
+// 2026-07-26 found 2 of the 4 had silently started leaking a product (a new
+// catalog import added "Meat Ageing Cabinet", whose description happens to
+// say "...for all YOUR meat ageing needs" — "your" was not an English
+// stopword yet, so it was treated as a real keyword). Root-caused and fixed
+// by adding a closed set of English grammatical stopwords (mirroring the
+// existing Vietnamese one), not by hand-picking new safe button phrases.
+//
+// This test is what makes "verified" durable: it runs the same check on
+// every test run, against the LIVE catalog, so the next accidental collision
+// fails a test instead of surfacing as a customer-visible bug.
+pi_section('Retriever::search — the widget quick-reply buttons never leak a product');
+
+$quick_replies = [
+    'Please give me a quote',
+    'Show me your completed project samples',
+    'What services do you offer',
+    'Please give me your contact information',
+];
+foreach ($quick_replies as $q) {
+    $rows = Pi_Chatbot_Retriever::search($q, 5);
+    pi_check("quick-reply \"$q\" returns no products via the raw-message fallback path",
+        empty($rows),
+        $rows ? 'leaked: ' . implode(' | ', array_column($rows, 'title')) : '');
+}
+
 // pi_report() prints a summary from the SHARED pi_check() static state — when
 // run standalone that's exactly this suite's own totals; when run-all.php
 // requires this file alongside others, the same static keeps accumulating, so

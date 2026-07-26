@@ -124,10 +124,19 @@
     // sent the label with its emoji straight through as the question ("[emoji] Quote"), which
     // after stopword filtering left only "quote" (since other words were stopwords) → matched
     // 6 random products as "Sources" (a real, measured bug). Cache is also split by emoji at
-    // exactly these 4 highest-traffic entry points. The 4 phrases below have been verified via
-    // Pi_Chatbot_Retriever: each hits exactly 1 intent (price/project/service/contact) and the
-    // remainder after stripping the intent phrase falls entirely into stopwords — no more
-    // spurious product sources get attached.
+    // exactly these 4 highest-traffic entry points.
+    //
+    // Each `query` string below must never surface a spurious product: it is the raw text
+    // Pi_Chatbot_Rest::ask() falls back to searching directly (no LLM router) whenever the
+    // router is unavailable (disabled / circuit-open / LLM7 down) — see class-rest.php's
+    // "Router unavailable" branch. This invariant is NOT hand-verified once and trusted —
+    // that was tried and it silently went stale (a catalog import added a product whose
+    // description happened to say "...for all YOUR meat ageing needs", and the fallback
+    // started surfacing it for the Contact button, because "your" wasn't yet filtered as an
+    // English stopword). It is now enforced by an automated test that re-checks these exact
+    // 4 strings against the live catalog on every run:
+    // tests/suite-retrieval.php, "the widget quick-reply buttons never leak a product". If
+    // you add a 5th quick reply, add its `query` string to that test too.
     //
     // The icon is a stroke SVG — NOT an emoji (emoji render differently across OS fonts; SVG
     // inherits currentColor so it automatically matches the --cb-accent theme token).
