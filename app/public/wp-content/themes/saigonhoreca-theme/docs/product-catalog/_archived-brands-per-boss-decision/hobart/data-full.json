@@ -1,0 +1,2105 @@
+{
+  "research_date": "2026-07-18",
+  "source_note": "Cao truc tiep tu website chinh hang Hobart Corporation (My, thuoc ITW Food Equipment Group / Illinois Tool Works) - www.hobartcorp.com. Phuong phap: (1) tai sitemap.xml chinh thuc (https://www.hobartcorp.com/sitemap.xml, 312 URL) de lay danh sach day du cac trang; (2) loc ra toan bo trang con nam duoi /products/ (dishwashers, food-prep, weigh-wrap) - 87 URL; (3) dung WebFetch tai tung trang danh muc/dong san pham (vi du /products/food-prep/mixers/spiral-mixers) va boc tach: tieu de <title>, meta description, mo ta san pham, bang thong so ky thuat hien thi tren trang, anh san pham that (webdam-assets / cdn2.webdamdb.com), va URL nguon. KHONG bia so lieu: nhieu thong so chi tiet (kich thuoc mm, dien ap, cong suat dien chinh xac tung model) chi co trong PDF 'Spec Sheet' tai rieng - khong trich xuat duoc qua WebFetch nen de trong thay vi doan. Cac trang loai 'accessories' (vi du mixer-accessories, slicing-accessories, food-prep-equipment/accessories) KHONG duoc coi la model rieng - day la phu kien/dinh kem cho model chinh nen bo qua theo dung tinh chat 'phu kien' nhu quy uoc da dung cho Precision-UK. MUC DO DAY DU: bao phu 100% cac trang san pham dang hien hanh tren website hobartcorp.com tinh den ngay khao sat (tat ca 61 trang leaf duoi /products/), gom du 3 nhom lon: Food Preparation Equipment (mixers/slicers/food processors/meat room/specialty), Commercial Dishwashers (conveyor/door/undercounter/pot-pan/industrial/flight/glasswasher/waste), va Weighing & Wrapping (scales/wrapping/software). Mot so 'model' tren website thuc chat la MOT HO SAN PHAM co nhieu ma cau hinh (vi du CL-ADV co CL44/54/66/76/86-ADV; AM16 co 4 bien the ASR/Base/SCB/Advansys) - da ghi day du danh sach ma con trong truong specs thay vi tach thanh tung dong rieng, vi trang web cung trinh bay theo kieu 1 trang = 1 ho san pham. Hai thuc the Hobart toan cau: (1) Hobart Corporation (My, ITW FEG, hobartcorp.com) dung lam nguon chinh; (2) Hobart GmbH (Duc, international.hobart-export.com) phuc vu chau Au/quoc te nhung khong co danh muc san pham rieng bang tieng Anh de doi chieu - khong dung lam nguon. [Cập nhật 2026-07-19: đã TÁCH 2 nhóm Cooking Equipment (Vulcan) và Refrigeration (Traulsen) ra thành catalog riêng theo đúng thương hiệu thật trên máy — xem docs/product-catalog/vulcan/ và docs/product-catalog/traulsen/. hobartcorp.com không tự bán 2 mảng này, chỉ điều hướng sang website Vulcan/Traulsen (cùng thuộc tập đoàn ITW Food Equipment Group với Hobart).]",
+  "brand": "Hobart",
+  "groups": [
+    {
+      "group_name": "Mixers",
+      "group_name_vi": "Máy Trộn Bột / Trộn Thực Phẩm",
+      "source_urls": [
+        "https://www.hobartcorp.com/products/food-prep/mixers",
+        "https://www.hobartcorp.com/products/food-prep/mixers/legacy-plus-countertop-mixer",
+        "https://www.hobartcorp.com/products/food-prep/mixers/legacy-plus-floor-mixers",
+        "https://www.hobartcorp.com/products/food-prep/mixers/legacy-plus-hl662-pizza-mixer",
+        "https://www.hobartcorp.com/products/food-prep/mixers/centerline-mixers",
+        "https://www.hobartcorp.com/products/food-prep/mixers/spiral-mixers",
+        "https://www.hobartcorp.com/products/food-prep/mixers/n50-5-quart-mixer",
+        "https://www.hobartcorp.com/products/food-prep/mixers/cutter-mixers"
+      ],
+      "models": [
+        {
+          "model": "HL120",
+          "title": "Legacy+ HL120 12-Quart Countertop Mixer",
+          "description_en": "Small but mighty, this heavy-duty commercial countertop mixer is fit for a variety of applications. Part of the Legacy+ PLUS System line featuring variable frequency drive technology, maximum capacity overheat protection, and reinforced planetary shaft.",
+          "specs": {
+            "Capacity": "12 quarts",
+            "Series": "Legacy+ Countertop"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/webdam-assets/Mixer%20HL120%20Plus%20qr%20.png",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/mixers/legacy-plus-countertop-mixer",
+          "seo_title": "Legacy+ Commercial Countertop Mixers | Hobart FEG",
+          "seo_description": "Hobart’s Legacy+ heavy-duty countertop mixers are ideal for kitchens with limited space and allow for easy whipping, kneading and mixing of dough and other foods.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Mixer_20HL120_20Plus_20qr_20.png"
+        },
+        {
+          "model": "HL200",
+          "title": "Legacy+ HL200 20-Quart Countertop Mixer",
+          "description_en": "Heavy-duty mixer designed for operations with limited kitchen space, featuring PLUS System technology (variable frequency drive, overheat protection, reinforced planetary shaft).",
+          "specs": {
+            "Capacity": "20 quarts",
+            "Series": "Legacy+ Countertop"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/webdam-assets/Mixer%20HL200%20Plus%20qr%20.png",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/mixers/legacy-plus-countertop-mixer",
+          "seo_title": "Legacy+ Commercial Countertop Mixers | Hobart FEG",
+          "seo_description": "Hobart’s Legacy+ heavy-duty countertop mixers are ideal for kitchens with limited space and allow for easy whipping, kneading and mixing of dough and other foods.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Mixer_20HL200_20Plus_20qr_20.png"
+        },
+        {
+          "model": "HL300",
+          "title": "Legacy+ HL300 Floor Mixer",
+          "description_en": "Heavy-duty floor mixer suitable for cakes (30 lbs max), cookies (23 lbs max), and heavy bread dough (30 lbs max).",
+          "specs": {
+            "Capacity": "30 quarts",
+            "Series": "Legacy+ Floor Mixer",
+            "Feature": "PLUS System (variable frequency drive, overheat protection, reinforced planetary shaft)"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/styles/max_310_x_310/public/webdam-assets/Mixer%20HL300%20Plus%20qr%20.png",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/mixers/legacy-plus-floor-mixers",
+          "seo_title": "Commercial Floor Mixers | Hobart Legacy+® Mixers | Hobart FEG",
+          "seo_description": "Legacy+ commercial floor mixers come in a variety of sizes, ranging from 30-quart to 140-quart mixers, with more capacity to support your heavy-duty mixing needs.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Mixer_20HL300_20Plus_20qr_20.png"
+        },
+        {
+          "model": "HL400",
+          "title": "Legacy+ HL400 Floor Mixer",
+          "description_en": "Commercial floor mixer handling up to 40 lbs cakes and 35 lbs heavy bread dough.",
+          "specs": {
+            "Capacity": "40 quarts",
+            "Series": "Legacy+ Floor Mixer",
+            "Feature": "PLUS System (variable frequency drive, overheat protection, reinforced planetary shaft)"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/styles/max_310_x_310/public/webdam-assets/Mixer%20HL400%20Plus%20qr%20.png",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/mixers/legacy-plus-floor-mixers",
+          "seo_title": "Commercial Floor Mixers | Hobart Legacy+® Mixers | Hobart FEG",
+          "seo_description": "Legacy+ commercial floor mixers come in a variety of sizes, ranging from 30-quart to 140-quart mixers, with more capacity to support your heavy-duty mixing needs.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Mixer_20HL400_20Plus_20qr_20.png"
+        },
+        {
+          "model": "HL600",
+          "title": "Legacy+ HL600 Floor Mixer",
+          "description_en": "Maximum heavy-duty mixer with FastStop technology, supporting 55 lbs cakes and 60 lbs heavy bread dough.",
+          "specs": {
+            "Capacity": "60 quarts",
+            "Series": "Legacy+ Floor Mixer",
+            "Feature": "PLUS System (variable frequency drive, overheat protection, reinforced planetary shaft)"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://cdn2.webdamdb.com/1280_cbnmyVNkPjn01QKU.png",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/mixers/legacy-plus-floor-mixers",
+          "seo_title": "Commercial Floor Mixers | Hobart Legacy+® Mixers | Hobart FEG",
+          "seo_description": "Legacy+ commercial floor mixers come in a variety of sizes, ranging from 30-quart to 140-quart mixers, with more capacity to support your heavy-duty mixing needs.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/1280_cbnmyVNkPjn01QKU.png",
+          "note": "Nhieu bien the cung dong (HL600, HL662) dung chung 1 anh tu hang - day la ma dau tien (HL600)."
+        },
+        {
+          "model": "HL800",
+          "title": "Legacy+ HL800 Floor Mixer",
+          "description_en": "Heavy-duty floor mixer with FastStop, handling up to 100 lbs cakes and 140 lbs heavy bread dough.",
+          "specs": {
+            "Capacity": "80 quarts",
+            "Series": "Legacy+ Floor Mixer",
+            "Feature": "PLUS System (variable frequency drive, overheat protection, reinforced planetary shaft)"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/styles/max_310_x_310/public/webdam-assets/Mixer%20HL800%20Plus%20qr%20.png",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/mixers/legacy-plus-floor-mixers",
+          "seo_title": "Commercial Floor Mixers | Hobart Legacy+® Mixers | Hobart FEG",
+          "seo_description": "Legacy+ commercial floor mixers come in a variety of sizes, ranging from 30-quart to 140-quart mixers, with more capacity to support your heavy-duty mixing needs.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Mixer_20HL800_20Plus_20qr_20.png"
+        },
+        {
+          "model": "HL1400",
+          "title": "Legacy+ HL1400 Floor Mixer",
+          "description_en": "Largest maximum heavy-duty floor mixer featuring FastStop, accommodating 185 lbs cakes and 190 lbs medium pizza dough.",
+          "specs": {
+            "Capacity": "140 quarts",
+            "Series": "Legacy+ Floor Mixer",
+            "Feature": "PLUS System (variable frequency drive, overheat protection, reinforced planetary shaft)"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/styles/max_310_x_310/public/webdam-assets/Mixer%20HL1400%20Plus%20qr%20.png",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/mixers/legacy-plus-floor-mixers",
+          "seo_title": "Commercial Floor Mixers | Hobart Legacy+® Mixers | Hobart FEG",
+          "seo_description": "Legacy+ commercial floor mixers come in a variety of sizes, ranging from 30-quart to 140-quart mixers, with more capacity to support your heavy-duty mixing needs.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Mixer_20HL1400_20Plus_20qr_20.png"
+        },
+        {
+          "model": "HL662",
+          "title": "Legacy+ HL662 Pizza Dough Mixer",
+          "description_en": "Industrial pizza dough mixer engineered for maximum heavy-duty mixing, delivering consistent results through the PLUS System (variable frequency drive technology, overheat protection, reinforced planetary shaft design).",
+          "specs": {
+            "Cakes (max)": "75 lbs",
+            "Cookies/Sugar (max)": "50 lbs",
+            "Heavy Bread Dough (55% AR, max)": "85 lbs",
+            "Thin Pizza Dough (40% AR)": "60 lbs (1st speed) / 40 lbs (2nd speed)",
+            "Medium Pizza Dough (50% AR)": "90 lbs (1st speed) / 70 lbs (2nd speed)",
+            "Thick Pizza Dough (60% AR)": "90 lbs (2nd speed)"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://cdn2.webdamdb.com/1280_cbnmyVNkPjn01QKU.png?1781292805",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/mixers/legacy-plus-hl662-pizza-mixer",
+          "seo_title": "Legacy+® HL662 Pizza Dough Mixer | Hobart FEG",
+          "seo_description": "The Legacy+® commercial pizza dough mixer is designed for durability and built for the toughest applications to meet the needs of even the most demanding operations.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/1280_cbnmyVNkPjn01QKU.png",
+          "note": "Bien the cung dong voi HL600 (nhieu ma SKU cung mot dong san pham/trang khac nhau). Dung chung anh voi model dai dien - hang khong cong bo anh rieng cho tung bien the (source_url rieng: https://www.hobartcorp.com/products/food-prep/mixers/legacy-plus-hl662-pizza-mixer)."
+        },
+        {
+          "model": "HMM10",
+          "title": "Centerline HMM10 Standard Heavy-Duty Mixer",
+          "description_en": "Heavy-duty countertop mixer with all-gear transmission, digital timer, three mixing speeds, removable bowl guard for easy cleaning.",
+          "specs": {
+            "Capacity": "10 quarts",
+            "Motor": "1/2 HP",
+            "Series": "Centerline Standard Heavy-Duty Mixers",
+            "Speeds": "Three mixing speeds"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://cdn2.webdamdb.com/1280_QtshrTHUooK3.png",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/mixers/centerline-mixers",
+          "seo_title": "Centerline Standard Heavy-Duty Mixers | Hobart FEG",
+          "seo_description": "Centerline standard heavy-duty mixers are for kitchens that depend on a mixer for many applications. Learn how these mixers offer you the performance you need.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/1280_QtshrTHUooK3.png",
+          "note": "Nhieu bien the cung dong (HMM10, HMM20) dung chung 1 anh tu hang - day la ma dau tien (HMM10)."
+        },
+        {
+          "model": "HMM20",
+          "title": "Centerline HMM20 Standard Heavy-Duty Mixer",
+          "description_en": "Commercial countertop mixer with all-gear transmission and three mixing speeds.",
+          "specs": {
+            "Capacity": "20 quarts",
+            "Motor": "1 HP",
+            "Series": "Centerline Standard Heavy-Duty Mixers",
+            "Speeds": "Three mixing speeds"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://cdn2.webdamdb.com/1280_QtshrTHUooK3.png",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/mixers/centerline-mixers",
+          "seo_title": "Centerline Standard Heavy-Duty Mixers | Hobart FEG",
+          "seo_description": "Centerline standard heavy-duty mixers are for kitchens that depend on a mixer for many applications. Learn how these mixers offer you the performance you need.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/1280_QtshrTHUooK3.png",
+          "note": "Bien the cung dong voi HMM10 (nhieu ma SKU cung mot dong san pham/trang khac nhau). Dung chung anh voi model dai dien - hang khong cong bo anh rieng cho tung bien the (source_url rieng: https://www.hobartcorp.com/products/food-prep/mixers/centerline-mixers)."
+        },
+        {
+          "model": "HMM30",
+          "title": "Centerline HMM30 Standard Heavy-Duty Mixer",
+          "description_en": "Heavy-duty commercial mixer with all-gear transmission and contemporary design.",
+          "specs": {
+            "Capacity": "30 quarts",
+            "Motor": "1 HP",
+            "Series": "Centerline Standard Heavy-Duty Mixers",
+            "Speeds": "Three mixing speeds"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://cdn2.webdamdb.com/1280_UvA9ZnWkch61Y3Ac.png",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/mixers/centerline-mixers",
+          "seo_title": "Centerline Standard Heavy-Duty Mixers | Hobart FEG",
+          "seo_description": "Centerline standard heavy-duty mixers are for kitchens that depend on a mixer for many applications. Learn how these mixers offer you the performance you need.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/1280_UvA9ZnWkch61Y3Ac.png"
+        },
+        {
+          "model": "HSL130",
+          "title": "Hobart Spiral Mixer HSL130",
+          "description_en": "New 130 pound capacity model featuring modern electronic controls and bidirectional bowl rotation.",
+          "specs": {
+            "Capacity": "75 lbs. flour / 130 lbs. batch (bread at 60% AR)",
+            "Series": "Commercial Spiral Mixers",
+            "Feature": "Bidirectional bowl rotation, electronic controls"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/styles/max_310_x_310/public/webdam-assets/Spiral%20Mixer%20HSL130%20qr%20.png",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/mixers/spiral-mixers",
+          "seo_title": "Commercial Spiral Mixers | Hobart",
+          "seo_description": "Hobart commercial spiral mixers deliver consistent speed, mix, and quality -- mixers fit for an expert.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Spiral_20Mixer_20HSL130_20qr_20.png"
+        },
+        {
+          "model": "HSL180",
+          "title": "Hobart Spiral Mixer HSL180",
+          "description_en": "Hobart commercial spiral mixers deliver consistent speed, mix, and quality -- mixers fit for an expert.",
+          "specs": {
+            "Capacity": "100 lbs. flour / 180 lbs. batch (bread at 60% AR)",
+            "Series": "Commercial Spiral Mixers",
+            "Feature": "Bidirectional bowl rotation, electronic controls"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/styles/max_310_x_310/public/webdam-assets/Spiral%20Mixer%20HSL180%20qr%20.png",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/mixers/spiral-mixers",
+          "seo_title": "Commercial Spiral Mixers | Hobart",
+          "seo_description": "Hobart commercial spiral mixers deliver consistent speed, mix, and quality -- mixers fit for an expert.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Spiral_20Mixer_20HSL180_20qr_20.png"
+        },
+        {
+          "model": "HSL220",
+          "title": "Hobart Spiral Mixer HSL220",
+          "description_en": "Hobart commercial spiral mixers deliver consistent speed, mix, and quality -- mixers fit for an expert.",
+          "specs": {
+            "Capacity": "120 lbs. flour / 220 lbs. batch (bread at 60% AR)",
+            "Series": "Commercial Spiral Mixers",
+            "Feature": "Bidirectional bowl rotation, electronic controls"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/mixers/spiral-mixers",
+          "seo_title": "Commercial Spiral Mixers | Hobart",
+          "seo_description": "Hobart commercial spiral mixers deliver consistent speed, mix, and quality -- mixers fit for an expert.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/HSL220_rewonline.jpg",
+          "image_source_note": "Anh that tu rewonline.com (dai ly Hobart chinh thuc, model HSL220-1)."
+        },
+        {
+          "model": "HSL300",
+          "title": "Hobart Spiral Mixer HSL300",
+          "description_en": "Hobart commercial spiral mixers deliver consistent speed, mix, and quality -- mixers fit for an expert.",
+          "specs": {
+            "Capacity": "165 lbs. flour / 290 lbs. batch (bread at 60% AR)",
+            "Series": "Commercial Spiral Mixers",
+            "Feature": "Bidirectional bowl rotation, electronic controls"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/mixers/spiral-mixers",
+          "seo_title": "Commercial Spiral Mixers | Hobart",
+          "seo_description": "Hobart commercial spiral mixers deliver consistent speed, mix, and quality -- mixers fit for an expert.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/HSL300_rewonline.jpg",
+          "image_source_note": "Anh that tu rewonline.com (dai ly Hobart chinh thuc, model HSL300-1)."
+        },
+        {
+          "model": "HSU440",
+          "title": "Hobart Spiral Mixer HSU440",
+          "description_en": "Hobart commercial spiral mixers deliver consistent speed, mix, and quality -- mixers fit for an expert.",
+          "specs": {
+            "Capacity": "240 lbs. flour / 440 lbs. batch (bread at 60% AR)",
+            "Series": "Commercial Spiral Mixers",
+            "Feature": "Bidirectional bowl rotation, electronic controls"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/mixers/spiral-mixers",
+          "seo_title": "Commercial Spiral Mixers | Hobart",
+          "seo_description": "Hobart commercial spiral mixers deliver consistent speed, mix, and quality -- mixers fit for an expert.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/HSU440_rewonline.jpg",
+          "image_source_note": "Anh that tu rewonline.com (dai ly Hobart chinh thuc, model HSU440-1)."
+        },
+        {
+          "model": "N50",
+          "title": "Hobart N50 5-Quart Commercial Stand Mixer",
+          "description_en": "Great for small applications with a focus on consistent performance; features large easy-to-reach controls; ideal for culinary schools, small bakeries and restaurants. Comes standard with stainless steel bowl, flat beater, wire whip, and dough hook attachment.",
+          "specs": {
+            "Capacity": "5-quart bowl",
+            "Motor": "1/6 HP, gear-driven transmission",
+            "Speeds": "Three fixed speeds"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/webdam-assets/Mixer%20N50%20f%20.png",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/mixers/n50-5-quart-mixer",
+          "seo_title": "Commercial Stand Mixer | Hobart N50 5-Quart Mixer",
+          "seo_description": "The smallest of the Hobart mixer series, the N50 5-Quart mixer offers durability, quality and consistent performance.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Mixer_20N50_20f_20.png"
+        },
+        {
+          "model": "HCM450",
+          "title": "Hobart HCM450 Vertical Cutter Mixer",
+          "description_en": "Cuts, mixes and blends a variety of products with one unique machine, featuring interchangeable cut/mix and knead/mix shafts, plus strainer basket. Clear Lexan pour-through cover for monitoring; bowl tilts to 90 degrees for easy product removal; 5-minute timer with run, jog, and timed settings; built-in cover scraper; stainless steel bowl, baffle and support bar; safety interlocks.",
+          "specs": {
+            "Capacity": "45-quart bowl",
+            "Motor": "5 HP, single speed at 1140 RPM"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://cdn2.webdamdb.com/1280_QPsLC82Lu9S91Qfa.png?1721775125",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/mixers/cutter-mixers",
+          "seo_title": "Commercial Cutter Mixer | Hobart",
+          "seo_description": "Hobart's HCM450 commercial cutter mixer designed to speed through cutting, mixing, blending, kneading and even cleaning.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/1280_QPsLC82Lu9S91Qfa.png"
+        }
+      ]
+    },
+    {
+      "group_name": "Slicers",
+      "group_name_vi": "Máy Thái Lát",
+      "source_urls": [
+        "https://www.hobartcorp.com/products/food-prep/slicers",
+        "https://www.hobartcorp.com/products/food-prep/slicers/hs-series-slicers",
+        "https://www.hobartcorp.com/products/food-prep/slicers/portion-scale-slicer",
+        "https://www.hobartcorp.com/products/food-prep/slicers/centerline-slicers"
+      ],
+      "models": [
+        {
+          "model": "HS6",
+          "title": "Hobart HS6/HS6N Heavy Duty Slicer",
+          "description_en": "Zero knife exposure while cleaning and sharpening protects the operator.",
+          "specs": {
+            "Type": "Manual slicer",
+            "Finish": "Burnished Aluminum",
+            "Interlocks": "No Volt Release",
+            "Knife": "13\" CleanCut stainless knife with cobalt edge",
+            "Sharpening": "Borazon sharpening system, 15-second cycle, dishwasher safe"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/webdam-assets/Slicer%20HS6%20qr%20.png",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/slicers/hs-series-slicers",
+          "seo_title": "Heavy Duty Slicer Machine | Hobart FEG",
+          "seo_description": "Hobart’s heavy duty slicer machines deliver a clean and precise cut with ease and reliability.",
+          "note": "Ma goc tren site la 'HS6/HS6N' (gop nhieu bien the) — da tach thanh cac dong rieng, dong nay la ma dau tien (HS6).",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Slicer_20HS6_20qr_20.png"
+        },
+        {
+          "model": "HS6N",
+          "title": "Hobart HS6/HS6N Heavy Duty Slicer",
+          "description_en": "Zero knife exposure while cleaning and sharpening protects the operator.",
+          "specs": {
+            "Type": "Manual slicer",
+            "Finish": "Burnished Aluminum",
+            "Interlocks": "No Volt Release",
+            "Knife": "13\" CleanCut stainless knife with cobalt edge",
+            "Sharpening": "Borazon sharpening system, 15-second cycle, dishwasher safe"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/webdam-assets/Slicer%20HS6%20qr%20.png",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/slicers/hs-series-slicers",
+          "seo_title": "Heavy Duty Slicer Machine | Hobart FEG",
+          "seo_description": "Hobart’s heavy duty slicer machines deliver a clean and precise cut with ease and reliability.",
+          "note": "Ma SKU that, cung dong voi HS6 (nguyen goc site ghi gop 'HS6/HS6N'). Dung chung anh/mo ta voi model dai dien HS6 — Hobart khong cong bo anh rieng cho tung bien the tren trang san pham nay.",
+          "is_variant_of": "HS6",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Slicer_20HS6_20qr_20.png"
+        },
+        {
+          "model": "HS7",
+          "title": "Hobart HS7/HS7N Heavy Duty Slicer",
+          "description_en": "Variable-speed automatic carriage has four stroke speeds and three stroke lengths.",
+          "specs": {
+            "Type": "Automatic slicer",
+            "Finish": "Burnished Aluminum",
+            "Interlocks": "No Volt Release, Home to Start",
+            "Knife": "13\" CleanCut stainless knife with cobalt edge",
+            "Sharpening": "Borazon sharpening system, 15-second cycle, dishwasher safe"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/webdam-assets/Slicer%20HS7%20qr%20.png",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/slicers/hs-series-slicers",
+          "seo_title": "Heavy Duty Slicer Machine | Hobart FEG",
+          "seo_description": "Hobart’s heavy duty slicer machines deliver a clean and precise cut with ease and reliability.",
+          "note": "Ma goc tren site la 'HS7/HS7N' (gop nhieu bien the) — da tach thanh cac dong rieng, dong nay la ma dau tien (HS7).",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Slicer_20HS7_20qr_20.png"
+        },
+        {
+          "model": "HS7N",
+          "title": "Hobart HS7/HS7N Heavy Duty Slicer",
+          "description_en": "Variable-speed automatic carriage has four stroke speeds and three stroke lengths.",
+          "specs": {
+            "Type": "Automatic slicer",
+            "Finish": "Burnished Aluminum",
+            "Interlocks": "No Volt Release, Home to Start",
+            "Knife": "13\" CleanCut stainless knife with cobalt edge",
+            "Sharpening": "Borazon sharpening system, 15-second cycle, dishwasher safe"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/webdam-assets/Slicer%20HS7%20qr%20.png",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/slicers/hs-series-slicers",
+          "seo_title": "Heavy Duty Slicer Machine | Hobart FEG",
+          "seo_description": "Hobart’s heavy duty slicer machines deliver a clean and precise cut with ease and reliability.",
+          "note": "Ma SKU that, cung dong voi HS7 (nguyen goc site ghi gop 'HS7/HS7N'). Dung chung anh/mo ta voi model dai dien HS7 — Hobart khong cong bo anh rieng cho tung bien the tren trang san pham nay.",
+          "is_variant_of": "HS7",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Slicer_20HS7_20qr_20.png"
+        },
+        {
+          "model": "HS8",
+          "title": "Hobart HS8/HS8N Heavy Duty Slicer",
+          "description_en": "Enhanced safety with multiple interlocks.",
+          "specs": {
+            "Type": "Manual slicer",
+            "Finish": "Anodized Aluminum",
+            "Interlocks": "No Volt Release, Home to Start, Gauge Plate Interlock, 30-Second Shut Off, Carriage System Interlock, Close to Stop",
+            "Knife": "13\" CleanCut stainless knife with cobalt edge",
+            "Sharpening": "Borazon sharpening system, 15-second cycle, dishwasher safe"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/webdam-assets/Slicer%20HS8%20qr%20.png",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/slicers/hs-series-slicers",
+          "seo_title": "Heavy Duty Slicer Machine | Hobart FEG",
+          "seo_description": "Hobart’s heavy duty slicer machines deliver a clean and precise cut with ease and reliability.",
+          "note": "Ma goc tren site la 'HS8/HS8N' (gop nhieu bien the) — da tach thanh cac dong rieng, dong nay la ma dau tien (HS8).",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Slicer_20HS8_20qr_20.png"
+        },
+        {
+          "model": "HS8N",
+          "title": "Hobart HS8/HS8N Heavy Duty Slicer",
+          "description_en": "Enhanced safety with multiple interlocks.",
+          "specs": {
+            "Type": "Manual slicer",
+            "Finish": "Anodized Aluminum",
+            "Interlocks": "No Volt Release, Home to Start, Gauge Plate Interlock, 30-Second Shut Off, Carriage System Interlock, Close to Stop",
+            "Knife": "13\" CleanCut stainless knife with cobalt edge",
+            "Sharpening": "Borazon sharpening system, 15-second cycle, dishwasher safe"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/webdam-assets/Slicer%20HS8%20qr%20.png",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/slicers/hs-series-slicers",
+          "seo_title": "Heavy Duty Slicer Machine | Hobart FEG",
+          "seo_description": "Hobart’s heavy duty slicer machines deliver a clean and precise cut with ease and reliability.",
+          "note": "Ma SKU that, cung dong voi HS8 (nguyen goc site ghi gop 'HS8/HS8N'). Dung chung anh/mo ta voi model dai dien HS8 — Hobart khong cong bo anh rieng cho tung bien the tren trang san pham nay.",
+          "is_variant_of": "HS8",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Slicer_20HS8_20qr_20.png"
+        },
+        {
+          "model": "HS9",
+          "title": "Hobart HS9/HS9N Heavy Duty Slicer",
+          "description_en": "1/2 H.P. knife drive motor delivers the power you need to slice cheese and meat.",
+          "specs": {
+            "Type": "Automatic slicer",
+            "Finish": "Anodized Aluminum",
+            "Interlocks": "No Volt Release, Home to Start, Gauge Plate Interlock, 30-Second Shut Off, Carriage System Interlock, Close to Stop",
+            "Knife": "13\" CleanCut stainless knife with cobalt edge",
+            "Sharpening": "Borazon sharpening system, 15-second cycle, dishwasher safe"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/webdam-assets/Slicer%20HS9%20qr%20.png",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/slicers/hs-series-slicers",
+          "seo_title": "Heavy Duty Slicer Machine | Hobart FEG",
+          "seo_description": "Hobart’s heavy duty slicer machines deliver a clean and precise cut with ease and reliability.",
+          "note": "Ma goc tren site la 'HS9/HS9N' (gop nhieu bien the) — da tach thanh cac dong rieng, dong nay la ma dau tien (HS9).",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Slicer_20HS9_20qr_20.png"
+        },
+        {
+          "model": "HS9N",
+          "title": "Hobart HS9/HS9N Heavy Duty Slicer",
+          "description_en": "1/2 H.P. knife drive motor delivers the power you need to slice cheese and meat.",
+          "specs": {
+            "Type": "Automatic slicer",
+            "Finish": "Anodized Aluminum",
+            "Interlocks": "No Volt Release, Home to Start, Gauge Plate Interlock, 30-Second Shut Off, Carriage System Interlock, Close to Stop",
+            "Knife": "13\" CleanCut stainless knife with cobalt edge",
+            "Sharpening": "Borazon sharpening system, 15-second cycle, dishwasher safe"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/webdam-assets/Slicer%20HS9%20qr%20.png",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/slicers/hs-series-slicers",
+          "seo_title": "Heavy Duty Slicer Machine | Hobart FEG",
+          "seo_description": "Hobart’s heavy duty slicer machines deliver a clean and precise cut with ease and reliability.",
+          "note": "Ma SKU that, cung dong voi HS9 (nguyen goc site ghi gop 'HS9/HS9N'). Dung chung anh/mo ta voi model dai dien HS9 — Hobart khong cong bo anh rieng cho tung bien the tren trang san pham nay.",
+          "is_variant_of": "HS9",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Slicer_20HS9_20qr_20.png"
+        },
+        {
+          "model": "HS6-1PS",
+          "title": "Hobart HS6-1PS Portion Scale Slicer",
+          "description_en": "Manual slicer and scale integrated into one unit for retail or foodservice applications.",
+          "specs": {
+            "Integrated Scale": "0-10 lbs, 0.01 lb increments",
+            "Motor": "1/2 H.P.",
+            "Knife": "13\" CleanCut stainless knife"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/styles/max_310_x_310/public/webdam-assets/Slicer%20HS6-1PS%20qr%20.png",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/slicers/portion-scale-slicer",
+          "seo_title": "Commercial Slicer | HS Portion Scale Slicer | Hobart FEG",
+          "seo_description": "Perfect for retail or foodservice applications, Hobart's manual and automatic heavy-duty slicers have an integrated scale, making it quick and simple to slice product to an exact weight.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Slicer_20HS6-1PS_20qr_20.png"
+        },
+        {
+          "model": "HS7-1PS",
+          "title": "Hobart HS7-1PS Portion Scale Slicer",
+          "description_en": "Automatic meat slicer with integrated scale and SmartSlice function.",
+          "specs": {
+            "Integrated Scale": "0-10 lbs, 0.01 lb increments",
+            "Motor": "1/2 H.P.",
+            "Knife": "13\" CleanCut stainless knife"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/styles/max_310_x_310/public/webdam-assets/Slicer%20HS7-1PS%20qr%20.png",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/slicers/portion-scale-slicer",
+          "seo_title": "Commercial Slicer | HS Portion Scale Slicer | Hobart FEG",
+          "seo_description": "Perfect for retail or foodservice applications, Hobart's manual and automatic heavy-duty slicers have an integrated scale, making it quick and simple to slice product to an exact weight.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Slicer_20HS7-1PS_20qr_20.png"
+        },
+        {
+          "model": "EDGE10",
+          "title": "Centerline EDGE10 Slicer",
+          "description_en": "Manual gravity-feed slicer designed for medium-duty slicing (4 hours per day or less).",
+          "specs": {
+            "Base": "Anodized aluminum base",
+            "Motor": "1/2 H.P.",
+            "Knife": "Chrome-plated carbon steel knife"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/webdam-assets/Slicer%20EDGE10-11%20f%20.png",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/slicers/centerline-slicers",
+          "seo_title": "Centerline EDGE Series Slicers | Hobart",
+          "seo_description": "Centerline EDGE Series Slicers are efficient, economical and easy to clean. Explore the series of commercial manual slicers and commericial automatic slicers.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Slicer_20EDGE10-11_20f_20.png"
+        },
+        {
+          "model": "EDGE12",
+          "title": "Centerline EDGE12 Slicer",
+          "description_en": "Manual gravity-feed slicer for medium-duty commercial applications.",
+          "specs": {
+            "Base": "Anodized aluminum base",
+            "Motor": "1/2 H.P.",
+            "Knife": "Chrome-plated carbon steel knife"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/webdam-assets/Slicer%20EDGE12-11%20qr%20.png",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/slicers/centerline-slicers",
+          "seo_title": "Centerline EDGE Series Slicers | Hobart",
+          "seo_description": "Centerline EDGE Series Slicers are efficient, economical and easy to clean. Explore the series of commercial manual slicers and commericial automatic slicers.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Slicer_20EDGE12-11_20qr_20.png"
+        },
+        {
+          "model": "EDGE13",
+          "title": "Centerline EDGE13 Slicer",
+          "description_en": "Manual gravity-feed slicer with removable carriage for thorough cleaning.",
+          "specs": {
+            "Base": "Anodized aluminum base",
+            "Motor": "1/2 H.P. on most models",
+            "Knife": "Poly V-belt drive system"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/webdam-assets/Slicer%20EDGE13-11%20ql%20.png",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/slicers/centerline-slicers",
+          "seo_title": "Centerline EDGE Series Slicers | Hobart",
+          "seo_description": "Centerline EDGE Series Slicers are efficient, economical and easy to clean. Explore the series of commercial manual slicers and commericial automatic slicers.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Slicer_20EDGE13-11_20ql_20.png"
+        },
+        {
+          "model": "EDGE13A",
+          "title": "Centerline EDGE13A Slicer",
+          "description_en": "Automatic slicer model within the Edge Series, with the same protective and cleaning features as manual models.",
+          "specs": {
+            "Base": "Anodized aluminum base",
+            "Knife": "Chrome-plated carbon steel knife"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/webdam-assets/Slicer%20EDGE13A-11%20qr%20.png",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/slicers/centerline-slicers",
+          "seo_title": "Centerline EDGE Series Slicers | Hobart",
+          "seo_description": "Centerline EDGE Series Slicers are efficient, economical and easy to clean. Explore the series of commercial manual slicers and commericial automatic slicers.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Slicer_20EDGE13A-11_20qr_20.png"
+        },
+        {
+          "model": "EDGE14",
+          "title": "Centerline EDGE14 Slicer",
+          "description_en": "Manual gravity-feed slicer with removable carriage and sharpener.",
+          "specs": {
+            "Base": "Anodized aluminum base",
+            "Motor": "1/2 H.P.",
+            "Knife": "Chrome-plated carbon steel knife"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/webdam-assets/Slicer%20EDGE14-11%20qr%20.png",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/slicers/centerline-slicers",
+          "seo_title": "Centerline EDGE Series Slicers | Hobart",
+          "seo_description": "Centerline EDGE Series Slicers are efficient, economical and easy to clean. Explore the series of commercial manual slicers and commericial automatic slicers.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Slicer_20EDGE14-11_20qr_20.png"
+        }
+      ]
+    },
+    {
+      "group_name": "Food Processors",
+      "group_name_vi": "Máy Xay/Cắt Thực Phẩm Đa Năng",
+      "source_urls": [
+        "https://www.hobartcorp.com/products/food-prep/food-processors",
+        "https://www.hobartcorp.com/products/food-prep/food-processors/floor-model-continuous-feed-food-processors",
+        "https://www.hobartcorp.com/products/food-prep/food-processors/countertop-continuous-feed-food-processors",
+        "https://www.hobartcorp.com/products/food-prep/food-processors/bowl-style",
+        "https://www.hobartcorp.com/products/food-prep/food-processors/centerline-food-processors"
+      ],
+      "models": [
+        {
+          "model": "FP300i",
+          "title": "Hobart FP300i Continuous Feed Food Processor",
+          "description_en": "Floor model continuous-feed food processor capable of processing 88 pounds per minute. With the ability to process 88 or 132 pounds of food per minute, the FP300i and FP400i speed up operations. Three interchangeable feed hopper options (manual push, tube feed, bulk hopper); dishwasher-safe removable parts; exclusive de-coring screw design.",
+          "specs": {
+            "Throughput": "88 lbs/min",
+            "Meals per day": "3,000",
+            "Construction": "Stainless steel",
+            "Cutting tools": "30+ available",
+            "Speed": "Single speed"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/styles/max_310_x_310/public/webdam-assets/webImg_FoodPrep_FP300i_wFeedHopperManual_f_BodyTopImg.png",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/food-processors/floor-model-continuous-feed-food-processors",
+          "seo_title": "FP300i and FP400i Continuous Feed Food Processors | Hobart FEG",
+          "seo_description": "Speed up prep time and process foods and vegetables in minutes with the Hobart FP400i and FP300i floor model continuous-feed food processors",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/webImg_FoodPrep_FP300i_wFeedHopperManual_f_BodyTopImg.png"
+        },
+        {
+          "model": "FP400i",
+          "title": "Hobart FP400i Continuous Feed Food Processor",
+          "description_en": "Floor model continuous-feed food processor capable of processing 132 pounds per minute. Dual speeds; base unit configuration; stainless steel construction; 30+ cutting tools available.",
+          "specs": {
+            "Throughput": "132 lbs/min",
+            "Meals per day": "5,000",
+            "Construction": "Stainless steel",
+            "Cutting tools": "30+ available",
+            "Speed": "Dual speeds"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/styles/max_310_x_310/public/webdam-assets/webImg_FoodPrep_FP300i_wFeedHopperManual_ql_BodyTopImg.png",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/food-processors/floor-model-continuous-feed-food-processors",
+          "seo_title": "FP300i and FP400i Continuous Feed Food Processors | Hobart FEG",
+          "seo_description": "Speed up prep time and process foods and vegetables in minutes with the Hobart FP400i and FP300i floor model continuous-feed food processors",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/webImg_FoodPrep_FP300i_wFeedHopperManual_ql_BodyTopImg.png"
+        },
+        {
+          "model": "FP100",
+          "title": "Hobart FP100 Continuous-Feed Food Processor",
+          "description_en": "Large, easily removable feed hopper accepts a wide variety of products with virtually no pre-cutting.",
+          "specs": {
+            "Throughput": "11 lbs./min",
+            "Meals per day": "400",
+            "Feed angle": "50-degree angled front for easy loading"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/webdam-assets/Food%20Processor%20FP100%20qr%20.png",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/food-processors/countertop-continuous-feed-food-processors",
+          "seo_title": "Continuous-Feed Food Processors | Hobart FEG",
+          "seo_description": "Hobart’s continuous-feed food processors help you chop, slice and dice faster. Discover how a commercial food processor can help improve consistency and save you time.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Food_20Processor_20FP100_20qr_20.png"
+        },
+        {
+          "model": "FP150",
+          "title": "Hobart FP150 Continuous-Feed Food Processor",
+          "description_en": "Mid-range countertop processor with similar features to FP100, featuring the exclusive de-coring screw technology.",
+          "specs": {
+            "Throughput": "14 lbs./min",
+            "Meals per day": "700",
+            "Feed angle": "50-degree angled front for easy loading"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/webdam-assets/Food%20Processor%20FP150%20qr%20.png",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/food-processors/countertop-continuous-feed-food-processors",
+          "seo_title": "Continuous-Feed Food Processors | Hobart FEG",
+          "seo_description": "Hobart’s continuous-feed food processors help you chop, slice and dice faster. Discover how a commercial food processor can help improve consistency and save you time.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Food_20Processor_20FP150_20qr_20.png"
+        },
+        {
+          "model": "FP250",
+          "title": "Hobart FP250 Continuous-Feed Food Processor",
+          "description_en": "420 RPM cutting tool speed delivers precise cutting and dicing without bruising or mashing product.",
+          "specs": {
+            "Throughput": "17 lbs./min",
+            "Meals per day": "800",
+            "Feed angle": "50-degree angled front for easy loading"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/webdam-assets/Food%20Processor%20FP250%20qr%20.png",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/food-processors/countertop-continuous-feed-food-processors",
+          "seo_title": "Continuous-Feed Food Processors | Hobart FEG",
+          "seo_description": "Hobart’s continuous-feed food processors help you chop, slice and dice faster. Discover how a commercial food processor can help improve consistency and save you time.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Food_20Processor_20FP250_20qr_20.png"
+        },
+        {
+          "model": "FP350",
+          "title": "Hobart FP350 Continuous-Feed Food Processor",
+          "description_en": "Largest countertop model, designed for high-volume food processing operations.",
+          "specs": {
+            "Throughput": "26 lbs./min",
+            "Meals per day": "1,200",
+            "Feed angle": "50-degree angled front for easy loading"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/webdam-assets/Food%20Processor%20FP350%20qr%20.png",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/food-processors/countertop-continuous-feed-food-processors",
+          "seo_title": "Continuous-Feed Food Processors | Hobart FEG",
+          "seo_description": "Hobart’s continuous-feed food processors help you chop, slice and dice faster. Discover how a commercial food processor can help improve consistency and save you time.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Food_20Processor_20FP350_20qr_20.png"
+        },
+        {
+          "model": "FP41",
+          "title": "Hobart FP41 Bowl-Style Food Processor",
+          "description_en": "Commercial food processor that chops, mixes and emulsifies with COOLCUTTER knife system. One-speed model; XYLEX cover; patented integral multi-function wiper system.",
+          "specs": {
+            "Capacity": "4.5-quart capacity for cooked meat",
+            "Speeds": "One speed"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/styles/max_310_x_310/public/webdam-assets/Food%20Processor%20FP41%20qr%20.png",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/food-processors/bowl-style",
+          "seo_title": "Bowl Food Processors | Hobart FEG",
+          "seo_description": "Find out how Hobart’s bowl food processor’s operator-friendly and compact designs help chop, mix and emulsify food to excellent uniformity.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Food_20Processor_20FP41_20qr_20.png"
+        },
+        {
+          "model": "HCM61",
+          "title": "Hobart HCM61 Bowl-Style Food Processor",
+          "description_en": "Industrial food processor with two processing speeds, designed for heavy-duty commercial use. Stainless steel construction.",
+          "specs": {
+            "Speeds": "Two-speed model"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/styles/max_310_x_310/public/webdam-assets/Food%20Processor%20HCM62%20ql%20.png",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/food-processors/bowl-style",
+          "seo_title": "Bowl Food Processors | Hobart FEG",
+          "seo_description": "Find out how Hobart’s bowl food processor’s operator-friendly and compact designs help chop, mix and emulsify food to excellent uniformity.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Food_20Processor_20HCM62_20ql_20.png"
+        },
+        {
+          "model": "HCM62",
+          "title": "Hobart HCM62 Bowl-Style Food Processor",
+          "description_en": "Available in one- and two-speed models with COOLCUTTER knives for faster processing. Enhanced wiper system; triple interlock safety.",
+          "specs": {
+            "Speeds": "One- or two-speed",
+            "Dough capacity": "4-lb dough capacity"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/styles/max_310_x_310/public/webdam-assets/Food%20Processor%20HCM62%20qr%20.png",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/food-processors/bowl-style",
+          "seo_title": "Bowl Food Processors | Hobart FEG",
+          "seo_description": "Find out how Hobart’s bowl food processor’s operator-friendly and compact designs help chop, mix and emulsify food to excellent uniformity.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Food_20Processor_20HCM62_20qr_20.png"
+        },
+        {
+          "model": "CCH32",
+          "title": "Centerline CCH32 Combination Food Processor",
+          "description_en": "Enjoy the flexibility of either bowl style or continuous-feed food processing, with a stainless-steel bowl and 1.34 HP motor capable of chopping, mixing, mincing and emulsifying. Double Tritan cover with bowl gasket; heavy-duty aluminum base; patented integral multi-function wiper system; compact, space-saving design.",
+          "specs": {
+            "Bowl": "3.2 quart stainless steel",
+            "Motor": "1.34 HP",
+            "Speeds": "Two speed settings (SureSense speed control)"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://cdn2.webdamdb.com/1280_knNBg0GbFqe89kTk.png?1727915982",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/food-processors/centerline-food-processors",
+          "seo_title": "Centerline Food Processors | Hobart",
+          "seo_description": "Centerline by Hobart's combination food processors offer bowl-style or continuous-feed food processing capable of chopping, mincing, mixing and emulsifying.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/1280_knNBg0GbFqe89kTk.png"
+        },
+        {
+          "model": "CCH34",
+          "title": "Centerline CCH34 Combination Food Processor",
+          "description_en": "Similar combination processor to CCH32, offering enhanced capabilities with four speed settings instead of two. Double Tritan cover with bowl gasket; heavy-duty aluminum base; patented integral multi-function wiper system.",
+          "specs": {
+            "Bowl": "3.2 quart stainless steel",
+            "Speeds": "Four speed settings (SureSense speed control)"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://cdn2.webdamdb.com/1280_snE28nE54uk01smj.png?1733149097",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/food-processors/centerline-food-processors",
+          "seo_title": "Centerline Food Processors | Hobart",
+          "seo_description": "Centerline by Hobart's combination food processors offer bowl-style or continuous-feed food processing capable of chopping, mincing, mixing and emulsifying.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/1280_snE28nE54uk01smj.png"
+        }
+      ]
+    },
+    {
+      "group_name": "Meat Room",
+      "group_name_vi": "Thiết Bị Sơ Chế Thịt",
+      "source_urls": [
+        "https://www.hobartcorp.com/products/food-prep/meat-room",
+        "https://www.hobartcorp.com/products/food-prep/meat-room/meat-saws",
+        "https://www.hobartcorp.com/products/food-prep/meat-room/mixer-grinders",
+        "https://www.hobartcorp.com/products/food-prep/meat-room/choppers-grinders",
+        "https://www.hobartcorp.com/products/food-prep/meat-room/tenderizers"
+      ],
+      "models": [
+        {
+          "model": "6801",
+          "title": "Hobart 6801 Meat Saw",
+          "description_en": "Double-flanged pulleys ensure precision balance and true running of the blade. Direct gear-drive transmission with helical gear design; enclosed, water-resistant motor; stainless steel construction; upper and lower blade guards; movable carriage with ball bearings; adjustable legs; tungsten carbide blade backup block (removable). Integrated pusher option available.",
+          "specs": {
+            "Motor": "3 HP",
+            "Pulleys": "16\" pulleys",
+            "Blade speed": "4150 FPM"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/styles/max_width_310/public/webdam-assets/Meat%20Saw%206801-18IP%20f%20Pos%201%20.png",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/meat-room/meat-saws",
+          "seo_title": "Commercial Meat Saws | Hobart Meat Saw | Hobart FEG",
+          "seo_description": "Precise, consistent meat cuts are what you can expect from Hobart’s electric meat saws with topnotch productivity for any meat saw machine.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Meat_20Saw_206801-18IP_20f_20Pos_201_20.png",
+          "note": "Nhieu bien the cung dong (6801, 6614) dung chung 1 anh tu hang - day la ma dau tien (6801)."
+        },
+        {
+          "model": "6614",
+          "title": "Hobart 6614 Meat Saw",
+          "description_en": "Open-frame, stainless steel construction is exceptionally durable and makes cleaning a breeze. Direct gear-drive transmission with helical gear design; integrated pusher option available.",
+          "specs": {
+            "Motor": "3 HP",
+            "Pulleys": "14\" pulleys"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/styles/max_width_310/public/webdam-assets/Meat%20Saw%206801-18IP%20f%20Pos%201%20.png",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/meat-room/meat-saws",
+          "seo_title": "Commercial Meat Saws | Hobart Meat Saw | Hobart FEG",
+          "seo_description": "Precise, consistent meat cuts are what you can expect from Hobart’s electric meat saws with topnotch productivity for any meat saw machine.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Meat_20Saw_206801-18IP_20f_20Pos_201_20.png",
+          "note": "Bien the cung dong voi 6801 (nhieu ma SKU cung mot dong san pham/trang khac nhau). Dung chung anh voi model dai dien - hang khong cong bo anh rieng cho tung bien the (source_url rieng: https://www.hobartcorp.com/products/food-prep/meat-room/meat-saws)."
+        },
+        {
+          "model": "MG1532",
+          "title": "Hobart MG1532 Mixer-Grinder",
+          "description_en": "Mix and grind meat without smashing it.",
+          "specs": {
+            "Capacity": "150 pounds",
+            "Motor": "7.5 HP grind motor, 1 HP mix motor",
+            "Output": "50-60 pounds/min (1/8\" plate)"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/webdam-assets/Mixer%20Grinder%20MG1532%20qr%20.png",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/meat-room/mixer-grinders",
+          "seo_title": "Hobart Commercial Mixer-Grinder | Hobart FEG",
+          "seo_description": "Designed to increase production and ease of use, Hobart mixer-grinders are an industry favorite and must-have for all commercial uses.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Mixer_20Grinder_20MG1532_20qr_20.png"
+        },
+        {
+          "model": "MG2032",
+          "title": "Hobart MG2032 Mixer-Grinder",
+          "description_en": "Ergonomic design with easy-access hopper and dual motors for optimal performance.",
+          "specs": {
+            "Capacity": "200 pounds",
+            "Motor": "dual motors",
+            "Output": "50-60 pounds/min (1/8\" plate)"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/webdam-assets/Mixer%20Grinder%20MG2032%20qr%20.png",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/meat-room/mixer-grinders",
+          "seo_title": "Hobart Commercial Mixer-Grinder | Hobart FEG",
+          "seo_description": "Designed to increase production and ease of use, Hobart mixer-grinders are an industry favorite and must-have for all commercial uses.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Mixer_20Grinder_20MG2032_20qr_20.png"
+        },
+        {
+          "model": "4246",
+          "title": "Hobart 4246 Mixer-Grinder",
+          "description_en": "Optional 7.5 HP grind motor upgrade for mixed fresh and frozen applications.",
+          "specs": {
+            "Capacity": "140 pounds",
+            "Motor": "5 HP grind motor / 1 HP mix motor standard; optional 7.5 HP grind motor upgrade",
+            "Output": "50-60 pounds/min (1/8\" plate)"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/webdam-assets/Mixer-Grinder%204246%20qr%20.png",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/meat-room/mixer-grinders",
+          "seo_title": "Hobart Commercial Mixer-Grinder | Hobart FEG",
+          "seo_description": "Designed to increase production and ease of use, Hobart mixer-grinders are an industry favorite and must-have for all commercial uses.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Mixer-Grinder_204246_20qr_20.png"
+        },
+        {
+          "model": "4812",
+          "title": "Hobart 4812 Meat Chopper/Grinder",
+          "description_en": "Compact chopper featuring direct gear drive transmission and hot tin dipped cylinder, worm adjusting ring construction. Designed for smaller operations.",
+          "specs": {
+            "Motor": "0.5 HP",
+            "Capacity": "8 pounds per minute",
+            "Housing": "Stainless steel",
+            "Knife/Plate": "Stay-Sharp knife and plate (alloy steel, re-sharpenable)"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/webdam-assets/Meat%20Chopper%204812%20ql%20.png",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/meat-room/choppers-grinders",
+          "seo_title": "Commercial Meat Grinders and Choppers | Hobart FEG",
+          "seo_description": "Hobart’s meat choppers and meat grinders handle all commercial meat grinding and chopping needs with ease and precision.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Meat_20Chopper_204812_20ql_20.png"
+        },
+        {
+          "model": "4822",
+          "title": "Hobart 4822 Meat Chopper/Grinder",
+          "description_en": "Mid-range model with direct gear drive transmission construction. Funnel-shaped chopping end and pan option available.",
+          "specs": {
+            "Motor": "1.5 HP",
+            "Capacity": "12-20 pounds per minute (continuous chopping)",
+            "Housing": "Stainless steel",
+            "Knife/Plate": "Stay-Sharp knife and plate (alloy steel, re-sharpenable)"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/webdam-assets/Meat%20Chopper%204822%20FS%20ql%20.png",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/meat-room/choppers-grinders",
+          "seo_title": "Commercial Meat Grinders and Choppers | Hobart FEG",
+          "seo_description": "Hobart’s meat choppers and meat grinders handle all commercial meat grinding and chopping needs with ease and precision.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Meat_20Chopper_204822_20FS_20ql_20.png"
+        },
+        {
+          "model": "4732",
+          "title": "Hobart 4732/4732A Meat Chopper/Grinder",
+          "description_en": "Features direct gear drive transmission and construction with hot tin dipped cylinder, worm adjusting ring.",
+          "specs": {
+            "Motor": "3 HP",
+            "Capacity": "First grind 35-40 lbs/min; Second grind 25-30 lbs/min",
+            "Housing": "Gray epoxy (stainless steel optional)",
+            "Knife/Plate": "Stay-Sharp knife and plate (alloy steel, re-sharpenable)"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/webdam-assets/Meat%20Chopper%204732%20qr%20wDeflector%20.png",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/meat-room/choppers-grinders",
+          "seo_title": "Commercial Meat Grinders and Choppers | Hobart FEG",
+          "seo_description": "Hobart’s meat choppers and meat grinders handle all commercial meat grinding and chopping needs with ease and precision.",
+          "note": "Ma goc tren site la '4732/4732A' (gop nhieu bien the) — da tach thanh cac dong rieng, dong nay la ma dau tien (4732).",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Meat_20Chopper_204732_20qr_20wDeflector_20.png"
+        },
+        {
+          "model": "4732A",
+          "title": "Hobart 4732/4732A Meat Chopper/Grinder",
+          "description_en": "Features direct gear drive transmission and construction with hot tin dipped cylinder, worm adjusting ring.",
+          "specs": {
+            "Motor": "3 HP",
+            "Capacity": "First grind 35-40 lbs/min; Second grind 25-30 lbs/min",
+            "Housing": "Gray epoxy (stainless steel optional)",
+            "Knife/Plate": "Stay-Sharp knife and plate (alloy steel, re-sharpenable)"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/webdam-assets/Meat%20Chopper%204732%20qr%20wDeflector%20.png",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/meat-room/choppers-grinders",
+          "seo_title": "Commercial Meat Grinders and Choppers | Hobart FEG",
+          "seo_description": "Hobart’s meat choppers and meat grinders handle all commercial meat grinding and chopping needs with ease and precision.",
+          "note": "Ma SKU that, cung dong voi 4732 (nguyen goc site ghi gop '4732/4732A'). Dung chung anh/mo ta voi model dai dien 4732 — Hobart khong cong bo anh rieng cho tung bien the tren trang san pham nay.",
+          "is_variant_of": "4732",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Meat_20Chopper_204732_20qr_20wDeflector_20.png"
+        },
+        {
+          "model": "4146",
+          "title": "Hobart 4146 Meat Chopper/Grinder",
+          "description_en": "Heavy-duty grinder for large-capacity needs. 215 RPM direct gear drive transmission; sits on 16-inch stainless steel legs; includes magnetic starter and high back.",
+          "specs": {
+            "Motor": "5 HP",
+            "Capacity": "First grind 60-65 lbs/min; Second grind 45-50 lbs/min",
+            "Housing": "Gray epoxy (stainless steel optional)",
+            "Knife/Plate": "Stay-Sharp knife and plate (alloy steel, re-sharpenable)"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/webdam-assets/Meat%20Grinder%204146%20s%20wDeflector%20.png",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/meat-room/choppers-grinders",
+          "seo_title": "Commercial Meat Grinders and Choppers | Hobart FEG",
+          "seo_description": "Hobart’s meat choppers and meat grinders handle all commercial meat grinding and chopping needs with ease and precision.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Meat_20Grinder_204146_20s_20wDeflector_20.png"
+        },
+        {
+          "model": "403",
+          "title": "Hobart 403 Meat Tenderizer",
+          "description_en": "Electric meat tenderizer with Knit-Knife stainless steel blades that cut and knit meat together so it cooks as one solid piece. Processes flank steak, sirloin, chicken breast, pork, ham, turkey, and cheese. Translucent guard for visibility, safety interlock system, plastic guides to prevent folding, lift-out frame for easy cleaning. Additional knife options (strip cutter and star knives) available.",
+          "specs": {},
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/styles/max_310_x_310/public/webdam-assets/Tenderizer%20403%20qr%20woCover%20.png",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/meat-room/tenderizers",
+          "seo_title": "Electric Meat Tenderizer Machine | Hobart FEG",
+          "seo_description": "Easily tenderize and slice meat with an electric Hobart meat tenderizer machine. See why the tenderizing blades offer versatile cuts for commercial kitchens.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Tenderizer_20403_20qr_20woCover_20.png"
+        }
+      ]
+    },
+    {
+      "group_name": "Specialty Food Prep Products",
+      "group_name_vi": "Thiết Bị Sơ Chế Chuyên Dụng",
+      "source_urls": [
+        "https://www.hobartcorp.com/products/food-prep/specialty-products",
+        "https://www.hobartcorp.com/products/food-prep/specialty-products/salad-dryers",
+        "https://www.hobartcorp.com/products/food-prep/specialty-products/peelers",
+        "https://www.hobartcorp.com/products/food-prep/specialty-products/food-cutters",
+        "https://www.hobartcorp.com/products/food-prep/specialty-products/power-drive-units"
+      ],
+      "models": [
+        {
+          "model": "SDPE",
+          "title": "Hobart SDPE Salad Dryer (Polyethylene)",
+          "description_en": "Commercial salad dryer with polyethylene outer tub and lid. Easy-load polyethylene spin basket with hand grips; 5-minute timer; PVC extension tube for drain connection; one-piece molded base. Removes excess water, reducing dressing costs up to 15% and extending produce shelf life by up to three days.",
+          "specs": {
+            "Spin speed": "406 RPM",
+            "Capacity": "Up to one case (16 heads) of lettuce"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/styles/max_310_x_310/public/webdam-assets/Salad%20Dryer%20SDPE%20f%20.png",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/specialty-products/salad-dryers",
+          "seo_title": "Commercial Salad Dryers | Hobart FEG",
+          "seo_description": "Hobart Salad Dryers save you time and money without bruising or damaging your greens.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Salad_20Dryer_20SDPE_20f_20.png"
+        },
+        {
+          "model": "SDPS",
+          "title": "Hobart SDPS Salad Dryer (Stainless Steel)",
+          "description_en": "Commercial salad dryer with stainless steel outer tub and lid. Same specifications as SDPE with upgraded stainless steel construction.",
+          "specs": {
+            "Spin speed": "406 RPM",
+            "Capacity": "Up to one case (16 heads) of lettuce"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/styles/max_310_x_310/public/webdam-assets/Salad%20Dryer%20SDPS%20f%20.png",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/specialty-products/salad-dryers",
+          "seo_title": "Commercial Salad Dryers | Hobart FEG",
+          "seo_description": "Hobart Salad Dryers save you time and money without bruising or damaging your greens.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Salad_20Dryer_20SDPS_20f_20.png"
+        },
+        {
+          "model": "6115",
+          "title": "Hobart 6115 Potato Peeler",
+          "description_en": "15 lbs. capacity unit designed for normal production environments.",
+          "specs": {
+            "Capacity": "15 pounds",
+            "Motor": "1/3 HP"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/styles/max_310_x_310/public/webdam-assets/Peeler%206115%20qr%20.png",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/specialty-products/peelers",
+          "seo_title": "Commercial Potato Peelers | Hobart FEG",
+          "seo_description": "Fast, reliable, and easy to use. Hobart commercial potato peelers can handle a large quantity while still ensuring maximum quality.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Peeler_206115_20qr_20.png"
+        },
+        {
+          "model": "6430",
+          "title": "Hobart 6430 Potato Peeler",
+          "description_en": "Mid-range peeler suited for higher-volume operations, handling 30 lbs. of potatoes.",
+          "specs": {
+            "Capacity": "30 pounds",
+            "Motor": "3/4 HP"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/styles/max_310_x_310/public/webdam-assets/Peeler%206430%20qr%20.png",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/specialty-products/peelers",
+          "seo_title": "Commercial Potato Peelers | Hobart FEG",
+          "seo_description": "Fast, reliable, and easy to use. Hobart commercial potato peelers can handle a large quantity while still ensuring maximum quality.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Peeler_206430_20qr_20.png"
+        },
+        {
+          "model": "6460",
+          "title": "Hobart 6460 Potato Peeler",
+          "description_en": "Heavy-duty peeler for 50-60 lbs. capacity applications requiring sustained high production.",
+          "specs": {
+            "Capacity": "50-60 pounds",
+            "Motor": "1 HP"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/styles/max_310_x_310/public/webdam-assets/Peeler%206460%20qr%20wBaseTrap%20.png",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/specialty-products/peelers",
+          "seo_title": "Commercial Potato Peelers | Hobart FEG",
+          "seo_description": "Fast, reliable, and easy to use. Hobart commercial potato peelers can handle a large quantity while still ensuring maximum quality.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Peeler_206460_20qr_20wBaseTrap_20.png",
+          "note": "Nhieu bien the cung dong (6460, 6460M) dung chung 1 anh tu hang - day la ma dau tien (6460)."
+        },
+        {
+          "model": "6460M",
+          "title": "Hobart 6460M Potato Peeler",
+          "description_en": "Variant of the 6460 series offering similar capacity specifications.",
+          "specs": {
+            "Capacity": "50-60 pounds",
+            "Motor": "1 HP"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/styles/max_310_x_310/public/webdam-assets/Peeler%206460%20qr%20wBaseTrap%20.png",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/specialty-products/peelers",
+          "seo_title": "Commercial Potato Peelers | Hobart FEG",
+          "seo_description": "Fast, reliable, and easy to use. Hobart commercial potato peelers can handle a large quantity while still ensuring maximum quality.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Peeler_206460_20qr_20wBaseTrap_20.png",
+          "note": "Bien the cung dong voi 6460 (nhieu ma SKU cung mot dong san pham/trang khac nhau). Dung chung anh voi model dai dien - hang khong cong bo anh rieng cho tung bien the (source_url rieng: https://www.hobartcorp.com/products/food-prep/specialty-products/peelers)."
+        },
+        {
+          "model": "84145",
+          "title": "Hobart 84145 Food Cutter",
+          "description_en": "Rough-cut, shred and chop with confidence and versatility. Double cutlery-grade stainless steel knives; removable bowl cover, knives, and bowl; optional attachment hub compatibility; one-piece aluminum housing design eliminates bacteria-harboring crevices.",
+          "specs": {
+            "Capacity": "5 pounds",
+            "Bowl": "14\" stainless steel bowl",
+            "Motor": "0.5 HP"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/styles/max_310_x_310/public/webdam-assets/Food%20Cutter%2084145%20f%20.png",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/specialty-products/food-cutters",
+          "seo_title": "Commercial Food Chopper | Hobart Food Preparation Chopper",
+          "seo_description": "Hobart’s highly versatile Food Cutters give you a consistently precise outcome with every cut. Slice, shred and chop with uniform excellence.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Food_20Cutter_2084145_20f_20.png"
+        },
+        {
+          "model": "84186",
+          "title": "Hobart 84186 Food Cutter",
+          "description_en": "Rough-cut, shred and chop with confidence and versatility. Double cutlery-grade stainless steel knives; removable bowl; burnished aluminum housing.",
+          "specs": {
+            "Capacity": "15 pounds",
+            "Bowl": "18\" stainless steel bowl",
+            "Motor": "1 HP"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/styles/max_310_x_310/public/webdam-assets/Food%20Cutter%2084186%20f%20.png",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/specialty-products/food-cutters",
+          "seo_title": "Commercial Food Chopper | Hobart Food Preparation Chopper",
+          "seo_description": "Hobart’s highly versatile Food Cutters give you a consistently precise outcome with every cut. Slice, shred and chop with uniform excellence.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Food_20Cutter_2084186_20f_20.png"
+        },
+        {
+          "model": "PD35",
+          "title": "Hobart PD35 Power Drive Unit",
+          "description_en": "Compact power source designed for use with the Hobart 9\" vegetable slicer attachment or meat grinder. Stainless steel construction, hardened steel output shaft, poly v-belt transmission. Suitable for cheese and vegetables.",
+          "specs": {
+            "RPM": "350",
+            "Motor": "0.5 HP",
+            "Housing": "Stainless steel",
+            "VS9 Suitability": "Cheese and vegetables"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/styles/max_310_x_310/public/webdam-assets/Power%20Drive%20PD70%20qr%20.png",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/specialty-products/power-drive-units",
+          "seo_title": "Power Drive Units | Hobart FEG",
+          "seo_description": "Paired with the 9” Vegetable Slicer or #12 Meat Chopper Attachment, the Hobart Power Drive Unit is the ultimate secondary machine for slicing, shredding and grating as well as meat chopping.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Power_20Drive_20PD70_20qr_20.png"
+        },
+        {
+          "model": "PD70",
+          "title": "Hobart PD70 Power Drive Unit",
+          "description_en": "High-speed power drive unit paired with the Hobart vegetable slicer for slicing, shredding, and grating tasks. Stainless steel construction, hardened steel output shaft, poly v-belt transmission. Vegetables only.",
+          "specs": {
+            "RPM": "700",
+            "Motor": "0.5 HP",
+            "Housing": "Stainless steel",
+            "VS9 Suitability": "Vegetables only"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/styles/max_width_310/public/webdam-assets/Power%20Drive%20PD70%20ql%20.png",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/specialty-products/power-drive-units",
+          "seo_title": "Power Drive Units | Hobart FEG",
+          "seo_description": "Paired with the 9” Vegetable Slicer or #12 Meat Chopper Attachment, the Hobart Power Drive Unit is the ultimate secondary machine for slicing, shredding and grating as well as meat chopping.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Power_20Drive_20PD70_20ql_20.png"
+        }
+      ]
+    },
+    {
+      "group_name": "Commercial Dishwashers",
+      "group_name_vi": "Máy Rửa Chén Công Nghiệp",
+      "source_urls": [
+        "https://www.hobartcorp.com/products/commercial-dishwashers",
+        "https://www.hobartcorp.com/products/commercial-dishwashers/conveyor-type",
+        "https://www.hobartcorp.com/products/commercial-dishwashers/door-type",
+        "https://www.hobartcorp.com/products/commercial-dishwashers/undercounters",
+        "https://www.hobartcorp.com/products/commercial-dishwashers/pot-pan-and-utensil-washer",
+        "https://www.hobartcorp.com/products/commercial-dishwashers/industrial",
+        "https://www.hobartcorp.com/products/commercial-dishwashers/waste-equipment",
+        "https://www.hobartcorp.com/products/commercial-dishwashers/flight-type",
+        "https://www.hobartcorp.com/products/commercial-dishwashers/hobart-lxgn-series-glasswasher"
+      ],
+      "models": [
+        {
+          "model": "CL-ADV",
+          "title": "CL Advansys Rack Conveyor Type Commercial Dishwasher",
+          "description_en": "High-volume rack conveyor dishwasher for medium to high-capacity operations, washing 202-342 racks per hour. Complete Delime with Booster Guard automatically dispenses delimer, including into the booster. Capless wash arms; Automatic Soil Removal (ASR) technology; Drain Water Energy Recovery reduces energy consumption up to 20%; smart touchscreen with integrated WiFi; NSF-rated pot and pan cycle. Energy Star certified for 16 consecutive years.",
+          "specs": {
+            "Sizes/configs": "CL44-ADV, CL54-ADV, CL66-ADV (optional prewash tank), CL76-ADV, CL86-ADV (all Electric); variants with Drain Water Energy Recovery (DWER) in Electric and Steam; Ventless and Base sub-lines",
+            "Capacity": "202-342 racks/hour"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://cdn2.webdamdb.com/1280_6eHCEoGFcr31IWof.png",
+          "source_url": "https://www.hobartcorp.com/products/commercial-dishwashers/conveyor-type/cl-advansystm-rack-conveyor-type-commercial",
+          "seo_title": "CL Advansys™ Conveyor Type Commercial Dishwasher",
+          "seo_description": "High-volume rack conveyor dishwasher for medium to high-capacity operations, washing 202-342 racks per hour with advanced performance and cost-saving features.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/1280_6eHCEoGFcr31IWof.png"
+        },
+        {
+          "model": "CL-VL",
+          "title": "CL Ventless Conveyor Type Dishwasher",
+          "description_en": "Rack conveyor dishwasher that eliminates the need for direct venting, saving operators thousands of dollars in energy costs. Incorporates energy recovery technology to reheat water and reduce overall consumption. Internal 30kW booster heats pre-heated water from 110F to 180F. NSF-rated Pot & Pan mode; Capless Wash Arms; Complete Delime with Booster Guard; SmartConnect WiFi connectivity.",
+          "specs": {
+            "Sizes/configs": "CL44-VL Electric, CL66-VL Electric",
+            "Energy recovery": "30% less energy per rack than competitive ventless models",
+            "Annual savings": "Up to $1,200 versus non-ventless machines",
+            "Installation savings": "$5,000+ by eliminating ducting and hood requirements",
+            "Wash temperature": "160F or higher (NSF sanitization)"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://cdn2.webdamdb.com/310th_sm_SiuLCvp9Fc61IjTo.png?1699017295",
+          "source_url": "https://www.hobartcorp.com/products/commercial-dishwashers/conveyor-type/hobart-cl-ventless-rack-conveyor-commercial",
+          "seo_title": "CL Ventless Conveyor Type Dishmachine | Hobart Commercial Dishwasher",
+          "seo_description": "Hobart's CL ventless conveyor dishwasher eliminates venting requirements and reduces energy costs by 30% compared to competitive ventless models while delivering high-performance wash results.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/310th_sm_SiuLCvp9Fc61IjTo.png"
+        },
+        {
+          "model": "CL-BAS",
+          "title": "CL Base Conveyor Type Commercial Dishwasher",
+          "description_en": "Mid-to-high-volume rack conveyor dishwasher designed to wash 202-342 racks hourly. Capless wash arms, NSF-rated pot & pan mode, Complete Delime with Booster Guard, smart touchscreen controls, energy-efficient operation, Energy Star certified.",
+          "specs": {
+            "Sizes/configs": "CL44-BAS, CL54-BAS, CL64-BAS, CL66-BAS, CL66C-BAS (prewash tank), CL76-BAS, CL76C-BAS (prewash tank), CL86-BAS, CL86C-BAS (prewash tank) - Electric, Gas, or Steam depending on size",
+            "Chamber height opening": "19 1/2 inches",
+            "Wash capacity": "Up to 6 sheet pans (with optional rack)"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://cdn2.webdamdb.com/1280_YA8Ibmr0298EjE0y.jpg",
+          "source_url": "https://www.hobartcorp.com/products/commercial-dishwashers/conveyor-type/hobart-cl-base-conveyor-type-commercial-dishwasher",
+          "seo_title": "CL Base Conveyor Type Commercial Dishwasher | Hobart",
+          "seo_description": "Hobart's CL Conveyor Type Commercial Dishwasher washes up to 342 racks/hour with best-in-class performance for medium-high volume operations. Call Hobart!",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/1280_YA8Ibmr0298EjE0y.jpg"
+        },
+        {
+          "model": "AMTL",
+          "title": "AMTL Two Level Door Type Dishwasher",
+          "description_en": "Commercial door-type dishwasher featuring dual wash chambers, delivering legendary Hobart Clean with the highest throughput of any door type. Independent upper and lower wash sections for handling varying soil levels simultaneously. Pumped rinse and drain systems; wireless connectivity with SmartConnect app integration; extended cycle times for heavy soils on lower chamber; insulated 5-sided hood.",
+          "specs": {
+            "Upper wash system": "17\"",
+            "Lower wash system": "9\"",
+            "Racks per hour": "80",
+            "Rinse rate": "0.67 gal/hr (top); 0.62 gal/hr (bottom)",
+            "Booster": "Sense-A-Temp",
+            "Hood design": "5-Sided, Pillarless",
+            "Operator interface": "Digital Touchscreen w/WiFi",
+            "Sanitization": "Hot"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/webdam-assets/Dishwasher%20AMTL%20qr.png",
+          "source_url": "https://www.hobartcorp.com/products/commercial-dishwashers/door-type/amtl-two-level-door-type-dishwasher",
+          "seo_title": "AMTL Two Level Door Type Dishwasher | Hobart",
+          "seo_description": "Engineered to deliver our legendary Hobart Clean with the highest throughput of any door type, the AMTL dish machine offers two wash chambers to help optimize dishroom speed and efficiency while delivering superior wash performance.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Dishwasher_20AMTL_20qr.png"
+        },
+        {
+          "model": "AM16VL",
+          "title": "AM16 Advansys Door Type Commercial Dishwasher",
+          "description_en": "Door-type commercial dishwasher engineered to deliver legendary Hobart Clean with reduced labor requirements. X-shaped wash arms for tough soil removal; Automatic Soil Removal (ASR) on select models; Drain Water Energy Recovery system; 5-sided insulated hood reduces heat loss by 40%; WiFi-enabled Smart Touchscreen with SmartConnect app; Complete Delime with Booster Guard; compact ventless steam condensing system.",
+          "specs": {
+            "Variants": "AM16VL (Ventless, Standard Height 17\"), AM16VLT (Ventless Tall, 27\" opening)",
+            "Wash performance": "36-60 racks per hour (varies by model)",
+            "Water usage": "0.67 gallons per rack",
+            "Power": "208-240V/60/3 (field convertible to single phase)",
+            "Filtration": "Two-stage system",
+            "Sanitization": "Hot water"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/styles/max_310_x_310/public/webdam-assets/Dishwasher%20AM16VL%20-%20UBI_200081_493%20.jpg",
+          "source_url": "https://www.hobartcorp.com/products/commercial-dishwashers/door-type/am16-advansys-door-type-commercial-dishwasher",
+          "seo_title": "AM16 Advansys Door Type Commercial Dishwasher | Hobart",
+          "seo_description": "Engineered to deliver our legendary Hobart Clean with less labor and the industry’s best lifetime value, the AM16 dish machine is loaded with thoughtful technology and features designed to revolutionize your dishroom performance, efficiency, and productivity for the long haul. Available in standard height and tall.",
+          "note": "Ma goc tren site la 'AM16VL/VLT' (gop nhieu bien the) — da tach thanh cac dong rieng, dong nay la ma dau tien (AM16VL).",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Dishwasher_20AM16VL_20-_20UBI_200081_493_20.jpg"
+        },
+        {
+          "model": "AM16VLT",
+          "title": "AM16 Advansys Door Type Commercial Dishwasher",
+          "description_en": "Door-type commercial dishwasher engineered to deliver legendary Hobart Clean with reduced labor requirements. X-shaped wash arms for tough soil removal; Automatic Soil Removal (ASR) on select models; Drain Water Energy Recovery system; 5-sided insulated hood reduces heat loss by 40%; WiFi-enabled Smart Touchscreen with SmartConnect app; Complete Delime with Booster Guard; compact ventless steam condensing system.",
+          "specs": {
+            "Variants": "AM16VL (Ventless, Standard Height 17\"), AM16VLT (Ventless Tall, 27\" opening)",
+            "Wash performance": "36-60 racks per hour (varies by model)",
+            "Water usage": "0.67 gallons per rack",
+            "Power": "208-240V/60/3 (field convertible to single phase)",
+            "Filtration": "Two-stage system",
+            "Sanitization": "Hot water"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/styles/max_310_x_310/public/webdam-assets/Dishwasher%20AM16VL%20-%20UBI_200081_493%20.jpg",
+          "source_url": "https://www.hobartcorp.com/products/commercial-dishwashers/door-type/am16-advansys-door-type-commercial-dishwasher",
+          "seo_title": "AM16 Advansys Door Type Commercial Dishwasher | Hobart",
+          "seo_description": "Engineered to deliver our legendary Hobart Clean with less labor and the industry’s best lifetime value, the AM16 dish machine is loaded with thoughtful technology and features designed to revolutionize your dishroom performance, efficiency, and productivity for the long haul. Available in standard height and tall.",
+          "note": "Ma SKU that, cung dong voi AM16VL (nguyen goc site ghi gop 'AM16VL/VLT'). Dung chung anh/mo ta voi model dai dien AM16VL — Hobart khong cong bo anh rieng cho tung bien the tren trang san pham nay.",
+          "is_variant_of": "AM16VL",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Dishwasher_20AM16VL_20-_20UBI_200081_493_20.jpg"
+        },
+        {
+          "model": "AM16 ASR",
+          "title": "Hobart AM16 ASR Door Type Commercial Dishwasher",
+          "description_en": "Door-type commercial dishwasher engineered to deliver legendary Hobart Clean with less labor and industry-leading lifetime value. Automatic Soil Removal (ASR) technology; intuitive touchscreen controls with WiFi; X-shaped wash arms. Available in standard and tall configurations, tall model accommodates up to six sheet pans.",
+          "specs": {
+            "Variants": "AM16 ASR (standard height, 17\"), AM16 ASR Tall (27\")",
+            "Racks per hour": "52",
+            "Gallons per rack": "0.67",
+            "Sanitization": "Hot water",
+            "Power": "208-240/60/3 (field convertible to 1 phase)",
+            "Hood": "5-sided insulated (standard) or 3-sided (tall)",
+            "Drain system": "Pumped drain/pumped rinse, two-stage filtration"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/webdam-assets/Dishwasher%20AM16VL%20-%20UBI_200081_493%20.jpg",
+          "source_url": "https://www.hobartcorp.com/products/commercial-dishwashers/door-type/hobart-am16-asr-door-type-commercial-dishwasher",
+          "seo_title": "Hobart AM16 ASR Door Type Commercial Dishwasher | Hobart",
+          "seo_description": "Engineered to deliver our legendary Hobart Clean with less labor and the industry’s best lifetime value, the AM16 dish machine with Automatic Soil Removal is loaded with thoughtful technology and features designed to revolutionize your dishroom performance, efficiency, and productivity for the long haul. Available in standard height and tall.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Dishwasher_20AM16VL_20-_20UBI_200081_493_20.jpg"
+        },
+        {
+          "model": "AM16 Base",
+          "title": "Hobart AM16 Base Door Type Commercial Dishwasher",
+          "description_en": "Door-type commercial dishwasher engineered to deliver legendary Hobart Clean with less labor and industry's best lifetime value. Intuitive touchscreen controls, X-shaped wash arms, optional ventless technology. Available in standard and tall height configurations.",
+          "specs": {
+            "Variants": "AM16 Base Door Type (17\"), AM16 Base Door Type Tall (27\"), AM16 Base Ventless Door Type, AM16 Base Ventless Door Type Tall",
+            "Racks per hour": "40-60",
+            "Gallons per rack": "0.67",
+            "Height options": "17\" or 27\" opening",
+            "Controls": "Touchscreen with WiFi/SmartConnect",
+            "Filtration": "Two-stage",
+            "Sanitization": "Hot water",
+            "Hood": "5-sided insulated hood reduces heat loss 40%"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/webdam-assets/Dishwasher%20AM16VL%20qr%20.png",
+          "source_url": "https://www.hobartcorp.com/products/commercial-dishwashers/door-type/hobart-am16-base-door-type-commercial-dishwasher",
+          "seo_title": "Hobart AM16 Base Door Type Commercial Dishwasher | Hobart",
+          "seo_description": "Engineered to deliver our legendary Hobart Clean with less labor and the industry’s best lifetime value, the AM16 dish machine is loaded with thoughtful technology and features designed to revolutionize your dishroom performance, efficiency, and productivity for the long haul. Available in standard height and tall.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Dishwasher_20AM16VL_20qr_20.png"
+        },
+        {
+          "model": "AM16SCB",
+          "title": "Hobart AM16SCB Door Type Commercial Dishwasher",
+          "description_en": "Automated door-type commercial dishwasher designed for high-volume quick-service environments, combining performance with user-friendly operation to speed up operation while increasing food safety. 5-Sided Insulated Hood reduces heat loss by 40%; integrated chemical pumps with empty lockouts; cold fill line with 30-degree rise booster; Energy Star certified.",
+          "specs": {
+            "Racks per hour": "72",
+            "Gallons per rack": "0.67",
+            "Sanitization method": "Chemical",
+            "Height option": "Standard (17\") with 5-sided insulated hood",
+            "Power": "208-240/60/3 (field convertible to single phase)",
+            "Controls": "Touchscreen with WiFi"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/styles/max_310_x_310/public/webdam-assets/Dishwasher%20AM16VL%20-%20UBI_200081_692%20.jpg",
+          "source_url": "https://www.hobartcorp.com/products/commercial-dishwashers/door-type/hobart-am16scb-door-type-commercial-dishwasher",
+          "seo_title": "Hobart AM16SCB Door Type Commercial Dishwasher | Hobart",
+          "seo_description": "Speed up your operation while increasing food safety. For busy, quick service environments, the speed, efficiency, and thoroughness of getting ware clean can affect your entire operation. The Hobart AM16SCB combines best-in-class performance and reliability with ease of operation to keep up with busy workflows and give staff more time to focus on other tasks across your store.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Dishwasher_20AM16VL_20-_20UBI_200081_692_20.jpg"
+        },
+        {
+          "model": "LXnR",
+          "title": "Hobart LXnR Advansys Undercounter Commercial Dishwasher",
+          "description_en": "Two-level undercounter dishwasher combining speed & performance into a compact size, with exclusive two-level racking capability to wash the toughest food soils off dinnerware & prep ware. Smart touchscreen with WiFi; snap-in wash and rinse arms; Complete Delime with Booster Guard; Low Chemical Alerts and Auto Prime pumps; deluxe strainer system with auto-clean; optional Second Level Rack Kit. National Restaurant Association Kitchen Innovation Award recipient; Energy Star Partner of the Year (16 consecutive years).",
+          "specs": {
+            "Door opening": "17\"",
+            "Water per cycle": "0.62 gallons",
+            "Standard capacity": "30 racks/hour (Light); 24 (Normal); 13 (Heavy)",
+            "Two-level capacity": "48 racks/hour",
+            "Sanitization": "High Temperature",
+            "NSF Pot & Pan rating": "Yes"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/styles/max_310_x_310/public/webdam-assets/webImg_Dishwasher%20LXn%20qr%20wDrOpn%202Rck%20PltsCupWare%202-425x300.png",
+          "source_url": "https://www.hobartcorp.com/products/commercial-dishwashers/undercounters/hobart-advansys-lxnr-undercounter-dishwasher",
+          "seo_title": "Hobart LXnR Advansys™ Undercounter Commercial Dishwasher",
+          "seo_description": "Hobart's Advansys™ LXnR offers two level washing, energy recovery, exceptional cleaning performance, & more. Visit Hobart to learn more!",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/webImg_Dishwasher_20LXn_20qr_20wDrOpn_202Rck_20PltsCupWare_2.png"
+        },
+        {
+          "model": "LXn Base",
+          "title": "Hobart LXn Base Two-Level Undercounter Dishwasher",
+          "description_en": "Compact commercial undercounter dishwasher with exclusive two-level racking system, delivering best-in-class wash performance while minimizing water, energy, and chemical consumption. 17-inch door opening accommodates full-size sheet pans and various dinnerware/prep equipment. Smart touchscreen, WiFi (SmartConnect), snap-in wash/rinse arms, auto prime chemical pumps.",
+          "specs": {
+            "Variants": "LXnHB (High Temperature), LXnCB (Chemical Sanitizing)",
+            "Water per cycle": "0.62 gallons",
+            "Capacity (standard)": "32 racks/hour (light cycle); 15 racks/hour (normal cycle)",
+            "Capacity (2-level rack kit)": "48 racks/hour",
+            "Door opening": "17 inches"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://cdn2.webdamdb.com/1280_gy4X0wSn0fl31Er3.png",
+          "source_url": "https://www.hobartcorp.com/products/commercial-dishwashers/undercounters/hobart-lxn-base-undercounter-dishwasher",
+          "seo_title": "LXn Base Two-Level Undercounter Dishwasher",
+          "seo_description": "Hobart's LXnH & LXnC offer two level washing, exceptional cleaning performance, & more. Visit Hobart to learn more!",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/1280_gy4X0wSn0fl31Er3.png"
+        },
+        {
+          "model": "Turbowash II",
+          "title": "Turbowash II Powered Sink",
+          "description_en": "Powered sink designed for commercial kitchens that minimizes manual scrubbing and scraping of heavily soiled ware. 2-HP pump circulating 200 gallons of water per minute; horizontal water flow cleans sheet pans without using a rack. Space-saving design with unobstructed basin.",
+          "specs": {
+            "Variants": "Turbowash II (base model), Turbowash II With Scrapper",
+            "Pump capacity": "200 gallons per minute",
+            "Motor": "2 H.P.",
+            "Construction": "14-gauge, type 300 series polished stainless steel",
+            "Features": "Adjustable timer, self-draining pump, recessed jets and heater"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/webdam-assets/webImg_Dishwasher_TurboWash_BodyTopImg.jpg",
+          "source_url": "https://www.hobartcorp.com/products/commercial-dishwashers/pot-pan-and-utensil-washer/powered-sink",
+          "seo_title": "Turbowash II Powered Sink | Utensil, Pot & Pan Washers",
+          "seo_description": "Hobart's Turbowash II Powered Sinks are built to handle the toughest baked-on food, soil and dirt. Designed to minimize manual scrubbing and scrapping of heavily soiled ware and effectively uses space. It's built for the long haul with its stainless steel parts. Get yours today.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/webImg_Dishwasher_TurboWash_BodyTopImg.jpg"
+        },
+        {
+          "model": "PWn-ADV",
+          "title": "PWn Advansys Pot, Pan & Utensil Washer",
+          "description_en": "Prep washer designed for demanding commercial food-prep environments washing a high volume of prep ware, delivering legendary Hobart Clean performance, processing as many as 400 sheet pans per hour. Fits full-size sheet pans and 140-quart mixing bowls. High-temperature sanitizing; Smart Touchscreen with diagnostics; SmartConnect app; Ventless Energy Recovery; ENERGY STAR certified.",
+          "specs": {
+            "Variants": "PW10n-ADV, PW12n-ADV, PW20n-ADV",
+            "Throughput": "Up to 400 sheet pans/hour (PW20n models)",
+            "Cycle options": "Adjustable 2, 4, and 6-minute cycles",
+            "Water consumption": "1.2-2.35 gallons per cycle"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://cdn2.webdamdb.com/1280_gjH20YjSNs41wabc.png",
+          "source_url": "https://www.hobartcorp.com/products/commercial-dishwashers/pot-pan-and-utensil/pwn-advansystm-pot-pan-utensil-washer",
+          "seo_title": "PWn Advansys™ Pot, Pan & Utensil Washer | Hobart",
+          "seo_description": "The Hobart PWn Advansys™ Prep Washer delivers our legendary Hobart Clean & reduced operating costs to save time and money in demanding commercial food-prep environments washing a high volume of prep ware. The PWn Pot, Pan & Utensil Washer washes the toughest food soils off as many as 400 sheet pans per hour, as well as a variety of large & oversized ware. All units are high temperature sanitizing & are available in 10 & 20 sheet pan capacities.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/1280_gjH20YjSNs41wabc.png",
+          "note": "Nhieu bien the cung dong (PWn-ADV, PWn-BAS) dung chung 1 anh tu hang - day la ma dau tien (PWn-ADV)."
+        },
+        {
+          "model": "PWn-BAS",
+          "title": "PWn Base Pot, Pan & Utensil Washer",
+          "description_en": "Base version prep washer for commercial food-prep environments, washing up to 400 sheet pans per hour while handling large oversized ware including 140-quart mixing bowls. High-temperature sanitizing with NSF Pot & Pan rating. X-shaped wash arms; Sense-A-Temp technology maintaining 180F sanitization; smart touchscreen with diagnostics; ENERGY STAR certified.",
+          "specs": {
+            "PW10n-BAS": "200 sheet pans/hour, 1.2 gallons/cycle, 10-pan capacity",
+            "PW20n-BAS": "400 sheet pans/hour, 2.35 gallons/cycle, 20-pan capacity",
+            "Max cycles/hour": "20"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://cdn2.webdamdb.com/1280_gjH20YjSNs41wabc.png?1737644421",
+          "source_url": "https://www.hobartcorp.com/products/commercial-dishwashers/pot-pan-and-utensil/pwn-base-pot-pan-utensil-washer",
+          "seo_title": "PWn Base Pot, Pan & Utensil Washer | Hobart",
+          "seo_description": "The Hobart PWn Prep Washer delivers our legendary Hobart Clean & reduced operating costs to save time and money in demanding commercial food-prep environments washing a high volume of prep ware. The PWn Pot, Pan & Utensil Washer washes the toughest food soils off as many as 400 sheet pans per hour, as well as a variety of large & oversized ware. All units are high temperature sanitizing & are available in 10 & 20 sheet pan capacities.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/1280_gjH20YjSNs41wabc.png",
+          "note": "Bien the cung dong voi PWn-ADV (nhieu ma SKU cung mot dong san pham/trang khac nhau). Dung chung anh voi model dai dien - hang khong cong bo anh rieng cho tung bien the (source_url rieng: https://www.hobartcorp.com/products/commercial-dishwashers/pot-pan-and-utensil/pwn-base-pot-pan-utensil-washer)."
+        },
+        {
+          "model": "FT1000i",
+          "title": "FT1000i Conveyorized Washer",
+          "description_en": "Automated industrial conveyor washing system designed for high-volume operations requiring rapid sanitation cycles, featuring a durable stainless steel pump. Conveyor speed adjustable at 4.0 to 8.5 feet per minute, adaptable for totes, sheet pans, and custom items. Energy recovery system for cost savings and sustainability.",
+          "specs": {
+            "Wash temperature": "150F",
+            "Power rinse": "160F",
+            "Dual rinse": "160F",
+            "Final rinse": "180F",
+            "Conveyor speed range": "4.0-8.5 feet per minute"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/webdam-assets/webImg_Industrial_FT1000iql_tpProd_2732x2048.png",
+          "source_url": "https://www.hobartcorp.com/products/commercial-dishwashers/industrial/ft1000i-conveyorized-washer",
+          "seo_title": "FT1000i Conveyorized Washer | Hobart Industrial Washers",
+          "seo_description": "The FT1000i is the best choice for time sensitive operations. Featuring an easy to use control system and adjustable conveyor speed up to 8.5 feet per minute. You can trust Hobart's conveyor washers to create efficiencies in your cleaning process like never before. Call us today.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/webImg_Industrial_FT1000iql_tpProd_2732x2048.png"
+        },
+        {
+          "model": "CL64T",
+          "title": "CL64T Tote Washer",
+          "description_en": "Industrial washing system designed for a variety of items to streamline the sanitation process. Items move via conveyor through heated wash and rinse cycles, followed by fresh water rinse. Optional 20 HP high-pressure blow-off system with multiple air knives removes water. Suits totes, bins, and custom containers. Capless Wash Arms; Smart Touchscreen with diagnostics; Complete Delime with Booster Guard.",
+          "specs": {
+            "Blower system": "20 HP"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://cdn2.webdamdb.com/1280_Uyv3w4gySJ11Y2vs.png?1750720888",
+          "source_url": "https://www.hobartcorp.com/products/commercial-dishwashers/industrial/cl64t-tote-washer-0",
+          "seo_title": "CL64T Tote Washer | Hobart",
+          "seo_description": "The CL64T Tote Washer is designed to wash a variety of items to help expedite sanitation within your operation. Call Hobart!",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/1280_Uyv3w4gySJ11Y2vs.png"
+        },
+        {
+          "model": "WPR",
+          "title": "WastePro Dishroom Waste System",
+          "description_en": "Commercial food waste processing system that reduces waste up to 88% in volume and processes multiple waste types (food waste, paper, plastic, Styrofoam). Closed-loop design reuses 95% of water. Available as close-coupled unit (pulper and water press combined, WPS-1260) or remote system (components separated by hundreds of yards, WPR-1260). Undercounter or freestanding models available.",
+          "specs": {
+            "Models": "WPR-1260 (Remote), WPS-1260 (Close-Coupled), WP-6 Waterpress, WP-9 Waterpress",
+            "Processing rate": "1,250 to 3,000 pounds per hour",
+            "Water consumption": "262,800 gallons annually (vs. 1,314,000 in disposer systems)"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/webdam-assets/webImg_WastePulper_WPS1260_BodyTopImg.png",
+          "source_url": "https://www.hobartcorp.com/products/commercial-dishwashers/waste-equipment/wastepro-1260",
+          "seo_title": "WastePro Dishroom Waste System | Food Waste Equipment",
+          "seo_description": "Hobart's WastePro 1260 can help you reduce labor time, water consumption and potential hazards to food safety- saving you thousands of dollars every year. It can reduce waste up to 88% in volume and can handle food waste, paper, plastic, and Styrofoam. Call and get your waste system today.",
+          "note": "Ma goc tren site la 'WastePro (WPR/WPS-1260, WP-6/9)' (gop nhieu bien the) — da tach thanh cac dong rieng, dong nay la ma dau tien (WPR).",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/webImg_WastePulper_WPS1260_BodyTopImg.png"
+        },
+        {
+          "model": "WPS-1260",
+          "title": "WastePro Dishroom Waste System",
+          "description_en": "Commercial food waste processing system that reduces waste up to 88% in volume and processes multiple waste types (food waste, paper, plastic, Styrofoam). Closed-loop design reuses 95% of water. Available as close-coupled unit (pulper and water press combined, WPS-1260) or remote system (components separated by hundreds of yards, WPR-1260). Undercounter or freestanding models available.",
+          "specs": {
+            "Models": "WPR-1260 (Remote), WPS-1260 (Close-Coupled), WP-6 Waterpress, WP-9 Waterpress",
+            "Processing rate": "1,250 to 3,000 pounds per hour",
+            "Water consumption": "262,800 gallons annually (vs. 1,314,000 in disposer systems)"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/webdam-assets/webImg_WastePulper_WPS1260_BodyTopImg.png",
+          "source_url": "https://www.hobartcorp.com/products/commercial-dishwashers/waste-equipment/wastepro-1260",
+          "seo_title": "WastePro Dishroom Waste System | Food Waste Equipment",
+          "seo_description": "Hobart's WastePro 1260 can help you reduce labor time, water consumption and potential hazards to food safety- saving you thousands of dollars every year. It can reduce waste up to 88% in volume and can handle food waste, paper, plastic, and Styrofoam. Call and get your waste system today.",
+          "note": "Ma SKU that, cung dong voi WPR (nguyen goc site ghi gop 'WastePro (WPR/WPS-1260, WP-6/9)'). Dung chung anh/mo ta voi model dai dien WPR — Hobart khong cong bo anh rieng cho tung bien the tren trang san pham nay.",
+          "is_variant_of": "WPR",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/webImg_WastePulper_WPS1260_BodyTopImg.png"
+        },
+        {
+          "model": "WP-6",
+          "title": "WastePro Dishroom Waste System",
+          "description_en": "Commercial food waste processing system that reduces waste up to 88% in volume and processes multiple waste types (food waste, paper, plastic, Styrofoam). Closed-loop design reuses 95% of water. Available as close-coupled unit (pulper and water press combined, WPS-1260) or remote system (components separated by hundreds of yards, WPR-1260). Undercounter or freestanding models available.",
+          "specs": {
+            "Models": "WPR-1260 (Remote), WPS-1260 (Close-Coupled), WP-6 Waterpress, WP-9 Waterpress",
+            "Processing rate": "1,250 to 3,000 pounds per hour",
+            "Water consumption": "262,800 gallons annually (vs. 1,314,000 in disposer systems)"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/webdam-assets/webImg_WastePulper_WPS1260_BodyTopImg.png",
+          "source_url": "https://www.hobartcorp.com/products/commercial-dishwashers/waste-equipment/wastepro-1260",
+          "seo_title": "WastePro Dishroom Waste System | Food Waste Equipment",
+          "seo_description": "Hobart's WastePro 1260 can help you reduce labor time, water consumption and potential hazards to food safety- saving you thousands of dollars every year. It can reduce waste up to 88% in volume and can handle food waste, paper, plastic, and Styrofoam. Call and get your waste system today.",
+          "note": "Ma SKU that, cung dong voi WPR (nguyen goc site ghi gop 'WastePro (WPR/WPS-1260, WP-6/9)'). Dung chung anh/mo ta voi model dai dien WPR — Hobart khong cong bo anh rieng cho tung bien the tren trang san pham nay.",
+          "is_variant_of": "WPR",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/webImg_WastePulper_WPS1260_BodyTopImg.png"
+        },
+        {
+          "model": "WP-9",
+          "title": "WastePro Dishroom Waste System",
+          "description_en": "Commercial food waste processing system that reduces waste up to 88% in volume and processes multiple waste types (food waste, paper, plastic, Styrofoam). Closed-loop design reuses 95% of water. Available as close-coupled unit (pulper and water press combined, WPS-1260) or remote system (components separated by hundreds of yards, WPR-1260). Undercounter or freestanding models available.",
+          "specs": {
+            "Models": "WPR-1260 (Remote), WPS-1260 (Close-Coupled), WP-6 Waterpress, WP-9 Waterpress",
+            "Processing rate": "1,250 to 3,000 pounds per hour",
+            "Water consumption": "262,800 gallons annually (vs. 1,314,000 in disposer systems)"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/webdam-assets/webImg_WastePulper_WPS1260_BodyTopImg.png",
+          "source_url": "https://www.hobartcorp.com/products/commercial-dishwashers/waste-equipment/wastepro-1260",
+          "seo_title": "WastePro Dishroom Waste System | Food Waste Equipment",
+          "seo_description": "Hobart's WastePro 1260 can help you reduce labor time, water consumption and potential hazards to food safety- saving you thousands of dollars every year. It can reduce waste up to 88% in volume and can handle food waste, paper, plastic, and Styrofoam. Call and get your waste system today.",
+          "note": "Ma SKU that, cung dong voi WPR (nguyen goc site ghi gop 'WastePro (WPR/WPS-1260, WP-6/9)'). Dung chung anh/mo ta voi model dai dien WPR — Hobart khong cong bo anh rieng cho tung bien the tren trang san pham nay.",
+          "is_variant_of": "WPR",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/webImg_WastePulper_WPS1260_BodyTopImg.png"
+        },
+        {
+          "model": "FD4",
+          "title": "Hobart FD4 Commercial Food Waste Disposer",
+          "description_en": "Commercial food waste disposers designed to reduce waste disposal costs by grinding food scraps and leftovers into small particles suitable for drainage. Operates via push-and-grind mechanism while running cold water. Breaker blade for accelerated grinding; precision-machined Ni-Resist flywheel; hardened stainless steel cutter blocks (replaceable, indexable); dual directional grinding; vinyl isolating ring; heavy aluminum construction.",
+          "specs": {
+            "Model range": "FD4/50, FD4/75, FD4/125, FD4/150, FD4/200, FD4/300, FD4/500"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/webdam-assets/webImg_1200_Prod_FD4-125wLongHousing.png",
+          "source_url": "https://www.hobartcorp.com/products/commercial-dishwashers/waste-equipment/food-waste-disposers",
+          "seo_title": "Commercial Food Waste Disposer | Food Waste Equipment",
+          "seo_description": "Hobart food waste disposers are a simple and efficient way to reduce waste and save money. It features an easy switch to start operation with a breaker blade for speedier grinding. It is very easy to use and maintain and boasts a lower cost of ownership than other waste disposers.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/webImg_1200_Prod_FD4-125wLongHousing.png"
+        },
+        {
+          "model": "FT2000-ADV",
+          "title": "FT2000 Advansys Flight Type Dishwasher",
+          "description_en": "Delivering legendary Hobart Clean that cleans more tough food soil with less labor & the lowest operating cost. Automatic Soil Removal, Adaptive Washing, Drain Water Energy Recovery, Complete Delime with Booster Guard, SmartConnect WiFi connectivity.",
+          "specs": {
+            "Variants": "FT2000-ADV / FT2000S-ADV, each in Electric or Steam, with or without Blower; plus FT2000-DWR / FT2000S-DWR variants with Drain Water Energy Recovery",
+            "Dishes per hour": "10,610 - 14,310",
+            "Rinse rate": "55 gallons/hour",
+            "Amp load": "150 amps",
+            "Energy Star": "3.0 rated",
+            "NSF rating": "Pot & pan rated, handles full-size sheet pans"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://cdn2.webdamdb.com/1280_sdVwSbSAbL112pGs.png?1765575625",
+          "source_url": "https://www.hobartcorp.com/products/commercial-dishwashers/flight-type/ft2000-advansystm-flight-type-dishwasher",
+          "seo_title": "FT2000 Advansys™ Flight Type Commercial Dishwasher",
+          "seo_description": "High-capacity flight type commercial dishwasher featuring automatic soil removal, energy recovery, and intuitive operation for reduced labor and operating costs.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/1280_sdVwSbSAbL112pGs.png",
+          "note": "Nhieu bien the cung dong (FT2000-ADV, FT2000-BAS) dung chung 1 anh tu hang - day la ma dau tien (FT2000-ADV)."
+        },
+        {
+          "model": "FT2000-BAS",
+          "title": "FT2000 Base Flight Type Dishwasher",
+          "description_en": "Commercial flight-type dishwasher delivering legendary Hobart Clean with reduced labor requirements and minimal operating costs. Intuitive operation, enhanced accessibility for machine cleaning, standard-height opening accommodating full-size sheet pans. Complete Delime with Booster Guard, capless wash arms, easy-open load/unload platform, SmartConnect WiFi.",
+          "specs": {
+            "Variants": "FT2000-BAS / FT2000S-BAS, Electric or Steam, with or without Blower Dryer",
+            "Capacity": "10,610 - 14,310 dishes per hour",
+            "Water efficiency": "55 gallons/hour",
+            "Rating": "NSF Pot & Pan certified",
+            "Energy rating": "Energy Star 3.0 certified"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://cdn2.webdamdb.com/1280_sdVwSbSAbL112pGs.png?1765575625",
+          "source_url": "https://www.hobartcorp.com/products/commercial-dishwashers/flight-type/ft2000-base-flight-type-dishwasher",
+          "seo_title": "FT2000 Base Flight Type Dishwasher",
+          "seo_description": "Hobart's FT2000 Flight-Type Commercial Dishwasher delivers our legendary Hobart Clean with less labor & the lowest operating cost available.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/1280_sdVwSbSAbL112pGs.png",
+          "note": "Bien the cung dong voi FT2000-ADV (nhieu ma SKU cung mot dong san pham/trang khac nhau). Dung chung anh voi model dai dien - hang khong cong bo anh rieng cho tung bien the (source_url rieng: https://www.hobartcorp.com/products/commercial-dishwashers/flight-type/ft2000-base-flight-type-dishwasher)."
+        },
+        {
+          "model": "LXGnR",
+          "title": "Advansys LXGn Glasswasher",
+          "description_en": "Designed to deliver Hobart Clean drinkware, removing chemical residue and ensuring the drinking and dining experience customers expect. Smart touchscreen controls; soft-start technology to prevent chipping; steam elimination for operator comfort.",
+          "specs": {
+            "LXGnR (High Temp)": "180F sanitization, 30 Light/24 Normal racks per hour, 0.62 gallons/rack",
+            "LXGnPR (Chemical)": "38 Light/29 Normal racks per hour, 1.14 gallons/rack",
+            "Door opening": "12\"",
+            "Height options": "34-1/16\" or 42-1/16\"",
+            "Variants": "ADA LXGnR, ADA LXGnPR also available",
+            "Energy Star": "Certified"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://cdn2.webdamdb.com/1280_6EOxkinA8L202May.png?1700080189",
+          "source_url": "https://www.hobartcorp.com/products/commercial-dishwashers/hobart-lxgn-series-glasswasher",
+          "seo_title": "Advansys LXGn Glasswashers | Hobart Glasswashers",
+          "seo_description": "Let your drinks shine through with the glasswashers that eliminate chemical residue with the Advansys LXGn Glasswashers. Our LXGn glasswashers are ENERGY STAR® certified and easy to operate. With two available heights, compact design and high-end appearance, get your new LXGn glasswasher today.",
+          "note": "Ma goc tren site la 'LXGnR/LXGnPR' (gop nhieu bien the) — da tach thanh cac dong rieng, dong nay la ma dau tien (LXGnR).",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/1280_6EOxkinA8L202May.png"
+        },
+        {
+          "model": "LXGnPR",
+          "title": "Advansys LXGn Glasswasher",
+          "description_en": "Designed to deliver Hobart Clean drinkware, removing chemical residue and ensuring the drinking and dining experience customers expect. Smart touchscreen controls; soft-start technology to prevent chipping; steam elimination for operator comfort.",
+          "specs": {
+            "LXGnR (High Temp)": "180F sanitization, 30 Light/24 Normal racks per hour, 0.62 gallons/rack",
+            "LXGnPR (Chemical)": "38 Light/29 Normal racks per hour, 1.14 gallons/rack",
+            "Door opening": "12\"",
+            "Height options": "34-1/16\" or 42-1/16\"",
+            "Variants": "ADA LXGnR, ADA LXGnPR also available",
+            "Energy Star": "Certified"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://cdn2.webdamdb.com/1280_6EOxkinA8L202May.png?1700080189",
+          "source_url": "https://www.hobartcorp.com/products/commercial-dishwashers/hobart-lxgn-series-glasswasher",
+          "seo_title": "Advansys LXGn Glasswashers | Hobart Glasswashers",
+          "seo_description": "Let your drinks shine through with the glasswashers that eliminate chemical residue with the Advansys LXGn Glasswashers. Our LXGn glasswashers are ENERGY STAR® certified and easy to operate. With two available heights, compact design and high-end appearance, get your new LXGn glasswasher today.",
+          "note": "Ma SKU that, cung dong voi LXGnR (nguyen goc site ghi gop 'LXGnR/LXGnPR'). Dung chung anh/mo ta voi model dai dien LXGnR — Hobart khong cong bo anh rieng cho tung bien the tren trang san pham nay.",
+          "is_variant_of": "LXGnR",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/1280_6EOxkinA8L202May.png"
+        }
+      ]
+    },
+    {
+      "group_name": "Weighing & Wrapping Equipment",
+      "group_name_vi": "Thiết Bị Cân & Đóng Gói",
+      "source_urls": [
+        "https://www.hobartcorp.com/products/weigh-wrap",
+        "https://www.hobartcorp.com/products/weigh-wrap/wrapping-equipment",
+        "https://www.hobartcorp.com/products/weigh-wrap/scales",
+        "https://www.hobartcorp.com/products/weigh-wrap/software"
+      ],
+      "models": [
+        {
+          "model": "NGW",
+          "title": "NGW Automatic Wrapping System",
+          "description_en": "Automatically centers packages that are fed in, reducing film costs and ensuring consistent quality and fewer mistakes. NGW2 is an advanced model with film selection capability; NGW1 uses a single film roll. Advanced pneumatic mechanical system with tank-based design; copy machine diagnostics for reduced downtime; remote diagnostic capability; hose-down cleaning.",
+          "specs": {
+            "Max package size": "10\" x 16\"",
+            "Display": "14\" diagonal color LCD touch screen",
+            "Film width": "14\" to 20\" wide"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/styles/max_550_x_550/public/webdam-assets/Wrapper%20NGW%20qr%20.png",
+          "source_url": "https://www.hobartcorp.com/products/weigh-wrap/wrapping-equipment/access-automatic-wrapping-system",
+          "seo_title": "Automatic Wrapping Systems | Auto Wrap Equipment | Hobart",
+          "seo_description": "Hobart’s Automatic Wrapping Systems are your all-access wrapping solution. Choose from two systems that provide all you need and more.",
+          "note": "Ma goc tren site la 'NGW/NGW1/NGW2' (gop nhieu bien the) — da tach thanh cac dong rieng, dong nay la ma dau tien (NGW).",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Wrapper_20NGW_20qr_20.png"
+        },
+        {
+          "model": "NGW1",
+          "title": "NGW Automatic Wrapping System",
+          "description_en": "Automatically centers packages that are fed in, reducing film costs and ensuring consistent quality and fewer mistakes. NGW2 is an advanced model with film selection capability; NGW1 uses a single film roll. Advanced pneumatic mechanical system with tank-based design; copy machine diagnostics for reduced downtime; remote diagnostic capability; hose-down cleaning.",
+          "specs": {
+            "Max package size": "10\" x 16\"",
+            "Display": "14\" diagonal color LCD touch screen",
+            "Film width": "14\" to 20\" wide"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/styles/max_550_x_550/public/webdam-assets/Wrapper%20NGW%20qr%20.png",
+          "source_url": "https://www.hobartcorp.com/products/weigh-wrap/wrapping-equipment/access-automatic-wrapping-system",
+          "seo_title": "Automatic Wrapping Systems | Auto Wrap Equipment | Hobart",
+          "seo_description": "Hobart’s Automatic Wrapping Systems are your all-access wrapping solution. Choose from two systems that provide all you need and more.",
+          "note": "Ma SKU that, cung dong voi NGW (nguyen goc site ghi gop 'NGW/NGW1/NGW2'). Dung chung anh/mo ta voi model dai dien NGW — Hobart khong cong bo anh rieng cho tung bien the tren trang san pham nay.",
+          "is_variant_of": "NGW",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Wrapper_20NGW_20qr_20.png"
+        },
+        {
+          "model": "NGW2",
+          "title": "NGW Automatic Wrapping System",
+          "description_en": "Automatically centers packages that are fed in, reducing film costs and ensuring consistent quality and fewer mistakes. NGW2 is an advanced model with film selection capability; NGW1 uses a single film roll. Advanced pneumatic mechanical system with tank-based design; copy machine diagnostics for reduced downtime; remote diagnostic capability; hose-down cleaning.",
+          "specs": {
+            "Max package size": "10\" x 16\"",
+            "Display": "14\" diagonal color LCD touch screen",
+            "Film width": "14\" to 20\" wide"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/styles/max_550_x_550/public/webdam-assets/Wrapper%20NGW%20qr%20.png",
+          "source_url": "https://www.hobartcorp.com/products/weigh-wrap/wrapping-equipment/access-automatic-wrapping-system",
+          "seo_title": "Automatic Wrapping Systems | Auto Wrap Equipment | Hobart",
+          "seo_description": "Hobart’s Automatic Wrapping Systems are your all-access wrapping solution. Choose from two systems that provide all you need and more.",
+          "note": "Ma SKU that, cung dong voi NGW (nguyen goc site ghi gop 'NGW/NGW1/NGW2'). Dung chung anh/mo ta voi model dai dien NGW — Hobart khong cong bo anh rieng cho tung bien the tren trang san pham nay.",
+          "is_variant_of": "NGW",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Wrapper_20NGW_20qr_20.png"
+        },
+        {
+          "model": "HWS-4",
+          "title": "Hobart Hand Wrap Solutions",
+          "description_en": "Compact and efficient hand wrap stations with fast, easy operation and compact footprint, designed to integrate with Access and GT scale systems for enhanced merchandising capabilities. Heavy-duty stainless steel (300 series) construction; open design for easy cleaning; available in standard and Energy Smart models.",
+          "specs": {
+            "Models": "HWS-4-C and HWS-4-ES (GT/Access, HT/Access), W32, W32C-5, W32ES-1, 625A Table Top Wrapper, 625ES-1 Energy Smart Table Top Wrapper"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/styles/max_310_x_310/public/webdam-assets/Hand%20Wrap%20Station%20HWS%20f%20wAccess%20EPP%20.png",
+          "source_url": "https://www.hobartcorp.com/products/weigh-wrap/wrapping-equipment/hand-wrap-solutions",
+          "seo_title": "Hobart | Wrapping Equipment – Hand Wrap Solutions",
+          "seo_description": "Wrap things faster and more efficiently with Hobart’s Hand-Wrap solutions.",
+          "note": "Ma goc tren site la 'HWS-4 / W32 / 625A' (gop nhieu bien the) — da tach thanh cac dong rieng, dong nay la ma dau tien (HWS-4).",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Hand_20Wrap_20Station_20HWS_20f_20wAccess_20EPP_20.png"
+        },
+        {
+          "model": "W32",
+          "title": "Hobart Hand Wrap Solutions",
+          "description_en": "Compact and efficient hand wrap stations with fast, easy operation and compact footprint, designed to integrate with Access and GT scale systems for enhanced merchandising capabilities. Heavy-duty stainless steel (300 series) construction; open design for easy cleaning; available in standard and Energy Smart models.",
+          "specs": {
+            "Models": "HWS-4-C and HWS-4-ES (GT/Access, HT/Access), W32, W32C-5, W32ES-1, 625A Table Top Wrapper, 625ES-1 Energy Smart Table Top Wrapper"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/styles/max_310_x_310/public/webdam-assets/Hand%20Wrap%20Station%20HWS%20f%20wAccess%20EPP%20.png",
+          "source_url": "https://www.hobartcorp.com/products/weigh-wrap/wrapping-equipment/hand-wrap-solutions",
+          "seo_title": "Hobart | Wrapping Equipment – Hand Wrap Solutions",
+          "seo_description": "Wrap things faster and more efficiently with Hobart’s Hand-Wrap solutions.",
+          "note": "Ma SKU that, cung dong voi HWS-4 (nguyen goc site ghi gop 'HWS-4 / W32 / 625A'). Dung chung anh/mo ta voi model dai dien HWS-4 — Hobart khong cong bo anh rieng cho tung bien the tren trang san pham nay.",
+          "is_variant_of": "HWS-4",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Hand_20Wrap_20Station_20HWS_20f_20wAccess_20EPP_20.png"
+        },
+        {
+          "model": "625A",
+          "title": "Hobart Hand Wrap Solutions",
+          "description_en": "Compact and efficient hand wrap stations with fast, easy operation and compact footprint, designed to integrate with Access and GT scale systems for enhanced merchandising capabilities. Heavy-duty stainless steel (300 series) construction; open design for easy cleaning; available in standard and Energy Smart models.",
+          "specs": {
+            "Models": "HWS-4-C and HWS-4-ES (GT/Access, HT/Access), W32, W32C-5, W32ES-1, 625A Table Top Wrapper, 625ES-1 Energy Smart Table Top Wrapper"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/styles/max_310_x_310/public/webdam-assets/Hand%20Wrap%20Station%20HWS%20f%20wAccess%20EPP%20.png",
+          "source_url": "https://www.hobartcorp.com/products/weigh-wrap/wrapping-equipment/hand-wrap-solutions",
+          "seo_title": "Hobart | Wrapping Equipment – Hand Wrap Solutions",
+          "seo_description": "Wrap things faster and more efficiently with Hobart’s Hand-Wrap solutions.",
+          "note": "Ma SKU that, cung dong voi HWS-4 (nguyen goc site ghi gop 'HWS-4 / W32 / 625A'). Dung chung anh/mo ta voi model dai dien HWS-4 — Hobart khong cong bo anh rieng cho tung bien the tren trang san pham nay.",
+          "is_variant_of": "HWS-4",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Hand_20Wrap_20Station_20HWS_20f_20wAccess_20EPP_20.png"
+        },
+        {
+          "model": "CLAS",
+          "title": "CLAS Semi-Automatic Wrapping System",
+          "description_en": "Semi-automatic wrapping system designed for mid-volume meat processing facilities. Works alongside a sealer belt conveyor and an automatic weigher and labeler to create an efficient meat room wrapping solution, enabling operators to wrap products continuously while automated processes handle weighing and labeling. Left-to-right or right-to-left configurations for flexible meat room placement; 4-position swivel wand for label rotation in all four directions; rugged stainless steel construction.",
+          "specs": {
+            "Manual weighing": "Up to 30 lbs. in 0.01-lb. increments"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/webdam-assets/Prepack%20System%20Access%20CLAS%20qr%20.png",
+          "source_url": "https://www.hobartcorp.com/products/weigh-wrap/wrapping-equipment/clas-b-semi-automatic-wrapping-system",
+          "seo_title": "Hobart | Wrapping Equipment - CLA Semi-Automatic Wrapping System",
+          "seo_description": "Hold up to three film sizes and save floor space all while wrapping 14 packages per minute with the CLA semi-automatic wrapping system.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Prepack_20System_20Access_20CLAS_20qr_20.png"
+        },
+        {
+          "model": "NGW2P",
+          "title": "NGW2P Automatic Wrapping System",
+          "description_en": "Automatic wrapper designed for meat department operations with a dual printer configuration enabling independent labeling capabilities. Can print and apply a second label, or apply a pre-printed label, with flexibility to position labels in any of the four package corners and orientations. Secondary printer can be disabled via flash key.",
+          "specs": {
+            "Display": "15.6\" touchscreen interface with water intrusion protection"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/styles/max_310_x_310/public/webdam-assets/Wrapper%20NGWP2%20f%20.png",
+          "source_url": "https://www.hobartcorp.com/products/weigh-wrap/wrapping-equipment/ngw2p-automatic-wrapping-system",
+          "seo_title": "NGW2P Automatic Wrapping System",
+          "seo_description": "The NGW2P wrapper comes equipped with two printers allowing grocers to label product with two independent labels. The secondary printer will automatically apply a pre-printed label or print and apply a label based on the PLU configuration and label type. The NGW2P has the flexibility to place the secondary label in any of the 4 corners of the package and in any orientation.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Wrapper_20NGWP2_20f_20.png"
+        },
+        {
+          "model": "HTs",
+          "title": "Hobart HT Series Scales",
+          "description_en": "Intelligent weighing solution featuring a customizable dynamic content area on the operator display to accommodate various department needs. Both models include a 10.1-inch operator touchscreen and 7-inch customer-facing display supporting thousands of PLUs with network connectivity options.",
+          "specs": {
+            "HTs": "IMX6 Solo processor, 8 GB storage, wireless optional, 2 swipable GUI screens",
+            "HTi": "IMX6 Dual processor, 8/16 GB storage, wireless standard, simultaneous operator/customer video, 3 swipable GUI screens",
+            "Operator display": "10.1\" TFT LCD"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/webdam-assets/htx-main.jpg",
+          "source_url": "https://www.hobartcorp.com/products/weigh-wrap/scales/ht-series",
+          "seo_title": "Hobart HT Series Scales",
+          "seo_description": "Hobart’s scales gives power to your customer while saving time and labor for your employees.",
+          "note": "Ma goc tren site la 'HTs/HTi' (gop nhieu bien the) — da tach thanh cac dong rieng, dong nay la ma dau tien (HTs).",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/htx-main.jpg"
+        },
+        {
+          "model": "HTi",
+          "title": "Hobart HT Series Scales",
+          "description_en": "Intelligent weighing solution featuring a customizable dynamic content area on the operator display to accommodate various department needs. Both models include a 10.1-inch operator touchscreen and 7-inch customer-facing display supporting thousands of PLUs with network connectivity options.",
+          "specs": {
+            "HTs": "IMX6 Solo processor, 8 GB storage, wireless optional, 2 swipable GUI screens",
+            "HTi": "IMX6 Dual processor, 8/16 GB storage, wireless standard, simultaneous operator/customer video, 3 swipable GUI screens",
+            "Operator display": "10.1\" TFT LCD"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/webdam-assets/htx-main.jpg",
+          "source_url": "https://www.hobartcorp.com/products/weigh-wrap/scales/ht-series",
+          "seo_title": "Hobart HT Series Scales",
+          "seo_description": "Hobart’s scales gives power to your customer while saving time and labor for your employees.",
+          "note": "Ma SKU that, cung dong voi HTs (nguyen goc site ghi gop 'HTs/HTi'). Dung chung anh/mo ta voi model dai dien HTs — Hobart khong cong bo anh rieng cho tung bien the tren trang san pham nay.",
+          "is_variant_of": "HTs",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/htx-main.jpg"
+        },
+        {
+          "model": "Wrap Station Scale System",
+          "title": "Hobart Wrap Station Scale System",
+          "description_en": "Combines weighing and wrapping capabilities designed for retail food operations. Large touch-screen display for quick, easy operation; high-resolution thermal printing (203 dpi) enables smaller bar codes for more label merchandising; database search by PLU or product description; web browser functionality for remote monitoring; wireless or wired internet connectivity; USB firmware upgrade.",
+          "specs": {
+            "Display": "10.4-inch color LCD touch screen with adjustable viewing angle"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/webdam-assets/Hand%20Wrap%20Station%20HWS%20qr%20wAccess%20EPP%20.png",
+          "source_url": "https://www.hobartcorp.com/products/weigh-wrap/scales/wrap-station-scale-system",
+          "seo_title": "Wrap Station Scale System | Hobart",
+          "seo_description": "From printing detailed labels to remembering thousands of PLUs, Hobart’s Wrap Station Scale delivers connectivity and convenience to everyone.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Hand_20Wrap_20Station_20HWS_20qr_20wAccess_20EPP_20.png"
+        },
+        {
+          "model": "HTi Self-Service",
+          "title": "HTi Self-Service Scale",
+          "description_en": "Self-service retail scale featuring a large, adjustable 14-inch touch screen display, combining consumer convenience with advanced software capabilities so customers can independently weigh and label products. Available with or without barcode scanner. Configurable screens for various retail applications (bulk foods, salads, coffee, hardware).",
+          "specs": {
+            "Display": "14\" adjustable touch screen"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/styles/max_310_x_310/public/webdam-assets/Scale%20HTi%20Self%20Service%20qr%20.png",
+          "source_url": "https://www.hobartcorp.com/products/weigh-wrap/scales/hti-self-service-scale",
+          "seo_title": "HTi Self-Service Scale | Hobart",
+          "seo_description": "Our HTi Elevated Display Service Scale combines consumer ease of use and an advanced software feature set.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Scale_20HTi_20Self_20Service_20qr_20.png"
+        },
+        {
+          "model": "PS40",
+          "title": "Hobart PS40 Price Computing Scale",
+          "description_en": "Compact, battery-operated scale designed for restaurants, grocery stores, and outdoor markets, delivering precise weighing for portion control and cost management. Completely mobile, featuring a rechargeable 6V 4-amp sealed lead acid battery. Programmable, with a memory bank of 50 PLUs and 12 speed keys. Audio feedback and large keyboard.",
+          "specs": {
+            "Memory": "50 PLUs, 12 speed keys",
+            "Operating temperature": "14F to 104F",
+            "Platter": "Stainless steel",
+            "Keypad": "Membrane keypad"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/webdam-assets/Scale%20PS40%20wCandy%20QL.jpg",
+          "source_url": "https://www.hobartcorp.com/products/weigh-wrap/scales/price-computing-scale",
+          "seo_title": "Price Computing Scale | Hobart",
+          "seo_description": "Mobile price computing scale with rechargeable battery, 50 PLU memory bank, stainless steel platter, and membrane keypad for easy cleaning.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Scale_20PS40_20wCandy_20QL.jpg"
+        },
+        {
+          "model": "HBR302",
+          "title": "HBR302 Platform Scale",
+          "description_en": "Receiving scale accommodating a variety of bulk weighing needs across commercial food service settings (receiving at groceries, general stores, fish markets; check weighing at restaurants and bakeries). Can function as a portable or stationary unit; separate cart enables relocation without transporting large bulk items.",
+          "specs": {
+            "Display": "Tilt and rotatable",
+            "Power": "Rechargeable battery or AC adapter",
+            "Modes": "Checkweighing mode with LED indicator, Energy saver setting",
+            "Certification": "Legal for trade"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/webdam-assets/Scale%20HBR302%20ql%20wBagPotatoes%20.png",
+          "source_url": "https://www.hobartcorp.com/products/weigh-wrap/scales/hbr302-platform-scale",
+          "seo_title": "HBR302 Platform Scale",
+          "seo_description": "Hobart's HBR302 receiving scale for commercial weighing activities including receiving at groceries, general stores, fish markets, and check weighing at restaurants and bakeries.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/Scale_20HBR302_20ql_20wBagPotatoes_20.png"
+        },
+        {
+          "model": "FS-100",
+          "title": "FreshServe Self-Service Scale",
+          "description_en": "Integrated retail weighing solution combining scale, printer, and touchscreen functionality. Automatically weighs products, computes prices from stored product lookup units, and prints labels or barcode/QR codes. Accommodates die-cut or linerless label stock with the industry's largest label roll capacity. Customizable touchscreen; integrated printer and removable bowl; multiple search methods (image, description, PLU); optional barcode scanner; optional image recognition camera; optional ValueMax level compensation technology.",
+          "specs": {
+            "Variants": "FS-100 (Tall), FS-200 (ADA Height), FS-300 (Table Top)"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://cdn2.webdamdb.com/310th_sm_QMb3liPtXm01QDRk.png",
+          "source_url": "https://www.hobartcorp.com/products/weigh-wrap/scales/freshserve-self-service-scale",
+          "seo_title": "FreshServe Self-Service Scale | Hobart",
+          "seo_description": "FS scales are user friendly and customizable for each department.",
+          "note": "Ma goc tren site la 'FS-100/200/300' (gop nhieu bien the) — da tach thanh cac dong rieng, dong nay la ma dau tien (FS-100).",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/310th_sm_QMb3liPtXm01QDRk.png"
+        },
+        {
+          "model": "FS-200",
+          "title": "FreshServe Self-Service Scale",
+          "description_en": "Integrated retail weighing solution combining scale, printer, and touchscreen functionality. Automatically weighs products, computes prices from stored product lookup units, and prints labels or barcode/QR codes. Accommodates die-cut or linerless label stock with the industry's largest label roll capacity. Customizable touchscreen; integrated printer and removable bowl; multiple search methods (image, description, PLU); optional barcode scanner; optional image recognition camera; optional ValueMax level compensation technology.",
+          "specs": {
+            "Variants": "FS-100 (Tall), FS-200 (ADA Height), FS-300 (Table Top)"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://cdn2.webdamdb.com/310th_sm_QMb3liPtXm01QDRk.png",
+          "source_url": "https://www.hobartcorp.com/products/weigh-wrap/scales/freshserve-self-service-scale",
+          "seo_title": "FreshServe Self-Service Scale | Hobart",
+          "seo_description": "FS scales are user friendly and customizable for each department.",
+          "note": "Ma SKU that, cung dong voi FS-100 (nguyen goc site ghi gop 'FS-100/200/300'). Dung chung anh/mo ta voi model dai dien FS-100 — Hobart khong cong bo anh rieng cho tung bien the tren trang san pham nay.",
+          "is_variant_of": "FS-100",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/310th_sm_QMb3liPtXm01QDRk.png"
+        },
+        {
+          "model": "FS-300",
+          "title": "FreshServe Self-Service Scale",
+          "description_en": "Integrated retail weighing solution combining scale, printer, and touchscreen functionality. Automatically weighs products, computes prices from stored product lookup units, and prints labels or barcode/QR codes. Accommodates die-cut or linerless label stock with the industry's largest label roll capacity. Customizable touchscreen; integrated printer and removable bowl; multiple search methods (image, description, PLU); optional barcode scanner; optional image recognition camera; optional ValueMax level compensation technology.",
+          "specs": {
+            "Variants": "FS-100 (Tall), FS-200 (ADA Height), FS-300 (Table Top)"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://cdn2.webdamdb.com/310th_sm_QMb3liPtXm01QDRk.png",
+          "source_url": "https://www.hobartcorp.com/products/weigh-wrap/scales/freshserve-self-service-scale",
+          "seo_title": "FreshServe Self-Service Scale | Hobart",
+          "seo_description": "FS scales are user friendly and customizable for each department.",
+          "note": "Ma SKU that, cung dong voi FS-100 (nguyen goc site ghi gop 'FS-100/200/300'). Dung chung anh/mo ta voi model dai dien FS-100 — Hobart khong cong bo anh rieng cho tung bien the tren trang san pham nay.",
+          "is_variant_of": "FS-100",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/310th_sm_QMb3liPtXm01QDRk.png"
+        },
+        {
+          "model": "GTs",
+          "title": "Hobart GT Series Scales",
+          "description_en": "The WEIGH of the Future - GT Series Scales feature intelligent, industry-leading user interface with robust storage for data integration. Built-in diagnostics; linerless label capability (GTi Linerless model); flexible label printing up to 3 inches wide.",
+          "specs": {
+            "Variants": "GTs (Standard Performance), GTi (Premium Performance), GTi Linerless (Premium Performance with linerless capability)",
+            "Processor": "Quad Core, Embedded Linux",
+            "RAM": "2 GB DDR3 (minimum)",
+            "Storage": "32 GB program/data storage",
+            "Operator display": "10.1\", 11.6\", or 13.3\" touch screens",
+            "Customer display": "7\" standard; optional 10\" elevated",
+            "Print width": "Up to 3 inches",
+            "Print speed": "Up to 8 inches per second"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://cdn2.webdamdb.com/220th_sm_oMbJCRk8wNc94cJ5.png",
+          "source_url": "https://www.hobartcorp.com/products/weigh-wrap/scales/gt-series-scales",
+          "seo_title": "Hobart GT Series Scales",
+          "seo_description": "Hobart’s scales gives power to your customer while saving time and labor for your employees.",
+          "note": "Ma goc tren site la 'GTs/GTi' (gop nhieu bien the) — da tach thanh cac dong rieng, dong nay la ma dau tien (GTs).",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/220th_sm_oMbJCRk8wNc94cJ5.png"
+        },
+        {
+          "model": "GTi",
+          "title": "Hobart GT Series Scales",
+          "description_en": "The WEIGH of the Future - GT Series Scales feature intelligent, industry-leading user interface with robust storage for data integration. Built-in diagnostics; linerless label capability (GTi Linerless model); flexible label printing up to 3 inches wide.",
+          "specs": {
+            "Variants": "GTs (Standard Performance), GTi (Premium Performance), GTi Linerless (Premium Performance with linerless capability)",
+            "Processor": "Quad Core, Embedded Linux",
+            "RAM": "2 GB DDR3 (minimum)",
+            "Storage": "32 GB program/data storage",
+            "Operator display": "10.1\", 11.6\", or 13.3\" touch screens",
+            "Customer display": "7\" standard; optional 10\" elevated",
+            "Print width": "Up to 3 inches",
+            "Print speed": "Up to 8 inches per second"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://cdn2.webdamdb.com/220th_sm_oMbJCRk8wNc94cJ5.png",
+          "source_url": "https://www.hobartcorp.com/products/weigh-wrap/scales/gt-series-scales",
+          "seo_title": "Hobart GT Series Scales",
+          "seo_description": "Hobart’s scales gives power to your customer while saving time and labor for your employees.",
+          "note": "Ma SKU that, cung dong voi GTs (nguyen goc site ghi gop 'GTs/GTi'). Dung chung anh/mo ta voi model dai dien GTs — Hobart khong cong bo anh rieng cho tung bien the tren trang san pham nay.",
+          "is_variant_of": "GTs",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/220th_sm_oMbJCRk8wNc94cJ5.png"
+        },
+        {
+          "model": "RFID GT Scales",
+          "title": "RFID Enabled GT Scales",
+          "description_en": "Retail grocery scales featuring RFID encoding capability, engineered to help retailers integrate RFID technology into fresh departments with real-time fresh inventory tracking. Automated inventory processes and restocking; real-time expiration date visibility; reduced food waste; enhanced labor efficiency; improved supply chain visibility; seamless integration with whole-store RFID operations. Based on the GT Series platform (no separate model number given on this page).",
+          "specs": {},
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://cdn2.webdamdb.com/220th_sm_cAl8M0jB6YR51cdB.png",
+          "source_url": "https://www.hobartcorp.com/products/weigh-wrap/scales/rfid-enabled-gt-scales",
+          "seo_title": "RFID Enabled GT Scales",
+          "seo_description": "RFID Enabled GT Scales optimizes inventory management, reduces waste, and increases revenue in the department.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/220th_sm_cAl8M0jB6YR51cdB.png"
+        },
+        {
+          "model": "HTe Software",
+          "title": "HTe Scale Management Software",
+          "description_en": "Comprehensive fleet management solution for Hobart scales enabling remote monitoring, diagnostics, and management - manage and backup the scale database, manage scale configurations, extract totals, and more from a desktop PC. Heartbeat Monitoring (scales automatically sync compliance and updates); Live Syncing (real-time price updates per transaction); Dashboard Diagnostics (fleet status overview); Remote Access (data management and upgrades without physical scale access). Editions: HTe Enterprise, HTe Business, HTe Pro.",
+          "specs": {},
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/styles/max_310_x_310/public/webdam-assets/HTe%20Dashboard%20wComputer.png",
+          "source_url": "https://www.hobartcorp.com/products/weigh-wrap/software/networking-retail-software",
+          "seo_title": "HTe Scale Management Software",
+          "seo_description": "Hobart offers cutting edge technology to keep up with food industry operation needs.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/HTe_20Dashboard_20wComputer.png"
+        },
+        {
+          "model": "FreshXpress",
+          "title": "FreshXpress Omni Channel Order Fulfillment Software",
+          "description_en": "Retail software designed to streamline fresh department operations by integrating online orders directly with department scales. Manages various order types including web portals, in-store kiosks, and electronic take-a-number systems, allowing operators to view, fulfill, and close orders at the scale. Single-solution order management across channels; automatic PLU population to reduce errors; transactional data logging for inventory and staffing optimization; eliminates need for separate devices and paper processes.",
+          "specs": {},
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://www.hobartcorp.com/sites/default/files/styles/max_310_x_310/public/webdam-assets/imgWeb%20FreshXpress%20.png",
+          "source_url": "https://www.hobartcorp.com/products/weigh-wrap/software/freshXpress",
+          "seo_title": "FreshXpress | Hobart",
+          "seo_description": "Fresh Department order management FreshXpress™ is a software solution integrating omni channel retail orders with fresh department operations. Orders for fresh items are deployed directly to department scales streamlining the order fulfillment process and increasing department efficiency.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/hobart/imgWeb_20FreshXpress_20.png"
+        }
+      ]
+    }
+  ]
+}

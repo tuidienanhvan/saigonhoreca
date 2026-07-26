@@ -1,0 +1,116 @@
+[1/115] OK 'AG-20' <- https://sammic.com/en/product/ag-20
+[2/115] OK 'AG-30' <- https://sammic.com/en/product/ag-30
+[3/115] OK 'AG-40' <- https://sammic.com/en/product/ag-40
+[4/115] OK 'Drinks mixer BB-900' <- https://sammic.com/en/product/bb-900
+[5/115] OK 'CE-135' <- https://sammic.com/en/product/ce-135
+[6/115] OK 'CE-235' <- https://sammic.com/en/product/ce-235
+[7/115] OK 'CG-140' <- https://sammic.com/en/product/cg-140
+[8/115] OK 'CG-240' <- https://sammic.com/en/product/cg-240
+[9/115] OK 'Trolley for dishwasher baskets CGC-7' <- https://sammic.com/en/product/cgc-7
+[10/115] OK 'HX-1111' <- https://sammic.com/en/product/combisteam-gasgtronorm-oven-hx-1111
+[11/115] OK 'HX-711' <- https://sammic.com/en/product/combisteam-gasgtronorm-oven-hx-711
+[12/115] OK 'ECM' <- https://sammic.com/en/product/commercial-orange-juicer-ecm
+[13/115] OK 'ECP' <- https://sammic.com/en/product/commercial-orange-juicer-ecp
+[14/115] OK 'HX-211T' <- https://sammic.com/en/product/convisteam-oven-hx-211t
+[15/115] OK 'CP-250' <- https://sammic.com/en/product/cp-250
+[16/115] OK 'AM-10' <- https://sammic.com/en/product/dough-mixer-am-10
+[17/115] OK 'AM-60' <- https://sammic.com/en/product/dough-mixer-am-60
+[18/115] OK 'AM(E)-20' <- https://sammic.com/en/product/dough-mixer-am-e-20
+[19/115] OK 'AM(E)-30' <- https://sammic.com/en/product/dough-mixer-am-e-30
+[20/115] OK 'AM(E)-40' <- https://sammic.com/en/product/dough-mixer-am-e-40
+[21/115] OK 'AM(E)-50' <- https://sammic.com/en/product/dough-mixer-am-e-50
+[22/115] OK 'EC-30' <- https://sammic.com/en/product/ec-30
+[23/115] OK 'PF-10 (1~)' <- https://sammic.com/en/product/electric-fryer-pf-10-1
+[24/115] OK 'PF-10+10 (1~)' <- https://sammic.com/en/product/electric-fryer-pf-10-10-1
+[25/115] OK 'PF-10+10 (3~)' <- https://sammic.com/en/product/electric-fryer-pf-10-10-3
+[26/115] OK 'PF-10 (3~)' <- https://sammic.com/en/product/electric-fryer-pf-10-3
+[27/115] OK 'PF-6' <- https://sammic.com/en/product/electric-fryer-pf-6
+[28/115] OK 'PF-6+6' <- https://sammic.com/en/product/electric-fryer-pf-6-6
+[29/115] OK 'AGE-40' <- https://sammic.com/en/product/electric-gyros-roaster-age-40
+[30/115] OK 'AGE-60' <- https://sammic.com/en/product/electric-gyros-roaster-age-60
+[31/115] OK 'Electric kebab slicer' <- https://sammic.com/en/product/electric-kebab-slicer
+[32/115] OK 'Entreprise cutting unit in stainless steel' <- https://sammic.com/en/product/entreprise-cutting-unit-in-stainless-steel
+[33/115] OK 'Can Opener EZ-40' <- https://sammic.com/en/product/ez-40
+[34/115] OK 'FE-12' <- https://sammic.com/en/product/fe-12
+[35/115] OK 'FE-12+12' <- https://sammic.com/en/product/fe-12-12
+[36/115] OK 'FE-15' <- https://sammic.com/en/product/fe-15
+[37/115] OK 'FE-15+15' <- https://sammic.com/en/product/fe-15-15
+[38/115] OK 'FE-8' <- https://sammic.com/en/product/fe-8
+[39/115] OK 'FE-8+8' <- https://sammic.com/en/product/fe-8-8
+[40/115] OK 'FE-9' <- https://sammic.com/en/product/fe-9
+[41/115] OK 'FE-9+9' <- https://sammic.com/en/product/fe-9-9
+[42/115] OK 'GL-6' <- https://sammic.com/en/product/gl-6
+[43/115] OK 'GLD-10' <- https://sammic.com/en/product/gld-10
+[44/115] OK 'GLL-10' <- https://sammic.com/en/product/gll-10
+[45/115] OK 'GLM-6' <- https://sammic.com/en/product/glm-6
+[46/115] OK 'GRD-10' <- https://sammic.com/en/product/grd-10
+[47/115] OK 'GRL-10' <- https://sammic.com/en/product/grl-10
+[48/115] OK 'GRM-6' <- https://sammic.com/en/product/grm-6
+[49/115] OK 'GRS-5' <- https://sammic.com/en/product/grs-5
+[50/115] OK 'GV-10' <- https://sammic.com/en/product/gv-10
+[51/115] OK 'GV-6' <- https://sammic.com/en/product/gv-6
+[52/115] OK 'PH-130' <- https://sammic.com/en/product/hamburger-press-ph-130
+[53/115] OK 'HX-611' <- https://sammic.com/en/product/hx-611
+[54/115] OK 'MO-1000' <- https://sammic.com/en/product/microwave-oven-mo-1000
+[55/115] OK 'MO-1000M' <- https://sammic.com/en/product/microwave-oven-mo-1000m
+[56/115] OK 'MO-1817S' <- https://sammic.com/en/product/microwave-oven-mo-1817s-scan-go-system
+[57/115] OK 'MO-1834' <- https://sammic.com/en/product/microwave-oven-mo-1834
+[58/115] OK 'LI-401' <- https://sammic.com/en/product/multi-juicer-li-401
+[59/115] OK 'OS-10' <- https://sammic.com/en/product/os-10
+[60/115] OK 'OSI-10' <- https://sammic.com/en/product/osi-10
+[61/115] OK 'P-132' <- https://sammic.com/en/product/p-132
+[62/115] OK 'PH-100' <- https://sammic.com/en/product/ph-5
+[63/115] OK 'DF-30' <- https://sammic.com/en/product/pizza-dough-roller-df-30
+[64/115] OK 'DF-40' <- https://sammic.com/en/product/pizza-dough-roller-df-40
+[65/115] OK 'DF-40P' <- https://sammic.com/en/product/pizza-dough-roller-df-40p
+[66/115] OK 'PO-1+1/32' <- https://sammic.com/en/product/pizza-oven-po-1-1-32
+[67/115] OK 'PO-1+1/45' <- https://sammic.com/en/product/pizza-oven-po-1-1-45
+[68/115] OK 'PO-4' <- https://sammic.com/en/product/pizza-oven-po-4
+[69/115] OK 'PO-4+4' <- https://sammic.com/en/product/pizza-oven-po-4-4
+[70/115] OK 'PO-6' <- https://sammic.com/en/product/pizza-oven-po-6
+[71/115] OK 'PO-6+6' <- https://sammic.com/en/product/pizza-oven-po-6-6
+[72/115] OK 'PO-6+6W' <- https://sammic.com/en/product/pizza-oven-po-6-6w
+[73/115] OK 'PO-6W' <- https://sammic.com/en/product/pizza-oven-po-6w
+[74/115] OK 'PO-9' <- https://sammic.com/en/product/pizza-oven-po-9
+[75/115] OK 'PO-9+9' <- https://sammic.com/en/product/pizza-oven-po-9-9
+[76/115] OK 'SAM-3001' <- https://sammic.com/en/product/sam-3001
+[77/115] OK 'SAS-5001' <- https://sammic.com/en/product/sas-5001
+[78/115] OK 'SAS-6001' <- https://sammic.com/en/product/sas-6001
+[79/115] OK 'SG-452' <- https://sammic.com/en/product/sg-452
+[80/115] OK 'SG-652' <- https://sammic.com/en/product/sg-652
+[81/115] OK 'SGF-450' <- https://sammic.com/en/product/sgf-450
+[82/115] OK 'SGF-650' <- https://sammic.com/en/product/sgf-650
+[83/115] OK 'SH-155' <- https://sammic.com/en/product/sh-155
+[84/115] OK 'SH-182' <- https://sammic.com/en/product/sh-182
+[85/115] OK 'LL-60' <- https://sammic.com/en/product/slow-juicer-ll-60
+[86/115] OK 'SX-43' <- https://sammic.com/en/product/snack-convection-oven-sx-43
+[87/115] OK 'SX-641' <- https://sammic.com/en/product/snack-convection-oven-sx-641
+[88/115] OK 'SX-641G' <- https://sammic.com/en/product/snack-convection-oven-sx-641g
+[89/115] OK 'SPC-601' <- https://sammic.com/en/product/spc-601
+[90/115] OK 'SPC-801' <- https://sammic.com/en/product/spc-801
+[91/115] OK 'SPG-1001' <- https://sammic.com/en/product/spg-1001
+[92/115] OK 'SPG-601' <- https://sammic.com/en/product/spg-601
+[93/115] OK 'SPG-801' <- https://sammic.com/en/product/spg-801
+[94/115] OK 'SRC-1800' <- https://sammic.com/en/product/src-1800
+[95/115] OK 'SRC-2200' <- https://sammic.com/en/product/src-2200
+[96/115] OK 'SRC-2700' <- https://sammic.com/en/product/src-2700
+[97/115] OK 'SRC-3300' <- https://sammic.com/en/product/src-3300
+[98/115] OK 'SRC-3600' <- https://sammic.com/en/product/src-3600
+[99/115] OK 'SRC-4000' <- https://sammic.com/en/product/src-4000
+[100/115] OK 'SRC-5000' <- https://sammic.com/en/product/src-5000
+[101/115] OK 'ST-22' <- https://sammic.com/en/product/st-22
+[102/115] OK 'ST-33' <- https://sammic.com/en/product/st-33
+[103/115] OK 'SV-33' <- https://sammic.com/en/product/sv-33
+[104/115] OK 'SV-43' <- https://sammic.com/en/product/sv-43
+[105/115] OK 'TB-1500' <- https://sammic.com/en/product/tb-1500
+[106/115] OK 'TB-2000' <- https://sammic.com/en/product/tb-2000
+[107/115] OK 'Ice crusher TH-1100' <- https://sammic.com/en/product/th-1100
+[108/115] OK 'TM-10' <- https://sammic.com/en/product/tm-10
+[109/115] OK 'TM-5' <- https://sammic.com/en/product/tm-5
+[110/115] OK 'TP-100' <- https://sammic.com/en/product/tp-100
+[111/115] OK 'TP-200' <- https://sammic.com/en/product/tp-200
+[112/115] OK 'TRX-21' <- https://sammic.com/en/product/trx-21
+[113/115] OK 'TRX-22' <- https://sammic.com/en/product/trx-22
+[114/115] OK 'Container thermo-sealer TS-150' <- https://sammic.com/en/product/ts-150
+[115/115] OK 'Unger cutting unit in stainless steel' <- https://sammic.com/en/product/unger-cutting-unit-in-stainless-steel
+DONE. 115 results written to C:\Users\Administrator\Local Sites\saigonhoreca\app\public\wp-content\themes\saigonhoreca-theme\docs\product-catalog\sammic\crawled_expanded.json

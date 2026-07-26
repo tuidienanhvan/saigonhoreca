@@ -24,7 +24,7 @@ define('SGH_GTM_CONTAINER_ID', 'GTM-PVSPDW5B');
 // with preconnect hints in header.php. Deliberately NO <link rel="preload"
 // as="font">: font preloads were measured to steal bandwidth from the hero
 // LCP image and were reverted — see docs/PERF-DECISIONS.md §3.
-define('SGH_GOOGLE_FONTS_URL', 'https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Lexend:wght@500;700&family=Lora:ital,wght@0,400;0,500;0,700;1,400;1,700&display=swap');
+define('SGH_GOOGLE_FONTS_URL', 'https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Lexend:wght@400;500;600;700;800;900&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,700&display=swap');
 
 // Analytics
 define('SGH_ANALYTICS_SALT', 'sh_salt_2026');

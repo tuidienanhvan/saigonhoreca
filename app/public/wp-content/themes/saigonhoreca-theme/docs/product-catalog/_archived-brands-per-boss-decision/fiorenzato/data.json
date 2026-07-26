@@ -1,0 +1,732 @@
+{
+  "research_date": "2026-07-14",
+  "research_update_date": "2026-07-14",
+  "source_note": "Cào từ website chính hãng Fiorenzato S.r.l. (Ý) — www.fiorenzato.com (bản tiếng Anh /en/) + site riêng cho dòng gia đình www.fiorenzatohome.com. KHÔNG phải dữ liệu tự bịa — mọi model/thông số/URL dưới đây có nguồn WebFetch thật kèm theo. Lần cào đầu tiên (14/07) — site hiện KHÔNG có trang meta description hiển thị được qua WebFetch (không tìm thấy thẻ <meta name=description> ở bất kỳ trang model nào đã fetch) và KHÔNG có thẻ og:image ở bất kỳ trang nào — đây là đặc điểm chung của toàn site fiorenzato.com/fiorenzatohome.com, không phải lỗi cào riêng lẻ. Ảnh sản phẩm lấy từ thẻ <img> thật trong thư viện wp-content/uploads (hoặc /img/ trên fiorenzatohome.com) — ảnh đầu tiên trong mỗi carousel (thường hậu tố '-4-1.png' hoặc biến thể màu đầu tiên) được chọn làm seo.image_url.",
+  "existing_catalog_gap": "Site saigonhoreca.local hiện có Fiorenzato CHỈ dưới dạng logo đối tác ở section 'Đối tác' trang chủ — 0 sản phẩm trong catalog. Đây là bản crawl từ đầu (from scratch), khác Giorik (đã có 3 sản phẩm sẵn). Fiorenzato là hãng chuyên về máy xay cà phê (coffee grinders) — không sản xuất thiết bị bếp/lò như Giorik, nên toàn bộ danh mục là các dòng máy xay khác nhau theo phân khúc: gia đình (Home/AllGround), quán tạp hóa/coffee shop nhỏ (Grocery), máy xay-định lượng truyền thống (Dosers), máy xay theo yêu cầu (On Demand), dòng chuyên nghiệp PRO Line, và dòng cân điện tử Grind by Weight (SENSE/ADAPT).",
+  "brand": "Fiorenzato",
+  "company_info": {
+    "legal_name": "Fiorenzato M.C. S.r.l.",
+    "founded_note": "Lịch sử hơn 80 năm trong ngành máy xay và định lượng cà phê tại Ý ('Fiorenzato has an Italian history spanning over eighty years, spearheading technological development in the world of coffee grinders and dosers').",
+    "headquarters": "Ý (Veneto — công ty không nêu rõ thành phố cụ thể trên trang chủ đã cào)",
+    "contact_email": "info@fiorenzato.it",
+    "product_focus": "Chuyên biệt 100% vào máy xay cà phê (coffee grinders) và máy định lượng (dosers) — không có lò/bếp/thiết bị rửa như các brand khác đã nghiên cứu trước đó (Giorik, Sammic, Winterhalter...).",
+    "source_url": "https://www.fiorenzato.com/en"
+  },
+  "source_urls": [
+    "https://www.fiorenzato.com/en",
+    "https://www.fiorenzato.com/en/grind-by-weight/",
+    "https://www.fiorenzato.com/en/pro-line-grinders/",
+    "https://www.fiorenzato.com/en/on-demand/",
+    "https://www.fiorenzato.com/en/grocery/",
+    "https://www.fiorenzato.com/en/dosers/",
+    "https://www.fiorenzatohome.com/?language=eng"
+  ],
+  "technology_pages_note": "Site có các trang giải thích công nghệ riêng (không phải sản phẩm): PRO (https://www.fiorenzato.com/en/pro/), XGi (https://www.fiorenzato.com/en/xgi/), SENSE (https://www.fiorenzato.com/en/sense/), ADAPT (https://www.fiorenzato.com/en/adapt/). Các hậu tố này gắn vào tên model (vd F64 EVO SENSE, F64 EVO PRO ADAPT) để chỉ công nghệ tích hợp — SENSE = cân điện tử tích hợp trong fork; ADAPT = tự động điều chỉnh xay theo độ ẩm/tuổi hạt; PRO = phiên bản nâng cấp (quạt làm mát tự động, công suất cao hơn); XGi = máy xay điện tử 'on demand' cho quán.",
+  "groups": [
+    {
+      "group_name": "Grind by Weight (SENSE / ADAPT)",
+      "group_name_vi": "Máy Xay Cân Trọng Lượng (SENSE / ADAPT)",
+      "taxonomy_note": "2 kích cỡ lưỡi dao (64mm và 83mm) x 2 công nghệ (SENSE = cân tích hợp, ADAPT = tự điều chỉnh) x 2 cấp (thường / PRO) = 8 model. Đây là dòng cao cấp nhất, dùng cho quán chuyên espresso muốn kiểm soát định lượng chính xác tới 0.1g.",
+      "source_url": "https://www.fiorenzato.com/en/grind-by-weight/",
+      "models": [
+        {
+          "model": "F64 EVO SENSE",
+          "url": "https://www.fiorenzato.com/en/grind-by-weight/f64-evo-sense/",
+          "burr_diameter_mm": 64,
+          "burr_type": "Flat, F64 EVO made in-house, M340 with Dark-T® coating",
+          "motor_power_w": 450,
+          "rpm": "1350/min (50Hz) - 1550/min (60Hz)",
+          "grinding_capacity": "2.7 g/s (Dark-T® burrs)",
+          "scale_precision_g": 0.1,
+          "burr_lifespan": "600kg (3000kg with Dark-T® coating)",
+          "daily_consumption_recommended": "Up to 3 kg",
+          "dims_mm": "230x620x274 (WxDxH)",
+          "colors": ["Deep Black", "Glossy Black", "Nardò Grey", "Classic Grey", "Arctic White", "Pearl White", "Glossy Red"],
+          "seo": {
+            "seo_title": "F64 EVO SENSE | Fiorenzato",
+            "seo_description": "KHÔNG tìm thấy thẻ meta description trên trang nguồn — cần soạn mới cho SEO khi import.",
+            "image_url": "https://www.fiorenzato.com/wp-content/uploads/2025/03/F64-EVO-SENSE-4-1.png"
+          }
+        },
+        {
+          "model": "F64 EVO ADAPT",
+          "url": "https://www.fiorenzato.com/en/grind-by-weight/f64-evo-adapt/",
+          "burr_diameter_mm": 64,
+          "burr_type": "Flat, F64 EVO ADAPT made in-house, M340 with Dark-T® coating",
+          "motor_power_w": 450,
+          "rpm": "1350/min (50Hz) - 1550/min (60Hz)",
+          "grinding_capacity": "2.7 g/s (Dark-T® burrs)",
+          "scale_precision_g": 0.1,
+          "burr_lifespan": "600kg (3000kg with Dark-T® coating)",
+          "daily_consumption_recommended": "Up to 3 kg",
+          "dims_mm": "230x620x274 (WxDxH)",
+          "weight_kg": null,
+          "colors": ["nero opaco (matte black)", "nero (glossy black)", "grigio", "grigio met (metallic grey)", "bianco opaco (matte white)", "panna (cream)", "rosso (red)"],
+          "seo": {
+            "seo_title": "F64 EVO ADAPT | Fiorenzato",
+            "seo_description": "KHÔNG tìm thấy thẻ meta description trên trang nguồn — cần soạn mới cho SEO khi import.",
+            "image_url": "https://www.fiorenzato.com/wp-content/uploads/2026/05/F64-EVO-ADAPT-nero-opaco-1.png"
+          }
+        },
+        {
+          "model": "F64 EVO PRO SENSE",
+          "url": "https://www.fiorenzato.com/en/grind-by-weight/f64-evo-pro-sense/",
+          "burr_diameter_mm": 64,
+          "burr_type": "Flat, F64 EVO made in-house, M340 with Dark-T® coating",
+          "motor_power_w": 450,
+          "rpm": "1350/min (50Hz) - 1550/min (60Hz)",
+          "grinding_capacity": "3.4 g/s (hardened burrs) / 2.7 g/s (Dark-T®)",
+          "scale_precision_g": 0.1,
+          "burr_lifespan": "600kg (3000kg with Dark-T® coating)",
+          "daily_consumption_recommended": "Up to 3 kg",
+          "dims_mm": "230x620x274 (WxDxH)",
+          "seo": {
+            "seo_title": "F64 EVO PRO SENSE | Fiorenzato",
+            "seo_description": "KHÔNG tìm thấy thẻ meta description trên trang nguồn — cần soạn mới cho SEO khi import.",
+            "image_url": "https://www.fiorenzato.com/wp-content/uploads/2025/03/F64-EVO-PRO-SENSE-4-1.png"
+          }
+        },
+        {
+          "model": "F64 EVO PRO ADAPT",
+          "url": "https://www.fiorenzato.com/en/grind-by-weight/f64-evo-pro-adapt/",
+          "burr_diameter_mm": 64,
+          "burr_type": "Flat, M340 (PRO: Dark-T® coating)",
+          "motor_power_w": 450,
+          "rpm": "1350/min (50Hz) - 1550/min (60Hz)",
+          "grinding_capacity": "3.4 g/s (hardened burrs) / 2.7 g/s (Dark-T®)",
+          "scale_precision_g": 0.1,
+          "burr_lifespan": "600kg (3000kg with Dark-T® coating)",
+          "daily_consumption_recommended": "Up to 3 kg",
+          "dims_mm": "230x620x274 (WxDxH)",
+          "seo": {
+            "seo_title": "F64 EVO PRO ADAPT | Fiorenzato",
+            "seo_description": "KHÔNG tìm thấy thẻ meta description trên trang nguồn — cần soạn mới cho SEO khi import.",
+            "image_url": "GHI CHÚ: WebFetch trả về tên file tương đối (F64-EVO-PRO-ADAPT-nero-opaco.png v.v.) không kèm domain đầy đủ — CHƯA xác nhận được URL tuyệt đối, cần fetch lại trang để lấy path đầy đủ trước khi dùng cho import."
+          }
+        },
+        {
+          "model": "F83 E SENSE",
+          "url": "https://www.fiorenzato.com/en/grind-by-weight/f83-e-sense/",
+          "burr_diameter_mm": 83,
+          "burr_type": "Flat, F83E made in-house, M340 with Dark-T® coating",
+          "motor_power_w": 650,
+          "rpm": "1350/min (50Hz) - 1550/min (60Hz)",
+          "grinding_capacity": "3.1 g/s (Dark-T® burrs)",
+          "scale_precision_g": 0.1,
+          "burr_lifespan": "900kg (4500kg with Dark-T® coating)",
+          "daily_consumption_recommended": "Up to 6 kg",
+          "dims_mm": "234x680x275 (WxDxH)",
+          "seo": {
+            "seo_title": "F83 E SENSE | Fiorenzato",
+            "seo_description": "KHÔNG tìm thấy thẻ meta description trên trang nguồn — cần soạn mới cho SEO khi import.",
+            "image_url": "https://www.fiorenzato.com/wp-content/uploads/2025/03/F83-E-SENSE-4-1.png"
+          }
+        },
+        {
+          "model": "F83 E ADAPT",
+          "url": "https://www.fiorenzato.com/en/grind-by-weight/f83-e-adapt/",
+          "burr_diameter_mm": 83,
+          "burr_type": "Flat, M340 with Dark-T® coating",
+          "motor_power_w": 650,
+          "rpm": "1350/min (50Hz) - 1550/min (60Hz)",
+          "grinding_capacity": "3.1 g/s (Dark-T® burrs)",
+          "scale_precision_g": 0.1,
+          "burr_lifespan": "900 kg per set",
+          "daily_consumption_recommended": "Up to 6 kg",
+          "dims_mm": "234x680x275 (WxDxH)",
+          "seo": {
+            "seo_title": "F83 E ADAPT | Fiorenzato",
+            "seo_description": "KHÔNG tìm thấy thẻ meta description trên trang nguồn — cần soạn mới cho SEO khi import.",
+            "image_url": "https://www.fiorenzato.com/wp-content/uploads/2026/05/F83-E-ADAPT-nero-opaco-1.png"
+          }
+        },
+        {
+          "model": "F83 E PRO SENSE",
+          "url": "https://www.fiorenzato.com/en/grind-by-weight/f83-e-pro-sense/",
+          "burr_diameter_mm": 83,
+          "burr_type": "Flat, F83E made in-house, M340 with Dark-T® coating",
+          "motor_power_w": 650,
+          "rpm": "1350/min (50Hz) - 1550/min (60Hz)",
+          "grinding_capacity": "3.1 g/s (Dark-T® burrs)",
+          "scale_precision_g": 0.1,
+          "burr_lifespan": "900kg (4500kg with Dark-T® coating)",
+          "daily_consumption_recommended": "Up to 6 kg",
+          "dims_mm": "234x680x275 (WxDxH)",
+          "seo": {
+            "seo_title": "F83 E PRO SENSE | Fiorenzato",
+            "seo_description": "KHÔNG tìm thấy thẻ meta description trên trang nguồn — cần soạn mới cho SEO khi import.",
+            "image_url": "https://www.fiorenzato.com/wp-content/uploads/2025/03/F83-E-PRO-SENSE-4-1.png"
+          }
+        },
+        {
+          "model": "F83 E PRO ADAPT",
+          "url": "https://www.fiorenzato.com/en/grind-by-weight/f83-e-pro-adapt/",
+          "burr_diameter_mm": 83,
+          "burr_type": "Flat, M340 with Dark-T® coating",
+          "motor_power_w": 650,
+          "rpm": "1350/min (50Hz) - 1550/min (60Hz)",
+          "grinding_capacity": "3.1 g/s (Dark-T® burrs)",
+          "scale_precision_g": 0.1,
+          "burr_lifespan": "900kg (4500kg with Dark-T® burrs)",
+          "daily_consumption_recommended": "Up to 6 kg",
+          "dims_mm": "234x680x275 (WxDxH)",
+          "seo": {
+            "seo_title": "F83 E PRO ADAPT | Fiorenzato",
+            "seo_description": "KHÔNG tìm thấy thẻ meta description trên trang nguồn — cần soạn mới cho SEO khi import.",
+            "image_url": "https://www.fiorenzato.com/wp-content/uploads/2026/05/F83-E-PRO-ADAPT-nero-opaco-1.png"
+          }
+        }
+      ],
+      "model_count": 8
+    },
+    {
+      "group_name": "PRO Line Grinders (Traditional, dosed)",
+      "group_name_vi": "Dòng PRO (Máy Xay Truyền Thống Có Định Lượng)",
+      "taxonomy_note": "Máy xay-định lượng truyền thống cấp PRO — có phễu đựng hạt + doser (định lượng cơ khí bằng đòn bẩy), khác với dòng On Demand (xay theo yêu cầu, không doser). 3 kích cỡ lưỡi dao: 64mm/83mm phẳng (flat) và 71mm côn (conical, ký hiệu K).",
+      "source_url": "https://www.fiorenzato.com/en/pro-line-grinders/",
+      "models": [
+        {
+          "model": "F5 A PRO",
+          "url": "https://www.fiorenzato.com/en/pro-line-grinders/f5-pro/",
+          "burr_diameter_mm": 64,
+          "burr_type": "Flat",
+          "motor_power_w": 350,
+          "hopper_capacity_kg": 1.5,
+          "rpm": "1350/min (50Hz) - 1550/min (60Hz)",
+          "dims_mm": "230x615x270 (WxDxH)",
+          "weight_kg": 13,
+          "grinding_adjustment": "Continuous ring nut micrometric",
+          "model_variants": ["A (automatic microswitch)", "T (timer)", "M (manual switch)"],
+          "seo": {
+            "seo_title": "Traditional Coffee Grinder F5 PRO | Fiorenzato",
+            "seo_description": "KHÔNG tìm thấy thẻ meta description trên trang nguồn — cần soạn mới cho SEO khi import.",
+            "image_url": "GHI CHÚ: WebFetch chỉ trả tên file (F5-A-PRO-4-1.png) không kèm domain — suy ra theo pattern chung là https://www.fiorenzato.com/wp-content/uploads/2022/05/F5-A-PRO-4-1.png nhưng CHƯA xác nhận trực tiếp, cần fetch lại để chốt URL."
+          }
+        },
+        {
+          "model": "F6 A PRO",
+          "url": "https://www.fiorenzato.com/en/pro-line-grinders/f6-pro/",
+          "burr_diameter_mm": 83,
+          "burr_type": "Flat",
+          "motor_power_w": 650,
+          "hopper_capacity_kg": 1.5,
+          "rpm": "1400/min (50Hz) - 1600/min (60Hz)",
+          "dims_mm": "230x670x270 (WxDxH)",
+          "weight_kg": 15.5,
+          "grinding_adjustment": "Continuous micrometric ring nut",
+          "seo": {
+            "seo_title": "Traditional Coffee Grinder F6 PRO | Fiorenzato",
+            "seo_description": "KHÔNG tìm thấy thẻ meta description trên trang nguồn — cần soạn mới cho SEO khi import.",
+            "image_url": "https://www.fiorenzato.com/wp-content/uploads/2022/05/F6-A-PRO-4-1.png"
+          }
+        },
+        {
+          "model": "F71 AK PRO",
+          "url": "https://www.fiorenzato.com/en/pro-line-grinders/f71-ak-pro/",
+          "burr_diameter_mm": 71,
+          "burr_type": "Conical",
+          "motor_power_w": 850,
+          "hopper_capacity_kg": 1.5,
+          "rpm": "450/min (50Hz) - 500/min (60Hz)",
+          "dims_mm": "230x670x270 (WxDxH)",
+          "weight_kg": 21,
+          "doser_capacity_g": 250,
+          "dose_range_g": "5.5-10",
+          "seo": {
+            "seo_title": "Traditional Coffee Grinder F71 AK PRO | Fiorenzato",
+            "seo_description": "KHÔNG tìm thấy thẻ meta description trên trang nguồn — cần soạn mới cho SEO khi import.",
+            "image_url": "https://www.fiorenzato.com/wp-content/uploads/2022/05/F71-AK-PRO-4-1.png"
+          }
+        },
+        {
+          "model": "F64 E PRO",
+          "url": "https://www.fiorenzato.com/en/pro-line-grinders/f64-e-pro/",
+          "burr_diameter_mm": 64,
+          "burr_type": "Flat",
+          "motor_power_w": 350,
+          "hopper_capacity_kg": 1.5,
+          "rpm": "1350/min (50Hz) - 1550/min (60Hz)",
+          "dims_mm": "230x615x270 (WxDxH)",
+          "weight_kg": 13,
+          "grinding_adjustment": "Continuous (ring nut micrometric)",
+          "dose_adjustment": "In seconds",
+          "note": "Trang tiêu đề trả về là 'On Demand F64 E PRO coffee grinder' dù nằm trong menu PRO Line — có thể site gắn nhầm category title, hoặc model này dùng chung template On Demand.",
+          "seo": {
+            "seo_title": "On Demand F64 E PRO coffee grinder | Fiorenzato",
+            "seo_description": "KHÔNG tìm thấy thẻ meta description trên trang nguồn — cần soạn mới cho SEO khi import.",
+            "image_url": "https://www.fiorenzato.com/wp-content/uploads/2022/05/F64-E-PRO-4-1.png"
+          }
+        },
+        {
+          "model": "F64 EVO PRO",
+          "url": "https://www.fiorenzato.com/en/pro-line-grinders/f64-evo-pro/",
+          "burr_diameter_mm": 64,
+          "burr_type": "Flat",
+          "motor_power_w": 450,
+          "hopper_capacity_kg": 1.5,
+          "rpm": "1350/min (50Hz) - 1550/min (60Hz)",
+          "dims_mm": "230x615x270 (WxDxH)",
+          "weight_kg": 13,
+          "grinding_adjustment": "Continuous micrometric ring nut",
+          "dose_adjustment": "In seconds",
+          "feature_note": "Automatic cooling fan (activates electronically)",
+          "seo": {
+            "seo_title": "On Demand F64 EVO coffee grinder | Fiorenzato",
+            "seo_description": "KHÔNG tìm thấy thẻ meta description trên trang nguồn — cần soạn mới cho SEO khi import.",
+            "image_url": "https://www.fiorenzato.com/wp-content/uploads/2022/05/F64-EVO-PRO-4-1.png"
+          }
+        },
+        {
+          "model": "F83 E PRO",
+          "url": "https://www.fiorenzato.com/en/pro-line-grinders/f83-e-pro/",
+          "burr_diameter_mm": 83,
+          "burr_type": "Flat",
+          "motor_power_w": 650,
+          "hopper_capacity_kg": 1.5,
+          "rpm": "1350/min (50Hz) - 1550/min (60Hz)",
+          "dims_mm": "230x670x270 (WxDxH)",
+          "weight_kg": 15,
+          "grinding_adjustment": "Continuous ring nut micrometric",
+          "dose_adjustment": "In seconds",
+          "seo": {
+            "seo_title": "Coffee grinder On Demand F83 E PRO | Fiorenzato",
+            "seo_description": "KHÔNG tìm thấy thẻ meta description trên trang nguồn — cần soạn mới cho SEO khi import.",
+            "image_url": "https://www.fiorenzato.com/wp-content/uploads/2022/05/F83-E-PRO-4-1.png"
+          }
+        },
+        {
+          "model": "F71 EK PRO",
+          "url": "https://www.fiorenzato.com/en/pro-line-grinders/f71-ek-pro/",
+          "burr_diameter_mm": 71,
+          "burr_type": "Conical",
+          "motor_power_w": 850,
+          "hopper_capacity_kg": 1.5,
+          "rpm": "300/min (50Hz & 60Hz)",
+          "dims_mm": "230x670x270 (WxDxH)",
+          "weight_kg": 19,
+          "grinding_adjustment": "Continuous micrometric ring nut",
+          "note": "Trang tiêu đề trả về 'Traditional coffee grinder F71 DK PRO' — nghi ngờ trộn lẫn với dòng Grocery F71 DK (khác biệt A/D = ký hiệu doser/không doser); CHƯA xác minh lại độc lập, gắn cờ.",
+          "seo": {
+            "seo_title": "Traditional coffee grinder F71 DK PRO | Fiorenzato",
+            "seo_description": "KHÔNG tìm thấy thẻ meta description trên trang nguồn — cần soạn mới cho SEO khi import.",
+            "image_url": "https://www.fiorenzato.com/wp-content/uploads/2022/05/F71-EK-PRO-4-1.png"
+          }
+        }
+      ],
+      "model_count": 7
+    },
+    {
+      "group_name": "On Demand",
+      "group_name_vi": "Máy Xay Theo Yêu Cầu (On Demand)",
+      "taxonomy_note": "Không có doser (phễu định lượng) — xay trực tiếp ra ly/portafilter theo lệnh (nút bấm hoặc cân điện tử), phổ biến trong quán espresso hiện đại. Gồm 2 dòng con: XGi (máy xay điện tử cấp PRO, quạt làm mát) và các model cơ bản/EVO tiêu chuẩn.",
+      "source_url": "https://www.fiorenzato.com/en/on-demand/",
+      "models": [
+        {
+          "model": "F64 EVO XGi",
+          "url": "https://www.fiorenzato.com/en/on-demand/f64-evo-xgi/",
+          "burr_diameter_mm": 64,
+          "burr_type": "Flat",
+          "motor_power_w": 600,
+          "hopper_capacity_kg": 1.5,
+          "rpm": "1350/min (50Hz) - 1550/min (60Hz)",
+          "dims_mm": "255x635x320 (WxDxH)",
+          "weight_kg": 15.3,
+          "dose_adjustment": "In grams",
+          "grinding_adjustment": "Continuous micrometric",
+          "seo": {
+            "seo_title": "Electronic grinder F64 EVO XGi | Fiorenzato",
+            "seo_description": "KHÔNG tìm thấy thẻ meta description trên trang nguồn — cần soạn mới cho SEO khi import.",
+            "image_url": "https://www.fiorenzato.com/wp-content/uploads/2023/09/F64-EVO-XGI-4-1.png"
+          }
+        },
+        {
+          "model": "F83 E XGi",
+          "url": "https://www.fiorenzato.com/en/on-demand/f83-e-xgi/",
+          "burr_diameter_mm": 83,
+          "burr_type": "Flat",
+          "motor_power_w": 850,
+          "hopper_capacity_kg": 1.5,
+          "rpm": "1350/min (50Hz) - 1550/min (60Hz)",
+          "dims_mm": "255x700x310 (WxDxH)",
+          "weight_kg": 18.6,
+          "dose_adjustment": "In grams",
+          "grinding_adjustment": "Continuous micrometric ring nut",
+          "seo": {
+            "seo_title": "Electronic grinder F83 E XGi | Fiorenzato",
+            "seo_description": "KHÔNG tìm thấy thẻ meta description trên trang nguồn — cần soạn mới cho SEO khi import.",
+            "image_url": "https://www.fiorenzato.com/wp-content/uploads/2022/05/F83-E-XGI-4-1.png"
+          }
+        },
+        {
+          "model": "F4 EVO",
+          "url": "https://www.fiorenzato.com/en/on-demand/f4-evo/",
+          "burr_diameter_mm": 58,
+          "burr_type": "Flat",
+          "motor_power_w": 414,
+          "hopper_capacity_g": 800,
+          "rpm": "1400/min (50Hz) - 1600/min (60Hz)",
+          "dims_mm": "169x473x240 (WxDxH)",
+          "weight_kg": 9,
+          "grinding_adjustment": "Continuous micrometric ring nut",
+          "dose_adjustment": "In seconds",
+          "feature_note": "Touchscreen display with CapSense technology",
+          "colors": ["Deep Black (nero opaco)", "Glossy Black (nero)", "Nardò Grey (grigio)", "Arctic White (bianco opaco)", "Pearl White (panna)", "Glossy Red (rosso)"],
+          "seo": {
+            "seo_title": "On Demand F4 EVO coffee grinder | Fiorenzato",
+            "seo_description": "KHÔNG tìm thấy thẻ meta description trên trang nguồn — cần soạn mới cho SEO khi import.",
+            "image_url": "https://www.fiorenzato.com/wp-content/uploads/2022/05/F4-EVO-nero-opaco_520x1000.png"
+          }
+        },
+        {
+          "model": "F64 EVO XGi PRO",
+          "url": "https://www.fiorenzato.com/en/on-demand/f64-evo-xgi-pro/",
+          "burr_diameter_mm": 64,
+          "burr_type": "Flat",
+          "motor_power_w": 600,
+          "hopper_capacity_kg": 1.5,
+          "rpm": "1350/min (50Hz) - 1550/min (60Hz)",
+          "dims_mm": "255x635x320 (WxDxH)",
+          "weight_kg": 15.3,
+          "dose_adjustment": "In grams",
+          "grinding_adjustment": "Continuous micrometric ring nut",
+          "feature_note": "Electronically-activated motor cooling fan, adjustable fork with support",
+          "note": "Trang tiêu đề trùng với F64 EVO XGi (không PRO) — 2 trang riêng biệt nhưng chia sẻ cùng <title>; đặc điểm/spec đọc được cũng giống hệt bản không PRO, chưa xác minh khác biệt thực tế ngoài tên URL.",
+          "seo": {
+            "seo_title": "Electronic grinder F64 EVO XGi | Fiorenzato",
+            "seo_description": "KHÔNG tìm thấy thẻ meta description trên trang nguồn — cần soạn mới cho SEO khi import.",
+            "image_url": "CHƯA xác nhận URL ảnh riêng cho biến thể PRO — WebFetch không trả link ảnh cụ thể ở lượt cào này, suy đoán theo pattern là .../F64-EVO-XGI-PRO-4-1.png nhưng cần fetch lại xác nhận."
+          }
+        },
+        {
+          "model": "F83 E XGi PRO",
+          "url": "https://www.fiorenzato.com/en/on-demand/f83-e-xgi-pro/",
+          "burr_diameter_mm": 83,
+          "burr_type": "Flat",
+          "motor_power_w": 850,
+          "hopper_capacity_kg": 1.5,
+          "rpm": "1350/min (50Hz) - 1550/min (60Hz)",
+          "dims_mm": "255x700x310 (WxDxH)",
+          "weight_kg": 18.6,
+          "dose_adjustment": "In grams",
+          "grinding_adjustment": "Continuous micrometric ring nut",
+          "seo": {
+            "seo_title": "Electronic grinder F83 E XGi | Fiorenzato",
+            "seo_description": "KHÔNG tìm thấy thẻ meta description trên trang nguồn — cần soạn mới cho SEO khi import.",
+            "image_url": "https://www.fiorenzato.com/wp-content/uploads/2022/05/F83-E-XGI-PRO-4-1.png"
+          }
+        },
+        {
+          "model": "F64 E",
+          "url": "https://www.fiorenzato.com/en/on-demand/f64-e/",
+          "burr_diameter_mm": 64,
+          "burr_type": "Flat",
+          "motor_power_w": 350,
+          "hopper_capacity_kg": 1.5,
+          "rpm": "1350/min (50Hz) - 1550/min (60Hz)",
+          "dims_mm": "230x615x270 (WxDxH)",
+          "weight_kg": 13,
+          "grinding_adjustment": "Continuous ring nut micrometric",
+          "dose_adjustment": "In seconds",
+          "seo": {
+            "seo_title": "On Demand F64 E coffee grinder | Fiorenzato",
+            "seo_description": "KHÔNG tìm thấy thẻ meta description trên trang nguồn — cần soạn mới cho SEO khi import.",
+            "image_url": "https://www.fiorenzato.com/wp-content/uploads/2025/05/F64-E-4-1.png"
+          }
+        },
+        {
+          "model": "F64 EVO",
+          "url": "https://www.fiorenzato.com/en/on-demand/f64-evo/",
+          "burr_diameter_mm": 64,
+          "burr_type": "Flat",
+          "motor_power_w": 450,
+          "hopper_capacity_kg": 1.5,
+          "rpm": "1350/min (50Hz) - 1550/min (60Hz)",
+          "dims_mm": "230x615x270 (WxDxH)",
+          "weight_kg": 13,
+          "grinding_adjustment": "Continuous ring nut micrometric",
+          "dose_adjustment": "In seconds",
+          "feature_note": "Automatic cooling fan",
+          "seo": {
+            "seo_title": "On Demand F64 EVO coffee grinder | Fiorenzato",
+            "seo_description": "KHÔNG tìm thấy thẻ meta description trên trang nguồn — cần soạn mới cho SEO khi import.",
+            "image_url": "https://www.fiorenzato.com/wp-content/uploads/2025/05/F64-EVO-4-1.png"
+          }
+        },
+        {
+          "model": "F83 E",
+          "url": "https://www.fiorenzato.com/en/on-demand/f83-e/",
+          "burr_diameter_mm": 83,
+          "burr_type": "Flat",
+          "motor_power_w": 650,
+          "hopper_capacity_kg": 1.5,
+          "rpm": "1350/min (50Hz) - 1550/min (60Hz)",
+          "dims_mm": "230x670x270 (WxDxH)",
+          "weight_kg": 15,
+          "grinding_adjustment": "Continuous ring nut micrometric",
+          "dose_adjustment": "In seconds",
+          "colors": ["Deep Black (RAL 9017 matte)", "Glossy Black (RAL 9017)", "Nardò Grey (RAL 9006)", "Classic Grey (RAL 9006)", "Arctic White (RAL 9003)", "Pearl White (RAL 1013)", "Glossy Red (RAL 3002)"],
+          "seo": {
+            "seo_title": "Coffee grinder On Demand F83 E | Fiorenzato",
+            "seo_description": "KHÔNG tìm thấy thẻ meta description trên trang nguồn — cần soạn mới cho SEO khi import.",
+            "image_url": "CHƯA xác nhận URL ảnh cụ thể — trang chỉ liệt kê tên màu (không kèm src file); cần fetch lại để lấy path đầy đủ."
+          }
+        },
+        {
+          "model": "F71 EK",
+          "url": "https://www.fiorenzato.com/en/on-demand/f71-ek/",
+          "burr_diameter_mm": 71,
+          "burr_type": "Conical",
+          "motor_power_w": 850,
+          "hopper_capacity_kg": 1.5,
+          "rpm": "300/min (50Hz & 60Hz)",
+          "dims_mm": "230x670x270 (WxDxH)",
+          "weight_kg": 20,
+          "grinding_adjustment": "Continuous micrometric ring nut",
+          "dose_adjustment": "In seconds",
+          "feature_note": "Patented system, touchscreen display with CapSense technology, electronically-activated motor cooling fan",
+          "seo": {
+            "seo_title": "Coffee grinder On Demand F71 EK | Fiorenzato",
+            "seo_description": "KHÔNG tìm thấy thẻ meta description trên trang nguồn — cần soạn mới cho SEO khi import.",
+            "image_url": "https://www.fiorenzato.com/wp-content/uploads/2025/05/F71-EK-nero-opaco.png"
+          }
+        }
+      ],
+      "model_count": 9
+    },
+    {
+      "group_name": "Grocery (Traditional, dosed — no A prefix)",
+      "group_name_vi": "Dòng Grocery (Máy Xay Truyền Thống Cho Tạp Hóa/Quán Nhỏ)",
+      "taxonomy_note": "Phân khúc thấp hơn PRO Line một chút, ký hiệu 'D' thay vì 'A' (D = doser only, không automatic microswitch). Nhắm tới cửa hàng tạp hóa bán cà phê hạt và quán nhỏ.",
+      "source_url": "https://www.fiorenzato.com/en/grocery/",
+      "models": [
+        {
+          "model": "F5 D",
+          "url": "https://www.fiorenzato.com/en/grocery/f5-d/",
+          "burr_diameter_mm": 64,
+          "burr_type": "Flat",
+          "motor_power_w": 350,
+          "hopper_capacity_g": 1500,
+          "rpm": "1350/min (50Hz) - 1550/min (60Hz)",
+          "dims_mm": "230x615x270 (WxDxH)",
+          "weight_kg": 13,
+          "grinding_adjustment": "Continuous micrometric ring nut",
+          "seo": {
+            "seo_title": "Traditional Coffee Grinder F5 D | Fiorenzato",
+            "seo_description": "KHÔNG tìm thấy thẻ meta description trên trang nguồn — cần soạn mới cho SEO khi import.",
+            "image_url": "https://www.fiorenzato.com/wp-content/uploads/2020/10/F5-D-4-1.png"
+          }
+        },
+        {
+          "model": "F6 D",
+          "url": "https://www.fiorenzato.com/en/grocery/f6-d/",
+          "burr_diameter_mm": 83,
+          "burr_type": "Flat",
+          "motor_power_w": 650,
+          "hopper_capacity_kg": 1.5,
+          "rpm": "1400/min (50Hz) - 1600/min (60Hz)",
+          "dims_mm": "230x670x270 (WxDxH)",
+          "weight_kg": 15.5,
+          "grinding_adjustment": "Continuous micrometric ring nut",
+          "model_variants": ["T (timer)", "M (manual switch)"],
+          "seo": {
+            "seo_title": "Traditional Coffee Grinder F6 D | Fiorenzato",
+            "seo_description": "KHÔNG tìm thấy thẻ meta description trên trang nguồn — cần soạn mới cho SEO khi import.",
+            "image_url": "https://www.fiorenzato.com/wp-content/uploads/2020/10/F6-D-4-1.png"
+          }
+        },
+        {
+          "model": "F71 DK",
+          "url": "https://www.fiorenzato.com/en/grocery/f71-dk/",
+          "burr_diameter_mm": 71,
+          "burr_type": "Conical",
+          "motor_power_w": 850,
+          "hopper_capacity_kg": 1.5,
+          "rpm": "300/min (50Hz & 60Hz)",
+          "dims_mm": "230x670x270 (WxDxH)",
+          "weight_kg": 19,
+          "grinding_adjustment": "Continuous ring nut micrometric",
+          "model_variants": ["T (timer)", "M (manual switch)"],
+          "seo": {
+            "seo_title": "Traditional coffee grinder F71 DK | Fiorenzato",
+            "seo_description": "KHÔNG tìm thấy thẻ meta description trên trang nguồn — cần soạn mới cho SEO khi import.",
+            "image_url": "https://www.fiorenzato.com/wp-content/uploads/2020/10/F71-DK-4-1.png"
+          }
+        },
+        {
+          "model": "F4 ECO",
+          "url": "https://www.fiorenzato.com/en/grocery/f4-eco/",
+          "burr_diameter_mm": 58,
+          "burr_type": "Flat",
+          "motor_power_w": 250,
+          "hopper_capacity_g": 500,
+          "rpm": "1400/min (50Hz) - 1600/min (60Hz)",
+          "dims_mm": "169x473x240 (WxDxH)",
+          "weight_kg": 8,
+          "grinding_adjustment": "Continuous micrometric ring nut",
+          "color": "Sanded black",
+          "note": "Nội dung mô tả trang liệt kê 71mm conical burrs 850W (copy sai từ trang khác) nhưng bảng thông số chi tiết thực tế của F4 ECO là 58mm flat/250W — dùng số liệu bảng thông số, không dùng câu mô tả ngắn ở đầu trang.",
+          "seo": {
+            "seo_title": "Traditional Coffee Grinder F4 ECO | Fiorenzato",
+            "seo_description": "KHÔNG tìm thấy thẻ meta description trên trang nguồn — cần soạn mới cho SEO khi import.",
+            "image_url": "https://www.fiorenzato.com/wp-content/uploads/2020/10/F4-ECO-nero_520x1000.png"
+          }
+        }
+      ],
+      "model_count": 4
+    },
+    {
+      "group_name": "Dosers (Grinder-Dosers, 'A' automatic)",
+      "group_name_vi": "Dòng Máy Xay-Định Lượng Cổ Điển (Grinder-Doser)",
+      "taxonomy_note": "Ký hiệu 'A' = automatic microswitch (tự ngắt khi phễu doser đầy/thao tác cần gạt). Đây là dòng máy xay-định lượng cổ điển phổ biến nhất của Fiorenzato, dùng đòn bẩy cơ khí chia liều cà phê ra ly, không cần điện tử.",
+      "source_url": "https://www.fiorenzato.com/en/dosers/",
+      "models": [
+        {
+          "model": "F4 A",
+          "url": "https://www.fiorenzato.com/en/grinder-dosers/f4-a/",
+          "burr_diameter_mm": 58,
+          "burr_type": "Flat",
+          "motor_power_w": 250,
+          "hopper_capacity_g": 500,
+          "rpm": "1400/min (50Hz) - 1600/min (60Hz)",
+          "dims_mm": "169x473x240 (WxDxH)",
+          "weight_kg": 10,
+          "doser_capacity_g": 200,
+          "dose_range_g": "5.5-10",
+          "grinding_adjustment": "Continuous micrometric ring nut",
+          "colors": ["Deep Black", "Glossy Black", "Nardò Grey", "Classic Grey", "Arctic White", "Pearl White", "Glossy Red"],
+          "seo": {
+            "seo_title": "Traditional Coffee Grinder F4 A | Fiorenzato",
+            "seo_description": "KHÔNG tìm thấy thẻ meta description trên trang nguồn — cần soạn mới cho SEO khi import.",
+            "image_url": "CHƯA xác nhận URL ảnh cụ thể — trang chỉ liệt kê tên biến thể màu (không kèm src file); cần fetch lại để lấy path đầy đủ."
+          }
+        },
+        {
+          "model": "F5",
+          "url": "https://www.fiorenzato.com/en/grinder-dosers/f5/",
+          "burr_diameter_mm": 64,
+          "burr_type": "Flat",
+          "motor_power_w": 350,
+          "hopper_capacity_kg": 1.5,
+          "rpm": "1350/min (50Hz) - 1550/min (60Hz)",
+          "dims_mm": "230x615x270 (WxDxH)",
+          "weight_kg": 14,
+          "doser_capacity_g": 250,
+          "dose_range_g": "5.5-10",
+          "model_variants": ["A (automatic microswitch)", "T (timer)", "M (manual switch)"],
+          "colors": ["Deep Black", "Glossy Black", "Nardò Grey", "Classic Grey", "Arctic White", "Pearl White", "Glossy Red"],
+          "seo": {
+            "seo_title": "Traditional Coffee Grinder F5 A-M-T | Fiorenzato",
+            "seo_description": "KHÔNG tìm thấy thẻ meta description trên trang nguồn — cần soạn mới cho SEO khi import.",
+            "image_url": "CHƯA xác nhận URL ảnh cụ thể — trang chỉ liệt kê tên chung 'F5 A' không kèm src file; cần fetch lại để lấy path đầy đủ."
+          }
+        },
+        {
+          "model": "F6",
+          "url": "https://www.fiorenzato.com/en/grinder-dosers/f6/",
+          "burr_diameter_mm": 83,
+          "burr_type": "Flat",
+          "motor_power_w": 650,
+          "hopper_capacity_kg": 1.5,
+          "rpm": "1400/min (50Hz) - 1600/min (60Hz)",
+          "dims_mm": "230x670x270 (WxDxH)",
+          "weight_kg": 16,
+          "doser_capacity_g": 250,
+          "dose_range_g": "5.5-10",
+          "model_variants": ["A (automatic microswitch)", "M (manual switch)", "T (timer)"],
+          "seo": {
+            "seo_title": "Traditional Coffee Grinder F6 A-M-T | Fiorenzato",
+            "seo_description": "KHÔNG tìm thấy thẻ meta description trên trang nguồn — cần soạn mới cho SEO khi import.",
+            "image_url": "https://www.fiorenzato.com/wp-content/uploads/2020/10/F6-A-4-1.png"
+          }
+        },
+        {
+          "model": "F71 AK",
+          "url": "https://www.fiorenzato.com/en/grinder-dosers/f71-ak/",
+          "burr_diameter_mm": 71,
+          "burr_type": "Conical",
+          "motor_power_w": 850,
+          "hopper_capacity_kg": 1.5,
+          "rpm": "450/min (50Hz) - 500/min (60Hz)",
+          "dims_mm": "230x670x270 (WxDxH)",
+          "weight_kg": 21,
+          "doser_capacity_g": 250,
+          "dose_range_g": "5.5-10",
+          "seo": {
+            "seo_title": "Traditional Coffee Grinder F71 AK | Fiorenzato",
+            "seo_description": "KHÔNG tìm thấy thẻ meta description trên trang nguồn — cần soạn mới cho SEO khi import.",
+            "image_url": "CHƯA xác nhận URL ảnh cụ thể — WebFetch chỉ trả tên file (F71-AK-4-1.png) không kèm domain; suy đoán https://www.fiorenzato.com/wp-content/uploads/2020/10/F71-AK-4-1.png theo pattern năm 2020 dùng ở F5-D/F6-D/F6-A cùng nhóm, CHƯA xác nhận trực tiếp."
+          }
+        }
+      ],
+      "model_count": 4
+    },
+    {
+      "group_name": "Home (AllGround) — consumer line, separate microsite",
+      "group_name_vi": "Dòng Gia Đình AllGround (Site Riêng fiorenzatohome.com)",
+      "taxonomy_note": "Site riêng biệt fiorenzatohome.com (không nằm trong menu chính fiorenzato.com), nhắm thị trường tiêu dùng gia đình (home barista) chứ không phải HORECA/B2B — nhưng dùng lưỡi dao 64mm cùng công nghệ Dark-T® của dòng chuyên nghiệp. Site này KHÔNG dùng cấu trúc URL wp-content/uploads mà dùng thư mục /img/ riêng và HTML thuần (không phải WordPress).",
+      "source_url": "https://www.fiorenzatohome.com/?language=eng",
+      "models": [
+        {
+          "model": "AllGround Classic",
+          "url": "https://www.fiorenzatohome.com/allground-classic.php?language=eng",
+          "burr_diameter_mm": 64,
+          "burr_type": "Flat, Dark-T® coating",
+          "motor_power_w": 250,
+          "hopper_capacity_g": 500,
+          "dims_mm": "169x440x240 (WxDxH)",
+          "weight_kg": 9,
+          "rpm": "1400/min (50Hz) - 1600/min (60Hz)",
+          "burr_lifespan": "3,000 kg of coffee",
+          "grinding_adjustment": "Continuous, micrometric ring nut",
+          "seo": {
+            "seo_title": "Coffee Grinder - AllGround Classic | Fiorenzato AllGround",
+            "seo_description": "KHÔNG tìm thấy thẻ meta description trên trang nguồn — cần soạn mới cho SEO khi import.",
+            "image_url": "CHƯA có URL tuyệt đối — trang trả về đường dẫn tương đối (vd img/allground_basic01.png), domain gốc là https://www.fiorenzatohome.com/ nên URL đầy đủ suy ra là https://www.fiorenzatohome.com/img/allground_basic01.png, nhưng CHƯA xác nhận trực tiếp bằng cách mở ảnh — cần kiểm tra lại trước khi dùng cho import."
+          }
+        },
+        {
+          "model": "AllGround Sense",
+          "url": "https://www.fiorenzatohome.com/allground-sense.php?language=eng",
+          "burr_diameter_mm": 64,
+          "burr_type": "Flat, Dark-T® coating",
+          "motor_power_w": 250,
+          "hopper_capacity_g": 500,
+          "dims_mm": "169x440x240 (WxDxH)",
+          "weight_kg": 9,
+          "rpm": "1400/min (50Hz) - 1600/min (60Hz)",
+          "burr_lifespan": "3,000 kg",
+          "grinding_adjustment": "Micrometrical, 10µm per step",
+          "feature_note": "Built-in scale in the fork ('perfect amount of coffee in your portafilter'), touchscreen interface for dose selection",
+          "colors": ["Deep Black Matte", "Arctic White", "Pastel Blue"],
+          "seo": {
+            "seo_title": "Coffee Grinder - AllGround Sense | Fiorenzato AllGround",
+            "seo_description": "KHÔNG tìm thấy thẻ meta description trên trang nguồn — cần soạn mới cho SEO khi import.",
+            "image_url": "CHƯA có URL tuyệt đối — trang trả về đường dẫn tương đối (vd img/AllGround-Sense_Deep-black_Matte.png), domain gốc là https://www.fiorenzatohome.com/ nên URL đầy đủ suy ra là https://www.fiorenzatohome.com/img/AllGround-Sense_Deep-black_Matte.png, nhưng CHƯA xác nhận trực tiếp bằng cách mở ảnh — cần kiểm tra lại trước khi dùng cho import."
+          }
+        }
+      ],
+      "model_count": 2
+    }
+  ],
+  "total_model_count": 34,
+  "image_availability_summary": {
+    "confirmed_absolute_url": 24,
+    "unconfirmed_or_relative_path_needs_followup": 10,
+    "note": "24/34 model có URL ảnh tuyệt đối xác nhận trực tiếp từ WebFetch (đủ dùng ngay cho import CSV). 10 model còn lại (F64 EVO PRO ADAPT, F5 A PRO, F64 EVO XGi PRO, F83 E, F4 A, F5, F71 AK, AllGround Classic, AllGround Sense — và 1 note nghi vấn ở F64 EVO XGi PRO) chỉ có tên file hoặc đường dẫn tương đối, suy đoán theo pattern cùng thư mục nhưng CHƯA mở/xác nhận trực tiếp từng ảnh — cần 1 lượt fetch riêng từng trang để chốt URL tuyệt đối trước khi generate CSV."
+  },
+  "seo_data_gap": "TOÀN BỘ 34 model đều KHÔNG có thẻ <meta name=\"description\"> hiển thị qua WebFetch, và KHÔNG có og:image ở bất kỳ trang nào đã cào — đây là đặc điểm chung toàn site fiorenzato.com/fiorenzatohome.com (không phải lỗi crawl riêng lẻ, đã kiểm tra nhiều trang khác nhau đều cùng kết quả). seo_title (từ <title>) có sẵn cho tất cả 34 model. seo_description CẦN được soạn mới thủ công (hoặc AI-generate có kiểm duyệt) trước khi import CSV — không có sẵn để cào.",
+  "pricing_status": "Fiorenzato KHÔNG công bố giá bán công khai trên website chính hãng (fiorenzato.com và fiorenzatohome.com) — không tìm thấy trang giá/catalog giá trong quá trình cào, đúng thông lệ ngành thiết bị pha chế B2B/wholesale. Cần liên hệ trực tiếp Fiorenzato (info@fiorenzato.it) hoặc đại lý phân phối để lấy báo giá.",
+  "vietnam_market_context": {
+    "note": "Site này KHÔNG xác nhận nhà phân phối chính hãng tại Việt Nam qua fiorenzato.com — không tìm thấy trang 'dealers'/'distributors' trong phạm vi các trang đã cào lần này (chỉ cào trang chủ + 6 category page + microsite Home). Site saigonhoreca.local đã có brand Fiorenzato dưới dạng logo đối tác — có thể site này CHÍNH LÀ đại lý/nhà phân phối chính thức tại VN, nhưng chưa được xác nhận chéo qua trang đại lý chính thức của Fiorenzato — cần user xác nhận nội bộ.",
+    "caution": "Không suy đoán quan hệ đại lý — chỉ nêu observation trên, cần xác minh riêng."
+  },
+  "open_questions_for_user": [
+    "CHƯA GIẢI QUYẾT: 10/34 model chưa có URL ảnh tuyệt đối xác nhận — xem chi tiết ở image_availability_summary, cần 1 lượt fetch bổ sung trước khi generate CSV.",
+    "CHƯA GIẢI QUYẾT: seo_description trống cho toàn bộ 34 model (site không có meta description) — cần soạn mới, không tự bịa nội dung marketing để tránh sai thông tin.",
+    "CHƯA GIẢI QUYẾT: F64 E PRO, F64 EVO PRO, F83 E PRO, F71 EK PRO nằm trong menu 'PRO Line Grinders' nhưng <title> trả về lại ghi 'On Demand ... PRO' hoặc 'Traditional ... F71 DK PRO' — nghi ngờ trộn template/đặt tên giữa PRO Line và On Demand PRO; đã ghi chú từng trường hợp trong data.json, KHÔNG tự sửa lại tiêu đề vì đây là dữ liệu thật cào được.",
+    "CHƯA GIẢI QUYẾT: F64 EVO XGi PRO (on-demand) trả về title trùng hệt với bản không PRO — chưa xác minh được khác biệt spec thực tế ngoài đường dẫn URL riêng.",
+    "CHƯA GIẢI QUYẾT: Không tìm thấy giá bán công khai (thông lệ B2B) — cần liên hệ Fiorenzato hoặc đại lý phân phối trước khi publish giá lên site.",
+    "CHƯA GIẢI QUYẾT: Quan hệ đại lý chính thức tại Việt Nam của Fiorenzato — site saigonhoreca.local có sẵn logo đối tác Fiorenzato ở trang chủ nhưng chưa cross-check với danh sách đại lý chính thức (nếu có) trên fiorenzato.com.",
+    "CHƯA CÀO: Trang phụ kiện (accessories: https://www.fiorenzato.com/en/our-optional-accessories/) và phụ tùng thay thế (spare parts: https://www.fiorenzato.com/en/spare-parts/) — có thể chứa thêm SKU phụ kiện (phễu, cân, lưỡi dao rời) nhưng không phải máy xay hoàn chỉnh nên chưa ưu tiên cào ở lần đầu này."
+  ]
+}

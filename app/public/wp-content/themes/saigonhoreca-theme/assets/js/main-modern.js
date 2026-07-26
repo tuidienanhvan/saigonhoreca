@@ -1,21 +1,6 @@
 
 function shDebounce(fn, ms) { var t; return function(...args) { clearTimeout(t); t = setTimeout(() => fn.apply(this, args), ms || 100); }; }
 
-// ── AUTO-HIDE SCROLLBAR (1 nơi global duy nhất — xem CSS tương ứng trong
-// _tokens.css). Gắn .is-scrolling vào <html> ngay khi cuộn, tự gỡ 800ms
-// sau khi cuộn dừng. `capture: true` để bắt được cả scroll từ container
-// con (sidebar, mobile menu...) không chỉ window. Bỏ qua trên thiết bị
-// chạm (CSS đã tự xử lý @media hover:none) để đỡ tốn 1 listener vô ích. */
-(function initAutoHideScrollbar() {
-    const isTouch = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
-    if (isTouch) return;
-    const root = document.documentElement;
-    const hideAfterIdle = shDebounce(() => root.classList.remove('is-scrolling'), 800);
-    document.addEventListener('scroll', () => {
-        root.classList.add('is-scrolling');
-        hideAfterIdle();
-    }, { passive: true, capture: true });
-})();
 
 document.addEventListener('DOMContentLoaded', () => {
     const header = document.getElementById('main-header');

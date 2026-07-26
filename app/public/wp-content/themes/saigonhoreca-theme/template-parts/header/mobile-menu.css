@@ -216,47 +216,53 @@ body.overflow-hidden {
 
 /* ── Submenus Accordion ── */
 .sub-menu-wrapper {
-    max-height: 0;
-    transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    overflow: hidden;
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .sub-menu-wrapper.is-open {
-    max-height: 1000px;
+    grid-template-rows: 1fr;
 }
-.sub-menu-wrapper .sh-mob-submenu {
-    display: flex !important; /* Force flex display when parent wrapper handles max-height */
-}
-.sh-mob-submenu {
-    margin: 0;
-    padding: 0.25rem 0 0.5rem 0.75rem;
-    width: 100%;
+.sub-menu-wrapper .sub-menu {
+    overflow: hidden;
+    margin: 0 0 0 1.5rem;
+    padding: 0;
+    width: auto;
     flex-direction: column;
     list-style-type: none;
     background: transparent;
     border-left: 2px solid rgba(255, 255, 255, 0.08);
-    margin-left: 1.5rem;
-    margin-top: 0.25rem;
-    gap: 0.25rem;
+    display: flex;
 }
-.sh-mob-sub-item {
+.sub-menu-wrapper .sub-menu > li {
     width: 100%;
+    margin: 0;
 }
-.sh-mob-sub-item__link {
+.sub-menu-wrapper .sub-menu > li:first-child {
+    margin-top: 0.5rem;
+}
+.sub-menu-wrapper .sub-menu > li:last-child {
+    margin-bottom: 0.5rem;
+}
+.sub-menu-wrapper .sub-menu > li > a {
     align-items: center;
     gap: 0.625rem;
     width: 100%;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.75rem 0.5rem 1rem;
     color: #b0b0b5;
     text-decoration: none;
     transition: all 0.25s ease;
     display: flex;
     border-radius: 6px;
+    font-size: 0.8125rem;
+    font-weight: 500;
 }
-.sh-mob-sub-item__link:hover {
+.sub-menu-wrapper .sub-menu > li > a:hover {
     color: var(--brand);
     background: rgba(255, 255, 255, 0.03);
 }
-.sh-mob-sub-item__dot {
+.sub-menu-wrapper .sub-menu > li > a::before {
+    content: '';
     height: 4px;
     width: 4px;
     border-radius: 50%;
@@ -264,13 +270,9 @@ body.overflow-hidden {
     flex-shrink: 0;
     transition: all 0.25s ease;
 }
-.sh-mob-sub-item__link:hover .sh-mob-sub-item__dot {
+.sub-menu-wrapper .sub-menu > li > a:hover::before {
     background: var(--brand);
     transform: scale(1.5);
-}
-.sh-mob-sub-item__text {
-    font-size: 0.75rem;
-    font-weight: 500;
 }
 
 /* ── Footer ── */

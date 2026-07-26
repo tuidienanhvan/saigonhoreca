@@ -1,0 +1,73 @@
+{
+  "research_date": "2026-07-13",
+  "deeper_pass_2026_07_13": {
+    "instruction": "User yêu cầu re-check kỹ hơn trước khi chốt 'không có hãng thật': tìm Alibaba/1688/Made-in-China theo mã 'SCNP-1000L'/'SCNP-1000LPH', tìm dữ liệu hải quan/nhập khẩu VN, tìm 'SCNP' như một PREFIX dùng chung cho cả dòng sản phẩm, thử tổ hợp tiếng Việt khác, và tìm lại 'Scale Control' như TÊN DÒNG SẢN PHẨM (product line) của một hãng lọc nước thật với góc nhìn mới.",
+    "alibaba_1688_madeinchina_result": "KHÔNG tìm thấy listing nào khớp chính xác mã 'SCNP-1000L' hoặc 'SCNP-1000LPH' trên Alibaba/Made-in-China. Search 'SCNP-1000L Alibaba OEM water treatment' chỉ trả về kết quả chung chung (RO 1000L/H systems từ nhiều xưởng TQ khác nhau như Shenzhen Yili, không xưởng nào dùng ký hiệu 'SCNP').",
+    "customs_import_data_result": "KHÔNG tìm thấy nguồn hải quan/nhập khẩu công khai nào tra được xuất xứ theo mã 'SCNP-1000L'. Các trang tổng hợp nhập khẩu VN không index theo model code water filter dân dụng/thương mại nhỏ lẻ này.",
+    "scnp_prefix_result": "KHÔNG tìm thấy hãng nào khác dùng 'SCNP' làm tiền tố SKU cho một DÒNG sản phẩm (ngoài 2 sản phẩm đã biết: saigonhoreca 'SCNP-1000L' và vinbarista 'SCNP-1000LPH'). Không đủ dữ liệu để suy ra 'SCNP' là SKU-prefix nội bộ của một xưởng cụ thể.",
+    "new_finding_scale_control_lo_loi_component": "PHÁT HIỆN MỚI quan trọng: cả trang saigonhoreca.vn LẪN kết quả search về vinbarista đều mô tả linh kiện bên trong bộ lọc là 'lõi lọc tinh UF: Scala Control' + 'lõi lọc thô: DFXCB'. Điều này gợi ý mạnh rằng 'Scale Control' (hoặc 'Scala Control', chưa rõ chính tả đúng) thực chất là TÊN GỌI CỦA LÕI LỌC/CARTRIDGE bên trong hệ thống — không phải tên hãng sản xuất cả bộ thiết bị. Nhà bán lẻ saigonhoreca nhiều khả năng đã LẤY TÊN LÕI LỌC làm 'Thương Hiệu' hiển thị ngoài trang sản phẩm, gây hiểu nhầm đây là brand của cả hệ thống.",
+    "scale_control_as_product_line_fresh_search": "Tìm lại rộng 'Scale Control water treatment product line manufacturer anti-scale' với góc nhìn mới: xác nhận nhiều hãng lọc nước thật (Charger Water Treatment, Water Control Corporation SC-Series, 3M/Aqua-Pure AP430SS, iSpring) đều có dòng sản phẩm dùng cụm 'scale control'/'anti-scale' — NHƯNG đây là DANH TỪ CHUNG mô tả chức năng (kiểm soát cáu cặn), được hàng chục hãng dùng độc lập, KHÔNG phải một brand riêng biệt nào sở hữu tên này. Không hãng nào trong số này khớp công nghệ UF PVDF 0.01μm + trao đổi ion + mã 'SCNP'.",
+    "revised_conclusion": "Kết luận (b) được CỦNG CỐ THÊM, không đảo ngược: vẫn KHÔNG xác nhận được hãng sản xuất quốc tế thật tên 'Scale Control'. Bằng chứng mới (lõi lọc tên 'Scala/Scale Control' là linh kiện, không phải tên hãng) làm rõ hơn TẠI SAO không tìm ra hãng — rất có thể 'Scale Control' trên site chưa từng là brand độc lập ngay từ đầu, mà là tên cartridge bị người nhập liệu gắn nhầm vào trường 'Thương Hiệu' của sản phẩm."
+  },
+  "source_note": "KHÔNG tìm được website chính hãng độc lập cho 'Scale Control'. Dữ liệu dưới đây lấy từ (1) SQL dump thực tế của site đang chạy (app/sql/local.sql) — nội dung sản phẩm duy nhất mang brand này trên saigonhoreca.local/saigonhoreca.vn, (2) đối chiếu chéo với sản phẩm cùng model number (SCNP-xxxxL) bán bởi vinbarista.com — một nhà phân phối thiết bị pha chế/HORECA khác tại VN, dưới tên gọi khác ('Hoshizaki Nano'). Đã thử >10 biến thể WebSearch (tiếng Anh + tiếng Việt) cho 'Scale Control' như hãng cân điện tử, hãng chống cáu cặn công nghiệp, hãng lọc nước — KHÔNG tìm thấy công ty/website chính hãng nào tên 'Scale Control' hoạt động trong ngành thiết bị bếp công nghiệp hay lọc nước OEM Việt Nam/Trung Quốc.",
+  "existing_catalog_gap": "Site hiện chỉ có ĐÚNG 1 sản phẩm gắn brand 'Scale Control' (wp_terms id=13, term_slug 'scale-control'): 'Bộ Lọc Nước SCNP-1000L – Scale Control' (post ID 569). Đây KHÔNG phải hãng sản xuất thiết bị cân/weighing scale như tên gọi có thể gây hiểu nhầm — sản phẩm thực tế là bộ LỌC NƯỚC TOÀN NHÀ (whole-house water filtration/softening system), mục đích chống đóng cặn (scale) cho đường ống và thiết bị dùng nước trong bếp công nghiệp (máy rửa chén, máy làm đá, nồi hơi...).",
+  "identification_verdict": {
+    "status": "KHÔNG XÁC NHẬN được đây là một hãng sản xuất (manufacturer) quốc tế độc lập có tên 'Scale Control'.",
+    "brand_name_meaning_clarified": "'Scale Control' ở đây KHÔNG phải brand cân điện tử (weighing scale) và KHÔNG phải brand hóa chất tẩy cáu cặn dạng lỏng (descaler chemical). Dựa trên nội dung sản phẩm thật trên site, đây là tên được gắn cho một hệ thống LỌC NƯỚC/LÀM MỀM NƯỚC (water softening & UF filtration), với mục đích 'chống cáu cặn' (scale control/prevention) cho hệ thống nước — tên thương hiệu mô tả CHỨC NĂNG sản phẩm hơn là tên một công ty có đăng ký/catalogue riêng.",
+    "conclusion": "Nhiều khả năng 'Scale Control' là TÊN THƯƠNG MẠI/NHÃN CHUNG (generic trade name / private-label) mà Saigon Horeca gắn cho một bộ lọc nước OEM (khả năng cao là hàng nhập từ Trung Quốc, dựa trên loại màng lọc PVDF UF phổ biến trong ngành lọc nước công nghiệp giá rẻ) — không phải một thương hiệu quốc tế có nhà máy/website/catalogue chính thức. Bằng chứng: cùng dải model number 'SCNP-xxxxL' (SCNP-1000L trên saigonhoreca.vn) xuất hiện GẦN NHƯ GIỐNG HỆT dưới tên 'Hoshizaki Nano SCNP-1000LPH' trên vinbarista.com — một nhà phân phối VN khác, KHÔNG liên quan tới saigonhoreca. Hai nhà phân phối độc lập gắn 2 tên thương hiệu khác nhau (Scale Control / Hoshizaki Nano) cho cùng 1 dòng sản phẩm cùng mã số — dấu hiệu điển hình của hàng OEM không nhãn hiệu gốc, mỗi nhà phân phối tự đặt tên khi bán lẻ.",
+    "hoshizaki_attribution_warning": "CẢNH BÁO: Không tìm thấy bất kỳ sản phẩm 'Nano' hay 'SCNP' nào trong catalogue chính thức của Hoshizaki (hãng Nhật thật, chuyên máy làm đá/tủ lạnh công nghiệp — website hoshizakiamerica.com). Dòng lọc nước THẬT của Hoshizaki dùng ký hiệu hoàn toàn khác (H9320-51, H9655-11, H9320-54...) và chỉ dùng cho máy làm đá, không phải hệ lọc toàn nhà 1000-gallon. Việc Vinbarista gắn nhãn 'Hoshizaki' cho model SCNP-1000LPH nhiều khả năng là GHI SAI/KHÔNG CÓ CĂN CỨ (mislabeling), không phải bằng chứng cho thấy Scale Control = Hoshizaki thật.",
+    "confidence": "trung bình — kết luận dựa trên đối chiếu chéo 2 nhà phân phối VN độc lập cùng bán 1 dòng model number nhưng gắn 2 tên khác nhau, và việc KHÔNG tìm ra bất kỳ website/công ty gốc quốc tế nào tên 'Scale Control' trong ngành thiết bị bếp/lọc nước, chứ không phải xác nhận trực tiếp từ nhà máy gốc."
+  },
+  "candidates_considered_and_ruled_out": [
+    {"name": "Weighing scale manufacturer named 'Scale Control'", "reason_ruled_out": "Không tìm thấy hãng cân điện tử/công nghiệp nào tên này. 'Scale and Control Inc.' (Phoenix, Arizona, Mỹ) có tên gần giống nhưng chuyên cân xe tải/máy xúc công nghiệp (onboard truck/loader scales) — hoàn toàn khác ngành với sản phẩm lọc nước đang bán trên saigonhoreca.local."},
+    {"name": "Charger Water Treatment Products — dòng 'Scale Control' (Mỹ)", "reason_ruled_out": "Đúng tên dòng sản phẩm ('Scale Control' / Scale Prep SP3 Media) và đúng ngành (chống cáu cặn nước), nhưng công nghệ khác hẳn: Charger dùng media xúc tác biến đổi khoáng chất thành hạt nano vô hại (không cần điện, không màng lọc), trong khi SCNP-1000L trên site dùng màng UF PVDF + trao đổi ion — không khớp công nghệ, không có bằng chứng liên kết công ty."},
+    {"name": "American Home Water & Air — 'Scale Control System' (Mỹ, Arizona)", "reason_ruled_out": "Tên sản phẩm trùng nhưng đây là công ty dịch vụ lắp đặt/bán lẻ tại Arizona, không phải nhà sản xuất, không có dấu hiệu xuất khẩu hay liên hệ gì tới thị trường thiết bị bếp công nghiệp Việt Nam."},
+    {"name": "Hoshizaki Corporation (Nhật) — dựa trên nhãn 'Hoshizaki Nano' của Vinbarista", "reason_ruled_out": "Không tìm thấy model 'Nano' hay 'SCNP' nào trong catalogue chính thức Hoshizaki (hoshizakiamerica.com); dòng lọc nước thật của Hoshizaki dùng ký hiệu H93xx/H96xx, chỉ phục vụ máy làm đá. Nhãn 'Hoshizaki' trên Vinbarista nhiều khả năng là gắn sai/không có ủy quyền."}
+  ],
+  "brand": "Scale Control",
+  "product_family": {
+    "family_name": "Whole-House / Commercial Water Filtration & Softening System",
+    "family_name_vi": "Bộ Lọc Nước & Làm Mềm Nước Toàn Hệ Thống",
+    "taxonomy_note": "Chỉ tìm thấy 1 sản phẩm duy nhất dưới brand này trên toàn bộ site (không có dòng/series nào khác). Model number 'SCNP-1000L' — 'SCNP' nhiều khả năng viết tắt liên quan 'Scale Control Nano Purifier' hoặc tương tự, nhưng đây là suy đoán từ cấu trúc tên, chưa xác minh được ý nghĩa chính thức vì không có tài liệu hãng gốc.",
+    "existing_catalog_note": "saigonhoreca.local hiện có ĐÚNG 1 sản phẩm brand này (post ID 569, term_id 13, slug 'scale-control'): 'Bộ Lọc Nước SCNP-1000L – Scale Control'. Dữ liệu lấy trực tiếp từ database thật của site (app/sql/local.sql) — không phải web công khai vì saigonhoreca.local là site nội bộ/dev, song bản public tương ứng tồn tại tại saigonhoreca.vn (đã WebFetch xác nhận nội dung khớp).",
+    "models": [
+      {
+        "model": "SCNP-1000L",
+        "source": "saigonhoreca.vn (bản public của site đang chạy) + app/sql/local.sql (DB thật, post ID 569)",
+        "url": "https://saigonhoreca.vn/san-pham/bo-loc-nuoc-scnp-1000l-scale-control/",
+        "title_vi": "Bộ Lọc Nước SCNP-1000L – Scale Control",
+        "specs": {
+          "dimensions_mm": "565 x 170 x 180",
+          "filter_pore_size_um": 0.01,
+          "membrane_material": "PVDF @50,000 Dalton @0.01μm",
+          "capacity": "1,000 m³ tổng công suất lọc / lưu lượng 8 lít/phút",
+          "storage_tank": "1,000 gallon",
+          "technology": "Trao đổi ion để làm mềm nước (ion exchange water softening) + lọc trầm tích (sediment filter)",
+          "components_included": [
+            "Lõi lọc tinh UF: 'Scala Control' (tên xuất hiện trong mô tả gốc trên site — có thể là lỗi đánh máy của 'Scale Control' hoặc tên lõi lọc riêng, chưa xác minh được)",
+            "Lõi lọc thô: DFXCB"
+          ]
+        },
+        "price": "Không niêm yết công khai trên site",
+        "brand_attribute_on_page": "Thương Hiệu: Scale Control (ghi trong bảng Additional Information / product_attribute)"
+      }
+    ],
+    "cross_reference_same_model_line_different_label": {
+      "note": "CÙNG dải model number 'SCNP-xxxxL', bán bởi vinbarista.com dưới tên KHÁC — không phải sản phẩm hiện có của saigonhoreca, liệt kê để làm bằng chứng cho kết luận 'OEM không nhãn gốc, mỗi nhà phân phối tự đặt tên'.",
+      "models": [
+        {
+          "model": "SCNP-1000LPH",
+          "title_vi": "Bộ lọc nước Hoshizaki Nano SCNP-1000LPH",
+          "url": "https://vinbarista.com/san-pham/bo-loc-nuoc-hoshizaki-nano-scnp-1000lph-item1441.html",
+          "note": "Mô tả là bộ lọc công nghệ nano cao cấp, loại bỏ tạp chất/vi sinh vật, kéo dài tuổi thọ màng lọc. Gắn nhãn 'Hoshizaki' — KHÔNG xác minh được đây có phải sản phẩm Hoshizaki chính hãng hay không (xem hoshizaki_attribution_warning ở trên)."
+        }
+      ]
+    }
+  },
+  "recommended_action": "KHÔNG tạo 'trang thương hiệu chính hãng Scale Control' vì không có hãng gốc quốc tế để dẫn nguồn — brand này thực chất là nhãn OEM/private-label/mô tả-chức-năng cho một bộ lọc nước không rõ xuất xứ nhà máy. Nếu muốn giữ brand hiển thị cho khách hàng, nên cân nhắc đổi thành mô tả trung thực hơn (vd 'Bộ lọc nước công nghiệp nhập khẩu' thay vì ngụ ý một thương hiệu quốc tế). KHÔNG nên mở rộng thêm sản phẩm dưới tên 'Scale Control' cho tới khi xác nhận được nhà cung cấp/nhà máy thật, vì rủi ro trùng lặp mô tả sai brand (như trường hợp Hoshizaki bị gắn nhầm ở nơi khác).",
+  "open_questions_for_user": [
+    "Bạn có nguồn nhập hàng thật (nhà cung cấp/nhà máy Trung Quốc hoặc VN) cho bộ lọc SCNP-1000L này không? Nếu có, tên nhà máy thật là gì — để xác nhận đây có cùng nguồn với model SCNP-1000LPH đang bị Vinbarista gắn nhãn 'Hoshizaki' hay không.",
+    "Có muốn đổi tên brand hiển thị 'Scale Control' thành mô tả trung thực hơn để tránh khách hàng nhầm đây là công ty/thương hiệu quốc tế có catalogue và bảo hành hãng chính thức?",
+    "Việc lõi lọc UF ghi tên 'Scala Control' (khác 'Scale Control' 1 ký tự) trong mô tả gốc trên site — đây có phải lỗi đánh máy khi nhập sản phẩm, hay là tên gọi cố ý khác cho lõi lọc? Cần xác nhận với người nhập liệu sản phẩm ban đầu."
+  ]
+}

@@ -41,7 +41,7 @@
     <meta name="msapplication-TileColor" content="#2b5797">
     <meta name="theme-color" content="#ffffff">
     <!-- Dark mode & Lighthouse Optimization: apply BEFORE paint to prevent flash & bypass animation delays -->
-    <script>
+    <script nonce="<?php echo esc_attr($GLOBALS['sgh_csp_nonce'] ?? ''); ?>">
     (function(){
         // 1. Dark mode
         var d = null;
@@ -66,11 +66,40 @@
     </style>
     <?php endif; ?>
     <?php get_template_part('template-parts/global-styles'); ?>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-16RD3DMN8W"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-16RD3DMN8W');
+    </script>
+    
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '861182343476463');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=861182343476463&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
 </head>
 <body <?php body_class(); ?>>
 <a href="#primary" class="sh-skip-link"><?php esc_html_e('Chuyển đến nội dung chính', 'saigonhoreca'); ?></a>
 <!-- Main Header (Saigon Horeca: clean dark band, no construction skyline) -->
 <header id="main-header" class="sh-header sh-header--horeca <?php if (is_admin_bar_showing()) echo 'sh-header--admin-bar'; ?>" role="banner" aria-label="<?php esc_attr_e('Header chính của website', 'saigonhoreca'); ?>">
+    <div class="sh-header__border"></div>
     <div class="sh-header__bar sh-header__bar--horeca <?php echo is_front_page() ? 'sh-header__bar--home' : ''; ?>">
         <!-- Logo -->
         <?php get_template_part('template-parts/header/logo'); ?>
@@ -139,7 +168,7 @@
 ?>
 
 <!-- Self-healing script to fix faulty top space when WordPress admin bar is active in PHP but hidden in UI -->
-<script>
+<script nonce="<?php echo esc_attr($GLOBALS['sgh_csp_nonce'] ?? ''); ?>">
 document.addEventListener('DOMContentLoaded', function() {
     var adminBar = document.getElementById('wpadminbar');
     var header = document.getElementById('main-header');

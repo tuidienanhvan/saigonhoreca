@@ -1,0 +1,134 @@
+{
+  "research_date": "2026-07-13",
+  "source_note": "KHÔNG tìm được website chính hãng độc lập cho 'Toprinse'. Dữ liệu dưới đây cào từ (1) chính 2 trang sản phẩm hiện có trên saigonhoreca.vn (site đang chạy), và (2) trang sản phẩm tương ứng trên restaurantsupply.com.vn — một nhà phân phối thiết bị bếp công nghiệp khác tại VN bán cùng dòng sản phẩm dưới cùng tên brand 'TOP-RINSE'/'TOPRINSE'. Mọi model/thông số dưới đây có URL nguồn kèm theo. KHÔNG có brand/company 'Toprinse' độc lập nào có website riêng được tìm thấy.",
+  "identification_verdict": {
+    "status": "ĐÃ TÌM RA nhà máy Trung Quốc thực sự đứng sau model number này (pass 2, 2026-07-13) — không phải một thương hiệu toàn cầu tên 'Toprinse' riêng biệt, nhưng KHÔNG còn là 'không xác định được nguồn gốc' nữa.",
+    "conclusion_updated_pass2": "Nhà máy SUNMIXER (ZHEJIANG SUNMIXER SANITARY WARE CO., LTD, thành lập 1999 tại Yuhuan, Chiết Giang, TQ; có thêm cơ sở tại Vô Tích/Wuxi — website prerinsesink.com / sun-mixer.com / sunmixer.com) sản xuất ĐÚNG dải model number 98001-1/-2 đến 98009-1/-2 cho dòng pre-rinse faucet — bao gồm CHÍNH XÁC model 98007-1 và 98007-2 đang bán trên saigonhoreca.vn (xác nhận qua prerinsesink.com/products/pre-rinse-faucets-manufacturer/restaurant-pre-rinse-faucet/98001-1/ liệt kê 98001 đến 98009 trong Related Products + FAQ nhắc trực tiếp '98007-1', '98007-2'). Sunmixer có kênh YouTube tên 'SUNMIXER - Top-Rinse Faucet Supplies', cho thấy 'Top-Rinse' là TÊN DÒNG SẢN PHẨM (product line nickname) mà chính Sunmixer dùng cho nhóm pre-rinse faucet của họ — rất có thể đây là nguồn gốc trực tiếp của tên 'Toprinse'/'TOP-RINSE' mà các nhà phân phối VN (saigonhoreca, restaurantsupply.com.vn) đang dùng, KHÔNG phải trùng hợp ngẫu nhiên. Sunmixer có trademark 'SUNMIXER' đăng ký tại US (Justia Trademarks, Registration No. 5946872, Serial 79253131) nhưng KHÔNG tìm thấy 'Top-Rinse'/'Toprinse' là trademark đăng ký riêng — nó là tên mô tả dòng sản phẩm, không phải nhãn hiệu pháp lý độc lập. Trang sunmixerfaucet.com/prerinsesink.com còn ghi rõ sản phẩm 'can interchange with T&S Brass faucet parts' — tức đây là hàng OEM tương thích/thay thế cho T&S Brass (hãng Mỹ nổi tiếng cùng ngành), một mô hình kinh doanh phổ biến của OEM TQ.",
+    "old_conclusion_pass1": "'Toprinse' (viết cũng thấy 'TOP-RINSE', 'TOPRINSE') nhiều khả năng là TÊN THƯƠNG MẠI/NHÃN CHUNG (generic trade name / private-label) mà các nhà phân phối thiết bị bếp công nghiệp Việt Nam gắn cho vòi phun tráng sản xuất tại Trung Quốc — kết luận này ĐÚNG MỘT PHẦN nhưng pass 1 KHÔNG tìm ra nhà máy gốc; pass 2 đã xác định được Sunmixer.",
+    "unrelated_homonym_warning": "CẢNH BÁO NHẦM LẪN (vẫn đúng): Có một sản phẩm HÓA CHẤT rửa bát công nghiệp tên 'Toprinse' (Toprinse Jet, Toprinse Clean, Toprinse Crystal, Toprinse HDP) do hãng ECOLAB (Mỹ/toàn cầu) sản xuất — đây là chất trợ xả (rinse aid) cho máy rửa chén/ly, HOÀN TOÀN KHÔNG liên quan đến vòi phun tráng P.R.C đang bán trên saigonhoreca.local.",
+    "confidence": "trung bình-cao — model number trùng khớp CHÍNH XÁC (98007-1, 98007-2) giữa saigonhoreca.vn và catalogue nhà máy Sunmixer (prerinsesink.com) là bằng chứng mạnh về nguồn gốc factory. Điểm CHƯA chắc chắn 100%: chưa xác nhận trực tiếp saigonhoreca/nhà phân phối VN nhập hàng TỪ Sunmixer (có thể qua trung gian/nhà máy khác dùng chung khuôn mẫu OEM phổ biến trong ngành — dải model 98xx là quy ước đánh số phổ biến trong ngành pre-rinse faucet TQ, không riêng gì Sunmixer), và 'Top-Rinse' là tên dòng sản phẩm không phải trademark đăng ký nên vẫn không có 'hãng Toprinse' pháp lý độc lập để dẫn nguồn chính thức.",
+    "pass2_methods_tried_that_still_found_nothing": [
+      "Alibaba/1688/Made-in-China/Global Sources trực tiếp cho '98007-1'/'98007-2'/'98009-2' qua web search — không trả về trang catalogue Alibaba cụ thể (có thể do search engine không index sâu Alibaba), chỉ trả về prerinsesink.com và katec.com.vn",
+      "Tìm 'Toprinse trademark'/'Toprinse company China' — không tìm thấy hồ sơ đăng ký nhãn hiệu nào tên 'Toprinse' ở TQ hay VN hay US (Justia chỉ có 'SUNMIXER', không có 'Toprinse'/'Top-Rinse')",
+      "Tìm 'Toprinse Vietnam nhà phân phối chính hãng' — không có kết quả, không có 'chính hãng' nào công bố",
+      "katec.com.vn (nhà phân phối VN thứ 3 cũng bán model 98007-2) — trang sản phẩm KHÔNG ghi brand/xuất xứ chi tiết, chỉ có tên + hình"
+    ]
+  },
+  "candidates_considered_and_ruled_out": [
+    {"name": "Ecolab Toprinse (rinse aid chemical)", "reason_ruled_out": "Đúng tên nhưng khác ngành hàng hoàn toàn — hóa chất trợ xả, không phải thiết bị/vòi nước. Hãng Mỹ, không phải P.R.C."},
+    {"name": "Topring (Canada, khí nén công nghiệp)", "reason_ruled_out": "Chuyên khí nén/pneumatic, không liên quan bếp công nghiệp; không tìm thấy liên hệ nào tới 'Toprinse'."},
+    {"name": "Guangzhou Topkitch Kitchen Equipment Co., Ltd.", "reason_ruled_out": "Tên gần giống ('Top' + kitchen) nhưng là công ty khác (Topkitch, chuyên fryer/griddle), không có bằng chứng liên kết với brand 'Toprinse' trên các vòi phun tráng đang xét."}
+  ],
+  "brand": "Toprinse-P.R.C",
+  "product_family": {
+    "family_name": "Pre-Rinse Spray Faucet & Bar Faucet Line",
+    "family_name_vi": "Dòng Vòi Phun Tráng / Vòi Nước Quầy Bar",
+    "taxonomy_note": "Toàn bộ sản phẩm tìm được đều là phụ kiện vòi nước/vòi xịt bằng đồng thau + inox, KHÔNG phải máy móc điện (không có máy rửa chén 'Toprinse'). Model number dạng 98xx-x xuất hiện thống nhất giữa 2 nhà phân phối VN khác nhau, cho thấy đây là hàng OEM Trung Quốc nhập theo lô, gắn nhãn 'Toprinse' khi bán lẻ.",
+    "existing_catalog_note": "saigonhoreca.vn (site đang chạy) hiện có ĐÚNG 2 sản phẩm brand này: model 98007-1 và 98007-2 — cùng 1 kiểu vòi phun tráng, khác nhau nhẹ ở mô tả tay cầm phụ. Cả 2 đều đã verify trực tiếp từ trang sản phẩm thật trên saigonhoreca.vn.",
+    "models": [
+      {
+        "model": "98007-1",
+        "source": "saigonhoreca.vn (site đang chạy, sản phẩm hiện có)",
+        "url": "https://saigonhoreca.vn/san-pham/voi-phun-trang-98007-1-toprinse-p-r-c/",
+        "title_vi": "Vòi Phun Tráng 98007-1 – Toprinse-P.R.C",
+        "specs": {
+          "standing_pipe_height": "20 inch (510mm)",
+          "flexible_stainless_hose": "44 inch (1118mm)",
+          "spray_valve": "Multi-stream, thân đồng thau + đầu phun inox",
+          "wall_mount_arm": "12 inch (305mm)",
+          "check_valve": "Có, chống chảy ngược",
+          "handle": "Tay cầm lò xo (spring handle)",
+          "origin": "R.P.C (Trung Quốc)",
+          "warranty": "1 năm"
+        },
+        "price": "Không niêm yết công khai trên site"
+      },
+      {
+        "model": "98007-2",
+        "source": "saigonhoreca.vn (site đang chạy, sản phẩm hiện có)",
+        "url": "https://saigonhoreca.vn/san-pham/voi-phun-trang-98007-2-toprinse-p-r-c/",
+        "title_vi": "Vòi Phun Tráng 98007-2 – Toprinse-P.R.C",
+        "specs": {
+          "standing_pipe_height": "20 inch (510mm)",
+          "flexible_stainless_hose": "44 inch (1118mm)",
+          "spray_valve": "Multi-stream, thân đồng thau + đầu phun inox, tuân ANSI/ASTM F2324-03",
+          "wall_mount_arm": "12 inch (305mm)",
+          "auxiliary_hose": "12 inch (305mm)",
+          "check_valve": "Có, chống chảy ngược",
+          "origin": "R.P.C (Trung Quốc)",
+          "warranty": "1 năm"
+        },
+        "price": "Không niêm yết công khai trên site"
+      }
+    ],
+    "adjacent_models_found_at_other_vn_distributor": {
+      "note": "CÙNG brand name 'TOP-RINSE'/'TOPRINSE', bán bởi restaurantsupply.com.vn — KHÔNG có trên saigonhoreca.vn hiện tại. Liệt kê để tham khảo mở rộng danh mục, KHÔNG phải sản phẩm hiện có của saigonhoreca.",
+      "models": [
+        {
+          "model": "98009-2",
+          "title_vi": "Vòi Phun Tráng Pre-Rinse Model 98009-2",
+          "url": "https://restaurantsupply.com.vn/voi-phung-trang-pre-rinse-model-98009-2/",
+          "specs": {
+            "flexible_hose": "1118mm",
+            "auxiliary_nozzle": "305mm, kiểu xoay (rotary)",
+            "mount_type": "Đặt bàn trực tiếp trên bồn rửa (table-mounted)",
+            "material": "Inox",
+            "flow_rate": "1.15 GPM",
+            "standard": "ANSI/ASTM F2324-03",
+            "origin": "Trung Quốc"
+          }
+        },
+        {
+          "model": "9800-12",
+          "title_vi": "Double Workboard Faucet Model 9800-12",
+          "url": "https://restaurantsupply.com.vn/double-workboard-faucet-model-9800-12/",
+          "specs": {
+            "faucet_length": "305mm",
+            "add_on_faucet": "102mm",
+            "mount_type": "Deck mounted, vòi xoay (swing spout)",
+            "material": "Đồng thau mạ crôm dày + inox",
+            "check_valve": "Có",
+            "origin": "Trung Quốc"
+          }
+        },
+        {
+          "model": "9815-12",
+          "title_vi": "Deck-Mounted Pantry Faucet Model 9815-12",
+          "url": "https://restaurantsupply.com.vn/double-pantry-faucet-model-9815-12/",
+          "specs": {
+            "faucet_length": "305mm",
+            "faucet_center": "102mm",
+            "mount_type": "Deck mounted, vòi xoay",
+            "material": "Đồng thau + inox, lõi van đồng (brass cartridge)",
+            "check_valve": "Có",
+            "detachable": true,
+            "origin": "Trung Quốc"
+          }
+        },
+        {
+          "model": "9816-12",
+          "title_vi": "Double Pantry Faucet Model 9816-12",
+          "url": "https://restaurantsupply.com.vn/double-pantry-faucet-model-9816-12/",
+          "specs": {"note_": "Cùng dòng pantry faucet với 9815-12, chưa fetch chi tiết specs riêng."}
+        },
+        {
+          "model": "9850N + DRIP PAN",
+          "title_vi": "Glass Rinser Model 9851N + 9860-FE-110",
+          "url": "https://restaurantsupply.com.vn/glass-rinser-model-9851n-9860-fe-110-2/",
+          "category": "Thiết bị quầy bar (bar equipment) — máy tráng ly",
+          "specs": {
+            "dimensions_mm": "454W x 270D x 26H",
+            "material": "Inox",
+            "origin": "Trung Quốc"
+          }
+        }
+      ]
+    }
+  },
+  "recommended_action": "KHÔNG tạo thêm 'trang thương hiệu chính hãng Toprinse' vì không có hãng gốc để dẫn nguồn — brand này thực chất là nhãn OEM/private-label cho vòi phun tráng Trung Quốc. Nếu muốn mở rộng danh mục từ 2 sản phẩm hiện có, có thể tham khảo thêm các model tương tự (98009-2, 9800-12, 9815-12, 9816-12, 9850N glass rinser) đang bán bởi đối thủ VN khác — nhưng cần tự chụp ảnh/xác nhận thông số với nhà cung cấp thật trước khi đăng, vì đây là dữ liệu tham khảo từ website đối thủ, không phải catalogue nhà máy.",
+  "open_questions_for_user": [
+    "Bạn có nguồn nhập hàng (nhà cung cấp Trung Quốc thật) cho 2 sản phẩm Toprinse hiện có không? Nếu có, tên nhà máy/xưởng thật là gì — để xác nhận đây có phải cùng 1 nguồn với các model mở rộng liệt kê ở trên hay không.",
+    "Có muốn đổi cách gắn brand 'Toprinse-P.R.C' thành mô tả chính xác hơn (vd 'Vòi phun tráng nhập khẩu Trung Quốc') để tránh khách hàng tưởng đây là thương hiệu quốc tế có catalogue/bảo hành hãng?",
+    "Có muốn mimo soạn thêm 3-4 sản phẩm nháp (9800-12, 9815-12, 9816-12, glass rinser) dựa trên thông số tham khảo từ đối thủ, chờ bạn xác nhận giá + ảnh thật trước khi đăng?"
+  ]
+}

@@ -53,7 +53,13 @@ if (!function_exists('sgh_pillar_route_serve')) {
                     $files_deleted++;
                 }
             }
-            
+
+            // Cho phép plugin khác (vd pi-chatbot) nghe cùng 1 điểm bấm này để dọn
+            // cache riêng của họ — không cần route này biết chi tiết plugin nào
+            // đang lắng nghe (loose coupling qua action hook, không hardcode tên
+            // plugin/class cụ thể vào file theme).
+            do_action('sgh_after_flush_cache');
+
             wp_die(
                 "<h3>Theme Static Cache Flushed Successfully!</h3><p>Deleted $files_deleted cached files/folders.</p><p><a href='" . esc_url(home_url('/')) . "'>&larr; Back to Home</a></p>",
                 "Cache Flushed",

@@ -40,13 +40,14 @@ $root_class = 'sh-single' . ($is_product ? ' sh-single--product' : '');
                 $post_id = get_the_ID();
 
                 if ($is_product) {
-                    $sku    = get_post_meta($post_id, '_sku', true);
+                    $sku        = get_post_meta($post_id, '_sku', true);
+                    $source_url = get_post_meta($post_id, '_source_url', true);
                     $brands = wp_get_post_terms($post_id, 'product_brand');
                     $pcats  = wp_get_post_terms($post_id, 'product_category');
                     $schema = 'https://schema.org/Product';
                     $article_extra_class = ' sh-single__article--product';
                 } else {
-                    $custom_author = get_post_meta($post_id, '_pi_custom_author', true) ?: get_the_author();
+                    $custom_author = get_post_meta($post_id, '_pi_custom_author', true) ?: get_the_author() ?: 'Saigon Horeca';
                     $custom_date   = get_post_meta($post_id, '_pi_custom_date', true) ?: get_the_date();
                     $read_min      = get_post_meta($post_id, '_pi_reading_time', true);
                     if (empty($read_min)) {
@@ -90,6 +91,12 @@ $root_class = 'sh-single' . ($is_product ? ' sh-single--product' : '');
                                             <?php endforeach; ?>
                                         </span>
                                     <?php endif; ?>
+                                    <?php if ($source_url) : ?>
+                                        <span class="sh-single__meta-item">
+                                            <strong>Nguồn:</strong>
+                                            <a href="<?php echo esc_url($source_url); ?>" target="_blank" rel="nofollow noopener noreferrer">Trang sản phẩm chính hãng</a>
+                                        </span>
+                                    <?php endif; ?>
                                 </div>
                             <?php else : ?>
                                 <div class="sh-single__meta">
@@ -115,7 +122,9 @@ $root_class = 'sh-single' . ($is_product ? ' sh-single--product' : '');
                                 </div>
                             <?php endif; ?>
 
-                            <?php if (has_excerpt()) : ?>
+                            <?php if (function_exists('sgh_the_excerpt')) : ?>
+                                <?php sgh_the_excerpt($post_id, 35); ?>
+                            <?php elseif (has_excerpt()) : ?>
                                 <div class="sh-single__excerpt"<?php echo $is_product ? ' itemprop="description"' : ''; ?>><?php the_excerpt(); ?></div>
                             <?php endif; ?>
                         </div>

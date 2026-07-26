@@ -1,0 +1,577 @@
+{
+  "research_date": "2026-07-18",
+  "source_note": "Dữ liệu crawl thật từ trang chính thức của Josper (jospergrill.com — trang sản phẩm tiếng Anh toàn cầu của Josper S.A., Tây Ban Nha; josper.es hiện lỗi chứng chỉ SSL nên dùng jospergrill.com). Mỗi model đều có source_url thật. Josper KHÔNG công khai giá bán trên website — cần liên hệ để báo giá. Thông số kỹ thuật (kích thước, sức chứa, tiêu hao than) lấy trực tiếp từ từng trang sản phẩm. Nhóm phụ kiện (accessories) chỉ có file PDF tổng hợp, không có trang sản phẩm riêng cho từng phụ kiện nên không đưa vào để tránh bịa; xem README.",
+  "brand": "Josper-Spain",
+  "groups": [
+    {
+      "group_name": "Charcoal Ovens",
+      "group_name_vi": "Lò Nướng Than Josper",
+      "source_urls": [
+        "https://jospergrill.com/product-category/josper-charcoal-ovens/",
+        "https://jospergrill.com/product-category/josper-charcoal-ovens/hornos-brasa-josper-hjx-pro-2/",
+        "https://jospergrill.com/product-category/josper-charcoal-ovens/josper-charcoal-oven-hja-plus/"
+      ],
+      "models": [
+        {
+          "model": "HJX-15",
+          "title": "Josper HJX-15 Charcoal Oven",
+          "description_en": "The HJX-15 is an elegant combination of a grill and an oven in a single unit that works 100% with charcoal. It features an enclosed barbecue design with adjustable searing levels, a front-opening door mechanism and draft-based temperature management.",
+          "specs": {
+            "capacity": "±30 guests",
+            "oven_dimensions_mm": "500 x 688 x 550",
+            "grill_dimensions_mm": "347 x 353",
+            "heat_up_time": "±25 minutes",
+            "daily_charcoal_consumption": "1.5-2.5 kg",
+            "runtime_per_load": "6 hours",
+            "hourly_output": "±20 kg",
+            "grilling_temperature": "250-350 °C",
+            "recommended_installation_height": "80-90 cm",
+            "fuel": "charcoal",
+            "certifications": "CE, UL, NSF",
+            "colors": "Azure, White, Black, Brown, Stainless Steel, Burgundy, Green"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/Josper-HJX-15-2.jpg",
+          "source_url": "https://jospergrill.com/products/josper-charcoal-ovens/hornos-brasa-josper-hjx-pro-2/josper-charcoal-oven-hjx-15/",
+          "seo_title": "Josper HJX-15 Charcoal Oven | Josper",
+          "seo_description": "not published — inquire"
+        },
+        {
+          "model": "HJX-PRO Mini",
+          "title": "Josper HJX Pro Charcoal Oven Mini",
+          "description_en": "The Josper HJX-PRO Mini is designed for smaller operations and gatherings. It has a heat-up time of ±25 minutes and accommodates approximately 40 guests. It consumes 6 to 8 kg of charcoal daily with a runtime of 7 hours per load, an hourly output of approximately 25 kg and operating temperatures between 250-350°C.",
+          "specs": {
+            "capacity": "±40 guests",
+            "oven_dimensions_mm": "710 x 805 x 560",
+            "grill_dimensions_mm": "340 x 560",
+            "heat_up_time": "±25 minutes",
+            "daily_charcoal_consumption": "6-8 kg",
+            "runtime_per_load": "7 hours",
+            "hourly_output": "±25 kg",
+            "grilling_temperature": "250-350 °C",
+            "recommended_installation_height": "65 cm",
+            "fuel": "charcoal",
+            "certifications": "CE, UL, NSF",
+            "colors": "Blue, White, Black, Brown, Stainless Steel, Burgundy, Green"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/horno-josper-hjx-pro-mini-1-1.jpg",
+          "source_url": "https://jospergrill.com/products/josper-charcoal-ovens/hornos-brasa-josper-hjx-pro-2/horno-brasa-josper-hjx-pro-mini/",
+          "seo_title": "Josper HJX Pro Brasa Oven Mini | Josper",
+          "seo_description": "not published — inquire"
+        },
+        {
+          "model": "HJX-PRO S80 Small",
+          "title": "Josper HJX Pro Charcoal Oven S80 Small",
+          "description_en": "The HJX Pro S80 Small is a charcoal-fired brasa oven serving approximately 80 guests, offered in multiple configurations (PRO base, PRO-T with lower table, PRO-TD with countertop and drawer, PRO-W with temperature controller, PRO-WT with tempering unit and work surface). Recommended installation height is 65 cm.",
+          "specs": {
+            "capacity": "±80 guests",
+            "oven_dimensions_mm": "649 x 1024 x 772",
+            "grill_dimensions_mm": "510 x 500",
+            "recommended_installation_height": "65 cm",
+            "configurations": "PRO, PRO-T, PRO-TD, PRO-W, PRO-WT",
+            "fuel": "charcoal",
+            "colors": "Azure, White, Black, Brown, Stainless Steel, Burgundy, Green"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/horno-josper-hjx-pro-S80.jpg",
+          "source_url": "https://jospergrill.com/products/josper-charcoal-ovens/hornos-brasa-josper-hjx-pro-2/horno-brasa-josper-hjx-pro-small/",
+          "seo_title": "Josper HJX Pro Brasa Oven S80 Small | Josper",
+          "seo_description": "not published — inquire"
+        },
+        {
+          "model": "HJX-PRO M120 Medium",
+          "title": "Josper HJX Pro Charcoal Oven M120 Medium",
+          "description_en": "The HJX Pro M120 is a medium-sized charcoal brasa oven designed for commercial kitchen installations, serving approximately 120 covers. The product line offers six configuration variants (PRO, PRO-T, PRO-TD, PRO-W, PRO-WT, PRO-WTD) to suit different operational needs.",
+          "specs": {
+            "capacity": "±120 guests",
+            "oven_dimensions_mm": "916 x 1091 x 774",
+            "grill_dimensions_mm": "510 x 760",
+            "recommended_installation_height": "65 cm",
+            "configurations": "PRO, PRO-T, PRO-TD, PRO-W, PRO-WT, PRO-WTD",
+            "fuel": "charcoal",
+            "certifications": "CE, UL, NSF",
+            "colors": "Blue, White, Black, Brown, Stainless Steel, Burgundy, Green"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/horno-josper-hjx-pro-M120.jpg",
+          "source_url": "https://jospergrill.com/products/josper-charcoal-ovens/hornos-brasa-josper-hjx-pro-2/horno-brasa-josper-hjx-pro-medium/",
+          "seo_title": "Josper HJX Pro Brasa Oven, M120 Medium | Josper",
+          "seo_description": "not published — inquire"
+        },
+        {
+          "model": "HJX-PRO L175 Large",
+          "title": "Josper HJX Pro Charcoal Oven L175 Large",
+          "description_en": "The HJX-PRO L175 is a large-capacity charcoal oven designed for commercial kitchen installations, accommodating ±175 guests. Available in multiple configurations (PRO, PRO-T, PRO-TD, PRO-W, PRO-WT, PRO-WTD), it features a grill surface of 760 x 760 mm.",
+          "specs": {
+            "capacity": "±175 guests",
+            "oven_dimensions_mm": "916 x 1091 x 1009",
+            "grill_dimensions_mm": "760 x 760",
+            "recommended_installation_height": "65 cm",
+            "configurations": "PRO, PRO-T, PRO-TD, PRO-W, PRO-WT, PRO-WTD",
+            "fuel": "charcoal",
+            "certifications": "CE, UL, NSF",
+            "colors": "Blue, White, Black, Brown, Stainless Steel, Burgundy, Green"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/horno-josper-hjx-pro-L175-1.jpg",
+          "source_url": "https://jospergrill.com/products/josper-charcoal-ovens/hornos-brasa-josper-hjx-pro-2/horno-brasa-josper-hjx-pro-large/",
+          "seo_title": "Josper HJX Pro Brasa Oven, L175 Large | Josper",
+          "seo_description": "not published — inquire"
+        },
+        {
+          "model": "HJA-PLUS Mini (HJA-20)",
+          "title": "Josper HJA-PLUS Mini Charcoal Oven",
+          "description_en": "The HJA-PLUS Mini is an upgraded iteration of Josper's Class A line, with an improved hydraulic door retention system and redesigned, modernized upper and lower vents. The warming area is optimizable and closable and includes various accessories inside. Suits approximately 40 guests with optional side tables, drawers and a temperature-regulated upper cabinet.",
+          "specs": {
+            "capacity": "±40 guests",
+            "oven_dimensions_cm": "82 x 73 x 63",
+            "grill_dimensions_cm": "34 x 56",
+            "heat_up_time": "±25 minutes",
+            "daily_charcoal_consumption": "6-8 kg",
+            "runtime_per_load": "7 hours",
+            "hourly_output": "±25 kg",
+            "grilling_temperature": "250-350 °C",
+            "recommended_installation_height": "80-85 cm",
+            "configuration": "Countertop",
+            "fuel": "charcoal",
+            "certifications": "CE, UL, NSF"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/josper-charcoal-oven-hja-plus-mini.jpg",
+          "source_url": "https://jospergrill.com/products/josper-charcoal-ovens/josper-charcoal-oven-hja-plus/josper-charcoal-broiler-oven-hja-plus-mini/",
+          "seo_title": "A Class Josper Charcoal Oven HJA-20 Mini | JOSPER",
+          "seo_description": "not published — inquire"
+        },
+        {
+          "model": "HJA-PLUS S80 Small (HJA-25)",
+          "title": "Josper HJA-PLUS S80 Small Charcoal Oven",
+          "description_en": "This charcoal oven features an upgraded hydraulic door retention system and modernized ventilation. The warming area can be customized and closed, with optional side tables, drawers and temperature-controlled upper cabinets available. Serves approximately 80 guests.",
+          "specs": {
+            "capacity": "±80 guests",
+            "oven_dimensions_cm": "75 x 110 x 78",
+            "grill_dimensions_cm": "51 x 50",
+            "heat_up_time": "~30 minutes",
+            "daily_charcoal_consumption": "10-12 kg",
+            "runtime_per_load": "9 hours",
+            "hourly_output": "~60 kg",
+            "grilling_temperature": "250-350 °C",
+            "fuel": "charcoal",
+            "colors": "Azure, White, Black, Brown, Stainless Steel, Burgundy, Green"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/HJA-PLUS-S80-HCTD-Blue.jpg",
+          "source_url": "https://jospergrill.com/products/josper-charcoal-ovens/josper-charcoal-oven-hja-plus/josper-charcoal-oven-hja-plus-small/",
+          "seo_title": "Class A Josper Charcoal Oven HJA-25 Small | JOSPER",
+          "seo_description": "not published — inquire"
+        },
+        {
+          "model": "HJA-PLUS M120 Medium (HJA-45)",
+          "title": "Josper HJA-PLUS M120 Medium Charcoal Oven",
+          "description_en": "This medium-sized charcoal oven from Josper's upgraded HJA-PLUS line features an enhanced hydraulic door retention system and modernized ventilation, combining design, quality and reliability with improved air circulation and customizable upper warming. Optional side tables, drawers and temperature-controlled cabinets are available. Serves approximately 120 guests.",
+          "specs": {
+            "capacity": "±120 guests",
+            "oven_dimensions_cm": "104 x 117 x 78",
+            "grill_dimensions_cm": "51 x 76",
+            "heat_up_time": "~35 minutes",
+            "daily_charcoal_consumption": "12-16 kg",
+            "runtime_per_load": "9 hours",
+            "hourly_output": "~90 kg",
+            "grilling_temperature": "250-350 °C",
+            "recommended_installation_height": "50-55 cm",
+            "fuel": "charcoal",
+            "colors": "Blue, White, Black, Brown, Stainless Steel, Burgundy, Green"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/horno-josper-hjx-pro-M120-2.jpg",
+          "source_url": "https://jospergrill.com/products/josper-charcoal-ovens/josper-charcoal-oven-hja-plus/josper-charcoal-oven-hja-plus-medium/",
+          "seo_title": "A Class Josper Charcoal Oven HJA-45 Medium | JOSPER",
+          "seo_description": "not published — inquire"
+        },
+        {
+          "model": "HJA-PLUS L175 Large (HJA-50)",
+          "title": "Josper HJA-PLUS L175 Large Charcoal Oven",
+          "description_en": "Josper's largest charcoal oven model. The HJA-PLUS series is an enhanced version of the Class A range, featuring an improved hydraulic door locking system and redesigned, modernised upper and lower vents that facilitate better air circulation and easier cleaning. Serves approximately 175 diners. Configurations include standard worktop, with side table (-T), with table and drawer (-TD) and heated cabinet variants (HC, HCT, HCTD).",
+          "specs": {
+            "capacity": "±175 guests",
+            "oven_dimensions_cm": "104 x 117 x 104",
+            "grill_dimensions_cm": "76 x 76",
+            "heat_up_time": "~40 minutes",
+            "daily_charcoal_consumption": "16-20 kg",
+            "runtime_per_load": "9 hours",
+            "hourly_output": "~110 kg",
+            "grilling_temperature": "250-350 °C",
+            "recommended_installation_height": "50-55 cm",
+            "configurations": "L175, -T, -TD, HC, HCT, HCTD",
+            "fuel": "charcoal",
+            "colors": "Blue, White, Black, Brown, Stainless Steel, Burgundy, Green"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/HJA-PLUS-L175-WTD-Green.jpg",
+          "source_url": "https://jospergrill.com/products/josper-charcoal-ovens/josper-charcoal-oven-hja-plus/josper-charcoal-oven-hja-plus-large/",
+          "seo_title": "Class A Josper Charcoal Oven HJA-50 Large | JOSPER",
+          "seo_description": "not published — inquire"
+        }
+      ]
+    },
+    {
+      "group_name": "Basque Grills",
+      "group_name_vi": "Bếp Nướng Than Mở Basque Josper",
+      "source_urls": [
+        "https://jospergrill.com/product-category/josper-basque-grills/",
+        "https://jospergrill.com/product-category/josper-basque-grills/josper-basque-grills-countertop/",
+        "https://jospergrill.com/product-category/josper-basque-grills/josper-basque-grills-monoblock/"
+      ],
+      "models": [
+        {
+          "model": "PVJ-50-1-1-CT",
+          "title": "Josper Basque Grill PVJ-50-1-1-CT Individual (Countertop)",
+          "description_en": "Countertop open charcoal grill with a grilling area of 500 x 600 mm and a vertical track of 290 mm. Reaches 250 °C in about 20 minutes with average daily charcoal consumption of 20-22 kg. Features a hydraulic height regulation system for smooth vertical adjustment, a multi-chamber ventilation system for thermal insulation, mineral interior insulation and natural (non-forced) heat convection. Serves approximately 100 diners.",
+          "specs": {
+            "capacity": "±100 diners",
+            "grill_dimensions_mm": "500 x 600",
+            "vertical_track_mm": "290",
+            "equipment_dimensions_cm": "75 x 85 x 111",
+            "heat_up_time": "~20 minutes",
+            "grilling_temperature": "250 °C",
+            "daily_charcoal_consumption": "20-22 kg",
+            "included_accessories": "Tongs and poker",
+            "fuel": "charcoal",
+            "colors": "Blue, White, Black, Brown, Stainless Steel, Burgundy, Green"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/PVJ-050-1-1-CT-SS.jpg",
+          "source_url": "https://jospergrill.com/products/josper-basque-grills/josper-basque-grills-countertop/josper-basque-grill-pvj-50-1-1-ct-individual/",
+          "seo_title": "Josper Basque Grill PVJ-50-1-1-CT | Charcoal Open Grill | JOSPER",
+          "seo_description": "not published — inquire"
+        },
+        {
+          "model": "PVJ-50-2-1-CT",
+          "title": "Josper Basque Grill PVJ-50-2-1-CT Individual Double Grill (Countertop)",
+          "description_en": "Countertop grill (50 cm x2) with double mast and single tank, featuring a grilling area of 500 x 600 mm (x2) and a vertical track of 290 mm. Includes a hydraulic height regulation system and maximal thermal insulation guaranteed by a multi-chamber ventilation system, along with mineral insulation and natural convection heating. Approximately 20-minute fire-up time and 250 °C operating temperature.",
+          "specs": {
+            "capacity": "±100 diners",
+            "grill_dimensions_mm": "500 x 600 (x2)",
+            "vertical_track_mm": "290",
+            "equipment_dimensions_cm": "75 x 85 x 111",
+            "heat_up_time": "~20 minutes",
+            "grilling_temperature": "250 °C",
+            "daily_charcoal_consumption": "20-22 kg",
+            "included_accessories": "Tongs and poker",
+            "fuel": "charcoal"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/PVJ-050-2-1-CT-SS.jpg",
+          "source_url": "https://jospergrill.com/products/josper-basque-grills/josper-basque-grills-countertop/josper-basque-grill-pvj-50-2-1-ct-individual-double-grill/",
+          "seo_title": "Josper Basque Grill PVJ-50-2-1-CT | Charcoal Open Grill | JOSPER",
+          "seo_description": "not published — inquire"
+        },
+        {
+          "model": "PVJ-76-1-1-CT",
+          "title": "Josper Basque Grill PVJ-76-1-1-CT Individual (Countertop)",
+          "description_en": "Countertop-mounted individual Basque grill (76 cm) with single mast and one fuel tank. Grilling area of 760 x 600 mm with a vertical adjustment range of 290 mm. Reaches cooking temperature in approximately 20 minutes, operating at 250 °C. Includes a hydraulic height adjustment system, multi-chamber ventilation for thermal insulation, mineral interior protection and natural heat convection. Serves approximately 70 diners.",
+          "specs": {
+            "capacity": "±70 diners",
+            "grill_dimensions_mm": "760 x 600",
+            "vertical_track_mm": "290",
+            "equipment_dimensions_cm": "91 x 85 x 111",
+            "heat_up_time": "~20 minutes",
+            "grilling_temperature": "250 °C",
+            "daily_charcoal_consumption": "20-22 kg",
+            "included_accessories": "Tongs and poker",
+            "fuel": "charcoal",
+            "colors": "Azure, White, Black, Brown, Stainless Steel, Burgundy, Green"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/PVJ-076-1-1CT-SS.jpg",
+          "source_url": "https://jospergrill.com/products/josper-basque-grills/josper-basque-grills-countertop/josper-basque-grill-pvj-76-1-1-ct-individual/",
+          "seo_title": "Josper Basque Grill PVJ-76-1-1-CT | Charcoal Open Grill | JOSPER",
+          "seo_description": "not published — inquire"
+        },
+        {
+          "model": "PVJ-76-2-1-CT",
+          "title": "Josper Basque Grill PVJ-76-2-1-CT Individual Double Grill (Countertop)",
+          "description_en": "Countertop double grill with a grilling area of 760 x 600 mm (x2) and a vertical track of 290 mm, with approximately 20-minute fire-up time and maximum operating temperature of 250 °C. Includes tongs and poker and is distinguished by its hydraulic height regulation system, multi-chamber ventilation system, mineral insulation and natural convection design.",
+          "specs": {
+            "capacity": "±100 diners",
+            "grill_dimensions_mm": "760 x 600 (x2)",
+            "vertical_track_mm": "290",
+            "equipment_dimensions_cm": "90 x 90 x 161",
+            "heat_up_time": "~20 minutes",
+            "grilling_temperature": "250 °C",
+            "daily_charcoal_consumption": "20-22 kg",
+            "included_accessories": "Tongs and poker",
+            "fuel": "charcoal"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/PVJ-076-2-1-CT-SS.jpg",
+          "source_url": "https://jospergrill.com/products/josper-basque-grills/josper-basque-grills-countertop/josper-basque-grill-pvj-76-2-1-ct-individual-double-grill/",
+          "seo_title": "Josper Basque Grill PVJ-76-2-1-CT | Charcoal Open Grill | JOSPER",
+          "seo_description": "not published — inquire"
+        },
+        {
+          "model": "PVJ-50-1-1-MB",
+          "title": "Josper Basque Grill PVJ-50-1-1-MB Individual (Monoblock)",
+          "description_en": "Individual monoblock Basque grill designed for commercial kitchen use. Grill area of 500 x 600 mm with a 290 mm vertical track. Features a hydraulic height regulation system, which ensures a smooth and continuous movement of the grill at different heights. Fires up in approximately 20 minutes, operates at 250 °C, serving approximately 100 diners.",
+          "specs": {
+            "capacity": "±100 diners",
+            "grill_dimensions_mm": "500 x 600",
+            "vertical_track_mm": "290",
+            "equipment_dimensions_cm": "90 x 90 x 161",
+            "heat_up_time": "~20 minutes",
+            "grilling_temperature": "250 °C",
+            "daily_charcoal_consumption": "20-22 kg",
+            "included_accessories": "Tongs and poker",
+            "fuel": "charcoal",
+            "colors": "Blue, White, Black, Brown, Stainless Steel, Burgundy, Green"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/PVJ-050-1-1-MB-SS.jpg",
+          "source_url": "https://jospergrill.com/products/josper-basque-grills/josper-basque-grills-monoblock/josper-basque-grill-pvj-50-1-1-mb-individual/",
+          "seo_title": "Josper Basque Grill PVJ-50-1-1-MB | Charcoal Open Grill | JOSPER",
+          "seo_description": "not published — inquire"
+        },
+        {
+          "model": "PVJ-50-2-1-MB",
+          "title": "Josper Basque Grill PVJ-50-2-1-MB Double Grill in One Module (Monoblock)",
+          "description_en": "Monoblock double grill in a single module featuring two independent grilling stations. Grilling area of 500 x 600 mm (x2) and a vertical track of 290 mm, approximately 20-minute firing time and 250 °C operating temperature. High-tech steel alloy construction with hydraulic height adjustment, multi-chamber ventilation thermal insulation, mineral insulation interior protection and natural (non-forced) heat convection.",
+          "specs": {
+            "capacity": "±100 diners",
+            "grill_dimensions_mm": "500 x 600 (x2)",
+            "vertical_track_mm": "290",
+            "equipment_dimensions_cm": "140 x 90 x 161",
+            "heat_up_time": "~20 minutes",
+            "grilling_temperature": "250 °C",
+            "daily_charcoal_consumption": "20-22 kg",
+            "included_accessories": "Tongs and poker",
+            "fuel": "charcoal"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/PVJ-050-2-1-MB-SS.jpg",
+          "source_url": "https://jospergrill.com/products/josper-basque-grills/josper-basque-grills-monoblock/josper-basque-grill-pvj-50-2-1-mb-double-grill-in-one-module/",
+          "seo_title": "Josper Basque Grill PVJ-50-2-1-MB | Charcoal Open Grill | JOSPER",
+          "seo_description": "not published — inquire"
+        },
+        {
+          "model": "PVJ-76-1-1-MB",
+          "title": "Josper Basque Grill PVJ-76-1-1-MB Individual (Monoblock)",
+          "description_en": "A monoblock grill (76 cm) with one mast and single tank. This individual unit features a hydraulic height adjustment mechanism and multi-chamber thermal insulation design intended to minimize external heat transfer while maintaining cooking performance, with mineral insulation protection and natural convection heating. Grill area 760 x 600 mm, serving approximately 70 diners.",
+          "specs": {
+            "capacity": "±70 diners",
+            "grill_dimensions_mm": "760 x 600",
+            "vertical_track_mm": "290",
+            "equipment_dimensions_cm": "115 x 90 x 161",
+            "heat_up_time": "~20 minutes",
+            "grilling_temperature": "250 °C",
+            "daily_charcoal_consumption": "18-20 kg",
+            "included_accessories": "Tongs and poker",
+            "fuel": "charcoal"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/PVJ-076-1-1-MB-SS.jpg",
+          "source_url": "https://jospergrill.com/products/josper-basque-grills/josper-basque-grills-monoblock/josper-basque-grill-pvj-76-1-1-mb-individual/",
+          "seo_title": "Basque Grill PVJ-76-1-1MB | Open Charcoal Grills | JOSPER",
+          "seo_description": "not published — inquire"
+        },
+        {
+          "model": "PVJ-76-2-2-MB",
+          "title": "Josper Basque Grill PVJ-76-2-2-MB Individual Double Grill (Monoblock)",
+          "description_en": "Monoblock charcoal grill with double mast and double tank configuration. Grilling area of 760 x 600 mm (x2) and a vertical track of 290 mm. Includes a hydraulic height regulation system for smooth continuous movement of the grill at different heights, multi-chamber ventilation for thermal insulation and mineral insulation for interior protection. Serves approximately 140 diners.",
+          "specs": {
+            "capacity": "±140 diners",
+            "grill_dimensions_mm": "760 x 600 (x2)",
+            "vertical_track_mm": "290",
+            "equipment_dimensions_cm": "207 x 90 x 161",
+            "heat_up_time": "~20 minutes",
+            "grilling_temperature": "250 °C",
+            "daily_charcoal_consumption": "36-40 kg",
+            "included_accessories": "Tongs and poker",
+            "fuel": "charcoal",
+            "colors": "Blue, White, Black, Brown, Stainless Steel, Burgundy, Green"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/PVJ-076-2-2-MB-SS.jpg",
+          "source_url": "https://jospergrill.com/products/josper-basque-grills/josper-basque-grills-monoblock/josper-basque-grill-pvj-76-2-2-mb-individual-double-grill/",
+          "seo_title": "Basque Grill PVJ-76-2-2-MB | Open Charcoal Grills | JOSPER",
+          "seo_description": "not published — inquire"
+        },
+        {
+          "model": "PVJ-76-3-3-MB",
+          "title": "Josper Basque Grill PVJ-76-3-3-MB Individual Triple Grill (Monoblock)",
+          "description_en": "Monoblock grill featuring triple grilling stations, offering a grilling area of 760 x 600 mm (x3) and a vertical track of 290 mm. Key features include a hydraulic height regulation system, multi-chamber ventilation for thermal insulation and mineral interior protection. Fires up in approximately 20 minutes, serving approximately 210 diners.",
+          "specs": {
+            "capacity": "±210 diners",
+            "grill_dimensions_mm": "760 x 600 (x3)",
+            "vertical_track_mm": "290",
+            "heat_up_time": "~20 minutes",
+            "grilling_temperature": "250 °C",
+            "daily_charcoal_consumption": "54-60 kg",
+            "included_accessories": "Tongs and poker",
+            "fuel": "charcoal",
+            "colors": "Blue, White, Black, Brown, Stainless Steel, Burgundy, Green"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/PVJ-076-3-3-MB-SS.jpg",
+          "source_url": "https://jospergrill.com/products/josper-basque-grills/josper-basque-grills-monoblock/josper-basque-grill-pvj-76-3-3-mb-individual-triple-grill/",
+          "seo_title": "Josper Basque Grill PVJ-76-3-3-MB | Open Charcoal Grills | JOSPER",
+          "seo_description": "not published — inquire"
+        }
+      ]
+    },
+    {
+      "group_name": "Combos (Charcoal Oven + Basque Grill)",
+      "group_name_vi": "Bộ Combo Josper (Lò Nướng Than + Bếp Nướng Basque)",
+      "source_urls": [
+        "https://jospergrill.com/product-category/josper-combos/"
+      ],
+      "models": [
+        {
+          "model": "CVJ-50-PRO-S",
+          "title": "Josper Combo CVJ-50-PRO-S (HJX-PRO Oven + PVJ-50 Double Basque Grill)",
+          "description_en": "Combines a Josper HJX-PRO charcoal oven and Josper PVJ-50 Basque Grill with a double grill in a single module. The charcoal oven serves approximately 80 guests with roughly 40 minutes preheating, while the Basque grill needs approximately 20 minutes. Offers multiple grilling surfaces (two adjustable grill grates plus five internal oven levels), temperature control via handwheel and pull-rod, and simultaneous operation of both components.",
+          "specs": {
+            "capacity": "±80 guests",
+            "dimensions_mm": "2130 x 1625 x 900",
+            "grill_area_mm": "500 x 600 (x2 open grates)",
+            "oven_area_mm": "500 x 510",
+            "components": "HJX-PRO charcoal oven + PVJ-50 double Basque grill",
+            "included_accessories": "Fire guard, lid, 2 tongs, poker, grates",
+            "fuel": "charcoal",
+            "colors": "Blue, White, Black, Brown, Stainless Steel, Burgundy, Green"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/CVJ-050-2-PRO-S-1.jpg",
+          "source_url": "https://jospergrill.com/products/josper-combos/combo-josper-cvj-50-pro-s-basalt-oven-basque-grill-double-in-one-module/",
+          "seo_title": "Josper Combo CVJ-050-2-HJX-50 | JOSPER Combos",
+          "seo_description": "not published — inquire"
+        },
+        {
+          "model": "CVJ-50-PRO-M",
+          "title": "Josper Combo CVJ-50-PRO-M (HJX-PRO Oven + PVJ-50 Monoblock Double Basque Grill)",
+          "description_en": "Combines a Josper HJX-PRO charcoal oven with a double Basque grill (PVJ-50 monoblock) in a single module. The oven accommodates approximately 120 diners and needs about 35 minutes to reach temperature, the grill about 20 minutes. Provides a triple or even quadruple braising area: the two liftable grills of the Basque Grill plus the 5 internal braising levels of the oven.",
+          "specs": {
+            "capacity": "±120 diners",
+            "dimensions_mm": "2415 x 1625 x 900",
+            "grill_area_mm": "500 x 600 (x2)",
+            "oven_area_mm": "760 x 510 (x2 racks)",
+            "components": "HJX-PRO charcoal oven + PVJ-50 monoblock Basque grill",
+            "included_accessories": "Firebreak, firebreak hat, 2 tongs, poker, grill racks",
+            "fuel": "charcoal",
+            "colors": "Blue, White, Black, Brown, Stainless Steel, Burgundy, Green"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/CVJ-050-2-PRO-M-1.jpg",
+          "source_url": "https://jospergrill.com/products/josper-combos/josper-combo-cvj-50-pro-m-charcoal-oven-double-basque-grill-in-one-module/",
+          "seo_title": "Josper Combo CVJ-50-PRO-M | JOSPER Combos",
+          "seo_description": "not published — inquire"
+        },
+        {
+          "model": "CVJ-50-PRO-L",
+          "title": "Josper Combo CVJ-50-PRO-L (HJX-PRO Oven + PVJ-50 Double Basque Grill)",
+          "description_en": "Pairs a Josper HJX-PRO charcoal oven with a PVJ-50 double Basque grill in a single integrated unit. The combination of an oven and a grill offers endless culinary possibilities by enabling simultaneous cooking on multiple surfaces. Oven preheat ~40 minutes, grill ~20 minutes; the oven provides 5 internal grilling levels with adjustable grates. Serves approximately 175 guests.",
+          "specs": {
+            "capacity": "±175 guests",
+            "dimensions_mm": "2415 x 1625 x 900",
+            "grill_area_mm": "500 x 600 (x2)",
+            "oven_preheat_time": "~40 minutes",
+            "grill_preheat_time": "~20 minutes",
+            "components": "HJX-PRO charcoal oven + PVJ-50 double Basque grill",
+            "included_accessories": "Fire guard, lid, 2 tongs, poker, grates",
+            "fuel": "charcoal",
+            "colors": "Blue, White, Black, Brown, Stainless Steel, Burgundy, Green"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/CVJ-050-2-PRO-L-1.jpg",
+          "source_url": "https://jospergrill.com/products/josper-combos/combo-josper-cvj-50-pro-l-charcoal-oven-hjx-pro-double-basque-grill-in-a-single-module/",
+          "seo_title": "Josper Combo CVJ-050-2-HJX-50 | JOSPER Combos",
+          "seo_description": "not published — inquire"
+        },
+        {
+          "model": "CVJ-76-PRO-S",
+          "title": "Josper Combo CVJ-76-PRO-S (HJX-PRO Oven + PVJ-76 Basque Grill)",
+          "description_en": "Combines a HJX-PRO charcoal oven with a PVJ-76 Basque grill. Oven recommended for about 80 guests; preheating approximately 40 minutes for the oven and 20 minutes for the grill. Multiple grilling zones (five internal oven levels plus adjustable grill rack) enable searing on the open grill, finishing in the oven and smoking at varying intensities, allowing the chef to showcase their skills and capture diners' attention.",
+          "specs": {
+            "capacity": "±80 guests",
+            "dimensions_mm": "1875 x 1625 x 900",
+            "grill_area_mm": "760 x 600 (open grill)",
+            "oven_area_mm": "500 x 510",
+            "components": "HJX-PRO charcoal oven + PVJ-76 Basque grill",
+            "included_accessories": "Fire guard, lid, 2 tongs, poker, grates",
+            "fuel": "charcoal",
+            "colors": "Blue, White, Black, Brown, Stainless Steel, Burgundy, Green"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/CVJ-076-1-PRO-S-1.jpg",
+          "source_url": "https://jospergrill.com/products/josper-combos/combo-josper-cvj-76-pro-small-charcoal-oven-hjx-pro-basque-grill/",
+          "seo_title": "Josper Combo CVJ-50-PRO-S | JOSPER Combos",
+          "seo_description": "not published — inquire"
+        },
+        {
+          "model": "CVJ-76-PRO-M",
+          "title": "Josper Combo CVJ-76-PRO-M (HJX-PRO Oven + PVJ-76 Monoblock Basque Grill)",
+          "description_en": "Combo unit merging a HJX-PRO charcoal oven with a PVJ-76 Basque grill (monoblock), designed for establishments requiring high-capacity cooking. Recommended for 120 diners; heat-up times of ±35 minutes for the oven and ±20 minutes for the Basque grill.",
+          "specs": {
+            "capacity": "±120 diners",
+            "dimensions_mm": "2175 x 1625 x 900",
+            "grill_area_mm": "760 x 600 (open grill)",
+            "oven_area_mm": "760 x 510 (x2 racks)",
+            "components": "HJX-PRO charcoal oven + PVJ-76 monoblock Basque grill",
+            "included_accessories": "Firebreak, firebreak hat, 2 tongs, poker, grill racks",
+            "fuel": "charcoal",
+            "colors": "Blue, White, Black, Brown, Stainless Steel, Burgundy, Green"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/CVJ-076-1-PRO-M-1.jpg",
+          "source_url": "https://jospergrill.com/products/josper-combos/josper-combo-cvj-76-pro-medium-charcoal-oven-hjx-pro-basque-grill/",
+          "seo_title": "Josper Combo CVJ-76-PRO-M | JOSPER Combos",
+          "seo_description": "not published — inquire"
+        },
+        {
+          "model": "CVJ-76-PRO-L",
+          "title": "Josper Combo CVJ-76-PRO-L (HJX-PRO Oven + PVJ-76 Monoblock Basque Grill)",
+          "description_en": "Combination unit pairing a Josper Charcoal Oven HJX-PRO and Josper Basque Grill Monoblock PVJ-76. Accommodates approximately 175 diners and offers a triple or even quadruple braising area through the liftable grill and five internal oven racks, enabling versatile cooking from searing to finishing inside the oven. Oven heat-up ~40 minutes, Basque grill ~20 minutes.",
+          "specs": {
+            "capacity": "±175 diners",
+            "dimensions_mm": "2165 x 1625 x 900",
+            "grill_area_mm": "760 x 600",
+            "oven_area_mm": "760 x 760 (dual racks)",
+            "daily_charcoal_consumption": "20-22 kg",
+            "components": "HJX-PRO charcoal oven + PVJ-76 monoblock Basque grill",
+            "included_accessories": "Firebreak, firebreak hat, 2 tongs, poker, grill racks",
+            "fuel": "charcoal",
+            "colors": "Blue, White, Black, Brown, Stainless Steel, Burgundy, Green"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/CVJ-076-1-PRO-L-1.jpg",
+          "source_url": "https://jospergrill.com/products/josper-combos/josper-combo-cvj-76-pro-large-charcoal-oven-hjx-pro-basque-grill/",
+          "seo_title": "Josper Combo CVJ-76-PRO-L | JOSPER Combos",
+          "seo_description": "not published — inquire"
+        }
+      ]
+    }
+  ]
+}

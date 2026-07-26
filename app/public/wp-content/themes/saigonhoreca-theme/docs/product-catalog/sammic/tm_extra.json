@@ -1,0 +1,36 @@
+[
+  {
+    "source_url": "https://sammic.com/en/product/container-thermo-sealer-tm-150",
+    "model_title": "Container thermo-sealer TM-150",
+    "category": "Container thermo-sealer",
+    "description_en": "Manual electric thermo-sealer. Film width: 150 mm.",
+    "image_url": "https://storage.googleapis.com/sammic-media-prod/3/0/d/9/30d9c1fa54d5f85287e0493d2917b6_large.webp",
+    "specs": {
+      "Coil width": "150 mm",
+      "Coil diameter": "160 mm",
+      "Tray max. dimensions": "205 x 150 x 100 mm",
+      "Cycles per minute": "6-8",
+      "External dimensions (W x D x H) - Width": "260 mm",
+      "External dimensions (W x D x H) - Depth": "390 mm",
+      "External dimensions (W x D x H) - Height": "500 mm",
+      "External dimensions (W x D x H) - Net weight": "20 kg"
+    }
+  },
+  {
+    "source_url": "https://sammic.com/en/product/container-thermo-sealer-tm-210",
+    "model_title": "Container thermo-sealer TM-210",
+    "category": "Container thermo-sealer",
+    "description_en": "Manual electric thermo-sealer. Film width: 210 mm.",
+    "image_url": "https://storage.googleapis.com/sammic-media-prod/9/d/2/1/9d2119ba763e65288423a543dd1b5377_large.webp",
+    "specs": {
+      "Coil width": "210 mm",
+      "Coil diameter": "200 mm",
+      "Tray max. dimensions": "260 x 195 x 155 mm",
+      "Cycles per minute": "6-8",
+      "External dimensions (W x D x H) - Width": "315 mm",
+      "External dimensions (W x D x H) - Depth": "455 mm",
+      "External dimensions (W x D x H) - Height": "555 mm",
+      "External dimensions (W x D x H) - Net weight": "25 kg"
+    }
+  }
+]

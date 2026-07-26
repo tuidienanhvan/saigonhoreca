@@ -1,0 +1,10 @@
+{
+  "missing_in_json": {
+    "CLP12": "https://www.giorik.com/en/products/ovens/movair/direct-injection-movair-4971634.html",
+    "CLP8": "https://www.giorik.com/en/products/ovens/movair/direct-injection-movair-4971634.html",
+    "OVENS": "https://www.giorik.com/en/products/modular-cooking-9851681.html"
+  },
+  "in_json_not_on_pages": [
+    "POP"
+  ]
+}

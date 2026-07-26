@@ -1,0 +1,1455 @@
+{
+  "research_date": "2026-07-13",
+  "source_note": "Cào từ website chính hãng Sammic (Tây Ban Nha) bản tiếng Anh sammic.com/en. KHÔNG phải dữ liệu tự bịa — mọi model/thông số dưới đây lấy trực tiếp từ trang sản phẩm chính hãng, có URL nguồn kèm theo. Sammic KHÔNG public giá bán trên web toàn cầu — phải liên hệ đại lý/nhà phân phối tại từng thị trường (kể cả sammic.us bản Mỹ cũng không có giá public).",
+  "existing_catalog_gap": "Site saigonhoreca.local có 2 taxonomy brand riêng: 'Sammic' (17 sản phẩm) và 'Sammic-Spain' (10 sản phẩm), đã được gộp thành 1 brand 'Sammic' duy nhất (27 sản phẩm). ĐÃ đối chiếu trực tiếp qua REST API ngày 2026-07-13 (xem site_comparison): 19/149 model nghiên cứu đã có trên site (already_on_site:true trong từng model), 130 model là MỚI hoàn toàn. 8/27 sản phẩm hiện có trên site KHÔNG khớp với bất kỳ model Sammic chính hãng nào đã cào (GCP-300, GCP-350, LI-240, MO-1000, 2 sản phẩm Combi bị gắn nhầm brand — thực chất là Giorik) — xem site_comparison.notes để biết chi tiết, cần rà soát riêng trước khi xoá/sửa.",
+  "brand": "Sammic",
+  "official_sites": {
+    "global": "https://sammic.com/en",
+    "us": "https://sammic.us",
+    "note": "Đã verify sammic.com là site chính hãng toàn cầu (công ty Tây Ban Nha, thành lập 1961, nổi tiếng với máy gọt khoai tây thương mại đầu tiên). sammic.us là site khu vực Mỹ, nội dung tương tự nhưng không có bảng giá public."
+  },
+  "groups": [
+    {
+      "group_name": "Commercial Vegetable Preparation Machines (Food Processors)",
+      "group_name_vi": "Máy Chế Biến Rau Củ Đa Năng",
+      "taxonomy_note": "2 dòng: ACTIVE (tốc độ cố định) và ULTRA (tốc độ biến thiên, động cơ brushless). Dùng chung đĩa cắt/lưới cắt (discs/grids) — có hơn 35 kiểu cắt (dòng Compact) / 70 kiểu cắt (dòng Heavy Duty), gồm kiểu cắt độc quyền Déli-cut 4x4x8mm và Déli-cut PLUS 5x5x6mm cho hành tây.",
+      "source_urls": [
+        "https://sammic.com/en/products/commercial-food-processor"
+      ],
+      "series": [
+        {
+          "series_name": "ACTIVE Range (Fixed Speed)",
+          "models": [
+            {
+              "model": "CA-21",
+              "capacity_kg_h": "50-350",
+              "power": "800W (1 pha)",
+              "inlet_cm2": 89,
+              "dimensions_mm": "378x309x533",
+              "weight_kg": 15.2,
+              "already_on_site": false
+            },
+            {
+              "model": "CA-31",
+              "capacity_kg_h": "150-450",
+              "power": "550W (1/3 pha)",
+              "inlet_cm2": 136,
+              "motor_rpm": 365,
+              "dimensions_mm": "389x405x544",
+              "weight_kg": 21,
+              "already_on_site": false
+            },
+            {
+              "model": "CA-41",
+              "capacity_kg_h": "200-650",
+              "power": "550W (1/3 pha)",
+              "inlet_cm2": 286,
+              "motor_rpm": 365,
+              "dimensions_mm": "391x396x652",
+              "weight_kg": 24,
+              "already_on_site": false
+            },
+            {
+              "model": "CA-42",
+              "capacity_kg_h": "200-850",
+              "power": "1100W (1 pha) / 750W (3 pha)",
+              "inlet_cm2": 286,
+              "motor_rpm": "365-730",
+              "dimensions_mm": "391x396x652",
+              "weight_kg": 24,
+              "already_on_site": false
+            },
+            {
+              "model": "CA-62",
+              "capacity_kg_h": "500-1000",
+              "power": "1500W",
+              "inlet_cm2": 273,
+              "motor_rpm": "365-730",
+              "dimensions_mm": "430x420x810",
+              "weight_kg": 29.5,
+              "already_on_site": false
+            }
+          ]
+        },
+        {
+          "series_name": "ULTRA Range (Variable Speed, Brushless)",
+          "models": [
+            {
+              "model": "CA-2V",
+              "capacity_kg_h": "50-350",
+              "power": "1500W",
+              "inlet_cm2": 89,
+              "motor_rpm": "300-1000",
+              "dimensions_mm": "378x309x533",
+              "weight_kg": 12.9,
+              "already_on_site": false
+            },
+            {
+              "model": "CA-3V",
+              "capacity_kg_h": "150-500",
+              "power": "1500W",
+              "inlet_cm2": 136,
+              "motor_rpm": "300-1000",
+              "dimensions_mm": "391x409x552",
+              "weight_kg": 24,
+              "already_on_site": false
+            },
+            {
+              "model": "CA-4V",
+              "capacity_kg_h": "200-650",
+              "power": "1500W",
+              "inlet_cm2": 286,
+              "motor_rpm": "300-1000",
+              "dimensions_mm": "391x400x652",
+              "weight_kg": 27,
+              "already_on_site": false
+            }
+          ]
+        }
+      ],
+      "recommended_action": "8 model thật (CA-21/31/41/42/62/2V/3V/4V), đủ thông số kỹ thuật để tạo draft sản phẩm. Cần đối chiếu với 27 sản phẩm Sammic hiện có trên site trước khi thêm — có thể một số model này đã tồn tại dưới taxonomy Sammic hoặc Sammic-Spain cũ."
+    },
+    {
+      "group_name": "Cutter-Mixers & Emulsifiers",
+      "group_name_vi": "Máy Xay Trộn Cắt Đa Năng (Cutter-Mixer)",
+      "taxonomy_note": "2 dòng: ACTIVE (K-series, 2 tốc độ) và ULTRA (KE-series, tốc độ biến thiên 300-3000rpm).",
+      "source_urls": [
+        "https://sammic.com/en/products/cutter-emulsifyer-vertical-range"
+      ],
+      "series": [
+        {
+          "series_name": "ACTIVE Range",
+          "models": [
+            {
+              "model": "K-41",
+              "bowl_capacity_l": 4.4,
+              "max_product_kg": 2.5,
+              "power": "800W",
+              "speed": "2 tốc độ (1500rpm)",
+              "bowl_dimensions_mm": "Ø193x161",
+              "already_on_site": false
+            },
+            {
+              "model": "K-52",
+              "bowl_capacity_l": 5.5,
+              "max_product_kg": 3,
+              "power": "900-1500W",
+              "speed": "2 tốc độ (1500/3000rpm)",
+              "bowl_dimensions_mm": "Ø240x150",
+              "already_on_site": false
+            },
+            {
+              "model": "K-82",
+              "bowl_capacity_l": 8,
+              "max_product_kg": 4,
+              "power": "900-1500W",
+              "speed": "2 tốc độ (1500/3000rpm)",
+              "bowl_dimensions_mm": "Ø240x199",
+              "already_on_site": false
+            }
+          ]
+        },
+        {
+          "series_name": "ULTRA Range",
+          "models": [
+            {
+              "model": "KE-4V",
+              "bowl_capacity_l": 4.4,
+              "max_product_kg": 2.5,
+              "power": "1100W",
+              "speed": "biến thiên 300-3000rpm",
+              "bowl_dimensions_mm": "Ø193x161",
+              "already_on_site": false
+            },
+            {
+              "model": "KE-5V",
+              "bowl_capacity_l": 5.5,
+              "max_product_kg": 3,
+              "power": "1500W",
+              "speed": "biến thiên 300-3000rpm",
+              "bowl_dimensions_mm": "Ø240x150",
+              "already_on_site": false
+            },
+            {
+              "model": "KE-8V",
+              "bowl_capacity_l": 8,
+              "max_product_kg": 4,
+              "power": "1500W",
+              "speed": "biến thiên 300-3000rpm",
+              "bowl_dimensions_mm": "Ø240x199",
+              "already_on_site": false
+            }
+          ]
+        }
+      ],
+      "recommended_action": "6 model thật (K-41/52/82, KE-4V/5V/8V) đủ thông số — sẵn sàng tạo draft."
+    },
+    {
+      "group_name": "Commercial Vacuum Packing Machines",
+      "group_name_vi": "Máy Hút Chân Không Thương Mại",
+      "taxonomy_note": "2 dòng lớn: SE (Sensor, 21 model) và SU (Sensor Ultra, 19 model) — tổng 40 model, phân biệt theo chiều rộng buồng hút, chiều dài thanh hàn, công suất bơm chân không.",
+      "source_urls": [
+        "https://sammic.com/en/products/commercial-vacuum-packing-machine"
+      ],
+      "series": [
+        {
+          "series_name": "SE — Sensor Range",
+          "models": [
+            {
+              "model": "SE-204",
+              "chamber_width_mm": 288,
+              "sealing_bar_mm": 280,
+              "pump_m3_h": 4,
+              "already_on_site": true
+            },
+            {
+              "model": "SE-208",
+              "chamber_width_mm": 288,
+              "sealing_bar_mm": 280,
+              "pump_m3_h": 8,
+              "already_on_site": true
+            },
+            {
+              "model": "SE-308",
+              "chamber_width_mm": 330,
+              "sealing_bar_mm": 320,
+              "pump_m3_h": 8,
+              "already_on_site": false
+            },
+            {
+              "model": "SE-310",
+              "chamber_width_mm": 330,
+              "sealing_bar_mm": 320,
+              "pump_m3_h": 10,
+              "already_on_site": true
+            },
+            {
+              "model": "SE-316",
+              "chamber_width_mm": 330,
+              "sealing_bar_mm": 320,
+              "pump_m3_h": 16,
+              "already_on_site": false
+            },
+            {
+              "model": "SE-410",
+              "chamber_width_mm": 430,
+              "sealing_bar_mm": 420,
+              "pump_m3_h": 10,
+              "already_on_site": false
+            },
+            {
+              "model": "SE-416",
+              "chamber_width_mm": 430,
+              "sealing_bar_mm": 420,
+              "pump_m3_h": 16,
+              "already_on_site": false
+            },
+            {
+              "model": "SE-420",
+              "chamber_width_mm": 430,
+              "sealing_bar_mm": 420,
+              "pump_m3_h": 20,
+              "already_on_site": false
+            },
+            {
+              "model": "SE-520CC",
+              "chamber_width_mm": 568,
+              "sealing_bar_mm": "420+420",
+              "pump_m3_h": 20,
+              "already_on_site": false
+            },
+            {
+              "model": "SE-520L",
+              "chamber_width_mm": 568,
+              "sealing_bar_mm": 555,
+              "pump_m3_h": 20,
+              "already_on_site": true
+            },
+            {
+              "model": "SE-540CC",
+              "chamber_width_mm": 568,
+              "sealing_bar_mm": "420+420",
+              "pump_m3_h": 40,
+              "already_on_site": false
+            },
+            {
+              "model": "SE-604",
+              "chamber_width_mm": 672,
+              "sealing_bar_mm": "413+656",
+              "pump_m3_h": 40,
+              "already_on_site": true
+            },
+            {
+              "model": "SE-604CC",
+              "chamber_width_mm": 672,
+              "sealing_bar_mm": "465+465",
+              "pump_m3_h": 40,
+              "already_on_site": true
+            },
+            {
+              "model": "SE-606",
+              "chamber_width_mm": 672,
+              "sealing_bar_mm": "413+656",
+              "pump_m3_h": 63,
+              "already_on_site": true
+            },
+            {
+              "model": "SE-606CC",
+              "chamber_width_mm": 672,
+              "sealing_bar_mm": "465+465",
+              "pump_m3_h": 63,
+              "already_on_site": false
+            },
+            {
+              "model": "SE-806",
+              "chamber_width_mm": 864,
+              "sealing_bar_mm": "530+848",
+              "pump_m3_h": 63,
+              "already_on_site": true
+            },
+            {
+              "model": "SE-806CC",
+              "chamber_width_mm": 864,
+              "sealing_bar_mm": "581+581",
+              "pump_m3_h": 63,
+              "already_on_site": false
+            },
+            {
+              "model": "SE-806LL",
+              "chamber_width_mm": 864,
+              "sealing_bar_mm": "848+848",
+              "pump_m3_h": 63,
+              "already_on_site": false
+            },
+            {
+              "model": "SE-810",
+              "chamber_width_mm": 864,
+              "sealing_bar_mm": "530+848",
+              "pump_m3_h": 100,
+              "already_on_site": false
+            },
+            {
+              "model": "SE-810CC",
+              "chamber_width_mm": 864,
+              "sealing_bar_mm": "581+581",
+              "pump_m3_h": 100,
+              "already_on_site": false
+            },
+            {
+              "model": "SE-810LL",
+              "chamber_width_mm": 864,
+              "sealing_bar_mm": "848+848",
+              "pump_m3_h": 100,
+              "already_on_site": false
+            }
+          ]
+        },
+        {
+          "series_name": "SU — Sensor Ultra Range",
+          "models": [
+            {
+              "model": "SU-310",
+              "chamber_width_mm": 330,
+              "sealing_bar_mm": 320,
+              "pump_m3_h": 10,
+              "already_on_site": true
+            },
+            {
+              "model": "SU-316",
+              "chamber_width_mm": 330,
+              "sealing_bar_mm": 320,
+              "pump_m3_h": 16,
+              "already_on_site": false
+            },
+            {
+              "model": "SU-416",
+              "chamber_width_mm": 430,
+              "sealing_bar_mm": 420,
+              "pump_m3_h": 16,
+              "already_on_site": false
+            },
+            {
+              "model": "SU-420",
+              "chamber_width_mm": 430,
+              "sealing_bar_mm": 420,
+              "pump_m3_h": 20,
+              "already_on_site": false
+            },
+            {
+              "model": "SU-520CC",
+              "chamber_width_mm": 568,
+              "sealing_bar_mm": "420+420",
+              "pump_m3_h": 20,
+              "already_on_site": true
+            },
+            {
+              "model": "SU-520L",
+              "chamber_width_mm": 568,
+              "sealing_bar_mm": 555,
+              "pump_m3_h": 20,
+              "already_on_site": false
+            },
+            {
+              "model": "SU-540CC",
+              "chamber_width_mm": 568,
+              "sealing_bar_mm": "420+420",
+              "pump_m3_h": 40,
+              "already_on_site": false
+            },
+            {
+              "model": "SU-604",
+              "chamber_width_mm": 672,
+              "sealing_bar_mm": "413+656",
+              "pump_m3_h": 40,
+              "already_on_site": false
+            },
+            {
+              "model": "SU-606",
+              "chamber_width_mm": 672,
+              "sealing_bar_mm": "413+656",
+              "pump_m3_h": 63,
+              "already_on_site": false
+            },
+            {
+              "model": "SU-604CC",
+              "chamber_width_mm": 672,
+              "sealing_bar_mm": "465+465",
+              "pump_m3_h": 40,
+              "already_on_site": false
+            },
+            {
+              "model": "SU-606CC",
+              "chamber_width_mm": 672,
+              "sealing_bar_mm": "465+465",
+              "pump_m3_h": 63,
+              "already_on_site": false
+            },
+            {
+              "model": "SU-806",
+              "chamber_width_mm": 864,
+              "sealing_bar_mm": "530+848",
+              "pump_m3_h": 63,
+              "already_on_site": false
+            },
+            {
+              "model": "SU-806CC",
+              "chamber_width_mm": 864,
+              "sealing_bar_mm": "581+581",
+              "pump_m3_h": 63,
+              "already_on_site": false
+            },
+            {
+              "model": "SU-806LL",
+              "chamber_width_mm": 864,
+              "sealing_bar_mm": "848+848",
+              "pump_m3_h": 63,
+              "already_on_site": false
+            },
+            {
+              "model": "SU-810",
+              "chamber_width_mm": 864,
+              "sealing_bar_mm": "530+848",
+              "pump_m3_h": 100,
+              "already_on_site": false
+            },
+            {
+              "model": "SU-810CC",
+              "chamber_width_mm": 864,
+              "sealing_bar_mm": "581+581",
+              "pump_m3_h": 100,
+              "already_on_site": false
+            },
+            {
+              "model": "SU-810LL",
+              "chamber_width_mm": 864,
+              "sealing_bar_mm": "848+848",
+              "pump_m3_h": 100,
+              "already_on_site": false
+            },
+            {
+              "model": "SU-6100",
+              "chamber_width_mm": 662,
+              "sealing_bar_mm": "2x(662+662)",
+              "pump_m3_h": 155,
+              "already_on_site": false
+            },
+            {
+              "model": "SU-6160",
+              "chamber_width_mm": 662,
+              "sealing_bar_mm": "2x(662+662)",
+              "pump_m3_h": 155,
+              "already_on_site": false
+            }
+          ]
+        }
+      ],
+      "recommended_action": "40 model thật với thông số buồng hút/thanh hàn/bơm đầy đủ — đây là dòng lớn nhất trong catalog Sammic. Khuyến nghị chỉ chọn 4-6 model tiêu biểu (phổ biến nhất theo dung lượng bếp nhà hàng VN, ví dụ SE-308/SE-410/SU-420) để tạo draft trước, không cần nhập hết 40 model."
+    },
+    {
+      "group_name": "Blast Chillers / Freezers",
+      "group_name_vi": "Tủ Cấp Đông/Làm Lạnh Nhanh",
+      "taxonomy_note": "Dòng AT với hậu tố PW (Power) — có core probe (que đo nhiệt độ tâm sản phẩm) trên toàn dải. Công suất chilling đo ở +3°C/90 phút, freezing đo ở -18°C lõi/240 phút.",
+      "source_urls": [
+        "https://sammic.com/en/products/blast-chillers"
+      ],
+      "models": [
+        {
+          "model": "AT-3 2/3 PW",
+          "capacity_gn": "3 x GN 2/3",
+          "chilling": "7kg/90 phút",
+          "freezing": "5kg/240 phút",
+          "power": "500W",
+          "already_on_site": true
+        },
+        {
+          "model": "AT-3 1/1 PW",
+          "capacity_gn": "3 x GN 1/1",
+          "chilling": "8kg/90 phút",
+          "freezing": "6kg/240 phút",
+          "power": "500W",
+          "already_on_site": true
+        },
+        {
+          "model": "AT-5 1/1 PW",
+          "capacity_gn": "5 x GN 1/1",
+          "chilling": "20kg/90 phút",
+          "freezing": "14kg/240 phút",
+          "power": "1000W",
+          "already_on_site": true
+        },
+        {
+          "model": "AT-7 1/1 PW",
+          "capacity_gn": "7 x GN 1/1",
+          "chilling": "26kg/90 phút",
+          "freezing": "18kg/240 phút",
+          "power": "1200W",
+          "already_on_site": false
+        },
+        {
+          "model": "AT-10 1/1 PW",
+          "capacity_gn": "10 x GN 1/1",
+          "chilling": "40kg/90 phút",
+          "freezing": "28kg/240 phút",
+          "power": "2200W",
+          "already_on_site": false
+        },
+        {
+          "model": "AT-14 1/1 PW",
+          "capacity_gn": "14 x GN 1/1",
+          "chilling": "40kg/90 phút",
+          "freezing": "28kg/240 phút",
+          "power": "2200W",
+          "already_on_site": false
+        },
+        {
+          "model": "AT-12-2/70 PW",
+          "capacity_gn": "12 x GN 2/1",
+          "chilling": "70kg/90 phút",
+          "freezing": "50kg/240 phút",
+          "power": "2400W",
+          "already_on_site": false
+        },
+        {
+          "model": "AT-20 (Compatible)",
+          "capacity_gn": "20 x GN 1/1",
+          "chilling": "75kg/90 phút",
+          "freezing": "45kg/240 phút",
+          "power": "3800W",
+          "already_on_site": false
+        },
+        {
+          "model": "AT-20 W",
+          "capacity_gn": "xe đẩy hỗn hợp (mixed trolleys)",
+          "chilling": "100kg/90 phút",
+          "freezing": "70kg/240 phút",
+          "power": "6000W",
+          "already_on_site": false
+        },
+        {
+          "model": "AT-20 MD W",
+          "capacity_gn": "xe đẩy hỗn hợp (mixed trolleys)",
+          "chilling": "100kg/90 phút",
+          "freezing": "70kg/240 phút",
+          "power": "6000W",
+          "already_on_site": false
+        }
+      ],
+      "recommended_action": "10 model thật đủ thông số — sẵn sàng tạo draft, ưu tiên các model công suất vừa (AT-5/AT-7/AT-10) phù hợp bếp nhà hàng/khách sạn quy mô vừa VN."
+    },
+    {
+      "group_name": "SmartVide — Sous-Vide Immersion Circulators",
+      "group_name_vi": "Máy Nấu Sous-Vide Ngâm Nước Chính Xác",
+      "taxonomy_note": "4 model theo dung lượng bể nước tăng dần: 5 < 7 ≈ 9 < XL. Cùng dải nhiệt 5-95°C, độ chính xác hiển thị 0.01°C, Bluetooth/WiFi, HACCP-ready.",
+      "source_urls": [
+        "https://sammic.com/en/product/smartvide-xl",
+        "https://sammic.com/en/product/smartvide9",
+        "https://sammic.com/en/product/smartvide7",
+        "https://sammic.com/en/product/smartvide5"
+      ],
+      "models": [
+        {
+          "model": "SmartVide 5",
+          "max_capacity_l": 30,
+          "temp_range_c": "5-95",
+          "power": "1600W",
+          "note": "Có 20 chương trình nấu lưu sẵn, Bluetooth",
+          "already_on_site": true
+        },
+        {
+          "model": "SmartVide 7",
+          "max_capacity_l": 56,
+          "temp_range_c": "5-95",
+          "power": "2000W",
+          "note": "Chu kỳ nấu lập trình 1 phút - 99 giờ",
+          "already_on_site": true
+        },
+        {
+          "model": "SmartVide 9",
+          "max_capacity_l": 56,
+          "temp_range_c": "5-95",
+          "power": "2000W",
+          "note": "Lưu tối đa 20 chương trình nấu",
+          "already_on_site": true
+        },
+        {
+          "model": "SmartVide XL",
+          "max_capacity_l": 120,
+          "temp_range_c": "5-95",
+          "power": "2600W",
+          "note": "Màn hình cảm ứng 5 inch, Bluetooth/WiFi",
+          "already_on_site": true
+        }
+      ],
+      "recommended_action": "4 model đầy đủ — dòng SmartVide là sản phẩm chủ lực về sous-vide của Sammic, nên ưu tiên tạo draft cho cả 4 model."
+    },
+    {
+      "group_name": "Planetary Mixers",
+      "group_name_vi": "Máy Trộn Bột Đa Năng (Planetary Mixer)",
+      "taxonomy_note": "2 dòng: BM (bàn/countertop, nhỏ gọn) và BP (BP-10 tabletop, BP-20/30/40 đứng sàn/floor-standing). Dòng BP mới có bàn phím màn hình cảm ứng, lập trình timer 0-99 phút.",
+      "source_urls": [
+        "https://sammic.com/en/products/planetary-mixers"
+      ],
+      "models": [
+        {
+          "model": "BM-5E",
+          "bowl_capacity_l": 5,
+          "power": "250W",
+          "tool_speed_rpm": "85-495",
+          "planetary_speed_rpm": "35-192",
+          "already_on_site": false
+        },
+        {
+          "model": "BM-5",
+          "bowl_capacity_l": 5,
+          "power": "300W",
+          "tool_speed_rpm": "98-455",
+          "planetary_speed_rpm": "40-187",
+          "already_on_site": false
+        },
+        {
+          "model": "BP-10",
+          "bowl_capacity_l": 10,
+          "power": "550/750W",
+          "tool_speed_rpm": "96-289",
+          "planetary_speed_rpm": "59-176",
+          "already_on_site": false
+        },
+        {
+          "model": "BP-20",
+          "bowl_capacity_l": 20,
+          "power": "900W",
+          "tool_speed_rpm": "95-392",
+          "planetary_speed_rpm": "42-175",
+          "already_on_site": false
+        },
+        {
+          "model": "BP-30",
+          "bowl_capacity_l": 30,
+          "power": "1100W",
+          "tool_speed_rpm": "87-378",
+          "planetary_speed_rpm": "39-168",
+          "already_on_site": false
+        },
+        {
+          "model": "BP-40",
+          "bowl_capacity_l": 40,
+          "power": "1400W",
+          "tool_speed_rpm": "85-348",
+          "planetary_speed_rpm": "45-186",
+          "already_on_site": false
+        }
+      ],
+      "recommended_action": "6 model thật đủ thông số — sẵn sàng tạo draft."
+    },
+    {
+      "group_name": "Commercial Slicers",
+      "group_name_vi": "Máy Thái Lát Thực Phẩm Thương Mại",
+      "taxonomy_note": "Nhiều dòng: GSS/GSM (belt-driven, tốc độ khác nhau), GSL (belt-driven cỡ lớn), GGS (bánh răng thủ công có bộ đếm lát), GAE (bánh răng tự động), VML/VSS/VSL (dòng đứng cho thịt/xúc xích cured meat), VS-300 (motor rời/external).",
+      "source_urls": [
+        "https://sammic.com/en/products/commercial-slicer"
+      ],
+      "models": [
+        {
+          "model": "GSS-250",
+          "blade_mm": 250,
+          "power": "160W",
+          "slice_thickness_mm": "0-15",
+          "already_on_site": false
+        },
+        {
+          "model": "GSS-275",
+          "blade_mm": 275,
+          "power": "180W",
+          "slice_thickness_mm": "0-15",
+          "already_on_site": false
+        },
+        {
+          "model": "GSS-300",
+          "blade_mm": 300,
+          "power": "230W",
+          "slice_thickness_mm": "0-15",
+          "already_on_site": false
+        },
+        {
+          "model": "GSM-250",
+          "blade_mm": 250,
+          "power": "220W",
+          "slice_thickness_mm": "0-14",
+          "already_on_site": false
+        },
+        {
+          "model": "GSM-275",
+          "blade_mm": 275,
+          "power": "223W",
+          "slice_thickness_mm": "0-13",
+          "already_on_site": false
+        },
+        {
+          "model": "GSM-300",
+          "blade_mm": 300,
+          "power": "246W",
+          "slice_thickness_mm": "0-13",
+          "already_on_site": false
+        },
+        {
+          "model": "GSL-300",
+          "blade_mm": 300,
+          "power": "373W",
+          "slice_thickness_mm": "0-12",
+          "already_on_site": false
+        },
+        {
+          "model": "GSL-350",
+          "blade_mm": 350,
+          "power": "373W",
+          "slice_thickness_mm": "0-13",
+          "already_on_site": false
+        },
+        {
+          "model": "GGS-300",
+          "blade_mm": 300,
+          "power": "250W",
+          "slice_thickness_mm": "0-14",
+          "already_on_site": false
+        },
+        {
+          "model": "GGS-350",
+          "blade_mm": 350,
+          "power": "250W",
+          "slice_thickness_mm": "0-14",
+          "already_on_site": false
+        },
+        {
+          "model": "GAE-300",
+          "blade_mm": 300,
+          "power": "400W",
+          "slice_thickness_mm": "0-14",
+          "already_on_site": false
+        },
+        {
+          "model": "GAE-350",
+          "blade_mm": 350,
+          "power": "400W",
+          "slice_thickness_mm": "0-14",
+          "already_on_site": false
+        },
+        {
+          "model": "VML-350",
+          "blade_mm": 350,
+          "power": "370W",
+          "slice_thickness_mm": "0-16",
+          "already_on_site": false
+        },
+        {
+          "model": "VSS-300",
+          "blade_mm": 300,
+          "power": "260W",
+          "slice_thickness_mm": "0-16",
+          "already_on_site": false
+        },
+        {
+          "model": "VSL-350",
+          "blade_mm": 350,
+          "power": "370W",
+          "slice_thickness_mm": "0-16",
+          "already_on_site": false
+        },
+        {
+          "model": "VS-300",
+          "blade_mm": 300,
+          "power": "động cơ rời (external)",
+          "slice_thickness_mm": "0-2.5",
+          "already_on_site": false
+        }
+      ],
+      "recommended_action": "16 model thật đủ thông số. Khuyến nghị ưu tiên 3-4 model phổ thông (GSS-300, GAE-300, GGS-300) trước khi mở rộng ra dòng chuyên biệt VML/VSS/VSL."
+    },
+    {
+      "group_name": "Commercial Potato Peelers",
+      "group_name_vi": "Máy Gọt Vỏ Khoai Tây Thương Mại",
+      "taxonomy_note": "Dòng sản phẩm gốc/di sản của Sammic — công ty khởi nghiệp năm 1961 với máy gọt khoai tây. Có bản nhôm (PP/PI) và inox (PPC).",
+      "source_urls": [
+        "https://sammic.com/en/products/potato-peelers"
+      ],
+      "models": [
+        {
+          "model": "PP-6+",
+          "capacity_kg": 6,
+          "power_1phase": "400W",
+          "power_3phase": "370W",
+          "already_on_site": false
+        },
+        {
+          "model": "PPC-6+",
+          "capacity_kg": 6,
+          "power_1phase": "550W",
+          "power_3phase": "550W",
+          "note": "bản inox",
+          "already_on_site": false
+        },
+        {
+          "model": "PP-12+",
+          "capacity_kg": 12,
+          "power_1phase": "400W",
+          "power_3phase": "370W",
+          "already_on_site": false
+        },
+        {
+          "model": "PPC-12+",
+          "capacity_kg": 12,
+          "power_1phase": "550W",
+          "power_3phase": "550W",
+          "note": "bản inox",
+          "already_on_site": false
+        },
+        {
+          "model": "M-5",
+          "capacity_kg": 5,
+          "power_1phase": "300W",
+          "power_3phase": "370W",
+          "already_on_site": false
+        },
+        {
+          "model": "PI-10",
+          "capacity_kg": 10,
+          "power_1phase": "550W",
+          "power_3phase": "550W",
+          "already_on_site": false
+        },
+        {
+          "model": "PI-20",
+          "capacity_kg": 20,
+          "power_1phase": "550W",
+          "power_3phase": "730W",
+          "already_on_site": false
+        },
+        {
+          "model": "PI-30",
+          "capacity_kg": 30,
+          "power_1phase": "730W",
+          "power_3phase": "550W",
+          "already_on_site": false
+        },
+        {
+          "model": "PES-20",
+          "capacity_kg": 20,
+          "power_1phase": "550W",
+          "power_3phase": "550W",
+          "note": "kết hợp gọt vỏ + sấy khô salad",
+          "already_on_site": false
+        }
+      ],
+      "recommended_action": "9 model thật đủ thông số — sẵn sàng tạo draft."
+    },
+    {
+      "group_name": "Commercial Salad Spinners",
+      "group_name_vi": "Máy Vắt Rau Ráo Nước Thương Mại",
+      "source_urls": [
+        "https://sammic.com/en/products/salad-spinner"
+      ],
+      "models": [
+        {
+          "model": "ES-100",
+          "basket_capacity_kg": 6,
+          "power": "550W",
+          "note": "tốc độ cao 900rpm, 1-3 phút/chu kỳ",
+          "already_on_site": false
+        },
+        {
+          "model": "ES-200",
+          "basket_capacity_kg": 12,
+          "power": "550W",
+          "note": "tối đa 720kg/h",
+          "already_on_site": false
+        },
+        {
+          "model": "PES-20",
+          "basket_capacity_kg": 2,
+          "power": "550W",
+          "note": "kết hợp gọt vỏ khoai (trùng model với dòng Potato Peelers)",
+          "already_on_site": false
+        }
+      ],
+      "recommended_action": "3 model — ES-100/ES-200 là sản phẩm riêng biệt, PES-20 là máy 2-trong-1 đã liệt kê song song ở dòng Potato Peelers."
+    },
+    {
+      "group_name": "Commercial Meat Mincers",
+      "group_name_vi": "Máy Xay Thịt Thương Mại",
+      "taxonomy_note": "Dòng tiêu chuẩn PS-12/22/32 (inox) và bản làm lạnh PS-22R/32R (refrigerated, tăng an toàn thực phẩm). PS-22/32 có nhiều loại lưỡi cắt (cutting units) tùy chọn.",
+      "source_urls": [
+        "https://sammic.com/en/products/meat-mincers"
+      ],
+      "models": [
+        {
+          "model": "PS-12",
+          "capacity_kg_h": 100,
+          "power": "440W",
+          "already_on_site": false
+        },
+        {
+          "model": "PS-22",
+          "capacity_kg_h": 280,
+          "power": "740-1100W",
+          "already_on_site": true
+        },
+        {
+          "model": "PS-32",
+          "capacity_kg_h": 425,
+          "power": "1500W",
+          "already_on_site": false
+        },
+        {
+          "model": "PS-22R",
+          "capacity_kg_h": 250,
+          "power": "1100W",
+          "note": "bản làm lạnh (refrigerated)",
+          "already_on_site": false
+        },
+        {
+          "model": "PS-32R",
+          "capacity_kg_h": 450,
+          "power": "2200W",
+          "note": "bản làm lạnh (refrigerated)",
+          "already_on_site": false
+        }
+      ],
+      "recommended_action": "5 model thật đủ thông số — sẵn sàng tạo draft."
+    },
+    {
+      "group_name": "Commercial Hand Blenders (Immersion Blenders)",
+      "group_name_vi": "Máy Xay Cầm Tay Công Nghiệp",
+      "taxonomy_note": "3 dòng theo thân máy: XM (phổ thông), MB (trung), B (dài, công suất mạnh) — phân loại chính theo chiều dài trục (shaft) và dung tích xử lý tối đa.",
+      "source_urls": [
+        "https://sammic.com/en/products/commercial-hand-blender"
+      ],
+      "models": [
+        {
+          "model": "XM-12",
+          "power": "240W",
+          "capacity_l": 10,
+          "shaft_mm": 223,
+          "already_on_site": false
+        },
+        {
+          "model": "XM-21",
+          "power": "300W",
+          "capacity_l": 12,
+          "shaft_mm": 250,
+          "already_on_site": false
+        },
+        {
+          "model": "XM-22",
+          "power": "300W",
+          "capacity_l": 15,
+          "shaft_mm": 300,
+          "already_on_site": false
+        },
+        {
+          "model": "MB-21",
+          "power": "300W",
+          "capacity_l": 12,
+          "shaft_mm": 250,
+          "already_on_site": false
+        },
+        {
+          "model": "B-20",
+          "power": "300W",
+          "capacity_l": 15,
+          "shaft_mm": 306,
+          "already_on_site": false
+        },
+        {
+          "model": "XM-31",
+          "power": "400W",
+          "capacity_l": 30,
+          "shaft_mm": 366,
+          "already_on_site": false
+        },
+        {
+          "model": "XM-32",
+          "power": "400W",
+          "capacity_l": 45,
+          "shaft_mm": 420,
+          "already_on_site": false
+        },
+        {
+          "model": "XM-33",
+          "power": "400W",
+          "capacity_l": 60,
+          "shaft_mm": 306,
+          "already_on_site": false
+        },
+        {
+          "model": "MB-31",
+          "power": "400W",
+          "capacity_l": 30,
+          "shaft_mm": 425,
+          "already_on_site": false
+        },
+        {
+          "model": "B-30",
+          "power": "400W",
+          "capacity_l": 60,
+          "shaft_mm": 525,
+          "already_on_site": false
+        },
+        {
+          "model": "XM-51",
+          "power": "570W",
+          "capacity_l": 80,
+          "shaft_mm": 425,
+          "already_on_site": false
+        },
+        {
+          "model": "XM-52",
+          "power": "570W",
+          "capacity_l": 120,
+          "shaft_mm": 540,
+          "already_on_site": false
+        },
+        {
+          "model": "MB-51",
+          "power": "570W",
+          "capacity_l": 80,
+          "shaft_mm": 425,
+          "already_on_site": false
+        },
+        {
+          "model": "B-50",
+          "power": "570W",
+          "capacity_l": 120,
+          "shaft_mm": 630,
+          "already_on_site": false
+        },
+        {
+          "model": "XM-71",
+          "power": "750W",
+          "capacity_l": 200,
+          "shaft_mm": 540,
+          "already_on_site": false
+        },
+        {
+          "model": "XM-72",
+          "power": "750W",
+          "capacity_l": 250,
+          "shaft_mm": 630,
+          "already_on_site": false
+        }
+      ],
+      "recommended_action": "16 model thật đủ thông số. Khuyến nghị ưu tiên 3-4 model phổ thông (XM-21, XM-31, XM-51) phù hợp bếp nhà hàng/khách sạn tầm trung VN trước khi mở rộng full range."
+    },
+    {
+      "group_name": "Combi Veg Prep / Food Processor (CK Series)",
+      "group_name_vi": "Máy Chế Biến Rau Củ Kết Hợp (dòng CK)",
+      "taxonomy_note": "Dòng combi 2-trong-1 (Veg Prep + Cutter head dùng chung máy). ACTIVE (CK-241, tốc độ cố định) và ULTRA (CK-24V/35V/38V/45V/48V, Compact & Heavy Duty, tốc độ biến thiên).",
+      "source_urls": [
+        "https://sammic.com/en/products/combi-veg-prep-food-processor"
+      ],
+      "models": [
+        {
+          "model": "CK-241",
+          "bowl_capacity_l": 4.4,
+          "power": "800W (1 pha)",
+          "capacity_kg_h": "50-350",
+          "dimensions_veg_prep_mm": "378x309x533",
+          "dimensions_cutter_mm": "252x309x434",
+          "weight_veg_prep_kg": 15.2,
+          "weight_cutter_kg": 14.2,
+          "speeds": "1 tốc độ cố định",
+          "already_on_site": false
+        },
+        {
+          "model": "CK-24V",
+          "bowl_capacity_l": 4.4,
+          "power": "1100W",
+          "capacity_kg_h": "50-350",
+          "dimensions_veg_prep_mm": "378x309x533",
+          "dimensions_cutter_mm": "252x309x434",
+          "weight_veg_prep_kg": 12.9,
+          "weight_cutter_kg": 11.9,
+          "speeds": "10 vị trí biến thiên",
+          "already_on_site": false
+        },
+        {
+          "model": "CK-35V",
+          "bowl_capacity_l": 5.5,
+          "power": "1500W",
+          "capacity_kg_h": "100-450",
+          "dimensions_veg_prep_mm": "391x409x552",
+          "dimensions_cutter_mm": "286x387x487",
+          "weight_veg_prep_kg": 24,
+          "weight_cutter_kg": 18,
+          "speeds": "10 vị trí biến thiên",
+          "already_on_site": false
+        },
+        {
+          "model": "CK-38V",
+          "bowl_capacity_l": 8,
+          "power": "1500W",
+          "capacity_kg_h": "100-450",
+          "dimensions_veg_prep_mm": "391x409x552",
+          "dimensions_cutter_mm": "286x387x517",
+          "weight_veg_prep_kg": 24,
+          "weight_cutter_kg": 19,
+          "speeds": "10 vị trí biến thiên",
+          "already_on_site": false
+        },
+        {
+          "model": "CK-45V",
+          "bowl_capacity_l": 5.5,
+          "power": "1500W",
+          "capacity_kg_h": "200-650",
+          "dimensions_veg_prep_mm": "391x400x652",
+          "dimensions_cutter_mm": "286x387x487",
+          "weight_veg_prep_kg": 27,
+          "weight_cutter_kg": 18,
+          "speeds": "10 vị trí biến thiên",
+          "already_on_site": false
+        },
+        {
+          "model": "CK-48V",
+          "bowl_capacity_l": 8,
+          "power": "1500W",
+          "capacity_kg_h": "200-650",
+          "dimensions_veg_prep_mm": "391x400x652",
+          "dimensions_cutter_mm": "286x387x517",
+          "weight_veg_prep_kg": 27,
+          "weight_cutter_kg": 19,
+          "speeds": "10 vị trí biến thiên",
+          "already_on_site": false
+        }
+      ],
+      "recommended_action": "6 model thật đủ thông số, fetch bổ sung 2026-07-13 (category trước đó chỉ biết tên, chưa fetch). Đây là dòng combi 2-đầu-công-dụng (Veg Prep head + Cutter head), gần với dòng CA/CA-V đã có nhưng khác mã model — cần xác nhận với Sammic xem đây có phải cùng máy đổi tên hay dòng sản phẩm riêng."
+    },
+    {
+      "group_name": "Hand Operated Potato Chipping Machine (French Fry Cutter)",
+      "group_name_vi": "Máy Cắt Khoai Tây Chiên Cầm Tay",
+      "taxonomy_note": "Chỉ 1 model duy nhất trong category này.",
+      "source_urls": [
+        "https://sammic.com/en/products/french-fry-cutter"
+      ],
+      "models": [
+        {
+          "model": "CF-5",
+          "capacity_kg_h": 150,
+          "cutting_options_mm": "8, 10, hoặc 12 (khối dao thay đổi được)",
+          "material": "hợp kim nhôm nhẹ, tay cầm/ốc vít inox",
+          "note": "chân hút chân không giữ cố định trên mặt bàn, NSF International listed, tay cầm dài giảm lực thao tác",
+          "already_on_site": false
+        }
+      ],
+      "recommended_action": "1 model thật, fetch bổ sung 2026-07-13. Sản phẩm thủ công (không động cơ điện), phù hợp bếp vừa/nhỏ."
+    },
+    {
+      "group_name": "Ware-Washing (Commercial Dishwashers & Glasswashers)",
+      "group_name_vi": "Máy Rửa Chén & Máy Rửa Ly Thương Mại",
+      "taxonomy_note": "XÁC NHẬN: Sammic CÓ sản xuất dòng ware-washing đầy đủ (kết luận 'không có dishwasher' ở lần cào trước là SAI — do chưa duyệt hết menu). Site chính thức có category 'Ware-Washing' với 4 nhánh: Undercounter dishwashers/glasswashers, Pass-through dishwashers, Rack conveyor dishwashers, Auxiliary washing equipment (pot washers, cutlery dryers). Lượt cào này chỉ fetch được nhánh Undercounter + Pass-through + Glass-Pro; CHƯA fetch Rack conveyor dishwashers và Auxiliary washing equipment (pot washers/cutlery dryers) — xem not_covered_this_pass.",
+      "source_urls": [
+        "https://sammic.com/en/products/ware-washing",
+        "https://sammic.com/en/products/commercial-dishwasher",
+        "https://sammic.com/en/products/commercial-glasswashers",
+        "https://sammic.com/en/products/commercial-glasswasher-glass-pro",
+        "https://sammic.com/en/products/pass-through-dishwashers"
+      ],
+      "series": [
+        {
+          "series_name": "Undercounter Dishwashers — ACTIVE/ULTRA (basket 500x500mm)",
+          "models": [
+            {
+              "model": "AX-50",
+              "basket_mm": "500x500",
+              "useful_height_mm": 380,
+              "dimensions_mm": "580x640x835",
+              "power": "3300W",
+              "tank_l": 14,
+              "production_baskets_h": "30/24/17",
+              "already_on_site": false
+            },
+            {
+              "model": "UX-50 LITE",
+              "basket_mm": "500x500",
+              "useful_height_mm": 380,
+              "dimensions_mm": "580x635x835",
+              "power": "3750W",
+              "tank_l": 14,
+              "production_baskets_h": "40/33/30/20/15",
+              "already_on_site": false
+            },
+            {
+              "model": "UX-50",
+              "basket_mm": "500x500",
+              "useful_height_mm": 380,
+              "dimensions_mm": "580x635x835",
+              "power": "5750W",
+              "tank_l": 14,
+              "production_baskets_h": "40/33/30/20/15",
+              "already_on_site": false
+            },
+            {
+              "model": "UX-50C",
+              "basket_mm": "500x500",
+              "useful_height_mm": 380,
+              "dimensions_mm": "580x635x835",
+              "power": "5750W",
+              "tank_l": 14,
+              "production_baskets_h": "40/33/30/20",
+              "already_on_site": false
+            },
+            {
+              "model": "UX-50 ISO",
+              "basket_mm": "500x500",
+              "useful_height_mm": 380,
+              "dimensions_mm": "600x640x835",
+              "power": "5700W",
+              "tank_l": 14,
+              "production_baskets_h": "40/33/30/20/15",
+              "already_on_site": false
+            },
+            {
+              "model": "UX-50 ISO C",
+              "basket_mm": "500x500",
+              "useful_height_mm": 380,
+              "power": "5700W",
+              "tank_l": 14,
+              "production_baskets_h": "40/33/30/20/15",
+              "already_on_site": false
+            }
+          ]
+        },
+        {
+          "series_name": "Undercounter Glasswashers — ACTIVE/ULTRA (basket 400x400mm)",
+          "models": [
+            {
+              "model": "AX-40",
+              "basket_mm": "400x400",
+              "useful_height_mm": 300,
+              "dimensions_mm": "470x537x710",
+              "power": "2750W",
+              "tank_l": 9,
+              "production_baskets_h": "30/24/17",
+              "already_on_site": false
+            },
+            {
+              "model": "UX-40",
+              "basket_mm": "400x400",
+              "useful_height_mm": 300,
+              "dimensions_mm": "470x540x710",
+              "power": "3050W",
+              "tank_l": 9,
+              "production_baskets_h": "40/30/24/20",
+              "already_on_site": false
+            },
+            {
+              "model": "UX-40C DD",
+              "basket_mm": "400x400",
+              "useful_height_mm": 300,
+              "dimensions_mm": "470x540x710",
+              "power": "3050W",
+              "tank_l": 9,
+              "note": "double-skin (double rack)",
+              "already_on_site": false
+            },
+            {
+              "model": "UX-40 ISO",
+              "basket_mm": "400x400",
+              "useful_height_mm": 300,
+              "dimensions_mm": "490x540x710",
+              "power": "3050W",
+              "tank_l": 9,
+              "already_on_site": false
+            },
+            {
+              "model": "UX-40C ISO DD",
+              "basket_mm": "400x400",
+              "useful_height_mm": 300,
+              "dimensions_mm": "470x540x710",
+              "power": "3050W",
+              "tank_l": 9,
+              "note": "double-skin (double rack)",
+              "already_on_site": false
+            }
+          ]
+        },
+        {
+          "series_name": "Glass-Pro Line Glasswashers",
+          "models": [
+            {
+              "model": "GP-35",
+              "basket_mm": "350x350",
+              "door_clearance_mm": 240,
+              "tank_l": 12.7,
+              "pump_power": "75W (0.1Hp)",
+              "power": "2575W",
+              "production_baskets_h": 30,
+              "already_on_site": false
+            },
+            {
+              "model": "GP-40",
+              "basket_mm": "400x400",
+              "door_clearance_mm": 240,
+              "tank_l": 15,
+              "pump_power": "250W (0.33Hp)",
+              "power": "2750W",
+              "production_baskets_h": 30,
+              "already_on_site": false
+            },
+            {
+              "model": "GP-50",
+              "basket_mm": "500x500",
+              "door_clearance_mm": 260,
+              "tank_l": 23,
+              "pump_power": "550W (0.75Hp)",
+              "power": "3350W",
+              "production_baskets_h": 30,
+              "already_on_site": false
+            }
+          ]
+        },
+        {
+          "series_name": "Pass-Through Dishwashers — ACTIVE/ULTRA (basket 500x500 hoặc 600x500mm)",
+          "models": [
+            {
+              "model": "AX-100",
+              "basket_mm": "500x500",
+              "useful_height_mm": 430,
+              "dimensions_mm": "650x755x1525",
+              "power": "6700W",
+              "cycles": "3 (120/180/210s)",
+              "production_baskets_h": "30/24/17",
+              "already_on_site": false
+            },
+            {
+              "model": "UX-100",
+              "basket_mm": "500x500",
+              "useful_height_mm": 430,
+              "dimensions_mm": "650x755x1525",
+              "power": "8250W",
+              "cycles": "6 (60/90/100/150/210s)",
+              "production_baskets_h": "60/40/36/24/17",
+              "already_on_site": true
+            },
+            {
+              "model": "UX-120 series (UX-120/120C/120V/120CV + ISO)",
+              "basket_mm": "500x500",
+              "useful_height_mm": 430,
+              "dimensions_mm": "650x755x1520-2035",
+              "power": "10000W",
+              "cycles": 6,
+              "note": "8 biến thể trong 1 series (C=corner, V=vapour condenser, ISO=cách nhiệt)",
+              "already_on_site": false
+            },
+            {
+              "model": "UX-130BC/BCV/BCD series (+ ISO)",
+              "basket_mm": "500x500",
+              "useful_height_mm": "430-440",
+              "dimensions_mm": "640-650x755-756x1468-2035",
+              "power": "9000-10000W",
+              "cycles": 6,
+              "already_on_site": false
+            },
+            {
+              "model": "UX-150SBC/SBCV",
+              "basket_mm": "600x500",
+              "useful_height_mm": 430,
+              "dimensions_mm": "730x760x1572",
+              "power": "10500W",
+              "cycles": 6,
+              "already_on_site": false
+            }
+          ]
+        }
+      ],
+      "recommended_action": "19 model/nhóm-model thật (6 undercounter dishwasher + 5 undercounter glasswasher + 3 Glass-Pro + 5 pass-through) fetch bổ sung 2026-07-13. CHƯA fetch Rack Conveyor Dishwashers và Auxiliary washing equipment (pot washers, cutlery dryers) — cần lượt cào tiếp theo nếu cần đầy đủ. LƯU Ý QUAN TRỌNG: kết luận 'Sammic không làm dishwasher' trong lần nghiên cứu trước (README cũ, not_covered_this_pass) là SAI, đã đính chính ở đây."
+    }
+  ],
+  "not_covered_this_pass": [
+    "Rack Conveyor Dishwashers (https://sammic.com/en/products/ware-washing) — sub-category tồn tại nhưng chưa fetch chi tiết model trong lượt này",
+    "Auxiliary washing equipment: Pot washers, Cutlery dryers & polishers (thuộc category Ware-Washing) — chưa fetch",
+    "Furniture & accessories (industrial sinks, taps, trolleys, stainless bins) thuộc Ware-Washing — không phải máy, không ưu tiên cào",
+    "Giá bán — Sammic không public giá trên toàn cầu (cả sammic.com và sammic.us), cần liên hệ đại lý Sammic Việt Nam hoặc nhà phân phối khu vực",
+    "Hình ảnh sản phẩm độ phân giải cao — chưa tải, chỉ có URL trang sản phẩm"
+  ],
+  "open_questions_for_user": [
+    "Với 130 model MỚI (chưa có trên site) — có muốn nhập TẤT CẢ hay chỉ chọn model tiêu biểu (mỗi group đã có recommended_action gợi ý model ưu tiên) để giữ catalog gọn?",
+    "8 sản phẩm hiện có trên site brand Sammic nhưng KHÔNG khớp model nghiên cứu (GCP-300, GCP-350, LI-240, MO-1000, 2 sản phẩm Combi thực chất là Giorik) — cần kiểm tra lại nguồn gốc/brand thật sự, có thể cần đổi brand hoặc xoá khỏi Sammic.",
+    "UX-50B trên site gần giống nhưng không khớp chính xác model nào trong dòng UX-50 vừa cào (UX-50/UX-50C/UX-50 LITE/UX-50 ISO/UX-50 ISO C) — cần xác minh model thật.",
+    "Cần liên hệ Sammic Việt Nam/đại lý phân phối chính thức để xin giá VND + ảnh chính hãng độ phân giải cao trước khi publish.",
+    "Rack Conveyor Dishwashers và Auxiliary washing equipment (pot washers, cutlery dryers) trong group Ware-Washing vẫn chưa được cào chi tiết model — cần làm lại nếu cần đầy đủ."
+  ],
+  "dishwasher_correction_note": "ĐÍNH CHÍNH (2026-07-13): Lần cào trước kết luận sai rằng Sammic không sản xuất dishwasher/glasswasher. Đã xác nhận qua sitemap.xml + trang Ware-Washing: Sammic CÓ đầy đủ dòng Undercounter Dishwashers (AX-50/UX-50 series), Undercounter Glasswashers (AX-40/UX-40 series), Glass-Pro Line (GP-35/40/50), Pass-Through Dishwashers (AX-100/UX-100/120/130/150 series), Rack Conveyor Dishwashers, và Auxiliary washing equipment. Xem group mới 'Ware-Washing' trong data.json.",
+  "site_comparison": {
+    "checked_date": "2026-07-13",
+    "method": "curl https://saigonhoreca.local/wp-json/wp/v2/product?product_brand=27&per_page=100&_fields=id,title,slug — 27 sản phẩm brand Sammic (đã gộp Sammic + Sammic-Spain) hiện có trên site.",
+    "total_researched_models": 149,
+    "matched_already_on_site": 19,
+    "genuinely_new_models": 130,
+    "matched_model_list": [
+      "SE-204",
+      "SE-208",
+      "SE-310",
+      "SE-520L",
+      "SE-604",
+      "SE-604CC",
+      "SE-606",
+      "SE-806",
+      "SU-310",
+      "SU-520CC",
+      "AT-3 2/3 PW",
+      "AT-5 1/1 PW",
+      "AT-3 1/1 PW",
+      "SmartVide 5",
+      "SmartVide 7",
+      "SmartVide 9",
+      "SmartVide XL",
+      "PS-22",
+      "UX-100"
+    ],
+    "notes": [
+      "19/27 sản phẩm hiện có trên site trùng khớp model thật trong bộ nghiên cứu này (đánh dấu already_on_site:true trong từng model ở groups).",
+      "8/27 sản phẩm hiện có trên site KHÔNG khớp với bất kỳ model nào trong bộ nghiên cứu 149 model của Sammic: GCP-300, GCP-350 (Máy Cắt Thịt — mã 'GCP' không xuất hiện trong danh mục Sammic chính hãng đã cào, cần xác minh lại nguồn gốc/mã model), LI-240 (Máy Ép — category chưa được cào trong 2 lượt nghiên cứu, có thể là dòng máy ép trái cây/rau riêng của Sammic chưa khảo sát), MO-1000 (Lò Vi Sóng — category lò vi sóng không nằm trong phạm vi các nhóm sản phẩm Sammic đã duyệt), và 2 sản phẩm Lò Combi SEHE061W/SERE061W bị gắn nhầm brand — tiêu đề ghi rõ 'Giorik – Italy', KHÔNG PHẢI Sammic, nên loại khỏi phạm vi đối chiếu Sammic.",
+      "UX-50B (trên site) gần giống nhưng KHÔNG khớp chính xác mã nào trong dòng Undercounter Dishwasher vừa cào (UX-50 / UX-50C / UX-50 LITE / UX-50 ISO / UX-50 ISO C) — không tự ý gán match, cần xác minh thủ công xem 'B' là biến thể nào.",
+      "SmartVide XL xuất hiện 2 lần trên site (1 bản kèm '120P heated tank', 1 bản standalone) — cả 2 đều tính là match với model nghiên cứu 'SmartVide XL' (site có thể đang bán 2 SKU/cấu hình khác nhau của cùng 1 model gốc).",
+      "AT-3 1/1 PW cũng xuất hiện 2 lần trên site (2 slug khác nhau, có hậu tố '-2') — có thể là data trùng lặp còn sót lại sau merge 2 taxonomy brand, nên rà soát riêng."
+    ]
+  }
+}

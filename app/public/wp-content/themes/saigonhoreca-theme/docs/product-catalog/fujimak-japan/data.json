@@ -1,0 +1,159 @@
+{
+  "research_date": "2026-07-13",
+  "source_note": "Cào từ website chính hãng Fujimak Corporation (Nhật Bản) qua bản tiếng Anh en.fujimak.co.jp. KHÔNG phải dữ liệu tự bịa — mọi model/thông số dưới đây có URL nguồn kèm theo. Chưa có giá bán (Fujimak không public giá, phải liên hệ đại lý/nhà phân phối).",
+  "existing_catalog_gap": "Kiểm tra 16 sản phẩm brand Fujimak-Japan hiện có trên saigonhoreca.local (product_brand id=7): KHÔNG có sản phẩm nào thuộc dòng Teppanyaki hoặc Jet Oven. Đây là 2 nhóm SẢN PHẨM MỚI cần thêm, không phải gắn lại nhãn cho hàng cũ.",
+  "brand": "Fujimak-Japan",
+  "groups": [
+    {
+      "group_name": "Teppanyaki",
+      "group_name_vi": "Bếp Bàn Nướng Teppanyaki",
+      "taxonomy_note": "Fujimak KHÔNG bán teppanyaki dạng model/SKU cố định — toàn bộ dòng này là ĐẶT LÀM THEO YÊU CẦU (custom-made), sản xuất theo kích thước bếp/quầy của từng khách hàng. Không có mã model, không có bảng giá niêm yết.",
+      "source_urls": [
+        "https://en.fujimak.co.jp/works/customize/teppanyaki-grill/",
+        "https://en.fujimak.co.jp/products/01/01q/",
+        "https://fujimak.biz/products/teppanyaki-griddle/",
+        "https://fujimak.biz/products/teppanyaki-griddle/pdf/custom_made_teppanyaki_griddle.pdf"
+      ],
+      "variants": [
+        {
+          "variant_name": "Ducted Grill",
+          "variant_name_vi": "Bếp Teppanyaki Tích Hợp Ống Hút Khói",
+          "description_en": "Incorporates exhaust ducts into the main unit — no ceiling ventilation hood needed. Quiet suction fan located several meters away. Includes automatic fire-extinguishing system inside the ducts. Used in hotels with face-to-face service (e.g. Park Hyatt Kyoto signature restaurant).",
+          "specs": {
+            "steel_plate_thickness_mm": 19,
+            "control": "digital or analog temperature control",
+            "heat_source": "not specified on page — inquire",
+            "customization": "heater placement/length adjustable to fit kitchen layout"
+          }
+        },
+        {
+          "variant_name": "Custom Design (Tabletop)",
+          "variant_name_vi": "Bếp Teppanyaki Đặt Bàn Theo Yêu Cầu",
+          "description_en": "Tabletop grill installed to fit kitchen size. Steel plate thickness adjustable (standard 19mm). Digital or analog temperature control. Groove around plate perimeter to prevent oil runoff.",
+          "specs": { "steel_plate_thickness_mm": 19 }
+        },
+        {
+          "variant_name": "Tabletop Grill (on Cold Base)",
+          "variant_name_vi": "Bếp Teppanyaki Đặt Trên Tủ Lạnh/Tủ Đông Quầy Bar",
+          "description_en": "Installed directly on top of a cold-base refrigerator/freezer or cabinet — retrieve ingredients and tableware on the spot, improving workflow efficiency."
+        },
+        {
+          "variant_name": "Airflow Fan Grill",
+          "variant_name_vi": "Bếp Teppanyaki Có Quạt Chắn Khói",
+          "description_en": "Airflow fan creates a wind barrier between grill and customer seating at counter-style cooking, blocking exhaust/heat/oil smoke/splatter from reaching guests."
+        }
+      ],
+      "recommended_action": "Tạo category/attribute rỗng 'Teppanyaki' theo yêu cầu user (chưa gắn sản phẩm thật). Khi có đơn hàng thật, mỗi sản phẩm sẽ là 1 báo giá custom riêng — không nhập hàng loạt như SKU thường."
+    },
+    {
+      "group_name": "Jet Oven",
+      "group_name_vi": "Lò Nướng Băng Tải Jet Oven",
+      "taxonomy_note": "Khác với Teppanyaki, Jet Oven CÓ dòng model rõ ràng theo 4 phân khúc: Standard, Compact, Pizza-only, Long (nhà máy/suất ăn công nghiệp). Đã bán > 20,000 unit tại Nhật trong 30 năm.",
+      "source_urls": [
+        "https://en.fujimak.co.jp/products/jetoven",
+        "https://en.fujimak.co.jp/products/jetoven/03.html",
+        "https://en.fujimak.co.jp/products/jetoven/05.html",
+        "https://en.fujimak.co.jp/products/01/000329.html",
+        "https://en.fujimak.co.jp/products/01/001236.html",
+        "https://fujimak.meclib.jp/library/books/JetOven/book/index.html"
+      ],
+      "series": [
+        {
+          "series_name": "Standard Series",
+          "series_name_vi": "Dòng Tiêu Chuẩn",
+          "target": "Nhà hàng, phòng ăn, izakaya, tiệm bánh, cửa hàng cơm hộp/deli",
+          "models": [
+            {
+              "model": "FGJOA5",
+              "conveyor_width_mm": 457,
+              "stage": "1-stage (1 tầng băng tải)",
+              "heat_source": "gas hoặc điện (tùy chọn)"
+            },
+            {
+              "model": "FGJOA5D",
+              "conveyor_width_mm": 457,
+              "stage": "2-stage (2 tầng băng tải)",
+              "heat_source": "gas hoặc điện (tùy chọn)"
+            }
+          ],
+          "options_note": "Conveyor width có thể chọn 457mm hoặc 812mm; có tùy chọn tạo ẩm (humidification); có bản twin-conveyor."
+        },
+        {
+          "series_name": "Compact Series",
+          "series_name_vi": "Dòng Compact (Tiết Kiệm Diện Tích)",
+          "target": "Cửa hàng nhỏ, không gian hẹp — chiều rộng lắp đặt 1360–1400mm",
+          "models": [
+            {
+              "model": "FEJOA9",
+              "type": "Standard type — có bản gas và điện",
+              "note": "Chân đế (stand) là tùy chọn thêm"
+            },
+            {
+              "model": "FGJOB10",
+              "type": "Low-radiation type — chỉ có bản gas, giảm tỏa nhiệt ra phòng",
+              "note": "Chân đế (stand) là tùy chọn thêm"
+            }
+          ]
+        },
+        {
+          "series_name": "Pizza-Only",
+          "series_name_vi": "Dòng Chuyên Pizza",
+          "target": "Cửa hàng pizza delivery/Ý — nướng được pizza cỡ L trên 30cm đường kính",
+          "models": [
+            {
+              "model": "FGJOA7",
+              "note": "Vị trí vòi phun (finger) và lưu lượng khí được set tối ưu riêng cho pizza"
+            }
+          ]
+        },
+        {
+          "series_name": "Long Series",
+          "series_name_vi": "Dòng Long (Nhà Máy/Suất Ăn Công Nghiệp)",
+          "target": "Nhà máy thực phẩm, xưởng suất ăn công nghiệp, xưởng chế biến hải sản, bếp ăn tập thể, trường học, bệnh viện",
+          "models": [
+            {
+              "model": "FGJOA70NR",
+              "note": "Bản 3-module (Thailand type). Công suất nướng: 5,000 bánh hamburger đông lạnh 60g/giờ",
+              "capacity_per_hour": "5,000 x 60g frozen hamburger patties"
+            }
+          ],
+          "modularity": "Có 1, 2, hoặc 3 module gia nhiệt, có thể yêu cầu thêm module theo nhu cầu."
+        }
+      ],
+      "accessories_and_options": [
+        {
+          "name": "Humidification (Steam) option",
+          "name_vi": "Tùy chọn tạo hơi nước",
+          "note": "Model có hậu tố 'S' — nối với nồi hơi (boiler) ngoài, 3 mức điều chỉnh lượng hơi. Boiler KHÔNG tích hợp sẵn trong máy chính, phải mua riêng."
+        },
+        {
+          "name": "Energy-saving (ECO) mode",
+          "name_vi": "Chế độ tiết kiệm năng lượng",
+          "note": "Giảm tốc độ quạt gió một nửa khi chờ, dừng băng tải, hạ nhiệt độ khoang chờ — bật qua phím 'ECO' trên touch panel."
+        },
+        {
+          "model": "FCVA50",
+          "name": "Return Conveyor (loại lớn)",
+          "name_vi": "Băng tải hồi khay",
+          "note": "Tự động đưa khay/vỉ nướng đã dùng quay về đầu vào — dùng cho hệ Long series + Tray Loader System."
+        },
+        {
+          "model": "FCVA30",
+          "name": "Return Conveyor (loại nhỏ)",
+          "name_vi": "Băng tải hồi khay (nhỏ)"
+        },
+        {
+          "name": "Far-infrared burner combo system",
+          "name_vi": "Hệ kết hợp burner hồng ngoại xa",
+          "note": "Kết hợp Jet Oven + burner hồng ngoại xa để có mặt ngoài giòn đều màu, bên trong ẩm mọng — kết hợp thêm chức năng hơi nước cho hiệu quả tốt hơn."
+        }
+      ],
+      "recommended_action": "Có đủ dữ liệu model thật (FGJOA5, FGJOA5D, FEJOA9, FGJOB10, FGJOA7, FGJOA70NR) để tạo sản phẩm nháp/draft với tên+mô tả+category Jet Oven ngay. Vẫn CHƯA có giá bán và hình ảnh chính hãng — cần liên hệ Fujimak/đại lý VN trước khi publish giá."
+    }
+  ],
+  "open_questions_for_user": [
+    "Teppanyaki là custom-made, không có SKU cố định — bạn có muốn tạo sản phẩm mẫu (vd '1-2 mẫu tham khảo') hay chỉ để category rỗng chờ đơn hàng thật như đã chốt?",
+    "Jet Oven có model thật (6 model) — có muốn mimo soạn draft product listing (title/mô tả/category) cho từng model, chờ bạn bổ sung giá + ảnh, hay chỉ tạo category rỗng trước?",
+    "Cần liên hệ Fujimak Việt Nam/đại lý phân phối để xin giá + ảnh chính hãng trước khi đăng bán — đây là việc ngoài phạm vi crawl web, cần bạn hoặc sales xử lý."
+  ]
+}

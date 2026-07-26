@@ -109,11 +109,33 @@
     height: 1rem;
 }
 
-/* ── Excerpt — đồng bộ post + product (bỏ italic + border-left vàng) ── */
+/* ── Luxury Sapo Highlight Card ── */
 .sh-single__excerpt {
-    font-size: 0.9375rem;
-    line-height: 1.6;
-    color: var(--bc2);
+    position: relative;
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    font-weight: 500;
+    color: color-mix(in srgb, var(--gold) 90%, #ffffff);
+    margin: 1.25rem 0 0;
+    padding: 1.25rem 1.5rem;
+    background: color-mix(in srgb, var(--gold) 6%, var(--b2, #111));
+    border-left: 4px solid var(--gold);
+    border-top: 1px solid color-mix(in srgb, var(--gold) 15%, transparent);
+    border-right: 1px solid color-mix(in srgb, var(--gold) 12%, transparent);
+    border-bottom: 1px solid color-mix(in srgb, var(--gold) 12%, transparent);
+    border-radius: 0 var(--radius-md, 12px) var(--radius-md, 12px) 0;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.4), 0 0 15px color-mix(in srgb, var(--gold) 5%, transparent);
+    transition: all 0.3s ease;
+}
+
+.sh-single__excerpt:hover {
+    border-left-color: var(--gold-light, #ffd700);
+    box-shadow: 0 12px 30px -6px rgba(0, 0, 0, 0.6), 0 0 25px color-mix(in srgb, var(--gold) 12%, transparent);
+}
+
+.sh-single__excerpt p {
     margin: 0;
 }
 
@@ -194,42 +216,124 @@
     margin: 0;
 }
 
-/* ── Content Area ── */
+/* ── Content Area — Luxury Typography ── */
 .sh-single__content {
-    font-size: 1rem;
-    line-height: 1.8;
-    color: var(--text-1-2);
+    font-size: 1.0625rem;
+    line-height: 1.85;
+    color: color-mix(in srgb, var(--bc, #fff) 88%, transparent);
 }
 
 @media (min-width: 768px) {
     .sh-single__content { font-size: 1.125rem; }
 }
 
-.sh-single__content h2 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-top: 3rem;
-    border-left: 4px solid var(--brand);
-    padding-left: 1rem;
-    scroll-margin-top: 6rem;
+.sh-single__content > p {
+    margin-bottom: 1.5rem;
 }
 
-@media (min-width: 768px) { .sh-single__content h2 { font-size: 1.875rem; } }
+/* First paragraph / Lead paragraph styling */
+.sh-single__content > p:first-of-type {
+    font-size: 1.15rem;
+    line-height: 1.85;
+    color: var(--text-1, #ffffff);
+    font-weight: 500;
+}
+
+.sh-single__content h2 {
+    font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+    font-weight: 800;
+    color: #ffffff;
+    margin-top: 3.25rem;
+    margin-bottom: 1.25rem;
+    border-left: 4px solid var(--gold);
+    padding: 0.5rem 1rem 0.5rem 1.25rem;
+    background: linear-gradient(90deg, color-mix(in srgb, var(--gold) 10%, transparent) 0%, transparent 100%);
+    border-radius: 0 8px 8px 0;
+    scroll-margin-top: 6rem;
+    letter-spacing: -0.01em;
+}
 
 .sh-single__content h3 {
-    font-size: 1.25rem;
+    font-size: clamp(1.2rem, 2vw, 1.45rem);
     font-weight: 700;
+    color: var(--gold);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
     scroll-margin-top: 6rem;
 }
 
-@media (min-width: 768px) { .sh-single__content h3 { font-size: 1.5rem; } }
+.sh-single__content h4 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--text-1);
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+}
+
+.sh-single__content blockquote {
+    position: relative;
+    margin: 2.25rem 0;
+    padding: 1.5rem 1.75rem 1.5rem 2rem;
+    background: color-mix(in srgb, var(--gold) 6%, var(--b2, #141414));
+    border-left: 4px solid var(--gold);
+    border-radius: 0 12px 12px 0;
+    font-style: italic;
+    font-size: 1.075rem;
+    line-height: 1.75;
+    color: color-mix(in srgb, var(--gold) 85%, #ffffff);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+.sh-single__content blockquote p {
+    margin: 0;
+}
+
+.sh-single__content ul,
+.sh-single__content ol {
+    margin: 1.5rem 0;
+    padding-left: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+}
+
+.sh-single__content ul li {
+    position: relative;
+    list-style: none;
+    padding-left: 0.5rem;
+    line-height: 1.7;
+}
+
+.sh-single__content ul li::before {
+    content: '';
+    position: absolute;
+    left: -1.25rem;
+    top: 0.65em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    box-shadow: 0 0 6px var(--gold);
+}
+
+.sh-single__content ol li {
+    line-height: 1.7;
+    padding-left: 0.25rem;
+}
+
+.sh-single__content ol li::marker {
+    color: var(--gold);
+    font-weight: 700;
+}
 
 .sh-single__content img {
     max-width: 100%;
     height: auto;
-    border-radius: var(--radius);
-    margin: 1rem auto;
+    border-radius: var(--radius-md, 12px);
+    margin: 2rem auto;
     display: block;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border: 1px solid color-mix(in srgb, var(--gold) 15%, transparent);
 }
 
 /* WordPress emoji images — keep inline at text size */
@@ -255,17 +359,29 @@
 }
 
 .sh-single__content figure {
-    margin: 1.5rem auto;
+    margin: 2rem auto;
     text-align: center;
 }
 
+.sh-single__content figcaption {
+    font-size: 0.8125rem;
+    color: var(--gold);
+    margin-top: 0.75rem;
+    font-style: italic;
+    opacity: 0.85;
+    letter-spacing: 0.02em;
+}
+
 .sh-single__content a {
-    color: var(--brand);
+    color: var(--gold);
     text-decoration: underline;
+    text-underline-offset: 3px;
+    font-weight: 500;
+    transition: color 0.2s ease;
 }
 
 .sh-single__content a:hover {
-    color: var(--secondary);
+    color: var(--gold-light, #ffe680);
 }
 
 /* ── Tags ── */

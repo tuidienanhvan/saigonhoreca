@@ -1,0 +1,420 @@
+{
+  "research_date": "2026-07-18",
+  "source_note": "ĐÂY LÀ KOLB THIẾT BỊ LÀM BÁNH (Kolb Huizhou Ltd, gốc Thụy Sĩ, do Ernst Kolb - thợ bánh Thụy Sĩ sáng lập năm 1935). Nhà sản xuất lò nướng bánh/pizza, lò xoay, tủ ủ bột, máy trộn và thiết bị xử lý bột chuyên nghiệp. Dữ liệu thật lấy từ catalog nhà phân phối Đông Nam Á gastro.co.id, đối chiếu nhà sản xuất chính hãng kolbcn.com. LƯU Ý: File này ĐÃ THAY THẾ TOÀN BỘ dữ liệu SAI trước đó của Kolb (Áo) - kolb.at, một hãng máy chiên/gastro hoàn toàn khác - đó là nhầm lẫn và đã bị ghi đè. Mỗi model đều có source_url thật (gastro.co.id / kolbcn.com).",
+  "brand": "Kolb",
+  "groups": [
+    {
+      "group_name": "Pizza / Deck Ovens",
+      "group_name_vi": "Lò Nướng Pizza & Bánh Nhiều Tầng",
+      "source_urls": ["https://www.gastro.co.id/brand/kolb", "https://www.kolbcn.com/html/en/index.html"],
+      "models": [
+        {
+          "model": "K04-9879D1",
+          "title": "Kolb K04-9879D1 - Pizza Oven 1 Deck",
+          "description_en": "Electric pizza oven with a single deck, featuring high operating temperatures and heat-retaining stone plates engineered to bake pizzas with crispy bases and evenly cooked toppings in a short time. Maintains stable high temperatures for consistent results, suited to pizzerias, Italian restaurants, cafes and hotels.",
+          "specs": { "decks": "1", "type": "Electric pizza oven", "heat_retaining_plate": "Stone plate", "temperature": "High temperature", "power_kw": "", "dimensions_mm": "" },
+          "origin": "Switzerland/China",
+          "heat_source": "electric",
+          "image_url": "https://www.gastro.co.id/assets/products/kolb-k04-9879d1.jpg",
+          "source_url": "https://www.gastro.co.id/product/kolb-k04-9879d1",
+          "seo_title": "Jual Kolb K04-9879D1 Komersial · GASTRO",
+          "seo_description": ""
+        },
+        {
+          "model": "K04-9879D2",
+          "title": "Kolb K04-9879D2 - Pizza Oven 2 Deck",
+          "description_en": "A specialized electric pizza oven with two decks featuring high operating temperatures and heat-retaining stone plates, engineered to bake pizzas with crispy bases and evenly cooked toppings in minimal time. Maintains stable high temperatures for consistent results despite heavy order volumes; popular with pizzerias, Italian restaurants, cafes and hotels.",
+          "specs": { "decks": "2", "type": "Electric pizza oven", "heat_retaining_plate": "Stone plate", "temperature": "High temperature", "power_kw": "", "dimensions_mm": "" },
+          "origin": "Switzerland/China",
+          "heat_source": "electric",
+          "image_url": "https://www.gastro.co.id/assets/products/kolb-k04-9879d2.jpg",
+          "source_url": "https://www.gastro.co.id/product/kolb-k04-9879d2",
+          "seo_title": "Jual Kolb K04-9879D2 Komersial · GASTRO",
+          "seo_description": ""
+        },
+        {
+          "model": "K04-9879D3",
+          "title": "Kolb K04-9879D3 - Pizza Oven 3 Deck",
+          "description_en": "Electric pizza oven with three decks featuring high operating temperatures and heat-retaining stone plates for crispy bases and evenly cooked toppings in a short time. Stable high-temperature operation for high-volume pizzerias, Italian restaurants, cafes and hotels.",
+          "specs": { "decks": "3", "type": "Electric pizza oven", "heat_retaining_plate": "Stone plate", "temperature": "High temperature", "power_kw": "", "dimensions_mm": "" },
+          "origin": "Switzerland/China",
+          "heat_source": "electric",
+          "image_url": "https://www.gastro.co.id/assets/products/kolb-k04-9879d3.jpg",
+          "source_url": "https://www.gastro.co.id/product/kolb-k04-9879d3",
+          "seo_title": "Jual Kolb K04-9879D3 Komersial · GASTRO",
+          "seo_description": ""
+        }
+      ]
+    },
+    {
+      "group_name": "Rotary Ovens",
+      "group_name_vi": "Lò Nướng Xoay",
+      "source_urls": ["https://www.gastro.co.id/brand/kolb", "https://www.kolbcn.com/html/en/index.html"],
+      "models": [
+        {
+          "model": "K05-0604T1H",
+          "title": "Kolb K05-0604T1H - Rotary Oven",
+          "description_en": "Commercial rotary rack oven engineered for high-volume bakery production. A rotating rack mechanism ensures even heat distribution across all trays from top to bottom, delivering consistent baking results with a full trolley per cycle. Suited to industrial-scale bakeries and central kitchens.",
+          "specs": { "capacity": "1 trolley (600x400 mm trays)", "dimensions_mm": "1280 x 1173 x 2466 (W x D x H)", "weight_kg": "985", "voltage": "380V / 50Hz / 3-phase", "power_kw": "34.60" },
+          "origin": "Switzerland/China",
+          "heat_source": "electric",
+          "image_url": "https://www.gastro.co.id/assets/products/kolb-k05-0604t1h.jpg",
+          "source_url": "https://www.gastro.co.id/product/kolb-k05-0604t1h",
+          "seo_title": "Jual Kolb K05-0604T1H Komersial · GASTRO",
+          "seo_description": ""
+        },
+        {
+          "model": "K05-0608T1H",
+          "title": "Kolb K05-0608T1H - Rotary Oven",
+          "description_en": "Commercial rotary rack oven with a rotating trolley mechanism for even heat distribution across all trays, engineered for high-volume bakery production and central kitchens requiring consistent results across multiple trays per cycle.",
+          "specs": { "capacity": "1 trolley (600x800 mm trays)", "dimensions_mm": "", "weight_kg": "", "voltage": "380V / 50Hz / 3-phase", "power_kw": "" },
+          "origin": "Switzerland/China",
+          "heat_source": "electric",
+          "image_url": "https://www.gastro.co.id/assets/products/kolb-k05-0608t1h.jpg",
+          "source_url": "https://www.gastro.co.id/product/kolb-k05-0608t1h",
+          "seo_title": "Jual Kolb K05-0608T1H Komersial · GASTRO",
+          "seo_description": ""
+        }
+      ]
+    },
+    {
+      "group_name": "Proofers",
+      "group_name_vi": "Tủ Ủ Bột",
+      "source_urls": ["https://www.gastro.co.id/brand/kolb"],
+      "models": [
+        {
+          "model": "K11-RE64D30",
+          "title": "Kolb K11-RE64D30 - Proofer",
+          "description_en": "Single-door dough proofer with controlled temperature and humidity, engineered to uniformly ferment bread dough before baking. Precision temperature-humidity control delivers stable fermentation results in all weather conditions; popular with bakeries, hotels and pastry kitchens.",
+          "specs": { "capacity": "", "dimensions_mm": "725 x 1080 x 2040 (W x D x H)", "temperature": "Controlled", "humidity": "Controlled", "power_kw": "" },
+          "origin": "Switzerland/China",
+          "heat_source": "electric",
+          "image_url": "https://www.gastro.co.id/assets/products/kolb-k11-re64d30.jpg",
+          "source_url": "https://www.gastro.co.id/product/kolb-k11-re64d30",
+          "seo_title": "Jual Kolb K11-RE64D30 Komersial · GASTRO",
+          "seo_description": ""
+        },
+        {
+          "model": "K11-RO68D1",
+          "title": "Kolb K11-RO68D1 - Proofer",
+          "description_en": "Dough proofer cabinet with controlled temperature and humidity designed for uniform fermentation of bread dough before baking. Serves bakeries, hotels and pastry kitchens with precise climate control for stable fermentation results regardless of weather conditions.",
+          "specs": { "capacity": "1 tray column", "dimensions_mm": "1155 x 1135 x 2165 (W x D x H)", "temperature": "Controlled", "humidity": "Controlled", "power_kw": "" },
+          "origin": "Switzerland/China",
+          "heat_source": "electric",
+          "image_url": "https://www.gastro.co.id/assets/products/kolb-k11-ro68d1.jpg",
+          "source_url": "https://www.gastro.co.id/product/kolb-k11-ro68d1",
+          "seo_title": "Jual Kolb K11-RO68D1 Komersial · GASTRO",
+          "seo_description": ""
+        },
+        {
+          "model": "K11-RO68D2",
+          "title": "Kolb K11-RO68D2 - Proofer",
+          "description_en": "Two-column dough proofer with controlled temperature and humidity for uniform fermentation of bread dough before baking. Stable climate control for bakeries, hotels and pastry kitchens in all weather conditions.",
+          "specs": { "capacity": "2 tray columns", "dimensions_mm": "", "temperature": "Controlled", "humidity": "Controlled", "power_kw": "" },
+          "origin": "Switzerland/China",
+          "heat_source": "electric",
+          "image_url": "https://www.gastro.co.id/assets/products/kolb-k11-ro68d2.jpg",
+          "source_url": "https://www.gastro.co.id/product/kolb-k11-ro68d2",
+          "seo_title": "Jual Kolb K11-RO68D2 Komersial · GASTRO",
+          "seo_description": ""
+        },
+        {
+          "model": "K11-RO68D4",
+          "title": "Kolb K11-RO68D4 - Proofer",
+          "description_en": "Four-column dough proofer with controlled temperature and humidity for high-capacity uniform fermentation of bread dough before baking. Precise climate control for large bakeries, hotels and pastry kitchens.",
+          "specs": { "capacity": "4 tray columns", "dimensions_mm": "", "temperature": "Controlled", "humidity": "Controlled", "power_kw": "" },
+          "origin": "Switzerland/China",
+          "heat_source": "electric",
+          "image_url": "https://www.gastro.co.id/assets/products/kolb-k11-ro68d4.jpg",
+          "source_url": "https://www.gastro.co.id/product/kolb-k11-ro68d4",
+          "seo_title": "Jual Kolb K11-RO68D4 Komersial · GASTRO",
+          "seo_description": ""
+        }
+      ]
+    },
+    {
+      "group_name": "Retarder Proofers",
+      "group_name_vi": "Tủ Ủ Bột Trữ Lạnh (Retarder)",
+      "source_urls": ["https://www.gastro.co.id/brand/kolb"],
+      "models": [
+        {
+          "model": "K12-RE64D18",
+          "title": "Kolb K12-RE64D18 - Retarder Proofer",
+          "description_en": "Retarder proofer with controlled temperature and humidity designed to slow-ferment and then uniformly proof bread dough before baking. Widely used by bakeries, hotels and pastry kitchens for stable fermentation results and flexible production scheduling in all weather conditions.",
+          "specs": { "capacity": "", "dimensions_mm": "585 x 955 x 2055 (W x D x H)", "temperature": "Controlled (retard + proof)", "humidity": "Controlled", "power_kw": "" },
+          "origin": "Switzerland/China",
+          "heat_source": "electric",
+          "image_url": "https://www.gastro.co.id/assets/products/kolb-k12-re64d18.jpg",
+          "source_url": "https://www.gastro.co.id/product/kolb-k12-re64d18",
+          "seo_title": "Jual Kolb K12-RE64D18 Komersial · GASTRO",
+          "seo_description": ""
+        },
+        {
+          "model": "K12-RE64D32-1",
+          "title": "Kolb K12-RE64D32-1 - Retarder Proofer",
+          "description_en": "Retarder proofer with controlled temperature and humidity for slow fermentation followed by uniform proofing of bread dough. Enables flexible baking schedules with stable fermentation results; used by bakeries, hotels and pastry kitchens.",
+          "specs": { "capacity": "", "dimensions_mm": "", "temperature": "Controlled (retard + proof)", "humidity": "Controlled", "power_kw": "" },
+          "origin": "Switzerland/China",
+          "heat_source": "electric",
+          "image_url": "https://www.gastro.co.id/assets/products/kolb-k12-re64d32-1.jpg",
+          "source_url": "https://www.gastro.co.id/product/kolb-k12-re64d32-1",
+          "seo_title": "Jual Kolb K12-RE64D32-1 Komersial · GASTRO",
+          "seo_description": ""
+        },
+        {
+          "model": "K12-RO68D1",
+          "title": "Kolb K12-RO68D1 - Retarder Proofer",
+          "description_en": "Single-column retarder proofer with controlled temperature and humidity for slow-ferment and uniform proofing of bread dough before baking. Stable fermentation for bakeries, hotels and pastry kitchens in all weather conditions.",
+          "specs": { "capacity": "1 tray column", "dimensions_mm": "", "temperature": "Controlled (retard + proof)", "humidity": "Controlled", "power_kw": "" },
+          "origin": "Switzerland/China",
+          "heat_source": "electric",
+          "image_url": "https://www.gastro.co.id/assets/products/kolb-k12-ro68d1.jpg",
+          "source_url": "https://www.gastro.co.id/product/kolb-k12-ro68d1",
+          "seo_title": "Jual Kolb K12-RO68D1 Komersial · GASTRO",
+          "seo_description": ""
+        },
+        {
+          "model": "K12-RO68D4",
+          "title": "Kolb K12-RO68D4 - Retarder Proofer",
+          "description_en": "Four-column retarder proofer with controlled temperature and humidity for high-capacity slow fermentation and uniform proofing of bread dough. Flexible production scheduling and stable results for large bakeries, hotels and pastry kitchens.",
+          "specs": { "capacity": "4 tray columns", "dimensions_mm": "", "temperature": "Controlled (retard + proof)", "humidity": "Controlled", "power_kw": "" },
+          "origin": "Switzerland/China",
+          "heat_source": "electric",
+          "image_url": "https://www.gastro.co.id/assets/products/kolb-k12-ro68d4.jpg",
+          "source_url": "https://www.gastro.co.id/product/kolb-k12-ro68d4",
+          "seo_title": "Jual Kolb K12-RO68D4 Komersial · GASTRO",
+          "seo_description": ""
+        }
+      ]
+    },
+    {
+      "group_name": "Planetary Mixers",
+      "group_name_vi": "Máy Trộn Bột Hành Tinh",
+      "source_urls": ["https://www.gastro.co.id/brand/kolb"],
+      "models": [
+        {
+          "model": "K31-0401AB4",
+          "title": "Kolb K31-0401AB4 - Planetary Mixer",
+          "description_en": "Planetary mixer for commercial bakery and pastry applications with orbital agitator movement, capable of whipping cream, cake batters and icings with various accessories. Versatile equipment for whipping, mixing and light kneading; popular with bakeries, pastry shops, cafes and hotels.",
+          "specs": { "capacity": "40 liters", "dimensions_mm": "690 x 629 x 1107 (W x D x H)", "weight_kg": "185", "voltage": "220V / 50Hz / 1-phase", "power_kw": "1.13 (1.5 HP)" },
+          "origin": "Switzerland/Taiwan",
+          "heat_source": "",
+          "image_url": "https://www.gastro.co.id/assets/products/kolb-k31-0401ab4.jpg",
+          "source_url": "https://www.gastro.co.id/product/kolb-k31-0401ab4",
+          "seo_title": "Jual Kolb K31-0401AB4 Komersial · GASTRO",
+          "seo_description": ""
+        },
+        {
+          "model": "K31-0601AB4",
+          "title": "Kolb K31-0601AB4 - Planetary Mixer",
+          "description_en": "Planetary mixer with orbital agitator movement for whipping, mixing and light kneading in commercial bakery and pastry work. Handles cream, cake batters and icings with interchangeable accessories; suited to bakeries, pastry shops, cafes and hotels.",
+          "specs": { "capacity": "60 liters", "dimensions_mm": "", "weight_kg": "", "voltage": "", "power_kw": "" },
+          "origin": "Switzerland/Taiwan",
+          "heat_source": "",
+          "image_url": "https://www.gastro.co.id/assets/products/kolb-k31-0601ab4.jpg",
+          "source_url": "https://www.gastro.co.id/product/kolb-k31-0601ab4",
+          "seo_title": "Jual Kolb K31-0601AB4 Komersial · GASTRO",
+          "seo_description": ""
+        },
+        {
+          "model": "K31-0801AB4",
+          "title": "Kolb K31-0801AB4 - Planetary Mixer",
+          "description_en": "High-capacity planetary mixer with orbital agitator movement for whipping, mixing and light kneading. Processes cream, cake batters and icings with interchangeable accessories for high-volume bakeries, pastry shops and hotels.",
+          "specs": { "capacity": "80 liters", "dimensions_mm": "", "weight_kg": "", "voltage": "", "power_kw": "" },
+          "origin": "Switzerland/Taiwan",
+          "heat_source": "",
+          "image_url": "https://www.gastro.co.id/assets/products/kolb-k31-0801ab4.jpg",
+          "source_url": "https://www.gastro.co.id/product/kolb-k31-0801ab4",
+          "seo_title": "Jual Kolb K31-0801AB4 Komersial · GASTRO",
+          "seo_description": ""
+        }
+      ]
+    },
+    {
+      "group_name": "Spiral Mixers",
+      "group_name_vi": "Máy Trộn Bột Xoắn",
+      "source_urls": ["https://www.gastro.co.id/brand/kolb"],
+      "models": [
+        {
+          "model": "K32-0201AB4",
+          "title": "Kolb K32-0201AB4 - Spiral Mixer",
+          "description_en": "Spiral mixer specialized for high-gluten dough kneading in commercial bakeries. The spiral hook develops gluten optimally while keeping dough temperature controlled, ensuring stable bread quality.",
+          "specs": { "capacity": "20 kg dough", "dimensions_mm": "501 x 883 x 966 (W x D x H)", "weight_kg": "", "voltage": "", "power_kw": "" },
+          "origin": "Switzerland/Taiwan",
+          "heat_source": "",
+          "image_url": "https://www.gastro.co.id/assets/products/kolb-k32-0201ab4.jpg",
+          "source_url": "https://www.gastro.co.id/product/kolb-k32-0201ab4",
+          "seo_title": "Jual Kolb K32-0201AB4 Komersial · GASTRO",
+          "seo_description": ""
+        },
+        {
+          "model": "K32-0401AB4",
+          "title": "Kolb K32-0401AB4 - Spiral Mixer",
+          "description_en": "Spiral mixer for high-gluten dough kneading in commercial bakeries. Optimal gluten development with controlled dough temperature for stable bread quality at higher batch volumes.",
+          "specs": { "capacity": "40 kg dough", "dimensions_mm": "", "weight_kg": "", "voltage": "", "power_kw": "" },
+          "origin": "Switzerland/Taiwan",
+          "heat_source": "",
+          "image_url": "https://www.gastro.co.id/assets/products/kolb-k32-0401ab4.jpg",
+          "source_url": "https://www.gastro.co.id/product/kolb-k32-0401ab4",
+          "seo_title": "Jual Kolb K32-0401AB4 Komersial · GASTRO",
+          "seo_description": ""
+        },
+        {
+          "model": "K32-0501AB4",
+          "title": "Kolb K32-0501AB4 - Spiral Mixer",
+          "description_en": "High-capacity spiral mixer for high-gluten dough kneading in commercial bakeries. Optimal gluten development with controlled dough temperature ensures consistent bread quality in large production runs.",
+          "specs": { "capacity": "50 kg dough", "dimensions_mm": "", "weight_kg": "", "voltage": "", "power_kw": "" },
+          "origin": "Switzerland/Taiwan",
+          "heat_source": "",
+          "image_url": "https://www.gastro.co.id/assets/products/kolb-k32-0501ab4.jpg",
+          "source_url": "https://www.gastro.co.id/product/kolb-k32-0501ab4",
+          "seo_title": "Jual Kolb K32-0501AB4 Komersial · GASTRO",
+          "seo_description": ""
+        }
+      ]
+    },
+    {
+      "group_name": "Dough Dividers",
+      "group_name_vi": "Máy Chia Bột",
+      "source_urls": ["https://www.gastro.co.id/brand/kolb"],
+      "models": [
+        {
+          "model": "K41-0201AS5",
+          "title": "Kolb K41-0201AS5 - Dough Divider",
+          "description_en": "Hydraulic dough divider for bakery preparation, designed to uniformly divide and shape dough into equal portions. Meets operational needs of bakeries, hotels and large-scale bread production where manual consistency is impractical.",
+          "specs": { "type": "Hydraulic divider", "dimensions_mm": "638 x 664 x 1200 (W x D x H)", "capacity": "", "power_kw": "" },
+          "origin": "Switzerland/Taiwan",
+          "heat_source": "",
+          "image_url": "https://www.gastro.co.id/assets/products/kolb-k41-0201as5.jpg",
+          "source_url": "https://www.gastro.co.id/product/kolb-k41-0201as5",
+          "seo_title": "Jual Kolb K41-0201AS5 Komersial · GASTRO",
+          "seo_description": ""
+        },
+        {
+          "model": "K42-0301AA5",
+          "title": "Kolb K42-0301AA5 - Bun Divider / Rounder",
+          "description_en": "Bun divider and rounder for bakery preparation that divides dough into equal small portions and rounds them for buns and rolls. Delivers uniform shape and weight at volume for bakeries, hotels and bread factories.",
+          "specs": { "type": "Bun divider/rounder", "dimensions_mm": "", "capacity": "", "power_kw": "" },
+          "origin": "Switzerland/Taiwan",
+          "heat_source": "",
+          "image_url": "https://www.gastro.co.id/assets/products/kolb-k42-0301aa5.jpg",
+          "source_url": "https://www.gastro.co.id/product/kolb-k42-0301aa5",
+          "seo_title": "Jual Kolb K42-0301AA5 Komersial · GASTRO",
+          "seo_description": ""
+        },
+        {
+          "model": "K42-0301AS5",
+          "title": "Kolb K42-0301AS5 - Bun Divider / Rounder",
+          "description_en": "Bun divider and rounder for bakery preparation, dividing and rounding dough into uniform small portions for buns and rolls. Consistent shape and weight at high volume for bakeries, hotels and bread factories.",
+          "specs": { "type": "Bun divider/rounder", "dimensions_mm": "", "capacity": "", "power_kw": "" },
+          "origin": "Switzerland/Taiwan",
+          "heat_source": "",
+          "image_url": "https://www.gastro.co.id/assets/products/kolb-k42-0301as5.jpg",
+          "source_url": "https://www.gastro.co.id/product/kolb-k42-0301as5",
+          "seo_title": "Jual Kolb K42-0301AS5 Komersial · GASTRO",
+          "seo_description": ""
+        }
+      ]
+    },
+    {
+      "group_name": "Dough Sheeters",
+      "group_name_vi": "Máy Cán Bột",
+      "source_urls": ["https://www.gastro.co.id/brand/kolb"],
+      "models": [
+        {
+          "model": "K43-5201AF8",
+          "title": "Kolb K43-5201AF8 - Dough Sheeter (Floor)",
+          "description_en": "Floor / reversible dough sheeter for bakery preparation designed to uniformly thin and flatten dough to consistent thickness. Enables consistent form and weight uniformity at large volumes, ideal for bakeries, hotels and bread factories.",
+          "specs": { "type": "Floor / reversible sheeter", "dimensions_mm": "2540 x 880 x 1210 (W x D x H)", "belt_width": "", "power_kw": "" },
+          "origin": "Switzerland/Taiwan",
+          "heat_source": "",
+          "image_url": "https://www.gastro.co.id/assets/products/kolb-k43-5201af8.jpg",
+          "source_url": "https://www.gastro.co.id/product/kolb-k43-5201af8",
+          "seo_title": "Jual Kolb K43-5201AF8 Komersial · GASTRO",
+          "seo_description": ""
+        },
+        {
+          "model": "K43-5201AT8",
+          "title": "Kolb K43-5201AT8 - Dough Sheeter (Table-top)",
+          "description_en": "Table-top / bench dough sheeter for bakery preparation, uniformly thinning and flattening dough to consistent thickness for pastries and laminated dough. Consistent form and weight uniformity for bakeries, hotels and bread factories.",
+          "specs": { "type": "Table-top sheeter", "dimensions_mm": "", "belt_width": "", "power_kw": "" },
+          "origin": "Switzerland/Taiwan",
+          "heat_source": "",
+          "image_url": "https://www.gastro.co.id/assets/products/kolb-k43-5201at8.jpg",
+          "source_url": "https://www.gastro.co.id/product/kolb-k43-5201at8",
+          "seo_title": "Jual Kolb K43-5201AT8 Komersial · GASTRO",
+          "seo_description": ""
+        }
+      ]
+    },
+    {
+      "group_name": "Moulders",
+      "group_name_vi": "Máy Tạo Hình Bánh Mì",
+      "source_urls": ["https://www.gastro.co.id/brand/kolb"],
+      "models": [
+        {
+          "model": "K44-0001AS5",
+          "title": "Kolb K44-0001AS5 - Long Moulder",
+          "description_en": "Long moulder / bread moulder for bakery preparation, designed to shape divided dough into uniform long loaves and baguettes. Provides consistent dough forming at scale for commercial kitchens, hotels and bread factories.",
+          "specs": { "type": "Long moulder", "dimensions_mm": "980 x 850 x 1540 (W x D x H)", "capacity": "", "power_kw": "" },
+          "origin": "Switzerland/Taiwan",
+          "heat_source": "",
+          "image_url": "https://www.gastro.co.id/assets/products/kolb-k44-0001as5.jpg",
+          "source_url": "https://www.gastro.co.id/product/kolb-k44-0001as5",
+          "seo_title": "Jual Kolb K44-0001AS5 Komersial · GASTRO",
+          "seo_description": ""
+        }
+      ]
+    },
+    {
+      "group_name": "Bread Slicers",
+      "group_name_vi": "Máy Cắt Lát Bánh Mì",
+      "source_urls": ["https://www.gastro.co.id/brand/kolb"],
+      "models": [
+        {
+          "model": "K45-0121AS4",
+          "title": "Kolb K45-0121AS4 - Bread Slicer",
+          "description_en": "Semi-automatic bread slicer designed for bakeries, hotels and bread factories to achieve uniform slice thickness at high volumes. Delivers clean, even slices for loaves and sandwich bread.",
+          "specs": { "type": "Semi-automatic slicer", "dimensions_mm": "760 x 720 x 830 (W x D x H)", "slice_thickness": "", "power_kw": "" },
+          "origin": "Switzerland/Taiwan",
+          "heat_source": "",
+          "image_url": "https://www.gastro.co.id/assets/products/kolb-k45-0121as4.jpg",
+          "source_url": "https://www.gastro.co.id/product/kolb-k45-0121as4",
+          "seo_title": "Jual Kolb K45-0121AS4 Komersial · GASTRO",
+          "seo_description": ""
+        }
+      ]
+    },
+    {
+      "group_name": "Custom & Bundles",
+      "group_name_vi": "Tùy Chỉnh & Trọn Bộ",
+      "source_urls": ["https://www.gastro.co.id/brand/kolb"],
+      "models": [
+        {
+          "model": "CUSTOM",
+          "title": "KOLB Custom (by request)",
+          "description_en": "Custom / made-to-order Kolb bakery equipment configured on request, including combination oven builds tailored to a bakery's layout and production needs.",
+          "specs": { "type": "Combination / made-to-order", "dimensions_mm": "", "power_kw": "" },
+          "origin": "Switzerland/China",
+          "heat_source": "",
+          "image_url": "https://www.gastro.co.id/assets/products/kolb-custom-by-request.jpg",
+          "source_url": "https://www.gastro.co.id/product/kolb-custom-by-request",
+          "seo_title": "",
+          "seo_description": ""
+        },
+        {
+          "model": "BUNDLE",
+          "title": "Kolb Bakery Preparation Equipment (Bundle)",
+          "description_en": "Bundled Kolb bakery preparation line combining dough processing equipment (dividers, sheeters, moulders and related machines) to uniformly divide, thin and shape dough for consistent form and weight at high volumes. Aimed at bakeries, hotels and bread factories.",
+          "specs": { "type": "Preparation equipment bundle", "dimensions_mm": "", "power_kw": "" },
+          "origin": "Switzerland/Taiwan",
+          "heat_source": "",
+          "image_url": "https://www.gastro.co.id/assets/products/kolb-bakery-preparation-equipment.png",
+          "source_url": "https://www.gastro.co.id/product/kolb-bakery-preparation-equipment",
+          "seo_title": "",
+          "seo_description": ""
+        }
+      ]
+    }
+  ]
+}

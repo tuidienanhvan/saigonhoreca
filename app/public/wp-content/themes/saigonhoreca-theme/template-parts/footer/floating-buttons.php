@@ -56,7 +56,7 @@ $sh_chatbot_active = is_plugin_active('pi-chatbot/pi-chatbot.php');
     <?php endif; ?>
 
     <?php if ($sh_chatbot_active) : ?>
-    <button type="button" id="sh-toggle" aria-label="<?php esc_attr_e('Mở trợ lý AI tư vấn', 'saigonhoreca'); ?>" data-gtm-click="click_chatbot" data-gtm-location="floating_button">
+    <button type="button" id="sh-toggle" aria-label="<?php esc_attr_e('Mở trợ lý AI tư vấn', 'saigonhoreca'); ?>" aria-expanded="false" data-gtm-click="click_chatbot" data-gtm-location="floating_button">
         <svg id="sh-ic-chat" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
         <svg id="sh-ic-x" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
         <span id="sh-badge" aria-hidden="true"></span>

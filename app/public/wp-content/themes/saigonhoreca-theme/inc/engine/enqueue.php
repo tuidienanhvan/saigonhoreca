@@ -26,6 +26,23 @@ add_filter('script_loader_tag', function ($tag, $handle) {
 }, 20, 2);
 
 /**
+ * Inject CSP nonce into all WordPress-generated script tags (including wp_localize_script)
+ */
+add_filter('wp_script_attributes', function($attributes) {
+    if (!is_admin() && !empty($GLOBALS['sgh_csp_nonce'])) {
+        $attributes['nonce'] = $GLOBALS['sgh_csp_nonce'];
+    }
+    return $attributes;
+});
+
+add_filter('wp_inline_script_attributes', function($attributes) {
+    if (!is_admin() && !empty($GLOBALS['sgh_csp_nonce'])) {
+        $attributes['nonce'] = $GLOBALS['sgh_csp_nonce'];
+    }
+    return $attributes;
+});
+
+/**
  * True when current page uses any `page-pillar-*.php` template.
  * Used to route the project CSS bundle for all 12 pillar pages.
  */

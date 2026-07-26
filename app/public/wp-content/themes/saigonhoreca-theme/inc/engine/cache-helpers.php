@@ -142,8 +142,16 @@ if (!function_exists('sgh_static_cache_is_cacheable')) {
 if (!function_exists('sgh_static_cache_flush')) {
     /**
      * Flush all static HTML cache files and directories.
+     *
+     * Bao gồm cả `sgh-home-cache.html` — cache trang chủ RIÊNG (front-page.php,
+     * TTL 10 phút), sống ngoài thư mục sgh-static/ nên trước đây hàm này (và
+     * endpoint /flush-cache dùng nó) không hề đụng tới, khiến sửa code xong
+     * vẫn thấy bản trang chủ cũ tối đa 10 phút sau đó.
      */
     function sgh_static_cache_flush(): void {
+        $home_cache = WP_CONTENT_DIR . '/cache/sgh-home-cache.html';
+        if (file_exists($home_cache)) @unlink($home_cache);
+
         $dir = sgh_static_cache_dir();
         if (!is_dir($dir)) return;
         try {

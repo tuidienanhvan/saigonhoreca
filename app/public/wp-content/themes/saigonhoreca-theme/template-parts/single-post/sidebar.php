@@ -14,7 +14,7 @@
 
 if (!defined('ABSPATH')) exit;
 
-$hotline    = get_theme_mod('saigonhouse_hotline', '0961 868 968');
+$hotline    = get_theme_mod('saigonhouse_hotline', '0901 304 365');
 $hotline_t  = preg_replace('/[^0-9+]/', '', (string) $hotline);
 $contact    = apply_filters('sh_sidebar_contact_url', home_url('/lien-he'));
 
@@ -67,7 +67,7 @@ $sidebar_label      = $is_product ? __('Thông tin sản phẩm', 'saigonhoreca'
                         <a href="<?php the_permalink(); ?>" class="sh-sidebar-news__link">
                             <?php if (has_post_thumbnail()) : ?>
                                 <span class="sh-sidebar-news__thumb">
-                                    <?php the_post_thumbnail('thumbnail', ['loading' => 'lazy', 'decoding' => 'async']); ?>
+                                    <?php the_post_thumbnail('medium', ['loading' => 'lazy', 'decoding' => 'async']); ?>
                                 </span>
                             <?php endif; ?>
                             <span class="sh-sidebar-news__body">

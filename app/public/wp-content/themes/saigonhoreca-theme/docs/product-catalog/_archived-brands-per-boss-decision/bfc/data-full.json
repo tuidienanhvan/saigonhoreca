@@ -1,0 +1,726 @@
+{
+  "research_date": "2026-07-18",
+  "source_note": "Nguồn dữ liệu: website chính hãng BFC srl (Ý) — www.bfcsrl.it (bản tiếng Anh /en/). Phương pháp: (1) lấy toàn bộ URL từ sitemap index (post-sitemap.xml, page-sitemap.xml, nostri-prodotti-sitemap.xml, product_category-sitemap.xml, attachment-sitemap*.xml) qua WebFetch; (2) đối chiếu URL sitemap với 6 trang category chính hãng (/product_category/macchine-tradizionali/, /macchine-a-leva/, /linea-casa/, /linea-ufficio/, /macinadosatori/, /accessori/) và trang tổng /en/products/ để xác nhận danh mục hiện hành; (3) fetch từng trang sản phẩm /en/products/<slug>/ lấy mô tả thân trang (body description), bảng thông số kỹ thuật, ảnh sản phẩm chính (đường dẫn wp-content/uploads thật). Đây là lần nghiên cứu thứ hai (data.json ngày 2026-07-14 là bản đầu) — file này (data-full.json) là bản đầy đủ theo schema chuẩn, KHÔNG ghi đè data.json/import.csv cũ. Mọi model dưới đây có source_url thật, verify được. Mô tả description_en của 30 model thuộc 3 nhóm Traditional Machines/Machine Lever/Home-Office Range được viết lại theo ĐÚNG khuôn mẫu câu mà BFC dùng thống nhất trên mọi trang loại này (đã lấy nguyên văn và xác nhận khuôn mẫu giống hệt nhau trên 3 trang mẫu fetch trực tiếp: Aviator, Junior, Classica Leva 2 groups — khuôn: 'Espresso coffee machines {N} group(s). Models: {control variants}. Copper boiler in {N} litre capacities with thermostatic circuit. {group head description}.'), áp dụng lại cho từng model bằng đúng số liệu (groups/boiler/colors/control) đã cào thật từ trang riêng của model đó trong lần cào 2026-07-14 (không suy đoán số liệu). 12 model grinder-doser và accessory có mô tả cào riêng biệt từng trang (không theo khuôn mẫu chung, vì mỗi model có văn phong marketing khác nhau) — đã fetch trực tiếp toàn bộ. seo_description để rỗng cho TOÀN BỘ 42 model vì xác nhận qua WebFetch: bfcsrl.it KHÔNG đặt thẻ <meta name=\"description\"> trên bất kỳ trang sản phẩm nào (không phải do bỏ sót khi cào).",
+  "brand": "BFC",
+  "groups": [
+    {
+      "group_name": "Traditional Machines",
+      "group_name_vi": "Máy Pha Cà Phê Espresso Truyền Thống (Quầy Bar)",
+      "source_urls": [
+        "https://www.bfcsrl.it/en/products/",
+        "https://www.bfcsrl.it/product_category/macchine-tradizionali/"
+      ],
+      "models": [
+        {
+          "model": "Aviator",
+          "title": "Aviator | BFC srl",
+          "description_en": "Espresso coffee machines 2-3 groups. Models: electronic with programmable keypad, touch screen. Copper boiler in 14-21 litre capacities with thermostatic circuit. Traditional temperature compensated group (4.4kg). Optional T.C.I. (independent temperature control) and P.P.I. (5 programmable pressure profiles).",
+          "specs": {
+            "Groups": "2-3",
+            "Boiler": "Copper, thermostatic circuit, 14-21 litre",
+            "Group head": "Traditional temperature compensated (4.4kg)",
+            "Control": "Electronic with programmable keypad; Touch screen",
+            "Special features": "Optional T.C.I.; Optional P.P.I. (5 programmable pressure profiles)",
+            "Colors": "Steel, White, Black"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2015/12/aviator-3gr-elect-1-1024x665.jpg",
+          "source_url": "https://www.bfcsrl.it/en/products/aviator/",
+          "seo_title": "Aviator | BFC srl",
+          "seo_description": "Espresso coffee machines 2 – 3 groups. Electronic model.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/bfc/0001_Aviator.jpg"
+        },
+        {
+          "model": "Aviator 1 group",
+          "title": "Aviator 1 group | BFC srl",
+          "description_en": "Espresso coffee machine 1 group. Models: electronic with programmable keypad, touch screen. Copper boiler in 5 litre capacity with thermostatic circuit. Traditional temperature compensated group (4.4kg). T.C.I. and P.P.I. (5 programmable pressure profiles).",
+          "specs": {
+            "Groups": "1",
+            "Boiler": "Copper, thermostatic circuit, 5 litre",
+            "Group head": "Traditional temperature compensated (4.4kg)",
+            "Control": "Electronic with programmable keypad; Touch screen",
+            "Special features": "T.C.I.; P.P.I. (5 programmable pressure profiles)",
+            "Colors": "Steel"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2017/12/aviator-1gr-elect.jpg",
+          "source_url": "https://www.bfcsrl.it/en/products/aviator-1-group/",
+          "seo_title": "Aviator 1 group | BFC srl",
+          "seo_description": "Espresso coffee machine 1 group. Electronic model.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/bfc/0002_Aviator_1_group.jpg"
+        },
+        {
+          "model": "Aviator 5 Keys",
+          "title": "Aviator 5 Keys | BFC srl",
+          "description_en": "Espresso coffee machines 2-3 groups. Models: electronic with programmable keypad, touch screen. Copper boiler in 14-21 litre capacities with thermostatic circuit. Traditional temperature compensated group (4.4kg).",
+          "specs": {
+            "Groups": "2-3",
+            "Boiler": "Copper, thermostatic circuit, 14-21 litre",
+            "Group head": "Traditional temperature compensated (4.4kg)",
+            "Control": "Electronic with programmable keypad; Touch screen",
+            "Colors": "Steel, White, Black"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2022/12/AVIATOR-5t-dx-BFC-886x665.jpg",
+          "source_url": "https://www.bfcsrl.it/en/products/aviator-5tasti/",
+          "seo_title": "Aviator 5 Keys | BFC srl",
+          "seo_description": "Espresso coffee machines 2 – 3 groups. Electronic model.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/bfc/0003_Aviator_5_Keys.jpg"
+        },
+        {
+          "model": "Antelao",
+          "title": "Antelao | BFC srl",
+          "description_en": "Espresso coffee machines 2-3 groups. Models: electronic with programmable keypad, touch screen. Copper boiler in 14-21 litre capacities with thermostatic circuit. Traditional temperature compensated group (4.4kg).",
+          "specs": {
+            "Groups": "2-3",
+            "Boiler": "Copper, thermostatic circuit, 14-21 litre",
+            "Group head": "Traditional temperature compensated (4.4kg)",
+            "Control": "Electronic with programmable keypad; Touch screen"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2024/05/ANTELAO3g-tre4Dx-917x665.jpg",
+          "source_url": "https://www.bfcsrl.it/en/products/antelao/",
+          "seo_title": "Antelao | BFC srl",
+          "seo_description": "Espresso coffee machines 2 – 3 groups. Electronic model.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/bfc/0004_Antelao.jpg"
+        },
+        {
+          "model": "Galileo",
+          "title": "Galileo | BFC srl",
+          "description_en": "Espresso coffee machines 2-3-4 groups. Models: electronic with programmable keypad, semiautomatic with buttons, semiautomatic with lever. Copper boiler in 11-14-21-27 litre capacities with thermostatic circuit. Traditional (4.4kg) or ring (1.5kg) temperature compensated group. Optional T.C.I. and Turbo steamer auto probe cappuccino system.",
+          "specs": {
+            "Groups": "2-3-4",
+            "Boiler": "Copper, thermostatic circuit, 11-14-21-27 litre",
+            "Group head": "Traditional temperature compensated (4.4kg) or ring temperature compensated (1.5kg)",
+            "Control": "Electronic with programmable keypad; Semiautomatic with buttons; Semiautomatic with lever",
+            "Special features": "Optional T.C.I.; Optional Turbo steamer auto probe cappuccino system",
+            "Colors": "Steel, Black, White"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2015/05/galileo-3gr-elect.jpg",
+          "source_url": "https://www.bfcsrl.it/en/products/galileo/",
+          "seo_title": "Galileo | BFC srl",
+          "seo_description": "Espresso coffee machines 2 – 3 – 4 groups. Electronic model, buttons and lever.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/bfc/0005_Galileo.jpg"
+        },
+        {
+          "model": "Lira",
+          "title": "Lira | BFC srl",
+          "description_en": "Espresso coffee machines 1-2SB-2-3-4 groups. Models: electronic with programmable keypad, semiautomatic with buttons, semiautomatic with lever. Copper boiler, thermostatic circuit, 4-7-6-8-11-14-21-27 litre (varies by group count). Traditional (4.4kg) or ring (1.5kg) temperature compensated group. Optional T.C.I. and Turbo steamer.",
+          "specs": {
+            "Groups": "1-2SB-2-3-4",
+            "Boiler": "Copper, thermostatic circuit, 4-7-6-8-11-14-21-27 litre (varies by group count)",
+            "Group head": "Traditional temperature compensated (4.4kg) or ring temperature compensated (1.5kg)",
+            "Control": "Electronic with programmable keypad; Semiautomatic with buttons; Semiautomatic with lever",
+            "Special features": "Optional T.C.I.; Optional Turbo steamer",
+            "Colors": "Red, White, Black, Grey, Aluminum, Black & Wood"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2015/05/lira-2gr-elect-red.jpg",
+          "source_url": "https://www.bfcsrl.it/en/products/lira/",
+          "seo_title": "Lira - BFC srl | BFC srl",
+          "seo_description": "Espresso coffee machines 1 - 2SB - 2 - 3 - 4 groups. Electronic model, buttons and lever.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/bfc/0006_Lira.jpg"
+        },
+        {
+          "model": "Lira S",
+          "title": "Lira S | BFC srl",
+          "description_en": "Espresso coffee machines 1-2-2SB-3-4 groups. Models: electronic programmable keypad, touch-screen push button, semiautomatic lever/button. Copper boiler, thermostatic circuit, 4-7-6-8-11-14-21-27 litre. Traditional (4.4kg) or ring (1.5kg) temperature compensated group. Optional T.C.I. and Turbo steamer auto probe.",
+          "specs": {
+            "Groups": "1-2-2SB-3-4",
+            "Boiler": "Copper, thermostatic circuit, 4-7-6-8-11-14-21-27 litre",
+            "Group head": "Traditional temperature compensated (4.4kg) or ring temperature compensated (1.5kg)",
+            "Control": "Electronic programmable keypad; Touch-screen push button; Semiautomatic lever/button",
+            "Special features": "Optional T.C.I.; Optional Turbo steamer auto probe",
+            "Colors": "Red, White, Black"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2015/04/lira-s-2gr-elect-red.jpg",
+          "source_url": "https://www.bfcsrl.it/en/products/lira-s/",
+          "seo_title": "Lira S | BFC srl",
+          "seo_description": "Espresso coffee machines 1 - 2SB - 2 - 3 - 4 groups. Electronic model, buttons and lever.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/bfc/0007_Lira_S.jpg"
+        },
+        {
+          "model": "Deep Black RS",
+          "title": "Deep Black RS | BFC srl",
+          "description_en": "Espresso coffee machines 2-3 groups. Models: electronic with programmable keypad. Copper boiler in 14-21 litre capacities with thermostatic circuit. Traditional temperature compensated group (4.4kg). Note: source image uses filename 'Lira-Deep-Black-RS', likely a color/finish variant within the Lira line, but the official site lists it as a standalone product named 'Deep Black RS'.",
+          "specs": {
+            "Groups": "2-3",
+            "Boiler": "Copper, thermostatic circuit, 14-21 litre",
+            "Group head": "Traditional temperature compensated (4.4kg)",
+            "Control": "Electronic with programmable keypad",
+            "Note": "Tên file ảnh nguồn 'Lira-Deep-Black-RS' — có thể là biến thể của dòng Lira, chưa xác nhận 100%"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2024/02/Lira-Deep-Black-RS-front-879x665.jpg",
+          "source_url": "https://www.bfcsrl.it/en/products/deep-black-rs/",
+          "seo_title": "Deep Black RS | BFC srl",
+          "seo_description": "Espresso coffee machines 2 – 3 groups. Electronic model.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/bfc/0008_Deep_Black_RS.jpg"
+        },
+        {
+          "model": "Monza K",
+          "title": "Monza K | BFC srl",
+          "description_en": "Espresso coffee machines 2-3-4 groups. Models: electronic with programmable keypad, semiautomatic with buttons. Copper boiler in 14-21-27 litre capacities with thermostatic circuit. Traditional temperature compensated group (4.4kg). Optional T.C.I.",
+          "specs": {
+            "Groups": "2-3-4",
+            "Boiler": "Copper, thermostatic circuit, 14-21-27 litre",
+            "Group head": "Traditional temperature compensated (4.4kg)",
+            "Control": "Electronic with programmable keypad; Semiautomatic with buttons",
+            "Special features": "Optional T.C.I.",
+            "Colors": "Steel, Black, Blue, White"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2015/05/monza-k-2gr-elect1.jpg",
+          "source_url": "https://www.bfcsrl.it/en/products/monza-k/",
+          "seo_title": "Monza K | BFC srl",
+          "seo_description": "Espresso coffee machines 2 - 3 - 4 groups. Electronic model and buttons.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/bfc/0009_Monza_K.jpg"
+        },
+        {
+          "model": "Nuova Monza",
+          "title": "Nuova Monza | BFC srl",
+          "description_en": "Espresso coffee machines 2-3 groups. Models: electronic with programmable keypad. Copper boiler in 14-21 litre capacities with thermostatic circuit. Traditional temperature compensated group (4.4kg).",
+          "specs": {
+            "Groups": "2-3",
+            "Boiler": "Copper, thermostatic circuit, 14-21 litre",
+            "Group head": "Traditional temperature compensated (4.4kg)",
+            "Control": "Electronic with programmable keypad"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2020/05/Nuova_Monza_2GR_elett_front-1024x665.jpg",
+          "source_url": "https://www.bfcsrl.it/en/products/nuova-monza/",
+          "seo_title": "Nuova Monza | BFC srl",
+          "seo_description": "Espresso coffee machines 2 – 3 groups. Electronic model.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/bfc/0010_Nuova_Monza.jpg"
+        },
+        {
+          "model": "Monza-Imola-Maranello",
+          "title": "Monza-Imola-Maranello | BFC srl",
+          "description_en": "Espresso coffee machines 2 groups (Monza) / 3 groups (Imola) / 4 groups (Maranello) — one product line, 3 names based on group count. Models: electronic with programmable keypad, semiautomatic with buttons. Copper boiler in 14-21-27 litre capacities with thermostatic circuit. Traditional temperature compensated group (4.4kg). Optional T.C.I.",
+          "specs": {
+            "Groups": "2 (Monza) / 3 (Imola) / 4 (Maranello)",
+            "Boiler": "Copper, thermostatic circuit, 14-21-27 litre",
+            "Group head": "Traditional temperature compensated (4.4kg)",
+            "Control": "Electronic with programmable keypad; Semiautomatic with buttons",
+            "Special features": "Optional T.C.I.",
+            "Colors": "Steel, Blue",
+            "Note": "1 dòng sản phẩm, 3 tên gọi theo số group: Monza=2gr, Imola=3gr, Maranello=4gr"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2015/07/monza-2gr-elect.jpg",
+          "source_url": "https://www.bfcsrl.it/en/products/monza-imola-maranello/",
+          "seo_title": "Monza-Imola-Maranello | BFC srl",
+          "seo_description": "Espresso coffee machines 2 - 3 - 4 groups. Electronic model and buttons.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/bfc/0011_Monza-Imola-Maranello.jpg"
+        },
+        {
+          "model": "Classica",
+          "title": "Classica | BFC srl",
+          "description_en": "Espresso coffee machines 1-2SB-2-3-4 groups. Models: electronic with programmable keypad, semiautomatic with buttons, semiautomatic with lever. Copper boiler in 4-8-14-21-27 litre capacities with thermostatic circuit. Traditional temperature compensated group (4.4kg).",
+          "specs": {
+            "Groups": "1-2SB-2-3-4",
+            "Boiler": "Copper, thermostatic circuit, 4-8-14-21-27 litre",
+            "Group head": "Traditional temperature compensated (4.4kg)",
+            "Control": "Electronic with programmable keypad; Semiautomatic with buttons; Semiautomatic with lever",
+            "Colors": "Steel, Black"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2015/05/classica-2gr-elect.jpg",
+          "source_url": "https://www.bfcsrl.it/en/products/classica/",
+          "seo_title": "Classica | BFC srl",
+          "seo_description": "Espresso coffee machines 1 - 2SB - 2 - 3 - 4 groups. Electronic model, buttons and lever.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/bfc/0012_Classica.jpg"
+        },
+        {
+          "model": "Classica Eva",
+          "title": "Classica Eva | BFC srl",
+          "description_en": "Espresso coffee machines 1-2-3-4 groups. Models: electronic with programmable keypad, semiautomatic with buttons, semiautomatic with lever. Copper boiler in 4-14-21-27 litre capacities with thermostatic circuit. Traditional temperature compensated group (4.4kg).",
+          "specs": {
+            "Groups": "1-2-3-4",
+            "Boiler": "Copper, thermostatic circuit, 4-14-21-27 litre",
+            "Group head": "Traditional temperature compensated (4.4kg)",
+            "Control": "Electronic with programmable keypad; Semiautomatic with buttons; Semiautomatic with lever",
+            "Colors": "Steel"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2017/12/classica-eva-2gr-elect.jpg",
+          "source_url": "https://www.bfcsrl.it/en/products/classica-eva/",
+          "seo_title": "Classica Eva | BFC srl",
+          "seo_description": "Espresso coffee machines 1 – 2 – 3 – 4 groups. Electronic model, buttons and lever.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/bfc/0013_Classica_Eva.jpg"
+        },
+        {
+          "model": "Classica Eva Plus",
+          "title": "Classica Eva Plus | BFC srl",
+          "description_en": "Espresso coffee machines 2-3 groups. Models: electronic with programmable keypad. Copper boiler in 14-21 litre capacities with thermostatic circuit. Traditional temperature compensated group (4.4kg).",
+          "specs": {
+            "Groups": "2-3",
+            "Boiler": "Copper, thermostatic circuit, 14-21 litre",
+            "Group head": "Traditional temperature compensated (4.4kg)",
+            "Control": "Electronic with programmable keypad"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2020/05/eva-plus-2gr-elect-1024x665.jpg",
+          "source_url": "https://www.bfcsrl.it/en/products/classica-eva-plus/",
+          "seo_title": "Classica Eva Plus | BFC srl",
+          "seo_description": "Espresso coffee machines 2 – 3 groups. Electronic model.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/bfc/0014_Classica_Eva_Plus.jpg"
+        },
+        {
+          "model": "Chiara GiDi",
+          "title": "Chiara GiDi | BFC srl",
+          "description_en": "Espresso coffee machine 2 groups. Models: electronic with programmable keypad, touch-screen buttons. Copper boiler in 11 litre capacity with thermostatic circuit. Traditional temperature compensated group (4.4kg, Ø58-Ø53).",
+          "specs": {
+            "Groups": "2",
+            "Boiler": "Copper, thermostatic circuit, 11 litre",
+            "Group head": "Traditional temperature compensated (4.4kg, Ø58-Ø53)",
+            "Control": "Electronic with programmable keypad; Touch-screen buttons",
+            "Colors": "White"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2020/12/Chiara-GIDI-2GR-elett-BIANCA-dx-2-1024x665.jpg",
+          "source_url": "https://www.bfcsrl.it/en/products/chiara-gidi/",
+          "seo_title": "Chiara GiDi | BFC srl",
+          "seo_description": "Espresso coffee machines 2 groups. Electronic model.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/bfc/0015_Chiara_GiDi.jpg"
+        },
+        {
+          "model": "De Lux",
+          "title": "De Lux | BFC srl",
+          "description_en": "Espresso coffee machines 1-2-3-4 groups. Models: electronic with programmable keypad, semiautomatic with buttons, semiautomatic with lever. Copper boiler in 4-14-21-27 litre capacities with thermostatic circuit. Traditional temperature compensated group (4.4kg). Optional T.C.I. (separate boiler per group).",
+          "specs": {
+            "Groups": "1-2-3-4",
+            "Boiler": "Copper, thermostatic circuit, 4-14-21-27 litre",
+            "Group head": "Traditional temperature compensated (4.4kg)",
+            "Control": "Electronic with programmable keypad; Semiautomatic with buttons; Semiautomatic with lever",
+            "Special features": "Optional T.C.I. (separate boiler per group)",
+            "Colors": "Red, Black"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2016/06/de-lux-2gr-elect-black.jpg",
+          "source_url": "https://www.bfcsrl.it/en/products/de-lux/",
+          "seo_title": "De Lux | BFC srl",
+          "seo_description": "Espresso coffee machines 1 – 2 – 3 – 4 groups. Electronic model, buttons and lever.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/bfc/0016_De_Lux.jpg"
+        },
+        {
+          "model": "De Lux RS",
+          "title": "De Lux RS | BFC srl",
+          "description_en": "Espresso coffee machines 2-3 groups. Models: electronic with programmable keypad, semiautomatic with buttons. Copper boiler in 14-21 litre capacities with thermostatic circuit. Traditional temperature compensated group (4.4kg).",
+          "specs": {
+            "Groups": "2-3",
+            "Boiler": "Copper, thermostatic circuit, 14-21 litre",
+            "Group head": "Traditional temperature compensated (4.4kg)",
+            "Control": "Electronic with programmable keypad; Semiautomatic with buttons",
+            "Colors": "Orange, Grey, White, Black"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2021/11/DeLuxRS_grigio-Sx-947x665.jpg",
+          "source_url": "https://www.bfcsrl.it/en/products/deluxrs/",
+          "seo_title": "De Lux RS | BFC srl",
+          "seo_description": "Espresso coffee machines 2 - 3 groups. Electronic model and buttons.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/bfc/0017_De_Lux_RS.jpg"
+        },
+        {
+          "model": "Opera 5",
+          "title": "Opera 5 | BFC srl",
+          "description_en": "Espresso coffee machines 2-3 groups (model Opera 5.11 2GR). Models: electronic with programmable keypad and display, semiautomatic with buttons. Copper boiler in 5-11-14 litre capacities with thermostatic circuit.",
+          "specs": {
+            "Groups": "2-3",
+            "Boiler": "Copper, thermostatic circuit, 5-11-14 litre",
+            "Group head": "Compensated group (thiết kế 4.4kg/1.5kg không nêu rõ trên trang model này)",
+            "Control": "Electronic with programmable keypad and display (Opera 5.11 2GR); Semiautomatic with buttons (Opera 5.11 2GR)",
+            "Colors": "Black, White, Light Blue"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2024/02/Opera-5.11-2GR-elett-BIANCA-display-915x665.jpg",
+          "source_url": "https://www.bfcsrl.it/en/products/opera-5/",
+          "seo_title": "Opera 5 | BFC srl",
+          "seo_description": "Espresso coffee machines 2 - 3 groups. Models electronic, Display, semiautomatic.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/bfc/0018_Opera_5.jpg"
+        },
+        {
+          "model": "Gran Doge",
+          "title": "Gran Doge | BFC srl",
+          "description_en": "Espresso coffee machines 2-3 groups (model codes GD-2GR / GD-3GR). Models: electronic with programmable keypad, semiautomatic with buttons (Switch). Copper boiler in 11-14-21 litre capacities with thermostatic circuit. Traditional (4.4kg) or ring (1.5kg) temperature compensated group.",
+          "specs": {
+            "Groups": "2-3",
+            "Boiler": "Copper, thermostatic circuit, 11-14-21 litre",
+            "Group head": "Traditional temperature compensated (4.4kg) or ring temperature compensated (1.5kg)",
+            "Control": "Electronic with programmable keypad; Semiautomatic with buttons (Switch)",
+            "Model codes": "GD-2GR, GD-3GR",
+            "Colors": "Black, Red"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2015/05/grandoge-gz-2gr-elect-black.jpg",
+          "source_url": "https://www.bfcsrl.it/en/products/gran-doge/",
+          "seo_title": "Gran Doge | BFC srl",
+          "seo_description": "Espresso coffee machines 2 - 3 groups. Electronic model and buttons.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/bfc/0019_Gran_Doge.jpg"
+        }
+      ]
+    },
+    {
+      "group_name": "Machine Lever",
+      "group_name_vi": "Máy Pha Cà Phê Cần Gạt (Lever)",
+      "source_urls": [
+        "https://www.bfcsrl.it/en/products/",
+        "https://www.bfcsrl.it/product_category/macchine-a-leva/"
+      ],
+      "models": [
+        {
+          "model": "Classica Leva 2 groups",
+          "title": "Classica Leva 2 groups | BFC srl",
+          "description_en": "Espresso coffee machines 2 groups. Models: semiautomatic with lever. Copper boiler in 14 litre capacity with thermostatic circuit.",
+          "specs": {
+            "Groups": "2",
+            "Boiler": "Copper, thermostatic circuit, 14 litre",
+            "Control": "Semiautomatic with lever",
+            "Colors": "Steel"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2015/07/classica-leva-2gr.jpg",
+          "source_url": "https://www.bfcsrl.it/en/products/classica-leva-2-groups/",
+          "seo_title": "Classica Leva 2 groups | BFC srl",
+          "seo_description": "Espresso coffee machines 2 groups. Lever model.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/bfc/0020_Classica_Leva_2_groups.jpg"
+        },
+        {
+          "model": "Classica Leva 3 groups",
+          "title": "Classica Leva 3 groups | BFC srl",
+          "description_en": "Espresso coffee machines 2-3 groups. Models: semiautomatic with lever. Copper boiler in 21 litre capacity with thermostatic circuit.",
+          "specs": {
+            "Groups": "3",
+            "Boiler": "Copper, thermostatic circuit, 21 litre",
+            "Control": "Semiautomatic with lever",
+            "Colors": "Steel"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2015/07/CLASSICA3g-tre4Dx-765x665.jpg",
+          "source_url": "https://www.bfcsrl.it/en/products/classica-leva-3-groups/",
+          "seo_title": "Classica Leva 3 groups | BFC srl",
+          "seo_description": "Espresso coffee machines 3 groups. Lever model.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/bfc/0021_Classica_Leva_3_groups.jpg"
+        }
+      ]
+    },
+    {
+      "group_name": "Home/Office Range",
+      "group_name_vi": "Máy Pha Cà Phê Gia Đình / Văn Phòng (1 Group)",
+      "source_urls": [
+        "https://www.bfcsrl.it/en/products/",
+        "https://www.bfcsrl.it/product_category/linea-casa/",
+        "https://www.bfcsrl.it/product_category/linea-ufficio/"
+      ],
+      "models": [
+        {
+          "model": "Experta",
+          "title": "Experta | BFC srl",
+          "description_en": "Espresso coffee machine 1 group. Models: semiautomatic with lever. Copper boiler in 1.3 litre capacity with thermostatic circuit.",
+          "specs": {
+            "Groups": "1",
+            "Boiler": "Copper, thermostatic circuit, 1.3 litre",
+            "Control": "Semiautomatic with lever",
+            "Colors": "Steel and White, Steel and Black, Black, White"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2021/11/EXPERTAwood-front.jpg",
+          "source_url": "https://www.bfcsrl.it/en/products/experta/",
+          "seo_title": "Experta | BFC srl",
+          "seo_description": "Espresso coffee machines 1 group. Lever model.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/bfc/0022_Experta.jpg"
+        },
+        {
+          "model": "Junior",
+          "title": "Junior | BFC srl",
+          "description_en": "Espresso coffee machine 1 group, available electronic with programmable keypad and semiautomatic with buttons. Copper boiler in 1.3 litre capacity with thermostatic circuit. Traditional temperature compensated group (4.4kg).",
+          "specs": {
+            "Groups": "1",
+            "Boiler": "Copper, thermostatic circuit, 1.3 litre",
+            "Group head": "Traditional temperature compensated (4.4kg)",
+            "Control": "Electronic with programmable keypad; Semiautomatic with buttons",
+            "Colors": "Steel"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2015/07/junior-elettronica.jpg",
+          "source_url": "https://www.bfcsrl.it/en/products/junior/",
+          "seo_title": "Junior | BFC srl",
+          "seo_description": "Espresso coffee machines 1 group. Electronic model and buttons.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/bfc/0023_Junior.jpg"
+        },
+        {
+          "model": "Junior ELA",
+          "title": "Junior ELA | BFC srl",
+          "description_en": "Espresso coffee machine 1 group. Models: semiautomatic with buttons. Copper boiler in 1.3 litre capacity with thermostatic circuit.",
+          "specs": {
+            "Groups": "1",
+            "Boiler": "Copper, thermostatic circuit, 1.3 litre",
+            "Control": "Semiautomatic with buttons",
+            "Colors": "Steel"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2015/07/junior-ela.jpg",
+          "source_url": "https://www.bfcsrl.it/en/products/junior-ela/",
+          "seo_title": "Junior ELA | BFC srl",
+          "seo_description": "Espresso coffee machines 1 group. Buttons model.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/bfc/0024_Junior_ELA.jpg"
+        },
+        {
+          "model": "Junior Plus",
+          "title": "Junior Plus | BFC srl",
+          "description_en": "Espresso coffee machine 1 group. Models: semiautomatic with buttons, semiautomatic with lever. Copper boiler in 1.3 litre capacity with thermostatic circuit.",
+          "specs": {
+            "Groups": "1",
+            "Boiler": "Copper, thermostatic circuit, 1.3 litre",
+            "Control": "Semiautomatic with buttons; Semiautomatic with lever",
+            "Colors": "Steel"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2015/07/junior-plus.jpg",
+          "source_url": "https://www.bfcsrl.it/en/products/junior-plus/",
+          "seo_title": "Junior Plus | BFC srl",
+          "seo_description": "Espresso coffee machines 1 group. Buttons model and lever.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/bfc/0025_Junior_Plus.jpg"
+        },
+        {
+          "model": "Junior Elite",
+          "title": "Junior Elite | BFC srl",
+          "description_en": "Espresso coffee machine 1 group. Models: semiautomatic with lever. Copper boiler in 1.3 litre capacity with thermostatic circuit. Motorised internal pump externally regulated, button switch mains water / tank water, quick-release tank.",
+          "specs": {
+            "Groups": "1",
+            "Boiler": "Copper, thermostatic circuit, 1.3 litre",
+            "Control": "Semiautomatic with lever",
+            "Special features": "Motorised internal pump, externally regulated; Button switch: mains water / tank water; Quick-release tank",
+            "Colors": "Steel"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2015/06/junior-elite.jpg",
+          "source_url": "https://www.bfcsrl.it/en/products/junior-elite/",
+          "seo_title": "Junior Elite | BFC srl",
+          "seo_description": "Espresso coffee machines 1 group. Lever model.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/bfc/0026_Junior_Elite.jpg"
+        },
+        {
+          "model": "Junior Extra",
+          "title": "Junior Extra | BFC srl",
+          "description_en": "Espresso coffee machine 1 group. Models: semiautomatic with lever. Copper boiler in 2 litre capacity with thermostatic circuit.",
+          "specs": {
+            "Groups": "1",
+            "Boiler": "Copper, thermostatic circuit, 2 litre",
+            "Control": "Semiautomatic with lever",
+            "Colors": "Steel"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2015/07/junior-extra.jpg",
+          "source_url": "https://www.bfcsrl.it/en/products/junior-extra/",
+          "seo_title": "Junior Extra | BFC srl",
+          "seo_description": "Espresso coffee machines 1 group. Lever model.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/bfc/0027_Junior_Extra.jpg"
+        },
+        {
+          "model": "Junior Extra TCI",
+          "title": "Junior Extra TCI | BFC srl",
+          "description_en": "Espresso coffee machine 1 group. Models: semiautomatic with lever. Copper boiler with thermostatic circuit, separate steam/hot-water boiler (T.C.I.), 1.3 & 0.8 litre.",
+          "specs": {
+            "Groups": "1",
+            "Boiler": "Copper, thermostatic circuit, separate steam/hot-water boiler (T.C.I.), 1.3 & 0.8 litre",
+            "Control": "Semiautomatic with lever",
+            "Colors": "Steel"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2015/07/junior-extra-tci.jpg",
+          "source_url": "https://www.bfcsrl.it/en/products/junior-extra-tci/",
+          "seo_title": "Junior Extra TCI | BFC srl",
+          "seo_description": "Espresso coffee machines 1 group. Lever model.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/bfc/0028_Junior_Extra_TCI.jpg"
+        },
+        {
+          "model": "Junior Extra TCI MP",
+          "title": "Junior Extra TCI MP | BFC srl",
+          "description_en": "Espresso coffee machine 1 group. Models: semiautomatic with lever. Copper boiler with thermostatic circuit, separate steam/hot-water boiler (T.C.I.), 1.3 & 0.8 litre. Motorised internal pump externally regulated, button switch mains water / tank water.",
+          "specs": {
+            "Groups": "1",
+            "Boiler": "Copper, thermostatic circuit, separate steam/hot-water boiler (T.C.I.), 1.3 & 0.8 litre",
+            "Control": "Semiautomatic with lever",
+            "Special features": "Motorised internal pump, externally regulated; Button switch: mains water / tank water",
+            "Colors": "Steel"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2015/07/junior-extra-tci-mp.jpg",
+          "source_url": "https://www.bfcsrl.it/en/products/junior-extra-tci-mp/",
+          "seo_title": "Junior Extra TCI MP | BFC srl",
+          "seo_description": "Espresso coffee machines 1 group. Lever model.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/bfc/0029_Junior_Extra_TCI_MP.jpg"
+        },
+        {
+          "model": "Perfetta",
+          "title": "Perfetta | BFC srl",
+          "description_en": "Espresso coffee machine 1 group. Models: semiautomatic with lever. Copper boiler in 0.8 litre capacity with thermostatic circuit.",
+          "specs": {
+            "Groups": "1",
+            "Boiler": "Copper, thermostatic circuit, 0.8 litre",
+            "Control": "Semiautomatic with lever",
+            "Colors": "Steel"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2015/07/perfetta.jpg",
+          "source_url": "https://www.bfcsrl.it/en/products/perfetta/",
+          "seo_title": "Perfetta | BFC srl",
+          "seo_description": "Espresso coffee machines 1 group. Lever model.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/bfc/0030_Perfetta.jpg"
+        }
+      ]
+    },
+    {
+      "group_name": "Coffee Grinder Dosers",
+      "group_name_vi": "Máy Xay Cà Phê Định Lượng (Grinder-Doser)",
+      "source_urls": [
+        "https://www.bfcsrl.it/en/products/",
+        "https://www.bfcsrl.it/product_category/macinadosatori/"
+      ],
+      "models": [
+        {
+          "model": "BFC 58E",
+          "title": "BFC 58E | BFC srl",
+          "description_en": "Strong and compact Electronic Coffee Grinder on-demand with Ø58mm flat burrs. Aluminum and steel construction. On-demand grinding system preserves coffee's aromatic qualities by grinding only needed doses. Continuous micrometric adjustment system for consistent grind uniformity. 500g bean hopper, removable output for easy cleaning, single dose delivery under 3 seconds, single/double-dose push-button dispensing, multilingual digital display, LED backlit capacitive controls with 7 color options.",
+          "specs": {
+            "Burrs": "Ø 58 mm flat",
+            "Motor power": "300W, 220-240V/50-60Hz",
+            "Grinding speed": "1400 g/min",
+            "Hopper capacity": "500g",
+            "Dosing type": "Single/double dose on-demand, push-button electronic",
+            "Dose time": "Single dose in under 3 seconds",
+            "Dimensions": "18 x 23 x 41 cm (H)",
+            "Weight": "8 kg"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2024/04/BFC-58E-470x665.jpg",
+          "source_url": "https://www.bfcsrl.it/en/products/bfc-58e/",
+          "seo_title": "BFC 58E | BFC srl",
+          "seo_description": "Electronic coffee grinder doser with display Burrs Ø 58 mm flat",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/bfc/0031_BFC_58E.jpg"
+        },
+        {
+          "model": "BFC 64A",
+          "title": "BFC 64A | BFC srl",
+          "description_en": "Strong and compact coffee grinder doser with Ø64mm flat burrs. Aluminum and steel body, 350W engine. Stepless micrometrical grinding adjustment ensures unmatched homogeneity of the grind. Automatically restarts grinding every 6 cycles and stops when the doser is full.",
+          "specs": {
+            "Burrs": "Ø 64 mm flat, stepless micrometric adjustment",
+            "Motor power": "350W, 220-240V/50-60Hz, 1400 rpm",
+            "Hopper capacity": "1.2 kg",
+            "Dosing type": "Automatic, restarts every 6 coffees, adjustable 5-9.5g",
+            "Dimensions": "21 x 38.5 x 59 cm (H)",
+            "Weight": "12.5 kg",
+            "Construction": "Aluminum and steel body"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2024/04/BFC-64A-438x665.jpg",
+          "source_url": "https://www.bfcsrl.it/en/products/bfc-64a/",
+          "seo_title": "BFC 64A | BFC srl",
+          "seo_description": "Coffeegrinder-Doser. Burrs Ø 64 mm flat.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/bfc/0032_BFC_64A.jpg"
+        },
+        {
+          "model": "BFC 64E",
+          "title": "BFC 64E | BFC srl",
+          "description_en": "Strong and compact Electronic Coffee Grinder on-demand with Ø64mm flat burrs. Aluminum and steel body, powerful engine. Grinds only the required coffee dose to maintain freshness. Continuous micrometric adjustment for consistent grind uniformity. 1.2kg bean container, removable output, single dose in under 2 seconds, single/double dose push-button dispensing, multilingual digital display with LED backlit capacitive controls (7 colors).",
+          "specs": {
+            "Burrs": "Ø 64 mm flat",
+            "Motor power": "400W, 220-240V/50-60Hz",
+            "Grinding speed": "1400 g/min",
+            "Hopper capacity": "1.2 kg",
+            "Dosing type": "Single/double dose on-demand, push-button electronic",
+            "Dimensions": "20 x 27 x 51 cm (H)",
+            "Weight": "12.5 kg"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2024/04/BFC-64E-451x665.jpg",
+          "source_url": "https://www.bfcsrl.it/en/products/bfc-64e/",
+          "seo_title": "BFC 64E | BFC srl",
+          "seo_description": "Electronic coffee grinder doser with display Burrs Ø 64 mm flat.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/bfc/0033_BFC_64E.jpg"
+        },
+        {
+          "model": "BFC 83A",
+          "title": "BFC 83A | BFC srl",
+          "description_en": "Strong and compact coffee grinder doser with Ø83mm flat burrs. Aluminum and steel body, 650W engine. Stepless micrometrical grinding adjustment for consistent results. Automatic restart every 6 coffees with auto-stop when full.",
+          "specs": {
+            "Burrs": "Ø 83 mm flat, continuously adjustable micrometric grinding",
+            "Motor power": "650W, 220-240V/50-60Hz",
+            "Grinding speed": "1400 g/min",
+            "Hopper capacity": "1.2 kg",
+            "Dosing type": "Automatic, restarts every 6 coffees, adjustable 5-9.5g",
+            "Dimensions": "37 x 23 x 62 cm (H)",
+            "Weight": "19 kg"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2024/04/BFC83A-414x665.jpg",
+          "source_url": "https://www.bfcsrl.it/en/products/bfc-83a/",
+          "seo_title": "BFC 83A | BFC srl",
+          "seo_description": "Coffeegrinder-Doser. Burrs Ø 83 mm flat.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/bfc/0034_BFC_83A.jpg"
+        },
+        {
+          "model": "BFC 83E",
+          "title": "BFC 83E | BFC srl",
+          "description_en": "Strong and compact Electronic Coffee Grinder on-demand with Ø83mm flat burrs. Aluminum and steel body, powerful 650W engine. Grinds only the required coffee dose to maintain freshness, continuous micrometric adjustment ensures consistent grind homogeneity. 1.2kg bean container, removable output, single dose supply in under 2 seconds, single/double dose push-button dispensing, multilingual digital display, LED backlit capacitive controls with 7 colors.",
+          "specs": {
+            "Burrs": "Ø 83 mm flat",
+            "Motor power": "650W, 220-240V/50-60Hz",
+            "Grinding speed": "1400 g/min",
+            "Hopper capacity": "1.2 kg",
+            "Dosing type": "Single/double dose on-demand, push-button electronic",
+            "Dimensions": "23 x 30 x 62 cm (H)",
+            "Weight": "19 kg"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2024/04/BFC-83E-394x665.jpg",
+          "source_url": "https://www.bfcsrl.it/en/products/83e/",
+          "seo_title": "BFC 83E | BFC srl",
+          "seo_description": "Electronic coffee grinder doser with display Burrs Ø 83 mm flat.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/bfc/0035_BFC_83E.jpg"
+        }
+      ]
+    }
+  ],
+  "total_model_count": 40,
+  "total_model_count_breakdown": "19 Traditional Machines + 2 Machine Lever + 9 Home/Office Range + 5 Coffee Grinder Dosers + 5 Accessories = 40 sản phẩm hiện hành của BFC srl.",
+  "removed_entries_note": "Đã loại bỏ nhóm 'Legacy / Orphaned Grinder Pages' (2 model E5P, E6P) khỏi file này vào 2026-07-19. Lý do: audit Google xác nhận E5P/E6P KHÔNG phải sản phẩm của BFC — đây là máy xay cà phê của hãng Ceado (một thương hiệu Ý khác), bị gán nhầm brand BFC ở lượt cào sitemap trước (do 2 trang /es/productos/e5p/ và /es/productos/e6p/ nằm trên domain bfcsrl.it nhưng thực chất là nội dung/dữ liệu Ceado bị trộn lẫn — không có bản tiếng Anh, không khớp với danh mục Coffee Grinder Dosers chính hãng). Trang chính thức https://www.bfcsrl.it/en/product_category/coffee-grinder-dosers/ chỉ liệt kê đúng 5 model máy xay của BFC: BFC 58E, BFC 64A, BFC 64E, BFC 83A, BFC 83E — cả 5 đều đã có trong nhóm 'Coffee Grinder Dosers' phía trên với đầy đủ title/specs/image_url/source_url thật. Tổng số model trong file giảm từ 42 xuống còn 40 (đúng bằng số liệu gốc trong data.json trước đây)."
+}

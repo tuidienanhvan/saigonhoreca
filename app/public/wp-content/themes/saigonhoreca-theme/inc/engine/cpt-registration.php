@@ -189,3 +189,51 @@ if (!function_exists('shr_flush_rewrite_on_theme_switch')) {
     }
 }
 add_action('after_switch_theme', 'shr_flush_rewrite_on_theme_switch');
+
+/**
+ * Auto-fix conflicting attachment slugs that overlap with product categories.
+ * When an image attachment has the exact same slug as a product category,
+ * WordPress canonical redirect might point to the image instead of the product list.
+ */
+add_action('admin_init', function () {
+    // Check if we already did this check recently to save DB queries
+    if (get_transient('sgh_slug_conflict_fixed')) {
+        return;
+    }
+
+    global $wpdb;
+    $taxonomies = ['product_category', 'product_cat'];
+    $terms = get_terms([
+        'taxonomy' => $taxonomies,
+        'hide_empty' => false
+    ]);
+
+    if (is_wp_error($terms) || empty($terms)) {
+        set_transient('sgh_slug_conflict_fixed', 1, DAY_IN_SECONDS);
+        return;
+    }
+
+    $fixed = false;
+    foreach ($terms as $t) {
+        $attachments = $wpdb->get_results($wpdb->prepare(
+            "SELECT ID, post_name FROM $wpdb->posts WHERE post_name = %s AND post_type = 'attachment'",
+            $t->slug
+        ));
+
+        foreach ($attachments as $att) {
+            $new_slug = $att->post_name . '-img';
+            $wpdb->update(
+                $wpdb->posts,
+                ['post_name' => $new_slug],
+                ['ID' => $att->ID]
+            );
+            $fixed = true;
+        }
+    }
+
+    if ($fixed) {
+        flush_rewrite_rules();
+    }
+    set_transient('sgh_slug_conflict_fixed', 1, DAY_IN_SECONDS);
+});
+

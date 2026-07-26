@@ -28,13 +28,23 @@
 }
 
 /* Premium 3D shimmering gold theme border with depth and animation */
-.sh-header::after {
+.sh-header__border {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    overflow: hidden;
+    z-index: 10;
+    pointer-events: none;
+}
+.sh-header__border::after {
     content: '';
     position: absolute;
     left: 0;
-    bottom: 0;
+    top: 0;
     width: 200%;
-    height: 2px;
+    height: 100%;
     background: linear-gradient(
         90deg,
         color-mix(in srgb, var(--gold, #d4af37) 20%, transparent) 0%,
@@ -52,7 +62,6 @@
         0 0 3px color-mix(in srgb, var(--gold, #d4af37) 50%, transparent);
     transform: translate3d(0, 0, 0);
     animation: sh-header-gold-flow 8s linear infinite;
-    z-index: 10;
 }
 
 @keyframes sh-header-gold-flow {

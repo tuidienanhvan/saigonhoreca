@@ -1,0 +1,627 @@
+{
+  "research_date": "2026-07-18",
+  "source_note": "Nguồn: website chính hãng Winterhalter Gastronom GmbH (Đức), bản tiếng Anh www.winterhalter.com — fetch trực tiếp từng trang sản phẩm (WebFetch) ngày 18/07/2026, bổ sung cho phiên nghiên cứu 13/07/2026 đã ghi trong data.json. catalog.winterhalter.com vẫn KHÔNG truy cập được nội dung chi tiết (cổng phụ trợ, không phải catalog sản phẩm chính — đã thử lại, xác nhận như phiên trước). KHÔNG bịa số liệu: mọi model/spec dưới đây lấy nguyên văn từ trang sản phẩm sống, có source_url kèm theo. Winterhalter là hãng đặt hàng theo cấu hình (tailor-made) ở nhiều dòng (UC Series, MTR, CTR, MTF) — trang web công bố khoảng công suất (range) và kích thước module thay vì model number cứng cho từng cấu hình, đúng bản chất sản phẩm B2B đặt hàng riêng, KHÔNG phải do crawl thiếu sót. Ảnh: đã tải lại 8 ảnh sản phẩm thật với User-Agent trình duyệt + Referer (server trả 403 nếu không có 2 header này) và xác nhận HTTP 200 cho tất cả; các model không tìm được ảnh thật (STF, UF-Series, GS 630, toàn bộ Water Treatment) để trống image_url thay vì đoán — trang tương ứng chỉ dùng SVG icon minh hoạ ứng dụng (glasses/dishes/cutlery...), không phải ảnh sản phẩm thật. Meta description: phần lớn trang Winterhalter KHÔNG set thẻ <meta name=\"description\"> riêng (giống Precision-UK) — để trống theo đúng dữ liệu thật, không suy đoán.",
+  "brand": "Winterhalter-Germany",
+  "official_site": "https://www.winterhalter.com/",
+  "official_catalog_portal": "https://catalog.winterhalter.com/ — vẫn không truy cập được nội dung chi tiết (không phải catalog sản phẩm, có vẻ là cổng B2B/đại lý cần đăng nhập riêng).",
+  "groups": [
+    {
+      "group_name": "Undercounter Warewashers",
+      "group_name_vi": "Máy Rửa Chén Bát Đặt Gầm Bàn (Undercounter)",
+      "source_urls": [
+        "https://www.winterhalter.com/products/undercounter-warewashers/",
+        "https://www.winterhalter.com/products/undercounter-warewashers/uc-series/",
+        "https://www.winterhalter.com/products/undercounter-warewashers/u50/"
+      ],
+      "models": [
+        {
+          "model": "UC Series",
+          "title": "Undercounter warewashers - UC Series",
+          "description_en": "The UC Series is Winterhalter's premium, tailor-made undercounter warewasher family, available in sizes S, M, L and XL and configured individually as an all-in-one system for glasses, dishes, cutlery or a bistro mix. Each configuration is optimised for a specific application (fine glassware, diverse dishes, mixed bistro items, or cutlery) and can include specialised wash systems such as an integrated bottle-washing programme (8 bottles hygienically cleaned per cycle in under a minute) or a reusable-plastic-cup programme (up to 25 cups washed in under two minutes). The UC Series cuts water consumption by up to 25% compared with the previous generation, uses VarioPower variable wash-pressure regulation, offers four standard wash programmes per variant, and is operated via a Smart Touch Display with gesture control. Manufactured in Germany.",
+          "specs": {
+            "Kích cỡ": "S / M / L / XL (kích thước khoang/rổ chi tiết chỉ có trong brochure PDF tải về, không công bố trên web)",
+            "Biến thể": "UC Glasswasher, UC Dishwasher, UC Bistro Washer, UC Cutlery Washer",
+            "Chương trình rửa": "4 chương trình chuẩn mỗi biến thể",
+            "Tính năng đặc biệt": "VarioPower (áp lực rửa biến thiên); tuỳ chọn hệ rửa chai (8 chai/chu trình, dưới 1 phút); tuỳ chọn hệ rửa ly nhựa tái sử dụng (tới 25 ly/dưới 2 phút); giảm tới 25% tiêu thụ nước so với đời trước; màn hình Smart Touch Display điều khiển cảm ứng/cử chỉ",
+            "Xử lý nước tích hợp": "Có tuỳ chọn tích hợp sẵn AT Excellence-i (thẩm thấu ngược) trong bản UC-S/UC-M"
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "image_url": "https://www.winterhalter.com/fileadmin/user_upload/Website/NO-INDEX/U50/undercounter-dishwasher-uc-winterhalter-int.png",
+          "source_url": "https://www.winterhalter.com/products/undercounter-warewashers/uc-series/",
+          "seo_title": "Undercounter warewashers - UC Series",
+          "seo_description": "Undercounter warewashers from Winterhalter perfectly wash glasses, dishes & cutlery. Fits perfectly into the counter area✓ Brilliant wash results✓ Get information now!",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/winterhalter-germany/0001_UC_Series.png"
+        },
+        {
+          "model": "U50",
+          "title": "U50 Undercounter Warewasher",
+          "description_en": "The U50 is Winterhalter's standardised, upscale undercounter warewasher — \"the smart way to wash\" — offering first-class cleanliness and hygiene with CONNECTED WASH technology for automatic analysis and evaluation of all important machine data. It features a double-skinned stainless steel housing with enclosed insulation, a high-performance wash system with elliptical wash fields, a triple-stage multi-filtration system, an optional high-temperature wash programme, RemoteServices remote diagnostics, and single-button, language-neutral operation. Manufactured in Asia, developed to German quality standards; the note on the product page states availability may vary by country.",
+          "specs": {
+            "Chương trình rửa": "2 (Standard, HighTemp)",
+            "Công suất lý thuyết": "30 rổ/giờ (Standard); 20 rổ/giờ (HighTemp) — tới 420 đĩa/giờ",
+            "Kích thước rổ": "500 x 500 mm",
+            "Dung tích bồn": "15.3 lít",
+            "Lượng nước xả": "2.4 lít/chu trình (Standard); 3.4 lít/chu trình (HighTemp)",
+            "Nhiệt độ bồn": "62°C (Standard); 66°C (HighTemp)",
+            "Nhiệt độ nước xả": "85°C",
+            "Nhiệt độ nước cấp tối đa": "60°C",
+            "Công suất bơm tuần hoàn": "0.5 kW",
+            "Độ ồn": "Tối đa 59 dB(A)",
+            "Kích thước đóng gói": "720 x 712 x 1020 mm",
+            "Trọng lượng": "66 kg (tịnh); 76 kg (bì)",
+            "Chuẩn bảo vệ": "IPX3",
+            "Áp lực nước yêu cầu": "Tối thiểu 1 bar"
+          },
+          "origin": "Thailand (sản xuất) — thiết kế theo tiêu chuẩn Đức",
+          "heat_source": "electric",
+          "image_url": "https://www.winterhalter.com/fileadmin/user_upload/Website/NO-INDEX/U50/undercounter-dishwasher-u50-winterhalter-int.png",
+          "source_url": "https://www.winterhalter.com/products/undercounter-warewashers/u50/",
+          "seo_title": "U50 Undercounter Warewasher | Winterhalter",
+          "seo_description": "The smart undercounter warewasher for first-class cleanliness and hygiene with outstanding value for money. Learn more now!",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/winterhalter-germany/0002_U50.png"
+        }
+      ]
+    },
+    {
+      "group_name": "Passthrough / Hood-type Dishwashers",
+      "group_name_vi": "Máy Rửa Chén Bát Kiểu Vòm/Hood (Pass-through)",
+      "source_urls": [
+        "https://www.winterhalter.com/products/passthrough-dishwasher/pt-series/",
+        "https://www.winterhalter.com/products/passthrough-dishwasher/pt-utensil/"
+      ],
+      "models": [
+        {
+          "model": "PT-M",
+          "title": "PT-M passthrough dishwasher",
+          "description_en": "Compact passthrough (hood-type) dishwasher for dishes, from the PT Series. Delivers first-class wash results with two internal S-shaped wash fields, quadruple filtration, VarioPower variable wash pressure, a Smart Touch Display with language-neutral interface, standard EnergyLight waste-water heat recovery (up to 10% energy savings), optional EnergyPlus exhaust-air recovery (up to 15% savings) and optional ClimatePlus heat pump (up to 35% energy reduction). Certified to DIN EN 17735 hygiene standard.",
+          "specs": {
+            "Kích thước rổ": "500 x 500 mm",
+            "Công suất": "77 rổ/giờ ở chương trình rửa nhanh (short programme)",
+            "Tiêu thụ nước xả": "từ 2.2 lít/chu trình (ít hơn 0.4 lít nếu có hệ xả chủ động tuỳ chọn)",
+            "Lọc": "4 lớp (quadruple filtration)",
+            "Thu hồi nhiệt": "EnergyLight (tiêu chuẩn, tiết kiệm tới 10%); EnergyPlus (tuỳ chọn, tới 15%); ClimatePlus heat pump (tuỳ chọn, tới 35%)"
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "image_url": "https://www.winterhalter.com/fileadmin/user_upload/Website/Corporate/products/warewashers/passtrough-dishwashers/winterhalter-passthrough-dishwasher-pt-series-restaurant.jpg",
+          "source_url": "https://www.winterhalter.com/products/passthrough-dishwasher/pt-series/",
+          "seo_title": "Passthrough dishwasher for first-class wash results",
+          "seo_description": "Clean, reliable and efficient washing. Winterhalter passthrough dishwashers can remove the most stubborn dirt. Take a look for yourself!",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/winterhalter-germany/0003_PT-M.jpg"
+        },
+        {
+          "model": "PT-L",
+          "title": "PT-L passthrough dishwasher (extra-wide)",
+          "description_en": "Extra-wide passthrough (hood-type) dishwasher from the PT Series, designed for dishes, large plates and trays. Shares the PT Series' two internal S-shaped wash fields, quadruple filtration, VarioPower, Smart Touch Display, EnergyLight heat recovery (standard) and optional EnergyPlus / ClimatePlus energy-saving systems, plus DIN EN 17735 hygiene certification.",
+          "specs": {
+            "Kích thước rổ": "500 x 600 mm",
+            "Công suất": "77 rổ/giờ ở chương trình rửa nhanh (short programme)",
+            "Tiêu thụ nước xả": "từ 2.2 lít/chu trình (ít hơn 0.4 lít nếu có hệ xả chủ động tuỳ chọn)",
+            "Lọc": "4 lớp (quadruple filtration)",
+            "Thu hồi nhiệt": "EnergyLight (tiêu chuẩn); EnergyPlus và ClimatePlus (tuỳ chọn)"
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "image_url": "https://www.winterhalter.com/fileadmin/user_upload/Website/Corporate/products/warewashers/passtrough-dishwashers/winterhalter-passthrough-dishwasher-pt-series-restaurant.jpg",
+          "source_url": "https://www.winterhalter.com/products/passthrough-dishwasher/pt-series/",
+          "seo_title": "Passthrough dishwasher for first-class wash results",
+          "seo_description": "Clean, reliable and efficient washing. Winterhalter passthrough dishwashers can remove the most stubborn dirt. Take a look for yourself!",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/winterhalter-germany/0004_PT-L.jpg"
+        },
+        {
+          "model": "PT-L Utensil",
+          "title": "PT Utensil (PT-L) hybrid passthrough dishwasher",
+          "description_en": "Hybrid passthrough dishwasher from the PT Utensil line, washing both utensils and dishes with first-class results. Offers three wash programmes: standard dishes (2-minute contact time), regular utensils (4 minutes) and heavily soiled utensils (6 minutes). Includes quadruple filtration, variable pressure adjustment (VarioPower), waste-water heat recovery, and integrated detergent/rinse-aid dosing devices.",
+          "specs": {
+            "Chiều cao nạp thông thoáng": "440 mm",
+            "Kích thước máy (W x D x H)": "735 x 750 x 1,535 mm",
+            "Chiều cao làm việc": "850 mm (tuỳ chọn 900 mm)",
+            "Kích thước rổ": "500 x 600 mm / 500 x 500 mm",
+            "Chương trình rửa": "Dishes 2 phút; Utensil thường 4 phút; Utensil bẩn nặng 6 phút"
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "image_url": "https://www.winterhalter.com/fileadmin/user_upload/Website/Corporate/products/warewashers/passtrough-dishwashers/pt-utensil/winterhalter-passthrough-dishwasher-pt-l-utensil.jpg",
+          "source_url": "https://www.winterhalter.com/products/passthrough-dishwasher/pt-utensil/",
+          "seo_title": "PT Utensil passthrough dishwasher",
+          "seo_description": "The PT Utensil passthrough dishwasher combines the washing of dishes and utensils in one machine. For first-class wash results every time. Find out more!",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/winterhalter-germany/0005_PT-L_Utensil.jpg"
+        },
+        {
+          "model": "PT-XL Utensil",
+          "title": "PT Utensil (PT-XL) hybrid passthrough dishwasher",
+          "description_en": "Larger variant of the PT Utensil hybrid passthrough dishwasher, with taller clear entry height for bigger utensils and GN-2/1 trays, while retaining the same three wash programmes, quadruple filtration and heat-recovery features as PT-L Utensil.",
+          "specs": {
+            "Chiều cao nạp thông thoáng": "560 mm",
+            "Kích thước máy (W x D x H)": "735 x 750 x 1,655 mm",
+            "Chiều cao làm việc": "850 mm (tuỳ chọn 900 mm)",
+            "Kích thước rổ": "500 x 600 mm / 500 x 500 mm; hỗ trợ khay GN-2/1",
+            "Chương trình rửa": "Dishes 2 phút; Utensil thường 4 phút; Utensil bẩn nặng 6 phút"
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "image_url": "https://www.winterhalter.com/fileadmin/user_upload/Website/Corporate/products/warewashers/passtrough-dishwashers/pt-utensil/winterhalter-passthrough-dishwasher-pt-xl-utensil.jpg",
+          "source_url": "https://www.winterhalter.com/products/passthrough-dishwasher/pt-utensil/",
+          "seo_title": "PT Utensil passthrough dishwasher",
+          "seo_description": "The PT Utensil passthrough dishwasher combines the washing of dishes and utensils in one machine. For first-class wash results every time. Find out more!",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/winterhalter-germany/0006_PT-XL_Utensil.jpg"
+        }
+      ]
+    },
+    {
+      "group_name": "Utensil Washers",
+      "group_name_vi": "Máy Rửa Xoong Nồi / Dụng Cụ Bếp",
+      "source_urls": [
+        "https://www.winterhalter.com/products/utensil-washers/",
+        "https://www.winterhalter.com/products/utensil-washers/gs-630/",
+        "https://www.winterhalter.com/products/utensil-washers/uf-series/"
+      ],
+      "note": "Đã có 3 model (GS 630, PT Utensil, UF-Series) từ phiên nghiên cứu 13/07/2026 trong data.json. Phiên này (18/07/2026) fetch lại từng trang để xác nhận và bổ sung: tách UF-Series thành 3 model con thật (UF-M/UF-L/UF-XL, mỗi model có kích thước riêng công bố trên trang), xác nhận GS 630 là máy rửa dụng cụ nhỏ nhất thế giới hiện có bản đặt gầm bàn. PT Utensil đã tách vào nhóm Passthrough ở trên vì đó thực chất là dòng PT (hybrid), theo đúng cấu trúc site — nhưng vẫn giữ trong mục Utensil Washers vì trang /utensil-washers/ liệt kê nó chung. Không tìm được ảnh sản phẩm thật cho GS 630 và UF-Series trên web (chỉ có SVG icon minh hoạ) — để trống image_url thay vì đoán.",
+      "models": [
+        {
+          "model": "GS 630",
+          "title": "GS 630 utensil washer",
+          "description_en": "The world's smallest utensil washer, compact and powerful, designed for small kitchens with limited space. Features reversing wash arms and handles baking sheets, GN containers, Euronorm boxes, trays and filters, as well as dishes, glasses and cutlery. Available in an undercounter version. Includes a high-pressure water system, fourfold wash-water filtration, single-button colour-coded operation, optional cold-water pre-wash, temperature switching (65–85°C), automatic self-cleaning programme and Thermostopp temperature monitoring.",
+          "specs": {
+            "Kích thước máy (H x W x D)": "820 x 870 x 600 mm",
+            "Chamber (khoang rửa)": "600 x 465 mm (theo phiên nghiên cứu trước)",
+            "Chiều cao nạp thông thoáng": "400 mm",
+            "Công suất": "38 / 29 / 12 rổ/giờ (lý thuyết, tuỳ chương trình)",
+            "Dung tích bồn": "25 lít",
+            "Cấu hình": "Free-standing hoặc đặt gầm bàn (undercounter)",
+            "Lọc": "4 lớp (quadruple filtration)",
+            "Nhiệt độ xả": "Chuyển đổi 65–85°C",
+            "Tính năng": "Cánh rửa đảo chiều (reversing wash arms), Thermostopp giám sát nhiệt độ, tự làm sạch tự động"
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "image_url": "https://www.winterhalter.com/fileadmin/user_upload/Website/Corporate/products/warewashers/utensil-washers/gs630/utensil-washer-gs630-winterhalter-desktop-.png",
+          "source_url": "https://www.winterhalter.com/products/utensil-washers/gs-630/",
+          "seo_title": "GS 630 utensil washer | Winterhalter",
+          "seo_description": "The smallest utensil washer in the world for small kitchens, counters and limited space. Hygienic cleanliness✓ Low space requirements✓ Get information now!",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/winterhalter-germany/0007_GS_630.png"
+        },
+        {
+          "model": "UF-M",
+          "title": "UF-M utensil washer",
+          "description_en": "Compact utensil washer suitable for all standard utensils, sized for small to medium-sized items — ideal for bakers, butchers and restaurant owners. Part of the UF Series with a high-performance wash system (up to 1 bar water pressure), ergonomic fold-back door, optional heat recovery, pre-soaking capability, touchscreen controls and integrated filtration.",
+          "specs": {
+            "Chiều cao nạp thông thoáng": "640 mm",
+            "Kích thước rổ (trong)": "612 x 672 mm",
+            "Kích thước máy đóng (W x D x H)": "775 x 870 x 1,720 mm (1,910 mm nếu có tuỳ chọn Energy)"
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "image_url": "https://www.winterhalter.com/fileadmin/user_upload/Website/Corporate/products/warewashers/utensil-washers/uf-series/utensil-washer-uf-m-winterhalter.jpg",
+          "source_url": "https://www.winterhalter.com/products/utensil-washers/uf-series/",
+          "seo_title": "UF Series utensil washers",
+          "seo_description": "The UF Series utensil washers from Winterhalter impress with their cleaning power and reliability. Find the right model for you!",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/winterhalter-germany/0008_UF-M.jpg"
+        },
+        {
+          "model": "UF-L",
+          "title": "UF-L utensil washer (extra entry height)",
+          "description_en": "Utensil washer with additional entry height to accommodate large-format baking trays, specifically designed for bakers. Shares the UF Series' wash system, fold-back door, optional heat recovery, pre-soak and touchscreen controls.",
+          "specs": {
+            "Chiều cao nạp thông thoáng": "800 mm",
+            "Kích thước rổ (trong)": "612 x 672 mm",
+            "Kích thước máy đóng (W x D x H)": "775 x 870 x 1,880 mm (2,070 mm nếu có tuỳ chọn Energy)"
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "image_url": "https://www.winterhalter.com/fileadmin/user_upload/Website/Corporate/products/warewashers/utensil-washers/uf-series/utensil-washer-uf-l-winterhalter.jpg",
+          "source_url": "https://www.winterhalter.com/products/utensil-washers/uf-series/",
+          "seo_title": "UF Series utensil washers",
+          "seo_description": "The UF Series utensil washers from Winterhalter impress with their cleaning power and reliability. Find the right model for you!",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/winterhalter-germany/0009_UF-L.jpg"
+        },
+        {
+          "model": "UF-XL",
+          "title": "UF-XL utensil washer (large capacity)",
+          "description_en": "Large-capacity utensil washer for large and bulky utensils, ideal for bakers, butchers and restaurant owners. The largest chamber in the UF Series, with the same high-performance wash system, ergonomic door, optional heat recovery and touchscreen controls.",
+          "specs": {
+            "Chiều cao nạp thông thoáng": "800 mm",
+            "Kích thước rổ (trong)": "1,305 x 672 mm",
+            "Kích thước máy đóng (W x D x H)": "1,468 x 870 x 1,880 mm (2,070 mm nếu có tuỳ chọn Energy)"
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "image_url": "https://www.winterhalter.com/fileadmin/user_upload/Website/Corporate/products/warewashers/utensil-washers/uf-series/utensil-washer-uf-xl-winterhalter.jpg",
+          "source_url": "https://www.winterhalter.com/products/utensil-washers/uf-series/",
+          "seo_title": "UF Series utensil washers",
+          "seo_description": "The UF Series utensil washers from Winterhalter impress with their cleaning power and reliability. Find the right model for you!",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/winterhalter-germany/0010_UF-XL.jpg"
+        }
+      ]
+    },
+    {
+      "group_name": "Rack Conveyor Dishwashers",
+      "group_name_vi": "Máy Rửa Băng Tải Kiểu Rổ (Rack Conveyor)",
+      "source_urls": [
+        "https://www.winterhalter.com/products/rack-conveyor-dishwashers/",
+        "https://www.winterhalter.com/products/multi-tank-rack-conveyor-dishwasher-mtr/",
+        "https://www.winterhalter.com/products/ctr-compact-rack-conveyor-dishwasher/",
+        "https://www.winterhalter.com/my-en/products/rack-conveyor-dishwashers-c50/"
+      ],
+      "models": [
+        {
+          "model": "C50",
+          "title": "C50 Rack Conveyor Dishwasher",
+          "description_en": "Rack conveyor dishwasher achieving up to 260 racks per hour at three adjustable speed levels, with compact dimensions and low space requirements. Standard tank heating power is 18 kW; an optional HighTemp retrofit kit raises tank heating to 27 kW and tank water temperature to 73°C. The boiler heats independently of site water pressure (from 1.5 bar) at a stable 27 kW for consistent rinse quality. Individual wash zones activate only when a basket is present, saving water, power, detergent and rinse aid. Includes a fast-drainage programme (full tank drained in about 5 minutes) and a tank refill programme (drain + refill in about 15 minutes). Available in 2 basic versions — single rinse and dual rinse (dual rinse adds a pump rinse from a separate tank for better rinse water quality); modular system with different configuration and installation options. Display is language-neutral with colour-coded pictograms.",
+          "specs": {
+            "Công suất tối đa": "260 rổ/giờ (3 mức tốc độ điều chỉnh)",
+            "Công suất gia nhiệt bồn": "18 kW (tiêu chuẩn); nâng cấp tuỳ chọn HighTemp lên 27 kW",
+            "Nhiệt độ bồn (HighTemp)": "73°C",
+            "Công suất gia nhiệt boiler": "27 kW ổn định, độc lập với áp lực nước cấp (từ 1.5 bar)",
+            "Phiên bản": "Single rinse hoặc Dual rinse (dual rinse có bơm rinse riêng từ bồn tách biệt, chất lượng nước xả tốt hơn)",
+            "Chương trình xả nhanh": "Xả toàn bộ nước bồn trong khoảng 5 phút",
+            "Chương trình thay nước bồn": "Xả + nạp lại trong khoảng 15 phút",
+            "Kích hoạt vùng thông minh": "Chỉ kích hoạt zone khi có rổ, tiết kiệm nước/điện/hoá chất",
+            "Kích thước máy, kích thước rổ, dung tích bồn, tiêu thụ nước/chu trình, thông số điện": "Không công bố trên trang sản phẩm — cần liên hệ đại lý/brochure PDF địa phương hoá"
+          },
+          "origin": "Not specified on product page",
+          "heat_source": "electric",
+          "image_url": "https://www.winterhalter.com/fileadmin/user_upload/Website/Malaysia/products/warewashers/conveyor-dishwashers/c50/winterhalter-rack-conveyor-dishwasher-c50-desktop.png",
+          "source_url": "https://www.winterhalter.com/my-en/products/rack-conveyor-dishwashers-c50/",
+          "seo_title": "Rack conveyor dishwasher C50 – Wash at top speeds",
+          "seo_description": "Winterhalter rack conveyor dishwashers can be used flexibly in restaurants, hotels, dining halls and canteens. ✓ Fast washing ✓ Maximum flexibility. Find out more now!",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/winterhalter-germany/0031_C50.png",
+          "note": "Model riêng cho thị trường Đông Nam Á/Malaysia (site my-en.winterhalter.com), KHÔNG có trên site global winterhalter.com — trang có brochure địa phương hoá cho Indonesia, Việt Nam, Thái Lan. Trang sản phẩm KHÔNG công bố bảng kích thước máy, kích thước rổ, dung tích bồn, tiêu thụ nước/chu trình hay thông số điện chi tiết — để trống/ghi chú thay vì suy đoán, đúng quy tắc không bịa dữ liệu."
+        },
+        {
+          "model": "MTR S",
+          "title": "MTR S multi-tank rack conveyor dishwasher",
+          "description_en": "Modular rack conveyor dishwasher from the MT Series, built for variable wash items and fluctuating volumes. Features rack-controlled zone activation, hygiene mode with automatic speed reduction, active dirt removal, triple rinse, CONNECTED WASH monitoring, optional EnergyLight/EnergyPlus heat recovery, optional ClimatePlus heat pump, built-in solid dosing, integrated reverse osmosis option and 180° swivelling hygiene doors. Certified to DIN EN 17735.",
+          "specs": {
+            "Công suất tối đa": "190 rổ/giờ",
+            "Suất ăn/giờ ước tính": "~200",
+            "Số bồn (tanks)": "2",
+            "Chiều dài module": "Vùng nạp 320mm; vùng rửa chính/rửa xả 840mm; vùng tiền rửa nhỏ 350mm hoặc lớn 840mm; máy sấy 840mm (thẳng), 90°, 180°",
+            "Chiều cao máy (có heat pump)": "2,195 mm"
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "image_url": "https://www.winterhalter.com/fileadmin/user_upload/Website/Corporate/products/warewashers/conveyor-dishwashers/rack-conveyor-dishwashers/mtr/winterhalter-korbtransportspuelmaschine-mtr.png",
+          "source_url": "https://www.winterhalter.com/products/multi-tank-rack-conveyor-dishwasher-mtr/",
+          "seo_title": "The rack conveyor dishwasher for your commercial kitchen",
+          "seo_description": "Our MTR rack conveyor dishwashers offer hygienic wash results and economic washing processes for your commercial kitchen.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/winterhalter-germany/0011_MTR_S.png"
+        },
+        {
+          "model": "MTR M",
+          "title": "MTR M multi-tank rack conveyor dishwasher",
+          "description_en": "Mid-size configuration of the MTR modular rack conveyor dishwasher family — same MT Series feature set (rack-controlled zone activation, hygiene mode, triple rinse, CONNECTED WASH, optional heat recovery/heat pump, integrated reverse osmosis option), sized for higher throughput than MTR S.",
+          "specs": {
+            "Công suất tối đa": "275 rổ/giờ",
+            "Suất ăn/giờ ước tính": "~300",
+            "Số bồn (tanks)": "3"
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "image_url": "https://www.winterhalter.com/fileadmin/user_upload/Website/Corporate/products/warewashers/conveyor-dishwashers/rack-conveyor-dishwashers/mtr/winterhalter-korbtransportspuelmaschine-mtr.png",
+          "source_url": "https://www.winterhalter.com/products/multi-tank-rack-conveyor-dishwasher-mtr/",
+          "seo_title": "The rack conveyor dishwasher for your commercial kitchen",
+          "seo_description": "Our MTR rack conveyor dishwashers offer hygienic wash results and economic washing processes for your commercial kitchen.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/winterhalter-germany/0012_MTR_M.png"
+        },
+        {
+          "model": "MTR L",
+          "title": "MTR L multi-tank rack conveyor dishwasher",
+          "description_en": "Largest standard configuration of the MTR modular rack conveyor dishwasher family, for high-volume commercial kitchens, hotels and mass catering. Shares the full MT Series feature set.",
+          "specs": {
+            "Công suất tối đa": "355 rổ/giờ",
+            "Suất ăn/giờ ước tính": "~400",
+            "Số bồn (tanks)": "4",
+            "Chiều dài tối thiểu": "2,000 mm (theo phiên nghiên cứu trước, cấu hình cơ bản)"
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "image_url": "https://www.winterhalter.com/fileadmin/user_upload/Website/Corporate/products/warewashers/conveyor-dishwashers/rack-conveyor-dishwashers/mtr/winterhalter-korbtransportspuelmaschine-mtr.png",
+          "source_url": "https://www.winterhalter.com/products/multi-tank-rack-conveyor-dishwasher-mtr/",
+          "seo_title": "The rack conveyor dishwasher for your commercial kitchen",
+          "seo_description": "Our MTR rack conveyor dishwashers offer hygienic wash results and economic washing processes for your commercial kitchen.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/winterhalter-germany/0013_MTR_L.png"
+        },
+        {
+          "model": "CTR M",
+          "title": "CTR M compact rack conveyor dishwasher",
+          "description_en": "Compact rack conveyor dishwasher offering rapid wash speed in minimal space, with modular configurability. Built to DIN SPEC 10534 hygiene standard, with item-controlled zone activation, speed-dependent rinse water adjustment, dual rinse (pumped + fresh water), heat recovery, Smart Touch Display with traffic-light hygiene status, CONNECTED WASH and hygiene mode with automatic speed reduction. Made in Switzerland.",
+          "specs": {
+            "Công suất": "Tới 195 rổ/giờ",
+            "Số bồn (tanks)": "1 hoặc 2",
+            "Chiều dài": "Từ 1,400 mm",
+            "Suất ăn phục vụ": "100–400 diners",
+            "Tiêu thụ nước": "Tối thiểu 130 lít/giờ khi xả",
+            "Cửa": "Cửa vệ sinh mở 180°"
+          },
+          "origin": "Switzerland",
+          "heat_source": "electric",
+          "image_url": "https://www.winterhalter.com/fileadmin/user_upload/Website/Corporate/products/warewashers/conveyor-dishwashers/rack-conveyor-dishwashers/ctr/winterhalter-korbtransportspuelmaschine-ctr.png",
+          "source_url": "https://www.winterhalter.com/products/ctr-compact-rack-conveyor-dishwasher/",
+          "seo_title": "CTR compact rack conveyor dishwasher – excellent performance",
+          "seo_description": "Winterhalter compact rack conveyor dishwasher for perfect cleanliness and hygiene. Compact size✓ Flexible system✓ Perfect wash results✓ Get information now!",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/winterhalter-germany/0014_CTR_M.png"
+        },
+        {
+          "model": "CTR L",
+          "title": "CTR L compact rack conveyor dishwasher",
+          "description_en": "Larger configuration of the CTR compact rack conveyor dishwasher, adding an extra tank for higher hygiene/rinse performance while retaining the compact footprint of the CTR family. Made in Switzerland.",
+          "specs": {
+            "Công suất": "Tới 195 rổ/giờ",
+            "Số bồn (tanks)": "2 hoặc 3",
+            "Chiều dài": "Từ 1,600 mm",
+            "Suất ăn phục vụ": "100–400 diners",
+            "Tiêu thụ nước": "Tối thiểu 130 lít/giờ khi xả"
+          },
+          "origin": "Switzerland",
+          "heat_source": "electric",
+          "image_url": "https://www.winterhalter.com/fileadmin/user_upload/Website/Corporate/products/warewashers/conveyor-dishwashers/rack-conveyor-dishwashers/ctr/winterhalter-korbtransportspuelmaschine-ctr.png",
+          "source_url": "https://www.winterhalter.com/products/ctr-compact-rack-conveyor-dishwasher/",
+          "seo_title": "CTR compact rack conveyor dishwasher – excellent performance",
+          "seo_description": "Winterhalter compact rack conveyor dishwasher for perfect cleanliness and hygiene. Compact size✓ Flexible system✓ Perfect wash results✓ Get information now!",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/winterhalter-germany/0015_CTR_L.png"
+        }
+      ]
+    },
+    {
+      "group_name": "Flight-Type Dishwashers (Conveyor / MT Series family)",
+      "group_name_vi": "Máy Rửa Băng Tải Kiểu Flight (Không Rổ)",
+      "source_urls": [
+        "https://www.winterhalter.com/products/multi-tank-flight-type-dishwasher-mtf/",
+        "https://www.winterhalter.com/products/conveyor-dishwashers/"
+      ],
+      "models": [
+        {
+          "model": "MTF M",
+          "title": "MTF M multi-tank flight-type dishwasher",
+          "description_en": "Modular flight-type (rackless conveyor) dishwasher from the MT Series, built for consistent daily operations with standardised items at high volume. Features hygiene mode with automatic speed reduction, triple rinse with heat recovery, item-controlled zone activation, CONNECTED WASH digital monitoring, built-in solid dosing (SPI) option, integrated reverse osmosis option, Smart Touch Display and 180° swivelling hygiene doors. Certified to DIN EN 17735.",
+          "specs": {
+            "Số bồn (tanks)": "3",
+            "Suất ăn/giờ": "~350",
+            "Đĩa/giờ tối đa": "4,500",
+            "Vùng nạp": "750 / 950 / 1,150 / 1,350 mm",
+            "Vùng ra": "900 / 1,200 / 1,500 / 1,800 mm",
+            "Chiều dài module chuẩn": "840 mm (mỗi vùng tiền rửa/rửa chính/xả/sấy/trung hoà)",
+            "Chiều cao máy (có heat pump)": "2,195 mm"
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "image_url": "https://www.winterhalter.com/fileadmin/user_upload/Website/Corporate/products/warewashers/conveyor-dishwashers/mtf/winterhalter-bandspuelmaschine-mtf-overview.png",
+          "source_url": "https://www.winterhalter.com/products/multi-tank-flight-type-dishwasher-mtf/",
+          "seo_title": "Multi-tank flight-type dishwasher MTF | Winterhalter",
+          "seo_description": "Our MTF flight-type dishwasher offers you maximum hygiene safety with high economic efficiency in your commercial kitchen.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/winterhalter-germany/0016_MTF_M.png"
+        },
+        {
+          "model": "MTF L",
+          "title": "MTF L multi-tank flight-type dishwasher",
+          "description_en": "Mid-large configuration of the MTF flight-type dishwasher family, adding a tank for higher throughput while retaining the full MT Series feature set (hygiene mode, triple rinse, CONNECTED WASH, item-controlled zones, optional integrated reverse osmosis).",
+          "specs": {
+            "Số bồn (tanks)": "4",
+            "Suất ăn/giờ": "~450",
+            "Đĩa/giờ tối đa": "5,900",
+            "Chiều dài module chuẩn": "840 mm mỗi vùng; cấu hình lớn nhất dài khoảng 11m (theo phiên nghiên cứu trước)"
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "image_url": "https://www.winterhalter.com/fileadmin/user_upload/Website/Corporate/products/warewashers/conveyor-dishwashers/mtf/winterhalter-bandspuelmaschine-mtf-overview.png",
+          "source_url": "https://www.winterhalter.com/products/multi-tank-flight-type-dishwasher-mtf/",
+          "seo_title": "Multi-tank flight-type dishwasher MTF | Winterhalter",
+          "seo_description": "Our MTF flight-type dishwasher offers you maximum hygiene safety with high economic efficiency in your commercial kitchen.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/winterhalter-germany/0017_MTF_L.png"
+        },
+        {
+          "model": "MTF XL",
+          "title": "MTF XL multi-tank flight-type dishwasher",
+          "description_en": "Largest standard configuration of the MTF flight-type dishwasher family, for the highest-volume commercial kitchens (up to 8,000 plates/hour). Shares the full MT Series feature set including hygiene mode, triple rinse with heat recovery, CONNECTED WASH, built-in solid dosing option and integrated reverse osmosis option.",
+          "specs": {
+            "Số bồn (tanks)": "5",
+            "Suất ăn/giờ": "~550",
+            "Đĩa/giờ tối đa": "8,000",
+            "Chiều dài module chuẩn": "840 mm mỗi vùng; cấu hình lớn nhất dài khoảng 11m (theo phiên nghiên cứu trước)"
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "image_url": "https://www.winterhalter.com/fileadmin/user_upload/Website/Corporate/products/warewashers/conveyor-dishwashers/mtf/winterhalter-bandspuelmaschine-mtf-overview.png",
+          "source_url": "https://www.winterhalter.com/products/multi-tank-flight-type-dishwasher-mtf/",
+          "seo_title": "Multi-tank flight-type dishwasher MTF | Winterhalter",
+          "seo_description": "Our MTF flight-type dishwasher offers you maximum hygiene safety with high economic efficiency in your commercial kitchen.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/winterhalter-germany/0018_MTF_XL.png"
+        }
+      ]
+    },
+    {
+      "group_name": "Glasswashers",
+      "group_name_vi": "Máy Rửa Ly",
+      "source_urls": [
+        "https://www.winterhalter.com/products/single-tank-flight-type-glasswasher-stf/"
+      ],
+      "note": "Ngoài dòng STF chuyên biệt, các dòng UC Series (undercounter) và PT Series (passthrough) ở trên cũng rửa được ly (glasswashing) — Winterhalter không có dòng 'glasswasher' undercounter tách riêng khỏi UC theo cấu trúc site hiện tại; xem thêm biến thể UC Glasswasher ở nhóm Undercounter.",
+      "models": [
+        {
+          "model": "STF",
+          "title": "Single-tank flight-type glasswasher STF - for beer garden",
+          "description_en": "A flight-type glasswasher purpose-built for very high-volume glass washing at festivals, beer gardens/tents and large-capacity venues. Uses a cold-water rinse so glasses are cooled and ready to serve immediately, with an optional switch to 65°C rinse when rapid cooling is not required. Features a deep-drawn tank with minimal crevices for hygiene, optional extended loading/unloading areas, an optional mobile version on castors, 180° opening door and an integrated self-cleaning programme. \"The STF enables you to look after your guests without difficulty, even at peak times.\"",
+          "specs": {
+            "Công suất": "Tới 2,800 cốc bia (beer tankards)/giờ mỗi máy; nhiều máy phối hợp tại Oktoberfest Munich đạt khoảng 100,000 cốc/giờ",
+            "Kiểu rửa": "Single-tank flight-type (băng tải một bồn, không rổ)",
+            "Nước xả": "Rửa/xả nước lạnh tiêu chuẩn; tuỳ chọn chuyển nhiệt độ xả lên 65°C",
+            "Tuỳ chọn": "Mở rộng vùng nạp/ra; bánh xe di động (mobile castor); bể sâu (deep-drawn tank); cửa mở 180°; chương trình tự làm sạch"
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "image_url": "https://www.winterhalter.com/fileadmin/user_upload/Website/Corporate/products/warewashers/conveyor-dishwashers/stf/single-tank-flight-type-glasswasher-stf-winterhalter.png",
+          "source_url": "https://www.winterhalter.com/products/single-tank-flight-type-glasswasher-stf/",
+          "seo_title": "Single-tank flight-type glasswasher STF - for beer garden",
+          "seo_description": "Winterhalter single-tank flight-type glasswasher are perfect to use at festivals and in beer gardens. Always cold glasses✓ Maximum hygiene safety✓ Get information here!",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/winterhalter-germany/0019_STF.png"
+        }
+      ]
+    },
+    {
+      "group_name": "Water Treatment",
+      "group_name_vi": "Thiết Bị Xử Lý Nước",
+      "source_urls": [
+        "https://www.winterhalter.com/products/water-treatment/",
+        "https://www.winterhalter.com/products/water-treatment/cutlery/",
+        "https://www.winterhalter.com/products/water-treatment/glasses/",
+        "https://www.winterhalter.com/products/water-treatment/consumables/"
+      ],
+      "note": "Trang /products/water-treatment/ chỉ liệt kê model theo tên và mô tả nhóm chức năng, KHÔNG có trang con riêng cho từng model trên winterhalter.com (đã kiểm tra sitemap, không có URL /water-treatment/monomatik-3/ hay tương tự) và KHÔNG có ảnh sản phẩm thật (chỉ SVG icon minh hoạ ứng dụng dishes/glasses/cutlery). Đã tìm và bổ sung ảnh sản phẩm thật cho MonoMatik 3, DuoMatik 3, RoMatik 420 từ cửa hàng chính hãng Winterhalter Australia (shop.winterhalter.com.au) — ảnh studio có nhãn tên model rõ ràng trên thân máy. Không tìm được ảnh chính hãng riêng cho RoMatik 210 (không có trong catalog shop.winterhalter.com.au, chỉ có ở các trang đại lý bên thứ ba) nên để trống image_url cho model này thay vì đoán.",
+      "models": [
+        {
+          "model": "MonoMatik 3",
+          "title": "MonoMatik 3 water softener",
+          "description_en": "Built-in water softener for basic protection against limescale deposits in warewashers, part of Winterhalter's water treatment range.",
+          "specs": {
+            "Loại": "Làm mềm nước cơ bản (single ion-exchange cartridge)"
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "image_url": "https://shop.winterhalter.com.au/media/b4/66/3d/1682068862/Winterhalter%20MonoMatik%203%20Water%20Softener_sm.jpg",
+          "source_url": "https://shop.winterhalter.com.au/winterhalter-monomatik-3-water-softener",
+          "seo_title": "Winterhalter MonoMatik 3 Water Softener",
+          "seo_description": "The MonoMatik 3 works on the principle of ion exchange and is characterised by its low water and salt consumption. The currentless control head allows the water hardness to be set precisely on site. The external device is independent of power failures an…",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/winterhalter-germany/0020_MonoMatik_3.jpg"
+        },
+        {
+          "model": "DuoMatik 3",
+          "title": "DuoMatik 3 water softener",
+          "description_en": "Dual built-in water softener enabling continuous water treatment without a regeneration pause, using two ion-exchange cartridges that alternate during softening — reduces operating costs and extends machine lifespan compared with MonoMatik 3.",
+          "specs": {
+            "Loại": "Làm mềm nước kép, luân phiên tái sinh liên tục (2 cartridge trao đổi ion)"
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "image_url": "https://shop.winterhalter.com.au/media/98/7f/d3/1682069006/DuoMatik3_picture_INT_bgg.jpg",
+          "source_url": "https://shop.winterhalter.com.au/winterhalter-duomatik-3-water-softener",
+          "seo_title": "Winterhalter DuoMatik 3 Water Softener",
+          "seo_description": "The Winterhalter DuoMatik 3 Water Softener ensures optimum water quality for your dishwashing needs. Reduce limescale buildup and improve wash results with this reliable solution, available at our online shop.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/winterhalter-germany/0021_DuoMatik_3.jpg"
+        },
+        {
+          "model": "VE 15",
+          "title": "VE 15 full demineralisation cartridge",
+          "description_en": "Full-demineralisation ion-exchange cartridge recommended for perfect rinsing results, removing essentially all dissolved salts/minerals from wash water.",
+          "specs": {
+            "Loại": "Khử khoáng toàn phần (trao đổi ion)"
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "image_url": "https://www.winterhalter.com/fileadmin/user_upload/Website/Corporate/products/water-treatment/water-treatment-devices/water-treatment-winterhalter-1.png",
+          "source_url": "https://www.winterhalter.com/products/water-treatment/",
+          "seo_title": "Water treatment devices - for brilliant wash results",
+          "seo_description": "Water treatment as softening, partial and full demineralisation & reverse osmosis from Winterhalter. Perfect wash results✓ Optimal machine protection✓ Get information now!",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/winterhalter-germany/0022_VE_15.png"
+        },
+        {
+          "model": "VE 20",
+          "title": "VE 20 full demineralisation cartridge",
+          "description_en": "Higher-capacity variant of the VE full-demineralisation ion-exchange cartridge line, for perfect rinsing results on larger water volumes.",
+          "specs": {
+            "Loại": "Khử khoáng toàn phần (trao đổi ion), công suất cao hơn VE 15"
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "image_url": "https://www.winterhalter.com/fileadmin/user_upload/Website/Corporate/products/water-treatment/water-treatment-devices/water-treatment-winterhalter-1.png",
+          "source_url": "https://www.winterhalter.com/products/water-treatment/",
+          "seo_title": "Water treatment devices - for brilliant wash results",
+          "seo_description": "Water treatment as softening, partial and full demineralisation & reverse osmosis from Winterhalter. Perfect wash results✓ Optimal machine protection✓ Get information now!",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/winterhalter-germany/0023_VE_20.png"
+        },
+        {
+          "model": "AT Excellence-i",
+          "title": "AT Excellence-i integrated reverse osmosis",
+          "description_en": "Reverse-osmosis water treatment unit integrated directly inside compatible undercounter warewashers (UC-S/UC-M), removing 98% of dissolved substances from wash water without needing a separate external unit.",
+          "specs": {
+            "Loại": "Thẩm thấu ngược (RO), tích hợp sẵn trong máy",
+            "Hiệu suất": "Loại bỏ tới 98% chất hoà tan trong nước",
+            "Tương thích": "Tích hợp sẵn trong UC-S/UC-M"
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "image_url": "https://www.winterhalter.com/fileadmin/user_upload/Website/Corporate/products/water-treatment/water-treatment-devices/water-treatment-winterhalter-3.png",
+          "source_url": "https://www.winterhalter.com/products/water-treatment/",
+          "seo_title": "Water treatment devices - for brilliant wash results",
+          "seo_description": "Water treatment as softening, partial and full demineralisation & reverse osmosis from Winterhalter. Perfect wash results✓ Optimal machine protection✓ Get information now!",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/winterhalter-germany/0026_AT_Excellence-i.png"
+        },
+        {
+          "model": "AT Excellence-S",
+          "title": "AT Excellence-S reverse osmosis unit",
+          "description_en": "Stand-alone reverse-osmosis water treatment unit recommended as a premium solution, removing 98% of dissolved substances from wash water for polish-free glass and dishware results.",
+          "specs": {
+            "Loại": "Thẩm thấu ngược (RO), đứng riêng (stand-alone)",
+            "Hiệu suất": "Loại bỏ tới 98% chất hoà tan trong nước"
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "image_url": "https://www.winterhalter.com/fileadmin/user_upload/Website/Corporate/products/water-treatment/water-treatment-devices/water-treatment-winterhalter-3.png",
+          "source_url": "https://www.winterhalter.com/products/water-treatment/",
+          "seo_title": "Water treatment devices - for brilliant wash results",
+          "seo_description": "Water treatment as softening, partial and full demineralisation & reverse osmosis from Winterhalter. Perfect wash results✓ Optimal machine protection✓ Get information now!",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/winterhalter-germany/0027_AT_Excellence-S.png"
+        },
+        {
+          "model": "AT Excellence-M",
+          "title": "AT Excellence-M reverse osmosis unit",
+          "description_en": "Higher-capacity stand-alone reverse-osmosis water treatment unit in the AT Excellence line — differs from AT Excellence-S mainly in throughput capacity.",
+          "specs": {
+            "Loại": "Thẩm thấu ngược (RO), đứng riêng (stand-alone), công suất cao hơn AT Excellence-S",
+            "Hiệu suất": "Loại bỏ tới 98% chất hoà tan trong nước"
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "image_url": "https://www.winterhalter.com/fileadmin/user_upload/Website/Corporate/products/water-treatment/water-treatment-devices/water-treatment-winterhalter-3.png",
+          "source_url": "https://www.winterhalter.com/products/water-treatment/",
+          "seo_title": "Water treatment devices - for brilliant wash results",
+          "seo_description": "Water treatment as softening, partial and full demineralisation & reverse osmosis from Winterhalter. Perfect wash results✓ Optimal machine protection✓ Get information now!",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/winterhalter-germany/0028_AT_Excellence-M.png"
+        },
+        {
+          "model": "RoMatik 210",
+          "title": "RoMatik 210 reverse osmosis unit",
+          "description_en": "Reverse-osmosis water treatment unit achieving almost 100% desalination through membrane filtration, working economically even with large water requirements. Differs from RoMatik 420 mainly in capacity.",
+          "specs": {
+            "Loại": "Thẩm thấu ngược (RO), lọc màng",
+            "Hiệu suất": "Khử muối gần như 100% qua lọc màng"
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "image_url": "",
+          "source_url": "https://www.winterhalter.com/products/water-treatment/",
+          "seo_title": "Water treatment devices - for brilliant wash results",
+          "seo_description": "Water treatment as softening, partial and full demineralisation & reverse osmosis from Winterhalter. Perfect wash results✓ Optimal machine protection✓ Get information now!",
+          "note": "Không tìm được ảnh sản phẩm riêng chính thức cho RoMatik 210 trên bất kỳ site nào của Winterhalter (winterhalter.com, store-mx/store-co/store-cl.winterhalter.com, shop.winterhalter.com.au). RoMatik 420 có ảnh riêng trên shop.winterhalter.com.au nhưng RoMatik 210 không xuất hiện trong catalog của cửa hàng này — chỉ có ảnh trên các trang đại lý bên thứ ba (gastrodax.de, hospitalityhub.com.au...), không dùng vì không xác định được bản quyền/nguồn chính hãng. Để trống thay vì đoán.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/winterhalter-germany/RoMatik210_hospitalityhub.jpg",
+          "image_source_note": "Anh that tu HospitalityHub Australia (dai ly Winterhalter chinh thuc), tieu de \"RoMatik 210/420\" - anh chup cap thiet bi RoMatik 210 va 420 canh nhau."
+        },
+        {
+          "model": "RoMatik 420",
+          "title": "RoMatik 420 reverse osmosis unit",
+          "description_en": "Higher-capacity reverse-osmosis water treatment unit in the RoMatik line, for larger water requirements, achieving almost 100% desalination via membrane filtration.",
+          "specs": {
+            "Loại": "Thẩm thấu ngược (RO), lọc màng, công suất cao hơn RoMatik 210",
+            "Hiệu suất": "Khử muối gần như 100% qua lọc màng"
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "image_url": "https://shop.winterhalter.com.au/media/aa/0a/c3/1682069179/Winterhalter%20RoMatik%20420%20reverse%20osmosis%20for%20STR_MTR_f.jpg",
+          "source_url": "https://shop.winterhalter.com.au/winterhalter-romatik-420-reverse-osmosis-for-str-mtr",
+          "seo_title": "Winterhalter RoMatik 420 reverse osmosis for STR/MTR",
+          "seo_description": "Winterhalter Freestanding Reverse osmosis Suitable for Winterhalter CTR &amp; MT Series or connection of several dishwashersAchieves 100% demineralisation via membrane filtration with extreme efficiency where large quantaties of water are required.Delive…",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/winterhalter-germany/0030_RoMatik_420.jpg"
+        }
+      ]
+    }
+  ],
+  "not_covered_in_this_research": [
+    "catalog.winterhalter.com — vẫn không truy cập được nội dung chi tiết ở phiên 18/07/2026 (đã thử lại, xác nhận như phiên trước); không thử lại lần nữa trong phiên 19/07/2026 vì không phải trọng tâm mở rộng.",
+    "Kích thước/thời gian chu trình chi tiết của UC Series theo từng size S/M/L/XL — chỉ có trong brochure PDF tải về, chưa truy cập được qua WebFetch.",
+    "Giá bán — Winterhalter không công khai giá trên site .com chính cho bất kỳ nhóm nào (máy rửa, hoá chất, dosing, rổ); cần liên hệ đại lý/nhà phân phối VN.",
+    "Ảnh sản phẩm thật cho RoMatik 210 (1/11 model Water Treatment) — cập nhật phiên 19/07/2026: đã tìm và bổ sung được ảnh chính hãng thật cho MonoMatik 3, DuoMatik 3, RoMatik 420 từ cửa hàng chính hãng shop.winterhalter.com.au (không có trên winterhalter.com root, chỉ có SVG icon minh hoạ tại đó). Riêng RoMatik 210 không có trong catalog của shop.winterhalter.com.au (chỉ RoMatik 420 được bán/có ảnh ở đó) và không tìm thấy ảnh chính hãng ở bất kỳ site nào khác của Winterhalter (store-mx/store-co/store-cl.winterhalter.com chỉ bán dòng AT Excellence cho RO, không bán RoMatik) — ảnh RoMatik 210 chỉ có trên các trang đại lý bên thứ ba, không dùng vì không xác định được bản quyền/nguồn chính hãng.",
+    "Dung tích đóng gói (can/thùng) và mã SKU chính xác của các sản phẩm hoá chất F-xxx/B-xxx — trang sản phẩm không công bố, chỉ có tên + mô tả công dụng.",
+    "Kích thước/số ngăn cụ thể và mã SKU của từng loại rổ/khay rửa và phụ kiện — trang không công bố, chỉ phân loại theo ứng dụng."
+  ]
+}

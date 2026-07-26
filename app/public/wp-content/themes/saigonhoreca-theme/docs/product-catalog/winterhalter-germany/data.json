@@ -1,0 +1,218 @@
+{
+  "research_date": "2026-07-13",
+  "source_note": "Cào từ website chính hãng Winterhalter Gastronom GmbH (Đức) qua bản tiếng Anh www.winterhalter.com. KHÔNG phải dữ liệu tự bịa — mọi dòng/model/thông số dưới đây có URL nguồn kèm theo. Nhiều trang sản phẩm của Winterhalter KHÔNG công khai số liệu kỹ thuật chi tiết (kích thước, thời gian chu trình) trên trang web — chỉ có trong brochure PDF tải về, không truy cập được qua WebFetch trong phiên nghiên cứu này. Winterhalter KHÔNG công khai giá bán trên site chính (trừ vài shop khu vực như Úc) — phải liên hệ đại lý/nhà phân phối VN.",
+  "existing_catalog_gap": "Site hiện chỉ có 1 sản phẩm dưới brand Winterhalter — cần đối chiếu với DB thật (product_brand) để biết chính xác sản phẩm nào đã có, việc này nằm ngoài phạm vi crawl web của tài liệu này. Toàn bộ các dòng/model liệt kê dưới đây nên được coi là SẢN PHẨM MỚI cần thêm cho tới khi xác nhận trùng lặp.",
+  "brand": "Winterhalter-Germany",
+  "official_site": "https://www.winterhalter.com/",
+  "official_catalog_portal": "https://catalog.winterhalter.com/ (catalog phụ kiện/hoá chất/rack — cần đăng nhập/khu vực riêng, chưa cào được nội dung chi tiết trong phiên này)",
+  "groups": [
+    {
+      "group_name": "Undercounter Warewashers",
+      "group_name_vi": "Máy Rửa Chén Bát Đặt Gầm Bàn (Undercounter)",
+      "source_urls": [
+        "https://www.winterhalter.com/products/undercounter-warewashers/",
+        "https://www.winterhalter.com/products/undercounter-warewashers/uc-series/"
+      ],
+      "series": [
+        {
+          "series_name": "UC Series",
+          "series_name_vi": "Dòng UC (Cao Cấp, Tuỳ Chỉnh)",
+          "sizes": ["S", "M", "L", "XL"],
+          "made_in": "Germany",
+          "positioning": "Premium, tailor-made (cấu hình theo yêu cầu, có tuỳ chọn 'polish-free')",
+          "note": "Trang sản phẩm xác nhận có 4 size S/M/L/XL nhưng KHÔNG công khai model number riêng, kích thước basket hay thời gian chu trình trên web — chỉ có trong brochure PDF tải về (chưa truy cập được). Có tích hợp tuỳ chọn AT Excellence-i (reverse osmosis) trong bản UC-S/UC-M."
+        },
+        {
+          "series_name": "U50",
+          "series_name_vi": "Dòng U50 (Tiêu Chuẩn Hoá)",
+          "sizes": ["1 size duy nhất, tiêu chuẩn hoá"],
+          "made_in": "Thailand",
+          "positioning": "Upscale, standardized — không có tuỳ chọn cấu hình",
+          "note": "Ghi chú trên site: 'không có sẵn ở mọi quốc gia' — cần xác nhận riêng có phân phối tại VN hay không."
+        }
+      ]
+    },
+    {
+      "group_name": "Passthrough / Hood-type Dishwashers",
+      "group_name_vi": "Máy Rửa Chén Bát Kiểu Vòm/Hood (Pass-through)",
+      "source_urls": [
+        "https://www.winterhalter.com/products/passthrough-dishwasher/pt-series/"
+      ],
+      "series": [
+        {
+          "series_name": "PT Series",
+          "series_name_vi": "Dòng PT",
+          "models": [
+            {
+              "model": "PT-M",
+              "positioning": "Compact",
+              "rack_size_mm": "500 x 500",
+              "use_case": "Chén đĩa (dishes)"
+            },
+            {
+              "model": "PT-L",
+              "positioning": "Extra-wide",
+              "rack_size_mm": "500 x 600",
+              "use_case": "Chén đĩa, đĩa lớn, khay (dishes, large plates, trays)"
+            }
+          ],
+          "capacity": "77 rổ (racks)/giờ ở chương trình rửa nhanh (short programme) — theo trang sản phẩm",
+          "variant": {
+            "name": "PT Utensil",
+            "note": "Bản hybrid trong cùng dòng PT, rửa được cả chén đĩa lẫn xoong nồi/dụng cụ (utensils/pots/pans) — xem thêm ở nhóm Utensil Washers bên dưới."
+          }
+        }
+      ]
+    },
+    {
+      "group_name": "Utensil Washers",
+      "group_name_vi": "Máy Rửa Xoong Nồi / Dụng Cụ Bếp",
+      "source_urls": [
+        "https://www.winterhalter.com/products/utensil-washers/"
+      ],
+      "models": [
+        {
+          "model": "GS 630",
+          "chamber_size_mm": "600 x 465",
+          "clear_entry_height_mm": 400,
+          "capacity_racks_per_hour": "38 / 29 / 12 (lý thuyết, tuỳ chương trình)",
+          "tank_capacity_l": 25,
+          "configuration": "Undercounter hoặc free-standing trên chân đế"
+        },
+        {
+          "model": "PT Utensil",
+          "chamber_size_mm": "500 x 600 hoặc 500 x 500",
+          "clear_entry_height_mm": "560 / 440",
+          "capacity": "32 đĩa/giờ hoặc 13/9 rổ/giờ (tuỳ chương trình)",
+          "tank_capacity_l": 35,
+          "configuration": "Free-standing"
+        },
+        {
+          "model": "UF-Series",
+          "chamber_size_mm": "612 x 672 hoặc 1,305 x 672",
+          "clear_entry_height_mm": "640 / 800",
+          "capacity_racks_per_hour": "40 / 24 / 12",
+          "tank_capacity_l": "69 hoặc 138",
+          "configuration": "Free-standing, có tuỳ chọn kệ giữa (intermediate shelf)"
+        }
+      ],
+      "shared_features": "Cả 3 dòng đều có hệ lọc 4 lớp (quadruple filtration) và VarioPower (điều chỉnh áp lực rửa biến thiên) cho mức bẩn nặng đến rất nặng."
+    },
+    {
+      "group_name": "Rack Conveyor Dishwashers",
+      "group_name_vi": "Máy Rửa Băng Tải Kiểu Rổ (Rack Conveyor)",
+      "source_urls": [
+        "https://www.winterhalter.com/products/rack-conveyor-dishwashers/"
+      ],
+      "series": [
+        {
+          "series_name": "MTR",
+          "series_name_vi": "MTR (Multi-Tank Rack Conveyor) — công suất cao",
+          "made_in": "Germany",
+          "capacity_racks_per_hour": "55 – 355",
+          "tanks": "2 – 4",
+          "min_length_mm": 2000
+        },
+        {
+          "series_name": "CTR",
+          "series_name_vi": "CTR (Compact Rack Conveyor) — bản gọn hơn",
+          "made_in": "Switzerland",
+          "capacity_racks_per_hour": "50 – 195",
+          "tanks": "1 – 3",
+          "min_length_mm": 1400
+        }
+      ],
+      "target": "Khách sạn, nhà hàng, canteen, khối lượng rửa lớn — cấu hình theo yêu cầu (tailor-made)."
+    },
+    {
+      "group_name": "Flight-Type Dishwashers (Conveyor / MT Series family)",
+      "group_name_vi": "Máy Rửa Băng Tải Kiểu Flight (Không Rổ)",
+      "source_urls": [
+        "https://www.winterhalter.com/products/multi-tank-flight-type-dishwasher-mtf/",
+        "https://www.winterhalter.com/products/conveyor-dishwashers/"
+      ],
+      "series": [
+        {
+          "series_name": "MTF",
+          "series_name_vi": "MTF (Multi-Tank Flight-Type)",
+          "models": [
+            { "model": "MTF M", "diners_per_hour": "~350", "plates_per_hour_max": 4500, "tanks": 3 },
+            { "model": "MTF L", "diners_per_hour": "~450", "plates_per_hour_max": 5900, "tanks": 4 },
+            { "model": "MTF XL", "diners_per_hour": "~550", "plates_per_hour_max": 8000, "tanks": 5 }
+          ],
+          "modularity": "Kiến trúc module hoá, đoạn chuẩn 840mm cho vùng rửa; vùng nạp 750-1350mm, vùng ra 900-1800mm; cấu hình lớn nhất dài khoảng 11m.",
+          "standard_features": "EnergyLight (thu hồi nhiệt), hygiene mode, active dirt removal; tuỳ chọn heat pump hoặc reverse osmosis tích hợp."
+        }
+      ],
+      "note": "Trang 'conveyor-dishwashers' giới thiệu chung dòng MT gồm 2 nhánh: MTR (xem nhóm Rack Conveyor ở trên, tối đa 355 rổ/giờ) và MTF (flight-type, tối đa 8,000 đĩa/giờ) — cùng đạt chuẩn vệ sinh DIN EN 17735, kiến trúc module dùng chung."
+    },
+    {
+      "group_name": "Glasswashers",
+      "group_name_vi": "Máy Rửa Ly",
+      "source_urls": [
+        "https://www.winterhalter.com/products/single-tank-flight-type-glasswasher-stf/"
+      ],
+      "series": [
+        {
+          "series_name": "STF",
+          "series_name_vi": "STF (Single-Tank Flight-Type Glasswasher)",
+          "capacity": "Lên tới 2,800 cốc bia (beer tankards)/giờ mỗi máy; nhiều máy phối hợp tại Oktoberfest Munich đạt ~100,000 cốc/giờ",
+          "features": [
+            "Hệ rửa/xả nước lạnh (cold water rinse) — cốc nguội sẵn sàng rót ngay",
+            "Tuỳ chọn chuyển nhiệt độ xả lên 65°C khi cần",
+            "Tuỳ chọn kéo dài vùng nạp/ra",
+            "Tuỳ chọn lắp bánh xe di động (mobile castor)",
+            "Bể sâu (deep-drawn tank), cửa mở 180°"
+          ],
+          "target": "Lễ hội, beer garden/tent, nhà hàng phục vụ số lượng khách rất lớn"
+        }
+      ],
+      "note": "Ngoài dòng STF chuyên biệt, các dòng UC và PT phía trên cũng rửa được ly (glasswashing) — Winterhalter không có 1 dòng 'glasswasher' undercounter riêng biệt khác UC/PT theo cấu trúc site hiện tại."
+    },
+    {
+      "group_name": "Water Treatment",
+      "group_name_vi": "Thiết Bị Xử Lý Nước",
+      "source_urls": [
+        "https://www.winterhalter.com/products/water-treatment/",
+        "https://www.winterhalter.com/products/water-treatment/cutlery/",
+        "https://www.winterhalter.com/products/water-treatment/glasses/",
+        "https://www.winterhalter.com/products/water-treatment/consumables/"
+      ],
+      "categories": [
+        {
+          "category": "Water Softening (Làm mềm nước)",
+          "models": ["MonoMatik 3", "DuoMatik 3"],
+          "note": "MonoMatik 3 = làm mềm cơ bản chống cặn vôi; DuoMatik 3 = bộ làm mềm tích hợp kép, giảm chi phí vận hành và kéo dài tuổi thọ máy."
+        },
+        {
+          "category": "Full Demineralisation (Khử khoáng toàn phần)",
+          "models": ["VE 15", "VE 20"],
+          "note": "Trao đổi ion loại bỏ toàn bộ muối/khoáng, cho chất lượng nước gần như nước cất."
+        },
+        {
+          "category": "Partial Demineralisation (Khử khoáng bán phần)",
+          "models": ["TE 15", "TE 20"],
+          "note": "Cartridge trao đổi ion bán phần — chi phí vận hành thấp hơn full demin."
+        },
+        {
+          "category": "Reverse Osmosis (Thẩm thấu ngược)",
+          "models": ["AT Excellence-i", "AT Excellence-S", "AT Excellence-M", "RoMatik 210", "RoMatik 420"],
+          "note": "Loại bỏ tới 98% chất hoà tan trong nước; AT Excellence-i là bản tích hợp sẵn trong máy UC-S/UC-M; AT Excellence-S/M chỉ khác nhau về công suất."
+        }
+      ],
+      "consumables_note": "Có dòng vật tư tiêu hao riêng (muối, hạt nhựa trao đổi ion, bộ lọc) tối ưu cho từng thiết bị xử lý nước — xem trang consumables."
+    }
+  ],
+  "not_covered_in_this_research": [
+    "Chemical dosing technology (bơm định lượng hoá chất) — trang riêng chưa được cào chi tiết trong phiên này; cần fetch thêm https://www.winterhalter.com (mục 'Dosing technology' được website đề cập nhưng chưa fetch).",
+    "Detergents & rinse aids (hoá chất tẩy rửa/trợ xả) — Winterhalter có dòng riêng, chưa liệt kê model trong tài liệu này.",
+    "Wash racks & accessories (rổ/giá rửa và phụ kiện) — nằm ở catalog.winterhalter.com, cổng catalog riêng chưa truy cập được nội dung chi tiết.",
+    "Giá bán — Winterhalter không công khai giá trên site .com chính; chỉ có giá lẻ ở vài shop khu vực (vd Úc: shop.winterhalter.com.au) không đại diện cho giá VN.",
+    "Kích thước/thời gian chu trình chi tiết của UC Series — chỉ có trong brochure PDF tải về, chưa truy cập được qua WebFetch."
+  ],
+  "open_questions_for_user": [
+    "Cần đối chiếu 1 sản phẩm Winterhalter hiện có trên site với các dòng/model liệt kê ở trên để biết nó thuộc dòng nào (UC? PT? MTR?) tránh trùng lặp khi thêm mới.",
+    "Có muốn liên hệ Winterhalter Vietnam/đại lý phân phối để xin brochure PDF (có số liệu kỹ thuật đầy đủ + giá) trước khi tạo sản phẩm draft?",
+    "Có muốn mở rộng nghiên cứu sang Dosing Technology + Detergents/Rinse Aids + Wash Racks (chưa cào trong phiên này) hay chỉ tập trung máy rửa (dishwashers) trước?"
+  ]
+}

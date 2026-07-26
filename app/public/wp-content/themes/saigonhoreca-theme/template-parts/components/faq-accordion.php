@@ -89,9 +89,9 @@ if ($schema) {
 
         <p class="sh-faq__cta">
             Còn câu hỏi khác? <?php
-                $phone = function_exists('saigonhouse_contact') ? saigonhouse_contact('hotline') : '0961 868 968';
+                $phone = function_exists('saigonhouse_contact') ? saigonhouse_contact('hotline') : '0901 304 365';
             ?>
-            <a href="<?php echo function_exists('saigonhouse_phone_link') ? saigonhouse_phone_link() : 'tel:0961868968'; ?>"><?php echo esc_html($phone); ?></a>
+            <a href="<?php echo function_exists('saigonhouse_phone_link') ? saigonhouse_phone_link() : 'tel:0901304365'; ?>"><?php echo esc_html($phone); ?></a>
         </p>
     </div>
 </section>

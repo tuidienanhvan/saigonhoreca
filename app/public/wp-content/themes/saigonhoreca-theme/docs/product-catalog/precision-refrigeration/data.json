@@ -1,0 +1,667 @@
+{
+  "research_date": "2026-07-18",
+  "source_note": "Dữ liệu thật crawl từ website chính hãng precision-refrigeration.com (Precision Refrigeration, UK). Lưu ý: tên miền precisionrefrigeration.co.uk trong đề bài KHÔNG phân giải được (ENOTFOUND); tên miền chính hãng thực tế đang hoạt động là precision-refrigeration.com. Mỗi model đều kèm source_url thật. Site chạy trên nền Squarespace nên phần meta description không có sẵn (để trống); dung tích lít (capacity_litres) đa số không công bố trên trang nên để trống thay vì bịa. Nhiệt độ, số cửa và kích thước lấy nguyên từ trang sản phẩm.",
+  "brand": "Precision-UK",
+  "groups": [
+    {
+      "group_name": "Gastronorm Cabinets (Upright Fridges & Freezers)",
+      "group_name_vi": "Tủ Lạnh & Tủ Đông Công Nghiệp Đứng (Gastronorm)",
+      "source_urls": ["https://www.precision-refrigeration.com/cabinets"],
+      "models": [
+        {
+          "model": "MPT 601",
+          "title": "GN2/1 Top Mount Refrigerator",
+          "description_en": "Precision's durable all stainless steel top mount cabinets have been designed to provide commercial caterers with reliable, energy and cost efficient refrigerated storage solutions.",
+          "specs": { "capacity_litres": "", "temperature_range": "-2/+4°C", "doors": "1 (self-closing)", "dimensions_mm": "720 x 850 x 2072" },
+          "origin": "United Kingdom",
+          "heat_source": "",
+          "image_url": "https://images.squarespace-cdn.com/content/v1/619e3f03e411df416b9ae17c/1683286425730-JKA2HS9U9G9HGWLMJVX2/PT601.png",
+          "source_url": "https://www.precision-refrigeration.com/cabinets/mpt-601-gn2/1-top-mount-refrigerator",
+          "seo_title": "MPT 601 - GN2/1 TOP MOUNT REFRIGERATOR — Precision Refrigeration",
+          "seo_description": ""
+        },
+        {
+          "model": "LPT 601",
+          "title": "GN2/1 Top Mount Freezer",
+          "description_en": "Precision's durable all stainless steel top mount cabinets have been designed to provide commercial caterers with reliable, energy and cost efficient refrigerated storage solutions.",
+          "specs": { "capacity_litres": "", "temperature_range": "-18/-22°C", "doors": "1 (self-closing)", "dimensions_mm": "720 x 850 x 2072" },
+          "origin": "United Kingdom",
+          "heat_source": "",
+          "image_url": "https://images.squarespace-cdn.com/content/v1/619e3f03e411df416b9ae17c/1683286425730-JKA2HS9U9G9HGWLMJVX2/PT601.png",
+          "source_url": "https://www.precision-refrigeration.com/cabinets/lpt-601-gn2/1-top-mount-freezer",
+          "seo_title": "LPT 601 - GN2/1 TOP MOUNT FREEZER — Precision Refrigeration",
+          "seo_description": ""
+        },
+        {
+          "model": "MPT 1401",
+          "title": "GN2/1 Top Mount Refrigerator",
+          "description_en": "Precision's durable all stainless steel top mount cabinets have been designed to provide commercial caterers with reliable, energy and cost efficient refrigerated storage solutions.",
+          "specs": { "capacity_litres": "", "temperature_range": "-2/+4°C", "doors": "2 (self-closing)", "dimensions_mm": "1440 x 850 x 2072" },
+          "origin": "United Kingdom",
+          "heat_source": "",
+          "image_url": "https://images.squarespace-cdn.com/content/v1/619e3f03e411df416b9ae17c/1683286460529-JEC1BZVQD6M14FIF3N66/PT1401.png",
+          "source_url": "https://www.precision-refrigeration.com/cabinets/mpt-1401-gn2/1-top-mount-refrigerator",
+          "seo_title": "MPT 1401 - GN2/1 TOP MOUNT REFRIGERATOR — Precision Refrigeration",
+          "seo_description": ""
+        },
+        {
+          "model": "LPT 1401",
+          "title": "GN2/1 Top Mount Freezer",
+          "description_en": "Precision's durable all stainless steel top mount cabinets have been designed to provide commercial caterers with reliable, energy and cost efficient refrigerated storage solutions.",
+          "specs": { "capacity_litres": "", "temperature_range": "-18/-22°C", "doors": "2 (self-closing)", "dimensions_mm": "1440 x 850 x 2072" },
+          "origin": "United Kingdom",
+          "heat_source": "",
+          "image_url": "https://images.squarespace-cdn.com/content/v1/619e3f03e411df416b9ae17c/1683286460529-JEC1BZVQD6M14FIF3N66/PT1401.png",
+          "source_url": "https://www.precision-refrigeration.com/cabinets/lpt-1401-gn2/1-top-mount-freezer",
+          "seo_title": "LPT 1401 - GN2/1 TOP MOUNT FREEZER — Precision Refrigeration",
+          "seo_description": ""
+        },
+        {
+          "model": "MPU 401",
+          "title": "Bottom Mount Refrigerator",
+          "description_en": "Precision's durable all stainless steel cabinets have been designed to provide commercial caterers with reliable, energy and cost efficient refrigerated storage solutions.",
+          "specs": { "capacity_litres": "", "temperature_range": "-2/+4°C", "doors": "1 (self-closing)", "dimensions_mm": "600 x 705 x 1985" },
+          "origin": "United Kingdom",
+          "heat_source": "",
+          "image_url": "https://images.squarespace-cdn.com/content/v1/619e3f03e411df416b9ae17c/1683286493165-HQLU0S60KUVFR8SCTLFH/PU401.png",
+          "source_url": "https://www.precision-refrigeration.com/cabinets/mpu-401-bottom-mount-refrigerator",
+          "seo_title": "MPU 401 - BOTTOM MOUNT REFRIGERATOR — Precision Refrigeration",
+          "seo_description": ""
+        },
+        {
+          "model": "LPU 401",
+          "title": "Bottom Mount Freezer",
+          "description_en": "Precision's durable all stainless steel cabinets have been designed to provide commercial caterers with reliable, energy and cost efficient refrigerated storage solutions.",
+          "specs": { "capacity_litres": "", "temperature_range": "-18/-22°C", "doors": "1 (self-closing)", "dimensions_mm": "600 x 705 x 1985" },
+          "origin": "United Kingdom",
+          "heat_source": "",
+          "image_url": "https://images.squarespace-cdn.com/content/v1/619e3f03e411df416b9ae17c/1683286493165-HQLU0S60KUVFR8SCTLFH/PU401.png",
+          "source_url": "https://www.precision-refrigeration.com/cabinets/lpu-401-bottom-mount-freezer",
+          "seo_title": "LPU 401 - BOTTOM MOUNT FREEZER — Precision Refrigeration",
+          "seo_description": ""
+        }
+      ]
+    },
+    {
+      "group_name": "Refrigerated Counters",
+      "group_name_vi": "Tủ Bàn Mát / Bàn Đông Công Nghiệp",
+      "source_urls": ["https://www.precision-refrigeration.com/counters"],
+      "models": [
+        {
+          "model": "MCU 211",
+          "title": "GN1/1 Counter Refrigerator",
+          "description_en": "Flexible, stylish designed refrigerated counters that are built to last and highly recyclable. The 670 series is the result of years of development focused on improved energy efficiency, recyclability, and the flexibility to repair, reuse and upcycle.",
+          "specs": { "capacity_litres": "", "temperature_range": "-2/+4°C", "doors": "2 (interchangeable doors/drawers)", "dimensions_mm": "1350 x 670 x 865" },
+          "origin": "United Kingdom",
+          "heat_source": "",
+          "image_url": "https://images.squarespace-cdn.com/content/v1/619e3f03e411df416b9ae17c/1683837668723-AP7EUMZI6RY7YW9X3A75/CU+211+-+UDD.png",
+          "source_url": "https://www.precision-refrigeration.com/counters/mcu-211-gn1/1-counter-refrigerator",
+          "seo_title": "MCU 211 - GN1/1 COUNTER REFRIGERATOR — Precision Refrigeration",
+          "seo_description": ""
+        },
+        {
+          "model": "LCU 211",
+          "title": "GN1/1 Counter Freezer",
+          "description_en": "Flexible, stylish designed refrigerated counters that are built to last and highly recyclable. The 670 series counters feature improved energy efficiency and recyclability with the flexibility to repair, reuse, and upcycle.",
+          "specs": { "capacity_litres": "", "temperature_range": "-18/-22°C", "doors": "2 (self-closing)", "dimensions_mm": "1350 x 670 x 865" },
+          "origin": "United Kingdom",
+          "heat_source": "",
+          "image_url": "https://images.squarespace-cdn.com/content/v1/619e3f03e411df416b9ae17c/1683837668723-AP7EUMZI6RY7YW9X3A75/CU+211+-+UDD.png",
+          "source_url": "https://www.precision-refrigeration.com/counters/lcu-211-gn1/1-counter-freezer",
+          "seo_title": "LCU 211 - GN1/1 COUNTER FREEZER — Precision Refrigeration",
+          "seo_description": ""
+        },
+        {
+          "model": "MCU 311",
+          "title": "GN1/1 Counter Refrigerator",
+          "description_en": "Flexible, stylish designed refrigerated counters that are built to last and highly recyclable. The 670 series represents years of refinement focusing on improved energy efficiency and recyclability.",
+          "specs": { "capacity_litres": "", "temperature_range": "-2/+4°C", "doors": "3 (interchangeable doors/drawers)", "dimensions_mm": "1800 x 670 x 865" },
+          "origin": "United Kingdom",
+          "heat_source": "",
+          "image_url": "https://images.squarespace-cdn.com/content/v1/619e3f03e411df416b9ae17c/1683837810232-WQHFYLSTFVF86DA38ZBM/CU+311+-+UDDD.png",
+          "source_url": "https://www.precision-refrigeration.com/counters/mcu-311-gn1/1-counter-refrigerator",
+          "seo_title": "MCU 311 - GN1/1 Counter Refrigerator — Precision Refrigeration",
+          "seo_description": ""
+        },
+        {
+          "model": "LCU 311",
+          "title": "GN1/1 Counter Freezer",
+          "description_en": "Flexible, stylish designed refrigerated counters that are built to last and highly recyclable. The 670 series represents years of refinement, emphasizing improved energy efficiency and the capacity to repair, reuse, and recycle components.",
+          "specs": { "capacity_litres": "", "temperature_range": "-18/-22°C", "doors": "3 (self-closing)", "dimensions_mm": "1800 x 670 x 865" },
+          "origin": "United Kingdom",
+          "heat_source": "",
+          "image_url": "https://images.squarespace-cdn.com/content/v1/619e3f03e411df416b9ae17c/1683837810232-WQHFYLSTFVF86DA38ZBM/CU+311+-+UDDD.png",
+          "source_url": "https://www.precision-refrigeration.com/counters/lcu-311-gn1/1-counter-freezer",
+          "seo_title": "LCU 311 - GN1/1 COUNTER FREEZER — Precision Refrigeration",
+          "seo_description": ""
+        },
+        {
+          "model": "MCU 411",
+          "title": "GN1/1 Counter Refrigerator",
+          "description_en": "Flexible, stylish designed refrigerated counters that are built to last and highly recyclable. The 670 series represents enhanced energy efficiency, recyclability, and the capability to repair, reuse, and upcycle these popular counter products.",
+          "specs": { "capacity_litres": "", "temperature_range": "-2/+4°C", "doors": "4 (interchangeable doors/drawers)", "dimensions_mm": "2250 x 670 x 865" },
+          "origin": "United Kingdom",
+          "heat_source": "",
+          "image_url": "https://images.squarespace-cdn.com/content/v1/619e3f03e411df416b9ae17c/1683837868469-Z6U79CGSRYUQKIZTYAXK/CU+411+-+UDDDD.png",
+          "source_url": "https://www.precision-refrigeration.com/counters/mcu-411-gn1/1-counter-refrigerator",
+          "seo_title": "MCU 411 - GN1/1 COUNTER REFRIGERATOR — Precision Refrigeration",
+          "seo_description": ""
+        },
+        {
+          "model": "MCU 223",
+          "title": "GN2/3 Counter Refrigerator",
+          "description_en": "Precision's 520 series counters are the culmination of years of experience and valued feedback to better meet our customers' needs. These compact refrigerated units measure just 520mm deep and offer flexible, stylish designed refrigerated counters that are built to last and highly recyclable.",
+          "specs": { "capacity_litres": "", "temperature_range": "-2/+4°C", "doors": "2 (interchangeable doors/drawers)", "dimensions_mm": "1350 x 520 x 865" },
+          "origin": "United Kingdom",
+          "heat_source": "",
+          "image_url": "https://images.squarespace-cdn.com/content/v1/619e3f03e411df416b9ae17c/1683837888059-KPGG87373MH07RIDA3OW/CU223-UDD.png",
+          "source_url": "https://www.precision-refrigeration.com/counters/mcu-223-gn2/3-counter-refrigerator",
+          "seo_title": "MCU 223 - GN2/3 COUNTER REFRIGERATOR — Precision Refrigeration",
+          "seo_description": ""
+        },
+        {
+          "model": "MCU 323",
+          "title": "GN2/3 Counter Refrigerator",
+          "description_en": "Precision's 520 series counters are the culmination of years of experience and valued feedback to better meet our customers' needs. These refrigerated units measure just 520mm deep, offering practical solutions for space-constrained environments.",
+          "specs": { "capacity_litres": "", "temperature_range": "-2/+4°C", "doors": "3 (interchangeable doors/drawers)", "dimensions_mm": "1800 x 520 x 865" },
+          "origin": "United Kingdom",
+          "heat_source": "",
+          "image_url": "https://images.squarespace-cdn.com/content/v1/619e3f03e411df416b9ae17c/1683837912510-RTMVZVXZRLPH9D65LIWM/CU323-UDDD.png",
+          "source_url": "https://www.precision-refrigeration.com/counters/mcu-323-gn2/3-counter-refrigerator",
+          "seo_title": "MCU 323 - GN2/3 COUNTER REFRIGERATOR — Precision Refrigeration",
+          "seo_description": ""
+        },
+        {
+          "model": "RBCU 264",
+          "title": "600 x 400 Bakery Counter",
+          "description_en": "Precision's durable all stainless steel bakery counters have been designed to provide bakers with reliable, energy and cost efficient refrigerated storage solutions. These UK-designed counters take 600 x 400 patisserie trays.",
+          "specs": { "capacity_litres": "", "temperature_range": "-5/+5°C", "doors": "2 (self-closing, locks fitted as standard)", "dimensions_mm": "1495 x 790 x 865" },
+          "origin": "United Kingdom",
+          "heat_source": "",
+          "image_url": "https://images.squarespace-cdn.com/content/v1/619e3f03e411df416b9ae17c/1683837668723-AP7EUMZI6RY7YW9X3A75/CU+211+-+UDD.png",
+          "source_url": "https://www.precision-refrigeration.com/counters/rbcu-264-600-x-400-bakery-counter",
+          "seo_title": "RBCU 264 - 600 X 400 BAKERY COUNTER — Precision Refrigeration",
+          "seo_description": ""
+        },
+        {
+          "model": "RBCU 364",
+          "title": "600 x 400 Bakery Counter",
+          "description_en": "Precision's durable all stainless steel bakery counters have been designed to provide bakers with reliable, energy and cost efficient refrigerated storage solutions. These UK-designed units accommodate 600 x 400 patisserie trays for commercial bakeries.",
+          "specs": { "capacity_litres": "", "temperature_range": "-5/+5°C", "doors": "3 (self-closing)", "dimensions_mm": "2030 x 790 x 865" },
+          "origin": "United Kingdom",
+          "heat_source": "",
+          "image_url": "https://images.squarespace-cdn.com/content/v1/619e3f03e411df416b9ae17c/1683837810232-WQHFYLSTFVF86DA38ZBM/CU+311+-+UDDD.png",
+          "source_url": "https://www.precision-refrigeration.com/counters/rbcu-364-600-x-400-bakery-counter",
+          "seo_title": "RBCU 364 - 600 X 400 BAKERY COUNTER — Precision Refrigeration",
+          "seo_description": ""
+        }
+      ]
+    },
+    {
+      "group_name": "Under Counters",
+      "group_name_vi": "Tủ Mát / Đông Đặt Dưới Bàn Bếp",
+      "source_urls": ["https://www.precision-refrigeration.com/under-counters"],
+      "models": [
+        {
+          "model": "HPU 150",
+          "title": "Undercounter Refrigerator",
+          "description_en": "Proudly made in the UK, Precision's durable all stainless steel under counters have been designed to provide medium duty under counter storage solutions for commercial kitchens all around the world. Perfect for space optimisation in even the smallest of kitchens.",
+          "specs": { "capacity_litres": "", "temperature_range": "1/4°C", "doors": "1 (integrated flush handle & lock)", "dimensions_mm": "600 x 640 x 820" },
+          "origin": "United Kingdom",
+          "heat_source": "",
+          "image_url": "https://images.squarespace-cdn.com/content/v1/619e3f03e411df416b9ae17c/7278caea-f38b-4879-8423-6600f6f1d771/HPU150.png",
+          "source_url": "https://www.precision-refrigeration.com/under-counters/hpu-150-undercounter-refrigerator",
+          "seo_title": "HPU 150 - UNDERCOUNTER REFRIGERATOR — Precision Refrigeration",
+          "seo_description": ""
+        },
+        {
+          "model": "HPU 152",
+          "title": "Undercounter Refrigerator",
+          "description_en": "Proudly made in the UK, Precision's durable all stainless steel under counters have been designed to provide medium duty under counter storage solutions for commercial kitchens all around the world.",
+          "specs": { "capacity_litres": "", "temperature_range": "1/4°C", "doors": "2 drawers", "dimensions_mm": "600 x 640 x 820" },
+          "origin": "United Kingdom",
+          "heat_source": "",
+          "image_url": "https://images.squarespace-cdn.com/content/v1/619e3f03e411df416b9ae17c/6109c7cd-e23d-4559-a099-522854787aa8/HPU152.png",
+          "source_url": "https://www.precision-refrigeration.com/under-counters/hpu-152-undercounter-refrigerator",
+          "seo_title": "HPU 152 - UNDERCOUNTER REFRIGERATOR — Precision Refrigeration",
+          "seo_description": ""
+        },
+        {
+          "model": "HPU 153",
+          "title": "Undercounter Refrigerator",
+          "description_en": "Proudly made in the UK, Precision's durable all stainless steel under counters have been designed to provide medium duty under counter storage solutions for commercial kitchens all around the world. These under counters are perfect for space optimisation in even the smallest of kitchens.",
+          "specs": { "capacity_litres": "", "temperature_range": "1/4°C", "doors": "3 drawers", "dimensions_mm": "600 x 640 x 820" },
+          "origin": "United Kingdom",
+          "heat_source": "",
+          "image_url": "https://images.squarespace-cdn.com/content/v1/619e3f03e411df416b9ae17c/44ecf145-ffe0-4437-a39e-ab887e171e0d/HPU153.png",
+          "source_url": "https://www.precision-refrigeration.com/under-counters/hpu-153-undercounter-refrigerator",
+          "seo_title": "HPU 153 - UNDERCOUNTER REFRIGERATOR — Precision Refrigeration",
+          "seo_description": ""
+        },
+        {
+          "model": "LPU 150",
+          "title": "Undercounter Freezer",
+          "description_en": "Proudly made in the UK, Precision's durable all stainless steel under counters have been designed to provide medium duty under counter storage solutions for commercial kitchens all around the world. These under counters are perfect for space optimisation in even the smallest of kitchens.",
+          "specs": { "capacity_litres": "", "temperature_range": "-18/-22°C", "doors": "1", "dimensions_mm": "600 x 640 x 820" },
+          "origin": "United Kingdom",
+          "heat_source": "",
+          "image_url": "https://images.squarespace-cdn.com/content/v1/619e3f03e411df416b9ae17c/7278caea-f38b-4879-8423-6600f6f1d771/HPU150.png",
+          "source_url": "https://www.precision-refrigeration.com/under-counters/lpu-150-undercounter-freezer",
+          "seo_title": "LPU 150 - UNDERCOUNTER FREEZER — Precision Refrigeration",
+          "seo_description": ""
+        }
+      ]
+    },
+    {
+      "group_name": "Space Savers",
+      "group_name_vi": "Tủ Tiết Kiệm Không Gian (Space Saver)",
+      "source_urls": ["https://www.precision-refrigeration.com/space-savers"],
+      "models": [
+        {
+          "model": "HSS 150",
+          "title": "GN1/1 Space Saver Refrigerator",
+          "description_en": "Proudly made in the UK, Precision's versatile all stainless steel space savers are perfect for space optimisation in commercial kitchens all around the world.",
+          "specs": { "capacity_litres": "", "temperature_range": "1/4°C", "doors": "1 (self-closing)", "dimensions_mm": "445 x 745 x 860" },
+          "origin": "United Kingdom",
+          "heat_source": "",
+          "image_url": "https://images.squarespace-cdn.com/content/v1/619e3f03e411df416b9ae17c/1683288263409-RZ843WLFV2RALRB2HY1E/SS150-D.png",
+          "source_url": "https://www.precision-refrigeration.com/space-savers/hss-150-gn1/1-space-saver-refrigerator",
+          "seo_title": "HSS 150 - GN1/1 SPACE SAVER REFRIGERATOR — Precision Refrigeration",
+          "seo_description": ""
+        },
+        {
+          "model": "LSS 150",
+          "title": "GN1/1 Space Saver Freezer",
+          "description_en": "Proudly made in the UK, Precision's versatile all stainless steel space savers are perfect for space optimisation in commercial kitchens all around the world.",
+          "specs": { "capacity_litres": "", "temperature_range": "-18/-22°C", "doors": "1 (self-closing)", "dimensions_mm": "445 x 745 x 860" },
+          "origin": "United Kingdom",
+          "heat_source": "",
+          "image_url": "https://images.squarespace-cdn.com/content/v1/619e3f03e411df416b9ae17c/1683288263409-RZ843WLFV2RALRB2HY1E/SS150-D.png",
+          "source_url": "https://www.precision-refrigeration.com/space-savers/lss-150-gn1/1-space-saver-freezer",
+          "seo_title": "LSS 150 - GN1/1 SPACE SAVER FREEZER — Precision Refrigeration",
+          "seo_description": ""
+        },
+        {
+          "model": "HSS 300",
+          "title": "GN1/1 Space Saver Refrigerator",
+          "description_en": "Proudly made in the UK, Precision's versatile all stainless steel space savers are perfect for space optimisation in commercial kitchens all around the world. Offers the same internal storage as a traditional two door model while using 28% less floor space.",
+          "specs": { "capacity_litres": "", "temperature_range": "1/4°C", "doors": "2 (self-closing)", "dimensions_mm": "865 x 745 x 860" },
+          "origin": "United Kingdom",
+          "heat_source": "",
+          "image_url": "https://images.squarespace-cdn.com/content/v1/619e3f03e411df416b9ae17c/1683288352386-8PY1M4QUYY7LSZFRR4OW/SS300-DD.png",
+          "source_url": "https://www.precision-refrigeration.com/space-savers/hss-300-gn1/1-space-saver-refrigerator",
+          "seo_title": "HSS 300 - GN1/1 SPACE SAVER REFRIGERATOR — Precision Refrigeration",
+          "seo_description": ""
+        },
+        {
+          "model": "LSS 300",
+          "title": "GN1/1 Space Saver Freezer",
+          "description_en": "Proudly made in the UK, Precision's versatile all stainless steel space savers are perfect for space optimisation in commercial kitchens all around the world. Offers the same internal storage capacity as a traditional two door GN1/1 counter but with a 28% smaller footprint.",
+          "specs": { "capacity_litres": "", "temperature_range": "-18/-22°C", "doors": "2 (self-closing)", "dimensions_mm": "865 x 745 x 860" },
+          "origin": "United Kingdom",
+          "heat_source": "",
+          "image_url": "https://images.squarespace-cdn.com/content/v1/619e3f03e411df416b9ae17c/1683288352386-8PY1M4QUYY7LSZFRR4OW/SS300-DD.png",
+          "source_url": "https://www.precision-refrigeration.com/space-savers/lss-300-gn1/1-space-saver-freezer",
+          "seo_title": "LSS 300 - GN1/1 SPACE SAVER FREEZER — Precision Refrigeration",
+          "seo_description": ""
+        },
+        {
+          "model": "HUC 150",
+          "title": "GN1/1 Space Saver Refrigerator",
+          "description_en": "Proudly made in the UK, Precision's versatile all stainless steel space savers are perfect for space optimisation in commercial kitchens all around the world.",
+          "specs": { "capacity_litres": "", "temperature_range": "1/4°C", "doors": "1 (self-closing)", "dimensions_mm": "650 x 620 x 815" },
+          "origin": "United Kingdom",
+          "heat_source": "",
+          "image_url": "https://images.squarespace-cdn.com/content/v1/619e3f03e411df416b9ae17c/1683288404289-626IROEB7BZIKFM1C2U4/UC150-D.png",
+          "source_url": "https://www.precision-refrigeration.com/space-savers/huc-150-gn1/1-space-saver-refrigerator",
+          "seo_title": "HUC 150 - GN1/1 SPACE SAVER REFRIGERATOR — Precision Refrigeration",
+          "seo_description": ""
+        },
+        {
+          "model": "LUC 150",
+          "title": "GN1/1 Space Saver Freezer",
+          "description_en": "Proudly made in the UK, Precision's versatile all stainless steel space savers are perfect for space optimisation in commercial kitchens all around the world.",
+          "specs": { "capacity_litres": "", "temperature_range": "-18/-22°C", "doors": "1 (self-closing)", "dimensions_mm": "650 x 620 x 815" },
+          "origin": "United Kingdom",
+          "heat_source": "",
+          "image_url": "https://images.squarespace-cdn.com/content/v1/619e3f03e411df416b9ae17c/1683288404289-626IROEB7BZIKFM1C2U4/UC150-D.png",
+          "source_url": "https://www.precision-refrigeration.com/space-savers/luc-150-gn1/1-space-saver-freezer",
+          "seo_title": "LUC 150 - GN1/1 SPACE SAVER FREEZER — Precision Refrigeration",
+          "seo_description": ""
+        }
+      ]
+    },
+    {
+      "group_name": "Under Broiler Counters",
+      "group_name_vi": "Tủ Mát Đặt Dưới Bếp Nướng (Under Broiler)",
+      "source_urls": ["https://www.precision-refrigeration.com/under-broiler-counters"],
+      "models": [
+        {
+          "model": "HUBC 411",
+          "title": "GN1/1 Under Broiler Refrigerator",
+          "description_en": "Precision Under Broiler Counters are designed to provide refrigerated storage, in an easy pull-out drawer format, under the chargrill or griddle within the cooking line, reducing kitchen congestion.",
+          "specs": { "capacity_litres": "", "temperature_range": "1/4°C", "doors": "GN1/1 drawer system", "dimensions_mm": "1345 x 780 x 610" },
+          "origin": "United Kingdom",
+          "heat_source": "",
+          "image_url": "https://images.squarespace-cdn.com/content/v1/619e3f03e411df416b9ae17c/1683289857884-RLGVD5MYREWJTMAB0F0J/HUBC411.png",
+          "source_url": "https://www.precision-refrigeration.com/under-broiler-counters/hubc-411-gn1/1-under-broiler-refrigerator",
+          "seo_title": "HUBC 411 - GN1/1 UNDER BROILER REFRIGERATOR — Precision Refrigeration",
+          "seo_description": ""
+        },
+        {
+          "model": "HUBC 412",
+          "title": "GN1/1 / GN2/1 Under Broiler Refrigerator",
+          "description_en": "Precision Under Broiler Counters are designed to provide refrigerated storage, in an easy pull-out drawer format, under the chargrill or griddle within the cooking line, reducing kitchen congestion.",
+          "specs": { "capacity_litres": "", "temperature_range": "1/4°C", "doors": "GN1/1 & GN2/1 drawer system", "dimensions_mm": "1670 x 780 x 610" },
+          "origin": "United Kingdom",
+          "heat_source": "",
+          "image_url": "https://images.squarespace-cdn.com/content/v1/619e3f03e411df416b9ae17c/1683289886614-7CR12W55QNZ8ZIC0ONXD/HUBC412.png",
+          "source_url": "https://www.precision-refrigeration.com/under-broiler-counters/hubc-412-gn1/1-/-gn2/1-under-broiler-refrigerator",
+          "seo_title": "HUBC 412 - GN1/1 / GN2/1 UNDER BROILER REFRIGERATOR — Precision Refrigeration",
+          "seo_description": ""
+        },
+        {
+          "model": "HUBC 422",
+          "title": "GN2/1 Under Broiler Refrigerator",
+          "description_en": "Precision Under Broiler Counters are designed to provide refrigerated storage, in an easy pull-out drawer format, under the chargrill or griddle within the cooking line, reducing kitchen congestion.",
+          "specs": { "capacity_litres": "", "temperature_range": "1/4°C", "doors": "GN2/1 drawer system", "dimensions_mm": "1995 x 780 x 610" },
+          "origin": "United Kingdom",
+          "heat_source": "",
+          "image_url": "https://images.squarespace-cdn.com/content/v1/619e3f03e411df416b9ae17c/1683289907148-48XZF5QBIB25GRXTX3K1/HUBC422.png",
+          "source_url": "https://www.precision-refrigeration.com/under-broiler-counters/hubc-422-gn2/1-under-broiler-refrigerator",
+          "seo_title": "HUBC 422 - GN2/1 UNDER BROILER REFRIGERATOR — Precision Refrigeration",
+          "seo_description": ""
+        }
+      ]
+    },
+    {
+      "group_name": "Variable Temperature Drawers",
+      "group_name_vi": "Ngăn Kéo Nhiệt Độ Linh Hoạt (Mát/Đông)",
+      "source_urls": ["https://www.precision-refrigeration.com/variable-temp-drawers"],
+      "models": [
+        {
+          "model": "VUBC 121",
+          "title": "GN2/1 Variable Temperature Drawer",
+          "description_en": "Precision variable temperature drawers are designed to provide flexible refrigerated or freezer storage at the flick of a switch. The single GN2/1 drawer format is perfect when space is at a premium and provides bulk storage in the heart of the kitchen.",
+          "specs": { "capacity_litres": "", "temperature_range": "-2/+4°C or -18/-22°C", "doors": "1 GN2/1 heavy-duty drawer (150mm deep)", "dimensions_mm": "1100 x 675 x 380" },
+          "origin": "United Kingdom",
+          "heat_source": "",
+          "image_url": "https://images.squarespace-cdn.com/content/v1/619e3f03e411df416b9ae17c/ce199618-7947-4855-836a-adf85f651179/VUBC121.png",
+          "source_url": "https://www.precision-refrigeration.com/variable-temp-drawers/vubc-121-gn2/1-variable-temperature-drawer",
+          "seo_title": "VUBC 121 - GN2/1 VARIABLE TEMPERATURE DRAWER — Precision Refrigeration",
+          "seo_description": ""
+        },
+        {
+          "model": "VUBC 121-2",
+          "title": "GN2/1 Variable Temperature Stacked Drawers",
+          "description_en": "Precision variable temperature drawers are designed to provide flexible refrigerated or freezer storage at the flick of a switch. The GN2/1 drawer format offers bulk storage in compact spaces; this model stacks two drawers.",
+          "specs": { "capacity_litres": "", "temperature_range": "-22°C to +4°C (variable)", "doors": "2 stacked GN2/1 drawers (150mm deep each)", "dimensions_mm": "1100 x 675 x 760" },
+          "origin": "United Kingdom",
+          "heat_source": "",
+          "image_url": "https://images.squarespace-cdn.com/content/v1/619e3f03e411df416b9ae17c/94b0445a-e40f-4986-858a-9f3413a5e63d/VUBC121-2.png",
+          "source_url": "https://www.precision-refrigeration.com/variable-temp-drawers/vubc-121-2-gn2/1-variable-temperature-stacked-drawers",
+          "seo_title": "VUBC 121-2 - GN2/1 VARIABLE TEMPERATURE STACKED DRAWERS — Precision Refrigeration",
+          "seo_description": ""
+        }
+      ]
+    },
+    {
+      "group_name": "Wall Cabinets",
+      "group_name_vi": "Tủ Mát Treo Tường",
+      "source_urls": ["https://www.precision-refrigeration.com/wall-cabinets"],
+      "models": [
+        {
+          "model": "HWU 211",
+          "title": "GN1/1 Wall Mounted Refrigerator",
+          "description_en": "Precision's durable all stainless steel GN1/1 wall cabinets have been designed to provide commercial caterers with reliable, energy and cost efficient refrigerated storage solutions when space is at a premium.",
+          "specs": { "capacity_litres": "", "temperature_range": "1/4°C", "doors": "2 self-closing glass doors (solid door option)", "dimensions_mm": "1665 x 515 x 700" },
+          "origin": "United Kingdom",
+          "heat_source": "",
+          "image_url": "https://images.squarespace-cdn.com/content/v1/619e3f03e411df416b9ae17c/11e103e3-abc8-43d8-83a2-0bd17664df83/HWU211-UGG.png",
+          "source_url": "https://www.precision-refrigeration.com/wall-cabinets/hwu-211-gn1/1-wall-mounted-refrigerator",
+          "seo_title": "HWU 211 - GN1/1 WALL MOUNTED REFRIGERATOR — Precision Refrigeration",
+          "seo_description": ""
+        }
+      ]
+    },
+    {
+      "group_name": "Prep Counters",
+      "group_name_vi": "Bàn Sơ Chế Lạnh (Prep / Saladette / Pizza)",
+      "source_urls": ["https://www.precision-refrigeration.com/prep-counters"],
+      "models": [
+        {
+          "model": "PPC 307",
+          "title": "GN1/1 Refrigerated Prep Counter",
+          "description_en": "Proudly made in the UK, Precision's Prep Counters provide the best in refrigerated preparation counters for commercial kitchens all around the world.",
+          "specs": { "capacity_litres": "", "temperature_range": "1/4°C", "doors": "3", "dimensions_mm": "1420 x 920 x 1085" },
+          "origin": "United Kingdom",
+          "heat_source": "",
+          "image_url": "https://images.squarespace-cdn.com/content/v1/619e3f03e411df416b9ae17c/1683296572621-5ZN03LPGGT6U8P9XCBLP/PPC307-DDD.png",
+          "source_url": "https://www.precision-refrigeration.com/prep-counters/ppc-307-gn1/1-refrigerated-prep-counter",
+          "seo_title": "PPC 307 - GN1/1 REFRIGERATED PREP COUNTER — Precision Refrigeration",
+          "seo_description": ""
+        },
+        {
+          "model": "PPC 410",
+          "title": "GN1/1 Refrigerated Prep Counter",
+          "description_en": "Proudly made in the UK, Precision's Prep Counters provide the best in refrigerated preparation counters for commercial kitchens all around the world. Whether it be for salads, pizzas, sandwiches, tapas, desserts and much more, these prep counters are perfect for those who need to maintain their ingredients at safe temperatures all day long.",
+          "specs": { "capacity_litres": "", "temperature_range": "1/4°C", "doors": "4", "dimensions_mm": "1890 x 920 x 1085" },
+          "origin": "United Kingdom",
+          "heat_source": "",
+          "image_url": "https://images.squarespace-cdn.com/content/v1/619e3f03e411df416b9ae17c/1683296597945-7CCK0FIUGX61HFLIYPF2/PPC410-DDD.png",
+          "source_url": "https://www.precision-refrigeration.com/prep-counters/ppc-410-gn1/1-refrigerated-prep-counter",
+          "seo_title": "PPC 410 - GN1/1 REFRIGERATED PREP COUNTER — Precision Refrigeration",
+          "seo_description": ""
+        },
+        {
+          "model": "HSS 340",
+          "title": "Space Saver Refrigerated Prep Counter",
+          "description_en": "Proudly made in the UK, Precision's Space Saver Prep Counter is perfect for smaller operations or where space is at a premium. This compact all stainless steel prep counter offers high performance cold prep and storage solutions in even the smallest of kitchens.",
+          "specs": { "capacity_litres": "", "temperature_range": "1/4°C", "doors": "2 (self-closing)", "dimensions_mm": "1220 x 745 x 990" },
+          "origin": "United Kingdom",
+          "heat_source": "",
+          "image_url": "https://images.squarespace-cdn.com/content/v1/619e3f03e411df416b9ae17c/1683296627315-OLVZUZJ5MKIXNWOYOFLX/HSS340+Lid+Open.png",
+          "source_url": "https://www.precision-refrigeration.com/prep-counters/hss-340-space-saver-refrigerated-prep-counter",
+          "seo_title": "HSS 340 - SPACE SAVER REFRIGERATED PREP COUNTER — Precision Refrigeration",
+          "seo_description": ""
+        },
+        {
+          "model": "PPS 106",
+          "title": "Pizza Prep Station",
+          "description_en": "Proudly made in the UK, Precision's Pizza Prep Station provide the best in refrigerated preparation counters for high volume pizza restaurants all around the world. Features separate refrigeration systems for the pan rail and storage counter below.",
+          "specs": { "capacity_litres": "", "temperature_range": "1/4°C", "doors": "1 (Gastronorm GN1/3 pan rail)", "dimensions_mm": "1227 x 925 x 1235" },
+          "origin": "United Kingdom",
+          "heat_source": "",
+          "image_url": "https://images.squarespace-cdn.com/content/v1/619e3f03e411df416b9ae17c/938f45f3-702a-440a-a44e-a4306018a410/PPS+106+%28Open+Lid+-+LH%29.png",
+          "source_url": "https://www.precision-refrigeration.com/prep-counters/pps106-pizza-prep-station",
+          "seo_title": "PPS 106 - PIZZA PREP STATION — Precision Refrigeration",
+          "seo_description": ""
+        },
+        {
+          "model": "PPS 209",
+          "title": "Pizza Prep Station",
+          "description_en": "Proudly made in the UK, Precision's Pizza Prep Station provide the best in refrigerated preparation counters for high volume pizza restaurants all around the world.",
+          "specs": { "capacity_litres": "", "temperature_range": "1/4°C", "doors": "2 (Gastronorm GN1/3 pan rail)", "dimensions_mm": "1755 x 925 x 1238" },
+          "origin": "United Kingdom",
+          "heat_source": "",
+          "image_url": "https://images.squarespace-cdn.com/content/v1/619e3f03e411df416b9ae17c/ae43e8d3-17c4-43cf-9b9c-dc6c5e346e18/Pizza+Make-up+Counter+-+Show+Unit+-+Lid+Open.jpg",
+          "source_url": "https://www.precision-refrigeration.com/prep-counters/pps209-pizza-prep-station",
+          "seo_title": "PPS 209 - PIZZA PREP STATION — Precision Refrigeration",
+          "seo_description": ""
+        }
+      ]
+    },
+    {
+      "group_name": "Blast Chillers / Freezers",
+      "group_name_vi": "Tủ Cấp Đông Nhanh / Làm Lạnh Nhanh (Blast Chiller)",
+      "source_urls": ["https://www.precision-refrigeration.com/blast-chiller-freezers"],
+      "models": [
+        {
+          "model": "PCF 20",
+          "title": "20KG Blast Chiller / Freezer",
+          "description_en": "Proudly made in the UK, Precision's high performance, easy to use Blast Chiller / Freezer cabinets have been designed to provide energy efficient and reliable Chilling & Freezing solutions in commercial kitchens all around the world.",
+          "specs": { "capacity_litres": "Chill 20kg / Freeze 12kg per cycle", "temperature_range": "+3°C (chill) or -18°C (freeze)", "doors": "1", "dimensions_mm": "715 x 695 x 870" },
+          "origin": "United Kingdom",
+          "heat_source": "",
+          "image_url": "https://images.squarespace-cdn.com/content/v1/619e3f03e411df416b9ae17c/f9f75e2b-6655-4258-922f-1d0f0cc79b21/PCF20.jpg",
+          "source_url": "https://www.precision-refrigeration.com/blast-chiller-freezers/pcf20-20kg-blast-chiller-/-freezer",
+          "seo_title": "PCF 20 - 20KG BLAST CHILLER / FREEZER — Precision Refrigeration",
+          "seo_description": ""
+        },
+        {
+          "model": "PCF 52",
+          "title": "52KG Blast Chiller / Freezer",
+          "description_en": "Proudly made in the UK, Precision's high performance, easy to use Blast Chiller / Freezer cabinets have been designed to provide energy efficient and reliable Chilling & Freezing solutions in commercial kitchens all around the world.",
+          "specs": { "capacity_litres": "Chill 52kg / Freeze 28kg per cycle", "temperature_range": "+3°C (chill) or -18°C (freeze)", "doors": "1", "dimensions_mm": "715 x 715 x 1910" },
+          "origin": "United Kingdom",
+          "heat_source": "",
+          "image_url": "https://images.squarespace-cdn.com/content/v1/619e3f03e411df416b9ae17c/00e7a82b-11bd-4377-bc95-70455bc293d0/PCF52.jpg",
+          "source_url": "https://www.precision-refrigeration.com/blast-chiller-freezers/pcf52-52kg-blast-chiller-/-freezer",
+          "seo_title": "PCF 52 - 52KG BLAST CHILLER / FREEZER — Precision Refrigeration",
+          "seo_description": ""
+        }
+      ]
+    },
+    {
+      "group_name": "Bottle Coolers & Glass Frosters",
+      "group_name_vi": "Tủ Mát Bảo Quản Chai / Tủ Làm Lạnh Ly (Back Bar)",
+      "source_urls": ["https://www.precision-refrigeration.com/bottle-coolers"],
+      "models": [
+        {
+          "model": "BBS 600",
+          "title": "Single Door Bottle Cooler",
+          "description_en": "Precision's Back Bar Storage cabinets combine great looks with the latest hassle free energy saving refrigeration technology. Robust refrigeration systems capable of operating in 32°C ambient conditions.",
+          "specs": { "capacity_litres": "", "temperature_range": "1/15°C", "doors": "1 glass (solid option available)", "dimensions_mm": "600 x 500 x 900" },
+          "origin": "United Kingdom",
+          "heat_source": "",
+          "image_url": "https://images.squarespace-cdn.com/content/v1/619e3f03e411df416b9ae17c/7f8b9e8c-9973-4444-84c6-6465a3d972d8/BBS+600-800+-+GD+%28Front+on%29.jpg",
+          "source_url": "https://www.precision-refrigeration.com/bottle-coolers/bbs-600-single-door-bottle-cooler",
+          "seo_title": "BBS 600 - SINGLE DOOR BOTTLE COOLER — Precision Refrigeration",
+          "seo_description": ""
+        },
+        {
+          "model": "BBS 900",
+          "title": "Two Door Bottle Cooler",
+          "description_en": "Precision's Back Bar Storage cabinets combine great looks with the latest hassle free energy saving refrigeration technology, delivering dependable performance with robust refrigeration suited for 32°C ambient conditions.",
+          "specs": { "capacity_litres": "", "temperature_range": "1/15°C", "doors": "2 glass", "dimensions_mm": "900 x 500 x 900" },
+          "origin": "United Kingdom",
+          "heat_source": "",
+          "image_url": "https://images.squarespace-cdn.com/content/v1/619e3f03e411df416b9ae17c/e269c32a-a135-4ba8-a213-93147d3d8255/BBS+900-800+-+GD+%28front+on%29.jpg",
+          "source_url": "https://www.precision-refrigeration.com/bottle-coolers/bbs-900-two-door-bottle-cooler",
+          "seo_title": "BBS 900 - TWO DOOR BOTTLE COOLER — Precision Refrigeration",
+          "seo_description": ""
+        },
+        {
+          "model": "BBS 1350",
+          "title": "Three Door Bottle Cooler",
+          "description_en": "Precision's Back Bar Storage cabinets combine great looks with the latest hassle free energy saving refrigeration technology, designed as stylish bar additions with robust ambient refrigeration systems.",
+          "specs": { "capacity_litres": "", "temperature_range": "1/15°C", "doors": "3 glass (solid/sliding options)", "dimensions_mm": "1350 x 500 x 900" },
+          "origin": "United Kingdom",
+          "heat_source": "",
+          "image_url": "https://images.squarespace-cdn.com/content/v1/619e3f03e411df416b9ae17c/605c10b1-45fd-489c-aae8-36e436d193fe/BBS+1350-800+-+GD+%28front+on%29.jpg",
+          "source_url": "https://www.precision-refrigeration.com/bottle-coolers/bbs-1350-three-door-bottle-cooler",
+          "seo_title": "BBS 1350 - THREE DOOR BOTTLE COOLER — Precision Refrigeration",
+          "seo_description": ""
+        },
+        {
+          "model": "GFS 600",
+          "title": "Single Door Glass Froster",
+          "description_en": "Precision's Glass Froster cabinets combine great looks with the latest hassle free energy saving refrigeration technology. These cabinets match our bottle coolers and make a stylish addition to any bar concept with numerous exterior finishes.",
+          "specs": { "capacity_litres": "", "temperature_range": "-10/-18°C", "doors": "1 (solid as standard)", "dimensions_mm": "600 x 500 x 900" },
+          "origin": "United Kingdom",
+          "heat_source": "",
+          "image_url": "https://images.squarespace-cdn.com/content/v1/619e3f03e411df416b9ae17c/48a700f3-f6ae-40fd-8005-8de77edd31b3/BBS+600-800+-+SD+%28Front+on%29.jpg",
+          "source_url": "https://www.precision-refrigeration.com/bottle-coolers/gfs-600-single-door-glass-froster",
+          "seo_title": "GFS 600 - SINGLE DOOR GLASS FROSTER — Precision Refrigeration",
+          "seo_description": ""
+        },
+        {
+          "model": "BBS 600-1850",
+          "title": "Single Door Upright Bottle Cooler",
+          "description_en": "Precision's Back Bar Storage cabinets combine great looks with the latest hassle free energy saving refrigeration technology, serving as both stylish decor and reliable equipment with robust 32°C ambient refrigeration capabilities.",
+          "specs": { "capacity_litres": "", "temperature_range": "1/15°C", "doors": "1 glass (solid option available)", "dimensions_mm": "600 x 500 x 1850" },
+          "origin": "United Kingdom",
+          "heat_source": "",
+          "image_url": "https://images.squarespace-cdn.com/content/v1/619e3f03e411df416b9ae17c/5ab235a3-e22c-4ba5-84fa-285935682d51/BBS+600-1850+-+GD+%28front+on%29.jpg",
+          "source_url": "https://www.precision-refrigeration.com/bottle-coolers/bbs-600-1850-single-door-upright-bottle-cooler",
+          "seo_title": "BBS 600-1850 - SINGLE DOOR UPRIGHT BOTTLE COOLER — Precision Refrigeration",
+          "seo_description": ""
+        },
+        {
+          "model": "BBS 900-1850",
+          "title": "Double Door Upright Bottle Cooler",
+          "description_en": "Precision's Back Bar Storage cabinets combine great looks with the latest hassle free energy saving refrigeration technology, functioning as both stylish bar fixtures and reliable equipment with robust ambient refrigeration systems.",
+          "specs": { "capacity_litres": "", "temperature_range": "1/15°C", "doors": "2 glass (solid options available)", "dimensions_mm": "900 x 500 x 1850" },
+          "origin": "United Kingdom",
+          "heat_source": "",
+          "image_url": "https://images.squarespace-cdn.com/content/v1/619e3f03e411df416b9ae17c/ed34feb1-1ce0-446d-9a75-b11f14b1ba83/BBS+900-1850+GD+%28Front+on%29.png",
+          "source_url": "https://www.precision-refrigeration.com/bottle-coolers/bbs-900-1850-double-door-upright-bottle-cooler",
+          "seo_title": "BBS 900-1850 - DOUBLE DOOR UPRIGHT BOTTLE COOLER — Precision Refrigeration",
+          "seo_description": ""
+        }
+      ]
+    },
+    {
+      "group_name": "Meat Ageing Cabinets",
+      "group_name_vi": "Tủ Ủ Thịt (Dry Ageing)",
+      "source_urls": ["https://www.precision-refrigeration.com/meat-ageing-cabinets"],
+      "models": [
+        {
+          "model": "MA600-1950",
+          "title": "Meat Ageing Cabinet",
+          "description_en": "Precision's MA600-1950 Meat Ageing Refrigerator - The perfect temperature and humidity environment for all your meat ageing needs. Temperature can be accurately set from 1ºC and 4ºC with humidity between 70-90% - without the need for a water supply.",
+          "specs": { "capacity_litres": "", "temperature_range": "1/4°C, humidity 70-90%", "doors": "1 glass door with LED lighting", "dimensions_mm": "600 x 500 x 1950" },
+          "origin": "United Kingdom",
+          "heat_source": "",
+          "image_url": "https://images.squarespace-cdn.com/content/v1/619e3f03e411df416b9ae17c/a3ba5ca7-8fc6-4a1a-bf4b-966e53781d4f/MA600-1950.png",
+          "source_url": "https://www.precision-refrigeration.com/meat-ageing-cabinets/ma600-1950-meat-ageing-cabinet",
+          "seo_title": "MA600-1950 - MEAT AGEING CABINET — Precision Refrigeration",
+          "seo_description": ""
+        }
+      ]
+    },
+    {
+      "group_name": "Retro Refrigeration",
+      "group_name_vi": "Tủ Lạnh Kiểu Cổ Điển (Retro)",
+      "source_urls": ["https://www.precision-refrigeration.com/retro-refrigeration"],
+      "models": [
+        {
+          "model": "HRU1",
+          "title": "Retro Refrigerator",
+          "description_en": "On the inside, a modern professional refrigeration system with the latest energy-efficient features and perfect temperature control. On the outside, vintage retro styling that makes a striking focal point of any bar or kitchen.",
+          "specs": { "capacity_litres": "", "temperature_range": "1/4°C", "doors": "1 (solid standard; glass options)", "dimensions_mm": "600 x 745 x 2005" },
+          "origin": "United Kingdom",
+          "heat_source": "",
+          "image_url": "https://images.squarespace-cdn.com/content/v1/619e3f03e411df416b9ae17c/0676cb73-cf5e-4427-a2b2-c527e61c6fcc/HRU1.jpg",
+          "source_url": "https://www.precision-refrigeration.com/retro-refrigeration/hru1-retro-refrigerator",
+          "seo_title": "HRU1 - RETRO REFRIGERATOR — Precision Refrigeration",
+          "seo_description": ""
+        },
+        {
+          "model": "HRU2",
+          "title": "Retro Refrigerator",
+          "description_en": "On the inside, a modern professional refrigerator with the latest energy-efficient features and perfect temperature control. On the outside, vintage retro styling that makes a striking focal point of any bar or kitchen.",
+          "specs": { "capacity_litres": "", "temperature_range": "1/4°C", "doors": "2 (solid standard; glass options)", "dimensions_mm": "1200 x 745 x 2005" },
+          "origin": "United Kingdom",
+          "heat_source": "",
+          "image_url": "https://images.squarespace-cdn.com/content/v1/619e3f03e411df416b9ae17c/9de435d1-5414-4f05-8d62-1cf2290fa942/HRU2.jpg",
+          "source_url": "https://www.precision-refrigeration.com/retro-refrigeration/hru2-retro-refrigerator",
+          "seo_title": "HRU2 - RETRO REFRIGERATOR — Precision Refrigeration",
+          "seo_description": ""
+        },
+        {
+          "model": "HLRU2",
+          "title": "Retro Refrigerator Freezer",
+          "description_en": "On the inside, a modern professional refrigerator/freezer with the latest energy-efficient features and perfect temperature control. On the outside, vintage retro styling that makes a striking focal point of any bar or kitchen.",
+          "specs": { "capacity_litres": "", "temperature_range": "Fridge 1/4°C; Freezer -18/-22°C", "doors": "2 (solid standard; glass options on fridge section)", "dimensions_mm": "1200 x 745 x 2005" },
+          "origin": "United Kingdom",
+          "heat_source": "",
+          "image_url": "https://images.squarespace-cdn.com/content/v1/619e3f03e411df416b9ae17c/6f28b3dc-dfb4-4775-ac79-bf1b6e628428/HLRU2.jpg",
+          "source_url": "https://www.precision-refrigeration.com/retro-refrigeration/hlru2-retro-refrigerator-freezer",
+          "seo_title": "HLRU2 - RETRO REFRIGERATOR FREEZER — Precision Refrigeration",
+          "seo_description": ""
+        }
+      ]
+    }
+  ]
+}

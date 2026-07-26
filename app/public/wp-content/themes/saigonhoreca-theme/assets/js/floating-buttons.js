@@ -47,20 +47,7 @@
         updateBackToTop();
         backToTop.addEventListener('click', function (event) {
             event.preventDefault();
-            var startY = window.scrollY;
-            var duration = 800; // 800ms cuộn mượt kiểu luxury
-            var startTime = performance.now();
-
-            function scrollStep(currentTime) {
-                var elapsed = currentTime - startTime;
-                var progress = Math.min(elapsed / duration, 1);
-                var ease = 1 - Math.pow(1 - progress, 3); // ease-out cubic
-                window.scrollTo(0, startY * (1 - ease));
-                if (progress < 1) {
-                    requestAnimationFrame(scrollStep);
-                }
-            }
-            requestAnimationFrame(scrollStep);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     }
 
@@ -68,7 +55,13 @@
     var STORE_KEY = 'sh_fab_pos';
     var DRAG_THRESHOLD = 6;
     var EDGE_MARGIN = 12;
-    var SNAP_SPEED = 280;
+    // prefers-reduced-motion: animation snap-to-edge/scale-khi-kéo chạy bằng JS
+    // (style.transition đặt trực tiếp qua inline style), CSS @media không override
+    // được inline style của JS — kiểm tra 1 lần ở đây, dùng SNAP_SPEED=0 khi user
+    // bật "giảm chuyển động" (audit flag: trước đây animation luôn chạy vô điều
+    // kiện, bỏ qua tuỳ chọn hệ điều hành).
+    var prefersReducedMotion = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    var SNAP_SPEED = prefersReducedMotion ? 0 : 280;
     var MOBILE_BREAKPOINT = 768;
     var MOBILE_NAV_HEIGHT = 60;
     var FAB_TO_NAV_GAP = 5;
@@ -76,7 +69,7 @@
 
     var isDragging = false;
     var wasDragged = false;
-    var startX, startY, startLeft, startTop;
+    var startLeft, startTop;
     var lastTap = 0;
     var lastViewportWasMobile = null;
 
@@ -106,8 +99,12 @@
         };
     }
 
+    /* KHÔNG tự set el.style.transition = '' ở đây nữa — bug thật đã gặp: nơi gọi
+       duy nhất (double-tap reset bên dưới) set transition NGAY TRƯỚC khi gọi hàm
+       này để animate về vị trí mặc định, nhưng resetToDefault() lại xoá transition
+       đó trong CÙNG lệnh, nên animation không bao giờ chạy — vị trí nhảy cứng thay
+       vì mượt. Quản lý transition là việc của nơi gọi, hàm này chỉ xoá style vị trí. */
     function resetToDefault() {
-        el.style.transition = '';
         el.style.left = '';
         el.style.top = '';
         el.style.bottom = '';
@@ -163,31 +160,83 @@
         } catch (e) {}
     }
 
-    el.addEventListener('mousedown', function (e) {
+    /*
+     * Kéo-thả dùng Pointer Events (chuẩn hợp nhất chuột+chạm+bút, thay cho 2 bộ
+     * listener mouse/touch riêng biệt trước đây — gộp lại để tối ưu, giảm trùng
+     * lặp và giảm bề mặt bug).
+     *
+     * 2 bug thật đã gặp trên bản mouse/touch cũ, cả 2 đều sửa dứt điểm ở đây:
+     *
+     * 1) "Bấm lần đầu như kéo, phải bấm lại" — code cũ vào "chế độ kéo" NGAY khi
+     *    mousedown, nên chỉ cần rung tay vài px lúc click (rất thường gặp, nhất
+     *    là trackpad) là bị tính nhầm thành đã kéo → cụm nút tự snap vị trí VÀ
+     *    click bị nuốt (capture-listener bên dưới stopPropagation khi wasDragged).
+     *    → Sửa: chỉ THẬT SỰ commit "đang kéo" (set isDragging/class) KHI đã xác
+     *    nhận di chuyển vượt DRAG_THRESHOLD trong pointermove — click thường
+     *    (không di chuyển) không bao giờ chạm nhánh code kéo-thả.
+     *
+     * 2) "Nhấn 2 lần toàn kéo ra ảnh Zalo/số điện thoại/ảnh FB" — hệ quả phụ của
+     *    fix (1): bỏ preventDefault() khỏi mousedown vô tình để lộ hành vi KÉO
+     *    ẢNH/LINK GỐC của trình duyệt (native HTML5 drag-and-drop) trên <img>
+     *    Zalo/Facebook và <a href="tel:...">, không có gì chặn nó nữa.
+     *    → Sửa: chặn hẳn dragstart gốc (bên dưới) — logic kéo-thả cụm nút của
+     *    theme hoàn toàn tách biệt, tự quản bằng pointer events, không cần và
+     *    không nên để trình duyệt tự khởi tạo native drag trên bất kỳ phần tử
+     *    con nào (ảnh, link) trong cụm.
+     */
+    el.addEventListener('dragstart', function (e) { e.preventDefault(); });
+
+    var pointerDownAt = null; // {x, y, left, top} — ghi lúc pointerdown, chưa chắc là kéo
+    var activePointerId = null;
+    var captureTarget = null;
+
+    el.addEventListener('pointerdown', function (e) {
         var rect = el.getBoundingClientRect();
-        isDragging = true;
+        pointerDownAt = { x: e.clientX, y: e.clientY, left: rect.left, top: rect.top };
+        activePointerId = e.pointerId;
         wasDragged = false;
-        startX = e.clientX;
-        startY = e.clientY;
-        startLeft = rect.left;
-        startTop = rect.top;
-        el.style.transition = 'none';
-        el.classList.add('sh-fab-dragging');
-        e.preventDefault();
+        // Capture NGAY từ pointerdown trên CHÍNH e.target thay vì el.
+        // Bắt trên el sẽ làm mất sự kiện click của thẻ con (trình duyệt gán click cho el).
+        captureTarget = e.target;
+        if (captureTarget.setPointerCapture) {
+            try { captureTarget.setPointerCapture(activePointerId); } catch (err) {}
+        }
     });
 
-    document.addEventListener('mousemove', function (e) {
-        if (!isDragging) return;
+    el.addEventListener('pointermove', function (e) {
+        if (!pointerDownAt || e.pointerId !== activePointerId) return;
 
-        var dx = e.clientX - startX;
-        var dy = e.clientY - startY;
-        if (!wasDragged && Math.abs(dx) + Math.abs(dy) < DRAG_THRESHOLD) return;
-
-        wasDragged = true;
+        var dx = e.clientX - pointerDownAt.x;
+        var dy = e.clientY - pointerDownAt.y;
+        if (!isDragging) {
+            if (Math.abs(dx) + Math.abs(dy) < DRAG_THRESHOLD) return;
+            // Vượt ngưỡng lần đầu — bây giờ mới thật sự bắt đầu kéo.
+            isDragging = true;
+            wasDragged = true;
+            startLeft = pointerDownAt.left;
+            startTop = pointerDownAt.top;
+            el.style.transition = 'none';
+            el.classList.add('sh-fab-dragging');
+        }
         applyPosition(startLeft + dx, startTop + dy, false);
     });
 
-    document.addEventListener('mouseup', function () {
+    function endPointerInteraction(e) {
+        if (e && e.pointerId !== activePointerId) return;
+        if (captureTarget && captureTarget.releasePointerCapture && captureTarget.hasPointerCapture && captureTarget.hasPointerCapture(activePointerId)) {
+            try { captureTarget.releasePointerCapture(activePointerId); } catch (err) {}
+        }
+        pointerDownAt = null;
+        activePointerId = null;
+        captureTarget = null;
+        // wasDragged KHÔNG xoá ngay ở đây — click theo sau 1 cú kéo bằng chuột thật
+        // dispatch NGAY SAU pointerup trong CÙNG tác vụ đồng bộ, capture-handler bên
+        // dưới cần đọc được wasDragged=true lúc đó để nuốt đúng click đó. Dọn dẹp
+        // bằng setTimeout(0) — chạy SAU khi click (nếu có) đã xử lý xong trong cùng
+        // tick, đảm bảo wasDragged không "sống sót" quá lâu để nuốt nhầm 1 click
+        // không liên quan sau này (vd Enter bàn phím kích hoạt link, không có
+        // pointerdown trước đó — bug thật đã gặp khi audit).
+        setTimeout(function () { wasDragged = false; }, 0);
         if (!isDragging) return;
 
         isDragging = false;
@@ -195,48 +244,19 @@
         if (wasDragged) {
             snapToEdge();
         }
-    });
-
-    el.addEventListener('touchstart', function (e) {
-        var touch = e.touches[0];
-        var rect = el.getBoundingClientRect();
-        isDragging = true;
-        wasDragged = false;
-        startX = touch.clientX;
-        startY = touch.clientY;
-        startLeft = rect.left;
-        startTop = rect.top;
-        el.style.transition = 'none';
-        el.classList.add('sh-fab-dragging');
-    }, { passive: true });
-
-    document.addEventListener('touchmove', function (e) {
-        if (!isDragging) return;
-
-        var touch = e.touches[0];
-        var dx = touch.clientX - startX;
-        var dy = touch.clientY - startY;
-        if (!wasDragged && Math.abs(dx) + Math.abs(dy) < DRAG_THRESHOLD) return;
-
-        wasDragged = true;
-        e.preventDefault();
-        applyPosition(startLeft + dx, startTop + dy, false);
-    }, { passive: false });
-
-    document.addEventListener('touchend', function () {
-        if (!isDragging) return;
-
-        isDragging = false;
-        el.classList.remove('sh-fab-dragging');
-        if (wasDragged) {
-            snapToEdge();
-        }
-    });
+    }
+    el.addEventListener('pointerup', endPointerInteraction);
+    el.addEventListener('pointercancel', endPointerInteraction);
 
     el.addEventListener('click', function (e) {
         if (wasDragged) {
             e.preventDefault();
-            e.stopPropagation();
+            // stopImmediatePropagation (không chỉ stopPropagation) — bug thật đã gặp:
+            // stopPropagation không chặn listener KHÁC trên CÙNG target, nên listener
+            // double-tap bên dưới vẫn chạy cho chính click bị kéo-suppress này, có
+            // thể vô tình ghi nhận thành 1 lần "tap" và gộp với tap kế tiếp thành
+            // double-tap giả, reset nhầm vị trí cụm nút.
+            e.stopImmediatePropagation();
             wasDragged = false;
         }
     }, true);

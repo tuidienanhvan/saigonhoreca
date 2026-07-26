@@ -33,8 +33,11 @@
     position: relative;
     overflow: hidden;
     flex-shrink: 0;
-    width: 130px;
-    aspect-ratio: 1;
+    width: 140px;
+    aspect-ratio: 16 / 9;
+    align-self: center;
+    margin-left: 0.5rem;
+    border-radius: 0.5rem;
 }
 
 @media (min-width: 640px) { .sh-card__thumb { width: 160px; } }
@@ -42,7 +45,10 @@
 @media (min-width: 768px) {
     .sh-card__thumb {
         width: 100%;
-        aspect-ratio: 4 / 3;
+        aspect-ratio: 16 / 9;
+        align-self: flex-start;
+        margin-left: 0;
+        border-radius: 0;
     }
 }
 
@@ -99,22 +105,10 @@
 
 @media (min-width: 768px) { .sh-card__placeholder-text { display: block; } }
 
-/* ── Date Badge (desktop) ── */
+/* ── Date Badge (desktop) - HIDDEN ── */
 .sh-card__date-badge {
-    display: none;
-    position: absolute;
-    top: 0.75rem;
-    left: 0.75rem;
-    background: var(--bg-elevated);
-    backdrop-filter: blur(8px);
-    padding: 0.375rem 0.75rem;
-    border-radius: 0.5rem;
-    box-shadow: var(--shadow);
-    text-align: center;
+    display: none !important;
 }
-
-@media (min-width: 768px) { .sh-card__date-badge { display: block; } }
-@media (min-width: 1024px) { .sh-card__date-badge { top: 1rem; left: 1rem; padding: 0.5rem 1rem; } }
 
 .sh-card__date-day {
     display: block;
@@ -142,15 +136,16 @@
 
 /* ── Body ── */
 .sh-card__body {
-    padding: 0.75rem;
+    padding: 0.5rem 0.5rem 0.5rem 0.75rem;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
     min-width: 0;
+    justify-content: center;
 }
 
 @media (min-width: 640px) { .sh-card__body { padding: 1rem; } }
-@media (min-width: 768px) { .sh-card__body { padding: 1.25rem; } }
+@media (min-width: 768px) { .sh-card__body { padding: 1.25rem; justify-content: flex-start; } }
 @media (min-width: 1024px) { .sh-card__body { padding: 1.5rem; } }
 
 /* ── Meta (date + category) ── */
@@ -172,7 +167,7 @@
     border-radius: 0.25rem;
 }
 
-@media (min-width: 768px) { .sh-card__date-mobile { display: none; } }
+/* @media (min-width: 768px) { .sh-card__date-mobile { display: none; } } - Removed so it shows on desktop too */
 
 .sh-card__cat {
     font-size: 0.625rem;

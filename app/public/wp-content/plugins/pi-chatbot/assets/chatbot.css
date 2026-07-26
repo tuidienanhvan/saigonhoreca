@@ -296,7 +296,7 @@
    — a flat, quiet strip that recedes behind the answer bubble it's introducing, rather
    than a boxed panel competing with it for attention. */
 #pi-chatbot-panel .pi-cb-progress {
-    font-size: 12.5px;
+    font-size: 11px;
     color: var(--cb-text-muted);
 }
 #pi-chatbot-panel .pi-cb-step-row + .pi-cb-step-row {
@@ -308,28 +308,32 @@
     user-select: none;
     display: flex;
     align-items: baseline;
-    gap: 7px;
-    padding: 6px 2px;
+    gap: 5px;
+    padding: 4px 2px;
     font-weight: 500;
     transition: color 0.2s ease;
 }
 #pi-chatbot-panel .pi-cb-step-row summary::-webkit-details-marker { display: none; }
-/* A small chevron, not a triangle — quieter, closer in weight to the reference's own
-   expand icon than the previous filled-triangle marker. */
-#pi-chatbot-panel .pi-cb-step-row summary::before {
+/* Chevron placed LAST in paint order (::after, not ::before) so it lands at the far
+   right of the row — matching the reference UI, where the expand arrow sits after the
+   "...trong Xs" text, not before the label. Follows .pi-cb-step-time in the DOM, so it
+   naturally sits to the right of the elapsed-time text rather than at the start of the
+   row (the previous ::before placement put it on the wrong side). */
+#pi-chatbot-panel .pi-cb-step-row summary::after {
     content: "";
     flex-shrink: 0;
     align-self: center;
-    width: 6px;
-    height: 6px;
+    margin-left: 4px;
+    width: 5px;
+    height: 5px;
     border-right: 1.5px solid var(--cb-text-muted);
     border-bottom: 1.5px solid var(--cb-text-muted);
-    transform: rotate(-45deg);
+    transform: rotate(45deg);
     transition: transform 0.2s ease;
     opacity: 0.6;
 }
-#pi-chatbot-panel .pi-cb-step-row[open] summary::before {
-    transform: rotate(45deg);
+#pi-chatbot-panel .pi-cb-step-row[open] summary::after {
+    transform: rotate(-135deg);
 }
 #pi-chatbot-panel .pi-cb-step-row summary:hover {
     color: var(--cb-text);
@@ -347,7 +351,7 @@
     row-gap: 0;
 }
 #pi-chatbot-panel .pi-cb-step-eyebrow {
-    font-size: 10px;
+    font-size: 9px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -369,8 +373,8 @@
 #pi-chatbot-panel .pi-cb-step-time {
     flex-shrink: 0;
     margin-left: auto;
-    padding-left: 8px;
-    font-size: 10.5px;
+    padding-left: 6px;
+    font-size: 9.5px;
     font-variant-numeric: tabular-nums;
     color: var(--cb-text-muted);
     opacity: 0.6;
@@ -401,6 +405,17 @@
     gap: 3px;
 }
 #pi-chatbot-panel .pi-cb-step-body:empty {
+    display: none;
+}
+/* A row with nothing to expand must not show an expand affordance — otherwise clicking
+   it looks broken (e.g. a rule-based "contact question" never runs a real data lookup,
+   so its row has zero detail lines; showing a chevron there invites a click that reveals
+   nothing). General rule keyed off the body's actual emptiness, not the step's kind, so
+   it covers every current and future step type the same way. */
+#pi-chatbot-panel .pi-cb-step-row:has(.pi-cb-step-body:empty) summary {
+    cursor: default;
+}
+#pi-chatbot-panel .pi-cb-step-row:has(.pi-cb-step-body:empty) summary::after {
     display: none;
 }
 #pi-chatbot-panel .pi-cb-step-line {

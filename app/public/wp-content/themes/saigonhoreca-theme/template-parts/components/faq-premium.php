@@ -68,7 +68,7 @@ if (class_exists('SGH_SEO_Schema')) {
         </div>
 
         <div class="sh-faq-premium__cta">
-            <p>Còn câu hỏi khác? <a href="tel:0961868968">0961 868 968</a></p>
+            <p>Còn câu hỏi khác? <a href="tel:0901304365">0901 304 365</a></p>
         </div>
 
     </div>

@@ -1,4 +1,10 @@
 <?php
+if (!function_exists('is_plugin_active')) {
+    require_once ABSPATH . 'wp-admin/includes/plugin.php';
+}
+if (!is_plugin_active('pi-multilang/pi-multilang.php')) {
+    activate_plugin('pi-multilang/pi-multilang.php');
+}
 /**
  * Saigon Horeca Theme Functions
  *
@@ -153,6 +159,7 @@ require_once get_template_directory() . '/inc/engine/class-sidebar-walker.php';
  * Fires ONCE when the theme is switched to. Also runs if the structure is missing.
  * Defensive: catches any server-side restriction (e.g. read-only .htaccess).
  */
+
 if (!function_exists('saigonhouse_enforce_permalink_structure')) {
 function saigonhouse_enforce_permalink_structure() {
     try {
@@ -241,7 +248,6 @@ require $inc . 'site/project-cover.php';      // project cover resolver — cach
 require $inc . 'engine/bot-optimize.php';      // sgh_is_bot() — bots/Lighthouse get light render (no fixed parallax)
 require $inc . 'engine/slug-map.php';          // Bilingual slug map (vi ↔ en) + counterpart URL switcher
 require $inc . 'engine/pillar-routes.php';     // Auto-route /du-an/<slug>/ to page-pillar-*.php (BEM rebuild)
-require $inc . 'site/temp-migration.php';    // Temporary migration for Nam An project slug
 require $inc . 'engine/cpt-registration.php';  // CPT `project`+`product` + taxonomies (Phase 2 data layer)
 require $inc . 'engine/media-routing.php';      // Route new uploads: product->products/<slug>/, post->blog/<slug>/
 
@@ -323,50 +329,6 @@ add_action('init', function () {
     update_option('sh_webp_legacy_cleared', 1, false);
 }, 999);
 
-// ============================================================================
-// PI PLUGINS " Installed in wp-content/plugins/ and activated via WP Admin
-// ============================================================================
-// Required plugins:
-//   pi-dashboard     " Core framework (must be active)
-//   pi-ai-provider   " 25 AI providers + failover (required by SEO Bot + Chatbot)
-//   pi-performance   " Cache, PWA, image optimizer
-//   pi-analytics     " Visit tracking, post views
-//   pi-leads         " CRM, contact form, webhooks
-//   pi-chatbot       " AI chatbot widget
-//   pi-seo           " Meta tags, schema, sitemap, SEO audit
-//
-// Show admin notice only on Dashboard + Plugins pages, not everywhere.
-add_action('admin_notices', function () {
-    if (!current_user_can('manage_options')) return;
-
-    // Only show on Dashboard Home and Plugins pages
-    $screen = function_exists('get_current_screen') ? get_current_screen() : null;
-    if (!$screen) return;
-    $allowed_screens = ['dashboard', 'plugins'];
-    if (!in_array($screen->id, $allowed_screens, true)) return;
-
-    if (!function_exists('is_plugin_active')) {
-        require_once ABSPATH . 'wp-admin/includes/plugin.php';
-    }
-    $required = [
-        'pi-dashboard/pi-dashboard.php'       => 'Pi Dashboard',
-        'pi-ai-provider/pi-ai-provider.php'   => 'Pi AI Provider',
-        'pi-seo/pi-seo.php'                   => 'Pi SEO',
-        'pi-chatbot/pi-chatbot.php'           => 'Pi Chatbot',
-        'pi-leads/pi-leads.php'               => 'Pi Leads',
-        'pi-analytics/pi-analytics.php'       => 'Pi Analytics',
-        'pi-performance/pi-performance.php'   => 'Pi Performance',
-    ];
-    $missing = [];
-    foreach ($required as $slug => $name) {
-        if (!is_plugin_active($slug)) $missing[] = $name;
-    }
-    if (!empty($missing)) {
-        echo '<div class="notice notice-warning is-dismissible"><p><strong>SaigonHoreca Theme:</strong> Chưa kích hoạt plugin: <strong>'
-            . esc_html(implode(', ', $missing)) . '</strong>. '
-            . '<a href="' . esc_url(admin_url('plugins.php')) . '">Vào Plugins → Activate</a>.</p></div>';
-    }
-});
 
 // ============================================================================
 // THEME MODULES -- Brand-specific, not in plugins
@@ -378,6 +340,7 @@ require $inc . 'site/auto-setup.php';        // Theme activation (front page, me
 require $inc . 'engine/svg-icons.php';         // Inline SVG icons
 require $inc . 'site/section-images.php';    // Media library helper
 require $inc . 'engine/breadcrumbs.php';       // Breadcrumbs renderer
+require $inc . 'engine/excerpt-resolver.php';     // Smart Excerpt & Sapo Fallback Module
 require $inc . 'engine/cache-helpers.php';     // Theme cache helpers
 require $inc . 'site/pi-seo-resolver.php';   // Pi-managed SEO meta/options resolver
 require $inc . 'engine/seo-meta.php';           // Saigon Horeca SEO Meta & Social Tags Module

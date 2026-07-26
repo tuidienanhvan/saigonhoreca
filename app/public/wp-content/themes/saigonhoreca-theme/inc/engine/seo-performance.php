@@ -87,11 +87,12 @@ if (!class_exists('SGH_SEO_Performance')) {
                 header('Cross-Origin-Opener-Policy: same-origin');
             }
 
-            // Content Security Policy
+            // Content Security Policy — nonce from security-headers.php
+            $nonce = $GLOBALS['sgh_csp_nonce'] ?? '';
             $csp = [
                 "default-src 'self'",
-                "script-src 'self' 'unsafe-inline' 'unsafe-eval' https: blob:",
-                "script-src-elem 'self' 'unsafe-inline' https: blob:",
+                "script-src 'self' 'unsafe-eval' https: blob: 'nonce-{$nonce}'",
+                "script-src-elem 'self' https: blob: 'nonce-{$nonce}'",
                 "style-src 'self' 'unsafe-inline' https:",
                 "font-src 'self' data: https:",
                 "img-src 'self' data: blob: https:",

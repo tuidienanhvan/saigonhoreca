@@ -188,6 +188,16 @@
     -webkit-user-select: none;
     user-select: none;
 }
+/* Chặn hành vi kéo-ảnh/kéo-link GỐC của trình duyệt trên <img> Zalo/Facebook và
+   <a href="tel:..."> — phòng thủ kép cùng dragstart preventDefault() trong JS
+   (bug đã gặp: kéo nhẹ ra khỏi nút hiện ghost-preview ảnh/link thay vì kéo cụm
+   nút). Một số WebKit cũ vẫn có thể khởi tạo native drag dù JS đã chặn dragstart. */
+#sh-floating-buttons img,
+#sh-floating-buttons a,
+#sh-floating-buttons svg {
+    -webkit-user-drag: none;
+    user-drag: none;
+}
 #sh-floating-buttons.sh-fab-dragging {
     cursor: grabbing;
     opacity: 0.85;
@@ -202,6 +212,18 @@
 #sh-floating-buttons:not(.sh-fab-dragging) a:hover,
 #sh-floating-buttons:not(.sh-fab-dragging) button:hover {
     cursor: pointer;
+}
+
+/* prefers-reduced-motion: animation kéo-thả (JS-driven) đã tự tắt qua SNAP_SPEED=0
+   trong floating-buttons.js — đây là phần CSS-driven còn lại (hover scale/shadow
+   trên từng nút, transition đáy cụm nút khi resize) mà @media không override được
+   nếu chỉ đặt ở JS (audit flag: trước đây animation luôn chạy vô điều kiện). */
+@media (prefers-reduced-motion: reduce) {
+    #sh-floating-buttons,
+    #sh-floating-buttons * {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
 }
 
 /* ── Mobile compact sizing ── */

@@ -32,7 +32,7 @@ if (!function_exists('sgh_font_families')) {
     function sgh_font_families() {
         return [
             'body'    => '"Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif',
-            'heading' => '"Lexend", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif',
+            'heading' => '"Be Vietnam Pro", "Lexend", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif',
             'serif'   => '"Lora", Georgia, serif',
         ];
     }

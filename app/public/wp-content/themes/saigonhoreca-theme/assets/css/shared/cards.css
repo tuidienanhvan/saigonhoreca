@@ -32,7 +32,7 @@
 
   .sh-card__img-wrap {
     @apply relative overflow-hidden;
-    aspect-ratio: 16 / 10;
+    aspect-ratio: 16 / 9;
   }
 
   .sh-card__img {

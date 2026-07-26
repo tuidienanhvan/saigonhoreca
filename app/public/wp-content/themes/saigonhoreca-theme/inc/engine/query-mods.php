@@ -32,4 +32,27 @@ add_action('pre_get_posts', function ($query) {
     if ($query->is_archive() || $query->is_category() || $query->is_tag() || $query->is_search() || $query->is_home()) {
         $query->set('posts_per_page', 9);
     }
+
+    // Nâng cấp Search Frontend bằng lõi Pi Chatbot
+    if ($query->is_search() && class_exists('Pi_Chatbot_Retriever')) {
+        $s = $query->get('s');
+        $results = Pi_Chatbot_Retriever::search($s, 50); // Lấy top 50 kết quả tốt nhất
+        
+        if (!empty($results)) {
+            $post_ids = array_column($results, 'id');
+            if (!empty($post_ids)) {
+                $query->set('post__in', $post_ids);
+                $query->set('orderby', 'post__in'); // Giữ đúng thứ tự xếp hạng thông minh của Chatbot
+                $query->set('pi_smart_search', true);
+            }
+        }
+    }
 });
+
+// Vô hiệu hóa câu lệnh LIKE %s% mặc định của WordPress nếu Pi Chatbot đã có kết quả
+add_filter('posts_search', function($search, $query) {
+    if (!is_admin() && $query->is_main_query() && $query->is_search() && $query->get('pi_smart_search')) {
+        return '';
+    }
+    return $search;
+}, 10, 2);

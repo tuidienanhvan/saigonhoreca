@@ -11,7 +11,7 @@
  * @package SaigonHoreca
  */
 
-$hotline       = get_theme_mod('saigonhouse_hotline', '0961 868 968');
+$hotline       = get_theme_mod('saigonhouse_hotline', '0901 304 365');
 $hotline_clean = preg_replace('/[^0-9+]/', '', (string) $hotline);
 $contact_url   = apply_filters('sh_sidebar_contact_url', home_url('/lien-he'));
 $cta_title     = apply_filters('sh_sidebar_cta_title', __('Tiện Ích Nổi Bật', 'saigonhoreca'));

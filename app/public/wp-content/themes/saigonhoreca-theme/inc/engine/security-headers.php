@@ -39,23 +39,19 @@ add_action('send_headers', function() {
         header('Cross-Origin-Opener-Policy: same-origin');
     }
 
-    // Content Security Policy — tuned for saigonhoreca's Elementor +
-    // Astra + WooCommerce + GA4 stack served via the static mirror.
-    // The saigonhouse parent theme had a tight saigonhouse-plugin CSP
-    // that broke runtime here (9× font-src violations, GA collect blocks,
-    // WooCommerce webpack chunks refused). Relaxed scopes:
-    //   - font-src: + https: (FontAwesome, Astra subsets, third-party icon sets)
-    //   - script-src: + https: (Astra + Elementor + Woo chunks under same host)
-    //   - connect-src: + https://*.google.com https://*.analytics.google.com
-    //     (GA4 routes traffic through analytics.google.com and www.google.com)
-    //   - style-src: + https: (Astra inline + Elementor)
-    //   - img-src: blob: https: (already permissive)
-    // Future hardening (production): replace with nonced CSP per real plugin
-    // set; static mirror is dev-only so trade some strictness for working UI.
+    // ── CSP nonce ──
+    // Generate a unique nonce per request. Stored in a global so header.php
+    // can read it and attach to inline <script> tags.
+    $nonce = base64_encode(random_bytes(16));
+    $GLOBALS['sgh_csp_nonce'] = $nonce;
+
+    // Content Security Policy — nonce replaces unsafe-inline for scripts.
+    // Inline scripts that MUST stay inline (dark-mode flash-prevention) get
+    // the nonce attribute. All other scripts are external (enqueued).
     $csp = [
         "default-src 'self'",
-        "script-src 'self' 'unsafe-inline' 'unsafe-eval' https: blob:",
-        "script-src-elem 'self' 'unsafe-inline' https: blob:",
+        "script-src 'self' 'unsafe-eval' https: blob: 'nonce-{$nonce}'",
+        "script-src-elem 'self' https: blob: 'nonce-{$nonce}'",
         "style-src 'self' 'unsafe-inline' https:",
         "font-src 'self' data: https:",
         "img-src 'self' data: blob: https:",

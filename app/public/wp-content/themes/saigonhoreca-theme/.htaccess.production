@@ -15,7 +15,16 @@
 <IfModule mod_expires.c>
     ExpiresActive On
     ExpiresDefault "access plus 1 month"
-    
+
+    # ExpiresDefault áp dụng cho MỌI content-type không khai báo riêng — kể cả
+    # text/html (trang WordPress render động), khiến trình duyệt khoá cứng 1
+    # THÁNG, không gọi lại server dù /flush-cache đã chạy đúng phía server.
+    # Header Cache-Control max-age=0 (env=SGH_STATIC_CACHE ở trên) chỉ áp dụng
+    # khi trang serve từ file cache tĩnh — request PHP render tươi (luôn xảy
+    # ra ngay sau flush) rơi vào ExpiresDefault không được bảo vệ. Khai báo
+    # riêng để mod_expires không bao giờ cache dài hạn HTML phía trình duyệt.
+    ExpiresByType text/html "access plus 0 seconds"
+
     # Media/Images
     ExpiresByType image/jpg "access plus 1 year"
     ExpiresByType image/jpeg "access plus 1 year"
