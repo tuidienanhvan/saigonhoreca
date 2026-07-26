@@ -226,6 +226,32 @@ pi_check('normal prose is not flagged', !$looks_degenerate($normal));
 $bulleted = "- Loại: tủ đông\n- Dung tích: 500L\n- Điện áp: 220V\n- Xuất xứ: Nhật Bản\n- Bảo hành: 12 tháng\n- Màu sắc: trắng bạc hiện đại sang trọng";
 pi_check('bullet-point lists are not flagged as repetition', !$looks_degenerate($bulleted), $bulleted);
 
+// The real miss, caught in the live audit on 2026-07-26: asked "giới thiệu về
+// công ty", the model looped "lò nướng bánh quy," 241 times — 93% of a 4941-char
+// answer, cut off mid-word — and the guard passed it, because the loop is a
+// 4-token PHRASE and a phrase's length divides each token's share: the most
+// frequent single token came to 0.244, just under the 0.25 unigram threshold.
+// Reproduced here at the same shape, not the same length.
+$phrase_loop = 'Chúng tôi cung cấp: ' . str_repeat('lò nướng bánh quy, ', 40);
+pi_check('a repeated multi-word PHRASE is flagged (the unigram ratio cannot see it)',
+    $looks_degenerate($phrase_loop));
+pi_check('...and it is the phrase check catching it, not the unigram one — proving the new rule is what fires',
+    (function () use ($phrase_loop) {
+        $words = array_values(array_filter(preg_split('/\s+/u', trim($phrase_loop)),
+            fn ($w) => (bool) preg_match('/[\p{L}\p{N}]/u', $w)));
+        $counts = array_count_values(array_map('mb_strtolower', $words));
+        arsort($counts);
+        return (reset($counts) / count($words)) <= 0.25; // unigram rule alone would NOT flag this
+    })());
+
+// Guard the other direction, which is what the high phrase threshold buys: a
+// genuine product list repeats a short phrase once per item and must survive.
+$product_list = "Các dòng tủ mát hiện có:\n- Tủ mát 2 cửa RT-128MA-S dung tích lớn\n"
+    . "- Tủ mát 2 cửa RT-158MA-S tiết kiệm điện\n- Tủ mát 1 cửa RT-96MA-SG cửa kính\n"
+    . "- Tủ mát 3 cửa RT-188MA-SG phù hợp bếp lớn\nBạn cần loại nào để mình tư vấn thêm?";
+pi_check('a real product list repeating a short phrase per item is NOT flagged',
+    !$looks_degenerate($product_list), $product_list);
+
 // ── Generator::strip_markdown ────────────────────────────────────────────────
 pi_section('Generator::strip_markdown');
 

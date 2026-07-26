@@ -36,10 +36,28 @@ class Pi_Chatbot_Router {
     const PROMPT_VERSION = 4;
 
     const MODEL_DEFAULT = 'codestral-latest';
-    // Single attempt, no retry — unlike Generator (2 keys). An extra retry
-    // second here is not worth the added wait on the now-mandatory classify step.
     const TIMEOUT_SECONDS = 8;
-    const MAX_KEY_ATTEMPTS = 1;
+    /**
+     * Try a SECOND key when the first one fails. This was 1 ("an extra retry
+     * second here is not worth the added wait on the now-mandatory classify
+     * step") — reasoning that made sense when the site had exactly one key,
+     * because there was no second key to fail over TO.
+     *
+     * Measured in the live audit on 2026-07-26, with 2 keys configured: the
+     * router's first key timed out on "do you have commercial ice machines",
+     * the router returned null, no keywords were extracted, retrieval never
+     * ran, and the bot answered "I don't have information on commercial ice
+     * machines in our current catalog" — while the catalog contains a whole
+     * Hoshizaki FM- line of them. Telling a customer we do not sell something
+     * we do sell is the single worst failure mode this bot has, and it cost 8
+     * wasted seconds to produce.
+     *
+     * The retry only costs time in the case where the request had ALREADY
+     * failed and was about to degrade anyway; a healthy first key is unaffected.
+     * Worst case on the classify step goes from 8s to 16s, and only for a
+     * request that would otherwise have been answered wrongly.
+     */
+    const MAX_KEY_ATTEMPTS = 2;
 
     const CACHE_TTL_POSITIVE = 30 * DAY_IN_SECONDS; // a phrase's classification doesn't change with the catalog
     const CACHE_TTL_NEGATIVE = 10 * MINUTE_IN_SECONDS; // avoid hammering LLM7 on a repeatedly-failing question

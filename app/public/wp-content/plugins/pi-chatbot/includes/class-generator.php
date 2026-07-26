@@ -345,6 +345,16 @@ class Pi_Chatbot_Generator {
      * word makes up more than 25% of a long-enough answer, it's almost
      * certainly abnormal repetition, not natural phrasing.
      */
+    /** Share of the answer a single repeated TOKEN may occupy. */
+    const DEGENERATE_UNIGRAM_RATIO = 0.25;
+    /** Share of the answer a single repeated PHRASE may occupy. Much higher
+     *  than the unigram limit on purpose — see the comment at the loop. */
+    const DEGENERATE_NGRAM_COVERAGE = 0.5;
+    /** Longest repeated phrase looked for. Loops observed on this free tier are
+     *  short list fragments (2-5 tokens); scanning further costs time and finds
+     *  nothing new. */
+    const DEGENERATE_MAX_NGRAM = 6;
+
     private static function looks_degenerate($text) {
         $words = preg_split('/\s+/u', trim($text));
         // Drop tokens with no letters/digits at all (bare "-"/"*"/"•" bullet
@@ -361,10 +371,41 @@ class Pi_Chatbot_Generator {
         }));
         $total = count($words);
         if ($total < 20) return false; // too short a sample to judge reliably, avoid false positives
-        $counts = array_count_values(array_map('mb_strtolower', $words));
+        $words = array_map('mb_strtolower', $words);
+
+        $counts = array_count_values($words);
         arsort($counts);
-        $top_count = reset($counts);
-        return ($top_count / $total) > 0.25;
+        if ((reset($counts) / $total) > self::DEGENERATE_UNIGRAM_RATIO) return true;
+
+        // Phrase-level check. The single-token ratio above CANNOT see a loop
+        // that repeats a multi-word phrase, because the phrase's own length
+        // divides each token's share: measured live on "giới thiệu về công ty",
+        // the model emitted "lò nướng bánh quy," 241 times in a row — 93% of
+        // the entire answer, which then got cut off mid-word at max_tokens —
+        // yet the most frequent single token ("lò", 253/1037) came to 0.244,
+        // just UNDER the 0.25 threshold. The answer shipped to the customer.
+        //
+        // Coverage (occurrences x phrase length / total tokens) is the honest
+        // measure: it asks what share of the text this one phrase actually is,
+        // which is the same question the unigram ratio asks, only not blinded
+        // by phrase length. Threshold is deliberately much higher than the
+        // unigram one — a product list legitimately repeats a short phrase
+        // ("tủ mát", "máy rửa") once per item, and that must not be flagged,
+        // whereas nothing legitimate makes one phrase HALF the answer.
+        for ($n = 2; $n <= self::DEGENERATE_MAX_NGRAM; $n++) {
+            if ($total < $n * 4) break; // too few tokens for a repeat to mean anything
+            $ngrams = [];
+            for ($i = 0; $i + $n <= $total; $i++) {
+                $key = implode(' ', array_slice($words, $i, $n));
+                $ngrams[$key] = ($ngrams[$key] ?? 0) + 1;
+            }
+            if (!$ngrams) continue;
+            arsort($ngrams);
+            $coverage = (reset($ngrams) * $n) / $total;
+            if ($coverage > self::DEGENERATE_NGRAM_COVERAGE) return true;
+        }
+
+        return false;
     }
 
     /**
