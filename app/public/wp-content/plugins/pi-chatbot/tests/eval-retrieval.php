@@ -283,11 +283,39 @@ if ($compare_file && file_exists(__DIR__ . '/' . $compare_file)) {
         );
     }
     $bo = $base['overall'];
+    $deltas = [
+        'hit@1'     => $snapshot['overall']['hit1'] - $bo['hit1'],
+        'hit@3'     => $snapshot['overall']['hit3'] - $bo['hit3'],
+        'recall@5'  => $snapshot['overall']['recall5'] - $bo['recall5'],
+        'MRR'       => $snapshot['overall']['mrr'] - $bo['mrr'],
+    ];
     printf(
         "%-28s %+10.3f %+10.3f %+10.3f %+10.3f\n",
-        "TOTAL", $snapshot['overall']['hit1'] - $bo['hit1'], $snapshot['overall']['hit3'] - $bo['hit3'],
-        $snapshot['overall']['recall5'] - $bo['recall5'], $snapshot['overall']['mrr'] - $bo['mrr']
+        "TOTAL", $deltas['hit@1'], $deltas['hit@3'], $deltas['recall@5'], $deltas['MRR']
     );
+
+    // Comparison is a GATE, not just a printout. Until 2026-07-26 this block
+    // only printed a table and always exited 0, so a retrieval regression
+    // scrolled past on screen and could still be committed — the same class of
+    // silent-no-op that let `save=` (wrong flag name) be ignored twice while
+    // commit messages claimed the baseline had been updated.
+    //
+    // Tolerance is -0.001, not 0.0: the snapshot stores full float division
+    // (e.g. 0.9264705882352942) and is round-tripped through JSON, so an
+    // unchanged run can differ in the last bits. -0.001 is far below the
+    // smallest real movement this 68-query set can express (1 query = 0.0147),
+    // so it cannot mask an actual regression.
+    $tolerance = -0.001;
+    $regressed = array_filter($deltas, function ($d) use ($tolerance) { return $d < $tolerance; });
+    if ($regressed) {
+        $parts = [];
+        foreach ($regressed as $name => $d) $parts[] = sprintf('%s %+.3f', $name, $d);
+        fwrite(STDERR, "\n[eval] REGRESSION vs {$compare_file}: " . implode(', ', $parts) . "\n");
+        fwrite(STDERR, "[eval] Refusing to pass. Investigate, or re-save the baseline deliberately if the drop is intended.\n");
+        echo "\n";
+        exit(1);
+    }
+    echo "\n[eval] No regression vs {$compare_file} (tolerance {$tolerance}).\n";
 }
 
 echo "\n";

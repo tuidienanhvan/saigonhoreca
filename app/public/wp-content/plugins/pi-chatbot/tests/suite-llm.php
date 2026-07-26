@@ -254,6 +254,39 @@ pi_check('an empty answer is never sent for verification (nothing to check)', $v
 pi_http_unstub();
 pi_reset_state();
 
+// ── Router::build_messages — multilingual regression gate ──────────────────
+// eval-retrieval.php CANNOT cover the multilingual fix from 2026-07-26
+// (be81e00): it calls Retriever::search() directly with no router in front,
+// so a Korean/Japanese/Chinese question would always return empty for the
+// wrong reason (no router ran to translate it) — adding a CJK group there
+// would fail permanently and prove nothing. This is deliberately placed here
+// instead: a stub-only, free, deterministic check that the PROMPT ITSELF
+// still carries the instruction and worked examples that make cross-language
+// translation work, so a future prompt edit that silently drops them fails a
+// test instead of silently degrading Korean/Japanese/Chinese customers (the
+// original bug: keywords_vi was defined as "leftover Vietnamese words",
+// which produced garbage for a Korean question with no Vietnamese in it).
+pi_section('Router::build_messages — multilingual instruction survives (regression gate for be81e00)');
+
+pi_check('PROMPT_VERSION is the value this gate was written against — bump it deliberately, not by accident',
+    Pi_Chatbot_Router::PROMPT_VERSION === 5, 'got ' . Pi_Chatbot_Router::PROMPT_VERSION);
+
+$messages = pi_call_private('Pi_Chatbot_Router', 'build_messages', ['tủ đông']);
+$system = $messages[0]['content'] ?? '';
+
+pi_check('keywords_vi is defined as a TRANSLATED search query, not "leftover original Vietnamese words"',
+    strpos($system, 'TRANSLATE') !== false);
+pi_check('the prompt gives a real Korean translation example (not just naming the language)',
+    strpos($system, '업소용') !== false || strpos($system, 'Korean') !== false);
+pi_check('the prompt gives a real Japanese translation example',
+    strpos($system, '業務用') !== false || strpos($system, 'Japanese') !== false);
+pi_check('the prompt gives a real Chinese translation example',
+    strpos($system, '商用') !== false || strpos($system, 'Chinese') !== false);
+pi_check('the prompt states the TRUE catalog language mix (72% Vietnamese), not the old false "titles are English" claim',
+    strpos($system, 'MOSTLY VIETNAMESE') !== false || strpos($system, '72%') !== false);
+pi_check('the prompt explicitly forbids copying English keywords into the Vietnamese field verbatim',
+    strpos($system, 'NEVER copy') !== false);
+
 // pi_report() prints a summary from the SHARED pi_check() static state — when
 // run standalone that's exactly this suite's own totals; when run-all.php
 // requires this file alongside others, the same static keeps accumulating, so
