@@ -118,6 +118,36 @@
     // SLOW_NOTICE_MS keeps telling the customer something is happening either way.
     var HARD_TIMEOUT_MS = 75000;
 
+    // Multi-turn context — how many PRIOR exchanges (user+bot pairs) are sent alongside a
+    // new question, so the router can resolve a follow-up ("giá bao nhiêu?", "cái đó dày
+    // bao nhiêu?") against the product already being discussed instead of treating every
+    // message as if it arrived with no history. 2 pairs, not the whole session: enough for
+    // the common "ask about a product, then ask a follow-up or two" pattern, without the
+    // prompt (and therefore the LLM7 token cost + latency) growing with a long session.
+    var MAX_HISTORY_TURNS = 2;
+    // Per-message cap, not per-conversation — a single long answer (sources list, a past
+    // detailed product description) must not alone blow the whole history payload past what
+    // is useful context; the ROUTER only needs enough of a prior answer to know what product
+    // was being discussed, not the full text.
+    var MAX_HISTORY_CHARS = 300;
+
+    /** Turns the display-oriented chatHistory (role/text/sources, already serialized to
+     *  sessionStorage for re-rendering) into the minimal {role, text} payload sent to the
+     *  server — sources are never sent (the server already has its own source-of-truth
+     *  for what it retrieved last turn; forwarding the client's copy back would let a
+     *  tampered client feed the router fabricated "prior sources"). Takes the LAST
+     *  MAX_HISTORY_TURNS pairs, oldest first — a customer 10 messages into a conversation
+     *  doesn't need turn #2 competing with turn #9 for the model's attention. */
+    function buildHistoryPayload(history) {
+        if (!history || !history.length) return [];
+        var trimmed = history.slice(-MAX_HISTORY_TURNS * 2);
+        return trimmed.map(function (m) {
+            var t = String(m.text || '');
+            if (t.length > MAX_HISTORY_CHARS) t = t.slice(0, MAX_HISTORY_CHARS) + '…';
+            return { role: m.role, text: t };
+        });
+    }
+
     var FOCUSABLE_SELECTOR = 'a[href], button:not([disabled]), input:not([disabled]), textarea, summary, [tabindex]:not([tabindex="-1"])';
 
     // Displayed label is SEPARATE from the text actually sent — previously the send button
@@ -822,6 +852,12 @@
         var seq = ++requestSeq;
         var timedOut = false;
 
+        // Snapshot BEFORE addMessage() pushes this turn's own question — chatHistory is
+        // otherwise mutated in place, and the point here is the customer's PRIOR turns
+        // (so the backend can resolve "cái này"/"giá bao nhiêu" against the product
+        // already being discussed), not the message being sent right now.
+        var priorHistory = buildHistoryPayload(chatHistory);
+
         isSending = true;
         addMessage('user', text);
         if (typeof overrideText !== 'string') input.value = '';
@@ -850,7 +886,7 @@
                 'Content-Type': 'application/json',
                 'X-WP-Nonce': PiChatbotConfig.nonce
             },
-            body: JSON.stringify({ message: text }),
+            body: JSON.stringify({ message: text, history: priorHistory }),
             signal: controller.signal
         })
             .then(function (res) {

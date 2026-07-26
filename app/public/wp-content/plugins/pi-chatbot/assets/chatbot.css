@@ -286,66 +286,81 @@
    label + collapses — creating the feel of sequential processing rather than everything
    appearing at once. Still reopenable after completion (correct a11y invariant: no
    aria-hidden on the whole row, only the 3 decorative dots get aria-hidden). */
+/* Compacted 2026-07-26 to read as a single tight line per step (icon-row + chevron),
+   matching the reference density of Claude's own "Thought for Xs"/"Searched N sources"
+   collapsible rows — instead of the previous 2-line-per-step layout (fixed category on
+   its own line, result on the line below). The category and result are still 2 separate
+   spans in the DOM (renderStepRow() in chatbot.js is untouched — this is a CSS-only
+   change) so the customer still sees WHICH tier they're looking at, just inline on the
+   same line as the result rather than stacked above it. No card background/border left
+   — a flat, quiet strip that recedes behind the answer bubble it's introducing, rather
+   than a boxed panel competing with it for attention. */
 #pi-chatbot-panel .pi-cb-progress {
-    background: color-mix(in srgb, var(--cb-text) 5%, transparent);
-    border: 1px solid var(--cb-border);
-    border-radius: 12px;
-    overflow: hidden;
-    font-size: 13px;
+    font-size: 12.5px;
     color: var(--cb-text-muted);
 }
 #pi-chatbot-panel .pi-cb-step-row + .pi-cb-step-row {
-    border-top: 1px solid var(--cb-border);
+    border-top: 1px solid color-mix(in srgb, var(--cb-border) 60%, transparent);
 }
 #pi-chatbot-panel .pi-cb-step-row summary {
     list-style: none;
     cursor: pointer;
     user-select: none;
     display: flex;
-    align-items: center;
-    gap: 9px;
-    padding: 11px 14px;
+    align-items: baseline;
+    gap: 7px;
+    padding: 6px 2px;
     font-weight: 500;
-    transition: color 0.2s ease, background 0.2s ease;
+    transition: color 0.2s ease;
 }
 #pi-chatbot-panel .pi-cb-step-row summary::-webkit-details-marker { display: none; }
+/* A small chevron, not a triangle — quieter, closer in weight to the reference's own
+   expand icon than the previous filled-triangle marker. */
 #pi-chatbot-panel .pi-cb-step-row summary::before {
     content: "";
     flex-shrink: 0;
-    width: 0;
-    height: 0;
-    border-left: 5px solid var(--cb-text-muted);
-    border-top: 4px solid transparent;
-    border-bottom: 4px solid transparent;
+    align-self: center;
+    width: 6px;
+    height: 6px;
+    border-right: 1.5px solid var(--cb-text-muted);
+    border-bottom: 1.5px solid var(--cb-text-muted);
+    transform: rotate(-45deg);
     transition: transform 0.2s ease;
+    opacity: 0.6;
 }
 #pi-chatbot-panel .pi-cb-step-row[open] summary::before {
-    transform: rotate(90deg);
+    transform: rotate(45deg);
 }
 #pi-chatbot-panel .pi-cb-step-row summary:hover {
     color: var(--cb-text);
-    background: color-mix(in srgb, var(--cb-text) 3%, transparent);
 }
-/* Text column for 1 row: the FIXED tier heading ("Thinking"/"Data lookup") on top, the
-   REAL result (changes per question) below — previously there was only the result line,
-   with no indication of which tier was being shown. */
+/* One line: fixed category + real result inline, wrapping together as a unit rather than
+   stacking — this is the actual "gọn lại" (compact) change, everything else here is
+   spacing/weight only. */
 #pi-chatbot-panel .pi-cb-step-text {
     flex: 1;
     min-width: 0;
     display: flex;
-    flex-direction: column;
-    gap: 1px;
+    align-items: baseline;
+    flex-wrap: wrap;
+    column-gap: 6px;
+    row-gap: 0;
 }
 #pi-chatbot-panel .pi-cb-step-eyebrow {
-    font-size: 10.5px;
+    font-size: 10px;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.05em;
     color: var(--cb-accent);
     opacity: 0.85;
+    flex-shrink: 0;
 }
 #pi-chatbot-panel .pi-cb-step-label-text {
     min-width: 0;
+    color: var(--cb-text-muted);
+}
+#pi-chatbot-panel .pi-cb-step-row[open] .pi-cb-step-label-text {
+    color: var(--cb-text);
 }
 /* The REAL elapsed seconds shown for that row (measured with performance.now(), see JS
    finishStep) — tabular-nums so the layout doesn't jump when the number changes, dimmer
@@ -353,10 +368,12 @@
    "Thought for Xs". */
 #pi-chatbot-panel .pi-cb-step-time {
     flex-shrink: 0;
-    font-size: 11px;
+    margin-left: auto;
+    padding-left: 8px;
+    font-size: 10.5px;
     font-variant-numeric: tabular-nums;
     color: var(--cb-text-muted);
-    opacity: 0.7;
+    opacity: 0.6;
 }
 /* Inline bouncing dots — reuses the exact same pi-cb-bounce animation as the typing
    dots, only differing in size/color, so there aren't 2 different "processing" styles
@@ -366,10 +383,11 @@
     align-items: center;
     gap: 3px;
     flex-shrink: 0;
+    margin-left: auto;
 }
 #pi-chatbot-panel .pi-cb-step-dots .dot {
-    width: 4px;
-    height: 4px;
+    width: 3.5px;
+    height: 3.5px;
     background-color: var(--cb-accent);
     border-radius: 50%;
     animation: pi-cb-bounce 1.4s infinite ease-in-out both;
@@ -377,17 +395,18 @@
 #pi-chatbot-panel .pi-cb-step-dots .dot:nth-child(1) { animation-delay: -0.32s; }
 #pi-chatbot-panel .pi-cb-step-dots .dot:nth-child(2) { animation-delay: -0.16s; }
 #pi-chatbot-panel .pi-cb-step-body {
-    padding: 0 14px 12px 14px;
+    padding: 0 2px 8px 13px;
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 3px;
 }
 #pi-chatbot-panel .pi-cb-step-body:empty {
     display: none;
 }
 #pi-chatbot-panel .pi-cb-step-line {
-    font-size: 12px;
+    font-size: 11.5px;
     line-height: 1.4;
+    color: var(--cb-text-muted);
 }
 
 #pi-chatbot-panel .pi-cb-typing {

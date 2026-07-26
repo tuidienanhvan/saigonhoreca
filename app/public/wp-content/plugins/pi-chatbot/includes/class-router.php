@@ -89,18 +89,31 @@ class Pi_Chatbot_Router {
 
     /**
      * @param string $question Raw customer message.
+     * @param array<int,array{role:string,text:string}> $history Prior turns of
+     *   THIS session, oldest first — already sanitised/capped by the caller
+     *   (Pi_Chatbot_Rest::sanitize_history()). Used ONLY to resolve a
+     *   follow-up ("giá bao nhiêu?", "cái đó dày bao nhiêu?") against the
+     *   product already being discussed; it never changes intent meanings.
      * @return array{intent:string,keywords_en:string[],keywords_vi:string[],brand:?string,difficulty:string,query_variants:string[],ambiguity_reason:string}|null
      *   null = router disabled/breaker open/error — caller must treat null the
      *   same as "could not classify" and fall back to a plain product search.
      */
-    public static function enrich($question) {
+    public static function enrich($question, $history = []) {
         $settings = pi_chatbot_settings();
         if (empty($settings['router_enabled'])) return null;
 
         $normalized = trim(preg_replace('/\s+/u', ' ', mb_strtolower((string) $question)));
         if ($normalized === '') return null;
 
-        $cache_key = 'pi_chatbot_rtr_' . self::PROMPT_VERSION . '_' . md5($normalized);
+        // History folds into the cache key: the exact same follow-up text
+        // means something different depending on which product the prior
+        // turn was about, so caching on the question alone would silently
+        // serve one customer's resolved answer to another. An EMPTY history
+        // produces the SAME key as before this feature existed, so single-
+        // turn questions (the overwhelming majority) keep hitting the same
+        // warm cache they always did.
+        $history_suffix = $history ? '_h' . md5(wp_json_encode($history)) : '';
+        $cache_key = 'pi_chatbot_rtr_' . self::PROMPT_VERSION . '_' . md5($normalized) . $history_suffix;
         $cached = get_transient($cache_key);
         if ($cached !== false) {
             return $cached === 'NEGATIVE' ? null : $cached;
@@ -114,7 +127,7 @@ class Pi_Chatbot_Router {
         $model = !empty($settings['router_model']) ? $settings['router_model'] : self::MODEL_DEFAULT;
         $body = [
             'model'       => $model,
-            'messages'    => self::build_messages($question),
+            'messages'    => self::build_messages($question, $history),
             'temperature' => 0,
             // 450, up from 300: the schema now also carries query_variants (up
             // to 3 rewrites) and ambiguity_reason. Too small a budget here does
@@ -174,7 +187,7 @@ class Pi_Chatbot_Router {
         return $examples;
     }
 
-    private static function build_messages($question) {
+    private static function build_messages($question, $history = []) {
         $examples = self::few_shot_examples();
         $example_lines = array_map(function ($e) {
             return sprintf('- "%s" appears on products whose English title is: "%s"', $e['vi'], $e['en_context']);
@@ -232,10 +245,29 @@ class Pi_Chatbot_Router {
             . "ambiguity_reason: when difficulty=hard, one short phrase (max 12 words) naming what is ambiguous. "
             . "Empty string when easy.";
 
-        return [
-            ['role' => 'system', 'content' => $system],
-            ['role' => 'user', 'content' => (string) $question],
-        ];
+        if ($history) {
+            $system .= "\n\nSome earlier turns of this conversation may appear before the customer's final message "
+                . "below. They are CONTEXT ONLY, never the thing to classify — always classify and extract keywords "
+                . "for the LAST user message. Use the earlier turns to resolve references it makes to something "
+                . "already discussed (\"cái đó\", \"loại kia\", \"nó\", \"giá bao nhiêu\" meaning the price of the "
+                . "product just mentioned) — e.g. if a prior turn discussed a 2-door Hoshizaki freezer and the "
+                . "final message is just \"còn màu khác không\" (\"any other colors?\"), keywords_vi/keywords_en "
+                . "must still name that freezer, not just \"màu\" (\"color\") on its own.";
+        }
+
+        $messages = [['role' => 'system', 'content' => $system]];
+        foreach ($history as $turn) {
+            // LLM7 speaks the standard chat-completion roles (user/assistant) —
+            // the widget's own 'bot' role (matching its DOM/CSS naming) is
+            // translated here rather than changing that naming throughout the
+            // frontend to satisfy an API convention it doesn't otherwise care about.
+            $messages[] = [
+                'role'    => $turn['role'] === 'user' ? 'user' : 'assistant',
+                'content' => (string) $turn['text'],
+            ];
+        }
+        $messages[] = ['role' => 'user', 'content' => (string) $question];
+        return $messages;
     }
 
     /**

@@ -32,6 +32,18 @@ class Pi_Chatbot_Rest {
                     'type'              => 'string',
                     'sanitize_callback' => 'sanitize_text_field',
                 ],
+                // Prior turns of THIS session, sent by the widget so a follow-up
+                // ("giá bao nhiêu?", "cái đó dày bao nhiêu?") can be resolved
+                // against the product already being discussed. Deliberately not
+                // trusted at face value here — client-supplied — real caps and
+                // sanitisation happen in sanitize_history(), this schema only
+                // rejects the wrong shape outright.
+                'history' => [
+                    'required' => false,
+                    'type'     => 'array',
+                    'default'  => [],
+                    'items'    => ['type' => 'object'],
+                ],
             ],
         ]);
     }
@@ -55,7 +67,17 @@ class Pi_Chatbot_Rest {
         // bumped last_reindex, so editing one product's price/specs still
         // served the old answer + sources for up to an hour.
         $normalized = trim(preg_replace('/\s+/u', ' ', mb_strtolower($message)));
-        $cache_key = 'pi_chatbot_ans_' . md5($normalized . '|' . (int) get_option('pi_chatbot_index_version', 0));
+        $history = self::sanitize_history($req->get_param('history'));
+
+        // History folds into the cache key too — the SAME follow-up text
+        // ("giá bao nhiêu?") answered after 2 different prior products is 2
+        // different answers, and caching on the message alone would serve
+        // whichever product asked about it first to every later customer.
+        // An EMPTY history produces the exact same key as before this
+        // feature existed (no suffix added), so every already-warm cache
+        // entry for a plain, no-history question keeps working unchanged.
+        $history_suffix = $history ? '|h' . md5(wp_json_encode($history)) : '';
+        $cache_key = 'pi_chatbot_ans_' . md5($normalized . '|' . (int) get_option('pi_chatbot_index_version', 0) . $history_suffix);
         $cached = get_transient($cache_key);
         if ($cached !== false) {
             return rest_ensure_response($cached);
@@ -106,7 +128,7 @@ class Pi_Chatbot_Rest {
         $low_confidence = false;
         $verified = null;
 
-        $enrichment = Pi_Chatbot_Router::enrich($message);
+        $enrichment = Pi_Chatbot_Router::enrich($message, $history);
         $mark('router');
         if ($enrichment) {
             $router_used = true;
@@ -380,5 +402,42 @@ class Pi_Chatbot_Rest {
             return trim($ip);
         }
         return !empty($_SERVER['REMOTE_ADDR']) ? trim($_SERVER['REMOTE_ADDR']) : '0.0.0.0';
+    }
+
+    /** Max prior exchanges (user+bot pairs) trusted from the client, matching
+     *  MAX_HISTORY_TURNS in chatbot.js — enforced again here because the REST
+     *  args schema only checks TYPE, not size or content: nothing stops a
+     *  direct API call from sending an arbitrarily long or malformed history
+     *  array, and that array feeds straight into an LLM prompt. */
+    const MAX_HISTORY_TURNS = 2;
+    const MAX_HISTORY_MESSAGE_LENGTH = 300;
+
+    /**
+     * Turns whatever the client sent for 'history' into a small, well-shaped
+     * array the router can trust the SHAPE of (still just customer-authored
+     * text content-wise, same as $message) — malformed entries are dropped
+     * rather than rejecting the whole request, since a broken history is
+     * recoverable (degrade to no context) while a broken message is not.
+     *
+     * @return array<int,array{role:string,text:string}>
+     */
+    private static function sanitize_history($raw) {
+        if (!is_array($raw)) return [];
+        $out = [];
+        foreach ($raw as $item) {
+            if (!is_array($item)) continue;
+            $role = isset($item['role']) ? (string) $item['role'] : '';
+            if ($role !== 'user' && $role !== 'bot') continue;
+            $text = isset($item['text']) ? trim(sanitize_text_field((string) $item['text'])) : '';
+            if ($text === '') continue;
+            if (mb_strlen($text) > self::MAX_HISTORY_MESSAGE_LENGTH) {
+                $text = mb_substr($text, 0, self::MAX_HISTORY_MESSAGE_LENGTH) . '…';
+            }
+            $out[] = ['role' => $role, 'text' => $text];
+        }
+        // Keep the MOST RECENT turns, not the first ones sent — a client that
+        // (correctly or not) sends more than the cap should still contribute
+        // the part of the conversation actually relevant to a follow-up.
+        return array_slice($out, -self::MAX_HISTORY_TURNS * 2);
     }
 }

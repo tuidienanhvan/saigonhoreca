@@ -27,10 +27,11 @@ pi_reset_state();
  * instance() is a cheap singleton lookup, so there's no cost to calling it
  * fresh on every request here.
  */
-function pi_rest_ask($message, $ip = '10.10.10.1') {
+function pi_rest_ask($message, $ip = '10.10.10.1', $history = null) {
     $_SERVER['REMOTE_ADDR'] = $ip;
     $req = new WP_REST_Request('POST', '/pi/v1/chatbot/ask');
     $req->set_param('message', $message);
+    if ($history !== null) $req->set_param('history', $history);
     return Pi_Chatbot_Rest::instance()->ask($req);
 }
 
@@ -47,6 +48,43 @@ pi_check('over-length message -> 400 pi_chatbot_too_long',
 
 $res = pi_rest_ask(str_repeat('x', Pi_Chatbot_Rest::MAX_MESSAGE_LENGTH));
 pi_check('exactly MAX_MESSAGE_LENGTH is accepted (boundary, not off-by-one)', !is_wp_error($res) || $res->get_error_code() !== 'pi_chatbot_too_long');
+
+// ── sanitize_history() ───────────────────────────────────────────────────────
+// The REST args schema only checks that 'history' is an array — everything
+// about its SIZE and CONTENT is client-supplied and untrusted, same as
+// 'message'. Tested directly (not just through ask()) because the whole
+// point is defending against shapes a well-behaved widget would never send,
+// which is exactly what a schema-only check misses.
+pi_section('Rest::sanitize_history — untrusted input, not just the widget\'s own shape');
+
+$sanitize = fn ($raw) => pi_call_private('Pi_Chatbot_Rest', 'sanitize_history', [$raw]);
+
+pi_check('not an array at all -> empty, no fatal', $sanitize('not an array') === []);
+pi_check('null -> empty', $sanitize(null) === []);
+
+$mixed = [
+    ['role' => 'user', 'text' => 'câu hỏi thật'],
+    'not an array at all',                                   // wrong shape entirely
+    ['role' => 'admin', 'text' => 'vai trò không hợp lệ'],    // role outside user/bot
+    ['role' => 'bot', 'text' => ''],                          // empty text
+    ['role' => 'bot'],                                        // missing text
+    ['role' => 'user', 'text' => str_repeat('x', 1000)],      // way over the per-message cap
+];
+$clean = $sanitize($mixed);
+pi_check('malformed entries are dropped, not fatal, not silently kept',
+    count($clean) === 2, count($clean) . ' survived: ' . wp_json_encode($clean));
+pi_check('the surviving entries are exactly the 2 well-formed ones, in order',
+    $clean[0]['text'] === 'câu hỏi thật' && $clean[1]['role'] === 'user');
+pi_check('an over-length message is truncated to the cap, not rejected outright',
+    mb_strlen($clean[1]['text']) <= Pi_Chatbot_Rest::MAX_HISTORY_MESSAGE_LENGTH + 1); // +1 for the trailing …
+
+$long_history = [];
+for ($i = 0; $i < 10; $i++) $long_history[] = ['role' => 'user', 'text' => "turn $i"];
+$capped = $sanitize($long_history);
+pi_check('a longer-than-cap history keeps only the MOST RECENT turns, not the first ones',
+    count($capped) === Pi_Chatbot_Rest::MAX_HISTORY_TURNS * 2
+    && $capped[0]['text'] === 'turn ' . (10 - Pi_Chatbot_Rest::MAX_HISTORY_TURNS * 2),
+    wp_json_encode($capped));
 
 // ── intent='none' skips retrieval entirely ──────────────────────────────────
 pi_section("ask() — intent='none' (small talk) is answered without retrieval");

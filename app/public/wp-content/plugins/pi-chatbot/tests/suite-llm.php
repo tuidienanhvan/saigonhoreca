@@ -92,6 +92,63 @@ pi_with_settings(['router_enabled' => false], function () {
     pi_check('router_enabled=false returns null WITHOUT making any HTTP call', $r === null && count(pi_http_calls()) === 0);
 });
 
+// ── Router::enrich — multi-turn history ─────────────────────────────────────
+// Real gap found and fixed 2026-07-26: every request was fully independent —
+// no history was ever sent to the backend, so a follow-up ("giá bao nhiêu?"
+// after asking about a specific fridge) had nothing to resolve "it" against.
+pi_section('Router::enrich — multi-turn history');
+
+pi_with_settings(['router_enabled' => true, 'llm7_keys' => ['test-key'], 'router_keys' => []], function () {
+    pi_reset_state();
+    $q = 'câu hỏi có lịch sử ' . wp_rand();
+    $history = [
+        ['role' => 'user', 'text' => 'Tủ đông Hoshizaki 2 cánh có không'],
+        ['role' => 'bot',  'text' => 'Dạ có, Tủ Đông Đứng 2 Cánh HF-128MA-S của Hoshizaki.'],
+    ];
+
+    pi_http_stub(function () {
+        return pi_http_content(wp_json_encode([
+            'intent' => 'product', 'keywords_en' => ['freezer'], 'keywords_vi' => ['tủ đông'],
+            'brand' => null, 'difficulty' => 'easy', 'query_variants' => [], 'ambiguity_reason' => '',
+        ]));
+    });
+    $r = Pi_Chatbot_Router::enrich($q, $history);
+    pi_check('a request WITH history is still parsed correctly', is_array($r) && $r['intent'] === 'product');
+
+    // Read the actual prompt sent, not the (mocked) reply — pi_http_record() captures the
+    // request BEFORE the stub answers it, so this reflects what really went to LLM7.
+    $sent_body = pi_http_calls()[0]['body'];
+    pi_check('history turns are sent as real prior messages, not stuffed into one string',
+        count($sent_body['messages']) === 4, // system + 2 history turns + the new question
+        'got ' . count($sent_body['messages']) . ' messages');
+    pi_check('history roles are translated to user/assistant (LLM7\'s vocabulary), not the widget\'s own "bot"',
+        $sent_body['messages'][1]['role'] === 'user' && $sent_body['messages'][2]['role'] === 'assistant',
+        json_encode(array_column($sent_body['messages'], 'role')));
+    pi_check('the LAST message is still the new question, not a history turn',
+        $sent_body['messages'][3]['content'] === $q);
+
+    // Cache identity: same question text, but DIFFERENT history, must not
+    // collide — and a request with NO history must still hit the ORIGINAL
+    // (pre-multi-turn) cache key shape, so every already-warm cache entry for
+    // an ordinary single-turn question keeps working after this deploy.
+    pi_reset_state();
+    $q2 = 'câu hỏi cache theo lịch sử ' . wp_rand();
+    pi_http_stub(function () {
+        return pi_http_content(wp_json_encode([
+            'intent' => 'product', 'keywords_en' => ['ice maker'], 'keywords_vi' => ['máy làm đá'],
+            'brand' => null, 'difficulty' => 'easy', 'query_variants' => [], 'ambiguity_reason' => '',
+        ]));
+    });
+    Pi_Chatbot_Router::enrich($q2, []); // no history -> 1 call
+    $calls_after_first = count(pi_http_calls());
+    Pi_Chatbot_Router::enrich($q2, [['role' => 'user', 'text' => 'khác hoàn toàn']]); // same question, DIFFERENT history
+    pi_check('the same question text with DIFFERENT history is NOT served from the no-history cache entry',
+        count(pi_http_calls()) > $calls_after_first,
+        'expected a 2nd HTTP call, only got ' . (count(pi_http_calls()) - $calls_after_first) . ' extra');
+
+    pi_reset_state();
+});
+
 // Circuit breaker: BREAKER_FAIL_THRESHOLD consecutive failures must open it.
 pi_with_settings(['router_enabled' => true, 'llm7_keys' => ['test-key'], 'router_keys' => []], function () {
     pi_reset_state();
