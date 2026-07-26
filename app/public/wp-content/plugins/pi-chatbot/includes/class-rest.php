@@ -32,6 +32,15 @@ class Pi_Chatbot_Rest {
                     'type'              => 'string',
                     'sanitize_callback' => 'sanitize_text_field',
                 ],
+                // The customer's own web-search toggle. Defaults to false, so a
+                // client that has never heard of this parameter (an older
+                // cached chatbot.js, a direct API caller) behaves exactly as
+                // before and never triggers an external request.
+                'web_search' => [
+                    'required' => false,
+                    'type'     => 'boolean',
+                    'default'  => false,
+                ],
             ],
         ]);
     }
@@ -55,7 +64,21 @@ class Pi_Chatbot_Rest {
         // bumped last_reindex, so editing one product's price/specs still
         // served the old answer + sources for up to an hour.
         $normalized = trim(preg_replace('/\s+/u', ' ', mb_strtolower($message)));
-        $cache_key = 'pi_chatbot_ans_' . md5($normalized . '|' . (int) get_option('pi_chatbot_index_version', 0));
+
+        // Web search is part of the cache identity, not an afterthought: the
+        // same question answered with and without external results is two
+        // different answers, and sharing one entry would serve whichever ran
+        // first to everybody. Only the EFFECTIVE flag is keyed (both gates
+        // resolved) so that toggling the widget switch while the feature is
+        // disabled site-wide does not split the cache pointlessly.
+        $settings_early = pi_chatbot_settings();
+        $web_search_on = !empty($settings_early['web_search_enabled'])
+            && (bool) $req->get_param('web_search');
+
+        $cache_key = 'pi_chatbot_ans_' . md5(
+            $normalized . '|' . (int) get_option('pi_chatbot_index_version', 0)
+            . '|w' . (int) $web_search_on
+        );
         $cached = get_transient($cache_key);
         if ($cached !== false) {
             return rest_ensure_response($cached);
@@ -254,7 +277,23 @@ class Pi_Chatbot_Rest {
         // that's an independent signal from whether generation succeeded.
         Pi_Chatbot_Log::record($normalized, !empty($context), count($context), $router_used);
 
-        $result = Pi_Chatbot_Generator::answer($message, $context);
+        // External web results — kept in their own variable all the way down,
+        // never merged into $context. $context means "things this company
+        // sells"; it drives the sources list the customer sees and the
+        // faithfulness check. Putting a web page in there would make the bot
+        // cite an outside product as our own stock, which is the exact failure
+        // this feature must not cause.
+        //
+        // Skipped for intent 'none' (small talk) — there is no information need
+        // to research, and searching the web for "chào shop" is pure latency.
+        $web_results = [];
+        if ($web_search_on && $intent !== 'none') {
+            $web_query = ($search_query !== '') ? $search_query : $message;
+            $web_results = Pi_Chatbot_WebSearch::search($web_query);
+            $mark('web_search');
+        }
+
+        $result = Pi_Chatbot_Generator::answer($message, $context, ['web_results' => $web_results]);
         $mark('generate');
 
         if (is_wp_error($result)) {
@@ -271,7 +310,14 @@ class Pi_Chatbot_Rest {
             if ($check !== null) {
                 $verified = $check['faithful'];
                 if (!$check['faithful']) {
-                    $retry = Pi_Chatbot_Generator::answer($message, $context, ['correction' => $check['issue']]);
+                    $retry = Pi_Chatbot_Generator::answer($message, $context, [
+                        'correction'  => $check['issue'],
+                        // The retry must see the same material as the draft it
+                        // replaces — dropping the web block here would make the
+                        // model rewrite from a smaller world than the one it was
+                        // being corrected about.
+                        'web_results' => $web_results,
+                    ]);
                     if (!is_wp_error($retry)) {
                         $result = $retry;
                         $recheck = Pi_Chatbot_Generator::verify($message, $context, $result['answer']);

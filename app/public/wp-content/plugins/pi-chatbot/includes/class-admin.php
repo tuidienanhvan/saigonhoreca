@@ -197,6 +197,8 @@ class Pi_Chatbot_Admin {
 
             <?php $this->render_accuracy_section($settings); ?>
 
+            <?php $this->render_websearch_section($settings); ?>
+
             <?php $this->render_learning_section(); ?>
         </div>
         <?php
@@ -271,6 +273,76 @@ class Pi_Chatbot_Admin {
                 </div>
                 <?php submit_button(__('Save accuracy settings', 'pi-chatbot'), 'primary', 'submit', false, ['style' => 'margin-top:18px;']); ?>
             </form>
+            </div>
+        </div>
+        <?php
+    }
+
+    /**
+     * External web search — the site-owner half of a two-gate switch. The other
+     * half is the customer's own toggle in the chat widget; a search only runs
+     * when BOTH are on, so turning this off disables the feature outright no
+     * matter what any client sends.
+     */
+    private function render_websearch_section($settings) {
+        ?>
+        <div class="pi-card">
+            <div class="pi-card__header">
+                <span class="pi-card__eyebrow">05 — Web search</span>
+                <h2 class="pi-card__title"><?php esc_html_e('External web search', 'pi-chatbot'); ?></h2>
+                <p class="pi-card__desc">
+                    <?php esc_html_e('Adds a toggle to the chat widget that lets a customer ask the bot to also look things up on the public internet. The catalog always stays the source of truth: web results are passed to the model in a separate, clearly-labelled block and are never presented as products we sell, never merged into the sources list, and never quoted as our prices. If a product only appears on the web, the bot still answers that we do not list it and gives the hotline.', 'pi-chatbot'); ?>
+                </p>
+                <p class="pi-card__desc">
+                    <strong><?php esc_html_e('A provider API key is required.', 'pi-chatbot'); ?></strong>
+                    <?php esc_html_e('A key-free route was tried and measured first: DuckDuckGo\'s HTML endpoint answers with an anti-bot challenge, and its official keyless JSON API returns nothing at all for product queries. Both free tiers below are enough for this site (Brave ~2,000 searches/month, Serper ~2,500).', 'pi-chatbot'); ?>
+                </p>
+                <p>
+                    <?php if (Pi_Chatbot_WebSearch::is_configured()) : ?>
+                        <span class="pi-badge pi-badge--success"><?php esc_html_e('Active', 'pi-chatbot'); ?></span>
+                    <?php elseif (!empty($settings['web_search_enabled'])) : ?>
+                        <span class="pi-badge pi-badge--warning"><?php esc_html_e('Enabled, but no API key — feature is dormant', 'pi-chatbot'); ?></span>
+                    <?php else : ?>
+                        <span class="pi-badge pi-badge--muted"><?php esc_html_e('Off', 'pi-chatbot'); ?></span>
+                    <?php endif; ?>
+                </p>
+            </div>
+            <div class="pi-card__body pi-card__body--tight">
+                <form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
+                    <?php wp_nonce_field('pi_chatbot_save_settings'); ?>
+                    <input type="hidden" name="action" value="pi_chatbot_save_settings">
+                    <input type="hidden" name="websearch_form" value="1">
+                    <div class="pi-cba-fields">
+                        <div class="pi-cba-field">
+                            <span class="pi-cba-label"><?php esc_html_e('Allow web search', 'pi-chatbot'); ?></span>
+                            <div>
+                                <div class="pi-cba-checkbox-row">
+                                    <input type="checkbox" id="web_search_enabled" name="web_search_enabled" value="1" <?php checked(!empty($settings['web_search_enabled'])); ?>>
+                                    <label for="web_search_enabled"><?php esc_html_e('Enabled', 'pi-chatbot'); ?></label>
+                                </div>
+                                <p class="pi-cba-desc"><?php esc_html_e('Off = the toggle does not appear in the widget and no external request is ever made, whatever a client sends. Adds roughly 1-3 seconds to a question when a customer switches it on.', 'pi-chatbot'); ?></p>
+                            </div>
+                        </div>
+                        <div class="pi-cba-field">
+                            <label class="pi-cba-label" for="web_search_provider"><?php esc_html_e('Provider', 'pi-chatbot'); ?></label>
+                            <div>
+                                <select id="web_search_provider" name="web_search_provider">
+                                    <option value="brave" <?php selected($settings['web_search_provider'], 'brave'); ?>>Brave Search API</option>
+                                    <option value="serper" <?php selected($settings['web_search_provider'], 'serper'); ?>>Serper.dev (Google)</option>
+                                </select>
+                                <p class="pi-cba-desc"><?php esc_html_e('Brave: register at api.search.brave.com. Serper: register at serper.dev. Both have a free tier that does not need a card.', 'pi-chatbot'); ?></p>
+                            </div>
+                        </div>
+                        <div class="pi-cba-field">
+                            <label class="pi-cba-label" for="web_search_key"><?php esc_html_e('Provider API key', 'pi-chatbot'); ?></label>
+                            <div>
+                                <input type="password" id="web_search_key" name="web_search_key" autocomplete="off" value="<?php echo esc_attr($settings['web_search_key']); ?>">
+                                <p class="pi-cba-desc"><?php esc_html_e('Paste the key from whichever provider you picked above. Stored with autoload off, alongside the LLM7 keys.', 'pi-chatbot'); ?></p>
+                            </div>
+                        </div>
+                    </div>
+                    <?php submit_button(__('Save web search settings', 'pi-chatbot'), 'primary', 'submit', false, ['style' => 'margin-top:18px;']); ?>
+                </form>
             </div>
         </div>
         <?php
@@ -406,6 +478,24 @@ class Pi_Chatbot_Admin {
         // switch off every accuracy feature. A dedicated hidden field is used
         // rather than piggybacking on a text input, so the guard can't be broken
         // later by renaming or removing whichever field it happened to test.
+        // Web search — a FOURTH form, gated by its own marker field for exactly
+        // the same reason as the two above: an unchecked checkbox is simply
+        // absent from $_POST, so without proof that THIS form was submitted,
+        // saving any other section would silently switch the feature off.
+        if (isset($_POST['websearch_form'])) {
+            $settings['web_search_enabled'] = !empty($_POST['web_search_enabled']);
+
+            // Whitelist, not sanitize_text_field: an unknown provider string
+            // would silently fall through to Brave inside WebSearch::search()
+            // while the admin page kept displaying whatever was typed.
+            $provider = sanitize_text_field(wp_unslash($_POST['web_search_provider'] ?? ''));
+            if (in_array($provider, ['brave', 'serper'], true)) {
+                $settings['web_search_provider'] = $provider;
+            }
+            if (isset($_POST['web_search_key'])) {
+                $settings['web_search_key'] = trim(sanitize_text_field(wp_unslash($_POST['web_search_key'])));
+            }
+        }
         if (isset($_POST['accuracy_form'])) {
             $settings['max_accuracy_enabled'] = !empty($_POST['max_accuracy_enabled']);
             $settings['rerank_enabled']       = !empty($_POST['rerank_enabled']);

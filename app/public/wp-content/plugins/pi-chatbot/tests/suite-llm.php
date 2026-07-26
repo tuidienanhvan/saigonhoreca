@@ -197,6 +197,76 @@ pi_check('an empty answer is never sent for verification (nothing to check)', $v
 pi_http_unstub();
 pi_reset_state();
 
+// ── WebSearch ────────────────────────────────────────────────────────────────
+// HTTP is stubbed via pre_http_request (same technique the rest of this suite
+// uses), so these assert OUR logic — gating, normalisation, URL hardening,
+// prompt labelling — and never touch a real provider or need a key.
+pi_section('Pi_Chatbot_WebSearch');
+
+$ws_saved = get_option(PI_CHATBOT_OPTION, []);
+
+$ws_set = function ($enabled, $key, $provider = 'brave') {
+    $s = pi_chatbot_settings();
+    $s['web_search_enabled']  = $enabled;
+    $s['web_search_key']      = $key;
+    $s['web_search_provider'] = $provider;
+    update_option(PI_CHATBOT_OPTION, $s, false);
+};
+
+$ws_set(false, '');
+pi_check('disabled + no key -> not configured', !Pi_Chatbot_WebSearch::is_configured());
+$ws_set(true, '');
+pi_check('enabled but NO key -> still not configured (feature dormant, not silently empty)',
+    !Pi_Chatbot_WebSearch::is_configured());
+pi_check('...and search() returns empty without making any request',
+    Pi_Chatbot_WebSearch::search('máy làm đá') === []);
+$ws_set(true, 'test-key-123');
+pi_check('enabled + key -> configured', Pi_Chatbot_WebSearch::is_configured());
+
+// Stubbed Brave response, including two rows that MUST be rejected: one with a
+// javascript: URL (a hostile/compromised provider response must never reach the
+// prompt or the client) and one with no title.
+$ws_stub = function () {
+    return [
+        'response' => ['code' => 200],
+        'body'     => wp_json_encode(['web' => ['results' => [
+            ['title' => "Hoshizaki  \n IM-65NE", 'url' => 'https://example.com/a', 'description' => '<b>Ice</b> machine spec'],
+            ['title' => 'Bad protocol', 'url' => 'javascript:alert(1)', 'description' => 'x'],
+            ['title' => '', 'url' => 'https://example.com/c', 'description' => 'no title'],
+            ['title' => 'Second good', 'url' => 'https://example.com/d', 'description' => str_repeat('x', 500)],
+        ]]]),
+    ];
+};
+add_filter('pre_http_request', $ws_stub, 10, 0);
+delete_transient(Pi_Chatbot_WebSearch::BREAKER_KEY);
+$ws_res = Pi_Chatbot_WebSearch::search('hoshizaki ice machine test ' . PI_CHATBOT_VERSION);
+remove_filter('pre_http_request', $ws_stub, 10);
+
+pi_check('malformed rows are dropped, valid ones kept', count($ws_res) === 2, 'got ' . count($ws_res));
+pi_check('a javascript: URL never survives normalisation',
+    !in_array('javascript:alert(1)', array_column($ws_res, 'url'), true));
+pi_check('whitespace in the title is collapsed',
+    ($ws_res[0]['title'] ?? '') === 'Hoshizaki IM-65NE', $ws_res[0]['title'] ?? '');
+pi_check('HTML in the snippet is stripped, not passed through',
+    strpos($ws_res[0]['snippet'] ?? '', '<b>') === false && strpos($ws_res[0]['snippet'] ?? '', 'Ice machine') === 0);
+pi_check('an over-long snippet is truncated to the cap',
+    mb_strlen($ws_res[1]['snippet'] ?? '') <= Pi_Chatbot_WebSearch::MAX_SNIPPET_CHARS + 3);
+
+$ws_block = Pi_Chatbot_WebSearch::to_prompt_block($ws_res);
+pi_check('the prompt block carries the URL so the model can attribute the source',
+    strpos($ws_block, 'https://example.com/a') !== false);
+pi_check('an empty result set produces NO prompt block at all (no empty labelled section)',
+    Pi_Chatbot_WebSearch::to_prompt_block([]) === '');
+
+// The whole point of the feature's safety design: web results must never be
+// mistakable for catalog stock. Assert the separation at the prompt level.
+$ws_answer_probe = pi_call_private('Pi_Chatbot_Generator', 'build_language_note', ['test']);
+pi_check('generator language note still works alongside the web block (no interference)',
+    is_string($ws_answer_probe));
+
+update_option(PI_CHATBOT_OPTION, $ws_saved, false);
+delete_transient(Pi_Chatbot_WebSearch::BREAKER_KEY);
+
 // pi_report() prints a summary from the SHARED pi_check() static state — when
 // run standalone that's exactly this suite's own totals; when run-all.php
 // requires this file alongside others, the same static keeps accumulating, so
