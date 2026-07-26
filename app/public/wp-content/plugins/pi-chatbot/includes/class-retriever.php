@@ -940,10 +940,10 @@ class Pi_Chatbot_Retriever {
         // restoring the actual "AND" promise that tier 1 claims to make.
         $rows = self::run_fulltext_query($table, $fulltext_query, $brand, $fetch_k, $rare_short);
         $rows = self::verify_and_score($rows, $long, $short, $idf);
-        $product_rows = self::require_literal_all(
+        $product_rows = self::require_field_evidence(self::require_literal_all(
             self::dedupe_by_content(self::only_products($rows)),
             array_merge($rare_long, $rare_short)
-        );
+        ));
         if ($product_rows) {
             return self::format_rows(array_slice($product_rows, 0, $top_k), $all_words);
         }
@@ -957,10 +957,10 @@ class Pi_Chatbot_Retriever {
         if ($rare_short) {
             $rows = self::run_fulltext_query($table, $fulltext_query, $brand, $fetch_k, []);
             $rows = self::verify_and_score($rows, $long, $short, $idf);
-            $product_rows = self::require_literal_all(
+            $product_rows = self::require_field_evidence(self::require_literal_all(
                 self::dedupe_by_content(self::only_products($rows)),
                 $rare_long
-            );
+            ));
             if ($product_rows) {
                 return self::format_rows(array_slice($product_rows, 0, $top_k), $all_words);
             }
@@ -1142,6 +1142,41 @@ class Pi_Chatbot_Retriever {
     private static function only_products($rows) {
         if (!is_array($rows)) return [];
         return array_values(array_filter($rows, function ($r) { return $r->post_type === 'product'; }));
+    }
+
+    /**
+     * Requires at least one keyword to have matched in TITLE/BRAND/CATEGORY
+     * (verify_and_score()'s has_strong_field_hit), not only in content_text.
+     *
+     * This is the SAME safety net Tier 2 (quorum) already applies — the fix
+     * here is applying it to Tier 1 (the mandatory AND tier) too, where it was
+     * previously missing entirely. require_literal_all() only proves every
+     * mandatory word is present SOMEWHERE in the row; it says nothing about
+     * WHERE, and content_text is long free-text where any short/common word
+     * can appear by coincidence.
+     *
+     * Measured, concretely: "Show me your completed project samples" (a real
+     * quick-reply button in the widget) passed Tier 1's AND with ALL of
+     * show/your/completed/project/samples individually rare enough to be
+     * +mandatory — but every single hit was buried in unrelated content_text
+     * ("...designed for projects that require...", "...for all your meat
+     * ageing needs..."), on 2 products with nothing to do with the question.
+     * Tier 1 returned them with full confidence because — unlike Tier 2 — it
+     * never checked WHERE the mandatory words actually matched.
+     *
+     * Root cause, more precisely: a $short word (< MIN_TOKEN_LENGTH, e.g. the
+     * "me" in "show me...") that turns out to be rare becomes a mandatory LIKE
+     * filter with NO word-boundary protection (short substring matching is
+     * kept on purpose — see like_pattern() — so real product-code fragments
+     * like "hr"/"se" still work). An unbounded substring match is exactly the
+     * kind of "matched, but not meaningfully" evidence this filter is meant to
+     * catch, the same way it already catches a common word buried deep in a
+     * long content_text field.
+     */
+
+    private static function require_field_evidence($rows) {
+        if (!is_array($rows)) return [];
+        return array_values(array_filter($rows, function ($r) { return !empty($r->has_strong_field_hit); }));
     }
 
     /**

@@ -259,6 +259,29 @@ foreach ($quick_replies as $q) {
         $rows ? 'leaked: ' . implode(' | ', array_column($rows, 'title')) : '');
 }
 
+// ── Tier 1 (mandatory AND) must not trust a match with no field evidence ────
+// Regression guard for the defect found 2026-07-26, one level deeper than the
+// quick-reply test above: Tier 2 (quorum) already required at least one
+// keyword to match in TITLE/BRAND/CATEGORY before trusting a row
+// (has_strong_field_hit) — Tier 1 (the +mandatory AND tier) had NO such
+// check. It trusted "every mandatory word is present somewhere" as
+// sufficient, with no regard for WHERE, so a coincidental content_text-only
+// hit was treated identically to a real title match.
+//
+// "Báo giá" ("price quote") is the sharpest reproduction: after grammatical
+// stopword filtering it degrades to keywords whose only surviving evidence
+// was buried in unrelated product descriptions — Tier 1 returned 3 random
+// freezers with full confidence. This exact question is intent='price' in
+// production (handled by Retriever::price_context(), never touching this
+// tier) — the same "measured against search() directly, not the live
+// customer path" caveat as the negative group in eval-retrieval.php's
+// golden set applies here too. The fix still matters: this is also the code
+// path REST falls back to whenever the router is unavailable.
+pi_section('Retriever::search — Tier 1 (mandatory AND) requires field evidence, not just literal presence');
+
+pi_check('"Báo giá" — small talk degrading to content-only-coincidence keywords — returns no products',
+    empty(Pi_Chatbot_Retriever::search('Báo giá', 5)));
+
 // pi_report() prints a summary from the SHARED pi_check() static state — when
 // run standalone that's exactly this suite's own totals; when run-all.php
 // requires this file alongside others, the same static keeps accumulating, so
