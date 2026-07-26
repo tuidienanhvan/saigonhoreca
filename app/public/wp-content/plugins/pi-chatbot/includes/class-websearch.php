@@ -48,8 +48,14 @@ class Pi_Chatbot_WebSearch {
     const MAX_SNIPPET_CHARS = 300;
     const CACHE_TTL = 6 * HOUR_IN_SECONDS;
 
-    const PROVIDER_BRAVE  = 'brave';
-    const PROVIDER_SERPER = 'serper';
+    const PROVIDER_BRAVE   = 'brave';
+    const PROVIDER_SERPER  = 'serper';
+    const PROVIDER_SEARXNG = 'searxng';
+
+    /** Providers that authenticate with a key. SearXNG is self-hosted and
+     *  authenticates with nothing — it needs a base URL instead, which is why
+     *  is_configured() cannot just test for a non-empty key. */
+    const KEYED_PROVIDERS = [self::PROVIDER_BRAVE, self::PROVIDER_SERPER];
 
     /**
      * Circuit breaker, same pattern and reasoning as the router's: once the
@@ -66,7 +72,33 @@ class Pi_Chatbot_WebSearch {
      *  what it is rather than silently behaving like "no results". */
     public static function is_configured() {
         $s = pi_chatbot_settings();
-        return !empty($s['web_search_enabled']) && trim((string) $s['web_search_key']) !== '';
+        if (empty($s['web_search_enabled'])) return false;
+        if (self::provider() === self::PROVIDER_SEARXNG) {
+            return self::searxng_base_url() !== '';
+        }
+        return trim((string) $s['web_search_key']) !== '';
+    }
+
+    /** Resolved provider — anything unrecognised falls back to Brave, matching
+     *  the whitelist the admin form enforces on save. */
+    public static function provider() {
+        $p = (string) pi_chatbot_settings()['web_search_provider'];
+        return in_array($p, [self::PROVIDER_BRAVE, self::PROVIDER_SERPER, self::PROVIDER_SEARXNG], true)
+            ? $p : self::PROVIDER_BRAVE;
+    }
+
+    /**
+     * Base URL of the self-hosted SearXNG instance, validated here rather than
+     * trusted from the option. Only http/https survive esc_url_raw, and the
+     * trailing slash is normalised so building '/search' below can't produce a
+     * double slash against some instances and not others.
+     */
+    private static function searxng_base_url() {
+        $url = trim((string) pi_chatbot_settings()['web_search_url']);
+        if ($url === '') return '';
+        $url = esc_url_raw($url);
+        if (strpos($url, 'http://') !== 0 && strpos($url, 'https://') !== 0) return '';
+        return rtrim($url, '/');
     }
 
     /**
@@ -81,19 +113,25 @@ class Pi_Chatbot_WebSearch {
         if (self::breaker_open()) return [];
 
         $settings = pi_chatbot_settings();
-        $provider = $settings['web_search_provider'] === self::PROVIDER_SERPER
-            ? self::PROVIDER_SERPER : self::PROVIDER_BRAVE;
+        $provider = self::provider();
         $key = trim((string) $settings['web_search_key']);
 
-        // Provider is part of the cache identity: switching provider or key
-        // must not keep serving the previous provider's results.
-        $cache_key = 'pi_chatbot_web_' . md5($provider . '|' . md5($key) . '|' . mb_strtolower($query) . '|' . (int) $limit);
+        // Provider is part of the cache identity: switching provider, key or
+        // instance URL must not keep serving the previous one's results.
+        $cache_key = 'pi_chatbot_web_' . md5(
+            $provider . '|' . md5($key . '|' . self::searxng_base_url())
+            . '|' . mb_strtolower($query) . '|' . (int) $limit
+        );
         $cached = get_transient($cache_key);
         if (is_array($cached)) return $cached;
 
-        $results = $provider === self::PROVIDER_SERPER
-            ? self::fetch_serper($query, $limit, $key)
-            : self::fetch_brave($query, $limit, $key);
+        if ($provider === self::PROVIDER_SEARXNG) {
+            $results = self::fetch_searxng($query, $limit);
+        } elseif ($provider === self::PROVIDER_SERPER) {
+            $results = self::fetch_serper($query, $limit, $key);
+        } else {
+            $results = self::fetch_brave($query, $limit, $key);
+        }
 
         if ($results === null) {   // transport/auth failure
             self::bump_breaker();
@@ -176,6 +214,49 @@ class Pi_Chatbot_WebSearch {
         foreach ((array) ($data['organic'] ?? []) as $r) {
             if (count($out) >= $limit) break;
             $row = self::normalize_row($r['title'] ?? '', $r['link'] ?? '', $r['snippet'] ?? '');
+            if ($row) $out[] = $row;
+        }
+        return $out;
+    }
+
+    /**
+     * SearXNG — self-hosted open-source metasearch. The only option here that
+     * is genuinely free with no quota and no card, because you run it yourself;
+     * the cost is a container to maintain rather than a bill.
+     *
+     * Point this at YOUR OWN instance. Public instances are deliberately not
+     * suggested anywhere in the UI: most disable the JSON format outright, and
+     * pointing a production chatbot at a stranger's free server is both
+     * unreliable and rude.
+     *
+     * The instance must have `json` in its `search.formats` setting
+     * (settings.yml) — it is off by default, and without it SearXNG answers 403
+     * and this returns null, which the breaker then counts as a failure.
+     */
+    private static function fetch_searxng($query, $limit) {
+        $base = self::searxng_base_url();
+        if ($base === '') return null;
+
+        $url = $base . '/search?' . http_build_query([
+            'q'        => $query,
+            'format'   => 'json',
+            'language' => 'vi',
+            'safesearch' => 1,
+        ]);
+        $response = wp_remote_get($url, [
+            'timeout' => self::TIMEOUT_SECONDS,
+            'headers' => ['Accept' => 'application/json'],
+        ]);
+        if (is_wp_error($response)) return null;
+        if ((int) wp_remote_retrieve_response_code($response) !== 200) return null;
+
+        $data = json_decode(wp_remote_retrieve_body($response), true);
+        if (!is_array($data)) return null;
+
+        $out = [];
+        foreach ((array) ($data['results'] ?? []) as $r) {
+            if (count($out) >= $limit) break;
+            $row = self::normalize_row($r['title'] ?? '', $r['url'] ?? '', $r['content'] ?? '');
             if ($row) $out[] = $row;
         }
         return $out;

@@ -264,6 +264,45 @@ $ws_answer_probe = pi_call_private('Pi_Chatbot_Generator', 'build_language_note'
 pi_check('generator language note still works alongside the web block (no interference)',
     is_string($ws_answer_probe));
 
+// SearXNG is the self-hosted provider: it authenticates with nothing and is
+// configured by URL, so is_configured() must NOT ask it for a key.
+$ws_set_url = function ($url) {
+    $s = pi_chatbot_settings();
+    $s['web_search_enabled']  = true;
+    $s['web_search_provider'] = 'searxng';
+    $s['web_search_key']      = '';
+    $s['web_search_url']      = $url;
+    update_option(PI_CHATBOT_OPTION, $s, false);
+};
+
+$ws_set_url('');
+pi_check('searxng with no URL -> not configured (and does not demand a key)',
+    !Pi_Chatbot_WebSearch::is_configured());
+$ws_set_url('https://searx.example.com/');
+pi_check('searxng with a URL -> configured despite the key being empty',
+    Pi_Chatbot_WebSearch::is_configured());
+
+// A non-http scheme must never become a server-side fetch target.
+$ws_set_url('javascript:alert(1)');
+pi_check('a non-http SearXNG URL is rejected, not fetched',
+    !Pi_Chatbot_WebSearch::is_configured());
+
+$ws_set_url('https://searx.example.com');
+$ws_searx_stub = function () {
+    return ['response' => ['code' => 200], 'body' => wp_json_encode(['results' => [
+        ['title' => 'Kết quả A', 'url' => 'https://example.org/a', 'content' => 'nội dung A'],
+        ['title' => 'Kết quả B', 'url' => 'https://example.org/b', 'content' => 'nội dung B'],
+    ]])];
+};
+add_filter('pre_http_request', $ws_searx_stub, 10, 0);
+delete_transient(Pi_Chatbot_WebSearch::BREAKER_KEY);
+$ws_sx = Pi_Chatbot_WebSearch::search('searxng probe ' . PI_CHATBOT_VERSION);
+remove_filter('pre_http_request', $ws_searx_stub, 10);
+pi_check('searxng results are normalised to the same shape as the keyed providers',
+    count($ws_sx) === 2 && ($ws_sx[0]['title'] ?? '') === 'Kết quả A'
+    && ($ws_sx[0]['snippet'] ?? '') === 'nội dung A',
+    wp_json_encode($ws_sx, JSON_UNESCAPED_UNICODE));
+
 update_option(PI_CHATBOT_OPTION, $ws_saved, false);
 delete_transient(Pi_Chatbot_WebSearch::BREAKER_KEY);
 

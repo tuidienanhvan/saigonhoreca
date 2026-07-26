@@ -144,8 +144,13 @@ function pi_chatbot_settings() {
         // for why the key-free DuckDuckGo route was tried and abandoned. With no
         // key the feature stays dormant and the widget toggle never appears.
         'web_search_enabled'  => false,
-        'web_search_provider' => 'brave', // 'brave' | 'serper'
-        'web_search_key'      => '',
+        // 'searxng' is the default because it is the only option that is free
+        // with no quota and no payment instrument. Brave removed its free tier
+        // in Feb 2026 and now bills the card taken at signup; Google's Custom
+        // Search JSON API is closed to new users and retires 2027-01-01.
+        'web_search_provider' => 'searxng', // 'searxng' | 'serper' | 'brave'
+        'web_search_key'      => '',        // brave/serper only
+        'web_search_url'      => '',        // searxng only — your own instance
     ];
     $saved = get_option(PI_CHATBOT_OPTION, []);
     if (!is_array($saved)) $saved = [];

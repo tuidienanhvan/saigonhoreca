@@ -294,14 +294,22 @@ class Pi_Chatbot_Admin {
                     <?php esc_html_e('Adds a toggle to the chat widget that lets a customer ask the bot to also look things up on the public internet. The catalog always stays the source of truth: web results are passed to the model in a separate, clearly-labelled block and are never presented as products we sell, never merged into the sources list, and never quoted as our prices. If a product only appears on the web, the bot still answers that we do not list it and gives the hotline.', 'pi-chatbot'); ?>
                 </p>
                 <p class="pi-card__desc">
-                    <strong><?php esc_html_e('A provider API key is required.', 'pi-chatbot'); ?></strong>
-                    <?php esc_html_e('A key-free route was tried and measured first: DuckDuckGo\'s HTML endpoint answers with an anti-bot challenge, and its official keyless JSON API returns nothing at all for product queries. Both free tiers below are enough for this site (Brave ~2,000 searches/month, Serper ~2,500).', 'pi-chatbot'); ?>
+                    <?php esc_html_e('A key-free public search API no longer exists — that was tested, not assumed. DuckDuckGo\'s HTML endpoint answers with an anti-bot challenge, and its official keyless JSON API returns nothing at all for product queries. Checked 2026-07-26:', 'pi-chatbot'); ?>
                 </p>
+                <ul class="pi-card__desc" style="list-style:disc;padding-left:20px;">
+                    <li><strong>SearXNG</strong> — <?php esc_html_e('self-hosted, open source. Genuinely free, no quota, no card, because you run it yourself. Needs a container you maintain, and json must be added to search.formats in its settings.yml (off by default). Point it at YOUR OWN instance, not a public one.', 'pi-chatbot'); ?></li>
+                    <li><strong>Serper.dev</strong> — <?php esc_html_e('2,500 free credits, no card needed. One-time, not monthly — after that it is paid.', 'pi-chatbot'); ?></li>
+                    <li><strong>Brave</strong> — <?php esc_html_e('WARNING: Brave removed its free tier in February 2026. The card taken at signup, previously described as an anti-fraud check that would never be charged, is now billed once the small monthly credit runs out. Only pick this if you accept paying.', 'pi-chatbot'); ?></li>
+                </ul>
                 <p>
                     <?php if (Pi_Chatbot_WebSearch::is_configured()) : ?>
                         <span class="pi-badge pi-badge--success"><?php esc_html_e('Active', 'pi-chatbot'); ?></span>
                     <?php elseif (!empty($settings['web_search_enabled'])) : ?>
-                        <span class="pi-badge pi-badge--warning"><?php esc_html_e('Enabled, but no API key — feature is dormant', 'pi-chatbot'); ?></span>
+                        <span class="pi-badge pi-badge--warning"><?php
+                            echo esc_html($settings['web_search_provider'] === 'searxng'
+                                ? __('Enabled, but no SearXNG URL — feature is dormant', 'pi-chatbot')
+                                : __('Enabled, but no API key — feature is dormant', 'pi-chatbot'));
+                        ?></span>
                     <?php else : ?>
                         <span class="pi-badge pi-badge--muted"><?php esc_html_e('Off', 'pi-chatbot'); ?></span>
                     <?php endif; ?>
@@ -327,17 +335,25 @@ class Pi_Chatbot_Admin {
                             <label class="pi-cba-label" for="web_search_provider"><?php esc_html_e('Provider', 'pi-chatbot'); ?></label>
                             <div>
                                 <select id="web_search_provider" name="web_search_provider">
-                                    <option value="brave" <?php selected($settings['web_search_provider'], 'brave'); ?>>Brave Search API</option>
-                                    <option value="serper" <?php selected($settings['web_search_provider'], 'serper'); ?>>Serper.dev (Google)</option>
+                                    <option value="searxng" <?php selected($settings['web_search_provider'], 'searxng'); ?>><?php esc_html_e('SearXNG — self-hosted, free, no quota', 'pi-chatbot'); ?></option>
+                                    <option value="serper" <?php selected($settings['web_search_provider'], 'serper'); ?>><?php esc_html_e('Serper.dev — 2,500 free credits, then paid', 'pi-chatbot'); ?></option>
+                                    <option value="brave" <?php selected($settings['web_search_provider'], 'brave'); ?>><?php esc_html_e('Brave — PAID since Feb 2026', 'pi-chatbot'); ?></option>
                                 </select>
-                                <p class="pi-cba-desc"><?php esc_html_e('Brave: register at api.search.brave.com. Serper: register at serper.dev. Both have a free tier that does not need a card.', 'pi-chatbot'); ?></p>
+                                <p class="pi-cba-desc"><?php esc_html_e('Fill in the field matching your choice: SearXNG uses the instance URL below and ignores the key; Serper and Brave use the key and ignore the URL.', 'pi-chatbot'); ?></p>
+                            </div>
+                        </div>
+                        <div class="pi-cba-field">
+                            <label class="pi-cba-label" for="web_search_url"><?php esc_html_e('SearXNG instance URL', 'pi-chatbot'); ?></label>
+                            <div>
+                                <input type="text" id="web_search_url" name="web_search_url" placeholder="https://searx.example.com" value="<?php echo esc_attr($settings['web_search_url']); ?>">
+                                <p class="pi-cba-desc"><?php esc_html_e('Your own instance only. Must have json enabled in search.formats (settings.yml) — without it SearXNG replies 403 and no results come back.', 'pi-chatbot'); ?></p>
                             </div>
                         </div>
                         <div class="pi-cba-field">
                             <label class="pi-cba-label" for="web_search_key"><?php esc_html_e('Provider API key', 'pi-chatbot'); ?></label>
                             <div>
                                 <input type="password" id="web_search_key" name="web_search_key" autocomplete="off" value="<?php echo esc_attr($settings['web_search_key']); ?>">
-                                <p class="pi-cba-desc"><?php esc_html_e('Paste the key from whichever provider you picked above. Stored with autoload off, alongside the LLM7 keys.', 'pi-chatbot'); ?></p>
+                                <p class="pi-cba-desc"><?php esc_html_e('Serper or Brave only. Stored with autoload off, alongside the LLM7 keys.', 'pi-chatbot'); ?></p>
                             </div>
                         </div>
                     </div>
@@ -489,11 +505,17 @@ class Pi_Chatbot_Admin {
             // would silently fall through to Brave inside WebSearch::search()
             // while the admin page kept displaying whatever was typed.
             $provider = sanitize_text_field(wp_unslash($_POST['web_search_provider'] ?? ''));
-            if (in_array($provider, ['brave', 'serper'], true)) {
+            if (in_array($provider, ['searxng', 'serper', 'brave'], true)) {
                 $settings['web_search_provider'] = $provider;
             }
             if (isset($_POST['web_search_key'])) {
                 $settings['web_search_key'] = trim(sanitize_text_field(wp_unslash($_POST['web_search_key'])));
+            }
+            if (isset($_POST['web_search_url'])) {
+                // esc_url_raw, not sanitize_text_field: this value is fetched
+                // server-side, so it must be a real URL with an allowed
+                // protocol, not merely free of tags.
+                $settings['web_search_url'] = esc_url_raw(trim(wp_unslash($_POST['web_search_url'])));
             }
         }
         if (isset($_POST['accuracy_form'])) {
