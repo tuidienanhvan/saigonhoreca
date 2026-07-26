@@ -33,7 +33,14 @@ class Pi_Chatbot_Router {
      *  cached under v3 recorded small talk as 'NEGATIVE', which the new code
      *  would still read as "the router failed" and answer with a product
      *  search. Bumping retires them immediately instead of waiting out the TTL. */
-    const PROMPT_VERSION = 4;
+    // v5 (2026-07-26): keywords_vi redefined as a TRANSLATED Vietnamese search
+    // query rather than "the customer's original Vietnamese words", and the
+    // prompt's claim that the catalog is English corrected (it is 72%
+    // Vietnamese). Measured cause: a Korean question produced
+    // keywords_vi = ["cái nào tốt"] — a filler phrase lifted from the
+    // difficulty examples, because the question contained no Vietnamese to
+    // "keep" — and that junk poisoned the search down to 0 results.
+    const PROMPT_VERSION = 5;
 
     const MODEL_DEFAULT = 'codestral-latest';
     const TIMEOUT_SECONDS = 8;
@@ -175,8 +182,13 @@ class Pi_Chatbot_Router {
 
         $known_brands = array_values(array_unique(array_values(Pi_Chatbot_Entities::known_brands())));
 
-        $system = "You are the intent classifier + translator for a commercial kitchen equipment chatbot "
-            . "(catalog titles are in ENGLISH; customers may ask in Vietnamese/English/Japanese/other languages).\n"
+        $system = "You are the intent classifier + translator for a commercial kitchen equipment chatbot.\n"
+            . "The catalog is MOSTLY VIETNAMESE: about 72% of product titles are Vietnamese "
+            . "(\"Máy làm đá viên FM-300AKE\", \"Bàn Mát 2 Cửa RT-128MA-S\") and about 28% are English, "
+            . "mainly imported brands (\"Josper HJX-15 Charcoal Oven\", \"Undercounter Freezer\"). "
+            . "So the VIETNAMESE keywords are the ones that matter most for search — the English ones are a "
+            . "secondary net for that 28%.\n"
+            . "Customers ask in Vietnamese, English, Japanese, Korean, Chinese, French, and other languages.\n"
             . "Real industry-term examples from the catalog (use these for accurate translation, don't guess generically):\n"
             . implode("\n", $example_lines) . "\n\n"
             . "Known REAL brand list (pick verbatim from here only, never invent a brand): "
@@ -193,7 +205,17 @@ class Pi_Chatbot_Router {
             . "  none    — greeting/small talk/out of scope (not about kitchen equipment, pricing, services, contact, or projects) — leave other fields empty\n"
             . "keywords_en: 2-5 English keywords describing the EXACT equipment type (use real commercial-kitchen "
             . "industry terms, not a literal word-for-word translation). Only for intent=product.\n"
-            . "keywords_vi: the original Vietnamese keywords remaining after stripping greeting/filler words. Only for intent=product.\n\n"
+            . "keywords_vi: 2-5 VIETNAMESE search terms naming the exact equipment, using the words this catalog "
+            . "actually uses (\"tủ đông\", \"tủ mát\", \"máy làm đá\", \"bếp gas\", \"máy rửa chén\", \"lò nướng\"). "
+            . "Only for intent=product.\n"
+            . "  If the question is already in Vietnamese: keep the customer's own words, minus greetings and filler.\n"
+            . "  If the question is in ANY OTHER LANGUAGE (Korean, Japanese, Chinese, English, French...): TRANSLATE "
+            . "the equipment name into Vietnamese. This field is a SEARCH QUERY against a Vietnamese catalog, not a "
+            . "record of what the customer typed — 업소용 제빙기 becomes [\"máy làm đá\",\"máy làm đá công nghiệp\"], "
+            . "業務用冷凍庫 becomes [\"tủ đông\",\"tủ đông công nghiệp\"], 商用冰柜 becomes [\"tủ đông\",\"tủ mát\"].\n"
+            . "  NEVER put filler or vague phrases here (\"cái nào tốt\", \"loại nào\", \"tư vấn\") — they match nothing "
+            . "and actively poison the search. NEVER copy the English keywords into this field verbatim. "
+            . "If you genuinely cannot name the equipment in Vietnamese, leave this array EMPTY rather than guessing.\n\n"
             . "difficulty: how hard this question is to answer by KEYWORD SEARCH ALONE. Only for intent=product; use \"easy\" otherwise.\n"
             . "  hard — ANY of: the question is vague about which product is wanted (\"cái nào tốt\", \"loại nào phù hợp\", "
             . "\"tư vấn giúp\"); it compares or asks to choose between options; it stacks 2+ constraints (type AND capacity, "

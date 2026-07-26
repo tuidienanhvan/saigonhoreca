@@ -140,12 +140,38 @@ class Pi_Chatbot_Rest {
                     $context = Pi_Chatbot_Retriever::search_projects($message, (int) $settings['top_k']) ?: [];
                     break;
                 default: // 'product'
-                    $search_query = trim(implode(' ', array_merge(
-                        $enrichment['keywords_en'],
-                        $enrichment['keywords_vi'],
-                        $enrichment['brand'] ? [$enrichment['brand']] : []
-                    )));
+                    // The router returns the SAME information need expressed
+                    // twice — once in Vietnamese, once in English. They are
+                    // ALTERNATIVES, not extra constraints, so they are searched
+                    // as two queries and fused, never concatenated into one.
+                    //
+                    // Concatenating was measured to be actively harmful: for
+                    // "상업용 냉동고 찾고 있어요" the Vietnamese leg alone
+                    // ("tủ đông tủ đông công nghiệp") returned 3 correct
+                    // freezers, and appending the English leg ("commercial
+                    // freezer ice cream freezer") returned ZERO. Adding words to
+                    // a query must never be able to empty the result set — but
+                    // it can here, because rare words become +mandatory terms
+                    // and require_literal_all() then demands a single product
+                    // contain all of them, which no product does.
+                    //
+                    // Vietnamese is the primary leg: 72% of catalog titles are
+                    // Vietnamese. The English leg still matters — the other 28%
+                    // are English-titled imported lines (Josper, Sammic) that a
+                    // Vietnamese query alone can miss — which is exactly why it
+                    // stays in the fusion instead of being dropped.
+                    $brand_suffix = $enrichment['brand'] ? ' ' . $enrichment['brand'] : '';
+                    $query_vi = trim(implode(' ', $enrichment['keywords_vi']) . $brand_suffix);
+                    $query_en = trim(implode(' ', $enrichment['keywords_en']) . $brand_suffix);
+
+                    $search_query = $query_vi !== '' ? $query_vi : $query_en;
                     if ($search_query === '') $search_query = $message;
+                    // Only a genuine second phrasing goes in — not the primary
+                    // leg repeated, and not an empty string.
+                    $alt_queries = array_values(array_filter(
+                        [$query_vi, $query_en],
+                        function ($q) use ($search_query) { return $q !== '' && $q !== $search_query; }
+                    ));
 
                     // MAX-ACCURACY PATH — taken only when the router judged this
                     // question hard for keyword search: vague, comparative,
@@ -165,6 +191,7 @@ class Pi_Chatbot_Rest {
 
                         $candidates = Pi_Chatbot_Retriever::search_hybrid($search_query, Pi_Chatbot_Reranker::MAX_CANDIDATES, [
                             'extra_queries' => $query_variants,
+                            'alt_queries'   => $alt_queries,
                             'brand'         => $router_brand,
                         ]) ?: [];
                         $mark('retrieve_hybrid');
@@ -197,7 +224,16 @@ class Pi_Chatbot_Rest {
                             $context = [];
                         }
                     } else {
-                        $context = Pi_Chatbot_Retriever::search($search_query, (int) $settings['top_k']) ?: [];
+                        // Fast path also fuses the two language legs. This is
+                        // still purely lexical — search_hybrid() with no
+                        // extra_queries makes no model calls at all, just one
+                        // more SQL pipeline — so the fast path stays fast while
+                        // gaining the fix above. With only one leg present it
+                        // degenerates to exactly the previous single search().
+                        $context = Pi_Chatbot_Retriever::search_hybrid($search_query, (int) $settings['top_k'], [
+                            'alt_queries' => $alt_queries,
+                            'brand'       => $router_brand,
+                        ]) ?: [];
                     }
                     break;
             }

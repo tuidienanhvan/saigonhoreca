@@ -544,7 +544,14 @@ class Pi_Chatbot_Retriever {
      * swamped by one list's scale. k=60 is the constant from the original paper
      * and is deliberately left alone.
      *
-     * @param array $opts extra_queries: string[] router rewrites.
+     * @param array $opts extra_queries: string[] router rewrites — OPTIONAL extra
+     *              phrasings, budget-gated by the multi_query_max setting.
+     *              alt_queries: string[] alternative expressions of the SAME
+     *              information need that are structurally always present (today:
+     *              the router's English keyword set alongside its Vietnamese
+     *              one). NOT gated by multi_query_max — that setting is a budget
+     *              for optional rewrites, and using it to gate these would make
+     *              a value of 0 silently drop half the query.
      * @return array Same shape as search().
      */
     public static function search_hybrid($question, $top_k = 12, $opts = []) {
@@ -574,6 +581,10 @@ class Pi_Chatbot_Retriever {
         $pool = max(20, (int) $top_k * 3);
 
         $queries = [$question];
+        foreach ((array) ($opts['alt_queries'] ?? []) as $alt) {
+            $alt = trim((string) $alt);
+            if ($alt !== '' && !in_array($alt, $queries, true)) $queries[] = $alt;
+        }
         $max_variants = (int) $settings['multi_query_max'];
         foreach (array_slice((array) ($opts['extra_queries'] ?? []), 0, max(0, $max_variants)) as $variant) {
             $variant = trim((string) $variant);

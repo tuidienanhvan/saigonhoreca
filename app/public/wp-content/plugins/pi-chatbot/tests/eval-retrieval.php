@@ -130,6 +130,29 @@ function pi_eval_metrics_for_query($expected_ids, $result_post_ids) {
 // filename into the $args variable in the file's scope (not $argv/$_SERVER).
 // Parsed up here because the retrieval mode has to be known before the loop.
 $eval_args = isset($args) && is_array($args) ? $args : [];
+
+// Reject unknown arguments instead of ignoring them. This is not defensive
+// pedantry — it is a bug fix. Unknown args used to be dropped in silence, so
+// `save=baseline.json` (real flag: `save-baseline=`) and `hybrid=1` (real flag:
+// `mode=hybrid`) both ran happily and did NOTHING: the baseline was never
+// written, and a run believed to be exercising the hybrid path was actually
+// lexical. Both mistakes were made for real on 2026-07-26 and produced two
+// commit messages claiming updated baselines that had not been updated. A
+// measurement tool that silently ignores the instruction to measure is worse
+// than one that crashes.
+$known_prefixes = ['mode=', 'compare=', 'save-baseline='];
+foreach ($eval_args as $a) {
+    if ($a === 'save-baseline') continue;
+    $ok = false;
+    foreach ($known_prefixes as $p) {
+        if (strpos($a, $p) === 0) { $ok = true; break; }
+    }
+    if (!$ok) {
+        fwrite(STDERR, "Unknown argument '{$a}'.\nValid: mode=lexical|hybrid, compare=<file>, save-baseline[=<file>]\n");
+        exit(1);
+    }
+}
+
 $mode = 'lexical';
 foreach ($eval_args as $a) {
     if (strpos($a, 'mode=') === 0) $mode = substr($a, strlen('mode='));
