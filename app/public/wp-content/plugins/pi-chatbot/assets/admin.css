@@ -1,75 +1,93 @@
 /**
- * Pi Chatbot — admin page skin, black + gold to match the saigonhoreca brand
- * (pi-design-system tokens: D:\Documents\pi-design-system, values copied
- * literally from the theme's own _brand.css rather than imported at runtime —
- * this file has no build step and must not depend on the theme being active).
+ * Pi Chatbot — admin page skin.
  *
- * Scoped entirely under .pi-chatbot-admin so nothing here can leak onto any
- * other wp-admin screen — WP's own admin chrome (top toolbar, side menu)
- * intentionally stays untouched.
+ * Structure, class naming (BEM `.pi-{component}__{element}--{modifier}`) and
+ * the full-bleed layout technique below are deliberately modeled on the Pi
+ * ecosystem's own dashboard component library (pi-dashboard-v2's
+ * assets/css/dashboard.css + pi-components.css — a mature, previously-shipped
+ * admin UI, recovered from /tmp after removal from this site and used here as
+ * a real reference, not guessed from scratch). Color VALUES are this plugin's
+ * own — black + gold, copied literally from saigonhoreca-theme's _brand.css
+ * (D:\Documents\pi-design-system defines the token contract; this file has no
+ * build step and must not depend on the theme being active to render).
+ *
+ * Everything is scoped under .pi-chatbot-admin (plus the body-class-scoped
+ * WP-chrome rules below it) so nothing here can leak onto any other
+ * wp-admin screen.
  */
 
 .pi-chatbot-admin {
-  --pi-p: #f5a623;
-  --pi-ph: #d18910;
-  --pi-pc: #000000;
-  --pi-b1: #0a0a0a;
-  --pi-b2: #131313;
-  --pi-b3: #1a1a1a;
-  --pi-b4: #1f1f1f;
-  --pi-bc: #ffffff;
-  --pi-bc2: rgba(255, 255, 255, 0.78);
-  --pi-bc3: rgba(255, 255, 255, 0.55);
-  --pi-bd: rgba(255, 255, 255, 0.10);
-  --pi-bs: rgba(255, 255, 255, 0.05);
-  --pi-bt: rgba(255, 255, 255, 0.20);
-  --pi-su: #16a34a;
-  --pi-wa: #f5a623;
-  --pi-er: #e15a5f;
-  --pi-in: #4d82ea;
+  /* Base surface */
+  --pi-bg: #0a0a0a;
+  --pi-bg-card: #131313;
+  --pi-bg-alt: #161616;
+  --pi-bg-elevated: #1f1f1f;
+  --pi-bg-input: #1a1a1a;
+
+  /* Brand */
+  --pi-primary: #f5a623;
+  --pi-primary-hover: #d18910;
+  --pi-primary-content: #000000;
+
+  /* Text */
+  --pi-text: #ffffff;
+  --pi-text-2: rgba(255, 255, 255, 0.78);
+  --pi-text-3: rgba(255, 255, 255, 0.55);
+  --pi-text-muted: rgba(255, 255, 255, 0.40);
+
+  /* Borders */
+  --pi-border: rgba(255, 255, 255, 0.10);
+  --pi-border-light: rgba(255, 255, 255, 0.05);
+  --pi-border-strong: rgba(255, 255, 255, 0.20);
+
+  /* Status */
+  --pi-success: #16a34a;
+  --pi-warning: #f5a623;
+  --pi-danger: #e15a5f;
+  --pi-info: #4d82ea;
+
+  --pi-shadow: rgba(0, 0, 0, 0.5);
   --pi-radius-sm: 8px;
   --pi-radius-md: 12px;
   --pi-radius-lg: 16px;
 
-  color: var(--pi-bc2);
+  color: var(--pi-text-2);
   font-size: 14px;
   line-height: 1.6;
 
-  /* Full-width dark surface, not a boxed column with empty space beside it.
-   * The whole content area is painted here, not just individual cards —
-   * without this, WP admin's own default light page background (#f0f0f1)
-   * shows through around the masthead and between cards.
-   *
-   * NOT using negative margins to bleed past WP's own .wrap edges: a first
-   * version tried that (assuming WP's default 20px/2px .wrap margins) and it
-   * produced a real horizontal scrollbar on the actual site — this
-   * installation's admin layout doesn't match that assumption closely enough
-   * for pixel-exact negative margins to be safe. width:100% fills whatever
-   * .wrap already gives it with zero risk of exceeding the viewport, which
-   * matters far more than a few extra pixels of edge bleed.
-   *
-   * overflow-x:hidden is a deliberate backstop, not a fix for a specific
-   * known cause — it ensures that if any descendant (a long unmasked API
-   * key, a wide table on a narrow screen) tries to force extra width, it
-   * clips inside this box instead of ever reopening a page-level scrollbar.
-   */
+  /* Full width, no page-level max-width — chosen deliberately over
+   * pi-dashboard-v2's own max-width:1400px: this page's forms are short
+   * label/input rows, not a dense multi-column dashboard, so there's no
+   * readability reason to cap width, and the ask was for the surface to
+   * always fill the viewport exactly, at any size. */
   width: 100%;
-  max-width: 100%;
+  max-width: none;
   box-sizing: border-box;
-  overflow-x: hidden;
-  background: var(--pi-b1);
   margin: 0;
   padding: 24px 24px 60px;
-  min-height: calc(100vh - 46px); /* fills the viewport below the WP admin toolbar */
 }
-
-/* Cards and field grids fill the full width of that dark surface — nothing
- * inside should be narrower than its parent just because it used to sit
- * inside a max-width:940px column. */
-.pi-chatbot-admin .pi-cba-card { width: 100%; }
-.pi-chatbot-admin form { width: 100%; }
-
 .pi-chatbot-admin * { box-sizing: border-box; }
+
+/**
+ * WP-chrome background — the fix for the actual bug two prior attempts got
+ * wrong. NOT a negative margin on .pi-chatbot-admin guessing WP core's
+ * .wrap margins (that produced a real horizontal scrollbar on this
+ * installation — the guessed pixel values didn't match the real layout).
+ * Instead, paint the REAL parent elements WP core already renders
+ * (#wpwrap/#wpcontent/#wpbody/#wpbody-content), scoped to this page's own
+ * body class. Those are WP's own boxes, already sized correctly for the
+ * viewport by WP itself — painting them can never overflow, because nothing
+ * about their own sizing is being touched, only their background.
+ */
+body.toplevel_page_pi-chatbot #wpwrap,
+body.toplevel_page_pi-chatbot #wpcontent,
+body.toplevel_page_pi-chatbot #wpbody,
+body.toplevel_page_pi-chatbot #wpbody-content {
+  background: #0a0a0a !important;
+  min-height: 100vh;
+}
+body.toplevel_page_pi-chatbot #wpbody-content { padding-bottom: 0 !important; }
+body.toplevel_page_pi-chatbot #wpfooter { display: none !important; }
 
 /* ── Masthead ─────────────────────────────────────────────────────────── */
 .pi-cba-head {
@@ -79,7 +97,7 @@
   margin: 0 0 24px;
 }
 .pi-cba-head .dashicons {
-  color: var(--pi-p);
+  color: var(--pi-primary);
   font: normal 24px/1 dashicons;
   width: 24px;
   height: 24px;
@@ -92,16 +110,22 @@
   padding: 0;
   font-size: 22px;
   font-weight: 700;
-  color: var(--pi-bc);
+  color: var(--pi-text);
 }
 .pi-cba-head .pi-cba-sub {
   margin: 2px 0 0;
   font-size: 12.5px;
-  color: var(--pi-bc3);
+  color: var(--pi-text-3);
 }
 
-/* ── Notices ──────────────────────────────────────────────────────────── */
-.pi-cba-notice {
+/* ═══════════════════════════════════════════════════════════════════════
+   ALERT — replaces the flat .pi-cba-notice from the previous version.
+   Same component pi-components.css uses for inline messages: an icon box
+   plus text, tinted by mixing the status color into the surface rather
+   than a hardcoded rgba(), so the tint always reads correctly against
+   this specific dark background.
+   ═══════════════════════════════════════════════════════════════════════ */
+.pi-alert {
   display: flex;
   align-items: flex-start;
   gap: 10px;
@@ -109,48 +133,60 @@
   border-radius: var(--pi-radius-sm);
   margin: 0 0 16px;
   font-size: 13.5px;
-  border: 1px solid;
+  border: 1px solid transparent;
 }
-.pi-cba-notice.success { background: rgba(22, 163, 74, 0.12); border-color: rgba(22, 163, 74, 0.35); color: #7fe0a3; }
-.pi-cba-notice.error   { background: rgba(225, 90, 95, 0.12); border-color: rgba(225, 90, 95, 0.35); color: #f5a3a6; }
-.pi-cba-notice .dashicons { font-size: 18px; width: 18px; height: 18px; flex: none; margin-top: 1px; }
+.pi-alert--success { background: color-mix(in srgb, var(--pi-success) 14%, var(--pi-bg-card)); border-color: color-mix(in srgb, var(--pi-success) 35%, transparent); color: #b7f0c8; }
+.pi-alert--danger   { background: color-mix(in srgb, var(--pi-danger) 14%, var(--pi-bg-card));  border-color: color-mix(in srgb, var(--pi-danger) 35%, transparent);  color: #f8c6c8; }
+.pi-alert .dashicons { font-size: 18px; width: 18px; height: 18px; flex: none; margin-top: 1px; }
+.pi-alert p { margin: 0; }
 
-/* ── Cards ────────────────────────────────────────────────────────────── */
-.pi-cba-card {
-  background: var(--pi-b2);
-  border: 1px solid var(--pi-bd);
+/* ═══════════════════════════════════════════════════════════════════════
+   CARD — BEM: .pi-card > .pi-card__header > .pi-card__title, .pi-card__body
+   Glass surface (translucent + blur), not a flat opaque panel — matches the
+   reference component's visual language exactly (color-mix + backdrop-filter).
+   ═══════════════════════════════════════════════════════════════════════ */
+.pi-card {
+  background: color-mix(in srgb, var(--pi-bg-card) 88%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--pi-border);
   border-radius: var(--pi-radius-lg);
-  padding: 22px 24px;
+  box-shadow: 0 4px 16px color-mix(in srgb, var(--pi-shadow) 25%, transparent);
   margin: 0 0 20px;
+  width: 100%;
+  overflow: hidden;
 }
-.pi-cba-card + .pi-cba-card { margin-top: 20px; }
-.pi-cba-eyebrow {
+@supports not (backdrop-filter: blur(1px)) {
+  /* No blur support: fall back to a fully opaque card so text stays legible
+   * (a translucent card with no blur would show raw page content through it). */
+  .pi-card { background: var(--pi-bg-card); }
+}
+.pi-card__header { padding: 20px 24px 0; }
+.pi-card__eyebrow {
   display: block;
   font-size: 10.5px;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--pi-p);
+  color: var(--pi-primary);
   margin: 0 0 6px;
 }
-.pi-cba-card h2 {
+.pi-card__title {
   margin: 0 0 8px;
   padding: 0;
   font-size: 16px;
   font-weight: 700;
-  color: var(--pi-bc);
+  color: var(--pi-text);
 }
-.pi-cba-card > .pi-cba-desc {
+.pi-card__desc {
   margin: 0 0 18px;
   max-width: 70ch;
-  color: var(--pi-bc3);
+  color: var(--pi-text-3);
   font-size: 13px;
 }
-.pi-cba-card hr {
-  border: none;
-  border-top: 1px solid var(--pi-bs);
-  margin: 20px 0;
-}
+.pi-card__body { padding: 0 24px 24px; }
+.pi-card__body--tight { padding-top: 0; }
+.pi-card hr { border: none; border-top: 1px solid var(--pi-border-light); margin: 20px 0; }
 
 /* ── Field grid (replaces WP's default .form-table inside our cards) ───── */
 .pi-cba-fields { display: flex; flex-direction: column; gap: 18px; }
@@ -161,27 +197,28 @@
 .pi-cba-field label.pi-cba-label {
   padding-top: 8px;
   font-weight: 600;
-  color: var(--pi-bc);
+  color: var(--pi-text);
   font-size: 13px;
 }
 .pi-cba-field .pi-cba-desc {
   margin: 6px 0 0;
   font-size: 12px;
-  color: var(--pi-bc3);
+  color: var(--pi-text-3);
   max-width: 60ch;
 }
 .pi-cba-checkbox-row { display: flex; align-items: center; gap: 8px; padding-top: 8px; }
-.pi-cba-checkbox-row label { color: var(--pi-bc); font-size: 13px; font-weight: 500; }
+.pi-cba-checkbox-row label { color: var(--pi-text); font-size: 13px; font-weight: 500; }
 
 /* ── Inputs ───────────────────────────────────────────────────────────── */
+.pi-chatbot-admin form { width: 100%; }
 .pi-chatbot-admin input[type="text"],
 .pi-chatbot-admin input[type="number"],
 .pi-chatbot-admin input[type="password"],
 .pi-chatbot-admin textarea {
-  background: var(--pi-b3);
-  border: 1px solid var(--pi-bd);
+  background: var(--pi-bg-input);
+  border: 1px solid var(--pi-border);
   border-radius: var(--pi-radius-sm);
-  color: var(--pi-bc);
+  color: var(--pi-text);
   padding: 8px 12px;
   font-size: 13px;
   width: 100%;
@@ -191,25 +228,25 @@
 .pi-chatbot-admin input[type="number"] { max-width: 100px; }
 .pi-chatbot-admin input:focus,
 .pi-chatbot-admin textarea:focus {
-  border-color: var(--pi-p);
-  outline: 2px solid rgba(245, 166, 35, 0.35);
+  border-color: var(--pi-primary);
+  outline: 2px solid color-mix(in srgb, var(--pi-primary) 35%, transparent);
   outline-offset: 0;
   box-shadow: none;
 }
 .pi-chatbot-admin input[type="checkbox"] {
-  border-color: var(--pi-bt);
-  background: var(--pi-b3);
+  border-color: var(--pi-border-strong);
+  background: var(--pi-bg-input);
 }
 .pi-chatbot-admin input[type="checkbox"]:checked {
-  background: var(--pi-p);
-  border-color: var(--pi-p);
+  background: var(--pi-primary);
+  border-color: var(--pi-primary);
 }
 
 /* ── Buttons ──────────────────────────────────────────────────────────── */
 .pi-chatbot-admin .button-primary {
-  background: var(--pi-p);
-  border-color: var(--pi-p);
-  color: var(--pi-pc);
+  background: var(--pi-primary);
+  border-color: var(--pi-primary);
+  color: var(--pi-primary-content);
   font-weight: 700;
   text-shadow: none;
   box-shadow: none;
@@ -217,18 +254,18 @@
 }
 .pi-chatbot-admin .button-primary:hover,
 .pi-chatbot-admin .button-primary:focus {
-  background: var(--pi-ph);
-  border-color: var(--pi-ph);
-  color: var(--pi-pc);
+  background: var(--pi-primary-hover);
+  border-color: var(--pi-primary-hover);
+  color: var(--pi-primary-content);
 }
 .pi-chatbot-admin .button-secondary {
-  background: var(--pi-b3);
-  border-color: var(--pi-bt);
-  color: var(--pi-bc);
+  background: var(--pi-bg-input);
+  border-color: var(--pi-border-strong);
+  color: var(--pi-text);
   border-radius: var(--pi-radius-sm);
   box-shadow: none;
 }
-.pi-chatbot-admin .button-secondary:hover { border-color: var(--pi-p); color: var(--pi-p); }
+.pi-chatbot-admin .button-secondary:hover { border-color: var(--pi-primary); color: var(--pi-primary); }
 
 /* ── Key list widget (JS-enhanced; the plain textarea is the no-JS fallback) ── */
 .pi-key-list-source.pi-enhanced { position: absolute; width: 1px; height: 1px; overflow: hidden; opacity: 0; pointer-events: none; }
@@ -243,9 +280,7 @@
   /* Flex items default to min-width:auto, which means "never shrink below
    * my content's natural width" — a long pasted key is exactly the kind of
    * content that triggers this and forces the row (and everything above it)
-   * wider than its container. min-width:0 is the standard fix: it lets the
-   * input actually shrink to fit and scroll its own text internally instead
-   * of pushing the page into a horizontal scrollbar. */
+   * wider than its container. min-width:0 is the standard fix. */
   min-width: 0;
 }
 .pi-key-row .pi-key-idx {
@@ -253,7 +288,7 @@
   width: 22px;
   text-align: center;
   font-size: 11px;
-  color: var(--pi-bc3);
+  color: var(--pi-text-3);
   font-variant-numeric: tabular-nums;
 }
 .pi-key-icon-btn {
@@ -263,22 +298,22 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--pi-b3);
-  border: 1px solid var(--pi-bd);
+  background: var(--pi-bg-input);
+  border: 1px solid var(--pi-border);
   border-radius: var(--pi-radius-sm);
-  color: var(--pi-bc3);
+  color: var(--pi-text-3);
   cursor: pointer;
   padding: 0;
 }
-.pi-key-icon-btn:hover { color: var(--pi-bc); border-color: var(--pi-bt); }
-.pi-key-icon-btn.pi-key-remove:hover { color: var(--pi-er); border-color: var(--pi-er); }
+.pi-key-icon-btn:hover { color: var(--pi-text); border-color: var(--pi-border-strong); }
+.pi-key-icon-btn.pi-key-remove:hover { color: var(--pi-danger); border-color: var(--pi-danger); }
 .pi-key-add {
   align-self: flex-start;
   margin-top: 2px;
   background: transparent;
-  border: 1px dashed var(--pi-bt);
+  border: 1px dashed var(--pi-border-strong);
   border-radius: var(--pi-radius-sm);
-  color: var(--pi-p);
+  color: var(--pi-primary);
   font-size: 12.5px;
   font-weight: 600;
   padding: 7px 14px;
@@ -287,49 +322,77 @@
   align-items: center;
   gap: 6px;
 }
-.pi-key-add:hover { border-color: var(--pi-p); background: rgba(245, 166, 35, 0.08); }
-.pi-key-empty { font-size: 12px; color: var(--pi-bc3); font-style: italic; }
+.pi-key-add:hover { border-color: var(--pi-primary); background: color-mix(in srgb, var(--pi-primary) 8%, transparent); }
+.pi-key-empty { font-size: 12px; color: var(--pi-text-3); font-style: italic; }
 
-/* ── Status pills ─────────────────────────────────────────────────────── */
-.pi-pill {
+/* ═══════════════════════════════════════════════════════════════════════
+   BADGE — BEM `.pi-badge--{modifier}`, color-mix tinting (matches the
+   reference component exactly; replaces the previous flat .pi-pill).
+   ═══════════════════════════════════════════════════════════════════════ */
+.pi-badge {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  font-size: 11px;
-  font-weight: 700;
   padding: 3px 10px;
   border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
   letter-spacing: 0.02em;
+  border: 1px solid transparent;
+  white-space: nowrap;
 }
-.pi-pill::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
-.pi-pill.good { background: rgba(22, 163, 74, 0.14); color: #7fe0a3; }
-.pi-pill.warn { background: rgba(245, 166, 35, 0.14); color: var(--pi-p); }
-.pi-pill.bad  { background: rgba(225, 90, 95, 0.14); color: #f5a3a6; }
-.pi-pill.neutral { background: var(--pi-b3); color: var(--pi-bc3); }
+.pi-badge::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; flex: none; }
+.pi-badge--success { background: color-mix(in srgb, var(--pi-success) 14%, transparent); color: #7fe0a3; border-color: color-mix(in srgb, var(--pi-success) 32%, transparent); }
+.pi-badge--warning { background: color-mix(in srgb, var(--pi-warning) 16%, transparent); color: var(--pi-primary); border-color: color-mix(in srgb, var(--pi-warning) 36%, transparent); }
+.pi-badge--danger  { background: color-mix(in srgb, var(--pi-danger) 14%, transparent);  color: #f5a3a6; border-color: color-mix(in srgb, var(--pi-danger) 32%, transparent); }
+.pi-badge--muted   { background: var(--pi-bg-input); color: var(--pi-text-3); border-color: var(--pi-border); }
 
-/* ── Stat strip (Data index) ─────────────────────────────────────────── */
-.pi-cba-stats { display: flex; gap: 24px; flex-wrap: wrap; margin: 0 0 18px; }
-.pi-cba-stat-num { font-size: 24px; font-weight: 700; color: var(--pi-bc); font-variant-numeric: tabular-nums; line-height: 1.1; }
-.pi-cba-stat-label { font-size: 11px; color: var(--pi-bc3); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 3px; }
+/* ═══════════════════════════════════════════════════════════════════════
+   STAT — BEM `.pi-stat > .pi-stat__value, .pi-stat__label`. Grid wrapper
+   mirrors pi-components.css's .pi-grid--stats (responsive column count),
+   simplified to this page's 2-3 stat use case.
+   ═══════════════════════════════════════════════════════════════════════ */
+.pi-grid--stats { display: flex; gap: 28px; flex-wrap: wrap; margin: 0 0 18px; }
+.pi-stat__value {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--pi-text);
+  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+.pi-stat__value--sm { font-size: 14px; font-weight: 700; padding-top: 6px; font-family: inherit; }
+.pi-stat__label {
+  font-size: 11px;
+  color: var(--pi-text-3);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 3px;
+}
 
-/* ── Learning table ───────────────────────────────────────────────────── */
-.pi-cba-table-wrap { overflow-x: auto; border: 1px solid var(--pi-bd); border-radius: var(--pi-radius-md); }
-.pi-chatbot-admin table.pi-cba-table { border-collapse: collapse; width: 100%; background: var(--pi-b3); margin: 0; }
-.pi-chatbot-admin table.pi-cba-table th {
+/* ═══════════════════════════════════════════════════════════════════════
+   TABLE — BEM `.pi-table-wrap > table.pi-table`.
+   ═══════════════════════════════════════════════════════════════════════ */
+.pi-table-wrap { overflow-x: auto; border: 1px solid var(--pi-border); border-radius: var(--pi-radius-md); }
+.pi-chatbot-admin table.pi-table { border-collapse: collapse; width: 100%; background: var(--pi-bg-input); margin: 0; font-size: 13px; }
+.pi-chatbot-admin table.pi-table th {
   text-align: left;
   font-size: 10.5px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--pi-bc3);
-  background: var(--pi-b4);
+  color: var(--pi-text-3);
+  background: var(--pi-bg-elevated);
   padding: 10px 14px;
-  border-bottom: 1px solid var(--pi-bd);
+  border-bottom: 1px solid var(--pi-border);
+  white-space: nowrap;
 }
-.pi-chatbot-admin table.pi-cba-table td {
+.pi-chatbot-admin table.pi-table td {
   padding: 9px 14px;
-  border-bottom: 1px solid var(--pi-bs);
-  color: var(--pi-bc2);
-  font-size: 13px;
+  border-bottom: 1px solid var(--pi-border-light);
+  color: var(--pi-text-2);
+  vertical-align: middle;
 }
-.pi-chatbot-admin table.pi-cba-table tr:last-child td { border-bottom: none; }
-.pi-chatbot-admin table.pi-cba-table td.num { font-variant-numeric: tabular-nums; color: var(--pi-bc); font-weight: 600; }
+.pi-chatbot-admin table.pi-table tbody tr:hover td { background: color-mix(in srgb, var(--pi-primary) 4%, transparent); }
+.pi-chatbot-admin table.pi-table tr:last-child td { border-bottom: none; }
+.pi-chatbot-admin table.pi-table td.num { font-variant-numeric: tabular-nums; color: var(--pi-text); font-weight: 600; }
