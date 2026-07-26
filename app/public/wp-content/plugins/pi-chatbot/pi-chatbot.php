@@ -32,9 +32,6 @@ require_once PI_CHATBOT_DIR . 'includes/class-generator.php';
 require_once PI_CHATBOT_DIR . 'includes/class-router.php';
 // class-reranker.php uses Pi_Chatbot_LLM_Client — loaded above.
 require_once PI_CHATBOT_DIR . 'includes/class-reranker.php';
-// Optional external web search (DuckDuckGo, no key). Standalone — depends on
-// nothing above it, and every failure path returns an empty array.
-require_once PI_CHATBOT_DIR . 'includes/class-websearch.php';
 require_once PI_CHATBOT_DIR . 'includes/class-rest.php';
 require_once PI_CHATBOT_DIR . 'includes/class-admin.php';
 
@@ -127,30 +124,6 @@ function pi_chatbot_settings() {
         // whole point of choosing RRF over weighted score blending is that it
         // needs no tuning against incomparable score scales.
         'rrf_k' => 60,
-
-        // ── External web search (opt-in, DuckDuckGo, no API key) ────────────
-        // Master switch. Even when ON, a search only runs for a message whose
-        // request carries web_search=true — the customer's own toggle in the
-        // widget. Two gates on purpose: the site owner decides whether the
-        // feature exists at all, the customer decides whether to use it, and
-        // neither alone can cause an external request.
-        //
-        // Web results NEVER enter the product context. They are passed to the
-        // generator in a separate, explicitly-labelled block, because the
-        // damaging failure for a sales bot is presenting something found on
-        // the internet as stock this company actually carries.
-        //
-        // A provider key is REQUIRED — see the measurement in class-websearch.php
-        // for why the key-free DuckDuckGo route was tried and abandoned. With no
-        // key the feature stays dormant and the widget toggle never appears.
-        'web_search_enabled'  => false,
-        // 'searxng' is the default because it is the only option that is free
-        // with no quota and no payment instrument. Brave removed its free tier
-        // in Feb 2026 and now bills the card taken at signup; Google's Custom
-        // Search JSON API is closed to new users and retires 2027-01-01.
-        'web_search_provider' => 'searxng', // 'searxng' | 'serper' | 'brave'
-        'web_search_key'      => '',        // brave/serper only
-        'web_search_url'      => '',        // searxng only — your own instance
     ];
     $saved = get_option(PI_CHATBOT_OPTION, []);
     if (!is_array($saved)) $saved = [];
@@ -194,14 +167,5 @@ function pi_chatbot_enqueue_frontend() {
         // hardcoded number in both PHP and the maxlength attribute in chatbot.js,
         // easy to drift out of sync if one gets changed later and the other is forgotten.
         'maxLength' => Pi_Chatbot_Rest::MAX_MESSAGE_LENGTH,
-        // Site-owner gate for the web-search toggle. When false the button is
-        // never rendered — and the REST endpoint enforces the same gate
-        // independently, so hiding the button is a UI convenience, not the
-        // security boundary.
-        'webSearch' => Pi_Chatbot_WebSearch::is_configured(),
-        'i18n'      => [
-            'webSearchLabel' => __('Tìm trên web', 'pi-chatbot'),
-            'webSearchTitle' => __('Cho phép bot tham khảo thêm thông tin từ internet. Sản phẩm bán tại shop vẫn lấy từ catalog.', 'pi-chatbot'),
-        ],
     ]);
 }

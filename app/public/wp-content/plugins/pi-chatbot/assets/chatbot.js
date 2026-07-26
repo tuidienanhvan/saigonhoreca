@@ -39,15 +39,6 @@
         '      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>' +
         '    </button>' +
         '  </div>' +
-        // Rendered always, hidden unless the site owner enabled the feature —
-        // toggling visibility in one place below keeps the markup string a
-        // single constant rather than a conditional build.
-        '  <div class="pi-cb-web-row" hidden>' +
-        '    <button type="button" class="pi-cb-web-toggle" aria-pressed="false">' +
-        '      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>' +
-        '      <span class="pi-cb-web-text"></span>' +
-        '    </button>' +
-        '  </div>' +
         '  <div class="pi-cb-engine-row">' +
         '    <span class="pi-cb-engine-label">' +
         '      <svg class="pi-cb-bot-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
@@ -77,8 +68,6 @@
     var sendBtn = panel.querySelector('.pi-cb-send');
     var closeBtn = panel.querySelector('.pi-cb-close');
     var resetBtn = panel.querySelector('.pi-cb-reset');
-    var webRow = panel.querySelector('.pi-cb-web-row');
-    var webToggle = panel.querySelector('.pi-cb-web-toggle');
     var statusEl = panel.querySelector('#pi-cb-status');
     var cooldownEl = panel.querySelector('#pi-cb-cooldown');
     // Character limit is taken from PHP (Pi_Chatbot_Rest::MAX_MESSAGE_LENGTH via
@@ -852,9 +841,7 @@
                 'Content-Type': 'application/json',
                 'X-WP-Nonce': PiChatbotConfig.nonce
             },
-            // web_search is read at send time, not captured when the handler was
-            // registered, so it always reflects the toggle's current state.
-            body: JSON.stringify({ message: text, web_search: webSearchOn }),
+            body: JSON.stringify({ message: text }),
             signal: controller.signal
         })
             .then(function (res) {
@@ -909,26 +896,6 @@
                 if (seq !== requestSeq) return;
                 resetSendState();
             });
-    }
-
-    // ── Web-search toggle ───────────────────────────────────────────────────
-    // Off on every page load by design, not persisted: an external lookup is a
-    // per-question choice with a latency cost, and silently keeping it on from
-    // a previous visit would surprise the customer with a slower reply they
-    // did not ask for this time.
-    var webSearchOn = false;
-    var webCfg = (PiChatbotConfig.i18n || {});
-    if (PiChatbotConfig.webSearch) {
-        webRow.hidden = false;
-        webToggle.title = webCfg.webSearchTitle || '';
-        // textContent, never innerHTML — the widget's standing rule: nothing
-        // reaching the DOM here is ever parsed as markup.
-        panel.querySelector('.pi-cb-web-text').textContent = webCfg.webSearchLabel || 'Web';
-        webToggle.addEventListener('click', function () {
-            webSearchOn = !webSearchOn;
-            webToggle.setAttribute('aria-pressed', webSearchOn ? 'true' : 'false');
-            webToggle.classList.toggle('is-on', webSearchOn);
-        });
     }
 
     sendBtn.addEventListener('click', function () { send(); });

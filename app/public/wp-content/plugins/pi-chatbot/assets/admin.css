@@ -214,7 +214,6 @@ body.toplevel_page_pi-chatbot #wpfooter { display: none !important; }
 .pi-chatbot-admin input[type="text"],
 .pi-chatbot-admin input[type="number"],
 .pi-chatbot-admin input[type="password"],
-.pi-chatbot-admin select,
 .pi-chatbot-admin textarea {
   background: var(--pi-bg-input);
   border: 1px solid var(--pi-border);
@@ -227,16 +226,7 @@ body.toplevel_page_pi-chatbot #wpfooter { display: none !important; }
 }
 .pi-chatbot-admin textarea { max-width: 100%; font-family: ui-monospace, "SFMono-Regular", Consolas, monospace; }
 .pi-chatbot-admin input[type="number"] { max-width: 100px; }
-/* WP core styles selects separately from text inputs, so its light-theme
-   colours survive the rule above unless height/appearance are set here too. */
-.pi-chatbot-admin select {
-  max-width: 260px;
-  height: auto;
-  min-height: 34px;
-}
-.pi-chatbot-admin select option { background: var(--pi-bg-elevated); color: var(--pi-text); }
 .pi-chatbot-admin input:focus,
-.pi-chatbot-admin select:focus,
 .pi-chatbot-admin textarea:focus {
   border-color: var(--pi-primary);
   outline: 2px solid color-mix(in srgb, var(--pi-primary) 35%, transparent);

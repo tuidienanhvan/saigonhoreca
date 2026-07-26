@@ -527,47 +527,6 @@
     padding: 0 14px 8px;
 }
 
-/* Web-search toggle — deliberately quiet by default (it reads as an optional
-   extra, not a primary action) and unmistakably lit when on, since it changes
-   both where answers come from and how long they take. */
-#pi-chatbot-panel .pi-cb-web-row {
-    display: flex;
-    justify-content: flex-start;
-    padding: 0 16px 8px;
-}
-#pi-chatbot-panel .pi-cb-web-row[hidden] { display: none; }
-#pi-chatbot-panel .pi-cb-web-toggle {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 5px 11px;
-    border-radius: 999px;
-    border: 1px solid var(--cb-border, rgba(255, 255, 255, 0.14));
-    background: transparent;
-    color: var(--cb-text-muted);
-    font-size: 11px;
-    font-weight: 600;
-    font-family: inherit;
-    cursor: pointer;
-    line-height: 1.2;
-    transition: color .15s ease, border-color .15s ease, background-color .15s ease;
-}
-#pi-chatbot-panel .pi-cb-web-toggle:hover {
-    color: var(--cb-text, #fff);
-    border-color: var(--cb-accent, #f5a623);
-}
-#pi-chatbot-panel .pi-cb-web-toggle.is-on {
-    color: var(--cb-accent, #f5a623);
-    border-color: var(--cb-accent, #f5a623);
-    background: color-mix(in srgb, var(--cb-accent, #f5a623) 14%, transparent);
-}
-/* Keyboard users must see the same state the mouse hover implies. */
-#pi-chatbot-panel .pi-cb-web-toggle:focus-visible {
-    outline: 2px solid var(--cb-accent, #f5a623);
-    outline-offset: 2px;
-}
-#pi-chatbot-panel .pi-cb-web-toggle svg { flex: none; }
-
 #pi-chatbot-panel .pi-cb-engine-row {
     display: flex;
     justify-content: center;

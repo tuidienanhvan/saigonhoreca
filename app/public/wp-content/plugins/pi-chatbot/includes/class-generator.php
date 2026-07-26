@@ -77,28 +77,7 @@ class Pi_Chatbot_Generator {
         // just "has Vietnamese diacritics or not") covers the actual set of
         // customer languages this site expects and names each one explicitly.
         $language_note = self::build_language_note($question);
-
-        // External web results live in their OWN labelled block, after the
-        // catalog block and clearly subordinate to it. They are never appended
-        // to $context_text: $context is what this company sells, and it is what
-        // the sources list and the faithfulness check are built from. A web
-        // page mixed into that block would be indistinguishable from stock, and
-        // the model would cite it as ours.
-        $web_block = '';
-        $web_results = isset($options['web_results']) && is_array($options['web_results'])
-            ? $options['web_results'] : [];
-        if ($web_results) {
-            $web_block = "\n\nEXTERNAL WEB RESULTS (NOT our catalog, NOT our stock — general reference only):\n"
-                . Pi_Chatbot_WebSearch::to_prompt_block($web_results)
-                . "\nRules for this block: it is background information from the public internet. "
-                . "NEVER present anything here as a product we sell, and never quote a price from it as ours. "
-                . "If the customer asks whether we stock something that appears only here, the answer is that we "
-                . "do not currently list it, followed by the hotline. You may use it to explain how a type of "
-                . "equipment works or to compare general specifications, and when you do, say the information "
-                . "comes from an outside source.";
-        }
-
-        $user_prompt = "REFERENCE INFORMATION:\n{$context_text}{$web_block}\n\nCUSTOMER QUESTION: {$question}\n\n{$language_note}";
+        $user_prompt = "REFERENCE INFORMATION:\n{$context_text}\n\nCUSTOMER QUESTION: {$question}\n\n{$language_note}";
 
         // The correction is appended to the SYSTEM prompt rather than the user
         // prompt so it carries the same weight as the no-inventing rule it is
