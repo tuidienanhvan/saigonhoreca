@@ -1309,8 +1309,24 @@ class Pi_Chatbot_Retriever {
             ));
             foreach ($rows as $r) {
                 $title_l = mb_strtolower($r->title);
+                // The boundary must also reject a code that CONTINUES past the
+                // searched one. Measured on "tủ đông FT-158MA-S": both
+                // "FT-158MA-S" (post 1053) and "FT-158MA-S-ML" (post 1542) were
+                // scored exact, because a plain (?![a-z0-9]) treats the "-" of
+                // "-ML" as a word boundary. They then tied at 1000 and the
+                // length penalty picked the SHORTER title — which is the
+                // variant, not the model the customer named. "-ML" is part of a
+                // different model code, not punctuation: a hyphen followed by
+                // more alphanumerics means the title carries a longer code.
+                //
+                // The real separator in this catalog is always a SPACE before
+                // the brand (" - Hoshizaki" / " – Hoshizaki"), so requiring
+                // "not immediately hyphen+alphanumeric" keeps every genuine
+                // exact match and demotes only true code extensions. Same
+                // reasoning applied on the left, for a code prefixed by another
+                // segment.
                 $is_exact = (bool) preg_match(
-                    '/(?<![a-z0-9])' . preg_quote($code_l, '/') . '(?![a-z0-9])/u',
+                    '/(?<![a-z0-9])(?<![a-z0-9]-)' . preg_quote($code_l, '/') . '(?![a-z0-9])(?!-[a-z0-9])/u',
                     $title_l
                 );
                 $score = ($is_exact ? 1000.0 : 100.0) - min(90.0, mb_strlen($title_l) * 0.1);

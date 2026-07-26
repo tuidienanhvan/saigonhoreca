@@ -199,6 +199,34 @@ pi_check('"máy rửa ly" ranks glass washers above dish washers despite the sha
     !empty($top3_ly) && count($is_ly) >= 2,
     'top3: ' . implode(' | ', $top3_ly));
 
+// ── An exact product code must outrank a code that merely EXTENDS it ────────
+// Regression guard for the defect found 2026-07-26: the exactness test used a
+// plain (?![a-z0-9]) right boundary, which treats the "-" of "-ML" as the end
+// of a word. So for "tủ đông FT-158MA-S" BOTH "FT-158MA-S" (post 1053) and
+// "FT-158MA-S-ML" (post 1542) scored 1000 = exact; they tied, and the
+// title-length penalty then picked the SHORTER title — which is the variant,
+// not the model the customer actually named.
+//
+// Asserted behaviourally (which product ranks first), not by inspecting the
+// regex: the pattern may legitimately be rewritten, but a customer typing a
+// full model code must land on that exact model.
+pi_section('Retriever::search — an exact code beats a longer code containing it');
+
+$code_rows = Pi_Chatbot_Retriever::search('tủ đông FT-158MA-S', 5);
+$code_top = $code_rows ? mb_strtolower($code_rows[0]['title']) : '';
+pi_check('a full model code returns results', !empty($code_rows));
+pi_check('the exact code FT-158MA-S ranks above the FT-158MA-S-ML variant',
+    $code_top !== '' && mb_strpos($code_top, 'ft-158ma-s') !== false
+        && mb_strpos($code_top, 'ft-158ma-s-ml') === false,
+    'top1: ' . $code_top);
+
+// The other direction must still hold — asking for the VARIANT must return the
+// variant, so the fix cannot have simply demoted every hyphen-suffixed code.
+$ml_rows = Pi_Chatbot_Retriever::search('FT-158MA-S-ML', 5);
+pi_check('asking for the -ML variant explicitly still returns the -ML variant',
+    !empty($ml_rows) && mb_strpos(mb_strtolower($ml_rows[0]['title']), 'ft-158ma-s-ml') !== false,
+    'top1: ' . ($ml_rows ? $ml_rows[0]['title'] : '(none)'));
+
 // pi_report() prints a summary from the SHARED pi_check() static state — when
 // run standalone that's exactly this suite's own totals; when run-all.php
 // requires this file alongside others, the same static keeps accumulating, so

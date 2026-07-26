@@ -588,9 +588,11 @@
     "group": "5_tu_khoa_ky_thuat",
     "query": "tủ mát có khay bánh",
     "relevant_ids": [
-      1067
+      1067,
+      1071,
+      1263
     ],
-    "note": null
+    "note": "Sửa nhãn 2026-07-26: nhãn cũ chỉ liệt kê 1067 và chấm retrieval là SAI khi nó trả về 1071. Truy vấn catalog (LIKE '%khay bánh%') cho 4 sản phẩm: 1067 Tủ Mát 2 Cánh, 1071 Tủ Mát 4 Cánh, 1263 Tủ Mát 4 Cánh, 1119 Tủ ĐÔNG 2 Cánh. Câu hỏi nói 'tủ mát' và KHÔNG nói mấy cánh, nên cả 3 tủ mát đều đúng; 1119 bị loại vì là tủ đông, không phải tủ mát."
   },
   {
     "group": "5_tu_khoa_ky_thuat",
@@ -643,11 +645,12 @@
     "group": "5_tu_khoa_ky_thuat",
     "query": "máy đóng gói chân không",
     "relevant_ids": [
+      604,
       596,
       597,
       598
     ],
-    "note": null
+    "note": "Sửa nhãn 2026-07-26: thiếu 604 'Máy Đóng Gói Chân Không SU-310' — tiêu đề sản phẩm này TRÙNG TỪNG CHỮ với câu hỏi, nên nhãn cũ đang chấm câu trả lời ĐÚNG NHẤT là sai. 596/597/598 là 'Máy hút chân không' (cùng dòng Sammic, tên khác) và được giữ lại; lưu ý catalog có 20+ máy hút chân không nên việc nhãn cũ chỉ chọn 3 cái là tuỳ tiện — recall@5 của câu này vì thế không nên đọc như một con số tuyệt đối."
   },
   {
     "group": "5_tu_khoa_ky_thuat",
