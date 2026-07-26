@@ -77,13 +77,34 @@ class Pi_Chatbot_Retriever {
     const MYSQL_SCORE_WEIGHT = 0.7;
 
     /**
-     * Common Vietnamese stopwords — MySQL FULLTEXT only ships a default English
-     * stopword list, so words like "của/và/có/không/về..." ("of/and/have/not/about")
-     * don't get filtered, skewing scores toward long pages (projects) that repeat
-     * many function words rather than pages that are actually relevant. Filtered
+     * Vietnamese stopwords — MySQL FULLTEXT only ships a default English stopword
+     * list, so words like "của/và/có/không/về..." ("of/and/have/not/about") don't
+     * get filtered, skewing scores toward long pages (projects) that repeat many
+     * function words rather than pages that are actually relevant. Filtered
      * manually at the application layer before building the FULLTEXT query.
+     *
+     * Every entry belongs to exactly one CLOSED word class below, each with its
+     * own one-line membership test. This is deliberately NOT derived from a
+     * corpus-frequency/IDF measurement over the catalog — that was tried and
+     * measured to not work: on a 528-product catalog, "công"/"nghiệp" (generic
+     * tagline nouns that genuinely should be filtered) sit at document-frequency
+     * ratios of 0.667/0.231, while "shop"/"bé"/"người" (also genuinely harmful)
+     * sit at 0.006/0.006/0.045 — and real, useful keywords like "tủ"/"máy"/"bếp"
+     * sit at 0.288/0.322/0.273, squarely BETWEEN the two "bad" clusters. No
+     * single frequency threshold can separate "harmful" from "useful" here; the
+     * corpus is too small and noisy for a statistical rule to substitute for a
+     * linguistic one. What actually makes a word harmful is that it belongs to
+     * Vietnamese SOCIAL/TRANSACTIONAL speech rather than equipment vocabulary —
+     * a closed grammatical category, the same kind every stopword list in any
+     * language already is.
+     *
+     * Adding a new word to any class below: check it against that class's
+     * stated test, not against whether some specific message broke.
      */
     private static $stopwords = [
+        // Grammatical function words — pronouns, particles, conjunctions,
+        // prepositions: words whose only job is sentence structure, carrying no
+        // content of their own in ANY sentence, product-related or not.
         'là', 'và', 'của', 'có', 'không', 'về', 'cho', 'với', 'các', 'những',
         'tôi', 'bạn', 'mình', 'này', 'đó', 'kia', 'để', 'khi', 'trong', 'ngoài',
         'theo', 'đã', 'sẽ', 'đang', 'một', 'hỏi', 'muốn', 'xin', 'cho hỏi',
@@ -91,77 +112,38 @@ class Pi_Chatbot_Retriever {
         'như', 'từ', 'trên', 'dưới', 'nào', 'gì', 'sao', 'làm', 'bị', 'còn',
         'hay', 'hoặc', 'nếu', 'vì', 'nên', 'do', 'bởi', 'lại', 'đây', 'kìa',
         'bên', 'ấy', 'vầy', 'ha', 'nhỉ',
-        // Generic nouns that appear in almost every record (don't distinguish any
-        // specific subject) — filtered separately from the grammatical stopwords
-        // above. "công"/"nghiệp" ("industrial") added after the 2026-07-18 audit:
-        // "thiết bị bếp công nghiệp" ("industrial kitchen equipment") is the site's
-        // tagline, repeated in nearly every project page as well as product pages —
-        // at the quorum tier (OR fallback, see search_fulltext) these two words
-        // alone were enough to make a long project page outscore a real product
-        // (real bug caught when re-testing a sample audit question: "tủ lạnh công
-        // nghiệp inox 4 cánh" ["industrial 4-door stainless steel fridge"] returned
-        // only project pages, no fridges at all).
+
+        // Generic commerce/transaction nouns — words that describe the ACT of
+        // buying/selling or a product's genericness ("a type of", "an item of",
+        // "how much") rather than naming any specific kind of equipment. A
+        // customer or a page can use these about ANY product, so they carry no
+        // information about WHICH product. "công"/"nghiệp" ("industrial") are
+        // included here even though they can be part of a real technical term
+        // ("bếp công nghiệp" = "industrial stove"), because on their own — the
+        // way they surface after grammatical filtering — they function as this
+        // catalog's boilerplate tagline ("thiết bị bếp công nghiệp") rather than
+        // a distinguishing spec; the equipment TYPE word ("bếp"/"tủ"/"máy"...)
+        // is never filtered and still carries the real signal.
         'sản', 'phẩm', 'loại', 'cái', 'chiếc', 'giá', 'bao', 'nhiêu', 'hàng', 'đồ',
-        'công', 'nghiệp',
-        // Greetings/pleasantries — pages (especially project and about-us pages)
-        // often repeat "xin chào" ("hello"), "cảm ơn quý khách" ("thank you,
-        // valued customer") in their content, so a plain greeting easily matches
-        // unrelated pages (bug observed: asking "chào" ["hi"] returned scattered,
-        // irrelevant sources). Treated as stopwords so a pure greeting doesn't
-        // drag in fake sources.
+        'công', 'nghiệp', 'shop',
+
+        // Greetings/pleasantries — fixed politeness phrases with no product
+        // content, appearing identically whether the page/message is about any
+        // product or none.
         'chào', 'chao', 'hi', 'hello', 'alo', 'dạ', 'vâng', 'ok', 'oke', 'okay',
         'cảm', 'ơn', 'cám', 'thanks', 'hey',
-        // "shop" — an extremely common English loanword in how Vietnamese
-        // customers address a seller ("chào shop" ["hi there, shop"], "shop
-        // ơi"...). Before the site had 147 English-language products (added in
-        // the 2026-07-21 new-brand import), nobody noticed because content_text
-        // was entirely Vietnamese — "shop" never appeared anywhere in the data to
-        // cause harm. Now the English descriptions of the new products contain
-        // marketing copy that literally uses the word "shops" (e.g. "bakeries,
-        // pastry shops and hotels"), so "chào shop" genuinely matches unrelated
-        // products (bug measured via eval-retrieval.php: the 6_tan_gau
-        // ["small talk"] test group dropped 0.800→0.700). Only this word was
-        // added — "free"/"new" carry a similar risk (tried) but had NO real
-        // failing case in the 68-question test set yet, so they were not added
-        // (principle: only add a stopword with real evidence, to avoid
-        // whack-a-mole).
-        'shop',
-        // Address pronouns + common small-talk verbs — real bug caught: "Anh
-        // thích em" ("I like you" — small talk, not a product question) still
-        // left "anh" ("you"/"brother") + "thích" ("like") after filtering, both
-        // very common words in marketing copy/product descriptions ("anh/chị"
-        // ["sir/madam"], "khách hàng yêu thích" ["customers love"]...), so they
-        // matched unrelated product sources indiscriminately. Treated as
-        // stopwords — a pure small-talk message ends up with no keywords left,
-        // falls back to empty context, and the AI replies conversationally
-        // without attaching sources.
+
+        // Social-address vocabulary — the pronoun set Vietnamese uses to address
+        // or refer to PEOPLE in conversation ("anh/chị/em" as forms of "you",
+        // "người"/"bé" as generic ways to refer to a person), plus the small,
+        // closed set of emotion/opinion verbs and adjectives that only ever
+        // describe how someone feels about something, never what the something
+        // IS. None of these name equipment; they only ever occur when the
+        // sentence is ABOUT a person, not about a product.
         'anh', 'chị', 'cô', 'chú', 'bác', 'ông', 'bà', 'em', 'tao', 'mày', 'nó', 'ta',
+        'người', 'bé',
         'thích', 'yêu', 'ghét', 'nhớ', 'thương', 'đẹp', 'xấu', 'giỏi', 'vui', 'buồn', 'cưng',
         'ghê', 'quá', 'lắm', 'trời', 'ối', 'ủa', 'ừ', 'ừm', 'dạo',
-        // "người" ("person/people") — real bug caught: "Tôi muốn có người yêu"
-        // ("I want a girlfriend/boyfriend") left only "người" after filtering,
-        // but this is an EXTREMELY generic noun that occurs naturally in a great
-        // many real product descriptions ("phù hợp phục vụ đông người" ["suited
-        // for serving large crowds"], "tiết kiệm nhân công" ["saves on
-        // labor"]...). This isn't a project-vs-product issue (only_products()
-        // already filters correctly) — REAL products also contain this word, so
-        // it still matches. Must be blocked at the vocabulary level, since the
-        // word itself carries no signal that distinguishes any particular
-        // product.
-        'người',
-        // "bé" ("little/baby") — real bug caught: "Chào em bé" ("hello baby")
-        // left only "bé" (2 characters) after filtering, landing in $short (the
-        // LIKE fallback for tokens below MIN_TOKEN_LENGTH — kept intentionally so
-        // short product codes like "hr"/"se" can still be looked up). But "bé" is
-        // NOT a product code, it's a pleasantry ("em bé" = "baby"), and
-        // LIKE '%bé%' matches indiscriminately against any word CONTAINING "bé"
-        // as a substring — "sắc bén" ("sharp" — knife/blade), "khóa trẻ em"
-        // ("child lock")... matched 3 unrelated products (an electric stove, 2
-        // meat slicers) just because their descriptions contained "bén" ("sharp").
-        // Treated as a stopword — same principle as "người"/"chào": the word is
-        // too generic to distinguish any product, and here it also causes a false
-        // substring match because it's so short.
-        'bé',
     ];
 
     /** Contact info assembled from the theme's real data — no full-text search

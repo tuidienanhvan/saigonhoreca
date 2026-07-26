@@ -313,12 +313,31 @@ class Pi_Chatbot_Generator {
         // above can rely on function words alone only because those questions
         // are full sentences.
         //
-        // "gas" and "inox" are deliberately ABSENT despite being everyday
-        // Vietnamese words here: they are spelled identically in English, and
-        // including "gas" was measured sending "Fujimak gas stove FGTLS1260" —
-        // a real English golden-set question — down the Vietnamese branch.
-        // Dropping both costs nothing (Vietnamese detection stays at 43/47)
-        // and takes English back to 7/7.
+        // General exclusion rule for this word list — apply this test to any
+        // future candidate, not just the two words it currently excludes:
+        //
+        //   A word belongs in this list ONLY IF it is unambiguously Vietnamese
+        //   — i.e. it is not also a standard, standalone English word. A word
+        //   borrowed into Vietnamese verbatim, spelled identically to its
+        //   English original, gives ZERO evidence either way: seeing it proves
+        //   nothing about whether the REST of the sentence had its Vietnamese
+        //   diacritics stripped, because the word would look the same in a
+        //   genuine English sentence too.
+        //
+        // "gas" and "inox" fail this test — both are ordinary English words
+        // (and international product-spec terms) that Vietnamese also uses
+        // unchanged, so their presence cannot distinguish the two languages.
+        // Measured concretely: including "gas" sent "Fujimak gas stove
+        // FGTLS1260" — a real English golden-set question — down the
+        // Vietnamese branch. Dropping both costs nothing (Vietnamese detection
+        // stays at 43/47) and takes English back to 7/7.
+        //
+        // This is not a corpus-frequency/statistical filter (that approach was
+        // tried for a related problem — see the stopword list docblock above
+        // Retriever::$stopwords — and measured to fail on a catalog this
+        // small): it's a closed linguistic test, checked once per candidate
+        // word at list-authoring time, the same way every other stopword-style
+        // list here is built.
         $vi_hits = preg_match_all(
             '/\b(khong|duoc|nhieu|muon|giup|minh|loai|cai|nao|voi|cua|cho|gia|bao|thiet|quan|hang|mua|tot|gium|toi|nay|kieu|dung|tich|cong suat|bep|lo|tu|may|ban|chien|nuong|rua|da|ly|chen|dia|hong|canh|ngan|dong|mat|nong|lanh|hap|nuoc|dien|cong nghiep|nha hang|quan an)\b/iu',
             $question
