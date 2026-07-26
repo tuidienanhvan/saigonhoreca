@@ -196,6 +196,11 @@ if (!function_exists('pi_check')) {
         global $wpdb;
 
         pi_set_private_prop('Pi_Chatbot_Retriever', 'product_count_cache', null);
+        // Same sharp edge as above, added 2026-07-26 alongside compute_idf()'s
+        // new caching: this one memoizes DF per WORD for the whole request, so
+        // a suite that changes catalog content and re-measures IDF for a word
+        // it already asked about earlier would silently reuse the stale value.
+        pi_set_private_prop('Pi_Chatbot_Retriever', 'idf_request_cache', []);
 
         foreach ([
             'pi_chatbot_known_brands',

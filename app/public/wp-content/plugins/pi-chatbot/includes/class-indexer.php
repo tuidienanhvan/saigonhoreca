@@ -30,7 +30,15 @@ class Pi_Chatbot_Indexer {
      * behind, since nothing reads it any more and an orphaned MEDIUMBLOB table
      * is exactly the kind of leftover the uninstall audit flagged before.
      */
-    const DB_VERSION = 4;
+    // v5 (2026-07-26): added a real KEY on post_type. Every query filtering
+    // WHERE post_type = 'product' (total_product_count(), compute_idf(),
+    // search_unaccented(), search_by_product_code(), search_projects(),
+    // Router::few_shot_examples()) previously had NOTHING to use but a full
+    // table scan — the schema had only PRIMARY KEY(post_id) and the FULLTEXT
+    // index, neither of which helps a plain equality filter. dbDelta() adds
+    // the key to the LIVE table via ALTER TABLE, not a reindex — no data loss,
+    // no downtime, no shadow-table swap needed for this change.
+    const DB_VERSION = 5;
 
     /** Minimum length threshold to index — only applies to post types other than 'product'. */
     const MIN_INDEXABLE_LENGTH = 100;
@@ -102,6 +110,7 @@ class Pi_Chatbot_Indexer {
             content_text LONGTEXT NOT NULL,
             updated_at DATETIME NOT NULL,
             PRIMARY KEY (post_id),
+            KEY post_type (post_type),
             FULLTEXT KEY content_ft (title, brand, category, content_text)
         ) {$charset_collate} ENGINE=InnoDB;";
         dbDelta($sql);

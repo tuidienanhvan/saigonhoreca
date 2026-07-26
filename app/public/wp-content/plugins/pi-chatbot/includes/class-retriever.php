@@ -750,14 +750,52 @@ class Pi_Chatbot_Retriever {
         return self::$product_count_cache;
     }
 
+    /** DF is a property of the CATALOG, not of one question — it only changes
+     *  when the catalog changes, and that already bumps pi_chatbot_index_version
+     *  (class-indexer.php). 7 days is generous rather than tight on purpose:
+     *  the transient key below folds in the version, so a reindex invalidates
+     *  it immediately regardless of how long the TTL is — the TTL only bounds
+     *  how long an entry can outlive a version nobody ever bumped (a quiet
+     *  catalog), not how stale it can get relative to a real change. */
+    const IDF_CACHE_TTL = 7 * DAY_IN_SECONDS;
+
+    /** Per-REQUEST memo, cleared by nothing (a new PHP process starts empty) —
+     *  see compute_idf()'s docblock for why this exists ALONGSIDE the transient
+     *  cache below rather than instead of it. */
+    private static $idf_request_cache = [];
+
     /**
      * Measure the TRUE rarity (document frequency) of each keyword — both $long
      * and $short — then convert to IDF. This is the shared figure used both to
      * decide which words are mandatory in the SQL and for the score weighting
-     * in verify_and_score(), so the two stay consistent with each other. Costs
-     * 1 COUNT query per keyword (typically 2-5 words/question) — acceptable,
-     * measured COUNT(*) on post_type via the index at under 5ms at a scale of
-     * 381-10,000 products.
+     * in verify_and_score(), so the two stay consistent with each other.
+     *
+     * Cached at two levels, added 2026-07-26 after measuring the actual cost:
+     * uncached, this was 1 four-way leading-wildcard `LIKE` COUNT query PER
+     * KEYWORD PER QUERY VARIANT, with no de-duplication across variants or
+     * requests — 7 full-table scans/request on the fast path, 17-36 on the max
+     * path (search_hybrid() runs search() once per query leg, and a keyword
+     * repeated across legs — very common, e.g. a brand name appearing in both
+     * the original question and a router-generated rewrite — was counted
+     * fresh every time). The docblock here previously claimed "COUNT(*) on
+     * post_type via the index at under 5ms" — false: there was no index on
+     * post_type until this same commit added one (see class-indexer.php
+     * DB_VERSION 5), and even with it, a LEADING-wildcard LIKE against
+     * content_text can never use ANY index, so the claim was never accurate
+     * for the dominant cost here regardless.
+     *   1. Request-scoped static array — free, catches the same word appearing
+     *      in multiple query variants of ONE request.
+     *   2. Transient, keyed on the word + pi_chatbot_index_version — catches
+     *      the same word appearing in a LATER, unrelated request. Reindexing
+     *      bumps the version (already wired for the answer cache and the
+     *      router cache), so this needs no new invalidation hook of its own.
+     *
+     * Measured directly (counting real SQL statements via the `query` filter,
+     * 528-product catalog), not estimated:
+     *   "máy rửa chén công nghiệp" cold (first time these words are asked)  — 7 queries
+     *   the SAME question again (transient warm)                            — 1 query
+     *   a DIFFERENT question sharing 3/4 keywords (transient partly warm)    — 6 queries
+     * The 7→1 case is the realistic steady-state win: popular questions repeat.
      *
      * @return array<string,array{df:int,idf:float}> key = lowercased word
      */
@@ -765,10 +803,25 @@ class Pi_Chatbot_Retriever {
         global $wpdb;
         $table = Pi_Chatbot_Indexer::table_name();
         $total = max(1, self::total_product_count());
+        $index_version = (int) get_option('pi_chatbot_index_version', 0);
         $out = [];
         foreach ($words as $w) {
             $key = mb_strtolower($w);
             if (isset($out[$key])) continue;
+
+            if (isset(self::$idf_request_cache[$key])) {
+                $out[$key] = self::$idf_request_cache[$key];
+                continue;
+            }
+
+            $transient_key = 'pi_chatbot_df_' . $index_version . '_' . md5($key);
+            $cached = get_transient($transient_key);
+            if (is_array($cached) && isset($cached['df'], $cached['idf'])) {
+                self::$idf_request_cache[$key] = $cached;
+                $out[$key] = $cached;
+                continue;
+            }
+
             // Numeric tokens are matched on word boundaries everywhere else
             // (see word_matches()), so DF must be counted the same way or the
             // two disagree: '%2%' matches every model code containing a 2 and
@@ -800,7 +853,11 @@ class Pi_Chatbot_Retriever {
                 $like, $like, $like, $like
             ));
             $df = max(1, $df);
-            $out[$key] = ['df' => $df, 'idf' => max(self::IDF_FLOOR, log($total / $df))];
+            $result = ['df' => $df, 'idf' => max(self::IDF_FLOOR, log($total / $df))];
+
+            self::$idf_request_cache[$key] = $result;
+            set_transient($transient_key, $result, self::IDF_CACHE_TTL);
+            $out[$key] = $result;
         }
         return $out;
     }
