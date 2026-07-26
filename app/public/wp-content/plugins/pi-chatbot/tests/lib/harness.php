@@ -201,6 +201,10 @@ if (!function_exists('pi_check')) {
         // a suite that changes catalog content and re-measures IDF for a word
         // it already asked about earlier would silently reuse the stale value.
         pi_set_private_prop('Pi_Chatbot_Retriever', 'idf_request_cache', []);
+        // Same reason, added 2026-07-26 alongside search_by_product_code()'s
+        // new memoization: a suite that writes/renames a product mid-run and
+        // re-asks about the same code would otherwise see the pre-write match.
+        pi_set_private_prop('Pi_Chatbot_Retriever', 'product_code_match_cache', []);
 
         foreach ([
             'pi_chatbot_known_brands',

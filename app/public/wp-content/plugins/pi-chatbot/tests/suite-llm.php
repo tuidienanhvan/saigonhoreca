@@ -214,9 +214,23 @@ pi_with_settings(['llm7_keys' => ['test-key']], function () {
     pi_http_stub(function () { return pi_http_content('câu trả lời đã sửa'); });
     Pi_Chatbot_Generator::answer('câu hỏi', [], ['correction' => 'UNIQUE_CORRECTION_MARKER_XYZ']);
     $sent = pi_http_calls()[0]['body'] ?? null;
-    $system_msg = $sent ? implode(' ', array_column($sent['messages'] ?? [], 'content')) : '';
+    $by_role = [];
+    foreach (($sent['messages'] ?? []) as $m) $by_role[$m['role']] = ($by_role[$m['role']] ?? '') . $m['content'];
     pi_check("options['correction'] is actually included in the prompt sent to the model",
-        strpos($system_msg, 'UNIQUE_CORRECTION_MARKER_XYZ') !== false);
+        strpos($by_role['user'] ?? '', 'UNIQUE_CORRECTION_MARKER_XYZ') !== false
+        || strpos($by_role['system'] ?? '', 'UNIQUE_CORRECTION_MARKER_XYZ') !== false);
+
+    // Regression guard for the 2026-07-26 security fix: verify()'s free-text
+    // `issue` is LLM OUTPUT (from an earlier call), and concatenating
+    // arbitrary model output into the SYSTEM message — the highest-trust
+    // role — is a soft privilege-escalation pattern. The RULE ("use only
+    // reference facts") must stay at system level; the free-text DESCRIPTION
+    // of what went wrong must not.
+    pi_check("the raw correction text does NOT reach system-level trust — only the user message carries it",
+        strpos($by_role['system'] ?? '', 'UNIQUE_CORRECTION_MARKER_XYZ') === false,
+        'system message: ' . ($by_role['system'] ?? '(none)'));
+    pi_check('the system prompt still gets a rule reinforcement on a correction, just without the raw LLM text',
+        strpos($by_role['system'] ?? '', 'rejected by') !== false);
 });
 
 pi_with_settings(['llm7_keys' => []], function () {

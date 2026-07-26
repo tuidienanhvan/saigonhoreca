@@ -23,7 +23,16 @@ if (!defined('ABSPATH')) exit;
 
 class Pi_Chatbot_Log {
 
-    const DB_VERSION = 1;
+    // v2 (2026-07-26): dropped FULLTEXT KEY question_ft — no UI has ever read
+    // it (the docblock that added it said as much at the time), so it was
+    // pure write amplification on every single INSERT for zero benefit.
+    // Added a plain KEY on created_at instead: prune() and stats()'s
+    // "last 24h" count both filter `created_at < / >= %s` alone, and the
+    // existing had_context_created composite index has created_at as its
+    // TRAILING column, which cannot serve a standalone predicate on it —
+    // prune() was running a full table scan + row-by-row delete inside a
+    // random customer's chat request (the 1-in-500 opportunistic trigger).
+    const DB_VERSION = 2;
 
     /** Maximum log retention period — the table is self-bounding, no separate cron needed. */
     const RETENTION_DAYS = 180;
@@ -37,6 +46,24 @@ class Pi_Chatbot_Log {
     public static function maybe_upgrade() {
         if ((int) get_option('pi_chatbot_log_db_version') === self::DB_VERSION) return;
         self::create_table();
+        // dbDelta() only ever ADDS columns/keys found in the SQL string — it
+        // never drops one that's been removed from it (a documented WP
+        // limitation, not a bug here). An already-installed site's table still
+        // carries the old FULLTEXT question_ft after create_table() runs, so
+        // dropping it needs an explicit statement. Guarded by SHOW INDEX
+        // rather than assuming it exists — a fresh install's create_table()
+        // above never creates it in the first place, so DROP INDEX on that
+        // fresh table would error.
+        global $wpdb;
+        $table = self::table_name();
+        $has_old_index = (bool) $wpdb->get_var($wpdb->prepare(
+            "SELECT COUNT(*) FROM information_schema.STATISTICS
+             WHERE table_schema = %s AND table_name = %s AND index_name = 'question_ft'",
+            DB_NAME, $table
+        ));
+        if ($has_old_index) {
+            $wpdb->query("ALTER TABLE {$table} DROP INDEX question_ft");
+        }
         update_option('pi_chatbot_log_db_version', self::DB_VERSION, false);
     }
 
@@ -51,9 +78,6 @@ class Pi_Chatbot_Log {
         $charset_collate = $wpdb->get_charset_collate();
 
         require_once ABSPATH . 'wp-admin/includes/upgrade.php';
-        // FULLTEXT on question_norm so the log can be searched later (similar to
-        // Hermes's FTS5) — no UI uses it yet, but adding it now is cheaper than an
-        // ALTER TABLE later once the table already holds data.
         $sql = "CREATE TABLE {$table} (
             id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
             question_norm VARCHAR(500) NOT NULL,
@@ -63,7 +87,7 @@ class Pi_Chatbot_Log {
             created_at DATETIME NOT NULL,
             PRIMARY KEY (id),
             KEY had_context_created (had_context, created_at),
-            FULLTEXT KEY question_ft (question_norm)
+            KEY created_at (created_at)
         ) {$charset_collate} ENGINE=InnoDB;";
         dbDelta($sql);
     }

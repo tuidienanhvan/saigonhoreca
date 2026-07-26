@@ -1399,7 +1399,33 @@ class Pi_Chatbot_Retriever {
      * priority group, a SHORTER title ranks first — a variant with an added
      * suffix is always longer than the base one.
      */
+    /** Request-scoped memo, keyed by the (order-independent) code list — see
+     *  search_by_product_code()'s docblock for why this exists: the query it
+     *  runs does not depend on $top_k at all, only the final PHP-side slice
+     *  does, so 2 callers asking about the SAME codes with different $top_k
+     *  (has_product_code_match($msg) with top_k=1, then search()'s own Tier 0
+     *  with the real top_k moments later on the exact same request) were
+     *  running the identical SQL twice. */
+    private static $product_code_match_cache = [];
+
+    /**
+     * Whole-catalog scan for a product code, deduped/sorted ONCE per request
+     * regardless of how many times a caller asks (with whatever $top_k) —
+     * see $product_code_match_cache. The DB round trip and the exactness
+     * scoring are the expensive part; array_slice($top_k) is free.
+     */
     private static function search_by_product_code($codes, $top_k) {
+        $cache_key = implode('|', array_map('mb_strtolower', $codes));
+        if (!isset(self::$product_code_match_cache[$cache_key])) {
+            self::$product_code_match_cache[$cache_key] = self::fetch_product_code_matches($codes);
+        }
+        $rows = array_slice(self::$product_code_match_cache[$cache_key], 0, $top_k);
+        return self::format_rows($rows, $codes);
+    }
+
+    /** The full sorted/deduped match list for a code set, unsliced and
+     *  unformatted — the part search_by_product_code() memoizes. */
+    private static function fetch_product_code_matches($codes) {
         global $wpdb;
         $table = Pi_Chatbot_Indexer::table_name();
         $candidates = [];
@@ -1453,8 +1479,7 @@ class Pi_Chatbot_Retriever {
             // title length too, which the length penalty alone can't break.
             return $cmp !== 0 ? $cmp : (int) $a->post_id <=> (int) $b->post_id;
         });
-        $rows = self::dedupe_by_content($rows);
-        return self::format_rows(array_slice($rows, 0, $top_k), $codes);
+        return self::dedupe_by_content($rows);
     }
 
     /**

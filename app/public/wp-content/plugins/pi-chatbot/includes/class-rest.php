@@ -211,10 +211,17 @@ class Pi_Chatbot_Rest {
                         // a generic failure after they had already waited.
                         if (function_exists('set_time_limit')) @set_time_limit(60);
 
+                        // No 'brand' opt here — search_hybrid() never read one
+                        // (dead parameter, removed 2026-07-26). $router_brand is
+                        // already embedded in $search_query/$alt_queries via
+                        // $brand_suffix above, and Entities::extract_brands()
+                        // picks it up from that text on every leg the same way
+                        // it would for a customer who typed the brand name
+                        // themselves — verified identical results with/without
+                        // a would-be opt passed through.
                         $candidates = Pi_Chatbot_Retriever::search_hybrid($search_query, Pi_Chatbot_Reranker::MAX_CANDIDATES, [
                             'extra_queries' => $query_variants,
                             'alt_queries'   => $alt_queries,
-                            'brand'         => $router_brand,
                         ]) ?: [];
                         $mark('retrieve_hybrid');
 
@@ -254,7 +261,6 @@ class Pi_Chatbot_Rest {
                         // degenerates to exactly the previous single search().
                         $context = Pi_Chatbot_Retriever::search_hybrid($search_query, (int) $settings['top_k'], [
                             'alt_queries' => $alt_queries,
-                            'brand'       => $router_brand,
                         ]) ?: [];
                     }
                     break;

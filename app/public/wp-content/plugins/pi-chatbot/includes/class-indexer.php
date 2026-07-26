@@ -193,6 +193,7 @@ class Pi_Chatbot_Indexer {
         // Pi_Chatbot_Entities is always require_once'd before any hook runs (fixed
         // load order in pi-chatbot.php) — no need for a defensive class_exists().
         Pi_Chatbot_Entities::flush_cache();
+        Pi_Chatbot_Router::flush_cache();
         return $count;
     }
 
@@ -329,6 +330,7 @@ class Pi_Chatbot_Indexer {
             self::remove_post($post_id);
         }
         Pi_Chatbot_Entities::flush_cache();
+        Pi_Chatbot_Router::flush_cache();
     }
 
     public static function on_delete_post($post_id) {

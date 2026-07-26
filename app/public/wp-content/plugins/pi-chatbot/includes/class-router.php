@@ -167,9 +167,10 @@ class Pi_Chatbot_Router {
      * examples improve +15.3% over zero-shot for weak-resource language pairs).
      * Cached for 1 day — the catalog doesn't change fast enough to need fresher.
      */
+    const FEWSHOT_CACHE_KEY = 'pi_chatbot_rtr_fewshot';
+
     private static function few_shot_examples() {
-        $cache_key = 'pi_chatbot_rtr_fewshot';
-        $cached = get_transient($cache_key);
+        $cached = get_transient(self::FEWSHOT_CACHE_KEY);
         if (is_array($cached)) return $cached;
 
         global $wpdb;
@@ -183,8 +184,21 @@ class Pi_Chatbot_Router {
         foreach ($rows as $r) {
             $examples[] = ['vi' => $r->category, 'en_context' => $r->title];
         }
-        set_transient($cache_key, $examples, DAY_IN_SECONDS);
+        set_transient(self::FEWSHOT_CACHE_KEY, $examples, DAY_IN_SECONDS);
         return $examples;
+    }
+
+    /**
+     * Called from Pi_Chatbot_Indexer::reindex_all() / index_post_into() —
+     * same call sites as Pi_Chatbot_Entities::flush_cache(). Fixes a real
+     * staleness gap found 2026-07-26: unlike the known-brands cache, this one
+     * was NEVER invalidated on reindex, so a random-5-row example set from the
+     * OLD catalog (including possibly-deleted products) could keep steering
+     * the router's translation for up to its full 1-day TTL after a catalog
+     * change.
+     */
+    public static function flush_cache() {
+        delete_transient(self::FEWSHOT_CACHE_KEY);
     }
 
     private static function build_messages($question, $history = []) {
