@@ -156,10 +156,38 @@ function pi_chatbot_enqueue_frontend() {
     // Bust cache based on file mtime instead of a static version — editing CSS/JS means
     // the browser loads the new version immediately, no need to bump a version by hand
     // or clear cache manually.
-    $css_file = PI_CHATBOT_DIR . 'assets/chatbot.css';
-    $js_file  = PI_CHATBOT_DIR . 'assets/chatbot.js';
-    wp_enqueue_style('pi-chatbot', PI_CHATBOT_URL . 'assets/chatbot.css', [], file_exists($css_file) ? filemtime($css_file) : PI_CHATBOT_VERSION);
-    wp_enqueue_script('pi-chatbot', PI_CHATBOT_URL . 'assets/chatbot.js', [], file_exists($js_file) ? filemtime($js_file) : PI_CHATBOT_VERSION, true);
+    $mtime = function ($rel_path) {
+        $abs = PI_CHATBOT_DIR . $rel_path;
+        return file_exists($abs) ? filemtime($abs) : PI_CHATBOT_VERSION;
+    };
+
+    // CSS split into 1 file per component (2026-07-26) instead of 1 monolithic
+    // chatbot.css — enqueued as a dependency CHAIN (each handle depends on the one
+    // before) purely so WordPress prints them in this exact order; there is no actual
+    // cross-file selector dependency, tokens.css just needs to load first so its --cb-*
+    // custom properties exist before anything else references them.
+    $css_handles = [
+        'pi-chatbot-tokens'        => 'assets/css/chatbot-tokens.css',
+        'pi-chatbot-panel'         => 'assets/css/chatbot-panel.css',
+        'pi-chatbot-messages'      => 'assets/css/chatbot-messages.css',
+        'pi-chatbot-progress'      => 'assets/css/chatbot-progress.css',
+        'pi-chatbot-quick-replies' => 'assets/css/chatbot-quick-replies.css',
+        'pi-chatbot-footer'        => 'assets/css/chatbot-footer.css',
+        'pi-chatbot-responsive'    => 'assets/css/chatbot-responsive.css',
+    ];
+    $prev_handle = null;
+    foreach ($css_handles as $handle => $rel_path) {
+        wp_enqueue_style($handle, PI_CHATBOT_URL . $rel_path, $prev_handle ? [$prev_handle] : [], $mtime($rel_path));
+        $prev_handle = $handle;
+    }
+
+    // JS split into 2 files: chatbot-ui.js (pure DOM builders + trace->text copy, no
+    // shared state — the "components") loads FIRST as a real dependency (chatbot.js
+    // calls window.PiChatbotUI.* at parse time in a few places), then chatbot.js (state,
+    // network, event wiring) which owns everything that has to persist across a
+    // request: chat history, timers, the request sequence counter.
+    wp_enqueue_script('pi-chatbot-ui', PI_CHATBOT_URL . 'assets/chatbot-ui.js', [], $mtime('assets/chatbot-ui.js'), true);
+    wp_enqueue_script('pi-chatbot', PI_CHATBOT_URL . 'assets/chatbot.js', ['pi-chatbot-ui'], $mtime('assets/chatbot.js'), true);
     wp_localize_script('pi-chatbot', 'PiChatbotConfig', [
         'restUrl'   => esc_url_raw(rest_url('pi/v1/chatbot/ask')),
         'nonce'     => wp_create_nonce('wp_rest'),

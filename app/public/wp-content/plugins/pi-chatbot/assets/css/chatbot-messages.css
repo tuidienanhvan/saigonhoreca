@@ -1,0 +1,129 @@
+/* Pi Chatbot — the scrollable message list: bubbles (user/bot/error), the shared avatar
+   column, inline links, and the collapsible Sources list. */
+
+#pi-chatbot-panel .pi-cb-messages {
+    flex: 1;
+    overflow-y: auto;
+    /* Blocks scroll chaining to the background page when hitting the bottom/top of the
+       message frame on touch devices — without this line, scrolling continues onto the
+       page behind the panel, giving a "slipped out of your hand" feeling. */
+    overscroll-behavior: contain;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background: transparent;
+    color: var(--cb-text);
+    -webkit-user-select: text;
+    user-select: text;
+}
+
+#pi-chatbot-panel .pi-cb-msg-wrap {
+    display: flex;
+    gap: 10px;
+    max-width: 85%;
+}
+#pi-chatbot-panel .pi-cb-msg-wrap--user {
+    align-self: flex-end;
+    flex-direction: row-reverse;
+}
+#pi-chatbot-panel .pi-cb-avatar {
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    background: var(--cb-accent-soft);
+    border: 1px solid var(--cb-accent-ring);
+    color: var(--cb-accent);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* Vertical column sharing a SINGLE avatar for both the progress card and the answer
+   bubble of 1 bot turn — instead of each tier being its own avatar row (fixed per
+   feedback: "they need to be linked together, just 1 svg icon, don't split into 3 chat
+   messages"). */
+#pi-chatbot-panel .pi-cb-msg-col {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+}
+#pi-chatbot-panel .pi-cb-msg {
+    padding: 12px 16px;
+    border-radius: 14px;
+    font-size: 14px;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+/* URLs the model writes inline inside its answer (e.g. "Xem thêm: https://...")
+   are turned into real links by appendLinkifiedText() in chatbot-ui.js — always
+   underlined (not just on hover) so a link sitting inside a paragraph of plain
+   text reads as clickable at a glance, unlike the Sources list where the
+   bullet + details/summary structure already signals interactivity. */
+#pi-chatbot-panel .pi-cb-msg a {
+    color: var(--cb-accent);
+    text-decoration: underline;
+    text-decoration-color: var(--cb-accent);
+    word-break: break-all;
+}
+#pi-chatbot-panel .pi-cb-msg a:hover {
+    color: var(--cb-accent-hover);
+}
+#pi-chatbot-panel .pi-cb-msg-wrap--bot .pi-cb-msg {
+    background: color-mix(in srgb, var(--cb-text) 4%, transparent);
+    border: 1px solid var(--cb-border);
+    color: var(--cb-text);
+    border-top-left-radius: 2px;
+}
+#pi-chatbot-panel .pi-cb-msg-wrap--user .pi-cb-msg {
+    background: linear-gradient(135deg, var(--cb-accent), var(--cb-accent-hover));
+    color: var(--cb-accent-text);
+    border-top-right-radius: 2px;
+    box-shadow: 0 4px 12px var(--cb-accent-glow);
+}
+#pi-chatbot-panel .pi-cb-msg-wrap--error .pi-cb-msg {
+    background: var(--cb-error-bg);
+    color: var(--cb-error-text);
+    border-top-left-radius: 2px;
+}
+#pi-chatbot-panel .pi-cb-sources {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid var(--cb-border);
+    font-size: 12px;
+    color: var(--cb-text-muted);
+}
+#pi-chatbot-panel .pi-cb-sources summary {
+    cursor: pointer;
+    font-weight: 500;
+    user-select: none;
+    transition: color 0.2s;
+}
+#pi-chatbot-panel .pi-cb-sources summary:hover {
+    color: var(--cb-text);
+}
+#pi-chatbot-panel .pi-cb-sources-list {
+    margin-top: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+#pi-chatbot-panel .pi-cb-source-item {
+    position: relative;
+    padding-left: 12px;
+}
+#pi-chatbot-panel .pi-cb-source-item::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--cb-accent-ring);
+}
+#pi-chatbot-panel .pi-cb-source-item a {
+    color: var(--cb-accent);
+    text-decoration: none;
+    line-height: 1.4;
+    display: inline-block;
+}
+#pi-chatbot-panel .pi-cb-source-item a:hover { text-decoration: underline; }

@@ -1,0 +1,24 @@
+/* Pi Chatbot — design-token aliases. The --cb-* names map directly to the theme's own
+   tokens (_tokens.css: --p/--b1/--b2/--bc/--bd/--su/--danger...) so every other partial
+   in this folder never hardcodes a color — it only ever reads --cb-*. Any theme that
+   defines the same underlying tokens (saigonhouse, etc.) gets a correctly-themed widget
+   for free, with no other file needing an edit.
+*/
+:root {
+    --cb-accent:       var(--cb-accent-custom, var(--p, var(--gold)));           /* Automatically picks up the theme's primary color */
+    --cb-accent-hover: var(--cb-accent-custom-hover, var(--ph, var(--gold-dim, color-mix(in srgb, var(--cb-accent) 80%, #000))));
+    --cb-accent-text:  var(--pc, #000);        /* Text on the accent background, matching the site's convention */
+    --cb-accent-soft:  color-mix(in srgb, var(--cb-accent) 12%, transparent);
+    --cb-accent-ring:  color-mix(in srgb, var(--cb-accent) 25%, transparent);
+    --cb-accent-glow:  color-mix(in srgb, var(--cb-accent) 30%, transparent);
+    --cb-accent-glow-dim: color-mix(in srgb, var(--cb-accent) 4%, transparent);
+    --cb-dark:         var(--b1);              /* Panel/message-frame background */
+    --cb-darker:       var(--b1);              /* Input field */
+    --cb-slate:        var(--b2);              /* Bot chat bubble */
+    --cb-text:         var(--bc);
+    --cb-text-muted:   var(--bc3, var(--bc2));
+    --cb-border:       var(--border-default, var(--bd));
+    --cb-online:       var(--su, #16a34a);     /* Online status dot */
+    --cb-error-bg:      color-mix(in srgb, var(--danger, #c1272d) 20%, var(--b2));
+    --cb-error-text:    var(--bc);
+}

@@ -1,0 +1,37 @@
+/* Pi Chatbot — the row of quick-reply pill buttons shown before the visitor has asked
+   anything yet (see chatbot.js addQuickReplies()/QUICK_REPLIES). */
+#pi-chatbot-panel .pi-cb-quick-replies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-left: 40px;
+    margin-top: 4px;
+}
+#pi-chatbot-panel .pi-cb-qr-btn {
+    background: color-mix(in srgb, var(--cb-text) 3%, transparent);
+    border: 1px solid var(--cb-accent-ring);
+    color: var(--cb-accent);
+    padding: 7px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 500;
+    backdrop-filter: blur(4px);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+/* Stroke SVG icon replacing the emoji in the label — inherits currentColor so it
+   automatically matches the button's var(--cb-accent), unlike emoji which depends on
+   the OS font. */
+#pi-chatbot-panel .pi-cb-qr-icon {
+    display: inline-flex;
+    flex-shrink: 0;
+}
+#pi-chatbot-panel .pi-cb-qr-btn:hover {
+    background: var(--cb-accent-soft);
+    border-color: var(--cb-accent);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px var(--cb-accent-glow);
+}

@@ -1,0 +1,98 @@
+/* Pi Chatbot — footer: the text input row, cooldown/slow-hint notices, and the
+   "Powered by Pi Digital" engine-attribution row. */
+#pi-chatbot-panel .pi-cb-footer {
+    background: color-mix(in srgb, var(--cb-dark) 50%, transparent);
+    border-top: 1px solid var(--cb-border);
+    display: flex;
+    flex-direction: column;
+}
+#pi-chatbot-panel .pi-cb-input-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px;
+}
+#pi-chatbot-panel .pi-cb-input {
+    flex: 1;
+    border: 1px solid var(--cb-border);
+    border-radius: 22px;
+    padding: 10px 18px;
+    font-size: 14px;
+    background: color-mix(in srgb, var(--cb-darker) 60%, transparent);
+    color: var(--cb-text);
+    transition: all 0.2s ease;
+}
+#pi-chatbot-panel .pi-cb-input::placeholder { color: var(--cb-text-muted); }
+#pi-chatbot-panel .pi-cb-input:focus-visible {
+    border-color: var(--cb-accent);
+    outline: none;
+    background: color-mix(in srgb, var(--cb-darker) 85%, transparent);
+    box-shadow: 0 0 0 2px var(--cb-accent-ring);
+}
+#pi-chatbot-panel .pi-cb-send {
+    background: var(--cb-accent);
+    color: var(--cb-accent-text);
+    border: none;
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+#pi-chatbot-panel .pi-cb-send:hover:not(:disabled) {
+    background: var(--cb-accent-hover);
+    transform: scale(1.05);
+    box-shadow: 0 0 12px var(--cb-accent-glow);
+}
+#pi-chatbot-panel .pi-cb-send:disabled,
+#pi-chatbot-panel .pi-cb-send[aria-disabled="true"] {
+    opacity: 0.4;
+    cursor: default;
+    transform: none;
+    box-shadow: none;
+}
+#pi-chatbot-panel .pi-cb-input[readonly] {
+    opacity: 0.7;
+    cursor: default;
+}
+/* "Still searching" hint shown after 12s of waiting — same information as
+   #pi-cb-status for screen readers, but SIGHTED users also lack a signal for 8-40s if
+   all they see is the 3 unchanging bouncing dots. */
+#pi-chatbot-panel .pi-cb-slow-hint {
+    font-size: 11px;
+    color: var(--cb-text-muted);
+    padding: 0 18px 10px;
+    margin-top: -6px;
+}
+#pi-chatbot-panel .pi-cb-cooldown {
+    font-size: 11px;
+    color: var(--cb-text-muted);
+    text-align: center;
+    padding: 0 14px 8px;
+}
+
+#pi-chatbot-panel .pi-cb-engine-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 16px 12px 16px;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--cb-text-muted);
+}
+#pi-chatbot-panel .pi-cb-engine-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    opacity: 0.75;
+}
+#pi-chatbot-panel .pi-cb-bot-svg {
+    color: var(--cb-accent);
+    flex-shrink: 0;
+}
