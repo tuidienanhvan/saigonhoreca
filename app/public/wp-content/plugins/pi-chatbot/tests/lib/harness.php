@@ -216,10 +216,15 @@ if (!function_exists('pi_check')) {
 
         // Router caches, answer caches, rate-limit buckets and breaker counters
         // are all keyed by a hash, so they can only be cleared by pattern.
+        // pi_chatbot_llmbudget_ (2026-07-27, class-budget.php) is included here
+        // too even though it is deliberately NOT a transient (it must survive
+        // transient GC in production) — a suite that pushes the daily budget
+        // over its limit must not leave that state for the NEXT suite's tests.
         $wpdb->query(
             "DELETE FROM {$wpdb->options}
              WHERE option_name LIKE '\_transient\_pi\_chatbot\_%'
-                OR option_name LIKE '\_transient\_timeout\_pi\_chatbot\_%'"
+                OR option_name LIKE '\_transient\_timeout\_pi\_chatbot\_%'
+                OR option_name LIKE 'pi\_chatbot\_llmbudget\_%'"
         );
 
         // The raw DELETE above only touches the DATABASE row — WordPress's

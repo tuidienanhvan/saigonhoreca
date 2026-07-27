@@ -149,6 +149,13 @@ class Pi_Chatbot_Admin {
                                 <p class="pi-cba-desc"><?php esc_html_e('Requests per minute, per visitor IP.', 'pi-chatbot'); ?></p>
                             </div>
                         </div>
+                        <div class="pi-cba-field">
+                            <label class="pi-cba-label" for="llm_daily_budget"><?php esc_html_e('Daily LLM budget', 'pi-chatbot'); ?></label>
+                            <div>
+                                <input type="number" min="10" max="100000" id="llm_daily_budget" name="llm_daily_budget" value="<?php echo esc_attr($settings['llm_daily_budget']); ?>">
+                                <p class="pi-cba-desc"><?php esc_html_e('Site-wide cap on real LLM7 calls per day (not per visitor). Past 80% of this, the assistant stops doing the extra reranking/fact-check passes. Past 100%, it answers from retrieval only (still useful, no LLM call) instead of failing outright.', 'pi-chatbot'); ?></p>
+                            </div>
+                        </div>
                     </div>
                     <?php submit_button(__('Save settings', 'pi-chatbot'), 'primary', 'submit', false, ['style' => 'margin-top:18px;']); ?>
                 </form>
@@ -382,6 +389,7 @@ class Pi_Chatbot_Admin {
         $settings['model']      = sanitize_text_field(wp_unslash($_POST['model'] ?? $settings['model']));
         $settings['top_k']      = max(1, min(20, (int) ($_POST['top_k'] ?? $settings['top_k'])));
         $settings['rate_limit'] = max(1, min(100, (int) ($_POST['rate_limit'] ?? $settings['rate_limit'])));
+        $settings['llm_daily_budget'] = max(10, min(100000, (int) ($_POST['llm_daily_budget'] ?? $settings['llm_daily_budget'])));
 
         // Router — separate form (2 forms on the same page), the field is only present
         // when that specific form was submitted. The 'router_enabled' checkbox being

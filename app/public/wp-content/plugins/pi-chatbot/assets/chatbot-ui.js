@@ -62,13 +62,35 @@
         return typeof url === 'string' && /^https?:\/\//i.test(url);
     }
 
+    /** True only for a URL on the SAME origin as the page the widget is embedded on.
+     *  2026-07-27 security fix: the answer text can contain a URL that originated from
+     *  catalog data (a product description), not from this plugin — a customer-facing
+     *  chat answer is the wrong place to hand out a clickable link to an arbitrary
+     *  external domain, since that link is then cached for up to an hour and served to
+     *  every other customer who asks a similar question. Uses location.origin (the
+     *  page's own origin) rather than a value passed from PHP — the widget only ever
+     *  runs embedded on this site's own pages, so "same origin as right now" is already
+     *  the correct, and simplest, definition of "safe to linkify". A relative/malformed
+     *  URL that the URL constructor can't parse is treated as NOT same-origin (fails
+     *  safe to plain text, never to a link). */
+    function isSameOrigin(url) {
+        try {
+            return new URL(url, location.href).origin === location.origin;
+        } catch (e) {
+            return false;
+        }
+    }
+
     /** Turns raw http(s) URLs embedded in plain text into real clickable
      *  <a> elements — built via DOM (textContent per piece), never innerHTML,
      *  so this keeps the same security invariant as the rest of the file
      *  (no server-supplied string is ever parsed as HTML). Trailing
      *  punctuation right after a URL (".", ")", "!"...) is split back out as
      *  plain text so a sentence-ending period doesn't get swallowed into the
-     *  link href. */
+     *  link href. Only a same-origin URL (see isSameOrigin()) actually becomes a
+     *  clickable link — any other http(s) URL is left as plain visible text, so a
+     *  customer can still read/copy it, but the widget never manufactures a
+     *  clickable link to a domain it doesn't control. */
     var URL_RE = /(https?:\/\/[^\s<>"]+)/g;
     function appendLinkifiedText(el, text) {
         var lastIndex = 0;
@@ -85,7 +107,7 @@
                 trail = trailMatch[0];
                 url = url.slice(0, url.length - trail.length);
             }
-            if (isSafeUrl(url)) {
+            if (isSafeUrl(url) && isSameOrigin(url)) {
                 var a = document.createElement('a');
                 a.href = url;
                 a.target = '_blank';
@@ -271,10 +293,14 @@
 
     /** The fact-check row is shown when the server reports a verdict (true OR false) or
      *  when it deliberately withheld the retrieved results as irrelevant. `verified` is
-     *  null both on the fast path and when the check could not run — neither of those may
-     *  render a row, which is why this tests for null explicitly rather than truthiness. */
+     *  null both when nothing ran a check and when a check could not run — neither of
+     *  those may render a row, which is why this tests for null explicitly rather than
+     *  truthiness. Not gated to trace.mode === 'max' — the server now also runs this
+     *  check on the fast path when the answer contains a number/model-code/URL (see
+     *  class-rest.php answer_needs_fact_check()), so the ONLY thing that decides whether
+     *  this row appears is whether a check genuinely ran, not which path produced it. */
     function needsVerifyStep(trace) {
-        return trace.mode === 'max' && (trace.verified === true || trace.verified === false || trace.low_confidence === true);
+        return trace.verified === true || trace.verified === false || trace.low_confidence === true;
     }
 
     function describeVerify(trace) {
@@ -302,6 +328,7 @@
         nowMs: nowMs,
         wait: wait,
         isSafeUrl: isSafeUrl,
+        isSameOrigin: isSameOrigin,
         appendLinkifiedText: appendLinkifiedText,
         buildMsgBubble: buildMsgBubble,
         renderProgressCard: renderProgressCard,

@@ -8,6 +8,9 @@
 if (!defined('ABSPATH')) exit;
 
 class Pi_Chatbot_Indexer {
+    /** Posts fetched per page during reindex_all() — see the batching comment there. */
+    const REINDEX_BATCH_SIZE = 500;
+
     private static $instance = null;
 
     public static function instance() {
@@ -160,18 +163,48 @@ class Pi_Chatbot_Indexer {
             return new WP_Error('pi_chatbot_reindex_failed', 'Shadow table was not created successfully.');
         }
 
+        // Batched (500/page) with the object cache suspended + flushed between
+        // batches, instead of one posts_per_page=>-1 query loading every post at
+        // once. get_post()/get_the_terms() inside index_post_into() populate the
+        // object cache for every post touched — on a catalog well below 50k that
+        // cache growth alone was already the real memory ceiling (not the SQL
+        // result set), and it happens whether reindex_all() runs from the admin
+        // "Reindex" button or from plugin activation. wp_suspend_cache_addition()
+        // stops new entries from being added while a batch is processing;
+        // wp_cache_flush() after each batch drops whatever slipped in anyway
+        // (object-cache implementations vary in how strictly they honor
+        // suspension) — the combination bounds memory to roughly 1 batch's worth
+        // of cached objects at any moment, not the whole catalog's.
+        // Filterable so a test can force a tiny batch size and prove the
+        // pagination loop itself is correct across multiple pages, without
+        // needing 500+ real fixture posts to actually exercise a 2nd batch.
+        $batch_size = max(1, (int) apply_filters('pi_chatbot_reindex_batch_size', self::REINDEX_BATCH_SIZE));
+
         $count = 0;
+        wp_suspend_cache_addition(true);
         foreach (self::indexable_post_types() as $post_type) {
-            $ids = get_posts([
-                'post_type'      => $post_type,
-                'post_status'    => 'publish',
-                'posts_per_page' => -1,
-                'fields'         => 'ids',
-            ]);
-            foreach ($ids as $post_id) {
-                if (self::index_post_into($shadow, $post_id)) $count++;
+            $page = 1;
+            while (true) {
+                $ids = get_posts([
+                    'post_type'      => $post_type,
+                    'post_status'    => 'publish',
+                    'posts_per_page' => $batch_size,
+                    'paged'          => $page,
+                    'orderby'        => 'ID',
+                    'order'          => 'ASC',
+                    'fields'         => 'ids',
+                    'no_found_rows'  => true, // pagination here only needs "is there a next page", never a total count
+                ]);
+                if (!$ids) break;
+                foreach ($ids as $post_id) {
+                    if (self::index_post_into($shadow, $post_id)) $count++;
+                }
+                wp_cache_flush();
+                if (count($ids) < $batch_size) break; // last page
+                $page++;
             }
         }
+        wp_suspend_cache_addition(false);
 
         if ($count === 0) {
             $wpdb->query("DROP TABLE IF EXISTS {$shadow}");

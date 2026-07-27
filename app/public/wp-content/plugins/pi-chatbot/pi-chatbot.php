@@ -25,6 +25,7 @@ require_once PI_CHATBOT_DIR . 'includes/class-indexer.php';
 require_once PI_CHATBOT_DIR . 'includes/class-log.php';
 require_once PI_CHATBOT_DIR . 'includes/class-entities.php';
 require_once PI_CHATBOT_DIR . 'includes/class-retriever.php';
+require_once PI_CHATBOT_DIR . 'includes/class-budget.php';
 require_once PI_CHATBOT_DIR . 'includes/class-llm-client.php';
 require_once PI_CHATBOT_DIR . 'includes/class-generator.php';
 // class-router.php loads AFTER class-entities.php (uses known_brands()) and class-indexer.php
@@ -78,6 +79,13 @@ function pi_chatbot_settings() {
         'model'      => 'gpt-oss:20b',
         'top_k'      => 6,
         'rate_limit' => 10, // questions / minute / IP
+        // Global (site-wide, not per-IP) cap on real LLM7 HTTP attempts per calendar
+        // day — see class-budget.php. 300/day is sized for LLM7's free tier: even the
+        // max-accuracy path's worst case (router + generate + retry + rerank + verify
+        // + retry-verify = 6 calls) leaves room for 50 such requests/day, and the
+        // common fast-path question (router + generate = 2 calls) leaves room for 150.
+        // Raise this if paid/higher-quota keys are configured.
+        'llm_daily_budget' => 300,
         // Router — ON BY DEFAULT. It is now the ONLY intent classifier (the old
         // rule-based Vietnamese keyword matching in class-retriever.php was
         // removed by product decision, trading instant/free classification

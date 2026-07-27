@@ -92,6 +92,16 @@ class Pi_Chatbot_Rest {
 
         $settings = pi_chatbot_settings();
 
+        // Global daily LLM7-call budget (see class-budget.php) — checked ONCE per
+        // request, before the router (the FIRST potential LLM call), so a day that
+        // hit the cap spends zero further LLM calls rather than degrading only
+        // partway through. $budget_exhausted deliberately reuses the EXISTING
+        // "router unavailable" fallback below ($enrichment === null -> plain
+        // lexical search on the raw message) instead of a new branch: from the
+        // request's point of view, "no LLM budget left" and "router is down" need
+        // the exact same degrade — a real answer from retrieval, no LLM call.
+        $budget_exhausted = Pi_Chatbot_Budget::is_over_limit();
+
         // Classification is fully LLM-driven: the router runs on EVERY message
         // (rule-based Vietnamese keyword matching — is_price_intent()/
         // is_contact_intent()/... — was removed from class-retriever.php by
@@ -128,7 +138,7 @@ class Pi_Chatbot_Rest {
         $low_confidence = false;
         $verified = null;
 
-        $enrichment = Pi_Chatbot_Router::enrich($message, $history);
+        $enrichment = $budget_exhausted ? null : Pi_Chatbot_Router::enrich($message, $history);
         $mark('router');
         if ($enrichment) {
             $router_used = true;
@@ -203,7 +213,12 @@ class Pi_Chatbot_Rest {
                     // failures, not misses), and they are rare enough that
                     // spending three extra model calls on them is affordable.
                     // Everything else keeps the fast path unchanged.
-                    if (!empty($settings['max_accuracy_enabled']) && $difficulty === 'hard') {
+                    // Past 80% of the daily LLM budget (Pi_Chatbot_Budget::is_near_limit),
+                    // the extra rerank+verify calls the max path spends are exactly the
+                    // "deferrable" cost the plan calls for cutting first — every 'hard'
+                    // question still gets a real, useful answer via the fast path, just
+                    // without the 2-3 extra LLM calls the max path would have spent on it.
+                    if (!empty($settings['max_accuracy_enabled']) && $difficulty === 'hard' && !Pi_Chatbot_Budget::is_near_limit()) {
                         $mode = 'max';
                         // Hybrid retrieval + rerank + verify can legitimately run
                         // ~30s end to end; the usual 30s cap on shared hosting
@@ -282,19 +297,33 @@ class Pi_Chatbot_Rest {
         // that's an independent signal from whether generation succeeded.
         Pi_Chatbot_Log::record($normalized, !empty($context), count($context), $router_used);
 
-        $result = Pi_Chatbot_Generator::answer($message, $context);
-        $mark('generate');
+        // Budget already exhausted -> no LLM call at all here either (the router
+        // was already skipped above). A retrieval-only reply from real catalog
+        // data is a genuinely useful degrade, not a failure page.
+        if ($budget_exhausted) {
+            $result = self::budget_exhausted_result($context);
+            $mark('generate');
+        } else {
+            $result = Pi_Chatbot_Generator::answer($message, $context);
+            $mark('generate');
 
-        if (is_wp_error($result)) {
-            return new WP_Error('pi_chatbot_generation_failed', 'The assistant is busy right now — please try again in a few minutes or call our hotline.', ['status' => 502]);
+            if (is_wp_error($result)) {
+                return new WP_Error('pi_chatbot_generation_failed', 'The assistant is busy right now — please try again in a few minutes or call our hotline.', ['status' => 502]);
+            }
         }
 
-        // Faithfulness check, max path only. One retry, then accept: a second
-        // failure means the model cannot express this answer within the
+        // Faithfulness check. Always on the max path (1 retry, then accept — a
+        // second failure means the model cannot express this answer within the
         // reference, and looping further would spend the customer's remaining
-        // patience without new information. The unverified flag is carried in
-        // the trace so a real failure rate is measurable rather than assumed.
-        if ($mode === 'max' && !empty($context)) {
+        // patience without new information). ALSO on the fast path, but only
+        // when the answer actually contains the kind of claim that causes real
+        // commercial damage if wrong — a number (price/capacity/dimension), a
+        // model-code-looking token, or a URL — and only while there is budget
+        // headroom to spend on it: 80% of fast-path traffic (86/107 measured)
+        // previously got zero verification no matter what it claimed.
+        $needs_fast_verify = $mode === 'fast' && !$budget_exhausted && !empty($context)
+            && !Pi_Chatbot_Budget::is_near_limit() && self::answer_needs_fact_check($result['answer']);
+        if (($mode === 'max' && !empty($context)) || $needs_fast_verify) {
             $check = Pi_Chatbot_Generator::verify($message, $context, $result['answer']);
             if ($check !== null) {
                 $verified = $check['faithful'];
@@ -337,10 +366,56 @@ class Pi_Chatbot_Rest {
             'low_confidence'    => $low_confidence,
             'verified'          => $verified,
             'steps'             => $steps,
+            'budget_exhausted'  => $budget_exhausted,
         ];
 
-        set_transient($cache_key, $result, HOUR_IN_SECONDS);
+        // A budget-degraded answer is cached much more briefly than a real one —
+        // it's an honest "here's what we found" reply, not a wrong one, but the
+        // budget can free up again well within an hour (a key's own quota window
+        // resets, or the option is bumped), and a customer retrying a few minutes
+        // later should get the real generated answer rather than a stale degrade.
+        set_transient($cache_key, $result, $budget_exhausted ? 5 * MINUTE_IN_SECONDS : HOUR_IN_SECONDS);
         return rest_ensure_response($result);
+    }
+
+    /**
+     * Retrieval-only fallback used when the daily LLM budget is exhausted (see
+     * Pi_Chatbot_Budget) — same {answer, sources} shape Pi_Chatbot_Generator::
+     * answer() returns, so every downstream consumer (caching, the trace, the
+     * frontend) handles it identically without a special case. Genuinely
+     * useful rather than a bare failure page: a customer asking about a
+     * product still gets its name/brand/url list, just without LLM-composed
+     * prose around it.
+     */
+    private static function budget_exhausted_result($context) {
+        if (empty($context)) {
+            return [
+                'answer'  => "We're getting a high volume of questions right now, so the assistant can't compose a full answer at the moment — please contact our hotline and our team will help you directly.",
+                'sources' => [],
+            ];
+        }
+        $lines = array_map(function ($item) {
+            return '- ' . $item['title'] . ($item['brand'] ? " ({$item['brand']})" : '');
+        }, $context);
+        return [
+            'answer'  => "We're getting a high volume of questions right now, so here are the closest matches from our catalog (please contact our hotline for details):\n"
+                . implode("\n", $lines),
+            'sources' => array_map(function ($item) {
+                return ['title' => $item['title'], 'url' => $item['url']];
+            }, $context),
+        ];
+    }
+
+    /**
+     * Cheap trigger for the fast path's OPTIONAL fact check (see the 'verify'
+     * block in ask()) — the kind of claim that causes real commercial damage
+     * if wrong: a number (price/capacity/dimension/model number), a URL, or a
+     * model-code-looking token (letters+digits mixed, e.g. "FGTLS1260"). A
+     * purely conversational answer with none of these has nothing worth
+     * fact-checking at the extra LLM-call cost.
+     */
+    private static function answer_needs_fact_check($answer) {
+        return (bool) preg_match('/https?:\/\/|\d/u', (string) $answer);
     }
 
     /**
@@ -363,6 +438,9 @@ class Pi_Chatbot_Rest {
      * opposite of the "wait a minute" the message promised.
      */
     private function check_rate_limit() {
+        $interval_check = $this->check_min_interval();
+        if (is_wp_error($interval_check)) return $interval_check;
+
         global $wpdb;
         $settings = pi_chatbot_settings();
         $limit = max(1, (int) $settings['rate_limit']);
@@ -389,6 +467,54 @@ class Pi_Chatbot_Rest {
         // needed, WP cleans it up itself once the transient timeout passes
         // (uninstall.php also sweeps by this pattern).
         add_option($timeout_option, time() + (2 * MINUTE_IN_SECONDS), '', false);
+
+        return true;
+    }
+
+    /** Minimum gap between requests, milliseconds. Tight enough to only catch
+     *  a script/double-click hammering the endpoint, loose enough that no real
+     *  human typing-then-Enter ever trips it. */
+    const MIN_REQUEST_INTERVAL_MS = 1000;
+
+    /**
+     * Per-IP minimum gap BETWEEN requests, independent of the per-minute
+     * bucket above — the bucket alone allows all `rate_limit` requests to
+     * land in the same instant (e.g. a script firing 10 requests in 200ms),
+     * each one a full LLM7 round trip and a PHP-FPM worker held for up to
+     * 60s; 10 of those landing together can pin 10 workers at once even
+     * though the per-minute count is still "within limit". Storing the last-
+     * request timestamp (ms) per IP and rejecting anything closer than
+     * MIN_REQUEST_INTERVAL_MS afterward closes that gap.
+     *
+     * A plain read-then-write (not the atomic INSERT...ON DUPLICATE KEY
+     * pattern used above) is an accepted, deliberate trade-off here: this is
+     * a soft spam guard, not a security boundary, and the same tolerance
+     * already applies to the option-based rate-limit bucket this sits next
+     * to. The window it could race is under 1ms of the very moment 2
+     * requests from the same visitor arrive simultaneously — not a realistic
+     * concern for a chat widget that only ever sends one request at a time.
+     */
+    private function check_min_interval() {
+        global $wpdb;
+        $key = 'pi_chatbot_lastreq_' . md5($this->get_client_ip());
+        $option = '_transient_' . $key;
+        $now_ms = (int) round(microtime(true) * 1000);
+
+        $last_ms = (int) $wpdb->get_var($wpdb->prepare(
+            "SELECT option_value FROM {$wpdb->options} WHERE option_name = %s", $option
+        ));
+
+        if ($last_ms > 0 && ($now_ms - $last_ms) < self::MIN_REQUEST_INTERVAL_MS) {
+            return new WP_Error('pi_chatbot_rate_limited', 'You are sending messages too quickly — please wait a moment.', ['status' => 429]);
+        }
+
+        $wpdb->query($wpdb->prepare(
+            "INSERT INTO {$wpdb->options} (option_name, option_value, autoload)
+             VALUES (%s, %s, 'no')
+             ON DUPLICATE KEY UPDATE option_value = VALUES(option_value)",
+            $option, (string) $now_ms
+        ));
+        add_option('_transient_timeout_' . $key, time() + (2 * MINUTE_IN_SECONDS), '', false);
 
         return true;
     }

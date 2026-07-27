@@ -37,6 +37,10 @@ class Pi_Chatbot_LLM_Client {
             if (!$key) continue;
             if ($attempts >= $max_attempts) break;
             $attempts++;
+            // Counted here, not once per logical caller — a request that round-robins
+            // through 2 failing keys before a 3rd succeeds really did spend quota on
+            // all 3, so all 3 count against the daily budget (see class-budget.php).
+            Pi_Chatbot_Budget::record_call();
 
             $res = wp_remote_post(self::API_URL, [
                 'timeout' => $timeout,

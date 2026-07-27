@@ -135,7 +135,18 @@ pi_with_settings(['router_enabled' => false], function () {
     $norm2 = trim(preg_replace('/\s+/u', ' ', mb_strtolower('tủ đông')));
     pi_check('whitespace-normalized questions produce identical cache keys', $norm1 === $norm2);
 
-    // index_version changing must invalidate the cache.
+    // index_version changing must invalidate the cache. This is now a genuine
+    // (non-cached) 3rd request from the SAME IP within the same test, which
+    // would otherwise trip the new minimum-request-interval guard (Stage 4.1,
+    // class-rest.php check_min_interval()) added moments after the 2nd call
+    // above — backdating the stored last-request timestamp proves this test is
+    // really exercising cache invalidation, not accidentally exercising (and
+    // being blocked by) the unrelated rate-limit guard.
+    global $wpdb;
+    $wpdb->update($wpdb->options,
+        ['option_value' => (string) ((int) round(microtime(true) * 1000) - 2000)],
+        ['option_name' => '_transient_pi_chatbot_lastreq_' . md5('10.10.10.3')]
+    );
     $v = (int) get_option('pi_chatbot_index_version', 0);
     update_option('pi_chatbot_index_version', $v + 1, true);
     $before2 = count(pi_http_calls());
@@ -330,6 +341,123 @@ pi_with_settings(['router_enabled' => true, 'llm7_keys' => ['k'], 'router_keys' 
         $data && $data['answer'] === 'câu trả lời đã sửa', $data ? $data['answer'] : 'error');
     pi_check('trace.verified reflects the SECOND (retry) check, not the first',
         $data && $data['trace']['verified'] === true);
+});
+
+// ── Stage 4.1 — global daily LLM budget degrade ──────────────────────────────
+pi_section('ask() — daily LLM budget exhausted (Stage 4.1)');
+
+pi_with_settings(['router_enabled' => true, 'llm7_keys' => ['k'], 'router_keys' => [], 'llm_daily_budget' => 5], function () {
+    pi_reset_state();
+    $budget_option = pi_call_private('Pi_Chatbot_Budget', 'option_name', []);
+    update_option($budget_option, 5, false); // already at the configured limit
+    $called = false;
+    pi_http_stub(function ($args, $url, $i) use (&$called) {
+        $called = true;
+        return pi_http_content('should never be reached — budget is exhausted');
+    });
+    $res = pi_rest_ask('tủ đông công nghiệp ' . wp_rand(), '10.10.10.20');
+    $data = is_wp_error($res) ? null : $res->get_data();
+    pi_check('budget exhausted -> zero LLM7 calls made (router AND generate both skipped)', $called === false);
+    pi_check('trace.budget_exhausted is true', $data && $data['trace']['budget_exhausted'] === true);
+    pi_check('an answer is still returned — retrieval-only degrade, not an error', $data && !empty($data['answer']));
+});
+
+pi_section('ask() — near-limit budget skips the max-accuracy path (Stage 4.1)');
+
+pi_with_settings(['router_enabled' => true, 'llm7_keys' => ['k'], 'router_keys' => [], 'max_accuracy_enabled' => true, 'rerank_enabled' => true, 'verify_enabled' => true, 'llm_daily_budget' => 10], function () {
+    pi_reset_state();
+    $budget_option = pi_call_private('Pi_Chatbot_Budget', 'option_name', []);
+    update_option($budget_option, 8, false); // 8/10 = 80% -> is_near_limit() true
+    pi_http_stub(function ($args, $url, $i) {
+        if ($i === 0) {
+            return pi_http_content(wp_json_encode([
+                'intent' => 'product', 'keywords_en' => ['freezer'], 'keywords_vi' => [], 'brand' => null,
+                'difficulty' => 'hard', 'query_variants' => [], 'ambiguity_reason' => 'vague',
+            ]));
+        }
+        return pi_http_content('câu trả lời khi gần hết ngân sách');
+    });
+    $res = pi_rest_ask('tủ đông ' . wp_rand(), '10.10.10.21');
+    $data = is_wp_error($res) ? null : $res->get_data();
+    pi_check('near-limit budget forces mode=fast even though the router said difficulty=hard',
+        $data && $data['trace']['mode'] === 'fast', $data ? $data['trace']['mode'] : 'error');
+    pi_check('near-limit skips reranking entirely', $data && $data['trace']['rerank_used'] === false);
+    pi_check('only 2 LLM7 calls happen: router + generate, no rerank/verify',
+        count(pi_http_calls()) === 2, count(pi_http_calls()) . ' calls');
+});
+
+// ── Stage 4.3 — conditional fact check on the fast path ─────────────────────
+pi_section('ask() — fast-path conditional fact check (Stage 4.3)');
+
+pi_with_settings(['router_enabled' => true, 'llm7_keys' => ['k'], 'router_keys' => [], 'verify_enabled' => true], function () {
+    pi_reset_state();
+    pi_http_stub(function ($args, $url, $i) {
+        if ($i === 0) {
+            return pi_http_content(wp_json_encode([
+                'intent' => 'product', 'keywords_en' => ['freezer'], 'keywords_vi' => [], 'brand' => null,
+                'difficulty' => 'easy', 'query_variants' => [], 'ambiguity_reason' => '',
+            ]));
+        }
+        if ($i === 1) return pi_http_content('Giá tham khảo khoảng 15.000.000đ tùy cấu hình.');
+        return pi_http_content(wp_json_encode(['faithful' => true]));
+    });
+    $res = pi_rest_ask('giá tủ đông ' . wp_rand(), '10.10.10.22');
+    $data = is_wp_error($res) ? null : $res->get_data();
+    pi_check("mode stays 'fast' even though a fact check ran",
+        $data && $data['trace']['mode'] === 'fast', $data ? $data['trace']['mode'] : 'error');
+    pi_check('an answer stating a price runs the fact check on the fast path',
+        $data && $data['trace']['verified'] === true, $data ? var_export($data['trace']['verified'], true) : 'error');
+    pi_check('exactly 3 LLM7 calls: router + generate + verify',
+        count(pi_http_calls()) === 3, count(pi_http_calls()) . ' calls');
+});
+
+pi_with_settings(['router_enabled' => true, 'llm7_keys' => ['k'], 'router_keys' => [], 'verify_enabled' => true], function () {
+    pi_reset_state();
+    pi_http_stub(function ($args, $url, $i) {
+        if ($i === 0) {
+            return pi_http_content(wp_json_encode([
+                'intent' => 'product', 'keywords_en' => ['freezer'], 'keywords_vi' => [], 'brand' => null,
+                'difficulty' => 'easy', 'query_variants' => [], 'ambiguity_reason' => '',
+            ]));
+        }
+        return pi_http_content('Chúng tôi có nhiều mẫu tủ đông phù hợp, bạn cần loại nào?');
+    });
+    $res = pi_rest_ask('tủ đông ' . wp_rand(), '10.10.10.23');
+    $data = is_wp_error($res) ? null : $res->get_data();
+    pi_check('a conversational answer with no number/URL/model-code skips the fact check',
+        $data && $data['trace']['verified'] === null, $data ? var_export($data['trace']['verified'], true) : 'error');
+    pi_check('exactly 2 LLM7 calls: router + generate only, no verify',
+        count(pi_http_calls()) === 2, count(pi_http_calls()) . ' calls');
+});
+
+// ── Stage 4.1 — minimum 1s interval per IP ───────────────────────────────────
+pi_section('ask() — minimum interval between requests from the same IP (Stage 4.1)');
+
+pi_with_settings(['router_enabled' => false], function () {
+    pi_reset_state();
+    pi_http_stub(function ($args, $url, $i) { return pi_http_content('ok'); });
+
+    $ip = '10.10.10.30';
+    $res1 = pi_rest_ask('câu hỏi một ' . wp_rand(), $ip);
+    pi_check('first request from a fresh IP succeeds', !is_wp_error($res1),
+        is_wp_error($res1) ? $res1->get_error_code() : 'ok');
+
+    $res2 = pi_rest_ask('câu hỏi hai ' . wp_rand(), $ip);
+    pi_check('an immediate second request from the SAME IP is rejected (min-interval guard)',
+        is_wp_error($res2) && $res2->get_error_code() === 'pi_chatbot_rate_limited',
+        is_wp_error($res2) ? $res2->get_error_code() : 'no error');
+
+    // Backdate the stored last-request timestamp by 2s directly in the DB — proves
+    // the guard recovers once the interval has genuinely elapsed, without a real
+    // sleep() slowing down every test run.
+    global $wpdb;
+    $key = 'pi_chatbot_lastreq_' . md5($ip);
+    $now_ms = (int) round(microtime(true) * 1000);
+    $wpdb->update($wpdb->options, ['option_value' => (string) ($now_ms - 2000)], ['option_name' => '_transient_' . $key]);
+
+    $res3 = pi_rest_ask('câu hỏi ba ' . wp_rand(), $ip);
+    pi_check('a 3rd request after the interval has elapsed succeeds again', !is_wp_error($res3),
+        is_wp_error($res3) ? $res3->get_error_code() : 'ok');
 });
 
 pi_http_unstub();

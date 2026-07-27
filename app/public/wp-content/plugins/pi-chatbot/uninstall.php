@@ -69,6 +69,15 @@ function pi_chatbot_uninstall_cleanup() {
         $wpdb->esc_like('_transient_pi_chatbot_') . '%',
         $wpdb->esc_like('_transient_timeout_pi_chatbot_') . '%'
     ));
+
+    // The daily LLM-call budget counter (class-budget.php) is a REAL wp_option, not a
+    // transient — deliberately, so it survives WordPress's own transient garbage
+    // collection past its own day (see the class's docblock) — which means it needs its
+    // own sweep here rather than being caught by the _transient_ pattern above.
+    $wpdb->query($wpdb->prepare(
+        "DELETE FROM {$wpdb->options} WHERE option_name LIKE %s",
+        $wpdb->esc_like('pi_chatbot_llmbudget_') . '%'
+    ));
 }
 
 if (is_multisite()) {

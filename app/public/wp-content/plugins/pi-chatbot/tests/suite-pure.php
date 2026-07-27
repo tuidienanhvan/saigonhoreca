@@ -455,6 +455,58 @@ pi_check('a reply with no "ranking" key at all IS a failure', $out === null);
 $out = pi_call_private('Pi_Chatbot_Reranker', 'apply', [['ranking' => [1, 2, 3], 'relevant' => [1, 2, 3, 4]], $rr_pool]);
 pi_check('confidence never exceeds 1.0', is_array($out) && $out['confidence'] <= 1.0);
 
+// ── Pi_Chatbot_Budget ────────────────────────────────────────────────────────
+pi_section('Pi_Chatbot_Budget (Stage 4.1 — global daily LLM-call budget)');
+
+// This is a REAL wp_option on the live site (deliberately not a transient —
+// see the class docblock), so the test saves/restores today's real value
+// instead of leaving the live budget counter corrupted after the run.
+$budget_option = pi_call_private('Pi_Chatbot_Budget', 'option_name', []);
+$had_budget = get_option($budget_option, null);
+try {
+    delete_option($budget_option);
+    pi_check('today_count() is 0 with nothing recorded yet', Pi_Chatbot_Budget::today_count() === 0);
+
+    Pi_Chatbot_Budget::record_call();
+    Pi_Chatbot_Budget::record_call();
+    pi_check('record_call() increments today_count()', Pi_Chatbot_Budget::today_count() === 2,
+        'got ' . Pi_Chatbot_Budget::today_count());
+
+    pi_with_settings(['llm_daily_budget' => 100], function () {
+        pi_check('is_over_limit() false with plenty of headroom', Pi_Chatbot_Budget::is_over_limit() === false);
+        pi_check('is_near_limit(0.8) false at 2/100', Pi_Chatbot_Budget::is_near_limit() === false);
+    });
+    pi_with_settings(['llm_daily_budget' => 2], function () {
+        pi_check('is_over_limit() true once count reaches the daily limit', Pi_Chatbot_Budget::is_over_limit() === true);
+        pi_check('is_near_limit(0.8) true at 2/2 (100% >= 80%)', Pi_Chatbot_Budget::is_near_limit() === true);
+    });
+} finally {
+    if ($had_budget === null) delete_option($budget_option);
+    else update_option($budget_option, $had_budget, false);
+}
+
+// ── Rest::answer_needs_fact_check ────────────────────────────────────────────
+pi_section('Rest::answer_needs_fact_check (Stage 4.3 — conditional fast-path fact check)');
+
+$needs_check = fn ($a) => pi_call_private('Pi_Chatbot_Rest', 'answer_needs_fact_check', [$a]);
+pi_check('a plain conversational answer needs no fact-check',
+    $needs_check('Xin chào! Chúng tôi có thể giúp gì cho bạn hôm nay?') === false);
+pi_check('an answer stating a price number needs a fact-check',
+    $needs_check('Giá tham khảo khoảng 15.000.000đ tùy cấu hình.') === true);
+pi_check('an answer containing a URL needs a fact-check',
+    $needs_check('Xem thêm tại https://saigonhoreca.vn/san-pham') === true);
+pi_check('an answer containing a model-code-like token needs a fact-check',
+    $needs_check('Mẫu FGTLS1260 rất phù hợp với nhu cầu của bạn.') === true);
+
+// ── Generator::context_to_text — data/instruction delimiters ────────────────
+pi_section('Generator::context_to_text (Stage 4.2 — data/instruction separation)');
+
+$ctx_delim = Pi_Chatbot_Generator::context_to_text([pi_result(['title' => 'Test Product'])]);
+pi_check('reference block is wrapped in explicit DATA delimiters',
+    strpos($ctx_delim, '<<<REFERENCE_DATA>>>') !== false && strpos($ctx_delim, '<<<END_REFERENCE_DATA>>>') !== false);
+pi_check('the delimiter sentence is present in the system prompt',
+    strpos(Pi_Chatbot_Generator::SYSTEM_PROMPT, 'REFERENCE_DATA') !== false);
+
 // pi_report() prints a summary from the SHARED pi_check() static state — when
 // run standalone that's exactly this suite's own totals; when run-all.php
 // requires this file alongside others, the same static keeps accumulating, so
