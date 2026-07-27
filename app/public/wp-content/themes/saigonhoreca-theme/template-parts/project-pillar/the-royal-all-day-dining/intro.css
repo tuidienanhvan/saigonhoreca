@@ -296,24 +296,8 @@
   color: var(--bc2);
 }
 
-/* ── Scroll-reveal ── */
-.pp--trd .pp-intro-editorial-trd [data-reveal] {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.7s var(--ease-spring), transform 0.7s var(--ease-spring);
-}
-.pp--trd .pp-intro-editorial-trd [data-reveal].is-revealed {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 /* ── Accessibility ── */
 @media (prefers-reduced-motion: reduce) {
-  .pp--trd .pp-intro-editorial-trd [data-reveal] {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
-  }
   .pp--trd .pp-intro-editorial-trd__figure img {
     transition: none !important;
   }

@@ -73,35 +73,35 @@ $blocks = [
 ];
 ?>
 <section class="sh-services" aria-label="<?php esc_attr_e('Dịch vụ Saigon Horeca', 'saigonhoreca'); ?>">
-    <?php foreach ($blocks as $i => $b) : ?>
-        <div class="sh-services__block <?php echo $b['reverse'] ? 'sh-services__block--reverse' : ''; ?>">
-            <div class="sh-services__inner">
-                <div class="sh-services__copy scroll-reveal <?php echo $b['reverse'] ? 'reveal-skew-y duration-1800 delay-150' : 'reveal-skew-x duration-1800 delay-150'; ?>">
-                    <?php if (!empty($b['eyebrow'])) : ?>
-                        <span class="sh-services__eyebrow"><?php echo esc_html($b['eyebrow']); ?></span>
-                    <?php endif; ?>
-                    <h2 class="sh-services__title"><?php echo wp_kses_post($b['title']); ?></h2>
-                    <?php foreach ($b['paras'] as $p) : ?>
-                        <p class="sh-services__desc"><?php echo wp_kses_post($p); ?></p>
-                    <?php endforeach; ?>
-                    <?php if (!empty($b['cta'])) : ?>
-                        <a href="<?php echo esc_url($b['cta']['href']); ?>" class="sh-services__cta">
-                            <?php if (!empty($b['cta']['is_phone'])) : ?>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 2.08 4.18 2 2 0 0 1 4.07 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            <?php endif; ?>
-                            <span class="sh-services__cta-text">
-                                <strong><?php echo esc_html($b['cta']['label']); ?></strong>
-                                <?php if (!empty($b['cta']['sub'])) : ?>
-                                    <em><?php echo esc_html($b['cta']['sub']); ?></em>
-                                 <?php endif; ?>
-                            </span>
-                        </a>
-                    <?php endif; ?>
-                </div>
-                <div class="sh-services__media scroll-reveal <?php echo $b['reverse'] ? 'reveal-3d-cinema-slow delay-350' : 'reveal-zoom-skew-in duration-2000 delay-350'; ?>">
-                    <?php
+  <?php foreach ($blocks as $i => $b) : ?>
+  <div class="sh-services__block <?php echo $b['reverse'] ? 'sh-services__block--reverse' : ''; ?>">
+  <div class="sh-services__inner">
+  <div class="sh-services__copy">
+  <?php if (!empty($b['eyebrow'])) : ?>
+  <span class="sh-services__eyebrow"><?php echo esc_html($b['eyebrow']); ?></span>
+  <?php endif; ?>
+  <h2 class="sh-services__title"><?php echo wp_kses_post($b['title']); ?></h2>
+  <?php foreach ($b['paras'] as $p) : ?>
+  <p class="sh-services__desc"><?php echo wp_kses_post($p); ?></p>
+  <?php endforeach; ?>
+  <?php if (!empty($b['cta'])) : ?>
+  <a href="<?php echo esc_url($b['cta']['href']); ?>" class="sh-services__cta">
+  <?php if (!empty($b['cta']['is_phone'])) : ?>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+  <path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 2.08 4.18 2 2 0 0 1 4.07 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <?php endif; ?>
+  <span class="sh-services__cta-text">
+  <strong><?php echo esc_html($b['cta']['label']); ?></strong>
+  <?php if (!empty($b['cta']['sub'])) : ?>
+  <em><?php echo esc_html($b['cta']['sub']); ?></em>
+  <?php endif; ?>
+  </span>
+  </a>
+  <?php endif; ?>
+  </div>
+  <div class="sh-services__media">
+  <?php
                     $img_path = $b['img'];
                     $img_ext = pathinfo($img_path, PATHINFO_EXTENSION);
                     $img_base = substr($img_path, 0, -(strlen($img_ext) + 1));
@@ -113,17 +113,17 @@ $blocks = [
                     $local_mobile_exists = file_exists($uploads_dir . '/' . $img_mobile);
                     
                     $srcset_attr = '';
-                    if ($local_mobile_exists) {
+  if ($local_mobile_exists) {
                         $srcset_attr = ' srcset="' . esc_url(sgh_img($img_mobile)) . ' 380w, ' . esc_url(sgh_img($img_path)) . ' 600w" sizes="(max-width: 576px) 380px, 600px"';
                     }
                     ?>
-                    <img src="<?php echo esc_url(sgh_img("{$b['img']}")); ?>"
-                         <?php echo $srcset_attr; ?>
-                         alt="<?php echo esc_attr($b['alt']); ?>"
-                         width="600" height="450"
-                         loading="lazy" decoding="async">
-                </div>
-            </div>
-        </div>
-    <?php endforeach; ?>
+  <img src="<?php echo esc_url(sgh_img("{$b['img']}")); ?>"
+  <?php echo $srcset_attr; ?>
+  alt="<?php echo esc_attr($b['alt']); ?>"
+  width="600" height="450"
+  loading="lazy" decoding="async">
+  </div>
+  </div>
+  </div>
+  <?php endforeach; ?>
 </section>

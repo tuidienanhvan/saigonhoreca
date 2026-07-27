@@ -49,22 +49,6 @@
         if (d === 'true') document.documentElement.classList.add('dark');
     })();
     </script>
-    <?php
-    $sgh_ua = $_SERVER['HTTP_USER_AGENT'] ?? '';
-    $sgh_is_lh = (stripos($sgh_ua, 'Lighthouse') !== false || stripos($sgh_ua, 'Chrome-Lighthouse') !== false);
-    if ($sgh_is_lh) :
-    ?>
-    <style>
-    .scroll-reveal, .scroll-reveal-aos, [data-aos], .reveal-spring-up, .reveal-letter-wide, .reveal-3d-fold-up, .reveal-skew-x, .reveal-skew-y, .reveal-3d-cinema-slow, .reveal-zoom-skew-in, .reveal-spring-right {
-        opacity: 1 !important;
-        transform: none !important;
-        transition: none !important;
-        filter: none !important;
-        clip-path: none !important;
-        will-change: auto !important;
-    }
-    </style>
-    <?php endif; ?>
     <?php get_template_part('template-parts/global-styles'); ?>
     
     <!-- Google tag (gtag.js) -->

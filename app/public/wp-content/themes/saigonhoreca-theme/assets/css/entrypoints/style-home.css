@@ -4,7 +4,7 @@
    the full bundle via `assets/css/dist/theme.css`. */
 
 @import "tailwindcss" source(none);
-@import "../_tokens.css";
+@import "../core/_tokens.css";
 @import "../imports/_imports-home.css";
 
 /* Scan the same source files as the main build so Tailwind utilities

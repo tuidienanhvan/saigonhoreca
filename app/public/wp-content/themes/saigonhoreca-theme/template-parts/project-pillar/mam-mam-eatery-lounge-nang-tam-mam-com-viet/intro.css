@@ -341,28 +341,6 @@
 .pp-gallery-mam__item:hover::before,
 .pp-gallery-mam__item:hover::after { opacity: 1; }
 
-/* ─────────────────────────────────────────────────────────────
-   6. scroll-reveal (technique: .scroll-reveal markup; JS adds .is-visible)
-   ───────────────────────────────────────────────────────────── */
-.pp-intro-mam .scroll-reveal,
-.pp-concept-mam .scroll-reveal,
-.pp-specs-mam .scroll-reveal,
-.pp-partnership-mam .scroll-reveal,
-.pp-gallery-section-mam .scroll-reveal {
-  opacity: 0;
-  transform: translateY(32px);
-  transition: opacity 0.8s var(--ease-spring), transform 0.8s var(--ease-spring);
-}
-
-.pp-intro-mam .scroll-reveal.is-visible,
-.pp-concept-mam .scroll-reveal.is-visible,
-.pp-specs-mam .scroll-reveal.is-visible,
-.pp-partnership-mam .scroll-reveal.is-visible,
-.pp-gallery-section-mam .scroll-reveal.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 /* 7. Staggered gallery entry (technique: staggered nth-child) */
 .pp-gallery-mam.is-visible .pp-gallery-mam__item {
   animation: pp-gallery-mam-rise 0.7s var(--ease-spring) both;
@@ -385,14 +363,5 @@
 
 /* 9. Reduced motion (technique: prefers-reduced-motion) */
 @media (prefers-reduced-motion: reduce) {
-  .pp-intro-mam .scroll-reveal,
-  .pp-concept-mam .scroll-reveal,
-  .pp-specs-mam .scroll-reveal,
-  .pp-partnership-mam .scroll-reveal,
-  .pp-gallery-section-mam .scroll-reveal {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
-  }
   .pp-gallery-mam.is-visible .pp-gallery-mam__item { animation: none !important; }
 }

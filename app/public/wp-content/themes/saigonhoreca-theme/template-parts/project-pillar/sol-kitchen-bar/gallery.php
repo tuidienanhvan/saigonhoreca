@@ -6,55 +6,55 @@
  */
 if (!defined('ABSPATH')) exit;
 ?>
-<section class="pp-section-sol pp-gallery-sol scroll-reveal">
+<section class="pp-section-sol pp-gallery-sol">
   <div class="pp-sol-ambient pp-sol-ambient--tr" aria-hidden="true"></div>
   <div class="pp-gallery-sol__glow" aria-hidden="true"></div>
   <span class="pp-gallery-sol__watermark" aria-hidden="true">06</span>
 
   <div class="pp-container-shared">
-    <div class="pp-gallery-sol__head">
-      <span class="pp-text-sol__eyebrow"><?php echo esc_html__('Thi công & Bàn giao', 'saigonhoreca'); ?></span>
-      <span class="pp-text-sol__divider pp-text-sol__divider--center" aria-hidden="true"></span>
-      <h2 class="pp-text-sol__title"><?php echo esc_html__('Kỹ thuật thi công & cam kết vững chãi', 'saigonhoreca'); ?></h2>
-      <div class="pp-text-sol__body pp-text-sol--center">
-        <p><?php echo esc_html__('Quy trình thi công tại hiện trường được Saigon Horeca triển khai theo các tiêu chuẩn kỹ thuật nghiêm ngặt và cẩn trọng nhất. Từng khớp nối, đường ống và chi tiết kỹ thuật của hệ thống bếp đều được đội ngũ kỹ sư giám sát chặt chẽ nhằm triệt tiêu hoàn toàn rủi ro vận hành và đảm bảo an toàn lao động tuyệt đối.', 'saigonhoreca'); ?></p>
-        <p><?php echo esc_html__('Bằng sự chuyên nghiệp và tận tụy, chúng tôi bàn giao cho chủ đầu tư một công trình chỉn chu nhất, sẵn sàng đáp ứng tần suất phục vụ liên tục trong các khung giờ cao điểm tại Sol Kitchen & Bar.', 'saigonhoreca'); ?></p>
-      </div>
-    </div>
+  <div class="pp-gallery-sol__head">
+  <span class="pp-text-sol__eyebrow"><?php echo esc_html__('Thi công & Bàn giao', 'saigonhoreca'); ?></span>
+  <span class="pp-text-sol__divider pp-text-sol__divider--center" aria-hidden="true"></span>
+  <h2 class="pp-text-sol__title"><?php echo esc_html__('Kỹ thuật thi công & cam kết vững chãi', 'saigonhoreca'); ?></h2>
+  <div class="pp-text-sol__body pp-text-sol--center">
+  <p><?php echo esc_html__('Quy trình thi công tại hiện trường được Saigon Horeca triển khai theo các tiêu chuẩn kỹ thuật nghiêm ngặt và cẩn trọng nhất. Từng khớp nối, đường ống và chi tiết kỹ thuật của hệ thống bếp đều được đội ngũ kỹ sư giám sát chặt chẽ nhằm triệt tiêu hoàn toàn rủi ro vận hành và đảm bảo an toàn lao động tuyệt đối.', 'saigonhoreca'); ?></p>
+  <p><?php echo esc_html__('Bằng sự chuyên nghiệp và tận tụy, chúng tôi bàn giao cho chủ đầu tư một công trình chỉn chu nhất, sẵn sàng đáp ứng tần suất phục vụ liên tục trong các khung giờ cao điểm tại Sol Kitchen & Bar.', 'saigonhoreca'); ?></p>
+  </div>
+  </div>
 
-    <!-- GOLD ASYMMETRIC EDITORIAL MOSAIC — feature tile (4/5 portrait, 2col×2row) + 2 supporting tiles (16/9 wide, 4/3) -->
-    <div class="pp-gallery-sol__mosaic">
-      <figure class="pp-image-container-shared pp-gallery-sol__item pp-gallery-sol__item--feature scroll-reveal">
-        <img src="<?php echo sgh_img('sol-kitchen-bar/sol-kitchen-bar-tap-ket-thiet-bi-bep-inox-lo-rational.webp'); ?>" alt="<?php echo esc_attr__('Thiết bị bếp công nghiệp inox và lò hấp nướng đa năng RATIONAL còn bọc nilon, tập kết tại công trình bếp Sol Kitchen & Bar Quận 7', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
-        <div class="pp-image-caption-shared"><?php echo esc_html__('Lắp đặt và đấu nối thiết bị tại công trường, giám sát chặt chẽ từng công đoạn.', 'saigonhoreca'); ?></div>
-      </figure>
-      <figure class="pp-image-container-shared pp-gallery-sol__item pp-gallery-sol__item--wide scroll-reveal">
-        <img src="<?php echo sgh_img('sol-kitchen-bar/sol-kitchen-bar-thi-cong-quay-inox-ngoai-troi.webp'); ?>" alt="<?php echo esc_attr__('Thi công lắp đặt quầy inox liền khối tại khu vực sân ngoài trời còn ngổn ngang vật liệu, dự án Sol Kitchen & Bar Quận 7', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
-        <div class="pp-image-caption-shared"><?php echo esc_html__('Hệ thống bàn inox và thiết bị được hoàn thiện theo đúng bố trí công năng.', 'saigonhoreca'); ?></div>
-      </figure>
-      <figure class="pp-image-container-shared pp-gallery-sol__item pp-gallery-sol__item--tall scroll-reveal">
-        <img src="<?php echo sgh_img('sol-kitchen-bar/sol-kitchen-bar-thi-cong-chup-hut-khoi-inox-8m.webp'); ?>" alt="<?php echo esc_attr__('Thi công lắp đặt hệ thống chụp hút khói inox trên trần bếp tại Sol Kitchen & Bar Quận 7', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
-        <div class="pp-image-caption-shared"><?php echo esc_html__('Chi tiết hệ chụp hút khói khu nấu, đảm bảo luồng khí lưu thông liên tục.', 'saigonhoreca'); ?></div>
-      </figure>
-    </div>
+  <!-- GOLD ASYMMETRIC EDITORIAL MOSAIC — feature tile (4/5 portrait, 2col×2row) + 2 supporting tiles (16/9 wide, 4/3) -->
+  <div class="pp-gallery-sol__mosaic">
+  <figure class="pp-image-container-shared pp-gallery-sol__item pp-gallery-sol__item--feature">
+  <img src="<?php echo sgh_img('sol-kitchen-bar/sol-kitchen-bar-tap-ket-thiet-bi-bep-inox-lo-rational.webp'); ?>" alt="<?php echo esc_attr__('Thiết bị bếp công nghiệp inox và lò hấp nướng đa năng RATIONAL còn bọc nilon, tập kết tại công trình bếp Sol Kitchen & Bar Quận 7', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
+  <div class="pp-image-caption-shared"><?php echo esc_html__('Lắp đặt và đấu nối thiết bị tại công trường, giám sát chặt chẽ từng công đoạn.', 'saigonhoreca'); ?></div>
+  </figure>
+  <figure class="pp-image-container-shared pp-gallery-sol__item pp-gallery-sol__item--wide">
+  <img src="<?php echo sgh_img('sol-kitchen-bar/sol-kitchen-bar-thi-cong-quay-inox-ngoai-troi.webp'); ?>" alt="<?php echo esc_attr__('Thi công lắp đặt quầy inox liền khối tại khu vực sân ngoài trời còn ngổn ngang vật liệu, dự án Sol Kitchen & Bar Quận 7', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
+  <div class="pp-image-caption-shared"><?php echo esc_html__('Hệ thống bàn inox và thiết bị được hoàn thiện theo đúng bố trí công năng.', 'saigonhoreca'); ?></div>
+  </figure>
+  <figure class="pp-image-container-shared pp-gallery-sol__item pp-gallery-sol__item--tall">
+  <img src="<?php echo sgh_img('sol-kitchen-bar/sol-kitchen-bar-thi-cong-chup-hut-khoi-inox-8m.webp'); ?>" alt="<?php echo esc_attr__('Thi công lắp đặt hệ thống chụp hút khói inox trên trần bếp tại Sol Kitchen & Bar Quận 7', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
+  <div class="pp-image-caption-shared"><?php echo esc_html__('Chi tiết hệ chụp hút khói khu nấu, đảm bảo luồng khí lưu thông liên tục.', 'saigonhoreca'); ?></div>
+  </figure>
+  </div>
   </div>
 </section>
 
-<section class="pp-section-sol pp-section-sol--alt pp-outro-sol scroll-reveal">
+<section class="pp-section-sol pp-section-sol--alt pp-outro-sol">
   <div class="pp-sol-ambient pp-sol-ambient--bl" aria-hidden="true"></div>
 
   <div class="pp-container-shared">
-    <div class="pp-outro-sol__layout">
-      <div class="pp-outro-sol__body pp-story-card-sol">
-        <div class="pp-sol-ornament pp-sol-ornament--right" aria-hidden="true"></div>
-        <span class="pp-text-sol__divider" aria-hidden="true"></span>
-        <h2 class="pp-text-sol__title"><?php echo esc_html__('Đối tác đáng tin cậy', 'saigonhoreca'); ?></h2>
-        <div class="pp-text-sol__body">
-          <p><?php echo esc_html__('Saigon Horeca cam kết mang đến dịch vụ chất lượng cao, sự tin cậy trong kinh doanh và tính thẩm mỹ trong hệ thống bếp. Chúng tôi luôn đặt lợi ích của khách hàng lên hàng đầu và không ngừng cải tiến để đáp ứng nhu cầu ngày càng cao của thị trường.', 'saigonhoreca'); ?></p>
-          <p><?php echo esc_html__('Với kinh nghiệm và uy tín đã được khẳng định 10 năm nay, Saigon Horeca tự hào là đối tác đáng tin cậy của nhiều nhà hàng và quán Bar nổi tiếng như Bambino, Loco Complex, Yuzu Omakase, Unic Bar, …', 'saigonhoreca'); ?></p>
-          <p class="pp-outro-sol__sign"><?php echo esc_html__('Saigon Horeca | Kitchen Equipment and Bar Solutions.', 'saigonhoreca'); ?></p>
-        </div>
-      </div>
-    </div>
+  <div class="pp-outro-sol__layout">
+  <div class="pp-outro-sol__body pp-story-card-sol">
+  <div class="pp-sol-ornament pp-sol-ornament--right" aria-hidden="true"></div>
+  <span class="pp-text-sol__divider" aria-hidden="true"></span>
+  <h2 class="pp-text-sol__title"><?php echo esc_html__('Đối tác đáng tin cậy', 'saigonhoreca'); ?></h2>
+  <div class="pp-text-sol__body">
+  <p><?php echo esc_html__('Saigon Horeca cam kết mang đến dịch vụ chất lượng cao, sự tin cậy trong kinh doanh và tính thẩm mỹ trong hệ thống bếp. Chúng tôi luôn đặt lợi ích của khách hàng lên hàng đầu và không ngừng cải tiến để đáp ứng nhu cầu ngày càng cao của thị trường.', 'saigonhoreca'); ?></p>
+  <p><?php echo esc_html__('Với kinh nghiệm và uy tín đã được khẳng định 10 năm nay, Saigon Horeca tự hào là đối tác đáng tin cậy của nhiều nhà hàng và quán Bar nổi tiếng như Bambino, Loco Complex, Yuzu Omakase, Unic Bar, …', 'saigonhoreca'); ?></p>
+  <p class="pp-outro-sol__sign"><?php echo esc_html__('Saigon Horeca | Kitchen Equipment and Bar Solutions.', 'saigonhoreca'); ?></p>
+  </div>
+  </div>
+  </div>
   </div>
 </section>

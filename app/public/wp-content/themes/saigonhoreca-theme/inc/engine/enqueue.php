@@ -161,9 +161,9 @@ add_action('wp_enqueue_scripts', function () {
     // dụng chung, không phân biệt nguồn.
     $fonts_mode = function_exists('sgh_fonts_mode') ? sgh_fonts_mode() : 'google';
     if ($fonts_mode === 'self') {
-        $self_host_path = $dir . '/assets/css/fonts-self-host.css';
+        $self_host_path = $dir . '/assets/css/core/fonts-self-host.css';
         if (file_exists($self_host_path)) {
-            wp_enqueue_style('google-fonts-sgh', $uri . '/assets/css/fonts-self-host.css', [], sh_get_asset_version($self_host_path));
+            wp_enqueue_style('google-fonts-sgh', $uri . '/assets/css/core/fonts-self-host.css', [], sh_get_asset_version($self_host_path));
         } elseif (defined('SGH_GOOGLE_FONTS_URL') && !empty(SGH_GOOGLE_FONTS_URL)) {
             wp_enqueue_style('google-fonts-sgh', SGH_GOOGLE_FONTS_URL, [], null); // fallback nếu chưa generate
         }

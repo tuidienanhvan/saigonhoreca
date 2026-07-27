@@ -16,19 +16,3 @@ body.page-template-page-project-the-brix {
   isolation: isolate;
 }
 
-.pp--brix .scroll-reveal {
-  opacity: 0;
-  transform: translateY(32px);
-  transition: opacity 0.7s var(--ease-spring), transform 0.7s var(--ease-spring);
-}
-.pp--brix .scroll-reveal.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-@media (prefers-reduced-motion: reduce) {
-  .pp--brix .scroll-reveal {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
-  }
-}

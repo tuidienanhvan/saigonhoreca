@@ -43,55 +43,55 @@ $kitchen_gallery = array(
 
   <div class="pp-container-shared">
     
-    <!-- PHẦN 1: KHÔNG GIAN & PHONG CẢNH -->
-    <div class="pp-gallery-ganh__section pp-gallery-ganh__section--scenery">
-      <div class="pp-gallery-ganh__head scroll-reveal reveal-up">
-        <div class="pp-gallery-ganh__badge">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
-            <path d="M12 2L14.85 9.15L22 12L14.85 14.85L12 22L9.15 14.85L2 12L9.15 9.15L12 2Z"/>
-          </svg>
-          <?php echo esc_html__('Không gian thực tế', 'saigonhoreca'); ?>
-        </div>
-        <h2 class="pp-gallery-ganh__title"><?php echo esc_html__('Dấu ấn giữa biển trời Vũng Tàu', 'saigonhoreca'); ?></h2>
-        <span class="pp-gallery-ganh__divider" aria-hidden="true"></span>
-      </div>
+  <!-- PHẦN 1: KHÔNG GIAN & PHONG CẢNH -->
+  <div class="pp-gallery-ganh__section pp-gallery-ganh__section--scenery">
+  <div class="pp-gallery-ganh__head">
+  <div class="pp-gallery-ganh__badge">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+  <path d="M12 2L14.85 9.15L22 12L14.85 14.85L12 22L9.15 14.85L2 12L9.15 9.15L12 2Z"/>
+  </svg>
+  <?php echo esc_html__('Không gian thực tế', 'saigonhoreca'); ?>
+  </div>
+  <h2 class="pp-gallery-ganh__title"><?php echo esc_html__('Dấu ấn giữa biển trời Vũng Tàu', 'saigonhoreca'); ?></h2>
+  <span class="pp-gallery-ganh__divider" aria-hidden="true"></span>
+  </div>
 
-      <div class="pp-gallery-ganh__scenery-grid">
-        <?php foreach ($scenery_gallery as $i => $shot) : ?>
-        <figure class="pp-image-container-shared pp-gallery-ganh__item <?php echo esc_attr($shot['class']); ?> scroll-reveal reveal-up delay-<?php echo ($i+1)*100; ?>">
-          <img src="<?php echo sgh_img('ganh-hao-noi-hon-bien-trong-tung-net-kien-truc/' . $shot['img']); ?>" alt="<?php echo esc_attr($shot['cap']); ?>" loading="lazy" decoding="async">
-          <figcaption class="pp-image-caption-shared"><?php echo esc_html($shot['cap']); ?></figcaption>
-        </figure>
-        <?php endforeach; ?>
-      </div>
-    </div>
+  <div class="pp-gallery-ganh__scenery-grid">
+  <?php foreach ($scenery_gallery as $i => $shot) : ?>
+  <figure class="pp-image-container-shared pp-gallery-ganh__item <?php echo esc_attr($shot['class']); ?> delay-<?php echo ($i+1)*100; ?>">
+  <img src="<?php echo sgh_img('ganh-hao-noi-hon-bien-trong-tung-net-kien-truc/' . $shot['img']); ?>" alt="<?php echo esc_attr($shot['cap']); ?>" loading="lazy" decoding="async">
+  <figcaption class="pp-image-caption-shared"><?php echo esc_html($shot['cap']); ?></figcaption>
+  </figure>
+  <?php endforeach; ?>
+  </div>
+  </div>
 
-    <!-- PHẦN 2: BẾP & VẬN HÀNH -->
-    <div class="pp-gallery-ganh__section pp-gallery-ganh__section--kitchen">
-      <div class="pp-gallery-ganh__head scroll-reveal reveal-up">
-        <div class="pp-gallery-ganh__badge">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
-            <path d="M12 2L14.85 9.15L22 12L14.85 14.85L12 22L9.15 14.85L2 12L9.15 9.15L12 2Z"/>
-          </svg>
-          <?php echo esc_html__('Hệ thống vận hành', 'saigonhoreca'); ?>
-        </div>
-        <h2 class="pp-gallery-ganh__title"><?php echo esc_html__('Bền bỉ giữa nắng gió đại dương', 'saigonhoreca'); ?></h2>
-        <span class="pp-gallery-ganh__divider" aria-hidden="true"></span>
-        <p class="pp-gallery-ganh__lead"><?php echo esc_html__('Ở nơi gió biển thổi ngày đêm, hơi muối là thách thức lớn. Saigon Horeca đã nghiên cứu giải pháp chống gỉ, tối ưu thoát nhiệt, đảm bảo gian bếp hoạt động hiệu quả và thân thiện với nhân viên vận hành.', 'saigonhoreca'); ?></p>
-      </div>
+  <!-- PHẦN 2: BẾP & VẬN HÀNH -->
+  <div class="pp-gallery-ganh__section pp-gallery-ganh__section--kitchen">
+  <div class="pp-gallery-ganh__head">
+  <div class="pp-gallery-ganh__badge">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+  <path d="M12 2L14.85 9.15L22 12L14.85 14.85L12 22L9.15 14.85L2 12L9.15 9.15L12 2Z"/>
+  </svg>
+  <?php echo esc_html__('Hệ thống vận hành', 'saigonhoreca'); ?>
+  </div>
+  <h2 class="pp-gallery-ganh__title"><?php echo esc_html__('Bền bỉ giữa nắng gió đại dương', 'saigonhoreca'); ?></h2>
+  <span class="pp-gallery-ganh__divider" aria-hidden="true"></span>
+  <p class="pp-gallery-ganh__lead"><?php echo esc_html__('Ở nơi gió biển thổi ngày đêm, hơi muối là thách thức lớn. Saigon Horeca đã nghiên cứu giải pháp chống gỉ, tối ưu thoát nhiệt, đảm bảo gian bếp hoạt động hiệu quả và thân thiện với nhân viên vận hành.', 'saigonhoreca'); ?></p>
+  </div>
 
-      <div class="pp-gallery-ganh__kitchen-grid">
-        <?php foreach ($kitchen_gallery as $i => $shot) : ?>
-        <figure class="pp-image-container-shared pp-gallery-ganh__item scroll-reveal reveal-up delay-<?php echo ($i+1)*100; ?>">
-          <img src="<?php echo sgh_img('ganh-hao-noi-hon-bien-trong-tung-net-kien-truc/' . $shot['img']); ?>" alt="<?php echo esc_attr($shot['cap']); ?>" loading="lazy" decoding="async">
-          <figcaption class="pp-image-caption-shared"><?php echo esc_html($shot['cap']); ?></figcaption>
-        </figure>
-        <?php endforeach; ?>
-      </div>
-    </div>
+  <div class="pp-gallery-ganh__kitchen-grid">
+  <?php foreach ($kitchen_gallery as $i => $shot) : ?>
+  <figure class="pp-image-container-shared pp-gallery-ganh__item delay-<?php echo ($i+1)*100; ?>">
+  <img src="<?php echo sgh_img('ganh-hao-noi-hon-bien-trong-tung-net-kien-truc/' . $shot['img']); ?>" alt="<?php echo esc_attr($shot['cap']); ?>" loading="lazy" decoding="async">
+  <figcaption class="pp-image-caption-shared"><?php echo esc_html($shot['cap']); ?></figcaption>
+  </figure>
+  <?php endforeach; ?>
+  </div>
+  </div>
 
-    <div class="pp-gallery-ganh__closing scroll-reveal reveal-up">
-      <p><?php echo esc_html__('Với dự án này, Saigon Horeca tự hào góp phần duy trì và nâng tầm trải nghiệm ẩm thực tại một địa điểm đặc biệt của Vũng Tàu. Nơi không chỉ giữ hồn biển qua từng món ăn, mà còn thể hiện sự chỉn chu từ khâu chuẩn bị phía sau.', 'saigonhoreca'); ?></p>
-    </div>
+  <div class="pp-gallery-ganh__closing">
+  <p><?php echo esc_html__('Với dự án này, Saigon Horeca tự hào góp phần duy trì và nâng tầm trải nghiệm ẩm thực tại một địa điểm đặc biệt của Vũng Tàu. Nơi không chỉ giữ hồn biển qua từng món ăn, mà còn thể hiện sự chỉn chu từ khâu chuẩn bị phía sau.', 'saigonhoreca'); ?></p>
+  </div>
   </div>
 </section>

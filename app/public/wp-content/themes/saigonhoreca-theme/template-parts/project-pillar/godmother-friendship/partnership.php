@@ -7,7 +7,7 @@
 if (!defined('ABSPATH')) exit;
 $uri = get_template_directory_uri();
 ?>
-<section class="pp-section-gmf pp-partnership-gmf scroll-reveal">
+<section class="pp-section-gmf pp-partnership-gmf">
 <div class="pp-container-shared">
 <div class="pp-grid-gmf pp-partnership-grid-gmf">
 <div class="pp-grid-gmf__text">

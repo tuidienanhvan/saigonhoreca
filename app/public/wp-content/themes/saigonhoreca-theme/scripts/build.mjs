@@ -70,7 +70,7 @@ async function runPool(jobs, worker) {
 
 /* ---------- 1. CSS ---------- */
 async function discoverCssJobs() {
-  const jobs = [{ entry: path.join(CSS, 'style.css'), out: path.join(DIST, 'theme.css'), name: 'theme' }];
+  const jobs = [{ entry: path.join(CSS, 'core', 'style.css'), out: path.join(DIST, 'theme.css'), name: 'theme' }];
   const epDir = path.join(CSS, 'entrypoints');
   for (const f of (await readdir(epDir)).filter((f) => /^style-.+\.css$/.test(f))) {
     const name = f.replace(/^style-/, 'theme-').replace(/\.css$/, '');
@@ -210,6 +210,8 @@ async function lintEnginePurity() {
 async function main() {
   let ok = true;
   if (!LINT_ONLY) {
+    const { generateProjectCss } = await import('./generate-project-css.mjs');
+    await generateProjectCss({ log: console.log });
     ok = (await buildCss()) && ok;
     ok = (await buildJs()) && ok;
   }

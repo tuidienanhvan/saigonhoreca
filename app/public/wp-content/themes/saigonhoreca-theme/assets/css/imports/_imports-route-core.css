@@ -3,13 +3,6 @@
 @import "../legacy/footer.css";
 @import "../legacy/header.css";
 
-/* scroll-reveal: centralized here so every route that pulls in route-core
-   (about, contact, single, product, archive, archive-product,
-   archive-project) gets `.scroll-reveal`/`.reveal-*` support — previously
-   only home + project imported reveal.css directly, so `.scroll-reveal`
-   silently did nothing if used elsewhere. */
-@import "../reveal.css";
-
 @import "../shared/buttons.css";
 @import "../shared/cards.css";
 @import "../shared/checker.css";

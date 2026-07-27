@@ -5,11 +5,11 @@
 @import "./_tokens.css"; /* đã bao gồm scroll.css + _brand.css bên trong */
 @import "./_imports.css";
 
-@source "../../*.php";
-@source "../../inc/**/*.php";
-@source "../../page-templates/**/*.php";
-@source "../../template-parts/**/*.php";
-@source "../../assets/js/*.js";
+@source "../../../*.php";
+@source "../../../inc/**/*.php";
+@source "../../../page-templates/**/*.php";
+@source "../../../template-parts/**/*.php";
+@source "../../../assets/js/*.js";
 
 /* ═══════════════════════════════════════════════════════════════
    SAIGON HORECA THEME — DARK LUXE EDITION

@@ -38,7 +38,7 @@ $uri = get_template_directory_uri();
 </div>
 
 <!-- Removed text content overlay as the background image already contains baked-in titles
-<div class="pp-hero-gmf__content scroll-reveal">
+<div class="pp-hero-gmf__content">
 <div class="pp-hero-gmf__badge" aria-hidden="true">
 <svg viewBox="0 0 24 24" fill="currentColor">
 <path d="M12 2L14.85 9.15L22 12L14.85 14.85L12 22L9.15 14.85L2 12L9.15 9.15L12 2Z"/>

@@ -129,58 +129,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     });
-    // ── AUTO SCROLL-REVEAL (single global mechanism — no per-template PHP edits) ──
-    // home/project pages hand-place `.scroll-reveal reveal-*` on specific inner
-    // elements with bespoke choreography; every OTHER route (about, contact,
-    // archive/archive-product/archive-project, search) gets a sensible default
-    // applied automatically here so animation coverage is consistent site-wide
-    // without scattering markup edits across 5+ separate PHP templates.
-    (function autoScrollReveal() {
-        const main = document.querySelector('main#primary');
-        if (!main) return;
-        const isHandTuned = main.classList.contains('sh-home')
-            || main.classList.contains('pp')
-            || main.classList.contains('sh-project-pillar');
-        if (isHandTuned) return;
-
-        // Section-list layouts (about, contact, archive-project, etc.):
-        // tag every direct <section> except the first (hero/above-the-fold
-        // must render immediately — skipping it protects LCP).
-        const sections = main.querySelectorAll(':scope > section');
-        sections.forEach((sec, idx) => {
-            if (idx === 0) return;
-            if (!sec.classList.contains('scroll-reveal')) {
-                sec.classList.add('scroll-reveal', 'reveal-up');
-            }
-        });
-
-        // Two-column archive/search layouts where the grid+sidebar sit in one
-        // wrapper <div> rather than sibling <section> elements.
-        const layoutBlocks = main.querySelectorAll(
-            ':scope > .sh-archive__layout, :scope > div.sh-archive__content, :scope > div.sh-search__content'
-        );
-        layoutBlocks.forEach((el) => {
-            if (!el.classList.contains('scroll-reveal')) {
-                el.classList.add('scroll-reveal', 'reveal-up');
-            }
-        });
-    })();
-
-    const scrollElements = document.querySelectorAll('.scroll-reveal');
-    if (scrollElements.length > 0) {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target); 
-                }
-            });
-        }, {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        });
-        scrollElements.forEach(el => observer.observe(el));
-    }
     const lazyIframes = document.querySelectorAll('iframe[data-lazy-src]');
     if (lazyIframes.length > 0) {
         const loadIframe = (iframe) => {

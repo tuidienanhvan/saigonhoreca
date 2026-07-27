@@ -8,7 +8,6 @@
 @import "../shared/checker.css";
 @import "../shared/effects.css";
 @import "../shared/typography.css";
-@import "../reveal.css"; /* scroll-reveal: JS (main-modern.js) global nhưng reveal.css trước chỉ ở home → 31 project page bị trơ. Bật lại animation. */
 @import "../../../template-parts/components/post-card.css";
 @import "../../../template-parts/header/logo.css";
 @import "../../../template-parts/header/mobile-menu.css";

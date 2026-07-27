@@ -8,55 +8,55 @@
 if (!defined('ABSPATH')) exit;
 $uri = get_template_directory_uri();
 ?>
-<section class="pp-section-hwa pp-specs-hwa scroll-reveal">
+<section class="pp-section-hwa pp-specs-hwa">
   <div class="pp-hwa-ambient-glow pp-hwa-ambient-glow--tr" aria-hidden="true"></div>
 
   <div class="pp-container-shared">
-    <div class="pp-specs-hwa__grid">
+  <div class="pp-specs-hwa__grid">
 
-      <!-- Cột trái: thuyết minh đối tác + thẻ thông số kỹ thuật -->
-      <div class="pp-specs-hwa__text scroll-reveal">
-        <div class="pp-text-hwa__badge"><span class="pp-text-hwa__badge-accent">//</span> <?php echo esc_html__('UY TÍN ĐỐI TÁC', 'saigonhoreca'); ?></div>
-        <h2 class="pp-text-hwa__title"><?php echo esc_html__('Sự Hợp Tác Giữa Heiwa Sushi & Saigon Horeca', 'saigonhoreca'); ?></h2>
-        <div class="pp-text-hwa__divider" aria-hidden="true"></div>
-        <div class="pp-text-hwa__body">
-          <p><?php echo esc_html__('Sự hợp tác chặt chẽ giữa Heiwa Sushi và Saigon Horeca là minh chứng rõ ràng cho tầm quan trọng của việc quy hoạch và thiết lập hệ thống bếp chuyên nghiệp trong thành công rực rỡ của một nhà hàng Omakase. Với kinh nghiệm chuyên môn dày dặn, Saigon Horeca đã đồng hành lựa chọn và lắp đặt các dòng thiết bị nhà bếp tốt nhất, kiến tạo nên trải nghiệm trọn vẹn và an tâm tuyệt đối.', 'saigonhoreca'); ?></p>
-        </div>
+  <!-- Cột trái: thuyết minh đối tác + thẻ thông số kỹ thuật -->
+  <div class="pp-specs-hwa__text">
+  <div class="pp-text-hwa__badge"><span class="pp-text-hwa__badge-accent">//</span> <?php echo esc_html__('UY TÍN ĐỐI TÁC', 'saigonhoreca'); ?></div>
+  <h2 class="pp-text-hwa__title"><?php echo esc_html__('Sự Hợp Tác Giữa Heiwa Sushi & Saigon Horeca', 'saigonhoreca'); ?></h2>
+  <div class="pp-text-hwa__divider" aria-hidden="true"></div>
+  <div class="pp-text-hwa__body">
+  <p><?php echo esc_html__('Sự hợp tác chặt chẽ giữa Heiwa Sushi và Saigon Horeca là minh chứng rõ ràng cho tầm quan trọng của việc quy hoạch và thiết lập hệ thống bếp chuyên nghiệp trong thành công rực rỡ của một nhà hàng Omakase. Với kinh nghiệm chuyên môn dày dặn, Saigon Horeca đã đồng hành lựa chọn và lắp đặt các dòng thiết bị nhà bếp tốt nhất, kiến tạo nên trải nghiệm trọn vẹn và an tâm tuyệt đối.', 'saigonhoreca'); ?></p>
+  </div>
 
-        <div class="pp-specs-hwa__card">
-          <span class="pp-specs-hwa__watermark" aria-hidden="true">03</span>
-          <h3 class="pp-specs-hwa__card-title"><?php echo esc_html__('Thông số kỹ thuật lắp đặt', 'saigonhoreca'); ?></h3>
-          <div class="pp-specs-hwa__card-grid">
-            <div class="pp-specs-hwa__card-item">
-              <span class="pp-specs-hwa__card-label"><?php echo esc_html__('Thiết bị lạnh chính', 'saigonhoreca'); ?></span>
-              <span class="pp-specs-hwa__card-value"><?php echo esc_html__('Hoshizaki Japan', 'saigonhoreca'); ?></span>
-            </div>
-            <div class="pp-specs-hwa__card-item">
-              <span class="pp-specs-hwa__card-label"><?php echo esc_html__('Hệ thống quầy bar', 'saigonhoreca'); ?></span>
-              <span class="pp-specs-hwa__card-value"><?php echo esc_html__('Gỗ tự nhiên & Kính', 'saigonhoreca'); ?></span>
-            </div>
-            <div class="pp-specs-hwa__card-item">
-              <span class="pp-specs-hwa__card-label"><?php echo esc_html__('Chất liệu cơ khí', 'saigonhoreca'); ?></span>
-              <span class="pp-specs-hwa__card-value"><?php echo esc_html__('Inox 304 tiêu chuẩn', 'saigonhoreca'); ?></span>
-            </div>
-            <div class="pp-specs-hwa__card-item">
-              <span class="pp-specs-hwa__card-label"><?php echo esc_html__('Tiêu chuẩn vệ sinh', 'saigonhoreca'); ?></span>
-              <span class="pp-specs-hwa__card-value"><?php echo esc_html__('Omakase Fresh Standard', 'saigonhoreca'); ?></span>
-            </div>
-          </div>
-        </div>
-      </div>
+  <div class="pp-specs-hwa__card">
+  <span class="pp-specs-hwa__watermark" aria-hidden="true">03</span>
+  <h3 class="pp-specs-hwa__card-title"><?php echo esc_html__('Thông số kỹ thuật lắp đặt', 'saigonhoreca'); ?></h3>
+  <div class="pp-specs-hwa__card-grid">
+  <div class="pp-specs-hwa__card-item">
+  <span class="pp-specs-hwa__card-label"><?php echo esc_html__('Thiết bị lạnh chính', 'saigonhoreca'); ?></span>
+  <span class="pp-specs-hwa__card-value"><?php echo esc_html__('Hoshizaki Japan', 'saigonhoreca'); ?></span>
+  </div>
+  <div class="pp-specs-hwa__card-item">
+  <span class="pp-specs-hwa__card-label"><?php echo esc_html__('Hệ thống quầy bar', 'saigonhoreca'); ?></span>
+  <span class="pp-specs-hwa__card-value"><?php echo esc_html__('Gỗ tự nhiên & Kính', 'saigonhoreca'); ?></span>
+  </div>
+  <div class="pp-specs-hwa__card-item">
+  <span class="pp-specs-hwa__card-label"><?php echo esc_html__('Chất liệu cơ khí', 'saigonhoreca'); ?></span>
+  <span class="pp-specs-hwa__card-value"><?php echo esc_html__('Inox 304 tiêu chuẩn', 'saigonhoreca'); ?></span>
+  </div>
+  <div class="pp-specs-hwa__card-item">
+  <span class="pp-specs-hwa__card-label"><?php echo esc_html__('Tiêu chuẩn vệ sinh', 'saigonhoreca'); ?></span>
+  <span class="pp-specs-hwa__card-value"><?php echo esc_html__('Omakase Fresh Standard', 'saigonhoreca'); ?></span>
+  </div>
+  </div>
+  </div>
+  </div>
 
-      <!-- Cột phải: ảnh hệ thống thiết bị bếp inox -->
-      <div class="pp-specs-hwa__media scroll-reveal">
-        <span class="pp-specs-hwa__coord pp-specs-hwa__coord--tl" aria-hidden="true">SYS_COORD / KITCHEN</span>
-        <span class="pp-specs-hwa__coord pp-specs-hwa__coord--br" aria-hidden="true">CAD_v2.0 / SCALE 1:50</span>
-        <div class="pp-image-container-shared pp-frame-hwa pp-specs-hwa__figure">
-          <img src="<?php echo sgh_img('heiwa-sushi-omakase/heiwa-sushi-omakase-gian-bep-chuan-bi-inox-tiet-kiem-dien.webp'); ?>" alt="<?php echo esc_attr__('Hệ thống thiết bị bếp inox công nghiệp cao cấp tại Heiwa Sushi - Saigon Horeca', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="1366" height="768">
-          <div class="pp-image-caption-shared"><?php echo esc_html__('Hệ thống thiết bị bếp inox công nghiệp được Saigon Horeca lựa chọn và lắp đặt, đảm bảo vận hành Omakase trọn vẹn.', 'saigonhoreca'); ?></div>
-        </div>
-      </div>
+  <!-- Cột phải: ảnh hệ thống thiết bị bếp inox -->
+  <div class="pp-specs-hwa__media">
+  <span class="pp-specs-hwa__coord pp-specs-hwa__coord--tl" aria-hidden="true">SYS_COORD / KITCHEN</span>
+  <span class="pp-specs-hwa__coord pp-specs-hwa__coord--br" aria-hidden="true">CAD_v2.0 / SCALE 1:50</span>
+  <div class="pp-image-container-shared pp-frame-hwa pp-specs-hwa__figure">
+  <img src="<?php echo sgh_img('heiwa-sushi-omakase/heiwa-sushi-omakase-gian-bep-chuan-bi-inox-tiet-kiem-dien.webp'); ?>" alt="<?php echo esc_attr__('Hệ thống thiết bị bếp inox công nghiệp cao cấp tại Heiwa Sushi - Saigon Horeca', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="1366" height="768">
+  <div class="pp-image-caption-shared"><?php echo esc_html__('Hệ thống thiết bị bếp inox công nghiệp được Saigon Horeca lựa chọn và lắp đặt, đảm bảo vận hành Omakase trọn vẹn.', 'saigonhoreca'); ?></div>
+  </div>
+  </div>
 
-    </div>
+  </div>
   </div>
 </section>

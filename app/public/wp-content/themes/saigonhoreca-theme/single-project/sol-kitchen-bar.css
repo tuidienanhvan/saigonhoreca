@@ -140,26 +140,6 @@ body.page-template-page-project-sol-kitchen-bar {
   border-right: 1px solid color-mix(in srgb, var(--sol-amber) 50%, transparent);
 }
 
-/* ── Scroll-reveal (shared entry animation) ── */
-.scroll-reveal {
-  opacity: 0;
-  transform: translateY(2rem);
-  transition:
-    opacity 0.7s var(--ease-spring),
-    transform 0.7s var(--ease-spring);
-  will-change: opacity, transform;
-}
-.scroll-reveal.is-visible,
-.no-js .scroll-reveal {
-  opacity: 1;
-  transform: none;
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .scroll-reveal {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
-  }
   .pp-sol-ambient { animation: none !important; }
 }

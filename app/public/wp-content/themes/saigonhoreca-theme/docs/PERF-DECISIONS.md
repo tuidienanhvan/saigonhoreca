@@ -48,7 +48,11 @@ Các phương án ĐÃ THỬ VÀ BỊ LOẠI (đừng thử lại nếu không �
 1. **Static HTML cache pre-PHP** (`.htaccess.production` + writer trong theme):
    serve `wp-content/cache/sgh-static/.../index.html` trước khi PHP boot; bypass cho
    logged-in + bot/lighthouse UA.
-2. **bot-optimize.php**: bot/audit UA nhận bản render nhẹ (tắt reveal animation...).
+2. **bot-optimize.php**: bot/audit UA nhận bản render nhẹ (fixed-position parallax
+   background fallback về `position:absolute`, tránh repaint cho crawler/Lighthouse).
+   *(Hệ thống `.scroll-reveal`/`reveal.css` từng được nhắc ở đây đã bị xóa hoàn toàn
+   26/07/2026 — animation bị tắt trên mobile + `prefers-reduced-motion` nên vô dụng
+   thực tế, xem quyết định port/không-port bên saigonhouse-theme cùng ngày.)*
 3. **CSS per-route bundle**: mỗi route chỉ tải đúng CSS mình cần (110–156KB), không tải chung.
 
 ## 4b. Animation GPU/CPU (Phase 6, 07/2026)

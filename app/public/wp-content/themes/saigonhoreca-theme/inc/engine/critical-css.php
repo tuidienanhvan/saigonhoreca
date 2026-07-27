@@ -35,7 +35,7 @@ if (!defined('ABSPATH')) {
 
 if (!function_exists('sgh_critical_css_path')) {
     function sgh_critical_css_path() {
-        return get_template_directory() . '/assets/css/critical.css';
+        return get_template_directory() . '/assets/css/core/critical.css';
     }
 }
 
@@ -50,7 +50,7 @@ if (!function_exists('sgh_critical_css_contents')) {
             return $cache = null;
         }
         $css = @file_get_contents($path);
-        $route_path = get_template_directory() . '/assets/css/critical-routes.css';
+        $route_path = get_template_directory() . '/assets/css/core/critical-routes.css';
         if ($css !== false && is_readable($route_path)) {
             $route_css = @file_get_contents($route_path);
             if ($route_css !== false && $route_css !== '') {

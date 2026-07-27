@@ -43,14 +43,7 @@ $sgh_is_lh = (stripos($sgh_ua, 'Lighthouse') !== false || stripos($sgh_ua, 'Chro
 
 if (!$sgh_has_admin && file_exists($sgh_cache_file) && (time() - filemtime($sgh_cache_file)) < 600) {
     header('X-SGH-Static-Cache: HIT');
-    if ($sgh_is_lh) {
-        $cache_html = file_get_contents($sgh_cache_file);
-        $override_style = '<style>.scroll-reveal, .scroll-reveal-aos, [data-aos], .reveal-spring-up, .reveal-letter-wide, .reveal-3d-fold-up, .reveal-skew-x, .reveal-skew-y, .reveal-3d-cinema-slow, .reveal-zoom-skew-in, .reveal-spring-right { opacity: 1 !important; transform: none !important; transition: none !important; filter: none !important; clip-path: none !important; will-change: auto !important; }</style>';
-        $cache_html = str_replace('</head>', $override_style . '</head>', $cache_html);
-        echo $cache_html;
-    } else {
-        readfile($sgh_cache_file);
-    }
+    readfile($sgh_cache_file);
     exit;
 }
 

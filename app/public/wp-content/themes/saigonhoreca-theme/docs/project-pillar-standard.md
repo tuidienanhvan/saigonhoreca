@@ -163,10 +163,26 @@ Ba pillar canonical — pattern tối ưu nhất, học theo:
 
 ### 4.3 Checklist trước khi thêm vào registry
 - [ ] 0 hex màu brand hardcode (chỉ `var(--*)` / `color-mix`)
-- [ ] ≥6/9 CSS techniques (ken-burns, @keyframes, backdrop-filter, clamp, radial-gradient, scroll-reveal, prefers-reduced-motion…)
+- [ ] ≥5/8 CSS techniques (ken-burns, @keyframes, backdrop-filter, clamp, radial-gradient, prefers-reduced-motion…)
+  *(`scroll-reveal` đã bị loại khỏi danh sách 26/07/2026 — toàn bộ hệ thống
+  `.scroll-reveal`/`reveal.css` đã xóa khỏi theme vì animation bị tắt trên mobile
+  + `prefers-reduced-motion` nên vô dụng thực tế. Không thêm lại kỹ thuật này vào
+  pillar mới.)*
 - [ ] `pp-container-shared` + `pp-image-caption-shared` áp dụng
 - [ ] Class prefix `pp-<section>-<abbr>` + BEM
 - [ ] static-mirror `.vn` + `.com` (nếu có .com) tại `themes/saigonhoreca-theme/static-mirror/` — KHÔNG ở Local-root/wp-content
 - [ ] Ảnh tại `uploads/<slug>/` — load 200
 - [ ] Build pass + route 200
 - [ ] Task verified + archived
+
+> **CSS bundle plumbing tự sinh (từ 27/07/2026)**: KHÔNG tự viết tay
+> `assets/css/imports/_imports-project-<slug>.css` hay
+> `assets/css/entrypoints/style-project-<slug>.css` nữa —
+> `scripts/generate-project-css.mjs` (chạy tự động ở đầu `node scripts/build.mjs`)
+> tự tạo 2 file này nếu `template-parts/project-pillar/<slug>/` có đủ 6 file
+> (hero/intro/concept/partnership/specs/gallery.css) và `single-project/<slug>.css`
+> tồn tại. Script **chỉ tạo file còn thiếu, không bao giờ ghi đè file đã có** —
+> an toàn cho các pillar cũ có tùy biến riêng (thứ tự import khác, thêm file
+> `_caption-overrides.css`...). Nếu bundle của pillar mới cần tùy biến khác
+> khuôn mặc định, tự viết tay 2 file này SAU KHI build lần đầu (script sẽ không
+> đụng vào nữa một khi file đã tồn tại).

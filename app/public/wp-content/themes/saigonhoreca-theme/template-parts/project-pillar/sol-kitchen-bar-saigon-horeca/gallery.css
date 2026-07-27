@@ -5,7 +5,7 @@
  * Techniques: clamp() type, color-mix tints, uniform responsive grid, shared
  *             caption (neo dưới ảnh), ambient radial glow, faint numeric +
  *             SVG sun watermark, hover lift + scale (--ease-spring) + gold
- *             border, scroll-reveal, prefers-reduced-motion guard.
+ *             border, prefers-reduced-motion guard.
  *             Tokens only, no hardcoded colors.
  * @package SaigonHoreca
  */

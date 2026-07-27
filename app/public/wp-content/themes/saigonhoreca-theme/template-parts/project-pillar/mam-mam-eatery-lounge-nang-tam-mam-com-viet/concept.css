@@ -65,10 +65,6 @@
   transition: width 0.7s var(--ease-spring);
 }
 
-.pp-concept-mam .scroll-reveal.is-visible .pp-split-mam__card::after {
-  width: clamp(72px, 14vw, 132px);
-}
-
 /* Reduced motion (technique: prefers-reduced-motion) */
 @media (prefers-reduced-motion: reduce) {
   .pp-concept-mam__watermark { animation: none !important; }

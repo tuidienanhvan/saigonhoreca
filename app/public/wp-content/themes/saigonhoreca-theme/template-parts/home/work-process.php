@@ -5,7 +5,7 @@
  * Layout 2-col:
  *   - Trái: 1 ảnh portrait (the-royal-sgh-10.jpg)
  *   - Phải: H3 title + intro paragraph + 3 items (Tư Vấn / Thiết Kế / Thi Công)
- *           mỗi item có icon SVG vàng + heading bold + text.
+ * mỗi item có icon SVG vàng + heading bold + text.
  *
  * @package SaigonHoreca
  */
@@ -30,32 +30,32 @@ $steps = [
     ],
 ];
 ?>
-<section  class="sh-work-process" aria-label="<?php esc_attr_e('Quy trình làm việc Saigon Horeca', 'saigonhoreca'); ?>">
-    <div class="sh-work-process__inner">
-        <div class="sh-work-process__media scroll-reveal reveal-skew-x duration-2000 delay-100">
-            <img src="<?php echo esc_url(sgh_img('saigonhoreca/the-royal-sgh-10.webp')); ?>"
-                 alt="Quy trình làm việc Saigon Horeca"
-                 width="542" height="722"
-                 loading="lazy" decoding="async">
-        </div>
+<section class="sh-work-process" aria-label="<?php esc_attr_e('Quy trình làm việc Saigon Horeca', 'saigonhoreca'); ?>">
+  <div class="sh-work-process__inner">
+  <div class="sh-work-process__media">
+  <img src="<?php echo esc_url(sgh_img('saigonhoreca/the-royal-sgh-10.webp')); ?>"
+  alt="Quy trình làm việc Saigon Horeca"
+  width="542" height="722"
+  loading="lazy" decoding="async">
+  </div>
 
-        <div class="sh-work-process__copy scroll-reveal reveal-spring-right duration-1800 delay-300">
-            <h3 class="sh-work-process__title"><?php esc_html_e('Quy Trình Làm Việc', 'saigonhoreca'); ?></h3>
-            <p class="sh-work-process__intro">
-                <strong>Saigon Horeca</strong> tự tin cung cấp những dịch vụ chất lượng và cung cấp thiết bị <strong>bếp công nghiệp &amp; quầy bar</strong> tốt nhất cho khách hàng.
-            </p>
+  <div class="sh-work-process__copy">
+  <h3 class="sh-work-process__title"><?php esc_html_e('Quy Trình Làm Việc', 'saigonhoreca'); ?></h3>
+  <p class="sh-work-process__intro">
+  <strong>Saigon Horeca</strong> tự tin cung cấp những dịch vụ chất lượng và cung cấp thiết bị <strong>bếp công nghiệp &amp; quầy bar</strong> tốt nhất cho khách hàng.
+  </p>
 
-            <ul class="sh-work-process__steps">
-                <?php foreach ($steps as $s) : ?>
-                    <li class="sh-work-process__step">
-                        <span class="sh-work-process__icon"><?php echo $s['svg']; ?></span>
-                        <div class="sh-work-process__step-body">
-                            <h4 class="sh-work-process__step-title"><?php echo esc_html($s['title']); ?></h4>
-                            <p class="sh-work-process__step-desc"><?php echo wp_kses_post($s['desc']); ?></p>
-                        </div>
-                    </li>
-                <?php endforeach; ?>
-            </ul>
-        </div>
-    </div>
+  <ul class="sh-work-process__steps">
+  <?php foreach ($steps as $s) : ?>
+  <li class="sh-work-process__step">
+  <span class="sh-work-process__icon"><?php echo $s['svg']; ?></span>
+  <div class="sh-work-process__step-body">
+  <h4 class="sh-work-process__step-title"><?php echo esc_html($s['title']); ?></h4>
+  <p class="sh-work-process__step-desc"><?php echo wp_kses_post($s['desc']); ?></p>
+  </div>
+  </li>
+  <?php endforeach; ?>
+  </ul>
+  </div>
+  </div>
 </section>

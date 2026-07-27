@@ -1,3 +1,3 @@
-@import "../_tokens.css";
+@import "../core/_tokens.css";
 @import "../imports/_imports-project.css";
-@import "../_tailwind-project.css";
+@import "../core/_tailwind-project.css";

@@ -159,7 +159,8 @@
 }
 
 /* ─────────────────────────────────────────────────────────────
-   4. Staggered reveal (technique: .scroll-reveal markup; JS adds .is-visible)
+   4. Staggered reveal — standalone gallery-entry effect, driven by
+   gallery.js's own IntersectionObserver (not the removed reveal system)
    ───────────────────────────────────────────────────────────── */
 .pp-gallery-mam-mosaic.is-visible .pp-gallery-mam-mosaic__item {
   animation: pp-gallery-mam-mosaic-rise 0.7s var(--ease-spring) both;

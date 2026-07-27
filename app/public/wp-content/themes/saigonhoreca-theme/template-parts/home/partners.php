@@ -38,31 +38,31 @@ $sh_partners = [
  */
 $sh_uploads_dir = function_exists('sgh_uploads_base_dir') ? sgh_uploads_base_dir() : '';
 $sh_partner_exists = function ($rel) use ($sh_uploads_dir) {
-    if ($sh_uploads_dir === '') return true; // không rõ dir → cứ render (an toàn)
+  if ($sh_uploads_dir === '') return true; // không rõ dir → cứ render (an toàn)
     $base = $sh_uploads_dir . '/' . ltrim($rel, '/');
-    if (file_exists($base)) return true;
+  if (file_exists($base)) return true;
     $webp = preg_replace('/\.(jpe?g|png)$/i', '.webp', $base);
-    return $webp && file_exists($webp);
+  return $webp && file_exists($webp);
 };
 $sh_partners = array_values(array_filter($sh_partners, function ($p) use ($sh_partner_exists) {
-    return $sh_partner_exists($p['file']);
+  return $sh_partner_exists($p['file']);
 }));
 ?>
 <section class="sh-partners">
-    <div class="sh-partners__inner">
-        <header class="sh-partners__header scroll-reveal reveal-up duration-2000">
-            <span class="sh-partners__accent" aria-hidden="true"></span>
-            <h2 class="sh-partners__title"><?php esc_html_e('Đối tác của Saigon Horeca', 'saigonhoreca'); ?></h2>
-        </header>
-        <div class="sh-partners__grid scroll-reveal reveal-spring-up duration-1800">
-            <?php foreach ($sh_partners as $sh_p) : ?>
-                <div class="sh-partners__cell">
-                    <img src="<?php echo esc_url(sgh_img($sh_p['file'])); ?>"
-                         alt="<?php echo esc_attr(sprintf(__('Đối tác %s — Saigon Horeca', 'saigonhoreca'), $sh_p['name'])); ?>"
-                         width="200" height="200"
-                         loading="lazy" decoding="async">
-                </div>
-            <?php endforeach; ?>
-        </div>
-    </div>
+  <div class="sh-partners__inner">
+  <header class="sh-partners__header">
+  <span class="sh-partners__accent" aria-hidden="true"></span>
+  <h2 class="sh-partners__title"><?php esc_html_e('Đối tác của Saigon Horeca', 'saigonhoreca'); ?></h2>
+  </header>
+  <div class="sh-partners__grid">
+  <?php foreach ($sh_partners as $sh_p) : ?>
+  <div class="sh-partners__cell">
+  <img src="<?php echo esc_url(sgh_img($sh_p['file'])); ?>"
+  alt="<?php echo esc_attr(sprintf(__('Đối tác %s — Saigon Horeca', 'saigonhoreca'), $sh_p['name'])); ?>"
+  width="200" height="200"
+  loading="lazy" decoding="async">
+  </div>
+  <?php endforeach; ?>
+  </div>
+  </div>
 </section>

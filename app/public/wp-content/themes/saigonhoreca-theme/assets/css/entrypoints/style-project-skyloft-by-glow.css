@@ -1,4 +1,4 @@
-@import "../_tokens.css";
+@import "../core/_tokens.css";
 @import "../imports/_imports-project-base.css";
 @import "../imports/_imports-project-skyloft-by-glow.css";
-@import "../_tailwind-project.css";
+@import "../core/_tailwind-project.css";

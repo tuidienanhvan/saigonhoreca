@@ -6,51 +6,51 @@
  */
 if (!defined('ABSPATH')) exit;
 ?>
-<section class="pp-concept-yzo scroll-reveal">
+<section class="pp-concept-yzo">
   <div class="pp-container-shared">
-    <div class="pp-concept-yzo__grid">
+  <div class="pp-concept-yzo__grid">
       
-      <!-- Cột chứa hình ảnh lớn (Trái) -->
-      <div class="pp-concept-yzo__visual scroll-reveal">
-        <div class="pp-image-container-shared">
-          <div class="pp-concept-yzo__img-wrapper">
-            <img src="<?php echo esc_url(sgh_img('yuzu-omakase/yuzu-omakase-nghe-nhan-sushi-quay-bieu-dien.webp')); ?>" alt="<?php echo esc_attr__('Nghệ nhân biểu diễn chế tác nigiri tại quầy bếp mở Yuzu Omakase', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
-            <div class="pp-concept-yzo__img-border"></div>
-          </div>
-          <div class="pp-image-caption-shared">
-            <?php echo esc_html__('Khung hình tại quầy bếp mở Yuzu Omakase: nghệ nhân với đôi đũa và chén trà bên dãy nigiri trên đĩa gốm sẫm, gói trọn tinh thần phục vụ tỉ mỉ của không gian Omakase đương đại.', 'saigonhoreca'); ?>
-          </div>
-        </div>
-      </div>
+  <!-- Cột chứa hình ảnh lớn (Trái) -->
+  <div class="pp-concept-yzo__visual">
+  <div class="pp-image-container-shared">
+  <div class="pp-concept-yzo__img-wrapper">
+  <img src="<?php echo esc_url(sgh_img('yuzu-omakase/yuzu-omakase-nghe-nhan-sushi-quay-bieu-dien.webp')); ?>" alt="<?php echo esc_attr__('Nghệ nhân biểu diễn chế tác nigiri tại quầy bếp mở Yuzu Omakase', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
+  <div class="pp-concept-yzo__img-border"></div>
+  </div>
+  <div class="pp-image-caption-shared">
+  <?php echo esc_html__('Khung hình tại quầy bếp mở Yuzu Omakase: nghệ nhân với đôi đũa và chén trà bên dãy nigiri trên đĩa gốm sẫm, gói trọn tinh thần phục vụ tỉ mỉ của không gian Omakase đương đại.', 'saigonhoreca'); ?>
+  </div>
+  </div>
+  </div>
 
-      <!-- Cột văn bản dạng Glassmorphism Card cao cấp (Phải) -->
-      <div class="pp-concept-yzo__card">
-        <div class="pp-concept-yzo__card-content">
-          <div class="pp-concept-yzo__kicker-group">
-            <span class="pp-concept-yzo__tag"><?php echo esc_html__('Giải Pháp Thiết Kế', 'saigonhoreca'); ?></span>
-            <span class="pp-concept-yzo__kicker"><?php echo esc_html__('Design Concept', 'saigonhoreca'); ?></span>
-          </div>
+  <!-- Cột văn bản dạng Glassmorphism Card cao cấp (Phải) -->
+  <div class="pp-concept-yzo__card">
+  <div class="pp-concept-yzo__card-content">
+  <div class="pp-concept-yzo__kicker-group">
+  <span class="pp-concept-yzo__tag"><?php echo esc_html__('Giải Pháp Thiết Kế', 'saigonhoreca'); ?></span>
+  <span class="pp-concept-yzo__kicker"><?php echo esc_html__('Design Concept', 'saigonhoreca'); ?></span>
+  </div>
           
-          <h2 class="pp-concept-yzo__title">
+  <h2 class="pp-concept-yzo__title">
             Ý Tưởng Tổ Chức 
-            <span class="pp-concept-yzo__title-accent"><?php echo esc_html__('Không Gian Bếp', 'saigonhoreca'); ?></span>
-          </h2>
+  <span class="pp-concept-yzo__title-accent"><?php echo esc_html__('Không Gian Bếp', 'saigonhoreca'); ?></span>
+  </h2>
           
-          <div class="pp-concept-yzo__divider" aria-hidden="true"></div>
+  <div class="pp-concept-yzo__divider" aria-hidden="true"></div>
           
-          <div class="pp-concept-yzo__body">
-            <p><?php echo esc_html__('Dựa trên kinh nghiệm chuyên sâu về F&B cao cấp, Saigon Horeca thiết kế hệ thống bếp công nghiệp tối giản nhưng tối ưu tối đa về mặt công năng và vệ sinh khép kín.', 'saigonhoreca'); ?></p>
-            <p><?php echo esc_html__('Hệ thống thiết bị bếp inox được gia công và đo đạc chuẩn xác theo từng centimet, bố trí so le thông minh giữa khu vực sơ chế thô và khu vực phục vụ trực tiếp của Chef, đảm bảo luồng di chuyển không giao nhau và tối đa hóa năng suất.', 'saigonhoreca'); ?></p>
-          </div>
+  <div class="pp-concept-yzo__body">
+  <p><?php echo esc_html__('Dựa trên kinh nghiệm chuyên sâu về F&B cao cấp, Saigon Horeca thiết kế hệ thống bếp công nghiệp tối giản nhưng tối ưu tối đa về mặt công năng và vệ sinh khép kín.', 'saigonhoreca'); ?></p>
+  <p><?php echo esc_html__('Hệ thống thiết bị bếp inox được gia công và đo đạc chuẩn xác theo từng centimet, bố trí so le thông minh giữa khu vực sơ chế thô và khu vực phục vụ trực tiếp của Chef, đảm bảo luồng di chuyển không giao nhau và tối đa hóa năng suất.', 'saigonhoreca'); ?></p>
+  </div>
 
-          <div class="pp-concept-yzo__notes" aria-label="<?php echo esc_attr__('Điểm nhấn thiết kế', 'saigonhoreca'); ?>">
-            <span class="pp-concept-yzo__note-item"><?php echo esc_html__('Tối ưu hóa line bếp', 'saigonhoreca'); ?></span>
-            <span class="pp-concept-yzo__note-item"><?php echo esc_html__('Thiết bị inox tùy chỉnh', 'saigonhoreca'); ?></span>
-            <span class="pp-concept-yzo__note-item"><?php echo esc_html__('Hỗ trợ vận hành nhịp độ cao', 'saigonhoreca'); ?></span>
-          </div>
-        </div>
-      </div>
+  <div class="pp-concept-yzo__notes" aria-label="<?php echo esc_attr__('Điểm nhấn thiết kế', 'saigonhoreca'); ?>">
+  <span class="pp-concept-yzo__note-item"><?php echo esc_html__('Tối ưu hóa line bếp', 'saigonhoreca'); ?></span>
+  <span class="pp-concept-yzo__note-item"><?php echo esc_html__('Thiết bị inox tùy chỉnh', 'saigonhoreca'); ?></span>
+  <span class="pp-concept-yzo__note-item"><?php echo esc_html__('Hỗ trợ vận hành nhịp độ cao', 'saigonhoreca'); ?></span>
+  </div>
+  </div>
+  </div>
 
-    </div>
+  </div>
   </div>
 </section>

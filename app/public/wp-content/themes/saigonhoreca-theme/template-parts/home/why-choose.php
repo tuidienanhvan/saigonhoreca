@@ -20,53 +20,53 @@ $icon_shield = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strok
 $icon_star  = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.6 6.6L22 9.3l-5.5 5L18 22l-6-3.4L6 22l1.5-7.7L2 9.3l7.4-.7L12 2z"/></svg>';
 ?>
 <section class="sh-why-choose" aria-label="<?php esc_attr_e('Tại sao chọn Saigon Horeca', 'saigonhoreca'); ?>">
-    <div class="sh-why-choose__inner">
+  <div class="sh-why-choose__inner">
 
-        <!-- Col 1: Title + USP 1 -->
-        <div class="sh-why-choose__col sh-why-choose__col--left scroll-reveal reveal-skew-y duration-1800 delay-100">
-            <div class="sh-why-choose__head">
-                <span class="sh-why-choose__star"><?php echo $icon_star; ?></span>
-                <span class="sh-why-choose__eyebrow"><?php esc_html_e('Why Saigon Horeca', 'saigonhoreca'); ?></span>
-            </div>
-            <h2 class="sh-why-choose__title">
-                <?php esc_html_e('Tại sao nên chọn thiết bị bếp Saigon Horeca?', 'saigonhoreca'); ?>
-            </h2>
-            <span class="sh-why-choose__divider" aria-hidden="true"></span>
+  <!-- Col 1: Title + USP 1 -->
+  <div class="sh-why-choose__col sh-why-choose__col--left">
+  <div class="sh-why-choose__head">
+  <span class="sh-why-choose__star"><?php echo $icon_star; ?></span>
+  <span class="sh-why-choose__eyebrow"><?php esc_html_e('Why Saigon Horeca', 'saigonhoreca'); ?></span>
+  </div>
+  <h2 class="sh-why-choose__title">
+  <?php esc_html_e('Tại sao nên chọn thiết bị bếp Saigon Horeca?', 'saigonhoreca'); ?>
+  </h2>
+  <span class="sh-why-choose__divider" aria-hidden="true"></span>
 
-            <div class="sh-why-choose__usp">
-                <span class="sh-why-choose__usp-icon"><?php echo $icon_award; ?></span>
-                <h3 class="sh-why-choose__usp-title"><?php esc_html_e('Kinh nghiệm tư vấn thiết kế bếp nhà hàng cho đối tác lớn', 'saigonhoreca'); ?></h3>
-                <p class="sh-why-choose__usp-desc">
-                    Sài Gòn Horeca là đơn vị đã tư vấn, thiết kế và thi công bếp nhà hàng cho rất nhiều khách hàng lớn như <strong>Hoàng An Nhiên, ZumWhere, Circle K, Bambino</strong>…
-                </p>
-            </div>
-        </div>
+  <div class="sh-why-choose__usp">
+  <span class="sh-why-choose__usp-icon"><?php echo $icon_award; ?></span>
+  <h3 class="sh-why-choose__usp-title"><?php esc_html_e('Kinh nghiệm tư vấn thiết kế bếp nhà hàng cho đối tác lớn', 'saigonhoreca'); ?></h3>
+  <p class="sh-why-choose__usp-desc">
+  Sài Gòn Horeca là đơn vị đã tư vấn, thiết kế và thi công bếp nhà hàng cho rất nhiều khách hàng lớn như <strong>Hoàng An Nhiên, ZumWhere, Circle K, Bambino</strong>…
+  </p>
+  </div>
+  </div>
 
-        <!-- Col 2: Image -->
-        <div class="sh-why-choose__col sh-why-choose__col--media scroll-reveal reveal-3d-cinema-slow delay-300">
-            <img src="<?php echo esc_url(sgh_img('saigonhoreca/SGH-mammam.jpg')); ?>"
-                 alt="Mâm Mâm — Saigon Horeca"
-                 width="412" height="412"
-                 loading="lazy" decoding="async">
-        </div>
+  <!-- Col 2: Image -->
+  <div class="sh-why-choose__col sh-why-choose__col--media">
+  <img src="<?php echo esc_url(sgh_img('saigonhoreca/SGH-mammam.jpg')); ?>"
+  alt="Mâm Mâm — Saigon Horeca"
+  width="412" height="412"
+  loading="lazy" decoding="async">
+  </div>
 
-        <!-- Col 3: 2 USPs -->
-        <div class="sh-why-choose__col sh-why-choose__col--right scroll-reveal reveal-spring-right duration-2000 delay-500">
-            <div class="sh-why-choose__usp">
-                <span class="sh-why-choose__usp-icon"><?php echo $icon_handshake; ?></span>
-                <h3 class="sh-why-choose__usp-title"><?php esc_html_e('Dịch vụ toàn diện và chuyên nghiệp', 'saigonhoreca'); ?></h3>
-                <p class="sh-why-choose__usp-desc">
-                    Saigon Horeca cung cấp dịch vụ toàn diện từ <strong>tư vấn thiết kế, lắp đặt đến hỗ trợ vận hành kinh doanh</strong>. Tư duy thiết kế hiện đại phù hợp với từng dự án.
-                </p>
-            </div>
-            <div class="sh-why-choose__usp">
-                <span class="sh-why-choose__usp-icon"><?php echo $icon_shield; ?></span>
-                <h3 class="sh-why-choose__usp-title"><?php esc_html_e('Thiết bị bếp uy tín, chất lượng cao', 'saigonhoreca'); ?></h3>
-                <p class="sh-why-choose__usp-desc">
-                    Saigon Horeca cam kết chỉ cung cấp những <strong>thiết bị bếp chất lượng cao</strong>, được sản xuất từ những thương hiệu uy tín trên thị trường quốc tế.
-                </p>
-            </div>
-        </div>
+  <!-- Col 3: 2 USPs -->
+  <div class="sh-why-choose__col sh-why-choose__col--right">
+  <div class="sh-why-choose__usp">
+  <span class="sh-why-choose__usp-icon"><?php echo $icon_handshake; ?></span>
+  <h3 class="sh-why-choose__usp-title"><?php esc_html_e('Dịch vụ toàn diện và chuyên nghiệp', 'saigonhoreca'); ?></h3>
+  <p class="sh-why-choose__usp-desc">
+  Saigon Horeca cung cấp dịch vụ toàn diện từ <strong>tư vấn thiết kế, lắp đặt đến hỗ trợ vận hành kinh doanh</strong>. Tư duy thiết kế hiện đại phù hợp với từng dự án.
+  </p>
+  </div>
+  <div class="sh-why-choose__usp">
+  <span class="sh-why-choose__usp-icon"><?php echo $icon_shield; ?></span>
+  <h3 class="sh-why-choose__usp-title"><?php esc_html_e('Thiết bị bếp uy tín, chất lượng cao', 'saigonhoreca'); ?></h3>
+  <p class="sh-why-choose__usp-desc">
+  Saigon Horeca cam kết chỉ cung cấp những <strong>thiết bị bếp chất lượng cao</strong>, được sản xuất từ những thương hiệu uy tín trên thị trường quốc tế.
+  </p>
+  </div>
+  </div>
 
-    </div>
+  </div>
 </section>

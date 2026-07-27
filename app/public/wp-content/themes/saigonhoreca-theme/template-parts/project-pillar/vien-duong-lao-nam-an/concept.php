@@ -25,51 +25,51 @@ $nan_equipment = [
   ],
 ];
 ?>
-<section class="pp-section-nan pp-concept-nan scroll-reveal">
+<section class="pp-section-nan pp-concept-nan">
   <div class="pp-ambient-glow-nan pp-ambient-glow-nan--bottom-left" aria-hidden="true"></div>
   <div class="pp-concept-nan__watermark" aria-hidden="true">02</div>
 
   <div class="pp-container-shared">
-    <div class="pp-split-nan">
+  <div class="pp-split-nan">
 
-      <div class="pp-split-nan__media">
-        <div class="pp-concept-nan__mask pp-image-container-shared">
-          <div class="pp-concept-nan__frame" aria-hidden="true"></div>
-          <img src="<?php echo esc_url(sgh_img('vien-duong-lao-nam-an/nam-an-bep-tu-cong-nghiep-mat-kinh-inox.webp')); ?>" alt="<?php echo esc_attr__('Bếp từ công nghiệp mặt kính đen khung inox nhiều vùng nấu — thiết bị nấu cốt lõi bếp Nam An do Saigon Horeca thi công', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
-          <div class="pp-image-caption-shared"><?php echo esc_html__('Bếp từ công nghiệp mặt kính – thiết bị nấu cốt lõi, vận hành ổn định', 'saigonhoreca'); ?></div>
-        </div>
-      </div>
+  <div class="pp-split-nan__media">
+  <div class="pp-concept-nan__mask pp-image-container-shared">
+  <div class="pp-concept-nan__frame" aria-hidden="true"></div>
+  <img src="<?php echo esc_url(sgh_img('vien-duong-lao-nam-an/nam-an-bep-tu-cong-nghiep-mat-kinh-inox.webp')); ?>" alt="<?php echo esc_attr__('Bếp từ công nghiệp mặt kính đen khung inox nhiều vùng nấu — thiết bị nấu cốt lõi bếp Nam An do Saigon Horeca thi công', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
+  <div class="pp-image-caption-shared"><?php echo esc_html__('Bếp từ công nghiệp mặt kính – thiết bị nấu cốt lõi, vận hành ổn định', 'saigonhoreca'); ?></div>
+  </div>
+  </div>
 
-      <div class="pp-split-nan__body">
-        <div class="pp-concept-nan__card">
-          <header class="pp-concept-nan__header">
-            <span class="pp-badge-nan">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
-                <path d="M12 2 4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6l-8-4Z" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              <?php echo esc_html__('Thiết bị bếp', 'saigonhoreca'); ?>
-            </span>
-            <h2 class="pp-text-nan__title"><?php echo esc_html__('Lựa chọn vì sự ổn định lâu dài', 'saigonhoreca'); ?></h2>
-            <span class="pp-text-nan__divider" aria-hidden="true"></span>
-            <p class="pp-concept-nan__lead"><?php echo esc_html__('Thay vì chạy theo số lượng, Saigon Horeca tập trung vào những thiết bị cốt lõi, vận hành ổn định và phù hợp với đặc thù Nursing Home Kitchen.', 'saigonhoreca'); ?></p>
-          </header>
+  <div class="pp-split-nan__body">
+  <div class="pp-concept-nan__card">
+  <header class="pp-concept-nan__header">
+  <span class="pp-badge-nan">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+  <path d="M12 2 4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6l-8-4Z" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <?php echo esc_html__('Thiết bị bếp', 'saigonhoreca'); ?>
+  </span>
+  <h2 class="pp-text-nan__title"><?php echo esc_html__('Lựa chọn vì sự ổn định lâu dài', 'saigonhoreca'); ?></h2>
+  <span class="pp-text-nan__divider" aria-hidden="true"></span>
+  <p class="pp-concept-nan__lead"><?php echo esc_html__('Thay vì chạy theo số lượng, Saigon Horeca tập trung vào những thiết bị cốt lõi, vận hành ổn định và phù hợp với đặc thù Nursing Home Kitchen.', 'saigonhoreca'); ?></p>
+  </header>
 
-          <ul class="pp-concept-nan__list">
-            <?php foreach ($nan_equipment as $item): ?>
-              <li class="pp-concept-nan__item">
-                <span class="pp-concept-nan__icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><?php echo $item['icon']; ?></svg>
-                </span>
-                <div class="pp-concept-nan__item-body">
-                  <h3><?php echo esc_html($item['title']); ?></h3>
-                  <p><?php echo esc_html($item['desc']); ?></p>
-                </div>
-              </li>
-            <?php endforeach; ?>
-          </ul>
-        </div>
-      </div>
+  <ul class="pp-concept-nan__list">
+  <?php foreach ($nan_equipment as $item): ?>
+  <li class="pp-concept-nan__item">
+  <span class="pp-concept-nan__icon" aria-hidden="true">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><?php echo $item['icon']; ?></svg>
+  </span>
+  <div class="pp-concept-nan__item-body">
+  <h3><?php echo esc_html($item['title']); ?></h3>
+  <p><?php echo esc_html($item['desc']); ?></p>
+  </div>
+  </li>
+  <?php endforeach; ?>
+  </ul>
+  </div>
+  </div>
 
-    </div>
+  </div>
   </div>
 </section>
