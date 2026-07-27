@@ -243,10 +243,18 @@
 
         var textCol = document.createElement('span');
         textCol.className = 'pi-cb-step-text';
-        var eyebrow = document.createElement('span');
-        eyebrow.className = 'pi-cb-step-eyebrow';
-        eyebrow.textContent = category;
-        textCol.appendChild(eyebrow);
+        // Empty category -> no eyebrow element at all (not just empty text) so the
+        // flex row's column-gap doesn't leave a blank gap where the word would have
+        // been. Used for the "Thinking" row's initial state: labeling it "THINKING"
+        // before any classification has actually happened is a claim the row can't
+        // back up yet — the plain label ("Analyzing the question") says exactly as
+        // much as is true at that point, with nothing added.
+        if (category) {
+            var eyebrow = document.createElement('span');
+            eyebrow.className = 'pi-cb-step-eyebrow';
+            eyebrow.textContent = category;
+            textCol.appendChild(eyebrow);
+        }
         var labelEl = document.createElement('span');
         labelEl.className = 'pi-cb-step-label-text';
         labelEl.textContent = label;

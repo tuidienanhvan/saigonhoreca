@@ -460,7 +460,7 @@
         var card = PiChatbotUI.renderProgressCard(col);
 
         // Tier 1 — analyzing the question (always shown).
-        var thinkStep = PiChatbotUI.renderStepRow(card, 'thinking', 'Thinking', 'Analyzing the question');
+        var thinkStep = PiChatbotUI.renderStepRow(card, 'thinking', '', 'Analyzing the question');
         setStatus('Analyzing the question…');
 
         return PiChatbotUI.wait(700).then(function () {
