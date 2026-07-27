@@ -130,40 +130,90 @@
      *  answer bubble to the SAME avatar as the progress card, instead of creating a
      *  second avatar. Pure: takes role/text/sources, returns a detached element, touches
      *  no chat history or DOM outside what it returns. */
+    /** The collapsible "Sources (N)" block at the bottom of a bot bubble — split out of
+     *  buildMsgBubble() so the typing animation (typeAnswerInto()) can append the exact
+     *  same block AFTER typing finishes, instead of duplicating this markup. */
+    function appendSourcesBlock(el, sources) {
+        if (!sources || !sources.length) return;
+        var srcWrap = document.createElement('details');
+        srcWrap.className = 'pi-cb-sources';
+
+        var summary = document.createElement('summary');
+        summary.textContent = 'Sources (' + sources.length + ')';
+        srcWrap.appendChild(summary);
+
+        var srcList = document.createElement('div');
+        srcList.className = 'pi-cb-sources-list';
+
+        sources.forEach(function (s) {
+            var item = document.createElement('div');
+            item.className = 'pi-cb-source-item';
+            if (isSafeUrl(s.url)) {
+                var a = document.createElement('a');
+                a.href = s.url;
+                a.target = '_blank';
+                a.rel = 'noopener';
+                a.textContent = s.title;
+                item.appendChild(a);
+            } else {
+                item.textContent = s.title;
+            }
+            srcList.appendChild(item);
+        });
+        srcWrap.appendChild(srcList);
+        el.appendChild(srcWrap);
+    }
+
     function buildMsgBubble(role, text, sources) {
         var el = document.createElement('div');
         el.className = 'pi-cb-msg pi-cb-msg--' + role;
         appendLinkifiedText(el, text);
-        if (sources && sources.length) {
-            var srcWrap = document.createElement('details');
-            srcWrap.className = 'pi-cb-sources';
-
-            var summary = document.createElement('summary');
-            summary.textContent = 'Sources (' + sources.length + ')';
-            srcWrap.appendChild(summary);
-
-            var srcList = document.createElement('div');
-            srcList.className = 'pi-cb-sources-list';
-
-            sources.forEach(function (s) {
-                var item = document.createElement('div');
-                item.className = 'pi-cb-source-item';
-                if (isSafeUrl(s.url)) {
-                    var a = document.createElement('a');
-                    a.href = s.url;
-                    a.target = '_blank';
-                    a.rel = 'noopener';
-                    a.textContent = s.title;
-                    item.appendChild(a);
-                } else {
-                    item.textContent = s.title;
-                }
-                srcList.appendChild(item);
-            });
-            srcWrap.appendChild(srcList);
-            el.appendChild(srcWrap);
-        }
+        appendSourcesBlock(el, sources);
         return el;
+    }
+
+    /** Reveals `text` a few characters at a time into `el` (a typewriter effect) instead
+     *  of dumping the whole answer in at once — the 3 progress rows already build
+     *  anticipation by finalizing sequentially, and the final answer appearing as one
+     *  instant block undercut that same pacing. Types into el.textContent directly
+     *  (plain text, no links) WHILE typing — a partially-typed URL isn't a real link
+     *  anyway — then swaps to the real appendLinkifiedText() + sources block only once
+     *  typing completes, so the shipped result is byte-identical to buildMsgBubble()'s
+     *  output, just arrived at progressively.
+     *
+     *  Returns a `{cancel}` handle: the caller MUST call cancel() if the turn is
+     *  invalidated mid-type (Reset clicked) — matches the file's existing
+     *  `stillCurrent()` cancellation pattern for the progress-card animation, applied
+     *  here too so a cancelled turn doesn't keep silently typing into a detached node
+     *  and doesn't call onDone() into a transcript that was already cleared. */
+    var TYPE_CHARS_PER_TICK = 3;
+    var TYPE_TICK_MS = 12;
+    function typeAnswerInto(el, text, sources, opts) {
+        opts = opts || {};
+        var i = 0;
+        var cancelled = false;
+        var timer = null;
+        function step() {
+            if (cancelled) return;
+            i = Math.min(text.length, i + TYPE_CHARS_PER_TICK);
+            el.textContent = text.slice(0, i);
+            if (opts.onTick) opts.onTick();
+            if (i < text.length) {
+                timer = setTimeout(step, TYPE_TICK_MS);
+            } else {
+                el.textContent = '';
+                appendLinkifiedText(el, text);
+                appendSourcesBlock(el, sources);
+                if (opts.onDone) opts.onDone();
+            }
+        }
+        step();
+        return {
+            cancel: function () {
+                cancelled = true;
+                if (timer) clearTimeout(timer);
+            }
+        };
     }
 
     /** A SINGLE card holding the "analyzing"/"searching"/"fact check" rows, joined
@@ -291,6 +341,52 @@
         return { label: 'No specific intent detected', lines: ['No price/contact/service/project intent matched and no related product was found — giving a general reply.'] };
     }
 
+    /** Label + detail for the "searching the data" row — mirrors describeThink()'s
+     *  single-function-owns-both-label-and-lines shape, for the same reason: the two
+     *  must never drift out of sync.
+     *
+     *  Fixed 2026-07-27: for a rule-based intent (price/contact/service/project) the
+     *  server finds real context (trace.found_count > 0 — e.g. the company's contact
+     *  info) but never sets search_query/query_variants/rerank_used, since those are
+     *  product-search-only fields. The row ended up with a label saying "Found — 1
+     *  related results" but an EMPTY detail area — a dead-looking expand affordance on
+     *  a row that, per the CSS rule added earlier, then correctly hid its own chevron
+     *  because its body really was empty. The dropdown wasn't broken; the row simply
+     *  never explained WHAT it found. This function is the general fix: any tier that
+     *  found real context explains its source, regardless of which intent produced it. */
+    function describeSearch(trace) {
+        var label = trace.found_count > 0
+            ? 'Found — ' + trace.found_count + ' related results'
+            : 'Searched — no matching results found';
+        var lines = [];
+        switch (trace.intent) {
+            case 'contact':
+                if (trace.found_count > 0) lines.push('Source: the company\'s contact information.');
+                break;
+            case 'price':
+                if (trace.found_count > 0) lines.push('Source: the company\'s pricing policy.');
+                break;
+            case 'service':
+                if (trace.found_count > 0) lines.push('Source: the company\'s service description.');
+                break;
+            case 'project':
+                if (trace.found_count > 0) lines.push('Searched the list of completed projects.');
+                break;
+            default:
+                if (trace.search_query) lines.push('Keywords: ' + trace.search_query);
+        }
+        // Both are REAL flags from the server (class-rest.php), never assumed from the
+        // mode: reranking is skipped when the model call fails, and claiming a step
+        // that did not run would be inventing reasoning. Only meaningful for the
+        // product intent, but checked unconditionally — harmless no-op otherwise since
+        // the server never sets these fields for other intents.
+        if (trace.query_variants && trace.query_variants.length) {
+            lines.push('Also tried: ' + trace.query_variants.join(' · '));
+        }
+        if (trace.rerank_used) lines.push('Re-read every result and ranked them against your question.');
+        return { label: label, lines: lines };
+    }
+
     /** The fact-check row is shown when the server reports a verdict (true OR false) or
      *  when it deliberately withheld the retrieved results as irrelevant. `verified` is
      *  null both when nothing ran a check and when a check could not run — neither of
@@ -331,10 +427,12 @@
         isSameOrigin: isSameOrigin,
         appendLinkifiedText: appendLinkifiedText,
         buildMsgBubble: buildMsgBubble,
+        typeAnswerInto: typeAnswerInto,
         renderProgressCard: renderProgressCard,
         renderStepRow: renderStepRow,
         finishStep: finishStep,
         describeThink: describeThink,
+        describeSearch: describeSearch,
         needsVerifyStep: needsVerifyStep,
         describeVerify: describeVerify
     };

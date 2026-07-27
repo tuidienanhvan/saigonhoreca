@@ -104,6 +104,13 @@
     var cooldownEnd = 0;
     var cooldownTick = null;
     var isSending = false;
+    // The handle returned by PiChatbotUI.typeAnswerInto() for whichever answer is
+    // CURRENTLY being typed out — null when nothing is typing. Reset must cancel this
+    // explicitly: the typing loop runs on its own setTimeout chain outside the
+    // send()/revealTraceThenAnswer() promise chain, so requestSeq alone (which only
+    // gates callbacks INSIDE that chain) cannot stop it from continuing to type into a
+    // bubble whose column may already be detached from a cleared transcript.
+    var activeTyping = null;
 
     var SLOW_NOTICE_MS = 12000;
     // 75s. The previous 45s was sized against the fast path's worst case (20s generator
@@ -298,6 +305,7 @@
         // wrongly insert an error bubble into the transcript we just cleared.
         requestSeq++;
         if (controller) controller.abort();
+        if (activeTyping) { activeTyping.cancel(); activeTyping = null; }
         cooldownEnd = 0;
         if (cooldownTick) { clearInterval(cooldownTick); cooldownTick = null; }
         cooldownEl.hidden = true;
@@ -420,13 +428,32 @@
 
     /** Attaches the final answer bubble into the SAME column as the progress card (does
      *  not create a 2nd avatar/wrap) — still saved into history/sessionStorage just like
-     *  addMessage(). */
+     *  addMessage(). The answer TYPES itself out (PiChatbotUI.typeAnswerInto()) rather
+     *  than appearing all at once — the 3 progress rows already finalize one at a time
+     *  to build anticipation, and the final answer dumping in as a single instant block
+     *  broke that pacing. Only for a FRESH answer: restoring saved history on page
+     *  reload uses the instant buildMsgBubble() path — a customer reopening the panel
+     *  should see their past conversation immediately, not watch it retype itself. */
     function finishBotTurn(col, text, sources) {
         if (!isRestoring) {
             chatHistory.push({ role: 'bot', text: text, sources: sources || [] });
             sessionStorage.setItem('pi_cb_history', JSON.stringify(chatHistory));
         }
-        col.appendChild(PiChatbotUI.buildMsgBubble('bot', text, sources));
+        if (isRestoring) {
+            col.appendChild(PiChatbotUI.buildMsgBubble('bot', text, sources));
+            messages.scrollTop = messages.scrollHeight;
+            return;
+        }
+        var el = document.createElement('div');
+        el.className = 'pi-cb-msg pi-cb-msg--bot';
+        col.appendChild(el);
+        activeTyping = PiChatbotUI.typeAnswerInto(el, text, sources, {
+            onTick: function () { messages.scrollTop = messages.scrollHeight; },
+            onDone: function () {
+                activeTyping = null;
+                messages.scrollTop = messages.scrollHeight;
+            }
+        });
         messages.scrollTop = messages.scrollHeight;
     }
 
@@ -469,19 +496,8 @@
             return PiChatbotUI.wait(750).then(function () {
                 if (!stillCurrent()) return;
 
-                var searchLabel = trace.found_count > 0
-                    ? 'Found — ' + trace.found_count + ' related results'
-                    : 'Searched — no matching results found';
-                var searchLines = [];
-                if (trace.search_query) searchLines.push('Keywords: ' + trace.search_query);
-                // Both are REAL flags from the server (class-rest.php), never assumed
-                // from the mode: reranking is skipped when the model call fails, and
-                // claiming a step that did not run would be inventing reasoning.
-                if (trace.query_variants && trace.query_variants.length) {
-                    searchLines.push('Also tried: ' + trace.query_variants.join(' · '));
-                }
-                if (trace.rerank_used) searchLines.push('Re-read every result and ranked them against your question.');
-                PiChatbotUI.finishStep(searchStep, searchLabel, searchLines);
+                var search = PiChatbotUI.describeSearch(trace);
+                PiChatbotUI.finishStep(searchStep, search.label, search.lines);
                 searchStep.details.open = false;
 
                 if (!PiChatbotUI.needsVerifyStep(trace)) {
