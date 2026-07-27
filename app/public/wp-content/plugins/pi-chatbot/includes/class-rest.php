@@ -304,7 +304,7 @@ class Pi_Chatbot_Rest {
             $result = self::budget_exhausted_result($context);
             $mark('generate');
         } else {
-            $result = Pi_Chatbot_Generator::answer($message, $context);
+            $result = Pi_Chatbot_Generator::answer($message, $context, $history);
             $mark('generate');
 
             if (is_wp_error($result)) {
@@ -328,7 +328,7 @@ class Pi_Chatbot_Rest {
             if ($check !== null) {
                 $verified = $check['faithful'];
                 if (!$check['faithful']) {
-                    $retry = Pi_Chatbot_Generator::answer($message, $context, ['correction' => $check['issue']]);
+                    $retry = Pi_Chatbot_Generator::answer($message, $context, $history, ['correction' => $check['issue']]);
                     if (!is_wp_error($retry)) {
                         $result = $retry;
                         $recheck = Pi_Chatbot_Generator::verify($message, $context, $result['answer']);

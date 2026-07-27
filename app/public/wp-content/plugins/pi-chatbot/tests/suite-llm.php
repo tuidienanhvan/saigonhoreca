@@ -212,7 +212,7 @@ pi_with_settings(['llm7_keys' => ['test-key']], function () {
     // options['correction'] must actually reach the model — asserted on the
     // captured request body, not just on the return value.
     pi_http_stub(function () { return pi_http_content('câu trả lời đã sửa'); });
-    Pi_Chatbot_Generator::answer('câu hỏi', [], ['correction' => 'UNIQUE_CORRECTION_MARKER_XYZ']);
+    Pi_Chatbot_Generator::answer('câu hỏi', [], [], ['correction' => 'UNIQUE_CORRECTION_MARKER_XYZ']);
     $sent = pi_http_calls()[0]['body'] ?? null;
     $by_role = [];
     foreach (($sent['messages'] ?? []) as $m) $by_role[$m['role']] = ($by_role[$m['role']] ?? '') . $m['content'];
@@ -236,6 +236,42 @@ pi_with_settings(['llm7_keys' => ['test-key']], function () {
 pi_with_settings(['llm7_keys' => []], function () {
     $out = Pi_Chatbot_Generator::answer('câu hỏi', []);
     pi_check('no keys configured surfaces as a WP_Error (no fatal, no silent empty answer)', is_wp_error($out));
+});
+
+// Regression gate for a real customer-visible bug (2026-07-27): asking "nói lại
+// bằng tiếng việt" ("say that again in Vietnamese") right after a real answer
+// produced a reply about a totally unrelated product — Generator::answer() had
+// no conversation history at all, only the current raw message, so it had no
+// way to know what "that" referred to. This asserts the fix directly on the
+// captured request body (not just on the return value) so a future refactor
+// that silently drops $history again breaks THIS test, not just a live chat.
+pi_with_settings(['llm7_keys' => ['test-key']], function () {
+    pi_http_stub(function () { return pi_http_content('Đây là bản dịch tiếng Việt.'); });
+    $history = [
+        ['role' => 'user', 'text' => 'how about kve capture jet'],
+        ['role' => 'bot', 'text' => 'UNIQUE_PRIOR_ANSWER_MARKER_KVE'],
+    ];
+    Pi_Chatbot_Generator::answer('nói lại bằng tiếng việt', [], $history);
+    $sent = pi_http_calls()[0]['body'] ?? null;
+    $roles = array_map(function ($m) { return $m['role']; }, $sent['messages'] ?? []);
+    pi_check('history turns are sent as REAL user/assistant messages, not folded into one string',
+        in_array('user', $roles, true) && in_array('assistant', $roles, true) && count($roles) >= 4,
+        'roles: ' . implode(',', $roles));
+    $has_prior_text = false;
+    foreach (($sent['messages'] ?? []) as $m) {
+        if (strpos($m['content'], 'UNIQUE_PRIOR_ANSWER_MARKER_KVE') !== false) $has_prior_text = true;
+    }
+    pi_check("the prior turn's own text actually reaches the model", $has_prior_text);
+
+    // No history at all -> the message array is UNCHANGED shape (just system +
+    // user) — this feature must not add an empty/confusing turn when there is
+    // nothing to carry, so single-turn questions (the overwhelming majority)
+    // see byte-identical prompts to before this fix.
+    pi_http_stub(function () { return pi_http_content('ok'); });
+    Pi_Chatbot_Generator::answer('câu hỏi không có lịch sử', []);
+    $sent2 = pi_http_calls()[0]['body'] ?? null;
+    pi_check('with no history, the message array stays exactly [system, user]',
+        count($sent2['messages'] ?? []) === 2, count($sent2['messages'] ?? []) . ' messages');
 });
 
 // ── Generator::verify ─────────────────────────────────────────────────────────

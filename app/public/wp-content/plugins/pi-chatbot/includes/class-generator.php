@@ -63,11 +63,18 @@ class Pi_Chatbot_Generator {
     /**
      * @param string $question
      * @param array  $context Result from Pi_Chatbot_Retriever::search()
+     * @param array  $history Sanitized prior turns (Pi_Chatbot_Rest::sanitize_history()),
+     *   same shape/trust level already passed to Pi_Chatbot_Router::enrich(). Threaded
+     *   through here too (2026-07-27 fix — see the docblock at the messages array
+     *   below) so the model that actually WRITES the answer can resolve a follow-up
+     *   that refers back to the conversation itself ("say that in Vietnamese", "nói
+     *   lại bằng tiếng anh"), not just a follow-up that needs different retrieval
+     *   keywords (which the router alone already handled).
      * @param array  $options correction: feedback from a failed faithfulness
      *   check, appended to the system prompt on the single retry.
      * @return array{answer:string, sources:array}|WP_Error
      */
-    public static function answer($question, $context, $options = []) {
+    public static function answer($question, $context, $history = [], $options = []) {
         $settings = pi_chatbot_settings();
 
         $context_text = self::context_to_text($context);
@@ -119,12 +126,43 @@ class Pi_Chatbot_Generator {
                 . "follow is in the system prompt above): " . trim((string) $options['correction']);
         }
 
+        // 2026-07-27 fix — this was the actual root cause of a customer-visible bug:
+        // asking "nói lại bằng tiếng việt" ("say that again in Vietnamese") right
+        // after a real answer produced a reply about a COMPLETELY unrelated product.
+        // Multi-turn history had only ever been wired into Pi_Chatbot_Router::enrich()
+        // (deciding WHAT to search for) — this method, which actually WRITES the
+        // customer-facing text, received only the current raw message and never saw
+        // the conversation at all. So even when the router correctly re-resolved the
+        // follow-up's search keywords, the model composing the reply had no way to
+        // know "that" meant "the KVE Capture Jet answer from a moment ago" — it was
+        // answering "nói lại bằng tiếng việt" cold, with nothing to translate.
+        // Threading $history in here, as real prior user/assistant turns (same
+        // pattern as Router::build_messages()), closes that gap.
+        if ($history) {
+            $system_prompt .= "\n\nSome earlier turns of this conversation may appear before the customer's "
+                . "final message below. They are REAL prior conversation, not reference data — use them to "
+                . "understand what the customer's CURRENT message refers to when it depends on what was just "
+                . "discussed (e.g. \"say that in Vietnamese\", \"nói lại bằng tiếng anh\", \"what about the "
+                . "price\", \"còn màu khác không\"). The REFERENCE INFORMATION and CUSTOMER QUESTION below "
+                . "still define what facts you may state — the prior turns only tell you what the customer "
+                . "means, never a source of facts on their own.";
+        }
+
+        $messages = [['role' => 'system', 'content' => $system_prompt]];
+        foreach ($history as $turn) {
+            // Same role translation as Router::build_messages() — the widget's own
+            // 'bot' role (matching its DOM/CSS naming) becomes the standard
+            // chat-completion 'assistant' role LLM7 expects.
+            $messages[] = [
+                'role'    => $turn['role'] === 'user' ? 'user' : 'assistant',
+                'content' => (string) $turn['text'],
+            ];
+        }
+        $messages[] = ['role' => 'user', 'content' => $user_prompt];
+
         $body = [
             'model'    => $settings['model'],
-            'messages' => [
-                ['role' => 'system', 'content' => $system_prompt],
-                ['role' => 'user', 'content' => $user_prompt],
-            ],
+            'messages' => $messages,
             'temperature' => 0.3,
             // max_tokens guards against infinite repetition (a real loop was
             // observed with gpt-oss:20b: repeating "steam oven range" hundreds
