@@ -250,7 +250,14 @@ class Pi_Chatbot_Retriever {
             'title'    => 'Saigon Horeca services',
             'brand'    => '',
             'category' => '',
-            'url'      => home_url('/gioi-thieu/'),
+            // 2026-07-27: was home_url('/gioi-thieu/') — that slug never existed
+            // on this site (real 404, caught live from a customer clicking the
+            // Sources link). '/ve-saigon-horeca/' is the real, currently
+            // published About page (verified against wp_posts directly, not
+            // guessed) — see the regression test in suite-retrieval.php that
+            // resolves this URL against get_page_by_path() so a future page
+            // rename breaks the test instead of silently shipping a dead link.
+            'url'      => home_url('/ve-saigon-horeca/'),
             'excerpt'  => $desc,
             'score'    => 999,
         ]];

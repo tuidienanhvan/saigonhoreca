@@ -130,6 +130,21 @@ foreach (['contact_context', 'price_context', 'service_context'] as $method) {
     pi_check("{$method}() never errors, always returns an array", is_array($result));
     if (function_exists('saigonhouse_get_contact_info')) {
         pi_check("{$method}() returns real data when the theme function exists", !empty($result), 'got ' . count($result));
+        // 2026-07-27: catches the exact bug a customer hit live — service_context()
+        // hardcoded home_url('/gioi-thieu/'), a slug that never existed on this
+        // site, and the Sources link in the widget led to a real 404. The URL
+        // string alone always "looked" valid (well-formed, same-origin) — only
+        // resolving it against a REAL published page catches a slug that's wrong
+        // or has since been renamed/deleted. get_page_by_path() needs the bare
+        // slug, not the full URL, so the home_url() prefix is stripped first.
+        if ($result) {
+            $url = $result[0]['url'];
+            $slug = trim(str_replace(home_url(), '', $url), '/');
+            $page = get_page_by_path($slug);
+            pi_check("{$method}()'s Sources URL resolves to a REAL published page (not a dead link)",
+                $page !== null && $page->post_status === 'publish',
+                "slug='{$slug}' -> " . ($page ? "status={$page->post_status}" : 'NOT FOUND'));
+        }
     } else {
         pi_check("{$method}() returns [] when the theme function is absent", $result === []);
     }
