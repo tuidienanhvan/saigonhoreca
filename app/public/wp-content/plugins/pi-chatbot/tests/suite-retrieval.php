@@ -297,6 +297,44 @@ pi_section('Retriever::search — Tier 1 (mandatory AND) requires field evidence
 pi_check('"Báo giá" — small talk degrading to content-only-coincidence keywords — returns no products',
     empty(Pi_Chatbot_Retriever::search('Báo giá', 5)));
 
+// Regression guard for the defect found 2026-07-27, live via a real customer
+// conversation ("how about another brand" after asking about the Halton KVE
+// exhaust hood): Tier 2 (quorum) required at least 1 word to match in
+// title/brand/category (has_strong_field_hit), but that 1 word could be the
+// generic Vietnamese verb "hút" ("to extract/suck") — which is also the first
+// syllable of "hút chân không" ("vacuum sealer", an unrelated Sammic product
+// line) as well as "hút mùi" ("exhaust/odor extraction", the actual Halton
+// hood category being searched for). A single shared morpheme between two
+// unrelated compound terms was enough to seat 3 vacuum-sealer products next
+// to the real exhaust-hood results — the generator, handed that mixed
+// context, produced a garbled answer. Fixed generally: Tier 2 now requires at
+// least 2 DISTINCT query words to genuinely match (verify_and_score()'s new
+// $r->hits), not just 1 — this is the only tier with no mandatory-AND word at
+// all, so it's the one place a single shared morpheme can seat a product
+// alone. Uses only the words "hút" and "mùi" — anything the router's
+// keywords_vi commonly extracts for this exact question shape — so this
+// exercises the real tier, not a synthetic setup.
+pi_section('Retriever::search — Tier 2 (quorum) requires 2+ distinct real word matches, not just 1');
+
+// Vietnamese-only via search() genuinely has no product to find (the Halton
+// line is English-titled/described — a pure Vietnamese quorum match must
+// legitimately stay empty, not surface a coincidental vacuum-sealer hit).
+// search_hybrid() with the English alt_query leg is what production actually
+// calls (see class-rest.php's fast/max product dispatch) — testing anything
+// less would not exercise the real path a customer's question takes.
+$hood_results = Pi_Chatbot_Retriever::search_hybrid('hút mùi hút mùi công nghiệp', 6, [
+    'alt_queries' => ['exhaust hood commercial kitchen'],
+]);
+$leaked_vacuum_sealer = array_filter($hood_results, function ($r) {
+    return stripos($r['title'], 'hút chân không') !== false;
+});
+pi_check('"hút mùi" (exhaust hood) no longer leaks "hút chân không" (vacuum sealer) products',
+    empty($leaked_vacuum_sealer),
+    empty($hood_results) ? '(no results at all)' : implode(', ', array_column($hood_results, 'title')));
+pi_check('"hút mùi" still returns real exhaust-hood results — the fix did not just empty the tier',
+    !empty(array_filter($hood_results, function ($r) { return stripos($r['title'], 'exhaust') !== false || stripos($r['brand'], 'halton') !== false; })),
+    empty($hood_results) ? '(no results at all)' : implode(', ', array_column($hood_results, 'title')));
+
 // pi_report() prints a summary from the SHARED pi_check() static state — when
 // run standalone that's exactly this suite's own totals; when run-all.php
 // requires this file alongside others, the same static keeps accumulating, so

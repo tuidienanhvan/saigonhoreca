@@ -1067,6 +1067,30 @@ class Pi_Chatbot_Retriever {
         }));
         if (!$products) return [];
 
+        // 2026-07-27 fix — a real customer-visible bug: "hút mùi" (exhaust hood,
+        // literally "extract odor") and "hút chân không" (vacuum sealer, literally
+        // "extract vacuum") share only the generic Vietnamese verb "hút" ("to
+        // extract/suck") — the two are otherwise unrelated appliance categories.
+        // A quorum match on "hút" ALONE (1 word, landing in the title, so it
+        // passes the has_strong_field_hit filter above) was enough to seat 3
+        // completely unrelated Sammic vacuum-sealer products next to the real
+        // Halton exhaust-hood results, and the generator — handed that mixed,
+        // contradictory context — produced a garbled, hallucinated answer.
+        // General fix, not a special case for "hút": Tier 2 quorum is the ONLY
+        // tier with no mandatory-AND word at all, so it is the one place a
+        // single shared morpheme between two unrelated compound terms can seat a
+        // product on its own. Requiring at least 2 DISTINCT query words to
+        // genuinely match (when the query has ≥2 distinct substantive words to
+        // begin with) closes that gap without touching Tier 1 (still governed by
+        // require_literal_all's real AND) or the brand-scoped path (a different
+        // function entirely, search_within_brand(), unaffected by this change).
+        $distinct_long = count(array_unique($long));
+        $min_hits = min(2, $distinct_long);
+        $products = array_values(array_filter($products, function ($r) use ($min_hits) {
+            return (int) ($r->hits ?? 0) >= $min_hits;
+        }));
+        if (!$products) return [];
+
         $top_score = max(array_map(function ($r) { return (float) $r->score; }, $products));
         $products = array_values(array_filter($products, function ($r) use ($top_score) {
             return $top_score > 0 && ((float) $r->score) >= $top_score * self::OR_FALLBACK_SCORE_RATIO;
@@ -1117,7 +1141,12 @@ class Pi_Chatbot_Retriever {
      */
     private static function verify_and_score($rows, $long, $short, $idf = null) {
         if (!is_array($rows)) return [];
-        $all_words = array_merge($long, $short);
+        // array_unique — a query word repeated in $long/$short (the router has been
+        // observed to emit a duplicated phrase, e.g. "hút mùi hút mùi công nghiệp")
+        // must not count twice: it inflates both $weighted score AND $hits (the
+        // distinct-word-match count added 2026-07-27, see the quorum-tier caller)
+        // for a row that only genuinely matched ONE real word.
+        $all_words = array_values(array_unique(array_merge($long, $short)));
         if (!$all_words) return [];
         if ($idf === null) $idf = self::compute_idf($all_words);
 
@@ -1169,6 +1198,10 @@ class Pi_Chatbot_Retriever {
             $r->mysql_score = (float) $r->score;
             $r->score = $weighted;
             $r->has_strong_field_hit = $has_strong_field_hit;
+            // Distinct query words that genuinely matched this row (title/brand/
+            // category/content) — see the quorum-tier minimum-match-count check in
+            // search_fulltext() for why this exists.
+            $r->hits = $hits;
             $kept[] = $r;
         }
 
