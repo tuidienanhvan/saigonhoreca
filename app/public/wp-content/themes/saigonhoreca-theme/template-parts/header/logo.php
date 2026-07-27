@@ -27,7 +27,7 @@ if (empty($logo_url)) {
     }
 }
 if (empty($logo_url)) {
-    $logo_file = '/assets/images/logo.webp';
+    $logo_file = '/assets/images/logo-header.webp';
     $logo_path = get_template_directory() . $logo_file;
     $logo_url  = get_template_directory_uri() . $logo_file;
     if (file_exists($logo_path)) {

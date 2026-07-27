@@ -3,9 +3,9 @@
    contact / about / single / archive component CSS. Other pages keep
    the full bundle via `assets/css/dist/theme.css`. */
 
+@import "tailwindcss" source(none);
 @import "../_tokens.css";
 @import "../imports/_imports-home.css";
-@import "tailwindcss" source(none);
 
 /* Scan the same source files as the main build so Tailwind utilities
    referenced anywhere on the front-page render path still emit. */

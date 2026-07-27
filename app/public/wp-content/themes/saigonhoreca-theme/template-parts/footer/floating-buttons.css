@@ -33,11 +33,16 @@
     align-items: center;
     transition: opacity 0.3s, transform 0.3s;
     display: none;
-    position: relative;
+    /* Ngoài flex flow: nút "lên đầu trang" nổi PHÍA TRÊN cụm nút khi cuộn,
+       KHÔNG đẩy phone/Zalo xuống — đúng cả khi widget neo đáy lẫn khi đã kéo (neo top). */
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + var(--spacing) * 2.5);
+    transform: translateX(-50%);
 }
 #back-to-top:hover {
     box-shadow: 0 4px 20px var(--shadow);
-    transform: translateY(-3px);
+    transform: translateX(-50%) translateY(-3px);
 }
 #back-to-top .sh-scroll-ring {
     pointer-events: none;
@@ -183,6 +188,16 @@
     -webkit-user-select: none;
     user-select: none;
 }
+/* Chặn hành vi kéo-ảnh/kéo-link GỐC của trình duyệt trên <img> Zalo/Facebook và
+   <a href="tel:..."> — phòng thủ kép cùng dragstart preventDefault() trong JS
+   (bug đã gặp: kéo nhẹ ra khỏi nút hiện ghost-preview ảnh/link thay vì kéo cụm
+   nút). Một số WebKit cũ vẫn có thể khởi tạo native drag dù JS đã chặn dragstart. */
+#sh-floating-buttons img,
+#sh-floating-buttons a,
+#sh-floating-buttons svg {
+    -webkit-user-drag: none;
+    user-drag: none;
+}
 #sh-floating-buttons.sh-fab-dragging {
     cursor: grabbing;
     opacity: 0.85;
@@ -199,6 +214,18 @@
     cursor: pointer;
 }
 
+/* prefers-reduced-motion: animation kéo-thả (JS-driven) đã tự tắt qua SNAP_SPEED=0
+   trong floating-buttons.js — đây là phần CSS-driven còn lại (hover scale/shadow
+   trên từng nút, transition đáy cụm nút khi resize) mà @media không override được
+   nếu chỉ đặt ở JS (audit flag: trước đây animation luôn chạy vô điều kiện). */
+@media (prefers-reduced-motion: reduce) {
+    #sh-floating-buttons,
+    #sh-floating-buttons * {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+}
+
 /* ── Mobile compact sizing ── */
 @media (max-width: 767px) {
     #sh-floating-buttons {
@@ -213,12 +240,12 @@
     #sh-floating-buttons .sh-phone-float,
     #sh-floating-buttons .sh-zalo-btn,
     #sh-floating-buttons .sh-fb-btn {
-        width: 40px;
-        height: 40px;
+        width: 48px;   /* ≥48px: đạt ngưỡng touch-target Lighthouse A11y */
+        height: 48px;
     }
     #sh-floating-buttons .sh-zalo-btn {
-        width: 2.5rem;
-        height: 2.5rem;
+        width: 48px;
+        height: 48px;
     }
     #sh-floating-buttons .sh-fb-btn svg {
         width: 20px;

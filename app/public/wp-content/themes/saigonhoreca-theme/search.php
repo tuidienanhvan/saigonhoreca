@@ -3,6 +3,14 @@
  * Search Results Template
  * @package SaigonHoreca
  */
+
+$is_product_search = (get_query_var('post_type') === 'product') || (isset($_GET['post_type']) && $_GET['post_type'] === 'product');
+
+if ($is_product_search) {
+    include locate_template('archive-product.php');
+    return;
+}
+
 get_header();
 ?>
 

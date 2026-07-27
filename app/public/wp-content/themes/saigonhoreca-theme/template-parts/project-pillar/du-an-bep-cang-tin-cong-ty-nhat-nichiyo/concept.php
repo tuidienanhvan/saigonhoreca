@@ -1,13 +1,16 @@
 <?php
 /**
  * Project Pillar — du-an-bep-cang-tin-cong-ty-nhat-nichiyo
- * Section #3: concept — full-bleed kitchen bg + glassmorphic precision card.
+ * Section #3: concept — full-bleed kitchen bg (Parallax Clip-Path) + glassmorphic
+ * precision card.
  * @package SaigonHoreca
  */
 if (!defined('ABSPATH')) exit;
 $uri = get_template_directory_uri();
 ?>
-<section class="pp-concept-nichiyo scroll-reveal reveal-fade" style="background-image:url('<?php echo sgh_img('du-an-bep-cang-tin-cong-ty-nhat-nichiyo/nichiyo-du-an-2.jpg'); ?>');">
+<section class="pp-concept-nichiyo scroll-reveal reveal-fade">
+  <!-- Thẻ con gánh hiệu ứng Parallax Clip-Path siêu mượt (no-JS, GPU) -->
+  <div class="pp-concept-nichiyo__bg" style="background-image:url('<?php echo sgh_img('du-an-bep-cang-tin-cong-ty-nhat-nichiyo/nichiyo-ke-inox-tam-op-tuong-may-hut-mui-bep.webp'); ?>');" aria-hidden="true"></div>
   <div class="pp-concept-nichiyo__overlay" aria-hidden="true"></div>
   <div class="pp-nichiyo-glow pp-nichiyo-glow--bl" aria-hidden="true"></div>
   <div class="pp-container-shared">

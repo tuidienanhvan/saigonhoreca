@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
         phoneInput.addEventListener('blur', function () {
             const val = this.value.trim();
             if (val && !validatePhone(val)) {
-                this.setCustomValidity('Số điện thoại không đúng định dạng VN (VD: 0961 868 968)');
+                this.setCustomValidity('Số điện thoại không đúng định dạng VN (VD: 0901 304 365)');
                 this.reportValidity();
             } else {
                 this.setCustomValidity('');
@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const phoneVal = phoneInput.value.trim();
             if (!validatePhone(phoneVal)) {
                 gtmPush({ event: 'form_error', form_id: 'contact-form', error_type: 'validation', error_field: 'phone' });
-                phoneInput.setCustomValidity('Số điện thoại không đúng định dạng VN (VD: 0961 868 968)');
+                phoneInput.setCustomValidity('Số điện thoại không đúng định dạng VN (VD: 0901 304 365)');
                 phoneInput.reportValidity();
                 return;
             }

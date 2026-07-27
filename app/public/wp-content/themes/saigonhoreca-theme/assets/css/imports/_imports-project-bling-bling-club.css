@@ -1,0 +1,8 @@
+/* Project bundle — bling-bling-club only. */
+@import "../../../template-parts/project-pillar/bling-bling-club/hero.css";
+@import "../../../template-parts/project-pillar/bling-bling-club/intro.css";
+@import "../../../template-parts/project-pillar/bling-bling-club/concept.css";
+@import "../../../template-parts/project-pillar/bling-bling-club/partnership.css";
+@import "../../../template-parts/project-pillar/bling-bling-club/specs.css";
+@import "../../../template-parts/project-pillar/bling-bling-club/gallery.css";
+@import "../../../single-project/bling-bling-club.css";

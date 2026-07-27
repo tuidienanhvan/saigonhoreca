@@ -1,0 +1,574 @@
+{
+  "research_date": "2026-07-18",
+  "source_note": "Dữ liệu thật crawl từ website chính hãng jemi.es (bản tiếng Anh /en/) ngày 18/07/2026. Thông số kỹ thuật lấy từ các trang danh mục (undercounter/dome/tunnel/utensil) vì trang chi tiết từng model render bằng JavaScript nên không đọc được qua fetch. Mỗi model đều có source_url thật đang hoạt động. image_url để trống do ảnh sản phẩm nạp động (JS), không lấy được URL tĩnh — cần bổ sung thủ công.",
+  "brand": "Jemi-Spain",
+  "groups": [
+    {
+      "group_name": "Undercounter Glasswashers & Dishwashers - Tech Line",
+      "group_name_vi": "Máy Rửa Ly & Chén Gầm Bàn - Dòng Tech Line",
+      "source_urls": [
+        "https://jemi.es/en/dishwasher/undercounter/tech-line/",
+        "https://jemi.es/en/dishwasher/front-loading/"
+      ],
+      "models": [
+        {
+          "model": "GS 35",
+          "title": "GS 35",
+          "description_en": "Tech Line undercounter glasswasher. The functional and robust range of dishwashers that meets the basic needs of the catering industry. AISI 304 stainless steel construction, electromechanical controls, rotary wash system, double-walled structure and magnetic safety door.",
+          "specs": {
+            "baskets_per_hour": "800 glasses/hour (2 min cycle)",
+            "basket_size_mm": "350 x 350",
+            "power_kw": "2.71 (230V/1~/50Hz)",
+            "dimensions_mm": "400 x 495 x 625; useful height 220"
+          },
+          "origin": "Spain",
+          "heat_source": "Electric",
+          "image_url": "https://jemi.es/wp-content/uploads/2025/10/GS-35-1.png",
+          "source_url": "https://jemi.es/en/products/gs-35/",
+          "seo_title": "GS 35 - Jemi",
+          "seo_description": ""
+        },
+        {
+          "model": "GS 40S",
+          "title": "GS 40S",
+          "description_en": "Tech Line undercounter glasswasher with 400x400 basket. AISI 304 stainless steel, electromechanical control, rotary wash system, double-walled structure, magnetic safety door and digital temperature display.",
+          "specs": {
+            "baskets_per_hour": "1000 glasses/hour (2 min cycle)",
+            "basket_size_mm": "400 x 400",
+            "power_kw": "2.71 (230V/1~/50Hz)",
+            "dimensions_mm": "450 x 540 x 690; useful height 220"
+          },
+          "origin": "Spain",
+          "heat_source": "Electric",
+          "image_url": "https://jemi.es/wp-content/uploads/2025/10/GS-40-S.png",
+          "source_url": "https://jemi.es/en/products/gs-40s/",
+          "seo_title": "GS 40S - Jemi",
+          "seo_description": ""
+        },
+        {
+          "model": "GS 40",
+          "title": "GS 40",
+          "description_en": "Tech Line undercounter glasswasher/dishwasher with 290 mm useful height for both glasses and plates. AISI 304 stainless steel, rotary wash system, double-walled structure, magnetic safety door and digital temperature display.",
+          "specs": {
+            "baskets_per_hour": "1000 glasses/hour or 360 plates/hour (2 min cycle)",
+            "basket_size_mm": "400 x 400",
+            "power_kw": "2.71 (230V/1~/50Hz)",
+            "dimensions_mm": "450 x 540 x 740; useful height 290"
+          },
+          "origin": "Spain",
+          "heat_source": "Electric",
+          "image_url": "https://jemi.es/wp-content/uploads/2025/10/GS-40-2.png",
+          "source_url": "https://jemi.es/en/products/gs-40/",
+          "seo_title": "GS 40 - Jemi",
+          "seo_description": ""
+        },
+        {
+          "model": "GS 50",
+          "title": "GS 50",
+          "description_en": "Tech Line undercounter dishwasher/glasswasher with 500x500 basket and 360 mm useful height. AISI 304 stainless steel, rotary wash system, double-walled structure, magnetic safety door and digital temperature display.",
+          "specs": {
+            "baskets_per_hour": "1440 glasses/hour or 480 plates/hour (2 min cycle)",
+            "basket_size_mm": "500 x 500",
+            "power_kw": "2.88 (230V/1~/50Hz)",
+            "dimensions_mm": "550 x 620 x 820; useful height 360"
+          },
+          "origin": "Spain",
+          "heat_source": "Electric",
+          "image_url": "https://jemi.es/wp-content/uploads/2025/10/GS-50.png",
+          "source_url": "https://jemi.es/en/products/gs-50/",
+          "seo_title": "GS 50 - Jemi",
+          "seo_description": ""
+        },
+        {
+          "model": "GS 50 3P",
+          "title": "GS 50 3P",
+          "description_en": "Tech Line undercounter dishwasher, three-phase version of the GS 50 with higher installed power. AISI 304 stainless steel, rotary wash system, double-walled structure and magnetic safety door.",
+          "specs": {
+            "baskets_per_hour": "~1440 glasses/hour / 480 plates/hour (2 min cycle)",
+            "basket_size_mm": "500 x 500",
+            "power_kw": "6.28 (400V/3~/50Hz)",
+            "dimensions_mm": "550 x 620 x 820; useful height 360"
+          },
+          "origin": "Spain",
+          "heat_source": "Electric",
+          "image_url": "https://jemi.es/wp-content/uploads/2025/10/GS-50-3P.png",
+          "source_url": "https://jemi.es/en/products/gs-50-3p/",
+          "seo_title": "GS 50 3P - Jemi",
+          "seo_description": ""
+        },
+        {
+          "model": "GS 60",
+          "title": "GS 60",
+          "description_en": "Tech Line undercounter dishwasher able to wash plates, GN trays and 600x400 boxes. AISI 304 stainless steel, rotary wash system, double-walled structure and magnetic safety door.",
+          "specs": {
+            "baskets_per_hour": "580 plates/hour; 120 GN trays/hour; 30 boxes (600x400)/hour",
+            "basket_size_mm": "500 x 500 / 600 x 500 / boxes 600 x 400",
+            "power_kw": "6 (400V/3~/50Hz)",
+            "dimensions_mm": "550 x 690 x 820; useful height 360"
+          },
+          "origin": "Spain",
+          "heat_source": "Electric",
+          "image_url": "https://jemi.es/wp-content/uploads/2026/04/GS60@2x.webp",
+          "source_url": "https://jemi.es/en/products/gs-60-2/",
+          "seo_title": "GS 60 - Jemi",
+          "seo_description": ""
+        }
+      ]
+    },
+    {
+      "group_name": "Undercounter Glasswashers & Dishwashers - Pro Line",
+      "group_name_vi": "Máy Rửa Ly & Chén Gầm Bàn - Dòng Pro Line (cao cấp)",
+      "source_urls": [
+        "https://jemi.es/en/undercounter/pro-line/"
+      ],
+      "models": [
+        {
+          "model": "KX 40",
+          "title": "KX 40",
+          "description_en": "Pro Line undercounter glasswasher, the most advanced washing range ensuring a perfect finish on crystal-effect wine glasses. Full stainless steel construction, electronic display, combined wash system, double-walled structure, electronically controlled dispensers and PTCR rinse system; 4 programmable cycles.",
+          "specs": {
+            "baskets_per_hour": "360 wine glasses/hour (4 programmes)",
+            "basket_size_mm": "400 x 400",
+            "power_kw": "3.11 (230V/1~/50Hz)",
+            "dimensions_mm": "480 x 550 x 740; useful height 290"
+          },
+          "origin": "Spain",
+          "heat_source": "Electric",
+          "image_url": "https://jemi.es/wp-content/uploads/2025/10/KX-40-1.png",
+          "source_url": "https://jemi.es/en/products/kx-40/",
+          "seo_title": "KX 40 - Jemi",
+          "seo_description": ""
+        },
+        {
+          "model": "KX 50",
+          "title": "KX 50",
+          "description_en": "Pro Line undercounter glasswasher/dishwasher with 500x500 basket. Full stainless steel construction, electronic display, combined wash system, double-walled structure, electronic dispensers and PTCR rinse system; 4 programmable cycles.",
+          "specs": {
+            "baskets_per_hour": "600 glasses/hour (4 programmes)",
+            "basket_size_mm": "500 x 500",
+            "power_kw": "3.28 (230V/1~/50Hz)",
+            "dimensions_mm": "580 x 650 x 820; useful height 360"
+          },
+          "origin": "Spain",
+          "heat_source": "Electric",
+          "image_url": "https://jemi.es/wp-content/uploads/2025/10/KX-50-2.png",
+          "source_url": "https://jemi.es/en/products/kx-50/",
+          "seo_title": "KX 50 - Jemi",
+          "seo_description": ""
+        },
+        {
+          "model": "KX 50 3P",
+          "title": "KX 50 3P",
+          "description_en": "Pro Line undercounter glasswasher/dishwasher, three-phase version of the KX 50. Full stainless steel construction, electronic display, combined wash system, PTCR rinse system; 4 programmable cycles.",
+          "specs": {
+            "baskets_per_hour": "600 glasses/hour (4 programmes)",
+            "basket_size_mm": "500 x 500",
+            "power_kw": "6.28 (400V/3~/50Hz)",
+            "dimensions_mm": "580 x 650 x 820; useful height 360"
+          },
+          "origin": "Spain",
+          "heat_source": "Electric",
+          "image_url": "https://jemi.es/wp-content/uploads/2025/10/KS-50-3P.png",
+          "source_url": "https://jemi.es/en/products/kx-50-3p/",
+          "seo_title": "KX 50 3P - Jemi",
+          "seo_description": ""
+        }
+      ]
+    },
+    {
+      "group_name": "Hood-type / Pass-through Dishwashers",
+      "group_name_vi": "Máy Rửa Chén Nắp Chụp / Băng Chuyền Nhúng (Hood/Pass-through)",
+      "source_urls": [
+        "https://jemi.es/en/dishwasher/dome/tech-line/",
+        "https://jemi.es/en/dishwasher/dome/pro-line/"
+      ],
+      "models": [
+        {
+          "model": "GS 83 E",
+          "title": "GS 83 E",
+          "description_en": "Tech Line hood-type (dome) dishwasher, new generation of compact professional dishwashing. AISI 304 stainless steel, one-piece embedded tank with rounded edges, security door with locking mechanism, triple-filter system and digital wash/rinse thermometers.",
+          "specs": {
+            "baskets_per_hour": "540 plates/hour (2 min cycle)",
+            "basket_size_mm": "500 x 500",
+            "power_kw": "6.75 (optional 9.75) (400V/3~/50Hz)",
+            "dimensions_mm": "775 x 850 x 1480; useful height 440"
+          },
+          "origin": "Spain",
+          "heat_source": "Electric",
+          "image_url": "https://jemi.es/wp-content/uploads/2025/12/Rectangle-70.png",
+          "source_url": "https://jemi.es/en/products/gs-83-e/",
+          "seo_title": "GS 83 E - Jemi",
+          "seo_description": ""
+        },
+        {
+          "model": "GS 83 M",
+          "title": "GS 83 M",
+          "description_en": "Tech Line hood-type (dome) dishwasher with Super-Wash rapid cycle. AISI 304 stainless steel, one-piece embedded tank, security door, triple-filter system and digital thermometers.",
+          "specs": {
+            "baskets_per_hour": "640-900 plates/hour (1-2 min cycle)",
+            "basket_size_mm": "500 x 500",
+            "power_kw": "7.5 (optional 10.5) (400V/3~/50Hz)",
+            "dimensions_mm": "775 x 850 x 1480; useful height 440"
+          },
+          "origin": "Spain",
+          "heat_source": "Electric",
+          "image_url": "https://jemi.es/wp-content/uploads/2025/12/Rectangle-70.png",
+          "source_url": "https://jemi.es/en/products/gs-83-m/",
+          "seo_title": "GS 83 M - Jemi",
+          "seo_description": ""
+        },
+        {
+          "model": "GS 85",
+          "title": "GS 85",
+          "description_en": "Tech Line hood-type (dome) dishwasher handling plates and GN trays, with larger useful height and Super-Wash cycle. AISI 304 stainless steel, one-piece embedded tank, security door and triple-filter system.",
+          "specs": {
+            "baskets_per_hour": "540/960 plates/hour; 120 GN trays/hour (1-2 min cycle)",
+            "basket_size_mm": "500 x 500 / 500 x 600",
+            "power_kw": "7.5 (optional 11) (400V/3~/50Hz)",
+            "dimensions_mm": "880 x 850 x 1540; useful height 500"
+          },
+          "origin": "Spain",
+          "heat_source": "Electric",
+          "image_url": "https://jemi.es/wp-content/uploads/2025/10/GS-83_M.png",
+          "source_url": "https://jemi.es/en/products/gs-85/",
+          "seo_title": "GS 85 - Jemi",
+          "seo_description": ""
+        },
+        {
+          "model": "GS 102 ML",
+          "title": "GS 102 ML",
+          "description_en": "Tech Line high-capacity hood-type (dome) dishwasher with multiple basket configurations and Super-Wash cycle. AISI 304 stainless steel, one-piece embedded tank, security door and triple-filter system.",
+          "specs": {
+            "baskets_per_hour": "Variable (multiple basket configs); 1-2 min cycle",
+            "basket_size_mm": "Multiple configurations",
+            "power_kw": "15 (optional 22) (400V/3~/50Hz)",
+            "dimensions_mm": "1410 x 850 x 1540; useful height 500"
+          },
+          "origin": "Spain",
+          "heat_source": "Electric",
+          "image_url": "https://jemi.es/wp-content/uploads/2026/04/GS-102-ML@2x.webp",
+          "source_url": "https://jemi.es/en/products/gs-102-ml/",
+          "seo_title": "GS 102 ML - Jemi",
+          "seo_description": ""
+        },
+        {
+          "model": "KX 83 E",
+          "title": "KX 83 E",
+          "description_en": "Pro Line hood-type (dome) dishwasher, the most advanced washing range ensuring a perfect finish on crystal-effect glasses, crockery and cutlery. Full stainless steel construction, electronic display, combined wash system, double-walled structure and PTCR rinse system; 4 programmable cycles.",
+          "specs": {
+            "baskets_per_hour": "640 plates/hour (4 programmes)",
+            "basket_size_mm": "500 x 500",
+            "power_kw": "6.75 (optional 9.75) (400V/3~/50Hz)",
+            "dimensions_mm": "775 x 850 x 1480; useful height 440"
+          },
+          "origin": "Spain",
+          "heat_source": "Electric",
+          "image_url": "https://jemi.es/wp-content/uploads/2025/10/KX-83-E-1.png",
+          "source_url": "https://jemi.es/en/products/kx-83/",
+          "seo_title": "KX 83 E - Jemi",
+          "seo_description": ""
+        }
+      ]
+    },
+    {
+      "group_name": "Rack Conveyor Dishwashers (drag/basket tunnel)",
+      "group_name_vi": "Máy Rửa Chén Băng Chuyền Kéo Rổ (Rack Conveyor)",
+      "source_urls": [
+        "https://jemi.es/en/dishwasher/car-wash-tunnel/arrastre/"
+      ],
+      "models": [
+        {
+          "model": "AT 1280",
+          "title": "AT 1280",
+          "description_en": "Basket/rack conveyor tunnel dishwasher with modular configuration (wash + rinse). Fixed stainless steel wash arms, AISI 304 construction and electromechanical controls.",
+          "specs": {
+            "baskets_per_hour": "65 baskets/hour",
+            "basket_size_mm": "Standard 500 x 500 rack",
+            "power_kw": "31",
+            "dimensions_mm": "Length 1280 (module)"
+          },
+          "origin": "Spain",
+          "heat_source": "Electric",
+          "image_url": "https://jemi.es/wp-content/uploads/2025/12/A1280@2x.webp",
+          "source_url": "https://jemi.es/en/products/a-1280/",
+          "seo_title": "AT 1280 - Jemi",
+          "seo_description": ""
+        },
+        {
+          "model": "AT 1580 T",
+          "title": "AT 1580 T",
+          "description_en": "Basket/rack conveyor tunnel dishwasher with integrated drying module (wash + rinse/dry). Fixed stainless steel wash arms, AISI 304 construction and electromechanical controls.",
+          "specs": {
+            "baskets_per_hour": "65 baskets/hour",
+            "basket_size_mm": "Standard 500 x 500 rack",
+            "power_kw": "37",
+            "dimensions_mm": "Length 1580 (module)"
+          },
+          "origin": "Spain",
+          "heat_source": "Electric",
+          "image_url": "https://jemi.es/wp-content/uploads/2025/12/A1580T@2x.webp",
+          "source_url": "https://jemi.es/en/products/a-1580-t/",
+          "seo_title": "AT 1580 T - Jemi",
+          "seo_description": ""
+        },
+        {
+          "model": "IN 1520",
+          "title": "IN 1520",
+          "description_en": "Basket/rack conveyor tunnel dishwasher (wash + rinse) with higher throughput. Fixed stainless steel wash arms, AISI 304 construction and electromechanical controls.",
+          "specs": {
+            "baskets_per_hour": "85-170 baskets/hour",
+            "basket_size_mm": "Standard 500 x 500 rack",
+            "power_kw": "36",
+            "dimensions_mm": "Length 1280 (module)"
+          },
+          "origin": "Spain",
+          "heat_source": "Electric",
+          "image_url": "https://jemi.es/wp-content/uploads/2025/12/A1520@2x.webp",
+          "source_url": "https://jemi.es/en/products/a-1520/",
+          "seo_title": "IN 1520 - Jemi",
+          "seo_description": ""
+        },
+        {
+          "model": "AT 1820 T",
+          "title": "AT 1820 T",
+          "description_en": "Basket/rack conveyor tunnel dishwasher with integrated drying module (wash + rinse/dry). Fixed stainless steel wash arms, AISI 304 construction and electromechanical controls.",
+          "specs": {
+            "baskets_per_hour": "85-170 baskets/hour",
+            "basket_size_mm": "Standard 500 x 500 rack",
+            "power_kw": "45",
+            "dimensions_mm": "Length 1280 (module)"
+          },
+          "origin": "Spain",
+          "heat_source": "Electric",
+          "image_url": "https://jemi.es/wp-content/uploads/2025/12/A1820T@2x.webp",
+          "source_url": "https://jemi.es/en/products/a-1820-t/",
+          "seo_title": "AT 1820 T - Jemi",
+          "seo_description": ""
+        },
+        {
+          "model": "AT 1800",
+          "title": "AT 1800",
+          "description_en": "Basket/rack conveyor tunnel dishwasher (wash + rinse). Fixed stainless steel wash arms, AISI 304 construction and electromechanical controls.",
+          "specs": {
+            "baskets_per_hour": "85-170 baskets/hour",
+            "basket_size_mm": "Standard 500 x 500 rack",
+            "power_kw": "36",
+            "dimensions_mm": "Length 1800 (module)"
+          },
+          "origin": "Spain",
+          "heat_source": "Electric",
+          "image_url": "https://jemi.es/wp-content/uploads/2025/12/A1800@2x.webp",
+          "source_url": "https://jemi.es/en/products/a-1800/",
+          "seo_title": "AT 1800 - Jemi",
+          "seo_description": ""
+        },
+        {
+          "model": "AT 2100 T",
+          "title": "AT 2100 T",
+          "description_en": "Basket/rack conveyor tunnel dishwasher with integrated drying module (wash + rinse/dry). Fixed stainless steel wash arms, AISI 304 construction and electromechanical controls.",
+          "specs": {
+            "baskets_per_hour": "85-170 baskets/hour",
+            "basket_size_mm": "Standard 500 x 500 rack",
+            "power_kw": "45",
+            "dimensions_mm": "Length 2100 (module)"
+          },
+          "origin": "Spain",
+          "heat_source": "Electric",
+          "image_url": "https://jemi.es/wp-content/uploads/2025/12/A2100T@2x.webp",
+          "source_url": "https://jemi.es/en/products/a-2100-t/",
+          "seo_title": "AT 2100 T - Jemi",
+          "seo_description": ""
+        },
+        {
+          "model": "AT 2140",
+          "title": "AT 2140",
+          "description_en": "Basket/rack conveyor tunnel dishwasher with pre-wash stage (pre-wash/wash + rinse). Fixed stainless steel wash arms, AISI 304 construction and electromechanical controls.",
+          "specs": {
+            "baskets_per_hour": "85-170 baskets/hour",
+            "basket_size_mm": "Standard 500 x 500 rack",
+            "power_kw": "45",
+            "dimensions_mm": "Length 2140 (module)"
+          },
+          "origin": "Spain",
+          "heat_source": "Electric",
+          "image_url": "https://jemi.es/wp-content/uploads/2025/12/A2140@2x.webp",
+          "source_url": "https://jemi.es/en/products/a-2140/",
+          "seo_title": "AT 2140 - Jemi",
+          "seo_description": ""
+        },
+        {
+          "model": "A2440-T",
+          "title": "A2440-T",
+          "description_en": "Basket/rack conveyor tunnel dishwasher with integrated drying module (wash + rinse/dry). Fixed stainless steel wash arms, AISI 304 construction and electromechanical controls.",
+          "specs": {
+            "baskets_per_hour": "85-170 baskets/hour",
+            "basket_size_mm": "Standard 500 x 500 rack",
+            "power_kw": "37",
+            "dimensions_mm": "Length 2440 (module)"
+          },
+          "origin": "Spain",
+          "heat_source": "Electric",
+          "image_url": "https://jemi.es/wp-content/uploads/2025/12/A2440T@2x.webp",
+          "source_url": "https://jemi.es/en/products/a2440-t/",
+          "seo_title": "A2440-T - Jemi",
+          "seo_description": ""
+        },
+        {
+          "model": "AT 2700 T",
+          "title": "AT 2700 T",
+          "description_en": "Largest basket/rack conveyor tunnel dishwasher with pre-wash and integrated drying (pre-wash/wash + rinse/dry). Fixed stainless steel wash arms, AISI 304 construction and electromechanical controls.",
+          "specs": {
+            "baskets_per_hour": "105-210 baskets/hour",
+            "basket_size_mm": "Standard 500 x 500 rack",
+            "power_kw": "50",
+            "dimensions_mm": "Length 2700 (module)"
+          },
+          "origin": "Spain",
+          "heat_source": "Electric",
+          "image_url": "https://jemi.es/wp-content/uploads/2025/12/A2700T@2x.webp",
+          "source_url": "https://jemi.es/en/products/a-2700-t/",
+          "seo_title": "AT 2700 T - Jemi",
+          "seo_description": ""
+        }
+      ]
+    },
+    {
+      "group_name": "Flight-type / Chain Conveyor Dishwashers",
+      "group_name_vi": "Máy Rửa Chén Băng Chuyền Xích (Flight-type, không dùng rổ)",
+      "source_urls": [
+        "https://jemi.es/en/dishwasher/car-wash-tunnel/cadena/"
+      ],
+      "models": [
+        {
+          "model": "C 7070 TT ECO",
+          "title": "C 7070 TT ECO",
+          "description_en": "Flight-type (chain) conveyor dishwasher for continuous washing without baskets, where maximum work capacity and efficiency are required. AISI 304 stainless steel, electromechanical controls, fixed stainless steel wash arms, double-walled safety doors and double filtering system.",
+          "specs": {
+            "baskets_per_hour": "1100-1700 trays/hour",
+            "basket_size_mm": "Flight-type (no basket)",
+            "power_kw": "85 (400V III+N / 230V III, 50/60Hz)",
+            "dimensions_mm": "1280 x 830 x 1715; useful height 420"
+          },
+          "origin": "Spain",
+          "heat_source": "Electric",
+          "image_url": "https://jemi.es/wp-content/uploads/2025/12/C7070-TT-EH@2x.webp",
+          "source_url": "https://jemi.es/en/products/c-7070-tt-eco/",
+          "seo_title": "C 7070 TT ECO - Jemi",
+          "seo_description": ""
+        },
+        {
+          "model": "C 5830 T",
+          "title": "C 5830 T",
+          "description_en": "Flight-type (chain) conveyor dishwasher for continuous plate washing without baskets. AISI 304 stainless steel, electromechanical controls, fixed stainless steel wash arms, double-walled safety doors and double filtering system.",
+          "specs": {
+            "baskets_per_hour": "3250-5000 plates/hour",
+            "basket_size_mm": "Flight-type (no basket)",
+            "power_kw": "67 (400V III+N / 230V III, 50/60Hz)",
+            "dimensions_mm": "1280 x 830 x 1715; useful height 420"
+          },
+          "origin": "Spain",
+          "heat_source": "Electric",
+          "image_url": "https://jemi.es/wp-content/uploads/2026/01/Rectangle-70-1-2.png",
+          "source_url": "https://jemi.es/en/products/c-5830-t/",
+          "seo_title": "C 5830 T - Jemi",
+          "seo_description": ""
+        },
+        {
+          "model": "C 4650 T",
+          "title": "C 4650 T",
+          "description_en": "Flight-type (chain) conveyor dishwasher for continuous plate washing without baskets. AISI 304 stainless steel, electromechanical controls, fixed stainless steel wash arms, double-walled safety doors and double filtering system.",
+          "specs": {
+            "baskets_per_hour": "2600-4000 plates/hour",
+            "basket_size_mm": "Flight-type (no basket)",
+            "power_kw": "59 (400V III+N / 230V III, 50/60Hz)",
+            "dimensions_mm": "4650 x 830 x 1715; useful height 420"
+          },
+          "origin": "Spain",
+          "heat_source": "Electric",
+          "image_url": "https://jemi.es/wp-content/uploads/2026/01/Rectangle-70-4.png",
+          "source_url": "https://jemi.es/en/products/c-4650-t/",
+          "seo_title": "C 4650 T - Jemi",
+          "seo_description": ""
+        }
+      ]
+    },
+    {
+      "group_name": "Utensil / Pot Washers (spray gun washers)",
+      "group_name_vi": "Máy Rửa Nồi / Dụng Cụ Bếp (Utensil/Pot Washer)",
+      "source_urls": [
+        "https://jemi.es/en/dishwasher-2/",
+        "https://jemi.es/en/dishwasher/utensil-washers/"
+      ],
+      "models": [
+        {
+          "model": "GS 60 PLUS",
+          "title": "GS 60 PLUS",
+          "description_en": "Utensil washer for cleaning pots, pans, trays and large utensils quickly and to the highest hygiene standards. AISI 304 stainless steel, electromechanical controls, combined wash system and digital thermometers.",
+          "specs": {
+            "baskets_per_hour": "30 hampers/hour (2 min cycle)",
+            "basket_size_mm": "500 x 500 / 500 x 600",
+            "power_kw": "6.75 (400V/3~/50Hz)",
+            "dimensions_mm": "555 x 760 x 1415"
+          },
+          "origin": "Spain",
+          "heat_source": "Electric",
+          "image_url": "https://jemi.es/wp-content/uploads/2025/10/GS-60-PLUS.png",
+          "source_url": "https://jemi.es/en/products/gs-60-plus/",
+          "seo_title": "GS 60 PLUS - Jemi",
+          "seo_description": ""
+        },
+        {
+          "model": "GSP 44",
+          "title": "GSP 44",
+          "description_en": "Utensil/pot washer for pots, pans, trays and large utensils, with adjustable wash cycles. AISI 304 stainless steel, electromechanical controls, combined wash system and filtration with digital thermometers.",
+          "specs": {
+            "baskets_per_hour": "30-15 baskets/hour (2 & 4 min adjustable)",
+            "basket_size_mm": "555 x 697 x 110",
+            "power_kw": "8.0 (400V/3~/50Hz)",
+            "dimensions_mm": "675 x 880 x 1580"
+          },
+          "origin": "Spain",
+          "heat_source": "Electric",
+          "image_url": "https://jemi.es/wp-content/uploads/2026/04/GSP-44-CERRADA-NUEVA-scaled.jpg",
+          "source_url": "https://jemi.es/en/products/gsp-44/",
+          "seo_title": "GSP 44 - Jemi",
+          "seo_description": ""
+        },
+        {
+          "model": "GSP 45",
+          "title": "GSP 45",
+          "description_en": "Larger utensil/pot washer for pots, pans, trays and large utensils, with adjustable wash cycles. AISI 304 stainless steel, electromechanical controls, combined wash system and filtration with digital thermometers.",
+          "specs": {
+            "baskets_per_hour": "30-15 baskets/hour (2 & 4 min adjustable)",
+            "basket_size_mm": "742 x 697 x 110",
+            "power_kw": "11.6 (400V/3~/50Hz)",
+            "dimensions_mm": "865 x 880 x 1680"
+          },
+          "origin": "Spain",
+          "heat_source": "Electric",
+          "image_url": "https://jemi.es/wp-content/uploads/2026/04/GSP-45-CERRADA-NUEVA-scaled.jpg",
+          "source_url": "https://jemi.es/en/products/gsp-45/",
+          "seo_title": "GSP 45 - Jemi",
+          "seo_description": ""
+        },
+        {
+          "model": "GSP 46",
+          "title": "GSP 46",
+          "description_en": "Largest utensil/pot washer for high-volume kitchens, with adjustable wash cycles. AISI 304 stainless steel, electromechanical controls, combined wash system and filtration with digital thermometers.",
+          "specs": {
+            "baskets_per_hour": "30-15 baskets/hour (2 & 4 min adjustable)",
+            "basket_size_mm": "1263 x 705 x 110",
+            "power_kw": "17.2 (400V/3~/50Hz)",
+            "dimensions_mm": "1385 x 880 x 1680"
+          },
+          "origin": "Spain",
+          "heat_source": "Electric",
+          "image_url": "https://jemi.es/wp-content/uploads/2026/02/GSP-46-CERRADA-NUEVA-scaled.jpg",
+          "source_url": "https://jemi.es/en/products/gsp-46/",
+          "seo_title": "GSP 46 - Jemi",
+          "seo_description": ""
+        }
+      ]
+    }
+  ]
+}

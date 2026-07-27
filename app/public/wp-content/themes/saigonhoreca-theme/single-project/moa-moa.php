@@ -1,7 +1,7 @@
 <?php
 /**
  * Single Project Template — Casa Maria
- * Thumbnail: 2025/04/du-an-sheh-fung.jpg
+ * Thumbnail: moa-moa/moa-moa-thumbnail-project-cover.webp
  *
  * Auto-routed via inc/core/pillar-routes.php for /du-an/moa-moa/.
  *

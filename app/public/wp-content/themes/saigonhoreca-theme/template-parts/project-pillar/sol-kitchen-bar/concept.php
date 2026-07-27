@@ -13,7 +13,7 @@ if (!defined('ABSPATH')) exit;
     <div class="pp-concept-sol__layout">
       <div class="pp-concept-sol__visual scroll-reveal">
         <div class="pp-image-container-shared pp-frame-sol pp-frame-sol--tall">
-          <img src="<?php echo sgh_img('sol-kitchen-bar/thi-cong-02.jpg'); ?>" alt="<?php echo esc_attr__('Khảo sát và thi công cải tạo khu bếp Sol Kitchen & Bar quận 7', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
+          <img src="<?php echo sgh_img('sol-kitchen-bar/sol-kitchen-bar-lap-dat-hut-mui-va-thiet-bi-inox-bep.webp'); ?>" alt="<?php echo esc_attr__('Lắp đặt hệ thống hút mùi inox và thiết bị bếp inox còn bọc nilon trong khu bếp Sol Kitchen & Bar Quận 7 giai đoạn thi công', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
           <div class="pp-image-caption-shared"><?php echo esc_html__('Đội kỹ thuật khảo sát từng thiết bị hiện hữu trước khi tích hợp vào hệ thống bếp mới.', 'saigonhoreca'); ?></div>
         </div>
       </div>

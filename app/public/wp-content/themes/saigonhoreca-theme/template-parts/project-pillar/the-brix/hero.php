@@ -8,14 +8,15 @@ if (!defined('ABSPATH')) exit;
 $uri = get_template_directory_uri();
 ?>
 <section class="pp-hero-brix">
-    <div class="pp-hero-brix__media" style="background-image:url('<?php echo sgh_img('the-brix/the-brix-khong-gian-be-boi-ngoai-troi.jpg'); ?>');"></div>
+    <div class="pp-hero-brix__media" style="background-image:url('<?php echo sgh_img('the-brix/the-brix-thumbnail-project-cover.webp'); ?>');"></div>
     <div class="pp-hero-brix__overlay" aria-hidden="true"></div>
 
     <div class="pp-ambient-glow-brix pp-ambient-glow-brix--top-left" aria-hidden="true"></div>
     <div class="pp-ambient-glow-brix pp-ambient-glow-brix--bottom-right" aria-hidden="true"></div>
 
     <div class="pp-container-shared">
-      <div class="pp-hero-brix__content">
+      <!-- Removed text content overlay as the background image already contains baked-in titles
+<div class="pp-hero-brix__content">
         <div class="pp-hero-brix__badge">
           <?php echo esc_html__('Bistro nhiệt đới bên hồ bơi · Quận 2', 'saigonhoreca'); ?>
         </div>
@@ -26,6 +27,7 @@ $uri = get_template_directory_uri();
         <p class="pp-hero-brix__subtitle"><?php echo esc_html__('Nơi thiên nhiên nhiệt đới hòa quyện cùng ẩm thực Âu tinh tế - một ốc đảo xanh mát bên hồ bơi, tách biệt khỏi nhịp sống đô thị ồn ào.', 'saigonhoreca'); ?></p>
         <div class="pp-hero-brix__divider" aria-hidden="true"></div>
       </div>
+-->
     </div>
 
     <div class="pp-hero-brix__scroll-indicator">

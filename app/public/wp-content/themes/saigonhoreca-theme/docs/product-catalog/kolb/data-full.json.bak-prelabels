@@ -1,0 +1,1832 @@
+{
+  "research_date": "2026-07-18",
+  "source_note": "Nguồn dữ liệu: (1) Trang nhà sản xuất kolbcn.com (Kolb Huizhou Ltd. — gốc Thụy Sĩ 1935, thuộc tập đoàn Wiesheu Đức) là nguồn CHÍNH cho mô tả, thông số kỹ thuật, ảnh sản phẩm, tiêu đề & meta SEO; danh sách gói KBS lấy qua endpoint AJAX Ajax.GetCustomSolutionList.php của chính website. (2) Các trang đã bị gỡ khỏi menu (Atoll 800/800T id 234, Atoll 8008/8008T id 236, Fryer id 261, Laguna II id 306, Atollspeed Power id 308) được phục hồi từ bản lưu Wayback Machine (archive.org) — có ghi URL snapshot trong source_url. (3) Nhà phân phối: alliedmetals.com & alliedfse.com (Singapore), gastro.co.id (Indonesia), binhminhgroups.com.vn (Việt Nam) cho các cấu hình/SKU không có trang riêng trên site nhà máy (ví dụ K01-0604D2P0K, K01-0604D3F0K, K03-86X4EPHRK, K130PG-0604110, K45-0121AS4, K42-0221AA5, các SKU K04/K05 của Gastro). KHÔNG bao gồm: giá bán (không công bố), file PDF datasheet trong Download Center (yêu cầu đăng nhập hội viên), và một số mã cấu hình Laguna chỉ xuất hiện trong tên combo của đại lý (K01-...FH/...D10H/...FHK) — các mã này là cấu hình mã hoá của cùng dòng Deck Oven Laguna (số tầng + kích thước khoang + kiểu điều khiển), thông số nằm trong ma trận kích thước/công suất của trang Laguna gốc chứ không có trang sản phẩm độc lập, nên không tách thành model riêng để tránh bịa thông số. examasjaya.com (Malaysia) chỉ là trang thương hiệu một trang, không có trang sản phẩm riêng lẻ.",
+  "brand": "Kolb",
+  "groups": [
+    {
+      "group_name": "Deck Oven — Laguna",
+      "group_name_vi": "Lò tầng (Deck Oven) Laguna",
+      "source_urls": [
+        "https://www.kolbcn.com/html/en/products-cid-169.html"
+      ],
+      "models": [
+        {
+          "model": "Laguna (base line)",
+          "title": "Deck Oven Laguna",
+          "description_en": "from Kolb is one of the most recognized item from Kolb ranges. With its outstanding energy efficiency, classic design, powerful steam system, and user friendly operation system, Laguna has become the preferred baking oven for customers looking for quality, such as luxury hotels, bakery chains, restaurants and food factories. In 2015, Laguna is upgraded to provide even more friendly user experience.",
+          "specs": {
+            "Optional Inside Dimensions WxD(mm) — Power Supply without steam / with steam per deck": "xem từng kích thước bên dưới",
+            "600 x 400": "2.8kW / 4.4A (không hơi) — 3.8kW / 6.3A (có hơi)",
+            "600 x 800": "4.2kW / 6.7A (không hơi) — 6.2kW / 9.6A (có hơi)",
+            "800 x 600": "4.0kW / 6.9A (không hơi) — 6.0kW / 9.1A (có hơi)",
+            "1200 x 600": "5.4kW / 8.6A (không hơi) — 8.4kW / 13.6A (có hơi)",
+            "1200 x 800": "6.3kW / 10.2A (không hơi) — 9.3kW / 14.6A (có hơi)",
+            "1200 x 1200": "8.5kW / 13.5A (không hơi) — 11.5kW / 19.7A (có hơi)",
+            "Optional Height of Baking Chamber Inside / Outside (mm)": "170 / 325 hoặc 220 / 365",
+            "Color for Choosing": "Sliver，Black",
+            "Voltage": "380-400V / 3ph / PE / 50-60Hz",
+            "Standard accessories": "Tray Hook for Deck Oven",
+            "Product advantages": "Different components to make your own configuration | The pre-heat timer for Deck Oven，outstanding insulation，combination design，we aim at optimizing your work efficiency | Independent Steam Heating System for baking all kinds of European breads | Offered different deck height，baking chamber sizes，and other options for your choice | The Turning-Glass is officially launched in 2018，ergonomic design makes cleaning easier",
+            "Optional configuration": "Programmable PCB/Touchscreen PCB, Imported Stone, Metal Baking Plates, Steam, Steam flag, Steam control Function（for Touchscreen）, USB, Under Proofer and Tray support, Underframe with Tray support, Steamhood",
+            "Optional accessories": "Baking Tray, Deck Oven Stand, Deck Oven Setter, Baking Trolley"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2024/03/18/20240318_085504_0000009.png",
+          "source_url": "https://www.kolbcn.com/html/en/product-detail/2020/07/15/190.html",
+          "seo_title": "Deck Oven Laguna - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "Laguna Easy",
+          "title": "Deck Oven Laguna Easy",
+          "description_en": "Laguna Easy is the newest member of the Kolb’s Laguna series. It inherits Laguna's high stability, high quality and smart design, and is equipped with a simple and refined operating system, which is more suitable for your simple and pure concept bakery.",
+          "specs": {
+            "Size": "Power Supply per deck",
+            "Optional Inside Dimensions WxD(mm)": "600 x 400 / 2.8kW / 4.4A",
+            "600 x 800": "4.2kW / 6.7A",
+            "800 x 600": "4.0kW / 6.9A",
+            "1200 x 600": "5.4kW / 8.6A",
+            "1200 x 800": "6.3kW / 10.2A",
+            "Optional Height of Baking Chamber Inside / Outside (mm)": "170 / 325",
+            "Color for Choosing": "Sliver",
+            "Voltage": "380-400V / 3qh / PE / 50-60Hz",
+            "Standard accessories": "Tray Hook for Deck Oven",
+            "Product advantages": "Different components to make your own configuration | Outstanding insulation，combination design，we aim at optimizing your work efficiency | Offered different deck height，baking chamber sizes，and other options for your choice | Heat protected large glass door and high quality metal baking plates for easy observation and cleaning",
+            "Optional configuration": "Under Proofer and Tray support, Underframe with Tray support, Steamhood"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2020/08/25/20200825_173939_0000017.png",
+          "source_url": "https://www.kolbcn.com/html/en/product-detail/2020/08/24/314.html",
+          "seo_title": "Deck Oven Laguna Easy - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "Laguna II",
+          "title": "Deck Oven Laguna II",
+          "description_en": "Laguna II features upgraded heating & steam technology, which ensures stable baking temperature and humidity during the entire baking process to reach ideal result for both Asian bread and European bread applications.",
+          "specs": {
+            "Optional Inside Dimensions WxD(mm) — Power Supply without steam / with steam per deck": "xem từng kích thước bên dưới",
+            "600 x 400": "2.8kW / 4.4A (không hơi) — 3.8kW / 6.3A (có hơi)",
+            "600 x 800": "4.2kW / 6.7A (không hơi) — 6.2kW / 9.6A (có hơi)",
+            "800 x 600": "4.0kW / 6.9A (không hơi) — 6.0kW / 9.1A (có hơi)",
+            "1200 x 600": "5.4kW / 8.6A (không hơi) — 8.4kW / 13.6A (có hơi)",
+            "1200 x 800": "6.3kW / 10.2A (không hơi) — 9.3kW / 14.6A (có hơi)",
+            "1200 x 1200": "8.5kW / 13.5A (không hơi) — 11.5kW / 19.7A (có hơi)",
+            "Optional Height of Baking Chamber Inside / Outside (mm)": "170 / 325 hoặc 220 / 365",
+            "Color for Choosing": "Sliver，Black",
+            "Voltage": "380-400V / 3ph / PE / 50-60Hz",
+            "Standard accessories": "Tray Hook for Deck Oven"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2020/09/03/20200903_164845_0000037.png",
+          "source_url": "https://web.archive.org/web/20211207173520/https://www.kolbcn.com/html/en/product-detail/2020/08/18/306.html",
+          "seo_title": "Deck Oven Laguna II - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "K01-0604D2P0K",
+          "title": "K01-0604D2P0K - Allied Metals",
+          "description_en": "Laguna 2 Deck Oven with Under Proofer. Suitable for show kitchen, coffee shop, and bakery. High energy eficiency feature, smart design, strong built and reliable. It comes with 2 chambers that can fit 2 trays of 600x400mm for each chamber, and 24 trays for proofer.",
+          "specs": {
+            "Configuration": "Laguna 2-deck (600x400) + under proofer",
+            "Proofer capacity": "24 trays",
+            "Baking chamber": "600x400 mm",
+            "Reference line": "Deck Oven Laguna"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.alliedmetals.com/wp-content/uploads/2024/03/7.-Kolb-2-Deck-Oven-with-Under-Proofer.jpg",
+          "source_url": "https://www.alliedmetals.com/product/k01-0604d2p0k/",
+          "seo_title": "K01-0604D2P0K - Allied Metals",
+          "seo_description": "Laguna 2 Deck Oven with Under Proofer. Suitable for show kitchen, coffee shop, and bakery. High energy eficiency feature, smart design, strong built and reliable. It comes with 2 chambers that can fit 2 trays of 600x400mm for each chamber, and 24 trays for proofer."
+        },
+        {
+          "model": "K01-0604D3F0K",
+          "title": "K01-0604D3F0K - Allied Metals",
+          "description_en": "Laguna 3 Deck Oven with underframe for 6 bakery trays (600x400) is the most professional with feature high energy efficiency, smart design, strong built and reliability. Each deck comes with separate standard control panel, and can fit 1 baking tray each.",
+          "specs": {
+            "Configuration": "Laguna 3-deck (600x400) + underframe for 6 trays",
+            "Baking chamber": "600x400 mm",
+            "Reference line": "Deck Oven Laguna"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.alliedmetals.com/wp-content/uploads/2024/03/8.-Kolb-3-Deck-Oven-with-Stand.jpg",
+          "source_url": "https://www.alliedmetals.com/product/k01-0604d3f0k/",
+          "seo_title": "K01-0604D3F0K - Allied Metals",
+          "seo_description": "Laguna 3 Deck Oven with underframe for 6 bakery trays (600x400) is the most professional with feature high energy efficiency, smart design, strong built and reliability. Each deck comes with separate standard control panel, and can fit 1 baking tray each."
+        }
+      ]
+    },
+    {
+      "group_name": "Convection Oven — Atoll",
+      "group_name_vi": "Lò đối lưu (Convection Oven) Atoll",
+      "source_urls": [
+        "https://www.kolbcn.com/html/en/products-cid-170.html"
+      ],
+      "models": [
+        {
+          "model": "Atoll 900 / 900s / 900L",
+          "title": "Convection Oven Atoll 900",
+          "description_en": "Suitable for baking all kinds of pastry products, such as croissants, cookies, biscuits, tarts, puffs and all kinds of French pastry and Chinese pastry. Convection Oven Atoll 900 maintains the consistent expansion and gloss of the kolb furnace, further improving the color uniformity of the produc, the maximum capacity up to 5 trays. Suitable for all kinds of bakery, cafe, restaurant, hotel front and back, it is the ideal smart oven to create the atmosphere of baking.",
+          "specs": {
+            "Product": "Atoll900",
+            "Product Model": "Atoll900s / Atoll900L",
+            "Max. Capacity": "5 levels 5 pcs 600x400mm / 10 levels 10 pcs 600x400mm",
+            "Outside Dimensions WxDxH(mm)": "930x1026x700 / 930x1026x1100",
+            "Color for Choosing": "Sliver，Black / Sliver，Black",
+            "Heating power": "8.1kw / 16.2kw",
+            "Electricity Demand": "12.5A/380v / 25A/380v",
+            "Standard accessories": "No",
+            "Product advantages": ""
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2024/03/14/20240314_160733_0000004.png",
+          "source_url": "https://www.kolbcn.com/html/en/product-detail/2024/03/14/320.html",
+          "seo_title": "Convection Oven Atoll 900 - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "Atoll 600 / 600T (K03-64X3D00RK / K03-64X3E00RK)",
+          "title": "Convection Oven Atoll 600/600T",
+          "description_en": "Only needs 230V/15A, it is a perfect 'show' unit for creating an open-kitchen atmosphere in a limited space, while still offering consistent baking result. It is ideal for small bakeries, coffee shops, hotel lobby bars and snack shops.",
+          "specs": {
+            "Product Model": "K03-64X3D00RK/K03-64X3E00RK",
+            "Outside Dimensions WxDxH(mm)": "600x720x558",
+            "Max. Capacity": "3 levels 3 pcs 440x350mm",
+            "Color for Choosing": "Sliver，Black",
+            "Heating power": "3.3kW",
+            "Current": "220-230V,50/60Hz,PE/15A",
+            "standard accessories": "3 Baking Trays （440x350mm）",
+            "Product advantages": "Features a removable water tank, which allows you to operate the oven anywhere you want with a steam option. | Double glass design, easy for observation and cleaning | Electromagnetic door lock - the door opens automatically when the baking program finishes | USB port option for easy program storage and transfer, for chain operations | Control system for your choice: programmable PCB or 7\" capacitive Touchscreen PCB"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2024/03/18/20240318_085807_0000012.png",
+          "source_url": "https://www.kolbcn.com/html/en/product-detail/2020/07/15/188.html",
+          "seo_title": "Convection Oven Atoll 600/600T - Kolb Huizhou Ltd.",
+          "seo_description": "Only needs 230V/15A, it is a perfect 'show' unit for creating an open-kitchen atmosphere in a limited space, while still offering consistent baking result. It is ideal for small bakeries, coffee shops, hotel lobby bars and snack shops.-Kolb Huizhou Ltd."
+        },
+        {
+          "model": "Atoll 800 / 800T (K03-86X4D00RK / E00RK / D00PK)",
+          "title": "Convection Oven Atoll 800/800T",
+          "description_en": "Atoll 800 is able to offer sizable productivity while delivering consistent baking result identical to larger professional ovens. It is specially designed for open-kitchen bakeries to bake all kinds of puff pastries, baguette, tarts and other snacks, both fresh and frozen.",
+          "specs": {
+            "Product Model": "K03-86X4D00RK / K03-86X4E00RK / K03-86X4D00PK",
+            "Outside Dimensions WxDxH(mm)": "840x935x625",
+            "Max. Capacity": "4 levels 4 pcs 600x400mm",
+            "Color for Choosing": "Sliver，Black",
+            "Heating power": "9kW",
+            "Electricity Demand": "380-400V 50/60Hz 3N, PE / 13.5A",
+            "Standard accessories": "4 Baking Trays (600x400mm)",
+            "Product advantages": "Newly designed double glass design, more easier for observation and cleaning | Bidirectional hot air circulation for even baking results | Electromagnetic door lock - the door opens automatically when the baking program finishes | USB port option for easy program storage and transfer, for chain operations | Other models：Smaller size Atoll 600 and Puff version available for your option",
+            "Optional configuration": "Programmable PCB/Touchscreen PCB/Puff PCB, Remote operation Network system, Automatic Cleaning system"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2020/08/31/20200831_175616_0000005.png",
+          "source_url": "https://web.archive.org/web/20231203031341/https://www.kolbcn.com/html/en/product-detail/2020/07/21/234.html",
+          "seo_title": "Convection Oven Atoll 800/800T - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "Atoll 8008 / 8008T (K03-86X8D00RK / E00RK)",
+          "title": "Convection Oven Atoll 8008/8008T",
+          "description_en": "Atoll 800 is able to offer sizable productivity while delivering consistent baking result identical to larger professional ovens. It is specially designed for open-kitchen bakeries to bake all kinds of puff pastries, baguette, tarts and other snacks, both fresh and frozen.",
+          "specs": {
+            "Product Model": "K03-86X8D00RK/K03-86X8E00RK",
+            "Outside Dimensions WxDxH(mm)": "840x950x1120",
+            "Max. Capacity": "8 levels 8 pcs 600x400 mm",
+            "Color for Choosing": "Silver, Black",
+            "Heating power": "18kW",
+            "Electicity Demand": "380-400V, 50-60Hz, 3N, PE/27A",
+            "Product advantages": "Newly designed double glass design, more easier for observation and cleaning | Bidirectional hot air circulation for even baking results | USB port option for easy program storage and transfer, for chain operations | Other models：Optional Atoll8010 series, same appearance, larger capacity"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2021/07/14/20210714_172355_0000001.png",
+          "source_url": "https://web.archive.org/web/20230607075745/https://www.kolbcn.com/html/en/product-detail/2020/07/21/236.html",
+          "seo_title": "Convection Oven Atoll 8008/8008T - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "K03-86X4EPHRK (Atoll 800 + proofer)",
+          "title": "K03-86X4EPHRK - Allied Metals",
+          "description_en": "Atoll 800 with Proofer designed for all kinds of frozen and fresh dough especially for puff pastry such as croissant, danish, puff, egg tart. Equipped with as many as 240 programs with step baking setting, ideal for frozen dough baking. Auto cleaning system. The oven can fit 4 baking trays at 600x400 mm sizing, and 14 trays for proofer. ** Steam hood upon request.",
+          "specs": {
+            "Configuration": "Atoll 800 convection oven (4 trays 600x400) + under proofer",
+            "Programs": "up to 240 with step baking",
+            "Cleaning": "Auto cleaning system"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.alliedmetals.com/wp-content/uploads/2024/05/3.-Kolb-Atoll-800-with-Proofer.jpg",
+          "source_url": "https://www.alliedmetals.com/product/k03-86x4ephrk/",
+          "seo_title": "K03-86X4EPHRK - Allied Metals",
+          "seo_description": "Atoll 800 with Proofer designed for all kinds of frozen and fresh dough especially for puff pastry such as croissant, danish, puff, egg tart. Equipped with as many as 240 programs with step baking setting, ideal for frozen dough baking. Auto cleaning system. The oven can fit 4 baking trays at 600x400 mm sizing, and 14 trays for proofer. ** Steam hood upon request."
+        }
+      ]
+    },
+    {
+      "group_name": "Atollspeed — Speed Ovens",
+      "group_name_vi": "Lò tốc độ Atollspeed (Speed Oven)",
+      "source_urls": [
+        "https://www.kolbcn.com/html/en/product-detail/2020/07/15/186.html",
+        "https://www.kolbcn.com/html/en/product-detail/2020/07/21/233.html",
+        "https://www.kolbcn.com/html/en/product-detail/2020/08/24/307.html",
+        "https://www.kolbcn.com/html/en/product-detail/2020/07/21/232.html"
+      ],
+      "models": [
+        {
+          "model": "Atollspeed 300H (K02-3003TIS)",
+          "title": "Atollspeed 300H",
+          "description_en": "Light meal concepts, featuring healthy better tasting food, mixed and matched with coffee, have become a leading trend in the catering industry. Atollspeed solution helps offer efficient menu management, fast service, and improved quality food.",
+          "specs": {
+            "Product Model": "K02-3003TIS",
+            "Outside Dimensions WxDxH(mm)": "445x687x570mm",
+            "Baking Chamber WxDxH(mm)": "317x311x170mm",
+            "Pizza Size": "12\"",
+            "Color for Choosing": "Silver，Black",
+            "Heating power": "3.3kW",
+            "Electricity Demand": "220-230V, 50Hz, PE/15A",
+            "Product advantages": "Perfect marriage between impingement & microwave technology, shorten time to serve customers by 5-10 times | Maintenance free catalytic filter, no need for connection with any exhaustion system | Upgraded Atollspeed Touch Solution, Specially Designed for You | Large chamber size for a 12\" Pizza"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric (impingement + microwave speed oven)",
+          "image_url": "https://www.kolbcn.com/upload_img/2021/04/22/20210422_102849_0000015.png",
+          "source_url": "https://www.kolbcn.com/html/en/product-detail/2020/07/15/186.html",
+          "seo_title": "Atollspeed 300H - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "Atollspeed 400H (K02-4003TIS)",
+          "title": "Atollspeed 400H",
+          "description_en": "Light meal concepts, featuring healthy better tasting food, mixed and matched with coffee, have become a leading trend in the catering industry. Atollspeed solution helps offer efficient menu management, fast service, and improved quality food. Since it was first launched in 2011, the 4th generation of Atollspeed has become available, with the ‘H Range’ which features a Chinese operation meru, a smaller footprint with a larger baking chamber, and more colours to choose from.",
+          "specs": {
+            "Product Model": "K02-4003TIS",
+            "Outside Dimensions WxDxH(mm)": "583x730x592mm",
+            "Baking Chamber WxDxH(mm)": "450x350x200mm",
+            "Pizza Size": "14\"",
+            "Color for Choosing": "Sliver",
+            "Heating power": "4.9kW",
+            "Electricity Demand": "380-400V, 50Hz, 3N, PE/16A",
+            "Product advantages": "Perfect marriage between impingement & microwave technology, shorten time to serve customers by 7-12 times | Maintenance free catalytic filter, no need for connection with any exhaustion system | Upgraded Atollspeed Touch Solution, Specially Designed for You | Large chamber size for a 14\" Pizza"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric (impingement + microwave speed oven)",
+          "image_url": "https://www.kolbcn.com/upload_img/2021/04/22/20210422_103543_0000021.png",
+          "source_url": "https://www.kolbcn.com/html/en/product-detail/2020/07/21/233.html",
+          "seo_title": "Atollspeed 400H - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "Atollspeed Easy (K02-3005TIS)",
+          "title": "Atollspeed Easy",
+          "description_en": "Light meal concepts, featuring healthy better tasting food, mixed and matched with coffee, have become a leading trend in the catering industry. Atollspeed solution helps offer efficient menu management, fast service, and improved quality food.",
+          "specs": {
+            "Product Model": "K02-3005TIS",
+            "Outside Dimensions WxDxH(mm)": "445x687x570mm",
+            "Baking Chamber WxDxH(mm)": "317x311x170mm",
+            "Pizza Size": "12\"",
+            "Color for Choosing": "Silver",
+            "Heating power": "2.7kW",
+            "Electricity Demand": "220-230V, 50Hz, PE/12A",
+            "Product advantages": "Perfect marriage between impingement & microwave technology, shorten time to serve customers by 5-10 times | Maintenance free catalytic filter, no need for connection with any exhaustion system | Upgraded Atollspeed Touch Solution, Specially Designed for You | Large chamber size for a 12\" Pizza"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric (impingement + microwave speed oven)",
+          "image_url": "https://www.kolbcn.com/upload_img/2021/04/22/20210422_101258_0000003.png",
+          "source_url": "https://www.kolbcn.com/html/en/product-detail/2020/08/24/307.html",
+          "seo_title": "Atollspeed Easy - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "Atollspeed 300T (K02-3001TIS)",
+          "title": "Atollspeed 300T",
+          "description_en": "Light meal concepts, featuring healthy better tasting food, mixed and matched with coffee, have become a leading trend in the catering industry. Atollspeed solution helps offer efficient menu management, fast service, and improved quality food. Since it was first launched in 2011, the 4th generation of Atollspeed has become available, with the ‘H Range’ which features a Chinese operation meru, a smaller footprint with a larger baking chamber, and more colours to choose from.",
+          "specs": {
+            "Product Model": "K02-3001TIS",
+            "Outside Dimensions WxDxH(mm)": "570x735x435mm",
+            "Baking Chamber WxDxH(mm)": "317x311x170mm",
+            "Pizza Size": "12\"",
+            "Color for Choosing": "Sliver",
+            "Heating power": "3.3kW",
+            "Electricity Demand": "220-230V, 50Hz, PE/15A",
+            "Product advantages": "Perfect marriage between impingement & microwave technology, shorten time to serve customers by 5-10 times | Maintenance free catalytic filter, no need for connection with any exhaustion system | Upgraded Atollspeed Touch Solution, Specially Designed for You | Large chamber size for a 12\" Pizza"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric (impingement + microwave speed oven)",
+          "image_url": "https://www.kolbcn.com/upload_img/2020/08/10/20200810_125945_0000037.png",
+          "source_url": "https://www.kolbcn.com/html/en/product-detail/2020/07/21/232.html",
+          "seo_title": "Atollspeed 300T - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "Atollspeed Power (K02-3006TIS)",
+          "title": "Atollspeed Power",
+          "description_en": "Light meal concepts, featuring healthy better tasting food, mixed and matched with coffee, have become a leading trend in the catering industry. Atollspeed solution helps offer efficient menu management, fast service, and improved quality food.（This product is currently only available in China）",
+          "specs": {
+            "Product Model": "K02-3006TIS",
+            "Outside Dimensions WxDxH(mm)": "445x767x570mm",
+            "Baking Chamber WxDxH(mm)": "317x311x170mm",
+            "Pizza Size": "12\"",
+            "Color for Choosing": "Silver，Black",
+            "Heating power": "3.8kW",
+            "Electricity Demand": "220-230V, 50Hz, PE/17A"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric (impingement + microwave speed oven)",
+          "image_url": "https://www.kolbcn.com/upload_img/2021/04/22/20210422_105220_0000029.png",
+          "source_url": "https://web.archive.org/web/20250712121748/https://www.kolbcn.com/html/en/product-detail/2020/08/24/308.html",
+          "seo_title": "Atollspeed Power - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        }
+      ]
+    },
+    {
+      "group_name": "Rotary Rack Oven — Tornado",
+      "group_name_vi": "Lò xoay giá (Rotary Oven) Tornado",
+      "source_urls": [
+        "https://www.kolbcn.com/html/en/product-detail/2020/07/21/244.html"
+      ],
+      "models": [
+        {
+          "model": "K05-0608T1HS",
+          "title": "Rotary Oven Tornado (K05-0608T1HS)",
+          "description_en": "Rotary Oven Tornado is a highly efficient oven built for heavy-duty production, while offering perfect baking results and energy efficieny. It is ideal for large bakeries, supermarkets, food factorie and hotels.",
+          "specs": {
+            "Product Model": "K05-0608T1HS",
+            "Outside Dimensions WxDxH(mm)": "1595x1985x2566",
+            "Tray Capacity": "1 trolley (600x800mm)",
+            "Heating power": "56kW",
+            "Electricity Demand": "380-400V, 50/60Hz, 3N, PE/80.8A",
+            "Product advantages": "Newly upgraded speed-control offers 5 different speeds for your choice, you can bake any French pastries with easy control | Unique fresh air management to reach great crispiness | Powerful steam system with adjustable time and strength | Turning platform for better operation safety | Key components from European suppliers to ensure stability"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2020/07/31/20200731_153615_0000075.png",
+          "source_url": "https://www.kolbcn.com/html/en/product-detail/2020/07/21/244.html",
+          "seo_title": "Rotary Oven Tornado - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "K05-0604T1HS",
+          "title": "Rotary Oven Tornado (K05-0604T1HS)",
+          "description_en": "Rotary Oven Tornado is a highly efficient oven built for heavy-duty production, while offering perfect baking results and energy efficieny. It is ideal for large bakeries, supermarkets, food factorie and hotels.",
+          "specs": {
+            "Product Model": "K05-0604T1HS",
+            "Outside Dimensions WxDxH(mm)": "1280x1693x2466",
+            "Tray Capacity": "1 trolley (600x400mm)",
+            "Heating power": "34.6kW",
+            "Electricity Demand": "380-400V, 50/60Hz, 3N, PE/53A",
+            "Product advantages": "Newly upgraded speed-control offers 5 different speeds for your choice, you can bake any French pastries with easy control | Unique fresh air management to reach great crispiness | Powerful steam system with adjustable time and strength | Turning platform for better operation safety | Key components from European suppliers to ensure stability"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2020/07/31/20200731_153615_0000075.png",
+          "source_url": "https://www.kolbcn.com/html/en/product-detail/2020/07/21/244.html",
+          "seo_title": "Rotary Oven Tornado - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "K05-0608T1H",
+          "title": "Rotary Oven Tornado (K05-0608T1H)",
+          "description_en": "Jual Kolb K05-0608T1H — Dukungan instalasi &amp; purna jual GASTRO sejak 1986. Konsultasikan kebutuhan Anda.",
+          "specs": {
+            "Note": "Distributor SKU without the factory '-S' suffix; same Tornado single-trolley rotary rack oven."
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.gastro.co.id/assets/products/kolb-k05-0608t1h.jpg",
+          "source_url": "https://www.gastro.co.id/product/kolb-k05-0608t1h",
+          "seo_title": "Jual Kolb K05-0608T1H Komersial · GASTRO",
+          "seo_description": "Jual Kolb K05-0608T1H — Dukungan instalasi &amp; purna jual GASTRO sejak 1986. Konsultasikan kebutuhan Anda."
+        },
+        {
+          "model": "K05-0604T1H",
+          "title": "Rotary Oven Tornado (K05-0604T1H)",
+          "description_en": "Jual Kolb K05-0604T1H — Dukungan instalasi &amp; purna jual GASTRO sejak 1986. Konsultasikan kebutuhan Anda.",
+          "specs": {
+            "Note": "Distributor SKU without the factory '-S' suffix; same Tornado single-trolley rotary rack oven."
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.gastro.co.id/assets/products/kolb-k05-0604t1h.jpg",
+          "source_url": "https://www.gastro.co.id/product/kolb-k05-0604t1h",
+          "seo_title": "Jual Kolb K05-0604T1H Komersial · GASTRO",
+          "seo_description": "Jual Kolb K05-0604T1H — Dukungan instalasi &amp; purna jual GASTRO sejak 1986. Konsultasikan kebutuhan Anda."
+        }
+      ]
+    },
+    {
+      "group_name": "Pizza Oven",
+      "group_name_vi": "Lò nướng Pizza",
+      "source_urls": [
+        "https://www.kolbcn.com/html/en/product-detail/2020/07/21/243.html"
+      ],
+      "models": [
+        {
+          "model": "K04-9879DS-1",
+          "title": "K04-9879DS-1 Single deck Pizza Oven",
+          "description_en": "KOLB Pizza Oven is specially designed for authentic Italian pizza.",
+          "specs": {
+            "Product Model": "K04-9879DS-1 Single deck Pizza Oven",
+            "Outside Dimensions WxDxH(mm)": "962x795x515",
+            "Baking Chamber WxDxH(mm)": "645x645x160",
+            "Heating power": "3.3kW",
+            "Electricity Demand": "220-230V, 50/60Hz, PE/15A",
+            "Product advantages": "Maximum baking temperature reaches 420℃, combine with special pizza stone for the super crispy crust of authentic Italian pizza | Highly efficient, twice as fast as major counterparts in the market | Large baking chamber can bake 4 pieces of 12” pizza at the same time | Digital PCB control, get the exact settings you are looking for without extra cost"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2021/10/09/20211009_134657_0000004.jpg",
+          "source_url": "https://www.kolbcn.com/html/en/product-detail/2020/07/21/243.html",
+          "seo_title": "Pizza Oven - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "K04-9879D1-1",
+          "title": "K04-9879D1-1 Single deck Pizza Oven",
+          "description_en": "KOLB Pizza Oven is specially designed for authentic Italian pizza.",
+          "specs": {
+            "Product Model": "K04-9879D1-1 Single deck Pizza Oven",
+            "Outside Dimensions WxDxH(mm)": "962x795x515",
+            "Baking Chamber WxDxH(mm)": "645x645x160",
+            "Heating power": "3.3kW",
+            "Electricity Demand": "380-400V, 50/60Hz, 3N, PE/15A",
+            "Product advantages": "Maximum baking temperature reaches 420℃, combine with special pizza stone for the super crispy crust of authentic Italian pizza | Highly efficient, twice as fast as major counterparts in the market | Large baking chamber can bake 4 pieces of 12” pizza at the same time | Digital PCB control, get the exact settings you are looking for without extra cost"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2021/10/09/20211009_134657_0000004.jpg",
+          "source_url": "https://www.kolbcn.com/html/en/product-detail/2020/07/21/243.html",
+          "seo_title": "Pizza Oven - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "K04-9779D2-1",
+          "title": "K04-9779D2-1 Double deck Pizza Oven",
+          "description_en": "KOLB Pizza Oven is specially designed for authentic Italian pizza.",
+          "specs": {
+            "Product Model": "K04-9779D2-1 Double deck Pizza Oven",
+            "Outside Dimensions WxDxH(mm)": "962x795x820",
+            "Baking Chamber WxDxH(mm)": "645x645x160",
+            "Heating power": "6.6kW",
+            "Electricity Demand": "380-400V, 50/60Hz, 3N, PE/10A",
+            "Product advantages": "Maximum baking temperature reaches 420℃, combine with special pizza stone for the super crispy crust of authentic Italian pizza | Highly efficient, twice as fast as major counterparts in the market | Large baking chamber can bake 4 pieces of 12” pizza at the same time | Digital PCB control, get the exact settings you are looking for without extra cost"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2021/10/09/20211009_134657_0000004.jpg",
+          "source_url": "https://www.kolbcn.com/html/en/product-detail/2020/07/21/243.html",
+          "seo_title": "Pizza Oven - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "K04-9879D1",
+          "title": "Kolb Pizza Oven K04-9879D1",
+          "description_en": "Jual Kolb K04-9879D1 — Dukungan instalasi &amp; purna jual GASTRO sejak 1986. Konsultasikan kebutuhan Anda.",
+          "specs": {
+            "Note": "Distributor SKU (Gastro Indonesia) of the Kolb K04 electric pizza deck oven line."
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.gastro.co.id/assets/products/kolb-k04-9879d1.jpg",
+          "source_url": "https://www.gastro.co.id/product/kolb-k04-9879d1",
+          "seo_title": "Jual Kolb K04-9879D1 Komersial · GASTRO",
+          "seo_description": "Jual Kolb K04-9879D1 — Dukungan instalasi &amp; purna jual GASTRO sejak 1986. Konsultasikan kebutuhan Anda."
+        },
+        {
+          "model": "K04-9879D2",
+          "title": "Kolb Pizza Oven K04-9879D2",
+          "description_en": "Jual Kolb K04-9879D2 — Dukungan instalasi &amp; purna jual GASTRO sejak 1986. Konsultasikan kebutuhan Anda.",
+          "specs": {
+            "Note": "Distributor SKU (Gastro Indonesia) of the Kolb K04 electric pizza deck oven line."
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.gastro.co.id/assets/products/kolb-k04-9879d2.jpg",
+          "source_url": "https://www.gastro.co.id/product/kolb-k04-9879d2",
+          "seo_title": "Jual Kolb K04-9879D2 Komersial · GASTRO",
+          "seo_description": "Jual Kolb K04-9879D2 — Dukungan instalasi &amp; purna jual GASTRO sejak 1986. Konsultasikan kebutuhan Anda."
+        },
+        {
+          "model": "K04-9879D3",
+          "title": "Kolb Pizza Oven K04-9879D3",
+          "description_en": "Jual Kolb K04-9879D3 — Dukungan instalasi &amp; purna jual GASTRO sejak 1986. Konsultasikan kebutuhan Anda.",
+          "specs": {
+            "Note": "Distributor SKU (Gastro Indonesia) of the Kolb K04 electric pizza deck oven line."
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.gastro.co.id/assets/products/kolb-k04-9879d3.jpg",
+          "source_url": "https://www.gastro.co.id/product/kolb-k04-9879d3",
+          "seo_title": "Jual Kolb K04-9879D3 Komersial · GASTRO",
+          "seo_description": "Jual Kolb K04-9879D3 — Dukungan instalasi &amp; purna jual GASTRO sejak 1986. Konsultasikan kebutuhan Anda."
+        }
+      ]
+    },
+    {
+      "group_name": "Proofer",
+      "group_name_vi": "Tủ ủ bột (Proofer)",
+      "source_urls": [
+        "https://www.kolbcn.com/html/en/products-cid-172.html"
+      ],
+      "models": [
+        {
+          "model": "K11-RE64D30G (Reach-in Proofer)",
+          "title": "Reach-in Proofer",
+          "description_en": "KOLB Proofer is able to accelerate the fermentation process of dough with pre-set temperature and humidity. KOLB Reach-in Proofer is designed for in-store bakeries or small workshops.",
+          "specs": {
+            "Product Model": "K11-RE64D30G",
+            "Outside Dimensions WxDxH(mm)": "725x1115x1990",
+            "Baking Chamber WxDxH(mm)": "15 level 30 pcs (600x400)",
+            "Heating power": "1.1kW",
+            "Electricity Demand": "220-230V, 50/60Hz, PE/5A",
+            "Product advantages": "Use of high quality PU for better insulation, hence energy savings | Imported fans with duel air outlets for better evenness of temperature and humidity | PCB control panel for more precise control of humidity and temperature | Larger proofing capacity of 30 baking trays (600x400mm)"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2020/09/03/20200903_172526_0000053.png",
+          "source_url": "https://www.kolbcn.com/html/en/product-detail/2020/07/21/239.html",
+          "seo_title": "Reach-in Proofer - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "K11-RO68D1",
+          "title": "Roll-in Proofer (K11-RO68D1)",
+          "description_en": "KOLB Proofer is able to accelerate the fermentation process of dough with pre-set temperature and humidity. KOLB Roll-in Proofer is suitable to handle bulk volume of dough, it is designed for large bakery, hotel and workshop.",
+          "specs": {
+            "Product Model": "K11-RO68D1",
+            "Door hinge": "Single door (Hinge Right or Left)",
+            "Dimensions WxDxH(mm)": "1155x1135x2165",
+            "Dimensions when door open (mm)": "D=1940",
+            "Rack Capacity (600x800mm)": "1 trolley",
+            "Heating power": "6.2kW",
+            "Electricity Demand": "380-400V, 50/60Hz, 3N, PE/13.6A",
+            "Required accessories": "Climate Unit (K11-CU01D)",
+            "Product advantages": "Use of high quality PU for better insulation, hence energy savings | Imported fans with duel air outlets for better evenness of temperature and humidity | PCB control panel for more precise control of humidity and temperature | Stable humidity and temperature for optimal dough quality | Proofing capacity from 1 trolley（600x800mm）to 6 trolleys"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2021/10/26/20211026_175841_0000013.png",
+          "source_url": "https://www.kolbcn.com/html/en/product-detail/2020/07/21/240.html",
+          "seo_title": "Roll-in Proofer - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "K11-RO68D2",
+          "title": "Roll-in Proofer (K11-RO68D2)",
+          "description_en": "KOLB Proofer is able to accelerate the fermentation process of dough with pre-set temperature and humidity. KOLB Roll-in Proofer is suitable to handle bulk volume of dough, it is designed for large bakery, hotel and workshop.",
+          "specs": {
+            "Product Model": "K11-RO68D2",
+            "Door hinge": "Double or Four door",
+            "Dimensions WxDxH(mm)": "1155x1980x2165",
+            "Dimensions when door open (mm)": "D=2787",
+            "Rack Capacity (600x800mm)": "2 trolleys",
+            "Heating power": "6.2kW",
+            "Electricity Demand": "380-400V, 50/60Hz, 3N, PE/13.6A",
+            "Required accessories": "Climate Unit (K11-CU01D)",
+            "Product advantages": "Use of high quality PU for better insulation, hence energy savings | Imported fans with duel air outlets for better evenness of temperature and humidity | PCB control panel for more precise control of humidity and temperature | Stable humidity and temperature for optimal dough quality | Proofing capacity from 1 trolley（600x800mm）to 6 trolleys"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2021/10/26/20211026_175841_0000013.png",
+          "source_url": "https://www.kolbcn.com/html/en/product-detail/2020/07/21/240.html",
+          "seo_title": "Roll-in Proofer - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "K11-RO68D4",
+          "title": "Roll-in Proofer (K11-RO68D4)",
+          "description_en": "KOLB Proofer is able to accelerate the fermentation process of dough with pre-set temperature and humidity. KOLB Roll-in Proofer is suitable to handle bulk volume of dough, it is designed for large bakery, hotel and workshop.",
+          "specs": {
+            "Product Model": "K11-RO68D4",
+            "Door hinge": "Single door (Hinge Right or Left) / Double or Four door",
+            "Dimensions WxDxH(mm)": "2000x2030x2165",
+            "Dimensions when door open (mm)": "D=3652.5",
+            "Rack Capacity (600x800mm)": "4 trolleys",
+            "Heating power": "6.2kW",
+            "Electricity Demand": "380-400V, 50/60Hz, 3N, PE/13.6A",
+            "Required accessories": "Climate Unit (K11-CU01D)",
+            "Product advantages": "Use of high quality PU for better insulation, hence energy savings | Imported fans with duel air outlets for better evenness of temperature and humidity | PCB control panel for more precise control of humidity and temperature | Stable humidity and temperature for optimal dough quality | Proofing capacity from 1 trolley（600x800mm）to 6 trolleys"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2021/10/26/20211026_175841_0000013.png",
+          "source_url": "https://www.kolbcn.com/html/en/product-detail/2020/07/21/240.html",
+          "seo_title": "Roll-in Proofer - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "K11-RO68D6",
+          "title": "Roll-in Proofer (K11-RO68D6)",
+          "description_en": "KOLB Proofer is able to accelerate the fermentation process of dough with pre-set temperature and humidity. KOLB Roll-in Proofer is suitable to handle bulk volume of dough, it is designed for large bakery, hotel and workshop.",
+          "specs": {
+            "Product Model": "K11-RO68D6",
+            "Door hinge": "Single door (Hinge Right or Left) / Double or Four door",
+            "Dimensions WxDxH(mm)": "2570x2030x2165",
+            "Dimensions when door open (mm)": "D=3650",
+            "Rack Capacity (600x800mm)": "6 trolleys",
+            "Heating power": "6.2kW",
+            "Electricity Demand": "380-400V, 50/60Hz, 3N, PE/13.6A",
+            "Required accessories": "Climate Unit (K11-CU01D)",
+            "Product advantages": "Use of high quality PU for better insulation, hence energy savings | Imported fans with duel air outlets for better evenness of temperature and humidity | PCB control panel for more precise control of humidity and temperature | Stable humidity and temperature for optimal dough quality | Proofing capacity from 1 trolley（600x800mm）to 6 trolleys"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2021/10/26/20211026_175841_0000013.png",
+          "source_url": "https://www.kolbcn.com/html/en/product-detail/2020/07/21/240.html",
+          "seo_title": "Roll-in Proofer - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "K11-CU01D (Climate Unit)",
+          "title": "Climate Unit",
+          "description_en": "KOLB Climate Unit is specially designed for KOLB Roll-in Proofer, which can accurately control the temperature and humidity inside the Proofer, so that the dough can get a more ideal proofing environment.",
+          "specs": {
+            "Product Model": "K11-CU01D",
+            "Dimensions (WxDxH)": "658x180x1915",
+            "Heating power": "6.2kW",
+            "Electricity Deman": "380-400V, 50/60Hz, 3N, PE/13.6A"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2020/07/31/20200731_154203_0000085.png",
+          "source_url": "https://www.kolbcn.com/html/en/product-detail/2020/07/21/241.html",
+          "seo_title": "Climate Unit - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        }
+      ]
+    },
+    {
+      "group_name": "Retarder Proofer",
+      "group_name_vi": "Tủ ủ hoãn (Retarder Proofer)",
+      "source_urls": [
+        "https://www.kolbcn.com/html/en/products-cid-174.html"
+      ],
+      "models": [
+        {
+          "model": "K12-RE64D32-1G",
+          "title": "Reach-in Retarder Proofer (K12-RE64D32-1G)",
+          "description_en": "KOLB Retarder Proofer accurately control humidity and temperature to accelerate or delay the proofing process dough so that proofed dough can be ready at any time required. KOLB Reach-in Retarder Proofer designed for open-kitchen bakeries, which allows the operator to pre-set programs and automatically control the fermentation process within 24 hours.",
+          "specs": {
+            "Product Model": "K12-RE64D32-1G",
+            "Option": "2-door Retarder Proofer",
+            "Dimensions WxDxH(mm)": "810x1235x2055",
+            "Dimensions when door open(mm)": "D=1910",
+            "Baking Chamber WxDxH(mm)": "16 level 32 pcs",
+            "Heating power": "2.2kW",
+            "Electricity Demand": "220-230V, 50Hz, PE/9.5A",
+            "Product advantages": "Large glass door design for easy observation and cleaning | 2-stage refrigeration and fermentation process, better protecting dough quality | Imported European compressor and environmentally friendly cooling agents | Use PU housing for better insulation result | PCB Control system for accurate temperature and humidity control, optional programming or manual"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2020/09/03/20200903_171331_0000047.png",
+          "source_url": "https://www.kolbcn.com/html/en/product-detail/2020/07/21/238.html",
+          "seo_title": "KOLB Reach-in Retarder Proofer - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "K12-RE64D32-3G",
+          "title": "Reach-in Retarder Proofer (K12-RE64D32-3G)",
+          "description_en": "KOLB Retarder Proofer accurately control humidity and temperature to accelerate or delay the proofing process dough so that proofed dough can be ready at any time required. KOLB Reach-in Retarder Proofer designed for open-kitchen bakeries, which allows the operator to pre-set programs and automatically control the fermentation process within 24 hours.",
+          "specs": {
+            "Product Model": "K12-RE64D32-3G",
+            "Option": "2-door -18degC Reatarder Proofer",
+            "Dimensions WxDxH(mm)": "585x970x2055",
+            "Dimensions when door open(mm)": "D=1426",
+            "Baking Chamber WxDxH(mm)": "18 level 18 pcs",
+            "Heating power": "1.1kW",
+            "Electricity Demand": "220-230V, 50Hz, PE/9.5A",
+            "Product advantages": "Large glass door design for easy observation and cleaning | 2-stage refrigeration and fermentation process, better protecting dough quality | Imported European compressor and environmentally friendly cooling agents | Use PU housing for better insulation result | PCB Control system for accurate temperature and humidity control, optional programming or manual"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2020/09/03/20200903_171331_0000047.png",
+          "source_url": "https://www.kolbcn.com/html/en/product-detail/2020/07/21/238.html",
+          "seo_title": "KOLB Reach-in Retarder Proofer - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "K12-RE64D18G",
+          "title": "Reach-in Retarder Proofer (K12-RE64D18G)",
+          "description_en": "KOLB Retarder Proofer accurately control humidity and temperature to accelerate or delay the proofing process dough so that proofed dough can be ready at any time required. KOLB Reach-in Retarder Proofer designed for open-kitchen bakeries, which allows the operator to pre-set programs and automatically control the fermentation process within 24 hours.",
+          "specs": {
+            "Product Model": "K12-RE64D18G",
+            "Option": "Single door Retarder Proofer",
+            "Dimensions WxDxH(mm)": "810x1235x2055",
+            "Dimensions when door open(mm)": "D=1910",
+            "Baking Chamber WxDxH(mm)": "18 level 36 pcs",
+            "Heating power": "2.3kW",
+            "Electricity Demand": "220-230V, 50Hz, PE/9.5A",
+            "Product advantages": "Large glass door design for easy observation and cleaning | 2-stage refrigeration and fermentation process, better protecting dough quality | Imported European compressor and environmentally friendly cooling agents | Use PU housing for better insulation result | PCB Control system for accurate temperature and humidity control, optional programming or manual"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2020/09/03/20200903_171331_0000047.png",
+          "source_url": "https://www.kolbcn.com/html/en/product-detail/2020/07/21/238.html",
+          "seo_title": "KOLB Reach-in Retarder Proofer - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "K12-RE64D36G",
+          "title": "Reach-in Retarder Proofer (K12-RE64D36G)",
+          "description_en": "KOLB Retarder Proofer accurately control humidity and temperature to accelerate or delay the proofing process dough so that proofed dough can be ready at any time required. KOLB Reach-in Retarder Proofer designed for open-kitchen bakeries, which allows the operator to pre-set programs and automatically control the fermentation process within 24 hours.",
+          "specs": {
+            "Product Model": "K12-RE64D36G",
+            "Option": "Single door Retarder Proofer",
+            "Dimensions WxDxH(mm)": "810x1235x2055 / 585x970x2055 / 810x1235x2055",
+            "Dimensions when door open(mm)": "D=1910 / D=1426 / D=1910",
+            "Baking Chamber WxDxH(mm)": "16 level 32 pcs / 18 level 18 pcs / 18 level 36 pcs",
+            "Heating power": "2.2kW / 1.1kW / 2.3kW",
+            "Electricity Demand": "220-230V, 50Hz, PE/9.5A / 220-230V, 50Hz, PE/9.5A / 220-230V, 50Hz, PE/9.5A",
+            "Product advantages": "Large glass door design for easy observation and cleaning | 2-stage refrigeration and fermentation process, better protecting dough quality | Imported European compressor and environmentally friendly cooling agents | Use PU housing for better insulation result | PCB Control system for accurate temperature and humidity control, optional programming or manual"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2020/09/03/20200903_171331_0000047.png",
+          "source_url": "https://www.kolbcn.com/html/en/product-detail/2020/07/21/238.html",
+          "seo_title": "KOLB Reach-in Retarder Proofer - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "K12-RO68D1-1",
+          "title": "Roll-in Retarder Proofer (K12-RO68D1-1)",
+          "description_en": "KOLB Retarder Proofer accurately control humidity and temperature to accelerate or delay the proofing process dough so that proofed dough can be ready at any time required. Key features of the KOLB Retarder Proofer are high energy efficiency, using only CFC refrigerants. KOLB Roll-in Retarder Proofer designed for workshops large bakeries or supermarket, it allows to pre-set programs within 24 hours to control the fermentation process of dough.",
+          "specs": {
+            "Product Model": "K12-RO68D1-1",
+            "Door hinger": "Single door(Hinge Right or Left)",
+            "Dimensions WxDxH(mm)": "915x1385x2335",
+            "Dimensions when door open(mm)": "D=2050",
+            "Rack Capacity": "1 trolley(600x800mm) 2 trolleys(600x800mm)",
+            "Heating power": "3.3kW",
+            "Electricity Demand": "220-230V, 50Hz, PE/14.6A",
+            "Product advantages": "Use of high quality PU for better insulation, hence energy savings | Imported fans with duel air outlets for better evenness of temperature and humidity | PCB control panel for more precise control of humidity and temperature | Cooling/ heating range：+3℃~50℃ | Proofing capacity from 1 trolley to 4 trolleys"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2020/07/31/20200731_150007_0000064.png",
+          "source_url": "https://www.kolbcn.com/html/en/product-detail/2020/07/21/237.html",
+          "seo_title": "KOLB Roll-in Retarder Proofer - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "K12-RO68D2-2",
+          "title": "Roll-in Retarder Proofer (K12-RO68D2-2)",
+          "description_en": "KOLB Retarder Proofer accurately control humidity and temperature to accelerate or delay the proofing process dough so that proofed dough can be ready at any time required. Key features of the KOLB Retarder Proofer are high energy efficiency, using only CFC refrigerants. KOLB Roll-in Retarder Proofer designed for workshops large bakeries or supermarket, it allows to pre-set programs within 24 hours to control the fermentation process of dough.",
+          "specs": {
+            "Product Model": "K12-RO68D2-2",
+            "Door hinger": "Single door(Hinge Right or Left)",
+            "Dimensions WxDxH(mm)": "915x2406x2335",
+            "Dimensions when door open(mm)": "D=3065",
+            "Rack Capacity": "2 trolleys(600x800mm) 4 trolleys(600x400mm)",
+            "Heating power": "4kW",
+            "Electricity Demand": "220-230V, 50Hz, PE/17.5A",
+            "Product advantages": "Use of high quality PU for better insulation, hence energy savings | Imported fans with duel air outlets for better evenness of temperature and humidity | PCB control panel for more precise control of humidity and temperature | Cooling/ heating range：+3℃~50℃ | Proofing capacity from 1 trolley to 4 trolleys"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2020/07/31/20200731_150007_0000064.png",
+          "source_url": "https://www.kolbcn.com/html/en/product-detail/2020/07/21/237.html",
+          "seo_title": "KOLB Roll-in Retarder Proofer - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "K12-RO68D4",
+          "title": "Roll-in Retarder Proofer (K12-RO68D4)",
+          "description_en": "Jual Kolb K12-RO68D4 — Dukungan instalasi & purna jual GASTRO sejak 1986. Konsultasikan kebutuhan Anda.",
+          "specs": {
+            "Category (Gastro)": "Retarder proofer 4T (Roll-in)",
+            "Note": "Distributor SKU (Gastro Indonesia) for the 4-trolley Roll-in Retarder Proofer; not on the current factory range table (kolbcn.com product-detail/2020/07/21/237.html only lists K12-RO68D1-1 and K12-RO68D2-2). Detailed dimensions/power not published on the distributor page — không bịa số liệu."
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.gastro.co.id/assets/products/kolb-k12-ro68d4.jpg",
+          "source_url": "https://www.gastro.co.id/product/kolb-k12-ro68d4",
+          "seo_title": "Jual Kolb K12-RO68D4 Komersial · GASTRO",
+          "seo_description": "Jual Kolb K12-RO68D4 — Dukungan instalasi & purna jual GASTRO sejak 1986. Konsultasikan kebutuhan Anda."
+        }
+      ]
+    },
+    {
+      "group_name": "Spiral Mixer",
+      "group_name_vi": "Máy trộn bột xoắn (Spiral Mixer)",
+      "source_urls": [
+        "https://www.kolbcn.com/html/en/product-detail/2020/07/21/245.html"
+      ],
+      "models": [
+        {
+          "model": "K32-025D",
+          "title": "Spiral Mixer (K32-025D)",
+          "description_en": "KOLB Spiral Mixer is designed especially for heavy doughs for mass production in large hotels, bakeries and food factories. The Spiral Mixer employs different mixing methods including kneading, twisting and pinching, to enable the baker to prepare the ideal dough.",
+          "specs": {
+            "Product Model": "K32-025D",
+            "Dimensions WxDxH(mm)": "485x864x966 /1230",
+            "Flour Capacity (kg)": "12.5kg",
+            "Dough Capacity (kg)": "25kg",
+            "Voltage": "380-400V, 50Hz, 3N, PE",
+            "Power": "1.9kW"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2024/03/14/20240314_164425_0000010.png",
+          "source_url": "https://www.kolbcn.com/html/en/product-detail/2020/07/21/245.html",
+          "seo_title": "Spiral Mixer - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "K32-0401AB4",
+          "title": "Spiral Mixer (K32-0401AB4)",
+          "description_en": "KOLB Spiral Mixer is designed especially for heavy doughs for mass production in large hotels, bakeries and food factories. The Spiral Mixer employs different mixing methods including kneading, twisting and pinching, to enable the baker to prepare the ideal dough.",
+          "specs": {
+            "Product Model": "K32-0401AB4",
+            "Dimensions WxDxH(mm)": "545x907x1029 /1414",
+            "Flour Capacity (kg)": "25kg",
+            "Dough Capacity (kg)": "40kg",
+            "Voltage": "380-400V, 50Hz, 3N, PE",
+            "Power": "2.25kW"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2024/03/14/20240314_164425_0000010.png",
+          "source_url": "https://www.kolbcn.com/html/en/product-detail/2020/07/21/245.html",
+          "seo_title": "Spiral Mixer - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "K32-0501AB4",
+          "title": "Spiral Mixer (K32-0501AB4)",
+          "description_en": "KOLB Spiral Mixer is designed especially for heavy doughs for mass production in large hotels, bakeries and food factories. The Spiral Mixer employs different mixing methods including kneading, twisting and pinching, to enable the baker to prepare the ideal dough.",
+          "specs": {
+            "Product Model": "K32-0501AB4",
+            "Dimensions WxDxH(mm)": "590x950x1050 /1439",
+            "Flour Capacity (kg)": "30kg",
+            "Dough Capacity (kg)": "50kg",
+            "Voltage": "380-400V, 50Hz, 3N, PE",
+            "Power": "3kW"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2024/03/14/20240314_164425_0000010.png",
+          "source_url": "https://www.kolbcn.com/html/en/product-detail/2020/07/21/245.html",
+          "seo_title": "Spiral Mixer - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "K32-0801AB4",
+          "title": "Spiral Mixer (K32-0801AB4)",
+          "description_en": "KOLB Spiral Mixer is designed especially for heavy doughs for mass production in large hotels, bakeries and food factories. The Spiral Mixer employs different mixing methods including kneading, twisting and pinching, to enable the baker to prepare the ideal dough.",
+          "specs": {
+            "Product Model": "K32-0801AB4",
+            "Dimensions WxDxH(mm)": "714x1140x1225 /1714",
+            "Flour Capacity (kg)": "50kg",
+            "Dough Capacity (kg)": "80kg",
+            "Voltage": "380-400V, 50Hz, 3N, PE",
+            "Power": "5.25kW"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2024/03/14/20240314_164425_0000010.png",
+          "source_url": "https://www.kolbcn.com/html/en/product-detail/2020/07/21/245.html",
+          "seo_title": "Spiral Mixer - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "K32-0201AB4",
+          "title": "Spiral Mixer (K32-0201AB4)",
+          "description_en": "Jual Kolb K32-0201AB4 — mixer spiral khusus adonan roti kalis. Dukungan instalasi &amp; purna jual GASTRO sejak 1986. Konsultasikan kebutuhan Anda.",
+          "specs": {
+            "Note": "20 kg-class spiral mixer; distributor SKU (Gastro Indonesia), not on the factory range table."
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.gastro.co.id/assets/products/kolb-k32-0201ab4.jpg",
+          "source_url": "https://www.gastro.co.id/product/kolb-k32-0201ab4",
+          "seo_title": "Jual Kolb K32-0201AB4 Komersial · GASTRO",
+          "seo_description": "Jual Kolb K32-0201AB4 — mixer spiral khusus adonan roti kalis. Dukungan instalasi &amp; purna jual GASTRO sejak 1986. Konsultasikan kebutuhan Anda."
+        }
+      ]
+    },
+    {
+      "group_name": "Planetary Mixer",
+      "group_name_vi": "Máy trộn bột hành tinh (Planetary Mixer)",
+      "source_urls": [
+        "https://www.kolbcn.com/html/en/product-detail/2020/07/22/253.html"
+      ],
+      "models": [
+        {
+          "model": "K31-0071AG9",
+          "title": "Planetary Mixer (K31-0071AG9)",
+          "description_en": "The KOLB all-purpose Planetary Mixer produces a powerful planetary mixing action to thoroughly blend, mix and aerate all ingredients with consistent and predictable results. It is designed for bakeries, hotels, restaurants, food factories and large supermarkets.",
+          "specs": {
+            "Product Model": "K31-0071AG9",
+            "Dimensions WxDxH(mm)": "230x410x400",
+            "Dough Capacity (L)": "7L",
+            "Electricity Demand": "220-230V, 50Hz, PE",
+            "Power": "0.51kW",
+            "Standard accessories": "Mixing bowl, Whisk, Beater, Hook"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2020/07/31/20200731_161518_0000119.png",
+          "source_url": "https://www.kolbcn.com/html/en/product-detail/2020/07/22/253.html",
+          "seo_title": "Planetary Mixer - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "K31-0201AG3",
+          "title": "Planetary Mixer (K31-0201AG3)",
+          "description_en": "The KOLB all-purpose Planetary Mixer produces a powerful planetary mixing action to thoroughly blend, mix and aerate all ingredients with consistent and predictable results. It is designed for bakeries, hotels, restaurants, food factories and large supermarkets.",
+          "specs": {
+            "Product Model": "K31-0201AG3",
+            "Dimensions WxDxH(mm)": "505x555x764",
+            "Dough Capacity (L)": "20L",
+            "Electricity Demand": "380-400V, 50Hz, 3N, PE",
+            "Power": "1.1kW",
+            "Standard accessories": "Mixing bowl and Whisk"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2020/07/31/20200731_161518_0000119.png",
+          "source_url": "https://www.kolbcn.com/html/en/product-detail/2020/07/22/253.html",
+          "seo_title": "Planetary Mixer - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "K31-0401AB4",
+          "title": "Planetary Mixer (K31-0401AB4)",
+          "description_en": "The KOLB all-purpose Planetary Mixer produces a powerful planetary mixing action to thoroughly blend, mix and aerate all ingredients with consistent and predictable results. It is designed for bakeries, hotels, restaurants, food factories and large supermarkets.",
+          "specs": {
+            "Product Model": "K31-0401AB4",
+            "Dimensions WxDxH(mm)": "630x650x1110",
+            "Dough Capacity (L)": "40L",
+            "Electricity Demand": "220-230V, 50Hz, PE / 380-400V, 50Hz, 3N, PE",
+            "Power": "1.125kW",
+            "Standard accessories": "Mixing bowl, Whisk, Beater, Hook / Mixing bowl and Whisk"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2020/07/31/20200731_161518_0000119.png",
+          "source_url": "https://www.kolbcn.com/html/en/product-detail/2020/07/22/253.html",
+          "seo_title": "Planetary Mixer - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "K31-0601AB4",
+          "title": "Planetary Mixer (K31-0601AB4)",
+          "description_en": "The KOLB all-purpose Planetary Mixer produces a powerful planetary mixing action to thoroughly blend, mix and aerate all ingredients with consistent and predictable results. It is designed for bakeries, hotels, restaurants, food factories and large supermarkets.",
+          "specs": {
+            "Product Model": "K31-0601AB4",
+            "Dimensions WxDxH(mm)": "675x1036x1430",
+            "Dough Capacity (L)": "60L",
+            "Electricity Demand": "220-230V, 50Hz, PE / 380-400V, 50Hz, 3N, PE",
+            "Power": "2.25kW",
+            "Standard accessories": "Mixing bowl, Whisk, Beater, Hook / Mixing bowl and Whisk"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2020/07/31/20200731_161518_0000119.png",
+          "source_url": "https://www.kolbcn.com/html/en/product-detail/2020/07/22/253.html",
+          "seo_title": "Planetary Mixer - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "K31-0301AB4",
+          "title": "K31-0301AB4 - Allied Metals (30 L floor standing)",
+          "description_en": "30 L Floor Standing Planetary Mixer produces a powerful planetary mixing action to thoroughly blend, mix and aerate all ingredients with consistent and predictable results. It is designed for bakeries, hotels, restaurants, food factories and large supermarkets.",
+          "specs": {
+            "Bowl capacity": "30 L floor standing"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.alliedmetals.com/wp-content/uploads/2024/03/Kolb-Mixer-30-L-K31-0301AB4.jpg",
+          "source_url": "https://www.alliedmetals.com/product/planetary-mixer-model-k31-0301ab4/",
+          "seo_title": "K31-0301AB4 - Allied Metals",
+          "seo_description": "30 L Floor Standing Planetary Mixer produces a powerful planetary mixing action to thoroughly blend, mix and aerate all ingredients with consistent and predictable results. It is designed for bakeries, hotels, restaurants, food factories and large supermarkets."
+        },
+        {
+          "model": "K31-0801AB4",
+          "title": "Planetary Mixer (K31-0801AB4)",
+          "description_en": "Jual Kolb K31-0801AB4 — mixer planetary dengan gerakan pengaduk mengorbit. Dukungan instalasi &amp; purna jual GASTRO sejak 1986. Konsultasikan kebutuhan Anda.",
+          "specs": {
+            "Note": "80 L-class floor planetary mixer; distributor SKU (Gastro Indonesia), not on the factory range table."
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.gastro.co.id/assets/products/kolb-k31-0801ab4.jpg",
+          "source_url": "https://www.gastro.co.id/product/kolb-k31-0801ab4",
+          "seo_title": "Jual Kolb K31-0801AB4 Komersial · GASTRO",
+          "seo_description": "Jual Kolb K31-0801AB4 — mixer planetary dengan gerakan pengaduk mengorbit. Dukungan instalasi &amp; purna jual GASTRO sejak 1986. Konsultasikan kebutuhan Anda."
+        }
+      ]
+    },
+    {
+      "group_name": "Dough Sheeter (Kolb range)",
+      "group_name_vi": "Máy cán bột (Dough Sheeter) dòng Kolb",
+      "source_urls": [
+        "https://www.kolbcn.com/html/en/product-detail/2020/07/22/254.html"
+      ],
+      "models": [
+        {
+          "model": "K43-5201AF8",
+          "title": "Dough Sheeter (K43-5201AF8)",
+          "description_en": "There are two doughsheeter series for your perfect dough production, which include the ‘R’ range powered by RONDO, and the standard KOLB range.",
+          "specs": {
+            "Product Model": "K43-5201AF8",
+            "Type": "Floor Stand",
+            "Dimensions WxDxH(mm)": "2100/2520X850X1100",
+            "Conveyor size (LxW)(mm)": "2000x515",
+            "Roller Gap (mm)": "0-33",
+            "Press roller size (mm)": "&phi;88x520",
+            "Electricity Demand": "380-400V, 50Hz, 3N, PE",
+            "Power(kW)": "0.4kW"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2021/10/26/20211026_174750_0000003.png",
+          "source_url": "https://www.kolbcn.com/html/en/product-detail/2020/07/22/254.html",
+          "seo_title": "Dough Sheeter - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "K43-5201AT8",
+          "title": "Dough Sheeter (K43-5201AT8)",
+          "description_en": "There are two doughsheeter series for your perfect dough production, which include the ‘R’ range powered by RONDO, and the standard KOLB range.",
+          "specs": {
+            "Product Model": "K43-5201AT8",
+            "Type": "Table Top",
+            "Dimensions WxDxH(mm)": "1800x850x600",
+            "Conveyor size (LxW)(mm)": "1700x515",
+            "Roller Gap (mm)": "0-33",
+            "Press roller size (mm)": "&phi;88x520",
+            "Electricity Demand": "380-400V, 50Hz, 3N, PE",
+            "Power(kW)": "0.4kW"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2021/10/26/20211026_174750_0000003.png",
+          "source_url": "https://www.kolbcn.com/html/en/product-detail/2020/07/22/254.html",
+          "seo_title": "Dough Sheeter - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        }
+      ]
+    },
+    {
+      "group_name": "'R' Series Dough Sheeter (RONDO co-development)",
+      "group_name_vi": "Máy cán bột dòng 'R' (hợp tác RONDO)",
+      "source_urls": [
+        "https://www.kolbcn.com/html/en/product-detail/2020/07/22/255.html"
+      ],
+      "models": [
+        {
+          "model": "K82-6201AFR",
+          "title": "'R' series Dough Sheeter (K82-6201AFR)",
+          "description_en": "KOLB ‘R’ series Dough Sheeter, a joint-effort from Rondo with its 68 years’ experience and KOLB Huizhou with its strong technical team in China, is the solution for your dough lamination.",
+          "specs": {
+            "Product Model": "K82-6201AFR",
+            "Type": "Floor Stand",
+            "Dimensions WxDxH(mm)": "2900x1072x1330",
+            "Conveyor size (LxW)(mm)": "2320x608",
+            "Roller Gap(mm)": "0.5-30mm",
+            "Press roller size(mm)": "84x633",
+            "Electricity Demand": "380-400V, 50Hz, 3N, PE",
+            "Power(kW)": "0.6kW"
+          },
+          "origin": "China (Kolb Huizhou, co-developed with RONDO)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2020/07/31/20200731_164510_0000138.png",
+          "source_url": "https://www.kolbcn.com/html/en/product-detail/2020/07/22/255.html",
+          "seo_title": "‘R’ series Dough Sheeter - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "K82-6201ATR",
+          "title": "'R' series Dough Sheeter (K82-6201ATR)",
+          "description_en": "KOLB ‘R’ series Dough Sheeter, a joint-effort from Rondo with its 68 years’ experience and KOLB Huizhou with its strong technical team in China, is the solution for your dough lamination.",
+          "specs": {
+            "Product Model": "K82-6201ATR",
+            "Type": "Table Top",
+            "Dimensions WxDxH(mm)": "2420x1072x535",
+            "Conveyor size (LxW)(mm)": "2320x608",
+            "Roller Gap(mm)": "0.5-30mm",
+            "Press roller size(mm)": "84x633",
+            "Electricity Demand": "380-400V, 50Hz, 3N, PE",
+            "Power(kW)": "0.6kW"
+          },
+          "origin": "China (Kolb Huizhou, co-developed with RONDO)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2020/07/31/20200731_164510_0000138.png",
+          "source_url": "https://www.kolbcn.com/html/en/product-detail/2020/07/22/255.html",
+          "seo_title": "‘R’ series Dough Sheeter - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        }
+      ]
+    },
+    {
+      "group_name": "Water Cooler",
+      "group_name_vi": "Máy làm lạnh nước (Water Cooler)",
+      "source_urls": [
+        "https://www.kolbcn.com/html/en/product-detail/2020/07/22/256.html"
+      ],
+      "models": [
+        {
+          "model": "K21-0500DM",
+          "title": "Water Cooler (K21-0500DM)",
+          "description_en": "KOLB Water Cooler is designed to control dough temperature through continuous cool water supply during the kneading process, at the desired temperature and volume, especially in a high temperature environment.",
+          "specs": {
+            "Product Model": "K21-0500DM",
+            "Dimensions WxDxH(mm)": "1337x654x683",
+            "Capacity(L)": "50L",
+            "Production (per hour)": "150L/h",
+            "Electricity Demand": "220-230V, 50Hz, PE/7.8A",
+            "Power(kW)": "1.8 kW",
+            "Munimum Temperature": "3℃"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2020/07/31/20200731_165025_0000163.png",
+          "source_url": "https://www.kolbcn.com/html/en/product-detail/2020/07/22/256.html",
+          "seo_title": "Water Cooler - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "K21-1000DM",
+          "title": "Water Cooler (K21-1000DM)",
+          "description_en": "KOLB Water Cooler is designed to control dough temperature through continuous cool water supply during the kneading process, at the desired temperature and volume, especially in a high temperature environment.",
+          "specs": {
+            "Product Model": "K21-1000DM",
+            "Dimensions WxDxH(mm)": "875x665x1155",
+            "Capacity(L)": "100L",
+            "Production (per hour)": "130L/h",
+            "Electricity Demand": "220-230V, 50Hz, PE/7.8A",
+            "Power(kW)": "1.8 kW",
+            "Munimum Temperature": "3℃"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2020/07/31/20200731_165025_0000163.png",
+          "source_url": "https://www.kolbcn.com/html/en/product-detail/2020/07/22/256.html",
+          "seo_title": "Water Cooler - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "K21-2000DM",
+          "title": "Water Cooler (K21-2000DM)",
+          "description_en": "KOLB Water Cooler is designed to control dough temperature through continuous cool water supply during the kneading process, at the desired temperature and volume, especially in a high temperature environment.",
+          "specs": {
+            "Product Model": "K21-2000DM",
+            "Dimensions WxDxH(mm)": "875x665x1555",
+            "Capacity(L)": "200L",
+            "Production (per hour)": "130L/h",
+            "Electricity Demand": "220-230V, 50Hz, PE/7.8A",
+            "Power(kW)": "1.8 kW",
+            "Munimum Temperature": "3℃"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2020/07/31/20200731_165025_0000163.png",
+          "source_url": "https://www.kolbcn.com/html/en/product-detail/2020/07/22/256.html",
+          "seo_title": "Water Cooler - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        }
+      ]
+    },
+    {
+      "group_name": "Long Moulder",
+      "group_name_vi": "Máy tạo hình bánh dài (Long Moulder)",
+      "source_urls": [
+        "https://www.kolbcn.com/html/en/product-detail/2020/07/22/257.html"
+      ],
+      "models": [
+        {
+          "model": "K44-00D1AS5",
+          "title": "Long Moulder",
+          "description_en": "KOLB Long Moulder with presses, rolls and moulds dough into required diamenters and lengths. It is ideal for moulding loaves, baguettes and other kinds of bread.",
+          "specs": {
+            "Product Model": "K44-00D1AS5",
+            "Outside Dimensions WxDxH(mm)": "980x850x1540",
+            "Dough size（g）": "50-1250g/pc",
+            "Heating power": "0.75kW",
+            "Electricity Demand": "380-400V,50Hz,3N,PE/1.14A"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2021/10/26/20211026_175120_0000007.png",
+          "source_url": "https://www.kolbcn.com/html/en/product-detail/2020/07/22/257.html",
+          "seo_title": "Long Moulder - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        }
+      ]
+    },
+    {
+      "group_name": "Dough Divider",
+      "group_name_vi": "Máy chia bột (Dough Divider)",
+      "source_urls": [
+        "https://www.kolbcn.com/html/en/product-detail/2020/07/22/258.html"
+      ],
+      "models": [
+        {
+          "model": "K41-0201AS5",
+          "title": "Dough Divider",
+          "description_en": "KOLB Dough Divider is designed to press and divide the dough evenly into small pieces. It can efficiently help improve work efficiency and is easy to operate.",
+          "specs": {
+            "Product Model": "K41-0201AS5",
+            "Dimensions WxDxH(mm)": "638x664x1200/1600",
+            "Dough capacity per time(kg)": "3-16",
+            "Dough range per piece(g)": "150-800",
+            "Divisions": "20pcs",
+            "Heating power": "1.5kW",
+            "Electricity Demand": "380-400V,50Hz,3N,PE/2.17A"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2020/08/05/20200805_195600_0000027.png",
+          "source_url": "https://www.kolbcn.com/html/en/product-detail/2020/07/22/258.html",
+          "seo_title": "Dough Divider - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        }
+      ]
+    },
+    {
+      "group_name": "Bun Divider",
+      "group_name_vi": "Máy chia bánh nhỏ (Bun Divider)",
+      "source_urls": [
+        "https://www.kolbcn.com/html/en/product-detail/2020/07/22/259.html"
+      ],
+      "models": [
+        {
+          "model": "K42-0301AA5",
+          "title": "Bun Divider (K42-0301AA5)",
+          "description_en": "KOLB Bun Divider is designed to divide and round dough automatically and equally, which can highly improve the working efficiency and reduce labor costs. Different models for your selection.",
+          "specs": {
+            "Product Model": "K42-0301AA5",
+            "Type": "Automatic",
+            "Dimensions WxDxH(mm)": "706x696x1640",
+            "Moulding range(g)": "30-100",
+            "Divisions": "30",
+            "Electricity Demand": "380-400V, 50Hz, 3N, PE/2.28A",
+            "Power": "1.5kW"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2020/08/10/20200810_124252_0000005.png",
+          "source_url": "https://www.kolbcn.com/html/en/product-detail/2020/07/22/259.html",
+          "seo_title": "KOLB Bun Divider - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "K42-0301AS5",
+          "title": "Bun Divider (K42-0301AS5)",
+          "description_en": "KOLB Bun Divider is designed to divide and round dough automatically and equally, which can highly improve the working efficiency and reduce labor costs. Different models for your selection.",
+          "specs": {
+            "Product Model": "K42-0301AS5",
+            "Type": "Semi-auto",
+            "Dimensions WxDxH(mm)": "640x780x2050",
+            "Moulding range(g)": "30-100",
+            "Divisions": "30",
+            "Electricity Demand": "380-400V, 50Hz, 3N, PE/1.13A",
+            "Power": "0.75kW"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2020/08/10/20200810_124252_0000005.png",
+          "source_url": "https://www.kolbcn.com/html/en/product-detail/2020/07/22/259.html",
+          "seo_title": "KOLB Bun Divider - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "K42-0221AA5",
+          "title": "Automatic Bun/Dough Divider (K42-0221AA5)",
+          "description_en": "Automatic Dough Divider is designed to divide and round dough automatically and equally, which can highly improve the working efficiency and reduce labor costs.",
+          "specs": {
+            "Type": "Automatic divide & round",
+            "Note": "Distributor-listed variant (Allied Metals)"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.alliedmetals.com/wp-content/uploads/2024/03/Kolb-automatic-dough-divider-K42-0221AA5.jpg",
+          "source_url": "https://www.alliedmetals.com/product/dough-divider-model-k42-0221aa5/",
+          "seo_title": "K42-0221AA5 - Allied Metals",
+          "seo_description": "Automatic Dough Divider is designed to divide and round dough automatically and equally, which can highly improve the working efficiency and reduce labor costs."
+        }
+      ]
+    },
+    {
+      "group_name": "Chocolate Warmer",
+      "group_name_vi": "Máy giữ ấm/ủ sô-cô-la (Chocolate Warmer)",
+      "source_urls": [
+        "https://www.kolbcn.com/html/en/product-detail/2020/07/22/260.html"
+      ],
+      "models": [
+        {
+          "model": "K61-2011D",
+          "title": "Chocolate Warmer (K61-2011D)",
+          "description_en": "KOLB Chocolate Warmer is designed for quickly melting chocolate, both real chocolate and compound chocolate, and keep melted chocolate at a stable temperature for further processing. The double heating system of the KOLB Chocolate Warmer can accelerate the melting process of chocolate in an even and gentle way, and keep the melted chocolate at an even temperature environment for easy handing.",
+          "specs": {
+            "Product Model": "K61-2011D",
+            "Dimensions WxDxH(mm)": "390x648x350",
+            "Chocolate Capacity(L)": "1x20L",
+            "Electricity Demand": "220-230V, 50Hz, PE/1.4A",
+            "Power": "0.31kW"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2020/08/10/20200810_124752_0000015.png",
+          "source_url": "https://www.kolbcn.com/html/en/product-detail/2020/07/22/260.html",
+          "seo_title": "Chocolate Warmer - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "K61-1021D",
+          "title": "Chocolate Warmer (K61-1021D)",
+          "description_en": "KOLB Chocolate Warmer is designed for quickly melting chocolate, both real chocolate and compound chocolate, and keep melted chocolate at a stable temperature for further processing. The double heating system of the KOLB Chocolate Warmer can accelerate the melting process of chocolate in an even and gentle way, and keep the melted chocolate at an even temperature environment for easy handing.",
+          "specs": {
+            "Product Model": "K61-1021D",
+            "Dimensions WxDxH(mm)": "390x384x350",
+            "Chocolate Capacity(L)": "2x9L",
+            "Electricity Demand": "220-230V, 50Hz, PE/0.75A",
+            "Power": "0.17kW"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2020/08/10/20200810_124752_0000015.png",
+          "source_url": "https://www.kolbcn.com/html/en/product-detail/2020/07/22/260.html",
+          "seo_title": "Chocolate Warmer - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "K61-1011D",
+          "title": "Chocolate Warmer (K61-1011D)",
+          "description_en": "KOLB Chocolate Warmer is designed for quickly melting chocolate, both real chocolate and compound chocolate, and keep melted chocolate at a stable temperature for further processing. The double heating system of the KOLB Chocolate Warmer can accelerate the melting process of chocolate in an even and gentle way, and keep the melted chocolate at an even temperature environment for easy handing.",
+          "specs": {
+            "Product Model": "K61-1011D",
+            "Dimensions WxDxH(mm)": "390x280x350",
+            "Chocolate Capacity(L)": "1x9L",
+            "Electricity Demand": "220-230V, 50Hz, PE/0.45A",
+            "Power": "0.1kW"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2020/08/10/20200810_124752_0000015.png",
+          "source_url": "https://www.kolbcn.com/html/en/product-detail/2020/07/22/260.html",
+          "seo_title": "Chocolate Warmer - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "K61-0521D",
+          "title": "Chocolate Warmer (K61-0521D)",
+          "description_en": "KOLB Chocolate Warmer is designed for quickly melting chocolate, both real chocolate and compound chocolate, and keep melted chocolate at a stable temperature for further processing. The double heating system of the KOLB Chocolate Warmer can accelerate the melting process of chocolate in an even and gentle way, and keep the melted chocolate at an even temperature environment for easy handing.",
+          "specs": {
+            "Product Model": "K61-0521D",
+            "Dimensions WxDxH(mm)": "390x648x350 / 390x384x350 / 390x280x350",
+            "Chocolate Capacity(L)": "2x3.5L",
+            "Electricity Demand": "220-230V, 50Hz, PE/1.4A / 220-230V, 50Hz, PE/0.75A / 220-230V, 50Hz, PE/0.45A",
+            "Power": "0.31kW / 0.17kW / 0.1kW"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2020/08/10/20200810_124752_0000015.png",
+          "source_url": "https://www.kolbcn.com/html/en/product-detail/2020/07/22/260.html",
+          "seo_title": "Chocolate Warmer - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "K61-0511D",
+          "title": "Chocolate Warmer (K61-0511D)",
+          "description_en": "KOLB Chocolate Warmer is designed for quickly melting chocolate, both real chocolate and compound chocolate, and keep melted chocolate at a stable temperature for further processing. The double heating system of the KOLB Chocolate Warmer can accelerate the melting process of chocolate in an even and gentle way, and keep the melted chocolate at an even temperature environment for easy handing.",
+          "specs": {
+            "Product Model": "K61-0511D",
+            "Dimensions WxDxH(mm)": "390x648x350 / 390x384x350 / 390x280x350",
+            "Chocolate Capacity(L)": "1x3.5L",
+            "Electricity Demand": "220-230V, 50Hz, PE/1.4A / 220-230V, 50Hz, PE/0.75A / 220-230V, 50Hz, PE/0.45A",
+            "Power": "0.31kW / 0.17kW / 0.1kW"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2020/08/10/20200810_124752_0000015.png",
+          "source_url": "https://www.kolbcn.com/html/en/product-detail/2020/07/22/260.html",
+          "seo_title": "Chocolate Warmer - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        }
+      ]
+    },
+    {
+      "group_name": "Fryer (Giles co-development, delisted)",
+      "group_name_vi": "Bếp chiên (Fryer) — hợp tác Giles (đã ngừng niêm yết)",
+      "source_urls": [
+        "https://web.archive.org/web/20250809021131/https://www.kolbcn.com/html/en/product-detail/2020/07/22/261.html",
+        "https://www.kolbcn.com/html/en/product-detail/2020/07/22/261.html"
+      ],
+      "models": [
+        {
+          "model": "K51-6601D",
+          "title": "Kolb Fryer (K51-6601D)",
+          "description_en": "KOLB Fryer has been jointly developed with the leading American equipment manufacturer, Giles. It features easy operation and quick temperature recovery. It is designed for utmost convenience and cost saving.",
+          "specs": {
+            "Product Model": "K51-6601D",
+            "Type": "Deep Fryer",
+            "Dimensions WxDxH(mm)": "660x1030x1100",
+            "Electricity Demand": "380-400V, 50Hz, 3N, PE/29A",
+            "Power": "20kW"
+          },
+          "origin": "China (Kolb Huizhou, co-developed with Giles USA)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2020/08/10/20200810_125014_0000021.png",
+          "source_url": "https://web.archive.org/web/20250809021131/https://www.kolbcn.com/html/en/product-detail/2020/07/22/261.html",
+          "seo_title": "Fryer - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "K51-4501DF",
+          "title": "Kolb Fryer (K51-4501DF)",
+          "description_en": "KOLB Fryer has been jointly developed with the leading American equipment manufacturer, Giles. It features easy operation and quick temperature recovery. It is designed for utmost convenience and cost saving.",
+          "specs": {
+            "Product Model": "K51-4501DF",
+            "Type": "Double-Basket Fryer",
+            "Dimensions WxDxH(mm)": "450x900x1020",
+            "Electricity Demand": "380-400V, 50Hz, 3N, PE/27.6A",
+            "Power": "18.2kW"
+          },
+          "origin": "China (Kolb Huizhou, co-developed with Giles USA)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2020/08/10/20200810_125014_0000021.png",
+          "source_url": "https://web.archive.org/web/20250809021131/https://www.kolbcn.com/html/en/product-detail/2020/07/22/261.html",
+          "seo_title": "Fryer - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "K51-5001D",
+          "title": "Kolb Fryer (K51-5001D)",
+          "description_en": "KOLB Fryer has been jointly developed with the leading American equipment manufacturer, Giles. It features easy operation and quick temperature recovery. It is designed for utmost convenience and cost saving.",
+          "specs": {
+            "Product Model": "K51-5001D",
+            "Type": "Donut Fryer",
+            "Dimensions WxDxH(mm)": "1270x500x1170",
+            "Electricity Demand": "220-230V,50/60Hz,PE/14.3A",
+            "Power": "3.3kW"
+          },
+          "origin": "China (Kolb Huizhou, co-developed with Giles USA)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2020/08/10/20200810_125014_0000021.png",
+          "source_url": "https://web.archive.org/web/20250809021131/https://www.kolbcn.com/html/en/product-detail/2020/07/22/261.html",
+          "seo_title": "Fryer - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        }
+      ]
+    },
+    {
+      "group_name": "Bread Slicer",
+      "group_name_vi": "Máy cắt bánh mì (Bread Slicer)",
+      "source_urls": [
+        "https://www.alliedmetals.com/product/bread-slicer-model-k45-0121as4/",
+        "https://www.gastro.co.id/product/kolb-k45-0121as4"
+      ],
+      "models": [
+        {
+          "model": "K45-0121AS4",
+          "title": "Semi-automatic Bread Slicer (K45-0121AS4)",
+          "description_en": "Counter top semi-automatic bread slicer which is easy to operate. Safe with an interlocked feeding guard, and a safety button for emergency stop.",
+          "specs": {
+            "Type": "Counter-top semi-automatic",
+            "Safety": "Interlocked feeding guard + emergency stop button"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.alliedmetals.com/wp-content/uploads/2024/03/Kolb-semi-automatic-bread-slicer-.jpg",
+          "source_url": "https://www.alliedmetals.com/product/bread-slicer-model-k45-0121as4/",
+          "seo_title": "K45-0121AS4 - Allied Metals",
+          "seo_description": "Counter top semi-automatic bread slicer which is easy to operate. Safe with an interlocked feeding guard, and a safety button for emergency stop."
+        }
+      ]
+    },
+    {
+      "group_name": "Bake-off / Combination Oven (Wiesheu-derived)",
+      "group_name_vi": "Lò kết hợp / bake-off (dòng Wiesheu)",
+      "source_urls": [
+        "https://www.alliedmetals.com/product/k130pg-0604110/",
+        "https://alliedfse.com/product/kolb-bake-off-combination-oven/"
+      ],
+      "models": [
+        {
+          "model": "K130PG-0604110",
+          "title": "Kolb Bake-Off Combination Oven (K130PG-0604110)",
+          "description_en": "Bake Off Combination Oven is a multifunctional bake off station that consists of an Atoll 800 convection oven ( fits 4 trays) + 1 deck oven that fits 1 tray of 600X400 mm + under base 12 trays proofer. Ideal for bake all kinds of bread, cake and pastries. Space efficient with great flexibility. *** Steam Hood Upon Request",
+          "specs": {
+            "Configuration": "Atoll 800 convection oven (4 trays) + 1 deck oven (1 tray 600x400) + under-base 12-tray proofer",
+            "Option": "Steam hood upon request",
+            "Related codes": "K130-1206210, K130PR-0806110 (other Bake-Off configurations)"
+          },
+          "origin": "China (Kolb Huizhou; Wiesheu-derived technology)",
+          "heat_source": "electric",
+          "image_url": "https://www.alliedmetals.com/wp-content/uploads/2024/05/6.-Bake-Off-Combination.jpg",
+          "source_url": "https://www.alliedmetals.com/product/k130pg-0604110/",
+          "seo_title": "K130PG-0604110 - Allied Metals",
+          "seo_description": "Bake Off Combination Oven is a multifunctional bake off station that consists of an Atoll 800 convection oven ( fits 4 trays) + 1 deck oven that fits 1 tray of 600X400 mm + under base 12 trays proofer. Ideal for bake all kinds of bread, cake and pastries. Space efficient with great flexibility. *** Steam Hood Upon Request"
+        }
+      ]
+    },
+    {
+      "group_name": "KOLB Open-Kitchen Solutions (KBS packages)",
+      "group_name_vi": "Giải pháp Bếp Mở KOLB (gói KBS)",
+      "source_urls": [
+        "https://www.kolbcn.com/html/en/kolb-solution.html"
+      ],
+      "models": [
+        {
+          "model": "KBS-001",
+          "title": "KOLB Open-Kitchen Solution KBS-001",
+          "description_en": "This combination is a collection of KOLB Atoll800, Deck Oven Laguna and Retarder Proofer. Especially suitable for in-store bakery area about 100㎡, or the workshop. The under base Retarder Proofer is specially designed for even better convenience.",
+          "specs": {
+            "Equipment combination": "Convection Oven Atoll 800 + Deck Oven Laguna 800x600 + Under base Retarder Proofer"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2020/09/03/20200903_181228_0000063.png",
+          "source_url": "https://www.kolbcn.com/html/en/kolb-solution-detail/2020/07/29/269.html",
+          "seo_title": "KBS-001 - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "KBS-002R1",
+          "title": "KOLB Open-Kitchen Solution KBS-002R1",
+          "description_en": "This combination is a collection of KOLB Atoll800, Pizza Oven, Deck Oven Laguna and Retarder Proofer. This combination is especially suitable for restaurants with bakery and pastry, or DIET BAR, area of 100-200㎡. The equipment covers a small area and is suitable for diversified products.",
+          "specs": {
+            "Equipment combination": "Convection Oven Atoll 800 + Pizza Oven + Deck Oven 600x400 + Single system Retarder Proofer"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2020/09/03/20200903_180758_0000057.png",
+          "source_url": "https://www.kolbcn.com/html/en/kolb-solution-detail/2020/07/29/270.html",
+          "seo_title": "KBS-002R1 - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "KBS-003R1",
+          "title": "KOLB Open-Kitchen Solution KBS-003R1",
+          "description_en": "This combination is a collection of KOLB Atoll800, Pizza Oven and Retarder Proofer. This combination is especially suitable for restaurants with pastry area of 100-200㎡. The equipment covers a small area and is suitable for diversified products.",
+          "specs": {
+            "Equipment combination": "Convection Oven Atoll 800 + 2L-Pizza Oven + Single System Retarder Proofer"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2020/09/04/20200904_102316_0000007.png",
+          "source_url": "https://www.kolbcn.com/html/en/kolb-solution-detail/2020/07/29/264.html",
+          "seo_title": "KBS-003R1 - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "KBS-004",
+          "title": "KOLB Open-Kitchen Solution KBS-004",
+          "description_en": "This combination is a collection of KOLB Pizza Oven, Deck Oven Laguna and Retarder Proofer. This combination is especially suitable for restaurants with bakery area of 100-200㎡. The equipment covers a small area and is suitable for diversified products.",
+          "specs": {
+            "Equipment combination": "Pizza Oven + Deck Oven Laguna 1200x400 + Duo System Retarder Proofer"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2020/09/04/20200904_104053_0000023.png",
+          "source_url": "https://www.kolbcn.com/html/en/kolb-solution-detail/2020/07/18/229.html",
+          "seo_title": "KBS-004 - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "KBS-005G",
+          "title": "KOLB Open-Kitchen Solution KBS-005G",
+          "description_en": "This combination is a collection of KOLB Atoll800, Deck Oven Laguna and Retarder Proofer. Especially suitable for restaurants with bakery and pastry area about 100㎡, baking school or the workshop.",
+          "specs": {
+            "Equipment combination": "Convection Oven Atoll 800 + Deck Oven Laguna 600x400 + Under base Proofer"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2020/09/03/20200903_181356_0000067.png",
+          "source_url": "https://www.kolbcn.com/html/en/kolb-solution-detail/2020/07/29/268.html",
+          "seo_title": "KBS-005G - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "KBS-006",
+          "title": "KOLB Open-Kitchen Solution KBS-006",
+          "description_en": "This combination is a collection of KOLB Atoll800, Pizza Oven, Deck Oven Laguna and Retarder Proofer. This combination is especially suitable for bakery and pastry area of 100-200㎡ or restaurant.",
+          "specs": {
+            "Equipment combination": "Convection Oven Atoll 800 + 2L-Deck Oven Laguna 600x800  + Single System Retarder Proofer"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2020/09/04/20200904_100415_0000003.png",
+          "source_url": "https://www.kolbcn.com/html/en/kolb-solution-detail/2020/07/29/265.html",
+          "seo_title": "KBS-006 - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "KBS-007R1",
+          "title": "KOLB Open-Kitchen Solution KBS-007R1",
+          "description_en": "This combination is a collection of KOLB Atoll800 and Retarder Proofer. This combination is especially suitable for bakery and pastry area of 100-200㎡.",
+          "specs": {
+            "Equipment combination": "Convection Oven Atoll 800x2 + Single System Retarder Proofer"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2020/09/04/20200904_103032_0000011.png",
+          "source_url": "https://www.kolbcn.com/html/en/kolb-solution-detail/2020/07/29/263.html",
+          "seo_title": "KBS-007R1 - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "KBS-008",
+          "title": "KOLB Open-Kitchen Solution KBS-008",
+          "description_en": "This combination is a collection of KOLB Atoll800, Deck Oven Laguna and Retarder Proofer. This combination is especially suitable for Bakery store or Tea shop with bakery, area of 150-200㎡.",
+          "specs": {
+            "Equipment combination": "Convection Oven Atoll 800 + 3L-Deck Oven Laguna 800x600 + Duo System Retarder Proofer"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2020/09/04/20200904_104244_0000027.png",
+          "source_url": "https://www.kolbcn.com/html/en/kolb-solution-detail/2020/07/18/228.html",
+          "seo_title": "KBS-008 - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "KBS-009",
+          "title": "KOLB Open-Kitchen Solution KBS-009",
+          "description_en": "This combination is a collection of KOLB Deck Oven Laguna and Proofer. Especially suitable for handmade bakery, which has many kinds of products and the area about 100-200㎡.",
+          "specs": {
+            "Equipment combination": "3L-Deck Oven Laguna 1200x600 + Duo System Retarder Proofer"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2020/08/11/20200811_145555_0000085.png",
+          "source_url": "https://www.kolbcn.com/html/en/kolb-solution-detail/2020/07/18/230.html",
+          "seo_title": "KBS-009 - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "KBS-010",
+          "title": "KOLB Open-Kitchen Solution KBS-010",
+          "description_en": "This combination is a collection of KOLB Atoll 800, Deck Oven Laguna and Retarder Proofer. This combination is especially suitable for Bakery store or Tea shop with bakery, area of 150-200㎡.",
+          "specs": {
+            "Equipment combination": "Convection Oven Atoll 800 + 2L-Deck Oven Laguna 1200x600  + Duo System Retarder Proofer"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2020/09/04/20200904_104521_0000031.png",
+          "source_url": "https://www.kolbcn.com/html/en/kolb-solution-detail/2020/07/18/224.html",
+          "seo_title": "KBS-010 - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "KBS-011",
+          "title": "KOLB Open-Kitchen Solution KBS-011",
+          "description_en": "This combination is a collection of KOLB Atoll 800, Deck Oven Laguna and Retarder Proofer. This combination is especially suitable for Bakery store or Tea shop with bakery, area of 150-200㎡.",
+          "specs": {
+            "Equipment combination": "Convection Oven Atoll 800 + 3L-Deck Oven Laguna 1200x600 + Duo System Retarder Proofer"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2020/09/04/20200904_104934_0000039.png",
+          "source_url": "https://www.kolbcn.com/html/en/kolb-solution-detail/2020/07/18/222.html",
+          "seo_title": "KBS-011 - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "KBS-012",
+          "title": "KOLB Open-Kitchen Solution KBS-012",
+          "description_en": "This combination is a collection of KOLB Atoll 800, Deck Oven Laguna and Retarder Proofer. This combination is especially suitable for Bakery or Coffee Roastery, area above 200㎡.",
+          "specs": {
+            "Equipment combination": "Convection Oven Atoll 800x2 + 2L-Deck Oven Laguna 1200x600  + Duo System Retarder Proofer"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2020/09/04/20200904_105150_0000043.png",
+          "source_url": "https://www.kolbcn.com/html/en/kolb-solution-detail/2020/07/18/221.html",
+          "seo_title": "KBS-012 - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "KBS-015",
+          "title": "KOLB Open-Kitchen Solution KBS-015",
+          "description_en": "This combination is a collection of KOLB Atoll 800, Pizza Oven, Deck Oven Laguna and Retarder Proofer, especially suitable for restaurants with bakery and pastry or workshop. The equipment is suitable for diversified products.",
+          "specs": {
+            "Equipment combination": "Convection Oven Atoll 800 + Pizza Oven + 2L-Deck Oven Laguna 1200x800  + Duo System Retarder Proofer"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2020/09/08/20200908_155955_0000003.png",
+          "source_url": "https://www.kolbcn.com/html/en/kolb-solution-detail/2020/07/18/223.html",
+          "seo_title": "KBS-015 - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "KBS-018G",
+          "title": "KOLB Open-Kitchen Solution KBS-018G",
+          "description_en": "This combination is a collection of KOLB Deck Oven Laguna and Proofer. Especially suitable for handmade bakery, the area less than 100㎡.",
+          "specs": {
+            "Equipment combination": "3L-Deck Oven Laguna 600x400 + Under base Proofer"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2020/08/11/20200811_141638_0000056.png",
+          "source_url": "https://www.kolbcn.com/html/en/kolb-solution-detail/2020/07/29/267.html",
+          "seo_title": "KBS-018G - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "KBS-019G",
+          "title": "KOLB Open-Kitchen Solution KBS-019G",
+          "description_en": "This combination is a collection of KOLB Atoll8008 and Proofer. This combination is suitable for the small pastry store, coffee shop and tea shop. It can be equipped with semi-automatic loading trolley to further ensure a more perfect baking effect of the product.",
+          "specs": {
+            "Equipment combination": "Convection Oven Atoll 8008 + Under base Proofer"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2020/09/04/20200904_103236_0000015.png",
+          "source_url": "https://www.kolbcn.com/html/en/kolb-solution-detail/2020/07/29/262.html",
+          "seo_title": "KBS-019G - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "KBS-021",
+          "title": "KOLB Open-Kitchen Solution KBS-021",
+          "description_en": "This combination is a collection of KOLB Deck Oven Laguna and Proofer. Especially suitable for handmade bakery, the areaof 100-200㎡.",
+          "specs": {
+            "Equipment combination": "3L-Deck Oven Laguna 800x600 + Single system Retarder Proofer"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2020/08/11/20200811_142236_0000061.png",
+          "source_url": "https://www.kolbcn.com/html/en/kolb-solution-detail/2020/07/29/266.html",
+          "seo_title": "KBS-021 - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "KBS-023",
+          "title": "KOLB Open-Kitchen Solution KBS-023",
+          "description_en": "This combination is a collection of KOLB Convection Oven Atoll and Proofer, the capacity is comparable to that of a small Rotary Oven, especially suitable for the popular pastry store.",
+          "specs": {
+            "Equipment combination": "Convection Oven Atoll 800+8008 + Duo System Retarder Proofer"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2020/09/04/20200904_103732_0000019.png",
+          "source_url": "https://www.kolbcn.com/html/en/kolb-solution-detail/2020/07/18/231.html",
+          "seo_title": "KBS-023 - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        }
+      ]
+    },
+    {
+      "group_name": "Atollspeed Solutions (KSS packages)",
+      "group_name_vi": "Giải pháp Atollspeed (gói KSS)",
+      "source_urls": [
+        "https://www.kolbcn.com/html/en/atollspeed-solution.html"
+      ],
+      "models": [
+        {
+          "model": "KSS-005G",
+          "title": "Atollspeed Solution KSS-005G",
+          "description_en": "This Speed Baking Solution features more fully, and the product range is comparable to a small western casual dining kitchen. It combines an Atoll 800T convection oven and an Atollspeed 400H, which allows you to offer a decent variety of warm foods in a shop where space is at premium. Specially designed for coffee chains and small restaurants.",
+          "specs": {
+            "Equipment combination": "Atoll 800T convection oven + Atollspeed 400H"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2020/09/04/20200904_112341_0000053.png",
+          "source_url": "https://www.kolbcn.com/html/en/atollspeed-solution-detail/2020/07/17/205.html",
+          "seo_title": "KSS-005G - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "KSS-008",
+          "title": "Atollspeed Solution KSS-008",
+          "description_en": "The Solution combines an Atoll 600 convection oven and an Atollspeed 300T, which allows you to offer a decent variety of warm foods in a shop where space is at premium. Specially designed for coffee chains and small restaurants.",
+          "specs": {
+            "Equipment combination": "Atoll 600T convection oven + Atollspeed 300T"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2020/09/04/20200904_112034_0000048.png",
+          "source_url": "https://www.kolbcn.com/html/en/atollspeed-solution-detail/2020/07/17/206.html",
+          "seo_title": "KSS-008 - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        },
+        {
+          "model": "KSS-010G",
+          "title": "Atollspeed Solution KSS-010G",
+          "description_en": "This Speed Baking Solution features more fully, and the product range is comparable to a small western casual dining kitchen. It combines an Atoll 800T convection oven and an Atollspeed 400H, which allows you to offer a decent variety of warm foods in a shop where space is at premium. Specially designed for coffee chains and small restaurants.",
+          "specs": {
+            "Equipment combination": "Atoll 600T convection oven + Atollspeed 300H"
+          },
+          "origin": "China (Kolb Huizhou; Swiss design)",
+          "heat_source": "electric",
+          "image_url": "https://www.kolbcn.com/upload_img/2020/09/04/20200904_112934_0000063.png",
+          "source_url": "https://www.kolbcn.com/html/en/atollspeed-solution-detail/2020/07/17/204.html",
+          "seo_title": "KSS-010G - Kolb Huizhou Ltd.",
+          "seo_description": ""
+        }
+      ]
+    }
+  ]
+}

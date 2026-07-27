@@ -1,235 +1,209 @@
 /**
- * bep-canteen-nha-may-sheh-fung — hero slot.
- * Direction: Industrial Factory Canteen.
- * Motifs: sheet-metal striped overlays, bolt/rivet corner ornaments, hi-vis safety stripe,
- * brushed steel watermark plate, hazard chevron divider, NO.### stamp.
- * @package SaigonHoreca
+ * bep-canteen-nha-may-sheh-fung — Section #1: hero
+ * Direction: Industrial Factory Canteen — full-viewport cinematic plate,
+ * sheet-metal stripe veil, hi-vis safety stripe, brushed-steel eyebrow stamp,
+ * coordinate meta row. 100% tokens, zero hardcoded hex.
  */
 
-/* ===== Section frame: sheet-metal cinematic plate ===== */
-.pp-hero {
+.pp-hero-shf {
   position: relative;
-  min-height: 88vh;
+  height: calc(100vh - 76px);
+  height: calc(100dvh - 76px);
+  min-height: 600px;
+  width: 100%;
   display: flex;
   align-items: flex-end;
-  justify-content: flex-start;
   overflow: hidden;
   isolation: isolate;
-  background: var(--b1);
-  padding: 0;
-}
-@media (min-width: 768px) {
-  .pp-hero { min-height: 92vh; }
+  background-color: var(--b1);
 }
 
-/* ===== Layer 1: photographic media ===== */
-.pp-hero__media {
+/* ── Layer 1: photographic media — background-attachment: scroll;= reliable parallax ── */
+.pp-hero-shf__bg {
   position: absolute;
   inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  pointer-events: none;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  z-index: 0;
-  filter: saturate(1.08) contrast(1.05) brightness(0.94);
-  transform: scale(1.02);
-  transition: transform 1.4s var(--ease-spring);
+  background-attachment: scroll; /* reliable parallax — bg fixed to viewport, auto-clipped to this box */
+  filter: saturate(1.06) contrast(1.03);
 }
-.pp-hero:hover .pp-hero__media { transform: scale(1.04); }
 
-/* ===== Layer 2: cinematic overlay + sheet-metal stripe veil ===== */
-.pp-hero__overlay {
+/* ── Layer 1b: LIGHT token overlay — keeps the photo bright/visible (no black scrim) ── */
+.pp-hero-shf__overlay {
   position: absolute;
   inset: 0;
-  z-index: 1;
+  z-index: -1;
   pointer-events: none;
-  background:
-    linear-gradient(180deg,
-      color-mix(in srgb, var(--b1) 60%, transparent) 0%,
-      color-mix(in srgb, var(--b1) 18%, transparent) 38%,
-      color-mix(in srgb, var(--b1) 72%, transparent) 100%),
-    repeating-linear-gradient(135deg,
-      transparent 0,
-      transparent 14px,
-      color-mix(in srgb, var(--b1) 10%, transparent) 14px,
-      color-mix(in srgb, var(--b1) 10%, transparent) 16px);
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--b1) 45%, transparent) 0%,
+    color-mix(in srgb, var(--b1) 25%, transparent) 50%,
+    color-mix(in srgb, var(--b1) 55%, transparent) 100%
+  );
 }
 
-/* corner sheet-metal panel watermark — top-right */
-.pp-hero::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 38%;
-  max-width: 520px;
-  height: 60%;
-  background:
-    repeating-linear-gradient(90deg,
-      transparent 0,
-      transparent 38px,
-      color-mix(in srgb, var(--gold) 6%, transparent) 38px,
-      color-mix(in srgb, var(--gold) 6%, transparent) 40px),
-    linear-gradient(180deg,
-      color-mix(in srgb, var(--gold) 5%, transparent) 0%,
-      transparent 100%);
-  border-left: 1px solid color-mix(in srgb, var(--gold) 18%, transparent);
-  border-bottom: 1px solid color-mix(in srgb, var(--gold) 14%, transparent);
-  z-index: 1;
-  pointer-events: none;
-  opacity: 0.85;
-}
-
-/* hi-vis safety stripe — bottom edge */
-.pp-hero::after {
-  content: '';
+/* ── Layer 2: hi-vis safety stripe at bottom edge ── */
+.pp-hero-shf__stripe {
   position: absolute;
   left: 0; right: 0; bottom: 0;
   height: 14px;
-  background:
-    repeating-linear-gradient(135deg,
-      var(--gold) 0,
-      var(--gold) 18px,
-      color-mix(in srgb, var(--b1) 88%, var(--gold)) 18px,
-      color-mix(in srgb, var(--b1) 88%, var(--gold)) 36px);
-  opacity: 0.78;
   z-index: 2;
+  pointer-events: none;
+  background: repeating-linear-gradient(135deg,
+    var(--gold) 0,
+    var(--gold) 18px,
+    color-mix(in srgb, var(--b1) 86%, var(--gold)) 18px,
+    color-mix(in srgb, var(--b1) 86%, var(--gold)) 36px);
+  opacity: 0.82;
   box-shadow:
-    0 -2px 14px color-mix(in srgb, var(--gold) 35%, transparent),
+    0 -2px 16px color-mix(in srgb, var(--gold) 32%, transparent),
     inset 0 1px 0 color-mix(in srgb, var(--gold) 55%, transparent);
 }
 
-/* ===== Content frame ===== */
-.pp-hero__content {
+/* ── Content ── */
+.pp-hero-shf .pp-container-shared { z-index: 3; }
+
+.pp-hero-shf__content {
   position: relative;
   z-index: 3;
-  max-width: 1140px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 6rem 1.5rem 5.5rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 1.5rem;
-}
-@media (min-width: 768px) {
-  .pp-hero__content { padding: 9rem 2rem 7rem; gap: 1.85rem; }
+  gap: clamp(1.1rem, 2.2vw, 1.75rem);
+  padding-block: clamp(5rem, 12vw, 8.5rem) clamp(3.5rem, 7vw, 6rem);
+  max-width: 60rem;
 }
 
-/* eyebrow stamp — NO.001 industrial tag */
-.pp-hero__content::before {
-  content: 'NO.001 / SECTOR — A';
-  display: inline-block;
+/* eyebrow — sits directly on the photo (no panel/frame) */
+.pp-hero-shf__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
   font-family: var(--font-display);
-  font-size: 0.72rem;
+  font-size: clamp(0.66rem, 1.3vw, 0.78rem);
   font-weight: 700;
-  letter-spacing: 0.42em;
-  color: var(--gold);
-  padding: 0.5rem 0.9rem;
-  border: 1px solid color-mix(in srgb, var(--gold) 50%, transparent);
-  background: color-mix(in srgb, var(--b1) 55%, transparent);
-  backdrop-filter: blur(8px) saturate(140%);
-  position: relative;
+  letter-spacing: 0.34em;
   text-transform: uppercase;
+  color: var(--gold);
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.6);
 }
+.pp-hero-shf__eyebrow svg { width: 1.05rem; height: 1.05rem; display: block; }
 
-/* bolt cluster ornament */
-.pp-hero__content::after {
-  content: '';
-  position: absolute;
-  top: 6rem;
-  right: 2rem;
-  width: 96px;
-  height: 96px;
-  background:
-    radial-gradient(circle at 12px 12px, color-mix(in srgb, var(--gold) 70%, transparent) 0 4px, transparent 5px),
-    radial-gradient(circle at 84px 12px, color-mix(in srgb, var(--gold) 70%, transparent) 0 4px, transparent 5px),
-    radial-gradient(circle at 12px 84px, color-mix(in srgb, var(--gold) 70%, transparent) 0 4px, transparent 5px),
-    radial-gradient(circle at 84px 84px, color-mix(in srgb, var(--gold) 70%, transparent) 0 4px, transparent 5px);
-  border: 1px solid color-mix(in srgb, var(--gold) 32%, transparent);
-  background-color: color-mix(in srgb, var(--b1) 22%, transparent);
-  pointer-events: none;
-  opacity: 0.92;
-  display: none;
-}
-@media (min-width: 768px) {
-  .pp-hero__content::after { display: block; }
-}
-
-/* ===== Title — stamped industrial display ===== */
-.pp-hero__title {
+/* title — stamped industrial display */
+.pp-hero-shf__title {
   margin: 0;
   font-family: var(--font-display);
   font-weight: 900;
-  font-size: clamp(2.8rem, 9vw, 7.5rem);
-  line-height: 0.92;
-  letter-spacing: 0.04em;
+  font-size: clamp(2.9rem, 9vw, 7rem);
+  line-height: 0.94;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
   color: var(--bc);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.8rem, 1.6vw, 1.25rem);
   text-shadow:
-    0 2px 0 color-mix(in srgb, var(--gold) 18%, transparent),
-    0 8px 32px rgba(0, 0, 0, 0.55);
-  position: relative;
-  max-width: 14ch;
+    0 2px 0 color-mix(in srgb, var(--gold) 16%, transparent),
+    0 2px 18px rgba(0, 0, 0, 0.55),
+    0 10px 34px rgba(0, 0, 0, 0.55);
 }
-.pp-hero__title::before {
-  content: '';
-  position: absolute;
-  left: -1.25rem;
-  top: 8%;
-  bottom: 12%;
-  width: 4px;
-  background: var(--gold);
-  box-shadow: 0 0 18px color-mix(in srgb, var(--gold) 60%, transparent);
-}
-.pp-hero__title::after {
-  content: '— SHF / 1968';
-  display: block;
-  margin-top: 0.55rem;
-  font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 0.42em;
-  color: color-mix(in srgb, var(--gold) 85%, var(--bc));
-  text-shadow: none;
-}
-
-/* ===== Subhead — manifesto line ===== */
-.pp-hero__subhead {
-  margin: 0;
+.pp-hero-shf__title-sub {
   font-family: var(--font-display);
-  font-size: clamp(1.1rem, 1.8vw, 1.55rem);
+  font-size: clamp(1.05rem, 2.2vw, 1.6rem);
   font-weight: 600;
-  line-height: 1.35;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  line-height: 1.3;
   color: var(--gold);
-  max-width: 52ch;
-  letter-spacing: 0.005em;
-  position: relative;
-  padding-left: 1.25rem;
-  border-left: 1px dashed color-mix(in srgb, var(--gold) 45%, transparent);
+  max-width: 34ch;
+  padding-left: 1.1rem;
+  border-left: 3px solid var(--gold);
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.55);
 }
 
-/* ===== Subtitle ===== */
-.pp-hero__subtitle {
+/* subtitle */
+.pp-hero-shf__subtitle {
   margin: 0;
-  font-size: clamp(0.97rem, 1.1vw, 1.08rem);
+  font-size: clamp(0.98rem, 1.25vw, 1.12rem);
   line-height: 1.78;
-  color: color-mix(in srgb, var(--bc) 88%, var(--bc2));
-  max-width: 60ch;
-  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
+  color: color-mix(in srgb, var(--bc) 86%, var(--bc2));
+  max-width: 56ch;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.55);
 }
 
-/* trailing meta strip after subtitle */
-.pp-hero__content > .pp-hero__subtitle::after {
-  content: '';
-  display: block;
-  margin-top: 1.5rem;
-  width: 86px;
-  height: 2px;
-  background: linear-gradient(90deg, var(--gold) 0%, transparent 100%);
-  box-shadow: 0 0 10px color-mix(in srgb, var(--gold) 50%, transparent);
+/* meta coordinate row */
+.pp-hero-shf__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(0.85rem, 2.5vw, 2.25rem);
+  margin-top: 0.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid color-mix(in srgb, var(--gold) 22%, transparent);
+  width: 100%;
+  max-width: 46rem;
+}
+.pp-hero-shf__meta-item { display: flex; flex-direction: column; gap: 0.2rem; }
+.pp-hero-shf__meta-k {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--gold) 80%, var(--bc));
+}
+.pp-hero-shf__meta-v {
+  font-family: var(--font-display);
+  font-size: clamp(0.82rem, 1.2vw, 0.96rem);
+  font-weight: 600;
+  color: var(--bc2);
 }
 
-/* small screens — soften ornaments */
-@media (max-width: 767px) {
-  .pp-hero::before { width: 60%; height: 36%; }
-  .pp-hero__title::before { left: -0.85rem; width: 3px; }
+/* scroll cue */
+.pp-hero-shf__scroll {
+  position: absolute;
+  right: clamp(1.25rem, 4vw, 2.75rem);
+  bottom: clamp(2rem, 4vw, 2.75rem);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-size: 0.66rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--bc2);
+  opacity: 0.7;
+}
+.pp-hero-shf__scroll svg {
+  color: var(--gold);
+  animation: shf-scroll-bob 1.8s var(--ease-spring) infinite;
+  filter: drop-shadow(0 0 4px color-mix(in srgb, var(--gold) 45%, transparent));
+}
+@media (max-width: 767px) { .pp-hero-shf__scroll { display: none; } }
+
+/* ── Animations ── */
+@keyframes shf-scroll-bob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(5px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pp-hero-shf__scroll svg {
+    animation: none !important;
+  }
+}
+
+/* background-attachment: scroll;is janky on mobile → scroll (keep position:absolute) */
+@media (max-width: 768px) {
+  .pp-hero-shf__bg {
+    position: absolute;
+    background-attachment: scroll;
+    width: 100%;
+    height: 100%;
+  }
 }

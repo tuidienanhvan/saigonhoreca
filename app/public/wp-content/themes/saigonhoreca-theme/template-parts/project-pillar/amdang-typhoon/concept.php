@@ -64,7 +64,7 @@ if (!defined('ABSPATH')) exit;
           <div class="pp-frame-corner pp-frame-corner--bl"></div>
         </div>
         <div class="pp-wrapper-adt-concept pp-image-container-shared">
-          <img src="<?php echo sgh_img('amdang-typhoon/amdang-typhoon-phong-vip-go-tram.jpg'); ?>" alt="<?php echo esc_attr('Nội thất gỗ trầm ấm sang trọng phòng VIP Amdang Typhoon - Saigon Horeca'); ?>" loading="lazy" decoding="async" width="900" height="600">
+          <img src="<?php echo sgh_img('amdang-typhoon/amdang-typhoon-phong-vip-go-tram.jpg'); ?>" alt="<?php echo esc_attr('Ô cửa tròn viền đỏ treo rèm hạt dẫn vào phòng VIP Amdang Typhoon'); ?>" loading="lazy" decoding="async" width="900" height="600">
           <div class="pp-image-caption-shared"><?php echo esc_html__('Phòng ăn VIP riêng tư thiết kế ô cửa tròn viền đỏ đậm chất Á Đông', 'saigonhoreca'); ?></div>
           <div class="pp-media-overlay-adt-concept"></div>
         </div>

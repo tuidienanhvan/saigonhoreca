@@ -1,27 +1,149 @@
 /**
- * moa-moa — specs slot.
- * Inherits .pp-split-moa from concept.css + image + text.
- * @package SaigonHoreca
+ * Project Pillar — Moa Moa Pasta Club
+ * Section #5: specs styling — technical feature list with gilded timeline + icon boxes.
+ * 100% tokens, zero hardcoded hex.
  */
 
-.pp-split-moa__media img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--bd);
-  transition: border-color 0.4s var(--ease-spring), transform 0.4s var(--ease-spring);
+.pp-moa-specs .pp-grid-moa {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3.5rem;
+  align-items: center;
 }
-.pp-split-moa__media img:hover {
-  border-color: color-mix(in srgb, var(--wa) 40%, transparent);
-  transform: scale(1.03);
+@media (min-width: 1024px) {
+  .pp-moa-specs .pp-grid-moa {
+    grid-template-columns: 50% 50%;
+  }
+}
+
+/* Image */
+.moa-specs__image-container {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--bd);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+  transition: border-color 0.6s var(--ease-spring), box-shadow 0.6s var(--ease-spring);
+}
+.moa-specs__image-container:hover {
+  border-color: color-mix(in srgb, var(--gold) 40%, transparent);
+  box-shadow: 0 22px 50px color-mix(in srgb, var(--gold) 16%, transparent);
+}
+.moa-specs__image-container img {
+  filter: saturate(1.02) brightness(0.92);
+}
+.moa-specs__image-decor {
+  position: absolute;
+  inset: 12px;
+  border: 1px solid color-mix(in srgb, var(--gold) 18%, transparent);
+  border-radius: calc(var(--radius-lg) - 6px);
+  pointer-events: none;
+  z-index: 4;
+  transition: border-color 0.5s var(--ease-spring);
+}
+.moa-specs__image-container:hover .moa-specs__image-decor {
+  border-color: color-mix(in srgb, var(--gold) 50%, transparent);
+}
+
+/* Card */
+.moa-specs__card {
+  position: relative;
+  background: color-mix(in srgb, var(--b3) 70%, transparent);
+  border: 1px solid var(--bd);
+  border-radius: var(--radius-lg);
+  padding: clamp(1.75rem, 3.5vw, 2.75rem);
+}
+
+.moa-specs__body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  margin-top: 1.75rem;
+}
+
+.moa-specs__feature {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  position: relative;
+  padding-left: 1.5rem;
+}
+.moa-specs__feature::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 2px;
+  background: var(--bd);
+  transition: background-color 0.4s var(--ease-spring);
+}
+.moa-specs__feature:hover::before {
+  background: var(--gold);
+}
+
+.moa-specs__icon-wrapper {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  background: color-mix(in srgb, var(--gold) 4%, transparent);
+  border: 1px solid color-mix(in srgb, var(--gold) 18%, transparent);
+  border-radius: var(--radius-sm);
+  color: var(--gold);
+  transition: transform 0.4s var(--ease-spring), border-color 0.4s var(--ease-spring), background-color 0.4s var(--ease-spring), box-shadow 0.4s var(--ease-spring);
+}
+.moa-specs__icon-wrapper svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  display: block;
+  transition: transform 0.4s var(--ease-spring);
+}
+.moa-specs__feature:hover .moa-specs__icon-wrapper {
+  transform: translateY(-2px);
+  background: color-mix(in srgb, var(--gold) 9%, transparent);
+  border-color: var(--gold);
+  box-shadow: 0 0 15px color-mix(in srgb, var(--gold) 22%, transparent);
+}
+.moa-specs__feature:hover .moa-specs__icon-wrapper svg {
+  transform: scale(1.12) rotate(6deg);
+}
+
+.moa-specs__feature-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.moa-specs__feature-content h4 {
+  font-family: var(--font-display);
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: var(--bc);
+  margin: 0;
+  letter-spacing: -0.01em;
+  transition: color 0.3s var(--ease-spring);
+}
+.moa-specs__feature:hover .moa-specs__feature-content h4 {
+  color: var(--gold);
+}
+.moa-specs__feature-content p {
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--bc2);
+  margin: 0;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .pp-split-moa__media img {
+  .moa-specs__image-container,
+  .moa-specs__image-decor,
+  .moa-specs__feature::before,
+  .moa-specs__icon-wrapper,
+  .moa-specs__icon-wrapper svg,
+  .moa-specs__feature-content h4 {
     transition: none !important;
-  }
-  .pp-split-moa__media img:hover {
     transform: none !important;
+    animation: none !important;
   }
 }

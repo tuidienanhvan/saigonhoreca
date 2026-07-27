@@ -1,126 +1,43 @@
 /**
  * heiwa-sushi-omakase — gallery slot.
- * Balanced 3-image grid + equipment feature card + closing zen block.
- * Inherits .pp-gallery-hwa + .pp-split-hwa + .pp-text-hwa.
+ *   (a) "Kỹ thuật vận hành": equipment image + feature list (asymmetric).
+ *   (b) "Hoàn thiện thực tế": closing copy + zen quote + staggered 3-image collage.
+ * Tokens only; image captions inherited from shared _caption.css.
  * @package SaigonHoreca
  */
 
-.pp-gallery-section-hwa {
-  background:
-    radial-gradient(circle at 76% 20%, color-mix(in srgb, var(--p) 6%, transparent), transparent 34%),
-    radial-gradient(circle at 16% 80%, color-mix(in srgb, var(--hwa-ember) 7%, transparent), transparent 32%),
-    var(--b1);
+/* ── (a) KỸ THUẬT VẬN HÀNH ────────────────────────────────────── */
+.pp-gallery-hwa__grid {
   position: relative;
-  padding: 6rem 0;
-}
-
-/* ── KITCHEN LAYOUT BLUEPRINT ────────────────────────────────── */
-.pp-gallery-hwa__header {
-  text-align: center;
-  max-width: 700px;
-  margin: 0 auto 3.5rem;
-}
-
-.pp-gallery-hwa__header .pp-text-hwa__title {
-  margin-bottom: 0.75rem;
-}
-
-.pp-gallery-hwa__subtitle {
-  font-family: var(--font-body), sans-serif;
-  font-size: clamp(0.9rem, 1.1vw, 1.05rem);
-  line-height: 1.6;
-  color: color-mix(in srgb, var(--bc) 55%, transparent);
-}
-
-.pp-gallery-hwa__blueprint-wrapper {
-  position: relative;
-  background: var(--b2);
-  border: 1px solid var(--hwa-line);
-  border-radius: var(--radius-xl, 24px);
-  padding: 1.5rem;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55);
-  overflow: hidden;
-  transition: border-color 0.4s var(--ease-spring), box-shadow 0.4s var(--ease-spring);
-}
-.pp-gallery-hwa__blueprint-wrapper:hover {
-  border-color: color-mix(in srgb, var(--p) 35%, transparent);
-  box-shadow: 0 35px 80px color-mix(in srgb, var(--p) 8%, transparent);
-}
-
-.pp-gallery-hwa__blueprint-container {
-  width: 100%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-.pp-gallery-hwa__blueprint-svg {
-  display: block;
-  width: 100%;
-  min-width: 850px;
-  height: auto;
-  color: color-mix(in srgb, var(--bc) 45%, transparent);
-}
-
-@media (max-width: 767px) {
-  .pp-gallery-hwa__blueprint-wrapper {
-    padding: 0.75rem;
-    border-radius: var(--radius-lg);
-  }
-}
-
-/* ── FEATURE CARD (KỸ THUẬT VẬN HÀNH) ────────────────────────── */
-.pp-gallery-hwa__feature-card {
-  position: relative;
-  background: var(--b2);
-  border: 1px solid var(--hwa-line);
-  border-radius: var(--radius-xl, 24px);
-  padding: 2.5rem 1.5rem;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
-  overflow: hidden;
-}
-@media (min-width: 768px) {
-  .pp-gallery-hwa__feature-card {
-    padding: 4rem 3.5rem;
-  }
-}
-
-.pp-text-hwa__body-grid {
+  z-index: 2;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2.5rem;
-  margin-top: 2rem;
+  gap: 3rem;
+  align-items: center;
 }
 @media (min-width: 992px) {
-  .pp-text-hwa__body-grid {
-    grid-template-columns: 1.1fr 0.9fr;
-    align-items: start;
+  .pp-gallery-hwa__grid {
+    grid-template-columns: 0.5fr 0.5fr;
+    gap: 4.5rem;
   }
 }
 
-.pp-text-hwa__desc p {
-  color: color-mix(in srgb, var(--bc) 70%, transparent);
-  font-size: 0.95rem;
-  line-height: 1.7;
-  margin-bottom: 1.25rem;
-}
-.pp-text-hwa__desc p:last-child {
-  margin-bottom: 0;
+.pp-gallery-hwa__media { position: relative; z-index: 2; }
+.pp-gallery-hwa__text  { position: relative; z-index: 2; }
+
+.pp-gallery-hwa__figure {
+  aspect-ratio: 4 / 3;
+  width: 100%;
 }
 
-.pp-gallery-hwa__features-list {
+.pp-gallery-hwa__features {
+  margin-top: 2rem;
   display: grid;
   grid-template-columns: 1fr;
   gap: 1rem;
 }
-@media (min-width: 480px) {
-  .pp-gallery-hwa__features-list {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-@media (min-width: 992px) {
-  .pp-gallery-hwa__features-list {
-    grid-template-columns: 1fr;
-  }
+@media (min-width: 560px) {
+  .pp-gallery-hwa__features { grid-template-columns: repeat(2, 1fr); }
 }
 
 .pp-gallery-hwa__feature {
@@ -135,7 +52,7 @@
 }
 .pp-gallery-hwa__feature:hover {
   background: color-mix(in srgb, var(--b1) 80%, transparent);
-  border-color: var(--p);
+  border-color: var(--gold);
   transform: translateY(-2px);
 }
 
@@ -146,18 +63,12 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: var(--p);
+  color: var(--gold);
   transition: transform 0.4s var(--ease-spring), color 0.4s var(--ease-spring);
 }
-
-.pp-gallery-hwa__svg-icon {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
+.pp-gallery-hwa__feature-icon svg { width: 100%; height: 100%; display: block; }
 .pp-gallery-hwa__feature:hover .pp-gallery-hwa__feature-icon {
-  color: var(--gold);
+  color: var(--ph);
   transform: scale(1.1) translateY(-2px);
 }
 
@@ -166,61 +77,60 @@
   flex-direction: column;
   gap: 0.3rem;
 }
-
 .pp-gallery-hwa__feature-title {
   font-family: var(--font-display);
   font-size: 0.9rem;
   font-weight: 600;
   color: var(--bc);
 }
-
 .pp-gallery-hwa__feature-desc {
   font-size: 0.78rem;
   color: color-mix(in srgb, var(--bc) 50%, transparent);
   line-height: 1.4;
 }
 
-/* ── CLOSING ZEN BLOCK ────────────────────────────────────────── */
-.pp-gallery-hwa__closing-centered {
+/* ── (b) HOÀN THIỆN THỰC TẾ — header editorial + MOSAIC bất đối xứng ── */
+
+/* Số chìm kỹ thuật watermark mờ (06) cho section gallery hoàn thiện */
+.pp-gallery-hwa__closing {
   position: relative;
-  max-width: 860px;
-  margin: 0 auto;
-  padding: 3rem 1.5rem;
+}
+.pp-gallery-hwa__watermark {
+  position: absolute;
+  top: clamp(-2rem, -2vw, -1rem);
+  right: clamp(0.5rem, 4vw, 4rem);
+  z-index: 0;
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(8rem, 22vw, 22rem);
+  font-weight: 800;
+  line-height: 1;
+  color: var(--gold);
+  opacity: 0.04;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Header editorial căn giữa — badge / title / divider / copy / quote */
+.pp-gallery-hwa__closing-head {
+  position: relative;
+  z-index: 2;
+  max-width: 56rem;
+  margin: 0 auto clamp(2.5rem, 5vw, 4rem);
   text-align: center;
 }
-@media (min-width: 768px) {
-  .pp-gallery-hwa__closing-centered {
-    padding: 4.5rem 3.5rem;
-  }
-}
-
-.pp-gallery-hwa__closing-centered .pp-text-hwa__title {
-  margin-bottom: 2rem;
-}
-
-.pp-gallery-hwa__closing-centered .pp-text-hwa__body {
-  color: color-mix(in srgb, var(--bc) 70%, transparent);
-  font-size: 1rem;
-  line-height: 1.75;
-  margin-bottom: 3rem;
-}
-.pp-gallery-hwa__closing-centered .pp-text-hwa__body p {
-  margin-bottom: 1.25rem;
-}
-.pp-gallery-hwa__closing-centered .pp-text-hwa__body p:last-child {
-  margin-bottom: 0;
-}
+.pp-gallery-hwa__closing-head .pp-text-hwa__divider { margin-inline: auto; }
+.pp-gallery-hwa__closing-head .pp-text-hwa__body p { text-align: center; }
 
 .pp-gallery-hwa__quote {
-  margin: 3rem 0 0;
-  padding: 2.2rem;
+  margin: 2rem auto 0;
+  max-width: 44rem;
+  padding: 1.8rem 2rem;
   position: relative;
-  background: color-mix(in srgb, var(--p) 4%, transparent);
+  background: color-mix(in srgb, var(--gold) 4%, transparent);
   border-top: 1px solid var(--hwa-line);
   border-bottom: 1px solid var(--hwa-line);
   border-radius: var(--radius-lg);
 }
-
 .pp-gallery-hwa__quote p {
   margin: 0 0 1rem;
   font-family: var(--font-serif);
@@ -229,7 +139,6 @@
   line-height: 1.7;
   color: color-mix(in srgb, var(--bc) 85%, transparent);
 }
-
 .pp-gallery-hwa__quote-author {
   font-family: var(--font-mono);
   font-style: normal;
@@ -237,11 +146,55 @@
   font-weight: 600;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--p);
+  color: var(--gold);
   display: block;
 }
 
+/* ── CLEAN UNIFORM GRID ────────────────────────────────────────────
+   Lưới editorial đồng nhất: mọi tile cùng aspect-ratio 4/3 nên lát kín
+   KHÔNG để lại khoảng đen trống. KHÔNG row-span / grid-auto-rows mismatch.
+   3 ảnh → 3 cột ở desktop, cân đối. row-gap chừa chỗ cho chú thích báo chí. */
+.pp-gallery-hwa__mosaic {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1.5rem, 2.6vw, 2.25rem) clamp(1.25rem, 2vw, 1.75rem);
+}
+@media (min-width: 600px) {
+  .pp-gallery-hwa__mosaic { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 992px) {
+  .pp-gallery-hwa__mosaic { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Mỗi tile = khung chia sẻ; cùng một tỉ lệ 4/3 (CLS-safe, không khe hở) */
+.pp-gallery-hwa__item {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+}
+
+/* Hover lift + scale + viền vàng (kế thừa .pp-frame-hwa, thêm glow vàng).
+   filter KHÔNG làm tối ảnh — đây là ảnh raw vốn đã tối. */
+.pp-gallery-hwa__item img {
+  border-radius: inherit;
+  filter: saturate(0.99) contrast(1.03) brightness(1.02);
+  transition: transform 0.6s var(--ease-spring), filter 0.5s var(--ease-spring) !important;
+}
+.pp-gallery-hwa__item:hover {
+  transform: translateY(-6px) scale(1.012);
+  border-color: var(--gold);
+  box-shadow: 0 34px 70px color-mix(in srgb, var(--gold) 24%, transparent);
+}
+.pp-gallery-hwa__item:hover img { filter: saturate(1.05) contrast(1.05) brightness(1.05); }
+
 @media (prefers-reduced-motion: reduce) {
-  .pp-gallery-hwa__feature { transition: none !important; }
-  .pp-gallery-hwa__feature:hover { transform: none !important; }
+  .pp-gallery-hwa__feature,
+  .pp-gallery-hwa__feature:hover,
+  .pp-gallery-hwa__feature-icon,
+  .pp-gallery-hwa__item,
+  .pp-gallery-hwa__item:hover { transition: none !important; transform: none !important; }
+  .pp-gallery-hwa__item img { transition: none !important; }
 }

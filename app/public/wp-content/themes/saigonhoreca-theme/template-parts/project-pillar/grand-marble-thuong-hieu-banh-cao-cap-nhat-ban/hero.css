@@ -1,12 +1,18 @@
 /**
  * grand-marble-thuong-hieu-banh-cao-cap-nhat-ban — hero slot.
- * Ken-Burns pastry banner + staggered entry + warm caramel ambient glow + glass card.
+ * Bright pastry banner via the Parallax Clip-Path technique (NO JS, GPU-smooth):
+ * the section is clip-path:inset(0) which confines a position:fixed bg child to
+ * the section = parallax (replaces the old ken-burns/absolute media). Per owner
+ * feedback: NO dark overlay, NO panel behind the title — text sits directly on
+ * the bright image with only a LIGHT token gradient overlay + legibility
+ * text-shadow. Keeps staggered entry + warm caramel ambient glow.
  * @package SaigonHoreca
  */
 
 .pp-hero-gmarb {
   position: relative;
-  height: calc(100svh - 76px);
+  height: calc(100vh - 76px);
+  height: calc(100dvh - 76px);
   min-height: 660px;
   width: 100%;
   display: flex;
@@ -19,42 +25,38 @@
   padding-inline: clamp(1.25rem, 7vw, 7rem);
 }
 
-.pp-hero-gmarb__media {
+/* Parallax background — position:absolute box, background-attachment: scroll;for
+   reliable GPU-smooth parallax (bg pinned to viewport, auto-clipped to this box). */
+.pp-hero-gmarb__bg {
   position: absolute;
   inset: 0;
-  z-index: 1;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  animation: gmarb-ken-burns var(--sh-ken-burns-duration, 8s) ease-in-out infinite alternate;
-  filter: saturate(1.1) contrast(1.05) brightness(0.74);
+  background-attachment: scroll;
+  pointer-events: none;
+  /* Bright image — slight saturation/contrast lift, no darkening brightness. */
+  filter: saturate(1.08) contrast(1.04);
 }
 
+/* LIGHT token gradient overlay — keeps the photo bright/visible, no dark scrim. */
 .pp-hero-gmarb__overlay {
   position: absolute;
   inset: 0;
-  z-index: 2;
-  background:
-    linear-gradient(90deg, color-mix(in srgb, var(--b1) 90%, transparent) 0%, color-mix(in srgb, var(--b1) 44%, transparent) 50%, color-mix(in srgb, var(--gmarb-glaze) 56%, transparent) 100%),
-    linear-gradient(to bottom, color-mix(in srgb, var(--b1) 20%, transparent) 0%, color-mix(in srgb, var(--b1) 74%, transparent) 80%, var(--b1) 100%);
+  z-index: -1;
   pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--b1) 45%, transparent) 0%,
+    color-mix(in srgb, var(--b1) 25%, transparent) 50%,
+    color-mix(in srgb, var(--b1) 55%, transparent) 100%
+  );
 }
 
-.pp-hero-gmarb__grid {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  background:
-    linear-gradient(var(--gmarb-grid) 1px, transparent 1px),
-    linear-gradient(90deg, var(--gmarb-grid) 1px, transparent 1px),
-    radial-gradient(circle at 80% 28%, color-mix(in srgb, var(--gmarb-caramel) 10%, transparent), transparent 34%);
-  background-size: 44px 44px, 44px 44px, auto;
-  mask-image: linear-gradient(90deg, black 0%, transparent 80%);
-  opacity: 0.7;
-  pointer-events: none;
-}
-
-/* Warm caramel ambient glows */
+/* Warm caramel ambient glows — sit above the image but stay subtle/transparent. */
 .pp-hero-gmarb__glow {
   position: absolute;
   border-radius: 50%;
@@ -67,16 +69,16 @@
   left: -8%;
   width: 500px;
   height: 500px;
-  background: radial-gradient(circle, color-mix(in srgb, var(--gmarb-caramel) 18%, transparent) 0%, transparent 70%);
-  opacity: 0.7;
+  background: radial-gradient(circle, color-mix(in srgb, var(--gmarb-caramel) 16%, transparent) 0%, transparent 70%);
+  opacity: 0.55;
 }
 .pp-hero-gmarb__glow--rb {
   bottom: -12%;
   right: -6%;
   width: 560px;
   height: 560px;
-  background: radial-gradient(circle, color-mix(in srgb, var(--gmarb-butter) 14%, transparent) 0%, transparent 70%);
-  opacity: 0.5;
+  background: radial-gradient(circle, color-mix(in srgb, var(--gmarb-butter) 12%, transparent) 0%, transparent 70%);
+  opacity: 0.4;
 }
 
 .pp-hero-gmarb__rail {
@@ -87,7 +89,8 @@
   font-size: 0.68rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: color-mix(in srgb, var(--bc) 42%, transparent);
+  color: color-mix(in srgb, var(--bc) 72%, transparent);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.55);
   pointer-events: none;
 }
 .pp-hero-gmarb__rail--left {
@@ -101,43 +104,16 @@
   transform-origin: right center;
 }
 
+/* Content sits DIRECTLY on the bright image — no background / border / blur / shadow panel. */
 .pp-hero-gmarb__content {
   position: relative;
   z-index: 3;
   width: min(740px, 100%);
-  padding: clamp(2rem, 4vw, 3.25rem);
-  background: linear-gradient(135deg, color-mix(in srgb, var(--gmarb-glass) 92%, transparent), color-mix(in srgb, var(--b1) 46%, transparent));
-  border: 1px solid color-mix(in srgb, var(--gmarb-caramel) 18%, transparent);
-  border-left: 2px solid color-mix(in srgb, var(--gmarb-caramel) 64%, transparent);
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-floating);
-  backdrop-filter: blur(18px) saturate(130%);
+  padding: 0;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 1.15rem;
-}
-
-.pp-hero-gmarb__content::before,
-.pp-hero-gmarb__content::after {
-  content: '';
-  position: absolute;
-  width: 28px;
-  height: 28px;
-  border: 1px solid color-mix(in srgb, var(--gmarb-caramel) 55%, transparent);
-  pointer-events: none;
-}
-.pp-hero-gmarb__content::before {
-  top: -1px;
-  left: -1px;
-  border-right: none;
-  border-bottom: none;
-}
-.pp-hero-gmarb__content::after {
-  right: -1px;
-  bottom: -1px;
-  border-left: none;
-  border-top: none;
 }
 
 .pp-hero-gmarb__subhead {
@@ -147,7 +123,8 @@
   font-weight: 600;
   letter-spacing: 0.26em;
   text-transform: uppercase;
-  color: color-mix(in srgb, var(--gmarb-caramel) 88%, var(--bc));
+  color: color-mix(in srgb, var(--gmarb-caramel) 70%, var(--bc));
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.55);
   animation: gmarb-hero-rise 0.9s var(--ease-spring) 0.2s backwards;
 }
 
@@ -160,9 +137,7 @@
   color: var(--bc);
   letter-spacing: 0.005em;
   max-width: 12ch;
-  text-shadow:
-    0 4px 24px color-mix(in srgb, var(--b1) 72%, transparent),
-    0 0 60px color-mix(in srgb, var(--gmarb-caramel) 20%, transparent);
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.55);
   animation: gmarb-hero-rise 0.9s var(--ease-spring) 0.1s backwards;
 }
 
@@ -193,7 +168,8 @@
   max-width: 52ch;
   font-size: clamp(0.97rem, 1.1vw, 1.08rem);
   line-height: 1.8;
-  color: var(--bc2);
+  color: var(--bc);
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.55);
   animation: gmarb-hero-rise 0.9s var(--ease-spring) 0.38s backwards;
 }
 
@@ -209,14 +185,17 @@
   align-items: center;
   min-height: 2.1rem;
   padding: 0.45rem 0.8rem;
-  border: 1px solid color-mix(in srgb, var(--gmarb-caramel) 18%, transparent);
+  border: 1px solid color-mix(in srgb, var(--bc) 28%, transparent);
   border-radius: var(--radius-full);
-  background: color-mix(in srgb, var(--b1) 42%, transparent);
-  color: var(--bc2);
+  background: color-mix(in srgb, var(--b1) 30%, transparent);
+  backdrop-filter: blur(6px) saturate(120%);
+  -webkit-backdrop-filter: blur(6px) saturate(120%);
+  color: var(--bc);
   font-family: var(--font-mono);
   font-size: 0.7rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.45);
 }
 
 @media (max-width: 767px) {
@@ -225,13 +204,17 @@
     min-height: 600px;
   }
   .pp-hero-gmarb__rail { display: none; }
-  .pp-hero-gmarb__content { padding: 1.65rem; }
   .pp-hero-gmarb__title { max-width: 14ch; }
 }
 
-@keyframes gmarb-ken-burns {
-  0%   { transform: scale(var(--sh-ken-burns-scale-start, 1)); }
-  100% { transform: scale(var(--sh-ken-burns-scale-end, 1.12)); }
+/* Mobile fallback — background-attachment: scroll;is janky on mobile, scroll with page. */
+@media (max-width: 768px) {
+  .pp-hero-gmarb__bg {
+    position: absolute;
+    background-attachment: scroll;
+    width: 100%;
+    height: 100%;
+  }
 }
 
 @keyframes gmarb-hero-rise {
@@ -240,7 +223,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .pp-hero-gmarb__media,
   .pp-hero-gmarb__subhead,
   .pp-hero-gmarb__title,
   .pp-hero-gmarb__divider,

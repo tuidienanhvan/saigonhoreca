@@ -18,26 +18,5 @@ $uri = get_template_directory_uri();
         <p><?php echo esc_html__('Với tinh thần không ngừng khám phá và lựa chọn những sản phẩm thực phẩm đa dạng từ khắp nơi trên thế giới, Nichiyo không chỉ đáp ứng nhu cầu của thị trường mà còn tạo ra những trải nghiệm ẩm thực đầy sáng tạo và độc đáo cho khách hàng. Điều này được thể hiện qua việc không ngừng tìm kiếm và áp dụng những công nghệ tiên tiến nhất trong quá trình sản xuất, kiểm soát chất lượng, để mang lại những sản phẩm an toàn, chất lượng và dinh dưỡng cao.', 'saigonhoreca'); ?></p>
       </div>
     </div>
-
-    <div class="pp-gallery-nichiyo pp-gallery-nichiyo--cols-3">
-      <div class="pp-gallery-nichiyo__item scroll-reveal reveal-up delay-100">
-        <div class="pp-image-container-shared">
-          <img src="<?php echo sgh_img('du-an-bep-cang-tin-cong-ty-nhat-nichiyo/nichiyo-san-pham-3.jpg'); ?>" alt="<?php echo esc_attr__('Sản phẩm thực phẩm Nichiyo', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="600" height="800">
-          <div class="pp-image-caption-shared"><?php echo esc_html__('Dòng sản phẩm thực phẩm tuyển chọn của Nichiyo, đại diện cho tiêu chuẩn chất lượng và an toàn nghiêm ngặt.', 'saigonhoreca'); ?></div>
-        </div>
-      </div>
-      <div class="pp-gallery-nichiyo__item scroll-reveal reveal-up delay-200">
-        <div class="pp-image-container-shared">
-          <img src="<?php echo sgh_img('du-an-bep-cang-tin-cong-ty-nhat-nichiyo/nichiyo-san-pham-1.jpg'); ?>" alt="<?php echo esc_attr__('Sản phẩm thực phẩm Nichiyo', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="600" height="800">
-          <div class="pp-image-caption-shared"><?php echo esc_html__('Mỗi sản phẩm phản ánh tinh thần Monozukuri — chế tác tỉ mỉ và cam kết với chất lượng cuộc sống.', 'saigonhoreca'); ?></div>
-        </div>
-      </div>
-      <div class="pp-gallery-nichiyo__item scroll-reveal reveal-up delay-300">
-        <div class="pp-image-container-shared">
-          <img src="<?php echo sgh_img('du-an-bep-cang-tin-cong-ty-nhat-nichiyo/nichiyo-san-pham-2.jpg'); ?>" alt="<?php echo esc_attr__('Sản phẩm thực phẩm Nichiyo', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="600" height="800">
-          <div class="pp-image-caption-shared"><?php echo esc_html__('Danh mục đa dạng từ khắp nơi trên thế giới, mang đến trải nghiệm ẩm thực sáng tạo và độc đáo.', 'saigonhoreca'); ?></div>
-        </div>
-      </div>
-    </div>
   </div>
 </section>

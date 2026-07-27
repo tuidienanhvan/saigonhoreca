@@ -1,7 +1,7 @@
 <?php
 /**
  * Single Project Template — G.CUP COFFEE & BISTRO
- * Thumbnail: g-cup-coffee-bistro/g-cup-coffee-bistro-quay-bar-da-trang-van-may.webp
+ * Thumbnail: g-cup-coffee-bistro/g-cup-coffee-bistro-thumbnail-project-cover.webp
  *
  * Auto-routed via inc/core/pillar-routes.php for /du-an/g-cup-coffee-bistro/.
  *

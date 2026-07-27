@@ -1,0 +1,1635 @@
+{
+  "research_date": "2026-07-18",
+  "source_note": "Nguồn: website chính hãng toàn cầu jospergrill.com (bản tiếng Anh) — sitemap sản phẩm, toàn bộ trang danh mục /product-category/ và từng trang sản phẩm; microsite Josper Casa (jospergrill.com/casa/charcoal-ovens/); và 3 catalogue PDF chính hãng: josper-products-catalogue-en.pdf, josper-accessories-en.pdf, josper-cookware-catalogue.pdf. josper.es không dùng do lỗi SSL. Mọi mô tả, thông số, ảnh, seo_title và seo_description đều lấy trực tiếp từ trang nguồn hoặc PDF, không suy đoán. KHÔNG bao gồm: (1) các biến thể màu cửa và cấu hình PRO/PRO-T/PRO-TD/PRO-W/PRO-WT/PRO-WTD của từng lò (được ghi trong trường specs.configurations thay vì tách thành model riêng, vì shop bán chúng là tùy chọn của cùng một SKU); (2) mã HJA-PLUS-M120-HCTD do chỉ xuất hiện ở nhà phân phối thứ ba, không có nguồn chính hãng để xác minh; (3) mã BTL (quebracho trắng ép viên) chỉ có tên trong catalogue PDF, không có trang sản phẩm riêng trên shop; (4) HJA-PLUS-S80-HOME không còn trang trên shop (404). Nhóm Rotisseries (ASJ) có trang danh mục sống nhưng rỗng trên shop; dữ liệu lấy từ catalogue PDF. Các mục chỉ có trong PDF không có seo_* vì nguồn là file PDF, không phải trang web. Bổ sung 2026-07-18 (đợt 2): 6/7 mục thiếu specs (than briquette 301001, binchotan bạch đàn, binchotan vải, CEs, CE, SDV) đã điền từ PDF datasheet chính hãng carbon-vegetal-josper-todas-las-fichas-tecnicas.pdf (trường specs_source_url ghi rõ nguồn); riêng Fish grill 0403 Josper không publish kích thước ở bất kỳ nguồn nào nên giữ specs rỗng. 43/111 mã catalogue PDF nay đã có image_url lấy từ media library chính hãng jospergrill.com: 25 mã là ảnh riêng thật của đúng cấu hình, 18 mã dùng ảnh model gốc và được đánh dấu image_is_from_base_model=true + image_base_model. 68 mã còn lại (57 phụ kiện/phụ tùng + 11 mã cookware) vẫn không có ảnh vì Josper không publish ảnh riêng và không có model gốc hợp lý để mượn ảnh.",
+  "brand": "Josper-Spain",
+  "groups": [
+    {
+      "group_name": "Charcoal Ovens - HJX-PRO line",
+      "group_name_vi": "Lò Nướng Than Josper - Dòng HJX-PRO",
+      "source_urls": [
+        "https://jospergrill.com/product-category/josper-charcoal-ovens/hornos-brasa-josper-hjx-pro-2/"
+      ],
+      "models": [
+        {
+          "model": "HJX-15",
+          "title": "Josper HJX-15 Charcoal Oven",
+          "description_en": "Josper HJX-15 Charcoal Oven, an elegant combination of a grill and an oven in a single unit. It runs 100% on charcoal and features a unique enclosed barbecue design with different searing levels, a smooth-operating and sturdy front-opening door, and easy temperature control via a draft control system.<b>Recommended for approximately 30 guests ; it takes ± 25 minutes to heat up, with a daily charcoal consumption of 1.5 to 2.5 kg and a runtime of 6 hours per load. Hourly output is approximately 20 kg, with a grilling temperature of 250 to 350 °C. HJX-15 Oven: 500 x 688 x 550 mm Grill: 347 x 353 mm ± 30 guests Recommended installation height: 80–90 cm",
+          "specs": {
+            "Nhiệt độ nướng": "250 to 350 °C",
+            "Kích thước lò": "500 x 688 x 550 mm",
+            "Kích thước vỉ nướng": "347 x 353 mm",
+            "Sức chứa": "± 30 guests"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/Josper-HJX-15-2.jpg",
+          "source_url": "https://jospergrill.com/products/josper-charcoal-ovens/hornos-brasa-josper-hjx-pro-2/josper-hjx-15-charcoal-oven/",
+          "seo_title": "Josper Charcoal Oven HJX-15 | Saigon Horeca",
+          "seo_description": "Josper Charcoal Oven HJX-15 — origin Spain. grilling temperature 250 to 350 °C, oven dimensions 500 x 688 x 550 mm. Quote & consultation at Saigon Horeca.",
+          "seo_title_source": "Josper HJX-15 Charcoal Oven  | Josper",
+          "seo_description_source": "An elegant combination of grill and oven in a single unit. Runs 100% on charcoal. A unique enclosed barbecue design that seats 30 guests.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0001_HJX-15.jpg"
+        },
+        {
+          "model": "HJX-PRO L175",
+          "title": "Josper HJX Pro Brasa Oven, L175 Large",
+          "description_en": "HJX-PRO L175 Basic model Oven: 916 x 1091 x 1009 mm Grill: 760 x 760 mm ± 175 guests Recommended installation height: 65 cm HJX-PRO L175 T PRO model with lower table HJX-PRO L175 TD PRO model with countertop and drawer HJX-PRO L175 W PRO model with temperature controller HJX-PRO L175 WT PRO model with tempering unit and work surface",
+          "specs": {
+            "Kích thước lò": "916 x 1091 x 1009 mm",
+            "Kích thước vỉ nướng": "760 x 760 mm",
+            "recommended installation height": "65 cm",
+            "Sức chứa": "± 175 guests",
+            "configurations": "HJX-PRO L175, HJX-PRO L175 T, HJX-PRO L175 TD, HJX-PRO L175 W, HJX-PRO L175 WT"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/horno-josper-hjx-pro-L175-1.jpg",
+          "source_url": "https://jospergrill.com/products/josper-charcoal-ovens/hornos-brasa-josper-hjx-pro-2/josper-hjx-pro-large-charcoal-oven/",
+          "seo_title": "Josper Charcoal Oven HJX-PRO L175 | Saigon Horeca",
+          "seo_description": "Josper Charcoal Oven HJX-PRO L175 — origin Spain. oven dimensions 916 x 1091 x 1009 mm. Quote & consultation at Saigon Horeca.",
+          "seo_title_source": "Josper HJX Pro Brasa Oven, L175 Large | Josper",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0002_HJX-PRO_L175.jpg"
+        },
+        {
+          "model": "HJX-PRO M120",
+          "title": "Josper HJX Pro Brasa Oven, M120 Medium",
+          "description_en": "HJX-PRO M120 Base model Oven: 916 x 1091 x 774 mm Grill: 510 x 760 mm ± 120 guests Recommended installation height: 65 cm HJX-PRO M120 T PRO model with lower table HJX-PRO M120 TD PRO model with countertop and drawer HJX-PRO M120 W PRO model with temperature controller HJX-PRO M120 WT PRO model with tempering unit and work surface HJX-PRO M120 WTD PRO model with desuperheater, table and drawer ± 120 Diners",
+          "specs": {
+            "Kích thước lò": "916 x 1091 x 774 mm",
+            "Kích thước vỉ nướng": "510 x 760 mm",
+            "recommended installation height": "65 cm",
+            "Sức chứa": "± 120 guests",
+            "configurations": "HJX-PRO M120, HJX-PRO M120 T, HJX-PRO M120 TD, HJX-PRO M120 W, HJX-PRO M120 WT, HJX-PRO M120 WTD"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/horno-josper-hjx-pro-M120.jpg",
+          "source_url": "https://jospergrill.com/products/josper-charcoal-ovens/hornos-brasa-josper-hjx-pro-2/josper-hjx-pro-medium-charcoal-oven/",
+          "seo_title": "Josper Charcoal Oven HJX-PRO M120 | Saigon Horeca",
+          "seo_description": "Josper Charcoal Oven HJX-PRO M120 — origin Spain. oven dimensions 916 x 1091 x 774 mm. Quote & consultation at Saigon Horeca.",
+          "seo_title_source": "Josper HJX Pro Brasa Oven, M120 Medium | Josper",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0003_HJX-PRO_M120.jpg"
+        },
+        {
+          "model": "HJX-PRO Mini",
+          "title": "Josper HJX Pro Brasa Oven Mini",
+          "description_en": "Josper HJX-PRO Mini Charcoal Oven: Josper’s mini oven, recommended for approximately 40 guests, with a heat-up time of ± 25 minutes, daily charcoal consumption of 6 to 8 kg, and a runtime of 7 hours per load. Hourly output is approximately 25 kg, with a grilling temperature range of 250 to 350 °C. HJX-PRO Mini Only model Oven: 710 x 805 x 560 mm Grill: 340 x 560 mm ± 40 guests Recommended installation height: 65 cm",
+          "specs": {
+            "Mức tiêu thụ": "6 to 8 kg",
+            "Kích thước lò": "710 x 805 x 560 mm",
+            "Kích thước vỉ nướng": "340 x 560 mm",
+            "recommended installation height": "65 cm",
+            "Sức chứa": "± 40 guests"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/horno-josper-hjx-pro-mini-1-1.jpg",
+          "source_url": "https://jospergrill.com/products/josper-charcoal-ovens/hornos-brasa-josper-hjx-pro-2/josper-hjx-pro-mini-charcoal-oven/",
+          "seo_title": "Josper Charcoal Oven HJX-PRO Mini | Saigon Horeca",
+          "seo_description": "Josper Charcoal Oven HJX-PRO Mini — origin Spain. oven dimensions 710 x 805 x 560 mm, grill grate dimensions 340 x 560 mm. Quote & consultation at Saigon Horeca.",
+          "seo_title_source": "Josper HJX Pro Brasa OvenMini | Josper",
+          "seo_description_source": "Josper HJX-PRO Mini Charcoal Oven: Josper’s mini oven, recommended for approximately 40 guests, with a heat-up time of ± 25 minutes, daily charcoal consumption of 6 to 8 kg, and a runtime of 7 hours per load. Hourly output is approximately 25 kg, with a grilling temperature range of 250 to 350 °C.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0004_HJX-PRO_Mini.jpg"
+        },
+        {
+          "model": "HJX-PRO S80",
+          "title": "Josper HJX Pro Brasa Oven S80 Small",
+          "description_en": "HJX-PRO S80 Base model Oven: 649 x 1024 x 772 mm Grill: 510 x 500 mm ± 80 guests Recommended installation height: 65 cm HJX-PRO S80 T PRO model with lower table HJX-PRO S80 TD PRO model with countertop and drawer HJX-PRO S80 W PRO model with temperature controller HJX-PRO S80 WT PRO model with tempering unit and work surface",
+          "specs": {
+            "Kích thước lò": "649 x 1024 x 772 mm",
+            "Kích thước vỉ nướng": "510 x 500 mm",
+            "recommended installation height": "65 cm",
+            "Sức chứa": "± 80 guests",
+            "configurations": "HJX-PRO S80, HJX-PRO S80 T, HJX-PRO S80 TD, HJX-PRO S80 W, HJX-PRO S80 WT"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/horno-josper-hjx-pro-S80.jpg",
+          "source_url": "https://jospergrill.com/products/josper-charcoal-ovens/hornos-brasa-josper-hjx-pro-2/josper-hjx-pro-small-charcoal-oven/",
+          "seo_title": "Josper Charcoal Oven HJX-PRO S80 | Saigon Horeca",
+          "seo_description": "Josper Charcoal Oven HJX-PRO S80 — origin Spain. oven dimensions 649 x 1024 x 772 mm, grill grate dimensions 510 x 500 mm. Quote & consultation at Saigon Horeca.",
+          "seo_title_source": "Josper HJX Pro Brasa OvenS80 Small | Josper",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0005_HJX-PRO_S80.jpg"
+        }
+      ]
+    },
+    {
+      "group_name": "Charcoal Ovens - HJA-PLUS line (A Class)",
+      "group_name_vi": "Lò Nướng Than Josper - Dòng HJA-PLUS (Hạng A)",
+      "source_urls": [
+        "https://jospergrill.com/product-category/josper-charcoal-ovens/josper-charcoal-oven-hja-plus/"
+      ],
+      "models": [
+        {
+          "model": "HJA-PLUS L175",
+          "title": "Josper Charcoal Oven HJA-PLUS Large",
+          "description_en": "Our winning Oven XII National Grill Competition in San Sebastián Gastronomika 2021 Technology applied to the grill, mastery of the grill and guaranteed quality. If you want more information contact us The ovens of the Class A range, now improved through the application of the new HJA- PLUS standard, maintain the design, quality and reliability of their predecessors alongside increased performance. An improved hydraulic door locking system streamlines operations for the chef. The redesigned, modernised upper and lower vents facilitate air circulation and are both easier to clean. An optimised upper tempering area allows customisation and closure with various accessories included inside. The configuration of the HJA-PLUS allows the selection of optional side tables, as well as drawers and an upper tempering cabinet according to the user´s needs. Various colour options for the doors, drawers and tempering cabinet may be viewed in our catalogue. Josper HJA-PLUS-L175 Charcoal Oven: the largest oven from Josper. Recommended for about 175 diners, it features an ignition time of about 40 minutes, daily coal consumption of 16-20 kg and 9 hours of independent operation per load. Production of approx. 110 kg per hour, and a braising temperature of 250 to 350 °C. H T HC HJA-PLUS-L175 worktopOven Oven: 104*117*104 cm Grill: 76*76 cm +- 175 dinners Recommended installation height: 50-55 cm HJA-PLUS-L175-T HJA-PLUS-L175-TD +- 175 comensales HJA-PLUS-L175-HC HJA-PLUS-L175-HCT HJA-PLUS-L175-HCTD",
+          "specs": {
+            "Kích thước ngoài": "104 x 117 x 104 cm",
+            "Kích thước vỉ nướng": "76 x 76 cm",
+            "Sức chứa": "± 175 diners",
+            "fire up time": "± 40 minutes",
+            "Mức tiêu thụ": "16-20 kg",
+            "performance per load": "9 hours",
+            "production per hour": "approx. 110 kg",
+            "Nhiệt độ nướng": "250 to 350 °C",
+            "recommended installation height": "50-55 cm"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/HJA-PLUS-L175-WTD-Green.jpg",
+          "source_url": "https://jospergrill.com/products/josper-charcoal-ovens/josper-charcoal-oven-hja-plus/josper-charcoal-oven-hja-plus-large/",
+          "seo_title": "Josper Charcoal Oven HJA-PLUS L175 | Saigon Horeca",
+          "seo_description": "Josper Charcoal Oven HJA-PLUS L175 — origin Spain. grilling temperature 250 to 350 °C, external dimensions 104 x 117 x 104 cm. Quote & consultation at Saigon Horeca.",
+          "seo_title_source": "Class A Josper Charcoal Oven HJA-50 Large | JOSPER",
+          "seo_description_source": "Class A Josper Charcoal Oven HJA-50 large size, recommended for 175 diners. Fire-up time ± 40 minutes, daily charcoal consum 16-20 kg, performance time 9 h.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0006_HJA-PLUS_L175.jpg"
+        },
+        {
+          "model": "HJA-PLUS M120",
+          "title": "Josper HJA-PLUS M120 Medium Charcoal Oven",
+          "description_en": "The ovens in the Clase A line, now upgraded to meet the new HJA-PLUS standard, retain the design, quality, and reliability of their predecessors while offering enhanced performance. An improved hydraulic door retention system, optimizing the chef’s operations. Redesigned and modernized upper and lower vents, facilitating air circulation as well as cleaning of both. Optimized upper warming area, allowing for customization and closure, including various accessories inside. The HJA-PLUS configuration allows you to select optional side tables, as well as drawers and a temperature-controlled upper cabinet, depending on your needs. See the different color options for doors, drawers, and the temperature-controlled cabinet in our catalog. Josper HJA-PLUS-M120 Charcoal Oven, Josper’s medium-sized oven, recommended for about 120 guests; it takes approximately 35 minutes to heat up, has a daily charcoal consumption of 12 to 16 kg, and operates for 9 hours per load. Hourly output of approximately 90 kg and a grilling temperature of 250 to 350 °C. H T HC HJA-PLUS-M120 countertop model Oven: 104*117*78 cm Grill: 51*76 cm +- 120 guests Recommended installation height: 50-55 cm. HJA-PLUS-M120-T Seats approximately 120 guests HJA-PLUS-M120-TD HJA-PLUS-M120-HC HJA-PLUS-M120-HCT HJA-PLUS-M120-HCTD +- 120 dinners",
+          "specs": {
+            "Mức tiêu thụ": "12 to 16 kg",
+            "Nhiệt độ nướng": "250 to 350 °C"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/horno-josper-hjx-pro-M120-2.jpg",
+          "source_url": "https://jospergrill.com/products/josper-charcoal-ovens/josper-charcoal-oven-hja-plus/josper-hja-plus-m120-medium-oven/",
+          "seo_title": "Josper Charcoal Oven HJA-PLUS M120 | Saigon Horeca",
+          "seo_description": "Josper Charcoal Oven HJA-PLUS M120 — origin Spain. grilling temperature 250 to 350 °C, consumption 12 to 16 kg. Quote & consultation at Saigon Horeca.",
+          "seo_title_source": "A Class Josper Charcoal Oven HJA-45 Medium | JOSPER",
+          "seo_description_source": "Josper HJA-45 charcoal oven, Josper's medium-sized oven, Class A: ± 120 guests, heat-up time of ± 35 minutes, daily charcoal consumption of 12 to 16 kg.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0007_HJA-PLUS_M120.jpg"
+        },
+        {
+          "model": "HJA-PLUS Mini",
+          "title": "Josper HJA-PLUS Mini Charcoal Oven",
+          "description_en": "The ovens in the Clase A line, now upgraded to meet the new HJA-PLUS standard, retain the design, quality, and reliability of their predecessors while offering enhanced performance. An improved hydraulic door retention system, optimizing the chef’s operations. Redesigned and modernized upper and lower vents, facilitating air circulation as well as cleaning of both. Optimized upper warming area, allowing for customization and closure, including various accessories inside. The HJA-PLUS configuration allows you to select optional side tables, as well as drawers and a temperature-controlled upper cabinet, depending on your needs. See the different color options for doors, drawers, and the temperature-controlled cabinet in our catalog. Josper HJA-PLUS Mini Charcoal Oven. Josper’s A-PLUS Class, recommended for about 40 guests, has a heat-up time of ± 25 minutes, a daily charcoal consumption of 6 to 8 kg, and a runtime per load of 7 hours. Hourly output is approximately 25 kg, with a grilling temperature range of 250 to 350 °C. HJA-PLUS Mini Countertop Oven: 82*73*63 cm Grill: 34*56 cm +- 40 guests Recommended installation height: 80-85 cm.",
+          "specs": {
+            "Mức tiêu thụ": "6 to 8 kg"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/josper-charcoal-oven-hja-plus-mini.jpg",
+          "source_url": "https://jospergrill.com/products/josper-charcoal-ovens/josper-charcoal-oven-hja-plus/josper-hja-plus-mini-oven/",
+          "seo_title": "Josper Charcoal Oven HJA-PLUS Mini | Saigon Horeca",
+          "seo_description": "Josper Charcoal Oven HJA-PLUS Mini — origin Spain. consumption 6 to 8 kg. Quote & consultation at Saigon Horeca.",
+          "seo_title_source": "A Class Josper Charcoal Oven HJA-20 Mini | JOSPER",
+          "seo_description_source": "Josper HJA-20 Charcoal Oven, Josper's mini oven, Class A: ± 40 guests, heat-up time ± 25 minutes, daily charcoal consumption of 6 to 8 kg.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0008_HJA-PLUS_Mini.jpg"
+        },
+        {
+          "model": "HJA-PLUS S80",
+          "title": "Josper HJA-PLUS S80 Small Charcoal Oven",
+          "description_en": "The ovens in the Clase A line, now upgraded to meet the new HJA-PLUS standard, retain the design, quality, and reliability of their predecessors while offering enhanced performance. An improved hydraulic door retention system, optimizing the chef’s operations. Redesigned and modernized upper and lower vents, facilitating air circulation as well as cleaning of both. Optimized upper warming area, allowing for customization and closure, including various accessories inside. The HJA-PLUS configuration allows you to select optional side tables, as well as drawers and a temperature-controlled upper cabinet, depending on your needs. See the different color options for doors, drawers, and the temperature-controlled cabinet in our catalog. Josper HJA-PLUS-S80 Charcoal Oven, Josper’s small oven. Recommended for about 80 guests; it takes approximately 30 minutes to heat up, has a daily charcoal consumption of 10 to 12 kg, and operates for 9 hours per load. Hourly output is approximately 60 kg, with a grilling temperature range of 250 to 350 °C. H T HC HJA-PLUS-S80 Oven: 75×110×78 cm Grill: 51×50 cm Approximately 80 guests HJA-PLUS-S80-T Oven: 75*110*78 cm Grill: 51*50 cm HJA-PLUS-S80-TD HJA-PLUS-S80-HC Countertop model +- 80 guests Recommended installation height: 50-55 cm HJA-PLUS-S80-HCT HJA-PLUS-S80-HCTD +- 80 dinners",
+          "specs": {
+            "Mức tiêu thụ": "10 to 12 kg"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/HJA-PLUS-S80-HCTD-Blue.jpg",
+          "source_url": "https://jospergrill.com/products/josper-charcoal-ovens/josper-charcoal-oven-hja-plus/josper-hja-plus-s80-small-oven/",
+          "seo_title": "Josper Charcoal Oven HJA-PLUS S80 | Saigon Horeca",
+          "seo_description": "Josper Charcoal Oven HJA-PLUS S80 — origin Spain. consumption 10 to 12 kg. Quote & consultation at Saigon Horeca.",
+          "seo_title_source": "Class A Josper Charcoal Oven HJA-25 Small | JOSPER",
+          "seo_description_source": "Josper Class A HJA-25 Charcoal Oven, Josper's small oven: serves approximately 80 guests, heats up in approximately 30 minutes, daily charcoal consumption of 10 to 12 kg.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0009_HJA-PLUS_S80.jpg"
+        }
+      ]
+    },
+    {
+      "group_name": "Charcoal Ovens - base HJX line",
+      "group_name_vi": "Lò Nướng Than Josper - Dòng HJX Cơ Bản",
+      "source_urls": [
+        "https://jospergrill.com/product-category/josper-charcoal-ovens/"
+      ],
+      "models": [
+        {
+          "model": "HJX-20",
+          "title": "Josper Charcoal Oven HJX-20 Mini",
+          "description_en": "Josper Charcoal Oven HJX-20, Josper’s mini oven, recommended for around 40 diners, the fire up time is about 25 minutes, daily charcoal consumption of 6 to 8 kg, performance per load of 7 hours. Production per hour of 25 kg average and a grilling temperature of 250 to 350 ºC. HJX-20 Mini Countertop Oven size: 71x42x112 cm Grill size: 58×34 cm ± 40 diners Recommended installation height: 85-90 cm",
+          "specs": {
+            "recommended for": "40 diners",
+            "fire up time": "25 minutes",
+            "Mức tiêu thụ": "6 to 8 kg",
+            "performance per load": "7 hours",
+            "production per hour": "25 kg average",
+            "Nhiệt độ nướng": "250 to 350 ºC"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/charcoal-oven-hjx-20.jpeg",
+          "source_url": "https://jospergrill.com/products/josper-charcoal-ovens/josper-charcoal-broiler-oven-hjx-20-mini/",
+          "seo_title": "Josper Charcoal Oven HJX-20 | Saigon Horeca",
+          "seo_description": "Josper Charcoal Oven HJX-20 — origin Spain. grilling temperature 250 to 350 ºC, production per hour 25 kg average. Quote & consultation at Saigon Horeca.",
+          "image_note": "Studio product photo from jospergrill.com media library (ID 34707), visually verified: small countertop charcoal oven, stainless, no cupboard base. Replaces WooCommerce placeholder.",
+          "seo_title_source": "Josper Charcoal Oven HJX-20 Mini | JOSPER Charcoal Ovens",
+          "seo_description_source": "Josper Charcoal Oven HJX-20 Mini size, recommended for 40 diners. Fire-up time of ± 25 min, daily charcoal consumption 6-8 kg, performance time 7 h.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0010_HJX-20.jpeg"
+        },
+        {
+          "model": "HJX-25",
+          "title": "Josper Charcoal Oven HJX-25 Small",
+          "description_en": "Josper Charcoal Oven HJX-25, Josper’s small size oven, recommended for around 80 diners, the fire up time is about 30 minutes, daily charcoal consumption of 10 to 12 kg, performance per load of 9 hours. Production per hour of 60 kg average and a grilling temperature of 250 to 350 ºC. This product is currently out of stock and unavailable. HJX-25-M CountertopOven size: 64x60x130 cmGrill size: 50×51 cm± 80 diners Recommended installation height: 50-55 cm HJX-25-MBC Countertop and tray supportOven size: 64x60x130 cmGrill size: 50×51 cm± 80 diners HJX-25-L With cupboard baseOven size: 64x60x185 cmGrill size: 50×51 cm± 80 diners HJX-25-LBC With cupboard base and tray supportOven size: 64x60x182 cmGrill size: 50×51 cm± 80 diners",
+          "specs": {
+            "recommended for": "80 diners",
+            "fire up time": "30 minutes",
+            "Mức tiêu thụ": "10 to 12 kg",
+            "performance per load": "9 hours",
+            "production per hour": "60 kg average",
+            "Nhiệt độ nướng": "250 to 350 ºC"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/charcoal-oven-hjx-25.jpeg",
+          "source_url": "https://jospergrill.com/products/josper-charcoal-ovens/josper-charcoal-broiler-oven-hjx-25-small/",
+          "seo_title": "Josper Charcoal Oven HJX-25 | Saigon Horeca",
+          "seo_description": "Josper Charcoal Oven HJX-25 — origin Spain. grilling temperature 250 to 350 ºC, production per hour 60 kg average. Quote & consultation at Saigon Horeca.",
+          "image_note": "Studio product photo from jospergrill.com media library (ID 34718), visually verified: narrow charcoal oven with stainless cupboard base (HJX-25-L config). Replaces WooCommerce placeholder.",
+          "seo_title_source": "Josper Charcoal Oven HJX-25 Small | JOSPER Charcoal Ovens",
+          "seo_description_source": "Josper Charcoal Oven HJX-25 Small size, recommended for 80 diners. Fire-up time ± 30 min, daily charcoal consumption 10-12 kg, performance time 9 h.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0011_HJX-25.jpeg"
+        },
+        {
+          "model": "HJX-45",
+          "title": "Josper Charcoal Oven HJX-45 Medium",
+          "description_en": "Josper Charcoal Oven HJX-45, the medium oven of Josper, recommended for around 120 diners, the fire up time is about 35 minutes, daily charcoal consumption of 12 to 16 kg, performance per load of 9 hours. Production per hour of 90 kg average and a grilling temperature of 250 to 350 ºC. This product is currently out of stock and unavailable. HJX-45-M CountertopOven size: 93x60x138 cmGrill size: 76×51 cm± 120 diners Recommended installation height: 50-55 cm HJX-45-MBC Countertop and tray supportOven size: 93x60x138 cmGrill size: 76×51 cm± 120 diners HJX-45-L With cupboard baseOven size: 93x60x190 cmGrill size: 76×51 cm± 120 diners HJX-45-LBC With cupboard base and tray supportOven size: 93x60x190 cmGrill size: 76×51 cm± 120 diners",
+          "specs": {
+            "recommended for": "120 diners",
+            "fire up time": "35 minutes",
+            "Mức tiêu thụ": "12 to 16 kg",
+            "performance per load": "9 hours",
+            "production per hour": "90 kg average",
+            "Nhiệt độ nướng": "250 to 350 ºC"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/2019/03/horno-josper-hjx-45-lbc-blue.jpg",
+          "source_url": "https://jospergrill.com/products/josper-charcoal-ovens/josper-charcoal-broiler-oven-hjx-45-medium/",
+          "seo_title": "Josper Charcoal Oven HJX-45 | Saigon Horeca",
+          "seo_description": "Josper Charcoal Oven HJX-45 — origin Spain. grilling temperature 250 to 350 ºC, production per hour 90 kg average. Quote & consultation at Saigon Horeca.",
+          "seo_title_source": "Josper Charcoal Oven HJX-45 Medium | JOSPER Charcoal Ovens",
+          "seo_description_source": "Josper Charcoal Oven HJX-45, Medium size, recommended for 120 diners. Fire-up time ± 35 min., daily charcoal consum. 12-16 kg, performance time 9 h.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0012_HJX-45.jpg"
+        },
+        {
+          "model": "HJX-50",
+          "title": "Josper Charcoal Oven HJX-50 Large",
+          "description_en": "Josper Charcoal Oven HJX-50, the large oven of Josper, recommended for around 175 diners, the fire up time is about 40 minutes, daily charcoal consumption of 16 to 20 kg, performance per load of 9 hours. Production per hour of 110 kg average and a grilling temperature of 250 to 350 ºC. M MBC L LBC HJX-50-M CountertopOven size: 93x86x138 cmGrill size: 76×75 cm± 175 diners Recommended installation height: 50-55 cm HJX-50-MBC Countertop and tray supportOven size: 93x86x138 cmGrill size: 76×75 cm± 175 diners HJX-50-L With cupboard baseOven size: 93x86x190 cmGrill size: 76×75 cm± 175 diners HJX-50-LBC With cupboard base and tray supportOven size: 93x86x190 cmGrill size: 76×75 cm± 175 diners",
+          "specs": {
+            "recommended for": "175 diners",
+            "fire up time": "40 minutes",
+            "Mức tiêu thụ": "16 to 20 kg",
+            "performance per load": "9 hours",
+            "production per hour": "110 kg average",
+            "Nhiệt độ nướng": "250 to 350 ºC"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/charcoal-oven-hjx-50.jpeg",
+          "source_url": "https://jospergrill.com/products/josper-charcoal-ovens/josper-charcoal-broiler-oven-hjx-50-large/",
+          "seo_title": "Josper Charcoal Oven HJX-50 | Saigon Horeca",
+          "seo_description": "Josper Charcoal Oven HJX-50 — origin Spain. grilling temperature 250 to 350 ºC, production per hour 110 kg average. Quote & consultation at Saigon Horeca.",
+          "image_note": "Studio product photo from jospergrill.com media library (ID 34740), visually verified: wide charcoal oven, red front panel, stainless cupboard base (HJX-50-L config). Replaces WooCommerce placeholder.",
+          "seo_title_source": "Josper Charcoal Oven HJX-50 Large | JOSPER Charcoal Ovens",
+          "seo_description_source": "Josper Charcoal Oven HJX-50 Large size, recommended for 175 diners. Fire-up time ± 40 minutes, daily charcoal consum 16-20 kg, performance time 9 h.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0013_HJX-50.jpeg"
+        }
+      ]
+    },
+    {
+      "group_name": "Basque Grills - Monoblock (MB)",
+      "group_name_vi": "Bếp Nướng Than Mở Basque Josper - Nguyên Khối (MB)",
+      "source_urls": [
+        "https://jospergrill.com/product-category/josper-basque-grills/josper-basque-grills-monoblock/"
+      ],
+      "models": [
+        {
+          "model": "PVJ-50-1-1-MB",
+          "title": "Josper Basque Grill PVJ-50-1-1-MB Individual",
+          "description_en": "Monoblock grill (50 cm) with one mast and single tank The individual Josper basque grill PVJ-50-1-1-MB has a grilling area of 500 x 600 mm and a vertical track of 290 mm. The firing up time is about 20 minutes, with a grilling temperature of 250 ºC and daily charcoal consumption of 20 to 22 kg average. Included accessories: tongs and poker. The characteristics that make the Josper Basque Grill an outstanding product in our industry are: Hydraulic height regulation system, which ensures a smooth and continuous movement of the grill at different heights Maximal thermal insulation guaranteed by a multi-chamber ventilation system Interior protection barrier provided by mineral insulation. Natural heat convection flow, not forced, limiting heat transfer and consequently, reducing external temperature transfer. Therefore, facilitating its usability. In the manufacturing process of the Basque Grill we have used the best high-tech steel alloys created by and for Josper, as well as the most advanced design techniques in the construction of traditional grills. PVJ-50-1-1-MB Individual Grill Equipment size: 90x90x161 cm Grill size: 50×60 cm ± 100 diners",
+          "specs": {
+            "fire up time": "20 minutes",
+            "Mức tiêu thụ": "20 to 22 kg",
+            "Nhiệt độ nướng": "250 ºC",
+            "grilling area": "500 x 600 mm",
+            "vertical track": "290 mm"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/PVJ-050-1-1-MB-SS.jpg",
+          "source_url": "https://jospergrill.com/products/josper-basque-grills/josper-basque-grills-monoblock/josper-basque-grill-pvj-50-1-1-mb-individual/",
+          "seo_title": "Josper Open Basque Charcoal Grill PVJ-50-1-1-MB | Saigon Horeca",
+          "seo_description": "Josper Open Basque Charcoal Grill PVJ-50-1-1-MB — origin Spain. grilling temperature 250 ºC, fire up time 20 minutes. Quote & consultation at Saigon Horeca.",
+          "seo_title_source": "Josper Basque Grill PVJ-50-1-1-MB | Charcoal Open Grill | JOSPER",
+          "seo_description_source": "Josper Basque Grill Monoblock, individual grill, fire-up time of 20 minutes, grilling temperature 250ºC (482ºF), daily charcoal consumption 20-22 kg.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0014_PVJ-50-1-1-MB.jpg"
+        },
+        {
+          "model": "PVJ-50-2-1-MB",
+          "title": "Josper Basque Grill PVJ-50-2-1-MB Double grill in one module",
+          "description_en": "Monoblock grill (50 cm x2) with double mast and single tank The double Josper basque grill on one module PVJ-50-2-1-MB has a grilling area of 500 x 600 mm (x2) and a vertical track of 290 mm. The firing up time is about 20 minutes, with a grilling temperature of 250 ºC and daily charcoal consumption of 20 to 22 kg average. Included accessories: tongs and poker. The characteristics that make the Josper Basque Grill an outstanding product in our industry are: Hydraulic height regulation system, which ensures a smooth and continuous movement of the grill at different heights Maximal thermal insulation guaranteed by a multi-chamber ventilation system Interior protection barrier provided by mineral insulation. Natural heat convection flow, not forced, limiting heat transfer and consequently, reducing external temperature transfer. Therefore, facilitating its usability. In the manufacturing process of the Basque Grill we have used the best high-tech steel alloys created by and for Josper, as well as the most advanced design techniques in the construction of traditional grills. PVJ-50-2-1-MB Double grill in one module Oven size: 140x90x161 cm Grill size: 50×60 cm (x2) ± 100 diners",
+          "specs": {
+            "fire up time": "20 minutes",
+            "Mức tiêu thụ": "20 to 22 kg",
+            "Nhiệt độ nướng": "250 ºC",
+            "grilling area": "500 x 600 mm",
+            "vertical track": "290 mm"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/PVJ-050-2-1-MB-SS.jpg",
+          "source_url": "https://jospergrill.com/products/josper-basque-grills/josper-basque-grills-monoblock/josper-basque-grill-pvj-50-2-1-mb-double-grill-in-one-module/",
+          "seo_title": "Josper Open Basque Charcoal Grill PVJ-50-2-1-MB | Saigon Horeca",
+          "seo_description": "Josper Open Basque Charcoal Grill PVJ-50-2-1-MB — origin Spain. grilling temperature 250 ºC, fire up time 20 minutes. Quote & consultation at Saigon Horeca.",
+          "seo_title_source": "Josper Basque Grill PVJ-50-2-1-MB | Charcoal Open Grill | JOSPER",
+          "seo_description_source": "Josper Basque Grill Monoblock, double individual grill, fire-up time of 20 minutes, grilling temperature 250ºC (482ºF), daily charcoal consumption 20-22 kg.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0015_PVJ-50-2-1-MB.jpg"
+        },
+        {
+          "model": "PVJ-76-1-1-MB",
+          "title": "Josper Basque Grill PVJ-76-1-1-MB Individual",
+          "description_en": "Monoblock grill (76 cm) with one mast and single tank The individual Josper Basque Grill PVJ-76-1-1-MB has a grilling area of 760 x 600 mm and a grill vertical track of 290 mm. The firing up time is about 20 minutes, with a grilling temperature of 250 ºC and daily charcoal consumption of 18 to 20 kg average. Included accessories: tongs and poker. The characteristics that make the Josper Basque Grill an outstanding product in our industry are: Hydraulic height regulation system, which ensures a smooth and continuous movement of the grill at different heights Maximal thermal insulation guaranteed by a multi-chamber ventilation system Interior protection barrier provided by mineral insulation. Natural heat convection flow, not forced, limiting heat transfer and consequently, reducing external temperature transfer. Therefore, facilitating its usability. In the manufacturing process of the Basque Grill we have used the best high-tech steel alloys created by and for Josper, as well as the most advanced design techniques in the construction of traditional grills. PVJ-76-1-1-MB Individual grill Equipment size: 115x90x161 cm Grill size: 76×60 cm ± 70 diners",
+          "specs": {
+            "fire up time": "20 minutes",
+            "Mức tiêu thụ": "18 to 20 kg",
+            "Nhiệt độ nướng": "250 ºC",
+            "grilling area": "760 x 600 mm",
+            "vertical track": "290 mm"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/PVJ-076-1-1-MB-SS.jpg",
+          "source_url": "https://jospergrill.com/products/josper-basque-grills/josper-basque-grills-monoblock/josper-basque-grill-pvj-76-1-1-mb-individual/",
+          "seo_title": "Josper Open Basque Charcoal Grill PVJ-76-1-1-MB | Saigon Horeca",
+          "seo_description": "Josper Open Basque Charcoal Grill PVJ-76-1-1-MB — origin Spain. grilling temperature 250 ºC, fire up time 20 minutes. Quote & consultation at Saigon Horeca.",
+          "seo_title_source": "Basque Grill PVJ-76-1-1MB | Open Charcoal Grills | JOSPER",
+          "seo_description_source": "Josper Basque Grill PVJ-76-1-1-MB, individual grill, fire-up time 20 minutes, grilling temperature 250ºC (482ºF), daily charcoal consumption 18-20 kg.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0016_PVJ-76-1-1-MB.jpg"
+        },
+        {
+          "model": "PVJ-76-2-2-MB",
+          "title": "Josper Basque Grill PVJ-76-2-2-MB Individual double grill",
+          "description_en": "Monoblock grill (76 cm x2) with double mast and double tank The double Josper Basque Grill PVJ-76-2-2-MB has a grilling area of 760 x 600 mm (x2) and a vertical track of 290 mm. The firing up time is about 20 minutes, with a grilling temperature of 250 ºC and daily charcoal consumption of 36 to 40 kg average. Included accessories: tongs and poker. The characteristics that make the Josper Basque Grill an outstanding product in our industry are: Hydraulic height regulation system, which ensures a smooth and continuous movement of the grill at different heights Maximal thermal insulation guaranteed by a multi-chamber ventilation system Interior protection barrier provided by mineral insulation. Natural heat convection flow, not forced, limiting heat transfer and consequently, reducing external temperature transfer. Therefore, facilitating its usability. In the manufacturing process of the Basque Grill we have used the best high-tech steel alloys created by and for Josper, as well as the most advanced design techniques in the construction of traditional grills. PVJ-76-2-2-MB Individual double grill Equipment size: 207x90x161 cm Grill size: 76×60 cm (x2) ± 140 diners",
+          "specs": {
+            "fire up time": "20 minutes",
+            "Mức tiêu thụ": "36 to 40 kg",
+            "Nhiệt độ nướng": "250 ºC",
+            "grilling area": "760 x 600 mm",
+            "vertical track": "290 mm"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/PVJ-076-2-2-MB-SS.jpg",
+          "source_url": "https://jospergrill.com/products/josper-basque-grills/josper-basque-grills-monoblock/josper-basque-grill-pvj-76-2-2-mb-individual-double-grill/",
+          "seo_title": "Josper Open Basque Charcoal Grill PVJ-76-2-2-MB | Saigon Horeca",
+          "seo_description": "Josper Open Basque Charcoal Grill PVJ-76-2-2-MB — origin Spain. grilling temperature 250 ºC, fire up time 20 minutes. Quote & consultation at Saigon Horeca.",
+          "seo_title_source": "Basque Grill PVJ-76-2-2-MB | Open Charcoal Grills | JOSPER",
+          "seo_description_source": "Josper Basque Grill PVJ-76-2-2-MB, individual double grill, fire-up time 20 minutes, grilling temperature 250ºC (482ºF), daily charcoal consumption 36 to 40 kg.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0017_PVJ-76-2-2-MB.jpg"
+        },
+        {
+          "model": "PVJ-76-3-3-MB",
+          "title": "Josper Basque Grill PVJ-76-3-3-MB Individual triple grill",
+          "description_en": "Monoblock grill (76 cm x3) with triple mast and three tanks The triple Josper Basque Grill PVJ-076-3 has a grilling area of 760 x 600 mm (x3) and a vertical track of 290 mm. The firing up time is 20 minutes, with a grilling temperature of 250 ºC and daily charcoal consumption of 54 to 60 kg average. Included accessories: tongs and poker. The characteristics that make the Josper Basque Grill an outstanding product in our industry are: Hydraulic height regulation system, which ensures a smooth and continuous movement of the grill at different heights Maximal thermal insulation guaranteed by a multi-chamber ventilation system Interior protection barrier provided by mineral insulation. Natural heat convection flow, not forced, limiting heat transfer and consequently, reducing external temperature transfer. Therefore, facilitating its usability. In the manufacturing process of the Basque Grill we have used the best high-tech steel alloys created by and for Josper, as well as the most advanced design techniques in the construction of traditional grills. PVJ-76-3-3-MB Individual triple grill Grill size: 76×60 cm (x3) ± 210 diners",
+          "specs": {
+            "fire up time": "20 minutes",
+            "Mức tiêu thụ": "54 to 60 kg",
+            "Nhiệt độ nướng": "250 ºC",
+            "grilling area": "760 x 600 mm",
+            "vertical track": "290 mm"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/PVJ-076-3-3-MB-SS.jpg",
+          "source_url": "https://jospergrill.com/products/josper-basque-grills/josper-basque-grills-monoblock/josper-basque-grill-pvj-76-3-3-mb-individual-triple-grill/",
+          "seo_title": "Josper Open Basque Charcoal Grill PVJ-76-3-3-MB | Saigon Horeca",
+          "seo_description": "Josper Open Basque Charcoal Grill PVJ-76-3-3-MB — origin Spain. grilling temperature 250 ºC, fire up time 20 minutes. Quote & consultation at Saigon Horeca.",
+          "seo_title_source": "Josper Basque Grill PVJ-76-3-3-MB | Open Charcoal Grills | JOSPER",
+          "seo_description_source": "Josper Basque Grill PVJ-76-3-3-MB, individual triple grill, fire-up time 20 minutes, grilling temperature 250ºC (482ºF), daily charcoal consumption 54 to 60 kg.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0018_PVJ-76-3-3-MB.jpg"
+        }
+      ]
+    },
+    {
+      "group_name": "Basque Grills - Countertop (CT)",
+      "group_name_vi": "Bếp Nướng Than Mở Basque Josper - Đặt Bàn (CT)",
+      "source_urls": [
+        "https://jospergrill.com/product-category/josper-basque-grills/josper-basque-grills-countertop/"
+      ],
+      "models": [
+        {
+          "model": "PVJ-50-1-1-CT",
+          "title": "Josper Basque Grill PVJ-50-1-1-CT Individual",
+          "description_en": "Countertop grill (50 cm) with one mast and single tank The individual Josper basque grill PVJ-50-1-1-CT has a grilling area of 500 x 600 mm and a vertical track of 290 mm. The firing up time is about 20 minutes, with a grilling temperature of 250 ºC and daily charcoal consumption of 20 to 22 kg average. Included accessories: tongs and poker. The characteristics that make the Josper Basque Grill an outstanding product in our industry are: Hydraulic height regulation system, which ensures a smooth and continuous movement of the grill at different heights Maximal thermal insulation guaranteed by a multi-chamber ventilation system Interior protection barrier provided by mineral insulation. Natural heat convection flow, not forced, limiting heat transfer and consequently, reducing external temperature transfer. Therefore, facilitating its usability. In the manufacturing process of the Basque Grill we have used the best high-tech steel alloys created by and for Josper, as well as the most advanced design techniques in the construction of traditional grills. PVJ-50-1-1-CT Individual Grill Equipment size: 75x85x111 cm Grill size: 50×60 cm ± 100 diners",
+          "specs": {
+            "fire up time": "20 minutes",
+            "Mức tiêu thụ": "20 to 22 kg",
+            "Nhiệt độ nướng": "250 ºC",
+            "grilling area": "500 x 600 mm",
+            "vertical track": "290 mm"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/PVJ-050-1-1-CT-SS.jpg",
+          "source_url": "https://jospergrill.com/products/josper-basque-grills/josper-basque-grills-countertop/josper-basque-grill-pvj-50-1-1-ct-individual/",
+          "seo_title": "Josper Open Basque Charcoal Grill PVJ-50-1-1-CT | Saigon Horeca",
+          "seo_description": "Josper Open Basque Charcoal Grill PVJ-50-1-1-CT — origin Spain. grilling temperature 250 ºC, fire up time 20 minutes. Quote & consultation at Saigon Horeca.",
+          "seo_title_source": "Josper Basque Grill PVJ-50-1-1-CT | Charcoal Open Grill | JOSPER",
+          "seo_description_source": "Josper Basque Grill Countertop, individual grill, fire-up time of 20 minutes, grilling temperature 250ºC (482ºF), daily charcoal consumption 20-22 kg.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0019_PVJ-50-1-1-CT.jpg"
+        },
+        {
+          "model": "PVJ-50-2-1-CT",
+          "title": "Josper Basque Grill PVJ-50-2-1-CT Individual Double Grill",
+          "description_en": "Countertop grill (50 cm x2) with double mast and single tank The double Josper basque grill PVJ-50-2-1-CT has a grilling area of 500 x 600 mm (x2) and a vertical track of 290 mm. The firing up time is about 20 minutes, with a grilling temperature of 250 ºC and daily charcoal consumption of 20 to 22 kg average. Included accessories: tongs and poker. The characteristics that make the Josper Basque Grill an outstanding product in our industry are: Hydraulic height regulation system, which ensures a smooth and continuous movement of the grill at different heights Maximal thermal insulation guaranteed by a multi-chamber ventilation system Interior protection barrier provided by mineral insulation. Natural heat convection flow, not forced, limiting heat transfer and consequently, reducing external temperature transfer. Therefore, facilitating its usability. In the manufacturing process of the Basque Grill we have used the best high-tech steel alloys created by and for Josper, as well as the most advanced design techniques in the construction of traditional grills. PVJ-50-2-1-CT Double Grill Equipment size: 75x85x111 cm Grill size: 50×60 cm (x2) ± 100 diners",
+          "specs": {
+            "fire up time": "20 minutes",
+            "Mức tiêu thụ": "20 to 22 kg",
+            "Nhiệt độ nướng": "250 ºC",
+            "grilling area": "500 x 600 mm",
+            "vertical track": "290 mm"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/PVJ-050-2-1-CT-SS.jpg",
+          "source_url": "https://jospergrill.com/products/josper-basque-grills/josper-basque-grills-countertop/josper-basque-grill-pvj-50-2-1-ct-individual-double-grill/",
+          "seo_title": "Josper Open Basque Charcoal Grill PVJ-50-2-1-CT | Saigon Horeca",
+          "seo_description": "Josper Open Basque Charcoal Grill PVJ-50-2-1-CT — origin Spain. grilling temperature 250 ºC, fire up time 20 minutes. Quote & consultation at Saigon Horeca.",
+          "seo_title_source": "Josper Basque Grill PVJ-50-2-1-CT | Charcoal Open Grill | JOSPER",
+          "seo_description_source": "Josper Basque Grill Countertop, double grill, fire-up time of 20 minutes, grilling temperature 250ºC (482ºF), daily charcoal consumption 20-22 kg.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0020_PVJ-50-2-1-CT.jpg"
+        },
+        {
+          "model": "PVJ-76-1-1-CT",
+          "title": "Josper Basque Grill PVJ-76-1-1-CT Individual",
+          "description_en": "Countertop grill (76 cm) with one mast and single tank The individual Josper basque grill PVJ-76-1-1-CT has a grilling area of 760 x 600 mm and a vertical track of 290 mm. The firing up time is about 20 minutes, with a grilling temperature of 250 ºC and daily charcoal consumption of 20 to 22 kg average. Included accessories: tongs and poker. The characteristics that make the Josper Basque Grill an outstanding product in our industry are: Hydraulic height regulation system, which ensures a smooth and continuous movement of the grill at different heights Maximal thermal insulation guaranteed by a multi-chamber ventilation system Interior protection barrier provided by mineral insulation. Natural heat convection flow, not forced, limiting heat transfer and consequently, reducing external temperature transfer. Therefore, facilitating its usability. In the manufacturing process of the Basque Grill we have used the best high-tech steel alloys created by and for Josper, as well as the most advanced design techniques in the construction of traditional grills. PVJ-76-1-1-CT Individual Grill Equipment size: 91x85x111 cm Grill size: 76×60 cm ± 70 diners",
+          "specs": {
+            "fire up time": "20 minutes",
+            "Mức tiêu thụ": "20 to 22 kg",
+            "Nhiệt độ nướng": "250 ºC",
+            "grilling area": "760 x 600 mm",
+            "vertical track": "290 mm"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/PVJ-076-1-1CT-SS.jpg",
+          "source_url": "https://jospergrill.com/products/josper-basque-grills/josper-basque-grills-countertop/josper-basque-grill-pvj-76-1-1-ct-individual/",
+          "seo_title": "Josper Open Basque Charcoal Grill PVJ-76-1-1-CT | Saigon Horeca",
+          "seo_description": "Josper Open Basque Charcoal Grill PVJ-76-1-1-CT — origin Spain. grilling temperature 250 ºC, fire up time 20 minutes. Quote & consultation at Saigon Horeca.",
+          "seo_title_source": "Josper Basque Grill PVJ-76-1-1-CT | Charcoal Open Grill | JOSPER",
+          "seo_description_source": "Josper Basque Grill Countertop, individual grill, fire-up time of 20 minutes, grilling temperature 250ºC (482ºF), daily charcoal consumption 20-22 kg.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0021_PVJ-76-1-1-CT.jpg"
+        },
+        {
+          "model": "PVJ-76-2-1-CT",
+          "title": "Josper Basque Grill PVJ-76-2-1-CT Individual Double Grill",
+          "description_en": "Countertop grill (76 cm x2) with double mast and single tank The double Josper basque grill PVJ-76-2-1-CT has a grilling area of 760 x 600 mm (x2) and a vertical track of 290 mm. The firing up time is about 20 minutes, with a grilling temperature of 250 ºC and daily charcoal consumption of 20 to 22 kg average. Included accessories: tongs and poker. The characteristics that make the Josper Basque Grill an outstanding product in our industry are: Hydraulic height regulation system, which ensures a smooth and continuous movement of the grill at different heights Maximal thermal insulation guaranteed by a multi-chamber ventilation system Interior protection barrier provided by mineral insulation. Natural heat convection flow, not forced, limiting heat transfer and consequently, reducing external temperature transfer. Therefore, facilitating its usability. In the manufacturing process of the Basque Grill we have used the best high-tech steel alloys created by and for Josper, as well as the most advanced design techniques in the construction of traditional grills. PVJ-76-2-1-CT Individual Grill Equipment size: 90x90x161 cm Grill size: 50×60 cm ± 100 diners",
+          "specs": {
+            "fire up time": "20 minutes",
+            "Mức tiêu thụ": "20 to 22 kg",
+            "Nhiệt độ nướng": "250 ºC",
+            "grilling area": "760 x 600 mm",
+            "vertical track": "290 mm"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/PVJ-076-2-1-CT-SS.jpg",
+          "source_url": "https://jospergrill.com/products/josper-basque-grills/josper-basque-grills-countertop/josper-basque-grill-pvj-76-2-1-ct-individual-double-grill/",
+          "seo_title": "Josper Open Basque Charcoal Grill PVJ-76-2-1-CT | Saigon Horeca",
+          "seo_description": "Josper Open Basque Charcoal Grill PVJ-76-2-1-CT — origin Spain. grilling temperature 250 ºC, fire up time 20 minutes. Quote & consultation at Saigon Horeca.",
+          "seo_title_source": "Josper Basque Grill PVJ-76-2-1-CT | Charcoal Open Grill | JOSPER",
+          "seo_description_source": "Josper Basque Grill Countertop, double grill, fire-up time of 20 minutes, grilling temperature 250ºC (482ºF), daily charcoal consumption 20-22 kg.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0022_PVJ-76-2-1-CT.jpg"
+        }
+      ]
+    },
+    {
+      "group_name": "Combos (Charcoal Oven + Basque Grill)",
+      "group_name_vi": "Bộ Combo Josper (Lò Nướng Than + Bếp Nướng Basque)",
+      "source_urls": [
+        "https://jospergrill.com/product-category/josper-combos/"
+      ],
+      "models": [
+        {
+          "model": "CVJ-50-PRO-L",
+          "title": "Josper CVJ-50-PRO-Large Combo / HJX-PRO Charcoal Oven + Double Basque Grill in a Single Module",
+          "description_en": "Josper HJX-PRO Charcoal Oven and Josper PVJ-50 Basque Grill Combo with a double grill in a single module. Charcoal oven : recommended for about 175 guests, with a preheating time of approximately 40 minutes Basque grill : preheating time of approximately 20 minutes. The combination of an oven and a grill offers endless culinary possibilities: Triple or even quadruple grilling area: the two adjustable grates on the Basque Grill, as well as the oven’s 5 internal grilling levels. Versatility in preparation and techniques: searing on an open grill and finishing in the oven, smoking at varying intensities, separating meat, fish, or vegetables on each of the combo’s grills, and complete control over the ingredients, as well as delicately prepared dishes. Control over the searing process in both the open grill and the oven thanks to the height adjustment feature. Quick and easy temperature control using the handwheel equipped with a reduction gear on the open grill and the pull-rod system in the oven. Increased production speed and volume thanks to the combined power of both machines operating simultaneously. Reuse of the thermal energy generated during the pyrolysis process in both the furnace and the Basque grill. The combo features a strong visual element and show grilling. It allows the chef to showcase their skills, capture diners’ attention, and bring the food to the right temperature in full view of the customer. Uniform coal consumption, as the combustion chambers ensure an even distribution of coal. Uninterrupted service for both non-stop kitchens and long-running events. Grilling area of the oven’s open grates measuring 500 x 600 mm (2 grates) and 760 x 760 mm (2 grates). Included accessories: fire guard, lid, 2 tongs, poker, and grates. CVJ-50-PRO-L HJX-PRO Oven + PVJ-50 Double Grill Dimensions: 2415 x 1625 x 900 mm Grill: 500 x 600 mm (x2) Seats approximately 175 guests",
+          "specs": {
+            "Kích thước vỉ nướng": "500 x 600 mm"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/CVJ-050-2-PRO-L-1.jpg",
+          "source_url": "https://jospergrill.com/products/josper-combos/combo-josper-cvj-50-pro-l-charcoal-oven-hjx-pro-double-basque-grill-in-a-single-module/",
+          "seo_title": "Josper Combo Set CVJ-50-PRO-L | Saigon Horeca",
+          "seo_description": "Josper Combo Set (Charcoal Oven + Basque Grill) CVJ-50-PRO-L — origin Spain. grill grate dimensions 500 x 600 mm. Quote & consultation at Saigon Horeca.",
+          "seo_title_source": "Josper Combo CVJ-050-2-HJX-50 | JOSPER Combos",
+          "seo_description_source": "The Josper HJX-PRO Charcoal Oven Combo plus the Josper PVJ-050 Basque Grill, featuring a double grill. Get the best of Josper in a single unit for your kitchen.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0023_CVJ-50-PRO-L.jpg"
+        },
+        {
+          "model": "CVJ-50-PRO-S",
+          "title": "Josper CVJ-50-PRO-Small Combo / HJX-PRO Charcoal Oven + Double Basque Grill in a Single Module",
+          "description_en": "Josper HJX-PRO Charcoal Oven and Josper PVJ-50 Basque Grill Combo with a double grill in a single module. Charcoal oven : recommended for about 80 guests, with a preheating time of approximately 40 minutes Basque grill : preheating time of approximately 20 minutes. The combination of an oven and a grill offers endless culinary possibilities: Triple or even quadruple grilling area: the two adjustable grates on the Basque Grill, as well as the oven’s 5 internal grilling levels. Versatility in preparation and techniques: searing on an open grill and finishing in the oven, smoking at varying intensities, separating meat, fish, or vegetables on each of the combo’s grills, and complete control over the ingredients, as well as delicately prepared dishes. Control over the searing process in both the open grill and the oven thanks to the height adjustment feature. Quick and easy temperature control using the handwheel equipped with a reduction gear on the open grill and the pull-rod system in the oven. Increased production speed and volume thanks to the combined power of both machines operating simultaneously. Reuse of the thermal energy generated during the pyrolysis process in both the furnace and the Basque grill. The combo features a strong visual element and show grilling. It allows the chef to showcase their skills, capture diners’ attention, and bring the food to the right temperature in full view of the customer. Uniform coal consumption, as the combustion chambers ensure an even distribution of coal. Uninterrupted service for both non-stop kitchens and long-running events. Grilling area of the open grates measuring 500 x 600 mm (2 grates) and 500 x 510 mm in the oven. Included accessories: fire guard, lid, 2 tongs, poker, and grates. CVJ-50-PRO-S HJX-PRO Oven + PVJ-50 Double Grill Dimensions: 2130 x 1625 x 900 mm Grill: 50 x 60 cm (x2) Seats approximately 80 guests",
+          "specs": {
+            "recommended for": "80 diners",
+            "fire up time": "charcoal oven ± 40 minutes; Basque grill ± 20 minutes",
+            "Kích thước vỉ nướng": "500 x 600 mm (2 grates)",
+            "Kích thước lò": "500 x 510 mm",
+            "Kích thước ngoài": "2130 x 1625 x 900 mm"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/CVJ-050-2-PRO-S-1.jpg",
+          "source_url": "https://jospergrill.com/products/josper-combos/combo-josper-cvj-50-pro-s-basalt-oven-basque-grill-double-in-one-module/",
+          "seo_title": "Josper Combo Set CVJ-50-PRO-S | Saigon Horeca",
+          "seo_description": "Josper Combo Set (Charcoal Oven + Basque Grill) CVJ-50-PRO-S — origin Spain. Quote & consultation at Saigon Horeca.",
+          "seo_title_source": "Josper Combo CVJ-050-2-HJX-50 | JOSPER Combos",
+          "seo_description_source": "The Josper HJX-PRO Charcoal Oven Combo plus the Josper PVJ-050 Basque Grill, featuring a double grill. Get the best of Josper in a single unit for your kitchen.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0024_CVJ-50-PRO-S.jpg"
+        },
+        {
+          "model": "CVJ-76-PRO-Small",
+          "title": "Josper CVJ-76-PRO-Small Combo / HJX-PRO Charcoal Oven + Basque Grill",
+          "description_en": "Josper HJX-PRO Charcoal Oven and Josper PVJ-76 Basque Grill Combo. Charcoal oven : recommended for about 80 guests, with a preheating time of approximately 40 minutes Basque grill : preheating time of approximately 20 minutes. The combination of an oven and a grill offers endless culinary possibilities: Triple or even quadruple grilling areas: the adjustable grill rack on the Parrilla Vasca, as well as the oven’s 5 internal grilling levels. Versatility in preparation and techniques: searing on an open grill and finishing in the oven, smoking at varying intensities, separating meat, fish, or vegetables on each of the combo’s grills, and complete control over the ingredients, as well as delicately prepared dishes. Control over the searing process in both the open grill and the oven thanks to the height adjustment feature. Quick and easy temperature control using the handwheel equipped with a reduction gear on the open grill and the pull-rod system in the oven. Increased production speed and volume thanks to the combined power of both machines operating simultaneously. Reuse of the thermal energy generated during the pyrolysis process in both the furnace and the Basque grill. The combo features a strong visual element and show grilling. It allows the chef to showcase their skills, capture diners’ attention, and bring the food to the right temperature in full view of the customer. Uniform coal consumption, as the combustion chambers ensure an even distribution of coal. Uninterrupted service for both non-stop kitchens and long-running events. The open grill’s searing area measures 760 x 600 mm, and the oven’s searing area measures 500 x 510 mm. Included accessories: fire guard, lid, 2 tongs, poker, and grates. CVJ-76-PRO-S HJX-PRO Oven + PVJ-76 Basque Grill Dimensions: 1875 x 1625 x 900 mm Grill: 760 x 600 mm Seats approximately 80 guests",
+          "specs": {
+            "Kích thước vỉ nướng": "760 x 600 mm"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/CVJ-076-1-PRO-S-1.jpg",
+          "source_url": "https://jospergrill.com/products/josper-combos/combo-josper-cvj-76-pro-small-charcoal-oven-hjx-pro-basque-grill/",
+          "seo_title": "Josper Combo Set CVJ-76-PRO-Small | Saigon Horeca",
+          "seo_description": "Josper Combo Set (Charcoal Oven + Basque Grill) CVJ-76-PRO-Small — origin Spain. grill grate dimensions 760 x 600 mm. Quote & consultation at Saigon Horeca.",
+          "seo_title_source": "Josper Combo CVJ-50-PRO-S | JOSPER Combos",
+          "seo_description_source": "The Josper HJX-PRO Charcoal Oven Combo with the Josper PVJ-76 Basque Grill. Get the best of Josper in a single unit for your kitchen.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0025_CVJ-76-PRO-Small.jpg"
+        },
+        {
+          "model": "CVJ-50-PRO-M",
+          "title": "Josper Combo CVJ-50-PRO-Medium / Charcoal Oven HJX-PRO + Double Basque Grill in one module",
+          "description_en": "Combines a Josper Charcoal Oven HJX-PRO and Josper Basque Grill PVJ-50 with a double grill in one module. Charcoal Oven : recommended for 120 diners, with an average fire-up time of ± 35 minutes Basque Grill : average fire-up time of ± 20 minutes The tandem of an oven and grill offers infinite gastronomic possibilities: Triple or even quadruple braising area: the two liftable grills of the Basque Grill, as well as the 5 internal braising levels of the oven. Versatility of elaborations and techniques: sealing first the product on the open grill and finishing the product inside the oven, different intensity degrees of smoked products, separation of meat, fish and vegetables on each independent rack and absolute control of the raw material even of the most delicate products. Product sealing control both with the open grill and the oven thanks to heights adjustment. Fast and agile temperature regulation through the steering wheel of the open grill, which is provided with a hydraulic height regulation system, and through the oven’s vent system. Increase in speed and volume of production due to the energy generation capacity of both machines operating at the same time. Reutilization of the heat energy produced during the pyrolysis process, both in the oven and in the Basque grill. Strong visual and show grilling component of the combo. It allows the chef to diversify, capture the attention of the diners and temper the product in front of the clients. Uniform consumption of wood charcoal because of the combustion taking place in an homogeneous vessel. Uninterrupted service in non-stop kitchens and long-term events. Grilling area of the open grill 500 x 600 mm (x2 racks) and 760 x 510 mm (x2 racks) in the oven. Included accessories: firebreak, firebreak hat, 2 tongs, poker and grill racks. CVJ-50-PRO-M Charcoal Oven HJX-PRO + Basque Grill Monoblock PVJ-50 Size: 2415x1625x900mm Grill Size: 500x600mm (x2) / 760x510mm (x2) ± 120 diners",
+          "specs": {
+            "recommended for": "120 diners",
+            "fire up time": "± 35 minutes"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/CVJ-050-2-PRO-M-1.jpg",
+          "source_url": "https://jospergrill.com/products/josper-combos/josper-combo-cvj-50-pro-m-charcoal-oven-double-basque-grill-in-one-module/",
+          "seo_title": "Josper Combo Set CVJ-50-PRO-M | Saigon Horeca",
+          "seo_description": "Josper Combo Set (Charcoal Oven + Basque Grill) CVJ-50-PRO-M — origin Spain. recommended for 120 diners. Quote & consultation at Saigon Horeca.",
+          "seo_title_source": "Josper Combo CVJ-50-PRO-M | JOSPER Combos",
+          "seo_description_source": "Josper Combo CVJ-50-PRO-M, combines a Josper Charcoal Oven HJX-PRO and Josper Basque Grill Monoblock PVJ-050-2 with a double grill in one module.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0026_CVJ-50-PRO-M.jpg"
+        },
+        {
+          "model": "CVJ-76-PRO-Large",
+          "title": "Josper Combo CVJ-76-PRO-Large / Charcoal Oven HJX-PRO + Basque Grill",
+          "description_en": "Combines a Josper Charcoal Oven HJX-PRO and Josper Basque Grill Monoblock PVJ-76. Charcoal Oven : recommended for 175 diners, with an average fire-up time of ± 40 minutes Basque Grill : average fire-up time of 20 minutes and daily charcoal consumption of 20 to 22 kg. The tandem of an oven and grill offers infinite gastronomic possibilities: Triple or even quadruple braising area: the liftable grill of the Basque Grill, as well as the 5 internal braising levels of the oven. Versatility of elaborations and techniques: sealing first the product on the open grill and finishing the product inside the oven, different intensity degrees of smoked products, separation of meat, fish and vegetables on each independent rack and absolute control of the raw material even of the most delicate products. Product sealing control both with the open grill and the oven thanks to heights adjustment. Fast and agile temperature regulation through the steering wheel of the open grill, which is provided with a hydraulic height regulation system, and through the oven’s vent system. Increase in speed and volume of production due to the energy generation capacity of both machines operating at the same time. Reutilization of the heat energy produced during the pyrolysis process, both in the oven and in the Basque grill. Strong visual and show grilling component of the combo. It allows the chef to diversify, capture the attention of the diners and temper the product in front of the clients. Uniform consumption of wood charcoal because of the combustion taking place in an homogeneous vessel. Uninterrupted service in non-stop kitchens and long-term events. Grilling area of the open grill 760 x 600 mm and 760 x 760 mm (x2 racks) in the oven. Included accessories: firebreak, firebreak hat, 2 tongs, poker and grill racks. CVJ-76-PRO-L Charcoal Oven HJX-PRO + Basque Grill Monoblock PVJ-76 Size: 2165x1625x900mm Grill size: 760x600mm / 760x760mm (x2) ± 175 diners",
+          "specs": {
+            "recommended for": "175 diners",
+            "fire up time": "± 40 minutes",
+            "Mức tiêu thụ": "20 to 22 kg"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/CVJ-076-1-PRO-L-1.jpg",
+          "source_url": "https://jospergrill.com/products/josper-combos/josper-combo-cvj-76-pro-large-charcoal-oven-hjx-pro-basque-grill/",
+          "seo_title": "Josper Combo Set CVJ-76-PRO-Large | Saigon Horeca",
+          "seo_description": "Josper Combo Set (Charcoal Oven + Basque Grill) CVJ-76-PRO-Large — origin Spain. recommended for 175 diners. Quote & consultation at Saigon Horeca.",
+          "seo_title_source": "Josper Combo CVJ-76-PRO-L | JOSPER Combos",
+          "seo_description_source": "Josper Combo CVJ-76-PRO-L, combines a Josper Charcoal Oven HJX-PRO and Josper Basque Grill Monoblock PVJ-76.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0027_CVJ-76-PRO-Large.jpg"
+        },
+        {
+          "model": "CVJ-76-PRO-Medium",
+          "title": "Josper Combo CVJ-76-PRO-Medium / Charcoal Oven HJX-PRO + Basque Grill",
+          "description_en": "Combines a Josper Charcoal Oven HJX-PRO and Josper Basque Grill PVJ-76. Charcoal Oven : recommended for 120 diners, with an average fire-up time of ± 35 minutes Basque Grill : average fire-up time of ± 20 minutes The tandem of an oven and grill offers infinite gastronomic possibilities: Triple or even quadruple braising area: the liftable grill of the Basque Grill, as well as the 5 internal braising levels of the oven. Versatility of elaborations and techniques: sealing first the product on the open grill and finishing the product inside the oven, different intensity degrees of smoked products, separation of meat, fish and vegetables on each independent rack and absolute control of the raw material even of the most delicate products. Product sealing control both with the open grill and the oven thanks to heights adjustment. Fast and agile temperature regulation through the steering wheel of the open grill, which is provided with a hydraulic height regulation system, and through the oven’s vent system. Increase in speed and volume of production due to the energy generation capacity of both machines operating at the same time. Reutilization of the heat energy produced during the pyrolysis process, both in the oven and in the Basque grill. Strong visual and show grilling component of the combo. It allows the chef to diversify, capture the attention of the diners and temper the product in front of the clients. Uniform consumption of wood charcoal because of the combustion taking place in an homogeneous vessel. Uninterrupted service in non-stop kitchens and long-term events. Grilling area of the open grill 760 x 600 mm, and 760 x 510 mm (x2 racks) in the oven. Included accessories: firebreak, firebreak hat, 2 tongs, poker and grill racks. CVJ-76-PRO-M Charcoal Oven HJX-PRO + Basque Grill Monoblock PVJ-76 Size: 2175x1625x900mm Grill Size: 760x600mm / 760x510mm (x2) ± 120 diners",
+          "specs": {
+            "recommended for": "120 diners",
+            "fire up time": "± 35 minutes"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/CVJ-076-1-PRO-M-1.jpg",
+          "source_url": "https://jospergrill.com/products/josper-combos/josper-combo-cvj-76-pro-medium-charcoal-oven-hjx-pro-basque-grill/",
+          "seo_title": "Josper Combo Set CVJ-76-PRO-Medium | Saigon Horeca",
+          "seo_description": "Josper Combo Set (Charcoal Oven + Basque Grill) CVJ-76-PRO-Medium — origin Spain. recommended for 120 diners. Quote & consultation at Saigon Horeca.",
+          "seo_title_source": "Josper Combo CVJ-76-PRO-M | JOSPER Combos",
+          "seo_description_source": "Josper Combo CVJ-76-PRO-M, combines a Josper Charcoal Oven HJX-PRO and Josper Basque Grill Monoblock PVJ-76.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0028_CVJ-76-PRO-Medium.jpg"
+        }
+      ]
+    },
+    {
+      "group_name": "Robatagrills",
+      "group_name_vi": "Bếp Nướng Than Mở Robata Josper",
+      "source_urls": [
+        "https://jospergrill.com/product-category/josper-robatagrills/"
+      ],
+      "models": [
+        {
+          "model": "RGJ-PRO L",
+          "title": "Robatagrill Josper RGJ-PRO L",
+          "description_en": "Robatagrill Josper RGJ-PRO L, the perfect open charcoal grill for robatayaki-style cooking. The preheating temperature is 250 °C, and the ignition time is approximately 20 minutes. Grilling surface: 1430 x 230 mm (3 levels); charcoal consumption per service: approximately 8 to 10 kg. Accessories: Includes a Teppanyaki griddle, Josper tongs, 3 large warming racks, and 3 small warming racks. The new Robatagrill PRO from Josper features significant design improvements, both in terms of aesthetics and functionality. Among the improvements included in the PRO version are a larger searing area, various configurations, and accessories that will allow you to enjoy an even more complete and satisfying user experience. The Josper Robatagrill PRO is ideal for grilling in the Robatayaki style, the traditional Japanese culinary technique. It allows you to cook in front of diners and captures the essence of grilling and show cooking. Small portions of food are cooked on skewers directly over hot charcoal. Ideal for cooking all kinds of meats, fish, and vegetables in a unique way, ensuring the ingredients never lose their original flavor. It also offers various levels of grilling and includes different types of accessories for cooking over charcoal, such as skewers, Teppanyaki griddles, and other utensils.",
+          "specs": {
+            "fire up time": "20 minutes",
+            "Mức tiêu thụ": "8 to 10 kg",
+            "Nhiệt độ nướng": "250 °C",
+            "grilling area": "1430 x 230 mm (3 levels)"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/josper-rgjt-PRO-L.jpg",
+          "source_url": "https://jospergrill.com/products/josper-accessories/robatagrill-josper-rgj-pro-l/",
+          "seo_title": "Josper Open Robata Charcoal Grill RGJ-PRO L | Saigon Horeca",
+          "seo_description": "Josper Open Robata Charcoal Grill RGJ-PRO L — origin Spain. grilling temperature 250 °C, fire up time 20 minutes. Quote & consultation at Saigon Horeca.",
+          "seo_title_source": "Josper Robatagrill RGJ-140 Large | Robatayaki Style | JOSPER",
+          "seo_description_source": "Josper Robatagrill RGJ-140, large size, is an open charcoal grill for robatayaki-style cooking, perfect for showcooking, a true culinary show.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0029_RGJ-PRO_L.jpg"
+        },
+        {
+          "model": "RGJ-PRO M",
+          "title": "Robatagrill Josper RGJ-PRO M",
+          "description_en": "Robatagrill Josper RGJ-PRO M, the perfect open charcoal grill for robatayaki-style cooking. The grilling temperature is 250 °C, and it takes about 20 minutes to heat up. The grilling surface measures 970 x 230 mm (across 3 levels), and charcoal consumption per service is approximately 6 to 8 kg. Accessories: Includes a Teppanyaki griddle, Josper tongs, 2 large warming racks, and 2 small warming racks. The new Robatagrill PRO from Josper features significant design improvements, both in terms of aesthetics and functionality. Among the improvements included in the PRO version are a larger searing area, various configurations, and accessories that will allow you to enjoy an even more complete and satisfying user experience. The Josper Robatagrill PRO is ideal for grilling in the Robatayaki style, the traditional Japanese culinary technique. It allows you to cook in front of diners and captures the essence of grilling and show cooking. Small portions of food are cooked on skewers directly over hot charcoal. Ideal for cooking all kinds of meats, fish, and vegetables in a unique way, ensuring the ingredients never lose their original flavor. It also offers various levels of grilling and includes different types of accessories for cooking over charcoal, such as skewers, Teppanyaki griddles, and other utensils.",
+          "specs": {
+            "fire up time": "20 minutes",
+            "Mức tiêu thụ": "6 to 8 kg",
+            "Nhiệt độ nướng": "250 °C"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/josper-rgjt-PRO-M.jpg",
+          "source_url": "https://jospergrill.com/products/josper-accessories/robatagrill-josper-rgj-pro-m/",
+          "seo_title": "Josper Open Robata Charcoal Grill RGJ-PRO M | Saigon Horeca",
+          "seo_description": "Josper Open Robata Charcoal Grill RGJ-PRO M — origin Spain. grilling temperature 250 °C, fire up time 20 minutes. Quote & consultation at Saigon Horeca.",
+          "seo_title_source": "Josper Robatagrill RGJ-100 Medium | Robatayaki Style | JOSPER",
+          "seo_description_source": "Josper Robatagrill RGJ-100, medium size, is an open charcoal grill for robatayaki-style cooking, perfect for showcooking, a true culinary show.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0030_RGJ-PRO_M.jpg"
+        },
+        {
+          "model": "RGJ-PRO S",
+          "title": "Robatagrill Josper RGJ-PRO S",
+          "description_en": "Robatagrill Josper RGJ-PRO-S, the perfect open charcoal grill for robatayaki-style cooking. The grilling temperature is 250 °C, and it takes about 20 minutes to heat up. Grilling surface: 509 x 230 mm (across 3 levels); charcoal consumption: approximately 3 to 4 kg per service. Accessories: includes a Teppanyaki griddle, Josper tongs, and large and small warming racks. The new Robatagrill PRO from Josper features significant design improvements, both in terms of aesthetics and functionality. Among the improvements included in the PRO version are a larger searing area, various configurations, and accessories that will allow you to enjoy an even more complete and satisfying user experience. The Josper Robatagrill PRO is ideal for grilling in the Robatayaki style, the traditional Japanese culinary technique. It allows you to cook in front of diners and captures the essence of grilling and show cooking. Small portions of food are cooked on skewers directly over hot charcoal. Ideal for cooking all kinds of meats, fish, and vegetables in a unique way, ensuring the ingredients never lose their original flavor. It also offers various levels of grilling and includes different types of accessories for cooking over charcoal, such as skewers, Teppanyaki griddles, and other utensils.",
+          "specs": {
+            "fire up time": "20 minutes",
+            "Mức tiêu thụ": "3 to 4 kg",
+            "Nhiệt độ nướng": "250 °C",
+            "grilling area": "509 x 230 mm"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/josper-rgjt-PRO-S.jpg",
+          "source_url": "https://jospergrill.com/products/josper-accessories/robatagrill-josper-rgj-pro-s/",
+          "seo_title": "Josper Open Robata Charcoal Grill RGJ-PRO S | Saigon Horeca",
+          "seo_description": "Josper Open Robata Charcoal Grill RGJ-PRO S — origin Spain. grilling temperature 250 °C, fire up time 20 minutes. Quote & consultation at Saigon Horeca.",
+          "seo_title_source": "Josper Robatagrill RGJ-050 Small | Robatayaki Style | JOSPER",
+          "seo_description_source": "Josper Robatagrill RGJ-050, small size, is an open charcoal grill for robatayaki-style cooking, perfect for showcooking, a true culinary show.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0031_RGJ-PRO_S.jpg"
+        }
+      ]
+    },
+    {
+      "group_name": "Mangals",
+      "group_name_vi": "Bếp Nướng Than Mangal Josper",
+      "source_urls": [
+        "https://jospergrill.com/product-category/josper-mangals/"
+      ],
+      "models": [
+        {
+          "model": "MGJ-132",
+          "title": "Josper MGJ-132 Grill",
+          "description_en": "The Josper MGJ-132 Mangal, the perfect open charcoal grill for mangal-style cooking. With a grilling surface of 1235 x 490 mm (4 levels), it takes about 20 minutes to light, and the grilling temperature is 250 °C. Daily charcoal consumption is approximately 22 to 24 kg. Included accessories: 3 warming racks, 1 metal grill grate, 16 GN 1/9 trays, and tongs. Each braising level features two adjustable crossbars that allow for cooking on a direct grill, as well as using skewers, griddle plates, Josper GN pans, or warming cabinets, and also for slow braising with smoke from above. The first and lowest grilling level is used for quick cooking and searing, the second and third for slower grilling, and the fourth for warming and keeping food hot. With the Josper Mangal, you can cook various cuts of meat over charcoal, such as steaks, hamburgers, kebabs, shashlik, chicken breasts, or chicken wings, as well as a wide variety of vegetables.",
+          "specs": {
+            "fire up time": "20 minutes",
+            "Mức tiêu thụ": "22 to 24 kg",
+            "Nhiệt độ nướng": "250 °C",
+            "grilling area": "1235 x 490 mm (4 levels)"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/MGJ-132-OK.jpg",
+          "source_url": "https://jospergrill.com/products/josper-accessories/mangal-josper-mgj-132/",
+          "seo_title": "Josper Mangal Charcoal Grill MGJ-132 | Saigon Horeca",
+          "seo_description": "Josper Mangal Charcoal Grill MGJ-132 — origin Spain. grilling temperature 250 °C, fire up time 20 minutes. Quote & consultation at Saigon Horeca.",
+          "seo_title_source": "Josper MGJ-132 Grill | Traditional Middle Eastern Cuisine | JOSPER",
+          "seo_description_source": "Josper MG-132 Mangal, the perfect open charcoal grill for cooking in the traditional Middle Eastern style, serving approximately 200 guests.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0032_MGJ-132.jpg"
+        }
+      ]
+    },
+    {
+      "group_name": "Hibachi / Tabletop Grills",
+      "group_name_vi": "Bếp Nướng Than Để Bàn Hibachi Josper",
+      "source_urls": [
+        "https://jospergrill.com/product-category/tabletop-grills/"
+      ],
+      "models": [
+        {
+          "model": "HIB-001",
+          "title": "Hibachi Josper - Tabletop Edition",
+          "description_en": "The tabletop grill that turns every meal into a unique culinary experience. Hibachi Josper, to enjoy this summer. NOW +VAT 1.058, 75 € incl. VAT. DISCOVER Limited-time offer through August 31 Josper official warranty Free shipping peninsula Included accessories Since 1969 All included in your order Arrives ready to use. Each Hibachi is delivered with the essential accessories by Josper, plus an exclusive extra available only with online orders. Accessory - 01 Support Steel base to protect the surface and raise the Hibachi to the exact service height. Included Accessory - 02 Josper Cloth Technical cotton cloth, Josper seal. To pick up the hot grill safely. Accessory - 03 Josper tongs Professional stainless steel tongs. Precision and firmness in each movement on the ember. Gift - Online only Marabu Charcoal Bag Small bag of charcoal CEs of 2.5 kg. The Josper charcoal for your first service. Online gift - 2, 5 kg The Hibachi Josper Real ember, on table format. \" With the Hibachi Josper, every meal becomes a special occasion. Perfect for couple's dinners, family gatherings or show-cookings that impress your guests. Grill 235 × 290mm Grilling surface Total measurements 343 × 194 × 291 mm Width- Height - Depth 250°C Max. temperature 35min Ignition 10pax Ideal capacity 100% Brasa Josper Features Ten reasons to use the Hibachi. It is not a grill. It is a ritual. Ten details designed to bring the DNA of the Josper grill to the diner's table. Fires up fast Ready in 35-40 minutes. Zero waiting, all ember. Perfect seal and handle Up to 250 °C of pure charcoal. Crust on the outside, juiciness on the inside. Cook in front of your guests Show-cooking in its purest form. The kitchen comes to the table. Share without limits Ideal for 10 people. The whole table, around the fire. Immediate service Fast cooking, flavor to the point. No downtime in the pass. Authentic flavor Real charcoal aroma. The DNA of the Josper charcoal, in an intimate format. Take it home Compact and elegant. Same character, desktop format. Professional precision Total control of the grill. A chef's judgment in every gesture. Constant embers Stable heat throughout the service. No ups and downs, no surprises. Connect around the fire The table becomes the center. The ember becomes the motif. Show-cooking Cook in front of your guests. The spectacle of the Josper ember, without leaving the dining room. Seals, grills and smokes live with the authentic aroma of charcoal. Live embers No gas, no gimmick. Josper charcoal in its pure state. Direct control Adjust the intensity by moving the grill closer or further away. The technique is in your hands. Quick pass Immediate service. The piece comes to the plate directly from the fire. Beyond Grilling It's not a grill. It's the Josper grill in an intimate format. The table, the center Share without limits. Dinners for couples, family reunions, private events. Each service becomes an occasion. Ideal for 10 people Perfect size for intimate gatherings and private chef experiences. Meat, fish, vegetables Total versatility. What the Josper ember signs, is not forgotten. Compact and elegant The professional experience, without giving up the design that occupies the center of the table.",
+          "specs": {
+            "grilling surface": "235 x 290 mm",
+            "total measurements": "343 x 194 x 291 mm (width x height x depth)",
+            "max temperature": "250 °C",
+            "ignition": "35 min",
+            "ideal capacity": "10 pax",
+            "Nhiên liệu": "100% charcoal",
+            "Mã tham chiếu": "HIB-001",
+            "included": "Tabletop grill + stand + Josper cloth + Josper tongs + CEs charcoal 2.5 kg (online gift)"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/hibachi-josper-main.jpg",
+          "source_url": "https://jospergrill.com/hibachi/",
+          "seo_title": "Josper Tabletop Hibachi Charcoal Grill HIB-001 | Saigon Horeca",
+          "seo_description": "Josper Tabletop Hibachi Charcoal Grill HIB-001 — origin Spain. temperature 250 °C, capacity 10 pax. Quote & consultation at Saigon Horeca.",
+          "image_note": "Studio product photo from jospergrill.com media library (ID 53946), visually verified: stainless tabletop Hibachi grill with mesh grate and brass Josper plate, black background. Replaces Josper logo file.",
+          "seo_title_source": "Hibachi | Josper",
+          "seo_description_source": "1.512,50 € 1.058,75 € BUY NOW View cart SUMMER OFFER · Through August 31 · SUMMER OFFER · Free Shipping · Exclusive online store Hibachi Josper – Tabletop Edition OurHibachi onyour table The tabletop grill that turns every meal into a unique culinary experience. Hibachi Josper, to enjoy this summer. BEFORE 1.512,50 € VAT included […]",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0033_HIB-001.jpg"
+        }
+      ]
+    },
+    {
+      "group_name": "HOME / domestic units on the Josper online shop",
+      "group_name_vi": "Lò Nướng Than Josper Bản Gia Đình (HOME)",
+      "source_urls": [
+        "https://jospergrill.com/product-category/josper-accessories/"
+      ],
+      "models": [
+        {
+          "model": "HJA-25-M-PRO HOME",
+          "title": "JOSPER CHARCOAL OVEN HJA-25-M PRO HOME",
+          "description_en": "• Working 100% with wood charcoal. • Unique closed barbecue design. • Different levels of grilling. • Flexible and robust. • Easy to use, with a front opening door. • Vent system for temperature control • Double rack to gain productivity. Class A efficiency improvements include hydraulic door retention, thermal insulation, new upper tempering area, greater accessibility, a more compact design and easy clean system. These upgrades result in an exponential increase in the quality and quantity of its production and the oven’s final performance.",
+          "specs": {
+            "recommended for": "80 diners ±",
+            "fire up time": "30 min average",
+            "Mức tiêu thụ": "10 a 12 kg",
+            "performance": "9h",
+            "production per hour": "60 kg average",
+            "broiling temperature": "250 a 350 oC",
+            "grill rack capacity in gn trays": "1xGN1/1",
+            "tempering cavity capacity in gn trays": "2xGN1/3 / 4xGN1/9",
+            "nominal heat output": "8,8 kW",
+            "flue gas mass flow": "19,36 g/s",
+            "smoke temperature": "208 oC",
+            "net weight": "360 kg"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/josper-charcoal-oven-hja-25-m-pro-home.png",
+          "source_url": "https://jospergrill.com/products/josper-accessories/josper-charcoal-oven-hja-25-m-pro-home/",
+          "seo_title": "Josper Charcoal Oven Home Edition HJA-25-M-PRO H | Saigon Horeca",
+          "seo_description": "Josper Charcoal Oven Home Edition (HOME) HJA-25-M-PRO HOME — origin Spain. temperature 250 to 350 oC, temperature 208 oC. Quote & consultation at Saigon Horeca.",
+          "seo_title_source": "JOSPER CHARCOAL OVEN HJA-25-M PRO HOME | Josper",
+          "seo_description_source": "• Working 100% with wood charcoal. • Unique closed barbecue design. • Different levels of grilling. • Flexible and robust. • Easy to use, with a front opening door. • Vent system for temperature control • Double rack to gain productivity.  Class A efficiency improvements include hydraulic door retention, thermal insulation, new upper tempering area, greater accessibility, a more compact design and easy clean system.  These upgrades result in an exponential increase in the quality and quantity of its production and the oven’s final performance.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0034_HJA-25-M-PRO_HOME.png"
+        },
+        {
+          "model": "HJX-20 HOME",
+          "title": "JOSPER CHARCOAL OVEN HJX-20 HOME",
+          "description_en": "• Different levels of grilling. • Flexible and robust. • Easy to use, with a front opening door system. • Vent system for temperature control. By bringing the added value that comes from the firewood (charcoal) to the raw material, we obtain those flavours of yesterday, as well as a perfect texture and juiciness. By combining the functions of an oven and grill, we can work at high temperatures, sealing the product, smoking and grilling at the same time. These results are unique, and make the Josper Charcoal Oven a piece of equipment that is also unique.",
+          "specs": {
+            "recommended for": "40 diners ±",
+            "fire up time": "25 min average",
+            "Mức tiêu thụ": "6 to 8 kg",
+            "performance": "7h",
+            "production per hour": "25 kg average",
+            "broiling temperature": "250 a 350 oC",
+            "grill rack capacity in gn trays": "1xGN1/1",
+            "nominal heat output": "7,5 kW",
+            "flue gas mass flow": "11,91 g/s",
+            "net weight": "119 kg"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/josper-charcoal-oven-hjx-20-home-1.png",
+          "source_url": "https://jospergrill.com/products/josper-accessories/josper-charcoal-oven-hjx-20-home/",
+          "seo_title": "Josper Charcoal Oven Home Edition HJX-20 HOME | Saigon Horeca",
+          "seo_description": "Josper Charcoal Oven Home Edition (HOME) HJX-20 HOME — origin Spain. temperature 250 to 350 oC, capacity 1xGN1/1. Quote & consultation at Saigon Horeca.",
+          "seo_title_source": "JOSPER CHARCOAL OVEN HJX-20 HOME | Josper",
+          "seo_description_source": "• Different levels of grilling. • Flexible and robust. • Easy to use, with a front opening door system. • Vent system for temperature control.  By bringing the added value that comes from the firewood (charcoal) to the raw material, we obtain those flavours of yesterday, as well as a perfect texture and juiciness.  By combining the functions of an oven and grill, we can work at high temperatures, sealing the product, smoking and grilling at the same time.  These results are unique, and make the Josper Charcoal Oven a piece of equipment that is also unique.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0035_HJX-20_HOME.png"
+        },
+        {
+          "model": "HJX-25-T HOME",
+          "title": "JOSPER CHARCOAL OVEN HJX-25-T HOME",
+          "description_en": "• Different levels of grilling. • Flexible and robust. • Easy to use, with a front opening door system. • Vent system for temperature control. By bringing the added value that comes from the firewood (charcoal) to the raw material, we obtain those flavours of yesterday, as well as a perfect texture and juiciness. By combining the functions of an oven and grill, we can work at high temperatures, sealing the product, smoking and grilling at the same time. These results are unique, and make the Josper Charcoal Oven a piece of equipment that is also unique.",
+          "specs": {
+            "recommended for": "80 diners ±",
+            "fire up time": "30 min average",
+            "Mức tiêu thụ": "10 a 12 kg",
+            "performance": "9h",
+            "production per hour": "60 kg average",
+            "broiling temperature": "250 a 350 oC",
+            "grill rack capacity in gn trays": "1xGN1/1",
+            "nominal heat output": "8,8 kW",
+            "flue gas mass flow": "19,36 g/s",
+            "net weight": "299 kg"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/josper-charcoal-oven-hjx-25-t-home.png",
+          "source_url": "https://jospergrill.com/products/josper-accessories/josper-charcoal-oven-hjx-25-t-home/",
+          "seo_title": "Josper Charcoal Oven Home Edition HJX-25-T HOME | Saigon Horeca",
+          "seo_description": "Josper Charcoal Oven Home Edition (HOME) HJX-25-T HOME — origin Spain. temperature 250 to 350 oC, capacity 1xGN1/1. Quote & consultation at Saigon Horeca.",
+          "seo_title_source": "JOSPER CHARCOAL OVEN HJX-25-T HOME | Josper",
+          "seo_description_source": "• Different levels of grilling. • Flexible and robust. • Easy to use, with a front opening door system. • Vent system for temperature control.  By bringing the added value that comes from the firewood (charcoal) to the raw material, we obtain those flavours of yesterday, as well as a perfect texture and juiciness.  By combining the functions of an oven and grill, we can work at high temperatures, sealing the product, smoking and grilling at the same time.  These results are unique, and make the Josper Charcoal Oven a piece of equipment that is also unique.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0036_HJX-25-T_HOME.png"
+        }
+      ]
+    },
+    {
+      "group_name": "Charcoal Ovens - catalogue configuration variants (PDF only)",
+      "group_name_vi": "Lò Nướng Than Josper - Biến Thể Cấu Hình Theo Catalogue (Chỉ Có Trong PDF)",
+      "source_urls": [
+        "https://jospergrill.com/wp-content/uploads/josper-products-catalogue-en.pdf"
+      ],
+      "models": [
+        {
+          "model": "HJX-25-M",
+          "title": "Josper HJX-25-M",
+          "description_en": "Josper HJX-25-M: overall dimensions 65 x 66 x 126 cm, grill 50 x 51 cm, capacity ± 80. Configuration listed in the official Josper product catalogue (PDF). This configuration is not published as a separate SKU in the Josper online shop; dimensions and capacity below are taken verbatim from the catalogue. JOSPER COUNTERTOP CHARCOAL OVEN. Firebreak and firebreak hat not included.",
+          "specs": {
+            "Kích thước ngoài": "65 x 66 x 126 cm",
+            "Kích thước vỉ nướng": "50 x 51 cm",
+            "Sức chứa": "± 80"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/2019/03/hornos-josper-HJX-25.jpg",
+          "source_url": "https://jospergrill.com/wp-content/uploads/josper-products-catalogue-en.pdf",
+          "seo_title": "Josper Charcoal Oven HJX-25-M | Saigon Horeca",
+          "seo_description": "Josper Charcoal Oven HJX-25-M — origin Spain. external dimensions 65 x 66 x 126 cm, grill grate dimensions 50 x 51 cm. Quote & consultation at Saigon Horeca.",
+          "image_is_from_base_model": true,
+          "image_base_model": "HJX-25",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0097_HJX-25-M.jpg"
+        },
+        {
+          "model": "HJX-45-M",
+          "title": "Josper HJX-45-M",
+          "description_en": "Josper HJX-45-M: overall dimensions 95 x 66 x 135 cm, grill 76 x 51 cm, capacity ± 120. Configuration listed in the official Josper product catalogue (PDF). This configuration is not published as a separate SKU in the Josper online shop; dimensions and capacity below are taken verbatim from the catalogue. JOSPER COUNTERTOP CHARCOAL OVEN. Firebreak and firebreak hat not included.",
+          "specs": {
+            "Kích thước ngoài": "95 x 66 x 135 cm",
+            "Kích thước vỉ nướng": "76 x 51 cm",
+            "Sức chứa": "± 120"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/2019/03/horno-josper-hjx-45-medium.jpg",
+          "source_url": "https://jospergrill.com/wp-content/uploads/josper-products-catalogue-en.pdf",
+          "seo_title": "Josper Charcoal Oven HJX-45-M | Saigon Horeca",
+          "seo_description": "Josper Charcoal Oven HJX-45-M — origin Spain. external dimensions 95 x 66 x 135 cm, grill grate dimensions 76 x 51 cm. Quote & consultation at Saigon Horeca.",
+          "image_is_from_base_model": true,
+          "image_base_model": "HJX-45",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0098_HJX-45-M.jpg"
+        },
+        {
+          "model": "HJX-50-M",
+          "title": "Josper HJX-50-M",
+          "description_en": "Josper HJX-50-M: overall dimensions 95 x 92 x 135 cm, grill 76 x 75 cm, capacity ± 175. Configuration listed in the official Josper product catalogue (PDF). This configuration is not published as a separate SKU in the Josper online shop; dimensions and capacity below are taken verbatim from the catalogue. JOSPER COUNTERTOP CHARCOAL OVEN. Firebreak and firebreak hat not included.",
+          "specs": {
+            "Kích thước ngoài": "95 x 92 x 135 cm",
+            "Kích thước vỉ nướng": "76 x 75 cm",
+            "Sức chứa": "± 175"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/2019/03/horno-josper-hjx-50-large.jpg",
+          "source_url": "https://jospergrill.com/wp-content/uploads/josper-products-catalogue-en.pdf",
+          "seo_title": "Josper Charcoal Oven HJX-50-M | Saigon Horeca",
+          "seo_description": "Josper Charcoal Oven HJX-50-M — origin Spain. external dimensions 95 x 92 x 135 cm, grill grate dimensions 76 x 75 cm. Quote & consultation at Saigon Horeca.",
+          "image_is_from_base_model": true,
+          "image_base_model": "HJX-50",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0099_HJX-50-M.jpg"
+        },
+        {
+          "model": "HJX-25-MBC",
+          "title": "Josper HJX-25-MBC",
+          "description_en": "Josper HJX-25-MBC: overall dimensions 65 x 66 x 126 cm, grill 50 x 51 cm, capacity ± 80. Configuration listed in the official Josper product catalogue (PDF). This configuration is not published as a separate SKU in the Josper online shop; dimensions and capacity below are taken verbatim from the catalogue. JOSPER COUNTERTOP CHARCOAL OVEN WITH TRAY SUPPORT. Firebreak and firebreak hat not included.",
+          "specs": {
+            "Kích thước ngoài": "65 x 66 x 126 cm",
+            "Kích thước vỉ nướng": "50 x 51 cm",
+            "Sức chứa": "± 80"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/2019/03/horno-josper-hjx-25-mcb.jpg",
+          "source_url": "https://jospergrill.com/wp-content/uploads/josper-products-catalogue-en.pdf",
+          "seo_title": "Josper Charcoal Oven HJX-25-MBC | Saigon Horeca",
+          "seo_description": "Josper Charcoal Oven HJX-25-MBC — origin Spain. external dimensions 65 x 66 x 126 cm, grill grate dimensions 50 x 51 cm. Quote & consultation at Saigon Horeca.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0100_HJX-25-MBC.jpg"
+        },
+        {
+          "model": "HJX-45-MBC",
+          "title": "Josper HJX-45-MBC",
+          "description_en": "Josper HJX-45-MBC: overall dimensions 95 x 66 x 135 cm, grill 76 x 51 cm, capacity ± 120. Configuration listed in the official Josper product catalogue (PDF). This configuration is not published as a separate SKU in the Josper online shop; dimensions and capacity below are taken verbatim from the catalogue. JOSPER COUNTERTOP CHARCOAL OVEN WITH TRAY SUPPORT. Firebreak and firebreak hat not included.",
+          "specs": {
+            "Kích thước ngoài": "95 x 66 x 135 cm",
+            "Kích thước vỉ nướng": "76 x 51 cm",
+            "Sức chứa": "± 120"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/2019/03/horno-josper-hjx-45-mbc.jpg",
+          "source_url": "https://jospergrill.com/wp-content/uploads/josper-products-catalogue-en.pdf",
+          "seo_title": "Josper Charcoal Oven HJX-45-MBC | Saigon Horeca",
+          "seo_description": "Josper Charcoal Oven HJX-45-MBC — origin Spain. external dimensions 95 x 66 x 135 cm, grill grate dimensions 76 x 51 cm. Quote & consultation at Saigon Horeca.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0101_HJX-45-MBC.jpg"
+        },
+        {
+          "model": "HJX-50-MBC",
+          "title": "Josper HJX-50-MBC",
+          "description_en": "Josper HJX-50-MBC: overall dimensions 95 x 92 x 135 cm, grill 76 x 75 cm, capacity ± 175. Configuration listed in the official Josper product catalogue (PDF). This configuration is not published as a separate SKU in the Josper online shop; dimensions and capacity below are taken verbatim from the catalogue. JOSPER COUNTERTOP CHARCOAL OVEN WITH TRAY SUPPORT. Firebreak and firebreak hat not included.",
+          "specs": {
+            "Kích thước ngoài": "95 x 92 x 135 cm",
+            "Kích thước vỉ nướng": "76 x 75 cm",
+            "Sức chứa": "± 175"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/2019/03/horno-josper-hjx-50-large.jpg",
+          "source_url": "https://jospergrill.com/wp-content/uploads/josper-products-catalogue-en.pdf",
+          "seo_title": "Josper Charcoal Oven HJX-50-MBC | Saigon Horeca",
+          "seo_description": "Josper Charcoal Oven HJX-50-MBC — origin Spain. external dimensions 95 x 92 x 135 cm, grill grate dimensions 76 x 75 cm. Quote & consultation at Saigon Horeca.",
+          "image_is_from_base_model": true,
+          "image_base_model": "HJX-50",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0102_HJX-50-MBC.jpg"
+        },
+        {
+          "model": "HJX-25-L",
+          "title": "Josper HJX-25-L",
+          "description_en": "Josper HJX-25-L: overall dimensions 65 x 66 x 186 cm, grill 50 x 51 cm, capacity ± 80. Configuration listed in the official Josper product catalogue (PDF). This configuration is not published as a separate SKU in the Josper online shop; dimensions and capacity below are taken verbatim from the catalogue. JOSPER CHARCOAL OVEN WITH CUPBOARD BASE. Firebreak and firebreak hat not included.",
+          "specs": {
+            "Kích thước ngoài": "65 x 66 x 186 cm",
+            "Kích thước vỉ nướng": "50 x 51 cm",
+            "Sức chứa": "± 80"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/2019/03/horno-josper-hjx-25-l.jpg",
+          "source_url": "https://jospergrill.com/wp-content/uploads/josper-products-catalogue-en.pdf",
+          "seo_title": "Josper Charcoal Oven HJX-25-L | Saigon Horeca",
+          "seo_description": "Josper Charcoal Oven HJX-25-L — origin Spain. external dimensions 65 x 66 x 186 cm, grill grate dimensions 50 x 51 cm. Quote & consultation at Saigon Horeca.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0103_HJX-25-L.jpg"
+        },
+        {
+          "model": "HJX-45-L",
+          "title": "Josper HJX-45-L",
+          "description_en": "Josper HJX-45-L: overall dimensions 95 x 66 x 191 cm, grill 76 x 51 cm, capacity ± 120. Configuration listed in the official Josper product catalogue (PDF). This configuration is not published as a separate SKU in the Josper online shop; dimensions and capacity below are taken verbatim from the catalogue. JOSPER CHARCOAL OVEN WITH CUPBOARD BASE. Firebreak and firebreak hat not included.",
+          "specs": {
+            "Kích thước ngoài": "95 x 66 x 191 cm",
+            "Kích thước vỉ nướng": "76 x 51 cm",
+            "Sức chứa": "± 120"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/2019/03/horno-josper-hjx-45-l.jpg",
+          "source_url": "https://jospergrill.com/wp-content/uploads/josper-products-catalogue-en.pdf",
+          "seo_title": "Josper Charcoal Oven HJX-45-L | Saigon Horeca",
+          "seo_description": "Josper Charcoal Oven HJX-45-L — origin Spain. external dimensions 95 x 66 x 191 cm, grill grate dimensions 76 x 51 cm. Quote & consultation at Saigon Horeca.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0104_HJX-45-L.jpg"
+        },
+        {
+          "model": "HJX-50-L",
+          "title": "Josper HJX-50-L",
+          "description_en": "Josper HJX-50-L: overall dimensions 95 x 92 x 191 cm, grill 76 x 75 cm, capacity ± 175. Configuration listed in the official Josper product catalogue (PDF). This configuration is not published as a separate SKU in the Josper online shop; dimensions and capacity below are taken verbatim from the catalogue. JOSPER CHARCOAL OVEN WITH CUPBOARD BASE. Firebreak and firebreak hat not included.",
+          "specs": {
+            "Kích thước ngoài": "95 x 92 x 191 cm",
+            "Kích thước vỉ nướng": "76 x 75 cm",
+            "Sức chứa": "± 175"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/2019/03/horno-josper-hjx-50-large.jpg",
+          "source_url": "https://jospergrill.com/wp-content/uploads/josper-products-catalogue-en.pdf",
+          "seo_title": "Josper Charcoal Oven HJX-50-L | Saigon Horeca",
+          "seo_description": "Josper Charcoal Oven HJX-50-L — origin Spain. external dimensions 95 x 92 x 191 cm, grill grate dimensions 76 x 75 cm. Quote & consultation at Saigon Horeca.",
+          "image_is_from_base_model": true,
+          "image_base_model": "HJX-50",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0105_HJX-50-L.jpg"
+        },
+        {
+          "model": "HJX-25-LBC",
+          "title": "Josper HJX-25-LBC",
+          "description_en": "Josper HJX-25-LBC: overall dimensions 65 x 66 x 186 cm, grill 50 x 51 cm, capacity ± 80. Configuration listed in the official Josper product catalogue (PDF). This configuration is not published as a separate SKU in the Josper online shop; dimensions and capacity below are taken verbatim from the catalogue. JOSPER CHARCOAL OVEN WITH CUPBOARD BASE AND TRAY SUPPORT. Firebreak and firebreak hat not included.",
+          "specs": {
+            "Kích thước ngoài": "65 x 66 x 186 cm",
+            "Kích thước vỉ nướng": "50 x 51 cm",
+            "Sức chứa": "± 80"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/2019/03/horno-josper-hjx-25-lbc.jpg",
+          "source_url": "https://jospergrill.com/wp-content/uploads/josper-products-catalogue-en.pdf",
+          "seo_title": "Josper Charcoal Oven HJX-25-LBC | Saigon Horeca",
+          "seo_description": "Josper Charcoal Oven HJX-25-LBC — origin Spain. external dimensions 65 x 66 x 186 cm, grill grate dimensions 50 x 51 cm. Quote & consultation at Saigon Horeca.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0106_HJX-25-LBC.jpg"
+        },
+        {
+          "model": "HJX-45-LBC",
+          "title": "Josper HJX-45-LBC",
+          "description_en": "Josper HJX-45-LBC: overall dimensions 95 x 66 x 191 cm, grill 76 x 51 cm, capacity ± 120. Configuration listed in the official Josper product catalogue (PDF). This configuration is not published as a separate SKU in the Josper online shop; dimensions and capacity below are taken verbatim from the catalogue. JOSPER CHARCOAL OVEN WITH CUPBOARD BASE AND TRAY SUPPORT. Firebreak and firebreak hat not included.",
+          "specs": {
+            "Kích thước ngoài": "95 x 66 x 191 cm",
+            "Kích thước vỉ nướng": "76 x 51 cm",
+            "Sức chứa": "± 120"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/2019/03/horno-josper-hjx-45-lbc.jpg",
+          "source_url": "https://jospergrill.com/wp-content/uploads/josper-products-catalogue-en.pdf",
+          "seo_title": "Josper Charcoal Oven HJX-45-LBC | Saigon Horeca",
+          "seo_description": "Josper Charcoal Oven HJX-45-LBC — origin Spain. external dimensions 95 x 66 x 191 cm, grill grate dimensions 76 x 51 cm. Quote & consultation at Saigon Horeca.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0107_HJX-45-LBC.jpg"
+        },
+        {
+          "model": "HJX-50-LBC",
+          "title": "Josper HJX-50-LBC",
+          "description_en": "Josper HJX-50-LBC: overall dimensions 95 x 92 x 191 cm, grill 76 x 75 cm, capacity ± 175. Configuration listed in the official Josper product catalogue (PDF). This configuration is not published as a separate SKU in the Josper online shop; dimensions and capacity below are taken verbatim from the catalogue. JOSPER CHARCOAL OVEN WITH CUPBOARD BASE AND TRAY SUPPORT. Firebreak and firebreak hat not included.",
+          "specs": {
+            "Kích thước ngoài": "95 x 92 x 191 cm",
+            "Kích thước vỉ nướng": "76 x 75 cm",
+            "Sức chứa": "± 175"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/2019/03/horno-josper-hjx-50-large.jpg",
+          "source_url": "https://jospergrill.com/wp-content/uploads/josper-products-catalogue-en.pdf",
+          "seo_title": "Josper Charcoal Oven HJX-50-LBC | Saigon Horeca",
+          "seo_description": "Josper Charcoal Oven HJX-50-LBC — origin Spain. external dimensions 95 x 92 x 191 cm, grill grate dimensions 76 x 75 cm. Quote & consultation at Saigon Horeca.",
+          "image_is_from_base_model": true,
+          "image_base_model": "HJX-50",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0108_HJX-50-LBC.jpg"
+        },
+        {
+          "model": "HJA-20",
+          "title": "Josper HJA-20",
+          "description_en": "Josper HJA-20: overall dimensions 83 x 52 x 94 cm, grill 58 x 34 cm, capacity ± 40. Configuration listed in the official Josper product catalogue (PDF). This configuration is not published as a separate SKU in the Josper online shop; dimensions and capacity below are taken verbatim from the catalogue. JOSPER A CLASS CHARCOAL OVEN. Included: vent, firebreak, firebreak hat, 2 grill racks, wheels, wire brush, tongs, poker for coal, ash pan. Model HJA-20 does not include wheels and includes only one grill rack.",
+          "specs": {
+            "Kích thước ngoài": "83 x 52 x 94 cm",
+            "Kích thước vỉ nướng": "58 x 34 cm",
+            "Sức chứa": "± 40"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/2019/03/horno-josper-hja-20-mini.jpg",
+          "source_url": "https://jospergrill.com/wp-content/uploads/josper-products-catalogue-en.pdf",
+          "seo_title": "Josper Charcoal Oven HJA-20 | Saigon Horeca",
+          "seo_description": "Josper Charcoal Oven HJA-20 — origin Spain. external dimensions 83 x 52 x 94 cm, grill grate dimensions 58 x 34 cm. Quote & consultation at Saigon Horeca.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0109_HJA-20.jpg"
+        },
+        {
+          "model": "HJA-25",
+          "title": "Josper HJA-25",
+          "description_en": "Josper HJA-25: overall dimensions 76 x 68 x 198 cm, grill 50 x 51 cm, capacity ± 80. Configuration listed in the official Josper product catalogue (PDF). This configuration is not published as a separate SKU in the Josper online shop; dimensions and capacity below are taken verbatim from the catalogue. JOSPER A CLASS CHARCOAL OVEN. Included: vent, firebreak, firebreak hat, 2 grill racks, wheels, wire brush, tongs, poker for coal, ash pan. Model HJA-20 does not include wheels and includes only one grill rack.",
+          "specs": {
+            "Kích thước ngoài": "76 x 68 x 198 cm",
+            "Kích thước vỉ nướng": "50 x 51 cm",
+            "Sức chứa": "± 80"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/2019/03/hornos-josper-HJA-25.jpg",
+          "source_url": "https://jospergrill.com/wp-content/uploads/josper-products-catalogue-en.pdf",
+          "seo_title": "Josper Charcoal Oven HJA-25 | Saigon Horeca",
+          "seo_description": "Josper Charcoal Oven HJA-25 — origin Spain. external dimensions 76 x 68 x 198 cm, grill grate dimensions 50 x 51 cm. Quote & consultation at Saigon Horeca.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0110_HJA-25.jpg"
+        },
+        {
+          "model": "HJA-45",
+          "title": "Josper HJA-45",
+          "description_en": "Josper HJA-45: overall dimensions 105 x 68 x 198 cm, grill 76 x 51 cm, capacity ± 120. Configuration listed in the official Josper product catalogue (PDF). This configuration is not published as a separate SKU in the Josper online shop; dimensions and capacity below are taken verbatim from the catalogue. JOSPER A CLASS CHARCOAL OVEN. Included: vent, firebreak, firebreak hat, 2 grill racks, wheels, wire brush, tongs, poker for coal, ash pan. Model HJA-20 does not include wheels and includes only one grill rack.",
+          "specs": {
+            "Kích thước ngoài": "105 x 68 x 198 cm",
+            "Kích thước vỉ nướng": "76 x 51 cm",
+            "Sức chứa": "± 120"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/2019/05/josper-producto-hornos-HJA-45.jpg",
+          "source_url": "https://jospergrill.com/wp-content/uploads/josper-products-catalogue-en.pdf",
+          "seo_title": "Josper Charcoal Oven HJA-45 | Saigon Horeca",
+          "seo_description": "Josper Charcoal Oven HJA-45 — origin Spain. external dimensions 105 x 68 x 198 cm, grill grate dimensions 76 x 51 cm. Quote & consultation at Saigon Horeca.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0111_HJA-45.jpg"
+        },
+        {
+          "model": "HJA-50",
+          "title": "Josper HJA-50",
+          "description_en": "Josper HJA-50: overall dimensions 105 x 93 x 198 cm, grill 76 x 75 cm, capacity ± 175. Configuration listed in the official Josper product catalogue (PDF). This configuration is not published as a separate SKU in the Josper online shop; dimensions and capacity below are taken verbatim from the catalogue. JOSPER A CLASS CHARCOAL OVEN. Included: vent, firebreak, firebreak hat, 2 grill racks, wheels, wire brush, tongs, poker for coal, ash pan. Model HJA-20 does not include wheels and includes only one grill rack.",
+          "specs": {
+            "Kích thước ngoài": "105 x 93 x 198 cm",
+            "Kích thước vỉ nướng": "76 x 75 cm",
+            "Sức chứa": "± 175"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/hornos-para-restaurantes-hja-50-josper.jpg",
+          "source_url": "https://jospergrill.com/wp-content/uploads/josper-products-catalogue-en.pdf",
+          "seo_title": "Josper Charcoal Oven HJA-50 | Saigon Horeca",
+          "seo_description": "Josper Charcoal Oven HJA-50 — origin Spain. external dimensions 105 x 93 x 198 cm, grill grate dimensions 76 x 75 cm. Quote & consultation at Saigon Horeca.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0112_HJA-50.jpg"
+        },
+        {
+          "model": "HJA-25-M",
+          "title": "Josper HJA-25-M",
+          "description_en": "Josper HJA-25-M: overall dimensions 76 x 67 x 143 cm, grill 50 x 51 cm, capacity ± 80. Configuration listed in the official Josper product catalogue (PDF). This configuration is not published as a separate SKU in the Josper online shop; dimensions and capacity below are taken verbatim from the catalogue. JOSPER COUNTERTOP A CLASS CHARCOAL OVEN. Included: vent, firebreak, firebreak hat, 2 grill racks, wire brush, tongs, poker for coal, ash pan.",
+          "specs": {
+            "Kích thước ngoài": "76 x 67 x 143 cm",
+            "Kích thước vỉ nướng": "50 x 51 cm",
+            "Sức chứa": "± 80"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/2019/03/hornos-josper-HJA-25-M.jpg",
+          "source_url": "https://jospergrill.com/wp-content/uploads/josper-products-catalogue-en.pdf",
+          "seo_title": "Josper Charcoal Oven HJA-25-M | Saigon Horeca",
+          "seo_description": "Josper Charcoal Oven HJA-25-M — origin Spain. external dimensions 76 x 67 x 143 cm, grill grate dimensions 50 x 51 cm. Quote & consultation at Saigon Horeca.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0113_HJA-25-M.jpg"
+        },
+        {
+          "model": "HJA-45-M",
+          "title": "Josper HJA-45-M",
+          "description_en": "Josper HJA-45-M: overall dimensions 105 x 68 x 149 cm, grill 76 x 51 cm, capacity ± 120. Configuration listed in the official Josper product catalogue (PDF). This configuration is not published as a separate SKU in the Josper online shop; dimensions and capacity below are taken verbatim from the catalogue. JOSPER COUNTERTOP A CLASS CHARCOAL OVEN. Included: vent, firebreak, firebreak hat, 2 grill racks, wire brush, tongs, poker for coal, ash pan.",
+          "specs": {
+            "Kích thước ngoài": "105 x 68 x 149 cm",
+            "Kích thước vỉ nướng": "76 x 51 cm",
+            "Sức chứa": "± 120"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/2019/03/hornos-josper-HJA-45-M.jpg",
+          "source_url": "https://jospergrill.com/wp-content/uploads/josper-products-catalogue-en.pdf",
+          "seo_title": "Josper Charcoal Oven HJA-45-M | Saigon Horeca",
+          "seo_description": "Josper Charcoal Oven HJA-45-M — origin Spain. external dimensions 105 x 68 x 149 cm, grill grate dimensions 76 x 51 cm. Quote & consultation at Saigon Horeca.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0114_HJA-45-M.jpg"
+        },
+        {
+          "model": "HJA-50-M",
+          "title": "Josper HJA-50-M",
+          "description_en": "Josper HJA-50-M: overall dimensions 105 x 93 x 149 cm, grill 76 x 75 cm, capacity ± 150. Configuration listed in the official Josper product catalogue (PDF). This configuration is not published as a separate SKU in the Josper online shop; dimensions and capacity below are taken verbatim from the catalogue. JOSPER COUNTERTOP A CLASS CHARCOAL OVEN. Included: vent, firebreak, firebreak hat, 2 grill racks, wire brush, tongs, poker for coal, ash pan.",
+          "specs": {
+            "Kích thước ngoài": "105 x 93 x 149 cm",
+            "Kích thước vỉ nướng": "76 x 75 cm",
+            "Sức chứa": "± 150"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/2019/03/hornos-josper-HJA-50-M.jpg",
+          "source_url": "https://jospergrill.com/wp-content/uploads/josper-products-catalogue-en.pdf",
+          "seo_title": "Josper Charcoal Oven HJA-50-M | Saigon Horeca",
+          "seo_description": "Josper Charcoal Oven HJA-50-M — origin Spain. external dimensions 105 x 93 x 149 cm, grill grate dimensions 76 x 75 cm. Quote & consultation at Saigon Horeca.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0115_HJA-50-M.jpg"
+        },
+        {
+          "model": "HJA-25-HC",
+          "title": "Josper HJA-25-HC",
+          "description_en": "Josper HJA-25-HC: overall dimensions 76 x 68 x 198-204 cm, grill 50 x 51 cm, capacity ± 80. Configuration listed in the official Josper product catalogue (PDF). This configuration is not published as a separate SKU in the Josper online shop; dimensions and capacity below are taken verbatim from the catalogue. JOSPER A CLASS CHARCOAL OVEN WITH HOT CABINET. Included: vent, firebreak, firebreak hat, 2 grill racks, wheels, wire brush, tongs, poker for coal, ash pan. Height given is minimum-maximum.",
+          "specs": {
+            "Kích thước ngoài": "76 x 68 x 198-204 cm",
+            "Kích thước vỉ nướng": "50 x 51 cm",
+            "Sức chứa": "± 80"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/2019/03/hornos-josper-HJA-25-hc.jpg",
+          "source_url": "https://jospergrill.com/wp-content/uploads/josper-products-catalogue-en.pdf",
+          "seo_title": "Josper Charcoal Oven HJA-25-HC | Saigon Horeca",
+          "seo_description": "Josper Charcoal Oven HJA-25-HC — origin Spain. external dimensions 76 x 68 x 198-204 cm, grill grate dimensions 50 x 51 cm. Quote & consultation at Saigon Horeca.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0116_HJA-25-HC.jpg"
+        },
+        {
+          "model": "HJA-45-HC",
+          "title": "Josper HJA-45-HC",
+          "description_en": "Josper HJA-45-HC: overall dimensions 105 x 68 x 198-204 cm, grill 76 x 51 cm, capacity ± 120. Configuration listed in the official Josper product catalogue (PDF). This configuration is not published as a separate SKU in the Josper online shop; dimensions and capacity below are taken verbatim from the catalogue. JOSPER A CLASS CHARCOAL OVEN WITH HOT CABINET. Included: vent, firebreak, firebreak hat, 2 grill racks, wheels, wire brush, tongs, poker for coal, ash pan. Height given is minimum-maximum.",
+          "specs": {
+            "Kích thước ngoài": "105 x 68 x 198-204 cm",
+            "Kích thước vỉ nướng": "76 x 51 cm",
+            "Sức chứa": "± 120"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/2019/06/hornos-josper-HJA-45-HC.jpg",
+          "source_url": "https://jospergrill.com/wp-content/uploads/josper-products-catalogue-en.pdf",
+          "seo_title": "Josper Charcoal Oven HJA-45-HC | Saigon Horeca",
+          "seo_description": "Josper Charcoal Oven HJA-45-HC — origin Spain. external dimensions 105 x 68 x 198-204 cm. Quote & consultation at Saigon Horeca.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0117_HJA-45-HC.jpg"
+        },
+        {
+          "model": "HJA-50-HC",
+          "title": "Josper HJA-50-HC",
+          "description_en": "Josper HJA-50-HC: overall dimensions 105 x 93 x 198-204 cm, grill 76 x 75 cm, capacity ± 150. Configuration listed in the official Josper product catalogue (PDF). This configuration is not published as a separate SKU in the Josper online shop; dimensions and capacity below are taken verbatim from the catalogue. JOSPER A CLASS CHARCOAL OVEN WITH HOT CABINET. Included: vent, firebreak, firebreak hat, 2 grill racks, wheels, wire brush, tongs, poker for coal, ash pan. Height given is minimum-maximum.",
+          "specs": {
+            "Kích thước ngoài": "105 x 93 x 198-204 cm",
+            "Kích thước vỉ nướng": "76 x 75 cm",
+            "Sức chứa": "± 150"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/2019/03/hornos-josper-HJA-50-HC.jpg",
+          "source_url": "https://jospergrill.com/wp-content/uploads/josper-products-catalogue-en.pdf",
+          "seo_title": "Josper Charcoal Oven HJA-50-HC | Saigon Horeca",
+          "seo_description": "Josper Charcoal Oven HJA-50-HC — origin Spain. external dimensions 105 x 93 x 198-204 cm. Quote & consultation at Saigon Horeca.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0118_HJA-50-HC.jpg"
+        },
+        {
+          "model": "HJX-20-PDF",
+          "title": "Josper HJX-20-PDF (catalogue dimensions variant)",
+          "description_en": "Same base model as the Josper HJX-20 Mini sold on the official webshop (see product page for the canonical SKU). This entry records the dimensions as printed verbatim in the official Josper product catalogue (PDF), which round slightly differently from the webshop page (catalogue: 72 x 47 x 103 cm vs. webshop: 71 x 42 x 112 cm). Kept as a separate record to avoid overwriting either source; not a distinct SKU. JOSPER CHARCOAL OVEN, MODEL HJX MINI.",
+          "specs": {
+            "Kích thước ngoài": "72 x 47 x 103 cm",
+            "Kích thước vỉ nướng": "58 x 34 cm",
+            "Sức chứa": "± 40"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/2019/03/hornos-josper-HJX-20.jpg",
+          "source_url": "https://jospergrill.com/wp-content/uploads/josper-products-catalogue-en.pdf",
+          "seo_title": "Josper Charcoal Oven HJX-20-PDF | Saigon Horeca",
+          "seo_description": "Josper Charcoal Oven HJX-20-PDF — origin Spain. external dimensions 72 x 47 x 103 cm, grill grate dimensions 58 x 34 cm. Quote & consultation at Saigon Horeca.",
+          "image_is_from_base_model": true,
+          "image_base_model": "HJX-20",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0119_HJX-20-PDF.jpg"
+        }
+      ]
+    },
+    {
+      "group_name": "Basque Grills - catalogue codes (PDF only)",
+      "group_name_vi": "Bếp Nướng Basque Josper - Mã Catalogue (Chỉ Có Trong PDF)",
+      "source_urls": [
+        "https://jospergrill.com/wp-content/uploads/josper-products-catalogue-en.pdf"
+      ],
+      "models": [
+        {
+          "model": "PVJ-050-2",
+          "title": "Josper PVJ-050-2",
+          "description_en": "Josper PVJ-050-2: overall dimensions 140 x 90 x 161 cm, grill 50 x 51 cm x 2, capacity ± 90. Configuration listed in the official Josper product catalogue (PDF). This configuration is not published as a separate SKU in the Josper online shop; dimensions and capacity below are taken verbatim from the catalogue. JOSPER BASQUE GRILL: open grill with one or more adjustable height masts. Tongs and poker for coal included. Custom design according to project.",
+          "specs": {
+            "Kích thước ngoài": "140 x 90 x 161 cm",
+            "Kích thước vỉ nướng": "50 x 51 cm x 2",
+            "Sức chứa": "± 90"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/PVJ-050-2-1-MB-SS.jpg",
+          "source_url": "https://jospergrill.com/wp-content/uploads/josper-products-catalogue-en.pdf",
+          "seo_title": "Josper Basque Grill PVJ-050-2 | Saigon Horeca",
+          "seo_description": "Josper Basque Grill PVJ-050-2 — origin Spain. external dimensions 140 x 90 x 161 cm. Quote & consultation at Saigon Horeca.",
+          "image_is_from_base_model": true,
+          "image_base_model": "PVJ-50-2-1-MB",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0120_PVJ-050-2.jpg"
+        },
+        {
+          "model": "PVJ-076-1",
+          "title": "Josper PVJ-076-1",
+          "description_en": "Josper PVJ-076-1: overall dimensions 115 x 90 x 161 cm, grill 76 x 51 cm, capacity ± 70. Configuration listed in the official Josper product catalogue (PDF). This configuration is not published as a separate SKU in the Josper online shop; dimensions and capacity below are taken verbatim from the catalogue. JOSPER BASQUE GRILL: open grill with one or more adjustable height masts. Tongs and poker for coal included. Custom design according to project.",
+          "specs": {
+            "Kích thước ngoài": "115 x 90 x 161 cm",
+            "Kích thước vỉ nướng": "76 x 51 cm",
+            "Sức chứa": "± 70"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/2019/03/hornos-josper-PVJ_076-1.jpg",
+          "source_url": "https://jospergrill.com/wp-content/uploads/josper-products-catalogue-en.pdf",
+          "seo_title": "Josper Basque Grill PVJ-076-1 | Saigon Horeca",
+          "seo_description": "Josper Basque Grill PVJ-076-1 — origin Spain. external dimensions 115 x 90 x 161 cm, grill grate dimensions 76 x 51 cm. Quote & consultation at Saigon Horeca.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0121_PVJ-076-1.jpg"
+        },
+        {
+          "model": "PVJ-076-2",
+          "title": "Josper PVJ-076-2",
+          "description_en": "Josper PVJ-076-2: overall dimensions 209 x 90 x 161 cm, grill 76 x 51 cm x 2, capacity ± 140. Configuration listed in the official Josper product catalogue (PDF). This configuration is not published as a separate SKU in the Josper online shop; dimensions and capacity below are taken verbatim from the catalogue. JOSPER BASQUE GRILL: open grill with one or more adjustable height masts. Tongs and poker for coal included. Custom design according to project.",
+          "specs": {
+            "Kích thước ngoài": "209 x 90 x 161 cm",
+            "Kích thước vỉ nướng": "76 x 51 cm x 2",
+            "Sức chứa": "± 140"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/2019/03/hornos-josper-PVJ_076-2.jpg",
+          "source_url": "https://jospergrill.com/wp-content/uploads/josper-products-catalogue-en.pdf",
+          "seo_title": "Josper Basque Grill PVJ-076-2 | Saigon Horeca",
+          "seo_description": "Josper Basque Grill PVJ-076-2 — origin Spain. external dimensions 209 x 90 x 161 cm. Quote & consultation at Saigon Horeca.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0122_PVJ-076-2.jpg"
+        },
+        {
+          "model": "PVJ-076-3",
+          "title": "Josper PVJ-076-3",
+          "description_en": "Josper PVJ-076-3: overall dimensions 300 x 90 x 161 cm, grill 76 x 51 cm x 3, capacity ± 210. Configuration listed in the official Josper product catalogue (PDF). This configuration is not published as a separate SKU in the Josper online shop; dimensions and capacity below are taken verbatim from the catalogue. JOSPER BASQUE GRILL: open grill with one or more adjustable height masts. Tongs and poker for coal included. Custom design according to project.",
+          "specs": {
+            "Kích thước ngoài": "300 x 90 x 161 cm",
+            "Kích thước vỉ nướng": "76 x 51 cm x 3",
+            "Sức chứa": "± 210"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/PVJ-076-3-3-MB-SS.jpg",
+          "source_url": "https://jospergrill.com/wp-content/uploads/josper-products-catalogue-en.pdf",
+          "seo_title": "Josper Basque Grill PVJ-076-3 | Saigon Horeca",
+          "seo_description": "Josper Basque Grill PVJ-076-3 — origin Spain. external dimensions 300 x 90 x 161 cm. Quote & consultation at Saigon Horeca.",
+          "image_is_from_base_model": true,
+          "image_base_model": "PVJ-76-3-3-MB",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0123_PVJ-076-3.jpg"
+        }
+      ]
+    },
+    {
+      "group_name": "Combos - catalogue codes (PDF only)",
+      "group_name_vi": "Bộ Combo Josper - Mã Catalogue (Chỉ Có Trong PDF)",
+      "source_urls": [
+        "https://jospergrill.com/wp-content/uploads/josper-products-catalogue-en.pdf"
+      ],
+      "models": [
+        {
+          "model": "CVJ-050-2-HJX-25",
+          "title": "Josper CVJ-050-2-HJX-25",
+          "description_en": "Josper CVJ-050-2-HJX-25: overall dimensions 213 x 90 x 179 cm, grill 50 x 51 cm x 4, capacity ± 160. Configuration listed in the official Josper product catalogue (PDF). This configuration is not published as a separate SKU in the Josper online shop; dimensions and capacity below are taken verbatim from the catalogue. JOSPER COMBO: combination of HJX-25, 45 or 50 oven and Basque Grill with one or more modules. Included: tongs, poker for coal, firebreak, firebreak hat, grill racks.",
+          "specs": {
+            "Kích thước ngoài": "213 x 90 x 179 cm",
+            "Kích thước vỉ nướng": "50 x 51 cm x 4",
+            "Sức chứa": "± 160"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/2019/03/hornos-josper-CVJ-050-2-HJX25.jpg",
+          "source_url": "https://jospergrill.com/wp-content/uploads/josper-products-catalogue-en.pdf",
+          "seo_title": "Josper Combo Set CVJ-050-2-HJX-25 | Saigon Horeca",
+          "seo_description": "Josper Combo Set CVJ-050-2-HJX-25 — origin Spain. external dimensions 213 x 90 x 179 cm. Quote & consultation at Saigon Horeca.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0124_CVJ-050-2-HJX-25.jpg"
+        },
+        {
+          "model": "CVJ-050-2-HJX-45",
+          "title": "Josper CVJ-050-2-HJX-45",
+          "description_en": "Josper CVJ-050-2-HJX-45: overall dimensions 242 x 90 x 188 cm, grill 76 x 51 cm x 2 + 50 x 51 cm x 2, capacity ± 180. Configuration listed in the official Josper product catalogue (PDF). This configuration is not published as a separate SKU in the Josper online shop; dimensions and capacity below are taken verbatim from the catalogue. JOSPER COMBO: combination of HJX-25, 45 or 50 oven and Basque Grill with one or more modules. Included: tongs, poker for coal, firebreak, firebreak hat, grill racks.",
+          "specs": {
+            "Kích thước ngoài": "242 x 90 x 188 cm",
+            "Kích thước vỉ nướng": "76 x 51 cm x 2 + 50 x 51 cm x 2",
+            "Sức chứa": "± 180"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/CVJ-050-2-PRO-M-1.jpg",
+          "source_url": "https://jospergrill.com/wp-content/uploads/josper-products-catalogue-en.pdf",
+          "seo_title": "Josper Combo Set CVJ-050-2-HJX-45 | Saigon Horeca",
+          "seo_description": "Josper Combo Set CVJ-050-2-HJX-45 — origin Spain. external dimensions 242 x 90 x 188 cm. Quote & consultation at Saigon Horeca.",
+          "image_is_from_base_model": true,
+          "image_base_model": "CVJ-50-PRO-M",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0125_CVJ-050-2-HJX-45.jpg"
+        },
+        {
+          "model": "CVJ-050-2-HJX-50",
+          "title": "Josper CVJ-050-2-HJX-50",
+          "description_en": "Josper CVJ-050-2-HJX-50: overall dimensions 242 x 90 x 188 cm, grill 76 x 75 cm x 2 + 50 x 51 cm x 2, capacity ± 200. Configuration listed in the official Josper product catalogue (PDF). This configuration is not published as a separate SKU in the Josper online shop; dimensions and capacity below are taken verbatim from the catalogue. JOSPER COMBO: combination of HJX-25, 45 or 50 oven and Basque Grill with one or more modules. Included: tongs, poker for coal, firebreak, firebreak hat, grill racks.",
+          "specs": {
+            "Kích thước ngoài": "242 x 90 x 188 cm",
+            "Kích thước vỉ nướng": "76 x 75 cm x 2 + 50 x 51 cm x 2",
+            "Sức chứa": "± 200"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/CVJ-050-2-PRO-L-1.jpg",
+          "source_url": "https://jospergrill.com/wp-content/uploads/josper-products-catalogue-en.pdf",
+          "seo_title": "Josper Combo Set CVJ-050-2-HJX-50 | Saigon Horeca",
+          "seo_description": "Josper Combo Set CVJ-050-2-HJX-50 — origin Spain. external dimensions 242 x 90 x 188 cm. Quote & consultation at Saigon Horeca.",
+          "image_is_from_base_model": true,
+          "image_base_model": "CVJ-50-PRO-L",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0126_CVJ-050-2-HJX-50.jpg"
+        }
+      ]
+    },
+    {
+      "group_name": "Robatagrills - catalogue codes (PDF only)",
+      "group_name_vi": "Bếp Nướng Robata Josper - Mã Catalogue (Chỉ Có Trong PDF)",
+      "source_urls": [
+        "https://jospergrill.com/wp-content/uploads/josper-products-catalogue-en.pdf"
+      ],
+      "models": [
+        {
+          "model": "RGJ-050",
+          "title": "Josper RGJ-050",
+          "description_en": "Josper RGJ-050: overall dimensions 71 x 39 x 65 cm, capacity ± 30. Configuration listed in the official Josper product catalogue (PDF). This configuration is not published as a separate SKU in the Josper online shop; dimensions and capacity below are taken verbatim from the catalogue. JOSPER ROBATAGRILL: open grill robatayaki style. Included: skewer supports, grease tray, tongs, temperature regulation grate.",
+          "specs": {
+            "Kích thước ngoài": "71 x 39 x 65 cm",
+            "grill length": "50 cm",
+            "Sức chứa": "± 30"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/2019/03/hornos-josper-RGJ_050.jpg",
+          "source_url": "https://jospergrill.com/wp-content/uploads/josper-products-catalogue-en.pdf",
+          "seo_title": "Josper Robata Grill RGJ-050 | Saigon Horeca",
+          "seo_description": "Josper Robata Grill RGJ-050 — origin Spain. external dimensions 71 x 39 x 65 cm, grill length 50 cm. Quote & consultation at Saigon Horeca.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0127_RGJ-050.jpg"
+        },
+        {
+          "model": "RGJ-100",
+          "title": "Josper RGJ-100",
+          "description_en": "Josper RGJ-100: overall dimensions 121 x 39 x 65 cm, capacity ± 70. Configuration listed in the official Josper product catalogue (PDF). This configuration is not published as a separate SKU in the Josper online shop; dimensions and capacity below are taken verbatim from the catalogue. JOSPER ROBATAGRILL: open grill robatayaki style. Included: skewer supports, grease tray, tongs, temperature regulation grate.",
+          "specs": {
+            "Kích thước ngoài": "121 x 39 x 65 cm",
+            "grill length": "100 cm",
+            "Sức chứa": "± 70"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/2019/05/hornos-josper-rgj-100.jpg",
+          "source_url": "https://jospergrill.com/wp-content/uploads/josper-products-catalogue-en.pdf",
+          "seo_title": "Josper Robata Grill RGJ-100 | Saigon Horeca",
+          "seo_description": "Josper Robata Grill RGJ-100 — origin Spain. external dimensions 121 x 39 x 65 cm, grill length 100 cm. Quote & consultation at Saigon Horeca.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0128_RGJ-100.jpg"
+        },
+        {
+          "model": "RGJ-140",
+          "title": "Josper RGJ-140",
+          "description_en": "Josper RGJ-140: overall dimensions 161 x 39 x 65 cm, capacity ± 100. Configuration listed in the official Josper product catalogue (PDF). This configuration is not published as a separate SKU in the Josper online shop; dimensions and capacity below are taken verbatim from the catalogue. JOSPER ROBATAGRILL: open grill robatayaki style. Included: skewer supports, grease tray, tongs, temperature regulation grate.",
+          "specs": {
+            "Kích thước ngoài": "161 x 39 x 65 cm",
+            "grill length": "140 cm",
+            "Sức chứa": "± 100"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/josper-rgjt-PRO-L.jpg",
+          "source_url": "https://jospergrill.com/wp-content/uploads/josper-products-catalogue-en.pdf",
+          "seo_title": "Josper Robata Grill RGJ-140 | Saigon Horeca",
+          "seo_description": "Josper Robata Grill RGJ-140 — origin Spain. external dimensions 161 x 39 x 65 cm, grill length 140 cm. Quote & consultation at Saigon Horeca.",
+          "image_is_from_base_model": true,
+          "image_base_model": "RGJ-PRO L",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0129_RGJ-140.jpg"
+        }
+      ]
+    },
+    {
+      "group_name": "Rotisseries (ASJ)",
+      "group_name_vi": "Máy Quay Xiên Than Josper (ASJ)",
+      "source_urls": [
+        "https://jospergrill.com/product-category/josper-rotisseries/",
+        "https://jospergrill.com/wp-content/uploads/josper-products-catalogue-en.pdf"
+      ],
+      "models": [
+        {
+          "model": "ASJ-063",
+          "title": "Josper Rotisserie ASJ-063",
+          "description_en": "The rotisserie or roaster is an ancient and medieval roasting technique using the spit. JOSPER ROTISSERIE with tempering drawers and lower cabinet. Included: set of skewers, sword forks, 2 spit holders, 8 GN 1/1 stainless steel trays, tongs, poker for coal, ash pan. The Josper online shop currently lists no purchasable SKU for this category; the model data below comes from the official product catalogue (PDF).",
+          "specs": {
+            "Kích thước ngoài": "97 x 88 x 191-208 cm",
+            "spit length": "63 cm",
+            "Sức chứa": "± 24/h",
+            "skewers": "18 double skewers · 12 simple",
+            "Ghi chú": "Height given is minimum-maximum"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/asadores-josper-rotisseries.jpg",
+          "source_url": "https://jospergrill.com/wp-content/uploads/josper-products-catalogue-en.pdf",
+          "seo_title": "Máy Quay Xiên Than Josper (ASJ) ASJ-063 | Saigon Horeca",
+          "seo_description": "Máy Quay Xiên Than Josper (ASJ) ASJ-063 — origin Spain. external dimensions 97 x 88 x 191-208 cm, spit length 63 cm. Quote & consultation at Saigon Horeca.",
+          "image_is_from_base_model": true,
+          "image_base_model": "Josper ASJ rotisserie line",
+          "seo_title_source": "Josper Rotisseries | Professional Charcoal Oven Roasters | JOSPER",
+          "note": "Source_url sua lai tro dung PDF catalogue chinh thuc (xac nhan ma nay xuat hien that trong PDF: JOSPER ROTISSERIE ASJ-063), thay vi trang category chung khong co ma cu the (fix 21/07/2026 qua tu-audit).",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0130_ASJ-063.jpg"
+        },
+        {
+          "model": "ASJ-130",
+          "title": "Josper Rotisserie ASJ-130",
+          "description_en": "The rotisserie or roaster is an ancient and medieval roasting technique using the spit. JOSPER ROTISSERIE with tempering drawers and lower cabinet. Included: set of skewers, sword forks, 2 spit holders, 8 GN 1/1 stainless steel trays, tongs, poker for coal, ash pan. The Josper online shop currently lists no purchasable SKU for this category; the model data below comes from the official product catalogue (PDF).",
+          "specs": {
+            "Kích thước ngoài": "155 x 88 x 191-208 cm",
+            "spit length": "130 cm",
+            "Sức chứa": "± 48/h",
+            "skewers": "42 double skewers · 12 simple",
+            "Ghi chú": "Height given is minimum-maximum"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/wp-content/uploads/asadores-josper-rotisseries.jpg",
+          "source_url": "https://jospergrill.com/product-category/josper-rotisseries/",
+          "seo_title": "Máy Quay Xiên Than Josper (ASJ) ASJ-130 | Saigon Horeca",
+          "seo_description": "Máy Quay Xiên Than Josper (ASJ) ASJ-130 — origin Spain. external dimensions 155 x 88 x 191-208 cm, spit length 130 cm. Quote & consultation at Saigon Horeca.",
+          "image_is_from_base_model": true,
+          "image_base_model": "Josper ASJ rotisserie line",
+          "seo_title_source": "Josper Rotisseries | Professional Charcoal Oven Roasters | JOSPER",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0131_ASJ-130.jpg"
+        }
+      ]
+    },
+    {
+      "group_name": "Josper Casa (domestic line)",
+      "group_name_vi": "Josper Casa (Dòng Gia Dụng)",
+      "source_urls": [
+        "https://jospergrill.com/casa/charcoal-ovens/",
+        "https://jospergrill.com/josper-casa-main/"
+      ],
+      "models": [
+        {
+          "model": "Casa",
+          "title": "Josper CASA Charcoal Oven",
+          "description_en": "A countertop charcoal oven like no other on the market. The oven used by the world’s top chefs has arrived in your backyard to stay. Josper CASA brings the embers of the world’s top chefs to your home. Fueled entirely by charcoal, it is a sophisticated fusion of a grill and an oven in a single machine. Technology applied to grill by Josper: radiation, convection and transmission. Included accessories: stainless steel grill, poker, Josper tongs, metal brush.",
+          "specs": {
+            "Chiều rộng": "775 mm",
+            "Chiều cao": "1205 mm",
+            "Chiều sâu": "795 mm",
+            "included accessories": "Stainless steel grill, poker, Josper tongs, metal brush",
+            "Nhiên liệu": "charcoal"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/casa/wp-content/uploads/2025/04/Josper-casa-nc-1100-1024x1024.png",
+          "source_url": "https://jospergrill.com/casa/charcoal-ovens/",
+          "seo_title": "Josper Casa (Dòng Gia Dụng) Casa | Saigon Horeca",
+          "seo_description": "Josper Casa (Home Line) Casa — origin Spain. width 775 mm, height 1205 mm. Quote & consultation at Saigon Horeca.",
+          "seo_title_source": "Charcoal Ovens - Josper Casa",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0132_Casa.png"
+        },
+        {
+          "model": "Torre",
+          "title": "Josper CASA Charcoal Oven Torre - with table and drawer",
+          "description_en": "A charcoal oven with an integrated table and drawer - all in one block. Perfect for a space with no need for construction work. Josper CASA brings the embers of the world’s top chefs to your home. Fueled entirely by charcoal, it is a sophisticated fusion of a grill and an oven in a single machine. Technology applied to grill by Josper: radiation, convection and transmission. Included accessories: stainless steel grill, poker, Josper tongs, metal brush.",
+          "specs": {
+            "Chiều rộng": "775 mm",
+            "Chiều cao": "1680 mm",
+            "Chiều sâu": "795 mm",
+            "included accessories": "Stainless steel grill, poker, Josper tongs, metal brush",
+            "Nhiên liệu": "charcoal"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/casa/wp-content/uploads/2025/11/Josper-casa-torre-nc-1100-3-1024x1024.png",
+          "source_url": "https://jospergrill.com/casa/charcoal-ovens/",
+          "seo_title": "Josper Casa (Dòng Gia Dụng) Torre | Saigon Horeca",
+          "seo_description": "Josper Casa (Home Line) Torre — origin Spain. width 775 mm, height 1680 mm. Quote & consultation at Saigon Horeca.",
+          "seo_title_source": "Charcoal Ovens - Josper Casa",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0133_Torre.png"
+        },
+        {
+          "model": "Carro",
+          "title": "Josper CASA Charcoal Oven Carro - with table and warming cabinet",
+          "description_en": "A versatile charcoal oven with an upper cabinet to heat and keep products at the optimal temperature, foldable side tables, wheels for improved mobility in outdoor spaces, and lower storage space. Josper CASA brings the embers of the world’s top chefs to your home. Fueled entirely by charcoal, it is a sophisticated fusion of a grill and an oven in a single machine. Technology applied to grill by Josper: radiation, convection and transmission. Included accessories: stainless steel grill, poker, Josper tongs, metal brush.",
+          "specs": {
+            "Chiều rộng": "1675 mm",
+            "Chiều cao": "1640 mm",
+            "Chiều sâu": "795 mm",
+            "included accessories": "Stainless steel grill, poker, Josper tongs, metal brush",
+            "Nhiên liệu": "charcoal"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/casa/wp-content/uploads/2025/04/Josper-casa-carro-nc-1100-1024x1024.png",
+          "source_url": "https://jospergrill.com/casa/charcoal-ovens/",
+          "seo_title": "Josper Casa (Dòng Gia Dụng) Carro | Saigon Horeca",
+          "seo_description": "Josper Casa (Home Line) Carro — origin Spain. width 1675 mm, height 1640 mm. Quote & consultation at Saigon Horeca.",
+          "seo_title_source": "Charcoal Ovens - Josper Casa",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0134_Carro.png"
+        },
+        {
+          "model": "Mesa",
+          "title": "Josper CASA Charcoal Oven Mesa - with built-in cabinet",
+          "description_en": "Charcoal oven with extra space and surface for all your preparations, plus additional storage space. Josper CASA brings the embers of the world’s top chefs to your home. Fueled entirely by charcoal, it is a sophisticated fusion of a grill and an oven in a single machine. Technology applied to grill by Josper: radiation, convection and transmission. Included accessories: stainless steel grill, poker, Josper tongs, metal brush.",
+          "specs": {
+            "Chiều rộng": "1995 mm",
+            "Chiều cao": "1673 mm",
+            "Chiều sâu": "795 mm",
+            "included accessories": "Stainless steel grill, poker, Josper tongs, metal brush",
+            "Nhiên liệu": "charcoal"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/casa/wp-content/uploads/2025/04/Josper-casa-mesa-nc-1100-2-1024x1024.png",
+          "source_url": "https://jospergrill.com/casa/charcoal-ovens/",
+          "seo_title": "Josper Casa (Dòng Gia Dụng) Mesa | Saigon Horeca",
+          "seo_description": "Josper Casa (Home Line) Mesa — origin Spain. width 1995 mm, height 1673 mm. Quote & consultation at Saigon Horeca.",
+          "seo_title_source": "Charcoal Ovens - Josper Casa",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0135_Mesa.png"
+        },
+        {
+          "model": "Cocina",
+          "title": "Josper CASA Charcoal Oven Cocina - with Basque grill",
+          "description_en": "The Josper Cocina is the perfect combination of two grilling systems: the closed charcoal grill of the classic Josper oven and the traditional open flame of the Basque Grill, all in one unit. The oven and grill tandem offers endless culinary possibilities in your home. Josper CASA brings the embers of the world’s top chefs to your home. Fueled entirely by charcoal, it is a sophisticated fusion of a grill and an oven in a single machine. Technology applied to grill by Josper: radiation, convection and transmission. Included accessories: stainless steel grill, poker, Josper tongs, metal brush.",
+          "specs": {
+            "Chiều rộng": "1690 mm",
+            "Chiều cao": "1685 mm",
+            "Chiều sâu": "830 mm",
+            "included accessories": "Stainless steel grill, poker, Josper tongs, metal brush",
+            "Nhiên liệu": "charcoal"
+          },
+          "origin": "Spain",
+          "heat_source": "charcoal",
+          "image_url": "https://jospergrill.com/casa/wp-content/uploads/2025/04/Josper-casa-cocina-nc-1100-1024x1024.png",
+          "source_url": "https://jospergrill.com/casa/charcoal-ovens/",
+          "seo_title": "Josper Casa (Dòng Gia Dụng) Cocina | Saigon Horeca",
+          "seo_description": "Josper Casa (Home Line) Cocina — origin Spain. width 1690 mm, height 1685 mm. Quote & consultation at Saigon Horeca.",
+          "seo_title_source": "Charcoal Ovens - Josper Casa",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/josper/0136_Cocina.png"
+        }
+      ]
+    }
+  ]
+}

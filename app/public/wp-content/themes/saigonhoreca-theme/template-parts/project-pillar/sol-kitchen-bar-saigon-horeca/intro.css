@@ -1,9 +1,25 @@
 /**
  * sol-kitchen-bar-saigon-horeca — intro slot.
- * Asymmetric storytelling: glass story-card + framed image, sticky on desktop.
- * Techniques: clamp, color-mix, backdrop-filter, dropcap, sticky, scroll-reveal.
+ * Asymmetric editorial storytelling: glass story-card (dropcap + flavour chips)
+ * + sticky framed image, numbered watermark accent.
+ * Techniques: clamp, color-mix, sticky, dropcap, aspect-ratio, hover transitions,
+ *             scroll-reveal, watermark, prefers-reduced-motion.
  * @package SaigonHoreca
  */
+
+.pp-intro-solshr__watermark {
+  position: absolute;
+  top: -3.5rem;
+  right: 1.5rem;
+  z-index: 0;
+  font-family: var(--font-display);
+  font-size: clamp(11rem, 22vw, 22rem);
+  font-weight: 800;
+  line-height: 1;
+  color: color-mix(in srgb, var(--solshr-sun) 4%, transparent);
+  pointer-events: none;
+  user-select: none;
+}
 
 .pp-intro-solshr__layout {
   display: grid;
@@ -28,6 +44,36 @@
   text-shadow: 0 0 18px color-mix(in srgb, var(--solshr-clay) 40%, transparent);
 }
 
+/* Flavour chips — Latin American tasting cues from the real copy. */
+.pp-intro-solshr__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 1.6rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid color-mix(in srgb, var(--solshr-sun) 16%, transparent);
+}
+.pp-intro-solshr__chips span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  padding: 0.4rem 0.85rem;
+  border: 1px solid color-mix(in srgb, var(--solshr-sun) 22%, transparent);
+  border-radius: var(--radius-full);
+  background: color-mix(in srgb, var(--solshr-sun) 6%, transparent);
+  color: color-mix(in srgb, var(--solshr-sun) 80%, var(--bc));
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: border-color 0.4s var(--ease-spring), background 0.4s var(--ease-spring), transform 0.4s var(--ease-spring);
+}
+.pp-intro-solshr__chips span:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--solshr-sun) 55%, transparent);
+  background: color-mix(in srgb, var(--solshr-sun) 12%, transparent);
+}
+
 .pp-intro-solshr__media {
   position: relative;
 }
@@ -45,4 +91,9 @@
   .pp-intro-solshr__media .pp-image-container-shared {
     aspect-ratio: 16 / 10;
   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pp-intro-solshr__chips span { transition: none !important; }
+  .pp-intro-solshr__chips span:hover { transform: none !important; }
 }

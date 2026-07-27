@@ -1,13 +1,14 @@
 /* Project bundle — co-located inside template-parts/project-pillar/ */
 
-@import "../../../entry-content.css";
-@import "../../../footer.css";
-@import "../../../header.css";
+@import "../legacy/entry-content.css";
+@import "../legacy/footer.css";
+@import "../legacy/header.css";
 @import "../shared/buttons.css";
 @import "../shared/cards.css";
 @import "../shared/checker.css";
 @import "../shared/effects.css";
 @import "../shared/typography.css";
+@import "../reveal.css"; /* scroll-reveal: JS (main-modern.js) global nhưng reveal.css trước chỉ ở home → 31 project page bị trơ. Bật lại animation. */
 @import "../../../template-parts/components/post-card.css";
 @import "../../../template-parts/header/logo.css";
 @import "../../../template-parts/header/mobile-menu.css";
@@ -166,14 +167,14 @@
 @import "../../../template-parts/project-pillar/roka-fella-tinh-hoa-am-thuc-nhat-ban/gallery.css";
 @import "../../../single-project/roka-fella-tinh-hoa-am-thuc-nhat-ban.css";
 
-/* du-nam-an-an */
-@import "../../../template-parts/project-pillar/du-nam-an-an/hero.css";
-@import "../../../template-parts/project-pillar/du-nam-an-an/intro.css";
-@import "../../../template-parts/project-pillar/du-nam-an-an/concept.css";
-@import "../../../template-parts/project-pillar/du-nam-an-an/partnership.css";
-@import "../../../template-parts/project-pillar/du-nam-an-an/specs.css";
-@import "../../../template-parts/project-pillar/du-nam-an-an/gallery.css";
-@import "../../../single-project/du-nam-an-an.css";
+/* vien-duong-lao-nam-an */
+@import "../../../template-parts/project-pillar/vien-duong-lao-nam-an/hero.css";
+@import "../../../template-parts/project-pillar/vien-duong-lao-nam-an/intro.css";
+@import "../../../template-parts/project-pillar/vien-duong-lao-nam-an/concept.css";
+@import "../../../template-parts/project-pillar/vien-duong-lao-nam-an/partnership.css";
+@import "../../../template-parts/project-pillar/vien-duong-lao-nam-an/specs.css";
+@import "../../../template-parts/project-pillar/vien-duong-lao-nam-an/gallery.css";
+@import "../../../single-project/vien-duong-lao-nam-an.css";
 
 /* du-an-vinh-hiep */
 @import "../../../template-parts/project-pillar/du-an-vinh-hiep/hero.css";

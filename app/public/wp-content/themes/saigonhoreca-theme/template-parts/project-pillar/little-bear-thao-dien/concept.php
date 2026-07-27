@@ -37,7 +37,7 @@ $uri = get_template_directory_uri();
         <div class="pp-image-container-shared pp-concept-lb__image-container">
           <div class="pp-concept-lb__border-decor" aria-hidden="true"></div>
           <img src="<?php echo sgh_img('little-bear-thao-dien/little-bear-thao-dien-bep-chinh-inox.jpg'); ?>" alt="<?php echo esc_attr__('Không gian quầy bar gỗ sồi và ô vòm bếp mở nghệ thuật dưới đèn neon ly rượu vang tại Little Bear Thảo Điền', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="1366" height="768">
-          <div class="pp-image-caption-shared"><?php echo esc_html__('Góc nhìn nghệ thuật từ bàn tiệc gỗ tròn qua ô cửa vòm bếp mở, nơi thực khách vừa thưởng thức rượu vang vừa trực tiếp cảm nhận sinh khí chế biến món ăn đầy say đắm từ các đầu bếp.', 'saigonhoreca'); ?></div>
+          <div class="pp-image-caption-shared"><?php echo esc_html__('Quầy bar gỗ dài chạy thẳng tới ô vòm bếp mở rực neon ly vang, nơi thực khách nhấp ly rượu vẫn trọn vẹn cảm nhận sinh khí chế biến nóng hổi từ đôi tay đầu bếp.', 'saigonhoreca'); ?></div>
         </div>
       </div>
 

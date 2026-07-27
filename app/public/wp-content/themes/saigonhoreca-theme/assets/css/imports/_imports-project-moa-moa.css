@@ -1,0 +1,8 @@
+/* Project bundle — moa-moa only. */
+@import "../../../template-parts/project-pillar/moa-moa/hero.css";
+@import "../../../template-parts/project-pillar/moa-moa/intro.css";
+@import "../../../template-parts/project-pillar/moa-moa/concept.css";
+@import "../../../template-parts/project-pillar/moa-moa/partnership.css";
+@import "../../../template-parts/project-pillar/moa-moa/specs.css";
+@import "../../../template-parts/project-pillar/moa-moa/gallery.css";
+@import "../../../single-project/moa-moa.css";

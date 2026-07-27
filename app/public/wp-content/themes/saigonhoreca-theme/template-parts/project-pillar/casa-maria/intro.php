@@ -174,7 +174,7 @@ $uri = get_template_directory_uri();
             <div class="pp-image-container-shared">
               <img src="<?php echo sgh_img('casa-maria/casa-maria-thiet-bi-bep-au-griddle-tu-lanh.jpg'); ?>" alt="<?php echo esc_attr__('Chi tiết thiết bị bếp nấu Casa Maria', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
               <div class="pp-image-caption-shared">
-                <?php echo esc_html__('Bếp từ, griddle và tủ mát công nghiệp tích hợp tiện lợi', 'saigonhoreca'); ?>
+                <?php echo esc_html__('Bếp từ công suất cao và mặt griddle inox bố trí gọn dưới chụp hút mùi, tối ưu thao tác chế biến tapas', 'saigonhoreca'); ?>
               </div>
             </div>
           </div>

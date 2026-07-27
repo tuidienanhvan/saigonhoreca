@@ -50,7 +50,7 @@ if (isset($args['thumb_url'])) {
                 <img src="<?php echo esc_url($img_url); ?>" alt="<?php echo esc_attr($title); ?>" class="sh-product-card__img" loading="lazy">
             <?php else : ?>
                 <div class="sh-product-card__placeholder">
-                    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/logo.webp" alt="Saigon Horeca" class="sh-product-card__placeholder-logo" loading="lazy">
+                    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/logo-header.webp" alt="Saigon Horeca" class="sh-product-card__placeholder-logo" loading="lazy">
                 </div>
             <?php endif; ?>
             <?php if (!empty($brand_name)) : ?>

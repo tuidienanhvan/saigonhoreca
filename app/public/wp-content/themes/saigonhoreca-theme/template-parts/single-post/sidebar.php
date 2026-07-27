@@ -14,7 +14,7 @@
 
 if (!defined('ABSPATH')) exit;
 
-$hotline    = get_theme_mod('saigonhouse_hotline', '0961 868 968');
+$hotline    = get_theme_mod('saigonhouse_hotline', '0901 304 365');
 $hotline_t  = preg_replace('/[^0-9+]/', '', (string) $hotline);
 $contact    = apply_filters('sh_sidebar_contact_url', home_url('/lien-he'));
 
@@ -67,7 +67,7 @@ $sidebar_label      = $is_product ? __('Thông tin sản phẩm', 'saigonhoreca'
                         <a href="<?php the_permalink(); ?>" class="sh-sidebar-news__link">
                             <?php if (has_post_thumbnail()) : ?>
                                 <span class="sh-sidebar-news__thumb">
-                                    <?php the_post_thumbnail('thumbnail', ['loading' => 'lazy', 'decoding' => 'async']); ?>
+                                    <?php the_post_thumbnail('medium', ['loading' => 'lazy', 'decoding' => 'async']); ?>
                                 </span>
                             <?php endif; ?>
                             <span class="sh-sidebar-news__body">
@@ -169,11 +169,10 @@ $sidebar_label      = $is_product ? __('Thông tin sản phẩm', 'saigonhoreca'
 </aside>
 
 <script>
-/* Bài đã xem (post version) — dùng key riêng `sgh:viewed-posts`.
-   Dữ liệu bài viết hiện tại được PHP nhúng trực tiếp an toàn tuyệt đối.
-   Hiển thị cả bài viết hiện tại kèm badge "Đang xem" cực kỳ chuyên nghiệp. */
+/* Bài / Sản phẩm đã xem — Tự động lưu và hiển thị danh sách vừa xem từ localStorage.
+   Hỗ trợ cả post và product CPT dựa trên data-storage-key tương ứng. */
 (function () {
-    var block = document.querySelector('.sh-sidebar-viewed[data-storage-key="sgh:viewed-posts"]');
+    var block = document.querySelector('.sh-sidebar-viewed');
     if (!block) return;
     var KEY = block.dataset.storageKey;
     var MAX = 6;

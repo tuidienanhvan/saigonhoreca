@@ -1,0 +1,8 @@
+/* Project bundle — g-cup-coffee-bistro only. */
+@import "../../../template-parts/project-pillar/g-cup-coffee-bistro/hero.css";
+@import "../../../template-parts/project-pillar/g-cup-coffee-bistro/intro.css";
+@import "../../../template-parts/project-pillar/g-cup-coffee-bistro/concept.css";
+@import "../../../template-parts/project-pillar/g-cup-coffee-bistro/partnership.css";
+@import "../../../template-parts/project-pillar/g-cup-coffee-bistro/specs.css";
+@import "../../../template-parts/project-pillar/g-cup-coffee-bistro/gallery.css";
+@import "../../../single-project/g-cup-coffee-bistro.css";

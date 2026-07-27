@@ -18,15 +18,13 @@ define('SGH_SITE_TAGLINE', 'Thiết bị bếp công nghiệp & giải pháp hor
 define('SGH_FB_APP_ID', '966242223397117');
 define('SGH_GTM_CONTAINER_ID', 'GTM-PVSPDW5B');
 
-// Google Fonts — kept at 6 weights (400, 500, 600, 700, 800, 900).
-// Verified usage: 500 (40 refs), 800 (36 refs), 900 (66 refs) in active CSS.
-// display=optional eliminates the font-swap CLS shift on the hero <h1>:
-// browser uses fallback for the load period (~100 ms); if Be Vietnam Pro
-// arrives in that window it is applied immediately, otherwise the fallback
-// is kept for the rest of the page-load (font is cached for next visit).
-// We pair this with explicit `<link rel="preload" as="font">` for the two
-// hot weights (400, 700) so the load-period almost always wins.
-define('SGH_GOOGLE_FONTS_URL', 'https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Lexend:wght@500;700&family=Lora:ital,wght@0,400;0,500;0,700;1,400;1,700&display=swap');
+// Google Fonts — Be Vietnam Pro (400/500/700 + italics), Lexend (500/700),
+// Lora (400/500/700 + italics), `display=swap`.
+// Loaded async via style_loader_tag filter (preload-as-style + onload swap)
+// with preconnect hints in header.php. Deliberately NO <link rel="preload"
+// as="font">: font preloads were measured to steal bandwidth from the hero
+// LCP image and were reverted — see docs/PERF-DECISIONS.md §3.
+define('SGH_GOOGLE_FONTS_URL', 'https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Lexend:wght@400;500;600;700;800;900&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,700&display=swap');
 
 // Analytics
 define('SGH_ANALYTICS_SALT', 'sh_salt_2026');

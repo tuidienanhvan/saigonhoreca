@@ -1,0 +1,391 @@
+{
+  "research_date": "2026-07-14",
+  "research_update_date": "2026-07-14",
+  "source_note": "Cào từ website chính hãng RATIONAL AG (Đức) — www.rational-online.com (bản quốc tế /en_xx/, có đối chiếu thêm /en_us/). KHÔNG phải dữ liệu tự bịa — mọi model/thông số dưới đây có URL nguồn kèm theo. rational-online.com dùng web components (custom elements + shadow DOM), nên WebFetch (bản tóm tắt) không đọc được đầy đủ; đã dùng trình duyệt thật (Claude Browser) + JS đệ quy xuyên shadow-root để trích xuất text/ảnh/meta chính xác. Thông số kW/dimensions/meals-per-day chi tiết của từng model được đối chiếu qua WebSearch (nguồn gốc vẫn là rational-online.com, được các nhà phân phối/spec sheet trích dẫn lại).",
+  "existing_catalog_gap": "Site saigonhoreca.local hiện có 0 sản phẩm dưới brand RATIONAL — brand chỉ xuất hiện dạng logo đối tác ở trang chủ (mục 'Đối tác'). RATIONAL là hãng lớn, tài liệu rất đầy đủ trên site chính hãng. Danh mục thực tế có 3 dòng sản phẩm chính (iCombi Pro, iCombi Classic, iVario Pro) — ít dòng hơn nhiều so với Giorik, nhưng mỗi dòng có 4-7 size/model biến thể x 2 nguồn nhiệt (điện/gas) x nhiều option, nên tổng SKU thực tế (theo mã đặt hàng cụ thể) vẫn lớn nếu tính đủ biến thể.",
+  "brand": "RATIONAL",
+  "company_info": {
+    "legal_name": "RATIONAL AG",
+    "founded": 1973,
+    "headquarters": "Landsberg am Lech, Đức (Bavaria)",
+    "history_note": "Phát triển combi-steamer đầu tiên trên thế giới năm 1976 (kết hợp hơi nước + đối lưu nhiệt trong 1 thiết bị). Công ty đại chúng (IPO), niêm yết trên sàn chứng khoán Đức — trang Investor Relations có mục '25 years IPO'. Là hãng dẫn đầu thị phần toàn cầu về combi-steamer thương mại.",
+    "source_urls": [
+      "https://www.rational-online.com/en_xx/company/about-us/history/",
+      "https://www.rational-online.com/en_xx/company/"
+    ],
+    "history_verification_note": "Trang /company/about-us/history/ không cào được nội dung chi tiết đầy đủ (chỉ lấy được tiêu đề trang qua WebFetch, nội dung bị cắt) — mốc 1973 (thành lập) và 1976 (combi-steamer đầu tiên) lấy từ WebSearch trích dẫn rational-online.com qua bên thứ ba, CHƯA tự tay đọc lại toàn văn trang history trên browser. Cần fetch sâu hơn nếu cần xác minh 100% qua browser."
+  },
+  "official_site": {
+    "main_domain": "https://www.rational-online.com/",
+    "locale_pattern": "en_xx (quốc tế, không giá), en_us (Mỹ), en_sg (Singapore/SEA), zh_cn, ja_jp, es_xx, fr_xx, v.v. — RATIONAL dùng mã locale kiểu <ngôn ngữ>_<vùng xx=quốc tế>.",
+    "vietnam_subsite_check": "KHÔNG có subsite tiếng Việt hay locale riêng cho Việt Nam. Trong bộ chọn quốc gia (Asia) trên trang chủ, mục 'Vietnam' trỏ thẳng sang https://www.rational-online.com/en_sg/home/ — tức RATIONAL phục vụ thị trường Việt Nam qua chi nhánh khu vực Singapore (tiếng Anh), không có bản địa hoá tiếng Việt hay giá/catalog riêng cho VN.",
+    "vietnam_dealer_check": "CHƯA xác nhận nhà phân phối chính hãng RATIONAL tại Việt Nam qua website chính hãng — trang /en_xx/customercare/rational-dealer/ là công cụ tìm đại lý theo vị trí (dealer locator), chưa tra cứu trực tiếp kết quả cho Việt Nam trong phiên nghiên cứu này."
+  },
+  "source_urls": [
+    "https://www.rational-online.com/en_xx/products/",
+    "https://www.rational-online.com/en_xx/icombi-pro/",
+    "https://www.rational-online.com/en_xx/icombi-pro/models/",
+    "https://www.rational-online.com/en_xx/icombi-classic/",
+    "https://www.rational-online.com/en_xx/icombi-classic/models/",
+    "https://www.rational-online.com/en_xx/ivario-pro/",
+    "https://www.rational-online.com/en_xx/ivario-pro/models/",
+    "https://www.rational-online.com/en_xx/accessories/",
+    "https://www.rational-online.com/en_xx/connectedcooking/",
+    "https://www.rational-online.com/media/downloads/en-us/prospects/21-677-unit-and-accessories-catalog-en-us.pdf"
+  ],
+  "groups": [
+    {
+      "group_name": "iCombi Pro (Combi Steamer, cao cấp / hàng chủ lực)",
+      "group_name_vi": "Lò Hấp Nướng Đa Năng iCombi Pro (dòng cao cấp nhất)",
+      "description_en": "RATIONAL's flagship intelligent combi-oven — roasting, baking, grilling, steaming, deep-frying, low-temperature cooking all in one appliance. Features iCookingSuite (self-cooking intelligence), iProductionManager, iCareSystem (auto-clean/descale), iDensityControl, WiFi built-in, 6-point core probe, up to 300°C cabinet temp, triple-glazed door.",
+      "source_urls": [
+        "https://www.rational-online.com/en_xx/icombi-pro/",
+        "https://www.rational-online.com/en_xx/icombi-pro/models/",
+        "https://www.rational-online.com/en_xx/icombi-pro/funktionen/technical-details-equipment/"
+      ],
+      "taxonomy_note": "7 size/capacity variants, mỗi size có bản điện (E) và gas (G) — nên tổng SKU đặt hàng thực tế ~14 (7 size x 2 nguồn nhiệt), chưa kể option kính/tay nắm. Đây là biến thể công suất/nguồn nhiệt của CÙNG 1 dòng máy (iCombi Pro), không phải sản phẩm khác nhau về công dụng — giống pattern Giorik đã ghi nhận trước đây.",
+      "models": [
+        {
+          "model_code": "XS 6-2/3",
+          "capacity": "6 x 2/3 GN (hoặc 6 x 1/1 GN)",
+          "meals_per_day": "20-80",
+          "power_electric_kw": 5.7,
+          "voltage": "400V / 3NAC",
+          "dims_mm": "657 (W) x 556/623 (D) x 567/594 (H)",
+          "weight_kg": 64,
+          "protection_class": "IPX5",
+          "note": "Model nhỏ nhất trong dòng iCombi Pro, dạng compact cho bếp nhỏ.",
+          "source_url": "https://www.rational-online.com/en_xx/icombi-pro/models/",
+          "image_url": "https://www.rational-online.com/media/images/product/icombipro/2023-ic/product-overview-xs-width-w800.png",
+          "spec_verification": "Thông số kW/dims/weight lấy qua WebSearch trích dẫn nhà phân phối (thecommercialovenstore.com, buzzcateringsupplies.com) dẫn nguồn rational-online.com — CHƯA tự đọc trực tiếp datasheet PDF gốc trong phiên này.",
+          "seo": {
+            "seo_title": "RATIONAL iCombi Pro XS 6-2/3 - Lò Hấp Nướng Đa Năng Compact | Saigon Horeca",
+            "seo_description": "Lò hấp nướng đa năng RATIONAL iCombi Pro XS 6-2/3, dung tích 6 khay GN 2/3, công suất 5.7kW, phục vụ 20-80 suất ăn/ngày. Chính hãng Đức, tư vấn báo giá tại Saigon Horeca.",
+            "image_url": "https://www.rational-online.com/media/images/product/icombipro/2023-ic/product-overview-xs-width-w800.png"
+          }
+        },
+        {
+          "model_code": "6-1/1",
+          "capacity": "6 x 1/1 GN",
+          "meals_per_day": "30-100",
+          "power_electric_kw": 10.8,
+          "note": "Size phổ thông nhất cho nhà hàng/bếp vừa.",
+          "source_url": "https://www.rational-online.com/en_xx/icombi-pro/models/",
+          "image_url": "https://www.rational-online.com/media/images/product/icombipro/2023-ic/product-overview-61-1-width-w800.png",
+          "spec_verification": "kW lấy qua WebSearch (buzzcateringsupplies.com dẫn nguồn rational-online.com), chưa đối chiếu datasheet gốc trực tiếp.",
+          "seo": {
+            "seo_title": "RATIONAL iCombi Pro 6-1/1 - Lò Hấp Nướng Đa Năng 6 Khay GN1/1 | Saigon Horeca",
+            "seo_description": "Lò hấp nướng đa năng RATIONAL iCombi Pro 6-1/1, dung tích 6 khay GN 1/1, công suất 10.8kW, phục vụ 30-100 suất ăn/ngày. Công nghệ iCookingSuite tự động hoá nấu ăn. Chính hãng Đức.",
+            "image_url": "https://www.rational-online.com/media/images/product/icombipro/2023-ic/product-overview-61-1-width-w800.png"
+          }
+        },
+        {
+          "model_code": "6-2/1",
+          "capacity": "6 x 2/1 GN (hoặc 12 x 1/1 GN)",
+          "meals_per_day": "60-160",
+          "power_gas_kw": 28,
+          "dims_mm": "1072 (W) x 975/1042 (D) x 754/804 (H)",
+          "weight_kg": 155,
+          "gas_connection": "3/4\" IG, gas tự nhiên hoặc LPG, tối đa 28kW",
+          "source_url": "https://www.rational-online.com/en_xx/icombi-pro/models/",
+          "image_url": "https://www.rational-online.com/media/images/product/icombipro/2023-ic/product-overview-62-1-width-w800.png",
+          "seo": {
+            "seo_title": "RATIONAL iCombi Pro 6-2/1 - Lò Hấp Nướng Công Suất Lớn | Saigon Horeca",
+            "seo_description": "Lò hấp nướng đa năng RATIONAL iCombi Pro 6-2/1, dung tích 6 khay GN 2/1 (tương đương 12 khay GN1/1), phục vụ 60-160 suất ăn/ngày. Có bản điện và gas. Chính hãng Đức.",
+            "image_url": "https://www.rational-online.com/media/images/product/icombipro/2023-ic/product-overview-62-1-width-w800.png"
+          }
+        },
+        {
+          "model_code": "10-1/1",
+          "capacity": "10 x 1/1 GN",
+          "meals_per_day": "80-150",
+          "note": "Size trung bình-lớn, phổ biến cho khách sạn/nhà hàng quy mô vừa-lớn.",
+          "source_url": "https://www.rational-online.com/en_xx/icombi-pro/models/",
+          "image_url": "https://www.rational-online.com/media/images/product/icombipro/2023-ic/product-overview-101-w800.png",
+          "seo": {
+            "seo_title": "RATIONAL iCombi Pro 10-1/1 - Lò Hấp Nướng 10 Khay GN1/1 | Saigon Horeca",
+            "seo_description": "Lò hấp nướng đa năng RATIONAL iCombi Pro 10-1/1, dung tích 10 khay GN 1/1, phục vụ 80-150 suất ăn/ngày. Phù hợp nhà hàng, khách sạn quy mô vừa-lớn. Chính hãng Đức.",
+            "image_url": "https://www.rational-online.com/media/images/product/icombipro/2023-ic/product-overview-101-w800.png"
+          }
+        },
+        {
+          "model_code": "10-2/1",
+          "capacity": "10 x 2/1 GN",
+          "meals_per_day": "150-300",
+          "dims_mm": "1072 x 1042 x 1014",
+          "weight_kg": 192,
+          "source_url": "https://www.rational-online.com/en_xx/icombi-pro/models/",
+          "image_url": "https://www.rational-online.com/media/images/product/icombipro/2023-ic/product-overview-102-w800.png",
+          "seo": {
+            "seo_title": "RATIONAL iCombi Pro 10-2/1 - Lò Hấp Nướng Công Nghiệp | Saigon Horeca",
+            "seo_description": "Lò hấp nướng đa năng RATIONAL iCombi Pro 10-2/1, dung tích 10 khay GN 2/1, phục vụ 150-300 suất ăn/ngày. Giải pháp bếp công nghiệp, khách sạn lớn. Chính hãng Đức.",
+            "image_url": "https://www.rational-online.com/media/images/product/icombipro/2023-ic/product-overview-102-w800.png"
+          }
+        },
+        {
+          "model_code": "20-1/1",
+          "capacity": "20 x 1/1 GN",
+          "meals_per_day": "150-300",
+          "power_electric_kw": 37.2,
+          "source_url": "https://www.rational-online.com/en_xx/icombi-pro/models/",
+          "image_url": "https://www.rational-online.com/media/images/product/icombipro/2023-ic/product-overview-201-w800.png",
+          "seo": {
+            "seo_title": "RATIONAL iCombi Pro 20-1/1 - Lò Hấp Nướng 20 Khay Công Suất Lớn | Saigon Horeca",
+            "seo_description": "Lò hấp nướng đa năng RATIONAL iCombi Pro 20-1/1, dung tích 20 khay GN 1/1, công suất 37.2kW, phục vụ 150-300 suất ăn/ngày. Chính hãng Đức, bảo hành chính hãng.",
+            "image_url": "https://www.rational-online.com/media/images/product/icombipro/2023-ic/product-overview-201-w800.png"
+          }
+        },
+        {
+          "model_code": "20-2/1",
+          "capacity": "20 x 2/1 GN (hoặc 40 x 1/1 GN)",
+          "meals_per_day": "300-500",
+          "power_electric_kw": 67.9,
+          "voltage": "400V / 3 pha (đấu cứng)",
+          "note": "Model lớn nhất dòng iCombi Pro, cho bếp trung tâm/nhà máy suất ăn công nghiệp.",
+          "source_url": "https://www.rational-online.com/en_xx/icombi-pro/models/",
+          "image_url": "https://www.rational-online.com/media/images/product/icombipro/2023-ic/product-overview-202-w800.png",
+          "seo": {
+            "seo_title": "RATIONAL iCombi Pro 20-2/1 - Lò Hấp Nướng Công Suất Lớn Nhất | Saigon Horeca",
+            "seo_description": "Lò hấp nướng đa năng RATIONAL iCombi Pro 20-2/1, dung tích 20 khay GN 2/1 (40 khay GN1/1), công suất 67.9kW, phục vụ 300-500 suất ăn/ngày. Bếp trung tâm, suất ăn công nghiệp.",
+            "image_url": "https://www.rational-online.com/media/images/product/icombipro/2023-ic/product-overview-202-w800.png"
+          }
+        }
+      ],
+      "model_count": 7,
+      "seo": {
+        "seo_title": "RATIONAL iCombi Pro - Lò Hấp Nướng Đa Năng Thông Minh Chính Hãng Đức | Saigon Horeca",
+        "seo_description": "iCombi Pro là dòng lò hấp nướng combi cao cấp nhất của RATIONAL (Đức) — nấu, nướng, hấp, chiên, quay ở nhiệt độ thấp trong 1 thiết bị. 7 kích cỡ từ XS đến 20-2/1. Chính hãng, tư vấn tại Saigon Horeca.",
+        "image_url": "https://www.rational-online.com/media/images/product/icombipro/2023-ic/icombipro-10-1-1-e-tuere-offen-dampf-rational128678-fix1920x500.jpg"
+      }
+    },
+    {
+      "group_name": "iCombi Classic (Combi Steamer, dòng vận hành thủ công/cơ bản)",
+      "group_name_vi": "Lò Hấp Nướng Đa Năng iCombi Classic (dòng cơ bản, vận hành tay)",
+      "description_en": "\"Productive. Robust. Reliable.\" Rotary-dial control with color display, up to 100 programs with 12-step sequences, ClimaPlus humidity control, LED lighting, automatic cleaning with phosphate-free tabs, ENERGY STAR certified. Positioned as the manual/tailored-for-experienced-chef alternative to the fully-automated iCombi Pro.",
+      "source_urls": [
+        "https://www.rational-online.com/en_xx/icombi-classic/",
+        "https://www.rational-online.com/en_xx/icombi-classic/models/"
+      ],
+      "taxonomy_note": "6 size variants (không có bản XS như iCombi Pro), mỗi size có bản điện/gas.",
+      "models": [
+        {
+          "model_code": "6-1/1",
+          "capacity": "6 x 1/1 GN",
+          "meals_per_day": "30-100",
+          "power_electric_kw": 10.8,
+          "source_url": "https://www.rational-online.com/en_xx/icombi-classic/models/",
+          "image_url": "https://www.rational-online.com/media/images/product/icombiclassic/icombiclassic-10-1-1-e-standard-empty-rational-98058.jpg",
+          "image_note": "Ảnh hero trang chính iCombi Classic thực tế là model 10-1/1 (tên file), dùng tạm làm ảnh đại diện dòng — CHƯA có ảnh riêng xác nhận cho từng size 6-1/1 tương tự cách iCombi Pro có (product-overview-*).",
+          "seo": {
+            "seo_title": "RATIONAL iCombi Classic 6-1/1 - Lò Hấp Nướng Vận Hành Đơn Giản | Saigon Horeca",
+            "seo_description": "Lò hấp nướng RATIONAL iCombi Classic 6-1/1, điều khiển núm xoay, 100 chương trình nấu, phục vụ 30-100 suất ăn/ngày. Bền bỉ, dễ vận hành. Chính hãng Đức.",
+            "image_url": "https://www.rational-online.com/media/images/product/icombiclassic/icombiclassic-10-1-1-e-standard-empty-rational-98058.jpg"
+          }
+        },
+        {
+          "model_code": "6-2/1",
+          "capacity": "6 x 2/1 GN",
+          "source_url": "https://www.rational-online.com/en_xx/icombi-classic/models/",
+          "spec_status": "Chưa cào riêng kW/dims cho size này trong phiên này — nằm cùng pattern với iCombi Pro 6-2/1 nhưng KHÔNG giả định trùng số liệu.",
+          "seo": {
+            "seo_title": "RATIONAL iCombi Classic 6-2/1 - Lò Hấp Nướng Công Suất Lớn | Saigon Horeca",
+            "seo_description": "Lò hấp nướng RATIONAL iCombi Classic 6-2/1, dung tích 6 khay GN 2/1, vận hành núm xoay đơn giản, bền bỉ. Chính hãng Đức, tư vấn báo giá tại Saigon Horeca.",
+            "image_url": "https://www.rational-online.com/media/layout/images/theme/rational-logo.png"
+          }
+        },
+        {
+          "model_code": "10-1/1",
+          "capacity": "10 x 1/1 GN",
+          "power_electric_kw": 18.9,
+          "source_url": "https://www.rational-online.com/en_xx/icombi-classic/models/",
+          "seo": {
+            "seo_title": "RATIONAL iCombi Classic 10-1/1 - Lò Hấp Nướng 10 Khay | Saigon Horeca",
+            "seo_description": "Lò hấp nướng RATIONAL iCombi Classic 10-1/1, dung tích 10 khay GN 1/1, công suất 18.9kW. Vận hành đơn giản, bền bỉ, phù hợp bếp vừa-lớn. Chính hãng Đức.",
+            "image_url": "https://www.rational-online.com/media/images/product/icombiclassic/icombiclassic-10-1-1-e-standard-empty-rational-98058.jpg"
+          }
+        },
+        {
+          "model_code": "10-2/1",
+          "capacity": "10 x 2/1 GN",
+          "source_url": "https://www.rational-online.com/en_xx/icombi-classic/models/",
+          "spec_status": "Chưa cào riêng kW/dims cho size này trong phiên này.",
+          "seo": {
+            "seo_title": "RATIONAL iCombi Classic 10-2/1 - Lò Hấp Nướng Công Suất Lớn | Saigon Horeca",
+            "seo_description": "Lò hấp nướng RATIONAL iCombi Classic 10-2/1, dung tích 10 khay GN 2/1, cho bếp công suất lớn. Vận hành đơn giản, bền bỉ. Chính hãng Đức.",
+            "image_url": "https://www.rational-online.com/media/layout/images/theme/rational-logo.png"
+          }
+        },
+        {
+          "model_code": "20-1/1",
+          "capacity": "20 x 1/1 GN",
+          "meals_per_day": "lên tới 500 (toàn dòng, theo mô tả tổng quát 'up to 500 meals per day' cho size lớn nhất)",
+          "source_url": "https://www.rational-online.com/en_xx/icombi-classic/models/",
+          "seo": {
+            "seo_title": "RATIONAL iCombi Classic 20-1/1 - Lò Hấp Nướng Công Nghiệp | Saigon Horeca",
+            "seo_description": "Lò hấp nướng RATIONAL iCombi Classic 20-1/1, dung tích 20 khay GN 1/1, phục vụ tới 500 suất ăn/ngày. Vận hành đơn giản, bền bỉ. Chính hãng Đức.",
+            "image_url": "https://www.rational-online.com/media/layout/images/theme/rational-logo.png"
+          }
+        },
+        {
+          "model_code": "20-2/1",
+          "capacity": "20 x 2/1 GN",
+          "source_url": "https://www.rational-online.com/en_xx/icombi-classic/models/",
+          "spec_status": "Chưa cào riêng kW/dims cho size này trong phiên này.",
+          "seo": {
+            "seo_title": "RATIONAL iCombi Classic 20-2/1 - Lò Hấp Nướng Lớn Nhất Dòng Classic | Saigon Horeca",
+            "seo_description": "Lò hấp nướng RATIONAL iCombi Classic 20-2/1, dung tích 20 khay GN 2/1, model lớn nhất dòng Classic. Vận hành đơn giản, bền bỉ. Chính hãng Đức.",
+            "image_url": "https://www.rational-online.com/media/layout/images/theme/rational-logo.png"
+          }
+        }
+      ],
+      "model_count": 6,
+      "seo": {
+        "seo_title": "RATIONAL iCombi Classic - Lò Hấp Nướng Đa Năng Bền Bỉ, Vận Hành Đơn Giản | Saigon Horeca",
+        "seo_description": "iCombi Classic là dòng lò hấp nướng combi vận hành bằng núm xoay của RATIONAL (Đức) — bền bỉ, đáng tin cậy, dễ dùng cho đầu bếp có kinh nghiệm. 6 kích cỡ từ 6-1/1 đến 20-2/1.",
+        "image_url": "https://www.rational-online.com/media/images/product/icombiclassic/icombiclassic-10-1-1-e-standard-empty-rational-98058.jpg"
+      }
+    },
+    {
+      "group_name": "iVario Pro (Tilting Pan / Bratt Pan / Multifunction Cooking System)",
+      "group_name_vi": "Chảo Nghiêng Đa Năng iVario Pro (thay thế bếp/nồi/chảo/nồi áp suất)",
+      "description_en": "Multifunction cooking system replacing stove, pot, pan, deep-fat fryer, pressure cooker and bain-marie in one appliance — up to 40% energy savings. Features iVarioBoost (fast heat-up), iCookingSuite, iZoneControl (independent heating zones). Applications: boiling, frying, deep-frying, low-temperature cooking, pressure cooking, sous-vide.",
+      "source_urls": [
+        "https://www.rational-online.com/en_xx/ivario-pro/",
+        "https://www.rational-online.com/en_xx/ivario-pro/models/"
+      ],
+      "taxonomy_note": "4 model hiện hành theo trang models chính thức (2-XS, Pro 2-S, Pro L, Pro XL). Trang Accessories liệt kê thêm 'Typ 112 (2 x 14 L)' trong bộ lọc kích cỡ thiết bị — đây có khả năng là model iVario THẾ HỆ CŨ (không phải 'Pro') vẫn còn được hỗ trợ phụ kiện/phụ tùng, KHÔNG xuất hiện trong danh sách 4 model iVario Pro hiện bán chính thức. Gắn cờ để không nhầm là model hiện hành.",
+      "models": [
+        {
+          "model_code": "2-XS",
+          "capacity": "2 x 17 lít (GN 1/1)",
+          "power_electric_kw": 15,
+          "source_url": "https://www.rational-online.com/en_xx/ivario-pro/models/",
+          "image_url": "https://www.rational-online.com/media/images/product/ivariopro/2022ivp/ivario-2-xs-open-w800.jpg",
+          "seo": {
+            "seo_title": "RATIONAL iVario Pro 2-XS - Chảo Nghiêng Đa Năng Nhỏ Gọn | Saigon Horeca",
+            "seo_description": "Chảo nghiêng đa năng RATIONAL iVario Pro 2-XS, dung tích 2x17 lít, công suất 15kW, thay thế bếp/nồi/chảo/chiên. Tiết kiệm tới 40% năng lượng. Chính hãng Đức.",
+            "image_url": "https://www.rational-online.com/media/images/product/ivariopro/2022ivp/ivario-2-xs-open-w800.jpg"
+          }
+        },
+        {
+          "model_code": "Pro 2-S",
+          "capacity": "2 x 25 lít (GN 1/1)",
+          "power_electric_kw": 21,
+          "voltage": "400V/50Hz/3PH+N",
+          "source_url": "https://www.rational-online.com/en_xx/ivario-pro/models/",
+          "image_url": "https://www.rational-online.com/media/images/product/ivariopro/2022ivp/ivario-2-s-open-w800.jpg",
+          "seo": {
+            "seo_title": "RATIONAL iVario Pro 2-S - Chảo Nghiêng Đa Năng 2x25 Lít | Saigon Horeca",
+            "seo_description": "Chảo nghiêng đa năng RATIONAL iVario Pro 2-S, dung tích 2x25 lít, công suất 21kW. Nấu, hầm, chiên, ninh áp suất trong 1 thiết bị. Chính hãng Đức.",
+            "image_url": "https://www.rational-online.com/media/images/product/ivariopro/2022ivp/ivario-2-s-open-w800.jpg"
+          }
+        },
+        {
+          "model_code": "Pro L",
+          "capacity": "100 lít (GN 2/1)",
+          "power_electric_kw": 27,
+          "voltage": "400V/50Hz/3PH+N",
+          "source_url": "https://www.rational-online.com/en_xx/ivario-pro/models/",
+          "image_url": "https://www.rational-online.com/media/images/product/ivariopro/2022ivp/product-overview-ivario-l-open-661528-w800.jpg",
+          "seo": {
+            "seo_title": "RATIONAL iVario Pro L - Chảo Nghiêng Đa Năng 100 Lít | Saigon Horeca",
+            "seo_description": "Chảo nghiêng đa năng RATIONAL iVario Pro L, dung tích 100 lít, công suất 27kW. Thay thế nhiều thiết bị bếp truyền thống, tiết kiệm năng lượng. Chính hãng Đức.",
+            "image_url": "https://www.rational-online.com/media/images/product/ivariopro/2022ivp/product-overview-ivario-l-open-661528-w800.jpg"
+          }
+        },
+        {
+          "model_code": "Pro XL",
+          "capacity": "150 lít (GN 3/1)",
+          "power_electric_kw": 41,
+          "voltage": "400V/50Hz/3PH+N",
+          "note": "Model lớn nhất dòng iVario Pro.",
+          "source_url": "https://www.rational-online.com/en_xx/ivario-pro/models/",
+          "image_url": "https://www.rational-online.com/media/images/product/ivariopro/2022ivp/product-overview-ivario-xl-open-117805-w800.jpg",
+          "seo": {
+            "seo_title": "RATIONAL iVario Pro XL - Chảo Nghiêng Đa Năng 150 Lít Lớn Nhất | Saigon Horeca",
+            "seo_description": "Chảo nghiêng đa năng RATIONAL iVario Pro XL, dung tích 150 lít, công suất 41kW. Giải pháp bếp công nghiệp, suất ăn số lượng lớn. Chính hãng Đức.",
+            "image_url": "https://www.rational-online.com/media/images/product/ivariopro/2022ivp/product-overview-ivario-xl-open-117805-w800.jpg"
+          }
+        }
+      ],
+      "legacy_model_flagged_not_current": [
+        {
+          "model_code": "Typ 112",
+          "capacity": "2 x 14 lít",
+          "note": "Xuất hiện trong bộ lọc 'Appliance size' của trang Accessories (dùng để lọc phụ kiện tương thích) nhưng KHÔNG có trong danh sách 4 model bán chính thức ở trang /ivario-pro/models/. Nhiều khả năng là model iVario (không phải 'Pro') thế hệ cũ, RATIONAL vẫn bán phụ tùng thay thế. KHÔNG đưa vào catalog sản phẩm chính — chỉ ghi chú để tránh nhầm lẫn.",
+          "source_url": "https://www.rational-online.com/en_xx/accessories/"
+        }
+      ],
+      "model_count": 4,
+      "seo": {
+        "seo_title": "RATIONAL iVario Pro - Chảo Nghiêng Đa Năng Tiết Kiệm Năng Lượng | Saigon Horeca",
+        "seo_description": "iVario Pro của RATIONAL (Đức) thay thế bếp, nồi, chảo, nồi áp suất trong 1 thiết bị, tiết kiệm tới 40% năng lượng. 4 kích cỡ từ 2-XS đến Pro XL. Chính hãng, tư vấn tại Saigon Horeca.",
+        "image_url": "https://www.rational-online.com/media/folder-for-subsidaries/fr-fr/fr-fr---magazin/lineup-ivario-perspective-fix768x512.png"
+      }
+    },
+    {
+      "group_name": "Combi-Duo (Giải pháp xếp chồng 2 lò)",
+      "group_name_vi": "Bộ Xếp Chồng Combi-Duo",
+      "description_en": "NOT a separate appliance line — a stacking kit/stand system letting two iCombi (Pro or Classic) table-top units be combined vertically to save floor space while running two independent cooking modes simultaneously. Requires a base frame (Stand I / Stand II) plus a stacking kit matched to the two unit sizes being combined.",
+      "is_accessory_not_standalone_product": true,
+      "note_vi": "Đây KHÔNG phải một dòng lò riêng — là bộ giá đỡ + kit xếp chồng để đặt 2 lò iCombi (Pro hoặc Classic) chồng lên nhau, tiết kiệm diện tích sàn mà vẫn chạy 2 chế độ nấu độc lập cùng lúc. Liệt kê ở đây để phân biệt rõ với các dòng sản phẩm chính, tránh nhầm là 1 model lò riêng khi lên danh mục web.",
+      "source_urls": [
+        "https://www.rational-online.com/en_xx/accessories/"
+      ],
+      "spec_status": "Chưa cào chi tiết từng mã kit/stand cụ thể (ví dụ mã 60.74.725, 60.73.991 tìm thấy qua nhà phân phối bên thứ ba, chưa xác minh trực tiếp trên rational-online.com trong phiên này)."
+    },
+    {
+      "group_name": "Accessories (Phụ kiện chính hãng)",
+      "group_name_vi": "Phụ Kiện Chính Hãng cho iCombi Pro / iCombi Classic / iVario Pro",
+      "description_en": "Original RATIONAL accessories: mobile oven racks, grill/pizza trays, boiling baskets, granite-enamelled containers, VarioSmoker, perforated/stainless steel containers, grids, chicken & duck superspike, CombiFry, ribs rack, hanging racks, exhaust hoods & installation solutions, oven stands & cabinets, cleaning/care products, banquet & mobile solutions.",
+      "source_urls": [
+        "https://www.rational-online.com/en_xx/accessories/"
+      ],
+      "categories": [
+        "Combi-Duo (stacking kit/stand)",
+        "iVario (phụ kiện riêng cho iVario Pro)",
+        "Banquet and mobile solutions",
+        "Exhaust hood & installation solutions",
+        "Oven stand & cabinets",
+        "Cleaning and care",
+        "Hanging rack",
+        "Mobile oven rack",
+        "Set-up variations"
+      ],
+      "example_products_named_on_page": [
+        "Granite-enamelled containers",
+        "VarioSmoker",
+        "Perforated container (stainless steel)",
+        "Container (stainless steel)",
+        "Grid (stainless steel)",
+        "Chicken and duck Superspike",
+        "CombiFry",
+        "Ribs rack"
+      ],
+      "spec_status": "Đây là danh mục PHỤ KIỆN (không phải thiết bị chính) — chưa cào mã sản phẩm/giá riêng cho từng phụ kiện trong phiên này. Nếu đưa lên site nên gắn làm 'phụ kiện đi kèm' của sản phẩm chính, không tạo thành nhóm sản phẩm độc lập ngang hàng iCombi/iVario."
+    },
+    {
+      "group_name": "ConnectedCooking (Phần mềm/Dịch vụ số, không phải thiết bị)",
+      "group_name_vi": "Nền Tảng Quản Lý Bếp Số ConnectedCooking",
+      "description_en": "Cloud-based digital kitchen management platform — remote recipe creation, appliance monitoring, HACCP data logging. Works with iCombi Pro/Classic and iVario Pro appliances (built-in WiFi).",
+      "is_accessory_not_standalone_product": true,
+      "source_urls": ["https://www.rational-online.com/en_xx/connectedcooking/"],
+      "note_vi": "Là dịch vụ phần mềm đi kèm thiết bị, không phải sản phẩm vật lý — không nên tạo thành 1 'sản phẩm' riêng trong catalog WooCommerce trừ khi site có mục dịch vụ/subscription riêng."
+    }
+  ],
+  "vietnam_market_context": {
+    "note": "KHÔNG có subsite/tài liệu tiếng Việt chính thức từ RATIONAL. Chưa xác nhận nhà phân phối chính hãng tại Việt Nam qua rational-online.com trong phiên nghiên cứu này (chưa tra dealer locator cho địa chỉ VN cụ thể).",
+    "caution": "CHƯA tìm/đối chiếu danh sách đại lý/nhà phân phối RATIONAL tại Việt Nam trong phiên này — cần làm ở lần cào tiếp theo qua https://www.rational-online.com/en_xx/customercare/rational-dealer/ (dealer locator) hoặc liên hệ trực tiếp RATIONAL AG."
+  },
+  "pricing_status": "RATIONAL KHÔNG công bố giá bán công khai trên website chính hãng (thông lệ ngành thiết bị bếp công nghiệp B2B, giống Giorik) — không tìm thấy trang giá/catalog giá nào trong quá trình cào. Giá lẻ tham khảo có xuất hiện ở các nhà phân phối bên thứ ba tại Mỹ/Anh (ví dụ buzzcateringsupplies.com, webstaurantstore.com) nhưng đây KHÔNG phải giá chính hãng cho thị trường Việt Nam — cần liên hệ RATIONAL hoặc đại lý phân phối khu vực để lấy báo giá VN.",
+  "open_questions_for_user": [
+    "CHƯA GIẢI QUYẾT: Chưa xác nhận nhà phân phối/đại lý chính hãng RATIONAL tại Việt Nam — cần tra dealer locator hoặc liên hệ trực tiếp hãng.",
+    "CHƯA GIẢI QUYẾT: Thông số kỹ thuật đầy đủ (kW/dims/weight) mới verify được cho phần lớn model iCombi Pro và 2/6 model iCombi Classic (6-1/1, 10-1/1) — các model iCombi Classic còn lại (6-2/1, 10-2/1, 20-1/1, 20-2/1) mới có model code + capacity, CHƯA có spec đầy đủ.",
+    "CHƯA GIẢI QUYẾT: Ảnh riêng cho từng size iCombi Classic — chỉ có 1 ảnh hero (thực chất là model 10-1/1) dùng chung cho cả dòng; không tìm được bộ ảnh 'product-overview-*' theo từng size như iCombi Pro có.",
+    "CHƯA GIẢI QUYẾT: Mã đặt hàng cụ thể (order code) cho từng biến thể điện/gas + option kính/tay nắm/kệ — mới có model_code cấp 'kích cỡ' (ví dụ '6-1/1'), CHƯA phân rã tới SKU đặt hàng cuối cùng như 'LM100BE' (mã đăng ký ETL Anh cho iCombi Pro 6-1/1 Electric, tìm thấy qua bên thứ ba, chưa xác minh trực tiếp trên rational-online.com).",
+    "CHƯA GIẢI QUYẾT: Chi tiết mã kit/stand Combi-Duo cụ thể (chỉ có mô tả tổng quát, chưa có bảng mã đầy đủ từ rational-online.com).",
+    "CHƯA GIẢI QUYẾT: Giá bán VN (RATIONAL không công bố giá public, giống thông lệ B2B ngành) — cần liên hệ hãng/đại lý.",
+    "CHƯA GIẢI QUYẾT: Nội dung đầy đủ trang company/about-us/history/ (mốc 1973/1976 mới xác nhận gián tiếp qua WebSearch, chưa tự đọc lại toàn văn qua browser trong phiên này).",
+    "GHI CHÚ QUAN TRỌNG (giống bài học từ Giorik): RATIONAL có ÍT DÒNG SẢN PHẨM hơn Giorik (chỉ 2 dòng lò chính: iCombi Pro/Classic + 1 dòng chảo iVario Pro), nhưng mỗi 'model' (ví dụ '10-1/1') thực chất là 1 KÍCH CỠ, cần nhân với biến thể điện/gas để ra SKU đặt hàng thật — nếu lên site nên tạo sản phẩm ở cấp độ model_code (7 iCombi Pro + 6 iCombi Classic + 4 iVario Pro = 17 sản phẩm chính) và dùng thuộc tính biến thể (variation) cho điện/gas, KHÔNG tạo sản phẩm riêng cho mỗi tổ hợp điện/gas."
+  ]
+}

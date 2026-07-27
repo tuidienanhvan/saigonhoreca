@@ -38,7 +38,7 @@ function saigonhouse_get_contact_info() {
 
         // Emails
         'email_primary'   => 'contact@saigonhoreca.com',
-        'email_secondary' => 'admin@saigonhoreca.com',
+        'email_secondary' => 'gin@saigonhoreca.com',
 
         // Website
         'website'         => 'https://saigonhoreca.vn',
@@ -50,6 +50,8 @@ function saigonhouse_get_contact_info() {
 
         // Addresses
         'address'         => 'Số 40 Đường Số 6, Khu Dân Cư Melosa Khang Điền, Phường Long Trường, TP. Hồ Chí Minh',
+        'city'            => 'Hồ Chí Minh',
+        'country_code'    => 'VN',
         'address_short'   => 'Số 40, Đường Số 6, KDC Melosa Khang Điền, Long Trường, TP.HCM',
         'addresses'       => [
             'hcm' => [

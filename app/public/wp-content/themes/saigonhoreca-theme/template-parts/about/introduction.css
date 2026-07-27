@@ -121,6 +121,10 @@
   line-height: 1.9;
   color: var(--bc2);
   margin: 0;
+  /* Trình duyệt tự chọn điểm ngắt dòng đẹp hơn (tránh mồ côi/goá phụ),
+     progressive enhancement — browser chưa hỗ trợ thì rơi về wrap thường,
+     không có gì hỏng. */
+  text-wrap: pretty;
 }
 
 .sh-about-intro__link {
@@ -128,7 +132,11 @@
   font-weight: 700;
   text-decoration: none;
   position: relative;
-  display: inline-block;
+  /* KHÔNG dùng inline-block: nó biến cả cụm "thiết bị bếp công nghiệp"
+     thành 1 khối cứng không tách được theo từ, nên khi cuối dòng không đủ
+     chỗ, cả cụm bị đẩy nguyên khối xuống đầu dòng sau — trông như rớt lẻ
+     loi. Giữ inline mặc định: mỗi từ ngắt dòng bình thường như chữ khác,
+     border-bottom/padding vẫn hiển thị đúng dưới mỗi đoạn nếu có ngắt. */
   padding-bottom: 2px;
   border-bottom: 1.5px solid var(--p);
   transition: color 0.3s ease, border-color 0.3s ease;
@@ -553,16 +561,30 @@
   transition-delay: 0.1s;
 }
 
+/* Click / keyboard open (accessible disclosure) — mirrors the :hover reveal. */
+.sh-about-intro__panel.is-open .sh-about-intro__panel-content { grid-template-rows: 1fr; }
+.sh-about-intro__panel.is-open .sh-about-intro__panel-content-inner {
+  opacity: 1;
+  transform: translateY(0);
+  padding-bottom: 1.25rem;
+  transition-delay: 0.1s;
+}
+.sh-about-intro__panel.is-open .sh-about-intro__panel-trigger { opacity: 1; transform: rotate(135deg); }
+.sh-about-intro__panel-header[role="button"] { cursor: pointer; }
+.sh-about-intro__panel-header[role="button"]:focus-visible { outline: 2px solid var(--p); outline-offset: 3px; }
+
 
 /* ── Volumetric SVG Micro-animations ───────────────────────────── */
 
 /* Panel 1: Sứ mệnh (Spin dashed orbit & star pulse) */
-.sh-about-intro__panel:hover .svg-orbit-dashed {
+.sh-about-intro__panel:hover .svg-orbit-dashed,
+.sh-about-intro__panel.is-open .svg-orbit-dashed {
   animation: svg-spin 12s linear infinite;
   transform-origin: 24px 24px;
 }
 
-.sh-about-intro__panel:hover .svg-star {
+.sh-about-intro__panel:hover .svg-star,
+.sh-about-intro__panel.is-open .svg-star {
   animation: svg-pulse-star 2s ease-in-out infinite alternate;
   transform-origin: 24px 24px;
 }
@@ -576,52 +598,88 @@
   100% { transform: scale(1.1); filter: drop-shadow(0 0 5px rgba(245, 166, 35, 0.6)); }
 }
 
-/* Panel 2: Sản phẩm đa dạng (Float box top layer) */
-.sh-about-intro__panel:hover .svg-box-top {
-  animation: svg-float-box 2.5s ease-in-out infinite alternate;
+/* Panel 2: Sản phẩm đa dạng (Float box layers dynamically in opposite directions) */
+.sh-about-intro__panel:hover .svg-box-top,
+.sh-about-intro__panel.is-open .svg-box-top {
+  animation: svg-float-box-top 2.2s ease-in-out infinite alternate;
+  transform-origin: 24px 14px;
 }
 
-.sh-about-intro__panel:hover .svg-box-mid {
-  animation: svg-glow-box 2.5s ease-in-out infinite alternate;
+.sh-about-intro__panel:hover .svg-box-mid,
+.sh-about-intro__panel.is-open .svg-box-mid {
+  animation: svg-glow-box 2.2s ease-in-out infinite alternate;
+  transform-origin: 24px 23px;
 }
 
-@keyframes svg-float-box {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-3px); }
+.sh-about-intro__panel:hover .svg-box-bottom,
+.sh-about-intro__panel.is-open .svg-box-bottom {
+  animation: svg-float-box-bottom 2.2s ease-in-out infinite alternate;
+  transform-origin: 24px 32px;
+}
+
+@keyframes svg-float-box-top {
+  0% { transform: translateY(0) scale(1); }
+  100% { transform: translateY(-4px) scale(1.02); }
+}
+
+@keyframes svg-float-box-bottom {
+  0% { transform: translateY(0) scale(1); }
+  100% { transform: translateY(2px) scale(0.98); }
 }
 
 @keyframes svg-glow-box {
-  0% { fill-opacity: 0.85; }
-  100% { fill-opacity: 1; filter: brightness(110%); }
+  0% { fill-opacity: 0.35; }
+  100% { fill-opacity: 0.6; filter: brightness(120%); }
 }
 
-/* Panel 3: Chất lượng đảm bảo (Shield glow & Check dynamic scaling) */
-.sh-about-intro__panel:hover .svg-shield {
+.sh-about-intro__svg-icon {
+  overflow: visible !important;
+}
+
+/* Panel 3: Chất lượng đảm bảo (Shield volumetric glow & checkmark writing draw) */
+.sh-about-intro__panel:hover .svg-shield,
+.sh-about-intro__panel.is-open .svg-shield {
   animation: svg-shield-glow 2s ease-in-out infinite alternate;
 }
 
-.sh-about-intro__panel:hover .svg-check {
-  animation: svg-check-bounce 2s ease-in-out infinite alternate;
+.sh-about-intro__panel:hover .svg-check,
+.sh-about-intro__panel.is-open .svg-check {
+  stroke-dashoffset: 0 !important;
+  animation: svg-check-bounce 1.8s ease-in-out infinite alternate;
   transform-origin: 24px 24px;
 }
 
 @keyframes svg-shield-glow {
-  0% { fill-opacity: 0.12; }
-  100% { fill-opacity: 0.22; stroke-width: 2.5px; }
+  0% { fill-opacity: 0.15; stroke-width: 2.2px; }
+  100% { fill-opacity: 0.28; stroke-width: 2.8px; filter: drop-shadow(0 0 4px rgba(245, 166, 35, 0.5)); }
 }
 
 @keyframes svg-check-bounce {
-  0% { transform: scale(1); }
-  100% { transform: scale(1.08); }
+  0% { transform: scale(1) translateY(0); }
+  100% { transform: scale(1.06) translateY(-0.5px); }
 }
 
-/* Panel 4: Đội ngũ chuyên nghiệp (Nod team head & expand inner ring) */
-.sh-about-intro__panel:hover .svg-team-head {
+/* Panel 4: Đội ngũ chuyên nghiệp (Nod team head, spin outer ring & expand side teammates) */
+.sh-about-intro__panel:hover .svg-team-head,
+.sh-about-intro__panel.is-open .svg-team-head {
   animation: svg-nod 2s ease-in-out infinite alternate;
   transform-origin: 24px 18px;
 }
 
-.sh-about-intro__panel:hover .svg-inner-circle {
+.sh-about-intro__panel:hover .svg-team-left,
+.sh-about-intro__panel.is-open .svg-team-left {
+  transform: translateX(-2.5px) scale(0.97);
+  transform-origin: 12.5px 23.5px;
+}
+
+.sh-about-intro__panel:hover .svg-team-right,
+.sh-about-intro__panel.is-open .svg-team-right {
+  transform: translateX(2.5px) scale(0.97);
+  transform-origin: 35.5px 23.5px;
+}
+
+.sh-about-intro__panel:hover .svg-inner-circle,
+.sh-about-intro__panel.is-open .svg-inner-circle {
   stroke-dasharray: 4 2;
   animation: svg-spin 20s linear infinite;
   transform-origin: 24px 24px;
@@ -629,5 +687,5 @@
 
 @keyframes svg-nod {
   0% { transform: translateY(0) scale(1); }
-  100% { transform: translateY(-1.5px) scale(1.05); }
+  100% { transform: translateY(-2px) scale(1.08); }
 }

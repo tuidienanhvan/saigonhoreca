@@ -1,0 +1,1932 @@
+{
+  "research_date": "2026-07-19",
+  "source_note": "Traulsen là thương hiệu tủ lạnh/tủ đông công nghiệp thuộc tập đoàn ITW Food Equipment Group (cùng tập đoàn với Hobart và Vulcan). Dữ liệu cào từ traulsen.com khi lần theo redirect từ hobartcorp.com (hobartcorp.com không còn tự bán refrigeration, chỉ điều hướng sang Traulsen). Tách thành brand riêng 2026-07-19 để khớp đúng tên thương hiệu in trên máy — tránh gắn nhầm thành 'Hobart' trên site Saigon Horeca.",
+  "brand": "Traulsen",
+  "groups": [
+    {
+      "group_name": "Refrigerators & Freezers",
+      "group_name_vi": "Tủ Lạnh & Tủ Đông",
+      "source_urls": [
+        "https://www.traulsen.com/r/solid/refrigerators-freezers",
+        "https://www.traulsen.com/r/solid/refrigerators-freezers",
+        "https://www.traulsen.com/r/solid/refrigerators-freezers",
+        "https://www.traulsen.com/r/solid/refrigerators-freezers",
+        "https://www.traulsen.com/r/solid/refrigerators-freezers",
+        "https://www.traulsen.com/r/solid/refrigerators-freezers",
+        "https://www.traulsen.com/r/solid/refrigerators-freezers",
+        "https://www.traulsen.com/r/solid/refrigerators-freezers",
+        "https://www.traulsen.com/r/solid/refrigerators-freezers",
+        "https://www.traulsen.com/r/solid/refrigerators-freezers",
+        "https://www.traulsen.com/r/solid/refrigerators-freezers",
+        "https://www.traulsen.com/r/solid/refrigerators-freezers",
+        "https://www.traulsen.com/r/solid/refrigerators-freezers",
+        "https://www.traulsen.com/r/solid/refrigerators-freezers",
+        "https://www.traulsen.com/r/solid/refrigerators-freezers",
+        "https://www.traulsen.com/r/solid/refrigerators-freezers",
+        "https://www.traulsen.com/r/solid/refrigerators-freezers",
+        "https://www.traulsen.com/r/solid/refrigerators-freezers",
+        "https://www.traulsen.com/r/solid/refrigerators-freezers",
+        "https://www.traulsen.com/r/solid/refrigerators-freezers",
+        "https://www.traulsen.com/r/solid/refrigerators-freezers",
+        "https://www.traulsen.com/r/solid/refrigerators-freezers",
+        "https://www.traulsen.com/r/solid/refrigerators-freezers",
+        "https://www.traulsen.com/r/solid/refrigerators-freezers",
+        "https://www.traulsen.com/r/solid/refrigerators-freezers",
+        "https://www.traulsen.com/r/solid/refrigerators-freezers",
+        "https://www.traulsen.com/r/solid/refrigerators-freezers",
+        "https://www.traulsen.com/r/solid/refrigerators-freezers",
+        "https://www.traulsen.com/r/solid/refrigerators-freezers",
+        "https://www.traulsen.com/r/solid/refrigerators-freezers",
+        "https://www.traulsen.com/r/solid/refrigerators-freezers",
+        "https://www.traulsen.com/r/solid/refrigerators-freezers",
+        "https://www.traulsen.com/r/solid/refrigerators-freezers",
+        "https://www.traulsen.com/r/solid/refrigerators-freezers",
+        "https://www.traulsen.com/r/solid/refrigerators-freezers",
+        "https://www.traulsen.com/r/solid/refrigerators-freezers",
+        "https://www.traulsen.com/r/solid/refrigerators-freezers",
+        "https://www.traulsen.com/r/solid/refrigerators-freezers",
+        "https://www.traulsen.com/r/solid/refrigerators-freezers",
+        "https://www.traulsen.com/r/solid/refrigerators-freezers",
+        "https://www.traulsen.com/r/solid/refrigerators-freezers",
+        "https://www.traulsen.com/r/solid/refrigerators-freezers",
+        "https://www.traulsen.com/g/refrigerators-freezers",
+        "https://www.traulsen.com/clbm/refrigerators-freezers",
+        "https://www.traulsen.com/r/dual-temp"
+      ],
+      "models": [
+        {
+          "model": "RHT132DUT",
+          "title": "RHT132DUT",
+          "description_en": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior. Top-mounted refrigeration system, clockwise airflow pattern, TXV metering for rapid temperature recovery, EZ-Clean gaskets compatible with chlorine-based cleaners, multi-patented Smart Control with advanced sensors, and Load-Sure guards for proper airflow. Six-year parts and labor warranty.",
+          "specs": {
+            "Sections": "1, 2, or 3-section",
+            "Sub-models": "RHT132DUT, RHT232DUT, RHT132NUT, RHT232NUT, RHT332NUT, RHT126WUT, RHT226WUT, RHT132WUT, RHT232WUT, RHT332WUT, RHT132NPUT, RHT232NPUT, RHT332NPUT, RRI132LUT, RRI232LUT, RRI332LUT, RRI132HUT, RRI232HUT, RRI332HUT, RRI132LPUT, RRI232LPUT, RRI332LPUT",
+            "Warranty": "6-year parts and labor",
+            "Feature": "Smart Control, TXV metering, EZ-Clean gaskets"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://cdn2.webdamdb.com/md_PVqyBBQ1NU86.jpg",
+          "source_url": "https://www.traulsen.com/r/solid/refrigerators-freezers",
+          "seo_title": "RHT132DUT | Traulsen",
+          "seo_description": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/RHT132DUT.jpg",
+          "note": "Tach tu dong 'R-Series Solid Door Reach-In (RHT/RRI family)' (SKU that lay tu trang chinh thuc Traulsen, anh rieng tung ma)."
+        },
+        {
+          "model": "RHT232DUT",
+          "title": "RHT232DUT",
+          "description_en": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior. Top-mounted refrigeration system, clockwise airflow pattern, TXV metering for rapid temperature recovery, EZ-Clean gaskets compatible with chlorine-based cleaners, multi-patented Smart Control with advanced sensors, and Load-Sure guards for proper airflow. Six-year parts and labor warranty.",
+          "specs": {
+            "Sections": "1, 2, or 3-section",
+            "Sub-models": "RHT132DUT, RHT232DUT, RHT132NUT, RHT232NUT, RHT332NUT, RHT126WUT, RHT226WUT, RHT132WUT, RHT232WUT, RHT332WUT, RHT132NPUT, RHT232NPUT, RHT332NPUT, RRI132LUT, RRI232LUT, RRI332LUT, RRI132HUT, RRI232HUT, RRI332HUT, RRI132LPUT, RRI232LPUT, RRI332LPUT",
+            "Warranty": "6-year parts and labor",
+            "Feature": "Smart Control, TXV metering, EZ-Clean gaskets"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://cdn2.webdamdb.com/md_Y9ifG7h3kus41oRe.jpg",
+          "source_url": "https://www.traulsen.com/r/solid/refrigerators-freezers",
+          "seo_title": "RHT232DUT | Traulsen",
+          "seo_description": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/RHT232DUT.jpg",
+          "note": "Tach tu dong 'R-Series Solid Door Reach-In (RHT/RRI family)' (SKU that lay tu trang chinh thuc Traulsen, anh rieng tung ma)."
+        },
+        {
+          "model": "RHT132NUT",
+          "title": "RHT132NUT",
+          "description_en": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior. Top-mounted refrigeration system, clockwise airflow pattern, TXV metering for rapid temperature recovery, EZ-Clean gaskets compatible with chlorine-based cleaners, multi-patented Smart Control with advanced sensors, and Load-Sure guards for proper airflow. Six-year parts and labor warranty.",
+          "specs": {
+            "Sections": "1, 2, or 3-section",
+            "Sub-models": "RHT132DUT, RHT232DUT, RHT132NUT, RHT232NUT, RHT332NUT, RHT126WUT, RHT226WUT, RHT132WUT, RHT232WUT, RHT332WUT, RHT132NPUT, RHT232NPUT, RHT332NPUT, RRI132LUT, RRI232LUT, RRI332LUT, RRI132HUT, RRI232HUT, RRI332HUT, RRI132LPUT, RRI232LPUT, RRI332LPUT",
+            "Warranty": "6-year parts and labor",
+            "Feature": "Smart Control, TXV metering, EZ-Clean gaskets"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://cdn2.webdamdb.com/md_MvjjNfDm6XU11k5A.jpg",
+          "source_url": "https://www.traulsen.com/r/solid/refrigerators-freezers",
+          "seo_title": "RHT132NUT | Traulsen",
+          "seo_description": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/RHT132NUT.jpg",
+          "note": "Tach tu dong 'R-Series Solid Door Reach-In (RHT/RRI family)' (SKU that lay tu trang chinh thuc Traulsen, anh rieng tung ma)."
+        },
+        {
+          "model": "RHT232NUT",
+          "title": "RHT232NUT",
+          "description_en": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior. Top-mounted refrigeration system, clockwise airflow pattern, TXV metering for rapid temperature recovery, EZ-Clean gaskets compatible with chlorine-based cleaners, multi-patented Smart Control with advanced sensors, and Load-Sure guards for proper airflow. Six-year parts and labor warranty.",
+          "specs": {
+            "Sections": "1, 2, or 3-section",
+            "Sub-models": "RHT132DUT, RHT232DUT, RHT132NUT, RHT232NUT, RHT332NUT, RHT126WUT, RHT226WUT, RHT132WUT, RHT232WUT, RHT332WUT, RHT132NPUT, RHT232NPUT, RHT332NPUT, RRI132LUT, RRI232LUT, RRI332LUT, RRI132HUT, RRI232HUT, RRI332HUT, RRI132LPUT, RRI232LPUT, RRI332LPUT",
+            "Warranty": "6-year parts and labor",
+            "Feature": "Smart Control, TXV metering, EZ-Clean gaskets"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://cdn2.webdamdb.com/md_QoR9U9WEiDt4.jpg",
+          "source_url": "https://www.traulsen.com/r/solid/refrigerators-freezers",
+          "seo_title": "RHT232NUT | Traulsen",
+          "seo_description": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/RHT232NUT.jpg",
+          "note": "Tach tu dong 'R-Series Solid Door Reach-In (RHT/RRI family)' (SKU that lay tu trang chinh thuc Traulsen, anh rieng tung ma)."
+        },
+        {
+          "model": "RHT332NUT",
+          "title": "RHT332NUT",
+          "description_en": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior. Top-mounted refrigeration system, clockwise airflow pattern, TXV metering for rapid temperature recovery, EZ-Clean gaskets compatible with chlorine-based cleaners, multi-patented Smart Control with advanced sensors, and Load-Sure guards for proper airflow. Six-year parts and labor warranty.",
+          "specs": {
+            "Sections": "1, 2, or 3-section",
+            "Sub-models": "RHT132DUT, RHT232DUT, RHT132NUT, RHT232NUT, RHT332NUT, RHT126WUT, RHT226WUT, RHT132WUT, RHT232WUT, RHT332WUT, RHT132NPUT, RHT232NPUT, RHT332NPUT, RRI132LUT, RRI232LUT, RRI332LUT, RRI132HUT, RRI232HUT, RRI332HUT, RRI132LPUT, RRI232LPUT, RRI332LPUT",
+            "Warranty": "6-year parts and labor",
+            "Feature": "Smart Control, TXV metering, EZ-Clean gaskets"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://cdn2.webdamdb.com/md_zTCMFjWoMz21sl5e.jpg",
+          "source_url": "https://www.traulsen.com/r/solid/refrigerators-freezers",
+          "seo_title": "RHT332NUT | Traulsen",
+          "seo_description": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/RHT332NUT.jpg",
+          "note": "Tach tu dong 'R-Series Solid Door Reach-In (RHT/RRI family)' (SKU that lay tu trang chinh thuc Traulsen, anh rieng tung ma)."
+        },
+        {
+          "model": "RHT126WUT",
+          "title": "RHT126WUT",
+          "description_en": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior. Top-mounted refrigeration system, clockwise airflow pattern, TXV metering for rapid temperature recovery, EZ-Clean gaskets compatible with chlorine-based cleaners, multi-patented Smart Control with advanced sensors, and Load-Sure guards for proper airflow. Six-year parts and labor warranty.",
+          "specs": {
+            "Sections": "1, 2, or 3-section",
+            "Sub-models": "RHT132DUT, RHT232DUT, RHT132NUT, RHT232NUT, RHT332NUT, RHT126WUT, RHT226WUT, RHT132WUT, RHT232WUT, RHT332WUT, RHT132NPUT, RHT232NPUT, RHT332NPUT, RRI132LUT, RRI232LUT, RRI332LUT, RRI132HUT, RRI232HUT, RRI332HUT, RRI132LPUT, RRI232LPUT, RRI332LPUT",
+            "Warranty": "6-year parts and labor",
+            "Feature": "Smart Control, TXV metering, EZ-Clean gaskets"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://cdn2.webdamdb.com/md_2wPOEl6MeD11wqFp.jpg",
+          "source_url": "https://www.traulsen.com/r/solid/refrigerators-freezers",
+          "seo_title": "RHT126WUT | Traulsen",
+          "seo_description": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/RHT126WUT.jpg",
+          "note": "Tach tu dong 'R-Series Solid Door Reach-In (RHT/RRI family)' (SKU that lay tu trang chinh thuc Traulsen, anh rieng tung ma)."
+        },
+        {
+          "model": "RHT226WUT",
+          "title": "RHT226WUT",
+          "description_en": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior. Top-mounted refrigeration system, clockwise airflow pattern, TXV metering for rapid temperature recovery, EZ-Clean gaskets compatible with chlorine-based cleaners, multi-patented Smart Control with advanced sensors, and Load-Sure guards for proper airflow. Six-year parts and labor warranty.",
+          "specs": {
+            "Sections": "1, 2, or 3-section",
+            "Sub-models": "RHT132DUT, RHT232DUT, RHT132NUT, RHT232NUT, RHT332NUT, RHT126WUT, RHT226WUT, RHT132WUT, RHT232WUT, RHT332WUT, RHT132NPUT, RHT232NPUT, RHT332NPUT, RRI132LUT, RRI232LUT, RRI332LUT, RRI132HUT, RRI232HUT, RRI332HUT, RRI132LPUT, RRI232LPUT, RRI332LPUT",
+            "Warranty": "6-year parts and labor",
+            "Feature": "Smart Control, TXV metering, EZ-Clean gaskets"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://cdn2.webdamdb.com/md_swe58mR1o8J616od.jpg",
+          "source_url": "https://www.traulsen.com/r/solid/refrigerators-freezers",
+          "seo_title": "RHT226WUT | Traulsen",
+          "seo_description": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/RHT226WUT.jpg",
+          "note": "Tach tu dong 'R-Series Solid Door Reach-In (RHT/RRI family)' (SKU that lay tu trang chinh thuc Traulsen, anh rieng tung ma)."
+        },
+        {
+          "model": "RHT132WUT",
+          "title": "RHT132WUT",
+          "description_en": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior. Top-mounted refrigeration system, clockwise airflow pattern, TXV metering for rapid temperature recovery, EZ-Clean gaskets compatible with chlorine-based cleaners, multi-patented Smart Control with advanced sensors, and Load-Sure guards for proper airflow. Six-year parts and labor warranty.",
+          "specs": {
+            "Sections": "1, 2, or 3-section",
+            "Sub-models": "RHT132DUT, RHT232DUT, RHT132NUT, RHT232NUT, RHT332NUT, RHT126WUT, RHT226WUT, RHT132WUT, RHT232WUT, RHT332WUT, RHT132NPUT, RHT232NPUT, RHT332NPUT, RRI132LUT, RRI232LUT, RRI332LUT, RRI132HUT, RRI232HUT, RRI332HUT, RRI132LPUT, RRI232LPUT, RRI332LPUT",
+            "Warranty": "6-year parts and labor",
+            "Feature": "Smart Control, TXV metering, EZ-Clean gaskets"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://cdn2.webdamdb.com/md_Y9a9yyTWtkY3.jpg",
+          "source_url": "https://www.traulsen.com/r/solid/refrigerators-freezers",
+          "seo_title": "RHT132WUT | Traulsen",
+          "seo_description": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/RHT132WUT.jpg",
+          "note": "Tach tu dong 'R-Series Solid Door Reach-In (RHT/RRI family)' (SKU that lay tu trang chinh thuc Traulsen, anh rieng tung ma)."
+        },
+        {
+          "model": "RHT232WUT",
+          "title": "RHT232WUT",
+          "description_en": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior. Top-mounted refrigeration system, clockwise airflow pattern, TXV metering for rapid temperature recovery, EZ-Clean gaskets compatible with chlorine-based cleaners, multi-patented Smart Control with advanced sensors, and Load-Sure guards for proper airflow. Six-year parts and labor warranty.",
+          "specs": {
+            "Sections": "1, 2, or 3-section",
+            "Sub-models": "RHT132DUT, RHT232DUT, RHT132NUT, RHT232NUT, RHT332NUT, RHT126WUT, RHT226WUT, RHT132WUT, RHT232WUT, RHT332WUT, RHT132NPUT, RHT232NPUT, RHT332NPUT, RRI132LUT, RRI232LUT, RRI332LUT, RRI132HUT, RRI232HUT, RRI332HUT, RRI132LPUT, RRI232LPUT, RRI332LPUT",
+            "Warranty": "6-year parts and labor",
+            "Feature": "Smart Control, TXV metering, EZ-Clean gaskets"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://cdn2.webdamdb.com/md_otxFrk5YoU88oYwm.jpg",
+          "source_url": "https://www.traulsen.com/r/solid/refrigerators-freezers",
+          "seo_title": "RHT232WUT | Traulsen",
+          "seo_description": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/RHT232WUT.jpg",
+          "note": "Tach tu dong 'R-Series Solid Door Reach-In (RHT/RRI family)' (SKU that lay tu trang chinh thuc Traulsen, anh rieng tung ma)."
+        },
+        {
+          "model": "RHT332WUT",
+          "title": "RHT332WUT",
+          "description_en": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior. Top-mounted refrigeration system, clockwise airflow pattern, TXV metering for rapid temperature recovery, EZ-Clean gaskets compatible with chlorine-based cleaners, multi-patented Smart Control with advanced sensors, and Load-Sure guards for proper airflow. Six-year parts and labor warranty.",
+          "specs": {
+            "Sections": "1, 2, or 3-section",
+            "Sub-models": "RHT132DUT, RHT232DUT, RHT132NUT, RHT232NUT, RHT332NUT, RHT126WUT, RHT226WUT, RHT132WUT, RHT232WUT, RHT332WUT, RHT132NPUT, RHT232NPUT, RHT332NPUT, RRI132LUT, RRI232LUT, RRI332LUT, RRI132HUT, RRI232HUT, RRI332HUT, RRI132LPUT, RRI232LPUT, RRI332LPUT",
+            "Warranty": "6-year parts and labor",
+            "Feature": "Smart Control, TXV metering, EZ-Clean gaskets"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://cdn2.webdamdb.com/md_oufweEC2n139AnaX.jpg",
+          "source_url": "https://www.traulsen.com/r/solid/refrigerators-freezers",
+          "seo_title": "RHT332WUT | Traulsen",
+          "seo_description": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/RHT332WUT.jpg",
+          "note": "Tach tu dong 'R-Series Solid Door Reach-In (RHT/RRI family)' (SKU that lay tu trang chinh thuc Traulsen, anh rieng tung ma)."
+        },
+        {
+          "model": "RHT132NPUT",
+          "title": "RHT132NPUT",
+          "description_en": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior. Top-mounted refrigeration system, clockwise airflow pattern, TXV metering for rapid temperature recovery, EZ-Clean gaskets compatible with chlorine-based cleaners, multi-patented Smart Control with advanced sensors, and Load-Sure guards for proper airflow. Six-year parts and labor warranty.",
+          "specs": {
+            "Sections": "1, 2, or 3-section",
+            "Sub-models": "RHT132DUT, RHT232DUT, RHT132NUT, RHT232NUT, RHT332NUT, RHT126WUT, RHT226WUT, RHT132WUT, RHT232WUT, RHT332WUT, RHT132NPUT, RHT232NPUT, RHT332NPUT, RRI132LUT, RRI232LUT, RRI332LUT, RRI132HUT, RRI232HUT, RRI332HUT, RRI132LPUT, RRI232LPUT, RRI332LPUT",
+            "Warranty": "6-year parts and labor",
+            "Feature": "Smart Control, TXV metering, EZ-Clean gaskets"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://cdn2.webdamdb.com/md_6WdYdu1DRp71.jpg",
+          "source_url": "https://www.traulsen.com/r/solid/refrigerators-freezers",
+          "seo_title": "RHT132NPUT | Traulsen",
+          "seo_description": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/RHT132NPUT.jpg",
+          "note": "Tach tu dong 'R-Series Solid Door Reach-In (RHT/RRI family)' (SKU that lay tu trang chinh thuc Traulsen, anh rieng tung ma)."
+        },
+        {
+          "model": "RHT232NPUT",
+          "title": "RHT232NPUT",
+          "description_en": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior. Top-mounted refrigeration system, clockwise airflow pattern, TXV metering for rapid temperature recovery, EZ-Clean gaskets compatible with chlorine-based cleaners, multi-patented Smart Control with advanced sensors, and Load-Sure guards for proper airflow. Six-year parts and labor warranty.",
+          "specs": {
+            "Sections": "1, 2, or 3-section",
+            "Sub-models": "RHT132DUT, RHT232DUT, RHT132NUT, RHT232NUT, RHT332NUT, RHT126WUT, RHT226WUT, RHT132WUT, RHT232WUT, RHT332WUT, RHT132NPUT, RHT232NPUT, RHT332NPUT, RRI132LUT, RRI232LUT, RRI332LUT, RRI132HUT, RRI232HUT, RRI332HUT, RRI132LPUT, RRI232LPUT, RRI332LPUT",
+            "Warranty": "6-year parts and labor",
+            "Feature": "Smart Control, TXV metering, EZ-Clean gaskets"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://cdn2.webdamdb.com/md_MqOsw5RBUL51EiNA.jpg",
+          "source_url": "https://www.traulsen.com/r/solid/refrigerators-freezers",
+          "seo_title": "RHT232NPUT | Traulsen",
+          "seo_description": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/RHT232NPUT.jpg",
+          "note": "Tach tu dong 'R-Series Solid Door Reach-In (RHT/RRI family)' (SKU that lay tu trang chinh thuc Traulsen, anh rieng tung ma)."
+        },
+        {
+          "model": "RHT332NPUT",
+          "title": "RHT332NPUT",
+          "description_en": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior. Top-mounted refrigeration system, clockwise airflow pattern, TXV metering for rapid temperature recovery, EZ-Clean gaskets compatible with chlorine-based cleaners, multi-patented Smart Control with advanced sensors, and Load-Sure guards for proper airflow. Six-year parts and labor warranty.",
+          "specs": {
+            "Sections": "1, 2, or 3-section",
+            "Sub-models": "RHT132DUT, RHT232DUT, RHT132NUT, RHT232NUT, RHT332NUT, RHT126WUT, RHT226WUT, RHT132WUT, RHT232WUT, RHT332WUT, RHT132NPUT, RHT232NPUT, RHT332NPUT, RRI132LUT, RRI232LUT, RRI332LUT, RRI132HUT, RRI232HUT, RRI332HUT, RRI132LPUT, RRI232LPUT, RRI332LPUT",
+            "Warranty": "6-year parts and labor",
+            "Feature": "Smart Control, TXV metering, EZ-Clean gaskets"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://cdn2.webdamdb.com/md_g2SB85pIT12kgFBc.jpg",
+          "source_url": "https://www.traulsen.com/r/solid/refrigerators-freezers",
+          "seo_title": "RHT332NPUT | Traulsen",
+          "seo_description": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/RHT332NPUT.jpg",
+          "note": "Tach tu dong 'R-Series Solid Door Reach-In (RHT/RRI family)' (SKU that lay tu trang chinh thuc Traulsen, anh rieng tung ma)."
+        },
+        {
+          "model": "RHT126WPUT",
+          "title": "RHT126WPUT",
+          "description_en": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior. Top-mounted refrigeration system, clockwise airflow pattern, TXV metering for rapid temperature recovery, EZ-Clean gaskets compatible with chlorine-based cleaners, multi-patented Smart Control with advanced sensors, and Load-Sure guards for proper airflow. Six-year parts and labor warranty.",
+          "specs": {
+            "Sections": "1, 2, or 3-section",
+            "Sub-models": "RHT132DUT, RHT232DUT, RHT132NUT, RHT232NUT, RHT332NUT, RHT126WUT, RHT226WUT, RHT132WUT, RHT232WUT, RHT332WUT, RHT132NPUT, RHT232NPUT, RHT332NPUT, RRI132LUT, RRI232LUT, RRI332LUT, RRI132HUT, RRI232HUT, RRI332HUT, RRI132LPUT, RRI232LPUT, RRI332LPUT",
+            "Warranty": "6-year parts and labor",
+            "Feature": "Smart Control, TXV metering, EZ-Clean gaskets"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://cdn2.webdamdb.com/md_Uer7ue0klg99.jpg",
+          "source_url": "https://www.traulsen.com/r/solid/refrigerators-freezers",
+          "seo_title": "RHT126WPUT | Traulsen",
+          "seo_description": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/RHT126WPUT.jpg",
+          "note": "Tach tu dong 'R-Series Solid Door Reach-In (RHT/RRI family)' (SKU that lay tu trang chinh thuc Traulsen, anh rieng tung ma)."
+        },
+        {
+          "model": "RHT226WPUT",
+          "title": "RHT226WPUT",
+          "description_en": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior. Top-mounted refrigeration system, clockwise airflow pattern, TXV metering for rapid temperature recovery, EZ-Clean gaskets compatible with chlorine-based cleaners, multi-patented Smart Control with advanced sensors, and Load-Sure guards for proper airflow. Six-year parts and labor warranty.",
+          "specs": {
+            "Sections": "1, 2, or 3-section",
+            "Sub-models": "RHT132DUT, RHT232DUT, RHT132NUT, RHT232NUT, RHT332NUT, RHT126WUT, RHT226WUT, RHT132WUT, RHT232WUT, RHT332WUT, RHT132NPUT, RHT232NPUT, RHT332NPUT, RRI132LUT, RRI232LUT, RRI332LUT, RRI132HUT, RRI232HUT, RRI332HUT, RRI132LPUT, RRI232LPUT, RRI332LPUT",
+            "Warranty": "6-year parts and labor",
+            "Feature": "Smart Control, TXV metering, EZ-Clean gaskets"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://cdn2.webdamdb.com/md_EFquI3qJeRV66I19.jpg",
+          "source_url": "https://www.traulsen.com/r/solid/refrigerators-freezers",
+          "seo_title": "RHT226WPUT | Traulsen",
+          "seo_description": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/RHT226WPUT.jpg",
+          "note": "Tach tu dong 'R-Series Solid Door Reach-In (RHT/RRI family)' (SKU that lay tu trang chinh thuc Traulsen, anh rieng tung ma)."
+        },
+        {
+          "model": "RHT132WPUT",
+          "title": "RHT132WPUT",
+          "description_en": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior. Top-mounted refrigeration system, clockwise airflow pattern, TXV metering for rapid temperature recovery, EZ-Clean gaskets compatible with chlorine-based cleaners, multi-patented Smart Control with advanced sensors, and Load-Sure guards for proper airflow. Six-year parts and labor warranty.",
+          "specs": {
+            "Sections": "1, 2, or 3-section",
+            "Sub-models": "RHT132DUT, RHT232DUT, RHT132NUT, RHT232NUT, RHT332NUT, RHT126WUT, RHT226WUT, RHT132WUT, RHT232WUT, RHT332WUT, RHT132NPUT, RHT232NPUT, RHT332NPUT, RRI132LUT, RRI232LUT, RRI332LUT, RRI132HUT, RRI232HUT, RRI332HUT, RRI132LPUT, RRI232LPUT, RRI332LPUT",
+            "Warranty": "6-year parts and labor",
+            "Feature": "Smart Control, TXV metering, EZ-Clean gaskets"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://cdn2.webdamdb.com/md_Y9tlhpBEgCD613y8.jpg",
+          "source_url": "https://www.traulsen.com/r/solid/refrigerators-freezers",
+          "seo_title": "RHT132WPUT | Traulsen",
+          "seo_description": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/RHT132WPUT.jpg",
+          "note": "Tach tu dong 'R-Series Solid Door Reach-In (RHT/RRI family)' (SKU that lay tu trang chinh thuc Traulsen, anh rieng tung ma)."
+        },
+        {
+          "model": "RHT232WPUT",
+          "title": "RHT232WPUT",
+          "description_en": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior. Top-mounted refrigeration system, clockwise airflow pattern, TXV metering for rapid temperature recovery, EZ-Clean gaskets compatible with chlorine-based cleaners, multi-patented Smart Control with advanced sensors, and Load-Sure guards for proper airflow. Six-year parts and labor warranty.",
+          "specs": {
+            "Sections": "1, 2, or 3-section",
+            "Sub-models": "RHT132DUT, RHT232DUT, RHT132NUT, RHT232NUT, RHT332NUT, RHT126WUT, RHT226WUT, RHT132WUT, RHT232WUT, RHT332WUT, RHT132NPUT, RHT232NPUT, RHT332NPUT, RRI132LUT, RRI232LUT, RRI332LUT, RRI132HUT, RRI232HUT, RRI332HUT, RRI132LPUT, RRI232LPUT, RRI332LPUT",
+            "Warranty": "6-year parts and labor",
+            "Feature": "Smart Control, TXV metering, EZ-Clean gaskets"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://cdn2.webdamdb.com/md_kRPTtXGmzO718wsj.jpg",
+          "source_url": "https://www.traulsen.com/r/solid/refrigerators-freezers",
+          "seo_title": "RHT232WPUT | Traulsen",
+          "seo_description": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/RHT232WPUT.jpg",
+          "note": "Tach tu dong 'R-Series Solid Door Reach-In (RHT/RRI family)' (SKU that lay tu trang chinh thuc Traulsen, anh rieng tung ma)."
+        },
+        {
+          "model": "RHT332WPUT",
+          "title": "RHT332WPUT",
+          "description_en": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior. Top-mounted refrigeration system, clockwise airflow pattern, TXV metering for rapid temperature recovery, EZ-Clean gaskets compatible with chlorine-based cleaners, multi-patented Smart Control with advanced sensors, and Load-Sure guards for proper airflow. Six-year parts and labor warranty.",
+          "specs": {
+            "Sections": "1, 2, or 3-section",
+            "Sub-models": "RHT132DUT, RHT232DUT, RHT132NUT, RHT232NUT, RHT332NUT, RHT126WUT, RHT226WUT, RHT132WUT, RHT232WUT, RHT332WUT, RHT132NPUT, RHT232NPUT, RHT332NPUT, RRI132LUT, RRI232LUT, RRI332LUT, RRI132HUT, RRI232HUT, RRI332HUT, RRI132LPUT, RRI232LPUT, RRI332LPUT",
+            "Warranty": "6-year parts and labor",
+            "Feature": "Smart Control, TXV metering, EZ-Clean gaskets"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://cdn2.webdamdb.com/md_6CXD6lzYvcb93gXu.jpg",
+          "source_url": "https://www.traulsen.com/r/solid/refrigerators-freezers",
+          "seo_title": "RHT332WPUT | Traulsen",
+          "seo_description": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/RHT332WPUT.jpg",
+          "note": "Tach tu dong 'R-Series Solid Door Reach-In (RHT/RRI family)' (SKU that lay tu trang chinh thuc Traulsen, anh rieng tung ma)."
+        },
+        {
+          "model": "RRI132LUT",
+          "title": "RRI132LUT",
+          "description_en": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior. Top-mounted refrigeration system, clockwise airflow pattern, TXV metering for rapid temperature recovery, EZ-Clean gaskets compatible with chlorine-based cleaners, multi-patented Smart Control with advanced sensors, and Load-Sure guards for proper airflow. Six-year parts and labor warranty.",
+          "specs": {
+            "Sections": "1, 2, or 3-section",
+            "Sub-models": "RHT132DUT, RHT232DUT, RHT132NUT, RHT232NUT, RHT332NUT, RHT126WUT, RHT226WUT, RHT132WUT, RHT232WUT, RHT332WUT, RHT132NPUT, RHT232NPUT, RHT332NPUT, RRI132LUT, RRI232LUT, RRI332LUT, RRI132HUT, RRI232HUT, RRI332HUT, RRI132LPUT, RRI232LPUT, RRI332LPUT",
+            "Warranty": "6-year parts and labor",
+            "Feature": "Smart Control, TXV metering, EZ-Clean gaskets"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://cdn2.webdamdb.com/md_292B1Qzc8v44.jpg",
+          "source_url": "https://www.traulsen.com/r/solid/refrigerators-freezers",
+          "seo_title": "RRI132LUT | Traulsen",
+          "seo_description": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/RRI132LUT.jpg",
+          "note": "Tach tu dong 'R-Series Solid Door Reach-In (RHT/RRI family)' (SKU that lay tu trang chinh thuc Traulsen, anh rieng tung ma)."
+        },
+        {
+          "model": "RRI232LUT",
+          "title": "RRI232LUT",
+          "description_en": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior. Top-mounted refrigeration system, clockwise airflow pattern, TXV metering for rapid temperature recovery, EZ-Clean gaskets compatible with chlorine-based cleaners, multi-patented Smart Control with advanced sensors, and Load-Sure guards for proper airflow. Six-year parts and labor warranty.",
+          "specs": {
+            "Sections": "1, 2, or 3-section",
+            "Sub-models": "RHT132DUT, RHT232DUT, RHT132NUT, RHT232NUT, RHT332NUT, RHT126WUT, RHT226WUT, RHT132WUT, RHT232WUT, RHT332WUT, RHT132NPUT, RHT232NPUT, RHT332NPUT, RRI132LUT, RRI232LUT, RRI332LUT, RRI132HUT, RRI232HUT, RRI332HUT, RRI132LPUT, RRI232LPUT, RRI332LPUT",
+            "Warranty": "6-year parts and labor",
+            "Feature": "Smart Control, TXV metering, EZ-Clean gaskets"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://cdn2.webdamdb.com/md_k6zzm7nbgcL12gpa.jpg",
+          "source_url": "https://www.traulsen.com/r/solid/refrigerators-freezers",
+          "seo_title": "RRI232LUT | Traulsen",
+          "seo_description": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/RRI232LUT.jpg",
+          "note": "Tach tu dong 'R-Series Solid Door Reach-In (RHT/RRI family)' (SKU that lay tu trang chinh thuc Traulsen, anh rieng tung ma)."
+        },
+        {
+          "model": "RRI332LUT",
+          "title": "RRI332LUT",
+          "description_en": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior. Top-mounted refrigeration system, clockwise airflow pattern, TXV metering for rapid temperature recovery, EZ-Clean gaskets compatible with chlorine-based cleaners, multi-patented Smart Control with advanced sensors, and Load-Sure guards for proper airflow. Six-year parts and labor warranty.",
+          "specs": {
+            "Sections": "1, 2, or 3-section",
+            "Sub-models": "RHT132DUT, RHT232DUT, RHT132NUT, RHT232NUT, RHT332NUT, RHT126WUT, RHT226WUT, RHT132WUT, RHT232WUT, RHT332WUT, RHT132NPUT, RHT232NPUT, RHT332NPUT, RRI132LUT, RRI232LUT, RRI332LUT, RRI132HUT, RRI232HUT, RRI332HUT, RRI132LPUT, RRI232LPUT, RRI332LPUT",
+            "Warranty": "6-year parts and labor",
+            "Feature": "Smart Control, TXV metering, EZ-Clean gaskets"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://cdn2.webdamdb.com/md_tTbXrSyKIg776h1l.jpg",
+          "source_url": "https://www.traulsen.com/r/solid/refrigerators-freezers",
+          "seo_title": "RRI332LUT | Traulsen",
+          "seo_description": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/RRI332LUT.jpg",
+          "note": "Tach tu dong 'R-Series Solid Door Reach-In (RHT/RRI family)' (SKU that lay tu trang chinh thuc Traulsen, anh rieng tung ma)."
+        },
+        {
+          "model": "RRI132HUT",
+          "title": "RRI132HUT",
+          "description_en": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior. Top-mounted refrigeration system, clockwise airflow pattern, TXV metering for rapid temperature recovery, EZ-Clean gaskets compatible with chlorine-based cleaners, multi-patented Smart Control with advanced sensors, and Load-Sure guards for proper airflow. Six-year parts and labor warranty.",
+          "specs": {
+            "Sections": "1, 2, or 3-section",
+            "Sub-models": "RHT132DUT, RHT232DUT, RHT132NUT, RHT232NUT, RHT332NUT, RHT126WUT, RHT226WUT, RHT132WUT, RHT232WUT, RHT332WUT, RHT132NPUT, RHT232NPUT, RHT332NPUT, RRI132LUT, RRI232LUT, RRI332LUT, RRI132HUT, RRI232HUT, RRI332HUT, RRI132LPUT, RRI232LPUT, RRI332LPUT",
+            "Warranty": "6-year parts and labor",
+            "Feature": "Smart Control, TXV metering, EZ-Clean gaskets"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://cdn2.webdamdb.com/md_FXyXZGn4At79.jpg",
+          "source_url": "https://www.traulsen.com/r/solid/refrigerators-freezers",
+          "seo_title": "RRI132HUT | Traulsen",
+          "seo_description": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/RRI132HUT.jpg",
+          "note": "Tach tu dong 'R-Series Solid Door Reach-In (RHT/RRI family)' (SKU that lay tu trang chinh thuc Traulsen, anh rieng tung ma)."
+        },
+        {
+          "model": "RRI232HUT",
+          "title": "RRI232HUT",
+          "description_en": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior. Top-mounted refrigeration system, clockwise airflow pattern, TXV metering for rapid temperature recovery, EZ-Clean gaskets compatible with chlorine-based cleaners, multi-patented Smart Control with advanced sensors, and Load-Sure guards for proper airflow. Six-year parts and labor warranty.",
+          "specs": {
+            "Sections": "1, 2, or 3-section",
+            "Sub-models": "RHT132DUT, RHT232DUT, RHT132NUT, RHT232NUT, RHT332NUT, RHT126WUT, RHT226WUT, RHT132WUT, RHT232WUT, RHT332WUT, RHT132NPUT, RHT232NPUT, RHT332NPUT, RRI132LUT, RRI232LUT, RRI332LUT, RRI132HUT, RRI232HUT, RRI332HUT, RRI132LPUT, RRI232LPUT, RRI332LPUT",
+            "Warranty": "6-year parts and labor",
+            "Feature": "Smart Control, TXV metering, EZ-Clean gaskets"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://cdn2.webdamdb.com/md_YQiBu6auf6261ol4.jpg",
+          "source_url": "https://www.traulsen.com/r/solid/refrigerators-freezers",
+          "seo_title": "RRI232HUT | Traulsen",
+          "seo_description": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/RRI232HUT.jpg",
+          "note": "Tach tu dong 'R-Series Solid Door Reach-In (RHT/RRI family)' (SKU that lay tu trang chinh thuc Traulsen, anh rieng tung ma)."
+        },
+        {
+          "model": "RRI332HUT",
+          "title": "RRI332HUT",
+          "description_en": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior. Top-mounted refrigeration system, clockwise airflow pattern, TXV metering for rapid temperature recovery, EZ-Clean gaskets compatible with chlorine-based cleaners, multi-patented Smart Control with advanced sensors, and Load-Sure guards for proper airflow. Six-year parts and labor warranty.",
+          "specs": {
+            "Sections": "1, 2, or 3-section",
+            "Sub-models": "RHT132DUT, RHT232DUT, RHT132NUT, RHT232NUT, RHT332NUT, RHT126WUT, RHT226WUT, RHT132WUT, RHT232WUT, RHT332WUT, RHT132NPUT, RHT232NPUT, RHT332NPUT, RRI132LUT, RRI232LUT, RRI332LUT, RRI132HUT, RRI232HUT, RRI332HUT, RRI132LPUT, RRI232LPUT, RRI332LPUT",
+            "Warranty": "6-year parts and labor",
+            "Feature": "Smart Control, TXV metering, EZ-Clean gaskets"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://cdn2.webdamdb.com/md_IaFwtDWSsmU71gaD.jpg",
+          "source_url": "https://www.traulsen.com/r/solid/refrigerators-freezers",
+          "seo_title": "RRI332HUT | Traulsen",
+          "seo_description": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/RRI332HUT.jpg",
+          "note": "Tach tu dong 'R-Series Solid Door Reach-In (RHT/RRI family)' (SKU that lay tu trang chinh thuc Traulsen, anh rieng tung ma)."
+        },
+        {
+          "model": "RRI132LPUT",
+          "title": "RRI132LPUT",
+          "description_en": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior. Top-mounted refrigeration system, clockwise airflow pattern, TXV metering for rapid temperature recovery, EZ-Clean gaskets compatible with chlorine-based cleaners, multi-patented Smart Control with advanced sensors, and Load-Sure guards for proper airflow. Six-year parts and labor warranty.",
+          "specs": {
+            "Sections": "1, 2, or 3-section",
+            "Sub-models": "RHT132DUT, RHT232DUT, RHT132NUT, RHT232NUT, RHT332NUT, RHT126WUT, RHT226WUT, RHT132WUT, RHT232WUT, RHT332WUT, RHT132NPUT, RHT232NPUT, RHT332NPUT, RRI132LUT, RRI232LUT, RRI332LUT, RRI132HUT, RRI232HUT, RRI332HUT, RRI132LPUT, RRI232LPUT, RRI332LPUT",
+            "Warranty": "6-year parts and labor",
+            "Feature": "Smart Control, TXV metering, EZ-Clean gaskets"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://cdn2.webdamdb.com/md_6ZRUIritHZa0.jpg",
+          "source_url": "https://www.traulsen.com/r/solid/refrigerators-freezers",
+          "seo_title": "RRI132LPUT | Traulsen",
+          "seo_description": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/RRI132LPUT.jpg",
+          "note": "Tach tu dong 'R-Series Solid Door Reach-In (RHT/RRI family)' (SKU that lay tu trang chinh thuc Traulsen, anh rieng tung ma)."
+        },
+        {
+          "model": "RRI232LPUT",
+          "title": "RRI232LPUT",
+          "description_en": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior. Top-mounted refrigeration system, clockwise airflow pattern, TXV metering for rapid temperature recovery, EZ-Clean gaskets compatible with chlorine-based cleaners, multi-patented Smart Control with advanced sensors, and Load-Sure guards for proper airflow. Six-year parts and labor warranty.",
+          "specs": {
+            "Sections": "1, 2, or 3-section",
+            "Sub-models": "RHT132DUT, RHT232DUT, RHT132NUT, RHT232NUT, RHT332NUT, RHT126WUT, RHT226WUT, RHT132WUT, RHT232WUT, RHT332WUT, RHT132NPUT, RHT232NPUT, RHT332NPUT, RRI132LUT, RRI232LUT, RRI332LUT, RRI132HUT, RRI232HUT, RRI332HUT, RRI132LPUT, RRI232LPUT, RRI332LPUT",
+            "Warranty": "6-year parts and labor",
+            "Feature": "Smart Control, TXV metering, EZ-Clean gaskets"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://cdn2.webdamdb.com/md_6ZcvJQROD4O11UUv.jpg",
+          "source_url": "https://www.traulsen.com/r/solid/refrigerators-freezers",
+          "seo_title": "RRI232LPUT | Traulsen",
+          "seo_description": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/RRI232LPUT.jpg",
+          "note": "Tach tu dong 'R-Series Solid Door Reach-In (RHT/RRI family)' (SKU that lay tu trang chinh thuc Traulsen, anh rieng tung ma)."
+        },
+        {
+          "model": "RRI332LPUT",
+          "title": "RRI332LPUT",
+          "description_en": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior. Top-mounted refrigeration system, clockwise airflow pattern, TXV metering for rapid temperature recovery, EZ-Clean gaskets compatible with chlorine-based cleaners, multi-patented Smart Control with advanced sensors, and Load-Sure guards for proper airflow. Six-year parts and labor warranty.",
+          "specs": {
+            "Sections": "1, 2, or 3-section",
+            "Sub-models": "RHT132DUT, RHT232DUT, RHT132NUT, RHT232NUT, RHT332NUT, RHT126WUT, RHT226WUT, RHT132WUT, RHT232WUT, RHT332WUT, RHT132NPUT, RHT232NPUT, RHT332NPUT, RRI132LUT, RRI232LUT, RRI332LUT, RRI132HUT, RRI232HUT, RRI332HUT, RRI132LPUT, RRI232LPUT, RRI332LPUT",
+            "Warranty": "6-year parts and labor",
+            "Feature": "Smart Control, TXV metering, EZ-Clean gaskets"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://cdn2.webdamdb.com/md_2SefMGkT7RO14ETs.jpg",
+          "source_url": "https://www.traulsen.com/r/solid/refrigerators-freezers",
+          "seo_title": "RRI332LPUT | Traulsen",
+          "seo_description": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/RRI332LPUT.jpg",
+          "note": "Tach tu dong 'R-Series Solid Door Reach-In (RHT/RRI family)' (SKU that lay tu trang chinh thuc Traulsen, anh rieng tung ma)."
+        },
+        {
+          "model": "RLT132DUT",
+          "title": "RLT132DUT",
+          "description_en": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior. Top-mounted refrigeration system, clockwise airflow pattern, TXV metering for rapid temperature recovery, EZ-Clean gaskets compatible with chlorine-based cleaners, multi-patented Smart Control with advanced sensors, and Load-Sure guards for proper airflow. Six-year parts and labor warranty.",
+          "specs": {
+            "Sections": "1, 2, or 3-section",
+            "Sub-models": "RHT132DUT, RHT232DUT, RHT132NUT, RHT232NUT, RHT332NUT, RHT126WUT, RHT226WUT, RHT132WUT, RHT232WUT, RHT332WUT, RHT132NPUT, RHT232NPUT, RHT332NPUT, RRI132LUT, RRI232LUT, RRI332LUT, RRI132HUT, RRI232HUT, RRI332HUT, RRI132LPUT, RRI232LPUT, RRI332LPUT",
+            "Warranty": "6-year parts and labor",
+            "Feature": "Smart Control, TXV metering, EZ-Clean gaskets"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://cdn2.webdamdb.com/md_Q6cCRA2FffU2.jpg",
+          "source_url": "https://www.traulsen.com/r/solid/refrigerators-freezers",
+          "seo_title": "RLT132DUT | Traulsen",
+          "seo_description": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/RLT132DUT.jpg",
+          "note": "Tach tu dong 'R-Series Solid Door Reach-In (RHT/RRI family)' (SKU that lay tu trang chinh thuc Traulsen, anh rieng tung ma)."
+        },
+        {
+          "model": "RLT232DUT",
+          "title": "RLT232DUT",
+          "description_en": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior. Top-mounted refrigeration system, clockwise airflow pattern, TXV metering for rapid temperature recovery, EZ-Clean gaskets compatible with chlorine-based cleaners, multi-patented Smart Control with advanced sensors, and Load-Sure guards for proper airflow. Six-year parts and labor warranty.",
+          "specs": {
+            "Sections": "1, 2, or 3-section",
+            "Sub-models": "RHT132DUT, RHT232DUT, RHT132NUT, RHT232NUT, RHT332NUT, RHT126WUT, RHT226WUT, RHT132WUT, RHT232WUT, RHT332WUT, RHT132NPUT, RHT232NPUT, RHT332NPUT, RRI132LUT, RRI232LUT, RRI332LUT, RRI132HUT, RRI232HUT, RRI332HUT, RRI132LPUT, RRI232LPUT, RRI332LPUT",
+            "Warranty": "6-year parts and labor",
+            "Feature": "Smart Control, TXV metering, EZ-Clean gaskets"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://cdn2.webdamdb.com/md_Qyg9sWKrJ941EmGu.jpg",
+          "source_url": "https://www.traulsen.com/r/solid/refrigerators-freezers",
+          "seo_title": "RLT232DUT | Traulsen",
+          "seo_description": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/RLT232DUT.jpg",
+          "note": "Tach tu dong 'R-Series Solid Door Reach-In (RHT/RRI family)' (SKU that lay tu trang chinh thuc Traulsen, anh rieng tung ma)."
+        },
+        {
+          "model": "RLT132NUT",
+          "title": "RLT132NUT",
+          "description_en": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior. Top-mounted refrigeration system, clockwise airflow pattern, TXV metering for rapid temperature recovery, EZ-Clean gaskets compatible with chlorine-based cleaners, multi-patented Smart Control with advanced sensors, and Load-Sure guards for proper airflow. Six-year parts and labor warranty.",
+          "specs": {
+            "Sections": "1, 2, or 3-section",
+            "Sub-models": "RHT132DUT, RHT232DUT, RHT132NUT, RHT232NUT, RHT332NUT, RHT126WUT, RHT226WUT, RHT132WUT, RHT232WUT, RHT332WUT, RHT132NPUT, RHT232NPUT, RHT332NPUT, RRI132LUT, RRI232LUT, RRI332LUT, RRI132HUT, RRI232HUT, RRI332HUT, RRI132LPUT, RRI232LPUT, RRI332LPUT",
+            "Warranty": "6-year parts and labor",
+            "Feature": "Smart Control, TXV metering, EZ-Clean gaskets"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://cdn2.webdamdb.com/md_AJm3DAM9Rva5.jpg",
+          "source_url": "https://www.traulsen.com/r/solid/refrigerators-freezers",
+          "seo_title": "RLT132NUT | Traulsen",
+          "seo_description": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/RLT132NUT.jpg",
+          "note": "Tach tu dong 'R-Series Solid Door Reach-In (RHT/RRI family)' (SKU that lay tu trang chinh thuc Traulsen, anh rieng tung ma)."
+        },
+        {
+          "model": "RLT232NUT",
+          "title": "RLT232NUT",
+          "description_en": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior. Top-mounted refrigeration system, clockwise airflow pattern, TXV metering for rapid temperature recovery, EZ-Clean gaskets compatible with chlorine-based cleaners, multi-patented Smart Control with advanced sensors, and Load-Sure guards for proper airflow. Six-year parts and labor warranty.",
+          "specs": {
+            "Sections": "1, 2, or 3-section",
+            "Sub-models": "RHT132DUT, RHT232DUT, RHT132NUT, RHT232NUT, RHT332NUT, RHT126WUT, RHT226WUT, RHT132WUT, RHT232WUT, RHT332WUT, RHT132NPUT, RHT232NPUT, RHT332NPUT, RRI132LUT, RRI232LUT, RRI332LUT, RRI132HUT, RRI232HUT, RRI332HUT, RRI132LPUT, RRI232LPUT, RRI332LPUT",
+            "Warranty": "6-year parts and labor",
+            "Feature": "Smart Control, TXV metering, EZ-Clean gaskets"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://cdn2.webdamdb.com/md_EY2O5z4n611.jpg",
+          "source_url": "https://www.traulsen.com/r/solid/refrigerators-freezers",
+          "seo_title": "RLT232NUT | Traulsen",
+          "seo_description": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/RLT232NUT.jpg",
+          "note": "Tach tu dong 'R-Series Solid Door Reach-In (RHT/RRI family)' (SKU that lay tu trang chinh thuc Traulsen, anh rieng tung ma)."
+        },
+        {
+          "model": "RLT332NUT",
+          "title": "RLT332NUT",
+          "description_en": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior. Top-mounted refrigeration system, clockwise airflow pattern, TXV metering for rapid temperature recovery, EZ-Clean gaskets compatible with chlorine-based cleaners, multi-patented Smart Control with advanced sensors, and Load-Sure guards for proper airflow. Six-year parts and labor warranty.",
+          "specs": {
+            "Sections": "1, 2, or 3-section",
+            "Sub-models": "RHT132DUT, RHT232DUT, RHT132NUT, RHT232NUT, RHT332NUT, RHT126WUT, RHT226WUT, RHT132WUT, RHT232WUT, RHT332WUT, RHT132NPUT, RHT232NPUT, RHT332NPUT, RRI132LUT, RRI232LUT, RRI332LUT, RRI132HUT, RRI232HUT, RRI332HUT, RRI132LPUT, RRI232LPUT, RRI332LPUT",
+            "Warranty": "6-year parts and labor",
+            "Feature": "Smart Control, TXV metering, EZ-Clean gaskets"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://cdn2.webdamdb.com/md_c9v8KKoABNf91UTT.jpg",
+          "source_url": "https://www.traulsen.com/r/solid/refrigerators-freezers",
+          "seo_title": "RLT332NUT | Traulsen",
+          "seo_description": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/RLT332NUT.jpg",
+          "note": "Tach tu dong 'R-Series Solid Door Reach-In (RHT/RRI family)' (SKU that lay tu trang chinh thuc Traulsen, anh rieng tung ma)."
+        },
+        {
+          "model": "RLT126WUT",
+          "title": "RLT126WUT",
+          "description_en": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior. Top-mounted refrigeration system, clockwise airflow pattern, TXV metering for rapid temperature recovery, EZ-Clean gaskets compatible with chlorine-based cleaners, multi-patented Smart Control with advanced sensors, and Load-Sure guards for proper airflow. Six-year parts and labor warranty.",
+          "specs": {
+            "Sections": "1, 2, or 3-section",
+            "Sub-models": "RHT132DUT, RHT232DUT, RHT132NUT, RHT232NUT, RHT332NUT, RHT126WUT, RHT226WUT, RHT132WUT, RHT232WUT, RHT332WUT, RHT132NPUT, RHT232NPUT, RHT332NPUT, RRI132LUT, RRI232LUT, RRI332LUT, RRI132HUT, RRI232HUT, RRI332HUT, RRI132LPUT, RRI232LPUT, RRI332LPUT",
+            "Warranty": "6-year parts and labor",
+            "Feature": "Smart Control, TXV metering, EZ-Clean gaskets"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://cdn2.webdamdb.com/md_McdBjLL45fl4.jpg",
+          "source_url": "https://www.traulsen.com/r/solid/refrigerators-freezers",
+          "seo_title": "RLT126WUT | Traulsen",
+          "seo_description": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/RLT126WUT.jpg",
+          "note": "Tach tu dong 'R-Series Solid Door Reach-In (RHT/RRI family)' (SKU that lay tu trang chinh thuc Traulsen, anh rieng tung ma)."
+        },
+        {
+          "model": "RLT226WUT",
+          "title": "RLT226WUT",
+          "description_en": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior. Top-mounted refrigeration system, clockwise airflow pattern, TXV metering for rapid temperature recovery, EZ-Clean gaskets compatible with chlorine-based cleaners, multi-patented Smart Control with advanced sensors, and Load-Sure guards for proper airflow. Six-year parts and labor warranty.",
+          "specs": {
+            "Sections": "1, 2, or 3-section",
+            "Sub-models": "RHT132DUT, RHT232DUT, RHT132NUT, RHT232NUT, RHT332NUT, RHT126WUT, RHT226WUT, RHT132WUT, RHT232WUT, RHT332WUT, RHT132NPUT, RHT232NPUT, RHT332NPUT, RRI132LUT, RRI232LUT, RRI332LUT, RRI132HUT, RRI232HUT, RRI332HUT, RRI132LPUT, RRI232LPUT, RRI332LPUT",
+            "Warranty": "6-year parts and labor",
+            "Feature": "Smart Control, TXV metering, EZ-Clean gaskets"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://cdn2.webdamdb.com/md_67ZoIRQEpIa31cmd.jpg",
+          "source_url": "https://www.traulsen.com/r/solid/refrigerators-freezers",
+          "seo_title": "RLT226WUT | Traulsen",
+          "seo_description": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/RLT226WUT.jpg",
+          "note": "Tach tu dong 'R-Series Solid Door Reach-In (RHT/RRI family)' (SKU that lay tu trang chinh thuc Traulsen, anh rieng tung ma)."
+        },
+        {
+          "model": "RLT132WUT",
+          "title": "RLT132WUT",
+          "description_en": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior. Top-mounted refrigeration system, clockwise airflow pattern, TXV metering for rapid temperature recovery, EZ-Clean gaskets compatible with chlorine-based cleaners, multi-patented Smart Control with advanced sensors, and Load-Sure guards for proper airflow. Six-year parts and labor warranty.",
+          "specs": {
+            "Sections": "1, 2, or 3-section",
+            "Sub-models": "RHT132DUT, RHT232DUT, RHT132NUT, RHT232NUT, RHT332NUT, RHT126WUT, RHT226WUT, RHT132WUT, RHT232WUT, RHT332WUT, RHT132NPUT, RHT232NPUT, RHT332NPUT, RRI132LUT, RRI232LUT, RRI332LUT, RRI132HUT, RRI232HUT, RRI332HUT, RRI132LPUT, RRI232LPUT, RRI332LPUT",
+            "Warranty": "6-year parts and labor",
+            "Feature": "Smart Control, TXV metering, EZ-Clean gaskets"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://cdn2.webdamdb.com/md_ICD0T2Utv33.jpg",
+          "source_url": "https://www.traulsen.com/r/solid/refrigerators-freezers",
+          "seo_title": "RLT132WUT | Traulsen",
+          "seo_description": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/RLT132WUT.jpg",
+          "note": "Tach tu dong 'R-Series Solid Door Reach-In (RHT/RRI family)' (SKU that lay tu trang chinh thuc Traulsen, anh rieng tung ma)."
+        },
+        {
+          "model": "RLT232WUT",
+          "title": "RLT232WUT",
+          "description_en": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior. Top-mounted refrigeration system, clockwise airflow pattern, TXV metering for rapid temperature recovery, EZ-Clean gaskets compatible with chlorine-based cleaners, multi-patented Smart Control with advanced sensors, and Load-Sure guards for proper airflow. Six-year parts and labor warranty.",
+          "specs": {
+            "Sections": "1, 2, or 3-section",
+            "Sub-models": "RHT132DUT, RHT232DUT, RHT132NUT, RHT232NUT, RHT332NUT, RHT126WUT, RHT226WUT, RHT132WUT, RHT232WUT, RHT332WUT, RHT132NPUT, RHT232NPUT, RHT332NPUT, RRI132LUT, RRI232LUT, RRI332LUT, RRI132HUT, RRI232HUT, RRI332HUT, RRI132LPUT, RRI232LPUT, RRI332LPUT",
+            "Warranty": "6-year parts and labor",
+            "Feature": "Smart Control, TXV metering, EZ-Clean gaskets"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://cdn2.webdamdb.com/md_c7VMtX8Dwpr31gmS.jpg",
+          "source_url": "https://www.traulsen.com/r/solid/refrigerators-freezers",
+          "seo_title": "RLT232WUT | Traulsen",
+          "seo_description": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/RLT232WUT.jpg",
+          "note": "Tach tu dong 'R-Series Solid Door Reach-In (RHT/RRI family)' (SKU that lay tu trang chinh thuc Traulsen, anh rieng tung ma)."
+        },
+        {
+          "model": "RLT332WUT",
+          "title": "RLT332WUT",
+          "description_en": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior. Top-mounted refrigeration system, clockwise airflow pattern, TXV metering for rapid temperature recovery, EZ-Clean gaskets compatible with chlorine-based cleaners, multi-patented Smart Control with advanced sensors, and Load-Sure guards for proper airflow. Six-year parts and labor warranty.",
+          "specs": {
+            "Sections": "1, 2, or 3-section",
+            "Sub-models": "RHT132DUT, RHT232DUT, RHT132NUT, RHT232NUT, RHT332NUT, RHT126WUT, RHT226WUT, RHT132WUT, RHT232WUT, RHT332WUT, RHT132NPUT, RHT232NPUT, RHT332NPUT, RRI132LUT, RRI232LUT, RRI332LUT, RRI132HUT, RRI232HUT, RRI332HUT, RRI132LPUT, RRI232LPUT, RRI332LPUT",
+            "Warranty": "6-year parts and labor",
+            "Feature": "Smart Control, TXV metering, EZ-Clean gaskets"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://cdn2.webdamdb.com/md_sNTxo61VZT612oiu.jpg",
+          "source_url": "https://www.traulsen.com/r/solid/refrigerators-freezers",
+          "seo_title": "RLT332WUT | Traulsen",
+          "seo_description": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/RLT332WUT.jpg",
+          "note": "Tach tu dong 'R-Series Solid Door Reach-In (RHT/RRI family)' (SKU that lay tu trang chinh thuc Traulsen, anh rieng tung ma)."
+        },
+        {
+          "model": "RIF132LUT",
+          "title": "RIF132LUT",
+          "description_en": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior. Top-mounted refrigeration system, clockwise airflow pattern, TXV metering for rapid temperature recovery, EZ-Clean gaskets compatible with chlorine-based cleaners, multi-patented Smart Control with advanced sensors, and Load-Sure guards for proper airflow. Six-year parts and labor warranty.",
+          "specs": {
+            "Sections": "1, 2, or 3-section",
+            "Sub-models": "RHT132DUT, RHT232DUT, RHT132NUT, RHT232NUT, RHT332NUT, RHT126WUT, RHT226WUT, RHT132WUT, RHT232WUT, RHT332WUT, RHT132NPUT, RHT232NPUT, RHT332NPUT, RRI132LUT, RRI232LUT, RRI332LUT, RRI132HUT, RRI232HUT, RRI332HUT, RRI132LPUT, RRI232LPUT, RRI332LPUT",
+            "Warranty": "6-year parts and labor",
+            "Feature": "Smart Control, TXV metering, EZ-Clean gaskets"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://cdn2.webdamdb.com/md_Ijh7LpfhNEo8.jpg",
+          "source_url": "https://www.traulsen.com/r/solid/refrigerators-freezers",
+          "seo_title": "RIF132LUT | Traulsen",
+          "seo_description": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/RIF132LUT.jpg",
+          "note": "Tach tu dong 'R-Series Solid Door Reach-In (RHT/RRI family)' (SKU that lay tu trang chinh thuc Traulsen, anh rieng tung ma)."
+        },
+        {
+          "model": "RIF232LUT",
+          "title": "RIF232LUT",
+          "description_en": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior. Top-mounted refrigeration system, clockwise airflow pattern, TXV metering for rapid temperature recovery, EZ-Clean gaskets compatible with chlorine-based cleaners, multi-patented Smart Control with advanced sensors, and Load-Sure guards for proper airflow. Six-year parts and labor warranty.",
+          "specs": {
+            "Sections": "1, 2, or 3-section",
+            "Sub-models": "RHT132DUT, RHT232DUT, RHT132NUT, RHT232NUT, RHT332NUT, RHT126WUT, RHT226WUT, RHT132WUT, RHT232WUT, RHT332WUT, RHT132NPUT, RHT232NPUT, RHT332NPUT, RRI132LUT, RRI232LUT, RRI332LUT, RRI132HUT, RRI232HUT, RRI332HUT, RRI132LPUT, RRI232LPUT, RRI332LPUT",
+            "Warranty": "6-year parts and labor",
+            "Feature": "Smart Control, TXV metering, EZ-Clean gaskets"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://cdn2.webdamdb.com/md_sMcPDeozu5o07wvf.jpg",
+          "source_url": "https://www.traulsen.com/r/solid/refrigerators-freezers",
+          "seo_title": "RIF232LUT | Traulsen",
+          "seo_description": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/RIF232LUT.jpg",
+          "note": "Tach tu dong 'R-Series Solid Door Reach-In (RHT/RRI family)' (SKU that lay tu trang chinh thuc Traulsen, anh rieng tung ma)."
+        },
+        {
+          "model": "RIF332LUT",
+          "title": "RIF332LUT",
+          "description_en": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior. Top-mounted refrigeration system, clockwise airflow pattern, TXV metering for rapid temperature recovery, EZ-Clean gaskets compatible with chlorine-based cleaners, multi-patented Smart Control with advanced sensors, and Load-Sure guards for proper airflow. Six-year parts and labor warranty.",
+          "specs": {
+            "Sections": "1, 2, or 3-section",
+            "Sub-models": "RHT132DUT, RHT232DUT, RHT132NUT, RHT232NUT, RHT332NUT, RHT126WUT, RHT226WUT, RHT132WUT, RHT232WUT, RHT332WUT, RHT132NPUT, RHT232NPUT, RHT332NPUT, RRI132LUT, RRI232LUT, RRI332LUT, RRI132HUT, RRI232HUT, RRI332HUT, RRI132LPUT, RRI232LPUT, RRI332LPUT",
+            "Warranty": "6-year parts and labor",
+            "Feature": "Smart Control, TXV metering, EZ-Clean gaskets"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://cdn2.webdamdb.com/md_EHf09M2jiG52Ehlk.jpg",
+          "source_url": "https://www.traulsen.com/r/solid/refrigerators-freezers",
+          "seo_title": "RIF332LUT | Traulsen",
+          "seo_description": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/RIF332LUT.jpg",
+          "note": "Tach tu dong 'R-Series Solid Door Reach-In (RHT/RRI family)' (SKU that lay tu trang chinh thuc Traulsen, anh rieng tung ma)."
+        },
+        {
+          "model": "RIF132HUT",
+          "title": "RIF132HUT",
+          "description_en": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior. Top-mounted refrigeration system, clockwise airflow pattern, TXV metering for rapid temperature recovery, EZ-Clean gaskets compatible with chlorine-based cleaners, multi-patented Smart Control with advanced sensors, and Load-Sure guards for proper airflow. Six-year parts and labor warranty.",
+          "specs": {
+            "Sections": "1, 2, or 3-section",
+            "Sub-models": "RHT132DUT, RHT232DUT, RHT132NUT, RHT232NUT, RHT332NUT, RHT126WUT, RHT226WUT, RHT132WUT, RHT232WUT, RHT332WUT, RHT132NPUT, RHT232NPUT, RHT332NPUT, RRI132LUT, RRI232LUT, RRI332LUT, RRI132HUT, RRI232HUT, RRI332HUT, RRI132LPUT, RRI232LPUT, RRI332LPUT",
+            "Warranty": "6-year parts and labor",
+            "Feature": "Smart Control, TXV metering, EZ-Clean gaskets"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://cdn2.webdamdb.com/md_sxJOu9fOm9l7.jpg",
+          "source_url": "https://www.traulsen.com/r/solid/refrigerators-freezers",
+          "seo_title": "RIF132HUT | Traulsen",
+          "seo_description": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/RIF132HUT.jpg",
+          "note": "Tach tu dong 'R-Series Solid Door Reach-In (RHT/RRI family)' (SKU that lay tu trang chinh thuc Traulsen, anh rieng tung ma)."
+        },
+        {
+          "model": "RIF232HUT",
+          "title": "RIF232HUT",
+          "description_en": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior. Top-mounted refrigeration system, clockwise airflow pattern, TXV metering for rapid temperature recovery, EZ-Clean gaskets compatible with chlorine-based cleaners, multi-patented Smart Control with advanced sensors, and Load-Sure guards for proper airflow. Six-year parts and labor warranty.",
+          "specs": {
+            "Sections": "1, 2, or 3-section",
+            "Sub-models": "RHT132DUT, RHT232DUT, RHT132NUT, RHT232NUT, RHT332NUT, RHT126WUT, RHT226WUT, RHT132WUT, RHT232WUT, RHT332WUT, RHT132NPUT, RHT232NPUT, RHT332NPUT, RRI132LUT, RRI232LUT, RRI332LUT, RRI132HUT, RRI232HUT, RRI332HUT, RRI132LPUT, RRI232LPUT, RRI332LPUT",
+            "Warranty": "6-year parts and labor",
+            "Feature": "Smart Control, TXV metering, EZ-Clean gaskets"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://cdn2.webdamdb.com/md_cttUSJleWyH61MVb.jpg",
+          "source_url": "https://www.traulsen.com/r/solid/refrigerators-freezers",
+          "seo_title": "RIF232HUT | Traulsen",
+          "seo_description": "Fully configurable, top-of-the-line, built-to-order reach-in refrigerator/freezer cabinets with stainless-steel interior and exterior.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/RIF232HUT.jpg",
+          "note": "Tach tu dong 'R-Series Solid Door Reach-In (RHT/RRI family)' (SKU that lay tu trang chinh thuc Traulsen, anh rieng tung ma)."
+        },
+        {
+          "model": "G-Series Refrigerators & Freezers",
+          "title": "Traulsen G-Series Reach-In Refrigerators & Freezers",
+          "description_en": "Value-oriented reach-in line delivering quality and efficiency at an affordable price, available in 1, 2, and 3-section solid-door or glass-door configurations (refrigerator or freezer), including pass-thru models. TXV metering, EZ-Clean gaskets, top-mounted front-facing condenser coils, digital microprocessor control with LED display, stainless steel breaker caps. Up to 45% energy savings vs. non-ENERGY STAR cabinets. Six-year parts/labor & seven-year compressor warranty.",
+          "specs": {
+            "Sections": "1, 2, or 3-section",
+            "Door": "Solid or glass",
+            "Voltage": "115V or 208-230/115V (select 3-section models)",
+            "Warranty": "6-year parts/labor, 7-year compressor"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://cdn2.webdamdb.com/220th_sm_MbtKOJXsBej2.jpg",
+          "source_url": "https://www.traulsen.com/g/refrigerators-freezers",
+          "seo_title": "G-Series Commercial Refrigerators | Traulsen",
+          "seo_description": "Value-oriented reach-in line delivering quality and efficiency at an affordable price, available in 1, 2, and 3-section solid-door or glass-door configurations",
+          "note": "Trang nguon Traulsen cho dong nay khong co spec-sheet rieng tung SKU (chi co Product Reference Guide chung, khong the tach ma/anh rieng biet ma khong bia du lieu). Model hien la TEN DONG, khong phai SKU cu the.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/G-Series_Refrigerators___Freezers.jpg"
+        },
+        {
+          "model": "C-Series Refrigerators & Freezers (CLBM)",
+          "title": "Traulsen C-Series Compact Reach-In Refrigerators & Freezers",
+          "description_en": "Compact reach-in refrigerator/freezer line for operations with limited space, part of Traulsen's Centerline-branded compact segment.",
+          "specs": {
+            "Bien the vi du": "CLBM-23R-HG, CLBM-49R-HG (Centerline/C-Series - dong gia re hon G/R-Series, cung 1 nha may)"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://cdn2.webdamdb.com/1280_2yk2An6suHo912eo.png",
+          "source_url": "https://www.traulsen.com/clbm/refrigerators-freezers",
+          "seo_title": "C Series Commercial Refrigerators | Traulsen",
+          "seo_description": "Compact reach-in refrigerator/freezer line for operations with limited space, part of Traulsen's Centerline-branded compact segment.",
+          "note": "Trang nguon Traulsen cho dong nay khong co spec-sheet rieng tung SKU (chi co Product Reference Guide chung, khong the tach ma/anh rieng biet ma khong bia du lieu). Model hien la TEN DONG, khong phai SKU cu the. | Day la 1 DONG SAN PHAM nhieu bien the (khong phai 1 SKU don), tuong tu cach xu ly vulcan 36S-6B. Vi du bien the that lay tu dai ly, chua liet ke day du - can crawl sau neu muon tach tung SKU rieng.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/C-Series_Refrigerators___Freezers__CLBM_.png"
+        },
+        {
+          "model": "RDT132WUT",
+          "title": "R-Series Dual Temp RDT132WUT",
+          "description_en": "Dual Temp series reach-in cabinets that store hot with cold, or cold with freezing items in a single cabinet. Two independently controlled compartments in one R-Series cabinet, built to the same R-Series specification (Smart Control, EZ-Clean gaskets, top-mounted refrigeration).",
+          "specs": {
+            "Series": "R-Series Dual Temp",
+            "Sections": "1-section",
+            "Function": "Hai khoang doc lap: nong+lanh hoac lanh+dong trong cung 1 tu",
+            "Door type": "W (glass door variant code)"
+          },
+          "heat_source": "electric",
+          "image_url": "https://www.traulsen.com/sites/default/files/styles/max_550_x_550/public/webdam-assets/Two%20Section%20Dual%20Temp%20HHS%20Open%20Door%20copy.jpg",
+          "source_url": "https://www.traulsen.com/r/dual-temp",
+          "seo_title": "RDT132WUT - R-Series Dual Temp | Traulsen",
+          "seo_description": "Dual Temp series reach-in cabinets that store hot with cold, or cold with freezing items in a single cabinet. Two independently controlled compartments in one R",
+          "origin": "United States",
+          "note": "Bo sung 26/07/2026 sau khi doi chieu sitemap traulsen.com: trang dong /r/dual-temp co 2 ma RDT nay nhung catalog chua he co. Trang khong co bang specs chi tiet nen chi ghi thong so xac dinh duoc tu noi dung trang, khong suy dien.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/RDT132WUT.jpg"
+        },
+        {
+          "model": "RDT232WUT",
+          "title": "R-Series Dual Temp RDT232WUT",
+          "description_en": "Dual Temp series reach-in cabinets that store hot with cold, or cold with freezing items in a single cabinet. Two independently controlled compartments in one R-Series cabinet, built to the same R-Series specification (Smart Control, EZ-Clean gaskets, top-mounted refrigeration).",
+          "specs": {
+            "Series": "R-Series Dual Temp",
+            "Sections": "2-section",
+            "Function": "Hai khoang doc lap: nong+lanh hoac lanh+dong trong cung 1 tu",
+            "Door type": "W (glass door variant code)"
+          },
+          "heat_source": "electric",
+          "image_url": "https://www.traulsen.com/sites/default/files/styles/max_550_x_550/public/webdam-assets/Two%20Section%20Dual%20Temp%20HHS%20Open%20Door%20copy.jpg",
+          "source_url": "https://www.traulsen.com/r/dual-temp",
+          "seo_title": "RDT232WUT - R-Series Dual Temp | Traulsen",
+          "seo_description": "Dual Temp series reach-in cabinets that store hot with cold, or cold with freezing items in a single cabinet. Two independently controlled compartments in one R",
+          "origin": "United States",
+          "note": "Bo sung 26/07/2026 sau khi doi chieu sitemap traulsen.com: trang dong /r/dual-temp co 2 ma RDT nay nhung catalog chua he co. Trang khong co bang specs chi tiet nen chi ghi thong so xac dinh duoc tu noi dung trang, khong suy dien.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/RDT132WUT.jpg"
+        }
+      ]
+    },
+    {
+      "group_name": "Special Applications (Even-Thaw / Dual Temp / Corrections)",
+      "group_name_vi": "Ứng Dụng Đặc Biệt (Even-Thaw/Dual Temp)",
+      "source_urls": [
+        "https://www.traulsen.com/r/even-thaw"
+      ],
+      "models": [
+        {
+          "model": "RET232NUT-FHS",
+          "title": "R-Series Spec-Line Even-Thaw Refrigerator RET232NUT-FHS",
+          "description_en": "Spec-Line Even-Thaw reach-in refrigerator, two-section, self-contained refrigeration, stainless steel exterior and interior, standard depth cabinet, narrow full-height solid doors with EZ-Clean Gaskets. Even-Thaw process slowly adds small amounts of heat to rapidly circulating cold air, thawing contents without ever exceeding 41 degrees F.",
+          "specs": {
+            "Sections": "2-section",
+            "Cua": "2 cua solid full-height, ban le trai/phai, EZ-Clean Gaskets",
+            "Chieu rong": "52 1/8 in (52.13 in)",
+            "Chieu sau": "35 in",
+            "Chieu cao": "83 1/4 in (83.25 in)",
+            "Dung tich": "46 cu. ft.",
+            "Trong luong": "700 lbs",
+            "Nhiet do thaw": "37 - 41 F",
+            "May nen": "1/2 HP, bien tan (variable speed), R-290 hydrocarbon refrigerant",
+            "Dien": "115V/60Hz/1P, 7.6A, NEMA 5-20P",
+            "Khay": "28 tray slide dieu chinh (14 moi khoang)",
+            "Chung nhan": "cETLus, ETL-Sanitation"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://cdn.ckitchen.com/pmidimages/traulsen-ret232nut-52-13-46-cu-ft-top-mounted-2-section-solid-door-reach-in-refrigerator-20250411191134041.webp",
+          "source_url": "https://www.webstaurantstore.com/traulsen-ret232nut-fhs-stainless-steel-two-section-even-thaw-reach-in-refrigerator-specification-line/882RET232NFS.html",
+          "seo_title": "RET232NUT-FHS - R-Series Spec-Line Even-Thaw Refrigerator | Traulsen",
+          "seo_description": "Tu lanh ra dong Even-Thaw 2 khoang 52 inch, 46 cu ft, cua solid full-height, thaw an toan khong vuot 41F.",
+          "note": "Bo sung 26/07/2026: tach SKU cu the tu entry gop 'R-Series Special Applications' truoc do (khong co ma ro rang). Xac nhan qua nhieu dai ly (webstaurantstore.com, culinarydepotinc.com, cooksdirect.com, restaurantsupply.com, kitchenrestock.com, ckitchen.com, katom.com). Anh goc tu ckitchen.com bi chan tai (Access Denied khi curl), dung tam anh dong Even-Thaw goc cua Traulsen (R-Series_Special_Applications...) lam anh local thay the vi khong the tai anh SKU rieng ma khong bia du lieu; image_url van tro ve anh SKU that tren ckitchen.com de tham khao.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/RET232NUT-FHS.jpg"
+        },
+        {
+          "model": "RET132EUT-FHS",
+          "title": "R-Series Spec-Line Even-Thaw Refrigerator RET132EUT-FHS",
+          "description_en": "Spec-Line Even-Thaw reach-in refrigerator, one-section, self-contained refrigeration, stainless steel exterior and interior, standard depth cabinet, extra wide full-height solid door with EZ-Clean Gaskets. Even-Thaw process slowly adds small amounts of heat to rapidly circulating cold air, thawing contents without ever exceeding 41 degrees F.",
+          "specs": {
+            "Sections": "1-section",
+            "Cua": "1 cua solid full-height kho rong, EZ-Clean Gaskets",
+            "Chieu rong": "32 in",
+            "Chieu sau": "35 in",
+            "Chieu cao": "83 1/4 in (83.25 in)",
+            "Dung tich": "26 cu. ft.",
+            "Trong luong": "450 lbs",
+            "Nhiet do thaw": "37 - 41 F",
+            "May nen": "1/2 HP, bien tan (variable speed), R-290 hydrocarbon refrigerant",
+            "Dien": "115V/60Hz/1P, 7.6A, NEMA 5-20P",
+            "Khay": "14 tray slide dieu chinh moi khoang",
+            "Chung nhan": "cETLus, ETL-Sanitation"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://cdn.ckitchen.com/pmidimages/traulsen-ret132eut-fhs-32-26-cu-ft-top-mounted-1-section-solid-door-reach-in-refrigerator-20250411191921381.webp",
+          "source_url": "https://www.webstaurantstore.com/traulsen-ret132eut-fhs-stainless-steel-single-section-even-thaw-reach-in-refrigerator-specification-line/882RET132EFS.html",
+          "seo_title": "RET132EUT-FHS - R-Series Spec-Line Even-Thaw Refrigerator | Traulsen",
+          "seo_description": "Tu lanh ra dong Even-Thaw 1 khoang 32 inch, 26 cu ft, cua solid full-height, thaw an toan khong vuot 41F.",
+          "note": "Bo sung 26/07/2026: tach SKU cu the tu entry gop 'R-Series Special Applications' truoc do (khong co ma ro rang). Xac nhan qua nhieu dai ly (webstaurantstore.com, culinarydepotinc.com, cooksdirect.com, chefsdeal.com, ckitchen.com, brescoinc.com, jesrestaurantequipment.com). Anh tai truc tiep thanh cong tu ckitchen.com CDN. Cac bien the khac ton tai va da xac nhan qua webstaurantstore.com nhung CHUA them vao catalog vi chua co du specs day du de tranh bia du lieu: RET132EUT-HHS (half-door), RET232EUT-FHS/HHS, RET232NUT-HHS, RET232LUT-FHS (roll-in). Co the bo sung sau neu tim duoc spec-sheet day du.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/RET132EUT-FHS.jpg"
+        }
+      ]
+    },
+    {
+      "group_name": "Glass Door Merchandisers",
+      "group_name_vi": "Tủ Kính Trưng Bày",
+      "source_urls": [
+        "https://www.traulsen.com/g/glass-merchandiser",
+        "https://www.traulsen.com/g/glass-merchandiser"
+      ],
+      "models": [
+        {
+          "model": "G21010M",
+          "title": "G21010M",
+          "description_en": "Glass-door merchandiser cabinets built on the value-oriented G-Series platform for retail food and beverage display.",
+          "specs": {
+            "Chieu rong": "52 1/8 in",
+            "Chieu sau": "35 in",
+            "Chieu cao": "83 1/4 in",
+            "Dung tich": "46.9 cu. ft.",
+            "Cua": "2 cua kinh full-height, den LED tich hop",
+            "Che tao": "3 ke epoxy moi khoang"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://cdn2.webdamdb.com/md_kSof1pQ0nU256gPN.jpg",
+          "source_url": "https://www.traulsen.com/g/glass-merchandiser",
+          "seo_title": "G21010M | Traulsen",
+          "seo_description": "Glass-door merchandiser cabinets built on the value-oriented G-Series platform for retail food and beverage display.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/G21010M.jpg",
+          "note": "Tach tu dong 'G-Series Glass Door Merchandisers' (SKU that lay tu trang chinh thuc Traulsen, anh rieng tung ma). | Specs bo sung 26/07/2026 qua doi chieu dai ly (restaurantsupply.com, webstaurantstore.com, culinarydepotinc.com) vi trang chinh hang khong co bang specs inline."
+        },
+        {
+          "model": "G23010M",
+          "title": "G23010M",
+          "description_en": "Glass-door merchandiser cabinets built on the value-oriented G-Series platform for retail food and beverage display.",
+          "specs": {
+            "Chieu rong": "52.13 in",
+            "Chieu sau": "35.5 in",
+            "Chieu cao": "83.44 in",
+            "Trong luong": "510 lbs",
+            "Dung tich": "46.9 cu. ft.",
+            "Nhiet do": "-10 den 0°F",
+            "May nen": "3/4 HP, 115V/1P/8A"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://cdn2.webdamdb.com/md_oJEZDI8o2j19sAgB.jpg",
+          "source_url": "https://www.traulsen.com/g/glass-merchandiser",
+          "seo_title": "G23010M | Traulsen",
+          "seo_description": "Glass-door merchandiser cabinets built on the value-oriented G-Series platform for retail food and beverage display.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/G23010M.jpg",
+          "note": "Tach tu dong 'G-Series Glass Door Merchandisers' (SKU that lay tu trang chinh thuc Traulsen, anh rieng tung ma). | Specs bo sung 26/07/2026 qua doi chieu dai ly (restaurantsupply.com, culinarydepotinc.com, katom.com) vi trang chinh hang khong co bang specs inline."
+        }
+      ]
+    },
+    {
+      "group_name": "Blast Chillers",
+      "group_name_vi": "Tủ Cấp Đông Nhanh",
+      "source_urls": [
+        "https://www.traulsen.com/tbc/blast-chiller",
+        "https://www.traulsen.com/tbc/blast-chiller",
+        "https://www.traulsen.com/tbc/blast-chiller",
+        "https://www.traulsen.com/clbc/blast-chiller"
+      ],
+      "models": [
+        {
+          "model": "TBC5",
+          "title": "TBC5",
+          "description_en": "Undercounter (TBC5), reach-in (TBC13) and roll-in (TBC1H, remote condensing unit) blast chillers that quickly and safely cool hot foods through the HACCP danger zone. Four operating modes (Standard Blast Chill, Speed, Energy Saving, Delicate), 3 removable food probes with Auto-Start, 90-day cycle memory, on-board printer for HACCP documentation, USB data retrieval, up to 250 customizable chill recipes.",
+          "specs": {
+            "Sub-models": "TBC5 (undercounter, 10 pans 12x20\" / 5 pans 18x26\"), TBC13 (reach-in, 26 pans 12x20\" / 13 pans 18x26\"), TBC1H (roll-in, remote system)",
+            "Operating modes": "4 (Standard, Speed, Energy Saving, Delicate)",
+            "Probes": "3 removable food probes"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://cdn2.webdamdb.com/md_g3xlDfhdMz10.jpg",
+          "source_url": "https://www.traulsen.com/tbc/blast-chiller",
+          "seo_title": "TBC5 | Traulsen",
+          "seo_description": "Undercounter (TBC5), reach-in (TBC13) and roll-in (TBC1H, remote condensing unit) blast chillers that quickly and safely cool hot foods through the HACCP danger",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/TBC5.jpg",
+          "note": "Tach tu dong 'TBC-Series Blast Chillers (TBC5/TBC13/TBC1H)' (SKU that lay tu trang chinh thuc Traulsen, anh rieng tung ma)."
+        },
+        {
+          "model": "TBC13",
+          "title": "TBC13",
+          "description_en": "Undercounter (TBC5), reach-in (TBC13) and roll-in (TBC1H, remote condensing unit) blast chillers that quickly and safely cool hot foods through the HACCP danger zone. Four operating modes (Standard Blast Chill, Speed, Energy Saving, Delicate), 3 removable food probes with Auto-Start, 90-day cycle memory, on-board printer for HACCP documentation, USB data retrieval, up to 250 customizable chill recipes.",
+          "specs": {
+            "Sub-models": "TBC5 (undercounter, 10 pans 12x20\" / 5 pans 18x26\"), TBC13 (reach-in, 26 pans 12x20\" / 13 pans 18x26\"), TBC1H (roll-in, remote system)",
+            "Operating modes": "4 (Standard, Speed, Energy Saving, Delicate)",
+            "Probes": "3 removable food probes"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://cdn2.webdamdb.com/md_QNIjjIOaZi31.jpg",
+          "source_url": "https://www.traulsen.com/tbc/blast-chiller",
+          "seo_title": "TBC13 | Traulsen",
+          "seo_description": "Undercounter (TBC5), reach-in (TBC13) and roll-in (TBC1H, remote condensing unit) blast chillers that quickly and safely cool hot foods through the HACCP danger",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/TBC13.jpg",
+          "note": "Tach tu dong 'TBC-Series Blast Chillers (TBC5/TBC13/TBC1H)' (SKU that lay tu trang chinh thuc Traulsen, anh rieng tung ma)."
+        },
+        {
+          "model": "TBC1H",
+          "title": "TBC1H",
+          "description_en": "Undercounter (TBC5), reach-in (TBC13) and roll-in (TBC1H, remote condensing unit) blast chillers that quickly and safely cool hot foods through the HACCP danger zone. Four operating modes (Standard Blast Chill, Speed, Energy Saving, Delicate), 3 removable food probes with Auto-Start, 90-day cycle memory, on-board printer for HACCP documentation, USB data retrieval, up to 250 customizable chill recipes.",
+          "specs": {
+            "Sub-models": "TBC5 (undercounter, 10 pans 12x20\" / 5 pans 18x26\"), TBC13 (reach-in, 26 pans 12x20\" / 13 pans 18x26\"), TBC1H (roll-in, remote system)",
+            "Operating modes": "4 (Standard, Speed, Energy Saving, Delicate)",
+            "Probes": "3 removable food probes"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://cdn2.webdamdb.com/md_MQEdXbRB6ry5.jpg",
+          "source_url": "https://www.traulsen.com/tbc/blast-chiller",
+          "seo_title": "TBC1H | Traulsen",
+          "seo_description": "Undercounter (TBC5), reach-in (TBC13) and roll-in (TBC1H, remote condensing unit) blast chillers that quickly and safely cool hot foods through the HACCP danger",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/TBC1H.jpg",
+          "note": "Tach tu dong 'TBC-Series Blast Chillers (TBC5/TBC13/TBC1H)' (SKU that lay tu trang chinh thuc Traulsen, anh rieng tung ma)."
+        },
+        {
+          "model": "C-Series Blast Chillers (CLBC)",
+          "title": "Traulsen C-Series Compact Blast Chillers",
+          "description_en": "Compact blast chiller line within Traulsen's Centerline-branded compact segment.",
+          "specs": {
+            "Bien the vi du": "CLBC4-L/-R (undercounter, 80 lb), CLBC4-WT-L/-WT-R (worktop), CLBC7-L/-R (reach-in, 140 lb, 208-230V)"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://cdn2.webdamdb.com/220th_sm_Av9LanJYKsD81koK.png",
+          "source_url": "https://www.traulsen.com/clbc/blast-chiller",
+          "seo_title": "C Series Commercial Refrigerators | Traulsen",
+          "seo_description": "Compact blast chiller line within Traulsen's Centerline-branded compact segment.",
+          "note": "Trang nguon Traulsen cho dong nay khong co spec-sheet rieng tung SKU (chi co Product Reference Guide chung, khong the tach ma/anh rieng biet ma khong bia du lieu). Model hien la TEN DONG, khong phai SKU cu the. | Day la 1 DONG SAN PHAM nhieu bien the (khong phai 1 SKU don), tuong tu cach xu ly vulcan 36S-6B. Vi du bien the that lay tu dai ly, chua liet ke day du - can crawl sau neu muon tach tung SKU rieng.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/C-Series_Blast_Chillers__CLBC_.png"
+        }
+      ]
+    },
+    {
+      "group_name": "Quick Chillers",
+      "group_name_vi": "Tủ Làm Lạnh Nhanh",
+      "source_urls": [
+        "https://www.traulsen.com/tu/quick-chiller"
+      ],
+      "models": [
+        {
+          "model": "TU048QC",
+          "title": "TU048QC",
+          "description_en": "No-frills compact quick chiller line for chilling hot food quickly and safely, positioned as a simpler alternative to full blast-chiller systems.",
+          "specs": {
+            "Kich thuoc": "48 x 36 x 33.75 in",
+            "Trong luong": "430 lbs",
+            "Dung tich": "9.2 cu. ft.",
+            "May nen": "3/4 HP",
+            "Dien": "115V/60Hz/12A/1P",
+            "Nhiet do lam viec": "31-35°F"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://cdn2.webdamdb.com/md_2tom4s5wU4f2.jpg",
+          "source_url": "https://www.traulsen.com/tu/quick-chiller",
+          "seo_title": "TU048QC | Traulsen",
+          "seo_description": "No-frills compact quick chiller line for chilling hot food quickly and safely, positioned as a simpler alternative to full blast-chiller systems.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/TU048QC.jpg",
+          "note": "Tach tu dong 'TU-Series Quick Chillers' (SKU that lay tu trang chinh thuc Traulsen, anh rieng tung ma). | Specs bo sung 26/07/2026 qua doi chieu dai ly (restaurantsupply.com, centralrestaurant.com, culinarydepotinc.com) vi trang chinh hang khong co bang specs inline."
+        }
+      ]
+    },
+    {
+      "group_name": "Glycol Prep Tables",
+      "group_name_vi": "Bàn Sơ Chế Lạnh Glycol",
+      "source_urls": [
+        "https://www.traulsen.com/glycol-prep-tables"
+      ],
+      "models": [
+        {
+          "model": "TB060FL4-1",
+          "title": "TB060FL4-1",
+          "description_en": "\"King of Cool\" glycol-based cooling system prep tables, using TempAssure forced-air technology to maintain a cool blanket of air above and below stored product, tested to exceed NSF7 requirements.",
+          "specs": {
+            "Cooling system": "Glycol-based",
+            "Feature": "TempAssure forced-air system"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://cdn2.webdamdb.com/md_gvJyEHnysVd31IMm.jpg",
+          "source_url": "https://www.traulsen.com/glycol-prep-tables",
+          "seo_title": "TB060FL4-1 | Traulsen",
+          "seo_description": "\"King of Cool\" glycol-based cooling system prep tables, using TempAssure forced-air technology to maintain a cool blanket of air above and below stored product,",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/TB060FL4-1.jpg",
+          "note": "Tach tu dong 'TB-Series Glycol Prep Tables' (SKU that lay tu trang chinh thuc Traulsen, anh rieng tung ma)."
+        }
+      ]
+    },
+    {
+      "group_name": "Pizza Prep Tables",
+      "group_name_vi": "Bàn Sơ Chế Pizza",
+      "source_urls": [
+        "https://www.traulsen.com/ts/pizza-prep-tables",
+        "https://www.traulsen.com/ts/pizza-prep-tables",
+        "https://www.traulsen.com/ts/pizza-prep-tables",
+        "https://www.traulsen.com/ts/pizza-prep-tables"
+      ],
+      "models": [
+        {
+          "model": "TS048HT",
+          "title": "TS048HT",
+          "description_en": "Full-size pizza prep table with TempAssure forced-air performance, self-contained refrigeration eliminating ice/water cleanup, stainless steel construction.",
+          "specs": {
+            "Feature": "TempAssure forced-air system, self-contained refrigeration"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://cdn2.webdamdb.com/md_1umevjOBj66.jpg",
+          "source_url": "https://www.traulsen.com/ts/pizza-prep-tables",
+          "seo_title": "TS048HT | Traulsen",
+          "seo_description": "Full-size pizza prep table with TempAssure forced-air performance, self-contained refrigeration eliminating ice/water cleanup, stainless steel construction.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/TS048HT.jpg",
+          "note": "Tach tu dong 'TS-Series Pizza Prep Tables' (SKU that lay tu trang chinh thuc Traulsen, anh rieng tung ma)."
+        },
+        {
+          "model": "TS066HT",
+          "title": "TS066HT",
+          "description_en": "Full-size pizza prep table with TempAssure forced-air performance, self-contained refrigeration eliminating ice/water cleanup, stainless steel construction.",
+          "specs": {
+            "Feature": "TempAssure forced-air system, self-contained refrigeration"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://cdn2.webdamdb.com/md_gSekg0fytWb1.jpg",
+          "source_url": "https://www.traulsen.com/ts/pizza-prep-tables",
+          "seo_title": "TS066HT | Traulsen",
+          "seo_description": "Full-size pizza prep table with TempAssure forced-air performance, self-contained refrigeration eliminating ice/water cleanup, stainless steel construction.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/TS066HT.jpg",
+          "note": "Tach tu dong 'TS-Series Pizza Prep Tables' (SKU that lay tu trang chinh thuc Traulsen, anh rieng tung ma)."
+        },
+        {
+          "model": "TS072HT",
+          "title": "TS072HT",
+          "description_en": "Full-size pizza prep table with TempAssure forced-air performance, self-contained refrigeration eliminating ice/water cleanup, stainless steel construction.",
+          "specs": {
+            "Feature": "TempAssure forced-air system, self-contained refrigeration"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://cdn2.webdamdb.com/md_UcGZJmWNPx61.jpg",
+          "source_url": "https://www.traulsen.com/ts/pizza-prep-tables",
+          "seo_title": "TS072HT | Traulsen",
+          "seo_description": "Full-size pizza prep table with TempAssure forced-air performance, self-contained refrigeration eliminating ice/water cleanup, stainless steel construction.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/TS072HT.jpg",
+          "note": "Tach tu dong 'TS-Series Pizza Prep Tables' (SKU that lay tu trang chinh thuc Traulsen, anh rieng tung ma)."
+        },
+        {
+          "model": "TS090HT",
+          "title": "TS090HT",
+          "description_en": "Full-size pizza prep table with TempAssure forced-air performance, self-contained refrigeration eliminating ice/water cleanup, stainless steel construction.",
+          "specs": {
+            "Feature": "TempAssure forced-air system, self-contained refrigeration"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://cdn2.webdamdb.com/md_ApgAkYITqe11.jpg",
+          "source_url": "https://www.traulsen.com/ts/pizza-prep-tables",
+          "seo_title": "TS090HT | Traulsen",
+          "seo_description": "Full-size pizza prep table with TempAssure forced-air performance, self-contained refrigeration eliminating ice/water cleanup, stainless steel construction.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/TS090HT.jpg",
+          "note": "Tach tu dong 'TS-Series Pizza Prep Tables' (SKU that lay tu trang chinh thuc Traulsen, anh rieng tung ma)."
+        }
+      ]
+    },
+    {
+      "group_name": "Compact Prep Tables",
+      "group_name_vi": "Bàn Sơ Chế Compact",
+      "source_urls": [
+        "https://www.traulsen.com/prep-tables-1"
+      ],
+      "models": [
+        {
+          "model": "C-Series / UPT-UST-Series Compact Prep Tables",
+          "title": "Traulsen Compact Prep Tables (C-Series and UPT/UST-Series)",
+          "description_en": "Compact prep tables that maximize storage and cooling capabilities in a smaller footprint, sharing the TempAssure forced-air system used across the Traulsen prep-table line.",
+          "specs": {
+            "Sub-lines": "C-Series Compact Prep Tables, UPT/UST-Series Compact Prep Tables",
+            "Bien the vi du": "UPT7230-RR/-LR/-SB (mega top), UPT3212-L-SB, UST7230-LR (24.5 cu.ft, 30-pan 1/6 size)"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://cdn2.webdamdb.com/1280_0iDGrTeq0AYD.jpg",
+          "source_url": "https://www.traulsen.com/prep-tables-1",
+          "seo_title": "Prep Tables | Traulsen",
+          "seo_description": "Compact prep tables that maximize storage and cooling capabilities in a smaller footprint, sharing the TempAssure forced-air system used across the Traulsen pre",
+          "note": "Trang nguon Traulsen cho dong nay khong co spec-sheet rieng tung SKU (chi co Product Reference Guide chung, khong the tach ma/anh rieng biet ma khong bia du lieu). Model hien la TEN DONG, khong phai SKU cu the. | Day la 1 DONG SAN PHAM nhieu bien the (khong phai 1 SKU don), tuong tu cach xu ly vulcan 36S-6B. Vi du bien the that lay tu dai ly, chua liet ke day du - can crawl sau neu muon tach tung SKU rieng.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/C-Series___UPT-UST-Series_Compact_Prep_Tables.jpg"
+        }
+      ]
+    },
+    {
+      "group_name": "Chef Bases",
+      "group_name_vi": "Bệ Bếp (Chef Base)",
+      "source_urls": [
+        "https://www.traulsen.com/te/chef-base"
+      ],
+      "models": [
+        {
+          "model": "TE036HT",
+          "title": "Traulsen TE036HT TE-Series Refrigerated Chef Base (36\")",
+          "description_en": "Refrigerated equipment-stand chef base, 36\" length, designed to sit under cooking equipment (ranges, griddles) while providing refrigerated storage underneath. Top load capacity 625 lbs., pan capacity 2.",
+          "specs": {
+            "Length": "36\"",
+            "Top Load Capacity": "625 lbs.",
+            "Pan Capacity": "2"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://www.traulsen.com/sites/default/files/webdam-assets/TE%20Equipment%20Stand%201.jpg",
+          "source_url": "https://www.traulsen.com/te/chef-base",
+          "seo_title": "Traulsen TE036HT Chef Base | Saigonhoreca",
+          "seo_description": "Traulsen TE036HT refrigerated chef base, 36\" length, 625 lbs. top load capacity, 2-pan capacity.",
+          "note": "Du lieu tu bang so sanh SKU tren trang traulsen.com/te/chef-base; trang khong cung cap kich thuoc W/D/H, dung tich cu ft, dien ap/dong dien rieng cho tung SKU.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/TE036HT.jpg"
+        },
+        {
+          "model": "TE048HT",
+          "title": "Traulsen TE048HT TE-Series Refrigerated Chef Base (48\")",
+          "description_en": "Refrigerated equipment-stand chef base, 48\" length, designed to sit under cooking equipment (ranges, griddles) while providing refrigerated storage underneath. Top load capacity 625 lbs., pan capacity 4.",
+          "specs": {
+            "Length": "48\"",
+            "Top Load Capacity": "625 lbs.",
+            "Pan Capacity": "4",
+            "Default Pan Orientation": "Side-to-side"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://www.traulsen.com/sites/default/files/webdam-assets/TE%20Equipment%20Stand%201.jpg",
+          "source_url": "https://www.traulsen.com/te/chef-base",
+          "seo_title": "Traulsen TE048HT Chef Base | Saigonhoreca",
+          "seo_description": "Traulsen TE048HT refrigerated chef base, 48\" length, 625 lbs. top load capacity, 4-pan capacity.",
+          "note": "Du lieu tu bang so sanh SKU tren trang traulsen.com/te/chef-base; trang khong cung cap kich thuoc W/D/H, dung tich cu ft, dien ap/dong dien rieng cho tung SKU.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/TE048HT.jpg"
+        },
+        {
+          "model": "TE60HT",
+          "title": "Traulsen TE60HT TE-Series Refrigerated Chef Base (60\")",
+          "description_en": "Refrigerated equipment-stand chef base, 60\" length, designed to sit under cooking equipment (ranges, griddles) while providing refrigerated storage underneath. Top load capacity 1,200 lbs., pan capacity 6.",
+          "specs": {
+            "Length": "60\"",
+            "Top Load Capacity": "1,200 lbs.",
+            "Pan Capacity": "6",
+            "Default Pan Orientation": "Side-to-side"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://www.traulsen.com/sites/default/files/webdam-assets/TE%20Equipment%20Stand%201.jpg",
+          "source_url": "https://www.traulsen.com/te/chef-base",
+          "seo_title": "Traulsen TE60HT Chef Base | Saigonhoreca",
+          "seo_description": "Traulsen TE60HT refrigerated chef base, 60\" length, 1,200 lbs. top load capacity, 6-pan capacity.",
+          "note": "Du lieu tu bang so sanh SKU tren trang traulsen.com/te/chef-base; trang khong cung cap kich thuoc W/D/H, dung tich cu ft, dien ap/dong dien rieng cho tung SKU.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/TE60HT.jpg"
+        },
+        {
+          "model": "TE072HT",
+          "title": "Traulsen TE072HT TE-Series Refrigerated Chef Base (72\")",
+          "description_en": "Refrigerated equipment-stand chef base, 72\" length, designed to sit under cooking equipment (ranges, griddles) while providing refrigerated storage underneath. Top load capacity 1,200 lbs., pan capacity 8.",
+          "specs": {
+            "Length": "72\"",
+            "Top Load Capacity": "1,200 lbs.",
+            "Pan Capacity": "8",
+            "Default Pan Orientation": "Front-to-back"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://www.traulsen.com/sites/default/files/webdam-assets/TE%20Equipment%20Stand%201.jpg",
+          "source_url": "https://www.traulsen.com/te/chef-base",
+          "seo_title": "Traulsen TE072HT Chef Base | Saigonhoreca",
+          "seo_description": "Traulsen TE072HT refrigerated chef base, 72\" length, 1,200 lbs. top load capacity, 8-pan capacity.",
+          "note": "Du lieu tu bang so sanh SKU tren trang traulsen.com/te/chef-base; trang khong cung cap kich thuoc W/D/H, dung tich cu ft, dien ap/dong dien rieng cho tung SKU.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/TE072HT.jpg"
+        },
+        {
+          "model": "TE084HT",
+          "title": "Traulsen TE084HT TE-Series Refrigerated Chef Base (84\")",
+          "description_en": "Refrigerated equipment-stand chef base, 84\" length, designed to sit under cooking equipment (ranges, griddles) while providing refrigerated storage underneath. Top load capacity 1,500 lbs., pan capacity 8.",
+          "specs": {
+            "Length": "84\"",
+            "Top Load Capacity": "1,500 lbs.",
+            "Pan Capacity": "8",
+            "Default Pan Orientation": "Side-to-side"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://www.traulsen.com/sites/default/files/webdam-assets/TE%20Equipment%20Stand%201.jpg",
+          "source_url": "https://www.traulsen.com/te/chef-base",
+          "seo_title": "Traulsen TE084HT Chef Base | Saigonhoreca",
+          "seo_description": "Traulsen TE084HT refrigerated chef base, 84\" length, 1,500 lbs. top load capacity, 8-pan capacity.",
+          "note": "Du lieu tu bang so sanh SKU tren trang traulsen.com/te/chef-base; trang khong cung cap kich thuoc W/D/H, dung tich cu ft, dien ap/dong dien rieng cho tung SKU.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/TE084HT.jpg"
+        },
+        {
+          "model": "TE096HT",
+          "title": "Traulsen TE096HT TE-Series Refrigerated Chef Base (96\")",
+          "description_en": "Refrigerated equipment-stand chef base, 96\" length, designed to sit under cooking equipment (ranges, griddles) while providing refrigerated storage underneath. Top load capacity 1,500 lbs., pan capacity 12.",
+          "specs": {
+            "Length": "96\"",
+            "Top Load Capacity": "1,500 lbs.",
+            "Pan Capacity": "12",
+            "Default Pan Orientation": "Front-to-back"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://www.traulsen.com/sites/default/files/webdam-assets/TE%20Equipment%20Stand%201.jpg",
+          "source_url": "https://www.traulsen.com/te/chef-base",
+          "seo_title": "Traulsen TE096HT Chef Base | Saigonhoreca",
+          "seo_description": "Traulsen TE096HT refrigerated chef base, 96\" length, 1,500 lbs. top load capacity, 12-pan capacity.",
+          "note": "Du lieu tu bang so sanh SKU tren trang traulsen.com/te/chef-base; trang khong cung cap kich thuoc W/D/H, dung tich cu ft, dien ap/dong dien rieng cho tung SKU.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/TE096HT.jpg"
+        },
+        {
+          "model": "TE110HT",
+          "title": "Traulsen TE110HT TE-Series Refrigerated Chef Base (110\")",
+          "description_en": "Refrigerated equipment-stand chef base, 110\" length, designed to sit under cooking equipment (ranges, griddles) while providing refrigerated storage underneath. Top load capacity 1,500 lbs., pan capacity 12.",
+          "specs": {
+            "Length": "110\"",
+            "Top Load Capacity": "1,500 lbs.",
+            "Pan Capacity": "12",
+            "Default Pan Orientation": "Side-to-side"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://www.traulsen.com/sites/default/files/webdam-assets/TE%20Equipment%20Stand%201.jpg",
+          "source_url": "https://www.traulsen.com/te/chef-base",
+          "seo_title": "Traulsen TE110HT Chef Base | Saigonhoreca",
+          "seo_description": "Traulsen TE110HT refrigerated chef base, 110\" length, 1,500 lbs. top load capacity, 12-pan capacity.",
+          "note": "Du lieu tu bang so sanh SKU tren trang traulsen.com/te/chef-base; trang khong cung cap kich thuoc W/D/H, dung tich cu ft, dien ap/dong dien rieng cho tung SKU.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/TE110HT.jpg"
+        }
+      ]
+    },
+    {
+      "group_name": "Full-Size Undercounters",
+      "group_name_vi": "Tủ Lạnh Âm Bàn Cỡ Lớn",
+      "source_urls": [
+        "https://www.traulsen.com/tu/full-size-undercounters",
+        "https://www.traulsen.com/tu/full-size-undercounters",
+        "https://www.traulsen.com/tu/full-size-undercounters"
+      ],
+      "models": [
+        {
+          "model": "TU044HT",
+          "title": "TU044HT",
+          "description_en": "Full-size horizontal undercounter refrigerators offering the premier features of Traulsen's spec-line reach-ins in a horizontal configuration.",
+          "specs": {
+            "Kich thuoc": "44 x 34 x 33.75 in",
+            "Dung tich": "9.8 cu. ft.",
+            "Dien": "6.3A/115V/1P/60Hz",
+            "Ke": "2 ke luoi"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://cdn2.webdamdb.com/md_138TCS99fxHz.jpg",
+          "source_url": "https://www.traulsen.com/tu/full-size-undercounters",
+          "seo_title": "TU044HT | Traulsen",
+          "seo_description": "Full-size horizontal undercounter refrigerators offering the premier features of Traulsen's spec-line reach-ins in a horizontal configuration.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/TU044HT.jpg",
+          "note": "Tach tu dong 'TU-Series Full-Size Undercounters' (SKU that lay tu trang chinh thuc Traulsen, anh rieng tung ma). | Specs bo sung 26/07/2026 qua doi chieu dai ly (webstaurantstore.com, chefsdeal.com) vi trang chinh hang khong co bang specs inline."
+        },
+        {
+          "model": "TU072HT",
+          "title": "TU072HT",
+          "description_en": "Full-size horizontal undercounter refrigerators offering the premier features of Traulsen's spec-line reach-ins in a horizontal configuration.",
+          "specs": {
+            "Kich thuoc": "71.75 x 34 x 33.75 in",
+            "Dung tich": "20 cu. ft.",
+            "Dien": "6.3A/115V/1P/60Hz",
+            "Ke": "4 ke luoi"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://cdn2.webdamdb.com/md_Y51HYalHk24.jpg",
+          "source_url": "https://www.traulsen.com/tu/full-size-undercounters",
+          "seo_title": "TU072HT | Traulsen",
+          "seo_description": "Full-size horizontal undercounter refrigerators offering the premier features of Traulsen's spec-line reach-ins in a horizontal configuration.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/TU072HT.jpg",
+          "note": "Tach tu dong 'TU-Series Full-Size Undercounters' (SKU that lay tu trang chinh thuc Traulsen, anh rieng tung ma). | Specs bo sung 26/07/2026 qua doi chieu dai ly (webstaurantstore.com, restaurantsupply.com) vi trang chinh hang khong co bang specs inline."
+        },
+        {
+          "model": "TU100HT",
+          "title": "TU100HT",
+          "description_en": "Full-size horizontal undercounter refrigerators offering the premier features of Traulsen's spec-line reach-ins in a horizontal configuration.",
+          "specs": {
+            "Kich thuoc": "100 x 34 x 33.75 in",
+            "Dung tich": "30.1 cu. ft.",
+            "Dien": "6.3A/115V/1P/60Hz",
+            "Ke": "6 ke luoi"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://cdn2.webdamdb.com/md_oksvms3Tir11.jpg",
+          "source_url": "https://www.traulsen.com/tu/full-size-undercounters",
+          "seo_title": "TU100HT | Traulsen",
+          "seo_description": "Full-size horizontal undercounter refrigerators offering the premier features of Traulsen's spec-line reach-ins in a horizontal configuration.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/TU100HT.jpg",
+          "note": "Tach tu dong 'TU-Series Full-Size Undercounters' (SKU that lay tu trang chinh thuc Traulsen, anh rieng tung ma). | Specs bo sung 26/07/2026 qua doi chieu dai ly (webstaurantstore.com, ckitchen.com) vi trang chinh hang khong co bang specs inline."
+        }
+      ]
+    },
+    {
+      "group_name": "Undercounters & Equipment Stands",
+      "group_name_vi": "Tủ Lạnh Âm Bàn & Bệ Đỡ Thiết Bị",
+      "source_urls": [
+        "https://www.traulsen.com/products/undercounter-and-equipment-stands"
+      ],
+      "models": [
+        {
+          "model": "UHT27-L",
+          "title": "Traulsen UHT27-L Dealer's Choice Compact Undercounter Refrigerator, 27\", Left Hinged Door",
+          "description_en": "Compact zero-clearance undercounter refrigerator, 1 section / 1 left-hinged door, stainless steel top/sides/door with anodized aluminum interior, rear-mounted self-contained refrigeration, R-290 refrigerant.",
+          "specs": {
+            "Width": "27 in",
+            "Depth": "32 in",
+            "Height": "33.5 in",
+            "Capacity": "7.35 cu. ft.",
+            "Compressor": "1/5 HP",
+            "Refrigerant": "R-290 (hydrocarbon)",
+            "Temperature Range": "34-38 F",
+            "Door": "1, left hinged, self-closing with stay-open feature",
+            "Shelves": "Adjustable wire shelves",
+            "Casters": "Four 4-inch casters"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.traulsen.com/sites/default/files/webdam-assets/traulsen-web-sm-product_comp_uc1.jpg",
+          "source_url": "https://www.katom.com/206-UHT27L.html",
+          "seo_title": "Traulsen UHT27-L Undercounter Refrigerator | Saigonhoreca",
+          "seo_description": "Traulsen UHT27-L 27-inch compact undercounter refrigerator with left hinged door, 7.35 cu. ft.",
+          "note": "",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/UHT27-L.jpg"
+        },
+        {
+          "model": "UHT27-R",
+          "title": "Traulsen UHT27-R Dealer's Choice Compact Undercounter Refrigerator, 27\", Right Hinged Door",
+          "description_en": "Compact undercounter refrigerator, 1 section / 1 right-hinged solid door, stainless steel top/sides/door with anodized aluminum interior, rear-mounted self-contained refrigeration, R-290 refrigerant.",
+          "specs": {
+            "Width": "27 in",
+            "Depth": "31-15/16 in",
+            "Height (w/ casters)": "37-3/4 in",
+            "Work Surface Height": "33-5/8 in",
+            "Capacity": "7.35 cu. ft.",
+            "Compressor": "1/4 HP",
+            "Refrigerant": "R-290 (hydrocarbon)",
+            "Temperature Range": "34-38 F",
+            "Voltage": "115V, 60Hz, 1-phase",
+            "Amps": "0.65 A",
+            "Wattage": "75 W",
+            "Shelves": "2 adjustable powder-coated wire shelves",
+            "Plug": "NEMA 5-15P, 8-ft cord",
+            "Certifications": "cETLus, ETL-Sanitation, NSF"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.traulsen.com/sites/default/files/webdam-assets/traulsen-web-sm-product_comp_uc1.jpg",
+          "source_url": "https://www.katom.com/206-UHT27R.html",
+          "seo_title": "Traulsen UHT27-R Undercounter Refrigerator | Saigonhoreca",
+          "seo_description": "Traulsen UHT27-R 27-inch compact undercounter refrigerator with right hinged door, 7.35 cu. ft.",
+          "note": "",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/UHT27-R.jpg"
+        },
+        {
+          "model": "UHT32-R",
+          "title": "Traulsen UHT32-R Dealer's Choice Compact Undercounter Refrigerator, 32\", Right Hinged Door",
+          "description_en": "Compact undercounter refrigerator, 1 section / 1 right-hinged solid door, stainless steel top/sides/door with anodized aluminum interior, rear-mounted self-contained refrigeration, R-290 refrigerant.",
+          "specs": {
+            "Width": "32 in",
+            "Depth": "31-15/16 in",
+            "Height (w/ casters)": "37-3/4 in",
+            "Work Surface Height": "33-5/8 in",
+            "Capacity": "9.1 cu. ft.",
+            "Compressor": "1/4 HP",
+            "Refrigerant": "R-290 (hydrocarbon)",
+            "Temperature Range": "34-38 F",
+            "Voltage": "115V",
+            "Shelves": "2 adjustable wire shelves (1/2-inch increments)",
+            "Certifications": "ENERGY STAR, UL/NSF"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.traulsen.com/sites/default/files/webdam-assets/traulsen-web-sm-product_comp_uc1.jpg",
+          "source_url": "https://www.katom.com/206-UHT32R.html",
+          "seo_title": "Traulsen UHT32-R Undercounter Refrigerator | Saigonhoreca",
+          "seo_description": "Traulsen UHT32-R 32-inch compact undercounter refrigerator with right hinged door, 9.1 cu. ft.",
+          "note": "",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/UHT32-R.jpg"
+        },
+        {
+          "model": "UHT32-D",
+          "title": "Traulsen UHT32-D Dealer's Choice Compact Undercounter Refrigerator, 32\", 2 Drawers",
+          "description_en": "Compact undercounter refrigerator, 1 section / 2 removable stainless steel drawers, heavy-duty stainless steel exterior with anodized aluminum interior, front-breathing self-contained refrigeration, R-290 refrigerant.",
+          "specs": {
+            "Width": "32 in",
+            "Depth": "31-3/16 in",
+            "Height (on 4-inch casters)": "33-5/8 in",
+            "Capacity": "7.97 cu. ft.",
+            "Refrigerant": "R-290 (hydrocarbon)",
+            "Temperature Range": "34-38 F",
+            "Drawers": "2 fully removable stainless steel, each up to 8x 1/6-size pans",
+            "Controls": "Electronic digital control, 3-digit LED display"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.traulsen.com/sites/default/files/webdam-assets/traulsen-web-sm-product_comp_uc1.jpg",
+          "source_url": "https://www.katom.com/206-UHT32D.html",
+          "seo_title": "Traulsen UHT32-D Undercounter Refrigerator | Saigonhoreca",
+          "seo_description": "Traulsen UHT32-D 32-inch compact undercounter refrigerator with 2 drawers, 7.97 cu. ft.",
+          "note": "",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/UHT32-D.jpg"
+        },
+        {
+          "model": "UHT48-LR",
+          "title": "Traulsen UHT48-LR Dealer's Choice Compact Undercounter Refrigerator, 48\", Left/Right Hinged Doors",
+          "description_en": "Compact undercounter refrigerator, 2 sections / left and right hinged doors, rugged stainless steel exterior with anodized aluminum interior, self-contained front-breathing refrigeration, R-290 refrigerant.",
+          "specs": {
+            "Width": "48 in",
+            "Depth": "32 in",
+            "Height": "33.5 in",
+            "Weight": "approx. 400 lbs",
+            "Capacity": "13.56 cu. ft.",
+            "Compressor": "1/5 HP",
+            "Refrigerant": "R-290 (hydrocarbon)",
+            "Temperature Range": "34-38 F",
+            "Shelves": "4 powder-coated shelves",
+            "Voltage": "115V",
+            "Plug": "NEMA 5-15P",
+            "Casters": "Four 4-inch casters",
+            "Certifications": "NSF"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.traulsen.com/sites/default/files/webdam-assets/traulsen-web-sm-product_comp_uc1.jpg",
+          "source_url": "https://www.katom.com/206-UHT48LR.html",
+          "seo_title": "Traulsen UHT48-LR Undercounter Refrigerator | Saigonhoreca",
+          "seo_description": "Traulsen UHT48-LR 48-inch compact undercounter refrigerator with left/right hinged doors, 13.56 cu. ft.",
+          "note": "",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/UHT48-LR.jpg"
+        },
+        {
+          "model": "UHT60-LR",
+          "title": "Traulsen UHT60-LR Dealer's Choice Compact Undercounter Refrigerator, 60\", Left/Right Hinged Doors",
+          "description_en": "Compact undercounter refrigerator, 2 sections / left and right hinged doors, stainless steel exterior top/sides/doors with anodized aluminum interior, rear-mounted self-contained refrigeration, R-290 refrigerant.",
+          "specs": {
+            "Width": "60 in",
+            "Depth": "30.88 in",
+            "Height": "33.5 in",
+            "Weight": "approx. 500 lbs",
+            "Capacity": "17.43 cu. ft.",
+            "Compressor": "1/4 HP",
+            "Refrigerant": "R-290 (hydrocarbon)",
+            "Temperature Range": "34-38 F",
+            "Shelves": "4 powder-coated shelves",
+            "Voltage/Amps/Phase/Hz": "115V, 7.5A, 1-phase, 60Hz",
+            "Casters": "Six 4-inch casters"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.traulsen.com/sites/default/files/webdam-assets/traulsen-web-sm-product_comp_uc1.jpg",
+          "source_url": "https://www.katom.com/206-UHT60LR.html",
+          "seo_title": "Traulsen UHT60-LR Undercounter Refrigerator | Saigonhoreca",
+          "seo_description": "Traulsen UHT60-LR 60-inch compact undercounter refrigerator with left/right hinged doors, 17.43 cu. ft.",
+          "note": "",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/UHT60-LR.jpg"
+        },
+        {
+          "model": "UHT72-LR",
+          "title": "Traulsen UHT72-LR Dealer's Choice Compact Undercounter Refrigerator, 72\", Left/Right Hinged Doors",
+          "description_en": "Compact undercounter refrigerator, 2 sections (left section left-hinged door, right section right-hinged door), rugged stainless steel exterior with anodized aluminum interior, polyurethane insulation, magnetic gaskets, front-breathing R-290 refrigeration.",
+          "specs": {
+            "Width": "72 in",
+            "Capacity": "20 cu. ft.",
+            "Shelves": "4 powder-coated shelves",
+            "Compressor": "1/5 HP (capillary tube system)",
+            "Refrigerant": "R-290",
+            "Temperature Range": "34-38 F",
+            "Voltage/Hz/Phase": "115V/60Hz/1-ph",
+            "Plug": "NEMA 5-15P, 8-ft cord",
+            "Casters": "Heavy duty 4-inch locking casters",
+            "Certifications": "NSF"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.traulsen.com/sites/default/files/webdam-assets/traulsen-web-sm-product_comp_uc1.jpg",
+          "source_url": "https://www.katom.com/206-UHT72LR.html",
+          "seo_title": "Traulsen UHT72-LR Undercounter Refrigerator | Saigonhoreca",
+          "seo_description": "Traulsen UHT72-LR 72-inch compact undercounter refrigerator with left/right hinged doors, 20 cu. ft.",
+          "note": "",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/UHT72-LR.jpg"
+        }
+      ]
+    },
+    {
+      "group_name": "Milk Coolers",
+      "group_name_vi": "Tủ Làm Lạnh Sữa",
+      "source_urls": [
+        "https://www.traulsen.com/rmc/milk-coolers"
+      ],
+      "models": [
+        {
+          "model": "RMC-Series Milk Coolers",
+          "title": "Traulsen RMC-Series Milk Coolers",
+          "description_en": "Durable school-district milk cooler line, featuring stainless steel construction, removable top-mounted refrigeration system, sliding front doors, factory-installed casters. Six-year parts and labor plus seven-year compressor warranty.",
+          "specs": {
+            "Door": "Sliding front",
+            "Warranty": "6-year parts/labor, 7-year compressor"
+          },
+          "origin": "United States",
+          "heat_source": "",
+          "image_url": "https://cdn2.webdamdb.com/1280_Q5GlhqbGnq331EYq.jpg",
+          "source_url": "https://www.traulsen.com/rmc/milk-coolers",
+          "seo_title": "Milk Coolers – Mobile Milk Coolers for Schools | Traulsen",
+          "seo_description": "Durable school-district milk cooler line, featuring stainless steel construction, removable top-mounted refrigeration system, sliding front doors, factory-insta",
+          "note": "Trang nguon Traulsen cho dong nay khong co spec-sheet rieng tung SKU (chi co Product Reference Guide chung, khong the tach ma/anh rieng biet ma khong bia du lieu). Model hien la TEN DONG, khong phai SKU cu the.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/RMC-Series_Milk_Coolers.jpg"
+        }
+      ]
+    },
+    {
+      "group_name": "Hot Food Holding Cabinets",
+      "group_name_vi": "Tủ Giữ Nóng Thực Phẩm",
+      "source_urls": [
+        "https://www.traulsen.com/products/hot-food-holding-cabinets"
+      ],
+      "models": [
+        {
+          "model": "RHF132WP-FHG",
+          "title": "Traulsen RHF132WP-FHG 26.1 cu. ft. Glass Full Height Door 1 Section Pass-Thru Heated Cabinet",
+          "description_en": "Commercial heated holding cabinet with stainless steel construction and full-height glass doors (pass-thru, 1 section). Ducted fan air distribution system minimizes temperature stratification for faster startup and lower energy consumption; microprocessor controls, 3 adjustable shelves.",
+          "specs": {
+            "Capacity": "26.1 cu. ft.",
+            "Width": "29.88 in",
+            "Depth": "39 in",
+            "Height": "83.25 in",
+            "Weight": "435 lbs",
+            "Doors": "1 full-height glass door (pass-thru)",
+            "Sections": "1",
+            "Temperature Range": "140-180 F",
+            "Shelves": "3 adjustable wire shelves per section",
+            "Standard Voltage": "208-230/115V, 60Hz, 1-phase",
+            "Cord Configuration": "NEMA L14-20P or NEMA 6-20P",
+            "Certifications": "ETL, ETL-Sanitation"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://jeansrs.com/cdn/shop/files/rhf232wp-fhg_pass-thru_heated_cabinet_2-sec_2-glass-full-door_front.jpg?v=1739399108",
+          "source_url": "https://www.ckitchen.com/p/traulsen-rhf132wp-fhg-spec-line-heated-cabinet.html",
+          "seo_title": "Traulsen RHF132WP-FHG Heated Holding Cabinet | Saigonhoreca",
+          "seo_description": "Traulsen RHF132WP-FHG 26.1 cu. ft. glass full-height door pass-thru hot food holding cabinet.",
+          "note": " [image: dùng ảnh chung dòng cửa kính full-height từ RHF232WP-FHG do không tìm được ảnh riêng cho size này]",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/RHF132WP-FHG.jpg"
+        },
+        {
+          "model": "RHF132WP-HHG",
+          "title": "Traulsen RHF132WP-HHG 26.1 cu. ft. Glass Half Height Door 1 Section Pass-Thru Heated Cabinet",
+          "description_en": "Pass-through heated holding cabinet with stainless steel exterior/interior and half-height glass doors with EZ-Clean gaskets; 3 adjustable shelves per section, ducted fan air distribution system.",
+          "specs": {
+            "Capacity": "26.1 cu. ft.",
+            "Width": "29.88 in",
+            "Depth": "39 in",
+            "Height": "83.25 in",
+            "Weight": "435 lbs",
+            "Sections": "1",
+            "Doors": "Half-height glass (pass-thru)",
+            "Temperature Range": "140-180 F",
+            "Shelves": "3 adjustable per section",
+            "Standard Voltage": "208-230/115v/60/1-ph",
+            "NEMA Plug Options": "NEMA L14-20P, NEMA 6-20P",
+            "Certifications": "ETL, ETL-Sanitation"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://cdn.ckitchen.com/pmidimages/traulsen-rhf132wp-hhg-26-1-cu-ft-glass-half-height-door-1-section-pass-thru-heated-cabinet-20250411191144708.webp",
+          "source_url": "https://www.ckitchen.com/p/traulsen-rhf132wp-hhg-spec-line-heated-cabinet.html",
+          "seo_title": "Traulsen RHF132WP-HHG Heated Holding Cabinet | Saigonhoreca",
+          "seo_description": "Traulsen RHF132WP-HHG 26.1 cu. ft. glass half-height door pass-thru hot food holding cabinet.",
+          "note": "",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/RHF132WP-HHG.jpg"
+        },
+        {
+          "model": "RHF132WP-FHS",
+          "title": "Traulsen RHF132WP-FHS 26.1 cu. ft. Solid Full Height Door 1 Section Pass-Thru Heated Cabinet",
+          "description_en": "Spec-Line R Series pass-thru heated cabinet, stainless steel construction inside and out, full-height solid doors with EZ-Clean gaskets, 3 adjustable shelves per section, microprocessor controls.",
+          "specs": {
+            "Capacity": "26.1 cu. ft.",
+            "Width": "29.88 in",
+            "Depth": "37.94 in",
+            "Height": "83.25 in",
+            "Weight": "435 lbs",
+            "Doors": "1 full-height solid door (pass-thru)",
+            "Temperature Range": "140-180 F",
+            "Shelves": "3 adjustable wire shelves per section",
+            "Voltage Options": "208-230/115v/60/1-ph (standard); 115v/60/1-ph available",
+            "Plug Type": "NEMA L14-20P or NEMA 5-20P",
+            "Certifications": "ETL, ETL-Sanitation, ENERGY STAR"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://www.rewonline.com/images/p/tra/tra-rhf132wp-fhs.lg.jpg",
+          "source_url": "https://www.ckitchen.com/p/traulsen-rhf132wp-fhs-spec-line-heated-cabinet.html",
+          "seo_title": "Traulsen RHF132WP-FHS Heated Holding Cabinet | Saigonhoreca",
+          "seo_description": "Traulsen RHF132WP-FHS 26.1 cu. ft. solid full-height door pass-thru hot food holding cabinet.",
+          "note": "",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/RHF132WP-FHS.jpg"
+        },
+        {
+          "model": "RHF132WP-HHS",
+          "title": "Traulsen RHF132WP-HHS 26.1 cu. ft. Solid Half Height Door 1 Section Pass-Thru Heated Cabinet",
+          "description_en": "Spec-Line R Series heated cabinet, stainless steel construction, ducted fan air distribution, 3 adjustable shelves per section, microprocessor controls, self-closing doors with 120-degree stay-open feature.",
+          "specs": {
+            "Capacity": "26.1 cu. ft.",
+            "Width": "29.88 in",
+            "Height": "83.25 in",
+            "Depth": "37.94 in",
+            "Weight": "435 lbs",
+            "Doors": "1 section, half-height solid door (pass-thru)",
+            "Temperature Range": "140-180 F",
+            "Sections": "1",
+            "Shelves": "3 per section",
+            "Legs": "6-inch adjustable stainless steel (set of 4)",
+            "Cord": "9 ft with plug attached",
+            "Voltage Options": "208-230/115v or 115v (1-phase, 60 Hz)",
+            "NEMA Plug Options": "NEMA 5-20P or NEMA L14-20P or NEMA 6-20P",
+            "Certifications": "ETL, ETL-Sanitation, Energy Star"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://cdn.ckitchen.com/pmidimages/traulsen-rhf132wp-hhs-26-1-cu-ft-solid-half-height-door-1-section-pass-thru-heated-cabinet-20250411191146395.webp",
+          "source_url": "https://www.ckitchen.com/p/traulsen-rhf132wp-hhs-spec-line-heated-cabinet.html",
+          "seo_title": "Traulsen RHF132WP-HHS Heated Holding Cabinet | Saigonhoreca",
+          "seo_description": "Traulsen RHF132WP-HHS 26.1 cu. ft. solid half-height door pass-thru hot food holding cabinet.",
+          "note": "",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/RHF132WP-HHS.jpg"
+        },
+        {
+          "model": "RHF232WP-FHG",
+          "title": "Traulsen RHF232WP-FHG Spec-Line 2-Section 2 Glass Door Reach-In Pass-Thru Heated Holding Cabinet, 55.13 cu. ft.",
+          "description_en": "Commercial pass-thru heated holding cabinet, stainless steel construction throughout, self-closing full-height glass doors with stay-open feature, low-wattage heating with humidity control venting, Smart Control with LED display.",
+          "specs": {
+            "Capacity": "55.13 cu. ft.",
+            "Width": "58 in",
+            "Depth": "39-1/16 in",
+            "Height": "83-7/16 in",
+            "Doors": "2 Front / 2 Rear (Glass, Full Height)",
+            "Voltage/Phase/Hertz": "208/115v / 1-phase / 60 Hz",
+            "Amps": "15.5 A",
+            "Wattage": "3,000 W",
+            "Temperature Range": "140-180 F",
+            "Shelves": "6 wire shelves (3 per section)"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://jeansrs.com/cdn/shop/files/rhf232wp-fhg_pass-thru_heated_cabinet_2-sec_2-glass-full-door_front.jpg?v=1739399108",
+          "source_url": "https://jeansrs.com/products/traulsen-rhf232wp-fhg-spec-line-2-section-2-glass-door-reach-in-pass-thru-heated-holding-cabinet-58-55-13-cu-ft",
+          "seo_title": "Traulsen RHF232WP-FHG Heated Holding Cabinet | Saigonhoreca",
+          "seo_description": "Traulsen RHF232WP-FHG 55.13 cu. ft. 2-section glass full-height door pass-thru hot food holding cabinet.",
+          "note": "",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/RHF232WP-FHG.jpg"
+        },
+        {
+          "model": "RHF232WP-HHG",
+          "title": "Traulsen RHF232WP-HHG Spec-Line 2-Section 4 Glass Half Door Reach-In Pass-Thru Heated Holding Cabinet, 55.13 cu. ft.",
+          "description_en": "Commercial pass-thru heated holding cabinet, stainless steel exterior/interior with high-density polyurethane insulation, half-height glass doors front and back with stay-open feature, Smart Control with LED display, NSF listed, USA-made.",
+          "specs": {
+            "Capacity": "55.13 cu. ft.",
+            "Width": "58 in",
+            "Depth": "39-1/16 in",
+            "Height": "83-7/16 in",
+            "Doors": "4 Front / 4 Rear (half-height glass)",
+            "Voltage": "208/115v",
+            "Amps": "15.5 A",
+            "Phase": "1",
+            "Hertz": "60",
+            "Wattage": "3,000 W",
+            "Temperature Range": "140-180 F",
+            "Shelves": "3 per section, 225 lbs rated",
+            "Warranty": "6-year parts and labor (commercial use)"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://jeansrs.com/cdn/shop/files/rhf232wp-hhg_pass-thru_heated_cabinet_2-sec_4-glass-hlf-door_front_closed.jpg?v=1739399113",
+          "source_url": "https://jeansrs.com/products/traulsen-rhf232wp-hhg-spec-line-2-section-4-glass-half-door-reach-in-pass-thru-heated-holding-cabinet-58-55-13-cu-ft",
+          "seo_title": "Traulsen RHF232WP-HHG Heated Holding Cabinet | Saigonhoreca",
+          "seo_description": "Traulsen RHF232WP-HHG 55.13 cu. ft. 2-section glass half-height door pass-thru hot food holding cabinet.",
+          "note": "",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/RHF232WP-HHG.jpg"
+        },
+        {
+          "model": "RHF332W-FHG",
+          "title": "Traulsen RHF332W-FHG Spec-Line 3 Section 3 Glass Door Reach-In Heated Holding Cabinet, 79.0 cu. ft.",
+          "description_en": "Reach-in heated holding cabinet (glass door variant of RHF332W-FHS), stainless steel exterior/interior, full-height doors with EZ-Clean gaskets, ducted fan air distribution system, microprocessor controls, 3 adjustable wire shelves per section.",
+          "specs": {
+            "Capacity": "79.0 cu. ft.",
+            "Width": "86.13 in",
+            "Height": "83.25 in",
+            "Depth": "39 in",
+            "Sections": "3",
+            "Doors": "3 full-height glass",
+            "Temperature Range": "140-180 F",
+            "Voltage": "208-230/115v/60/1-ph (standard)"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://jeansrs.com/cdn/shop/files/rhf232wp-fhg_pass-thru_heated_cabinet_2-sec_2-glass-full-door_front.jpg?v=1739399108",
+          "source_url": "https://www.ckitchen.com/p/traulsen-rhf332w-fhs-spec-line-heated-cabinet.html",
+          "seo_title": "Traulsen RHF332W-FHG Heated Holding Cabinet | Saigonhoreca",
+          "seo_description": "Traulsen RHF332W-FHG 79.0 cu. ft. 3-section glass full-height door reach-in hot food holding cabinet.",
+          "note": "Thong so lay tu trang cua bien the RHF332W-FHS (cung dong san pham); ckitchen.com xac nhan bien the cua kinh RHF332W-FHG co cung kich thuoc/dung tich, chi khac loai cua (kinh thay vi dac). [image: dùng ảnh chung dòng cửa kính full-height từ RHF232WP-FHG do không tìm được ảnh riêng cho size này]",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/RHF332W-FHG.jpg"
+        },
+        {
+          "model": "RHF232W-HHS",
+          "title": "Traulsen RHF232W-HHS Spec-Line 2 Section 4 Solid Half Door Reach-In Heated Holding Cabinet, 52.8 cu. ft.",
+          "description_en": "Reach-in heated holding cabinet, stainless steel exterior/interior, standard depth cabinet, half-height solid doors, microprocessor controls, energy-efficient ducted fan air distribution, serpentine heater design.",
+          "specs": {
+            "Capacity": "52.8 cu. ft.",
+            "Width": "58 in",
+            "Depth": "35 in",
+            "Height": "83.25 in",
+            "Sections": "2",
+            "Doors": "4 (half-height, solid)",
+            "Voltage": "208-230V/115V/60/1-ph (standard)",
+            "Temperature Range": "140-180 F",
+            "Weight": "670 lbs",
+            "Certifications": "ETL, ETL-Sanitation, ENERGY STAR"
+          },
+          "origin": "United States",
+          "heat_source": "electric",
+          "image_url": "https://cdn.ckitchen.com/pmidimages/traulsen-rhf232w-hhs-spec-line-2-section-4-solid-half-door-reach-in-heated-holding-cabinet-52-8-cu-ft-115-208-240-volts-20250411191152004.webp",
+          "source_url": "https://www.ckitchen.com/p/traulsen-rhf232w-hhs-spec-line-heated-cabinet.html",
+          "seo_title": "Traulsen RHF232W-HHS Heated Holding Cabinet | Saigonhoreca",
+          "seo_description": "Traulsen RHF232W-HHS 52.8 cu. ft. 2-section solid half-height door reach-in hot food holding cabinet.",
+          "note": "",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/traulsen/RHF232W-HHS.jpg"
+        }
+      ]
+    }
+  ]
+}

@@ -24,13 +24,6 @@ $specs_images = [
     'alt'  => esc_attr__('Gian bếp sơ chế và chậu rửa inox 304 tại The Royal', 'saigonhoreca'),
     'cap'  => esc_html__('Khu vực sơ chế tích hợp chậu rửa inox 304 sạch sẽ sáng bóng.', 'saigonhoreca'),
   ],
-  [
-    'key'  => 'side-bot',
-    'fig'  => 'FIG.03',
-    'src'  => sgh_img('the-royal-all-day-dining/the-royal-all-day-dining-ban-mat-ngan-keo-undercounter.jpg'),
-    'alt'  => esc_attr__('Hệ thống bàn mát dưới quầy tích hợp ngăn kéo tiện dụng tại The Royal', 'saigonhoreca'),
-    'cap'  => esc_html__('Bàn mát ngăn kéo undercounter bảo quản nguyên liệu tầm tay.', 'saigonhoreca'),
-  ],
 ];
 ?>
 <section class="pp__section pp-specs-blueprint-trd" id="specs-trd">
@@ -113,27 +106,6 @@ $specs_images = [
         <figcaption class="pp-image-caption-shared"><?php echo $specs_images[1]['cap']; ?></figcaption>
         <span class="pp-specs-blueprint-trd__thumb-cta" aria-hidden="true">Click để xem</span>
       </figure>
-
-      <!-- ── Ảnh FIG.03 (thumbnail phải) ── -->
-      <figure
-        class="pp-image-container-shared pp-specs-blueprint-trd__fig pp-specs-blueprint-trd__fig--side-bot js-specs-thumb"
-        data-index="2"
-        role="button"
-        tabindex="0"
-        aria-label="<?php esc_attr_e('Xem FIG.03 — Tủ mát undercounter', 'saigonhoreca'); ?>"
-      >
-        <span class="pp-specs-blueprint-trd__fig-label" aria-hidden="true">FIG.03</span>
-        <img
-          src="<?php echo $specs_images[2]['src']; ?>"
-          alt="<?php echo $specs_images[2]['alt']; ?>"
-          loading="lazy"
-          decoding="async"
-          width="800"
-          height="600"
-        >
-        <figcaption class="pp-image-caption-shared"><?php echo $specs_images[2]['cap']; ?></figcaption>
-        <span class="pp-specs-blueprint-trd__thumb-cta" aria-hidden="true">Click để xem</span>
-      </figure>
     </div><!-- /.js-specs-carousel -->
 
     <!-- Dimension line connector -->
@@ -183,12 +155,6 @@ $specs_images = [
       src : '<?php echo $specs_images[1]['src']; ?>',
       alt : '<?php echo addslashes($specs_images[1]['alt']); ?>',
       cap : '<?php echo addslashes($specs_images[1]['cap']); ?>'
-    },
-    {
-      fig : 'FIG.03',
-      src : '<?php echo $specs_images[2]['src']; ?>',
-      alt : '<?php echo addslashes($specs_images[2]['alt']); ?>',
-      cap : '<?php echo addslashes($specs_images[2]['cap']); ?>'
     }
   ];
 

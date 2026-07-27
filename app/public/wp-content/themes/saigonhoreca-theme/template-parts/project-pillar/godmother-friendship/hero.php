@@ -8,7 +8,7 @@ if (!defined('ABSPATH')) exit;
 $uri = get_template_directory_uri();
 ?>
 <section class="pp-hero-gmf">
-<div class="pp-hero-gmf__media" style="background-image:url('<?php echo sgh_img('godmother-friendship/godmother-friendship-phoi-canh-3d-tong-the-noi-that.jpg'); ?>');"></div>
+<div class="pp-hero-gmf__media" style="background-image:url('<?php echo sgh_img('godmother-friendship/godmother-friendship-thumbnail-project-cover.webp'); ?>');"></div>
 <div class="pp-hero-gmf__overlay" aria-hidden="true"></div>
 <div class="pp-ambient-glow-gmf pp-ambient-glow-gmf--top-left" aria-hidden="true"></div>
 <div class="pp-ambient-glow-gmf pp-ambient-glow-gmf--bottom-right" aria-hidden="true"></div>
@@ -37,6 +37,7 @@ $uri = get_template_directory_uri();
 </svg>
 </div>
 
+<!-- Removed text content overlay as the background image already contains baked-in titles
 <div class="pp-hero-gmf__content scroll-reveal">
 <div class="pp-hero-gmf__badge" aria-hidden="true">
 <svg viewBox="0 0 24 24" fill="currentColor">
@@ -50,4 +51,5 @@ GodMother Friendship
 </h1>
 <div class="pp-hero-gmf__divider" aria-hidden="true"></div>
 </div>
+-->
 </section>

@@ -1,7 +1,7 @@
 <?php
 /**
  * Single Project Template — KDL RỪNG THÔNG NÚI VOI
- * Thumbnail: saigonhoreca/SGH-banner-02-mobile-150x150.webp
+ * Thumbnail: du-an-kdl-rung-thong-nui-voi-cua-saigonhoreca/du-an-kdl-rung-thong-nui-voi-cua-saigonhoreca-thumbnail-project-cover.webp
  *
  * Auto-routed via inc/core/pillar-routes.php for /du-an/du-an-kdl-rung-thong-nui-voi-cua-saigonhoreca/.
  *

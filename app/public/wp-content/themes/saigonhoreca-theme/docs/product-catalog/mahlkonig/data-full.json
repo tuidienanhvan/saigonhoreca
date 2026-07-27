@@ -1,0 +1,930 @@
+{
+  "research_date": "2026-07-18",
+  "source_note": "Deep-crawl website chính hãng Mahlkönig — bản US Shopify store www.mahlkoenig.us. Phương pháp: (1) đọc sitemap index (sitemap_products_1.xml, ~351 URL /products/) và trang /collections, /collections/all, /collections/grinders để liệt kê toàn bộ slug sản phẩm thật (không chỉ menu điều hướng chính, vì nhiều model — đặc biệt dòng Legacy — bị ẩn khỏi nav nhưng trang sản phẩm vẫn sống); (2) WebFetch từng trang sản phẩm để lấy mô tả, thông số kỹ thuật, trạng thái tồn kho; (3) curl trực tiếp lấy HTML thô (khắc phục hạn chế của lần cào trước 2026-07-14 — WebFetch tự động convert HTML→markdown làm RỚT MẤT thẻ <head>) để trích CHÍNH XÁC <title>, <meta name=\"description\">, giá JSON-LD (\"price\":...). Kết quả: toàn bộ 15 model hiện hành ĐỀU CÓ meta description thật (đã sai trong lần cào trước — không phải site thiếu thẻ, mà công cụ cào bị mất dữ liệu). 19 model Legacy có meta description dạng chuẩn hoá \"{Tên model}, legacy coffee grinder from Mahlkoenig\" — đây LÀ nội dung thật trên trang, không phải do thiếu sót. Phát hiện thêm: nhóm 'Industrial Grinders' (DK15, DK27) — 2 model công suất lớn (2200W/5500W, đĩa 130mm/180mm) dùng cho xưởng rang cỡ nhỏ/vừa, xuất hiện trong danh mục 'Current Professional Grinders' trên trang /collections nhưng KHÔNG có trong menu điều hướng chính lẫn trong nghiên cứu 2026-07-14. Nhóm Legacy được xác nhận đầy đủ 19 model qua WebFetch trực tiếp từng trang sản phẩm (mỗi trang đều có banner rõ ràng '[Tên model] grinder model is no longer available') — nhiều hơn nhiều so với 6 model chỉ suy đoán qua WebSearch ở lần cào trước, và có kèm thông số kỹ thuật đầy đủ cho phần lớn model (trừ K60 ES, K501, FCG 2.0, FCG 6.0, ProM/ProM Espresso, Kenia/Guatemala — các trang này không công bố bảng thông số).",
+  "brand": "Mahlkönig",
+  "groups": [
+    {
+      "group_name": "Commercial Espresso Grinders (Grind-by-Sync)",
+      "group_name_vi": "Máy Xay Espresso Thương Mại (dòng Grind-by-Sync)",
+      "source_urls": [
+        "https://www.mahlkoenig.us/collections/grinders",
+        "https://www.mahlkoenig.us/pages/grind-by-sync-espresso-grinders"
+      ],
+      "models": [
+        {
+          "model": "E65W GbS",
+          "title": "E65W GbS Precise Commercial Espresso Grinder",
+          "description_en": "The E65W Grind-by-Sync is a smart, compact commercial espresso grinder with precise burr adjustments, dose control, and seamless sync for perfect extractions.",
+          "specs": {
+            "burr_diameter_mm": 65,
+            "burr_material": "special steel",
+            "motor_power_w": "580W (110-127V, 60Hz); 440W (220-240V); 550-700W (100V)",
+            "hopper_capacity_g": "~1200 (standard); optional 250 hoặc 1800",
+            "dimensions_cm_whd": "19.5 x 62 x 28.3",
+            "weight_kg": "12.2 net / 14 gross",
+            "grinding_capacity": "4-5 g/s (50Hz); 5-6 g/s (60Hz) @ 250µm",
+            "burr_life_kg": "~800 (median setting)",
+            "dosing_method": "Grind-by-Weight (cân điện tử tích hợp) + Grind-by-Sync"
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "image_url": "https://www.mahlkoenig.us/cdn/shop/files/E65W-GbS-Black-sq_700x700.png?v=1751585381",
+          "source_url": "https://www.mahlkoenig.us/products/e65w-grind-by-sync",
+          "seo_title": "E65W GbS Precise Commercial Espresso Grinder | Mahlkönig USA",
+          "seo_description": "The E65W Grind-by-Sync is a smart, compact commercial espresso grinder with precise burr adjustments, dose control, and seamless sync for perfect extractions.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/mahlkonig/E65W-GbS-Black-sq_700x700.png"
+        },
+        {
+          "model": "E65T GbS",
+          "title": "E65T GbS Compact Timed Espresso Grinder",
+          "description_en": "E65T GbS is the compact espresso grinder redefining efficiency. This timed grinder features Grind-by-Sync technology for fast, consistent espresso shots.",
+          "specs": {
+            "burr_diameter_mm": 65,
+            "burr_material": "special steel",
+            "motor_power_w": "580W (110-127V, 60Hz)",
+            "hopper_capacity_g": "~1200 (standard); optional 250 hoặc 1800",
+            "dimensions_cm_whd": "19.5 x 62 x 28.3",
+            "weight_kg": "12.2 net / 14 gross",
+            "grinding_capacity": "5-6 g/s @ 250µm (60Hz)",
+            "burr_life_kg": "~800 (median setting)",
+            "dosing_method": "Timed (định lượng theo thời gian) + Grind-by-Sync"
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "image_url": "https://www.mahlkoenig.us/cdn/shop/files/E65T-GbS-Black-sq_700x700.png?v=1751585288",
+          "source_url": "https://www.mahlkoenig.us/products/e65t-grind-by-sync",
+          "seo_title": "E65T GbS | Compact Timed Espresso Grinder | Mahlkönig USA",
+          "seo_description": "E65T GbS is the compact espresso grinder redefining efficiency. This timed grinder features Grind-by-Sync technology for fast, consistent espresso shots.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/mahlkonig/E65T-GbS-Black-sq_700x700.png"
+        },
+        {
+          "model": "E80W GbS",
+          "title": "E80W GbS High-Volume Commercial Espresso Grinder",
+          "description_en": "The E80W GbS espresso grinder delivers exceptional grinding quality for busy environments. Featuring Grind-by-Weight and The Sync System, it ensures precision and efficiency.",
+          "specs": {
+            "burr_diameter_mm": 80,
+            "burr_material": "cast steel, special burrs",
+            "motor_power_w": "845W (110-127V, 60Hz); 520-600W (220-240V, 50/60Hz)",
+            "hopper_capacity_g": "~1800",
+            "dimensions_cm_whd": "24 x 63 x 34",
+            "weight_kg": "18 net",
+            "grinding_capacity": "6-7 g/s @ 250µm (50Hz); 7-8 g/s (60Hz)",
+            "burr_life_kg": "~1500 (median setting)",
+            "dosing_method": "Grind-by-Weight + Grind-by-Sync"
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "image_url": "https://www.mahlkoenig.us/cdn/shop/files/E80W-GbS-Black-sq_700x700.png?v=1751585551",
+          "source_url": "https://www.mahlkoenig.us/products/e80w-grind-by-sync",
+          "seo_title": "E80W GbS High-Volume Commercial Espresso Grinder | Mahlkönig USA",
+          "seo_description": "The E80W GbS espresso grinder delivers exceptional grinding quality for busy environments. Featuring Grind-by-Weight and The Sync System, it ensures precision and efficiency.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/mahlkonig/E80W-GbS-Black-sq_700x700.png"
+        },
+        {
+          "model": "E80T GbS",
+          "title": "E80T GbS High Volume Timed Espresso Grinder",
+          "description_en": "The E80T GbS is the ultimate high volume timed grinder. Featuring powerful burrs and Grind-by-Sync automation, this espresso grinder delivers unmatched speed.",
+          "specs": {
+            "burr_diameter_mm": 80,
+            "burr_material": "special steel",
+            "motor_power_w": "845W (110-127V, 60Hz); 520-600W (220-240V, 50/60Hz)",
+            "hopper_capacity_g": "~1800",
+            "dimensions_cm_whd": "24 x 63 x 34",
+            "weight_kg": "18 net",
+            "grinding_capacity": "7-8 g/s @ 250µm (60Hz)",
+            "dosing_method": "Timed + Grind-by-Sync"
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "image_url": "https://www.mahlkoenig.us/cdn/shop/files/E80T-GbS-Black-sq_700x700.png?v=1751584969",
+          "source_url": "https://www.mahlkoenig.us/products/e80t-grind-by-sync",
+          "seo_title": "E80T GbS | High Volume Timed Espresso Grinder | Mahlkönig USA",
+          "seo_description": "The E80T GbS is the ultimate high volume timed grinder. Featuring powerful burrs and Grind-by-Sync automation, this espresso grinder delivers unmatched speed.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/mahlkonig/E80T-GbS-Black-sq_700x700.png"
+        },
+        {
+          "model": "E80S",
+          "title": "E80S Espresso Grinder",
+          "description_en": "For coffee shops and baristas looking for quality grinding results. The E80S provides timed dosing with speed, effortlessly handling high daily capacities.",
+          "specs": {
+            "burr_diameter_mm": 80,
+            "burr_material": "special steel",
+            "motor_power_w": "845W (110-127V, 60Hz)",
+            "hopper_capacity_g": "~1800",
+            "dimensions_cm_whd": "24 x 63 x 34",
+            "weight_kg": "17.6 net",
+            "grinding_capacity": "7-8 g/s @ 250µm (60Hz)",
+            "burr_life_kg": "~1500",
+            "dosing_method": "Timed, không app (stepless cơ bản)"
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "image_url": "https://www.mahlkoenig.us/cdn/shop/files/E80S-Blacksq_700x700.webp?v=1766526942",
+          "source_url": "https://www.mahlkoenig.us/products/e80s-grinder",
+          "seo_title": "E80S Espresso Grinder | Mahlkönig USA",
+          "seo_description": "For coffee shops and baristas looking for quality grinding results. The E80S provides timed dosing with speed, effortlessly handling high daily capacities.",
+          "note": "Không xuất hiện trong menu điều hướng chính /collections/all nhưng có trong danh mục 'Current Professional Grinders' của trang /collections (spare parts hiện hành) — xác nhận vẫn là model đang bán, không phải legacy.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/mahlkonig/E80S-Blacksq_700x700.webp"
+        },
+        {
+          "model": "E65S",
+          "title": "E65S Espresso grinder",
+          "description_en": "The E65S is the perfect synergy of proven premium espresso grinding technology and pioneering features, designed to meet the modern demands of coffee professionals around the globe. \"The King of Grinders\" has equipped the new model with a multifunctional push turn button, an innovative icon menu and presets for up to 6 individually programmable recipes. The modern slim body with a cutting-edge multi-color design features first class components and coatings for a premium look and feel. But its design pleases more than just the eye: the E65S produces the most pleasant and silent grinding, while its overall construction is robust and well prepared to sustain high workloads. The perfect choice for coffee shops and restaurants.",
+          "specs": {
+            "burr_diameter_mm": 65,
+            "burr_material": "special steel",
+            "motor_power_w": "440W (220-240V); 580W (110-127V); 510W (100V)",
+            "hopper_capacity_g": "~1200 (standard)",
+            "dimensions_cm_whd": "19.5 x 58.3 x 28.3",
+            "weight_kg": "11.2 net",
+            "grinding_capacity": "4-7 g/s (tùy độ nghiền)",
+            "burr_life_kg": "~800 (median setting)",
+            "recipes": "Lưu tới 6 công thức xay lập trình riêng"
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "image_url": "https://www.mahlkoenig.us/cdn/shop/files/E65S-Black_560x700.webp?v=1747335535",
+          "source_url": "https://www.mahlkoenig.us/products/e65s",
+          "seo_title": "E65S Espresso grinder | Mahlkönig USA",
+          "seo_description": "The E65S is the perfect synergy of proven premium espresso grinding technology and pioneering features, designed to meet the modern demands of coffee professionals around the globe.",
+          "price_note": "JSON-LD price = 0.00 trên trang — không công bố giá công khai, cần liên hệ đại lý (khác các model GbS/GbW khác đều niêm yết giá).",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/mahlkonig/E65S-Black_560x700.webp"
+        }
+      ]
+    },
+    {
+      "group_name": "Industrial Grinders",
+      "group_name_vi": "Máy Xay Công Nghiệp (rang xay số lượng lớn)",
+      "taxonomy_note": "Nhóm MỚI phát hiện qua deep-crawl — không có trong nghiên cứu 2026-07-14 lẫn trong 4 nhóm đã biết trước khi cào. Xác nhận là model HIỆN HÀNH (không phải legacy) qua danh mục 'Current Professional Grinders' trên trang /collections — cùng nhóm với E65W/E80W GbS, EK43, Guatemala, E80S, E65S. Dùng cho xưởng rang cà phê nhỏ/vừa cần xay số lượng lớn liên tục (105-300 kg/giờ), không phải máy xay quầy bar.",
+      "source_urls": [
+        "https://www.mahlkoenig.us/products/dk-15",
+        "https://www.mahlkoenig.us/products/dk-27",
+        "https://www.mahlkoenig.us/collections"
+      ],
+      "models": [
+        {
+          "model": "DK15",
+          "title": "DK15 Industrial grinder",
+          "description_en": "The DK15 provides smaller roasters with the perfect entry to industrial grinding. It features an even premium grinding quality at up to 105 kg to 200 kg per hour, produced by its wear-resistant burrs. Powerful three-phase motors with surface cooling and high starting torque – suitable for continuous operation. Service-free, constantly greased bearings. Ground material container (capacity 200 l).",
+          "specs": {
+            "burr_diameter_mm": 130,
+            "burr_material_options": "special steel, cast steel, hoặc tungsten carbide",
+            "motor_power_w": 2200,
+            "rpm": "1440 (50Hz); 1730 (60Hz)",
+            "hopper_capacity_kg": "~30",
+            "grinding_capacity_fine_kg_h": "105-200 (tùy loại burr)",
+            "grinding_capacity_medium_kg_h": "115-220 (tùy loại burr)",
+            "dimensions_cm_whd": "79 x 155 x 123 (kèm chân đế)",
+            "container_capacity_l": 200,
+            "weight_kg": "132 (kèm chân đế)",
+            "voltage": "380-415V hoặc 208-220V, 50/60Hz, 3 pha"
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "image_url": "https://www.mahlkoenig.us/cdn/shop/files/Mahlkoenig_DK15_industrial_grinder_1400_3ce69d5f-cfb8-4b8f-b194-952c5a78e9c0_560x700.png?v=1714398824",
+          "source_url": "https://www.mahlkoenig.us/products/dk-15",
+          "seo_title": "DK15 Industrial grinder | Mahlkönig USA",
+          "seo_description": "The DK15 provides smaller roasters with the perfect entry to industrial grinding. It features an even premium grinding quality at up to 105 kg to 200 kg per hour, produced by its wear-resistant burrs. Outstanding even grinding quality. Wear-resistant premium burrs. Powerful three-phase motors with surface cooling and high starting torque – suitable for continuous operation. Service-free, constantly greased bearings. Ground material container (capacity 200 l).",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/mahlkonig/DK15.png"
+        },
+        {
+          "model": "DK27",
+          "title": "DK27 Industrial grinder",
+          "description_en": "The DK27 levels up the capacities of your premium pre-ground coffee production to 230 kg to 300 kg per hour and is suitable for continuous operation, as for example in automated production lines. Very powerful three-phase motors with surface cooling and high starting torque - suitable for continuous operation. Service-free, constantly greased bearings. Two additional fans to cool the motor. Ground material container (capacity 200 l).",
+          "specs": {
+            "burr_diameter_mm": 180,
+            "motor_power_w": 5500,
+            "rpm": "980 (50Hz); 1160 (60Hz)",
+            "hopper_capacity_kg": "~30",
+            "grinding_capacity_medium_kg_h": "250-300 (tùy loại burr)",
+            "dimensions_cm_whd": "79 x 160 x 123 (kèm chân đế)",
+            "container_capacity_l": 200,
+            "weight_kg": "155-158 (kèm chân đế)",
+            "voltage": "380-415V hoặc 208-220V, 50/60Hz, 3 pha",
+            "burr_life": "Cast steel: 15-20 tấn; Special steel: 10-15 tấn; Tungsten carbide: 35-40 tấn"
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "image_url": "https://www.mahlkoenig.us/cdn/shop/files/Mahlkoenig_DK27_industrial_grinder_1400_97cd401c-1af1-4651-8513-9e01778bae39_560x700.png?v=1714398828",
+          "source_url": "https://www.mahlkoenig.us/products/dk-27",
+          "seo_title": "DK27 Industrial grinder | Mahlkönig USA",
+          "seo_description": "The DK27 levels up the capacities of your premium pre-ground coffee production to 230 kg to 300 kg per hour and is suitable for continuous operation, as for example in automated productions lines. Outstanding even grinding quality. Wear-resistant premium burrs. Very powerful three-phase motors with surface cooling and high starting torque - suitable for continuous operation. Service-free, constantly greased bearings. Two additional fans to cool the motor. Ground material container (capacity 200 l).",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/mahlkonig/DK27.png"
+        }
+      ]
+    },
+    {
+      "group_name": "Allround / Shop Grinders",
+      "group_name_vi": "Máy Xay Đa Năng / Cửa Hàng (Allround)",
+      "source_urls": [
+        "https://www.mahlkoenig.us/collections/grinders"
+      ],
+      "models": [
+        {
+          "model": "EK43",
+          "title": "EK43 Allround Shop Coffee Grinder",
+          "description_en": "Shop the Mahlkönig EK43 grinder, delivering exceptional grind consistency, high performance and precision for espresso, filter and specialty coffee.",
+          "specs": {
+            "burr_diameter_mm": 98,
+            "burr_material": "premium cast steel, gắn dọc, độ cứng 64-66 HRC, phun bi thủy tinh",
+            "motor_power_w": 1300,
+            "rpm": "lên tới 1760 (60Hz)",
+            "hopper_capacity_g": "~1200 (standard); tùy chọn 250 hoặc 1800",
+            "dimensions_cm_whd": "23 x 82.8 x 41",
+            "weight_kg": "26 net",
+            "grinding_capacity": "19-21 g/s (filter); 10-12 g/s (Turkish fine)",
+            "burr_life_kg": "~6000 (median setting)"
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "image_url": "https://www.mahlkoenig.us/cdn/shop/files/EK43-Black-square_700x700.webp?v=1775605273",
+          "source_url": "https://www.mahlkoenig.us/products/ek43",
+          "seo_title": "EK43 Allround Shop Coffee Grinder | Mahlkönig USA",
+          "seo_description": "Shop the Mahlkönig EK43 grinder, delivering exceptional grind consistency, high performance and precision for espresso, filter and specialty coffee.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/mahlkonig/EK43-Black-square_700x700.webp"
+        },
+        {
+          "model": "EK43 S",
+          "title": "EK43 S Allround Shop Grinder",
+          "description_en": "The EK43 S provides the powerful performance of Mahlkönig's famous EK43 within a space-saving body, that finally brings premium coffee grinding to the smaller coffee bars, too. The EK43 rules the international coffee specialty industry with high performance, reliability and premium grinding results. Its outstanding grinding profile remains unmatched.",
+          "specs": {
+            "burr_diameter_mm": 98,
+            "burr_material": "premium cast steel",
+            "motor_power_w": "1300 (nominal max)",
+            "hopper_capacity_g": "~250 (standard); tối đa 1800 tùy chọn",
+            "dimensions_cm_whd": "23 x 68 x 41",
+            "weight_kg": "24.5 net",
+            "grinding_capacity": "19-21 g/s (standard); 10-12 g/s (Turkish fine)",
+            "burr_life_kg": "~6000 (median setting)",
+            "voltages": "100-120V hoặc 200-240V, 50/60Hz"
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "image_url": "https://www.mahlkoenig.us/cdn/shop/files/EK43S-Black-square_700x700.webp?v=1762998209",
+          "source_url": "https://www.mahlkoenig.us/products/ek43-s",
+          "seo_title": "EK43 S Allround Shop Grinder | Mahlkönig USA",
+          "seo_description": "The EK43 S provides the powerful performance of Mahlkönig's famous EK43 within a space-saving body, that finally brings premium coffee grinding to the smaller coffee bars, too.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/mahlkonig/EK43S-Black-square_700x700.webp"
+        },
+        {
+          "model": "EK Omnia",
+          "title": "EK Omnia Allround Coffee Grinder",
+          "description_en": "More convenience and a faster workflow. Built on the EK43 legacy, the EK Omnia grinds espresso and filter with incredible precision and automatic recipe recall.",
+          "specs": {
+            "burr_diameter_mm": 98,
+            "burr_material": "cast steel (sản xuất tại Đức)",
+            "burr_life_kg": "~6000 (median setting)",
+            "motor": "750W brushless DC (BLDC)",
+            "hopper_capacity_g": "~250",
+            "grinding_capacity": "11.5-13.5 g/s",
+            "dimensions_cm_whd": "21.4 x 66.3 x 39",
+            "weight_kg": "24 net",
+            "voltages": "200-240V 50Hz hoặc 100-120V 60Hz",
+            "features": "Library Mode lưu 10 công thức tự động chỉnh burr; 3 chế độ Classic/Time/Library; màn cảm ứng, tay cầm portafilter gắn nam châm; giải iF Design Award 2024 + UX Design Award Gold"
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "image_url": "https://www.mahlkoenig.us/cdn/shop/files/EKOmnia-BlackPF_560x700.webp?v=1781545862",
+          "source_url": "https://www.mahlkoenig.us/products/ek-omnia",
+          "seo_title": "EK Omnia Allround Coffee Grinder | Mahlkönig USA",
+          "seo_description": "More convenience and a faster workflow. Built on the EK43 legacy, the EK Omnia grinds espresso and filter with incredible precision and automatic recipe recall.",
+          "price_note": "JSON-LD price = 0.00 — không công bố giá công khai, cần liên hệ đại lý.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/mahlkonig/EKOmnia-BlackPF_560x700.webp"
+        },
+        {
+          "model": "Guatemala",
+          "title": "Guatemala Allround Shop Coffee Grinder",
+          "description_en": "The Mahlkönig Guatemala is a versatile commercial filter grinder for shops, roasteries and coffee labs demanding retail bag grinding or batch-brew service.",
+          "specs": {
+            "burr_diameter_mm": 71,
+            "burr_material": "flat special-steel, gắn dọc",
+            "motor_power_w": 1100,
+            "hopper_capacity_g": "~900",
+            "dimensions_cm_whd": "22 x 62 x 33",
+            "weight_kg": "28 net / 30 gross",
+            "grinding_capacity": "800-900 g/min (13-15 g/s)",
+            "grind_settings": "20 nấc cố định, từ espresso tới cold brew",
+            "burr_life_kg": "~3000 (median setting)"
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "image_url": "https://www.mahlkoenig.us/cdn/shop/files/Guatemala-Blacksq_700x700.webp?v=1759963183",
+          "source_url": "https://www.mahlkoenig.us/products/guatemala-2-0",
+          "seo_title": "Guatemala Allround Shop Coffee Grinder | Mahlkönig USA",
+          "seo_description": "The Mahlkönig Guatemala is a versatile commercial filter grinder for shops, roasteries and coffee labs demanding retail bag grinding or batch-brew service.",
+          "url_slug_note": "URL slug là 'guatemala-2-0' — tên hiển thị trên trang chỉ ghi 'Guatemala' (bản kế nhiệm Kenia/Guatemala đời cũ, xem nhóm Legacy).",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/mahlkonig/Guatemala-Blacksq_700x700.webp"
+        }
+      ]
+    },
+    {
+      "group_name": "Home Grinders",
+      "group_name_vi": "Máy Xay Gia Dụng (Home)",
+      "source_urls": [
+        "https://www.mahlkoenig.us/collections/home-grinder"
+      ],
+      "models": [
+        {
+          "model": "E64 WS",
+          "title": "E64 WS Home Espresso Grinder",
+          "description_en": "Meet the Mahlkönig E64 WS, a compact home espresso grinder with Grind-by-Weight precision, smart Sync connectivity, and professional-grade performance.",
+          "specs": {
+            "burr_diameter_mm": 64,
+            "burr_material": "special steel",
+            "motor_power_w": 200,
+            "hopper_capacity_g": "~250",
+            "dimensions_cm_whd": "15.4 x 39 x 21.8",
+            "weight_kg": "5.8 net",
+            "grinding_speed": "tối thiểu 3 g/s cho espresso",
+            "idle_speed_rpm": 1950,
+            "features": "Grind-by-Weight (chính xác 0.1g), Grind-by-Sync kết nối app điều khiển đồng bộ máy pha espresso"
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "image_url": "https://www.mahlkoenig.us/cdn/shop/files/E64-WS-Black-square_700x700.webp?v=1763414639",
+          "source_url": "https://www.mahlkoenig.us/products/e64-ws-espresso-home-grinder",
+          "seo_title": "E64 WS Home Espresso Grinder | Coffee Grinder | Mahlkönig USA",
+          "seo_description": "Meet the Mahlkönig E64 WS, a compact home espresso grinder with Grind-by-Weight precision, smart Sync connectivity, and professional-grade performance.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/mahlkonig/E64-WS-Black-square_700x700.webp"
+        },
+        {
+          "model": "X64 SD",
+          "title": "X64 SD Single Dose Home Coffee Grinder",
+          "description_en": "The Mahlkönig X64 SD is a compact single dose coffee grinder with zero retention and stepless adjustment for fresh, precise espresso and filter brewing.",
+          "specs": {
+            "burr_diameter_mm": 64,
+            "burr_material": "flat, special steel",
+            "motor_power_w": 200,
+            "hopper_capacity_g": "30 (standard); 100 (có extension); 80 (có bellow)",
+            "dimensions_cm_whd": "14.3 x 24.9 x 25.3",
+            "weight_kg": "4.8 net",
+            "grinding_speed": "2.5-6 g/s (mịn tới thô); tối thiểu 3 g/s cho espresso",
+            "burr_life_kg": "~500",
+            "voltages": "120V/60Hz, 220-240V/50-60Hz, 100V/50-60Hz"
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "image_url": "https://www.mahlkoenig.us/cdn/shop/files/Mahlkonig-X64-SD-Black-Front-Side-sq_700x700.webp?v=1768603217",
+          "source_url": "https://www.mahlkoenig.us/products/x64-sd-single-dose-home-grinder",
+          "seo_title": "X64 SD Single Dose Home Coffee Grinder | Mahlkönig USA",
+          "seo_description": "The Mahlkönig X64 SD is a compact single dose coffee grinder with zero retention and stepless adjustment for fresh, precise espresso and filter brewing.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/mahlkonig/Mahlkonig-X64-SD-Black-Front-Side-sq_700x700.webp"
+        },
+        {
+          "model": "X54",
+          "title": "X54 Allround Home Coffee Grinder",
+          "description_en": "Mahlkönig X54 Allround Home Grinder is the home baristas gateway to pro-level grinding. From espresso to cold brew at the turn of a dial. For the coffee lover that wants to make the most of every coffee moment at home, the X54 Allround Home is a user-friendly, powerful, and flexible companion.",
+          "specs": {
+            "burr_diameter_mm": 54,
+            "burr_material": "special steel, flat",
+            "burr_life_kg": "~500 (median setting)",
+            "motor_power_w": "120 (110-120V, 220-240V, hoặc 100V)",
+            "motor_lifespan": "25,000+ shots (~30 năm tại 2 shots/ngày)",
+            "hopper_capacity_g": "250 (standard); 500 (tùy chọn)",
+            "grinding_speed": "1.3-3.2 g/s trung bình",
+            "noise_level_db": "dưới 70 dB(A)",
+            "dimensions_cm_whd_250g": "19 x 37.8 x 28",
+            "weight_kg": "5.1 net",
+            "finishes": "Black, White, Black Chrome"
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "image_url": "https://www.mahlkoenig.us/cdn/shop/files/Mahlkoenig_X54_Allround_Home_Grinder_black_front_main_700x700.webp?v=1765319236",
+          "source_url": "https://www.mahlkoenig.us/products/x54-allround-home-grinder",
+          "seo_title": "X54 Allround Home Coffee Grinder | Mahlkönig USA",
+          "seo_description": "Mahlkönig X54 Allround Home Grinder is the home baristas gateway to pro-level grinding. From espresso to cold brew at the turn of a dial.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/mahlkonig/X54.webp"
+        }
+      ]
+    },
+    {
+      "group_name": "Legacy / Discontinued Models",
+      "group_name_vi": "Model Cũ Đã Ngừng Bán",
+      "taxonomy_note": "19 model — TẤT CẢ đã xác nhận trực tiếp qua WebFetch từng trang sản phẩm còn sống trên mahlkoenig.us (không phải suy đoán qua WebSearch như lần cào 2026-07-14). Mỗi trang đều có banner rõ ràng dạng '[Tên model] grinder model is no longer available. Image is for reference only.' Ảnh vẫn là ảnh sản phẩm thật do hãng lưu trữ (không phải placeholder), dùng để tham khảo lịch sử/hỗ trợ phụ tùng — KHÔNG dùng để bán hàng mới trên site saigonhoreca.local. Giá: KHÔNG model nào trong nhóm này công bố giá (đúng bản chất legacy).",
+      "source_urls": [
+        "https://www.mahlkoenig.us/collections"
+      ],
+      "models": [
+        {
+          "model": "PEAK",
+          "title": "PEAK Espresso grinder",
+          "description_en": "PEAK Espresso grinder, legacy coffee grinder from Mahlkoenig. Professional espresso grinder featuring premium cast steel burrs designed for precise grinding with minimal noise and heat generation, temperature control, OLED display, accurate dose management.",
+          "specs": {
+            "burr_diameter_mm": 80,
+            "burr_material": "cast steel",
+            "rpm": "900 (50Hz); 1110 (60Hz)",
+            "motor_power_w": 690,
+            "grinding_capacity": "~3 g/s",
+            "hopper_capacity_g": "~1500 (tùy chọn 500g và 800g)",
+            "dimensions_cm_whd": "24 x 55 x 32",
+            "weight_kg": "15.4 net / 16 gross",
+            "voltages": "200-240V hoặc 100-127V, 50/60Hz",
+            "features": "Vent kép làm mát; dose adjustment 0.01 giây; màn OLED góc nhìn 160°"
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "status": "discontinued",
+          "image_url": "https://www.mahlkoenig.us/cdn/shop/files/Mahlkoenig_PEAK_espresso_grinder_1400_af109e58-f152-4b2c-97de-25b833894ebc_560x700.png?v=1714398918",
+          "source_url": "https://www.mahlkoenig.us/products/peak",
+          "seo_title": "PEAK Espresso grinder | Mahlkönig USA",
+          "seo_description": "PEAK Espresso grinder, legacy coffee grinder from Mahlkoenig",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/mahlkonig/PEAK.png"
+        },
+        {
+          "model": "K30 2.0",
+          "title": "K30 2.0 Espresso grinder",
+          "description_en": "K30 2.0 Espresso grinder, legacy coffee grinder from Mahlkoenig. Professional espresso grinder with a 4.3\" touchscreen, automatic portafilter detection, stepless adjustment, and operation logging.",
+          "specs": {
+            "burr_diameter_mm": 65,
+            "burr_material": "special steel",
+            "motor_power_w": 850,
+            "rpm": "1350 (50Hz); 1650 (60Hz)",
+            "grinding_capacity": "~4 g/s",
+            "hopper_capacity_g": "~1500",
+            "dimensions_cm_whd": "24 x 57 x 31",
+            "weight_kg": "13.5 net",
+            "voltages": "100-127V hoặc 220-240V"
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "status": "discontinued",
+          "image_url": "https://www.mahlkoenig.us/cdn/shop/files/Mahlkoenig_k30_2.0_espresso_grinder_1400_4cfe6371-d670-4b28-a1e0-816f2ee4452a_560x700.png",
+          "source_url": "https://www.mahlkoenig.us/products/k30-2",
+          "seo_title": "K30 2.0 Espresso grinder | Mahlkönig USA",
+          "seo_description": "K30 2.0 Espresso grinder, legacy coffee grinder from Mahlkoenig",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/mahlkonig/Mahlkoenig_k30_2.png"
+        },
+        {
+          "model": "K30 VARIO Air",
+          "title": "K30 VARIO Air Espresso grinder",
+          "description_en": "K30 VARIO Air Espresso grinder, legacy coffee grinder from Mahlkoenig. Grind-on-demand, hands-free operation by mounting the portafilter, programmable single/double shot buttons, stepless adjustment, electronic cooling fan. Winner of the Red Dot Design Award.",
+          "specs": {
+            "burr_diameter_mm": 65,
+            "burr_material": "special steel",
+            "motor_power_w": 850,
+            "rpm": "1350 (50Hz); 1650 (60Hz)",
+            "hopper_capacity_g": "~1500",
+            "grinding_capacity": "~4 g/s",
+            "dimensions_cm_whd": "24 x 55 x 32",
+            "weight_kg": "13 net",
+            "voltages": "220-240V hoặc 100-127V, 50/60Hz"
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "status": "discontinued",
+          "image_url": "https://www.mahlkoenig.us/cdn/shop/files/Mahlkoenig_K30_vario_Air_espresso_grinder_1400_dff73171-5ab3-4a82-a372-ab50e8418036_560x700.png",
+          "source_url": "https://www.mahlkoenig.us/products/k30-vario-air",
+          "seo_title": "K30 VARIO Air Espresso grinder | Mahlkönig USA",
+          "seo_description": "K30 VARIO Air Espresso grinder, legacy coffee grinder from Mahlkoenig",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/mahlkonig/K30_VARIO_Air.png"
+        },
+        {
+          "model": "K30 TWIN",
+          "title": "K30 TWIN Espresso grinder",
+          "description_en": "K30 TWIN Espresso grinder, legacy coffee grinder from Mahlkoenig. Twin grinder saving ~30% floor space versus two standalone K30 units, grind-on-demand directly into the portafilter, stepless adjustment, cooling fan, illuminated display.",
+          "specs": {
+            "burr_diameter_mm": "2 x 65",
+            "burr_material": "special steel",
+            "motor_power_w": "2 x 850",
+            "rpm": "1350 (50Hz); 1650 (60Hz)",
+            "hopper_capacity_g": "2 x ~800",
+            "grinding_capacity": "~4 g/s mỗi burr",
+            "dimensions_cm_whd": "37 x 56 x 30",
+            "weight_kg": "26 net / 29 gross",
+            "voltages": "100-127V hoặc 220-240V, 50/60Hz"
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "status": "discontinued",
+          "image_url": "https://www.mahlkoenig.us/cdn/shop/files/Mahlkoenig_K30_Twin_espresso_grinder_1400_81b92284-6a1d-4c55-b1e9-fbd4ea08ebee_560x700.png?v=1714398881",
+          "source_url": "https://www.mahlkoenig.us/products/k30-twin",
+          "seo_title": "K30 TWIN Espresso grinder | Mahlkönig USA",
+          "seo_description": "K30 TWIN Espresso grinder, legacy coffee grinder from Mahlkoenig",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/mahlkonig/K30_TWIN.png"
+        },
+        {
+          "model": "K30 TWIN 2.0",
+          "title": "K30 TWIN 2.0 Espresso grinder",
+          "description_en": "K30 TWIN 2.0 Espresso grinder, legacy coffee grinder from Mahlkoenig. Twin grinder with a 4.3\" touchscreen, saving ~30% floor space versus two standalone K30 units.",
+          "specs": {
+            "burr_diameter_mm": "2 x 65",
+            "burr_material": "special steel",
+            "motor_power_w": "2 x 850",
+            "rpm": "1350 (50Hz); 1650 (60Hz)",
+            "hopper_capacity_g": "2 x ~800",
+            "grinding_capacity": "2 x ~4 g/s",
+            "dimensions_cm_whd": "37 x 56 x 30",
+            "weight_kg": "26 net / 29 gross"
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "status": "discontinued",
+          "image_url": "https://www.mahlkoenig.us/cdn/shop/files/Mahkoenig_K30_Twin_2.0_espresso_grinder_1400_228f432b-2eb7-4a31-b999-ecd56a103278_560x700.png?v=1714398887",
+          "source_url": "https://www.mahlkoenig.us/products/k30-twin-2",
+          "seo_title": "K30 TWIN 2.0 Espresso grinder | Mahlkönig USA",
+          "seo_description": "K30 TWIN 2.0 Espresso grinder, legacy coffee grinder from Mahlkoenig",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/mahlkonig/Mahkoenig_K30_Twin_2.png"
+        },
+        {
+          "model": "K30 TWIN 2.0 Hybrid",
+          "title": "K30 TWIN 2.0 Hybrid Espresso grinder",
+          "description_en": "K30 TWIN 2.0 Hybrid Espresso grinder, legacy coffee grinder from Mahlkoenig. Hybrid twin configuration — one side espresso, one side filter, in one space-saving body, with a 4.3\" touchscreen.",
+          "specs": {
+            "burr_diameter_mm": "2 x 65",
+            "burr_material": "special steel",
+            "motor_power_w": "2 x 850",
+            "rpm": "1350 (50Hz); 1650 (60Hz)",
+            "hopper_capacity_g": "2 x ~800",
+            "grinding_capacity": "4.0 g/s (espresso); 7.2 g/s (filter)",
+            "dimensions_cm_whd": "37 x 56 x 30",
+            "weight_kg": "26 net / 29 gross",
+            "voltages": "100-127V hoặc 220-240V"
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "status": "discontinued",
+          "image_url": "https://www.mahlkoenig.us/cdn/shop/files/Mahlkoenig_K30_Twin_2.0_Hybrid_grinder_1400_99dfc067-ddf5-462a-b899-45559244aecc_560x700.png?v=1714398893",
+          "source_url": "https://www.mahlkoenig.us/products/k30-twin-2-hybrid",
+          "seo_title": "K30 TWIN 2.0 Hybrid Espresso grinder | Mahlkönig USA",
+          "seo_description": "K30 TWIN 2.0 Hybrid Espresso grinder, legacy coffee grinder from Mahlkoenig",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/mahlkonig/Mahlkoenig_K30_Twin_2.png"
+        },
+        {
+          "model": "K30 ES",
+          "title": "K30 ES / VARIO Espresso grinder",
+          "description_en": "K30 ES / VARIO Espresso grinder, legacy coffee grinder from Mahlkoenig. Grind-on-demand directly into the portafilter, programmable electronic controls, auto-start when the portafilter is mounted (hands-free). K30 ES: 21 fixed steps; K30 VARIO: stepless.",
+          "specs": {
+            "burr_diameter_mm": 65,
+            "burr_material": "special steel",
+            "motor_power_w": 850,
+            "rpm": "1350 (50Hz); 1650 (60Hz)",
+            "hopper_capacity_g": "~1500",
+            "grinding_capacity": "~4 g/s",
+            "dimensions_cm_whd": "24 x 55 x 32",
+            "weight_kg": "13 net / 15 gross",
+            "variants": "K30 ES = 21 nấc chỉnh cố định; K30 VARIO = stepless"
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "status": "discontinued",
+          "image_url": "https://www.mahlkoenig.us/cdn/shop/files/K30_ES_vario_grinder_1400_2e5ec467-7302-4505-9d8e-ef9a4983e2f3_560x700.png",
+          "source_url": "https://www.mahlkoenig.us/products/k30-es-vario",
+          "seo_title": "K30 ES / VARIO Espresso grinder | Mahlkönig USA",
+          "seo_description": "K30 ES / VARIO Espresso grinder, legacy coffee grinder from Mahlkoenig",
+          "note": "Ma goc catalog cu gop nhieu bien the ('K30 ES / VARIO') — da tach rieng, dong nay la ma dau tien (K30 ES).",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/mahlkonig/K30_ES.png"
+        },
+        {
+          "model": "K30 VARIO",
+          "title": "K30 ES / VARIO Espresso grinder",
+          "description_en": "K30 ES / VARIO Espresso grinder, legacy coffee grinder from Mahlkoenig. Grind-on-demand directly into the portafilter, programmable electronic controls, auto-start when the portafilter is mounted (hands-free). K30 ES: 21 fixed steps; K30 VARIO: stepless.",
+          "specs": {
+            "burr_diameter_mm": 65,
+            "burr_material": "special steel",
+            "motor_power_w": 850,
+            "rpm": "1350 (50Hz); 1650 (60Hz)",
+            "hopper_capacity_g": "~1500",
+            "grinding_capacity": "~4 g/s",
+            "dimensions_cm_whd": "24 x 55 x 32",
+            "weight_kg": "13 net / 15 gross",
+            "variants": "K30 ES = 21 nấc chỉnh cố định; K30 VARIO = stepless",
+            "Ghi chu bien the": "Stepless grind adjustment variant (vs K30 ES fixed 21-step)"
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "status": "discontinued",
+          "image_url": "https://www.mahlkoenig.us/cdn/shop/files/K30_ES_vario_grinder_1400_2e5ec467-7302-4505-9d8e-ef9a4983e2f3_560x700.png",
+          "source_url": "https://www.mahlkoenig.us/products/k30-es-vario",
+          "seo_title": "K30 ES / VARIO Espresso grinder | Mahlkönig USA",
+          "seo_description": "K30 ES / VARIO Espresso grinder, legacy coffee grinder from Mahlkoenig",
+          "note": "Ma SKU that, bien the cung dong voi K30 ES (nguyen goc catalog gop chung 'K30 ES / VARIO'). Dung chung anh/mo ta voi model dai dien — website hang khong co anh rieng cho tung bien the.",
+          "is_variant_of": "K30 ES",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/mahlkonig/K30_ES.png"
+        },
+        {
+          "model": "K60 ES",
+          "title": "K60 ES Espresso grinder",
+          "description_en": "K60 ES Espresso grinder, legacy coffee grinder from Mahlkoenig. Two independent grinding units in one body for high-volume cafes, ~2 second grind time per 7g espresso shot, programmable single/double shot buttons, shot counter, 5-language menu, separate 1kg hopper per side, saving ~40% floor space versus two standard grinders.",
+          "specs": {
+            "config": "2 bộ xay độc lập trong 1 thân máy",
+            "hopper_capacity_g": "2 x 1000 (mỗi bên riêng biệt)",
+            "cycle_time": "~2 giây cho 1 shot espresso 7g",
+            "note_specs": "Trang sản phẩm KHÔNG công bố burr size/motor power/RPM cụ thể — chỉ có trong tài liệu kỹ thuật tải về (product sheet), không WebFetch được nội dung PDF trong lần cào này."
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "status": "discontinued",
+          "image_url": "https://www.mahlkoenig.us/cdn/shop/files/Mahlkoenig_K60_ES_horeca_grinder_1400_3e53f29e-c3b9-41ff-9687-4d95b4015398_560x700.png",
+          "source_url": "https://www.mahlkoenig.us/products/k60-es",
+          "seo_title": "K60 ES Espresso grinder | Mahlkönig USA",
+          "seo_description": "K60 ES Espresso grinder, legacy coffee grinder from Mahlkoenig",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/mahlkonig/K60_ES.png"
+        },
+        {
+          "model": "EKK43",
+          "title": "EKK43 Allround Shop grinder",
+          "description_en": "EKK43 Allround Shop grinder, legacy coffee grinder from Mahlkoenig. Dual-burr grinder based on the EK43 design, space-saving, used for filter/espresso/Turkish grinding on a single body with 2 separate burr sets.",
+          "specs": {
+            "burr_diameter_mm": "98 (cast steel) x 2",
+            "motor_power_w": 1300,
+            "rpm": "1450 (50Hz); 1760 (60Hz)",
+            "grinding_capacity": "19-21 g/s trung bình",
+            "hopper_capacity_g": "2 x ~1500",
+            "dimensions_cm_whd": "23 x 82.8 x 59",
+            "weight_kg": "28 net / 33 gross",
+            "voltages": "200-240V hoặc 100-120V, 50/60Hz, 1 pha",
+            "certifications": "CE, CB, ETL Safety, ETL Sanitation"
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "status": "discontinued",
+          "image_url": "https://www.mahlkoenig.us/cdn/shop/files/EKK43_allround_grinder_1400_3e9b28c8-25df-4ea5-b087-9c8d957de2ea_560x700.png?v=1714398856",
+          "source_url": "https://www.mahlkoenig.us/products/ekk43",
+          "seo_title": "EKK43 Allround Shop grinder | Mahlkönig USA",
+          "seo_description": "EKK43 Allround Shop grinder, legacy coffee grinder from Mahlkoenig",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/mahlkonig/EKK43.png"
+        },
+        {
+          "model": "VTA 6S",
+          "title": "VTA 6S Shop grinder",
+          "description_en": "VTA 6S Shop grinder, legacy coffee grinder from Mahlkoenig. High-volume commercial grinder, grinds directly into the coffee bag, lever combining bag clamp + power switch, vibrating plate to reduce residue, suitable from Turkish fine to filter grind.",
+          "specs": {
+            "burr_diameter_mm": 120,
+            "burr_material": "special steel",
+            "motor_power_w": 1300,
+            "rpm": "1430 (50Hz); 1725 (60Hz)",
+            "grinding_capacity": "~43 g/s trung bình",
+            "hopper_capacity_g": "~1000 (standard); 3000 (tùy chọn)",
+            "dimensions_cm_whd": "37 x 63 x 38",
+            "weight_kg": "42 net / 46 gross",
+            "voltages": "380-415V, 50/60Hz, 3 pha (standard); 220-240V 1 pha (bản W)",
+            "colors": "Matte black, silver, copper"
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "status": "discontinued",
+          "image_url": "https://www.mahlkoenig.us/cdn/shop/files/VTA6_S_Shop_Grinder_1400_168ec341-0196-4928-9ec8-edc5ff1c5a59_560x700.png?v=1714398938",
+          "source_url": "https://www.mahlkoenig.us/products/vta-6s",
+          "seo_title": "VTA 6S Shop grinder | Mahlkönig USA",
+          "seo_description": "VTA 6S Shop grinder, legacy coffee grinder from Mahlkoenig",
+          "verification_note": "Model 'VTA 6S' được ghi chú CHƯA XÁC MINH trong README.md/data.json (nghiên cứu 2026-07-14) — lần cào này ĐÃ XÁC MINH ĐỘC LẬP qua WebFetch trực tiếp trang sản phẩm sống, có đầy đủ mô tả + thông số kỹ thuật.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/mahlkonig/VTA_6S.png"
+        },
+        {
+          "model": "Tanzania",
+          "title": "Tanzania Shop grinder",
+          "description_en": "Tanzania Shop grinder, legacy coffee grinder from Mahlkoenig. Small/medium shop grinder with a cooling fan to keep the machine cool, magnetic burr retention system (no screws needed), stepless adjustment, bag-clamp lever combined with a tapping lever and a vibrating plate to reduce residue.",
+          "specs": {
+            "burr_diameter_mm": 80,
+            "burr_material": "special steel",
+            "motor_power_w": 590,
+            "idle_speed_rpm": "1370 (50Hz); 1700 (60Hz)",
+            "grinding_capacity": "~13 g/s",
+            "hopper_capacity_g": "~800",
+            "dimensions_cm_whd": "21 x 64 x 30",
+            "weight_kg": "15.5 net",
+            "voltages": "200-240V hoặc 100-120V, 50/60Hz, 1 pha",
+            "colors": "Black, Anthracite"
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "status": "discontinued",
+          "image_url": "https://www.mahlkoenig.us/cdn/shop/files/Mahlkoenig_Tanzania_shop_grinder_1400_27c4388a-7948-469d-a7f0-bc942d136c94_560x700.png",
+          "source_url": "https://www.mahlkoenig.us/products/tanzania",
+          "seo_title": "Tanzania Shop grinder | Mahlkönig USA",
+          "seo_description": "Tanzania Shop grinder, legacy coffee grinder from Mahlkoenig",
+          "verification_note": "Model 'Tanzania' được ghi chú CHƯA XÁC MINH trong README.md/data.json (nghiên cứu 2026-07-14) — lần cào này ĐÃ XÁC MINH ĐỘC LẬP qua WebFetch trực tiếp trang sản phẩm sống, có đầy đủ mô tả + thông số kỹ thuật.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/mahlkonig/Tanzania.png"
+        },
+        {
+          "model": "E65S GbW",
+          "title": "E65S Grind-by-Weight Espresso Grinder",
+          "description_en": "E65S GbW espresso grinder, legacy coffee grinder from Mahlkoenig. A pioneering model in gravimetric (by-weight) dosing technology, high-precision load cell sensor, Disc Distance Detection technology for precise burr gap adjustment, automatic portafilter recognition, illuminated spout, active cooling.",
+          "specs": {
+            "burr_diameter_mm": 65,
+            "burr_material": "special steel",
+            "motor_power_w": "440W (220-240V); 580W (110-127V); 550-700W (100V)",
+            "rpm": "1400 (50Hz); 1700 (60Hz)",
+            "hopper_capacity_g": "~1200",
+            "dimensions_cm_whd": "19.5 x 62 x 28.3",
+            "weight_kg": "12.2 net / 14 gross",
+            "grinding_capacity": "4-5 g/s (50Hz); 5-6 g/s (60Hz) @ 250µm",
+            "burr_life_kg": "~800 (median setting)",
+            "display": "88.3mm độ phân giải cao, góc nhìn rộng",
+            "colors": "Nhôm đánh bóng + đen mờ, hoặc đen mờ + trắng"
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "status": "discontinued",
+          "image_url": "https://www.mahlkoenig.us/cdn/shop/files/E65S_GbW_-_Black_560x700.webp?v=1761340232",
+          "source_url": "https://www.mahlkoenig.us/products/e65s-gbw",
+          "seo_title": "E65S Grind-by-Weight Espresso Grinder | Mahlkönig USA",
+          "seo_description": "E65S GbW espresso grinder, legacy coffee grinder from Mahlkoenig",
+          "relation_note": "Đây là bản tiền nhiệm CÙNG TÊN GẦN GIỐNG nhưng KHÁC với 'E65S' hiện hành (slug /products/e65s, nhóm 1) — E65S GbW dùng slug riêng /products/e65s-gbw và đã ngừng bán.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/mahlkonig/E65S_GbW_-_Black_560x700.webp"
+        },
+        {
+          "model": "E80S GbW",
+          "title": "E80S Grind-by-Weight Espresso Grinder",
+          "description_en": "E80S GbW espresso grinder, legacy coffee grinder from Mahlkoenig. Combines high grinding speed with gravimetric (by-weight) dosing technology, automatic portafilter recognition for up to 6 recipes, integrated Disc Distance Detection.",
+          "specs": {
+            "burr_diameter_mm": 80,
+            "burr_material": "special steel",
+            "burr_life_kg": "~1500 (median setting)",
+            "motor_power_w": "520-845 (tùy điện áp)",
+            "idle_speed_rpm": "1400-1700",
+            "grinding_capacity": "6-8 g/s @ 250µm",
+            "hopper_capacity_g": "~1800",
+            "dimensions_cm_whd": "24 x 63 x 34",
+            "weight_kg": "18.0 net",
+            "display": "88.3mm độ phân giải cao",
+            "voltages": "220-240V, 110-127V, hoặc 100V (50/60Hz)"
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "status": "discontinued",
+          "image_url": "https://www.mahlkoenig.us/cdn/shop/files/E80S_GbW_-_Black_560x700.webp",
+          "source_url": "https://www.mahlkoenig.us/products/e80s-gbw-grinder",
+          "seo_title": "E80S Grind-by-Weight Espresso Grinder | Mahlkönig USA",
+          "seo_description": "E80S GbW espresso grinder, legacy coffee grinder from Mahlkoenig",
+          "relation_note": "Đây là bản tiền nhiệm CÙNG TÊN GẦN GIỐNG nhưng KHÁC với 'E80S' hiện hành (slug /products/e80s-grinder, nhóm 1) — E80S GbW dùng slug riêng /products/e80s-gbw-grinder và đã ngừng bán.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/mahlkonig/E80S_GbW_-_Black_560x700.webp"
+        },
+        {
+          "model": "K501",
+          "title": "K501 Shop grinder",
+          "description_en": "K501 Shop grinder, legacy coffee grinder from Mahlkoenig. Multi-function lever both clamps the coffee bag and powers on the grinder, compatible with all standard bag sizes, aluminum body allowing tool-free removal of lid/spout/burr disc, static-discharge and dust-free operation via an improved spout design, air cooling with motor heat separation.",
+          "specs": {
+            "note_specs": "Trang sản phẩm KHÔNG công bố burr size/motor power/RPM/hopper/kích thước/trọng lượng cụ thể — chỉ có trong tài liệu kỹ thuật PDF tải về, không trích xuất được trong lần cào này."
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "status": "discontinued",
+          "image_url": "https://www.mahlkoenig.us/cdn/shop/files/Mahlkoenig_K501_shop_grinder_1400_988250ad-1516-4de9-8c24-2e6b157e3254_560x700.png?v=1714398903",
+          "source_url": "https://www.mahlkoenig.us/products/k501",
+          "seo_title": "K501 Shop grinder | Mahlkönig USA",
+          "seo_description": "K501 Shop grinder, legacy coffee grinder from Mahlkoenig",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/mahlkonig/K501.png"
+        },
+        {
+          "model": "FCG 2.0",
+          "title": "FCG 2.0 Shop grinder",
+          "description_en": "FCG 2.0 Shop grinder, legacy coffee grinder from Mahlkoenig. Dedicated filter grinder, grinds directly into the brewer's filter basket, programmable electronic dosing up to 2.2 liters, flexible sliding module fitting any filter basket up to 200mm diameter, brushed stainless steel housing, illuminated display.",
+          "specs": {
+            "capacity_program_l": 2.2,
+            "compatible_basket_diameter_mm": 200,
+            "note_specs": "Trang sản phẩm KHÔNG công bố burr size/motor power/RPM cụ thể."
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "status": "discontinued",
+          "image_url": "https://www.mahlkoenig.us/cdn/shop/files/Mahlkoenig_FCG_2.0_horeca_grinder_1400_560x700.png?v=1714182123",
+          "source_url": "https://www.mahlkoenig.us/products/fcg-2",
+          "seo_title": "FCG 2.0 Shop grinder | Mahlkönig USA",
+          "seo_description": "FCG 2.0 Shop grinder, legacy coffee grinder from Mahlkoenig",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/mahlkonig/Mahlkoenig_FCG_2.0_horeca_grinder_1400_560x700.png"
+        },
+        {
+          "model": "FCG 6.0",
+          "title": "FCG 6.0 Shop grinder",
+          "description_en": "FCG 6.0 Shop grinder, legacy coffee grinder from Mahlkoenig. Grind-on-demand filter grinder, grinds directly into the filter basket, programmable electronic dosing up to 6.0 liters, button-operated, grind adjustment from filter to French press.",
+          "specs": {
+            "capacity_program_l": 6.0,
+            "note_specs": "Trang sản phẩm KHÔNG công bố burr size/motor power/RPM cụ thể."
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "status": "discontinued",
+          "image_url": "https://www.mahlkoenig.us/cdn/shop/files/Mahlkoenig_FCG_shop_grinder_1400_9a50f557-173e-43b9-bc0a-985ca12a5b43_560x700.png?v=1714398860",
+          "source_url": "https://www.mahlkoenig.us/products/fcg-6",
+          "seo_title": "FCG 6.0 Shop grinder | Mahlkönig USA",
+          "seo_description": "FCG 6.0 Shop grinder, legacy coffee grinder from Mahlkoenig",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/mahlkonig/FCG_6.0.png"
+        },
+        {
+          "model": "ProM",
+          "title": "ProM / ProM Espresso Grinder",
+          "description_en": "ProM / ProM Espresso Grinder, legacy coffee grinder from Mahlkoenig. Grind-on-demand with electronic dosing, ProM is versatile for espresso/filter/French press, ProM Espresso specializes in single/double shot dosing with a touchpad, ProM Espresso won the 2010 Red Dot Design Award.",
+          "specs": {
+            "burr_diameter_mm": 65,
+            "burr_material": "steel, dẫn động bằng dây curoa (belt-drive)",
+            "hopper_capacity_g": 260,
+            "note_specs": "Chỉ có burr size + hopper công bố trên trang; motor power/RPM/kích thước không công bố."
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "status": "discontinued",
+          "image_url": "https://www.mahlkoenig.us/cdn/shop/files/Mahlkoenig_ProM_ProM_Espresso_home_grinder_1400_a70c357d-ba73-4d33-adda-a0ee657233e0_560x700.png",
+          "source_url": "https://www.mahlkoenig.us/products/prom-prom-espresso",
+          "seo_title": "ProM / ProM Espresso Grinder | Mahlkönig USA",
+          "seo_description": "ProM / ProM Espresso Grinder, legacy coffee grinder from Mahlkoenig",
+          "note": "Ma goc catalog cu gop nhieu bien the ('ProM / ProM Espresso') — da tach rieng, dong nay la ma dau tien (ProM).",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/mahlkonig/ProM.png"
+        },
+        {
+          "model": "ProM Espresso",
+          "title": "ProM / ProM Espresso Grinder",
+          "description_en": "ProM / ProM Espresso Grinder, legacy coffee grinder from Mahlkoenig. Grind-on-demand with electronic dosing, ProM is versatile for espresso/filter/French press, ProM Espresso specializes in single/double shot dosing with a touchpad, ProM Espresso won the 2010 Red Dot Design Award.",
+          "specs": {
+            "burr_diameter_mm": 65,
+            "burr_material": "steel, dẫn động bằng dây curoa (belt-drive)",
+            "hopper_capacity_g": 260,
+            "note_specs": "Chỉ có burr size + hopper công bố trên trang; motor power/RPM/kích thước không công bố.",
+            "Ghi chu bien the": "Espresso-specific burr variant of ProM"
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "status": "discontinued",
+          "image_url": "https://www.mahlkoenig.us/cdn/shop/files/Mahlkoenig_ProM_ProM_Espresso_home_grinder_1400_a70c357d-ba73-4d33-adda-a0ee657233e0_560x700.png",
+          "source_url": "https://www.mahlkoenig.us/products/prom-prom-espresso",
+          "seo_title": "ProM / ProM Espresso Grinder | Mahlkönig USA",
+          "seo_description": "ProM / ProM Espresso Grinder, legacy coffee grinder from Mahlkoenig",
+          "note": "Ma SKU that, bien the cung dong voi ProM (nguyen goc catalog gop chung 'ProM / ProM Espresso'). Dung chung anh/mo ta voi model dai dien — website hang khong co anh rieng cho tung bien the.",
+          "is_variant_of": "ProM",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/mahlkonig/ProM.png"
+        },
+        {
+          "model": "Vario Home",
+          "title": "Vario Home grinder",
+          "description_en": "Vario Home grinder, legacy coffee grinder from Mahlkoenig. Versatile home grinder, ceramic burr disc, over 200 grind settings, 3 programmable dosing presets, belt-driven motor for lower noise.",
+          "specs": {
+            "burr_diameter_mm": 54,
+            "burr_material": "ceramic",
+            "motor_power_w": 180,
+            "idle_speed_rpm": 1000,
+            "hopper_capacity_g": "~200",
+            "grinding_capacity": "~1.6 g/s",
+            "dimensions_cm_whd": "13 x 37 x 18",
+            "weight_kg": "4.2 net / 5.5 gross",
+            "voltages": "100-120V hoặc 200-240V",
+            "certifications": "CE"
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "status": "discontinued",
+          "image_url": "https://www.mahlkoenig.us/cdn/shop/files/Vario_Home_Grinder_1400_861e0ed6-2ea3-41fc-b88e-ab980f063a1f_560x700.png",
+          "source_url": "https://www.mahlkoenig.us/products/vario-home",
+          "seo_title": "Vario Home grinder | Mahlkönig USA",
+          "seo_description": "Vario Home grinder, legacy coffee grinder from Mahlkoenig",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/mahlkonig/Vario_Home.png"
+        },
+        {
+          "model": "Kenia",
+          "title": "Kenia / Guatemala Shop grinder",
+          "description_en": "Kenia / Guatemala Shop grinder, legacy coffee grinder from Mahlkoenig. The product page states: \"The Kenia, K32 and previous version of the Guatemala grinder models are no longer available.\" Compact, powerful design for cafes/depots/roasteries, bag-clamp lever (no hand-holding needed), vibrating plate while grinding (Guatemala version only), customizable multi-color plastic housing, self-service version available.",
+          "specs": {
+            "note_specs": "Trang sản phẩm KHÔNG công bố burr size/motor power/RPM/hopper/kích thước cụ thể."
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "status": "discontinued",
+          "image_url": "https://www.mahlkoenig.us/cdn/shop/files/Mahlkoenig_Kenia_Guatemala_shop_grinder_1400_670ce62c-aacd-4a5d-a92a-1fd8ff11e86a_560x700.png?v=1714398913",
+          "source_url": "https://www.mahlkoenig.us/products/kenia-gautemala",
+          "seo_title": "Kenia / Guatemala Shop grinder | Mahlkönig USA",
+          "seo_description": "Kenia / Guatemala Shop grinder, legacy coffee grinder from Mahlkoenig",
+          "relation_note": "Đây là TIỀN NHIỆM của model 'Guatemala' hiện hành (nhóm Allround/Shop Grinders, slug guatemala-2-0) — trang tự nhận là 'previous version of the Guatemala'. Cũng nhắc tới model 'K32' chưa xác minh riêng (không có trang sản phẩm /products/k32 nào tìm thấy).",
+          "note": "Ma goc catalog cu gop nhieu bien the ('Kenia / Guatemala') — da tach rieng, dong nay la ma dau tien (Kenia).",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/mahlkonig/Kenia.png"
+        },
+        {
+          "model": "Guatemala (Legacy - previous version)",
+          "title": "Kenia / Guatemala Shop grinder",
+          "description_en": "Kenia / Guatemala Shop grinder, legacy coffee grinder from Mahlkoenig. The product page states: \"The Kenia, K32 and previous version of the Guatemala grinder models are no longer available.\" Compact, powerful design for cafes/depots/roasteries, bag-clamp lever (no hand-holding needed), vibrating plate while grinding (Guatemala version only), customizable multi-color plastic housing, self-service version available.",
+          "specs": {
+            "note_specs": "Trang sản phẩm KHÔNG công bố burr size/motor power/RPM/hopper/kích thước cụ thể.",
+            "Ghi chu bien the": "Shop grinder, sibling model to Kenia"
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "status": "discontinued",
+          "image_url": "https://www.mahlkoenig.us/cdn/shop/files/Mahlkoenig_Kenia_Guatemala_shop_grinder_1400_670ce62c-aacd-4a5d-a92a-1fd8ff11e86a_560x700.png?v=1714398913",
+          "source_url": "https://www.mahlkoenig.us/products/kenia-gautemala",
+          "seo_title": "Kenia / Guatemala Shop grinder | Mahlkönig USA",
+          "seo_description": "Kenia / Guatemala Shop grinder, legacy coffee grinder from Mahlkoenig",
+          "relation_note": "Đây là TIỀN NHIỆM của model 'Guatemala' hiện hành (nhóm Allround/Shop Grinders, slug guatemala-2-0) — trang tự nhận là 'previous version of the Guatemala'. Cũng nhắc tới model 'K32' chưa xác minh riêng (không có trang sản phẩm /products/k32 nào tìm thấy).",
+          "note": "Ma SKU that, bien the cung dong voi Kenia (nguyen goc catalog gop chung 'Kenia / Guatemala'). Dung chung anh/mo ta voi model dai dien — website hang khong co anh rieng cho tung bien the.",
+          "is_variant_of": "Kenia",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/mahlkonig/Kenia.png"
+        }
+      ]
+    }
+  ],
+  "sibling_brands_not_mahlkonig_excluded": {
+    "note": "mahlkoenig.us có mục Brand Portfolio bán các thương hiệu CÙNG tập đoàn Hemro nhưng KHÔNG mang tên Mahlkönig — đã loại khỏi danh sách: Anfim (Luna, Alba), HeyCafé (Buddy, Jack, HC-880 LAB, HC-880 LAB S), Ditting (807, 807 Filter, 1203, 1827 Industrial).",
+    "source_url": "https://www.mahlkoenig.us/collections/hemro-group-brand-portfolio"
+  },
+  "spare_parts_and_accessories_excluded": {
+    "note": "Sitemap sản phẩm của mahlkoenig.us có ~351 URL /products/, phần lớn (>300) là phụ tùng thay thế rời (burr set, hopper, drip tray, display unit, power board, spout, v.v.) và merchandise (mũ, áo, cốc 'Prime Edit'/'diner mug'). Các trang này KHÔNG phải sản phẩm máy xay hoàn chỉnh nên KHÔNG đưa vào danh mục 34 model trên — chỉ dùng để xác nhận chéo tên model (ví dụ phụ tùng ghi 'VTA 6S', 'Tanzania', 'K30/PEAK' xác nhận các model Legacy này có thật)."
+  },
+  "vietnam_market_context": {
+    "note": "KHÔNG tìm thấy site khu vực Việt Nam/Đông Nam Á hoặc trang phân phối chính hãng của Mahlkönig cho Việt Nam trong lần cào này (chưa fetch riêng trang 'Distributors')."
+  },
+  "open_questions_for_user": [
+    "K60 ES, K501, FCG 2.0, FCG 6.0, ProM/ProM Espresso, Kenia/Guatemala — 6 model Legacy KHÔNG có bảng thông số kỹ thuật công khai trên trang sản phẩm (chỉ có trong PDF product sheet chưa trích xuất được) — cần tải PDF riêng nếu cần đầy đủ specs.",
+    "Model 'K32' được nhắc tới trong mô tả trang Kenia/Guatemala nhưng KHÔNG có trang sản phẩm riêng /products/k32 — chưa xác minh độc lập, có thể chỉ là tên cũ không còn trang.",
+    "Chưa xác nhận nhà phân phối chính hãng Mahlkönig tại Việt Nam — trang 'Distributors' chưa được fetch riêng trong lần cào này.",
+    "Giá bán: chỉ 9/15 model hiện hành công bố giá công khai (E65W/E65T/E80W/E80T GbS, E80S, EK43, EK43S, Guatemala, E64WS, X64SD, X54); E65S, EK Omnia, DK15, DK27 để giá 0.00 (liên hệ đại lý). 19 model Legacy không có giá.",
+    "Chưa có công thức quy đổi giá USD → VNĐ (thuế nhập khẩu, vận chuyển, biên lợi nhuận) để đăng giá lên site.",
+    "Chưa xác nhận quyền sử dụng ảnh sản phẩm chính hãng (CDN Shopify mahlkoenig.us) cho mục đích thương mại trên site reseller."
+  ]
+}

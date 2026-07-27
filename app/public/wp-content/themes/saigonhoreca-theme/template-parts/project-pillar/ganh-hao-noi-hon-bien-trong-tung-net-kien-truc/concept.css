@@ -1,157 +1,204 @@
 /**
  * Project Pillar — Gành Hào
- * Section #3: concept — editorial glass card + 3-shot gallery (truyền thống ⨯ hiện đại).
- * Glassmorphism + corner ornaments + masonry-ish gallery. 0 hardcode hex brand.
+ * Section #3: concept — 2-column editorial layout
  * @package SaigonHoreca
  */
 
 .pp--ganh .pp-concept-ganh {
   position: relative;
-  padding: clamp(4.5rem, 9vw, 8rem) 0;
+  padding: clamp(4rem, 8vw, 8rem) 0;
   background: var(--b2);
   overflow: hidden;
 }
 
-/* Watermark số thứ tự chìm */
 .pp-concept-ganh__watermark {
   position: absolute;
-  top: -3.5rem;
-  right: 1.5rem;
+  top: -2rem;
+  left: 5%;
   font-family: var(--font-display);
-  font-size: clamp(11rem, 20vw, 22rem);
+  font-size: clamp(8rem, 15vw, 18rem);
   font-weight: 800;
   line-height: 1;
   color: var(--gha-sand);
   opacity: 0.04;
   pointer-events: none;
-  user-select: none;
   z-index: 0;
 }
 
 .pp-concept-ganh__glow {
   position: absolute;
-  bottom: -14%;
-  left: -8%;
-  width: clamp(320px, 44vw, 560px);
+  top: 10%;
+  right: -10%;
+  width: clamp(280px, 40vw, 500px);
   aspect-ratio: 1;
-  background: radial-gradient(circle, color-mix(in srgb, var(--gha-teal) 12%, transparent) 0%, transparent 70%);
+  background: radial-gradient(circle, color-mix(in srgb, var(--gha-teal) 15%, transparent) 0%, transparent 70%);
   filter: blur(80px);
   pointer-events: none;
   z-index: 0;
 }
 
-/* Editorial glass card */
-.pp-concept-ganh__card {
+.pp-concept-ganh__layout {
   position: relative;
   z-index: 2;
-  max-width: 880px;
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+@media (min-width: 992px) {
+  .pp-concept-ganh__layout {
+    flex-direction: row;
+    align-items: center;
+    gap: 5rem;
+  }
+}
+
+/* Cột Text */
+.pp-concept-ganh__text-col {
+  flex: 1;
+  max-width: 600px;
   margin: 0 auto;
-  padding: clamp(2rem, 4vw, 3.25rem);
-  background: var(--gha-glass);
-  backdrop-filter: blur(16px) saturate(140%);
-  -webkit-backdrop-filter: blur(16px) saturate(140%);
-  border: 1px solid var(--gha-line);
-  border-radius: var(--radius-md);
-  box-shadow:
-    0 28px 60px rgba(0, 0, 0, 0.5),
-    inset 0 1px 0 color-mix(in srgb, var(--gha-teal) 12%, transparent);
 }
-/* Góc trang trí mạ kim */
-.pp-concept-ganh__card::before,
-.pp-concept-ganh__card::after {
-  content: '';
-  position: absolute;
-  width: 26px; height: 26px;
-  border: 1px solid color-mix(in srgb, var(--gha-sand) 55%, transparent);
-  pointer-events: none;
+
+.pp-concept-ganh__meta {
+  margin-bottom: 1.25rem;
 }
-.pp-concept-ganh__card::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
-.pp-concept-ganh__card::after  { bottom: -1px; right: -1px; border-left: none; border-top: none; }
 
 .pp-concept-ganh__tag {
-  display: inline-flex;
-  align-items: center;
-  align-self: flex-start;
-  padding: 0.35rem 0.85rem;
-  margin-bottom: 1.1rem;
-  border-radius: var(--radius-full);
-  background: color-mix(in srgb, var(--gha-teal) 12%, transparent);
-  border: 1px solid color-mix(in srgb, var(--gha-teal) 26%, transparent);
-  color: var(--gha-teal-bright);
+  display: inline-block;
+  padding: 0.4rem 1rem;
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--gha-sand) 15%, transparent);
+  color: var(--gha-sand);
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 600;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
 }
 
 .pp-concept-ganh__divider {
   display: block;
-  width: 56px;
+  width: 60px;
   height: 2px;
-  margin-bottom: 1.25rem;
+  margin-top: 1.25rem;
   background: var(--gha-sand);
-  box-shadow: 0 0 14px color-mix(in srgb, var(--gha-sand) 50%, transparent);
 }
 
 .pp-concept-ganh__title {
   margin: 0 0 1.5rem;
   font-family: var(--font-display);
-  font-size: clamp(1.75rem, 3.4vw, 2.7rem);
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
   font-weight: 700;
-  line-height: 1.22;
+  line-height: 1.25;
   color: var(--bc);
 }
 
 .pp-concept-ganh__body {
   font-family: var(--font-sans);
-  font-size: clamp(0.97rem, 1.1vw, 1.06rem);
-  line-height: 1.88;
+  font-size: clamp(0.95rem, 1vw, 1.05rem);
+  line-height: 1.8;
   color: var(--bc2);
   display: flex;
   flex-direction: column;
-  gap: 1.15rem;
-  text-align: justify;
+  gap: 1.25rem;
 }
 .pp-concept-ganh__body p { margin: 0; }
-.pp-concept-ganh__body strong { color: var(--gha-sand); font-weight: 700; }
 
-/* 3-shot gallery */
-.pp-concept-ganh__gallery {
-  position: relative;
-  z-index: 2;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.75rem;
-  margin-top: clamp(2.5rem, 5vw, 4rem);
+/* Dropcap phong cách tạp chí */
+.pp-concept-ganh__dropcap::first-letter {
+  float: left;
+  font-family: var(--font-display);
+  font-size: 4rem;
+  line-height: 0.85;
+  padding-right: 0.75rem;
+  padding-top: 0.35rem;
+  color: var(--gha-sand);
+  font-weight: 700;
 }
-@media (min-width: 768px) {
-  .pp-concept-ganh__gallery { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-  /* Ảnh giữa nhô cao tạo nhịp điệu sóng */
-  .pp-concept-ganh__shot:nth-child(2) { transform: translateY(-1.75rem); }
+
+/* Cột Hình ảnh xếp chồng (Collage/Overlap) */
+.pp-concept-ganh__visual-col {
+  position: relative;
+  width: 100%;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 2rem; /* Tránh bị cắt ở bottom mobile */
+}
+
+/* Đảm bảo khung chứa đủ không gian trên mobile */
+.pp-concept-ganh__visual-inner {
+  position: relative;
+  width: 100%;
+  max-width: 450px;
+  aspect-ratio: 4/5; /* Tăng chiều cao để ảnh có không gian thở */
+  margin: 0 auto;
+}
+@media (min-width: 992px) {
+  .pp-concept-ganh__visual-inner {
+    max-width: 100%;
+  }
 }
 
 .pp-concept-ganh__shot {
-  position: relative;
-  aspect-ratio: 4 / 3;
-  overflow: hidden;
-  border-radius: var(--radius-md);
-  background: var(--b3);
-  border: 1px solid var(--bd);
-  transition: border-color 0.45s var(--ease-spring), transform 0.45s var(--ease-spring), box-shadow 0.45s var(--ease-spring);
-}
-.pp-concept-ganh__shot:hover {
-  border-color: color-mix(in srgb, var(--gha-sand) 45%, transparent);
-  box-shadow: 0 22px 48px color-mix(in srgb, var(--gha-teal) 16%, transparent);
-}
-@media (min-width: 768px) {
-  .pp-concept-ganh__shot:hover { transform: translateY(-6px); }
-  .pp-concept-ganh__shot:nth-child(2):hover { transform: translateY(calc(-1.75rem - 6px)); }
-}
-.pp-concept-ganh__shot img {
   position: absolute;
-  inset: 0;
-  width: 100%; height: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+  border: 1px solid color-mix(in srgb, var(--bc) 10%, transparent);
+  transition: transform 0.5s var(--ease-spring);
+  margin: 0;
+}
+
+.pp-concept-ganh__shot img {
+  display: block;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  filter: saturate(1.06);
+}
+
+/* Ảnh chính (to nhất) */
+.pp-concept-ganh__shot--main {
+  width: 65%;
+  aspect-ratio: 3/4;
+  z-index: 1;
+  left: 0;
+  top: 10%;
+}
+
+/* Ảnh phụ 1 (trên phải) */
+.pp-concept-ganh__shot--float1 {
+  width: 46%;
+  aspect-ratio: 1/1;
+  z-index: 2;
+  right: -2%;
+  top: 0;
+  border-radius: 12px;
+}
+
+/* Ảnh phụ 2 (dưới phải) */
+.pp-concept-ganh__shot--float2 {
+  width: 60%;
+  aspect-ratio: 16/9;
+  z-index: 3;
+  right: -8%;
+  bottom: 8%;
+  border-radius: 12px;
+}
+
+/* Hover effects */
+@media (hover: hover) and (pointer: fine) {
+  .pp-concept-ganh__visual-inner:hover .pp-concept-ganh__shot--main {
+    transform: translate(-10px, -10px) scale(1.02);
+  }
+  .pp-concept-ganh__visual-inner:hover .pp-concept-ganh__shot--float1 {
+    transform: translateY(-20px) scale(1.05);
+    box-shadow: 0 25px 45px rgba(0,0,0,0.4);
+  }
+  .pp-concept-ganh__visual-inner:hover .pp-concept-ganh__shot--float2 {
+    transform: translate(15px, 20px) scale(1.05);
+    box-shadow: 0 25px 45px rgba(0,0,0,0.4);
+  }
 }

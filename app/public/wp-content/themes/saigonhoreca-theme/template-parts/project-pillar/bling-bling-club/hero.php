@@ -9,7 +9,7 @@ $uri = get_template_directory_uri();
 ?>
 <section class="pp-hero-bbc">
     <div class="pp-hero-bbc__media">
-        <iframe src="https://www.youtube.com/embed/JrvIMIpnddI?autoplay=1&mute=1&loop=1&playlist=JrvIMIpnddI&controls=0&showinfo=0&modestbranding=1&iv_load_policy=3&playsinline=1&disablekb=1&fs=0&rel=0&cc_load_policy=0&color=white&hl=vi" allow="autoplay; encrypted-media; fullscreen" frameborder="0" title="Background video" tabindex="-1"></iframe>
+        <iframe data-lazy-src="https://www.youtube.com/embed/JrvIMIpnddI?autoplay=1&mute=1&loop=1&playlist=JrvIMIpnddI&controls=0&showinfo=0&modestbranding=1&iv_load_policy=3&playsinline=1&disablekb=1&fs=0&rel=0&cc_load_policy=0&color=white&hl=vi" allow="autoplay; encrypted-media; fullscreen" frameborder="0" title="Background video" tabindex="-1" aria-hidden="true"></iframe>
     </div>
     <div class="pp-hero-bbc__overlay" aria-hidden="true"></div>
     <div class="pp-hero-bbc__content">

@@ -1,12 +1,17 @@
 /**
  * heiwa-sushi-omakase — hero slot.
- * Tái cấu trúc sang layout bất đối xứng, góc nghiêng và viền chỉ vàng lùi nghệ thuật.
+ * Full-bleed omakase image using the Parallax Clip-Path technique: the section's
+ * clip-path: inset(0 0 0 0) confines a position:fixed background child, giving a
+ * GPU-smooth, JS-free parallax. The title sits DIRECTLY on the bright photo —
+ * NO dark overlay/panel/border/backdrop (owner feedback): only a LIGHT token
+ * gradient overlay + legibility text-shadow.
  * @package SaigonHoreca
  */
 
 .pp-hero-hwa {
   position: relative;
-  height: calc(100svh - 76px);
+  height: calc(100vh - 76px);
+  height: calc(100dvh - 76px);
   min-height: 680px;
   width: 100%;
   display: flex;
@@ -19,87 +24,37 @@
   padding-inline: clamp(1.5rem, 8vw, 8.5rem);
 }
 
-.pp-hero-hwa__media {
+/* Full-bleed BRIGHT image — position:absolute + background-attachment: scroll;gives a reliable GPU-smooth parallax (bg fixed to viewport, auto-clipped to this box). */
+.pp-hero-hwa__bg {
   position: absolute;
   inset: 0;
-  z-index: 1;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  animation: hwa-ken-burns 10s ease-in-out infinite alternate;
-  filter: saturate(1.04) contrast(1.05) brightness(0.85); /* Tăng sáng ảnh nền đáng kể */
+  background-attachment: scroll; /* reliable parallax — bg fixed to viewport, auto-clipped to this box */
+  pointer-events: none;
+  /* Bright image — keep it luminous per owner feedback. */
+  filter: saturate(1.04) contrast(1.03) brightness(1.02);
 }
 
+/* LIGHT token gradient overlay — keeps the photo bright, NOT a black scrim. */
 .pp-hero-hwa__overlay {
   position: absolute;
   inset: 0;
-  z-index: 2;
+  z-index: -1;
   pointer-events: none;
-  background:
-    linear-gradient(90deg, color-mix(in srgb, var(--b1) 75%, transparent) 0%, color-mix(in srgb, var(--b1) 30%, transparent) 60%, transparent 100%),
-    linear-gradient(to bottom, transparent 0%, color-mix(in srgb, var(--b1) 40%, transparent) 70%, var(--b1) 100%);
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--b1) 45%, transparent) 0%,
+    color-mix(in srgb, var(--b1) 25%, transparent) 50%,
+    color-mix(in srgb, var(--b1) 55%, transparent) 100%
+  );
 }
 
-.pp-hero-hwa__grid {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  pointer-events: none;
-  background:
-    linear-gradient(var(--hwa-grid) 1px, transparent 1px),
-    linear-gradient(90deg, var(--hwa-grid) 1px, transparent 1px),
-    radial-gradient(circle at 80% 28%, var(--hwa-gold-faint), transparent 45%);
-  background-size: 44px 44px, 44px 44px, auto;
-  mask-image: linear-gradient(90deg, black 0%, transparent 80%);
-  opacity: 0.4; /* Giảm độ che phủ lưới */
-}
-
-.pp-hero-hwa__glow {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(95px);
-  pointer-events: none;
-  z-index: 2;
-}
-.pp-hero-hwa__glow--lt {
-  top: -12%;
-  left: -8%;
-  width: 520px;
-  height: 520px;
-  background: radial-gradient(circle, color-mix(in srgb, var(--p) 18%, transparent) 0%, transparent 70%);
-  opacity: 0.75;
-}
-.pp-hero-hwa__glow--rb {
-  bottom: -14%;
-  right: -6%;
-  width: 540px;
-  height: 540px;
-  background: radial-gradient(circle, color-mix(in srgb, var(--hwa-ember) 14%, transparent) 0%, transparent 70%);
-  opacity: 0.55;
-}
-
-.pp-hero-hwa__rail {
-  position: absolute;
-  z-index: 3;
-  top: 50%;
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: color-mix(in srgb, var(--bc) 45%, transparent);
-  pointer-events: none;
-}
-.pp-hero-hwa__rail--left {
-  left: 1.5rem;
-  transform: translateY(-50%) rotate(-90deg);
-  transform-origin: left center;
-}
-.pp-hero-hwa__rail--right {
-  right: 1.5rem;
-  transform: translateY(-50%) rotate(90deg);
-  transform-origin: right center;
-}
-
+/* Content sits directly on the bright image: transparent, no panel. */
 .pp-hero-hwa__content {
   position: relative;
   z-index: 3;
@@ -113,18 +68,9 @@
   border: none;
   border-radius: 0;
   outline: none;
-  transform: none;
   box-shadow: none;
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
-  transition: transform 0.6s var(--ease-spring);
-}
-.pp-hero-hwa__content:hover {
-  transform: translateY(-4px);
-}
-.pp-hero-hwa__content::before,
-.pp-hero-hwa__content::after {
-  display: none;
 }
 
 .pp-hero-hwa__subhead {
@@ -134,8 +80,8 @@
   font-weight: 600;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: color-mix(in srgb, var(--p) 90%, var(--bc));
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+  color: var(--gold);
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.55);
   animation: hwa-rise 0.9s var(--ease-spring) 0.2s backwards;
 }
 
@@ -148,10 +94,8 @@
   letter-spacing: 0.005em;
   color: var(--bc);
   max-width: 13ch;
-  text-shadow:
-    0 4px 28px rgba(0, 0, 0, 0.85),
-    0 8px 48px rgba(0, 0, 0, 0.6),
-    0 0 60px color-mix(in srgb, var(--p) 25%, transparent);
+  /* Legibility on bright image — text-shadow only, no panel. */
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.55);
   animation: hwa-rise 0.9s var(--ease-spring) 0.1s backwards;
 }
 
@@ -160,8 +104,8 @@
   width: 72px;
   height: 2px;
   margin-top: 0.25rem;
-  background: linear-gradient(90deg, var(--p), color-mix(in srgb, var(--p) 20%, transparent));
-  box-shadow: 0 0 16px color-mix(in srgb, var(--p) 55%, transparent);
+  background: linear-gradient(90deg, var(--gold), color-mix(in srgb, var(--gold) 20%, transparent));
+  box-shadow: 0 0 16px color-mix(in srgb, var(--gold) 55%, transparent);
   animation: hwa-rise 0.9s var(--ease-spring) 0.3s backwards;
 }
 .pp-hero-hwa__divider::before {
@@ -172,7 +116,7 @@
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--p);
+  background: var(--gold);
   transform: translateY(-50%);
 }
 
@@ -181,8 +125,8 @@
   max-width: 52ch;
   font-size: clamp(1rem, 1.3vw, 1.15rem);
   line-height: 1.75;
-  color: var(--bc); /* Đổi hẳn sang trắng thuần để siêu rõ nét */
-  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.9);
+  color: var(--bc);
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.55);
   animation: hwa-rise 0.9s var(--ease-spring) 0.38s backwards;
 }
 
@@ -197,15 +141,15 @@
   display: inline-flex;
   align-items: center;
   min-height: 2.1rem;
-  padding: 0.45rem 0.75rem;
-  border: 1px solid var(--hwa-gold-faint);
+  padding: 0.45rem 0.9rem;
+  border: 1px solid color-mix(in srgb, var(--bc) 28%, transparent);
   border-radius: var(--radius-full);
-  background: color-mix(in srgb, var(--b1) 42%, transparent);
-  color: var(--bc2);
+  color: var(--bc);
   font-family: var(--font-mono);
   font-size: 0.7rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.6);
 }
 
 .pp-hero-hwa__scroll {
@@ -217,7 +161,7 @@
   width: 1px;
   height: 56px;
   overflow: hidden;
-  background: color-mix(in srgb, var(--bc) 15%, transparent);
+  background: color-mix(in srgb, var(--bc) 25%, transparent);
 }
 .pp-hero-hwa__scroll-line {
   position: absolute;
@@ -226,20 +170,13 @@
   display: block;
   width: 100%;
   height: 24px;
-  background: linear-gradient(to bottom, transparent, var(--p), transparent);
+  background: linear-gradient(to bottom, transparent, var(--gold), transparent);
   animation: hwa-scroll-drop 2.2s var(--ease-spring) infinite;
 }
 
 @media (max-width: 767px) {
-  .pp-hero-hwa { justify-content: center; min-height: 600px; padding-inline: 1rem; }
-  .pp-hero-hwa__rail { display: none; }
-  .pp-hero-hwa__content { padding: 1.75rem; transform: none !important; }
+  .pp-hero-hwa { justify-content: center; min-height: 600px; padding-inline: 1.25rem; }
   .pp-hero-hwa__title { max-width: 15ch; }
-}
-
-@keyframes hwa-ken-burns {
-  0%   { transform: scale(1); }
-  100% { transform: scale(1.12); }
 }
 
 @keyframes hwa-rise {
@@ -252,8 +189,12 @@
   100% { top: 56px; }
 }
 
+/* Mobile fallback: background-attachment: scroll;is janky on touch — pin the bg to the page. */
+@media (max-width: 768px) {
+  .pp-hero-hwa__bg { position: absolute; background-attachment: scroll; }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .pp-hero-hwa__media,
   .pp-hero-hwa__subhead,
   .pp-hero-hwa__title,
   .pp-hero-hwa__divider,

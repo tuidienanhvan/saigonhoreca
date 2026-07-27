@@ -1,8 +1,11 @@
 /**
  * Project Pillar — Mâm Mâm Eatery & Lounge
- * Section #6: gallery slot — closing "lời kết" statement block.
- * Shell owned by intro.css; here: centered editorial quote on a mâm-tray
- * radial backdrop with glassmorphism. 100% design tokens.
+ * Section #6: gallery slot — GOLD editorial mosaic + closing "lời kết" block.
+ * Shell/typography (.pp__section, .pp-text-mam, .pp-split-mam__tag) owned by
+ * intro.css; here: a clean uniform image grid (all tiles 4/3) on the shared
+ * image frame, ambient gold glow + faint "04" numeral, plus the centered
+ * closing quote card.
+ * 100% design tokens — color-mix tints, clamp() type, no hardcoded brand hex.
  */
 
 .pp-gallery-section-mam {
@@ -10,14 +13,181 @@
   text-align: center;
 }
 
-/* Mâm-tray concentric ring backdrop (technique: radial-gradient) */
+/* ─────────────────────────────────────────────────────────────
+   1. Ambient gold glow + faint editorial numeral watermark
+   ───────────────────────────────────────────────────────────── */
+.pp-gallery-section-mam__glow {
+  position: absolute;
+  top: -6%;
+  left: 50%;
+  width: clamp(420px, 70vw, 980px);
+  height: clamp(420px, 70vw, 980px);
+  transform: translateX(-50%);
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(circle,
+    color-mix(in srgb, var(--gold) 7%, transparent) 0%,
+    transparent 65%);
+  filter: blur(60px);
+}
+
+.pp-gallery-section-mam__numeral {
+  position: absolute;
+  top: clamp(-2.5rem, -2vw, -1rem);
+  right: clamp(0.5rem, 4vw, 4rem);
+  font-family: var(--font-display);
+  font-size: clamp(8rem, 18vw, 20rem);
+  font-weight: 800;
+  line-height: 1;
+  color: var(--gold);
+  opacity: 0.04;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  animation: pp-gallery-section-mam-numeral 12s var(--ease-spring) infinite alternate;
+}
+
+@keyframes pp-gallery-section-mam-numeral {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-1rem); }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   2. Gallery header rhythm (centered tag pill above title)
+   ───────────────────────────────────────────────────────────── */
+.pp-gallery-section-mam__header {
+  position: relative;
+  z-index: 2;
+  margin-bottom: clamp(2.75rem, 5vw, 4rem);
+}
+
+.pp-gallery-section-mam__tag {
+  align-self: center;
+  margin: 0 auto;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   3. Uniform image grid — clean, gap-free editorial tiling
+      Built on the shared image frame (.pp-image-container-shared keeps
+      overflow:visible so the journal caption anchors below each tile).
+      EVERY tile shares aspect-ratio 4/3 → tiles fill their rows with
+      ZERO empty voids. Captions render BELOW each image → comfortable
+      row-gap leaves room.
+   ───────────────────────────────────────────────────────────── */
+.pp-gallery-mam-mosaic {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1.5rem, 2.6vw, 2.25rem) clamp(1.25rem, 2vw, 1.75rem);
+  text-align: left;
+}
+
+/* 2-col on small tablets */
+@media (min-width: 600px) {
+  .pp-gallery-mam-mosaic {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 3-col on desktop */
+@media (min-width: 992px) {
+  .pp-gallery-mam-mosaic {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ── Tile = shared frame + mâm-gold framing.
+   The shared component owns object-fit + hover zoom + caption anchoring;
+   here we add the frame, uniform aspect-ratio, border + hover lift/scale.
+   Every tile is 4/3 — no spans, no auto-rows → clean tiling. ── */
+.pp-gallery-mam-mosaic__item {
+  position: relative;
+  margin-bottom: 2.2rem !important; /* room for the shared caption anchored below */
+  border-radius: var(--radius-md);
+  background: var(--b3);
+  border: 1px solid color-mix(in srgb, var(--gold) 16%, var(--bd));
+  aspect-ratio: 4 / 3; /* uniform landscape ratio for every tile */
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.4);
+  transition:
+    border-color 0.5s var(--ease-spring),
+    transform 0.5s var(--ease-spring),
+    box-shadow 0.5s var(--ease-spring);
+}
+
+/* Clip the image to the rounded frame WITHOUT hiding the caption.
+   Dark raw photos → filter must NOT darken (brightness >= 1). */
+.pp-gallery-mam-mosaic__item img {
+  border-radius: inherit;
+  filter: saturate(0.99) contrast(1.03) brightness(1.02);
+  clip-path: inset(0 round var(--radius-md));
+  transition:
+    transform 0.7s var(--ease-spring) !important,
+    filter 0.5s var(--ease-spring) !important;
+}
+
+/* SVG gold corner brackets — appear on the feature tile, glow on hover */
+.pp-gallery-mam-mosaic__corner {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 6;
+  pointer-events: none;
+  opacity: 0.5;
+  transition: opacity 0.5s var(--ease-spring), transform 0.6s var(--ease-spring);
+}
+
+.pp-gallery-mam-mosaic__item:hover .pp-gallery-mam-mosaic__corner {
+  opacity: 1;
+  transform: scale(1.012);
+}
+
+/* Hover lift + subtle gold border (spring) */
+.pp-gallery-mam-mosaic__item:hover {
+  transform: translateY(-6px);
+  border-color: color-mix(in srgb, var(--gold) 55%, transparent);
+  box-shadow:
+    0 26px 52px rgba(0, 0, 0, 0.5),
+    0 0 34px color-mix(in srgb, var(--gold) 16%, transparent),
+    inset 0 1px 0 color-mix(in srgb, var(--gold) 18%, transparent);
+}
+
+.pp-gallery-mam-mosaic__item:hover img {
+  transform: scale(1.05) !important;
+  filter: saturate(1.08) contrast(1.04) brightness(1.05);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   4. Staggered reveal (technique: .scroll-reveal markup; JS adds .is-visible)
+   ───────────────────────────────────────────────────────────── */
+.pp-gallery-mam-mosaic.is-visible .pp-gallery-mam-mosaic__item {
+  animation: pp-gallery-mam-mosaic-rise 0.7s var(--ease-spring) both;
+}
+@keyframes pp-gallery-mam-mosaic-rise {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.pp-gallery-mam-mosaic.is-visible .pp-gallery-mam-mosaic__item:nth-child(1) { animation-delay: 0.05s; }
+.pp-gallery-mam-mosaic.is-visible .pp-gallery-mam-mosaic__item:nth-child(2) { animation-delay: 0.11s; }
+.pp-gallery-mam-mosaic.is-visible .pp-gallery-mam-mosaic__item:nth-child(3) { animation-delay: 0.17s; }
+.pp-gallery-mam-mosaic.is-visible .pp-gallery-mam-mosaic__item:nth-child(4) { animation-delay: 0.23s; }
+.pp-gallery-mam-mosaic.is-visible .pp-gallery-mam-mosaic__item:nth-child(5) { animation-delay: 0.29s; }
+.pp-gallery-mam-mosaic.is-visible .pp-gallery-mam-mosaic__item:nth-child(6) { animation-delay: 0.35s; }
+.pp-gallery-mam-mosaic.is-visible .pp-gallery-mam-mosaic__item:nth-child(7) { animation-delay: 0.41s; }
+.pp-gallery-mam-mosaic.is-visible .pp-gallery-mam-mosaic__item:nth-child(8) { animation-delay: 0.47s; }
+.pp-gallery-mam-mosaic.is-visible .pp-gallery-mam-mosaic__item:nth-child(9) { animation-delay: 0.53s; }
+
+/* ─────────────────────────────────────────────────────────────
+   5. Closing "lời kết" statement card (kept from original gallery slot)
+   ───────────────────────────────────────────────────────────── */
 .pp-gallery-section-mam__tray {
   position: absolute;
-  top: 50%;
+  bottom: clamp(2rem, 8vw, 6rem);
   left: 50%;
   width: clamp(360px, 60vw, 760px);
   height: clamp(360px, 60vw, 760px);
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
   z-index: 0;
   pointer-events: none;
   border-radius: 50%;
@@ -37,7 +207,7 @@
   position: relative;
   z-index: 1;
   max-width: 820px;
-  margin: 0 auto;
+  margin: clamp(4rem, 9vw, 7rem) auto 0;
   padding: clamp(2.25rem, 5vw, 3.75rem) clamp(1.5rem, 4vw, 3rem);
   border-radius: var(--radius-xl);
   background: color-mix(in srgb, var(--b2) 50%, transparent);
@@ -49,6 +219,18 @@
   flex-direction: column;
   align-items: center;
   gap: 1.25rem;
+  transition:
+    transform 0.6s var(--ease-spring),
+    border-color 0.6s var(--ease-spring),
+    box-shadow 0.6s var(--ease-spring);
+}
+
+.pp-gallery-section-mam__closing:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--gold) 36%, var(--bd));
+  box-shadow:
+    0 28px 66px rgba(0, 0, 0, 0.5),
+    0 0 48px color-mix(in srgb, var(--gold) 12%, transparent);
 }
 
 .pp-gallery-section-mam__mark {
@@ -58,6 +240,12 @@
   color: var(--gold);
   opacity: 0.8;
   text-shadow: 0 0 20px color-mix(in srgb, var(--gold) 35%, transparent);
+  animation: pp-gallery-section-mam-mark 6s var(--ease-spring) infinite alternate;
+}
+
+@keyframes pp-gallery-section-mam-mark {
+  from { transform: translateY(0); opacity: 0.7; }
+  to   { transform: translateY(-0.35rem); opacity: 0.92; }
 }
 
 .pp-gallery-section-mam__quote {
@@ -84,4 +272,18 @@
 .pp-gallery-section-mam__sign::before {
   content: '— ';
   color: var(--gold);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   6. Reduced motion (technique: prefers-reduced-motion)
+   ───────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .pp-gallery-section-mam__numeral { animation: none !important; }
+  .pp-gallery-section-mam__mark { animation: none !important; }
+  .pp-gallery-section-mam__closing { transition: none !important; }
+  .pp-gallery-section-mam__closing:hover { transform: none !important; }
+  .pp-gallery-mam-mosaic__item { transition: none !important; }
+  .pp-gallery-mam-mosaic__item:hover { transform: none !important; }
+  .pp-gallery-mam-mosaic__item:hover img { transform: none !important; }
+  .pp-gallery-mam-mosaic.is-visible .pp-gallery-mam-mosaic__item { animation: none !important; }
 }

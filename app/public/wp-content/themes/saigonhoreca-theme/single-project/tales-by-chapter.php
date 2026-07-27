@@ -1,7 +1,7 @@
 <?php
 /**
  * Single Project Template — Tales by Chapter
- * Thumbnail: 2025/04/du-an-sheh-fung.jpg
+ * Thumbnail: tales-by-chapter/tales-by-chapter-thumbnail-project-cover.webp
  *
  * Auto-routed via inc/core/pillar-routes.php for /du-an/tales-by-chapter/.
  *

@@ -1,48 +1,240 @@
 /**
- * moa-moa — gallery slot.
- * Masonry-style grid with shared image partials.
- * @package SaigonHoreca
+ * Project Pillar — Moa Moa Pasta Club
+ * Section #6: gallery styling — mosaic grid showcase + gilded closing quote.
+ * 100% tokens, zero hardcoded hex.
  */
 
-.pp-gallery-moa {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.25rem;
-  margin-top: 2.5rem;
+.moa-gallery__header {
+  max-width: 820px;
+  margin: 0 auto 2.75rem;
+  text-align: center;
+  position: relative;
+  z-index: 2;
 }
-@media (max-width: 768px) { .pp-gallery-moa { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 480px) { .pp-gallery-moa { grid-template-columns: 1fr; } }
+.moa-gallery__header .pp-text-moa__divider {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1.4rem;
+}
+.moa-gallery__lead {
+  font-family: var(--font-sans);
+  font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+  line-height: 1.8;
+  color: var(--bc2);
+  margin-top: 1.75rem;
+}
 
+/* Watermark số thứ tự */
+.pp-gallery-watermark-moa {
+  position: absolute;
+  top: -3rem;
+  left: 2rem;
+  font-family: var(--font-display);
+  font-size: clamp(12rem, 20vw, 22rem);
+  font-weight: 800;
+  color: var(--gold);
+  opacity: 0.02;
+  pointer-events: none;
+  user-select: none;
+  z-index: 1;
+  line-height: 1;
+}
+
+/* ──────────────────────────────────────────────────────────────
+   GOLD EDITORIAL GRID — lưới đồng nhất
+   Mọi tile cùng tỉ lệ 4/3, lấp kín không gian, KHÔNG khoảng trống.
+   1 cột (mobile) → 2 cột (≥600px) → 2 cột cân đối (≥992px, 4 ảnh).
+   ──────────────────────────────────────────────────────────────── */
+.pp-gallery-moa {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr;        /* mobile: 1 cột xếp chồng */
+  /* gap: hàng rộng để chú thích báo chí có chỗ thở, cột vừa phải */
+  gap: clamp(1.5rem, 2.6vw, 2.25rem) clamp(1.25rem, 2vw, 1.75rem);
+}
+
+/* Số chìm editorial góc phải lưới */
+.pp-gallery-moa__index {
+  position: absolute;
+  top: -2.4rem;
+  right: 0;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--gold) 55%, transparent);
+  pointer-events: none;
+  user-select: none;
+  z-index: 3;
+}
+
+/* Tablet: 2 cột đều */
+@media (min-width: 600px) {
+  .pp-gallery-moa {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Desktop: giữ 2 cột cho bộ 4 ảnh → lưới 2×2 cân đối, không lệch nhịp */
+@media (min-width: 992px) {
+  .pp-gallery-moa {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ── Tile cơ sở ─────────────────────────────────────────────── */
 .pp-gallery-moa__item {
   position: relative;
-  overflow: hidden;
-  border-radius: var(--radius-md);
-  background: var(--b3);
+  overflow: hidden !important;
+  border-radius: var(--radius-lg) !important;
   border: 1px solid var(--bd);
-  transition: border-color 0.4s var(--ease-spring), transform 0.4s var(--ease-spring);
+  background: var(--b3);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.55);
+  /* container-shared mặc định margin-bottom 1.8rem → để row-gap lo khoảng cách */
+  margin: 0 !important;
+  aspect-ratio: 4 / 3;               /* mọi tile đồng nhất, chống CLS */
+  transition:
+    transform 0.5s var(--ease-spring),
+    border-color 0.4s var(--ease-spring),
+    box-shadow 0.4s var(--ease-spring);
 }
-.pp-gallery-moa__item:hover {
-  border-color: color-mix(in srgb, var(--wa) 45%, transparent);
-  transform: translateY(-4px);
-  box-shadow: 0 16px 40px color-mix(in srgb, var(--wa) 10%, transparent);
-}
-.pp-gallery-moa__item--large { grid-row: span 2; }
-.pp-gallery-moa__item--wide { grid-column: span 2; }
-@media (max-width: 768px) { .pp-gallery-moa__item--wide { grid-column: span 1; } }
-
 .pp-gallery-moa__item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.7s var(--ease-spring);
+  height: 100% !important;
+  border-radius: inherit;
+  /* ảnh gốc tối → KHÔNG làm tối thêm, sáng nhẹ giữ chi tiết */
+  filter: saturate(0.99) contrast(1.03) brightness(1.02);
+  transition: transform 0.8s var(--ease-spring), filter 0.5s var(--ease-spring) !important;
 }
-.pp-gallery-moa__item:hover img { transform: scale(1.05); }
+
+/* Viền vàng kim chìm bên trong + ánh hào quang khi hover */
+.pp-gallery-moa__item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid transparent;
+  box-shadow: inset 0 0 0 1px transparent;
+  pointer-events: none;
+  z-index: 4;
+  transition: border-color 0.45s var(--ease-spring), box-shadow 0.45s var(--ease-spring);
+}
+
+.pp-gallery-moa__item:hover {
+  transform: translateY(-6px) scale(1.012);
+  border-color: color-mix(in srgb, var(--gold) 45%, transparent);
+  box-shadow:
+    0 24px 50px rgba(0, 0, 0, 0.82),
+    0 0 28px color-mix(in srgb, var(--gold) 16%, transparent);
+}
+.pp-gallery-moa__item:hover::after {
+  border-color: color-mix(in srgb, var(--gold) 55%, transparent);
+  box-shadow: inset 0 0 22px color-mix(in srgb, var(--gold) 12%, transparent);
+}
+.pp-gallery-moa__item:hover img {
+  filter: saturate(1.06) contrast(1.04) brightness(1.05);
+  transform: scale(1.05);
+}
+
+/* Số thứ tự kỹ thuật góc tile */
+.pp-gallery-moa__num {
+  position: absolute;
+  top: 0.85rem;
+  left: 0.95rem;
+  z-index: 5;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--gold);
+  background: color-mix(in srgb, var(--b1) 78%, transparent);
+  border: 1px solid color-mix(in srgb, var(--gold) 28%, transparent);
+  padding: 0.18rem 0.55rem;
+  border-radius: var(--radius-xs);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 0.4s var(--ease-spring), transform 0.4s var(--ease-spring);
+}
+.pp-gallery-moa__item:hover .pp-gallery-moa__num {
+  opacity: 0.95;
+  transform: translateY(0);
+}
+
+/* Góc trang trí vàng kim (chữ L) ở góc trên-phải tile */
+.pp-gallery-moa__corner {
+  position: absolute;
+  top: 0.8rem;
+  right: 0.8rem;
+  width: 18px;
+  height: 18px;
+  border-top: 1.5px solid color-mix(in srgb, var(--gold) 60%, transparent);
+  border-right: 1.5px solid color-mix(in srgb, var(--gold) 60%, transparent);
+  border-top-right-radius: 4px;
+  opacity: 0.35;
+  z-index: 5;
+  pointer-events: none;
+  transition: opacity 0.4s var(--ease-spring), transform 0.4s var(--ease-spring);
+}
+.pp-gallery-moa__item:hover .pp-gallery-moa__corner {
+  opacity: 0.95;
+  transform: scale(1.12);
+}
+
+/* Closing gilded quote */
+.moa-gallery__quote {
+  position: relative;
+  z-index: 2;
+  margin-top: 3rem;
+  padding: 0.75rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.moa-gallery__quote-line {
+  display: block;
+  width: 100%;
+  max-width: 680px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--gold) 50%, transparent), transparent);
+  margin: 0.75rem 0;
+  position: relative;
+}
+.moa-gallery__quote-line::after {
+  content: '';
+  position: absolute;
+  top: -1px; left: 50%;
+  transform: translateX(-50%);
+  width: 40px; height: 3px;
+  background: var(--gold);
+  box-shadow: 0 0 6px var(--gold);
+}
+.moa-gallery__quote blockquote {
+  font-family: var(--font-serif);
+  font-size: clamp(1.05rem, 1.6vw, 1.35rem);
+  font-style: italic;
+  color: var(--gold);
+  line-height: 1.6;
+  margin: 0;
+  padding: 0.75rem 1.5rem;
+  max-width: 760px;
+  font-weight: 500;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
 
 @media (prefers-reduced-motion: reduce) {
   .pp-gallery-moa__item,
-  .pp-gallery-moa__item img {
+  .pp-gallery-moa__item img,
+  .pp-gallery-moa__item::after,
+  .pp-gallery-moa__num,
+  .pp-gallery-moa__corner {
     transition: none !important;
+    transform: none !important;
+    animation: none !important;
   }
   .pp-gallery-moa__item:hover {
     transform: none !important;

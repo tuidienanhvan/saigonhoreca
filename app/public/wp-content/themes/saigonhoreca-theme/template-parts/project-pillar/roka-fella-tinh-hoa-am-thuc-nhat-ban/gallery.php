@@ -164,8 +164,8 @@ $uri = get_template_directory_uri();
             <path d="M 100 85 L 100 100 L 85 100" stroke="var(--gold)" stroke-width="1.2" />
           </svg>
           <div class="pp-image-border-decor" aria-hidden="true"></div>
-          <img src="<?php echo sgh_img('roka-fella/roka-fella-thumbnail-project-cover.webp'); ?>" alt="<?php echo esc_attr__('Roka Fella Final Execution', 'saigonhoreca'); ?>" loading="lazy">
-          <div class="pp-image-caption-shared"><?php echo esc_html__('Toàn cảnh không gian quầy sushi bar Omakase sang trọng tích hợp âm nhạc vinyl tại Roka Fella', 'saigonhoreca'); ?></div>
+          <img src="<?php echo sgh_img('roka-fella/roka-fella-thumbnail-project-cover.webp'); ?>" alt="<?php echo esc_attr__('Ảnh bìa thương hiệu quầy sushi tường rêu xanh Roka Fella', 'saigonhoreca'); ?>" loading="lazy">
+          <div class="pp-image-caption-shared"><?php echo esc_html__('Tấm bìa thương hiệu Roka Fella khắc họa không gian quầy sushi đá đen bên tường rêu xanh cùng logo và địa chỉ nhà hàng', 'saigonhoreca'); ?></div>
         </div>
       </div>
 
@@ -204,55 +204,49 @@ $uri = get_template_directory_uri();
       
       <!-- Dish 1 -->
       <div class="pp-image-container-shared pp-gallery-rf__item">
-        <img src="<?php echo sgh_img('roka-fella/roka-fella-mon-sashimi-ca-hoi.jpg'); ?>" alt="<?php echo esc_attr__('Sashimi Otoro Uni Roka Fella', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
-        <div class="pp-image-caption-shared"><?php echo esc_html__('Khay nguyên liệu Sashimi thượng hạng với bụng cá ngừ Otoro, cầu gai Uni và bào ngư', 'saigonhoreca'); ?></div>
-      </div>
-
-      <!-- Dish 2 -->
-      <div class="pp-image-container-shared pp-gallery-rf__item">
-        <img src="<?php echo sgh_img('roka-fella/roka-fella-mon-nigiri-ca-ngu.jpg'); ?>" alt="<?php echo esc_attr__('Nigiri Platter Roka Fella', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
-        <div class="pp-image-caption-shared"><?php echo esc_html__('Khay sushi nigiri thập cẩm hảo hạng tuyển chọn chuẩn vị Omakase', 'saigonhoreca'); ?></div>
+        <img src="<?php echo sgh_img('roka-fella/roka-fella-mon-sashimi-ca-hoi.jpg'); ?>" alt="<?php echo esc_attr__('Hộp gỗ set nigiri Otoro trứng cá hồi tôm ngọt Roka Fella', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
+        <div class="pp-image-caption-shared"><?php echo esc_html__('Hộp gỗ set nigiri thập cẩm óng ả với bụng cá ngừ Otoro, gunkan trứng cá hồi và tôm ngọt tươi rói', 'saigonhoreca'); ?></div>
       </div>
 
       <!-- Dish 3 -->
       <div class="pp-image-container-shared pp-gallery-rf__item">
-        <img src="<?php echo sgh_img('roka-fella/roka-fella-mon-nigiri-bach-tuoc.jpg'); ?>" alt="<?php echo esc_attr__('Wagyu Tartare Roka Fella', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
+        <img src="<?php echo sgh_img('roka-fella/roka-fella-mon-nigiri-bach-tuoc.jpg'); ?>" alt="<?php echo esc_attr__('Bò Wagyu tartare trộn lòng đỏ trứng và hành tây Roka Fella', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
         <div class="pp-image-caption-shared"><?php echo esc_html__('Bò Wagyu Tartare thượng hạng trộn lòng đỏ trứng tươi và hành tây', 'saigonhoreca'); ?></div>
       </div>
 
       <!-- Dish 4 -->
       <div class="pp-image-container-shared pp-gallery-rf__item">
-        <img src="<?php echo sgh_img('roka-fella/roka-fella-mon-sashimi-so-do.jpg'); ?>" alt="<?php echo esc_attr__('Sashimi Platter Roka Fella', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
+        <img src="<?php echo sgh_img('roka-fella/roka-fella-mon-sashimi-so-do.jpg'); ?>" alt="<?php echo esc_attr__('Set sashimi thập cẩm cá ngừ Otoro, cá cam Hamachi, sò điệp và tôm ngọt Roka Fella', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
         <div class="pp-image-caption-shared"><?php echo esc_html__('Set Sashimi thập cẩm hảo hạng với bụng cá ngừ Otoro, cá cam Hamachi và sò điệp', 'saigonhoreca'); ?></div>
       </div>
 
       <!-- Dish 5 -->
       <div class="pp-image-container-shared pp-gallery-rf__item">
-        <img src="<?php echo sgh_img('roka-fella/roka-fella-mon-nigiri-trung-ca-hoi.jpg'); ?>" alt="<?php echo esc_attr__('Hotate Truffle Sashimi Roka Fella', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
+        <img src="<?php echo sgh_img('roka-fella/roka-fella-mon-nigiri-trung-ca-hoi.jpg'); ?>" alt="<?php echo esc_attr__('Sashimi sò điệp khè nhẹ phủ nấm truffle đen và cánh hoa Roka Fella', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
         <div class="pp-image-caption-shared"><?php echo esc_html__('Sashimi sò điệp Nhật khè nhẹ kèm nấm Truffle đen đắt đỏ và cánh hoa nghệ thuật', 'saigonhoreca'); ?></div>
       </div>
 
       <!-- Dish 6 -->
       <div class="pp-image-container-shared pp-gallery-rf__item">
-        <img src="<?php echo sgh_img('roka-fella/roka-fella-mon-nigiri-tom-ngot.jpg'); ?>" alt="<?php echo esc_attr__('Madai Nigiri Roka Fella', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
+        <img src="<?php echo sgh_img('roka-fella/roka-fella-mon-nigiri-tom-ngot.jpg'); ?>" alt="<?php echo esc_attr__('Nigiri cá tráp biển Madai điểm lá thảo mộc xanh Roka Fella', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
         <div class="pp-image-caption-shared"><?php echo esc_html__('Nigiri cá tráp biển Madai bóng bẩy trang trí lá xanh và trứng cá chuồn vàng', 'saigonhoreca'); ?></div>
       </div>
 
       <!-- Dish 7 -->
       <div class="pp-image-container-shared pp-gallery-rf__item">
-        <img src="<?php echo sgh_img('roka-fella/roka-fella-mon-nigiri-ca-trich-ep-trung.jpg'); ?>" alt="<?php echo esc_attr__('Hamachi Caviar Nigiri Roka Fella', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
+        <img src="<?php echo sgh_img('roka-fella/roka-fella-mon-nigiri-ca-trich-ep-trung.jpg'); ?>" alt="<?php echo esc_attr__('Nigiri cá cam Hamachi khè nhẹ phủ trứng cá đen Roka Fella', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
         <div class="pp-image-caption-shared"><?php echo esc_html__('Nigiri cá cam Hamachi khè nhẹ mặt phủ trứng cá đen sang trọng', 'saigonhoreca'); ?></div>
       </div>
 
       <!-- Dish 8 -->
       <div class="pp-image-container-shared pp-gallery-rf__item">
-        <img src="<?php echo sgh_img('roka-fella/roka-fella-mon-nigiri-ca-cam.jpg'); ?>" alt="<?php echo esc_attr__('Aburi Hotate Nigiri Roka Fella', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
+        <img src="<?php echo sgh_img('roka-fella/roka-fella-mon-nigiri-ca-cam.jpg'); ?>" alt="<?php echo esc_attr__('Nigiri sò điệp Aburi khò lửa nhẹ rắc tiêu đen Roka Fella', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
         <div class="pp-image-caption-shared"><?php echo esc_html__('Nigiri sò điệp Nhật Bản khò lửa nhẹ (Aburi Hotate) rắc bột tiêu đen', 'saigonhoreca'); ?></div>
       </div>
 
       <!-- Dish 9 -->
       <div class="pp-image-container-shared pp-gallery-rf__item">
-        <img src="<?php echo sgh_img('roka-fella/roka-fella-mon-sashimi-bao-ngu.jpg'); ?>" alt="<?php echo esc_attr__('Kinmedai Garlic Nigiri Roka Fella', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
+        <img src="<?php echo sgh_img('roka-fella/roka-fella-mon-sashimi-bao-ngu.jpg'); ?>" alt="<?php echo esc_attr__('Nigiri cá kim mục Kinmedai khò nhẹ phủ sốt tỏi đen Roka Fella', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
         <div class="pp-image-caption-shared"><?php echo esc_html__('Nigiri cá kim mục Kinmedai khò nhẹ mặt phủ sốt tỏi đen và bột gia vị', 'saigonhoreca'); ?></div>
       </div>
 

@@ -1,1 +1,83 @@
-/** hemma-desserts-mot-goc-nho-chau-au-giua-thao-dien — partnership slot (no content). */
+/**
+ * Project Pillar — Hemma Desserts
+ * Section #4: partnership styling.
+ * Reuses .pp-split-hmd / .pp-split-hmd--reverse (from concept.css).
+ * Adds .pp-hmd-stats dashboard. 100% tokens, zero hardcoded hex.
+ * @package SaigonHoreca
+ */
+
+/* ----------------------------------------------------------------------
+ * STATS DASHBOARD — porcelain stat cards with gold top rule
+ * ---------------------------------------------------------------------- */
+.pp-hmd-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1.75rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid color-mix(in srgb, var(--gold) 16%, var(--bd));
+}
+@media (max-width: 520px) {
+  .pp-hmd-stats { grid-template-columns: 1fr; }
+}
+
+.pp-hmd-stats__item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 1.1rem 0.9rem;
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--b3) 65%, transparent);
+  border: 1px solid color-mix(in srgb, var(--gold) 12%, var(--bd));
+  overflow: hidden;
+  transition: transform 0.4s var(--ease-spring), border-color 0.4s var(--ease-spring), box-shadow 0.4s var(--ease-spring);
+}
+.pp-hmd-stats__item::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 2px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+}
+.pp-hmd-stats__item:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--gold) 40%, transparent);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+}
+
+.pp-hmd-stats__value {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 800;
+  line-height: 1.05;
+  color: var(--gold);
+  text-shadow: 0 0 18px color-mix(in srgb, var(--gold) 28%, transparent);
+}
+.pp-hmd-stats__label {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: var(--bc2);
+  font-weight: 500;
+}
+
+/* Reverse layout: align the body content to the right edge on desktop. */
+@media (min-width: 992px) {
+  .pp-hmd-partnership .pp-split-hmd--reverse .pp-hmd-stats { text-align: right; }
+  .pp-hmd-partnership .pp-split-hmd--reverse .pp-hmd-stats__item { align-items: flex-end; }
+}
+@media (max-width: 991px) {
+  .pp-hmd-partnership .pp-split-hmd--reverse .pp-hmd-stats__item { align-items: flex-start; }
+}
+
+/* ----------------------------------------------------------------------
+ * REDUCED MOTION
+ * ---------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .pp-hmd-stats__item {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+  }
+}

@@ -284,8 +284,9 @@
 }
 
 @keyframes shimmer {
-  0% { left: -100%; }
-  100% { left: 200%; }
+  /* GPU-only: static left:-100% (base) + transform thay vì animate left trực tiếp */
+  0%   { transform: skewX(-20deg) translateX(0); }
+  100% { transform: skewX(-20deg) translateX(600%); }
 }
 
 /* Cột phải: Media */

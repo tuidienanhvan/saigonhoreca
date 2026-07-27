@@ -1,10 +1,16 @@
 /* ── sh-about-hero ────────────────────────────────────────────── */
+/* Chiều cao dùng đúng "Hero height canon" (--hero-h/--hero-min trong
+   _tokens.css) — trước chỉ có min-height:520px (thấp hơn hẳn) khiến hero
+   About lùn hơn rõ rệt so với Home (.sh-hero, calc(100dvh - 76px)) và
+   Project (.pp-hero-*, 92-96vh). Đồng bộ lại cho bằng nhau. */
 .sh-about-hero {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 520px;
+  height: var(--hero-h-fallback);
+  height: var(--hero-h);
+  min-height: var(--hero-min);
   text-align: center;
   overflow: hidden;
 }
@@ -74,26 +80,65 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 5rem;
-  height: 5rem;
+  width: 5.5rem;
+  height: 5.5rem;
   border-radius: var(--radius-full);
-  background: var(--p);
-  color: var(--pc);
-  box-shadow: 0 0 0 0 color-mix(in srgb, var(--p) 40%, transparent);
-  transition: transform 0.3s var(--ease-spring), box-shadow 0.3s ease;
+  background: rgba(26, 26, 26, 0.65);
+  border: 1.5px solid rgba(245, 166, 35, 0.45);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: var(--p);
+  box-shadow: 0 0 0 0 rgba(245, 166, 35, 0);
+  transition: transform 0.4s var(--ease-spring), border-color 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease;
   margin-top: 0.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Decorative double ripple waves */
+.sh-about-hero__play::before,
+.sh-about-hero__play::after {
+  content: '';
+  position: absolute;
+  inset: -1.5px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--p);
+  opacity: 0;
+  pointer-events: none;
+  animation: play-ripple 3s cubic-bezier(0.1, 0.8, 0.3, 1) infinite;
+  z-index: -1;
+}
+
+.sh-about-hero__play::after {
+  animation-delay: 1.5s;
+}
+
+@keyframes play-ripple {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(1.6); opacity: 0; }
 }
 
 .sh-about-hero__play svg {
-  width: 1.5rem;
-  height: 1.5rem;
-  fill: currentColor;
-  translate: 2px 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible !important;
 }
 
 .sh-about-hero__play:hover {
-  transform: scale(1.12);
-  box-shadow: 0 0 0 10px color-mix(in srgb, var(--p) 20%, transparent);
+  transform: scale(1.1);
+  background-color: rgba(245, 166, 35, 0.1);
+  border-color: #ffd166;
+  box-shadow: 0 0 30px rgba(245, 166, 35, 0.4);
+}
+
+.play-ring-outer {
+  transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1), stroke-opacity 0.4s ease;
+}
+
+.sh-about-hero__play:hover .play-ring-outer {
+  transform: rotate(90deg);
+  transform-origin: 50px 50px;
+  stroke-opacity: 0.8;
 }
 
 @keyframes sh-ken-burns {
@@ -101,7 +146,20 @@
   to   { transform: scale(1.08); }
 }
 
+/* Cùng 2 bậc breakpoint với .sh-hero (Home) để 2 hero co lại đồng bộ, không
+   lệch nhau ở tablet/mobile. */
+@media (max-width: 1024px) {
+  .sh-about-hero {
+    height: 80dvh;
+    min-height: var(--hero-min-lg);
+  }
+}
+@media (max-width: 768px) {
+  .sh-about-hero {
+    height: 70dvh;
+    min-height: var(--hero-min-md);
+  }
+}
 @media (max-width: 640px) {
-  .sh-about-hero { min-height: 380px; }
-  .sh-about-hero__play { width: 4rem; height: 4rem; }
+  .sh-about-hero__play { width: 4.5rem; height: 4.5rem; }
 }

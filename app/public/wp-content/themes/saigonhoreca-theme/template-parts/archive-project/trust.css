@@ -142,13 +142,12 @@
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     scroll-padding-inline: 1.5rem;
-    scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
     /* Padding inline 1.5rem để cell active + L-corners không bị clip
        bởi scroll container edge. */
     padding: 1.75rem 1.5rem;
+    /* scrollbar (ẩn hẳn) chuyển sang assets/css/_tokens.css — 1 nơi duy nhất */
 }
-.sh-archive-trust__track::-webkit-scrollbar { display: none; }
 
 /* Cell — đơn giản, rõ ràng. Hover/active = ring vàng dày + glow. */
 .sh-archive-trust__cell {

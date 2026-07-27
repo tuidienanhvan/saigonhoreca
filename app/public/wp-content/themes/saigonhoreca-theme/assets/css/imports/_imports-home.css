@@ -3,8 +3,7 @@
    has a sibling <sec>.css, all imported here. Tailwind v4 bundles them
    into a single dist/theme-home.css render-blocking stylesheet. */
 
-@import "./_imports-route-core.css";
-@import "../reveal.css";
+@import "./_imports-route-core.css"; /* reveal.css now comes centrally via route-core */
 
 /* ── Home section CSS pairs (order matches front-page.php) ── */
 @import "../../../template-parts/home/hero.css";

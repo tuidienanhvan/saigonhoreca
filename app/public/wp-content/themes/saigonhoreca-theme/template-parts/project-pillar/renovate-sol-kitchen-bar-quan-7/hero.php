@@ -1,13 +1,19 @@
 <?php
 /**
  * Project Pillar — renovate-sol-kitchen-bar-quan-7
- * Section #1: hero — Ken-Burns cinematic kitchen backdrop + glass content card.
+ * Section #1: hero — full-bleed kitchen backdrop rendered with the GPU-smooth
+ * "Parallax Clip-Path" technique (position:fixed __bg confined by clip-path on the
+ * section). Title sits directly on the bright image (light token overlay only — no
+ * dark scrim / no panel behind text; legibility via text-shadow).
  * @package SaigonHoreca
  */
 if (!defined('ABSPATH')) exit;
 ?>
 <section class="pp-hero-solq7">
-    <div class="pp-hero-solq7__media" style="background-image:url('<?php echo sgh_img('renovate-sol-kitchen-bar-quan-7/SGH-sold7-01.jpg'); ?>');" aria-hidden="true"></div>
+    <!-- Thẻ con gánh hiệu ứng Parallax Clip-Path siêu mượt (position:fixed) -->
+    <div class="pp-hero-solq7__media" style="background-image:url('<?php echo sgh_img('renovate-sol-kitchen-bar-quan-7/sol-kitchen-bar-q7-bep-inox-hoan-thien-chup-hut-mui.webp'); ?>');" aria-hidden="true">
+        <iframe data-lazy-src="https://www.youtube.com/embed/c8aOoxqXJqI?autoplay=1&mute=1&loop=1&playlist=c8aOoxqXJqI&controls=0&showinfo=0&modestbranding=1&iv_load_policy=3&playsinline=1&disablekb=1&fs=0&rel=0&cc_load_policy=0&color=white&hl=vi" allow="autoplay; encrypted-media; fullscreen" frameborder="0" title="Background video Sol Kitchen & Bar Quan 7" tabindex="-1" aria-hidden="true"></iframe>
+    </div>
     <div class="pp-hero-solq7__overlay" aria-hidden="true"></div>
     <div class="pp-hero-solq7__grid" aria-hidden="true"></div>
 

@@ -1,0 +1,4 @@
+C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\PIL\Image.py:1137: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  warnings.warn(
+Rows written: 4193, images embedded: 4193
+Saved: C:\Users\ADMINI~1\AppData\Local\Temp\claude\C--\0f97e414-7379-4ba4-8b1d-7ff57bdec93f\scratchpad\Saigonhoreca_Product_Catalog.xlsx

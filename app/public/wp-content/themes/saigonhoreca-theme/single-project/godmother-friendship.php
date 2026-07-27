@@ -1,7 +1,7 @@
 <?php
 /**
  * Single Project Template — GodMother Friendship
- * Thumbnail: godmother-friendship/godmother-friendship-mat-tien-kiosk-le-loi.webp
+ * Thumbnail: godmother-friendship/godmother-friendship-thumbnail-project-cover.webp
  *
  * Auto-routed via inc/core/pillar-routes.php for /du-an/godmother-friendship/.
  *

@@ -6,7 +6,8 @@
 .pp-hero-rkf {
   position: relative;
   /* Fill full viewport area below sticky header (76px). */
-  height: calc(100svh - 76px);
+  height: calc(100vh - 76px);
+  height: calc(100dvh - 76px);
   min-height: 620px;
   max-height: none;
   width: 100%;
@@ -16,12 +17,6 @@
   overflow: hidden;
   background-color: var(--b1);
   text-align: center;
-}
-
-@supports (height: 100dvh) {
-  .pp-hero-rkf {
-    height: calc(100dvh - 76px);
-  }
 }
 
 .pp-hero-rkf__media {

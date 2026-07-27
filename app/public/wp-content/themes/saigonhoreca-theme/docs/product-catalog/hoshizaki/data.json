@@ -1,0 +1,234 @@
+{
+  "research_date": "2026-07-13",
+  "source_note": "Cào từ 2 site chính hãng của Hoshizaki Group: (1) hoshizaki.com/en — trang tập đoàn toàn cầu (Hoshizaki Corporation, Nhật Bản), chỉ có danh mục nhóm sản phẩm cấp cao, KHÔNG có model/spec chi tiết; (2) hoshizaki-sea.com — site khu vực Đông Nam Á (Hoshizaki South East Asia), có catalog đầy đủ 462 SKU với bộ lọc theo QUỐC GIA bao gồm Vietnam, đây là site có dữ liệu thật gần với thị trường VN nhất nên được dùng làm nguồn chính. KHÔNG phải dữ liệu tự bịa — mọi model/dòng sản phẩm dưới đây có URL nguồn kèm theo. Hoshizaki KHÔNG public giá bán trên web (mọi trang sản phẩm chỉ có nút 'GET QUOTE' / 'REQUEST QUOTE' — phải liên hệ đại lý). Nhiều trang sản phẩm chỉ có mô tả + tên dòng, thông số kỹ thuật chi tiết (công suất, kích thước, điện áp) nằm trong PDF 'Spec Sheet' / 'Dimensional Drawings' tải riêng — không lấy được nội dung PDF qua fetch, ghi rõ là 'nguồn có, nội dung PDF chưa trích xuất'.",
+  "existing_catalog_gap": "Theo yêu cầu: site saigonhoreca.local hiện có 52 sản phẩm brand Hoshizaki, chủ yếu là máy làm đá (ice machine) và tủ đông/tủ mát (refrigeration). Đối chiếu với catalog thật của Hoshizaki SEA (462 SKU, 12 category), các NHÓM SẢN PHẨM CHƯA THẤY xuất hiện trên site hiện tại gồm: Dishwasher/Glasswasher (máy rửa chén công nghiệp — 6 model), Sushi Showcase (tủ trưng bày sushi — 8 model), Beer & Soda Dispenser (vòi bia tươi/nước có gas — 5 model), Deep Freezer (tủ đông sâu — 3 model), Thawing Cabinet (tủ rã đông — 1 model), Cooking Equipment (chảo chiên điện — 1 model). Ngay trong nhóm Ice Maker và Refrigeration vốn đã có sản phẩm, cũng có nhiều DÒNG (series) đặt tên riêng như Gold Line, A-Fit, A1-FIT, PREMIER, PRO, Bakery Cabinet mà cần đối chiếu tên model thật để biết site hiện tại đã phủ dòng nào, thiếu dòng nào — việc đối chiếu chi tiết 52 SKU hiện có với danh sách model bên dưới cần người quản trị site tự làm (ngoài phạm vi crawl web của agent).",
+  "brand": "Hoshizaki",
+  "official_sites": [
+    {
+      "site": "Hoshizaki Global (tập đoàn, Nhật Bản)",
+      "url": "https://www.hoshizaki.com/en",
+      "note": "Trang tập đoàn — giới thiệu công ty, brand, industry solutions. Chỉ liệt kê nhóm sản phẩm cấp cao (Ice Makers / Refrigeration / Dishwashers / Dispensers / Cooking Equipment / Others), KHÔNG có model/SKU/spec cụ thể trên trang công khai (trang con /solutions-innovation/products trả lỗi 403 khi fetch tự động, phải browse trực tiếp)."
+    },
+    {
+      "site": "Hoshizaki South East Asia (khu vực, dùng làm nguồn chính cho tài liệu này)",
+      "url": "https://www.hoshizaki-sea.com/products/",
+      "note": "Site khu vực Đông Nam Á — CÓ bộ lọc theo quốc gia gồm Vietnam, Thailand, Malaysia, Singapore, Indonesia, Philippines. Catalog đầy đủ 462 kết quả, chia category rõ ràng, mỗi model có trang riêng (mô tả + nút Get Quote + link Spec Sheet/Dimensional Drawing PDF). Đây là site sát nhất với thị trường Việt Nam nên được ưu tiên dùng."
+    }
+  ],
+  "groups": [
+    {
+      "group_name": "Ice Maker",
+      "group_name_vi": "Máy Làm Đá",
+      "source_urls": [
+        "https://www.hoshizaki-sea.com/product-category/ice-maker/",
+        "https://www.hoshizaki.com/en/solutions-innovation/products/ice-makers"
+      ],
+      "sub_categories": [
+        { "name": "Cube", "name_vi": "Đá viên vuông", "count_on_sea_site": 42 },
+        { "name": "Crescent", "name_vi": "Đá hình lưỡi liềm", "count_on_sea_site": 19 },
+        { "name": "Dice", "name_vi": "Đá viên nhỏ (dice/half-dice)", "count_on_sea_site": 14 },
+        { "name": "Flaker & Nugget", "name_vi": "Đá vảy / đá viên mềm (nugget)", "count_on_sea_site": 21 },
+        { "name": "Special Ice", "name_vi": "Đá đặc biệt", "count_on_sea_site": 5 },
+        { "name": "Dispenser", "name_vi": "Máy phân phối đá/nước", "count_on_sea_site": 5 },
+        { "name": "Ice Storage Bin", "name_vi": "Thùng chứa đá rời", "count_on_sea_site": 3 }
+      ],
+      "product_configuration_types": [
+        { "type": "Self Contained", "note": "Máy làm đá + khoang chứa tích hợp 1 khối", "count_on_sea_site": 47 },
+        { "type": "Modular", "note": "Đầu máy làm đá lắp rời trên bin/tủ chứa riêng", "count_on_sea_site": 44 },
+        { "type": "Stackable", "note": "Xếp chồng đầu máy lên bin có sẵn", "count_on_sea_site": 8 }
+      ],
+      "sample_models": [
+        {
+          "model": "DCM-120KE",
+          "category": "Ice Maker / Dispenser",
+          "type": "Ice & water dispenser (cubelet ice)",
+          "description_en": "Ice/water dispenser producing cubelet ice, cubelet ice + water, or water only. Compact footprint, portion control adjustable — suited for self-serve environments (hospitality, catering, leisure, healthcare).",
+          "url": "https://www.hoshizaki-sea.com/product/dcm-120ke/"
+        },
+        {
+          "model": "IM-480DNS-STCRN",
+          "category": "Ice Maker / Cube",
+          "type": "Cube & crushed ice, modular",
+          "description_en": "Modular cube ice maker designed for hygiene-critical segments (foodservice, medical). Electronic control system for consistent ice quality without manual adjustment.",
+          "url": "https://www.hoshizaki-sea.com/product/im-480dns-stcrn-cube-crushed-ice-modular/"
+        },
+        {
+          "model": "FM-1000AKS-N-SB-B-501SA",
+          "category": "Ice Maker / Flaker & Nugget",
+          "type": "Nugget ice, modular",
+          "url": "https://www.hoshizaki-sea.com/product/fm-1000aks-n-sb-b-501sa-nugget-modular/"
+        },
+        {
+          "model": "FM-1000AKS-SB-B-501SA",
+          "category": "Ice Maker / Flaker & Nugget",
+          "type": "Flaker ice, modular",
+          "url": "https://www.hoshizaki-sea.com/product/fm-1000aks-sb-b-501sa-flaker-modular/"
+        },
+        {
+          "model": "SRM-650AB-B-801SA",
+          "category": "Ice Maker / Dice",
+          "type": "Dice ice, modular & bin",
+          "url": "https://www.hoshizaki-sea.com/product/srm-650ab-b-801sa/"
+        },
+        {
+          "model": "SRM-650AB-14-B-801SA",
+          "category": "Ice Maker / Dice",
+          "type": "Half-dice ice, modular & bin",
+          "url": "https://www.hoshizaki-sea.com/product/srm-650ab-14-b-801sa/"
+        }
+      ],
+      "specs_gap_note": "Trang model chỉ có mô tả + nút 'VIEW SPEC SHEET' (link PDF dimensional drawing) — công suất (kg/24h), kích thước, điện áp cụ thể nằm trong PDF, agent chưa trích xuất được nội dung PDF. Cần tải PDF thủ công hoặc dùng OCR nếu cần số liệu chính xác."
+    },
+    {
+      "group_name": "Refrigeration",
+      "group_name_vi": "Tủ Lạnh / Tủ Đông Công Nghiệp",
+      "source_urls": [
+        "https://www.hoshizaki-sea.com/product-category/refrigeration/",
+        "https://www.hoshizaki.com/en/solutions-innovation/products/refrigeration"
+      ],
+      "sub_categories": [
+        { "name": "Upright", "name_vi": "Tủ đứng", "count_on_sea_site": 110 },
+        { "name": "Undercounter", "name_vi": "Tủ để dưới quầy/bàn bếp", "count_on_sea_site": 206 },
+        { "name": "Low Undercounter", "name_vi": "Tủ thấp để dưới quầy", "count_on_sea_site": 12 }
+      ],
+      "product_series": [
+        {
+          "series_name": "Premier",
+          "series_name_vi": "Dòng Premier (cao cấp)",
+          "count_on_sea_site": 120,
+          "description_en": "Sleek, modern design; natural refrigerants; strong cooling performance with high energy efficiency; multiple size options — positioned for premium commercial kitchens and food service. Includes Upright Long Glass Door, Undercounter Swing Glass Door, Undercounter Bakery Freezer/Refrigerator sub-variants.",
+          "sample_models": [
+            "FT-98MC-S(P)-ST — Premier Undercounter Bakery Freezer",
+            "RT-98MC-(S)P-ST — Premier Undercounter Bakery Refrigerator",
+            "HR-188MC-SLG / HR-148MC-SLG — Premier Upright Long Glass Door Refrigerator",
+            "RT-188MC-S(P)G / RT-186MC-S(P)G / RT-158MC-S(P)G / RT-156MC-S(P)G / RT-128MC-S(P)G / RT-126MC-S(P)G / RT-98MC-S(P)G / RT-96MC-S(P)G — Premier Undercounter Swing Glass Door Refrigerator (dải kích thước từ 96 đến 188 series)"
+          ],
+          "url": "https://www.hoshizaki-sea.com/product/ft-98mc-sp-st-premier-undercounter-bakery-freezer/"
+        },
+        {
+          "series_name": "Gold Line",
+          "series_name_vi": "Dòng Gold Line",
+          "count_on_sea_site": 17,
+          "url": "https://www.hoshizaki-sea.com/product-category/refrigeration/"
+        },
+        {
+          "series_name": "A-Fit",
+          "series_name_vi": "Dòng A-Fit",
+          "count_on_sea_site": 123,
+          "url": "https://www.hoshizaki-sea.com/product-category/refrigeration/"
+        },
+        {
+          "series_name": "A1-FIT",
+          "series_name_vi": "Dòng A1-FIT",
+          "count_on_sea_site": 30,
+          "url": "https://www.hoshizaki-sea.com/product-category/refrigeration/"
+        },
+        {
+          "series_name": "PRO",
+          "series_name_vi": "Dòng PRO",
+          "count_on_sea_site": 18,
+          "url": "https://www.hoshizaki-sea.com/product-category/refrigeration/"
+        },
+        {
+          "series_name": "Bakery Cabinet",
+          "series_name_vi": "Tủ Chuyên Dụng Cho Bánh (Bakery Cabinet)",
+          "count_on_sea_site": 4,
+          "url": "https://www.hoshizaki-sea.com/product-category/refrigeration/"
+        },
+        {
+          "series_name": "Signature",
+          "series_name_vi": "Dòng Signature",
+          "count_on_sea_site": 0,
+          "note": "Xuất hiện như 1 lựa chọn filter trên site SEA nhưng hiện có 0 sản phẩm được gắn — có thể là dòng mới chưa list hoặc chỉ bán ở thị trường khác."
+        },
+        {
+          "series_name": "Blast Chiller / Freezer",
+          "series_name_vi": "Tủ Cấp Đông Nhanh (Blast Chiller/Freezer)",
+          "count_on_sea_site": 0,
+          "note": "Tương tự Signature — có filter nhưng 0 sản phẩm gắn trên site SEA hiện tại."
+        }
+      ],
+      "product_type_facets": ["Refrigerator (186)", "Freezer (104)", "Dual Temp (18)"],
+      "door_type_facets": ["Solid Door (186)", "Glass Door (60)", "Drawer (32)"]
+    },
+    {
+      "group_name": "Dishwasher",
+      "group_name_vi": "Máy Rửa Chén Bát Công Nghiệp",
+      "taxonomy_note": "KHÔNG có trong 52 sản phẩm Hoshizaki hiện tại trên site (theo yêu cầu user, brand hiện chủ yếu là ice machine/refrigeration) — đây là nhóm SẢN PHẨM MỚI cần cân nhắc thêm.",
+      "source_urls": ["https://www.hoshizaki-sea.com/product-category/dishwasher/"],
+      "sub_categories": [
+        { "name": "Undercounter", "count_on_sea_site": 3 },
+        { "name": "Hood", "count_on_sea_site": 3 }
+      ],
+      "models": [
+        { "model": "OBY 50T", "type": "Undercounter dishwasher", "url": "https://www.hoshizaki-sea.com/product-category/dishwasher/" },
+        { "model": "HW-320B-S", "type": "Undercounter dishwasher" },
+        { "model": "HW-320B", "type": "Undercounter dishwasher" },
+        { "model": "OBM 1080T", "type": "Hood-type dishwasher" },
+        { "model": "HW-600B", "type": "Hood-type dishwasher" },
+        { "model": "HW-600B3", "type": "Hood-type dishwasher" }
+      ]
+    },
+    {
+      "group_name": "Sushi Showcase",
+      "group_name_vi": "Tủ Trưng Bày Sushi",
+      "taxonomy_note": "Nhóm sản phẩm chuyên biệt cho nhà hàng Nhật/sushi — KHÔNG có trong 52 sản phẩm hiện tại.",
+      "source_urls": ["https://www.hoshizaki-sea.com/product-category/sushi-showcase/"],
+      "models": [
+        { "model": "HNC-210BE-R-B", "note": "Right-sided" },
+        { "model": "HNC-210BE-L-B", "note": "Left-sided" },
+        { "model": "HNC-180BE-R-B", "note": "Right-sided" },
+        { "model": "HNC-180BE-L-B", "note": "Left-sided" },
+        { "model": "HNC-150BE-R-B", "note": "Right-sided" },
+        { "model": "HNC-150BE-L-B", "note": "Left-sided" },
+        { "model": "HNC-120BE-R-B", "note": "Right-sided" },
+        { "model": "HNC-120BE-L-B", "note": "Left-sided" }
+      ],
+      "note": "4 kích cỡ (120/150/180/210) x 2 hướng mở (trái/phải) = 8 SKU."
+    },
+    {
+      "group_name": "Beer & Soda Dispenser",
+      "group_name_vi": "Vòi Bia Tươi / Nước Có Gas",
+      "taxonomy_note": "KHÔNG có trong 52 sản phẩm hiện tại — nhóm mới, phù hợp cho quầy bar/pub/nhà hàng bia tươi.",
+      "source_urls": ["https://www.hoshizaki-sea.com/product-category/beer-soda-dispenser/"],
+      "models": [
+        { "model": "DS-25WLD", "type": "Carbonated water dispenser" },
+        { "model": "DBF-40WAC", "type": "Beer dispenser" },
+        { "model": "DBF-40SAC", "type": "Beer dispenser" },
+        { "model": "DBF-25SAC", "type": "Beer dispenser" },
+        { "model": "DBF-AS65WE-T", "type": "Automatic draft beer dispenser" }
+      ]
+    },
+    {
+      "group_name": "Deep Freezer",
+      "group_name_vi": "Tủ Đông Sâu",
+      "taxonomy_note": "KHÔNG có trong 52 sản phẩm hiện tại — khác với tủ đông upright/undercounter thông thường đã có, đây là dòng chuyên tủ đông sâu (chest-type) độc lập.",
+      "source_urls": ["https://www.hoshizaki-sea.com/product-category/deep-freezer/"],
+      "models": [
+        { "model": "HDF-400A-SEA" },
+        { "model": "HDF-300A-SEA" },
+        { "model": "HDF-140A-SEA" }
+      ]
+    },
+    {
+      "group_name": "Thawing Cabinet",
+      "group_name_vi": "Tủ Rã Đông",
+      "taxonomy_note": "KHÔNG có trong 52 sản phẩm hiện tại — nhóm ngách, chỉ 1 model công bố trên site SEA.",
+      "source_urls": ["https://www.hoshizaki-sea.com/product-category/thawing-cabinet/"],
+      "models": [{ "model": "HR-78MA-S-JD" }]
+    },
+    {
+      "group_name": "Cooking Equipment",
+      "group_name_vi": "Thiết Bị Nấu",
+      "taxonomy_note": "Hoshizaki chủ yếu là hãng lạnh/đá — mảng cooking equipment rất hẹp, chỉ 1 model công bố trên site SEA (khác hẳn quy mô mảng ice maker/refrigeration).",
+      "source_urls": ["https://www.hoshizaki-sea.com/product-category/cooking-equipment/"],
+      "models": [{ "model": "FL-20B-SEA", "type": "Electric fryer" }]
+    }
+  ],
+  "open_questions_for_user": [
+    "Site khu vực dùng làm nguồn (hoshizaki-sea.com) có filter theo quốc gia gồm Vietnam — agent chưa lọc thành công theo filter này qua trình duyệt tự động (checkbox không bắt được qua JS click); nếu cần danh sách CHÍNH XÁC model nào Hoshizaki phân phối tại Vietnam (khác với Thái/Malaysia/Indonesia...), cần user tự vào site và tick filter Vietnam để lấy danh sách rút gọn.",
+    "Thông số kỹ thuật chi tiết (công suất kg/24h, kích thước, điện áp, công suất điện) của từng model đều nằm trong PDF 'Spec Sheet' và 'Dimensional Drawings' riêng — agent chưa trích xuất nội dung PDF. Cần tải các PDF này (link có kèm theo từng model ở data.json) nếu muốn nhập specs đầy đủ vào WooCommerce.",
+    "Đối chiếu 52 sản phẩm Hoshizaki hiện có trên saigonhoreca.local với danh sách dòng (Premier/Gold Line/A-Fit/A1-FIT/PRO) và các nhóm mới (Dishwasher/Sushi Showcase/Beer&Soda Dispenser/Deep Freezer/Thawing Cabinet/Cooking Equipment) ở trên — chưa làm vì cần quyền truy vấn DB/WP-admin site thật, ngoài phạm vi web-research của agent này.",
+    "Cần liên hệ Hoshizaki Vietnam / đại lý phân phối chính thức để lấy giá bán VND và ảnh sản phẩm chính hãng độ phân giải cao — Hoshizaki không niêm yết giá công khai (mọi trang chỉ có nút GET QUOTE/REQUEST QUOTE)."
+  ]
+}

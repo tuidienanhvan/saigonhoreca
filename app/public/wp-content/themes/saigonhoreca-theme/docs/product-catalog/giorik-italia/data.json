@@ -1,0 +1,352 @@
+{
+  "research_date": "2026-07-13",
+  "research_update_date": "2026-07-13",
+  "source_note": "Cào từ website chính hãng Giorik S.p.A. (Ý) — www.giorik.com (bản tiếng Anh /en/). KHÔNG phải dữ liệu tự bịa — mọi model/thông số dưới đây có URL nguồn kèm theo. WebFetch hoạt động bình thường trên giorik.com (không bị chặn crawl). Lần cập nhật này (13/07) đã crawl sâu thêm: 5 dòng Ovens (Steambox Evolution, Kore, Minitouch, MovAir, EasyAir) và 12 loại thiết bị Modular Cooking còn lại (Solid Top, Electric Cookers, Ceramic Glass Hobs, Induction, Fry Top, Aquagrill, Volcanic Rock Grills, Bain-Marie, Pasta-Cooker, Fryers, Boiling Pans, Gas Ranges) — lấy được mã model đầy đủ cho gần như toàn bộ, tương đương độ chi tiết đã có ở Bratt Pan/Salamander. Pop Speed Oven và phần đại lý VN chưa crawl lại lần này (giữ nguyên như bản trước).",
+  "existing_catalog_gap": "Site saigonhoreca.local hiện chỉ có 3 sản phẩm dưới brand Giorik. Giorik thực tế có danh mục rất rộng: lò nướng/hấp (ovens, ~130+ mã model), bếp module Unika 700/900/Gio 60 (~370+ mã model qua 12 loại thiết bị + bratt pan), salamander (7 mã), và lò tốc độ Pop Speed Oven (chưa có mã công khai). Đây là khoảng trống lớn cần bổ sung dần lên site.",
+  "brand": "Giorik-Italia",
+  "company_info": {
+    "legal_name": "Giorik S.p.A.",
+    "founded": 1963,
+    "headquarters": "Sedico, Ý (Bắc Ý)",
+    "manufacturing_note": "Nhà máy 12,000 m², trong đó 600 m² dành cho phòng R&D + bếp trình diễn (demo kitchen) cho đầu bếp huấn luyện.",
+    "history_note": "Ban đầu chuyên sản xuất fryer (nồi chiên) chuyên nghiệp; đầu thập niên 1980 mở rộng sang salamander, lò đối lưu (convection) và lò hấp-nướng kết hợp (combi oven).",
+    "source_url": "https://www.giorik.com/en/home.html"
+  },
+  "source_urls": [
+    "https://www.giorik.com/en/home.html",
+    "https://www.giorik.com/en/products/ovens-4971222.html",
+    "https://www.giorik.com/en/products/modular-cooking-9851681.html",
+    "https://www.giorik.com/en/products/salamanders/rapid-salamanders-4971484.html",
+    "https://www.giorik.com/en/compare-ovens",
+    "https://popspeedoven.giorik.com/"
+  ],
+  "groups": [
+    {
+      "group_name": "Ovens (Steam / Combi / Convection)",
+      "group_name_vi": "Lò Hấp – Nướng – Đối Lưu",
+      "taxonomy_note": "5 dòng chính, phân theo cấp độ: Steambox Evolution (cao cấp, chuyên sâu), Kore (hiệu suất cao trong diện tích nhỏ), Minitouch (entry-level, compact), MovAir & EasyAir (chuyên bánh/deli). Mỗi dòng có biến thể tạo hơi 'Boiler' (nồi hơi rời) và/hoặc 'Direct Injection' (phun trực tiếp); trong mỗi biến thể lại chia electric (E)/gas (G), số khay GN, và (với MovAir/EasyAir) bản lề trái/phải (_L/_R), phiên bản kính/finish (W/X/S...). Vì vậy tổng số MÃ MODEL lớn hơn nhiều số 'dòng sản phẩm' — nhiều mã là biến thể tùy chọn của cùng 1 kiểu máy, không phải sản phẩm hoàn toàn khác nhau.",
+      "source_urls": [
+        "https://www.giorik.com/en/products/ovens-4971222.html",
+        "https://www.giorik.com/en/compare-ovens"
+      ],
+      "comparison_tool_note": "https://www.giorik.com/en/compare-ovens là bộ lọc (Capacity/Power supply/Width/Technologies) nhưng không có sản phẩm nào được chọn sẵn — không cào được bảng dữ liệu cụ thể từ trang này.",
+      "series": [
+        {
+          "series_name": "Steambox Evolution",
+          "series_name_vi": "Dòng Steambox Evolution (cao cấp)",
+          "description_en": "Professional ovens for intensive use and high-performance cooking. Boiler version (Steambox H) combines boiler-generated steam with instant steam (Giorik 'Symbiotic System'). Direct Injection version (Steambox Master) has two-level steam regulation.",
+          "sub_lines": [
+            {
+              "variant": "Boiler - Steambox H",
+              "source_url": "https://www.giorik.com/en/products/ovens/steambox-evolution/boiler-steambox-h-4971619.html",
+              "models_electric": ["SNHE061W (6 GN1/1)", "SNHE062W (6 GN2/1)", "SNHE101W (10 GN1/1)", "SNHE102W (10 GN2/1)", "SNHE201W (20 GN1/1)", "SNHE202W (20 GN2/1)"],
+              "models_gas": ["SNHG061W", "SNHG062W", "SNHG101W", "SNHG102W", "SNHG201W", "SNHG202W"],
+              "verified_spec_example": {
+                "model": "SNHE101W",
+                "url": "https://www.giorik.com/en/product/ovens/steambox-evolution/boiler-steambox-h/snhe101w-mixed-forno-with-washing-42307903.html",
+                "chamber_power_kw": 15,
+                "total_power_kw": 16.5,
+                "dims_mm": "863x796x1115 (WxDxH)",
+                "weight_kg": 160
+              }
+            },
+            {
+              "variant": "Direct Injection - Steambox Master",
+              "source_url": "https://www.giorik.com/en/products/ovens/steambox-evolution/direct-injection-steambox-master-4971620.html",
+              "models_electric": ["SERE061W", "SERE062W", "SERE101W", "SERE102W", "SERE201W", "SERE202W"],
+              "models_gas": ["SERG061W", "SERG062W (verified prior session)", "SERG101W (verified prior session — 'Mixed oven with washing', url: https://www.giorik.com/en/product/ovens/steambox-evolution/direct-injection-steambox-r/serg101w-mixed-oven-with-washing-4674941.html)", "SERG102W", "SERG201W", "SERG202W"]
+            }
+          ],
+          "model_count": 24
+        },
+        {
+          "series_name": "Kore",
+          "series_name_vi": "Dòng Kore (hiệu suất cao, diện tích nhỏ)",
+          "description_en": "Professional ovens with maximum efficiency in minimal footprint. Only offered in 6 and 10 GN 1/1 capacities (no 20-tray or GN2/1 variant, unlike Steambox Evolution).",
+          "sub_lines": [
+            {
+              "variant": "Boiler - Kore B",
+              "source_url": "https://www.giorik.com/en/products/ovens/kore/boiler-kore-b-4971630.html",
+              "models": ["KB061W (6 GN1/1, electric)", "KB101W (10 GN1/1, electric)", "KBG061W (6 GN1/1, gas)", "KBG101W (10 GN1/1, gas)"],
+              "verified_spec_example": {
+                "model": "KB101W",
+                "url": "https://www.giorik.com/en/product/ovens/kore/boiler-kore-b/kbg101w-touch-screen-with-high-efficiency-boiler-and-automatic-wash-4674804.html",
+                "chamber_power_kw": 13.2,
+                "total_power_kw": 14.5,
+                "dims_mm": "519x806x1010",
+                "weight_kg": 98
+              }
+            },
+            {
+              "variant": "Direct Injection - Kore I",
+              "source_url": "https://www.giorik.com/en/products/ovens/kore/direct-injection-kore-i-4971631.html",
+              "models": ["KI061W", "KI101W", "KIG061W", "KIG101W"]
+            }
+          ],
+          "model_count": 8
+        },
+        {
+          "series_name": "Minitouch",
+          "series_name_vi": "Dòng Minitouch (entry-level, compact)",
+          "description_en": "Entry level, compact professional ovens. Only Direct Injection variant, electric only (no gas/boiler variant found).",
+          "source_url": "https://www.giorik.com/en/products/ovens/minitouch/direct-injection-minitouch-m-4971632.html",
+          "models": ["KNM061W (6 GN1/1, electric)", "KNM0623W (6 GN2/3, electric)", "KNM101W (10 GN1/1, electric)"],
+          "verified_spec_example": {
+            "model": "KNM101W",
+            "url": "https://www.giorik.com/en/product/ovens/minitouch/direct-injection-minitouch-m/knm101w-minitouch-with-direct-injection-and-automatic-washing-system-86049864.html",
+            "chamber_power_kw": 13.2,
+            "total_power_kw": 13.8,
+            "dims_mm": "519x806x1010",
+            "weight_kg": 98
+          },
+          "model_count": 3
+        },
+        {
+          "series_name": "MovAir",
+          "series_name_vi": "Dòng MovAir (bánh/deli)",
+          "description_en": "Professional ovens for delicatessens and pastry products. Only Direct Injection variant. Each model comes in door-hinge left/right (_L/_R) variants, and electric models also in base/W/X/XW finish variants.",
+          "source_url": "https://www.giorik.com/en/products/ovens/movair/direct-injection-movair-4971634.html",
+          "models_electric_base_codes": ["NMTE523 (5 GN2/3)", "NMTE5 (5 GN1/1 60x40)", "NMTE7 (7 GN1/1 60x40)", "NMTE10 (10 GN1/1)"],
+          "models_electric_finish_variants_note": "Mỗi mã cơ sở electric có thêm biến thể W/X/XW (kính/hoàn thiện) và _L/_R (bản lề) — ví dụ NMTE10, NMTE10W, NMTE10X, NMTE10XW, mỗi mã lại có NMTE10_R (bản lề phải) v.v.",
+          "verified_spec_example": {
+            "model": "NMTE10_R",
+            "url": "https://www.giorik.com/en/product/ovens/movair/direct-injection-movair/nmte10_r-mixed-forno-with-touch-control-door-hinges-right-side-30250033.html",
+            "chamber_power_kw": 12,
+            "total_power_kw": 12.6,
+            "dims_mm": "907x752x1023",
+            "weight_kg": 100
+          },
+          "models_gas_base_codes": ["NMTG5", "NMTG7", "NMTG10"],
+          "models_gas_finish_variants_note": "Mỗi mã gas có thêm W (finish) và _L/_R (bản lề). 1 mã 'MTG10W_R' xuất hiện trên trang nhưng chưa xác minh độc lập (có thể lỗi chính tả của NMTG10W_R) — gắn cờ chưa xác minh.",
+          "accessories_not_ovens": ["CLP8 (tủ ủ bột / proofer, 8x EN60x40)", "CLP12 (tủ ủ bột / proofer, 12x EN60x40)"],
+          "model_count_note": "Ước tính ~44 mã oven riêng biệt (điện: 4 mã gốc x4 finish x2 hinge = 32; gas: 3 mã gốc x2 finish x2 hinge = 12) — không đếm 2 mã proofer CLP8/CLP12 vì không phải oven."
+        },
+        {
+          "series_name": "EasyAir",
+          "series_name_vi": "Dòng EasyAir (điều khiển cơ-điện, bánh/deli)",
+          "description_en": "Professional ovens with electromechanical control for delicatessens and pastry products. 2 sub-lines: Direct Injection ECE (mixed convection+steam) and Humidifier EME (convection+humidifier, 2 fan speeds). Both have legacy and 'N'-prefixed new-generation variants.",
+          "sub_lines": [
+            {
+              "variant": "Direct Injection ECE",
+              "source_url": "https://www.giorik.com/en/products/ovens/easyair/direct-injection-ece-4971627.html",
+              "models_electric": ["ECE5232/ECE5232S/ECE5232X/ECE5232XS (5 GN2/3)", "ECE52/ECE52S/ECE52X/ECE52XS (5 GN1/1 60x40)", "ECE72/ECE72S/ECE72X/ECE72XS (7 GN1/1 60x40)", "ECE102/ECE102S/ECE102X/ECE102XS (10 GN1/1)"],
+              "verified_spec_example": {
+                "model": "ECE102",
+                "url": "https://www.giorik.com/en/product/ovens/easyair/direct-injection-ece/ece102-mixed-oven-with-electromechanical-control-4674674.html",
+                "chamber_power_kw": 12,
+                "total_power_kw": 12.6,
+                "dims_mm": "870x749x1023",
+                "weight_kg": 100
+              },
+              "models_gas": ["ECG52", "ECG52S", "ECG72", "ECG72S", "ECG102", "ECG102S"],
+              "models_new_gen_unverified": ["NECE102/S/X/XS", "NECE52/S/X/XS", "NECE5232/S/X/XS", "NECE72/S/X/XS — listed on page nhưng CHƯA fetch trang model con riêng để xác minh từng mã"]
+            },
+            {
+              "variant": "Humidifier EME",
+              "source_url": "https://www.giorik.com/en/products/ovens/easyair/humidifier-and-2-fan-speeds-eme-4971637.html",
+              "models_electric": ["EME5232/EME5232X (5 GN2/3)", "EME52/EME52X (5 GN1/1 60x40)", "EME72/EME72X (7 GN1/1 60x40)", "EME102/EME102X (10 GN1/1)"],
+              "models_new_gen": ["NEME102/NEME102X", "NEME52/NEME52X", "NEME5232/NEME5232X", "NEME72/NEME72X"],
+              "models_gas": ["EMG52", "EMG72", "EMG102"],
+              "models_new_gen_gas": ["NEMG102", "NEMG52", "NEMG72"]
+            }
+          ],
+          "model_count_note": "Ước tính ~60 mã (ECE 16 + ECG 6 + NECE 16 chưa xác minh riêng lẻ + EME 8 + NEME 8 + EMG 3 + NEMG 3)."
+        }
+      ],
+      "oven_group_total_model_estimate": "~139 mã (Steambox 24, Kore 8, Minitouch 3, MovAir ~44, EasyAir ~60) — số lớn vì nhiều mã là biến thể finish/hinge của cùng kiểu máy, không phải model hoàn toàn khác nhau về công dụng."
+    },
+    {
+      "group_name": "Modular Cooking",
+      "group_name_vi": "Bếp Module (Unika 700 / Unika 900 / Gio 60)",
+      "taxonomy_note": "Hệ bếp module lắp ráp theo 3 độ sâu tủ: Unika 700 (sâu 700mm), Unika 900 (sâu 900mm), Gio 60 (sâu 600mm, để bàn/counter-top). Không phải loại thiết bị nào cũng có đủ cả 3 độ sâu — nhiều loại (Solid Top, Induction, Aquagrill, Boiling Pans) KHÔNG có bản Gio 60. Đã crawl xong mã model đầy đủ cho toàn bộ 13 loại thiết bị (kể cả Bratt Pans đã có từ trước).",
+      "source_urls": [
+        "https://www.giorik.com/en/products/modular-cooking-9851681.html"
+      ],
+      "series": [
+        {
+          "series_name": "Gas Ranges",
+          "series_name_vi": "Bếp Gas (Bếp Âu Nhiều Họng)",
+          "description_en": "Brass burners, power range 4-8 kW, dual pilot-light protection, enamelled cast iron pan supports. 4 depth-line variants each for Unika 700/900: standard line + 'Basic Line' (economy).",
+          "lines": [
+            { "name": "Unika 700 (standard)", "source_url": "https://www.giorik.com/en/products/modular-cooking/gas-ranges/unika700-9851784.html", "models": ["CG720G", "CG740G", "CG760G", "CG740F", "CG740E", "CG760F", "CG760E", "CG760H", "TG76FTC", "TG76FTR", "TG74FTL", "TG74FTR", "TG76FTL", "CG76EH", "TG74GTL", "TG74GTR", "TG76GTC", "TG76GTL", "TG76GTR", "CG720T", "CG740T", "CG760T"] },
+            { "name": "700 Basic Line", "source_url": "https://www.giorik.com/en/products/modular-cooking/gas-ranges/basic-line-9851821.html", "models": ["ECG720G", "ECG740G", "ECG760G", "ECG740F", "ECG740E", "ECG760F", "ECG760E", "ECG760H", "ECG720T", "ECG740T", "ECG760T", "ECG76EH"] },
+            { "name": "Unika 900 (standard)", "source_url": "https://www.giorik.com/en/products/modular-cooking/gas-ranges/unika-900-9851798.html", "models": ["CG920G", "CG940G", "CG960G", "CG940F", "CG940E", "CG960F", "CG960E", "CG960H", "CG92FG", "CG94FG", "CG96FG", "CG94FF", "CG94FE", "CG96FF", "CG96FE", "CG96FH", "CG96EH", "CG920T", "CG940T", "CG960T", "CG92FT", "CG94FT", "CG96FT"] },
+            { "name": "900 Basic Line", "source_url": "https://www.giorik.com/en/products/modular-cooking/gas-ranges/basic-line-9851822.html", "models": ["ECG920G", "ECG920T", "ECG940E", "ECG940F", "ECG940G", "ECG940T", "ECG960E", "ECG960F", "ECG960G", "ECG960H", "ECG960T", "ECG96EH"] },
+            { "name": "Gio 60", "source_url": "https://www.giorik.com/en/products/modular-cooking/gas-ranges/gio-60-9851812.html", "models": ["LPG694E (4-burner + electric oven)", "LPG4920", "LPG6940"] }
+          ],
+          "model_count": 71
+        },
+        {
+          "series_name": "Solid Top",
+          "series_name_vi": "Bếp Mặt Phẳng (Solid Top)",
+          "description_en": "Differentiated heating areas, ample cooktop. No Gio 60 line found.",
+          "lines": [
+            { "name": "Unika 700", "source_url": "https://www.giorik.com/en/products/modular-cooking/solid-top/unika-700-9851785.html", "models_electric": ["TE740G", "TE740E", "TE720G", "TE740T", "TE720T"], "models_gas": ["TG720G", "TG740G", "TG740E", "TG740F", "TG720T", "TG740T"] },
+            { "name": "Unika 900", "source_url": "https://www.giorik.com/en/products/modular-cooking/solid-top/unika-900-9851799.html", "models_electric": ["TE920G", "TE940G", "TE940E", "TE940T"], "models_gas": ["TG920G", "TG940G", "TG940F", "TG940E", "TG920T", "TG940T"] }
+          ],
+          "model_count": 21
+        },
+        {
+          "series_name": "Electric Cookers",
+          "series_name_vi": "Bếp Điện",
+          "description_en": "Round or square plates.",
+          "lines": [
+            { "name": "Unika 700", "source_url": "https://www.giorik.com/en/products/modular-cooking/electric-cookers-9851739.html", "models": ["CE72QG", "CE74QG", "CE76QG", "CE74QE", "CE76QE", "CE74TG", "CE72TG", "CE76TG", "CE74TE", "CE76TE", "CE74QGMC", "CE76QH", "CE76TH", "CE72QT", "CE74QT", "CE72TT", "CE74TT"] },
+            { "name": "Unika 900", "models": ["CE92QG", "CE94QG", "CE96QG", "CE94QE", "CE96QE", "CE96QH", "CE94QGMC", "CE92QT", "CE94QT"] },
+            { "name": "Gio 60", "models": ["LPE4721", "LPE6741", "LPE6743"], "note": "Fetch gốc còn liệt 2 mã LPE674E/LPV674E nghi trùng/lỗi gõ với dòng ceramic — chỉ giữ 3 mã Gio 60 electric-cooker xác nhận rõ ràng." }
+          ],
+          "model_count": 29
+        },
+        {
+          "series_name": "Ceramic Glass Hobs",
+          "series_name_vi": "Bếp Mặt Kính Ceramic",
+          "description_en": "Rapid set-up combined with maximum safety. Unika 700/900 depth-line pages mô tả sản phẩm chung (2 hoặc 4 vùng nấu, 2.1kW/vùng ở 700, 2.75kW/vùng ở 900) nhưng KHÔNG show thêm mã model con riêng lẻ trên các trang đó — chỉ Gio 60 có mã cụ thể.",
+          "source_url": "https://www.giorik.com/en/products/modular-cooking/ceramic-glass-hobs-9851740.html",
+          "models_gio_60": ["LPV4721", "LPV6741", "LPV6743"],
+          "model_count": 3,
+          "specs_status": "Unika 700/900: chưa có mã model con cụ thể — cần fetch sâu thêm nếu có."
+        },
+        {
+          "series_name": "Induction Cookers",
+          "series_name_vi": "Bếp Từ Công Nghiệp",
+          "description_en": "Rapid cooking, efficiency and safety. Includes wok (CW) variants. No Gio 60 line found.",
+          "lines": [
+            { "name": "Unika 700", "source_url": "https://www.giorik.com/en/products/modular-cooking/induction-cookers-9851741.html", "models": ["CI720G", "CI740G", "CW720G (wok)", "CI720T", "CI740T", "CW720T (wok)"] },
+            { "name": "Unika 900", "models": ["CI920G", "CI940G", "CW920G (wok)", "CI920T", "CI940T", "CI92TT", "CI94TT", "CW920T (wok)", "CI92TG", "CI94TG"] }
+          ],
+          "model_count": 15
+        },
+        {
+          "series_name": "Fry Top",
+          "series_name_vi": "Bếp Chiên Phẳng (Fry Top)",
+          "description_en": "Max temp 300°C, 15mm plate. Very large range across electric (FLE/FRE/FME), gas (FLG/FRG/FMG), and gas high-efficiency (CRX suffix) variants, left/right (L/R) and single/mid (M) burner layouts.",
+          "lines": [
+            { "name": "Unika 700", "source_url": "https://www.giorik.com/en/products/modular-cooking/fry-top/unika-700-9851791.html", "models": ["FLE72GF", "FRE72GF", "FLE741GF", "FME741GF", "FLE72GCRX", "FRE72GCRX", "FLE741GCRX", "FRE741GCRX", "FME741GCRX", "FLE72TF", "FRE72TF", "FLE741TF", "FME741TF", "FRE741TF", "FLE72TCRX", "FRE72TCRX", "FLE741TCRX", "FRE741TCRX", "FME741TCRX", "FLG72GF", "FRG72GF", "FLG741GF", "FMG741GF", "FRG741GF", "FLG72GCRX", "FRG72GCRX", "FLG741GCRX", "FRG741GCRX", "FMG741GCRX", "FLG72TF", "FRG72TF", "FLG741TF", "FMG741TF", "FRG741TF", "FLG72TCRX", "FRG72TCRX", "FLG741TCRX", "FRG741TCRX", "FMG741TCRX", "FLG73GCRX", "FLG73TCRX", "FRG73GCRX", "FRG73TCRX", "FLG76GCRX", "FLG76TCRX", "FMG76GCRX", "FMG76TCRX", "FRG76GCRX", "FRG76TCRX"] },
+            { "name": "Unika 900", "source_url": "https://www.giorik.com/en/products/modular-cooking/fry-top/unika-900-9851805.html", "models": ["FLE92GF", "FRE92GF", "FLE941GF", "FME941GF", "FRE941GF", "FRE741GF", "FLE92GCRX", "FRE92GCRX", "FLE941GCRX", "FRE941GCRX", "FME941GCRX", "FLE92TF", "FRE92TF", "FLE941TF", "FRE941TF", "FLE92TCRX", "FRE92TCRX", "FLE941TCRX", "FRE941TCRX", "FME941TCRX", "FLG92GF", "FRG92GF", "FLG941GF", "FMG941GF", "FRG941GF", "FLG92GCRX", "FRG92GCRX", "FLG941GCRX", "FRG941GCRX", "FMG941GCRX", "FLG92TF", "FRG92TF", "FLG941TF", "FMG941TF", "FRG941TF", "FLG92TCRX", "FRG92TCRX", "FLG941TCRX", "FRG941TCRX", "FMG941TCRX", "FLG93GCRX", "FLG93TCRX", "FRG93GCRX", "FRG93TCRX", "FLG96GCRX", "FLG96TCRX", "FMG96GCRX", "FMG96TCRX", "FRG96TCRX"] },
+            { "name": "Gio 60", "source_url": "https://www.giorik.com/en/products/modular-cooking/fry-top/gio-60-9851815.html", "models_electric": ["LGE4901", "LGE6903", "LGE4911", "LGE6921", "LGE6923", "LGE6963", "LGE6901"], "models_gas": ["LGG4900", "LGG4900X", "LGG6900", "LGG6900X", "LGG6930", "LGG4910", "LGG4910X", "LGG6910", "LGG6910X", "LGG6960", "LGG6970X", "LGG6960X", "LGG6970"] }
+          ],
+          "model_count": 118,
+          "example_model_prior_session": { "model": "Unika 700 GAS FRY TOP, COUNTERTOP - SMOOTH IRON GRIDDLE", "url": "https://www.giorik.com/en/product/modular-cooking/fry-top/unika-700/gas-fry-top-countertop-smooth-iron-griddle-4673847.html" }
+        },
+        { "series_name": "Aquagrill", "series_name_vi": "Vỉ Nướng Aquagrill (Nướng Bằng Nước)", "description_en": "Revolutionary Giorik grill using water for cooking, reduces smoke/oil splatter. No Gio 60 line confirmed.", "source_url": "https://www.giorik.com/en/products/modular-cooking/aquagrill-9851745.html", "models_unika_700_electric": ["GL72GE", "GL74GE", "GL72TE", "GL74TE"], "models_unika_700_gas": ["GL72GV", "GL74GV", "GL76GV", "GL72TV", "GL74TV", "GL76TV"], "models_unika_900_electric": ["GL92GE", "GL94GE", "GL92TE", "GL94TE"], "models_unika_900_gas": ["GL92GV", "GL94GV", "GL96GV", "GL92TV", "GL94TV", "GL96TV"], "model_count": 20 },
+        { "series_name": "Volcanic Rock Grills", "series_name_vi": "Vỉ Nướng Đá Núi Lửa", "description_en": "Uses heat retained/diffused evenly by lava rock. All gas.", "source_url": "https://www.giorik.com/en/products/modular-cooking/volcanic-rock-grills-9851746.html", "models_unika_700": ["GL720GC", "GL740GC", "GL74TGC", "GL72TGC"], "models_unika_900": ["GL940GC", "GL920GC", "GL92TGC", "GL94TGC"], "models_gio_60": ["LTG6700", "LTG8700"], "model_count": 10 },
+        { "series_name": "Bain-Marie", "series_name_vi": "Nồi Giữ Nóng Cách Thủy (Bain-Marie)", "description_en": "Harnesses heat from boiling water to gently cook/heat food, 0-90°C. All electric.", "source_url": "https://www.giorik.com/en/products/modular-cooking/bain-marie-9851747.html", "models_unika_700": ["BM720E", "BM740E", "BM720T", "BM740T"], "models_unika_900": ["BM920E", "BM940E", "BM920T", "BM940T"], "models_gio_60": ["LBE4711", "LBE6711"], "model_count": 10 },
+        { "series_name": "Pasta-Cooker", "series_name_vi": "Nồi Nấu Mì Ý (Pasta Cooker)", "description_en": "For rapidly cooking large quantities of pasta.", "source_url": "https://www.giorik.com/en/products/modular-cooking/pasta-cooker-9851748.html", "models_unika_700": ["CPE726 (26L electric single-tank)", "CPE746 (26+26L electric double-tank)", "CPE726T (20L electric single-tank)", "CPG726 (26L gas single-tank)", "CPG746 (26+26L gas double-tank)"], "models_unika_900": ["CPE926 (40L electric)", "CPE946 (40+40L electric)", "CPG926 (40L gas)", "CPG946 (40+40L gas)"], "models_gio_60": ["LCP6713 (electric)", "LCG6700 (gas)"], "model_count": 11 },
+        {
+          "series_name": "Fryers",
+          "series_name_vi": "Bếp Chiên Nhúng (Fryer)",
+          "description_en": "One or two tanks, moulded base, rounded corners for easy cleaning. Gio 60 line exists but individual model codes not exposed on the depth-line page (needs follow-up drilling).",
+          "lines": [
+            { "name": "Unika 700", "source_url": "https://www.giorik.com/en/products/modular-cooking/fryers/unika-700-9851796.html", "models_electric": ["FE7207 (8.8L)", "FE7207M", "FE7113 (13L)", "FE7117 (17L)", "FE7113M", "FE7117M", "FE7215 (13.15L)", "FE7215M", "FE7213 (13.13L)", "FE7217 (17.17L)", "FE7213M", "FE7217M", "FE7210T (10.10L top)", "FE7110T (10L top)"], "models_gas": ["FG7207T (8.8L)", "FG7207MT", "FG7113T (13L)", "FG7117T (17L)", "FG7113MT", "FG7117MT", "FG7215T (13.15L)", "FG7215MT", "FG7213T (13.13L)", "FG7217T (17.17L)", "FG7213MT", "FG7217MT", "FG7413P (13L clean tank)", "FG7417P (17L clean tank)", "FG7413MP", "FG7417MP", "FG7813P (13.13L clean tank)", "FG7817P (17.17L clean tank)", "FG7813MP", "FG7817MP"], "example_model_prior_session": { "model": "GAS FRYER - 13+13 L", "url": "https://www.giorik.com/en/product/modular-cooking/fryers/unika-700/gas-fryer-13-13-l-4673790.html" } },
+            { "name": "Unika 900", "models_electric": ["FE9207 (8.8L)", "FE9207M", "FE9113 (13L)", "FE9117 (17L)", "FE9121 (21L)", "FE9113M", "FE9117M", "FE9121M", "FE9217 (17.17L)", "FE9221 (21.21L)", "FE9217M", "FE9221M"], "models_gas": ["FG9207T", "FG9207MT", "FG9113T", "FG9117T", "FG9113MT", "FG9117MT", "FG9213T", "FG9217T", "FG9213MT", "FG9217MT", "FG9413P", "FG9417P", "FG9421P", "FG9413MP", "FG9417MP", "FG9421MP", "FG9817P", "FG9821P", "FG9817MP", "FG9821MP"] },
+            { "name": "Gio 60", "source_url": "https://www.giorik.com/en/products/modular-cooking/fryers/gio-60-9851820.html", "models": [], "specs_status": "Trang chỉ mô tả chung ('modularity of 40 and 60cm', 'high-performance heating tubes'), KHÔNG lộ mã model cụ thể — cần fetch sâu hơn (trang model con) nếu cần mã Gio 60 fryer." }
+          ],
+          "model_count": 54
+        },
+        { "series_name": "Boiling Pans", "series_name_vi": "Nồi Nấu Công Nghiệp (Boiling Pan)", "description_en": "Designed for large-scale catering and food industry needs. Direct (D) or indirect (I) heating. No Gio 60 line (explicitly confirmed absent on source page).", "source_url": "https://www.giorik.com/en/products/modular-cooking/boiling-pans-9851750.html", "models_unika_700": ["PEI705 (electric, indirect, 50L)", "PGD705 (gas, direct, 50L)", "PGI705 (gas, indirect, 50L)"], "models_unika_900": ["PEI910 (electric, indirect, 100L)", "PEI915 (electric, indirect, 150L)", "PGD910 (gas, direct, 100L)", "PGD915 (gas, direct, 150L)", "PGI910 (gas, indirect, 100L)", "PGI915 (gas, indirect, 150L)"], "model_count": 9 },
+        {
+          "series_name": "Bratt Pans",
+          "series_name_vi": "Chảo Nghiêng (Bratt Pan / Chảo Rán Xào Nghiêng)",
+          "description_en": "Suitable for braising large quantities of food requiring slow cooking (meat, fish, vegetables, meat sauce, risotto, jam). Non-stick treatment available. Manual or motorised/automatic tilt versions. Filled via tap and spout on flue.",
+          "unika_700_models": [
+            { "model": "CM720G", "capacity_l": 15, "tilt": "Fixed (không nghiêng)", "heat_source": "Gas" },
+            { "model": "CM740G", "capacity_l": 30, "tilt": "Fixed (không nghiêng)", "heat_source": "Gas" },
+            { "model": "BE74XM", "capacity_l": 50, "tilt": "Manual (nghiêng tay quay)", "heat_source": "Electric" },
+            { "model": "BG74XM", "capacity_l": 50, "tilt": "Manual (nghiêng tay quay)", "heat_source": "Gas" }
+          ],
+          "unika_900_models": [
+            { "model": "CM920G", "capacity_l": null, "tilt": "Fixed", "heat_source": "Gas" },
+            { "model": "CM940G", "capacity_l": null, "tilt": "Fixed", "heat_source": "Gas" },
+            { "model": "BE96XA", "capacity_l": 120, "tilt": "Automatic", "heat_source": "Electric" },
+            { "model": "BE94XA", "capacity_l": 80, "tilt": "Automatic", "heat_source": "Electric" },
+            { "model": "BE94XM", "capacity_l": 80, "tilt": "Manual", "heat_source": "Electric" },
+            { "model": "BG96XA", "capacity_l": 120, "tilt": "Automatic", "heat_source": "Gas" },
+            { "model": "BG94XA", "capacity_l": 80, "tilt": "Automatic", "heat_source": "Gas" },
+            { "model": "BG94XM", "capacity_l": 80, "tilt": "Manual", "heat_source": "Gas" }
+          ],
+          "material_note": "Đáy chảo Unika 700 dòng B**XM làm bằng thép duplex 2304.",
+          "source_urls": [
+            "https://www.giorik.com/en/products/modular-cooking/bratt-pans-9851742.html",
+            "https://www.giorik.com/en/products/modular-cooking/bratt-pans/unika-700-9851789.html",
+            "https://www.giorik.com/en/products/modular-cooking/bratt-pans/unika-900-9851803.html"
+          ],
+          "model_count": 12
+        }
+      ],
+      "modular_cooking_group_total_model_estimate": "~373 mã (Gas Ranges 71, Fry Top 118, Fryers 54, Electric Cookers 29, Solid Top 21, Aquagrill 20, Induction 15, Pasta-Cooker 11, Bratt Pans 12, Volcanic Rock Grills 10, Bain-Marie 10, Boiling Pans 9, Ceramic Glass Hobs 3) — CHƯA tính Gio 60 Fryer (chưa lộ mã) và vài mã 'New Generation' EasyAir/Ceramic Unika 700-900 chưa xác minh riêng lẻ."
+    },
+    {
+      "group_name": "Salamanders (Rapid Salamanders)",
+      "group_name_vi": "Bếp Nướng Trên Salamander (Rapid Salamander)",
+      "taxonomy_note": "3 dòng theo cấp độ điều khiển: Hi Lite (cơ bản, tiết kiệm năng lượng tới 79%), Hi Plus (có chức năng Dish Presence + Hold), Hi Touch (cảm ứng, kế thừa công nghệ Hi Lite). Công nghệ chung: bề mặt gia nhiệt bằng gốm phản xạ (reflective ceramic plate), đạt nhiệt độ nấu chỉ trong 8 giây.",
+      "series": [
+        {
+          "series_name": "Hi Lite",
+          "series_name_vi": "Dòng Hi Lite",
+          "models": [
+            { "model": "SH20" },
+            { "model": "SH30" },
+            { "model": "SH40" }
+          ],
+          "note": "3 model khác nhau về kích thước và công suất; số 20/30/40 dùng nhất quán trong tên model của cả 3 dòng salamander.",
+          "source_url": "https://www.giorik.com/en/products/salamanders/rapid-salamanders/hi-lite-13318515.html"
+        },
+        {
+          "series_name": "Hi Plus",
+          "series_name_vi": "Dòng Hi Lite Plus",
+          "models": [
+            { "model": "SHP30", "name": "Hi-Lite Plus Rapid Electric Salamander" },
+            { "model": "SHP40", "name": "Hi-Lite Plus Rapid Electric Salamander" }
+          ],
+          "note": "Các phần tử gia nhiệt kích hoạt độc lập, điều chỉnh điện tử ở chế độ công suất tối đa để nấu đều, tránh quá nhiệt. Có chức năng Dish Presence (nhận biết có khay) và Hold (giữ nhiệt).",
+          "source_url": "https://www.giorik.com/en/products/salamanders/rapid-salamanders/hi-plus-13318516.html"
+        },
+        {
+          "series_name": "Hi Touch",
+          "series_name_vi": "Dòng Hi Touch (điều khiển cảm ứng)",
+          "models": [
+            { "model": "ST30", "name": "Hi-Touch Rapid Electric Salamander" },
+            { "model": "ST40", "name": "Hi-Touch Rapid Electric Salamander" }
+          ],
+          "note": "Kết hợp công nghệ Hi-Lite với khả năng cảm nhận/diễn giải thao tác chạm của người vận hành.",
+          "source_url": "https://www.giorik.com/en/products/salamanders/rapid-salamanders/hi-touch-13318517.html"
+        }
+      ],
+      "source_urls": ["https://www.giorik.com/en/products/salamanders/rapid-salamanders-4971484.html"]
+    },
+    {
+      "group_name": "Pop Speed Oven",
+      "group_name_vi": "Lò Nướng Tốc Độ Pop Speed Oven",
+      "taxonomy_note": "Sản phẩm chuyên biệt, có microsite riêng (popspeedoven.giorik.com) tách khỏi site chính giorik.com — không nằm trong menu Ovens chính. Không tìm thấy mã model cụ thể trên trang này (site có vẻ dạng landing/coming-soon, có mục Shop nhưng chưa xác nhận bán trực tiếp). CHƯA crawl lại lần này — giữ nguyên tình trạng như phiên trước.",
+      "description_en": "Plug & Cook speed oven for paninis, club sandwiches, toasties, pizzas, wraps, croque madame/monsieur — up to 4 pieces per cycle in under 2.5 minutes. Uses controlled steam + 'air impingement technology' (patent pending). Core reaches 65°C while exterior stays crisp (avoids microwave 'rubber-like' texture). 7\" touch screen, preset + custom recipes. 2/3 GN non-stick tray, food-contact compliant, removable for cleaning. Built-in 3-liter water tank (~400 cooking cycles average) — no water-mains connection needed, just an electrical socket.",
+      "source_urls": [
+        "https://popspeedoven.giorik.com/",
+        "https://popspeedoven.giorik.com/shop/"
+      ],
+      "specs_status": "Chưa có mã model/SKU cụ thể, chưa có công suất điện (kW) hay kích thước máy từ nội dung cào được. Vẫn là gap chưa giải quyết."
+    }
+  ],
+  "vietnam_market_context": {
+    "note": "Chưa xác nhận nhà phân phối chính hãng (authorized distributor) của Giorik tại Việt Nam qua website chính hãng giorik.com. Tìm thấy nhiều đơn vị TRONG NƯỚC tự nhận bán/nhập hàng Giorik, nhưng đây là thông tin từ bên thứ ba, CHƯA đối chiếu với danh sách đại lý chính thức của Giorik.",
+    "third_party_reseller_mentions_unverified": [
+      { "name": "AntMart", "url": "https://antmart.vn/hang/giorik" },
+      { "name": "Tân Lộc Phát", "url": "https://tanlocphat.vn/gioi-thieu/" },
+      { "name": "Venus Corp (Thiết Bị Venus)", "url": "https://venuscorp.com.vn/brand/giorik/" },
+      { "name": "Phương Bình Group — nhắc tới model KB061W/KBO-61W combi oven", "url": "https://www.phuongbinhgroup.com.vn/products/lo-hap-nuong-da-nang-combi-oven-giorik-kb061w" }
+    ],
+    "caution": "Danh sách trên là kết quả tìm kiếm thô, CHƯA xác minh độ tin cậy/tính chính hãng của từng đơn vị — chỉ liệt kê để tham khảo, không phải khuyến nghị.",
+    "cross_check_note": "Lưu ý: 'KB061W' mà Phương Bình Group nhắc tới TRÙNG với mã Kore Boiler B (KB061W, 6 GN1/1 electric) tìm thấy trong crawl lần này ở group Ovens > Kore — xác nhận gián tiếp mã model này có thật, dù chưa xác minh Phương Bình Group có phải đại lý chính hãng hay không."
+  },
+  "pricing_status": "Giorik KHÔNG công bố giá bán công khai trên website chính hãng (giống thông lệ ngành thiết bị bếp công nghiệp B2B) — không tìm thấy trang giá/catalog giá nào trong quá trình cào. Cần liên hệ trực tiếp Giorik (info@giorik.com / +39.0437.807200) hoặc đại lý phân phối để lấy báo giá.",
+  "open_questions_for_user": [
+    "RESOLVED (13/07 update): Ovens (5 dòng) và Modular Cooking (12 loại thiết bị còn lại ngoài Bratt Pan) nay đã có mã model đầy đủ — tổng ~139 mã oven + ~373 mã modular cooking + 12 bratt pan + 7 salamander = ~530 mã model có nguồn gốc URL rõ ràng. Bạn có thể chọn nhóm/dòng cụ thể để đưa vào site trước (khuyến nghị: Gas Ranges, Fryers, Fry Top vì số lượng nhiều nhất và nhu cầu thị trường VN cao).",
+    "CHƯA GIẢI QUYẾT: Gio 60 Fryer — trang depth-line không lộ mã model cụ thể (chỉ mô tả chung), cần fetch sâu thêm các trang model con nếu cần mã chính xác.",
+    "CHƯA GIẢI QUYẾT: Ceramic Glass Hobs cho Unika 700/900 (chỉ Gio 60 có mã) — 2 trang depth-line mô tả sản phẩm chung không có mã con riêng lẻ.",
+    "CHƯA GIẢI QUYẾT: EasyAir 'New Generation' (NECE/NECG) và MovAir 'MTG10W_R' — các mã này xuất hiện trên trang liệt kê nhưng CHƯA fetch trang model con riêng để xác minh từng mã một cách độc lập (gắn cờ trong data.json).",
+    "CHƯA GIẢI QUYẾT: Pop Speed Oven — chưa có mã model/SKU, chưa rõ đây có phải sản phẩm đã bán chính thức hay vẫn ở giai đoạn ra mắt (site phụ có mục 'Coming soon').",
+    "CHƯA GIẢI QUYẾT: Chưa xác nhận Giorik có nhà phân phối chính hãng tại Việt Nam hay không — các đơn vị AntMart/Tân Lộc Phát/Venus Corp/Phương Bình Group tự nhận bán hàng Giorik nhưng chưa đối chiếu với danh sách đại lý chính thức từ giorik.com.",
+    "CHƯA GIẢI QUYẾT: Không có giá bán công khai (thông lệ B2B) — cần liên hệ Giorik/đại lý để lấy báo giá trước khi publish giá lên site.",
+    "CHƯA GIẢI QUYẾT: Chưa có ảnh sản phẩm chính hãng độ phân giải cao được tải về — trang sản phẩm có ảnh nhưng cần xin phép/tải riêng từng ảnh, hoặc xin bộ ảnh catalog từ Giorik/đại lý.",
+    "CHƯA GIẢI QUYẾT: Đầy đủ thông số kỹ thuật (kW, kích thước, trọng lượng) mới verify được cho 1 model đại diện mỗi dòng oven (SNHE101W, KB101W, KNM101W, NMTE10_R, ECE102) — các mã còn lại trong mỗi dòng theo cùng pattern nhưng chưa fetch riêng từng trang con để lấy spec (sẽ cần thêm hàng chục lượt fetch nếu muốn đầy đủ 100%)."
+  ]
+}

@@ -1,0 +1,161 @@
+/**
+ * vien-duong-lao-nam-an — concept slot.
+ * Split layout: framed image + glass card with iconed equipment list.
+ * Defines the shared `.pp-split-nan` grid reused by specs.css. Tokens only.
+ * @package SaigonHoreca
+ */
+
+.pp--nan .pp-concept-nan { background-color: var(--b2); }
+
+/* Oversized section index watermark */
+.pp--nan .pp-concept-nan__watermark {
+  position: absolute;
+  top: -3rem;
+  right: 1.5rem;
+  font-family: var(--font-display);
+  font-size: clamp(10rem, 20vw, 22rem);
+  font-weight: 800;
+  line-height: 1;
+  color: var(--gold);
+  opacity: 0.04;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+/* ── Shared split grid (concept + specs) ── */
+.pp--nan .pp-split-nan {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+@media (min-width: 992px) {
+  .pp--nan .pp-split-nan { grid-template-columns: 1fr 1fr; gap: 4.5rem; }
+  .pp--nan .pp-split-nan--reverse .pp-split-nan__media { order: 2; }
+  .pp--nan .pp-split-nan--reverse .pp-split-nan__body  { order: 1; }
+}
+
+.pp--nan .pp-split-nan__body {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Image with overlay frame + zoom */
+.pp--nan .pp-concept-nan__mask {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden !important;
+  border: 1px solid var(--bd);
+  transition: border-color 0.4s var(--ease-spring), box-shadow 0.6s var(--ease-spring);
+}
+.pp--nan .pp-concept-nan__mask:hover {
+  border-color: color-mix(in srgb, var(--gold) 40%, transparent);
+  box-shadow: 0 24px 50px color-mix(in srgb, var(--gold) 14%, transparent);
+}
+.pp--nan .pp-concept-nan__mask img { aspect-ratio: 16 / 10; }
+
+.pp--nan .pp-concept-nan__frame {
+  position: absolute;
+  inset: 12px;
+  z-index: 3;
+  border: 1px solid color-mix(in srgb, var(--gold) 28%, transparent);
+  border-radius: calc(var(--radius-md) - 4px);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s var(--ease-spring);
+}
+.pp--nan .pp-concept-nan__mask:hover .pp-concept-nan__frame { opacity: 1; }
+
+/* Glass card */
+.pp--nan .pp-concept-nan__card {
+  position: relative;
+  background: color-mix(in srgb, var(--b3) 80%, transparent);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border: 1px solid var(--bd);
+  border-radius: var(--radius-lg);
+  padding: clamp(1.75rem, 3.5vw, 2.75rem);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.4);
+}
+
+.pp--nan .pp-concept-nan__lead {
+  margin: 1.1rem 0 0;
+  font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+  line-height: 1.75;
+  color: var(--bc2);
+}
+
+.pp--nan .pp-concept-nan__list {
+  list-style: none;
+  margin: 1.75rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.pp--nan .pp-concept-nan__item {
+  display: flex;
+  gap: 1.1rem;
+  align-items: flex-start;
+  padding-left: 1.25rem;
+  position: relative;
+}
+.pp--nan .pp-concept-nan__item::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0.2rem; bottom: 0.2rem;
+  width: 2px;
+  background: color-mix(in srgb, var(--bc) 8%, transparent);
+  transition: background-color 0.4s var(--ease-spring);
+}
+.pp--nan .pp-concept-nan__item:hover::before { background: var(--gold); }
+
+.pp--nan .pp-concept-nan__icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--gold) 6%, transparent);
+  border: 1px solid color-mix(in srgb, var(--gold) 18%, transparent);
+  color: var(--gold);
+  transition: transform 0.4s var(--ease-spring), border-color 0.4s, background-color 0.4s;
+}
+.pp--nan .pp-concept-nan__icon svg { width: 1.3rem; height: 1.3rem; display: block; }
+.pp--nan .pp-concept-nan__item:hover .pp-concept-nan__icon {
+  transform: translateY(-2px);
+  border-color: var(--gold);
+  background: color-mix(in srgb, var(--gold) 12%, transparent);
+}
+
+.pp--nan .pp-concept-nan__item-body h3 {
+  margin: 0 0 0.35rem;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--bc);
+  transition: color 0.3s;
+}
+.pp--nan .pp-concept-nan__item:hover .pp-concept-nan__item-body h3 { color: var(--gold); }
+.pp--nan .pp-concept-nan__item-body p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--bc2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pp--nan .pp-concept-nan__mask,
+  .pp--nan .pp-concept-nan__frame,
+  .pp--nan .pp-concept-nan__icon,
+  .pp--nan .pp-concept-nan__item::before {
+    transition: none !important;
+    transform: none !important;
+  }
+}

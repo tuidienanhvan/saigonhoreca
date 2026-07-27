@@ -64,7 +64,7 @@ $uri = get_template_directory_uri();
       <!-- Card 2: Collage Image (Cột 2, Hàng 1 - Chiếm 2 cột ngang trên Desktop) -->
       <div class="pp-bento-card pp-bento-card--image-collage">
         <figure class="pp-image-container-shared">
-          <img src="<?php echo sgh_img('the-royal-all-day-dining/the-royal-all-day-dining-collage-chi-tiet-thiet-bi.jpg'); ?>" alt="<?php echo esc_attr__('Hệ thống lò nướng hấp combi và thiết bị giữ nhiệt inox công nghiệp tại The Royal', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="800" height="600">
+          <img src="<?php echo sgh_img('the-royal-all-day-dining/the-royal-all-day-dining-collage-chi-tiet-thiet-bi.jpg'); ?>" alt="<?php echo esc_attr__('Collage cận cảnh lò vi sóng, lò Salamander và bếp gas Fujimak inox công nghiệp tại The Royal', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="800" height="600">
           <figcaption class="pp-image-caption-shared"><?php echo esc_html__('Cận cảnh hệ thống thiết bị inox 304 tích hợp chuẩn chỉ từng micromet.', 'saigonhoreca'); ?></figcaption>
         </figure>
       </div>
@@ -107,14 +107,6 @@ $uri = get_template_directory_uri();
           <span class="pp-bento-stat__val">15+</span>
           <span class="pp-bento-stat__label"><?php echo esc_html__('Năm Đồng Hành F&B Việt', 'saigonhoreca'); ?></span>
         </div>
-      </div>
-
-      <!-- Card 6: Prep Area Image (Cột 4, Hàng 2 - Chiếm 2 dòng dọc/ngang tùy responsive) -->
-      <div class="pp-bento-card pp-bento-card--image-prep">
-        <figure class="pp-image-container-shared">
-          <img src="<?php echo sgh_img('the-royal-all-day-dining/the-royal-all-day-dining-khu-so-che-chau-rua.jpg'); ?>" alt="<?php echo esc_attr__('Hệ thống quầy sơ chế chậu rửa và lưu trữ lạnh bằng inox 304 chuẩn công nghiệp', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="800" height="600">
-          <figcaption class="pp-image-caption-shared"><?php echo esc_html__('Khu vực sơ chế tích hợp chậu rửa công nghiệp hiện đại.', 'saigonhoreca'); ?></figcaption>
-        </figure>
       </div>
 
       <!-- Card 7: Core Value Text (Cột 1, Hàng 3 - Chiếm 2 cột ngang trên Desktop) -->

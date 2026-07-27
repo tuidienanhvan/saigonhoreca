@@ -1,60 +1,62 @@
-﻿<?php
+<?php
 /**
- * Project Pillar â€” spice-world-hotpot
+ * Project Pillar — spice-world-hotpot
  * Section #4: partnership
  * @package SaigonHoreca
  */
 if (!defined('ABSPATH')) exit;
 $uri = get_template_directory_uri();
 ?>
-<section class="pp-section-swh pp-swh-partnership scroll-reveal">
-  <div class="pp-watermark-bg-swh" aria-hidden="true">
-    <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5">
-      <path d="M30 30 H70 M50 30 V70 M30 70 H70" stroke-linecap="round"/>
-    </svg>
-  </div>
-
-  <div class="pp-ambient-glow-swh pp-ambient-glow-swh--top-right" aria-hidden="true"></div>
+<section class="pp-swh-partner">
+  <div class="pp-swh-partner__glow" aria-hidden="true"></div>
 
   <div class="pp-container-shared">
-    <div class="pp-grid-12-swh">
-      
-      <div class="pp-grid-12-swh__text--cols-5 swh-partnership__main">
-        <header class="swh-partnership__header">
-          <div class="pp-badge-swh">
-            <svg viewBox="0 0 24 24" fill="currentColor">
+    <div class="pp-swh-partner__grid">
+
+      <div class="pp-swh-partner__main">
+        <header class="pp-swh-partner__header">
+          <div class="pp-swh-badge">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M12 2L14.85 9.15L22 12L14.85 14.85L12 22L9.15 14.85L2 12L9.15 9.15L12 2Z"/>
             </svg>
-            <?php echo esc_html__('Äá»‘i tÃ¡c', 'saigonhoreca'); ?>
+            <?php echo esc_html__('Đối tác', 'saigonhoreca'); ?>
           </div>
-          <h2 class="pp-text-swh__title">
+          <h2 class="pp-swh-partner__title">
             <?php echo esc_html__('Saigon Horeca & Spice World', 'saigonhoreca'); ?>
-            <span class="pp-text-swh__title-gold"><?php echo esc_html__('Há»£p TÃ¡c Chiáº¿n LÆ°á»£c', 'saigonhoreca'); ?></span>
+            <span class="pp-swh-partner__title-gold"><?php echo esc_html__('Hợp Tác Chiến Lược', 'saigonhoreca'); ?></span>
           </h2>
-          <div class="pp-text-swh__divider" aria-hidden="true"></div>
+          <div class="pp-swh-divider" aria-hidden="true"></div>
         </header>
 
-        <div class="swh-partnership__body">
-          <p><?php echo esc_html__('Saigon Horeca tá»± hÃ o lÃ  Ä‘á»‘i tÃ¡c chiáº¿n lÆ°á»£c cá»§a Spice World Hotpot táº¡i Viá»‡t Nam. ChÃºng tÃ´i Ä‘Ã£ cung cáº¥p giáº£i phÃ¡p báº¿p toÃ n diá»‡n, tá»« tÆ° váº¥n thiáº¿t káº¿ Ä‘áº¿n thi cÃ´ng vÃ  báº£o trÃ¬.', 'saigonhoreca'); ?></p>
-          <p><?php echo esc_html__('Vá»›i kinh nghiá»‡m hÆ¡n 10 nÄƒm trong lÄ©nh vá»±c báº¿p cÃ´ng nghiá»‡p, Saigon Horeca hiá»ƒu rÃµ nhu cáº§u Ä‘áº·c thÃ¹ cá»§a nhÃ  hÃ ng láº©u vÃ  Ä‘Ã£ táº¡o ra má»™t há»‡ thá»‘ng báº¿p hiá»‡u quáº£, an toÃ n vÃ  tháº©m má»¹.', 'saigonhoreca'); ?></p>
-          <p><?php echo esc_html__('Sá»± há»£p tÃ¡c nÃ y khÃ´ng chá»‰ mang láº¡i giáº£i phÃ¡p ká»¹ thuáº­t mÃ  cÃ²n gÃ³p pháº§n nÃ¢ng cao tráº£i nghiá»‡m áº©m thá»±c cho thá»±c khÃ¡ch táº¡i Spice World Hotpot.', 'saigonhoreca'); ?></p>
+        <div class="pp-swh-glass-card pp-swh-partner__card">
+          <p class="pp-swh-partner__lead"><?php echo esc_html__('Saigon Horeca tự hào là đối tác chiến lược của Spice World Hotpot tại Việt Nam.', 'saigonhoreca'); ?></p>
+          <div class="pp-swh-partner__body">
+            <p><?php echo esc_html__('Chúng tôi đã cung cấp giải pháp bếp toàn diện, từ tư vấn thiết kế đến thi công và bảo trì.', 'saigonhoreca'); ?></p>
+            <p><?php echo esc_html__('Với kinh nghiệm hơn 10 năm trong lĩnh vực bếp công nghiệp, Saigon Horeca hiểu rõ nhu cầu đặc thù của nhà hàng lẩu và đã tạo ra một hệ thống bếp hiệu quả, an toàn và thẩm mỹ.', 'saigonhoreca'); ?></p>
+            <p><?php echo esc_html__('Sự hợp tác này không chỉ mang lại giải pháp kỹ thuật mà còn góp phần nâng cao trải nghiệm ẩm thực cho thực khách tại Spice World Hotpot.', 'saigonhoreca'); ?></p>
+          </div>
+
+          <dl class="pp-swh-partner__stats">
+            <div class="pp-swh-partner__stat">
+              <dt class="pp-swh-partner__stat-value">100%</dt>
+              <dd class="pp-swh-partner__stat-label"><?php echo esc_html__('Giải pháp bếp toàn diện', 'saigonhoreca'); ?></dd>
+            </div>
+            <div class="pp-swh-partner__stat">
+              <dt class="pp-swh-partner__stat-value">10+</dt>
+              <dd class="pp-swh-partner__stat-label"><?php echo esc_html__('Năm kinh nghiệm bếp công nghiệp', 'saigonhoreca'); ?></dd>
+            </div>
+          </dl>
         </div>
       </div>
 
-      <div class="pp-grid-12-swh__media--cols-7 swh-partnership__side">
-        <div class="pp-image-container-shared swh-partnership__image-container">
-          <span class="pp-corner-ornament pp-corner-ornament--top-left" aria-hidden="true"></span>
-          <span class="pp-corner-ornament pp-corner-ornament--top-right" aria-hidden="true"></span>
-          <span class="pp-corner-ornament pp-corner-ornament--bottom-left" aria-hidden="true"></span>
-          <span class="pp-corner-ornament pp-corner-ornament--bottom-right" aria-hidden="true"></span>
-          <div class="pp-image-border-decor" aria-hidden="true"></div>
-          <div class="pp-image-tag-swh">PARTNERSHIP</div>
-          <img src="<?php echo sgh_img('2024/02/spice-world-hotpot-SGH-3.jpeg'); ?>" alt="<?php echo esc_attr__('Spice World Partnership', 'saigonhoreca'); ?>" loading="lazy">
-          <div class="pp-image-caption-shared"><?php echo esc_html__('Lá»… kÃ½ káº¿t há»£p tÃ¡c chiáº¿n lÆ°á»£c giá»¯a Saigon Horeca vÃ  Spice World', 'saigonhoreca'); ?></div>
-        </div>
+      <div class="pp-swh-partner__side">
+        <figure class="pp-swh-media pp-image-container-shared pp-swh-partner__figure">
+          <span class="pp-swh-tag">PARTNERSHIP</span>
+          <img src="<?php echo esc_url(sgh_img('spice-world-hotpot/spice-world-hotpot-mat-tien-nha-hang-ban-dem.jpeg')); ?>" alt="<?php echo esc_attr__('Mặt tiền nhà hàng Spice World Hotpot sáng đèn về đêm', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
+          <figcaption class="pp-image-caption-shared"><?php echo esc_html__('Mặt tiền nhà hàng Spice World Hotpot rực sáng đèn lồng đỏ trong ngày khai trương tại Quận 5', 'saigonhoreca'); ?></figcaption>
+        </figure>
       </div>
 
     </div>
   </div>
 </section>
-

@@ -1,6 +1,9 @@
 /**
  * grand-marble-thuong-hieu-banh-cao-cap-nhat-ban — partnership slot.
- * Cinematic dark background image + glassmorphic philosophy card with caramel accents.
+ * Full-bleed bg image via the Parallax Clip-Path technique (NO JS, GPU-smooth):
+ * the section is clip-path:inset(0) which confines a position:fixed __bg child to
+ * the section = parallax; a LIGHT token gradient overlay keeps the photo visible
+ * behind the glassmorphic philosophy card with caramel accents.
  * @package SaigonHoreca
  */
 
@@ -11,22 +14,38 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   background-color: var(--b1);
   isolation: isolate;
   overflow: hidden;
 }
 
+/* Parallax background — position:absolute box, background-attachment:fixed for
+   reliable GPU-smooth parallax (bg pinned to viewport, auto-clipped to this box). */
+.pp-section-bg-gmarb__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  pointer-events: none;
+}
+
+/* LIGHT token gradient overlay — keeps the photo bright/visible, no dark scrim. */
 .pp-section-bg-gmarb__overlay {
   position: absolute;
   inset: 0;
-  z-index: 1;
-  background:
-    radial-gradient(ellipse at center, color-mix(in srgb, var(--b1) 32%, transparent) 0%, color-mix(in srgb, var(--b1) 82%, transparent) 100%),
-    linear-gradient(180deg, color-mix(in srgb, var(--gmarb-glaze) 30%, transparent) 0%, color-mix(in srgb, var(--b1) 60%, transparent) 100%);
+  z-index: -1;
   pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--b1) 45%, transparent) 0%,
+    color-mix(in srgb, var(--b1) 25%, transparent) 50%,
+    color-mix(in srgb, var(--b1) 55%, transparent) 100%
+  );
 }
 
 .pp-section-bg-gmarb__content {
@@ -72,7 +91,8 @@
   font-weight: 700;
   line-height: 1.25;
   color: var(--bc);
-  text-shadow: 0 2px 12px color-mix(in srgb, var(--b1) 60%, transparent);
+  /* Stronger legibility shadow now that the photo shows through the light overlay. */
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.55);
 }
 .pp-section-bg-gmarb__body {
   font-size: clamp(0.95rem, 1.1vw, 1.05rem);
@@ -103,6 +123,16 @@
   font-size: 0.68rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
+}
+
+/* Mobile fallback — background-attachment:fixed is janky on mobile, scroll with page. */
+@media (max-width: 768px) {
+  .pp-section-bg-gmarb__bg {
+    position: absolute;
+    background-attachment: scroll;
+    width: 100%;
+    height: 100%;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

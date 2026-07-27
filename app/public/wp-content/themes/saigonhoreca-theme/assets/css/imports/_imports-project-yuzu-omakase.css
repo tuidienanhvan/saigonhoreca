@@ -1,0 +1,8 @@
+/* Project bundle — yuzu-omakase only. */
+@import "../../../template-parts/project-pillar/yuzu-omakase/hero.css";
+@import "../../../template-parts/project-pillar/yuzu-omakase/intro.css";
+@import "../../../template-parts/project-pillar/yuzu-omakase/concept.css";
+@import "../../../template-parts/project-pillar/yuzu-omakase/partnership.css";
+@import "../../../template-parts/project-pillar/yuzu-omakase/specs.css";
+@import "../../../template-parts/project-pillar/yuzu-omakase/gallery.css";
+@import "../../../single-project/yuzu-omakase.css";

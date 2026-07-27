@@ -1,0 +1,77 @@
+/* ═══════════════════════════════════════════════════════════════
+   SCROLL — SSOT duy nhất cho MỌI rule scroll/scrollbar của theme.
+   ─────────────────────────────────────────────────────────────
+   Import qua _tokens.css (dòng @import đầu file) nên tự phủ toàn bộ
+   ~45 route bundle giống _tokens.
+
+   Triết lý (chốt 2026-07): scrollbar NATIVE, LUÔN HIỆN, styled theo
+   brand (thumb vàng kim trên track tối). Không auto-hide, không
+   scrollbar giả, không JS. Các vòng trước đã thử ẩn màu (lộ máng),
+   tắt hẳn + div giả (nhiều JS, lắm bug) — đều đã gỡ.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Cửa sổ chính ── */
+html {
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+  /* Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--p) 55%, transparent) var(--b2);
+}
+html::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+html::-webkit-scrollbar-track {
+  background: var(--b2);
+}
+html::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--p) 55%, transparent);
+  border-radius: 9999px;
+  border: 2px solid var(--b2); /* viền cùng màu track → thumb trông mảnh hơn, không dính mép */
+}
+html::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--p) 85%, transparent);
+}
+
+/* ── Container con (sidebar, modal, vùng cuộn nội bộ) ── */
+body :not(html) {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--p) 45%, transparent) transparent;
+}
+body :not(html)::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+body :not(html)::-webkit-scrollbar-track {
+  background: transparent;
+}
+body :not(html)::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--p) 45%, transparent);
+  border-radius: 9999px;
+}
+body :not(html)::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--p) 85%, transparent);
+}
+::-webkit-scrollbar-corner { background: transparent; }
+
+/* ── Ngoại lệ scrollbar theo component (3 chỗ, SSOT tại đây) ── */
+
+/* Mobile menu sidebar: ẩn hẳn thanh cuộn (menu ngắn, có overlay riêng). */
+.sh-mobile__body { -ms-overflow-style: none; scrollbar-width: none; }
+.sh-mobile__body::-webkit-scrollbar { display: none; }
+
+/* Archive-project hero carousel: thanh mảnh 4px gold luôn hiện (affordance kéo ngang). */
+.sh-archive-hero__cards {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--gold) 40%, transparent) transparent;
+}
+.sh-archive-hero__cards::-webkit-scrollbar { height: 4px; }
+.sh-archive-hero__cards::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--gold) 40%, transparent);
+  border-radius: 4px;
+}
+
+/* Archive-project trust track: ẩn hẳn — có dot/nav riêng. */
+.sh-archive-trust__track { scrollbar-width: none; }
+.sh-archive-trust__track::-webkit-scrollbar { display: none; }

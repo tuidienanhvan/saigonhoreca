@@ -1,0 +1,424 @@
+{
+  "research_date": "2026-07-14",
+  "research_update_date": "2026-07-14",
+  "source_note": "Cào từ website chính hãng Anfim S.r.l. (Ý) — www.anfim-milano.com (bản tiếng Anh /en/). KHÔNG phải dữ liệu tự bịa — mọi model/thông số dưới đây có URL nguồn kèm theo, xác nhận qua WebFetch + curl (đọc thẳng HTML, kể cả thẻ <meta> và <img> gốc, không suy đoán từ trí nhớ). Anfim.com KHÔNG chặn crawl.",
+  "existing_catalog_gap": "Site saigonhoreca.local hiện có brand 'Anfim' CHỈ dưới dạng logo đối tác ở trang chủ (mục 'Đối tác') — 0 sản phẩm Anfim trong danh mục thực tế. Đây là toàn bộ nghiên cứu nền tảng để bổ sung sản phẩm.",
+  "brand": "Anfim",
+  "company_info": {
+    "legal_name": "Anfim S.r.l. (thành viên Hemro Group / Hemro AG, Thụy Sĩ)",
+    "founded": 1932,
+    "headquarters": "Milano, Ý (nhà máy + showroom gần trung tâm thành phố)",
+    "manufacturing_note": "Tự thiết kế và sản xuất lưỡi nghiền (burr) trong nhà. Sản phẩm trải từ dòng phổ thông đến dòng khối lượng lớn (high-volume) cho quán café thương mại.",
+    "history_note": "Hoạt động hơn 90 năm như một trụ cột của truyền thống pha chế espresso Ý cổ điển tại Milano. Năm 2024, Anfim làm mới thương hiệu + website (xem news-and-events).",
+    "group_note": "Thuộc Hemro Group (cùng tập đoàn với các brand nghiền cà phê khác như Mahlkönig, Ditting, Ceado, Anfim...). Link tập đoàn: hemrogroup.com",
+    "source_url": "https://www.anfim-milano.com/en/about-us"
+  },
+  "source_urls": [
+    "https://www.anfim-milano.com/en",
+    "https://www.anfim-milano.com/en/product-list",
+    "https://www.anfim-milano.com/en/taxonomy/term/2",
+    "https://www.anfim-milano.com/en/about-us",
+    "https://www.anfim-milano.com/en/dealer-search-form"
+  ],
+  "product_lineup_note": "Trang /en/product-list (menu 'Products') chỉ hiển thị 4 model ĐANG BÁN: Alba, Luna, Pratica, Solida. Trang taxonomy /en/taxonomy/term/2 ('Professional Grinder') liệt kê thêm nhiều model, và dò thêm qua slug pattern (curl) phát hiện tổng cộng 10 model NGỪNG BÁN (No longer available) nhưng trang sản phẩm vẫn tồn tại công khai (phục vụ khách hàng cũ / phụ tùng / lịch sử). KHÔNG tìm thấy dòng 'Micro' trong lineup hiện tại hay lịch sử của Anfim — đây có thể là nhầm lẫn với brand khác (vd. Mahlkönig có dòng Guatemala/Peru, không phải Anfim). Dòng 'Super Caimano' XÁC NHẬN CÓ THẬT nhưng đã ngừng bán.",
+  "seo_gap_note": "QUAN TRỌNG: kiểm tra trực tiếp HTML <head> (qua curl) của toàn bộ 14 trang sản phẩm cho thấy Anfim-milano.com có thẻ <meta name=\"description\"> HẦU NHƯ RỖNG (chỉ chứa khoảng trắng, hoặc chỉ chữ 'No longer available' với model ngừng bán) — chính hãng KHÔNG viết meta description SEO tử tế. Không tìm thấy thẻ og:image/og:description trên các trang này. seo_title dưới đây lấy từ <title> thật (xác nhận qua curl); seo_description là do CHÚNG TA tự viết mới (không phải cào từ meta) dựa trên nội dung mô tả sản phẩm thật trên trang — cần biên tập lại cho phù hợp SEO tiếng Việt khi đưa lên site, không phải bản dịch machine mù.",
+  "groups": [
+    {
+      "group_name": "Currently Sold (2026 lineup)",
+      "group_name_vi": "Dòng đang bán chính thức (theo /en/product-list)",
+      "source_urls": ["https://www.anfim-milano.com/en/product-list"],
+      "models": [
+        {
+          "model": "ALBA",
+          "status": "active",
+          "tagline_en": "Speed and performance for high volume espresso grinding at an unbeatable value.",
+          "source_url": "https://www.anfim-milano.com/en/product/alba",
+          "specs": {
+            "burr_diameter_mm": 80,
+            "burr_type": "Flat, special steel (made in Germany)",
+            "burr_life_kg_median_setting": 1500,
+            "motor_power_w": "700-900 (tùy điện áp)",
+            "rpm": "1500 (50Hz) / 1800 (60Hz)",
+            "grinding_capacity": "~5.6 g/s @ 250µm (50Hz); ~6.4 g/s (60Hz)",
+            "single_espresso_time_s": 1.3,
+            "hopper_capacity_kg": 2.0,
+            "dimensions_mm_whd": "210 x 620 x 386",
+            "net_weight_kg": 13,
+            "shipping_weight_kg": 14.5,
+            "dosing_type": "On-demand/doserless, màn cảm ứng 3.5\" với 3 công thức lập trình sẵn + theo dõi thống kê sử dụng",
+            "voltage_options": ["100V", "110-127V", "220-240V"],
+            "colors": ["Black", "White"]
+          },
+          "seo": {
+            "seo_title": "ALBA | Anfim",
+            "seo_description": "Máy xay cà phê espresso Anfim Alba - lưỡi nghiền phẳng 80mm thép Đức, xay đôi 2.6 giây, màn cảm ứng 3.5 inch 3 công thức lập trình. Model cao cấp nhất, đang bán chính hãng.",
+            "image_url": "https://www.anfim-milano.com/sites/anfim/files/2023-10/Anfim-grinder-Alba.png",
+            "image_source_note": "Xác nhận qua <img> gốc trên trang (không phải og:image, trang này không có og:image)."
+          }
+        },
+        {
+          "model": "LUNA",
+          "status": "active",
+          "tagline_en": "Best value for performance in professional espresso grinding.",
+          "source_url": "https://www.anfim-milano.com/en/product/luna",
+          "specs": {
+            "burr_diameter_mm": 65,
+            "burr_type": "Flat, special steel premium (made in Germany)",
+            "burr_life_kg_median_setting": 800,
+            "motor_power_w": "550/700 (100V); 620 (110-127V); 440/530 (220-240V)",
+            "rpm": "1500 (50Hz) / 1800 (60Hz)",
+            "grinding_capacity": "~3.7 g/s @ 250µm (50Hz); ~4.6 g/s (60Hz)",
+            "single_espresso_time_s": 2,
+            "double_shot_time_s": 4,
+            "hopper_capacity_kg": 2.0,
+            "dimensions_mm_whd": "195 x 580 x 371",
+            "net_weight_kg": 11.2,
+            "shipping_weight_kg": 12.7,
+            "dosing_type": "Doserless (on-demand), màn cảm ứng 3.5\" 3 công thức lập trình + số liệu sử dụng",
+            "colors": ["Black", "White"]
+          },
+          "seo": {
+            "seo_title": "LUNA | Anfim",
+            "seo_description": "Máy xay cà phê espresso Anfim Luna - lưỡi nghiền phẳng 65mm, doserless on-demand, màn cảm ứng 3.5 inch 3 công thức lập trình. Tỉ lệ hiệu năng/giá tốt trong dòng đang bán.",
+            "image_url": "https://www.anfim-milano.com/sites/anfim/files/2023-01/Anfim-grinder-Luna.png",
+            "image_source_note": "Xác nhận qua <img> gốc trên trang."
+          }
+        },
+        {
+          "model": "PRATICA",
+          "status": "active",
+          "tagline_en": "Traditional Italian design meets on-demand grinding.",
+          "source_url": "https://www.anfim-milano.com/en/product/pratica",
+          "specs": {
+            "burr_diameter_mm": 65,
+            "burr_type": "Hardened steel, flat discs (redesigned geometry)",
+            "burr_life_kg_median_setting": 500,
+            "motor_power_w": "440 (220-240V); 510 (100V); 580 (110-127V)",
+            "rpm": "1400 (50Hz) / 1700 (60Hz)",
+            "grinding_capacity": "4-5 g/s @ 250µm (50Hz); 5-6 g/s (60Hz)",
+            "daily_capacity_kg": 6,
+            "hopper_capacity_kg": 1.2,
+            "dimensions_mm_whd": "195 x 578 x 387",
+            "net_weight_kg": 11.2,
+            "shipping_weight_kg": 12.7,
+            "dosing_type": "On-demand/doserless, màn hình 6 công thức lập trình, tự động start/stop, điều chỉnh 1/10 giây",
+            "voltage_options": ["100V", "110-127V", "220-240V"],
+            "colors": ["Black/Grey (có tùy chỉnh màu khác theo yêu cầu)"]
+          },
+          "seo": {
+            "seo_title": "PRATICA | Anfim",
+            "seo_description": "Máy xay cà phê espresso Anfim Pratica - lưỡi nghiền phẳng thép tôi cứng 65mm, on-demand, 6 công thức lập trình, phù hợp quán café khối lượng vừa (đến 6kg/ngày).",
+            "image_url": "https://www.anfim-milano.com/sites/anfim/files/Images/Anfim_PRATICA_espresso_grinder.png",
+            "image_source_note": "Xác nhận qua <img> gốc trên trang."
+          }
+        },
+        {
+          "model": "SOLIDA",
+          "status": "active",
+          "tagline_en": "Accurate and easy to use doser grinding.",
+          "source_url": "https://www.anfim-milano.com/en/product/solida",
+          "specs": {
+            "burr_diameter_mm": 65,
+            "burr_type": "Hardened steel, flat",
+            "burr_life_kg_median_setting": 500,
+            "motor_power_w": "440 (220-240V); 510 (100V)",
+            "rpm": "1400 (50Hz) / 1650 (60Hz)",
+            "dosing_type": "Doser (6-9 g/s điều chỉnh được)",
+            "hopper_capacity_kg": 1.2,
+            "dimensions_mm_whd": "195 x 578 x 387",
+            "net_weight_kg": "12.2 (không tamper)",
+            "shipping_weight_kg": "13.7 (không tamper)",
+            "voltage_options": ["100V", "220-240V"],
+            "colors": ["Black/Grey"]
+          },
+          "seo": {
+            "seo_title": "SOLIDA | Anfim",
+            "seo_description": "Máy xay cà phê espresso Anfim Solida - dòng doser (chia liều cơ) truyền thống Ý, lưỡi nghiền phẳng thép tôi 65mm, định lượng chính xác 6-9 g/s.",
+            "image_url": "https://www.anfim-milano.com/sites/anfim/files/2019-02/Anfim_SOLIDA_espresso_grinder.png",
+            "image_source_note": "Xác nhận qua <img> gốc trên trang."
+          }
+        }
+      ]
+    },
+    {
+      "group_name": "Discontinued (page still live, 'No longer available')",
+      "group_name_vi": "Model ngừng bán (trang sản phẩm vẫn còn công khai, ghi 'No longer available')",
+      "taxonomy_note": "10 model tìm thấy qua trang taxonomy /en/taxonomy/term/2 + dò slug pattern (curl HTTP 200). Anfim giữ các trang này để hỗ trợ dịch vụ/phụ tùng khách hàng cũ qua đại lý địa phương, KHÔNG phải sản phẩm còn bán mới. CẢNH BÁO: không nên đưa các model này lên site saigonhoreca như hàng đang bán — chỉ tham khảo lịch sử dòng sản phẩm (vd. dòng Caimano, Super Caimano mà user có nhắc tới từ trí nhớ đều nằm trong nhóm ngừng bán này).",
+      "source_urls": ["https://www.anfim-milano.com/en/taxonomy/term/2"],
+      "models": [
+        {
+          "model": "SP II+",
+          "status": "discontinued",
+          "source_url": "https://www.anfim-milano.com/en/product/sp-ii-0",
+          "description_en": "High-volume flagship. 75mm titanium-coated burrs, 720W motor, automatic proximity sensor, IP55 cooling upgrade over SP II.",
+          "specs": {
+            "burr_diameter_mm": 75,
+            "burr_type": "Titanium coated",
+            "motor_power_w": 720,
+            "rpm": 650,
+            "grinding_capacity_kg_day": "5-6",
+            "single_espresso_time_s": 2.2,
+            "hopper_capacity_kg": 2.0,
+            "dimensions_mm_whd": "220 x 620 x 370",
+            "net_weight_kg": 16.3,
+            "shipping_weight_kg": 18.4,
+            "voltage": "220-240V/50Hz/1~",
+            "dosing_type": "On-demand (cảm biến tiệm cận)",
+            "colors": ["Black/Black", "White/Black", "Grey", "Red"],
+            "certifications": ["CE", "CB Report", "KTC"]
+          },
+          "seo": {
+            "seo_title": "SP II+ | Anfim",
+            "seo_description": "Anfim SP II+ - máy xay espresso flagship ngừng bán, lưỡi nghiền titan 75mm, motor 720W, cảm biến tiệm cận tự động, dành quán café khối lượng lớn.",
+            "image_url": "https://www.anfim-milano.com/sites/anfim/files/2020-11/Anfim_SP_II%2B_espresso_grinder.png"
+          }
+        },
+        {
+          "model": "SP II",
+          "status": "discontinued",
+          "source_url": "https://www.anfim-milano.com/en/product/sp-ii",
+          "description_en": "High-volume café grinder, 40 years of Italian expertise heritage line, predecessor of SP II+.",
+          "specs": {
+            "burr_diameter_mm": 75,
+            "burr_type": "Titanium coated",
+            "burr_life_kg_median_setting": 2500,
+            "motor_power_w": 720,
+            "rpm": 650,
+            "grinding_capacity_kg_day": "5-6",
+            "single_espresso_time_s": 2.2,
+            "hopper_capacity_kg": 2.0,
+            "dimensions_mm_whd": "220 x 620 x 370",
+            "net_weight_kg": 16.3,
+            "shipping_weight_kg": 18.4,
+            "voltage": "220-240V/50Hz/1-phase",
+            "colors": ["Black", "White", "Grey", "Silver", "Red"],
+            "certifications": ["CE", "CB Report", "KTC"]
+          },
+          "seo": {
+            "seo_title": "SP II | Anfim",
+            "seo_description": "Anfim SP II - máy xay espresso ngừng bán cho quán café khối lượng lớn, lưỡi nghiền titan 75mm, motor 720W, độ bền lưỡi ~2500kg.",
+            "image_url": "https://www.anfim-milano.com/sites/anfim/files/2020-10/Anfim_SP_II_espresso_grinder_0.png"
+          }
+        },
+        {
+          "model": "CAIMANO ON DEMAND",
+          "status": "discontinued",
+          "source_url": "https://www.anfim-milano.com/en/product/caimano-demand",
+          "description_en": "Doserless version for low-volume cafés, 64mm hardened steel burrs, multifunction control with 1/10s timer.",
+          "specs": {
+            "burr_diameter_mm": 64,
+            "burr_type": "Hardened steel, titanium coated",
+            "motor_power_w": 300,
+            "rpm": 800,
+            "dosing_type": "Doserless/on-demand",
+            "hopper_capacity_kg": 2.0,
+            "daily_capacity_kg": "1-2",
+            "dimensions_mm_whd": "200 x 580 x 370",
+            "net_weight_kg": 14.0,
+            "shipping_weight_kg": 15.5,
+            "voltage": "220-240V/50Hz/1~",
+            "colors": ["Black", "White", "Grey", "Silver", "Red"]
+          },
+          "seo": {
+            "seo_title": "CAIMANO ON DEMAND | Anfim",
+            "seo_description": "Anfim Caimano On Demand - máy xay doserless ngừng bán cho quán café khối lượng thấp, lưỡi nghiền 64mm thép tôi phủ titan, hẹn giờ 1/10 giây.",
+            "image_url": "https://www.anfim-milano.com/sites/anfim/files/2019-02/Anfim_Caimano_On_Demand_espresso_grinder.png"
+          }
+        },
+        {
+          "model": "CAIMANO",
+          "status": "discontinued",
+          "source_url": "https://www.anfim-milano.com/en/product/caimano",
+          "description_en": "Doser grinder for low-volume cafés / coffee carts and trucks.",
+          "specs": {
+            "burr_diameter_mm": 64,
+            "burr_type": "Hardened steel",
+            "burr_life_kg_median_setting": 600,
+            "motor_power_w": "300 (1-phase), 450 (3-phase)",
+            "rpm": 800,
+            "dosing_type": "Doser (auto start/stop, semi-auto timer, hoặc on/off cổ điển)",
+            "hopper_capacity_kg": 2.0,
+            "daily_capacity_kg": "1-2",
+            "dimensions_mm_whd": "200 x 580 x 370",
+            "net_weight_kg": 12.5,
+            "shipping_weight_kg": 14.1,
+            "voltage": "220-240V/50Hz(1~) hoặc 380-415V/50Hz(3~)",
+            "colors": ["Black", "White", "Grey", "Silver", "Red"]
+          },
+          "seo": {
+            "seo_title": "CAIMANO | Anfim",
+            "seo_description": "Anfim Caimano - máy xay doser ngừng bán cho quán café/xe cà phê lưu động khối lượng thấp, lưỡi nghiền 64mm thép tôi, đếm shot.",
+            "image_url": "https://www.anfim-milano.com/sites/anfim/files/2019-02/Anfim_Caimano_espresso_grinder.png"
+          }
+        },
+        {
+          "model": "SUPER CAIMANO",
+          "status": "discontinued",
+          "source_url": "https://www.anfim-milano.com/en/product/super-caimano",
+          "description_en": "\"The go-to doser grinder for medium volume cafés.\" 75mm hardened steel burrs, up to 4kg/day.",
+          "specs": {
+            "burr_diameter_mm": 75,
+            "burr_type": "Hardened steel, titanium coated",
+            "burr_life_kg_median_setting": 600,
+            "motor_power_w": "450 (1-phase) / 600 (3-phase)",
+            "rpm": 800,
+            "dosing_type": "Doser với đếm shot",
+            "hopper_capacity_kg": 2.0,
+            "grinding_capacity_kg_day": "2-4",
+            "dimensions_mm_whd": "200 x 580 x 370",
+            "net_weight_kg": 14.9,
+            "shipping_weight_kg": 16.4,
+            "voltage": "220-240V/50Hz/1~ hoặc 380-415V/50Hz/3~",
+            "colors": ["Black", "White", "Grey", "Silver", "Red"],
+            "certifications": ["CE", "PSE", "KTC", "CB Report", "ETL"]
+          },
+          "seo": {
+            "seo_title": "SUPER CAIMANO | Anfim",
+            "seo_description": "Anfim Super Caimano - máy xay doser ngừng bán cho quán café khối lượng vừa (đến 4kg/ngày), lưỡi nghiền 75mm thép tôi phủ titan, đếm shot chính xác.",
+            "image_url": "https://www.anfim-milano.com/sites/anfim/files/2019-02/Anfim_Super_Caimano_espresso_grinder.png"
+          }
+        },
+        {
+          "model": "CAIMANO SPECIAL",
+          "status": "discontinued",
+          "source_url": "https://www.anfim-milano.com/en/product/caimano-special",
+          "description_en": "\"High-volume workhorse of the Caimano range\" — up to 10kg/day (~1,400 cups).",
+          "specs": {
+            "burr_diameter_mm": "75 SP",
+            "burr_type": "Hardened steel (optional titanium coated discs)",
+            "motor_power_w": "660 (1-phase), 600 (3-phase)",
+            "rpm": 650,
+            "dosing_type": "Doser",
+            "hopper_capacity_kg": 2.0,
+            "daily_capacity_kg": "4-10",
+            "dimensions_mm_whd": "200 x 580 x 370",
+            "net_weight_kg": 20.0,
+            "shipping_weight_kg": 21.5,
+            "voltage": "220-240V/50Hz (1-phase); 380-415V/50Hz (3-phase)",
+            "colors": ["Black", "White", "Grey", "Silver", "Red"],
+            "certifications": ["CE", "PSE"]
+          },
+          "seo": {
+            "seo_title": "CAIMANO SPECIAL | Anfim",
+            "seo_description": "Anfim Caimano Special - máy xay doser ngừng bán, công suất tới 10kg/ngày (~1,400 ly), lưỡi nghiền 75mm, tốc độ 650 vòng/phút giảm sinh nhiệt.",
+            "image_url": "https://www.anfim-milano.com/sites/anfim/files/2019-02/Anfim_Caimano_Special_espresso_grinder.png"
+          }
+        },
+        {
+          "model": "CAIMANO DROGHERIA",
+          "status": "discontinued",
+          "source_url": "https://www.anfim-milano.com/en/product/caimano-drogheria",
+          "description_en": "Retail/shop grinder — dispenses ground coffee directly into bags, up to 30kg/hour.",
+          "specs": {
+            "burr_type": "Hardened steel, 75 SP Ø mm",
+            "motor_power_w": "900 (1-phase) / 1000 (3-phase)",
+            "rpm": 1400,
+            "grinding_capacity_kg_hour": 30,
+            "hopper_capacity_kg": 2.0,
+            "dimensions_mm_whd": "200 x 580 x 370",
+            "net_weight_kg": 18.0,
+            "shipping_weight_kg": 19.5,
+            "voltage": "220-240V/50Hz(1~) hoặc 380-415V/50Hz(3~)",
+            "colors": ["Silver", "Black", "Grey"],
+            "dosing_type": "N/A — xay ra túi bán lẻ trực tiếp, không phải grinder pha espresso tại quầy"
+          },
+          "seo": {
+            "seo_title": "CAIMANO DROGHERIA | Anfim",
+            "seo_description": "Anfim Caimano Drogheria - máy xay cà phê bán lẻ ngừng bán, xay trực tiếp ra túi tới 30kg/giờ, dùng cho tiệm tạp hóa/rang xay bán sỉ.",
+            "image_url": "https://www.anfim-milano.com/sites/anfim/files/2019-02/Anfim_Caimano_Drogheria_espresso_grinder.png"
+          }
+        },
+        {
+          "model": "SCODY II",
+          "status": "discontinued",
+          "source_url": "https://www.anfim-milano.com/en/product/scody-ii",
+          "description_en": "Medium-volume on-demand grinder with automatic dosing on portafilter insertion, up to 3kg/day.",
+          "specs": {
+            "burr_diameter_mm": 75,
+            "burr_type": "Hardened steel, flat",
+            "motor_power_w": 450,
+            "rpm": 800,
+            "dosing_type": "Doserless/on-demand, tự động khi lắp portafilter",
+            "grinding_capacity_kg_day": "2-3",
+            "single_espresso_time_s": 3.2,
+            "hopper_capacity_kg": 2.0,
+            "dimensions_mm_whd": "195 x 575 x 370",
+            "net_weight_kg": 14.1,
+            "shipping_weight_kg": 15.6,
+            "voltage": "220-240V/50Hz/1-phase",
+            "colors": ["Black", "White", "Grey", "Silver", "Red"]
+          },
+          "seo": {
+            "seo_title": "SCODY II | Anfim",
+            "seo_description": "Anfim Scody II - máy xay on-demand ngừng bán cho quán café khối lượng vừa (đến 3kg/ngày), tốc độ 800 vòng/phút giảm sinh nhiệt, vòi chống vón cục.",
+            "image_url": "https://www.anfim-milano.com/sites/anfim/files/2019-02/Anfim_SCODYII_espresso_grinder.png"
+          }
+        },
+        {
+          "model": "BEST ON DEMAND EL",
+          "status": "discontinued",
+          "source_url": "https://www.anfim-milano.com/en/product/best-demand-el",
+          "description_en": "Compact doserless grinder for small café spaces, auto-grind on portafilter insertion, electronic shot timer.",
+          "specs": {
+            "burr_diameter_mm": 54,
+            "burr_type": "Steel, flat",
+            "motor_power_w": 300,
+            "rpm": 1400,
+            "grinding_capacity_g_s": 1.5,
+            "hopper_capacity_kg": "0.4 (chuẩn); 1.0 (tùy chọn nâng cấp)",
+            "dimensions_mm_whd": "145 x 380 x 300",
+            "net_weight_kg": 6.9,
+            "shipping_weight_kg": 7.6,
+            "voltage": "220-240V/50Hz/1~",
+            "dosing_type": "Doserless/on-demand",
+            "colors": ["Black", "Red"]
+          },
+          "seo": {
+            "seo_title": "BEST ON DEMAND EL | Anfim",
+            "seo_description": "Anfim Best On Demand EL - máy xay doserless ngừng bán, nhỏ gọn cho quán café diện tích hẹp, lưỡi nghiền 54mm, hẹn giờ shot điện tử.",
+            "image_url": "https://www.anfim-milano.com/sites/anfim/files/2021-04/Anfim_Best_On_Demand_electronic_stepless_espresso_grinder_0.png"
+          }
+        },
+        {
+          "model": "BEST",
+          "status": "discontinued",
+          "source_url": "https://www.anfim-milano.com/en/product/best",
+          "description_en": "\"Commercial quality doser grinder that fits in small spaces.\"",
+          "specs": {
+            "burr_diameter_mm": 54,
+            "burr_type": "Hardened steel",
+            "motor_power_w": 300,
+            "rpm": 1300,
+            "grinding_capacity_kg_day": 1,
+            "hopper_capacity_kg": "0.4 (chuẩn, có thể nâng lên 1.0)",
+            "dosing_type": "Doser (tùy chọn tamper tĩnh)",
+            "dimensions_mm_whd": "145 x 380 x 300",
+            "net_weight_kg": 7.4,
+            "shipping_weight_kg": 8.0,
+            "voltage": "220-240V/50Hz/1~",
+            "colors": ["Black", "White", "Grey", "Silver", "Red"]
+          },
+          "seo": {
+            "seo_title": "BEST | Anfim",
+            "seo_description": "Anfim Best - máy xay doser ngừng bán, nhỏ gọn cho không gian hẹp, lưỡi nghiền 54mm thép tôi, công suất 1kg/ngày.",
+            "image_url": "https://www.anfim-milano.com/sites/anfim/files/2020-05/Anfim_Best_Doser.png"
+          }
+        }
+      ]
+    }
+  ],
+  "vietnam_market_context": {
+    "note": "Trang /en/dealer-search-form của Anfim CÓ liệt kê 'Vietnam' trong danh sách quốc gia thả xuống (dropdown) — Anfim tự nhận 'works with direct distributors and service partners in over 70 countries', nhưng trang KHÔNG hiển thị tên đại lý cụ thể cho từng quốc gia qua nội dung cào được (form tương tác, cần chọn quốc gia rồi submit để ra kết quả — WebFetch không thực thi JS/form submit).",
+    "caution": "CHƯA xác nhận được tên nhà phân phối chính hãng Anfim tại Việt Nam. Cần dùng form dealer-search-form trực tiếp trên trình duyệt (chọn 'Vietnam') hoặc liên hệ Anfim để xác minh."
+  },
+  "pricing_status": "Anfim KHÔNG công bố giá bán công khai trên website chính hãng (thông lệ ngành thiết bị pha chế/espresso B2B, giống Giorik). Không tìm thấy trang giá nào trong quá trình cào. Cần liên hệ Anfim hoặc đại lý phân phối để lấy báo giá.",
+  "open_questions_for_user": [
+    "Model 'Micro' mà user có thể nhớ tới KHÔNG tồn tại trong lineup Anfim hiện tại hay lịch sử (đã dò toàn bộ trang product-list + taxonomy + slug pattern qua curl) — có thể nhầm với brand khác trong Hemro Group hoặc với dòng máy khác. Cần user xác nhận lại tên model nếu vẫn muốn tìm.",
+    "4 model đang bán (Alba, Luna, Pratica, Solida) là TOÀN BỘ lineup hiện hành theo /en/product-list — không có dòng nào khác đang bán chính thức tại thời điểm cào (2026-07-14).",
+    "10 model 'No longer available' (SP II+, SP II, Caimano On Demand, Caimano, Super Caimano, Caimano Special, Caimano Drogheria, Scody II, Best On Demand EL, Best) vẫn có trang public nhưng KHÔNG nên đưa lên site như hàng đang bán mới — chỉ tham khảo nếu cần bán hàng cũ/phụ tùng.",
+    "CHƯA xác nhận nhà phân phối chính hãng Anfim tại Việt Nam — trang dealer-search-form có Vietnam trong dropdown nhưng không lộ tên đại lý qua crawl tĩnh (cần thao tác form trên trình duyệt thật).",
+    "Không có giá bán công khai (thông lệ B2B) — cần liên hệ Anfim (qua form liên hệ /en/form/contact) hoặc đại lý để lấy báo giá trước khi publish giá lên site.",
+    "Ảnh sản phẩm: đã lấy được URL ảnh <img> gốc thật cho toàn bộ 14 model (không phải logo, không phải og:image vì các trang này không có thẻ og:image) — nhưng chưa TẢI VỀ file ảnh, mới có URL trỏ thẳng tới server anfim-milano.com. Cần tải về + xin phép sử dụng nếu định host lại ảnh trên saigonhoreca.local.",
+    "SEO meta description: xác nhận qua curl rằng TOÀN BỘ 14 trang sản phẩm Anfim có thẻ <meta name=\"description\"> gần như RỖNG (chỉ khoảng trắng, hoặc chỉ ghi 'No longer available'). seo_description trong file này là do NGHIÊN CỨU VIÊN (agent) tự viết dựa trên nội dung thật của trang — không phải trích xuất nguyên văn từ site — cần biên tập lại giọng văn trước khi publish."
+  ]
+}

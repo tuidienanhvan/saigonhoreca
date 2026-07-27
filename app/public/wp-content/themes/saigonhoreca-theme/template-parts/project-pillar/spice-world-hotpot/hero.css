@@ -1,1 +1,207 @@
-/** spice-world-hotpot — hero slot (no content). */
+/**
+ * Project Pillar — Spice World Hot Pot
+ * Section #1: hero — full-bleed background image, Parallax Clip-Path (no JS).
+ * Technique: section clip-path:inset(0) confines a position:fixed __bg = GPU parallax.
+ * Mood: bold warm chili (var(--er) decor) within the dark-luxe gold palette.
+ * Tokens only. All motion guarded by prefers-reduced-motion.
+ */
+
+.pp-hero-swh {
+  position: relative;
+  height: calc(100vh - 76px);
+  height: calc(100dvh - 76px);
+  min-height: 600px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: var(--b1);
+  text-align: center;
+  isolation: isolate;
+}
+
+/* Parallax bg: background-attachment: scroll;= parallax dang tin cay (bg gan vao viewport, tu dong clip vao box nay) */
+.pp-hero-swh__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  z-index: -2;
+  pointer-events: none;
+  filter: saturate(1.12) contrast(1.04);
+}
+
+/* Light token overlay — giu anh sang/ro net, KHONG phai scrim den nang */
+.pp-hero-swh__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--b1) 45%, transparent) 0%,
+    color-mix(in srgb, var(--b1) 25%, transparent) 50%,
+    color-mix(in srgb, var(--b1) 55%, transparent) 100%
+  );
+}
+
+/* Ambient chili embers (warm radial glows) — above overlay, below content */
+.pp-hero-swh__ember {
+  position: absolute;
+  z-index: 1;
+  width: clamp(280px, 40vw, 560px);
+  height: clamp(280px, 40vw, 560px);
+  border-radius: 50%;
+  filter: blur(90px);
+  pointer-events: none;
+  background: radial-gradient(circle,
+    color-mix(in srgb, var(--er) 38%, transparent) 0%,
+    color-mix(in srgb, var(--gold) 14%, transparent) 45%,
+    transparent 72%);
+  animation: swh-ember-breathe 6s var(--ease-spring) infinite alternate;
+}
+.pp-hero-swh__ember--left  { bottom: -8%; left: -10%; }
+.pp-hero-swh__ember--right { bottom: -12%; right: -10%; animation-delay: -3s; }
+
+/* Gentle rising steam columns */
+.pp-hero-swh__steam {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  width: clamp(180px, 30vw, 360px);
+  height: 60%;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  pointer-events: none;
+}
+.pp-hero-swh__steam span {
+  display: block;
+  width: clamp(40px, 7vw, 80px);
+  height: 100%;
+  background: linear-gradient(to top,
+    color-mix(in srgb, var(--bc) 9%, transparent) 0%,
+    transparent 80%);
+  border-radius: 50% 50% 0 0;
+  filter: blur(14px);
+  opacity: 0;
+  transform-origin: bottom center;
+  animation: swh-steam-rise 7s ease-in-out infinite;
+}
+.pp-hero-swh__steam span:nth-child(2) { animation-delay: 2.3s; }
+.pp-hero-swh__steam span:nth-child(3) { animation-delay: 4.6s; }
+
+.pp-hero-swh__content {
+  position: relative;
+  z-index: 3;
+  padding: 0 1.5rem;
+  max-width: 820px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.pp-hero-swh__icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  color: var(--gold);
+  filter: drop-shadow(0 0 14px color-mix(in srgb, var(--er) 55%, transparent));
+  margin-bottom: 0.25rem;
+  animation: swh-icon-pulse 3.2s ease-in-out infinite alternate;
+}
+.pp-hero-swh__icon svg { width: 100%; height: 100%; display: block; }
+
+.pp-hero-swh__subtitle {
+  font-family: var(--font-mono);
+  font-size: clamp(0.72rem, 1.5vw, 0.95rem);
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  color: color-mix(in srgb, var(--bc) 72%, transparent);
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.55);
+}
+
+.pp-hero-swh__title {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 6.5vw, 4.6rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--bc);
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+  text-shadow: 0 3px 24px rgba(0, 0, 0, 0.55);
+}
+
+.pp-hero-swh__title-sub {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.1rem, 2.6vw, 1.85rem);
+  font-weight: 400;
+  letter-spacing: normal;
+  text-transform: none;
+  color: var(--gold);
+  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.6));
+}
+
+.pp-hero-swh__divider {
+  position: relative;
+  width: 84px;
+  height: 2px;
+  margin-top: 0.75rem;
+  background: linear-gradient(90deg, transparent, var(--gold), color-mix(in srgb, var(--er) 80%, var(--gold)), var(--gold), transparent);
+  box-shadow: 0 0 14px color-mix(in srgb, var(--gold) 60%, transparent);
+}
+.pp-hero-swh__divider::before,
+.pp-hero-swh__divider::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+.pp-hero-swh__divider::before { left: -12px; }
+.pp-hero-swh__divider::after  { right: -12px; }
+
+/* Animations */
+@keyframes swh-ember-breathe {
+  0%   { transform: scale(0.92); opacity: 0.65; }
+  100% { transform: scale(1.12); opacity: 1; }
+}
+@keyframes swh-steam-rise {
+  0%   { opacity: 0; transform: translateY(20%) scaleX(0.8); }
+  35%  { opacity: 0.7; }
+  100% { opacity: 0; transform: translateY(-90%) scaleX(1.25); }
+}
+@keyframes swh-icon-pulse {
+  0%   { transform: scale(0.94) rotate(0deg); filter: drop-shadow(0 0 8px color-mix(in srgb, var(--er) 40%, transparent)); }
+  100% { transform: scale(1.08) rotate(12deg); filter: drop-shadow(0 0 18px color-mix(in srgb, var(--gold) 75%, transparent)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pp-hero-swh__ember,
+  .pp-hero-swh__steam span,
+  .pp-hero-swh__icon {
+    animation: none !important;
+  }
+}
+
+/* Mobile fallback: background-attachment: scroll;bi giat tren mobile -> chuyen ve scroll */
+@media (max-width: 768px) {
+  .pp-hero-swh__bg {
+    background-attachment: scroll;
+  }
+}

@@ -1,27 +1,163 @@
 /**
- * tales-by-chapter — specs slot.
- * Inherits .pp-split-tbc from concept.css + image + text.
+ * tales-by-chapter — specs slot (the thesis + three-space feature trio).
+ * Centered editorial statement, blueprint grid wash, glass feature cards,
+ * closing quote. Reuses .pp-section-tbc / .pp-badge-tbc / .pp-text-tbc__*.
  * @package SaigonHoreca
  */
 
-.pp-split-tbc__media img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--bd);
-  transition: border-color 0.4s var(--ease-spring), transform 0.4s var(--ease-spring);
+.pp-specs-tbc { text-align: center; }
+
+/* Faint blueprint grid wash */
+.pp-specs-tbc__grid-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--su) 3%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--su) 3%, transparent) 1px, transparent 1px);
+  background-size: 34px 34px;
+  -webkit-mask-image: radial-gradient(ellipse at center, var(--bc) 0%, transparent 78%);
+  mask-image: radial-gradient(ellipse at center, var(--bc) 0%, transparent 78%);
 }
-.pp-split-tbc__media img:hover {
-  border-color: color-mix(in srgb, var(--su) 40%, transparent);
-  transform: scale(1.03);
+
+.pp-specs-tbc__header {
+  max-width: 720px;
+  margin: 0 auto 3.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+.pp-specs-tbc__title { margin: 1rem 0 1.25rem; }
+.pp-specs-tbc__intro {
+  margin: 1.5rem 0 0;
+  font-family: var(--font-sans);
+  font-size: clamp(0.95rem, 1.15vw, 1.08rem);
+  line-height: 1.85;
+  color: var(--bc2);
+}
+
+/* Feature trio */
+.pp-specs-tbc__features {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  text-align: left;
+  position: relative;
+  z-index: 2;
+}
+@media (min-width: 768px) {
+  .pp-specs-tbc__features { grid-template-columns: repeat(3, 1fr); gap: 1.75rem; }
+}
+
+.pp-specs-tbc__feature {
+  position: relative;
+  background: color-mix(in srgb, var(--b2) 55%, transparent);
+  backdrop-filter: blur(12px) saturate(125%);
+  -webkit-backdrop-filter: blur(12px) saturate(125%);
+  border: 1px solid var(--bd);
+  border-left: 2px solid color-mix(in srgb, var(--su) 30%, transparent);
+  border-radius: var(--radius-lg);
+  padding: 2rem 1.6rem 1.85rem;
+  overflow: hidden;
+  transition: transform 0.4s var(--ease-spring), border-color 0.4s ease, box-shadow 0.4s ease;
+}
+.pp-specs-tbc__feature:hover {
+  transform: translateY(-6px);
+  border-color: color-mix(in srgb, var(--su) 30%, transparent);
+  border-left-color: var(--su);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
+}
+
+.pp-specs-tbc__feature-num {
+  position: absolute;
+  top: 1rem;
+  right: 1.2rem;
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: color-mix(in srgb, var(--su) 45%, transparent);
+}
+
+.pp-specs-tbc__feature-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--su) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--su) 22%, transparent);
+  color: var(--su);
+  margin-bottom: 1.1rem;
+  transition: transform 0.4s var(--ease-spring), background 0.4s ease, box-shadow 0.4s ease;
+}
+.pp-specs-tbc__feature-icon svg { width: 1.3rem; height: 1.3rem; display: block; }
+.pp-specs-tbc__feature:hover .pp-specs-tbc__feature-icon {
+  transform: translateY(-2px) scale(1.06);
+  background: color-mix(in srgb, var(--su) 16%, transparent);
+  box-shadow: 0 0 18px color-mix(in srgb, var(--su) 22%, transparent);
+}
+
+.pp-specs-tbc__feature h3 {
+  font-family: var(--font-display);
+  font-size: 1.12rem;
+  font-weight: 700;
+  color: var(--bc);
+  margin: 0 0 0.6rem;
+  transition: color 0.3s ease;
+}
+.pp-specs-tbc__feature:hover h3 { color: var(--su); }
+.pp-specs-tbc__feature p {
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--bc2);
+  margin: 0;
+}
+
+/* Closing quote */
+.pp-specs-tbc__quote {
+  max-width: 760px;
+  margin: 3.75rem auto 0;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+.pp-specs-tbc__quote-rule {
+  width: 48px;
+  height: 3px;
+  border-radius: var(--radius-full);
+  background: var(--su);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--su) 60%, transparent);
+}
+.pp-specs-tbc__quote blockquote {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+  font-weight: 500;
+  line-height: 1.55;
+  color: var(--bc);
+}
+.pp-specs-tbc__quote-foot {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: clamp(0.9rem, 1.05vw, 1rem);
+  line-height: 1.8;
+  color: var(--bc2);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .pp-split-tbc__media img {
+  .pp-specs-tbc__feature,
+  .pp-specs-tbc__feature-icon {
     transition: none !important;
   }
-  .pp-split-tbc__media img:hover {
-    transform: none !important;
-  }
+  .pp-specs-tbc__feature:hover { transform: none !important; }
+  .pp-specs-tbc__feature:hover .pp-specs-tbc__feature-icon { transform: none !important; }
 }

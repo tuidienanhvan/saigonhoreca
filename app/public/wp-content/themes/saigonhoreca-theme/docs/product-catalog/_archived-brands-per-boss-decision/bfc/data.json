@@ -1,0 +1,691 @@
+{
+  "research_date": "2026-07-14",
+  "research_update_date": "2026-07-14",
+  "source_note": "Cào từ website chính hãng BFC srl (Ý) — www.bfcsrl.it (bản tiếng Anh /en/). KHÔNG phải dữ liệu tự bịa — mọi model dưới đây có URL nguồn kèm theo, verify bằng WebFetch + curl (kiểm tra thẻ <title> và <meta name=\"description\"> thô qua curl để xác nhận). WebFetch hoạt động bình thường trên bfcsrl.it (không bị chặn crawl). Đây là lần cào đầu tiên (fresh crawl from scratch) — trước đó BFC chỉ tồn tại dưới dạng logo đối tác ở trang chủ, KHÔNG có bất kỳ sản phẩm nào trong catalog.",
+  "brand_disambiguation_note": "'BFC' là tên viết tắt mơ hồ, dễ trùng với công ty khác không liên quan (vd. các công ty tài chính/công nghiệp tên BFC). Đã xác minh qua nhiều tìm kiếm ('BFC coffee machines Italy espresso', 'BFC espresso machine manufacturer Italy') rằng công ty đúng là BFC srl (viết tắt của Brutti Fullin Costruzioni), sản xuất máy pha cà phê espresso tại Scomigo di Conegliano (Treviso), Ý. Website chính hãng: https://www.bfcsrl.it/en/ — KHÔNG phải la-bfc.it hay bfc-espresso.com (2 domain này không tồn tại/không phải trang chính hãng, chỉ là suy đoán ban đầu chưa xác minh).",
+  "existing_catalog_gap": "Site saigonhoreca.local hiện có 0 sản phẩm dưới brand BFC — BFC chỉ xuất hiện dưới dạng logo đối tác (partner logo) ở mục 'Đối tác' trang chủ. Toàn bộ dữ liệu trong file này là để bổ sung danh mục sản phẩm thật từ lineup chính hãng BFC srl.",
+  "brand": "BFC",
+  "company_info": {
+    "legal_name": "BFC srl (Brutti Fullin Costruzioni)",
+    "founded_note": "Nguồn thứ cấp (Global Coffee Report, đại lý) ghi thành lập thập niên 1950; trang 'About Us' chính hãng KHÔNG nêu rõ năm thành lập — CHƯA xác minh trực tiếp từ nguồn chính hãng, gắn cờ chưa chắc chắn 100%.",
+    "headquarters": "Via Martiri Delle Foibe, 15 — 31015 Scomigo di Conegliano (TV), Ý (Treviso, Bắc Ý)",
+    "phone": "+39 0438 394979",
+    "manufacturing_note": "Nhà máy 5.000 m² tại Scomigo di Conegliano. Tự sản xuất 'heart and body' (nồi hơi đồng, ống nối, vỏ thép) hoàn toàn in-house. 75 nhân viên. Xuất khẩu 80% sản lượng.",
+    "history_note": "Theo Global Coffee Report (nguồn thứ cấp, phỏng vấn Marco Brutti): năm 2017 sản xuất >15,000 máy, nằm trong top 5 nhà sản xuất máy pha cà phê espresso của Ý; thị trường xuất khẩu gồm Mỹ, Úc, Bắc Phi, Á, Âu.",
+    "source_url": "https://www.bfcsrl.it/en/about-us/",
+    "secondary_source_url": "https://www.gcrmag.com/speaking-with-marco-brutti-of-brutti-fullin-costruzioni-bfc-espresso-machin/"
+  },
+  "source_urls": [
+    "https://www.bfcsrl.it/en/",
+    "https://www.bfcsrl.it/en/about-us/",
+    "https://www.bfcsrl.it/en/products/"
+  ],
+  "seo_gap_note": "Xác nhận qua curl thô (không qua WebFetch AI-summarize, đọc trực tiếp HTML): TOÀN BỘ trang sản phẩm và cả trang chủ bfcsrl.it KHÔNG có thẻ <meta name=\"description\">. Chỉ có <title> (dạng '{Tên sản phẩm} | BFC srl'). Vì vậy field seo_description bên dưới cho mọi model đều là null với ghi chú 'MISSING trên nguồn' — không tự bịa mô tả.",
+  "groups": [
+    {
+      "group_name": "Traditional Machines",
+      "group_name_vi": "Máy Pha Cà Phê Espresso Truyền Thống (Quầy Bar)",
+      "description_en": "Commercial bar espresso machines, 1-4 groups, copper boiler with thermostatic circuit, traditional (4.4kg) or ring (1.5kg) temperature-compensated groups. Electronic (programmable keypad/touch screen), semiautomatic (button), or semiautomatic (lever) control variants. Optional T.C.I. (independent per-group temperature control) and P.P.I. (programmable pressure profiles, Aviator line only).",
+      "source_url": "https://www.bfcsrl.it/en/products/",
+      "models": [
+        {
+          "model_name": "Aviator",
+          "url": "https://www.bfcsrl.it/en/products/aviator/",
+          "groups": "2-3",
+          "boiler": "Copper boiler, thermostatic circuit, 14-21 litre",
+          "group_head": "Traditional temperature compensated group (4.4kg)",
+          "control_variants": ["Electronic with programmable keypad", "Touch screen"],
+          "special_features": ["Optional T.C.I. (independent temperature control)", "Optional P.P.I. (independent pressure profile, 5 programmable profiles)"],
+          "colors": ["Steel", "White", "Black"],
+          "dimensions": "Not published as text (only in PDF technical drawing, not extracted)",
+          "seo": {
+            "seo_title": "Aviator | BFC srl",
+            "seo_description": null,
+            "seo_description_gap": "MISSING trên nguồn — trang không có thẻ meta description (xác nhận qua curl)",
+            "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2015/12/aviator-3gr-elect-1-1024x665.jpg"
+          }
+        },
+        {
+          "model_name": "Aviator 1 group",
+          "url": "https://www.bfcsrl.it/en/products/aviator-1-group/",
+          "groups": "1",
+          "boiler": "Copper boiler, thermostatic circuit, 5 litre",
+          "group_head": "Traditional temperature compensated group (4.4kg)",
+          "control_variants": ["Electronic with programmable keypad", "Touch screen"],
+          "special_features": ["T.C.I.", "P.P.I. (5 programmable pressure profiles)"],
+          "colors": ["Steel"],
+          "seo": {
+            "seo_title": "Aviator 1 group | BFC srl",
+            "seo_description": null,
+            "seo_description_gap": "MISSING trên nguồn",
+            "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2017/12/aviator-1gr-elect.jpg"
+          }
+        },
+        {
+          "model_name": "Aviator 5 Keys",
+          "url": "https://www.bfcsrl.it/en/products/aviator-5tasti/",
+          "groups": "2-3",
+          "boiler": "Copper boiler, thermostatic circuit, 14-21 litre",
+          "group_head": "Traditional temperature compensated group (4.4kg)",
+          "control_variants": ["Electronic with programmable keypad", "Touch screen"],
+          "colors": ["Steel", "White", "Black"],
+          "seo": {
+            "seo_title": "Aviator 5 Keys | BFC srl",
+            "seo_description": null,
+            "seo_description_gap": "MISSING trên nguồn",
+            "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2022/12/AVIATOR-5t-dx-BFC-886x665.jpg"
+          }
+        },
+        {
+          "model_name": "Antelao",
+          "url": "https://www.bfcsrl.it/en/products/antelao/",
+          "groups": "2-3",
+          "boiler": "Copper boiler, thermostatic circuit, 14-21 litre",
+          "group_head": "Traditional temperature compensated group (4.4kg)",
+          "control_variants": ["Electronic with programmable keypad", "Touch screen"],
+          "seo": {
+            "seo_title": "Antelao | BFC srl",
+            "seo_description": null,
+            "seo_description_gap": "MISSING trên nguồn",
+            "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2024/05/ANTELAO3g-tre4Dx-917x665.jpg"
+          }
+        },
+        {
+          "model_name": "Galileo",
+          "url": "https://www.bfcsrl.it/en/products/galileo/",
+          "groups": "2-3-4",
+          "boiler": "Copper boiler, thermostatic circuit, 11-14-21-27 litre",
+          "group_head": "Traditional temperature compensated (4.4kg) or ring temperature compensated (1.5kg)",
+          "control_variants": ["Electronic with programmable keypad", "Semiautomatic with buttons", "Semiautomatic with lever"],
+          "special_features": ["Optional T.C.I.", "Optional Turbo steamer auto probe cappuccino system"],
+          "colors": ["Steel", "Black", "White"],
+          "seo": {
+            "seo_title": "Galileo | BFC srl",
+            "seo_description": null,
+            "seo_description_gap": "MISSING trên nguồn",
+            "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2015/05/galileo-3gr-elect.jpg"
+          }
+        },
+        {
+          "model_name": "Lira",
+          "url": "https://www.bfcsrl.it/en/products/lira/",
+          "groups": "1-2SB-2-3-4",
+          "boiler": "Copper boiler, thermostatic circuit, 4-7-6-8-11-14-21-27 litre (varies by group count)",
+          "group_head": "Traditional temperature compensated (4.4kg) or ring temperature compensated (1.5kg)",
+          "control_variants": ["Electronic with programmable keypad", "Semiautomatic with buttons", "Semiautomatic with lever"],
+          "special_features": ["Optional T.C.I.", "Optional Turbo steamer"],
+          "colors": ["Red", "White", "Black", "Grey", "Aluminum", "Black & Wood"],
+          "seo": {
+            "seo_title": "Lira | BFC srl",
+            "seo_description": null,
+            "seo_description_gap": "MISSING trên nguồn",
+            "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2015/05/lira-2gr-elect-red.jpg"
+          }
+        },
+        {
+          "model_name": "Lira S",
+          "url": "https://www.bfcsrl.it/en/products/lira-s/",
+          "groups": "1-2-2SB-3-4",
+          "boiler": "Copper boiler, thermostatic circuit, 4-7-6-8-11-14-21-27 litre",
+          "group_head": "Traditional temperature compensated (4.4kg) or ring temperature compensated (1.5kg)",
+          "control_variants": ["Electronic programmable keypad", "Touch-screen push button", "Semiautomatic lever/button"],
+          "special_features": ["Optional T.C.I.", "Optional Turbo steamer auto probe"],
+          "colors": ["Red", "White", "Black"],
+          "seo": {
+            "seo_title": "Lira S | BFC srl",
+            "seo_description": null,
+            "seo_description_gap": "MISSING trên nguồn",
+            "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2015/04/lira-s-2gr-elect-red.jpg"
+          }
+        },
+        {
+          "model_name": "Deep Black RS",
+          "url": "https://www.bfcsrl.it/en/products/deep-black-rs/",
+          "groups": "2-3",
+          "boiler": "Copper boiler, thermostatic circuit, 14-21 litre",
+          "group_head": "Traditional temperature compensated group (4.4kg)",
+          "control_variants": ["Electronic with programmable keypad"],
+          "note": "Ảnh nguồn ghi tên file 'Lira-Deep-Black-RS' — có thể là biến thể trong dòng Lira, nhưng trang liệt kê sản phẩm độc lập tên 'Deep Black RS'.",
+          "seo": {
+            "seo_title": "Deep Black RS | BFC srl",
+            "seo_description": null,
+            "seo_description_gap": "MISSING trên nguồn",
+            "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2024/02/Lira-Deep-Black-RS-front-879x665.jpg"
+          }
+        },
+        {
+          "model_name": "Monza K",
+          "url": "https://www.bfcsrl.it/en/products/monza-k/",
+          "groups": "2-3-4",
+          "boiler": "Copper boiler, thermostatic circuit, 14-21-27 litre",
+          "group_head": "Traditional temperature compensated group (4.4kg)",
+          "control_variants": ["Electronic with programmable keypad", "Semiautomatic with buttons"],
+          "special_features": ["Optional T.C.I."],
+          "colors": ["Steel", "Black", "Blue", "White"],
+          "seo": {
+            "seo_title": "Monza K | BFC srl",
+            "seo_description": null,
+            "seo_description_gap": "MISSING trên nguồn",
+            "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2015/05/monza-k-2gr-elect1.jpg"
+          }
+        },
+        {
+          "model_name": "Nuova Monza",
+          "url": "https://www.bfcsrl.it/en/products/nuova-monza/",
+          "groups": "2-3",
+          "boiler": "Copper boiler, thermostatic circuit, 14-21 litre",
+          "group_head": "Traditional temperature compensated group (4.4kg)",
+          "control_variants": ["Electronic with programmable keypad"],
+          "seo": {
+            "seo_title": "Nuova Monza | BFC srl",
+            "seo_description": null,
+            "seo_description_gap": "MISSING trên nguồn",
+            "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2020/05/Nuova_Monza_2GR_elett_front-1024x665.jpg"
+          }
+        },
+        {
+          "model_name": "Monza-Imola-Maranello",
+          "url": "https://www.bfcsrl.it/en/products/monza-imola-maranello/",
+          "groups": "2 (Monza) / 3 (Imola) / 4 (Maranello)",
+          "boiler": "Copper boiler, thermostatic circuit, 14-21-27 litre",
+          "group_head": "Traditional temperature compensated group (4.4kg)",
+          "control_variants": ["Electronic with programmable keypad", "Semiautomatic with buttons"],
+          "special_features": ["Optional T.C.I."],
+          "colors": ["Steel", "Blue"],
+          "note": "1 dòng sản phẩm, 3 tên gọi theo số group: Monza=2gr, Imola=3gr, Maranello=4gr.",
+          "seo": {
+            "seo_title": "Monza-Imola-Maranello | BFC srl",
+            "seo_description": null,
+            "seo_description_gap": "MISSING trên nguồn",
+            "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2015/07/monza-2gr-elect.jpg"
+          }
+        },
+        {
+          "model_name": "Classica",
+          "url": "https://www.bfcsrl.it/en/products/classica/",
+          "groups": "1-2SB-2-3-4",
+          "boiler": "Copper boiler, thermostatic circuit, 4-8-14-21-27 litre",
+          "group_head": "Traditional temperature compensated group (4.4kg)",
+          "control_variants": ["Electronic with programmable keypad", "Semiautomatic with buttons", "Semiautomatic with lever"],
+          "colors": ["Steel", "Black"],
+          "seo": {
+            "seo_title": "Classica | BFC srl",
+            "seo_description": null,
+            "seo_description_gap": "MISSING trên nguồn",
+            "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2015/05/classica-2gr-elect.jpg"
+          }
+        },
+        {
+          "model_name": "Classica Eva",
+          "url": "https://www.bfcsrl.it/en/products/classica-eva/",
+          "groups": "1-2-3-4",
+          "boiler": "Copper boiler, thermostatic circuit, 4-14-21-27 litre",
+          "group_head": "Traditional temperature compensated group (4.4kg)",
+          "control_variants": ["Electronic with programmable keypad", "Semiautomatic with buttons", "Semiautomatic with lever"],
+          "colors": ["Steel"],
+          "seo": {
+            "seo_title": "Classica Eva | BFC srl",
+            "seo_description": null,
+            "seo_description_gap": "MISSING trên nguồn",
+            "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2017/12/classica-eva-2gr-elect.jpg"
+          }
+        },
+        {
+          "model_name": "Classica Eva Plus",
+          "url": "https://www.bfcsrl.it/en/products/classica-eva-plus/",
+          "groups": "2-3",
+          "boiler": "Copper boiler, thermostatic circuit, 14-21 litre",
+          "group_head": "Traditional temperature compensated group (4.4kg)",
+          "control_variants": ["Electronic with programmable keypad"],
+          "seo": {
+            "seo_title": "Classica Eva Plus | BFC srl",
+            "seo_description": null,
+            "seo_description_gap": "MISSING trên nguồn",
+            "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2020/05/eva-plus-2gr-elect-1024x665.jpg"
+          }
+        },
+        {
+          "model_name": "Chiara GiDi",
+          "url": "https://www.bfcsrl.it/en/products/chiara-gidi/",
+          "groups": "2",
+          "boiler": "Copper boiler, thermostatic circuit, 11 litre",
+          "group_head": "Traditional temperature compensated group (4.4kg, Ø58-Ø53)",
+          "control_variants": ["Electronic with programmable keypad", "Touch-screen buttons"],
+          "colors": ["White"],
+          "seo": {
+            "seo_title": "Chiara GiDi | BFC srl",
+            "seo_description": null,
+            "seo_description_gap": "MISSING trên nguồn",
+            "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2020/12/Chiara-GIDI-2GR-elett-BIANCA-dx-2-1024x665.jpg"
+          }
+        },
+        {
+          "model_name": "De Lux",
+          "url": "https://www.bfcsrl.it/en/products/de-lux/",
+          "groups": "1-2-3-4",
+          "boiler": "Copper boiler, thermostatic circuit, 4-14-21-27 litre",
+          "group_head": "Traditional temperature compensated group (4.4kg)",
+          "control_variants": ["Electronic with programmable keypad", "Semiautomatic with buttons", "Semiautomatic with lever"],
+          "special_features": ["Optional T.C.I. (separate boiler per group)"],
+          "colors": ["Red", "Black"],
+          "seo": {
+            "seo_title": "De Lux | BFC srl",
+            "seo_description": null,
+            "seo_description_gap": "MISSING trên nguồn",
+            "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2016/06/de-lux-2gr-elect-black.jpg"
+          }
+        },
+        {
+          "model_name": "De Lux RS",
+          "url": "https://www.bfcsrl.it/en/products/deluxrs/",
+          "groups": "2-3",
+          "boiler": "Copper boiler, thermostatic circuit, 14-21 litre",
+          "group_head": "Traditional temperature compensated group (4.4kg)",
+          "control_variants": ["Electronic with programmable keypad", "Semiautomatic with buttons"],
+          "colors": ["Orange", "Grey", "White", "Black"],
+          "seo": {
+            "seo_title": "De Lux RS | BFC srl",
+            "seo_description": null,
+            "seo_description_gap": "MISSING trên nguồn",
+            "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2021/11/DeLuxRS_grigio-Sx-947x665.jpg"
+          }
+        },
+        {
+          "model_name": "Opera 5",
+          "url": "https://www.bfcsrl.it/en/products/opera-5/",
+          "groups": "2-3",
+          "boiler": "Copper boiler, thermostatic circuit, 5-11-14 litre",
+          "group_head": "Compensated group (design not specified as 4.4kg/1.5kg on this model page)",
+          "control_variants": ["Electronic with programmable keypad and display (Opera 5.11 2GR)", "Semiautomatic with buttons (Opera 5.11 2GR)"],
+          "colors": ["Black", "White", "Light Blue"],
+          "seo": {
+            "seo_title": "Opera 5 | BFC srl",
+            "seo_description": null,
+            "seo_description_gap": "MISSING trên nguồn",
+            "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2024/02/Opera-5.11-2GR-elett-BIANCA-display-915x665.jpg"
+          }
+        },
+        {
+          "model_name": "Gran Doge",
+          "url": "https://www.bfcsrl.it/en/products/gran-doge/",
+          "groups": "2-3",
+          "boiler": "Copper boiler, thermostatic circuit, 11-14-21 litre",
+          "group_head": "Traditional temperature compensated (4.4kg) or ring temperature compensated (1.5kg)",
+          "control_variants": ["Electronic with programmable keypad", "Semiautomatic with buttons (Switch)"],
+          "model_codes": ["GD-2GR", "GD-3GR"],
+          "colors": ["Black", "Red"],
+          "seo": {
+            "seo_title": "Gran Doge | BFC srl",
+            "seo_description": null,
+            "seo_description_gap": "MISSING trên nguồn",
+            "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2015/05/grandoge-gz-2gr-elect-black.jpg"
+          }
+        }
+      ],
+      "model_count": 19
+    },
+    {
+      "group_name": "Machine Lever",
+      "group_name_vi": "Máy Pha Cà Phê Cần Gạt (Lever)",
+      "description_en": "Semiautomatic lever-operated bar machines, part of the Classica line, 2 or 3 groups.",
+      "source_url": "https://www.bfcsrl.it/en/products/",
+      "models": [
+        {
+          "model_name": "Classica Leva 2 groups",
+          "url": "https://www.bfcsrl.it/en/products/classica-leva-2-groups/",
+          "groups": "2",
+          "boiler": "Copper boiler, thermostatic circuit, 14 litre",
+          "control_variants": ["Semiautomatic with lever"],
+          "colors": ["Steel"],
+          "seo": {
+            "seo_title": "Classica Leva 2 groups | BFC srl",
+            "seo_description": null,
+            "seo_description_gap": "MISSING trên nguồn",
+            "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2015/07/classica-leva-2gr.jpg"
+          }
+        },
+        {
+          "model_name": "Classica Leva 3 groups",
+          "url": "https://www.bfcsrl.it/en/products/classica-leva-3-groups/",
+          "groups": "3",
+          "boiler": "Copper boiler, thermostatic circuit, 21 litre",
+          "control_variants": ["Semiautomatic with lever"],
+          "colors": ["Steel"],
+          "seo": {
+            "seo_title": "Classica Leva 3 groups | BFC srl",
+            "seo_description": null,
+            "seo_description_gap": "MISSING trên nguồn",
+            "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2015/07/CLASSICA3g-tre4Dx-765x665.jpg"
+          }
+        }
+      ],
+      "model_count": 2
+    },
+    {
+      "group_name": "Home/Office Range",
+      "group_name_vi": "Máy Pha Cà Phê Gia Đình / Văn Phòng (1 Group)",
+      "description_en": "Compact single-group machines for home or office use, small boiler (0.8-2 litre), lever or button semiautomatic operation, some electronic. Traditional temperature compensated group (4.4kg) shared across the whole sub-range.",
+      "source_url": "https://www.bfcsrl.it/en/products/",
+      "models": [
+        {
+          "model_name": "Experta",
+          "url": "https://www.bfcsrl.it/en/products/experta/",
+          "groups": "1",
+          "boiler": "Copper boiler, thermostatic circuit, 1.3 litre",
+          "control_variants": ["Semiautomatic with lever"],
+          "colors": ["Steel and White", "Steel and Black", "Black", "White"],
+          "seo": {
+            "seo_title": "Experta | BFC srl",
+            "seo_description": null,
+            "seo_description_gap": "MISSING trên nguồn",
+            "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2021/11/EXPERTAwood-front.jpg"
+          }
+        },
+        {
+          "model_name": "Junior",
+          "url": "https://www.bfcsrl.it/en/products/junior/",
+          "groups": "1",
+          "boiler": "Copper boiler, thermostatic circuit, 1.3 litre",
+          "control_variants": ["Electronic with programmable keypad", "Semiautomatic with buttons"],
+          "colors": ["Steel"],
+          "seo": {
+            "seo_title": "Junior | BFC srl",
+            "seo_description": null,
+            "seo_description_gap": "MISSING trên nguồn",
+            "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2015/07/junior-elettronica.jpg"
+          }
+        },
+        {
+          "model_name": "Junior ELA",
+          "url": "https://www.bfcsrl.it/en/products/junior-ela/",
+          "groups": "1",
+          "boiler": "Copper boiler, thermostatic circuit, 1.3 litre",
+          "control_variants": ["Semiautomatic with buttons"],
+          "colors": ["Steel"],
+          "seo": {
+            "seo_title": "Junior ELA | BFC srl",
+            "seo_description": null,
+            "seo_description_gap": "MISSING trên nguồn",
+            "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2015/07/junior-ela.jpg"
+          }
+        },
+        {
+          "model_name": "Junior Plus",
+          "url": "https://www.bfcsrl.it/en/products/junior-plus/",
+          "groups": "1",
+          "boiler": "Copper boiler, thermostatic circuit, 1.3 litre",
+          "control_variants": ["Semiautomatic with buttons", "Semiautomatic with lever"],
+          "colors": ["Steel"],
+          "seo": {
+            "seo_title": "Junior Plus | BFC srl",
+            "seo_description": null,
+            "seo_description_gap": "MISSING trên nguồn",
+            "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2015/07/junior-plus.jpg"
+          }
+        },
+        {
+          "model_name": "Junior Elite",
+          "url": "https://www.bfcsrl.it/en/products/junior-elite/",
+          "groups": "1",
+          "boiler": "Copper boiler, thermostatic circuit, 1.3 litre",
+          "control_variants": ["Semiautomatic with lever"],
+          "special_features": ["Motorised internal pump, externally regulated", "Button switch: mains water / tank water", "Quick-release tank"],
+          "colors": ["Steel"],
+          "seo": {
+            "seo_title": "Junior Elite | BFC srl",
+            "seo_description": null,
+            "seo_description_gap": "MISSING trên nguồn",
+            "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2015/06/junior-elite.jpg"
+          }
+        },
+        {
+          "model_name": "Junior Extra",
+          "url": "https://www.bfcsrl.it/en/products/junior-extra/",
+          "groups": "1",
+          "boiler": "Copper boiler, thermostatic circuit, 2 litre",
+          "control_variants": ["Semiautomatic with lever"],
+          "colors": ["Steel"],
+          "seo": {
+            "seo_title": "Junior Extra | BFC srl",
+            "seo_description": null,
+            "seo_description_gap": "MISSING trên nguồn",
+            "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2015/07/junior-extra.jpg"
+          }
+        },
+        {
+          "model_name": "Junior Extra TCI",
+          "url": "https://www.bfcsrl.it/en/products/junior-extra-tci/",
+          "groups": "1",
+          "boiler": "Copper boiler, thermostatic circuit, separate steam/hot-water boiler (T.C.I.), 1.3 & 0.8 litre",
+          "control_variants": ["Semiautomatic with lever"],
+          "colors": ["Steel"],
+          "seo": {
+            "seo_title": "Junior Extra TCI | BFC srl",
+            "seo_description": null,
+            "seo_description_gap": "MISSING trên nguồn",
+            "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2015/07/junior-extra-tci.jpg"
+          }
+        },
+        {
+          "model_name": "Junior Extra TCI MP",
+          "url": "https://www.bfcsrl.it/en/products/junior-extra-tci-mp/",
+          "groups": "1",
+          "boiler": "Copper boiler, thermostatic circuit, separate steam/hot-water boiler (T.C.I.), 1.3 & 0.8 litre",
+          "control_variants": ["Semiautomatic with lever"],
+          "special_features": ["Motorised internal pump, externally regulated", "Button switch: mains water / tank water"],
+          "colors": ["Steel"],
+          "seo": {
+            "seo_title": "Junior Extra TCI MP | BFC srl",
+            "seo_description": null,
+            "seo_description_gap": "MISSING trên nguồn",
+            "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2015/07/junior-extra-tci-mp.jpg"
+          }
+        },
+        {
+          "model_name": "Perfetta",
+          "url": "https://www.bfcsrl.it/en/products/perfetta/",
+          "groups": "1",
+          "boiler": "Copper boiler, thermostatic circuit, 0.8 litre",
+          "control_variants": ["Semiautomatic with lever"],
+          "colors": ["Steel"],
+          "seo": {
+            "seo_title": "Perfetta | BFC srl",
+            "seo_description": null,
+            "seo_description_gap": "MISSING trên nguồn",
+            "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2015/07/perfetta.jpg"
+          }
+        }
+      ],
+      "model_count": 9
+    },
+    {
+      "group_name": "Coffee Grinder Dosers",
+      "group_name_vi": "Máy Xay Cà Phê Định Lượng (Grinder-Doser)",
+      "description_en": "5 flat-burr grinder-dosers, Ø58-83mm, spanning entry (58E) to heavy-duty (83A/83E) capacity. 'A' suffix = automatic dosing (restarts every 6 coffees, stops when doser full); 'E' suffix = electronic on-demand single/double dose dispensing via push-button.",
+      "source_url": "https://www.bfcsrl.it/en/products/",
+      "models": [
+        {
+          "model_name": "BFC 58E",
+          "url": "https://www.bfcsrl.it/en/products/bfc-58e/",
+          "burr_diameter_mm": 58,
+          "burr_type": "Flat",
+          "motor_power": "300W, 220-240V/50-60Hz",
+          "hopper_capacity": "500g",
+          "dosing_type": "Single/double dose on-demand, push-button electronic",
+          "grinding_speed": "1400 g/min",
+          "dose_time": "Single dose in under 3 seconds",
+          "dimensions_cm": "18 x 23 x 41 (H)",
+          "weight_kg": 8,
+          "seo": {
+            "seo_title": "BFC 58E | BFC srl",
+            "seo_description": null,
+            "seo_description_gap": "MISSING trên nguồn",
+            "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2024/04/BFC-58E-470x665.jpg"
+          }
+        },
+        {
+          "model_name": "BFC 64A",
+          "url": "https://www.bfcsrl.it/en/products/bfc-64a/",
+          "burr_diameter_mm": 64,
+          "burr_type": "Flat, stepless micrometric adjustment",
+          "motor_power": "350W, 220-240V/50-60Hz",
+          "hopper_capacity": "1.2 kg",
+          "dosing_type": "Automatic, restarts every 6 coffees, adjustable 5-9.5g",
+          "grinding_speed": "1400 rpm",
+          "dimensions_cm": "21 x 38.5 x 59 (H)",
+          "weight_kg": 12.5,
+          "construction": "Aluminum and steel body",
+          "seo": {
+            "seo_title": "BFC 64A | BFC srl",
+            "seo_description": null,
+            "seo_description_gap": "MISSING trên nguồn",
+            "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2024/04/BFC-64A-438x665.jpg"
+          }
+        },
+        {
+          "model_name": "BFC 64E",
+          "url": "https://www.bfcsrl.it/en/products/bfc-64e/",
+          "burr_diameter_mm": 64,
+          "burr_type": "Flat",
+          "motor_power": "400W, 220-240V/50-60Hz",
+          "hopper_capacity": "1.2 kg",
+          "dosing_type": "Single/double dose on-demand, push-button electronic",
+          "grinding_speed": "1400 g/min",
+          "dimensions_cm": "20 x 27 x 51 (H)",
+          "weight_kg": 12.5,
+          "seo": {
+            "seo_title": "BFC 64E | BFC srl",
+            "seo_description": null,
+            "seo_description_gap": "MISSING trên nguồn",
+            "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2024/04/BFC-64E-451x665.jpg"
+          }
+        },
+        {
+          "model_name": "BFC 83A",
+          "url": "https://www.bfcsrl.it/en/products/bfc-83a/",
+          "burr_diameter_mm": 83,
+          "burr_type": "Flat, continuously adjustable micrometric grinding",
+          "motor_power": "650W, 220-240V/50-60Hz",
+          "hopper_capacity": "1.2 kg",
+          "dosing_type": "Automatic, restarts every 6 coffees, adjustable 5-9.5g",
+          "grinding_speed": "1400 g/min",
+          "dimensions_cm": "37 (W) x 23 (D) x 62 (H)",
+          "weight_kg": 19,
+          "seo": {
+            "seo_title": "BFC 83A | BFC srl",
+            "seo_description": null,
+            "seo_description_gap": "MISSING trên nguồn",
+            "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2024/04/BFC83A-414x665.jpg"
+          }
+        },
+        {
+          "model_name": "BFC 83E",
+          "url": "https://www.bfcsrl.it/en/products/83e/",
+          "burr_diameter_mm": 83,
+          "burr_type": "Flat",
+          "motor_power": "650W, 220-240V/50-60Hz",
+          "hopper_capacity": "1.2 kg",
+          "dosing_type": "Single/double dose on-demand, push-button electronic",
+          "grinding_speed": "1400 g/min",
+          "dimensions_cm": "23 x 30 x 62 (H)",
+          "weight_kg": 19,
+          "seo": {
+            "seo_title": "BFC 83E | BFC srl",
+            "seo_description": null,
+            "seo_description_gap": "MISSING trên nguồn",
+            "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2024/04/BFC-83E-394x665.jpg"
+          }
+        }
+      ],
+      "model_count": 5
+    },
+    {
+      "group_name": "Accessories",
+      "group_name_vi": "Phụ Kiện",
+      "description_en": "Small accessories for espresso machine operation: automatic portafilter cleaners (bench-top and external/floor-standing), deep drip tray, waste (knock-box) drawer, cup warmer.",
+      "source_url": "https://www.bfcsrl.it/en/products/",
+      "models": [
+        {
+          "model_name": "Cleaner",
+          "url": "https://www.bfcsrl.it/en/products/cleaner/",
+          "description": "Automatic portafilter cleaning device, optical-sensor brush activation, stainless steel body, food-grade rubber brush — avoids manual knocking of the portafilter.",
+          "dimensions_mm": "187 x 187 x 234 (H)",
+          "power": "36W, 220-240V/50-60Hz",
+          "speed": "200 g/min",
+          "weight_kg": 3,
+          "seo": {
+            "seo_title": "Cleaner | BFC srl",
+            "seo_description": null,
+            "seo_description_gap": "MISSING trên nguồn",
+            "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2024/04/Cleaner-499x665.jpg"
+          }
+        },
+        {
+          "model_name": "Cleaner Plus",
+          "url": "https://www.bfcsrl.it/en/products/cleaner-plus/",
+          "description": "External/floor-standing automatic portafilter cleaner, optical-sensor brush, stainless steel + food-grade rubber brush, built-in grounds pipe (~3kg capacity).",
+          "dimensions_mm": "151 x 420 x 690 (H)",
+          "power": "36W, 220-240V/50-60Hz",
+          "speed": "200 g/min",
+          "weight_kg": 4,
+          "seo": {
+            "seo_title": "Cleaner Plus | BFC srl",
+            "seo_description": null,
+            "seo_description_gap": "MISSING trên nguồn",
+            "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2024/04/Cleaner-Plus-1-665x665.jpg"
+          }
+        },
+        {
+          "model_name": "Deep drip tray",
+          "url": "https://www.bfcsrl.it/en/products/deep-drip-tray/",
+          "description": "Drip tray with sliding surface, fits mugs up to 130mm/5.10in high.",
+          "seo": {
+            "seo_title": "Deep drip tray | BFC srl",
+            "seo_description": null,
+            "seo_description_gap": "MISSING trên nguồn",
+            "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2015/08/deep-drip-tray.jpg"
+          }
+        },
+        {
+          "model_name": "Waste drawer",
+          "url": "https://www.bfcsrl.it/en/products/waste-drawer/",
+          "description": "Stainless steel removable waste (knock-box) drawer for used coffee grounds, mounted beneath the group head.",
+          "seo": {
+            "seo_title": "Waste drawer | BFC srl",
+            "seo_description": null,
+            "seo_description_gap": "MISSING trên nguồn",
+            "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2015/08/waste-drawer.jpg"
+          }
+        },
+        {
+          "model_name": "Cup warmer",
+          "url": "https://www.bfcsrl.it/en/products/scaldatazze/",
+          "description": "Steel cup warmer accessory to preheat serving cups.",
+          "seo": {
+            "seo_title": "Cup warmer | BFC srl",
+            "seo_description": null,
+            "seo_description_gap": "MISSING trên nguồn",
+            "image_url": "https://www.bfcsrl.it/bfc2015/wp-content/uploads/2015/09/cup-warmer.jpg"
+          }
+        }
+      ],
+      "model_count": 5
+    }
+  ],
+  "total_model_count": 40,
+  "total_model_count_breakdown": "19 Traditional Machines + 2 Machine Lever + 9 Home/Office Range + 5 Coffee Grinder Dosers + 5 Accessories = 40 sản phẩm (35 nếu không tính 5 phụ kiện không phải máy pha cà phê).",
+  "vietnam_market_context": {
+    "note": "CHƯA xác nhận nhà phân phối chính hãng (authorized distributor) của BFC tại Việt Nam. Không tìm kiếm/kiểm tra trong phiên cào này (out of scope) — cần làm riêng nếu client cần.",
+    "caution": "Trang saigonhoreca.local hiện chỉ dùng BFC làm logo đối tác — CHƯA xác minh mối quan hệ phân phối/đại lý chính thức giữa saigonhoreca và BFC srl qua nguồn công khai."
+  },
+  "pricing_status": "BFC KHÔNG công bố giá bán công khai trên website chính hãng (thông lệ ngành B2B thiết bị pha chế chuyên nghiệp) — không tìm thấy trang giá/catalog giá nào trong quá trình cào. Cần liên hệ trực tiếp BFC srl (+39 0438 394979) hoặc đại lý phân phối để lấy báo giá.",
+  "open_questions_for_user": [
+    "SEO description: TOÀN BỘ 40 trang sản phẩm KHÔNG có thẻ <meta name=\"description\"> (xác nhận qua curl thô, không phải do WebFetch bỏ sót) — nếu cần seo_description cho từng sản phẩm khi đăng lên site, phải TỰ VIẾT MỚI (không cào được), không nên để trống khi publish thật.",
+    "Dimensions/weight: đa số model Traditional Machines/Lever/Home-Office CHỈ có thông số 'boiler capacity' và 'group weight' dạng text; kích thước tổng thể (WxDxH máy) và trọng lượng máy chỉ tồn tại dưới dạng ảnh kỹ thuật (technical drawing / PDF), KHÔNG trích xuất được thành text qua WebFetch — cần tải PDF brochure riêng từng model nếu cần số liệu chính xác.",
+    "Ảnh sản phẩm: đã lấy được image_url thật (không phải logo) cho toàn bộ 40 sản phẩm, nhưng đây là ảnh độ phân giải web (thường 665-1024px chiều rộng) lấy trực tiếp từ wp-content/uploads của bfcsrl.it — chưa xin phép sử dụng thương mại, cần liên hệ BFC nếu dùng để bán hàng.",
+    "Founding year: nguồn thứ cấp (Global Coffee Report, đại lý) ghi BFC thành lập thập niên 1950, nhưng trang About Us chính hãng KHÔNG nêu năm cụ thể — cần xác minh thêm nếu năm thành lập là thông tin quan trọng để publish.",
+    "Deep Black RS: tên file ảnh nguồn là 'Lira-Deep-Black-RS' trong khi trang sản phẩm liệt kê độc lập là 'Deep Black RS' — khả năng đây là biến thể màu/finish của dòng Lira chứ không phải model hoàn toàn riêng biệt, cần xác nhận thêm nếu cần phân loại chính xác trên site.",
+    "Nhà phân phối BFC tại Việt Nam: chưa nghiên cứu (ngoài phạm vi task này) — cần làm riêng để xác nhận quan hệ với saigonhoreca hoặc đại lý khác.",
+    "Giá bán: không công bố public, cần liên hệ BFC hoặc đại lý trước khi đưa giá lên site."
+  ]
+}

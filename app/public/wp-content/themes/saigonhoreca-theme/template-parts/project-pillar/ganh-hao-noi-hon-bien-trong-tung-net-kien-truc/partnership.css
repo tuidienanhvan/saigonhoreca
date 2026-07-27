@@ -1,7 +1,9 @@
 /**
  * Project Pillar — Gành Hào
- * Section #4: partnership — cinematic full-bleed bg + glassmorphic content card.
- * 0 hardcode hex brand (token vars / color-mix only).
+ * Section #4: partnership — full-bleed bg với hiệu ứng Parallax + glassmorphic content card.
+ * Kỹ thuật parallax KHÔNG JavaScript: thẻ con __bg dùng background-attachment:fixed (cách tin cậy đã verify
+ * trên sol-kitchen-bar) → bg neo theo viewport, parallax khi cuộn. Thay cho clip-path + position:fixed cũ.
+ * Overlay token NHẸ — giữ ảnh SÁNG/rõ. 0 hardcode hex brand (token vars / color-mix only).
  * @package SaigonHoreca
  */
 
@@ -13,30 +15,41 @@
   align-items: center;
   justify-content: center;
   background-color: var(--b1);
+  isolation: isolate;
+  overflow: hidden;
+}
+
+/* Parallax bg — background-attachment:fixed (cách parallax tin cậy, bg neo theo viewport, auto-clip vào box này) */
+.pp-partnership-ganh__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  isolation: isolate;
-  overflow: hidden;
+  pointer-events: none;
 }
+
+/* Mobile: background-attachment:fixed giật trên iOS — fallback scroll ổn định (giữ position:absolute) */
 @media (max-width: 768px) {
-  /* fixed attachment gây giật trên iOS — tắt */
-  .pp--ganh .pp-partnership-ganh { background-attachment: scroll; }
+  .pp-partnership-ganh__bg {
+    position: absolute;
+    background-attachment: scroll;
+  }
 }
 
 .pp-partnership-ganh__overlay {
   position: absolute;
   inset: 0;
-  z-index: 1;
+  z-index: -1;
   pointer-events: none;
-  background:
-    radial-gradient(ellipse at center,
-      color-mix(in srgb, var(--gha-teal-deep) 30%, transparent) 0%,
-      color-mix(in srgb, var(--b1) 82%, transparent) 70%),
-    linear-gradient(180deg,
-      color-mix(in srgb, var(--b1) 70%, transparent) 0%,
-      color-mix(in srgb, var(--b1) 88%, transparent) 100%);
+  background: linear-gradient(180deg,
+    color-mix(in srgb, var(--b1) 45%, transparent) 0%,
+    color-mix(in srgb, var(--b1) 25%, transparent) 50%,
+    color-mix(in srgb, var(--b1) 55%, transparent) 100%);
 }
 
 .pp-partnership-ganh__glow {

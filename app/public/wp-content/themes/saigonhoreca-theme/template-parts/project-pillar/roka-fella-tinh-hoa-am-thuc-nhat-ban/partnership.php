@@ -68,14 +68,14 @@ $uri = get_template_directory_uri();
       <div class="pp-grid-12-rf__media--cols-7 rkf-partnership__side">
         <div class="pp-image-container-shared rkf-partnership__image-container rkf-partnership__image-container--main">
           <div class="pp-image-border-decor" aria-hidden="true"></div>
-          <img src="<?php echo sgh_img('roka-fella/roka-fella-quay-sushi-omakase.jpg'); ?>" alt="<?php echo esc_attr__('Roka Fella Sushi Station', 'saigonhoreca'); ?>" loading="lazy">
-          <div class="pp-image-caption-shared"><?php echo esc_html__('Đầu bếp tỉ mỉ đặt lát cá hồi tươi lên miếng sushi nigiri trên quầy gỗ', 'saigonhoreca'); ?></div>
+          <img src="<?php echo sgh_img('roka-fella/roka-fella-quay-sushi-omakase.jpg'); ?>" alt="<?php echo esc_attr__('Đầu bếp đặt lát cá hồi lên nigiri trên mâm Omakase Roka Fella', 'saigonhoreca'); ?>" loading="lazy">
+          <div class="pp-image-caption-shared"><?php echo esc_html__('Đầu bếp tỉ mỉ đặt lát cá hồi tươi lên miếng sushi nigiri trên đĩa đá đen giữa mâm Omakase', 'saigonhoreca'); ?></div>
         </div>
 
         <div class="pp-image-container-shared rkf-partnership__image-container rkf-partnership__image-container--floating">
           <div class="pp-image-border-decor" aria-hidden="true"></div>
           <div class="rkf-partnership__image-clip">
-            <img src="<?php echo sgh_img('roka-fella/roka-fella-mon-nigiri-ca-ngu.jpg'); ?>" alt="<?php echo esc_attr__('Roka Fella Omakase Dish', 'saigonhoreca'); ?>" loading="lazy">
+            <img src="<?php echo sgh_img('roka-fella/roka-fella-mon-nigiri-ca-ngu.jpg'); ?>" alt="<?php echo esc_attr__('Khay gỗ set nigiri thập cẩm cá ngừ tôm ngọt trứng cá hồi Roka Fella', 'saigonhoreca'); ?>" loading="lazy">
           </div>
           <div class="pp-image-caption-shared"><?php echo esc_html__('Khay gỗ lớn đựng Set sushi nigiri thập cẩm cao cấp bao gồm bụng cá ngừ Otoro, tôm ngọt và trứng cá hồi', 'saigonhoreca'); ?></div>
         </div>

@@ -8,6 +8,7 @@
   position: relative;
   width: 100%;
   height: calc(100vh - 76px);
+  height: calc(100dvh - 76px);
   min-height: 600px;
   display: flex;
   align-items: flex-end; /* Căn xuống dưới lệch góc cho đặc trưng */
@@ -16,12 +17,6 @@
   background: var(--b1);
   isolation: isolate;
   padding: 4rem 8% 5rem 8%;
-}
-
-@supports (height: 100svh) {
-  .pp-hero-gmf {
-    height: calc(100svh - 76px);
-  }
 }
 
 .pp-hero-gmf__media {

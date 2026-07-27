@@ -33,10 +33,10 @@
 .sh-featured-projects__head {
     text-align: center;
     max-width: 720px;
-    margin: 0 auto 3rem;
+    margin: 0 auto 3.5rem;
 }
 @media (min-width: 768px) {
-    .sh-featured-projects__head { margin-bottom: 3.5rem; }
+    .sh-featured-projects__head { margin-bottom: 4.5rem; }
 }
 
 .sh-featured-projects__accent {
@@ -59,7 +59,7 @@
 }
 
 .sh-featured-projects__desc {
-    margin: 0 0 1.75rem;
+    margin: 0 0 2rem;
     font-size: 0.9375rem;
     line-height: 1.7;
     color: var(--bc3);
@@ -71,6 +71,7 @@
     align-items: center;
     gap: 0.5rem;
     padding: 0.75rem 1.5rem;
+    margin-top: 0.5rem;
     font-size: 0.8125rem;
     font-weight: 700;
     letter-spacing: 0.08em;

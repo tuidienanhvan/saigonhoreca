@@ -1,27 +1,133 @@
 /**
- * du-an-kdl-rung-thong-nui-voi-cua-saigonhoreca — specs slot.
- * Inherits .pp-split-kdl from concept.css + image + text.
- * @package SaigonHoreca
+ * Project Pillar — KDL Rừng Thông Núi Voi
+ * Section #5: specs styling (Blueprint frame + technical feature timeline)
+ * 100% tokens · zero hardcoded hex. Green = color-mix(var(--su)).
  */
 
-.pp-split-kdl__media img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--bd);
-  transition: border-color 0.4s var(--ease-spring), transform 0.4s var(--ease-spring);
+/* Blueprint-framed image side */
+.pp--kdl .pp-specs-kdl__side {
+  position: relative;
+  padding: 1.4rem;
+  background-color: var(--b1);
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--su) 5%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--su) 5%, transparent) 1px, transparent 1px);
+  background-size: 22px 22px;
+  border-radius: var(--radius-lg);
+  border: 1px solid color-mix(in srgb, var(--su) 14%, transparent);
+  box-shadow: 0 20px 45px color-mix(in srgb, var(--b1) 65%, transparent);
 }
-.pp-split-kdl__media img:hover {
-  border-color: color-mix(in srgb, var(--su) 40%, transparent);
-  transform: scale(1.03);
+
+.pp--kdl .pp-specs-kdl__coord {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--su) 50%, transparent);
+  z-index: 4;
+  pointer-events: none;
+}
+.pp--kdl .pp-specs-kdl__coord--tl { top: 10px; left: 18px; }
+.pp--kdl .pp-specs-kdl__coord--br { bottom: 10px; right: 18px; }
+@media (max-width: 767px) {
+  .pp--kdl .pp-specs-kdl__coord { display: none; }
+}
+
+.pp--kdl .pp-specs-kdl__image-container {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--su) 14%, transparent);
+  box-shadow: 0 10px 28px color-mix(in srgb, var(--b1) 60%, transparent);
+  z-index: 3;
+  transition: border-color 0.5s var(--ease-spring), box-shadow 0.6s var(--ease-spring);
+}
+.pp--kdl .pp-specs-kdl__image-container:hover {
+  border-color: color-mix(in srgb, var(--su) 45%, transparent);
+  box-shadow: 0 18px 42px color-mix(in srgb, var(--su) 16%, transparent);
+}
+.pp--kdl .pp-specs-kdl__image-container:hover .pp-image-border-decor-kdl {
+  opacity: 1;
+  border-color: color-mix(in srgb, var(--su) 45%, transparent);
+}
+.pp--kdl .pp-specs-kdl__image-container img {
+  filter: saturate(1.04) brightness(0.95);
+  transition: filter 0.6s var(--ease-spring), transform 0.6s var(--ease-spring) !important;
+}
+.pp--kdl .pp-specs-kdl__image-container:hover img { filter: saturate(1.1) brightness(1); }
+
+/* Technical feature timeline */
+.pp--kdl .pp-specs-kdl__features {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  margin-top: 1.5rem;
+}
+.pp--kdl .pp-specs-kdl__feature {
+  position: relative;
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  padding-left: 1.25rem;
+}
+.pp--kdl .pp-specs-kdl__feature::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 2px; bottom: 2px;
+  width: 2px;
+  background: var(--bd);
+  transition: background-color 0.4s var(--ease-spring);
+}
+.pp--kdl .pp-specs-kdl__feature:hover::before { background: var(--su); }
+
+.pp--kdl .pp-specs-kdl__feature-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.7rem;
+  height: 2.7rem;
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--su) 7%, transparent);
+  border: 1px solid color-mix(in srgb, var(--su) 20%, transparent);
+  color: color-mix(in srgb, var(--su) 80%, var(--bc));
+  transition: transform 0.4s var(--ease-spring), background 0.4s, border-color 0.4s, box-shadow 0.4s;
+}
+.pp--kdl .pp-specs-kdl__feature-icon svg { width: 1.3rem; height: 1.3rem; display: block; }
+.pp--kdl .pp-specs-kdl__feature:hover .pp-specs-kdl__feature-icon {
+  transform: translateY(-3px) scale(1.05);
+  background: color-mix(in srgb, var(--su) 15%, transparent);
+  border-color: color-mix(in srgb, var(--su) 50%, transparent);
+  box-shadow: 0 0 16px color-mix(in srgb, var(--su) 20%, transparent);
+}
+
+.pp--kdl .pp-specs-kdl__feature-content { display: flex; flex-direction: column; gap: 0.3rem; }
+.pp--kdl .pp-specs-kdl__feature-content h4 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--bc);
+  margin: 0;
+  transition: color 0.3s;
+}
+.pp--kdl .pp-specs-kdl__feature:hover .pp-specs-kdl__feature-content h4 {
+  color: color-mix(in srgb, var(--su) 75%, var(--bc));
+}
+.pp--kdl .pp-specs-kdl__feature-content p {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--bc2);
+  margin: 0;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .pp-split-kdl__media img {
+  .pp--kdl .pp-specs-kdl__image-container,
+  .pp--kdl .pp-specs-kdl__image-container img,
+  .pp--kdl .pp-specs-kdl__feature::before,
+  .pp--kdl .pp-specs-kdl__feature-icon {
     transition: none !important;
-  }
-  .pp-split-kdl__media img:hover {
-    transform: none !important;
+    animation: none !important;
   }
 }

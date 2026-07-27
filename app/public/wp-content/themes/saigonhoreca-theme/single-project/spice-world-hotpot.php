@@ -1,7 +1,7 @@
 <?php
 /**
  * Single Project Template — SPICE WORLD HOT POT
- * Thumbnail: 2023/05/du-an-spice-world-hot-pot.jpg
+ * Thumbnail: spice-world-hotpot/spice-world-hotpot-thumbnail-project-cover.webp
  *
  * Auto-routed via inc/core/pillar-routes.php for /du-an/spice-world-hotpot/.
  *

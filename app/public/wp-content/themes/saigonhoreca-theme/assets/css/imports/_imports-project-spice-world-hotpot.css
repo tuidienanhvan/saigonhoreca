@@ -1,0 +1,8 @@
+/* Project bundle — spice-world-hotpot only. */
+@import "../../../template-parts/project-pillar/spice-world-hotpot/hero.css";
+@import "../../../template-parts/project-pillar/spice-world-hotpot/intro.css";
+@import "../../../template-parts/project-pillar/spice-world-hotpot/concept.css";
+@import "../../../template-parts/project-pillar/spice-world-hotpot/partnership.css";
+@import "../../../template-parts/project-pillar/spice-world-hotpot/specs.css";
+@import "../../../template-parts/project-pillar/spice-world-hotpot/gallery.css";
+@import "../../../single-project/spice-world-hotpot.css";

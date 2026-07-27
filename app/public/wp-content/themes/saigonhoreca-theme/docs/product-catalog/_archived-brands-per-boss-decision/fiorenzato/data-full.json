@@ -1,0 +1,889 @@
+{
+  "research_date": "2026-07-18",
+  "source_note": "Nguồn dữ liệu: (1) website chính hãng www.fiorenzato.com (bản tiếng Anh /en/) — danh sách URL sản phẩm lấy trực tiếp từ /product-sitemap.xml (WordPress), đối chiếu với 6 trang danh mục (grind-by-weight, pro-line-grinders, on-demand, grocery, grinder-dosers) — sitemap xác nhận ĐÚNG 32 trang sản phẩm /en/, khớp 100% với 32 model đã có ở data.json (không phát hiện model/biến thể nào bị bỏ sót); (2) microsite riêng www.fiorenzatohome.com (không dùng WordPress, không có sitemap.xml/robots.txt Sitemap — đã kiểm tra 404) cho 2 model dòng gia đình AllGround. Mỗi model đã được WebFetch lại trực tiếp trang sản phẩm để lấy: <title> gốc, đoạn mô tả marketing thật (KHÔNG bịa), và toàn bộ URL ảnh tuyệt đối trong thư viện ảnh/carousel — 10 model mà bản cào 14/07 chưa xác nhận được URL ảnh tuyệt đối (F64 EVO PRO ADAPT, F5 A PRO, F64 EVO XGi PRO, F83 E, F4 A, F5, F71 AK, AllGround Classic, AllGround Sense, và biến thể nghi vấn F64 EVO XGi PRO) đã được xác nhận đầy đủ trong lần cào này. KHÔNG phát hiện thêm model/nhóm mới ngoài 34 model x 6 nhóm đã có. seo_description vẫn để rỗng cho toàn bộ 34 model vì site không set thẻ <meta name=\"description\"> ở bất kỳ trang nào (đã kiểm tra lại, đặc điểm chung toàn site, không phải lỗi crawl). Trang phụ kiện (/en/our-optional-accessories/) đã được kiểm tra: chỉ liệt kê tamper, coffee press, phễu rời (không phải máy xay hoàn chỉnh) nên không đưa vào catalog model.",
+  "brand": "Fiorenzato",
+  "groups": [
+    {
+      "group_name": "Grind by Weight (SENSE / ADAPT)",
+      "group_name_vi": "Máy Xay Cân Trọng Lượng (SENSE / ADAPT)",
+      "source_urls": [
+        "https://www.fiorenzato.com/en/grind-by-weight/"
+      ],
+      "models": [
+        {
+          "model": "F64 EVO SENSE",
+          "title": "F64 EVO SENSE | Fiorenzato",
+          "description_en": "With 64-mm flat burrs and 450-Watt power. The weighing system built into the fork ensures always the exact grams of ground coffee in the portafilter.",
+          "specs": {
+            "burr_diameter_mm": 64,
+            "burr_type": "Flat, F64 EVO made in-house, M340 with Dark-T® coating",
+            "motor_power_w": 450,
+            "rpm": "1350/min (50Hz) - 1550/min (60Hz)",
+            "grinding_capacity": "2.7 g/s (Dark-T® burrs)",
+            "scale_precision_g": 0.1,
+            "burr_lifespan": "600kg (3000kg with Dark-T® coating)",
+            "daily_consumption_recommended": "Up to 3 kg",
+            "dims_mm": "230x620x274 (WxDxH)",
+            "colors": "Deep Black, Glossy Black, Nardò Grey, Classic Grey, Arctic White, Pearl White, Glossy Red"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.fiorenzato.com/wp-content/uploads/2025/03/F64-EVO-SENSE-4-1.png",
+          "source_url": "https://www.fiorenzato.com/en/grind-by-weight/f64-evo-sense/",
+          "seo_title": "F64 EVO SENSE | Fiorenzato",
+          "seo_description": "La passione per i prodotti incontra l&#8217;amore per il caffè",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/fiorenzato/0001_F64_EVO_SENSE.png"
+        },
+        {
+          "model": "F64 EVO ADAPT",
+          "title": "F64 EVO ADAPT | Fiorenzato",
+          "description_en": "A coffee grinder that connects to any coffee machine to monitor recipes, reduce waste, and ensure quality and consistency in the cup.",
+          "specs": {
+            "burr_diameter_mm": 64,
+            "burr_type": "Flat, F64 EVO ADAPT made in-house, M340 with Dark-T® coating",
+            "motor_power_w": 450,
+            "rpm": "1350/min (50Hz) - 1550/min (60Hz)",
+            "grinding_capacity": "2.7 g/s (Dark-T® burrs)",
+            "scale_precision_g": 0.1,
+            "burr_lifespan": "600kg (3000kg with Dark-T® coating)",
+            "daily_consumption_recommended": "Up to 3 kg",
+            "dims_mm": "230x620x274 (WxDxH)",
+            "colors": "nero opaco (matte black), nero (glossy black), grigio, grigio met (metallic grey), bianco opaco (matte white), panna (cream), rosso (red)"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.fiorenzato.com/wp-content/uploads/2026/05/F64-EVO-ADAPT-nero-opaco-1.png",
+          "source_url": "https://www.fiorenzato.com/en/grind-by-weight/f64-evo-adapt/",
+          "seo_title": "F64 EVO ADAPT | Fiorenzato",
+          "seo_description": "La passione per i prodotti incontra l&#8217;amore per il caffè",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/fiorenzato/0002_F64_EVO_ADAPT.png"
+        },
+        {
+          "model": "F64 EVO PRO SENSE",
+          "title": "F64 EVO PRO SENSE | Fiorenzato",
+          "description_en": "With 64-mm flat burrs and 450-Watt power. The weighing system built into the fork ensures always the exact grams of ground coffee in the portafilter.",
+          "specs": {
+            "burr_diameter_mm": 64,
+            "burr_type": "Flat, F64 EVO made in-house, M340 with Dark-T® coating",
+            "motor_power_w": 450,
+            "rpm": "1350/min (50Hz) - 1550/min (60Hz)",
+            "grinding_capacity": "3.4 g/s (hardened burrs) / 2.7 g/s (Dark-T®)",
+            "scale_precision_g": 0.1,
+            "burr_lifespan": "600kg (3000kg with Dark-T® coating)",
+            "daily_consumption_recommended": "Up to 3 kg",
+            "dims_mm": "230x620x274 (WxDxH)",
+            "colors": "Deep Black, Glossy Black, Nardò Grey, Classic Grey, Arctic White, Pearl White, Glossy Red"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.fiorenzato.com/wp-content/uploads/2025/03/F64-EVO-PRO-SENSE-4-1.png",
+          "source_url": "https://www.fiorenzato.com/en/grind-by-weight/f64-evo-pro-sense/",
+          "seo_title": "F64 EVO PRO SENSE | Fiorenzato",
+          "seo_description": "La passione per i prodotti incontra l&#8217;amore per il caffè",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/fiorenzato/0003_F64_EVO_PRO_SENSE.png"
+        },
+        {
+          "model": "F64 EVO PRO ADAPT",
+          "title": "F64 EVO PRO ADAPT | Fiorenzato",
+          "description_en": "A coffee grinder that connects to any coffee machine to monitor recipes, reduce waste, and ensure quality and consistency in the cup.",
+          "specs": {
+            "burr_diameter_mm": 64,
+            "burr_type": "Flat, M340 (PRO: Dark-T® coating)",
+            "motor_power_w": 450,
+            "rpm": "1350/min (50Hz) - 1550/min (60Hz)",
+            "grinding_capacity": "3.4 g/s (hardened burrs) / 2.7 g/s (Dark-T®)",
+            "scale_precision_g": 0.1,
+            "burr_lifespan": "600kg (3000kg with Dark-T® coating)",
+            "daily_consumption_recommended": "Up to 3 kg",
+            "dims_mm": "230x620x274 (WxDxH)",
+            "colors": "7 màu (nero opaco, nero, grigio, grigio met, bianco opaco, panna, rosso)"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.fiorenzato.com/wp-content/uploads/2026/05/F64-EVO-PRO-ADAPT-nero-opaco-1.png",
+          "source_url": "https://www.fiorenzato.com/en/grind-by-weight/f64-evo-pro-adapt/",
+          "seo_title": "F64 EVO PRO ADAPT | Fiorenzato",
+          "seo_description": "La passione per i prodotti incontra l&#8217;amore per il caffè",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/fiorenzato/0004_F64_EVO_PRO_ADAPT.png"
+        },
+        {
+          "model": "F83 E SENSE",
+          "title": "F83 E SENSE | Fiorenzato",
+          "description_en": "With 83-mm flat burrs and 650-Watt power. The weighing system built into the fork ensures always the exact grams of ground coffee in the portafilter.",
+          "specs": {
+            "burr_diameter_mm": 83,
+            "burr_type": "Flat, F83E made in-house, M340 with Dark-T® coating",
+            "motor_power_w": 650,
+            "rpm": "1350/min (50Hz) - 1550/min (60Hz)",
+            "grinding_capacity": "3.1 g/s (Dark-T® burrs)",
+            "scale_precision_g": 0.1,
+            "burr_lifespan": "900kg (4500kg with Dark-T® coating)",
+            "daily_consumption_recommended": "Up to 6 kg",
+            "dims_mm": "234x680x275 (WxDxH)"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.fiorenzato.com/wp-content/uploads/2025/03/F83-E-SENSE-4-1.png",
+          "source_url": "https://www.fiorenzato.com/en/grind-by-weight/f83-e-sense/",
+          "seo_title": "F83 E SENSE | Fiorenzato",
+          "seo_description": "La passione per i prodotti incontra l&#8217;amore per il caffè",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/fiorenzato/0005_F83_E_SENSE.png"
+        },
+        {
+          "model": "F83 E ADAPT",
+          "title": "F83 E ADAPT | Fiorenzato",
+          "description_en": "A coffee grinder that connects to any coffee machine to monitor recipes, reduce waste, and ensure quality and consistency in the cup. With 83-mm flat burrs and 650-Watt power.",
+          "specs": {
+            "burr_diameter_mm": 83,
+            "burr_type": "Flat, M340 with Dark-T® coating",
+            "motor_power_w": 650,
+            "rpm": "1350/min (50Hz) - 1550/min (60Hz)",
+            "grinding_capacity": "3.1 g/s (Dark-T® burrs)",
+            "scale_precision_g": 0.1,
+            "burr_lifespan": "900 kg per set",
+            "daily_consumption_recommended": "Up to 6 kg",
+            "dims_mm": "234x680x275 (WxDxH)"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.fiorenzato.com/wp-content/uploads/2026/05/F83-E-ADAPT-nero-opaco-1.png",
+          "source_url": "https://www.fiorenzato.com/en/grind-by-weight/f83-e-adapt/",
+          "seo_title": "F83 E ADAPT | Fiorenzato",
+          "seo_description": "La passione per i prodotti incontra l&#8217;amore per il caffè",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/fiorenzato/0006_F83_E_ADAPT.png"
+        },
+        {
+          "model": "F83 E PRO SENSE",
+          "title": "F83 E PRO SENSE | Fiorenzato",
+          "description_en": "With 83-mm flat burrs and 650-Watt power. The weighing system built into the fork ensures always the exact grams of ground coffee in the portafilter.",
+          "specs": {
+            "burr_diameter_mm": 83,
+            "burr_type": "Flat, F83E made in-house, M340 with Dark-T® coating",
+            "motor_power_w": 650,
+            "rpm": "1350/min (50Hz) - 1550/min (60Hz)",
+            "grinding_capacity": "3.1 g/s (Dark-T® burrs)",
+            "scale_precision_g": 0.1,
+            "burr_lifespan": "900kg (4500kg with Dark-T® coating)",
+            "daily_consumption_recommended": "Up to 6 kg",
+            "dims_mm": "234x680x275 (WxDxH)"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.fiorenzato.com/wp-content/uploads/2025/03/F83-E-PRO-SENSE-4-1.png",
+          "source_url": "https://www.fiorenzato.com/en/grind-by-weight/f83-e-pro-sense/",
+          "seo_title": "F83 E PRO SENSE | Fiorenzato",
+          "seo_description": "La passione per i prodotti incontra l&#8217;amore per il caffè",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/fiorenzato/0007_F83_E_PRO_SENSE.png"
+        },
+        {
+          "model": "F83 E PRO ADAPT",
+          "title": "F83 E PRO ADAPT | Fiorenzato",
+          "description_en": "A coffee grinder that connects to any coffee machine to monitor recipes, reduce waste, and ensure quality and consistency in the cup. With 83-mm flat burrs and 650-Watt power.",
+          "specs": {
+            "burr_diameter_mm": 83,
+            "burr_type": "Flat, M340 with Dark-T® coating",
+            "motor_power_w": 650,
+            "rpm": "1350/min (50Hz) - 1550/min (60Hz)",
+            "grinding_capacity": "3.1 g/s (Dark-T® burrs)",
+            "scale_precision_g": 0.1,
+            "burr_lifespan": "900kg (4500kg with Dark-T® burrs)",
+            "daily_consumption_recommended": "Up to 6 kg",
+            "dims_mm": "234x680x275 (WxDxH)"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.fiorenzato.com/wp-content/uploads/2026/05/F83-E-PRO-ADAPT-nero-opaco-1.png",
+          "source_url": "https://www.fiorenzato.com/en/grind-by-weight/f83-e-pro-adapt/",
+          "seo_title": "F83 E PRO ADAPT | Fiorenzato",
+          "seo_description": "La passione per i prodotti incontra l&#8217;amore per il caffè",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/fiorenzato/0008_F83_E_PRO_ADAPT.png"
+        }
+      ]
+    },
+    {
+      "group_name": "PRO Line Grinders (Traditional, dosed)",
+      "group_name_vi": "Dòng PRO (Máy Xay Truyền Thống Có Định Lượng)",
+      "source_urls": [
+        "https://www.fiorenzato.com/en/pro-line-grinders/"
+      ],
+      "models": [
+        {
+          "model": "F5 A PRO",
+          "title": "Traditional Coffee Grinder F5 PRO | Fiorenzato",
+          "description_en": "A professional coffee grinder that guarantees low heating of ground coffee and a long lifetime.",
+          "specs": {
+            "burr_diameter_mm": 64,
+            "burr_type": "Flat",
+            "motor_power_w": 350,
+            "hopper_capacity_kg": 1.5,
+            "rpm": "1350/min (50Hz) - 1550/min (60Hz)",
+            "dims_mm": "230x615x270 (WxDxH)",
+            "weight_kg": 13,
+            "grinding_adjustment": "Continuous ring nut micrometric",
+            "model_variants": "A (automatic microswitch), T (timer), M (manual switch)"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.fiorenzato.com/wp-content/uploads/2022/05/F5-A-PRO-4-1.png",
+          "source_url": "https://www.fiorenzato.com/en/pro-line-grinders/f5-pro/",
+          "seo_title": "Traditional Coffee Grinder F5 PRO | Fiorenzato",
+          "seo_description": "La passione per i prodotti incontra l&#8217;amore per il caffè",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/fiorenzato/0009_F5_A_PRO.png"
+        },
+        {
+          "model": "F6 A PRO",
+          "title": "Traditional Coffee Grinder F6 PRO | Fiorenzato",
+          "description_en": "Professional coffee grinders in painted die-cast metal that guarantees a low heating of the ground coffee.",
+          "specs": {
+            "burr_diameter_mm": 83,
+            "burr_type": "Flat",
+            "motor_power_w": 650,
+            "hopper_capacity_kg": 1.5,
+            "rpm": "1400/min (50Hz) - 1600/min (60Hz)",
+            "dims_mm": "230x670x270 (WxDxH)",
+            "weight_kg": 15.5,
+            "grinding_adjustment": "Continuous micrometric ring nut",
+            "model_variants": "T (timer), M (manual switch)"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.fiorenzato.com/wp-content/uploads/2022/05/F6-A-PRO-4-1.png",
+          "source_url": "https://www.fiorenzato.com/en/pro-line-grinders/f6-pro/",
+          "seo_title": "Traditional Coffee Grinder F6 PRO | Fiorenzato",
+          "seo_description": "La passione per i prodotti incontra l&#8217;amore per il caffè",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/fiorenzato/0010_F6_A_PRO.png"
+        },
+        {
+          "model": "F71 AK PRO",
+          "title": "Traditional Coffee Grinder F71 AK PRO | Fiorenzato",
+          "description_en": "Coffee grinder in die-cast metal painted with conical millstones, effectiveness and reliability that lasts over time. Every detail has been studied to ensure utmost efficiency and practicality of use.",
+          "specs": {
+            "burr_diameter_mm": 71,
+            "burr_type": "Conical",
+            "motor_power_w": 850,
+            "hopper_capacity_kg": 1.5,
+            "rpm": "450/min (50Hz) - 500/min (60Hz)",
+            "dims_mm": "230x670x270 (WxDxH)",
+            "weight_kg": 21,
+            "doser_capacity_g": 250,
+            "dose_range_g": "5.5-10"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.fiorenzato.com/wp-content/uploads/2022/05/F71-AK-PRO-4-1.png",
+          "source_url": "https://www.fiorenzato.com/en/pro-line-grinders/f71-ak-pro/",
+          "seo_title": "Traditional Coffee Grinder F71 AK PRO | Fiorenzato",
+          "seo_description": "La passione per i prodotti incontra l&#8217;amore per il caffè",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/fiorenzato/0011_F71_AK_PRO.png"
+        },
+        {
+          "model": "F64 E PRO",
+          "title": "On Demand F64 E PRO coffee grinder | Fiorenzato",
+          "description_en": "The coffee grinder with exclusive touchscreen display with CapSense technology. Consistent grinding every time at the tap of a finger.",
+          "specs": {
+            "burr_diameter_mm": 64,
+            "burr_type": "Flat",
+            "motor_power_w": 350,
+            "hopper_capacity_kg": 1.5,
+            "rpm": "1350/min (50Hz) - 1550/min (60Hz)",
+            "dims_mm": "230x615x270 (WxDxH)",
+            "weight_kg": 13,
+            "grinding_adjustment": "Continuous (ring nut micrometric)",
+            "dose_adjustment": "In seconds",
+            "colors": "Deep Black, Glossy Black, Nardò Grey, Classic Grey, Arctic White, Pearl White, Glossy Red"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.fiorenzato.com/wp-content/uploads/2022/05/F64-E-PRO-4-1.png",
+          "source_url": "https://www.fiorenzato.com/en/pro-line-grinders/f64-e-pro/",
+          "seo_title": "On Demand F64 E PRO coffee grinder | Fiorenzato",
+          "seo_description": "La passione per i prodotti incontra l&#8217;amore per il caffè",
+          "note": "Trang nằm trong menu 'PRO Line Grinders' và trong /product-sitemap.xml dưới path /pro-line-grinders/, nhưng thẻ <title> trang lại ghi 'On Demand F64 E PRO' — nghi trộn template giữa 2 dòng sản phẩm, đã xác minh lại 18/07 vẫn cùng kết quả. Giữ nguyên dữ liệu thật, chỉ gắn cờ.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/fiorenzato/0012_F64_E_PRO.png"
+        },
+        {
+          "model": "F64 EVO PRO",
+          "title": "On Demand F64 EVO coffee grinder | Fiorenzato",
+          "description_en": "Precise, reliable, easy to use: F64 EVO is designed to simplify the work of baristas and obtain perfect results every time.",
+          "specs": {
+            "burr_diameter_mm": 64,
+            "burr_type": "Flat",
+            "motor_power_w": 450,
+            "hopper_capacity_kg": 1.5,
+            "rpm": "1350/min (50Hz) - 1550/min (60Hz)",
+            "dims_mm": "230x615x270 (WxDxH)",
+            "weight_kg": 13,
+            "grinding_adjustment": "Continuous micrometric ring nut",
+            "dose_adjustment": "In seconds",
+            "feature_note": "Automatic cooling fan (activates electronically)"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.fiorenzato.com/wp-content/uploads/2022/05/F64-EVO-PRO-4-1.png",
+          "source_url": "https://www.fiorenzato.com/en/pro-line-grinders/f64-evo-pro/",
+          "seo_title": "On Demand F64 EVO coffee grinder | Fiorenzato",
+          "seo_description": "La passione per i prodotti incontra l&#8217;amore per il caffè",
+          "note": "Cùng hiện tượng trộn title với F64 E PRO — trang trong menu PRO Line nhưng <title> ghi 'On Demand'. Giữ nguyên dữ liệu thật.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/fiorenzato/0013_F64_EVO_PRO.png"
+        },
+        {
+          "model": "F83 E PRO",
+          "title": "Coffee grinder On Demand F83 E PRO | Fiorenzato",
+          "description_en": "F83 E is everything your coffee shop needs to obtain precise, consistently identical grinding and a perfect cup of coffee every time. At the tap of a finger.",
+          "specs": {
+            "burr_diameter_mm": 83,
+            "burr_type": "Flat",
+            "motor_power_w": 650,
+            "hopper_capacity_kg": 1.5,
+            "rpm": "1350/min (50Hz) - 1550/min (60Hz)",
+            "dims_mm": "230x670x270 (WxDxH)",
+            "weight_kg": 15,
+            "grinding_adjustment": "Continuous ring nut micrometric",
+            "dose_adjustment": "In seconds"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.fiorenzato.com/wp-content/uploads/2022/05/F83-E-PRO-4-1.png",
+          "source_url": "https://www.fiorenzato.com/en/pro-line-grinders/f83-e-pro/",
+          "seo_title": "Coffee grinder On Demand F83 E PRO | Fiorenzato",
+          "seo_description": "La passione per i prodotti incontra l&#8217;amore per il caffè",
+          "note": "Cùng hiện tượng trộn title với F64 E PRO/F64 EVO PRO.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/fiorenzato/0014_F83_E_PRO.png"
+        },
+        {
+          "model": "F71 EK PRO",
+          "title": "Traditional coffee grinder F71 DK PRO | Fiorenzato",
+          "description_en": "Reliable, heavy-duty, designed to be long-lasting and offer perfect results every time. F71 DK is ideal for groceries, coffee shops, and all kinds of bars.",
+          "specs": {
+            "burr_diameter_mm": 71,
+            "burr_type": "Conical",
+            "motor_power_w": 850,
+            "hopper_capacity_kg": 1.5,
+            "rpm": "300/min (50Hz & 60Hz)",
+            "dims_mm": "230x670x270 (WxDxH)",
+            "weight_kg": 19,
+            "grinding_adjustment": "Continuous micrometric ring nut"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.fiorenzato.com/wp-content/uploads/2022/05/F71-EK-PRO-4-1.png",
+          "source_url": "https://www.fiorenzato.com/en/pro-line-grinders/f71-ek-pro/",
+          "seo_title": "Traditional coffee grinder F71 DK PRO | Fiorenzato",
+          "seo_description": "La passione per i prodotti incontra l&#8217;amore per il caffè",
+          "note": "URL trang dùng 'f71-ek-pro' và slug sitemap khớp nhóm PRO Line, nhưng <title> + mô tả trả về ghi 'F71 DK' (ký hiệu D = doser, trùng tên với model Grocery F71 DK). Đã xác minh lại 18/07, kết quả không đổi — có thể do lỗi CMS gắn nhầm nội dung. Giữ nguyên dữ liệu thật, gắn cờ để user xác nhận nội bộ.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/fiorenzato/0015_F71_EK_PRO.png"
+        }
+      ]
+    },
+    {
+      "group_name": "On Demand",
+      "group_name_vi": "Máy Xay Theo Yêu Cầu (On Demand)",
+      "source_urls": [
+        "https://www.fiorenzato.com/en/on-demand/"
+      ],
+      "models": [
+        {
+          "model": "F64 EVO XGi",
+          "title": "Electronic grinder F64 EVO XGi | Fiorenzato",
+          "description_en": "A technological, efficient coffee grinder designed to make baristas' work easier. Just tap with your finger. And the XGi technology does the rest.",
+          "specs": {
+            "burr_diameter_mm": 64,
+            "burr_type": "Flat",
+            "motor_power_w": 600,
+            "hopper_capacity_kg": 1.5,
+            "rpm": "1350/min (50Hz) - 1550/min (60Hz)",
+            "dims_mm": "255x635x320 (WxDxH)",
+            "weight_kg": 15.3,
+            "dose_adjustment": "In grams",
+            "grinding_adjustment": "Continuous micrometric",
+            "colors": "7 màu tiêu chuẩn"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.fiorenzato.com/wp-content/uploads/2023/09/F64-EVO-XGI-4-1.png",
+          "source_url": "https://www.fiorenzato.com/en/on-demand/f64-evo-xgi/",
+          "seo_title": "Electronic grinder F64 EVO XGi | Fiorenzato",
+          "seo_description": "La passione per i prodotti incontra l&#8217;amore per il caffè",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/fiorenzato/0016_F64_EVO_XGi.png"
+        },
+        {
+          "model": "F83 E XGi",
+          "title": "Electronic grinder F83 E XGi | Fiorenzato",
+          "description_en": "All the best of technology in a single grinder: the exact weight of coffee to be ground can be set once and kept constant over time.",
+          "specs": {
+            "burr_diameter_mm": 83,
+            "burr_type": "Flat",
+            "motor_power_w": 850,
+            "hopper_capacity_kg": 1.5,
+            "rpm": "1350/min (50Hz) - 1550/min (60Hz)",
+            "dims_mm": "255x700x310 (WxDxH)",
+            "weight_kg": 18.6,
+            "dose_adjustment": "In grams",
+            "grinding_adjustment": "Continuous micrometric ring nut"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.fiorenzato.com/wp-content/uploads/2022/05/F83-E-XGI-4-1.png",
+          "source_url": "https://www.fiorenzato.com/en/on-demand/f83-e-xgi/",
+          "seo_title": "Electronic grinder F83 E XGi | Fiorenzato",
+          "seo_description": "La passione per i prodotti incontra l&#8217;amore per il caffè",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/fiorenzato/0017_F83_E_XGi.png"
+        },
+        {
+          "model": "F4 EVO",
+          "title": "On Demand F4 EVO coffee grinder | Fiorenzato",
+          "description_en": "The coffee grinder with exclusive touchscreen display with CapSense technology. Consistent grinding every time at the tap of a finger.",
+          "specs": {
+            "burr_diameter_mm": 58,
+            "burr_type": "Flat",
+            "motor_power_w": 414,
+            "hopper_capacity_g": 800,
+            "rpm": "1400/min (50Hz) - 1600/min (60Hz)",
+            "dims_mm": "169x473x240 (WxDxH)",
+            "weight_kg": 9,
+            "grinding_adjustment": "Continuous micrometric ring nut",
+            "dose_adjustment": "In seconds",
+            "feature_note": "Touchscreen display with CapSense technology",
+            "colors": "Deep Black (nero opaco), Glossy Black (nero), Nardò Grey (grigio), Arctic White (bianco opaco), Pearl White (panna), Glossy Red (rosso)"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.fiorenzato.com/wp-content/uploads/2022/05/F4-EVO-nero-opaco_520x1000.png",
+          "source_url": "https://www.fiorenzato.com/en/on-demand/f4-evo/",
+          "seo_title": "On Demand F4 EVO coffee grinder | Fiorenzato",
+          "seo_description": "La passione per i prodotti incontra l&#8217;amore per il caffè",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/fiorenzato/0018_F4_EVO.png"
+        },
+        {
+          "model": "F64 EVO XGi PRO",
+          "title": "Electronic grinder F64 EVO XGi | Fiorenzato",
+          "description_en": "A technological, efficient coffee grinder designed to make baristas' work easier. Just tap with your finger. And the XGi technology does the rest.",
+          "specs": {
+            "burr_diameter_mm": 64,
+            "burr_type": "Flat",
+            "motor_power_w": 600,
+            "hopper_capacity_kg": 1.5,
+            "rpm": "1350/min (50Hz) - 1550/min (60Hz)",
+            "dims_mm": "255x635x320 (WxDxH)",
+            "weight_kg": 15.3,
+            "dose_adjustment": "In grams",
+            "grinding_adjustment": "Continuous micrometric ring nut",
+            "feature_note": "Electronically-activated motor cooling fan, adjustable fork with support"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.fiorenzato.com/wp-content/uploads/2022/05/F64-EVO-XGI-PRO-4-1.png",
+          "source_url": "https://www.fiorenzato.com/en/on-demand/f64-evo-xgi-pro/",
+          "seo_title": "Electronic grinder F64 EVO XGi | Fiorenzato",
+          "seo_description": "La passione per i prodotti incontra l&#8217;amore per il caffè",
+          "note": "Trang riêng (URL /f64-evo-xgi-pro/, có trong sitemap độc lập với bản không-PRO) nhưng <title> trùng hệt bản không PRO. Ảnh riêng đã xác nhận (F64-EVO-XGI-PRO-4-1.png, khác file với bản thường). Đặc điểm khác biệt duy nhất xác nhận được qua nội dung trang: quạt làm mát kích hoạt điện tử + fork điều chỉnh có giá đỡ.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/fiorenzato/0019_F64_EVO_XGi_PRO.png"
+        },
+        {
+          "model": "F83 E XGi PRO",
+          "title": "Electronic grinder F83 E XGi | Fiorenzato",
+          "description_en": "With 83-mm flat burrs and capacity of 1350-1550 revs per minute. All the best of technology in a single grinder: the exact weight of coffee to be ground can be set once and kept constant over time.",
+          "specs": {
+            "burr_diameter_mm": 83,
+            "burr_type": "Flat",
+            "motor_power_w": 850,
+            "hopper_capacity_kg": 1.5,
+            "rpm": "1350/min (50Hz) - 1550/min (60Hz)",
+            "dims_mm": "255x700x310 (WxDxH)",
+            "weight_kg": 18.6,
+            "dose_adjustment": "In grams",
+            "grinding_adjustment": "Continuous micrometric ring nut"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.fiorenzato.com/wp-content/uploads/2022/05/F83-E-XGI-PRO-4-1.png",
+          "source_url": "https://www.fiorenzato.com/en/on-demand/f83-e-xgi-pro/",
+          "seo_title": "Electronic grinder F83 E XGi | Fiorenzato",
+          "seo_description": "La passione per i prodotti incontra l&#8217;amore per il caffè",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/fiorenzato/0020_F83_E_XGi_PRO.png"
+        },
+        {
+          "model": "F64 E",
+          "title": "On Demand F64 E coffee grinder | Fiorenzato",
+          "description_en": "64-mm flat burrs and 350-Watt power with an exclusive touchscreen display with CapSense technology for consistent grinding every time at the tap of a finger.",
+          "specs": {
+            "burr_diameter_mm": 64,
+            "burr_type": "Flat",
+            "motor_power_w": 350,
+            "hopper_capacity_kg": 1.5,
+            "rpm": "1350/min (50Hz) - 1550/min (60Hz)",
+            "dims_mm": "230x615x270 (WxDxH)",
+            "weight_kg": 13,
+            "grinding_adjustment": "Continuous ring nut micrometric",
+            "dose_adjustment": "In seconds",
+            "colors": "Deep Black, Glossy Black, Nardò Grey, Classic Grey, Arctic White, Pearl White, Glossy Red"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.fiorenzato.com/wp-content/uploads/2025/05/F64-E-4-1.png",
+          "source_url": "https://www.fiorenzato.com/en/on-demand/f64-e/",
+          "seo_title": "On Demand F64 E coffee grinder | Fiorenzato",
+          "seo_description": "La passione per i prodotti incontra l&#8217;amore per il caffè",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/fiorenzato/0021_F64_E.png"
+        },
+        {
+          "model": "F64 EVO",
+          "title": "On Demand F64 EVO coffee grinder | Fiorenzato",
+          "description_en": "Precise, reliable, easy to use: F64 EVO is designed to simplify the work of baristas and obtain perfect results every time.",
+          "specs": {
+            "burr_diameter_mm": 64,
+            "burr_type": "Flat",
+            "motor_power_w": 450,
+            "hopper_capacity_kg": 1.5,
+            "rpm": "1350/min (50Hz) - 1550/min (60Hz)",
+            "dims_mm": "230x615x270 (WxDxH)",
+            "weight_kg": 13,
+            "grinding_adjustment": "Continuous ring nut micrometric",
+            "dose_adjustment": "In seconds",
+            "feature_note": "Automatic cooling fan"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.fiorenzato.com/wp-content/uploads/2025/05/F64-EVO-4-1.png",
+          "source_url": "https://www.fiorenzato.com/en/on-demand/f64-evo/",
+          "seo_title": "On Demand F64 EVO coffee grinder | Fiorenzato",
+          "seo_description": "La passione per i prodotti incontra l&#8217;amore per il caffè",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/fiorenzato/0022_F64_EVO.png"
+        },
+        {
+          "model": "F83 E",
+          "title": "Coffee grinder On Demand F83 E | Fiorenzato",
+          "description_en": "F83 E is everything your coffee shop needs to obtain precise, consistently identical grinding and a perfect cup of coffee every time. At the tap of a finger.",
+          "specs": {
+            "burr_diameter_mm": 83,
+            "burr_type": "Flat",
+            "motor_power_w": 650,
+            "hopper_capacity_kg": 1.5,
+            "rpm": "1350/min (50Hz) - 1550/min (60Hz)",
+            "dims_mm": "230x670x270 (WxDxH)",
+            "weight_kg": 15,
+            "grinding_adjustment": "Continuous ring nut micrometric",
+            "dose_adjustment": "In seconds",
+            "colors": "Deep Black (RAL 9017 matte), Glossy Black (RAL 9017), Nardò Grey (RAL 9006), Classic Grey (RAL 9006), Arctic White (RAL 9003), Pearl White (RAL 1013), Glossy Red (RAL 3002)"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.fiorenzato.com/wp-content/uploads/2025/05/F83-E-nero-opaco-1.png",
+          "source_url": "https://www.fiorenzato.com/en/on-demand/f83-e/",
+          "seo_title": "Coffee grinder On Demand F83 E | Fiorenzato",
+          "seo_description": "La passione per i prodotti incontra l&#8217;amore per il caffè",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/fiorenzato/0023_F83_E.png"
+        },
+        {
+          "model": "F71 EK",
+          "title": "Coffee grinder On Demand F71 EK | Fiorenzato",
+          "description_en": "With 71-mm conical burrs and 850-Watt power, featuring a patented system and touchscreen display with CapSense technology. The future of coffee grinders now available for your coffee shop.",
+          "specs": {
+            "burr_diameter_mm": 71,
+            "burr_type": "Conical",
+            "motor_power_w": 850,
+            "hopper_capacity_kg": 1.5,
+            "rpm": "300/min (50Hz & 60Hz)",
+            "dims_mm": "230x670x270 (WxDxH)",
+            "weight_kg": 20,
+            "grinding_adjustment": "Continuous micrometric ring nut",
+            "dose_adjustment": "In seconds",
+            "feature_note": "Patented system, touchscreen display with CapSense technology, electronically-activated motor cooling fan",
+            "colors": "Deep Black, Glossy Black, Nardò Grey, Classic Grey, Arctic White, Pearl White, Glossy Red"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.fiorenzato.com/wp-content/uploads/2025/05/F71-EK-nero-opaco.png",
+          "source_url": "https://www.fiorenzato.com/en/on-demand/f71-ek/",
+          "seo_title": "Coffee grinder On Demand F71 EK | Fiorenzato",
+          "seo_description": "La passione per i prodotti incontra l&#8217;amore per il caffè",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/fiorenzato/0024_F71_EK.png"
+        }
+      ]
+    },
+    {
+      "group_name": "Grocery (Traditional, dosed — no A prefix)",
+      "group_name_vi": "Dòng Grocery (Máy Xay Truyền Thống Cho Tạp Hóa/Quán Nhỏ)",
+      "source_urls": [
+        "https://www.fiorenzato.com/en/grocery/"
+      ],
+      "models": [
+        {
+          "model": "F5 D",
+          "title": "Traditional Coffee Grinder F5 D | Fiorenzato",
+          "description_en": "A professional coffee grinder that guarantees low heating of ground coffee and a long lifetime.",
+          "specs": {
+            "burr_diameter_mm": 64,
+            "burr_type": "Flat",
+            "motor_power_w": 350,
+            "hopper_capacity_g": 1500,
+            "rpm": "1350/min (50Hz) - 1550/min (60Hz)",
+            "dims_mm": "230x615x270 (WxDxH)",
+            "weight_kg": 13,
+            "grinding_adjustment": "Continuous micrometric ring nut"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.fiorenzato.com/wp-content/uploads/2020/10/F5-D-4-1.png",
+          "source_url": "https://www.fiorenzato.com/en/grocery/f5-d/",
+          "seo_title": "Traditional Coffee Grinder F5 D | Fiorenzato",
+          "seo_description": "La passione per i prodotti incontra l&#8217;amore per il caffè",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/fiorenzato/0025_F5_D.png"
+        },
+        {
+          "model": "F6 D",
+          "title": "Traditional Coffee Grinder F6 D | Fiorenzato",
+          "description_en": "Professional coffee grinders in painted die-cast metal that guarantees a low heating of the ground coffee.",
+          "specs": {
+            "burr_diameter_mm": 83,
+            "burr_type": "Flat",
+            "motor_power_w": 650,
+            "hopper_capacity_kg": 1.5,
+            "rpm": "1400/min (50Hz) - 1600/min (60Hz)",
+            "dims_mm": "230x670x270 (WxDxH)",
+            "weight_kg": 15.5,
+            "grinding_adjustment": "Continuous micrometric ring nut",
+            "model_variants": "T (timer), M (manual switch)",
+            "colors": "7 màu (Deep Black, Glossy Black, Nardò Grey, Classic Grey, Arctic White, Pearl White, Glossy Red)"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.fiorenzato.com/wp-content/uploads/2020/10/F6-D-4-1.png",
+          "source_url": "https://www.fiorenzato.com/en/grocery/f6-d/",
+          "seo_title": "Traditional Coffee Grinder F6 D | Fiorenzato",
+          "seo_description": "La passione per i prodotti incontra l&#8217;amore per il caffè",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/fiorenzato/0026_F6_D.png"
+        },
+        {
+          "model": "F71 DK",
+          "title": "Traditional coffee grinder F71 DK | Fiorenzato",
+          "description_en": "Reliable, heavy-duty, designed to be long-lasting and offer perfect results every time. F71 DK is ideal for groceries, coffee shops, and all kinds of bars.",
+          "specs": {
+            "burr_diameter_mm": 71,
+            "burr_type": "Conical",
+            "motor_power_w": 850,
+            "hopper_capacity_kg": 1.5,
+            "rpm": "300/min (50Hz & 60Hz)",
+            "dims_mm": "230x670x270 (WxDxH)",
+            "weight_kg": 19,
+            "grinding_adjustment": "Continuous ring nut micrometric",
+            "model_variants": "T (timer), M (manual switch)",
+            "colors": "7 màu tiêu chuẩn"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.fiorenzato.com/wp-content/uploads/2020/10/F71-DK-4-1.png",
+          "source_url": "https://www.fiorenzato.com/en/grocery/f71-dk/",
+          "seo_title": "Traditional coffee grinder F71 DK | Fiorenzato",
+          "seo_description": "La passione per i prodotti incontra l&#8217;amore per il caffè",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/fiorenzato/0027_F71_DK.png"
+        },
+        {
+          "model": "F4 ECO",
+          "title": "Traditional Coffee Grinder F4 ECO | Fiorenzato",
+          "description_en": "Compact and versatile, the F4 eco coffee grinder guarantees lower consumption without having to say goodbye to perfect grinding and a perfect cup of coffee every time.",
+          "specs": {
+            "burr_diameter_mm": 58,
+            "burr_type": "Flat",
+            "motor_power_w": 250,
+            "hopper_capacity_g": 500,
+            "rpm": "1400/min (50Hz) - 1600/min (60Hz)",
+            "dims_mm": "169x473x240 (WxDxH)",
+            "weight_kg": 8,
+            "grinding_adjustment": "Continuous micrometric ring nut",
+            "color": "Sanded black"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.fiorenzato.com/wp-content/uploads/2020/10/F4-ECO-nero_520x1000.png",
+          "source_url": "https://www.fiorenzato.com/en/grocery/f4-eco/",
+          "seo_title": "Traditional Coffee Grinder F4 ECO | Fiorenzato",
+          "seo_description": "La passione per i prodotti incontra l&#8217;amore per il caffè",
+          "note": "Nội dung mô tả ngắn ở đầu trang từng liệt kê nhầm 71mm conical/850W (copy từ trang khác), nhưng bảng thông số chi tiết xác nhận thực tế 58mm flat/250W. Đã dùng số liệu bảng thông số cho specs.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/fiorenzato/0028_F4_ECO.png"
+        }
+      ]
+    },
+    {
+      "group_name": "Dosers (Grinder-Dosers, 'A' automatic)",
+      "group_name_vi": "Dòng Máy Xay-Định Lượng Cổ Điển (Grinder-Doser)",
+      "source_urls": [
+        "https://www.fiorenzato.com/en/dosers/"
+      ],
+      "models": [
+        {
+          "model": "F4 A",
+          "title": "Traditional Coffee Grinder F4 A | Fiorenzato",
+          "description_en": "From the experience of Fiorenzato comes a compact, good all-round coffee grinder adapted to the needs of people requiring high performance but in small spaces.",
+          "specs": {
+            "burr_diameter_mm": 58,
+            "burr_type": "Flat",
+            "motor_power_w": 250,
+            "hopper_capacity_g": 500,
+            "rpm": "1400/min (50Hz) - 1600/min (60Hz)",
+            "dims_mm": "169x473x240 (WxDxH)",
+            "weight_kg": 10,
+            "doser_capacity_g": 200,
+            "dose_range_g": "5.5-10",
+            "grinding_adjustment": "Continuous micrometric ring nut",
+            "colors": "Deep Black (RAL 9017), Glossy Black (RAL 9017), Nardò Grey (RAL 9006), Classic Grey (RAL 9006), Arctic White (RAL 9003), Pearl White (RAL 1013), Glossy Red (RAL 3002)"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.fiorenzato.com/wp-content/uploads/2020/10/F4-A-nero-opaco_520x1000.png",
+          "source_url": "https://www.fiorenzato.com/en/grinder-dosers/f4-a/",
+          "seo_title": "Traditional Coffee Grinder F4 A | Fiorenzato",
+          "seo_description": "La passione per i prodotti incontra l&#8217;amore per il caffè",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/fiorenzato/0029_F4_A.png"
+        },
+        {
+          "model": "F5",
+          "title": "Traditional Coffee Grinder F5 A-M-T | Fiorenzato",
+          "description_en": "User-friendly, reliable and precise: the F5 coffee grinder guarantees consistently identical grinding, resulting in a perfect cup of coffee every time.",
+          "specs": {
+            "burr_diameter_mm": 64,
+            "burr_type": "Flat",
+            "motor_power_w": 350,
+            "hopper_capacity_kg": 1.5,
+            "rpm": "1350/min (50Hz) - 1550/min (60Hz)",
+            "dims_mm": "230x615x270 (WxDxH)",
+            "weight_kg": 14,
+            "doser_capacity_g": 250,
+            "dose_range_g": "5.5-10",
+            "model_variants": "A (automatic microswitch), T (timer), M (manual switch)",
+            "colors": "Deep Black, Glossy Black, Nardò Grey, Classic Grey, Arctic White, Pearl White, Glossy Red"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.fiorenzato.com/wp-content/uploads/2020/10/F5-A-4-1.png",
+          "source_url": "https://www.fiorenzato.com/en/grinder-dosers/f5/",
+          "seo_title": "Traditional Coffee Grinder F5 A-M-T | Fiorenzato",
+          "seo_description": "La passione per i prodotti incontra l&#8217;amore per il caffè",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/fiorenzato/0030_F5.png"
+        },
+        {
+          "model": "F6",
+          "title": "Traditional Coffee Grinder F6 A-M-T | Fiorenzato",
+          "description_en": "Extremely heavy-duty and versatile. The instrument designed specifically for coffee shops and bars with high consumption every day.",
+          "specs": {
+            "burr_diameter_mm": 83,
+            "burr_type": "Flat",
+            "motor_power_w": 650,
+            "hopper_capacity_kg": 1.5,
+            "rpm": "1400/min (50Hz) - 1600/min (60Hz)",
+            "dims_mm": "230x670x270 (WxDxH)",
+            "weight_kg": 16,
+            "doser_capacity_g": 250,
+            "dose_range_g": "5.5-10",
+            "model_variants": "A (automatic microswitch), M (manual switch), T (timer)"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.fiorenzato.com/wp-content/uploads/2020/10/F6-A-4-1.png",
+          "source_url": "https://www.fiorenzato.com/en/grinder-dosers/f6/",
+          "seo_title": "Traditional Coffee Grinder F6 A-M-T | Fiorenzato",
+          "seo_description": "La passione per i prodotti incontra l&#8217;amore per il caffè",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/fiorenzato/0031_F6.png"
+        },
+        {
+          "model": "F71 AK",
+          "title": "Traditional Coffee Grinder F71 AK | Fiorenzato",
+          "description_en": "Coffee grinder in die-cast metal painted with conical millstones, effectiveness and reliability that lasts over time.",
+          "specs": {
+            "burr_diameter_mm": 71,
+            "burr_type": "Conical",
+            "motor_power_w": 850,
+            "hopper_capacity_kg": 1.5,
+            "rpm": "450/min (50Hz) - 500/min (60Hz)",
+            "dims_mm": "230x670x270 (WxDxH)",
+            "weight_kg": 21,
+            "doser_capacity_g": 250,
+            "dose_range_g": "5.5-10",
+            "grinding_adjustment": "Continuous micrometric ring nut"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.fiorenzato.com/wp-content/uploads/2020/10/F71-AK-4-1.png",
+          "source_url": "https://www.fiorenzato.com/en/grinder-dosers/f71-ak/",
+          "seo_title": "Traditional Coffee Grinder F71 AK | Fiorenzato",
+          "seo_description": "La passione per i prodotti incontra l&#8217;amore per il caffè",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/fiorenzato/0032_F71_AK.png"
+        }
+      ]
+    },
+    {
+      "group_name": "Home (AllGround) — consumer line, separate microsite",
+      "group_name_vi": "Dòng Gia Đình AllGround (Site Riêng fiorenzatohome.com)",
+      "source_urls": [
+        "https://www.fiorenzatohome.com/?language=eng"
+      ],
+      "models": [
+        {
+          "model": "AllGround Classic",
+          "title": "Coffee Grinder - AllGround Classic | Fiorenzato AllGround",
+          "description_en": "Shaping the coffee beans with the texture you prefer, AllGround's burrs are ready to make your dreams come true: three grinding classes, three interpretations of pleasure, endless daily combinations.",
+          "specs": {
+            "burr_diameter_mm": 64,
+            "burr_type": "Flat, Dark-T® coating",
+            "motor_power_w": 250,
+            "hopper_capacity_g": 500,
+            "dims_mm": "169x440x240 (WxDxH)",
+            "weight_kg": 9,
+            "rpm": "1400/min (50Hz) - 1600/min (60Hz)",
+            "burr_lifespan": "3,000 kg of coffee",
+            "grinding_adjustment": "Continuous, micrometric ring nut"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.fiorenzatohome.com/img/allground_basic01.png",
+          "source_url": "https://www.fiorenzatohome.com/allground-classic.php?language=eng",
+          "seo_title": "Coffee Grinder - AllGround Classic | Fiorenzato AllGround",
+          "seo_description": "Discover the coffee grinders of the AllGround Classic line in 64mm diameter M340 steel with Dark-T coating, designed and made in house by Fiorenzato.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/fiorenzato/0033_AllGround_Classic.png"
+        },
+        {
+          "model": "AllGround Sense",
+          "title": "Coffee Grinder - AllGround Sense | Fiorenzato AllGround",
+          "description_en": "COFFEE IS A PRECISION GAME - AllGround Sense fully embodies the innovative spirit that distinguishes this product line: the built-in scale in the fork always allows the perfect amount of coffee in your portafilter.",
+          "specs": {
+            "burr_diameter_mm": 64,
+            "burr_type": "Flat, Dark-T® coating",
+            "motor_power_w": 250,
+            "hopper_capacity_g": 500,
+            "dims_mm": "169x440x240 (WxDxH)",
+            "weight_kg": 9,
+            "rpm": "1400/min (50Hz) - 1600/min (60Hz)",
+            "burr_lifespan": "3,000 kg",
+            "grinding_adjustment": "Micrometrical, 10µm per step",
+            "feature_note": "Built-in scale in the fork ('perfect amount of coffee in your portafilter'), touchscreen interface for dose selection",
+            "colors": "Deep Black Matte, Arctic White, Pastel Blue, Bright Silver/Deep Black (chrome old), Copper/Deep Black, Arctic White/Walnut wood"
+          },
+          "origin": "Italy",
+          "heat_source": "electric",
+          "image_url": "https://www.fiorenzatohome.com/img/AllGround-Sense_Deep-black_Matte.png",
+          "source_url": "https://www.fiorenzatohome.com/allground-sense.php?language=eng",
+          "seo_title": "Coffee Grinder - AllGround Sense | Fiorenzato AllGround",
+          "seo_description": "Discover the AllGround Sense coffee grinders in steel with Dark-T coating, designed and made in-house by Fiorenzato with a patented protection and anti-disturbance system.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/fiorenzato/0034_AllGround_Sense.png"
+        }
+      ]
+    }
+  ],
+  "total_model_count": 34,
+  "image_availability_summary": {
+    "confirmed_absolute_url": 34,
+    "unconfirmed_or_relative_path_needs_followup": 0,
+    "note": "Toàn bộ 34/34 model đã có URL ảnh tuyệt đối xác nhận trực tiếp bằng WebFetch lại từng trang trong lần cào 18/07/2026 — bao gồm 9 model trước đó chỉ có tên file tương đối/suy đoán (F64 EVO PRO ADAPT, F5 A PRO, F64 EVO XGi PRO, F83 E, F4 A, F5, F71 AK, AllGround Classic, AllGround Sense)."
+  },
+  "seo_data_gap": "TOÀN BỘ 34 model đều KHÔNG có thẻ <meta name=\"description\"> (đã kiểm tra lại toàn bộ 18/07/2026, cùng kết quả với lần cào 14/07) — đặc điểm chung toàn site fiorenzato.com/fiorenzatohome.com, không phải lỗi crawl. seo_title lấy nguyên văn <title> gốc EN của từng trang, CHƯA dịch — theo đúng yêu cầu schema. seo_description để rỗng, cần soạn nội dung SEO tiếng Việt mới thủ công/AI có kiểm duyệt khi lên site, không tự bịa nội dung marketing để tránh sai lệch thông tin kỹ thuật.",
+  "pricing_status": "Fiorenzato KHÔNG công bố giá bán công khai trên fiorenzato.com/fiorenzatohome.com (đúng thông lệ B2B/wholesale ngành pha chế). Cần liên hệ trực tiếp Fiorenzato (info@fiorenzato.it) hoặc đại lý phân phối để lấy báo giá.",
+  "vietnam_market_context": "Không tìm thấy trang 'dealers'/'distributors' trên fiorenzato.com trong phạm vi các trang đã cào. Site saigonhoreca.local có Fiorenzato ở section đối tác trang chủ nhưng quan hệ đại lý chính thức CHƯA được xác nhận chéo qua nguồn của hãng — cần user xác nhận nội bộ.",
+  "open_questions_for_user": [
+    "F64 E PRO, F64 EVO PRO, F83 E PRO nằm trong menu/sitemap 'PRO Line Grinders' nhưng <title> trang lại ghi 'On Demand ... PRO' — đã re-verify 18/07/2026, kết quả không đổi so với lần cào đầu. Nghi vấn lỗi CMS/template, không tự sửa vì đây là dữ liệu thật cào được.",
+    "F71 EK PRO có <title> ghi 'Traditional coffee grinder F71 DK PRO' (trùng ký hiệu D với model Grocery F71 DK) dù URL/slug và menu đều thuộc PRO Line — đã re-verify, không đổi. Cần user xác nhận đây có phải lỗi nội dung của Fiorenzato hay cách đặt tên có chủ đích.",
+    "F64 EVO XGi PRO có <title> trùng hệt bản không-PRO (chỉ khác image URL và 1 câu feature_note về quạt làm mát điện tử + fork có giá đỡ) — chưa xác minh được khác biệt spec đầy đủ nào khác ngoài 2 điểm này.",
+    "Giá bán — không công khai, cần liên hệ hãng/đại lý trước khi publish lên site.",
+    "Quan hệ đại lý chính thức tại Việt Nam — chưa xác nhận qua nguồn của Fiorenzato, site saigonhoreca.local tự nhận là đối tác nhưng chưa cross-check.",
+    "Trang phụ kiện (/en/our-optional-accessories/) và phụ tùng thay thế (/en/spare-parts/) đã kiểm tra sơ bộ 18/07 — chỉ có tamper, coffee press, phễu rời — KHÔNG phải máy xay hoàn chỉnh nên không đưa vào catalog model, nhưng có thể cân nhắc làm danh mục phụ kiện riêng sau này."
+  ]
+}

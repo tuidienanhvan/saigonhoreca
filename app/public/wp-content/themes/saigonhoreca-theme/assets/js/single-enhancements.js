@@ -7,6 +7,21 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
     }
 
+    // ─── Ẩn block Elementor "Read this article in English language" ───
+    // (khối nền gradient xám + nút, nhúng cứng trong content; element-id khác nhau
+    //  mỗi bài nên match theo CHỮ rồi ẩn cả container e-parent. Theme-side → áp cả prod.)
+    (function hideEnglishCta() {
+        var titles = content.querySelectorAll('.elementor-heading-title, h1, h2, h3, h4, span');
+        for (var i = 0; i < titles.length; i++) {
+            var t = (titles[i].textContent || '').trim().toLowerCase();
+            if (t === 'read this article in english language' || t === 'read this article in english') {
+                var box = titles[i].closest('.e-parent') || titles[i].closest('.e-con') || titles[i].closest('.elementor-element');
+                if (box) { box.style.display = 'none'; }
+                break;
+            }
+        }
+    })();
+
     // ─── Reading Progress Bar ───
     (function setupReadingProgress() {
         var bar = document.createElement('div');
@@ -159,9 +174,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
     tocContainer.classList.remove('hidden');
 
+    // Tự render marker: h2 = số La Mã (I, II, III), h3 = bullet → bỏ marker mặc định <ul>
+    tocList.style.listStyleType = 'none';
+    tocList.style.paddingLeft = '0';
+    tocList.style.margin = '0';
+
     var tocToggle = document.getElementById('toc-toggle');
+    // Dùng inline style (đè chắc) vì .sh-single__toc-list{display:flex} đứng SAU .hidden
+    // trong bundle nên class .hidden không thắng được.
     if (window.innerWidth < 768) {
-        tocList.classList.add('hidden');
+        tocList.style.display = 'none';
         if (tocToggle) {
             tocToggle.innerText = '[Mở rộng]';
         }
@@ -169,12 +191,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (tocToggle) {
         tocToggle.addEventListener('click', function () {
-            var isHidden = tocList.classList.toggle('hidden');
-            this.innerText = isHidden ? '[Mở rộng]' : '[Thu gọn]';
+            var isHidden = (tocList.style.display === 'none');
+            tocList.style.display = isHidden ? 'flex' : 'none';
+            this.innerText = isHidden ? '[Thu gọn]' : '[Mở rộng]';
         });
     }
 
     var tocLinks = [];
+    var h2Count = 0;
+    function toRoman(n) {
+        var m = [[1000,'M'],[900,'CM'],[500,'D'],[400,'CD'],[100,'C'],[90,'XC'],[50,'L'],[40,'XL'],[10,'X'],[9,'IX'],[5,'V'],[4,'IV'],[1,'I']], r = '';
+        for (var i = 0; i < m.length; i++) { while (n >= m[i][0]) { r += m[i][1]; n -= m[i][0]; } }
+        return r;
+    }
 
     headings.forEach(function (heading, index) {
         if (!heading.id) {
@@ -182,14 +211,28 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         var li = document.createElement('li');
+        li.style.display = 'flex';
+        li.style.alignItems = 'baseline';
+        li.style.gap = '.45rem';
+
+        var marker = document.createElement('span');
+        marker.style.flexShrink = '0';
+        if (heading.tagName === 'H3') {
+            li.style.marginLeft = '1.5rem';
+            marker.innerText = '•';
+            marker.style.opacity = '.55';
+        } else {
+            h2Count++;
+            marker.innerText = toRoman(h2Count) + '.';
+            marker.style.fontWeight = '700';
+            marker.style.color = 'var(--gold)';
+            marker.style.minWidth = '2rem';
+        }
+
         var link = document.createElement('a');
         link.href = '#' + heading.id;
         link.innerText = heading.innerText;
-        link.className = 'hover:text-secondary transition-colors block py-1 cursor-pointer';
-
-        if (heading.tagName === 'H3') {
-            li.className = 'ml-4 list-square';
-        }
+        link.className = 'hover:text-secondary transition-colors py-1 cursor-pointer';
 
         link.addEventListener('click', function (event) {
             event.preventDefault();
@@ -205,6 +248,7 @@ document.addEventListener('DOMContentLoaded', function () {
             history.pushState(null, null, '#' + target.id);
         });
 
+        li.appendChild(marker);
         li.appendChild(link);
         tocList.appendChild(li);
         tocLinks.push({ link: link, heading: heading });

@@ -1,0 +1,93 @@
+.pi-api-activation {
+    max-width: 860px;
+}
+
+.pi-api-card {
+    margin-top: 18px;
+    padding: 24px;
+    border: 1px solid rgba(128, 27, 48, 0.22);
+    border-radius: 12px;
+    background: linear-gradient(135deg, #fff, #fff7f9);
+    box-shadow: 0 16px 38px rgba(15, 23, 42, 0.08);
+}
+
+.pi-api-card--active {
+    border-color: rgba(22, 163, 74, 0.28);
+    background: linear-gradient(135deg, #fff, #f7fff9);
+}
+
+.pi-api-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+    color: #14532d;
+}
+
+.pi-api-status__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    background: #16a34a;
+    box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.48);
+    animation: pi-api-pulse 1.9s ease-in-out infinite;
+}
+
+.pi-api-card label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 700;
+}
+
+.pi-api-card input[type="text"] {
+    min-height: 40px;
+    border-color: rgba(128, 27, 48, 0.3);
+}
+
+.pi-api-card input[type="text"]:focus {
+    border-color: #801b30;
+    box-shadow: 0 0 0 1px #801b30;
+}
+
+.pi-api-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 18px;
+}
+
+.pi-api-activation .button-primary {
+    border-color: #801b30;
+    background: #801b30;
+}
+
+.pi-api-activation .button-primary:hover,
+.pi-api-activation .button-primary:focus {
+    border-color: #6f1729;
+    background: #6f1729;
+}
+
+@media (prefers-color-scheme: dark) {
+    .pi-api-card {
+        background: linear-gradient(135deg, #15171d, #1a1115);
+        color: #f7f7f7;
+        box-shadow: none;
+    }
+
+    .pi-api-card--active {
+        background: linear-gradient(135deg, #15171d, #101a13);
+    }
+}
+
+@keyframes pi-api-pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.48);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(22, 163, 74, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(22, 163, 74, 0);
+    }
+}

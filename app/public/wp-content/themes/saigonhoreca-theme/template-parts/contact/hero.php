@@ -9,7 +9,7 @@
  */
 if (!defined('ABSPATH')) exit;
 $uri    = get_template_directory_uri();
-$bg_url = sgh_img('2023/12/Saigon-Horeca-thiet-bi-bep-cong-nghiep.webp');
+$bg_url = sgh_img('saigonhoreca/Saigon-Horeca-thiet-bi-bep-cong-nghiep.webp');
 ?>
 <section class="sh-contact-hero" aria-label="<?php esc_attr_e('Liên hệ Saigon Horeca', 'saigonhoreca'); ?>">
     <div class="sh-contact-hero__bg" style="background-image:url('<?php echo esc_url($bg_url); ?>')"></div>

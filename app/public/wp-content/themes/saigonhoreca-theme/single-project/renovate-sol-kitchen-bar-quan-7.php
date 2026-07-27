@@ -1,7 +1,7 @@
 <?php
 /**
  * Single Project Template — Renovate SOL KITCHEN & BAR quận 7
- * Thumbnail: renovate-sol-kitchen-bar-quan-7/SGH-sold7-01-1024x576.webp
+ * Thumbnail: renovate-sol-kitchen-bar-quan-7/renovate-sol-kitchen-bar-quan-7-thumbnail-project-cover.webp
  *
  * Auto-routed via inc/core/pillar-routes.php for /du-an/renovate-sol-kitchen-bar-quan-7/.
  *

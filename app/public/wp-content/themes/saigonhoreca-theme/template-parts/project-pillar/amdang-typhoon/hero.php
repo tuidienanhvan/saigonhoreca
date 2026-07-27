@@ -8,10 +8,11 @@ if (!defined('ABSPATH')) exit;
 ?>
 <section class="pp-hero-adt">
     <!-- Nền ảnh từ website production -->
-    <div class="pp-hero-adt__media" style="background-image:url('<?php echo sgh_img('amdang-typhoon/amdang-typhoon-phong-vip-ban-tron-gieng-troi.jpg'); ?>');"></div>
+    <div class="pp-hero-adt__media" style="background-image:url('<?php echo sgh_img('amdang-typhoon/amdang-typhoon-thumbnail-project-cover.webp'); ?>');"></div>
     <div class="pp-hero-adt__overlay" aria-hidden="true"></div>
     
-    <div class="pp-hero-adt__content">
+    <!-- Removed text content overlay as the background image already contains baked-in titles
+<div class="pp-hero-adt__content">
         <!-- Project Metadata Badge -->
         <div class="pp-hero-adt__meta-badge">
             <span class="pp-hero-adt__meta-line"></span>
@@ -31,6 +32,7 @@ if (!defined('ABSPATH')) exit;
             <span class="pp-hero-adt__award-text">Featured in 2021 MICHELIN Guide Vietnam</span>
         </div>
     </div>
+-->
 
     <!-- Scroll Indicator -->
     <div class="pp-hero-adt__scroll">

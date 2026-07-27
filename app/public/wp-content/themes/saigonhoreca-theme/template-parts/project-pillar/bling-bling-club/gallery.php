@@ -19,8 +19,8 @@ $uri = get_template_directory_uri();
       </div>
       <div class="pp-split-bbc__media">
         <div class="pp-image-container-shared">
-          <img src="<?php echo sgh_img('bling-bling-club/bling-bling-club-khong-gian-sanh-dien.jpg'); ?>" alt="<?php echo esc_attr__('Không gian sảnh lounge và bàn VIP tại Bling Bling Club', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="600" height="800">
-          <div class="pp-image-caption-shared"><?php echo esc_html__('Không gian sảnh lounge sang trọng, bàn tiệc VIP lộng lẫy và khu vực quầy bar hiện đại tại Bling Bling Club', 'saigonhoreca'); ?></div>
+          <img src="<?php echo sgh_img('bling-bling-club/bling-bling-club-khong-gian-sanh-dien.jpg'); ?>" alt="<?php echo esc_attr__('Phòng ăn Em-Restaurant với đèn chùm pha lê, bàn VIP ghế nhung đỏ và khu lounge bar tại Bling Bling Club', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="600" height="800">
+          <div class="pp-image-caption-shared"><?php echo esc_html__('Không gian fine-dining Em-Restaurant: phòng ăn dưới đèn chùm pha lê, bàn VIP ghế sofa nhung đỏ với lẵng hoa tinh tế và khu lounge bar ánh đèn LED sang trọng', 'saigonhoreca'); ?></div>
         </div>
       </div>
     </div>

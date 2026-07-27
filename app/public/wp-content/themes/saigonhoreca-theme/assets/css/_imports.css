@@ -1,16 +1,16 @@
 /* Auto-generated imports — saigonhoreca slimmed (no construction template-parts) */
 
-@import "../../entry-content.css";
-@import "../../footer.css";
-@import "../../header.css";
-@import "../../page-hero.css";
-@import "../../sidebar.css";
-@import "../../with-sidebar.css";
-@import "../../404.css";
-@import "../../archive.css";
-@import "../../category-video-du-an.css";
-@import "../../page.css";
-@import "../../search.css";
+@import "./legacy/entry-content.css";
+@import "./legacy/footer.css";
+@import "./legacy/header.css";
+@import "./legacy/page-hero.css";
+@import "./legacy/sidebar.css";
+@import "./legacy/with-sidebar.css";
+@import "./legacy/404.css";
+@import "./legacy/archive.css";
+@import "./legacy/category-video-du-an.css";
+@import "./legacy/page.css";
+@import "./legacy/search.css";
 @import "./shared/buttons.css";
 @import "./shared/cards.css";
 @import "./shared/checker.css";

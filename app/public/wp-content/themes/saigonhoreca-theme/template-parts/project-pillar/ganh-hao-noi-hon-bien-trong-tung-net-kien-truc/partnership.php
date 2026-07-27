@@ -6,7 +6,9 @@
  */
 if (!defined('ABSPATH')) exit;
 ?>
-<section class="pp-partnership-ganh" style="background-image:url('<?php echo sgh_img('ganh-hao-noi-hon-bien-trong-tung-net-kien-truc/ganh-hao-sgh-1.jpg'); ?>');">
+<section class="pp-partnership-ganh">
+  <!-- Thẻ con gánh hiệu ứng Parallax Clip-Path siêu mượt (bg position:fixed bị clip-path của section "neo" lại) -->
+  <div class="pp-partnership-ganh__bg" style="background-image:url('<?php echo sgh_img('ganh-hao-noi-hon-bien-trong-tung-net-kien-truc/ganh-hao-noi-hon-bien-trong-tung-net-kien-truc-buffet-hai-san-ven-bien.webp'); ?>');" aria-hidden="true"></div>
   <div class="pp-partnership-ganh__overlay" aria-hidden="true"></div>
   <div class="pp-partnership-ganh__glow" aria-hidden="true"></div>
 

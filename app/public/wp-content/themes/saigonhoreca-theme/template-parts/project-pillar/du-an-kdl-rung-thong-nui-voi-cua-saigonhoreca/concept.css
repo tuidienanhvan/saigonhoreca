@@ -1,124 +1,159 @@
 /**
- * du-an-kdl-rung-thong-nui-voi-cua-saigonhoreca — concept slot.
- * Split layout + image frame with mask + design notes.
- * @package SaigonHoreca
+ * Project Pillar — KDL Rừng Thông Núi Voi
+ * Section #3: concept styling (Zen-forest glass card + feature list)
+ * 100% tokens · zero hardcoded hex. Green = color-mix(var(--su)).
  */
 
-.pp-split-kdl {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 3rem;
-  align-items: center;
-}
-@media (min-width: 992px) {
-  .pp-split-kdl { grid-template-columns: 1fr 1fr; gap: 5rem; }
-  .pp-split-kdl--reverse .pp-split-kdl__media { order: 2; }
-  .pp-split-kdl--reverse .pp-split-kdl__body  { order: 1; }
+/* media-first ordering on desktop */
+@media (min-width: 1024px) {
+  .pp--kdl .pp-grid-12-kdl--media-first { grid-template-columns: 52% 48%; }
 }
 
-.pp-split-kdl__body {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-  position: relative;
-}
-.pp-split-kdl__body::before {
-  content: '';
+/* Number watermark */
+.pp--kdl .pp-concept-watermark-kdl {
   position: absolute;
-  top: -1rem;
-  left: -0.75rem;
-  width: 44px;
-  height: 44px;
-  border-top: 1px solid color-mix(in srgb, var(--su) 40%, transparent);
-  border-left: 1px solid color-mix(in srgb, var(--su) 40%, transparent);
+  top: -3.5rem;
+  right: 1.5rem;
+  font-family: var(--font-display);
+  font-size: clamp(11rem, 20vw, 22rem);
+  font-weight: 800;
+  line-height: 1;
+  color: color-mix(in srgb, var(--su) 60%, var(--bc));
+  opacity: 0.03;
   pointer-events: none;
+  user-select: none;
   z-index: 0;
 }
 
-.pp-concept-kdl__kicker {
-  display: inline-block;
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--su);
-}
-
-.pp-split-kdl__media {
+/* Glassmorphism card — airy, dashed natural edge */
+.pp--kdl .pp-glass-card-kdl {
   position: relative;
+  background: color-mix(in srgb, var(--b3) 70%, transparent);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px dashed color-mix(in srgb, var(--su) 35%, transparent);
+  border-radius: var(--radius-lg);
+  padding: clamp(2rem, 3.5vw, 3rem);
+  box-shadow: 0 24px 50px color-mix(in srgb, var(--b1) 50%, transparent);
+  outline: 1px solid color-mix(in srgb, var(--su) 12%, transparent);
+  outline-offset: -12px;
+  transition: transform 0.45s var(--ease-spring), border-color 0.45s, outline-color 0.45s, box-shadow 0.45s;
+}
+.pp--kdl .pp-glass-card-kdl:hover {
+  transform: translateY(-5px);
+  border-color: color-mix(in srgb, var(--su) 60%, transparent);
+  outline-color: color-mix(in srgb, var(--su) 35%, transparent);
+  box-shadow: 0 30px 60px color-mix(in srgb, var(--su) 12%, transparent);
 }
 
-.pp-concept-kdl__mask {
-  position: relative;
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  border: 1px solid var(--bd);
-  transition: border-color 0.4s var(--ease-spring);
-}
-.pp-concept-kdl__mask:hover { border-color: color-mix(in srgb, var(--su) 40%, transparent); }
-.pp-concept-kdl__mask img {
-  width: 100%;
-  height: auto;
-  display: block;
-  transition: transform 0.7s var(--ease-spring);
-}
-.pp-concept-kdl__mask:hover img { transform: scale(1.04); }
-
-.pp-concept-kdl__frame {
+/* Leaf-corner ornaments */
+.pp--kdl .pp-corner-leaf-kdl {
   position: absolute;
-  inset: 12px;
-  border: 1px solid color-mix(in srgb, var(--su) 25%, transparent);
-  border-radius: calc(var(--radius-md) - 4px);
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.4s var(--ease-spring);
+  width: 16px;
+  height: 16px;
+  border: 1px solid color-mix(in srgb, var(--su) 55%, var(--gold));
+  opacity: 0.35;
+  transition: opacity 0.4s, transform 0.4s var(--ease-spring);
 }
-.pp-concept-kdl__mask:hover .pp-concept-kdl__frame { opacity: 1; }
+.pp--kdl .pp-glass-card-kdl:hover .pp-corner-leaf-kdl { opacity: 0.9; transform: scale(1.12); }
+.pp--kdl .pp-corner-leaf-kdl--tl { top: 14px; left: 14px; border-right: none; border-bottom: none; }
+.pp--kdl .pp-corner-leaf-kdl--br { bottom: 14px; right: 14px; border-left: none; border-top: none; }
 
-.pp-concept-kdl__caption {
-  margin-top: 1rem;
+.pp--kdl .pp-concept-kdl__body {
+  font-family: var(--font-sans);
+  font-size: clamp(0.94rem, 1.05vw, 1.02rem);
+  line-height: 1.8;
+  color: var(--bc2);
+}
+.pp--kdl .pp-concept-kdl__body > p {
+  margin-bottom: 1.5rem;
+  text-align: justify;
+}
+
+/* Feature list */
+.pp--kdl .pp-concept-kdl__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 1.5rem;
 }
-.pp-concept-kdl__caption span {
-  font-family: var(--font-serif);
-  font-size: 0.85rem;
-  font-style: italic;
-  color: var(--bc3);
+.pp--kdl .pp-concept-kdl__list-item {
+  display: flex;
+  gap: 1.1rem;
+  align-items: flex-start;
+  position: relative;
+  padding-left: 0.25rem;
 }
-.pp-concept-kdl__caption strong {
+.pp--kdl .pp-concept-kdl__list-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--su) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--su) 22%, transparent);
+  color: color-mix(in srgb, var(--su) 80%, var(--bc));
+  transition: transform 0.4s var(--ease-spring), background 0.4s, border-color 0.4s, box-shadow 0.4s;
+}
+.pp--kdl .pp-concept-kdl__list-icon svg { width: 1.3rem; height: 1.3rem; display: block; }
+.pp--kdl .pp-concept-kdl__list-item:hover .pp-concept-kdl__list-icon {
+  transform: translateY(-3px) rotate(-6deg);
+  background: color-mix(in srgb, var(--su) 16%, transparent);
+  border-color: color-mix(in srgb, var(--su) 50%, transparent);
+  box-shadow: 0 0 16px color-mix(in srgb, var(--su) 20%, transparent);
+}
+.pp--kdl .pp-concept-kdl__list-item strong {
+  display: block;
   font-family: var(--font-display);
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: 1.05rem;
+  font-weight: 700;
   color: var(--bc);
+  margin-bottom: 0.25rem;
+  transition: color 0.3s;
+}
+.pp--kdl .pp-concept-kdl__list-item:hover strong {
+  color: color-mix(in srgb, var(--su) 75%, var(--bc));
+}
+.pp--kdl .pp-concept-kdl__list-item p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--bc2);
 }
 
-.pp-concept-kdl__notes {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-  margin-top: 0.5rem;
+/* Concept image — soft natural lift */
+.pp--kdl .pp-concept-kdl__image-container {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--bd);
+  box-shadow: 0 18px 42px color-mix(in srgb, var(--b1) 60%, transparent);
+  transition: box-shadow 0.6s var(--ease-spring), border-color 0.5s;
 }
-.pp-concept-kdl__notes span {
-  padding: 0.35rem 0.85rem;
-  background: color-mix(in srgb, var(--su) 8%, transparent);
-  border: 1px solid color-mix(in srgb, var(--su) 15%, transparent);
-  border-radius: var(--radius-full);
-  font-size: 0.72rem;
-  font-weight: 500;
-  color: var(--su);
-  transition: border-color 0.3s, background 0.3s;
-}
-.pp-concept-kdl__notes span:hover {
+.pp--kdl .pp-concept-kdl__image-container:hover {
   border-color: color-mix(in srgb, var(--su) 40%, transparent);
-  background: color-mix(in srgb, var(--su) 15%, transparent);
+  box-shadow: 0 26px 54px color-mix(in srgb, var(--su) 16%, transparent);
 }
+.pp--kdl .pp-concept-kdl__image-container:hover .pp-image-border-decor-kdl {
+  opacity: 1;
+  border-color: color-mix(in srgb, var(--su) 45%, transparent);
+}
+.pp--kdl .pp-concept-kdl__image-container img {
+  filter: saturate(1.05) brightness(0.97);
+  transition: filter 0.6s var(--ease-spring), transform 0.6s var(--ease-spring) !important;
+}
+.pp--kdl .pp-concept-kdl__image-container:hover img { filter: saturate(1.12) brightness(1); }
 
 @media (prefers-reduced-motion: reduce) {
-  .pp-concept-kdl__mask img,
-  .pp-concept-kdl__mask {
+  .pp--kdl .pp-glass-card-kdl,
+  .pp--kdl .pp-corner-leaf-kdl,
+  .pp--kdl .pp-concept-kdl__list-icon,
+  .pp--kdl .pp-concept-kdl__image-container,
+  .pp--kdl .pp-concept-kdl__image-container img {
     transition: none !important;
+    animation: none !important;
   }
 }

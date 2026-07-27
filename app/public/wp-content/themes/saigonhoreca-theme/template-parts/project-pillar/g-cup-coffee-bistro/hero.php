@@ -11,7 +11,7 @@ $uri = get_template_directory_uri();
     <!-- Họa tiết chấm Grid Dot kỹ thuật SVG nền -->
     <div class="pp-gcb-hero-dot-grid" aria-hidden="true"></div>
 
-    <div class="pp-hero-gcb__media" style="background-image:url('<?php echo sgh_img('g-cup-coffee-bistro/g-cup-coffee-bistro-quay-bar-da-trang-van-may.webp'); ?>');"></div>
+    <div class="pp-hero-gcb__media" style="background-image:url('<?php echo sgh_img('g-cup-coffee-bistro/g-cup-coffee-bistro-thumbnail-project-cover.webp'); ?>');"></div>
     <div class="pp-hero-gcb__overlay" aria-hidden="true"></div>
 
     <div class="pp-ambient-glow-gcb pp-ambient-glow-gcb--center" aria-hidden="true"></div>
@@ -30,7 +30,8 @@ $uri = get_template_directory_uri();
         </svg>
     </div>
 
-    <div class="pp-hero-gcb__content">
+    <!-- Removed text content overlay as the background image already contains baked-in titles
+<div class="pp-hero-gcb__content">
         <!-- Khung chữ sắc sảo với vạch dấu góc đo CAD -->
         <div class="pp-gcb-hero-title-wrap scroll-reveal">
             <span class="pp-gcb-cad-corner pp-gcb-cad-corner--tl"></span>
@@ -52,4 +53,5 @@ $uri = get_template_directory_uri();
         </p>
         <p class="pp-hero-gcb__subtitle scroll-reveal"><?php echo esc_html__('Giữa lòng Metropole Thủ Thiêm – khu đô thị hiện đại và sôi động bậc nhất TP.HCM – G.Cup Coffee & Bistro chọn cho mình một hướng đi riêng: tinh tế, trau chuốt và đặt trọn tâm huyết vào từng trải nghiệm của khách hàng.', 'saigonhoreca'); ?></p>
     </div>
+-->
 </section>

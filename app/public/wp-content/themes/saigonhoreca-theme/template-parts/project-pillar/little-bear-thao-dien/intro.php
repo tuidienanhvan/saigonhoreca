@@ -35,10 +35,10 @@ $gallery = [
     'caption' => __('Đầu bếp tập trung thao tác chuyên nghiệp tại khu vực bếp mở, tạo nên nhịp điệu phục vụ tối ưu.', 'saigonhoreca'),
   ],
   [
-    'src' => 'little-bear-thao-dien/little-bear-thao-dien-khong-gian-bep-bar.jpg',
-    'alt' => __('Không gian kết nối hài hòa giữa quầy bar mở và line bếp công nghiệp hiện đại', 'saigonhoreca'),
+    'src' => 'little-bear-thao-dien/Little-bear-00.webp',
+    'alt' => __('Toàn cảnh ô vòm bếp mở và quầy bar gỗ dài với dàn đầu bếp đang thao tác tại Little Bear Thảo Điền', 'saigonhoreca'),
     'class' => 'pp-intro-lb__gallery-item--compact',
-    'caption' => __('Bar station và bếp mở kết nối mượt mà, giúp thực khách trải nghiệm ẩm thực trực quan.', 'saigonhoreca'),
+    'caption' => __('Dưới ô vòm bếp mở rực ánh neon ly vang, cả ê-kíp đầu bếp tất bật bên line nóng inox sáng loáng, ngay sau quầy bar gỗ dài bày sẵn ly vang và đĩa khai vị chờ thực khách.', 'saigonhoreca'),
   ],
   [
     'src' => 'little-bear-thao-dien/little-bear-thao-dien-mat-tien-nha-hang.jpg',
@@ -50,7 +50,7 @@ $gallery = [
     'src' => 'little-bear-thao-dien/little-bear-thao-dien-chi-tiet-bep-inox.jpg',
     'alt' => __('Chi tiết bề mặt inox gia công sắc sảo cùng thiết bị bếp cao cấp tại Little Bear', 'saigonhoreca'),
     'class' => 'pp-intro-lb__gallery-item--wide',
-    'caption' => __('Hệ thống kệ inox 304 gia công sắc nét cùng các module thiết bị tối tân, sẵn sàng cho cường độ vận hành mỗi đêm.', 'saigonhoreca'),
+    'caption' => __('Chảo thép đen carbon nằm gọn trên mặt bếp hồng ngoại phẳng, bảng điều khiển số nhạy bén, sẵn sàng bừng nhiệt cho từng cao điểm phục vụ buổi tối.', 'saigonhoreca'),
   ],
 ];
 ?>

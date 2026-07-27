@@ -1,7 +1,9 @@
 <?php
 /**
  * Project Pillar — sol-kitchen-bar-saigon-horeca
- * Section #2: intro — asymmetric storytelling (editorial text + framed image).
+ * Section #2: intro — asymmetric editorial storytelling (text-heavy column +
+ * sticky framed image), numbered watermark + warm ambient accents.
+ * Copy: 2023 Michelin / chef Adrian / hacienda decor / red-meat mastery / desserts.
  * @package SaigonHoreca
  */
 if (!defined('ABSPATH')) exit;
@@ -9,6 +11,7 @@ if (!defined('ABSPATH')) exit;
 <section class="pp-section-solshr pp-intro-solshr scroll-reveal">
   <div class="pp-solshr-ambient pp-solshr-ambient--tr" aria-hidden="true"></div>
   <div class="pp-solshr-grid" aria-hidden="true"></div>
+  <div class="pp-intro-solshr__watermark" aria-hidden="true">01</div>
 
   <div class="pp-container-shared">
     <div class="pp-intro-solshr__layout">
@@ -23,11 +26,19 @@ if (!defined('ABSPATH')) exit;
           <p><?php echo esc_html__('Nhà hàng đã nhận được nhiều lời khen ngợi về bí quyết chế biến thịt đỏ, đem đến một sự lựa chọn hấp dẫn bao gồm thịt bò ướp kèm sốt chimichurri, sườn nướng BBQ được phủ lên với nước mắm mang đậm hương vị riêng, và gà nướng nguyên con thơm ngon được phục vụ kèm theo sốt mojo. Nhưng không chỉ dừng lại ở đó – những chiếc bánh taco sáng tạo và empanadas giòn rụm đã nhanh chóng chinh phục trái tim của thực khách và du khách.', 'saigonhoreca'); ?></p>
           <p><?php echo esc_html__('Bắt đầu hành trình ẩm thực của bạn với một ly pisco sour hoàn hảo và thưởng thức một đĩa scallop ceviche tuyệt vời trong khi lục qua thực đơn, và đừng quên để dành chỗ cho những món tráng miệng đặc biệt. Thưởng thức chiếc bánh cheesecake mềm mịn nhất, thưởng thức những que churros không thể chối từ hoặc tận hưởng chiếc bánh chocolate nổi bật mang lại một cảm giác tuyệt vời cho trải nghiệm ẩm thực của bạn tại Sol Kitchen & Bar.', 'saigonhoreca'); ?></p>
         </div>
+
+        <div class="pp-intro-solshr__chips" aria-label="<?php echo esc_attr__('Hương vị Latin American', 'saigonhoreca'); ?>">
+          <span><?php echo esc_html__('Empanadas', 'saigonhoreca'); ?></span>
+          <span><?php echo esc_html__('Ceviche', 'saigonhoreca'); ?></span>
+          <span><?php echo esc_html__('Chimichurri', 'saigonhoreca'); ?></span>
+          <span><?php echo esc_html__('Pisco Sour', 'saigonhoreca'); ?></span>
+        </div>
       </div>
+
       <div class="pp-intro-solshr__media scroll-reveal">
         <div class="pp-image-container-shared pp-frame-solshr">
-          <img src="<?php echo sgh_img('sol-kitchen-bar-saigon-horeca/Sol-kitchen-00001.jpg'); ?>" alt="<?php echo esc_attr__('Không gian nhà hàng SOL Kitchen & Bar phong cách hacienda Latin American', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
-          <div class="pp-image-caption-shared"><?php echo esc_html__('Không gian hacienda ấm áp của SOL Kitchen & Bar — nơi ẩm thực Latin American gặp gỡ sự tinh tế trong từng chi tiết.', 'saigonhoreca'); ?></div>
+          <img src="<?php echo esc_url(sgh_img('sol-kitchen-bar-saigon-horeca/sol-kitchen-bar-mon-tom-su-nuong-sot-sofrito-chanh.webp')); ?>" alt="<?php echo esc_attr__('Món tôm sú nguyên con sốt sofrito cà chua ớt, hành tím, rau ngò và chanh tại nhà hàng Sol Kitchen & Bar', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
+          <div class="pp-image-caption-shared"><?php echo esc_html__('Tôm sú nguyên con phủ sốt sofrito cà chua đỏ cam, điểm hành tím và rau ngò — bản phối hương vị Mỹ Latin đậm đà, tươi sáng trên đĩa gốm thủ công.', 'saigonhoreca'); ?></div>
         </div>
       </div>
     </div>

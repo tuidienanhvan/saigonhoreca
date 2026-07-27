@@ -73,8 +73,8 @@ if (!defined('ABSPATH')) exit;
 
           <div class="pp-mosaic-item pp-mosaic-item--4">
             <div class="pp-mosaic-image-wrapper pp-image-container-shared">
-              <img src="<?php echo sgh_img('amdang-typhoon/amdang-typhoon-mon-an-mi-xao-muc-chien.jpeg'); ?>" alt="<?php echo esc_attr('Bộ sưu tập các món khai vị chiên giòn truyền thống Thái Lan với chả tôm donut và cánh gà chiên sả'); ?>" loading="lazy" decoding="async">
-              <div class="pp-image-caption-shared"><?php echo esc_html__('Bộ sưu tập các món khai vị chiên giòn truyền thống Thái Lan với chả tôm donut và cánh gà chiên sả', 'saigonhoreca'); ?></div>
+              <img src="<?php echo sgh_img('amdang-typhoon/amdang-typhoon-mon-an-mi-xao-muc-chien.jpeg'); ?>" alt="<?php echo esc_attr('Đĩa mì xào, mực chiên vòng và ngó sen chiên kiểu Thái trên nền xanh than'); ?>" loading="lazy" decoding="async">
+              <div class="pp-image-caption-shared"><?php echo esc_html__('Mâm món Thái bày trên đĩa gốm xanh than: mì xào sợi dai đậm vị, mực chiên vòng giòn rụm và ngó sen chiên kèm nước chấm chua cay', 'saigonhoreca'); ?></div>
             </div>
           </div>
         </div>

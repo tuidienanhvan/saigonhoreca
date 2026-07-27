@@ -1,5 +1,7 @@
 
 function shDebounce(fn, ms) { var t; return function(...args) { clearTimeout(t); t = setTimeout(() => fn.apply(this, args), ms || 100); }; }
+
+
 document.addEventListener('DOMContentLoaded', () => {
     const header = document.getElementById('main-header');
     if (header) {
@@ -73,11 +75,11 @@ document.addEventListener('DOMContentLoaded', () => {
             hydrateMobileMenu();
             mobileSidebar.classList.add('is-open');
             mobileOverlay.classList.add('is-visible');
-            document.body.classList.add('overflow-hidden');
+            document.body.classList.add('overflow-hidden', 'sh-mobile-menu-active');
         } else {
             mobileSidebar.classList.remove('is-open');
             mobileOverlay.classList.remove('is-visible');
-            document.body.classList.remove('overflow-hidden');
+            document.body.classList.remove('overflow-hidden', 'sh-mobile-menu-active');
         }
     }
     if (mobileToggle) mobileToggle.addEventListener('click', () => toggleSidebar(true));
@@ -96,31 +98,8 @@ document.addEventListener('DOMContentLoaded', () => {
         li.addEventListener('pointerenter', hydrate, { once: true, passive: true });
         li.addEventListener('focusin', hydrate, { once: true });
     });
-    const backToTop = document.getElementById('back-to-top');
-    const progressCircle = document.getElementById('scroll-progress-circle');
-    if (backToTop) {
-        const updateBackToTop = () => {
-            const scrollTop = window.scrollY;
-            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const scrollPercent = docHeight > 0 ? Math.min(scrollTop / docHeight, 1) : 0;
-            if (progressCircle) {
-                progressCircle.style.strokeDashoffset = String(100 - (100 * scrollPercent));
-            }
-            if (scrollTop > 100) {
-                backToTop.style.display = 'flex';
-                backToTop.style.opacity = '1';
-            } else {
-                backToTop.style.display = 'none';
-                backToTop.style.opacity = '0';
-            }
-        };
-        window.addEventListener('scroll', shDebounce(updateBackToTop, 100), { passive: true });
-        updateBackToTop();
-        backToTop.addEventListener('click', (event) => {
-            event.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-    }
+    // Back-to-top: gộp về assets/js/floating-buttons.js (cùng file với
+    // logic kéo-thả của #sh-floating-buttons — trước đây bị tách 2 nơi).
     const tabContainers = document.querySelectorAll('#townhouse-tabs, #villa-tabs');
     tabContainers.forEach(container => {
         const buttons = container.querySelectorAll('.sh-tab-btn');
@@ -150,6 +129,43 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     });
+    // ── AUTO SCROLL-REVEAL (single global mechanism — no per-template PHP edits) ──
+    // home/project pages hand-place `.scroll-reveal reveal-*` on specific inner
+    // elements with bespoke choreography; every OTHER route (about, contact,
+    // archive/archive-product/archive-project, search) gets a sensible default
+    // applied automatically here so animation coverage is consistent site-wide
+    // without scattering markup edits across 5+ separate PHP templates.
+    (function autoScrollReveal() {
+        const main = document.querySelector('main#primary');
+        if (!main) return;
+        const isHandTuned = main.classList.contains('sh-home')
+            || main.classList.contains('pp')
+            || main.classList.contains('sh-project-pillar');
+        if (isHandTuned) return;
+
+        // Section-list layouts (about, contact, archive-project, etc.):
+        // tag every direct <section> except the first (hero/above-the-fold
+        // must render immediately — skipping it protects LCP).
+        const sections = main.querySelectorAll(':scope > section');
+        sections.forEach((sec, idx) => {
+            if (idx === 0) return;
+            if (!sec.classList.contains('scroll-reveal')) {
+                sec.classList.add('scroll-reveal', 'reveal-up');
+            }
+        });
+
+        // Two-column archive/search layouts where the grid+sidebar sit in one
+        // wrapper <div> rather than sibling <section> elements.
+        const layoutBlocks = main.querySelectorAll(
+            ':scope > .sh-archive__layout, :scope > div.sh-archive__content, :scope > div.sh-search__content'
+        );
+        layoutBlocks.forEach((el) => {
+            if (!el.classList.contains('scroll-reveal')) {
+                el.classList.add('scroll-reveal', 'reveal-up');
+            }
+        });
+    })();
+
     const scrollElements = document.querySelectorAll('.scroll-reveal');
     if (scrollElements.length > 0) {
         const observer = new IntersectionObserver((entries) => {
@@ -173,12 +189,27 @@ document.addEventListener('DOMContentLoaded', () => {
             iframe.dataset.lazyLoaded = '1';
             iframe.removeAttribute('data-lazy-src');
         };
+        // Hero background-video iframes (autoplay, no controls) sit ABOVE the
+        // fold, so IntersectionObserver fires immediately on page load — that
+        // alone doesn't protect LCP. Gate on window `load` too: intersecting
+        // iframes queue until the page has finished loading its critical
+        // resources, so the YouTube player never competes with the LCP paint.
+        let pageLoaded = document.readyState === 'complete';
+        const pendingLoad = new Set();
+        if (!pageLoaded) {
+            window.addEventListener('load', () => {
+                pageLoaded = true;
+                pendingLoad.forEach(loadIframe);
+                pendingLoad.clear();
+            }, { once: true });
+        }
         if ('IntersectionObserver' in window) {
             const iframeObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach((entry) => {
                     if (!entry.isIntersecting) return;
-                    loadIframe(entry.target);
                     observer.unobserve(entry.target);
+                    if (pageLoaded) loadIframe(entry.target);
+                    else pendingLoad.add(entry.target);
                 });
             }, {
                 rootMargin: '350px 0px'
@@ -256,17 +287,48 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         window.addEventListener('scroll', onScrollDepth, { passive: true });
     })();
-    const animatedEls = document.querySelectorAll('[class*="animate-spin"]');
-    if (animatedEls.length > 0) {
+    // Pause ANY infinite CSS animation while its element is off-screen — GPU/CPU
+    // don't need to composite decorative motion (glow, float, shine, ken-burns...)
+    // that nobody can see. Detected generically via computed style (not class
+    // naming — the ~150 pillar keyframes don't share a common class prefix),
+    // scanned off the critical path via requestIdleCallback so it never
+    // competes with LCP/initial render.
+    const pauseOffscreenAnimations = () => {
+        // Quét toàn bộ DOM 1 lần (idle, không mỗi frame) — tên keyframe không có
+        // quy ước class chung (150+ tên khác nhau trên các trang pillar) nên
+        // selector-based matching sẽ bỏ sót; computed-style là cách chắc chắn duy nhất.
+        const all = document.querySelectorAll('*');
+        const animated = [];
+        all.forEach((el) => {
+            const cs = getComputedStyle(el);
+            if (cs.animationName !== 'none' && cs.animationIterationCount === 'infinite') {
+                animated.push(el);
+            }
+        });
+        if (!animated.length) return;
         const animObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
+            entries.forEach((entry) => {
                 entry.target.style.animationPlayState = entry.isIntersecting ? 'running' : 'paused';
             });
         }, { rootMargin: '100px' });
-        animatedEls.forEach(el => {
+        animated.forEach((el) => {
             el.style.animationPlayState = 'paused';
             animObserver.observe(el);
         });
+    };
+    // Chạy SAU window.load (LCP chắc chắn đã paint xong), không dùng timeout
+    // ép buộc — full-DOM scan + getComputedStyle mỗi phần tử đủ nặng để tự nó
+    // chặn main-thread nếu chạy sớm, làm LCP TỆ HƠN thay vì tốt hơn (đã đo được
+    // trên trang bambino: requestIdleCallback({timeout:2000}) ép chạy đồng bộ
+    // ngay giữa cửa sổ LCP dưới CPU throttling).
+    const scheduleAnimPause = () => {
+        if ('requestIdleCallback' in window) requestIdleCallback(pauseOffscreenAnimations);
+        else setTimeout(pauseOffscreenAnimations, 200);
+    };
+    if (document.readyState === 'complete') {
+        scheduleAnimPause();
+    } else {
+        window.addEventListener('load', scheduleAnimPause, { once: true });
     }
     document.addEventListener('click', function(e) {
         var popup = e.target.closest('[data-share-action="popup"]');

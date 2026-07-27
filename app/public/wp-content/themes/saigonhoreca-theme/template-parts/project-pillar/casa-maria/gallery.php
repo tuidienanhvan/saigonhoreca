@@ -271,7 +271,7 @@ $uri = get_template_directory_uri();
 
         <div class="pp-cta-photo-wrapper">
           <div class="pp-image-container-shared">
-            <img src="<?php echo sgh_img('casa-maria/casa-maria-mat-tien-cua-do-tay-ban-nha.jpg'); ?>" alt="<?php echo esc_attr__('Tổng thể dự án Casa Maria do Saigon Horeca triển khai', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
+            <img src="<?php echo sgh_img('casa-maria/casa-maria-mat-tien-cua-do-tay-ban-nha.jpg'); ?>" alt="<?php echo esc_attr__('Mặt tiền cửa đỏ và bảng hiệu Casa Maria', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
             <div class="pp-image-caption-shared">
               <?php echo esc_html__('Mặt tiền cửa đỏ Tây Ban Nha – Sự khởi đầu đầy cảm hứng của Casa Maria', 'saigonhoreca'); ?>
             </div>

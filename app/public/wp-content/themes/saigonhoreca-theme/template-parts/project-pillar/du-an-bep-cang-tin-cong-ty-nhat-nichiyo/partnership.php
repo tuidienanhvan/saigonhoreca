@@ -22,26 +22,5 @@ $uri = get_template_directory_uri();
         <p><?php echo esc_html__('Tất cả những điều này kết hợp với nhau để tạo ra một môi trường làm việc đơn giản, hiệu quả và thoải mái cho nhân viên.', 'saigonhoreca'); ?></p>
       </div>
     </div>
-
-    <div class="pp-gallery-nichiyo pp-gallery-nichiyo--cols-3">
-      <div class="pp-gallery-nichiyo__item scroll-reveal reveal-up delay-100">
-        <div class="pp-image-container-shared">
-          <img src="<?php echo sgh_img('du-an-bep-cang-tin-cong-ty-nhat-nichiyo/nichiyo-du-an-2.jpg'); ?>" alt="<?php echo esc_attr__('Thiết bị bếp công nghiệp Saigon Horeca tại Nichiyo', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="1366" height="768">
-          <div class="pp-image-caption-shared"><?php echo esc_html__('Bố trí khu bếp gọn gàng với tông trắng – xám trung tính, tối ưu luồng thao tác của đầu bếp.', 'saigonhoreca'); ?></div>
-        </div>
-      </div>
-      <div class="pp-gallery-nichiyo__item scroll-reveal reveal-up delay-200">
-        <div class="pp-image-container-shared">
-          <img src="<?php echo sgh_img('du-an-bep-cang-tin-cong-ty-nhat-nichiyo/nichiyo-du-an-1.jpg'); ?>" alt="<?php echo esc_attr__('Thiết bị bếp công nghiệp Saigon Horeca tại Nichiyo', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="1366" height="768">
-          <div class="pp-image-caption-shared"><?php echo esc_html__('Thiết bị inox và hệ thống thông gió được thiết kế tỉ mỉ trong không gian bếp hạn chế.', 'saigonhoreca'); ?></div>
-        </div>
-      </div>
-      <div class="pp-gallery-nichiyo__item scroll-reveal reveal-up delay-300">
-        <div class="pp-image-container-shared">
-          <img src="<?php echo sgh_img('du-an-bep-cang-tin-cong-ty-nhat-nichiyo/nichiyo-du-an-3.jpg'); ?>" alt="<?php echo esc_attr__('Thiết bị bếp công nghiệp Saigon Horeca tại Nichiyo', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="1366" height="768">
-          <div class="pp-image-caption-shared"><?php echo esc_html__('Khu lưu trữ và kệ inox sắp xếp đúng vị trí, phản ánh sự hiệu quả và chuyên nghiệp.', 'saigonhoreca'); ?></div>
-        </div>
-      </div>
-    </div>
   </div>
 </section>

@@ -7,7 +7,9 @@
 .pp--adt .pp-hero-adt {
   position: relative;
   width: 100%;
-  min-height: 100vh;
+  height: calc(100vh - 76px);
+  height: calc(100dvh - 76px);
+  min-height: 600px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,7 +20,8 @@
 }
 @media (max-width: 768px) {
   .pp--adt .pp-hero-adt {
-    min-height: 80vh;
+    height: 70dvh;
+    min-height: 520px;
     padding-bottom: 5rem;
   }
 }

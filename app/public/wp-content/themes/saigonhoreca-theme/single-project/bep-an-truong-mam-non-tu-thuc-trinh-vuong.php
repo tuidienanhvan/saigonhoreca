@@ -1,7 +1,7 @@
 <?php
 /**
  * Single Project Template — TRƯỜNG MẦM NON TRINH VƯƠNG
- * Thumbnail: 2025/11/du-an-truong-mn-tu-thuc-trinh-vuong.jpg
+ * Thumbnail: bep-an-truong-mam-non-tu-thuc-trinh-vuong/bep-an-truong-mam-non-tu-thuc-trinh-vuong-thumbnail-project-cover.webp
  *
  * Auto-routed via inc/core/pillar-routes.php for /du-an/bep-an-truong-mam-non-tu-thuc-trinh-vuong/.
  *

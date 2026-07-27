@@ -1,0 +1,390 @@
+{
+  "research_date": "2026-07-14",
+  "research_update_date": "2026-07-14",
+  "source_note": "Cào từ website chính hãng Mahlkönig (thương hiệu Đức, thuộc Hemro Group) — bản US Shopify store www.mahlkoenig.us. mahlkoenig.com (bản .com gốc) là site B2C khu vực Đức/EU, chỉ ship trong Đức, và tự động điều hướng khách Mỹ sang mahlkoenig.us — cùng nền tảng Shopify, cùng lineup sản phẩm. KHÔNG phải dữ liệu tự bịa — mọi model dưới đây có URL nguồn kèm theo, đã WebFetch trực tiếp từng trang sản phẩm. Không tìm thấy site .vn hoặc trang riêng cho thị trường Việt Nam/châu Á của Mahlkönig.",
+  "existing_catalog_gap": "Site saigonhoreca.local hiện có 0 sản phẩm dưới brand Mahlkönig — brand chỉ xuất hiện dưới dạng logo đối tác ở trang chủ (mục 'Đối tác'), chưa có bất kỳ model nào trong catalog thực tế. Đây là khoảng trống 100% cần xây từ đầu.",
+  "brand": "Mahlkönig",
+  "company_info": {
+    "legal_name": "Mahlkönig GmbH & Co. KG",
+    "founded": 1924,
+    "headquarters": "Hamburg, Đức",
+    "parent_group": "Hemro Group (cùng tập đoàn với các thương hiệu máy xay khác: Anfim (Ý), HeyCafé, Ditting (Thụy Sĩ) — các brand này XUẤT HIỆN CHUNG trên site mahlkoenig.us dưới mục 'Brand Portfolio' nhưng KHÔNG phải sản phẩm mang tên Mahlkönig, đã loại khỏi danh sách model bên dưới).",
+    "positioning_note": "Tự nhận là 'The King of Coffee Grinders' / 'King of Grinders' — chuyên sản xuất burr (đĩa nghiền) từ 1924, là nhà sản xuất đĩa nghiền phẳng (flat burr) hàng đầu thế giới, nhà máy sản xuất burr đặt tại Hamburg.",
+    "source_url": "https://www.mahlkoenig.us/pages/team-about"
+  },
+  "site_structure_note": "mahlkoenig.us bán trực tiếp online (Shopify, có giá công khai bằng USD, có nút mua ngay + tồn kho hiển thị) — KHÁC với Giorik (B2B, không công bố giá). mahlkoenig.com (Đức) chỉ ship nội địa Đức, không phải site toàn cầu — chưa tìm thấy site khu vực Việt Nam/Đông Nam Á của Mahlkönig.",
+  "source_urls": [
+    "https://www.mahlkoenig.us/",
+    "https://www.mahlkoenig.us/collections/grinders",
+    "https://www.mahlkoenig.us/collections/home-grinder",
+    "https://www.mahlkoenig.us/collections/all",
+    "https://www.mahlkoenig.us/pages/grind-by-sync-espresso-grinders",
+    "https://www.mahlkoenig.us/pages/team-about",
+    "https://www.mahlkoenig.com/"
+  ],
+  "groups": [
+    {
+      "group_name": "Commercial Espresso Grinders (Grind-by-Sync)",
+      "group_name_vi": "Máy Xay Espresso Thương Mại (dòng Grind-by-Sync)",
+      "taxonomy_note": "5 model hiện hành, chia theo đường kính đĩa nghiền (65mm vs 80mm) và kiểu định lượng: 'W' = Grind-by-Weight (cân điện tử tích hợp), 'T' = Timed (định lượng theo thời gian), 'S' = Stepless cơ bản (không kết nối app). Tất cả đều gắn nhãn Grind-by-Sync — tương thích kết nối app điều khiển máy pha espresso đồng bộ.",
+      "source_urls": ["https://www.mahlkoenig.us/collections/grinders", "https://www.mahlkoenig.us/pages/grind-by-sync-espresso-grinders"],
+      "models": [
+        {
+          "model": "E65W GbS",
+          "full_name": "E65W GbS Precise Commercial Espresso Grinder",
+          "source_url": "https://www.mahlkoenig.us/products/e65w-grind-by-sync",
+          "specs": {
+            "burr": "65mm special steel burrs",
+            "motor_power": "110–127V: 580W; 220–240V: 440W; 100V: 550/700W",
+            "hopper_capacity_g": "~1200 (standard); optional 250 hoặc 1800",
+            "dimensions_cm_whd": "19.5 x 62 x 28.3",
+            "weight_kg": "12.2 (net) / 14 (gross)",
+            "grinding_capacity": "50Hz: 4-5 g/s; 60Hz: 5-6 g/s @ 250µm",
+            "burr_life_kg": "~800 (median setting)"
+          },
+          "price_usd": 3099.00,
+          "price_public": true,
+          "seo": {
+            "seo_title": "E65W GbS Precise Commercial Espresso Grinder | Mahlkönig USA",
+            "seo_description": null,
+            "seo_description_gap_note": "Không tìm thấy thẻ <meta name=\"description\"> hoặc og:description trong HTML page này qua WebFetch — cần kiểm tra lại bằng view-source thủ công hoặc tự viết mô tả SEO khi đăng sản phẩm.",
+            "image_url": "https://www.mahlkoenig.us/cdn/shop/files/E65W-GbS-Black-sq_700x700.png?v=1751585381"
+          }
+        },
+        {
+          "model": "E65T GbS",
+          "full_name": "E65T GbS Compact Timed Espresso Grinder",
+          "source_url": "https://www.mahlkoenig.us/products/e65t-grind-by-sync",
+          "specs": {
+            "burr": "65mm special steel burrs",
+            "motor_power": "110–127V: 580W (60Hz)",
+            "hopper_capacity_g": "~1200 (standard); optional 250 hoặc 1800",
+            "dimensions_cm_whd": "19.5 x 62 x 28.3",
+            "weight_kg": "12.2 (net) / 14 (gross)",
+            "grinding_capacity": "5-6 g/s @ 250µm (60Hz)",
+            "burr_life_kg": "~800 (median setting)"
+          },
+          "price_usd": 2599.00,
+          "price_public": true,
+          "seo": {
+            "seo_title": "E65T GbS | Compact Timed Espresso Grinder | Mahlkönig USA",
+            "seo_description": null,
+            "seo_description_gap_note": "Không tìm thấy meta description trong HTML — cần kiểm tra thủ công.",
+            "image_url": "https://www.mahlkoenig.us/cdn/shop/files/E65T-GbS-Black-sq_700x700.png?v=1751585288"
+          }
+        },
+        {
+          "model": "E80W GbS",
+          "full_name": "E80W GbS High-Volume Commercial Espresso Grinder",
+          "source_url": "https://www.mahlkoenig.us/products/e80w-grind-by-sync",
+          "specs": {
+            "burr": "80mm cast steel special burrs",
+            "motor_power": "845W (110-127V, 60Hz); 520-600W (220-240V, 50/60Hz)",
+            "hopper_capacity_g": "~1800",
+            "dimensions_cm_whd": "24 x 63 x 34",
+            "weight_kg": "18 (net)",
+            "grinding_capacity": "6-7 g/s @ 250µm (50Hz); 7-8 g/s @ 250µm (60Hz)",
+            "burr_life_kg": "~1500 (median setting)"
+          },
+          "price_usd": 4199.00,
+          "price_public": true,
+          "seo": {
+            "seo_title": "E80W GbS High-Volume Commercial Espresso Grinder | Mahlkönig USA",
+            "seo_description": null,
+            "seo_description_gap_note": "Không tìm thấy meta description trong HTML — cần kiểm tra thủ công.",
+            "image_url": "https://www.mahlkoenig.us/cdn/shop/files/E80W-GbS-Black-sq_700x700.png?v=1751585551"
+          }
+        },
+        {
+          "model": "E80T GbS",
+          "full_name": "E80T GbS High Volume Timed Espresso Grinder",
+          "source_url": "https://www.mahlkoenig.us/products/e80t-grind-by-sync",
+          "specs": {
+            "burr": "80mm special steel burrs",
+            "motor_power": "845W (110-127V, 60Hz); 520-600W (220-240V, 50/60Hz)",
+            "hopper_capacity_g": "~1800",
+            "dimensions_cm_whd": "24 x 63 x 34",
+            "weight_kg": "18 (net)",
+            "grinding_capacity": "7-8 g/s @ 250µm (60Hz)"
+          },
+          "price_usd": 3399.00,
+          "price_public": true,
+          "seo": {
+            "seo_title": "E80T GbS | High Volume Timed Espresso Grinder | Mahlkönig USA",
+            "seo_description": null,
+            "seo_description_gap_note": "Không tìm thấy meta description trong HTML — cần kiểm tra thủ công.",
+            "image_url": "https://www.mahlkoenig.us/cdn/shop/files/E80T-GbS-Black-sq_700x700.png?v=1751584969"
+          }
+        },
+        {
+          "model": "E80S",
+          "full_name": "E80S Espresso Grinder",
+          "source_url": "https://www.mahlkoenig.us/products/e80s-grinder",
+          "note": "Không xuất hiện trong menu điều hướng chính /collections/all nhưng trang sản phẩm vẫn sống (đã WebFetch thành công) — có thể là model mới/soft-launch hoặc bản kế nhiệm E65S/E80T dạng stepless không app. Đang HẾT HÀNG (out of stock) tại thời điểm cào.",
+          "specs": {
+            "burr": "80mm special steel burrs",
+            "motor_power": "110–127V / 60Hz: 845W",
+            "hopper_capacity_g": "~1800",
+            "dimensions_cm_whd": "24 x 63 x 34",
+            "weight_kg": "17.6 (net)",
+            "grinding_capacity": "7-8 g/s @ 250µm (60Hz)",
+            "burr_life_kg": "~1500"
+          },
+          "price_usd": 2439.00,
+          "price_public": true,
+          "stock_status": "Out of stock (tại thời điểm cào 14/07)",
+          "seo": {
+            "seo_title": "E80S Espresso Grinder | Mahlkönig USA",
+            "seo_description": null,
+            "seo_description_gap_note": "Không tìm thấy meta description trong HTML — cần kiểm tra thủ công.",
+            "image_url": "https://www.mahlkoenig.us/cdn/shop/files/E80S-Blacksq_700x700.webp?v=1766526942"
+          }
+        },
+        {
+          "model": "E65S",
+          "full_name": "E65S Espresso Grinder",
+          "source_url": "https://www.mahlkoenig.us/products/e65s",
+          "note": "Cũng không xuất hiện trong /collections/all — cùng tình trạng như E80S ở trên. Trang sản phẩm KHÔNG hiển thị giá (khác các model khác đều có giá).",
+          "specs": {
+            "burr": "65mm special steel",
+            "motor_power": "220-240V: 440W; 110-127V: 580W; 100V: 510W",
+            "hopper_capacity_g": "~1200 (standard)",
+            "dimensions_cm_whd": "19.5 x 58.3 x 28.3",
+            "weight_kg": "11.2 (net)",
+            "grinding_capacity": "4-7 g/s (tùy độ nghiền)",
+            "burr_life_kg": "~800 (median setting)",
+            "recipes": "Lưu tới 6 công thức xay"
+          },
+          "price_usd": null,
+          "price_public": false,
+          "price_gap_note": "Giá KHÔNG hiển thị công khai trên trang này — khác với các model khác cùng dòng đều có giá. Cần liên hệ đại lý.",
+          "seo": {
+            "seo_title": "E65S Espresso grinder | Mahlkönig USA",
+            "seo_description": null,
+            "seo_description_gap_note": "Không tìm thấy meta description trong HTML — cần kiểm tra thủ công.",
+            "image_url": "https://www.mahlkoenig.us/cdn/shop/files/E65S-Black_560x700.webp?v=1747335535"
+          }
+        }
+      ]
+    },
+    {
+      "group_name": "Allround / Shop Grinders",
+      "group_name_vi": "Máy Xay Đa Năng / Cửa Hàng (Allround)",
+      "taxonomy_note": "Dòng máy xay 'tất cả trong một' cho phin/filter/cold brew/espresso, đĩa nghiền lớn (71-98mm), công suất cao — dùng cho quán cà phê rang xay bán lẻ, quầy pha chế lưu lượng lớn. EK43 là model biểu tượng, được mô tả là 'the undisputed queen of coffee grinders'.",
+      "source_urls": ["https://www.mahlkoenig.us/collections/grinders"],
+      "models": [
+        {
+          "model": "EK43",
+          "full_name": "EK43 Allround Shop Coffee Grinder",
+          "source_url": "https://www.mahlkoenig.us/products/ek43",
+          "specs": {
+            "burr": "98mm premium cast steel, gắn dọc (vertically mounted), độ cứng 64-66 HRC, phun bi thủy tinh (glass bead-blasted finish)",
+            "motor_power": "1300W, lên tới 1760 RPM (60Hz)",
+            "hopper_capacity_g": "~1200 (standard); tùy chọn 250 hoặc 1800",
+            "dimensions_cm_whd": "23 x 82.8 x 41",
+            "weight_kg": "26 (net)",
+            "grinding_capacity": "19-21 g/s (filter); 10-12 g/s (Turkish fine)",
+            "burr_life_kg": "~6000 (median setting)"
+          },
+          "price_usd": 3899.00,
+          "price_public": true,
+          "seo": {
+            "seo_title": "EK43 Allround Shop Coffee Grinder | Mahlkönig USA",
+            "seo_description": null,
+            "seo_description_gap_note": "Không tìm thấy meta description trong HTML — cần kiểm tra thủ công.",
+            "image_url": "https://www.mahlkoenig.us/cdn/shop/files/EK43-Black-square_700x700.webp?v=1775605273"
+          }
+        },
+        {
+          "model": "EK43 S",
+          "full_name": "EK43 S Allround Shop Grinder",
+          "source_url": "https://www.mahlkoenig.us/products/ek43-s",
+          "note": "Phiên bản thân máy nhỏ gọn hơn (compact) của EK43, cùng công nghệ xay lõi.",
+          "specs": {
+            "burr": "98mm premium cast steel",
+            "motor_power": "1300W (nominal max)",
+            "hopper_capacity_g": "~250 (standard); tối đa 1800 tùy chọn",
+            "dimensions_cm_whd": "23 x 68 x 41",
+            "weight_kg": "24.5 (net)",
+            "grinding_capacity": "19-21 g/s (standard); 10-12 g/s (Turkish fine)",
+            "burr_life_kg": "~6000 (median setting)",
+            "voltages": "100-120V hoặc 200-240V, 50/60Hz"
+          },
+          "price_usd": 3899.00,
+          "price_public": true,
+          "seo": {
+            "seo_title": "EK43 S Allround Shop Grinder | Mahlkönig USA",
+            "seo_description": null,
+            "seo_description_gap_note": "Không tìm thấy meta description trong HTML — cần kiểm tra thủ công.",
+            "image_url": "https://www.mahlkoenig.us/cdn/shop/files/EK43S-Black-square_700x700.webp?v=1762998209"
+          }
+        },
+        {
+          "model": "EK Omnia",
+          "full_name": "EK Omnia Allround Coffee Grinder",
+          "source_url": "https://www.mahlkoenig.us/products/ek-omnia",
+          "note": "Model 'flagship' mới nhất (đạt giải iF Design Award 2024 + UX Design Award Gold), kế nhiệm/bổ sung dòng EK, có màn hình cảm ứng — chưa thấy giá công khai trên trang.",
+          "specs": {
+            "burr": "98mm cast steel burrs (sản xuất tại Đức)",
+            "burr_life_kg": "~6000 (median setting)",
+            "motor": "750W brushless DC (BLDC)",
+            "hopper_capacity_g": "~250",
+            "grinding_capacity": "11.5-13.5 g/s",
+            "dimensions_cm_whd": "21.4 x 66.3 x 39",
+            "weight_kg": "24 (net)",
+            "voltages": "200-240V 50Hz hoặc 100-120V 60Hz",
+            "features": "Library Mode lưu 10 công thức tự động chỉnh burr; 3 chế độ Classic/Time/Library; màn cảm ứng, tay cầm portafilter gắn nam châm"
+          },
+          "price_usd": null,
+          "price_public": false,
+          "price_gap_note": "Giá không hiển thị công khai trên trang sản phẩm — cần liên hệ đại lý/Mahlkönig.",
+          "seo": {
+            "seo_title": "EK Omnia Allround Coffee Grinder | Mahlkönig USA",
+            "seo_description": null,
+            "seo_description_gap_note": "Không tìm thấy meta description trong HTML — cần kiểm tra thủ công.",
+            "image_url": "https://www.mahlkoenig.us/cdn/shop/files/EKOmnia-BlackPF_560x700.webp?v=1781545862"
+          }
+        },
+        {
+          "model": "Guatemala",
+          "full_name": "Guatemala Allround Shop Coffee Grinder (Guatemala 2.0)",
+          "source_url": "https://www.mahlkoenig.us/products/guatemala-2-0",
+          "note": "URL slug là 'guatemala-2-0' — tên model có hậu tố phiên bản '2.0' dù tên hiển thị trên trang chỉ ghi 'Guatemala'.",
+          "specs": {
+            "burr": "71mm flat special-steel burrs, gắn dọc (vertically mounted)",
+            "motor_power": "1100W",
+            "hopper_capacity_g": "~900",
+            "dimensions_cm_whd": "22 x 62 x 33",
+            "weight_kg": "28 (net) / 30 (gross)",
+            "grinding_capacity": "800-900 g/min (13-15 g/s)",
+            "grind_settings": "20 nấc cố định, từ espresso tới cold brew",
+            "burr_life_kg": "~3000 (median setting)"
+          },
+          "price_usd": 2399.00,
+          "price_public": true,
+          "seo": {
+            "seo_title": "Guatemala Allround Shop Coffee Grinder | Mahlkönig USA",
+            "seo_description": null,
+            "seo_description_gap_note": "Không tìm thấy meta description trong HTML — cần kiểm tra thủ công.",
+            "image_url": "https://www.mahlkoenig.us/cdn/shop/files/Guatemala-Blacksq_700x700.webp?v=1759963183"
+          }
+        }
+      ]
+    },
+    {
+      "group_name": "Home Grinders",
+      "group_name_vi": "Máy Xay Gia Dụng (Home)",
+      "taxonomy_note": "3 model, thiết kế countertop nhỏ gọn cho barista tại nhà, mang công nghệ từ dòng thương mại xuống (Grind-by-Weight/Sync ở E64 WS). Đây là nhóm DUY NHẤT của Mahlkönig có mặt song song trên cả site .us và .com (Đức).",
+      "source_urls": ["https://www.mahlkoenig.us/collections/home-grinder", "https://www.mahlkoenig.com/"],
+      "models": [
+        {
+          "model": "E64 WS",
+          "full_name": "E64 WS Home Espresso Grinder",
+          "source_url": "https://www.mahlkoenig.us/products/e64-ws-espresso-home-grinder",
+          "specs": {
+            "burr": "64mm special steel burrs",
+            "motor_power": "200W (nominal)",
+            "hopper_capacity_g": "~250",
+            "dimensions_cm_whd": "15.4 x 39 x 21.8",
+            "weight_kg": "5.8 (net)",
+            "grinding_speed": "tối thiểu 3 g/s cho espresso",
+            "idle_speed_rpm": 1950,
+            "features": "Grind-by-Weight (chính xác tới 0.1g), Grind-by-Sync kết nối app điều khiển đồng bộ máy pha espresso tương thích"
+          },
+          "price_usd": 1199.00,
+          "price_public": true,
+          "seo": {
+            "seo_title": "E64 WS Home Espresso Grinder | Coffee Grinder | Mahlkönig USA",
+            "seo_description": null,
+            "seo_description_gap_note": "Không tìm thấy meta description trong HTML — cần kiểm tra thủ công.",
+            "image_url": "https://www.mahlkoenig.us/cdn/shop/files/E64-WS-Black-square_700x700.webp?v=1763414639"
+          }
+        },
+        {
+          "model": "X64 SD",
+          "full_name": "X64 SD Single Dose Home Coffee Grinder",
+          "source_url": "https://www.mahlkoenig.us/products/x64-sd-single-dose-home-grinder",
+          "specs": {
+            "burr": "64mm flat burrs, special steel",
+            "motor_power": "200W",
+            "hopper_capacity_g": "30 (standard); 100 (có extension); 80 (có bellow)",
+            "dimensions_cm_whd": "14.3 x 24.9 x 25.3",
+            "weight_kg": "4.8 (net)",
+            "grinding_speed": "2.5-6 g/s (mịn tới thô); tối thiểu 3 g/s cho espresso",
+            "burr_life_kg": "~500",
+            "voltages": "120V/60Hz, 220-240V/50-60Hz, 100V/50-60Hz",
+            "reviews": "4.45/5.0 (59 reviews) — đánh giá tính đến thời điểm cào"
+          },
+          "price_usd": 599.00,
+          "price_public": true,
+          "seo": {
+            "seo_title": "X64 SD Single Dose Home Coffee Grinder | Mahlkönig USA",
+            "seo_description": null,
+            "seo_description_gap_note": "Không tìm thấy meta description trong HTML — cần kiểm tra thủ công.",
+            "image_url": "https://www.mahlkoenig.us/cdn/shop/files/Mahlkonig-X64-SD-Black-Front-Side-sq_700x700.webp?v=1768603217"
+          }
+        },
+        {
+          "model": "X54",
+          "full_name": "X54 Allround Home Coffee Grinder",
+          "source_url": "https://www.mahlkoenig.us/products/x54-allround-home-grinder",
+          "specs": {
+            "burr": "54mm special steel flat burrs",
+            "burr_life_kg": "~500 (median setting)",
+            "motor_power": "120W (nhiều lựa chọn điện áp: 110-120V, 220-240V, 100V)",
+            "motor_lifespan": "25,000+ shots (~30 năm tại 2 shots/ngày)",
+            "hopper_capacity_g": "250 (standard); 500 (tùy chọn)",
+            "grinding_speed": "1.3-3.2 g/s trung bình",
+            "noise_level_db": "dưới 70 dB(A)",
+            "dimensions_cm_whd_250g": "19 x 37.8 x 28",
+            "weight_kg": "5.1 (net)",
+            "reviews": "4.68/5.0 (112 reviews) — đánh giá tính đến thời điểm cào"
+          },
+          "price_usd_range": "599.00 - 649.00",
+          "price_public": true,
+          "finishes": ["Black", "White", "Black Chrome"],
+          "seo": {
+            "seo_title": "X54 Allround Home Coffee Grinder | Mahlkönig USA",
+            "seo_description": null,
+            "seo_description_gap_note": "Không tìm thấy meta description trong HTML — cần kiểm tra thủ công.",
+            "image_url": "https://www.mahlkoenig.us/cdn/shop/files/Mahlkoenig_X54_Allround_Home_Grinder_black_front_main_700x700.webp?v=1765319236"
+          }
+        }
+      ]
+    },
+    {
+      "group_name": "Legacy / Discontinued Models (parts-only)",
+      "group_name_vi": "Model Cũ Đã Ngừng Bán (chỉ còn phụ tùng)",
+      "taxonomy_note": "Các model này KHÔNG còn bán trên mahlkoenig.us — chỉ còn trang collection phụ tùng thay thế (spare parts). Xác nhận qua WebSearch, CHƯA WebFetch riêng từng trang collection để lấy chi tiết. Không đưa vào danh mục sản phẩm mới của site — chỉ ghi chú để tránh nhầm lẫn nếu khách hàng cũ hỏi phụ tùng.",
+      "models_confirmed_discontinued": [
+        { "model": "K30 2.0", "status": "Ngừng bán, còn phụ tùng", "spare_parts_url": "https://www.mahlkoenig.us/collections/spare-parts-for-k30-2-0" },
+        { "model": "K30 ES / VARIO", "status": "Ngừng bán, còn phụ tùng", "spare_parts_url": "https://www.mahlkoenig.us/collections/k30-es-vario" },
+        { "model": "K30 VARIO Air", "status": "Ngừng bán, còn phụ tùng", "spare_parts_url": "https://www.mahlkoenig.us/collections/k30-vario-air" },
+        { "model": "K30 TWIN", "status": "Ngừng bán, còn phụ tùng", "spare_parts_url": "https://www.mahlkoenig.us/collections/k30-twin" },
+        { "model": "PEAK", "status": "Ngừng bán, còn phụ tùng", "spare_parts_url": "https://www.mahlkoenig.us/collections/peak" },
+        { "model": "EKK43", "status": "Ngừng bán, còn phụ tùng", "spare_parts_url": "https://www.mahlkoenig.us/collections/ekk43" }
+      ],
+      "note_vta6s_tanzania": "Trang /collections/spare-parts liệt kê tên 'VTA 6S' và 'Tanzania' như model shop grinder cũ trong text tóm tắt của agent tìm kiếm — CHƯA xác minh độc lập bằng WebFetch trực tiếp collection page, gắn cờ chưa xác minh."
+    }
+  ],
+  "sibling_brands_not_mahlkonig_excluded": {
+    "note": "Site mahlkoenig.us có mục 'Hemro Group Brand Portfolio' bán các thương hiệu CÙNG tập đoàn Hemro nhưng KHÔNG mang tên Mahlkönig — đã loại khỏi danh sách model trên vì không phải sản phẩm Mahlkönig thật:",
+    "brands_seen": ["Anfim (Ý) — model Luna, Alba", "HeyCafé — model Buddy, Jack, HC-880 LAB, HC-880 LAB S", "Ditting (Thụy Sĩ) — model 807, 807 Filter, 1203, 1827 Industrial"],
+    "source_url": "https://www.mahlkoenig.us/collections/hemro-group-brand-portfolio"
+  },
+  "vietnam_market_context": {
+    "note": "KHÔNG tìm thấy site khu vực Việt Nam/Đông Nam Á hoặc trang phân phối chính hãng của Mahlkönig cho Việt Nam. mahlkoenig.com (Đức) chỉ ship nội địa Đức; mahlkoenig.us (Mỹ) không đề cập vận chuyển quốc tế tới VN.",
+    "distributor_page_not_checked": "mahlkoenig.us có mục nav 'Distributors' (trên bản .com) chưa được WebFetch riêng trong lần cào này — cần fetch thêm nếu muốn tìm nhà phân phối khu vực châu Á/VN chính thức.",
+    "caution": "Chưa xác nhận bất kỳ đơn vị phân phối chính hãng Mahlkönig nào tại Việt Nam qua nghiên cứu này."
+  },
+  "pricing_status": "KHÁC với Giorik — Mahlkönig CÔNG BỐ GIÁ CÔNG KHAI bằng USD trên mahlkoenig.us cho hầu hết model (bán trực tiếp qua Shopify store, có nút mua, hiển thị tồn kho). Ngoại lệ: E65S và EK Omnia KHÔNG hiển thị giá trên trang sản phẩm — cần liên hệ đại lý. Giá là giá bán lẻ tại Mỹ (USD), KHÔNG phải giá thị trường Việt Nam — cần quy đổi + cộng thuế nhập khẩu/vận chuyển khi lên giá VNĐ cho site.",
+  "open_questions_for_user": [
+    "CHƯA GIẢI QUYẾT: Meta description (SEO) không lộ ra qua WebFetch (converts to markdown, có thể do tool đơn giản hóa hoặc trang thực sự không có thẻ meta description) cho TẤT CẢ 11 model hiện hành — cần kiểm tra view-source thủ công hoặc tự soạn seo_description khi đăng sản phẩm lên site.",
+    "CHƯA GIẢI QUYẾT: E80S và E65S không xuất hiện trong menu điều hướng chính /collections/all dù trang sản phẩm vẫn còn sống — chưa rõ đây là model đang rút khỏi lineup, sắp ra mắt lại, hay chỉ là lỗi liên kết menu. E80S đang hết hàng tại thời điểm cào.",
+    "CHƯA GIẢI QUYẾT: Giá E65S và EK Omnia không công khai — cần liên hệ Mahlkönig/đại lý.",
+    "CHƯA GIẢI QUYẾT: Chưa xác nhận nhà phân phối chính hãng Mahlkönig tại Việt Nam — trang 'Distributors' trên site .com chưa được fetch riêng lần này.",
+    "CHƯA GIẢI QUYẾT: 'VTA 6S' và 'Tanzania' (tên model cũ nhắc tới trong tóm tắt trang spare-parts) chưa được xác minh độc lập bằng WebFetch trực tiếp — chỉ là gợi ý từ tóm tắt AI của công cụ tìm kiếm.",
+    "CHƯA GIẢI QUYẾT: Giá niêm yết là giá USD bán lẻ tại Mỹ — chưa có giá tham chiếu cho thị trường Việt Nam, cần công thức quy đổi (tỷ giá + thuế nhập khẩu + phí vận chuyển + biên lợi nhuận đại lý) trước khi đăng giá VNĐ lên site.",
+    "CHƯA GIẢI QUYẾT: Ảnh sản phẩm lấy từ CDN Shopify của Mahlkönig (mahlkoenig.us/cdn/shop/files/...) — cần xác nhận quyền sử dụng ảnh chính hãng (bản quyền) trước khi tải về dùng thương mại trên site reseller, hoặc xin bộ ảnh catalog chính thức từ Mahlkönig/Hemro Group."
+  ]
+}

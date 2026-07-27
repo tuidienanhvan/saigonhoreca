@@ -1,1 +1,96 @@
-/** bep-canteen-nha-may-sheh-fung — partnership slot (no content). */
+/**
+ * bep-canteen-nha-may-sheh-fung — Section #4: partnership
+ * Reuses the shared .pp-split-shf--reverse layout (owned by concept.css).
+ * Adds the ventilation feature list with timeline-style bolt icons.
+ * Direction: Industrial Factory Canteen. 100% tokens, zero hardcoded hex.
+ */
+
+/* section index watermark on the left for this reverse layout */
+.pp-section-num-shf--left {
+  right: auto;
+  left: clamp(1rem, 5vw, 4rem);
+}
+
+/* ===== Feature point list ===== */
+.pp-partnership-shf__points {
+  list-style: none;
+  margin: 0.5rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.pp-partnership-shf__point {
+  position: relative;
+  display: flex;
+  gap: 1.1rem;
+  align-items: flex-start;
+  padding-left: 1.1rem;
+}
+/* vertical timeline rail that lights up on hover */
+.pp-partnership-shf__point::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0.2rem; bottom: 0.2rem;
+  width: 2px;
+  border-radius: 2px;
+  background: color-mix(in srgb, var(--bc) 8%, transparent);
+  transition: background-color 0.4s var(--ease-spring);
+}
+.pp-partnership-shf__point:hover::before { background: var(--gold); }
+
+/* icon plate */
+.pp-partnership-shf__point-icon {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: var(--radius-sm);
+  color: var(--gold);
+  background: color-mix(in srgb, var(--gold) 5%, transparent);
+  border: 1px solid color-mix(in srgb, var(--gold) 24%, transparent);
+  transition:
+    transform 0.4s var(--ease-spring),
+    border-color 0.4s var(--ease-spring),
+    background-color 0.4s var(--ease-spring),
+    box-shadow 0.4s var(--ease-spring);
+}
+.pp-partnership-shf__point-icon svg { width: 1.35rem; height: 1.35rem; display: block; }
+.pp-partnership-shf__point:hover .pp-partnership-shf__point-icon {
+  transform: translateY(-3px) rotate(-4deg);
+  border-color: var(--gold);
+  background: color-mix(in srgb, var(--gold) 12%, transparent);
+  box-shadow: 0 0 16px color-mix(in srgb, var(--gold) 22%, transparent);
+}
+
+.pp-partnership-shf__point-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.pp-partnership-shf__point-text strong {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 1.4vw, 1.12rem);
+  font-weight: 700;
+  color: var(--bc);
+  letter-spacing: -0.005em;
+  transition: color 0.3s var(--ease-spring);
+}
+.pp-partnership-shf__point:hover .pp-partnership-shf__point-text strong { color: var(--gold); }
+.pp-partnership-shf__point-text span {
+  font-size: clamp(0.92rem, 1.05vw, 1rem);
+  line-height: 1.75;
+  color: var(--bc2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pp-partnership-shf__point::before,
+  .pp-partnership-shf__point-icon,
+  .pp-partnership-shf__point-text strong {
+    transition: none !important;
+  }
+}

@@ -1,7 +1,7 @@
 <?php
 /**
  * Single Project Template — MÂM MÂM EATERY & LOUNGE
- * Thumbnail: mam-mam-eatery-lounge-nang-tam-mam-com-viet/mam-mam-nang-tam-mam-com-viet-1-1-150x150.webp
+ * Thumbnail: mam-mam-eatery-lounge-nang-tam-mam-com-viet/mam-mam-eatery-lounge-nang-tam-mam-com-viet-thumbnail-project-cover.webp
  *
  * Auto-routed via inc/core/pillar-routes.php for /du-an/mam-mam-eatery-lounge-nang-tam-mam-com-viet/.
  *

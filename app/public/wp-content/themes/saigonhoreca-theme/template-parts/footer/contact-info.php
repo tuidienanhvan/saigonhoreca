@@ -30,9 +30,9 @@ $contact = $args['contact'] ?? (function_exists('saigonhouse_get_contact_info') 
         <li class="sh-footer__contact-item">
             <div class="sh-footer__contact-icon"><?php echo sh_icon('mail', 'sh-footer__icon-svg'); ?></div>
             <div>
-                <a href="mailto:<?php echo esc_attr($contact['email_primary']); ?>" class="sh-footer__contact-link"><?php echo esc_html($contact['email_primary']); ?></a>
+                <a href="mailto:<?php echo esc_attr($contact['email_primary']); ?>" class="sh-footer__contact-highlight-link"><?php echo esc_html($contact['email_primary']); ?></a>
                 <?php if (!empty($contact['email_secondary'])) : ?>
-                <a href="mailto:<?php echo esc_attr($contact['email_secondary']); ?>" class="sh-footer__contact-sub-link"><?php echo esc_html($contact['email_secondary']); ?></a>
+                <a href="mailto:<?php echo esc_attr($contact['email_secondary']); ?>" class="sh-footer__contact-sub-link2"><?php echo esc_html($contact['email_secondary']); ?></a>
                 <?php endif; ?>
             </div>
         </li>
@@ -40,7 +40,7 @@ $contact = $args['contact'] ?? (function_exists('saigonhouse_get_contact_info') 
 
         <?php if (!empty($contact['website'])) : ?>
         <li class="sh-footer__contact-item">
-            <div class="sh-footer__contact-icon"><?php echo sh_icon('maximize', 'sh-footer__icon-svg'); ?></div>
+            <div class="sh-footer__contact-icon"><?php echo sh_icon('globe', 'sh-footer__icon-svg'); ?></div>
             <div>
                 <a href="<?php echo esc_url($contact['website']); ?>" class="sh-footer__contact-link"><?php echo esc_html($contact['website']); ?></a>
                 <?php if (!empty($contact['mst'])) : ?>

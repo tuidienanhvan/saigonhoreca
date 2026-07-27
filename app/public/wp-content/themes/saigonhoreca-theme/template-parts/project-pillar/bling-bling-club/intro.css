@@ -229,19 +229,9 @@
 .pp-gallery-bbc__item {
   position: relative;
   aspect-ratio: 4 / 3;
-  overflow: hidden;
-  background: var(--b3);
+  background: transparent;
   isolation: isolate;
-  clip-path: polygon(
-    18px 0%,
-    calc(100% - 18px) 0%,
-    100% 18px,
-    100% calc(100% - 18px),
-    calc(100% - 18px) 100%,
-    18px 100%,
-    0% calc(100% - 18px),
-    0% 18px
-  );
+  overflow: visible !important;
   transition:
     transform 0.5s var(--ease-spring),
     filter   0.5s var(--ease-spring);
@@ -259,7 +249,16 @@
     color-mix(in srgb, var(--gold) 8%, transparent) 50%,
     color-mix(in srgb, var(--gold) 55%, transparent)
   );
-  clip-path: inherit;
+  clip-path: polygon(
+    18px 0%,
+    calc(100% - 18px) 0%,
+    100% 18px,
+    100% calc(100% - 18px),
+    calc(100% - 18px) 100%,
+    18px 100%,
+    0% calc(100% - 18px),
+    0% 18px
+  );
   opacity: 0;
   transition: opacity 0.45s var(--ease-spring);
 }
@@ -317,6 +316,16 @@
   object-fit: cover;
   display: block;
   filter: saturate(1.08) contrast(1.04);
+  clip-path: polygon(
+    18px 0%,
+    calc(100% - 18px) 0%,
+    100% 18px,
+    100% calc(100% - 18px),
+    calc(100% - 18px) 100%,
+    18px 100%,
+    0% calc(100% - 18px),
+    0% 18px
+  );
   transition: transform 0.8s var(--ease-spring), filter 0.6s var(--ease-spring);
 }
 .pp-gallery-bbc__item:hover img {
@@ -352,6 +361,11 @@
     top: -0.6rem;
   }
   .pp-gallery-bbc__item {
+    clip-path: none;
+  }
+  .pp-gallery-bbc__item img,
+  .pp-gallery-bbc__item::before,
+  .pp-gallery-bbc__item .gold-glamour-border {
     clip-path: polygon(
       12px 0%, calc(100% - 12px) 0%,
       100% 12px, 100% calc(100% - 12px),
@@ -593,7 +607,16 @@
   border: 1.5px solid transparent;
   pointer-events: none;
   transition: border-color 0.4s ease, box-shadow 0.4s ease;
-  clip-path: inherit;
+  clip-path: polygon(
+    18px 0%,
+    calc(100% - 18px) 0%,
+    100% 18px,
+    100% calc(100% - 18px),
+    calc(100% - 18px) 100%,
+    18px 100%,
+    0% calc(100% - 18px),
+    0% 18px
+  );
 }
 
 .pp-gallery-bbc__item:hover .gold-glamour-border {

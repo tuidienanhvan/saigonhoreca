@@ -18,20 +18,35 @@
    half. We crop to a wide cinematic ratio (~21:9 desktop, ~16:9
    mobile) and anchor object-position near the TOP so the
    baked-in caption is sliced off cleanly. */
-/* Match production: show full 16:9 banner image (chữ baked-in vẫn hiện). */
+/* Match production: show full 16:9 banner image (chữ baked-in vẫn hiện). 
+   Cập nhật: Thiết lập chiều cao đẹp nhất 607px (từ màn hình screen của Edge trừ đi header). */
 .sh-hero {
     background: var(--bg-dark);
-    aspect-ratio: 16 / 9;
+    height: calc(100vh - 76px); /* Hero height canon — cao bằng project hero */
+    height: calc(100dvh - 76px); /* Dynamic viewport height hỗ trợ mobile tốt hơn */
+    min-height: 620px;
     width: 100%;
     position: relative;
     overflow: hidden;
 }
+@media (max-width: 1024px) {
+    .sh-hero {
+        height: 80dvh;
+        min-height: 560px;
+    }
+}
+@media (max-width: 768px) {
+    .sh-hero {
+        height: 70dvh;
+        min-height: 520px;
+    }
+}
 
 /* ── Slider container ── */
 .sh-hero__slider {
-    --sh-ken-burns-duration: 6s;
+    --sh-ken-burns-duration: 8s; /* Làm chuyển động Ken Burns chậm hơn để tăng tính sang trọng */
     --sh-ken-burns-scale-start: 1;
-    --sh-ken-burns-scale-end: 1.12;
+    --sh-ken-burns-scale-end: 1.08; /* Giảm tỷ lệ zoom tối đa để tránh vỡ ảnh */
     background: var(--bg-dark);
     width: 100%;
     height: 100%;
@@ -74,8 +89,6 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* Anchor near the TOP so the baked-in caption (lower half
-       of the JPG) is cropped out at every viewport width. */
     object-position: center;
     transform: scale(var(--sh-ken-burns-scale-start));
     transform-origin: center;
@@ -97,19 +110,163 @@
     to   { transform: scale(var(--sh-ken-burns-scale-end)); }
 }
 
-/* ── Diagonal soft overlay (so the baked-in caption text stays readable
-   on bright spots of the image) ── */
+/* ── Diagonal soft overlay (tăng độ đen để che khuyết điểm của ảnh WebP bị vỡ) ── */
 .sh-hero__overlay {
     z-index: 1;
     background: linear-gradient(
-        90deg,
-        rgba(0, 0, 0, 0.55) 0%,
-        rgba(0, 0, 0, 0.30) 40%,
-        rgba(0, 0, 0, 0.15) 100%
+        to bottom,
+        rgba(0, 0, 0, 0.5) 0%,
+        rgba(0, 0, 0, 0.6) 50%,
+        rgba(0, 0, 0, 0.7) 100%
     );
     position: absolute;
     inset: 0;
     pointer-events: none;
+}
+
+/* ── Dynamic Text & Actions Overlay ── */
+.sh-hero__content-box {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 2rem 5% 4rem 7.5%; /* Tăng khoảng đệm bên trái (7.5%) để đẩy chữ tránh đè lên nút điều hướng Prev */
+    pointer-events: none;
+}
+.sh-hero__content-box--bottom {
+    align-items: flex-end;
+    padding-bottom: 10vh;
+}
+@media (max-width: 768px) {
+    .sh-hero__content-box {
+        padding: 2rem 1.5rem; /* Trên mobile thì để padding vừa vặn hơn giúp chữ rộng rãi */
+    }
+    .sh-hero__content-box--bottom {
+        padding-bottom: 12vh;
+    }
+}
+
+.sh-hero__container {
+    max-width: 680px;
+    width: 100%;
+    pointer-events: auto; /* Kích hoạt lại click cho button */
+}
+
+/* Transition động khi slide active */
+.sh-hero__title,
+.sh-hero__subtitle,
+.sh-hero__actions {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.carousel-slide.active .sh-hero__title {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.2s;
+}
+
+.carousel-slide.active .sh-hero__subtitle {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.4s;
+}
+
+.carousel-slide.active .sh-hero__actions {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.6s;
+}
+
+/* Typography styles */
+.sh-hero__title {
+    font-family: var(--font-display);
+    font-size: clamp(24px, 4.5vw, 42px);
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.15;
+    letter-spacing: 0.03em;
+    margin-bottom: 1.25rem;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+    text-transform: uppercase;
+}
+
+.sh-hero__subtitle {
+    font-family: var(--font-sans);
+    font-size: clamp(14px, 1.6vw, 17px);
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 2rem;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    max-width: 90%;
+}
+
+.sh-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+}
+.sh-hero__actions--bottom {
+    margin-top: auto;
+}
+
+/* Buttons style */
+.sh-hero__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.875rem 2rem;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 9999px;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.sh-hero__btn--primary {
+    background: var(--brand);
+    color: var(--brand-content);
+    border: 1px solid var(--brand);
+}
+
+.sh-hero__btn--primary:hover {
+    background: var(--brand-hover);
+    border-color: var(--brand-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(245, 166, 35, 0.25);
+}
+
+.sh-hero__btn--secondary {
+    background: transparent;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.sh-hero__btn--secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #ffffff;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 576px) {
+    .sh-hero__actions {
+        flex-wrap: nowrap;
+        gap: 0.5rem;
+    }
+    .sh-hero__btn {
+        flex: 1;
+        padding: 0.65rem 0.5rem;
+        font-size: 11px;
+        letter-spacing: 0.04em;
+        white-space: nowrap;
+    }
 }
 
 /* ── Navigation arrows ── */

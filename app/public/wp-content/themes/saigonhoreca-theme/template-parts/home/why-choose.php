@@ -51,7 +51,7 @@ $icon_star  = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><
         </div>
 
         <!-- Col 3: 2 USPs -->
-        <div class="sh-why-choose__col sh-why-choose__col--right scroll-reveal reveal-blur-right duration-2000 delay-500">
+        <div class="sh-why-choose__col sh-why-choose__col--right scroll-reveal reveal-spring-right duration-2000 delay-500">
             <div class="sh-why-choose__usp">
                 <span class="sh-why-choose__usp-icon"><?php echo $icon_handshake; ?></span>
                 <h3 class="sh-why-choose__usp-title"><?php esc_html_e('Dịch vụ toàn diện và chuyên nghiệp', 'saigonhoreca'); ?></h3>

@@ -1,9 +1,25 @@
 /**
  * sol-kitchen-bar-saigon-horeca — concept slot.
- * Editorial magazine layout: large image + glass card overlapping its edge.
- * Techniques: clamp, color-mix, backdrop-filter, negative-margin depth, pills.
+ * Editorial magazine layout: large image + glass card overlapping its edge,
+ * numbered watermark accent.
+ * Techniques: clamp, color-mix, backdrop-filter, negative-margin depth, pills,
+ *             aspect-ratio, watermark, hover transitions, prefers-reduced-motion.
  * @package SaigonHoreca
  */
+
+.pp-concept-solshr__watermark {
+  position: absolute;
+  top: -3.5rem;
+  left: 1.5rem;
+  z-index: 0;
+  font-family: var(--font-display);
+  font-size: clamp(11rem, 22vw, 22rem);
+  font-weight: 800;
+  line-height: 1;
+  color: color-mix(in srgb, var(--solshr-sun) 4%, transparent);
+  pointer-events: none;
+  user-select: none;
+}
 
 .pp-concept-solshr__layout {
   display: grid;
@@ -76,4 +92,15 @@
   font-size: 0.68rem;
   letter-spacing: 0.07em;
   text-transform: uppercase;
+  transition: border-color 0.4s var(--ease-spring), color 0.4s var(--ease-spring), transform 0.4s var(--ease-spring);
+}
+.pp-concept-solshr__signals span:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--solshr-sun) 50%, transparent);
+  color: color-mix(in srgb, var(--solshr-sun) 80%, var(--bc));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pp-concept-solshr__signals span { transition: none !important; }
+  .pp-concept-solshr__signals span:hover { transform: none !important; }
 }

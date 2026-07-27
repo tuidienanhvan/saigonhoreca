@@ -24,19 +24,11 @@ $uri = get_template_directory_uri();
 
     <div class="pp-gallery-mam pp-gallery-mam--cols-4 scroll-reveal">
       <div class="pp-image-container-shared pp-gallery-mam__item">
-        <img src="<?php echo sgh_img('mam-mam-eatery-lounge-nang-tam-mam-com-viet/mam-mam-nang-tam-mam-com-viet-1-1.jpg'); ?>" alt="<?php echo esc_attr__('Không gian Mâm Mâm Eatery & Lounge về đêm', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
+        <img src="<?php echo sgh_img('mam-mam-eatery-lounge-nang-tam-mam-com-viet/mam-mam-quay-bar-thap-rot-bia-inox-tu-mat.webp'); ?>" alt="<?php echo esc_attr__('Quầy bar đá cong tại Mâm Mâm với tháp rót bia inox, ly thủy tinh và tủ mát kính đèn LED, ánh sáng ban ngày', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
         <div class="pp-image-caption-shared"><?php echo esc_html__('Không gian lounge ấm cúng với điểm nhấn mâm tròn quây quần đậm chất Việt', 'saigonhoreca'); ?></div>
       </div>
       <div class="pp-image-container-shared pp-gallery-mam__item">
-        <img src="<?php echo sgh_img('mam-mam-eatery-lounge-nang-tam-mam-com-viet/mam-mam-nang-tam-mam-com-viet-3.jpg'); ?>" alt="<?php echo esc_attr__('Khu vực bàn ăn Mâm Mâm', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
-        <div class="pp-image-caption-shared"><?php echo esc_html__('Bàn ăn lấy cảm hứng từ chiếc mâm tròn truyền thống của người Việt', 'saigonhoreca'); ?></div>
-      </div>
-      <div class="pp-image-container-shared pp-gallery-mam__item">
-        <img src="<?php echo sgh_img('mam-mam-eatery-lounge-nang-tam-mam-com-viet/mam-mam-nang-tam-mam-com-viet-2.jpg'); ?>" alt="<?php echo esc_attr__('Chi tiết thiết kế Mâm Mâm', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
-        <div class="pp-image-caption-shared"><?php echo esc_html__('Khay tròn trên trần nhà gợi nhớ ánh nắng chiều rơi trên mâm cơm quê', 'saigonhoreca'); ?></div>
-      </div>
-      <div class="pp-image-container-shared pp-gallery-mam__item">
-        <img src="<?php echo sgh_img('mam-mam-eatery-lounge-nang-tam-mam-com-viet/mam-mam-sgh.jpg'); ?>" alt="<?php echo esc_attr__('Không gian ẩm thực Saigon Horeca thiết kế cho Mâm Mâm', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="1366" height="768">
+        <img src="<?php echo sgh_img('mam-mam-eatery-lounge-nang-tam-mam-com-viet/mam-mam-khu-ban-an-ghe-nhung-xanh-bep-mo.webp'); ?>" alt="<?php echo esc_attr__('Khu vực bàn ăn Mâm Mâm với bàn gỗ mặt sơn mài đỏ và ghế nhung xanh ô liu, phía sau là quầy bếp mở do Saigon Horeca thi công', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="1366" height="768">
         <div class="pp-image-caption-shared"><?php echo esc_html__('Tổng thể không gian ăn uống do Saigon Horeca tư vấn và kiến tạo', 'saigonhoreca'); ?></div>
       </div>
     </div>

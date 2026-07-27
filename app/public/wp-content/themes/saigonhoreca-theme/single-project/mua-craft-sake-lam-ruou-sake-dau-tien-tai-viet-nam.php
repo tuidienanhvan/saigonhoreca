@@ -1,7 +1,7 @@
 <?php
 /**
  * Single Project Template — Mùa Craft Sake
- * Thumbnail: mua-craft-sake-lam-ruou-sake-dau-tien-tai-viet-nam/mua-craft-sake-concept-kitchen-150x150.webp
+ * Thumbnail: mua-craft-sake-lam-ruou-sake-dau-tien-tai-viet-nam/mua-craft-sake-lam-ruou-sake-dau-tien-tai-viet-nam-thumbnail-project-cover.webp
  *
  * Auto-routed via inc/core/pillar-routes.php for /du-an/mua-craft-sake-lam-ruou-sake-dau-tien-tai-viet-nam/.
  *

@@ -1,1 +1,255 @@
-/** bep-an-truong-mam-non-tu-thuc-trinh-vuong — specs slot (no content). */
+/**
+ * Project Pillar — Trường Mầm Non Trinh Vương
+ * Section #5: specs styling (Clean Dashboard Spec · soft inox cards · sáng-bóng parallax)
+ * 100% tokens · zero hardcoded hex. Pastel accents via color-mix(var(--su)/var(--gold)).
+ */
+
+.pp-specs-tvg {
+  position: relative;
+  padding: clamp(4rem, 8vw, 7.5rem) 0 0;
+  background-color: var(--b1);
+  overflow: hidden;
+}
+
+.pp-specs-tvg__head {
+  max-width: 760px;
+  margin: 0 auto clamp(2.5rem, 5vw, 4rem);
+  text-align: center;
+}
+
+.pp-specs-tvg__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.4rem 0.95rem;
+  border-radius: var(--radius-full);
+  font-family: var(--font-display);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--su) 60%, var(--bc));
+  background: color-mix(in srgb, var(--su) 12%, transparent);
+  border: 1.5px solid color-mix(in srgb, var(--su) 30%, transparent);
+  margin-bottom: 1.1rem;
+}
+.pp-specs-tvg__badge-dot {
+  width: 7px; height: 7px;
+  border-radius: var(--radius-full);
+  background: color-mix(in srgb, var(--su) 80%, transparent);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--su) 60%, transparent);
+}
+
+.pp-specs-tvg__title {
+  margin: 0 0 1rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.65rem, 3.2vw, 2.5rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  color: var(--bc);
+}
+.pp-specs-tvg__lead {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: clamp(0.96rem, 1.12vw, 1.06rem);
+  line-height: 1.8;
+  color: var(--bc2);
+}
+
+/* ── Clean dashboard grid ── */
+.pp-specs-tvg__dashboard {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  margin-bottom: clamp(3.5rem, 7vw, 6rem);
+}
+@media (min-width: 600px) {
+  .pp-specs-tvg__dashboard { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 992px) {
+  .pp-specs-tvg__dashboard { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Soft inox card — bo viền mịn màng, bảng đo lường thanh lịch (dossier) */
+.pp-specs-tvg__card {
+  position: relative;
+  padding: 1.75rem 1.6rem;
+  border-radius: 22px;
+  background: linear-gradient(
+    160deg,
+    color-mix(in srgb, var(--bc) 6%, var(--b2)) 0%,
+    var(--b2) 60%
+  );
+  border: 1.5px solid color-mix(in srgb, var(--bc) 9%, transparent);
+  box-shadow:
+    0 14px 34px rgba(0, 0, 0, 0.22),
+    inset 0 1px 0 color-mix(in srgb, var(--bc) 10%, transparent);
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  overflow: hidden;
+  transition: transform 0.45s var(--ease-spring), border-color 0.45s, box-shadow 0.45s;
+}
+.pp-specs-tvg__card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--su) 70%, transparent), transparent 70%);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s var(--ease-spring);
+}
+.pp-specs-tvg__card:hover {
+  transform: translateY(-6px);
+  border-color: color-mix(in srgb, var(--su) 40%, transparent);
+  box-shadow:
+    0 24px 48px rgba(0, 0, 0, 0.28),
+    0 0 0 1px color-mix(in srgb, var(--su) 26%, transparent);
+}
+.pp-specs-tvg__card:hover::before { transform: scaleX(1); }
+
+.pp-specs-tvg__icon {
+  width: 3rem;
+  height: 3rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  background: color-mix(in srgb, var(--su) 12%, transparent);
+  border: 1.5px solid color-mix(in srgb, var(--su) 26%, transparent);
+  color: color-mix(in srgb, var(--su) 75%, var(--bc));
+  transition: transform 0.45s var(--ease-spring);
+}
+.pp-specs-tvg__icon svg { width: 1.5rem; height: 1.5rem; display: block; }
+.pp-specs-tvg__card:hover .pp-specs-tvg__icon { transform: scale(1.08) rotate(-4deg); }
+
+.pp-specs-tvg__card-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--bc);
+}
+.pp-specs-tvg__card-desc {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--bc2);
+  flex: 1;
+}
+
+.pp-specs-tvg__tag {
+  align-self: flex-start;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-full);
+}
+.pp-specs-tvg__tag--mint {
+  color: color-mix(in srgb, var(--su) 70%, var(--bc));
+  background: color-mix(in srgb, var(--su) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--su) 28%, transparent);
+}
+.pp-specs-tvg__tag--gold {
+  color: color-mix(in srgb, var(--gold) 88%, var(--bc));
+  background: color-mix(in srgb, var(--gold) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--gold) 30%, transparent);
+}
+
+/* ── Parallax band — clean, sáng bóng 100%, reliable via background-attachment:fixed ── */
+.pp-specs-tvg__parallax {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 80vh;
+  display: flex;
+  align-items: flex-end;
+}
+/* Reliable parallax bg: absolute (clipped to this band) with background-attachment:fixed pinning the photo to the viewport. No JS. */
+.pp-specs-tvg__parallax-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  pointer-events: none;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* reliable parallax — bg fixed to viewport, auto-clipped to this box */
+}
+/* LIGHT token overlay — only a soft bottom fade so the caption stays readable, không phủ đen toàn ảnh */
+.pp-specs-tvg__parallax-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(
+    to top,
+    color-mix(in srgb, var(--b1) 55%, transparent) 0%,
+    transparent 32%
+  );
+}
+
+.pp-specs-tvg__parallax-caption {
+  position: relative;
+  z-index: 2;
+  max-width: 560px;
+  margin: 0 0 clamp(2rem, 5vw, 4rem) clamp(1.5rem, 6vw, 5rem);
+  padding: 1.5rem 1.75rem;
+  border-radius: 24px;
+  background: color-mix(in srgb, var(--b1) 55%, transparent);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  border: 1.5px solid color-mix(in srgb, var(--su) 24%, transparent);
+  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.4);
+}
+.pp-specs-tvg__parallax-tag {
+  display: inline-block;
+  margin-bottom: 0.6rem;
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--b1);
+  background: color-mix(in srgb, var(--su) 78%, var(--gold));
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-full);
+}
+.pp-specs-tvg__parallax-caption p {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+  line-height: 1.7;
+  color: var(--bc);
+}
+
+/* Mobile fallback: background-attachment:fixed is janky on touch — scroll the bg with the page instead */
+@media (max-width: 991px) {
+  .pp-specs-tvg__parallax { min-height: 60vh; }
+}
+@media (max-width: 768px) {
+  .pp-specs-tvg__parallax-bg {
+    position: absolute;
+    background-attachment: scroll;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pp-specs-tvg__card,
+  .pp-specs-tvg__icon,
+  .pp-specs-tvg__card::before {
+    transition: none !important;
+    animation: none !important;
+  }
+  .pp-specs-tvg__parallax-bg { position: absolute; width: 100%; height: 100%; }
+}

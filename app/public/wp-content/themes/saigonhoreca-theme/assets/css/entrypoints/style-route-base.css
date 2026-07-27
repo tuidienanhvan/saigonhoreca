@@ -3,17 +3,17 @@
    contact / about / single / archive component CSS. Other pages keep
    the full bundle via `assets/css/dist/theme.css`. */
 
+@import "tailwindcss" source(none);
 @import "../_tokens.css";
 @import "../imports/_imports-route-core.css";
-@import "tailwindcss" source(none);
 
 /* Scan the same source files as the main build so Tailwind utilities
    referenced anywhere on the front-page render path still emit. */
 @source "../../../*.php";
-@source "../../inc/**/*.php";
-@source "../../page-templates/**/*.php";
-@source "../../template-parts/**/*.php";
-@source "../../assets/js/*.js";
+@source "../../../inc/**/*.php";
+@source "../../../page-templates/**/*.php";
+@source "../../../template-parts/**/*.php";
+@source "../../../assets/js/*.js";
 
 /* Pull in everything from style.css below the imports so design tokens,
    light/dark themes, base layer rules, scrollbar styles, and the

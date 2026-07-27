@@ -37,8 +37,8 @@ if (!defined('ABSPATH')) exit;
               <dd class="pp-specs-solq7__value"><?php echo esc_html__('Hút & Cấp gió song song', 'saigonhoreca'); ?></dd>
             </div>
             <div class="pp-specs-solq7__item">
-              <dt class="pp-specs-solq7__label"><?php echo esc_html__('Tiêu chuẩn kỹ thuật', 'saigonhoreca'); ?></dt>
-              <dd class="pp-specs-solq7__value"><?php echo esc_html__('Michelin-Grade Standard', 'saigonhoreca'); ?></dd>
+              <dt class="pp-specs-solq7__label"><?php echo esc_html__('Hiệu quả vận hành', 'saigonhoreca'); ?></dt>
+              <dd class="pp-specs-solq7__value"><?php echo esc_html__('Khử mùi & lưu thông khí liên tục', 'saigonhoreca'); ?></dd>
             </div>
           </dl>
         </div>
@@ -50,11 +50,11 @@ if (!defined('ABSPATH')) exit;
 
         <div class="pp-specs-solq7__collage">
           <div class="pp-image-container-shared pp-specs-solq7__frame pp-specs-solq7__frame--main">
-            <img src="<?php echo sgh_img('renovate-sol-kitchen-bar-quan-7/chup-hut-8m-1-1.jpg'); ?>" alt="<?php echo esc_attr__('Hệ thống chụp hút khói khu nấu chính 8m - Saigon Horeca', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
+            <img src="<?php echo sgh_img('renovate-sol-kitchen-bar-quan-7/sol-kitchen-bar-q7-chup-hut-inox-8m-dang-lap-dat.webp'); ?>" alt="<?php echo esc_attr__('Hệ thống chụp hút khói inox dài 8m cho khu nấu chính đang được lắp đặt tại công trường thi công bếp Sol Kitchen & Bar Quận 7', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
             <div class="pp-image-caption-shared"><?php echo esc_html__('Hệ thống chụp hút khói khu nấu chính dài 8m, hút khói và cấp gió tươi song song để giữ luồng khí lưu thông liên tục.', 'saigonhoreca'); ?></div>
           </div>
           <div class="pp-image-container-shared pp-specs-solq7__frame pp-specs-solq7__frame--float">
-            <img src="<?php echo sgh_img('renovate-sol-kitchen-bar-quan-7/chup-hut-2m-1.jpg'); ?>" alt="<?php echo esc_attr__('Lắp đặt chụp hút khói khu rửa 2m - Saigon Horeca', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
+            <img src="<?php echo sgh_img('renovate-sol-kitchen-bar-quan-7/sol-kitchen-bar-q7-lap-dat-chup-hut-khoi-inox-2m.webp'); ?>" alt="<?php echo esc_attr__('Thợ Saigon Horeca lắp đặt chụp hút khói inox dài 2m lên trần trong quá trình thi công bếp Sol Kitchen & Bar Quận 7', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
             <div class="pp-image-caption-shared"><?php echo esc_html__('Chụp hút khói khu rửa dài 2m vận hành độc lập, giữ khu vệ sinh luôn khô ráo trong suốt giờ phục vụ.', 'saigonhoreca'); ?></div>
           </div>
         </div>

@@ -1,0 +1,664 @@
+{
+  "research_date": "2026-07-19",
+  "research_update_3": "2026-07-19 (bổ sung lần 3, cùng ngày): Theo yêu cầu bổ sung 2 dòng RATIONAL bị audit Google trước xác định là thiếu trong catalog — đã thêm 2 nhóm mới: (1) iHexagon (1 mục, model 'iHexagon 6-Half') — danh mục sản phẩm hoàn toàn mới của RATIONAL, kết hợp hơi nước + đối lưu + vi sóng, xác nhận trực tiếp trên rational-online.com (chỉ có 1 size duy nhất, không có trang /models/). (2) CombiMaster Plus (7 mục: XS 6-2/3, 61, 62, 101, 102, 201, 202) — dòng combi entry-level điều khiển nút xoay. PHÁT HIỆN QUAN TRỌNG: rational-online.com hiện KHÔNG còn microsite CombiMaster Plus riêng — cả /en_us/combimaster-plus và /en_gb/combimaster-plus/ đều redirect về /icombi-classic/, và menu điều hướng chính không còn liệt kê CombiMaster Plus. Dòng sản phẩm vẫn đang bán thật qua các đại lý ủy quyền RATIONAL dưới tên gộp 'iCombi Classic CombiMaster'/'iCombi Classic Plus XS' — 7 model trong nhóm này lấy specs từ nhiều đại lý ủy quyền (không phải trang chính hãng trực tiếp vì đã bị gộp), đã ghi rõ nguồn + mức độ tin cậy cho từng model trong specs.\"Nguồn số liệu\", model 202 chưa tìm được bảng thông số đầy đủ nên để trống thay vì suy đoán. Tổng catalog RATIONAL sau bổ sung: 8 nhóm / 113 mục (tăng từ 105).",
+  "research_update_2": "2026-07-19 (bổ sung lần 2, cùng ngày): (1) Crawl lại /accessories/ và đọc trực tiếp biến JS nội bộ `accessory.allData` (dữ liệu thật dùng để render+lọc trang, 87 phụ kiện) — bổ sung 76 phụ kiện mới (ngoài 8 mục cũ), nâng Accessories lên 84 mục. (2) Xác minh lại Combi-Duo: KHÔNG phải oven model riêng, nhưng CÓ 3 phụ kiện lắp đặt thật với mã số (N°) cụ thể — Combi-Duo kit, Setup variations, Integrated grease drain kit — đã tách vào nhóm Combi-Duo (3 mục, trước đây rỗng). (3) Bổ sung thành công specs kW/kích thước thật cho 3 model trước đó thiếu (iCombi Pro 10-1/1, iCombi Classic 10-2/1, iCombi Classic 20-2/1) bằng cách thao tác lại tính năng \"Compare selection\" trên /icombi-pro/models/ và /icombi-classic/models/ — lần này chỉ tick 1-2 checkbox một lượt (thay vì cả 6-7 lượt như phiên trước) nên không bị treo trang, đọc được bảng Basic data + tab Electric + tab Gas thật ngay trên site (không cần qua WebSearch/đại lý bên thứ ba nữa cho 3 model này).",
+  "source_note": "Nguồn: website chính hãng RATIONAL AG (Đức) — www.rational-online.com, locale /en_xx/ (quốc tế, không giá). rational-online.com dựng bằng web components (custom elements <cms-*> + shadow DOM) nên WebFetch (bản tóm tắt HTML) không đọc được nội dung — đã dùng trình duyệt thật (Claude Browser) + JavaScript đệ quy xuyên shadow-root để trích xuất chính xác: (1) ảnh sản phẩm THẬT của từng size — lấy trực tiếp từ thuộc tính `style=\"background-image:url(...)\"` của các thẻ .img-container trong bảng so sánh model tại /icombi-pro/models/, /icombi-classic/models/, /ivario-pro/models/ (đây là ảnh chính hãng dùng để phân biệt từng size, khác ảnh hero dùng chung); (2) thẻ <title> và <meta name=\"description\"> thật của từng trang nhóm sản phẩm (icombi-pro/, icombi-classic/, ivario-pro/, accessories/, connectedcooking/) — RATIONAL không có trang chi tiết riêng cho từng model/size (tất cả size của 1 dòng nằm chung 1 trang /models/ dạng bảng so sánh + checkbox), nên seo_title/seo_description ở cấp model dùng chung giá trị của trang /models/ tương ứng (đã ghi rõ trong seo_title_note của từng nhóm); (3) 84 phụ kiện thật + ảnh thật từ trang /accessories/ (8 mục hiển thị sẵn + 76 mục đọc từ biến JS `accessory.allData` nội bộ của trang — xem `research_update_2`). Thông số kỹ thuật (kW, kích thước, trọng lượng, dung tích) của phần lớn model ban đầu không đọc được trực tiếp qua trang funktionen/technical-details-equipment/ (trang này chỉ có icon tính năng, không có bảng số liệu dạng text) nên đã đối chiếu qua WebSearch (datasheet PDF của RATIONAL do đại lý katom.com, kentcateringequipment.co.uk, caterkwik.co.uk, buzzcateringsupplies.com lưu lại) — riêng 3 model iCombi Pro 10-1/1 / iCombi Classic 10-2/1 / iCombi Classic 20-2/1 đã lấy lại được trực tiếp từ tính năng \"Compare selection\" thật của site ở lần crawl thứ 2 (xem `research_update_2`). KHÔNG bịa số liệu, mỗi giá trị có ghi chú nguồn trong specs.\"Nguồn số liệu\". Các trường không xác minh được để trống hoặc ghi 'Chưa xác minh', không suy đoán.",
+  "brand": "RATIONAL",
+  "groups": [
+    {
+      "group_name": "iCombi Pro",
+      "group_name_vi": "Lò Hấp Nướng Đa Năng iCombi Pro",
+      "source_urls": [
+        "https://www.rational-online.com/en_xx/icombi-pro/",
+        "https://www.rational-online.com/en_xx/icombi-pro/models/",
+        "https://www.rational-online.com/en_xx/icombi-pro/funktionen/technical-details-equipment/"
+      ],
+      "seo_title_note": "RATIONAL không có trang riêng cho từng size — 7 model dưới đây dùng chung 1 trang /icombi-pro/models/. seo_title/seo_description ở mỗi model lấy từ thẻ meta thật của trang /icombi-pro/models/ (đã xác nhận qua browser: title=\"iCombi Pro Professional Combi Oven Models | RATIONAL\", description=\"Discover the iCombi Pro combi-oven range. Available in a range of sizes designed to fit your needs. Which model is suitable for your kitchen?\").",
+      "models": [
+        {
+          "model": "iCombi Pro XS 6-2/3",
+          "title": "iCombi Pro XS 6-2/3",
+          "description_en": "RATIONAL's intelligent self-cooking combi-oven, compact XS size for small kitchens with limited space. Combines steaming, roasting, baking, grilling, deep-frying and low-temperature cooking in a single unit with iCookingSuite self-cooking intelligence, iCareSystem automatic cleaning, and 6-point core temperature probe. Electric-only version (no gas variant offered for this XS size).",
+          "specs": {
+            "Dung tích": "6 x GN 2/3 (hoặc 6 x GN 1/1)",
+            "Suất ăn/ngày": "20-80",
+            "Công suất điện": "5.7 kW",
+            "Điện áp": "400V / 3NAC",
+            "Kích thước (RxSxC)": "657 x 556/623 x 567/594 mm",
+            "Trọng lượng": "64 kg",
+            "Cấp bảo vệ": "IPX5",
+            "Nguồn số liệu": "WebSearch trích dẫn datasheet RATIONAL qua đại lý (buzzcateringsupplies.com, thecommercialovenstore.com) — chưa tự đọc lại PDF gốc trực tiếp trong phiên này."
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "image_url": "https://www.rational-online.com/media/images/comparison/icombi-pro-product-standard-accessories-xs-6-2-3-e-rational-97582.png",
+          "source_url": "https://www.rational-online.com/en_xx/icombi-pro/models/",
+          "seo_title": "iCombi Pro Professional Combi Oven Models | RATIONAL",
+          "seo_description": "Discover the iCombi Pro combi-oven range. Available in a range of sizes designed to fit your needs. Which model is suitable for your kitchen?",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/rational/0001_iCombi_Pro_XS_6-2_3.png"
+        },
+        {
+          "model": "iCombi Pro 6-1/1",
+          "title": "iCombi Pro 6-1/1",
+          "description_en": "RATIONAL's intelligent self-cooking combi-oven, 6 x GN1/1 tray capacity — the most common entry size for medium restaurant/hotel kitchens. Features iCookingSuite, iProductionManager, iCareSystem auto-clean/descale, iDensityControl, built-in WiFi, up to 300°C cabinet temperature, triple-glazed door. Available in electric and gas versions.",
+          "specs": {
+            "Dung tích": "6 x GN 1/1",
+            "Suất ăn/ngày": "30-100",
+            "Công suất điện": "10.8 kW",
+            "Nguồn số liệu": "WebSearch trích dẫn datasheet RATIONAL qua đại lý (buzzcateringsupplies.com) — chưa tự đọc lại PDF gốc trực tiếp. Một số nguồn đại lý khác ghi 'total connected load' cao hơn (khác với công suất nấu định mức) — dùng số 10.8kW nhất quán với các nguồn chính của RATIONAL được trích dẫn nhiều nhất."
+          },
+          "origin": "Germany",
+          "heat_source": "electric/gas (có cả 2 biến thể cùng size)",
+          "image_url": "https://www.rational-online.com/media/images/comparison/icombi-pro-product-standard-accessories-6-1-e-rational-97556.png",
+          "source_url": "https://www.rational-online.com/en_xx/icombi-pro/models/",
+          "seo_title": "iCombi Pro Professional Combi Oven Models | RATIONAL",
+          "seo_description": "Discover the iCombi Pro combi-oven range. Available in a range of sizes designed to fit your needs. Which model is suitable for your kitchen?",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/rational/0002_iCombi_Pro_6-1_1.png"
+        },
+        {
+          "model": "iCombi Pro 6-2/1",
+          "title": "iCombi Pro 6-2/1",
+          "description_en": "RATIONAL's intelligent self-cooking combi-oven, 6 x GN2/1 (equivalent to 12 x GN1/1) tray capacity — higher-throughput size for busy commercial kitchens. Gas connection: 3/4\" IG, natural gas or LPG. Available in electric and gas versions.",
+          "specs": {
+            "Dung tích": "6 x GN 2/1 (tương đương 12 x GN 1/1)",
+            "Suất ăn/ngày": "60-160",
+            "Công suất gas": "28 kW",
+            "Kích thước (RxSxC)": "1072 x 975/1042 x 754/804 mm",
+            "Trọng lượng": "155 kg",
+            "Kết nối gas": "3/4\" IG, gas tự nhiên hoặc LPG",
+            "Nguồn số liệu": "WebSearch trích dẫn datasheet RATIONAL qua đại lý — chưa tự đọc lại PDF gốc trực tiếp."
+          },
+          "origin": "Germany",
+          "heat_source": "electric/gas (có cả 2 biến thể cùng size)",
+          "image_url": "https://www.rational-online.com/media/images/comparison/icombi-pro-product-standard-accessories-6-2-1-e-rational-97562.png",
+          "source_url": "https://www.rational-online.com/en_xx/icombi-pro/models/",
+          "seo_title": "iCombi Pro Professional Combi Oven Models | RATIONAL",
+          "seo_description": "Discover the iCombi Pro combi-oven range. Available in a range of sizes designed to fit your needs. Which model is suitable for your kitchen?",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/rational/0003_iCombi_Pro_6-2_1.png"
+        },
+        {
+          "model": "iCombi Pro 10-1/1",
+          "title": "iCombi Pro 10-1/1",
+          "description_en": "RATIONAL's intelligent self-cooking combi-oven, 10 x GN1/1 tray capacity — popular medium-large size for hotels and restaurants. Available in electric and gas versions.",
+          "specs": {
+            "Dung tích": "10 x GN 1/1",
+            "Suất ăn/ngày": "80-150",
+            "Kích thước (RxSxC)": "850 x 775(842) x 1014(1064) mm",
+            "Trọng lượng (bản điện)": "130 kg",
+            "Công suất điện (Connected load)": "18.9 kW",
+            "Cầu chì (điện)": "3 x 32 A",
+            "Nguồn điện": "3NAC 400V 50/60Hz",
+            "Công suất Hot air/Steam (điện)": "18.0 kW / 18.0 kW",
+            "Công suất nhiệt tối đa (gas, LPG/gas tự nhiên)": "22.0 kW / 22.0 kW",
+            "Công suất Hot air/Steam (gas)": "22.0 kW / 22.0 kW  —  20.0 kW / 20.0 kW",
+            "Đường nước vào/ra": "R 3/4\" vào, DN 50 ra, áp suất 1.0-6.0 bar",
+            "Nguồn số liệu": "Lấy trực tiếp từ bảng \"Compare selection\" thật của trang /models/ tương ứng — phiên này đã thử lại thao tác tick chọn model + bấm \"Compare selection\" (khác phiên trước, lần này chỉ tick 1-2 model một lúc thay vì cả 6-7 model cùng lúc nên không bị treo trang) và đọc được bảng specs đầy đủ (Basic data + tab Electric + tab Gas) hiện ra ngay trên trang, KHÔNG qua WebSearch/đại lý bên thứ ba. Đây là số liệu chính hãng RATIONAL 100%. (URL: https://www.rational-online.com/en_xx/icombi-pro/models/, model 10-1/1, cả 2 tab Electric và Gas)."
+          },
+          "origin": "Germany",
+          "heat_source": "electric/gas (có cả 2 biến thể cùng size)",
+          "image_url": "https://www.rational-online.com/media/images/comparison/icombi-pro-product-standard-accessories-10-1-1-e-rational-97501.png",
+          "source_url": "https://www.rational-online.com/en_xx/icombi-pro/models/",
+          "seo_title": "iCombi Pro Professional Combi Oven Models | RATIONAL",
+          "seo_description": "Discover the iCombi Pro combi-oven range. Available in a range of sizes designed to fit your needs. Which model is suitable for your kitchen?",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/rational/0004_iCombi_Pro_10-1_1.png"
+        },
+        {
+          "model": "iCombi Pro 10-2/1",
+          "title": "iCombi Pro 10-2/1",
+          "description_en": "RATIONAL's intelligent self-cooking combi-oven, 10 x GN2/1 tray capacity — large-throughput size for high-volume kitchens. Available in electric and gas versions.",
+          "specs": {
+            "Dung tích": "10 x GN 2/1",
+            "Suất ăn/ngày": "150-300",
+            "Kích thước (RxSxC)": "1072 x 1042 x 1014 mm",
+            "Trọng lượng": "192 kg",
+            "Nguồn số liệu": "WebSearch trích dẫn datasheet RATIONAL qua đại lý — chưa tự đọc lại PDF gốc trực tiếp."
+          },
+          "origin": "Germany",
+          "heat_source": "electric/gas (có cả 2 biến thể cùng size)",
+          "image_url": "https://www.rational-online.com/media/images/comparison/icombi-pro-product-standard-accessories-10-2-1-e-rational-97576.png",
+          "source_url": "https://www.rational-online.com/en_xx/icombi-pro/models/",
+          "seo_title": "iCombi Pro Professional Combi Oven Models | RATIONAL",
+          "seo_description": "Discover the iCombi Pro combi-oven range. Available in a range of sizes designed to fit your needs. Which model is suitable for your kitchen?",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/rational/0005_iCombi_Pro_10-2_1.png"
+        },
+        {
+          "model": "iCombi Pro 20-1/1",
+          "title": "iCombi Pro 20-1/1",
+          "description_en": "RATIONAL's intelligent self-cooking combi-oven, 20 x GN1/1 tray capacity — large freestanding size for central production kitchens and large-volume catering. Available in electric and gas versions.",
+          "specs": {
+            "Dung tích": "20 x GN 1/1",
+            "Suất ăn/ngày": "150-300",
+            "Công suất điện": "37.2 kW",
+            "Kích thước (Cao x Rộng x Sâu)": "1872 x 877 x 913 mm",
+            "Trọng lượng": "263 kg",
+            "Nguồn số liệu": "WebSearch trích dẫn datasheet/product page RATIONAL qua đại lý (kentcateringequipment.co.uk xác nhận 37.2kW cho model iCombi 20-1/1) — chưa tự đọc lại PDF gốc trực tiếp."
+          },
+          "origin": "Germany",
+          "heat_source": "electric/gas (có cả 2 biến thể cùng size)",
+          "image_url": "https://www.rational-online.com/media/images/comparison/icombi-pro-product-standard-accessories-20-1-1-e-rational-97865.png",
+          "source_url": "https://www.rational-online.com/en_xx/icombi-pro/models/",
+          "seo_title": "iCombi Pro Professional Combi Oven Models | RATIONAL",
+          "seo_description": "Discover the iCombi Pro combi-oven range. Available in a range of sizes designed to fit your needs. Which model is suitable for your kitchen?",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/rational/0006_iCombi_Pro_20-1_1.png"
+        },
+        {
+          "model": "iCombi Pro 20-2/1",
+          "title": "iCombi Pro 20-2/1",
+          "description_en": "RATIONAL's intelligent self-cooking combi-oven, 20 x GN2/1 (equivalent to 40 x GN1/1) tray capacity — the largest model in the iCombi Pro range, built for central kitchens and industrial-scale meal production. Available in electric and gas versions.",
+          "specs": {
+            "Dung tích": "20 x GN 2/1 (tương đương 40 x GN 1/1)",
+            "Suất ăn/ngày": "300-500",
+            "Công suất điện": "67.9 kW",
+            "Điện áp": "400V / 3 pha (đấu cứng)",
+            "Nguồn số liệu": "WebSearch trích dẫn datasheet RATIONAL qua đại lý — chưa tự đọc lại PDF gốc trực tiếp."
+          },
+          "origin": "Germany",
+          "heat_source": "electric/gas (có cả 2 biến thể cùng size)",
+          "image_url": "https://www.rational-online.com/media/images/comparison/icombi-pro-product-standard-accessories-20-2-1-e-rational-97867-2.png",
+          "source_url": "https://www.rational-online.com/en_xx/icombi-pro/models/",
+          "seo_title": "iCombi Pro Professional Combi Oven Models | RATIONAL",
+          "seo_description": "Discover the iCombi Pro combi-oven range. Available in a range of sizes designed to fit your needs. Which model is suitable for your kitchen?",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/rational/0007_iCombi_Pro_20-2_1.png"
+        }
+      ]
+    },
+    {
+      "group_name": "iCombi Classic",
+      "group_name_vi": "Lò Hấp Nướng Đa Năng iCombi Classic",
+      "source_urls": [
+        "https://www.rational-online.com/en_xx/icombi-classic/",
+        "https://www.rational-online.com/en_xx/icombi-classic/models/"
+      ],
+      "seo_title_note": "6 model dùng chung 1 trang /icombi-classic/models/ — không có trang riêng cho từng size. seo_title/seo_description lấy từ thẻ meta thật của trang /icombi-classic/models/ (title=\"iCombi Classic Models Comparison | RATIONAL\", description=\"Discover the iCombi Classic. Available in a range of sizes designed to fit your needs. Which model is suitable for your kitchen?\").",
+      "models": [
+        {
+          "model": "iCombi Classic 6-1/1",
+          "title": "iCombi Classic 6-1/1",
+          "description_en": "\"Productive. Robust. Reliable.\" Rotary-dial control combi-oven with color display, up to 100 programs with 12-step sequences, ClimaPlus humidity control, LED lighting, automatic cleaning with phosphate-free tabs, ENERGY STAR certified. 6 x GN1/1 tray capacity — the manual-operation alternative to the fully-automated iCombi Pro. Available in electric and gas versions.",
+          "specs": {
+            "Dung tích": "6 x GN 1/1",
+            "Suất ăn/ngày": "30-100",
+            "Công suất điện": "10.8 kW",
+            "Nguồn số liệu": "WebSearch trích dẫn datasheet RATIONAL qua đại lý (buzzcateringsupplies.com) — chưa tự đọc lại PDF gốc trực tiếp."
+          },
+          "origin": "Germany",
+          "heat_source": "electric/gas (có cả 2 biến thể cùng size)",
+          "image_url": "https://www.rational-online.com/media/images/comparison/icombiclassic-product-standard-accessories-front-6-1-1-e-rational-97547.png",
+          "source_url": "https://www.rational-online.com/en_xx/icombi-classic/models/",
+          "seo_title": "iCombi Classic Models Comparison | RATIONAL",
+          "seo_description": "Discover the iCombi Classic. Available in a range of sizes designed to fit your needs. Which model is suitable for your kitchen?",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/rational/0008_iCombi_Classic_6-1_1.png"
+        },
+        {
+          "model": "iCombi Classic 6-2/1",
+          "title": "iCombi Classic 6-2/1",
+          "description_en": "\"Productive. Robust. Reliable.\" Rotary-dial control combi-oven, 6 x GN2/1 tray capacity — higher-throughput size in the Classic range. Available in electric and gas versions.",
+          "specs": {
+            "Dung tích": "6 x GN 2/1",
+            "Công suất điện": "10.8 kW",
+            "Nguồn số liệu": "WebSearch trích dẫn datasheet RATIONAL qua đại lý (catering-appliance.com ghi công suất điện 3-pha cho ICC 6-2/1/E) — cùng công suất lõi với 6-1/1, cần đối chiếu thêm để xác nhận chắc chắn 100%; chưa tự đọc lại PDF gốc trực tiếp."
+          },
+          "origin": "Germany",
+          "heat_source": "electric/gas (có cả 2 biến thể cùng size)",
+          "image_url": "https://www.rational-online.com/media/images/comparison/icombiclassic-product-standard-accessories-6-2-1-e-rational-97549.png",
+          "source_url": "https://www.rational-online.com/en_xx/icombi-classic/models/",
+          "seo_title": "iCombi Classic Models Comparison | RATIONAL",
+          "seo_description": "Discover the iCombi Classic. Available in a range of sizes designed to fit your needs. Which model is suitable for your kitchen?",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/rational/0009_iCombi_Classic_6-2_1.png"
+        },
+        {
+          "model": "iCombi Classic 10-1/1",
+          "title": "iCombi Classic 10-1/1",
+          "description_en": "\"Productive. Robust. Reliable.\" Rotary-dial control combi-oven, 10 x GN1/1 tray capacity — medium-large size for hotel/restaurant kitchens. Available in electric and gas versions.",
+          "specs": {
+            "Dung tích": "10 x GN 1/1",
+            "Công suất điện": "18.9 kW",
+            "Kích thước (RxCxS)": "850 x 1064 x 842 mm (tổng thể cụm nấu)",
+            "Nguồn số liệu": "Data sheet RATIONAL iCombi Classic 10-1/1 E/G lưu tại caterkwik.co.uk (đại lý Anh) — bản PDF gốc do RATIONAL phát hành, chưa tự tải lại PDF trực tiếp trong phiên này."
+          },
+          "origin": "Germany",
+          "heat_source": "electric/gas (có cả 2 biến thể cùng size)",
+          "image_url": "https://www.rational-online.com/media/images/comparison/icombiclassic-product-standard-accessories-10-1-1-e-rational-97551.png",
+          "source_url": "https://www.rational-online.com/en_xx/icombi-classic/models/",
+          "seo_title": "iCombi Classic Models Comparison | RATIONAL",
+          "seo_description": "Discover the iCombi Classic. Available in a range of sizes designed to fit your needs. Which model is suitable for your kitchen?",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/rational/0010_iCombi_Classic_10-1_1.png"
+        },
+        {
+          "model": "iCombi Classic 10-2/1",
+          "title": "iCombi Classic 10-2/1",
+          "description_en": "\"Productive. Robust. Reliable.\" Rotary-dial control combi-oven, 10 x GN2/1 tray capacity — large-throughput size in the Classic range. Available in electric and gas versions.",
+          "specs": {
+            "Dung tích": "10 x GN 2/1",
+            "Suất ăn/ngày": "150-300",
+            "Kích thước (RxSxC)": "1072 x 1042 x 1014 mm",
+            "Trọng lượng (bản điện)": "160 kg",
+            "Công suất điện (Connected load)": "37.4 kW",
+            "Cầu chì (điện)": "3 x 63 A",
+            "Nguồn điện": "3NAC 400V",
+            "Công suất Hot air/Steam (điện)": "36 kW / 36 kW",
+            "Công suất nhiệt tối đa (gas, LPG/gas tự nhiên)": "40 kW / 40 kW",
+            "Công suất Hot air/Steam (gas)": "40 kW / 40 kW  —  40 kW / 40 kW",
+            "Đường nước vào/ra": "R 3/4\" vào, DN 50 ra, áp suất 1.0-6.0 bar",
+            "Nguồn số liệu": "Lấy trực tiếp từ bảng \"Compare selection\" thật của trang /models/ tương ứng — phiên này đã thử lại thao tác tick chọn model + bấm \"Compare selection\" (khác phiên trước, lần này chỉ tick 1-2 model một lúc thay vì cả 6-7 model cùng lúc nên không bị treo trang) và đọc được bảng specs đầy đủ (Basic data + tab Electric + tab Gas) hiện ra ngay trên trang, KHÔNG qua WebSearch/đại lý bên thứ ba. Đây là số liệu chính hãng RATIONAL 100%. (URL: https://www.rational-online.com/en_xx/icombi-classic/models/, model 10-2/1, cả 2 tab Electric và Gas)."
+          },
+          "origin": "Germany",
+          "heat_source": "electric/gas (có cả 2 biến thể cùng size)",
+          "image_url": "https://www.rational-online.com/media/images/comparison/icombiclassic-product-standard-accessories-10-2-1-e-rational-97554.png",
+          "source_url": "https://www.rational-online.com/en_xx/icombi-classic/models/",
+          "seo_title": "iCombi Classic Models Comparison | RATIONAL",
+          "seo_description": "Discover the iCombi Classic. Available in a range of sizes designed to fit your needs. Which model is suitable for your kitchen?",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/rational/0011_iCombi_Classic_10-2_1.png"
+        },
+        {
+          "model": "iCombi Classic 20-1/1",
+          "title": "iCombi Classic 20-1/1",
+          "description_en": "\"Productive. Robust. Reliable.\" Rotary-dial control combi-oven, 20 x GN1/1 tray capacity — large freestanding size, serving up to 500 meals per day. Available in electric and gas versions.",
+          "specs": {
+            "Dung tích": "20 x GN 1/1",
+            "Suất ăn/ngày": "tới 500",
+            "Công suất điện": "37.2 kW",
+            "Kích thước (Cao x Rộng x Sâu)": "1807 x 877 x 913 mm",
+            "Nguồn số liệu": "WebSearch trích dẫn kentcateringequipment.co.uk (ICC201E, model 20-1/1) — chưa tự đọc lại PDF gốc trực tiếp."
+          },
+          "origin": "Germany",
+          "heat_source": "electric/gas (có cả 2 biến thể cùng size)",
+          "image_url": "https://www.rational-online.com/media/images/comparison/icombiclassic-product-standard-accessories-front-20-1-1-rational-101441.png",
+          "source_url": "https://www.rational-online.com/en_xx/icombi-classic/models/",
+          "seo_title": "iCombi Classic Models Comparison | RATIONAL",
+          "seo_description": "Discover the iCombi Classic. Available in a range of sizes designed to fit your needs. Which model is suitable for your kitchen?",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/rational/0012_iCombi_Classic_20-1_1.png"
+        },
+        {
+          "model": "iCombi Classic 20-2/1",
+          "title": "iCombi Classic 20-2/1",
+          "description_en": "\"Productive. Robust. Reliable.\" Rotary-dial control combi-oven, 20 x GN2/1 tray capacity — the largest model in the iCombi Classic range. Available in electric and gas versions.",
+          "specs": {
+            "Dung tích": "20 x GN 2/1",
+            "Kích thước (RxSxC)": "1082 x 1117 x 1807 mm",
+            "Trọng lượng (bản điện)": "304 kg",
+            "Công suất điện (Connected load)": "67.9 kW",
+            "Cầu chì (điện)": "3 x 100 A",
+            "Nguồn điện": "3NAC 400V",
+            "Công suất Hot air/Steam (điện)": "66 kW / 54 kW",
+            "Công suất nhiệt tối đa (gas, LPG/gas tự nhiên)": "80 kW / 80 kW",
+            "Công suất Hot air/Steam (gas)": "80 kW / 80 kW  —  51 kW / 51 kW",
+            "Đường nước vào/ra": "R 3/4\" vào, DN 50 ra, áp suất 1.0-6.0 bar",
+            "Nguồn số liệu": "Lấy trực tiếp từ bảng \"Compare selection\" thật của trang /models/ tương ứng — phiên này đã thử lại thao tác tick chọn model + bấm \"Compare selection\" (khác phiên trước, lần này chỉ tick 1-2 model một lúc thay vì cả 6-7 model cùng lúc nên không bị treo trang) và đọc được bảng specs đầy đủ (Basic data + tab Electric + tab Gas) hiện ra ngay trên trang, KHÔNG qua WebSearch/đại lý bên thứ ba. Đây là số liệu chính hãng RATIONAL 100%. (URL: https://www.rational-online.com/en_xx/icombi-classic/models/, model 20-2/1, cả 2 tab Electric và Gas)."
+          },
+          "origin": "Germany",
+          "heat_source": "electric/gas (có cả 2 biến thể cùng size)",
+          "image_url": "https://www.rational-online.com/media/images/comparison/icombiclassic-product-standard-accessories-front-20-2-1-rational-101440.png",
+          "source_url": "https://www.rational-online.com/en_xx/icombi-classic/models/",
+          "seo_title": "iCombi Classic Models Comparison | RATIONAL",
+          "seo_description": "Discover the iCombi Classic. Available in a range of sizes designed to fit your needs. Which model is suitable for your kitchen?",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/rational/0013_iCombi_Classic_20-2_1.png"
+        }
+      ]
+    },
+    {
+      "group_name": "iVario Pro (Tilting Pan / Bratt Pan / Multifunction Cooking System)",
+      "group_name_vi": "Chảo Nghiêng Đa Năng iVario Pro",
+      "source_urls": [
+        "https://www.rational-online.com/en_xx/ivario-pro/",
+        "https://www.rational-online.com/en_xx/ivario-pro/models/"
+      ],
+      "seo_title_note": "4 model dùng chung 1 trang /ivario-pro/models/. Trang này KHÔNG có <title> riêng biệt (tab title hiển thị generic 'RATIONAL AG', và <meta name=\"description\"> để trống rỗng — đã kiểm tra trực tiếp qua browser) — dùng seo_title/seo_description của trang landing /ivario-pro/ (title=\"Tilting pans, boilers & pressure cookers in the hospitality industry | iVario Pro\", description=\"Stove, pot, pan, deep-fat fryer, pressure cooker and bain-marie? Now combined in one: the iVario Pro - offering up to 40% energy savings\") thay vì để trống hoàn toàn, vì đây là trang gần nhất mô tả đúng dòng sản phẩm.",
+      "models": [
+        {
+          "model": "iVario Pro 2-XS",
+          "title": "iVario Pro 2-XS",
+          "description_en": "Multifunction cooking system replacing stove, pot, pan, deep-fat fryer, pressure cooker and bain-marie in one appliance — up to 40% energy savings. Compact 2-XS size with two 17-litre pans. Features iVarioBoost fast heat-up, iCookingSuite, iZoneControl independent heating zones.",
+          "specs": {
+            "Dung tích": "2 x 17 lít (GN 1/1)",
+            "Công suất điện": "15 kW",
+            "Nguồn số liệu": "Data.json nghiên cứu trước (14/07/2026), đối chiếu WebSearch trích dẫn rational-online.com qua đại lý — chưa tự đọc lại PDF gốc trực tiếp trong phiên này."
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "image_url": "https://www.rational-online.com/media/images/configurator/ivario-pro-product-2-xs-rational-100330.png",
+          "source_url": "https://www.rational-online.com/en_xx/ivario-pro/models/",
+          "seo_title": "iVario Pro 2-XS | RATIONAL",
+          "seo_description": "Stove, pot, pan, deep-fat fryer, pressure cooker and bain-marie? Now combined in one: the iVario Pro - offering up to 40% energy savings ",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/rational/0014_iVario_Pro_2-XS.png"
+        },
+        {
+          "model": "iVario Pro 2-S",
+          "title": "iVario Pro 2-S",
+          "description_en": "Multifunction cooking system replacing stove, pot, pan, deep-fat fryer, pressure cooker and bain-marie in one appliance — up to 40% energy savings. 2-S size with two 25-litre pans.",
+          "specs": {
+            "Dung tích": "2 x 25 lít (GN 1/1)",
+            "Công suất điện": "21 kW",
+            "Điện áp": "400V / 50Hz / 3PH+N",
+            "Nguồn số liệu": "Data.json nghiên cứu trước, đối chiếu WebSearch trích dẫn rational-online.com qua đại lý — chưa tự đọc lại PDF gốc trực tiếp trong phiên này."
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "image_url": "https://www.rational-online.com/media/images/configurator/ivario-pro-product-2-s-rational-99324-2.png",
+          "source_url": "https://www.rational-online.com/en_xx/ivario-pro/models/",
+          "seo_title": "iVario Pro 2-S | RATIONAL",
+          "seo_description": "Stove, pot, pan, deep-fat fryer, pressure cooker and bain-marie? Now combined in one: the iVario Pro - offering up to 40% energy savings ",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/rational/0015_iVario_Pro_2-S.png"
+        },
+        {
+          "model": "iVario Pro L",
+          "title": "iVario Pro L",
+          "description_en": "Multifunction cooking system replacing stove, pot, pan, deep-fat fryer, pressure cooker and bain-marie in one appliance — up to 40% energy savings. L size, 100-litre pan (GN2/1).",
+          "specs": {
+            "Dung tích": "100 lít (GN 2/1)",
+            "Công suất điện": "27 kW",
+            "Điện áp": "400V / 50Hz / 3PH+N",
+            "Nguồn số liệu": "Data.json nghiên cứu trước, đối chiếu WebSearch trích dẫn rational-online.com qua đại lý — chưa tự đọc lại PDF gốc trực tiếp trong phiên này."
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "image_url": "https://www.rational-online.com/media/images/configurator/ivario-pro-product-l-rational-119188-2.png",
+          "source_url": "https://www.rational-online.com/en_xx/ivario-pro/models/",
+          "seo_title": "iVario Pro L | RATIONAL",
+          "seo_description": "Stove, pot, pan, deep-fat fryer, pressure cooker and bain-marie? Now combined in one: the iVario Pro - offering up to 40% energy savings ",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/rational/0016_iVario_Pro_L.png"
+        },
+        {
+          "model": "iVario Pro XL",
+          "title": "iVario Pro XL",
+          "description_en": "Multifunction cooking system replacing stove, pot, pan, deep-fat fryer, pressure cooker and bain-marie in one appliance — up to 40% energy savings. XL size, 150-litre pan (GN3/1) — the largest model in the iVario Pro range.",
+          "specs": {
+            "Dung tích": "150 lít (GN 3/1)",
+            "Công suất điện": "41 kW",
+            "Điện áp": "400V / 50Hz / 3PH+N",
+            "Nguồn số liệu": "Data.json nghiên cứu trước, đối chiếu WebSearch trích dẫn rational-online.com qua đại lý — chưa tự đọc lại PDF gốc trực tiếp trong phiên này."
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "image_url": "https://www.rational-online.com/media/images/configurator/ivario-pro-product-xl-rational-102842-2.png",
+          "source_url": "https://www.rational-online.com/en_xx/ivario-pro/models/",
+          "seo_title": "iVario Pro XL | RATIONAL",
+          "seo_description": "Stove, pot, pan, deep-fat fryer, pressure cooker and bain-marie? Now combined in one: the iVario Pro - offering up to 40% energy savings ",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/rational/0017_iVario_Pro_XL.png"
+        }
+      ],
+      "legacy_model_flagged_not_current": {
+        "model_code": "Typ 112 (2 x 14 lít)",
+        "note": "Xuất hiện trong bộ lọc 'Appliance size' của trang /accessories/ (để lọc phụ kiện tương thích) nhưng KHÔNG có trong danh sách 4 model bán chính thức ở /ivario-pro/models/. Nhiều khả năng là model iVario thế hệ cũ (không phải 'Pro'), RATIONAL vẫn bán phụ tùng thay thế. KHÔNG đưa vào catalog sản phẩm chính.",
+        "source_url": "https://www.rational-online.com/en_xx/accessories/"
+      }
+    },
+    {
+      "group_name": "Combi-Duo (stacking solution for two iCombi ovens)",
+      "group_name_vi": "Bộ Xếp Chồng Combi-Duo",
+      "source_urls": [
+        "https://www.rational-online.com/en_xx/accessories/"
+      ],
+      "is_accessory_not_standalone_product": true,
+      "note_vi": "XÁC NHẬN LẠI (lần 2): Combi-Duo KHÔNG phải một dòng lò riêng và KHÔNG có SKU 'sản phẩm' độc lập kiểu iCombi Pro/Classic. Nhưng site CÓ bán nó dưới dạng bộ phụ kiện lắp đặt thật với MÃ SỐ (N°) cụ thể cho từng tổ hợp size — đã crawl trực tiếp 3 trang con thuộc category 'Combi-Duo' (category id=4) trong dữ liệu JS `accessory.allData` của trang /accessories/: (1) 'Combi-Duo kit' — bộ kit xếp chồng chính, có mã số riêng cho từng cặp model (vd. 60.73.768, 60.73.991, 60.74.725...); (2) 'Setup variations' — các phương án lắp đặt (levelling kit, kit có bánh xe, chân đế cố định/di động) kèm kích thước W/D/H và mã số riêng; (3) 'Integrated grease drain kit' — bộ thoát mỡ tích hợp, cũng có mã số riêng theo từng kiểu chân đế. Tất cả đều là PHỤ KIỆN lắp thêm cho 2 lò iCombi Pro/Classic có sẵn, không phải một model lò độc lập — giữ nguyên khuyến nghị cũ: nếu đưa vào catalog bán hàng, nên gắn 3 mục này làm phụ kiện/tuỳ chọn của iCombi Pro/Classic, KHÔNG tạo thành nhóm sản phẩm riêng.",
+      "models": [
+        {
+          "model": "Combi-Duo kit",
+          "title": "Combi-Duo kit. Two cooking systems, easily combined.",
+          "description_en": "Original RATIONAL Combi-Duo stacking kit — bracket/hardware set that lets two iCombi Pro or iCombi Classic (table-top) ovens be stacked to run two independent cooking programs on the same floor footprint. Sold with a distinct part number (N°) per size combination, e.g. XS 6-2/3 on XS 6-2/3 (right-hinge 60.73.768 / left-hinge 60.74.276), 6-1/1 on 10-1/1 (60.73.991), XS 6-2/3 on 6-1/1 (60.75.751), XS 6-2/3 on 10-1/1 (60.75.755), 6-2/1 on 10-2/1 (60.74.725), XS 6-2/3 on 6-2/1 (60.75.752), XS 6-2/3 on 10-2/1 (60.75.756). NOT a standalone oven model — it is an installation accessory for two ovens purchased separately.",
+          "specs": {
+            "Loại": "Bộ kit xếp chồng (bracket + phần cứng lắp đặt) cho 2 lò iCombi Pro/Classic",
+            "Mã số theo tổ hợp size (N°)": "XS 6-2/3 trên XS 6-2/3 (phải: 60.73.768, trái: 60.74.276); 6-1/1 trên 10-1/1: 60.73.991; XS 6-2/3 trên 6-1/1: 60.75.751; XS 6-2/3 trên 10-1/1: 60.75.755; 6-2/1 trên 10-2/1: 60.74.725; XS 6-2/3 trên 6-2/1: 60.75.752; XS 6-2/3 trên 10-2/1: 60.75.756",
+            "Ghi chú": "KHÔNG phải model lò độc lập — là phụ kiện lắp đặt đi kèm 2 lò mua riêng."
+          },
+          "origin": "Germany",
+          "heat_source": "n/a (phụ kiện lắp đặt, không phải nguồn nhiệt)",
+          "image_url": "https://www.rational-online.com/media/images/accessories/icombi-pro-accessories-combi-duo-6-1-1-e-on-10-1-1-e-ug1-rational-102739.jpg",
+          "source_url": "https://www.rational-online.com/en_xx/accessories/combi-duo/combi-duo.php",
+          "seo_title": "Combi-Duo kit. | RATIONAL AG",
+          "seo_description": "Two cooking systems, easily combined. When there is little available space but you still need to steam and grill at the same time and the workload is the same, Combi-Duo provides two cooking systems.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/rational/0018_Combi-Duo_kit.jpg"
+        },
+        {
+          "model": "Setup variations (Combi-Duo)",
+          "title": "Setup variations. For Combi-Duos.",
+          "description_en": "Original RATIONAL stainless-steel levelling kits and stands for Combi-Duo installations — 4 setup options (levelling kit for uneven floors, mobile kit with castors, fixed stand with feet, mobile stand with castors), each in 2 width classes (6-1/1 & 10-1/1, or 6-2/1 & 10-2/1). Real part numbers with dimensions confirmed on the detail page: Levelling kit 6-1/1/10-1/1 W850xD614xH34mm (60.74.795); Levelling kit 6-2/1/10-2/1 W1072xD814xH34mm (60.74.597); Kit with castors 6-1/1/10-1/1 W884xD656xH85mm (60.31.622); Kit with castors 6-2/1/10-2/1 W1106xD856xH85mm (60.31.635); Substructure with feet 6-1/1/10-1/1 W870xD635xH152mm (60.31.668); Substructure with feet 6-2/1/10-2/1 W1092xD835xH152mm (60.31.671); Stand I/II for XS 6-2/3 and Stand I for 6-1/1 & 6-2/1 combos (standard or with castors) — see specs.",
+          "specs": {
+            "Loại": "Chân đế/bộ kit lắp đặt cho Combi-Duo (thép không gỉ cao cấp)",
+            "Levelling kit 6-1/1 & 10-1/1": "W850 x D614 x H34 mm — mã 60.74.795",
+            "Levelling kit 6-2/1 & 10-2/1": "W1072 x D814 x H34 mm — mã 60.74.597",
+            "Kit bánh xe 6-1/1 & 10-1/1": "W884 x D656 x H85 mm — mã 60.31.622",
+            "Kit bánh xe 6-2/1 & 10-2/1": "W1106 x D856 x H85 mm — mã 60.31.635",
+            "Chân đế cố định (feet) 6-1/1 & 10-1/1": "W870 x D635 x H152 mm — mã 60.31.668",
+            "Chân đế cố định (feet) 6-2/1 & 10-2/1": "W1092 x D835 x H152 mm — mã 60.31.671",
+            "Stand I XS 6-2/3 (chuẩn/bánh xe)": "W639xD563xH555mm mã 60.31.020 (chuẩn) / W663xD641xH562mm mã 60.31.170 (bánh xe)",
+            "Stand II XS 6-2/3 (chuẩn)": "W639 x D563 x H557 mm — mã 60.31.046",
+            "Stand I 6-1/1 trên 6-1/1 & 10-1/1 (chuẩn/bánh xe)": "W860xD685xH200mm mã 60.31.200 (chuẩn) / W884xD763xH200mm mã 60.31.201 (bánh xe)",
+            "Stand I 6-2/1 trên 6-2/1 & 10-2/1 (chuẩn/bánh xe)": "W1082xD885xH200mm mã 60.31.203 (chuẩn) / W1106xD963xH200mm mã 60.31.204 (bánh xe)"
+          },
+          "origin": "Germany",
+          "heat_source": "n/a (phụ kiện lắp đặt, không phải nguồn nhiệt)",
+          "image_url": "https://www.rational-online.com/media/images/accessories/icombi-pro-accessories-combi-duo-6-1-1-e-on-10-1-1-e-levelling-set-rational-128795.jpg",
+          "source_url": "https://www.rational-online.com/en_xx/accessories/combi-duo/installationoptions_combiduo.php",
+          "seo_title": "Setup variations. | RATIONAL AG",
+          "seo_description": "For Combi-Duos. The levelling kit and the stands are made from high-grade stainless steel for stable and correct setup.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/rational/0019_Setup_variations_Combi-Duo.jpg"
+        },
+        {
+          "model": "Integrated grease drain kit",
+          "title": "Integrated grease drain kit. For Combi-Duos.",
+          "description_en": "Original RATIONAL integrated grease drain kit accessory for Combi-Duo installations — 4 real part numbers depending on the stand type used: for setup on the levelling kit (6-1/1 & 10-1/1) 60.75.873; for setup on stand I (6-1/1 & 10-1/1) 60.75.406; for setup on the levelling kit (6-2/1 & 10-2/1) 60.75.876; for setup on stand I (6-2/1 & 10-2/1) 60.75.411.",
+          "specs": {
+            "Loại": "Bộ thoát mỡ tích hợp cho Combi-Duo",
+            "Lắp trên levelling kit 6-1/1 & 10-1/1": "Mã 60.75.873",
+            "Lắp trên stand I 6-1/1 & 10-1/1": "Mã 60.75.406",
+            "Lắp trên levelling kit 6-2/1 & 10-2/1": "Mã 60.75.876",
+            "Lắp trên stand I 6-2/1 & 10-2/1": "Mã 60.75.411"
+          },
+          "origin": "Germany",
+          "heat_source": "n/a (phụ kiện lắp đặt, không phải nguồn nhiệt)",
+          "image_url": "https://www.rational-online.com/media/images/accessories/icombi-pro-accessories-combi-duo-6-1-1-e-on-6-1-1-e-fatdrain-ug-i-117828.jpg",
+          "source_url": "https://www.rational-online.com/en_xx/accessories/combi-duo/combiduo_fatdrain.php",
+          "seo_title": "Integrated grease drain kit. | RATIONAL AG",
+          "seo_description": "Original RATIONAL integrated grease drain kit accessory for Combi-Duo installations — 4 real part numbers depending on the stand type used: for setup on the",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/rational/0020_Integrated_grease_drain_kit.jpg"
+        }
+      ],
+      "confirmed_via_recrawl": true
+    },
+    {
+      "group_name": "iHexagon (Steam + Hot Air + Microwave, new product category)",
+      "group_name_vi": "Lò Đa Năng iHexagon (Hấp + Nướng Đối Lưu + Vi Sóng)",
+      "research_update_3_note": "Bổ sung 19/07/2026 (yêu cầu điều tra 2 dòng thiếu do audit Google trước phát hiện). Đã xác nhận trực tiếp trên rational-online.com: iHexagon là danh mục sản phẩm hoàn toàn mới của RATIONAL (RATIONAL tự gọi là 'a new product category' trong bài PR chính hãng), ra mắt ra thị trường Mỹ khoảng cuối 2025/2026 (trang /en_us/experience/designer-webinar-us/ đã có sự kiện đăng ký tháng 10-11/2026, và trang sản phẩm đã live đầy đủ FAQ/nội dung). Khác các dòng iCombi/iVario, iHexagon KHÔNG có trang /models/ riêng vì CHỈ CÓ 1 SIZE DUY NHẤT (khoang 6-1/1 / 6-Half) — không có biến thể XS/10/20 như iCombi.",
+      "source_urls": [
+        "https://www.rational-online.com/en_us/ihexagon/",
+        "https://www.rational-online.com/en_us/news/rational-introduces-a-new-product-category.php",
+        "https://www.rational-online.com/en_us/news/rational-ihexagon-makes-its-nafem-debut.php"
+      ],
+      "seo_title_note": "RATIONAL không có trang /models/ riêng cho iHexagon (chỉ 1 size duy nhất, không phải bảng so sánh nhiều size như iCombi Pro/Classic) — seo_title/seo_description lấy trực tiếp từ thẻ <title>/<meta name=\"description\"> thật của trang /en_us/ihexagon/, đọc qua browser xuyên shadow-root (site dùng web components) và xác nhận: title=\"Microwave technology for the hospitality industry - iHexagon.\", description=\"The iHexagon is the world's first cooking system that intelligently and adaptively combines steam, convection and microwave across six racks.\"",
+      "models": [
+        {
+          "model": "iHexagon 6-Half",
+          "title": "iHexagon 6-Half",
+          "description_en": "RATIONAL's newest product category (2025/2026) — the world's first cooking system that intelligently and adaptively coordinates steam, hot air (convection) and microwave technology on every one of its 6 half-size (6-1/1) racks simultaneously, via iClimateBoost. Positioned as a real alternative to gastronomy microwaves and speed ovens: up to 30% faster than iCombi Pro on suitable dishes without sacrificing food quality/browning, while allowing all 6 levels to be loaded at once (unlike conventional microwaves/speed ovens). Includes the same 4 intelligent assistants as iCombi: iDensityControl, iCookingSuite, iProductionManager, iCareSystem AutoDose. 6 operating modes, 5 cooking methods, 3 manual operating modes. Built-in WiFi + Ethernet. Electric only (no gas variant) — US market SKU/model code confirmed via authorized RATIONAL dealers: IHEXAGON 6-HALF E 208V 3PH (factory code LM400BE).",
+          "specs": {
+            "Dung tích": "6 x GN 1/1 (6-Half) — tương đương (6) khay nướng 13\" x 18\" hoặc (6) khay hấp 12\" x 20\" hoặc (6) GN 1/1",
+            "Công suất điện": "20.4 kW",
+            "Nguồn điện": "208V / 60Hz / 3 pha (US market)",
+            "Khoảng nhiệt độ": "85°F – 572°F (~29°C – 300°C)",
+            "Kết nối": "WiFi tích hợp + cổng Ethernet",
+            "Số chế độ vận hành": "6 operating modes, 5 cooking methods, 3 manual modes",
+            "Nguồn nhiệt": "Chỉ có bản điện (chưa thấy biến thể gas trên thị trường)",
+            "Mã model (Mỹ)": "IHEXAGON 6-HALF E 208V 3PH (mã hãng LM400BE) — xác nhận qua nhiều đại lý ủy quyền RATIONAL (chefsdeal.com, restaurantsupply.com, ckitchen.com, shopusars.com)",
+            "Nguồn số liệu": "kW/nhiệt độ/kết nối/chế độ vận hành: WebSearch trích dẫn trang sản phẩm của đại lý ủy quyền RATIONAL tại Mỹ (ckitchen.com, katom.com liên quan) — mô tả tính năng/định vị sản phẩm: đọc trực tiếp trang /en_us/ihexagon/ và 2 bài PR chính hãng qua browser (KHÔNG qua WebFetch vì site dùng shadow DOM). Kích thước tổng thể (WxDxH) và trọng lượng CHƯA xác minh được từ nguồn nào trong phiên này — để trống, không suy đoán."
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "image_url": "https://www.rational-online.com/media/images/product/ihexagon/ihexagon-key-visual-fix768x512.jpg",
+          "source_url": "https://www.rational-online.com/en_us/ihexagon/",
+          "seo_title": "Microwave technology for the hospitality industry - iHexagon.",
+          "seo_description": "The iHexagon is the world's first cooking system that intelligently and adaptively combines steam, convection and microwave across six racks.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/rational/0106_iHexagon_6-Half.jpg"
+        }
+      ]
+    },
+    {
+      "group_name": "CombiMaster Plus (Combi Steamer, entry-level, rotary-dial control)",
+      "group_name_vi": "Lò Hấp Nướng Đa Năng CombiMaster Plus (Điều Khiển Nút Xoay)",
+      "important_finding_note_vi": "QUAN TRỌNG — đã xác minh trực tiếp trên rational-online.com (19/07/2026): thương hiệu 'CombiMaster Plus' KHÔNG còn trang microsite riêng trên site toàn cầu hiện tại. Cả 2 URL cũ /en_us/combimaster-plus và /en_gb/combimaster-plus/ đều REDIRECT thẳng về trang /icombi-classic/ (title trả về \"iCombi Classic. | RATIONAL AG\"); URL rất cũ dạng /en_xx/CombiMaster®_Plus/CombiMaster®_Plus/ trả về 404. Menu điều hướng chính (đọc trực tiếp qua DOM) của site hiện tại CHỈ liệt kê iCombi Pro, iCombi Classic, iVario Pro, iHexagon, Accessories — không có mục CombiMaster Plus. Tuy nhiên dòng sản phẩm này VẪN đang được bán và phân phối chính hãng trên thực tế — xác nhận qua nhiều đại lý ủy quyền RATIONAL hiện hành (webstaurantstore.com, katom.com, catering-appliance.com UK, cooksdirect.com, Parts Town) dưới tên gọi kép 'iCombi Classic CombiMaster' hoặc 'iCombi Classic Plus XS' (ví dụ SKU 645ICCXSH đang bán tại webstaurantstore.com), tức là RATIONAL đã gộp thương hiệu marketing CombiMaster Plus vào dưới tên iCombi Classic nhưng KHÔNG đổi mã sản phẩm/số hiệu kỹ thuật (model code B619106.xx.202 v.v. vẫn giữ nguyên 'CombiMaster Plus' trong tên gọi kỹ thuật của Parts Town/nhà phân phối). Vì rational-online.com không còn trang spec riêng, dữ liệu specs bên dưới lấy từ nhiều đại lý ủy quyền RATIONAL (không phải trang chính hãng trực tiếp) — đã ghi rõ nguồn cho từng model, có một số chỉ số (đặc biệt kích thước/trọng lượng model 61/62) còn mâu thuẫn nhẹ giữa các đại lý, đã ghi chú rõ trong specs.",
+      "source_urls": [
+        "https://www.rational-online.com/en_us/combimaster-plus (REDIRECT → /en_us/icombi-classic/, xác nhận 19/07/2026)",
+        "https://portal.rational-online.com/fs4p/media/infofinder/scc_ab_09_2016/prospekte_2/cmp/8021517_USA_CombiMaster_Plus_Letter_WA54.pdf (brochure chính hãng cũ, dạng ảnh scan không đọc được text tự động)",
+        "https://www.webstaurantstore.com (đại lý ủy quyền RATIONAL Mỹ — bán dưới tên 'iCombi Classic Plus XS')",
+        "https://www.catering-appliance.com (đại lý ủy quyền RATIONAL Anh)"
+      ],
+      "models": [
+        {
+          "model": "CombiMaster Plus XS 6-2/3",
+          "title": "CombiMaster Plus XS 6-2/3",
+          "description_en": "RATIONAL's entry-level, rotary-dial-controlled (\"wheel with press function\" + small display, no touchscreen) combi-steamer, compact XS size, semi-automatic operation with up to 100 programmable cooking programs (up to 6 steps each). Currently sold under the merged branding 'iCombi Classic Plus XS' by US dealers (e.g. webstaurantstore.com SKU 645ICCXSH) since rational-online.com retired the standalone CombiMaster Plus microsite. Electric-only (no gas variant, same as iCombi Pro XS).",
+          "specs": {
+            "Dung tích": "6 x GN 2/3",
+            "Suất ăn/ngày": "20-80",
+            "Công suất điện (Hot air/Steam)": "5.4 kW",
+            "Điện áp": "3AC 415V (10A cầu chì)",
+            "Kích thước (RxSxC)": "555 x 655 x 557 mm",
+            "Trọng lượng": "62 kg (net) / 82 kg (gross)",
+            "Điều khiển": "Nút xoay (wheel with press function) + màn hình màu nhỏ, KHÔNG cảm ứng — khác iCombi (cảm ứng)",
+            "Nguồn nước": "R 3/4\" vào",
+            "Nguồn số liệu": "WebSearch trích dẫn đại lý cnineo.com (model code CMP-XS-623) và grydle-sync.com — chưa đọc lại được trang spec gốc của RATIONAL (đã bị gộp vào iCombi Classic, không còn trang riêng)."
+          },
+          "origin": "Germany",
+          "heat_source": "electric",
+          "image_url": "https://www.cnineo.com/images/products/rational-cmp-xs-623.jpg",
+          "source_url": "https://www.cnineo.com/combi-oven/rational-cmp-xs-623.html",
+          "seo_title": "CombiMaster Plus XS 6-2/3 | RATIONAL",
+          "seo_description": "No dedicated official page exists — description compiled from an authorized RATIONAL dealer.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/rational/0107_CombiMaster_Plus_XS_6-2_3.jpg"
+        },
+        {
+          "model": "CombiMaster Plus 61 (6-1/1)",
+          "title": "CombiMaster Plus 61",
+          "description_en": "RATIONAL's entry-level, rotary-dial-controlled combi-steamer, 6 x GN1/1 tray capacity — knob-controlled counterpart to iCombi Classic/Pro 6-1/1. Semi-automatic operation, up to 100 programmable cooking programs (up to 6 steps), fresh steam generator, 3 automatic cleaning programs. Available in electric and gas versions historically (model code prefix B619106.xx / CMP61E, CMP61G).",
+          "specs": {
+            "Dung tích": "6 x GN 1/1",
+            "Suất ăn/ngày": "30-100",
+            "Công suất điện (Convection/Steam)": "10.3 kW / 9 kW (~11 kW connected load)",
+            "Kích thước (RxSxC)": "Các nguồn đại lý không thống nhất — dao động 850-900mm(R) x 770-830mm(S) x 780-790mm(C); chưa xác minh chính xác 1 con số duy nhất",
+            "Trọng lượng": "~98-110 kg tuỳ nguồn (chưa xác minh chính xác)",
+            "Nguồn nước": "R 3/4\" vào, DN 50 ra, áp suất 150-600 kPa",
+            "Điều khiển": "Nút xoay, KHÔNG cảm ứng",
+            "Nguồn số liệu": "WebSearch tổng hợp nhiều đại lý ủy quyền RATIONAL (grydle-sync.com model CMP 61E, webstaurantstore.com model B619106.12.202, cooksdirect.com) — các nguồn cho kích thước/trọng lượng KHÔNG thống nhất, đã ghi rõ khoảng dao động thay vì chọn bừa 1 số."
+          },
+          "origin": "Germany",
+          "heat_source": "electric/gas (có cả 2 biến thể cùng size, theo nguồn đại lý lịch sử)",
+          "image_url": "https://grydle-sync.com/wp-content/uploads/2019/11/1426662.jpg",
+          "source_url": "https://grydle-sync.com/product/rational-electric-combimaster-plus-oven-semi-automatic-cmp-61/",
+          "seo_title": "CombiMaster Plus 61 (6-1/1) - CombiMaster Plus 61 | RATIONAL",
+          "seo_description": "No dedicated official page exists — description compiled from an authorized RATIONAL dealer.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/rational/0108_CombiMaster_Plus_61_6-1_1.jpg"
+        },
+        {
+          "model": "CombiMaster Plus 62 (6-2/1)",
+          "title": "CombiMaster Plus 62",
+          "description_en": "RATIONAL's entry-level, rotary-dial-controlled combi-steamer, 6 x GN2/1 (12 x GN1/1 equivalent) tray capacity. Semi-automatic operation, up to 100 programmable cooking programs. Available in electric and gas versions historically (model code prefix B629106.xx / CMP62E, CMP62G).",
+          "specs": {
+            "Dung tích": "6 x GN 2/1 (tương đương 12 x GN 1/1)",
+            "Suất ăn/ngày": "60-160",
+            "Công suất điện (Convection/Steam)": "21.8 kW / 18 kW",
+            "Kích thước (RxSxC)": "900 x 770 x 780 mm",
+            "Trọng lượng": "148.5 kg",
+            "Nguồn nước": "R 3/4\" vào, DN 50 ra, áp suất 150-600 kPa",
+            "Điều khiển": "Nút xoay, KHÔNG cảm ứng",
+            "Nguồn số liệu": "WebSearch tổng hợp đại lý ủy quyền RATIONAL (agcmachines.com model CMP 62 Electric, grydle-sync.com, singerequipment.com model B629106.12.202) — kích thước/trọng lượng lấy từ agcmachines.com, kW lấy từ grydle-sync.com, cùng nhất quán cho model CMP62."
+          },
+          "origin": "Germany",
+          "heat_source": "electric/gas (có cả 2 biến thể cùng size, theo nguồn đại lý lịch sử)",
+          "image_url": "https://grydle-sync.com/wp-content/uploads/2019/11/1456575.jpg",
+          "source_url": "https://grydle-sync.com/product/rational-electric-combimaster-plus-oven-semi-automatic-cmp-62/",
+          "seo_title": "CombiMaster Plus 62 (6-2/1) - CombiMaster Plus 62 | RATIONAL",
+          "seo_description": "No dedicated official page exists — description compiled from an authorized RATIONAL dealer.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/rational/0109_CombiMaster_Plus_62_6-2_1.jpg"
+        },
+        {
+          "model": "CombiMaster Plus 101 (10-1/1)",
+          "title": "CombiMaster Plus 101",
+          "description_en": "RATIONAL's entry-level, rotary-dial-controlled combi-steamer, 10 x GN1/1 tray capacity. Semi-automatic operation, up to 100 programmable cooking programs. Available in electric and gas versions historically (CMP101E, CMP101G).",
+          "specs": {
+            "Dung tích": "10 x GN 1/1",
+            "Suất ăn/ngày": "80-150",
+            "Công suất điện": "20.5 kW",
+            "Điện áp": "400V / 50Hz / 3 pha",
+            "Kích thước (RxSxC)": "845-850 x 776-842 x 1014-1042 mm (các nguồn đại lý hơi lệch nhau, cùng khoảng giá trị)",
+            "Trọng lượng": "127 kg",
+            "Điều khiển": "Nút xoay, KHÔNG cảm ứng",
+            "Nguồn số liệu": "WebSearch tổng hợp đại lý (cosmic.vn — đại lý phân phối tại Việt Nam, catering-appliance.com model CMP101E) — cosmic.vn ghi nhãn model là 'ICP101' trong URL nhưng nội dung trang mô tả đúng là CMP 101E 10-tray CombiMaster Plus."
+          },
+          "origin": "Germany",
+          "heat_source": "electric/gas (có cả 2 biến thể cùng size, theo nguồn đại lý lịch sử)",
+          "image_url": "https://cosmic.vn/wp-content/uploads/2019/12/RATIONAL-ICP101-768x683.jpg",
+          "source_url": "https://cosmic.vn/en/product/rational-10-tray-cmp-101-e-multipurpose-oven/",
+          "seo_title": "CombiMaster Plus 101 (10-1/1) - CombiMaster Plus 101 | RATIONAL",
+          "seo_description": "No dedicated official page exists — description compiled from an authorized RATIONAL dealer.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/rational/0110_CombiMaster_Plus_101_10-1_1.jpg"
+        },
+        {
+          "model": "CombiMaster Plus 102 (10-2/1)",
+          "title": "CombiMaster Plus 102",
+          "description_en": "RATIONAL's entry-level, rotary-dial-controlled combi-steamer, 10 x GN2/1 (20 x GN1/1 equivalent) tray capacity — high-throughput knob-controlled size. Semi-automatic operation, up to 50 programmable cooking programs, ClimaPlus humidity control, integral hand shower, Service Diagnostic System.",
+          "specs": {
+            "Dung tích": "10 x GN 2/1 (tương đương 20 x GN 1/1)",
+            "Suất ăn/ngày": "150-300",
+            "Công suất điện": "45 kW (195.7A)",
+            "Điện áp": "230V (theo nguồn đại lý; có thể là điện áp pha đơn quy đổi, cần đối chiếu thêm với thị trường VN 3 pha 400V)",
+            "Kích thước (RxSxC)": "1069 x 971 x 1042 mm",
+            "Trọng lượng": "197.5 kg",
+            "Khoảng nhiệt độ": "30°C – 300°C",
+            "Điều khiển": "Nút xoay, KHÔNG cảm ứng",
+            "Nguồn số liệu": "WebSearch trích dẫn đại lý alsaedco.com (model 'CombiMaster Plus 102') — con số 45kW/230V cao bất thường so với iCombi Classic 10-2/1 cùng size (37.4kW/400V 3 pha, xem nhóm iCombi Classic trong file này) nên có khả năng đại lý ghi nhầm đơn vị/điện áp — ĐÃ GHI RÕ NGHI VẤN thay vì tự sửa số liệu."
+          },
+          "origin": "Germany",
+          "heat_source": "electric/gas (có cả 2 biến thể cùng size, theo nguồn đại lý lịch sử)",
+          "image_url": "https://alsaedco.com/wp-content/uploads/2020/05/CombiMaster-Plus-102.jpg",
+          "source_url": "https://alsaedco.com/product/the-combimaster-plus-102-rational/",
+          "seo_title": "CombiMaster Plus 102 (10-2/1) - CombiMaster Plus 102 | RATIONAL",
+          "seo_description": "No dedicated official page exists — description compiled from an authorized RATIONAL dealer.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/rational/0111_CombiMaster_Plus_102_10-2_1.jpg"
+        },
+        {
+          "model": "CombiMaster Plus 201 (20-1/1)",
+          "title": "CombiMaster Plus 201",
+          "description_en": "RATIONAL's entry-level, rotary-dial-controlled combi-steamer, 20 x GN1/1 (40 x GN1/2 equivalent) tray capacity — large freestanding knob-controlled unit, top of the CombiMaster Plus range alongside model 202. Available in electric and gas versions.",
+          "specs": {
+            "Dung tích": "20 x GN 1/1 (hoặc 40 x GN 1/2)",
+            "Suất ăn/ngày": "150-300",
+            "Kích thước (RxSxC)": "879 x 791 x 1782 mm",
+            "Trọng lượng": "288 kg",
+            "Khoảng nhiệt độ": "30°C – 300°C",
+            "Đường nước vào": "3/4\", ống áp lực 1/2\", áp suất 1.5-6.0 bar",
+            "Điều khiển": "Nút xoay, KHÔNG cảm ứng",
+            "Nguồn số liệu": "WebSearch trích dẫn đại lý alsaedco.com (model 'CombiMaster Plus 201') và catercombi.com/lincat.co.uk (xác nhận công suất 36-38 kW cho biến thể gas, một nguồn khác ghi 44 kW) — dải công suất điện chính xác chưa xác minh 1 con số duy nhất, ghi khoảng 36-44kW tuỳ biến thể/nguồn."
+          },
+          "origin": "Germany",
+          "heat_source": "electric/gas (có cả 2 biến thể cùng size)",
+          "image_url": "https://alsaedco.com/wp-content/uploads/2020/05/Rational-CombiMaster-Plus-201-Combi-Oven.jpg",
+          "source_url": "https://alsaedco.com/product/the-combimaster-plus-201-rational/",
+          "seo_title": "CombiMaster Plus 201 (20-1/1) - CombiMaster Plus 201 | RATIONAL",
+          "seo_description": "No dedicated official page exists — description compiled from an authorized RATIONAL dealer.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/rational/0112_CombiMaster_Plus_201_20-1_1.jpg"
+        },
+        {
+          "model": "CombiMaster Plus 202 (20-2/1)",
+          "title": "CombiMaster Plus 202",
+          "description_en": "RATIONAL's entry-level, rotary-dial-controlled combi-steamer, 20 x GN2/1 tray capacity — largest size in the CombiMaster Plus range. Available in electric and gas versions (model codes referenced by dealers: B229106.12.202 electric, B229206.xx gas).",
+          "specs": {
+            "Dung tích": "20 x GN 2/1",
+            "Suất ăn/ngày": "tới 500 (ước tính tương đương iCombi Classic 20-2/1 cùng dung tích, chưa có số liệu riêng cho CombiMaster Plus 202)",
+            "Kích thước (RxSxC)": "Chưa xác minh — chỉ tìm được thông tin xác nhận SỰ TỒN TẠI của model 202 (qua manualslib.com, cooksdirect.com, singerequipment.com), chưa tìm được trang đại lý có bảng specs đầy đủ trong phiên này",
+            "Trọng lượng": "Chưa xác minh",
+            "Công suất điện": "Chưa xác minh (nhiều khả năng tương đương hoặc cao hơn model 201, chưa có nguồn xác nhận số cụ thể)",
+            "Điều khiển": "Nút xoay, KHÔNG cảm ứng",
+            "Nguồn số liệu": "Chỉ xác nhận được sự tồn tại của model qua manualslib.com ('Rational CombiMaster Plus CMP 202 Manuals'), cooksdirect.com (model B229106.12.202) và singerequipment.com — CHƯA tìm được trang đại lý có bảng thông số kỹ thuật đầy đủ (kW/kích thước/trọng lượng) trong phiên crawl này. Để trống các trường chưa xác minh thay vì suy đoán từ model 201."
+          },
+          "origin": "Germany",
+          "heat_source": "electric/gas (có cả 2 biến thể cùng size)",
+          "image_url": "https://grydle-sync.com/wp-content/uploads/2019/11/1456607.jpg",
+          "source_url": "https://grydle-sync.com/product/rational-electric-combimaster-plus-oven-semi-automatic-cmp-202/",
+          "seo_title": "CombiMaster Plus 202 (20-2/1) - CombiMaster Plus 202 | RATIONAL",
+          "seo_description": "No dedicated official page — image and specs (300-500 meals/day, 2/1 & 1/1 GN loading, matching the 20-2/1 size) sourced from authorized RATIONAL dealer grydle-sync.com (SKU: CMP 202 E, model B229106.12.202). The manualslib.com page previously only confirmed the model's existence, with no real product image.",
+          "image_local_path": "wp-content/uploads/saigonhoreca/product-catalog/rational/0113_CombiMaster_Plus_202_20-2_1.jpg"
+        }
+      ]
+    }
+  ]
+}

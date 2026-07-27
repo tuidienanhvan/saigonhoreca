@@ -3,7 +3,7 @@
 
 @import "./_imports-route-core.css";
 
-@import "../../../archive.css";
+@import "../legacy/archive.css";
 
 /* /du-an/ template-parts (rewrite — match dark theme đồng bộ homepage) */
 @import "../../../template-parts/archive-project/hero.css";

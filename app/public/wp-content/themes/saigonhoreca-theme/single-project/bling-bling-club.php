@@ -9,7 +9,7 @@
  */
 get_header(); ?>
 
-<main id="primary" class="pp pp--bbc" tabindex="-1">
+<main id="primary" class="pp pp--bbc pp--bling-bling-club" tabindex="-1">
     <?php
     get_template_part('template-parts/project-pillar/bling-bling-club/hero');
     get_template_part('template-parts/project-pillar/bling-bling-club/intro');

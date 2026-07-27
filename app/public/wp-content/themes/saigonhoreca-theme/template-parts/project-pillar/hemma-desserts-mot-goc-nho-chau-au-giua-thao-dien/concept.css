@@ -1,8 +1,11 @@
 /**
- * hemma-desserts-mot-goc-nho-chau-au-giua-thao-dien — concept slot.
- * OWNS .pp-split-hmd shared split layout (used by specs/related too).
- * European Patisserie Editorial: porcelain plate frame on media,
- * cream body card, lace corner ornaments, baroque accents.
+ * Project Pillar — Hemma Desserts
+ * Section #3: concept styling.
+ * OWNS .pp-split-hmd shared split layout (reused by partnership / specs slots)
+ * and .pp-hmd-feature-list.
+ * European patisserie editorial: porcelain plate frame on media, cream body
+ * card, lace corner ornaments, baroque watermark glyph.
+ * 100% tokens, zero hardcoded hex.
  * @package SaigonHoreca
  */
 
@@ -12,6 +15,7 @@
   gap: 2.75rem;
   align-items: center;
   position: relative;
+  z-index: 2;
   padding: 1rem 0;
 }
 @media (min-width: 992px) {
@@ -23,7 +27,7 @@
   .pp-split-hmd--reverse .pp-split-hmd__body  { order: 1; }
 }
 
-/* Watermark display character behind split */
+/* Watermark display glyph behind split */
 .pp-split-hmd::before {
   content: 'H';
   position: absolute;
@@ -40,11 +44,7 @@
   user-select: none;
   letter-spacing: -0.04em;
 }
-.pp-split-hmd--reverse::before {
-  right: auto;
-  left: -1rem;
-  content: 'D';
-}
+.pp-split-hmd--reverse::before { right: auto; left: -1rem; content: 'D'; }
 
 /* ----------------------------------------------------------------------
  * BODY — cream porcelain card
@@ -72,12 +72,8 @@
   .pp-split-hmd__body { padding: 2.75rem 3rem; }
 }
 
-.pp-split-hmd__body .pp-text-hmd__divider {
-  align-self: flex-start;
-}
-.pp-split-hmd--reverse .pp-split-hmd__body .pp-text-hmd__divider {
-  align-self: flex-end;
-}
+.pp-split-hmd__body .pp-text-hmd__divider { align-self: flex-start; }
+.pp-split-hmd--reverse .pp-split-hmd__body .pp-text-hmd__divider { align-self: flex-end; }
 .pp-split-hmd__body .pp-text-hmd__divider::after {
   content: 'Création';
   left: 0;
@@ -93,39 +89,79 @@
   font-size: clamp(1.6rem, 2.7vw, 2.35rem);
   text-align: left;
   line-height: 1.22;
-  font-family: var(--font-display);
 }
-.pp-split-hmd--reverse .pp-split-hmd__body .pp-text-hmd__title {
-  text-align: right;
-}
-.pp-split-hmd--reverse .pp-split-hmd__body .pp-text-hmd__body p {
-  text-align: right;
-}
+.pp-split-hmd--reverse .pp-split-hmd__body .pp-text-hmd__title { text-align: right; }
+.pp-split-hmd__body .pp-text-hmd__body p { text-align: left; }
+.pp-split-hmd--reverse .pp-split-hmd__body .pp-text-hmd__body p { text-align: right; }
 
 /* Lace corner ornaments on body card */
 .pp-split-hmd__body::before,
 .pp-split-hmd__body::after {
   content: '';
   position: absolute;
-  width: 32px;
-  height: 32px;
+  width: 32px; height: 32px;
   pointer-events: none;
   background-image:
     radial-gradient(circle at 4px 4px,
-      color-mix(in srgb, var(--gold) 55%, transparent) 1.4px,
-      transparent 2px);
+      color-mix(in srgb, var(--gold) 55%, transparent) 1.4px, transparent 2px);
   background-size: 8px 8px;
   opacity: 0.85;
 }
 .pp-split-hmd__body::before {
   top: 10px; left: 10px;
-  -webkit-mask-image: linear-gradient(135deg, #000 35%, transparent 75%);
-          mask-image: linear-gradient(135deg, #000 35%, transparent 75%);
+  -webkit-mask-image: linear-gradient(135deg, var(--bc) 35%, transparent 75%);
+          mask-image: linear-gradient(135deg, var(--bc) 35%, transparent 75%);
 }
 .pp-split-hmd__body::after {
   bottom: 10px; right: 10px;
-  -webkit-mask-image: linear-gradient(315deg, #000 35%, transparent 75%);
-          mask-image: linear-gradient(315deg, #000 35%, transparent 75%);
+  -webkit-mask-image: linear-gradient(315deg, var(--bc) 35%, transparent 75%);
+          mask-image: linear-gradient(315deg, var(--bc) 35%, transparent 75%);
+}
+
+/* ----------------------------------------------------------------------
+ * FEATURE LIST — gold check items
+ * ---------------------------------------------------------------------- */
+.pp-hmd-feature-list {
+  list-style: none;
+  margin: 0.25rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+.pp-hmd-feature-list__item {
+  display: flex;
+  gap: 0.85rem;
+  align-items: flex-start;
+  padding: 0.9rem 1rem;
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--gold) 4%, transparent);
+  border: 1px solid color-mix(in srgb, var(--gold) 14%, var(--bd));
+  transition: border-color 0.4s var(--ease-spring), background-color 0.4s var(--ease-spring), transform 0.4s var(--ease-spring);
+}
+.pp-hmd-feature-list__item:hover {
+  border-color: color-mix(in srgb, var(--gold) 45%, transparent);
+  background: color-mix(in srgb, var(--gold) 7%, transparent);
+  transform: translateX(4px);
+}
+.pp-split-hmd--reverse .pp-hmd-feature-list__item:hover { transform: translateX(-4px); }
+.pp-hmd-feature-list__icon {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem; height: 1.75rem;
+  border-radius: 50%;
+  color: var(--gold);
+  background: color-mix(in srgb, var(--gold) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--gold) 30%, transparent);
+}
+.pp-hmd-feature-list__icon svg { width: 0.95rem; height: 0.95rem; display: block; }
+.pp-hmd-feature-list__text {
+  font-family: var(--font-sans);
+  font-size: clamp(0.92rem, 1vw, 1rem);
+  line-height: 1.7;
+  color: var(--bc2);
 }
 
 /* ----------------------------------------------------------------------
@@ -134,7 +170,7 @@
 .pp-split-hmd__media {
   position: relative;
   aspect-ratio: 4 / 3;
-  overflow: hidden;
+  overflow: visible !important;
   border-radius: 6px;
   background: var(--b3);
   border: 1px solid color-mix(in srgb, var(--gold) 22%, transparent);
@@ -143,6 +179,7 @@
     0 28px 60px rgba(0, 0, 0, 0.45),
     inset 0 1px 0 color-mix(in srgb, var(--gold) 15%, transparent);
   isolation: isolate;
+  margin-bottom: 1.8rem !important;
 }
 
 /* Outer porcelain plate ring with scallop top/bottom */
@@ -153,16 +190,12 @@
   border-radius: 8px;
   border: 1px solid color-mix(in srgb, var(--gold) 22%, transparent);
   background:
-    radial-gradient(circle at 6px 0,
-      transparent 5px,
+    radial-gradient(circle at 6px 0, transparent 5px,
       color-mix(in srgb, var(--gold) 20%, transparent) 5.5px,
-      color-mix(in srgb, var(--gold) 20%, transparent) 6px,
-      transparent 6.5px) repeat-x top left / 12px 6px,
-    radial-gradient(circle at 6px 6px,
-      transparent 5px,
+      color-mix(in srgb, var(--gold) 20%, transparent) 6px, transparent 6.5px) repeat-x top left / 12px 6px,
+    radial-gradient(circle at 6px 6px, transparent 5px,
       color-mix(in srgb, var(--gold) 20%, transparent) 5.5px,
-      color-mix(in srgb, var(--gold) 20%, transparent) 6px,
-      transparent 6.5px) repeat-x bottom left / 12px 6px;
+      color-mix(in srgb, var(--gold) 20%, transparent) 6px, transparent 6.5px) repeat-x bottom left / 12px 6px;
   z-index: -1;
   pointer-events: none;
 }
@@ -171,8 +204,7 @@
 .pp-split-hmd__media::after {
   content: 'No. 01';
   position: absolute;
-  bottom: 14px;
-  left: 14px;
+  bottom: 14px; left: 14px;
   z-index: 4;
   padding: 0.4rem 0.85rem;
   font-family: var(--font-display);
@@ -188,29 +220,40 @@
   pointer-events: none;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
 }
-.pp-split-hmd--reverse .pp-split-hmd__media::after {
-  content: 'No. 02';
-  left: auto;
-  right: 14px;
-}
+.pp-split-hmd--reverse .pp-split-hmd__media::after { content: 'No. 02'; left: auto; right: 14px; }
 
 .pp-split-hmd__media:hover {
   border-color: color-mix(in srgb, var(--gold) 55%, transparent);
   transform: translateY(-4px);
 }
-
 .pp-split-hmd__media img {
-  width: 100%; height: 100%;
-  object-fit: cover; display: block;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block;
   filter: saturate(1.05) contrast(0.99);
   transition: transform 0.85s var(--ease-spring), filter 0.6s var(--ease-spring);
 }
-.pp-split-hmd__media:hover img {
-  transform: scale(1.05);
-  filter: saturate(1.12);
-}
+.pp-split-hmd__media:hover img { transform: scale(1.05); filter: saturate(1.12); }
 
 @media (max-width: 991px) {
   .pp-split-hmd::before { font-size: 14rem; opacity: 0.6; }
   .pp-split-hmd__media::before { inset: -10px; }
+  .pp-split-hmd--reverse .pp-split-hmd__body .pp-text-hmd__title,
+  .pp-split-hmd--reverse .pp-split-hmd__body .pp-text-hmd__body p { text-align: left; }
+  .pp-split-hmd--reverse .pp-split-hmd__body .pp-text-hmd__divider { align-self: flex-start; }
+  .pp-split-hmd--reverse .pp-split-hmd__body .pp-text-hmd__divider::after { left: 0; right: auto; }
+}
+
+/* ----------------------------------------------------------------------
+ * REDUCED MOTION
+ * ---------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .pp-split-hmd__media,
+  .pp-split-hmd__media img,
+  .pp-hmd-feature-list__item {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+  }
 }

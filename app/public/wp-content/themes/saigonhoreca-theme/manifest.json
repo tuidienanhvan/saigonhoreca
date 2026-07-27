@@ -1,7 +1,7 @@
 {
-  "name": "Saigon House - Thiết Kế Thi Công Xây Dựng",
-  "short_name": "Saigon House",
-  "description": "Công ty thiết kế thi công xây dựng dân dụng & công nghiệp. Xây nhà trọn gói, thiết kế kiến trúc, nội thất.",
+  "name": "Saigon Horeca - Thiết Bị Bếp Công Nghiệp",
+  "short_name": "Saigon Horeca",
+  "description": "Thiết bị bếp công nghiệp & giải pháp horeca chuyên nghiệp cho nhà hàng, khách sạn, quán cà phê.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
@@ -9,44 +9,44 @@
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "/wp-content/themes/saigonhoreca-theme/assets/images/favicon-32x32.png",
+      "src": "/wp-content/themes/saigonhoreca-theme/assets/images/favicon-32x32.webp",
       "sizes": "32x32",
-      "type": "image/png"
+      "type": "image/webp"
     },
     {
-      "src": "/wp-content/themes/saigonhoreca-theme/assets/images/android-chrome-192x192.png",
+      "src": "/wp-content/themes/saigonhoreca-theme/assets/images/android-chrome-192x192.webp",
       "sizes": "192x192",
-      "type": "image/png",
+      "type": "image/webp",
       "purpose": "any"
     },
     {
-      "src": "/wp-content/themes/saigonhoreca-theme/assets/images/android-chrome-512x512.png",
+      "src": "/wp-content/themes/saigonhoreca-theme/assets/images/android-chrome-512x512.webp",
       "sizes": "512x512",
-      "type": "image/png",
+      "type": "image/webp",
       "purpose": "any maskable"
     }
   ],
-  "categories": ["business", "construction"],
+  "categories": ["business", "food"],
   "lang": "vi",
   "dir": "ltr",
   "shortcuts": [
     {
-      "name": "Bảng Giá Xây Nhà",
-      "short_name": "Bảng Giá",
-      "url": "/bang-gia-xay-nha/",
-      "icons": [{"src": "/wp-content/themes/saigonhoreca-theme/assets/images/favicon-32x32.png", "sizes": "32x32"}]
+      "name": "Sản Phẩm",
+      "short_name": "Sản Phẩm",
+      "url": "/san-pham/",
+      "icons": [{"src": "/wp-content/themes/saigonhoreca-theme/assets/images/favicon-32x32.webp", "sizes": "32x32"}]
     },
     {
-      "name": "Dự Toán Online",
-      "short_name": "Dự Toán",
-      "url": "/du-toan/",
-      "icons": [{"src": "/wp-content/themes/saigonhoreca-theme/assets/images/favicon-32x32.png", "sizes": "32x32"}]
+      "name": "Dự Án",
+      "short_name": "Dự Án",
+      "url": "/du-an/",
+      "icons": [{"src": "/wp-content/themes/saigonhoreca-theme/assets/images/favicon-32x32.webp", "sizes": "32x32"}]
     },
     {
       "name": "Liên Hệ Tư Vấn",
       "short_name": "Liên Hệ",
       "url": "/lien-he/",
-      "icons": [{"src": "/wp-content/themes/saigonhoreca-theme/assets/images/favicon-32x32.png", "sizes": "32x32"}]
+      "icons": [{"src": "/wp-content/themes/saigonhoreca-theme/assets/images/favicon-32x32.webp", "sizes": "32x32"}]
     }
   ]
 }

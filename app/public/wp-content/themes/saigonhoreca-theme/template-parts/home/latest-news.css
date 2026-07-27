@@ -1,157 +1,379 @@
-/**
- * Home Latest News — Saigon Horeca
- * DARK theme matching production: black bg, 3-card grid with dots nav,
- * dark cards with title + excerpt + "Đọc chi tiết" link.
- */
-
+/* ── PREMIUM LATEST NEWS SECTION LAYOUT ── */
 .sh-latest-news {
-    background: #0a0a0a;
     color: #fff;
+    background: #0a0a0a;
     padding: 5rem 0;
+    position: relative;
+    overflow: hidden;
 }
 @media (min-width: 768px) {
-    .sh-latest-news { padding: 7rem 0; }
+    .sh-latest-news { padding: 8rem 0; }
 }
 
 .sh-latest-news__inner {
     max-width: 1280px;
     margin: 0 auto;
-    padding: 0 1rem;
-}
-@media (min-width: 768px) {
-    .sh-latest-news__inner { padding: 0 2rem; }
+    padding: 0 1.5rem;
+    position: relative;
+    z-index: 2;
 }
 
+/* Header styling */
 .sh-latest-news__header {
+    position: relative;
     text-align: center;
-    margin-bottom: 3rem;
-}
-@media (min-width: 768px) {
-    .sh-latest-news__header { margin-bottom: 4rem; }
+    margin-bottom: 4rem;
+    padding: 3rem 1.5rem;
 }
 
-.sh-latest-news__title {
-    margin: 0 0 1rem;
-    font-size: clamp(1.75rem, 4vw, 2.75rem);
-    font-weight: 700;
-    line-height: 1.2;
-    color: #fff;
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
+.sh-latest-news__glow {
+    position: absolute;
+    z-index: 0;
+    pointer-events: none;
+    border-radius: 50%;
+}
+.sh-latest-news__glow--a {
+    top: -20%;
+    left: 5%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, color-mix(in srgb, var(--gold) 15%, transparent) 0%, transparent 70%);
+    filter: blur(90px);
+    opacity: 0.6;
+}
+.sh-latest-news__glow--b {
+    bottom: -30%;
+    right: 5%;
+    width: 450px;
+    height: 450px;
+    background: radial-gradient(circle, color-mix(in srgb, var(--gold) 8%, transparent) 0%, transparent 70%);
+    filter: blur(80px);
+    opacity: 0.5;
 }
 
-.sh-latest-news__view-all {
+.sh-latest-news__bg-signal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 480px;
+    height: 480px;
+    transform: translate(-50%, -50%);
+    color: var(--gold);
+    opacity: 0.04;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.sh-latest-news__frame {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    color: color-mix(in srgb, var(--gold) 35%, transparent);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.sh-latest-news__eyebrow {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.625rem 1.5rem;
-    margin-top: 1rem;
-    border: 1px solid #f5a623;
+    background: color-mix(in srgb, var(--gold) 8%, transparent);
+    border: 1px solid color-mix(in srgb, var(--gold) 20%, transparent);
+    border-radius: 999px;
+    padding: 0.4rem 1.1rem 0.4rem 0.8rem;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+.sh-latest-news__sparkle {
+    width: 12px;
+    height: 12px;
+    flex-shrink: 0;
+    filter: drop-shadow(0 0 6px color-mix(in srgb, var(--gold) 60%, transparent));
+    animation: sh-news-sparkle 3s ease-in-out infinite alternate;
+}
+
+.sh-latest-news__rule {
+    position: relative;
+    display: block;
+    width: 60px;
+    height: 2px;
+    margin: 1.25rem auto;
+    background: var(--gold);
+    box-shadow: 0 0 16px color-mix(in srgb, var(--gold) 65%, transparent);
+}
+.sh-latest-news__rule::before,
+.sh-latest-news__rule::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    transform: translateY(-50%);
+}
+.sh-latest-news__rule::before { left: -16px; }
+.sh-latest-news__rule::after { right: -16px; }
+
+.sh-latest-news__title {
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    margin: 0 0 1rem;
+    font-size: clamp(1.85rem, 4.5vw, 3rem);
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.sh-latest-news__view-all {
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border: 1px solid var(--gold);
     border-radius: 4px;
-    color: #f5a623;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+    padding: 0.75rem 1.75rem;
     font-size: 0.875rem;
     font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
     text-decoration: none;
-    transition: background 0.2s, color 0.2s;
+    transition: background 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s;
+    display: inline-flex;
 }
 .sh-latest-news__view-all:hover {
-    background: #f5a623;
     color: #000;
+    background: var(--gold);
+    box-shadow: 0 8px 24px color-mix(in srgb, var(--gold) 25%, transparent);
 }
-.sh-latest-news__view-all svg { width: 16px; height: 16px; }
+.sh-latest-news__view-all svg {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.3s ease;
+}
+.sh-latest-news__view-all:hover svg {
+    transform: translateX(4px);
+}
 
+/* ── 3 Card Grid System ── */
 .sh-latest-news__grid {
-    display: grid;
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 2rem;
+    display: grid;
 }
-@media (min-width: 768px) { .sh-latest-news__grid { grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 1024px) { .sh-latest-news__grid { grid-template-columns: repeat(3, 1fr); } }
 
+@media (min-width: 768px) {
+    .sh-latest-news__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .sh-latest-news__card--featured {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (min-width: 1024px) {
+    .sh-latest-news__grid {
+        grid-template-columns: 1.4fr 1fr;
+        grid-template-rows: auto auto;
+        gap: 2rem;
+        align-items: center;
+    }
+    .sh-latest-news__card--featured {
+        grid-column: 1;
+        grid-row: 1 / span 2;
+        align-self: center;
+    }
+}
+
+/* Card Base Structure */
 .sh-latest-news__card {
-    background: #1a1a1a;
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    border-radius: 8px;
+    position: relative;
+    background: #111;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    transition: border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     overflow: hidden;
-    transition: border-color 0.25s, transform 0.2s;
+    display: flex;
+    flex-direction: column;
 }
+
 .sh-latest-news__card:hover {
-    border-color: rgba(245, 166, 35, 0.5);
-    transform: translateY(-3px);
-}
-/* Drop featured-card override on dark theme — keep all cards same size */
-.sh-latest-news__card--featured {
-    grid-column: span 1;
-    grid-row: span 1;
+    border-color: color-mix(in srgb, var(--gold) 40%, transparent);
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 
+                0 0 30px color-mix(in srgb, var(--gold) 8%, transparent);
 }
 
 .sh-latest-news__link {
-    display: block;
-    text-decoration: none;
     color: inherit;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .sh-latest-news__thumb {
-    aspect-ratio: 16 / 10;
-    background: #222;
+    position: relative;
+    aspect-ratio: 16/9;
+    background: #181818;
     overflow: hidden;
+    width: 100%;
+    flex-shrink: 0; /* Prevents flexbox from squishing the 16:9 ratio */
 }
+
 .sh-latest-news__thumb img {
+    object-fit: cover;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-}
-.sh-latest-news__link:hover .sh-latest-news__thumb img {
-    transform: scale(1.05);
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.sh-latest-news__body { padding: 1.5rem; }
+.sh-latest-news__link:hover .sh-latest-news__thumb img {
+    transform: scale(1.04);
+}
+
+/* Subtle Vignette on Thumbnail */
+.sh-latest-news__thumb::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 60%, rgba(0, 0, 0, 0.4));
+    pointer-events: none;
+    z-index: 1;
+}
+
+.sh-latest-news__body {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    background: linear-gradient(180deg, #141414 0%, #0e0e0e 100%);
+    position: relative;
+}
 
 .sh-latest-news__date {
-    display: block;
-    margin-bottom: 0.625rem;
-    font-size: 0.875rem;
-    font-weight: 600;
     color: var(--gold);
+    margin-bottom: 0.625rem;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+.sh-latest-news__date::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    box-shadow: 0 0 8px var(--gold);
 }
 
 .sh-latest-news__card-title {
-    margin: 0 0 0.75rem;
+    color: #fff;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    margin: 0 0 0.85rem;
     font-size: 1.125rem;
     font-weight: 700;
-    line-height: 1.4;
-    color: #fff;
-    transition: color 0.2s;
-    /* clamp to 2 lines */
+    line-height: 1.45;
+    transition: color 0.3s;
     display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
     overflow: hidden;
 }
-.sh-latest-news__link:hover .sh-latest-news__card-title { color: #f5a623; }
+.sh-latest-news__link:hover .sh-latest-news__card-title {
+    color: var(--gold);
+}
 
 .sh-latest-news__excerpt {
-    margin: 0 0 1rem;
+    color: rgba(255, 255, 255, 0.65);
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    margin: 0 0 1.25rem;
     font-size: 0.9375rem;
     line-height: 1.65;
-    color: rgba(255, 255, 255, 0.65);
     display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
     overflow: hidden;
 }
 
+/* Elegant styled CTA button link */
 .sh-latest-news__readmore {
-    display: inline-block;
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: rgba(255, 255, 255, 0.65);
+    color: #fff;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
     text-decoration: none;
-    border-bottom: 1px solid currentColor;
-    padding-bottom: 2px;
-    transition: color 0.2s;
+    transition: color 0.3s, transform 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: auto;
 }
-.sh-latest-news__link:hover .sh-latest-news__readmore { color: #f5a623; }
+.sh-latest-news__readmore::after {
+    content: '→';
+    font-size: 1rem;
+    transition: transform 0.3s ease;
+}
+.sh-latest-news__link:hover .sh-latest-news__readmore {
+    color: var(--gold);
+}
+.sh-latest-news__link:hover .sh-latest-news__readmore::after {
+    transform: translateX(4px);
+}
+
+/* ── FEATURED CARD LAYOUT (LEFT COLUMN) ── */
+
+.sh-latest-news__card--featured .sh-latest-news__thumb {
+    aspect-ratio: 16/9;
+}
+
+.sh-latest-news__card--featured .sh-latest-news__body {
+    padding: 1.75rem 2rem;
+    background: linear-gradient(180deg, #161616 0%, #0c0c0c 100%);
+    justify-content: center;
+}
+
+.sh-latest-news__card--featured .sh-latest-news__card-title {
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    line-height: 1.4;
+    margin-bottom: 0.75rem;
+}
+
+.sh-latest-news__card--featured .sh-latest-news__excerpt {
+    margin-bottom: 1rem;
+}
+
+/* -- Loại bỏ style riêng của nút đọc tiếp để giống các card nhỏ -- */
+
+/* ── 2 COLUMN SMALL CARDS (RIGHT COLUMN) ── */
+@media (min-width: 1024px) {
+    .sh-latest-news__card:not(.sh-latest-news__card--featured) {
+        border-radius: 8px;
+    }
+    .sh-latest-news__card:not(.sh-latest-news__card--featured) .sh-latest-news__body {
+        padding: 1.25rem 1.5rem;
+        justify-content: center;
+    }
+    .sh-latest-news__card:not(.sh-latest-news__card--featured) .sh-latest-news__card-title {
+        font-size: 1.05rem;
+        -webkit-line-clamp: 2;
+        margin-bottom: 0.5rem;
+        line-height: 1.45;
+    }
+    .sh-latest-news__card:not(.sh-latest-news__card--featured) .sh-latest-news__excerpt {
+        display: none;
+    }
+    .sh-latest-news__card:not(.sh-latest-news__card--featured) .sh-latest-news__readmore {
+        font-size: 0.8125rem;
+        margin-top: 0.5rem;
+    }
+}

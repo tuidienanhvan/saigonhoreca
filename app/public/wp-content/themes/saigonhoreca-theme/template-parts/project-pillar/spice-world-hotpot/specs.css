@@ -1,1 +1,174 @@
-/** spice-world-hotpot — specs slot (no content). */
+/**
+ * Project Pillar — Spice World Hot Pot
+ * Section #5: specs — blueprint plan (left) + technical feature list (right).
+ * Tokens only. Motion guarded by prefers-reduced-motion.
+ */
+
+.pp-swh-specs {
+  position: relative;
+  padding: clamp(4rem, 9vw, 8rem) 0;
+  background-color: var(--b2);
+  overflow: hidden;
+}
+
+.pp-swh-specs__glow {
+  position: absolute;
+  bottom: -12%;
+  left: -8%;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  filter: blur(110px);
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(circle, color-mix(in srgb, var(--er) 12%, transparent) 0%, transparent 70%);
+}
+
+.pp-swh-specs__grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2.5rem, 5vw, 3.5rem);
+  align-items: center;
+}
+@media (min-width: 1024px) {
+  .pp-swh-specs__grid { grid-template-columns: 1.05fr 0.95fr; }
+}
+
+.pp-swh-specs__main,
+.pp-swh-specs__side { min-width: 0; }
+
+/* Blueprint frame around the plan drawing */
+.pp-swh-specs__blueprint {
+  position: relative;
+  padding: 1.5rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid color-mix(in srgb, var(--gold) 12%, transparent);
+  background-color: var(--b1);
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--gold) 4%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--gold) 4%, transparent) 1px, transparent 1px);
+  background-size: 22px 22px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6);
+}
+.pp-swh-specs__coord {
+  position: absolute;
+  z-index: 3;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--gold) 45%, transparent);
+  pointer-events: none;
+}
+.pp-swh-specs__coord--tl { top: 10px; left: 16px; }
+.pp-swh-specs__coord--tr { top: 10px; right: 16px; }
+.pp-swh-specs__coord--bl { bottom: 10px; left: 16px; }
+.pp-swh-specs__coord--br { bottom: 10px; right: 16px; }
+@media (max-width: 767px) {
+  .pp-swh-specs__coord { display: none; }
+}
+
+.pp-swh-specs__figure { margin: 0 0 1.8rem; }
+.pp-swh-specs__figure img {
+  aspect-ratio: 16 / 10;
+  object-fit: contain;
+  background: var(--b1);
+}
+
+.pp-swh-specs__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 3vw, 2.3rem);
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--bc);
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.pp-swh-specs__title-gold {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(1rem, 1.6vw, 1.3rem);
+  color: var(--gold);
+}
+.pp-swh-specs__intro {
+  font-family: var(--font-sans);
+  font-size: clamp(0.92rem, 1vw, 1rem);
+  line-height: 1.75;
+  color: var(--bc2);
+  margin: 0.5rem 0 0;
+}
+
+.pp-swh-specs__features {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+.pp-swh-specs__feature {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  position: relative;
+  padding-left: 1.25rem;
+}
+.pp-swh-specs__feature::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 2px;
+  background: var(--bd);
+  transition: background-color 0.4s var(--ease-spring);
+}
+.pp-swh-specs__feature:hover::before {
+  background: linear-gradient(to bottom, var(--er), var(--gold));
+}
+
+.pp-swh-specs__icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--er) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--gold) 16%, transparent);
+  color: var(--gold);
+  transition: transform 0.4s var(--ease-spring), border-color 0.4s, background-color 0.4s, box-shadow 0.4s;
+}
+.pp-swh-specs__icon svg { width: 1.3rem; height: 1.3rem; display: block; }
+.pp-swh-specs__feature:hover .pp-swh-specs__icon {
+  transform: translateY(-2px) scale(1.05);
+  border-color: var(--gold);
+  background: color-mix(in srgb, var(--er) 16%, transparent);
+  box-shadow: 0 0 16px color-mix(in srgb, var(--er) 30%, transparent);
+}
+
+.pp-swh-specs__feature-text h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 1.4vw, 1.12rem);
+  font-weight: 700;
+  color: var(--bc);
+  margin: 0 0 0.35rem;
+  transition: color 0.3s;
+}
+.pp-swh-specs__feature:hover .pp-swh-specs__feature-text h3 { color: var(--gold); }
+.pp-swh-specs__feature-text p {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--bc2);
+  margin: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pp-swh-specs__feature::before,
+  .pp-swh-specs__icon {
+    transition: none !important;
+  }
+}

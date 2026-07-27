@@ -25,18 +25,18 @@ if (!defined('ABSPATH')) exit;
       <div class="pp-split-solq7__media scroll-reveal">
         <div class="pp-compare-solq7" data-compare>
           <div class="pp-compare-solq7__after">
-            <img src="<?php echo sgh_img('renovate-sol-kitchen-bar-quan-7/Sol0D7-03.jpg'); ?>" alt="<?php echo esc_attr__('Khu bếp sau khi cải tạo hoàn thiện bởi Saigon Horeca', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
+            <img src="<?php echo sgh_img('renovate-sol-kitchen-bar-quan-7/sol-kitchen-bar-q7-bep-inox-hoan-thien-sau-cai-tao.webp'); ?>" alt="<?php echo esc_attr__('Dây chuyền bếp inox Sol Kitchen & Bar Quận 7 sau cải tạo: lò đối lưu EKA, lò combi RATIONAL, chụp hút inox đèn LED và đảo bếp mặt đá tự nhiên viền LED', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
             <span class="pp-compare-solq7__chip pp-compare-solq7__chip--after"><?php echo esc_html__('SAU', 'saigonhoreca'); ?></span>
           </div>
           <div class="pp-compare-solq7__before" style="width:50%;">
-            <img src="<?php echo sgh_img('renovate-sol-kitchen-bar-quan-7/Sol0D7-02.jpg'); ?>" alt="<?php echo esc_attr__('Hiện trạng khu bếp cũ trước khi cải tạo', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
+            <img src="<?php echo sgh_img('renovate-sol-kitchen-bar-quan-7/sol-kitchen-bar-q7-hien-trang-khu-bep-cu-truoc-cai-tao.webp'); ?>" alt="<?php echo esc_attr__('Hiện trạng không gian nhà hàng cũ trước cải tạo tại Sol Kitchen & Bar Quận 7: khu ghế ngồi bọc nệm hoa văn, quạt trần, khu bếp inox cũ phía trong', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
             <span class="pp-compare-solq7__chip pp-compare-solq7__chip--before"><?php echo esc_html__('TRƯỚC', 'saigonhoreca'); ?></span>
           </div>
           <div class="pp-compare-solq7__line" style="left:50%;" aria-hidden="true"></div>
           <div class="pp-compare-solq7__handle" style="left:50%;" aria-hidden="true"></div>
           <input type="range" min="0" max="100" value="50" class="pp-compare-solq7__slider" aria-label="<?php echo esc_attr__('So sánh bếp trước và sau cải tạo', 'saigonhoreca'); ?>">
         </div>
-        <span class="pp-compare-solq7__caption"><?php echo esc_html__('Khu vực nấu chính (Bếp cũ & Bếp mới sau cải tạo)', 'saigonhoreca'); ?></span>
+        <span class="pp-compare-solq7__caption"><?php echo esc_html__('Hiện trạng không gian cũ trước cải tạo (khu ghế ngồi & khu bếp inox phía trong) đặt cạnh dây chuyền bếp mới sau cải tạo', 'saigonhoreca'); ?></span>
       </div>
     </div>
 
@@ -51,11 +51,11 @@ if (!defined('ABSPATH')) exit;
       <div class="pp-split-solq7__media scroll-reveal">
         <div class="pp-compare-solq7" data-compare>
           <div class="pp-compare-solq7__after">
-            <img src="<?php echo sgh_img('renovate-sol-kitchen-bar-quan-7/Sol0D7-05.jpg'); ?>" alt="<?php echo esc_attr__('Lắp đặt tủ đông mát và thiết bị inox khu rửa hoàn thiện', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
+            <img src="<?php echo sgh_img('renovate-sol-kitchen-bar-quan-7/sol-kitchen-bar-q7-toan-canh-bep-bar-inox-hoan-thien.webp'); ?>" alt="<?php echo esc_attr__('Toàn cảnh khu bếp công nghiệp inox và quầy bar đã hoàn thiện của Sol Kitchen & Bar Quận 7: lò nướng combi, tủ mát, chụp hút khói và đảo bếp mặt đá granite', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
             <span class="pp-compare-solq7__chip pp-compare-solq7__chip--after"><?php echo esc_html__('SAU', 'saigonhoreca'); ?></span>
           </div>
           <div class="pp-compare-solq7__before" style="width:50%;">
-            <img src="<?php echo sgh_img('renovate-sol-kitchen-bar-quan-7/Sol0D7-04.jpg'); ?>" alt="<?php echo esc_attr__('Hiện trạng khu rửa và lưu trữ cũ', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
+            <img src="<?php echo sgh_img('renovate-sol-kitchen-bar-quan-7/sol-kitchen-bar-q7-cong-truong-thi-cong-cai-tao-mai-ngoi.webp'); ?>" alt="<?php echo esc_attr__('Công trường đang thi công cải tạo dưới mái lợp ngói, tường ốp gạch đen, sàn bê tông ngổn ngang vật liệu xây dựng tại Sol Kitchen & Bar Quận 7', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
             <span class="pp-compare-solq7__chip pp-compare-solq7__chip--before"><?php echo esc_html__('TRƯỚC', 'saigonhoreca'); ?></span>
           </div>
           <div class="pp-compare-solq7__line" style="left:50%;" aria-hidden="true"></div>

@@ -1,0 +1,8 @@
+/* Project bundle — casa-maria only. */
+@import "../../../template-parts/project-pillar/casa-maria/hero.css";
+@import "../../../template-parts/project-pillar/casa-maria/intro.css";
+@import "../../../template-parts/project-pillar/casa-maria/concept.css";
+@import "../../../template-parts/project-pillar/casa-maria/partnership.css";
+@import "../../../template-parts/project-pillar/casa-maria/specs.css";
+@import "../../../template-parts/project-pillar/casa-maria/gallery.css";
+@import "../../../single-project/casa-maria.css";

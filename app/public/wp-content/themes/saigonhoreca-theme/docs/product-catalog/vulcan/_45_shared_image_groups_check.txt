@@ -1,0 +1,337 @@
+total dup groups: 45
+
+--- Group 1 (3 models) ---
+  VGMT36 | https://www.vulcanequipment.com/ranges/v-series-heavy-duty-stainless-steel-36-gas-range-3-30000-btu-burner-t-stat-griddle
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/91851888.png.webp?itok=0KO3Kl_9
+  VGMT36C | https://www.vulcanequipment.com/ranges/v-series-heavy-duty-stainless-steel-36-gas-range-3-30000-btu-burner-t-stat-griddle-and-convection-oven
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/91851888.png.webp?itok=0KO3Kl_9
+  VGMT36S | https://www.vulcanequipment.com/ranges/v-series-heavy-duty-stainless-steel-36-gas-range-3-30000-btu-burner-t-stat-griddle-and
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/91851888.png.webp?itok=0KO3Kl_9
+
+--- Group 2 (5 models) ---
+  V4B36 | https://www.vulcanequipment.com/ranges/v-series-heavy-duty-stainless-steel-36-gas-range-4-35000-btu-burners
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/91805516.png.webp?itok=uxffX-Zg
+  V4B36C | https://www.vulcanequipment.com/ranges/v-series-heavy-duty-stainless-steel-36-gas-range-4-35000-btu-burners-convection-oven
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/91805516.png.webp?itok=uxffX-Zg
+  V4B36S | https://www.vulcanequipment.com/ranges/v-series-heavy-duty-stainless-steel-36-gas-range-4-35000-btu-burners-standard-oven
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/91805516.png.webp?itok=uxffX-Zg
+  V6B36S | https://www.vulcanequipment.com/ranges/v-series-heavy-duty-stainless-steel-36-gas-range-6-35000-btu-burners-standard-oven
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/91805516.png.webp?itok=uxffX-Zg
+  V6B36C | https://www.vulcanequipment.com/ranges/v-series-heavy-duty-stainless-steel-36-gas-range-6-35000-btu-burners-convection-oven
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/91805516.png.webp?itok=uxffX-Zg
+
+--- Group 3 (3 models) ---
+  VCBB36 | https://www.vulcanequipment.com/ranges/v-series-heavy-duty-stainless-steel-36-gas-range-99000-btu-6-burner-charbroiler
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/106347869.png.webp?itok=xM8jcBN_
+  VCBB36C | https://www.vulcanequipment.com/ranges/v-series-heavy-duty-stainless-steel-36-gas-range-99000-btu-6-burner-charbroiler-and
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/106347869.png.webp?itok=xM8jcBN_
+  VCBB36S | https://www.vulcanequipment.com/ranges/v-series-heavy-duty-stainless-steel-36-gas-range-99000-btu-6-burner-charbroiler-and-standard
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/106347869.png.webp?itok=xM8jcBN_
+
+--- Group 4 (3 models) ---
+  36S-6B | https://www.vulcanequipment.com/ranges/endurance-series-stainless-steel-36-gas-range-6-30000-btu-burners-standard-oven
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/87590118.png.webp?itok=7QYkc_s-
+  36S-2B24GT | https://www.vulcanequipment.com/ranges/endurance-series-stainless-steel-36-gas-range-2-30000-btu-burners-and-24-thermostatic-standard-oven
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/87590118.png.webp?itok=7QYkc_s-
+  36C-6B | https://www.vulcanequipment.com/ranges/endurance-series-stainless-steel-36-gas-range-6-30000-btu-burners-convection-oven
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/87590118.png.webp?itok=7QYkc_s-
+
+--- Group 5 (2 models) ---
+  60SS-10B | https://www.vulcanequipment.com/ranges/endurance-series-stainless-steel-60-gas-range-10-30000-btu-burners-2-standard-ovens
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/106054639.png.webp?itok=GTRO2GWz
+  60SC-10B | https://www.vulcanequipment.com/ranges/endurance-series-stainless-steel-60-gas-range-10-30000-btu-burners-standard-oven-convection-oven
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/106054639.png.webp?itok=GTRO2GWz
+
+--- Group 6 (2 models) ---
+  36C-36GT | https://www.vulcanequipment.com/ranges/endurance-series-stainless-steel-36-gas-range-36-thermostatic-griddle-convection-oven
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/106050308.png.webp?itok=O6Fvb7Vz
+  36S-36GT | https://www.vulcanequipment.com/ranges/endurance-series-stainless-steel-36-gas-range-36-thermostatic-griddle-standard-oven
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/106050308.png.webp?itok=O6Fvb7Vz
+
+--- Group 7 (2 models) ---
+  48C-2B36GT | https://www.vulcanequipment.com/ranges/endurance-series-stainless-steel-48-gas-range-2-30000-btu-burners-and-36-thermostatic-convection-oven
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/imgWeb%20Range%20Endurance%2048S-2B36G%20ql%20.png.webp?itok=8t2XYebM
+  48S-2B36GT | https://www.vulcanequipment.com/ranges/endurance-series-stainless-steel-48-gas-range-2-30000-btu-burners-and-36-thermostatic-standard-oven
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/imgWeb%20Range%20Endurance%2048S-2B36G%20ql%20.png.webp?itok=8t2XYebM
+
+--- Group 8 (2 models) ---
+  48C-4B24GT | https://www.vulcanequipment.com/ranges/endurance-series-stainless-steel-48-gas-range-4-30000-btu-burners-and-24-thermostatic-convection-oven
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/91805535.png.webp?itok=9HYAsX5k
+  48S-4B24GT | https://www.vulcanequipment.com/ranges/endurance-series-stainless-steel-48-gas-range-4-30000-btu-burners-and-24-thermostatic-standard-oven
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/91805535.png.webp?itok=9HYAsX5k
+
+--- Group 9 (2 models) ---
+  48C-8B | https://www.vulcanequipment.com/ranges/endurance-series-stainless-steel-48-gas-range-8-30000-btu-burners-convection-oven
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/106051315.png.webp?itok=VMH6zOP-
+  48S-8B | https://www.vulcanequipment.com/ranges/endurance-series-stainless-steel-48-gas-range-8-30000-btu-burners-standard-oven
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/106051315.png.webp?itok=VMH6zOP-
+
+--- Group 10 (2 models) ---
+  60SC-4B36GT | https://www.vulcanequipment.com/ranges/endurance-series-stainless-steel-60-gas-range-4-30000-btu-burners-and-36-thermostatic-griddle-standard-convection-oven
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/87590125.png.webp?itok=z80oteLr
+  60SS-4B36GT | https://www.vulcanequipment.com/ranges/endurance-series-stainless-steel-60-gas-range-4-30000-btu-burners-and-36-thermostatic-griddle-standard-ovens
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/87590125.png.webp?itok=z80oteLr
+
+--- Group 11 (3 models) ---
+  60SC-6B24CB | https://www.vulcanequipment.com/ranges/endurance-series-stainless-steel-60-gas-range-6-30000-btu-burners-and-24-charbroiler-standard-convection-oven
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/87590130.png.webp?itok=ZHHGlzCZ
+  60SS-6B24CB | https://www.vulcanequipment.com/ranges/endurance-series-stainless-steel-60-gas-range-6-30000-btu-burners-and-24-charbroiler-2-standard-ovens
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/87590130.png.webp?itok=ZHHGlzCZ
+  60SC-6B24GB | https://www.vulcanequipment.com/ranges/endurance-series-stainless-steel-60-gas-range-6-30000-btu-burners-and-24-griddle-broiler-standard-convection-oven
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/87590130.png.webp?itok=ZHHGlzCZ
+
+--- Group 12 (2 models) ---
+  60SC-6B24GT | https://www.vulcanequipment.com/ranges/endurance-series-stainless-steel-60-gas-range-6-30000-btu-burners-and-24-thermostatic-griddle-with-standard-oven-and-convection-oven
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/106053385.png.webp?itok=Dp_7DgI7
+  60SS-6B24GT | https://www.vulcanequipment.com/ranges/endurance-series-stainless-steel-60-gas-range-6-30000-btu-burners-and-24-thermostatic-griddle-2-standard-ovens
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/106053385.png.webp?itok=Dp_7DgI7
+
+--- Group 13 (2 models) ---
+  72SC-12B | https://www.vulcanequipment.com/ranges/endurance-series-stainless-steel-72-gas-range-12-30000-btu-burners-standard-convection-oven
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/106075505.png.webp?itok=7ZcpMWWJ
+  72SS-12B | https://www.vulcanequipment.com/ranges/endurance-series-stainless-steel-72-gas-range-12-30000-btu-burners-2-standard-ovens
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/106075505.png.webp?itok=7ZcpMWWJ
+
+--- Group 14 (3 models) ---
+  72SC-6B36GT | https://www.vulcanequipment.com/ranges/endurance-series-stainless-steel-72-gas-range-6-30000-btu-burners-and-36-thermostatic
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/106075825.png.webp?itok=rlydV-7g
+  72CC-6B36GT | https://www.vulcanequipment.com/ranges/endurance-series-stainless-steel-72-gas-range-6-30000-btu-burners-and-36-thermostatic-griddle-2-convection-ovens
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/106075825.png.webp?itok=rlydV-7g
+  72SS-6B36GT | https://www.vulcanequipment.com/ranges/endurance-series-stainless-steel-72-gas-range-6-30000-btu-burners-and-36-thermostatic-griddle-2-standard-ovens
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/106075825.png.webp?itok=rlydV-7g
+
+--- Group 15 (3 models) ---
+  72SC-8B24GT | https://www.vulcanequipment.com/ranges/endurance-series-stainless-steel-72-gas-range-8-30000-btu-burners-and-24-thermostatic-griddle-standard-convection-oven
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/106075836.png.webp?itok=xOksf-cJ
+  72CC-8B24GT | https://www.vulcanequipment.com/ranges/endurance-series-stainless-steel-72-gas-range-8-30000-btu-burners-and-24-thermostatic-griddle-2-convection-ovens
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/106075836.png.webp?itok=xOksf-cJ
+  72SS-8B24GT | https://www.vulcanequipment.com/ranges/endurance-series-stainless-steel-72-gas-range-8-30000-btu-burners-and-24-thermostatic-2-standard-ovens
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/106075836.png.webp?itok=xOksf-cJ
+
+--- Group 16 (5 models) ---
+  EV36S-2FP2HT | https://www.vulcanequipment.com/ranges/electric-36-restaurant-range-2-french-plates-and-2-hot-tops-standard-oven
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/106348092.png.webp?itok=z59MRePb
+  EV12-1HT | https://www.vulcanequipment.com/ranges/electric-12spreader-restaurant-range-1-hot-top
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/106348092.png.webp?itok=z59MRePb
+  EV36S-4FP12G | https://www.vulcanequipment.com/ranges/electric-36-electric-restaurant-range-4-french-plates-12-griddle-and-standard-oven
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/106348092.png.webp?itok=z59MRePb
+  EV36S-2FP24G | https://www.vulcanequipment.com/ranges/electric-36-restaurant-range-2-french-plates-and-24-griddle-standard-oven
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/106348092.png.webp?itok=z59MRePb
+  EV36S-2HT12G | https://www.vulcanequipment.com/ranges/electric-36-restaurant-range-2-french-plates-12-griddle-and-standard-oven
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/106348092.png.webp?itok=z59MRePb
+
+--- Group 17 (2 models) ---
+  EV48S-8FP | https://www.vulcanequipment.com/ranges/restaurant-stainless-steel-48-electric-range-8-french-plates-standard-oven
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/106348093.png.webp?itok=sJ0E2Wpv
+  EV48S-4HT | https://www.vulcanequipment.com/ranges/restaurant-stainless-steel-48-electric-range-4-hot-tops-standard-oven
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/106348093.png.webp?itok=sJ0E2Wpv
+
+--- Group 18 (3 models) ---
+  VHP424 | https://www.vulcanequipment.com/ranges/vhp-series-24-heavy-duty-gas-hot-plate
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/imgWeb%20Hot%20Plate%20VHP424%20Achiever%20f%20_0.png.webp?itok=jkALWBS7
+  VHP636 | https://www.vulcanequipment.com/ranges/vhp-series-36-heavy-duty-gas-hot-plate
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/imgWeb%20Hot%20Plate%20VHP424%20Achiever%20f%20_0.png.webp?itok=jkALWBS7
+  VHP848 | https://www.vulcanequipment.com/ranges/vhp-series-48-heavy-duty-gas-hot-plate
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/imgWeb%20Hot%20Plate%20VHP424%20Achiever%20f%20_0.png.webp?itok=jkALWBS7
+
+--- Group 19 (2 models) ---
+  VC4GD | https://www.vulcanequipment.com/ovens/vc4-commercial-oven-single-deck-42-14-depth-gas-solid-state-controls
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/87505397.png.webp?itok=GljlHbOS
+  VC4GC | https://www.vulcanequipment.com/ovens/vc4-commercial-oven-single-deck-42-14-depth-gas-computer-controls
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/87505397.png.webp?itok=GljlHbOS
+
+--- Group 20 (6 models) ---
+  VC44EC | https://www.vulcanequipment.com/ovens/vc4-commercial-oven-double-deck-42-14-depth-electric-computer-controls
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/106347854.png.webp?itok=3Lpv99Gt
+  VC44GC | https://www.vulcanequipment.com/ovens/vc4-commercial-oven-double-deck-42-14-depth-gas-computer-controls
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/106347854.png.webp?itok=3Lpv99Gt
+  VC66ED | https://www.vulcanequipment.com/ovens/vc6-commercial-oven-double-deck-46-14-depth-electric-solid-state-controls
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/106347854.png.webp?itok=3Lpv99Gt
+  VC66GD | https://www.vulcanequipment.com/ovens/vc6-commercial-oven-double-deck-46-14-depth-gas-solid-state-controls
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/106347854.png.webp?itok=3Lpv99Gt
+  VC66EC | https://www.vulcanequipment.com/ovens/vc6-commercial-oven-double-deck-46-14-depth-electric-computer-controls
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/106347854.png.webp?itok=3Lpv99Gt
+  VC66GC | https://www.vulcanequipment.com/ovens/vc6-commercial-oven-double-deck-46-14-depth-gas-computer-controls
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/106347854.png.webp?itok=3Lpv99Gt
+
+--- Group 21 (2 models) ---
+  VC55ED | https://www.vulcanequipment.com/ovens/vc5-commercial-oven-double-deck-depth-electric-solid-state-controls
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/87505417.png.webp?itok=IGut9CyY
+  VC55GD | https://www.vulcanequipment.com/ovens/vc5-commercial-oven-double-deck-depth-gas-solid-state-controls
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/87505417.png.webp?itok=IGut9CyY
+
+--- Group 22 (2 models) ---
+  VC6EC | https://www.vulcanequipment.com/ovens/vc6-commercial-oven-single-deck-46-14-depth-electric-computer-controls
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/160284558.png.webp?itok=pAWcWgPM
+  VC6GC | https://www.vulcanequipment.com/ovens/vc6-commercial-oven-single-deck-46-14-depth-gas-computer-controls
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/160284558.png.webp?itok=pAWcWgPM
+
+--- Group 23 (4 models) ---
+  C24ET6 | https://www.vulcanequipment.com/steamers/et-6-pan-electric-floor-convection-steamer
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/90562371.png.webp?itok=QAmM1JLb
+  C24ET10 | https://www.vulcanequipment.com/steamers/et-10-pan-electric-floor-convection-steamer
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/90562376.png.webp?itok=IWqYObEJ
+  C24ET10-PS | https://www.vulcanequipment.com/steamers/et-10-pan-electric-floor-convection-steamer-powersteam
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/90562375.png.webp?itok=IZ9lZdu3
+  C24ET6-PS | https://www.vulcanequipment.com/steamers/et-6-pan-electric-floor-convection-steamer-powersteam
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/90562370.png.webp?itok=oknnnBK0
+
+--- Group 24 (2 models) ---
+  C24ET10-LWE | https://www.vulcanequipment.com/steamers/et-10-pan-electric-floor-convection-steamer-low-water-energy
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/90562374.png.webp?itok=DQ2FCrxX
+  C24ET6-LWE | https://www.vulcanequipment.com/steamers/et-6-pan-electric-floor-convection-steamer-low-water-energy
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/90562373.png.webp?itok=w_-X8bkA
+
+--- Group 25 (2 models) ---
+  C24GA10 PS | https://www.vulcanequipment.com/steamers/ga-10-pan-gas-floor-convection-steamer-powersteam
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/106043904.png.webp?itok=3256kcNd
+  C24GA6 PS | https://www.vulcanequipment.com/steamers/ga-6-pan-gas-floor-convection-steamer-powersteam
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/106043904.png.webp?itok=3256kcNd
+
+--- Group 26 (2 models) ---
+  CHEF-61G | https://www.vulcanequipment.com/combi/chefscombi-6-level-half-size-gas-combi-oven
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/162131093.png.webp?itok=9uJ_ZJSP
+  CHEF-61E | https://www.vulcanequipment.com/combi/chefscombi-half-size-electric-combi-oven-6-rack-levels
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/162131093.png.webp?itok=9uJ_ZJSP
+
+--- Group 27 (2 models) ---
+  CHEF-101G | https://www.vulcanequipment.com/combi/chefscombi-10-level-half-size-gas-combi-oven
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/162284104.png.webp?itok=KnV1tn3L
+  CHEF-101E | https://www.vulcanequipment.com/combi/chefscombi-10-level-half-size-electric-combi-oven
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/162284104.png.webp?itok=KnV1tn3L
+
+--- Group 28 (2 models) ---
+  CHEF-102G | https://www.vulcanequipment.com/combi/chefscombi-10-level-full-size-gas-combi-oven
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/165312238.png.webp?itok=ZS-NNKZ0
+  CHEF-102E | https://www.vulcanequipment.com/combi/chefscombi-10-level-full-size-electric-combi-oven
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/164602368.png.webp?itok=x4Ars0G9
+
+--- Group 29 (2 models) ---
+  ABC7E | https://www.vulcanequipment.com/combi/7-rack-electric-boilerless-combi-oven-steamer
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/86069305.png.webp?itok=RgfuOJiH
+  ABC7G | https://www.vulcanequipment.com/combi/7-level-gas-boilerless-combi-oven
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/86069305.png.webp?itok=RgfuOJiH
+
+--- Group 30 (2 models) ---
+  ABC7E-P Stacked | https://www.vulcanequipment.com/combi/stacked-7-level-electric-boilerless-combi-oven-temperature-probe
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/106348003.png.webp?itok=_B9B38qF
+  ABC7G-P Stacked | https://www.vulcanequipment.com/combi/stacked-7-level-gas-boilerless-combi-oven-temperature-probe
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/106348003.png.webp?itok=_B9B38qF
+
+--- Group 31 (2 models) ---
+  TCM-61E | https://www.vulcanequipment.com/combi/6-level-half-sheet-electric-countertop-touch-combi-multi-tcm-steam-oven
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/127772422.png.webp?itok=zNr6AIC_
+  TCM-61G | https://www.vulcanequipment.com/combi/6-level-half-sheet-gas-countertop-touch-combi-multi-tcm-steam-oven
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/127772422.png.webp?itok=zNr6AIC_
+
+--- Group 32 (2 models) ---
+  TCM-101E | https://www.vulcanequipment.com/combi/10-level-electric-boilerless-combi-oven
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/157762435.png.webp?itok=p8asL_I5
+  TCM-101G | https://www.vulcanequipment.com/combi/10-level-gas-boilerless-combi-oven
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/157762435.png.webp?itok=p8asL_I5
+
+--- Group 33 (2 models) ---
+  GR35M | https://www.vulcanequipment.com/fryers/35lb-gr-series-gas-freestanding-fryer
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/87452107.png.webp?itok=Dp7NHS6G
+  GR45M | https://www.vulcanequipment.com/fryers/50lb-gr-series-gas-freestanding-fryer
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/87452107.png.webp?itok=Dp7NHS6G
+
+--- Group 34 (2 models) ---
+  TR45 | https://www.vulcanequipment.com/fryers/45lb-powerfry3-tr-series-gas-freestanding-fryer
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/87453183.png.webp?itok=rockN-r2
+  VK45 | https://www.vulcanequipment.com/fryers/45lb-powerfry5-vk-series-gas-freestanding-fryer
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/87453183.png.webp?itok=rockN-r2
+
+--- Group 35 (2 models) ---
+  TR65 | https://www.vulcanequipment.com/fryers/65lb-powerfry3-tr-series-gas-freestanding-fryer
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/105932839.png.webp?itok=fFOmj6UG
+  ER85 | https://www.vulcanequipment.com/fryers/85lb-er-series-electric-freestanding-fryer
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/105932839.png.webp?itok=fFOmj6UG
+
+--- Group 36 (2 models) ---
+  TR85 | https://www.vulcanequipment.com/fryers/85lb-powerfry3-tr-series-gas-freestanding-fryer
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/106347908.png.webp?itok=sWhYrPxd
+  VK85 | https://www.vulcanequipment.com/fryers/85lb-powerfry5-vk-series-gas-freestanding-fryer
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/106347908.png.webp?itok=sWhYrPxd
+
+--- Group 37 (7 models) ---
+  K20ETT | https://www.vulcanequipment.com/kettles/20-gallon-k-series-electric-tilting-countertop-kettle
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/106347837.png.webp?itok=7s9rEHmM
+  K20ELT | https://www.vulcanequipment.com/kettles/20-gallon-k-series-electric-floor-mounted-tilting-kettle
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/106347837.png.webp?itok=7s9rEHmM
+  K60ELT | https://www.vulcanequipment.com/kettles/60-gallon-k-series-electric-floor-mounted-tilting-kettle
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/106347837.png.webp?itok=7s9rEHmM
+  K20GLT | https://www.vulcanequipment.com/kettles/20-gallon-k-series-gas-floor-mounted-tilting-kettle
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/106347837.png.webp?itok=7s9rEHmM
+  K60GLT | https://www.vulcanequipment.com/kettles/60-gallon-kglt-series-gas-floor-mounted-tilting-kettle
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/106347837.png.webp?itok=7s9rEHmM
+  K20DLT | https://www.vulcanequipment.com/kettles/20-gallon-kdlt-series-direct-steam-floor-mounted-tilting-kettle
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/106347837.png.webp?itok=7s9rEHmM
+  K40DLT | https://www.vulcanequipment.com/kettles/40-gallon-kdlt-series-direct-steam-floor-mounted-tilting-kettle
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/106347837.png.webp?itok=7s9rEHmM
+
+--- Group 38 (2 models) ---
+  K40EL | https://www.vulcanequipment.com/kettles/40-gallon-kel-series-electric-floor-mounted-stationary-kettle
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/87550710.png.webp?itok=oErLpx6D
+  K60EL | https://www.vulcanequipment.com/kettles/60-gallon-k-series-electric-floor-mounted-stationary-kettle
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/87550710.png.webp?itok=oErLpx6D
+
+--- Group 39 (2 models) ---
+  K40ELT | https://www.vulcanequipment.com/kettles/40-gallon-kelt-series-electric-floor-mounted-tilting-kettle
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/87550716.png.webp?itok=qN_h3ZPM
+  K60DLT | https://www.vulcanequipment.com/kettles/60-gallon-k-series-direct-steam-floor-mounted-tilting-kettle
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/87550716.png.webp?itok=qN_h3ZPM
+
+--- Group 40 (2 models) ---
+  K40GL | https://www.vulcanequipment.com/kettles/40-gallon-kgl-series-gas-floor-mounted-stationary-kettle
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/87550809.png.webp?itok=cp4DGQTe
+  K60GL | https://www.vulcanequipment.com/kettles/60-gallon-kgl-series-gas-floor-mounted-stationary-kettle
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/87550809.png.webp?itok=cp4DGQTe
+
+--- Group 41 (5 models) ---
+  GS40ES | https://www.vulcanequipment.com/kettles/40-gallon-gas-fully-jacketed-stationary-short-height-kettle
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/106347836.png.webp?itok=8vfsgl6M
+  GS60E | https://www.vulcanequipment.com/kettles/60-gallon-gas-fully-jacketed-stationary-kettle
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/106347836.png.webp?itok=8vfsgl6M
+  GL80E | https://www.vulcanequipment.com/kettles/80-gallon-gas-fully-jacketed-stationary-kettle
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/106347836.png.webp?itok=8vfsgl6M
+  GT100E | https://www.vulcanequipment.com/kettles/100-gallon-gas-fully-jacketed-stationary-kettle
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/106347836.png.webp?itok=8vfsgl6M
+  GT150E | https://www.vulcanequipment.com/kettles/150-gallon-gas-fully-jacketed-stationary-kettle
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/106347836.png.webp?itok=8vfsgl6M
+
+--- Group 42 (2 models) ---
+  VE30 | https://www.vulcanequipment.com/braising-pans/30-gallon-ve-series-electric-braising-pan-tilting
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/105861487.png.webp?itok=Md8p_QTU
+  VG30 | https://www.vulcanequipment.com/braising-pans/30-gallon-vg-series-gas-braising-pan
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/105861487.png.webp?itok=Md8p_QTU
+
+--- Group 43 (2 models) ---
+  VE40 | https://www.vulcanequipment.com/braising-pans/40-gallon-ve-series-electric-braising-pan-tilting
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/105861498.png.webp?itok=02mX-OJk
+  VG40 | https://www.vulcanequipment.com/braising-pans/40-gallon-vg-series-gas-braising-pan
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/105861498.png.webp?itok=02mX-OJk
+
+--- Group 44 (8 models) ---
+  VBB1SF | https://www.vulcanequipment.com/broilers/36-gas-radiant-ceramic-upright-broiler-standard-oven-base
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/106348157_1.png.webp?itok=iBrgi83W
+  VBB1CF | https://www.vulcanequipment.com/broilers/36-gas-radiant-ceramic-upright-broiler-convection-oven-base
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/106348157_1.png.webp?itok=iBrgi83W
+  VBB2 | https://www.vulcanequipment.com/broilers/36-salamander-double-deck-gas-ceramic-freestanding-broiler
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/106348157_1.png.webp?itok=iBrgi83W
+  VIR1BF | https://www.vulcanequipment.com/broilers/36-heavy-duty-double-deck-gas-infrared-cabinet-base-broiler
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/106348157_1.png.webp?itok=iBrgi83W
+  VIR1CF | https://www.vulcanequipment.com/broilers/36-v-double-deck-gas-infrared-convection-oven-base-broiler
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/106348157_1.png.webp?itok=iBrgi83W
+  VIR1F | https://www.vulcanequipment.com/broilers/36-v-double-deck-gas-infrared-refrigerated-base-broiler
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/106348157_1.png.webp?itok=iBrgi83W
+  VIB2 | https://www.vulcanequipment.com/broilers/36-double-deck-gas-infrared-over-ceramic-freestanding-broiler
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/106348157_1.png.webp?itok=iBrgi83W
+  VBI2 | https://www.vulcanequipment.com/broilers/36-double-deck-gas-ceramic-over-infrared-freestanding-broiler
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/106348157_1.png.webp?itok=iBrgi83W
+
+--- Group 45 (2 models) ---
+  36RB | https://www.vulcanequipment.com/broilers/36-salamander-gas-radiant-broiler
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/87438946.png.webp?itok=Rzo5NHc3
+  36IRB | https://www.vulcanequipment.com/broilers/36-salamander-gas-infrared-broiler
+     img: https://www.vulcanequipment.com/sites/default/files/styles/image_wide/public/webdam_asset/87438946.png.webp?itok=Rzo5NHc3

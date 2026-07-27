@@ -1,7 +1,7 @@
 <?php
 /**
  * Single Project Template — Amdang Typhoon
- * Thumbnail: amdang-typhoon/amdang-typhoon-loi-vao-nhahang.webp
+ * Thumbnail: amdang-typhoon/amdang-typhoon-thumbnail-project-cover.webp
  *
  * Auto-routed via inc/core/pillar-routes.php for /du-an/amdang-typhoon/.
  *

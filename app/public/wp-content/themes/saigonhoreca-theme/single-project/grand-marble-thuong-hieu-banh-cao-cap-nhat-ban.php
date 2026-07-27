@@ -1,7 +1,7 @@
 <?php
 /**
  * Single Project Template — Grand Marble
- * Thumbnail: grand-marble-thuong-hieu-banh-cao-cap-nhat-ban/grand-marble-original-taste-150x150.webp
+ * Thumbnail: grand-marble-thuong-hieu-banh-cao-cap-nhat-ban/grand-marble-thuong-hieu-banh-cao-cap-nhat-ban-thumbnail-project-cover.webp
  *
  * Auto-routed via inc/core/pillar-routes.php for /du-an/grand-marble-thuong-hieu-banh-cao-cap-nhat-ban/.
  *

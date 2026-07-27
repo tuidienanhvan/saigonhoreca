@@ -82,7 +82,7 @@ $uri = get_template_directory_uri();
           <div class="pp-image-container-shared">
             <img src="<?php echo sgh_img('g-cup-coffee-bistro/g-cup-coffee-bistro-he-quay-beverage-counter-chuyen-nghiep.webp'); ?>" alt="<?php echo esc_attr__('Hệ quầy beverage counter và hệ lạnh Hoshizaki shophouse', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
             <div class="pp-image-caption-shared">
-              <?php echo esc_html__('Hệ quầy beverage counter tích hợp khay đá bảo ôn âm bàn giữ nhiệt chuyên dụng cho barista thao tác nhanh chóng.', 'saigonhoreca'); ?>
+              <?php echo esc_html__('Hệ quầy beverage counter inox bố trí cặp máy xay sinh tố có chụp cách âm cạnh cặp máy xay cà phê, gọn trên thân tủ mát âm bàn cho barista thao tác liền mạch.', 'saigonhoreca'); ?>
             </div>
           </div>
         </div>

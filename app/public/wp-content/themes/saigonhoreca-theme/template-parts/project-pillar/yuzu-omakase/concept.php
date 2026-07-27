@@ -18,7 +18,7 @@ if (!defined('ABSPATH')) exit;
             <div class="pp-concept-yzo__img-border"></div>
           </div>
           <div class="pp-image-caption-shared">
-            <?php echo esc_html__('Đôi bàn tay tài hoa của nghệ nhân sushi nâng niu từng hạt cơm và lát cá, kết tinh tình yêu ẩm thực truyền thống trong một không gian đương đại.', 'saigonhoreca'); ?>
+            <?php echo esc_html__('Khung hình tại quầy bếp mở Yuzu Omakase: nghệ nhân với đôi đũa và chén trà bên dãy nigiri trên đĩa gốm sẫm, gói trọn tinh thần phục vụ tỉ mỉ của không gian Omakase đương đại.', 'saigonhoreca'); ?>
           </div>
         </div>
       </div>

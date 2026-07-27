@@ -1,0 +1,8 @@
+/* Project bundle — tales-by-chapter only. */
+@import "../../../template-parts/project-pillar/tales-by-chapter/hero.css";
+@import "../../../template-parts/project-pillar/tales-by-chapter/intro.css";
+@import "../../../template-parts/project-pillar/tales-by-chapter/concept.css";
+@import "../../../template-parts/project-pillar/tales-by-chapter/partnership.css";
+@import "../../../template-parts/project-pillar/tales-by-chapter/specs.css";
+@import "../../../template-parts/project-pillar/tales-by-chapter/gallery.css";
+@import "../../../single-project/tales-by-chapter.css";

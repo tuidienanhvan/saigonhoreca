@@ -167,51 +167,19 @@
   color: var(--p);
 }
 
-/* Founder & Sáng lập info */
-.sh-contact-form__founder {
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  padding-top: 1.8rem;
+/* T-022: số/email phụ (Tel thứ 2, email thứ 2) gộp chung 1 dòng liên hệ
+   với nhãn chính thay vì mỗi số một hàng icon riêng — giảm 5 dòng lặp lại
+   xuống còn 3 dòng (địa chỉ / điện thoại / email), khớp phân cấp footer. */
+.sh-contact-form__detail-lines {
   display: flex;
   flex-direction: column;
-  gap: 0.45rem;
+  gap: 0.2rem;
 }
 
-.sh-contact-form__founder-label {
-  font-size: 0.75rem;
-  font-weight: 800;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--p);
-  margin: 0;
-  text-shadow: 0 0 8px rgba(245, 166, 35, 0.15);
-}
-
-.sh-contact-form__founder-name {
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--bc);
-  margin: 0;
-  letter-spacing: 0.02em;
-}
-
-.sh-contact-form__founder-contacts {
-  list-style: none;
-  margin: 0.15rem 0 0;
-  padding: 0;
-}
-
-.sh-contact-form__founder-contacts a {
-  font-size: 0.85rem;
-  color: var(--bc3);
-  text-decoration: none;
-  transition: color 0.2s ease, padding-left 0.2s ease;
-  display: inline-flex;
-  align-items: center;
-}
-
-.sh-contact-form__founder-contacts a:hover {
-  color: var(--p);
-  padding-left: 2px;
+.sh-contact-form__detail-item a.sh-contact-form__detail-secondary {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--bc2);
 }
 
 /* Social buttons section */

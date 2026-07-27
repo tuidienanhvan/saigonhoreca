@@ -9,6 +9,12 @@ dist/
 build/
 .cache/
 tmp-download/
+_tmp/
+
+# Dev artifacts / legacy crawl — moved to external backup on 2026-06 cleanup
+static-mirror/
+graphify-out/
+scratch/
 
 # Helper and temp python scripts
 *.py

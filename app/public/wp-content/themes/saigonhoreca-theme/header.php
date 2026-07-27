@@ -15,9 +15,9 @@
 
     <!-- Favicons & Manifest -->
     <link rel="icon" type="image/x-icon" href="<?php echo esc_url($theme_uri . '/assets/images/favicon.ico'); ?>">
-    <link rel="apple-touch-icon" sizes="180x180" href="<?php echo esc_url($theme_uri . '/assets/images/apple-touch-icon.png'); ?>">
-    <link rel="icon" type="image/png" sizes="32x32" href="<?php echo esc_url($theme_uri . '/assets/images/favicon-32x32.png'); ?>">
-    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo esc_url($theme_uri . '/assets/images/favicon-16x16.png'); ?>">
+    <link rel="apple-touch-icon" sizes="180x180" href="<?php echo esc_url($theme_uri . '/assets/images/apple-touch-icon.webp'); ?>">
+    <link rel="icon" type="image/webp" sizes="32x32" href="<?php echo esc_url($theme_uri . '/assets/images/favicon-32x32.webp'); ?>">
+    <link rel="icon" type="image/webp" sizes="16x16" href="<?php echo esc_url($theme_uri . '/assets/images/favicon-16x16.webp'); ?>">
     <link rel="manifest" href="<?php echo esc_url($theme_uri . '/manifest.json'); ?>">
     <?php if (file_exists($theme_dir . '/assets/images/safari-pinned-tab.svg')) : ?>
     <link rel="mask-icon" href="<?php echo esc_url($theme_uri . '/assets/images/safari-pinned-tab.svg'); ?>" color="#5bbad5">
@@ -30,19 +30,10 @@
         sgh_inline_theme_css();
     }
     ?>
-    <?php if (is_front_page()) : ?>
-    <!-- Preload Home Hero Image (LCP Responsive Optimizer) -->
-    <?php
-    $img_orig = sgh_img('saigonhoreca/SGH-banner-1.webp');
-    $img_ext = pathinfo('saigonhoreca/SGH-banner-1.webp', PATHINFO_EXTENSION);
-    $img_base = substr('saigonhoreca/SGH-banner-1.webp', 0, -(strlen($img_ext) + 1));
-    $img_mobile = sgh_img("{$img_base}-mobile.{$img_ext}");
-    ?>
-    <link rel="preload" href="<?php echo esc_url($img_orig); ?>" as="image" 
-          imagesrcset="<?php echo esc_url($img_mobile); ?> 600w, <?php echo esc_url($img_orig); ?> 1200w" 
-          imagesizes="(max-width: 576px) 600px, 100vw"
-          fetchpriority="high">
-    <?php endif; ?>
+    <?php /* Home hero LCP preload is emitted dynamically in inc/core/enqueue.php
+             (real hero image via _pi_hero_1_bg / latest featured). The old hardcoded
+             SGH-banner-1.webp preload here was a DUPLICATE pointing at a non-existent
+             file — removed so only ONE correct hero image competes for fetchpriority. */ ?>
     <?php
     wp_head();
     ?>
@@ -50,7 +41,7 @@
     <meta name="msapplication-TileColor" content="#2b5797">
     <meta name="theme-color" content="#ffffff">
     <!-- Dark mode & Lighthouse Optimization: apply BEFORE paint to prevent flash & bypass animation delays -->
-    <script>
+    <script nonce="<?php echo esc_attr($GLOBALS['sgh_csp_nonce'] ?? ''); ?>">
     (function(){
         // 1. Dark mode
         var d = null;
@@ -75,11 +66,40 @@
     </style>
     <?php endif; ?>
     <?php get_template_part('template-parts/global-styles'); ?>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-16RD3DMN8W"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-16RD3DMN8W');
+    </script>
+    
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '861182343476463');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=861182343476463&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
 </head>
 <body <?php body_class(); ?>>
 <a href="#primary" class="sh-skip-link"><?php esc_html_e('Chuyển đến nội dung chính', 'saigonhoreca'); ?></a>
 <!-- Main Header (Saigon Horeca: clean dark band, no construction skyline) -->
 <header id="main-header" class="sh-header sh-header--horeca <?php if (is_admin_bar_showing()) echo 'sh-header--admin-bar'; ?>" role="banner" aria-label="<?php esc_attr_e('Header chính của website', 'saigonhoreca'); ?>">
+    <div class="sh-header__border"></div>
     <div class="sh-header__bar sh-header__bar--horeca <?php echo is_front_page() ? 'sh-header__bar--home' : ''; ?>">
         <!-- Logo -->
         <?php get_template_part('template-parts/header/logo'); ?>
@@ -93,9 +113,7 @@
             <?php
             $sgh_is_en   = function_exists('sgh_is_english_site') ? sgh_is_english_site() : false;
             $sgh_alt_url = function_exists('sgh_counterpart_url') ? sgh_counterpart_url() : ($sgh_is_en ? 'https://saigonhoreca.vn/' : 'https://saigonhoreca.com/');
-            $sgh_alt_flag = $sgh_is_en
-                ? '2023/11/Vietnam-flag.jpeg'
-                : '2023/11/English-flag-e1701229840457.jpeg';
+            // Flag rendered as inline SVG below — no uploads image needed (removed dead 2023/11 flag refs).
             $sgh_alt_label = $sgh_is_en ? 'Tiếng Việt' : 'English';
             $sgh_alt_hreflang = $sgh_is_en ? 'vi' : 'en';
             ?>
@@ -150,7 +168,7 @@
 ?>
 
 <!-- Self-healing script to fix faulty top space when WordPress admin bar is active in PHP but hidden in UI -->
-<script>
+<script nonce="<?php echo esc_attr($GLOBALS['sgh_csp_nonce'] ?? ''); ?>">
 document.addEventListener('DOMContentLoaded', function() {
     var adminBar = document.getElementById('wpadminbar');
     var header = document.getElementById('main-header');

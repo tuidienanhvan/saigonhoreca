@@ -1,0 +1,364 @@
+{
+  "research_date": "2026-07-14",
+  "source_note": "Cào từ website chính hãng Hobart Corporation (Mỹ, thuộc ITW Food Equipment Group / Illinois Tool Works) — www.hobartcorp.com. KHÔNG phải dữ liệu tự bịa — mọi model/dòng sản phẩm dưới đây có URL nguồn kèm theo, lấy qua WebFetch. Lưu ý: có 2 thực thể Hobart tách biệt trên toàn cầu — (1) Hobart Corporation (Mỹ, ITW FEG, hobartcorp.com) dùng làm nguồn chính cho tài liệu này; (2) Hobart GmbH (Đức, hobart-export.com / international.hobart-export.com) phục vụ thị trường châu Âu/quốc tế bao gồm cả Việt Nam trong dropdown chọn quốc gia, nhưng trang khu vực Việt Nam KHÔNG có dữ liệu đại lý cụ thể (chỉ placeholder rỗng) và KHÔNG show danh mục sản phẩm/model riêng — do đó không dùng làm nguồn chính. Phần lớn thông số kỹ thuật chi tiết (HP chính xác cho một số model, kích thước mm, trọng lượng, điện áp) của hobartcorp.com nằm trong file PDF 'Spec Sheet' tải riêng từng model — KHÔNG trích xuất được nội dung PDF qua WebFetch, đã ghi rõ 'not found' thay vì bịa số liệu.",
+  "existing_catalog_gap": "Site saigonhoreca.local hiện brand Hobart chỉ là 1 logo đối tác ở trang chủ (mục 'Đối tác') — CHƯA có bất kỳ sản phẩm nào trong danh mục thật. Hobart thực tế có danh mục rất rộng qua 3 nhóm lớn: (1) Food Preparation Equipment — mixers (7 dòng), slicers (3 dòng), food processors (4 dòng), meat room/meat grinders (4 dòng), specialty products/vegetable prep (4 dòng) — tổng ~45 mã model xác nhận; (2) Commercial Dishwashers/Warewashing — flight-type, conveyor-type, door-type, undercounter, glasswasher, pot-pan-utensil washer, industrial, waste equipment (8 dòng); (3) Weighing & Wrapping — scales, wrapping equipment, software. Đây là khoảng trống lớn cần bổ sung dần lên site.",
+  "brand": "Hobart",
+  "company_info": {
+    "legal_name": "Hobart Corporation (thương hiệu thuộc ITW Food Equipment Group LLC, một công ty con của Illinois Tool Works Inc.)",
+    "parent_group": "ITW Food Equipment Group (ITW FEG) — cùng nhóm với các thương hiệu Vulcan, Traulsen, Baxter, Bonnet, Berkel...",
+    "history_note": "Hobart là thương hiệu Mỹ lâu đời chuyên thiết bị bếp công nghiệp (mixer, slicer, dishwasher). Có văn phòng/hiện diện tại nhiều nước châu Á (Trung Quốc, Hồng Kông, Nhật Bản, Hàn Quốc, New Zealand, Singapore, Thái Lan) qua mạng lưới ITW FEG, nhưng KHÔNG xác nhận được đại lý chính thức tại Việt Nam qua website chính hãng.",
+    "source_url": "https://www.hobartcorp.com/about-us-hobart"
+  },
+  "official_sites": [
+    {
+      "site": "Hobart Corporation (Mỹ — nguồn chính dùng cho tài liệu này)",
+      "url": "https://www.hobartcorp.com/",
+      "note": "Site chính, đầy đủ danh mục sản phẩm công khai theo 3 nhóm: Commercial Dishwashers, Food Preparation Equipment, Weighing & Wrapping. WebFetch đọc được bình thường, không bị chặn crawl."
+    },
+    {
+      "site": "Hobart GmbH / International (Đức — thị trường quốc tế/châu Âu, có Việt Nam trong dropdown nhưng KHÔNG có dữ liệu)",
+      "url": "https://www.international.hobart-export.com/",
+      "note": "Trang chọn quốc gia có liệt kê 'vietnam' trong danh sách nhưng các trường liên hệ đại lý (address/phone/email) đều là placeholder rỗng — CHƯA xác nhận đại lý Hobart GmbH tại Việt Nam. Trang này cũng không show danh mục sản phẩm/model cụ thể, chỉ là hub điều hướng liên hệ khu vực. Không dùng làm nguồn dữ liệu sản phẩm."
+    }
+  ],
+  "groups": [
+    {
+      "group_name": "Mixers",
+      "group_name_vi": "Máy Trộn Bột / Trộn Thực Phẩm (Mixer)",
+      "source_url": "https://www.hobartcorp.com/products/food-prep/mixers",
+      "series": [
+        {
+          "series_name": "Legacy+ Countertop Mixers",
+          "series_name_vi": "Máy trộn để bàn Legacy+",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/mixers/legacy-plus-countertop-mixer",
+          "models": [
+            {
+              "model": "HL120",
+              "name": "Legacy+ 12-Quart Countertop Mixer",
+              "specs": { "bowl_capacity": "12 qt", "speeds": "3 tốc độ trộn + tốc độ Stir siêu chậm", "feature_note": "'PLUS System' — biến tần VFD, bảo vệ quá nhiệt, trục planetary gia cường", "hp": "not found", "dimensions_mm": "not found", "weight_kg": "not found", "voltage": "not found" },
+              "seo": { "seo_title": "Legacy+ Commercial Countertop Mixers | Hobart FEG", "seo_description": null, "seo_description_gap_note": "Không tìm thấy meta description qua WebFetch.", "image_url": null, "image_gap_note": "Không lấy được ảnh sản phẩm riêng cho HL120 qua WebFetch trang danh mục dòng — cần kiểm tra thủ công." }
+            },
+            {
+              "model": "HL200",
+              "name": "Legacy+ 20-Quart Countertop Mixer",
+              "specs": { "bowl_capacity": "20 qt", "speeds": "3 tốc độ trộn + tốc độ Stir siêu chậm", "hp": "not found", "dimensions_mm": "not found", "weight_kg": "not found", "voltage": "not found" },
+              "seo": { "seo_title": "Legacy+ Commercial Countertop Mixers | Hobart FEG", "seo_description": null, "image_url": "https://www.hobartcorp.com/sites/default/files/styles/max_width_310/public/webdam-assets/Mixer%20N50%20f%20.png?itok=9QD-2_Mv", "image_gap_note": "URL ảnh trên thực tế lấy từ trang N50 — bị lẫn khi cào, KHÔNG chắc đúng ảnh HL200. Cần xác minh thủ công trước khi dùng." }
+            }
+          ]
+        },
+        {
+          "series_name": "Legacy+ Floor Mixers",
+          "series_name_vi": "Máy trộn đứng sàn Legacy+",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/mixers/legacy-plus-floor-mixers",
+          "seo": { "seo_title": "Legacy+® Commercial Floor Mixers | Hobart Legacy+® Mixers | Hobart FEG", "seo_description": null, "seo_description_gap_note": "Không tìm thấy meta description qua WebFetch.", "image_url": "https://cdn2.webdamdb.com/1280_cbnmyVNkPjn01QKU.png?1781292805" },
+          "models": [
+            { "model": "HL300", "bowl_capacity": "30 qt", "max_cake_batter_lbs": 30, "max_heavy_dough_lbs": 30 },
+            { "model": "HL400", "bowl_capacity": "40 qt", "max_cake_batter_lbs": 40, "max_heavy_dough_lbs": 35 },
+            { "model": "HL600", "bowl_capacity": "60 qt", "max_cake_batter_lbs": 55, "max_heavy_dough_lbs": 60 },
+            { "model": "HL800", "bowl_capacity": "80 qt", "max_cake_batter_lbs": 100, "max_heavy_dough_lbs": 140 },
+            { "model": "HL1400", "bowl_capacity": "140 qt", "max_cake_batter_lbs": 185, "max_heavy_dough_lbs": 175 }
+          ],
+          "specs_gap_note": "HP động cơ, kích thước mm, trọng lượng, điện áp cho từng size KHÔNG có trong nội dung trang cào được — nằm trong PDF spec sheet tải riêng, chưa trích xuất."
+        },
+        {
+          "series_name": "Legacy+ HL662 Pizza Dough Mixer",
+          "series_name_vi": "Máy trộn bột pizza Legacy+ HL662",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/mixers/legacy-plus-hl662-pizza-mixer",
+          "seo": { "seo_title": "Legacy+® HL662 Pizza Dough Mixer | Hobart FEG", "seo_description": null, "image_url": null, "image_gap_note": "Trang trả về đường dẫn ảnh gắn với model HL200, khả năng cao là ảnh sai/stale — không dùng để tránh gán nhầm ảnh." },
+          "models": [
+            { "model": "HL662", "dough_capacity": { "heavy_bread_55pct_ar_lbs": 85, "thin_pizza_40pct_ar_lbs": "60 (tốc độ 1) / 40 (tốc độ 2)", "medium_pizza_50pct_ar_lbs": "90 (tốc độ 1) / 70 (tốc độ 2)", "thick_pizza_60pct_ar_lbs": "90 (tốc độ 2)" }, "bowl_capacity": "not found", "hp": "not found", "dimensions_mm": "not found", "weight_kg": "not found" }
+          ]
+        },
+        {
+          "series_name": "N50 5-Quart Mixer",
+          "series_name_vi": "Máy trộn để bàn N50 5-Quart",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/mixers/n50-5-quart-mixer",
+          "seo": { "seo_title": "Hobart N50 5-Quart Commercial Stand Mixer", "seo_description": null, "image_url": "https://www.hobartcorp.com/sites/default/files/styles/max_width_310/public/webdam-assets/Mixer%20N50%20f%20.png?itok=9QD-2_Mv" },
+          "models": [
+            { "model": "N50", "bowl_capacity": "5 qt (inox)", "motor_hp": "1/6 HP", "transmission": "Gear-driven", "speeds": "3 tốc độ cố định", "included_attachments": ["B flat beater", "D wire whip", "E dough hook"], "dimensions_mm": "not found", "weight_kg": "not found", "voltage": "not found" }
+          ]
+        },
+        {
+          "series_name": "Centerline by Hobart Mixers",
+          "series_name_vi": "Máy trộn Centerline (dòng phổ thông)",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/mixers/centerline-mixers",
+          "seo": { "seo_title": "Centerline Standard Heavy-Duty Mixers | Hobart FEG", "seo_description": null, "image_url": "https://www.hobartcorp.com/sites/default/files/webdam-assets/Mixer%20HMM10%20qr%20.png?itok=qCi2t0PA" },
+          "models": [
+            { "model": "HMM10", "bowl_capacity": "10 qt", "motor_hp": "1/2–1 HP (theo model)", "speeds": 3, "transmission": "All-gear" },
+            { "model": "HMM20", "bowl_capacity": "20 qt", "motor_hp": "1/2–1 HP (theo model)", "speeds": 3, "transmission": "All-gear" },
+            { "model": "HMM30", "bowl_capacity": "30 qt", "motor_hp": "1/2–1 HP (theo model)", "speeds": 3, "transmission": "All-gear" }
+          ]
+        },
+        {
+          "series_name": "Spiral Mixers",
+          "series_name_vi": "Máy trộn bột xoắn ốc (Spiral Mixer)",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/mixers/spiral-mixers",
+          "seo": { "seo_title": "Commercial Spiral Mixers | Hobart", "seo_description": null, "image_url": "https://www.hobartcorp.com/sites/default/files/styles/max_width_310/public/webdam-assets/Spiral%20Mixer%20HSL130%20f%20.png?itok=MH9-WrK_" },
+          "models": [
+            { "model": "HSL130", "bread_flour_per_batch_lbs": "75/130", "thin_pizza_lbs": "40/60", "bagel_dough_lbs": "40/65" },
+            { "model": "HSL180", "bread_flour_per_batch_lbs": "100/180", "thin_pizza_lbs": "62/90", "bagel_dough_lbs": "90/140" },
+            { "model": "HSL220", "bread_flour_per_batch_lbs": "120/220", "thin_pizza_lbs": "75/110", "bagel_dough_lbs": "85/130" },
+            { "model": "HSL300", "bread_flour_per_batch_lbs": "165/290", "thin_pizza_lbs": "100/145", "bagel_dough_lbs": "100/165" },
+            { "model": "HSU440", "bread_flour_per_batch_lbs": "240/440", "thin_pizza_lbs": "150/220", "bagel_dough_lbs": "170/260" }
+          ],
+          "specs_gap_note": "HP, kích thước mm, trọng lượng, điện áp: không tìm thấy trong nội dung cào được cho bất kỳ model nào."
+        },
+        {
+          "series_name": "Cutter Mixers",
+          "series_name_vi": "Máy trộn xay (Cutter Mixer)",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/mixers/cutter-mixers",
+          "seo": { "seo_title": "Commercial Cutter Mixer | Hobart", "seo_description": null, "image_url": "https://cdn2.webdamdb.com/1280_MLB7N8buZK12os08.png?1721775125" },
+          "models": [
+            { "model": "HCM450", "bowl_capacity": "45 qt (inox)", "motor_hp": "5 HP, 1 tốc độ, 1140 RPM", "timer": "Hẹn giờ 5 phút (run/jog/timed)", "base_material": "Thép sơn tĩnh điện", "bowl_tilt": "Nghiêng tới 90°", "safety": "Khóa liên động — chỉ chạy khi nắp đóng và độ nghiêng <20°" }
+          ]
+        },
+        {
+          "series_name": "Mixer Accessories",
+          "series_name_vi": "Phụ kiện máy trộn",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/mixers/mixer-accessories",
+          "seo": { "seo_title": "Commercial Mixer Accessories, Mixer Attachments | Hobart", "seo_description": null, "image_url": null, "image_gap_note": "Chỉ lấy được path ảnh không đầy đủ (fragment), chưa xác minh URL đầy đủ." },
+          "items_not_full_products": ["B-Beater (HL12)", "Dough Hook (ED)", "Wire Whip", "Wing Whip", "Bowl Scraper", "VS9 Vegetable Slicer attachment", "Mixer Meat Chopper Attachment", "HL20 Chute", "Splash Cover", "Mixer Table (TABLEHW-HL2012)", "Bowl Truck"]
+        }
+      ]
+    },
+    {
+      "group_name": "Slicers",
+      "group_name_vi": "Máy Thái Lát (Slicer)",
+      "source_url": "https://www.hobartcorp.com/products/food-prep/slicers",
+      "series": [
+        {
+          "series_name": "HS Series Slicers",
+          "series_name_vi": "Dòng máy thái lát HS",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/slicers/hs-series-slicers",
+          "seo": { "seo_title": "Heavy Duty Slicer Machine | Hobart FEG", "seo_description": null, "image_url": "https://www.hobartcorp.com/sites/default/files/styles/max_height_550/public/webdam-assets/Slicer%20HS9%20qr%20.png?itok=RYm1c-dY" },
+          "models": [
+            { "model": "HS6/HS6N", "type": "Manual (thái tay)", "blade": "13\" CleanCut", "power_hp": 0.5, "finish": "Nhôm đánh bóng (burnished aluminum)", "interlocks": "No-volt release" },
+            { "model": "HS7/HS7N", "type": "Automatic (thái tự động)", "blade": "13\" CleanCut", "power_hp": 0.5, "finish": "Nhôm đánh bóng", "interlocks": "No-volt release, home-to-start" },
+            { "model": "HS8/HS8N", "type": "Manual", "blade": "13\" CleanCut", "power_hp": 0.5, "finish": "Nhôm anod hóa (anodized aluminum)", "interlocks": "6 khóa liên động" },
+            { "model": "HS9/HS9N", "type": "Automatic", "blade": "13\" CleanCut", "power_hp": 0.5, "finish": "Nhôm anod hóa", "interlocks": "6 khóa liên động" }
+          ]
+        },
+        {
+          "series_name": "Portion Scale Slicers",
+          "series_name_vi": "Máy thái lát có cân định lượng",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/slicers/portion-scale-slicer",
+          "seo": { "seo_title": "HS Series Portion Scale Slicer | Hobart FEG", "seo_description": null, "image_url": "https://www.hobartcorp.com/sites/default/files/styles/max_width_310/public/webdam-assets/Slicer%20HS7-1PS%20qr%20.png?itok=fmwzSU5v" },
+          "models": [
+            { "model": "HS6-1PS", "type": "Manual", "blade": "13\" CleanCut inox, lưỡi cobalt", "scale": "Tới 10 lbs, chia độ 0.01 lb", "motor_hp": 0.5 },
+            { "model": "HS7-1PS", "type": "Automatic", "blade": "13\" CleanCut inox, lưỡi cobalt", "scale": "Tới 10 lbs, chia độ 0.01 lb", "motor_hp": 0.5 }
+          ]
+        },
+        {
+          "series_name": "Centerline by Hobart Slicers",
+          "series_name_vi": "Máy thái lát Centerline (dòng EDGE)",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/slicers/centerline-slicers",
+          "seo": { "seo_title": "Centerline EDGE Series Slicers | Hobart", "seo_description": null, "image_url": "https://www.hobartcorp.com/sites/default/files/webdam-assets/Slicer%20EDGE13A-11%20qr%20.png" },
+          "models": [
+            { "model": "EDGE10", "motor_hp": "1/2 HP (phần lớn model)", "blade_in": "not found" },
+            { "model": "EDGE12", "motor_hp": "1/2 HP (phần lớn model)", "blade_in": "not found" },
+            { "model": "EDGE13", "motor_hp": "1/2 HP (phần lớn model)", "blade_in": "13 (suy ra từ tên model)" },
+            { "model": "EDGE13A", "motor_hp": "1/2 HP (phần lớn model)", "blade_in": "13 (suy ra từ tên model)" },
+            { "model": "EDGE14", "motor_hp": "1/2 HP (phần lớn model)", "blade_in": "14 (suy ra từ tên model)" }
+          ]
+        },
+        {
+          "series_name": "Slicing Accessories",
+          "series_name_vi": "Phụ kiện máy thái lát",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/slicers/slicing-accessories",
+          "seo": { "seo_title": "Commercial Slicer Parts and Accessories | Hobart FEG", "seo_description": null, "image_url": "https://www.hobartcorp.com/sites/default/files/webdam-assets/FoodMach-ProdFam-URC-Slicers-373x200-V2.png" },
+          "items_not_full_products": ["HS Slicer Tubular Chute", "HS Slicer Product Deflector", "HS Slicer Removal Tool", "HS Slicer Product Fence"]
+        }
+      ]
+    },
+    {
+      "group_name": "Food Processors",
+      "group_name_vi": "Máy Xay/Cắt Thực Phẩm Đa Năng (Food Processor)",
+      "source_url": "https://www.hobartcorp.com/products/food-prep/food-processors",
+      "series": [
+        {
+          "series_name": "Countertop Continuous-Feed Food Processors",
+          "series_name_vi": "Máy xay/cắt liên tục để bàn",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/food-processors/countertop-continuous-feed-food-processors",
+          "seo": { "seo_title": "Continuous-Feed Food Processors | Hobart FEG", "seo_description": null, "image_url": "https://www.hobartcorp.com/sites/default/files/styles/max_height_550/public/webdam-assets/Food%20Processor%20FP250%20qr%20.png", "image_note": "Ảnh minh họa cho FP250; các model khác trong dòng chưa xác nhận ảnh riêng." },
+          "models": [
+            { "model": "FP100", "throughput": "11 lbs/phút", "meals_per_day": 400 },
+            { "model": "FP150", "throughput": "14 lbs/phút", "meals_per_day": 700 },
+            { "model": "FP250", "throughput": "17 lbs/phút", "meals_per_day": 800 },
+            { "model": "FP350", "throughput": "26 lbs/phút", "meals_per_day": 1200 }
+          ]
+        },
+        {
+          "series_name": "Floor Model Continuous-Feed Food Processors",
+          "series_name_vi": "Máy xay/cắt liên tục đứng sàn",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/food-processors/floor-model-continuous-feed-food-processors",
+          "seo": { "seo_title": "FP300i and FP400i Continuous Feed Food Processors | Hobart FEG", "seo_description": null, "image_url": "https://www.hobartcorp.com/sites/default/files/styles/max_height_550/public/webdam-assets/Food%20Processor%20FP400i%20f%20Assy%206%20wFeed%20Cylinder%20B%20.png?itok=UDPpHMTA" },
+          "models": [
+            { "model": "FP300i", "throughput": "88 lbs/phút", "meals_per_day": 3000, "speeds": 1 },
+            { "model": "FP400i", "throughput": "132 lbs/phút", "meals_per_day": 5000, "speeds": 2 }
+          ]
+        },
+        {
+          "series_name": "Bowl-Style Food Processors",
+          "series_name_vi": "Máy xay/cắt kiểu cối (bowl-style)",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/food-processors/bowl-style",
+          "seo": { "seo_title": "Bowl Food Processors | Hobart FEG", "seo_description": null, "image_url": "https://www.hobartcorp.com/sites/default/files/styles/max_width_310/public/webdam-assets/Food%20Processor%20HCM61%20f%20.png", "image_note": "Ảnh minh họa cho HCM61; FP41/HCM62 chưa xác nhận ảnh riêng." },
+          "models": [
+            { "model": "FP41", "bowl_capacity": "2–3 lbs (tùy loại thực phẩm)" },
+            { "model": "HCM61", "bowl_capacity": "2–4.5 lbs" },
+            { "model": "HCM62", "bowl_capacity": "3–4.5 lbs" }
+          ]
+        },
+        {
+          "series_name": "Centerline by Hobart Food Processors",
+          "series_name_vi": "Máy xay/cắt Centerline",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/food-processors/centerline-food-processors",
+          "seo": { "seo_title": "Centerline Food Processors | Hobart", "seo_description": null, "image_url": "https://cdn2.webdamdb.com/1280_UUdrZJV7IzO81USv.png?1733149097" },
+          "models": [
+            { "model": "CCH32", "speeds": 2, "motor_hp": 1.34, "bowl_capacity": "3.2 qt inox" },
+            { "model": "CCH34", "speeds": 4, "motor_hp": 1.34, "bowl_capacity": "3.2 qt inox" }
+          ],
+          "note": "Nắp cối Tritan 2 lớp có gioăng; công nghệ SureSense tự động điều chỉnh tốc độ; dùng được cả kiểu bowl-style và continuous-feed."
+        },
+        {
+          "series_name": "Food Processor Accessories",
+          "series_name_vi": "Phụ kiện máy xay/cắt",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/food-processors/accessories",
+          "seo": { "seo_title": "Hobart Food Processor Plates, Blades and Accessories | Hobart", "seo_description": null, "image_url": "https://www.hobartcorp.com/sites/default/files/webdam-assets/webImg_FoodPrep_FPAcc_ProdCart_BodyTopImg.png" },
+          "items_not_full_products": ["Đĩa cắt/bào cho FP100/FP150/FP250/FP350/FP300i/FP400i", "Phễu/ống nạp liệu", "Xe đẩy sản phẩm", "Giá treo tường", "Đĩa thái lát/bào sợi (1.5–20mm)", "Đĩa cắt hạt lựu (dice grid)"],
+          "note": "Tốc độ đĩa cắt tiêu chuẩn 420 RPM, chất liệu inox."
+        }
+      ]
+    },
+    {
+      "group_name": "Meat Room",
+      "group_name_vi": "Thiết Bị Sơ Chế Thịt (Meat Room)",
+      "source_url": "https://www.hobartcorp.com/products/food-prep/meat-room",
+      "series": [
+        {
+          "series_name": "Mixer-Grinders",
+          "series_name_vi": "Máy xay-trộn thịt (Mixer-Grinder)",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/meat-room/mixer-grinders",
+          "seo": { "seo_title": "Hobart Commercial Mixer-Grinder | Hobart FEG", "seo_description": null, "image_url": null, "image_gap_note": "Chỉ lấy được đường dẫn tương đối (chưa xác nhận domain đầy đủ khi cào), cần kiểm tra lại: /sites/default/files/styles/max_width_310/public/webdam-assets/Mixer-Grinder%20MG1532%20f%20.png" },
+          "models": [
+            { "model": "MG1532", "capacity_lbs": 150, "grind_motor_hp": 7.5, "mix_motor_hp": 1, "output": "50–60 lbs/phút (đĩa 1/8\")" },
+            { "model": "MG2032", "capacity_lbs": 200, "grind_motor_hp": 7.5, "mix_motor_hp": 1, "output": "50–60 lbs/phút (đĩa 1/8\")" },
+            { "model": "4246", "capacity_lbs": 140, "grind_motor_hp": 5, "mix_motor_hp": 1, "output": "50–60 lbs/phút (đĩa 1/8\")" }
+          ],
+          "note": "Tất cả dùng bàn đạp khí nén (pneumatic foot control); xi lanh & vành đầu inox, cánh trộn/băng tải mạ thiếc nóng."
+        },
+        {
+          "series_name": "Meat Saws",
+          "series_name_vi": "Máy cưa thịt/xương",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/meat-room/meat-saws",
+          "seo": { "seo_title": "Commercial Meat Saws | Hobart Meat Saw | Hobart FEG", "seo_description": null, "image_url": "https://www.hobartcorp.com/sites/default/files/styles/max_width_310/public/webdam-assets/Meat%20Saw%206801-18IP%20f%20Pos%201%20.png" },
+          "models": [
+            { "model": "6801", "motor_hp": 3, "pulley_in": 14, "blade_speed_fpm": 4150, "option": "Có tùy chọn bộ đẩy tích hợp (integrated pusher)" },
+            { "model": "6614", "motor_hp": 3, "pulley_in": 16, "blade_speed_fpm": 4150, "option": "Có tùy chọn bộ đẩy tích hợp" }
+          ]
+        },
+        {
+          "series_name": "Choppers & Grinders",
+          "series_name_vi": "Máy xay/băm thịt",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/meat-room/choppers-grinders",
+          "seo": { "seo_title": "Commercial Meat Grinders and Choppers | Hobart FEG", "seo_description": null, "image_url": "https://www.hobartcorp.com/sites/default/files/webdam-assets/Meat%20Chopper%204812%20f%20.png" },
+          "models": [
+            { "model": "4812", "motor_hp": 0.5, "output": "8 lbs/phút", "housing": "Inox", "drive": "Truyền động bánh răng trực tiếp" },
+            { "model": "4822", "motor_hp": 1.5, "output": "12–20 lbs/phút liên tục", "housing": "Inox", "drive": "Truyền động bánh răng trực tiếp" },
+            { "model": "4732/4732A", "motor_hp": 3, "output": "Xay lần 1: 35–40 lbs/phút; lần 2: 25–30 lbs/phút", "housing": "Sơn epoxy xám (có tùy chọn inox)" },
+            { "model": "4146", "motor_hp": 5, "output": "Xay lần 1: 60–65 lbs/phút; lần 2: 45–50 lbs/phút", "housing": "Sơn epoxy xám (có tùy chọn inox)", "drive": "Bánh răng trực tiếp @ 215 RPM" }
+          ]
+        },
+        {
+          "series_name": "Tenderizers",
+          "series_name_vi": "Máy làm mềm thịt (Tenderizer)",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/meat-room/tenderizers",
+          "seo": { "seo_title": "Electric Meat Tenderizer Machine | Hobart FEG", "seo_description": null, "image_url": "https://www.hobartcorp.com/sites/default/files/webdam-assets/Tenderizer%20403%20f%20.png?itok=QpkUwM-U" },
+          "models": [
+            { "model": "403", "housing": "Nhôm đánh bóng (burnished aluminum)", "safety": "Khóa liên động, nắp bảo vệ trong suốt", "note": "Dùng được nhiều loại lưỡi dao, có tấm dẫn hướng nội bộ chống gấp thịt", "capacity": "not found", "motor_hp": "not found" }
+          ]
+        },
+        {
+          "series_name": "Meat Room Accessories",
+          "series_name_vi": "Phụ kiện phòng sơ chế thịt",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/meat-room/accessories",
+          "seo": { "seo_title": "Meat Room & Meat Handling Accessories | Hobart FEG", "seo_description": null, "image_url": null, "image_gap_note": "Chỉ lấy được đường dẫn tương đối chưa xác nhận domain đầy đủ." },
+          "items_not_full_products": ["F101 Fat Percentage Measuring Kit", "Bàn xay thịt (Meat Room Grinding Table)", "Bộ chuyển đổi vành #32 (#32 End Ring Adapter)", "Side Board", "Bulker Adapter", "Xe đẩy khay thịt X Frame Lug Cart"]
+        }
+      ]
+    },
+    {
+      "group_name": "Specialty Food Prep Products",
+      "group_name_vi": "Thiết Bị Sơ Chế Chuyên Dụng",
+      "source_url": "https://www.hobartcorp.com/products/food-prep/specialty-products",
+      "series": [
+        {
+          "series_name": "Commercial Food Peelers",
+          "series_name_vi": "Máy gọt vỏ củ quả (Peeler)",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/specialty-products/peelers",
+          "seo": { "seo_title": "Commercial Potato Peelers | Hobart FEG", "seo_description": null, "image_url": null, "image_gap_note": "Chỉ lấy được đường dẫn tương đối chưa xác nhận domain đầy đủ: /sites/default/files/styles/max_width_310/public/webdam-assets/Peeler%206115%20wCart%20qr%20.png" },
+          "models": [
+            { "model": "6115", "motor_hp": "1/3", "capacity_lbs": 15 },
+            { "model": "6430", "motor_hp": "3/4", "capacity_lbs": 30 },
+            { "model": "6460", "motor_hp": 1, "capacity_lbs": "50–60" },
+            { "model": "6460M", "motor_hp": 1, "capacity_lbs": "50–60" }
+          ],
+          "note": "Quảng cáo gọt xong một mẻ lớn 'trong dưới 3 phút'."
+        },
+        {
+          "series_name": "Salad Dryers",
+          "series_name_vi": "Máy vắt/làm khô rau (Salad Dryer)",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/specialty-products/salad-dryers",
+          "seo": { "seo_title": "Commercial Salad Dryers | Hobart FEG", "seo_description": null, "image_url": "https://www.hobartcorp.com/sites/default/files/styles/max_height_550/public/webdam-assets/Salad%20Dryer%20SDPE%20f%20.png?itok=mTjnVA0x" },
+          "models": [
+            { "model": "SDPE", "material": "Thùng/nắp bằng polyethylene", "capacity": "Tới 1 thùng (16 cây) xà lách", "speed_rpm": 406, "timer_min": 5 },
+            { "model": "SDPS", "material": "Thùng/nắp bằng inox", "capacity": "Tới 1 thùng (16 cây) xà lách", "speed_rpm": 406, "timer_min": 5 }
+          ]
+        },
+        {
+          "series_name": "Power Drive Units",
+          "series_name_vi": "Đầu mô tơ đa năng (Power Drive Unit)",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/specialty-products/power-drive-units",
+          "seo": { "seo_title": "Power Drive Units | Hobart FEG", "seo_description": null, "image_url": "https://www.hobartcorp.com/sites/default/files/webdam-assets/Power%20Drive%20PD70%20ql%20.png?itok=033MhBwa" },
+          "models": [
+            { "model": "PD35", "motor_hp": 0.5, "speed_rpm": 350, "use_case": "Phô mai và rau củ (dùng kèm phụ kiện VS9)" },
+            { "model": "PD70", "motor_hp": 0.5, "speed_rpm": 700, "use_case": "Chỉ dùng cho rau củ" }
+          ]
+        },
+        {
+          "series_name": "Food Cutters",
+          "series_name_vi": "Máy cắt/băm thực phẩm (Food Cutter)",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/specialty-products/food-cutters",
+          "seo": { "seo_title": "Commercial Food Chopper | Hobart Food Preparation Chopper", "seo_description": null, "image_url": "https://www.hobartcorp.com/sites/default/files/styles/max_width_310/public/webdam-assets/Food%20Cutter%2084186%20qr%20.png?itok=dPtOYnqb" },
+          "models": [
+            { "model": "84145", "capacity_lbs": 5, "bowl_in": 14, "motor_hp": "0.5 hoặc 1" },
+            { "model": "84186", "capacity_lbs": 15, "bowl_in": 18, "motor_hp": "0.5 hoặc 1" }
+          ]
+        },
+        {
+          "series_name": "Specialty Accessories",
+          "series_name_vi": "Phụ kiện chuyên dụng",
+          "source_url": "https://www.hobartcorp.com/products/food-prep/specialty-products/specialty-accessories",
+          "seo": { "seo_title": "Specialty Accessories | Hobart FEG", "seo_description": null, "image_url": "https://www.hobartcorp.com/sites/default/files/styles/max_310_x_310/public/webdam-assets/Peeler%206115%20wCart%20qr%20.png" },
+          "items_not_full_products": ["Phụ kiện Salad Dryer (rổ vắt phụ)", "Phụ kiện Peeler (giỏ hứng vỏ)", "Chân đế máy gọt vỏ Hobart 6115", "Chân nối dài 3\" cho máy gọt vỏ (model 6115-LEG33)"]
+        }
+      ]
+    },
+    {
+      "group_name": "PLACEHOLDER_DISHWASHERS_WEIGHWRAP",
+      "note": "Sẽ được ghi đè bằng dữ liệu Commercial Dishwashers + Weighing & Wrapping ngay sau khi crawl xong."
+    }
+  ],
+  "pricing_status": "Hobart KHÔNG công bố giá bán công khai trên hobartcorp.com (thông lệ ngành thiết bị bếp công nghiệp B2B) — mọi trang sản phẩm chỉ có nút liên hệ đại lý ('Find a Dealer') hoặc tải spec sheet, không có giá/checkout. Cần liên hệ đại lý ITW FEG hoặc nhà phân phối để lấy báo giá.",
+  "vietnam_market_context": {
+    "note": "CHƯA xác nhận nhà phân phối/đại lý chính thức của Hobart (cả Hobart Corp Mỹ lẫn Hobart GmbH Đức) tại Việt Nam qua website chính hãng. ITW FEG xác nhận có văn phòng tại Trung Quốc, Hồng Kông, Nhật Bản, Hàn Quốc, New Zealand, Singapore, Thái Lan (theo trang locations) nhưng KHÔNG liệt kê Việt Nam. Trang international.hobart-export.com có 'vietnam' trong dropdown quốc gia nhưng chi tiết liên hệ đại lý là placeholder rỗng — không xác nhận được đại lý thật.",
+    "caution": "CẦN liên hệ trực tiếp Hobart/ITW FEG (dealer locator trên hobartcorp.com, hotline (800) 333-7447) hoặc Hobart GmbH quốc tế để xác minh có đại lý chính hãng phục vụ thị trường Việt Nam hay không, trước khi công bố thông tin phân phối trên site."
+  },
+  "open_questions_for_user": [
+    "CHƯA GIẢI QUYẾT: Commercial Dishwashers (8 dòng: flight-type, conveyor-type, door-type, undercounter, glasswasher, pot-pan-utensil washer, industrial, waste equipment) và Weighing & Wrapping (scales, wrapping equipment) — đang crawl bổ sung, sẽ cập nhật vào data.json khi hoàn tất.",
+    "CHƯA GIẢI QUYẾT: Phần lớn thông số kỹ thuật chi tiết (HP chính xác một số model, kích thước mm, trọng lượng, điện áp) nằm trong PDF Spec Sheet tải riêng từng model trên hobartcorp.com — chưa trích xuất được nội dung PDF qua WebFetch.",
+    "CHƯA GIẢI QUYẾT: Một số URL ảnh sản phẩm là đường dẫn tương đối hoặc bị lẫn giữa các model liền kề khi cào (đã ghi rõ 'image_gap_note' / 'not found' ở từng chỗ nghi ngờ) — cần xác minh thủ công bằng cách mở từng trang trước khi đưa ảnh lên site.",
+    "CHƯA GIẢI QUYẾT: Không tìm thấy thẻ <meta name=\"description\"> cho bất kỳ trang sản phẩm/dòng nào đã cào — cần tự viết mô tả SEO khi đăng sản phẩm hoặc kiểm tra lại bằng view-source thủ công.",
+    "CHƯA GIẢI QUYẾT: Chưa xác nhận đại lý/nhà phân phối chính hãng Hobart tại Việt Nam (cả 2 thực thể Hobart Corp Mỹ và Hobart GmbH Đức) — cần liên hệ trực tiếp để xác minh trước khi công bố trên site.",
+    "CHƯA GIẢI QUYẾT: Không có giá bán công khai (thông lệ B2B) — cần liên hệ Hobart/ITW FEG hoặc đại lý phân phối để lấy báo giá trước khi publish giá lên site."
+  ]
+}

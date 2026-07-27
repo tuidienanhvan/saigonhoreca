@@ -1,36 +1,31 @@
 <?php
 /**
  * /du-an/ — Hero featured projects carousel.
- *
- * Match production saigonhoreca.vn:
- *   - 6 slides rotating qua các dự án nổi bật
- *   - Mỗi slide: BG image fade + LEFT text col (title, desc, CTA) +
- *     RIGHT thumbnails 2-3 dự án kế tiếp (peek into next slides)
- *   - Auto-advance 6s, fade transition, dots navigation
- *   - Inline ~40 lines JS để standalone (không cần Swiper lib)
+ * Hero component for project archive
  *
  * @package SaigonHoreca
  */
 if (!defined('ABSPATH')) exit;
+
 $uri = get_template_directory_uri();
 
 $slides = [
     [
         'title' => 'Sol Kitchen & Bar D7',
         'desc'  => 'Tiếp nối sự thành công của nhà hàng Sol quận 1 khi lọt vào Michelin Guide 2023, Saigon Horeca vinh hạnh được chủ đầu tư Sol Kitchen & Bar tin tưởng lựa chọn là đơn vị uy tín triển khai hệ thống bếp cao cấp cho nhà hàng tại quận 7, HCMC.',
-        'img'   => '2024/06/Sol0D7-05.webp',
-        'slug'  => 'sol-kitchen-bar-d7',
+        'img'   => 'renovate-sol-kitchen-bar-quan-7/sol-kitchen-bar-q7-toan-canh-bep-bar-inox-hoan-thien.webp',
+        'slug'  => 'renovate-sol-kitchen-bar-quan-7',
     ],
     [
         'title' => 'Little Bear',
         'desc'  => 'Little Bear Thảo Điền — không gian ẩm thực ấm cúng đậm chất Âu, được Saigon Horeca thi công trọn gói hệ thống bếp công nghiệp và quầy bar chuyên nghiệp.',
-        'img'   => '2024/01/Little-bear-00.webp',
-        'slug'  => 'little-bear',
+        'img'   => 'little-bear-thao-dien/Little-bear-00.webp',
+        'slug'  => 'little-bear-thao-dien',
     ],
     [
         'title' => 'Bambino',
         'desc'  => 'Bambino — nhà hàng Ý đạt giải B.A.R Award 2023, được Saigon Horeca tin tưởng triển khai hệ thống bếp cao cấp và quầy bar đẳng cấp Michelin.',
-        'img'   => '2023/12/bambino-saigon-horeca-2-1.webp',
+        'img'   => 'bambino/bambino-saigon-horeca-khong-gian-fine-dining-buoi-toi.webp',
         'slug'  => 'bambino-saigonhoreca',
     ],
     [
@@ -42,16 +37,39 @@ $slides = [
     [
         'title' => 'Godmother Friendship',
         'desc'  => 'Godmother Friendship — không gian Á-Âu đương đại, hệ thống bếp công nghiệp đầy đủ tiện nghi được Saigon Horeca thi công đúng tiến độ và chuẩn vệ sinh ATTP.',
-        'img'   => '2023/12/Godmother-friendship-1.webp',
+        'img'   => 'godmother-friendship/Godmother-friendship-1.webp',
         'slug'  => 'godmother-friendship',
     ],
     [
         'title' => 'Sol Kitchen & Bar Q1',
         'desc'  => 'Nhà hàng Sol Kitchen & Bar quận 1 — vinh dự được lọt Michelin Guide 2023. Saigon Horeca tự hào là đơn vị thiết kế và thi công hệ thống bếp công nghiệp cao cấp.',
-        'img'   => '2023/12/Sol-kitchen-bar-2-1.webp',
-        'slug'  => 'sol-kitchen-bar-q1',
+        'img'   => 'sol-kitchen-bar-saigon-horeca/sol-kitchen-bar-saigon-horeca-khong-gian-quay-bar-bistro.webp',
+        'slug'  => 'sol-kitchen-bar-saigon-horeca',
     ],
 ];
+
+foreach ($slides as &$s) {
+    $img_url = '';
+    
+    $proj_post = get_page_by_path($s['slug'], OBJECT, 'project');
+    if ($proj_post) {
+        if (function_exists('sgh_project_cover_ensure')) {
+            $thumb_id = sgh_project_cover_ensure($proj_post->ID);
+        } else {
+            $thumb_id = get_post_thumbnail_id($proj_post->ID);
+        }
+        if ($thumb_id) {
+            $img_url = wp_get_attachment_image_url($thumb_id, 'large');
+        }
+    }
+    
+    // Fallback array hardcoded
+    if (!$img_url) {
+        $img_url = sgh_img($s['img']);
+    }
+    $s['final_img'] = $img_url;
+}
+unset($s);
 
 $detail_label = 'Chi Tiết Dự Án';
 ?>
@@ -62,7 +80,7 @@ $detail_label = 'Chi Tiết Dự Án';
         <?php foreach ($slides as $i => $s) : ?>
             <div class="sh-archive-hero__bg <?php echo $i === 0 ? 'is-active' : ''; ?>"
                  data-index="<?php echo (int) $i; ?>"
-                 style="background-image: url('<?php echo esc_url(sgh_img("{$s['img']}")); ?>');"></div>
+                 style="background-image: url('<?php echo esc_url($s['final_img']); ?>');"></div>
         <?php endforeach; ?>
     </div>
 
@@ -79,7 +97,7 @@ $detail_label = 'Chi Tiết Dự Án';
                      data-index="<?php echo (int) $i; ?>">
                     <h1 class="sh-archive-hero__title"><?php echo esc_html($s['title']); ?></h1>
                     <p class="sh-archive-hero__desc"><?php echo esc_html($s['desc']); ?></p>
-                    <a href="<?php echo esc_url(home_url('/du-an/' . $s['slug'] . '/')); ?>" class="sh-archive-hero__cta">
+                    <a href="<?php echo esc_url(sgh_url('projects_index', $s['slug'])); ?>" class="sh-archive-hero__cta">
                         <span><?php echo esc_html($detail_label); ?></span>
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
                             <path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
@@ -96,7 +114,7 @@ $detail_label = 'Chi Tiết Dự Án';
                         data-index="<?php echo (int) $i; ?>"
                         type="button"
                         aria-label="<?php echo esc_attr($s['title']); ?>">
-                    <img src="<?php echo esc_url(sgh_img("{$s['img']}")); ?>"
+                    <img src="<?php echo esc_url($s['final_img']); ?>"
                          alt=""
                          loading="lazy" decoding="async">
                     <span class="sh-archive-hero__card-name"><?php echo esc_html($s['title']); ?></span>

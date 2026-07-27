@@ -1,28 +1,53 @@
-﻿<?php
+<?php
 /**
- * Project Pillar â€” bep-canteen-nha-may-sheh-fung
- * Section #2: with_gallery
+ * Project Pillar — bep-canteen-nha-may-sheh-fung
+ * Section #2: intro — partnership narrative + industrial gallery mosaic
  * @package SaigonHoreca
  */
 if (!defined('ABSPATH')) exit;
 $uri = get_template_directory_uri();
 ?>
-<section class="pp-section-shf pp-section-shf--alt scroll-reveal">
+<section class="pp-section-shf pp-section-shf--alt pp-intro-shf">
+  <div class="pp-watermark-plate-shf" aria-hidden="true"></div>
+  <div class="pp-ambient-glow-shf pp-ambient-glow-shf--left" aria-hidden="true"></div>
+
   <div class="pp-container-shared">
-    <div class="pp-text-shf pp-text-shf--center">
-      <div class="pp-text-shf__body">
-      <p><?php echo esc_html__('Trong hÃ nh trÃ¬nh hÆ¡n 50 nÄƒm Ä‘á»•i má»›i vÃ  phÃ¡t triá»ƒn, Sheh Fung khÃ´ng chá»‰ ná»•i tiáº¿ng vá»›i cháº¥t lÆ°á»£ng sáº£n pháº©m mÃ  cÃ²n vá»›i cam káº¿t táº¡o ra mÃ´i trÆ°á»ng lÃ m viá»‡c lÃ½ tÆ°á»Ÿng cho nhÃ¢n viÃªn. Äá»ƒ hiá»‡n thá»±c hÃ³a má»¥c tiÃªu nÃ y, Sheh Fung Ä‘Ã£ há»£p tÃ¡c vá»›i Saigon Horeca â€“ Ä‘Æ¡n vá»‹ hÃ ng Ä‘áº§u trong cung cáº¥p giáº£i phÃ¡p vÃ  thi cÃ´ng há»‡ thá»‘ng báº¿p cÃ´ng nghiá»‡p cao cáº¥p.', 'saigonhoreca'); ?></p>
-      <p><?php echo esc_html__('ÄÃ¢y khÃ´ng chá»‰ lÃ  má»™t cÃ´ng trÃ¬nh báº¿p thÃ´ng thÆ°á»ng mÃ  cÃ²n lÃ  má»™t bÆ°á»›c tiáº¿n quan trá»ng, thá»ƒ hiá»‡n sá»± quan tÃ¢m cá»§a Sheh Fung Ä‘á»‘i vá»›i Ä‘á»i sá»‘ng nhÃ¢n viÃªn. CÄƒn báº¿p canteen hiá»‡n Ä‘áº¡i khÃ´ng chá»‰ mang láº¡i sá»± thoáº£i mÃ¡i vÃ  tiá»‡n nghi mÃ  cÃ²n gÃ³p pháº§n táº¡o Ä‘á»™ng lá»±c, giÃºp Ä‘á»™i ngÅ© nhÃ¢n viÃªn lÃ m viá»‡c hiá»‡u quáº£ hÆ¡n trong má»™t mÃ´i trÆ°á»ng Ä‘Æ°á»£c chÄƒm chÃºt toÃ n diá»‡n.', 'saigonhoreca'); ?></p>
-      <p><?php echo esc_html__('Táº¡i dá»± Ã¡n Sheh Fung khu cÃ´ng nghiá»‡p HÃ m Kiá»‡m, BÃ¬nh Thuáº­n, Saigon Horeca khÃ´ng chá»‰ Ä‘á»‘i máº·t vá»›i Ã¡p lá»±c vá» tiáº¿n Ä‘á»™ gáº¥p rÃºt mÃ  cÃ²n Ä‘áº·t ra thÃ¡ch thá»©c pháº£i Ä‘áº£m báº£o má»i tiÃªu chuáº©n kháº¯t khe nháº¥t vá» cháº¥t lÆ°á»£ng. Tuy nhiÃªn, vá»›i sá»± chuyÃªn nghiá»‡p vÃ  kinh nghiá»‡m, Ä‘á»™i ngÅ© cá»§a Saigon Horeca Ä‘Ã£ biáº¿n thÃ¡ch thá»©c thÃ nh cÆ¡ há»™i, mang Ä‘áº¿n má»™t khÃ´ng gian báº¿p Ä‘áº³ng cáº¥p, Ä‘Ã¡p á»©ng má»i yÃªu cáº§u cá»§a khÃ¡ch hÃ ng.', 'saigonhoreca'); ?></p>
-      </div>
+
+    <header class="pp-intro-shf__header">
+      <span class="pp-badge-shf">
+        <span class="pp-badge-shf__dot" aria-hidden="true"></span>
+        <?php echo esc_html__('Tổng quan dự án', 'saigonhoreca'); ?>
+      </span>
+      <h2 class="pp-text-shf__title">
+        <?php echo esc_html__('Hơn 50 năm đổi mới và một căn bếp canteen biết quan tâm', 'saigonhoreca'); ?>
+      </h2>
+      <span class="pp-text-shf__divider" aria-hidden="true"></span>
+    </header>
+
+    <div class="pp-intro-shf__body">
+      <p><?php echo esc_html__('Trong hành trình hơn 50 năm đổi mới và phát triển, Sheh Fung không chỉ nổi tiếng với chất lượng sản phẩm mà còn với cam kết tạo ra môi trường làm việc lý tưởng cho nhân viên. Để hiện thực hóa mục tiêu này, Sheh Fung đã hợp tác với Saigon Horeca – đơn vị hàng đầu trong cung cấp giải pháp và thi công hệ thống bếp công nghiệp cao cấp.', 'saigonhoreca'); ?></p>
+      <p><?php echo esc_html__('Đây không chỉ là một công trình bếp thông thường mà còn là một bước tiến quan trọng, thể hiện sự quan tâm của Sheh Fung đối với đời sống nhân viên. Căn bếp canteen hiện đại không chỉ mang lại sự thoải mái và tiện nghi mà còn góp phần tạo động lực, giúp đội ngũ nhân viên làm việc hiệu quả hơn trong một môi trường được chăm chút toàn diện.', 'saigonhoreca'); ?></p>
+      <p><?php echo esc_html__('Tại dự án Sheh Fung khu công nghiệp Hàm Kiệm, Bình Thuận, Saigon Horeca không chỉ đối mặt với áp lực về tiến độ gấp rút mà còn đặt ra thách thức phải đảm bảo mọi tiêu chuẩn khắt khe nhất về chất lượng. Tuy nhiên, với sự chuyên nghiệp và kinh nghiệm, đội ngũ của Saigon Horeca đã biến thách thức thành cơ hội, mang đến một không gian bếp đẳng cấp, đáp ứng mọi yêu cầu của khách hàng.', 'saigonhoreca'); ?></p>
     </div>
-    <div class="pp-gallery-shf pp-gallery-shf--cols-4" style="margin-top:2rem;">
-      <div class="pp-gallery-shf__item pp-image-container-shared"><img src="<?php echo sgh_img('2025/01/sheh-fung-6.jpg'); ?>" alt="sheh-fung (6)" loading="lazy" decoding="async"><div class="pp-image-caption-shared"><?php echo esc_html__('Canteen nhà máy Sheh Fung – môi trường làm việc lý tưởng', 'saigonhoreca'); ?></div></div>
-      <div class="pp-gallery-shf__item pp-image-container-shared"><img src="<?php echo sgh_img('2025/01/sheh-fung-8.jpg'); ?>" alt="sheh-fung (8)" loading="lazy" decoding="async"><div class="pp-image-caption-shared"><?php echo esc_html__('Hệ thống bếp tối tân phục vụ số lượng lớn nhân viên', 'saigonhoreca'); ?></div></div>
-      <div class="pp-gallery-shf__item pp-image-container-shared"><img src="<?php echo sgh_img('2025/01/sheh-fung-9.jpg'); ?>" alt="sheh-fung (9)" loading="lazy" decoding="async"><div class="pp-image-caption-shared"><?php echo esc_html__('Thiết kế khoa học đảm bảo an toàn vệ sinh thực phẩm', 'saigonhoreca'); ?></div></div>
-      <div class="pp-gallery-shf__item pp-image-container-shared"><img src="<?php echo sgh_img('2025/01/sheh-fung-7.jpg'); ?>" alt="sheh-fung (7)" loading="lazy" decoding="async"><div class="pp-image-caption-shared"><?php echo esc_html__('Không gian bếp thoáng đãng với vật liệu dễ vệ sinh', 'saigonhoreca'); ?></div></div>
-      <div class="pp-gallery-shf__item pp-image-container-shared"><img src="<?php echo sgh_img('2025/01/sheh-fung-1-1.jpg'); ?>" alt="<?php echo esc_attr__('10 lá»—i thÆ°á»ng gáº·p khi sá»­ dá»¥ng tá»§ láº¡nh cÃ´ng nghiá»‡p vÃ  cÃ¡ch kháº¯c phá»¥c', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="1366" height="768"><div class="pp-image-caption-shared"><?php echo esc_html__('Tủ lạnh công nghiệp bảo quản nguyên liệu tươi sống', 'saigonhoreca'); ?></div></div>
+
+    <div class="pp-gallery-shf pp-gallery-shf--cols-4">
+      <figure class="pp-gallery-shf__item pp-image-container-shared">
+        <img src="<?php echo sgh_img('bep-canteen-nha-may-sheh-fung/bep-canteen-nha-may-sheh-fung-may-rua-chen-cong-nghiep-hood-type.webp'); ?>" alt="<?php echo esc_attr__('Máy rửa chén công nghiệp inox bên cạnh bồn rửa và kệ chứa khay tại bếp Sheh Fung', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="800" height="600">
+        <figcaption class="pp-image-caption-shared"><?php echo esc_html__('Máy rửa chén công nghiệp inox – rửa nhanh, sạch sâu cho khu bếp canteen quy mô lớn', 'saigonhoreca'); ?></figcaption>
+      </figure>
+      <figure class="pp-gallery-shf__item pp-image-container-shared">
+        <img src="<?php echo sgh_img('bep-canteen-nha-may-sheh-fung/bep-canteen-nha-may-sheh-fung-day-tu-dong-mat-cong-nghiep-nhieu-canh.webp'); ?>" alt="<?php echo esc_attr__('Dàn tủ lạnh và tủ đông công nghiệp inox nhiều cánh xếp liền kề tại bếp Sheh Fung', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="800" height="600">
+        <figcaption class="pp-image-caption-shared"><?php echo esc_html__('Dàn tủ lạnh – tủ đông công nghiệp inox dung tích lớn, dự trữ nguyên liệu cho canteen quy mô nhà máy', 'saigonhoreca'); ?></figcaption>
+      </figure>
+      <figure class="pp-gallery-shf__item pp-image-container-shared">
+        <img src="<?php echo sgh_img('bep-canteen-nha-may-sheh-fung/bep-canteen-nha-may-sheh-fung-khay-dung-thuc-an-inox-gn-co-nap.webp'); ?>" alt="<?php echo esc_attr__('Dàn khay inox GN có nắp xếp hàng trên quầy phục vụ tại bếp canteen Sheh Fung', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="800" height="600">
+        <figcaption class="pp-image-caption-shared"><?php echo esc_html__('Quầy giữ nóng inox với dàn khay GN có nắp – chia suất ăn nóng sốt, đảm bảo vệ sinh thực phẩm', 'saigonhoreca'); ?></figcaption>
+      </figure>
+      <figure class="pp-gallery-shf__item pp-image-container-shared">
+        <img src="<?php echo sgh_img('bep-canteen-nha-may-sheh-fung/bep-canteen-nha-may-sheh-fung-day-ke-inox-nhieu-tang-luu-tru.webp'); ?>" alt="<?php echo esc_attr__('Không gian bếp thoáng đãng với vật liệu dễ vệ sinh', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="800" height="600">
+        <figcaption class="pp-image-caption-shared"><?php echo esc_html__('Không gian bếp thoáng đãng với vật liệu dễ vệ sinh', 'saigonhoreca'); ?></figcaption>
+      </figure>
     </div>
+
   </div>
 </section>
-

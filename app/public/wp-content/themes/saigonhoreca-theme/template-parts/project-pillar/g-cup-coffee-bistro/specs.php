@@ -70,8 +70,8 @@ $uri = get_template_directory_uri();
           <div class="pp-gcb-collage-item pp-gcb-collage-item--sub-corner scroll-reveal">
             <div class="pp-gcb-luxury-frame pp-gcb-luxury-frame--specs pp-gcb-specs-tilt-frame">
               <div class="pp-image-container-shared">
-                <img src="<?php echo sgh_img('g-cup-coffee-bistro/g-cup-coffee-bistro-phin-nhom-den-pha-ca-phe.webp'); ?>" alt="<?php echo esc_attr__('Bộ Drip Filter pha cà phê thủ công tại G-Cup Bistro', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
-                <div class="pp-image-caption-shared"><?php echo esc_html__('Nghệ thuật pha chế Drip Filter chậm rãi tinh tế với bộ dụng cụ thủy tinh chịu nhiệt cao cấp.', 'saigonhoreca'); ?></div>
+                <img src="<?php echo sgh_img('g-cup-coffee-bistro/g-cup-coffee-bistro-phin-nhom-den-pha-ca-phe.webp'); ?>" alt="<?php echo esc_attr__('Phin cà phê nhôm đen logo G.Cup nhỏ giọt xuống ly thủy tinh trên khay gỗ', 'saigonhoreca'); ?>" loading="lazy" decoding="async">
+                <div class="pp-image-caption-shared"><?php echo esc_html__('Phin nhôm đen khắc logo G.Cup nhỏ giọt cà phê đậm xuống ly thủy tinh trên khay gỗ óc chó, tôn vinh nghi thức cà phê phin Việt thủ công tinh tế.', 'saigonhoreca'); ?></div>
               </div>
             </div>
           </div>

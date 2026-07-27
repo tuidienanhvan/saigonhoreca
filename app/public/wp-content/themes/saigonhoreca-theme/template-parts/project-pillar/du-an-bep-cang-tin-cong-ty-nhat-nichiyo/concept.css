@@ -1,48 +1,51 @@
 /**
  * du-an-bep-cang-tin-cong-ty-nhat-nichiyo — concept slot.
- * Full-bleed kitchen bg + glassmorphic precision card, origami clip, gold L-brackets.
- * Owns .pp-concept-nichiyo. Scope .pp--nichiyo.
+ * Full-bleed kitchen bg via Parallax (no-JS, GPU: bg uses
+ * background-attachment:fixed) + glassmorphic precision card, gold
+ * L-brackets. Owns .pp-concept-nichiyo. Scope .pp--nichiyo.
  * @package SaigonHoreca
  */
 
 .pp-concept-nichiyo {
   position: relative;
+  isolation: isolate;
   min-height: clamp(620px, 88vh, 880px);
   padding: clamp(4.5rem, 8vw, 9rem) 0;
-  background-size: cover;
-  background-position: center;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  isolation: isolate;
-  clip-path: polygon(
-    0 0,
-    calc(100% - 72px) 0,
-    100% 72px,
-    100% 100%,
-    72px 100%,
-    0 calc(100% - 72px)
-  );
 }
 
-/* Layered overlay — diagonal sumi wash + vertical sink */
+/* Parallax bg — reliable background-attachment:fixed (bg pinned to viewport,
+   auto-clipped to this absolute box). GPU-smooth, no JS, no clip-path needed. */
+.pp-concept-nichiyo__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  pointer-events: none;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* LIGHT token overlay — keep the photo visible/bright (not a heavy black/sumi
+   scrim). A touch of gold radial for warmth, then a soft vertical wash. */
 .pp-concept-nichiyo__overlay {
   position: absolute;
   inset: 0;
-  z-index: 1;
+  z-index: -1;
   pointer-events: none;
   background:
-    linear-gradient(135deg,
-      color-mix(in srgb, var(--b1) 92%, transparent) 0%,
-      color-mix(in srgb, var(--b1) 60%, transparent) 40%,
-      color-mix(in srgb, var(--nic-sumi) 78%, transparent) 100%),
     radial-gradient(circle at 78% 18%,
       color-mix(in srgb, var(--nic-gold) 9%, transparent) 0%,
       transparent 38%),
     linear-gradient(180deg,
-      color-mix(in srgb, var(--b1) 28%, transparent) 0%,
-      color-mix(in srgb, var(--b1) 40%, transparent) 50%,
+      color-mix(in srgb, var(--b1) 45%, transparent) 0%,
+      color-mix(in srgb, var(--b1) 25%, transparent) 50%,
       color-mix(in srgb, var(--b1) 55%, transparent) 100%);
 }
 
@@ -108,9 +111,10 @@
   color: color-mix(in srgb, var(--nic-gold) 88%, var(--bc));
 }
 
-/* Title override — accent underline */
+/* Title override — accent underline + legibility text-shadow over the photo */
 .pp-concept-nichiyo__card .pp-text-nichiyo__title {
   max-width: 26ch;
+  text-shadow: 0 2px 18px color-mix(in srgb, var(--bg-dark) 55%, transparent);
 }
 .pp-concept-nichiyo__card .pp-text-nichiyo__title::after {
   content: '';
@@ -135,12 +139,19 @@
   50%      { opacity: 0.95; }
 }
 
+@media (max-width: 768px) {
+  /* Fixed parallax is janky on mobile — fall back to a normal scrolling bg. */
+  .pp-concept-nichiyo__bg {
+    position: absolute;
+    background-attachment: scroll;
+    width: 100%;
+    height: 100%;
+  }
+}
+
 @media (max-width: 767px) {
   .pp-concept-nichiyo {
     min-height: 540px;
-    clip-path: polygon(
-      0 0, calc(100% - 44px) 0, 100% 44px, 100% 100%, 44px 100%, 0 calc(100% - 44px)
-    );
   }
   .pp-concept-nichiyo__card {
     padding: 1.75rem 1.25rem;

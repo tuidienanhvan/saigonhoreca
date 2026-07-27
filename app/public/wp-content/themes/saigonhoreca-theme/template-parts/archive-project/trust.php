@@ -16,18 +16,18 @@ $uri = get_template_directory_uri();
 
 // 12 partners production (theo data /du-an/ scrape).
 $partners = [
-    ['name' => 'Fujimak',      'file' => 'SGH-Fujimak_logo.jpeg'],
-    ['name' => 'Sammic',       'file' => 'SGH-sammic.jpeg'],
-    ['name' => 'Giorik',       'file' => 'SGH-Giorik.jpeg'],
-    ['name' => 'Hoshizaki',    'file' => 'SGH-hoshizaki.png'],
-    ['name' => 'Berjaya',      'file' => 'logo-Berjaya-min.png'],
-    ['name' => 'Hobart',       'file' => 'SGH-Hobart.jpg'],
-    ['name' => 'Rational',     'file' => 'SGH-rational.png'],
-    ['name' => 'Mahlkonig',    'file' => 'SGH-mhalkonik.jpg'],
-    ['name' => 'Anfim',        'file' => 'SGH-Anfim.jpg'],
-    ['name' => 'Fiorenzato',   'file' => 'SGH-fiorengato.webp'],
-    ['name' => 'Winterhalter', 'file' => 'SGH-Winterhalter.png'],
-    ['name' => 'BFC',          'file' => 'SGH-BFC-machine-coffee.jpeg'],
+    ['name' => 'Fujimak',      'file' => 'SGH-partner00001.webp'],
+    ['name' => 'Sammic',       'file' => 'SGH-partner00002.webp'],
+    ['name' => 'Giorik',       'file' => 'SGH-partner00003.webp'],
+    ['name' => 'Hoshizaki',    'file' => 'SGH-partner00004.webp'],
+    ['name' => 'Berjaya',      'file' => 'SGH-partner00005.webp'],
+    ['name' => 'Hobart',       'file' => 'SGH-partner00006.webp'],
+    ['name' => 'Rational',     'file' => 'SGH-partner00007.webp'],
+    ['name' => 'Mahlkonig',    'file' => 'SGH-partner00008.webp'],
+    ['name' => 'Anfim',        'file' => 'SGH-partner00009.webp'],
+    ['name' => 'Fiorenzato',   'file' => 'SGH-partner00010.webp'],
+    ['name' => 'Winterhalter', 'file' => 'SGH-partner00011.webp'],
+    ['name' => 'BFC',          'file' => 'SGH-partner00012.webp'],
 ];
 // Match production: 1 dot per logo, advance 1-at-a-time (infinite loop).
 $total_dots = count($partners);
@@ -74,7 +74,7 @@ $total_dots = count($partners);
             <div class="sh-archive-trust__track">
                 <?php foreach ($partners as $p) : ?>
                     <div class="sh-archive-trust__cell">
-                        <img src="<?php echo esc_url(sgh_img('2024/07/') . $p['file']); ?>"
+                        <img src="<?php echo esc_url(sgh_img('saigonhoreca/' . $p['file'])); ?>"
                              alt="<?php echo esc_attr($p['name']); ?>"
                              width="175" height="100"
                              loading="lazy" decoding="async">

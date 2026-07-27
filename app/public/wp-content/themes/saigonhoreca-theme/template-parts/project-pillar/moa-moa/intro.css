@@ -1,197 +1,576 @@
 /**
- * moa-moa — intro slot.
- * Gallery grid + stats bar + ambient warm glow + scroll-reveal.
- * @package SaigonHoreca
+ * Project Pillar — Moa Moa Pasta Club
+ * Section #2: intro styling — Editorial Asymmetric & 3D Tech Blueprint showcase.
+ * Shared section/badge/grid/watermark primitives scoped to .pp--moa.
+ * 100% tokens, zero hardcoded hex.
  */
 
-.pp__section {
+/* --- Base section --- */
+.pp--moa .pp-section-moa {
   position: relative;
-  padding: clamp(4rem, 8vw, 7rem) 1.25rem;
-  background: var(--b1);
+  padding: clamp(5rem, 10vw, 9.5rem) 0;
+  background-color: var(--b1);
   overflow: hidden;
 }
-@media (min-width: 768px) { .pp__section { padding: clamp(5rem, 10vw, 8rem) 2rem; } }
-.pp__section--alt { background: var(--b2); }
-
-.pp__section--alt::before {
-  content: '';
-  position: absolute;
-  top: 20%;
-  right: -8%;
-  width: 450px;
-  height: 450px;
-  border-radius: 50%;
-  background: radial-gradient(circle, color-mix(in srgb, var(--wa) 5%, transparent) 0%, transparent 70%);
-  filter: blur(70px);
-  pointer-events: none;
-  z-index: 0;
+.pp--moa .pp-section-moa--alt {
+  background-color: var(--b2);
 }
 
-.pp__container {
-  max-width: 1200px;
-  margin: 0 auto;
+/* --- Shared badge --- */
+.pp--moa .pp-badge-moa {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.4rem 0.95rem;
+  border-radius: var(--radius-full);
+  background: color-mix(in srgb, var(--gold) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--gold) 18%, transparent);
+  color: var(--gold);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.4s var(--ease-spring);
+}
+.pp--moa .pp-badge-moa:hover {
+  background: color-mix(in srgb, var(--gold) 15%, transparent);
+  border-color: color-mix(in srgb, var(--gold) 35%, transparent);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px color-mix(in srgb, var(--gold) 15%, transparent);
+}
+.pp--moa .pp-badge-moa svg {
+  width: 0.85rem;
+  height: 0.85rem;
+  display: block;
+}
+
+/* --- Shared title + divider --- */
+.pp--moa .pp-text-moa__title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.8vw, 2.85rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  color: var(--bc);
+  margin: 0;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+}
+.pp--moa .pp-text-moa__divider {
+  width: 70px;
+  height: 3px;
+  background: var(--gold);
+  margin: 1.6rem 0 0;
+  border-radius: var(--radius-full);
+  box-shadow: 0 0 12px var(--gold);
+}
+
+/* --- Shared ambient glow (Breathing Glow Effect) --- */
+.pp--moa .pp-ambient-glow-moa {
+  position: absolute;
+  width: clamp(350px, 50vw, 600px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--gold) 6%, transparent) 0%, transparent 70%);
+  filter: blur(90px);
+  pointer-events: none;
+  z-index: 1;
+  animation: moa-glow-pulse 10s ease-in-out infinite alternate;
+}
+.pp--moa .pp-ambient-glow-moa--top-right {
+  top: -12%;
+  right: -10%;
+  animation-delay: 0s;
+}
+.pp--moa .pp-ambient-glow-moa--center-right {
+  top: 30%;
+  right: 5%;
+  width: clamp(280px, 35vw, 450px);
+  background: radial-gradient(circle, color-mix(in srgb, var(--gold) 8%, transparent) 0%, transparent 70%);
+  animation-delay: 3s;
+}
+.pp--moa .pp-ambient-glow-moa--bottom-left {
+  bottom: -15%;
+  left: -12%;
+  opacity: 0.7;
+  animation-delay: 6s;
+}
+
+@keyframes moa-glow-pulse {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1.08);
+    opacity: 0.95;
+  }
+}
+
+/* --- Wheat Watermark Line Art --- */
+.pp--moa .pp-watermark-wheat-moa {
+  position: absolute;
+  top: 50%;
+  right: -2%;
+  transform: translateY(-50%);
+  width: min(75vw, 520px);
+  aspect-ratio: 1;
+  color: var(--gold);
+  opacity: 0.035;
+  pointer-events: none;
+  z-index: 1;
+  transition: opacity 0.5s ease;
+}
+.pp--moa .pp-watermark-wheat-moa svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* --- Asymmetric 12-col grid --- */
+.pp-moa-intro .pp-grid-moa {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3.5rem;
+  align-items: start;
+}
+@media (min-width: 1024px) {
+  .pp-moa-intro .pp-grid-moa {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: 5rem;
+    align-items: start;
+  }
+  .pp-moa-intro .moa-intro__side {
+    position: sticky;
+    top: 130px;
+    align-self: start;
+  }
+}
+
+.moa-intro__main {
   position: relative;
   z-index: 2;
 }
 
-/* Stats bar */
-.pp-intro-moa__stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  margin: 2.5rem 0;
-}
-@media (max-width: 600px) { .pp-intro-moa__stats { grid-template-columns: 1fr; } }
-
-.pp-intro-moa__stat {
-  text-align: center;
-  padding: 1.5rem 1rem;
-  background: var(--b3);
-  border: 1px solid var(--bd);
-  border-radius: var(--radius-md);
-  transition: border-color 0.4s var(--ease-spring), transform 0.4s var(--ease-spring);
-}
-.pp-intro-moa__stat:hover {
-  border-color: color-mix(in srgb, var(--wa) 40%, transparent);
-  transform: translateY(-3px);
-}
-.pp-intro-moa__stat span {
-  display: block;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--bc3);
-  margin-bottom: 0.5rem;
-}
-.pp-intro-moa__stat strong {
-  display: block;
-  font-family: var(--font-display);
-  font-size: clamp(0.95rem, 1.5vw, 1.2rem);
-  color: var(--wa);
-}
-
-/* Header layout */
-.pp-intro-moa__header {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  align-items: start;
-}
-@media (max-width: 768px) { .pp-intro-moa__header { grid-template-columns: 1fr; } }
-
-.pp-intro-moa__eyebrow {
-  display: inline-block;
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--wa);
-  margin-bottom: 0.75rem;
-}
-
-.pp-intro-moa__lead {
+.moa-intro__body {
+  font-family: var(--font-sans);
   font-size: clamp(0.95rem, 1.1vw, 1.05rem);
-  line-height: 1.75;
-  color: var(--bc2);
-  margin-top: 1rem;
-}
-
-.pp-intro-moa__story {
-  font-size: 0.95rem;
-  line-height: 1.8;
-  color: var(--bc3);
-}
-.pp-intro-moa__story p { margin: 0 0 1em; }
-.pp-intro-moa__story p:last-child { margin: 0; }
-
-/* Gallery grid */
-.pp-intro-moa__gallery {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  margin-top: 2.5rem;
-}
-@media (max-width: 768px) { .pp-intro-moa__gallery { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 480px) { .pp-intro-moa__gallery { grid-template-columns: 1fr; } }
-
-.pp-intro-moa__gallery-item {
-  position: relative;
-  aspect-ratio: 4 / 3;
-  overflow: hidden;
-  border-radius: var(--radius-md);
-  background: var(--b3);
-  border: 1px solid var(--bd);
-  transition: border-color 0.4s var(--ease-spring), transform 0.4s var(--ease-spring);
-}
-.pp-intro-moa__gallery-item:hover {
-  border-color: color-mix(in srgb, var(--wa) 45%, transparent);
-  transform: translateY(-4px);
-  box-shadow: 0 16px 40px color-mix(in srgb, var(--wa) 10%, transparent);
-}
-.pp-intro-moa__gallery-item--large { grid-row: span 2; aspect-ratio: 4 / 6; }
-.pp-intro-moa__gallery-item--wide { grid-column: span 2; aspect-ratio: 8 / 3; }
-@media (max-width: 768px) { .pp-intro-moa__gallery-item--wide { grid-column: span 1; } }
-
-.pp-intro-moa__gallery-item img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.7s var(--ease-spring);
-}
-.pp-intro-moa__gallery-item:hover img { transform: scale(1.05); }
-
-/* Shared typography */
-.pp-text-moa__divider {
-  display: block;
-  width: 52px;
-  height: 2px;
-  background: var(--wa);
-  position: relative;
-  box-shadow: 0 0 10px color-mix(in srgb, var(--wa) 40%, transparent);
-}
-.pp-text-moa__divider--center { margin: 0 auto; }
-.pp-text-moa__divider::before,
-.pp-text-moa__divider::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  width: 6px;
-  height: 6px;
-  background: var(--wa);
-  border-radius: 50%;
-  transform: translateY(-50%);
-}
-.pp-text-moa__divider::before { left: -13px; }
-.pp-text-moa__divider::after  { right: -13px; }
-
-.pp-text-moa__title {
-  margin: 0 0 1rem;
-  font-family: var(--font-display);
-  font-size: clamp(1.55rem, 2.8vw, 2.35rem);
-  font-weight: 700;
-  line-height: 1.2;
-  color: var(--bc);
-}
-
-.pp-text-moa__body {
-  font-size: clamp(0.93rem, 1.05vw, 1rem);
-  line-height: 1.8;
+  line-height: 1.9;
   color: var(--bc2);
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.4rem;
+  margin-top: 2rem;
+  text-align: justify;
 }
-.pp-text-moa__body p { margin: 0; }
 
-@media (prefers-reduced-motion: reduce) {
-  .pp-intro-moa__gallery-item,
-  .pp-intro-moa__gallery-item img,
-  .pp-intro-moa__stat {
-    transition: none !important;
+/* Lead card wrapper — Ultra Premium Glassmorphism */
+.moa-intro__lead-card {
+  position: relative;
+  padding: 2.2rem 2.2rem 2.2rem 2.5rem;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.015);
+  backdrop-filter: blur(14px) saturate(110%);
+  -webkit-backdrop-filter: blur(14px) saturate(110%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+}
+
+/* Target Crosshairs trang trí góc */
+.moa-intro__target {
+  position: absolute;
+  color: var(--gold);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: bold;
+  pointer-events: none;
+  opacity: 0.65;
+  width: 10px;
+  height: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.moa-intro__target--tl { top: 8px; left: 10px; }
+.moa-intro__target--tr { top: 8px; right: 10px; }
+.moa-intro__target--bl { bottom: 10px; left: 10px; }
+.moa-intro__target--br { bottom: 10px; right: 10px; }
+
+/* Tọa độ số mờ ảo */
+.moa-intro__coords {
+  position: absolute;
+  bottom: 8px;
+  right: 25px;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: rgba(255, 255, 255, 0.22);
+  letter-spacing: 0.08em;
+  pointer-events: none;
+}
+
+/* Lead paragraph — editorial serif */
+.moa-intro__body .moa-intro__lead {
+  font-family: var(--font-serif);
+  font-size: clamp(1.15rem, 1.4vw, 1.3rem);
+  line-height: 1.65;
+  color: var(--bc);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+/* Dropcap tinh xảo — tương phản cao, chất tạp chí */
+.moa-intro__body p:first-of-type::first-letter {
+  font-family: var(--font-serif);
+  font-size: 4.2rem;
+  font-weight: 700;
+  float: left;
+  line-height: 0.8;
+  margin-right: 0.95rem;
+  margin-top: 0.15rem;
+  color: var(--gold);
+  text-shadow: 0 4px 20px color-mix(in srgb, var(--gold) 35%, transparent);
+}
+
+/* 3D Tech Blueprint showcase */
+.moa-intro__side {
+  position: relative;
+  z-index: 2;
+  perspective: 1500px;
+}
+
+/* Blueprint CAD Wrapper */
+.moa-intro__blueprint-wrapper {
+  position: relative;
+  padding: 2.2rem;
+  background: rgba(10, 10, 10, 0.35);
+  border: 1px dashed rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-lg);
+  transition: border-color 0.6s var(--ease-spring), background-color 0.6s var(--ease-spring);
+}
+
+/* CAD grid background */
+.moa-intro__cad-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.012) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.012) 1px, transparent 1px);
+  background-size: 20px 20px;
+  background-position: center;
+  pointer-events: none;
+  opacity: 0.75;
+  z-index: 0;
+  border-radius: var(--radius-lg);
+}
+
+/* Dimension Lines */
+.moa-intro__dim-line {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.22);
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 500;
+  pointer-events: none;
+  z-index: 1;
+  transition: color 0.6s var(--ease-spring);
+}
+.moa-intro__dim-line--top {
+  top: 10px;
+  left: 2.2rem;
+  right: 2.2rem;
+  height: 1px;
+  border-left: 4px solid currentColor;
+  border-right: 4px solid currentColor;
+  background: linear-gradient(90deg, currentColor, currentColor) center/100% 1px no-repeat;
+}
+.moa-intro__dim-line--left {
+  left: 10px;
+  top: 2.2rem;
+  bottom: 2.2rem;
+  width: 1px;
+  border-top: 4px solid currentColor;
+  border-bottom: 4px solid currentColor;
+  background: linear-gradient(currentColor, currentColor) center/1px 100% no-repeat;
+}
+
+.moa-intro__dim-label {
+  background: var(--b1);
+  padding: 0 6px;
+  transition: background 0.6s var(--ease-spring), color 0.6s var(--ease-spring);
+}
+.moa-intro__dim-line--left .moa-intro__dim-label {
+  transform: rotate(-90deg);
+  white-space: nowrap;
+}
+
+/* Tech Labels */
+.moa-intro__tech-label {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  color: rgba(255, 255, 255, 0.18);
+  letter-spacing: 0.05em;
+  pointer-events: none;
+  z-index: 1;
+  transition: color 0.6s var(--ease-spring);
+}
+.moa-intro__tech-label--tl { top: 14px; left: 16px; }
+.moa-intro__tech-label--tr { top: 14px; right: 16px; }
+.moa-intro__tech-label--bl { bottom: 14px; left: 16px; }
+.moa-intro__tech-label--br { bottom: 14px; right: 16px; }
+
+/* Corner brackets */
+.moa-intro__corner-bracket {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  pointer-events: none;
+  z-index: 1;
+  transition: border-color 0.6s var(--ease-spring);
+}
+.moa-intro__corner-bracket--tl { top: 8px; left: 8px; border-right: none; border-bottom: none; }
+.moa-intro__corner-bracket--tr { top: 8px; right: 8px; border-left: none; border-bottom: none; }
+.moa-intro__corner-bracket--bl { bottom: 8px; left: 8px; border-right: none; border-top: none; }
+.moa-intro__corner-bracket--br { bottom: 8px; right: 8px; border-left: none; border-top: none; }
+
+/* Image Container with Tilt properties */
+.moa-intro__image-container {
+  position: relative;
+  z-index: 1;
+  aspect-ratio: 3 / 4;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow:
+    -12px 12px 30px rgba(0, 0, 0, 0.65),
+    0 5px 15px rgba(0, 0, 0, 0.3);
+  border: 1px solid color-mix(in srgb, var(--gold) 10%, transparent);
+  background: var(--b2);
+  transform: rotateY(-3deg) rotateX(1.5deg) translateZ(0);
+  transition: 
+    transform 0.65s var(--ease-spring), 
+    border-color 0.65s var(--ease-spring), 
+    box-shadow 0.65s var(--ease-spring);
+}
+
+.moa-intro__image-container img {
+  filter: saturate(1) contrast(1.02) brightness(0.85);
+  transition: filter 0.65s var(--ease-spring), transform 0.65s var(--ease-spring) !important;
+}
+
+/* Hover effects driven by the outer wrapper for unity */
+.moa-intro__blueprint-wrapper:hover {
+  border-color: color-mix(in srgb, var(--gold) 28%, transparent);
+  background-color: rgba(10, 10, 10, 0.55);
+}
+
+.moa-intro__blueprint-wrapper:hover .moa-intro__image-container {
+  transform: rotateY(-1deg) rotateX(0.5deg) translateZ(15px);
+  border-color: color-mix(in srgb, var(--gold) 45%, transparent);
+  box-shadow:
+    -20px 20px 45px rgba(0, 0, 0, 0.8),
+    0 10px 25px color-mix(in srgb, var(--gold) 18%, transparent);
+}
+
+.moa-intro__blueprint-wrapper:hover .moa-intro__image-container img {
+  filter: saturate(1.06) contrast(1.04) brightness(0.95);
+  transform: scale(1.02);
+}
+
+.moa-intro__blueprint-wrapper:hover .moa-intro__dim-line,
+.moa-intro__blueprint-wrapper:hover .moa-intro__tech-label {
+  color: color-mix(in srgb, var(--gold) 55%, transparent);
+}
+
+.moa-intro__blueprint-wrapper:hover .moa-intro__corner-bracket {
+  border-color: color-mix(in srgb, var(--gold) 40%, transparent);
+}
+
+.moa-intro__blueprint-wrapper:hover .moa-intro__dim-label {
+  background: var(--b2);
+  color: var(--gold);
+}
+
+/* Responsive & accessibility fallbacks */
+@media (max-width: 1023px) {
+  .moa-intro__blueprint-wrapper {
+    padding: 1.8rem;
+  }
+  .moa-intro__dim-line--top {
+    left: 1.8rem;
+    right: 1.8rem;
+  }
+  .moa-intro__dim-line--left {
+    top: 1.8rem;
+    bottom: 1.8rem;
+  }
+  .moa-intro__image-container {
+    aspect-ratio: 4 / 3;
+    transform: none !important;
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .pp--moa .pp-ambient-glow-moa {
+    animation: none !important;
+  }
+  .moa-intro__image-container,
+  .moa-intro__image-container img {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+/* --- CUSTOM CLIP PATHS FOR ORGANIC PASTA DOUGH SHAPES (GLOBAL PILLAR MOA) --- */
+.pp--moa .pp-image-container-shared.moa-intro__image-container img {
+  clip-path: url(#moa-clip-dough-1) !important;
+}
+
+.pp--moa .pp-image-container-shared.moa-concept__image-container img {
+  clip-path: url(#moa-clip-dough-2) !important;
+}
+
+.pp--moa .pp-image-container-shared.moa-specs__image-container img {
+  clip-path: url(#moa-clip-dough-3) !important;
+}
+
+/* Gallery image clip-paths */
+.pp--moa .pp-image-container-shared.pp-gallery-moa__item:nth-of-type(1) img {
+  clip-path: url(#moa-clip-dough-4) !important;
+}
+.pp--moa .pp-image-container-shared.pp-gallery-moa__item:nth-of-type(2) img {
+  clip-path: url(#moa-clip-dough-5) !important;
+}
+.pp--moa .pp-image-container-shared.pp-gallery-moa__item:nth-of-type(3) img {
+  clip-path: url(#moa-clip-dough-6) !important;
+}
+.pp--moa .pp-image-container-shared.pp-gallery-moa__item:nth-of-type(4) img {
+  clip-path: url(#moa-clip-dough-7) !important;
+}
+
+/* Border SVG Styling */
+.pp--moa .moa-intro__image-border,
+.pp--moa .moa-concept__image-border,
+.pp--moa .moa-specs__image-border,
+.pp--moa .moa-gallery__image-border {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.pp--moa .moa-intro__image-border path,
+.pp--moa .moa-concept__image-border path,
+.pp--moa .moa-specs__image-border path,
+.pp--moa .moa-gallery__image-border path {
+  stroke: color-mix(in srgb, var(--gold) 20%, transparent);
+  stroke-width: 1.5px;
+  fill: none;
+  transition: stroke 0.6s var(--ease-spring), stroke-width 0.6s var(--ease-spring), filter 0.6s var(--ease-spring);
+}
+
+/* Hover effects for organic borders and clip images */
+.pp--moa .moa-intro__image-container:hover .moa-intro__image-border path {
+  stroke: var(--gold);
+  stroke-width: 2.2px;
+  filter: drop-shadow(0 0 6px color-mix(in srgb, var(--gold) 45%, transparent));
+}
+
+.pp--moa .moa-concept__image-container,
+.pp--moa .moa-specs__image-container,
+.pp--moa .pp-gallery-moa__item {
+  position: relative;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Ẩn các viền nét đứt và các đường viền hình chữ nhật phụ */
+.pp--moa .moa-concept__image-decor,
+.pp--moa .moa-specs__image-decor,
+.pp--moa .pp-gallery-moa__item::after {
+  display: none !important;
+}
+
+/* Áp dụng bóng đổ hữu cơ ôm theo đường vẽ Vector clip-path */
+.pp--moa .moa-intro__image-container {
+  box-shadow: none !important;
+  border: none !important;
+  background: transparent !important;
+  filter: drop-shadow(-10px 12px 25px rgba(0, 0, 0, 0.65));
+}
+.pp--moa .moa-concept__image-container,
+.pp--moa .moa-specs__image-container {
+  filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.55));
+  transition: transform 0.65s var(--ease-spring), filter 0.65s var(--ease-spring) !important;
+}
+.pp--moa .pp-gallery-moa__item {
+  filter: drop-shadow(0 12px 22px rgba(0, 0, 0, 0.5));
+  transition: transform 0.65s var(--ease-spring), filter 0.65s var(--ease-spring) !important;
+}
+
+/* Hiệu ứng Hover chuyển động bóng đổ hữu cơ */
+.pp--moa .moa-intro__blueprint-wrapper:hover .moa-intro__image-container {
+  box-shadow: none !important;
+  filter: drop-shadow(-15px 15px 35px rgba(0, 0, 0, 0.75)) drop-shadow(0 4px 15px color-mix(in srgb, var(--gold) 15%, transparent));
+}
+
+.pp--moa .moa-concept__image-container:hover,
+.pp--moa .moa-specs__image-container:hover {
+  transform: translateY(-5px) scale(1.01);
+  filter: drop-shadow(0 20px 35px rgba(0, 0, 0, 0.7)) drop-shadow(0 4px 12px color-mix(in srgb, var(--gold) 12%, transparent));
+}
+
+.pp--moa .moa-concept__image-container:hover .moa-concept__image-border path,
+.pp--moa .moa-specs__image-container:hover .moa-specs__image-border path {
+  stroke: var(--gold);
+  stroke-width: 2.2px;
+  filter: drop-shadow(0 0 6px color-mix(in srgb, var(--gold) 45%, transparent));
+}
+
+.pp--moa .moa-concept__image-container img,
+.pp--moa .moa-specs__image-container img {
+  transition: transform 0.65s var(--ease-spring), filter 0.65s var(--ease-spring);
+}
+
+.pp--moa .moa-concept__image-container:hover img,
+.pp--moa .moa-specs__image-container:hover img {
+  transform: scale(1.03);
+  filter: saturate(1.05) contrast(1.02) brightness(0.95);
+}
+
+/* Gallery Item Hover styling */
+.pp--moa .pp-gallery-moa__item:hover {
+  transform: translateY(-8px) scale(1.015);
+  filter: drop-shadow(0 20px 35px rgba(0, 0, 0, 0.75)) drop-shadow(0 5px 15px color-mix(in srgb, var(--gold) 15%, transparent)) !important;
+  z-index: 10;
+}
+.pp--moa .pp-gallery-moa__item .pp-gallery-moa__corner {
+  display: none; /* Tránh xung đột visual góc vuông */
+}
+.pp--moa .pp-gallery-moa__item:hover .moa-gallery__image-border path {
+  stroke: var(--gold);
+  stroke-width: 2.2px;
+  filter: drop-shadow(0 0 6px color-mix(in srgb, var(--gold) 45%, transparent));
+}
+.pp--moa .pp-gallery-moa__item img {
+  transition: transform 0.65s var(--ease-spring), filter 0.65s var(--ease-spring) !important;
+}
+.pp--moa .pp-gallery-moa__item:hover img {
+  transform: scale(1.04);
+  filter: saturate(1.06) contrast(1.02) brightness(0.95);
+}
+

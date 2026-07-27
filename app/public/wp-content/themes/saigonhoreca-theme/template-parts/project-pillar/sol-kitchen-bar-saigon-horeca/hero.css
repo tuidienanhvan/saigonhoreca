@@ -1,14 +1,19 @@
 /**
  * sol-kitchen-bar-saigon-horeca — hero slot.
- * Cinematic video backdrop + warm Latin overlay + staggered title entry.
- * Techniques: clamp, radial-gradient, backdrop-filter, mask-image,
- * @keyframes, prefers-reduced-motion.
+ * Bright cinematic image backdrop using the GPU-smooth "Parallax Clip-Path"
+ * technique (NO JS): the section is clipped (clip-path: inset) so a child .__bg
+ * with position:fixed scrolls as a parallax confined to this section.
+ * Owner feedback: NO dark overlay, NO panel behind the title — text sits DIRECTLY
+ * on the bright image; legibility from a LIGHT token overlay + text-shadow only.
+ * Techniques: clip-path parallax, position:fixed bg, clamp, radial-gradient,
+ *             color-mix, staggered @keyframes, mobile fallback, prefers-reduced-motion.
  * @package SaigonHoreca
  */
 
 .pp-hero-solshr {
   position: relative;
-  height: calc(100svh - 76px);
+  height: calc(100vh - 76px);
+  height: calc(100dvh - 76px);
   min-height: 660px;
   width: 100%;
   display: flex;
@@ -21,56 +26,54 @@
   padding-inline: clamp(1.25rem, 7vw, 7rem);
 }
 
+/* Bright image backdrop — background-attachment: scroll;produces the parallax (reliable). */
+/* Background video (YouTube) — covers the hero; poster image on __media shows until it loads. */
 .pp-hero-solshr__media {
   position: absolute;
   inset: 0;
-  z-index: 1;
+  z-index: -2;
   overflow: hidden;
-  pointer-events: none;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 .pp-hero-solshr__media iframe {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 100vw;
-  height: 56.25vw;
-  min-height: 100%;
-  min-width: 177.78vh;
-  transform: translate(-50%, -50%);
+  width: max(100vw, 177.78vh);
+  height: max(56.25vw, 100vh);
+  transform: translate(-50%, -50%) scale(1.06);
   border: 0;
-  filter: saturate(1.08) contrast(1.05) brightness(0.64);
+  pointer-events: none;
 }
 
+.pp-hero-solshr__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  pointer-events: none;
+}
+
+/* LIGHT token overlay — keeps the photo bright/visible (no heavy black scrim). */
 .pp-hero-solshr__overlay {
   position: absolute;
   inset: 0;
-  z-index: 2;
-  background:
-    linear-gradient(90deg,
-      color-mix(in srgb, var(--b1) 90%, transparent) 0%,
-      color-mix(in srgb, var(--b1) 42%, transparent) 50%,
-      color-mix(in srgb, var(--solshr-clay-deep) 42%, transparent) 100%),
-    linear-gradient(to bottom,
-      color-mix(in srgb, var(--b1) 18%, transparent) 0%,
-      color-mix(in srgb, var(--b1) 74%, transparent) 80%,
-      var(--b1) 100%);
+  z-index: -1;
   pointer-events: none;
+  background: linear-gradient(180deg,
+    color-mix(in srgb, var(--b1) 45%, transparent),
+    color-mix(in srgb, var(--b1) 25%, transparent) 50%,
+    color-mix(in srgb, var(--b1) 55%, transparent));
 }
 
-.pp-hero-solshr__grid {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  background:
-    linear-gradient(var(--solshr-grid) 1px, transparent 1px),
-    linear-gradient(90deg, var(--solshr-grid) 1px, transparent 1px),
-    radial-gradient(circle at 80% 26%, color-mix(in srgb, var(--solshr-sun) 12%, transparent), transparent 34%);
-  background-size: 44px 44px, 44px 44px, auto;
-  mask-image: linear-gradient(90deg, black 0%, transparent 80%);
-  opacity: 0.7;
-  pointer-events: none;
-}
-
+/* Warm ambient glows for depth — kept subtle so the image stays bright. */
 .pp-hero-solshr__glow {
   position: absolute;
   border-radius: 50%;
@@ -83,16 +86,16 @@
   left: -8%;
   width: 520px;
   height: 520px;
-  background: radial-gradient(circle, color-mix(in srgb, var(--solshr-sun) 18%, transparent) 0%, transparent 70%);
-  opacity: 0.72;
+  background: radial-gradient(circle, color-mix(in srgb, var(--solshr-sun) 22%, transparent) 0%, transparent 70%);
+  opacity: 0.6;
 }
 .pp-hero-solshr__glow--rb {
   bottom: -14%;
   right: -6%;
   width: 560px;
   height: 560px;
-  background: radial-gradient(circle, color-mix(in srgb, var(--solshr-clay) 16%, transparent) 0%, transparent 70%);
-  opacity: 0.55;
+  background: radial-gradient(circle, color-mix(in srgb, var(--solshr-clay) 20%, transparent) 0%, transparent 70%);
+  opacity: 0.5;
 }
 
 .pp-hero-solshr__rail {
@@ -103,7 +106,8 @@
   font-size: 0.66rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: color-mix(in srgb, var(--bc) 40%, transparent);
+  color: color-mix(in srgb, var(--bc) 72%, transparent);
+  text-shadow: 0 1px 8px color-mix(in srgb, var(--b1) 70%, transparent);
   pointer-events: none;
 }
 .pp-hero-solshr__rail--left {
@@ -117,45 +121,15 @@
   transform-origin: right center;
 }
 
+/* Content sits directly on the image — NO background / border / blur / shadow box. */
 .pp-hero-solshr__content {
   position: relative;
   z-index: 3;
   width: min(820px, 100%);
-  padding: clamp(2rem, 4vw, 3.25rem);
-  background: linear-gradient(135deg,
-    var(--solshr-glass),
-    color-mix(in srgb, var(--b1) 46%, transparent));
-  border: 1px solid color-mix(in srgb, var(--solshr-sun) 18%, transparent);
-  border-left: 2px solid color-mix(in srgb, var(--solshr-sun) 64%, transparent);
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-floating);
-  backdrop-filter: blur(16px) saturate(128%);
-  -webkit-backdrop-filter: blur(16px) saturate(128%);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 1.05rem;
-}
-.pp-hero-solshr__content::before,
-.pp-hero-solshr__content::after {
-  content: '';
-  position: absolute;
-  width: 28px;
-  height: 28px;
-  border: 1px solid color-mix(in srgb, var(--solshr-sun) 55%, transparent);
-  pointer-events: none;
-}
-.pp-hero-solshr__content::before {
-  top: -1px;
-  left: -1px;
-  border-right: none;
-  border-bottom: none;
-}
-.pp-hero-solshr__content::after {
-  right: -1px;
-  bottom: -1px;
-  border-left: none;
-  border-top: none;
 }
 
 .pp-hero-solshr__subhead {
@@ -165,7 +139,8 @@
   font-weight: 600;
   letter-spacing: 0.26em;
   text-transform: uppercase;
-  color: color-mix(in srgb, var(--solshr-sun) 90%, var(--bc));
+  color: color-mix(in srgb, var(--solshr-sun) 88%, var(--bc));
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.55);
   animation: solshr-rise 0.9s var(--ease-spring) 0.2s backwards;
 }
 
@@ -177,9 +152,7 @@
   line-height: 1.04;
   color: var(--bc);
   letter-spacing: 0.01em;
-  text-shadow:
-    0 4px 24px color-mix(in srgb, var(--b1) 70%, transparent),
-    0 0 60px color-mix(in srgb, var(--solshr-clay) 24%, transparent);
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.55);
   animation: solshr-rise 0.9s var(--ease-spring) 0.1s backwards;
 }
 
@@ -212,7 +185,8 @@
   font-size: clamp(1rem, 1.8vw, 1.18rem);
   font-style: italic;
   line-height: 1.7;
-  color: var(--bc2);
+  color: var(--bc);
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.55);
   animation: solshr-rise 0.9s var(--ease-spring) 0.42s backwards;
 }
 
@@ -222,7 +196,14 @@
     min-height: 600px;
   }
   .pp-hero-solshr__rail { display: none; }
-  .pp-hero-solshr__content { padding: 1.6rem; }
+}
+
+/* Mobile fallback — fixed-attachment parallax is janky on mobile, so pin the bg. */
+@media (max-width: 768px) {
+  .pp-hero-solshr__bg {
+    position: absolute;
+    background-attachment: scroll;
+  }
 }
 
 @keyframes solshr-rise {

@@ -1,0 +1,119 @@
+/* ═══════════════════════════════════════════════════════════════
+   SAIGON HORECA THEME — BRAND VALUES
+   ─────────────────────────────────────────────────────────────
+   BRAND = GOLD (#f5a623) — vàng kim sang trọng.
+   Palette: BLACK + GOLD + WHITE — đen + vàng kim + trắng.
+   Red (#c1272d) chỉ dùng cho status `--er`/`--danger` (form
+   validation errors), KHÔNG phải brand.
+   No light/dark toggle — dark IS the default and only theme.
+
+   Đây là giá trị thật của saigonhoreca, dựa trên cấu trúc dùng
+   chung ở ./_tokens.css (pi-design-system). Đổi màu brand chỉ cần
+   sửa file này — mọi component CSS khác tham chiếu qua biến, không
+   hardcode hex ở đâu khác (quy tắc Zero Hardcoded Colors).
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+  color-scheme: dark;
+
+  /* Primary brand — VÀNG KIM (saigonhoreca brand).
+     Text on brand surface is BLACK (vàng nền tối + chữ đen). */
+  --p:  #f5a623;   /* gold */
+  --ph: #d18910;   /* gold-dim (hover) */
+  --pc: #000000;   /* text trên brand bg (vàng) */
+
+  /* Base (Backgrounds — black to near-black palette) */
+  --b1: #0a0a0a;
+  --b2: #131313;
+  --b3: #1a1a1a;
+  --b4: #1f1f1f;
+
+  /* Content (Text — white scale) */
+  --bc:  #ffffff;
+  --bc2: rgba(255, 255, 255, 0.78);
+  --bc3: rgba(255, 255, 255, 0.55);
+
+  /* Borders (subtle white at low alpha) */
+  --bd: rgba(255, 255, 255, 0.08);
+  --bs: rgba(255, 255, 255, 0.04);
+  --bt: rgba(255, 255, 255, 0.18);
+
+  /* Status colors */
+  --su: #16a34a;
+  --wa: #f5a623;
+  --er: #c1272d;
+  --in: #2563eb;
+
+  --duration-normal: 0.5s;
+
+  /* ── Legacy aliases (saigonhoreca-theme inheritance) ── */
+
+  /* Brand (= gold). Aliases để code cũ var(--brand) vẫn map vào vàng. */
+  --brand:           var(--p);            /* #f5a623 gold */
+  --brand-hover:     var(--ph);           /* #d18910 gold-dim */
+  --brand-dark:      var(--ph);
+  --brand-light:     #ffd166;             /* gold-lighter */
+  --brand-content:   var(--pc);           /* #000 — text trên gold bg */
+  --brand-50:        rgba(245, 166, 35, 0.06);
+  --brand-100:       rgba(245, 166, 35, 0.12);
+  --on-brand:        var(--pc);
+
+  /* Secondary / Gold accent — same brand color as --p/--ph, aliased (not
+     re-hardcoded) so there is exactly ONE place to change the brand color. */
+  --secondary:       var(--p);
+  --secondary-dark:  var(--ph);
+  --secondary-hover: #ffb100;   /* distinct shade, not a --ph duplicate — keep literal */
+  --gold:            var(--p);
+  --gold-dim:        var(--ph);
+
+  /* Red — KHÔNG phải brand, chỉ dùng cho status danger / error */
+  --color-error:     #c1272d;
+  --color-error-dark:#a31f24;
+
+  /* Status aliases */
+  --success:         var(--su);
+  --warning:         var(--wa);
+  --danger:          var(--er);
+  --info:            var(--in);
+
+  /* Backgrounds */
+  --bg:              var(--b1);
+  --bg-alt:          var(--b3);
+  --bg-dark:         #000000;
+  --bg-card:         var(--b2);
+  --bg-input:        var(--b3);
+  --bg-elevated:     var(--b4);
+  --color-surface-alt: var(--b3);
+
+  /* Text */
+  --text-1:          var(--bc);
+  --text-1-2:        var(--bc2);
+  --text-1-3:        var(--bc2);
+  --text-1-muted:    var(--bc3);
+  --text-2:          var(--bc2);
+  --text-3:          var(--bc3);
+  --color-text:      var(--bc);
+  --sh-heading:      var(--bc);
+
+  /* Borders */
+  --border-default:        var(--bd);
+  --border-default-light:  var(--bs);
+  --border-subtle:         var(--bs);
+  --border-strong:         var(--bt);
+
+  /* Fonts (alias Pi → legacy) */
+  --font-body:    var(--font-sans);
+  --font-heading: var(--font-display);
+
+  /* Radius */
+  --radius:     14px;
+
+  /* Shadows (deep on dark theme) */
+  --shadow:          0 4px 16px rgba(0, 0, 0, 0.5);
+  --shadow-main:     0 8px 28px rgba(0, 0, 0, 0.6);
+  --shadow-floating: 0 12px 36px rgba(0, 0, 0, 0.7);
+
+  /* Brand-specific accents */
+  --sh-comments-accent:        var(--p);
+  --sh-comments-accent-strong: var(--ph);
+}

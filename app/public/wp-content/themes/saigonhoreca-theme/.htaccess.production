@@ -15,7 +15,16 @@
 <IfModule mod_expires.c>
     ExpiresActive On
     ExpiresDefault "access plus 1 month"
-    
+
+    # ExpiresDefault áp dụng cho MỌI content-type không khai báo riêng — kể cả
+    # text/html (trang WordPress render động), khiến trình duyệt khoá cứng 1
+    # THÁNG, không gọi lại server dù /flush-cache đã chạy đúng phía server.
+    # Header Cache-Control max-age=0 (env=SGH_STATIC_CACHE ở trên) chỉ áp dụng
+    # khi trang serve từ file cache tĩnh — request PHP render tươi (luôn xảy
+    # ra ngay sau flush) rơi vào ExpiresDefault không được bảo vệ. Khai báo
+    # riêng để mod_expires không bao giờ cache dài hạn HTML phía trình duyệt.
+    ExpiresByType text/html "access plus 0 seconds"
+
     # Media/Images
     ExpiresByType image/jpg "access plus 1 year"
     ExpiresByType image/jpeg "access plus 1 year"
@@ -68,6 +77,8 @@ RewriteCond %{REQUEST_METHOD} =GET
 RewriteCond %{QUERY_STRING} ^$
 RewriteCond %{HTTP_COOKIE} !(^|;\ *)(wordpress_logged_in_|wp-postpass_|comment_author_) [NC]
 RewriteCond %{REQUEST_URI} !^/(wp-admin|wp-login\.php|wp-json|wp-cron\.php|xmlrpc\.php|wp-comments-post\.php|wp-content|wp-includes)(/|$) [NC]
+# Skip cache for bots/audits → they hit PHP for the UA-specific light render (no fixed parallax).
+RewriteCond %{HTTP_USER_AGENT} !(bot|crawl|spider|slurp|mediapartners|lighthouse|pagespeed|gtmetrix|pingdom|headless|facebookexternalhit|embedly|whatsapp|telegram|discord) [NC]
 RewriteCond %{DOCUMENT_ROOT}/wp-content/cache/sgh-static%{REQUEST_URI}index.html -f
 RewriteRule ^ /wp-content/cache/sgh-static%{REQUEST_URI}index.html [L,T=text/html,E=SGH_STATIC_CACHE:HIT]
 
@@ -76,6 +87,8 @@ RewriteCond %{REQUEST_METHOD} =GET
 RewriteCond %{QUERY_STRING} ^$
 RewriteCond %{HTTP_COOKIE} !(^|;\ *)(wordpress_logged_in_|wp-postpass_|comment_author_) [NC]
 RewriteCond %{REQUEST_URI} !^/(wp-admin|wp-login\.php|wp-json|wp-cron\.php|xmlrpc\.php|wp-comments-post\.php|wp-content|wp-includes)(/|$) [NC]
+# Skip cache for bots/audits → they hit PHP for the UA-specific light render (no fixed parallax).
+RewriteCond %{HTTP_USER_AGENT} !(bot|crawl|spider|slurp|mediapartners|lighthouse|pagespeed|gtmetrix|pingdom|headless|facebookexternalhit|embedly|whatsapp|telegram|discord) [NC]
 RewriteCond %{DOCUMENT_ROOT}/wp-content/cache/sgh-static%{REQUEST_URI}/index.html -f
 RewriteRule ^ /wp-content/cache/sgh-static%{REQUEST_URI}/index.html [L,T=text/html,E=SGH_STATIC_CACHE:HIT]
 </IfModule>

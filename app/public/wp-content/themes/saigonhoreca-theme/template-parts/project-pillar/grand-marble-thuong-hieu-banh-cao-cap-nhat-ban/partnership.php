@@ -1,20 +1,26 @@
 <?php
 /**
  * Project Pillar — grand-marble-thuong-hieu-banh-cao-cap-nhat-ban
- * Section #4: partnership — cinematic bg + glassmorphic philosophy card.
+ * Section #4: partnership — full-bleed bg image via the Parallax Clip-Path
+ * technique (NO JS, GPU-smooth): the section is clip-path:inset(0) which confines
+ * a position:fixed __bg child to the section = parallax; a LIGHT token gradient
+ * overlay keeps the photo visible behind the glassmorphic philosophy card.
  * @package SaigonHoreca
  */
 if (!defined('ABSPATH')) exit;
 $uri = get_template_directory_uri();
 ?>
-<section class="pp-section-bg-gmarb scroll-reveal" style="background-image:url('<?php echo sgh_img('grand-marble-thuong-hieu-banh-cao-cap-nhat-ban/grand-marble-lo-nuong-chanmag.jpg'); ?>');">
+<section class="pp-section-bg-gmarb scroll-reveal">
+  <!-- Thẻ con gánh hiệu ứng Parallax Clip-Path siêu mượt (position:fixed) -->
+  <div class="pp-section-bg-gmarb__bg" style="background-image:url('<?php echo sgh_img('grand-marble-thuong-hieu-banh-cao-cap-nhat-ban/grand-marble-lo-nuong-chanmag.jpg'); ?>');" aria-hidden="true"></div>
   <div class="pp-section-bg-gmarb__overlay" aria-hidden="true"></div>
   <div class="pp-gmarb-glow pp-gmarb-glow--tr" aria-hidden="true"></div>
 
+  <div class="pp-container-shared">
   <div class="pp-section-bg-gmarb__content scroll-reveal reveal-up">
     <span class="pp-text-gmarb__eyebrow"><?php echo esc_html__('Đối tác vận hành', 'saigonhoreca'); ?></span>
     <div class="pp-text-gmarb__divider pp-text-gmarb__divider--dots pp-text-gmarb__divider--center" aria-hidden="true"></div>
-    <h2 class="pp-section-bg-gmarb__title"><?php echo esc_html__('Đồng Hành Cùng Phòng Làm Bánh Grand Marble', 'saigonhoreca'); ?></h2>
+    <h2 class="pp-section-bg-gmarb__title"><?php echo esc_html__('Hành Trình Đưa Bánh Grand Marble Tận Tay Khách Hàng', 'saigonhoreca'); ?></h2>
     <div class="pp-section-bg-gmarb__body">
       <p><?php echo esc_html__('Để tạo ra những chiếc bánh ngọt ngon lành, các nghệ nhân Grand Marble tỉ mỉ lựa chọn nguyên liệu thượng hạng, nhào nặn bột, ủ kỹ và tuân theo quy trình nghiêm ngặt – từ những bước thủ công đến sự hỗ trợ của máy móc hiện đại. Sài Gòn Horeca là đối tác tư vấn thiết kế và lắp đặt trang thiết bị toàn diện cho phòng làm bánh, từ khâu chuẩn bị nguyên liệu đến đóng gói thành phẩm.', 'saigonhoreca'); ?></p>
       <p><?php echo esc_html__('Dựa trên bố cục dự án tổng thể kết hợp các thủ tục tiêu chuẩn cho một phòng làm bánh, chúng tôi phân chia không gian thành sáu khu vực chức năng: tiếp nhận nguyên liệu, vệ sinh, trộn và cán bột, làm bánh, lưu trữ và kiểm tra đóng gói.', 'saigonhoreca'); ?></p>
@@ -27,5 +33,6 @@ $uri = get_template_directory_uri();
       <span><?php echo esc_html__('Lưu trữ', 'saigonhoreca'); ?></span>
       <span><?php echo esc_html__('Kiểm tra &amp; đóng gói', 'saigonhoreca'); ?></span>
     </div>
+  </div>
   </div>
 </section>

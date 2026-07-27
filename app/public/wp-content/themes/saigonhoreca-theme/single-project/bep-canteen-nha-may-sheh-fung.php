@@ -1,7 +1,7 @@
 <?php
 /**
  * Single Project Template — SHEH FUNG
- * Thumbnail: 2025/04/du-an-sheh-fung.jpg
+ * Thumbnail: bep-canteen-nha-may-sheh-fung/bep-canteen-nha-may-sheh-fung-thumbnail-project-cover.webp
  *
  * Auto-routed via inc/core/pillar-routes.php for /du-an/bep-canteen-nha-may-sheh-fung/.
  *

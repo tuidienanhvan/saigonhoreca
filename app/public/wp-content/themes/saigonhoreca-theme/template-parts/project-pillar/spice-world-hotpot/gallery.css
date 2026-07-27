@@ -1,7 +1,246 @@
-/** spice-world-hotpot — gallery slot (no content). */
+/**
+ * Project Pillar — Spice World Hot Pot
+ * Section #6: gallery grid + bàn giao hoàn thiện (merged related, T-034).
+ * Tokens only. Motion guarded by prefers-reduced-motion.
+ */
 
-/* ===== merged from related.css — markup đã ở gallery.php (T-034 section 7). Merged để gỡ related.css =====*/
-/** spice-world-hotpot — related slot (no content). */
+/* ===================== GALLERY ===================== */
+.pp-swh-gallery {
+  position: relative;
+  padding: clamp(4rem, 9vw, 8rem) 0;
+  background-color: var(--b1);
+  overflow: hidden;
+}
+.pp-swh-gallery__glow {
+  position: absolute;
+  top: -10%;
+  right: -8%;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  filter: blur(110px);
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(circle, color-mix(in srgb, var(--gold) 11%, transparent) 0%, transparent 70%);
+}
 
-/* ===== merged from cta.css — markup đã ở gallery.php (T-034 section 8). Merged để gỡ cta.css =====*/
-/** spice-world-hotpot — cta slot (no content). */
+/* Số chìm kỹ thuật (technical watermark) — section #6 */
+.pp-swh-gallery__watermark {
+  position: absolute;
+  top: clamp(1rem, 4vw, 3.5rem);
+  left: clamp(0.5rem, 3vw, 3rem);
+  z-index: 0;
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(8rem, 22vw, 22rem);
+  font-weight: 800;
+  line-height: 0.8;
+  letter-spacing: -0.04em;
+  color: color-mix(in srgb, var(--gold) 100%, transparent);
+  opacity: 0.04;
+  pointer-events: none;
+  user-select: none;
+}
+
+.pp-swh-gallery__head {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto clamp(2.5rem, 5vw, 3.5rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.pp-swh-gallery__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 3.2vw, 2.5rem);
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--bc);
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.pp-swh-gallery__title-gold {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(1rem, 1.7vw, 1.4rem);
+  color: var(--gold);
+}
+.pp-swh-gallery__intro {
+  font-family: var(--font-sans);
+  font-size: clamp(0.92rem, 1vw, 1.02rem);
+  line-height: 1.7;
+  color: var(--bc2);
+  margin: 0.5rem 0 0;
+}
+
+/* ===================== UNIFORM GRID =====================
+   Khảm đồng nhất, không khoảng trống đen: mọi tile cùng 4/3.
+   Mobile: 1 cột → Tablet (>=600px): 2 cột → Desktop (>=992px): 3 cột.
+   row-gap nới rộng để chú thích báo chí (neo dưới chân ảnh) có chỗ thở. */
+.pp-swh-gallery__mosaic {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1.5rem, 2.6vw, 2.25rem) clamp(1.25rem, 2vw, 1.75rem);
+}
+
+/* Mọi tile: cùng một tỉ lệ 4/3 → lát phẳng, không void */
+.pp-swh-gallery__item {
+  position: relative;
+  margin: 0;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--bd);
+  box-shadow: var(--shadow-main);
+  background: var(--b3);
+  aspect-ratio: 4 / 3;
+  transition:
+    transform 0.55s var(--ease-spring),
+    border-color 0.45s var(--ease-spring),
+    box-shadow 0.45s var(--ease-spring);
+}
+.pp-swh-gallery__item img {
+  border-radius: inherit;
+  filter: saturate(0.99) contrast(1.03) brightness(1.02);
+  transition: transform 0.7s var(--ease-spring), filter 0.5s ease !important;
+}
+
+/* Góc vàng kim tinh tế (gold corner accent) */
+.pp-swh-gallery__corner {
+  position: absolute;
+  top: 0.9rem;
+  left: 0.9rem;
+  width: 1.6rem;
+  height: 1.6rem;
+  z-index: 4;
+  border-top: 2px solid var(--gold);
+  border-left: 2px solid var(--gold);
+  border-top-left-radius: 4px;
+  opacity: 0;
+  transform: translate(6px, 6px);
+  transition: opacity 0.45s var(--ease-spring), transform 0.45s var(--ease-spring);
+  pointer-events: none;
+}
+
+/* Hover: nâng + phóng nhẹ + viền vàng + ánh sáng vàng */
+.pp-swh-gallery__item:hover {
+  transform: translateY(-8px) scale(1.012);
+  border-color: color-mix(in srgb, var(--gold) 55%, transparent);
+  box-shadow:
+    0 26px 55px rgba(0, 0, 0, 0.7),
+    0 0 26px color-mix(in srgb, var(--gold) 16%, transparent);
+}
+.pp-swh-gallery__item:hover img {
+  filter: saturate(1.05) contrast(1.04) brightness(1.05);
+}
+.pp-swh-gallery__item:hover .pp-swh-gallery__corner {
+  opacity: 0.9;
+  transform: translate(0, 0);
+}
+
+/* — Tablet (>=600px): 2 cột đồng nhất — */
+@media (min-width: 600px) {
+  .pp-swh-gallery__mosaic { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* — Desktop (>=992px): 3 cột đồng nhất (6 ảnh = 2 hàng phẳng) — */
+@media (min-width: 992px) {
+  .pp-swh-gallery__mosaic { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* ===================== HANDOVER ===================== */
+.pp-swh-handover {
+  position: relative;
+  padding: clamp(4rem, 9vw, 8rem) 0;
+  background-color: var(--b2);
+  overflow: hidden;
+}
+.pp-swh-handover__glow {
+  position: absolute;
+  bottom: -12%;
+  left: -8%;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  filter: blur(110px);
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(circle, color-mix(in srgb, var(--gold) 9%, transparent) 0%, transparent 70%);
+}
+
+.pp-swh-handover__grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2.5rem, 5vw, 3.5rem);
+  align-items: center;
+}
+@media (min-width: 1024px) {
+  .pp-swh-handover__grid { grid-template-columns: 0.9fr 1.1fr; }
+}
+
+.pp-swh-handover__main,
+.pp-swh-handover__side { min-width: 0; }
+
+.pp-swh-handover__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--bc);
+  margin: 0;
+}
+.pp-swh-handover__body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.pp-swh-handover__body p {
+  font-family: var(--font-sans);
+  font-size: clamp(0.92rem, 1vw, 1rem);
+  line-height: 1.75;
+  color: var(--bc2);
+  margin: 0;
+}
+
+.pp-swh-handover__quote {
+  position: relative;
+  margin: 1.75rem 0 0;
+  padding: 1.25rem 1rem 0;
+}
+.pp-swh-handover__quote-line {
+  display: block;
+  width: 48px;
+  height: 2px;
+  margin-bottom: 1rem;
+  background: linear-gradient(90deg, var(--gold), color-mix(in srgb, var(--er) 70%, var(--gold)));
+}
+.pp-swh-handover__quote p {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  line-height: 1.65;
+  color: var(--bc);
+  margin: 0;
+}
+
+.pp-swh-handover__figure { margin: 0 0 1.8rem; }
+.pp-swh-handover__figure img { aspect-ratio: 16 / 10; }
+
+@media (prefers-reduced-motion: reduce) {
+  .pp-swh-gallery__item,
+  .pp-swh-gallery__item img,
+  .pp-swh-gallery__corner,
+  .pp-swh-handover__figure {
+    transition: none !important;
+    animation: none !important;
+  }
+  .pp-swh-gallery__item:hover {
+    transform: none !important;
+  }
+}

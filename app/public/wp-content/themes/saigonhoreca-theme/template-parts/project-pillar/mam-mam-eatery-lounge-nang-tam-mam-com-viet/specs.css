@@ -7,6 +7,28 @@
 
 .pp-specs-mam { position: relative; }
 
+/* Giant chìm "03" watermark numeral — completes the editorial trilogy */
+.pp-specs-mam__watermark {
+  position: absolute;
+  top: clamp(-3.5rem, -3.5vw, -2.5rem);
+  right: clamp(0.5rem, 3vw, 3rem);
+  font-family: var(--font-display);
+  font-size: clamp(8rem, 18vw, 20rem);
+  font-weight: 800;
+  line-height: 1;
+  color: var(--gold);
+  opacity: 0.04;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  animation: pp-specs-mam-float 11s var(--ease-spring) infinite alternate;
+}
+
+@keyframes pp-specs-mam-float {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-1rem); }
+}
+
 /* Center the section tag pill above the title */
 .pp-specs-mam__tag {
   align-self: center;
@@ -33,4 +55,9 @@
   .pp-specs-mam .pp-gallery-mam--cols-3 .pp-gallery-mam__item:first-child {
     grid-column: span 2;
   }
+}
+
+/* Reduced motion (technique: prefers-reduced-motion) */
+@media (prefers-reduced-motion: reduce) {
+  .pp-specs-mam__watermark { animation: none !important; }
 }

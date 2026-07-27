@@ -1,50 +1,147 @@
 /**
- * tales-by-chapter — gallery slot.
- * Masonry-style grid with shared image partials.
+ * tales-by-chapter — gallery slot (closing editorial album).
+ * Clean UNIFORM grid: every tile is the same 4/3 frame -> tiles with zero gaps.
+ * Reuses .pp-section-tbc / .pp-badge-tbc / .pp-text-tbc__* (accent = --su).
+ * 100% tokens (color-mix tints), CLS-safe aspect-ratios, reduced-motion guard.
  * @package SaigonHoreca
  */
 
-.pp-gallery-tbc {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.25rem;
-  margin-top: 2.5rem;
-}
-@media (max-width: 768px) { .pp-gallery-tbc { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 480px) { .pp-gallery-tbc { grid-template-columns: 1fr; } }
-
-.pp-gallery-tbc__item {
+/* Section shell tweaks — give the watermarks room + keep album centered. */
+.pp-gallery-section-tbc {
   position: relative;
   overflow: hidden;
+}
+
+.pp-gallery-section-tbc__header {
+  max-width: 720px;
+  margin: 0 auto 3.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+.pp-gallery-section-tbc__header .pp-text-tbc__title { margin: 1rem 0 1.25rem; }
+
+/* ── Ambient / watermark layer (gold-grade depth, scoped accent) ───────── */
+.pp-gallery-tbc__watermark {
+  position: absolute;
+  top: clamp(-2rem, -3vw, -0.5rem);
+  right: clamp(1rem, 5vw, 4rem);
+  z-index: 0;
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(9rem, 24vw, 22rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: color-mix(in srgb, var(--su) 5%, transparent);
+  pointer-events: none;
+  user-select: none;
+}
+
+.pp-gallery-tbc__svg-mark {
+  position: absolute;
+  bottom: clamp(-1rem, -2vw, 1rem);
+  left: clamp(-2rem, -2vw, 1.5rem);
+  z-index: 0;
+  width: clamp(180px, 26vw, 360px);
+  height: auto;
+  color: color-mix(in srgb, var(--su) 8%, transparent);
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ===================================================================
+   UNIFORM ALBUM GRID — 1 col (mobile) -> 2 col -> 3 col (desktop).
+   Every tile shares the SAME 4/3 ratio so they tile with ZERO voids.
+   =================================================================== */
+.pp-gallery-tbc {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr;
+  /* Column gap + a comfortable row gap so the shared press caption
+     (anchored below each image) always has breathing room. */
+  gap: clamp(1.5rem, 2.6vw, 2.25rem) clamp(1.25rem, 2vw, 1.75rem);
+}
+
+@media (min-width: 600px) {
+  .pp-gallery-tbc { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 992px) {
+  .pp-gallery-tbc { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Uniform tile — single 4/3 frame, no spans, no per-tile overrides. */
+.pp-gallery-tbc__item {
+  position: relative;
+  aspect-ratio: 4 / 3;
   border-radius: var(--radius-md);
   background: var(--b3);
   border: 1px solid var(--bd);
-  transition: border-color 0.4s var(--ease-spring), transform 0.4s var(--ease-spring);
+  box-shadow: 0 10px 30px color-mix(in srgb, black 45%, transparent);
+  transition:
+    border-color 0.45s var(--ease-spring),
+    transform 0.45s var(--ease-spring),
+    box-shadow 0.45s var(--ease-spring);
 }
-.pp-gallery-tbc__item:hover {
-  border-color: color-mix(in srgb, var(--su) 45%, transparent);
-  transform: translateY(-4px);
-  box-shadow: 0 16px 40px color-mix(in srgb, var(--su) 10%, transparent);
-}
-.pp-gallery-tbc__item--large { grid-row: span 2; }
-.pp-gallery-tbc__item--wide { grid-column: span 2; }
-@media (max-width: 768px) { .pp-gallery-tbc__item--wide { grid-column: span 1; } }
 
 .pp-gallery-tbc__item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.7s var(--ease-spring);
+  border-radius: inherit;
+  /* Dark raw photos — never darken. Brighten + lift contrast/saturation. */
+  filter: saturate(0.99) contrast(1.03) brightness(1.02);
+  transition: transform 0.8s var(--ease-spring), filter 0.5s ease;
 }
-.pp-gallery-tbc__item:hover img { transform: scale(1.05); }
 
+/* ── Decorative gold-grade corner accent (scoped to --su) ──────────────── */
+.pp-gallery-tbc__corner {
+  position: absolute;
+  top: 0.85rem;
+  right: 0.85rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  z-index: 3;
+  border-top: 2px solid color-mix(in srgb, var(--su) 0%, transparent);
+  border-right: 2px solid color-mix(in srgb, var(--su) 0%, transparent);
+  border-top-right-radius: 6px;
+  pointer-events: none;
+  transition: border-color 0.45s var(--ease-spring), transform 0.45s var(--ease-spring);
+}
+
+/* ── Hover lift + scale + accent border (editorial polish) ─────────────── */
+.pp-gallery-tbc__item:hover {
+  transform: translateY(-6px);
+  border-color: color-mix(in srgb, var(--su) 55%, transparent);
+  box-shadow:
+    0 22px 50px color-mix(in srgb, black 55%, transparent),
+    0 0 26px color-mix(in srgb, var(--su) 14%, transparent);
+}
+.pp-gallery-tbc__item:hover img {
+  transform: scale(1.06);
+  filter: saturate(1.1) contrast(1.05) brightness(1.06);
+}
+.pp-gallery-tbc__item:hover .pp-gallery-tbc__corner {
+  border-top-color: color-mix(in srgb, var(--su) 80%, transparent);
+  border-right-color: color-mix(in srgb, var(--su) 80%, transparent);
+  transform: scale(1.15);
+}
+
+/* Caption styling is owned by the shared _caption.css component. */
+
+/* ── Motion guard ──────────────────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   .pp-gallery-tbc__item,
-  .pp-gallery-tbc__item img {
+  .pp-gallery-tbc__item img,
+  .pp-gallery-tbc__corner {
     transition: none !important;
   }
-  .pp-gallery-tbc__item:hover {
-    transform: none !important;
-  }
+  .pp-gallery-tbc__item:hover,
+  .pp-gallery-tbc__item:hover img,
+  .pp-gallery-tbc__item:hover .pp-gallery-tbc__corner { transform: none !important; }
 }

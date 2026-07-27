@@ -25,8 +25,8 @@ $uri = get_template_directory_uri();
       </div>
       <div class="pp-split-mam__media">
         <div class="pp-image-container-shared">
-          <img src="<?php echo sgh_img('mam-mam-eatery-lounge-nang-tam-mam-com-viet/mam-mam-sgh-1.jpg'); ?>" alt="<?php echo esc_attr__('Không gian bàn ăn mâm tròn Mâm Mâm do Saigon Horeca thiết kế', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="1366" height="768">
-          <div class="pp-image-caption-shared"><?php echo esc_html__('Mặt bàn lacquer đỏ hình tròn tái hiện chiếc mâm cơm Việt giữa không gian fusion hiện đại', 'saigonhoreca'); ?></div>
+          <img src="<?php echo sgh_img('mam-mam-eatery-lounge-nang-tam-mam-com-viet/mam-mam-mang-tran-tron-op-dong-trang-tri.webp'); ?>" alt="<?php echo esc_attr__('Mảng trần tròn trang trí ốp kim loại màu đồng tại Mâm Mâm, lắp trong trần gỗ sáng có đèn âm trần', 'saigonhoreca'); ?>" loading="lazy" decoding="async" width="1366" height="768">
+          <div class="pp-image-caption-shared"><?php echo esc_html__('Mảng trần tròn ốp đồng – chiếc “mâm” khổng lồ trên cao, đưa biểu tượng sum vầy của bữa cơm Việt vào không gian fusion hiện đại', 'saigonhoreca'); ?></div>
         </div>
       </div>
     </div>

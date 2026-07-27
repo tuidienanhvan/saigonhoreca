@@ -16,7 +16,7 @@ $embed_url = sprintf(
 ?>
 <section class="pp-hero-lb scroll-reveal">
     <div class="pp-hero-lb__media">
-        <iframe src="<?php echo esc_url($embed_url); ?>" allow="autoplay; encrypted-media; fullscreen" frameborder="0" title="Background video" tabindex="-1" aria-hidden="true"></iframe>
+        <iframe data-lazy-src="<?php echo esc_url($embed_url); ?>" allow="autoplay; encrypted-media; fullscreen" frameborder="0" title="Background video" tabindex="-1" aria-hidden="true"></iframe>
     </div>
     <div class="pp-hero-lb__overlay" aria-hidden="true"></div>
     <div class="pp-hero-lb__ambient-glow" aria-hidden="true"></div>

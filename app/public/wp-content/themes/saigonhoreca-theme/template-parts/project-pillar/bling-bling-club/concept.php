@@ -49,8 +49,8 @@ $uri = get_template_directory_uri();
           </div>
           <div class="pp-bbc-concept__image-wrapper">
             <div class="pp-image-container-shared">
-              <img src="<?php echo sgh_img('bling-bling-club/bling-bling-club-khong-gian-quay-bar-soi-dong.jpg'); ?>" alt="Không gian sân khấu và quầy bar trung tâm tại Bling Bling Club" loading="lazy" decoding="async">
-              <div class="pp-image-caption-shared"><?php echo esc_html__('Không gian trình diễn nghệ thuật và quầy bar trung tâm với màn hình LED 3D khổng lồ', 'saigonhoreca'); ?></div>
+              <img src="<?php echo sgh_img('bling-bling-club/bling-bling-club-khong-gian-quay-bar-soi-dong.jpg'); ?>" alt="Sân khấu trung tâm với màn hình LED 3D khổng lồ và cột đèn LED tại Bling Bling Club" loading="lazy" decoding="async">
+              <div class="pp-image-caption-shared"><?php echo esc_html__('Sân khấu trung tâm rực rỡ với màn hình LED 3D khổng lồ và dàn cột đèn LED chiếu đồ họa chất lỏng nhiều màu', 'saigonhoreca'); ?></div>
             </div>
             <div class="gold-haze-glow"></div>
           </div>
