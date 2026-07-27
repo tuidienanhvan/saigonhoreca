@@ -100,7 +100,6 @@
     var requestSeq = 0;
     var controller = null;
     var hardTimer = null;
-    var slowTimer = null;
     var cooldownEnd = 0;
     var cooldownTick = null;
     var isSending = false;
@@ -112,7 +111,6 @@
     // bubble whose column may already be detached from a cleared transcript.
     var activeTyping = null;
 
-    var SLOW_NOTICE_MS = 12000;
     // 75s. The previous 45s was sized against the fast path's worst case (20s generator
     // timeout x 2 fallback keys). The adaptive max-accuracy path (see class-rest.php) adds
     // an LLM reranking pass and a fact check that can itself trigger one regeneration —
@@ -121,8 +119,7 @@
     // ceiling, otherwise the browser aborts a request that was about to succeed and the
     // customer sees a timeout for work that actually completed.
     //
-    // Note this does NOT slow the common case: an easy question still returns in ~10s, and
-    // SLOW_NOTICE_MS keeps telling the customer something is happening either way.
+    // Note this does NOT slow the common case: an easy question still returns in ~10s.
     var HARD_TIMEOUT_MS = 75000;
 
     // Multi-turn context — how many PRIOR exchanges (user+bot pairs) are sent alongside a
@@ -182,22 +179,6 @@
 
     function clearTimers() {
         if (hardTimer) { clearTimeout(hardTimer); hardTimer = null; }
-        if (slowTimer) { clearTimeout(slowTimer); slowTimer = null; }
-    }
-
-    function showSlowHint(on) {
-        var el = messages.querySelector('.pi-cb-slow-hint');
-        if (on && !el) {
-            var typingEl = messages.querySelector('.pi-cb-typing');
-            if (typingEl) {
-                el = document.createElement('div');
-                el.className = 'pi-cb-slow-hint';
-                el.textContent = 'Still looking up the information, this question needs a bit more time…';
-                typingEl.parentNode.appendChild(el);
-            }
-        } else if (!on && el) {
-            el.remove();
-        }
     }
 
     /** The ONLY place that returns the widget to idle, ready to accept a new question. */
@@ -598,11 +579,6 @@
         setTyping(true);
 
         controller = new AbortController();
-        slowTimer = setTimeout(function () {
-            if (seq !== requestSeq) return;
-            setStatus('Still looking up the information, this question needs a bit more time…');
-            showSlowHint(true);
-        }, SLOW_NOTICE_MS);
         hardTimer = setTimeout(function () {
             if (seq !== requestSeq) return;
             timedOut = true;
@@ -632,13 +608,12 @@
             })
             .then(function (r) {
                 if (seq !== requestSeq) return;
-                // Clear the timers AS SOON AS we have a response — don't wait for
+                // Clear the timer AS SOON AS we have a response — don't wait for
                 // resetSendState() in .finally() (now delayed until the animation
-                // finishes, ~1.1s). Without clearing them early, slowTimer/hardTimer could
-                // fire "still searching"/abort right in the middle of displaying the 2
-                // "Searched"/"Analyzed" blocks for a question that's ALREADY done.
+                // finishes, ~1.1s). Without clearing it early, hardTimer could fire an
+                // abort() right in the middle of displaying the progress card for a
+                // question that's ALREADY done.
                 clearTimers();
-                showSlowHint(false);
                 if (r.ok) {
                     if (r.data && typeof r.data.answer === 'string') {
                         // Return the promise of the sequential animation so the .finally()

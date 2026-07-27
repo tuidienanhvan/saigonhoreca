@@ -1,4 +1,4 @@
-/* Pi Chatbot — footer: the text input row, cooldown/slow-hint notices, and the
+/* Pi Chatbot — footer: the text input row, cooldown notice, and the
    "Powered by Pi Digital" engine-attribution row. */
 #pi-chatbot-panel .pi-cb-footer {
     background: color-mix(in srgb, var(--cb-dark) 50%, transparent);
@@ -58,15 +58,6 @@
 #pi-chatbot-panel .pi-cb-input[readonly] {
     opacity: 0.7;
     cursor: default;
-}
-/* "Still searching" hint shown after 12s of waiting — same information as
-   #pi-cb-status for screen readers, but SIGHTED users also lack a signal for 8-40s if
-   all they see is the 3 unchanging bouncing dots. */
-#pi-chatbot-panel .pi-cb-slow-hint {
-    font-size: 11px;
-    color: var(--cb-text-muted);
-    padding: 0 18px 10px;
-    margin-top: -6px;
 }
 #pi-chatbot-panel .pi-cb-cooldown {
     font-size: 11px;
