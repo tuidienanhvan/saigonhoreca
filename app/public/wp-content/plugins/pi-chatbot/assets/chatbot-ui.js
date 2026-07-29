@@ -164,11 +164,56 @@
         el.appendChild(srcWrap);
     }
 
-    function buildMsgBubble(role, text, sources) {
+    /** 👍/👎 under a bot answer — the golden-set regression gate only measures
+     *  RETRIEVAL against a fixed query set; it has no way to know whether a real
+     *  customer was actually happy with the generated answer. `feedbackId` is an
+     *  opaque hash the server computed for this exact answer (see
+     *  Pi_Chatbot_Rest::ask()) — sent back verbatim, never parsed or trusted for
+     *  anything beyond "which answer was this". Optimistic UI: both buttons
+     *  disable immediately on click (one vote per bubble, no need to wait for the
+     *  network round trip to feel responsive), and silently no-ops on failure —
+     *  a failed vote is not something worth interrupting the customer over. */
+    function appendFeedbackButtons(el, feedbackId) {
+        if (!feedbackId || typeof window === 'undefined' || !window.PiChatbotConfig || !window.PiChatbotConfig.feedbackUrl) return;
+        var wrap = document.createElement('div');
+        wrap.className = 'pi-cb-feedback';
+
+        function vote(rating, btn, otherBtn) {
+            btn.disabled = true;
+            otherBtn.disabled = true;
+            btn.classList.add('pi-cb-feedback-btn--picked');
+            fetch(window.PiChatbotConfig.feedbackUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ feedback_id: feedbackId, rating: rating })
+            }).catch(function () {}); // fire-and-forget — a failed vote isn't worth surfacing to the customer
+        }
+
+        var up = document.createElement('button');
+        up.type = 'button';
+        up.className = 'pi-cb-feedback-btn';
+        up.setAttribute('aria-label', 'Helpful');
+        up.textContent = '👍';
+        var down = document.createElement('button');
+        down.type = 'button';
+        down.className = 'pi-cb-feedback-btn';
+        down.setAttribute('aria-label', 'Not helpful');
+        down.textContent = '👎';
+
+        up.addEventListener('click', function () { vote('up', up, down); });
+        down.addEventListener('click', function () { vote('down', down, up); });
+
+        wrap.appendChild(up);
+        wrap.appendChild(down);
+        el.appendChild(wrap);
+    }
+
+    function buildMsgBubble(role, text, sources, feedbackId) {
         var el = document.createElement('div');
         el.className = 'pi-cb-msg pi-cb-msg--' + role;
         appendLinkifiedText(el, text);
         appendSourcesBlock(el, sources);
+        if (role === 'bot') appendFeedbackButtons(el, feedbackId);
         return el;
     }
 
@@ -204,6 +249,7 @@
                 el.textContent = '';
                 appendLinkifiedText(el, text);
                 appendSourcesBlock(el, sources);
+                appendFeedbackButtons(el, opts.feedbackId);
                 if (opts.onDone) opts.onDone();
             }
         }

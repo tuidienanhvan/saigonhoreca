@@ -253,7 +253,7 @@
         if (chatHistory && chatHistory.length > 0) {
             isRestoring = true;
             chatHistory.forEach(function (msg) {
-                addMessage(msg.role, msg.text, msg.sources);
+                addMessage(msg.role, msg.text, msg.sources, msg.feedbackId);
             });
             isRestoring = false;
             // Quick-reply buttons should show whenever the customer hasn't actually
@@ -363,9 +363,9 @@
         messages.scrollTop = messages.scrollHeight;
     }
 
-    function addMessage(role, text, sources) {
+    function addMessage(role, text, sources, feedbackId) {
         if (!isRestoring && (role === 'user' || role === 'bot')) {
-            chatHistory.push({ role: role, text: text, sources: sources || [] });
+            chatHistory.push({ role: role, text: text, sources: sources || [], feedbackId: feedbackId || null });
             sessionStorage.setItem('pi_cb_history', JSON.stringify(chatHistory));
         }
 
@@ -379,7 +379,7 @@
             wrap.appendChild(avatar);
         }
 
-        var el = PiChatbotUI.buildMsgBubble(role, text, sources);
+        var el = PiChatbotUI.buildMsgBubble(role, text, sources, feedbackId);
         wrap.appendChild(el);
         messages.appendChild(wrap);
         messages.scrollTop = messages.scrollHeight;
@@ -415,13 +415,13 @@
      *  broke that pacing. Only for a FRESH answer: restoring saved history on page
      *  reload uses the instant buildMsgBubble() path — a customer reopening the panel
      *  should see their past conversation immediately, not watch it retype itself. */
-    function finishBotTurn(col, text, sources) {
+    function finishBotTurn(col, text, sources, feedbackId) {
         if (!isRestoring) {
-            chatHistory.push({ role: 'bot', text: text, sources: sources || [] });
+            chatHistory.push({ role: 'bot', text: text, sources: sources || [], feedbackId: feedbackId || null });
             sessionStorage.setItem('pi_cb_history', JSON.stringify(chatHistory));
         }
         if (isRestoring) {
-            col.appendChild(PiChatbotUI.buildMsgBubble('bot', text, sources));
+            col.appendChild(PiChatbotUI.buildMsgBubble('bot', text, sources, feedbackId));
             messages.scrollTop = messages.scrollHeight;
             return;
         }
@@ -429,6 +429,7 @@
         el.className = 'pi-cb-msg pi-cb-msg--bot';
         col.appendChild(el);
         activeTyping = PiChatbotUI.typeAnswerInto(el, text, sources, {
+            feedbackId: feedbackId,
             onTick: function () { messages.scrollTop = messages.scrollHeight; },
             onDone: function () {
                 activeTyping = null;
@@ -449,11 +450,11 @@
      *  already computed (is_price_intent()/is_contact_intent()/... run for EVERY question).
      *  `stillCurrent` is a closure that checks seq — if Reset is clicked mid-animation, it
      *  stops silently, without inserting anything into the already-cleared transcript. */
-    function revealTraceThenAnswer(trace, answerText, sources, stillCurrent) {
+    function revealTraceThenAnswer(trace, answerText, sources, feedbackId, stillCurrent) {
         setTyping(false);
         var col = beginBotTurn();
         if (!trace) {
-            finishBotTurn(col, answerText, sources);
+            finishBotTurn(col, answerText, sources, feedbackId);
             return Promise.resolve();
         }
 
@@ -483,7 +484,7 @@
 
                 if (!PiChatbotUI.needsVerifyStep(trace)) {
                     // Tier 3 — answer bubble, sharing the column/avatar with the card above.
-                    finishBotTurn(col, answerText, sources);
+                    finishBotTurn(col, answerText, sources, feedbackId);
                     return;
                 }
 
@@ -497,7 +498,7 @@
                     var v = PiChatbotUI.describeVerify(trace);
                     PiChatbotUI.finishStep(verifyStep, v.label, v.lines);
                     verifyStep.details.open = false;
-                    finishBotTurn(col, answerText, sources);
+                    finishBotTurn(col, answerText, sources, feedbackId);
                 });
             });
         });
@@ -620,7 +621,7 @@
                         // below waits for it to finish before returning the panel to idle —
                         // otherwise resetSendState() (removing readonly, re-enabling send)
                         // would run BEFORE the 2 "Searched"/"Analyzed" blocks finish animating.
-                        return revealTraceThenAnswer(r.data.trace, r.data.answer, r.data.sources, function () {
+                        return revealTraceThenAnswer(r.data.trace, r.data.answer, r.data.sources, r.data.feedback_id, function () {
                             return seq === requestSeq;
                         });
                     }

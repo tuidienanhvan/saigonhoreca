@@ -507,6 +507,39 @@ pi_check('reference block is wrapped in explicit DATA delimiters',
 pi_check('the delimiter sentence is present in the system prompt',
     strpos(Pi_Chatbot_Generator::SYSTEM_PROMPT, 'REFERENCE_DATA') !== false);
 
+// ── Pi_Chatbot_Feedback ──────────────────────────────────────────────────────
+pi_section('Pi_Chatbot_Feedback (Stage 2 — 👍/👎 signal the golden set can\'t measure)');
+
+Pi_Chatbot_Feedback::maybe_upgrade();
+$fb_table = Pi_Chatbot_Feedback::table_name();
+global $wpdb;
+
+pi_check('a bad feedback_id (not a 32-hex hash) is rejected, nothing written',
+    Pi_Chatbot_Feedback::record('not-a-real-hash', 1) === false);
+pi_check('a bad rating (not exactly 1 or -1) is rejected',
+    Pi_Chatbot_Feedback::record(str_repeat('a', 32), 0) === false);
+
+$test_fid = md5('pi_chatbot_test_feedback_' . wp_rand());
+try {
+    Pi_Chatbot_Feedback::record($test_fid, 1);
+    Pi_Chatbot_Feedback::record($test_fid, 1);
+    Pi_Chatbot_Feedback::record($test_fid, -1);
+    $stats = Pi_Chatbot_Feedback::stats(30);
+    pi_check('stats() counts up/down correctly after 3 real writes',
+        $stats['up'] >= 2 && $stats['down'] >= 1,
+        'up=' . $stats['up'] . ' down=' . $stats['down']);
+
+    $row_count = (int) $wpdb->get_var($wpdb->prepare(
+        "SELECT COUNT(*) FROM {$fb_table} WHERE feedback_id = %s", $test_fid
+    ));
+    pi_check('record() actually persists a row per vote, not just the latest',
+        $row_count === 3, "{$row_count} rows");
+} finally {
+    // This suite reads real, LIVE-site data (like suite-retrieval.php) — clean up
+    // the test rows so a repeat run stays idempotent and doesn't pollute real stats.
+    $wpdb->query($wpdb->prepare("DELETE FROM {$fb_table} WHERE feedback_id = %s", $test_fid));
+}
+
 // pi_report() prints a summary from the SHARED pi_check() static state — when
 // run standalone that's exactly this suite's own totals; when run-all.php
 // requires this file alongside others, the same static keeps accumulating, so

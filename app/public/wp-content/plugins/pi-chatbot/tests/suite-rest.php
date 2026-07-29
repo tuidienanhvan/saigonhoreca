@@ -460,6 +460,50 @@ pi_with_settings(['router_enabled' => false], function () {
         is_wp_error($res3) ? $res3->get_error_code() : 'ok');
 });
 
+// ── Stage 2 — feedback endpoint ──────────────────────────────────────────────
+pi_section('ask() attaches feedback_id, feedback() records a real vote (Stage 2)');
+
+function pi_rest_feedback($feedback_id, $rating, $ip = '10.20.20.1') {
+    $_SERVER['REMOTE_ADDR'] = $ip;
+    $req = new WP_REST_Request('POST', '/pi/v1/chatbot/feedback');
+    $req->set_param('feedback_id', $feedback_id);
+    $req->set_param('rating', $rating);
+    return Pi_Chatbot_Rest::instance()->feedback($req);
+}
+
+pi_with_settings(['router_enabled' => false], function () {
+    global $wpdb;
+    pi_reset_state();
+    pi_http_stub(function () { return pi_http_content('câu trả lời cố định cho feedback test'); });
+
+    $res = pi_rest_ask('câu hỏi cho feedback test ' . wp_rand(), '10.20.20.2');
+    $data = is_wp_error($res) ? null : $res->get_data();
+    pi_check('ask() response includes a feedback_id',
+        $data && !empty($data['feedback_id']) && preg_match('/^[a-f0-9]{32}$/', $data['feedback_id']),
+        $data ? var_export($data['feedback_id'] ?? null, true) : 'error');
+
+    if ($data && !empty($data['feedback_id'])) {
+        $fb_res = pi_rest_feedback($data['feedback_id'], 'up');
+        pi_check('feedback() with a real feedback_id succeeds', !is_wp_error($fb_res),
+            is_wp_error($fb_res) ? $fb_res->get_error_code() : 'ok');
+
+        $fb_table = Pi_Chatbot_Feedback::table_name();
+        $row = $wpdb->get_row($wpdb->prepare(
+            "SELECT rating FROM {$fb_table} WHERE feedback_id = %s ORDER BY id DESC LIMIT 1", $data['feedback_id']
+        ));
+        pi_check('the vote is genuinely persisted with rating=1 for "up"',
+            $row && (int) $row->rating === 1, $row ? "rating={$row->rating}" : 'no row written');
+
+        // Clean up — this suite writes to the real live table (like other REST tests
+        // that touch the log), same idempotency discipline as suite-pure.php's version.
+        $wpdb->query($wpdb->prepare("DELETE FROM {$fb_table} WHERE feedback_id = %s", $data['feedback_id']));
+    }
+
+    $bad_res = pi_rest_feedback('not-a-real-hash', 'up', '10.20.20.3');
+    pi_check('an invalid feedback_id is rejected, not silently accepted',
+        is_wp_error($bad_res) && $bad_res->get_error_code() === 'pi_chatbot_bad_feedback');
+});
+
 pi_http_unstub();
 pi_reset_state();
 

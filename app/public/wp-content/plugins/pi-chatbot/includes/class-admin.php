@@ -295,6 +295,7 @@ class Pi_Chatbot_Admin {
     private function render_learning_section() {
         $stats = Pi_Chatbot_Log::stats();
         $top = Pi_Chatbot_Log::top_unanswered(15, 30);
+        $feedback = Pi_Chatbot_Feedback::stats(30);
         ?>
         <div class="pi-card">
             <div class="pi-card__header">
@@ -320,6 +321,19 @@ class Pi_Chatbot_Admin {
                 <div>
                     <div class="pi-stat__value"><?php echo esc_html($stats['last_24h']); ?></div>
                     <div class="pi-stat__label"><?php esc_html_e('Last 24h', 'pi-chatbot'); ?></div>
+                </div>
+                <div>
+                    <div class="pi-stat__value">
+                        <?php echo $feedback['total'] > 0
+                            ? esc_html(round(100 * $feedback['up'] / $feedback['total'])) . '%'
+                            : esc_html__('—', 'pi-chatbot'); ?>
+                    </div>
+                    <div class="pi-stat__label">
+                        <?php echo esc_html(sprintf(
+                            /* translators: 1: 👍 count, 2: 👎 count, over the last 30 days */
+                            __('Helpful (👍 %1$d / 👎 %2$d, 30d)', 'pi-chatbot'), $feedback['up'], $feedback['down']
+                        )); ?>
+                    </div>
                 </div>
             </div>
             <?php if (empty($top)) : ?>

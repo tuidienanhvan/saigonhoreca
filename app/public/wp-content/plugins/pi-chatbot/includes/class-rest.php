@@ -46,6 +46,23 @@ class Pi_Chatbot_Rest {
                 ],
             ],
         ]);
+
+        register_rest_route('pi/v1', '/chatbot/feedback', [
+            'methods'             => 'POST',
+            'callback'            => [$this, 'feedback'],
+            'permission_callback' => '__return_true',
+            'args'                => [
+                'feedback_id' => [
+                    'required' => true,
+                    'type'     => 'string',
+                ],
+                'rating' => [
+                    'required' => true,
+                    'type'     => 'string',
+                    'enum'     => ['up', 'down'],
+                ],
+            ],
+        ]);
     }
 
     public function ask($req) {
@@ -369,6 +386,13 @@ class Pi_Chatbot_Rest {
             'budget_exhausted'  => $budget_exhausted,
         ];
 
+        // Opaque id the widget echoes back on a 👍/👎 vote (see feedback()) — hash
+        // of the normalized question + the exact answer text served, so 2 different
+        // answers to the same repeated question (e.g. after a reindex or budget
+        // degrade) each get their own id, and the id itself reveals nothing about
+        // the content to anyone who only has it (not reversible back to the text).
+        $result['feedback_id'] = md5($normalized . '|' . $result['answer']);
+
         // A budget-degraded answer is cached much more briefly than a real one —
         // it's an honest "here's what we found" reply, not a wrong one, but the
         // budget can free up again well within an hour (a key's own quota window
@@ -376,6 +400,47 @@ class Pi_Chatbot_Rest {
         // later should get the real generated answer rather than a stale degrade.
         set_transient($cache_key, $result, $budget_exhausted ? 5 * MINUTE_IN_SECONDS : HOUR_IN_SECONDS);
         return rest_ensure_response($result);
+    }
+
+    /**
+     * POST /pi/v1/chatbot/feedback — 👍/👎 on one answer, identified by the
+     * feedback_id ask() attached to its response. No rate limiting shared with
+     * ask() (a vote costs zero LLM calls, zero DB writes beyond 1 INSERT — an
+     * entirely different resource-cost class from a real question) — a small
+     * dedicated per-minute cap instead, generous enough that a real visitor
+     * clicking a few 👍/👎 buttons never trips it, tight enough to stop a script
+     * from flooding the table.
+     */
+    const FEEDBACK_RATE_LIMIT = 30; // votes / minute / IP
+
+    public function feedback($req) {
+        global $wpdb;
+        $ip = $this->get_client_ip();
+        $bucket = (int) floor(time() / MINUTE_IN_SECONDS);
+        $key = 'pi_chatbot_fbrl_' . md5($ip) . '_' . $bucket;
+        $value_option = '_transient_' . $key;
+        $timeout_option = '_transient_timeout_' . $key;
+
+        $count = (int) $wpdb->get_var($wpdb->prepare(
+            "SELECT option_value FROM {$wpdb->options} WHERE option_name = %s", $value_option
+        ));
+        if ($count >= self::FEEDBACK_RATE_LIMIT) {
+            return new WP_Error('pi_chatbot_rate_limited', 'Too many votes — please wait a minute.', ['status' => 429]);
+        }
+        $wpdb->query($wpdb->prepare(
+            "INSERT INTO {$wpdb->options} (option_name, option_value, autoload)
+             VALUES (%s, '1', 'no')
+             ON DUPLICATE KEY UPDATE option_value = option_value + 1",
+            $value_option
+        ));
+        add_option($timeout_option, time() + (2 * MINUTE_IN_SECONDS), '', false);
+
+        $rating = $req->get_param('rating') === 'up' ? 1 : -1;
+        $ok = Pi_Chatbot_Feedback::record($req->get_param('feedback_id'), $rating);
+        if (!$ok) {
+            return new WP_Error('pi_chatbot_bad_feedback', 'Invalid feedback id.', ['status' => 400]);
+        }
+        return rest_ensure_response(['ok' => true]);
     }
 
     /**

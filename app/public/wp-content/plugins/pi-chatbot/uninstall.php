@@ -42,6 +42,10 @@ function pi_chatbot_uninstall_cleanup() {
     $log_table = $wpdb->prefix . 'pi_chatbot_log';
     $wpdb->query("DROP TABLE IF EXISTS {$log_table}");
 
+    $feedback_table = $wpdb->prefix . 'pi_chatbot_feedback';
+    $wpdb->query("DROP TABLE IF EXISTS {$feedback_table}");
+    delete_option('pi_chatbot_feedback_db_version');
+
     // Semantic embeddings (see class-embeddings.php) — a separate table precisely so
     // it survives reindex swaps, which also means nothing else would ever drop it.
     $vectors_table = $wpdb->prefix . 'pi_chatbot_vectors';
