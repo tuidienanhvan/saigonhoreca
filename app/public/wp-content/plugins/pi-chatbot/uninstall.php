@@ -46,6 +46,12 @@ function pi_chatbot_uninstall_cleanup() {
     $wpdb->query("DROP TABLE IF EXISTS {$feedback_table}");
     delete_option('pi_chatbot_feedback_db_version');
 
+    // Leads carry PII (name/phone) — dropped on uninstall same as every other
+    // plugin-owned table, not kept around "just in case".
+    $leads_table = $wpdb->prefix . 'pi_chatbot_leads';
+    $wpdb->query("DROP TABLE IF EXISTS {$leads_table}");
+    delete_option('pi_chatbot_leads_db_version');
+
     // Semantic embeddings (see class-embeddings.php) — a separate table precisely so
     // it survives reindex swaps, which also means nothing else would ever drop it.
     $vectors_table = $wpdb->prefix . 'pi_chatbot_vectors';

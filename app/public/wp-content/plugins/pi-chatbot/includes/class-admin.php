@@ -205,6 +205,8 @@ class Pi_Chatbot_Admin {
             <?php $this->render_accuracy_section($settings); ?>
 
             <?php $this->render_learning_section(); ?>
+
+            <?php $this->render_leads_section(); ?>
         </div>
         <?php
     }
@@ -378,6 +380,64 @@ class Pi_Chatbot_Admin {
                                 <td><?php echo esc_html($row->question_norm); ?></td>
                                 <td class="num"><?php echo esc_html($row->cnt); ?></td>
                                 <td><?php echo esc_html($row->last_seen); ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+            <?php endif; ?>
+            </div>
+        </div>
+        <?php
+    }
+
+    /**
+     * Leads left in chat via the "leave your phone number" form (GLM 5.2
+     * report recommendation C — lead capture). Contains PII (name/phone), so
+     * unlike top_unanswered() this is NOT rendered as an inline table on a
+     * page other roles might see over a shoulder — it's still just the
+     * existing wp-admin page though, gated by the same manage_options
+     * capability as the rest of this screen.
+     */
+    private function render_leads_section() {
+        $leads = Pi_Chatbot_Lead::recent(20);
+        $total = Pi_Chatbot_Lead::total_count();
+        ?>
+        <div class="pi-card">
+            <div class="pi-card__header">
+                <span class="pi-card__eyebrow">06 — Leads</span>
+                <h2 class="pi-card__title"><?php esc_html_e('Callback requests', 'pi-chatbot'); ?></h2>
+                <p class="pi-card__desc">
+                    <?php esc_html_e('Name/phone a visitor left in the chat widget for a callback. No Zalo handoff yet — call or message these numbers directly.', 'pi-chatbot'); ?>
+                </p>
+            </div>
+            <div class="pi-card__body pi-card__body--tight">
+            <div class="pi-grid--stats">
+                <div>
+                    <div class="pi-stat__value"><?php echo esc_html($total); ?></div>
+                    <div class="pi-stat__label"><?php esc_html_e('Total leads', 'pi-chatbot'); ?></div>
+                </div>
+            </div>
+            <?php if (empty($leads)) : ?>
+                <p><em><?php esc_html_e('No callback requests yet.', 'pi-chatbot'); ?></em></p>
+            <?php else : ?>
+                <div class="pi-table-wrap">
+                    <table class="pi-table">
+                        <thead>
+                            <tr>
+                                <th><?php esc_html_e('Name', 'pi-chatbot'); ?></th>
+                                <th><?php esc_html_e('Phone', 'pi-chatbot'); ?></th>
+                                <th><?php esc_html_e('Last question', 'pi-chatbot'); ?></th>
+                                <th style="width:170px;"><?php esc_html_e('Received', 'pi-chatbot'); ?></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php foreach ($leads as $row) : ?>
+                            <tr>
+                                <td><?php echo esc_html($row->name !== '' ? $row->name : '—'); ?></td>
+                                <td><?php echo esc_html($row->phone); ?></td>
+                                <td><?php echo esc_html($row->question !== '' ? $row->question : '—'); ?></td>
+                                <td><?php echo esc_html($row->created_at); ?></td>
                             </tr>
                         <?php endforeach; ?>
                         </tbody>

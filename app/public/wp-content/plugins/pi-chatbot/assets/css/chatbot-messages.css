@@ -158,3 +158,66 @@
     opacity: 1;
     border-color: var(--cb-accent);
 }
+
+/* Lead-capture form — appended after a 'price' intent answer (see appendLeadForm()
+   in chatbot-ui.js). Same token palette as everything else in the widget, boxed
+   in its own soft panel so it reads as a distinct action, not more prose. */
+#pi-chatbot-panel .pi-cb-lead {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    background: color-mix(in srgb, var(--cb-accent) 6%, transparent);
+    border: 1px solid var(--cb-accent-ring);
+}
+#pi-chatbot-panel .pi-cb-lead-title {
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--cb-text);
+    margin-bottom: 8px;
+}
+#pi-chatbot-panel .pi-cb-lead-row {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+#pi-chatbot-panel .pi-cb-lead-input {
+    flex: 1 1 120px;
+    min-width: 0;
+    padding: 7px 10px;
+    border-radius: 8px;
+    border: 1px solid var(--cb-border);
+    background: var(--cb-bg, transparent);
+    color: var(--cb-text);
+    font-size: 13px;
+}
+#pi-chatbot-panel .pi-cb-lead-input:focus {
+    outline: none;
+    border-color: var(--cb-accent);
+}
+#pi-chatbot-panel .pi-cb-lead-msg {
+    font-size: 12px;
+    color: var(--cb-text-muted);
+    margin-top: 6px;
+    min-height: 1.2em;
+}
+#pi-chatbot-panel .pi-cb-lead-submit {
+    margin-top: 8px;
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: none;
+    background: linear-gradient(135deg, var(--cb-accent), var(--cb-accent-hover));
+    color: var(--cb-accent-text);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+}
+#pi-chatbot-panel .pi-cb-lead-submit:disabled {
+    opacity: 0.6;
+    cursor: default;
+}
+#pi-chatbot-panel .pi-cb-lead-done {
+    font-size: 13px;
+    color: var(--cb-accent);
+    font-weight: 500;
+}

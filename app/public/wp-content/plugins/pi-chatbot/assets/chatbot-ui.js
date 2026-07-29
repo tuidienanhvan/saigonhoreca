@@ -208,6 +208,113 @@
         el.appendChild(wrap);
     }
 
+    /**
+     * Inline "leave your phone number" lead-capture form (GLM 5.2 report
+     * recommendation C) — appended after a bot answer whose intent was
+     * 'price' (see revealTraceThenAnswer()'s call site), the exact moment a
+     * visitor has already shown buying intent. A dedicated quick-reply button
+     * ("Request a callback") can also open it at any time via the same
+     * function, passing lastQuestion = the customer's own last message so
+     * staff calling back have context.
+     *
+     * No Zalo push — see class-lead.php's docblock for why. Submits to
+     * PiChatbotConfig.leadUrl and swaps the form for a plain confirmation
+     * line on success; on failure (bad phone, rate-limited, network) shows
+     * the server's own message inline rather than losing the customer's
+     * typed input.
+     */
+    function appendLeadForm(el, lastQuestion) {
+        if (typeof window === 'undefined' || !window.PiChatbotConfig || !window.PiChatbotConfig.leadUrl) return;
+
+        var wrap = document.createElement('form');
+        wrap.className = 'pi-cb-lead';
+        wrap.noValidate = true;
+
+        var title = document.createElement('div');
+        title.className = 'pi-cb-lead-title';
+        title.textContent = 'Leave your phone number and we\'ll call you back:';
+        wrap.appendChild(title);
+
+        var row = document.createElement('div');
+        row.className = 'pi-cb-lead-row';
+
+        var nameInput = document.createElement('input');
+        nameInput.type = 'text';
+        nameInput.placeholder = 'Name (optional)';
+        nameInput.className = 'pi-cb-lead-input';
+        nameInput.maxLength = 100;
+        nameInput.setAttribute('aria-label', 'Your name');
+        row.appendChild(nameInput);
+
+        var phoneInput = document.createElement('input');
+        phoneInput.type = 'tel';
+        phoneInput.placeholder = 'Phone number';
+        phoneInput.className = 'pi-cb-lead-input';
+        phoneInput.maxLength = 30;
+        phoneInput.required = true;
+        phoneInput.setAttribute('aria-label', 'Your phone number');
+        row.appendChild(phoneInput);
+
+        wrap.appendChild(row);
+
+        var msg = document.createElement('div');
+        msg.className = 'pi-cb-lead-msg';
+        msg.setAttribute('aria-live', 'polite');
+        wrap.appendChild(msg);
+
+        var submit = document.createElement('button');
+        submit.type = 'submit';
+        submit.className = 'pi-cb-lead-submit';
+        submit.textContent = 'Request a callback';
+        wrap.appendChild(submit);
+
+        wrap.addEventListener('submit', function (e) {
+            e.preventDefault();
+            var phone = phoneInput.value.trim();
+            if (!phone) {
+                msg.textContent = 'Please enter a phone number.';
+                return;
+            }
+            submit.disabled = true;
+            nameInput.disabled = true;
+            phoneInput.disabled = true;
+            msg.textContent = 'Sending…';
+
+            fetch(window.PiChatbotConfig.leadUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name: nameInput.value.trim(),
+                    phone: phone,
+                    question: lastQuestion || ''
+                })
+            })
+                .then(function (res) { return res.json().then(function (data) { return { ok: res.ok, data: data }; }); })
+                .then(function (r) {
+                    if (r.ok) {
+                        wrap.innerHTML = '';
+                        var done = document.createElement('div');
+                        done.className = 'pi-cb-lead-done';
+                        done.textContent = 'Thanks! We\'ve received your number and will call you back soon.';
+                        wrap.appendChild(done);
+                        return;
+                    }
+                    msg.textContent = (r.data && r.data.message) ? r.data.message : 'Something went wrong, please try again.';
+                    submit.disabled = false;
+                    nameInput.disabled = false;
+                    phoneInput.disabled = false;
+                })
+                .catch(function () {
+                    msg.textContent = 'Could not connect — please try again.';
+                    submit.disabled = false;
+                    nameInput.disabled = false;
+                    phoneInput.disabled = false;
+                });
+        });
+
+        el.appendChild(wrap);
+    }
+
     function buildMsgBubble(role, text, sources, feedbackId) {
         var el = document.createElement('div');
         el.className = 'pi-cb-msg pi-cb-msg--' + role;
@@ -250,6 +357,7 @@
                 appendLinkifiedText(el, text);
                 appendSourcesBlock(el, sources);
                 appendFeedbackButtons(el, opts.feedbackId);
+                if (opts.showLeadForm) appendLeadForm(el, opts.lastQuestion);
                 if (opts.onDone) opts.onDone();
             }
         }
@@ -488,6 +596,7 @@
         describeThink: describeThink,
         describeSearch: describeSearch,
         needsVerifyStep: needsVerifyStep,
-        describeVerify: describeVerify
+        describeVerify: describeVerify,
+        appendLeadForm: appendLeadForm
     };
 })();

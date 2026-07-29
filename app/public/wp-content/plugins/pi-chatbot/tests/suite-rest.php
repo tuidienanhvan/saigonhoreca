@@ -504,6 +504,64 @@ pi_with_settings(['router_enabled' => false], function () {
         is_wp_error($bad_res) && $bad_res->get_error_code() === 'pi_chatbot_bad_feedback');
 });
 
+// ── Stage 4 — lead-capture endpoint ──────────────────────────────────────────
+pi_section('lead() records a callback request, rejects a bad phone (Stage 4)');
+
+function pi_rest_lead($name, $phone, $question = '', $ip = '10.20.20.5') {
+    $_SERVER['REMOTE_ADDR'] = $ip;
+    $req = new WP_REST_Request('POST', '/pi/v1/chatbot/lead');
+    $req->set_param('name', $name);
+    $req->set_param('phone', $phone);
+    $req->set_param('question', $question);
+    return Pi_Chatbot_Rest::instance()->lead($req);
+}
+
+$lead_marker = 'pi_chatbot_test_rest_lead_' . wp_rand();
+$lead_phone = '09' . wp_rand(10000000, 99999999);
+try {
+    $ok_res = pi_rest_lead('Test Customer', $lead_phone, $lead_marker);
+    pi_check('a valid name+phone+question is accepted', !is_wp_error($ok_res),
+        is_wp_error($ok_res) ? $ok_res->get_error_code() : 'ok');
+
+    global $wpdb;
+    $lead_table = Pi_Chatbot_Lead::table_name();
+    $row = $wpdb->get_row($wpdb->prepare(
+        "SELECT name, phone, question FROM {$lead_table} WHERE question = %s", $lead_marker
+    ));
+    pi_check('the lead is genuinely persisted with the exact phone/question submitted',
+        $row && $row->phone === $lead_phone && $row->question === $lead_marker,
+        $row ? "phone={$row->phone}" : 'no row');
+
+    $bad_res = pi_rest_lead('', 'abc', '', '10.20.20.6');
+    pi_check('an unparseable phone is rejected, not silently accepted',
+        is_wp_error($bad_res) && $bad_res->get_error_code() === 'pi_chatbot_bad_lead');
+
+    // Rate limit — same per-minute-bucket pattern as feedback(), proven the same
+    // way: hammer past LEAD_RATE_LIMIT from one IP and confirm the NEXT call is
+    // rejected, not silently accepted. Every call in the loop shares the same
+    // $rl_marker so the finally block can clean up every row it wrote by a
+    // single query, not just the last one.
+    $rl_ip = '10.20.20.7';
+    $rl_marker = 'pi_chatbot_test_rest_lead_rl_' . wp_rand();
+    for ($i = 0; $i < Pi_Chatbot_Rest::LEAD_RATE_LIMIT; $i++) {
+        pi_rest_lead('', '09' . wp_rand(10000000, 99999999), $rl_marker, $rl_ip);
+    }
+    $rl_res = pi_rest_lead('', '09' . wp_rand(10000000, 99999999), $rl_marker, $rl_ip);
+    pi_check('a 6th lead submission from the same IP within a minute is rate-limited',
+        is_wp_error($rl_res) && $rl_res->get_error_code() === 'pi_chatbot_rate_limited');
+} finally {
+    $wpdb->query($wpdb->prepare("DELETE FROM {$lead_table} WHERE question = %s", $lead_marker));
+    if (isset($rl_marker)) {
+        $wpdb->query($wpdb->prepare("DELETE FROM {$lead_table} WHERE question = %s", $rl_marker));
+    }
+    if (isset($rl_ip)) {
+        $wpdb->query($wpdb->prepare(
+            "DELETE FROM {$wpdb->options} WHERE option_name LIKE %s",
+            $wpdb->esc_like('_transient_pi_chatbot_leadrl_' . md5($rl_ip)) . '%'
+        ));
+    }
+}
+
 pi_http_unstub();
 pi_reset_state();
 

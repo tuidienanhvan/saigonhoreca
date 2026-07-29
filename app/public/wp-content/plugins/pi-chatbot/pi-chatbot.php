@@ -24,6 +24,7 @@ define('PI_CHATBOT_OPTION', 'pi_chatbot_settings');
 require_once PI_CHATBOT_DIR . 'includes/class-indexer.php';
 require_once PI_CHATBOT_DIR . 'includes/class-log.php';
 require_once PI_CHATBOT_DIR . 'includes/class-feedback.php';
+require_once PI_CHATBOT_DIR . 'includes/class-lead.php';
 require_once PI_CHATBOT_DIR . 'includes/class-entities.php';
 require_once PI_CHATBOT_DIR . 'includes/class-retriever.php';
 require_once PI_CHATBOT_DIR . 'includes/class-budget.php';
@@ -40,6 +41,7 @@ require_once PI_CHATBOT_DIR . 'includes/class-admin.php';
 register_activation_hook(__FILE__, ['Pi_Chatbot_Indexer', 'on_activate']);
 register_activation_hook(__FILE__, ['Pi_Chatbot_Log', 'on_activate']);
 register_activation_hook(__FILE__, ['Pi_Chatbot_Feedback', 'on_activate']);
+register_activation_hook(__FILE__, ['Pi_Chatbot_Lead', 'on_activate']);
 
 add_action('plugins_loaded', 'pi_chatbot_bootstrap');
 function pi_chatbot_bootstrap() {
@@ -47,6 +49,7 @@ function pi_chatbot_bootstrap() {
     Pi_Chatbot_Indexer::maybe_upgrade();
     Pi_Chatbot_Log::maybe_upgrade();
     Pi_Chatbot_Feedback::maybe_upgrade();
+    Pi_Chatbot_Lead::maybe_upgrade();
     Pi_Chatbot_Indexer::instance();
     Pi_Chatbot_Rest::instance();
     Pi_Chatbot_Admin::instance();
@@ -202,6 +205,7 @@ function pi_chatbot_enqueue_frontend() {
     wp_localize_script('pi-chatbot', 'PiChatbotConfig', [
         'restUrl'     => esc_url_raw(rest_url('pi/v1/chatbot/ask')),
         'feedbackUrl' => esc_url_raw(rest_url('pi/v1/chatbot/feedback')),
+        'leadUrl'     => esc_url_raw(rest_url('pi/v1/chatbot/lead')),
         'nonce'     => wp_create_nonce('wp_rest'),
         // Same source as Pi_Chatbot_Rest::MAX_MESSAGE_LENGTH — previously "500" was a
         // hardcoded number in both PHP and the maxlength attribute in chatbot.js,

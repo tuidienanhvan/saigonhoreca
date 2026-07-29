@@ -63,6 +63,36 @@ class Pi_Chatbot_Rest {
                 ],
             ],
         ]);
+
+        register_rest_route('pi/v1', '/chatbot/lead', [
+            'methods'             => 'POST',
+            'callback'            => [$this, 'lead'],
+            'permission_callback' => '__return_true',
+            'args'                => [
+                'name' => [
+                    'required'          => false,
+                    'type'              => 'string',
+                    'default'           => '',
+                    'sanitize_callback' => 'sanitize_text_field',
+                ],
+                'phone' => [
+                    'required'          => true,
+                    'type'              => 'string',
+                    'sanitize_callback' => 'sanitize_text_field',
+                ],
+                // The customer's own last question, sent by the widget for
+                // context (so staff calling back know what was being asked) —
+                // same trust level as 'message' on /ask: client-supplied text,
+                // capped/sanitized by Pi_Chatbot_Lead::record(), never trusted
+                // beyond being a string to store and display in wp-admin.
+                'question' => [
+                    'required'          => false,
+                    'type'              => 'string',
+                    'default'           => '',
+                    'sanitize_callback' => 'sanitize_text_field',
+                ],
+            ],
+        ]);
     }
 
     public function ask($req) {
@@ -455,6 +485,73 @@ class Pi_Chatbot_Rest {
             return new WP_Error('pi_chatbot_bad_feedback', 'Invalid feedback id.', ['status' => 400]);
         }
         return rest_ensure_response(['ok' => true]);
+    }
+
+    /**
+     * POST /pi/v1/chatbot/lead — "leave your phone number, we'll call you
+     * back" (lead capture, GLM 5.2 report recommendation C). A genuine
+     * customer submits this once or twice per session at most, so the rate
+     * limit here is a spam guard, not a real capacity constraint — same
+     * pattern/generosity as FEEDBACK_RATE_LIMIT.
+     *
+     * Notifies the site admin by email on success (fire-and-forget — wp_mail()
+     * failing must never turn a captured lead into an error response; the
+     * lead is already safely in the DB and visible on the admin page either
+     * way). No Zalo push here — see class-lead.php's docblock for why.
+     */
+    const LEAD_RATE_LIMIT = 5; // submissions / minute / IP
+
+    public function lead($req) {
+        global $wpdb;
+        $ip = $this->get_client_ip();
+        $bucket = (int) floor(time() / MINUTE_IN_SECONDS);
+        $key = 'pi_chatbot_leadrl_' . md5($ip) . '_' . $bucket;
+        $value_option = '_transient_' . $key;
+        $timeout_option = '_transient_timeout_' . $key;
+
+        $count = (int) $wpdb->get_var($wpdb->prepare(
+            "SELECT option_value FROM {$wpdb->options} WHERE option_name = %s", $value_option
+        ));
+        if ($count >= self::LEAD_RATE_LIMIT) {
+            return new WP_Error('pi_chatbot_rate_limited', 'Too many requests — please wait a minute.', ['status' => 429]);
+        }
+        $wpdb->query($wpdb->prepare(
+            "INSERT INTO {$wpdb->options} (option_name, option_value, autoload)
+             VALUES (%s, '1', 'no')
+             ON DUPLICATE KEY UPDATE option_value = option_value + 1",
+            $value_option
+        ));
+        add_option($timeout_option, time() + (2 * MINUTE_IN_SECONDS), '', false);
+
+        $lead_id = Pi_Chatbot_Lead::record(
+            $req->get_param('name'),
+            $req->get_param('phone'),
+            $req->get_param('question')
+        );
+        if (!$lead_id) {
+            return new WP_Error('pi_chatbot_bad_lead', 'Please enter a valid phone number.', ['status' => 400]);
+        }
+
+        self::notify_admin_of_lead($req->get_param('name'), $req->get_param('phone'), $req->get_param('question'));
+
+        return rest_ensure_response(['ok' => true]);
+    }
+
+    /** Best-effort email notification — wrapped so a mail-server failure never
+     *  turns an already-recorded lead into a 500 for the customer. */
+    private static function notify_admin_of_lead($name, $phone, $question) {
+        $to = get_option('admin_email');
+        if (!$to) return;
+        $subject = '[Saigon Horeca] New chat lead: ' . ($phone ?: 'no phone');
+        $body = "A visitor left their contact info in the chatbot widget.\n\n"
+            . 'Name: ' . ($name ?: '(not given)') . "\n"
+            . 'Phone: ' . $phone . "\n"
+            . 'Last question: ' . ($question ?: '(none)') . "\n";
+        try {
+            wp_mail($to, $subject, $body);
+        } catch (\Throwable $e) {
+            error_log('[pi-chatbot] lead notification email failed: ' . $e->getMessage());
+        }
     }
 
     /**

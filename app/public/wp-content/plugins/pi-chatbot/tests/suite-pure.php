@@ -540,6 +540,59 @@ try {
     $wpdb->query($wpdb->prepare("DELETE FROM {$fb_table} WHERE feedback_id = %s", $test_fid));
 }
 
+pi_section('Pi_Chatbot_Lead (Stage 4 — "leave your phone number" callback capture)');
+
+Pi_Chatbot_Lead::maybe_upgrade();
+$lead_table = Pi_Chatbot_Lead::table_name();
+
+pi_check('an empty phone is rejected, nothing written',
+    Pi_Chatbot_Lead::record('Nguyen Van A', '', 'giá bao nhiêu') === false);
+pi_check('a too-short phone (garbage, not a real number) is rejected',
+    Pi_Chatbot_Lead::record('', '123', '') === false);
+pi_check('a too-long "phone" (obviously not a real number) is rejected',
+    Pi_Chatbot_Lead::record('', str_repeat('9', 20), '') === false);
+
+$test_marker = 'pi_chatbot_test_lead_' . wp_rand();
+$test_phone = '09' . wp_rand(10000000, 99999999); // 10 real-shaped VN digits
+try {
+    $lead_id = Pi_Chatbot_Lead::record('Test Customer', $test_phone, $test_marker);
+    pi_check('record() with a valid phone returns a real positive insert id',
+        is_int($lead_id) && $lead_id > 0, var_export($lead_id, true));
+
+    global $wpdb;
+    $row = $wpdb->get_row($wpdb->prepare(
+        "SELECT name, phone, question FROM {$lead_table} WHERE id = %d", $lead_id
+    ));
+    pi_check('the row persists the exact name/phone/question just submitted',
+        $row && $row->name === 'Test Customer' && $row->phone === $test_phone && $row->question === $test_marker,
+        $row ? "name={$row->name} phone={$row->phone}" : 'no row');
+
+    // Phone with formatting punctuation (spaces/dashes/parens, as a customer would
+    // actually type it) must still normalize and record — only garbage length is
+    // rejected, not real-world formatting.
+    $formatted_phone = '0' . substr($test_phone, 2, 3) . ' ' . substr($test_phone, 5, 3) . ' ' . substr($test_phone, 8);
+    $lead_id2 = Pi_Chatbot_Lead::record('', $formatted_phone, '');
+    pi_check('a phone with spaces/formatting still normalizes and records',
+        is_int($lead_id2) && $lead_id2 > 0, var_export($lead_id2, true));
+
+    $total_before = Pi_Chatbot_Lead::total_count();
+    pi_check('total_count() reflects the rows just inserted',
+        $total_before >= 2, "total={$total_before}");
+
+    $recent = Pi_Chatbot_Lead::recent(50);
+    $found = false;
+    foreach ($recent as $r) {
+        if ($r->question === $test_marker) { $found = true; break; }
+    }
+    pi_check('recent() surfaces the row just inserted', $found);
+} finally {
+    // Same live-data cleanup discipline as the Feedback section above.
+    $wpdb->query($wpdb->prepare("DELETE FROM {$lead_table} WHERE question = %s OR phone = %s", $test_marker, $test_phone));
+    if (isset($lead_id2) && $lead_id2) {
+        $wpdb->query($wpdb->prepare("DELETE FROM {$lead_table} WHERE id = %d", $lead_id2));
+    }
+}
+
 // pi_report() prints a summary from the SHARED pi_check() static state — when
 // run standalone that's exactly this suite's own totals; when run-all.php
 // requires this file alongside others, the same static keeps accumulating, so
