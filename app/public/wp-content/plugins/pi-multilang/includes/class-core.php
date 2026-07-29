@@ -128,8 +128,21 @@ class Pi_Multilang_Core {
         return apply_filters('pi_multilang_language_config', $config);
     }
 
+    /**
+     * $_SERVER['HTTP_HOST'] only exists during a real HTTP request. WP-CLI,
+     * cron jobs, and background indexers (e.g. pi-chatbot's) run with no
+     * HTTP_HOST at all, which used to make this return '' and silently fall
+     * through to the production host config even on a local install — the
+     * exact bug that made permalinks built during indexing point at
+     * saigonhoreca.vn/.com while browsing saigonhoreca.local. Fall back to
+     * the host WP itself was configured with (home_url()) whenever there is
+     * no live request to read a host from.
+     */
     private static function current_host() {
         $host = isset($_SERVER['HTTP_HOST']) ? strtolower((string) $_SERVER['HTTP_HOST']) : '';
+        if ($host === '') {
+            $host = strtolower((string) wp_parse_url(home_url(), PHP_URL_HOST));
+        }
         return preg_replace('/:\d+$/', '', $host); // strip a port if present
     }
 
@@ -169,11 +182,25 @@ class Pi_Multilang_Core {
         define('PI_CURRENT_LANGUAGE', $lang);
     }
 
-    /** Base URL (scheme://host/path_prefix/) for a given language code. */
-    public static function get_language_base_url($lang) {
+    /**
+     * Base URL (scheme://host/path_prefix/) for a given language code.
+     *
+     * @param string|null $scheme Preferred scheme ('http'|'https'). Pass the
+     *   ORIGINAL url's own scheme when one is known (see rewrite_url_for_language())
+     *   — is_ssl() only reflects the CURRENT request, which is wrong in every
+     *   context that isn't a live HTTPS page load (WP-CLI reindex, cron, an
+     *   eval-file test run: none of these set $_SERVER['HTTPS'], so is_ssl()
+     *   silently returns false there even on an all-https site). Concretely,
+     *   this rewrote every product permalink to http:// during
+     *   Pi_Chatbot_Indexer::reindex_all() (a CLI-run process), which then
+     *   failed the chatbot widget's same-origin check for linkifying URLs in
+     *   an answer (scheme is part of an origin) and showed the customer a raw,
+     *   unclickable URL. Falls back to is_ssl() only when no scheme is known.
+     */
+    public static function get_language_base_url($lang, $scheme = null) {
         $config = self::get_language_config();
         if (empty($config[$lang])) return home_url('/');
-        $scheme = is_ssl() ? 'https' : 'http';
+        $scheme = ($scheme === 'http' || $scheme === 'https') ? $scheme : (is_ssl() ? 'https' : 'http');
         $url = $scheme . '://' . $config[$lang]['host'] . '/';
         $prefix = trim($config[$lang]['path_prefix'], '/');
         if ($prefix !== '') $url .= $prefix . '/';
@@ -206,7 +233,10 @@ class Pi_Multilang_Core {
             if (strpos($path, $prefix . '/') === 0) { $path = substr($path, strlen($prefix) + 1); break; }
         }
 
-        $base = rtrim(self::get_language_base_url($lang), '/');
+        // The incoming $url was already built by WP itself (get_permalink() /
+        // home_url()), which correctly reflects the site's real scheme — reuse
+        // it instead of re-deriving via is_ssl() (see get_language_base_url()).
+        $base = rtrim(self::get_language_base_url($lang, $parsed['scheme'] ?? null), '/');
         $query = !empty($parsed['query']) ? '?' . $parsed['query'] : '';
         return $base . ($path !== '' ? '/' . $path : '') . '/' . $query;
     }
