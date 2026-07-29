@@ -139,6 +139,12 @@ class Pi_Chatbot_Rest {
         // stage is responsible when the max-accuracy path feels slow.
         $steps = [];
         $started = microtime(true);
+        // Independent of $started/$mark's rolling per-STEP clock above — this one
+        // measures the WHOLE request, for Log::record_duration() (see class-log.php,
+        // powers the admin latency stats). Captured here (post-cache-lookup,
+        // post-rate-limit) rather than at the very top of ask(), so it reflects
+        // real backend work, not queueing before PHP even started processing.
+        $request_started = microtime(true);
         $mark = function ($name) use (&$steps, &$started) {
             $now = microtime(true);
             $steps[] = ['step' => $name, 'ms' => (int) round(($now - $started) * 1000)];
@@ -312,7 +318,7 @@ class Pi_Chatbot_Rest {
         // without adding new signal). Logged before calling Generator so we
         // still capture "was context found" even if the LLM call fails —
         // that's an independent signal from whether generation succeeded.
-        Pi_Chatbot_Log::record($normalized, !empty($context), count($context), $router_used);
+        $log_id = Pi_Chatbot_Log::record($normalized, !empty($context), count($context), $router_used);
 
         // Budget already exhausted -> no LLM call at all here either (the router
         // was already skipped above). A retrieval-only reply from real catalog
@@ -392,6 +398,14 @@ class Pi_Chatbot_Rest {
         // degrade) each get their own id, and the id itself reveals nothing about
         // the content to anyone who only has it (not reversible back to the text).
         $result['feedback_id'] = md5($normalized . '|' . $result['answer']);
+
+        // Fills in duration_ms on the log row record() wrote earlier — only reached
+        // for a request that actually produced an answer (any WP_Error return above
+        // exits before this line), which is exactly the "real completed answer"
+        // population latency stats should reflect (see stats_latency()'s docblock).
+        if ($log_id) {
+            Pi_Chatbot_Log::record_duration($log_id, (int) round((microtime(true) - $request_started) * 1000));
+        }
 
         // A budget-degraded answer is cached much more briefly than a real one —
         // it's an honest "here's what we found" reply, not a wrong one, but the

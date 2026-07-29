@@ -296,6 +296,7 @@ class Pi_Chatbot_Admin {
         $stats = Pi_Chatbot_Log::stats();
         $top = Pi_Chatbot_Log::top_unanswered(15, 30);
         $feedback = Pi_Chatbot_Feedback::stats(30);
+        $latency = Pi_Chatbot_Log::stats_latency(7);
         ?>
         <div class="pi-card">
             <div class="pi-card__header">
@@ -334,6 +335,29 @@ class Pi_Chatbot_Admin {
                             __('Helpful (👍 %1$d / 👎 %2$d, 30d)', 'pi-chatbot'), $feedback['up'], $feedback['down']
                         )); ?>
                     </div>
+                </div>
+            </div>
+            <div class="pi-grid--stats" style="margin-top:10px;">
+                <div>
+                    <div class="pi-stat__value">
+                        <?php echo $latency['p50'] !== null ? esc_html(round($latency['p50'] / 1000, 1)) . 's' : esc_html__('—', 'pi-chatbot'); ?>
+                    </div>
+                    <div class="pi-stat__label"><?php esc_html_e('Latency p50 (7d)', 'pi-chatbot'); ?></div>
+                </div>
+                <div>
+                    <div class="pi-stat__value">
+                        <?php echo $latency['p90'] !== null ? esc_html(round($latency['p90'] / 1000, 1)) . 's' : esc_html__('—', 'pi-chatbot'); ?>
+                    </div>
+                    <div class="pi-stat__label"><?php esc_html_e('Latency p90 (7d)', 'pi-chatbot'); ?></div>
+                </div>
+                <div>
+                    <div class="pi-stat__value">
+                        <?php echo $latency['max'] !== null ? esc_html(round($latency['max'] / 1000, 1)) . 's' : esc_html__('—', 'pi-chatbot'); ?>
+                    </div>
+                    <div class="pi-stat__label"><?php echo esc_html(sprintf(
+                        /* translators: %d: number of completed requests the latency stats are based on */
+                        __('Latency max (7d, n=%d)', 'pi-chatbot'), $latency['n']
+                    )); ?></div>
                 </div>
             </div>
             <?php if (empty($top)) : ?>

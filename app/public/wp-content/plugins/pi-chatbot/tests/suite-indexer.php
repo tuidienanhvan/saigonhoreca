@@ -187,6 +187,35 @@ try {
     $found_answered = array_filter($unanswered, function ($r) use ($q1) { return $r->question_norm === $q1; });
     pi_check('top_unanswered does NOT include a question that HAD context', empty($found_answered));
 
+    // ── Log: record_duration / stats_latency (Stage 3 — observability) ─────
+    pi_section('Log::record_duration / stats_latency');
+
+    pi_check('record() returns a real insert id, not just true/void',
+        Pi_Chatbot_Log::record($log_prefix . 'duration test q1', true, 1, true) > 0);
+    $q3 = $log_prefix . 'câu hỏi đo latency';
+    $log_id = Pi_Chatbot_Log::record($q3, true, 2, true);
+    pi_check('a fresh row starts with duration_ms NULL — reflects "not yet completed", not 0',
+        $wpdb->get_var($wpdb->prepare("SELECT duration_ms FROM {$log_table} WHERE id = %d", $log_id)) === null);
+
+    // Note: id=0 matches no row regardless of the explicit guard ($wpdb->update()
+    // itself returns 0/false for a non-matching WHERE) — this checks the observable
+    // contract (no row written, no error), not the guard branch specifically.
+    pi_check('record_duration() with a non-existent id (0) writes nothing and returns false',
+        Pi_Chatbot_Log::record_duration(0, 5000) === false
+        && (int) $wpdb->get_var($wpdb->prepare("SELECT COUNT(*) FROM {$log_table} WHERE id = 0")) === 0);
+    Pi_Chatbot_Log::record_duration($log_id, 4200);
+    $stored = (int) $wpdb->get_var($wpdb->prepare("SELECT duration_ms FROM {$log_table} WHERE id = %d", $log_id));
+    pi_check('record_duration() writes the real value into the SAME row record() created',
+        $stored === 4200, "stored={$stored}");
+
+    $latency_before = Pi_Chatbot_Log::stats_latency(1);
+    Pi_Chatbot_Log::record_duration(Pi_Chatbot_Log::record($log_prefix . 'q4', true, 1, true), 10000);
+    $latency_after = Pi_Chatbot_Log::stats_latency(1);
+    pi_check('stats_latency() n increases as more completed requests are logged',
+        $latency_after['n'] > $latency_before['n'], "before={$latency_before['n']} after={$latency_after['n']}");
+    pi_check('stats_latency() max reflects the real slowest logged duration in the window',
+        $latency_after['max'] >= 10000, "max={$latency_after['max']}");
+
     // ── Cleanup: remove every row this suite wrote ──────────────────────────
     $wpdb->query($wpdb->prepare("DELETE FROM {$log_table} WHERE question_norm LIKE %s", $wpdb->esc_like($log_prefix) . '%'));
     $remaining = (int) $wpdb->get_var($wpdb->prepare("SELECT COUNT(*) FROM {$log_table} WHERE question_norm LIKE %s", $wpdb->esc_like($log_prefix) . '%'));
