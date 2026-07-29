@@ -212,6 +212,83 @@ class Pi_Chatbot_Generator {
     }
 
     /**
+     * Streaming twin of answer() — relays tokens to $on_delta as they arrive
+     * instead of returning only once generation is complete. ONLY safe to call
+     * from a path that has already guaranteed verify()/the correction retry
+     * will never be needed (see class-rest.php ask_stream()'s docblock: the
+     * caller only streams when $context is empty, which is the one condition
+     * that makes verify() unreachable regardless of what the model writes) —
+     * this method has no way to un-show a customer tokens already streamed,
+     * so it does NOT call verify() or retry on a failed check the way
+     * answer() does.
+     *
+     * looks_degenerate()/strip_markdown() still run on the FULLY ASSEMBLED
+     * text once streaming finishes — but only to decide what gets cached/
+     * logged as the canonical answer. They cannot undo what the customer
+     * already saw live; this is a deliberate, narrower safety net than
+     * answer()'s (documented here rather than silently assumed identical).
+     * In practice this rarely matters: the eligible-to-stream path is
+     * conversational replies with no retrieved context, exactly the answers
+     * shortest and least likely to hit either heuristic.
+     *
+     * @param callable $on_delta function(string $text): void
+     * @return array{answer:string, sources:array}|WP_Error
+     */
+    public static function answer_streaming($question, $context, $history, callable $on_delta) {
+        $settings = pi_chatbot_settings();
+        $context_text = self::context_to_text($context);
+        $language_note = self::build_language_note($question);
+        $user_prompt = "REFERENCE INFORMATION:\n{$context_text}\n\nCUSTOMER QUESTION: {$question}\n\n{$language_note}";
+
+        $system_prompt = self::SYSTEM_PROMPT;
+        if ($history) {
+            $system_prompt .= "\n\nSome earlier turns of this conversation may appear before the customer's "
+                . "final message below. They are REAL prior conversation, not reference data — use them to "
+                . "understand what the customer's CURRENT message refers to when it depends on what was just "
+                . "discussed (e.g. \"say that in Vietnamese\", \"nói lại bằng tiếng anh\", \"what about the "
+                . "price\", \"còn màu khác không\"). The REFERENCE INFORMATION and CUSTOMER QUESTION below "
+                . "still define what facts you may state — the prior turns only tell you what the customer "
+                . "means, never a source of facts on their own.";
+        }
+
+        $messages = [['role' => 'system', 'content' => $system_prompt]];
+        foreach ($history as $turn) {
+            $messages[] = [
+                'role'    => $turn['role'] === 'user' ? 'user' : 'assistant',
+                'content' => (string) $turn['text'],
+            ];
+        }
+        $messages[] = ['role' => 'user', 'content' => $user_prompt];
+
+        $body = [
+            'model'       => $settings['model'],
+            'messages'    => $messages,
+            'temperature' => 0.3,
+            'max_tokens'  => 2000,
+        ];
+
+        $answer = Pi_Chatbot_LLM_Client::call_streaming(
+            $body, $settings['llm7_keys'], self::TIMEOUT_SECONDS, self::MAX_KEY_ATTEMPTS, $on_delta, 'pi-chatbot-generator-stream'
+        );
+        if (is_wp_error($answer)) return $answer;
+        if ($answer === '') {
+            return new WP_Error('pi_chatbot_empty', 'Did not receive an answer from the model.');
+        }
+
+        return [
+            'answer'  => self::strip_markdown($answer),
+            'sources' => array_map(function ($item) {
+                return ['title' => $item['title'], 'url' => $item['url']];
+            }, $context),
+            // Computed on the FULL assembled text but, unlike answer(), never
+            // acted on (no retry/rejection possible mid-stream) — carried back
+            // so the caller can at least log/flag it, per this method's
+            // docblock.
+            'degenerate' => self::looks_degenerate($answer),
+        ];
+    }
+
+    /**
      * Faithfulness check — a second model reads the answer against the same
      * reference block and reports any claim the reference does not support.
      *

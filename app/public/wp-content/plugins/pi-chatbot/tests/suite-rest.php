@@ -562,6 +562,123 @@ try {
     }
 }
 
+// ── Stage 4b — streaming endpoint ────────────────────────────────────────────
+pi_section('ask_stream() — only eligible when context is empty (Stage 4b)');
+
+/** Thrown by the test's $stream_exit_fn to stand in for the real `exit` —
+ *  ask_stream() calls this exactly once it's done writing SSE events, and a
+ *  real `exit` here would kill every suite queued to run after this one in
+ *  run-all.php. Caught immediately at each call site below. */
+class Pi_Chatbot_Test_StreamExit extends \Exception {}
+
+/** Runs ask_stream() with both DI hooks wired to capture what production
+ *  would have written to output — $emitted collects every emit() call in
+ *  order, and the exit is converted into a normal return via the exception
+ *  above instead of actually terminating the test process. */
+function pi_rest_ask_stream($message, $ip, $history = null) {
+    $_SERVER['REMOTE_ADDR'] = $ip;
+    $req = new WP_REST_Request('POST', '/pi/v1/chatbot/ask-stream');
+    $req->set_param('message', $message);
+    if ($history !== null) $req->set_param('history', $history);
+
+    $emitted = [];
+    Pi_Chatbot_Rest::$stream_emit_fn = function ($type, $data) use (&$emitted) {
+        $emitted[] = array_merge(['type' => $type], $data);
+    };
+    Pi_Chatbot_Rest::$stream_exit_fn = function () {
+        throw new Pi_Chatbot_Test_StreamExit();
+    };
+    try {
+        $res = Pi_Chatbot_Rest::instance()->ask_stream($req);
+    } catch (Pi_Chatbot_Test_StreamExit $e) {
+        $res = null; // ask_stream() already sent everything via $emitted
+    } finally {
+        Pi_Chatbot_Rest::$stream_emit_fn = null;
+        Pi_Chatbot_Rest::$stream_exit_fn = null;
+    }
+    return ['res' => $res, 'emitted' => $emitted];
+}
+
+pi_with_settings(['router_enabled' => true, 'llm7_keys' => ['k'], 'router_keys' => []], function () {
+    pi_reset_state();
+
+    // ── Eligible: intent='none' (small talk) → real SSE deltas + done ──────
+    $orig_transport = Pi_Chatbot_LLM_Client::$stream_transport;
+    try {
+        pi_http_stub(function ($args, $url, $i) {
+            // Only the router calls wp_remote_post() on this path — generation
+            // goes through call_streaming()'s $stream_transport hook instead.
+            return pi_http_content(wp_json_encode([
+                'intent' => 'none', 'keywords_en' => [], 'keywords_vi' => [], 'brand' => null,
+                'difficulty' => 'easy', 'query_variants' => [], 'ambiguity_reason' => '',
+            ]));
+        });
+        Pi_Chatbot_LLM_Client::$stream_transport = function ($key, $body, $timeout, $on_delta) {
+            foreach (['Xin ', 'chào!'] as $chunk) $on_delta($chunk);
+            return ['http_code' => 200, 'full_text' => 'Xin chào!', 'relayed_any' => true, 'curl_errno' => 0, 'curl_error' => ''];
+        };
+
+        $q = 'chào bạn ' . wp_rand();
+        $out = pi_rest_ask_stream($q, '10.10.30.1');
+        $deltas = array_values(array_filter($out['emitted'], function ($e) { return $e['type'] === 'delta'; }));
+        $done   = array_values(array_filter($out['emitted'], function ($e) { return $e['type'] === 'done'; }));
+
+        pi_check("intent='none' is eligible and streams real deltas, not a fallback signal",
+            count($deltas) === 2 && $deltas[0]['text'] === 'Xin ' && $deltas[1]['text'] === 'chào!',
+            wp_json_encode($out['emitted']));
+        pi_check('exactly one done event, carrying a real feedback_id',
+            count($done) === 1 && preg_match('/^[a-f0-9]{32}$/', $done[0]['feedback_id'] ?? ''),
+            wp_json_encode($done));
+
+        // The cache this stream wrote must be usable by the BUFFERED /ask
+        // endpoint too — a customer whose stream succeeded, then reloads and
+        // re-asks the identical question, must get the instant cache hit
+        // /ask already provides, not a second live generation.
+        $cached_res = pi_rest_ask($q, '10.10.30.2');
+        $cached_data = is_wp_error($cached_res) ? null : $cached_res->get_data();
+        pi_check('the streamed answer populated the SAME cache /ask reads from',
+            $cached_data && $cached_data['answer'] === 'Xin chào!',
+            $cached_data ? $cached_data['answer'] : (is_wp_error($cached_res) ? $cached_res->get_error_code() : 'null'));
+    } finally {
+        Pi_Chatbot_LLM_Client::$stream_transport = $orig_transport;
+    }
+
+    // ── Ineligible: intent='product' with real results → declines to stream ─
+    pi_reset_state();
+    pi_http_stub(function ($args, $url, $i) {
+        return pi_http_content(wp_json_encode([
+            'intent' => 'product', 'keywords_en' => ['freezer'], 'keywords_vi' => ['tủ đông'], 'brand' => null,
+            'difficulty' => 'easy', 'query_variants' => [], 'ambiguity_reason' => '',
+        ]));
+    });
+    $out2 = pi_rest_ask_stream('tủ đông ' . wp_rand(), '10.10.30.3');
+    pi_check("intent='product' with non-empty context declines to stream (no SSE emitted)",
+        empty($out2['emitted']));
+    pi_check('the decline response is plain JSON {eligible:false}, not an SSE-shaped payload',
+        $out2['res'] && !is_wp_error($out2['res']) && $out2['res']->get_data() === ['eligible' => false],
+        $out2['res'] ? wp_json_encode($out2['res']->get_data()) : 'no res');
+
+    // ── Ineligible: a cache hit short-circuits before any router/LLM call ───
+    pi_reset_state();
+    pi_http_stub(function () {
+        // If this stub is ever actually called, the cache short-circuit
+        // failed to trigger — return something that would make that failure
+        // visible rather than silently succeeding.
+        return pi_http_content(wp_json_encode([
+            'intent' => 'none', 'keywords_en' => [], 'keywords_vi' => [], 'brand' => null,
+            'difficulty' => 'easy', 'query_variants' => [], 'ambiguity_reason' => '',
+        ]));
+    });
+    $cache_q = 'câu hỏi đã cache ' . wp_rand();
+    $normalized_q = trim(preg_replace('/\s+/u', ' ', mb_strtolower($cache_q)));
+    $cache_key = 'pi_chatbot_ans_' . md5($normalized_q . '|' . (int) get_option('pi_chatbot_index_version', 0));
+    set_transient($cache_key, ['answer' => 'already cached', 'sources' => []], HOUR_IN_SECONDS);
+    $out3 = pi_rest_ask_stream($cache_q, '10.10.30.4');
+    pi_check('a cache hit declines to stream, with zero HTTP calls made',
+        empty($out3['emitted']) && count(pi_http_calls()) === 0, count(pi_http_calls()) . ' calls');
+    delete_transient($cache_key);
+});
+
 pi_http_unstub();
 pi_reset_state();
 

@@ -53,6 +53,80 @@ pi_http_stub(function () { return pi_http_response(['choices' => []], 200); });
 $res = Pi_Chatbot_LLM_Client::call(['model' => 'x'], ['k1'], 5, 1, 'test');
 pi_check('HTTP 200 with an empty choices array is still a failure', is_wp_error($res));
 
+// ── LLM_Client::call_streaming ───────────────────────────────────────────────
+// pi_http_stub() cannot intercept this — call_streaming() uses raw cURL (see
+// its docblock: real token-by-token streaming needs CURLOPT_WRITEFUNCTION,
+// which wp_remote_post()'s pre_http_request filter never sees). Instead, use
+// Pi_Chatbot_LLM_Client::$stream_transport, the equivalent hook for this one
+// method (see its own docblock in class-llm-client.php).
+pi_section('LLM_Client::call_streaming — relays deltas, key rotation, PROVEN via disable/red/restore');
+
+function pi_stream_transport_fixed($chunks, $http_code = 200, $curl_errno = 0, $curl_error = '') {
+    return function ($key, $body, $timeout, $on_delta) use ($chunks, $http_code, $curl_errno, $curl_error) {
+        $full = '';
+        if ($http_code >= 200 && $http_code < 300) {
+            foreach ($chunks as $c) { $full .= $c; $on_delta($c); }
+        }
+        return [
+            'http_code'   => $http_code,
+            'full_text'   => $full,
+            'relayed_any' => $full !== '',
+            'curl_errno'  => $curl_errno,
+            'curl_error'  => $curl_error,
+        ];
+    };
+}
+
+$orig_transport = Pi_Chatbot_LLM_Client::$stream_transport;
+try {
+    Pi_Chatbot_LLM_Client::$stream_transport = pi_stream_transport_fixed(['Xin ', 'chào, ', 'tôi ', 'có thể ', 'giúp gì?']);
+    $received = [];
+    $res = Pi_Chatbot_LLM_Client::call_streaming(
+        ['model' => 'x'], ['k1'], 5, 2, function ($d) use (&$received) { $received[] = $d; }, 'test'
+    );
+    pi_check('call_streaming() returns the FULL assembled text, not just the last chunk',
+        $res === 'Xin chào, tôi có thể giúp gì?', var_export($res, true));
+    pi_check('on_delta was actually called once per chunk (5 chunks), not once with everything',
+        count($received) === 5, count($received) . ' calls');
+
+    // Key rotation — a key that fails BEFORE relaying anything must fall
+    // through to the next key, same contract as call().
+    $attempt = 0;
+    Pi_Chatbot_LLM_Client::$stream_transport = function ($key, $body, $timeout, $on_delta) use (&$attempt) {
+        $attempt++;
+        if ($attempt === 1) {
+            return ['http_code' => 500, 'full_text' => '', 'relayed_any' => false, 'curl_errno' => 0, 'curl_error' => ''];
+        }
+        $on_delta('second key worked');
+        return ['http_code' => 200, 'full_text' => 'second key worked', 'relayed_any' => true, 'curl_errno' => 0, 'curl_error' => ''];
+    };
+    $res2 = Pi_Chatbot_LLM_Client::call_streaming(['model' => 'x'], ['bad', 'good'], 5, 2, function () {}, 'test');
+    pi_check('a key that failed before relaying anything falls through to the next key',
+        $res2 === 'second key worked', var_export($res2, true));
+    pi_check('exactly 2 keys were attempted', $attempt === 2, "attempt={$attempt}");
+
+    // Once content has been relayed to the customer, a later transport error on
+    // the SAME key must NOT retry a 2nd key (that would look like the answer
+    // restarting from scratch mid-stream) — it returns whatever was relayed.
+    Pi_Chatbot_LLM_Client::$stream_transport = function ($key, $body, $timeout, $on_delta) {
+        $on_delta('partial ');
+        $on_delta('answer');
+        return ['http_code' => null, 'full_text' => 'partial answer', 'relayed_any' => true, 'curl_errno' => 7, 'curl_error' => 'connection reset mid-stream'];
+    };
+    $res3 = Pi_Chatbot_LLM_Client::call_streaming(['model' => 'x'], ['k1', 'k2'], 5, 2, function () {}, 'test');
+    pi_check('a mid-stream transport error after relaying content returns the partial text, does not retry',
+        $res3 === 'partial answer', var_export($res3, true));
+
+    Pi_Chatbot_LLM_Client::$stream_transport = function () {
+        return ['http_code' => null, 'full_text' => '', 'relayed_any' => false, 'curl_errno' => 7, 'curl_error' => 'connection refused'];
+    };
+    $res4 = Pi_Chatbot_LLM_Client::call_streaming(['model' => 'x'], ['k1'], 5, 1, function () {}, 'test');
+    pi_check('a transport error with nothing relayed returns a WP_Error, not empty string',
+        is_wp_error($res4) && $res4->get_error_code() === 'pi_chatbot_stream_curl');
+} finally {
+    Pi_Chatbot_LLM_Client::$stream_transport = $orig_transport;
+}
+
 // ── Router::enrich ────────────────────────────────────────────────────────────
 pi_section('Router::enrich');
 

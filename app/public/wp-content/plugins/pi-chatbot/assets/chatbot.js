@@ -557,46 +557,16 @@
         return 'Something went wrong, please try again.';
     }
 
-    function send(overrideText) {
-        // Guard against duplicate sends — previously Enter didn't check the button's
-        // disabled state (only click did), so pressing Enter repeatedly while waiting for
-        // the LLM's reply fired multiple parallel fetches. isSending now applies to both paths.
-        if (isSending) { setStatus('Waiting for a reply, please wait before sending another question.'); return; }
-        if (Date.now() < cooldownEnd) { setStatus(cooldownMessage()); return; }
-
-        // typeof === 'string', NOT a truthy check — sendBtn.addEventListener('click', send)
-        // passes the MouseEvent directly as the first argument; a truthy check would send
-        // "[object MouseEvent]" to the LLM every time the send button is clicked with the mouse.
-        var text = (typeof overrideText === 'string' ? overrideText : input.value).trim();
-        if (!text) return;
-
-        var seq = ++requestSeq;
-        var timedOut = false;
-
-        // Snapshot BEFORE addMessage() pushes this turn's own question — chatHistory is
-        // otherwise mutated in place, and the point here is the customer's PRIOR turns
-        // (so the backend can resolve "cái này"/"giá bao nhiêu" against the product
-        // already being discussed), not the message being sent right now.
-        var priorHistory = buildHistoryPayload(chatHistory);
-
-        isSending = true;
-        addMessage('user', text);
-        if (typeof overrideText !== 'string') input.value = '';
-        input.readOnly = true;
-        input.setAttribute('aria-disabled', 'true');
-        setSendEnabled(false);
-        setBusy(true);
-        setStatus('Sending your question, the assistant is composing a reply…');
-        setTyping(true);
-
-        controller = new AbortController();
-        hardTimer = setTimeout(function () {
-            if (seq !== requestSeq) return;
-            timedOut = true;
-            controller.abort();
-        }, HARD_TIMEOUT_MS);
-
-        fetch(PiChatbotConfig.restUrl, {
+    /** The pre-existing buffered POST /ask path — unchanged behavior, just
+     *  extracted into its own function so send() can try streaming FIRST and
+     *  fall back to this exact flow when the server declines to stream (see
+     *  trySendStreaming()'s docblock for why a decline is common and
+     *  expected, not an error). $timedOutState is a 1-key object instead of a
+     *  plain variable so the shared hardTimer's callback (armed once in
+     *  send(), before either path runs) can flip a flag this function still
+     *  sees after control has passed to it. */
+    function sendBuffered(text, priorHistory, seq, timedOutState) {
+        return fetch(PiChatbotConfig.restUrl, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -643,7 +613,7 @@
             })
             .catch(function () {
                 if (seq !== requestSeq) return;
-                if (timedOut) {
+                if (timedOutState.timedOut) {
                     addMessage('error', 'The assistant is taking longer than usual to respond. Please try again or call our hotline.');
                 } else {
                     // Only a genuine network error reaches here — a request aborted by
@@ -651,6 +621,177 @@
                     // through to this point.
                     addMessage('error', 'Could not connect to the AI assistant. Please try again later.');
                 }
+            });
+    }
+
+    /**
+     * SSE attempt — tries POST /ask-stream first, so a question the server
+     * judges safe to stream (see class-rest.php ask_stream()'s docblock:
+     * conversational replies with no retrieved product context, where the
+     * faithfulness check can never apply) shows its first characters within
+     * ~1-2s instead of only once the whole answer is composed server-side
+     * (up to ~9.6s measured — see Log::stats_latency()'s docblock).
+     *
+     * The SERVER decides eligibility, not this function — most real
+     * questions (anything that retrieves product data) are correctly
+     * declined, and that decline is the EXPECTED, common outcome, not a
+     * failure: this function resolves `false` in that case and send() falls
+     * straight through to the existing, unchanged sendBuffered() path with
+     * no visible difference to the customer.
+     *
+     * Resolves `true` when this function fully handled the turn (streamed an
+     * answer, or showed a genuine LLM error for the rare mid-stream
+     * failure) — send() must NOT also run sendBuffered() in that case, which
+     * would ask the same question twice. Resolves `false` for every case
+     * that should fall back: not eligible, older/unsupported browser (no
+     * fetch streaming body reader), or a network-level failure reaching the
+     * stream endpoint at all (the buffered endpoint gets its own honest
+     * attempt rather than assuming the whole connection is down).
+     */
+    function trySendStreaming(text, priorHistory, seq) {
+        if (!PiChatbotConfig.streamUrl || !window.fetch || typeof ReadableStream === 'undefined') {
+            return Promise.resolve(false);
+        }
+
+        return fetch(PiChatbotConfig.streamUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-WP-Nonce': PiChatbotConfig.nonce
+            },
+            body: JSON.stringify({ message: text, history: priorHistory }),
+            signal: controller.signal
+        }).then(function (res) {
+            if (seq !== requestSeq) return true; // stale — swallow, do not also try buffered
+            var contentType = res.headers.get('content-type') || '';
+            if (!res.ok || contentType.indexOf('text/event-stream') === -1 || !res.body) {
+                // Not eligible (server replied plain JSON {eligible:false}) or this
+                // response can't be streamed — fall back, this is the common path.
+                return false;
+            }
+
+            clearTimers();
+            setTyping(false);
+            var col = beginBotTurn();
+            var el = document.createElement('div');
+            el.className = 'pi-cb-msg pi-cb-msg--bot';
+            col.appendChild(el);
+            messages.scrollTop = messages.scrollHeight;
+
+            var reader = res.body.getReader();
+            var decoder = new TextDecoder();
+            var buffer = '';
+            var fullText = '';
+            var finalPayload = null;
+
+            function handleEvent(payload) {
+                if (payload.type === 'delta' && typeof payload.text === 'string') {
+                    fullText += payload.text;
+                    // Streamed live as PLAIN text (same reasoning as typeAnswerInto's
+                    // typewriter effect) — swapped for the real linkified/sourced
+                    // bubble via finalizeAnswerContent() once the stream ends.
+                    el.textContent = fullText;
+                    messages.scrollTop = messages.scrollHeight;
+                } else if (payload.type === 'done' || payload.type === 'error') {
+                    finalPayload = payload;
+                }
+            }
+
+            function pump() {
+                return reader.read().then(function (chunk) {
+                    if (seq !== requestSeq) return;
+                    if (chunk.done) return;
+                    buffer += decoder.decode(chunk.value, { stream: true });
+                    var parts = buffer.split('\n\n');
+                    buffer = parts.pop(); // last part may be incomplete, kept for the next chunk
+                    parts.forEach(function (part) {
+                        var line = part.trim();
+                        if (line.indexOf('data:') !== 0) return;
+                        var payload;
+                        try { payload = JSON.parse(line.slice(5).trim()); } catch (e) { return; }
+                        handleEvent(payload);
+                    });
+                    return pump();
+                });
+            }
+
+            return pump().then(function () {
+                if (seq !== requestSeq) return true;
+                if (finalPayload && finalPayload.type === 'error') {
+                    // Rare: generation started streaming then failed mid-flight (an
+                    // LLM7 connectivity blip). The partial bubble already shown
+                    // cannot be un-shown, so it's removed and replaced with the
+                    // SAME error bubble the buffered path would show — this is
+                    // still "handled" (resolves true), not a signal to retry via
+                    // sendBuffered(), which would re-ask the same question.
+                    col.parentNode.removeChild(col);
+                    addMessage('error', errorTextFor(502, null));
+                    return true;
+                }
+                var sources = (finalPayload && finalPayload.sources) || [];
+                var feedbackId = finalPayload && finalPayload.feedback_id;
+                PiChatbotUI.finalizeAnswerContent(el, fullText, sources, feedbackId, {});
+                if (!isRestoring) {
+                    chatHistory.push({ role: 'bot', text: fullText, sources: sources, feedbackId: feedbackId || null });
+                    sessionStorage.setItem('pi_cb_history', JSON.stringify(chatHistory));
+                }
+                messages.scrollTop = messages.scrollHeight;
+                return true;
+            });
+        }).catch(function () {
+            if (seq !== requestSeq) return true;
+            // A network-level failure reaching /ask-stream itself (not a mid-stream
+            // error, which is handled above) — fall back and give the buffered
+            // endpoint its own honest attempt, same as if streaming had simply
+            // declined.
+            return false;
+        });
+    }
+
+    function send(overrideText) {
+        // Guard against duplicate sends — previously Enter didn't check the button's
+        // disabled state (only click did), so pressing Enter repeatedly while waiting for
+        // the LLM's reply fired multiple parallel fetches. isSending now applies to both paths.
+        if (isSending) { setStatus('Waiting for a reply, please wait before sending another question.'); return; }
+        if (Date.now() < cooldownEnd) { setStatus(cooldownMessage()); return; }
+
+        // typeof === 'string', NOT a truthy check — sendBtn.addEventListener('click', send)
+        // passes the MouseEvent directly as the first argument; a truthy check would send
+        // "[object MouseEvent]" to the LLM every time the send button is clicked with the mouse.
+        var text = (typeof overrideText === 'string' ? overrideText : input.value).trim();
+        if (!text) return;
+
+        var seq = ++requestSeq;
+        var timedOutState = { timedOut: false };
+
+        // Snapshot BEFORE addMessage() pushes this turn's own question — chatHistory is
+        // otherwise mutated in place, and the point here is the customer's PRIOR turns
+        // (so the backend can resolve "cái này"/"giá bao nhiêu" against the product
+        // already being discussed), not the message being sent right now.
+        var priorHistory = buildHistoryPayload(chatHistory);
+
+        isSending = true;
+        addMessage('user', text);
+        if (typeof overrideText !== 'string') input.value = '';
+        input.readOnly = true;
+        input.setAttribute('aria-disabled', 'true');
+        setSendEnabled(false);
+        setBusy(true);
+        setStatus('Sending your question, the assistant is composing a reply…');
+        setTyping(true);
+
+        controller = new AbortController();
+        hardTimer = setTimeout(function () {
+            if (seq !== requestSeq) return;
+            timedOutState.timedOut = true;
+            controller.abort();
+        }, HARD_TIMEOUT_MS);
+
+        trySendStreaming(text, priorHistory, seq)
+            .then(function (handled) {
+                if (seq !== requestSeq) return;
+                if (handled) return;
+                return sendBuffered(text, priorHistory, seq, timedOutState);
             })
             .finally(function () {
                 if (seq !== requestSeq) return;

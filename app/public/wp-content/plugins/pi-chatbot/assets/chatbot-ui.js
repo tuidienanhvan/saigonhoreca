@@ -340,6 +340,20 @@
      *  and doesn't call onDone() into a transcript that was already cleared. */
     var TYPE_CHARS_PER_TICK = 3;
     var TYPE_TICK_MS = 12;
+    /** The "swap plain-typed text for the real, fully-featured bubble" step —
+     *  shared by typeAnswerInto() (below, the typewriter path used by the
+     *  buffered /ask response) and the live SSE streaming path in chatbot.js,
+     *  so both produce byte-identical final markup instead of two hand-kept
+     *  copies of the same 4 calls drifting apart. */
+    function finalizeAnswerContent(el, text, sources, feedbackId, opts) {
+        opts = opts || {};
+        el.textContent = '';
+        appendLinkifiedText(el, text);
+        appendSourcesBlock(el, sources);
+        appendFeedbackButtons(el, feedbackId);
+        if (opts.showLeadForm) appendLeadForm(el, opts.lastQuestion);
+    }
+
     function typeAnswerInto(el, text, sources, opts) {
         opts = opts || {};
         var i = 0;
@@ -353,11 +367,7 @@
             if (i < text.length) {
                 timer = setTimeout(step, TYPE_TICK_MS);
             } else {
-                el.textContent = '';
-                appendLinkifiedText(el, text);
-                appendSourcesBlock(el, sources);
-                appendFeedbackButtons(el, opts.feedbackId);
-                if (opts.showLeadForm) appendLeadForm(el, opts.lastQuestion);
+                finalizeAnswerContent(el, text, sources, opts.feedbackId, opts);
                 if (opts.onDone) opts.onDone();
             }
         }
@@ -597,6 +607,7 @@
         describeSearch: describeSearch,
         needsVerifyStep: needsVerifyStep,
         describeVerify: describeVerify,
-        appendLeadForm: appendLeadForm
+        appendLeadForm: appendLeadForm,
+        finalizeAnswerContent: finalizeAnswerContent
     };
 })();

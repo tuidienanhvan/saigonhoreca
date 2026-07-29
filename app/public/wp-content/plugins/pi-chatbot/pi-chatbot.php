@@ -204,6 +204,7 @@ function pi_chatbot_enqueue_frontend() {
     wp_enqueue_script('pi-chatbot', PI_CHATBOT_URL . 'assets/chatbot.js', ['pi-chatbot-ui'], $mtime('assets/chatbot.js'), true);
     wp_localize_script('pi-chatbot', 'PiChatbotConfig', [
         'restUrl'     => esc_url_raw(rest_url('pi/v1/chatbot/ask')),
+        'streamUrl'   => esc_url_raw(rest_url('pi/v1/chatbot/ask-stream')),
         'feedbackUrl' => esc_url_raw(rest_url('pi/v1/chatbot/feedback')),
         'leadUrl'     => esc_url_raw(rest_url('pi/v1/chatbot/lead')),
         'nonce'     => wp_create_nonce('wp_rest'),

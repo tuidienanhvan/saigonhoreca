@@ -47,6 +47,25 @@ class Pi_Chatbot_Rest {
             ],
         ]);
 
+        register_rest_route('pi/v1', '/chatbot/ask-stream', [
+            'methods'             => 'POST',
+            'callback'            => [$this, 'ask_stream'],
+            'permission_callback' => '__return_true',
+            'args'                => [
+                'message' => [
+                    'required'          => true,
+                    'type'              => 'string',
+                    'sanitize_callback' => 'sanitize_text_field',
+                ],
+                'history' => [
+                    'required' => false,
+                    'type'     => 'array',
+                    'default'  => [],
+                    'items'    => ['type' => 'object'],
+                ],
+            ],
+        ]);
+
         register_rest_route('pi/v1', '/chatbot/feedback', [
             'methods'             => 'POST',
             'callback'            => [$this, 'feedback'],
@@ -157,13 +176,6 @@ class Pi_Chatbot_Rest {
         // the theme's real static data; intent=product runs a keyword search;
         // a null/failed classification (router disabled, breaker open, error)
         // falls back to a plain product search on the raw message.
-        $context = [];
-        $router_used = false;
-        $intent = null;
-        $router_keywords = [];
-        $router_brand = null;
-        $search_query = '';
-
         // Per-stage wall-clock, measured not estimated — this is what the
         // frontend's progress card reports, and it is the only way to tell which
         // stage is responsible when the max-accuracy path feels slow.
@@ -181,6 +193,430 @@ class Pi_Chatbot_Rest {
             $started = $now;
         };
 
+        $verified = null;
+        $routing = self::resolve_context($message, $history, $settings, $budget_exhausted, $mark);
+        $context          = $routing['context'];
+        $router_used      = $routing['router_used'];
+        $intent           = $routing['intent'];
+        $router_keywords  = $routing['router_keywords'];
+        $router_brand     = $routing['router_brand'];
+        $search_query     = $routing['search_query'];
+        $mode             = $routing['mode'];
+        $difficulty       = $routing['difficulty'];
+        $ambiguity_reason = $routing['ambiguity_reason'];
+        $query_variants   = $routing['query_variants'];
+        $rerank_used      = $routing['rerank_used'];
+        $rerank_confidence = $routing['rerank_confidence'];
+        $low_confidence   = $routing['low_confidence'];
+
+        // Log ONLY on the fresh path (not cache hits — a cached question is a
+        // repeat of one already logged; logging it again would inflate counts
+        // without adding new signal). Logged before calling Generator so we
+        // still capture "was context found" even if the LLM call fails —
+        // that's an independent signal from whether generation succeeded.
+        $log_id = Pi_Chatbot_Log::record($normalized, !empty($context), count($context), $router_used);
+
+        // Budget already exhausted -> no LLM call at all here either (the router
+        // was already skipped above). A retrieval-only reply from real catalog
+        // data is a genuinely useful degrade, not a failure page.
+        if ($budget_exhausted) {
+            $result = self::budget_exhausted_result($context);
+            $mark('generate');
+        } else {
+            $result = Pi_Chatbot_Generator::answer($message, $context, $history);
+            $mark('generate');
+
+            if (is_wp_error($result)) {
+                return new WP_Error('pi_chatbot_generation_failed', 'The assistant is busy right now — please try again in a few minutes or call our hotline.', ['status' => 502]);
+            }
+        }
+
+        // Faithfulness check. Always on the max path (1 retry, then accept — a
+        // second failure means the model cannot express this answer within the
+        // reference, and looping further would spend the customer's remaining
+        // patience without new information). ALSO on the fast path, but only
+        // when the answer actually contains the kind of claim that causes real
+        // commercial damage if wrong — a number (price/capacity/dimension), a
+        // model-code-looking token, or a URL — and only while there is budget
+        // headroom to spend on it: 80% of fast-path traffic (86/107 measured)
+        // previously got zero verification no matter what it claimed.
+        $needs_fast_verify = $mode === 'fast' && !$budget_exhausted && !empty($context)
+            && !Pi_Chatbot_Budget::is_near_limit() && self::answer_needs_fact_check($result['answer']);
+        if (($mode === 'max' && !empty($context)) || $needs_fast_verify) {
+            $check = Pi_Chatbot_Generator::verify($message, $context, $result['answer']);
+            if ($check !== null) {
+                $verified = $check['faithful'];
+                if (!$check['faithful']) {
+                    $retry = Pi_Chatbot_Generator::answer($message, $context, $history, ['correction' => $check['issue']]);
+                    if (!is_wp_error($retry)) {
+                        $result = $retry;
+                        $recheck = Pi_Chatbot_Generator::verify($message, $context, $result['answer']);
+                        $verified = $recheck === null ? null : $recheck['faithful'];
+                    }
+                }
+            }
+            $mark('verify');
+        }
+
+        // "trace" — REAL data from what actually happened in this request (not
+        // the answer-generating model's chain-of-thought — LLM7 doesn't expose
+        // that field separately for gpt-oss:20b). The frontend uses this to
+        // render the "Thinking"/"Searching" progress card. router_keywords/
+        // router_brand are only populated when the router actually classified
+        // the message as intent=product — an empty array means no reasoning
+        // step happened, so the UI never fabricates content for that panel.
+        //
+        // Everything below 'router_brand' is ADDITIVE — an older cached frontend
+        // reading only the original six fields keeps working unchanged.
+        $result['trace'] = [
+            'intent'          => $intent,
+            'search_query'    => $search_query,
+            'found_count'     => count($context),
+            'router_used'     => $router_used,
+            'router_keywords' => $router_keywords,
+            'router_brand'    => $router_brand,
+            // Adaptive pipeline.
+            'mode'              => $mode,
+            'difficulty'        => $difficulty,
+            'ambiguity_reason'  => $ambiguity_reason,
+            'query_variants'    => $query_variants,
+            'rerank_used'       => $rerank_used,
+            'rerank_confidence' => $rerank_confidence,
+            'low_confidence'    => $low_confidence,
+            'verified'          => $verified,
+            'steps'             => $steps,
+            'budget_exhausted'  => $budget_exhausted,
+        ];
+
+        // Opaque id the widget echoes back on a 👍/👎 vote (see feedback()) — hash
+        // of the normalized question + the exact answer text served, so 2 different
+        // answers to the same repeated question (e.g. after a reindex or budget
+        // degrade) each get their own id, and the id itself reveals nothing about
+        // the content to anyone who only has it (not reversible back to the text).
+        $result['feedback_id'] = md5($normalized . '|' . $result['answer']);
+
+        // Fills in duration_ms on the log row record() wrote earlier — only reached
+        // for a request that actually produced an answer (any WP_Error return above
+        // exits before this line), which is exactly the "real completed answer"
+        // population latency stats should reflect (see stats_latency()'s docblock).
+        if ($log_id) {
+            Pi_Chatbot_Log::record_duration($log_id, (int) round((microtime(true) - $request_started) * 1000));
+        }
+
+        // A budget-degraded answer is cached much more briefly than a real one —
+        // it's an honest "here's what we found" reply, not a wrong one, but the
+        // budget can free up again well within an hour (a key's own quota window
+        // resets, or the option is bumped), and a customer retrying a few minutes
+        // later should get the real generated answer rather than a stale degrade.
+        set_transient($cache_key, $result, $budget_exhausted ? 5 * MINUTE_IN_SECONDS : HOUR_IN_SECONDS);
+        return rest_ensure_response($result);
+    }
+
+    /**
+     * Test hooks for ask_stream() — SSE output (echo/flush/exit) has no
+     * return value the test harness can inspect the normal way, and a real
+     * `exit` mid-test would kill every suite queued to run after it in
+     * run-all.php. Same DI pattern as Pi_Chatbot_LLM_Client::$stream_transport
+     * (see its docblock): null uses the real behavior in production; tests
+     * substitute a closure that records what would have been sent instead of
+     * writing to the actual output buffer.
+     *
+     * $stream_emit_fn: function(string $type, array $data): void
+     * $stream_exit_fn: function(): void — MUST stop execution (e.g. throw) in
+     *   a test, the same way the real `exit` does in production, or the
+     *   method's cache/response-shaping code after the call would run twice.
+     */
+    public static $stream_emit_fn = null;
+    public static $stream_exit_fn = null;
+
+    private static function stream_emit($type, $data = []) {
+        if (self::$stream_emit_fn) {
+            (self::$stream_emit_fn)($type, $data);
+            return;
+        }
+        echo 'data: ' . wp_json_encode(array_merge(['type' => $type], $data)) . "\n\n";
+        if (function_exists('ob_flush') && ob_get_level() > 0) {
+            @ob_flush();
+        }
+        @flush();
+    }
+
+    private static function stream_exit() {
+        if (self::$stream_exit_fn) {
+            (self::$stream_exit_fn)();
+            return;
+        }
+        exit;
+    }
+
+    /**
+     * POST /pi/v1/chatbot/ask-stream — token-by-token SSE, ONLY for the
+     * narrow set of questions where it is provably safe to show the customer
+     * text before the answer is fully known.
+     *
+     * ELIGIBILITY is the one invariant this whole endpoint exists to protect:
+     * Pi_Chatbot_Generator::verify() (the faithfulness check + correction
+     * retry) can ONLY ever run when $context is non-empty — see ask()'s own
+     * verify block, both the max-path and fast-path conditions there require
+     * !empty($context). So streaming is safe to a customer's eyes EXACTLY
+     * when resolve_context() returns an empty $context: intent='none' (small
+     * talk/greeting — the common case) or intent='product' with zero search
+     * results. mode==='max' is excluded too, for a practical (not safety)
+     * reason: it always spends 1-2 extra LLM calls (hybrid retrieval's router
+     * rewrites + reranking) BEFORE reaching generation, which defeats the
+     * entire point of streaming — faster time-to-first-token — even on a
+     * question that ends up with empty context.
+     *
+     * When NOT eligible, this responds with plain JSON `{eligible:false}` —
+     * no SSE headers have been sent yet at that point, so the client can
+     * transparently fall back to the existing buffered POST /ask and the
+     * customer never sees a difference. A cache hit also short-circuits to
+     * `{eligible:false}`: /ask already serves a cached answer instantly with
+     * zero LLM calls, so there is nothing for streaming to speed up there.
+     *
+     * looks_degenerate()/the markdown strip still run on the fully-assembled
+     * text (see Generator::answer_streaming()'s docblock) but, unlike ask(),
+     * cannot reject/retry what the customer already saw live — a deliberate,
+     * narrower guarantee than the buffered endpoint's, acceptable because the
+     * eligible-to-stream path is exactly the shortest, least claim-heavy
+     * answers (no retrieved context to make a false claim from in the first
+     * place).
+     */
+    public function ask_stream($req) {
+        $message = trim((string) $req->get_param('message'));
+        if ($message === '') {
+            return new WP_Error('pi_chatbot_empty_message', 'Message is required.', ['status' => 400]);
+        }
+        if (mb_strlen($message) > self::MAX_MESSAGE_LENGTH) {
+            return new WP_Error('pi_chatbot_too_long', sprintf('Message is too long (max %d characters).', self::MAX_MESSAGE_LENGTH), ['status' => 400]);
+        }
+
+        $normalized = trim(preg_replace('/\s+/u', ' ', mb_strtolower($message)));
+        $history = self::sanitize_history($req->get_param('history'));
+        $history_suffix = $history ? '|h' . md5(wp_json_encode($history)) : '';
+        $cache_key = 'pi_chatbot_ans_' . md5($normalized . '|' . (int) get_option('pi_chatbot_index_version', 0) . $history_suffix);
+
+        if (get_transient($cache_key) !== false) {
+            return rest_ensure_response(['eligible' => false]);
+        }
+
+        $rate_check = $this->check_rate_limit();
+        if (is_wp_error($rate_check)) return $rate_check;
+
+        $settings = pi_chatbot_settings();
+        $budget_exhausted = Pi_Chatbot_Budget::is_over_limit();
+
+        $steps = [];
+        $started = microtime(true);
+        $request_started = microtime(true);
+        $mark = function ($name) use (&$steps, &$started) {
+            $now = microtime(true);
+            $steps[] = ['step' => $name, 'ms' => (int) round(($now - $started) * 1000)];
+            $started = $now;
+        };
+
+        $routing = self::resolve_context($message, $history, $settings, $budget_exhausted, $mark);
+
+        $eligible = !$budget_exhausted && $routing['mode'] !== 'max' && empty($routing['context']);
+        if (!$eligible) {
+            return rest_ensure_response(['eligible' => false]);
+        }
+
+        $log_id = Pi_Chatbot_Log::record($normalized, false, 0, $routing['router_used']);
+
+        if (!self::$stream_emit_fn) {
+            // Real production output — a test never reaches this branch since
+            // $stream_emit_fn is set before ask_stream() is called.
+            header('Content-Type: text/event-stream');
+            header('Cache-Control: no-cache');
+            header('X-Accel-Buffering: no'); // nginx: don't buffer the proxy response
+            while (function_exists('ob_get_level') && ob_get_level() > 0) {
+                @ob_end_flush();
+            }
+        }
+
+        $result = Pi_Chatbot_Generator::answer_streaming($message, $routing['context'], $history, function ($delta) {
+            self::stream_emit('delta', ['text' => $delta]);
+        });
+
+        if (is_wp_error($result)) {
+            self::stream_emit('error', ['message' => 'The assistant is busy right now — please try again in a few minutes or call our hotline.']);
+            self::stream_exit();
+            return null;
+        }
+
+        $feedback_id = md5($normalized . '|' . $result['answer']);
+        if ($log_id) {
+            Pi_Chatbot_Log::record_duration($log_id, (int) round((microtime(true) - $request_started) * 1000));
+        }
+
+        $cached_result = [
+            'answer'      => $result['answer'],
+            'sources'     => $result['sources'],
+            'trace'       => [
+                'intent'            => $routing['intent'],
+                'search_query'      => $routing['search_query'],
+                'found_count'       => 0,
+                'router_used'       => $routing['router_used'],
+                'router_keywords'   => $routing['router_keywords'],
+                'router_brand'      => $routing['router_brand'],
+                'mode'              => $routing['mode'],
+                'difficulty'        => $routing['difficulty'],
+                'ambiguity_reason'  => $routing['ambiguity_reason'],
+                'query_variants'    => $routing['query_variants'],
+                'rerank_used'       => false,
+                'rerank_confidence' => null,
+                'low_confidence'    => false,
+                'verified'          => null,
+                'steps'             => $steps,
+                'budget_exhausted'  => false,
+            ],
+            'feedback_id' => $feedback_id,
+        ];
+        set_transient($cache_key, $cached_result, HOUR_IN_SECONDS);
+
+        self::stream_emit('done', ['feedback_id' => $feedback_id, 'sources' => $result['sources']]);
+        self::stream_exit();
+        return null;
+    }
+
+    /**
+     * POST /pi/v1/chatbot/feedback — 👍/👎 on one answer, identified by the
+     * feedback_id ask() attached to its response. No rate limiting shared with
+     * ask() (a vote costs zero LLM calls, zero DB writes beyond 1 INSERT — an
+     * entirely different resource-cost class from a real question) — a small
+     * dedicated per-minute cap instead, generous enough that a real visitor
+     * clicking a few 👍/👎 buttons never trips it, tight enough to stop a script
+     * from flooding the table.
+     */
+    const FEEDBACK_RATE_LIMIT = 30; // votes / minute / IP
+
+    public function feedback($req) {
+        global $wpdb;
+        $ip = $this->get_client_ip();
+        $bucket = (int) floor(time() / MINUTE_IN_SECONDS);
+        $key = 'pi_chatbot_fbrl_' . md5($ip) . '_' . $bucket;
+        $value_option = '_transient_' . $key;
+        $timeout_option = '_transient_timeout_' . $key;
+
+        $count = (int) $wpdb->get_var($wpdb->prepare(
+            "SELECT option_value FROM {$wpdb->options} WHERE option_name = %s", $value_option
+        ));
+        if ($count >= self::FEEDBACK_RATE_LIMIT) {
+            return new WP_Error('pi_chatbot_rate_limited', 'Too many votes — please wait a minute.', ['status' => 429]);
+        }
+        $wpdb->query($wpdb->prepare(
+            "INSERT INTO {$wpdb->options} (option_name, option_value, autoload)
+             VALUES (%s, '1', 'no')
+             ON DUPLICATE KEY UPDATE option_value = option_value + 1",
+            $value_option
+        ));
+        add_option($timeout_option, time() + (2 * MINUTE_IN_SECONDS), '', false);
+
+        $rating = $req->get_param('rating') === 'up' ? 1 : -1;
+        $ok = Pi_Chatbot_Feedback::record($req->get_param('feedback_id'), $rating);
+        if (!$ok) {
+            return new WP_Error('pi_chatbot_bad_feedback', 'Invalid feedback id.', ['status' => 400]);
+        }
+        return rest_ensure_response(['ok' => true]);
+    }
+
+    /**
+     * POST /pi/v1/chatbot/lead — "leave your phone number, we'll call you
+     * back" (lead capture, GLM 5.2 report recommendation C). A genuine
+     * customer submits this once or twice per session at most, so the rate
+     * limit here is a spam guard, not a real capacity constraint — same
+     * pattern/generosity as FEEDBACK_RATE_LIMIT.
+     *
+     * Notifies the site admin by email on success (fire-and-forget — wp_mail()
+     * failing must never turn a captured lead into an error response; the
+     * lead is already safely in the DB and visible on the admin page either
+     * way). No Zalo push here — see class-lead.php's docblock for why.
+     */
+    const LEAD_RATE_LIMIT = 5; // submissions / minute / IP
+
+    public function lead($req) {
+        global $wpdb;
+        $ip = $this->get_client_ip();
+        $bucket = (int) floor(time() / MINUTE_IN_SECONDS);
+        $key = 'pi_chatbot_leadrl_' . md5($ip) . '_' . $bucket;
+        $value_option = '_transient_' . $key;
+        $timeout_option = '_transient_timeout_' . $key;
+
+        $count = (int) $wpdb->get_var($wpdb->prepare(
+            "SELECT option_value FROM {$wpdb->options} WHERE option_name = %s", $value_option
+        ));
+        if ($count >= self::LEAD_RATE_LIMIT) {
+            return new WP_Error('pi_chatbot_rate_limited', 'Too many requests — please wait a minute.', ['status' => 429]);
+        }
+        $wpdb->query($wpdb->prepare(
+            "INSERT INTO {$wpdb->options} (option_name, option_value, autoload)
+             VALUES (%s, '1', 'no')
+             ON DUPLICATE KEY UPDATE option_value = option_value + 1",
+            $value_option
+        ));
+        add_option($timeout_option, time() + (2 * MINUTE_IN_SECONDS), '', false);
+
+        $lead_id = Pi_Chatbot_Lead::record(
+            $req->get_param('name'),
+            $req->get_param('phone'),
+            $req->get_param('question')
+        );
+        if (!$lead_id) {
+            return new WP_Error('pi_chatbot_bad_lead', 'Please enter a valid phone number.', ['status' => 400]);
+        }
+
+        self::notify_admin_of_lead($req->get_param('name'), $req->get_param('phone'), $req->get_param('question'));
+
+        return rest_ensure_response(['ok' => true]);
+    }
+
+    /** Best-effort email notification — wrapped so a mail-server failure never
+     *  turns an already-recorded lead into a 500 for the customer. */
+    private static function notify_admin_of_lead($name, $phone, $question) {
+        $to = get_option('admin_email');
+        if (!$to) return;
+        $subject = '[Saigon Horeca] New chat lead: ' . ($phone ?: 'no phone');
+        $body = "A visitor left their contact info in the chatbot widget.\n\n"
+            . 'Name: ' . ($name ?: '(not given)') . "\n"
+            . 'Phone: ' . $phone . "\n"
+            . 'Last question: ' . ($question ?: '(none)') . "\n";
+        try {
+            wp_mail($to, $subject, $body);
+        } catch (\Throwable $e) {
+            error_log('[pi-chatbot] lead notification email failed: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * The routing/retrieval half of ask() — everything up to (not including)
+     * the Generator::answer() call — factored out (2026-07-29) so ask_stream()
+     * can run the EXACT same intent classification + retrieval and decide
+     * whether streaming is safe for this question BEFORE spending an LLM call
+     * on generation. Keeping one implementation matters here specifically:
+     * ask_stream()'s eligibility rule (see its docblock) depends on knowing
+     * $mode and $context precisely as ask() would compute them — a second,
+     * hand-copied implementation drifting out of sync would silently make
+     * streaming unsafe again (see verify()'s "$context non-empty" invariant).
+     *
+     * @param callable $mark Same per-stage timer closure ask() builds — passed
+     *   in rather than created here, so both the router step and the
+     *   retrieve/retrieve_hybrid/rerank steps still land in the ONE 'steps'
+     *   trace array the frontend's progress card reads.
+     * @return array{context:array,router_used:bool,intent:?string,
+     *   router_keywords:array,router_brand:?string,search_query:string,
+     *   mode:string,difficulty:?string,ambiguity_reason:string,
+     *   query_variants:array,rerank_used:bool,rerank_confidence:?float,
+     *   low_confidence:bool}
+     */
+    private static function resolve_context($message, $history, $settings, $budget_exhausted, $mark) {
+        $context = [];
+        $router_used = false;
+        $intent = null;
+        $router_keywords = [];
+        $router_brand = null;
+        $search_query = '';
+
         // Adaptive dispatch state — see the max-accuracy branch below.
         $mode = 'fast';
         $difficulty = null;
@@ -189,7 +625,6 @@ class Pi_Chatbot_Rest {
         $rerank_used = false;
         $rerank_confidence = null;
         $low_confidence = false;
-        $verified = null;
 
         $enrichment = $budget_exhausted ? null : Pi_Chatbot_Router::enrich($message, $history);
         $mark('router');
@@ -343,73 +778,13 @@ class Pi_Chatbot_Rest {
         }
         if ($mode !== 'max') $mark('retrieve');
 
-        // Log ONLY on the fresh path (not cache hits — a cached question is a
-        // repeat of one already logged; logging it again would inflate counts
-        // without adding new signal). Logged before calling Generator so we
-        // still capture "was context found" even if the LLM call fails —
-        // that's an independent signal from whether generation succeeded.
-        $log_id = Pi_Chatbot_Log::record($normalized, !empty($context), count($context), $router_used);
-
-        // Budget already exhausted -> no LLM call at all here either (the router
-        // was already skipped above). A retrieval-only reply from real catalog
-        // data is a genuinely useful degrade, not a failure page.
-        if ($budget_exhausted) {
-            $result = self::budget_exhausted_result($context);
-            $mark('generate');
-        } else {
-            $result = Pi_Chatbot_Generator::answer($message, $context, $history);
-            $mark('generate');
-
-            if (is_wp_error($result)) {
-                return new WP_Error('pi_chatbot_generation_failed', 'The assistant is busy right now — please try again in a few minutes or call our hotline.', ['status' => 502]);
-            }
-        }
-
-        // Faithfulness check. Always on the max path (1 retry, then accept — a
-        // second failure means the model cannot express this answer within the
-        // reference, and looping further would spend the customer's remaining
-        // patience without new information). ALSO on the fast path, but only
-        // when the answer actually contains the kind of claim that causes real
-        // commercial damage if wrong — a number (price/capacity/dimension), a
-        // model-code-looking token, or a URL — and only while there is budget
-        // headroom to spend on it: 80% of fast-path traffic (86/107 measured)
-        // previously got zero verification no matter what it claimed.
-        $needs_fast_verify = $mode === 'fast' && !$budget_exhausted && !empty($context)
-            && !Pi_Chatbot_Budget::is_near_limit() && self::answer_needs_fact_check($result['answer']);
-        if (($mode === 'max' && !empty($context)) || $needs_fast_verify) {
-            $check = Pi_Chatbot_Generator::verify($message, $context, $result['answer']);
-            if ($check !== null) {
-                $verified = $check['faithful'];
-                if (!$check['faithful']) {
-                    $retry = Pi_Chatbot_Generator::answer($message, $context, $history, ['correction' => $check['issue']]);
-                    if (!is_wp_error($retry)) {
-                        $result = $retry;
-                        $recheck = Pi_Chatbot_Generator::verify($message, $context, $result['answer']);
-                        $verified = $recheck === null ? null : $recheck['faithful'];
-                    }
-                }
-            }
-            $mark('verify');
-        }
-
-        // "trace" — REAL data from what actually happened in this request (not
-        // the answer-generating model's chain-of-thought — LLM7 doesn't expose
-        // that field separately for gpt-oss:20b). The frontend uses this to
-        // render the "Thinking"/"Searching" progress card. router_keywords/
-        // router_brand are only populated when the router actually classified
-        // the message as intent=product — an empty array means no reasoning
-        // step happened, so the UI never fabricates content for that panel.
-        //
-        // Everything below 'router_brand' is ADDITIVE — an older cached frontend
-        // reading only the original six fields keeps working unchanged.
-        $result['trace'] = [
-            'intent'          => $intent,
-            'search_query'    => $search_query,
-            'found_count'     => count($context),
-            'router_used'     => $router_used,
-            'router_keywords' => $router_keywords,
-            'router_brand'    => $router_brand,
-            // Adaptive pipeline.
+        return [
+            'context'           => $context,
+            'router_used'       => $router_used,
+            'intent'            => $intent,
+            'router_keywords'   => $router_keywords,
+            'router_brand'      => $router_brand,
+            'search_query'      => $search_query,
             'mode'              => $mode,
             'difficulty'        => $difficulty,
             'ambiguity_reason'  => $ambiguity_reason,
@@ -417,141 +792,7 @@ class Pi_Chatbot_Rest {
             'rerank_used'       => $rerank_used,
             'rerank_confidence' => $rerank_confidence,
             'low_confidence'    => $low_confidence,
-            'verified'          => $verified,
-            'steps'             => $steps,
-            'budget_exhausted'  => $budget_exhausted,
         ];
-
-        // Opaque id the widget echoes back on a 👍/👎 vote (see feedback()) — hash
-        // of the normalized question + the exact answer text served, so 2 different
-        // answers to the same repeated question (e.g. after a reindex or budget
-        // degrade) each get their own id, and the id itself reveals nothing about
-        // the content to anyone who only has it (not reversible back to the text).
-        $result['feedback_id'] = md5($normalized . '|' . $result['answer']);
-
-        // Fills in duration_ms on the log row record() wrote earlier — only reached
-        // for a request that actually produced an answer (any WP_Error return above
-        // exits before this line), which is exactly the "real completed answer"
-        // population latency stats should reflect (see stats_latency()'s docblock).
-        if ($log_id) {
-            Pi_Chatbot_Log::record_duration($log_id, (int) round((microtime(true) - $request_started) * 1000));
-        }
-
-        // A budget-degraded answer is cached much more briefly than a real one —
-        // it's an honest "here's what we found" reply, not a wrong one, but the
-        // budget can free up again well within an hour (a key's own quota window
-        // resets, or the option is bumped), and a customer retrying a few minutes
-        // later should get the real generated answer rather than a stale degrade.
-        set_transient($cache_key, $result, $budget_exhausted ? 5 * MINUTE_IN_SECONDS : HOUR_IN_SECONDS);
-        return rest_ensure_response($result);
-    }
-
-    /**
-     * POST /pi/v1/chatbot/feedback — 👍/👎 on one answer, identified by the
-     * feedback_id ask() attached to its response. No rate limiting shared with
-     * ask() (a vote costs zero LLM calls, zero DB writes beyond 1 INSERT — an
-     * entirely different resource-cost class from a real question) — a small
-     * dedicated per-minute cap instead, generous enough that a real visitor
-     * clicking a few 👍/👎 buttons never trips it, tight enough to stop a script
-     * from flooding the table.
-     */
-    const FEEDBACK_RATE_LIMIT = 30; // votes / minute / IP
-
-    public function feedback($req) {
-        global $wpdb;
-        $ip = $this->get_client_ip();
-        $bucket = (int) floor(time() / MINUTE_IN_SECONDS);
-        $key = 'pi_chatbot_fbrl_' . md5($ip) . '_' . $bucket;
-        $value_option = '_transient_' . $key;
-        $timeout_option = '_transient_timeout_' . $key;
-
-        $count = (int) $wpdb->get_var($wpdb->prepare(
-            "SELECT option_value FROM {$wpdb->options} WHERE option_name = %s", $value_option
-        ));
-        if ($count >= self::FEEDBACK_RATE_LIMIT) {
-            return new WP_Error('pi_chatbot_rate_limited', 'Too many votes — please wait a minute.', ['status' => 429]);
-        }
-        $wpdb->query($wpdb->prepare(
-            "INSERT INTO {$wpdb->options} (option_name, option_value, autoload)
-             VALUES (%s, '1', 'no')
-             ON DUPLICATE KEY UPDATE option_value = option_value + 1",
-            $value_option
-        ));
-        add_option($timeout_option, time() + (2 * MINUTE_IN_SECONDS), '', false);
-
-        $rating = $req->get_param('rating') === 'up' ? 1 : -1;
-        $ok = Pi_Chatbot_Feedback::record($req->get_param('feedback_id'), $rating);
-        if (!$ok) {
-            return new WP_Error('pi_chatbot_bad_feedback', 'Invalid feedback id.', ['status' => 400]);
-        }
-        return rest_ensure_response(['ok' => true]);
-    }
-
-    /**
-     * POST /pi/v1/chatbot/lead — "leave your phone number, we'll call you
-     * back" (lead capture, GLM 5.2 report recommendation C). A genuine
-     * customer submits this once or twice per session at most, so the rate
-     * limit here is a spam guard, not a real capacity constraint — same
-     * pattern/generosity as FEEDBACK_RATE_LIMIT.
-     *
-     * Notifies the site admin by email on success (fire-and-forget — wp_mail()
-     * failing must never turn a captured lead into an error response; the
-     * lead is already safely in the DB and visible on the admin page either
-     * way). No Zalo push here — see class-lead.php's docblock for why.
-     */
-    const LEAD_RATE_LIMIT = 5; // submissions / minute / IP
-
-    public function lead($req) {
-        global $wpdb;
-        $ip = $this->get_client_ip();
-        $bucket = (int) floor(time() / MINUTE_IN_SECONDS);
-        $key = 'pi_chatbot_leadrl_' . md5($ip) . '_' . $bucket;
-        $value_option = '_transient_' . $key;
-        $timeout_option = '_transient_timeout_' . $key;
-
-        $count = (int) $wpdb->get_var($wpdb->prepare(
-            "SELECT option_value FROM {$wpdb->options} WHERE option_name = %s", $value_option
-        ));
-        if ($count >= self::LEAD_RATE_LIMIT) {
-            return new WP_Error('pi_chatbot_rate_limited', 'Too many requests — please wait a minute.', ['status' => 429]);
-        }
-        $wpdb->query($wpdb->prepare(
-            "INSERT INTO {$wpdb->options} (option_name, option_value, autoload)
-             VALUES (%s, '1', 'no')
-             ON DUPLICATE KEY UPDATE option_value = option_value + 1",
-            $value_option
-        ));
-        add_option($timeout_option, time() + (2 * MINUTE_IN_SECONDS), '', false);
-
-        $lead_id = Pi_Chatbot_Lead::record(
-            $req->get_param('name'),
-            $req->get_param('phone'),
-            $req->get_param('question')
-        );
-        if (!$lead_id) {
-            return new WP_Error('pi_chatbot_bad_lead', 'Please enter a valid phone number.', ['status' => 400]);
-        }
-
-        self::notify_admin_of_lead($req->get_param('name'), $req->get_param('phone'), $req->get_param('question'));
-
-        return rest_ensure_response(['ok' => true]);
-    }
-
-    /** Best-effort email notification — wrapped so a mail-server failure never
-     *  turns an already-recorded lead into a 500 for the customer. */
-    private static function notify_admin_of_lead($name, $phone, $question) {
-        $to = get_option('admin_email');
-        if (!$to) return;
-        $subject = '[Saigon Horeca] New chat lead: ' . ($phone ?: 'no phone');
-        $body = "A visitor left their contact info in the chatbot widget.\n\n"
-            . 'Name: ' . ($name ?: '(not given)') . "\n"
-            . 'Phone: ' . $phone . "\n"
-            . 'Last question: ' . ($question ?: '(none)') . "\n";
-        try {
-            wp_mail($to, $subject, $body);
-        } catch (\Throwable $e) {
-            error_log('[pi-chatbot] lead notification email failed: ' . $e->getMessage());
-        }
     }
 
     /**
