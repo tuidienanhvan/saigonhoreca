@@ -620,8 +620,22 @@ pi_with_settings(['router_enabled' => true, 'llm7_keys' => ['k'], 'router_keys' 
 
         $q = 'chào bạn ' . wp_rand();
         $out = pi_rest_ask_stream($q, '10.10.30.1');
+        $meta   = array_values(array_filter($out['emitted'], function ($e) { return $e['type'] === 'meta'; }));
         $deltas = array_values(array_filter($out['emitted'], function ($e) { return $e['type'] === 'delta'; }));
         $done   = array_values(array_filter($out['emitted'], function ($e) { return $e['type'] === 'done'; }));
+
+        // 2026-07-29 fix — a real regression caught live: the first version of
+        // this endpoint sent NO trace at all, so the widget's progress card
+        // ("Analyzing the question" / "Searching the data") silently
+        // disappeared for every streamed answer, replaced by a bare bubble.
+        // The 'meta' event exists specifically so the client can rebuild that
+        // exact same UI from real data, same shape ask()'s own 'trace' field.
+        pi_check("exactly one meta event, sent BEFORE any delta, carrying the real intent",
+            count($meta) === 1 && $meta[0]['trace']['intent'] === 'none',
+            wp_json_encode($meta));
+        pi_check('the meta event is the FIRST event emitted — the client needs it before it can render the progress card',
+            !empty($out['emitted']) && $out['emitted'][0]['type'] === 'meta',
+            $out['emitted'] ? $out['emitted'][0]['type'] : 'nothing emitted');
 
         pi_check("intent='none' is eligible and streams real deltas, not a fallback signal",
             count($deltas) === 2 && $deltas[0]['text'] === 'Xin ' && $deltas[1]['text'] === 'chào!',

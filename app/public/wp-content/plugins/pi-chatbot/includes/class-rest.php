@@ -424,6 +424,33 @@ class Pi_Chatbot_Rest {
 
         $log_id = Pi_Chatbot_Log::record($normalized, false, 0, $routing['router_used']);
 
+        // Same shape ask() returns as 'trace' — built and emitted BEFORE
+        // generation starts (everything in it is already known once
+        // resolve_context() returns) so the widget can render its usual
+        // "Analyzing"/"Searching" progress tiers from REAL data while tokens
+        // are still arriving, instead of losing that UI entirely on the
+        // streaming path (a real regression caught live: the first version
+        // of this endpoint sent no trace at all, so the progress card
+        // silently disappeared for every streamed answer).
+        $trace = [
+            'intent'            => $routing['intent'],
+            'search_query'      => $routing['search_query'],
+            'found_count'       => 0,
+            'router_used'       => $routing['router_used'],
+            'router_keywords'   => $routing['router_keywords'],
+            'router_brand'      => $routing['router_brand'],
+            'mode'              => $routing['mode'],
+            'difficulty'        => $routing['difficulty'],
+            'ambiguity_reason'  => $routing['ambiguity_reason'],
+            'query_variants'    => $routing['query_variants'],
+            'rerank_used'       => false,
+            'rerank_confidence' => null,
+            'low_confidence'    => false,
+            'verified'          => null,
+            'steps'             => $steps,
+            'budget_exhausted'  => false,
+        ];
+
         if (!self::$stream_emit_fn) {
             // Real production output — a test never reaches this branch since
             // $stream_emit_fn is set before ask_stream() is called.
@@ -434,6 +461,8 @@ class Pi_Chatbot_Rest {
                 @ob_end_flush();
             }
         }
+
+        self::stream_emit('meta', ['trace' => $trace]);
 
         $result = Pi_Chatbot_Generator::answer_streaming($message, $routing['context'], $history, function ($delta) {
             self::stream_emit('delta', ['text' => $delta]);
@@ -453,24 +482,7 @@ class Pi_Chatbot_Rest {
         $cached_result = [
             'answer'      => $result['answer'],
             'sources'     => $result['sources'],
-            'trace'       => [
-                'intent'            => $routing['intent'],
-                'search_query'      => $routing['search_query'],
-                'found_count'       => 0,
-                'router_used'       => $routing['router_used'],
-                'router_keywords'   => $routing['router_keywords'],
-                'router_brand'      => $routing['router_brand'],
-                'mode'              => $routing['mode'],
-                'difficulty'        => $routing['difficulty'],
-                'ambiguity_reason'  => $routing['ambiguity_reason'],
-                'query_variants'    => $routing['query_variants'],
-                'rerank_used'       => false,
-                'rerank_confidence' => null,
-                'low_confidence'    => false,
-                'verified'          => null,
-                'steps'             => $steps,
-                'budget_exhausted'  => false,
-            ],
+            'trace'       => $trace,
             'feedback_id' => $feedback_id,
         ];
         set_transient($cache_key, $cached_result, HOUR_IN_SECONDS);
@@ -571,11 +583,33 @@ class Pi_Chatbot_Rest {
         return rest_ensure_response(['ok' => true]);
     }
 
-    /** Best-effort email notification — wrapped so a mail-server failure never
-     *  turns an already-recorded lead into a 500 for the customer. */
+    /**
+     * Best-effort email notification — wrapped so a mail-server failure never
+     * turns an already-recorded lead into a 500 for the customer.
+     *
+     * Sends to the theme's OWN real contact emails (saigonhouse_get_contact_info()
+     * — the exact same source Pi_Chatbot_Retriever::contact_context()/
+     * price_context() already read from, see class-retriever.php), NOT WP's
+     * `admin_email` option. 2026-07-29 fix — caught live: on this LocalWP
+     * install `admin_email` is `dev-email@wpengine.local`, a placeholder that
+     * goes nowhere; even on the real production site, `admin_email` is
+     * whoever set up WordPress, not necessarily the business inbox staff
+     * actually watch for leads. Falls back to `admin_email` only if the
+     * theme's contact function isn't available at all (e.g. a different
+     * theme is active) — some notification target is better than silently
+     * sending nothing.
+     */
     private static function notify_admin_of_lead($name, $phone, $question) {
-        $to = get_option('admin_email');
-        if (!$to) return;
+        $to = [];
+        if (function_exists('saigonhouse_get_contact_info')) {
+            $c = saigonhouse_get_contact_info();
+            $to = array_values(array_filter([$c['email_primary'] ?? '', $c['email_secondary'] ?? '']));
+        }
+        if (!$to) {
+            $fallback = get_option('admin_email');
+            if (!$fallback) return;
+            $to = [$fallback];
+        }
         $subject = '[Saigon Horeca] New chat lead: ' . ($phone ?: 'no phone');
         $body = "A visitor left their contact info in the chatbot widget.\n\n"
             . 'Name: ' . ($name ?: '(not given)') . "\n"

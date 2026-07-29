@@ -141,22 +141,33 @@
     border-radius: 8px;
     width: 28px;
     height: 28px;
-    font-size: 13px;
-    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--cb-text-muted, currentColor);
     cursor: pointer;
-    opacity: 0.6;
-    transition: opacity 0.15s ease, border-color 0.15s ease;
+    opacity: 0.7;
+    transition: opacity 0.15s ease, border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+}
+#pi-chatbot-panel .pi-cb-feedback-btn svg {
+    width: 14px;
+    height: 14px;
+    stroke: currentColor;
 }
 #pi-chatbot-panel .pi-cb-feedback-btn:hover:not(:disabled) {
     opacity: 1;
+    color: var(--cb-accent);
     border-color: var(--cb-accent-ring);
+    background: color-mix(in srgb, var(--cb-accent) 8%, transparent);
 }
 #pi-chatbot-panel .pi-cb-feedback-btn:disabled {
     cursor: default;
 }
 #pi-chatbot-panel .pi-cb-feedback-btn--picked {
     opacity: 1;
+    color: var(--cb-accent);
     border-color: var(--cb-accent);
+    background: color-mix(in srgb, var(--cb-accent) 12%, transparent);
 }
 
 /* Lead-capture form — appended after a 'price' intent answer (see appendLeadForm()

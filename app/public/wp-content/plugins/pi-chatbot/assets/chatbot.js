@@ -470,45 +470,66 @@
 
         var card = PiChatbotUI.renderProgressCard(col);
 
-        // Tier 1 — analyzing the question (always shown).
-        var thinkStep = PiChatbotUI.renderStepRow(card, 'thinking', '', 'Analyzing the question');
-        setStatus('Analyzing the question…');
+        // Tier 1 — "Thinking": a real, always-true first step — the assistant
+        // has RECEIVED the message and is about to process it — kept
+        // deliberately generic (never claims a specific finding) so it stays
+        // honest even before the router has run. Split out as its own tier
+        // (2026-07-29 fix) because it was previously MERGED into tier 2's row
+        // (the row opened as "Analyzing the question…" then silently morphed
+        // into "Identified: X" once classification finished) — visually that
+        // looked like only 2 categorized tiers (DATA LOOKUP/FACT CHECK) plus
+        // one uncategorized row, an inconsistent look flagged live.
+        var readStep = PiChatbotUI.renderStepRow(card, 'thinking', 'Thinking', 'Reading your question');
+        setStatus('Reading your question…');
 
-        return PiChatbotUI.wait(700).then(function () {
+        return PiChatbotUI.wait(400).then(function () {
             if (!stillCurrent()) return;
+            PiChatbotUI.finishStep(readStep, 'Question received', ['Preparing to analyze your message.']);
+            readStep.details.open = false;
 
-            var think = PiChatbotUI.describeThink(trace);
-            PiChatbotUI.finishStep(thinkStep, think.label, think.lines);
-            thinkStep.details.open = false;
+            // Tier 2 — the REAL classification result (router intent/keywords/
+            // brand, or the fast-path fallback) — same describeThink() data as
+            // before, now under its own category label for the same visual
+            // treatment as tiers 3/4 below.
+            var thinkStep = PiChatbotUI.renderStepRow(card, 'thinking', 'Identifying', 'Analyzing the question');
+            setStatus('Analyzing the question…');
 
-            // Tier 2 — searching the data (always shown, CONTINUING within the same card).
-            setStatus('Searching the data…');
-            var searchStep = PiChatbotUI.renderStepRow(card, 'search', 'Data lookup', 'Searching the data');
-
-            return PiChatbotUI.wait(750).then(function () {
+            return PiChatbotUI.wait(700).then(function () {
                 if (!stillCurrent()) return;
 
-                var search = PiChatbotUI.describeSearch(trace);
-                PiChatbotUI.finishStep(searchStep, search.label, search.lines);
-                searchStep.details.open = false;
+                var think = PiChatbotUI.describeThink(trace);
+                PiChatbotUI.finishStep(thinkStep, think.label, think.lines);
+                thinkStep.details.open = false;
 
-                if (!PiChatbotUI.needsVerifyStep(trace)) {
-                    // Tier 3 — answer bubble, sharing the column/avatar with the card above.
-                    finishBotTurn(col, answerText, sources, feedbackId, showLeadForm, lastQuestion);
-                    return;
-                }
+                // Tier 3 — searching the data (always shown, CONTINUING within the same card).
+                setStatus('Searching the data…');
+                var searchStep = PiChatbotUI.renderStepRow(card, 'search', 'Data lookup', 'Searching the data');
 
-                // Optional tier — the fact check, shown ONLY when it actually ran, so
-                // the customer never sees a "checked" claim on an unchecked answer.
-                setStatus('Checking the answer…');
-                var verifyStep = PiChatbotUI.renderStepRow(card, 'search', 'Fact check', 'Checking the answer against the data');
-
-                return PiChatbotUI.wait(600).then(function () {
+                return PiChatbotUI.wait(750).then(function () {
                     if (!stillCurrent()) return;
-                    var v = PiChatbotUI.describeVerify(trace);
-                    PiChatbotUI.finishStep(verifyStep, v.label, v.lines);
-                    verifyStep.details.open = false;
-                    finishBotTurn(col, answerText, sources, feedbackId, showLeadForm, lastQuestion);
+
+                    var search = PiChatbotUI.describeSearch(trace);
+                    PiChatbotUI.finishStep(searchStep, search.label, search.lines);
+                    searchStep.details.open = false;
+
+                    if (!PiChatbotUI.needsVerifyStep(trace)) {
+                        // Tier 4 — answer bubble, sharing the column/avatar with the card above.
+                        finishBotTurn(col, answerText, sources, feedbackId, showLeadForm, lastQuestion);
+                        return;
+                    }
+
+                    // Optional tier — the fact check, shown ONLY when it actually ran, so
+                    // the customer never sees a "checked" claim on an unchecked answer.
+                    setStatus('Checking the answer…');
+                    var verifyStep = PiChatbotUI.renderStepRow(card, 'search', 'Fact check', 'Checking the answer against the data');
+
+                    return PiChatbotUI.wait(600).then(function () {
+                        if (!stillCurrent()) return;
+                        var v = PiChatbotUI.describeVerify(trace);
+                        PiChatbotUI.finishStep(verifyStep, v.label, v.lines);
+                        verifyStep.details.open = false;
+                        finishBotTurn(col, answerText, sources, feedbackId, showLeadForm, lastQuestion);
+                    });
                 });
             });
         });
@@ -673,25 +694,29 @@
             clearTimers();
             setTyping(false);
             var col = beginBotTurn();
-            var el = document.createElement('div');
-            el.className = 'pi-cb-msg pi-cb-msg--bot';
-            col.appendChild(el);
-            messages.scrollTop = messages.scrollHeight;
 
             var reader = res.body.getReader();
             var decoder = new TextDecoder();
             var buffer = '';
             var fullText = '';
+            var streamEnded = false;
             var finalPayload = null;
+            var traceEvent = null;
+            var traceResolve;
+            // Resolved the moment the 'meta' event arrives (near-instant — the
+            // server sends it before generation even starts) — the tier
+            // animation below awaits this instead of a raw event flag so it
+            // can start the SAME instant the trace is known, same as the
+            // buffered path's revealTraceThenAnswer() does with data it
+            // already has synchronously.
+            var tracePromise = new Promise(function (resolve) { traceResolve = resolve; });
 
             function handleEvent(payload) {
-                if (payload.type === 'delta' && typeof payload.text === 'string') {
+                if (payload.type === 'meta') {
+                    traceEvent = payload.trace;
+                    traceResolve();
+                } else if (payload.type === 'delta' && typeof payload.text === 'string') {
                     fullText += payload.text;
-                    // Streamed live as PLAIN text (same reasoning as typeAnswerInto's
-                    // typewriter effect) — swapped for the real linkified/sourced
-                    // bubble via finalizeAnswerContent() once the stream ends.
-                    el.textContent = fullText;
-                    messages.scrollTop = messages.scrollHeight;
                 } else if (payload.type === 'done' || payload.type === 'error') {
                     finalPayload = payload;
                 }
@@ -700,7 +725,7 @@
             function pump() {
                 return reader.read().then(function (chunk) {
                     if (seq !== requestSeq) return;
-                    if (chunk.done) return;
+                    if (chunk.done) { streamEnded = true; return; }
                     buffer += decoder.decode(chunk.value, { stream: true });
                     var parts = buffer.split('\n\n');
                     buffer = parts.pop(); // last part may be incomplete, kept for the next chunk
@@ -714,30 +739,128 @@
                     return pump();
                 });
             }
+            // Runs in the background, filling fullText/finalPayload as bytes
+            // arrive — deliberately not awaited before revealing text (see
+            // stagedAnimation.then() below). A read() failure mid-stream
+            // (dropped connection) must still let revealLoop() finish instead
+            // of spinning forever waiting for a streamEnded that will never
+            // come otherwise.
+            pump().catch(function () { streamEnded = true; });
 
-            return pump().then(function () {
-                if (seq !== requestSeq) return true;
-                if (finalPayload && finalPayload.type === 'error') {
-                    // Rare: generation started streaming then failed mid-flight (an
-                    // LLM7 connectivity blip). The partial bubble already shown
-                    // cannot be un-shown, so it's removed and replaced with the
-                    // SAME error bubble the buffered path would show — this is
-                    // still "handled" (resolves true), not a signal to retry via
-                    // sendBuffered(), which would re-ask the same question.
-                    col.parentNode.removeChild(col);
-                    addMessage('error', errorTextFor(502, null));
-                    return true;
+            /** Reveals `fullText` at the SAME steady cadence typeAnswerInto()
+             *  uses for the buffered path (TYPE_CHARS_PER_TICK/TYPE_TICK_MS) —
+             *  instead of dumping el.textContent = fullText on every raw
+             *  network read, which arrives in bursty, unevenly-sized chunks
+             *  (OS/TCP buffering has nothing to do with how many characters
+             *  the model actually wrote in one moment) and looked jumpy/
+             *  inconsistent rather than typed. This decouples "how the network
+             *  delivered bytes" from "how the text visibly appears", the same
+             *  separation of concerns typeAnswerInto already has between a
+             *  known string and its reveal pace — reveal never gets AHEAD of
+             *  what has actually arrived, only ever catches up to it. */
+            function revealLoop(el, onDone) {
+                var shown = 0;
+                function tick() {
+                    if (seq !== requestSeq) return;
+                    var target = fullText.length;
+                    if (shown < target) {
+                        shown = Math.min(target, shown + PiChatbotUI.TYPE_CHARS_PER_TICK);
+                        el.textContent = fullText.slice(0, shown);
+                        messages.scrollTop = messages.scrollHeight;
+                    }
+                    if (shown < fullText.length || !streamEnded) {
+                        setTimeout(tick, PiChatbotUI.TYPE_TICK_MS);
+                    } else {
+                        onDone();
+                    }
                 }
-                var sources = (finalPayload && finalPayload.sources) || [];
-                var feedbackId = finalPayload && finalPayload.feedback_id;
-                PiChatbotUI.finalizeAnswerContent(el, fullText, sources, feedbackId, {});
-                if (!isRestoring) {
-                    chatHistory.push({ role: 'bot', text: fullText, sources: sources, feedbackId: feedbackId || null });
-                    sessionStorage.setItem('pi_cb_history', JSON.stringify(chatHistory));
-                }
-                messages.scrollTop = messages.scrollHeight;
-                return true;
+                tick();
+            }
+
+            // Same staged "Analyzing" -> "Searching" progress tiers the buffered
+            // path shows (revealTraceThenAnswer()), built from the SAME real
+            // trace data (now arriving via the 'meta' event instead of already
+            // being in hand) — this is what was MISSING from the first version
+            // of this function: streaming replaced the whole progress card with
+            // a bare bubble instead of keeping the reasoning steps the customer
+            // is used to seeing. Runs CONCURRENTLY with pump() (both are async
+            // and just interleave on the event loop) — generation is already
+            // happening server-side while this ~1.45s animation plays, so it
+            // costs no extra wall-clock time on top of streaming, unlike the
+            // buffered path where the full request must finish FIRST and only
+            // then does this same animation run.
+            var stagedAnimation = tracePromise.then(function () {
+                if (seq !== requestSeq || !traceEvent) return;
+                var card = PiChatbotUI.renderProgressCard(col);
+                // Same 4-tier shape as the buffered path's revealTraceThenAnswer()
+                // (Thinking -> Identifying -> Data lookup -> [Fact check]) — kept
+                // in sync so the customer sees an identical progress card whether
+                // this question streamed or not.
+                var readStep = PiChatbotUI.renderStepRow(card, 'thinking', 'Thinking', 'Reading your question');
+                setStatus('Reading your question…');
+                return PiChatbotUI.wait(400).then(function () {
+                    if (seq !== requestSeq) return;
+                    PiChatbotUI.finishStep(readStep, 'Question received', ['Preparing to analyze your message.']);
+                    readStep.details.open = false;
+
+                    var thinkStep = PiChatbotUI.renderStepRow(card, 'thinking', 'Identifying', 'Analyzing the question');
+                    setStatus('Analyzing the question…');
+                    return PiChatbotUI.wait(700).then(function () {
+                        if (seq !== requestSeq) return;
+                        var think = PiChatbotUI.describeThink(traceEvent);
+                        PiChatbotUI.finishStep(thinkStep, think.label, think.lines);
+                        thinkStep.details.open = false;
+
+                        setStatus('Searching the data…');
+                        var searchStep = PiChatbotUI.renderStepRow(card, 'search', 'Data lookup', 'Searching the data');
+                        return PiChatbotUI.wait(750).then(function () {
+                            if (seq !== requestSeq) return;
+                            var search = PiChatbotUI.describeSearch(traceEvent);
+                            PiChatbotUI.finishStep(searchStep, search.label, search.lines);
+                            searchStep.details.open = false;
+                        });
+                    });
+                });
             });
+
+            // Once the tiers finish, start REVEALING whatever text has already
+            // arrived (fullText keeps growing in the background via pump()) at
+            // the steady typewriter pace — revealLoop() naturally keeps going
+            // past what's arrived SO FAR and catches up as more comes in
+            // (its own loop condition checks `!streamEnded` too), so this does
+            // NOT wait for the whole answer to finish generating first; it
+            // only waits for the progress tiers, which are usually the
+            // limiting factor for a short conversational reply anyway.
+            return stagedAnimation.then(function () {
+                if (seq !== requestSeq) return true;
+                return new Promise(function (resolveTurn) {
+                    var el = document.createElement('div');
+                    el.className = 'pi-cb-msg pi-cb-msg--bot';
+                    col.appendChild(el);
+                    revealLoop(el, function () {
+                        if (seq !== requestSeq) { resolveTurn(); return; }
+                        if (finalPayload && finalPayload.type === 'error') {
+                            // Rare: generation started streaming then failed mid-flight
+                            // (an LLM7 connectivity blip). The partial bubble already
+                            // shown cannot be un-shown, so it's removed and replaced
+                            // with the same error bubble the buffered path would show.
+                            col.parentNode.removeChild(col);
+                            addMessage('error', errorTextFor(502, null));
+                            resolveTurn();
+                            return;
+                        }
+                        var sources = (finalPayload && finalPayload.sources) || [];
+                        var feedbackId = finalPayload && finalPayload.feedback_id;
+                        PiChatbotUI.finalizeAnswerContent(el, fullText, sources, feedbackId, {});
+                        if (!isRestoring) {
+                            chatHistory.push({ role: 'bot', text: fullText, sources: sources, feedbackId: feedbackId || null });
+                            sessionStorage.setItem('pi_cb_history', JSON.stringify(chatHistory));
+                        }
+                        messages.scrollTop = messages.scrollHeight;
+                        resolveTurn();
+                    });
+                });
+            }).then(function () { return true; });
         }).catch(function () {
             if (seq !== requestSeq) return true;
             // A network-level failure reaching /ask-stream itself (not a mid-stream

@@ -189,16 +189,19 @@
             }).catch(function () {}); // fire-and-forget — a failed vote isn't worth surfacing to the customer
         }
 
+        var ICON_THUMB_UP = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10v12"/><path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h3l4.58-6.11A2 2 0 0 1 13.08 3h.42a2 2 0 0 1 1.5 2.88Z"/></svg>';
+        var ICON_THUMB_DOWN = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 14V2"/><path d="M9 18.12 10 14H4.17a2 2 0 0 1-1.92-2.56l2.33-8A2 2 0 0 1 6.5 2H20a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-3l-4.58 6.11a2 2 0 0 1-1.5.89h-.42a2 2 0 0 1-1.5-2.88Z"/></svg>';
+
         var up = document.createElement('button');
         up.type = 'button';
         up.className = 'pi-cb-feedback-btn';
         up.setAttribute('aria-label', 'Helpful');
-        up.textContent = '👍';
+        up.innerHTML = ICON_THUMB_UP;
         var down = document.createElement('button');
         down.type = 'button';
         down.className = 'pi-cb-feedback-btn';
         down.setAttribute('aria-label', 'Not helpful');
-        down.textContent = '👎';
+        down.innerHTML = ICON_THUMB_DOWN;
 
         up.addEventListener('click', function () { vote('up', up, down); });
         down.addEventListener('click', function () { vote('down', down, up); });
@@ -608,6 +611,8 @@
         needsVerifyStep: needsVerifyStep,
         describeVerify: describeVerify,
         appendLeadForm: appendLeadForm,
-        finalizeAnswerContent: finalizeAnswerContent
+        finalizeAnswerContent: finalizeAnswerContent,
+        TYPE_CHARS_PER_TICK: TYPE_CHARS_PER_TICK,
+        TYPE_TICK_MS: TYPE_TICK_MS
     };
 })();
