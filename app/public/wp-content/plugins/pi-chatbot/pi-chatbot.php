@@ -159,6 +159,29 @@ function pi_chatbot_settings() {
 add_action('save_post', ['Pi_Chatbot_Indexer', 'on_save_post'], 20, 3);
 add_action('before_delete_post', ['Pi_Chatbot_Indexer', 'on_delete_post']);
 
+/**
+ * Extracts hostnames from every URL field in saigonhouse_get_contact_info()
+ * (website/facebook/zalo/youtube) — the widget's trusted-domain allowlist for
+ * linkifying a contact-info answer, see PiChatbotConfig.trustedHosts above.
+ * Not hardcoded as a fixed array here on purpose: if the theme's contact info
+ * ever changes (a new social channel, a domain migration), this list updates
+ * itself with zero code change needed on the chatbot side.
+ *
+ * @return string[] Lowercased hostnames, e.g. ['saigonhoreca.vn', 'www.facebook.com', ...].
+ */
+function pi_chatbot_trusted_hosts() {
+    if (!function_exists('saigonhouse_get_contact_info')) return [];
+    $c = saigonhouse_get_contact_info();
+    $hosts = [];
+    foreach (['website', 'facebook', 'zalo', 'youtube'] as $field) {
+        $url = $c[$field] ?? '';
+        if ($url === '') continue;
+        $host = wp_parse_url($url, PHP_URL_HOST);
+        if ($host) $hosts[] = strtolower($host);
+    }
+    return array_values(array_unique($hosts));
+}
+
 add_action('wp_enqueue_scripts', 'pi_chatbot_enqueue_frontend');
 function pi_chatbot_enqueue_frontend() {
     if (!function_exists('is_plugin_active')) {
@@ -207,6 +230,16 @@ function pi_chatbot_enqueue_frontend() {
         'streamUrl'   => esc_url_raw(rest_url('pi/v1/chatbot/ask-stream')),
         'feedbackUrl' => esc_url_raw(rest_url('pi/v1/chatbot/feedback')),
         'leadUrl'     => esc_url_raw(rest_url('pi/v1/chatbot/lead')),
+        // The theme's own official channels — computed here (not hand-copied
+        // into chatbot-ui.js) so it can never drift from the real contact
+        // data: whichever hostnames saigonhouse_get_contact_info() actually
+        // points at are exactly the ones the widget is allowed to linkify a
+        // contact-info answer's URLs to, even though they're on a different
+        // origin than this site (see isTrustedHost()'s docblock in
+        // chatbot-ui.js for the full reasoning — these are the plugin's own
+        // trusted config, not catalog content a product entry could smuggle
+        // an arbitrary domain into).
+        'trustedHosts' => pi_chatbot_trusted_hosts(),
         'nonce'     => wp_create_nonce('wp_rest'),
         // Same source as Pi_Chatbot_Rest::MAX_MESSAGE_LENGTH — previously "500" was a
         // hardcoded number in both PHP and the maxlength attribute in chatbot.js,

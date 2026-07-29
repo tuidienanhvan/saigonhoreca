@@ -81,6 +81,43 @@
         }
     }
 
+    /** True for a host on the FIXED, small trusted-domain list computed
+     *  server-side from saigonhouse_get_contact_info() (see pi-chatbot.php's
+     *  wp_localize_script — PiChatbotConfig.trustedHosts) — the theme's own
+     *  hardcoded official channels (Facebook page, Zalo, YouTube, the
+     *  production website), not editable by whoever creates a catalog entry.
+     *  2026-07-29 fix, requested live: contact_context() answers ("Here is
+     *  our contact information: ... Facebook: https://facebook.com/...")
+     *  were correctly caught by isSameOrigin()'s same-origin rule (Facebook/
+     *  Zalo/YouTube/the .vn production domain are never same-origin as this
+     *  site) and shown as plain unclickable text — technically working as
+     *  designed, but overly strict for THESE specific URLs: they come from
+     *  the plugin's own trusted config, not from arbitrary catalog content,
+     *  so the 2026-07-27 threat model (a malicious/mistaken URL smuggled in
+     *  via a product description) does not apply to them. EXACT hostname
+     *  match only (never a prefix/suffix check) — 'facebook.com.evil.com'
+     *  must never pass just because it contains 'facebook.com'. */
+    function isTrustedHost(url) {
+        if (typeof window === 'undefined' || !window.PiChatbotConfig) return false;
+        var hosts = window.PiChatbotConfig.trustedHosts;
+        if (!hosts || !hosts.length) return false;
+        try {
+            var host = new URL(url, location.href).hostname.toLowerCase();
+            return hosts.indexOf(host) !== -1;
+        } catch (e) {
+            return false;
+        }
+    }
+
+    /** The actual "may this URL become a clickable link" gate — same-origin
+     *  OR on the fixed trusted-host list (see isTrustedHost() for why the
+     *  latter exists and why it's safe: both are boundaries the customer/
+     *  catalog can never influence, unlike an arbitrary URL a product
+     *  description happens to contain). */
+    function isLinkable(url) {
+        return isSameOrigin(url) || isTrustedHost(url);
+    }
+
     /** Turns raw http(s) URLs embedded in plain text into real clickable
      *  <a> elements — built via DOM (textContent per piece), never innerHTML,
      *  so this keeps the same security invariant as the rest of the file
@@ -107,7 +144,7 @@
                 trail = trailMatch[0];
                 url = url.slice(0, url.length - trail.length);
             }
-            if (isSafeUrl(url) && isSameOrigin(url)) {
+            if (isSafeUrl(url) && isLinkable(url)) {
                 var a = document.createElement('a');
                 a.href = url;
                 a.target = '_blank';
@@ -600,6 +637,8 @@
         wait: wait,
         isSafeUrl: isSafeUrl,
         isSameOrigin: isSameOrigin,
+        isTrustedHost: isTrustedHost,
+        isLinkable: isLinkable,
         appendLinkifiedText: appendLinkifiedText,
         buildMsgBubble: buildMsgBubble,
         typeAnswerInto: typeAnswerInto,
