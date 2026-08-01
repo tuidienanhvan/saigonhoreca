@@ -634,6 +634,132 @@ try {
     // matched its own _transient_timeout_ companion rows).
 }
 
+// ── Stage 4c — deferred lead notification (2026-07-30) ──────────────────────
+// wp_mail() was measured live to take ~2000ms and return false on this
+// install — real, unacceptable latency to make a customer wait through
+// just to compose an internal email. Pi_Chatbot_Rest::queue_lead_notification()
+// defers the actual send to the `shutdown` action instead of calling
+// notify_admin_of_lead() inline from lead(). Read
+// queue_lead_notification()'s own docblock in class-rest.php before trusting
+// what this buys you — it does NOT free the PHP-FPM worker any sooner (same
+// caveat as streaming), and only helps perceived customer latency when
+// fastcgi_finish_request() is available (PHP-FPM).
+//
+// HONEST GAP: calling flush_lead_notifications() directly (as every
+// assertion below does) proves the flush logic itself is correct — it does
+// NOT prove `shutdown` actually fires on a real REST HTTP request reaching
+// this endpoint. That's a fact about WordPress's own request lifecycle
+// (WP_REST_Server::serve_request() -> die() -> the registered shutdown
+// function -> do_action('shutdown')), not something this harness can
+// exercise without a real HTTP round trip + an out-of-process mail observer
+// (LocalWP's Mailpit/MailHog). Assertion 2 below (the add_action() call
+// itself happened) is the strongest in-harness proof available.
+pi_section("lead()'s deferred notification queue (Stage 4c)");
+
+(function () {
+    global $wpdb;
+    $lead_table = Pi_Chatbot_Lead::table_name();
+
+    // ── 1 & 2: lead() queues instead of sending inline ──────────────────────
+    pi_set_private_prop('Pi_Chatbot_Rest', 'pending_lead_notifications', []);
+    $q_marker = 'pi_chatbot_test_notify_queue_' . wp_rand();
+    $q_phone = '09' . wp_rand(10000000, 99999999);
+    try {
+        $q_res = pi_rest_lead('Queue Test', $q_phone, $q_marker, '10.20.20.11');
+        pi_check('lead() accepts the submission', !is_wp_error($q_res),
+            is_wp_error($q_res) ? $q_res->get_error_code() : 'ok');
+
+        $queued = pi_get_private_prop('Pi_Chatbot_Rest', 'pending_lead_notifications');
+        pi_check('the notification is queued (not sent inline) with the exact phone submitted',
+            count($queued) === 1 && $queued[0][1] === $q_phone,
+            wp_json_encode($queued));
+
+        pi_check("has_action('shutdown', [...flush_lead_notifications]) is registered — the only link between \"queued\" and \"actually sent in production\"",
+            has_action('shutdown', ['Pi_Chatbot_Rest', 'flush_lead_notifications']) !== false);
+    } finally {
+        $wpdb->query($wpdb->prepare("DELETE FROM {$lead_table} WHERE question = %s", $q_marker));
+        pi_set_private_prop('Pi_Chatbot_Rest', 'pending_lead_notifications', []);
+    }
+
+    // ── 3: flushing sends to the theme's real contact emails ────────────────
+    pi_mail_stub();
+    try {
+        $flush_marker = 'pi_chatbot_test_notify_flush_' . wp_rand();
+        $flush_phone = '09' . wp_rand(10000000, 99999999);
+        pi_rest_lead('Flush Test', $flush_phone, $flush_marker, '10.20.20.12');
+
+        Pi_Chatbot_Rest::flush_lead_notifications();
+        $calls = pi_mail_calls();
+        $c = function_exists('saigonhouse_get_contact_info') ? saigonhouse_get_contact_info() : [];
+        $expected_to = array_values(array_filter([$c['email_primary'] ?? '', $c['email_secondary'] ?? '']));
+
+        pi_check('flushing sends exactly 1 email', count($calls) === 1, count($calls) . ' calls');
+        pi_check("the email goes to the theme's real contact emails, NOT admin_email",
+            $calls && $calls[0]['to'] === $expected_to,
+            $calls ? wp_json_encode($calls[0]['to']) : 'no call');
+        pi_check('the subject carries the phone number',
+            $calls && strpos($calls[0]['subject'], $flush_phone) !== false,
+            $calls ? $calls[0]['subject'] : 'no call');
+        pi_check('the body carries the exact name/phone/question submitted',
+            $calls
+                && strpos($calls[0]['message'], 'Flush Test') !== false
+                && strpos($calls[0]['message'], $flush_phone) !== false
+                && strpos($calls[0]['message'], $flush_marker) !== false,
+            $calls ? $calls[0]['message'] : 'no call');
+
+        // ── 4: flushing again sends nothing more (queue was drained) ────────
+        pi_mail_reset_calls();
+        Pi_Chatbot_Rest::flush_lead_notifications();
+        pi_check('a second flush with nothing queued sends zero additional emails',
+            count(pi_mail_calls()) === 0, count(pi_mail_calls()) . ' calls');
+
+        $wpdb->query($wpdb->prepare("DELETE FROM {$lead_table} WHERE question = %s", $flush_marker));
+    } finally {
+        pi_mail_unstub();
+        pi_set_private_prop('Pi_Chatbot_Rest', 'pending_lead_notifications', []);
+    }
+
+    // ── 5: a failure/throw on one queued item never blocks the OTHERS ───────
+    // 3 items, in this exact order, is deliberate: $throw_marker sits in the
+    // MIDDLE, not last. A weaker 2-item version of this test (fail, then
+    // throw) passed even with the per-item try/catch moved OUTSIDE the loop
+    // (a real regression this test is meant to catch) — with the throw as
+    // the LAST item, there is nothing queued after it to skip, so a broken
+    // "stop the whole batch on the first exception" implementation looks
+    // identical to a correct one. A 3rd item queued AFTER the thrower is
+    // what actually proves later items still get attempted.
+    $fail_marker = 'pi_chatbot_test_notify_fail_' . wp_rand();
+    $throw_marker = 'pi_chatbot_test_notify_throw_' . wp_rand();
+    $after_throw_marker = 'pi_chatbot_test_notify_after_throw_' . wp_rand();
+    try {
+        pi_rest_lead('', '09' . wp_rand(10000000, 99999999), $fail_marker, '10.20.20.13');
+        pi_rest_lead('', '09' . wp_rand(10000000, 99999999), $throw_marker, '10.20.20.14');
+        pi_rest_lead('', '09' . wp_rand(10000000, 99999999), $after_throw_marker, '10.20.20.15');
+
+        $seen_markers = [];
+        pi_mail_stub(function ($atts) use (&$seen_markers, $fail_marker, $throw_marker, $after_throw_marker) {
+            if (strpos($atts['message'], $fail_marker) !== false) { $seen_markers[] = 'fail'; return false; }
+            if (strpos($atts['message'], $throw_marker) !== false) { $seen_markers[] = 'throw'; throw new \RuntimeException('simulated mail exception'); }
+            if (strpos($atts['message'], $after_throw_marker) !== false) { $seen_markers[] = 'after_throw'; return true; }
+            return true;
+        });
+        Pi_Chatbot_Rest::flush_lead_notifications();
+
+        pi_check('all 3 queued notifications were attempted, INCLUDING the one queued after the thrower',
+            $seen_markers === ['fail', 'throw', 'after_throw'], wp_json_encode($seen_markers));
+        pi_check('the queue is empty after flushing, even though 2 of 3 items errored',
+            empty(pi_get_private_prop('Pi_Chatbot_Rest', 'pending_lead_notifications')));
+
+        $wpdb->query($wpdb->prepare(
+            "DELETE FROM {$lead_table} WHERE question IN (%s, %s, %s)",
+            $fail_marker, $throw_marker, $after_throw_marker
+        ));
+    } finally {
+        pi_mail_unstub();
+        pi_set_private_prop('Pi_Chatbot_Rest', 'pending_lead_notifications', []);
+    }
+})();
+
 // ── Stage 4b — streaming endpoint ────────────────────────────────────────────
 pi_section('ask_stream() — only eligible when context is empty (Stage 4b)');
 

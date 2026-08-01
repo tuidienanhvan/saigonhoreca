@@ -338,6 +338,14 @@ if (!function_exists('pi_check')) {
         // re-asks about the same code would otherwise see the pre-write match.
         pi_set_private_prop('Pi_Chatbot_Retriever', 'product_code_match_cache', []);
 
+        // 2026-07-30 addition, alongside Pi_Chatbot_Rest::queue_lead_notification():
+        // leads notifications are queued and flushed on the `shutdown` action
+        // rather than sent inline — `shutdown` never fires mid-suite (only
+        // when `wp eval-file` itself exits), so without this reset, every
+        // suite's lead() calls would accumulate into ONE queue and flush as a
+        // burst of real wp_mail() calls right as the whole test run ends.
+        pi_set_private_prop('Pi_Chatbot_Rest', 'pending_lead_notifications', []);
+
         foreach ([
             'pi_chatbot_known_brands',
             'pi_chatbot_taxonomy_brands',

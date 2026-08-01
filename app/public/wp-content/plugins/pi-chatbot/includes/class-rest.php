@@ -578,14 +578,101 @@ class Pi_Chatbot_Rest {
             return new WP_Error('pi_chatbot_bad_lead', 'Please enter a valid phone number.', ['status' => 400]);
         }
 
-        self::notify_admin_of_lead($req->get_param('name'), $req->get_param('phone'), $req->get_param('question'));
+        self::queue_lead_notification($req->get_param('name'), $req->get_param('phone'), $req->get_param('question'));
 
         return rest_ensure_response(['ok' => true]);
     }
 
     /**
-     * Best-effort email notification — wrapped so a mail-server failure never
-     * turns an already-recorded lead into a 500 for the customer.
+     * Pending lead notifications, flushed on `shutdown` instead of sent
+     * inline during lead(). Test hook: reset to [] between suites the same
+     * way Pi_Chatbot_LLM_Client::$stream_transport is (see
+     * tests/lib/harness.php's pi_reset_state()) — otherwise notifications
+     * queued by one suite's tests accumulate for the whole run and flush as
+     * a burst of REAL emails when `wp eval-file` exits.
+     */
+    public static $pending_lead_notifications = [];
+
+    /**
+     * 2026-07-30 fix — measured live: wp_mail() on this install takes
+     * ~2000ms and RETURNS FALSE (the local mail transport isn't configured
+     * to actually deliver — see notify_admin_of_lead()'s docblock for the
+     * separate fix to that silent failure). That was the true cause of the
+     * lead-endpoint's real, measured slowness — not something a customer
+     * should wait through just so an internal email can be composed.
+     *
+     * Queues the notification and defers the actual wp_mail() call to the
+     * `shutdown` action instead of calling notify_admin_of_lead() inline.
+     * Read this carefully before assuming what it buys you — it is NOT the
+     * same trade-off streaming makes, and it is easy to overclaim:
+     *
+     *   - Does NOT free the PHP-FPM worker any sooner. `shutdown` fires
+     *     from INSIDE the same PHP process, after the exact same amount of
+     *     total work (see flush_lead_notifications()) — worker occupancy,
+     *     and therefore this site's real concurrency ceiling
+     *     (pm.max_children=2, see the earlier streaming-latency analysis),
+     *     is completely unchanged by this.
+     *   - DOES let the CUSTOMER stop waiting sooner — but only combined with
+     *     fastcgi_finish_request() in flush_lead_notifications(), which
+     *     actually closes the HTTP response before running the deferred
+     *     work. Without that call, WP REST doesn't send a Content-Length
+     *     header, so the browser's fetch() can't resolve until the whole
+     *     PHP-FPM request (including every shutdown callback) finishes
+     *     anyway — deferring to `shutdown` alone would be pure theatre.
+     *   - Only actually does anything on PHP-FPM (the SAPI
+     *     fastcgi_finish_request() exists on). On a SAPI without an
+     *     equivalent, flush_lead_notifications() below silently falls back
+     *     to sending inline at shutdown time — later than lead()'s old
+     *     inline call, for no benefit at all on that SAPI.
+     *
+     * No has_action() de-dupe guard: add_action() with the same static
+     * callable + priority is already idempotent (WP_Hook keys callbacks by
+     * `_wp_filter_build_unique_id()`, which is deterministic for a
+     * ['ClassName','method'] callable) — a guard here would be dead code at
+     * best, and `!has_action(...)` specifically is a footgun (has_action()
+     * returns the registered priority, which can legitimately be `0`).
+     */
+    private static function queue_lead_notification($name, $phone, $question) {
+        self::$pending_lead_notifications[] = [$name, $phone, $question];
+        add_action('shutdown', [__CLASS__, 'flush_lead_notifications']);
+    }
+
+    /**
+     * Drains the queue queue_lead_notification() built, sending every pending
+     * notification. Each item is wrapped independently — a bad recipient or a
+     * thrown exception on ONE lead must not swallow the others still waiting
+     * in the same batch, and must never propagate out of a `shutdown` hook
+     * (WordPress has no caller left to hand an exception to at that point).
+     */
+    public static function flush_lead_notifications() {
+        if (empty(self::$pending_lead_notifications)) return;
+
+        if (function_exists('fastcgi_finish_request')) {
+            fastcgi_finish_request();
+        } elseif (function_exists('litespeed_finish_request')) {
+            litespeed_finish_request();
+        }
+        // No equivalent on other SAPIs (mod_php, CLI) — the notifications
+        // below still send, just without the "customer already has their
+        // response" benefit described in queue_lead_notification()'s
+        // docblock; there is nothing further to do about that here.
+
+        $pending = self::$pending_lead_notifications;
+        self::$pending_lead_notifications = [];
+
+        foreach ($pending as $item) {
+            try {
+                self::notify_admin_of_lead($item[0], $item[1], $item[2]);
+            } catch (\Throwable $e) {
+                error_log('[pi-chatbot] lead notification threw during flush: ' . $e->getMessage());
+            }
+        }
+    }
+
+    /**
+     * Sends ONE lead notification email — called only from
+     * flush_lead_notifications() (see queue_lead_notification()'s docblock
+     * for why this is no longer called inline from lead()).
      *
      * Sends to the theme's OWN real contact emails (saigonhouse_get_contact_info()
      * — the exact same source Pi_Chatbot_Retriever::contact_context()/
@@ -615,10 +702,12 @@ class Pi_Chatbot_Rest {
             . 'Name: ' . ($name ?: '(not given)') . "\n"
             . 'Phone: ' . $phone . "\n"
             . 'Last question: ' . ($question ?: '(none)') . "\n";
-        try {
-            wp_mail($to, $subject, $body);
-        } catch (\Throwable $e) {
-            error_log('[pi-chatbot] lead notification email failed: ' . $e->getMessage());
+        // 2026-07-30 fix — wp_mail() does NOT throw on failure (WP core
+        // catches PHPMailer's own exception internally and returns false),
+        // so the previous try/catch here caught almost nothing — a real
+        // delivery failure went completely unlogged. Check the return value.
+        if (!wp_mail($to, $subject, $body)) {
+            error_log('[pi-chatbot] lead notification email failed to send (wp_mail() returned false) for phone ' . $phone);
         }
     }
 
