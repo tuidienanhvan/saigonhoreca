@@ -68,6 +68,7 @@ foreach ($suites as $file => $description) {
     // Leave state clean for the NEXT suite in this same process — a suite that
     // forgot its own teardown must not poison the one after it.
     pi_http_unstub();
+    pi_mail_unstub();
     pi_reset_state();
 }
 

@@ -536,30 +536,56 @@ try {
     pi_check('an unparseable phone is rejected, not silently accepted',
         is_wp_error($bad_res) && $bad_res->get_error_code() === 'pi_chatbot_bad_lead');
 
-    // Rate limit — same per-minute-bucket pattern as feedback(), proven the same
-    // way: hammer past LEAD_RATE_LIMIT from one IP and confirm the NEXT call is
-    // rejected, not silently accepted. Every call in the loop shares the same
-    // $rl_marker so the finally block can clean up every row it wrote by a
-    // single query, not just the last one.
-    $rl_ip = '10.20.20.7';
-    $rl_marker = 'pi_chatbot_test_rest_lead_rl_' . wp_rand();
-    for ($i = 0; $i < Pi_Chatbot_Rest::LEAD_RATE_LIMIT; $i++) {
-        pi_rest_lead('', '09' . wp_rand(10000000, 99999999), $rl_marker, $rl_ip);
-    }
-    $rl_res = pi_rest_lead('', '09' . wp_rand(10000000, 99999999), $rl_marker, $rl_ip);
-    pi_check('a 6th lead submission from the same IP within a minute is rate-limited',
-        is_wp_error($rl_res) && $rl_res->get_error_code() === 'pi_chatbot_rate_limited');
+    // Rate limit — same per-minute-bucket pattern as feedback()/check_rate_limit().
+    // 2026-07-30 fix — this used to be proven by hammering LEAD_RATE_LIMIT real
+    // calls in a loop and checking the NEXT one was rejected: flaky ~1/12 runs,
+    // because the bucket key is `floor(time() / MINUTE_IN_SECONDS)` recomputed
+    // on EVERY call — a wall-clock minute rolling over mid-loop silently resets
+    // the counter, failing the assertion for a reason that has nothing to do
+    // with the code under test. Rewritten as 3 SINGLE-call assertions, each
+    // seeding the bucket directly via pi_seed_minute_bucket() (see its docblock
+    // in lib/harness.php) instead of making N real calls — atomic w.r.t. the
+    // minute boundary by construction, not by luck. Each of these 3 also closes
+    // a real, previously-unproven gap: the increment test proves a successful
+    // call ACTUALLY increments (not just "isn't rejected"), and the reject test
+    // proves a REJECTED call does NOT increment — the exact regression class
+    // the docblock at check_rate_limit() says was already fixed once for the
+    // sibling guard ("previously incremented first then compared, so a user
+    // hitting 429 who retried would push their own count even higher").
+
+    $rl_ip_limit = '10.20.20.8';
+    pi_seed_minute_bucket('pi_chatbot_leadrl_', $rl_ip_limit, Pi_Chatbot_Rest::LEAD_RATE_LIMIT);
+    $limit_res = pi_rest_lead('', '09' . wp_rand(10000000, 99999999), '', $rl_ip_limit);
+    pi_check('a lead submission at the per-minute limit is rate-limited',
+        is_wp_error($limit_res) && $limit_res->get_error_code() === 'pi_chatbot_rate_limited');
+
+    $rl_ip_incr = '10.20.20.9';
+    $incr_marker = 'pi_chatbot_test_rest_lead_incr_' . wp_rand();
+    $before_incr = pi_read_minute_bucket('pi_chatbot_leadrl_', $rl_ip_incr);
+    $incr_res = pi_rest_lead('', '09' . wp_rand(10000000, 99999999), $incr_marker, $rl_ip_incr);
+    $after_incr = pi_read_minute_bucket('pi_chatbot_leadrl_', $rl_ip_incr);
+    pi_check('a successful lead submission increments the bucket by exactly 1',
+        !is_wp_error($incr_res) && ($after_incr - $before_incr) === 1,
+        "before={$before_incr} after={$after_incr}");
+
+    $rl_ip_reject = '10.20.20.10';
+    pi_seed_minute_bucket('pi_chatbot_leadrl_', $rl_ip_reject, Pi_Chatbot_Rest::LEAD_RATE_LIMIT);
+    $before_reject = pi_read_minute_bucket('pi_chatbot_leadrl_', $rl_ip_reject);
+    $reject_res = pi_rest_lead('', '09' . wp_rand(10000000, 99999999), '', $rl_ip_reject);
+    $after_reject = pi_read_minute_bucket('pi_chatbot_leadrl_', $rl_ip_reject);
+    pi_check('a rejected lead submission does NOT increment the bucket',
+        is_wp_error($reject_res) && $reject_res->get_error_code() === 'pi_chatbot_rate_limited' && $after_reject === $before_reject,
+        "before={$before_reject} after={$after_reject}");
 } finally {
     $wpdb->query($wpdb->prepare("DELETE FROM {$lead_table} WHERE question = %s", $lead_marker));
-    if (isset($rl_marker)) {
-        $wpdb->query($wpdb->prepare("DELETE FROM {$lead_table} WHERE question = %s", $rl_marker));
+    if (isset($incr_marker)) {
+        $wpdb->query($wpdb->prepare("DELETE FROM {$lead_table} WHERE question = %s", $incr_marker));
     }
-    if (isset($rl_ip)) {
-        $wpdb->query($wpdb->prepare(
-            "DELETE FROM {$wpdb->options} WHERE option_name LIKE %s",
-            $wpdb->esc_like('_transient_pi_chatbot_leadrl_' . md5($rl_ip)) . '%'
-        ));
-    }
+    // pi_reset_state() (called between suites in run-all.php) already sweeps
+    // every _transient_pi_chatbot_% row, so the seeded buckets above are
+    // covered by that existing pattern — no bespoke LIKE cleanup needed here
+    // (the old version's LIKE pattern was anchored wrong anyway and never
+    // matched its own _transient_timeout_ companion rows).
 }
 
 // ── Stage 4b — streaming endpoint ────────────────────────────────────────────

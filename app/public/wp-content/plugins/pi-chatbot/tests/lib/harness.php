@@ -182,6 +182,138 @@ if (!function_exists('pi_check')) {
         return pi_http_response(['choices' => [['message' => ['content' => $content]]]]);
     }
 
+    // ── Rate-limit bucket seeding ──────────────────────────────────────────
+
+    /**
+     * Directly seeds a per-minute rate-limit bucket to $count — for a test
+     * that needs to prove a limit/increment guard WITHOUT making N sequential
+     * real calls (which was the actual cause of a real, repeatedly-observed
+     * flake: Pi_Chatbot_Rest::lead()/feedback()/check_rate_limit() all key a
+     * bucket on `floor(time() / MINUTE_IN_SECONDS)`, computed FRESH on every
+     * call — a test hammering 6 real calls in a row has a real, measured
+     * ~1/12 chance one of them lands after a wall-clock minute rolled over
+     * mid-loop, silently resetting the counter and failing the assertion for
+     * a reason that has nothing to do with the code under test).
+     *
+     * Writes via the IDENTICAL `INSERT ... ON DUPLICATE KEY UPDATE` shape
+     * production uses (see Pi_Chatbot_Rest::lead()) — same table, same
+     * columns, same 'no' autoload, same key format — so the row this seeds
+     * IS the row production's own increment touches next, not a look-alike
+     * the real code would silently ignore. Also seeds the companion
+     * `_transient_timeout_` row production writes via add_option(), so a
+     * seeded bucket is indistinguishable from one a real request built.
+     *
+     * Seeds BOTH the current bucket and the next one (bucket+1) — this is
+     * what makes a test built on this helper immune to the same
+     * minute-boundary race, not merely less likely to hit it: regardless of
+     * which bucket a call actually lands in (current, or the very next one
+     * if a rollover happens between seeding and the call), it was already
+     * seeded.
+     *
+     * @param string $key_prefix One of 'pi_chatbot_leadrl_', 'pi_chatbot_fbrl_',
+     *   'pi_chatbot_rl_' — the exact prefix the REST method under test uses.
+     * @param string $ip
+     * @param int    $count
+     */
+    function pi_seed_minute_bucket($key_prefix, $ip, $count) {
+        global $wpdb;
+        $bucket = (int) floor(time() / MINUTE_IN_SECONDS);
+        foreach ([$bucket, $bucket + 1] as $b) {
+            $key = $key_prefix . md5($ip) . '_' . $b;
+            $wpdb->query($wpdb->prepare(
+                "INSERT INTO {$wpdb->options} (option_name, option_value, autoload)
+                 VALUES (%s, %s, 'no')
+                 ON DUPLICATE KEY UPDATE option_value = VALUES(option_value)",
+                '_transient_' . $key, (string) $count
+            ));
+            $wpdb->query($wpdb->prepare(
+                "INSERT INTO {$wpdb->options} (option_name, option_value, autoload)
+                 VALUES (%s, %s, 'no')
+                 ON DUPLICATE KEY UPDATE option_value = VALUES(option_value)",
+                '_transient_timeout_' . $key, (string) (time() + 2 * MINUTE_IN_SECONDS)
+            ));
+        }
+    }
+
+    /**
+     * Reads the SAME two-bucket window pi_seed_minute_bucket() seeds (current
+     * + next), summed — so "did the real call I just made actually increment
+     * the bucket" can be asserted without caring which of the two buckets it
+     * landed in.
+     */
+    function pi_read_minute_bucket($key_prefix, $ip) {
+        global $wpdb;
+        $bucket = (int) floor(time() / MINUTE_IN_SECONDS);
+        $total = 0;
+        foreach ([$bucket, $bucket + 1] as $b) {
+            $key = $key_prefix . md5($ip) . '_' . $b;
+            $total += (int) $wpdb->get_var($wpdb->prepare(
+                "SELECT option_value FROM {$wpdb->options} WHERE option_name = %s",
+                '_transient_' . $key
+            ));
+        }
+        return $total;
+    }
+
+    // ── Mail stubbing ───────────────────────────────────────────────────────
+
+    /**
+     * Intercepts every wp_mail() call for the duration of a test — same role
+     * as pi_http_stub() above, and for the same reason: a test suite must run
+     * deterministically, offline, and without side effects a real run
+     * shouldn't have (here: not spamming a real inbox every time the lead
+     * rate-limit test's loop calls Pi_Chatbot_Rest::notify_admin_of_lead()).
+     * Uses the `pre_wp_mail` filter (WP 5.7+) — returning non-null
+     * short-circuits wp_mail() entirely and becomes its return value.
+     *
+     * @param callable|null $responder function(array $atts): bool — $atts has
+     *   to/subject/message/headers/attachments. Return true/false to simulate
+     *   success/failure. A responder returning null (or omitted entirely)
+     *   defaults to success — a forgetful test can never leak a real send,
+     *   since null is coerced to true here rather than passed through (unlike
+     *   pi_http_stub(), where null falls through to a canned response — mail
+     *   has no safe "canned response" other than "don't actually send").
+     */
+    function pi_mail_stub(callable $responder = null) {
+        pi_mail_reset_calls();
+        pi_mail_unstub();
+        if ($responder === null) $responder = function ($atts) { return true; };
+
+        $filter = function ($pre, $atts) use ($responder) {
+            pi_mail_record($atts);
+            $result = $responder($atts);
+            return $result === null ? true : $result;
+        };
+        pi_mail_current_filter($filter);
+        add_filter('pre_wp_mail', $filter, 10, 2);
+    }
+
+    function pi_mail_unstub() {
+        $existing = pi_mail_current_filter();
+        if ($existing) {
+            remove_filter('pre_wp_mail', $existing, 10);
+            pi_mail_current_filter(false);
+        }
+    }
+
+    /** Holder for the active filter closure so it can be removed by identity. */
+    function pi_mail_current_filter($set = null) {
+        static $filter = null;
+        if ($set === false) { $filter = null; return null; }
+        if ($set !== null) { $filter = $set; return $filter; }
+        return $filter;
+    }
+
+    function pi_mail_record($call = null) {
+        static $calls = [];
+        if ($call === 'RESET') { $calls = []; return []; }
+        if ($call !== null) { $calls[] = $call; }
+        return $calls;
+    }
+
+    function pi_mail_calls() { return pi_mail_record(); }
+    function pi_mail_reset_calls() { pi_mail_record('RESET'); }
+
     // ── State isolation ────────────────────────────────────────────────────
 
     /**
