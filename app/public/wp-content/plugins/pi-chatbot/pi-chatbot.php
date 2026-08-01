@@ -86,12 +86,17 @@ function pi_chatbot_settings() {
         'top_k'      => 6,
         'rate_limit' => 10, // questions / minute / IP
         // Global (site-wide, not per-IP) cap on real LLM7 HTTP attempts per calendar
-        // day — see class-budget.php. 300/day is sized for LLM7's free tier: even the
-        // max-accuracy path's worst case (router + generate + retry + rerank + verify
-        // + retry-verify = 6 calls) leaves room for 50 such requests/day, and the
-        // common fast-path question (router + generate = 2 calls) leaves room for 150.
-        // Raise this if paid/higher-quota keys are configured.
-        'llm_daily_budget' => 300,
+        // day — see class-budget.php. 2026-07-30: raised 300 -> 600, sized against
+        // real usage capacity (3 configured LLM7 keys, ~3M tokens/day between them),
+        // not LLM7's raw free-tier ceiling — the OLD 300 was never actually the
+        // binding constraint: a measured 10-users/day workload (5-8 questions each,
+        // mostly fast-path) uses ~125-200 calls and ~250k-400k tokens, comfortably
+        // under 15% of the token budget. 600 gives real headroom for a heavier day
+        // (many max-accuracy-path questions — router + generate + retry + rerank +
+        // verify + retry-verify = 6 calls each — without the daily budget becoming
+        // the thing that degrades answers first, well before the token budget would).
+        // Raise further if paid/higher-quota keys are configured.
+        'llm_daily_budget' => 600,
         // Router — ON BY DEFAULT. It is now the ONLY intent classifier (the old
         // rule-based Vietnamese keyword matching in class-retriever.php was
         // removed by product decision, trading instant/free classification
