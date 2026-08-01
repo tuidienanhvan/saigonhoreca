@@ -35,6 +35,21 @@ class Pi_Api_System {
             'callback' => [self::class, 'update_security_policy'],
             'permission_callback' => $admin
         ]);
+        register_rest_route($ns, '/system/app-settings', [
+            'methods'  => 'GET',
+            'callback' => [self::class, 'get_app_settings'],
+            'permission_callback' => $admin
+        ]);
+        register_rest_route($ns, '/system/app-settings', [
+            'methods'  => 'PUT',
+            'callback' => [self::class, 'update_app_settings'],
+            'permission_callback' => $admin
+        ]);
+        register_rest_route($ns, '/system/app-settings/test-mail', [
+            'methods'  => 'POST',
+            'callback' => [self::class, 'test_mail'],
+            'permission_callback' => $admin
+        ]);
         register_rest_route($ns, '/system/sync-permalinks', [
             'methods'  => 'POST',
             'callback' => [self::class, 'sync_permalinks'],
@@ -168,6 +183,117 @@ class Pi_Api_System {
         }
 
         return new \WP_REST_Response(array_merge(['success' => true], $policy), 200);
+    }
+
+    const APP_SETTINGS_OPTION = 'pi_app_settings';
+    const APP_SETTINGS_DEFAULTS = [
+        'app_name'         => 'PiDashboard Enterprise',
+        'api_port'         => '8300',
+        'jwt_timeout'      => 86400,
+        'ai_timeout'       => 180000,
+        'maintenance_mode' => false,
+        'smtp_host'        => '',
+        'smtp_port'        => '587',
+        'smtp_user'        => '',
+        'smtp_pass'        => '',
+        'smtp_encryption'  => 'TLS',
+        'max_upload_mb'    => 64,
+        'allowed_exts'     => 'png, jpg, webp, pdf, zip, json',
+    ];
+
+    public static function get_app_settings() {
+        $saved = get_option(self::APP_SETTINGS_OPTION, []);
+        if (!is_array($saved)) $saved = [];
+        $settings = array_merge(self::APP_SETTINGS_DEFAULTS, $saved);
+        // Không trả mật khẩu SMTP thật qua GET — chỉ báo đã có hay chưa.
+        $settings['smtp_pass'] = $settings['smtp_pass'] !== '' ? '••••••••••••••••' : '';
+        $settings['smtp_pass_set'] = !empty($saved['smtp_pass']);
+        return new \WP_REST_Response($settings, 200);
+    }
+
+    public static function update_app_settings(\WP_REST_Request $request) {
+        $p = $request->get_json_params();
+        if (!is_array($p)) $p = [];
+
+        $existing = get_option(self::APP_SETTINGS_OPTION, []);
+        if (!is_array($existing)) $existing = [];
+
+        $settings = [];
+        foreach (self::APP_SETTINGS_DEFAULTS as $key => $default) {
+            if (!array_key_exists($key, $p)) {
+                $settings[$key] = $existing[$key] ?? $default;
+                continue;
+            }
+            $val = $p[$key];
+            // Giữ nguyên mật khẩu cũ nếu client gửi lại chuỗi mask (không đổi pass).
+            if ($key === 'smtp_pass' && $val === '••••••••••••••••') {
+                $settings[$key] = $existing['smtp_pass'] ?? '';
+                continue;
+            }
+            if (is_bool($default)) { $settings[$key] = (bool) $val; continue; }
+            if (is_int($default)) { $settings[$key] = (int) $val; continue; }
+            $settings[$key] = sanitize_text_field((string) $val);
+        }
+
+        update_option(self::APP_SETTINGS_OPTION, $settings, false);
+        if (function_exists('pi_audit_log')) {
+            $safe = $settings; $safe['smtp_pass'] = $safe['smtp_pass'] !== '' ? '(set)' : '';
+            pi_audit_log('app_settings.updated', 'system', 0, $safe);
+        }
+
+        $response = $settings;
+        $response['smtp_pass'] = $settings['smtp_pass'] !== '' ? '••••••••••••••••' : '';
+        $response['success'] = true;
+        return new \WP_REST_Response($response, 200);
+    }
+
+    public static function test_mail(\WP_REST_Request $request) {
+        $p = $request->get_json_params();
+        if (!is_array($p)) $p = [];
+        $to = sanitize_email((string) ($p['to'] ?? wp_get_current_user()->user_email));
+        if (!$to) {
+            return new \WP_REST_Response(['success' => false, 'message' => 'Thiếu địa chỉ email nhận thử nghiệm.'], 400);
+        }
+
+        $settings = array_merge(self::APP_SETTINGS_DEFAULTS, get_option(self::APP_SETTINGS_OPTION, []));
+        if (empty($settings['smtp_host']) || empty($settings['smtp_user']) || empty($settings['smtp_pass'])) {
+            return new \WP_REST_Response(['success' => false, 'message' => 'Chưa cấu hình đủ SMTP Host/Username/Password.'], 400);
+        }
+
+        // Cấu hình PHPMailer đúng bằng SMTP đã nhập cho riêng lần gửi này (không
+        // đổi mail transport mặc định của WP) — dùng hook chuẩn phpmailer_init.
+        $configure = function (\PHPMailer\PHPMailer\PHPMailer $mailer) use ($settings) {
+            $mailer->isSMTP();
+            $mailer->Host = $settings['smtp_host'];
+            $mailer->Port = (int) $settings['smtp_port'];
+            $mailer->SMTPAuth = true;
+            $mailer->Username = $settings['smtp_user'];
+            $mailer->Password = $settings['smtp_pass'];
+            $mailer->SMTPSecure = strtolower($settings['smtp_encryption']) === 'ssl' ? 'ssl' : 'tls';
+            $mailer->From = $settings['smtp_user'];
+            $mailer->FromName = $settings['app_name'] ?: 'PiDashboard';
+        };
+
+        add_action('phpmailer_init', $configure);
+        $sent = wp_mail(
+            $to,
+            '[' . ($settings['app_name'] ?: 'PiDashboard') . '] Email thử nghiệm SMTP',
+            'Đây là email thử nghiệm cấu hình SMTP từ System Settings — nếu bạn nhận được, cấu hình đã hoạt động đúng.'
+        );
+        remove_action('phpmailer_init', $configure);
+
+        global $phpmailer;
+        $error = ($phpmailer instanceof \PHPMailer\PHPMailer\PHPMailer) ? $phpmailer->ErrorInfo : '';
+
+        if (!$sent) {
+            return new \WP_REST_Response(['success' => false, 'message' => $error ?: 'Gửi thất bại — kiểm tra lại thông tin SMTP.'], 400);
+        }
+
+        if (function_exists('pi_audit_log')) {
+            pi_audit_log('app_settings.test_mail_sent', 'system', 0, ['to' => $to]);
+        }
+
+        return new \WP_REST_Response(['success' => true, 'message' => "Đã gửi email thử nghiệm tới {$to}."], 200);
     }
 
     public static function sync_permalinks(\WP_REST_Request $request) {
