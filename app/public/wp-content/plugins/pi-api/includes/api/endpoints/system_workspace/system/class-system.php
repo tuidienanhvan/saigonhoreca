@@ -25,6 +25,16 @@ class Pi_Api_System {
             'callback' => [self::class, 'update_settings'],
             'permission_callback' => $admin
         ]);
+        register_rest_route($ns, '/system/security-policy', [
+            'methods'  => 'GET',
+            'callback' => [self::class, 'get_security_policy'],
+            'permission_callback' => $admin
+        ]);
+        register_rest_route($ns, '/system/security-policy', [
+            'methods'  => 'PUT',
+            'callback' => [self::class, 'update_security_policy'],
+            'permission_callback' => $admin
+        ]);
         register_rest_route($ns, '/system/sync-permalinks', [
             'methods'  => 'POST',
             'callback' => [self::class, 'sync_permalinks'],
@@ -119,6 +129,45 @@ class Pi_Api_System {
             flush_rewrite_rules();
         }
         return new \WP_REST_Response(['success' => true], 200);
+    }
+
+    const SECURITY_POLICY_OPTION = 'pi_security_policy';
+    const SECURITY_POLICY_DEFAULTS = [
+        'jwt_expiry_hours'        => 24,
+        'inactive_timeout_mins'   => 30,
+        'max_concurrent_sessions' => 3,
+        'enforce_2fa'             => true,
+        'max_failed_attempts'     => 5,
+        'lockout_duration_mins'   => 15,
+        'min_password_length'     => 12,
+        'require_numbers'         => true,
+        'require_symbols'         => true,
+        'require_mixed_case'      => true,
+        'password_rotate_days'    => 90,
+    ];
+
+    public static function get_security_policy() {
+        $saved = get_option(self::SECURITY_POLICY_OPTION, []);
+        if (!is_array($saved)) $saved = [];
+        return new \WP_REST_Response(array_merge(self::SECURITY_POLICY_DEFAULTS, $saved), 200);
+    }
+
+    public static function update_security_policy(\WP_REST_Request $request) {
+        $p = $request->get_json_params();
+        if (!is_array($p)) $p = [];
+
+        $policy = [];
+        foreach (self::SECURITY_POLICY_DEFAULTS as $key => $default) {
+            if (!array_key_exists($key, $p)) { $policy[$key] = $default; continue; }
+            $policy[$key] = is_bool($default) ? (bool) $p[$key] : (int) $p[$key];
+        }
+
+        update_option(self::SECURITY_POLICY_OPTION, $policy, false);
+        if (function_exists('pi_audit_log')) {
+            pi_audit_log('security_policy.updated', 'system', 0, $policy);
+        }
+
+        return new \WP_REST_Response(array_merge(['success' => true], $policy), 200);
     }
 
     public static function sync_permalinks(\WP_REST_Request $request) {
