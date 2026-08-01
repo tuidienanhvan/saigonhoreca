@@ -46,8 +46,19 @@ $res = pi_rest_ask(str_repeat('x', Pi_Chatbot_Rest::MAX_MESSAGE_LENGTH + 1));
 pi_check('over-length message -> 400 pi_chatbot_too_long',
     is_wp_error($res) && $res->get_error_code() === 'pi_chatbot_too_long');
 
+// 2026-07-30 fix — this call is VALID (unlike the two above, which fail
+// validation before any HTTP call happens at all), so it proceeds into the
+// real ask() pipeline. It previously ran with NO stub installed — a real,
+// unstubbed Pi_Chatbot_Router::enrich()/Pi_Chatbot_Generator::answer() call,
+// against a FIXED message string every run, so the first run after any cache
+// expiry silently spent real LLM7 quota and the assertion's leniency
+// (`!is_wp_error() || code !== 'too_long'`) made none of that visible.
+// Violates this file's own docblock promise (line 5-7: "every LLM call is
+// intercepted... deterministic and for free").
+pi_http_stub(function () { return pi_http_content('ok'); });
 $res = pi_rest_ask(str_repeat('x', Pi_Chatbot_Rest::MAX_MESSAGE_LENGTH));
 pi_check('exactly MAX_MESSAGE_LENGTH is accepted (boundary, not off-by-one)', !is_wp_error($res) || $res->get_error_code() !== 'pi_chatbot_too_long');
+pi_http_unstub();
 
 // ── sanitize_history() ───────────────────────────────────────────────────────
 // The REST args schema only checks that 'history' is an array — everything
@@ -161,14 +172,49 @@ pi_section('ask() — rate limiting');
 
 pi_with_settings(['router_enabled' => false, 'rate_limit' => 3], function () {
     pi_http_stub(function () { return pi_http_content('ok'); });
-    $ip = '10.10.10.4';
-    $last = null;
-    for ($i = 0; $i < 4; $i++) {
-        $last = pi_rest_ask('câu hỏi khác nhau mỗi lần ' . wp_rand(), $ip);
-    }
-    pi_check('the 4th request within a minute, over a limit of 3, is 429',
-        is_wp_error($last) && $last->get_error_code() === 'pi_chatbot_rate_limited',
-        is_wp_error($last) ? $last->get_error_code() : 'not an error');
+
+    // 2026-07-30 fix — this used to hammer 4 back-to-back real ask() calls
+    // from ONE ip and assert the 4th was rejected. FALSE CONFIDENCE, found
+    // during the lead-rate-limit-flake investigation: check_rate_limit()
+    // calls check_min_interval() FIRST (its own 1-second delta-based guard,
+    // unrelated to the per-minute bucket below), so all 4 calls actually
+    // tripped THAT guard — the per-minute bucket was never reached. Both
+    // guards return the identical 'pi_chatbot_rate_limited' code, so the old
+    // assertion could not tell them apart; deleting the entire per-minute
+    // bucket block in check_rate_limit() left this test green.
+    //
+    // Rewritten using a FRESH, never-seen IP per assertion + the same
+    // pi_seed_minute_bucket()/pi_read_minute_bucket() helpers the lead()
+    // rate-limit tests use — check_min_interval() keys on md5(ip) with no
+    // existing row for a brand-new IP, so its FIRST call always passes that
+    // guard regardless of timing, which eliminates min-interval from the
+    // picture BY CONSTRUCTION rather than fighting it with a backdated
+    // timestamp (which would itself reopen the exact minute-boundary race
+    // just fixed for lead(), and would run the full ask() pipeline — real
+    // LLM calls, real Log::record() rows — 3 extra times instead of 1).
+
+    $limit_ip = '10.10.10.40';
+    pi_seed_minute_bucket('pi_chatbot_rl_', $limit_ip, 3);
+    $limit_res = pi_rest_ask('câu hỏi tại ngưỡng ' . wp_rand(), $limit_ip);
+    pi_check('a request at the per-minute limit is rejected by the BUCKET (fresh IP rules out min-interval)',
+        is_wp_error($limit_res) && $limit_res->get_error_code() === 'pi_chatbot_rate_limited');
+
+    $incr_ip = '10.10.10.41';
+    $before_incr = pi_read_minute_bucket('pi_chatbot_rl_', $incr_ip);
+    $incr_res = pi_rest_ask('câu hỏi tăng đếm ' . wp_rand(), $incr_ip);
+    $after_incr = pi_read_minute_bucket('pi_chatbot_rl_', $incr_ip);
+    pi_check('a successful request increments the per-minute bucket by exactly 1',
+        !is_wp_error($incr_res) && ($after_incr - $before_incr) === 1,
+        "before={$before_incr} after={$after_incr}");
+
+    $reject_ip = '10.10.10.42';
+    pi_seed_minute_bucket('pi_chatbot_rl_', $reject_ip, 3);
+    $before_reject = pi_read_minute_bucket('pi_chatbot_rl_', $reject_ip);
+    $reject_res = pi_rest_ask('câu hỏi bị từ chối ' . wp_rand(), $reject_ip);
+    $after_reject = pi_read_minute_bucket('pi_chatbot_rl_', $reject_ip);
+    pi_check('a rejected request does NOT increment the per-minute bucket',
+        is_wp_error($reject_res) && $reject_res->get_error_code() === 'pi_chatbot_rate_limited' && $after_reject === $before_reject,
+        "before={$before_reject} after={$after_reject}");
 
     $other_ip_res = pi_rest_ask('câu hỏi từ ip khác ' . wp_rand(), '10.10.10.5');
     pi_check('a different IP has its own, unaffected bucket', !is_wp_error($other_ip_res));
