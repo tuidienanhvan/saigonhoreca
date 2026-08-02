@@ -4,6 +4,17 @@ if (!defined('ABSPATH')) exit;
 class Pi_Multilang_Translation {
     const CRON_HOOK = 'pi_multilang_do_auto_translate';
 
+    /**
+     * Cờ chống ĐỆ QUY. wp_insert_post() bắn hook `save_post`, mà on_save_post()
+     * lại lên lịch dịch tiếp → bản dịch tự đẻ ra bản dịch, vô hạn.
+     *
+     * Sự cố thật trên saigonhoreca.local (27/07 → 01/08/2026): 1 page nguồn
+     * "Liên hệ" duy nhất sinh ra 612 page "Contact", MỖI BẢN MỘT
+     * translation_group khác nhau — nên mọi chốt chặn dựa trên group đều vô
+     * dụng. Kèm theo 148 "About Saigon Horeca". Tất cả draft, author 0.
+     */
+    private static $translating = false;
+
     public static function init() {
         add_action('save_post', [__CLASS__, 'on_save_post'], 10, 3);
         add_action(self::CRON_HOOK, [__CLASS__, 'run_scheduled_translate'], 10, 2);
@@ -25,6 +36,7 @@ class Pi_Multilang_Translation {
      * dozens of other things.
      */
     public static function on_save_post($post_id, $post, $update) {
+        if (self::$translating) return; // đang tự tạo bản dịch — không dịch tiếp
         if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
         if (wp_is_post_revision($post_id)) return;
         if ($post->post_type === 'attachment' || $post->post_type === 'nav_menu_item') return;
@@ -116,17 +128,62 @@ class Pi_Multilang_Translation {
             if (!$translated_content) return false;
         }
 
+        // ─────────────────────────────────────────────────────────────────
+        // 1 group = TỐI ĐA 1 bản dịch EN. Đã có thì CẬP NHẬT, không tạo mới.
+        //
+        // 2026-08-02: chốt chặn trùng trước đây chỉ nằm ở on_save_post() nên
+        // đường thủ công (handle_manual_translate — nút "Dịch ngay") hoàn toàn
+        // không được bảo vệ: mỗi lần bấm tạo thêm 1 draft. Hậu quả thật trên
+        // saigonhoreca.local: 612 page "Contact" + 148 "About Saigon Horeca"
+        // + 12 "Shopping Cart", đều draft/author 0, tích tụ 27/07 → 01/08.
+        // Nay đặt chốt NGAY TRONG do_translate() — chỗ duy nhất thực sự tạo
+        // bản dịch — để cả đường cron lẫn đường thủ công đều đi qua nó.
+        // ─────────────────────────────────────────────────────────────────
+        $existing = get_posts([
+            'post_type'      => $post->post_type,
+            'post_status'    => 'any',
+            'meta_query'     => [
+                'relation' => 'AND',
+                ['key' => 'pi_translation_group', 'value' => $group],
+                ['key' => 'pi_language', 'value' => 'en'],
+            ],
+            'fields'         => 'ids',
+            'posts_per_page' => 1,
+        ]);
+
+        if (!empty($existing)) {
+            $existing_id = (int) $existing[0];
+            wp_update_post([
+                'ID'           => $existing_id,
+                'post_title'   => $translated_title,
+                'post_content' => $translated_content,
+            ]);
+            return $existing_id;
+        }
+
+        self::$translating = true;
         $new_post_id = wp_insert_post([
             'post_title'   => $translated_title,
             'post_content' => $translated_content,
             'post_status'  => 'draft', // always a draft — never auto-published
             'post_type'    => $post->post_type,
+            // Không để trống: thiếu post_author thì WP ghi 0, bản dịch thành
+            // "không có tác giả" và không lọc được theo user trong wp-admin.
+            'post_author'  => $post->post_author,
+            // ⚡ PHẢI dùng meta_input, KHÔNG được update_post_meta() sau khi
+            // insert. WP ghi meta_input TRƯỚC khi bắn `save_post`, nên khi
+            // on_save_post() chạy trên bản dịch này thì pi_language='en' đã
+            // có sẵn và nó return ngay. Nếu set meta sau insert (bản cũ), hook
+            // thấy post chưa có ngôn ngữ → tưởng là tiếng Việt → dịch tiếp →
+            // đệ quy vô hạn. Đây chính là gốc của 612 page "Contact".
+            'meta_input'   => [
+                'pi_language'          => 'en',
+                'pi_translation_group' => $group,
+            ],
         ]);
+        self::$translating = false;
+
         if (is_wp_error($new_post_id)) return false;
-
-        update_post_meta($new_post_id, 'pi_language', 'en');
-        update_post_meta($new_post_id, 'pi_translation_group', $group);
-
         return $new_post_id;
     }
 
