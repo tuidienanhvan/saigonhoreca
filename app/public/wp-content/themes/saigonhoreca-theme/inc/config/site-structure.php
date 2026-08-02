@@ -221,23 +221,23 @@ add_filter('pi_leads_contact_info', function () {
 });
 
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-// LEGACY WRAPPERS (backward compat — prefer Pi\Dashboard\SiteStructure directly)
+// SITE STRUCTURE API
+//
+// 2026-08-02: gỡ sạch phụ thuộc `\PiDashboardV2\*`. Namespace đó KHÔNG tồn
+// tại ở bất kỳ đâu trong wp-content — plugin `pi-dashboard-v2` chưa từng được
+// cài trên site này. Mọi hàm dưới đây từng chỉ là vỏ bọc gọi sang class ma đó
+// rồi trả stub 0, khiến các nút "Sync" trên dashboard im lặng không làm gì.
+// Nay theme tự làm, giống cách sgh_dashboard_sync_menu() vẫn làm với menu.
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 if (!function_exists('sgh_get_pages_definition')) {
     function sgh_get_pages_definition() {
-        if (class_exists('\\PiDashboardV2\\SiteStructure')) {
-            return \PiDashboardV2\SiteStructure::getPages();
-        }
         return sgh_register_pages_structure([]);
     }
 }
 
 if (!function_exists('sgh_get_categories_definition')) {
     function sgh_get_categories_definition() {
-        if (class_exists('\\PiDashboardV2\\SiteStructure')) {
-            return \PiDashboardV2\SiteStructure::getCategories();
-        }
         return sgh_register_categories_structure([]);
     }
 }
@@ -256,11 +256,6 @@ if (!function_exists('sgh_sync_pages')) {
      * menu. Idempotent: page đã có thì đếm `skipped`, KHÔNG đụng nội dung.
      */
     function sgh_sync_pages() {
-        if (class_exists('\\PiDashboardV2\\SiteSync')) {
-            $result = \PiDashboardV2\SiteSync::syncPages();
-            return $result['data'] + ['log' => $result['log']];
-        }
-
         $created = 0;
         $updated = 0;
         $skipped = 0;
@@ -319,31 +314,85 @@ if (!function_exists('sgh_sync_pages')) {
 }
 
 if (!function_exists('sgh_sync_categories')) {
+    /** Tạo các category trong bản khai nếu thiếu. Idempotent, CHỈ THÊM. */
     function sgh_sync_categories() {
-        if (class_exists('\\PiDashboardV2\\SiteSync')) {
-            $result = \PiDashboardV2\SiteSync::syncCategories();
-            return $result['data'] + ['log' => $result['log']];
+        $created = 0;
+        $skipped = 0;
+        $log     = [];
+
+        foreach (sgh_get_categories_definition() as $slug => $def) {
+            $slug = sanitize_title($slug);
+            if (get_term_by('slug', $slug, 'category')) {
+                $skipped++;
+                $log[] = "= đã có: $slug";
+                continue;
+            }
+            $res = wp_insert_term($def['name'] ?? $slug, 'category', [
+                'slug'        => $slug,
+                'description' => $def['description'] ?? '',
+            ]);
+            if (is_wp_error($res)) {
+                $log[] = "! lỗi tạo '$slug': " . $res->get_error_message();
+                continue;
+            }
+            $created++;
+            $log[] = "+ đã tạo: $slug — " . ($def['name'] ?? $slug);
         }
-        return ['created' => 0, 'skipped' => 0, 'log' => ['Pi Dashboard plugin not active.']];
+
+        if (!$created) $log[] = 'Không có gì thay đổi.';
+        return ['created' => $created, 'skipped' => $skipped, 'log' => $log];
     }
 }
 
 if (!function_exists('sgh_cleanup_stale_categories')) {
+    /**
+     * Xoá category "rác" — CHỈ những cái vừa KHÔNG có trong bản khai VỪA
+     * KHÔNG có bài nào.
+     *
+     * ⚠️ Cố ý KHÔNG xoá theo kiểu "không có trong bản khai thì xoá". Bản khai
+     * hiện chỉ liệt kê 3 category trong khi site có 8, và 5 cái ngoài bản khai
+     * đang chứa bài thật (Thiết bị Bếp Công Nghiệp 5 bài, Saigon Horeca 3
+     * bài...). Xoá máy móc theo bản khai sẽ mất nội dung thật.
+     * Category có bài nhưng ngoài bản khai → chỉ BÁO CÁO, người quyết định.
+     */
     function sgh_cleanup_stale_categories() {
-        if (class_exists('\\PiDashboardV2\\SiteSync')) {
-            $result = \PiDashboardV2\SiteSync::cleanupStaleCategories();
-            return $result['data'] + ['log' => $result['log']];
+        $defined = array_map('sanitize_title', array_keys(sgh_get_categories_definition()));
+        $default = (int) get_option('default_category');
+        $deleted = 0;
+        $log     = [];
+
+        foreach (get_categories(['hide_empty' => false]) as $cat) {
+            if (in_array($cat->slug, $defined, true)) continue;
+            if ((int) $cat->term_id === $default) { $log[] = "~ giữ (category mặc định): {$cat->slug}"; continue; }
+
+            if ($cat->count > 0) {
+                $log[] = "~ GIỮ (ngoài bản khai nhưng có {$cat->count} bài): {$cat->slug} — cần người xem xét";
+                continue;
+            }
+            $res = wp_delete_term($cat->term_id, 'category');
+            if (is_wp_error($res)) { $log[] = "! lỗi xoá {$cat->slug}: " . $res->get_error_message(); continue; }
+            $deleted++;
+            $log[] = "- đã xoá (rỗng, ngoài bản khai): {$cat->slug}";
         }
-        return ['deleted' => 0, 'log' => ['Pi Dashboard plugin not active.']];
+
+        if (!$deleted) $log[] = 'Không có category rỗng nào cần xoá.';
+        return ['deleted' => $deleted, 'log' => $log];
     }
 }
 
 if (!function_exists('sgh_reset_all')) {
+    /**
+     * KHÔNG hỗ trợ. Đây là thao tác xoá hàng loạt toàn site (page, category,
+     * menu). Bản cũ uỷ quyền cho \PiDashboardV2\SiteSync::resetAll() — class
+     * không tồn tại nên nó luôn trả 0 và người bấm tưởng "không có gì để xoá".
+     *
+     * Cố ý KHÔNG viết lại: một nút bấm nhầm sẽ xoá sạch nội dung thật mà không
+     * có đường lùi. Cần reset thì dùng công cụ riêng, có backup trước.
+     */
     function sgh_reset_all() {
-        if (class_exists('\\PiDashboardV2\\SiteSync')) {
-            $result = \PiDashboardV2\SiteSync::resetAll();
-            return $result['data'] + ['log' => $result['log']];
-        }
-        return ['total_deleted' => 0, 'log' => ['Pi Dashboard plugin not active.']];
+        return [
+            'total_deleted' => 0,
+            'log' => ['Reset toàn site KHÔNG được hỗ trợ trong theme — cố ý, để tránh xoá nhầm dữ liệu thật. Hãy backup rồi dùng công cụ riêng.'],
+        ];
     }
 }

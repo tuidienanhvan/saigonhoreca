@@ -108,7 +108,9 @@ class Pi_Api_System {
     public static function get_status() {
         global $wpdb;
         $current_pl  = (string) get_option('permalink_structure', '');
-        $expected_pl = class_exists('\\PiDashboardV2\\SiteStructure') ? \PiDashboardV2\SiteStructure::getPermalinkStructure() : '';
+        // 2026-08-02: lấy qua filter theme cung cấp thay vì \PiDashboardV2\SiteStructure
+        // (namespace không tồn tại — trước đây field này luôn rỗng).
+        $expected_pl = (string) apply_filters('pi_dashboard_permalink_structure', '');
 
         $deploy_status = [
             'htaccess' => file_exists(ABSPATH . '.htaccess'),
@@ -296,10 +298,48 @@ class Pi_Api_System {
         return new \WP_REST_Response(['success' => true, 'message' => "Đã gửi email thử nghiệm tới {$to}."], 200);
     }
 
+    /**
+     * 2026-08-02: viết lại, bỏ `\PiDashboardV2\SiteSync` (không tồn tại — route
+     * này trước đây luôn trả HTTP 400). Nay đặt permalink theo đúng cấu trúc
+     * theme khai qua filter `pi_dashboard_permalink_structure`.
+     */
     public static function sync_permalinks(\WP_REST_Request $request) {
-        if (!class_exists('\\PiDashboardV2\\SiteSync')) return new \WP_REST_Response(['message' => 'SiteSync not available'], 400);
-        $p = $request->get_json_params();
-        return new \WP_REST_Response(\PiDashboardV2\SiteSync::syncPermalinkStructure(['dry_run' => !empty($p['dry_run'])]), 200);
+        $p        = $request->get_json_params();
+        $dry_run  = !empty($p['dry_run']);
+        $expected = (string) apply_filters('pi_dashboard_permalink_structure', '');
+        $current  = (string) get_option('permalink_structure', '');
+
+        if ($expected === '') {
+            return new \WP_REST_Response([
+                'message' => 'Theme không khai cấu trúc permalink (filter pi_dashboard_permalink_structure).',
+            ], 400);
+        }
+
+        if ($current === $expected) {
+            return new \WP_REST_Response([
+                'success' => true, 'changed' => false,
+                'current' => $current, 'expected' => $expected,
+                'message' => 'Permalink đã đúng, không cần đổi.',
+            ], 200);
+        }
+
+        if ($dry_run) {
+            return new \WP_REST_Response([
+                'success' => true, 'changed' => false, 'dry_run' => true,
+                'current' => $current, 'expected' => $expected,
+                'message' => "Sẽ đổi '{$current}' -> '{$expected}'.",
+            ], 200);
+        }
+
+        global $wp_rewrite;
+        $wp_rewrite->set_permalink_structure($expected);
+        $wp_rewrite->flush_rules(false);
+
+        return new \WP_REST_Response([
+            'success' => true, 'changed' => true,
+            'current' => (string) get_option('permalink_structure', ''), 'expected' => $expected,
+            'message' => "Đã đổi permalink '{$current}' -> '{$expected}'.",
+        ], 200);
     }
 
     public static function handle_deploy(\WP_REST_Request $request) {

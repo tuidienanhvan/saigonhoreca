@@ -48,31 +48,54 @@ class Pi_Api_Categories {
         return new \WP_REST_Response(['categories' => $formatted], 200);
     }
 
+    /**
+     * 2026-08-02: bỏ phụ thuộc `\PiDashboardV2\*` — namespace đó không tồn tại
+     * trên site nào (plugin `pi-dashboard-v2` chưa từng được cài), nên 2 route
+     * này trước đây LUÔN trả HTTP 400.
+     *
+     * Nay lấy bản khai qua filter `pi_dashboard_categories_definition` (theme
+     * cung cấp) và uỷ quyền sync cho `pi_api_deploy_action_result` — đường đã
+     * sống, giống /menu/sync. Không hardcode tên class của plugin cụ thể.
+     */
     public static function get_audit() {
-        if (!class_exists('\\PiDashboardV2\\SiteStructure')) {
-            return new \WP_REST_Response(['message' => 'SiteStructure not available'], 400);
-        }
+        $cats_def = function_exists('sgh_get_categories_definition')
+            ? sgh_get_categories_definition()
+            : apply_filters('pi_dashboard_categories_definition', []);
 
-        $cats_def = \PiDashboardV2\SiteStructure::getCategories();
         $all_cats = get_categories(['hide_empty' => false]);
         $db_slugs = wp_list_pluck($all_cats, 'slug');
 
         $audit = [];
-        foreach ($cats_def as $slug => $info) {
+        foreach ((array) $cats_def as $slug => $info) {
             $audit[] = [
                 'slug'   => $slug,
-                'name'   => $info['name'],
+                'name'   => $info['name'] ?? $slug,
                 'exists' => in_array($slug, $db_slugs, true),
             ];
         }
 
-        return new \WP_REST_Response(['audit' => $audit], 200);
+        // Category có THẬT nhưng không nằm trong bản khai — thường là nội dung
+        // thật do người dùng tạo. Báo ra để không ai tưởng chúng là rác.
+        $undeclared = [];
+        foreach ($all_cats as $c) {
+            if (isset($cats_def[$c->slug])) continue;
+            $undeclared[] = ['slug' => $c->slug, 'name' => $c->name, 'count' => (int) $c->count];
+        }
+
+        return new \WP_REST_Response([
+            'audit'      => $audit,
+            'undeclared' => $undeclared,
+        ], 200);
     }
 
     public static function sync(\WP_REST_Request $request) {
-        if (!class_exists('\\PiDashboardV2\\SiteSync')) return new \WP_REST_Response(['message' => 'SiteSync not available'], 400);
-        $p = $request->get_json_params();
-        return new \WP_REST_Response(\PiDashboardV2\SiteSync::syncCategories(['force' => !empty($p['force'])]), 200);
+        $result = apply_filters('pi_api_deploy_action_result', null, 'sync-categories');
+        if ($result === null) {
+            return new \WP_REST_Response([
+                'message' => 'Theme không cung cấp trình đồng bộ category (filter pi_api_deploy_action_result).',
+            ], 400);
+        }
+        return new \WP_REST_Response($result, 200);
     }
 
     /**

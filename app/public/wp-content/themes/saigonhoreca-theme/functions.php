@@ -197,7 +197,8 @@ add_action('admin_init', function () {
     }
 });
 
-// Pi Color System: Saigonhoreca palette now lives in pi-dashboard-v2/includes/themes/saigonhouse.php.
+// Pi Color System: bảng màu Saigonhoreca nằm trong assets/css/core/_tokens.css của chính theme.
+// (2026-08-02: bỏ tham chiếu pi-dashboard-v2 — plugin đó chưa từng được cài trên site này.)
 // The old inc/config/pi-colors.php filter was removed (duplicated plugin theme).
 
 // Page Section Registry: editable sections for each page template
@@ -334,6 +335,7 @@ add_action('init', function () {
 // THEME MODULES -- Brand-specific, not in plugins
 // ============================================================================
 
+require $inc . 'engine/live-search.php';       // AJAX autocomplete cho ô tìm kiếm (header + archive-product)
 require $inc . 'engine/enqueue.php';           // Frontend assets (JS, CSS, fonts)
 require $inc . 'engine/critical-css.php';      // Inline theme.css + dequeue external (T-014 restore)
 require $inc . 'site/auto-setup.php';        // Theme activation (front page, menu)
@@ -501,14 +503,11 @@ add_action('template_redirect', function () {
 }, 1);
 
 require $inc . 'engine/markdown-filters.php';
-require $inc . 'site/tools/reimport-products.php';   // Admin-only ?sgh_reimport_products=1
 require $inc . 'site/tools/clean-elementor-posts.php'; // Admin-only ?sgh_clean_elementor=1
-require $inc . 'site/tools/recrawl-posts.php';        // Admin-only ?sgh_recrawl_posts=1
-require $inc . 'site/tools/import-content.php';       // Admin-only ?sgh_import_content=1 (import WXR blog/product)
 require $inc . 'site/tools/convert-webp.php';         // Admin-only ?sgh_convert_webp=1 (PNG/JPG/JPEG → WebP)
-require $inc . 'site/tools/upload-zip.php';            // Admin-only ?sgh_upload_zip=1 (upload .zip → giải nén vào uploads)
 require $inc . 'site/tools/seed-content.php';          // Admin-only ?sgh_seed=1 (seed 30 dự án + fix template trang Về/Liên hệ)
-require $inc . 'site/tools/import-projects.php';       // Admin-only ?sgh_import_projects=1 (tạo 30 dự án + fix trang Về/Liên hệ)
+// import-content / reimport-products / recrawl-posts / upload-zip đã chuyển
+// sang plugin pi-migrate (2026-07-27) — không phải logic theme.
 
 // ============================================================================
 // 7. SEO HOOKS
