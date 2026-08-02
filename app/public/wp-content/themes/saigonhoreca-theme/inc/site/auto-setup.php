@@ -122,31 +122,44 @@ add_action('admin_init', function() {
         update_option('sgh_wpconfig_patched', 1);
     }
 
-    // Tự động kiểm tra và cấu hình/gán menu Primary nếu chưa có hoặc chưa được gán
-    $locations = get_theme_mod('nav_menu_locations');
+    // Tự động kiểm tra và cấu hình/gán menu Primary nếu chưa dùng được.
+    //
+    // ⚠️ 2026-08-02 — sửa 2 lỗi khiến menu rỗng VĨNH VIỄN:
+    //  1. Bản cũ coi `$menu_exists = true` chỉ cần đối tượng menu tồn tại. Menu
+    //     "Primary Menu" đang có + đã gán location nhưng 0 item → nhánh sửa
+    //     không bao giờ chạy.
+    //  2. Nhánh "menu có nhưng chưa gán" chỉ gán location, cũng không kiểm item
+    //     → gán xong vẫn rỗng.
+    // Front-end che lỗi này bằng fallback hardcode trong
+    // template-parts/header/navigation.php nên nhìn ngoài tưởng bình thường.
+    //
+    // Câu hỏi đúng là "menu có DÙNG ĐƯỢC không" (đã gán + có item) — chính là
+    // điều navigation.php:30 đã hỏi đúng: count($menu_items) > 0.
+    $locations       = get_theme_mod('nav_menu_locations');
     $primary_menu_id = isset($locations['primary']) ? $locations['primary'] : 0;
-    
-    $menu_exists = false;
-    if ($primary_menu_id) {
-        $menu_obj = wp_get_nav_menu_object($primary_menu_id);
-        if ($menu_obj) {
-            $menu_exists = true;
-        }
-    }
-    
-    if (!$menu_exists) {
-        $menu_name = 'Primary Menu';
-        $menu_obj  = wp_get_nav_menu_object($menu_name);
-        
-        if ($menu_obj) {
-            // Menu đã tồn tại trong WP nhưng chưa được gán vào location 'primary'
+
+    $menu_has_items = static function ($menu) {
+        if (!$menu) return false;
+        $items = wp_get_nav_menu_items($menu->term_id);
+        return !empty($items) && !is_wp_error($items);
+    };
+
+    $menu_usable = $primary_menu_id
+        && $menu_has_items(wp_get_nav_menu_object($primary_menu_id));
+
+    if (!$menu_usable) {
+        // Có menu tên 'Primary Menu' và nó CÓ item → chỉ cần gán vào location.
+        $menu_obj = wp_get_nav_menu_object('Primary Menu');
+        if ($menu_obj && $menu_has_items($menu_obj)) {
             $locations['primary'] = $menu_obj->term_id;
             set_theme_mod('nav_menu_locations', $locations);
-        } else {
-            // Chưa có menu nào, gọi trình sync tự động sinh ra menu hoàn chỉnh
-            if (function_exists('sgh_dashboard_sync_menu')) {
-                sgh_dashboard_sync_menu();
-            }
+            $menu_usable = true;
+        }
+
+        // Không có menu, hoặc có mà rỗng → dựng lại từ bản khai
+        // (sgh_get_primary_navigation_definition). Hàm này tự gán location.
+        if (!$menu_usable && function_exists('sgh_dashboard_sync_menu')) {
+            sgh_dashboard_sync_menu();
         }
     }
 });

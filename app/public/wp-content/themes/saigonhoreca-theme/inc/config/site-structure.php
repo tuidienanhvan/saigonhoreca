@@ -16,7 +16,17 @@
 if (!defined('ABSPATH')) exit;
 
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-// FILTER REGISTRATION (primary path — Pi Dashboard reads these)
+// FILTER REGISTRATION
+//
+// ⚠️ 2026-08-02: 3 filter dưới đây hiện KHÔNG CÓ CONSUMER nào. Chúng được thêm
+// cho plugin `pi-dashboard-v2` (namespace \PiDashboardV2) — plugin đó chưa từng
+// được cài trên site này; grep toàn wp-content: 0 chỗ `apply_filters` các key
+// này. Comment cũ ghi "primary path — Pi Dashboard reads these" là SAI SỰ THẬT
+// và đã khiến người đọc (kể cả agent) tưởng có cơ chế sync đang chạy.
+//
+// Đường chạy THẬT: các wrapper ở cuối file (sgh_get_pages_definition,
+// sgh_sync_pages...) gọi TRỰC TIẾP mấy callback này. Giữ add_filter lại chỉ để
+// tương thích nếu plugin kia xuất hiện sau.
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 add_filter('pi_dashboard_pages_definition', 'sgh_register_pages_structure');
@@ -35,11 +45,22 @@ function sgh_register_permalink_structure(string $default): string {
 }
 
 /**
- * SaigonHoreca Pages structure.
+ * SaigonHoreca Pages structure — 3 Page thật của site.
  *
- * Core pages exist as imported entities (slug `home`, `tin-tuc`, `lien-he`,
- * `ve-saigon-horeca`). No special page templates — they render via the
- * default page.php and the_content() pours the scraped HTML body through.
+ * Đây là bộ Page DUY NHẤT site cần. Mọi khu khác KHÔNG dùng Page:
+ *   /du-an/, /du-an/<slug>/    → CPT `project` (archive + single, 31 pillar)
+ *   /san-pham/                 → CPT `product`
+ *   /danh-muc-san-pham/<term>/ → taxonomy product_category
+ *   /category/tin-tuc/         → category (xem ghi chú `tin-tuc` bên dưới)
+ *
+ * 2026-08-02: bỏ entry `tin-tuc`. Tin Tức là CATEGORY chứ không phải Page —
+ * functions.php có template_redirect (priority 1) đẩy /tin-tuc/ →
+ * /category/tin-tuc/, nên một Page slug `tin-tuc` sẽ vĩnh viễn bị che, không
+ * bao giờ truy cập được. Khai nó ở đây chỉ khiến sync tạo ra page chết.
+ *
+ * `home` khai template front-page.php để ghi lại ý định, nhưng đó KHÔNG phải
+ * page-template (không có header "Template Name") — WP tự chọn front-page.php
+ * cho trang chủ qua template hierarchy. sgh_sync_pages() cố ý không gán nó.
  */
 function sgh_register_pages_structure(array $default): array {
     return array_merge($default, [
@@ -49,15 +70,11 @@ function sgh_register_pages_structure(array $default): array {
         ],
         've-saigon-horeca' => [
             'title'    => 'Về Saigon Horeca',
-            'template' => 'page.php',
+            'template' => 'page-templates/page-gioi-thieu.php',
         ],
         'lien-he' => [
             'title'    => 'Liên Hệ',
-            'template' => 'page.php',
-        ],
-        'tin-tuc' => [
-            'title'    => 'Tin Tức',
-            'template' => 'page.php',
+            'template' => 'page-templates/page-lien-he.php',
         ],
     ]);
 }
@@ -134,9 +151,12 @@ function sgh_get_primary_navigation_definition(): array {
             'url'   => sgh_url('products_index'),
         ],
         [
+            // 2026-08-02: đổi 'page' -> 'custom'. Không có Page slug `tin-tuc`
+            // (Tin Tức là category, /tin-tuc/ bị redirect sang
+            // /category/tin-tuc/). Để 'page' thì sgh_dashboard_normalize_menu_item()
+            // âm thầm hạ cấp xuống 'custom' mỗi lần sync — khai đúng ngay từ đầu.
             'title' => 'Tin Tức',
-            'type'  => 'page',
-            'slug'  => 'tin-tuc',
+            'type'  => 'custom',
             'url'   => sgh_url('news'),
         ],
         [
@@ -223,12 +243,78 @@ if (!function_exists('sgh_get_categories_definition')) {
 }
 
 if (!function_exists('sgh_sync_pages')) {
+    /**
+     * Tạo các Page mà theme khai trong sgh_register_pages_structure().
+     *
+     * 2026-08-02: trước đây hàm này chỉ uỷ quyền cho `\PiDashboardV2\SiteSync`
+     * — class KHÔNG tồn tại ở bất kỳ đâu trong wp-content (plugin
+     * `pi-dashboard-v2` chưa từng được cài). Nên nút "Sync Pages" chỉ log
+     * "Pi Dashboard plugin not active." và tạo 0 page, khiến site thiếu hẳn
+     * Page trang chủ suốt thời gian dài mà không ai thấy lỗi.
+     *
+     * Nay tự làm trong theme, cùng cách `sgh_dashboard_sync_menu()` đã làm với
+     * menu. Idempotent: page đã có thì đếm `skipped`, KHÔNG đụng nội dung.
+     */
     function sgh_sync_pages() {
         if (class_exists('\\PiDashboardV2\\SiteSync')) {
             $result = \PiDashboardV2\SiteSync::syncPages();
             return $result['data'] + ['log' => $result['log']];
         }
-        return ['created' => 0, 'updated' => 0, 'skipped' => 0, 'log' => ['Pi Dashboard plugin not active.']];
+
+        $created = 0;
+        $updated = 0;
+        $skipped = 0;
+        $log     = [];
+
+        foreach (sgh_get_pages_definition() as $slug => $def) {
+            $slug  = sanitize_title($slug);
+            $title = $def['title'] ?? ucfirst($slug);
+
+            $page = get_page_by_path($slug, OBJECT, 'page');
+            if ($page && $page->post_status !== 'trash') {
+                $skipped++;
+                $log[] = "= đã có: /$slug/ (ID {$page->ID})";
+                continue;
+            }
+
+            $page_id = wp_insert_post([
+                'post_type'   => 'page',
+                'post_status' => 'publish',
+                'post_title'  => $title,
+                'post_name'   => $slug,
+                'post_content' => '',
+            ], true);
+
+            if (is_wp_error($page_id)) {
+                $log[] = "! lỗi tạo /$slug/: " . $page_id->get_error_message();
+                continue;
+            }
+
+            $created++;
+            $log[] = "+ đã tạo: /$slug/ — $title (ID $page_id)";
+
+            // Chỉ gán khi template là page-template HỢP LỆ (có header
+            // "Template Name") và file tồn tại. `front-page.php` bị khai cho
+            // slug `home` nhưng KHÔNG phải page-template — WP tự dùng nó cho
+            // trang chủ qua template hierarchy, gán vào meta là sai.
+            $tpl = $def['template'] ?? '';
+            if ($tpl && $tpl !== 'page.php' && $tpl !== 'front-page.php') {
+                $valid = wp_get_theme()->get_page_templates();
+                if (isset($valid[$tpl])) {
+                    update_post_meta($page_id, '_wp_page_template', $tpl);
+                    $updated++;
+                    $log[] = "  ↳ gán template: $tpl";
+                } else {
+                    $log[] = "  ↳ bỏ qua template '$tpl' (không phải page-template hợp lệ)";
+                }
+            }
+        }
+
+        if (!$created && !$updated) {
+            $log[] = 'Không có gì thay đổi — mọi page trong bản khai đã tồn tại.';
+        }
+
+        return ['created' => $created, 'updated' => $updated, 'skipped' => $skipped, 'log' => $log];
     }
 }
 

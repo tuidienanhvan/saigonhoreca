@@ -20,20 +20,50 @@ class Pi_Api_Menu {
         ]);
     }
 
+    /**
+     * 2026-08-02: cả 2 route trước đây phụ thuộc `\PiDashboardV2\SiteStructure`
+     * / `SiteSync` — namespace đó KHÔNG tồn tại trên site nào (plugin
+     * `pi-dashboard-v2` chưa từng được cài), nên chúng luôn trả HTTP 400 và
+     * hoàn toàn vô dụng.
+     *
+     * Nay chuyển sang dùng filter `pi_api_deploy_action_result` — đường đã
+     * SỐNG và đang chạy thật (theme hook vào trong functions.php, dẫn tới
+     * SGH_Dashboard::process_action()). Nhờ đó theme nào cũng cắm được, không
+     * hardcode tên class của một plugin cụ thể.
+     */
     public static function get_audit() {
-        if (!class_exists('\\PiDashboardV2\\SiteStructure')) return new \WP_REST_Response(['message' => 'SiteStructure not available'], 400);
+        $menu_obj = wp_get_nav_menu_object('Primary Menu');
+        $items    = $menu_obj ? wp_get_nav_menu_items($menu_obj->term_id) : [];
+        $items    = (is_array($items)) ? $items : [];
 
-        $structure = \PiDashboardV2\SiteStructure::getMenu();
-        $menu_obj  = wp_get_nav_menu_object('Primary Menu');
+        $locations = get_theme_mod('nav_menu_locations');
+        $assigned  = isset($locations['primary']) ? (int) $locations['primary'] : 0;
+
+        // Bản khai do theme cung cấp (nếu theme có). Không có thì trả rỗng chứ
+        // không lỗi — audit vẫn cho biết trạng thái THỰC TẾ của menu.
+        $definition = function_exists('sgh_dashboard_get_menu_definition')
+            ? sgh_dashboard_get_menu_definition()
+            : apply_filters('pi_dashboard_menu_definition', []);
 
         return new \WP_REST_Response([
-            'definition' => $structure,
-            'actual_id'  => $menu_obj ? $menu_obj->term_id : null,
+            'definition'      => $definition,
+            'definition_count'=> is_array($definition) ? count($definition) : 0,
+            'actual_id'       => $menu_obj ? $menu_obj->term_id : null,
+            'actual_count'    => count($items),
+            'assigned_to'     => $assigned ?: null,
+            // Menu "dùng được" = đã gán location VÀ có item. Menu rỗng nhưng
+            // tồn tại từng khiến front-end âm thầm chạy fallback hardcode.
+            'usable'          => ($assigned && $menu_obj && $assigned === (int) $menu_obj->term_id && count($items) > 0),
         ], 200);
     }
 
     public static function sync() {
-        if (!class_exists('\\PiDashboardV2\\SiteSync')) return new \WP_REST_Response(['message' => 'SiteSync not available'], 400);
-        return new \WP_REST_Response(\PiDashboardV2\SiteSync::syncMenu(), 200);
+        $result = apply_filters('pi_api_deploy_action_result', null, 'sync-menu');
+        if ($result === null) {
+            return new \WP_REST_Response([
+                'message' => 'Theme không cung cấp trình đồng bộ menu (filter pi_api_deploy_action_result).',
+            ], 400);
+        }
+        return new \WP_REST_Response($result, 200);
     }
 }
