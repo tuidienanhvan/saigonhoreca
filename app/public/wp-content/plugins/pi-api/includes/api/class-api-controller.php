@@ -48,12 +48,25 @@ class Pi_Api_Controller {
             }
         }
 
-        // Load files 2 cấp sâu hơn (Zone→Workspace→App): endpoints/{workspace}/{app}/class-*.php
+        // Load 2 cấp: endpoints/{workspace}/{app}/class-*.php
         // glob() không đệ quy nên phải khai báo riêng — thiếu dòng này thì mọi
         // route trong App con sẽ 404 âm thầm (class không bao giờ được require).
+        // Vẫn giữ sau khi thêm tầng zone: `_shared/{app}/` nằm ở đúng độ sâu này.
         $app_files = glob($dir . '*/*/class-*.php');
         if ($app_files) {
             foreach ($app_files as $file) {
+                require_once $file;
+            }
+        }
+
+        // Load 3 cấp (Zone→Workspace→App): endpoints/{zone}_zone/{workspace}/{app}/class-*.php
+        // Thêm 2026-08-02 khi bổ sung tầng zone cho khớp taxonomy frontend.
+        // Route vẫn đăng ký theo TÊN CLASS trong register_routes() nên đổi vị
+        // trí file không đổi URL — nhưng thiếu dòng glob này thì class không
+        // bao giờ được require và toàn bộ route trong zone 404 âm thầm.
+        $zone_files = glob($dir . '*/*/*/class-*.php');
+        if ($zone_files) {
+            foreach ($zone_files as $file) {
                 require_once $file;
             }
         }
