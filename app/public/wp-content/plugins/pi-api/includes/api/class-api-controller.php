@@ -100,6 +100,7 @@ class Pi_Api_Controller {
             'overview'    => 'Pi_Api_Overview',
             'system'      => 'Pi_Api_System',
             'content'     => 'Pi_Api_Content',
+            'migrate'      => 'Pi_Api_Migrate',
             'seo'         => 'Pi_Api_Seo',
             'seo_redirects' => 'Pi_Api_SeoRedirects',
             'seo_schema'   => 'Pi_Api_SeoSchema',
