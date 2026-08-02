@@ -85,20 +85,22 @@ function sgh_register_pages_structure(array $default): array {
  * Blog `category` taxonomy stays minimal — saigonhoreca.vn doesn't expose
  * per-category archives publicly. Product CPT has its own `product_category`
  * taxonomy registered in inc/core/cpt-registration.php.
+ *
+ * ⚠️ 2026-08-02 — bản khai này KHÔNG phải danh sách đầy đủ. Site còn 5 category
+ * do người dùng tạo (`thiet-bi-bep-cong-nghiep`, `saigon-horeca`,
+ * `thiet-bi-bar-cafe`, `inox-kitchen-equipment`,
+ * `thiet-bi-bep-theo-mo-hinh-kinh-doanh`) đang gắn bài thật — chúng phân loại
+ * theo LOẠI THIẾT BỊ, khác trục phân loại của bản khai này. Mọi trình dọn dẹp
+ * phải coi "không có trong bản khai" là BÌNH THƯỜNG, không phải rác.
+ *
+ * 2 entry `kien-thuc` / `du-an-noi-bat` đã gỡ: khai từ đầu nhưng chưa từng được
+ * tạo (sync-categories phụ thuộc \PiDashboardV2\ nên luôn 400), 0 bài.
  */
 function sgh_register_categories_structure(array $default): array {
     return array_merge($default, [
         'tin-tuc' => [
             'name'        => 'Tin Tức',
             'description' => 'Tin tức và sự kiện ngành horeca, F&B',
-        ],
-        'kien-thuc' => [
-            'name'        => 'Kiến Thức',
-            'description' => 'Kiến thức về thiết bị bếp công nghiệp, quầy bar và vận hành nhà hàng',
-        ],
-        'du-an-noi-bat' => [
-            'name'        => 'Dự Án Nổi Bật',
-            'description' => 'Các dự án thiết kế bếp và horeca tiêu biểu',
         ],
     ]);
 }
