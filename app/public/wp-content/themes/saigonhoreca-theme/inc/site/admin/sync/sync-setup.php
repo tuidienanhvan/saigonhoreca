@@ -56,6 +56,19 @@ function sgh_dashboard_sync_favicons() {
 
 /**
  * Add a single menu item to a WordPress nav menu.
+ *
+ * ⚠️ 2026-08-02 — tổng quát hoá. Bản cũ hardcode đúng 2 object: `page` và
+ * `category`. Mọi thứ khác (bài viết, product_category, CPT) buộc phải khai
+ * `custom` = URL cứng, nên đổi slug ở wp-admin là menu chết âm thầm —
+ * WordPress không cập nhật được vì nó không biết item trỏ tới cái gì.
+ *
+ * Nay xử lý theo 2 HỌ mà WP thật sự có, không theo danh sách tên cụ thể:
+ *   - `post_type`  → object = post/page/project/... (`object` field)
+ *   - `taxonomy`   → object = category/product_category/...
+ * `page`/`category` giữ nguyên làm alias để bản khai cũ không vỡ.
+ *
+ * Item mong đợi: ['type' => 'post'|'page'|'post_type'|'category'|'taxonomy'|'custom',
+ *                 'object' => <post_type|taxonomy slug>, 'id' => int]
  */
 function sgh_dashboard_add_menu_item($menu_id, $data, $parent_id = 0, $order = 0) {
     $args = [
@@ -65,23 +78,46 @@ function sgh_dashboard_add_menu_item($menu_id, $data, $parent_id = 0, $order = 0
         'menu-item-position'  => $order
     ];
 
-    if ($data['type'] === 'custom') {
-        $args['menu-item-url']  = $data['url'];
+    $type = $data['type'] ?? 'custom';
+
+    // Gom về 3 họ WP hiểu, kèm object mặc định cho các alias cũ.
+    $family = 'custom';
+    $object = $data['object'] ?? '';
+    if ($type === 'post_type' || $type === 'page' || $type === 'post') {
+        $family = 'post_type';
+        if (!$object) $object = ($type === 'post_type') ? 'page' : $type;
+    } elseif ($type === 'taxonomy' || $type === 'category') {
+        $family = 'taxonomy';
+        if (!$object) $object = 'category';
+    } elseif ($type === 'post_type_archive') {
+        // Archive của CPT: WP không có object-id, chỉ có tên post type.
+        $family = 'post_type_archive';
+    }
+
+    if ($family === 'post_type_archive') {
+        if (!$object || !post_type_exists($object)) return false;
+        $args['menu-item-object-id'] = 0;
+        $args['menu-item-object']    = $object;
+        $args['menu-item-type']      = 'post_type_archive';
+    } elseif ($family === 'custom') {
+        $args['menu-item-url']  = $data['url'] ?? home_url('/');
         $args['menu-item-type'] = 'custom';
-    } elseif ($data['type'] === 'page') {
-        if (empty($data['id'])) return false;
-        $args['menu-item-object-id'] = $data['id'];
-        $args['menu-item-object']    = 'page';
-        $args['menu-item-type']      = 'post_type';
-    } elseif ($data['type'] === 'category' || $data['type'] === 'taxonomy') {
-        if (isset($data['slug']) && !isset($data['id'])) {
-            $term = get_term_by('slug', $data['slug'], 'category');
-            if ($term) $data['id'] = $term->term_id;
-            else return false;
+    } else {
+        // Chưa có id thì tra từ slug — theo đúng object đã xác định ở trên.
+        if (empty($data['id']) && !empty($data['slug'])) {
+            if ($family === 'post_type') {
+                $obj = get_page_by_path($data['slug'], OBJECT, $object);
+                if ($obj) $data['id'] = $obj->ID;
+            } else {
+                $term = get_term_by('slug', $data['slug'], $object);
+                if ($term) $data['id'] = $term->term_id;
+            }
         }
+        if (empty($data['id'])) return false;
+
         $args['menu-item-object-id'] = $data['id'];
-        $args['menu-item-object']    = 'category';
-        $args['menu-item-type']      = 'taxonomy';
+        $args['menu-item-object']    = $object;
+        $args['menu-item-type']      = $family;
     }
 
     $id = wp_update_nav_menu_item($menu_id, 0, $args);
@@ -127,6 +163,10 @@ function sgh_dashboard_sync_menu() {
                     if ($sid) $created++; else $errors++;
                 }
             }
+            // DEAD CODE: không bản khai nào có key `submenu_slugs`, và từ
+            // 2026-08-02 normalize trả 'taxonomy' chứ không còn 'category'
+            // nên điều kiện này không bao giờ đúng. Giữ nguyên (không xoá) vì
+            // vô hại; đừng dựa vào nó để tự tạo category.
             if (!empty($item['submenu_slugs']) && $item['type'] === 'category') {
                 foreach ($item['submenu_slugs'] as $slug) {
                     $term = get_term_by('slug', $slug, 'category');

@@ -120,45 +120,62 @@ function sgh_get_primary_navigation_definition(): array {
             'slug'  => 've-saigon-horeca',
             'url'   => sgh_url('about'),
             'submenu' => [
+                // 2026-08-02: 4 mục dưới đây trước khai 'custom' = URL cứng, dù
+                // cả 4 đều trỏ tới đối tượng CÓ THẬT trong DB. Khai đúng object
+                // thì menu bám theo ID: đổi slug ở wp-admin link vẫn đúng.
+                // `url` giữ lại làm đường lùi — normalize hạ về custom nếu đối
+                // tượng biến mất (unpublish/xoá).
                 [
-                    'title' => 'Tư vấn thiết kế bếp nhà hàng',
-                    'type'  => 'custom',
-                    'url'   => sgh_url('consult_kitchen'),
+                    'title'  => 'Tư vấn thiết kế bếp nhà hàng',
+                    'type'   => 'post',
+                    'slug'   => 'tu-van-thiet-ke-bep-nha-hang-bep-cong-nghiep',
+                    'url'    => sgh_url('consult_kitchen'),
                 ],
                 [
-                    'title' => 'Tư vấn thiết kế quầy bar',
-                    'type'  => 'custom',
-                    'url'   => sgh_url('consult_bar'),
+                    'title'  => 'Tư vấn thiết kế quầy bar',
+                    'type'   => 'post',
+                    'slug'   => 'cung-cap-thiet-bi-tu-van-thiet-ke-cho-quay-bar',
+                    'url'    => sgh_url('consult_bar'),
                 ],
                 [
-                    'title' => 'Hệ thống cấp khí tươi',
-                    'type'  => 'custom',
-                    'url'   => home_url('/danh-muc-san-pham/he-thong-hut-khoi-cap-khi-tuoi-bep-nha-hang/'),
+                    'title'  => 'Hệ thống cấp khí tươi',
+                    'type'   => 'taxonomy',
+                    'object' => 'product_category',
+                    'slug'   => 'he-thong-hut-khoi-cap-khi-tuoi-bep-nha-hang',
+                    'url'    => home_url('/danh-muc-san-pham/he-thong-hut-khoi-cap-khi-tuoi-bep-nha-hang/'),
                 ],
                 [
-                    'title' => 'Hệ thống hút khói công nghiệp',
-                    'type'  => 'custom',
-                    'url'   => home_url('/danh-muc-san-pham/he-thong-hut-khoi/'),
+                    'title'  => 'Hệ thống hút khói công nghiệp',
+                    'type'   => 'taxonomy',
+                    'object' => 'product_category',
+                    'slug'   => 'he-thong-hut-khoi',
+                    'url'    => home_url('/danh-muc-san-pham/he-thong-hut-khoi/'),
                 ],
             ],
         ],
+        // 2 mục này là ARCHIVE của CPT (`has_archive` bật trong
+        // inc/engine/cpt-registration.php), không phải page — WP có sẵn kiểu
+        // menu item `post_type_archive` cho đúng trường hợp này.
         [
-            'title' => 'Dự Án',
-            'type'  => 'custom',
-            'url'   => sgh_url('projects_index'),
+            'title'  => 'Dự Án',
+            'type'   => 'post_type_archive',
+            'object' => 'project',
+            'url'    => sgh_url('projects_index'),
         ],
         [
-            'title' => 'Sản Phẩm',
-            'type'  => 'custom',
-            'url'   => sgh_url('products_index'),
+            'title'  => 'Sản Phẩm',
+            'type'   => 'post_type_archive',
+            'object' => 'product',
+            'url'    => sgh_url('products_index'),
         ],
         [
-            // 2026-08-02: đổi 'page' -> 'custom'. Không có Page slug `tin-tuc`
-            // (Tin Tức là category, /tin-tuc/ bị redirect sang
-            // /category/tin-tuc/). Để 'page' thì sgh_dashboard_normalize_menu_item()
-            // âm thầm hạ cấp xuống 'custom' mỗi lần sync — khai đúng ngay từ đầu.
+            // 2026-08-02: từng khai 'page' (sai — không có Page slug `tin-tuc`),
+            // rồi hạ tạm về 'custom'. Đúng bản chất: đây là CATEGORY `tin-tuc`
+            // (168 bài), /tin-tuc/ chỉ là alias redirect sang /category/tin-tuc/.
             'title' => 'Tin Tức',
-            'type'  => 'custom',
+            'type'  => 'taxonomy',
+            'object' => 'category',
+            'slug'  => 'tin-tuc',
             'url'   => sgh_url('news'),
         ],
         [
