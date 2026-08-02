@@ -60,7 +60,7 @@ function sh_get_asset_version($file_path) {
 
 /**
  * Current project slug, if we're on a project page (CPT `project` singular
- * OR a `/du-an/<slug>/` pillar-route virtual page). Used to pick the lean
+ * OR a project-index pillar-route virtual page — see routes.php). Used to pick the lean
  * per-project CSS bundle instead of the 1.2MB all-projects fallback.
  */
 function sgh_current_project_slug() {
@@ -124,8 +124,8 @@ function sgh_theme_css_bundle($dir = null) {
 function sgh_is_native_theme_surface() {
     return is_front_page()
         || is_page_template('page-templates/page-gioi-thieu.php')
-        || is_page_template('page-templates/page-lien-he.php')
-        || is_page_template('page-templates/page-project.php')
+        || is_page_template(SGH_TPL_CONTACT)
+        // 'page-templates/page-project.php' đã xoá 2026-08-02 (xem routes.php).
         || sgh_is_pillar_page_template()
         || is_singular('project')
         || is_post_type_archive('project')
@@ -197,6 +197,13 @@ add_action('wp_enqueue_scripts', function () {
     list($mm_url, $mm_ver) = sgh_js_path('main-modern.js', $dir, $uri);
     wp_enqueue_script('main-modern', $mm_url, [], $mm_ver, true);
 
+    // Đồng bộ kích thước SVG viền/góc trang trí (viewBox 100x100, preserveAspectRatio=none)
+    // trên container cao tự do theo nội dung — CSS thuần không giải được (xem
+    // assets/js/svg-frame-sync.js). Site-wide vì bug xuất hiện cả ở homepage lẫn nhiều
+    // trang project-pillar.
+    list($sfs_url, $sfs_ver) = sgh_js_path('svg-frame-sync.js', $dir, $uri);
+    wp_enqueue_script('sh-svg-frame-sync', $sfs_url, [], $sfs_ver, true);
+
     if (is_front_page()) {
         list($hc_url, $hc_ver) = sgh_js_path('hero-carousel.js', $dir, $uri);
         wp_enqueue_script('hero-carousel', $hc_url, [], $hc_ver, true);
@@ -220,12 +227,16 @@ add_action('wp_enqueue_scripts', function () {
     // are already imported into the full `theme.css` bundle (see _imports.css),
     // so re-enqueueing them as standalone <link>s downloads the rules twice
     // and triggers cascade-debt warnings on review. Only the two page-template
-    // entry files (page-bang-gia.css, page-lien-he.css) live outside _imports
+    // entry files (pricing + contact page CSS) live outside _imports
     // and stay conditionally enqueued.
-    if (is_page_template('page-templates/page-lien-he.php') || is_page('lien-he')) {
+    if (is_page_template(SGH_TPL_CONTACT) || (function_exists('sgh_slug') && is_page(sgh_slug('contact')))) {
         list($cf_url, $cf_ver) = sgh_js_path('contact-form.js', $dir, $uri);
         wp_enqueue_script('contact-form-js', $cf_url, [], $cf_ver, true);
     }
+    // Live search — chạy trên mọi route vì header/mobile-menu search box render site-wide.
+    list($ls_url, $ls_ver) = sgh_js_path('live-search.js', $dir, $uri);
+    wp_enqueue_script('sh-live-search', $ls_url, ['main-modern'], $ls_ver, true);
+
     list($tt_url, $tt_ver) = sgh_js_path('theme-toggle.js', $dir, $uri);
     wp_enqueue_script('theme-toggle', $tt_url, [], $tt_ver, true);
 
@@ -256,6 +267,7 @@ add_action('wp_enqueue_scripts', function () {
         'theme_uri'  => $uri,
         'nonce'      => wp_create_nonce('sh_portfolio_nonce'),
         'rest_nonce' => wp_create_nonce('wp_rest'),
+        'search_nonce' => wp_create_nonce('sh_live_search_nonce'),
         'is_admin'   => current_user_can('manage_options'),
     ]);
 

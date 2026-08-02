@@ -15,6 +15,28 @@
  */
 if (!defined('ABSPATH')) exit;
 
+if (!function_exists('sgh_bilingual_slug_map')) {
+    /**
+     * Bảng slug song ngữ (.vn Việt ↔ .com English). Mỗi entry: section_key
+     * => [vi_slug, en_slug]. Nguồn dữ liệu DUY NHẤT cho engine/slug-map.php
+     * (sgh_slug()/sgh_url()/sgh_translate_path()) — di chuyển ra khỏi
+     * inc/engine/ để giữ engine thuần logic, không hardcode route/brand.
+     */
+    function sgh_bilingual_slug_map() {
+        return [
+            'projects_index'  => ['du-an',                                          'projects'],
+            'projects_cat'    => ['danh-muc-du-an',                                 'project-category'],
+            'about'           => ['ve-saigon-horeca',                               'about'],
+            'products_index'  => ['san-pham',                                       'products'],
+            'products_cat'    => ['danh-muc-san-pham',                              'product-category'],
+            'news'            => ['tin-tuc',                                        'blog'],
+            'contact'         => ['lien-he',                                        'contact'],
+            'consult_kitchen' => ['tu-van-thiet-ke-bep-nha-hang-bep-cong-nghiep',   'kitchen-consulting'],
+            'consult_bar'     => ['cung-cap-thiet-bi-tu-van-thiet-ke-cho-quay-bar', 'bar-equipment'],
+        ];
+    }
+}
+
 if (!function_exists('sgh_route_css_rules')) {
     /**
      * Mỗi rule: ['when' => callable():bool, 'bundle' => string (tên file .css
@@ -33,7 +55,11 @@ if (!function_exists('sgh_route_css_rules')) {
             ],
             ['when' => fn() => is_singular('product'), 'bundle' => 'product'],
             [
-                'when'   => fn() => is_singular('project') || is_page_template('page-templates/page-project.php') || sgh_is_pillar_page_template(),
+                // 2026-08-02: bỏ nhánh is_page_template('page-templates/page-project.php')
+                // — template đó đã xoá (gọi template-parts/project/* không tồn tại,
+                // tàn dư thiết kế cũ). Pillar thật là CPT `project` + per-slug
+                // page-project-<slug>.php, đã phủ bởi 2 điều kiện còn lại.
+                'when'   => fn() => is_singular('project') || sgh_is_pillar_page_template(),
                 // Case động: ưu tiên bundle riêng theo slug, sgh_theme_css_bundle()
                 // tự fallback về 'project' (bundle chung) nếu file riêng không tồn tại.
                 'bundle' => fn() => sgh_current_project_slug() ? 'project-' . sgh_current_project_slug() : 'project',
@@ -102,7 +128,8 @@ if (!function_exists('sgh_route_hero_preload_rules')) {
                 'image' => 'saigonhoreca/Saigon-Horeca-thiet-bi-bep-cong-nghiep.webp',
             ],
             [
-                'when'  => fn() => is_post_type_archive('project') || is_tax('project_category') || is_page('du-an'),
+                'when'  => fn() => is_post_type_archive('project') || is_tax('project_category')
+                    || (function_exists('sgh_slug') && is_page(sgh_slug('projects_index'))),
                 'image' => 'renovate-sol-kitchen-bar-quan-7/Sol0D7-05.webp',
             ],
         ];
