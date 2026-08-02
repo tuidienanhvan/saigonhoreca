@@ -45,15 +45,37 @@ class Pi_Api_Menu {
             ? sgh_dashboard_get_menu_definition()
             : apply_filters('pi_dashboard_menu_definition', []);
 
+        // Menu "dùng được" = đã gán location VÀ có item. Menu rỗng nhưng tồn
+        // tại từng khiến front-end âm thầm chạy fallback hardcode.
+        $usable = ($assigned && $menu_obj && $assigned === (int) $menu_obj->term_id && count($items) > 0);
+
+        // Vị trí menu theo tên do theme đăng ký, không hardcode 'primary'.
+        $registered   = get_registered_nav_menus();
+        $location_key = '';
+        if ($assigned) {
+            foreach ((array) $locations as $key => $id) {
+                if ((int) $id === $assigned) { $location_key = $key; break; }
+            }
+        }
+        $menu_location = $location_key
+            ? ($registered[$location_key] ?? $location_key)
+            : 'Chưa gán';
+
+        if (!$menu_obj)      $sync_status = 'Chưa có menu';
+        elseif (!count($items)) $sync_status = 'Menu rỗng';
+        elseif (!$assigned)  $sync_status = 'Chưa gán vị trí';
+        else                 $sync_status = 'Ổn định';
+
         return new \WP_REST_Response([
             'definition'      => $definition,
             'definition_count'=> is_array($definition) ? count($definition) : 0,
             'actual_id'       => $menu_obj ? $menu_obj->term_id : null,
             'actual_count'    => count($items),
             'assigned_to'     => $assigned ?: null,
-            // Menu "dùng được" = đã gán location VÀ có item. Menu rỗng nhưng
-            // tồn tại từng khiến front-end âm thầm chạy fallback hardcode.
-            'usable'          => ($assigned && $menu_obj && $assigned === (int) $menu_obj->term_id && count($items) > 0),
+            'menu_location'   => $menu_location,
+            // 'Ổn định' là giá trị frontend (MenuPage.jsx) coi là trạng thái tốt.
+            'sync_status'     => $sync_status,
+            'usable'          => $usable,
         ], 200);
     }
 
