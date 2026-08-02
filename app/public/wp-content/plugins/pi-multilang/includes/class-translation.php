@@ -15,6 +15,24 @@ class Pi_Multilang_Translation {
      */
     private static $translating = false;
 
+    /**
+     * Bài có dịch được không — `post_content` rỗng thì KHÔNG.
+     *
+     * Theme saigonhoreca dựng trang bằng template PHP riêng
+     * (page-templates/page-gioi-thieu.php, page-lien-he.php...), nội dung nằm
+     * trong file PHP chứ không nằm trong DB. Dịch những trang đó chỉ ra được
+     * cái tiêu đề, còn bản dịch dùng page.php mặc định + content rỗng →
+     * render ra TRANG TRẮNG hoàn toàn, vô dụng.
+     *
+     * Thực tế 2026-08-02: "Liên hệ" và "Về Saigon Horeca" (đều 0 ký tự
+     * post_content nhưng render 62KB/116KB HTML nhờ template) đã sinh ra 2
+     * bản dịch EN trắng trơn. Ngược lại 19 bản dịch product đều có nội dung
+     * thật (411-655 ký tự) nên vẫn dịch bình thường.
+     */
+    private static function is_translatable($post) {
+        return trim((string) $post->post_content) !== '';
+    }
+
     public static function init() {
         add_action('save_post', [__CLASS__, 'on_save_post'], 10, 3);
         add_action(self::CRON_HOOK, [__CLASS__, 'run_scheduled_translate'], 10, 2);
@@ -40,6 +58,7 @@ class Pi_Multilang_Translation {
         if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
         if (wp_is_post_revision($post_id)) return;
         if ($post->post_type === 'attachment' || $post->post_type === 'nav_menu_item') return;
+        if (!self::is_translatable($post)) return;
 
         // Only translate if the CURRENT post is Vietnamese (or untagged, which
         // defaults to Vietnamese — the site's existing content).
@@ -109,6 +128,8 @@ class Pi_Multilang_Translation {
     private static function do_translate($post_id, $group) {
         $post = get_post($post_id);
         if (!$post) return false;
+        // Chặn ở CẢ đường thủ công (nút "Dịch ngay"), không chỉ đường cron.
+        if (!self::is_translatable($post)) return false;
 
         $chatbot_settings = get_option('pi_chatbot_settings', []);
         $api_key = '';
