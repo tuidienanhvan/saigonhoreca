@@ -3,7 +3,7 @@
  * Single Project Template — Gành Hào
  * Thumbnail: ganh-hao-noi-hon-bien-trong-tung-net-kien-truc/ganh-hao-mui-da-toan-canh-tu-tren-cao-mai-cong-luon-song.webp
  *
- * Auto-routed via inc/core/pillar-routes.php for /du-an/ganh-hao-noi-hon-bien-trong-tung-net-kien-truc/.
+ * Auto-routed via inc/core/pillar-routes.php for /du-an/ganh-hao/.
  *
  * @package SaigonHoreca
  */

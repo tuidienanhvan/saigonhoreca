@@ -14,7 +14,7 @@ $slides = [
         'title' => 'Sol Kitchen & Bar D7',
         'desc'  => 'Tiếp nối sự thành công của nhà hàng Sol quận 1 khi lọt vào Michelin Guide 2023, Saigon Horeca vinh hạnh được chủ đầu tư Sol Kitchen & Bar tin tưởng lựa chọn là đơn vị uy tín triển khai hệ thống bếp cao cấp cho nhà hàng tại quận 7, HCMC.',
         'img'   => 'renovate-sol-kitchen-bar-quan-7/sol-kitchen-bar-q7-toan-canh-bep-bar-inox-hoan-thien.webp',
-        'slug'  => 'renovate-sol-kitchen-bar-quan-7',
+        'slug'  => 'renovate-sol-kitchen-bar-d7',
     ],
     [
         'title' => 'Little Bear',
@@ -44,7 +44,7 @@ $slides = [
         'title' => 'Sol Kitchen & Bar Q1',
         'desc'  => 'Nhà hàng Sol Kitchen & Bar quận 1 — vinh dự được lọt Michelin Guide 2023. Saigon Horeca tự hào là đơn vị thiết kế và thi công hệ thống bếp công nghiệp cao cấp.',
         'img'   => 'sol-kitchen-bar-saigon-horeca/sol-kitchen-bar-saigon-horeca-khong-gian-quay-bar-bistro.webp',
-        'slug'  => 'sol-kitchen-bar-saigon-horeca',
+        'slug'  => 'sol-kitchen-bar-d1',
     ],
 ];
 

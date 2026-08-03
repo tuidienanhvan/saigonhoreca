@@ -1,6 +1,6 @@
 <?php
 /**
- * Project Pillar — hemma-desserts-mot-goc-nho-chau-au-giua-thao-dien
+ * Project Pillar — hemma-desserts
  * Section #6: gallery — closing showcase + brand sign-off.
  * @package SaigonHoreca
  */

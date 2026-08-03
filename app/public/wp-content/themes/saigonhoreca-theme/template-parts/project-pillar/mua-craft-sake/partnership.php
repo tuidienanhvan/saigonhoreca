@@ -1,6 +1,6 @@
 <?php
 /**
- * Project Pillar — mua-craft-sake-lam-ruou-sake-dau-tien-tai-viet-nam
+ * Project Pillar — mua-craft-sake
  * Section #4: partnership — cinematic bg + glassmorphic content (Saigon Horeca).
  *
  * Kỹ thuật "Parallax Clip-Path": section dùng clip-path: inset(0) để giam lớp

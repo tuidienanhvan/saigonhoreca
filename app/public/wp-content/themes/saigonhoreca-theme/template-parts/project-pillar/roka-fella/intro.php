@@ -1,6 +1,6 @@
 <?php
 /**
- * Project Pillar — roka-fella-tinh-hoa-am-thuc-nhat-ban
+ * Project Pillar — roka-fella
  * Section #2: intro
  * @package SaigonHoreca
  */

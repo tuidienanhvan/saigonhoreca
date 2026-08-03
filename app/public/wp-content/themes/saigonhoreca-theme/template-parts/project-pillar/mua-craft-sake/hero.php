@@ -1,6 +1,6 @@
 <?php
 /**
- * Project Pillar — mua-craft-sake-lam-ruou-sake-dau-tien-tai-viet-nam
+ * Project Pillar — mua-craft-sake
  * Section #1: hero — cinematic brewery banner (bright image, text-on-image).
  *
  * Owner feedback applied: KHÔNG lớp nền đen, KHÔNG khung chữ phía sau title.

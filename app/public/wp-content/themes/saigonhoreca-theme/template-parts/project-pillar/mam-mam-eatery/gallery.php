@@ -1,6 +1,6 @@
 <?php
 /**
- * Project Pillar — mam-mam-eatery-lounge-nang-tam-mam-com-viet
+ * Project Pillar — mam-mam-eatery
  * Section #6: gallery slot — GOLD editorial mosaic ("thư viện hình ảnh")
  * followed by the merged closing statement ("lời kết") block.
  * Per project-pillar-standard §6, the closing philosophy is merged into the

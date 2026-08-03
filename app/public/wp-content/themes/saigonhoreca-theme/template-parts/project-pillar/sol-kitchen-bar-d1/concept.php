@@ -1,6 +1,6 @@
 <?php
 /**
- * Project Pillar — sol-kitchen-bar-saigon-horeca
+ * Project Pillar — sol-kitchen-bar-d1
  * Section #3: concept — editorial magazine layout, glass card overlapping a
  * tall framed image, numbered watermark + ambient glow.
  * Copy: high-ceilinged hacienda dining room (wicker lamps + succulents + Adrian).

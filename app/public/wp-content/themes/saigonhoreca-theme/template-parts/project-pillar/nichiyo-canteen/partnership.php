@@ -1,6 +1,6 @@
 <?php
 /**
- * Project Pillar — du-an-bep-cang-tin-cong-ty-nhat-nichiyo
+ * Project Pillar — nichiyo-canteen
  * Section #4: partnership — kitchen design narrative + project gallery (du-an).
  * @package SaigonHoreca
  */

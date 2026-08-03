@@ -1,0 +1,414 @@
+/* ==========================================================================
+   Section: Founder Statement & Impact Stats (Strict Theme Tokens Standard)
+   ========================================================================== */
+
+.sh-about-founder {
+    position: relative;
+    width: 100%;
+    background-color: var(--b1);
+    color: var(--bc);
+    padding: 4.5rem 1.25rem;
+    overflow: hidden;
+}
+
+@media (min-width: 768px) {
+    .sh-about-founder {
+        padding: 6rem 2.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .sh-about-founder {
+        padding: 7.5rem 3.5rem;
+    }
+}
+
+/* Glowing Radial Background using Theme Accent Token --p */
+.sh-about-founder::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 15%;
+    transform: translate(-50%, -50%);
+    width: 45rem;
+    height: 45rem;
+    background: radial-gradient(circle, color-mix(in srgb, var(--p) 6%, transparent) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.sh-about-founder::after {
+    content: '';
+    position: absolute;
+    top: 25%;
+    right: 5%;
+    width: 35rem;
+    height: 35rem;
+    background: radial-gradient(circle, color-mix(in srgb, var(--p) 4%, transparent) 0%, transparent 65%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Background Blueprint Pattern Grid */
+.sh-about-founder__blueprint-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.18;
+}
+
+.sh-about-founder__inner {
+    max-width: var(--sh-content-max, 80rem);
+    margin-inline: auto;
+    position: relative;
+    z-index: 2;
+}
+
+.sh-about-founder__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+    align-items: center;
+}
+
+@media (min-width: 1024px) {
+    .sh-about-founder__grid {
+        grid-template-columns: 1fr 1.05fr;
+        gap: 4.5rem;
+    }
+}
+
+/* ── CỘT TRÁI: ARCHITECTURAL SVG CREATIVE CANVAS ── */
+.sh-about-founder__collage {
+    position: relative;
+    width: 100%;
+}
+
+.sh-about-founder__drafting-mark {
+    position: absolute;
+    font-size: 0.625rem;
+    font-weight: 700;
+    color: color-mix(in srgb, var(--p) 60%, transparent);
+    letter-spacing: 0.15em;
+    pointer-events: none;
+    z-index: 4;
+}
+
+.sh-about-founder__drafting-mark--tl { top: -1.25rem; left: 0; }
+.sh-about-founder__drafting-mark--tr { top: -1.25rem; right: 0; }
+
+/* SVG ClipPath Applied to Main Image Container & Image */
+.sh-about-founder__main-frame {
+    position: relative;
+    width: 100%;
+    filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.75));
+}
+
+.sh-about-founder__main-img-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    clip-path: url(#sgh-founder-clip);
+    -webkit-clip-path: url(#sgh-founder-clip);
+    overflow: hidden;
+    background-color: var(--b3);
+}
+
+.sh-about-founder__main-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    color: transparent;
+    transition: transform 0.7s var(--ease-spring), filter 0.7s ease;
+}
+
+.sh-about-founder__main-frame:hover .sh-about-founder__main-img {
+    transform: scale(1.04);
+}
+
+/* SVG Vector Gold Border Frame Overlay
+   KHÔNG dùng height:100% — <svg viewBox="0 0 100 100"> có intrinsic ratio riêng 1:1 từ
+   viewBox, ratio này thắng percentage height dù .main-frame/.main-img-wrap có aspect-ratio
+   definite hay không (xem pi-mem "SVG outline photo-frame bug + fix recipe"). Fix: cho SVG
+   tự có aspect-ratio khớp với .main-img-wrap (4/3) thay vì dựa vào height:100%. */
+.sh-about-founder__svg-frame-art {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    z-index: 3;
+    pointer-events: none;
+}
+
+/* Overlapping Sub Glass Card */
+.sh-about-founder__sub-card {
+    position: absolute;
+    bottom: -1.75rem;
+    right: -1rem;
+    width: 52%;
+    max-width: 290px;
+    padding: 1px;
+    border-radius: var(--radius-md, 8px);
+    background: linear-gradient(135deg, color-mix(in srgb, var(--p) 60%, transparent) 0%, var(--bd) 100%);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7), 0 0 20px color-mix(in srgb, var(--p) 15%, transparent);
+    z-index: 4;
+    transition: transform 0.4s var(--ease-spring), box-shadow 0.4s ease;
+}
+
+@media (min-width: 640px) {
+    .sh-about-founder__sub-card {
+        bottom: -2.25rem;
+        right: -1.25rem;
+        width: 48%;
+        max-width: 320px;
+    }
+}
+
+.sh-about-founder__sub-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 25px color-mix(in srgb, var(--p) 25%, transparent);
+}
+
+.sh-about-founder__sub-img-wrap {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    border-radius: calc(var(--radius-md, 8px) - 1px);
+    overflow: hidden;
+    position: relative;
+    background-color: var(--b3);
+}
+
+.sh-about-founder__sub-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    color: transparent;
+}
+
+.sh-about-founder__sub-badge {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    padding: 3px 8px;
+    background: rgba(10, 10, 10, 0.8);
+    backdrop-filter: blur(8px);
+    border: 1px solid color-mix(in srgb, var(--p) 35%, transparent);
+    border-radius: var(--radius-full);
+    font-size: 0.55rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--p);
+    text-transform: uppercase;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.sh-about-founder__sub-badge-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: var(--p);
+    box-shadow: 0 0 6px var(--p);
+}
+
+/* ── CỘT PHẢI: FOUNDER QUOTE & TYPOGRAPHY ── */
+.sh-about-founder__right-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.sh-about-founder__quote-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.sh-about-founder__quote-svg-icon {
+    width: 46px;
+    height: 36px;
+    display: block;
+    color: var(--p);
+    filter: drop-shadow(0 2px 8px color-mix(in srgb, var(--p) 30%, transparent));
+}
+
+.sh-about-founder__quote-tag {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--p);
+    background: linear-gradient(90deg, color-mix(in srgb, var(--p) 12%, transparent) 0%, transparent 100%);
+    padding: 0.3rem 0.75rem;
+    border-left: 2px solid var(--p);
+}
+
+.sh-about-founder__statement {
+    font-size: 1.25rem;
+    line-height: 1.75;
+    font-weight: 400;
+    color: var(--bc);
+    font-style: italic;
+    margin: 0 0 2rem 0;
+    letter-spacing: -0.01em;
+}
+
+@media (min-width: 768px) {
+    .sh-about-founder__statement {
+        font-size: 1.45rem;
+        line-height: 1.8;
+    }
+}
+
+.sh-about-founder__brand-highlight {
+    font-weight: 800;
+    font-style: italic;
+    color: var(--p);
+}
+
+.sh-about-founder__text-gold {
+    color: var(--p);
+    font-weight: 600;
+}
+
+.sh-about-founder__author-block {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    margin-bottom: 2.5rem;
+}
+
+.sh-about-founder__author-divider {
+    width: 40px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--p) 0%, transparent 100%);
+    flex-shrink: 0;
+}
+
+.sh-about-founder__author-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.sh-about-founder__author-name {
+    font-size: 1.25rem;
+    font-weight: 900;
+    color: var(--bc);
+    letter-spacing: -0.01em;
+    margin: 0 0 0.2rem 0;
+}
+
+.sh-about-founder__author-title {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--bc3);
+    margin: 0;
+}
+
+.sh-about-founder__signature-wrap {
+    margin-left: 1.5rem;
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    width: clamp(220px, 25vw, 300px);
+    height: 70px;
+    flex-shrink: 0;
+}
+
+.sh-about-founder__signature-svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    overflow: visible;
+    color: var(--p);
+    filter: drop-shadow(0 2px 8px color-mix(in srgb, var(--p) 35%, transparent));
+}
+
+/* Nét vẽ chữ ký Calligraphy animation */
+.sh-about-founder__signature-svg .sig-path {
+    stroke-dasharray: 400;
+    stroke-dashoffset: 0;
+    transition: stroke-dashoffset 1.5s ease-in-out;
+}
+
+/* ── 3D STATS CARDS ── */
+.sh-about-founder__stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+@media (max-width: 639px) {
+    .sh-about-founder__stats-grid {
+        grid-template-columns: 1fr;
+        gap: 0.85rem;
+    }
+}
+
+.sh-about-founder__stat-card {
+    position: relative;
+    background: var(--b2);
+    border: 1px solid var(--bd);
+    border-radius: var(--radius-md, 8px);
+    padding: 1.35rem 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    transition: transform 0.35s var(--ease-spring), border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.sh-about-founder__stat-card:hover {
+    transform: translateY(-4px);
+    border-color: color-mix(in srgb, var(--p) 35%, transparent);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 15px color-mix(in srgb, var(--p) 10%, transparent);
+}
+
+.sh-about-founder__stat-icon {
+    position: absolute;
+    top: 0.85rem;
+    right: 0.85rem;
+    width: 18px;
+    height: 18px;
+    color: color-mix(in srgb, var(--p) 40%, transparent);
+    transition: color 0.35s ease;
+}
+
+.sh-about-founder__stat-card:hover .sh-about-founder__stat-icon {
+    color: var(--p);
+}
+
+.sh-about-founder__stat-number {
+    font-family: var(--font-display);
+    font-size: 2.25rem;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 0.45rem;
+    color: var(--p);
+    letter-spacing: -0.02em;
+}
+
+@media (min-width: 1024px) {
+    .sh-about-founder__stat-number {
+        font-size: 2.5rem;
+    }
+}
+
+.sh-about-founder__stat-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--bc2);
+    margin: 0;
+}

@@ -1,6 +1,6 @@
 <?php
 /**
- * Project Pillar — du-an-kdl-rung-thong-nui-voi-cua-saigonhoreca
+ * Project Pillar — kdl-rung-thong-nui-voi
  * Section #1: hero (Pine-forest eco-tourism — full viewport, airy & green)
  * @package SaigonHoreca
  */

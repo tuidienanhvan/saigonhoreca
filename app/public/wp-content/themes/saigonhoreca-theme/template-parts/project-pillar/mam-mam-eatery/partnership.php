@@ -1,6 +1,6 @@
 <?php
 /**
- * Project Pillar — mam-mam-eatery-lounge-nang-tam-mam-com-viet
+ * Project Pillar — mam-mam-eatery
  * Section #4: partnership — Saigon Horeca design highlight (split reverse).
  * @package SaigonHoreca
  */

@@ -1,6 +1,6 @@
 <?php
 /**
- * Project Pillar — renovate-sol-kitchen-bar-quan-7
+ * Project Pillar — renovate-sol-kitchen-bar-d7
  * Section #3: concept — challenges + interactive Before/After comparison sliders.
  * @package SaigonHoreca
  */

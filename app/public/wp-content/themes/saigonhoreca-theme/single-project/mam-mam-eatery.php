@@ -3,7 +3,7 @@
  * Single Project Template — MÂM MÂM EATERY & LOUNGE
  * Thumbnail: mam-mam-eatery-lounge-nang-tam-mam-com-viet/mam-mam-eatery-lounge-nang-tam-mam-com-viet-thumbnail-project-cover.webp
  *
- * Auto-routed via inc/core/pillar-routes.php for /du-an/mam-mam-eatery-lounge-nang-tam-mam-com-viet/.
+ * Auto-routed via inc/core/pillar-routes.php for /du-an/mam-mam-eatery/.
  *
  * @package SaigonHoreca
  */

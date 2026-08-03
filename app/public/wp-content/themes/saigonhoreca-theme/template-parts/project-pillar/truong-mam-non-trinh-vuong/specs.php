@@ -1,6 +1,6 @@
 <?php
 /**
- * Project Pillar — bep-an-truong-mam-non-tu-thuc-trinh-vuong
+ * Project Pillar — truong-mam-non-trinh-vuong
  * Section #5: specs (Thông Số An Toàn Thực Phẩm — Clean Dashboard Spec + sáng-bóng parallax)
  * @package SaigonHoreca
  */

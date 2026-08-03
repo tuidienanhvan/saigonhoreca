@@ -1,6 +1,6 @@
 <?php
 /**
- * Project Pillar — mam-mam-eatery-lounge-nang-tam-mam-com-viet
+ * Project Pillar — mam-mam-eatery
  * Section #2: intro — alternating storytelling + opening gallery.
  * @package SaigonHoreca
  */

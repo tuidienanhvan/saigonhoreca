@@ -1,6 +1,6 @@
 <?php
 /**
- * Project Pillar — ganh-hao-noi-hon-bien-trong-tung-net-kien-truc
+ * Project Pillar — ganh-hao
  * Section #6: gallery (Split into Scenery and Kitchen) + khối đúc kết
  * @package SaigonHoreca
  */

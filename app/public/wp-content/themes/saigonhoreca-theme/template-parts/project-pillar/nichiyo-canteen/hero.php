@@ -1,6 +1,6 @@
 <?php
 /**
- * Project Pillar — du-an-bep-cang-tin-cong-ty-nhat-nichiyo
+ * Project Pillar — nichiyo-canteen
  * Section #1: hero — Japanese industrial canteen, Parallax Clip-Path kitchen + hinomaru disc.
  * @package SaigonHoreca
  */

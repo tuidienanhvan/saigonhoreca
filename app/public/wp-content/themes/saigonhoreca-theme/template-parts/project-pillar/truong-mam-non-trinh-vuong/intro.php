@@ -1,6 +1,6 @@
 <?php
 /**
- * Project Pillar — bep-an-truong-mam-non-tu-thuc-trinh-vuong
+ * Project Pillar — truong-mam-non-trinh-vuong
  * Section #2: intro (Bảo An Sức Khỏe — Friendly Split Layout · dropcap · soft-edged frame)
  * @package SaigonHoreca
  */

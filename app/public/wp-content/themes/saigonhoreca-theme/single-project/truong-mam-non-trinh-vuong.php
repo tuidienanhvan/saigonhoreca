@@ -3,7 +3,7 @@
  * Single Project Template — TRƯỜNG MẦM NON TRINH VƯƠNG
  * Thumbnail: bep-an-truong-mam-non-tu-thuc-trinh-vuong/bep-an-truong-mam-non-tu-thuc-trinh-vuong-thumbnail-project-cover.webp
  *
- * Auto-routed via inc/core/pillar-routes.php for /du-an/bep-an-truong-mam-non-tu-thuc-trinh-vuong/.
+ * Auto-routed via inc/core/pillar-routes.php for /du-an/truong-mam-non-trinh-vuong/.
  *
  * @package SaigonHoreca
  */

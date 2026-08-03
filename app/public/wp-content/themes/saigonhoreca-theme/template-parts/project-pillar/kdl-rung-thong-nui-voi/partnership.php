@@ -1,6 +1,6 @@
 <?php
 /**
- * Project Pillar — du-an-kdl-rung-thong-nui-voi-cua-saigonhoreca
+ * Project Pillar — kdl-rung-thong-nui-voi
  * Section #4: partnership (Challenge & solution — Con Voi Vàng 400-guest kitchen)
  * @package SaigonHoreca
  */

@@ -1,6 +1,6 @@
 <?php
 /**
- * Project Pillar — sol-kitchen-bar-saigon-horeca
+ * Project Pillar — sol-kitchen-bar-d1
  * Section #5: partnership — cinematic bg band (heading + lead) + collaboration
  * card grid + capability dashboard (real scope facts only).
  * Copy: the SOL Kitchen & Bar × Saigon Horeca collaboration (consult/design/build).

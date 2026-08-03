@@ -1,6 +1,6 @@
 <?php
 /**
- * Project Pillar — renovate-sol-kitchen-bar-quan-7
+ * Project Pillar — renovate-sol-kitchen-bar-d7
  * Section #2: intro — "Michelin Legacy" editorial redesign.
  * Hand-drawn SVG illustrations: award medallion (laurel + star), star accents,
  * ornamental flourish divider, oversized quote mark, star-rating strip.

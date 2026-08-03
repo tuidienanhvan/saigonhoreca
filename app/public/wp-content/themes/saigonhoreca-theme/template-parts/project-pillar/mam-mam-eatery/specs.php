@@ -1,6 +1,6 @@
 <?php
 /**
- * Project Pillar — mam-mam-eatery-lounge-nang-tam-mam-com-viet
+ * Project Pillar — mam-mam-eatery
  * Section #5: specs — industrial kitchen story + equipment gallery.
  * @package SaigonHoreca
  */

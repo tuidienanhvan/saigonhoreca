@@ -1,6 +1,6 @@
 <?php
 /**
- * Project Pillar — hemma-desserts-mot-goc-nho-chau-au-giua-thao-dien
+ * Project Pillar — hemma-desserts
  * Section #5: specs — "Thẩm mỹ và trải nghiệm" + value cards + final pair gallery.
  * @package SaigonHoreca
  */

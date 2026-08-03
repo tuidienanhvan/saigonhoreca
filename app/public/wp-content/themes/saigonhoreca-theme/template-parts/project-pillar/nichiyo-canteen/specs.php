@@ -1,6 +1,6 @@
 <?php
 /**
- * Project Pillar — du-an-bep-cang-tin-cong-ty-nhat-nichiyo
+ * Project Pillar — nichiyo-canteen
  * Section #5: specs — sophistication narrative + equipment / feature spec cards.
  * @package SaigonHoreca
  */

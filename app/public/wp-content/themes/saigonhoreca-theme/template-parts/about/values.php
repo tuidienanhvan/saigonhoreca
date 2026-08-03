@@ -4,7 +4,7 @@
  *
  * Dark luxe: 2-col split.
  * Left  = dark bg + 3 value pills + gold CTA.
- * Right = full-bleed bg image với gold gradient overlay + headline.
+ * Right = Tall Architectural SVG Photo Frame (Asymmetric Chamfer) chứa ảnh phủ 100% + Glassmorphic Card.
  * BEM: sh-about-values
  *
  * @package SaigonHoreca
@@ -49,7 +49,7 @@ $values = [
             <path d="M24 2v5M24 41v5M2 24h5M41 24h5" stroke="currentColor" stroke-width="1.2" opacity="0.4"/>
             <path class="svg-refinement-diamond" d="M24 9l11 8v14L24 39 13 31V17z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
             <path class="svg-refinement-facets" d="M24 9v30M13 17h22M13 31h22M24 17l11 14M24 17L13 31" stroke="currentColor" stroke-width="1" opacity="0.7"/>
-            <path class="svg-refinement-beam" d="M24 17l-9-9M24 17l9-9M24 31l-9 9M24 31l9 9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity="0.4" stroke-dasharray="2 3"/>
+            <path class="svg-refinement-beam" d="M24 17l-9-9M24 17l9-9M24 31l-9 9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity="0.4" stroke-dasharray="2 3"/>
         </svg>',
         'label' => __('Tinh tế', 'saigonhoreca'),
         'desc'  => 'Từng chi tiết nhỏ đều có ý nghĩa — sự tinh tế tạo nên đẳng cấp khác biệt.',
@@ -57,83 +57,102 @@ $values = [
 ];
 ?>
 <section class="sh-about-values" aria-label="<?php esc_attr_e('Giá trị cốt lõi Saigon Horeca', 'saigonhoreca'); ?>">
+    <div class="sh-about-values__inner">
 
-    <!-- Left: Values -->
-    <div class="sh-about-values__left">
-        <div class="sh-about-values__left-content">
+        <!-- Left: Values Pills & Eyebrow -->
+        <div class="sh-about-values__left">
+            <div class="sh-about-values__left-content">
 
-            <span class="sh-about-values__eyebrow"><?php esc_html_e('Giải pháp của chúng tôi', 'saigonhoreca'); ?></span>
+                <span class="sh-about-values__eyebrow"><?php esc_html_e('Giải pháp của chúng tôi', 'saigonhoreca'); ?></span>
 
-            <h2 class="sh-about-values__title">
-                <span class="sh-wordart-1">Sáng tạo</span><span class="sh-about-values__title-sep"> · </span><span class="sh-wordart-2">Nghệ thuật</span><span class="sh-about-values__title-sep"> · </span><span class="sh-wordart-3">Tinh tế</span>
-            </h2>
+                <h2 class="sh-about-values__title">
+                    <span class="sh-wordart-1">Sáng tạo</span><span class="sh-about-values__title-sep"> · </span><span class="sh-wordart-2">Nghệ thuật</span><span class="sh-about-values__title-sep"> · </span><span class="sh-wordart-3">Tinh tế</span>
+                </h2>
 
-            <!-- 3 value cards -->
-            <div class="sh-about-values__cards">
-                <?php foreach ($values as $v): ?>
-                    <div class="sh-about-values__card">
-                        <span class="sh-about-values__card-icon" aria-hidden="true">
-                            <?php echo $v['icon']; ?>
-                        </span>
-                        <div class="sh-about-values__card-body">
-                            <strong class="sh-about-values__card-label"><?php echo esc_html($v['label']); ?></strong>
-                            <p class="sh-about-values__card-desc"><?php echo esc_html($v['desc']); ?></p>
+                <!-- 3 value cards -->
+                <div class="sh-about-values__cards">
+                    <?php foreach ($values as $v): ?>
+                        <div class="sh-about-values__card">
+                            <span class="sh-about-values__card-icon" aria-hidden="true">
+                                <?php echo $v['icon']; ?>
+                            </span>
+                            <div class="sh-about-values__card-body">
+                                <strong class="sh-about-values__card-label"><?php echo esc_html($v['label']); ?></strong>
+                                <p class="sh-about-values__card-desc"><?php echo esc_html($v['desc']); ?></p>
+                            </div>
                         </div>
-                    </div>
-                <?php endforeach; ?>
-            </div>
+                    <?php endforeach; ?>
+                </div>
 
-            <a class="sh-about-values__cta" href="tel:+84901304365">
-                <svg class="sh-about-values__cta-phone-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="16" height="16">
-                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.06 6.06l.94-.93a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
-                </svg>
-                <?php esc_html_e('Liên hệ ngay', 'saigonhoreca'); ?>
-            </a>
-        </div>
-    </div>
-
-    <!-- Right: Image overlay (Luxury Ken Burns Background & Glassmorphic 3D Card) -->
-    <div class="sh-about-values__right">
-        <!-- Technical Corner Frame SVG Overlay -->
-        <svg class="sh-about-values__tech-frame" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-            <path d="M 0,0 L 92,0 L 100,8 L 100,100 L 8,100 L 0,92 Z" fill="none" stroke="var(--p)" stroke-width="0.6" opacity="0.25"/>
-            <path d="M 0,15 L 0,0 L 15,0 M 85,0 L 92,0 L 100,8 L 100,20 M 100,80 L 100,100 L 85,100 M 15,100 L 8,100 L 0,92 L 0,78" fill="none" stroke="var(--p)" stroke-width="1.8" opacity="0.8"/>
-        </svg>
-
-        <!-- Technical Ken Burns Background Image -->
-        <div class="sh-about-values__right-bg" style="background-image:url('<?php echo esc_url($bg_img); ?>')" aria-hidden="true"></div>
-        <div class="sh-about-values__right-overlay" aria-hidden="true"></div>
-        
-        <!-- Architectural technical grid lines & markers inside right panel -->
-        <div class="sh-about-values__right-grid-line sh-about-values__right-grid-line--h" aria-hidden="true"></div>
-        <div class="sh-about-values__right-grid-line sh-about-values__right-grid-line--v" aria-hidden="true"></div>
-        <span class="sh-about-values__right-marker sh-about-values__right-marker--tl" aria-hidden="true">+</span>
-        <span class="sh-about-values__right-marker sh-about-values__right-marker--br" aria-hidden="true">+</span>
-
-        <!-- Glassmorphic Content Card with gold accents -->
-        <div class="sh-about-values__glass-card">
-            <!-- Subtle architectural gold indicator line left -->
-            <div class="sh-about-values__glass-card-border" aria-hidden="true"></div>
-            
-            <div class="sh-about-values__right-content">
-                <!-- Decorative top badge -->
-                <span class="sh-about-values__right-badge">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14" aria-hidden="true">
-                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                <a class="sh-about-values__cta" href="tel:+84901304365">
+                    <svg class="sh-about-values__cta-phone-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="16" height="16">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.06 6.06l.94-.93a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
                     </svg>
-                    Premium F&amp;B Solutions
-                </span>
-
-                <h3 class="sh-about-values__passion-title">
-                    <?php esc_html_e('Đam mê sáng tạo trong hành trình khám phá', 'saigonhoreca'); ?>
-                </h3>
-                
-                <div class="sh-about-values__rule"></div>
-                
-                <p class="sh-about-values__passion-body">
-                    Sài Gòn Horeca luôn thể hiện niềm đam mê và khát vọng khám phá trong quá trình thiết kế sản phẩm và tư vấn giải pháp. Sự kết hợp giữa đam mê và tinh thần khám phá chính là chìa khóa tạo ra những sản phẩm mang tính đột phá.
-                </p>
+                    <?php esc_html_e('Liên hệ ngay', 'saigonhoreca'); ?>
+                </a>
             </div>
         </div>
+
+        <!-- Right: Standalone Architectural SVG Photo Frame Canvas -->
+        <div class="sh-about-values__right">
+            
+            <!-- STANDALONE ARCHITECTURAL SVG PHOTO FRAME CONTAINER -->
+            <div class="sh-about-values__photo-frame">
+                
+                <span class="sh-about-values__cad-label">+ ARCHITECTURAL SPEC // VALUES</span>
+
+                <div class="sh-about-values__photo-wrap">
+                    <!-- Ảnh được phóng to lấp đầy 100% bằng object-fit: cover -->
+                    <img src="<?php echo esc_url($bg_img); ?>" alt="Không gian ẩm thực cao cấp Saigon Horeca" class="sh-about-values__photo-img" width="800" height="1066" loading="lazy" />
+                    <!-- Lớp phủ Gradient Tối màu bên trong Khung Ảnh Dọc -->
+                    <div class="sh-about-values__photo-overlay" aria-hidden="true"></div>
+                </div>
+
+                <!-- Non-scaling Gold Vector Frame Outline — Vát chéo đối xứng 2 góc (trên-phải & dưới-trái)
+                     + điểm nhấn CAD ở 2 góc vuông còn lại (trên-trái & dưới-phải) -->
+                <svg class="sh-about-values__photo-svg-outline" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+                    <!-- Viền chính: hexagon vát 2 góc chéo -->
+                    <path d="M 0 0 L 85 0 L 100 12 L 100 100 L 15 100 L 0 88 Z" fill="none" stroke="var(--p)" stroke-width="2.5" stroke-opacity="0.85" vector-effect="non-scaling-stroke"/>
+                    <!-- Thanh nhấn vàng đậm trên 2 cạnh vát -->
+                    <line x1="85" y1="0" x2="100" y2="12" stroke="var(--p)" stroke-width="4" vector-effect="non-scaling-stroke"/>
+                    <line x1="15" y1="100" x2="0" y2="88" stroke="var(--p)" stroke-width="4" vector-effect="non-scaling-stroke"/>
+                    <!-- Chấm kim cương nhỏ tại 2 đỉnh vát, tạo điểm nhấn trang sức -->
+                    <path d="M 92.5 6 l 2.2 2.2 l -2.2 2.2 l -2.2 -2.2 Z" fill="var(--p)" opacity="0.95"/>
+                    <path d="M 7.5 94 l 2.2 2.2 l -2.2 2.2 l -2.2 -2.2 Z" fill="var(--p)" opacity="0.95"/>
+                    <!-- Ngoặc góc CAD (corner bracket) tại 2 góc vuông còn lại: trên-trái & dưới-phải -->
+                    <path class="sh-about-values__corner-mark" d="M 0 9 L 0 0 L 9 0" fill="none" stroke="var(--p)" stroke-width="1.5" stroke-opacity="0.7" vector-effect="non-scaling-stroke"/>
+                    <path class="sh-about-values__corner-mark" d="M 91 100 L 100 100 L 100 91" fill="none" stroke="var(--p)" stroke-width="1.5" stroke-opacity="0.7" vector-effect="non-scaling-stroke"/>
+                    <circle cx="3" cy="3" r="1.1" fill="var(--p)" opacity="0.8"/>
+                    <circle cx="97" cy="97" r="1.1" fill="var(--p)" opacity="0.8"/>
+                </svg>
+
+                <!-- GLASSCARD LỒNG Ở CHÂN KHUNG ÁNH DỌC (ĐÁY PHẲNG ÔM TRỌN 100%) -->
+                <div class="sh-about-values__glass-card">
+                    <div class="sh-about-values__glass-card-border" aria-hidden="true"></div>
+                    
+                    <div class="sh-about-values__right-content">
+                        <span class="sh-about-values__right-badge">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14" aria-hidden="true">
+                                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                            </svg>
+                            Premium F&amp;B Solutions
+                        </span>
+
+                        <h3 class="sh-about-values__passion-title">
+                            <?php esc_html_e('Đam mê sáng tạo trong hành trình khám phá', 'saigonhoreca'); ?>
+                        </h3>
+                        
+                        <div class="sh-about-values__rule"></div>
+                        
+                        <p class="sh-about-values__passion-body">
+                            Sài Gòn Horeca luôn thể hiện niềm đam mê và khát vọng khám phá trong quá trình thiết kế sản phẩm và tư vấn giải pháp. Sự kết hợp giữa đam mê và tinh thần khám phá chính là chìa khóa tạo ra những sản phẩm mang tính đột phá.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
     </div>
 </section>

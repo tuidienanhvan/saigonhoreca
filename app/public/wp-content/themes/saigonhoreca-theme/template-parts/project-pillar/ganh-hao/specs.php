@@ -1,6 +1,6 @@
 <?php
 /**
- * Project Pillar — ganh-hao-noi-hon-bien-trong-tung-net-kien-truc
+ * Project Pillar — ganh-hao
  * Section #5: specs (split — tinh gọn, hiệu quả, dấu ấn vùng biển + thiết bị)
  * @package SaigonHoreca
  */

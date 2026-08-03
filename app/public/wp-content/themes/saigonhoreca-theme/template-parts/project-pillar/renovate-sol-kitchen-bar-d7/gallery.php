@@ -1,6 +1,6 @@
 <?php
 /**
- * Project Pillar — renovate-sol-kitchen-bar-quan-7
+ * Project Pillar — renovate-sol-kitchen-bar-d7
  * Section #6: gallery — metro image grid + closing synthesis block (equipment + commitment).
  * @package SaigonHoreca
  */

@@ -101,13 +101,13 @@
 @import "../../../single-project/skyloft-by-glow.css";
 
 /* sol-kitchen-bar-saigon-horeca */
-@import "../../../template-parts/project-pillar/sol-kitchen-bar-saigon-horeca/hero.css";
-@import "../../../template-parts/project-pillar/sol-kitchen-bar-saigon-horeca/intro.css";
-@import "../../../template-parts/project-pillar/sol-kitchen-bar-saigon-horeca/concept.css";
-@import "../../../template-parts/project-pillar/sol-kitchen-bar-saigon-horeca/partnership.css";
-@import "../../../template-parts/project-pillar/sol-kitchen-bar-saigon-horeca/specs.css";
-@import "../../../template-parts/project-pillar/sol-kitchen-bar-saigon-horeca/gallery.css";
-@import "../../../single-project/sol-kitchen-bar-saigon-horeca.css";
+@import "../../../template-parts/project-pillar/sol-kitchen-bar-d1/hero.css";
+@import "../../../template-parts/project-pillar/sol-kitchen-bar-d1/intro.css";
+@import "../../../template-parts/project-pillar/sol-kitchen-bar-d1/concept.css";
+@import "../../../template-parts/project-pillar/sol-kitchen-bar-d1/partnership.css";
+@import "../../../template-parts/project-pillar/sol-kitchen-bar-d1/specs.css";
+@import "../../../template-parts/project-pillar/sol-kitchen-bar-d1/gallery.css";
+@import "../../../single-project/sol-kitchen-bar-d1.css";
 
 /* the-brix */
 @import "../../../template-parts/project-pillar/the-brix/hero.css";
@@ -292,10 +292,10 @@
 @import "../../../single-project/bling-bling-club.css";
 
 /* renovate-sol-kitchen-bar-quan-7 */
-@import "../../../template-parts/project-pillar/renovate-sol-kitchen-bar-quan-7/hero.css";
-@import "../../../template-parts/project-pillar/renovate-sol-kitchen-bar-quan-7/intro.css";
-@import "../../../template-parts/project-pillar/renovate-sol-kitchen-bar-quan-7/concept.css";
-@import "../../../template-parts/project-pillar/renovate-sol-kitchen-bar-quan-7/partnership.css";
-@import "../../../template-parts/project-pillar/renovate-sol-kitchen-bar-quan-7/specs.css";
-@import "../../../template-parts/project-pillar/renovate-sol-kitchen-bar-quan-7/gallery.css";
-@import "../../../single-project/renovate-sol-kitchen-bar-quan-7.css";
+@import "../../../template-parts/project-pillar/renovate-sol-kitchen-bar-d7/hero.css";
+@import "../../../template-parts/project-pillar/renovate-sol-kitchen-bar-d7/intro.css";
+@import "../../../template-parts/project-pillar/renovate-sol-kitchen-bar-d7/concept.css";
+@import "../../../template-parts/project-pillar/renovate-sol-kitchen-bar-d7/partnership.css";
+@import "../../../template-parts/project-pillar/renovate-sol-kitchen-bar-d7/specs.css";
+@import "../../../template-parts/project-pillar/renovate-sol-kitchen-bar-d7/gallery.css";
+@import "../../../single-project/renovate-sol-kitchen-bar-d7.css";

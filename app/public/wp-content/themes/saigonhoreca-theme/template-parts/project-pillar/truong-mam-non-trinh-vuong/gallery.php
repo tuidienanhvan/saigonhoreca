@@ -1,6 +1,6 @@
 <?php
 /**
- * Project Pillar — bep-an-truong-mam-non-tu-thuc-trinh-vuong
+ * Project Pillar — truong-mam-non-trinh-vuong
  * Section #6: gallery (Gold asymmetric editorial mosaic · shared frames · result note)
  * @package SaigonHoreca
  */

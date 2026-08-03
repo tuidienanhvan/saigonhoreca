@@ -1,6 +1,6 @@
 <?php
 /**
- * Project Pillar — bep-an-truong-mam-non-tu-thuc-trinh-vuong
+ * Project Pillar — truong-mam-non-trinh-vuong
  * Section #3: concept (Quy Trình Một Chiều — Timeline Spec Panel · milk-glass cards)
  * @package SaigonHoreca
  */

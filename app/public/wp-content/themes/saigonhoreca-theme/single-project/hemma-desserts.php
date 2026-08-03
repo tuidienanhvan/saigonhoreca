@@ -3,7 +3,7 @@
  * Single Project Template — HEMMA DESSERTS
  * Thumbnail: hemma-desserts-mot-goc-nho-chau-au-giua-thao-dien/hemma-desserts-mot-goc-nho-chau-au-giua-thao-dien-thumbnail-project-cover.webp
  *
- * Auto-routed via inc/core/pillar-routes.php for /du-an/hemma-desserts-mot-goc-nho-chau-au-giua-thao-dien/.
+ * Auto-routed via inc/core/pillar-routes.php for /du-an/hemma-desserts/.
  *
  * @package SaigonHoreca
  */

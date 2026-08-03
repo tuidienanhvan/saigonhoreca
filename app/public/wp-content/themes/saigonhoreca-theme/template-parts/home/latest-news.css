@@ -65,10 +65,15 @@
 }
 
 .sh-latest-news__frame {
+    /* SVG (viewBox 0 0 100 100, preserveAspectRatio=none) khoanh 4 góc của __header,
+       vốn là hộp cao tự do theo nội dung (không có aspect-ratio cố định) — không thể
+       gán aspect-ratio khớp vì không có tỉ lệ "đúng" để tham chiếu. width/height:100%
+       ở đây là percentage height trên container auto-height nên resolve thành auto,
+       rồi intrinsic ratio 1:1 của viewBox thắng => khung co vuông. Bỏ width/height,
+       chỉ dùng inset:0 (position:absolute) để trình duyệt giải kích thước trực tiếp
+       từ ràng buộc top/right/bottom/left, không đi qua bước percentage-height. */
     position: absolute;
     inset: 0;
-    width: 100%;
-    height: 100%;
     color: color-mix(in srgb, var(--gold) 35%, transparent);
     z-index: 0;
     pointer-events: none;

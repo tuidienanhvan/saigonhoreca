@@ -1,6 +1,6 @@
 <?php
 /**
- * Project Pillar — sol-kitchen-bar-saigon-horeca
+ * Project Pillar — sol-kitchen-bar-d1
  * Section #4: specs — technical collage (offset framed images) + design
  * feature list, blueprint coords + numbered watermark.
  * Copy: Saigon Horeca kitchen & bar design = efficiency + sophistication.

@@ -1,6 +1,6 @@
 <?php
 /**
- * Project Pillar — mua-craft-sake-lam-ruou-sake-dau-tien-tai-viet-nam
+ * Project Pillar — mua-craft-sake
  * Section #2: intro — editorial storytelling + 4-image food gallery.
  * @package SaigonHoreca
  */

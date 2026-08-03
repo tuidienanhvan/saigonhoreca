@@ -1,6 +1,6 @@
 <?php
 /**
- * Project Pillar — sol-kitchen-bar-saigon-horeca
+ * Project Pillar — sol-kitchen-bar-d1
  * Section #1: hero — bright cinematic image backdrop with the GPU-smooth
  * "Parallax Clip-Path" technique (no JS): the section clips a position:fixed bg.
  * Text sits directly on the image (NO dark overlay, NO panel behind title) per

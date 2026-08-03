@@ -3,7 +3,7 @@
  * Single Project Template — Roka Fella
  * Thumbnail: roka-fella/roka-fella-thumbnail-project-cover.webp
  *
- * Auto-routed via inc/core/pillar-routes.php for /du-an/roka-fella-tinh-hoa-am-thuc-nhat-ban/.
+ * Auto-routed via inc/core/pillar-routes.php for /du-an/roka-fella/.
  *
  * @package SaigonHoreca
  */

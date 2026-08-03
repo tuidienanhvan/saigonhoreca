@@ -1,6 +1,6 @@
 <?php
 /**
- * Project Pillar — hemma-desserts-mot-goc-nho-chau-au-giua-thao-dien
+ * Project Pillar — hemma-desserts
  * Section #2: intro — "Bài toán khó" + project gallery.
  * @package SaigonHoreca
  */

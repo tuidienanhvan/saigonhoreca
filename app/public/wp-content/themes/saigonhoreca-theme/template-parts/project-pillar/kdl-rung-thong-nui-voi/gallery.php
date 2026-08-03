@@ -1,6 +1,6 @@
 <?php
 /**
- * Project Pillar — du-an-kdl-rung-thong-nui-voi-cua-saigonhoreca
+ * Project Pillar — kdl-rung-thong-nui-voi
  * Section #6: gallery — GOLD editorial UNIFORM GRID
  * (every tile 4/3 · captions render BELOW each frame · zero empty gaps)
  * @package SaigonHoreca

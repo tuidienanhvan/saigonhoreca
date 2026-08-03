@@ -1,6 +1,6 @@
 <?php
 /**
- * Project Pillar — mua-craft-sake-lam-ruou-sake-dau-tien-tai-viet-nam
+ * Project Pillar — mua-craft-sake
  * Section #6: gallery — tasting-room split + GOLD ASYMMETRIC MOSAIC + lời kết.
  * (T-034: gộp nội dung related/cta cũ vào cuối gallery.)
  * @package SaigonHoreca

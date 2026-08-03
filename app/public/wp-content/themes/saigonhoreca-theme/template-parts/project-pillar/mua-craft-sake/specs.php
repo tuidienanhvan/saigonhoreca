@@ -1,6 +1,6 @@
 <?php
 /**
- * Project Pillar — mua-craft-sake-lam-ruou-sake-dau-tien-tai-viet-nam
+ * Project Pillar — mua-craft-sake
  * Section #5: specs — editorial reverse split (image / sake-craft glass card).
  * @package SaigonHoreca
  */

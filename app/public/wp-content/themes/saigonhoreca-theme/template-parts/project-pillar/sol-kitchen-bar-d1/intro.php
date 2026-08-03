@@ -1,6 +1,6 @@
 <?php
 /**
- * Project Pillar — sol-kitchen-bar-saigon-horeca
+ * Project Pillar — sol-kitchen-bar-d1
  * Section #2: intro — asymmetric editorial storytelling (text-heavy column +
  * sticky framed image), numbered watermark + warm ambient accents.
  * Copy: 2023 Michelin / chef Adrian / hacienda decor / red-meat mastery / desserts.

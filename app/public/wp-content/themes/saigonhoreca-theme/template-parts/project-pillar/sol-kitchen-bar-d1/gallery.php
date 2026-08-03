@@ -1,6 +1,6 @@
 <?php
 /**
- * Project Pillar — sol-kitchen-bar-saigon-horeca
+ * Project Pillar — sol-kitchen-bar-d1
  * Section #6: gallery — metro image grid (space & experience) + closing remarks
  * split block, numbered watermark accent.
  * Copy: hacienda colour & Latin American inspiration; closing collaboration note.

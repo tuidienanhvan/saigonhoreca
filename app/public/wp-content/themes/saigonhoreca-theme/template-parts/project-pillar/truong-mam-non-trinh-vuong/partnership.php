@@ -1,6 +1,6 @@
 <?php
 /**
- * Project Pillar — bep-an-truong-mam-non-tu-thuc-trinh-vuong
+ * Project Pillar — truong-mam-non-trinh-vuong
  * Section #4: partnership (Saigon Horeca — Integrated Split · soft frame · gentle bg)
  * @package SaigonHoreca
  */

@@ -1,6 +1,6 @@
 <?php
 /**
- * Project Pillar — du-an-bep-cang-tin-cong-ty-nhat-nichiyo
+ * Project Pillar — nichiyo-canteen
  * Section #3: concept — full-bleed kitchen bg (Parallax Clip-Path) + glassmorphic
  * precision card.
  * @package SaigonHoreca

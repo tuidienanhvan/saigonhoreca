@@ -1,6 +1,6 @@
 <?php
 /**
- * Project Pillar — mua-craft-sake-lam-ruou-sake-dau-tien-tai-viet-nam
+ * Project Pillar — mua-craft-sake
  * Section #3: concept — editorial split (zen-paper glass card / framed image).
  * @package SaigonHoreca
  */

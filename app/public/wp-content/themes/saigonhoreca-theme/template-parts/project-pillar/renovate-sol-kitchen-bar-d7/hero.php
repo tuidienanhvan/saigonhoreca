@@ -1,6 +1,6 @@
 <?php
 /**
- * Project Pillar — renovate-sol-kitchen-bar-quan-7
+ * Project Pillar — renovate-sol-kitchen-bar-d7
  * Section #1: hero — full-bleed kitchen backdrop rendered with the GPU-smooth
  * "Parallax Clip-Path" technique (position:fixed __bg confined by clip-path on the
  * section). Title sits directly on the bright image (light token overlay only — no

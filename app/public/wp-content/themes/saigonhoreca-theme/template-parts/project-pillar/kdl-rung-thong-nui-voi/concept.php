@@ -1,6 +1,6 @@
 <?php
 /**
- * Project Pillar — du-an-kdl-rung-thong-nui-voi-cua-saigonhoreca
+ * Project Pillar — kdl-rung-thong-nui-voi
  * Section #3: concept (Tây Nguyên dining philosophy — nature & flavour)
  * @package SaigonHoreca
  */

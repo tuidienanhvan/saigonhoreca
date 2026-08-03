@@ -1,6 +1,6 @@
 <?php
 /**
- * Project Pillar — du-an-bep-cang-tin-cong-ty-nhat-nichiyo
+ * Project Pillar — nichiyo-canteen
  * Section #2: intro — centered storytelling + product gallery (san-pham).
  * @package SaigonHoreca
  */

@@ -1,0 +1,8 @@
+/* Project bundle — sol-kitchen-bar-d1 only. */
+@import "../../../template-parts/project-pillar/sol-kitchen-bar-d1/hero.css";
+@import "../../../template-parts/project-pillar/sol-kitchen-bar-d1/intro.css";
+@import "../../../template-parts/project-pillar/sol-kitchen-bar-d1/concept.css";
+@import "../../../template-parts/project-pillar/sol-kitchen-bar-d1/partnership.css";
+@import "../../../template-parts/project-pillar/sol-kitchen-bar-d1/specs.css";
+@import "../../../template-parts/project-pillar/sol-kitchen-bar-d1/gallery.css";
+@import "../../../single-project/sol-kitchen-bar-d1.css";

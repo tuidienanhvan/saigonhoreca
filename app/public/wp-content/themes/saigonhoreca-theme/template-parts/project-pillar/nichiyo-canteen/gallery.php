@@ -1,6 +1,6 @@
 <?php
 /**
- * Project Pillar — du-an-bep-cang-tin-cong-ty-nhat-nichiyo
+ * Project Pillar — nichiyo-canteen
  * Section #6: gallery — GOLD editorial grid (uniform 4/3 tiles) + closing đúc kết statement.
  * @package SaigonHoreca
  */

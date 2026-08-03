@@ -1,6 +1,6 @@
 <?php
 /**
- * Project Pillar — bep-an-truong-mam-non-tu-thuc-trinh-vuong
+ * Project Pillar — truong-mam-non-trinh-vuong
  * Section #1: hero (Safe-Kitchen full-viewport, mint/pastel, friendly soft frame)
  * @package SaigonHoreca
  */

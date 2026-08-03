@@ -1,6 +1,6 @@
 <?php
 /**
- * Project Pillar — mam-mam-eatery-lounge-nang-tam-mam-com-viet
+ * Project Pillar — mam-mam-eatery
  * Section #1: hero — Vietnamese Modern Heritage. Full-bleed background image
  * with reliable CSS parallax (no JS): __bg uses background-attachment:fixed,
  * light token overlay keeps the photo bright, text-shadow
