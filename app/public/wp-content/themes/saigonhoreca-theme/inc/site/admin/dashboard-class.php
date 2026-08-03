@@ -336,6 +336,21 @@ class SGH_Dashboard {
                     $res['created'], $res['updated'], $res['skipped']);
                 break;
 
+            // Điền post_content cho page do template dựng. Xem docblock đầy đủ ở
+            // inc/site/admin/sync/sync-page-content.php. Không ghi đè nội dung
+            // người dùng tự viết — chỉ ghi khi rỗng hoặc do chính nó sinh ra.
+            case 'sync-page-content':
+                if (!function_exists('sgh_sync_page_content')) {
+                    $result['message'] = 'Chưa nạp sync-page-content.php';
+                    break;
+                }
+                $res = sgh_sync_page_content(false);
+                $result['log']  = $res['log'];
+                $result['data'] = $res;
+                $result['message'] = sprintf('Nội dung trang: %d ghi, %d bỏ qua, %d lỗi',
+                    $res['updated'], $res['skipped'], $res['failed']);
+                break;
+
             case 'process-import-zip':
                 $res = sgh_dashboard_process_import_zip();
                 $result['log'] = $res['log'];

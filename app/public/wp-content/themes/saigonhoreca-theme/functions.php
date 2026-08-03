@@ -397,6 +397,7 @@ if (is_admin() || wp_doing_ajax() || $is_rest_api) {
         'site/admin/sync/sync-setup.php',     // Favicons, menu sync
         'site/admin/sync/sync-deploy.php',    // .htaccess, robots.txt deploy
         'site/admin/sync/sync-data.php',      // DB-to-JSON export, WebP convert
+        'site/admin/sync/sync-page-content.php', // Điền post_content cho page do template dựng
         'site/admin/notifications.php',       // Admin notices (optional — may be absent)
         'site/tools/import-gdocs.php',        // wp-admin: Posts > Import Google Docs (paste link → draft "tin tức")
     ] as $sgh_admin_mod) {
