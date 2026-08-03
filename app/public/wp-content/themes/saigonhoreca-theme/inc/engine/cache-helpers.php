@@ -105,7 +105,26 @@ if (!function_exists('sgh_static_cache_path_for_uri')) {
         // Sanitize: only allow [a-zA-Z0-9/_-], reject everything else
         // (cache poisoning guard — REQUEST_URI is user-controlled).
         if ($uri !== '' && !preg_match('#^[a-zA-Z0-9/_-]+$#', $uri)) return '';
-        return sgh_static_cache_dir() . ($uri === '' ? '/index.html' : '/' . $uri . '/index.html');
+
+        // ⚠️ 2026-08-02 — khoá cache PHẢI gồm locale.
+        //
+        // .vn và .com dùng CHUNG một bản cài; inc/engine/slug-map.php:34 đổi
+        // locale theo domain (.com -> en_US, còn lại -> vi). Bản cũ chỉ lấy URI
+        // làm khoá, nên /lien-he/ của cả hai domain ghi và đọc CÙNG một file.
+        // Domain nào render trước thì domain kia nhận sai ngôn ngữ — đã tái
+        // hiện: cache do .local (vi) ghi, khách Host .com nhận <html lang="vi">
+        // và "Chuyển đến nội dung chính" thay vì "Skip to main content".
+        //
+        // Dùng get_locale() thay vì tự đọc HTTP_HOST: locale mới là thứ QUYẾT
+        // ĐỊNH nội dung render. Domain nào rồi cũng quy về locale, và nếu sau
+        // này thêm cách đổi ngôn ngữ khác (cookie, path /en/) thì khoá vẫn đúng
+        // mà không phải sửa lại chỗ này.
+        $locale = function_exists('get_locale') ? get_locale() : 'vi';
+        $locale = preg_replace('#[^a-zA-Z0-9_-]#', '', (string) $locale);
+        if ($locale === '') $locale = 'vi';
+
+        return sgh_static_cache_dir() . '/' . $locale
+            . ($uri === '' ? '/index.html' : '/' . $uri . '/index.html');
     }
 }
 
