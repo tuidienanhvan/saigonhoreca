@@ -289,7 +289,12 @@
 
 .pp-concept-brix__wave-outline-svg {
   width: 100%;
-  height: 100%;
+  /* Fix: SVG (replaced element, viewBox 0 0 100 100 = 1:1 intrinsic ratio) ignored
+     height:100% and collapsed to a square, overflowing its image frame. The frame's
+     real ratio comes from the photo the-brix-quay-bar-be-boi-tropical.webp (1024x496,
+     served as-is with no responsive crop — same ratio at every breakpoint), so lock
+     the SVG to that ratio instead of a percentage height. */
+  aspect-ratio: 1024 / 496;
   display: block;
   filter: drop-shadow(0 2px 8px rgba(16, 185, 129, 0.4));
 }

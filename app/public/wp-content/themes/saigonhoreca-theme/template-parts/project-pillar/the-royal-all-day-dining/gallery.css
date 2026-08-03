@@ -167,7 +167,8 @@
   }
 
   /* Image Prep: Rộng 1 cột, cao từ hàng 2 sang hàng 3 */
-  .pp-bento-card--image-prep {
+  .pp-bento-card--image-prep,
+  .pp-bento-card--emblem-trd {
     grid-column: 4 / 5;
     grid-row: 2 / 4;
   }
@@ -228,6 +229,42 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/* Royal Emblem decor card (Card 6) — no photo available, brand SVG instead */
+.pp-bento-card--emblem-trd {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 50% 40%, color-mix(in srgb, var(--gold) 6%, var(--b2)), var(--b3) 80%);
+  border: 1px solid color-mix(in srgb, var(--gold) 18%, var(--bd));
+}
+.pp-bento-emblem-trd__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 1.5rem;
+  text-align: center;
+}
+.pp-bento-emblem-trd__svg {
+  opacity: 0.92;
+  filter: drop-shadow(0 0 10px color-mix(in srgb, var(--gold) 25%, transparent));
+}
+.pp-bento-emblem-trd__tag {
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.pp-bento-emblem-trd__sub {
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--bc3);
 }
 
 /* Equipment List Inside Card 1 */
@@ -465,9 +502,10 @@
 }
 
 .pp-cta-quote__text {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: 1.0625rem;
   font-style: italic;
+  font-weight: 500;
   line-height: 1.6;
   color: var(--bc);
   margin: 0 0 0.75rem;

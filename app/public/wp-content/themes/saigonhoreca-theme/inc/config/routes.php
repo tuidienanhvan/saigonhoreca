@@ -95,11 +95,16 @@ if (!function_exists('sgh_project_slug_aliases')) {
      * Phát hiện 07/2026: /du-an/grand-marble/ (post_name thật) trỏ tới
      * pillar 'grand-marble-thuong-hieu-banh-cao-cap-nhat-ban' — thêm alias
      * tại đây thay vì đổi tên 12 file của dự án.
+     *
+     * 2026-08-02: alias đó ĐÃ GỠ. Lệch tên là nguyên nhân gốc khiến Grand
+     * Marble có 2 URL cùng trả 200 (post CPT + route ảo của pillar), trùng
+     * nội dung với Google. Nay pillar đã đổi tên khớp post_name:
+     *   single-project/grand-marble.php
+     *   template-parts/project-pillar/grand-marble/
+     * nên không còn gì để alias. Giữ nguyên cơ chế cho lần lệch sau.
      */
     function sgh_project_slug_aliases() {
-        return [
-            'grand-marble' => 'grand-marble-thuong-hieu-banh-cao-cap-nhat-ban',
-        ];
+        return [];
     }
 }
 

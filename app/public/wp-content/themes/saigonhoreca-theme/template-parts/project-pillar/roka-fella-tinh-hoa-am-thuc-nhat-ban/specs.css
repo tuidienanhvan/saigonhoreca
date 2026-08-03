@@ -38,11 +38,13 @@
   overflow: hidden;
 }
 
+/* Bỏ width/height:100% — .rkf-specs__side là container "auto" (cao theo nội
+   dung ảnh bên trong + padding, không có aspect-ratio cố định). SVG (viewBox
+   1:1, replaced element) với percentage-height sẽ bị intrinsic ratio ghi đè,
+   co vuông méo lệch. inset:0 một mình đã đủ để khung tự giãn khớp đúng. */
 .rkf-specs__hud-svg {
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
   pointer-events: none;
   z-index: 2;
 }
@@ -57,11 +59,12 @@
   overflow: hidden;
 }
 
+/* Container ảnh không có aspect-ratio cố định (kích thước theo ảnh bản vẽ
+   thực tế) — bỏ width/height:100% percentage, giữ inset:0 để tránh SVG
+   (viewBox 1:1) lấy intrinsic ratio ghi đè, co vuông méo lệch. */
 .rkf-specs__image-container .card-corner-svg {
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
   pointer-events: none;
   z-index: 5;
 }
@@ -85,11 +88,11 @@
   overflow: hidden;
 }
 
+/* Text card cao "auto" theo nội dung — bỏ width/height:100% percentage,
+   giữ inset:0 để tránh SVG (viewBox 1:1) lấy intrinsic ratio ghi đè. */
 .rkf-specs__glass-card .card-corner-svg {
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
   pointer-events: none;
   z-index: 5;
 }

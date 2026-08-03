@@ -28,9 +28,10 @@ if (!defined('SGH_COVER_MAP_KEY')) {
  * single-project/<file>.php template name. Map post_name -> route basename.
  */
 function sgh_cover_slug_alias($slug) {
-    static $alias = [
-        'grand-marble' => 'grand-marble-thuong-hieu-banh-cao-cap-nhat-ban',
-    ];
+    // 2026-08-02: alias grand-marble đã gỡ — pillar đổi tên khớp post_name
+    // (xem inc/config/routes.php::sgh_project_slug_aliases). Giữ hàm để lần
+    // sau có dự án lệch tên thì khai ở đây, không phải sửa chỗ gọi.
+    static $alias = [];
     return isset($alias[$slug]) ? $alias[$slug] : $slug;
 }
 

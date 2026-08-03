@@ -152,7 +152,15 @@
   background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--gold) 20%, transparent), transparent);
 }
 
-/* Họa tiết SVG bánh răng cơ khí */
+/* Họa tiết SVG bánh răng cơ khí.
+   NOTE: unlike the corner-bracket SVGs on du-an-vinh-hiep (which overlay a
+   fixed-aspect-ratio image frame and need aspect-ratio to beat the SVG's own
+   intrinsic 1:1 viewBox ratio), this SVG overlays the whole .pp-section-bg-lb
+   section, whose height is dynamic (min-height: 80vh + content, no fixed
+   ratio at any breakpoint). There is no single aspect-ratio value that would
+   be correct across breakpoints/content lengths, so we deliberately keep
+   width/height: 100% here (both explicit/non-auto, so intrinsic ratio does
+   not override them) instead of converting to aspect-ratio. */
 .pp-lb-gears-decor {
   position: absolute;
   top: 0;

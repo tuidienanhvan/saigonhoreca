@@ -75,6 +75,23 @@ body.page-template-page-project-du-an-vinh-hiep .pp-specs-vhp__corner-svg {
   pointer-events: none;
   z-index: 3;
 }
+/* This class is reused twice in specs.php: once inside .pp-specs-vhp__image
+   (overlaying the portrait photo) and once directly inside .pp-specs-vhp__card
+   (a decorative corner on the text card, whose height is content-driven, not
+   aspect-ratio-locked). Only the image instance needs the aspect-ratio fix —
+   the SVG is a replaced element with intrinsic ratio 1:1 (viewBox), which wins
+   over height:100% and collapses the corner brackets into a square instead of
+   matching the image's real aspect-ratio (3/4 desktop, 16/11 below 992px).
+   The card instance keeps height:100% since the card has no fixed ratio. */
+body.page-template-page-project-du-an-vinh-hiep .pp-specs-vhp__image .pp-specs-vhp__corner-svg {
+  height: auto;
+  aspect-ratio: 3 / 4;
+}
+@media (max-width: 991px) {
+  body.page-template-page-project-du-an-vinh-hiep .pp-specs-vhp__image .pp-specs-vhp__corner-svg {
+    aspect-ratio: 16 / 11;
+  }
+}
 
 /* ── Feature terminal card ───────────────────────────────────── */
 body.page-template-page-project-du-an-vinh-hiep .pp-specs-vhp__card {

@@ -74,11 +74,17 @@ body.page-template-page-project-du-an-vinh-hiep .pp-concept-vhp__image img {
   display: block;
   filter: saturate(0.9) contrast(1.06) brightness(0.96);
 }
+/* SVG is a replaced element with its own intrinsic ratio (viewBox 1:1),
+   which wins over height:100% regardless of the parent's aspect-ratio,
+   causing the corner brackets to collapse into a square and misalign
+   with the actual (non-square) image frame. Force the SVG's box to match
+   the image container's aspect-ratio (16/11) instead of height:100%. */
 body.page-template-page-project-du-an-vinh-hiep .pp-concept-vhp__corner-svg {
   position: absolute;
   inset: 0;
   width: 100%;
-  height: 100%;
+  height: auto;
+  aspect-ratio: 16 / 11;
   pointer-events: none;
   z-index: 3;
 }

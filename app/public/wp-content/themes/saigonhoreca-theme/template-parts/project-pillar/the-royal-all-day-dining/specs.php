@@ -24,6 +24,13 @@ $specs_images = [
     'alt'  => esc_attr__('Gian bếp sơ chế và chậu rửa inox 304 tại The Royal', 'saigonhoreca'),
     'cap'  => esc_html__('Khu vực sơ chế tích hợp chậu rửa inox 304 sạch sẽ sáng bóng.', 'saigonhoreca'),
   ],
+  [
+    'key'  => 'side-bot',
+    'fig'  => 'FIG.03',
+    'src'  => sgh_img('the-royal-all-day-dining/the-royal-all-day-dining-ban-mat-ngan-keo-undercounter.webp'),
+    'alt'  => esc_attr__('Bàn mát ngăn kéo undercounter inox tại khu bếp The Royal', 'saigonhoreca'),
+    'cap'  => esc_html__('Bàn mát ngăn kéo undercounter inox công nghiệp phục vụ khu bếp nóng.', 'saigonhoreca'),
+  ],
 ];
 ?>
 <section class="pp__section pp-specs-blueprint-trd" id="specs-trd">
@@ -34,7 +41,7 @@ $specs_images = [
          ========================================== -->
     <div
       class="pp-specs-blueprint-trd__grid js-specs-carousel"
-      data-auto-interval="4500"
+      data-auto-interval="5000"
       data-current="0"
     >
       <!-- ── Ảnh CHÍNH (spotlight) ── -->
@@ -62,13 +69,15 @@ $specs_images = [
           id="specs-main-cap"
         ><?php echo $specs_images[0]['cap']; ?></figcaption>
 
-        <!-- Nút điều hướng trái / phải -->
+        <!-- Nút điều hướng trái / phải luôn luôn hiện rõ -->
         <button
+          type="button"
           class="pp-specs-blueprint-trd__nav pp-specs-blueprint-trd__nav--prev"
           aria-label="<?php esc_attr_e('Xem ảnh trước', 'saigonhoreca'); ?>"
           data-dir="-1"
         >&#8592;</button>
         <button
+          type="button"
           class="pp-specs-blueprint-trd__nav pp-specs-blueprint-trd__nav--next"
           aria-label="<?php esc_attr_e('Xem ảnh tiếp theo', 'saigonhoreca'); ?>"
           data-dir="1"
@@ -78,6 +87,7 @@ $specs_images = [
         <div class="pp-specs-blueprint-trd__dots" aria-label="<?php esc_attr_e('Chỉ số vị trí ảnh', 'saigonhoreca'); ?>">
           <?php foreach ($specs_images as $i => $img): ?>
           <button
+            type="button"
             class="pp-specs-blueprint-trd__dot<?php echo $i === 0 ? ' is-active' : ''; ?>"
             data-index="<?php echo $i; ?>"
             aria-label="<?php printf(esc_attr__('Chuyển sang ảnh %s', 'saigonhoreca'), $img['fig']); ?>"
@@ -94,8 +104,9 @@ $specs_images = [
         tabindex="0"
         aria-label="<?php esc_attr_e('Xem FIG.02 — Khu sơ chế', 'saigonhoreca'); ?>"
       >
-        <span class="pp-specs-blueprint-trd__fig-label" aria-hidden="true">FIG.02</span>
+        <span class="pp-specs-blueprint-trd__fig-label js-specs-thumb-label-1" aria-hidden="true">FIG.02</span>
         <img
+          id="specs-thumb-img-1"
           src="<?php echo $specs_images[1]['src']; ?>"
           alt="<?php echo $specs_images[1]['alt']; ?>"
           loading="lazy"
@@ -103,8 +114,30 @@ $specs_images = [
           width="800"
           height="600"
         >
-        <figcaption class="pp-image-caption-shared"><?php echo $specs_images[1]['cap']; ?></figcaption>
-        <span class="pp-specs-blueprint-trd__thumb-cta" aria-hidden="true">Click để xem</span>
+        <figcaption class="pp-image-caption-shared js-specs-thumb-cap-1"><?php echo $specs_images[1]['cap']; ?></figcaption>
+        <span class="pp-specs-blueprint-trd__thumb-cta" aria-hidden="true">Click để phóng to</span>
+      </figure>
+
+      <!-- ── Ảnh FIG.03 (thumbnail phải-dưới) ── -->
+      <figure
+        class="pp-image-container-shared pp-image-container-rf pp-specs-blueprint-trd__fig pp-specs-blueprint-trd__fig--side-bot js-specs-thumb"
+        data-index="2"
+        role="button"
+        tabindex="0"
+        aria-label="<?php esc_attr_e('Xem FIG.03 — Chi tiết thiết bị', 'saigonhoreca'); ?>"
+      >
+        <span class="pp-specs-blueprint-trd__fig-label js-specs-thumb-label-2" aria-hidden="true">FIG.03</span>
+        <img
+          id="specs-thumb-img-2"
+          src="<?php echo $specs_images[2]['src']; ?>"
+          alt="<?php echo $specs_images[2]['alt']; ?>"
+          loading="lazy"
+          decoding="async"
+          width="800"
+          height="600"
+        >
+        <figcaption class="pp-image-caption-shared js-specs-thumb-cap-2"><?php echo $specs_images[2]['cap']; ?></figcaption>
+        <span class="pp-specs-blueprint-trd__thumb-cta" aria-hidden="true">Click để phóng to</span>
       </figure>
     </div><!-- /.js-specs-carousel -->
 
@@ -132,151 +165,120 @@ $specs_images = [
   </div><!-- /.pp-container-shared -->
 </section>
 
-<!-- ==========================================
-     JS: Carousel Logic cho Specs Section
-     - Click thumbnail → swap vào ảnh chính
-     - Auto rotate 4.5s, tạm dừng khi hover
-     - Nút ◀ ▶ điều hướng thủ công
-     ========================================== -->
 <script>
 (function () {
   'use strict';
 
-  // Dữ liệu ảnh từ PHP — inject inline để tránh AJAX request
   var specs = [
+<?php foreach ($specs_images as $i => $img) : ?>
     {
-      fig : 'FIG.01',
-      src : '<?php echo $specs_images[0]['src']; ?>',
-      alt : '<?php echo addslashes($specs_images[0]['alt']); ?>',
-      cap : '<?php echo addslashes($specs_images[0]['cap']); ?>'
-    },
-    {
-      fig : 'FIG.02',
-      src : '<?php echo $specs_images[1]['src']; ?>',
-      alt : '<?php echo addslashes($specs_images[1]['alt']); ?>',
-      cap : '<?php echo addslashes($specs_images[1]['cap']); ?>'
-    }
+      fig : '<?php echo esc_js($img['fig']); ?>',
+      src : '<?php echo esc_js($img['src']); ?>',
+      alt : '<?php echo esc_js($img['alt']); ?>',
+      cap : '<?php echo esc_js($img['cap']); ?>'
+    }<?php echo $i < count($specs_images) - 1 ? ',' : ''; ?>
+<?php endforeach; ?>
   ];
 
   function initSpecsCarousel () {
     var carousel = document.querySelector('.js-specs-carousel');
     if (!carousel) return;
 
-    var mainImg  = document.getElementById('specs-main-img');
+    var mainImg   = document.getElementById('specs-main-img');
     var mainLabel = carousel.querySelector('.js-specs-main-label');
-    var mainCap  = carousel.querySelector('.js-specs-main-cap');
-    var overlay  = carousel.querySelector('.pp-specs-blueprint-trd__fig-overlay');
-    var dots     = carousel.querySelectorAll('.pp-specs-blueprint-trd__dot');
-    var thumbs   = carousel.querySelectorAll('.js-specs-thumb');
-    var navBtns  = carousel.querySelectorAll('.pp-specs-blueprint-trd__nav');
+    var mainCap   = carousel.querySelector('.js-specs-main-cap');
+    var overlay   = carousel.querySelector('.pp-specs-blueprint-trd__fig-overlay');
+    var dots      = carousel.querySelectorAll('.pp-specs-blueprint-trd__dot');
+    var thumbs    = carousel.querySelectorAll('.js-specs-thumb');
+    var navBtns   = carousel.querySelectorAll('.pp-specs-blueprint-trd__nav');
 
-    var current  = parseInt(carousel.dataset.current || '0', 10);
-    var interval = parseInt(carousel.dataset.autoInterval || '4500', 10);
-    var timer    = null;
-    var isTransitioning = false;
+    var current   = 0;
+    var interval  = 5000;
+    var timer     = null;
 
-    // Preload TẤT CẢ ảnh slider ngay → swap không bao giờ flash nền đen
-    specs.forEach(function (s) { var im = new Image(); im.decoding = 'async'; im.src = s.src; });
+    // Preload tất cả ảnh
+    specs.forEach(function (s) { var im = new Image(); im.src = s.src; });
 
-    // Chuyển sang index bất kỳ với hiệu ứng fade + swap
-    function goTo(nextIdx) {
-      if (isTransitioning || nextIdx === current) return;
-      isTransitioning = true;
+    function render(index) {
+      current = index;
+      var item = specs[current];
 
-      // Bắt đầu fade-out ảnh chính
-      overlay.classList.add('is-fading');
-
-      setTimeout(function () {
-        var item = specs[nextIdx];
-
-        // Update text/dots/thumb ngay (không gây flash ảnh)
-        mainLabel.textContent = item.fig;
-        mainCap.textContent = item.cap;
-        dots.forEach(function (d, i) {
-          d.classList.toggle('is-active', i === nextIdx);
-        });
-        thumbs.forEach(function (t) {
-          t.classList.toggle('is-active-thumb', parseInt(t.dataset.index, 10) === nextIdx);
-        });
-        current = nextIdx;
-        carousel.dataset.current = nextIdx;
-
-        // Chỉ swap src + fade-in SAU khi ảnh mới đã decode xong → KHÔNG flash nền đen
-        var reveal = function () {
-          mainImg.src = item.src;
-          mainImg.alt = item.alt;
+      if (overlay) {
+        overlay.classList.add('is-fading');
+        setTimeout(function () {
           overlay.classList.remove('is-fading');
-          overlay.classList.add('is-clearing');
-          setTimeout(function () {
-            overlay.classList.remove('is-clearing');
-            isTransitioning = false;
-          }, 300);
-        };
-        var pre = new Image();
-        pre.onload  = reveal;
-        pre.onerror = reveal; // lỗi cũng reveal để không kẹt
-        pre.src = item.src;
-        if (pre.complete) reveal(); // đã cache (preload) → hiện ngay
+        }, 250);
+      }
 
-      }, 200); // đợi fade-out (overlay che) xong rồi mới swap
+      if (mainImg) {
+        mainImg.src = item.src;
+        mainImg.alt = item.alt;
+      }
+      if (mainLabel) mainLabel.textContent = item.fig;
+      if (mainCap) mainCap.textContent = item.cap;
+
+      dots.forEach(function (d, idx) {
+        d.classList.toggle('is-active', idx === current);
+      });
     }
 
-    // Auto rotate
-    function startAuto () {
-      timer = setInterval(function () {
-        var next = (current + 1) % specs.length;
-        goTo(next);
-      }, interval);
-    }
-    function stopAuto () {
-      clearInterval(timer);
+    function nextSlide() {
+      var next = (current + 1) % specs.length;
+      render(next);
     }
 
-    // Tạm dừng khi hover trên toàn section
+    function prevSlide() {
+      var prev = (current - 1 + specs.length) % specs.length;
+      render(prev);
+    }
+
+    function startAuto() {
+      stopAuto();
+      timer = setInterval(nextSlide, interval);
+    }
+
+    function stopAuto() {
+      if (timer) clearInterval(timer);
+    }
+
     carousel.addEventListener('mouseenter', stopAuto);
     carousel.addEventListener('mouseleave', startAuto);
 
-    // Click thumbnail → vào ảnh chính
-    thumbs.forEach(function (thumb) {
-      thumb.addEventListener('click', function () {
-        stopAuto();
-        goTo(parseInt(this.dataset.index, 10));
-        startAuto();
-      });
-      // Keyboard accessible (Enter / Space)
-      thumb.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          this.click();
-        }
-      });
-    });
-
-    // Nút ◀ ▶
     navBtns.forEach(function (btn) {
-      btn.addEventListener('click', function () {
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
         stopAuto();
-        var dir  = parseInt(this.dataset.dir, 10);
-        var next = (current + dir + specs.length) % specs.length;
-        goTo(next);
+        var dir = parseInt(this.dataset.dir || '1', 10);
+        if (dir === -1) prevSlide(); else nextSlide();
         startAuto();
       });
     });
 
-    // Dots
     dots.forEach(function (dot) {
-      dot.addEventListener('click', function () {
+      dot.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
         stopAuto();
-        goTo(parseInt(this.dataset.index, 10));
+        var idx = parseInt(this.dataset.index || '0', 10);
+        render(idx);
         startAuto();
       });
     });
 
-    // Bắt đầu auto-rotate sau 1s (chờ trang load xong)
-    setTimeout(startAuto, 1000);
+    thumbs.forEach(function (thumb) {
+      thumb.addEventListener('click', function (e) {
+        e.preventDefault();
+        stopAuto();
+        var idx = parseInt(this.dataset.index || '0', 10);
+        render(idx);
+        startAuto();
+      });
+    });
+
+    startAuto();
   }
 
-  // Chạy sau khi DOM ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initSpecsCarousel);
   } else {

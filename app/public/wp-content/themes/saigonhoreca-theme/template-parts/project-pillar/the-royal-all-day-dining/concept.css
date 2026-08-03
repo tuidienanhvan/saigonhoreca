@@ -350,10 +350,40 @@
   top: -6px;
   left: -6px;
   width: calc(100% + 12px);
-  height: calc(100% + 12px);
+  /* height:100%/calc(100%+12px) bị bỏ — SVG viewBox 1:1 là replaced element,
+     intrinsic ratio (1:1) sẽ thắng percentage-height, làm viền co vuông méo lệch.
+     Dùng aspect-ratio khớp đúng từng container ảnh bên dưới thay vì height %. */
   pointer-events: none;
   z-index: 4;
   transition: transform 0.6s var(--ease-spring);
+}
+
+/* Chapter 1: media figure — không có class aspect riêng, tỉ lệ theo intrinsic ảnh 1366x768 (~16/9) */
+.pp--trd .pp-concept-cinema-trd__media .card-corner-svg {
+  aspect-ratio: 16 / 9;
+}
+
+/* Chapter 2: fullwidth-fig — khớp aspect-ratio 21/9 desktop, 16/10 mobile */
+.pp--trd .pp-concept-cinema-trd__fullwidth-fig .card-corner-svg {
+  aspect-ratio: 21 / 9;
+}
+@media (max-width: 767px) {
+  .pp--trd .pp-concept-cinema-trd__fullwidth-fig .card-corner-svg {
+    aspect-ratio: 16 / 10;
+  }
+}
+
+/* Chapter 3: asymmetric gallery — main 16/10, side 3/4 desktop / 16/10 mobile */
+.pp--trd .pp-concept-cinema-trd__gallery-main .card-corner-svg {
+  aspect-ratio: 16 / 10;
+}
+.pp--trd .pp-concept-cinema-trd__gallery-side .card-corner-svg {
+  aspect-ratio: 3 / 4;
+}
+@media (max-width: 767px) {
+  .pp--trd .pp-concept-cinema-trd__gallery-side .card-corner-svg {
+    aspect-ratio: 16 / 10;
+  }
 }
 
 /* Golden hover effect on corners */

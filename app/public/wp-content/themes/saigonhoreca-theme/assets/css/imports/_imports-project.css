@@ -12,14 +12,12 @@
 @import "../../../template-parts/header/logo.css";
 @import "../../../template-parts/header/mobile-menu.css";
 @import "../../../template-parts/header/navigation.css";
-@import "../../../template-parts/header/top-bar.css";
 @import "../../../template-parts/footer/company-info.css";
 @import "../../../template-parts/footer/contact-info.css";
 @import "../../../template-parts/footer/copyright.css";
 @import "../../../template-parts/footer/floating-buttons.css";
 @import "../../../template-parts/footer/mobile-nav.css";
 @import "../../../template-parts/footer/quick-links.css";
-@import "../../../template-parts/footer/widgets.css";
 @import "../../../template-parts/global-styles.css";
 
 /* Shared partials */
@@ -57,14 +55,14 @@
 @import "../../../template-parts/project-pillar/godmother-friendship/gallery.css";
 @import "../../../single-project/godmother-friendship.css";
 
-/* grand-marble-thuong-hieu-banh-cao-cap-nhat-ban */
-@import "../../../template-parts/project-pillar/grand-marble-thuong-hieu-banh-cao-cap-nhat-ban/hero.css";
-@import "../../../template-parts/project-pillar/grand-marble-thuong-hieu-banh-cao-cap-nhat-ban/intro.css";
-@import "../../../template-parts/project-pillar/grand-marble-thuong-hieu-banh-cao-cap-nhat-ban/concept.css";
-@import "../../../template-parts/project-pillar/grand-marble-thuong-hieu-banh-cao-cap-nhat-ban/partnership.css";
-@import "../../../template-parts/project-pillar/grand-marble-thuong-hieu-banh-cao-cap-nhat-ban/specs.css";
-@import "../../../template-parts/project-pillar/grand-marble-thuong-hieu-banh-cao-cap-nhat-ban/gallery.css";
-@import "../../../single-project/grand-marble-thuong-hieu-banh-cao-cap-nhat-ban.css";
+/* grand-marble */
+@import "../../../template-parts/project-pillar/grand-marble/hero.css";
+@import "../../../template-parts/project-pillar/grand-marble/intro.css";
+@import "../../../template-parts/project-pillar/grand-marble/concept.css";
+@import "../../../template-parts/project-pillar/grand-marble/partnership.css";
+@import "../../../template-parts/project-pillar/grand-marble/specs.css";
+@import "../../../template-parts/project-pillar/grand-marble/gallery.css";
+@import "../../../single-project/grand-marble.css";
 
 /* heiwa-sushi-omakase */
 @import "../../../template-parts/project-pillar/heiwa-sushi-omakase/hero.css";

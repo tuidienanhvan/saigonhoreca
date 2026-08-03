@@ -37,11 +37,14 @@
 }
 
 /* SVG Corners */
+/* Bỏ width/height:100% — SVG viewBox 1:1 là replaced element, khi phủ lên
+   glass-card có chiều cao "auto" theo nội dung (không cố định aspect-ratio),
+   percentage-height sẽ bị intrinsic ratio (1:1) của SVG thắng và co vuông méo.
+   inset:0 (top/right/bottom/left đều 0) đã đủ để khung tự giãn khớp đúng
+   kích thước card mà không cần qua percentage-height. */
 .rkf-gallery__glass-card .card-corner-svg {
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
   pointer-events: none;
   z-index: 5;
 }
@@ -293,13 +296,17 @@
   outline-color: color-mix(in srgb, var(--gold) 50%, transparent);
 }
 
-/* card-corner-svg */
-.pp-rf-related .card-corner-svg {
+/* card-corner-svg — TÁCH riêng theo từng container vì .pp-rf-related bao cả
+   glass-card (text, chiều cao "auto" theo nội dung) lẫn image-container
+   (không set aspect-ratio cố định). Dùng chung 1 rule width/height:calc(100%+12px)
+   trước đây khiến SVG (viewBox 1:1, replaced element) lấy intrinsic ratio ghi đè
+   percentage-height ở cả 2 nơi, co vuông méo lệch. Thay bằng inset offset thuần
+   (-6px mỗi cạnh) để trình duyệt giải kích thước trực tiếp từ offset, không đi
+   qua percentage-height/intrinsic-ratio. */
+.rkf-related__glass-card .card-corner-svg,
+.rkf-related__image-container .card-corner-svg {
   position: absolute;
-  top: -6px;
-  left: -6px;
-  width: calc(100% + 12px);
-  height: calc(100% + 12px);
+  inset: -6px;
   pointer-events: none;
   z-index: 4;
   transition: transform 0.6s var(--ease-spring);

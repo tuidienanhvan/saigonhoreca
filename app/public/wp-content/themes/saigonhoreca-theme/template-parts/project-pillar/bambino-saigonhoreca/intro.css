@@ -271,13 +271,21 @@
   transition: transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-/* Nét vẽ SVG viền góc kiến trúc trang trí */
+/* Nét vẽ SVG viền góc kiến trúc trang trí.
+   SVG là replaced element với tỉ lệ nội tại riêng (viewBox 1:1), tỉ lệ này
+   thắng height:calc(...) bất kể .pp-intro-bam__card có tỉ lệ gì, khiến viền
+   co thành hình vuông thay vì khớp ảnh thật. Cả 4 ảnh mosaic (mortadella,
+   pasta, mafaldine, burrata) đều có kích thước gốc 600x800 = tỉ lệ 3/4, và
+   card cao theo ảnh (img height:auto) nên card cũng có tỉ lệ 3/4. Giữ
+   nguyên width offset 6px mỗi bên, thay height:calc bằng aspect-ratio: 3/4
+   để trình duyệt tự tính đúng chiều cao theo width đã có. */
 .pp--bam .card-corner-svg {
   position: absolute;
   top: 6px;
   left: 6px;
   width: calc(100% - 12px);
-  height: calc(100% - 12px);
+  height: auto;
+  aspect-ratio: 3 / 4;
   pointer-events: none;
   z-index: 3;
   transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);

@@ -109,6 +109,24 @@ $uri = get_template_directory_uri();
         </div>
       </div>
 
+      <!-- Card 6: Royal Emblem (Cột 4, Hàng 2-3 — không có ảnh rời phù hợp,
+           dùng huy hiệu vương miện + chữ R trang trí thay vì lặp ảnh đã dùng) -->
+      <div class="pp-bento-card pp-bento-card--emblem-trd">
+        <div class="pp-bento-emblem-trd__inner">
+          <svg class="pp-bento-emblem-trd__svg" width="72" height="72" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M38 28 L44 33 L50 20 L56 33 L62 28 L59 40 H41 Z" fill="none" stroke="var(--gold)" stroke-width="1.8" stroke-linejoin="round"/>
+            <circle cx="38" cy="26" r="1.5" fill="var(--gold)"/>
+            <circle cx="50" cy="18" r="1.8" fill="var(--gold)"/>
+            <circle cx="62" cy="26" r="1.5" fill="var(--gold)"/>
+            <path d="M39 42 H61" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="50" cy="58" r="30" stroke="var(--gold)" stroke-width="0.6" stroke-dasharray="2 3"/>
+            <text x="51" y="70" font-family="'Playfair Display', 'Didot', 'Georgia', serif" font-size="34" font-weight="900" fill="var(--gold)" text-anchor="middle">R</text>
+          </svg>
+          <span class="pp-bento-emblem-trd__tag"><?php echo esc_html__('The Royal', 'saigonhoreca'); ?></span>
+          <span class="pp-bento-emblem-trd__sub"><?php echo esc_html__('All Day Dining', 'saigonhoreca'); ?></span>
+        </div>
+      </div>
+
       <!-- Card 7: Core Value Text (Cột 1, Hàng 3 - Chiếm 2 cột ngang trên Desktop) -->
       <div class="pp-bento-card pp-bento-card--core-val">
         <div class="pp-bento-card__inner">
@@ -186,7 +204,7 @@ $uri = get_template_directory_uri();
         <blockquote class="pp-cta-quote">
           <span class="pp-cta-quote__icon">“</span>
           <p class="pp-cta-quote__text"><?php echo esc_html__('Một căn bếp tốt không chỉ giúp nấu ăn ngon hơn — mà còn giúp hồn cốt của nhà hàng được kể một cách bền vững nhất.', 'saigonhoreca'); ?></p>
-          <cite class="pp-cta-quote__author">— Saigon Horeca</cite>
+          <cite class="pp-cta-quote__author">— SAIGON HORECA</cite>
         </blockquote>
 
         <!-- Taglist thể hiện triết lý -->

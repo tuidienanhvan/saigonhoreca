@@ -1,12 +1,13 @@
 <?php
 /**
- * Auto-route /du-an/<slug>/ → page-templates/page-project-<slug>.php
+ * Auto-route project-index pillar pages → page-templates/page-project-<slug>.php
+ * (slug thật lấy từ inc/config/routes.php `sgh_bilingual_slug_map()`).
  *
  * Cho phép test 12 pillar pages NGAY mà không cần tạo Page trong wp-admin.
  * Pattern y hệt static-mirror.php nhưng serve NEW BEM templates.
  *
  * Khi user tạo Page thực sự với template "Project Pillar — X" và parent
- * `du-an`, WP routing native sẽ xử lý — pillar-routes.php tự bypass.
+ * đúng section slug, WP routing native sẽ xử lý — pillar-routes.php tự bypass.
  *
  * @package SaigonHoreca
  */
@@ -68,9 +69,12 @@ if (!function_exists('sgh_pillar_route_serve')) {
             exit;
         }
 
-        // Match canonical Vietnamese /du-an/<slug>/ AND English /projects/<slug>/
+        // Match canonical VI/EN project-index prefix (see routes.php slug map)
         // AND legacy/root alias /<slug>/.
-        $is_canonical_path = preg_match('#^/(?:du-an|projects)/([a-z0-9\-]+)/?$#i', $uri, $m);
+        $proj_map  = function_exists('sgh_bilingual_slug_map') ? sgh_bilingual_slug_map() : [];
+        $proj_vi   = $proj_map['projects_index'][0] ?? 'project';
+        $proj_en   = $proj_map['projects_index'][1] ?? 'projects';
+        $is_canonical_path = preg_match('#^/(?:' . preg_quote($proj_vi, '#') . '|' . preg_quote($proj_en, '#') . ')/([a-z0-9\-]+)/?$#i', $uri, $m);
         $is_root_alias     = false;
 
         if (!$is_canonical_path) {
@@ -79,14 +83,23 @@ if (!function_exists('sgh_pillar_route_serve')) {
 
         if (!$is_canonical_path && !$is_root_alias) return;
         $slug = strtolower($m[1]);
-        // Language-aware project prefix — 'du-an' on .vn, 'projects' on .com.
-        $proj = function_exists('sgh_slug') ? sgh_slug('projects_index') : 'du-an';
+        // Language-aware project prefix (see routes.php slug map, cùng nguồn với match ở trên).
+        $proj = function_exists('sgh_slug') ? sgh_slug('projects_index') : $proj_vi;
 
         // ── Consolidation 301s: retired / duplicate slugs → canonical URL.
         // sol-kitchen-bar was an older duplicate of the Sol Quận 7 renovation;
         // the canonical page is renovate-sol-kitchen-bar-quan-7. Avoids dup content.
         $sgh_route_301 = [
             'sol-kitchen-bar' => 'renovate-sol-kitchen-bar-quan-7',
+            // 2026-08-02: Grand Marble từng có HAI URL cùng trả 200, cùng
+            // <title> "Grand Marble":
+            //   /du-an/grand-marble/          -> post CPT 687, render single.php
+            //   /du-an/grand-marble-thuong... -> route ảo, render pillar template
+            // Không URL nào noindex, URL dài không có canonical -> trùng nội
+            // dung với Google. Nay template đổi tên thành single-project/
+            // grand-marble.php nên post CPT dùng đúng thiết kế pillar, còn slug
+            // dài 301 về đây.
+            'grand-marble-thuong-hieu-banh-cao-cap-nhat-ban' => 'grand-marble',
         ];
         if (isset($sgh_route_301[$slug])) {
             wp_safe_redirect(home_url('/' . $proj . '/' . $sgh_route_301[$slug] . '/'), 301);
@@ -104,8 +117,8 @@ if (!function_exists('sgh_pillar_route_serve')) {
         ]);
         if (!empty($existing_project)) {
             // Post thật đã tồn tại, nhưng CPT 'project' chỉ có rewrite rule
-            // cho /du-an/<slug>/ (xem cpt-registration.php). Nếu request là
-            // root alias (/<slug>/, không có /du-an/), WP native routing sẽ
+            // cho project-index/<slug>/ (xem cpt-registration.php). Nếu request là
+            // root alias (/<slug>/, không có prefix project-index), WP native routing sẽ
             // KHÔNG khớp rule nào và có thể rơi vào post/page cũ còn sót lại
             // từ site cũ (import XML) — phải tự 301 sang permalink chuẩn.
             if ($is_root_alias) {
@@ -135,7 +148,7 @@ if (!function_exists('sgh_pillar_route_serve')) {
 
         $canonical_url = home_url('/' . $proj . '/' . $slug . '/');
 
-        // If a real WP Page exists under /du-an/<slug>/, let WP render the
+        // If a real WP Page exists under the project-index prefix, let WP render the
         // canonical path natively, but still support root alias redirects.
         $existing = get_page_by_path($proj . '/' . $slug);
         if ($existing) {
@@ -230,7 +243,7 @@ if (!function_exists('sgh_pillar_route_serve')) {
         }, 10, 3);
 
         // Keep all URL builders canonical. `get_permalink()` for a fake top-level
-        // page would otherwise become /<slug>/ instead of /du-an/<slug>/.
+        // page would otherwise become /<slug>/ instead of the canonical project-index path.
         add_filter('page_link', static function($link, $post_id) use ($fake_id, $canonical_url) {
             return ((int) $post_id === $fake_id) ? $canonical_url : $link;
         }, 10, 2);
@@ -245,7 +258,7 @@ if (!function_exists('sgh_pillar_route_serve')) {
     }
 
     // Priority -10: chạy TRƯỚC static-mirror (priority 0) để pillar template
-    // win race nếu trùng /du-an/<slug>/ slug.
+    // win race nếu trùng project-index/<slug>/ slug.
     add_action('template_redirect', 'sgh_pillar_route_serve', -10);
 }
 
