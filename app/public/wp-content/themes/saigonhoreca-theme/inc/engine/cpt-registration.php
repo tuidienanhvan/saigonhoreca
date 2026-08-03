@@ -162,8 +162,8 @@ if (!function_exists('shr_register_taxonomies')) {
         // `product_cat` nhưng ghi ra taxonomy `product_category`
         // (class-catalog-importer.php:399-406, comment nói rõ "never written here").
         //
-        // Nên nó chỉ còn tạo prefix URL /product-category/ trùng vai với
-        // /danh-muc-san-pham/ của product_category. Gỡ kèm:
+        // Nên nó chỉ còn tạo thêm một prefix URL trùng vai với prefix của
+        // product_category (khai trong inc/config/). Gỡ kèm:
         //   - filter template_include phục vụ riêng nó
         //   - taxonomy-product_cat.php
         //   - nhánh is_tax('product_cat') trong inc/config/routes.php
