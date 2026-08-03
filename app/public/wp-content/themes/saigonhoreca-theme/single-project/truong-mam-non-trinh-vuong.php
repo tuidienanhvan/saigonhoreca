@@ -1,0 +1,26 @@
+<?php
+/**
+ * Single Project Template — TRƯỜNG MẦM NON TRINH VƯƠNG
+ * Thumbnail: bep-an-truong-mam-non-tu-thuc-trinh-vuong/bep-an-truong-mam-non-tu-thuc-trinh-vuong-thumbnail-project-cover.webp
+ *
+ * Auto-routed via inc/core/pillar-routes.php for /du-an/bep-an-truong-mam-non-tu-thuc-trinh-vuong/.
+ *
+ * @package SaigonHoreca
+ */
+get_header(); ?>
+
+<main id="primary" class="pp" tabindex="-1">
+    <?php
+    get_template_part('template-parts/project-pillar/truong-mam-non-trinh-vuong/hero');
+    get_template_part('template-parts/project-pillar/truong-mam-non-trinh-vuong/intro');
+    get_template_part('template-parts/project-pillar/truong-mam-non-trinh-vuong/concept');
+    get_template_part('template-parts/project-pillar/truong-mam-non-trinh-vuong/partnership');
+    get_template_part('template-parts/project-pillar/truong-mam-non-trinh-vuong/specs');
+    get_template_part('template-parts/project-pillar/truong-mam-non-trinh-vuong/gallery');
+
+    get_template_part('template-parts/project-pillar/_related');
+    get_template_part('template-parts/project-pillar/_cta');
+    ?>
+</main>
+
+<?php get_footer();

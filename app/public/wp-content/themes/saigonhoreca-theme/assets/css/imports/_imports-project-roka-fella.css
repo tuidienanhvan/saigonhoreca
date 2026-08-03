@@ -1,0 +1,8 @@
+/* Project bundle — roka-fella only. */
+@import "../../../template-parts/project-pillar/roka-fella/hero.css";
+@import "../../../template-parts/project-pillar/roka-fella/intro.css";
+@import "../../../template-parts/project-pillar/roka-fella/concept.css";
+@import "../../../template-parts/project-pillar/roka-fella/partnership.css";
+@import "../../../template-parts/project-pillar/roka-fella/specs.css";
+@import "../../../template-parts/project-pillar/roka-fella/gallery.css";
+@import "../../../single-project/roka-fella.css";

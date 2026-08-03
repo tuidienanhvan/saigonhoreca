@@ -14,7 +14,6 @@
 @import "../../../template-parts/header/logo.css";
 @import "../../../template-parts/header/mobile-menu.css";
 @import "../../../template-parts/header/navigation.css";
-@import "../../../template-parts/header/top-bar.css";
 
 @import "../../../template-parts/footer/company-info.css";
 @import "../../../template-parts/footer/contact-info.css";
@@ -22,6 +21,5 @@
 @import "../../../template-parts/footer/floating-buttons.css";
 @import "../../../template-parts/footer/mobile-nav.css";
 @import "../../../template-parts/footer/quick-links.css";
-@import "../../../template-parts/footer/widgets.css";
 
 @import "../../../template-parts/global-styles.css";

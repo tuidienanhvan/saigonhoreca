@@ -1,0 +1,8 @@
+/* Project bundle — hemma-desserts only. */
+@import "../../../template-parts/project-pillar/hemma-desserts/hero.css";
+@import "../../../template-parts/project-pillar/hemma-desserts/intro.css";
+@import "../../../template-parts/project-pillar/hemma-desserts/concept.css";
+@import "../../../template-parts/project-pillar/hemma-desserts/partnership.css";
+@import "../../../template-parts/project-pillar/hemma-desserts/specs.css";
+@import "../../../template-parts/project-pillar/hemma-desserts/gallery.css";
+@import "../../../single-project/hemma-desserts.css";

@@ -1,0 +1,8 @@
+/* Project bundle — grand-marble only. */
+@import "../../../template-parts/project-pillar/grand-marble/hero.css";
+@import "../../../template-parts/project-pillar/grand-marble/intro.css";
+@import "../../../template-parts/project-pillar/grand-marble/concept.css";
+@import "../../../template-parts/project-pillar/grand-marble/partnership.css";
+@import "../../../template-parts/project-pillar/grand-marble/specs.css";
+@import "../../../template-parts/project-pillar/grand-marble/gallery.css";
+@import "../../../single-project/grand-marble.css";

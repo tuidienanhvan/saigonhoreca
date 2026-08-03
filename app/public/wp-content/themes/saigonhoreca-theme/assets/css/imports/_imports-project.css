@@ -83,13 +83,13 @@
 @import "../../../single-project/little-bear-thao-dien.css";
 
 /* mua-craft-sake-lam-ruou-sake-dau-tien-tai-viet-nam */
-@import "../../../template-parts/project-pillar/mua-craft-sake-lam-ruou-sake-dau-tien-tai-viet-nam/hero.css";
-@import "../../../template-parts/project-pillar/mua-craft-sake-lam-ruou-sake-dau-tien-tai-viet-nam/intro.css";
-@import "../../../template-parts/project-pillar/mua-craft-sake-lam-ruou-sake-dau-tien-tai-viet-nam/concept.css";
-@import "../../../template-parts/project-pillar/mua-craft-sake-lam-ruou-sake-dau-tien-tai-viet-nam/partnership.css";
-@import "../../../template-parts/project-pillar/mua-craft-sake-lam-ruou-sake-dau-tien-tai-viet-nam/specs.css";
-@import "../../../template-parts/project-pillar/mua-craft-sake-lam-ruou-sake-dau-tien-tai-viet-nam/gallery.css";
-@import "../../../single-project/mua-craft-sake-lam-ruou-sake-dau-tien-tai-viet-nam.css";
+@import "../../../template-parts/project-pillar/mua-craft-sake/hero.css";
+@import "../../../template-parts/project-pillar/mua-craft-sake/intro.css";
+@import "../../../template-parts/project-pillar/mua-craft-sake/concept.css";
+@import "../../../template-parts/project-pillar/mua-craft-sake/partnership.css";
+@import "../../../template-parts/project-pillar/mua-craft-sake/specs.css";
+@import "../../../template-parts/project-pillar/mua-craft-sake/gallery.css";
+@import "../../../single-project/mua-craft-sake.css";
 
 /* skyloft-by-glow */
 @import "../../../template-parts/project-pillar/skyloft-by-glow/hero.css";
@@ -156,13 +156,13 @@
 @import "../../../single-project/spice-world-hotpot.css";
 
 /* roka-fella-tinh-hoa-am-thuc-nhat-ban */
-@import "../../../template-parts/project-pillar/roka-fella-tinh-hoa-am-thuc-nhat-ban/hero.css";
-@import "../../../template-parts/project-pillar/roka-fella-tinh-hoa-am-thuc-nhat-ban/intro.css";
-@import "../../../template-parts/project-pillar/roka-fella-tinh-hoa-am-thuc-nhat-ban/concept.css";
-@import "../../../template-parts/project-pillar/roka-fella-tinh-hoa-am-thuc-nhat-ban/partnership.css";
-@import "../../../template-parts/project-pillar/roka-fella-tinh-hoa-am-thuc-nhat-ban/specs.css";
-@import "../../../template-parts/project-pillar/roka-fella-tinh-hoa-am-thuc-nhat-ban/gallery.css";
-@import "../../../single-project/roka-fella-tinh-hoa-am-thuc-nhat-ban.css";
+@import "../../../template-parts/project-pillar/roka-fella/hero.css";
+@import "../../../template-parts/project-pillar/roka-fella/intro.css";
+@import "../../../template-parts/project-pillar/roka-fella/concept.css";
+@import "../../../template-parts/project-pillar/roka-fella/partnership.css";
+@import "../../../template-parts/project-pillar/roka-fella/specs.css";
+@import "../../../template-parts/project-pillar/roka-fella/gallery.css";
+@import "../../../single-project/roka-fella.css";
 
 /* vien-duong-lao-nam-an */
 @import "../../../template-parts/project-pillar/vien-duong-lao-nam-an/hero.css";
@@ -220,22 +220,22 @@
 
 
 /* bep-an-truong-mam-non-tu-thuc-trinh-vuong */
-@import "../../../template-parts/project-pillar/bep-an-truong-mam-non-tu-thuc-trinh-vuong/hero.css";
-@import "../../../template-parts/project-pillar/bep-an-truong-mam-non-tu-thuc-trinh-vuong/intro.css";
-@import "../../../template-parts/project-pillar/bep-an-truong-mam-non-tu-thuc-trinh-vuong/concept.css";
-@import "../../../template-parts/project-pillar/bep-an-truong-mam-non-tu-thuc-trinh-vuong/partnership.css";
-@import "../../../template-parts/project-pillar/bep-an-truong-mam-non-tu-thuc-trinh-vuong/specs.css";
-@import "../../../template-parts/project-pillar/bep-an-truong-mam-non-tu-thuc-trinh-vuong/gallery.css";
-@import "../../../single-project/bep-an-truong-mam-non-tu-thuc-trinh-vuong.css";
+@import "../../../template-parts/project-pillar/truong-mam-non-trinh-vuong/hero.css";
+@import "../../../template-parts/project-pillar/truong-mam-non-trinh-vuong/intro.css";
+@import "../../../template-parts/project-pillar/truong-mam-non-trinh-vuong/concept.css";
+@import "../../../template-parts/project-pillar/truong-mam-non-trinh-vuong/partnership.css";
+@import "../../../template-parts/project-pillar/truong-mam-non-trinh-vuong/specs.css";
+@import "../../../template-parts/project-pillar/truong-mam-non-trinh-vuong/gallery.css";
+@import "../../../single-project/truong-mam-non-trinh-vuong.css";
 
 /* hemma-desserts-mot-goc-nho-chau-au-giua-thao-dien */
-@import "../../../template-parts/project-pillar/hemma-desserts-mot-goc-nho-chau-au-giua-thao-dien/hero.css";
-@import "../../../template-parts/project-pillar/hemma-desserts-mot-goc-nho-chau-au-giua-thao-dien/intro.css";
-@import "../../../template-parts/project-pillar/hemma-desserts-mot-goc-nho-chau-au-giua-thao-dien/concept.css";
-@import "../../../template-parts/project-pillar/hemma-desserts-mot-goc-nho-chau-au-giua-thao-dien/partnership.css";
-@import "../../../template-parts/project-pillar/hemma-desserts-mot-goc-nho-chau-au-giua-thao-dien/specs.css";
-@import "../../../template-parts/project-pillar/hemma-desserts-mot-goc-nho-chau-au-giua-thao-dien/gallery.css";
-@import "../../../single-project/hemma-desserts-mot-goc-nho-chau-au-giua-thao-dien.css";
+@import "../../../template-parts/project-pillar/hemma-desserts/hero.css";
+@import "../../../template-parts/project-pillar/hemma-desserts/intro.css";
+@import "../../../template-parts/project-pillar/hemma-desserts/concept.css";
+@import "../../../template-parts/project-pillar/hemma-desserts/partnership.css";
+@import "../../../template-parts/project-pillar/hemma-desserts/specs.css";
+@import "../../../template-parts/project-pillar/hemma-desserts/gallery.css";
+@import "../../../single-project/hemma-desserts.css";
 
 /* g-cup-coffee-bistro */
 @import "../../../template-parts/project-pillar/g-cup-coffee-bistro/hero.css";
@@ -247,22 +247,22 @@
 @import "../../../single-project/g-cup-coffee-bistro.css";
 
 /* mam-mam-eatery-lounge-nang-tam-mam-com-viet */
-@import "../../../template-parts/project-pillar/mam-mam-eatery-lounge-nang-tam-mam-com-viet/hero.css";
-@import "../../../template-parts/project-pillar/mam-mam-eatery-lounge-nang-tam-mam-com-viet/intro.css";
-@import "../../../template-parts/project-pillar/mam-mam-eatery-lounge-nang-tam-mam-com-viet/concept.css";
-@import "../../../template-parts/project-pillar/mam-mam-eatery-lounge-nang-tam-mam-com-viet/partnership.css";
-@import "../../../template-parts/project-pillar/mam-mam-eatery-lounge-nang-tam-mam-com-viet/specs.css";
-@import "../../../template-parts/project-pillar/mam-mam-eatery-lounge-nang-tam-mam-com-viet/gallery.css";
-@import "../../../single-project/mam-mam-eatery-lounge-nang-tam-mam-com-viet.css";
+@import "../../../template-parts/project-pillar/mam-mam-eatery/hero.css";
+@import "../../../template-parts/project-pillar/mam-mam-eatery/intro.css";
+@import "../../../template-parts/project-pillar/mam-mam-eatery/concept.css";
+@import "../../../template-parts/project-pillar/mam-mam-eatery/partnership.css";
+@import "../../../template-parts/project-pillar/mam-mam-eatery/specs.css";
+@import "../../../template-parts/project-pillar/mam-mam-eatery/gallery.css";
+@import "../../../single-project/mam-mam-eatery.css";
 
 /* ganh-hao-noi-hon-bien-trong-tung-net-kien-truc */
-@import "../../../template-parts/project-pillar/ganh-hao-noi-hon-bien-trong-tung-net-kien-truc/hero.css";
-@import "../../../template-parts/project-pillar/ganh-hao-noi-hon-bien-trong-tung-net-kien-truc/intro.css";
-@import "../../../template-parts/project-pillar/ganh-hao-noi-hon-bien-trong-tung-net-kien-truc/concept.css";
-@import "../../../template-parts/project-pillar/ganh-hao-noi-hon-bien-trong-tung-net-kien-truc/partnership.css";
-@import "../../../template-parts/project-pillar/ganh-hao-noi-hon-bien-trong-tung-net-kien-truc/specs.css";
-@import "../../../template-parts/project-pillar/ganh-hao-noi-hon-bien-trong-tung-net-kien-truc/gallery.css";
-@import "../../../single-project/ganh-hao-noi-hon-bien-trong-tung-net-kien-truc.css";
+@import "../../../template-parts/project-pillar/ganh-hao/hero.css";
+@import "../../../template-parts/project-pillar/ganh-hao/intro.css";
+@import "../../../template-parts/project-pillar/ganh-hao/concept.css";
+@import "../../../template-parts/project-pillar/ganh-hao/partnership.css";
+@import "../../../template-parts/project-pillar/ganh-hao/specs.css";
+@import "../../../template-parts/project-pillar/ganh-hao/gallery.css";
+@import "../../../single-project/ganh-hao.css";
 
 /* bep-canteen-nha-may-sheh-fung */
 @import "../../../template-parts/project-pillar/bep-canteen-nha-may-sheh-fung/hero.css";
@@ -274,22 +274,22 @@
 @import "../../../single-project/bep-canteen-nha-may-sheh-fung.css";
 
 /* du-an-kdl-rung-thong-nui-voi-cua-saigonhoreca */
-@import "../../../template-parts/project-pillar/du-an-kdl-rung-thong-nui-voi-cua-saigonhoreca/hero.css";
-@import "../../../template-parts/project-pillar/du-an-kdl-rung-thong-nui-voi-cua-saigonhoreca/intro.css";
-@import "../../../template-parts/project-pillar/du-an-kdl-rung-thong-nui-voi-cua-saigonhoreca/concept.css";
-@import "../../../template-parts/project-pillar/du-an-kdl-rung-thong-nui-voi-cua-saigonhoreca/partnership.css";
-@import "../../../template-parts/project-pillar/du-an-kdl-rung-thong-nui-voi-cua-saigonhoreca/specs.css";
-@import "../../../template-parts/project-pillar/du-an-kdl-rung-thong-nui-voi-cua-saigonhoreca/gallery.css";
-@import "../../../single-project/du-an-kdl-rung-thong-nui-voi-cua-saigonhoreca.css";
+@import "../../../template-parts/project-pillar/kdl-rung-thong-nui-voi/hero.css";
+@import "../../../template-parts/project-pillar/kdl-rung-thong-nui-voi/intro.css";
+@import "../../../template-parts/project-pillar/kdl-rung-thong-nui-voi/concept.css";
+@import "../../../template-parts/project-pillar/kdl-rung-thong-nui-voi/partnership.css";
+@import "../../../template-parts/project-pillar/kdl-rung-thong-nui-voi/specs.css";
+@import "../../../template-parts/project-pillar/kdl-rung-thong-nui-voi/gallery.css";
+@import "../../../single-project/kdl-rung-thong-nui-voi.css";
 
 /* du-an-bep-cang-tin-cong-ty-nhat-nichiyo */
-@import "../../../template-parts/project-pillar/du-an-bep-cang-tin-cong-ty-nhat-nichiyo/hero.css";
-@import "../../../template-parts/project-pillar/du-an-bep-cang-tin-cong-ty-nhat-nichiyo/intro.css";
-@import "../../../template-parts/project-pillar/du-an-bep-cang-tin-cong-ty-nhat-nichiyo/concept.css";
-@import "../../../template-parts/project-pillar/du-an-bep-cang-tin-cong-ty-nhat-nichiyo/partnership.css";
-@import "../../../template-parts/project-pillar/du-an-bep-cang-tin-cong-ty-nhat-nichiyo/specs.css";
-@import "../../../template-parts/project-pillar/du-an-bep-cang-tin-cong-ty-nhat-nichiyo/gallery.css";
-@import "../../../single-project/du-an-bep-cang-tin-cong-ty-nhat-nichiyo.css";
+@import "../../../template-parts/project-pillar/nichiyo-canteen/hero.css";
+@import "../../../template-parts/project-pillar/nichiyo-canteen/intro.css";
+@import "../../../template-parts/project-pillar/nichiyo-canteen/concept.css";
+@import "../../../template-parts/project-pillar/nichiyo-canteen/partnership.css";
+@import "../../../template-parts/project-pillar/nichiyo-canteen/specs.css";
+@import "../../../template-parts/project-pillar/nichiyo-canteen/gallery.css";
+@import "../../../single-project/nichiyo-canteen.css";
 
 /* bling-bling-club */
 @import "../../../template-parts/project-pillar/bling-bling-club/hero.css";

@@ -1,0 +1,8 @@
+/* Project bundle — nichiyo-canteen only. */
+@import "../../../template-parts/project-pillar/nichiyo-canteen/hero.css";
+@import "../../../template-parts/project-pillar/nichiyo-canteen/intro.css";
+@import "../../../template-parts/project-pillar/nichiyo-canteen/concept.css";
+@import "../../../template-parts/project-pillar/nichiyo-canteen/partnership.css";
+@import "../../../template-parts/project-pillar/nichiyo-canteen/specs.css";
+@import "../../../template-parts/project-pillar/nichiyo-canteen/gallery.css";
+@import "../../../single-project/nichiyo-canteen.css";

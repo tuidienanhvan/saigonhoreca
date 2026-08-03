@@ -167,6 +167,20 @@ if (!function_exists('sgh_project_consolidation_redirects')) {
             // với Google. Nay pillar đã đổi tên khớp post_name nên slug dài chỉ
             // còn là địa chỉ cũ cần 301.
             'grand-marble-thuong-hieu-banh-cao-cap-nhat-ban' => 'grand-marble',
+
+            // 2026-08-03 — rút gọn 8 slug dài (36–50 ký tự) xuống tên thương
+            // hiệu. Slug cũ đã được index nên PHẢI 301, không được để 404.
+            // Đổi kèm: post_name trong DB, single-project/<slug>.php|.css,
+            // template-parts/project-pillar/<slug>/, scripts/project-data/<slug>.json,
+            // và CSS entrypoint/imports/dist.
+            'mua-craft-sake-lam-ruou-sake-dau-tien-tai-viet-nam' => 'mua-craft-sake',
+            'hemma-desserts-mot-goc-nho-chau-au-giua-thao-dien'  => 'hemma-desserts',
+            'ganh-hao-noi-hon-bien-trong-tung-net-kien-truc'     => 'ganh-hao',
+            'du-an-kdl-rung-thong-nui-voi-cua-saigonhoreca'      => 'kdl-rung-thong-nui-voi',
+            'mam-mam-eatery-lounge-nang-tam-mam-com-viet'        => 'mam-mam-eatery',
+            'bep-an-truong-mam-non-tu-thuc-trinh-vuong'          => 'truong-mam-non-trinh-vuong',
+            'du-an-bep-cang-tin-cong-ty-nhat-nichiyo'            => 'nichiyo-canteen',
+            'roka-fella-tinh-hoa-am-thuc-nhat-ban'               => 'roka-fella',
         ];
     }
 }

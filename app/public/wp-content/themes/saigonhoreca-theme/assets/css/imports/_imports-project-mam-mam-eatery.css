@@ -1,0 +1,8 @@
+/* Project bundle — mam-mam-eatery only. */
+@import "../../../template-parts/project-pillar/mam-mam-eatery/hero.css";
+@import "../../../template-parts/project-pillar/mam-mam-eatery/intro.css";
+@import "../../../template-parts/project-pillar/mam-mam-eatery/concept.css";
+@import "../../../template-parts/project-pillar/mam-mam-eatery/partnership.css";
+@import "../../../template-parts/project-pillar/mam-mam-eatery/specs.css";
+@import "../../../template-parts/project-pillar/mam-mam-eatery/gallery.css";
+@import "../../../single-project/mam-mam-eatery.css";

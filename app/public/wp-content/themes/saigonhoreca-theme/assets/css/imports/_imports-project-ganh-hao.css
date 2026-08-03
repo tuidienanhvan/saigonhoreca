@@ -1,0 +1,8 @@
+/* Project bundle — ganh-hao only. */
+@import "../../../template-parts/project-pillar/ganh-hao/hero.css";
+@import "../../../template-parts/project-pillar/ganh-hao/intro.css";
+@import "../../../template-parts/project-pillar/ganh-hao/concept.css";
+@import "../../../template-parts/project-pillar/ganh-hao/partnership.css";
+@import "../../../template-parts/project-pillar/ganh-hao/specs.css";
+@import "../../../template-parts/project-pillar/ganh-hao/gallery.css";
+@import "../../../single-project/ganh-hao.css";
