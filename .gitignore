@@ -72,3 +72,4 @@ lh-screenshots/
 
 # Gói zip do scripts/package-deploy.mjs sinh ra — build artifact, không commit
 _sgh-deploy-packages/
+backups/

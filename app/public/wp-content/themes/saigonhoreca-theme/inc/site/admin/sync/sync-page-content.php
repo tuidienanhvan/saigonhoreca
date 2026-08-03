@@ -63,11 +63,22 @@ if (!function_exists('sgh_extract_main_content')) {
         $xp = new DOMXPath($doc);
 
         // Gỡ thẳng những nhánh không bao giờ là nội dung.
+        //
+        // Hai nhóm cuối là KHỐI DÙNG CHUNG của mọi trang dự án:
+        //   template-parts/project-pillar/_related.php -> "Dự án nổi bật"
+        //   template-parts/project-pillar/_cta.php     -> "Thông tin liên hệ"
+        // Cả hai bọc bởi <section class="pp__section"> chung chung, nhưng bên
+        // trong có class riêng (pp-related__*, pp-cta__*) — bắt theo dấu hiệu đó.
+        // Không loại thì post_content của cả 30 dự án đều dính cùng một đuôi:
+        // số điện thoại, địa chỉ, và tên vài dự án khác — vừa trùng lặp vừa
+        // khiến Google đọc nhầm chủ đề trang.
         $kill = $xp->query(
             '//script | //style | //noscript | //svg | //template | //form'
             . ' | //*[@aria-hidden="true"]'
             . ' | //*[@role="button"] | //*[@role="navigation"] | //*[@role="tablist"]'
             . ' | //button | //nav'
+            . ' | //section[.//*[contains(@class,"pp-related")]]'
+            . ' | //section[.//*[contains(@class,"pp-cta")]]'
         );
         foreach (iterator_to_array($kill) as $node) {
             if ($node->parentNode) $node->parentNode->removeChild($node);
@@ -102,23 +113,53 @@ if (!function_exists('sgh_sync_page_content')) {
      * @param bool $dry Xem trước, không ghi.
      * @return array{updated:int,skipped:int,failed:int,log:string[]}
      */
-    function sgh_sync_page_content($dry = false) {
+    function sgh_sync_page_content($dry = false, $args = []) {
         $log = []; $updated = 0; $skipped = 0; $failed = 0;
 
-        $defs = function_exists('sgh_get_pages_definition') ? sgh_get_pages_definition() : [];
-        if (!$defs) {
-            return ['updated' => 0, 'skipped' => 0, 'failed' => 1,
-                    'log' => ['Không đọc được bản khai page (sgh_get_pages_definition).']];
+        $args = wp_parse_args($args, [
+            // 'page' | 'project' | cả hai
+            'post_types' => ['page'],
+            // Ghi đè cả nội dung KHÔNG có marker. Chỉ dùng cho việc di trú một
+            // lần — mặc định false để không nuốt mất bài người ta tự viết.
+            'force'      => false,
+        ]);
+
+        $targets = [];   // [WP_Post, ...]
+
+        if (in_array('page', (array) $args['post_types'], true)) {
+            $defs = function_exists('sgh_get_pages_definition') ? sgh_get_pages_definition() : [];
+            if (!$defs) {
+                $log[] = 'Không đọc được bản khai page (sgh_get_pages_definition).';
+                $failed++;
+            }
+            foreach (array_keys($defs) as $slug) {
+                $page = get_page_by_path($slug);
+                if ($page) $targets[] = $page;
+                else { $log[] = "Không thấy page: $slug"; $failed++; }
+            }
+        }
+
+        if (in_array('project', (array) $args['post_types'], true)) {
+            // Dự án: nội dung hiển thị nằm ở single-project/<slug>.php +
+            // template-parts/project-pillar/<slug>/. post_content hiện tại là
+            // bản CRAWL TỪ SITE CŨ (ảnh trỏ saigonhoreca.com/uploads/2020/...),
+            // không khớp thiết kế đang chạy — nên cần 'force' để thay.
+            $targets = array_merge($targets, get_posts([
+                'post_type'   => 'project',
+                'post_status' => 'publish',
+                'numberposts' => -1,
+                'orderby'     => 'title',
+                'order'       => 'ASC',
+            ]));
         }
 
         $marker = sgh_page_content_marker();
 
-        foreach (array_keys($defs) as $slug) {
-            $page = get_page_by_path($slug);
-            if (!$page) { $log[] = "Không thấy page: $slug"; $failed++; continue; }
+        foreach ($targets as $page) {
+            $slug = $page->post_name;
 
             $existing = (string) $page->post_content;
-            if ($existing !== '' && strpos($existing, $marker) === false) {
+            if ($existing !== '' && strpos($existing, $marker) === false && !$args['force']) {
                 $log[] = "Bỏ qua $slug — có nội dung tự viết, không ghi đè.";
                 $skipped++;
                 continue;
@@ -153,10 +194,38 @@ if (!function_exists('sgh_sync_page_content')) {
                 continue;
             }
 
-            $ok = wp_update_post([
+            // ⚠️ post_excerpt cũng phải sinh lại — nó mới là nguồn của
+            // og:description / twitter:description (kiểm bằng HTML thật).
+            // Thay mỗi post_content là chưa đủ: Facebook/Zalo vẫn hiện mô tả cũ.
+            // Trước lần chạy này: 6 dự án dùng CHUNG excerpt của Sheh Fung,
+            // 3 dự án excerpt rỗng, the-brix còn văn bản crawl tiếng Anh 2020.
+            $update = [
                 'ID'           => $page->ID,
                 'post_content' => $marker . "\n" . $content,
-            ], true);
+            ];
+
+            $cur_excerpt = trim((string) $page->post_excerpt);
+            $is_generated = $cur_excerpt === ''
+                || strpos($existing, $marker) !== false   // vòng chạy trước là của mình
+                || $args['force'];
+            if ($is_generated) {
+                // Lấy đoạn <p> đầu đủ dài — mở bài, không phải nhãn vụn.
+                $excerpt = '';
+                if (preg_match_all('#<p>(.*?)</p>#s', $content, $ps)) {
+                    foreach ($ps[1] as $p) {
+                        $t = trim(html_entity_decode(wp_strip_all_tags($p), ENT_QUOTES, 'UTF-8'));
+                        if (mb_strlen($t) >= 60) { $excerpt = $t; break; }
+                    }
+                }
+                if ($excerpt !== '') {
+                    if (mb_strlen($excerpt) > 300) {
+                        $excerpt = rtrim(mb_substr($excerpt, 0, 297), " ,.;:–-") . '…';
+                    }
+                    $update['post_excerpt'] = $excerpt;
+                }
+            }
+
+            $ok = wp_update_post($update, true);
 
             if (is_wp_error($ok)) { $log[] = "Lỗi ghi $slug: " . $ok->get_error_message(); $failed++; continue; }
 
