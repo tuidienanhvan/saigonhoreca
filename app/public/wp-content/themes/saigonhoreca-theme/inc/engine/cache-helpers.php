@@ -110,10 +110,10 @@ if (!function_exists('sgh_static_cache_path_for_uri')) {
         //
         // .vn và .com dùng CHUNG một bản cài; inc/engine/slug-map.php:34 đổi
         // locale theo domain (.com -> en_US, còn lại -> vi). Bản cũ chỉ lấy URI
-        // làm khoá, nên /lien-he/ của cả hai domain ghi và đọc CÙNG một file.
-        // Domain nào render trước thì domain kia nhận sai ngôn ngữ — đã tái
-        // hiện: cache do .local (vi) ghi, khách Host .com nhận <html lang="vi">
-        // và "Chuyển đến nội dung chính" thay vì "Skip to main content".
+        // làm khoá, nên cùng một đường dẫn trên hai domain ghi và đọc CÙNG một
+        // file. Domain nào render trước thì domain kia nhận sai ngôn ngữ — đã
+        // tái hiện: cache do host vi ghi, khách host en nhận <html lang="vi">
+        // và chuỗi skip-link tiếng Việt thay vì bản tiếng Anh.
         //
         // Dùng get_locale() thay vì tự đọc HTTP_HOST: locale mới là thứ QUYẾT
         // ĐỊNH nội dung render. Domain nào rồi cũng quy về locale, và nếu sau

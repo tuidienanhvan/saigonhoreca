@@ -86,21 +86,13 @@ if (!function_exists('sgh_pillar_route_serve')) {
         // Language-aware project prefix (see routes.php slug map, cùng nguồn với match ở trên).
         $proj = function_exists('sgh_slug') ? sgh_slug('projects_index') : $proj_vi;
 
-        // ── Consolidation 301s: retired / duplicate slugs → canonical URL.
-        // sol-kitchen-bar was an older duplicate of the Sol Quận 7 renovation;
-        // the canonical page is renovate-sol-kitchen-bar-quan-7. Avoids dup content.
-        $sgh_route_301 = [
-            'sol-kitchen-bar' => 'renovate-sol-kitchen-bar-quan-7',
-            // 2026-08-02: Grand Marble từng có HAI URL cùng trả 200, cùng
-            // <title> "Grand Marble":
-            //   /du-an/grand-marble/          -> post CPT 687, render single.php
-            //   /du-an/grand-marble-thuong... -> route ảo, render pillar template
-            // Không URL nào noindex, URL dài không có canonical -> trùng nội
-            // dung với Google. Nay template đổi tên thành single-project/
-            // grand-marble.php nên post CPT dùng đúng thiết kế pillar, còn slug
-            // dài 301 về đây.
-            'grand-marble-thuong-hieu-banh-cao-cap-nhat-ban' => 'grand-marble',
-        ];
+        // ── Consolidation 301s: slug đã nghỉ / trùng → slug chuẩn.
+        // DANH SÁCH nằm ở inc/config/sgh_project_consolidation_redirects() —
+        // engine/ chỉ giữ CƠ CHẾ, không biết tên dự án cụ thể (lint
+        // ENGINE PURITY trong scripts/build.mjs canh điều này).
+        $sgh_route_301 = function_exists('sgh_project_consolidation_redirects')
+            ? sgh_project_consolidation_redirects()
+            : [];
         if (isset($sgh_route_301[$slug])) {
             wp_safe_redirect(home_url('/' . $proj . '/' . $sgh_route_301[$slug] . '/'), 301);
             exit;

@@ -140,3 +140,32 @@ if (!function_exists('sgh_route_hero_preload_rules')) {
         ];
     }
 }
+
+if (!function_exists('sgh_project_consolidation_redirects')) {
+    /**
+     * Slug dự án đã nghỉ / trùng → slug chuẩn. Route trả 301 về slug chuẩn.
+     *
+     * ⚠️ 2026-08-02 — chuyển từ inc/engine/pillar-routes.php sang đây.
+     * Đây là DỮ LIỆU RIÊNG CỦA SITE (tên dự án cụ thể), mà quy tắc của dự án
+     * là inc/engine/ không được biết brand — lint `ENGINE PURITY` trong
+     * scripts/build.mjs canh đúng điều đó và đang báo 2 vi phạm ở chỗ cũ.
+     * engine/ giờ chỉ còn CƠ CHẾ 301, còn DANH SÁCH nằm ở config/.
+     *
+     * Thêm dự án mới thì khai ở đây, không đụng engine/.
+     *
+     * @return array<string,string> slug cũ => slug chuẩn
+     */
+    function sgh_project_consolidation_redirects() {
+        return [
+            // Bản trùng cũ của dự án cải tạo Sol Quận 7.
+            'sol-kitchen-bar' => 'renovate-sol-kitchen-bar-quan-7',
+
+            // Grand Marble từng có HAI URL cùng trả 200, cùng <title>:
+            // slug ngắn (post CPT, layout chung) và slug dài (route ảo, pillar).
+            // Không cái nào noindex, slug dài không canonical → trùng nội dung
+            // với Google. Nay pillar đã đổi tên khớp post_name nên slug dài chỉ
+            // còn là địa chỉ cũ cần 301.
+            'grand-marble-thuong-hieu-banh-cao-cap-nhat-ban' => 'grand-marble',
+        ];
+    }
+}
