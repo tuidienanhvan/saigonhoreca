@@ -2,14 +2,13 @@
 /**
  * Custom Post Types + Taxonomies (zero-plugin)
  *
- * saigonhoreca.vn organises content under URL patterns that don't fit
- * native WP `post`+`page` cleanly:
- *   /du-an/<slug>/                  case-study projects
- *   /san-pham/<slug>/               kitchen-equipment products
- *   /danh-muc-san-pham/<cat>/       product category archives
+ * The production site organises content under URL patterns that don't fit
+ * native WP `post`+`page` cleanly (case-study projects, kitchen-equipment
+ * products, product category archives) — see inc/config/routes.php
+ * `sgh_bilingual_slug_map()` for the actual route slugs consumed below.
  *
  * Rather than depend on a CPT plugin (WooCommerce / CPT-UI / etc.) we
- * register lightweight native CPTs here, matching the saigonhoreca-theme
+ * register lightweight native CPTs here, matching this theme's
  * "zero-plugin" architecture. Public-facing labels are in Vietnamese.
  *
  * @package SaigonHoreca
@@ -28,6 +27,12 @@ if (!function_exists('shr_register_cpts')) {
         $skip_project = post_type_exists('project');
         $skip_product = post_type_exists('product');
 
+        // Route slug DUY NHẤT lấy từ inc/config/routes.php — không hardcode
+        // literal lần thứ 2 ở đây (single source of truth với sgh_slug()).
+        $map          = function_exists('sgh_bilingual_slug_map') ? sgh_bilingual_slug_map() : [];
+        $slug_project = $map['projects_index'][0] ?? 'project';
+        $slug_product = $map['products_index'][0] ?? 'product';
+
         // ── CPT: project (Dự án) ──────────────────────────────────
         if (!$skip_project) register_post_type('project', [
             'labels' => [
@@ -43,12 +48,12 @@ if (!function_exists('shr_register_cpts')) {
                 'not_found_in_trash' => 'Không có dự án trong thùng rác',
             ],
             'public'              => true,
-            'has_archive'         => 'du-an',
+            'has_archive'         => $slug_project,
             'show_in_rest'        => true, // Gutenberg / REST API edit support
             'menu_position'       => 5,
             'menu_icon'           => 'dashicons-portfolio',
             'supports'            => ['title', 'editor', 'excerpt', 'thumbnail', 'custom-fields', 'revisions'],
-            'rewrite'             => ['slug' => 'du-an', 'with_front' => false],
+            'rewrite'             => ['slug' => $slug_project, 'with_front' => false],
             'capability_type'     => 'post',
             'hierarchical'        => false,
         ]);
@@ -68,12 +73,12 @@ if (!function_exists('shr_register_cpts')) {
                 'not_found_in_trash' => 'Không có sản phẩm trong thùng rác',
             ],
             'public'              => true,
-            'has_archive'         => 'san-pham',
+            'has_archive'         => $slug_product,
             'show_in_rest'        => true,
             'menu_position'       => 6,
             'menu_icon'           => 'dashicons-cart',
             'supports'            => ['title', 'editor', 'excerpt', 'thumbnail', 'custom-fields', 'revisions'],
-            'rewrite'             => ['slug' => 'san-pham', 'with_front' => false],
+            'rewrite'             => ['slug' => $slug_product, 'with_front' => false],
             'capability_type'     => 'post',
             'hierarchical'        => false,
         ]);
@@ -89,6 +94,10 @@ if (!function_exists('shr_register_taxonomies')) {
         $skip_pcat   = taxonomy_exists('project_category');
         $skip_prdcat = taxonomy_exists('product_category');
         $skip_brand  = taxonomy_exists('product_brand');
+
+        $map           = function_exists('sgh_bilingual_slug_map') ? sgh_bilingual_slug_map() : [];
+        $slug_proj_cat = $map['projects_cat'][0] ?? 'project-category';
+        $slug_prod_cat = $map['products_cat'][0] ?? 'product-category';
 
         // ── Taxonomy: project_category (Hạng mục dự án) ──────────
         if (!$skip_pcat) register_taxonomy('project_category', ['project'], [
@@ -106,11 +115,11 @@ if (!function_exists('shr_register_taxonomies')) {
             'hierarchical'      => true,
             'show_in_rest'      => true,
             'public'            => true,
-            'rewrite'           => ['slug' => 'danh-muc-du-an', 'with_front' => false],
+            'rewrite'           => ['slug' => $slug_proj_cat, 'with_front' => false],
         ]);
 
         // ── Taxonomy: product_category (Danh mục sản phẩm) ────────
-        // The scraped site uses /danh-muc-san-pham/<slug>/ for these.
+        // Route slug lấy từ sgh_bilingual_slug_map()['products_cat'].
         if (!$skip_prdcat) register_taxonomy('product_category', ['product'], [
             'labels' => [
                 'name'              => 'Danh mục sản phẩm',
@@ -126,7 +135,7 @@ if (!function_exists('shr_register_taxonomies')) {
             'hierarchical'      => true,
             'show_in_rest'      => true,
             'public'            => true,
-            'rewrite'           => ['slug' => 'danh-muc-san-pham', 'with_front' => false],
+            'rewrite'           => ['slug' => $slug_prod_cat, 'with_front' => false],
         ]);
 
         // ── Taxonomy: product_brand (Thương hiệu) ─────────────────
@@ -144,41 +153,30 @@ if (!function_exists('shr_register_taxonomies')) {
             'rewrite'           => ['slug' => 'thuong-hieu', 'with_front' => false],
         ]);
 
-        // ── Taxonomy: product_cat (WooCommerce legacy — HỒI SINH) ──
-        // Production: sản phẩm cũ categorize bằng WooCommerce `product_cat`. Khi
-        // WooCommerce TẮT, taxonomy này không đăng ký → danh mục "mồ côi" (data
-        // còn trong DB nhưng không query được → /san-pham/ mất sidebar). Đăng ký
-        // lại (CHỈ khi WooCommerce chưa đăng ký, tránh xung đột) để hồi sinh danh
-        // mục cũ + sản phẩm giữ ảnh thật. filter-sidebar.php tự fallback sang nó.
-        if (!taxonomy_exists('product_cat')) {
-            register_taxonomy('product_cat', ['product'], [
-                'labels'       => ['name' => 'Danh mục sản phẩm', 'menu_name' => 'Danh mục SP'],
-                'hierarchical' => true,
-                'show_in_rest' => true,
-                'public'       => true,
-                'rewrite'      => ['slug' => 'product-category', 'with_front' => false],
-            ]);
-        }
+        // [GỠ 2026-08-03] Taxonomy `product_cat` (WooCommerce legacy).
+        //
+        // Từng đăng ký lại để "hồi sinh" danh mục cũ sau khi tắt WooCommerce.
+        // Kiểm tra trên DB thật: product_cat có **0 term**, product_category có
+        // 80 term / 388 lượt gán — toàn bộ sản phẩm đã nằm ở taxonomy chuẩn.
+        // Trình import cũng KHÔNG ghi vào đây: pi-migrate/pi-api đọc CỘT CSV tên
+        // `product_cat` nhưng ghi ra taxonomy `product_category`
+        // (class-catalog-importer.php:399-406, comment nói rõ "never written here").
+        //
+        // Nên nó chỉ còn tạo prefix URL /product-category/ trùng vai với
+        // /danh-muc-san-pham/ của product_category. Gỡ kèm:
+        //   - filter template_include phục vụ riêng nó
+        //   - taxonomy-product_cat.php
+        //   - nhánh is_tax('product_cat') trong inc/config/routes.php
+        //   - kiểm tra body class 'tax-product_cat' trong archive-product.php
+        // Cần lại thì git revert commit này.
     }
 }
 add_action('init', 'shr_register_taxonomies', 0);
 
-// Cho archive của product_cat (danh mục cũ) dùng template sản phẩm cho đẹp.
-if (!function_exists('shr_product_cat_template')) {
-    function shr_product_cat_template($template) {
-        if (is_tax('product_cat')) {
-            $alt = locate_template(['archive-product.php']);
-            if ($alt) return $alt;
-        }
-        return $template;
-    }
-}
-add_filter('template_include', 'shr_product_cat_template', 99);
-
 if (!function_exists('shr_flush_rewrite_on_theme_switch')) {
     /**
      * Flush rewrite rules when this theme is activated so the new CPT
-     * slugs (/du-an/, /san-pham/, /danh-muc-san-pham/, /thuong-hieu/)
+     * slugs (project/product archives + their category taxonomies)
      * are routed correctly without requiring the user to manually re-save
      * permalinks in wp-admin.
      */

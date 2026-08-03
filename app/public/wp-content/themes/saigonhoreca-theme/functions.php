@@ -236,21 +236,44 @@ add_filter('theme_page_templates', function ($templates) {
 
 $inc = get_template_directory() . '/inc/';
 
+// ─────────────────────────────────────────────────────────────────────────
+// THỨ TỰ NẠP CÓ RÀNG BUỘC THẬT — đảo dòng là site vỡ, và KHÔNG có test nào
+// bắt được. Ràng buộc đã kiểm chứng (2026-08-03) ghi ngay tại dòng, dạng
+// "⟵ CẦN <file>". Dòng không ghi gì là độc lập, đổi chỗ được.
+//
+// Quy tắc chung: config/ nạp TRƯỚC engine/. config/ chỉ khai hằng số và bảng
+// dữ liệu, không hook WP; engine/ đọc các bảng đó. Thêm file mới thì giữ đúng
+// hai tầng này — đừng để engine/ phải biết dữ liệu riêng của site
+// (scripts/build.mjs có lint ENGINE PURITY canh điều đó).
+// ─────────────────────────────────────────────────────────────────────────
+
 // Config (brand-specific " theme only)
 require $inc . 'config/constants.php';       // SGH_SITE_NAME, FB_APP_ID, etc.
 require $inc . 'config/domains.php';         // Production hostnames (.vn/.com)
 require $inc . 'config/contact-info.php';    // Company phone, email, address
 require $inc . 'config/site-structure.php';  // Pages, categories, menu definitions
 require $inc . 'config/routes.php';          // Route → CSS bundle + hero-preload map
+                                             //   ⟵ CẦN domains.php: sgh_is_known_production_host()
+                                             //   Cung cấp: sgh_bilingual_slug_map(), sgh_route_css_rules(),
+                                             //   sgh_project_consolidation_redirects(), sgh_project_slug_aliases()
 require $inc . 'config/fonts.php';           // Font families + color-token palette
 require $inc . 'engine/perf-config.php';       // Perf constants + filter helpers
 require $inc . 'engine/img-helper.php';        // sgh_img() — env-aware uploads URL (local mirror vs prod)
+                                               //   ⟵ CẦN domains.php + perf-config.php
 require $inc . 'site/project-cover.php';      // project cover resolver — cached map + fallback chain (never-black)
+                                              //   ⟵ CẦN img-helper.php (sgh_img)
 require $inc . 'engine/bot-optimize.php';      // sgh_is_bot() — bots/Lighthouse get light render (no fixed parallax)
 require $inc . 'engine/slug-map.php';          // Bilingual slug map (vi ↔ en) + counterpart URL switcher
-require $inc . 'engine/pillar-routes.php';     // Auto-route /du-an/<slug>/ to page-pillar-*.php (BEM rebuild)
+                                               //   ⟵ CẦN routes.php: sgh_bilingual_slug_map()
+                                               //   Cung cấp: sgh_slug(), sgh_url(), filter 'locale'
+require $inc . 'engine/pillar-routes.php';     // Auto-route /du-an/<slug>/ to single-project/<slug>.php
+                                               //   ⟵ CẦN slug-map.php (sgh_slug) — bắt URI theo slug
+                                               //      ngôn ngữ hiện tại; nạp trước thì route ảo hỏng.
+                                               //   ⟵ CẦN routes.php: sgh_project_consolidation_redirects()
 require $inc . 'engine/cpt-registration.php';  // CPT `project`+`product` + taxonomies (Phase 2 data layer)
+                                               //   ⟵ CẦN slug-map.php — has_archive/rewrite lấy slug từ sgh_slug()
 require $inc . 'engine/media-routing.php';      // Route new uploads: product->products/<slug>/, post->blog/<slug>/
+                                                //   ⟵ CẦN cpt-registration.php — phân nhánh theo post_type
 
 add_filter('template_include', function ($template) {
     if (is_front_page()) {

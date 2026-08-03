@@ -66,9 +66,10 @@ if (!function_exists('sgh_route_css_rules')) {
             ],
             ['when' => fn() => is_singular('post'), 'bundle' => 'single'],
             [
+                // is_tax('product_cat') đã bỏ 2026-08-03 — taxonomy gỡ khỏi
+                // cpt-registration.php (0 term, importer ghi vào product_category).
                 'when' => fn() => is_post_type_archive('product')
                     || is_tax('product_category')
-                    || is_tax('product_cat')
                     || is_tax('product_brand')
                     || (is_search() && (get_query_var('post_type') === 'product' || (isset($_GET['post_type']) && $_GET['post_type'] === 'product'))),
                 'bundle' => 'archive-product',

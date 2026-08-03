@@ -57,8 +57,9 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!tabs.length || !layout) return;
 
     // Tối ưu logic: Khi đang ở trang danh mục/thương hiệu cụ thể, luôn đảm bảo hiển thị tab Sản phẩm mặc định
-    var isTaxonomyPage = document.body.classList.contains('tax-product_category') || 
-                         document.body.classList.contains('tax-product_cat') || 
+    // 'tax-product_cat' đã bỏ 2026-08-03 — taxonomy product_cat gỡ khỏi
+    // cpt-registration.php (0 term, không gì ghi vào).
+    var isTaxonomyPage = document.body.classList.contains('tax-product_category') ||
                          document.body.classList.contains('tax-product_brand');
     if (isTaxonomyPage) {
         var productsTab = document.querySelector('.sh-archive__tab-btn[data-target="products"]');
