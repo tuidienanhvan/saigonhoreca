@@ -15,12 +15,12 @@
 @import "../shared/cards.css";
 @import "../shared/checker.css";
 @import "../shared/effects.css";
+@import "../shared/live-search.css";
 @import "../shared/typography.css";
 @import "../../../template-parts/components/archive-search-styles.css";
 @import "../../../template-parts/components/before-after.css";
 @import "../../../template-parts/components/comments.css";
 @import "../../../template-parts/components/faq-accordion.css";
-@import "../../../template-parts/components/faq-premium.css";
 @import "../../../template-parts/components/post-card.css";
 @import "../../../template-parts/components/share-buttons.css";
 @import "../../../template-parts/components/wave-divider.css";
@@ -33,9 +33,7 @@
 @import "../../../template-parts/footer/floating-buttons.css";
 @import "../../../template-parts/footer/mobile-nav.css";
 @import "../../../template-parts/footer/quick-links.css";
-@import "../../../template-parts/footer/widgets.css";
 @import "../../../template-parts/global-styles.css";
 @import "../../../template-parts/header/logo.css";
 @import "../../../template-parts/header/mobile-menu.css";
 @import "../../../template-parts/header/navigation.css";
-@import "../../../template-parts/header/top-bar.css";

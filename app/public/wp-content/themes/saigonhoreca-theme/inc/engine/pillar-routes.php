@@ -86,17 +86,9 @@ if (!function_exists('sgh_pillar_route_serve')) {
         // Language-aware project prefix (see routes.php slug map, cùng nguồn với match ở trên).
         $proj = function_exists('sgh_slug') ? sgh_slug('projects_index') : $proj_vi;
 
-        // ── Consolidation 301s: slug đã nghỉ / trùng → slug chuẩn.
-        // DANH SÁCH nằm ở inc/config/sgh_project_consolidation_redirects() —
-        // engine/ chỉ giữ CƠ CHẾ, không biết tên dự án cụ thể (lint
-        // ENGINE PURITY trong scripts/build.mjs canh điều này).
-        $sgh_route_301 = function_exists('sgh_project_consolidation_redirects')
-            ? sgh_project_consolidation_redirects()
-            : [];
-        if (isset($sgh_route_301[$slug])) {
-            wp_safe_redirect(home_url('/' . $proj . '/' . $sgh_route_301[$slug] . '/'), 301);
-            exit;
-        }
+        // [GỠ 2026-08-03] Nhánh 301 slug cũ -> slug chuẩn.
+        // Chủ site chốt: không giữ fallback, mỗi dự án đúng một URL. Slug cũ
+        // trả 404 thật. Bảng ánh xạ ở inc/config/routes.php cũng đã gỡ.
 
         // Bypass định tuyến ảo nếu đã có Post thật thuộc Custom Post Type project
         $existing_project = get_posts([

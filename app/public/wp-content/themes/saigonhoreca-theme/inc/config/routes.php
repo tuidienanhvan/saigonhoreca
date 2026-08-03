@@ -142,45 +142,16 @@ if (!function_exists('sgh_route_hero_preload_rules')) {
     }
 }
 
-if (!function_exists('sgh_project_consolidation_redirects')) {
-    /**
-     * Slug dự án đã nghỉ / trùng → slug chuẩn. Route trả 301 về slug chuẩn.
-     *
-     * ⚠️ 2026-08-02 — chuyển từ inc/engine/pillar-routes.php sang đây.
-     * Đây là DỮ LIỆU RIÊNG CỦA SITE (tên dự án cụ thể), mà quy tắc của dự án
-     * là inc/engine/ không được biết brand — lint `ENGINE PURITY` trong
-     * scripts/build.mjs canh đúng điều đó và đang báo 2 vi phạm ở chỗ cũ.
-     * engine/ giờ chỉ còn CƠ CHẾ 301, còn DANH SÁCH nằm ở config/.
-     *
-     * Thêm dự án mới thì khai ở đây, không đụng engine/.
-     *
-     * @return array<string,string> slug cũ => slug chuẩn
-     */
-    function sgh_project_consolidation_redirects() {
-        return [
-            // Bản trùng cũ của dự án cải tạo Sol Quận 7.
-            'sol-kitchen-bar' => 'renovate-sol-kitchen-bar-quan-7',
-
-            // Grand Marble từng có HAI URL cùng trả 200, cùng <title>:
-            // slug ngắn (post CPT, layout chung) và slug dài (route ảo, pillar).
-            // Không cái nào noindex, slug dài không canonical → trùng nội dung
-            // với Google. Nay pillar đã đổi tên khớp post_name nên slug dài chỉ
-            // còn là địa chỉ cũ cần 301.
-            'grand-marble-thuong-hieu-banh-cao-cap-nhat-ban' => 'grand-marble',
-
-            // 2026-08-03 — rút gọn 8 slug dài (36–50 ký tự) xuống tên thương
-            // hiệu. Slug cũ đã được index nên PHẢI 301, không được để 404.
-            // Đổi kèm: post_name trong DB, single-project/<slug>.php|.css,
-            // template-parts/project-pillar/<slug>/, scripts/project-data/<slug>.json,
-            // và CSS entrypoint/imports/dist.
-            'mua-craft-sake-lam-ruou-sake-dau-tien-tai-viet-nam' => 'mua-craft-sake',
-            'hemma-desserts-mot-goc-nho-chau-au-giua-thao-dien'  => 'hemma-desserts',
-            'ganh-hao-noi-hon-bien-trong-tung-net-kien-truc'     => 'ganh-hao',
-            'du-an-kdl-rung-thong-nui-voi-cua-saigonhoreca'      => 'kdl-rung-thong-nui-voi',
-            'mam-mam-eatery-lounge-nang-tam-mam-com-viet'        => 'mam-mam-eatery',
-            'bep-an-truong-mam-non-tu-thuc-trinh-vuong'          => 'truong-mam-non-trinh-vuong',
-            'du-an-bep-cang-tin-cong-ty-nhat-nichiyo'            => 'nichiyo-canteen',
-            'roka-fella-tinh-hoa-am-thuc-nhat-ban'               => 'roka-fella',
-        ];
-    }
-}
+// [GỠ 2026-08-03] sgh_project_consolidation_redirects() — bảng 301 slug cũ.
+//
+// Quyết định của chủ site: KHÔNG giữ fallback. Mỗi dự án có đúng MỘT URL, không
+// alias, không bảng ánh xạ phải nhớ. Slug cũ trả 404 thật thay vì âm thầm
+// chuyển hướng.
+//
+// Gỡ kèm (nếu không thì chúng thành trang sống mồ côi khi mất 301):
+//   single-project/sol-kitchen-bar.php|.css      — 0 post trong DB
+//   template-parts/project-pillar/sol-kitchen-bar/
+// và nhánh đọc bảng này trong inc/engine/pillar-routes.php.
+//
+// Đánh đổi đã nói rõ với user: 10 URL cũ (8 slug vừa rút gọn + 2 bản trùng cũ)
+// nay 404. Nếu Google đã index thì mất thứ hạng của những URL đó.

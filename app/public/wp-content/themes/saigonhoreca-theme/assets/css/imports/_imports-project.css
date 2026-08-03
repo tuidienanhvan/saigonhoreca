@@ -109,15 +109,6 @@
 @import "../../../template-parts/project-pillar/sol-kitchen-bar-saigon-horeca/gallery.css";
 @import "../../../single-project/sol-kitchen-bar-saigon-horeca.css";
 
-/* sol-kitchen-bar */
-@import "../../../template-parts/project-pillar/sol-kitchen-bar/hero.css";
-@import "../../../template-parts/project-pillar/sol-kitchen-bar/intro.css";
-@import "../../../template-parts/project-pillar/sol-kitchen-bar/concept.css";
-@import "../../../template-parts/project-pillar/sol-kitchen-bar/partnership.css";
-@import "../../../template-parts/project-pillar/sol-kitchen-bar/specs.css";
-@import "../../../template-parts/project-pillar/sol-kitchen-bar/gallery.css";
-@import "../../../single-project/sol-kitchen-bar.css";
-
 /* the-brix */
 @import "../../../template-parts/project-pillar/the-brix/hero.css";
 @import "../../../template-parts/project-pillar/the-brix/intro.css";

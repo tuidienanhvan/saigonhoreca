@@ -16,20 +16,40 @@ html {
   scrollbar-gutter: stable;
   /* Firefox */
   scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+html.is-scrolling {
   scrollbar-color: color-mix(in srgb, var(--p) 55%, transparent) var(--b2);
 }
+
 html::-webkit-scrollbar {
   width: 10px;
   height: 10px;
 }
+
+/* Mặc định khi không cuộn (idle): Ẩn thumb và track */
 html::-webkit-scrollbar-track {
-  background: var(--b2);
+  background: transparent;
 }
 html::-webkit-scrollbar-thumb {
-  background: color-mix(in srgb, var(--p) 55%, transparent);
+  background: transparent;
   border-radius: 9999px;
-  border: 2px solid var(--b2); /* viền cùng màu track → thumb trông mảnh hơn, không dính mép */
+  border: 2px solid transparent;
 }
+
+/* Khi đang cuộn (.is-scrolling) hoặc rê chuột trực tiếp vào thanh cuộn */
+html.is-scrolling::-webkit-scrollbar-track,
+html::-webkit-scrollbar-track:hover {
+  background: var(--b2);
+}
+
+html.is-scrolling::-webkit-scrollbar-thumb,
+html::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--p) 55%, transparent);
+  border: 2px solid var(--b2);
+}
+
 html::-webkit-scrollbar-thumb:hover {
   background: color-mix(in srgb, var(--p) 85%, transparent);
 }
@@ -37,8 +57,12 @@ html::-webkit-scrollbar-thumb:hover {
 /* ── Container con (sidebar, modal, vùng cuộn nội bộ) ── */
 body :not(html) {
   scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+html.is-scrolling body :not(html) {
   scrollbar-color: color-mix(in srgb, var(--p) 45%, transparent) transparent;
 }
+
 body :not(html)::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -47,8 +71,12 @@ body :not(html)::-webkit-scrollbar-track {
   background: transparent;
 }
 body :not(html)::-webkit-scrollbar-thumb {
-  background: color-mix(in srgb, var(--p) 45%, transparent);
+  background: transparent;
   border-radius: 9999px;
+}
+html.is-scrolling body :not(html)::-webkit-scrollbar-thumb,
+body :not(html)::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--p) 45%, transparent);
 }
 body :not(html)::-webkit-scrollbar-thumb:hover {
   background: color-mix(in srgb, var(--p) 85%, transparent);
