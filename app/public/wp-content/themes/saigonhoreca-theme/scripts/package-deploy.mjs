@@ -37,7 +37,16 @@ const EXCLUDE_TOP = new Set([
   'DEPLOY-NOTES.txt', 'SEO-DEPLOY.md',
 ]);
 const EXCLUDE_FILE_RE = /\.bak(-\d+)?$|\.py$/i;
-const EXCLUDE_PATH_PARTS = ['project-data']; // scripts/project-data đã loại theo top-level nhưng phòng khi cấu trúc đổi
+
+// ⚠️ 2026-08-02 — scripts/project-data KHÔNG được loại: nó là DỮ LIỆU RUNTIME,
+// không phải build tooling.
+//   • template-parts/project-pillar/_related.php:23 glob cả thư mục này để dựng
+//     khối "Dự án liên quan" — có trên MỌI trang pillar (29 trang).
+//   • inc/engine/pillar-routes.php:259 đọc <slug>.json lấy tiêu đề route ảo.
+// Bản cũ loại nó ở CẢ 2 tầng (EXCLUDE_TOP 'scripts' + EXCLUDE_PATH_PARTS
+// 'project-data'), nên gói deploy thiếu 32 file JSON → production mất sạch khối
+// "Dự án liên quan" trong khi local vẫn hiện 3 card. Lỗi chỉ lộ sau khi deploy.
+const KEEP_PATHS = ['scripts/project-data'];
 
 async function run(cmd, cmdArgs, opts = {}) {
   console.log(`$ ${cmd} ${cmdArgs.join(' ')}`);
@@ -48,9 +57,21 @@ async function copyFiltered(src, dest) {
   await mkdir(dest, { recursive: true });
   const entries = await readdir(src, { withFileTypes: true });
   for (const e of entries) {
-    if (EXCLUDE_TOP.has(e.name) && path.dirname(path.join(src, e.name)) === THEME) continue;
-    if (EXCLUDE_FILE_RE.test(e.name)) continue;
-    if (EXCLUDE_PATH_PARTS.some((p) => e.name === p)) continue;
+    const rel = path.relative(THEME, path.join(src, e.name)).split(path.sep).join('/');
+    const top = rel.split('/')[0];
+    // Nằm TRONG một KEEP_PATH -> giữ vô điều kiện.
+    const insideKeep = KEEP_PATHS.some((k) => rel === k || rel.startsWith(k + '/'));
+    // Là TỔ TIÊN của một KEEP_PATH -> phải đi xuyên qua, nhưng các nhánh con
+    // khác của nó vẫn bị loại bình thường (vd: giữ scripts/ để tới
+    // project-data, nhưng scripts/build.mjs vẫn không vào gói).
+    const ancestorOfKeep = KEEP_PATHS.some((k) => k.startsWith(rel + '/'));
+    if (!insideKeep) {
+      // So theo segment gốc của đường dẫn, không so theo tên entry — nhờ vậy
+      // cả nhánh con của thư mục bị loại cũng bị loại, kể cả khi ta buộc phải
+      // đi xuyên qua thư mục cha.
+      if (EXCLUDE_TOP.has(top) && !ancestorOfKeep) continue;
+      if (EXCLUDE_FILE_RE.test(e.name)) continue;
+    }
     const s = path.join(src, e.name);
     const d = path.join(dest, e.name);
     if (e.isDirectory()) {
