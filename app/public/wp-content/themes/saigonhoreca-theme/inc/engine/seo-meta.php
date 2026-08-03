@@ -119,6 +119,26 @@ if (!class_exists('SGH_SEO_Meta_Description')) {
                 return self::clean($bundle['seo_description']);
             }
 
+            // ⚠️ 2026-08-03 — mô tả khai sẵn theo route.
+            //
+            // Trang dùng page-template có post_content RỖNG (giao diện do file
+            // PHP dựng), không excerpt, không _pi_seo. compose() vì thế trả gần
+            // như rỗng và pad_min() nhét cùng một đoạn quảng cáo chung vào cả 3
+            // trang -> trùng meta description.
+            //
+            // DANH SÁCH nằm ở inc/config/sgh_route_description_rules() —
+            // engine/ chỉ đi bộ qua rule, không biết nội dung riêng của site
+            // (lint ENGINE PURITY). Đặt SAU _pi_seo để mô tả nhập tay vẫn
+            // thắng, TRƯỚC compose() để không rơi vào đoạn chung.
+            if (function_exists('sgh_route_description_rules')) {
+                foreach (sgh_route_description_rules() as $rule) {
+                    if (empty($rule['when']) || !is_callable($rule['when'])) continue;
+                    if (($rule['when'])() && !empty($rule['desc'])) {
+                        return self::clean($rule['desc']);
+                    }
+                }
+            }
+
             $title = self::clean($bundle['seo_title'] ?? get_the_title($post));
             $brand = self::resolve_brand($post);
             $usp   = self::resolve_usp($post);
@@ -229,10 +249,17 @@ if (!class_exists('SGH_SEO_Meta_Description')) {
                 : [$desc, ''];
             $tail_full = $has_hotline_tail ? ($needle . $tail) : '';
 
+            // ⚠️ 2026-08-03 — chỉ nối ' – ' khi $head CÓ nội dung.
+            // Trang dùng page-template (Trang Chủ, Về, Liên hệ) có post_content
+            // rỗng và không excerpt -> $desc rỗng -> $head rỗng -> bản cũ sinh
+            // ra description bắt đầu bằng " – Bếp công nghiệp..." trên cả 3
+            // trang. Dấu gạch mồ côi + mô tả trùng nhau y hệt.
+            $sep = ($head !== '') ? ' – ' : '';
+
             // Try snippets in order; pick longest one that fits MAX_LEN.
             $best = $desc;
             foreach ($snippets as $snip) {
-                $candidate = $head . ' – ' . $snip . $tail_full;
+                $candidate = $head . $sep . $snip . $tail_full;
                 $clen = mb_strlen($candidate);
                 if ($clen <= self::MAX_LEN && $clen >= mb_strlen($best)) {
                     $best = $candidate;

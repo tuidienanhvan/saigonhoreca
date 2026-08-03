@@ -155,3 +155,40 @@ if (!function_exists('sgh_route_hero_preload_rules')) {
 //
 // Đánh đổi đã nói rõ với user: 10 URL cũ (8 slug vừa rút gọn + 2 bản trùng cũ)
 // nay 404. Nếu Google đã index thì mất thứ hạng của những URL đó.
+
+if (!function_exists('sgh_route_description_rules')) {
+    /**
+     * Mô tả SEO khai sẵn theo route — cho các trang KHÔNG có post_content.
+     *
+     * ⚠️ 2026-08-03 — vì sao cần: 3 page dùng page-template (Trang Chủ, Về
+     * Saigon Horeca, Liên hệ) có post_content RỖNG, giao diện do file PHP dựng.
+     * Bộ dựng description không có gì để lấy -> rơi vào pad_min() và cả 3 trang
+     * nhận CÙNG một đoạn quảng cáo chung. Google Search Console báo trùng meta
+     * description, và snippet không mô tả đúng từng trang.
+     *
+     * Nội dung ở đây là DỮ LIỆU RIÊNG CỦA SITE nên đặt tại config/, không đặt
+     * trong inc/engine/ (lint ENGINE PURITY).
+     *
+     * Mỗi rule: ['when' => callable():bool, 'desc' => string].
+     * Rule ĐẦU TIÊN khớp sẽ thắng — giữ thứ tự từ cụ thể tới tổng quát.
+     * Chỉ dùng khi trang chưa có mô tả riêng (excerpt / _pi_seo).
+     *
+     * @return array<int,array{when:callable,desc:string}>
+     */
+    function sgh_route_description_rules() {
+        return [
+            [
+                'when' => 'is_front_page',
+                'desc' => 'Saigon Horeca thiết kế, thi công và cung cấp thiết bị bếp công nghiệp, quầy bar trọn gói cho nhà hàng, khách sạn, quán café. Hơn 30 dự án đã bàn giao.',
+            ],
+            [
+                'when' => fn() => is_page_template('page-templates/page-gioi-thieu.php') || is_page('ve-saigon-horeca'),
+                'desc' => 'Giới thiệu Saigon Horeca — đơn vị tư vấn thiết kế và thi công bếp công nghiệp, quầy bar tại TP.HCM. Năng lực, quy trình và các dự án tiêu biểu đã thực hiện.',
+            ],
+            [
+                'when' => fn() => is_page_template('page-templates/page-lien-he.php') || is_page('lien-he'),
+                'desc' => 'Liên hệ Saigon Horeca để được tư vấn miễn phí thiết kế bếp công nghiệp và quầy bar. Hotline, địa chỉ showroom và biểu mẫu gửi yêu cầu báo giá.',
+            ],
+        ];
+    }
+}

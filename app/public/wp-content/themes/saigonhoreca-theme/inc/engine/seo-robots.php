@@ -95,15 +95,36 @@ if (!class_exists('SGH_SEO_Robots')) {
             if (is_admin() || is_feed()) return;
             if (defined('WPSEO_VERSION') || defined('RANK_MATH_VERSION')) return;
 
+            // Core WP vẫn đang phát canonical cho singular -> nhường, tránh 2 thẻ.
             if (is_singular() && has_action('wp_head', 'rel_canonical')) return;
 
+            // ⚠️ 2026-08-03 — thứ tự nhánh có Ý NGHĨA.
+            //
+            // Trang chủ khi show_on_front='page' vừa là is_front_page() VỪA là
+            // is_singular(). Bản cũ đặt nhánh front-page NGANG HÀNG với các
+            // nhánh archive nhưng KHÔNG có nhánh singular, nên:
+            //   - core rel_canonical bị pi-multilang gỡ (class-seo.php:25)
+            //   - guard ở trên vì thế không kích hoạt
+            //   - theme phát 1 thẻ (nhánh front-page) + plugin phát 1 thẻ
+            //     (nhánh is_singular) => TRANG CHỦ CÓ 2 CANONICAL.
+            // Google gặp nhiều canonical có thể bỏ qua hết và tự chọn URL.
+            //
+            // Nay theme là NGUỒN DUY NHẤT: xử lý cả singular, và plugin đã bỏ
+            // phần canonical của nó (chỉ còn hreflang). Nhánh singular phải
+            // đứng TRƯỚC front-page vì trang chủ dạng page rơi vào cả hai —
+            // get_permalink() cho đúng URL hơn home_url('/') khi site chạy
+            // trong thư mục con.
             $url = '';
-            if (is_tax() || is_category() || is_tag()) {
+            if (is_singular()) {
+                $obj = get_queried_object();
+                if ($obj instanceof WP_Post) $url = get_permalink($obj->ID);
+            } elseif (is_tax() || is_category() || is_tag()) {
                 $url = get_term_link(get_queried_object());
             } elseif (is_post_type_archive()) {
                 $obj = get_queried_object();
                 if ($obj && isset($obj->name)) $url = get_post_type_archive_link($obj->name);
             } elseif (is_front_page() || is_home()) {
+                // Chỉ còn dùng khi show_on_front='posts' (trang chủ KHÔNG singular).
                 $url = home_url('/');
             }
 
