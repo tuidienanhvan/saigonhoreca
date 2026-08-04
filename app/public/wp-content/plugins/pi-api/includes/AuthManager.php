@@ -60,16 +60,34 @@ class AuthManager {
         $user = get_userdata($user_id);
         if (!$user) return;
 
-        // Đảm bảo load file chứa hàm wp_create_application_password
-        if (!function_exists('wp_create_application_password')) {
-            require_once ABSPATH . 'wp-admin/includes/user.php';
+        // ⚠️ 2026-08-03 — SỬA FATAL: "Call to undefined function
+        // wp_create_application_password()".
+        //
+        // `wp_create_application_password` KHÔNG phải hàm của WordPress — nó là
+        // tên ACTION HOOK (do_action ở wp-includes/class-wp-application-passwords.php:150).
+        // Bản cũ nhầm tên hook thành tên hàm, rồi require wp-admin/includes/user.php
+        // để "nạp" nó — file đó cũng không chứa hàm nào tên vậy, nên require xong
+        // vẫn undefined và fatal ngay tại đây. Log ghi nhận lỗi này 3 lần
+        // (03/08 05:42, 03/08 11:47, 04/08 02:16), đều từ admin-ajax.php ->
+        // admin_init, tức mỗi lần vào wp-admin mà chưa có App Password.
+        //
+        // API đúng là phương thức tĩnh của cùng class mà hàm ensureAppPasswordSynced()
+        // phía trên ĐANG dùng (::get_user_application_passwords). Trả về đúng
+        // shape [$cleartext_password, $new_item] mà đoạn dưới mong đợi.
+        if (!class_exists('\\WP_Application_Passwords')) {
+            require_once ABSPATH . WPINC . '/class-wp-application-passwords.php';
         }
 
-        // Tạo mới App Pass
-        // Lưu ý: wp_create_application_password trả về [$cleartext_password, $new_item]
-        list($new_password, $new_item) = \wp_create_application_password($user_id, [
+        $created = \WP_Application_Passwords::create_new_application_password($user_id, [
             'name' => self::APP_PASS_NAME,
         ]);
+
+        if (is_wp_error($created)) {
+            error_log('[pi-api] Không tạo được Application Password: ' . $created->get_error_message());
+            return;
+        }
+
+        list($new_password, $new_item) = $created;
 
         if ($new_password) {
             // Gửi về Backend ngay lập tức
