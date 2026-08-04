@@ -132,6 +132,9 @@ class Pi_Api_Controller {
             'media'       => 'Pi_Api_Media',
             'categories'  => 'Pi_Api_Categories',
             'menu'        => 'Pi_Api_Menu',
+            // Trang do template dựng (archive/taxonomy) — không có bản ghi trong
+            // wp_posts nên không hiện ở /content?type=page. Đọc bản khai của theme.
+            'template_routes' => 'Pi_Api_Template_Routes',
             'comments'    => 'Pi_Api_Comments',
             'chat'        => 'Pi_Api_Chat',
             'chatbot'     => 'Pi_Api_Chatbot',

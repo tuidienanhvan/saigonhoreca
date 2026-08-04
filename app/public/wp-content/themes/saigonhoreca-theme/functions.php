@@ -256,6 +256,10 @@ require $inc . 'config/routes.php';          // Route → CSS bundle + hero-prel
                                              //   ⟵ CẦN domains.php: sgh_is_known_production_host()
                                              //   Cung cấp: sgh_bilingual_slug_map(), sgh_route_css_rules(),
                                              //   sgh_project_consolidation_redirects(), sgh_project_slug_aliases()
+require $inc . 'config/template-routes.php'; // Trang do template dựng (archive/taxonomy)
+                                             //   ⟵ CẦN routes.php: sgh_url()/sgh_slug() gọi
+                                             //      trong callable 'url', nhưng chỉ gọi lúc
+                                             //      dùng nên chỉ cần nạp SAU routes.php
 require $inc . 'config/fonts.php';           // Font families + color-token palette
 require $inc . 'engine/perf-config.php';       // Perf constants + filter helpers
 require $inc . 'engine/img-helper.php';        // sgh_img() — env-aware uploads URL (local mirror vs prod)

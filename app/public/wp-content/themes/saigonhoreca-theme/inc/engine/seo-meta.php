@@ -130,6 +130,12 @@ if (!class_exists('SGH_SEO_Meta_Description')) {
             // engine/ chỉ đi bộ qua rule, không biết nội dung riêng của site
             // (lint ENGINE PURITY). Đặt SAU _pi_seo để mô tả nhập tay vẫn
             // thắng, TRƯỚC compose() để không rơi vào đoạn chung.
+            // Nguồn 1: bản khai route (inc/config/template-routes.php) — phủ cả
+            // page lẫn archive. Nguồn 2 giữ lại cho tương thích ngược.
+            if (function_exists('sgh_current_template_route')) {
+                $route = sgh_current_template_route();
+                if ($route && !empty($route['desc'])) return self::clean($route['desc']);
+            }
             if (function_exists('sgh_route_description_rules')) {
                 foreach (sgh_route_description_rules() as $rule) {
                     if (empty($rule['when']) || !is_callable($rule['when'])) continue;
@@ -419,8 +425,27 @@ if (!class_exists('SGH_SEO_Social')) {
                 $seo_img = !empty($pi_seo['og_image']) ? $pi_seo['og_image']
                     : (is_singular() && has_post_thumbnail() ? get_the_post_thumbnail_url(null, 'large') : '');
                 
+                // ⚠️ 2026-08-03 — fallback cũ trỏ assets/images/og-default.jpg,
+                // file KHÔNG TỒN TẠI: 404 trên cả local, .vn và .com. Nghĩa là
+                // mọi trang không tìm được ảnh trong nội dung sẽ chia sẻ lên
+                // Facebook/Zalo KHÔNG có thumbnail. Trên production hiện trang
+                // archive dự án đang dính; sau khi deploy theme mới
+                // (post_content dựng từ template thay vì Elementor) thì phần lớn
+                // trang sẽ dính.
+                //
+                // Nay lấy ảnh khai theo route trong inc/config/template-routes.php.
+                // DANH SÁCH nằm ở config/, engine/ chỉ đi bộ qua (ENGINE PURITY).
+                if (!$seo_img && function_exists('sgh_current_template_route')) {
+                    $route = sgh_current_template_route();
+                    if ($route && !empty($route['image']) && function_exists('sgh_img')) {
+                        $seo_img = sgh_img($route['image']);
+                    }
+                }
+
                 if (!$seo_img) {
-                    $seo_img = esc_url(get_template_directory_uri() . '/assets/images/og-default.jpg');
+                    // Chốt cuối: logo có thật trong theme. KHÔNG dùng
+                    // og-default.jpg nữa cho tới khi file đó thực sự tồn tại.
+                    $seo_img = esc_url(get_template_directory_uri() . '/assets/images/logo-schema-seo.webp');
                 }
             ?>
                 <meta property="og:title" content="<?php echo esc_attr($seo_title); ?>">

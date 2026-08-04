@@ -233,8 +233,93 @@ if (!function_exists('sgh_sync_page_content')) {
             $updated++;
         }
 
+        // ── Route do template dựng, KHÔNG có post ────────────────────────
+        // term  -> wp_term_taxonomy.description (WordPress có sẵn chỗ chứa)
+        // option-> wp_options (post_type_archive không có chỗ native nào)
+        if (in_array('template_route', (array) $args['post_types'], true)
+            && function_exists('sgh_get_template_routes')) {
+
+            foreach (sgh_get_template_routes() as $r) {
+                $store = $r['store'] ?? 'none';
+                if (!in_array($store, ['term', 'option'], true)) continue;
+
+                $url = is_callable($r['url']) ? ($r['url'])() : '';
+                if (!$url) { $log[] = "Không dựng được URL: {$r['key']}"; $failed++; continue; }
+
+                $res = wp_remote_get(add_query_arg('sgh_nocache', time(), $url), [
+                    'timeout' => 20, 'sslverify' => false,
+                ]);
+                if (is_wp_error($res)) { $log[] = "Lỗi tải {$r['key']}: " . $res->get_error_message(); $failed++; continue; }
+                if (wp_remote_retrieve_response_code($res) !== 200) {
+                    $log[] = "Lỗi HTTP " . wp_remote_retrieve_response_code($res) . " tại {$r['key']}";
+                    $failed++; continue;
+                }
+
+                $content = sgh_extract_main_content(wp_remote_retrieve_body($res));
+                if ($content === '') { $log[] = "Không bóc được nội dung: {$r['key']}"; $failed++; continue; }
+
+                // Archive liệt kê bài -> phần lớn text là TIÊU ĐỀ CÁC BÀI, đổi
+                // mỗi lần thêm bài. Lấy trọn sẽ vừa trùng lặp vừa mau lỗi thời.
+                // Chỉ giữ phần mở đầu (hero/intro) tới trước danh sách.
+                $content = sgh_trim_archive_intro($content);
+
+                if ($dry) { $log[] = sprintf('sẽ ghi %s (%s) — %d ký tự', $r['key'], $store, mb_strlen($content)); $updated++; continue; }
+
+                if ($store === 'term') {
+                    [$tax, $slug] = (array) $r['ref'];
+                    $term = get_term_by('slug', $slug, $tax);
+                    if (!$term || is_wp_error($term)) { $log[] = "Không thấy term $tax/$slug"; $failed++; continue; }
+                    $cur = trim((string) $term->description);
+                    if ($cur !== '' && strpos($cur, $marker) === false && !$args['force']) {
+                        $log[] = "Bỏ qua {$r['key']} — mô tả term do người dùng viết."; $skipped++; continue;
+                    }
+                    wp_update_term($term->term_id, $tax, ['description' => $marker . "\n" . $content]);
+                    $log[] = sprintf('✓ %s (term %s) — %d ký tự', $r['key'], $slug, mb_strlen($content));
+                } else {
+                    $opt = sgh_archive_content_option($r['ref']);
+                    $cur = trim((string) get_option($opt, ''));
+                    if ($cur !== '' && strpos($cur, $marker) === false && !$args['force']) {
+                        $log[] = "Bỏ qua {$r['key']} — nội dung tự viết."; $skipped++; continue;
+                    }
+                    update_option($opt, $marker . "\n" . $content, false);
+                    $log[] = sprintf('✓ %s (option %s) — %d ký tự', $r['key'], $opt, mb_strlen($content));
+                }
+                $updated++;
+            }
+        }
+
         if (!$dry && function_exists('sgh_static_cache_flush')) sgh_static_cache_flush();
 
         return compact('updated', 'skipped', 'failed', 'log');
+    }
+}
+
+if (!function_exists('sgh_trim_archive_intro')) {
+    /**
+     * Giữ phần mở đầu của trang archive, cắt trước danh sách bài.
+     *
+     * Trang archive gồm: hero/intro (nội dung THẬT, ít đổi) + lưới bài (tiêu đề
+     * các bài, đổi mỗi lần đăng bài mới). Lấy trọn thì nội dung vừa trùng với
+     * chính các bài đó, vừa lỗi thời ngay khi thêm bài.
+     *
+     * Quy tắc: giữ tới khi gặp 4 heading liên tiếp mà không có <p> xen giữa —
+     * dấu hiệu đã sang phần liệt kê. Cắt tối đa 1200 ký tự.
+     *
+     * @param string $html Chuỗi HTML rút gọn từ sgh_extract_main_content().
+     * @return string
+     */
+    function sgh_trim_archive_intro($html) {
+        if (!preg_match_all('#<(h[1-3]|p|li)>(.*?)</\1>#s', $html, $m, PREG_SET_ORDER)) return $html;
+
+        $out = []; $run = 0; $len = 0;
+        foreach ($m as $node) {
+            $isHeading = $node[1][0] === 'h';
+            $run = $isHeading ? $run + 1 : 0;
+            if ($run >= 4) break;                 // đã sang phần liệt kê
+            $len += mb_strlen($node[2]);
+            if ($len > 1200) break;
+            $out[] = $node[0];
+        }
+        return $out ? implode("\n", $out) : $html;
     }
 }
