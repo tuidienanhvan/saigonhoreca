@@ -197,3 +197,30 @@ if (!function_exists('sgh_current_template_route')) {
         return null;
     }
 }
+
+if (!function_exists('sgh_route_og_shot_url')) {
+    /**
+     * URL ảnh chụp thật của một route, nếu dashboard đã chụp.
+     *
+     * Bản đồ key -> attachment ID do dashboard ghi qua
+     * POST /pi/v1/template-routes/og-map (xem Pi_Api_Template_Routes).
+     * WordPress không tự chụp được — PHP không có engine render HTML; đã thử
+     * imagegrabwindow() + COM IE và chỉ ra ảnh trắng trên Windows 11.
+     *
+     * @param string $key key của route.
+     * @return string URL ảnh, hoặc '' nếu chưa chụp / ảnh đã bị xoá.
+     */
+    function sgh_route_og_shot_url($key) {
+        if (!$key) return '';
+        $map = get_option('sgh_template_route_og_map', []);
+        if (!is_array($map) || empty($map[$key])) return '';
+
+        $id = (int) $map[$key];
+        // Ảnh có thể đã bị xoá khỏi thư viện sau khi ghi bản đồ — kiểm lại,
+        // đừng để og:image trỏ vào ID chết (đúng lỗi og-default.jpg 404 cũ).
+        if ($id <= 0 || get_post_type($id) !== 'attachment') return '';
+
+        $url = wp_get_attachment_url($id);
+        return $url ?: '';
+    }
+}

@@ -47,10 +47,13 @@ if (!function_exists('sgh_pillar_route_serve')) {
                 }
             }
             
-            // Also flush home cache file if exists
-            $home_cache_file = wp_normalize_path(WP_CONTENT_DIR . '/cache/sgh-home-cache.html');
-            if (file_exists($home_cache_file)) {
-                if (@unlink($home_cache_file)) {
+            // Also flush home cache file if exists.
+            // 2026-08-03: quét glob thay vì tên cứng — front-page.php cho plugin
+            // tách file theo ngôn ngữ qua filter `sgh_home_cache_file`
+            // (pi-multilang tạo sgh-home-cache-vi.html). Tên cứng không khớp
+            // nên trước đây trang chủ không bao giờ được xoá cache.
+            foreach ((array) glob(WP_CONTENT_DIR . '/cache/sgh-home-cache*.html') as $home_cache_file) {
+                if (is_file($home_cache_file) && @unlink($home_cache_file)) {
                     $files_deleted++;
                 }
             }

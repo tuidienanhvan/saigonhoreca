@@ -25,6 +25,56 @@ class Pi_Api_Template_Routes {
             'callback'            => [self::class, 'get_all'],
             'permission_callback' => $admin,
         ]);
+
+        // Dashboard chụp og:image bằng Chrome rồi POST bản đồ key -> media_id
+        // về đây. WordPress KHÔNG tự chụp được (PHP không render HTML), nên nó
+        // chỉ nhận kết quả và lưu lại cho theme dùng.
+        register_rest_route($ns, '/template-routes/og-map', [
+            'methods'             => 'POST',
+            'callback'            => [self::class, 'save_og_map'],
+            'permission_callback' => $admin,
+        ]);
+    }
+
+
+    /** Khoá option chứa bản đồ route key -> attachment ID của ảnh og. */
+    const OG_MAP_OPTION = 'sgh_template_route_og_map';
+
+    public static function save_og_map(\WP_REST_Request $request) {
+        $body = $request->get_json_params();
+        $map  = isset($body['map']) && is_array($body['map']) ? $body['map'] : null;
+        if ($map === null) {
+            return new \WP_REST_Response(['message' => "Thiếu trường 'map'."], 400);
+        }
+
+        // Chỉ nhận key có thật trong bản khai của theme + attachment có thật.
+        // Không lọc thì một lần gọi sai sẽ nhét rác vào option và og:image trỏ
+        // vào ảnh không tồn tại — đúng loại lỗi og-default.jpg 404 vừa sửa.
+        $valid_keys = [];
+        if (function_exists('sgh_get_template_routes')) {
+            foreach (sgh_get_template_routes() as $r) $valid_keys[] = (string) $r['key'];
+        }
+
+        $clean = [];
+        $skipped = [];
+        foreach ($map as $key => $id) {
+            $key = (string) $key;
+            $id  = (int) $id;
+            if ($valid_keys && !in_array($key, $valid_keys, true)) { $skipped[] = "$key (không có trong bản khai)"; continue; }
+            if ($id <= 0 || get_post_type($id) !== 'attachment')   { $skipped[] = "$key (attachment #$id không tồn tại)"; continue; }
+            $clean[$key] = $id;
+        }
+
+        // Gộp với bản đồ cũ để chụp lẻ vài route không xoá mất phần còn lại.
+        $existing = get_option(self::OG_MAP_OPTION, []);
+        if (!is_array($existing)) $existing = [];
+        update_option(self::OG_MAP_OPTION, array_merge($existing, $clean), false);
+
+        return new \WP_REST_Response([
+            'saved'   => count($clean),
+            'skipped' => $skipped,
+            'map'     => get_option(self::OG_MAP_OPTION, []),
+        ], 200);
     }
 
     public static function get_all() {

@@ -437,7 +437,18 @@ if (!class_exists('SGH_SEO_Social')) {
                 // DANH SÁCH nằm ở config/, engine/ chỉ đi bộ qua (ENGINE PURITY).
                 if (!$seo_img && function_exists('sgh_current_template_route')) {
                     $route = sgh_current_template_route();
-                    if ($route && !empty($route['image']) && function_exists('sgh_img')) {
+
+                    // Ưu tiên ẢNH CHỤP THẬT của chính trang, do dashboard chụp
+                    // bằng Chrome headless rồi đẩy lên qua
+                    // POST /pi/v1/template-routes/og-map. WordPress không tự
+                    // chụp được — PHP không có engine render HTML.
+                    if ($route && function_exists('sgh_route_og_shot_url')) {
+                        $shot = sgh_route_og_shot_url($route['key']);
+                        if ($shot) $seo_img = $shot;
+                    }
+
+                    // Chưa chụp -> ảnh khai sẵn theo route.
+                    if (!$seo_img && $route && !empty($route['image']) && function_exists('sgh_img')) {
                         $seo_img = sgh_img($route['image']);
                     }
                 }

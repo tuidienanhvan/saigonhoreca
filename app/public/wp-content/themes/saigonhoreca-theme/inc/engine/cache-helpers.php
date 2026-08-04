@@ -168,8 +168,21 @@ if (!function_exists('sgh_static_cache_flush')) {
      * vẫn thấy bản trang chủ cũ tối đa 10 phút sau đó.
      */
     function sgh_static_cache_flush(): void {
-        $home_cache = WP_CONTENT_DIR . '/cache/sgh-home-cache.html';
-        if (file_exists($home_cache)) @unlink($home_cache);
+        // ⚠️ 2026-08-03 — phải xoá MỌI biến thể sgh-home-cache*.html.
+        //
+        // front-page.php:36 cho plugin đổi tên file cache qua filter
+        // `sgh_home_cache_file` để tách theo ngôn ngữ (pi-multilang tạo
+        // sgh-home-cache-vi.html). Nhưng hàm flush này lại xoá tên CỨNG
+        // `sgh-home-cache.html` — không khớp file thật, nên "Xoá cache" chưa
+        // bao giờ xoá được cache trang chủ. Đã tái hiện: sửa og:image xong, các
+        // trang archive đổi ngay còn trang chủ vẫn giữ ảnh cũ, vì nó đọc từ
+        // file sgh-home-cache-<locale>.html mà flush không đụng tới.
+        //
+        // Dùng glob thay vì gọi lại filter: mỗi ngôn ngữ một file, mà lúc flush
+        // không biết đang ở ngôn ngữ nào — phải quét hết.
+        foreach ((array) glob(WP_CONTENT_DIR . '/cache/sgh-home-cache*.html') as $home_cache) {
+            if (is_file($home_cache)) @unlink($home_cache);
+        }
 
         $dir = sgh_static_cache_dir();
         if (!is_dir($dir)) return;
