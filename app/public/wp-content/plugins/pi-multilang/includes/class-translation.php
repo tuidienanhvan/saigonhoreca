@@ -33,9 +33,33 @@ class Pi_Multilang_Translation {
         return trim((string) $post->post_content) !== '';
     }
 
+    /** Bật/tắt dịch tự động khi lưu bài. MẶC ĐỊNH TẮT. */
+    const OPTION_AUTO = 'pi_multilang_auto_translate';
+
+    public static function auto_enabled() {
+        return (bool) get_option(self::OPTION_AUTO, false);
+    }
+
     public static function init() {
-        add_action('save_post', [__CLASS__, 'on_save_post'], 10, 3);
-        add_action(self::CRON_HOOK, [__CLASS__, 'run_scheduled_translate'], 10, 2);
+        // ⚠️ 2026-08-03 — dịch tự động nay MẶC ĐỊNH TẮT.
+        //
+        // Vì sao: hook save_post dịch MỌI bài có post_content khác rỗng. Ngày
+        // 03/08, một lượt điền post_content cho 3 page + 30 dự án (việc hoàn
+        // toàn không liên quan tới đa ngôn ngữ) đã đẻ ra 17 bản dịch EN mà chủ
+        // site không hề yêu cầu — chúng hiện lù lù trong danh sách Trang.
+        //
+        // Trước đó guard `is_translatable()` (post_content rỗng thì bỏ qua) vô
+        // tình che việc này: 3 page vốn rỗng nên chưa bao giờ bị dịch. Điền nội
+        // dung vào là guard hết tác dụng.
+        //
+        // Dịch tay qua nút trong metabox VẪN chạy — nó đi đường
+        // wp_ajax_pi_multilang_translate bên dưới, không phụ thuộc cờ này.
+        // Muốn bật lại tự động: update_option('pi_multilang_auto_translate', 1).
+        if (self::auto_enabled()) {
+            add_action('save_post', [__CLASS__, 'on_save_post'], 10, 3);
+            add_action(self::CRON_HOOK, [__CLASS__, 'run_scheduled_translate'], 10, 2);
+        }
+
         // Manual "translate now" button in the post-edit metabox (class-meta.php) —
         // a normal logged-in browser AJAX call, unrelated to the automatic path below.
         add_action('wp_ajax_pi_multilang_translate', [__CLASS__, 'handle_manual_translate']);
