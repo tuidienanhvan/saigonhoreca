@@ -25,11 +25,12 @@ require_once __DIR__ . '/lib/harness.php';
 define('PI_TEST_SUITE_MODE', true);
 
 $suites = [
-    'suite-pure.php'       => 'Pure logic (no DB, no network)',
-    'suite-retrieval.php'  => 'Retriever against the live catalog (read-only)',
-    'suite-indexer.php'    => 'Indexer + Log (writes, isolated + torn down)',
-    'suite-llm.php'        => 'Router / Reranker / Generator / LLM client (HTTP stubbed)',
-    'suite-rest.php'       => 'Full REST ask() flow (HTTP stubbed)',
+    'suite-pure.php'        => 'Pure logic (no DB, no network)',
+    'suite-retrieval.php'   => 'Retriever against the live catalog (read-only)',
+    'suite-indexer.php'     => 'Indexer + Log (writes, isolated + torn down)',
+    'suite-llm.php'         => 'Router / Reranker / Generator / LLM client (HTTP stubbed)',
+    'suite-rest.php'        => 'Full REST ask() flow (HTTP stubbed)',
+    'suite-spam-agents.php' => '80 Deep Subagent-Generated Test Cases (Multi-Agent, Tools, Graph, Safety, RAGAs)',
 ];
 
 echo "=== pi-chatbot full test run — " . count($suites) . " suites ===\n";

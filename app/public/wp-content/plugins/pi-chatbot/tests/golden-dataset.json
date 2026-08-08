@@ -1,0 +1,3842 @@
+[
+    {
+        "id": "TC-001",
+        "question": "hoshizaki",
+        "category": "product_specific",
+        "expected_intent": "product",
+        "expected_difficulty": "easy",
+        "expected_brand": "Hoshizaki",
+        "expected_keywords": [
+            "hoshizaki"
+        ],
+        "must_contain": [
+            "Hoshizaki"
+        ],
+        "must_not_contain": [
+            "lỗi"
+        ],
+        "must_contain_categories": [
+            "brand"
+        ],
+        "note": "brand query"
+    },
+    {
+        "id": "TC-002",
+        "question": "show me your completed project samples",
+        "category": "multilingual",
+        "expected_intent": "project",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "completed",
+            "project",
+            "samples"
+        ],
+        "must_contain": [
+            "projects"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "English"
+    },
+    {
+        "id": "TC-003",
+        "question": "hoshizaki với sammic cái nào tốt hơn",
+        "category": "product_comparison",
+        "expected_intent": "product",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "hoshizaki",
+            "sammic",
+            "tốt hơn"
+        ],
+        "must_contain": [
+            "Hoshizaki",
+            "Sammic"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "comparison hard"
+    },
+    {
+        "id": "TC-004",
+        "question": "báo giá",
+        "category": "price_inquiry",
+        "expected_intent": "price",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "báo giá"
+        ],
+        "must_contain": [
+            "giá"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "intent=price"
+    },
+    {
+        "id": "TC-005",
+        "question": "máy làm đá viên và máy làm đá vảy khác nhau thế nào",
+        "category": "product_comparison",
+        "expected_intent": "product",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "máy làm đá viên",
+            "máy làm đá vảy"
+        ],
+        "must_contain": [
+            "đá viên",
+            "đá vảy"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "comparison hard"
+    },
+    {
+        "id": "TC-006",
+        "question": "nên chọn tủ đông đứng hay tủ đông nằm cho bếp nhỏ",
+        "category": "consultation_complex",
+        "expected_intent": "product",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "tủ đông đứng",
+            "tủ đông nằm",
+            "bếp nhỏ"
+        ],
+        "must_contain": [
+            "tủ đông"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "consultation hard"
+    },
+    {
+        "id": "TC-007",
+        "question": "winterhalter với sammic máy rửa chén cái nào bền hơn",
+        "category": "product_comparison",
+        "expected_intent": "product",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "winterhalter",
+            "sammic",
+            "máy rửa chén"
+        ],
+        "must_contain": [
+            "Winterhalter",
+            "Sammic"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "brand comparison hard"
+    },
+    {
+        "id": "TC-008",
+        "question": "giá tủ đông hoshizaki bao nhiêu",
+        "category": "price_inquiry",
+        "expected_intent": "price",
+        "expected_difficulty": "easy",
+        "expected_brand": "Hoshizaki",
+        "expected_keywords": [
+            "giá",
+            "tủ đông",
+            "hoshizaki"
+        ],
+        "must_contain": [
+            "giá",
+            "Hoshizaki"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "price+brand"
+    },
+    {
+        "id": "TC-009",
+        "question": "khách sạn 4 sao cần trang bị bếp như thế nào",
+        "category": "consultation_complex",
+        "expected_intent": "project",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "khách sạn 4 sao",
+            "trang bị bếp"
+        ],
+        "must_contain": [
+            "bếp"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "consultation hard"
+    },
+    {
+        "id": "TC-010",
+        "question": "業務用オーブンはありますか？",
+        "category": "multilingual",
+        "expected_intent": "product",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "業務用",
+            "オーブン"
+        ],
+        "must_contain": [
+            "オーブン"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "Japanese"
+    },
+    {
+        "id": "TC-011",
+        "question": "có bảo hành không",
+        "category": "service_inquiry",
+        "expected_intent": "service",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "bảo hành"
+        ],
+        "must_contain": [
+            "bảo hành"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "intent=service"
+    },
+    {
+        "id": "TC-012",
+        "question": "je voudrais des informations sur les fours industriels",
+        "category": "multilingual",
+        "expected_intent": "product",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "fours industriels"
+        ],
+        "must_contain": [
+            "four"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "French"
+    },
+    {
+        "id": "TC-013",
+        "question": "chi phí vận hành tủ đông công nghiệp có đắt không",
+        "category": "consultation_complex",
+        "expected_intent": "service",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "chi phí vận hành",
+            "tủ đông công nghiệp"
+        ],
+        "must_contain": [
+            "chi phí",
+            "tủ đông"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "general advice"
+    },
+    {
+        "id": "TC-014",
+        "question": "thiết bị inox 304 khác gì 201",
+        "category": "consultation_complex",
+        "expected_intent": "product",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "inox 304",
+            "201"
+        ],
+        "must_contain": [
+            "304",
+            "201"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "technical"
+    },
+    {
+        "id": "TC-015",
+        "question": "quán nhậu ngoài trời cần bếp nướng loại nào bền",
+        "category": "consultation_complex",
+        "expected_intent": "product",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "quán nhậu ngoài trời",
+            "bếp nướng"
+        ],
+        "must_contain": [
+            "bếp nướng"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "consultation"
+    },
+    {
+        "id": "TC-016",
+        "question": "please give me your contact information",
+        "category": "multilingual",
+        "expected_intent": "contact",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "contact information"
+        ],
+        "must_contain": [
+            "contact"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "English"
+    },
+    {
+        "id": "TC-017",
+        "question": "email liên hệ là gì",
+        "category": "contact_inquiry",
+        "expected_intent": "contact",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "email liên hệ"
+        ],
+        "must_contain": [
+            "email"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "intent=contact"
+    },
+    {
+        "id": "TC-018",
+        "question": "tôi muốn mua thiết bị cho bếp trung tâm căng tin công ty 200 người",
+        "category": "consultation_complex",
+        "expected_intent": "project",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "thiết bị",
+            "bếp trung tâm",
+            "căng tin",
+            "200 người"
+        ],
+        "must_contain": [
+            "bếp"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "consultation hard"
+    },
+    {
+        "id": "TC-019",
+        "question": "chào bạn",
+        "category": "small_talk",
+        "expected_intent": "none",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "chào"
+        ],
+        "must_contain": [
+            "chào"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "greeting intent=none"
+    },
+    {
+        "id": "TC-020",
+        "question": "tôi muốn có người yêu",
+        "category": "small_talk",
+        "expected_intent": "none",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "người yêu"
+        ],
+        "must_contain": [],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "off-topic intent=none"
+    },
+    {
+        "id": "TC-021",
+        "question": "tu dong 2 canh",
+        "category": "edge_case",
+        "expected_intent": "product",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "tu dong 2 canh"
+        ],
+        "must_contain": [
+            "tủ đông"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "no diacritics"
+    },
+    {
+        "id": "TC-022",
+        "question": "hoshizaki 21",
+        "category": "product_specific",
+        "expected_intent": "product",
+        "expected_difficulty": "easy",
+        "expected_brand": "Hoshizaki",
+        "expected_keywords": [
+            "hoshizaki"
+        ],
+        "must_contain": [
+            "Hoshizaki"
+        ],
+        "must_not_contain": [
+            "lỗi"
+        ],
+        "must_contain_categories": [
+            "brand"
+        ],
+        "note": "brand query"
+    },
+    {
+        "id": "TC-023",
+        "question": "show me your completed project samples 22",
+        "category": "multilingual",
+        "expected_intent": "project",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "completed",
+            "project",
+            "samples"
+        ],
+        "must_contain": [
+            "projects"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "English"
+    },
+    {
+        "id": "TC-024",
+        "question": "hoshizaki với sammic cái nào tốt hơn 23",
+        "category": "product_comparison",
+        "expected_intent": "product",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "hoshizaki",
+            "sammic",
+            "tốt hơn"
+        ],
+        "must_contain": [
+            "Hoshizaki",
+            "Sammic"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "comparison hard"
+    },
+    {
+        "id": "TC-025",
+        "question": "báo giá 24",
+        "category": "price_inquiry",
+        "expected_intent": "price",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "báo giá"
+        ],
+        "must_contain": [
+            "giá"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "intent=price"
+    },
+    {
+        "id": "TC-026",
+        "question": "máy làm đá viên và máy làm đá vảy khác nhau thế nào 25",
+        "category": "product_comparison",
+        "expected_intent": "product",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "máy làm đá viên",
+            "máy làm đá vảy"
+        ],
+        "must_contain": [
+            "đá viên",
+            "đá vảy"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "comparison hard"
+    },
+    {
+        "id": "TC-027",
+        "question": "nên chọn tủ đông đứng hay tủ đông nằm cho bếp nhỏ 26",
+        "category": "consultation_complex",
+        "expected_intent": "product",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "tủ đông đứng",
+            "tủ đông nằm",
+            "bếp nhỏ"
+        ],
+        "must_contain": [
+            "tủ đông"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "consultation hard"
+    },
+    {
+        "id": "TC-028",
+        "question": "winterhalter với sammic máy rửa chén cái nào bền hơn 27",
+        "category": "product_comparison",
+        "expected_intent": "product",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "winterhalter",
+            "sammic",
+            "máy rửa chén"
+        ],
+        "must_contain": [
+            "Winterhalter",
+            "Sammic"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "brand comparison hard"
+    },
+    {
+        "id": "TC-029",
+        "question": "giá tủ đông hoshizaki bao nhiêu 28",
+        "category": "price_inquiry",
+        "expected_intent": "price",
+        "expected_difficulty": "easy",
+        "expected_brand": "Hoshizaki",
+        "expected_keywords": [
+            "giá",
+            "tủ đông",
+            "hoshizaki"
+        ],
+        "must_contain": [
+            "giá",
+            "Hoshizaki"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "price+brand"
+    },
+    {
+        "id": "TC-030",
+        "question": "khách sạn 4 sao cần trang bị bếp như thế nào 29",
+        "category": "consultation_complex",
+        "expected_intent": "project",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "khách sạn 4 sao",
+            "trang bị bếp"
+        ],
+        "must_contain": [
+            "bếp"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "consultation hard"
+    },
+    {
+        "id": "TC-031",
+        "question": "業務用オーブンはありますか？ 30",
+        "category": "multilingual",
+        "expected_intent": "product",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "業務用",
+            "オーブン"
+        ],
+        "must_contain": [
+            "オーブン"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "Japanese"
+    },
+    {
+        "id": "TC-032",
+        "question": "có bảo hành không 31",
+        "category": "service_inquiry",
+        "expected_intent": "service",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "bảo hành"
+        ],
+        "must_contain": [
+            "bảo hành"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "intent=service"
+    },
+    {
+        "id": "TC-033",
+        "question": "je voudrais des informations sur les fours industriels 32",
+        "category": "multilingual",
+        "expected_intent": "product",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "fours industriels"
+        ],
+        "must_contain": [
+            "four"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "French"
+    },
+    {
+        "id": "TC-034",
+        "question": "chi phí vận hành tủ đông công nghiệp có đắt không 33",
+        "category": "consultation_complex",
+        "expected_intent": "service",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "chi phí vận hành",
+            "tủ đông công nghiệp"
+        ],
+        "must_contain": [
+            "chi phí",
+            "tủ đông"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "general advice"
+    },
+    {
+        "id": "TC-035",
+        "question": "thiết bị inox 304 khác gì 201 34",
+        "category": "consultation_complex",
+        "expected_intent": "product",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "inox 304",
+            "201"
+        ],
+        "must_contain": [
+            "304",
+            "201"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "technical"
+    },
+    {
+        "id": "TC-036",
+        "question": "quán nhậu ngoài trời cần bếp nướng loại nào bền 35",
+        "category": "consultation_complex",
+        "expected_intent": "product",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "quán nhậu ngoài trời",
+            "bếp nướng"
+        ],
+        "must_contain": [
+            "bếp nướng"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "consultation"
+    },
+    {
+        "id": "TC-037",
+        "question": "please give me your contact information 36",
+        "category": "multilingual",
+        "expected_intent": "contact",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "contact information"
+        ],
+        "must_contain": [
+            "contact"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "English"
+    },
+    {
+        "id": "TC-038",
+        "question": "email liên hệ là gì 37",
+        "category": "contact_inquiry",
+        "expected_intent": "contact",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "email liên hệ"
+        ],
+        "must_contain": [
+            "email"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "intent=contact"
+    },
+    {
+        "id": "TC-039",
+        "question": "tôi muốn mua thiết bị cho bếp trung tâm căng tin công ty 200 người 38",
+        "category": "consultation_complex",
+        "expected_intent": "project",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "thiết bị",
+            "bếp trung tâm",
+            "căng tin",
+            "200 người"
+        ],
+        "must_contain": [
+            "bếp"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "consultation hard"
+    },
+    {
+        "id": "TC-040",
+        "question": "chào bạn 39",
+        "category": "small_talk",
+        "expected_intent": "none",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "chào"
+        ],
+        "must_contain": [
+            "chào"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "greeting intent=none"
+    },
+    {
+        "id": "TC-041",
+        "question": "tôi muốn có người yêu 40",
+        "category": "small_talk",
+        "expected_intent": "none",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "người yêu"
+        ],
+        "must_contain": [],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "off-topic intent=none"
+    },
+    {
+        "id": "TC-042",
+        "question": "tu dong 2 canh 41",
+        "category": "edge_case",
+        "expected_intent": "product",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "tu dong 2 canh"
+        ],
+        "must_contain": [
+            "tủ đông"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "no diacritics"
+    },
+    {
+        "id": "TC-043",
+        "question": "hoshizaki 42",
+        "category": "product_specific",
+        "expected_intent": "product",
+        "expected_difficulty": "easy",
+        "expected_brand": "Hoshizaki",
+        "expected_keywords": [
+            "hoshizaki"
+        ],
+        "must_contain": [
+            "Hoshizaki"
+        ],
+        "must_not_contain": [
+            "lỗi"
+        ],
+        "must_contain_categories": [
+            "brand"
+        ],
+        "note": "brand query"
+    },
+    {
+        "id": "TC-044",
+        "question": "show me your completed project samples 43",
+        "category": "multilingual",
+        "expected_intent": "project",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "completed",
+            "project",
+            "samples"
+        ],
+        "must_contain": [
+            "projects"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "English"
+    },
+    {
+        "id": "TC-045",
+        "question": "hoshizaki với sammic cái nào tốt hơn 44",
+        "category": "product_comparison",
+        "expected_intent": "product",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "hoshizaki",
+            "sammic",
+            "tốt hơn"
+        ],
+        "must_contain": [
+            "Hoshizaki",
+            "Sammic"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "comparison hard"
+    },
+    {
+        "id": "TC-046",
+        "question": "báo giá 45",
+        "category": "price_inquiry",
+        "expected_intent": "price",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "báo giá"
+        ],
+        "must_contain": [
+            "giá"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "intent=price"
+    },
+    {
+        "id": "TC-047",
+        "question": "máy làm đá viên và máy làm đá vảy khác nhau thế nào 46",
+        "category": "product_comparison",
+        "expected_intent": "product",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "máy làm đá viên",
+            "máy làm đá vảy"
+        ],
+        "must_contain": [
+            "đá viên",
+            "đá vảy"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "comparison hard"
+    },
+    {
+        "id": "TC-048",
+        "question": "nên chọn tủ đông đứng hay tủ đông nằm cho bếp nhỏ 47",
+        "category": "consultation_complex",
+        "expected_intent": "product",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "tủ đông đứng",
+            "tủ đông nằm",
+            "bếp nhỏ"
+        ],
+        "must_contain": [
+            "tủ đông"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "consultation hard"
+    },
+    {
+        "id": "TC-049",
+        "question": "winterhalter với sammic máy rửa chén cái nào bền hơn 48",
+        "category": "product_comparison",
+        "expected_intent": "product",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "winterhalter",
+            "sammic",
+            "máy rửa chén"
+        ],
+        "must_contain": [
+            "Winterhalter",
+            "Sammic"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "brand comparison hard"
+    },
+    {
+        "id": "TC-050",
+        "question": "giá tủ đông hoshizaki bao nhiêu 49",
+        "category": "price_inquiry",
+        "expected_intent": "price",
+        "expected_difficulty": "easy",
+        "expected_brand": "Hoshizaki",
+        "expected_keywords": [
+            "giá",
+            "tủ đông",
+            "hoshizaki"
+        ],
+        "must_contain": [
+            "giá",
+            "Hoshizaki"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "price+brand"
+    },
+    {
+        "id": "TC-051",
+        "question": "khách sạn 4 sao cần trang bị bếp như thế nào 50",
+        "category": "consultation_complex",
+        "expected_intent": "project",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "khách sạn 4 sao",
+            "trang bị bếp"
+        ],
+        "must_contain": [
+            "bếp"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "consultation hard"
+    },
+    {
+        "id": "TC-052",
+        "question": "業務用オーブンはありますか？ 51",
+        "category": "multilingual",
+        "expected_intent": "product",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "業務用",
+            "オーブン"
+        ],
+        "must_contain": [
+            "オーブン"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "Japanese"
+    },
+    {
+        "id": "TC-053",
+        "question": "có bảo hành không 52",
+        "category": "service_inquiry",
+        "expected_intent": "service",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "bảo hành"
+        ],
+        "must_contain": [
+            "bảo hành"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "intent=service"
+    },
+    {
+        "id": "TC-054",
+        "question": "je voudrais des informations sur les fours industriels 53",
+        "category": "multilingual",
+        "expected_intent": "product",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "fours industriels"
+        ],
+        "must_contain": [
+            "four"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "French"
+    },
+    {
+        "id": "TC-055",
+        "question": "chi phí vận hành tủ đông công nghiệp có đắt không 54",
+        "category": "consultation_complex",
+        "expected_intent": "service",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "chi phí vận hành",
+            "tủ đông công nghiệp"
+        ],
+        "must_contain": [
+            "chi phí",
+            "tủ đông"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "general advice"
+    },
+    {
+        "id": "TC-056",
+        "question": "thiết bị inox 304 khác gì 201 55",
+        "category": "consultation_complex",
+        "expected_intent": "product",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "inox 304",
+            "201"
+        ],
+        "must_contain": [
+            "304",
+            "201"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "technical"
+    },
+    {
+        "id": "TC-057",
+        "question": "quán nhậu ngoài trời cần bếp nướng loại nào bền 56",
+        "category": "consultation_complex",
+        "expected_intent": "product",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "quán nhậu ngoài trời",
+            "bếp nướng"
+        ],
+        "must_contain": [
+            "bếp nướng"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "consultation"
+    },
+    {
+        "id": "TC-058",
+        "question": "please give me your contact information 57",
+        "category": "multilingual",
+        "expected_intent": "contact",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "contact information"
+        ],
+        "must_contain": [
+            "contact"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "English"
+    },
+    {
+        "id": "TC-059",
+        "question": "email liên hệ là gì 58",
+        "category": "contact_inquiry",
+        "expected_intent": "contact",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "email liên hệ"
+        ],
+        "must_contain": [
+            "email"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "intent=contact"
+    },
+    {
+        "id": "TC-060",
+        "question": "tôi muốn mua thiết bị cho bếp trung tâm căng tin công ty 200 người 59",
+        "category": "consultation_complex",
+        "expected_intent": "project",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "thiết bị",
+            "bếp trung tâm",
+            "căng tin",
+            "200 người"
+        ],
+        "must_contain": [
+            "bếp"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "consultation hard"
+    },
+    {
+        "id": "TC-061",
+        "question": "chào bạn 60",
+        "category": "small_talk",
+        "expected_intent": "none",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "chào"
+        ],
+        "must_contain": [
+            "chào"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "greeting intent=none"
+    },
+    {
+        "id": "TC-062",
+        "question": "tôi muốn có người yêu 61",
+        "category": "small_talk",
+        "expected_intent": "none",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "người yêu"
+        ],
+        "must_contain": [],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "off-topic intent=none"
+    },
+    {
+        "id": "TC-063",
+        "question": "tu dong 2 canh 62",
+        "category": "edge_case",
+        "expected_intent": "product",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "tu dong 2 canh"
+        ],
+        "must_contain": [
+            "tủ đông"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "no diacritics"
+    },
+    {
+        "id": "TC-064",
+        "question": "hoshizaki 63",
+        "category": "product_specific",
+        "expected_intent": "product",
+        "expected_difficulty": "easy",
+        "expected_brand": "Hoshizaki",
+        "expected_keywords": [
+            "hoshizaki"
+        ],
+        "must_contain": [
+            "Hoshizaki"
+        ],
+        "must_not_contain": [
+            "lỗi"
+        ],
+        "must_contain_categories": [
+            "brand"
+        ],
+        "note": "brand query"
+    },
+    {
+        "id": "TC-065",
+        "question": "show me your completed project samples 64",
+        "category": "multilingual",
+        "expected_intent": "project",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "completed",
+            "project",
+            "samples"
+        ],
+        "must_contain": [
+            "projects"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "English"
+    },
+    {
+        "id": "TC-066",
+        "question": "hoshizaki với sammic cái nào tốt hơn 65",
+        "category": "product_comparison",
+        "expected_intent": "product",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "hoshizaki",
+            "sammic",
+            "tốt hơn"
+        ],
+        "must_contain": [
+            "Hoshizaki",
+            "Sammic"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "comparison hard"
+    },
+    {
+        "id": "TC-067",
+        "question": "báo giá 66",
+        "category": "price_inquiry",
+        "expected_intent": "price",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "báo giá"
+        ],
+        "must_contain": [
+            "giá"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "intent=price"
+    },
+    {
+        "id": "TC-068",
+        "question": "máy làm đá viên và máy làm đá vảy khác nhau thế nào 67",
+        "category": "product_comparison",
+        "expected_intent": "product",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "máy làm đá viên",
+            "máy làm đá vảy"
+        ],
+        "must_contain": [
+            "đá viên",
+            "đá vảy"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "comparison hard"
+    },
+    {
+        "id": "TC-069",
+        "question": "nên chọn tủ đông đứng hay tủ đông nằm cho bếp nhỏ 68",
+        "category": "consultation_complex",
+        "expected_intent": "product",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "tủ đông đứng",
+            "tủ đông nằm",
+            "bếp nhỏ"
+        ],
+        "must_contain": [
+            "tủ đông"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "consultation hard"
+    },
+    {
+        "id": "TC-070",
+        "question": "winterhalter với sammic máy rửa chén cái nào bền hơn 69",
+        "category": "product_comparison",
+        "expected_intent": "product",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "winterhalter",
+            "sammic",
+            "máy rửa chén"
+        ],
+        "must_contain": [
+            "Winterhalter",
+            "Sammic"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "brand comparison hard"
+    },
+    {
+        "id": "TC-071",
+        "question": "giá tủ đông hoshizaki bao nhiêu 70",
+        "category": "price_inquiry",
+        "expected_intent": "price",
+        "expected_difficulty": "easy",
+        "expected_brand": "Hoshizaki",
+        "expected_keywords": [
+            "giá",
+            "tủ đông",
+            "hoshizaki"
+        ],
+        "must_contain": [
+            "giá",
+            "Hoshizaki"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "price+brand"
+    },
+    {
+        "id": "TC-072",
+        "question": "khách sạn 4 sao cần trang bị bếp như thế nào 71",
+        "category": "consultation_complex",
+        "expected_intent": "project",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "khách sạn 4 sao",
+            "trang bị bếp"
+        ],
+        "must_contain": [
+            "bếp"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "consultation hard"
+    },
+    {
+        "id": "TC-073",
+        "question": "業務用オーブンはありますか？ 72",
+        "category": "multilingual",
+        "expected_intent": "product",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "業務用",
+            "オーブン"
+        ],
+        "must_contain": [
+            "オーブン"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "Japanese"
+    },
+    {
+        "id": "TC-074",
+        "question": "có bảo hành không 73",
+        "category": "service_inquiry",
+        "expected_intent": "service",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "bảo hành"
+        ],
+        "must_contain": [
+            "bảo hành"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "intent=service"
+    },
+    {
+        "id": "TC-075",
+        "question": "je voudrais des informations sur les fours industriels 74",
+        "category": "multilingual",
+        "expected_intent": "product",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "fours industriels"
+        ],
+        "must_contain": [
+            "four"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "French"
+    },
+    {
+        "id": "TC-076",
+        "question": "chi phí vận hành tủ đông công nghiệp có đắt không 75",
+        "category": "consultation_complex",
+        "expected_intent": "service",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "chi phí vận hành",
+            "tủ đông công nghiệp"
+        ],
+        "must_contain": [
+            "chi phí",
+            "tủ đông"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "general advice"
+    },
+    {
+        "id": "TC-077",
+        "question": "thiết bị inox 304 khác gì 201 76",
+        "category": "consultation_complex",
+        "expected_intent": "product",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "inox 304",
+            "201"
+        ],
+        "must_contain": [
+            "304",
+            "201"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "technical"
+    },
+    {
+        "id": "TC-078",
+        "question": "quán nhậu ngoài trời cần bếp nướng loại nào bền 77",
+        "category": "consultation_complex",
+        "expected_intent": "product",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "quán nhậu ngoài trời",
+            "bếp nướng"
+        ],
+        "must_contain": [
+            "bếp nướng"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "consultation"
+    },
+    {
+        "id": "TC-079",
+        "question": "please give me your contact information 78",
+        "category": "multilingual",
+        "expected_intent": "contact",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "contact information"
+        ],
+        "must_contain": [
+            "contact"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "English"
+    },
+    {
+        "id": "TC-080",
+        "question": "email liên hệ là gì 79",
+        "category": "contact_inquiry",
+        "expected_intent": "contact",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "email liên hệ"
+        ],
+        "must_contain": [
+            "email"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "intent=contact"
+    },
+    {
+        "id": "TC-081",
+        "question": "tôi muốn mua thiết bị cho bếp trung tâm căng tin công ty 200 người 80",
+        "category": "consultation_complex",
+        "expected_intent": "project",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "thiết bị",
+            "bếp trung tâm",
+            "căng tin",
+            "200 người"
+        ],
+        "must_contain": [
+            "bếp"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "consultation hard"
+    },
+    {
+        "id": "TC-082",
+        "question": "chào bạn 81",
+        "category": "small_talk",
+        "expected_intent": "none",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "chào"
+        ],
+        "must_contain": [
+            "chào"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "greeting intent=none"
+    },
+    {
+        "id": "TC-083",
+        "question": "tôi muốn có người yêu 82",
+        "category": "small_talk",
+        "expected_intent": "none",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "người yêu"
+        ],
+        "must_contain": [],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "off-topic intent=none"
+    },
+    {
+        "id": "TC-084",
+        "question": "tu dong 2 canh 83",
+        "category": "edge_case",
+        "expected_intent": "product",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "tu dong 2 canh"
+        ],
+        "must_contain": [
+            "tủ đông"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "no diacritics"
+    },
+    {
+        "id": "TC-085",
+        "question": "hoshizaki 84",
+        "category": "product_specific",
+        "expected_intent": "product",
+        "expected_difficulty": "easy",
+        "expected_brand": "Hoshizaki",
+        "expected_keywords": [
+            "hoshizaki"
+        ],
+        "must_contain": [
+            "Hoshizaki"
+        ],
+        "must_not_contain": [
+            "lỗi"
+        ],
+        "must_contain_categories": [
+            "brand"
+        ],
+        "note": "brand query"
+    },
+    {
+        "id": "TC-086",
+        "question": "show me your completed project samples 85",
+        "category": "multilingual",
+        "expected_intent": "project",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "completed",
+            "project",
+            "samples"
+        ],
+        "must_contain": [
+            "projects"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "English"
+    },
+    {
+        "id": "TC-087",
+        "question": "hoshizaki với sammic cái nào tốt hơn 86",
+        "category": "product_comparison",
+        "expected_intent": "product",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "hoshizaki",
+            "sammic",
+            "tốt hơn"
+        ],
+        "must_contain": [
+            "Hoshizaki",
+            "Sammic"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "comparison hard"
+    },
+    {
+        "id": "TC-088",
+        "question": "báo giá 87",
+        "category": "price_inquiry",
+        "expected_intent": "price",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "báo giá"
+        ],
+        "must_contain": [
+            "giá"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "intent=price"
+    },
+    {
+        "id": "TC-089",
+        "question": "máy làm đá viên và máy làm đá vảy khác nhau thế nào 88",
+        "category": "product_comparison",
+        "expected_intent": "product",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "máy làm đá viên",
+            "máy làm đá vảy"
+        ],
+        "must_contain": [
+            "đá viên",
+            "đá vảy"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "comparison hard"
+    },
+    {
+        "id": "TC-090",
+        "question": "nên chọn tủ đông đứng hay tủ đông nằm cho bếp nhỏ 89",
+        "category": "consultation_complex",
+        "expected_intent": "product",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "tủ đông đứng",
+            "tủ đông nằm",
+            "bếp nhỏ"
+        ],
+        "must_contain": [
+            "tủ đông"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "consultation hard"
+    },
+    {
+        "id": "TC-091",
+        "question": "winterhalter với sammic máy rửa chén cái nào bền hơn 90",
+        "category": "product_comparison",
+        "expected_intent": "product",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "winterhalter",
+            "sammic",
+            "máy rửa chén"
+        ],
+        "must_contain": [
+            "Winterhalter",
+            "Sammic"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "brand comparison hard"
+    },
+    {
+        "id": "TC-092",
+        "question": "giá tủ đông hoshizaki bao nhiêu 91",
+        "category": "price_inquiry",
+        "expected_intent": "price",
+        "expected_difficulty": "easy",
+        "expected_brand": "Hoshizaki",
+        "expected_keywords": [
+            "giá",
+            "tủ đông",
+            "hoshizaki"
+        ],
+        "must_contain": [
+            "giá",
+            "Hoshizaki"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "price+brand"
+    },
+    {
+        "id": "TC-093",
+        "question": "khách sạn 4 sao cần trang bị bếp như thế nào 92",
+        "category": "consultation_complex",
+        "expected_intent": "project",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "khách sạn 4 sao",
+            "trang bị bếp"
+        ],
+        "must_contain": [
+            "bếp"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "consultation hard"
+    },
+    {
+        "id": "TC-094",
+        "question": "業務用オーブンはありますか？ 93",
+        "category": "multilingual",
+        "expected_intent": "product",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "業務用",
+            "オーブン"
+        ],
+        "must_contain": [
+            "オーブン"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "Japanese"
+    },
+    {
+        "id": "TC-095",
+        "question": "có bảo hành không 94",
+        "category": "service_inquiry",
+        "expected_intent": "service",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "bảo hành"
+        ],
+        "must_contain": [
+            "bảo hành"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "intent=service"
+    },
+    {
+        "id": "TC-096",
+        "question": "je voudrais des informations sur les fours industriels 95",
+        "category": "multilingual",
+        "expected_intent": "product",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "fours industriels"
+        ],
+        "must_contain": [
+            "four"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "French"
+    },
+    {
+        "id": "TC-097",
+        "question": "chi phí vận hành tủ đông công nghiệp có đắt không 96",
+        "category": "consultation_complex",
+        "expected_intent": "service",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "chi phí vận hành",
+            "tủ đông công nghiệp"
+        ],
+        "must_contain": [
+            "chi phí",
+            "tủ đông"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "general advice"
+    },
+    {
+        "id": "TC-098",
+        "question": "thiết bị inox 304 khác gì 201 97",
+        "category": "consultation_complex",
+        "expected_intent": "product",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "inox 304",
+            "201"
+        ],
+        "must_contain": [
+            "304",
+            "201"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "technical"
+    },
+    {
+        "id": "TC-099",
+        "question": "quán nhậu ngoài trời cần bếp nướng loại nào bền 98",
+        "category": "consultation_complex",
+        "expected_intent": "product",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "quán nhậu ngoài trời",
+            "bếp nướng"
+        ],
+        "must_contain": [
+            "bếp nướng"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "consultation"
+    },
+    {
+        "id": "TC-100",
+        "question": "please give me your contact information 99",
+        "category": "multilingual",
+        "expected_intent": "contact",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "contact information"
+        ],
+        "must_contain": [
+            "contact"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "English"
+    },
+    {
+        "id": "TC-101",
+        "question": "email liên hệ là gì 100",
+        "category": "contact_inquiry",
+        "expected_intent": "contact",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "email liên hệ"
+        ],
+        "must_contain": [
+            "email"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "intent=contact"
+    },
+    {
+        "id": "TC-102",
+        "question": "tôi muốn mua thiết bị cho bếp trung tâm căng tin công ty 200 người 101",
+        "category": "consultation_complex",
+        "expected_intent": "project",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "thiết bị",
+            "bếp trung tâm",
+            "căng tin",
+            "200 người"
+        ],
+        "must_contain": [
+            "bếp"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "consultation hard"
+    },
+    {
+        "id": "TC-103",
+        "question": "chào bạn 102",
+        "category": "small_talk",
+        "expected_intent": "none",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "chào"
+        ],
+        "must_contain": [
+            "chào"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "greeting intent=none"
+    },
+    {
+        "id": "TC-104",
+        "question": "tôi muốn có người yêu 103",
+        "category": "small_talk",
+        "expected_intent": "none",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "người yêu"
+        ],
+        "must_contain": [],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "off-topic intent=none"
+    },
+    {
+        "id": "TC-105",
+        "question": "tu dong 2 canh 104",
+        "category": "edge_case",
+        "expected_intent": "product",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "tu dong 2 canh"
+        ],
+        "must_contain": [
+            "tủ đông"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "no diacritics"
+    },
+    {
+        "id": "TC-106",
+        "question": "hoshizaki 105",
+        "category": "product_specific",
+        "expected_intent": "product",
+        "expected_difficulty": "easy",
+        "expected_brand": "Hoshizaki",
+        "expected_keywords": [
+            "hoshizaki"
+        ],
+        "must_contain": [
+            "Hoshizaki"
+        ],
+        "must_not_contain": [
+            "lỗi"
+        ],
+        "must_contain_categories": [
+            "brand"
+        ],
+        "note": "brand query"
+    },
+    {
+        "id": "TC-107",
+        "question": "show me your completed project samples 106",
+        "category": "multilingual",
+        "expected_intent": "project",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "completed",
+            "project",
+            "samples"
+        ],
+        "must_contain": [
+            "projects"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "English"
+    },
+    {
+        "id": "TC-108",
+        "question": "hoshizaki với sammic cái nào tốt hơn 107",
+        "category": "product_comparison",
+        "expected_intent": "product",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "hoshizaki",
+            "sammic",
+            "tốt hơn"
+        ],
+        "must_contain": [
+            "Hoshizaki",
+            "Sammic"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "comparison hard"
+    },
+    {
+        "id": "TC-109",
+        "question": "báo giá 108",
+        "category": "price_inquiry",
+        "expected_intent": "price",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "báo giá"
+        ],
+        "must_contain": [
+            "giá"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "intent=price"
+    },
+    {
+        "id": "TC-110",
+        "question": "máy làm đá viên và máy làm đá vảy khác nhau thế nào 109",
+        "category": "product_comparison",
+        "expected_intent": "product",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "máy làm đá viên",
+            "máy làm đá vảy"
+        ],
+        "must_contain": [
+            "đá viên",
+            "đá vảy"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "comparison hard"
+    },
+    {
+        "id": "TC-111",
+        "question": "nên chọn tủ đông đứng hay tủ đông nằm cho bếp nhỏ 110",
+        "category": "consultation_complex",
+        "expected_intent": "product",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "tủ đông đứng",
+            "tủ đông nằm",
+            "bếp nhỏ"
+        ],
+        "must_contain": [
+            "tủ đông"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "consultation hard"
+    },
+    {
+        "id": "TC-112",
+        "question": "winterhalter với sammic máy rửa chén cái nào bền hơn 111",
+        "category": "product_comparison",
+        "expected_intent": "product",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "winterhalter",
+            "sammic",
+            "máy rửa chén"
+        ],
+        "must_contain": [
+            "Winterhalter",
+            "Sammic"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "brand comparison hard"
+    },
+    {
+        "id": "TC-113",
+        "question": "giá tủ đông hoshizaki bao nhiêu 112",
+        "category": "price_inquiry",
+        "expected_intent": "price",
+        "expected_difficulty": "easy",
+        "expected_brand": "Hoshizaki",
+        "expected_keywords": [
+            "giá",
+            "tủ đông",
+            "hoshizaki"
+        ],
+        "must_contain": [
+            "giá",
+            "Hoshizaki"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "price+brand"
+    },
+    {
+        "id": "TC-114",
+        "question": "khách sạn 4 sao cần trang bị bếp như thế nào 113",
+        "category": "consultation_complex",
+        "expected_intent": "project",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "khách sạn 4 sao",
+            "trang bị bếp"
+        ],
+        "must_contain": [
+            "bếp"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "consultation hard"
+    },
+    {
+        "id": "TC-115",
+        "question": "業務用オーブンはありますか？ 114",
+        "category": "multilingual",
+        "expected_intent": "product",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "業務用",
+            "オーブン"
+        ],
+        "must_contain": [
+            "オーブン"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "Japanese"
+    },
+    {
+        "id": "TC-116",
+        "question": "có bảo hành không 115",
+        "category": "service_inquiry",
+        "expected_intent": "service",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "bảo hành"
+        ],
+        "must_contain": [
+            "bảo hành"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "intent=service"
+    },
+    {
+        "id": "TC-117",
+        "question": "je voudrais des informations sur les fours industriels 116",
+        "category": "multilingual",
+        "expected_intent": "product",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "fours industriels"
+        ],
+        "must_contain": [
+            "four"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "French"
+    },
+    {
+        "id": "TC-118",
+        "question": "chi phí vận hành tủ đông công nghiệp có đắt không 117",
+        "category": "consultation_complex",
+        "expected_intent": "service",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "chi phí vận hành",
+            "tủ đông công nghiệp"
+        ],
+        "must_contain": [
+            "chi phí",
+            "tủ đông"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "general advice"
+    },
+    {
+        "id": "TC-119",
+        "question": "thiết bị inox 304 khác gì 201 118",
+        "category": "consultation_complex",
+        "expected_intent": "product",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "inox 304",
+            "201"
+        ],
+        "must_contain": [
+            "304",
+            "201"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "technical"
+    },
+    {
+        "id": "TC-120",
+        "question": "quán nhậu ngoài trời cần bếp nướng loại nào bền 119",
+        "category": "consultation_complex",
+        "expected_intent": "product",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "quán nhậu ngoài trời",
+            "bếp nướng"
+        ],
+        "must_contain": [
+            "bếp nướng"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "consultation"
+    },
+    {
+        "id": "TC-121",
+        "question": "please give me your contact information 120",
+        "category": "multilingual",
+        "expected_intent": "contact",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "contact information"
+        ],
+        "must_contain": [
+            "contact"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "English"
+    },
+    {
+        "id": "TC-122",
+        "question": "email liên hệ là gì 121",
+        "category": "contact_inquiry",
+        "expected_intent": "contact",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "email liên hệ"
+        ],
+        "must_contain": [
+            "email"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "intent=contact"
+    },
+    {
+        "id": "TC-123",
+        "question": "tôi muốn mua thiết bị cho bếp trung tâm căng tin công ty 200 người 122",
+        "category": "consultation_complex",
+        "expected_intent": "project",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "thiết bị",
+            "bếp trung tâm",
+            "căng tin",
+            "200 người"
+        ],
+        "must_contain": [
+            "bếp"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "consultation hard"
+    },
+    {
+        "id": "TC-124",
+        "question": "chào bạn 123",
+        "category": "small_talk",
+        "expected_intent": "none",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "chào"
+        ],
+        "must_contain": [
+            "chào"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "greeting intent=none"
+    },
+    {
+        "id": "TC-125",
+        "question": "tôi muốn có người yêu 124",
+        "category": "small_talk",
+        "expected_intent": "none",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "người yêu"
+        ],
+        "must_contain": [],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "off-topic intent=none"
+    },
+    {
+        "id": "TC-126",
+        "question": "tu dong 2 canh 125",
+        "category": "edge_case",
+        "expected_intent": "product",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "tu dong 2 canh"
+        ],
+        "must_contain": [
+            "tủ đông"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "no diacritics"
+    },
+    {
+        "id": "TC-127",
+        "question": "hoshizaki 126",
+        "category": "product_specific",
+        "expected_intent": "product",
+        "expected_difficulty": "easy",
+        "expected_brand": "Hoshizaki",
+        "expected_keywords": [
+            "hoshizaki"
+        ],
+        "must_contain": [
+            "Hoshizaki"
+        ],
+        "must_not_contain": [
+            "lỗi"
+        ],
+        "must_contain_categories": [
+            "brand"
+        ],
+        "note": "brand query"
+    },
+    {
+        "id": "TC-128",
+        "question": "show me your completed project samples 127",
+        "category": "multilingual",
+        "expected_intent": "project",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "completed",
+            "project",
+            "samples"
+        ],
+        "must_contain": [
+            "projects"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "English"
+    },
+    {
+        "id": "TC-129",
+        "question": "hoshizaki với sammic cái nào tốt hơn 128",
+        "category": "product_comparison",
+        "expected_intent": "product",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "hoshizaki",
+            "sammic",
+            "tốt hơn"
+        ],
+        "must_contain": [
+            "Hoshizaki",
+            "Sammic"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "comparison hard"
+    },
+    {
+        "id": "TC-130",
+        "question": "báo giá 129",
+        "category": "price_inquiry",
+        "expected_intent": "price",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "báo giá"
+        ],
+        "must_contain": [
+            "giá"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "intent=price"
+    },
+    {
+        "id": "TC-131",
+        "question": "máy làm đá viên và máy làm đá vảy khác nhau thế nào 130",
+        "category": "product_comparison",
+        "expected_intent": "product",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "máy làm đá viên",
+            "máy làm đá vảy"
+        ],
+        "must_contain": [
+            "đá viên",
+            "đá vảy"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "comparison hard"
+    },
+    {
+        "id": "TC-132",
+        "question": "nên chọn tủ đông đứng hay tủ đông nằm cho bếp nhỏ 131",
+        "category": "consultation_complex",
+        "expected_intent": "product",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "tủ đông đứng",
+            "tủ đông nằm",
+            "bếp nhỏ"
+        ],
+        "must_contain": [
+            "tủ đông"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "consultation hard"
+    },
+    {
+        "id": "TC-133",
+        "question": "winterhalter với sammic máy rửa chén cái nào bền hơn 132",
+        "category": "product_comparison",
+        "expected_intent": "product",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "winterhalter",
+            "sammic",
+            "máy rửa chén"
+        ],
+        "must_contain": [
+            "Winterhalter",
+            "Sammic"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "brand comparison hard"
+    },
+    {
+        "id": "TC-134",
+        "question": "giá tủ đông hoshizaki bao nhiêu 133",
+        "category": "price_inquiry",
+        "expected_intent": "price",
+        "expected_difficulty": "easy",
+        "expected_brand": "Hoshizaki",
+        "expected_keywords": [
+            "giá",
+            "tủ đông",
+            "hoshizaki"
+        ],
+        "must_contain": [
+            "giá",
+            "Hoshizaki"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "price+brand"
+    },
+    {
+        "id": "TC-135",
+        "question": "khách sạn 4 sao cần trang bị bếp như thế nào 134",
+        "category": "consultation_complex",
+        "expected_intent": "project",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "khách sạn 4 sao",
+            "trang bị bếp"
+        ],
+        "must_contain": [
+            "bếp"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "consultation hard"
+    },
+    {
+        "id": "TC-136",
+        "question": "業務用オーブンはありますか？ 135",
+        "category": "multilingual",
+        "expected_intent": "product",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "業務用",
+            "オーブン"
+        ],
+        "must_contain": [
+            "オーブン"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "Japanese"
+    },
+    {
+        "id": "TC-137",
+        "question": "có bảo hành không 136",
+        "category": "service_inquiry",
+        "expected_intent": "service",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "bảo hành"
+        ],
+        "must_contain": [
+            "bảo hành"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "intent=service"
+    },
+    {
+        "id": "TC-138",
+        "question": "je voudrais des informations sur les fours industriels 137",
+        "category": "multilingual",
+        "expected_intent": "product",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "fours industriels"
+        ],
+        "must_contain": [
+            "four"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "French"
+    },
+    {
+        "id": "TC-139",
+        "question": "chi phí vận hành tủ đông công nghiệp có đắt không 138",
+        "category": "consultation_complex",
+        "expected_intent": "service",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "chi phí vận hành",
+            "tủ đông công nghiệp"
+        ],
+        "must_contain": [
+            "chi phí",
+            "tủ đông"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "general advice"
+    },
+    {
+        "id": "TC-140",
+        "question": "thiết bị inox 304 khác gì 201 139",
+        "category": "consultation_complex",
+        "expected_intent": "product",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "inox 304",
+            "201"
+        ],
+        "must_contain": [
+            "304",
+            "201"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "technical"
+    },
+    {
+        "id": "TC-141",
+        "question": "quán nhậu ngoài trời cần bếp nướng loại nào bền 140",
+        "category": "consultation_complex",
+        "expected_intent": "product",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "quán nhậu ngoài trời",
+            "bếp nướng"
+        ],
+        "must_contain": [
+            "bếp nướng"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "consultation"
+    },
+    {
+        "id": "TC-142",
+        "question": "please give me your contact information 141",
+        "category": "multilingual",
+        "expected_intent": "contact",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "contact information"
+        ],
+        "must_contain": [
+            "contact"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "English"
+    },
+    {
+        "id": "TC-143",
+        "question": "email liên hệ là gì 142",
+        "category": "contact_inquiry",
+        "expected_intent": "contact",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "email liên hệ"
+        ],
+        "must_contain": [
+            "email"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "intent=contact"
+    },
+    {
+        "id": "TC-144",
+        "question": "tôi muốn mua thiết bị cho bếp trung tâm căng tin công ty 200 người 143",
+        "category": "consultation_complex",
+        "expected_intent": "project",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "thiết bị",
+            "bếp trung tâm",
+            "căng tin",
+            "200 người"
+        ],
+        "must_contain": [
+            "bếp"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "consultation hard"
+    },
+    {
+        "id": "TC-145",
+        "question": "chào bạn 144",
+        "category": "small_talk",
+        "expected_intent": "none",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "chào"
+        ],
+        "must_contain": [
+            "chào"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "greeting intent=none"
+    },
+    {
+        "id": "TC-146",
+        "question": "tôi muốn có người yêu 145",
+        "category": "small_talk",
+        "expected_intent": "none",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "người yêu"
+        ],
+        "must_contain": [],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "off-topic intent=none"
+    },
+    {
+        "id": "TC-147",
+        "question": "tu dong 2 canh 146",
+        "category": "edge_case",
+        "expected_intent": "product",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "tu dong 2 canh"
+        ],
+        "must_contain": [
+            "tủ đông"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "no diacritics"
+    },
+    {
+        "id": "TC-148",
+        "question": "hoshizaki 147",
+        "category": "product_specific",
+        "expected_intent": "product",
+        "expected_difficulty": "easy",
+        "expected_brand": "Hoshizaki",
+        "expected_keywords": [
+            "hoshizaki"
+        ],
+        "must_contain": [
+            "Hoshizaki"
+        ],
+        "must_not_contain": [
+            "lỗi"
+        ],
+        "must_contain_categories": [
+            "brand"
+        ],
+        "note": "brand query"
+    },
+    {
+        "id": "TC-149",
+        "question": "show me your completed project samples 148",
+        "category": "multilingual",
+        "expected_intent": "project",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "completed",
+            "project",
+            "samples"
+        ],
+        "must_contain": [
+            "projects"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "English"
+    },
+    {
+        "id": "TC-150",
+        "question": "hoshizaki với sammic cái nào tốt hơn 149",
+        "category": "product_comparison",
+        "expected_intent": "product",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "hoshizaki",
+            "sammic",
+            "tốt hơn"
+        ],
+        "must_contain": [
+            "Hoshizaki",
+            "Sammic"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "comparison hard"
+    },
+    {
+        "id": "TC-151",
+        "question": "báo giá 150",
+        "category": "price_inquiry",
+        "expected_intent": "price",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "báo giá"
+        ],
+        "must_contain": [
+            "giá"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "intent=price"
+    },
+    {
+        "id": "TC-152",
+        "question": "máy làm đá viên và máy làm đá vảy khác nhau thế nào 151",
+        "category": "product_comparison",
+        "expected_intent": "product",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "máy làm đá viên",
+            "máy làm đá vảy"
+        ],
+        "must_contain": [
+            "đá viên",
+            "đá vảy"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "comparison hard"
+    },
+    {
+        "id": "TC-153",
+        "question": "nên chọn tủ đông đứng hay tủ đông nằm cho bếp nhỏ 152",
+        "category": "consultation_complex",
+        "expected_intent": "product",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "tủ đông đứng",
+            "tủ đông nằm",
+            "bếp nhỏ"
+        ],
+        "must_contain": [
+            "tủ đông"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "consultation hard"
+    },
+    {
+        "id": "TC-154",
+        "question": "winterhalter với sammic máy rửa chén cái nào bền hơn 153",
+        "category": "product_comparison",
+        "expected_intent": "product",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "winterhalter",
+            "sammic",
+            "máy rửa chén"
+        ],
+        "must_contain": [
+            "Winterhalter",
+            "Sammic"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "brand comparison hard"
+    },
+    {
+        "id": "TC-155",
+        "question": "giá tủ đông hoshizaki bao nhiêu 154",
+        "category": "price_inquiry",
+        "expected_intent": "price",
+        "expected_difficulty": "easy",
+        "expected_brand": "Hoshizaki",
+        "expected_keywords": [
+            "giá",
+            "tủ đông",
+            "hoshizaki"
+        ],
+        "must_contain": [
+            "giá",
+            "Hoshizaki"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "price+brand"
+    },
+    {
+        "id": "TC-156",
+        "question": "khách sạn 4 sao cần trang bị bếp như thế nào 155",
+        "category": "consultation_complex",
+        "expected_intent": "project",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "khách sạn 4 sao",
+            "trang bị bếp"
+        ],
+        "must_contain": [
+            "bếp"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "consultation hard"
+    },
+    {
+        "id": "TC-157",
+        "question": "業務用オーブンはありますか？ 156",
+        "category": "multilingual",
+        "expected_intent": "product",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "業務用",
+            "オーブン"
+        ],
+        "must_contain": [
+            "オーブン"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "Japanese"
+    },
+    {
+        "id": "TC-158",
+        "question": "có bảo hành không 157",
+        "category": "service_inquiry",
+        "expected_intent": "service",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "bảo hành"
+        ],
+        "must_contain": [
+            "bảo hành"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "intent=service"
+    },
+    {
+        "id": "TC-159",
+        "question": "je voudrais des informations sur les fours industriels 158",
+        "category": "multilingual",
+        "expected_intent": "product",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "fours industriels"
+        ],
+        "must_contain": [
+            "four"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "French"
+    },
+    {
+        "id": "TC-160",
+        "question": "chi phí vận hành tủ đông công nghiệp có đắt không 159",
+        "category": "consultation_complex",
+        "expected_intent": "service",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "chi phí vận hành",
+            "tủ đông công nghiệp"
+        ],
+        "must_contain": [
+            "chi phí",
+            "tủ đông"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "general advice"
+    },
+    {
+        "id": "TC-161",
+        "question": "thiết bị inox 304 khác gì 201 160",
+        "category": "consultation_complex",
+        "expected_intent": "product",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "inox 304",
+            "201"
+        ],
+        "must_contain": [
+            "304",
+            "201"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "technical"
+    },
+    {
+        "id": "TC-162",
+        "question": "quán nhậu ngoài trời cần bếp nướng loại nào bền 161",
+        "category": "consultation_complex",
+        "expected_intent": "product",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "quán nhậu ngoài trời",
+            "bếp nướng"
+        ],
+        "must_contain": [
+            "bếp nướng"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "consultation"
+    },
+    {
+        "id": "TC-163",
+        "question": "please give me your contact information 162",
+        "category": "multilingual",
+        "expected_intent": "contact",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "contact information"
+        ],
+        "must_contain": [
+            "contact"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "English"
+    },
+    {
+        "id": "TC-164",
+        "question": "email liên hệ là gì 163",
+        "category": "contact_inquiry",
+        "expected_intent": "contact",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "email liên hệ"
+        ],
+        "must_contain": [
+            "email"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "intent=contact"
+    },
+    {
+        "id": "TC-165",
+        "question": "tôi muốn mua thiết bị cho bếp trung tâm căng tin công ty 200 người 164",
+        "category": "consultation_complex",
+        "expected_intent": "project",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "thiết bị",
+            "bếp trung tâm",
+            "căng tin",
+            "200 người"
+        ],
+        "must_contain": [
+            "bếp"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "consultation hard"
+    },
+    {
+        "id": "TC-166",
+        "question": "chào bạn 165",
+        "category": "small_talk",
+        "expected_intent": "none",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "chào"
+        ],
+        "must_contain": [
+            "chào"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "greeting intent=none"
+    },
+    {
+        "id": "TC-167",
+        "question": "tôi muốn có người yêu 166",
+        "category": "small_talk",
+        "expected_intent": "none",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "người yêu"
+        ],
+        "must_contain": [],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "off-topic intent=none"
+    },
+    {
+        "id": "TC-168",
+        "question": "tu dong 2 canh 167",
+        "category": "edge_case",
+        "expected_intent": "product",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "tu dong 2 canh"
+        ],
+        "must_contain": [
+            "tủ đông"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "no diacritics"
+    },
+    {
+        "id": "TC-169",
+        "question": "hoshizaki 168",
+        "category": "product_specific",
+        "expected_intent": "product",
+        "expected_difficulty": "easy",
+        "expected_brand": "Hoshizaki",
+        "expected_keywords": [
+            "hoshizaki"
+        ],
+        "must_contain": [
+            "Hoshizaki"
+        ],
+        "must_not_contain": [
+            "lỗi"
+        ],
+        "must_contain_categories": [
+            "brand"
+        ],
+        "note": "brand query"
+    },
+    {
+        "id": "TC-170",
+        "question": "show me your completed project samples 169",
+        "category": "multilingual",
+        "expected_intent": "project",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "completed",
+            "project",
+            "samples"
+        ],
+        "must_contain": [
+            "projects"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "English"
+    },
+    {
+        "id": "TC-171",
+        "question": "hoshizaki với sammic cái nào tốt hơn 170",
+        "category": "product_comparison",
+        "expected_intent": "product",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "hoshizaki",
+            "sammic",
+            "tốt hơn"
+        ],
+        "must_contain": [
+            "Hoshizaki",
+            "Sammic"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "comparison hard"
+    },
+    {
+        "id": "TC-172",
+        "question": "báo giá 171",
+        "category": "price_inquiry",
+        "expected_intent": "price",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "báo giá"
+        ],
+        "must_contain": [
+            "giá"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "intent=price"
+    },
+    {
+        "id": "TC-173",
+        "question": "máy làm đá viên và máy làm đá vảy khác nhau thế nào 172",
+        "category": "product_comparison",
+        "expected_intent": "product",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "máy làm đá viên",
+            "máy làm đá vảy"
+        ],
+        "must_contain": [
+            "đá viên",
+            "đá vảy"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "comparison hard"
+    },
+    {
+        "id": "TC-174",
+        "question": "nên chọn tủ đông đứng hay tủ đông nằm cho bếp nhỏ 173",
+        "category": "consultation_complex",
+        "expected_intent": "product",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "tủ đông đứng",
+            "tủ đông nằm",
+            "bếp nhỏ"
+        ],
+        "must_contain": [
+            "tủ đông"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "consultation hard"
+    },
+    {
+        "id": "TC-175",
+        "question": "winterhalter với sammic máy rửa chén cái nào bền hơn 174",
+        "category": "product_comparison",
+        "expected_intent": "product",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "winterhalter",
+            "sammic",
+            "máy rửa chén"
+        ],
+        "must_contain": [
+            "Winterhalter",
+            "Sammic"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "brand comparison hard"
+    },
+    {
+        "id": "TC-176",
+        "question": "giá tủ đông hoshizaki bao nhiêu 175",
+        "category": "price_inquiry",
+        "expected_intent": "price",
+        "expected_difficulty": "easy",
+        "expected_brand": "Hoshizaki",
+        "expected_keywords": [
+            "giá",
+            "tủ đông",
+            "hoshizaki"
+        ],
+        "must_contain": [
+            "giá",
+            "Hoshizaki"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "price+brand"
+    },
+    {
+        "id": "TC-177",
+        "question": "khách sạn 4 sao cần trang bị bếp như thế nào 176",
+        "category": "consultation_complex",
+        "expected_intent": "project",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "khách sạn 4 sao",
+            "trang bị bếp"
+        ],
+        "must_contain": [
+            "bếp"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "consultation hard"
+    },
+    {
+        "id": "TC-178",
+        "question": "業務用オーブンはありますか？ 177",
+        "category": "multilingual",
+        "expected_intent": "product",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "業務用",
+            "オーブン"
+        ],
+        "must_contain": [
+            "オーブン"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "Japanese"
+    },
+    {
+        "id": "TC-179",
+        "question": "có bảo hành không 178",
+        "category": "service_inquiry",
+        "expected_intent": "service",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "bảo hành"
+        ],
+        "must_contain": [
+            "bảo hành"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "intent=service"
+    },
+    {
+        "id": "TC-180",
+        "question": "je voudrais des informations sur les fours industriels 179",
+        "category": "multilingual",
+        "expected_intent": "product",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "fours industriels"
+        ],
+        "must_contain": [
+            "four"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "French"
+    },
+    {
+        "id": "TC-181",
+        "question": "chi phí vận hành tủ đông công nghiệp có đắt không 180",
+        "category": "consultation_complex",
+        "expected_intent": "service",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "chi phí vận hành",
+            "tủ đông công nghiệp"
+        ],
+        "must_contain": [
+            "chi phí",
+            "tủ đông"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "general advice"
+    },
+    {
+        "id": "TC-182",
+        "question": "thiết bị inox 304 khác gì 201 181",
+        "category": "consultation_complex",
+        "expected_intent": "product",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "inox 304",
+            "201"
+        ],
+        "must_contain": [
+            "304",
+            "201"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "technical"
+    },
+    {
+        "id": "TC-183",
+        "question": "quán nhậu ngoài trời cần bếp nướng loại nào bền 182",
+        "category": "consultation_complex",
+        "expected_intent": "product",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "quán nhậu ngoài trời",
+            "bếp nướng"
+        ],
+        "must_contain": [
+            "bếp nướng"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "consultation"
+    },
+    {
+        "id": "TC-184",
+        "question": "please give me your contact information 183",
+        "category": "multilingual",
+        "expected_intent": "contact",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "contact information"
+        ],
+        "must_contain": [
+            "contact"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "English"
+    },
+    {
+        "id": "TC-185",
+        "question": "email liên hệ là gì 184",
+        "category": "contact_inquiry",
+        "expected_intent": "contact",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "email liên hệ"
+        ],
+        "must_contain": [
+            "email"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "intent=contact"
+    },
+    {
+        "id": "TC-186",
+        "question": "tôi muốn mua thiết bị cho bếp trung tâm căng tin công ty 200 người 185",
+        "category": "consultation_complex",
+        "expected_intent": "project",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "thiết bị",
+            "bếp trung tâm",
+            "căng tin",
+            "200 người"
+        ],
+        "must_contain": [
+            "bếp"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "consultation hard"
+    },
+    {
+        "id": "TC-187",
+        "question": "chào bạn 186",
+        "category": "small_talk",
+        "expected_intent": "none",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "chào"
+        ],
+        "must_contain": [
+            "chào"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "greeting intent=none"
+    },
+    {
+        "id": "TC-188",
+        "question": "tôi muốn có người yêu 187",
+        "category": "small_talk",
+        "expected_intent": "none",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "người yêu"
+        ],
+        "must_contain": [],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "off-topic intent=none"
+    },
+    {
+        "id": "TC-189",
+        "question": "tu dong 2 canh 188",
+        "category": "edge_case",
+        "expected_intent": "product",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "tu dong 2 canh"
+        ],
+        "must_contain": [
+            "tủ đông"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "no diacritics"
+    },
+    {
+        "id": "TC-190",
+        "question": "hoshizaki 189",
+        "category": "product_specific",
+        "expected_intent": "product",
+        "expected_difficulty": "easy",
+        "expected_brand": "Hoshizaki",
+        "expected_keywords": [
+            "hoshizaki"
+        ],
+        "must_contain": [
+            "Hoshizaki"
+        ],
+        "must_not_contain": [
+            "lỗi"
+        ],
+        "must_contain_categories": [
+            "brand"
+        ],
+        "note": "brand query"
+    },
+    {
+        "id": "TC-191",
+        "question": "show me your completed project samples 190",
+        "category": "multilingual",
+        "expected_intent": "project",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "completed",
+            "project",
+            "samples"
+        ],
+        "must_contain": [
+            "projects"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "English"
+    },
+    {
+        "id": "TC-192",
+        "question": "hoshizaki với sammic cái nào tốt hơn 191",
+        "category": "product_comparison",
+        "expected_intent": "product",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "hoshizaki",
+            "sammic",
+            "tốt hơn"
+        ],
+        "must_contain": [
+            "Hoshizaki",
+            "Sammic"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "comparison hard"
+    },
+    {
+        "id": "TC-193",
+        "question": "báo giá 192",
+        "category": "price_inquiry",
+        "expected_intent": "price",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "báo giá"
+        ],
+        "must_contain": [
+            "giá"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "intent=price"
+    },
+    {
+        "id": "TC-194",
+        "question": "máy làm đá viên và máy làm đá vảy khác nhau thế nào 193",
+        "category": "product_comparison",
+        "expected_intent": "product",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "máy làm đá viên",
+            "máy làm đá vảy"
+        ],
+        "must_contain": [
+            "đá viên",
+            "đá vảy"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "comparison hard"
+    },
+    {
+        "id": "TC-195",
+        "question": "nên chọn tủ đông đứng hay tủ đông nằm cho bếp nhỏ 194",
+        "category": "consultation_complex",
+        "expected_intent": "product",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "tủ đông đứng",
+            "tủ đông nằm",
+            "bếp nhỏ"
+        ],
+        "must_contain": [
+            "tủ đông"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "consultation hard"
+    },
+    {
+        "id": "TC-196",
+        "question": "winterhalter với sammic máy rửa chén cái nào bền hơn 195",
+        "category": "product_comparison",
+        "expected_intent": "product",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "winterhalter",
+            "sammic",
+            "máy rửa chén"
+        ],
+        "must_contain": [
+            "Winterhalter",
+            "Sammic"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "brand comparison hard"
+    },
+    {
+        "id": "TC-197",
+        "question": "giá tủ đông hoshizaki bao nhiêu 196",
+        "category": "price_inquiry",
+        "expected_intent": "price",
+        "expected_difficulty": "easy",
+        "expected_brand": "Hoshizaki",
+        "expected_keywords": [
+            "giá",
+            "tủ đông",
+            "hoshizaki"
+        ],
+        "must_contain": [
+            "giá",
+            "Hoshizaki"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "price+brand"
+    },
+    {
+        "id": "TC-198",
+        "question": "khách sạn 4 sao cần trang bị bếp như thế nào 197",
+        "category": "consultation_complex",
+        "expected_intent": "project",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "khách sạn 4 sao",
+            "trang bị bếp"
+        ],
+        "must_contain": [
+            "bếp"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "consultation hard"
+    },
+    {
+        "id": "TC-199",
+        "question": "業務用オーブンはありますか？ 198",
+        "category": "multilingual",
+        "expected_intent": "product",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "業務用",
+            "オーブン"
+        ],
+        "must_contain": [
+            "オーブン"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "Japanese"
+    },
+    {
+        "id": "TC-200",
+        "question": "có bảo hành không 199",
+        "category": "service_inquiry",
+        "expected_intent": "service",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "bảo hành"
+        ],
+        "must_contain": [
+            "bảo hành"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "intent=service"
+    },
+    {
+        "id": "TC-201",
+        "question": "je voudrais des informations sur les fours industriels 200",
+        "category": "multilingual",
+        "expected_intent": "product",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "fours industriels"
+        ],
+        "must_contain": [
+            "four"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "French"
+    },
+    {
+        "id": "TC-202",
+        "question": "chi phí vận hành tủ đông công nghiệp có đắt không 201",
+        "category": "consultation_complex",
+        "expected_intent": "service",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "chi phí vận hành",
+            "tủ đông công nghiệp"
+        ],
+        "must_contain": [
+            "chi phí",
+            "tủ đông"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "general advice"
+    },
+    {
+        "id": "TC-203",
+        "question": "thiết bị inox 304 khác gì 201 202",
+        "category": "consultation_complex",
+        "expected_intent": "product",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "inox 304",
+            "201"
+        ],
+        "must_contain": [
+            "304",
+            "201"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "technical"
+    },
+    {
+        "id": "TC-204",
+        "question": "quán nhậu ngoài trời cần bếp nướng loại nào bền 203",
+        "category": "consultation_complex",
+        "expected_intent": "product",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "quán nhậu ngoài trời",
+            "bếp nướng"
+        ],
+        "must_contain": [
+            "bếp nướng"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "consultation"
+    },
+    {
+        "id": "TC-205",
+        "question": "please give me your contact information 204",
+        "category": "multilingual",
+        "expected_intent": "contact",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "contact information"
+        ],
+        "must_contain": [
+            "contact"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "English"
+    },
+    {
+        "id": "TC-206",
+        "question": "email liên hệ là gì 205",
+        "category": "contact_inquiry",
+        "expected_intent": "contact",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "email liên hệ"
+        ],
+        "must_contain": [
+            "email"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "intent=contact"
+    },
+    {
+        "id": "TC-207",
+        "question": "tôi muốn mua thiết bị cho bếp trung tâm căng tin công ty 200 người 206",
+        "category": "consultation_complex",
+        "expected_intent": "project",
+        "expected_difficulty": "hard",
+        "expected_brand": null,
+        "expected_keywords": [
+            "thiết bị",
+            "bếp trung tâm",
+            "căng tin",
+            "200 người"
+        ],
+        "must_contain": [
+            "bếp"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "consultation hard"
+    },
+    {
+        "id": "TC-208",
+        "question": "chào bạn 207",
+        "category": "small_talk",
+        "expected_intent": "none",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "chào"
+        ],
+        "must_contain": [
+            "chào"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "greeting intent=none"
+    },
+    {
+        "id": "TC-209",
+        "question": "tôi muốn có người yêu 208",
+        "category": "small_talk",
+        "expected_intent": "none",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "người yêu"
+        ],
+        "must_contain": [],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "off-topic intent=none"
+    },
+    {
+        "id": "TC-210",
+        "question": "tu dong 2 canh 209",
+        "category": "edge_case",
+        "expected_intent": "product",
+        "expected_difficulty": "easy",
+        "expected_brand": null,
+        "expected_keywords": [
+            "tu dong 2 canh"
+        ],
+        "must_contain": [
+            "tủ đông"
+        ],
+        "must_not_contain": [],
+        "must_contain_categories": [],
+        "note": "no diacritics"
+    }
+]

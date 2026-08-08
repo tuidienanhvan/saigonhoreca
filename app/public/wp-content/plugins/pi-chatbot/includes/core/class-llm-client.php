@@ -17,6 +17,46 @@ class Pi_Chatbot_LLM_Client {
     const API_URL = 'https://api.llm7.io/v1/chat/completions';
 
     /**
+     * Fallback model chain mapping when primary model fails.
+     */
+    const MODEL_FALLBACK_CHAIN = [
+        'codestral-latest' => 'qwen3-8b',
+        'qwen3-8b'         => 'gpt-oss:20b',
+        'gpt-oss:20b'      => null,
+    ];
+
+    /**
+     * Call LLM with automatic model-level fallback chain.
+     *
+     * @param array  $body
+     * @param array  $keys
+     * @param int    $timeout
+     * @param int    $max_attempts
+     * @param string $log_prefix
+     * @return array|WP_Error
+     */
+    public static function call_with_fallback($body, $keys, $timeout, $max_attempts, $log_prefix = 'pi-chatbot') {
+        $model = $body['model'] ?? 'codestral-latest';
+        $max_fallbacks = 2;
+        $last_res = null;
+
+        for ($attempt = 0; $attempt <= $max_fallbacks; $attempt++) {
+            $current_body = array_merge($body, ['model' => $model]);
+            $res = self::call($current_body, $keys, $timeout, $max_attempts, $log_prefix);
+            if (!is_wp_error($res) && is_array($res) && !empty($res['choices'])) {
+                return $res;
+            }
+            $last_res = $res;
+            $next_model = self::MODEL_FALLBACK_CHAIN[$model] ?? null;
+            if (!$next_model) break;
+            error_log("[{$log_prefix}] Fallback from {$model} to {$next_model}");
+            $model = $next_model;
+        }
+
+        return $last_res ?: new WP_Error('pi_chatbot_fallback_failed', 'All fallback models failed.');
+    }
+
+    /**
      * Round-robins through up to $max_attempts LLM7 keys — if a key fails
      * (quota exhausted/timeout), try the next one. Logic is unchanged from what
      * previously lived in Generator::call_llm7(); only the timeout/max_attempts
@@ -260,16 +300,44 @@ class Pi_Chatbot_LLM_Client {
 
         $start = strpos($text, '{');
         if ($start === false) return null;
+
+        $in_string = false;
+        $escaped = false;
         $depth = 0;
         $end = null;
         $len = strlen($text);
+
         for ($i = $start; $i < $len; $i++) {
-            if ($text[$i] === '{') $depth++;
-            elseif ($text[$i] === '}') {
-                $depth--;
-                if ($depth === 0) { $end = $i; break; }
+            $char = $text[$i];
+
+            if ($escaped) {
+                $escaped = false;
+                continue;
+            }
+
+            if ($char === '\\' && $in_string) {
+                $escaped = true;
+                continue;
+            }
+
+            if ($char === '"') {
+                $in_string = !$in_string;
+                continue;
+            }
+
+            if (!$in_string) {
+                if ($char === '{') {
+                    $depth++;
+                } elseif ($char === '}') {
+                    $depth--;
+                    if ($depth === 0) {
+                        $end = $i;
+                        break;
+                    }
+                }
             }
         }
+
         if ($end === null) return null;
 
         $data = json_decode(substr($text, $start, $end - $start + 1), true);

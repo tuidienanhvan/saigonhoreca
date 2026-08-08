@@ -240,8 +240,19 @@ class Pi_Chatbot_Indexer {
      * deliberately autoload=false).
      */
     private static function bump_index_version() {
+        global $wpdb;
         $v = (int) get_option('pi_chatbot_index_version', 0);
         update_option('pi_chatbot_index_version', $v + 1, true);
+
+        if ($wpdb) {
+            $wpdb->query(
+                "DELETE FROM {$wpdb->options} 
+                 WHERE option_name LIKE '_transient_pi_chatbot_ans_%' 
+                    OR option_name LIKE '_transient_timeout_pi_chatbot_ans_%'
+                    OR option_name LIKE '_transient_pi_chatbot_df_%'
+                    OR option_name LIKE '_transient_timeout_pi_chatbot_df_%'"
+            );
+        }
     }
 
     /**

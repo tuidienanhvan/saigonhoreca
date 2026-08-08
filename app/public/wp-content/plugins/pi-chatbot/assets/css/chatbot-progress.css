@@ -72,6 +72,24 @@
     column-gap: 6px;
     row-gap: 0;
 }
+#pi-chatbot-panel .pi-cb-agent-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 1px 7px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    background: color-mix(in srgb, var(--cb-accent) 15%, transparent);
+    border: 1px solid color-mix(in srgb, var(--cb-accent) 28%, transparent);
+    color: var(--cb-accent);
+    margin-right: 4px;
+}
+#pi-chatbot-panel .pi-cb-agent-badge svg {
+    width: 11px;
+    height: 11px;
+    stroke: currentColor;
+}
 #pi-chatbot-panel .pi-cb-step-eyebrow {
     font-size: 9px;
     font-weight: 700;

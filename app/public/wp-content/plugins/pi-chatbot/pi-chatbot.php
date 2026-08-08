@@ -21,27 +21,35 @@ define('PI_CHATBOT_URL', plugin_dir_url(__FILE__));
 define('PI_CHATBOT_TABLE', 'pi_chatbot_index');
 define('PI_CHATBOT_OPTION', 'pi_chatbot_settings');
 
-require_once PI_CHATBOT_DIR . 'includes/class-indexer.php';
-require_once PI_CHATBOT_DIR . 'includes/class-log.php';
-require_once PI_CHATBOT_DIR . 'includes/class-feedback.php';
-require_once PI_CHATBOT_DIR . 'includes/class-lead.php';
-require_once PI_CHATBOT_DIR . 'includes/class-entities.php';
-require_once PI_CHATBOT_DIR . 'includes/class-retriever.php';
-require_once PI_CHATBOT_DIR . 'includes/class-budget.php';
-require_once PI_CHATBOT_DIR . 'includes/class-llm-client.php';
-require_once PI_CHATBOT_DIR . 'includes/class-generator.php';
-// class-router.php loads AFTER class-entities.php (uses known_brands()) and class-indexer.php
-// (uses table_name() for few-shot) — load order is fixed, same as the other files in this plugin.
-require_once PI_CHATBOT_DIR . 'includes/class-router.php';
-// class-reranker.php uses Pi_Chatbot_LLM_Client — loaded above.
-require_once PI_CHATBOT_DIR . 'includes/class-reranker.php';
-require_once PI_CHATBOT_DIR . 'includes/class-rest.php';
-require_once PI_CHATBOT_DIR . 'includes/class-admin.php';
+require_once PI_CHATBOT_DIR . 'includes/rag/class-indexer.php';
+require_once PI_CHATBOT_DIR . 'includes/guardrails/class-log.php';
+require_once PI_CHATBOT_DIR . 'includes/guardrails/class-feedback.php';
+require_once PI_CHATBOT_DIR . 'includes/guardrails/class-lead.php';
+require_once PI_CHATBOT_DIR . 'includes/rag/class-entities.php';
+require_once PI_CHATBOT_DIR . 'includes/rag/class-retriever.php';
+require_once PI_CHATBOT_DIR . 'includes/guardrails/class-budget.php';
+require_once PI_CHATBOT_DIR . 'includes/memory/class-context-budget.php';
+require_once PI_CHATBOT_DIR . 'includes/rag/class-faq-engine.php';
+require_once PI_CHATBOT_DIR . 'includes/memory/class-graph-store.php';
+require_once PI_CHATBOT_DIR . 'includes/memory/class-episodic-memory.php';
+require_once PI_CHATBOT_DIR . 'includes/memory/class-self-evolution.php';
+require_once PI_CHATBOT_DIR . 'includes/guardrails/class-security-audit.php';
+require_once PI_CHATBOT_DIR . 'includes/core/class-llm-client.php';
+require_once PI_CHATBOT_DIR . 'includes/rag/class-generator.php';
+require_once PI_CHATBOT_DIR . 'includes/agent/class-router.php';
+require_once PI_CHATBOT_DIR . 'includes/rag/class-reranker.php';
+require_once PI_CHATBOT_DIR . 'includes/tools/class-tool-registry.php';
+require_once PI_CHATBOT_DIR . 'includes/agent/class-agent-registry.php';
+require_once PI_CHATBOT_DIR . 'includes/agent/class-supervisor-agent.php';
+require_once PI_CHATBOT_DIR . 'includes/core/class-rest.php';
+require_once PI_CHATBOT_DIR . 'includes/core/class-admin.php';
 
 register_activation_hook(__FILE__, ['Pi_Chatbot_Indexer', 'on_activate']);
 register_activation_hook(__FILE__, ['Pi_Chatbot_Log', 'on_activate']);
 register_activation_hook(__FILE__, ['Pi_Chatbot_Feedback', 'on_activate']);
 register_activation_hook(__FILE__, ['Pi_Chatbot_Lead', 'on_activate']);
+register_activation_hook(__FILE__, ['Pi_Chatbot_FAQ_Engine', 'create_table']);
+register_activation_hook(__FILE__, ['Pi_Chatbot_Graph_Store', 'create_tables']);
 
 add_action('plugins_loaded', 'pi_chatbot_bootstrap');
 function pi_chatbot_bootstrap() {
@@ -50,6 +58,8 @@ function pi_chatbot_bootstrap() {
     Pi_Chatbot_Log::maybe_upgrade();
     Pi_Chatbot_Feedback::maybe_upgrade();
     Pi_Chatbot_Lead::maybe_upgrade();
+    Pi_Chatbot_FAQ_Engine::maybe_upgrade();
+    Pi_Chatbot_Graph_Store::maybe_upgrade();
     Pi_Chatbot_Indexer::instance();
     Pi_Chatbot_Rest::instance();
     Pi_Chatbot_Admin::instance();
@@ -60,6 +70,11 @@ function pi_chatbot_bootstrap() {
 // active theme isn't saigonhoreca-theme (hook doesn't exist), this add_action() is
 // harmless — it simply never gets called.
 add_action('sgh_after_flush_cache', ['Pi_Chatbot_Indexer', 'flush_answer_cache']);
+
+// Flush brand entity cache whenever terms in the product_brand taxonomy are created, edited, or deleted
+add_action('created_product_brand', ['Pi_Chatbot_Entities', 'flush_cache']);
+add_action('edited_product_brand', ['Pi_Chatbot_Entities', 'flush_cache']);
+add_action('delete_product_brand', ['Pi_Chatbot_Entities', 'flush_cache']);
 
 /**
  * Effective config = defaults merged with the saved option (changed via the admin page).

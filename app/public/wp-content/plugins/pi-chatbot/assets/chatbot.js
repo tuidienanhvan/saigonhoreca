@@ -158,6 +158,15 @@
         statusEl.textContent = text || '';
     }
 
+    function scrollToBottom(force) {
+        if (!messages) return;
+        var threshold = 50; // px from bottom
+        var isScrolledUp = (messages.scrollHeight - messages.scrollTop - messages.clientHeight) > threshold;
+        if (force || !isScrolledUp) {
+            messages.scrollTop = messages.scrollHeight;
+        }
+    }
+
     function setBusy(on) {
         messages.setAttribute('aria-busy', on ? 'true' : 'false');
     }
@@ -382,7 +391,7 @@
         var el = PiChatbotUI.buildMsgBubble(role, text, sources, feedbackId);
         wrap.appendChild(el);
         messages.appendChild(wrap);
-        messages.scrollTop = messages.scrollHeight;
+        scrollToBottom(true);
         return el;
     }
 
@@ -403,7 +412,7 @@
         col.className = 'pi-cb-msg-col';
         wrap.appendChild(col);
         messages.appendChild(wrap);
-        messages.scrollTop = messages.scrollHeight;
+        scrollToBottom(true);
         return col;
     }
 
@@ -426,7 +435,7 @@
             // being re-prompted for their phone number a second time for the same
             // price question.
             col.appendChild(PiChatbotUI.buildMsgBubble('bot', text, sources, feedbackId));
-            messages.scrollTop = messages.scrollHeight;
+            scrollToBottom(true);
             return;
         }
         var el = document.createElement('div');
@@ -436,13 +445,13 @@
             feedbackId: feedbackId,
             showLeadForm: showLeadForm,
             lastQuestion: lastQuestion,
-            onTick: function () { messages.scrollTop = messages.scrollHeight; },
+            onTick: function () { scrollToBottom(false); },
             onDone: function () {
                 activeTyping = null;
-                messages.scrollTop = messages.scrollHeight;
+                scrollToBottom(false);
             }
         });
-        messages.scrollTop = messages.scrollHeight;
+        scrollToBottom(true);
     }
 
     /** Animates EXACTLY the 3 finalized tiers, joined under 1 avatar/1 card (not split into
@@ -471,14 +480,7 @@
         var card = PiChatbotUI.renderProgressCard(col);
 
         // Tier 1 — "Thinking": a real, always-true first step — the assistant
-        // has RECEIVED the message and is about to process it — kept
-        // deliberately generic (never claims a specific finding) so it stays
-        // honest even before the router has run. Split out as its own tier
-        // (2026-07-29 fix) because it was previously MERGED into tier 2's row
-        // (the row opened as "Analyzing the question…" then silently morphed
-        // into "Identified: X" once classification finished) — visually that
-        // looked like only 2 categorized tiers (DATA LOOKUP/FACT CHECK) plus
-        // one uncategorized row, an inconsistent look flagged live.
+        // has RECEIVED the message and is about to process it.
         var readStep = PiChatbotUI.renderStepRow(card, 'thinking', 'Thinking', 'Reading your question');
         setStatus('Reading your question…');
 
@@ -488,9 +490,7 @@
             readStep.details.open = false;
 
             // Tier 2 — the REAL classification result (router intent/keywords/
-            // brand, or the fast-path fallback) — same describeThink() data as
-            // before, now under its own category label for the same visual
-            // treatment as tiers 3/4 below.
+            // brand, or the fast-path fallback).
             var thinkStep = PiChatbotUI.renderStepRow(card, 'thinking', 'Identifying', 'Analyzing the question');
             setStatus('Analyzing the question…');
 
@@ -501,7 +501,12 @@
                 PiChatbotUI.finishStep(thinkStep, think.label, think.lines);
                 thinkStep.details.open = false;
 
-                // Tier 3 — searching the data (always shown, CONTINUING within the same card).
+                if (!PiChatbotUI.needsSearchStep(trace)) {
+                    finishBotTurn(col, answerText, sources, feedbackId, showLeadForm, lastQuestion);
+                    return;
+                }
+
+                // Tier 3 — searching the data (shown for all intents except greetings).
                 setStatus('Searching the data…');
                 var searchStep = PiChatbotUI.renderStepRow(card, 'search', 'Data lookup', 'Searching the data');
 
@@ -513,13 +518,11 @@
                     searchStep.details.open = false;
 
                     if (!PiChatbotUI.needsVerifyStep(trace)) {
-                        // Tier 4 — answer bubble, sharing the column/avatar with the card above.
                         finishBotTurn(col, answerText, sources, feedbackId, showLeadForm, lastQuestion);
                         return;
                     }
 
-                    // Optional tier — the fact check, shown ONLY when it actually ran, so
-                    // the customer never sees a "checked" claim on an unchecked answer.
+                    // Optional tier — the fact check, shown ONLY when it actually ran.
                     setStatus('Checking the answer…');
                     var verifyStep = PiChatbotUI.renderStepRow(card, 'search', 'Fact check', 'Checking the answer against the data');
 
@@ -557,7 +560,7 @@
 
             wrap.appendChild(el);
             messages.appendChild(wrap);
-            messages.scrollTop = messages.scrollHeight;
+            scrollToBottom(true);
         }
     }
 
@@ -766,7 +769,7 @@
                     if (shown < target) {
                         shown = Math.min(target, shown + PiChatbotUI.TYPE_CHARS_PER_TICK);
                         el.textContent = fullText.slice(0, shown);
-                        messages.scrollTop = messages.scrollHeight;
+                        scrollToBottom(false);
                     }
                     if (shown < fullText.length || !streamEnded) {
                         setTimeout(tick, PiChatbotUI.TYPE_TICK_MS);
@@ -792,10 +795,6 @@
             var stagedAnimation = tracePromise.then(function () {
                 if (seq !== requestSeq || !traceEvent) return;
                 var card = PiChatbotUI.renderProgressCard(col);
-                // Same 4-tier shape as the buffered path's revealTraceThenAnswer()
-                // (Thinking -> Identifying -> Data lookup -> [Fact check]) — kept
-                // in sync so the customer sees an identical progress card whether
-                // this question streamed or not.
                 var readStep = PiChatbotUI.renderStepRow(card, 'thinking', 'Thinking', 'Reading your question');
                 setStatus('Reading your question…');
                 return PiChatbotUI.wait(400).then(function () {
@@ -810,6 +809,8 @@
                         var think = PiChatbotUI.describeThink(traceEvent);
                         PiChatbotUI.finishStep(thinkStep, think.label, think.lines);
                         thinkStep.details.open = false;
+
+                        if (!PiChatbotUI.needsSearchStep(traceEvent)) return;
 
                         setStatus('Searching the data…');
                         var searchStep = PiChatbotUI.renderStepRow(card, 'search', 'Data lookup', 'Searching the data');

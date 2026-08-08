@@ -335,6 +335,22 @@ pi_check('"hút mùi" still returns real exhaust-hood results — the fix did no
     !empty(array_filter($hood_results, function ($r) { return stripos($r['title'], 'exhaust') !== false || stripos($r['brand'], 'halton') !== false; })),
     empty($hood_results) ? '(no results at all)' : implode(', ', array_column($hood_results, 'title')));
 
+pi_section('Phase 3 — Retrieval Enhancement & LLM Fallback Chain');
+
+// 1. search_hybrid return_structured
+$struct = Pi_Chatbot_Retriever::search_hybrid('bếp gas', 6, ['return_structured' => true]);
+pi_check('search_hybrid return_structured returns status ok', ($struct['status'] ?? '') === 'ok', $struct['status'] ?? 'missing');
+pi_check('search_hybrid return_structured returns meta payload', isset($struct['meta']['tier_used']) && isset($struct['meta']['search_time_ms']), json_encode($struct['meta'] ?? []));
+pi_check('search_hybrid return_structured estimates token count', ($struct['meta']['token_estimate'] ?? 0) > 0, (string) ($struct['meta']['token_estimate'] ?? 0));
+
+// 2. search_semantic stub
+$sem = Pi_Chatbot_Retriever::search_semantic('bếp gas', 5);
+pi_check('search_semantic stub returns expected not_implemented status', ($sem['status'] ?? '') === 'not_implemented', $sem['status'] ?? 'missing');
+
+// 3. LLM Client call_with_fallback
+pi_check('Pi_Chatbot_LLM_Client has call_with_fallback method', method_exists('Pi_Chatbot_LLM_Client', 'call_with_fallback'), 'method missing');
+pi_check('Pi_Chatbot_LLM_Client has MODEL_FALLBACK_CHAIN constant', defined('Pi_Chatbot_LLM_Client::MODEL_FALLBACK_CHAIN'), 'constant missing');
+
 // pi_report() prints a summary from the SHARED pi_check() static state — when
 // run standalone that's exactly this suite's own totals; when run-all.php
 // requires this file alongside others, the same static keeps accumulating, so

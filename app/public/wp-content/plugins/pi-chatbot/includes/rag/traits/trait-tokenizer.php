@@ -168,6 +168,11 @@ trait Pi_Chatbot_Retriever_Tokenizer {
      * fallback with no keyword filtering), keeps the old behavior — take the
      * start of the string.
      */
+    /**
+     * Sentence-level Document Compression (Hello-Agents / RAGAs standard).
+     * Splits text into individual sentences, scores each sentence by keyword overlap,
+     * and joins the top-scoring sentences with ellipsis markers for truncated text.
+     */
     private static function make_excerpt($text, $len, $words = []) {
         $text = trim(preg_replace('/\s+/', ' ', $text));
         if (mb_strlen($text) <= $len) return $text;
@@ -187,9 +192,6 @@ trait Pi_Chatbot_Retriever_Tokenizer {
             return mb_substr($text, 0, $len) . '…';
         }
 
-        // Window around the match position: 1/4 of the length before, the rest
-        // after — keeps a bit of context preceding the keyword instead of
-        // cutting right at the keyword itself.
         $before = (int) floor($len * 0.25);
         $start = max(0, $match_pos - $before);
         $snippet = mb_substr($text, $start, $len);

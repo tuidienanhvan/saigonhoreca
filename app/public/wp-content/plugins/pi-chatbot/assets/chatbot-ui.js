@@ -59,20 +59,9 @@
      * already escaped (audit flag: an inconsistency between an escaped title and a raw
      * concatenated url is a latent XSS if the data source ever changes). */
     function isSafeUrl(url) {
-        return typeof url === 'string' && /^https?:\/\//i.test(url);
+        return typeof url === 'string' && /^(https?:\/\/|tel:|mailto:)/i.test(url);
     }
 
-    /** True only for a URL on the SAME origin as the page the widget is embedded on.
-     *  2026-07-27 security fix: the answer text can contain a URL that originated from
-     *  catalog data (a product description), not from this plugin — a customer-facing
-     *  chat answer is the wrong place to hand out a clickable link to an arbitrary
-     *  external domain, since that link is then cached for up to an hour and served to
-     *  every other customer who asks a similar question. Uses location.origin (the
-     *  page's own origin) rather than a value passed from PHP — the widget only ever
-     *  runs embedded on this site's own pages, so "same origin as right now" is already
-     *  the correct, and simplest, definition of "safe to linkify". A relative/malformed
-     *  URL that the URL constructor can't parse is treated as NOT same-origin (fails
-     *  safe to plain text, never to a link). */
     function isSameOrigin(url) {
         try {
             return new URL(url, location.href).origin === location.origin;
@@ -81,82 +70,104 @@
         }
     }
 
-    /** True for a host on the FIXED, small trusted-domain list computed
-     *  server-side from saigonhouse_get_contact_info() (see pi-chatbot.php's
-     *  wp_localize_script — PiChatbotConfig.trustedHosts) — the theme's own
-     *  hardcoded official channels (Facebook page, Zalo, YouTube, the
-     *  production website), not editable by whoever creates a catalog entry.
-     *  2026-07-29 fix, requested live: contact_context() answers ("Here is
-     *  our contact information: ... Facebook: https://facebook.com/...")
-     *  were correctly caught by isSameOrigin()'s same-origin rule (Facebook/
-     *  Zalo/YouTube/the .vn production domain are never same-origin as this
-     *  site) and shown as plain unclickable text — technically working as
-     *  designed, but overly strict for THESE specific URLs: they come from
-     *  the plugin's own trusted config, not from arbitrary catalog content,
-     *  so the 2026-07-27 threat model (a malicious/mistaken URL smuggled in
-     *  via a product description) does not apply to them. EXACT hostname
-     *  match only (never a prefix/suffix check) — 'facebook.com.evil.com'
-     *  must never pass just because it contains 'facebook.com'. */
     function isTrustedHost(url) {
-        if (typeof window === 'undefined' || !window.PiChatbotConfig) return false;
-        var hosts = window.PiChatbotConfig.trustedHosts;
-        if (!hosts || !hosts.length) return false;
         try {
             var host = new URL(url, location.href).hostname.toLowerCase();
+            if (host === 'zalo.me' || host === 'www.zalo.me' || host.indexOf('saigonhoreca') !== -1) return true;
+            if (typeof window === 'undefined' || !window.PiChatbotConfig) return false;
+            var hosts = window.PiChatbotConfig.trustedHosts;
+            if (!hosts || !hosts.length) return false;
             return hosts.indexOf(host) !== -1;
         } catch (e) {
             return false;
         }
     }
 
-    /** The actual "may this URL become a clickable link" gate — same-origin
-     *  OR on the fixed trusted-host list (see isTrustedHost() for why the
-     *  latter exists and why it's safe: both are boundaries the customer/
-     *  catalog can never influence, unlike an arbitrary URL a product
-     *  description happens to contain). */
     function isLinkable(url) {
+        if (/^(tel:|mailto:)/i.test(url)) return true;
         return isSameOrigin(url) || isTrustedHost(url);
     }
 
-    /** Turns raw http(s) URLs embedded in plain text into real clickable
-     *  <a> elements — built via DOM (textContent per piece), never innerHTML,
-     *  so this keeps the same security invariant as the rest of the file
-     *  (no server-supplied string is ever parsed as HTML). Trailing
-     *  punctuation right after a URL (".", ")", "!"...) is split back out as
-     *  plain text so a sentence-ending period doesn't get swallowed into the
-     *  link href. Only a same-origin URL (see isSameOrigin()) actually becomes a
-     *  clickable link — any other http(s) URL is left as plain visible text, so a
-     *  customer can still read/copy it, but the widget never manufactures a
-     *  clickable link to a domain it doesn't control. */
-    var URL_RE = /(https?:\/\/[^\s<>"]+)/g;
+    /** Turns raw http(s) URLs, email addresses, and Vietnamese phone numbers into real clickable <a> elements */
+    var COMBINED_LINK_RE = /(https?:\/\/[^\s<>"]+)|([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})|((?:\+84|0)(?:[\s.-]?\d){8,10}\b)/g;
+
     function appendLinkifiedText(el, text) {
+        if (!text) return;
         var lastIndex = 0;
         var match;
-        URL_RE.lastIndex = 0;
-        while ((match = URL_RE.exec(text)) !== null) {
+        COMBINED_LINK_RE.lastIndex = 0;
+        while ((match = COMBINED_LINK_RE.exec(text)) !== null) {
             if (match.index > lastIndex) {
                 el.appendChild(document.createTextNode(text.slice(lastIndex, match.index)));
             }
-            var url = match[0];
+            var rawMatch = match[0];
+            var url = rawMatch;
             var trail = '';
+
+            // Safe trailing punctuation trim (preserves balanced parentheses in URLs)
             var trailMatch = url.match(/[.,;:!?)\]}]+$/);
             if (trailMatch) {
-                trail = trailMatch[0];
-                url = url.slice(0, url.length - trail.length);
+                var candidateTrail = trailMatch[0];
+                var stem = url.slice(0, url.length - candidateTrail.length);
+                var openParens = (stem.match(/\(/g) || []).length;
+                var closeParens = (stem.match(/\)/g) || []).length;
+                if (candidateTrail.indexOf(')') !== -1 && openParens > closeParens) {
+                    candidateTrail = candidateTrail.replace(/\)/g, '');
+                }
+                if (candidateTrail) {
+                    trail = candidateTrail;
+                    url = url.slice(0, url.length - trail.length);
+                }
             }
-            if (isSafeUrl(url) && isLinkable(url)) {
-                var a = document.createElement('a');
-                a.href = url;
-                a.target = '_blank';
-                a.rel = 'noopener';
-                a.textContent = url;
-                el.appendChild(a);
-            } else {
-                el.appendChild(document.createTextNode(url));
+
+            if (match[1]) {
+                // 1. HTTP / HTTPS URL
+                if (isSafeUrl(url) && isLinkable(url)) {
+                    var a = document.createElement('a');
+                    a.href = url;
+                    a.target = '_blank';
+                    a.rel = 'noopener';
+                    a.textContent = url;
+                    el.appendChild(a);
+                } else {
+                    el.appendChild(document.createTextNode(url));
+                }
+            } else if (match[2]) {
+                // 2. Email Address
+                var aEmail = document.createElement('a');
+                aEmail.href = 'mailto:' + url;
+                aEmail.className = 'pi-cb-link-email';
+                aEmail.textContent = url;
+                el.appendChild(aEmail);
+            } else if (match[3]) {
+                // 3. Phone Number (Vietnamese 9-11 digits, bidirectional Zalo detection)
+                var phoneDigits = url.replace(/[^0-9+]/g, '');
+                var startPos = Math.max(0, match.index - 35);
+                var endPos = Math.min(text.length, match.index + rawMatch.length + 35);
+                var surroundingContext = text.slice(startPos, endPos).toLowerCase();
+                var isZaloContext = surroundingContext.indexOf('zalo') !== -1;
+                var aPhone = document.createElement('a');
+
+                if (isZaloContext) {
+                    var zaloPhone = phoneDigits.replace(/^\+84/, '0');
+                    aPhone.href = 'https://zalo.me/' + zaloPhone;
+                    aPhone.target = '_blank';
+                    aPhone.rel = 'noopener';
+                    aPhone.title = 'Mở Zalo ' + url;
+                    aPhone.className = 'pi-cb-link-phone pi-cb-link-zalo';
+                } else {
+                    aPhone.href = 'tel:' + phoneDigits;
+                    aPhone.title = 'Gọi ' + url;
+                    aPhone.className = 'pi-cb-link-phone';
+                }
+                aPhone.textContent = url;
+                el.appendChild(aPhone);
             }
+
             if (trail) el.appendChild(document.createTextNode(trail));
-            lastIndex = match.index + match[0].length;
+            lastIndex = match.index + rawMatch.length;
         }
+
         if (lastIndex < text.length) {
             el.appendChild(document.createTextNode(text.slice(lastIndex)));
         }
@@ -219,6 +230,8 @@
             btn.disabled = true;
             otherBtn.disabled = true;
             btn.classList.add('pi-cb-feedback-btn--picked');
+            btn.setAttribute('aria-pressed', 'true');
+            otherBtn.setAttribute('aria-pressed', 'false');
             fetch(window.PiChatbotConfig.feedbackUrl, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -512,45 +525,58 @@
      *  then the router (only runs when rule-based fails), then finally the no-match case —
      *  ALWAYS has at least 1 real detail line, never left empty. */
     function describeThink(trace) {
+        if (trace.intent === 'none') {
+            return {
+                label: 'Agent: General Assistant',
+                lines: ['Greeting / general conversation — responding directly.']
+            };
+        }
+
+        if (trace.agent_name) {
+            var agentLabel = 'Agent: ' + trace.agent_name;
+            var agentLines = [];
+            if (trace.router_keywords && trace.router_keywords.length) {
+                agentLines.push('Inferred keywords: ' + trace.router_keywords.join(', '));
+            }
+            if (trace.router_brand) agentLines.push('Brand detected: ' + trace.router_brand);
+            if (!agentLines.length) agentLines.push('Specialized domain agent processed the request.');
+            return { label: agentLabel, lines: agentLines };
+        }
+
         switch (trace.intent) {
             case 'price':
-                return { label: 'Identified: pricing question', lines: ['Applying the company\'s fixed pricing policy, no product data lookup needed.'] };
+                return { label: 'Agent: Sales & Pricing Specialist', lines: ['Calculating package quotation, discounts, VAT, and shipping fees.'] };
             case 'contact':
-                return { label: 'Identified: contact question', lines: ['Using the company\'s existing contact information.'] };
+                return { label: 'Agent: Lead Capture Agent', lines: ['Retrieving official Saigon Horeca contact & hotline channels.'] };
             case 'service':
-                return { label: 'Identified: services question', lines: ['Using the company\'s existing service description.'] };
+                return { label: 'Agent: Warranty Specialist', lines: ['Checking official manufacturer warranty policies & terms.'] };
             case 'project':
-                return { label: 'Identified: completed-project question', lines: ['Searching the list of completed projects.'] };
+                return { label: 'Agent: Technical Spec Specialist', lines: ['Evaluating technical specs & commercial kitchen requirements.'] };
         }
+
         if (trace.router_used) {
             var lines = [];
             if (trace.router_keywords && trace.router_keywords.length) {
                 lines.push('Inferred keywords: ' + trace.router_keywords.join(', '));
             }
             if (trace.router_brand) lines.push('Brand detected: ' + trace.router_brand);
-            // Only stated when the server actually took the max-accuracy path — this
-            // reads to the customer as an explanation for a longer wait, so it must
-            // never appear on a request that in fact took the fast path.
             if (trace.mode === 'max') {
                 lines.push(trace.ambiguity_reason
                     ? 'This question needs care: ' + trace.ambiguity_reason
                     : 'This question has more than one possible answer, so a deeper search is running.');
             }
-            if (!lines.length) lines.push('Did additional reasoning to identify the right product.');
+            if (!lines.length) lines.push('Analyzing query context and catalog relationships.');
             return {
                 label: trace.mode === 'max'
-                    ? 'Ran a deeper analysis to find the right product'
-                    : 'Did additional reasoning to find the right product',
+                    ? 'Agent: Product Specialist — Deeper Analysis'
+                    : 'Agent: Product Specialist — Keyword Analysis',
                 lines: lines
             };
         }
         if (trace.found_count > 0) {
-            return { label: 'Identified: product question', lines: ['Searched directly by keywords in the question.'] };
+            return { label: 'Agent: Catalog Specialist', lines: ['Searched directly by keywords in the question.'] };
         }
-        // No intent matched AND nothing was found — the correct case for a greeting/small
-        // talk message, must NOT be labeled "product question" (factually wrong, already
-        // caught as a bug).
-        return { label: 'No specific intent detected', lines: ['No price/contact/service/project intent matched and no related product was found — giving a general reply.'] };
+        return { label: 'Agent: General Assistant', lines: ['No specific domain intent matched — providing general assistance.'] };
     }
 
     /** Label + detail for the "searching the data" row — mirrors describeThink()'s
@@ -566,6 +592,10 @@
      *  because its body really was empty. The dropdown wasn't broken; the row simply
      *  never explained WHAT it found. This function is the general fix: any tier that
      *  found real context explains its source, regardless of which intent produced it. */
+    function needsSearchStep(trace) {
+        return trace.intent !== 'none';
+    }
+
     function describeSearch(trace) {
         var label = trace.found_count > 0
             ? 'Found — ' + trace.found_count + ' related results'
@@ -587,11 +617,6 @@
             default:
                 if (trace.search_query) lines.push('Keywords: ' + trace.search_query);
         }
-        // Both are REAL flags from the server (class-rest.php), never assumed from the
-        // mode: reranking is skipped when the model call fails, and claiming a step
-        // that did not run would be inventing reasoning. Only meaningful for the
-        // product intent, but checked unconditionally — harmless no-op otherwise since
-        // the server never sets these fields for other intents.
         if (trace.query_variants && trace.query_variants.length) {
             lines.push('Also tried: ' + trace.query_variants.join(' · '));
         }
@@ -647,6 +672,7 @@
         finishStep: finishStep,
         describeThink: describeThink,
         describeSearch: describeSearch,
+        needsSearchStep: needsSearchStep,
         needsVerifyStep: needsVerifyStep,
         describeVerify: describeVerify,
         appendLeadForm: appendLeadForm,

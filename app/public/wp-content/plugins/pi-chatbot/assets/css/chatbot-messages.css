@@ -66,10 +66,53 @@
     color: var(--cb-accent);
     text-decoration: underline;
     text-decoration-color: var(--cb-accent);
-    word-break: break-all;
+    text-underline-offset: 3px;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    font-weight: 600;
 }
 #pi-chatbot-panel .pi-cb-msg a:hover {
     color: var(--cb-accent-hover);
+    text-decoration-thickness: 2px;
+}
+#pi-chatbot-panel .pi-cb-msg a.pi-cb-link-phone {
+    color: var(--cb-accent);
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    padding: 1px 6px;
+    background: color-mix(in srgb, var(--cb-accent) 15%, transparent);
+    border: 1px solid color-mix(in srgb, var(--cb-accent) 30%, transparent);
+    border-radius: 6px;
+    margin: 1px 2px;
+    text-decoration: underline;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+#pi-chatbot-panel .pi-cb-msg a.pi-cb-link-phone:hover {
+    background: color-mix(in srgb, var(--cb-accent) 30%, transparent);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px color-mix(in srgb, var(--cb-accent) 25%, transparent);
+}
+#pi-chatbot-panel .pi-cb-msg a.pi-cb-link-email {
+    color: var(--cb-accent);
+    font-weight: 600;
+    text-decoration: underline;
+    overflow-wrap: anywhere;
+}
+#pi-chatbot-panel .pi-cb-msg a.pi-cb-link-zalo {
+    color: #0068ff;
+    background: color-mix(in srgb, #0068ff 15%, transparent);
+    border-color: color-mix(in srgb, #0068ff 30%, transparent);
+}
+#pi-chatbot-panel .pi-cb-msg a.pi-cb-link-zalo:hover {
+    background: color-mix(in srgb, #0068ff 30%, transparent);
+    box-shadow: 0 2px 8px color-mix(in srgb, #0068ff 30%, transparent);
+}
+#pi-chatbot-panel .pi-cb-msg.pi-cb-msg--center,
+#pi-chatbot-panel .pi-cb-msg-center,
+#pi-chatbot-panel .pi-cb-text-center {
+    text-align: center;
 }
 #pi-chatbot-panel .pi-cb-msg-wrap--bot .pi-cb-msg {
     background: color-mix(in srgb, var(--cb-text) 4%, transparent);

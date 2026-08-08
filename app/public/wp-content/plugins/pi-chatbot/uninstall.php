@@ -57,6 +57,16 @@ function pi_chatbot_uninstall_cleanup() {
     $vectors_table = $wpdb->prefix . 'pi_chatbot_vectors';
     $wpdb->query("DROP TABLE IF EXISTS {$vectors_table}");
 
+    // Graph store tables (see class-graph-store.php)
+    $wpdb->query("DROP TABLE IF EXISTS {$wpdb->prefix}pi_chatbot_nodes");
+    $wpdb->query("DROP TABLE IF EXISTS {$wpdb->prefix}pi_chatbot_edges");
+    $wpdb->query("DROP TABLE IF EXISTS {$wpdb->prefix}pi_chatbot_persona");
+    delete_option('pi_chatbot_graph_db_version');
+
+    // FAQ engine tables (see class-faq-engine.php)
+    $wpdb->query("DROP TABLE IF EXISTS {$wpdb->prefix}pi_chatbot_faq");
+    delete_option('pi_chatbot_faq_db_version');
+
     // The embedding backfill is a self-rescheduling single cron event: if one is
     // pending at uninstall, WordPress would keep firing a hook whose callback no
     // longer exists.

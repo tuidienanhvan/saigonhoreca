@@ -17,16 +17,18 @@
 
 if (!defined('ABSPATH')) exit;
 
-require_once __DIR__ . '/retriever/trait-tokenizer.php';
-require_once __DIR__ . '/retriever/trait-scoring.php';
-require_once __DIR__ . '/retriever/trait-fulltext-search.php';
-require_once __DIR__ . '/retriever/trait-product-codes.php';
+require_once __DIR__ . '/traits/trait-tokenizer.php';
+require_once __DIR__ . '/traits/trait-scoring.php';
+require_once __DIR__ . '/traits/trait-fulltext-search.php';
+require_once __DIR__ . '/traits/trait-product-codes.php';
+require_once __DIR__ . '/traits/trait-semantic-search.php';
 
 class Pi_Chatbot_Retriever {
     use Pi_Chatbot_Retriever_Tokenizer;
     use Pi_Chatbot_Retriever_Scoring;
     use Pi_Chatbot_Retriever_FulltextSearch;
     use Pi_Chatbot_Retriever_ProductCodes;
+    use Pi_Chatbot_Retriever_Semantic;
 
     // Constants used repeatedly throughout the file (audit flag: previously these
     // were hardcoded numbers scattered around — 3 appeared both in
@@ -414,29 +416,37 @@ class Pi_Chatbot_Retriever {
      * @return array Same shape as search().
      */
     public static function search_hybrid($question, $top_k = 12, $opts = []) {
+        $start_time = microtime(true);
+        $return_structured = !empty($opts['return_structured']);
         $question = trim(wp_strip_all_tags((string) $question));
-        if ($question === '') return [];
+        if ($question === '') {
+            return $return_structured ? ['rows' => [], 'meta' => ['search_time_ms' => 0.0], 'status' => 'empty'] : [];
+        }
 
-        // Tier 0 short-circuits fusion for the same reason it short-circuits
-        // search(): a product code is an IDENTIFIER, and an exact identifier
-        // match is ground truth, not one opinion among several. Fusing it with
-        // near-miss neighbours can only dilute a result that is already certain —
-        // measured on the golden set, letting a code query through the full
-        // pipeline was the ONLY regression the reranker caused
-        // ("tủ đông FT-158MA-S"), because a model re-reading titles has nothing
-        // to add to a string that either matches or doesn't.
         $codes = self::extract_product_codes($question);
         if ($codes) {
             $code_results = self::search_by_product_code($codes, $top_k);
-            if ($code_results) return $code_results;
+            if ($code_results) {
+                if ($return_structured) {
+                    return [
+                        'rows' => $code_results,
+                        'meta' => [
+                            'tier_used' => 'tier0_product_code',
+                            'queries_run' => 1,
+                            'rrf_k' => 0,
+                            'total_candidates' => count($code_results),
+                            'deduped_count' => count($code_results),
+                            'search_time_ms' => round((microtime(true) - $start_time) * 1000, 2),
+                        ],
+                        'status' => 'ok',
+                    ];
+                }
+                return $code_results;
+            }
         }
 
         $settings = pi_chatbot_settings();
         $rrf_k = (int) $settings['rrf_k'];
-
-        // Gather deeper than we return: fusion needs to see a result at rank 8
-        // in one list to reward it for also appearing at rank 6 in another. A
-        // pool cut to $top_k would throw that evidence away before fusing.
         $pool = max(20, (int) $top_k * 3);
 
         $queries = [$question];
@@ -455,7 +465,27 @@ class Pi_Chatbot_Retriever {
             $lexical = self::search($q, $pool);
             if ($lexical) $ranked_lists[] = $lexical;
         }
-        if (!$ranked_lists) return [];
+
+        // Semantic integration point for future vector DB results
+        $semantic_res = self::search_semantic($question, $top_k);
+        if (!empty($semantic_res['rows'])) {
+            $ranked_lists[] = $semantic_res['rows'];
+        }
+
+        if (!$ranked_lists) {
+            return $return_structured ? [
+                'rows' => [],
+                'meta' => [
+                    'tier_used' => 'none',
+                    'queries_run' => count($queries),
+                    'rrf_k' => $rrf_k,
+                    'total_candidates' => 0,
+                    'deduped_count' => 0,
+                    'search_time_ms' => round((microtime(true) - $start_time) * 1000, 2),
+                ],
+                'status' => 'empty',
+            ] : [];
+        }
 
         $fused = [];
         foreach ($ranked_lists as $list) {
@@ -466,14 +496,21 @@ class Pi_Chatbot_Retriever {
         }
         arsort($fused);
         $top_ids = array_slice(array_keys($fused), 0, max(1, (int) $top_k));
-        if (!$top_ids) return [];
+        if (!$top_ids) {
+            return $return_structured ? [
+                'rows' => [],
+                'meta' => [
+                    'tier_used' => 'none',
+                    'queries_run' => count($queries),
+                    'rrf_k' => $rrf_k,
+                    'total_candidates' => 0,
+                    'deduped_count' => 0,
+                    'search_time_ms' => round((microtime(true) - $start_time) * 1000, 2),
+                ],
+                'status' => 'empty',
+            ] : [];
+        }
 
-        // Re-fetch as rows instead of reusing the formatted arrays from the legs:
-        // dedupe_by_content() compares full content_text (a formatted row only
-        // carries a 400-char excerpt, and the same product can produce DIFFERENT
-        // excerpts under different query variants), and re-running make_excerpt()
-        // over the union of all query words gives the LLM a passage chosen
-        // against everything that was asked, not just the first phrasing.
         $rows = self::fetch_rows_by_ids($top_ids);
         foreach ($rows as $row) {
             $row->score = (float) ($fused[(int) $row->post_id] ?? 0.0);
@@ -483,6 +520,30 @@ class Pi_Chatbot_Retriever {
             list($long, $short) = self::extract_keyword_list($q);
             $all_words = array_merge($all_words, $long, $short);
         }
-        return self::format_rows(self::dedupe_by_content($rows), array_values(array_unique($all_words)));
+
+        $deduped = self::dedupe_by_content($rows);
+        $formatted = self::format_rows($deduped, array_values(array_unique($all_words)));
+
+        if ($return_structured) {
+            $token_est = 0;
+            foreach ($formatted as $r) {
+                $token_est += (int) ceil(mb_strlen($r['title'] . ' ' . $r['excerpt']) / 4);
+            }
+            return [
+                'rows' => $formatted,
+                'meta' => [
+                    'tier_used' => 'hybrid_rrf',
+                    'queries_run' => count($queries),
+                    'rrf_k' => $rrf_k,
+                    'total_candidates' => count($rows),
+                    'deduped_count' => count($formatted),
+                    'token_estimate' => $token_est,
+                    'search_time_ms' => round((microtime(true) - $start_time) * 1000, 2),
+                ],
+                'status' => 'ok',
+            ];
+        }
+
+        return $formatted;
     }
 }
