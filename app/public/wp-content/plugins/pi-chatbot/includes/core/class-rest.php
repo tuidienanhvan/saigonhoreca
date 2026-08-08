@@ -214,6 +214,14 @@ class Pi_Chatbot_Rest {
         $rerank_used      = $routing['rerank_used'];
         $rerank_confidence = $routing['rerank_confidence'];
         $low_confidence   = $routing['low_confidence'];
+        // Specialist prompt for whichever agent the supervisor routed this turn
+        // to — passed through to Generator as $options['agent_prompt'] (see
+        // build_system_prompt() section 4b). Defaulted rather than accessed
+        // directly: resolve_context() always sets it, but a missing key here
+        // would silently drop the agent's safety rules instead of failing
+        // loudly, which is the worst possible failure mode for this particular
+        // value.
+        $agent_prompt     = $routing['agent_prompt'] ?? '';
 
         // Log ONLY on the fresh path (not cache hits — a cached question is a
         // repeat of one already logged; logging it again would inflate counts
@@ -229,7 +237,7 @@ class Pi_Chatbot_Rest {
             $result = self::budget_exhausted_result($context);
             $mark('generate');
         } else {
-            $gen_opts = ['intent' => $intent, 'difficulty' => $difficulty];
+            $gen_opts = ['intent' => $intent, 'difficulty' => $difficulty, 'agent_prompt' => $agent_prompt];
             $result = Pi_Chatbot_Generator::answer($message, $context, $history, $gen_opts);
             $mark('generate');
 
@@ -254,7 +262,7 @@ class Pi_Chatbot_Rest {
             if ($check !== null) {
                 $verified = $check['faithful'];
                 if (!$check['faithful']) {
-                    $retry_opts = ['correction' => $check['issue'], 'intent' => $intent, 'difficulty' => $difficulty];
+                    $retry_opts = ['correction' => $check['issue'], 'intent' => $intent, 'difficulty' => $difficulty, 'agent_prompt' => $agent_prompt];
                     $retry = Pi_Chatbot_Generator::answer($message, $context, $history, $retry_opts);
                     if (!is_wp_error($retry)) {
                         $result = $retry;
@@ -478,7 +486,7 @@ class Pi_Chatbot_Rest {
 
         self::stream_emit('meta', ['trace' => $trace]);
 
-        $stream_opts = ['intent' => $routing['intent'], 'difficulty' => $routing['difficulty']];
+        $stream_opts = ['intent' => $routing['intent'], 'difficulty' => $routing['difficulty'], 'agent_prompt' => $routing['agent_prompt'] ?? ''];
         $result = Pi_Chatbot_Generator::answer_streaming($message, $routing['context'], $history, function ($delta) {
             self::stream_emit('delta', ['text' => $delta]);
         }, $stream_opts);
@@ -801,50 +809,29 @@ class Pi_Chatbot_Rest {
             switch ($intent) {
                 case 'none':
                     $context = [];
-                    if (!$agent_name) {
-                        $agent_id = 'general';
-                        $agent_name = 'General Assistant';
-                    }
                     break;
                 case 'contact':
                     $context = array_merge(Pi_Chatbot_Retriever::contact_context(), $context);
-                    if (!$agent_name) {
-                        $agent_id = 'lead_capture';
-                        $agent_name = 'Lead Capture Agent';
-                        $tool_used = 'contact_lookup';
-                    }
+                    $tool_used = 'contact_lookup';
                     break;
                 case 'price':
                     $context = array_merge(Pi_Chatbot_Retriever::price_context(), $context);
-                    if (!$agent_name) {
-                        $agent_id = 'sales';
-                        $agent_name = 'Sales & Pricing Specialist';
-                        // Honest label: price_context() supplies the company's
-                        // real "pricing depends on configuration, call the
-                        // hotline" policy. No calculation happens.
-                        $tool_used = 'price_policy';
-                    }
+                    // Honest label: price_context() supplies the company's real
+                    // "pricing depends on configuration, call the hotline"
+                    // policy. No calculation happens.
+                    $tool_used = 'price_policy';
                     break;
                 case 'service':
                     $context = array_merge(Pi_Chatbot_Retriever::service_context(), $context);
-                    if (!$agent_name) {
-                        $agent_id = 'warranty';
-                        $agent_name = 'Warranty Specialist';
-                        // Honest label: service_context() returns the theme's
-                        // real service description. There is no verified
-                        // warranty-policy data anywhere in this site, so no
-                        // warranty terms can be stated — see the removal note
-                        // in includes/tools/class-tool-registry.php.
-                        $tool_used = 'service_lookup';
-                    }
+                    // Honest label: service_context() returns the theme's real
+                    // service description. There is no verified warranty-policy
+                    // data anywhere on this site, so no warranty terms can be
+                    // stated — see includes/tools/class-tool-registry.php.
+                    $tool_used = 'service_lookup';
                     break;
                 case 'project':
                     $context = array_merge(Pi_Chatbot_Retriever::search_projects($message, (int) $settings['top_k']) ?: [], $context);
-                    if (!$agent_name) {
-                        $agent_id = 'tech_spec';
-                        $agent_name = 'Technical Spec Specialist';
-                        $tool_used = 'project_search';
-                    }
+                    $tool_used = 'project_search';
                     break;
                 default: // 'product'
                     // The router returns the SAME information need expressed
@@ -965,6 +952,32 @@ class Pi_Chatbot_Rest {
         }
         if ($mode !== 'max') $mark('retrieve');
 
+        // ── Agent routing (2026-08-08) ──────────────────────────────────────
+        // Until now the switch above ALSO hand-assigned $agent_id/$agent_name,
+        // duplicating the mapping that Pi_Chatbot_Supervisor_Agent::route_intent()
+        // already owned — two copies that could drift, and did: the switch
+        // labelled a greeting 'general' while route_intent() had no 'none' case
+        // and routed it to 'sales'. The supervisor is now the only place that
+        // mapping lives, and the agent class it names supplies the specialist
+        // system prompt for this turn (Generator::build_system_prompt(), section
+        // 4b). Those prompts carry the anti-fabrication rules added after four
+        // tools were found inventing warranty terms, discounts and capacities,
+        // so this wiring is what makes them actually bind.
+        $registry = Pi_Chatbot_Agent_Registry::get_instance();
+        $agent_id = $registry->get_agent('supervisor')->route_intent($message, (string) $intent);
+        $agent = $registry->get_agent($agent_id);
+        if ($agent) {
+            $agent_name = $agent->get_name();
+            $agent_prompt = $agent->get_system_prompt($context);
+        } else {
+            // An intent mapped to an id with no registered class — should be
+            // impossible, but never let routing break a customer's answer:
+            // fall through with no specialisation, which is exactly the
+            // behaviour this endpoint had before agents existed.
+            $agent_name = null;
+            $agent_prompt = '';
+        }
+
         return [
             'context'           => $context,
             'router_used'       => $router_used,
@@ -981,6 +994,7 @@ class Pi_Chatbot_Rest {
             'low_confidence'    => $low_confidence,
             'agent_id'          => $agent_id,
             'agent_name'        => $agent_name,
+            'agent_prompt'      => $agent_prompt,
             'tool_used'         => $tool_used,
         ];
     }

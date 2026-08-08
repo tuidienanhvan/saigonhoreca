@@ -38,8 +38,29 @@ class Pi_Chatbot_Supervisor_Agent implements Pi_Chatbot_Agent_Interface {
         return [];
     }
 
+    /**
+     * Maps a router intent to the agent that should answer it.
+     *
+     * This is now the SINGLE source of truth for that mapping — until
+     * 2026-08-08 the same table also existed, hand-written, inside
+     * Pi_Chatbot_Rest::resolve_context()'s intent switch, so the two could
+     * (and did) disagree.
+     *
+     * 2026-08-08 fix: 'none' (greeting / small talk / off-topic) had no case
+     * and fell through `default` to 'sales', so "chào bạn" was answered under
+     * a sales-specialist persona — while the REST layer separately labelled
+     * the same turn agent_id='general'. Both now agree, and 'general' has a
+     * real agent class behind it.
+     *
+     * `default` still returns 'sales' because the remaining unlisted intent is
+     * 'product', which genuinely belongs to sales; an unknown/garbage intent
+     * landing there is also the safest of the five (product advice, grounded
+     * in retrieved catalog rows).
+     */
     public function route_intent(string $message, string $intent): string {
         switch ($intent) {
+            case 'none':
+                return 'general';
             case 'price':
             case 'product':
                 return 'sales';

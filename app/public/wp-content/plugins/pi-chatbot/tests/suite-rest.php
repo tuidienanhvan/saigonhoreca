@@ -507,6 +507,86 @@ pi_with_settings(['router_enabled' => false], function () {
 });
 
 // ── Stage 2 — feedback endpoint ──────────────────────────────────────────────
+// ── Agent routing + specialist prompts actually reaching the LLM (2026-08-08)
+// These are the assertions the previous "multi-agent" test suite never had:
+// it asserted classes existed and methods returned strings, but 0 of its 79
+// checks touched the real request path, so the agent layer could have been
+// entirely disconnected (it was) and every test still passed.
+//
+// What matters here is not that an agent object exists — it is that the text
+// the agent returns from get_system_prompt() ends up in the SYSTEM MESSAGE of
+// the real LLM call ask() makes. That is verified by reading the intercepted
+// request body, not by trusting the plumbing.
+pi_section('agent routing reaches the LLM: specialist prompt lands in the system message');
+
+pi_with_settings(['router_enabled' => true, 'llm7_keys' => ['k'], 'router_keys' => []], function () {
+    // intent='service' -> supervisor routes to the warranty agent, whose prompt
+    // forbids stating warranty terms. That prompt exists precisely because a
+    // removed tool used to invent them.
+    pi_reset_state();
+    $captured_system = null;
+    pi_http_stub(function ($args, $url, $i) use (&$captured_system) {
+        $body = json_decode($args['body'], true);
+        if ($i === 0) {
+            return pi_http_content(wp_json_encode([
+                'intent' => 'service', 'keywords_en' => [], 'keywords_vi' => [], 'brand' => null,
+                'difficulty' => 'easy', 'query_variants' => [], 'ambiguity_reason' => '',
+            ]));
+        }
+        if ($captured_system === null && !empty($body['messages'][0]['content'])) {
+            $captured_system = $body['messages'][0]['content'];
+        }
+        return pi_http_content('ok');
+    });
+    $res = pi_rest_ask('bảo hành thế nào ' . wp_rand(), '10.10.50.1');
+    $data = is_wp_error($res) ? null : $res->get_data();
+
+    pi_check("intent='service' is routed to the warranty agent by the supervisor",
+        $data && ($data['trace']['agent_id'] ?? null) === 'warranty',
+        $data ? var_export($data['trace']['agent_id'] ?? null, true) : 'error');
+
+    pi_check('the warranty agent\'s specialist prompt is present in the real LLM system message',
+        $captured_system !== null && mb_strpos($captured_system, 'KHÔNG nêu thời hạn bảo hành') !== false,
+        $captured_system === null ? 'no system message captured' : 'section 4b missing');
+
+    pi_check('the security section still comes AFTER the agent prompt (agent text cannot displace it)',
+        $captured_system !== null
+            && mb_strpos($captured_system, '4b. AGENT SPECIALIZATION') !== false
+            && mb_strpos($captured_system, '5. SECURITY') > mb_strpos($captured_system, '4b. AGENT SPECIALIZATION'));
+});
+
+pi_with_settings(['router_enabled' => true, 'llm7_keys' => ['k'], 'router_keys' => []], function () {
+    // The 2026-08-08 routing bug: intent='none' had no case in route_intent(),
+    // so a greeting fell through `default` to the SALES agent while the REST
+    // layer separately labelled it 'general'. Pin both halves.
+    pi_reset_state();
+    $captured_system = null;
+    pi_http_stub(function ($args, $url, $i) use (&$captured_system) {
+        $body = json_decode($args['body'], true);
+        if ($i === 0) {
+            return pi_http_content(wp_json_encode([
+                'intent' => 'none', 'keywords_en' => [], 'keywords_vi' => [], 'brand' => null,
+                'difficulty' => 'easy', 'query_variants' => [], 'ambiguity_reason' => '',
+            ]));
+        }
+        if ($captured_system === null && !empty($body['messages'][0]['content'])) {
+            $captured_system = $body['messages'][0]['content'];
+        }
+        return pi_http_content('ok');
+    });
+    $res = pi_rest_ask('chào bạn ' . wp_rand(), '10.10.50.2');
+    $data = is_wp_error($res) ? null : $res->get_data();
+
+    pi_check("a greeting (intent='none') routes to 'general', NOT to the sales agent",
+        $data && ($data['trace']['agent_id'] ?? null) === 'general',
+        $data ? var_export($data['trace']['agent_id'] ?? null, true) : 'error');
+
+    pi_check('the general agent prompt (not the sales one) reaches the LLM',
+        $captured_system !== null
+            && mb_strpos($captured_system, 'chào hỏi hoặc hỏi chung chung') !== false
+            && mb_strpos($captured_system, 'KHÔNG đưa ra con số giá') === false);
+});
+
 pi_section('ask() attaches feedback_id, feedback() records a real vote (Stage 2)');
 
 function pi_rest_feedback($feedback_id, $rating, $ip = '10.20.20.1') {

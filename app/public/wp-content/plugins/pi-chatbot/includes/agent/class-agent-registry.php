@@ -12,6 +12,7 @@ if (!defined('ABSPATH')) {
 require_once __DIR__ . '/interface-agent.php';
 require_once __DIR__ . '/class-handoff-state.php';
 require_once __DIR__ . '/class-supervisor-agent.php';
+require_once __DIR__ . '/class-general-agent.php';
 require_once __DIR__ . '/class-sales-agent.php';
 require_once __DIR__ . '/class-tech-spec-agent.php';
 require_once __DIR__ . '/class-lead-capture-agent.php';
@@ -34,6 +35,7 @@ class Pi_Chatbot_Agent_Registry {
 
     private function register_default_agents(): void {
         $this->register(new Pi_Chatbot_Supervisor_Agent());
+        $this->register(new Pi_Chatbot_General_Agent());
         $this->register(new Pi_Chatbot_Sales_Agent());
         $this->register(new Pi_Chatbot_Tech_Spec_Agent());
         $this->register(new Pi_Chatbot_Lead_Capture_Agent());
