@@ -57,7 +57,25 @@ class Pi_Chatbot_Generator {
                 $item['excerpt']
             );
         }
-        return "<<<REFERENCE_DATA>>>\n" . implode("\n", $lines) . "\n<<<END_REFERENCE_DATA>>>";
+        $body = implode("\n", $lines);
+
+        // 2026-08-08: escape the delimiters INSIDE the catalog text before
+        // wrapping. Pi_Chatbot_Security_Audit::sanitize_reference_data() has
+        // existed since the guardrail was written but had NO caller anywhere —
+        // so this half of the injection defence was dead code while its
+        // sibling (inspect(), on the customer's own message) ran on every
+        // request.
+        //
+        // The threat it closes is the one the block below advertises: product
+        // titles and descriptions are written by whoever creates the catalog
+        // entry, not by this plugin. A description containing the literal
+        // string "<<<END_REFERENCE_DATA>>>" would close the data block early,
+        // and everything after it would read to the model as trusted
+        // instructions rather than as catalog content — defeating the very
+        // delimiters this method adds.
+        $body = Pi_Chatbot_Security_Audit::sanitize_reference_data($body);
+
+        return "<<<REFERENCE_DATA>>>\n" . $body . "\n<<<END_REFERENCE_DATA>>>";
     }
 
     /**

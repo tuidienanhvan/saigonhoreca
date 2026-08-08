@@ -91,6 +91,50 @@ abstract class Pi_Chatbot_Tool_Base {
                     );
                 }
             }
+
+            // 2026-08-08: enum / minItems / maxItems are now ENFORCED.
+            // Schemas already declared them (the removed spec_evaluator, for
+            // instance, declared an enum of calculation types and the removed
+            // product_comparer declared minItems 2 / maxItems 3) but
+            // validate_args() only ever checked `required` and `type` — so a
+            // tool could be handed a value its own schema forbade and would
+            // run anyway, on whatever branch its switch/default landed on.
+            // A schema that is documented but not enforced is worse than no
+            // schema: it reads like a guarantee while providing none.
+            if (isset($properties[$key]['enum']) && is_array($properties[$key]['enum'])) {
+                if (!in_array($val, $properties[$key]['enum'], true)) {
+                    return new WP_Error(
+                        'invalid_tool_arg_enum',
+                        sprintf(
+                            __('Parameter "%s" for tool "%s" must be one of: %s.', 'pi-chatbot'),
+                            $key,
+                            $this->get_name(),
+                            implode(', ', array_map('strval', $properties[$key]['enum']))
+                        )
+                    );
+                }
+            }
+
+            if (is_array($val)) {
+                if (isset($properties[$key]['minItems']) && count($val) < (int) $properties[$key]['minItems']) {
+                    return new WP_Error(
+                        'invalid_tool_arg_min_items',
+                        sprintf(
+                            __('Parameter "%s" for tool "%s" needs at least %d item(s).', 'pi-chatbot'),
+                            $key, $this->get_name(), (int) $properties[$key]['minItems']
+                        )
+                    );
+                }
+                if (isset($properties[$key]['maxItems']) && count($val) > (int) $properties[$key]['maxItems']) {
+                    return new WP_Error(
+                        'invalid_tool_arg_max_items',
+                        sprintf(
+                            __('Parameter "%s" for tool "%s" accepts at most %d item(s).', 'pi-chatbot'),
+                            $key, $this->get_name(), (int) $properties[$key]['maxItems']
+                        )
+                    );
+                }
+            }
         }
 
         return true;

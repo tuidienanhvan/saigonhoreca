@@ -44,8 +44,32 @@ class Pi_Chatbot_Security_Audit {
             }
         }
 
-        // 2. Spam / Character flood protection: single character repeated 5+ times consecutively (e.g. 'xxxxx')
-        if (preg_match('/(.)\1{4,}/u', $message)) {
+        // 2. Spam / character-flood protection.
+        //
+        // 2026-08-08 fix — this was blocking real customers. The old pattern
+        // was /(.)\1{4,}/u, i.e. ANY character five times in a row, DIGITS
+        // INCLUDED. Vietnamese mobile numbers routinely contain runs like
+        // that, so these were all rejected with HTTP 400 "Your request
+        // contains unsafe pattern":
+        //     "so cua toi la 0999999999"     -> BLOCKED
+        //     "toi can bao gia 0911111111"   -> BLOCKED
+        // Verified against the live guard before the fix. Doubly wrong given
+        // the plugin's whole lead-capture feature exists to collect phone
+        // numbers — the guard was rejecting the single most valuable message
+        // a visitor can send.
+        //
+        // The rule this check is actually meant to enforce is "a wall of one
+        // repeated character is not a real question" (aaaaaaaa, ééééééé).
+        // Digits repeat legitimately — phone numbers, model codes (FGTC60-45,
+        // IM-100), quantities, years — so they are excluded from the run
+        // check entirely rather than special-cased per format. A genuine
+        // digit flood is still caught by the length limits in checks 3/4 and
+        // by MAX_MESSAGE_LENGTH upstream.
+        //
+        // The threshold moves 5 -> 8 for the remaining characters as well:
+        // "okeeee", "khôngggg", "hmmmmm" are ordinary informal Vietnamese
+        // typing, not spam.
+        if (preg_match('/([^\d\s])\1{7,}/u', $message)) {
             return [
                 'is_safe' => false,
                 'reason'  => 'Spam detected: repeated character flood',
