@@ -155,6 +155,59 @@ class Pi_Chatbot_Rest {
             return rest_ensure_response($cached);
         }
 
+        // Approved-FAQ lookup (wired 2026-08-08). Until now Pi_Chatbot_FAQ_Engine
+        // was a WRITE-ONLY pipe: assetize() ran on every answered question (it
+        // still does, further down) and had accumulated 59 real rows, while
+        // find_faq() had no caller anywhere — so nothing was ever read back.
+        //
+        // ONLY for turns with NO history. find_faq() matches on the normalized
+        // question text alone; it has no way to know what came before. Identical
+        // follow-up text means different things in different conversations
+        // ("giá bao nhiêu?" after two different products), which is exactly why
+        // the answer cache above folds a history hash into ITS key. Serving a
+        // standalone FAQ to a context-dependent follow-up would answer the wrong
+        // question with full confidence.
+        //
+        // Placed before check_rate_limit() for the same reason the cache lookup
+        // is: it costs zero LLM calls, so it must not consume the visitor's
+        // per-minute quota.
+        if (empty($history)) {
+            $faq = Pi_Chatbot_FAQ_Engine::find_faq($message);
+            if ($faq && !empty($faq['answer'])) {
+                $faq_result = [
+                    'answer'      => $faq['answer'],
+                    'sources'     => [],
+                    'trace'       => [
+                        'intent'            => $faq['intent'] ?? null,
+                        'search_query'      => '',
+                        'found_count'       => 0,
+                        'router_used'       => false,
+                        'router_keywords'   => [],
+                        'router_brand'      => null,
+                        'mode'              => 'faq',
+                        'difficulty'        => null,
+                        'ambiguity_reason'  => '',
+                        'query_variants'    => [],
+                        'rerank_used'       => false,
+                        'rerank_confidence' => null,
+                        'low_confidence'    => false,
+                        'verified'          => null,
+                        'steps'             => [],
+                        'budget_exhausted'  => false,
+                        'agent_id'          => 'faq',
+                        'agent_name'        => 'Approved FAQ',
+                        // Honest: this answer was written by the LLM at some
+                        // earlier point and then approved by a human on the
+                        // admin screen. No model call happened on THIS turn,
+                        // and no fact check ran on it either.
+                        'tool_used'         => 'approved_faq',
+                    ],
+                    'feedback_id' => md5($normalized . '|' . $faq['answer']),
+                ];
+                return rest_ensure_response($faq_result);
+            }
+        }
+
         // Rate limit AFTER the cache lookup: a cached answer costs nothing
         // (no retrieval, no LLM) so it shouldn't count against quota —
         // previously checked first, so free cache hits still ate into the

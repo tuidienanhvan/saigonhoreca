@@ -27,6 +27,7 @@ class Pi_Chatbot_Admin {
         add_action('admin_menu', [$this, 'add_menu']);
         add_action('admin_post_pi_chatbot_reindex', [$this, 'handle_reindex']);
         add_action('admin_post_pi_chatbot_save_settings', [$this, 'handle_save_settings']);
+        add_action('admin_post_pi_chatbot_faq_action', [$this, 'handle_faq_action']);
         add_action('admin_enqueue_scripts', [$this, 'enqueue_assets']);
     }
 
@@ -207,6 +208,8 @@ class Pi_Chatbot_Admin {
             <?php $this->render_learning_section(); ?>
 
             <?php $this->render_leads_section(); ?>
+
+            <?php $this->render_faq_section(); ?>
         </div>
         <?php
     }
@@ -447,6 +450,117 @@ class Pi_Chatbot_Admin {
             </div>
         </div>
         <?php
+    }
+
+    /**
+     * FAQ approval queue.
+     *
+     * Pi_Chatbot_FAQ_Engine::assetize() has been recording every answered
+     * question since it shipped, but nothing ever read those rows back:
+     * find_faq() filters on is_approved = 1 and there was no way to approve
+     * anything — no UI, no cron, no caller. 59 rows in, 0 out. This screen is
+     * the missing half; find_faq() is now wired into Pi_Chatbot_Rest::ask()
+     * (2026-08-08), so approving a row here means the next customer asking
+     * that exact question gets served instantly with ZERO LLM calls.
+     *
+     * That is precisely why approval is manual and one-at-a-time. An approved
+     * answer bypasses the model AND the faithfulness check — whatever is in
+     * that row is what the customer reads, verbatim, until someone deletes it.
+     */
+    private function render_faq_section() {
+        $pending = Pi_Chatbot_FAQ_Engine::get_pending(30);
+        $approved_count = Pi_Chatbot_FAQ_Engine::count_approved();
+        $pending_count = Pi_Chatbot_FAQ_Engine::count_pending();
+        ?>
+        <div class="pi-card">
+            <div class="pi-card__header">
+                <span class="pi-card__eyebrow">07 — FAQ</span>
+                <h2 class="pi-card__title"><?php esc_html_e('Approve reusable answers', 'pi-chatbot'); ?></h2>
+                <p class="pi-card__desc">
+                    <?php esc_html_e('Questions the bot has already answered. Approving one makes it served instantly for that exact question — no AI call, and no fact check. Read it before you approve it.', 'pi-chatbot'); ?>
+                </p>
+            </div>
+            <div class="pi-card__body pi-card__body--tight">
+            <div class="pi-grid--stats">
+                <div>
+                    <div class="pi-stat__value"><?php echo esc_html($approved_count); ?></div>
+                    <div class="pi-stat__label"><?php esc_html_e('Approved (served instantly)', 'pi-chatbot'); ?></div>
+                </div>
+                <div>
+                    <div class="pi-stat__value"><?php echo esc_html($pending_count); ?></div>
+                    <div class="pi-stat__label"><?php esc_html_e('Awaiting review', 'pi-chatbot'); ?></div>
+                </div>
+            </div>
+
+            <p style="margin:10px 0;padding:10px;border-left:3px solid #d63638;background:#fcf0f1;">
+                <strong><?php esc_html_e('These answers were written by the AI, not by a person.', 'pi-chatbot'); ?></strong><br>
+                <?php esc_html_e('The repeat count only shows how often the bot produced the same answer — it is not confirmation that the answer is correct. Check the facts yourself before approving.', 'pi-chatbot'); ?>
+            </p>
+
+            <?php if (empty($pending)) : ?>
+                <p><em><?php esc_html_e('Nothing waiting for review.', 'pi-chatbot'); ?></em></p>
+            <?php else : ?>
+                <div class="pi-table-wrap">
+                    <table class="pi-table">
+                        <thead>
+                            <tr>
+                                <th><?php esc_html_e('Question', 'pi-chatbot'); ?></th>
+                                <th><?php esc_html_e('Answer the customer would get', 'pi-chatbot'); ?></th>
+                                <th style="width:70px;"><?php esc_html_e('Repeats', 'pi-chatbot'); ?></th>
+                                <th style="width:150px;"><?php esc_html_e('Action', 'pi-chatbot'); ?></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php foreach ($pending as $row) : ?>
+                            <tr>
+                                <td><?php echo esc_html($row->question); ?></td>
+                                <td style="max-width:420px;"><?php echo esc_html(mb_substr($row->answer, 0, 400) . (mb_strlen($row->answer) > 400 ? '…' : '')); ?></td>
+                                <td class="num"><?php echo esc_html($row->verified_count); ?></td>
+                                <td>
+                                    <form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>" style="display:inline;">
+                                        <?php wp_nonce_field('pi_chatbot_faq_action'); ?>
+                                        <input type="hidden" name="action" value="pi_chatbot_faq_action">
+                                        <input type="hidden" name="faq_id" value="<?php echo esc_attr($row->id); ?>">
+                                        <button type="submit" name="faq_op" value="approve" class="button button-primary"><?php esc_html_e('Approve', 'pi-chatbot'); ?></button>
+                                        <button type="submit" name="faq_op" value="delete" class="button"><?php esc_html_e('Delete', 'pi-chatbot'); ?></button>
+                                    </form>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+            <?php endif; ?>
+            </div>
+        </div>
+        <?php
+    }
+
+    /**
+     * Approve or delete one FAQ candidate. Same guard pattern as
+     * handle_reindex()/handle_save_settings(): capability check first, then
+     * nonce, then act — an approved row is served verbatim to customers, so
+     * this is not a place to be lax.
+     */
+    public function handle_faq_action() {
+        if (!current_user_can('manage_options')) wp_die('Permission denied.');
+        check_admin_referer('pi_chatbot_faq_action');
+
+        $id = isset($_POST['faq_id']) ? (int) $_POST['faq_id'] : 0;
+        $op = isset($_POST['faq_op']) ? sanitize_text_field(wp_unslash($_POST['faq_op'])) : '';
+
+        $done = false;
+        if ($id > 0 && $op === 'approve') {
+            $done = Pi_Chatbot_FAQ_Engine::approve($id);
+        } elseif ($id > 0 && $op === 'delete') {
+            $done = Pi_Chatbot_FAQ_Engine::delete_faq($id);
+        }
+
+        wp_safe_redirect(add_query_arg(
+            ['page' => 'pi-chatbot', 'faq_done' => $done ? $op : 'error'],
+            admin_url('admin.php')
+        ));
+        exit;
     }
 
     public function handle_reindex() {

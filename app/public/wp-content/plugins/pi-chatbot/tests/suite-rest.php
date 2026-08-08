@@ -587,6 +587,94 @@ pi_with_settings(['router_enabled' => true, 'llm7_keys' => ['k'], 'router_keys' 
             && mb_strpos($captured_system, 'KHÔNG đưa ra con số giá') === false);
 });
 
+// ── Approved-FAQ fast path (wired 2026-08-08) ───────────────────────────────
+// Before this, Pi_Chatbot_FAQ_Engine was a write-only pipe: assetize() had
+// recorded 59 real rows and find_faq() had no caller at all, so nothing was
+// ever read back. The whole point of wiring it in is cost — an approved FAQ
+// must answer with ZERO LLM calls — so that is what these assertions measure,
+// not merely "an answer came back".
+pi_section('approved FAQ answers instantly with zero LLM calls');
+
+pi_with_settings(['router_enabled' => true, 'llm7_keys' => ['k'], 'router_keys' => []], function () {
+    global $wpdb;
+    $faq_table = $wpdb->prefix . Pi_Chatbot_FAQ_Engine::TABLE_NAME;
+    $q = 'câu hỏi faq test ' . wp_rand();
+    $expected = 'Đây là câu trả lời đã được người duyệt.';
+
+    try {
+        pi_reset_state();
+        Pi_Chatbot_FAQ_Engine::assetize($q, $expected, 'product');
+        $norm = mb_strtolower(trim($q));
+        $row = $wpdb->get_row($wpdb->prepare("SELECT id, is_approved FROM {$faq_table} WHERE question_norm = %s", $norm));
+
+        pi_check('assetize() stores the candidate UNAPPROVED (nothing reaches customers un-reviewed)',
+            $row && (int) $row->is_approved === 0, $row ? "is_approved={$row->is_approved}" : 'no row');
+
+        // Un-approved: must NOT short-circuit — the question goes through the
+        // normal pipeline (which does make LLM calls).
+        pi_http_stub(function ($args, $url, $i) {
+            if ($i === 0) {
+                return pi_http_content(wp_json_encode([
+                    'intent' => 'none', 'keywords_en' => [], 'keywords_vi' => [], 'brand' => null,
+                    'difficulty' => 'easy', 'query_variants' => [], 'ambiguity_reason' => '',
+                ]));
+            }
+            return pi_http_content('answer from the model');
+        });
+        $res_unapproved = pi_rest_ask($q, '10.10.60.1');
+        $data_unapproved = is_wp_error($res_unapproved) ? null : $res_unapproved->get_data();
+        pi_check('an UNAPPROVED faq row does not short-circuit — the model still runs',
+            count(pi_http_calls()) > 0 && $data_unapproved && $data_unapproved['answer'] !== $expected,
+            count(pi_http_calls()) . ' llm calls');
+
+        // Approve it, then ask again from a fresh IP with a cleared cache.
+        Pi_Chatbot_FAQ_Engine::approve((int) $row->id);
+        pi_reset_state();
+        pi_http_reset_calls();
+        pi_http_stub(function () {
+            // Reaching this at all means the FAQ path did NOT short-circuit.
+            return pi_http_content('THIS SHOULD NEVER BE REACHED');
+        });
+        $res_approved = pi_rest_ask($q, '10.10.60.2');
+        $data_approved = is_wp_error($res_approved) ? null : $res_approved->get_data();
+
+        pi_check('an APPROVED faq answers with the exact approved text',
+            $data_approved && $data_approved['answer'] === $expected,
+            $data_approved ? mb_substr($data_approved['answer'], 0, 60) : 'error');
+        pi_check('the approved-FAQ path makes ZERO LLM calls (the entire point of wiring it in)',
+            count(pi_http_calls()) === 0, count(pi_http_calls()) . ' llm calls');
+        pi_check('the trace says so honestly (mode=faq, tool_used=approved_faq)',
+            $data_approved
+                && ($data_approved['trace']['mode'] ?? null) === 'faq'
+                && ($data_approved['trace']['tool_used'] ?? null) === 'approved_faq');
+
+        // A follow-up turn (history present) must NOT be answered from a
+        // standalone FAQ — find_faq() matches on question text alone and
+        // cannot know what "it" referred to.
+        pi_reset_state();
+        pi_http_reset_calls();
+        pi_http_stub(function ($args, $url, $i) {
+            if ($i === 0) {
+                return pi_http_content(wp_json_encode([
+                    'intent' => 'none', 'keywords_en' => [], 'keywords_vi' => [], 'brand' => null,
+                    'difficulty' => 'easy', 'query_variants' => [], 'ambiguity_reason' => '',
+                ]));
+            }
+            return pi_http_content('contextual answer');
+        });
+        $res_followup = pi_rest_ask($q, '10.10.60.3', [
+            ['role' => 'user', 'text' => 'tủ đông Hoshizaki'],
+            ['role' => 'bot', 'text' => 'thông tin tủ đông'],
+        ]);
+        $data_followup = is_wp_error($res_followup) ? null : $res_followup->get_data();
+        pi_check('a follow-up turn (history present) is NOT short-circuited by the standalone FAQ',
+            count(pi_http_calls()) > 0 && $data_followup && $data_followup['answer'] !== $expected,
+            count(pi_http_calls()) . ' llm calls');
+    } finally {
+        $wpdb->query($wpdb->prepare("DELETE FROM {$faq_table} WHERE question = %s", $q));
+    }
+});
+
 pi_section('ask() attaches feedback_id, feedback() records a real vote (Stage 2)');
 
 function pi_rest_feedback($feedback_id, $rating, $ip = '10.20.20.1') {
