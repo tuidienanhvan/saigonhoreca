@@ -770,13 +770,13 @@ class Pi_Chatbot_Rest {
         $agent_name = null;
         $tool_used = null;
 
-        $tool_exec = self::try_execute_domain_tools($message, $enrichment ? $enrichment['intent'] : 'product');
-        if ($tool_exec) {
-            $context = array_merge($tool_exec['context'], $context);
-            $agent_id = $tool_exec['agent_id'];
-            $agent_name = $tool_exec['agent_name'];
-            $tool_used = $tool_exec['tool_used'];
-        }
+        // Domain-tool dispatch used to run here on every message — removed
+        // 2026-08-08 along with the tools themselves (see the note further
+        // down where try_execute_domain_tools() used to be defined, and the
+        // per-tool evidence at the top of includes/tools/class-tool-registry.php).
+        // $tool_exec stays declared as null so the intent switch below keeps
+        // its existing `if (!$agent_name)` shape without a structural rewrite.
+        $tool_exec = null;
 
         if ($enrichment) {
             $router_used = true;
@@ -787,24 +787,17 @@ class Pi_Chatbot_Rest {
             $ambiguity_reason = $enrichment['ambiguity_reason'];
             $query_variants = $enrichment['query_variants'];
 
-            // Domain tools already ran (line 773) and matched a specific agent.
-            // The LLM router may disagree on intent (e.g. "Máy làm đá Hoshizaki
-            // bảo hành mấy năm?" → LLM sees product name → intent=product, but
-            // warranty_checker already fired on "bảo hành"). When this happens,
-            // override $intent to the tool's domain so the switch below merges
-            // the right static context instead of conflicting with the tool result
-            // (worst case: intent=none would wipe tool_exec's context entirely).
-            if ($tool_exec && $agent_id) {
-                $tool_intent_map = [
-                    'warranty'  => 'service',
-                    'tech_spec' => 'project',
-                    'sales'     => 'price',
-                ];
-                if (isset($tool_intent_map[$agent_id])) {
-                    $intent = $tool_intent_map[$agent_id];
-                }
-            }
+            // (The tool→intent override that used to sit here went away with
+            // the domain tools on 2026-08-08 — with no tool able to fire, there
+            // is no second opinion left to reconcile against the router's.)
 
+            // $tool_used below names WHAT ACTUALLY RAN, nothing more. Until
+            // 2026-08-08 the 'price' and 'service' arms labelled themselves
+            // 'price_calculator' / 'warranty_checker' — tools that have since
+            // been removed for fabricating data, and which by then were already
+            // switched off, so the trace was telling the frontend a tool had
+            // run when none had. A trace that lies is worse than an empty one:
+            // the whole point of the progress card is that every row is real.
             switch ($intent) {
                 case 'none':
                     $context = [];
@@ -826,7 +819,10 @@ class Pi_Chatbot_Rest {
                     if (!$agent_name) {
                         $agent_id = 'sales';
                         $agent_name = 'Sales & Pricing Specialist';
-                        $tool_used = 'price_calculator';
+                        // Honest label: price_context() supplies the company's
+                        // real "pricing depends on configuration, call the
+                        // hotline" policy. No calculation happens.
+                        $tool_used = 'price_policy';
                     }
                     break;
                 case 'service':
@@ -834,7 +830,12 @@ class Pi_Chatbot_Rest {
                     if (!$agent_name) {
                         $agent_id = 'warranty';
                         $agent_name = 'Warranty Specialist';
-                        $tool_used = 'warranty_checker';
+                        // Honest label: service_context() returns the theme's
+                        // real service description. There is no verified
+                        // warranty-policy data anywhere in this site, so no
+                        // warranty terms can be stated — see the removal note
+                        // in includes/tools/class-tool-registry.php.
+                        $tool_used = 'service_lookup';
                     }
                     break;
                 case 'project':
@@ -984,256 +985,27 @@ class Pi_Chatbot_Rest {
         ];
     }
 
-    private static function try_execute_domain_tools($message, $intent) {
-        $registry = Pi_Chatbot_Tool_Registry::get_instance();
-
-        // 1. Warranty Checker Tool — DISABLED 2026-08-08. Found live during a
-        // full-system audit: Pi_Chatbot_Tool_Warranty_Checker::execute()
-        // returns entirely FABRICATED warranty policy data — invented
-        // durations, covered components, and SLA response times per brand,
-        // labeled 'Official Warranty Policies' and handed to the model as
-        // trusted REFERENCE INFORMATION. No such policy document exists
-        // anywhere in this codebase or the theme's contact-info config; the
-        // numbers were made up. This bypasses Generator::verify() entirely,
-        // since that check only confirms an answer MATCHES its context, not
-        // that the context itself is true — a fabricated context makes a
-        // fabricated answer look "faithful". Real, standing project rule:
-        // never invent catalog/business data, leave it blank instead (see
-        // memory: "Không bịa dữ liệu/ảnh catalog — thà để trống"). Disabled
-        // at the call site rather than deleting the tool/class, so a real
-        // warranty policy (once the business owner provides one) can be
-        // wired back in without rebuilding this from scratch. Until then,
-        // a warranty question falls through to intent='service' ->
-        // Retriever::service_context() (the theme's real service
-        // description) exactly as it did before this tool existed.
-        if (false && ($intent === 'service' || preg_match('/bảo hành|mấy tháng|bao hanh|chính hãng|sla|hotline/iu', $message))) {
-            $brand_map = Pi_Chatbot_Entities::known_brands();
-            $known_brands = array_values($brand_map);
-            $found_brands = [];
-            foreach ($known_brands as $b) {
-                if (mb_stripos($message, $b, 0, 'UTF-8') !== false) {
-                    $found_brands[] = $b;
-                }
-            }
-            $query_targets = !empty($found_brands) ? $found_brands : array_slice($known_brands, 0, 2);
-
-            $results = [];
-            foreach ($query_targets as $target) {
-                $res = $registry->execute_tool('warranty_checker', [
-                    'product_name_or_brand' => $target
-                ]);
-                if (!empty($res['success']) && !empty($res['data']['summary_text'])) {
-                    $results[] = $res['data']['summary_text'];
-                }
-            }
-            if (!empty($results)) {
-                return [
-                    'agent_id'   => 'warranty',
-                    'agent_name' => 'Warranty Specialist',
-                    'tool_used'  => 'warranty_checker',
-                    'context'    => [[
-                        'post_id'  => 0,
-                        'title'    => 'Official Warranty Policies',
-                        'brand'    => implode(', ', $found_brands ?: ['Saigon Horeca']),
-                        'category' => 'Service',
-                        'url'      => home_url('/ve-saigon-horeca/'),
-                        'excerpt'  => implode("\n\n", $results),
-                        'score'    => 999
-                    ]]
-                ];
-            }
-        }
-
-        // 2. Spec Evaluator Tool — DISABLED 2026-08-08. It was still LIVE when
-        // the warranty and price branches (above/below) had already been
-        // switched off for fabricating business data.
-        //
-        // METHOD WARNING FOR WHOEVER REVISITS THIS: an earlier pass of this
-        // same audit concluded these SKUs "do not exist" and was WRONG. The
-        // catalog does NOT live in files — it lives in the DATABASE
-        // (Pi_Chatbot_Indexer::table_name(), i.e. wp_pi_chatbot_index).
-        // Grepping wp-content for a SKU finds nothing even when the product is
-        // real. Any claim of the form "product X doesn't exist" MUST be
-        // checked with a DB query, never with a file grep.
-        //
-        // The four recommended models ARE real products:
-        //     IM-100CNE, FM-480AKE, FM-300AKE, IM-240ANE  <- all in the catalog
-        //
-        // The actual defect is subtler and harder to spot: the hardcoded
-        // CAPACITIES do not match what the real product listings state, and
-        // both verifiable ones are OVERSTATED —
-        //     IM-100CNE : tool says 100 kg/ngày | listing says  95 Kg/24h  (+5%)
-        //     IM-240ANE : tool says 240 kg/ngày | listing says 205 Kg/24h  (+17%)
-        //     FM-480AKE : tool says 450 kg/ngày | listing states no capacity
-        //     FM-300AKE : tool says 320 kg/ngày | listing states no capacity
-        // Overstating capacity is the dangerous direction: a customer sizing a
-        // kitchen from these numbers under-buys and the machine cannot keep up.
-        //
-        // Why the existing safety net misses it: the tool result is injected as
-        // trusted REFERENCE INFORMATION at score => 999, outranking every real
-        // catalog row, and Generator::verify() only checks that the answer
-        // MATCHES its context — never that the context itself is TRUE. Wrong
-        // context makes a wrong answer look "faithful".
-        //
-        // Also uncited (no source anywhere in the repo): the kg-per-seat ratios
-        // (1.5/1.2/0.8/0.5) and the duct-diameter rule (Ø350 if hood >= 3m else
-        // Ø250 — real duct sizing derives from airflow, not hood length).
-        //
-        // NOT everything here is wrong: the electrical branch is real
-        // engineering (I = P/(sqrt(3)*U*cos_phi) with cos_phi 0.85 -> the 1.8
-        // multiplier, plus the standard 1.25 continuous-load breaker margin),
-        // and the 1.699 m³/h-per-CFM conversion is exact.
-        //
-        // To revive safely: keep the electrical branch; read capacities from
-        // the product DB instead of hardcoding them (or drop the model
-        // recommendation entirely and let normal retrieval surface products);
-        // and source the ice/hood constants before shipping them again.
-        if (false && preg_match('/buffet|bar|cafe|canteen|fine dining|ghế|chỗ|kg\/ngày|máy làm đá|hút mùi|chụp hút|điện 3 pha|công suất|amp|m³\/h|cfm/iu', $message)) {
-            $res = null;
-
-            // Ice Machine Requirement Calculation
-            if (preg_match('/(\d+)\s*(?:ghế|seat|chỗ|khách|suất)/iu', $message, $m)) {
-                $est_type = 'buffet';
-                if (preg_match('/bar|pub/iu', $message)) $est_type = 'bar';
-                elseif (preg_match('/café|cafe|cà phê/iu', $message)) $est_type = 'cafe';
-                elseif (preg_match('/fine dining|cao cấp/iu', $message)) $est_type = 'fine_dining';
-                elseif (preg_match('/canteen|cantin|bếp ăn/iu', $message)) $est_type = 'canteen';
-
-                $res = $registry->execute_tool('spec_evaluator', [
-                    'calculation_type' => 'ice_requirement',
-                    'parameters' => [
-                        'seats'              => (int) $m[1],
-                        'establishment_type' => $est_type
-                    ]
-                ]);
-            }
-            // Exhaust Hood Airflow Calculation
-            elseif (preg_match('/(\d+(?:[\.,]\d+)?)\s*m(?!\s*[²³23])\b/iu', $message, $m)) {
-                $length = (float) str_replace(',', '.', $m[1]);
-                $res = $registry->execute_tool('spec_evaluator', [
-                    'calculation_type' => 'hood_airflow_cfm',
-                    'parameters' => [
-                        'hood_length_meters' => $length
-                    ]
-                ]);
-            }
-            // Electrical Load Calculation
-            elseif (preg_match_all('/(\d+(?:[\.,]\d+)?)\s*kW/iu', $message, $m)) {
-                $kw_list = array_map(function($v) { return (float) str_replace(',', '.', $v); }, $m[1]);
-                $res = $registry->execute_tool('spec_evaluator', [
-                    'calculation_type' => 'electrical_load_kw',
-                    'parameters' => [
-                        'equipment_kw_list' => $kw_list
-                    ]
-                ]);
-            }
-
-            if ($res && !empty($res['success']) && (!empty($res['data']['summary_text']) || !empty($res['data']['recommendation']))) {
-                $summary = !empty($res['data']['summary_text']) ? $res['data']['summary_text'] : $res['data']['recommendation'];
-                return [
-                    'agent_id'   => 'tech_spec',
-                    'agent_name' => 'Technical Spec Specialist',
-                    'tool_used'  => 'spec_evaluator',
-                    'context'    => [[
-                        'post_id'  => 0,
-                        'title'    => 'Technical Specification Evaluation',
-                        'brand'    => '',
-                        'category' => 'Tech Spec',
-                        'url'      => home_url('/ve-saigon-horeca/'),
-                        'excerpt'  => $summary,
-                        'score'    => 999
-                    ]]
-                ];
-            }
-        }
-
-        // 3. Price Calculator Tool — DISABLED 2026-08-08. Found live during a
-        // full-system audit, same fabrication pattern as the warranty
-        // checker disabled above: Pi_Chatbot_Tool_Price_Calculator invents a
-        // volume-discount schedule (12%/8%/5% at made-up quantity
-        // thresholds), a flat shipping fee by destination region (0 /
-        // 500,000đ / 1,500,000đ — no real logistics data behind these), and
-        // a flat 1,000,000đ installation fee — NONE of which exist anywhere
-        // else in this codebase or the theme's config, and hands the result
-        // to the customer as a "Calculated Quotation & Shipping Estimate".
-        // This directly contradicts the plugin's own long-established,
-        // deliberately-tested policy (see Retriever::price_context() and
-        // Generator::SYSTEM_PROMPT): pricing is NOT listed, depends on
-        // configuration, and the model must NEVER invent a specific price
-        // figure even under pressure — this tool did exactly that, just
-        // via a tool call instead of free-text generation, so the existing
-        // "don't invent prices" prompt rule never had a chance to catch it.
-        // Disabled at the call site, not deleted, so a REAL discount/
-        // shipping/installation policy (once the business owner provides
-        // one) can be wired back in later. Until then, a pricing question
-        // falls through to intent='price' -> Retriever::price_context()
-        // (the honest "contact the hotline for a quote" reply) exactly as
-        // it did before this tool existed.
-        $has_price_param = preg_match('/(\d+)\s*(?:cái|chiếc|tủ|bàn|máy|bếp|tr|triệu|vnđ|đ|đồng)/iu', $message)
-            || preg_match('/(?:tủ\s+đông|tủ\s+mát|bếp\s+âu|lò\s+nướng|máy\s+rửa\s+chén|máy\s+làm\s+đá|hoshizaki|berjaya|rational|winterhalter)/iu', $message);
-
-        if (false && (($intent === 'price' || preg_match('/báo giá|tính giá|chiết khấu|phí giao|lắp đặt|triệu|tr\b/iu', $message)) && $has_price_param)) {
-            $qty = 1;
-            if (preg_match('/(\d+)\s*(?:cái|chiếc|tủ|bàn|máy|bếp)/iu', $message, $qm)) {
-                $qty = (int) $qm[1];
-            }
-
-            $unit_price = 0.0;
-            if (preg_match('/(\d+(?:[\.,]\d+)?)\s*(?:triệu|tr)\b/iu', $message, $pm)) {
-                $unit_price = ((float) str_replace(',', '.', $pm[1])) * 1000000;
-            } elseif (preg_match('/(\d{1,3}(?:\.\d{3})+|\d{7,10})\s*(?:vnđ|đ|đồng)?\b/iu', $message, $pm)) {
-                $unit_price = (float) str_replace('.', '', $pm[1]);
-            } else {
-                // Dynamically look up real catalog product price from WooCommerce
-                $searched = Pi_Chatbot_Retriever::search($message, 1);
-                if (!empty($searched[0]['post_id']) && function_exists('wc_get_product')) {
-                    $wc_prod = wc_get_product((int) $searched[0]['post_id']);
-                    if ($wc_prod && $wc_prod->get_price()) {
-                        $unit_price = (float) $wc_prod->get_price();
-                    }
-                }
-            }
-
-            $dest = 'HCM';
-            if (preg_match('/(?:về|ở|tại|giao\s+đến)\s+([\p{L}\s]{2,25})(?:$|\.|\,)/iu', $message, $dm)) {
-                $dest = trim($dm[1]);
-            }
-
-            $prod_name = 'Thiết bị HORECA';
-            if (preg_match('/(?:tủ\s+đông|tủ\s+mát|bếp\s+âu|lò\s+nướng|máy\s+rửa\s+chén|máy\s+làm\s+đá|[\p{L}0-9\s]{3,30})/iu', $message, $pnm)) {
-                $prod_name = trim($pnm[0]);
-            }
-
-            $res = $registry->execute_tool('price_calculator', [
-                'items' => [[
-                    'product_name' => $prod_name,
-                    'quantity'     => $qty,
-                    'unit_price'   => $unit_price,
-                ]],
-                'destination' => $dest,
-                'include_installation' => true,
-            ]);
-
-            if (!empty($res['success']) && !empty($res['data']['summary_text'])) {
-                return [
-                    'agent_id'   => 'sales',
-                    'agent_name' => 'Sales & Pricing Specialist',
-                    'tool_used'  => 'price_calculator',
-                    'context'    => [[
-                        'post_id'  => 0,
-                        'title'    => 'Calculated Quotation & Shipping Estimate',
-                        'brand'    => '',
-                        'category' => 'Pricing',
-                        'url'      => home_url('/lien-he/'),
-                        'excerpt'  => $res['data']['summary_text'],
-                        'score'    => 999
-                    ]]
-                ];
-            }
-        }
-
-        return null;
-    }
+    /**
+     * Domain-tool dispatch — REMOVED 2026-08-08.
+     *
+     * This used to run on EVERY message (before intent was even applied) and
+     * dispatch to four hardcoded tools whose results were injected as trusted
+     * REFERENCE INFORMATION at score => 999. An audit found all four served
+     * invented business data to real customers; see the removal note at the
+     * top of includes/tools/class-tool-registry.php for the per-tool evidence.
+     *
+     * Nothing replaces it: with the tools gone, every intent falls through to
+     * the normal context sources below (Retriever::contact_context() /
+     * price_context() / service_context() / search_projects() / hybrid product
+     * search), all of which read REAL data — the theme's own contact config or
+     * the product database. That is the behaviour the plugin had before the
+     * tools were added, and it is the honest one: when there is no verified
+     * answer, the customer is told so and pointed at the hotline.
+     *
+     * If a tool is ever added back, it must source its facts from the product
+     * DB or a policy the business owner has confirmed. Constants typed into a
+     * PHP file are not a source.
+     */
 
     /**
      * Retrieval-only fallback used when the daily LLM budget is exhausted (see

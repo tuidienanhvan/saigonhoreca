@@ -30,7 +30,14 @@ $suites = [
     'suite-indexer.php'     => 'Indexer + Log (writes, isolated + torn down)',
     'suite-llm.php'         => 'Router / Reranker / Generator / LLM client (HTTP stubbed)',
     'suite-rest.php'        => 'Full REST ask() flow (HTTP stubbed)',
-    'suite-spam-agents.php' => '80 Deep Subagent-Generated Test Cases (Multi-Agent, Tools, Graph, Safety, RAGAs)',
+    // suite-spam-agents.php REMOVED 2026-08-08. 79 assertions, and a measured
+    // audit found: 0 touched the real request path, 61 could not go red from
+    // any production change, 49 stayed green even if every tool returned [],
+    // 18 asserted fabricated numbers were CORRECT (so they defended the
+    // defect), and it contained a DELETE that could take out a real
+    // production graph row (upsert_node('Hoshizaki') with no test prefix, then
+    // DELETE by the returned id). It also leaked a node + edge per run —
+    // 62 orphan rows had accumulated by the time it was removed.
 ];
 
 echo "=== pi-chatbot full test run — " . count($suites) . " suites ===\n";

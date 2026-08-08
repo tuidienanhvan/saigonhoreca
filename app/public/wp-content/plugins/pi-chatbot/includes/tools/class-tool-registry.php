@@ -10,10 +10,41 @@ if (!defined('ABSPATH')) {
 }
 
 require_once __DIR__ . '/class-tool-base.php';
-require_once __DIR__ . '/class-tool-price-calculator.php';
-require_once __DIR__ . '/class-tool-product-comparer.php';
-require_once __DIR__ . '/class-tool-warranty-checker.php';
-require_once __DIR__ . '/class-tool-spec-evaluator.php';
+
+// 2026-08-08: the four domain tools that used to be required here were REMOVED
+// (moved to the Recycle Bin) after an audit found every one of them serving
+// invented business data to real customers as trusted context:
+//   - class-tool-warranty-checker.php  : invented warranty durations, covered
+//     parts and SLA response times per brand. Verified against the real
+//     catalog: of ~3500 products only THREE mention "bảo hành" at all, two of
+//     which are a Toprinse spray valve with "bảo hành một năm" — nothing
+//     anywhere corroborates Hoshizaki 24 / Berjaya 12 / Rational 24 /
+//     Winterhalter 24, nor any covered-parts list or response-time promise.
+//   - class-tool-price-calculator.php  : invented a volume-discount schedule
+//     (5/8/12%), regional shipping fees (0 / 500.000đ / 1.500.000đ) and a flat
+//     1.000.000đ installation fee. Catalog search for "chiết khấu", "phí giao",
+//     "phí vận chuyển", "phí lắp đặt": ZERO products mention any of them.
+//     This also contradicts the plugin's own long-standing, deliberately
+//     tested pricing policy (see Retriever::price_context()): pricing is not
+//     listed, it depends on configuration, contact the hotline.
+//   - class-tool-product-comparer.php  : filled missing product fields with
+//     invented defaults ('Nhật Bản', 'Tiêu chuẩn HORECA', '24 Tháng'...) —
+//     its own comment said "// Return synthetic specs".
+//   - class-tool-spec-evaluator.php    : the models it recommended were REAL,
+//     but their hardcoded capacities were wrong and always OVERSTATED
+//     (IM-100CNE: claimed 100 kg/ngày, listing says 95 Kg/24h; IM-240ANE:
+//     claimed 240, listing says 205). Overstating capacity makes a customer
+//     under-buy. Its electrical branch was sound engineering and can be
+//     revived separately if wanted — see the note left in class-rest.php.
+//
+// Why none of this was caught by the existing safety net: tool output was
+// injected as trusted REFERENCE INFORMATION at score => 999, outranking every
+// real catalog row, and Generator::verify() only checks that an answer MATCHES
+// its context — never that the context is TRUE.
+//
+// The registry itself is kept: it is real, sane infrastructure (validation,
+// exception isolation, a `pi_chatbot_registered_tools` filter) and is worth
+// having when a tool backed by REAL data is written.
 
 class Pi_Chatbot_Tool_Registry {
 
@@ -38,10 +69,10 @@ class Pi_Chatbot_Tool_Registry {
     }
 
     private function register_default_tools(): void {
-        $this->register(new Pi_Chatbot_Tool_Price_Calculator());
-        $this->register(new Pi_Chatbot_Tool_Product_Comparer());
-        $this->register(new Pi_Chatbot_Tool_Warranty_Checker());
-        $this->register(new Pi_Chatbot_Tool_Spec_Evaluator());
+        // No built-in tools ship by default — see the removal note at the top
+        // of this file. A tool may only be registered here once its data comes
+        // from a verifiable source (the product DB, or a policy the business
+        // owner has actually confirmed), never from constants typed into PHP.
 
         /**
          * Filter to register custom tools via WordPress ecosystem plugins
@@ -62,24 +93,24 @@ class Pi_Chatbot_Tool_Registry {
     }
 
     /**
-     * Get intent-filtered tool instances to avoid context inflation
+     * Get intent-filtered tool instances to avoid context inflation.
+     *
+     * 2026-08-08: the hardcoded per-intent allowlists that used to live here
+     * named the four removed tools, so they filtered against names that can no
+     * longer exist. Rather than keep a stale map, filtering is now delegated to
+     * the tools themselves — a registered tool declares which intents it serves
+     * via the `pi_chatbot_tool_intents` filter, defaulting to "all intents".
+     * With no built-in tools registered this returns [] for every intent, which
+     * is the honest current state.
      *
      * @param string $intent
      * @return Pi_Chatbot_Tool_Base[]
      */
     public function get_tools_for_intent(string $intent): array {
-        switch ($intent) {
-            case 'price':
-                return array_filter($this->tools, fn($name) => in_array($name, ['price_calculator', 'product_comparer']), ARRAY_FILTER_USE_KEY);
-            case 'product':
-                return array_filter($this->tools, fn($name) => in_array($name, ['product_comparer', 'price_calculator']), ARRAY_FILTER_USE_KEY);
-            case 'service':
-                return array_filter($this->tools, fn($name) => in_array($name, ['warranty_checker']), ARRAY_FILTER_USE_KEY);
-            case 'project':
-                return array_filter($this->tools, fn($name) => in_array($name, ['spec_evaluator', 'price_calculator']), ARRAY_FILTER_USE_KEY);
-            default:
-                return $this->tools;
-        }
+        return array_filter($this->tools, function ($tool) use ($intent) {
+            $intents = apply_filters('pi_chatbot_tool_intents', null, $tool->get_name());
+            return $intents === null || in_array($intent, (array) $intents, true);
+        });
     }
 
     /**

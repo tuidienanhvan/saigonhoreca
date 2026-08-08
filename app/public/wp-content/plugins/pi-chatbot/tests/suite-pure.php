@@ -641,30 +641,46 @@ if (file_exists(__DIR__ . '/evaluator.php')) {
     require_once __DIR__ . '/evaluator.php';
 }
 
-// 1. Tool Registry & B2B Calculator Tools
+// 1. Tool Registry — the four built-in tools were REMOVED 2026-08-08 for
+// serving invented business data (see includes/tools/class-tool-registry.php).
+// The two assertions that used to live here asserted the fabricated numbers
+// were CORRECT (`discount_percentage === 5` from an invented discount
+// schedule; `ice_needed_kg === 150.0` from an uncited kg-per-seat ratio), so
+// they would have gone RED the moment anyone fixed the data — a test actively
+// defending a defect. Replaced with an assertion on what the registry is
+// actually FOR now: staying empty by default, and refusing unknown tools
+// gracefully instead of throwing (the Extra09 "a tool must never crash the
+// agent" property, which is real and worth keeping).
 pi_check('Pi_Chatbot_Tool_Registry class exists', class_exists('Pi_Chatbot_Tool_Registry'));
 $tool_reg = Pi_Chatbot_Tool_Registry::get_instance();
-$calc_res = $tool_reg->execute_tool('price_calculator', [
-    'items' => [['product_name' => 'Bếp Gas Berjaya 4 Họng', 'quantity' => 4, 'unit_price' => 15000000]],
-    'destination' => 'TP.HCM'
-]);
-pi_check('Price calculator tool computes subtotal and volume discount', $calc_res['success'] === true && $calc_res['data']['discount_percentage'] === 5, json_encode($calc_res));
-
-$spec_res = $tool_reg->execute_tool('spec_evaluator', [
-    'calculation_type' => 'ice_requirement',
-    'parameters' => ['seats' => 100, 'establishment_type' => 'buffet']
-]);
-pi_check('Spec evaluator tool calculates ice requirement', $spec_res['success'] === true && $spec_res['data']['ice_needed_kg'] === 150.0, json_encode($spec_res));
+pi_check('no built-in tools ship by default (all four removed for fabricating data)',
+    $tool_reg->get_all_tools() === [], json_encode(array_keys($tool_reg->get_all_tools())));
+$unknown = $tool_reg->execute_tool('price_calculator', ['items' => []]);
+pi_check('a removed/unknown tool returns a structured failure instead of throwing',
+    is_array($unknown) && $unknown['success'] === false && !empty($unknown['error']), json_encode($unknown));
 
 // 2. Multi-Agent Orchestration
 pi_check('Pi_Chatbot_Agent_Registry class exists', class_exists('Pi_Chatbot_Agent_Registry'));
 pi_check('Pi_Chatbot_Supervisor_Agent class exists', class_exists('Pi_Chatbot_Supervisor_Agent'));
 $sup = new Pi_Chatbot_Supervisor_Agent();
+// NOTE: 'price' -> 'sales' is NOT a meaningful assertion on its own, because
+// route_intent()'s `default` arm also returns 'sales' — deleting the whole
+// `case 'price'` leaves it green. Kept only as a smoke check; the real
+// routing coverage is added when the agent layer is genuinely wired up.
 pi_check('Supervisor routes price intent to sales agent', $sup->route_intent('báo giá', 'price') === 'sales');
 pi_check('Supervisor routes service intent to warranty agent', $sup->route_intent('bảo hành', 'service') === 'warranty');
 
-// 3. Knowledge Graph Store
-pi_check('Pi_Chatbot_Graph_Store class exists', class_exists('Pi_Chatbot_Graph_Store'));
+// Agents must not advertise tools that no longer exist — a stale get_tools()
+// would make the agent layer request a tool the registry can never supply.
+foreach ([new Pi_Chatbot_Sales_Agent(), new Pi_Chatbot_Tech_Spec_Agent(), new Pi_Chatbot_Warranty_Agent()] as $ag) {
+    pi_check("agent '{$ag->get_id()}' advertises no removed tools", $ag->get_tools() === [], json_encode($ag->get_tools()));
+}
+
+// The warranty agent is the one place a fabricated answer is most costly, so
+// its prompt is pinned: it must explicitly forbid stating warranty terms.
+$w_prompt = (new Pi_Chatbot_Warranty_Agent())->get_system_prompt([]);
+pi_check('warranty agent prompt forbids stating warranty terms and redirects to hotline',
+    mb_strpos($w_prompt, 'KHÔNG nêu thời hạn bảo hành') !== false && mb_stripos($w_prompt, 'hotline') !== false);
 
 // 4. RAGAs Evaluation Framework
 pi_check('Pi_Chatbot_Evaluator has eval_context_precision method', method_exists('Pi_Chatbot_Evaluator', 'eval_context_precision'));
