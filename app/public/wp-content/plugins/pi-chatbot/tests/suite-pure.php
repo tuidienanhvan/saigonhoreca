@@ -593,26 +593,81 @@ try {
     }
 }
 
-pi_section('Phase 4 — Memory System (FAQ Engine & Episodic Memory)');
+pi_section('Phase 4 — Memory System (FAQ Engine)');
 
 pi_check('Pi_Chatbot_FAQ_Engine class exists', class_exists('Pi_Chatbot_FAQ_Engine'), 'class missing');
-pi_check('Pi_Chatbot_Episodic_Memory class exists', class_exists('Pi_Chatbot_Episodic_Memory'), 'class missing');
 
-// Test Episodic Memory remember/recall logic
-$test_sid = 'test_sess_' . time();
-Pi_Chatbot_Episodic_Memory::remember($test_sid, ['preferred_brand' => 'Berjaya']);
-$recalled = Pi_Chatbot_Episodic_Memory::recall($test_sid);
-pi_check('Episodic memory remembers and recalls session facts', ($recalled['preferred_brand'] ?? '') === 'Berjaya', json_encode($recalled));
+// 2026-08-08: the Episodic Memory and Self-Evolution assertions that used to
+// live here (and in "Phase 5") were removed along with the classes themselves.
+// Both were real code with ZERO production callers, and this very test block
+// was the ONLY thing that ever wrote to the graph tables — its
+// Episodic_Memory::remember() call leaked a node + an edge on every run, and
+// its teardown deleted only the option, never the rows. By the time the
+// classes were dropped the tables held 69 nodes + 67 edges + 31 orphan
+// options, none of it from a real customer. Worth noting for the next person:
+// this file is labelled "Pure logic (no DB, no network)" in run-all.php, and
+// that line was writing to two live DB tables.
+//
+// The Context Budget assertions below are the memory/ coverage that matters —
+// class-context-budget.php is the one file in that folder that actually runs
+// on every request.
 
-// Cleanup test option
-delete_option('pi_chatbot_ep_mem_' . md5($test_sid));
+pi_section('Phase 5 — Context Budget (the one memory/ module on the live path)');
 
-pi_section('Phase 5 — Self-Evolution Engine');
+pi_check('Pi_Chatbot_Context_Budget class exists', class_exists('Pi_Chatbot_Context_Budget'), 'class missing');
 
-pi_check('Pi_Chatbot_Self_Evolution class exists', class_exists('Pi_Chatbot_Self_Evolution'), 'class missing');
-pi_check('Pi_Chatbot_Self_Evolution has get_faq_candidates method', method_exists('Pi_Chatbot_Self_Evolution', 'get_faq_candidates'), 'method missing');
-pi_check('Pi_Chatbot_Self_Evolution has auto_approve_candidates method', method_exists('Pi_Chatbot_Self_Evolution', 'auto_approve_candidates'), 'method missing');
-pi_check('Pi_Chatbot_Self_Evolution has analyze_data_gaps method', method_exists('Pi_Chatbot_Self_Evolution', 'analyze_data_gaps'), 'method missing');
+// NOTE ON TEST DATA: estimate_tokens() counts WHITESPACE-SEPARATED WORDS, not
+// characters, so test rows must contain real spacing or the budget never
+// binds. A first draft of these assertions used str_repeat('z', 2000) — one
+// 2000-character "word" — which the estimator scores as TWO tokens, so 40 such
+// rows fitted inside the 1800-token budget and the test passed for entirely
+// the wrong reason. Realistic word-shaped text is used below.
+$small = [
+    ['title' => 'A', 'excerpt' => implode(' ', array_fill(0, 20, 'tủ đông')), 'url' => 'https://x.test/a'],
+    ['title' => 'B', 'excerpt' => implode(' ', array_fill(0, 20, 'bếp gas')), 'url' => 'https://x.test/b'],
+];
+$fitted_small = Pi_Chatbot_Context_Budget::fit_context($small);
+pi_check('fit_context keeps every row when the context fits the budget',
+    count($fitted_small) === 2, count($fitted_small) . ' rows');
+
+// Over budget: must keep SOMETHING (an empty context strips the answer of all
+// grounding) but must not keep everything.
+$huge = [];
+for ($i = 0; $i < 40; $i++) {
+    $huge[] = ['title' => 'Row ' . $i, 'excerpt' => implode(' ', array_fill(0, 300, 'tủ đông')), 'url' => 'https://x.test/' . $i];
+}
+$fitted_huge = Pi_Chatbot_Context_Budget::fit_context($huge);
+pi_check('fit_context degrades gracefully over budget (keeps some rows, never empties the context)',
+    is_array($fitted_huge) && count($fitted_huge) > 0 && count($fitted_huge) < 40,
+    count($fitted_huge) . ' of 40 rows kept');
+
+// Regression pin for the 2026-08-08 fix: an over-budget STRING row used to
+// skip truncation entirely and be appended whole — measured at 49,999
+// characters (~6,500 estimated tokens) landing inside an 1,800-token budget.
+// Not reachable from today's production context sources (all return arrays),
+// but a budget that anything can ignore is not a budget.
+$mixed = [['title' => 'big', 'excerpt' => implode(' ', array_fill(0, 1000, 'x')), 'url' => '']];
+$mixed[] = implode(' ', array_fill(0, 5000, 'chuoi-dai'));
+$fitted_mixed = Pi_Chatbot_Context_Budget::fit_context($mixed);
+$worst_string_len = 0;
+foreach ($fitted_mixed as $row) {
+    if (is_string($row)) $worst_string_len = max($worst_string_len, mb_strlen($row));
+}
+pi_check('an over-budget string row is TRUNCATED, not appended whole (was: 49,999 chars into an 1,800-token budget)',
+    $worst_string_len === 0 || $worst_string_len < 6000, "longest surviving string: {$worst_string_len} chars");
+
+// KNOWN LIMITATION, pinned rather than hidden: estimate_tokens() counts words,
+// so text without spaces is drastically underestimated — 2,000 characters
+// scores as 2 tokens. Real excerpts are capped at 400 characters by
+// Retriever::make_excerpt() and are word-shaped Vietnamese prose, so the
+// practical error is modest and the budget currently never binds in
+// production (top_k=6 x ~400 chars is far below 1,800 tokens). Left as-is
+// deliberately: changing the estimator changes budget behaviour everywhere
+// and would need measurement against a real tokenizer to justify. This
+// assertion documents the behaviour so a future change is a conscious one.
+pi_check('KNOWN GAP: estimate_tokens counts words, so space-free text is badly underestimated',
+    Pi_Chatbot_Context_Budget::estimate_tokens(str_repeat('z', 2000)) < 10,
+    'estimator changed — re-check the budget assumptions above');
 
 pi_section('Phase 6 — Security Audit & Prompt Injection Defense');
 

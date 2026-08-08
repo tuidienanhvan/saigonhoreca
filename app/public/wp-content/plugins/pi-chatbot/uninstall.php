@@ -57,11 +57,26 @@ function pi_chatbot_uninstall_cleanup() {
     $vectors_table = $wpdb->prefix . 'pi_chatbot_vectors';
     $wpdb->query("DROP TABLE IF EXISTS {$vectors_table}");
 
-    // Graph store tables (see class-graph-store.php)
+    // Graph store tables — class-graph-store.php was REMOVED 2026-08-08 (dead
+    // code, zero production callers; the tables only ever held rows leaked by
+    // the test suite). These DROPs stay so an install that predates the
+    // removal still gets cleaned up on uninstall rather than leaving three
+    // orphan tables behind forever.
     $wpdb->query("DROP TABLE IF EXISTS {$wpdb->prefix}pi_chatbot_nodes");
     $wpdb->query("DROP TABLE IF EXISTS {$wpdb->prefix}pi_chatbot_edges");
     $wpdb->query("DROP TABLE IF EXISTS {$wpdb->prefix}pi_chatbot_persona");
     delete_option('pi_chatbot_graph_db_version');
+
+    // Episodic memory options — class-episodic-memory.php removed the same
+    // day, for the same reason. It stored one option per session id, so these
+    // can only be swept by pattern. (31 orphans existed on the dev install
+    // when it was removed; all from tests.)
+    $wpdb->query(
+        "DELETE FROM {$wpdb->options}
+         WHERE option_name LIKE 'pi\_chatbot\_ep\_mem\_%'
+            OR option_name LIKE '\_transient\_pi\_chatbot\_ep\_mem\_%'
+            OR option_name LIKE '\_transient\_timeout\_pi\_chatbot\_ep\_mem\_%'"
+    );
 
     // FAQ engine tables (see class-faq-engine.php)
     $wpdb->query("DROP TABLE IF EXISTS {$wpdb->prefix}pi_chatbot_faq");

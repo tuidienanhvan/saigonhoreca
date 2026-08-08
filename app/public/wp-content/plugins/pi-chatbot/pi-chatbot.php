@@ -30,9 +30,20 @@ require_once PI_CHATBOT_DIR . 'includes/rag/class-retriever.php';
 require_once PI_CHATBOT_DIR . 'includes/guardrails/class-budget.php';
 require_once PI_CHATBOT_DIR . 'includes/memory/class-context-budget.php';
 require_once PI_CHATBOT_DIR . 'includes/rag/class-faq-engine.php';
-require_once PI_CHATBOT_DIR . 'includes/memory/class-graph-store.php';
-require_once PI_CHATBOT_DIR . 'includes/memory/class-episodic-memory.php';
-require_once PI_CHATBOT_DIR . 'includes/memory/class-self-evolution.php';
+// 2026-08-08: class-graph-store.php, class-episodic-memory.php and
+// class-self-evolution.php were REMOVED here. All three were real, tidy code
+// with ZERO production callers — the only thing that ever wrote to the graph
+// tables was Episodic_Memory::remember(), which nothing called, so the tables
+// existed on every install and only ever accumulated rows leaked by the test
+// suite (69 nodes + 67 edges + 31 orphan options by the time they were
+// dropped; not one row came from a real customer). Self_Evolution also
+// carried a genuine hazard: auto_approve_candidates() promoted an answer to
+// an approved FAQ once verified_count >= 5, but that counter only tracks how
+// many times the BOT repeated its own answer — never independent
+// verification — so wiring it to cron would have let the bot certify itself.
+// Removing the requires also drops three file loads from every WordPress
+// request. class-context-budget.php (above) stays: it is the one file in
+// memory/ that actually runs.
 require_once PI_CHATBOT_DIR . 'includes/guardrails/class-security-audit.php';
 require_once PI_CHATBOT_DIR . 'includes/core/class-llm-client.php';
 require_once PI_CHATBOT_DIR . 'includes/rag/class-generator.php';
@@ -49,7 +60,6 @@ register_activation_hook(__FILE__, ['Pi_Chatbot_Log', 'on_activate']);
 register_activation_hook(__FILE__, ['Pi_Chatbot_Feedback', 'on_activate']);
 register_activation_hook(__FILE__, ['Pi_Chatbot_Lead', 'on_activate']);
 register_activation_hook(__FILE__, ['Pi_Chatbot_FAQ_Engine', 'create_table']);
-register_activation_hook(__FILE__, ['Pi_Chatbot_Graph_Store', 'create_tables']);
 
 add_action('plugins_loaded', 'pi_chatbot_bootstrap');
 function pi_chatbot_bootstrap() {
@@ -59,7 +69,6 @@ function pi_chatbot_bootstrap() {
     Pi_Chatbot_Feedback::maybe_upgrade();
     Pi_Chatbot_Lead::maybe_upgrade();
     Pi_Chatbot_FAQ_Engine::maybe_upgrade();
-    Pi_Chatbot_Graph_Store::maybe_upgrade();
     Pi_Chatbot_Indexer::instance();
     Pi_Chatbot_Rest::instance();
     Pi_Chatbot_Admin::instance();

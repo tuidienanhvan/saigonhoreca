@@ -92,6 +92,21 @@ class Pi_Chatbot_Context_Budget {
                     if (is_array($row)) {
                         $excerpt_key = isset($row['excerpt']) ? 'excerpt' : 'snippet';
                         $row[$excerpt_key] = mb_substr($row[$excerpt_key] ?? '', 0, $max_chars) . '...';
+                    } elseif (is_string($row)) {
+                        // 2026-08-08 fix. The truncation above was inside
+                        // `if (is_array($row))` but the `$fitted[] = $row;`
+                        // below was NOT — so a STRING row that exceeded the
+                        // budget skipped trimming and was appended WHOLE.
+                        // Measured before the fix: a 49,999-character string
+                        // (~6,500 estimated tokens) was added to a 1,800-token
+                        // budget, overshooting it 3.6x. Not reachable from
+                        // today's production paths (Retriever::format_rows(),
+                        // contact_context(), price_context() and
+                        // service_context() all return arrays with an
+                        // 'excerpt' key), so this was a latent trap rather
+                        // than a live defect — but the whole point of a budget
+                        // is that nothing gets to ignore it.
+                        $row = mb_substr($row, 0, $max_chars) . '...';
                     }
                     $fitted[] = $row;
                 }
