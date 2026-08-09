@@ -496,3 +496,45 @@ if (!function_exists('pi_check')) {
         return 0;
     }
 }
+
+// ── Write-through teardown for the two tables ask() legitimately writes to ────
+//
+// Suites drive the real request path, and that path records a log row and can
+// assetize a FAQ candidate. Both tables are the LIVE ones an admin reads, so
+// without this every run leaves residue in them.
+//
+// This lived in run-all.php first, which was not enough: running a single suite
+// directly skipped it, and that is a normal thing to do while iterating. Seven
+// rows of "giá tủ đông <random>" carrying a fabricated price came back that way
+// within an hour of the tables being cleaned. Registering it here means every
+// entry point that loads the harness is covered, including a suite run on its
+// own and a run that dies part-way.
+//
+// Rows are identified by an id watermark, not by matching question text.
+// Text matching guesses, and the guess is dangerous: `LIKE 'tủ đông 1%'` also
+// matches "tủ đông 1 cánh", an ordinary product question. Everything a run
+// creates is above the watermark; everything below is untouched whatever it
+// says.
+//
+// Safe because this is a dev/CI database. On production a concurrent visitor's
+// row would also sit above the watermark, so this must never ship as runtime
+// code — it is test scaffolding and lives only in tests/.
+if (!defined('PI_TEST_TEARDOWN_REGISTERED')) {
+    define('PI_TEST_TEARDOWN_REGISTERED', true);
+    global $wpdb;
+    $pi_tables = [
+        Pi_Chatbot_Log::table_name()          => (int) $wpdb->get_var('SELECT COALESCE(MAX(id), 0) FROM ' . Pi_Chatbot_Log::table_name()),
+        $wpdb->prefix . 'pi_chatbot_faq'      => (int) $wpdb->get_var('SELECT COALESCE(MAX(id), 0) FROM ' . $wpdb->prefix . 'pi_chatbot_faq'),
+    ];
+    register_shutdown_function(function () use ($pi_tables) {
+        global $wpdb;
+        $removed = [];
+        foreach ($pi_tables as $table => $watermark) {
+            $n = (int) $wpdb->query($wpdb->prepare("DELETE FROM {$table} WHERE id > %d", $watermark));
+            if ($n > 0) $removed[] = "{$n} from {$table}";
+        }
+        if ($removed) echo "
+[teardown] removed " . implode(', ', $removed) . "
+";
+    });
+}

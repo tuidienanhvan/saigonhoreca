@@ -468,7 +468,16 @@ pi_with_settings(['router_enabled' => true, 'llm7_keys' => ['k'], 'router_keys' 
                 'difficulty' => 'easy', 'query_variants' => [], 'ambiguity_reason' => '',
             ]));
         }
-        if ($i === 1) return pi_http_content('Giá tham khảo khoảng 15.000.000đ tùy cấu hình.');
+        // Contains digits so answer_needs_fact_check() fires, but is not
+        // shaped like a quote. It used to be "Giá tham khảo khoảng
+        // 15.000.000đ tùy cấu hình." — and because ask() assetizes every
+        // verified answer, that string was filed into the real FAQ approval
+        // queue on every run. 63 such rows had accumulated by 2026-08-09,
+        // a price nobody at the shop has ever quoted, sitting in front of an
+        // admin whose click would publish it verbatim. A fixture that is
+        // indistinguishable from real business data is a hazard no matter how
+        // good the teardown is, so it no longer looks like one.
+        if ($i === 1) return pi_http_content('FIXTURE TEST 123456 — khong phai cau tra loi that.');
         return pi_http_content(wp_json_encode(['faithful' => true]));
     });
     $res = pi_rest_ask('giá tủ đông ' . wp_rand(), '10.10.10.22');
