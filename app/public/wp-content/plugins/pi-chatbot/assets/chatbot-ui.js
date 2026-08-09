@@ -524,6 +524,59 @@
      *  Branches follow the exact order the real request runs in: rule-based intent first,
      *  then the router (only runs when rule-based fails), then finally the no-match case —
      *  ALWAYS has at least 1 real detail line, never left empty. */
+    /** Label + detail for the FIRST tier ("Thinking"), derived from the question itself.
+     *
+     *  Replaces a hardcoded 'Question received' / 'Preparing to analyze your message.'
+     *  that was printed identically for every question ever asked. A tier that says the
+     *  same words no matter what you typed is not showing thinking, it is showing a
+     *  placeholder — and it read as one.
+     *
+     *  Everything here is computed from the visitor's own text, client-side, BEFORE the
+     *  server replies — so it is available at the moment this row is shown, and it is
+     *  true by construction. Nothing is inferred about the ANSWER at this point, because
+     *  nothing is known about it yet; claiming otherwise is the fabrication trap that
+     *  this widget's later tiers already avoid.
+     *
+     *  Diacritics are worth surfacing specifically: the retriever has a separate
+     *  unaccented matching path, so "may lam da" and "máy làm đá" genuinely take
+     *  different routes, and saying so is real information rather than decoration. */
+    function describeRead(question) {
+        var q = String(question == null ? '' : question).trim();
+        var lines = [];
+
+        var words = q ? q.split(/\s+/).length : 0;
+        var chars = q.length;
+        lines.push('Đã nhận ' + words + ' từ (' + chars + ' ký tự).');
+
+        // Vietnamese with tone marks vs typed without — different retrieval path.
+        var hasDiacritics = /[àáâãèéêìíòóôõùúýăđĩũơưạảấầẩẫậắằẳẵặẹẻẽếềểễệỉịọỏốồổỗộớờởỡợụủứừửữựỳỵỷỹ]/i.test(q);
+        if (q) {
+            lines.push(hasDiacritics
+                ? 'Có dấu tiếng Việt — tra cứu theo văn bản có dấu.'
+                : 'Không dấu — sẽ đối chiếu thêm bằng chỉ mục không dấu.');
+        }
+
+        // Model codes look like FT-126MA-S, IM-100CNE, HF-78MA-S-B.
+        var codes = q.match(/\b[A-Za-z]{2,4}-?\d{2,4}[A-Za-z0-9-]*\b/g);
+        if (codes && codes.length) {
+            lines.push('Có thể là mã sản phẩm: ' + codes.slice(0, 3).join(', '));
+        }
+
+        if (/\d{9,11}/.test(q.replace(/[\s.\-]/g, ''))) {
+            lines.push('Có chuỗi số giống số điện thoại.');
+        }
+
+        if (/\?/.test(q)) {
+            lines.push('Dạng câu hỏi trực tiếp.');
+        }
+
+        var label = q === '' ? 'Đã nhận tin nhắn'
+            : (codes && codes.length) ? 'Đã nhận câu hỏi kèm mã sản phẩm'
+            : 'Đã đọc xong câu hỏi';
+
+        return { label: label, lines: lines };
+    }
+
     function describeThink(trace) {
         if (trace.intent === 'none') {
             return {
@@ -670,6 +723,7 @@
         renderProgressCard: renderProgressCard,
         renderStepRow: renderStepRow,
         finishStep: finishStep,
+        describeRead: describeRead,
         describeThink: describeThink,
         describeSearch: describeSearch,
         needsSearchStep: needsSearchStep,

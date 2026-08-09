@@ -99,6 +99,40 @@
     opacity: 0.85;
     flex-shrink: 0;
 }
+
+/* Per-tier eyebrow colour.
+   Until 2026-08-09 all four tiers rendered their eyebrow in the same
+   var(--cb-accent), because the rows only carried two `kind` values between
+   them ('thinking' for tiers 1-2, 'search' for tiers 3-4) — so the card read
+   as one flat block and the stages were not distinguishable at a glance.
+   Each tier now has its own kind, and the colour is derived from the theme's
+   own tokens via color-mix rather than any literal hex, so a theme that
+   restyles --cb-accent / --cb-online restyles this too.
+   Only the HUE changes: size, weight, tracking and spacing stay identical
+   across all four, so the rows still read as one consistent family — the
+   earlier complaint was that one tier was styled differently in SHAPE, and
+   that stays fixed. */
+#pi-chatbot-panel .pi-cb-step-row--reading .pi-cb-step-eyebrow {
+    /* Intake. Deliberately the quietest — nothing has been decided yet. */
+    color: var(--cb-text-muted);
+    opacity: 1;
+}
+#pi-chatbot-panel .pi-cb-step-row--identify .pi-cb-step-eyebrow {
+    /* The routing decision — the most consequential tier, so full accent. */
+    color: var(--cb-accent);
+    opacity: 1;
+}
+#pi-chatbot-panel .pi-cb-step-row--search .pi-cb-step-eyebrow {
+    /* Retrieval: accent pulled toward the panel text so it reads as a
+       different stage without introducing a colour the theme never defined. */
+    color: color-mix(in srgb, var(--cb-accent) 55%, var(--cb-text));
+    opacity: 1;
+}
+#pi-chatbot-panel .pi-cb-step-row--verify .pi-cb-step-eyebrow {
+    /* Fact check — the success token, the same green used by the online dot. */
+    color: color-mix(in srgb, var(--cb-online) 80%, var(--cb-text));
+    opacity: 1;
+}
 #pi-chatbot-panel .pi-cb-step-label-text {
     min-width: 0;
     color: var(--cb-text-muted);

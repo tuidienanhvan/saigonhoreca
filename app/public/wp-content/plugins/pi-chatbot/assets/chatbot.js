@@ -481,17 +481,18 @@
 
         // Tier 1 — "Thinking": a real, always-true first step — the assistant
         // has RECEIVED the message and is about to process it.
-        var readStep = PiChatbotUI.renderStepRow(card, 'thinking', 'Thinking', 'Reading your question');
+        var readStep = PiChatbotUI.renderStepRow(card, 'reading', 'Thinking', 'Reading your question');
         setStatus('Reading your question…');
 
         return PiChatbotUI.wait(400).then(function () {
             if (!stillCurrent()) return;
-            PiChatbotUI.finishStep(readStep, 'Question received', ['Preparing to analyze your message.']);
+            var read = PiChatbotUI.describeRead(lastQuestion);
+            PiChatbotUI.finishStep(readStep, read.label, read.lines);
             readStep.details.open = false;
 
             // Tier 2 — the REAL classification result (router intent/keywords/
             // brand, or the fast-path fallback).
-            var thinkStep = PiChatbotUI.renderStepRow(card, 'thinking', 'Identifying', 'Analyzing the question');
+            var thinkStep = PiChatbotUI.renderStepRow(card, 'identify', 'Identifying', 'Analyzing the question');
             setStatus('Analyzing the question…');
 
             return PiChatbotUI.wait(700).then(function () {
@@ -524,7 +525,7 @@
 
                     // Optional tier — the fact check, shown ONLY when it actually ran.
                     setStatus('Checking the answer…');
-                    var verifyStep = PiChatbotUI.renderStepRow(card, 'search', 'Fact check', 'Checking the answer against the data');
+                    var verifyStep = PiChatbotUI.renderStepRow(card, 'verify', 'Fact check', 'Checking the answer against the data');
 
                     return PiChatbotUI.wait(600).then(function () {
                         if (!stillCurrent()) return;
@@ -795,14 +796,15 @@
             var stagedAnimation = tracePromise.then(function () {
                 if (seq !== requestSeq || !traceEvent) return;
                 var card = PiChatbotUI.renderProgressCard(col);
-                var readStep = PiChatbotUI.renderStepRow(card, 'thinking', 'Thinking', 'Reading your question');
+                var readStep = PiChatbotUI.renderStepRow(card, 'reading', 'Thinking', 'Reading your question');
                 setStatus('Reading your question…');
                 return PiChatbotUI.wait(400).then(function () {
                     if (seq !== requestSeq) return;
-                    PiChatbotUI.finishStep(readStep, 'Question received', ['Preparing to analyze your message.']);
+                    var read = PiChatbotUI.describeRead(text);
+                    PiChatbotUI.finishStep(readStep, read.label, read.lines);
                     readStep.details.open = false;
 
-                    var thinkStep = PiChatbotUI.renderStepRow(card, 'thinking', 'Identifying', 'Analyzing the question');
+                    var thinkStep = PiChatbotUI.renderStepRow(card, 'identify', 'Identifying', 'Analyzing the question');
                     setStatus('Analyzing the question…');
                     return PiChatbotUI.wait(700).then(function () {
                         if (seq !== requestSeq) return;
