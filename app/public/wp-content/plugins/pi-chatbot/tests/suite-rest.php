@@ -543,6 +543,40 @@ pi_with_settings(['router_enabled' => false], function () {
 // request body, not by trusting the plumbing.
 pi_section('agent routing reaches the LLM: specialist prompt lands in the system message');
 
+// intent='contact' routes to lead_capture, and section 3 of the same prompt
+// already says "Customer wants CONTACT / HOTLINE information. Provide Saigon
+// Horeca hotline and contact details clearly." The agent prompt lands at
+// section 4b, AFTER that, so the two must not pull in opposite directions.
+//
+// They did until 2026-08-09: the stub said "Politely request contact details
+// (name and phone number) for official quotation dispatch" — asking the
+// visitor for THEIR number in reply to a request for OURS. Measured live, the
+// model gave the hotline and then appended an unprompted "vui lòng cung cấp
+// tên và số điện thoại của bạn" for a quote nobody had asked for.
+pi_with_settings(['router_enabled' => true, 'llm7_keys' => ['k'], 'router_keys' => []], function () {
+    pi_reset_state();
+    $registry = Pi_Chatbot_Agent_Registry::get_instance();
+
+    $routed = $registry->get_agent('supervisor')->route_intent('cho xin hotline', 'contact');
+    pi_check("intent='contact' routes to lead_capture", $routed === 'lead_capture', $routed);
+
+    $prompt = $registry->get_agent('lead_capture')->get_system_prompt([]);
+
+    pi_check('the contact agent is told to GIVE the shop\'s contact details',
+        mb_stripos($prompt, 'ĐƯA') !== false && mb_stripos($prompt, 'hotline') !== false,
+        mb_substr($prompt, 0, 90));
+    pi_check('...and explicitly NOT to demand the visitor\'s phone for a plain contact question',
+        mb_stripos($prompt, 'KHÔNG đòi') !== false, mb_substr($prompt, 0, 90));
+    pi_check('...and never to invent a phone number, email or address',
+        mb_stripos($prompt, 'KHÔNG bịa') !== false, mb_substr($prompt, 0, 90));
+
+    // The old stub was the only English prompt among four agents, for a
+    // Vietnamese-speaking audience. Pinning a Vietnamese marker keeps it from
+    // silently reverting to the English one-liner.
+    pi_check('the contact agent prompt is written in Vietnamese like its siblings',
+        mb_stripos($prompt, 'khách') !== false, mb_substr($prompt, 0, 90));
+});
+
 pi_with_settings(['router_enabled' => true, 'llm7_keys' => ['k'], 'router_keys' => []], function () {
     // intent='service' -> supervisor routes to the warranty agent, whose prompt
     // forbids stating warranty terms. That prompt exists precisely because a

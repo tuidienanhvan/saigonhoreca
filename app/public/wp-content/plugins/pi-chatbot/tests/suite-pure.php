@@ -699,8 +699,23 @@ pi_check('catalog text cannot close the reference block early (sanitize is actua
     substr_count($rendered, '<<<END_REFERENCE_DATA>>>') === 1
         && mb_strpos($rendered, '<<<END_REF_DATA_ESCAPED>>>') !== false,
     substr_count($rendered, '<<<END_REFERENCE_DATA>>>') . ' closing delimiters found');
+// Ordering check, written to be capable of failing — the previous version was
+// not. It read:
+//     mb_strpos($rendered, '<<<END_REFERENCE_DATA>>>')
+//         > mb_strpos($rendered, '<<<END_REF_DATA_ESCAPED>>>')
+// With sanitize unwired the escaped marker does not exist at all, so the right
+// side is mb_strpos(...) === false, PHP coerces false to 0 in the comparison,
+// and any real delimiter position > 0 satisfies it. The assertion passed
+// precisely in the case it was written to catch.
+// Positions are now pinned as integers first, so a missing marker fails
+// outright instead of silently becoming zero.
+$pos_real    = mb_strpos($rendered, '<<<END_REFERENCE_DATA>>>');
+$pos_escaped = mb_strpos($rendered, '<<<END_REF_DATA_ESCAPED>>>');
+pi_check('the escaped marker is actually present (not false-coerced-to-0)',
+    is_int($pos_escaped), var_export($pos_escaped, true));
 pi_check('the real closing delimiter is still the LAST thing in the block',
-    mb_strpos($rendered, '<<<END_REFERENCE_DATA>>>') > mb_strpos($rendered, '<<<END_REF_DATA_ESCAPED>>>'));
+    is_int($pos_real) && is_int($pos_escaped) && $pos_real > $pos_escaped,
+    'real=' . var_export($pos_real, true) . ' escaped=' . var_export($pos_escaped, true));
 
 // 2026-08-08 regression pin: the flood check used to be /(.)\1{4,}/u — ANY
 // character 5x in a row, digits included — so ordinary Vietnamese mobile

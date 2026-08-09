@@ -585,6 +585,24 @@
             };
         }
 
+        // Router did not run (disabled / circuit open / error / budget spent).
+        // Checked BEFORE trace.agent_name, which is the order that was wrong:
+        // with no intent to route on, Supervisor::route_intent() falls to its
+        // `default` and returns 'sales', so agent_name arrives as "Sales &
+        // Pricing Specialist" and this card used to announce a specialist —
+        // "Specialized domain agent processed the request." — for a turn where
+        // nothing was classified and no agent decision was made. The tier is
+        // supposed to report what happened; here it reported a routing that
+        // never occurred. What actually ran is a plain keyword search on the
+        // raw message (class-rest.php resolve_context, router-unavailable
+        // branch), so that is what it says now.
+        if (trace.router_used === false) {
+            return {
+                label: 'Direct keyword search',
+                lines: ['The classifier was unavailable, so the question was matched against the catalog by keyword alone.']
+            };
+        }
+
         if (trace.agent_name) {
             var agentLabel = 'Agent: ' + trace.agent_name;
             var agentLines = [];
@@ -592,19 +610,29 @@
                 agentLines.push('Inferred keywords: ' + trace.router_keywords.join(', '));
             }
             if (trace.router_brand) agentLines.push('Brand detected: ' + trace.router_brand);
-            if (!agentLines.length) agentLines.push('Specialized domain agent processed the request.');
+            if (!agentLines.length) agentLines.push('Routed to a specialist agent for this topic.');
             return { label: agentLabel, lines: agentLines };
         }
 
+        // Fallback for traces with no agent_name (older cached traces, or the
+        // unregistered-agent branch). The detail lines here used to advertise
+        // the four tools deleted in August 2026 for serving invented data:
+        // "Calculating package quotation, discounts, VAT, and shipping fees"
+        // (the shop publishes no discount, VAT or shipping figures at all) and
+        // "Checking official manufacturer warranty policies & terms" (3 of 528
+        // catalog entries mention bảo hành, none of them a policy). Describing
+        // capabilities the system does not have is the same fabrication those
+        // tools were removed for — it just moved into the UI copy. Replaced
+        // with what each intent genuinely does.
         switch (trace.intent) {
             case 'price':
-                return { label: 'Agent: Sales & Pricing Specialist', lines: ['Calculating package quotation, discounts, VAT, and shipping fees.'] };
+                return { label: 'Agent: Sales & Pricing Specialist', lines: ['Looking up pricing information published for these products.'] };
             case 'contact':
-                return { label: 'Agent: Lead Capture Agent', lines: ['Retrieving official Saigon Horeca contact & hotline channels.'] };
+                return { label: 'Agent: Lead Capture Specialist', lines: ['Retrieving official Saigon Horeca contact & hotline channels.'] };
             case 'service':
-                return { label: 'Agent: Warranty Specialist', lines: ['Checking official manufacturer warranty policies & terms.'] };
+                return { label: 'Agent: Warranty Specialist', lines: ['Looking up after-sales and service information on record.'] };
             case 'project':
-                return { label: 'Agent: Technical Spec Specialist', lines: ['Evaluating technical specs & commercial kitchen requirements.'] };
+                return { label: 'Agent: Technical Spec Specialist', lines: ['Matching stated kitchen requirements against product specifications.'] };
         }
 
         if (trace.router_used) {
