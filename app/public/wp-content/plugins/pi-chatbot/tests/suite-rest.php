@@ -670,6 +670,26 @@ pi_with_settings(['router_enabled' => true, 'llm7_keys' => ['k'], 'router_keys' 
         pi_check('a follow-up turn (history present) is NOT short-circuited by the standalone FAQ',
             count(pi_http_calls()) > 0 && $data_followup && $data_followup['answer'] !== $expected,
             count(pi_http_calls()) . ' llm calls');
+
+        // Approval has to STICK. assetize() runs on every answered question,
+        // so the same question being asked again used to overwrite `answer`
+        // on the existing row — including rows an admin had already approved,
+        // and without resetting is_approved. The approved answer would be
+        // silently replaced by a freshly generated one that was then served
+        // VERBATIM to every later visitor, with the model and verify() both
+        // skipped, and no human ever having read it.
+        //
+        // Goes red if the guard in assetize() is removed: the row's answer
+        // becomes the overwrite string.
+        Pi_Chatbot_FAQ_Engine::assetize($q, 'CAU TRA LOI MOI DE GHI DE', 'product');
+        $after = $wpdb->get_row($wpdb->prepare(
+            "SELECT answer, is_approved, verified_count FROM {$faq_table} WHERE question_norm = %s", $norm));
+        pi_check('re-asking an APPROVED question does not overwrite the approved answer',
+            $after && $after->answer === $expected, $after ? mb_substr($after->answer, 0, 50) : 'no row');
+        pi_check('...and the row stays approved rather than silently reverting',
+            $after && (int) $after->is_approved === 1, $after ? "is_approved={$after->is_approved}" : 'no row');
+        pi_check('...while verified_count still counts the repeat ask',
+            $after && (int) $after->verified_count > 1, $after ? "count={$after->verified_count}" : 'no row');
     } finally {
         $wpdb->query($wpdb->prepare("DELETE FROM {$faq_table} WHERE question = %s", $q));
     }

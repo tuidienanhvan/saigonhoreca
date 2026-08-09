@@ -67,6 +67,21 @@ global $wpdb;
 $pi_log_table     = Pi_Chatbot_Log::table_name();
 $pi_log_watermark = (int) $wpdb->get_var("SELECT COALESCE(MAX(id), 0) FROM {$pi_log_table}");
 
+// Same treatment for the FAQ table, and this one mattered more than the log.
+// assetize() runs on every answered question, so suites were filing their own
+// fixtures into the REAL approval queue an admin reads. By 2026-08-09 that
+// queue held 95 rows of which 63 were the test string "Giá tham khảo khoảng
+// 15.000.000đ tùy cấu hình" — a price nobody at the shop ever quoted.
+//
+// That is worse than log noise: approving a row makes find_faq() serve its
+// answer VERBATIM, skipping the model and skipping verify(). Approving the
+// queue as it stood would have published an invented price as the shop's
+// answer to every freezer price question. Purged (65 test rows, plus 2 real-
+// looking rows carrying "bảo hành 24 tháng" left over from the deleted
+// warranty_checker tool); 28 genuine pending rows remain.
+$pi_faq_table     = $wpdb->prefix . 'pi_chatbot_faq';
+$pi_faq_watermark = (int) $wpdb->get_var("SELECT COALESCE(MAX(id), 0) FROM {$pi_faq_table}");
+
 // Harness self-test — proves pi_check()/pi_report() can actually go red before
 // trusting them to grade five suites. Without this, a scoping or counter bug
 // would make every run print success no matter what the assertions did (the
@@ -112,7 +127,10 @@ foreach ($suites as $file => $description) {
 $pi_log_purged = (int) $wpdb->query(
     $wpdb->prepare("DELETE FROM {$pi_log_table} WHERE id > %d", $pi_log_watermark)
 );
-printf("\n[teardown] removed %d log row(s) created by this run (ids > %d)\n", $pi_log_purged, $pi_log_watermark);
+$pi_faq_purged = (int) $wpdb->query(
+    $wpdb->prepare("DELETE FROM {$pi_faq_table} WHERE id > %d", $pi_faq_watermark)
+);
+printf("\n[teardown] removed %d log row(s) and %d FAQ row(s) created by this run\n", $pi_log_purged, $pi_faq_purged);
 
 echo "\n" . str_repeat('=', 70) . "\n=== Summary ===\n";
 printf("  %-4s %-24s harness self-test (1 deliberate failure expected)\n", $self_test_ok ? 'ok' : 'FAIL', '');

@@ -62,11 +62,37 @@ class Pi_Chatbot_FAQ_Engine {
         if ($norm === '' || trim((string) $answer) === '') return false;
 
         $existing = $wpdb->get_row($wpdb->prepare(
-            "SELECT id, verified_count FROM {$table} WHERE question_norm = %s",
+            "SELECT id, verified_count, is_approved FROM {$table} WHERE question_norm = %s",
             $norm
         ));
 
         if ($existing) {
+            // An APPROVED row keeps its answer. Approval here is not a quality
+            // score on the question — find_faq() serves an approved answer
+            // VERBATIM, skipping the model and skipping verify() entirely. So
+            // the approved text is the exact string a human signed off on.
+            //
+            // Before this guard the update below overwrote `answer` on every
+            // repeat ask while leaving is_approved at 1. An admin could approve
+            // answer A, the next visitor's generated answer B would silently
+            // replace it, and B was then served verbatim to everyone after —
+            // never fact-checked, never read by anyone. Approval did not stick,
+            // and nothing surfaced that it had stopped meaning anything.
+            //
+            // verified_count still increments: knowing an approved answer keeps
+            // recurring is useful, and it changes no customer-visible text.
+            if ((int) $existing->is_approved === 1) {
+                return $wpdb->update(
+                    $table,
+                    ['verified_count' => $existing->verified_count + 1],
+                    ['id' => $existing->id],
+                    ['%d'],
+                    ['%d']
+                );
+            }
+
+            // Still pending: the newest answer is the better candidate to show
+            // in the approval queue, so overwriting is correct here.
             return $wpdb->update(
                 $table,
                 ['verified_count' => $existing->verified_count + 1, 'answer' => $answer],
