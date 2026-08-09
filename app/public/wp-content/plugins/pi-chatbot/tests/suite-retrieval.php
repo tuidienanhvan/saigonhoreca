@@ -150,6 +150,45 @@ foreach (['contact_context', 'price_context', 'service_context'] as $method) {
     }
 }
 
+// contact_context() is the ONLY way any contact detail can reach the model —
+// SYSTEM_PROMPT forbids answering from anything outside the reference block. So
+// a field the theme publishes but this excerpt omits is a field the bot can
+// never mention, and worse, may actively deny.
+//
+// That has now happened twice. First Facebook/Zalo/YouTube (a customer asked
+// for the Facebook page and was told it wasn't known). Then, found 2026-08-09
+// by diffing the theme's config against the excerpt:
+//
+//   "tên công ty đầy đủ trên hoá đơn là gì"
+//     -> "Xin lỗi, tôi hiện chưa có thông tin…"
+//   "còn email nào khác ngoài contact@ không"
+//     -> "Chỉ có một địa chỉ email chính…"   <- false, gin@ is published
+//
+// This asserts the excerpt against the LIVE theme values rather than against
+// hardcoded strings, so it keeps working when the shop changes its number and
+// fails when a field stops being carried.
+if (function_exists('saigonhouse_get_contact_info')) {
+    $c = saigonhouse_get_contact_info();
+    $excerpt = Pi_Chatbot_Retriever::contact_context()[0]['excerpt'] ?? '';
+
+    $must_carry = ['hotline', 'hotline_alt', 'email_primary', 'email_secondary',
+                   'address', 'website', 'facebook', 'zalo', 'youtube', 'company_full'];
+    foreach ($must_carry as $field) {
+        if (empty($c[$field])) continue; // absent in config = nothing to carry
+        pi_check("contact_context() carries the theme's {$field} into the model's context",
+            mb_strpos($excerpt, (string) $c[$field]) !== false,
+            "missing: " . mb_substr((string) $c[$field], 0, 40));
+    }
+
+    // The empty tax code must stay ABSENT, not become a blank label the model
+    // could treat as a field it is expected to fill.
+    if (empty($c['mst'])) {
+        pi_check('an empty tax code is omitted entirely rather than left blank',
+            mb_stripos($excerpt, 'mst') === false && mb_stripos($excerpt, 'tax') === false,
+            $excerpt);
+    }
+}
+
 if ($has_project) {
     pi_section('Retriever::search_projects');
     $projects = Pi_Chatbot_Retriever::search_projects('dự án', 4);

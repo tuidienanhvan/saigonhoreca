@@ -225,9 +225,41 @@ class Pi_Chatbot_Retriever {
         // SYSTEM_PROMPT forbids answering from anything not in this context,
         // so any field missing here is a field the bot can never mention,
         // no matter how obviously "known" it seems.
+        // 2026-08-09 — company_full and email_secondary added, the same bug
+        // class as the Facebook/Zalo one above, found by diffing what
+        // saigonhouse_get_contact_info() actually returns against what reaches
+        // this excerpt. Both were verified live before the fix:
+        //
+        //   "tên công ty đầy đủ trên hoá đơn là gì"
+        //     -> "Xin lỗi, tôi hiện chưa có thông tin…"
+        //        while CÔNG TY TNHH SÀI GÒN HORECA sat in theme config.
+        //
+        //   "còn email nào khác ngoài contact@ không"
+        //     -> "Chỉ có một địa chỉ email chính…"
+        //        which is not a refusal but a false statement — gin@ is real
+        //        and is published on the /lien-he/ page.
+        //
+        // The second is the worse failure: a missing field does not just make
+        // the bot unhelpful, it makes it confidently deny something true,
+        // because SYSTEM_PROMPT tells it the reference block is all there is.
+        //
+        // Deliberately NOT added: slogan and description (marketing copy —
+        // inviting the model to make claims about capabilities is how the
+        // deleted tools started), address_short (a duplicate of address that
+        // only gives the model two spellings to choose between), city and
+        // country_code (already inside address), and the *_raw phone variants
+        // (same numbers without spaces; the formatted ones are what a person
+        // reads back). mst is empty in config, so there is nothing to add —
+        // and an empty tax code must stay absent rather than become a blank
+        // the model might fill in.
+        $company = $c['company_full'] ?? ($c['company_name'] ?? '');
+        $emails  = trim((string) ($c['email_primary'] ?? ''));
+        if (!empty($c['email_secondary'])) {
+            $emails .= ' (or ' . $c['email_secondary'] . ')';
+        }
         $excerpt = sprintf(
-            'Hotline: %s (or %s). Email: %s. Address: %s. Website: %s. Facebook: %s. Zalo: %s. YouTube: %s.',
-            $c['hotline'] ?? '', $c['hotline_alt'] ?? '', $c['email_primary'] ?? '',
+            'Company: %s. Hotline: %s (or %s). Email: %s. Address: %s. Website: %s. Facebook: %s. Zalo: %s. YouTube: %s.',
+            $company, $c['hotline'] ?? '', $c['hotline_alt'] ?? '', $emails,
             $c['address'] ?? '', $c['website'] ?? '', $c['facebook'] ?? '',
             $c['zalo'] ?? '', $c['youtube'] ?? ''
         );
