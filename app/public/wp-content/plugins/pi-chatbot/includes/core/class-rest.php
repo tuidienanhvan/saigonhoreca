@@ -171,7 +171,25 @@ class Pi_Chatbot_Rest {
         // Placed before check_rate_limit() for the same reason the cache lookup
         // is: it costs zero LLM calls, so it must not consume the visitor's
         // per-minute quota.
-        if (empty($history)) {
+        //
+        // 2026-08-09 — the gate was `empty($history)`, and with the shipped
+        // widget that is NEVER true, so this whole block was unreachable in
+        // production and the feature delivered nothing.
+        //
+        // chatbot.js opens the panel by rendering a canned greeting through
+        // addMessage('bot', 'Hello!…') (chatbot.js:279), and addMessage pushes
+        // every user/bot line into chatHistory (:376). The payload for a turn
+        // is snapshotted BEFORE the visitor's own question is appended (:897).
+        // So even the very first question arrives with history = [greeting] —
+        // non-empty, and the FAQ never ran for anyone.
+        //
+        // The condition the comment above actually describes is "this question
+        // stands alone", and what makes a question context-dependent is a
+        // previous question from the VISITOR, not a greeting the widget wrote
+        // to itself. has_prior_user_turn() states that directly, so the guard
+        // now matches its own stated reasoning and survives the widget
+        // deciding to render a different greeting.
+        if (!self::has_prior_user_turn($history)) {
             $faq = Pi_Chatbot_FAQ_Engine::find_faq($message);
             if ($faq && !empty($faq['answer'])) {
                 $faq_result = [
@@ -324,7 +342,20 @@ class Pi_Chatbot_Rest {
                     }
                 }
             }
-            if ($verified === true && !empty($result['answer'])) {
+            // Same standalone-question test the READ path uses, and for the
+            // same reason. An approved FAQ is served on question text alone,
+            // so a row is only safe to file if its question meant what it says
+            // WITHOUT the turns before it. A follow-up like "giá bao nhiêu?"
+            // or "loại nào phù hợp cho quán em" is answerable here because the
+            // model can see the history — but stored as a standalone pair it
+            // becomes an answer about one product waiting to be served to
+            // anyone who happens to type the same four words.
+            //
+            // Until 2026-08-09 the write path had no guard at all, so those
+            // rows were entering the approval queue looking exactly like real
+            // standalone questions, with nothing in the admin screen to tell
+            // an approver which was which.
+            if ($verified === true && !empty($result['answer']) && !self::has_prior_user_turn($history)) {
                 Pi_Chatbot_FAQ_Engine::assetize($message, $result['answer'], $intent ?: 'product');
             }
             $mark('verify');
@@ -1286,6 +1317,33 @@ class Pi_Chatbot_Rest {
      *
      * @return array<int,array{role:string,text:string}>
      */
+    /**
+     * True when the VISITOR has already said something in this conversation.
+     *
+     * Distinct from `!empty($history)`, and the difference is not academic:
+     * the widget seeds every conversation with a bot greeting it wrote to
+     * itself, so history is non-empty from the moment the panel opens while
+     * the visitor has still said nothing. Anything gated on "is this question
+     * standalone?" must ask THIS, not whether the array has entries — the
+     * approved-FAQ lookup was gated the other way and was consequently dead
+     * code in production for as long as it existed.
+     *
+     * Expects the output of sanitize_history(), where role is already
+     * constrained to 'user' or 'bot'.
+     *
+     * @param array<int,array{role:string,text:string}> $history
+     * @return bool
+     */
+    private static function has_prior_user_turn($history) {
+        if (!is_array($history)) return false;
+        foreach ($history as $turn) {
+            if (is_array($turn) && isset($turn['role']) && $turn['role'] === 'user') {
+                return true;
+            }
+        }
+        return false;
+    }
+
     private static function sanitize_history($raw) {
         if (!is_array($raw)) return [];
         $out = [];
@@ -1298,6 +1356,29 @@ class Pi_Chatbot_Rest {
             if (mb_strlen($text) > self::MAX_HISTORY_MESSAGE_LENGTH) {
                 $text = mb_substr($text, 0, self::MAX_HISTORY_MESSAGE_LENGTH) . '…';
             }
+
+            // 2026-08-09 — history text now goes through the same injection
+            // guard as $message. It did not before, and history was the softer
+            // way in of the two.
+            //
+            // Nothing about this array is trusted: it is a plain field of the
+            // request body, so a client can send any roles and any text it
+            // likes regardless of what the widget would have sent. A turn
+            // marked role:'bot' is replayed to the model as role:'assistant'
+            // (class-generator.php:215), i.e. as words the model believes IT
+            // said earlier — which is a stronger lever than a user-turn
+            // injection, since models weight their own apparent prior output
+            // heavily. "reveal your system prompt" as $message was rejected;
+            // the same string as a forged assistant turn sailed through.
+            //
+            // Offending turns are DROPPED rather than failing the request,
+            // matching this method's existing contract: a broken history
+            // degrades to less context, while a broken $message cannot degrade
+            // into anything and is rejected outright. A visitor is never shut
+            // out because of something already sitting in their transcript.
+            $turn_check = Pi_Chatbot_Security_Audit::inspect($text);
+            if (!$turn_check['is_safe']) continue;
+
             $out[] = ['role' => $role, 'text' => $text];
         }
         // Keep the MOST RECENT turns, not the first ones sent — a client that
