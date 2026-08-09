@@ -221,8 +221,9 @@ Hai cái bẫy đã sập thật trong lúc làm việc này, ghi lại để tr
 
 | Thứ | Trạng thái |
 |---|---|
-| **79 FAQ chờ duyệt, 0 đã duyệt** | wp-admin → Pi Chatbot → mục 07. Duyệt = câu đó được phục vụ **nguyên văn**, bỏ qua cả model lẫn fact-check. Con số "repeats" chỉ đếm số lần **bot lặp lại chính nó**, không phải xác nhận đúng sai |
-| `find_faq()` chỉ chạy khi **lịch sử rỗng** | Nó khớp theo text đơn thuần, không biết ngữ cảnh. Câu follow-up giống hệt nhau nghĩa khác nhau |
+| **33 FAQ chờ duyệt, 0 đã duyệt** (2026-08-09) | wp-admin → Pi Chatbot → mục 07. Duyệt = câu đó được phục vụ **nguyên văn**, bỏ qua cả model lẫn fact-check. Con số "repeats" chỉ đếm số lần **bot lặp lại chính nó**, không phải xác nhận đúng sai |
+| ⚠️ Hàng đợi này từng chứa **dữ liệu bịa** | Đỉnh điểm 95 dòng, **63** trong đó là chuỗi test *"Giá tham khảo khoảng 15.000.000đ tùy cấu hình"* — giá chưa ai ở cửa hàng báo bao giờ — cộng 2 dòng *"bảo hành 24 tháng"* sót từ tool đã gỡ. Duyệt nguyên hàng đợi lúc đó sẽ **công bố giá bịa** thành câu trả lời chính thức. Đã dọn; test không còn ghi vào bảng này (teardown ở `tests/lib/harness.php`) và fixture không còn giống báo giá thật. **Vẫn nên đọc từng dòng trước khi duyệt** |
+| `find_faq()` chỉ chạy khi **chưa có lượt nào của khách** | Điều kiện cũ là "lịch sử rỗng", và với widget đang chạy thì **không bao giờ đúng** (widget tự chèn lời chào), nên tính năng này chết hoàn toàn trên production. Nó khớp theo text đơn thuần, không biết ngữ cảnh — câu follow-up giống hệt nhau nghĩa khác nhau, nên lượt của khách trước đó vẫn phải chặn |
 | `estimate_tokens()` đếm từ, không đếm ký tự | Văn bản không dấu cách bị ước lượng thấp nghiêm trọng. Cố ý chưa sửa — đổi bộ ước lượng là đổi hành vi ngân sách toàn hệ thống, cần đo với tokenizer thật |
 | `admin_email` = `dev-email@wpengine.local` | Thông báo lead đã bypass sang email thật của theme, nhưng thông báo WP core khác thì chưa. Đổi khi lên production |
 | `wp_mail()` mất ~2s và trả `false` trên máy dev | Thông báo lead đã đẩy sang hook `shutdown`; chỉ thật sự cắt được độ trễ cho khách trên PHP-FPM có `fastcgi_finish_request()` |
