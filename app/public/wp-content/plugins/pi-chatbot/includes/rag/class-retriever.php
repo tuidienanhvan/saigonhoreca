@@ -265,7 +265,7 @@ class Pi_Chatbot_Retriever {
         );
         return [[
             'post_id'  => 0,
-            'title'    => 'Saigon Horeca contact information',
+            'title'    => pi_chatbot_brand()['name'] . ' contact information',
             'brand'    => '',
             'category' => '',
             'url'      => home_url('/lien-he/'),
@@ -292,7 +292,7 @@ class Pi_Chatbot_Retriever {
         );
         return [[
             'post_id'  => 0,
-            'title'    => 'Saigon Horeca pricing policy',
+            'title'    => pi_chatbot_brand()['name'] . ' pricing policy',
             'brand'    => '',
             'category' => '',
             'url'      => home_url('/lien-he/'),
@@ -311,7 +311,7 @@ class Pi_Chatbot_Retriever {
         if ($desc === '') return [];
         return [[
             'post_id'  => 0,
-            'title'    => 'Saigon Horeca services',
+            'title'    => pi_chatbot_brand()['name'] . ' services',
             'brand'    => '',
             'category' => '',
             // 2026-07-27: was home_url('/gioi-thieu/') — that slug never existed

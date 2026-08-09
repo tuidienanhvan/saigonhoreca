@@ -32,7 +32,7 @@ class Pi_Chatbot_Warranty_Agent implements Pi_Chatbot_Agent_Interface {
      * that specific warranty terms have to come from the hotline.
      */
     public function get_system_prompt(array $context): string {
-        return "Bạn phụ trách câu hỏi hậu mãi, bảo trì và dịch vụ của Saigon Horeca.\n"
+        return "Bạn phụ trách câu hỏi hậu mãi, bảo trì và dịch vụ của " . pi_chatbot_brand()['name'] . ".\n"
             . "TUYỆT ĐỐI KHÔNG nêu thời hạn bảo hành, danh sách linh kiện được bảo hành, "
             . "hay thời gian cam kết xử lý sự cố — cửa hàng chưa công bố những thông tin này, "
             . "và bịa ra một con số là gây thiệt hại thật cho khách. Nếu khách hỏi những điều đó, "

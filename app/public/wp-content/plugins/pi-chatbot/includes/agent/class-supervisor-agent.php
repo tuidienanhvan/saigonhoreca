@@ -31,7 +31,7 @@ class Pi_Chatbot_Supervisor_Agent implements Pi_Chatbot_Agent_Interface {
     }
 
     public function get_system_prompt(array $context): string {
-        return 'You are the Chief Supervisor Agent for Saigon Horeca. Inspect intent and delegate to specialized subagents.';
+        return 'You are the Chief Supervisor Agent for ' . pi_chatbot_brand()['name'] . '. Inspect intent and delegate to specialized subagents.';
     }
 
     public function get_tools(): array {

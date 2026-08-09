@@ -9,6 +9,13 @@
     var iconX = document.getElementById('sh-ic-x');
     var badge = document.getElementById('sh-badge');
 
+    // From PiChatbotConfig (the theme's company config) rather than a literal,
+    // so the panel header and the greeting name the same company the prompts
+    // do. Both were hardcoded "Saigon Horeca", which on a second site would
+    // have greeted every visitor as the wrong business.
+    var brandName = (typeof PiChatbotConfig !== 'undefined' && PiChatbotConfig.brandName)
+        ? PiChatbotConfig.brandName : '';
+
     var panel = document.createElement('div');
     panel.id = 'pi-chatbot-panel';
     panel.setAttribute('role', 'dialog');
@@ -22,7 +29,7 @@
     panel.innerHTML =
         '<div class="pi-cb-header">' +
         '  <div class="pi-cb-icon"><svg class="pi-cb-bot-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1M20 11a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1h-1" /><path d="M12 6V3M10 3h4" /><rect x="5" y="6" width="14" height="12" rx="3" /><circle cx="9" cy="11" r="1" fill="currentColor" /><circle cx="15" cy="11" r="1" fill="currentColor" /><path d="M10 14a2 2 0 0 0 4 0" /></svg></div>' +
-        '  <div class="pi-cb-title" id="pi-cb-title">Saigon Horeca AI Assistant<small><span class="pi-cb-dot"></span>Online — Instant reply</small></div>' +
+        '  <div class="pi-cb-title" id="pi-cb-title">' + (brandName ? brandName + ' ' : '') + 'AI Assistant<small><span class="pi-cb-dot"></span>Online — Instant reply</small></div>' +
         '  <div class="pi-cb-actions">' +
         '    <button type="button" class="pi-cb-reset" aria-label="Reset"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg></button>' +
         '    <button type="button" class="pi-cb-close" aria-label="Close"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>' +
@@ -276,7 +283,7 @@
             var hasUserMessage = chatHistory.some(function (msg) { return msg.role === 'user'; });
             if (!hasUserMessage) addQuickReplies(PiChatbotUI.QUICK_REPLIES);
         } else {
-            addMessage('bot', 'Hello!\nI\'m Saigon Horeca\'s AI assistant. What can I help you with today?');
+            addMessage('bot', 'Hello!\nI\'m ' + (brandName ? brandName + '\'s ' : 'the ') + 'AI assistant. What can I help you with today?');
             addQuickReplies(PiChatbotUI.QUICK_REPLIES);
         }
     }

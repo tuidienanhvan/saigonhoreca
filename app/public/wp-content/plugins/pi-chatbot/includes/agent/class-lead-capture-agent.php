@@ -47,7 +47,7 @@ class Pi_Chatbot_Lead_Capture_Agent implements Pi_Chatbot_Agent_Interface {
      * customers are Vietnamese and a lone English prompt drifts in tone.
      */
     public function get_system_prompt(array $context): string {
-        return "Bạn phụ trách câu hỏi về thông tin liên hệ của Saigon Horeca.\n"
+        return "Bạn phụ trách câu hỏi về thông tin liên hệ của " . pi_chatbot_brand()['name'] . ".\n"
             . "Nhiệm vụ chính: ĐƯA cho khách thông tin liên hệ của cửa hàng "
             . "(hotline, email, địa chỉ, trang liên hệ) một cách đầy đủ và rõ ràng, "
             . "đúng như phần thông tin tham chiếu cung cấp.\n"
@@ -61,7 +61,7 @@ class Pi_Chatbot_Lead_Capture_Agent implements Pi_Chatbot_Agent_Interface {
     public function get_tools(): array { return []; }
     public function execute(Pi_Chatbot_Handoff_State $state): array {
         return [
-            'content'  => 'Dạ Quý khách vui lòng để lại Tên và Số điện thoại (hoặc Email) để bộ phận tư vấn Saigon Horeca liên hệ hỗ trợ báo giá trực tiếp!',
+            'content'  => 'Dạ Quý khách vui lòng để lại Tên và Số điện thoại (hoặc Email) để bộ phận tư vấn ' . pi_chatbot_brand()['name'] . ' liên hệ hỗ trợ báo giá trực tiếp!',
             'agent_id' => 'lead_capture',
         ];
     }

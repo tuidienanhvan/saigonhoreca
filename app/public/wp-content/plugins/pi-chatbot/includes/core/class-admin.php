@@ -70,7 +70,7 @@ class Pi_Chatbot_Admin {
                 <span class="dashicons dashicons-format-chat" aria-hidden="true"></span>
                 <div>
                     <h1><?php esc_html_e('Pi Chatbot', 'pi-chatbot'); ?></h1>
-                    <p class="pi-cba-sub"><?php esc_html_e('Retrieval + generation settings for the Saigon Horeca sales assistant.', 'pi-chatbot'); ?></p>
+                    <p class="pi-cba-sub"><?php printf(esc_html__('Retrieval + generation settings for the %s sales assistant.', 'pi-chatbot'), esc_html(pi_chatbot_brand()['name'])); ?></p>
                 </div>
             </div>
 

@@ -841,7 +841,7 @@ class Pi_Chatbot_Rest {
             if (!$fallback) return;
             $to = [$fallback];
         }
-        $subject = '[Saigon Horeca] New chat lead: ' . ($phone ?: 'no phone');
+        $subject = '[' . pi_chatbot_brand()['name'] . '] New chat lead: ' . ($phone ?: 'no phone');
         $body = "A visitor left their contact info in the chatbot widget.\n\n"
             . 'Name: ' . ($name ?: '(not given)') . "\n"
             . 'Phone: ' . $phone . "\n"

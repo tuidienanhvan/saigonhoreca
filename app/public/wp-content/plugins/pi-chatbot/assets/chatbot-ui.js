@@ -628,7 +628,7 @@
             case 'price':
                 return { label: 'Agent: Sales & Pricing Specialist', lines: ['Looking up pricing information published for these products.'] };
             case 'contact':
-                return { label: 'Agent: Lead Capture Specialist', lines: ['Retrieving official Saigon Horeca contact & hotline channels.'] };
+                return { label: 'Agent: Lead Capture Specialist', lines: ['Retrieving the official contact & hotline channels.'] };
             case 'service':
                 return { label: 'Agent: Warranty Specialist', lines: ['Looking up after-sales and service information on record.'] };
             case 'project':

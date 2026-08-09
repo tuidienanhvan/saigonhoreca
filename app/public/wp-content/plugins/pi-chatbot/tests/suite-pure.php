@@ -505,7 +505,51 @@ $ctx_delim = Pi_Chatbot_Generator::context_to_text([pi_result(['title' => 'Test 
 pi_check('reference block is wrapped in explicit DATA delimiters',
     strpos($ctx_delim, '<<<REFERENCE_DATA>>>') !== false && strpos($ctx_delim, '<<<END_REFERENCE_DATA>>>') !== false);
 pi_check('the delimiter sentence is present in the system prompt',
-    strpos(Pi_Chatbot_Generator::SYSTEM_PROMPT, 'REFERENCE_DATA') !== false);
+    strpos(Pi_Chatbot_Generator::build_system_prompt('product'), 'REFERENCE_DATA') !== false);
+
+// ── Shop identity is configuration, not a literal ───────────────────────────
+// Added 2026-08-09 while preparing the plugin for a second site. The name was
+// hardcoded in 27 places across 13 files including all six agent prompts and
+// the widget header, so a plain copy would have produced a bot that introduces
+// itself as the wrong company — the one sentence that must never be a guess.
+//
+// Asserted through the pi_chatbot_brand filter rather than against the current
+// shop's name, so this stays true on whichever site it runs.
+pi_section('Shop identity comes from config, not hardcoded strings');
+
+$fake = ['name' => 'ZZTESTCO', 'full' => 'CONG TY ZZTESTCO', 'business' => 'ban thu nghiem'];
+$override = function () use ($fake) { return $fake; };
+add_filter('pi_chatbot_brand', $override);
+
+$brand = pi_chatbot_brand();
+pi_check('pi_chatbot_brand() is filterable', $brand['name'] === 'ZZTESTCO', wp_json_encode($brand));
+pi_check('brand_line joins name and business', pi_chatbot_brand_line() === 'ZZTESTCO — ban thu nghiem', pi_chatbot_brand_line());
+
+$sys = Pi_Chatbot_Generator::build_system_prompt('product');
+pi_check('the system prompt names the configured shop, not a literal',
+    strpos($sys, 'ZZTESTCO') !== false, mb_substr($sys, 0, 120));
+pi_check('...and carries no leftover hardcoded shop name',
+    strpos($sys, 'Saigon Horeca') === false,
+    'found "Saigon Horeca" in the built prompt');
+
+// Each agent prompt too — these are injected at section 4b of the same prompt.
+$registry = Pi_Chatbot_Agent_Registry::get_instance();
+foreach (['supervisor', 'lead_capture', 'warranty'] as $id) {
+    $p = $registry->get_agent($id)->get_system_prompt([]);
+    pi_check("agent '{$id}' names the configured shop rather than a literal",
+        strpos($p, 'Saigon Horeca') === false, mb_substr($p, 0, 100));
+}
+
+remove_filter('pi_chatbot_brand', $override);
+
+// An empty business description must DROP the clause, never invite a guess:
+// stating what a shop sells is exactly the kind of claim this plugin spent a
+// week removing, and doing it about the shop's own identity is the worst case.
+$nobiz = function () { return ['name' => 'ZZTESTCO', 'full' => 'ZZTESTCO', 'business' => '']; };
+add_filter('pi_chatbot_brand', $nobiz);
+pi_check('an empty business description collapses to the bare name, with no dangling dash',
+    pi_chatbot_brand_line() === 'ZZTESTCO', pi_chatbot_brand_line());
+remove_filter('pi_chatbot_brand', $nobiz);
 
 // ── Pi_Chatbot_Feedback ──────────────────────────────────────────────────────
 pi_section('Pi_Chatbot_Feedback (Stage 2 — 👍/👎 signal the golden set can\'t measure)');

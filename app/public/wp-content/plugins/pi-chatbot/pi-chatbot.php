@@ -185,6 +185,87 @@ function pi_chatbot_settings() {
     return $settings;
 }
 
+/**
+ * Who this chatbot works for — the single source of truth for the shop's
+ * identity, so it stops being 27 copies of the string "Saigon Horeca" spread
+ * across 13 files including all six agent prompts and the widget header.
+ *
+ * Added 2026-08-09 when the plugin was being prepared for a second site. The
+ * hardcoding was not merely untidy: a plain copy would have produced a bot
+ * that introduces itself as Saigon Horeca and states it sells commercial
+ * kitchen equipment, on a site that is neither. A bot whose very first
+ * sentence is false about itself is not a naming problem.
+ *
+ * Values come from the theme, which both sites already carry as
+ * saigonhouse_get_contact_info() — the same function contact_context()
+ * reads, so the shop's name in the prompt can never drift from the contact
+ * details in the answer. Order of preference per field, first non-empty wins:
+ *
+ *   name     company_name -> blogname
+ *   full     company_full -> name
+ *   business description  -> ''      (see below)
+ *
+ * `business` is deliberately allowed to be EMPTY. It describes what the shop
+ * sells, and callers must drop the clause entirely rather than substitute a
+ * guess — "a commercial kitchen equipment supplier" hardcoded into a design
+ * firm's prompt is exactly the fabrication this plugin spent a week removing,
+ * and an identity claim is the worst possible place for it.
+ *
+ * The `pi_chatbot_brand` filter is the escape hatch for a site whose theme
+ * has no such config, or which wants the assistant to describe itself
+ * differently from its marketing copy.
+ *
+ * @return array{name:string, full:string, business:string}
+ */
+function pi_chatbot_brand() {
+    $c = function_exists('saigonhouse_get_contact_info') ? saigonhouse_get_contact_info() : [];
+    if (!is_array($c)) $c = [];
+
+    $pick = function ($key) use ($c) {
+        return isset($c[$key]) && is_scalar($c[$key]) ? trim((string) $c[$key]) : '';
+    };
+
+    $name = $pick('company_name');
+    if ($name === '') $name = trim((string) get_option('blogname'));
+
+    $full = $pick('company_full');
+    if ($full === '') $full = $name;
+
+    $brand = [
+        'name'     => $name,
+        'full'     => $full,
+        'business' => $pick('description'),
+    ];
+
+    /**
+     * Filter the shop identity used in every prompt and in the widget header.
+     *
+     * @param array $brand {name, full, business}
+     */
+    $brand = apply_filters('pi_chatbot_brand', $brand);
+
+    // A filter returning junk must not be able to fatal the chat response
+    // path, same defensive rationale as pi_chatbot_settings() above.
+    foreach (['name', 'full', 'business'] as $k) {
+        $brand[$k] = isset($brand[$k]) && is_scalar($brand[$k]) ? trim((string) $brand[$k]) : '';
+    }
+    if ($brand['name'] === '') $brand['name'] = trim((string) get_option('blogname'));
+    if ($brand['full'] === '') $brand['full'] = $brand['name'];
+
+    return $brand;
+}
+
+/**
+ * "<name> — <business>" for prompts, collapsing to just "<name>" when the
+ * site publishes no description. Callers use this instead of assembling the
+ * clause themselves, so no caller can accidentally leave a dangling "— " or
+ * invent a description to fill the gap.
+ */
+function pi_chatbot_brand_line() {
+    $b = pi_chatbot_brand();
+    return $b['business'] !== '' ? $b['name'] . ' — ' . $b['business'] : $b['name'];
+}
+
 add_action('save_post', ['Pi_Chatbot_Indexer', 'on_save_post'], 20, 3);
 add_action('before_delete_post', ['Pi_Chatbot_Indexer', 'on_delete_post']);
 
@@ -269,6 +350,12 @@ function pi_chatbot_enqueue_frontend() {
         // trusted config, not catalog content a product entry could smuggle
         // an arbitrary domain into).
         'trustedHosts' => pi_chatbot_trusted_hosts(),
+        // Same reasoning as trustedHosts directly above: computed from the
+        // theme's company config rather than typed into chatbot.js, so the
+        // name in the panel header and the greeting cannot drift from the name
+        // the prompts use. Both strings were hardcoded "Saigon Horeca", which
+        // on a second site would have greeted visitors as the wrong company.
+        'brandName'    => pi_chatbot_brand()['name'],
         'nonce'     => wp_create_nonce('wp_rest'),
         // Same source as Pi_Chatbot_Rest::MAX_MESSAGE_LENGTH — previously "500" was a
         // hardcoded number in both PHP and the maxlength attribute in chatbot.js,
