@@ -466,6 +466,33 @@ class Pi_Chatbot_Rest {
             return new WP_Error('pi_chatbot_too_long', sprintf('Message is too long (max %d characters).', self::MAX_MESSAGE_LENGTH), ['status' => 400]);
         }
 
+        // Security Audit — prompt injection guard.
+        //
+        // 2026-08-09: this was MISSING here while ask() had it, and the gap was
+        // not cosmetic. chatbot.js posts to /ask-stream FIRST for every single
+        // message and only falls back to /ask when this endpoint answers
+        // eligible:false — so the guard that ask() runs was, in practice,
+        // running on the SECOND request rather than the first.
+        //
+        // The two facts below combine into the actual hole:
+        //   1. an injection payload carries no product terms, so the router
+        //      labels it intent='none' and retrieval returns nothing;
+        //   2. the eligibility test at the bottom of this method is
+        //      `empty($routing['context'])` — i.e. this endpoint streams
+        //      PRECISELY when there is no context.
+        // So the one input class the guard exists to stop was also the input
+        // class most likely to take the unguarded path, reach the model as the
+        // user message, and stream back to the visitor token by token. Nothing
+        // downstream can undo that: once bytes are on the wire there is no
+        // response to reject and verify() never runs on this path.
+        //
+        // Placed before the cache read and before check_rate_limit() so a
+        // rejected payload costs zero LLM calls, exactly as in ask().
+        $sec_check = Pi_Chatbot_Security_Audit::inspect($message);
+        if (!$sec_check['is_safe']) {
+            return new WP_Error('pi_chatbot_security_violation', 'Your request contains unsafe pattern. Please rephrase your question.', ['status' => 400]);
+        }
+
         $normalized = trim(preg_replace('/\s+/u', ' ', mb_strtolower($message)));
         $history = self::sanitize_history($req->get_param('history'));
         $history_suffix = $history ? '|h' . md5(wp_json_encode($history)) : '';
@@ -514,6 +541,16 @@ class Pi_Chatbot_Rest {
             'router_used'       => $routing['router_used'],
             'router_keywords'   => $routing['router_keywords'],
             'router_brand'      => $routing['router_brand'],
+            // Carried over from resolve_context() exactly as ask() does. These
+            // three were missing here: chatbot-ui.js keys the progress card's
+            // "Agent:" row off trace.agent_name, so a streamed turn fell
+            // through to a hardcoded fallback label and could announce
+            // "Product Specialist" for a turn the supervisor had routed to
+            // Sales. Worse, this trace is written into the answer cache that
+            // /ask reads from, so the wrong label outlived the request.
+            'agent_id'          => $routing['agent_id'] ?? null,
+            'agent_name'        => $routing['agent_name'] ?? null,
+            'tool_used'         => $routing['tool_used'] ?? null,
             'mode'              => $routing['mode'],
             'difficulty'        => $routing['difficulty'],
             'ambiguity_reason'  => $routing['ambiguity_reason'],
