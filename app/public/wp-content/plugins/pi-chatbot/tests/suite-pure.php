@@ -719,6 +719,29 @@ pi_check('informal repeated letters ("okeeee") are not treated as spam', $inform
 $wall = Pi_Chatbot_Security_Audit::inspect('aaaaaaaaaaaaaaaaaaaa');
 pi_check('a genuine single-character flood is still blocked', $wall['is_safe'] === false, json_encode($wall));
 
+// Boundary pin for the run threshold, added 2026-08-09 after auditing the two
+// assertions above and finding they do not actually pin anything. "okeeee" is
+// 4 repeats and "aaaa…" is 20, so ANY threshold from 5 to 20 keeps both green
+// — the guard could silently drift back toward the 5 that was rejecting real
+// phone numbers and nothing here would notice. The rule in class-security-audit
+// is /([^\d\s])\1{7,}/u, i.e. the 8th consecutive identical non-digit blocks;
+// these two assertions straddle exactly that edge, so moving it in either
+// direction fails one of them.
+$edge_safe  = Pi_Chatbot_Security_Audit::inspect('oke' . str_repeat('e', 6));  // 7 in a row
+$edge_block = Pi_Chatbot_Security_Audit::inspect('oke' . str_repeat('e', 7));  // 8 in a row
+pi_check('run threshold — 7 identical letters in a row is still allowed',
+    $edge_safe['is_safe'] === true, json_encode($edge_safe));
+pi_check('run threshold — the 8th identical letter is what blocks',
+    $edge_block['is_safe'] === false, json_encode($edge_block));
+
+// Digits are excluded from the run check entirely rather than special-cased
+// per phone format, so a digit run far past the letter threshold must still
+// pass. Without this, "digits are exempt" could regress to "phone numbers are
+// whitelisted" and the phone assertions above would not tell the difference.
+$digit_run = Pi_Chatbot_Security_Audit::inspect('ma may la 0000000000000 dung khong');
+pi_check('digits are exempt from the run check regardless of length',
+    $digit_run['is_safe'] === true, json_encode($digit_run));
+
 $spam_repeat = Pi_Chatbot_Security_Audit::inspect('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
 pi_check('Security audit blocks repeated character spam', $spam_repeat['is_safe'] === false, json_encode($spam_repeat));
 

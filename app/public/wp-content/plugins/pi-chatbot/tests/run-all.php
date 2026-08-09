@@ -42,6 +42,31 @@ $suites = [
 
 echo "=== pi-chatbot full test run — " . count($suites) . " suites ===\n";
 
+// Log teardown, part 1 of 2 — remember the highest log id that exists BEFORE
+// any suite runs.
+//
+// Why this exists: suites drive the real ask()/ask_stream() path, and that
+// path legitimately writes a row to wp_pi_chatbot_log. Those rows are real
+// enough to pollute the wp-admin report "questions the bot could not answer":
+// by 2026-08-09 the top of that report was 159 rows of "xxxxx…" (the
+// MAX_MESSAGE_LENGTH probe) and 329 of "tủ đông <random>" — 703 rows total,
+// which is what a site owner would have read as customer demand. Purged then;
+// this stops it recurring.
+//
+// Deleting by id > watermark rather than by matching question text on purpose.
+// Text matching guesses, and the guess is dangerous: the obvious pattern
+// `question_norm LIKE 'tủ đông 1%'` also matches "tủ đông 1 cánh", an ordinary
+// product question. An id watermark needs no guessing — every row a test run
+// creates is above it, and every row below it is untouched, whatever the
+// wording.
+//
+// Safe because this is a dev/CI database. If a real visitor somehow asked a
+// question mid-run their row would also be above the watermark; that trade is
+// accepted here and would NOT be on production.
+global $wpdb;
+$pi_log_table     = Pi_Chatbot_Log::table_name();
+$pi_log_watermark = (int) $wpdb->get_var("SELECT COALESCE(MAX(id), 0) FROM {$pi_log_table}");
+
 // Harness self-test — proves pi_check()/pi_report() can actually go red before
 // trusting them to grade five suites. Without this, a scoping or counter bug
 // would make every run print success no matter what the assertions did (the
@@ -79,6 +104,15 @@ foreach ($suites as $file => $description) {
     pi_mail_unstub();
     pi_reset_state();
 }
+
+// Log teardown, part 2 of 2 — drop every row this run created. Runs before the
+// summary so the count is visible in the same output the developer already
+// reads, and unconditionally: a failing run pollutes the log exactly as much as
+// a passing one, so an early `exit(1)` below must not skip it.
+$pi_log_purged = (int) $wpdb->query(
+    $wpdb->prepare("DELETE FROM {$pi_log_table} WHERE id > %d", $pi_log_watermark)
+);
+printf("\n[teardown] removed %d log row(s) created by this run (ids > %d)\n", $pi_log_purged, $pi_log_watermark);
 
 echo "\n" . str_repeat('=', 70) . "\n=== Summary ===\n";
 printf("  %-4s %-24s harness self-test (1 deliberate failure expected)\n", $self_test_ok ? 'ok' : 'FAIL', '');
