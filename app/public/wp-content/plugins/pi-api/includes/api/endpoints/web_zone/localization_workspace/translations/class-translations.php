@@ -305,7 +305,9 @@ class Pi_Api_Translations {
      * ================================================================== */
 
     public static function get_drafts($request) {
-        $lang = (string) $request->get_param('language');
+        // Mọi endpoint khác trong nhóm này nhận `lang`; giữ `language` cho bản cũ.
+        $lang = (string) $request->get_param('lang');
+        if ($lang === '') $lang = (string) $request->get_param('language');
         if ($lang === '') $lang = 'en';
 
         $drafts = get_posts([
