@@ -41,7 +41,7 @@ $type = isset($_GET['pi_api_type']) ? sanitize_key((string) $_GET['pi_api_type']
             <p>Last heartbeat: <?php echo esc_html(get_option('pi_api_last_heartbeat') ? wp_date('Y-m-d H:i:s', (int) get_option('pi_api_last_heartbeat')) : 'Chưa có'); ?></p>
 
             <p>
-                <a class="button button-primary" href="<?php echo esc_url(admin_url('admin.php?page=pi-api-dashboard')); ?>">
+                <a class="button button-primary" href="<?php echo esc_url(admin_url('admin.php?page=pi-api')); ?>">
                     <?php esc_html_e('Mở Pi Dashboard', 'pi-api'); ?>
                 </a>
             </p>

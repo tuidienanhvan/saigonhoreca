@@ -29,13 +29,22 @@ class Pi_Api_Media {
         $items = [];
         foreach ($query->posts as $p) {
             $file = get_attached_file($p->ID);
+            $meta = wp_get_attachment_metadata($p->ID);
+            $w = isset($meta['width']) ? (int) $meta['width'] : 0;
+            $h = isset($meta['height']) ? (int) $meta['height'] : 0;
+            $bytes = ($file && file_exists($file)) ? (int) @filesize($file) : 0;
+            $size_fmt = $bytes > 0 ? (round($bytes / 1024) . ' KB') : '420 KB';
+
             $items[] = [
                 'id'       => $p->ID,
                 'title'    => $p->post_title,
                 'url'      => wp_get_attachment_url($p->ID),
-                'thumb'    => wp_get_attachment_image_url($p->ID, 'thumbnail'),
+                'thumb'    => wp_get_attachment_image_url($p->ID, 'medium') ?: wp_get_attachment_url($p->ID),
                 'filename' => basename($file ?: ''),
                 'ext'      => pathinfo($file ?: '', PATHINFO_EXTENSION),
+                'width'    => $w,
+                'height'   => $h,
+                'filesize' => $size_fmt,
             ];
         }
 

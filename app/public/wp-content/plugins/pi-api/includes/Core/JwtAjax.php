@@ -1,5 +1,5 @@
 <?php
-namespace PiApi;
+namespace PiApi\Core;
 
 if (!defined('ABSPATH')) {
     exit;

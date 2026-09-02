@@ -107,6 +107,188 @@ class Pi_Api_Content {
         return $default;
     }
 
+    /**
+     * Get thumbnail URL with filesystem fallback.
+     *
+     * WP metadata có thể ghi nhận intermediate sizes (medium, large...)
+     * nhưng file thực tế trên disk không tồn tại (do import chỉ copy file gốc,
+     * hoặc regenerate bị lỗi). Khi đó browser request → 404 → ảnh trắng.
+     *
+     * Helper này kiểm tra file trên disk. Nếu thiếu → fallback qua full size,
+     * nếu full cũng thiếu → null.
+     */
+    /**
+     * Normalize URL protocol and host for local environment & SSL
+     */
+    private static function normalize_url($url) {
+        if (!$url || !is_string($url)) return null;
+        if (is_ssl() || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https')) {
+            $url = str_replace('http://', 'https://', $url);
+        }
+        return $url;
+    }
+
+    /**
+     * Get thumbnail URL with filesystem fallback + meta/attachment fallbacks.
+     */
+    private static function get_safe_thumbnail_url($post_id, $size = 'medium') {
+        $thumb_id = get_post_thumbnail_id($post_id);
+
+        // Fallback 1: Check ACF / Custom theme post meta keys
+        if (!$thumb_id) {
+            $alt_keys = ['_thumbnail_id', 'project_image', 'project_banner', 'hero_image', '_pi_og_image', '_thumbnail_url'];
+            foreach ($alt_keys as $key) {
+                $meta_val = get_post_meta($post_id, $key, true);
+                if (is_numeric($meta_val) && (int)$meta_val > 0) {
+                    $thumb_id = (int)$meta_val;
+                    break;
+                } elseif (is_string($meta_val) && str_starts_with($meta_val, 'http')) {
+                    return self::normalize_url($meta_val);
+                }
+            }
+        }
+
+        // Fallback 2: Check first attached image in post gallery
+        if (!$thumb_id) {
+            $images = get_attached_media('image', $post_id);
+            if (!empty($images)) {
+                $first = reset($images);
+                $thumb_id = $first->ID;
+            }
+        }
+
+        if (!$thumb_id) return null;
+
+        // Auto-sanitize _wp_attached_file in DB if it contains an absolute Windows/Unix path
+        $raw_attached = get_post_meta($thumb_id, '_wp_attached_file', true);
+        if ($raw_attached && preg_match('#wp-content/uploads/(.+)$#i', $raw_attached, $match)) {
+            $clean_rel = $match[1];
+            if ($clean_rel !== $raw_attached) {
+                update_post_meta($thumb_id, '_wp_attached_file', $clean_rel);
+            }
+        }
+
+        // 1. Kiểm tra xem file kích thước yêu cầu (vd: medium) có tồn tại thực sự trên ổ đĩa không
+        $meta = wp_get_attachment_metadata($thumb_id);
+        if (!empty($meta['sizes'][$size]['file']) && !empty($meta['file'])) {
+            $basedir = wp_get_upload_dir()['basedir'];
+            $dir = dirname($meta['file']);
+            $size_path = $basedir . ($dir !== '.' ? '/' . $dir : '') . '/' . $meta['sizes'][$size]['file'];
+            if (file_exists($size_path)) {
+                $url = get_the_post_thumbnail_url($post_id, $size) ?: wp_get_attachment_image_url($thumb_id, $size);
+                return self::normalize_url($url);
+            }
+        }
+
+        // 2. Fallback: kiểm tra file ảnh gốc (attached file)
+        $attached_file = get_attached_file($thumb_id);
+        if ($attached_file && file_exists($attached_file)) {
+            $url = wp_get_attachment_url($thumb_id);
+            return self::normalize_url($url);
+        }
+
+        return null;
+    }
+
+    /**
+     * Detect the actual PHP template file WordPress uses for a given page or CPT item.
+     */
+    private static function detect_page_template($page_id, $post_type = 'page') {
+        $custom = get_page_template_slug($page_id);
+        if ($custom) {
+            return $custom;
+        }
+
+        $theme_dir = get_template_directory();
+        $slug = get_post_field('post_name', $page_id);
+
+        if ($post_type === 'project') {
+            if ($slug) {
+                if (file_exists($theme_dir . "/single-project/{$slug}.php")) {
+                    return "single-project/{$slug}.php";
+                }
+                if (file_exists($theme_dir . "/single-project/{$slug}/index.php")) {
+                    return "single-project/{$slug}/index.php";
+                }
+                if (file_exists($theme_dir . "/single-project-{$slug}.php")) {
+                    return "single-project-{$slug}.php";
+                }
+                if (file_exists($theme_dir . "/project-{$slug}.php")) {
+                    return "project-{$slug}.php";
+                }
+            }
+            if (file_exists($theme_dir . '/single-project.php')) {
+                return 'single-project.php';
+            }
+            return 'single-project.php';
+        }
+
+        // 2. Static front page (Settings > Reading)
+        $front_page_id = (int) get_option('page_on_front');
+        if ($front_page_id && $front_page_id === $page_id) {
+            if (file_exists($theme_dir . '/front-page.php')) {
+                return 'front-page.php';
+            }
+        }
+
+        // 3. Blog posts page (Settings > Reading)
+        $posts_page_id = (int) get_option('page_for_posts');
+        if ($posts_page_id && $posts_page_id === $page_id) {
+            if (file_exists($theme_dir . '/home.php')) {
+                return 'home.php';
+            }
+            return 'archive.php';
+        }
+
+        // 4. CPT archive override — page slug matches a CPT's rewrite slug
+        $cpts = get_post_types(['public' => true, '_builtin' => false], 'objects');
+        foreach ($cpts as $cpt) {
+            $archive_slug = $cpt->has_archive;
+            if ($archive_slug === true) {
+                $archive_slug = $cpt->rewrite['slug'] ?? $cpt->name;
+            }
+            if ($archive_slug && $slug === $archive_slug) {
+                $tpl = "archive-{$cpt->name}.php";
+                if (file_exists($theme_dir . '/' . $tpl)) {
+                    return $tpl;
+                }
+                return 'archive.php';
+            }
+        }
+
+        // 5. Check page-{slug}.php
+        if ($slug && file_exists($theme_dir . "/page-{$slug}.php")) {
+            return "page-{$slug}.php";
+        }
+
+        return 'page.php';
+    }
+
+    /**
+     * Helper to compute total aggregate word count for CPT archive shell pages.
+     */
+    private static function get_aggregate_cpt_words($cpt) {
+        global $wpdb;
+        static $cache = [];
+        if (isset($cache[$cpt])) return $cache[$cpt];
+
+        $posts = $wpdb->get_results($wpdb->prepare("
+            SELECT post_content 
+            FROM {$wpdb->posts} 
+            WHERE post_type = %s AND post_status = 'publish'
+        ", $cpt));
+
+        $total_words = 0;
+        foreach ($posts as $p) {
+            $clean = strip_tags($p->post_content);
+            if (!empty($clean)) {
+                $total_words += count(preg_split('/\s+/u', $clean, -1, PREG_SPLIT_NO_EMPTY));
+            }
+        }
+        $cache[$cpt] = $total_words;
+        return $total_words;
+    }
+
     public static function get_list(\WP_REST_Request $request) {
         $type     = $request->get_param('type') ?: 'post';
         $status   = $request->get_param('status') ?: 'any';
@@ -127,7 +309,22 @@ class Pi_Api_Content {
 
         $category = (int) $request->get_param('category');
         if ($category > 0) {
-            $args['cat'] = $category;
+            // Dùng đúng taxonomy theo post type — 'cat' chỉ hoạt động cho taxonomy 'category'
+            $tax_map = [
+                'project' => 'project_category',
+                'product' => 'product_category',
+            ];
+            $filter_taxonomy = $tax_map[$type] ?? 'category';
+
+            if ($filter_taxonomy === 'category') {
+                $args['cat'] = $category;
+            } else {
+                $args['tax_query'] = [[
+                    'taxonomy' => $filter_taxonomy,
+                    'field'    => 'term_id',
+                    'terms'    => [$category],
+                ]];
+            }
         }
 
         $date_after = $request->get_param('after');
@@ -149,6 +346,16 @@ class Pi_Api_Content {
             $args['s'] = $search;
         }
 
+        // Parent filter (for hierarchical post types like page)
+        $parent_filter = $request->get_param('parent');
+        if ($parent_filter === 'root') {
+            $args['post_parent'] = 0;
+        } elseif ($parent_filter === 'child') {
+            $args['post_parent__not_in'] = [0];
+        } elseif (is_numeric($parent_filter) && (int)$parent_filter > 0) {
+            $args['post_parent'] = (int) $parent_filter;
+        }
+
         $query = new \WP_Query($args);
         $items = [];
 
@@ -165,12 +372,45 @@ class Pi_Api_Content {
             if (!$word_count) {
                 $clean_content = strip_tags($p->post_content);
                 $word_count = !empty($clean_content) ? count(preg_split('/\s+/u', $clean_content, -1, PREG_SPLIT_NO_EMPTY)) : 0;
+
+                // Fallback cho các Trang Archive Shell (Dự Án, Sản Phẩm, Tin Tức): tính tổng quy mô từ các mục con
+                if ($word_count === 0 && $type === 'page') {
+                    $slug = $p->post_name;
+                    $tpl  = self::detect_page_template($p->ID, 'page');
+                    if ($slug === 'du-an' || str_contains($tpl, 'archive-project')) {
+                        $word_count = self::get_aggregate_cpt_words('project');
+                    } elseif ($slug === 'san-pham' || str_contains($tpl, 'archive-product')) {
+                        $word_count = self::get_aggregate_cpt_words('product');
+                    } elseif ($slug === 'tin-tuc' || $p->ID === (int) get_option('page_for_posts')) {
+                        $word_count = self::get_aggregate_cpt_words('post');
+                    }
+                }
+            }
+
+            // Parent/Child info
+            $parent_id = (int) $p->post_parent;
+            $parent_title = $parent_id > 0 ? html_entity_decode(get_the_title($parent_id), ENT_QUOTES, 'UTF-8') : null;
+            
+            $children_count = 0;
+            if ($type === 'page') {
+                global $wpdb;
+                $children_count = (int) $wpdb->get_var($wpdb->prepare("
+                    SELECT COUNT(*) FROM {$wpdb->posts} 
+                    WHERE post_parent = %d AND post_type = %s AND post_status != 'trash'
+                ", $p->ID, $type));
             }
             
-            // Get categories
-            $cats = get_the_category($p->ID);
+            // Get categories — đúng taxonomy theo post type
+            // get_the_category() chỉ query taxonomy 'category' (post mặc định).
+            // CPT project dùng 'project_category', product dùng 'product_category'.
+            $tax_map = [
+                'project' => 'project_category',
+                'product' => 'product_category',
+            ];
+            $taxonomy = $tax_map[$type] ?? 'category';
+            $cats = get_the_terms($p->ID, $taxonomy);
             $formatted_cats = [];
-            if (!empty($cats)) {
+            if (!empty($cats) && !is_wp_error($cats)) {
                 foreach ($cats as $cat) {
                     $formatted_cats[] = [
                         'id'   => $cat->term_id,
@@ -189,10 +429,15 @@ class Pi_Api_Content {
                 'date'           => get_the_date('Y-m-d H:i', $p),
                 'modified'       => get_the_modified_date('Y-m-d H:i', $p),
                 'author'         => get_the_author_meta('display_name', $p->post_author),
-                'thumbnail'      => get_the_post_thumbnail_url($p->ID, 'medium') ?: null,
+                'thumbnail'      => self::get_safe_thumbnail_url($p->ID, 'medium'),
                 'categories'     => $formatted_cats,
                 'word_count'     => $word_count,
                 'comment_count'  => (int) $p->comment_count,
+                'parent_id'      => $parent_id,
+                'parent_title'   => $parent_title,
+                'children_count' => $children_count,
+                'menu_order'     => (int) $p->menu_order,
+                'template'       => in_array($type, ['page', 'project'], true) ? self::detect_page_template($p->ID, $type) : null,
             ];
         }
 
@@ -203,13 +448,25 @@ class Pi_Api_Content {
         ], 200);
     }
 
+
+    /**
+     * SEO: post_content không được chứa H1 (H1 = post_title).
+     * Chuyển mọi <h1> thành <h2> để đảm bảo chỉ có 1 H1 trên trang.
+     */
+    private static function sanitize_content_headings($html) {
+        if (empty($html)) return $html;
+        $html = preg_replace('/<h1(\s|>)/i', '<h2$1', $html);
+        $html = preg_replace('/<\/h1>/i', '</h2>', $html);
+        return $html;
+    }
+
     public static function create(\WP_REST_Request $request) {
         $params = $request->get_json_params();
         $type   = $request->get_param('type') ?: 'post';
 
         $post_data = [
             'post_title'   => $params['title'] ?? '',
-            'post_content' => $params['content'] ?? '',
+            'post_content' => self::sanitize_content_headings($params['content'] ?? ''),
             'post_status'  => $params['status'] ?? 'draft',
             'post_type'    => $type,
             'post_author'  => get_current_user_id(),
@@ -218,6 +475,8 @@ class Pi_Api_Content {
         if (isset($params['post_password']))  $post_data['post_password']  = $params['post_password'];
         if (isset($params['comment_status'])) $post_data['comment_status'] = $params['comment_status'];
         if (isset($params['ping_status']))    $post_data['ping_status']    = $params['ping_status'];
+        if (isset($params['parent_id']))      $post_data['post_parent']    = (int) $params['parent_id'];
+        if (isset($params['menu_order']))     $post_data['menu_order']     = (int) $params['menu_order'];
 
         $id = wp_insert_post($post_data);
 
@@ -281,8 +540,13 @@ class Pi_Api_Content {
                 'desc'     => self::get_meta_value($id, 'seo_desc', ''),
                 'keywords' => self::get_meta_value($id, 'seo_keyword', ''),
             ],
+            'seo_title'   => self::get_meta_value($id, 'seo_title', ''),
+            'seo_desc'    => self::get_meta_value($id, 'seo_desc', ''),
+            'seo_keyword' => self::get_meta_value($id, 'seo_keyword', ''),
             'thumbnail'   => get_the_post_thumbnail_url($id, 'large'),
             'thumbnail_id' => get_post_thumbnail_id($id),
+            'parent_id'   => (int) $p->post_parent,
+            'menu_order'  => (int) $p->menu_order,
             'url'         => get_permalink($id),
             'edit_url'    => get_edit_post_link($id, 'raw'),
             'media_count' => count(get_attached_media('image', $id)),
@@ -295,11 +559,13 @@ class Pi_Api_Content {
 
         $post_data = ['ID' => $id];
         if (isset($params['title']))          $post_data['post_title']     = $params['title'];
-        if (isset($params['content']))        $post_data['post_content']   = $params['content'];
+        if (isset($params['content']))        $post_data['post_content']   = self::sanitize_content_headings($params['content']);
         if (isset($params['status']))         $post_data['post_status']    = $params['status'];
         if (isset($params['post_password']))  $post_data['post_password']  = $params['post_password'];
         if (isset($params['comment_status'])) $post_data['comment_status'] = $params['comment_status'];
         if (isset($params['ping_status']))    $post_data['ping_status']    = $params['ping_status'];
+        if (isset($params['parent_id']))      $post_data['post_parent']    = (int) $params['parent_id'];
+        if (isset($params['menu_order']))     $post_data['menu_order']     = (int) $params['menu_order'];
 
         wp_update_post($post_data);
 
@@ -311,12 +577,14 @@ class Pi_Api_Content {
             set_post_thumbnail($id, (int) $params['thumbnail_id']);
         }
 
-        // Meta
-        if (isset($params['seo'])) {
-            $seo = $params['seo'];
-            if (isset($seo['title'])) update_post_meta($id, self::get_meta_key('seo_title'), sanitize_text_field($seo['title']));
-            if (isset($seo['desc']))  update_post_meta($id, self::get_meta_key('seo_desc'), sanitize_textarea_field($seo['desc']));
-        }
+        // Meta (Supports both root-level and nested 'seo' object)
+        $seo_title   = $params['seo_title'] ?? $params['seo']['title'] ?? null;
+        $seo_desc    = $params['seo_desc'] ?? $params['seo']['desc'] ?? null;
+        $seo_keyword = $params['seo_keyword'] ?? $params['seo']['keywords'] ?? $params['seo']['keyword'] ?? null;
+
+        if ($seo_title !== null)   update_post_meta($id, self::get_meta_key('seo_title'), sanitize_text_field($seo_title));
+        if ($seo_desc !== null)    update_post_meta($id, self::get_meta_key('seo_desc'), sanitize_textarea_field($seo_desc));
+        if ($seo_keyword !== null) update_post_meta($id, self::get_meta_key('seo_keyword'), sanitize_text_field($seo_keyword));
 
         // Reading Time & Stats
         if (isset($params['content'])) {

@@ -70,9 +70,24 @@ class Pi_Api_Migrate {
             'callback'            => [self::class, 'export_posts'],
             'permission_callback' => $admin,
         ]);
+        register_rest_route($ns, '/migrate/posts/download', [
+            'methods'             => 'GET',
+            'callback'            => [self::class, 'download_export'],
+            'permission_callback' => $admin,
+        ]);
+        register_rest_route($ns, '/migrate/posts/upload', [
+            'methods'             => 'POST',
+            'callback'            => [self::class, 'upload_bundle'],
+            'permission_callback' => $admin,
+        ]);
         register_rest_route($ns, '/migrate/posts/import', [
             'methods'             => 'POST',
             'callback'            => [self::class, 'import_posts'],
+            'permission_callback' => $admin,
+        ]);
+        register_rest_route($ns, '/migrate/posts/import-chunk', [
+            'methods'             => 'POST',
+            'callback'            => [self::class, 'import_chunk'],
             'permission_callback' => $admin,
         ]);
 
@@ -412,8 +427,21 @@ class Pi_Api_Migrate {
 
     public static function export_posts(\WP_REST_Request $req) {
 		$post_ids = (array) ( $req->get_param( 'post_ids' ) ?? array() );
+		$single_id = $req->get_param( 'single_id' );
+		if ( ! empty( $single_id ) ) {
+			$post_ids = array( (int) $single_id );
+		}
+
 		$post_type = $req->get_param( 'post_type' ) ?: 'product';
-		$export_name = $req->get_param( 'export_name' ) ?: 'export-' . gmdate( 'Ymd-His' );
+		
+		if ( ! empty( $single_id ) ) {
+			$post_obj = get_post( (int) $single_id );
+			$slug = ( $post_obj && ! empty( $post_obj->post_name ) ) ? $post_obj->post_name : 'item-' . $single_id;
+			$export_name = 'pix1-single-' . sanitize_file_name( $slug ) . '-' . gmdate( 'Ymd-His' );
+		} else {
+			$export_name = $req->get_param( 'export_name' ) ?: 'pix1-' . sanitize_file_name( $post_type ) . '-' . gmdate( 'Ymd-His' );
+		}
+
 		$dry_run = (bool) $req->get_param( 'dry_run' );
 
 		if ( empty( $post_ids ) ) {
@@ -429,7 +457,9 @@ class Pi_Api_Migrate {
 			return new \WP_REST_Response( array( 'error' => 'no posts found to export' ), 400 );
 		}
 
-		$temp_dir = trailingslashit( sys_get_temp_dir() );
+		$uploads = wp_upload_dir();
+		$export_dir = trailingslashit( $uploads['basedir'] ) . 'pi-exports/';
+		wp_mkdir_p( $export_dir );
 		$site_key = self::site_key();
 
 		if ( $dry_run ) {
@@ -441,18 +471,179 @@ class Pi_Api_Migrate {
 			), 200 );
 		}
 
-		$result = Pi_Pix_Folder_Writer::export_zip( $post_ids, $temp_dir, $export_name, $site_key );
+		$result = Pi_Pix_Folder_Writer::export_zip( $post_ids, $export_dir, $export_name, $site_key );
 		if ( is_wp_error( $result ) ) {
 			return new \WP_REST_Response( array( 'error' => $result->get_error_message() ), 400 );
 		}
 
+		$zip_filename = basename( $result['zip'] );
+		$download_url = trailingslashit( $uploads['baseurl'] ) . 'pi-exports/' . $zip_filename;
+		$stream_url = rest_url( 'pi/v1/migrate/posts/download?file=' . rawurlencode( $zip_filename ) );
+
 		return new \WP_REST_Response( array(
 			'zip' => $result['zip'],
+			'filename' => $zip_filename,
+			'download_url' => $download_url,
+			'stream_url' => $stream_url,
 			'bytes' => $result['bytes'],
+			'file_count' => $result['file_count'] ?? count( $post_ids ),
 			'post_count' => $result['post_count'],
 			'zip_sha256' => $result['zip_sha256'],
 			'errors' => $result['errors'],
 		), 200 );
+	}
+
+	public static function download_export(\WP_REST_Request $req) {
+		$file_param = $req->get_param( 'file' );
+		if ( empty( $file_param ) ) {
+			return new \WP_REST_Response( array( 'error' => 'file parameter is required' ), 400 );
+		}
+
+		$filename = basename( $file_param );
+		$uploads = wp_upload_dir();
+		$export_path = trailingslashit( $uploads['basedir'] ) . 'pi-exports/' . $filename;
+		$temp_path = trailingslashit( sys_get_temp_dir() ) . $filename;
+
+		$target = null;
+		if ( file_exists( $export_path ) ) {
+			$target = $export_path;
+		} elseif ( file_exists( $temp_path ) ) {
+			$target = $temp_path;
+		}
+
+		if ( ! $target || ! file_exists( $target ) ) {
+			return new \WP_REST_Response( array( 'error' => 'Export file not found' ), 404 );
+		}
+
+		header( 'Content-Description: File Transfer' );
+		header( 'Content-Type: application/zip' );
+		header( 'Content-Disposition: attachment; filename="' . $filename . '"' );
+		header( 'Content-Transfer-Encoding: binary' );
+		header( 'Expires: 0' );
+		header( 'Cache-Control: must-revalidate' );
+		header( 'Pragma: public' );
+		header( 'Content-Length: ' . filesize( $target ) );
+		readfile( $target );
+		exit;
+	}
+
+	public static function upload_bundle(\WP_REST_Request $req) {
+		if ( empty( $_FILES['file'] ) ) {
+			return new \WP_REST_Response( array( 'error' => 'No file uploaded. Please send a ZIP file.' ), 400 );
+		}
+
+		$file = $_FILES['file'];
+		if ( ! empty( $file['error'] ) ) {
+			return new \WP_REST_Response( array( 'error' => 'Upload error code: ' . $file['error'] ), 400 );
+		}
+
+		$ext = strtolower( pathinfo( $file['name'], PATHINFO_EXTENSION ) );
+		if ( 'zip' !== $ext && 'json' !== $ext ) {
+			return new \WP_REST_Response( array( 'error' => 'Only .zip bundles are supported' ), 400 );
+		}
+
+		$uploads = wp_upload_dir();
+		$import_dir = trailingslashit( $uploads['basedir'] ) . 'pi-imports/';
+		wp_mkdir_p( $import_dir );
+		$target_file = $import_dir . 'pix-upload-' . gmdate( 'YmdHis' ) . '-' . wp_generate_password( 6, false ) . '.' . $ext;
+
+		if ( ! move_uploaded_file( $file['tmp_name'], $target_file ) ) {
+			if ( ! copy( $file['tmp_name'], $target_file ) ) {
+				return new \WP_REST_Response( array( 'error' => 'Failed to save uploaded file' ), 500 );
+			}
+		}
+
+		$site_key = self::site_key();
+		$sha256 = hash_file( 'sha256', $target_file );
+
+		if ( 'zip' === $ext ) {
+			if ( ! class_exists( 'ZipArchive' ) ) {
+				return new \WP_REST_Response( array( 'error' => 'ZipArchive extension not available on server' ), 400 );
+			}
+			$built = Pi_Pix_Folder_Reader::read_zip( $target_file, $site_key );
+			if ( is_wp_error( $built ) ) {
+				@unlink( $target_file );
+				return new \WP_REST_Response( array( 'error' => $built->get_error_message() ), 400 );
+			}
+
+			$validator = new Pi_Pix_Validator( $site_key );
+			$report = $validator->validate( $built['envelope'] );
+
+			$records = $built['envelope']['records'] ?? array();
+			$media_count = count( $built['envelope']['assets'] ?? array() );
+			$post_type = ! empty( $records[0]['entity'] ) ? $records[0]['entity'] : ( ! empty( $records[0]['identity']['post_type'] ) ? $records[0]['identity']['post_type'] : 'post' );
+
+			$sample_items = array();
+			foreach ( array_slice( $records, 0, 10 ) as $rec ) {
+				$cat_name = 'Chưa phân loại';
+				$categories = array();
+				$other_terms = array();
+				if ( ! empty( $rec['terms'] ) && is_array( $rec['terms'] ) ) {
+					foreach ( $rec['terms'] as $t ) {
+						if ( ! empty( $t['name'] ) ) {
+							if ( ( $t['vocabulary'] ?? '' ) === 'category' ) {
+								$categories[] = $t['name'];
+							} else {
+								$other_terms[] = $t['name'];
+							}
+						}
+					}
+				} elseif ( ! empty( $rec['taxonomies'] ) ) {
+					foreach ( $rec['taxonomies'] as $tax_name => $tax_terms ) {
+						foreach ( (array) $tax_terms as $t ) {
+							if ( ! empty( $t['name'] ) ) {
+								if ( strpos( $tax_name, 'cat' ) !== false ) {
+									$categories[] = $t['name'];
+								} else {
+									$other_terms[] = $t['name'];
+								}
+							}
+						}
+					}
+				}
+				if ( ! empty( $categories ) ) {
+					$cat_name = implode( ', ', array_slice( $categories, 0, 2 ) );
+				} elseif ( ! empty( $other_terms ) ) {
+					$cat_name = implode( ', ', array_slice( $other_terms, 0, 2 ) );
+				}
+
+				$sample_items[] = array(
+					'id' => $rec['identity']['id'] ?? null,
+					'uuid' => $rec['uid'] ?? ( $rec['identity']['uuid'] ?? ( 'pix-' . substr( md5( $rec['title'] ?? '' ), 0, 8 ) ) ),
+					'title' => $rec['title'] ?? '(Không có tiêu đề)',
+					'slug' => $rec['identity']['slug'] ?? '',
+					'category' => $cat_name,
+					'entity' => $rec['entity'] ?? 'post',
+					'status' => 'ready',
+				);
+			}
+
+			// Clean up the extraction directory from read_zip inspection
+			if ( ! empty( $built['zip_extract_dir'] ) ) {
+				self::rrmdir( $built['zip_extract_dir'] );
+			}
+
+			return new \WP_REST_Response( array(
+				'valid' => $report['ok'] ?? true,
+				'file_path' => $target_file,
+				'file_name' => $file['name'],
+				'file_size' => filesize( $target_file ),
+				'sha256' => $sha256,
+				'manifest' => array(
+					'version' => Pi_Pix_Schema::VERSION,
+					'post_type' => $post_type,
+					'item_count' => count( $records ),
+					'media_count' => $media_count,
+					'exported_at' => $built['envelope']['generated_at'] ?? gmdate( 'Y-m-d' ),
+					'source_site' => $built['envelope']['source']['site_url'] ?? 'External PIX-1 Site',
+					'sha256' => $sha256,
+				),
+				'items' => $sample_items,
+				'validation' => $report,
+			), 200 );
+		}
+
+		return new \WP_REST_Response( array( 'error' => 'Unsupported format' ), 400 );
 	}
 
 	public static function import_posts(\WP_REST_Request $req) {
@@ -485,6 +676,65 @@ class Pi_Api_Migrate {
 		}
 
 		return new \WP_REST_Response( array( 'error' => 'Unsupported file type: .' . $ext . '. Supported: .zip, .json, .csv' ), 400 );
+	}
+
+	public static function import_chunk(\WP_REST_Request $req) {
+		$file_path           = $req->get_param( 'file_path' );
+		$site_key            = $req->get_param( 'site_key' ) ?: self::site_key();
+		$conflict_mode       = $req->get_param( 'conflict_mode' ) ?: 'update';
+		$offset              = (int) ( $req->get_param( 'offset' ) ?: 0 );
+		$limit               = (int) ( $req->get_param( 'limit' ) ?: 10 );
+		$suspend_translation = $req->get_param( 'suspend_translation' ) !== false;
+
+		$unsafe = self::assert_safe_path( $file_path );
+		if ( null !== $unsafe ) {
+			return $unsafe;
+		}
+
+		$ext = strtolower( pathinfo( $file_path, PATHINFO_EXTENSION ) );
+		if ( 'zip' !== $ext ) {
+			return new \WP_REST_Response( array( 'error' => 'Chunked import only supports .zip bundles' ), 400 );
+		}
+
+		if ( ! class_exists( 'ZipArchive' ) ) {
+			return new \WP_REST_Response( array( 'error' => 'ZipArchive extension not available' ), 400 );
+		}
+
+		$cache_dir = sys_get_temp_dir() . '/pix-chunk-' . md5( $file_path );
+		if ( ! is_dir( $cache_dir ) || $offset === 0 ) {
+			if ( is_dir( $cache_dir ) ) {
+				self::rrmdir( $cache_dir );
+			}
+			wp_mkdir_p( $cache_dir );
+			$zip = new \ZipArchive();
+			if ( true !== $zip->open( $file_path ) ) {
+				return new \WP_REST_Response( array( 'error' => 'Cannot open ZIP archive' ), 400 );
+			}
+			$zip->extractTo( $cache_dir );
+			$zip->close();
+		}
+
+		$result = Pi_Pix_Folder_Importer::import_chunk(
+			$cache_dir,
+			$site_key,
+			$offset,
+			$limit,
+			array(
+				'conflict_mode'       => in_array( $conflict_mode, array( 'skip', 'update', 'create' ), true ) ? $conflict_mode : 'update',
+				'suspend_translation' => $suspend_translation,
+			)
+		);
+
+		if ( is_wp_error( $result ) ) {
+			return new \WP_REST_Response( array( 'error' => $result->get_error_message() ), 400 );
+		}
+
+		// If finished all records, clean up the chunk cache folder
+		if ( ! empty( $result['done'] ) ) {
+			self::rrmdir( $cache_dir );
+		}
+
+		return new \WP_REST_Response( $result, 200 );
 	}
 
 	/**

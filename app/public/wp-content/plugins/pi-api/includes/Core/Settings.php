@@ -1,5 +1,5 @@
 <?php
-namespace PiApi;
+namespace PiApi\Core;
 
 if (!defined('ABSPATH')) {
     exit;
@@ -213,11 +213,11 @@ class Settings {
 
             if (!empty($resp['success'])) {
                 self::storeActivation($key, (array) ($resp['data'] ?? []));
-                wp_safe_redirect(admin_url('admin.php?page=pi-api-dashboard&pi_api_msg=activated'));
+                wp_safe_redirect(admin_url('admin.php?page=pi-api&pi_api_msg=activated'));
                 exit;
             }
 
-            wp_safe_redirect(admin_url('admin.php?page=pi-api-dashboard&pi_api_type=error&pi_api_msg=' . rawurlencode((string) ($resp['error'] ?? 'Activation failed'))));
+            wp_safe_redirect(admin_url('admin.php?page=pi-api&pi_api_type=error&pi_api_msg=' . rawurlencode((string) ($resp['error'] ?? 'Activation failed'))));
             exit;
         }
 
@@ -228,11 +228,11 @@ class Settings {
                 BackendClient::deactivate($key);
             }
             self::clearActivation();
-            wp_safe_redirect(admin_url('admin.php?page=pi-api-dashboard&pi_api_msg=deactivated'));
+            wp_safe_redirect(admin_url('admin.php?page=pi-api&pi_api_msg=deactivated'));
             exit;
         }
 
-        wp_safe_redirect(admin_url('admin.php?page=pi-api-dashboard'));
+        wp_safe_redirect(admin_url('admin.php?page=pi-api'));
         exit;
     }
 

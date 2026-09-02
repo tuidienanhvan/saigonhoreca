@@ -35,17 +35,34 @@ class Pi_Api_Categories {
         ]);
     }
 
-    public static function get_all() {
-        $categories = get_categories(['hide_empty' => false]);
-        $formatted = array_map(function($cat) {
+    public static function get_all(?\WP_REST_Request $request = null) {
+        // Lấy đúng taxonomy theo post type — mặc định 'category' (post/page)
+        $type = $request ? ($request->get_param('type') ?: 'post') : 'post';
+        $tax_map = [
+            'project' => 'project_category',
+            'product' => 'product_category',
+        ];
+        $taxonomy = $tax_map[$type] ?? 'category';
+
+        $terms = get_terms([
+            'taxonomy'   => $taxonomy,
+            'hide_empty' => false,
+        ]);
+
+        if (is_wp_error($terms)) {
+            $terms = [];
+        }
+
+        $formatted = array_map(function($t) {
             return [
-                'id'   => $cat->term_id,
-                'name' => $cat->name,
-                'slug' => $cat->slug,
-                'count' => $cat->count
+                'id'   => $t->term_id,
+                'name' => $t->name,
+                'slug' => $t->slug,
+                'count' => $t->count
             ];
-        }, $categories);
-        return new \WP_REST_Response(['categories' => $formatted], 200);
+        }, $terms);
+
+        return new \WP_REST_Response(['categories' => array_values($formatted)], 200);
     }
 
     /**

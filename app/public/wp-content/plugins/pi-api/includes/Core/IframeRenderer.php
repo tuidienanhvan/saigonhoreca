@@ -1,5 +1,5 @@
 <?php
-namespace PiApi;
+namespace PiApi\Core;
 
 if (!defined('ABSPATH')) {
     exit;
@@ -22,8 +22,8 @@ if (!defined('ABSPATH')) {
  *     on the iframe shell without a live backend or license.
  */
 class IframeRenderer {
-    public const MENU_SLUG = 'pi-api-dashboard';
-    public const SCREEN_ID = 'toplevel_page_pi-api-dashboard';
+    public const MENU_SLUG = 'pi-api';
+    public const SCREEN_ID = 'toplevel_page_pi-api';
 
     public static function init(): void {
         add_action('admin_menu', [self::class, 'registerMenu']);
@@ -33,8 +33,8 @@ class IframeRenderer {
 
     public static function registerMenu(): void {
         add_menu_page(
-            __('Pi Dashboard', 'pi-api'),
-            __('Pi Dashboard', 'pi-api'),
+            __('Pi API', 'pi-api'),
+            __('Pi API', 'pi-api'),
             'manage_options',
             self::MENU_SLUG,
             [self::class, 'renderPage'],

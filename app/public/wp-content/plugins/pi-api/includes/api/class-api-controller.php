@@ -31,43 +31,16 @@ class Pi_Api_Controller {
 
     private function load_modules() {
         $dir = __DIR__ . '/endpoints/';
-        
-        // Load files from root of endpoints/
-        $root_files = glob($dir . 'class-*.php');
-        if ($root_files) {
-            foreach ($root_files as $file) {
-                require_once $file;
-            }
-        }
+        if (!is_dir($dir)) return;
 
-        // Load files from subdirectories (Domain-based) — 1 cấp: endpoints/{workspace}/class-*.php
-        $sub_files = glob($dir . '*/class-*.php');
-        if ($sub_files) {
-            foreach ($sub_files as $file) {
-                require_once $file;
-            }
-        }
+        $iterator = new \RecursiveIteratorIterator(
+            new \RecursiveDirectoryIterator($dir, \RecursiveDirectoryIterator::SKIP_DOTS),
+            \RecursiveIteratorIterator::LEAVES_ONLY
+        );
 
-        // Load 2 cấp: endpoints/{workspace}/{app}/class-*.php
-        // glob() không đệ quy nên phải khai báo riêng — thiếu dòng này thì mọi
-        // route trong App con sẽ 404 âm thầm (class không bao giờ được require).
-        // Vẫn giữ sau khi thêm tầng zone: `_shared/{app}/` nằm ở đúng độ sâu này.
-        $app_files = glob($dir . '*/*/class-*.php');
-        if ($app_files) {
-            foreach ($app_files as $file) {
-                require_once $file;
-            }
-        }
-
-        // Load 3 cấp (Zone→Workspace→App): endpoints/{zone}_zone/{workspace}/{app}/class-*.php
-        // Thêm 2026-08-02 khi bổ sung tầng zone cho khớp taxonomy frontend.
-        // Route vẫn đăng ký theo TÊN CLASS trong register_routes() nên đổi vị
-        // trí file không đổi URL — nhưng thiếu dòng glob này thì class không
-        // bao giờ được require và toàn bộ route trong zone 404 âm thầm.
-        $zone_files = glob($dir . '*/*/*/class-*.php');
-        if ($zone_files) {
-            foreach ($zone_files as $file) {
-                require_once $file;
+        foreach ($iterator as $file) {
+            if ($file->isFile() && str_starts_with($file->getFilename(), 'class-') && $file->getExtension() === 'php') {
+                require_once $file->getPathname();
             }
         }
     }
@@ -114,6 +87,10 @@ class Pi_Api_Controller {
             'system'      => 'Pi_Api_System',
             'content'     => 'Pi_Api_Content',
             'migrate'      => 'Pi_Api_Migrate',
+            'migrate_db'    => 'Pi_Api_MigrateDb',
+            'migrate_pix'   => 'Pi_Api_MigratePix',
+            'migrate_media' => 'Pi_Api_MigrateMedia',
+            'migrate_site'  => 'Pi_Api_MigrateSite',
             'seo'         => 'Pi_Api_Seo',
             'seo_redirects' => 'Pi_Api_SeoRedirects',
             'seo_schema'   => 'Pi_Api_SeoSchema',
@@ -136,6 +113,11 @@ class Pi_Api_Controller {
             // wp_posts nên không hiện ở /content?type=page. Đọc bản khai của theme.
             'template_routes' => 'Pi_Api_Template_Routes',
             'comments'    => 'Pi_Api_Comments',
+            'translations' => 'Pi_Api_Translations',
+            'slugs'        => 'Pi_Api_Slugs',
+            'translations_terms' => 'Pi_Api_TranslationsTerms',
+            'translations_audit' => 'Pi_Api_TranslationsAudit',
+            'translations_jobs'  => 'Pi_Api_TranslationsJobs',
             'chat'        => 'Pi_Api_Chat',
             'chatbot'     => 'Pi_Api_Chatbot',
             'tools'       => 'Pi_Api_Tools',
