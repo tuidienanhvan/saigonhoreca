@@ -91,58 +91,33 @@ class Pi_Api_Migrate {
             'permission_callback' => $admin,
         ]);
 
-        // Phase 5: DB migration routes.
-        register_rest_route($ns, '/db/export', [
-            'methods'             => 'POST',
-            'callback'            => [self::class, 'db_export'],
-            'permission_callback' => $admin,
-        ]);
-        register_rest_route($ns, '/db/import', [
-            'methods'             => 'POST',
-            'callback'            => [self::class, 'db_import'],
-            'permission_callback' => $admin,
-        ]);
-        register_rest_route($ns, '/db/search-replace', [
-            'methods'             => 'POST',
-            'callback'            => [self::class, 'db_search_replace'],
-            'permission_callback' => $admin,
-        ]);
-
-        // Phase 5: File sync routes.
-        register_rest_route($ns, '/files/sync', [
-            'methods'             => 'POST',
-            'callback'            => [self::class, 'files_sync'],
-            'permission_callback' => $admin,
-        ]);
-        register_rest_route($ns, '/files/zip-uploads', [
-            'methods'             => 'POST',
-            'callback'            => [self::class, 'files_zip_uploads'],
-            'permission_callback' => $admin,
-        ]);
-        register_rest_route($ns, '/files/unzip-uploads', [
-            'methods'             => 'POST',
-            'callback'            => [self::class, 'files_unzip_uploads'],
-            'permission_callback' => $admin,
-        ]);
-
-        // Phase 5: Site package routes.
-        register_rest_route($ns, '/site/export', [
-            'methods'             => 'POST',
-            'callback'            => [self::class, 'site_export'],
-            'permission_callback' => $admin,
-        ]);
-        register_rest_route($ns, '/site/import', [
-            'methods'             => 'POST',
-            'callback'            => [self::class, 'site_import'],
-            'permission_callback' => $admin,
-        ]);
-
-        // Phase 5: Catalog import route.
-        register_rest_route($ns, '/catalog/import', [
-            'methods'             => 'POST',
-            'callback'            => [self::class, 'catalog_import'],
-            'permission_callback' => $admin,
-        ]);
+        // 2026-09-13: 9 route ghi manh da duoc GO DANG KY khoi day. Chung chi gac bang
+        // `manage_options`, khong ai goi (grep toan bo 2 theme + moi plugin: 0 caller), va
+        // deu co ban thay the an toan hon trong migrate_workspace/:
+        //   /db/export         -> /migrate/db/export        (bi trung route, xem duoi)
+        //   /db/import         -> /migrate/db/import
+        //   /db/search-replace -> /migrate/search-replace
+        //   /files/sync        -> /migrate/files/sync
+        //   /site/export       -> /migrate/site/export
+        //   /site/import       -> /migrate/site/import
+        //   /files/zip-uploads, /files/unzip-uploads, /catalog/import: 0 consumer, bo han.
+        //
+        // Rieng `/db/export` con dang bi TRUNG voi Pi_Api_DbExplorer::export()
+        // (class-db-explorer.php:98). WordPress khong de len nhau: register_rest_route
+        // mac dinh $override=false nen array_merge noi handler vao cuoi
+        // (class-wp-rest-server.php:922-926), roi match_request_to_handler lay handler DAU
+        // TIEN khop method (:1180-1209). Ban dang ky o day chay truoc (bootstrap
+        // class-api-controller.php:89 vs :137) nen NO THANG, keo theo hai hau qua:
+        //   1. Cong license tier cua DbExplorer (pro/max/enterprise) bi vo hieu hoan toan —
+        //      moi `manage_options` ke ca tier free deu goi duoc.
+        //   2. DbExplorerPage.tsx:153 cho `res.data.content`/`rows` nhung nhan
+        //      {file,bytes,tables} -> nut Export CSV/JSON hong, va moi lan bam lai dump CA
+        //      DATABASE ra dia, o duong dan do CHINH CLIENT chon (db_export():311).
+        // Go dang ky o day la du de ca hai tu khoi, khong phai sua frontend dong nao.
+        //
+        // GIU LAI cac method ben duoi (db_export, site_import, ...): Pi_Api_MigratePix uy
+        // thac vao export_posts/download_export/upload_bundle/import_posts/import_chunk cho
+        // 5 route ma frontend DANG dung that (class-migrate-pix.php:46-100).
     }
 
     /* ─────────────────────────────── schema ────────────────────────────── */
