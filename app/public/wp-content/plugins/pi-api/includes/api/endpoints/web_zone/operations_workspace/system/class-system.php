@@ -358,27 +358,51 @@ class Pi_Api_System {
         require_once ABSPATH . 'wp-admin/includes/file.php';
         $uploaded = $files['theme_zip'];
 
-        $dest = get_theme_root() . '/' . basename($uploaded['name']);
-        if (!move_uploaded_file($uploaded['tmp_name'], $dest)) {
+        // 2026-09-13: bản cũ move_uploaded_file() thẳng vào get_theme_root() dưới TÊN DO
+        // CLIENT ĐẶT, không kiểm loại tệp — `shell.php` nằm ngay trong wp-content/themes/,
+        // gọi được qua web, và vì unlink() chỉ nằm ở nhánh giải nén thành công nên tệp không
+        // phải zip thì ở lại VĨNH VIỄN. Route có gác quyền admin ($admin) nên mức độ thấp,
+        // nhưng vẫn không có lý do để tệp tải lên chạm vào thư mục web trước khi được kiểm.
+        // Giờ: kiểm đuôi .zip, đưa vào tệp tạm NGOÀI thư mục web, luôn xoá tệp tạm.
+        if (strtolower(pathinfo((string) ($uploaded['name'] ?? ''), PATHINFO_EXTENSION)) !== 'zip') {
+            return new \WP_REST_Response(['message' => 'Only .zip files are accepted.'], 400);
+        }
+        $tmp = wp_tempnam('pi-theme-upload.zip');
+        if (!$tmp || !move_uploaded_file($uploaded['tmp_name'], $tmp)) {
+            if ($tmp) @unlink($tmp);
             return new \WP_REST_Response(['message' => 'Failed to move uploaded file.'], 500);
         }
 
+        $root = wp_normalize_path(realpath(get_theme_root()));
         $zip = new \ZipArchive();
-        if ($zip->open($dest) === TRUE) {
-            $zip->extractTo(get_theme_root());
-            $zip->close();
-            unlink($dest);
-
-            if (class_exists('SGH_Nano_Cache')) {
-                $nano = new \SGH_Nano_Cache();
-                $nano->flush_all_nano_cache();
+        try {
+            if ($zip->open($tmp) !== true) {
+                return new \WP_REST_Response(['message' => 'Failed to unzip theme.'], 500);
             }
-            if (function_exists('wp_cache_flush')) wp_cache_flush();
-
-            return new \WP_REST_Response(['success' => true, 'message' => 'Theme updated successfully.'], 200);
+            // Zip-slip: ZipArchive::extractTo() KHÔNG chặn tên mục kiểu `../../wp-config.php`
+            // hay đường dẫn tuyệt đối. Kiểm TỪNG mục trước khi giải nén bất cứ thứ gì — một
+            // mục xấu là từ chối cả gói, không giải nén dở dang.
+            for ($i = 0; $i < $zip->numFiles; $i++) {
+                $name = wp_normalize_path((string) $zip->getNameIndex($i));
+                if ($name === '' || $name[0] === '/' || preg_match('#^[a-zA-Z]:#', $name)
+                    || preg_match('#(^|/)\.\.(/|$)#', $name)) {
+                    $zip->close();
+                    return new \WP_REST_Response(['message' => 'Rejected: unsafe path in archive.'], 400);
+                }
+            }
+            $zip->extractTo($root);
+            $zip->close();
+        } finally {
+            @unlink($tmp);
         }
 
-        return new \WP_REST_Response(['message' => 'Failed to unzip theme.'], 500);
+        if (class_exists('SGH_Nano_Cache')) {
+            $nano = new \SGH_Nano_Cache();
+            $nano->flush_all_nano_cache();
+        }
+        if (function_exists('wp_cache_flush')) wp_cache_flush();
+
+        return new \WP_REST_Response(['success' => true, 'message' => 'Theme updated successfully.'], 200);
     }
 
     /* ════════════════════════════════════════════
