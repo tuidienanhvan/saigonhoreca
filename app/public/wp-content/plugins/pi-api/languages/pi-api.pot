@@ -1,1 +1,136 @@
-# Pi API translation template.
+# Copyright (C) 2026 Pi Ecosystem
+# This file is distributed under the GPL-2.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Pi API 1.0.4\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/pi-api\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-09-13T21:36:11+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: pi-api\n"
+
+#. Plugin Name of the plugin
+#: pi-api.php
+#: includes/Core/IframeRenderer.php:36
+#: includes/Core/IframeRenderer.php:37
+#: includes/Core/Settings.php:18
+#: includes/Core/Settings.php:19
+msgid "Pi API"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: pi-api.php
+msgid "https://pi-ecosystem.com/api"
+msgstr ""
+
+#. Description of the plugin
+#: pi-api.php
+msgid "Connect your WordPress site to Pi Dashboard. Manage SEO, leads, AI chatbot, and analytics from one place."
+msgstr ""
+
+#. Author of the plugin
+#: pi-api.php
+msgid "Pi Ecosystem"
+msgstr ""
+
+#. Author URI of the plugin
+#: pi-api.php
+msgid "https://pi-ecosystem.com"
+msgstr ""
+
+#: includes/Core/Settings.php:205
+msgid "No permission"
+msgstr ""
+
+#: views/iframe-error-page.php:11
+msgid "Site này chưa được kích hoạt license. Vui lòng vào trang License để nhập key."
+msgstr ""
+
+#: views/iframe-error-page.php:12
+msgid "Backend trả về JWT rỗng. Kiểm tra trạng thái license hoặc liên hệ hỗ trợ."
+msgstr ""
+
+#: views/iframe-error-page.php:13
+msgid "Không phát hành được JWT. Kiểm tra kết nối tới Pi backend."
+msgstr ""
+
+#. translators: %s: backend error string
+#: views/iframe-error-page.php:17
+#, php-format
+msgid "Không thể kết nối với Pi backend: %s"
+msgstr ""
+
+#: views/iframe-error-page.php:23
+msgid "Pi Dashboard — Không thể kết nối"
+msgstr ""
+
+#: views/iframe-error-page.php:25
+msgid "Lỗi:"
+msgstr ""
+
+#. translators: %s: backend origin URL
+#: views/iframe-error-page.php:31
+#, php-format
+msgid "Backend: %s"
+msgstr ""
+
+#: views/iframe-error-page.php:39
+msgid "Đi tới trang License"
+msgstr ""
+
+#: views/iframe-error-page.php:43
+msgid "Thử lại"
+msgstr ""
+
+#: views/iframe-error-page.php:46
+msgid "Kiểm tra License"
+msgstr ""
+
+#: views/iframe-page.php:51
+msgid "Pi Dashboard"
+msgstr ""
+
+#: views/license-page.php:12
+msgid "Pi API - License"
+msgstr ""
+
+#: views/license-page.php:22
+msgid "Mock mode đang bật cho local/dev. Test key: TESTING-12345-DEMO0-KEYAA"
+msgstr ""
+
+#: views/license-page.php:28
+msgid "Đã kích hoạt"
+msgstr ""
+
+#: views/license-page.php:37
+msgid "Không giới hạn"
+msgstr ""
+
+#: views/license-page.php:45
+msgid "Mở Pi Dashboard"
+msgstr ""
+
+#: views/license-page.php:52
+msgid "Hủy kích hoạt"
+msgstr ""
+
+#: views/license-page.php:56
+msgid "Nhập license key để kết nối site này với Pi Dashboard."
+msgstr ""
+
+#: views/license-page.php:61
+msgid "License key"
+msgstr ""
+
+#: views/license-page.php:66
+msgid "Kích hoạt"
+msgstr ""
+
+#: views/license-page.php:69
+msgid "Mua license"
+msgstr ""
