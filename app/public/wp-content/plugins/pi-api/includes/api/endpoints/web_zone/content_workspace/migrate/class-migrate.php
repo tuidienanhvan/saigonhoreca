@@ -100,7 +100,13 @@ class Pi_Api_Migrate {
         //   /files/sync        -> /migrate/files/sync
         //   /site/export       -> /migrate/site/export
         //   /site/import       -> /migrate/site/import
-        //   /files/zip-uploads, /files/unzip-uploads, /catalog/import: 0 consumer, bo han.
+        //   /files/zip-uploads, /files/unzip-uploads: 0 consumer, bo han.
+        //   /catalog/import: 0 consumer goi qua REST — nhung NANG LUC thi van con nguoi
+        //     dung. docs/theme-docs/product-catalog/import_via_pi.php chay bang
+        //     `wp eval-file` va goi THANG Pi_Api_ImportExport::import_post_list(), qua
+        //     class_alias o cuoi file nay. Go ROUTE thi duoc; dung xoa method
+        //     import_post_list() hay class_alias do. (pi-migrate cung dang ky mot
+        //     /catalog/import rieng nhung o namespace pi-migrate/v1 — khong lien quan.)
         //
         // Rieng `/db/export` con dang bi TRUNG voi Pi_Api_DbExplorer::export()
         // (class-db-explorer.php:98). WordPress khong de len nhau: register_rest_route
