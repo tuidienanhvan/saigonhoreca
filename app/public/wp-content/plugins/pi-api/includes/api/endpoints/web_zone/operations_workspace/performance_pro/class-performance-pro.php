@@ -36,6 +36,7 @@ class Pi_Api_PerformancePro {
     const OPT_CDN          = 'pi_perf_cdn';
     const OPT_CRITICAL_CSS = 'pi_perf_critical_css';
     const OPT_WEBP         = 'pi_perf_webp';
+    const PENDING_TRANSIENT = 'pi_api_webp_pending';
     const OPT_PWA          = 'pi_perf_pwa';
     const OPT_NANO_CACHE   = 'pi_perf_nano_cache';
     const OPT_WP_CLEANUP   = 'pi_perf_wp_cleanup';
@@ -395,10 +396,12 @@ class Pi_Api_PerformancePro {
     //  WebP
     // ------------------------------------------------------------------
 
-    public static function get_webp() {
+    public static function get_webp(?\WP_REST_Request $request = null) {
         $opt = self::merge_webp_defaults((array) get_option(self::OPT_WEBP, []));
         $opt['can_convert']    = self::can_convert_webp();
-        $opt['total_pending']  = self::count_pending_webp();
+        // ?fresh=1 để ép đếm lại thật; mặc định đọc số đã cache (xem count_pending_webp).
+        $fresh = $request && !empty($request->get_param('fresh'));
+        $opt['total_pending']  = self::count_pending_webp($fresh);
         return new \WP_REST_Response($opt, 200);
     }
 
@@ -481,7 +484,9 @@ class Pi_Api_PerformancePro {
         }
 
         $opt['total_converted'] = (int) $opt['total_converted'] + $result['ok'];
-        $opt['total_pending']   = self::count_pending_webp();
+        // Batch nền chạy 60 giây/lần và quyết định có lên lịch batch kế không — đếm THẬT ở
+        // đây (fresh) để điều kiện dừng không bao giờ dựa trên số cache đã trôi.
+        $opt['total_pending']   = self::count_pending_webp(true);
         $opt['queue_status']    = $opt['total_pending'] > 0 ? 'running' : 'done';
         update_option(self::OPT_WEBP, $opt, false);
 
@@ -511,7 +516,9 @@ class Pi_Api_PerformancePro {
 
         if ($status === 'ok') {
             $opt['total_converted'] = (int) $opt['total_converted'] + 1;
-            $opt['total_pending']   = self::count_pending_webp();
+            // Trừ đúng 1 thay vì quét lại cả thư viện — frontend gọi route này cho TỪNG ảnh
+            // (WebpQueue.tsx handleConvertOne) rồi refetch GET /webp ngay sau.
+            $opt['total_pending']   = self::giam_pending_webp(1);
             update_option(self::OPT_WEBP, $opt, false);
         }
 
@@ -560,7 +567,38 @@ class Pi_Api_PerformancePro {
         return $pending;
     }
 
-    protected static function count_pending_webp(): int {
+    /**
+     * Số ảnh JPG/PNG chưa có bản .webp cạnh nó.
+     *
+     * Đếm thật tốn một get_attached_file() + một file_exists() cho MỖI ảnh trong thư viện
+     * (posts_per_page -1). Trước 13/09/2026 hàm này chạy ở mọi lần GET /performance-pro/webp
+     * và sau mỗi lần convert một ảnh — frontend convert từng ảnh rồi refetch GET ngay, nên
+     * mỗi ảnh tốn HAI lần quét toàn thư viện, tức O(N²) file_exists cho cả hàng đợi.
+     *
+     * Giờ cache 5 phút trong transient. Tên có tiền tố pi_api_ để uninstall.php dọn được.
+     * Số có thể trôi tối đa 5 phút (vd ảnh mới tải lên) — chấp nhận được cho một chỉ số
+     * hiển thị; ?fresh=1 ép đếm lại, và batch nền luôn đếm thật.
+     */
+    protected static function count_pending_webp(bool $fresh = false): int {
+        if (!$fresh) {
+            $cached = get_transient(self::PENDING_TRANSIENT);
+            if ($cached !== false) return (int) $cached;
+        }
+        $count = self::dem_pending_webp_that();
+        set_transient(self::PENDING_TRANSIENT, $count, 5 * MINUTE_IN_SECONDS);
+        return $count;
+    }
+
+    /** Trừ cache đi $n (không quét lại). Cache đã hết hạn thì đếm thật. */
+    protected static function giam_pending_webp(int $n): int {
+        $cached = get_transient(self::PENDING_TRANSIENT);
+        if ($cached === false) return self::count_pending_webp(true);
+        $moi = max(0, (int) $cached - $n);
+        set_transient(self::PENDING_TRANSIENT, $moi, 5 * MINUTE_IN_SECONDS);
+        return $moi;
+    }
+
+    protected static function dem_pending_webp_that(): int {
         $query = new \WP_Query([
             'post_type'      => 'attachment',
             'post_status'    => 'inherit',
