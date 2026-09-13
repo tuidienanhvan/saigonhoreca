@@ -10,12 +10,23 @@
  */
 if (post_password_required()) return;
 
-// Force Vietnamese text in reply link attributes
-add_filter('comment_reply_link', function($link) {
-    $link = str_replace('data-replyto="Reply to ', 'data-replyto="Trả lời ', $link);
-    $link = str_replace('aria-label="Reply to ', 'aria-label="Trả lời ', $link);
-    return $link;
-}, 10, 1);
+// Nhãn "Reply to" của core → nhãn của theme, qua gettext.
+// Site KHÔNG có gói ngôn ngữ core (không có wp-content/languages, WPLANG rỗng) nên core
+// luôn in tiếng Anh "Reply to NAME" — filter này là bản dịch DUY NHẤT, gỡ đi là site tiếng
+// Việt hiện tiếng Anh. Nhưng bản cũ gõ cứng "Trả lời", nên trang /en (theme nạp en_US.mo)
+// cũng bị ép tiếng Việt. Đi qua __() thì trang tiếng Việt y như cũ, còn /en dịch được
+// ngay khi msgid "Trả lời" có trong languages/en_US.po.
+if (!has_filter('comment_reply_link', 'sgh_comment_reply_label')) {
+    function sgh_comment_reply_label($link) {
+        $nhan = esc_attr__('Trả lời', 'saigonhoreca') . ' ';
+        return str_replace(
+            ['data-replyto="Reply to ', 'aria-label="Reply to '],
+            ['data-replyto="' . $nhan, 'aria-label="' . $nhan],
+            $link
+        );
+    }
+    add_filter('comment_reply_link', 'sgh_comment_reply_label', 10, 1);
+}
 
 // Vietnamese time ago helper
 function sh_time_ago($timestamp) {
