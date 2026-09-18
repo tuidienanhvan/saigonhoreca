@@ -351,21 +351,40 @@ class Pi_Api_Leads {
     /* ═══════════════════════════════════════════════════════════════
        SCORING — rescore action
        ═══════════════════════════════════════════════════════════════ */
+    /**
+     * Ngân sách thời gian mỗi request. Mỗi lời gọi LLM tối đa 25s (call_ai_scorer), nên nếu
+     * cứ lặp hết danh sách thì 200 lead = tới ~5000s trong MỘT request HTTP — chết ở
+     * max_execution_time (thường 30s) hoặc 504 của gateway. Hết ngân sách thì dừng, trả
+     * `next_after_id` để client gọi tiếp. 20s chừa dư cho lần chấm dở dang cuối cùng.
+     */
+    const RESCORE_BUDGET_SECONDS = 20;
+
     public static function rescore_leads(\WP_REST_Request $request) {
-        $p = $request->get_json_params();
-        $all = !empty($p['all']);
+        global $wpdb;
+        $t0 = microtime(true);
+        $p = $request->get_json_params() ?: [];
         $ids = isset($p['lead_ids']) && is_array($p['lead_ids']) ? array_map('intval', $p['lead_ids']) : [];
+        $after = max(0, (int) ($p['after_id'] ?? 0));
+
+        // Nút "Rescore" của dashboard (LeadsScoringPage.tsx) gửi body `{}` — không `all`, không
+        // `lead_ids` — nên bản cũ trả 400 "Không có lead nào" và nút KHÔNG BAO GIỜ chạy được.
+        // Không chỉ định lead cụ thể thì hiểu là chấm tất cả.
+        $all = !empty($p['all']) || empty($ids);
 
         if ($all) {
-            $ids = get_posts([
-                'post_type'      => 'sh_lead',
-                'post_status'    => 'publish',
-                'posts_per_page' => -1,
-                'fields'         => 'ids',
-            ]);
+            // Chỉ lấy ID, tăng dần, sau con trỏ — nhẹ, và cho phép chia trang ổn định.
+            $ids = array_map('intval', (array) $wpdb->get_col($wpdb->prepare(
+                "SELECT ID FROM {$wpdb->posts} WHERE post_type = %s AND post_status = %s AND ID > %d ORDER BY ID ASC",
+                'sh_lead', 'publish', $after
+            )));
         }
         $ids = array_values(array_filter(array_map('intval', $ids)));
         if (empty($ids)) {
+            // Đã hết (hoặc chưa có lead nào) — không phải lỗi khi đang chạy dở theo con trỏ.
+            if ($after > 0) {
+                return new \WP_REST_Response(['success' => true, 'total' => 0, 'processed' => 0, 'scored' => 0,
+                    'avg_score' => 0, 'errors' => [], 'partial' => false, 'remaining' => 0, 'next_after_id' => null], 200);
+            }
             return new \WP_REST_Response(['success' => false, 'message' => 'Không có lead nào để chấm điểm'], 400);
         }
 
@@ -375,7 +394,12 @@ class Pi_Api_Leads {
         $scored = 0;
         $sum = 0;
         $errors = [];
+        $processed = 0;
+        $last_id = $after;
         foreach ($ids as $id) {
+            if ((microtime(true) - $t0) >= self::RESCORE_BUDGET_SECONDS) break;
+            $processed++;
+            $last_id = $id;
             if (get_post_type($id) !== 'sh_lead') { $errors[] = $id; continue; }
             $result = self::score_single_lead($id, $rules, $ai_cfg);
             if (!empty($result['ok'])) {
@@ -386,15 +410,22 @@ class Pi_Api_Leads {
             }
         }
 
-        update_option('pi_leads_scoring_last_rescore', gmdate('c'), false);
+        $remaining = count($ids) - $processed;
+        $partial = $all && $remaining > 0;
+        // Chỉ ghi mốc "đã rescore" khi chạy XONG, không phải mỗi trang dở dang.
+        if (!$partial) update_option('pi_leads_scoring_last_rescore', gmdate('c'), false);
 
         $avg = $scored > 0 ? (int) round($sum / $scored) : 0;
         return new \WP_REST_Response([
-            'success'    => true,
-            'total'      => count($ids),
-            'scored'     => $scored,
-            'avg_score'  => $avg,
-            'errors'     => $errors,
+            'success'       => true,
+            'total'         => count($ids),
+            'processed'     => $processed,
+            'scored'        => $scored,
+            'avg_score'     => $avg,
+            'errors'        => $errors,
+            'partial'       => $partial,
+            'remaining'     => $remaining,
+            'next_after_id' => $partial ? $last_id : null,
         ], 200);
     }
 
