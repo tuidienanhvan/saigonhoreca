@@ -383,6 +383,15 @@ class Pi_Api_Content {
             $args['post_parent'] = (int) $parent_filter;
         }
 
+        // ids_only: cho "chọn tất cả kết quả khớp" — chỉ cần id, khỏi dựng item/tải term/meta.
+        if ($request->get_param('ids_only')) {
+            $args['fields'] = 'ids';
+            $args['posts_per_page'] = -1;
+            $args['no_found_rows'] = true;
+            unset($args['paged']);
+            return new \WP_REST_Response(['ids' => array_map('intval', (new \WP_Query($args))->posts)], 200);
+        }
+
         $query = new \WP_Query($args);
         $items = [];
 
