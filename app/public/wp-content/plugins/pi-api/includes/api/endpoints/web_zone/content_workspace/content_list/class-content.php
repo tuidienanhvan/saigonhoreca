@@ -194,6 +194,17 @@ class Pi_Api_Content {
      * Detect the actual PHP template file WordPress uses for a given page or CPT item.
      */
     private static function detect_page_template($page_id, $post_type = 'page') {
+        // Trong MỘT request kết quả không đổi, mà get_list gọi hàm này tới 2 lần cho mỗi trang
+        // (một lần ở nhánh đếm từ, một lần khi dựng `template`), mỗi lần tới ~5 file_exists.
+        static $memo = [];
+        $k = $post_type . ':' . $page_id;
+        if (!array_key_exists($k, $memo)) {
+            $memo[$k] = self::detect_page_template_uncached($page_id, $post_type);
+        }
+        return $memo[$k];
+    }
+
+    private static function detect_page_template_uncached($page_id, $post_type = 'page') {
         $custom = get_page_template_slug($page_id);
         if ($custom) {
             return $custom;
@@ -241,7 +252,8 @@ class Pi_Api_Content {
         }
 
         // 4. CPT archive override — page slug matches a CPT's rewrite slug
-        $cpts = get_post_types(['public' => true, '_builtin' => false], 'objects');
+        static $cpts = null;
+        if ($cpts === null) $cpts = get_post_types(['public' => true, '_builtin' => false], 'objects');
         foreach ($cpts as $cpt) {
             $archive_slug = $cpt->has_archive;
             if ($archive_slug === true) {
@@ -272,6 +284,20 @@ class Pi_Api_Content {
         static $cache = [];
         if (isset($cache[$cpt])) return $cache[$cpt];
 
+        // Kéo toàn bộ post_content của cả CPT về PHP chỉ để đếm từ — nặng và chạy lại ở mọi
+        // request có trang archive shell. Cache transient 1 giờ, khoá theo (số bài, lần sửa gần
+        // nhất) nên thêm/sửa/xoá bài tự làm khoá đổi. Hai số đó lấy bằng MỘT truy vấn nhẹ, không
+        // đọc thân bài. Tiền tố pi_api_ để uninstall.php dọn được.
+        $sig = $wpdb->get_row($wpdb->prepare(
+            "SELECT COUNT(*) AS n, MAX(post_modified_gmt) AS m FROM {$wpdb->posts} WHERE post_type = %s AND post_status = 'publish'",
+            $cpt
+        ));
+        $khoa = 'pi_api_cpt_words_' . $cpt . '_' . md5(($sig->n ?? 0) . '|' . ($sig->m ?? ''));
+        $da_luu = get_transient($khoa);
+        if ($da_luu !== false) {
+            return $cache[$cpt] = (int) $da_luu;
+        }
+
         $posts = $wpdb->get_results($wpdb->prepare("
             SELECT post_content 
             FROM {$wpdb->posts} 
@@ -286,6 +312,7 @@ class Pi_Api_Content {
             }
         }
         $cache[$cpt] = $total_words;
+        set_transient($khoa, $total_words, HOUR_IN_SECONDS);
         return $total_words;
     }
 
@@ -361,9 +388,28 @@ class Pi_Api_Content {
 
         // Collect all IDs to pre-fetch meta and terms in bulk
         $post_ids = wp_list_pluck($query->posts, 'ID');
+        $children_counts = [];
         if ($post_ids) {
             update_post_thumbnail_cache($query);
             update_object_term_cache($post_ids, $type);
+
+            // Nạp sẵn cả tác giả và bài cha — trước đây mỗi dòng tự gọi get_the_author_meta /
+            // get_the_title($parent_id) nên mỗi tác giả / bài cha mới là một truy vấn riêng.
+            cache_users(array_values(array_unique(array_filter(wp_list_pluck($query->posts, 'post_author')))));
+            $cha = array_values(array_diff(array_unique(array_filter(array_map('intval', wp_list_pluck($query->posts, 'post_parent')))), $post_ids));
+            if ($cha && function_exists('_prime_post_caches')) _prime_post_caches($cha, false, false);
+
+            // Đếm con của MỌI trang bằng một truy vấn GROUP BY thay vì một COUNT(*) mỗi dòng.
+            if ($type === 'page') {
+                global $wpdb;
+                $in = implode(',', array_map('intval', $post_ids));   // toàn số nguyên -> an toàn để nối
+                foreach ((array) $wpdb->get_results($wpdb->prepare(
+                    "SELECT post_parent, COUNT(*) AS c FROM {$wpdb->posts} WHERE post_type = %s AND post_status != 'trash' AND post_parent IN ($in) GROUP BY post_parent",
+                    $type
+                )) as $row) {
+                    $children_counts[(int) $row->post_parent] = (int) $row->c;
+                }
+            }
         }
 
         foreach ($query->posts as $p) {
@@ -391,14 +437,7 @@ class Pi_Api_Content {
             $parent_id = (int) $p->post_parent;
             $parent_title = $parent_id > 0 ? html_entity_decode(get_the_title($parent_id), ENT_QUOTES, 'UTF-8') : null;
             
-            $children_count = 0;
-            if ($type === 'page') {
-                global $wpdb;
-                $children_count = (int) $wpdb->get_var($wpdb->prepare("
-                    SELECT COUNT(*) FROM {$wpdb->posts} 
-                    WHERE post_parent = %d AND post_type = %s AND post_status != 'trash'
-                ", $p->ID, $type));
-            }
+            $children_count = $children_counts[(int) $p->ID] ?? 0;
             
             // Get categories — đúng taxonomy theo post type
             // get_the_category() chỉ query taxonomy 'category' (post mặc định).
