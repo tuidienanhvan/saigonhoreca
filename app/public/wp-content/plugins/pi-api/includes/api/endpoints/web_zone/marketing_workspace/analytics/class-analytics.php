@@ -1017,11 +1017,12 @@ class Pi_Api_Analytics {
         // Drop any super-large meta.
         $meta_json = wp_json_encode($meta);
         if ($meta_json === false || strlen($meta_json) > 4096) {
-            $meta_json = '{}';
+            $meta = [];
         }
 
-        $url      = esc_url_raw((string) ($body['url'] ?? ''));
-        $referrer = esc_url_raw((string) ($body['referrer'] ?? ''));
+        // Endpoint công khai: cắt url/referrer để không ghi chuỗi dài tuỳ ý vào DB.
+        $url      = mb_substr(esc_url_raw((string) ($body['url'] ?? '')), 0, 2048);
+        $referrer = mb_substr(esc_url_raw((string) ($body['referrer'] ?? '')), 0, 2048);
 
         $user_id = get_current_user_id();
         pi_analytics_log_event($event_name, [
