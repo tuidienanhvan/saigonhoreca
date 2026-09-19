@@ -30,8 +30,74 @@ $theme_uri  = get_template_directory_uri();
     <div class="sh-mobile__header">
         <span class="sh-mobile__header-title">
             <?php echo sh_icon('list', 'sh-mobile__header-icon'); ?>
-            Menu
+            <?php esc_html_e('Menu', 'saigonhoreca'); ?>
         </span>
+        <?php
+        $current_lang = defined('PI_CURRENT_LANGUAGE') ? PI_CURRENT_LANGUAGE : 'vi';
+        $vi_url = class_exists('Pi_Multilang_Frontend') ? (Pi_Multilang_Frontend::url_in_language('vi') ?: home_url('/')) : home_url('/');
+        $en_url = class_exists('Pi_Multilang_Frontend') ? (Pi_Multilang_Frontend::url_in_language('en') ?: home_url('/en/')) : home_url('/en/');
+        $ja_url = class_exists('Pi_Multilang_Frontend') ? (Pi_Multilang_Frontend::url_in_language('ja') ?: home_url('/ja/')) : home_url('/ja/');
+        ?>
+        <div class="sh-header__lang-group sh-mobile__lang-group" style="margin-left:auto; margin-right:12px;">
+            <a href="<?php echo esc_url($vi_url); ?>" class="sh-header__lang <?php echo $current_lang === 'vi' ? 'sh-header__lang--active active is-active' : ''; ?>" aria-label="Tiếng Việt" title="Tiếng Việt" <?php echo $current_lang === 'vi' ? 'aria-current="page"' : ''; ?>>
+                <svg class="sh-header__lang-flag" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="22" height="22">
+                    <defs>
+                        <clipPath id="sh-vn-clip-mob">
+                            <circle cx="16" cy="16" r="16"/>
+                        </clipPath>
+                        <radialGradient id="sh-vn-grad-mob" cx="38%" cy="28%" r="72%">
+                            <stop offset="0%" stop-color="#EA2820"/>
+                            <stop offset="100%" stop-color="#A80D08"/>
+                        </radialGradient>
+                        <linearGradient id="sh-vn-star-mob" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stop-color="#FFF275"/>
+                            <stop offset="100%" stop-color="#FFB800"/>
+                        </linearGradient>
+                    </defs>
+                    <g clip-path="url(#sh-vn-clip-mob)">
+                        <circle cx="16" cy="16" r="16" fill="url(#sh-vn-grad-mob)"/>
+                        <polygon points="16,8.2 17.76,13.62 23.46,13.62 18.85,16.97 20.61,22.39 16,19.04 11.39,22.39 13.15,16.97 8.54,13.62 14.24,13.62" fill="url(#sh-vn-star-mob)"/>
+                        <circle cx="16" cy="16" r="15.5" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
+                    </g>
+                </svg>
+            </a>
+            <a href="<?php echo esc_url($en_url); ?>" class="sh-header__lang <?php echo $current_lang === 'en' ? 'sh-header__lang--active active is-active' : ''; ?>" aria-label="English" title="English" <?php echo $current_lang === 'en' ? 'aria-current="page"' : ''; ?>>
+                <svg class="sh-header__lang-flag" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="22" height="22">
+                    <defs>
+                        <clipPath id="sh-uk-clip-mob">
+                            <circle cx="16" cy="16" r="16"/>
+                        </clipPath>
+                    </defs>
+                    <g clip-path="url(#sh-uk-clip-mob)">
+                        <circle cx="16" cy="16" r="16" fill="#012169"/>
+                        <path d="M-4,-4 L36,36 M36,-4 L-4,36" stroke="#FFFFFF" stroke-width="5.5" stroke-linecap="square"/>
+                        <path d="M-4,-4 L16,16 M36,-4 L16,16 M36,36 L16,16 M-4,36 L16,16" stroke="#C8102E" stroke-width="2"/>
+                        <path d="M16,-4 V36 M-4,16 H36" stroke="#FFFFFF" stroke-width="9"/>
+                        <path d="M16,-4 V36 M-4,16 H36" stroke="#C8102E" stroke-width="5.5"/>
+                        <circle cx="16" cy="16" r="15.5" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
+                    </g>
+                </svg>
+            </a>
+            <a href="<?php echo esc_url($ja_url); ?>" class="sh-header__lang <?php echo $current_lang === 'ja' ? 'sh-header__lang--active active is-active' : ''; ?>" aria-label="日本語" title="日本語" <?php echo $current_lang === 'ja' ? 'aria-current="page"' : ''; ?>>
+                <svg class="sh-header__lang-flag" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="22" height="22">
+                    <defs>
+                        <clipPath id="sh-ja-clip-mob">
+                            <circle cx="16" cy="16" r="16"/>
+                        </clipPath>
+                        <radialGradient id="sh-ja-sun-mob" cx="42%" cy="36%" r="65%">
+                            <stop offset="0%" stop-color="#DC143C"/>
+                            <stop offset="100%" stop-color="#9E001F"/>
+                        </radialGradient>
+                    </defs>
+                    <g clip-path="url(#sh-ja-clip-mob)">
+                        <circle cx="16" cy="16" r="16" fill="#F8F9FA"/>
+                        <circle cx="16" cy="16" r="9.6" fill="url(#sh-ja-sun-mob)"/>
+                        <circle cx="16" cy="16" r="15.5" fill="none" stroke="rgba(0,0,0,0.08)" stroke-width="1"/>
+                        <circle cx="16" cy="16" r="15.5" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="0.75"/>
+                    </g>
+                </svg>
+            </a>
+        </div>
         <button id="mobile-menu-close" class="sh-mobile__close-btn" aria-label="<?php esc_attr_e('Đóng menu', 'saigonhoreca'); ?>">
             <?php echo sh_icon('x', 'sh-mobile__close-icon'); ?>
         </button>

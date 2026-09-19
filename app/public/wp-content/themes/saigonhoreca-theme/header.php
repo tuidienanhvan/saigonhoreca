@@ -38,6 +38,86 @@
     wp_head();
     ?>
 
+    <!-- Luxury Circular Flag Multilingual Switcher (VI / EN / JA) -->
+    <style id="sgh-lang-switcher-style">
+    .sh-header__lang-group {
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 6px !important;
+        padding: 4px 6px !important;
+        background: rgba(20, 22, 26, 0.65) !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        border-radius: 9999px !important;
+        backdrop-filter: blur(16px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+        box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.08), 0 4px 16px rgba(0, 0, 0, 0.4) !important;
+    }
+    .sh-header .sh-header__lang,
+    .sh-mobile .sh-header__lang {
+        position: relative !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 30px !important;
+        height: 30px !important;
+        border-radius: 50% !important;
+        background: transparent !important;
+        border: 1.5px solid transparent !important;
+        text-decoration: none !important;
+        padding: 0 !important;
+        cursor: pointer !important;
+        opacity: 0.55 !important;
+        box-shadow: none !important;
+        transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+                    opacity 0.2s ease,
+                    background 0.25s ease,
+                    border-color 0.25s ease,
+                    box-shadow 0.25s ease !important;
+    }
+    .sh-header .sh-header__lang:hover,
+    .sh-mobile .sh-header__lang:hover {
+        opacity: 0.95 !important;
+        transform: translateY(-1.5px) scale(1.08) !important;
+        background: rgba(255, 255, 255, 0.08) !important;
+    }
+    .sh-header .sh-header__lang:active,
+    .sh-mobile .sh-header__lang:active {
+        transform: scale(0.92) !important;
+        transition-duration: 0.1s !important;
+    }
+    .sh-header .sh-header__lang--active,
+    .sh-header .sh-header__lang.active,
+    .sh-header .sh-header__lang.is-active,
+    .sh-mobile .sh-header__lang--active,
+    .sh-mobile .sh-header__lang.active,
+    .sh-mobile .sh-header__lang.is-active {
+        opacity: 1 !important;
+        background: linear-gradient(135deg, rgba(245, 166, 35, 0.2) 0%, rgba(209, 137, 16, 0.08) 100%) !important;
+        border-color: rgba(245, 166, 35, 0.6) !important;
+        box-shadow: 0 0 12px rgba(245, 166, 35, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.25) !important;
+        transform: scale(1.05) !important;
+    }
+    .sh-header__lang-flag {
+        width: 24px !important;
+        height: 24px !important;
+        border-radius: 50% !important;
+        display: block !important;
+        overflow: hidden !important;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35) !important;
+        transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), filter 0.25s ease !important;
+    }
+    .sh-header .sh-header__lang:hover .sh-header__lang-flag,
+    .sh-mobile .sh-header__lang:hover .sh-header__lang-flag {
+        filter: brightness(1.06) !important;
+    }
+    @media (max-width: 640px) {
+        .sh-header__lang-group { padding: 3px 4px !important; gap: 4px !important; }
+        .sh-header .sh-header__lang,
+        .sh-mobile .sh-header__lang { width: 26px !important; height: 26px !important; }
+        .sh-header__lang-flag { width: 20px !important; height: 20px !important; }
+    }
+    </style>
+
     <meta name="msapplication-TileColor" content="#2b5797">
     <meta name="theme-color" content="#ffffff">
     <!-- Dark mode & Lighthouse Optimization: apply BEFORE paint to prevent flash & bypass animation delays -->
@@ -47,10 +127,21 @@
         var d = null;
         try { d = localStorage.getItem('sh-dark'); } catch (e) {}
         if (d === 'true') document.documentElement.classList.add('dark');
+
+        // 2. Google Fonts async swap: rel="preload" -> rel="stylesheet" on load.
+        // Moved off an inline onload="..." attribute (blocked by CSP
+        // script-src-elem, which has no nonce coverage for event-handler
+        // attributes — see inc/engine/enqueue.php's style_loader_tag filter)
+        // into this nonced <script>, which CSP does allow.
+        var fontLink = document.getElementById('google-fonts-sgh-css');
+        if (fontLink && fontLink.rel === 'preload') {
+            fontLink.addEventListener('load', function () {
+                fontLink.rel = 'stylesheet';
+            });
+        }
     })();
     </script>
-    <?php get_template_part('template-parts/global-styles'); ?>
-    
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-16RD3DMN8W"></script>
     <script>
@@ -93,49 +184,94 @@
 
         <!-- Right Actions -->
         <div class="sh-header__actions">
-            <!-- Bilingual switcher: links to SAME page on opposite-language domain -->
+            <!-- Multilingual switcher (VI / EN / JA) -->
             <?php
-            $sgh_is_en   = function_exists('sgh_is_english_site') ? sgh_is_english_site() : false;
-            $sgh_alt_url = function_exists('sgh_counterpart_url') ? sgh_counterpart_url() : ($sgh_is_en ? 'https://saigonhoreca.vn/' : 'https://saigonhoreca.com/');
-            // Flag rendered as inline SVG below — no uploads image needed (removed dead 2023/11 flag refs).
-            $sgh_alt_label = $sgh_is_en ? 'Tiếng Việt' : 'English';
-            $sgh_alt_hreflang = $sgh_is_en ? 'vi' : 'en';
+            $current_lang = defined('PI_CURRENT_LANGUAGE') ? PI_CURRENT_LANGUAGE : 'vi';
+            $vi_url = class_exists('Pi_Multilang_Frontend') ? (Pi_Multilang_Frontend::url_in_language('vi') ?: home_url('/')) : home_url('/');
+            $en_url = class_exists('Pi_Multilang_Frontend') ? (Pi_Multilang_Frontend::url_in_language('en') ?: home_url('/en/')) : home_url('/en/');
+            $ja_url = class_exists('Pi_Multilang_Frontend') ? (Pi_Multilang_Frontend::url_in_language('ja') ?: home_url('/ja/')) : home_url('/ja/');
             ?>
-            <?php /* aria-label must match the visible <span> text exactly (axe
-                     `label-content-name-mismatch`). The span is hidden on mobile via
-                     CSS, so without aria-label the link would have no accessible
-                     name on mobile (`link-name` fail). Setting aria-label = same
-                     text satisfies both audits.
-                     Flag <img> alt="" (decorative; the span/aria-label already names
-                     the link — non-empty alt triggers `image-redundant-alt`). */ ?>
-            <a href="<?php echo esc_url($sgh_alt_url); ?>"
-               class="sh-header__lang"
-               hreflang="<?php echo esc_attr($sgh_alt_hreflang); ?>"
-               rel="alternate"
-               aria-label="<?php echo esc_attr($sgh_alt_label); ?>">
-                <?php if ($sgh_is_en) : ?>
-                    <!-- Vietnam Flag SVG -->
-                    <svg class="sh-header__lang-flag" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20" width="30" height="20" style="display:inline-block; vertical-align:middle; border-radius:2px; box-shadow:0 1px 2px rgba(0,0,0,0.1);">
-                        <rect width="30" height="20" fill="#da251d"/>
-                        <polygon points="15,4.5 16.18,8.12 20,8.12 16.91,10.36 18.09,13.98 15,11.75 11.91,13.98 13.09,10.36 10,8.12 13.82,8.12" fill="#ffff00"/>
-                    </svg>
-                <?php else : ?>
-                    <!-- UK Flag SVG -->
-                    <svg class="sh-header__lang-flag" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20" width="30" height="20" style="display:inline-block; vertical-align:middle; border-radius:2px; box-shadow:0 1px 2px rgba(0,0,0,0.1);">
-                        <clipPath id="sh-uk-clip">
-                            <rect width="30" height="20" rx="2"/>
-                        </clipPath>
-                        <g clip-path="url(#sh-uk-clip)">
-                            <rect width="30" height="20" fill="#00247d"/>
-                            <path d="M0,0 L30,20 M30,0 L0,20" stroke="#fff" stroke-width="3"/>
-                            <path d="M0,0 L30,20 M30,0 L0,20" stroke="#cf142b" stroke-width="1.2"/>
-                            <path d="M15,0 V20 M0,10 H30" stroke="#fff" stroke-width="5"/>
-                            <path d="M15,0 V20 M0,10 H30" stroke="#cf142b" stroke-width="3"/>
+            <div class="sh-header__lang-group">
+                <!-- Vietnam Flag -->
+                <a href="<?php echo esc_url($vi_url); ?>"
+                   class="sh-header__lang <?php echo $current_lang === 'vi' ? 'sh-header__lang--active active is-active' : ''; ?>"
+                   hreflang="vi"
+                   rel="alternate"
+                   aria-label="Tiếng Việt"
+                   title="Tiếng Việt"
+                   <?php echo $current_lang === 'vi' ? 'aria-current="page"' : ''; ?>>
+                    <svg class="sh-header__lang-flag" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="24" height="24">
+                        <defs>
+                            <clipPath id="sh-vn-clip-hdr">
+                                <circle cx="16" cy="16" r="16"/>
+                            </clipPath>
+                            <radialGradient id="sh-vn-grad-hdr" cx="38%" cy="28%" r="72%">
+                                <stop offset="0%" stop-color="#EA2820"/>
+                                <stop offset="100%" stop-color="#A80D08"/>
+                            </radialGradient>
+                            <linearGradient id="sh-vn-star-hdr" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" stop-color="#FFF275"/>
+                                <stop offset="100%" stop-color="#FFB800"/>
+                            </linearGradient>
+                        </defs>
+                        <g clip-path="url(#sh-vn-clip-hdr)">
+                            <circle cx="16" cy="16" r="16" fill="url(#sh-vn-grad-hdr)"/>
+                            <polygon points="16,8.2 17.76,13.62 23.46,13.62 18.85,16.97 20.61,22.39 16,19.04 11.39,22.39 13.15,16.97 8.54,13.62 14.24,13.62" fill="url(#sh-vn-star-hdr)"/>
+                            <circle cx="16" cy="16" r="15.5" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
                         </g>
                     </svg>
-                <?php endif; ?>
-                <span class="sh-header__lang-label"><?php echo esc_html($sgh_alt_label); ?></span>
-            </a>
+                </a>
+                <!-- UK Flag -->
+                <a href="<?php echo esc_url($en_url); ?>"
+                   class="sh-header__lang <?php echo $current_lang === 'en' ? 'sh-header__lang--active active is-active' : ''; ?>"
+                   hreflang="en"
+                   rel="alternate"
+                   aria-label="English"
+                   title="English"
+                   <?php echo $current_lang === 'en' ? 'aria-current="page"' : ''; ?>>
+                    <svg class="sh-header__lang-flag" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="24" height="24">
+                        <defs>
+                            <clipPath id="sh-uk-clip-hdr">
+                                <circle cx="16" cy="16" r="16"/>
+                            </clipPath>
+                        </defs>
+                        <g clip-path="url(#sh-uk-clip-hdr)">
+                            <circle cx="16" cy="16" r="16" fill="#012169"/>
+                            <path d="M-4,-4 L36,36 M36,-4 L-4,36" stroke="#FFFFFF" stroke-width="5.5" stroke-linecap="square"/>
+                            <path d="M-4,-4 L16,16 M36,-4 L16,16 M36,36 L16,16 M-4,36 L16,16" stroke="#C8102E" stroke-width="2"/>
+                            <path d="M16,-4 V36 M-4,16 H36" stroke="#FFFFFF" stroke-width="9"/>
+                            <path d="M16,-4 V36 M-4,16 H36" stroke="#C8102E" stroke-width="5.5"/>
+                            <circle cx="16" cy="16" r="15.5" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
+                        </g>
+                    </svg>
+                </a>
+                <!-- Japan Flag -->
+                <a href="<?php echo esc_url($ja_url); ?>"
+                   class="sh-header__lang <?php echo $current_lang === 'ja' ? 'sh-header__lang--active active is-active' : ''; ?>"
+                   hreflang="ja"
+                   rel="alternate"
+                   aria-label="日本語"
+                   title="日本語"
+                   <?php echo $current_lang === 'ja' ? 'aria-current="page"' : ''; ?>>
+                    <svg class="sh-header__lang-flag" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="24" height="24">
+                        <defs>
+                            <clipPath id="sh-ja-clip-hdr">
+                                <circle cx="16" cy="16" r="16"/>
+                            </clipPath>
+                            <radialGradient id="sh-ja-sun-hdr" cx="42%" cy="36%" r="65%">
+                                <stop offset="0%" stop-color="#DC143C"/>
+                                <stop offset="100%" stop-color="#9E001F"/>
+                            </radialGradient>
+                        </defs>
+                        <g clip-path="url(#sh-ja-clip-hdr)">
+                            <circle cx="16" cy="16" r="16" fill="#F8F9FA"/>
+                            <circle cx="16" cy="16" r="9.6" fill="url(#sh-ja-sun-hdr)"/>
+                            <circle cx="16" cy="16" r="15.5" fill="none" stroke="rgba(0,0,0,0.08)" stroke-width="1"/>
+                            <circle cx="16" cy="16" r="15.5" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="0.75"/>
+                        </g>
+                    </svg>
+                </a>
+            </div>
             <!-- Mobile Menu Toggle -->
             <button id="mobile-menu-toggle" class="sh-header__mobile-toggle" aria-label="<?php esc_attr_e('Mở menu điều hướng', 'saigonhoreca'); ?>" aria-expanded="false" aria-controls="mobile-sidebar">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sh-header__hamburger-icon">
