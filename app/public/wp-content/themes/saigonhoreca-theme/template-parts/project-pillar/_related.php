@@ -105,12 +105,24 @@ foreach (glob($data_dir . '/*.json') as $f) {
 shuffle($all);
 $related = array_slice($all, 0, 3);
 if (empty($related)) return;
+$lang = function_exists('sgh_get_current_lang') ? sgh_get_current_lang() : 'vi';
+$heading = [
+    'vi' => 'Những dự án thiết kế bếp nổi bật của Saigon Horeca',
+    'en' => 'Featured Kitchen Design Projects by Saigon Horeca',
+    'ja' => 'Saigon Horecaによる注目の厨房設計プロジェクト',
+][$lang] ?? 'Featured Kitchen Design Projects by Saigon Horeca';
+
+$tag = [
+    'vi' => 'Dự án Horeca',
+    'en' => 'Horeca Project',
+    'ja' => 'Horecaプロジェクト',
+][$lang] ?? 'Horeca Project';
 ?>
 <section class="pp__section">
     <div class="pp-container-shared">
         <div class="pp-text pp-text--center" style="margin-bottom: 3rem;">
             <span class="pp-text__divider pp-text__divider--center" aria-hidden="true"></span>
-            <h2 class="pp-text__title">Những dự án thiết kế bếp nổi bật của Saigon Horeca</h2>
+            <h2 class="pp-text__title"><?php echo esc_html($heading); ?></h2>
         </div>
         <div class="pp-related">
             <?php foreach ($related as $r) : ?>
@@ -125,7 +137,7 @@ if (empty($related)) return;
                     <?php endif; ?>
                     <div class="pp-related__overlay" aria-hidden="true"></div>
                     <div class="pp-related__content">
-                        <p class="pp-related__tag">Dự án Horeca</p>
+                        <p class="pp-related__tag"><?php echo esc_html($tag); ?></p>
                         <h3 class="pp-related__title"><?php echo esc_html($r['title']); ?></h3>
                     </div>
                 </a>

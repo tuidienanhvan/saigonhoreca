@@ -67,10 +67,10 @@ $render_cat = function ($term, $depth = 0) use (&$render_cat, &$by_parent, $curr
 $top_level = $by_parent[0] ?? [];
 ?>
 
-<aside class="sh-archive__sidebar" aria-label="<?php esc_attr_e('Lọc sản phẩm', 'saigonhoreca'); ?>">
+<aside class="sh-archive__sidebar" aria-label="<?php echo esc_attr(sgh_t('filter_aria_label')); ?>">
     <?php if (!empty($top_level)) : ?>
         <div class="sh-filter-block">
-            <h2 class="sh-filter-block__title"><?php _e('Danh mục sản phẩm', 'saigonhoreca'); ?></h2>
+            <h2 class="sh-filter-block__title"><?php echo esc_html(sgh_t('filter_categories_title')); ?></h2>
             <ul class="sh-filter-block__list">
                 <?php foreach ($top_level as $cat) { $render_cat($cat, 0); } ?>
             </ul>
@@ -79,7 +79,7 @@ $top_level = $by_parent[0] ?? [];
 
     <?php if (!is_wp_error($brands) && !empty($brands)) : ?>
         <div class="sh-filter-block">
-            <h2 class="sh-filter-block__title"><?php _e('Thương hiệu', 'saigonhoreca'); ?></h2>
+            <h2 class="sh-filter-block__title"><?php echo esc_html(sgh_t('filter_brands_title')); ?></h2>
             <ul class="sh-filter-block__list">
                 <?php foreach ($brands as $b) :
                     $is_current = $current_term && $current_term->taxonomy === 'product_brand' && (int) $current_term->term_id === (int) $b->term_id; ?>

@@ -74,7 +74,7 @@ if (isset($args['thumb_url'])) {
 
         <a href="<?php echo esc_url($url); ?>" class="sh-product-card__cta">
             <?php echo sh_icon('eye', 'sh-product-card__cta-icon'); ?>
-            <span><?php _e('Xem chi tiết', 'saigonhoreca'); ?></span>
+            <span><?php echo esc_html(sgh_t('product_view_details')); ?></span>
         </a>
     </div>
 </article>

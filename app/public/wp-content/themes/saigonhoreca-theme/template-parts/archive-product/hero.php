@@ -14,32 +14,32 @@ $total = (int) ($wp_query->found_posts ?? 0);
 $is_tax = is_tax('product_category') || is_tax('product_brand');
 
 if (is_search()) {
-    $page_title = sprintf(__('Kết quả tìm kiếm: "%s"', 'saigonhoreca'), get_search_query());
+    $page_title = sprintf(sgh_t('archive_search_title'), get_search_query());
 } elseif ($is_tax) {
     $page_title = single_term_title('', false);
 } else {
-    $page_title = post_type_archive_title('', false) ?: __('Sản Phẩm', 'saigonhoreca');
+    $page_title = sgh_t('archive_product_title');
 }
 ?>
 
 <section class="sh-archive__hero sh-archive__hero--compact category-hero-bg">
     <div class="sh-archive__hero-inner">
-        <span class="sh-archive__badge"><?php _e('Sản phẩm', 'saigonhoreca'); ?></span>
+        <span class="sh-archive__badge"><?php echo esc_html(sgh_t('archive_product_badge')); ?></span>
         <h1 class="sh-archive__title"><?php echo esc_html($page_title); ?></h1>
         <?php if (is_search()) : ?>
-            <div class="sh-archive__desc"><?php printf(__('Tìm thấy %d sản phẩm phù hợp với từ khóa của bạn.', 'saigonhoreca'), $total); ?></div>
+            <div class="sh-archive__desc"><?php printf(sgh_t('archive_search_desc'), $total); ?></div>
         <?php elseif ($is_tax) :
             $term = get_queried_object();
             if (!empty($term->description)) : ?>
                 <div class="sh-archive__desc"><?php echo wp_kses_post(wpautop($term->description)); ?></div>
             <?php endif;
         else : ?>
-            <div class="sh-archive__desc"><?php _e('Thiết bị bếp công nghiệp, quầy bar và giải pháp horeca chuyên nghiệp.', 'saigonhoreca'); ?></div>
+            <div class="sh-archive__desc"><?php echo esc_html(sgh_t('archive_product_desc')); ?></div>
         <?php endif; ?>
 
         <p class="sh-archive__count">
-            <?php printf(_n('Tổng <strong>%d</strong> sản phẩm', 'Tổng <strong>%d</strong> sản phẩm', $total, 'saigonhoreca'), $total); ?>
+            <?php printf(sgh_t('archive_product_count'), $total); ?>
         </p>
     </div>
-    <?php get_template_part('template-parts/components/wave-divider'); ?>
+    <?php get_template_part('template-parts/_shared/wave-divider'); ?>
 </section>

@@ -13,8 +13,8 @@ if (!defined('ABSPATH')) exit;
 /* WCAG link-name — sh_icon() returns inline SVG with no text/aria-label,
    so prev/next links failed `link-name`. Wrap each icon with a visually
    hidden label so screen readers announce the link purpose. */
-$prev_label = esc_html__('Trang trước', 'saigonhoreca');
-$next_label = esc_html__('Trang sau', 'saigonhoreca');
+$prev_label = esc_html(sgh_t('pagination_prev'));
+$next_label = esc_html(sgh_t('pagination_next'));
 $links = paginate_links([
     'mid_size'  => 2,
     'prev_text' => sh_icon('chevron-left', '') . '<span class="sr-only">' . $prev_label . '</span>',
@@ -24,6 +24,6 @@ $links = paginate_links([
 if (!$links) return;
 ?>
 
-<nav class="sgh-pagination" aria-label="<?php esc_attr_e('Trang sản phẩm', 'saigonhoreca'); ?>">
+<nav class="sgh-pagination" aria-label="<?php echo esc_attr(sgh_t('pagination_aria')); ?>">
     <?php echo $links; ?>
 </nav>

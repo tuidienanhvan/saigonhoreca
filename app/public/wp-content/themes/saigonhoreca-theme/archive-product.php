@@ -25,8 +25,8 @@ get_header(); ?>
     ?>
 
     <div class="sh-archive__tabs">
-        <button class="sh-archive__tab-btn is-active" data-target="products"><?php _e('Sản phẩm', 'saigonhoreca'); ?></button>
-        <button class="sh-archive__tab-btn" data-target="categories"><?php _e('Danh mục hàng', 'saigonhoreca'); ?></button>
+        <button class="sh-archive__tab-btn is-active" data-target="products"><?php echo esc_html(sgh_t('archive_tab_products')); ?></button>
+        <button class="sh-archive__tab-btn" data-target="categories"><?php echo esc_html(sgh_t('archive_tab_categories')); ?></button>
     </div>
 
     <div class="sh-archive__layout sh-active-tab--products">

@@ -22,18 +22,36 @@ $current_id = get_the_ID();
 $ptype      = get_post_type($current_id);
 $is_product = ($ptype === 'product');
 
+$lang = function_exists('sgh_get_current_lang') ? sgh_get_current_lang() : 'vi';
+
 // Storage key cho widget "Đã xem" — phân tách post vs product để không lẫn.
 $viewed_storage_key = $is_product ? 'sgh:viewed-products' : 'sgh:viewed-posts';
-$viewed_label       = $is_product ? __('Sản phẩm vừa xem', 'saigonhoreca') : __('Bài đã xem', 'saigonhoreca');
-$viewed_empty       = $is_product ? __('Chưa có sản phẩm nào được xem.', 'saigonhoreca') : __('Chưa có bài viết nào được xem.', 'saigonhoreca');
-$sidebar_label      = $is_product ? __('Thông tin sản phẩm', 'saigonhoreca') : __('Thông tin bài viết', 'saigonhoreca');
+$viewed_label       = $is_product
+    ? (['vi' => 'Sản phẩm vừa xem', 'en' => 'Recently Viewed Products', 'ja' => '最近閲覧した製品'][$lang] ?? 'Recently Viewed Products')
+    : (['vi' => 'Bài đã xem', 'en' => 'Recently Viewed Posts', 'ja' => '最近読んだ記事'][$lang] ?? 'Recently Viewed Posts');
+$viewed_empty       = $is_product
+    ? (['vi' => 'Chưa có sản phẩm nào được xem.', 'en' => 'No products viewed yet.', 'ja' => '閲覧履歴はありません。'][$lang] ?? 'No products viewed yet.')
+    : (['vi' => 'Chưa có bài viết nào được xem.', 'en' => 'No posts viewed yet.', 'ja' => '閲覧履歴はありません。'][$lang] ?? 'No posts viewed yet.');
+$sidebar_label      = $is_product
+    ? (['vi' => 'Thông tin sản phẩm', 'en' => 'Product Information', 'ja' => '製品情報'][$lang] ?? 'Product Information')
+    : (['vi' => 'Thông tin bài viết', 'en' => 'Article Information', 'ja' => '記事情報'][$lang] ?? 'Article Information');
+
+$cta_eyebrow = ['vi' => 'Cần hỗ trợ?', 'en' => 'Need Assistance?', 'ja' => 'ご相談・お見積り'][$lang] ?? 'Need Assistance?';
+$cta_desc    = [
+    'vi' => 'Liên hệ Saigon Horeca để được tư vấn và báo giá miễn phí.',
+    'en' => 'Contact Saigon Horeca for professional consultation and free quotation.',
+    'ja' => 'Saigon Horecaへのお問い合わせ、専門コンサルティング・無料見積もりはこちら。',
+][$lang] ?? 'Contact Saigon Horeca for professional consultation and free quotation.';
+$cta_btn     = ['vi' => 'Gửi yêu cầu tư vấn', 'en' => 'Request Consultation', 'ja' => '相談・見積もりを依頼'][$lang] ?? 'Request Consultation';
+$news_title  = ['vi' => 'Tin tức mới nhất', 'en' => 'Latest News', 'ja' => '最新ニュース'][$lang] ?? 'Latest News';
+$feat_title  = ['vi' => 'Sản phẩm nổi bật', 'en' => 'Featured Products', 'ja' => '注目の製品'][$lang] ?? 'Featured Products';
 ?>
 <aside class="sh-single-product__sidebar" aria-label="<?php echo esc_attr($sidebar_label); ?>">
 
     <div class="sh-single-product__cta">
-        <span class="sh-single-product__cta-eyebrow"><?php _e('Cần hỗ trợ?', 'saigonhoreca'); ?></span>
+        <span class="sh-single-product__cta-eyebrow"><?php echo esc_html($cta_eyebrow); ?></span>
         <p class="sh-single-product__cta-desc">
-            <?php _e('Liên hệ Saigon Horeca để được tư vấn và báo giá miễn phí.', 'saigonhoreca'); ?>
+            <?php echo esc_html($cta_desc); ?>
         </p>
         <?php if ($hotline) : ?>
             <a class="sh-single-product__cta-hotline" href="tel:<?php echo esc_attr($hotline_t); ?>">
@@ -44,7 +62,7 @@ $sidebar_label      = $is_product ? __('Thông tin sản phẩm', 'saigonhoreca'
             </a>
         <?php endif; ?>
         <a class="sh-single-product__cta-btn" href="<?php echo esc_url($contact); ?>">
-            <?php _e('Gửi yêu cầu tư vấn', 'saigonhoreca'); ?>
+            <?php echo esc_html($cta_btn); ?>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
     </div>
@@ -60,7 +78,7 @@ $sidebar_label      = $is_product ? __('Thông tin sản phẩm', 'saigonhoreca'
     ]);
     if ($latest_news->have_posts()) : ?>
         <div class="sh-filter-block sh-sidebar-news">
-            <h3 class="sh-filter-block__title"><?php _e('Tin tức mới nhất', 'saigonhoreca'); ?></h3>
+            <h3 class="sh-filter-block__title"><?php echo esc_html($news_title); ?></h3>
             <ul class="sh-sidebar-news__list">
                 <?php while ($latest_news->have_posts()) : $latest_news->the_post(); ?>
                     <li class="sh-sidebar-news__item">
@@ -110,7 +128,7 @@ $sidebar_label      = $is_product ? __('Thông tin sản phẩm', 'saigonhoreca'
     ]);
     if ($featured_products->have_posts()) : ?>
         <div class="sh-filter-block sh-sidebar-products">
-            <h3 class="sh-filter-block__title"><?php _e('Sản phẩm nổi bật', 'saigonhoreca'); ?></h3>
+            <h3 class="sh-filter-block__title"><?php echo esc_html($feat_title); ?></h3>
             <ul class="sh-sidebar-products__list">
                 <?php while ($featured_products->have_posts()) : $featured_products->the_post(); 
                     $prod_id = get_the_ID();
