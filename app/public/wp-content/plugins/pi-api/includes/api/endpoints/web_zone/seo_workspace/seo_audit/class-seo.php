@@ -20,7 +20,7 @@ class Pi_Api_Seo {
         ]);
         register_rest_route($ns, '/seo/settings', [
             ['methods' => 'GET',  'callback' => [self::class, 'get_settings'],    'permission_callback' => $admin],
-            ['methods' => 'POST', 'callback' => [self::class, 'update_settings'], 'permission_callback' => $admin],
+            ['methods' => ['POST', 'PUT', 'PATCH'], 'callback' => [self::class, 'update_settings'], 'permission_callback' => $admin],
         ]);
     }
 
@@ -146,19 +146,45 @@ class Pi_Api_Seo {
     }
 
     public static function get_settings() {
-        return new \WP_REST_Response([
-            'ga4_id' => get_option('sgh_ga4_id', ''),
-            'gtm_id' => get_option('sgh_gtm_id', ''),
-            'fb_app_id' => get_option('sgh_fb_app_id', ''),
-        ], 200);
+        $defaults = [
+            'breadcrumb_sep'    => '»',
+            'force_rewrite'     => false,
+            'title_format_post' => '%title% - %sitename%',
+            'title_format_page' => '%title% - %sitename%',
+            'separator'         => '-',
+            'enable_og'         => true,
+            'enable_twitter'    => true,
+            'fb_app_id'         => get_option('sgh_fb_app_id', ''),
+            'noindex_search'    => true,
+            'noindex_archives'  => false,
+            'nofollow_external' => false,
+            'ga4_id'            => get_option('sgh_ga4_id', ''),
+            'gtm_id'            => get_option('sgh_gtm_id', ''),
+        ];
+        $saved = (array) get_option('sgh_seo_settings', []);
+        return new \WP_REST_Response(array_merge($defaults, $saved), 200);
     }
 
     public static function update_settings(\WP_REST_Request $request) {
-        $p = $request->get_json_params();
+        $p = $request->get_json_params() ?: [];
+        $current = (array) get_option('sgh_seo_settings', []);
+        $fields = [
+            'breadcrumb_sep', 'force_rewrite', 'title_format_post', 'title_format_page',
+            'separator', 'enable_og', 'enable_twitter', 'fb_app_id',
+            'noindex_search', 'noindex_archives', 'nofollow_external'
+        ];
+        foreach ($fields as $f) {
+            if (isset($p[$f])) {
+                $current[$f] = is_bool($p[$f]) ? $p[$f] : sanitize_text_field($p[$f]);
+            }
+        }
+        update_option('sgh_seo_settings', $current);
+
         if (isset($p['ga4_id'])) update_option('sgh_ga4_id', sanitize_text_field($p['ga4_id']));
         if (isset($p['gtm_id'])) update_option('sgh_gtm_id', sanitize_text_field($p['gtm_id']));
-        
-        return new \WP_REST_Response(['success' => true], 200);
+        if (isset($p['fb_app_id'])) update_option('sgh_fb_app_id', sanitize_text_field($p['fb_app_id']));
+
+        return new \WP_REST_Response(['success' => true, 'settings' => self::get_settings()->get_data()], 200);
     }
 
     public static function update_post_seo(\WP_REST_Request $request) {

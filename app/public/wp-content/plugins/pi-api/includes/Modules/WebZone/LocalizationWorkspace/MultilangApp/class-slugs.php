@@ -191,7 +191,7 @@ class Pi_Multilang_Slugs {
         // nguyên ký tự phi Latin nếu locale cho phép, đúng như WP làm với slug.
         $s = sanitize_title($s);
         if (strpos($s, '/') !== false) return '';   // alias phải là MỘT đoạn
-        return substr($s, 0, 200);
+        return function_exists('mb_substr') ? mb_substr($s, 0, 200, 'UTF-8') : substr($s, 0, 200);
     }
 
     /**

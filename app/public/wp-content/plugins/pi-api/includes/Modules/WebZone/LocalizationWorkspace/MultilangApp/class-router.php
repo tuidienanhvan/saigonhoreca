@@ -179,7 +179,14 @@ class Pi_Multilang_Router {
         }
 
         unset($query_vars['pagename'], $query_vars['name']);
-        $query_vars['page_id'] = $id;
+        self::drop_cpt_query_vars($query_vars);
+        $pt = get_post_type($id);
+        if ($pt === 'page') {
+            $query_vars['page_id'] = $id;
+        } else {
+            $query_vars['p'] = $id;
+            $query_vars['post_type'] = $pt ? $pt : 'page';
+        }
         return $query_vars;
     }
 
@@ -317,6 +324,10 @@ class Pi_Multilang_Router {
         $target = rtrim(Pi_Multilang_Core::get_language_base_url($lang), '/')
                 . '/' . implode('/', $segments)
                 . (substr($path, -1) === '/' ? '/' : '') . $qs;
+
+        $target_path = (string) parse_url($target, PHP_URL_PATH);
+        $here        = (string) strtok((string) $_SERVER['REQUEST_URI'], '?');
+        if (untrailingslashit($target_path) === untrailingslashit($here)) return; // Chặn vòng lặp 301
 
         if (!headers_sent()) header('X-Pi-Redirect-Source: alias');
         wp_redirect($target, 301);

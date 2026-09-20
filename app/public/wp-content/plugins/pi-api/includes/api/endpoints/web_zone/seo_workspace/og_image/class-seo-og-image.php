@@ -355,7 +355,32 @@ class Pi_Api_SeoOgImage {
                 imagestring($img, $size, $bounds['x'], $bounds['y'], $content, $col);
             } elseif ($type === 'image' && !empty($el['src'])) {
                 $src = (string) self::apply_vars((string) $el['src'], $vars);
-                $img_data = @file_get_contents($src);
+                $img_data = false;
+
+                if (wp_http_validate_url($src)) {
+                    $response = wp_safe_remote_get($src, [
+                        'timeout'            => 5,
+                        'reject_unsafe_urls' => true,
+                        'redirection'        => 2,
+                    ]);
+                    if (!is_wp_error($response) && wp_remote_retrieve_response_code($response) === 200) {
+                        $img_data = wp_remote_retrieve_body($response);
+                    }
+                } else {
+                    $upload_dir = wp_upload_dir();
+                    $real_base_uploads = realpath($upload_dir['basedir']);
+                    $real_base_theme   = realpath(get_template_directory());
+                    $real_file         = realpath($src);
+
+                    if ($real_file && ($real_base_uploads || $real_base_theme)) {
+                        $in_uploads = $real_base_uploads && str_starts_with($real_file, $real_base_uploads);
+                        $in_theme   = $real_base_theme && str_starts_with($real_file, $real_base_theme);
+                        if ($in_uploads || $in_theme) {
+                            $img_data = @file_get_contents($real_file);
+                        }
+                    }
+                }
+
                 if ($img_data) {
                     $tmp = @imagecreatefromstring($img_data);
                     if ($tmp) {

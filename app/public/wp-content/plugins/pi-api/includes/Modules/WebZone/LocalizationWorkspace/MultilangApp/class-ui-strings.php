@@ -188,12 +188,15 @@ class Pi_Multilang_UI_Strings {
             return new WP_Error('po_unreadable', 'Không đọc được file .po: ' . $po_path);
         }
 
-        $changed = 0;
+        $normalized = [];
         foreach ($pairs as $key => $value) {
             // Chuẩn hoá xuống dòng để không tạo diff giả do CRLF từ trình duyệt.
-            $value = str_replace("\r\n", "\n", (string) $value);
-            if ($po->set_msgstr($key, $value)) $changed++;
+            $normalized[$key] = str_replace("\r\n", "\n", (string) $value);
         }
+
+        $res = $po->set_msgstrs_batch($normalized);
+        if (is_wp_error($res)) return $res;
+        $changed = (int) $res;
 
         if ($changed === 0) {
             return ['changed' => 0, 'mo' => false];

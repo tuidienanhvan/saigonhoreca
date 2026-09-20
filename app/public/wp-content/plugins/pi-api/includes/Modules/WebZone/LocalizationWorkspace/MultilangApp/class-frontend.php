@@ -75,18 +75,26 @@ class Pi_Multilang_Frontend {
         if (!$post) return $url;
 
         // Bài ĐÃ gắn thẻ ngôn ngữ thì permalink của nó thuộc về ngôn ngữ đó —
-        // một bài tiếng Việt luôn trỏ về URL tiếng Việt, kể cả khi đang xem
-        // trang tiếng Anh (đó mới là canonical đúng của nó).
-        //
-        // Bài CHƯA gắn thẻ là nội dung dùng chung cho mọi ngôn ngữ (xem
-        // filter_query), nên link của nó phải đi theo ngôn ngữ người đang xem.
-        // Bản cũ mặc định 'vi' cứng, làm mọi link nội dung chung tụt về tiếng
-        // Việt ngay giữa trang /en/ — đo được: link tới trang tư vấn quầy bar
-        // là link duy nhất mất tiền tố trên /en/lien-he/.
-        $lang = get_post_meta($post->ID, 'pi_language', true);
-        if ($lang === '' || $lang === false || $lang === null) {
-            $lang = defined('PI_CURRENT_LANGUAGE') ? PI_CURRENT_LANGUAGE : $lang;
+        // nhưng nếu đang xem ở frontend và bài có bản dịch Gen 2 cho ngôn ngữ
+        // hiện tại (hoặc đang phát canonical cho chính bài đang xem), link phải
+        // đi theo ngôn ngữ người đang xem để tránh canonical tiếng Anh trỏ về tiếng Việt.
+        $own = get_post_meta($post->ID, 'pi_language', true);
+        $cur = defined('PI_CURRENT_LANGUAGE') ? PI_CURRENT_LANGUAGE : null;
+
+        if ($cur !== null && !is_admin() && !(defined('DOING_CRON') && DOING_CRON) && !(defined('WP_CLI') && WP_CLI)) {
+            if (is_singular() && get_queried_object_id() === (int) $post->ID) {
+                $lang = $cur;
+            } elseif ($own === '' || $own === false || $own === null || $own === $cur) {
+                $lang = $cur;
+            } else {
+                $has_meta_tr = get_post_meta($post->ID, '_pi_tr_' . $cur . '_title', true)
+                            || get_post_meta($post->ID, '_pi_tr_' . $cur . '_content', true);
+                $lang = $has_meta_tr ? $cur : $own;
+            }
+        } else {
+            $lang = ($own !== '' && $own !== false && $own !== null) ? $own : $cur;
         }
+
         if (!$lang) return $url;
 
         // Bật dịch slug ĐÚNG ở chỗ này: WP đã dựng permalink từ post_name gốc,
@@ -121,7 +129,8 @@ class Pi_Multilang_Frontend {
             if ($post instanceof WP_Post) {
                 $own = get_post_meta($post->ID, 'pi_language', true);
 
-                // Bài đã gắn thẻ: chỉ có URL riêng nếu tồn tại bản dịch cùng nhóm.
+                // Bài đã gắn thẻ: chỉ có URL riêng nếu tồn tại bản dịch cùng nhóm (Gen 1)
+                // hoặc bản dịch meta trên chính bài (Gen 2).
                 if ($own !== '' && $own !== false && $own !== null) {
                     if ($own === $lang) return get_permalink($post->ID);
 
@@ -138,6 +147,14 @@ class Pi_Multilang_Frontend {
                         ]);
                         if (!empty($siblings)) return get_permalink($siblings[0]->ID);
                     }
+
+                    // Thế hệ 2: Kiểm tra bản dịch meta trên chính bài này
+                    $has_meta_tr = get_post_meta($post->ID, '_pi_tr_' . $lang . '_title', true)
+                                || get_post_meta($post->ID, '_pi_tr_' . $lang . '_content', true);
+                    if ($has_meta_tr) {
+                        return Pi_Multilang_Core::rewrite_url_for_language(get_permalink($post->ID), $lang, true, true);
+                    }
+
                     return null;   // không có bản dịch -> không bịa ra URL
                 }
                 // Bài chưa gắn thẻ = nội dung dùng chung, có ở mọi ngôn ngữ.

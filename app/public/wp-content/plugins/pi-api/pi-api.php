@@ -153,6 +153,17 @@ add_action('plugins_loaded', function () {
     // Application Password the user enters in the login form.
     PiApi\Core\CorsBridge::register();
 
+    // Backward compatibility aliases for Core classes
+    if (!class_exists('PiApi\\Settings', false)) {
+        class_alias(PiApi\Core\Settings::class, 'PiApi\\Settings');
+    }
+    if (!class_exists('PiApi\\BackendClient', false)) {
+        class_alias(PiApi\Core\BackendClient::class, 'PiApi\\BackendClient');
+    }
+    if (!class_exists('PiApi\\CacheManager', false)) {
+        class_alias(PiApi\Core\CacheManager::class, 'PiApi\\CacheManager');
+    }
+
     add_action('pi_api_report_usage', function ($tokens_in, $tokens_out, $jwt): void {
         PiApi\Core\BackendClient::reportUsage((int) $tokens_in, (int) $tokens_out, (string) $jwt);
     }, 10, 3);

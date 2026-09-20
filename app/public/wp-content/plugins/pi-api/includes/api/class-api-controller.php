@@ -21,10 +21,7 @@ class Pi_Api_Controller {
     }
 
     public function init() {
-        // Load all endpoint modules
-        $this->load_modules();
-
-        // Initialize hooks
+        // Initialize hooks - module loading deferred to rest_api_init
         add_action('rest_api_init', [$this, 'register_routes']);
         add_filter('rest_pre_serve_request', [$this, 'handle_cors']);
     }
@@ -79,6 +76,9 @@ class Pi_Api_Controller {
     }
 
     public function register_routes() {
+        // Load all endpoint modules on-demand when REST API initializes
+        $this->load_modules();
+
         $admin_callback = [$this, 'is_admin'];
 
         // Define groups and their implementing classes

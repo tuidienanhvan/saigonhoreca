@@ -47,25 +47,25 @@ class Pi_Api_Cache {
     }
 
     private static function available(): bool {
-        return class_exists('\PiApi\CacheManager');
+        return class_exists('\PiApi\Core\CacheManager');
     }
 
     public static function status(\WP_REST_Request $request) {
         if (!self::available()) {
             return new \WP_REST_Response(['error' => 'CacheManager not loaded'], 500);
         }
-        return new \WP_REST_Response(\PiApi\CacheManager::stats(), 200);
+        return new \WP_REST_Response(\PiApi\Core\CacheManager::stats(), 200);
     }
 
     public static function purge(\WP_REST_Request $request) {
         if (!self::available()) {
             return new \WP_REST_Response(['error' => 'CacheManager not loaded'], 500);
         }
-        \PiApi\CacheManager::flush();
+        \PiApi\Core\CacheManager::flush();
         return new \WP_REST_Response([
             'success' => true,
             'message' => 'Cache purged (version bumped + files cleared).',
-            'stats'   => \PiApi\CacheManager::stats(),
+            'stats'   => \PiApi\Core\CacheManager::stats(),
         ], 200);
     }
 
@@ -74,12 +74,12 @@ class Pi_Api_Cache {
             return new \WP_REST_Response(['error' => 'CacheManager not loaded'], 500);
         }
         update_option('pi_api_cache_enabled', '1', false);
-        $result = \PiApi\CacheManager::installDropin();
+        $result = \PiApi\Core\CacheManager::installDropin();
         return new \WP_REST_Response([
             'success'  => $result['ok'],
             'steps'    => $result['steps'],
             'warnings' => $result['warnings'],
-            'stats'    => \PiApi\CacheManager::stats(),
+            'stats'    => \PiApi\Core\CacheManager::stats(),
         ], 200);
     }
 
@@ -88,12 +88,12 @@ class Pi_Api_Cache {
             return new \WP_REST_Response(['error' => 'CacheManager not loaded'], 500);
         }
         update_option('pi_api_cache_enabled', '0', false);
-        \PiApi\CacheManager::flush();        // clear existing files
-        \PiApi\CacheManager::uninstallDropin();
+        \PiApi\Core\CacheManager::flush();        // clear existing files
+        \PiApi\Core\CacheManager::uninstallDropin();
         return new \WP_REST_Response([
             'success' => true,
             'message' => 'Cache disabled + drop-in removed + files cleared.',
-            'stats'   => \PiApi\CacheManager::stats(),
+            'stats'   => \PiApi\Core\CacheManager::stats(),
         ], 200);
     }
 }

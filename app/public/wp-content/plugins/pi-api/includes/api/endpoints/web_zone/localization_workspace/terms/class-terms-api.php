@@ -68,24 +68,47 @@ class Pi_Api_TranslationsTerms {
         return rest_ensure_response($res);
     }
 
+    private static function check_term_capability($term_id) {
+        $term = get_term($term_id);
+        if (!$term || is_wp_error($term)) {
+            return new WP_Error('not_found', 'Không tìm thấy chuyên mục.', ['status' => 404]);
+        }
+        if (!current_user_can('edit_term', $term_id)) {
+            return new WP_Error('forbidden', 'Không có quyền chỉnh sửa chuyên mục này.', ['status' => 403]);
+        }
+        return true;
+    }
+
     public static function save_draft($request) {
+        $id = (int) $request->get_param('id');
+        $perm = self::check_term_capability($id);
+        if (is_wp_error($perm)) return $perm;
+
         $fields = $request->get_param('fields');
         if (!is_array($fields)) {
             return new WP_Error('bad_request', 'Thiếu fields.', ['status' => 422]);
         }
-        $res = Pi_Multilang_Term::save_draft((int) $request->get_param('id'), self::lang($request), $fields);
+        $res = Pi_Multilang_Term::save_draft($id, self::lang($request), $fields);
         if (is_wp_error($res)) return $res;
         return rest_ensure_response(['ok' => true, 'saved' => $res]);
     }
 
     public static function apply($request) {
-        $res = Pi_Multilang_Term::apply((int) $request->get_param('id'), self::lang($request));
+        $id = (int) $request->get_param('id');
+        $perm = self::check_term_capability($id);
+        if (is_wp_error($perm)) return $perm;
+
+        $res = Pi_Multilang_Term::apply($id, self::lang($request));
         if (is_wp_error($res)) return $res;
         return rest_ensure_response(['ok' => true, 'applied' => $res]);
     }
 
     public static function undo($request) {
-        $res = Pi_Multilang_Term::undo((int) $request->get_param('id'), self::lang($request));
+        $id = (int) $request->get_param('id');
+        $perm = self::check_term_capability($id);
+        if (is_wp_error($perm)) return $perm;
+
+        $res = Pi_Multilang_Term::undo($id, self::lang($request));
         if (is_wp_error($res)) return $res;
         return rest_ensure_response(['ok' => true, 'restored' => $res]);
     }

@@ -94,7 +94,7 @@ class Pi_Api_SeoAiBot {
             return ['_error' => 'Post not found'];
         }
 
-        $license_key = \PiApi\Settings::getLicenseKey();
+        $license_key = \PiApi\Core\Settings::getLicenseKey();
         if ($license_key === '') {
             return ['_error' => 'No license key configured'];
         }
@@ -128,7 +128,7 @@ class Pi_Api_SeoAiBot {
             'variants'        => 1,
         ];
 
-        $response = \PiApi\BackendClient::seoGenerate($payload, $license_key);
+        $response = \PiApi\Core\BackendClient::seoGenerate($payload, $license_key);
 
         if (empty($response['success'])) {
             $error_msg = $response['error'] ?? 'Backend request failed';

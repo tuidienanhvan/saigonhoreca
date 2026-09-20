@@ -68,6 +68,15 @@ class Pi_Multilang_SEO {
                 break;
             }
         }
+        if ($default === null) {
+            foreach ($config as $code => $c) {
+                if (trim($c['path_prefix'], '/') === '') {
+                    $default = $code;
+                    break;
+                }
+            }
+            if ($default === null) $default = 'vi';
+        }
 
         foreach ($config as $code => $c) {
             $url = Pi_Multilang_Frontend::url_in_language($code);

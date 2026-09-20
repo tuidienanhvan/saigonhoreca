@@ -329,7 +329,7 @@ class Pi_Api_AiCloud {
             'currency'     => $wallet['currency'],
             'last_topup_at' => $wallet['last_topup_at'],
             'auto_topup'   => $wallet['auto_topup'],
-            'monthly_quota' => class_exists('\\PiApi\\Settings') ? \PiApi\Settings::getTokenQuota() : 5000,
+            'monthly_quota' => class_exists('\\PiApi\\Core\\Settings') ? \PiApi\Core\Settings::getTokenQuota() : 5000,
             'used_this_month' => (int) get_option('pi_ai_cloud_tokens_used_month', 0),
             'reset_at' => get_option('pi_api_jwt_expires_at') ? gmdate('c', (int) get_option('pi_api_jwt_expires_at')) : null,
             'recent'       => $recent,
@@ -537,7 +537,7 @@ class Pi_Api_AiCloud {
             );
             $tokens_used = (int) ($resp['tokens_used'] ?? 0);
             update_option('pi_ai_cloud_tokens_used_month', (int) get_option('pi_ai_cloud_tokens_used_month', 0) + $tokens_used, false);
-            $jwt = class_exists('\\PiApi\\Settings') ? \PiApi\Settings::getJwt() : '';
+            $jwt = class_exists('\\PiApi\\Core\\Settings') ? \PiApi\Core\Settings::getJwt() : '';
             if ($jwt !== '' && !str_starts_with($jwt, 'mock')) {
                 $tokens_in = max(0, min($tokens_used, (int) ceil(strlen($prompt) / 4)));
                 wp_schedule_single_event(time(), 'pi_api_report_usage', [$tokens_in, max(0, $tokens_used - $tokens_in), $jwt]);

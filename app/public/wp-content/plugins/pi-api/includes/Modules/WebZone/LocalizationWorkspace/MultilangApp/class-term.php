@@ -69,7 +69,7 @@ class Pi_Multilang_Term {
             // Tên chuyên mục đi vào <title>, breadcrumb và thẻ option — không
             // được mang HTML. Mô tả thì cho phép đúng bộ thẻ của post content.
             $val = ($f === 'name') ? sanitize_text_field($val) : wp_kses_post($val);
-            update_term_meta($term_id, self::draft_key($lang, $f), $val);
+            update_term_meta($term_id, self::draft_key($lang, $f), wp_slash($val));
             $saved[] = $f;
         }
         return $saved;
@@ -87,8 +87,8 @@ class Pi_Multilang_Term {
             if ($d === '') continue;
             // Chụp CẢ KHI bản sống đang rỗng — nếu không, hoàn tác một bản dịch
             // mới tinh sẽ không có gì để khôi phục. Giống hệt class-content.php.
-            update_term_meta($term_id, self::old_key($lang, $f), self::live($term_id, $lang, $f));
-            update_term_meta($term_id, self::live_key($lang, $f), $d);
+            update_term_meta($term_id, self::old_key($lang, $f), wp_slash(self::live($term_id, $lang, $f)));
+            update_term_meta($term_id, self::live_key($lang, $f), wp_slash($d));
             delete_term_meta($term_id, self::draft_key($lang, $f));
             $applied[] = $f;
         }
@@ -116,11 +116,11 @@ class Pi_Multilang_Term {
             // Giữ lại công sức dịch: nháp trống thì đẩy bản vừa bị thay về nháp.
             if (self::draft($term_id, $lang, $f) === '') {
                 $cur = self::live($term_id, $lang, $f);
-                if ($cur !== '') update_term_meta($term_id, self::draft_key($lang, $f), $cur);
+                if ($cur !== '') update_term_meta($term_id, self::draft_key($lang, $f), wp_slash($cur));
             }
 
             if ($old === '') delete_term_meta($term_id, self::live_key($lang, $f));
-            else update_term_meta($term_id, self::live_key($lang, $f), $old);
+            else update_term_meta($term_id, self::live_key($lang, $f), wp_slash($old));
 
             delete_term_meta($term_id, $key);
             $restored[] = $f;
@@ -165,6 +165,10 @@ class Pi_Multilang_Term {
             $st = $live !== '' ? 'live' : ($draft !== '' ? 'draft' : 'missing');
             if ($state !== '' && $st !== $state) continue;
 
+            $parent_id   = (int) $t->parent;
+            $ancestors   = $parent_id > 0 ? get_ancestors($t->term_id, $t->taxonomy, 'taxonomy') : [];
+            $parent_name = $parent_id > 0 ? get_term_field('name', $parent_id, $t->taxonomy) : '';
+
             $items[] = [
                 'id'          => (int) $t->term_id,
                 'taxonomy'    => $t->taxonomy,
@@ -173,6 +177,10 @@ class Pi_Multilang_Term {
                 'count'       => (int) $t->count,
                 'state'       => $st,
                 'translated'  => $live !== '' ? $live : $draft,
+                'parent_id'   => $parent_id,
+                'parent_name' => is_string($parent_name) ? $parent_name : '',
+                'depth'       => count($ancestors),
+                'ancestors'   => $ancestors,
             ];
         }
 
@@ -214,40 +222,56 @@ class Pi_Multilang_Term {
         ];
     }
 
-    /** Đếm phủ sóng theo taxonomy × ngôn ngữ, một câu lệnh cho tất cả. */
+    /** Đếm phủ sóng theo taxonomy × ngôn ngữ, tính chính xác số lượng term không bị nhân bản. */
     public static function coverage() {
         global $wpdb;
         $taxes = self::taxonomies();
         if (empty($taxes)) return ['ok' => true, 'coverage' => []];
 
         $ph = implode(',', array_fill(0, count($taxes), '%s'));
-        $rows = $wpdb->get_results($wpdb->prepare(
+
+        // 1. Đếm tổng số term phân biệt cho từng taxonomy
+        $total_rows = $wpdb->get_results($wpdb->prepare(
+            "SELECT taxonomy, COUNT(DISTINCT term_id) AS total
+               FROM {$wpdb->term_taxonomy}
+              WHERE taxonomy IN ({$ph})
+              GROUP BY taxonomy",
+            $taxes
+        ));
+
+        $out = [];
+        foreach ($taxes as $tx) {
+            $out[$tx] = ['total' => 0, 'langs' => []];
+        }
+        foreach ($total_rows as $tr) {
+            if (isset($out[$tr->taxonomy])) {
+                $out[$tr->taxonomy]['total'] = (int) $tr->total;
+            }
+        }
+
+        // 2. Đếm số term đã có bản dịch theo từng ngôn ngữ và trạng thái (live/draft)
+        $meta_rows = $wpdb->get_results($wpdb->prepare(
             "SELECT tt.taxonomy, tm.meta_key, COUNT(DISTINCT tt.term_id) c
                FROM {$wpdb->term_taxonomy} tt
-               LEFT JOIN {$wpdb->termmeta} tm
-                      ON tm.term_id = tt.term_id
-                     AND tm.meta_key LIKE '\\_pi\\_tr%%\\_name'
-                     AND TRIM(COALESCE(tm.meta_value, '')) <> ''
+               INNER JOIN {$wpdb->termmeta} tm
+                       ON tm.term_id = tt.term_id
+                      AND tm.meta_key LIKE '\\_pi\\_tr%%\\_name'
+                      AND TRIM(COALESCE(tm.meta_value, '')) <> ''
               WHERE tt.taxonomy IN ({$ph})
               GROUP BY tt.taxonomy, tm.meta_key",
             $taxes
         ));
 
-        $out = [];
-        foreach ($taxes as $tx) $out[$tx] = ['total' => 0, 'langs' => []];
-        foreach ($rows as $r) {
+        foreach ($meta_rows as $r) {
             $tx = $r->taxonomy;
-            if (!isset($out[$tx])) $out[$tx] = ['total' => 0, 'langs' => []];
-            if ($r->meta_key === null) {
-                $out[$tx]['total'] += (int) $r->c;
-                continue;
-            }
-            $out[$tx]['total'] += (int) $r->c;
+            if (!isset($out[$tx])) continue;
             if (preg_match('/^_pi_(tr|trd)_([a-z0-9\-]+)_name$/', $r->meta_key, $m)) {
                 $stage = $m[1] === 'tr' ? 'live' : 'draft';
                 $lang  = $m[2];
-                if (!isset($out[$tx]['langs'][$lang])) $out[$tx]['langs'][$lang] = ['live' => 0, 'draft' => 0];
-                $out[$tx]['langs'][$lang][$stage] += (int) $r->c;
+                if (!isset($out[$tx]['langs'][$lang])) {
+                    $out[$tx]['langs'][$lang] = ['live' => 0, 'draft' => 0];
+                }
+                $out[$tx]['langs'][$lang][$stage] = (int) $r->c;
             }
         }
         return ['ok' => true, 'taxonomies' => $taxes, 'coverage' => $out];

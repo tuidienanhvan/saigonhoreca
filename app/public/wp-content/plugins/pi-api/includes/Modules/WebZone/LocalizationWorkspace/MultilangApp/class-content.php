@@ -141,7 +141,7 @@ class Pi_Multilang_Content {
             $val = (string) $fields[$f];
             $key = self::draft_key($lang, $f);
             if ($val === '') { delete_post_meta($post_id, $key); continue; }
-            update_post_meta($post_id, $key, self::sanitize_field($f, $val));
+            update_post_meta($post_id, $key, wp_slash(self::sanitize_field($f, $val)));
         }
         return true;
     }
@@ -182,8 +182,8 @@ class Pi_Multilang_Content {
             // Ảnh chụp phải ghi CẢ KHI bản sống đang rỗng — nếu không, hoàn tác
             // một bản dịch mới tinh sẽ không có gì để khôi phục và giá trị mới
             // ở lại vĩnh viễn. Chuỗi rỗng vẫn là một trạng thái cần nhớ.
-            update_post_meta($post_id, self::old_key($lang, $f), self::live($post_id, $lang, $f));
-            update_post_meta($post_id, self::live_key($lang, $f), $d);
+            update_post_meta($post_id, self::old_key($lang, $f), wp_slash(self::live($post_id, $lang, $f)));
+            update_post_meta($post_id, self::live_key($lang, $f), wp_slash($d));
             delete_post_meta($post_id, self::draft_key($lang, $f));
             $applied[] = $f;
         }
@@ -216,11 +216,11 @@ class Pi_Multilang_Content {
             // sức dịch không bốc hơi chỉ vì bấm nhầm nút hoàn tác.
             if (self::draft($post_id, $lang, $f) === '') {
                 $cur = self::live($post_id, $lang, $f);
-                if ($cur !== '') update_post_meta($post_id, self::draft_key($lang, $f), $cur);
+                if ($cur !== '') update_post_meta($post_id, self::draft_key($lang, $f), wp_slash($cur));
             }
 
             if ($old === '') delete_post_meta($post_id, self::live_key($lang, $f));
-            else update_post_meta($post_id, self::live_key($lang, $f), $old);
+            else update_post_meta($post_id, self::live_key($lang, $f), wp_slash($old));
 
             delete_post_meta($post_id, $key);
             $restored[] = $f;

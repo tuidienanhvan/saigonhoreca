@@ -32,7 +32,7 @@ class Pi_Api_SeoLlmTxt {
         ]);
 
         register_rest_route($ns, '/seo/llm-txt/auto-generate', [
-            'methods'             => 'GET',
+            'methods'             => ['GET', 'POST'],
             'callback'            => [self::class, 'auto_generate'],
             'permission_callback' => $admin,
         ]);

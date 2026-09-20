@@ -75,17 +75,17 @@ class Pi_Api_License {
     }
 
     public static function get_license_status() {
-        $key = \PiApi\Settings::getLicenseKey();
-        $tier = \PiApi\Settings::getTier();
+        $key = \PiApi\Core\Settings::getLicenseKey();
+        $tier = \PiApi\Core\Settings::getTier();
         $status = (string) get_option('pi_api_status', $key !== '' ? 'active' : 'inactive');
 
         return new \WP_REST_Response([
-            'active'         => \PiApi\Settings::isActive(),
+            'active'         => \PiApi\Core\Settings::isActive(),
             'status'         => $status,
             'tier'           => $tier,
-            'features'       => \PiApi\Settings::getFeatures(),
-            'token_quota'    => \PiApi\Settings::getTokenQuota(),
-            'masked_key'     => \PiApi\Settings::maskKey($key),
+            'features'       => \PiApi\Core\Settings::getFeatures(),
+            'token_quota'    => \PiApi\Core\Settings::getTokenQuota(),
+            'masked_key'     => \PiApi\Core\Settings::maskKey($key),
             'has_key'        => $key !== '',
             'jwt_expires_at' => (int) get_option('pi_api_jwt_expires_at', 0),
             'activated_at'   => (int) get_option('pi_api_activated_at', 0),
@@ -111,7 +111,7 @@ class Pi_Api_License {
             ], 400);
         }
 
-        $resp = \PiApi\BackendClient::activate($key, (string) wp_parse_url(home_url(), PHP_URL_HOST));
+        $resp = \PiApi\Core\BackendClient::activate($key, (string) wp_parse_url(home_url(), PHP_URL_HOST));
         if (empty($resp['success'])) {
             return new \WP_REST_Response([
                 'success' => false,
@@ -119,8 +119,8 @@ class Pi_Api_License {
             ], 400);
         }
 
-        \PiApi\Settings::storeActivation($key, (array) ($resp['data'] ?? []));
-        $tier = \PiApi\Settings::getTier();
+        \PiApi\Core\Settings::storeActivation($key, (array) ($resp['data'] ?? []));
+        $tier = \PiApi\Core\Settings::getTier();
         self::audit('activated', ['tier' => $tier]);
 
         return new \WP_REST_Response([
@@ -132,7 +132,7 @@ class Pi_Api_License {
     }
 
     public static function deactivate() {
-        $key = \PiApi\Settings::getLicenseKey();
+        $key = \PiApi\Core\Settings::getLicenseKey();
         if ($key === '') {
             return new \WP_REST_Response([
                 'success' => false,
@@ -140,9 +140,9 @@ class Pi_Api_License {
             ], 400);
         }
 
-        \PiApi\BackendClient::deactivate($key);
-        $previous_tier = \PiApi\Settings::getTier();
-        \PiApi\Settings::clearActivation();
+        \PiApi\Core\BackendClient::deactivate($key);
+        $previous_tier = \PiApi\Core\Settings::getTier();
+        \PiApi\Core\Settings::clearActivation();
         self::audit('deactivated', ['previous_tier' => $previous_tier]);
 
         return new \WP_REST_Response([
@@ -153,7 +153,7 @@ class Pi_Api_License {
     }
 
     public static function issue_jwt() {
-        $key = \PiApi\Settings::getLicenseKey();
+        $key = \PiApi\Core\Settings::getLicenseKey();
         if ($key === '') {
             return new \WP_REST_Response([
                 'success' => false,
@@ -161,7 +161,7 @@ class Pi_Api_License {
             ], 400);
         }
 
-        $resp = \PiApi\BackendClient::issueJwt($key);
+        $resp = \PiApi\Core\BackendClient::issueJwt($key);
         if (empty($resp['success'])) {
             return new \WP_REST_Response([
                 'success' => false,
@@ -169,18 +169,11 @@ class Pi_Api_License {
             ], 400);
         }
 
-        $data = (array) ($resp['data'] ?? []);
-        $jwt = (string) ($data['jwt'] ?? '');
-        $expires_in = max(60, (int) ($data['expires_in'] ?? 900));
-        $expires_at = time() + $expires_in;
-
-        update_option('pi_api_jwt', $jwt, false);
-        update_option('pi_api_jwt_expires_at', $expires_at, false);
+        \PiApi\Core\Settings::storeActivation($key, (array) ($resp['data'] ?? []));
 
         return new \WP_REST_Response([
-            'success'    => true,
-            'jwt'        => $jwt,
-            'expires_at' => $expires_at,
+            'success'        => true,
+            'jwt_expires_at' => (int) get_option('pi_api_jwt_expires_at', 0),
         ], 200);
     }
 
@@ -198,7 +191,7 @@ class Pi_Api_License {
             ], 400);
         }
 
-        if (\PiApi\Settings::getLicenseKey() === '') {
+        if (\PiApi\Core\Settings::getLicenseKey() === '') {
             return new \WP_REST_Response([
                 'success' => false,
                 'message' => 'Không có license để chuyển.',
@@ -223,7 +216,7 @@ class Pi_Api_License {
     }
 
     public static function get_usage() {
-        $tier = \PiApi\Settings::getTier();
+        $tier = \PiApi\Core\Settings::getTier();
         $limits = self::limits_for_tier($tier);
 
         $ai_used = (int) get_option('pi_ai_cloud_tokens_used_month', 0);

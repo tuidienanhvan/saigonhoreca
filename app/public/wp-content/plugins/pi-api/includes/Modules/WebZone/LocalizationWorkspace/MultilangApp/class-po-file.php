@@ -189,35 +189,116 @@ class Pi_Multilang_PO_File {
     }
 
     /**
+     * Trích xuất các format specifier printf: %s, %d, %1$s, %2$d, etc.
+     */
+    public static function extract_format_specifiers($text) {
+        $clean = str_replace('%%', '', (string) $text);
+        if (!preg_match_all('/%(?:\d+\$)?[+-]?(?:0|\'.)?-?\d*(?:\.\d+)?[bcdeEfFgGosuxX]/', $clean, $matches)) {
+            return [];
+        }
+        return $matches[0];
+    }
+
+    /**
+     * Xác thực format specifiers giữa msgid và msgstr.
+     * Trả về true nếu hợp lệ, WP_Error nếu có lỗi.
+     */
+    public static function validate_format_specifiers($msgid, $msgstr) {
+        if ($msgstr === '' || $msgstr === null) return true;
+        $src_specs = self::extract_format_specifiers($msgid);
+        $dst_specs = self::extract_format_specifiers($msgstr);
+
+        sort($src_specs);
+        sort($dst_specs);
+
+        if ($src_specs !== $dst_specs) {
+            return new WP_Error(
+                'invalid_format_specifiers',
+                sprintf(
+                    'Format specifiers không khớp: nguồn có [%s], bản dịch có [%s]. Sẽ gây fatal error trong sprintf().',
+                    implode(', ', $src_specs),
+                    implode(', ', $dst_specs)
+                )
+            );
+        }
+        return true;
+    }
+
+    /**
+     * Đổi msgstr cho nhiều entry cùng lúc (batch update).
+     * Sắp xếp theo dòng giảm dần (reverse line order) và splice,
+     * sau đó chỉ parse lại ĐÚNG 1 LẦN cuối cùng để đạt O(N+M) thay vì O(N*M).
+     *
+     * @param array $pairs [key => new_value] hoặc [key => ['value' => ..., 'index' => 0]]
+     * @return int|WP_Error Số lượng entry đã thay đổi, hoặc WP_Error nếu có lỗi validation
+     */
+    public function set_msgstrs_batch(array $pairs) {
+        if (!$this->loaded) return 0;
+
+        $key_map = [];
+        foreach ($this->entries as $entry_idx => $e) {
+            if ($e['msgid'] === null || $e['msgid'] === '') continue;
+            $k = self::make_key($e['msgid'], $e['msgctxt']);
+            $key_map[$k] = $entry_idx;
+        }
+
+        $plan = [];
+        foreach ($pairs as $key => $item) {
+            if (!isset($key_map[$key])) continue;
+            $new_val = is_array($item) ? ($item['value'] ?? '') : (string) $item;
+            $index   = is_array($item) ? (int) ($item['index'] ?? 0) : 0;
+
+            $e = $this->entries[$key_map[$key]];
+            if (!isset($e['msgstr'][$index])) continue;
+
+            $slot = $e['msgstr'][$index];
+            if ($slot['value'] === $new_val) continue;
+
+            $valid = self::validate_format_specifiers($e['msgid'], $new_val);
+            if (is_wp_error($valid)) {
+                return $valid;
+            }
+
+            $label    = $slot['indexed'] ? 'msgstr[' . $index . ']' : 'msgstr';
+            $new_line = $label . ' "' . self::encode($new_val) . '"';
+
+            $plan[] = [
+                'start'    => $slot['start'],
+                'end'      => $slot['end'],
+                'new_line' => $new_line,
+            ];
+        }
+
+        if (empty($plan)) return 0;
+
+        // Sắp xếp ngược: dòng cao xử lý trước để không làm lệch chỉ số dòng thấp
+        usort($plan, function ($a, $b) {
+            return $b['start'] <=> $a['start'];
+        });
+
+        foreach ($plan as $p) {
+            array_splice(
+                $this->lines,
+                $p['start'],
+                $p['end'] - $p['start'] + 1,
+                [$p['new_line']]
+            );
+        }
+
+        $this->parse();
+        $this->dirty = true;
+
+        return count($plan);
+    }
+
+    /**
      * Đổi msgstr của đúng một entry. Trả về true nếu file đã được sửa,
      * false nếu không tìm thấy entry hoặc giá trị không đổi.
      */
     public function set_msgstr($key, $new_value, $index = 0) {
-        if (!$this->loaded) return false;
-
-        foreach ($this->entries as $e) {
-            if ($e['msgid'] === null || $e['msgid'] === '') continue;
-            if (self::make_key($e['msgid'], $e['msgctxt']) !== $key) continue;
-            if (!isset($e['msgstr'][$index])) return false;
-
-            $slot = $e['msgstr'][$index];
-            if ($slot['value'] === $new_value) return false; // không đổi -> không ghi
-
-            $label   = $slot['indexed'] ? 'msgstr[' . $index . ']' : 'msgstr';
-            $new_line = $label . ' "' . self::encode($new_value) . '"';
-
-            array_splice(
-                $this->lines,
-                $slot['start'],
-                $slot['end'] - $slot['start'] + 1,
-                [$new_line]
-            );
-
-            $this->parse();   // offset dòng đã đổi -> parse lại để giữ nhất quán
-            $this->dirty = true;
-            return true;
-        }
-        return false;
+        $res = $this->set_msgstrs_batch([$key => ['value' => $new_value, 'index' => $index]]);
+        if (is_wp_error($res)) return false;
+        return $res > 0;
     }
 
     public function is_dirty() {
@@ -251,7 +332,7 @@ class Pi_Multilang_PO_File {
                 case 'r': return "\r";
                 case '"': return '"';
                 case '\\': return '\\';
-                default:  return $m[1];
+                default:  return $m[0]; // Giữ nguyên ký tự escape không xác định thay vì nuốt mất backslash
             }
         }, (string) $s);
     }
