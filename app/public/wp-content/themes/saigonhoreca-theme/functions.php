@@ -1,10 +1,15 @@
 <?php
-if (!function_exists('is_plugin_active')) {
-    require_once ABSPATH . 'wp-admin/includes/plugin.php';
-}
-if (!is_plugin_active('pi-multilang/pi-multilang.php')) {
-    activate_plugin('pi-multilang/pi-multilang.php');
-}
+// 2026-08-29 — BỎ đoạn tự bật lại plugin pi-multilang ở đây.
+//
+// Đoạn cũ gọi activate_plugin('pi-multilang/pi-multilang.php') mỗi request nếu
+// thấy plugin đang tắt, nên plugin KHÔNG THỂ tắt được: tắt trong wp-admin xong
+// tải lại trang là nó bật lại. Đa ngôn ngữ nay do pi-api phục vụ
+// (includes/Modules/WebZone/ContentWorkspace/MultilangApp/), và cả hai cùng
+// khai báo class Pi_Multilang_* — để nguyên đoạn này là fatal
+// "Cannot redeclare class Pi_Multilang_Core" trên mọi request.
+//
+// Theme cũng không phải chỗ bật/tắt plugin: activate_plugin() còn chạy cả hook
+// kích hoạt, ngay giữa lúc theme đang nạp.
 /**
  * Saigon Horeca Theme Functions
  *
@@ -39,34 +44,6 @@ if (!function_exists('mb_strlen')) {
 
 require get_template_directory() . '/inc/engine/update-blocker.php';
 
-/**
- * ── Performance: Disable Emojis & oEmbed ────────────────────
- * Removes unused CSS and JS from frontend (saves ~20 KiB + 1 request)
- */
-add_action('init', function() {
-    // Emojis
-    remove_action('wp_head', 'print_emoji_detection_script', 7);
-    remove_action('admin_print_scripts', 'print_emoji_detection_script');
-    remove_action('wp_print_styles', 'print_emoji_styles');
-    remove_action('admin_print_styles', 'print_emoji_styles');
-    remove_filter('the_content_feed', 'wp_staticize_emoji');
-    remove_filter('comment_text_rss', 'wp_staticize_emoji');
-    remove_filter('wp_mail', 'wp_staticize_emoji_for_email');
-    add_filter('tiny_mce_plugins', function($plugins) { return is_array($plugins) ? array_diff($plugins, ['wpemoji']) : []; });
-    add_filter('wp_resource_hints', function($hints, $relation_type) {
-        if ('dns-prefetch' === $relation_type) {
-            $hints = array_diff($hints, ['//s.w.org']);
-        }
-        return $hints;
-    }, 10, 2);
-
-    // oEmbed
-    remove_action('wp_head', 'wp_oembed_add_discovery_links');
-    remove_action('wp_head', 'wp_oembed_add_host_js');
-    add_filter('embed_oembed_discover', '__return_false');
-    remove_filter('oembed_dataparse', 'wp_filter_oembed_result', 10);
-}, 1);
-
 // ============================================================================
 // 1. THEME SETUP
 // ============================================================================
@@ -85,7 +62,12 @@ function saigonhouse_setup() {
         'height' => 80, 'width' => 200, 'flex-height' => true, 'flex-width' => true,
     ]);
     add_theme_support('site-icon');
-    add_editor_style('assets/css/utilities.css');
+    // Trỏ vào bundle đã build, KHÔNG phải assets/css/utilities.css — file đó không
+    // tồn tại (tàn dư cấu trúc CSS cũ trước đợt gom vào core/entrypoints/dist).
+    // add_editor_style() với đường dẫn sai không báo lỗi gì cả, nó chỉ im lặng
+    // không nạp, nên trình soạn thảo block đã mất style theme suốt từ lúc đổi
+    // cấu trúc mà không ai thấy.
+    add_editor_style('assets/css/dist/theme.css');
     register_nav_menus([
         'primary'      => __('Primary Menu', 'saigonhoreca'),
         'sidebar_menu' => __('Sidebar — Tiện Ích Nổi Bật', 'saigonhoreca'),
@@ -154,6 +136,9 @@ function sh_footer_has_widgets(): bool {
 // Load the Sidebar Menu Walker (depends on sh_icon())
 require_once get_template_directory() . '/inc/engine/class-sidebar-walker.php';
 
+// Remove Category Base & 301 Canonical Permalinks
+require_once get_template_directory() . '/inc/engine/category-base-remover.php';
+
 /**
  * Auto-enforce permalink structure on theme activation.
  * Fires ONCE when the theme is switched to. Also runs if the structure is missing.
@@ -201,9 +186,6 @@ add_action('admin_init', function () {
 // (2026-08-02: bỏ tham chiếu pi-dashboard-v2 — plugin đó chưa từng được cài trên site này.)
 // The old inc/config/pi-colors.php filter was removed (duplicated plugin theme).
 
-// Page Section Registry: editable sections for each page template
-require_once __DIR__ . '/inc/config/section-registry.php';
-
 // Allow comments without login
 add_filter('pre_option_comment_registration', '__return_zero');
 
@@ -217,16 +199,16 @@ add_filter('use_block_editor_for_post_type', '__return_false');
  * Saigonhoreca page templates orchestrate template-parts/{about,contact}/*
  * — each section extracted from the production scrape. Each template
  * triggers its own per-route Tailwind v4 bundle via inc/core/enqueue.php:
- *   page-gioi-thieu.php → theme-about.css
- *   page-lien-he.php    → theme-contact.css
+ *   page-about.php → theme-about.css
+ *   page-contact.php    → theme-contact.css
  *
  * Saigonhouse construction page templates (Báo Giá Kiến Trúc, Bảng Giá,
  * Portfolio Kiến Trúc, Dự Toán) do not apply to a horeca business and
  * are intentionally absent.
  */
 add_filter('theme_page_templates', function ($templates) {
-    $templates['page-templates/page-gioi-thieu.php'] = 'Giới Thiệu (Về Saigon Horeca)';
-    $templates['page-templates/page-lien-he.php']    = 'Liên Hệ';
+    $templates['page-templates/page-about.php'] = 'Giới Thiệu (Về Saigon Horeca)';
+    $templates['page-templates/page-contact.php']    = 'Liên Hệ';
     return $templates;
 });
 
@@ -270,6 +252,7 @@ require $inc . 'engine/bot-optimize.php';      // sgh_is_bot() — bots/Lighthou
 require $inc . 'engine/slug-map.php';          // Bilingual slug map (vi ↔ en) + counterpart URL switcher
                                                //   ⟵ CẦN routes.php: sgh_bilingual_slug_map()
                                                //   Cung cấp: sgh_slug(), sgh_url(), filter 'locale'
+require $inc . 'engine/home-multilang.php';     // Multilingual Home & UI Translation Engine (VI, EN, JA)
 require $inc . 'engine/pillar-routes.php';     // Auto-route /du-an/<slug>/ to single-project/<slug>.php
                                                //   ⟵ CẦN slug-map.php (sgh_slug) — bắt URI theo slug
                                                //      ngôn ngữ hiện tại; nạp trước thì route ảo hỏng.
@@ -395,7 +378,6 @@ if (is_admin() || wp_doing_ajax() || $is_rest_api) {
     // Guarded so a missing optional module never fatals wp-admin / ajax / REST
     // (a bare require of an absent file 500s every /wp-json/pi/* call + wp-admin).
     foreach ([
-        'site/admin/front-page-meta.php',     // Homepage section metabox
         'site/admin/dashboard-class.php',     // SGH_Dashboard class (SGH-specific stats)
         'site/admin/dashboard-menu-def.php',  // sgh_dashboard_get_menu_definition() — brand menu tree
         'site/admin/sync/sync-setup.php',     // Favicons, menu sync
@@ -519,16 +501,7 @@ require $inc . 'engine/query-mods.php';
 // 5. CONTENT FILTERS
 // ============================================================================
 
-// Redirect /tin-tuc/ → /category/tin-tuc/ (đồng bộ layout với category archive)
-add_action('template_redirect', function () {
-    $uri = strtok($_SERVER['REQUEST_URI'] ?? '', '?');
-    $uri = '/' . trim((string) $uri, '/') . '/';
-    if ($uri === '/tin-tuc/' || strpos($uri, '/tin-tuc/page/') === 0) {
-        $target = str_replace('/tin-tuc/', '/category/tin-tuc/', $uri);
-        wp_safe_redirect(home_url($target), 301);
-        exit;
-    }
-}, 1);
+// (Đã loại bỏ template_redirect /tin-tuc/ -> /category/tin-tuc/ vì xung đột 301 loop với category-base-remover)
 
 require $inc . 'engine/markdown-filters.php';
 require $inc . 'site/tools/clean-elementor-posts.php'; // Admin-only ?sgh_clean_elementor=1
@@ -686,3 +659,22 @@ add_filter('the_content', static function ($content) {
         '</h6>' => '</h3>',
     ]);
 }, 20);
+
+/**
+ * Multilingual Route Aliases Helper
+ * Ensures legacy long aliases like /ja/contact-saigon-horeca/ redirect cleanly to canonical short clean URLs.
+ */
+add_action('template_redirect', static function () {
+    $uri = isset($_SERVER['REQUEST_URI']) ? strtok($_SERVER['REQUEST_URI'], '?') : '';
+    $aliases = [
+        '/ja/contact-saigon-horeca/' => '/ja/contact/',
+        '/ja/contact-saigon-horeca'  => '/ja/contact/',
+        '/ja/about-saigon-horeca/'   => '/ja/about/',
+        '/ja/about-saigon-horeca'    => '/ja/about/',
+    ];
+    if (isset($aliases[$uri])) {
+        wp_safe_redirect(home_url($aliases[$uri]), 301);
+        exit;
+    }
+}, 5);
+
