@@ -30,8 +30,17 @@ if (!function_exists('sgh_is_english_site')) {
     }
 }
 
-// Auto-switch locale: .com → en_US, .vn/.local → vi
+// Auto-switch locale: /ja/ → ja, /en/ or .com → en_US, else vi
 add_filter('locale', function ($locale) {
+    if (function_exists('sgh_get_current_lang')) {
+        $cur = sgh_get_current_lang();
+        if ($cur === 'ja') return 'ja';
+        if ($cur === 'en') return 'en_US';
+    } else {
+        $uri = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '';
+        if (preg_match('#^/ja(/|$)#', $uri)) return 'ja';
+        if (preg_match('#^/en(/|$)#', $uri)) return 'en_US';
+    }
     $host = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : '';
     return substr($host, -4) === '.com' ? 'en_US' : 'vi';
 });

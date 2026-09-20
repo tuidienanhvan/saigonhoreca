@@ -26,6 +26,37 @@ if ($news_cat) {
 }
 $q = new WP_Query($args);
 if (!$q->have_posts()) return;
+$lang = function_exists('sgh_get_current_lang') ? sgh_get_current_lang() : 'vi';
+
+$news_eyebrow = [
+    'vi' => 'News',
+    'en' => 'Insights & News',
+    'ja' => 'ニュース ＆ トピックス',
+][$lang] ?? 'News';
+
+$news_title_main = [
+    'vi' => 'Tin tức',
+    'en' => 'Latest',
+    'ja' => '最新の',
+][$lang] ?? 'Latest';
+
+$news_title_accent = [
+    'vi' => 'mới',
+    'en' => 'News',
+    'ja' => 'お知らせ',
+][$lang] ?? 'News';
+
+$news_view_all = [
+    'vi' => 'Xem tất cả',
+    'en' => 'View all',
+    'ja' => 'すべて見る',
+][$lang] ?? 'View all';
+
+$news_readmore = [
+    'vi' => 'Đọc chi tiết',
+    'en' => 'Read more',
+    'ja' => '詳細を読む',
+][$lang] ?? 'Read more';
 ?>
 <section class="sh-latest-news">
   <div class="sh-latest-news__inner">
@@ -33,10 +64,10 @@ if (!$q->have_posts()) return;
   <div class="sh-latest-news__glow sh-latest-news__glow--a" aria-hidden="true"></div>
   <div class="sh-latest-news__glow sh-latest-news__glow--b" aria-hidden="true"></div>
   <svg class="sh-latest-news__bg-signal" viewBox="0 0 200 200" fill="none" aria-hidden="true">
-  <circle cx="100" cy="100" r="30" stroke="currentColor" stroke-width="1"/>
-  <circle cx="100" cy="100" r="60" stroke="currentColor" stroke-width="1"/>
-  <circle cx="100" cy="100" r="90" stroke="currentColor" stroke-width="1"/>
-  <path d="M100 6 L100 26 M100 174 L100 194 M6 100 L26 100 M174 100 L194 100" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+  <circle cx="100" cy="100" r="80" stroke="currentColor" stroke-width="1" stroke-dasharray="4 6" opacity="0.3"/>
+  <circle cx="100" cy="100" r="50" stroke="currentColor" stroke-width="1" stroke-dasharray="2 4" opacity="0.5"/>
+  <line x1="100" y1="10" x2="100" y2="190" stroke="currentColor" stroke-width="0.75" opacity="0.25"/>
+  <line x1="10" y1="100" x2="190" y2="100" stroke="currentColor" stroke-width="0.75" opacity="0.25"/>
   </svg>
   <svg class="sh-latest-news__frame" viewBox="0 0 100 100" preserveAspectRatio="none" fill="none" aria-hidden="true">
   <path d="M 0 12 L 0 0 L 12 0" stroke="currentColor" stroke-width="1"/>
@@ -47,13 +78,13 @@ if (!$q->have_posts()) return;
   <div class="sh-latest-news__heading">
   <span class="sh-latest-news__eyebrow">
   <svg class="sh-latest-news__sparkle" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2L14.85 9.15L22 12L14.85 14.85L12 22L9.15 14.85L2 12L9.15 9.15L12 2Z"/></svg>
-  <?php esc_html_e('News', 'saigonhoreca'); ?>
+  <?php echo esc_html($news_eyebrow); ?>
   </span>
   <span class="sh-latest-news__rule" aria-hidden="true"></span>
-  <h2 class="sh-latest-news__title"><?php esc_html_e('Tin tức', 'saigonhoreca'); ?> <span class="sh-latest-news__title-accent"><?php esc_html_e('mới', 'saigonhoreca'); ?></span></h2>
+  <h2 class="sh-latest-news__title"><?php echo esc_html($news_title_main); ?> <span class="sh-latest-news__title-accent"><?php echo esc_html($news_title_accent); ?></span></h2>
   </div>
   <a href="<?php echo esc_url(sgh_url('news')); ?>" class="sh-latest-news__view-all">
-  <span><?php esc_html_e('Xem tất cả', 'saigonhoreca'); ?></span>
+  <span><?php echo esc_html($news_view_all); ?></span>
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
   <path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
   </svg>
@@ -82,7 +113,7 @@ if (!$q->have_posts()) return;
   <?php if (has_excerpt()) : ?>
   <p class="sh-latest-news__excerpt"><?php echo esc_html(wp_strip_all_tags(get_the_excerpt())); ?></p>
   <?php endif; ?>
-  <span class="sh-latest-news__readmore"><?php esc_html_e('Đọc chi tiết', 'saigonhoreca'); ?></span>
+  <span class="sh-latest-news__readmore"><?php echo esc_html($news_readmore); ?></span>
   </div>
   </a>
   </article>
