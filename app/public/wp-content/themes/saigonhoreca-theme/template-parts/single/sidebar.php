@@ -16,7 +16,7 @@ if (!defined('ABSPATH')) exit;
 
 $hotline    = get_theme_mod('saigonhouse_hotline', '0901 304 365');
 $hotline_t  = preg_replace('/[^0-9+]/', '', (string) $hotline);
-$contact    = apply_filters('sh_sidebar_contact_url', home_url('/lien-he'));
+$contact    = apply_filters('sh_sidebar_contact_url', function_exists('sgh_url') ? sgh_url('contact') : home_url('/lien-he'));
 
 $current_id = get_the_ID();
 $ptype      = get_post_type($current_id);
@@ -24,8 +24,9 @@ $is_product = ($ptype === 'product');
 
 $lang = function_exists('sgh_get_current_lang') ? sgh_get_current_lang() : 'vi';
 
-// Storage key cho widget "Đã xem" — phân tách post vs product để không lẫn.
-$viewed_storage_key = $is_product ? 'sgh:viewed-products' : 'sgh:viewed-posts';
+// Storage key cho widget "Đã xem" — phân tách post vs product và ngôn ngữ để không lẫn tiêu đề.
+$viewed_storage_key = ($is_product ? 'sgh:viewed-products' : 'sgh:viewed-posts') . ':' . $lang;
+$viewed_badge       = ['vi' => 'Đang xem', 'en' => 'Now viewing', 'ja' => '閲覧中'][$lang] ?? 'Now viewing';
 $viewed_label       = $is_product
     ? (['vi' => 'Sản phẩm vừa xem', 'en' => 'Recently Viewed Products', 'ja' => '最近閲覧した製品'][$lang] ?? 'Recently Viewed Products')
     : (['vi' => 'Bài đã xem', 'en' => 'Recently Viewed Posts', 'ja' => '最近読んだ記事'][$lang] ?? 'Recently Viewed Posts');
@@ -111,7 +112,8 @@ $feat_title  = ['vi' => 'Sản phẩm nổi bật', 'en' => 'Featured Products',
          data-current-title="<?php echo esc_attr($current_title); ?>"
          data-current-url="<?php echo esc_url($current_url); ?>"
          data-current-thumb="<?php echo esc_url($current_thumb_url); ?>"
-         data-storage-key="<?php echo esc_attr($viewed_storage_key); ?>">
+         data-storage-key="<?php echo esc_attr($viewed_storage_key); ?>"
+         data-badge-viewing="<?php echo esc_attr($viewed_badge); ?>">
         <h3 class="sh-filter-block__title"><?php echo esc_html($viewed_label); ?></h3>
         <ul class="sh-sidebar-viewed__list" aria-live="polite"></ul>
         <p class="sh-sidebar-viewed__empty"><?php echo esc_html($viewed_empty); ?></p>
@@ -160,16 +162,65 @@ $feat_title  = ['vi' => 'Sản phẩm nổi bật', 'en' => 'Featured Products',
     <?php endif; ?>
 
     <?php
-    // ── Danh mục — DƯỚI CÙNG vì dài
+    // ── Danh mục — Gọn gàng trên trang đơn, không render 18.000px cây danh mục của archive
     if ($is_product) {
-        // Product: hierarchical từ archive-product filter-sidebar (giữ design đồng bộ /san-pham/)
-        get_template_part('template-parts/archive-product/filter-sidebar');
+        $cat_tax = taxonomy_exists('product_category') ? 'product_category' : (taxonomy_exists('product_cat') ? 'product_cat' : '');
+        $prod_cats = [];
+        if ($cat_tax) {
+            $current_terms = wp_get_post_terms($current_id, $cat_tax);
+            $parent_id = (!is_wp_error($current_terms) && !empty($current_terms)) ? (int)$current_terms[0]->parent : 0;
+            $prod_cats = get_terms([
+                'taxonomy'   => $cat_tax,
+                'hide_empty' => true,
+                'parent'     => $parent_id,
+                'number'     => 8,
+                'orderby'    => 'count',
+                'order'      => 'DESC',
+            ]);
+            if (empty($prod_cats) || is_wp_error($prod_cats)) {
+                $prod_cats = get_terms([
+                    'taxonomy'   => $cat_tax,
+                    'hide_empty' => true,
+                    'number'     => 8,
+                    'orderby'    => 'count',
+                    'order'      => 'DESC',
+                ]);
+            }
+        }
+        $cat_title = ['vi' => 'Danh mục liên quan', 'en' => 'Related Categories', 'ja' => '関連カテゴリー'][$lang] ?? 'Related Categories';
+        $view_all_lbl = ['vi' => 'Xem tất cả sản phẩm', 'en' => 'Explore All Products', 'ja' => 'すべての製品を見る'][$lang] ?? 'Explore All Products';
+        $all_products_url = function_exists('sgh_url') ? sgh_url('products') : home_url('/san-pham/');
+        if (!empty($prod_cats) && !is_wp_error($prod_cats)) : ?>
+            <div class="sh-filter-block sh-sidebar-categories">
+                <h3 class="sh-filter-block__title"><?php echo esc_html($cat_title); ?></h3>
+                <ul class="sh-filter-block__list">
+                    <?php foreach ($prod_cats as $c) : 
+                        $c_name = function_exists('sgh_translate_term_name') ? sgh_translate_term_name($c->name, $cat_tax, $lang) : $c->name;
+                        $c_link = get_term_link($c);
+                    ?>
+                        <li class="sh-filter-block__item sh-filter-block__item--depth-0">
+                            <a href="<?php echo esc_url($c_link); ?>">
+                                <span><?php echo esc_html($c_name); ?></span>
+                                <span class="sh-filter-block__count">(<?php echo (int) $c->count; ?>)</span>
+                            </a>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+                <div class="sh-sidebar-categories__footer" style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--color-border-subtle, #262626);">
+                    <a href="<?php echo esc_url($all_products_url); ?>" class="sh-sidebar-categories__all-link" style="display: inline-flex; align-items: center; gap: 0.375rem; font-size: 0.8125rem; color: var(--color-primary, #d97706); font-weight: 500; text-decoration: none;">
+                        <span><?php echo esc_html($view_all_lbl); ?></span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+            </div>
+        <?php endif;
     } else {
         // Post: flat list category bài viết, sort by count desc
-        $post_cats = get_categories(['hide_empty' => true, 'orderby' => 'count', 'order' => 'DESC']);
+        $post_cats = get_categories(['hide_empty' => true, 'orderby' => 'count', 'order' => 'DESC', 'number' => 8]);
+        $news_cat_title = ['vi' => 'Danh mục tin tức', 'en' => 'News Categories', 'ja' => 'ニュースカテゴリー'][$lang] ?? 'News Categories';
         if (!empty($post_cats) && !is_wp_error($post_cats)) : ?>
             <div class="sh-filter-block">
-                <h3 class="sh-filter-block__title"><?php _e('Danh mục tin tức', 'saigonhoreca'); ?></h3>
+                <h3 class="sh-filter-block__title"><?php echo esc_html($news_cat_title); ?></h3>
                 <ul class="sh-filter-block__list">
                     <?php foreach ($post_cats as $c) : ?>
                         <li class="sh-filter-block__item sh-filter-block__item--depth-0">
@@ -193,6 +244,7 @@ $feat_title  = ['vi' => 'Sản phẩm nổi bật', 'en' => 'Featured Products',
     var block = document.querySelector('.sh-sidebar-viewed');
     if (!block) return;
     var KEY = block.dataset.storageKey;
+    var badgeLabel = block.dataset.badgeViewing || 'Now viewing';
     var MAX = 6;
     var currentId    = parseInt(block.dataset.currentId || '0', 10);
     var currentTitle = block.dataset.currentTitle || '';
@@ -237,7 +289,7 @@ $feat_title  = ['vi' => 'Sản phẩm nổi bật', 'en' => 'Featured Products',
             
         var titleHtml = '<span class="sh-sidebar-viewed__body">'
             + '<span class="sh-sidebar-viewed__title">' + esc(p.title) + '</span>'
-            + (isCurrent ? '<span class="sh-sidebar-viewed__badge">Đang xem</span>' : '')
+            + (isCurrent ? '<span class="sh-sidebar-viewed__badge">' + esc(badgeLabel) + '</span>' : '')
             + '</span>';
 
         return '<li class="' + itemClass + '">'

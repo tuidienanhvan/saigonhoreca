@@ -338,6 +338,10 @@ class Pi_Multilang_Content {
      */
     public static function filter_content($content) {
         $v = self::value_for((int) get_the_ID(), 'content');
+        if ($v !== null && (str_contains($v, '[div') || str_contains($v, '[/div]'))) {
+            $v = preg_replace('/\[div(\s+[^\]]*)?\]/i', '<div$1>', $v);
+            $v = str_ireplace('[/div]', '</div>', $v);
+        }
         return $v === null ? $content : $v;
     }
 

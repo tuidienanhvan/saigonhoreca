@@ -22,10 +22,14 @@ $brand_url  = (!is_wp_error($brands) && !empty($brands)) ? get_term_link($brands
 $cat_name   = (!is_wp_error($pcats) && !empty($pcats)) ? $pcats[0]->name : '';
 $cat_url    = (!is_wp_error($pcats) && !empty($pcats)) ? get_term_link($pcats[0]) : '';
 
-// Hotline
+$lang          = function_exists('sgh_get_current_lang') ? sgh_get_current_lang() : 'vi';
 $hotline       = get_theme_mod('saigonhouse_hotline', '0901 304 365');
 $hotline_clean = preg_replace('/[^0-9+]/', '', (string) $hotline);
 $zalo_url      = 'https://zalo.me/' . $hotline_clean;
+$consult_url   = ($lang === 'vi') ? $zalo_url : ('tel:' . $hotline_clean);
+$consult_sub   = ($lang === 'vi') 
+    ? ('Hotline / Zalo: ' . $hotline)
+    : (($lang === 'ja') ? ('ホットライン: ' . $hotline) : ('Hotline / Phone: ' . $hotline));
 
 // Clean Sapo / Excerpt
 $raw_excerpt = get_the_excerpt($post_id);
@@ -41,8 +45,6 @@ $clean_excerpt = str_replace(
 );
 
 // Trích xuất quốc gia xuất xứ từ content hoặc brand
-$lang = function_exists('sgh_get_current_lang') ? sgh_get_current_lang() : 'vi';
-
 $origin = sgh_t('product_origin_default');
 if (stripos($raw_excerpt, 'Đức') !== false || stripos($raw_excerpt, 'Germany') !== false) {
     $origin = ['vi' => 'Đức (Germany)', 'en' => 'Germany', 'ja' => 'ドイツ (Germany)'][$lang] ?? 'Germany';
@@ -86,21 +88,36 @@ if (stripos($raw_excerpt, 'Đức') !== false || stripos($raw_excerpt, 'Germany'
         <!-- Trust Badges Strip (3 cam kết cốt lõi) -->
         <div class="sh-product-hero__trust-strip">
             <div class="sh-product-hero__trust-item">
-                <span class="sh-product-hero__trust-icon"><?php echo sh_icon('shield', 'w-5 h-5'); ?></span>
+                <div class="sh-product-hero__trust-icon-box">
+                    <svg class="sh-product-hero__trust-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="22" height="22" aria-hidden="true">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        <path d="m9 12 2 2 4-4"/>
+                    </svg>
+                </div>
                 <div class="sh-product-hero__trust-text">
                     <strong><?php echo esc_html(sgh_t('product_trust_genuine_title')); ?></strong>
                     <span><?php echo esc_html(sgh_t('product_trust_genuine_desc')); ?></span>
                 </div>
             </div>
             <div class="sh-product-hero__trust-item">
-                <span class="sh-product-hero__trust-icon"><?php echo sh_icon('award', 'w-5 h-5'); ?></span>
+                <div class="sh-product-hero__trust-icon-box">
+                    <svg class="sh-product-hero__trust-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="22" height="22" aria-hidden="true">
+                        <circle cx="12" cy="8" r="6"/>
+                        <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
+                        <path d="m9 8 2 2 4-4"/>
+                    </svg>
+                </div>
                 <div class="sh-product-hero__trust-text">
                     <strong><?php echo esc_html(sgh_t('product_trust_warranty_title')); ?></strong>
                     <span><?php echo esc_html(sgh_t('product_trust_warranty_desc')); ?></span>
                 </div>
             </div>
             <div class="sh-product-hero__trust-item">
-                <span class="sh-product-hero__trust-icon"><?php echo sh_icon('zap', 'w-5 h-5'); ?></span>
+                <div class="sh-product-hero__trust-icon-box">
+                    <svg class="sh-product-hero__trust-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="22" height="22" aria-hidden="true">
+                        <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/>
+                    </svg>
+                </div>
                 <div class="sh-product-hero__trust-text">
                     <strong><?php echo esc_html(sgh_t('product_trust_install_title')); ?></strong>
                     <span><?php echo esc_html(sgh_t('product_trust_install_desc')); ?></span>
@@ -178,11 +195,11 @@ if (stripos($raw_excerpt, 'Đức') !== false || stripos($raw_excerpt, 'Germany'
                 </span>
             </a>
 
-            <a href="<?php echo esc_url($zalo_url); ?>" target="_blank" rel="noopener noreferrer" class="sh-product-hero__cta-btn sh-product-hero__cta-btn--secondary">
+            <a href="<?php echo esc_url($consult_url); ?>" <?php echo ($lang === 'vi') ? 'target="_blank" rel="noopener noreferrer"' : ''; ?> class="sh-product-hero__cta-btn sh-product-hero__cta-btn--secondary">
                 <span class="sh-product-hero__cta-icon"><?php echo sh_icon('phone-call', 'w-5 h-5'); ?></span>
                 <span class="sh-product-hero__cta-content">
                     <strong><?php echo esc_html(sgh_t('product_cta_consult_title')); ?></strong>
-                    <small>Hotline / Zalo: <?php echo esc_html($hotline); ?></small>
+                    <small><?php echo esc_html($consult_sub); ?></small>
                 </span>
             </a>
 
