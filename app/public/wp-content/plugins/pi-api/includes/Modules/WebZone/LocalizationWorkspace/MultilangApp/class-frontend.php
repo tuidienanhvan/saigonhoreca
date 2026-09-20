@@ -41,28 +41,38 @@ class Pi_Multilang_Frontend {
         // Bài/trang đơn đã qua router phân giải (có p hoặc page_id) không bị chặn
         if ($query->is_singular() || !empty($query->get('p')) || !empty($query->get('page_id'))) return;
 
-        $meta_query = $query->get('meta_query');
-        if (!is_array($meta_query)) $meta_query = [];
-
+        // Ngôn ngữ gốc (tiền tố rỗng, ví dụ 'vi' trên local hoặc 'vi' trên .vn):
+        // Toàn bộ bài viết trong DB mặc định thuộc về ngôn ngữ gốc.
         $cur_lang = PI_CURRENT_LANGUAGE;
-        $mq = [
-            'relation' => 'OR',
-            ['key' => 'pi_language', 'value' => $cur_lang, 'compare' => '='],
-            ['key' => 'pi_language', 'compare' => 'NOT EXISTS'],
-            ['key' => '_pi_tr_' . $cur_lang . '_title', 'compare' => 'EXISTS'],
-        ];
-
-        if (empty($meta_query)) {
-            $meta_query = $mq;
-        } else {
-            $meta_query = [
-                'relation' => 'AND',
-                $meta_query,
-                $mq
-            ];
+        $config   = class_exists('Pi_Multilang_Core') ? Pi_Multilang_Core::get_language_config() : [];
+        $is_root  = empty($config[$cur_lang]['path_prefix']) || $cur_lang === 'vi';
+        if ($is_root) {
+            return;
         }
 
-        $query->set('meta_query', $meta_query);
+        // Với ngôn ngữ thứ cấp (en, ja): chỉ loại trừ bài viết ĐÃ gắn thẻ ngôn ngữ khác (Gen 1)
+        // và KHÔNG có bản dịch Gen 2 cho ngôn ngữ hiện tại.
+        // Dùng post__not_in để tránh cartesian join (LEFT JOIN NOT EXISTS) làm treo CSDL (154s -> 0.02s).
+        global $wpdb;
+        $excluded = $wpdb->get_col($wpdb->prepare("
+            SELECT m.post_id 
+            FROM {$wpdb->postmeta} m
+            LEFT JOIN {$wpdb->postmeta} tr 
+              ON m.post_id = tr.post_id AND tr.meta_key = %s
+            WHERE m.meta_key = 'pi_language' 
+              AND m.meta_value != %s 
+              AND m.meta_value != ''
+              AND tr.post_id IS NULL
+        ", '_pi_tr_' . $cur_lang . '_title', $cur_lang));
+
+        if (!empty($excluded)) {
+            $existing = $query->get('post__not_in');
+            if (is_array($existing)) {
+                $query->set('post__not_in', array_unique(array_merge($existing, $excluded)));
+            } else {
+                $query->set('post__not_in', $excluded);
+            }
+        }
     }
 
     /**
