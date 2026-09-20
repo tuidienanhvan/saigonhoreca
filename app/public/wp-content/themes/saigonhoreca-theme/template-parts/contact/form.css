@@ -201,41 +201,68 @@
 
 .sh-contact-form__social-links {
   display: flex;
-  gap: 0.75rem;
+  align-items: center;
+  gap: 0.85rem;
 }
 
 .sh-contact-form__social-btn {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2.6rem;
-  height: 2.6rem;
+  width: 2.75rem;
+  height: 2.75rem;
   border-radius: var(--radius-full);
-  background: rgba(255, 255, 255, 0.015);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  color: var(--color-content-dim);
-  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.3s var(--ease-spring), box-shadow 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: transform 0.3s var(--ease-spring), box-shadow 0.3s ease, filter 0.3s ease;
+  text-decoration: none;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  flex-shrink: 0;
 }
 
 .sh-contact-form__social-btn svg {
-  width: 1.05rem;
-  height: 1.05rem;
-}
-
-.sh-contact-form__social-btn img {
-  width: 1.15rem;
-  height: 1.15rem;
-  border-radius: var(--radius-full);
-  object-fit: contain;
   display: block;
+  transition: transform 0.25s ease;
 }
 
 .sh-contact-form__social-btn:hover {
-  background: linear-gradient(135deg, var(--color-primary) 0%, #ffd166 100%);
-  color: #0a0a0a;
-  border-color: var(--color-primary);
-  box-shadow: 0 5px 15px rgba(245, 166, 35, 0.45);
-  transform: translateY(-4px) scale(1.06);
+  transform: translateY(-3px) scale(1.08);
+}
+
+/* Facebook: Brand Blue #1877F2 */
+.sh-contact-form__social-btn--facebook {
+  background: #1877F2;
+  box-shadow: 0 4px 14px rgba(24, 119, 242, 0.38);
+}
+.sh-contact-form__social-btn--facebook:hover {
+  box-shadow: 0 6px 20px rgba(24, 119, 242, 0.65);
+}
+
+/* Zalo: Brand Cyan-Blue #0068FF */
+.sh-contact-form__social-btn--zalo {
+  background: #0068FF;
+  box-shadow: 0 4px 14px rgba(0, 104, 255, 0.38);
+}
+.sh-contact-form__social-btn--zalo:hover {
+  box-shadow: 0 6px 20px rgba(0, 104, 255, 0.65);
+}
+
+/* Instagram: Sunset Gradient */
+.sh-contact-form__social-btn--instagram {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+  box-shadow: 0 4px 14px rgba(214, 36, 159, 0.38);
+}
+.sh-contact-form__social-btn--instagram:hover {
+  box-shadow: 0 6px 20px rgba(214, 36, 159, 0.65);
+}
+
+/* YouTube: Brand Red #FF0000 */
+.sh-contact-form__social-btn--youtube {
+  background: #FF0000;
+  box-shadow: 0 4px 14px rgba(255, 0, 0, 0.38);
+}
+.sh-contact-form__social-btn--youtube:hover {
+  box-shadow: 0 6px 20px rgba(255, 0, 0, 0.65);
 }
 
 /* ── Form column ─────────────────────────────────────────────── */

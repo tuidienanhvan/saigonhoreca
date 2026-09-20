@@ -18,6 +18,12 @@ document.addEventListener('DOMContentLoaded', function () {
             gtmPush({ event: 'click_phone', location: location });
         } else if (action === 'click_zalo') {
             gtmPush({ event: 'click_zalo', location: location });
+        } else if (action === 'click_facebook') {
+            gtmPush({ event: 'click_facebook', location: location });
+        } else if (action === 'click_instagram') {
+            gtmPush({ event: 'click_instagram', location: location });
+        } else if (action === 'click_youtube') {
+            gtmPush({ event: 'click_youtube', location: location });
         }
     });
 

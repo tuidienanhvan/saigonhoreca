@@ -85,6 +85,7 @@ function saigonhouse_get_contact_info() {
         'zalo'            => 'https://zalo.me/0901304365',
         'facebook'        => 'https://www.facebook.com/saigonhoreca',
         'youtube'         => 'https://www.youtube.com/@saigonhoreca',
+        'instagram'       => 'https://www.instagram.com/saigonhoreca/',
 
         // Addresses
         'address'         => $addresses[$lang] ?? $addresses['vi'],
