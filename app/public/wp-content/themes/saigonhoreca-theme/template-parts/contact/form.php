@@ -84,7 +84,7 @@ $hotline_alt_display = $contact['hotline_alt'] ?? '0909 040 920';
             </ul>
 
             <div class="sh-contact-form__social">
-                <h4 class="sh-contact-form__social-label"><?php echo ($lang === 'ja') ? '公式SNS・お問い合わせ' : (($lang === 'en') ? 'Connect With Us' : 'Kết nối với chúng tôi'); ?></h4>
+                <h3 class="sh-contact-form__social-label"><?php echo ($lang === 'ja') ? '公式SNS・お問い合わせ' : (($lang === 'en') ? 'Connect With Us' : 'Kết nối với chúng tôi'); ?></h3>
                 <div class="sh-contact-form__social-links">
                     <?php if (!empty($contact['facebook'])): ?>
                     <a class="sh-contact-form__social-btn" href="<?php echo esc_url($contact['facebook']); ?>" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
@@ -124,7 +124,7 @@ $hotline_alt_display = $contact['hotline_alt'] ?? '0909 040 920';
                 } else {
                     // Fallback native form — styled dark luxe
                     ?>
-                    <form action="<?php echo esc_url(function_exists('sgh_url') ? sgh_url('contact') : home_url('/contact/')); ?>" method="post" class="sh-contact-form__native">
+                    <form id="saigonhouse-contact-form" action="<?php echo esc_url(function_exists('sgh_url') ? sgh_url('contact') : home_url('/contact/')); ?>" method="post" class="sh-contact-form__native">
                         <div class="sh-contact-form__field">
                             <label class="sh-contact-form__label" for="cf-name"><?php echo ($lang === 'ja') ? '氏名' : (($lang === 'en') ? 'Full Name' : 'Họ và tên'); ?> <span aria-hidden="true">*</span></label>
                             <input class="sh-contact-form__input" type="text" id="cf-name" name="contact_name" required placeholder="<?php echo esc_attr($name_placeholders[$lang] ?? $name_placeholders['vi']); ?>">
@@ -142,7 +142,7 @@ $hotline_alt_display = $contact['hotline_alt'] ?? '0909 040 920';
                             <textarea class="sh-contact-form__input sh-contact-form__input--textarea" id="cf-message" name="contact_message" rows="5" placeholder="<?php echo esc_attr($message_placeholders[$lang] ?? $message_placeholders['vi']); ?>"></textarea>
                         </div>
                         <div class="sh-contact-form__field sh-contact-form__field--full">
-                            <button class="sh-contact-form__submit" type="submit"><?php echo ($lang === 'ja') ? '送信する' : (($lang === 'en') ? 'Send Inquiry' : 'Gửi liên hệ'); ?></button>
+                            <button class="sh-contact-form__submit" type="submit"><span><?php echo ($lang === 'ja') ? '送信する' : (($lang === 'en') ? 'Send Inquiry' : 'Gửi liên hệ'); ?></span></button>
                         </div>
                     </form>
                     <?php

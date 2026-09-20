@@ -1,18 +1,65 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const contactForm = document.getElementById('saigonhouse-contact-form');
-    if (!contactForm) {
-        return;
-    }
-
-    const submitBtn = contactForm.querySelector('button[type="submit"]');
-    const btnText = submitBtn.querySelector('span');
-    const originalText = btnText.innerText;
-
     function gtmPush(data) {
         if (typeof dataLayer !== 'undefined') {
             dataLayer.push(data);
         }
     }
+
+    // Site-wide GTM tracking for Floating action buttons (Zalo, Phone)
+    document.addEventListener('click', function (e) {
+        const tracked = e.target.closest('[data-gtm-click]');
+        if (!tracked) {
+            return;
+        }
+        const action = tracked.getAttribute('data-gtm-click');
+        const location = tracked.getAttribute('data-gtm-location') || 'floating_button';
+
+        if (action === 'click_phone') {
+            gtmPush({ event: 'click_phone', location: location });
+        } else if (action === 'click_zalo') {
+            gtmPush({ event: 'click_zalo', location: location });
+        }
+    });
+
+    const contactForm = document.getElementById('saigonhouse-contact-form') || document.querySelector('.sh-contact-form__native');
+    if (!contactForm) {
+        return;
+    }
+
+    // Detect language from html tag
+    const docLang = (document.documentElement.lang || 'vi').toLowerCase();
+    const lang = docLang.startsWith('ja') ? 'ja' : (docLang.startsWith('en') ? 'en' : 'vi');
+
+    const i18n = {
+        vi: {
+            sending: 'Đang gửi...',
+            success: 'Cảm ơn bạn! Chúng tôi sẽ liên hệ lại trong thời gian sớm nhất.',
+            error_prefix: 'Có lỗi xảy ra: ',
+            error_default: 'Vui lòng thử lại sau.',
+            network_error: 'Lỗi kết nối. Vui lòng thử lại.',
+            invalid_phone: 'Số điện thoại không đúng định dạng VN (VD: 0901 304 365)'
+        },
+        en: {
+            sending: 'Sending...',
+            success: 'Thank you! We will get back to you as soon as possible.',
+            error_prefix: 'An error occurred: ',
+            error_default: 'Please try again later.',
+            network_error: 'Network connection error. Please try again.',
+            invalid_phone: 'Invalid phone format (e.g. 0901 304 365)'
+        },
+        ja: {
+            sending: '送信中...',
+            success: 'お問い合わせありがとうございます。担当者より近日中にご連絡いたします。',
+            error_prefix: 'エラーが発生しました: ',
+            error_default: 'しばらくしてからもう一度お試しください。',
+            network_error: '接続エラーが発生しました。もう一度お試しください。',
+            invalid_phone: '電話番号の形式が正しくありません (例: 0901 304 365)'
+        }
+    }[lang];
+
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    const btnText = submitBtn ? (submitBtn.querySelector('span') || submitBtn) : null;
+    const originalText = btnText ? btnText.innerText : '';
 
     if ('IntersectionObserver' in window) {
         const formObserver = new IntersectionObserver(function (entries) {
@@ -47,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function () {
         phoneInput.addEventListener('blur', function () {
             const val = this.value.trim();
             if (val && !validatePhone(val)) {
-                this.setCustomValidity('Số điện thoại không đúng định dạng VN (VD: 0901 304 365)');
+                this.setCustomValidity(i18n.invalid_phone);
                 this.reportValidity();
             } else {
                 this.setCustomValidity('');
@@ -73,9 +120,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (phoneInput) {
             const phoneVal = phoneInput.value.trim();
-            if (!validatePhone(phoneVal)) {
+            if (phoneVal && !validatePhone(phoneVal)) {
                 gtmPush({ event: 'form_error', form_id: 'contact-form', error_type: 'validation', error_field: 'phone' });
-                phoneInput.setCustomValidity('Số điện thoại không đúng định dạng VN (VD: 0901 304 365)');
+                phoneInput.setCustomValidity(i18n.invalid_phone);
                 phoneInput.reportValidity();
                 return;
             }
@@ -84,9 +131,11 @@ document.addEventListener('DOMContentLoaded', function () {
         statusDiv.classList.add('hidden');
         statusDiv.className = 'mt-4 text-sm font-medium hidden p-4 rounded-xl text-center';
 
-        submitBtn.disabled = true;
-        submitBtn.classList.add('opacity-70', 'cursor-not-allowed');
-        btnText.innerText = 'Đang gửi...';
+        if (submitBtn && btnText) {
+            submitBtn.disabled = true;
+            submitBtn.classList.add('opacity-70', 'cursor-not-allowed');
+            btnText.innerText = i18n.sending;
+        }
 
         const formData = new FormData(contactForm);
         formData.append('action', 'sh_submit_contact_form');
@@ -106,13 +155,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 statusDiv.classList.remove('hidden');
                 if (data.success) {
                     statusDiv.classList.add('bg-green-50', 'text-green-700', 'border', 'border-green-200');
-                    statusDiv.innerText = 'Cảm ơn bạn! Chúng tôi sẽ liên hệ lại trong thời gian sớm nhất.';
+                    statusDiv.innerText = i18n.success;
                     contactForm.reset();
                     formStartFired = false;
                     gtmPush({ event: 'contact_form_success', form_id: 'contact-form' });
                 } else {
                     statusDiv.classList.add('bg-red-50', 'text-red-700', 'border', 'border-red-200');
-                    statusDiv.innerText = 'Có lỗi xảy ra: ' + (data.data || 'Vui lòng thử lại sau.');
+                    statusDiv.innerText = i18n.error_prefix + (data.data || i18n.error_default);
 
                     const errMsg = (data.data || '').toLowerCase();
                     const errType = errMsg.includes('nhiều') ? 'rate_limit' : 'server';
@@ -122,28 +171,15 @@ document.addEventListener('DOMContentLoaded', function () {
             .catch(function () {
                 statusDiv.classList.remove('hidden');
                 statusDiv.classList.add('bg-red-50', 'text-red-700', 'border', 'border-red-200');
-                statusDiv.innerText = 'Lỗi kết nối. Vui lòng thử lại.';
+                statusDiv.innerText = i18n.network_error;
                 gtmPush({ event: 'form_error', form_id: 'contact-form', error_type: 'network' });
             })
             .finally(function () {
-                submitBtn.disabled = false;
-                submitBtn.classList.remove('opacity-70', 'cursor-not-allowed');
-                btnText.innerText = originalText;
+                if (submitBtn && btnText) {
+                    submitBtn.disabled = false;
+                    submitBtn.classList.remove('opacity-70', 'cursor-not-allowed');
+                    btnText.innerText = originalText;
+                }
             });
-    });
-
-    document.addEventListener('click', function (e) {
-        const tracked = e.target.closest('[data-gtm-click]');
-        if (!tracked) {
-            return;
-        }
-        const action = tracked.getAttribute('data-gtm-click');
-        const location = tracked.getAttribute('data-gtm-location') || 'floating_button';
-
-        if (action === 'click_phone') {
-            gtmPush({ event: 'click_phone', location: location });
-        } else if (action === 'click_zalo') {
-            gtmPush({ event: 'click_zalo', location: location });
-        }
     });
 });

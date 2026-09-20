@@ -52,7 +52,7 @@
     }
 
     /* ── Kéo-thả + ghi nhớ vị trí (localStorage), snap về mép màn hình ── */
-    var STORE_KEY = 'sh_fab_pos';
+    var STORE_KEY = 'sh_fab_pos_v2';
     var DRAG_THRESHOLD = 6;
     var EDGE_MARGIN = 12;
     // prefers-reduced-motion: animation snap-to-edge/scale-khi-kéo chạy bằng JS
@@ -126,10 +126,11 @@
 
     function savePosition() {
         try {
-            localStorage.setItem(STORE_KEY, JSON.stringify({
-                x: parseInt(el.style.left, 10),
-                y: parseInt(el.style.top, 10)
-            }));
+            var left = parseInt(el.style.left, 10);
+            var top = parseInt(el.style.top, 10);
+            if (!isNaN(left) && !isNaN(top)) {
+                localStorage.setItem(STORE_KEY, JSON.stringify({ x: left, y: top }));
+            }
         } catch (e) {}
     }
 
@@ -147,17 +148,33 @@
 
     function restorePosition() {
         try {
+            // Purge legacy key from old versions that caused center-screen lock
+            try { localStorage.removeItem('sh_fab_pos'); } catch (err) {}
+
             if (lastViewportWasMobile === null) {
                 lastViewportWasMobile = isMobile();
             }
             var saved = JSON.parse(localStorage.getItem(STORE_KEY));
-            if (!saved) return;
+            if (!saved || typeof saved.x !== 'number' || typeof saved.y !== 'number' || isNaN(saved.x) || isNaN(saved.y)) {
+                resetToDefault();
+                return;
+            }
+
+            var bounds = getBounds();
+            // If saved position is floating in the middle of screen, clear it & reset to CSS default
+            if (saved.x > bounds.minX + 25 && saved.x < bounds.maxX - 25) {
+                localStorage.removeItem(STORE_KEY);
+                resetToDefault();
+                return;
+            }
 
             applyPosition(saved.x, saved.y, false);
             if (saved.x !== clampToBounds(saved.x, saved.y).x) {
                 snapToEdge();
             }
-        } catch (e) {}
+        } catch (e) {
+            resetToDefault();
+        }
     }
 
     /*
@@ -306,11 +323,18 @@
         }, 100);
     });
 
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', function () {
-            setTimeout(restorePosition, 150);
-        });
-    } else {
-        setTimeout(restorePosition, 150);
-    }
+    // GTM click tracking for floating buttons (click_phone, click_zalo)
+    document.addEventListener('click', function (e) {
+        var tracked = e.target && e.target.closest ? e.target.closest('[data-gtm-click]') : null;
+        if (!tracked) return;
+        var action = tracked.getAttribute('data-gtm-click');
+        var location = tracked.getAttribute('data-gtm-location') || 'floating_button';
+        if (typeof dataLayer !== 'undefined') {
+            if (action === 'click_phone') {
+                dataLayer.push({ event: 'click_phone', location: location });
+            } else if (action === 'click_zalo') {
+                dataLayer.push({ event: 'click_zalo', location: location });
+            }
+        }
+    });
 })();

@@ -122,9 +122,10 @@ class Pi_Multilang_UI_Strings {
      */
     public static function query(Pi_Multilang_PO_File $po, $args = []) {
         $args = wp_parse_args($args, [
-            'search' => '',
-            'filter' => 'all',   // all | untranslated | translated
-            'page'   => 1,
+            'search'   => '',
+            'filter'   => 'all',   // all | untranslated | translated
+            'page'     => 1,
+            'per_page' => self::PER_PAGE,
         ]);
 
         $all    = $po->entries();
@@ -150,10 +151,11 @@ class Pi_Multilang_UI_Strings {
             $items[] = $e;
         }
 
-        $total = count($items);
-        $pages = max(1, (int) ceil($total / self::PER_PAGE));
-        $page  = max(1, min($pages, (int) $args['page']));
-        $items = array_slice($items, ($page - 1) * self::PER_PAGE, self::PER_PAGE);
+        $per_page = max(1, min(200, (int) $args['per_page']));
+        $total    = count($items);
+        $pages    = max(1, (int) ceil($total / $per_page));
+        $page     = max(1, min($pages, (int) $args['page']));
+        $items    = array_slice($items, ($page - 1) * $per_page, $per_page);
 
         return [
             'items'        => $items,
@@ -163,6 +165,7 @@ class Pi_Multilang_UI_Strings {
             'counts'       => $counts,
             'pages'        => $pages,
             'page'         => $page,
+            'per_page'     => $per_page,
         ];
     }
 

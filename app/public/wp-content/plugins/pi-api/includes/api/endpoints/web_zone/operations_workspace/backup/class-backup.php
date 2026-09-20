@@ -559,14 +559,20 @@ class Pi_Api_Backup {
         }
         if ($restore_fs) {
             $extracted = 0;
+            $real_wp_content = realpath(WP_CONTENT_DIR);
             for ($i = 0; $i < $zip->numFiles; $i++) {
                 $stat = $zip->statIndex($i);
                 if (!$stat) continue;
                 $name = $stat['name'];
                 if (strpos($name, 'wp-content/') !== 0) continue;
+                if (strpos($name, '..') !== false || strpos($name, '\\') !== false) continue;
                 $dest = ABSPATH . $name;
                 $dir = dirname($dest);
                 if (!file_exists($dir)) wp_mkdir_p($dir);
+                $real_dest_dir = realpath($dir);
+                if ($real_dest_dir === false || ($real_dest_dir !== $real_wp_content && strpos($real_dest_dir, $real_wp_content . DIRECTORY_SEPARATOR) !== 0)) {
+                    continue;
+                }
                 $stream = $zip->getFromIndex($i);
                 if ($stream !== false) {
                     file_put_contents($dest, $stream);

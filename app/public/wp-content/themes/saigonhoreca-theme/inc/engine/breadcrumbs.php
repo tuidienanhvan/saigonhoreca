@@ -162,19 +162,22 @@ function sh_breadcrumbs() {
 
     // JSON-LD Schema
     $schema_items = [];
+    $pos = 1;
     foreach ($items as $i => $item) {
-        $entry = [
-            '@type'    => 'ListItem',
-            'position' => $i + 1,
-            'name'     => $item['name'],
-        ];
-        if (isset($item['url'])) {
-            $entry['item'] = $item['url'];
-        } elseif ($i === count($items) - 1) {
-            // Last item: include current page URL per Google recommendation
-            $entry['item'] = is_singular() ? get_permalink() : (is_category() || is_tag() ? get_term_link(get_queried_object()) : home_url($_SERVER['REQUEST_URI'] ?? '/'));
+        $is_last = ($i === count($items) - 1);
+        $url = $item['url'] ?? null;
+        if (!$url && $is_last) {
+            $url = is_singular() ? get_permalink() : (is_category() || is_tag() || is_tax() ? get_term_link(get_queried_object()) : home_url($_SERVER['REQUEST_URI'] ?? '/'));
         }
-        $schema_items[] = $entry;
+        // Google Search Console requires 'item' (URL) on all BreadcrumbList elements.
+        if (!$url) continue;
+
+        $schema_items[] = [
+            '@type'    => 'ListItem',
+            'position' => $pos++,
+            'name'     => $item['name'],
+            'item'     => $url,
+        ];
     }
 
     $breadcrumb_schema = [

@@ -148,13 +148,25 @@ if (!class_exists('SGH_SEO_Meta_Description')) {
             // page lẫn archive. Nguồn 2 giữ lại cho tương thích ngược.
             if (function_exists('sgh_current_template_route')) {
                 $route = sgh_current_template_route();
-                if ($route && !empty($route['desc'])) return self::clean($route['desc']);
+                if ($route && !empty($route['desc'])) {
+                    $desc = $route['desc'];
+                    if (is_array($desc)) {
+                        $cur_lang = function_exists('sgh_current_lang') ? sgh_current_lang() : (defined('PI_CURRENT_LANGUAGE') ? PI_CURRENT_LANGUAGE : 'vi');
+                        $desc = $desc[$cur_lang] ?? ($desc['vi'] ?? reset($desc));
+                    }
+                    if (!empty($desc)) return self::clean($desc);
+                }
             }
             if (function_exists('sgh_route_description_rules')) {
                 foreach (sgh_route_description_rules() as $rule) {
                     if (empty($rule['when']) || !is_callable($rule['when'])) continue;
                     if (($rule['when'])() && !empty($rule['desc'])) {
-                        return self::clean($rule['desc']);
+                        $desc = $rule['desc'];
+                        if (is_array($desc)) {
+                            $cur_lang = function_exists('sgh_current_lang') ? sgh_current_lang() : (defined('PI_CURRENT_LANGUAGE') ? PI_CURRENT_LANGUAGE : 'vi');
+                            $desc = $desc[$cur_lang] ?? ($desc['vi'] ?? reset($desc));
+                        }
+                        if (!empty($desc)) return self::clean($desc);
                     }
                 }
             }

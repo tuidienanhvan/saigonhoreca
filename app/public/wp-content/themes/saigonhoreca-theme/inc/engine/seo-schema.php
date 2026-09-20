@@ -53,36 +53,37 @@ if (!class_exists('SGH_SEO_Schema')) {
         public static function render() {
             if (is_admin() || is_feed()) return;
 
-            $graphs = self::pi_rule_graphs();
+            $rule_graphs = self::pi_rule_graphs();
+            $graphs = [];
 
-            if (empty($graphs)) {
-                $graphs = [];
+            // Always-on: LocalBusiness
+            $g = self::local_business();
+            if ($g) $graphs[] = $g;
 
-                // Always-on: LocalBusiness
-                $g = self::local_business();
+            // Homepage: WebSite with SearchAction
+            if (is_front_page() || is_home()) {
+                $g = self::website_search();
                 if ($g) $graphs[] = $g;
+            }
 
-                // Homepage: WebSite with SearchAction
-                if (is_front_page() || is_home()) {
-                    $g = self::website_search();
-                    if ($g) $graphs[] = $g;
-                }
+            // Single product: Product schema
+            if (is_singular('product')) {
+                $g = self::product(get_post());
+                if ($g) $graphs[] = $g;
+            }
 
-                // Single product: Product schema
-                if (is_singular('product')) {
-                    $g = self::product(get_post());
-                    if ($g) $graphs[] = $g;
-                }
+            // Single blog post: Article
+            if (is_singular('post')) {
+                $g = self::article(get_post());
+                if ($g) $graphs[] = $g;
+            }
 
-                // Single blog post: Article
-                if (is_singular('post')) {
-                    $g = self::article(get_post());
-                    if ($g) $graphs[] = $g;
-                }
+            // Contact / About pages: ContactPage / AboutPage (linked to #organization)
+            if (self::is_contact_page()) $graphs[] = self::contact_page();
+            if (self::is_about_page())   $graphs[] = self::about_page();
 
-                // Contact / About pages: ContactPage / AboutPage (linked to #organization)
-                if (self::is_contact_page()) $graphs[] = self::contact_page();
-                if (self::is_about_page())   $graphs[] = self::about_page();
+            if (!empty($rule_graphs)) {
+                $graphs = array_merge($graphs, $rule_graphs);
             }
 
             if (empty($graphs)) return;
@@ -197,7 +198,8 @@ if (!class_exists('SGH_SEO_Schema')) {
             $brand_name = (!is_wp_error($brands) && !empty($brands)) ? $brands[0]->name : null;
             $cat_name   = (!is_wp_error($cats)   && !empty($cats))   ? $cats[0]->name   : null;
 
-            $img = get_the_post_thumbnail_url($post, 'large');
+            $default_img = get_template_directory_uri() . '/assets/images/logo-schema-seo.webp';
+            $img = get_the_post_thumbnail_url($post, 'large') ?: $default_img;
             $desc = '';
             if (has_excerpt($post)) {
                 $desc = wp_strip_all_tags(get_the_excerpt($post));
@@ -215,19 +217,22 @@ if (!class_exists('SGH_SEO_Schema')) {
             }
             $price_val = is_numeric($price) && (float) $price > 0 ? (float) $price : 0;
 
-            $offers = [
-                '@type'           => 'Offer',
-                'url'             => $url,
-                'priceCurrency'   => 'VND',
-                'price'           => $price_val > 0 ? (string) $price_val : '0',
-                'priceValidUntil' => gmdate('Y-12-31', strtotime('+1 year')),
-                'availability'    => 'https://schema.org/InStock',
-                'itemCondition'   => 'https://schema.org/NewCondition',
-                'seller'          => [
-                    '@type' => 'Organization',
-                    'name'  => get_bloginfo('name'),
-                ],
-            ];
+            $offers = null;
+            if ($price_val > 0) {
+                $offers = [
+                    '@type'           => 'Offer',
+                    'url'             => $url,
+                    'priceCurrency'   => 'VND',
+                    'price'           => (string) $price_val,
+                    'priceValidUntil' => gmdate('Y-12-31', strtotime('+1 year')),
+                    'availability'    => 'https://schema.org/InStock',
+                    'itemCondition'   => 'https://schema.org/NewCondition',
+                    'seller'          => [
+                        '@type' => 'Organization',
+                        'name'  => get_bloginfo('name'),
+                    ],
+                ];
+            }
 
             $data = [
                 '@context'    => 'https://schema.org',
@@ -238,7 +243,7 @@ if (!class_exists('SGH_SEO_Schema')) {
                 'description' => $desc ?: null,
                 'sku'         => $sku ?: null,
                 'mpn'         => $sku ?: null,
-                'image'       => $img ?: null,
+                'image'       => $img,
                 'category'    => $cat_name,
                 'brand'       => $brand_name ? [
                     '@type' => 'Brand',

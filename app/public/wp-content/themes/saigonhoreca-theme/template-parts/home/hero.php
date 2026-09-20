@@ -59,7 +59,21 @@ if ($q_hero->have_posts()) {
             $address = function_exists('get_field') ? (string) get_field('address') : '';
         }
         
-        $subtitle = $address ? "Dự án thiết bị bếp công nghiệp và quầy bar cao cấp tại " . $address : "Tư vấn thiết kế, sản xuất và thi công trọn gói bếp nhà hàng chuyên nghiệp.";
+        $btn_text_1 = function_exists('sgh_home_t') ? sgh_home_t('hero_btn_project') : 'CHI TIẾT DỰ ÁN';
+        $btn_text_2 = function_exists('sgh_home_t') ? sgh_home_t('hero_btn_contact') : 'LIÊN HỆ NGAY';
+        
+        $current_lang = function_exists('sgh_get_current_lang') ? sgh_get_current_lang() : 'vi';
+        if ($address) {
+            if ($current_lang === 'ja') {
+                $subtitle = $address . ' における高級業務用厨房設備・バー設備プロジェクト';
+            } elseif ($current_lang === 'en') {
+                $subtitle = 'Premium commercial kitchen and bar equipment project at ' . $address;
+            } else {
+                $subtitle = 'Dự án thiết bị bếp công nghiệp và quầy bar cao cấp tại ' . $address;
+            }
+        } else {
+            $subtitle = function_exists('sgh_home_t') ? sgh_home_t('hero_subtitle_default') : 'Tư vấn thiết kế, sản xuất và thi công trọn gói bếp nhà hàng chuyên nghiệp.';
+        }
         
         $slides[] = [
             'img' => $thumb_src,
@@ -67,9 +81,9 @@ if ($q_hero->have_posts()) {
             'alt' => $title . ' — Saigon Horeca',
             'title' => $title,
             'subtitle' => $subtitle,
-            'btn_text_1' => 'CHI TIẾT DỰ ÁN',
+            'btn_text_1' => $btn_text_1,
             'btn_link_1' => get_permalink(),
-            'btn_text_2' => 'LIÊN HỆ NGAY',
+            'btn_text_2' => $btn_text_2,
             'btn_link_2' => sgh_url('contact'),
         ];
     }
@@ -78,21 +92,39 @@ if ($q_hero->have_posts()) {
 
 // Fallback slides if no projects found with thumbnails
 if (empty($slides)) {
+    $fallback_title = function_exists('sgh_home_t') ? sgh_home_t('hero_fallback_title') : 'BẾP & BAR CÔNG NGHIỆP THẬT BẢN SẮC';
+    $fallback_subtitle = function_exists('sgh_home_t') ? sgh_home_t('hero_fallback_subtitle') : 'Tư vấn thiết kế, sản xuất thiết bị inox và thi công trọn gói hệ thống bếp công nghiệp nhà hàng, quầy bar cao cấp.';
+    $btn_explore = function_exists('sgh_home_t') ? sgh_home_t('hero_btn_explore') : 'XEM DỰ ÁN';
+    $btn_contact = function_exists('sgh_home_t') ? sgh_home_t('hero_btn_contact') : 'LIÊN HỆ NGAY';
     $slides = [
         [
             'img' => esc_url(sgh_img('saigonhoreca/SGH-banner-02.webp')),
             'alt' => 'Bespoke Kitchen & Bar — Saigon Horeca',
-            'title' => 'BẾP & BAR CÔNG NGHIỆP THẬT BẢN SẮC',
-            'subtitle' => 'Tư vấn thiết kế, sản xuất thiết bị inox và thi công trọn gói hệ thống bếp công nghiệp nhà hàng, quầy bar cao cấp.',
-            'btn_text_1' => 'XEM DỰ ÁN',
+            'title' => $fallback_title,
+            'subtitle' => $fallback_subtitle,
+            'btn_text_1' => $btn_explore,
             'btn_link_1' => sgh_url('projects_index'),
-            'btn_text_2' => 'LIÊN HỆ NGAY',
+            'btn_text_2' => $btn_contact,
             'btn_link_2' => sgh_url('contact'),
         ]
     ];
 }
 ?>
 <section class="sh-hero" aria-label="<?php esc_attr_e('Slider giới thiệu Saigon Horeca', 'saigonhoreca'); ?>">
+    <?php
+    $h1_text = function_exists('sgh_home_t') ? sgh_home_t('hero_h1_title') : '';
+    if (!$h1_text) {
+        $curr_l = function_exists('sgh_get_current_lang') ? sgh_get_current_lang() : 'vi';
+        if ($curr_l === 'ja') {
+            $h1_text = 'Saigon Horeca — 高級業務用厨房設備・バー設備設計施工';
+        } elseif ($curr_l === 'en') {
+            $h1_text = 'Saigon Horeca — Commercial Kitchen & Bar Equipment Solutions';
+        } else {
+            $h1_text = 'Saigon Horeca — Thiết Bị Bếp Công Nghiệp & Quầy Bar Chuyên Nghiệp';
+        }
+    }
+    ?>
+    <h1 class="sr-only"><?php echo esc_html($h1_text); ?></h1>
     <div id="sh-hero-slider" class="sh-hero__slider">
         <div class="sh-hero__slides">
             <?php foreach ($slides as $index => $s) :

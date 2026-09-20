@@ -20,9 +20,18 @@ function sgh_get_theme_transient_keys() {
         'sgh_dashboard_stats',
         'sgh_hero_image',
         'sgh_hero_image_url',
+        'sh_hero_preload_v2',
+        'sh_hero_preload_url',
+        'sgh_cover_map',
         'sh_youtube_videos_v2',
         'sh_sitemap_xml',
         'sh_sitemap_xml_gz',
+        'sh_sitemap_xml_vi',
+        'sh_sitemap_xml_gz_vi',
+        'sh_sitemap_xml_en',
+        'sh_sitemap_xml_gz_en',
+        'sh_sitemap_xml_ja',
+        'sh_sitemap_xml_gz_ja',
     ];
 }
 
@@ -63,8 +72,19 @@ function sgh_invalidate_content_cache($post_id = 0) {
     if ($post_id && wp_is_post_revision($post_id)) return;
 
     delete_transient('sgh_dashboard_stats');
+    delete_transient('sgh_hero_image');
+    delete_transient('sgh_hero_image_url');
+    delete_transient('sh_hero_preload_v2');
+    delete_transient('sh_hero_preload_url');
+    delete_transient('sgh_cover_map');
     delete_transient('sh_sitemap_xml');
     delete_transient('sh_sitemap_xml_gz');
+    delete_transient('sh_sitemap_xml_vi');
+    delete_transient('sh_sitemap_xml_gz_vi');
+    delete_transient('sh_sitemap_xml_en');
+    delete_transient('sh_sitemap_xml_gz_en');
+    delete_transient('sh_sitemap_xml_ja');
+    delete_transient('sh_sitemap_xml_gz_ja');
 
     // Flush Static HTML Cache on any content change
     sgh_static_cache_flush();
@@ -212,8 +232,10 @@ add_action('template_redirect', static function() {
     if ($path === '') return;
     ob_start(static function($buffer) use ($path) {
         if (http_response_code() !== 200) return $buffer;
+        if (function_exists('is_404') && is_404()) return $buffer;
+        if (function_exists('is_search') && is_search()) return $buffer;
         if (strlen($buffer) < 1024) return $buffer;
-        if (strpos($buffer, '<title>Error') !== false) return $buffer;
+        if (strpos($buffer, '<title>Error') !== false || strpos($buffer, 'Không tìm thấy trang') !== false || strpos($buffer, 'Page not found') !== false) return $buffer;
 
         // Kiểm tra xem buffer có bị nén gzip (1f 8b) không — nếu ghi thẳng buffer
         // đã gzip vào file .html tĩnh, Apache/Nginx sẽ serve nó không kèm header

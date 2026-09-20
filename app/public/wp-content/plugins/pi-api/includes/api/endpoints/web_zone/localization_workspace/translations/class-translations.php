@@ -226,10 +226,14 @@ class Pi_Api_Translations {
             $filter = 'all';
         }
 
+        $per_page_param = $request->get_param('per_page');
+        $per_page = $per_page_param !== null ? max(1, min(200, (int) $per_page_param)) : Pi_Multilang_UI_Strings::PER_PAGE;
+
         $q = Pi_Multilang_UI_Strings::query($po, [
-            'search' => (string) $request->get_param('search'),
-            'filter' => $filter,
-            'page'   => max(1, (int) $request->get_param('page')),
+            'search'   => (string) $request->get_param('search'),
+            'filter'   => $filter,
+            'page'     => max(1, (int) $request->get_param('page')),
+            'per_page' => $per_page,
         ]);
 
         $mo_path = Pi_Multilang_UI_Strings::mo_path($locale);
@@ -244,7 +248,7 @@ class Pi_Api_Translations {
             'untranslated' => $q['untranslated'],
             'page'     => $q['page'],
             'pages'    => $q['pages'],
-            'per_page' => Pi_Multilang_UI_Strings::PER_PAGE,
+            'per_page' => $per_page,
             'files'    => [
                 'po'          => Pi_Multilang_UI_Strings::po_path($locale),
                 'mo'          => $mo_path,

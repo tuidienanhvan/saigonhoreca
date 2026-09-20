@@ -293,10 +293,18 @@ $feat_title  = ['vi' => 'Sản phẩm nổi bật', 'en' => 'Featured Products',
             + '</span>';
 
         return '<li class="' + itemClass + '">'
-            + '<a class="sh-sidebar-viewed__link" href="' + esc(p.url) + '"' + (isCurrent ? ' onclick="event.preventDefault(); window.scrollTo({top: 0, behavior:\'smooth\'});"' : '') + '>'
+            + '<a class="sh-sidebar-viewed__link" href="' + esc(p.url) + '"' + (isCurrent ? ' data-is-current="1"' : '') + '>'
             + t 
             + titleHtml
             + '</a></li>';
     }).join('');
+
+    ul.addEventListener('click', function (e) {
+        var link = e.target.closest('.sh-sidebar-viewed__link[data-is-current="1"]');
+        if (link) {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    });
 })();
 </script>

@@ -2,7 +2,7 @@
  * Floating Buttons — Saigon Horeca
  *
  * Ported from saigonhoreca-theme with brand-color adaptation.
- * Uses design tokens (var(--brand), var(--bg-card), etc.) for consistency.
+ * Uses design tokens (var(--color-primary), var(--color-base-300), etc.) for consistency.
  * Position: bottom-right (industry standard UX).
  */
 
@@ -27,8 +27,8 @@
     cursor: pointer;
     border-radius: var(--radius-full);
     opacity: 0;
-    box-shadow: 0 2px 12px var(--shadow);
-    background: var(--bg-card);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+    background: var(--color-base-300);
     justify-content: center;
     align-items: center;
     transition: opacity 0.3s, transform 0.3s;
@@ -41,7 +41,7 @@
     transform: translateX(-50%);
 }
 #back-to-top:hover {
-    box-shadow: 0 4px 20px var(--shadow);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
     transform: translateX(-50%) translateY(-3px);
 }
 #back-to-top .sh-scroll-ring {
@@ -54,12 +54,12 @@
 }
 #back-to-top .sh-scroll-track {
     fill: none;
-    stroke: var(--border-default);
+    stroke: var(--color-border-default);
     stroke-width: 2px;
 }
 #back-to-top .sh-scroll-progress {
     fill: none;
-    stroke: var(--gold);
+    stroke: var(--color-primary);
     stroke-width: 2.5px;
     stroke-dasharray: 100 100;
     stroke-dashoffset: 100px;
@@ -74,17 +74,17 @@
     cursor: pointer;
     border-radius: var(--radius-full);
     transition: all 0.3s;
-    background: linear-gradient(135deg, var(--gold), var(--gold-dim));
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-hover));
     border: none;
     justify-content: center;
     align-items: center;
     display: flex;
     position: relative;
-    box-shadow: 0 3px 16px color-mix(in srgb, var(--gold) 40%, transparent);
+    box-shadow: 0 3px 16px color-mix(in srgb, var(--color-primary) 40%, transparent);
 }
 #sh-toggle:hover {
     transform: translateY(-2px);
-    box-shadow: 0 5px 20px color-mix(in srgb, var(--gold) 50%, transparent);
+    box-shadow: 0 5px 20px color-mix(in srgb, var(--color-primary) 50%, transparent);
 }
 #sh-ic-chat, #sh-ic-x {
     transition: all 0.3s;
@@ -98,34 +98,34 @@
     height: calc(var(--spacing) * 2.5);
     width: calc(var(--spacing) * 2.5);
     border-radius: var(--radius-full);
-    background: var(--danger);
-    border: 2px solid var(--bg-card);
+    background: var(--color-danger);
+    border: 2px solid var(--color-base-300);
     position: absolute;
     top: -1px;
     right: -1px;
 }
 
 /* ── Phone Button ──
-   Vàng gold (var(--gold)) + icon đen + glow vàng nhẹ.
+   Vàng gold (var(--color-primary)) + icon đen + glow vàng nhẹ.
    Theme black + gold luxe — không dùng đỏ. */
 .sh-phone-float {
     height: calc(var(--spacing) * 12);
     width: calc(var(--spacing) * 12);
     border-radius: var(--radius-full);
-    background: var(--gold);
+    background: var(--color-primary);
     color: #000;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 3px 12px color-mix(in srgb, var(--gold) 45%, transparent);
+    box-shadow: 0 3px 12px color-mix(in srgb, var(--color-primary) 45%, transparent);
     transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
 }
 .sh-phone-float:hover {
     transform: scale(1.1);
-    background: var(--secondary-hover);
-    box-shadow: 0 5px 18px color-mix(in srgb, var(--gold) 60%, transparent);
+    background: var(--color-secondary-hover);
+    box-shadow: 0 5px 18px color-mix(in srgb, var(--color-primary) 60%, transparent);
 }
 .sh-phone-float svg {
     width: 22px;
@@ -139,7 +139,7 @@
     width: calc(var(--spacing) * 12);
     border-radius: var(--radius-full);
     transition: transform 0.3s;
-    background: var(--bg-card);
+    background: var(--color-base-300);
     flex-shrink: 0;
     justify-content: center;
     align-items: center;
@@ -163,7 +163,7 @@
     width: calc(var(--spacing) * 12);
     border-radius: var(--radius-full);
     background: #1877F2;
-    color: var(--bc);
+    color: var(--color-base-content);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -177,7 +177,7 @@
 .sh-fb-btn svg {
     width: 24px;
     height: 24px;
-    fill: var(--bc);
+    fill: var(--color-base-content);
 }
 
 

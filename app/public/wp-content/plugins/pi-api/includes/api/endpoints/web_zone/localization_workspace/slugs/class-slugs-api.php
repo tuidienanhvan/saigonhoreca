@@ -76,11 +76,16 @@ class Pi_Api_Slugs {
         $args  = [];
         if ($lang !== '')   { $where[] = 'lang = %s';   $args[] = $lang; }
         if ($status !== '') { $where[] = 'status = %s'; $args[] = $status; }
-        $sql = "SELECT * FROM {$table} WHERE " . implode(' AND ', $where) . ' ORDER BY id DESC LIMIT %d OFFSET %d';
-        $args[] = $limit; $args[] = $offset;
+        $where_sql = implode(' AND ', $where);
 
-        $rows  = $wpdb->get_results($wpdb->prepare($sql, $args));
-        $total = (int) $wpdb->get_var("SELECT COUNT(*) FROM {$table}");
+        $sql = "SELECT * FROM {$table} WHERE {$where_sql} ORDER BY id DESC LIMIT %d OFFSET %d";
+        $list_args = array_merge($args, [$limit, $offset]);
+        $rows  = $wpdb->get_results($wpdb->prepare($sql, $list_args));
+
+        $count_sql = "SELECT COUNT(*) FROM {$table} WHERE {$where_sql}";
+        $total = empty($args)
+            ? (int) $wpdb->get_var($count_sql)
+            : (int) $wpdb->get_var($wpdb->prepare($count_sql, $args));
 
         return rest_ensure_response([
             'items' => $rows ?: [],

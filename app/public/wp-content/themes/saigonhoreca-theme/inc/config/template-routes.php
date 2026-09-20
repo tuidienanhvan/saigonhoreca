@@ -66,22 +66,30 @@ if (!function_exists('sgh_get_template_routes')) {
                 'key'      => 'about',
                 'label'    => 'Về Saigon Horeca',
                 'url'      => static fn() => sgh_url('about'),
-                'template' => 'page-templates/page-gioi-thieu.php',
+                'template' => 'page-templates/page-about.php',
                 'store'    => 'post',
                 'ref'      => 've-saigon-horeca',
-                'when'     => static fn() => is_page_template('page-templates/page-gioi-thieu.php') || is_page('ve-saigon-horeca'),
-                'desc'     => 'Giới thiệu Saigon Horeca — đơn vị tư vấn thiết kế và thi công bếp công nghiệp, quầy bar tại TP.HCM. Năng lực, quy trình và các dự án tiêu biểu đã thực hiện.',
+                'when'     => static fn() => is_page_template('page-templates/page-about.php') || is_page('ve-saigon-horeca'),
+                'desc'     => [
+                    'vi' => 'Giới thiệu Saigon Horeca — đơn vị tư vấn thiết kế và thi công bếp công nghiệp, quầy bar tại TP.HCM. Năng lực, quy trình và các dự án tiêu biểu đã thực hiện.',
+                    'en' => 'About Saigon Horeca — leading commercial kitchen and bar design, fabrication and installation in Vietnam. Capabilities, process and completed projects.',
+                    'ja' => 'サイゴンホレカ（Saigon Horeca）について — ベトナム・ホーチミン市における業務用厨房設備・バーカウンターの設計・施工・機器調達の専門企業。',
+                ],
                 'image'    => 'saigonhoreca/bia-bep-cong-nghiep-inox.webp',
             ],
             [
                 'key'      => 'contact',
                 'label'    => 'Liên hệ',
                 'url'      => static fn() => sgh_url('contact'),
-                'template' => 'page-templates/page-lien-he.php',
+                'template' => 'page-templates/page-contact.php',
                 'store'    => 'post',
                 'ref'      => 'lien-he',
-                'when'     => static fn() => is_page_template('page-templates/page-lien-he.php') || is_page('lien-he'),
-                'desc'     => 'Liên hệ Saigon Horeca để được tư vấn miễn phí thiết kế bếp công nghiệp và quầy bar. Hotline, địa chỉ showroom và biểu mẫu gửi yêu cầu báo giá.',
+                'when'     => static fn() => is_page_template('page-templates/page-contact.php') || is_page('lien-he'),
+                'desc'     => [
+                    'vi' => 'Liên hệ Saigon Horeca để được tư vấn miễn phí thiết kế bếp công nghiệp và quầy bar. Hotline, địa chỉ showroom và biểu mẫu gửi yêu cầu báo giá.',
+                    'en' => 'Contact Saigon Horeca for free commercial kitchen and bar counter consultation. Hotline, showroom address, and project inquiry form.',
+                    'ja' => 'サイゴンホレカへのお問い合わせ — 業務用厨房およびバーカウンターの無料設計相談。ホットライン、ショールーム住所、お見積りフォーム。',
+                ],
                 'image'    => 'saigonhoreca/Saigon-Horeca-thiet-bi-bep-cong-nghiep.webp',
             ],
 
@@ -94,7 +102,11 @@ if (!function_exists('sgh_get_template_routes')) {
                 'store'    => 'option',
                 'ref'      => 'project',
                 'when'     => static fn() => is_post_type_archive('project'),
-                'desc'     => 'Hơn 30 dự án bếp công nghiệp và quầy bar do Saigon Horeca thiết kế, thi công: nhà hàng, khách sạn, café, canteen nhà máy và trường học.',
+                'desc'     => [
+                    'vi' => 'Hơn 30 dự án bếp công nghiệp và quầy bar do Saigon Horeca thiết kế, thi công: nhà hàng, khách sạn, café, canteen nhà máy và trường học.',
+                    'en' => 'Over 30 commercial kitchen and bar projects by Saigon Horeca: restaurants, hotels, cafes, factory and school canteens.',
+                    'ja' => 'サイゴンホレカが手掛けた30件以上の業務用厨房・バー施工プロジェクト実績：レストラン、ホテル、カフェ、社員食堂など。',
+                ],
                 // Bản cũ (sgh_route_hero_preload_rules) trỏ
                 // renovate-sol-kitchen-bar-quan-7/Sol0D7-05.webp — file KHÔNG
                 // tồn tại, HTTP 404. Đổi sang ảnh cover có thật.
@@ -108,7 +120,11 @@ if (!function_exists('sgh_get_template_routes')) {
                 'store'    => 'option',
                 'ref'      => 'product',
                 'when'     => static fn() => is_post_type_archive('product'),
-                'desc'     => 'Thiết bị bếp công nghiệp và quầy bar chính hãng: bếp Âu, lò nướng, tủ lạnh, máy rửa chén, thiết bị pha chế. Bảo hành chính hãng, lắp đặt toàn quốc.',
+                'desc'     => [
+                    'vi' => 'Thiết bị bếp công nghiệp và quầy bar chính hãng: bếp Âu, lò nướng, tủ lạnh, máy rửa chén, thiết bị pha chế. Bảo hành chính hãng, lắp đặt toàn quốc.',
+                    'en' => 'Authentic commercial kitchen and bar equipment: European cooking ranges, ovens, refrigeration, dishwashers, beverage prep. Nationwide warranty and installation.',
+                    'ja' => '本格業務用厨房機器・バー機器の調達・販売：洋式レンジ、コンベクションオーブン、業務用冷蔵庫、食器洗浄機など。',
+                ],
                 'image'    => 'saigonhoreca/SGH-banner-01.webp',
             ],
             [
