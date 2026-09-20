@@ -283,24 +283,19 @@ class Pi_Multilang_Slugs {
         $bo_qua = [];
 
         foreach ($map as $key => $pair) {
-            if (!is_array($pair) || !isset($pair[1])) continue;
+            if (!is_array($pair) || !isset($pair[0])) continue;
             foreach ($config as $lang => $_c) {
-                // Bản đồ của theme chỉ có CẶP vi/en: cột [0] tiếng Việt, cột [1]
-                // tiếng Anh. Ngôn ngữ khác không có nguồn để đổ, phải sinh bằng
-                // AI ở màn URL Slugs. Trước đây chỗ này `continue` lặng lẽ nên
-                // người dùng bấm "Nạp route" xong tưởng tiếng Nhật đã có alias —
-                // giờ đếm riêng và báo ra ngoài.
-                if ($lang !== 'en') {
-                    // Ngôn ngữ gốc của host không cần alias — nó CHÍNH là slug
-                    // gốc. Đếm nó vào danh sách "bị bỏ qua" chỉ làm người đọc
-                    // tưởng có việc chưa làm.
-                    if (trim((string) ($_c['path_prefix'] ?? ''), '/') !== '') {
-                        if (!isset($bo_qua[$lang])) $bo_qua[$lang] = 0;
-                        $bo_qua[$lang]++;
-                    }
-                    continue;
+                // Ngôn ngữ gốc không cần alias — nó CHÍNH là slug gốc
+                if ($lang === 'vi') continue;
+
+                $raw_alias = '';
+                if ($lang === 'en' && isset($pair[1])) {
+                    $raw_alias = $pair[1];
+                } elseif (isset($pair[$lang])) {
+                    $raw_alias = $pair[$lang];
                 }
-                $alias = self::normalize_alias($pair[1]);
+
+                $alias = self::normalize_alias($raw_alias);
                 if ($alias === '' || $alias === self::normalize_alias($pair[0])) continue;
                 $r = self::set_alias([
                     'object_type' => 'route',
@@ -317,10 +312,6 @@ class Pi_Multilang_Slugs {
         return [
             'seeded'  => $seeded,
             'skipped' => $bo_qua,
-            'note'    => empty($bo_qua) ? '' :
-                'Bản đồ slug của theme chỉ có tiếng Anh. Ngôn ngữ ' .
-                implode(', ', array_keys($bo_qua)) .
-                ' phải sinh alias bằng AI ở màn URL Slugs.',
         ];
     }
 
@@ -396,6 +387,18 @@ class Pi_Multilang_Slugs {
                     $canonical[$k] = isset($map[$r->route_key][0])
                         ? self::normalize_alias($map[$r->route_key][0]) : '';
                 }
+            } elseif ($r->object_type === 'term') {
+                $k = 'term|' . (int) $r->object_id;
+                if (!array_key_exists($k, $canonical)) {
+                    $term = get_term((int) $r->object_id);
+                    if (!$term || is_wp_error($term)) {
+                        $canonical[$k] = '';
+                        $allowed[$k]   = [];
+                    } else {
+                        $canonical[$k] = $term->slug;
+                        $allowed[$k]   = true;
+                    }
+                }
             } else {
                 $k = $r->object_type . '|' . (int) $r->object_id;
                 if (!array_key_exists($k, $canonical)) {
@@ -406,7 +409,8 @@ class Pi_Multilang_Slugs {
                     } else {
                         $canonical[$k] = $post->post_name;
                         $lang_meta = (string) get_post_meta($post->ID, 'pi_language', true);
-                        $allowed[$k] = ($lang_meta === '') ? true : [$lang_meta];
+                        $has_tr = get_post_meta($post->ID, '_pi_tr_en_title', true) || get_post_meta($post->ID, '_pi_tr_ja_title', true);
+                        $allowed[$k] = ($has_tr || $lang_meta === '') ? true : [$lang_meta];
                     }
                 }
             }
@@ -414,25 +418,32 @@ class Pi_Multilang_Slugs {
 
         foreach ($rows as $r) {
             $isRoute = ($r->object_type === 'route');
-            $k = $isRoute ? 'route|' . $r->route_key : $r->object_type . '|' . (int) $r->object_id;
+            $isTerm  = ($r->object_type === 'term');
+            $k = $isRoute ? 'route|' . $r->route_key : ($isTerm ? 'term|' . (int) $r->object_id : $r->object_type . '|' . (int) $r->object_id);
             $canon = isset($canonical[$k]) ? $canonical[$k] : '';
             if ($canon === '' || $r->alias === '' || $r->alias === $canon) continue;
 
             // Bài gắn ngôn ngữ khác thì alias vô nghĩa — pre_get_posts sẽ loại nó.
-            if (!$isRoute && isset($allowed[$k]) && $allowed[$k] !== true
+            if (!$isRoute && !$isTerm && isset($allowed[$k]) && $allowed[$k] !== true
                 && !in_array($r->lang, (array) $allowed[$k], true)) {
                 continue;
             }
 
-            $type = $isRoute ? 'route' : 'post';
+            $type = $isRoute ? 'route' : ($isTerm ? 'term' : 'post');
             $inK  = $r->lang . '|' . $type . '|' . $r->alias;
 
             // Alias nào cũng quy về được slug gốc, kể cả alias đã về hưu — nhờ
             // vậy dịch một path đã dịch rồi vẫn ra đúng kết quả.
-            $idx['canon'][$r->alias] = $canon;
+            // Route và Term được ưu tiên tuyệt đối; Post/Product không được đè lên Route/Term
+            // và không được chiếm một slug vốn đang là canonical của đối tượng khác.
+            if ($isRoute || $isTerm) {
+                $idx['canon'][$r->alias] = $canon;
+            } elseif (!isset($idx['canon'][$r->alias]) && !in_array($r->alias, $canonical, true)) {
+                $idx['canon'][$r->alias] = $canon;
+            }
 
             if ($r->status === 'active') {
-                $idx['in'][$inK]  = $isRoute ? $canon : (int) $r->object_id;
+                $idx['in'][$inK]  = ($isRoute || $isTerm) ? $canon : (int) $r->object_id;
                 $idx['out'][$r->lang . '|' . $type . '|' . $canon] = $r->alias;
             } else {
                 // Điền sau vòng này, khi đã biết alias active cuối cùng.
@@ -523,7 +534,7 @@ class Pi_Multilang_Slugs {
         foreach ($segs as $seg) {
             $canon = self::to_canonical_segment($seg, $idx);
             $done  = false;
-            foreach (['route', 'post'] as $type) {
+            foreach (['route', 'post', 'term'] as $type) {
                 $k = $lang . '|' . $type . '|' . $canon;
                 if (isset($idx['out'][$k])) { $out[] = $idx['out'][$k]; $done = true; break; }
             }

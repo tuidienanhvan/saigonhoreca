@@ -38,13 +38,18 @@ class Pi_Multilang_Frontend {
         if (is_admin() || !$query->is_main_query()) return;
         if (!defined('PI_CURRENT_LANGUAGE')) return;
 
+        // Bài/trang đơn đã qua router phân giải (có p hoặc page_id) không bị chặn
+        if ($query->is_singular() || !empty($query->get('p')) || !empty($query->get('page_id'))) return;
+
         $meta_query = $query->get('meta_query');
         if (!is_array($meta_query)) $meta_query = [];
 
+        $cur_lang = PI_CURRENT_LANGUAGE;
         $mq = [
             'relation' => 'OR',
-            ['key' => 'pi_language', 'value' => PI_CURRENT_LANGUAGE, 'compare' => '='],
+            ['key' => 'pi_language', 'value' => $cur_lang, 'compare' => '='],
             ['key' => 'pi_language', 'compare' => 'NOT EXISTS'],
+            ['key' => '_pi_tr_' . $cur_lang . '_title', 'compare' => 'EXISTS'],
         ];
 
         if (empty($meta_query)) {

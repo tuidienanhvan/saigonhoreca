@@ -64,6 +64,16 @@ class Pi_Multilang_Router {
             $query_vars = self::resolve_name($query_vars, $lang);
         }
 
+        // Phân giải alias cho taxonomy query vars nếu có
+        foreach (['product_category', 'product_brand', 'category', 'project_category', 'tag'] as $tax_var) {
+            if (!empty($query_vars[$tax_var])) {
+                $term_canon = Pi_Multilang_Slugs::resolve_in($query_vars[$tax_var], $lang, 'term');
+                if (is_string($term_canon) && $term_canon !== '') {
+                    $query_vars[$tax_var] = $term_canon;
+                }
+            }
+        }
+
         // Chẩn đoán bật theo yêu cầu: ?pi_slug_debug=1. Không phụ thuộc WP_DEBUG
         // vì trên máy này WP_DEBUG tắt, mà lỗi tầng slug thì im lặng — trang vẫn
         // 200, chỉ là sai trang. Header chỉ lộ query var, không lộ dữ liệu.
@@ -101,6 +111,12 @@ class Pi_Multilang_Router {
         if (!is_string($canonical) || $canonical === '' || $canonical === $segs[0]) return null;
 
         $segs[0] = $canonical;
+        for ($i = 1; $i < count($segs); $i++) {
+            $term_canon = Pi_Multilang_Slugs::resolve_in($segs[$i], $lang, 'term');
+            if (is_string($term_canon) && $term_canon !== '') {
+                $segs[$i] = $term_canon;
+            }
+        }
         $translated = implode('/', $segs);
 
         $rules = $wp_rewrite->wp_rewrite_rules();
@@ -311,7 +327,7 @@ class Pi_Multilang_Router {
         $segments = explode('/', $rel);
         $changed  = false;
         foreach ($segments as $i => $seg) {
-            foreach (['post', 'route'] as $type) {
+            foreach (['post', 'route', 'term'] as $type) {
                 $old = Pi_Multilang_Slugs::resolve_old($seg, $lang, $type);
                 if ($old && !empty($old['to'])) { $segments[$i] = $old['to']; $changed = true; break; }
             }
