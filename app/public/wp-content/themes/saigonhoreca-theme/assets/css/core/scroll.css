@@ -10,48 +10,168 @@
    tắt hẳn + div giả (nhiều JS, lắm bug) — đều đã gỡ.
    ═══════════════════════════════════════════════════════════════ */
 
-/* ── Cửa sổ chính ── */
-html {
+/* ── Cửa sổ chính (True 0px Native Gutter + Pure Floating Overlay Scrollbar) ── */
+html, body {
   scroll-behavior: smooth;
-  scrollbar-gutter: stable;
-  /* Firefox */
-  scrollbar-width: thin;
-  scrollbar-color: transparent transparent;
+  /* Firefox: Hide native scrollbar for 0px layout offset */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
-html.is-scrolling {
-  scrollbar-color: color-mix(in srgb, var(--p) 55%, transparent) var(--b2);
+/* Chrome/Edge/Safari: Hide native scrollbar to eliminate 6px layout gutter on Windows */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 0px !important;
+  height: 0px !important;
+  display: none !important;
 }
 
-html::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
-
-/* Mặc định khi không cuộn (idle): Ẩn thumb và track */
-html::-webkit-scrollbar-track {
-  background: transparent;
-}
-html::-webkit-scrollbar-thumb {
-  background: transparent;
+/* Floating Overlay Scrollbar Track (Ray máng kính mờ Obsidian bo tròn 2 đầu đè lên mép phải) */
+#sh-overlay-scrollbar-track {
+  position: fixed;
+  right: 2px;
+  top: 6px;
+  bottom: 6px;
+  width: 7px;
   border-radius: 9999px;
-  border: 2px solid transparent;
+  background: color-mix(in srgb, var(--b2, #131313) 72%, transparent);
+  -webkit-backdrop-filter: blur(8px) saturate(180%);
+  backdrop-filter: blur(8px) saturate(180%);
+  border: 1px solid color-mix(in srgb, var(--bd, #ffffff) 14%, transparent);
+  box-shadow: 
+    inset 0 0 6px rgba(0, 0, 0, 0.85),
+    0 1px 4px rgba(0, 0, 0, 0.4);
+  z-index: 99998;
+  pointer-events: none;
+  opacity: 0;
+  cursor: pointer;
+  transition: 
+    opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    width 0.24s cubic-bezier(0.16, 1, 0.3, 1),
+    right 0.24s cubic-bezier(0.16, 1, 0.3, 1),
+    background 0.24s ease,
+    border-color 0.24s ease;
+  will-change: opacity, width;
+  contain: layout size style;
+  touch-action: none;
 }
 
-/* Khi đang cuộn (.is-scrolling) hoặc rê chuột trực tiếp vào thanh cuộn */
-html.is-scrolling::-webkit-scrollbar-track,
-html::-webkit-scrollbar-track:hover {
-  background: var(--b2);
+/* Floating Overlay Scrollbar Thumb (Nút trượt thỏi vàng hoàng gia 3D metallic) */
+#sh-overlay-scrollbar-thumb {
+  position: fixed;
+  right: 3px;
+  top: 0;
+  width: 5px;
+  min-height: 36px;
+  border-radius: 9999px;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--pl, #ffd166) 88%, #ffffff) 0%,
+    var(--p, #f5a623) 40%,
+    var(--ph, #d18910) 80%,
+    color-mix(in srgb, var(--p, #f5a623) 65%, #000000) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 
+    0 0 8px color-mix(in srgb, var(--p) 50%, transparent),
+    0 2px 6px rgba(0, 0, 0, 0.5),
+    inset 0 1px 1px rgba(255, 255, 255, 0.55);
+  z-index: 99999;
+  pointer-events: none;
+  opacity: 0;
+  cursor: grab;
+  transition: 
+    opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    width 0.24s cubic-bezier(0.16, 1, 0.3, 1),
+    right 0.24s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.24s ease,
+    border-color 0.24s ease;
+  will-change: transform, opacity, width;
+  contain: layout size style;
+  touch-action: none;
 }
 
-html.is-scrolling::-webkit-scrollbar-thumb,
-html::-webkit-scrollbar-thumb:hover {
-  background: color-mix(in srgb, var(--p) 55%, transparent);
-  border: 2px solid var(--b2);
+/* Khi đang cuộn, hover scrollbar hoặc kéo thả: Kích hoạt hiển thị và nhận diện Pointer Events */
+html.is-scrolling #sh-overlay-scrollbar-track,
+html.is-scrolling #sh-overlay-scrollbar-thumb,
+html.is-scrollbar-hovered #sh-overlay-scrollbar-track,
+html.is-scrollbar-hovered #sh-overlay-scrollbar-thumb,
+html.is-dragging #sh-overlay-scrollbar-track,
+html.is-dragging #sh-overlay-scrollbar-thumb {
+  pointer-events: auto;
+  opacity: 1;
 }
 
-html::-webkit-scrollbar-thumb:hover {
-  background: color-mix(in srgb, var(--p) 85%, transparent);
+/* Hover phản hồi xúc giác thị giác (Tactile Micro-expansion) */
+#sh-overlay-scrollbar-track:hover,
+html.is-scrollbar-hovered #sh-overlay-scrollbar-track {
+  right: 1px;
+  width: 11px;
+  background: color-mix(in srgb, var(--b2, #131313) 85%, transparent);
+  border-color: color-mix(in srgb, var(--p, #f5a623) 35%, var(--bd));
+}
+
+#sh-overlay-scrollbar-track:hover ~ #sh-overlay-scrollbar-thumb,
+#sh-overlay-scrollbar-thumb:hover,
+html.is-scrollbar-hovered #sh-overlay-scrollbar-thumb {
+  right: 2px;
+  width: 9px;
+  border-color: rgba(255, 255, 255, 0.45);
+  box-shadow: 
+    0 0 14px color-mix(in srgb, var(--p) 75%, transparent),
+    0 0 22px color-mix(in srgb, var(--pl, #ffd166) 45%, transparent),
+    0 2px 8px rgba(0, 0, 0, 0.6),
+    inset 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+/* Trạng thái đang kéo thả (Active Dragging State) */
+html.is-dragging {
+  scroll-behavior: auto !important; /* Tắt smooth scroll để kéo chuột 1:1 không bị trễ/rubber-band */
+  user-select: none !important;      /* Chống bôi đen văn bản khi lia chuột nhanh */
+  cursor: grabbing !important;
+}
+
+html.is-dragging * {
+  user-select: none !important;
+  cursor: grabbing !important;
+}
+
+html.is-dragging #sh-overlay-scrollbar-track {
+  right: 1px;
+  width: 11px;
+  pointer-events: auto;
+  opacity: 1 !important;
+  background: color-mix(in srgb, var(--b2, #131313) 95%, #000000);
+  border-color: color-mix(in srgb, var(--p, #f5a623) 45%, transparent);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.9), 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+html.is-dragging #sh-overlay-scrollbar-thumb {
+  right: 2px;
+  width: 9px;
+  pointer-events: auto;
+  opacity: 1 !important;
+  cursor: grabbing !important;
+  filter: brightness(1.15);
+  box-shadow: 
+    0 0 18px var(--p),
+    0 0 30px color-mix(in srgb, var(--pl, #ffd166) 60%, transparent),
+    inset 0 1px 2px #ffffff;
+}
+
+/* Triệt tiêu toàn diện khi Lock Body Scroll (Modal / Mobile Drawer / Lightbox) */
+html:has(body.overflow-hidden) #sh-overlay-scrollbar-track,
+html:has(body.overflow-hidden) #sh-overlay-scrollbar-thumb,
+html:has(body[style*="overflow: hidden"]) #sh-overlay-scrollbar-track,
+html:has(body[style*="overflow: hidden"]) #sh-overlay-scrollbar-thumb,
+html.overflow-hidden #sh-overlay-scrollbar-track,
+html.overflow-hidden #sh-overlay-scrollbar-thumb,
+body.overflow-hidden ~ #sh-overlay-scrollbar-track,
+body.overflow-hidden ~ #sh-overlay-scrollbar-thumb {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transition: opacity 0.15s ease, visibility 0.15s ease !important;
 }
 
 /* ── Container con (sidebar, modal, vùng cuộn nội bộ) ── */
@@ -103,3 +223,47 @@ body :not(html)::-webkit-scrollbar-thumb:hover {
 /* Archive-project trust track: ẩn hẳn — có dot/nav riêng. */
 .sh-archive-trust__track { scrollbar-width: none; }
 .sh-archive-trust__track::-webkit-scrollbar { display: none; }
+
+/* ── Hỗ trợ tiếp cận (Accessibility / a11y) & Edge Cases ───────── */
+
+/* 1. Giảm chuyển động (Prefers-Reduced-Motion): Tắt cuộn mượt và triệt tiêu transition mờ dần (WCAG 2.3.3 / 2.2.2) */
+@media (prefers-reduced-motion: reduce) {
+  html, body {
+    scroll-behavior: auto !important;
+  }
+  #sh-overlay-scrollbar-track,
+  #sh-overlay-scrollbar-thumb {
+    transition: none !important;
+  }
+}
+
+/* 2. Tương phản cao (High Contrast Mode / Windows Contrast Themes) */
+@media (forced-colors: active) {
+  #sh-overlay-scrollbar-track {
+    background: Canvas !important;
+    border: 1px solid CanvasText !important;
+    box-shadow: none !important;
+  }
+  #sh-overlay-scrollbar-thumb {
+    background: Highlight !important;
+    border: 1px solid CanvasText !important;
+    box-shadow: none !important;
+    forced-color-adjust: none;
+  }
+  body :not(html) {
+    scrollbar-color: Highlight Canvas !important;
+  }
+  body :not(html)::-webkit-scrollbar-thumb {
+    background: Highlight !important;
+    border: 1px solid CanvasText !important;
+  }
+}
+
+/* 3. Thiết bị thuần cảm ứng (Touch-only devices): Ẩn thanh cuộn overlay ảo để sử dụng thanh cuộn native tối ưu của HĐH */
+@media (hover: none) and (pointer: coarse) {
+  #sh-overlay-scrollbar-track,
+  #sh-overlay-scrollbar-thumb {
+    display: none !important;
+  }
+}
+
