@@ -46,11 +46,11 @@ if (!function_exists('sgh_route_css_rules')) {
         return [
             ['when' => 'is_front_page', 'bundle' => 'home'],
             [
-                'when'   => fn() => is_page_template('page-templates/page-gioi-thieu.php') || is_page('ve-saigon-horeca') || is_page('gioi-thieu'),
+                'when'   => fn() => is_page_template('page-templates/page-about.php') || is_page('ve-saigon-horeca') || is_page('gioi-thieu'),
                 'bundle' => 'about',
             ],
             [
-                'when'   => fn() => is_page_template('page-templates/page-lien-he.php') || is_page('lien-he'),
+                'when'   => fn() => is_page_template('page-templates/page-contact.php') || is_page('lien-he'),
                 'bundle' => 'contact',
             ],
             ['when' => fn() => is_singular('product'), 'bundle' => 'product'],
@@ -126,17 +126,17 @@ if (!function_exists('sgh_route_hero_preload_rules')) {
     function sgh_route_hero_preload_rules() {
         return [
             [
-                'when'  => fn() => is_page_template('page-templates/page-gioi-thieu.php') || is_page('ve-saigon-horeca') || is_page('gioi-thieu'),
+                'when'  => fn() => is_page_template('page-templates/page-about.php') || is_page('ve-saigon-horeca') || is_page('gioi-thieu'),
                 'image' => 'saigonhoreca/bia-bep-cong-nghiep-inox.webp',
             ],
             [
-                'when'  => fn() => is_page_template('page-templates/page-lien-he.php') || is_page('lien-he'),
+                'when'  => fn() => is_page_template('page-templates/page-contact.php') || is_page('lien-he'),
                 'image' => 'saigonhoreca/Saigon-Horeca-thiet-bi-bep-cong-nghiep.webp',
             ],
             [
                 'when'  => fn() => is_post_type_archive('project') || is_tax('project_category')
                     || (function_exists('sgh_slug') && is_page(sgh_slug('projects_index'))),
-                'image' => 'renovate-sol-kitchen-bar-quan-7/Sol0D7-05.webp',
+                'image' => 'renovate-sol-kitchen-bar-quan-7/renovate-sol-kitchen-bar-quan-7-thumbnail-project-cover-1024x576.webp',
             ],
         ];
     }
@@ -176,17 +176,53 @@ if (!function_exists('sgh_route_description_rules')) {
      * @return array<int,array{when:callable,desc:string}>
      */
     function sgh_route_description_rules() {
+        $lang = function_exists('sgh_get_current_lang') ? sgh_get_current_lang() : 'vi';
+
+        if ($lang === 'ja') {
+            return [
+                [
+                    'when' => 'is_front_page',
+                    'desc' => 'Saigon Horeca（サイゴンホレカ）は、レストラン、ホテル、カフェ向けに業務用厨房機器およびバー設備の設計・施工・導入をトータルサポート。施工実績30件以上。',
+                ],
+                [
+                    'when' => fn() => is_page_template('page-templates/page-about.php') || is_page('ve-saigon-horeca') || is_page('about'),
+                    'desc' => 'Saigon Horeca（サイゴンホレカ）の企業情報 — ベトナムにおける業務用厨房設備・バー設備の設計・施工会社。企業理念、施工実績、サービス概要をご案内。',
+                ],
+                [
+                    'when' => fn() => is_page_template('page-templates/page-contact.php') || is_page('lien-he') || is_page('contact'),
+                    'desc' => 'Saigon Horeca（サイゴンホレカ）へのお問い合わせ。業務用厨房およびバー設備の無料設計相談、ショールーム住所、お見積もり依頼はこちら。',
+                ],
+            ];
+        }
+
+        if ($lang === 'en') {
+            return [
+                [
+                    'when' => 'is_front_page',
+                    'desc' => 'Saigon Horeca specializes in turnkey commercial kitchen and bar equipment design, installation, and supply for restaurants, hotels, and cafés. Over 30 delivered projects.',
+                ],
+                [
+                    'when' => fn() => is_page_template('page-templates/page-about.php') || is_page('ve-saigon-horeca') || is_page('about'),
+                    'desc' => 'About Saigon Horeca — Professional commercial kitchen and bar design, procurement, and installation in Vietnam. Company profile, core values, and key projects.',
+                ],
+                [
+                    'when' => fn() => is_page_template('page-templates/page-contact.php') || is_page('lien-he') || is_page('contact'),
+                    'desc' => 'Contact Saigon Horeca for free consultation on commercial kitchen and bar design. Hotline, showroom address, and quote inquiry form.',
+                ],
+            ];
+        }
+
         return [
             [
                 'when' => 'is_front_page',
                 'desc' => 'Saigon Horeca thiết kế, thi công và cung cấp thiết bị bếp công nghiệp, quầy bar trọn gói cho nhà hàng, khách sạn, quán café. Hơn 30 dự án đã bàn giao.',
             ],
             [
-                'when' => fn() => is_page_template('page-templates/page-gioi-thieu.php') || is_page('ve-saigon-horeca'),
+                'when' => fn() => is_page_template('page-templates/page-about.php') || is_page('ve-saigon-horeca'),
                 'desc' => 'Giới thiệu Saigon Horeca — đơn vị tư vấn thiết kế và thi công bếp công nghiệp, quầy bar tại TP.HCM. Năng lực, quy trình và các dự án tiêu biểu đã thực hiện.',
             ],
             [
-                'when' => fn() => is_page_template('page-templates/page-lien-he.php') || is_page('lien-he'),
+                'when' => fn() => is_page_template('page-templates/page-contact.php') || is_page('lien-he'),
                 'desc' => 'Liên hệ Saigon Horeca để được tư vấn miễn phí thiết kế bếp công nghiệp và quầy bar. Hotline, địa chỉ showroom và biểu mẫu gửi yêu cầu báo giá.',
             ],
         ];

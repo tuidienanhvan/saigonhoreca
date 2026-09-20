@@ -64,6 +64,20 @@ if (!class_exists('SGH_SEO_Meta_Description')) {
             if ($pi_title !== '') {
                 return $pi_title;
             }
+            $lang = function_exists('sgh_get_current_lang') ? sgh_get_current_lang() : 'vi';
+            $site_name = get_bloginfo('name');
+            if (is_post_type_archive('product')) {
+                if ($lang === 'ja') return '製品 – ' . $site_name;
+                if ($lang === 'en') return 'Products – ' . $site_name;
+            }
+            if (is_post_type_archive('project')) {
+                if ($lang === 'ja') return 'プロジェクト – ' . $site_name;
+                if ($lang === 'en') return 'Projects – ' . $site_name;
+            }
+            if (is_front_page()) {
+                if ($lang === 'ja') return $site_name . ' – 業務用厨房機器・バー設備・飲食空間総合ソリューション';
+                if ($lang === 'en') return $site_name . ' – Commercial Kitchen Equipment & Horeca Solutions';
+            }
             return $title;
         }
 
@@ -95,16 +109,16 @@ if (!class_exists('SGH_SEO_Meta_Description')) {
 
             $desc = '';
 
-            if (is_singular(['product', 'project', 'post', 'page'])) {
+            if (is_front_page()) {
+                $desc = self::build_for_home();
+            } elseif (is_home()) {
+                $desc = self::build_for_news();
+            } elseif (is_singular(['product', 'project', 'post', 'page'])) {
                 $desc = self::build_for_singular(get_queried_object());
             } elseif (is_tax() || is_category() || is_tag()) {
                 $desc = self::build_for_term(get_queried_object());
             } elseif (is_post_type_archive(['product', 'project'])) {
                 $desc = self::build_for_archive(get_queried_object());
-            } elseif (is_front_page()) {
-                $desc = self::build_for_home();
-            } elseif (is_home()) {
-                $desc = self::build_for_news();
             }
 
             return self::$cache[$key] = $desc;
@@ -160,19 +174,38 @@ if (!class_exists('SGH_SEO_Meta_Description')) {
         }
 
         protected static function build_for_archive($obj) {
-            $label = '';
-            if ($obj && isset($obj->labels->name)) {
-                $label = self::clean($obj->labels->name);
-            } elseif ($obj && isset($obj->name)) {
-                $label = self::clean(ucfirst($obj->name));
+            $lang = function_exists('sgh_get_current_lang') ? sgh_get_current_lang() : 'vi';
+            $is_product = ($obj && isset($obj->name) && $obj->name === 'product');
+            $is_project = ($obj && isset($obj->name) && $obj->name === 'project');
+
+            if ($lang === 'ja') {
+                $label = $is_product ? '製品一覧' : ($is_project ? '施工実績・プロジェクト' : ($obj->labels->name ?? ''));
+                $usp   = '業務用厨房機器、バーカウンター設備、プロフェッショナルなHorecaソリューション';
+            } elseif ($lang === 'en') {
+                $label = $is_product ? 'Products' : ($is_project ? 'Projects' : ($obj->labels->name ?? ''));
+                $usp   = 'Commercial kitchen equipment, bespoke bar stations, turnkey Horeca solutions';
+            } else {
+                $label = '';
+                if ($obj && isset($obj->labels->name)) {
+                    $label = self::clean($obj->labels->name);
+                } elseif ($obj && isset($obj->name)) {
+                    $label = self::clean(ucfirst($obj->name));
+                }
+                $usp = 'Bếp công nghiệp, quầy bar chuẩn HORECA — thiết kế trọn gói, lắp đặt nhanh';
             }
-            $usp = 'Bếp công nghiệp, quầy bar chuẩn HORECA — thiết kế trọn gói, lắp đặt nhanh';
             return self::compose($label, '', $usp);
         }
 
         protected static function build_for_home() {
+            $lang = function_exists('sgh_get_current_lang') ? sgh_get_current_lang() : 'vi';
             $site = function_exists('get_bloginfo') ? get_bloginfo('name') : 'Saigon Horeca';
-            $usp  = 'Thiết bị bếp công nghiệp, inox, quầy bar — thiết kế thi công trọn gói chuẩn HORECA cho nhà hàng, khách sạn, café';
+            if ($lang === 'ja') {
+                $usp = '業務用厨房機器、特注ステンレス什器、バー設備 — 高級レストラン・ホテル向け設計・施工・保守サービス';
+            } elseif ($lang === 'en') {
+                $usp = 'Turnkey commercial kitchen equipment, bespoke bar stations, custom stainless steel fabrication for restaurants & hotels';
+            } else {
+                $usp = 'Thiết bị bếp công nghiệp, inox, quầy bar — thiết kế thi công trọn gói chuẩn HORECA cho nhà hàng, khách sạn, café';
+            }
             return self::compose($site, '', $usp);
         }
 
@@ -187,8 +220,17 @@ if (!class_exists('SGH_SEO_Meta_Description')) {
                 }
                 $title = self::clean(get_the_title($posts_page));
             }
-            if ($title === '') $title = 'Tin tức HORECA';
-            $usp = 'Kiến thức bếp công nghiệp, thiết bị inox, quầy bar & dự án HORECA mới nhất';
+            $lang = function_exists('sgh_get_current_lang') ? sgh_get_current_lang() : 'vi';
+            if ($title === '') {
+                $title = ($lang === 'ja') ? '最新ニュース & 技術コラム' : (($lang === 'en') ? 'Latest News & Insights' : 'Tin tức HORECA');
+            }
+            if ($lang === 'ja') {
+                $usp = '業務用厨房機器の選定基準、HACCP衛生管理、飲食店の厨房レイアウト設計ノウハウ';
+            } elseif ($lang === 'en') {
+                $usp = 'Commercial kitchen layouts, HACCP hygiene standards, bar station design, and F&B equipment insights';
+            } else {
+                $usp = 'Kiến thức bếp công nghiệp, thiết bị inox, quầy bar & dự án HORECA mới nhất';
+            }
             return self::compose($title, '', $usp);
         }
 
@@ -241,12 +283,29 @@ if (!class_exists('SGH_SEO_Meta_Description')) {
             $len = mb_strlen($desc);
             if ($len >= self::MIN_LEN) return $desc;
 
-            $snippets = [
-                'Bếp công nghiệp, quầy bar, inox HORECA cho nhà hàng, khách sạn, café cao cấp — giá tốt',
-                'Tư vấn miễn phí, thiết kế trọn gói, lắp đặt tận nơi toàn quốc — bảo hành chính hãng',
-                'Giá tốt, bảo hành chính hãng, đội ngũ kỹ sư chuyên nghiệp, lắp đặt nhanh',
-                'Giá tốt, bảo hành chính hãng',
-            ];
+            $lang = function_exists('sgh_get_current_lang') ? sgh_get_current_lang() : 'vi';
+            if ($lang === 'ja') {
+                $snippets = [
+                    '業務用厨房機器、特注ステンレス什器、バー設備 — 飲食・ホテル施設向け設計・施工・保守対応',
+                    '新品・未開封正規品、12〜24ヶ月安心メーカー保証、ベトナム全国配送・据付施工対応',
+                    '正規メーカー品、12〜24ヶ月保証、全国配送・施工対応',
+                    '正規輸入品、12〜24ヶ月保証',
+                ];
+            } elseif ($lang === 'en') {
+                $snippets = [
+                    'Commercial kitchen equipment, bespoke bar stations, turnkey Horeca solutions for hotels & restaurants',
+                    '100% genuine equipment, 12-24 months official warranty, nationwide delivery & professional setup',
+                    'Genuine brand equipment, 12-24 months warranty, nationwide delivery',
+                    'Best price, genuine warranty',
+                ];
+            } else {
+                $snippets = [
+                    'Bếp công nghiệp, quầy bar, inox HORECA cho nhà hàng, khách sạn, café cao cấp — giá tốt',
+                    'Tư vấn miễn phí, thiết kế trọn gói, lắp đặt tận nơi toàn quốc — bảo hành chính hãng',
+                    'Giá tốt, bảo hành chính hãng, đội ngũ kỹ sư chuyên nghiệp, lắp đặt nhanh',
+                    'Giá tốt, bảo hành chính hãng',
+                ];
+            }
 
             $needle = ' – Hotline:';
             $has_hotline_tail = $hotline && strpos($desc, $needle) !== false;
@@ -400,9 +459,13 @@ if (!class_exists('SGH_SEO_Social')) {
                     $seo_title = sgh_get_project_meta($post_slug, 'Title');
                 }
                 if (!$seo_title) {
-                    $seo_title = !empty($pi_seo['og_title']) ? $pi_seo['og_title']
-                        : (!empty($pi_seo['seo_title']) ? $pi_seo['seo_title']
-                        : (is_singular() ? get_the_title() : get_bloginfo('name')));
+                    if (is_front_page()) {
+                        $seo_title = wp_get_document_title();
+                    } else {
+                        $seo_title = !empty($pi_seo['og_title']) ? $pi_seo['og_title']
+                            : (!empty($pi_seo['seo_title']) ? $pi_seo['seo_title']
+                            : (is_singular() ? get_the_title() : wp_get_document_title()));
+                    }
                 }
 
                 // 2. OG Description
@@ -423,7 +486,13 @@ if (!class_exists('SGH_SEO_Social')) {
 
                 // 3. OG Image
                 $seo_img = !empty($pi_seo['og_image']) ? $pi_seo['og_image']
-                    : (is_singular() && has_post_thumbnail() ? get_the_post_thumbnail_url(null, 'large') : '');
+                    : (is_singular() && has_post_thumbnail() ? get_the_post_thumbnail_url(null, 'full') : '');
+
+                // Gỡ bỏ suffix kích thước (ví dụ: -1024x538) để dùng URL ảnh gốc tĩnh,
+                // tránh lỗi HTTP 502 khi LiteSpeed / Nginx / GD image resizer bị crash / timeout khi Facebook Crawler tải ảnh.
+                if ($seo_img) {
+                    $seo_img = preg_replace('/-\d+x\d+(\.(jpe?g|png|webp))$/i', '$1', $seo_img);
+                }
                 
                 // ⚠️ 2026-08-03 — fallback cũ trỏ assets/images/og-default.jpg,
                 // file KHÔNG TỒN TẠI: 404 trên cả local, .vn và .com. Nghĩa là
@@ -458,7 +527,18 @@ if (!class_exists('SGH_SEO_Social')) {
                     // og-default.jpg nữa cho tới khi file đó thực sự tồn tại.
                     $seo_img = esc_url(get_template_directory_uri() . '/assets/images/logo-schema-seo.webp');
                 }
+                $current_lang = function_exists('sgh_get_current_lang') ? sgh_get_current_lang() : 'vi';
+                $og_locales = [
+                    'vi' => 'vi_VN',
+                    'en' => 'en_US',
+                    'ja' => 'ja_JP',
+                ];
+                $active_og_locale = $og_locales[$current_lang] ?? 'vi_VN';
             ?>
+                <meta property="og:locale" content="<?php echo esc_attr($active_og_locale); ?>">
+                <?php foreach ($og_locales as $l_code => $l_loc) : if ($l_code !== $current_lang) : ?>
+                <meta property="og:locale:alternate" content="<?php echo esc_attr($l_loc); ?>">
+                <?php endif; endforeach; ?>
                 <meta property="og:title" content="<?php echo esc_attr($seo_title); ?>">
                 <meta property="og:description" content="<?php echo esc_attr($seo_desc); ?>">
                 <meta property="og:url" content="<?php echo esc_url($seo_url); ?>">

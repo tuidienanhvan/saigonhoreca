@@ -116,8 +116,8 @@ if (!class_exists('SGH_SEO_Schema')) {
                 $data['address'] = [
                     '@type'           => 'PostalAddress',
                     'streetAddress'   => $c['address'],
-                    'addressLocality' => $c['city'] ?? 'Hồ Chí Minh',
-                    'addressRegion'   => $c['city'] ?? 'Hồ Chí Minh',
+                    'addressLocality' => $c['city'] ?? SGH_DEFAULT_CITY,
+                    'addressRegion'   => $c['city'] ?? SGH_DEFAULT_CITY,
                     'addressCountry'  => $c['country_code'] ?? 'VN',
                 ];
             }
@@ -146,7 +146,7 @@ if (!class_exists('SGH_SEO_Schema')) {
                     'telephone'         => $c['hotline'],
                     'contactType'       => 'sales',
                     'areaServed'        => 'VN',
-                    'availableLanguage' => ['Vietnamese', 'English'],
+                    'availableLanguage' => ['Vietnamese', 'English', 'Japanese'],
                 ];
             }
             if (!empty($c['hotline_alt'])) {
@@ -180,7 +180,7 @@ if (!class_exists('SGH_SEO_Schema')) {
                     ],
                     'query-input' => 'required name=search_term_string',
                 ],
-                'inLanguage' => 'vi-VN',
+                'inLanguage' => self::lang(),
             ];
         }
 
@@ -221,18 +221,19 @@ if (!class_exists('SGH_SEO_Schema')) {
                     '@type' => 'Brand',
                     'name'  => $brand_name,
                 ] : null,
+                'inLanguage'  => self::lang(),
             ];
 
             return array_filter($data, static function($v) { return $v !== null && $v !== ''; });
         }
 
         protected static function is_contact_page() {
-            return is_page_template('page-templates/page-lien-he.php')
+            return is_page_template(SGH_TPL_CONTACT)
                 || (function_exists('sgh_slug') && is_page(sgh_slug('contact')));
         }
 
         protected static function is_about_page() {
-            return is_page_template('page-templates/page-gioi-thieu.php')
+            return is_page_template('page-templates/page-about.php')
                 || (function_exists('sgh_slug') && is_page(sgh_slug('about')));
         }
 
@@ -242,7 +243,10 @@ if (!class_exists('SGH_SEO_Schema')) {
         }
 
         protected static function lang() {
-            return (function_exists('sgh_is_english_site') && sgh_is_english_site()) ? 'en' : 'vi-VN';
+            $current = function_exists('sgh_get_current_lang') ? sgh_get_current_lang() : 'vi';
+            if ($current === 'ja') return 'ja-JP';
+            if ($current === 'en') return 'en-US';
+            return 'vi-VN';
         }
 
         protected static function contact_page() {
