@@ -104,7 +104,14 @@ if (!function_exists('sgh_url')) {
             $lang = function_exists('sgh_get_current_lang') ? sgh_get_current_lang() : (sgh_is_english_site() ? 'en' : 'vi');
         }
         $slug = sgh_slug($key, $lang);
-        $prefix = ($lang === 'vi' || sgh_is_english_site()) ? '' : '/' . $lang;
+        $is_en_site = sgh_is_english_site();
+        if ($lang === 'vi') {
+            $prefix = $is_en_site ? '/vi' : '';
+        } elseif ($lang === 'en') {
+            $prefix = $is_en_site ? '' : '/en';
+        } else {
+            $prefix = '/' . $lang;
+        }
         $path = $prefix . '/' . $slug . '/' . ($sub ? trim($sub, '/') . '/' : '');
         return home_url($path);
     }
@@ -194,9 +201,11 @@ if (!function_exists('sgh_hreflang_tags')) {
         $path = isset($_SERVER['REQUEST_URI']) ? strtok($_SERVER['REQUEST_URI'], '?') : '/';
         $vi   = 'https://' . SGH_DOMAIN_VN  . sgh_translate_path($path, false);
         $en   = 'https://' . SGH_DOMAIN_COM . sgh_translate_path($path, true);
+        $ja   = 'https://' . SGH_DOMAIN_VN  . '/ja' . sgh_translate_path($path, 'ja');
         echo "\n";
         echo '<link rel="alternate" hreflang="vi" href="' . esc_url($vi) . '">' . "\n";
         echo '<link rel="alternate" hreflang="en" href="' . esc_url($en) . '">' . "\n";
+        echo '<link rel="alternate" hreflang="ja" href="' . esc_url($ja) . '">' . "\n";
         echo '<link rel="alternate" hreflang="x-default" href="' . esc_url($vi) . '">' . "\n";
     }
 }

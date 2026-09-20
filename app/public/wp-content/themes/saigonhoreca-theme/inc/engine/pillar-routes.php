@@ -58,7 +58,10 @@ if (!function_exists('sgh_pillar_route_serve')) {
         $proj_map  = function_exists('sgh_bilingual_slug_map') ? sgh_bilingual_slug_map() : [];
         $proj_vi   = $proj_map['projects_index'][0] ?? 'du-an';
         $proj_en   = $proj_map['projects_index'][1] ?? 'projects';
-        $is_canonical_path = preg_match('#^/(?:' . preg_quote($proj_vi, '#') . '|' . preg_quote($proj_en, '#') . ')/([a-z0-9\-]+)/?$#i', $clean_uri, $m);
+        $proj_ja   = $proj_map['projects_index']['ja'] ?? 'project';
+        $prefixes  = array_unique(array_filter([$proj_vi, $proj_en, $proj_ja]));
+        $prefix_regex = implode('|', array_map(fn($p) => preg_quote($p, '#'), $prefixes));
+        $is_canonical_path = preg_match('#^/(?:' . $prefix_regex . ')/([a-z0-9\-]+)/?$#i', $clean_uri, $m);
         $is_root_alias     = false;
 
         if (!$is_canonical_path) {
