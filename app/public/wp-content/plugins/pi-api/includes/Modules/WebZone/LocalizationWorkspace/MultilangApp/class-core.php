@@ -65,6 +65,7 @@ class Pi_Multilang_Core {
         // wp_safe_redirect() nằm trong pluggable.php, nạp ở wp-settings.php:603
         // — tức SAU khi plugin được include. Không gọi được ở đây.
         add_action('init', [__CLASS__, 'maybe_redirect_default_prefix'], 0);
+        add_action('init', [__CLASS__, 'maybe_detect_japanese_visitor'], 5);
 
         add_filter('locale', [__CLASS__, 'filter_locale'], 999);
         add_filter('home_url', [__CLASS__, 'filter_home_url'], 30, 2);
@@ -137,8 +138,9 @@ class Pi_Multilang_Core {
             ];
         }
         return [
-            'vi' => ['label' => 'Tiếng Việt', 'host' => 'saigonhoreca.vn',  'path_prefix' => '', 'wp_locale' => 'vi',    'hreflang' => 'vi'],
-            'en' => ['label' => 'English',    'host' => 'saigonhoreca.com', 'path_prefix' => '', 'wp_locale' => 'en_US', 'hreflang' => 'en'],
+            'vi' => ['label' => 'Tiếng Việt', 'host' => 'saigonhoreca.vn',  'path_prefix' => '',   'wp_locale' => 'vi',    'hreflang' => 'vi'],
+            'en' => ['label' => 'English',    'host' => 'saigonhoreca.com', 'path_prefix' => '',   'wp_locale' => 'en_US', 'hreflang' => 'en'],
+            'ja' => ['label' => '日本語',      'host' => 'saigonhoreca.com', 'path_prefix' => 'ja', 'wp_locale' => 'ja',    'hreflang' => 'ja'],
         ];
     }
 
@@ -537,5 +539,71 @@ class Pi_Multilang_Core {
         self::$pending_redirect = null;
         wp_safe_redirect(home_url($target), 301);
         exit;
+    }
+
+    /**
+     * Tự động nhận diện khách truy cập từ Nhật Bản (GeoIP / Cloudflare / Browser Language).
+     *
+     * Quy tắc an toàn SEO & UX:
+     * 1. Tuyệt đối KHÔNG chuyển hướng bot tìm kiếm (Googlebot, Bingbot...) để tránh cloaking.
+     * 2. Chỉ kiểm tra khi vào trang chủ (path rỗng) lần đầu tiên, không can thiệp deep link.
+     * 3. Tôn trọng cookie lựa chọn của người dùng (sgh_lang_pref) nếu họ đã chủ động chọn ngôn ngữ.
+     * 4. Dùng 302 Temporary Redirect (không dùng 301) để không làm bẩn bộ nhớ cache trình duyệt/CDN.
+     */
+    public static function maybe_detect_japanese_visitor() {
+        if (!self::$routing) return;
+        if (defined('PI_CURRENT_LANGUAGE') && PI_CURRENT_LANGUAGE === 'ja') return;
+        if (isset($_SERVER['REQUEST_METHOD']) && !in_array($_SERVER['REQUEST_METHOD'], ['GET', 'HEAD'], true)) return;
+
+        // Ghi nhận cookie nếu người dùng đổi ngôn ngữ chủ động qua tham số URL (?sgh_lang=vi|en|ja)
+        if (!empty($_GET['sgh_lang']) && in_array($_GET['sgh_lang'], ['vi', 'en', 'ja'], true)) {
+            $chosen = sanitize_text_field($_GET['sgh_lang']);
+            if (!headers_sent()) {
+                setcookie('sgh_lang_pref', $chosen, time() + (30 * 86400), '/', '', is_ssl(), false);
+            }
+            $_COOKIE['sgh_lang_pref'] = $chosen;
+        }
+
+        // Chỉ xét trang chủ (root path)
+        $path = self::current_path();
+        if ($path !== '') return;
+
+        // Nếu người dùng đã có cookie lựa chọn ngôn ngữ khác tiếng Nhật -> tôn trọng lựa chọn
+        if (!empty($_COOKIE['sgh_lang_pref']) && $_COOKIE['sgh_lang_pref'] !== 'ja') {
+            return;
+        }
+
+        // Tuyệt đối không can thiệp bot tìm kiếm / crawlers
+        $ua = isset($_SERVER['HTTP_USER_AGENT']) ? strtolower($_SERVER['HTTP_USER_AGENT']) : '';
+        if ($ua === '' || preg_match('/bot|crawl|spider|slurp|facebookexternalhit|whatsapp|twitter|lighthouse/i', $ua)) {
+            return;
+        }
+
+        // Host cho phép kích hoạt GeoIP chuyển sang tiếng Nhật:
+        // Áp dụng trên saigonhoreca.com (domain quốc tế), saigonhoreca.vn, và local test
+        $host = self::current_host();
+        $allowed_hosts = apply_filters('pi_multilang_geoip_hosts', ['saigonhoreca.com', 'saigonhoreca.vn', 'saigonhoreca.local']);
+        if (!in_array($host, $allowed_hosts, true)) {
+            return;
+        }
+
+        // Kiểm tra tín hiệu Nhật Bản: Cloudflare HTTP_CF_IPCOUNTRY == 'JP', geo_test param, hoặc Accept-Language
+        $is_japan = false;
+        if (!empty($_SERVER['HTTP_CF_IPCOUNTRY']) && strtoupper($_SERVER['HTTP_CF_IPCOUNTRY']) === 'JP') {
+            $is_japan = true;
+        } elseif (!empty($_GET['geo_test']) && strtoupper($_GET['geo_test']) === 'JP') {
+            $is_japan = true;
+        } elseif (empty($_COOKIE['sgh_lang_pref']) && !empty($_SERVER['HTTP_ACCEPT_LANGUAGE']) && preg_match('/^ja\b/i', trim($_SERVER['HTTP_ACCEPT_LANGUAGE']))) {
+            $is_japan = true;
+        }
+
+        if ($is_japan) {
+            if (!headers_sent()) {
+                setcookie('sgh_lang_pref', 'ja', time() + (30 * 86400), '/', '', is_ssl(), false);
+            }
+            $target_url = self::get_language_base_url('ja');
+            wp_safe_redirect($target_url, 302);
+            exit;
+        }
     }
 }

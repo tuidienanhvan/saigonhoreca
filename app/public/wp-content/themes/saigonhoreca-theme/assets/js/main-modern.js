@@ -376,6 +376,14 @@ shReady(() => {
                     }
                 });
             }
+            return;
+        }
+        var langLink = e.target.closest('.sh-header__lang');
+        if (langLink) {
+            var lang = langLink.getAttribute('hreflang');
+            if (lang) {
+                document.cookie = 'sgh_lang_pref=' + encodeURIComponent(lang) + ';path=/;max-age=2592000;SameSite=Lax';
+            }
         }
     });
 });
