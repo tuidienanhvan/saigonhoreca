@@ -31,8 +31,27 @@ $partners = [
 ];
 // Match production: 1 dot per logo, advance 1-at-a-time (infinite loop).
 $total_dots = count($partners);
+$lang       = function_exists('sgh_get_current_lang') ? sgh_get_current_lang() : 'vi';
+
+$trust_eyebrows = [
+    'vi' => 'Uy Tín và Chất Lượng',
+    'en' => 'Prestige & Quality',
+    'ja' => '信頼と実績',
+];
+
+$trust_titles = [
+    'vi' => 'Đối Tác của Sài Gòn Horeca',
+    'en' => 'Partners of Saigon Horeca',
+    'ja' => 'Saigon Horecaのパートナー企業',
+];
+
+$trust_aria = [
+    'vi' => 'Đối tác Saigon Horeca',
+    'en' => 'Saigon Horeca Partners',
+    'ja' => 'Saigon Horeca パートナー企業',
+];
 ?>
-<section class="sh-archive-trust" aria-label="Đối tác Saigon Horeca">
+<section class="sh-archive-trust" aria-label="<?php echo esc_attr($trust_aria[$lang] ?? $trust_aria['vi']); ?>">
     <!-- Decorative SVG corner ornaments (top-left, top-right) -->
     <svg class="sh-archive-trust__ornament sh-archive-trust__ornament--tl" viewBox="0 0 120 120" fill="none" aria-hidden="true">
         <circle cx="20" cy="20" r="3" fill="currentColor" opacity=".55"/>
@@ -54,12 +73,12 @@ $total_dots = count($partners);
                 <svg class="sh-archive-trust__sparkle" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                     <path d="M12 2 L13.5 9 L20 10.5 L13.5 12 L12 19 L10.5 12 L4 10.5 L10.5 9 Z"/>
                 </svg>
-                <span>Uy Tín và Chất Lượng</span>
+                <span><?php echo esc_html($trust_eyebrows[$lang] ?? $trust_eyebrows['vi']); ?></span>
                 <svg class="sh-archive-trust__sparkle" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                     <path d="M12 2 L13.5 9 L20 10.5 L13.5 12 L12 19 L10.5 12 L4 10.5 L10.5 9 Z"/>
                 </svg>
             </span>
-            <h2 class="sh-archive-trust__title">Đối Tác của Sài Gòn Horeca</h2>
+            <h2 class="sh-archive-trust__title"><?php echo esc_html($trust_titles[$lang] ?? $trust_titles['vi']); ?></h2>
             <!-- Divider: gold line + diamond center + line -->
             <span class="sh-archive-trust__divider" aria-hidden="true">
                 <svg viewBox="0 0 200 12" fill="none" preserveAspectRatio="none">

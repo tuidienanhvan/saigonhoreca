@@ -16,8 +16,21 @@ $q = new WP_Query([
 
 $svg_sparkle = '<svg class="sh-archive-projects__sparkle" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2 L13.5 9 L20 10.5 L13.5 12 L12 19 L10.5 12 L4 10.5 L10.5 9 Z"/></svg>';
 $svg_pin     = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 0-8 8c0 5.4 8 12 8 12s8-6.6 8-12a8 8 0 0 0-8-8z"/></svg>';
+$lang = function_exists('sgh_get_current_lang') ? sgh_get_current_lang() : 'vi';
+
+$grid_titles = [
+    'vi' => 'Những Dự Án nổi bật của Saigon Horeca',
+    'en' => 'Featured Projects by Saigon Horeca',
+    'ja' => 'Saigon Horecaの代表的なプロジェクト',
+];
+
+$grid_aria = [
+    'vi' => 'Danh sách dự án Saigon Horeca',
+    'en' => 'Saigon Horeca Project List',
+    'ja' => 'Saigon Horeca プロジェクト一覧',
+];
 ?>
-<section class="sh-archive-projects" aria-label="Danh sách dự án Saigon Horeca">
+<section class="sh-archive-projects" aria-label="<?php echo esc_attr($grid_aria[$lang] ?? $grid_aria['vi']); ?>">
     <svg class="sh-archive-projects__bg-pattern" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
         <defs>
             <pattern id="shProjPattern" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
@@ -35,7 +48,7 @@ $svg_pin     = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strok
                 <span>Featured Projects</span>
                 <?php echo $svg_sparkle; ?>
             </span>
-            <h2 class="sh-archive-projects__title">Những Dự Án nổi bật của Saigon Horeca</h2>
+            <h2 class="sh-archive-projects__title"><?php echo esc_html($grid_titles[$lang] ?? $grid_titles['vi']); ?></h2>
             <span class="sh-archive-projects__divider" aria-hidden="true">
                 <svg viewBox="0 0 220 12" fill="none" preserveAspectRatio="none">
                     <line x1="0" y1="6" x2="92" y2="6" stroke="currentColor" stroke-width="1.5" opacity=".5"/>
@@ -106,8 +119,10 @@ $svg_pin     = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strok
                     </a>
                 <?php endwhile; wp_reset_postdata(); ?>
             </div>
-        <?php else : ?>
-            <p class="sh-archive-projects__empty">Chưa có dự án nào.</p>
+        <?php else :
+            $empty_text = ($lang === 'ja') ? 'プロジェクトが見つかりません。' : (($lang === 'en') ? 'No projects found.' : 'Chưa có dự án nào.');
+        ?>
+            <p class="sh-archive-projects__empty"><?php echo esc_html($empty_text); ?></p>
         <?php endif; ?>
     </div>
 </section>

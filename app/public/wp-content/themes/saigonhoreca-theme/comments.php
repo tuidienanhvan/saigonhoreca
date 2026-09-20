@@ -10,6 +10,8 @@
  */
 if (post_password_required()) return;
 
+$lang = function_exists('sgh_get_current_lang') ? sgh_get_current_lang() : 'vi';
+
 // Nhãn "Reply to" của core → nhãn của theme, qua gettext.
 // Site KHÔNG có gói ngôn ngữ core (không có wp-content/languages, WPLANG rỗng) nên core
 // luôn in tiếng Anh "Reply to NAME" — filter này là bản dịch DUY NHẤT, gỡ đi là site tiếng
@@ -28,9 +30,27 @@ if (!has_filter('comment_reply_link', 'sgh_comment_reply_label')) {
     add_filter('comment_reply_link', 'sgh_comment_reply_label', 10, 1);
 }
 
-// Vietnamese time ago helper
+// Multilingual time ago helper
 function sh_time_ago($timestamp) {
+    $lang = function_exists('sgh_get_current_lang') ? sgh_get_current_lang() : 'vi';
     $diff = current_time('timestamp') - $timestamp;
+
+    if ($lang === 'ja') {
+        if ($diff < 60) return 'たった今';
+        if ($diff < 3600) return floor($diff / 60) . '分前';
+        if ($diff < 86400) return floor($diff / 3600) . '時間前';
+        if ($diff < 604800) return floor($diff / 86400) . '日前';
+        return wp_date('Y/m/d H:i', $timestamp);
+    }
+
+    if ($lang === 'en') {
+        if ($diff < 60) return 'just now';
+        if ($diff < 3600) return floor($diff / 60) . ' mins ago';
+        if ($diff < 86400) return floor($diff / 3600) . ' hours ago';
+        if ($diff < 604800) return floor($diff / 86400) . ' days ago';
+        return wp_date('M j, Y \a\t H:i', $timestamp);
+    }
+
     if ($diff < 60) return 'vừa xong';
     if ($diff < 3600) return floor($diff / 60) . ' phút trước';
     if ($diff < 86400) return floor($diff / 3600) . ' giờ trước';
@@ -89,34 +109,48 @@ if ($user->exists()) {
             ]); ?>
         </ul>
 
-        <?php if (get_comment_pages_count() > 1 && get_option('page_comments')) : ?>
+        <?php if (get_comment_pages_count() > 1 && get_option('page_comments')) :
+            $older_text = ($lang === 'ja') ? '← 前のコメント' : (($lang === 'en') ? '← Older Comments' : '← Cũ hơn');
+            $newer_text = ($lang === 'ja') ? '次のコメント →' : (($lang === 'en') ? 'Newer Comments →' : 'Mới hơn →');
+        ?>
             <nav style="display:flex;justify-content:space-between;margin-top:2rem;font-size:0.875rem">
-                <div><?php previous_comments_link('← Cũ hơn'); ?></div>
-                <div><?php next_comments_link('Mới hơn →'); ?></div>
+                <div><?php previous_comments_link($older_text); ?></div>
+                <div><?php next_comments_link($newer_text); ?></div>
             </nav>
         <?php endif; ?>
     <?php endif; ?>
 
-    <?php if (!comments_open() && get_comments_number() && post_type_supports(get_post_type(), 'comments')) : ?>
-        <p class="sh-comments__closed">Bình luận đã đóng cho bài viết này.</p>
+    <?php if (!comments_open() && get_comments_number() && post_type_supports(get_post_type(), 'comments')) :
+        $closed_text = ($lang === 'ja') ? 'この記事のコメントは締め切られました。' : (($lang === 'en') ? 'Comments are closed for this article.' : 'Bình luận đã đóng cho bài viết này.');
+    ?>
+        <p class="sh-comments__closed"><?php echo esc_html($closed_text); ?></p>
     <?php endif; ?>
 
     <?php
     if (comments_open()) :
         wp_enqueue_script('comment-reply');
 
+        $c_title_reply    = ($lang === 'ja') ? 'コメントを残す' : (($lang === 'en') ? 'Leave a Comment' : 'Để lại bình luận');
+        $c_title_reply_to = ($lang === 'ja') ? '%s に返信' : (($lang === 'en') ? 'Reply to %s' : 'Trả lời %s');
+        $c_cancel_link    = ($lang === 'ja') ? '✕ キャンセル' : (($lang === 'en') ? '✕ Cancel' : '✕ Hủy');
+        $c_label_submit   = ($lang === 'ja') ? 'コメントを送信' : (($lang === 'en') ? 'Submit Comment' : 'Gửi bình luận');
+        $c_label_author   = ($lang === 'ja') ? 'お名前' : (($lang === 'en') ? 'Full Name' : 'Họ tên');
+        $c_ph_author      = ($lang === 'ja') ? '山田 太郎' : (($lang === 'en') ? 'John Doe' : 'Nhập họ tên');
+        $c_label_comment  = ($lang === 'ja') ? 'コメント' : (($lang === 'en') ? 'Comment' : 'Bình luận');
+        $c_ph_comment     = ($lang === 'ja') ? 'コメントを入力してください...' : (($lang === 'en') ? 'Write your comment...' : 'Viết bình luận của bạn...');
+
         echo '<div>';
         comment_form([
             'id_form'              => 'commentform',
             'class_container'      => 'sh-comment-form__wrapper',
-            'title_reply'          => 'Để lại bình luận',
-            'title_reply_to'       => 'Trả lời %s',
+            'title_reply'          => $c_title_reply,
+            'title_reply_to'       => $c_title_reply_to,
             'title_reply_before'   => '<h3 id="reply-title" class="sh-comment-form__title">',
             'title_reply_after'    => '</h3>',
             'cancel_reply_before'  => ' <small class="sh-comment-form__cancel">',
             'cancel_reply_after'   => '</small>',
-            'cancel_reply_link'    => '✕ Hủy',
-            'label_submit'         => 'Gửi bình luận',
+            'cancel_reply_link'    => $c_cancel_link,
+            'label_submit'         => $c_label_submit,
             'submit_button'        => '<button type="submit" id="%2$s" class="sh-comment-form__submit">' . sh_icon('send', 'sh-comment-form__send-icon') . ' %4$s</button>',
             'submit_field'         => '<div class="form-submit" style="margin-top:1rem">%1$s %2$s</div>',
             'logged_in_as'         => '',
@@ -126,16 +160,16 @@ if ($user->exists()) {
             'comment_field'        => '
                 <div class="sh-comment-form__fields">
                     <div class="sh-comment-form__group">
-                        <label for="author" class="sh-comment-form__label">Họ tên <span>*</span></label>
-                        <input id="author" name="author" type="text" required class="sh-comment-form__input" value="' . esc_attr($commenter['comment_author']) . '" placeholder="Nhập họ tên">
+                        <label for="author" class="sh-comment-form__label">' . esc_html($c_label_author) . ' <span>*</span></label>
+                        <input id="author" name="author" type="text" required class="sh-comment-form__input" value="' . esc_attr($commenter['comment_author']) . '" placeholder="' . esc_attr($c_ph_author) . '">
                     </div>
                     <div class="sh-comment-form__group">
                         <label for="email" class="sh-comment-form__label">Email <span>*</span></label>
                         <input id="email" name="email" type="email" required class="sh-comment-form__input" value="' . esc_attr($commenter['comment_author_email']) . '" placeholder="email@example.com">
                     </div>
                     <div class="sh-comment-form__group sh-comment-form__group--full">
-                        <label for="comment" class="sh-comment-form__label">Bình luận <span>*</span></label>
-                        <textarea id="comment" name="comment" required rows="4" class="sh-comment-form__textarea" placeholder="Viết bình luận của bạn..."></textarea>
+                        <label for="comment" class="sh-comment-form__label">' . esc_html($c_label_comment) . ' <span>*</span></label>
+                        <textarea id="comment" name="comment" required rows="4" class="sh-comment-form__textarea" placeholder="' . esc_attr($c_ph_comment) . '"></textarea>
                     </div>
                 </div>',
             'fields' => [],

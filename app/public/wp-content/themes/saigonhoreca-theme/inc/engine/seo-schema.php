@@ -165,14 +165,15 @@ if (!class_exists('SGH_SEO_Schema')) {
         }
 
         protected static function website_search() {
-            $home = home_url('/');
+            $home    = home_url('/');
+            $contact = function_exists('saigonhouse_get_contact_info') ? saigonhouse_get_contact_info() : [];
             return [
                 '@context'      => 'https://schema.org',
                 '@type'         => 'WebSite',
                 '@id'           => $home . '#website',
                 'url'           => $home,
-                'name'          => get_bloginfo('name'),
-                'description'   => get_bloginfo('description'),
+                'name'          => ($contact['company_full'] ?? get_bloginfo('name')),
+                'description'   => ($contact['slogan'] ?? get_bloginfo('description')),
                 'publisher'     => ['@id' => $home . '#organization'],
                 'potentialAction' => [
                     '@type'       => 'SearchAction',
