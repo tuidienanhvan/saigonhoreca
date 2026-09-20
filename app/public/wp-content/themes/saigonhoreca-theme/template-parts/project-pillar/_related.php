@@ -94,10 +94,13 @@ foreach (glob($data_dir . '/*.json') as $f) {
     // Bỏ qua dự án nếu không tìm thấy bất kỳ ảnh nào để tránh vỡ giao diện
     if (!$thumb_url) continue;
 
+    $proj_url = $proj_post ? get_permalink($proj_post) : sgh_url('projects_index', $slug);
     $all[] = [
-        'slug'  => $slug,
-        'title' => $j['title'] ?? ucwords(str_replace('-', ' ', $slug)),
-        'thumb' => $thumb_url,
+        'slug'      => $slug,
+        'post_id'   => $proj_post ? $proj_post->ID : 0,
+        'title'     => $j['title'] ?? ucwords(str_replace('-', ' ', $slug)),
+        'thumb'     => $thumb_url,
+        'url'       => $proj_url,
     ];
 }
 
@@ -126,7 +129,7 @@ $tag = [
         </div>
         <div class="pp-related">
             <?php foreach ($related as $r) : ?>
-                <a href="<?php echo esc_url(sgh_url('projects_index', $r['slug'])); ?>"
+                <a href="<?php echo esc_url($r['url'] ?? sgh_url('projects_index', $r['slug'])); ?>"
                    class="pp-related__card"
                    aria-label="<?php echo esc_attr($r['title']); ?>">
                     <?php if ($r['thumb']) : ?>

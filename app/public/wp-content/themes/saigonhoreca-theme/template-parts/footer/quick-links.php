@@ -6,18 +6,21 @@
 
 // Slugs match static-mirror/saigonhoreca.vn/danh-muc-san-pham/* (production canonical).
 $footer_services = [
-    ['label' => __('Thiết bị bếp công nghiệp', 'saigonhoreca'), 'page' => '/danh-muc-san-pham/thiet-bi-bep-cong-nghiep/'],
-    ['label' => __('Thiết bị quầy bar cafe', 'saigonhoreca'),   'page' => '/danh-muc-san-pham/thiet-bi-quay-bar-cafe/'],
-    ['label' => __('Thiết bị lạnh công nghiệp', 'saigonhoreca'), 'page' => '/danh-muc-san-pham/thiet-bi-lanh-cong-nghiep/'],
-    ['label' => __('Hệ thống hút khói', 'saigonhoreca'),        'page' => '/danh-muc-san-pham/he-thong-hut-khoi/'],
-    ['label' => __('Máy rửa ly chén', 'saigonhoreca'),          'page' => '/danh-muc-san-pham/may-rua-ly-chen/'],
+    ['label' => __('Thiết bị bếp công nghiệp', 'saigonhoreca'), 'slug' => 'thiet-bi-bep-cong-nghiep'],
+    ['label' => __('Thiết bị quầy bar cafe', 'saigonhoreca'),   'slug' => 'thiet-bi-quay-bar-cafe'],
+    ['label' => __('Thiết bị lạnh công nghiệp', 'saigonhoreca'), 'slug' => 'thiet-bi-lanh-cong-nghiep'],
+    ['label' => __('Hệ thống hút khói', 'saigonhoreca'),        'slug' => 'he-thong-hut-khoi'],
+    ['label' => __('Máy rửa ly chén', 'saigonhoreca'),          'slug' => 'may-rua-ly-chen'],
 ];
 foreach ($footer_services as &$svc) {
-    if (isset($svc['cat'])) {
-        $term = get_term_by('slug', $svc['cat'], 'category');
-        $svc['url'] = ($term && !is_wp_error($term)) ? get_term_link($term) : home_url('/category/' . $svc['cat'] . '/');
+    $term = get_term_by('slug', $svc['slug'], 'product_category');
+    if (!$term || is_wp_error($term)) {
+        $term = get_term_by('slug', $svc['slug'] . '-sgh', 'product_category');
+    }
+    if ($term && !is_wp_error($term)) {
+        $svc['url'] = get_term_link($term);
     } else {
-        $svc['url'] = home_url($svc['page']);
+        $svc['url'] = function_exists('sgh_url') ? sgh_url('products_index') : home_url('/san-pham/');
     }
 }
 unset($svc);

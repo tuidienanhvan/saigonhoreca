@@ -33,6 +33,7 @@ if (!function_exists('sgh_bilingual_slug_map')) {
             'contact'         => ['lien-he',                                        'contact',             'ja' => 'contact-saigon-horeca'],
             'consult_kitchen' => ['tu-van-thiet-ke-bep-nha-hang-bep-cong-nghiep',   'kitchen-consulting',  'ja' => 'kitchen-consulting'],
             'consult_bar'     => ['cung-cap-thiet-bi-tu-van-thiet-ke-cho-quay-bar', 'bar-equipment',        'ja' => 'bar-equipment'],
+            'product_brand'   => ['thuong-hieu',                                    'brand',                'ja' => 'brand'],
         ];
     }
 }
