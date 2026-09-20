@@ -481,7 +481,26 @@ if (!class_exists('SGH_SEO_Social')) {
                         : (is_singular() && has_excerpt() ? strip_tags(get_the_excerpt()) : get_bloginfo('description'))));
                 }
 
-                $seo_url   = is_singular() ? get_permalink() : home_url('/');
+                $seo_url = '';
+                if (is_singular()) {
+                    $seo_url = get_permalink();
+                } elseif (is_category() || is_tag() || is_tax()) {
+                    $term = get_queried_object();
+                    if ($term && !is_wp_error(get_term_link($term))) {
+                        $seo_url = get_term_link($term);
+                    }
+                } elseif (is_post_type_archive()) {
+                    $pt = get_query_var('post_type');
+                    if (is_array($pt)) $pt = reset($pt);
+                    $seo_url = get_post_type_archive_link($pt);
+                } elseif (is_home()) {
+                    $pfp = get_option('page_for_posts');
+                    $seo_url = $pfp ? get_permalink($pfp) : home_url('/' . (function_exists('sgh_slug') ? sgh_slug('news') : 'tin-tuc') . '/');
+                }
+                if (empty($seo_url) || is_wp_error($seo_url)) {
+                    $req = isset($_SERVER['REQUEST_URI']) ? strtok($_SERVER['REQUEST_URI'], '?') : '/';
+                    $seo_url = home_url($req);
+                }
                 $seo_type  = is_singular('post') ? 'article' : 'website';
 
                 // 3. OG Image

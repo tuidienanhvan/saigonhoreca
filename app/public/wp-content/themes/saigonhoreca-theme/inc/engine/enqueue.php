@@ -123,7 +123,7 @@ function sgh_theme_css_bundle($dir = null) {
 
 function sgh_is_native_theme_surface() {
     return is_front_page()
-        || is_page_template('page-templates/page-gioi-thieu.php')
+        || is_page_template('page-templates/page-about.php')
         || is_page_template(SGH_TPL_CONTACT)
         // 'page-templates/page-project.php' đã xoá 2026-08-02 (xem routes.php).
         || sgh_is_pillar_page_template()
@@ -212,14 +212,13 @@ add_action('wp_enqueue_scripts', function () {
         list($se_url, $se_ver) = sgh_js_path('single-enhancements.js', $dir, $uri);
         wp_enqueue_script('sh-single-enhancements', $se_url, [], $se_ver, true);
     }
-    if (is_page_template('page-templates/page-du-toan.php')) {
-        list($cl_url, $cl_ver) = sgh_js_path('calculator.js', $dir, $uri);
-        wp_enqueue_script('calculator-script', $cl_url, [], $cl_ver, true);
-    }
-    if (is_page_template('page-templates/page-portfolio.php')) {
-        list($gl_url, $gl_ver) = sgh_js_path('gallery.js', $dir, $uri);
-        wp_enqueue_script('sh-gallery', $gl_url, [], $gl_ver, true);
-    }
+    // 2026-08-12: gỡ 2 nhánh enqueue chết — `page-du-toan.php` (calculator.js) và
+    // `page-portfolio.php` (gallery.js). Cả 2 template CHƯA BAO GIỜ tồn tại ở
+    // saigonhoreca (chỉ có bên saigonhouse), nên 2 nhánh này không bao giờ chạy.
+    // Bản thân 2 file JS cũng là tàn dư copy lúc fork theme: gallery.js ghi rõ
+    // "Saigon House Theme" ở header và tìm #sh-port-grid/#sh-lightbox, calculator.js
+    // tìm #calc-loainha/#calc-logioi — horeca có 0 phần tử nào trong số đó. Đã đưa
+    // cả 2 file (kèm bản dist) vào Recycle Bin cùng lần dọn này.
 
     // Page-template CSS — only files that are NOT bundled via _imports.css.
     // The `about/*.css`, `contact/*.css`, `pricing/hero.css`,
@@ -231,14 +230,18 @@ add_action('wp_enqueue_scripts', function () {
     // and stay conditionally enqueued.
     if (is_page_template(SGH_TPL_CONTACT) || (function_exists('sgh_slug') && is_page(sgh_slug('contact')))) {
         list($cf_url, $cf_ver) = sgh_js_path('contact-form.js', $dir, $uri);
-        wp_enqueue_script('contact-form-js', $cf_url, [], $cf_ver, true);
+        wp_enqueue_script('contact-form-js', $cf_url, ['main-modern'], $cf_ver, true);
     }
     // Live search — chạy trên mọi route vì header/mobile-menu search box render site-wide.
     list($ls_url, $ls_ver) = sgh_js_path('live-search.js', $dir, $uri);
     wp_enqueue_script('sh-live-search', $ls_url, ['main-modern'], $ls_ver, true);
 
-    list($tt_url, $tt_ver) = sgh_js_path('theme-toggle.js', $dir, $uri);
-    wp_enqueue_script('theme-toggle', $tt_url, [], $tt_ver, true);
+    // theme-toggle.js KHÔNG enqueue ở đây. Theme này dark-only: core/_brand.css
+    // nói thẳng "No light/dark toggle — dark IS the default and only theme", và
+    // CSS không có khối .dark/[data-theme] nào ở tầng :root. Script tìm nút
+    // #sh-dark-toggle (không có trong markup) rồi return ngay, nên nó không hỏng
+    // gì — chỉ tải + parse 1.7KB vô ích trên MỌI trang. File JS vẫn giữ lại vì
+    // theme song sinh (có light+dark thật) dùng chung mã này.
 
     // Floating buttons (back-to-top + kéo-thả) — render vô điều kiện ở mọi trang
     // qua template-parts/footer/floating-buttons.php, nên enqueue site-wide.
@@ -379,32 +382,25 @@ add_action('wp_head', function () {
         if ($cached === false) {
             $hero_id = 0;
             $hero_bg_url = '';
-            $front_page_id = (int) get_option('page_on_front');
 
-            if ($front_page_id > 0) {
-                $raw_bg = get_post_meta($front_page_id, '_pi_hero_1_bg', true);
-                if (is_numeric($raw_bg)) {
-                    $hero_id = (int) $raw_bg;
+            // Trước đây chỗ này đọc meta _pi_hero_1_bg của trang chủ. Meta đó do
+            // metabox "Hero / Slider Section Settings" ghi — mà metabox ấy là
+            // của theme saigonhouse lọt sang (hàm saigonhouse_render_*, kèm cả
+            // Villa/Townhouse Grid), chưa bao giờ có dữ liệu ở site này (đã đếm:
+            // 0 ô), và hero của theme này dựng slide từ các dự án chứ không đọc
+            // meta. Nhánh đó luôn rỗng nên luôn rơi xuống truy vấn dưới đây.
+            $q = new WP_Query([
+                'post_type' => 'post', 'posts_per_page' => 1, 'orderby' => 'date', 'order' => 'DESC',
+                'meta_query' => [['key' => '_thumbnail_id', 'compare' => 'EXISTS']],
+                'no_found_rows' => true, 'update_post_meta_cache' => false, 'update_post_term_cache' => false,
+            ]);
+            if ($q->have_posts()) {
+                $q->the_post();
+                $hero_id = (int) get_post_thumbnail_id(get_the_ID());
+                if ($hero_id > 0) {
                     $hero_bg_url = wp_get_attachment_image_url($hero_id, 'full');
-                } elseif (!empty($raw_bg)) {
-                    $hero_bg_url = (string) $raw_bg;
                 }
-            }
-
-            if (empty($hero_bg_url)) {
-                $q = new WP_Query([
-                    'post_type' => 'post', 'posts_per_page' => 1, 'orderby' => 'date', 'order' => 'DESC',
-                    'meta_query' => [['key' => '_thumbnail_id', 'compare' => 'EXISTS']],
-                    'no_found_rows' => true, 'update_post_meta_cache' => false, 'update_post_term_cache' => false,
-                ]);
-                if ($q->have_posts()) {
-                    $q->the_post();
-                    $hero_id = (int) get_post_thumbnail_id(get_the_ID());
-                    if ($hero_id > 0) {
-                        $hero_bg_url = wp_get_attachment_image_url($hero_id, 'full');
-                    }
-                    wp_reset_postdata();
-                }
+                wp_reset_postdata();
             }
 
             if (empty($hero_bg_url)) {
@@ -436,20 +432,6 @@ add_action('wp_head', function () {
             );
         }
         return;
-    } elseif (function_exists('sgh_route_hero_preload_rules')) {
-        foreach (sgh_route_hero_preload_rules() as $rule) {
-            if ($rule['when']()) {
-                $preload_img = sgh_img($rule['image']);
-                break;
-            }
-        }
-    }
-
-    if (!empty($preload_img)) {
-        printf(
-            '<link rel="preload" as="image" href="%s" fetchpriority="high">' . "\n",
-            esc_url($preload_img)
-        );
     }
 }, 2);
 
@@ -474,13 +456,23 @@ add_filter('wp_update_attachment_metadata', function($data, $id) {
 /**
  * Optimize Google Fonts loading by making it non-blocking.
  * Replaces rel="stylesheet" with asynchronous preload loading.
+ *
+ * The rel="stylesheet" swap used to happen via an inline onload="..."
+ * attribute on the <link> itself. That's a script-src-elem concern under
+ * CSP (inline event-handler attributes aren't covered by a script-tag
+ * nonce), and this theme's CSP (inc/engine/security-headers.php) has no
+ * 'unsafe-inline'/'unsafe-hashes' for script-src-elem — so the browser
+ * silently dropped the handler, the <link> never flipped to stylesheet,
+ * and the font never loaded (fell back to system-ui). Fixed by dropping
+ * the attribute and doing the swap from the nonced inline <script> in
+ * header.php instead (see the "before paint" block right after wp_head()).
  */
 add_filter('style_loader_tag', function ($tag, $handle) {
     if (is_admin()) return $tag;
     if ($handle === 'google-fonts-sgh') {
         return str_replace(
             "rel='stylesheet'",
-            "rel='preload' as='style' onload=\"this.onload=null;this.rel='stylesheet'\"",
+            "rel='preload' as='style'",
             $tag
         );
     }

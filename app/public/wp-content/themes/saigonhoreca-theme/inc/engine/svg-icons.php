@@ -39,6 +39,7 @@ function sh_icon($name, $class = 'w-5 h-5', $extra = '') {
         'globe'       => '<circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/>',
         'folder-open' => '<path d="m6 14 1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.54 6a2 2 0 0 1-1.95 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2"/>',
         'help-circle' => '<circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/>',
+        'clock'       => '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>',
         
         // Tools / Services
         'pen-tool'    => '<path d="M15.707 21.293a1 1 0 0 1-1.414 0l-1.586-1.586a1 1 0 0 1 0-1.414l5.586-5.586a1 1 0 0 1 1.414 0l1.586 1.586a1 1 0 0 1 0 1.414z"/><path d="m18 13-1.375-6.874a1 1 0 0 0-.746-.776L3.235 2.028a1 1 0 0 0-1.207 1.207L5.35 15.879a1 1 0 0 0 .776.746L13 18"/><path d="m2.3 2.3 7.286 7.286"/><circle cx="11" cy="11" r="2"/>',
@@ -87,11 +88,26 @@ function sh_icon($name, $class = 'w-5 h-5', $extra = '') {
         $path = '<circle cx="12" cy="12" r="2" fill="currentColor"/>';
     }
 
-    // Resolve width/height from class (e.g., w-5 h-5 → 1.25rem)
-    $size_map = ['3' => '0.75rem', '4' => '1rem', '5' => '1.25rem', '6' => '1.5rem', '7' => '1.75rem', '8' => '2rem', '10' => '2.5rem'];
+    // Resolve width/height from class (e.g., w-5 h-5 → 1.25rem, w-3.5 → 0.875rem)
+    $size_map = [
+        '2.5' => '0.625rem',
+        '3'   => '0.75rem',
+        '3.5' => '0.875rem',
+        '4'   => '1rem',
+        '4.5' => '1.125rem',
+        '5'   => '1.25rem',
+        '6'   => '1.5rem',
+        '7'   => '1.75rem',
+        '8'   => '2rem',
+        '10'  => '2.5rem',
+        '12'  => '3rem',
+    ];
     $w = '1.25rem'; $h = '1.25rem'; // default w-5 h-5
-    if (preg_match('/\bw-(\d+)\b/', $class, $m) && isset($size_map[$m[1]])) $w = $size_map[$m[1]];
-    if (preg_match('/\bh-(\d+)\b/', $class, $m) && isset($size_map[$m[1]])) $h = $size_map[$m[1]];
+    if (preg_match('/\bw-([\d.]+)\b/', $class, $m) && isset($size_map[$m[1]])) $w = $size_map[$m[1]];
+    if (preg_match('/\bh-([\d.]+)\b/', $class, $m) && isset($size_map[$m[1]])) $h = $size_map[$m[1]];
 
-    return '<svg xmlns="http://www.w3.org/2000/svg" class="' . esc_attr($class) . '" width="' . $w . '" height="' . $h . '" ' . $extra . ' viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' . $path . '</svg>';
+    $aria = (strpos($extra, 'aria-') === false && strpos($extra, 'role=') === false) ? 'aria-hidden="true" ' : '';
+    $extra_attr = trim($extra) ? ' ' . trim($extra) : '';
+
+    return '<svg xmlns="http://www.w3.org/2000/svg" class="' . esc_attr($class) . '" width="' . $w . '" height="' . $h . '" ' . $aria . 'viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"' . $extra_attr . '>' . $path . '</svg>';
 }

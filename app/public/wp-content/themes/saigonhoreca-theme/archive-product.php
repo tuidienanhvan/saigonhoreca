@@ -50,7 +50,7 @@ get_header(); ?>
     </div>
 </main>
 
-<script>
+<script nonce="<?php echo esc_attr($GLOBALS['sgh_csp_nonce'] ?? ''); ?>">
 document.addEventListener('DOMContentLoaded', function () {
     var tabs = document.querySelectorAll('.sh-archive__tab-btn');
     var layout = document.querySelector('.sh-archive__layout');

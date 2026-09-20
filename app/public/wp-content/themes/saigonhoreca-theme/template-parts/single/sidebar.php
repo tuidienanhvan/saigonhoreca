@@ -186,7 +186,7 @@ $feat_title  = ['vi' => 'Sản phẩm nổi bật', 'en' => 'Featured Products',
     ?>
 </aside>
 
-<script>
+<script nonce="<?php echo esc_attr($GLOBALS['sgh_csp_nonce'] ?? ''); ?>">
 /* Bài / Sản phẩm đã xem — Tự động lưu và hiển thị danh sách vừa xem từ localStorage.
    Hỗ trợ cả post và product CPT dựa trên data-storage-key tương ứng. */
 (function () {

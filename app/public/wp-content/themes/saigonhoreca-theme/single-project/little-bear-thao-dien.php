@@ -23,7 +23,7 @@ get_header(); ?>
     ?>
 </main>
 
-<script>
+<script nonce="<?php echo esc_attr($GLOBALS['sgh_csp_nonce'] ?? ''); ?>">
 document.addEventListener("DOMContentLoaded", function() {
   const images = document.querySelectorAll('.pp--lbear .pp-image-container-shared img');
   

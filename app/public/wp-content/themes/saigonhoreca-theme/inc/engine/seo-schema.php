@@ -41,9 +41,10 @@ if (!class_exists('SGH_SEO_Schema')) {
         public static function render_registered_schemas() {
             if (is_admin() || is_feed() || empty(self::$registered_schemas)) return;
 
+            $nonce_attr = !empty($GLOBALS['sgh_csp_nonce']) ? ' nonce="' . esc_attr($GLOBALS['sgh_csp_nonce']) . '"' : '';
             foreach (self::$registered_schemas as $key => $schema) {
                 echo '<!-- SGH SEO Schema: ' . esc_html($key) . ' -->' . "\n";
-                echo '<script type="application/ld+json">'
+                echo '<script type="application/ld+json"' . $nonce_attr . '>'
                     . wp_json_encode($schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)
                     . '</script>' . "\n";
             }
@@ -86,8 +87,9 @@ if (!class_exists('SGH_SEO_Schema')) {
 
             if (empty($graphs)) return;
 
+            $nonce_attr = !empty($GLOBALS['sgh_csp_nonce']) ? ' nonce="' . esc_attr($GLOBALS['sgh_csp_nonce']) . '"' : '';
             foreach ($graphs as $g) {
-                echo '<script type="application/ld+json">'
+                echo '<script type="application/ld+json"' . $nonce_attr . '>'
                     . wp_json_encode($g, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)
                     . '</script>' . "\n";
             }
@@ -206,6 +208,26 @@ if (!class_exists('SGH_SEO_Schema')) {
 
             $url = get_permalink($post);
 
+            $price = get_post_meta($post->ID, '_price', true);
+            if (!$price) {
+                $price = get_post_meta($post->ID, 'price', true);
+            }
+            $price_val = is_numeric($price) && (float) $price > 0 ? (float) $price : 0;
+
+            $offers = [
+                '@type'           => 'Offer',
+                'url'             => $url,
+                'priceCurrency'   => 'VND',
+                'price'           => $price_val > 0 ? (string) $price_val : '0',
+                'priceValidUntil' => gmdate('Y-12-31', strtotime('+1 year')),
+                'availability'    => 'https://schema.org/InStock',
+                'itemCondition'   => 'https://schema.org/NewCondition',
+                'seller'          => [
+                    '@type' => 'Organization',
+                    'name'  => get_bloginfo('name'),
+                ],
+            ];
+
             $data = [
                 '@context'    => 'https://schema.org',
                 '@type'       => 'Product',
@@ -221,6 +243,7 @@ if (!class_exists('SGH_SEO_Schema')) {
                     '@type' => 'Brand',
                     'name'  => $brand_name,
                 ] : null,
+                'offers'      => $offers,
                 'inLanguage'  => self::lang(),
             ];
 

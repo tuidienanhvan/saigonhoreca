@@ -15,7 +15,6 @@
  */
 
 get_header(); 
-delete_transient('sgh_cover_map_v1');
 ?>
 
 <main id="primary" class="sh-archive sh-archive--project" tabindex="-1">
@@ -32,7 +31,7 @@ delete_transient('sgh_cover_map_v1');
     // verbatim so the page matches saigonhoreca.vn pixel-for-pixel.
     // To switch to dynamic rendering once styling is locked, replace
     // this template-part with a WP_Query over `project` CPT — see
-    // template-parts/components/project-card.php for the card markup.
+    // template-parts/_shared/project-card.php for the card markup.
     get_template_part('template-parts/archive-project/projects-grid');
     ?>
 </main>

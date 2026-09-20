@@ -220,7 +220,7 @@ $intro_items = [
                 <?php endforeach; ?>
             </div>
 
-            <script>
+            <script nonce="<?php echo esc_attr($GLOBALS['sgh_csp_nonce'] ?? ''); ?>">
             /* Accessible disclosure: panels were :hover-only (keyboard/touch couldn't open). */
             (function(){
               document.querySelectorAll('.sh-about-intro__panel-header[role="button"]').forEach(function(h){

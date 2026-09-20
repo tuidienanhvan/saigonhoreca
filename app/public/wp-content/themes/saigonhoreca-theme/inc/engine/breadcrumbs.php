@@ -186,6 +186,7 @@ function sh_breadcrumbs() {
     if (class_exists('SGH_SEO_Schema')) {
         SGH_SEO_Schema::register('breadcrumbs', $breadcrumb_schema);
     } else {
-        echo '<script type="application/ld+json">' . wp_json_encode($breadcrumb_schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '</script>' . "\n";
+        $nonce_attr = !empty($GLOBALS['sgh_csp_nonce']) ? ' nonce="' . esc_attr($GLOBALS['sgh_csp_nonce']) . '"' : '';
+        echo '<script type="application/ld+json"' . $nonce_attr . '>' . wp_json_encode($breadcrumb_schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '</script>' . "\n";
     }
 }

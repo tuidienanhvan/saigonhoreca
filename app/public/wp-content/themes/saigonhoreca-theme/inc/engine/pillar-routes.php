@@ -26,37 +26,14 @@ if (!function_exists('sgh_pillar_route_serve')) {
 
         // ── Cache Flush Route ──
         if ($uri === '/flush-cache' || isset($_GET['flush-theme-cache'])) {
-            $cache_dir = wp_normalize_path(WP_CONTENT_DIR . '/cache/sgh-static');
-            $files_deleted = 0;
-            if (is_dir($cache_dir)) {
-                try {
-                    $it = new RecursiveDirectoryIterator($cache_dir, RecursiveDirectoryIterator::SKIP_DOTS);
-                    $files = new RecursiveIteratorIterator($it, RecursiveIteratorIterator::CHILD_FIRST);
-                    foreach($files as $file) {
-                        if ($file->isDir()){
-                            @rmdir($file->getPathname());
-                        } else {
-                            if (@unlink($file->getPathname())) {
-                                $files_deleted++;
-                            }
-                        }
-                    }
-                    @rmdir($cache_dir);
-                } catch (Exception $e) {
-                    // Ignore errors during directory traversal
-                }
-            }
-            
-            // Also flush home cache file if exists.
-            // 2026-08-03: quét glob thay vì tên cứng — front-page.php cho plugin
-            // tách file theo ngôn ngữ qua filter `sgh_home_cache_file`
-            // (pi-multilang tạo sgh-home-cache-vi.html). Tên cứng không khớp
-            // nên trước đây trang chủ không bao giờ được xoá cache.
-            foreach ((array) glob(WP_CONTENT_DIR . '/cache/sgh-home-cache*.html') as $home_cache_file) {
-                if (is_file($home_cache_file) && @unlink($home_cache_file)) {
-                    $files_deleted++;
-                }
-            }
+            // 2026-08-12: route này TỪNG tự chép lại logic xoá file tĩnh
+            // (trùng sgh_static_cache_flush() đã có ở cache-helpers.php) và
+            // KHÔNG BAO GIỜ đụng transient (sh_youtube_videos_v2, sitemap,
+            // dashboard stats...) — y hệt bug vừa tìm thấy ở saigonhouse-theme.
+            // Gọi thẳng hàm trung tâm sgh_flush_theme_caches() (đã tự gọi
+            // sgh_static_cache_flush() bên trong, xem cache-helpers.php:51)
+            // để xoá ĐỦ CẢ 2 TẦNG cùng lúc, không lặp code.
+            $transients_deleted = function_exists('sgh_flush_theme_caches') ? sgh_flush_theme_caches() : 0;
 
             // Cho phép plugin khác (vd pi-chatbot) nghe cùng 1 điểm bấm này để dọn
             // cache riêng của họ — không cần route này biết chi tiết plugin nào
@@ -65,23 +42,27 @@ if (!function_exists('sgh_pillar_route_serve')) {
             do_action('sgh_after_flush_cache');
 
             wp_die(
-                "<h3>Theme Static Cache Flushed Successfully!</h3><p>Deleted $files_deleted cached files/folders.</p><p><a href='" . esc_url(home_url('/')) . "'>&larr; Back to Home</a></p>",
+                "<h3>Theme Static Cache Flushed Successfully!</h3><p>Deleted $transients_deleted transients + static HTML cache.</p><p><a href='" . esc_url(home_url('/')) . "'>&larr; Back to Home</a></p>",
                 "Cache Flushed",
                 array('response' => 200)
             );
             exit;
         }
 
+        // Bóc tách tiền tố ngôn ngữ (/en/ hoặc /ja/) nếu có để hỗ trợ đa ngôn ngữ
+        $clean_uri = preg_replace('#^/(en|ja)(/|$)#', '/', $uri);
+        if ($clean_uri === '') $clean_uri = '/';
+
         // Match canonical VI/EN project-index prefix (see routes.php slug map)
         // AND legacy/root alias /<slug>/.
         $proj_map  = function_exists('sgh_bilingual_slug_map') ? sgh_bilingual_slug_map() : [];
-        $proj_vi   = $proj_map['projects_index'][0] ?? 'project';
+        $proj_vi   = $proj_map['projects_index'][0] ?? 'du-an';
         $proj_en   = $proj_map['projects_index'][1] ?? 'projects';
-        $is_canonical_path = preg_match('#^/(?:' . preg_quote($proj_vi, '#') . '|' . preg_quote($proj_en, '#') . ')/([a-z0-9\-]+)/?$#i', $uri, $m);
+        $is_canonical_path = preg_match('#^/(?:' . preg_quote($proj_vi, '#') . '|' . preg_quote($proj_en, '#') . ')/([a-z0-9\-]+)/?$#i', $clean_uri, $m);
         $is_root_alias     = false;
 
         if (!$is_canonical_path) {
-            $is_root_alias = preg_match('#^/([a-z0-9\-]+)/?$#i', $uri, $m);
+            $is_root_alias = preg_match('#^/([a-z0-9\-]+)/?$#i', $clean_uri, $m);
         }
 
         if (!$is_canonical_path && !$is_root_alias) return;

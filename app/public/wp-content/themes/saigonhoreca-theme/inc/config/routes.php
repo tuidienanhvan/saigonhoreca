@@ -24,15 +24,15 @@ if (!function_exists('sgh_bilingual_slug_map')) {
      */
     function sgh_bilingual_slug_map() {
         return [
-            'projects_index'  => ['du-an',                                          'projects'],
-            'projects_cat'    => ['danh-muc-du-an',                                 'project-category'],
-            'about'           => ['ve-saigon-horeca',                               'about'],
-            'products_index'  => ['san-pham',                                       'products'],
-            'products_cat'    => ['danh-muc-san-pham',                              'product-category'],
-            'news'            => ['tin-tuc',                                        'blog'],
-            'contact'         => ['lien-he',                                        'contact'],
-            'consult_kitchen' => ['tu-van-thiet-ke-bep-nha-hang-bep-cong-nghiep',   'kitchen-consulting'],
-            'consult_bar'     => ['cung-cap-thiet-bi-tu-van-thiet-ke-cho-quay-bar', 'bar-equipment'],
+            'projects_index'  => ['du-an',                                          'projects',            'ja' => 'project'],
+            'projects_cat'    => ['danh-muc-du-an',                                 'project-category',    'ja' => 'project-category'],
+            'about'           => ['ve-saigon-horeca',                               'about',               'ja' => 'about-saigon-horeca'],
+            'products_index'  => ['san-pham',                                       'products',            'ja' => 'products'],
+            'products_cat'    => ['danh-muc-san-pham',                              'product-category',    'ja' => 'product-category'],
+            'news'            => ['tin-tuc',                                        'blog',                'ja' => 'blog'],
+            'contact'         => ['lien-he',                                        'contact',             'ja' => 'contact-saigon-horeca'],
+            'consult_kitchen' => ['tu-van-thiet-ke-bep-nha-hang-bep-cong-nghiep',   'kitchen-consulting',  'ja' => 'kitchen-consulting'],
+            'consult_bar'     => ['cung-cap-thiet-bi-tu-van-thiet-ke-cho-quay-bar', 'bar-equipment',        'ja' => 'bar-equipment'],
         ];
     }
 }

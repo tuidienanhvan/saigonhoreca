@@ -143,8 +143,8 @@
     </script>
 
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-16RD3DMN8W"></script>
-    <script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-16RD3DMN8W" nonce="<?php echo esc_attr($GLOBALS['sgh_csp_nonce'] ?? ''); ?>"></script>
+    <script nonce="<?php echo esc_attr($GLOBALS['sgh_csp_nonce'] ?? ''); ?>">
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
@@ -153,7 +153,7 @@
     </script>
     
     <!-- Meta Pixel Code -->
-    <script>
+    <script nonce="<?php echo esc_attr($GLOBALS['sgh_csp_nonce'] ?? ''); ?>">
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};

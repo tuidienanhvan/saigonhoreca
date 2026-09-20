@@ -11,7 +11,7 @@ get_header();
             <div class="sh-archive__header">
                 <h1 class="sh-archive__title"><?php single_tag_title(__('Tag: ', 'saigonhoreca')); ?></h1>
                 <?php if (tag_description()) : ?>
-                    <div class="sh-archive__desc"><?php echo tag_description(); ?></div>
+                    <div class="sh-archive__desc"><?php echo wp_kses_post(tag_description()); ?></div>
                 <?php endif; ?>
                 <p class="sh-archive__count">
                     <?php
@@ -24,7 +24,7 @@ get_header();
             <?php if (have_posts()) : ?>
                 <div class="sh-archive__grid">
                     <?php while (have_posts()) : the_post(); ?>
-                        <?php get_template_part('template-parts/components/post-card'); ?>
+                        <?php get_template_part('template-parts/_shared/post-card'); ?>
                     <?php endwhile; ?>
                 </div>
                 <div class="sh-archive__pagination">
@@ -33,8 +33,8 @@ get_header();
             <?php else : ?>
                 <div class="sh-archive__empty">
                     <div class="sh-archive__empty-emoji">📝</div>
-                    <h2 class="sh-archive__empty-title"><?php _e('Không có bài viết nào', 'saigonhoreca'); ?></h2>
-                    <a href="<?php echo home_url(); ?>" class="sh-archive__empty-btn"><?php _e('Về trang chủ', 'saigonhoreca'); ?></a>
+                    <h2 class="sh-archive__empty-title"><?php esc_html_e('Không có bài viết nào', 'saigonhoreca'); ?></h2>
+                    <a href="<?php echo esc_url(home_url('/')); ?>" class="sh-archive__empty-btn"><?php esc_html_e('Về trang chủ', 'saigonhoreca'); ?></a>
                 </div>
             <?php endif; ?>
         </div>

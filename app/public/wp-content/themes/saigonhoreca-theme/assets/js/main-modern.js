@@ -1,8 +1,81 @@
 
-function shDebounce(fn, ms) { var t; return function(...args) { clearTimeout(t); t = setTimeout(() => fn.apply(this, args), ms || 100); }; }
+// Auto-hide Pure Floating Overlay Scrollbar: Hiện ray đen + nút trượt vàng kim khi cuộn, tự động ẩn sau 1.2s dừng cuộn
+(function initAutoHideScrollbar() {
+    const root = document.documentElement;
+    let scrollTimer = null;
+    const HIDE_DELAY = 1200; // ms
+    let track = null;
+    let thumb = null;
 
+    function ensureElements() {
+        if (!track) {
+            track = document.getElementById('sh-overlay-scrollbar-track');
+            if (!track && document.body) {
+                track = document.createElement('div');
+                track.id = 'sh-overlay-scrollbar-track';
+                document.body.appendChild(track);
+            }
+        }
+        if (!thumb) {
+            thumb = document.getElementById('sh-overlay-scrollbar-thumb');
+            if (!thumb && document.body) {
+                thumb = document.createElement('div');
+                thumb.id = 'sh-overlay-scrollbar-thumb';
+                document.body.appendChild(thumb);
+            }
+        }
+        return thumb;
+    }
 
-document.addEventListener('DOMContentLoaded', () => {
+    function updateOverlayThumb() {
+        const el = ensureElements();
+        if (!el) return;
+        const scrollTop = window.pageYOffset || root.scrollTop;
+        const scrollHeight = root.scrollHeight - window.innerHeight;
+        if (scrollHeight <= 0) return;
+        const pct = Math.max(0, Math.min(1, scrollTop / scrollHeight));
+        const thumbHeight = Math.max(36, Math.min(120, (window.innerHeight / root.scrollHeight) * window.innerHeight));
+        const maxTop = window.innerHeight - thumbHeight - 8;
+        const currentTop = 4 + (pct * maxTop);
+        el.style.height = thumbHeight + 'px';
+        el.style.transform = `translate3d(0, ${currentTop}px, 0)`;
+    }
+
+    function activateScrollbar() {
+        root.classList.add('is-scrolling');
+        updateOverlayThumb();
+        if (scrollTimer) clearTimeout(scrollTimer);
+        scrollTimer = setTimeout(() => {
+            root.classList.remove('is-scrolling');
+        }, HIDE_DELAY);
+    }
+
+    window.addEventListener('scroll', activateScrollbar, { passive: true });
+    window.addEventListener('resize', updateOverlayThumb, { passive: true });
+
+    // Hiện scrollbar khi di chuột gần mép phải màn hình (khu vực scrollbar)
+    window.addEventListener('mousemove', (e) => {
+        if (window.innerWidth - e.clientX <= 20) {
+            activateScrollbar();
+        }
+    }, { passive: true });
+
+    if (document.readyState !== 'loading') {
+        updateOverlayThumb();
+    } else {
+        document.addEventListener('DOMContentLoaded', updateOverlayThumb);
+    }
+})();
+
+function shReady(fn) {
+    if (document.readyState !== 'loading') {
+        fn();
+    } else {
+        document.addEventListener('DOMContentLoaded', fn);
+    }
+}
+
+shReady(() => {
     const header = document.getElementById('main-header');
     if (header) {
         let headerTicking = false;
@@ -21,6 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { passive: true });
         updateHeaderState();
     }
+
     const mobileToggle = document.getElementById('mobile-menu-toggle');
     const mobileOverlay = document.getElementById('mobile-sidebar-overlay');
     const mobileSidebar = document.getElementById('mobile-sidebar');
@@ -68,6 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
         bindSubmenuAccordion(mobileSidebar);
         const closeBtn = mobileSidebar.querySelector('#mobile-menu-close');
         if (closeBtn) closeBtn.addEventListener('click', () => toggleSidebar(false));
+        document.dispatchEvent(new CustomEvent('sgh:mobile-menu-hydrated', { detail: { root: mobileSidebar } }));
     }
     function toggleSidebar(show) {
         if (!mobileSidebar || !mobileOverlay) return;
@@ -213,7 +288,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const depthsMark = [25, 50, 75, 100];
         const depthsFired = new Set();
         const pageType = document.body.classList.contains('single-post') ? 'post'
-            : document.body.classList.contains('page-template-page-bang-gia') ? 'pricing'
+            : document.body.classList.contains('page-template-page-pricing') ? 'pricing'
             : document.body.classList.contains('front-page') ? 'homepage' : 'other';
         function getScrollDepthPct() {
             const doc = document.documentElement;
@@ -296,7 +371,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (url && navigator.clipboard) {
                 navigator.clipboard.writeText(url).then(function() {
                     if (label) {
-                        label.textContent = '�� copy!';
+                        label.textContent = 'Đã copy!';
                         setTimeout(function() { label.textContent = 'Copy link'; }, 2000);
                     }
                 });

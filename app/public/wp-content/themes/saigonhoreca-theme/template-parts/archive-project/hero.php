@@ -134,7 +134,7 @@ $detail_label = 'Chi Tiết Dự Án';
     </div>
 </section>
 
-<script>
+<script nonce="<?php echo esc_attr($GLOBALS['sgh_csp_nonce'] ?? ''); ?>">
 /* Auto-rotate slider /du-an/ hero — pure JS, no deps. */
 (function () {
     var sec = document.querySelector('.sh-archive-hero');

@@ -209,5 +209,3 @@ if (stripos($raw_excerpt, 'Đức') !== false || stripos($raw_excerpt, 'Germany'
         </div>
     </div>
 </div>
-    </div>
-</div>

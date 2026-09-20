@@ -94,7 +94,7 @@ $total_dots = count($partners);
     </div>
 </section>
 
-<script>
+<script nonce="<?php echo esc_attr($GLOBALS['sgh_csp_nonce'] ?? ''); ?>">
 /* Trust carousel — match production: advance từng 1 logo (1 dot/logo).
    Scroll bằng logo-width (kèm gap) thay vì cả page-width. */
 (function () {

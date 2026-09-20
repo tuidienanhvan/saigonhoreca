@@ -3,7 +3,7 @@
  * FAQ Accordion Component — reusable, JSON-LD schema
  *
  * Usage:
- *   get_template_part('template-parts/components/faq-accordion', null, [
+ *   get_template_part('template-parts/_shared/faq-accordion', null, [
  *       'title'  => 'Câu Hỏi Thường Gặp',
  *       'items'  => [['q' => 'Câu hỏi?', 'a' => 'Trả lời...']],
  *       'schema' => true,
@@ -47,7 +47,8 @@ if ($schema) {
     if (class_exists('SGH_SEO_Schema')) {
         SGH_SEO_Schema::register('faq_accordion', $faq_schema);
     } else {
-        echo '<script type="application/ld+json">' . wp_json_encode($faq_schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '</script>' . "\n";
+        $nonce_attr = !empty($GLOBALS['sgh_csp_nonce']) ? ' nonce="' . esc_attr($GLOBALS['sgh_csp_nonce']) . '"' : '';
+        echo '<script type="application/ld+json"' . $nonce_attr . '>' . wp_json_encode($faq_schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '</script>' . "\n";
     }
 }
 ?>
@@ -96,7 +97,7 @@ if ($schema) {
     </div>
 </section>
 
-<script>
+<script nonce="<?php echo esc_attr($GLOBALS['sgh_csp_nonce'] ?? ''); ?>">
 (function () {
     var items = document.querySelectorAll('.sh-faq-item');
     if (!items.length) return;

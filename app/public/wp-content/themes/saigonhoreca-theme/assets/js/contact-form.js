@@ -96,7 +96,8 @@ document.addEventListener('DOMContentLoaded', function () {
             formData.append('security', securityField.value);
         }
 
-        fetch(saigonhouse_ajax.ajax_url, {
+        const ajaxUrl = (window.SH_DATA && window.SH_DATA.ajax_url) || '/wp-admin/admin-ajax.php';
+        fetch(ajaxUrl, {
             method: 'POST',
             body: formData
         })

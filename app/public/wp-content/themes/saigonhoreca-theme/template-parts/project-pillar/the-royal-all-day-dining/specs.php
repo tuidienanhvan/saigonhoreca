@@ -165,7 +165,7 @@ $specs_images = [
   </div><!-- /.pp-container-shared -->
 </section>
 
-<script>
+<script nonce="<?php echo esc_attr($GLOBALS['sgh_csp_nonce'] ?? ''); ?>">
 (function () {
   'use strict';
 

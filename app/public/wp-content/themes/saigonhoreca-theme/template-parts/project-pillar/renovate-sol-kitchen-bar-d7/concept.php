@@ -69,7 +69,7 @@ if (!defined('ABSPATH')) exit;
   </div>
 </section>
 
-<script>
+<script nonce="<?php echo esc_attr($GLOBALS['sgh_csp_nonce'] ?? ''); ?>">
 document.addEventListener('DOMContentLoaded', function () {
   document.querySelectorAll('.pp-compare-solq7__slider').forEach(function (slider) {
   slider.addEventListener('input', function (e) {
