@@ -41,15 +41,9 @@ $sh_chatbot_active = is_plugin_active('pi-chatbot/pi-chatbot.php');
     </a>
     <?php endif; ?>
 
-    <?php
-    $cur_lang = function_exists('sgh_get_current_lang') ? sgh_get_current_lang() : 'vi';
-    if ($cur_lang === 'vi' && ! empty($contact['zalo'])) : ?>
+    <?php if (! empty($contact['zalo'])) : ?>
     <a href="<?php echo esc_url($contact['zalo']); ?>" target="_blank" rel="noopener noreferrer" class="sh-zalo-btn" aria-label="<?php esc_attr_e('Chat qua Zalo', 'saigonhoreca'); ?>" data-gtm-click="click_zalo" data-gtm-location="floating_button">
         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/zalo-icon.webp" alt="<?php esc_attr_e('Chat Zalo', 'saigonhoreca'); ?>" class="sh-zalo-btn__img" loading="lazy" decoding="async" width="56" height="56">
-    </a>
-    <?php elseif ($cur_lang !== 'vi') : ?>
-    <a href="<?php echo esc_url(function_exists('sgh_url') ? sgh_url('contact') : home_url('/contact/')); ?>" class="sh-zalo-btn sh-contact-float" aria-label="<?php echo ($cur_lang === 'ja') ? 'お問い合わせ' : 'Contact Us'; ?>" style="background: linear-gradient(135deg, #d97706 0%, #b45309 100%); display:flex; align-items:center; justify-content:center; border-radius:50%; width:56px; height:56px; color:#fff; box-shadow:0 4px 14px rgba(217,119,6,0.4);">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
     </a>
     <?php endif; ?>
 
