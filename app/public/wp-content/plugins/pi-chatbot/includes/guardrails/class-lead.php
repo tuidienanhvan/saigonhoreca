@@ -103,7 +103,52 @@ class Pi_Chatbot_Lead {
             ['%s', '%s', '%s', '%s']
         );
 
-        return $inserted ? (int) $wpdb->insert_id : false;
+        $inserted_id = $inserted ? (int) $wpdb->insert_id : false;
+
+        if ($inserted_id) {
+            $title_name = !empty($name) ? $name : 'Khách Website (' . substr($phone_n, -4) . ')';
+            $inquiry_text = !empty($question) ? $question : 'Yêu cầu tư vấn thiết bị bếp qua chatbot';
+
+            // Automatically mirror into sh_lead CPT for PiDashboard visibility
+            $cpt_id = wp_insert_post([
+                'post_type'    => 'sh_lead',
+                'post_title'   => $title_name . ' - ' . $phone_n,
+                'post_content' => $inquiry_text,
+                'post_status'  => 'publish',
+            ]);
+
+            if ($cpt_id && !is_wp_error($cpt_id)) {
+                update_post_meta($cpt_id, '_pi_lead_name', $title_name);
+                update_post_meta($cpt_id, '_pi_lead_phone', $phone_n);
+                update_post_meta($cpt_id, '_pi_lead_source', 'Website Pi-Chatbot');
+                update_post_meta($cpt_id, '_pi_lead_status', 'new');
+                update_post_meta($cpt_id, '_pi_lead_score', 85);
+                update_post_meta($cpt_id, '_pi_lead_service', $inquiry_text);
+                update_post_meta($cpt_id, '_pi_chatbot_lead_id', $inserted_id);
+            }
+
+            self::notify_pidashboard($title_name, $phone_n, $inquiry_text);
+        }
+
+        return $inserted_id;
+    }
+
+    /**
+     * Dispatches real-time notification to PiDashboard backend.
+     */
+    private static function notify_pidashboard($name, $phone, $inquiry) {
+        $url = 'http://localhost:8000/api/v1/creative/ai/lead-notify';
+        wp_remote_post($url, [
+            'timeout'  => 1,
+            'blocking' => false,
+            'headers'  => ['Content-Type' => 'application/json'],
+            'body'     => wp_json_encode([
+                'name'    => $name,
+                'phone'   => $phone,
+                'inquiry' => $inquiry,
+                'time'    => current_time('mysql'),
+            ]),
+        ]);
     }
 
     /** Most recent leads for the admin page — newest first. */

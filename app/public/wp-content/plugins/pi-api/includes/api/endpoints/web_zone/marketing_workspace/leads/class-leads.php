@@ -45,7 +45,7 @@ class Pi_Api_Leads {
             'permission_callback' => $admin
         ]);
         register_rest_route($ns, '/leads/(?P<id>\d+)', [
-            'methods'  => 'POST',
+            'methods'  => ['POST', 'PATCH', 'PUT'],
             'callback' => [self::class, 'update_lead'],
             'permission_callback' => $admin
         ]);
@@ -155,57 +155,167 @@ class Pi_Api_Leads {
     /* ═══════════════════════════════════════════════════════════════
        CORE — list / pipeline / update
        ═══════════════════════════════════════════════════════════════ */
+
+    public static function ensure_chatbot_leads_synced() {
+        global $wpdb;
+        $table = $wpdb->prefix . 'pi_chatbot_leads';
+        if ($wpdb->get_var($wpdb->prepare("SHOW TABLES LIKE %s", $table)) !== $table) {
+            return;
+        }
+
+        $cb_rows = $wpdb->get_results("SELECT * FROM `{$table}` ORDER BY id ASC");
+        if (empty($cb_rows)) return;
+
+        foreach ($cb_rows as $row) {
+            $phone = trim((string) $row->phone);
+            if ($phone === '') continue;
+
+            // Check if sh_lead already exists with this phone or meta _pi_chatbot_lead_id
+            $existing = get_posts([
+                'post_type'      => 'sh_lead',
+                'post_status'    => 'any',
+                'posts_per_page' => 1,
+                'meta_query'     => [
+                    'relation' => 'OR',
+                    ['key' => '_pi_chatbot_lead_id', 'value' => $row->id],
+                    ['key' => '_pi_lead_phone', 'value' => $phone],
+                ],
+            ]);
+
+            if (empty($existing)) {
+                $name = !empty($row->name) ? $row->name : 'Khách Website (' . substr($phone, -4) . ')';
+                $question = !empty($row->question) ? $row->question : 'Yêu cầu tư vấn thiết bị bếp qua chatbot';
+                $post_id = wp_insert_post([
+                    'post_type'    => 'sh_lead',
+                    'post_title'   => $name . ' - ' . $phone,
+                    'post_content' => $question,
+                    'post_status'  => 'publish',
+                    'post_date'    => $row->created_at ?: current_time('mysql'),
+                ]);
+                if ($post_id && !is_wp_error($post_id)) {
+                    update_post_meta($post_id, '_pi_lead_name', $name);
+                    update_post_meta($post_id, '_pi_lead_phone', $phone);
+                    update_post_meta($post_id, '_pi_lead_source', 'Website Pi-Chatbot');
+                    update_post_meta($post_id, '_pi_lead_status', 'new');
+                    update_post_meta($post_id, '_pi_lead_score', 85);
+                    update_post_meta($post_id, '_pi_lead_service', $question);
+                    update_post_meta($post_id, '_pi_chatbot_lead_id', $row->id);
+                }
+            }
+        }
+    }
+
     public static function get_leads() {
         global $wpdb;
-        $table = $wpdb->prefix . 'pi_leads';
+
+        // Auto-sync leads from wp_pi_chatbot_leads into sh_lead CPT
+        self::ensure_chatbot_leads_synced();
+
+        $cpt = get_posts([
+            'post_type'      => 'sh_lead',
+            'post_status'    => 'publish',
+            'posts_per_page' => 500,
+            'orderby'        => 'date',
+            'order'          => 'DESC',
+        ]);
+
+        $status_labels = [
+            'new'         => 'Mới',
+            'contacted'   => 'Đã liên hệ',
+            'in_progress' => 'Đang tư vấn',
+            'quoted'      => 'Đã báo giá',
+            'won'         => 'Thành công',
+            'lost'        => 'Thất bại',
+        ];
+
         $db_rows = [];
-        if ($wpdb->get_var($wpdb->prepare("SHOW TABLES LIKE %s", $table)) === $table) {
-            $db_rows = (array) $wpdb->get_results("SELECT * FROM $table ORDER BY created_at DESC LIMIT 500");
-        }
+        $seen_phones = [];
 
-        // Attach score from the matching CPT (if a sh_lead post exists for the same email/phone).
-        // Fallback: expose meta columns directly if already present.
-        foreach ($db_rows as $i => $row) {
-            // Row is stdClass; copy to array for easier handling
-            $arr = is_object($row) ? (array) $row : (array) $row;
-            if (!isset($arr['score']) || $arr['score'] === null || $arr['score'] === '') {
-                $arr['score'] = self::lookup_score_for_contact($arr['email'] ?? '', $arr['phone'] ?? '');
+        foreach ($cpt as $p) {
+            $phone = get_post_meta($p->ID, '_pi_lead_phone', true);
+            $normalized_phone = preg_replace('/\D/', '', (string) $phone);
+            if ($normalized_phone !== '') {
+                $seen_phones[$normalized_phone] = true;
             }
-            $db_rows[$i] = (object) $arr;
+
+            $score = (int) get_post_meta($p->ID, '_pi_lead_score', true);
+            if ($score <= 0) $score = 85;
+
+            $status_raw = get_post_meta($p->ID, '_pi_lead_status', true) ?: 'new';
+            $status_label = $status_labels[$status_raw] ?? 'Mới';
+
+            $db_rows[] = (object) [
+                'id'         => $p->ID,
+                'name'       => get_post_meta($p->ID, '_pi_lead_name', true) ?: $p->post_title,
+                'phone'      => $phone,
+                'email'      => get_post_meta($p->ID, '_pi_lead_email', true),
+                'message'    => $p->post_content,
+                'inquiry'    => $p->post_content,
+                'source'     => get_post_meta($p->ID, '_pi_lead_source', true) ?: 'Website Pi-Chatbot',
+                'created_at' => $p->post_date,
+                'score'      => $score,
+                'status'     => $status_label,
+                'company'    => get_post_meta($p->ID, '_pi_lead_company', true) ?: 'Khách hàng F&B',
+                'deal_value' => (float) (get_post_meta($p->ID, '_pi_lead_deal_value', true) ?: 0),
+            ];
         }
 
-        // If the pi_leads table is empty, also expose sh_lead CPT posts so the
-        // UI has something to show. This keeps existing behavior backward-compatible.
-        if (empty($db_rows)) {
-            $cpt = get_posts([
-                'post_type'      => 'sh_lead',
-                'post_status'    => 'publish',
-                'posts_per_page' => 200,
-                'orderby'        => 'date',
-                'order'          => 'DESC',
-            ]);
-            foreach ($cpt as $p) {
+        // Also query wp_pi_chatbot_leads directly as a fallback if any were missed
+        $table_chatbot = $wpdb->prefix . 'pi_chatbot_leads';
+        if ($wpdb->get_var($wpdb->prepare("SHOW TABLES LIKE %s", $table_chatbot)) === $table_chatbot) {
+            $cb_rows = $wpdb->get_results("SELECT * FROM `{$table_chatbot}` ORDER BY created_at DESC LIMIT 500");
+            foreach ($cb_rows as $row) {
+                $phone_norm = preg_replace('/\D/', '', (string) $row->phone);
+                if ($phone_norm !== '' && isset($seen_phones[$phone_norm])) {
+                    continue;
+                }
+                if ($phone_norm !== '') {
+                    $seen_phones[$phone_norm] = true;
+                }
+
+                $name = !empty($row->name) ? $row->name : 'Khách Website (' . substr($row->phone, -4) . ')';
+                $inquiry = !empty($row->question) ? $row->question : 'Yêu cầu tư vấn thiết bị bếp qua chatbot';
+
                 $db_rows[] = (object) [
-                    'id'         => $p->ID,
-                    'name'       => get_post_meta($p->ID, '_pi_lead_name', true) ?: $p->post_title,
-                    'phone'      => get_post_meta($p->ID, '_pi_lead_phone', true),
-                    'email'      => get_post_meta($p->ID, '_pi_lead_email', true),
-                    'message'    => $p->post_content,
-                    'source'     => get_post_meta($p->ID, '_pi_lead_source', true) ?: 'Direct',
-                    'created_at' => $p->post_date,
-                    'score'      => (int) get_post_meta($p->ID, '_pi_lead_score', true),
+                    'id'         => (int) $row->id,
+                    'name'       => $name,
+                    'phone'      => $row->phone,
+                    'email'      => '',
+                    'message'    => $inquiry,
+                    'inquiry'    => $inquiry,
+                    'source'     => 'Website Pi-Chatbot',
+                    'created_at' => $row->created_at,
+                    'score'      => 85,
+                    'status'     => 'Mới',
+                    'company'    => 'Khách hàng F&B',
+                    'deal_value' => 0,
                 ];
             }
         }
+
+        // Sort all leads by created_at DESC
+        usort($db_rows, function($a, $b) {
+            return strcmp((string)($b->created_at ?? ''), (string)($a->created_at ?? ''));
+        });
 
         return new \WP_REST_Response($db_rows, 200);
     }
 
     public static function get_pipeline(\WP_REST_Request $request) {
-        $statuses  = ['new' => 'Mới', 'contacted' => 'Đã liên hệ', 'quoted' => 'Đã báo giá', 'won' => 'Thành công', 'lost' => 'Thất bại'];
+        $statuses  = [
+            'new'         => 'Mới',
+            'contacted'   => 'Đã liên hệ',
+            'in_progress' => 'Đang tư vấn',
+            'quoted'      => 'Đã báo giá',
+            'won'         => 'Thành công',
+            'lost'        => 'Thất bại'
+        ];
         $filter    = $request->get_param('status') ?: 'all';
         $page      = max(1, (int) ($request->get_param('page') ?: 1));
         $per_page  = min(200, max(1, (int) ($request->get_param('per_page') ?: 50)));
+
+        // Ensure chatbot leads are synced into sh_lead CPT
+        self::ensure_chatbot_leads_synced();
 
         $columns = [];
         $total = 0;
@@ -245,10 +355,14 @@ class Pi_Api_Leads {
                     'id'         => $p->ID,
                     'name'       => get_post_meta($p->ID, '_pi_lead_name', true) ?: $p->post_title,
                     'phone'      => get_post_meta($p->ID, '_pi_lead_phone', true),
-                    'service'    => get_post_meta($p->ID, '_pi_lead_service', true),
-                    'score'      => (int) get_post_meta($p->ID, '_pi_lead_score', true),
+                    'email'      => get_post_meta($p->ID, '_pi_lead_email', true),
+                    'service'    => get_post_meta($p->ID, '_pi_lead_service', true) ?: $p->post_content,
+                    'inquiry'    => $p->post_content,
+                    'score'      => (int) get_post_meta($p->ID, '_pi_lead_score', true) ?: 85,
                     'created_at' => $p->post_date,
-                    'status'     => $s,
+                    'status'     => $label,
+                    'company'    => get_post_meta($p->ID, '_pi_lead_company', true) ?: 'Khách hàng F&B',
+                    'deal_value' => (float) (get_post_meta($p->ID, '_pi_lead_deal_value', true) ?: 0),
                 ];
             }
 
@@ -268,17 +382,25 @@ class Pi_Api_Leads {
 
     public static function update_lead(\WP_REST_Request $request) {
         $id     = (int) $request->get_param('id');
-        $params = $request->get_json_params();
+        $params = $request->get_json_params() ?: [];
 
         if (get_post_type($id) !== 'sh_lead') {
             return new \WP_REST_Response(['message' => 'Lead not found'], 404);
         }
 
         if (isset($params['status'])) {
-            $allowed = ['new', 'contacted', 'quoted', 'won', 'lost'];
+            $allowed = ['new', 'contacted', 'in_progress', 'quoted', 'won', 'lost'];
             if (in_array($params['status'], $allowed, true)) {
                 update_post_meta($id, '_pi_lead_status', $params['status']);
             }
+        }
+
+        if (isset($params['deal_value'])) {
+            update_post_meta($id, '_pi_lead_deal_value', (float) $params['deal_value']);
+        }
+
+        if (isset($params['company'])) {
+            update_post_meta($id, '_pi_lead_company', sanitize_text_field($params['company']));
         }
 
         return new \WP_REST_Response(['success' => true], 200);
